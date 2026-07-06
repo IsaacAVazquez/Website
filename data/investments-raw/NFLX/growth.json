@@ -1,0 +1,1445 @@
+{
+  "quarterly_revenue": [
+    {
+      "symbol": "NFLX",
+      "report_date": "2022-06-30T00:00:00.000",
+      "revenue": 7970141000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2023-03-31T00:00:00.000",
+      "revenue": 8161503000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2023-06-30T00:00:00.000",
+      "revenue": 8187301000.0,
+      "prev_year_revenue": 7970141000.0,
+      "yoy_growth": 0.0272
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2023-09-30T00:00:00.000",
+      "revenue": 8541668000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 8832825000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2024-03-31T00:00:00.000",
+      "revenue": 9370440000.0,
+      "prev_year_revenue": 8161503000.0,
+      "yoy_growth": 0.1481
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2024-06-30T00:00:00.000",
+      "revenue": 9559310000.0,
+      "prev_year_revenue": 8187301000.0,
+      "yoy_growth": 0.1676
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2024-09-30T00:00:00.000",
+      "revenue": 9824703000.0,
+      "prev_year_revenue": 8541668000.0,
+      "yoy_growth": 0.1502
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 10246513000.0,
+      "prev_year_revenue": 8832825000.0,
+      "yoy_growth": 0.16
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2025-03-31T00:00:00.000",
+      "revenue": 10542801000.0,
+      "prev_year_revenue": 9370440000.0,
+      "yoy_growth": 0.1251
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2025-06-30T00:00:00.000",
+      "revenue": 11079166000.0,
+      "prev_year_revenue": 9559310000.0,
+      "yoy_growth": 0.159
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2025-09-30T00:00:00.000",
+      "revenue": 11510307000.0,
+      "prev_year_revenue": 9824703000.0,
+      "yoy_growth": 0.1716
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 12050762000.0,
+      "prev_year_revenue": 10246513000.0,
+      "yoy_growth": 0.1761
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 12249757000.0,
+      "prev_year_revenue": 10542801000.0,
+      "yoy_growth": 0.1619
+    }
+  ],
+  "annual_revenue": [
+    {
+      "symbol": "NFLX",
+      "report_date": "2020-12-31T00:00:00.000",
+      "revenue": 24996056000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2021-12-31T00:00:00.000",
+      "revenue": 29697844000.0,
+      "prev_year_revenue": 24996056000.0,
+      "yoy_growth": 0.1881
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2022-12-31T00:00:00.000",
+      "revenue": 31615550000.0,
+      "prev_year_revenue": 29697844000.0,
+      "yoy_growth": 0.0646
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 33723297000.0,
+      "prev_year_revenue": 31615550000.0,
+      "yoy_growth": 0.0667
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 39000966000.0,
+      "prev_year_revenue": 33723297000.0,
+      "yoy_growth": 0.1565
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 45183036000.0,
+      "prev_year_revenue": 39000966000.0,
+      "yoy_growth": 0.1585
+    }
+  ],
+  "quarterly_operating_income": [
+    {
+      "symbol": "NFLX",
+      "report_date": "2022-06-30T00:00:00.000",
+      "operating_income": 1578283000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2023-03-31T00:00:00.000",
+      "operating_income": 1714317000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2023-06-30T00:00:00.000",
+      "operating_income": 1827183000.0,
+      "prev_year_operating_income": 1578283000.0,
+      "yoy_growth": 0.1577
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2023-09-30T00:00:00.000",
+      "operating_income": 1916394000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 1496109000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2024-03-31T00:00:00.000",
+      "operating_income": 2632534000.0,
+      "prev_year_operating_income": 1714317000.0,
+      "yoy_growth": 0.5356
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2024-06-30T00:00:00.000",
+      "operating_income": 2602837000.0,
+      "prev_year_operating_income": 1827183000.0,
+      "yoy_growth": 0.4245
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2024-09-30T00:00:00.000",
+      "operating_income": 2909477000.0,
+      "prev_year_operating_income": 1916394000.0,
+      "yoy_growth": 0.5182
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 2272766000.0,
+      "prev_year_operating_income": 1496109000.0,
+      "yoy_growth": 0.5191
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2025-03-31T00:00:00.000",
+      "operating_income": 3346999000.0,
+      "prev_year_operating_income": 2632534000.0,
+      "yoy_growth": 0.2714
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2025-06-30T00:00:00.000",
+      "operating_income": 3774694000.0,
+      "prev_year_operating_income": 2602837000.0,
+      "yoy_growth": 0.4502
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2025-09-30T00:00:00.000",
+      "operating_income": 3248247000.0,
+      "prev_year_operating_income": 2909477000.0,
+      "yoy_growth": 0.1164
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 2956663000.0,
+      "prev_year_operating_income": 2272766000.0,
+      "yoy_growth": 0.3009
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2026-03-31T00:00:00.000",
+      "operating_income": 3956997000.0,
+      "prev_year_operating_income": 3346999000.0,
+      "yoy_growth": 0.1823
+    }
+  ],
+  "annual_operating_income": [
+    {
+      "symbol": "NFLX",
+      "report_date": "2020-12-31T00:00:00.000",
+      "operating_income": 4585289000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2021-12-31T00:00:00.000",
+      "operating_income": 6194509000.0,
+      "prev_year_operating_income": 4585289000.0,
+      "yoy_growth": 0.351
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2022-12-31T00:00:00.000",
+      "operating_income": 5632831000.0,
+      "prev_year_operating_income": 6194509000.0,
+      "yoy_growth": -0.0907
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 6954003000.0,
+      "prev_year_operating_income": 5632831000.0,
+      "yoy_growth": 0.2345
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 10417614000.0,
+      "prev_year_operating_income": 6954003000.0,
+      "yoy_growth": 0.4981
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 13326603000.0,
+      "prev_year_operating_income": 10417614000.0,
+      "yoy_growth": 0.2792
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "NFLX",
+      "report_date": "2023-03-31T00:00:00.000",
+      "ebitda": 5264636000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2023-06-30T00:00:00.000",
+      "ebitda": 5353550000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2023-09-30T00:00:00.000",
+      "ebitda": 5748625000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 5212780000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2024-03-31T00:00:00.000",
+      "ebitda": 6545932000.0,
+      "prev_year_ebitda": 5264636000.0,
+      "yoy_growth": 0.2434
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2024-06-30T00:00:00.000",
+      "ebitda": 6532759000.0,
+      "prev_year_ebitda": 5353550000.0,
+      "yoy_growth": 0.2203
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2024-09-30T00:00:00.000",
+      "ebitda": 6689912000.0,
+      "prev_year_ebitda": 5748625000.0,
+      "yoy_growth": 0.1637
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 6567911000.0,
+      "prev_year_ebitda": 5212780000.0,
+      "yoy_growth": 0.26
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2025-03-31T00:00:00.000",
+      "ebitda": 7301077000.0,
+      "prev_year_ebitda": 6545932000.0,
+      "yoy_growth": 0.1154
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2025-06-30T00:00:00.000",
+      "ebitda": 7726411000.0,
+      "prev_year_ebitda": 6532759000.0,
+      "yoy_growth": 0.1827
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2025-09-30T00:00:00.000",
+      "ebitda": 7374774000.0,
+      "prev_year_ebitda": 6689912000.0,
+      "yoy_growth": 0.1024
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 7852355000.0,
+      "prev_year_ebitda": 6567911000.0,
+      "yoy_growth": 0.1956
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2026-03-31T00:00:00.000",
+      "ebitda": 11125638000.0,
+      "prev_year_ebitda": 7301077000.0,
+      "yoy_growth": 0.5238
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "NFLX",
+      "report_date": "2020-12-31T00:00:00.000",
+      "ebitda": 15507911000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2021-12-31T00:00:00.000",
+      "ebitda": 19044502000.0,
+      "prev_year_ebitda": 15507911000.0,
+      "yoy_growth": 0.2281
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2022-12-31T00:00:00.000",
+      "ebitda": 20332955000.0,
+      "prev_year_ebitda": 19044502000.0,
+      "yoy_growth": 0.0677
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 21508387000.0,
+      "prev_year_ebitda": 20332955000.0,
+      "yoy_growth": 0.0578
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 26314821000.0,
+      "prev_year_ebitda": 21508387000.0,
+      "yoy_growth": 0.2235
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 30254617000.0,
+      "prev_year_ebitda": 26314821000.0,
+      "yoy_growth": 0.1497
+    }
+  ],
+  "quarterly_net_income": [
+    {
+      "symbol": "NFLX",
+      "report_date": "2022-06-30T00:00:00.000",
+      "net_income_common_stockholders": 1440951000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2023-03-31T00:00:00.000",
+      "net_income_common_stockholders": 1305120000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2023-06-30T00:00:00.000",
+      "net_income_common_stockholders": 1487610000.0,
+      "prev_year_net_income_common_stockholders": 1440951000.0,
+      "yoy_growth": 0.0324
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2023-09-30T00:00:00.000",
+      "net_income_common_stockholders": 1677422000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 937838000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2024-03-31T00:00:00.000",
+      "net_income_common_stockholders": 2332209000.0,
+      "prev_year_net_income_common_stockholders": 1305120000.0,
+      "yoy_growth": 0.787
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2024-06-30T00:00:00.000",
+      "net_income_common_stockholders": 2147306000.0,
+      "prev_year_net_income_common_stockholders": 1487610000.0,
+      "yoy_growth": 0.4435
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2024-09-30T00:00:00.000",
+      "net_income_common_stockholders": 2363509000.0,
+      "prev_year_net_income_common_stockholders": 1677422000.0,
+      "yoy_growth": 0.409
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1868607000.0,
+      "prev_year_net_income_common_stockholders": 937838000.0,
+      "yoy_growth": 0.9925
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2025-03-31T00:00:00.000",
+      "net_income_common_stockholders": 2890351000.0,
+      "prev_year_net_income_common_stockholders": 2332209000.0,
+      "yoy_growth": 0.2393
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2025-06-30T00:00:00.000",
+      "net_income_common_stockholders": 3125413000.0,
+      "prev_year_net_income_common_stockholders": 2147306000.0,
+      "yoy_growth": 0.4555
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2025-09-30T00:00:00.000",
+      "net_income_common_stockholders": 2546916000.0,
+      "prev_year_net_income_common_stockholders": 2363509000.0,
+      "yoy_growth": 0.0776
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2418521000.0,
+      "prev_year_net_income_common_stockholders": 1868607000.0,
+      "yoy_growth": 0.2943
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 5282791000.0,
+      "prev_year_net_income_common_stockholders": 2890351000.0,
+      "yoy_growth": 0.8277
+    }
+  ],
+  "annual_net_income": [
+    {
+      "symbol": "NFLX",
+      "report_date": "2020-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2761395000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2021-12-31T00:00:00.000",
+      "net_income_common_stockholders": 5116228000.0,
+      "prev_year_net_income_common_stockholders": 2761395000.0,
+      "yoy_growth": 0.8528
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2022-12-31T00:00:00.000",
+      "net_income_common_stockholders": 4491924000.0,
+      "prev_year_net_income_common_stockholders": 5116228000.0,
+      "yoy_growth": -0.122
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 5407990000.0,
+      "prev_year_net_income_common_stockholders": 4491924000.0,
+      "yoy_growth": 0.2039
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 8711631000.0,
+      "prev_year_net_income_common_stockholders": 5407990000.0,
+      "yoy_growth": 0.6109
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 10981201000.0,
+      "prev_year_net_income_common_stockholders": 8711631000.0,
+      "yoy_growth": 0.2605
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "NFLX",
+      "report_date": "2022-06-30T00:00:00.000",
+      "free_cash_flow": 12732000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2023-06-30T00:00:00.000",
+      "free_cash_flow": 1339260000.0,
+      "prev_year_free_cash_flow": 12732000.0,
+      "yoy_growth": 104.1885
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2023-09-30T00:00:00.000",
+      "free_cash_flow": 1888386000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 1581382000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2024-03-31T00:00:00.000",
+      "free_cash_flow": 2136808000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2024-06-30T00:00:00.000",
+      "free_cash_flow": 1212560000.0,
+      "prev_year_free_cash_flow": 1339260000.0,
+      "yoy_growth": -0.0946
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2024-09-30T00:00:00.000",
+      "free_cash_flow": 2194238000.0,
+      "prev_year_free_cash_flow": 1888386000.0,
+      "yoy_growth": 0.162
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 1378220000.0,
+      "prev_year_free_cash_flow": 1581382000.0,
+      "yoy_growth": -0.1285
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2025-03-31T00:00:00.000",
+      "free_cash_flow": 2660922000.0,
+      "prev_year_free_cash_flow": 2136808000.0,
+      "yoy_growth": 0.2453
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2025-06-30T00:00:00.000",
+      "free_cash_flow": 2267369000.0,
+      "prev_year_free_cash_flow": 1212560000.0,
+      "yoy_growth": 0.8699
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2025-09-30T00:00:00.000",
+      "free_cash_flow": 2660455000.0,
+      "prev_year_free_cash_flow": 2194238000.0,
+      "yoy_growth": 0.2125
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 1872307000.0,
+      "prev_year_free_cash_flow": 1378220000.0,
+      "yoy_growth": 0.3585
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": 5094075000.0,
+      "prev_year_free_cash_flow": 2660922000.0,
+      "yoy_growth": 0.9144
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "NFLX",
+      "report_date": "2020-12-31T00:00:00.000",
+      "free_cash_flow": 1929154000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2021-12-31T00:00:00.000",
+      "free_cash_flow": -131975000.0,
+      "prev_year_free_cash_flow": 1929154000.0,
+      "yoy_growth": -1.0684
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2022-12-31T00:00:00.000",
+      "free_cash_flow": 1618528000.0,
+      "prev_year_free_cash_flow": -131975000.0,
+      "yoy_growth": 13.2639
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 6925749000.0,
+      "prev_year_free_cash_flow": 1618528000.0,
+      "yoy_growth": 3.279
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 6921826000.0,
+      "prev_year_free_cash_flow": 6925749000.0,
+      "yoy_growth": -0.0006
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 9461053000.0,
+      "prev_year_free_cash_flow": 6921826000.0,
+      "yoy_growth": 0.3668
+    }
+  ],
+  "quarterly_eps": [
+    {
+      "symbol": "NFLX",
+      "report_date": "2000-03-31T00:00:00.000",
+      "eps": -0.0082,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2000-06-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2000-09-30T00:00:00.000",
+      "eps": -0.0095,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2000-12-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2001-03-31T00:00:00.000",
+      "eps": -0.0072,
+      "prev_year_eps": -0.0082,
+      "yoy_growth": 0.122
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2001-06-30T00:00:00.000",
+      "eps": -0.0028,
+      "prev_year_eps": 0.0,
+      "yoy_growth": -1.0
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2001-09-30T00:00:00.000",
+      "eps": -0.0019,
+      "prev_year_eps": -0.0095,
+      "yoy_growth": 0.8
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2001-12-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2002-03-31T00:00:00.000",
+      "eps": -0.0021,
+      "prev_year_eps": -0.0072,
+      "yoy_growth": 0.7083
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2002-06-30T00:00:00.000",
+      "eps": -0.0094,
+      "prev_year_eps": -0.0028,
+      "yoy_growth": -2.3571
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2002-09-30T00:00:00.000",
+      "eps": -0.0006,
+      "prev_year_eps": -0.0019,
+      "yoy_growth": 0.6842
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2002-12-31T00:00:00.000",
+      "eps": -0.0011,
+      "prev_year_eps": 0.0,
+      "yoy_growth": -1.0
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2003-03-31T00:00:00.000",
+      "eps": -0.0014,
+      "prev_year_eps": -0.0021,
+      "yoy_growth": 0.3333
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2003-06-30T00:00:00.000",
+      "eps": 0.0008,
+      "prev_year_eps": -0.0094,
+      "yoy_growth": 1.0851
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2003-09-30T00:00:00.000",
+      "eps": 0.0007,
+      "prev_year_eps": -0.0006,
+      "yoy_growth": 2.1667
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2003-12-31T00:00:00.000",
+      "eps": 0.0005,
+      "prev_year_eps": -0.0011,
+      "yoy_growth": 1.4545
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2004-03-31T00:00:00.000",
+      "eps": -0.0016,
+      "prev_year_eps": -0.0014,
+      "yoy_growth": -0.1429
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2004-06-30T00:00:00.000",
+      "eps": 0.0006,
+      "prev_year_eps": 0.0008,
+      "yoy_growth": -0.25
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2004-09-30T00:00:00.000",
+      "eps": 0.0041,
+      "prev_year_eps": 0.0007,
+      "yoy_growth": 4.8571
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2004-12-31T00:00:00.000",
+      "eps": 0.0011,
+      "prev_year_eps": 0.0005,
+      "yoy_growth": 1.2
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2005-03-31T00:00:00.000",
+      "eps": -0.0024,
+      "prev_year_eps": -0.0016,
+      "yoy_growth": -0.5
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2005-06-30T00:00:00.000",
+      "eps": 0.0013,
+      "prev_year_eps": 0.0006,
+      "yoy_growth": 1.1667
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2005-09-30T00:00:00.000",
+      "eps": 0.0016,
+      "prev_year_eps": 0.0041,
+      "yoy_growth": -0.6098
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2005-12-31T00:00:00.000",
+      "eps": 0.0081,
+      "prev_year_eps": 0.0011,
+      "yoy_growth": 6.3636
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2006-03-31T00:00:00.000",
+      "eps": 0.001,
+      "prev_year_eps": -0.0024,
+      "yoy_growth": 1.4167
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2006-06-30T00:00:00.000",
+      "eps": 0.0036,
+      "prev_year_eps": 0.0013,
+      "yoy_growth": 1.7692
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2006-09-30T00:00:00.000",
+      "eps": 0.0026,
+      "prev_year_eps": 0.0016,
+      "yoy_growth": 0.625
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2006-12-31T00:00:00.000",
+      "eps": 0.003,
+      "prev_year_eps": 0.0081,
+      "yoy_growth": -0.6296
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2007-03-31T00:00:00.000",
+      "eps": 0.002,
+      "prev_year_eps": 0.001,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2007-06-30T00:00:00.000",
+      "eps": 0.0053,
+      "prev_year_eps": 0.0036,
+      "yoy_growth": 0.4722
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2007-09-30T00:00:00.000",
+      "eps": 0.0033,
+      "prev_year_eps": 0.0026,
+      "yoy_growth": 0.2692
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2007-12-31T00:00:00.000",
+      "eps": 0.0034,
+      "prev_year_eps": 0.003,
+      "yoy_growth": 0.1333
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2008-03-31T00:00:00.000",
+      "eps": 0.003,
+      "prev_year_eps": 0.002,
+      "yoy_growth": 0.5
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2008-06-30T00:00:00.000",
+      "eps": 0.006,
+      "prev_year_eps": 0.0053,
+      "yoy_growth": 0.1321
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2008-09-30T00:00:00.000",
+      "eps": 0.0047,
+      "prev_year_eps": 0.0033,
+      "yoy_growth": 0.4242
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2008-12-31T00:00:00.000",
+      "eps": 0.0054,
+      "prev_year_eps": 0.0034,
+      "yoy_growth": 0.5882
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2009-03-31T00:00:00.000",
+      "eps": 0.0053,
+      "prev_year_eps": 0.003,
+      "yoy_growth": 0.7667
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2009-06-30T00:00:00.000",
+      "eps": 0.0077,
+      "prev_year_eps": 0.006,
+      "yoy_growth": 0.2833
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2009-09-30T00:00:00.000",
+      "eps": 0.0074,
+      "prev_year_eps": 0.0047,
+      "yoy_growth": 0.5745
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2009-12-31T00:00:00.000",
+      "eps": 0.008,
+      "prev_year_eps": 0.0054,
+      "yoy_growth": 0.4815
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2010-03-31T00:00:00.000",
+      "eps": 0.0084,
+      "prev_year_eps": 0.0053,
+      "yoy_growth": 0.5849
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2010-06-30T00:00:00.000",
+      "eps": 0.0114,
+      "prev_year_eps": 0.0077,
+      "yoy_growth": 0.4805
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2010-09-30T00:00:00.000",
+      "eps": 0.01,
+      "prev_year_eps": 0.0074,
+      "yoy_growth": 0.3514
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2010-12-31T00:00:00.000",
+      "eps": 0.0124,
+      "prev_year_eps": 0.008,
+      "yoy_growth": 0.55
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2011-03-31T00:00:00.000",
+      "eps": 0.0159,
+      "prev_year_eps": 0.0084,
+      "yoy_growth": 0.8929
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2011-06-30T00:00:00.000",
+      "eps": 0.0181,
+      "prev_year_eps": 0.0114,
+      "yoy_growth": 0.5877
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2011-09-30T00:00:00.000",
+      "eps": 0.0166,
+      "prev_year_eps": 0.01,
+      "yoy_growth": 0.66
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2011-12-31T00:00:00.000",
+      "eps": 0.0091,
+      "prev_year_eps": 0.0124,
+      "yoy_growth": -0.2661
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2012-03-31T00:00:00.000",
+      "eps": -0.0011,
+      "prev_year_eps": 0.0159,
+      "yoy_growth": -1.0692
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2012-06-30T00:00:00.000",
+      "eps": 0.0016,
+      "prev_year_eps": 0.0181,
+      "yoy_growth": -0.9116
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2012-09-30T00:00:00.000",
+      "eps": 0.0019,
+      "prev_year_eps": 0.0166,
+      "yoy_growth": -0.8855
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2012-12-31T00:00:00.000",
+      "eps": 0.0019,
+      "prev_year_eps": 0.0091,
+      "yoy_growth": -0.7912
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2013-03-31T00:00:00.000",
+      "eps": 0.0007,
+      "prev_year_eps": -0.0011,
+      "yoy_growth": 1.6364
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2013-06-30T00:00:00.000",
+      "eps": 0.007,
+      "prev_year_eps": 0.0016,
+      "yoy_growth": 3.375
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2013-09-30T00:00:00.000",
+      "eps": 0.0074,
+      "prev_year_eps": 0.0019,
+      "yoy_growth": 2.8947
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2013-12-31T00:00:00.000",
+      "eps": 0.0113,
+      "prev_year_eps": 0.0019,
+      "yoy_growth": 4.9474
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2014-03-31T00:00:00.000",
+      "eps": 0.0123,
+      "prev_year_eps": 0.0007,
+      "yoy_growth": 16.5714
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2014-06-30T00:00:00.000",
+      "eps": 0.0164,
+      "prev_year_eps": 0.007,
+      "yoy_growth": 1.3429
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2014-09-30T00:00:00.000",
+      "eps": 0.0137,
+      "prev_year_eps": 0.0074,
+      "yoy_growth": 0.8514
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2014-12-31T00:00:00.000",
+      "eps": 0.0193,
+      "prev_year_eps": 0.0113,
+      "yoy_growth": 0.708
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2015-03-31T00:00:00.000",
+      "eps": 0.0054,
+      "prev_year_eps": 0.0123,
+      "yoy_growth": -0.561
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2015-06-30T00:00:00.000",
+      "eps": 0.006,
+      "prev_year_eps": 0.0164,
+      "yoy_growth": -0.6341
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2015-09-30T00:00:00.000",
+      "eps": 0.007,
+      "prev_year_eps": 0.0137,
+      "yoy_growth": -0.4891
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2015-12-31T00:00:00.000",
+      "eps": 0.01,
+      "prev_year_eps": 0.0193,
+      "yoy_growth": -0.4819
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2016-03-31T00:00:00.000",
+      "eps": 0.006,
+      "prev_year_eps": 0.0054,
+      "yoy_growth": 0.1111
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2016-06-30T00:00:00.000",
+      "eps": 0.009,
+      "prev_year_eps": 0.006,
+      "yoy_growth": 0.5
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2016-09-30T00:00:00.000",
+      "eps": 0.012,
+      "prev_year_eps": 0.007,
+      "yoy_growth": 0.7143
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2016-12-31T00:00:00.000",
+      "eps": 0.015,
+      "prev_year_eps": 0.01,
+      "yoy_growth": 0.5
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2017-03-31T00:00:00.000",
+      "eps": 0.04,
+      "prev_year_eps": 0.006,
+      "yoy_growth": 5.6667
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2017-06-30T00:00:00.000",
+      "eps": 0.015,
+      "prev_year_eps": 0.009,
+      "yoy_growth": 0.6667
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2017-09-30T00:00:00.000",
+      "eps": 0.029,
+      "prev_year_eps": 0.012,
+      "yoy_growth": 1.4167
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2017-12-31T00:00:00.000",
+      "eps": 0.041,
+      "prev_year_eps": 0.015,
+      "yoy_growth": 1.7333
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2018-03-31T00:00:00.000",
+      "eps": 0.064,
+      "prev_year_eps": 0.04,
+      "yoy_growth": 0.6
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2018-06-30T00:00:00.000",
+      "eps": 0.085,
+      "prev_year_eps": 0.015,
+      "yoy_growth": 4.6667
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2018-09-30T00:00:00.000",
+      "eps": 0.089,
+      "prev_year_eps": 0.029,
+      "yoy_growth": 2.069
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2018-12-31T00:00:00.000",
+      "eps": 0.03,
+      "prev_year_eps": 0.041,
+      "yoy_growth": -0.2683
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2019-03-31T00:00:00.000",
+      "eps": 0.076,
+      "prev_year_eps": 0.064,
+      "yoy_growth": 0.1875
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2019-06-30T00:00:00.000",
+      "eps": 0.06,
+      "prev_year_eps": 0.085,
+      "yoy_growth": -0.2941
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2019-09-30T00:00:00.000",
+      "eps": 0.1473,
+      "prev_year_eps": 0.089,
+      "yoy_growth": 0.6551
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2019-12-31T00:00:00.000",
+      "eps": 0.13,
+      "prev_year_eps": 0.03,
+      "yoy_growth": 3.3333
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2020-03-31T00:00:00.000",
+      "eps": 0.1567,
+      "prev_year_eps": 0.076,
+      "yoy_growth": 1.0618
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2020-06-30T00:00:00.000",
+      "eps": 0.1587,
+      "prev_year_eps": 0.06,
+      "yoy_growth": 1.645
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2020-09-30T00:00:00.000",
+      "eps": 0.1736,
+      "prev_year_eps": 0.1473,
+      "yoy_growth": 0.1785
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2020-12-31T00:00:00.000",
+      "eps": 0.1191,
+      "prev_year_eps": 0.13,
+      "yoy_growth": -0.0838
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2021-03-31T00:00:00.000",
+      "eps": 0.3746,
+      "prev_year_eps": 0.1567,
+      "yoy_growth": 1.3906
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2021-06-30T00:00:00.000",
+      "eps": 0.2973,
+      "prev_year_eps": 0.1587,
+      "yoy_growth": 0.8733
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2021-09-30T00:00:00.000",
+      "eps": 0.3185,
+      "prev_year_eps": 0.1736,
+      "yoy_growth": 0.8347
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2021-12-31T00:00:00.000",
+      "eps": 0.1333,
+      "prev_year_eps": 0.1191,
+      "yoy_growth": 0.1192
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2022-03-31T00:00:00.000",
+      "eps": 0.3526,
+      "prev_year_eps": 0.3746,
+      "yoy_growth": -0.0587
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2022-06-30T00:00:00.000",
+      "eps": 0.3201,
+      "prev_year_eps": 0.2973,
+      "yoy_growth": 0.0767
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2022-09-30T00:00:00.000",
+      "eps": 0.3105,
+      "prev_year_eps": 0.3185,
+      "yoy_growth": -0.0251
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2022-12-31T00:00:00.000",
+      "eps": 0.0122,
+      "prev_year_eps": 0.1333,
+      "yoy_growth": -0.9085
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2023-03-31T00:00:00.000",
+      "eps": 0.2885,
+      "prev_year_eps": 0.3526,
+      "yoy_growth": -0.1818
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2023-06-30T00:00:00.000",
+      "eps": 0.3294,
+      "prev_year_eps": 0.3201,
+      "yoy_growth": 0.0291
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2023-09-30T00:00:00.000",
+      "eps": 0.3728,
+      "prev_year_eps": 0.3105,
+      "yoy_growth": 0.2006
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2023-12-31T00:00:00.000",
+      "eps": 0.2111,
+      "prev_year_eps": 0.0122,
+      "yoy_growth": 16.3033
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2024-03-31T00:00:00.000",
+      "eps": 0.5281,
+      "prev_year_eps": 0.2885,
+      "yoy_growth": 0.8305
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2024-06-30T00:00:00.000",
+      "eps": 0.4883,
+      "prev_year_eps": 0.3294,
+      "yoy_growth": 0.4824
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2024-09-30T00:00:00.000",
+      "eps": 0.5397,
+      "prev_year_eps": 0.3728,
+      "yoy_growth": 0.4477
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2024-12-31T00:00:00.000",
+      "eps": 0.4267,
+      "prev_year_eps": 0.2111,
+      "yoy_growth": 1.0213
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2025-03-31T00:00:00.000",
+      "eps": 0.6615,
+      "prev_year_eps": 0.5281,
+      "yoy_growth": 0.2526
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2025-06-30T00:00:00.000",
+      "eps": 0.7187,
+      "prev_year_eps": 0.4883,
+      "yoy_growth": 0.4718
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2025-09-30T00:00:00.000",
+      "eps": 0.5868,
+      "prev_year_eps": 0.5397,
+      "yoy_growth": 0.0873
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2025-12-31T00:00:00.000",
+      "eps": 0.5602,
+      "prev_year_eps": 0.4267,
+      "yoy_growth": 0.3129
+    },
+    {
+      "symbol": "NFLX",
+      "report_date": "2026-03-31T00:00:00.000",
+      "eps": 1.229,
+      "prev_year_eps": 0.6615,
+      "yoy_growth": 0.8579
+    }
+  ]
+}

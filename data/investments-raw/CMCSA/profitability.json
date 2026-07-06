@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "CMCSA",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 4046000000.0,
+      "beginning_stockholders_equity": 84119000000.0,
+      "ending_stockholders_equity": 82625000000.0,
+      "avg_equity": 83372000000.0,
+      "roe": 0.0485
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 3260000000.0,
+      "beginning_stockholders_equity": 82625000000.0,
+      "ending_stockholders_equity": 82703000000.0,
+      "avg_equity": 82664000000.0,
+      "roe": 0.0394
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 3857000000.0,
+      "beginning_stockholders_equity": 82703000000.0,
+      "ending_stockholders_equity": 82549000000.0,
+      "avg_equity": 82626000000.0,
+      "roe": 0.0467
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 3929000000.0,
+      "beginning_stockholders_equity": 82549000000.0,
+      "ending_stockholders_equity": 83219000000.0,
+      "avg_equity": 82884000000.0,
+      "roe": 0.0474
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 3629000000.0,
+      "beginning_stockholders_equity": 83219000000.0,
+      "ending_stockholders_equity": 85774000000.0,
+      "avg_equity": 84496500000.0,
+      "roe": 0.0429
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 4777000000.0,
+      "beginning_stockholders_equity": 85774000000.0,
+      "ending_stockholders_equity": 85560000000.0,
+      "avg_equity": 85667000000.0,
+      "roe": 0.0558
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 3375000000.0,
+      "beginning_stockholders_equity": 85560000000.0,
+      "ending_stockholders_equity": 86638000000.0,
+      "avg_equity": 86099000000.0,
+      "roe": 0.0392
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 11123000000.0,
+      "beginning_stockholders_equity": 86638000000.0,
+      "ending_stockholders_equity": 96851000000.0,
+      "avg_equity": 91744500000.0,
+      "roe": 0.1212
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 3332000000.0,
+      "beginning_stockholders_equity": 96851000000.0,
+      "ending_stockholders_equity": 97081000000.0,
+      "avg_equity": 96966000000.0,
+      "roe": 0.0344
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 2168000000.0,
+      "beginning_stockholders_equity": 97081000000.0,
+      "ending_stockholders_equity": 96903000000.0,
+      "avg_equity": 96992000000.0,
+      "roe": 0.0224
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 2174000000.0,
+      "beginning_stockholders_equity": 96903000000.0,
+      "ending_stockholders_equity": 88274000000.0,
+      "avg_equity": 92588500000.0,
+      "roe": 0.0235
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "CMCSA",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 4046000000.0,
+      "beginning_total_assets": 262147000000.0,
+      "ending_total_assets": 261072000000.0,
+      "avg_assets": 261609500000.0,
+      "roa": 0.0155
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 3260000000.0,
+      "beginning_total_assets": 261072000000.0,
+      "ending_total_assets": 264811000000.0,
+      "avg_assets": 262941500000.0,
+      "roa": 0.0124
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 3857000000.0,
+      "beginning_total_assets": 264811000000.0,
+      "ending_total_assets": 263601000000.0,
+      "avg_assets": 264206000000.0,
+      "roa": 0.0146
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 3929000000.0,
+      "beginning_total_assets": 263601000000.0,
+      "ending_total_assets": 262555000000.0,
+      "avg_assets": 263078000000.0,
+      "roa": 0.0149
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 3629000000.0,
+      "beginning_total_assets": 262555000000.0,
+      "ending_total_assets": 269871000000.0,
+      "avg_assets": 266213000000.0,
+      "roa": 0.0136
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 4777000000.0,
+      "beginning_total_assets": 269871000000.0,
+      "ending_total_assets": 266211000000.0,
+      "avg_assets": 268041000000.0,
+      "roa": 0.0178
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 3375000000.0,
+      "beginning_total_assets": 266211000000.0,
+      "ending_total_assets": 267770000000.0,
+      "avg_assets": 266990500000.0,
+      "roa": 0.0126
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 11123000000.0,
+      "beginning_total_assets": 267770000000.0,
+      "ending_total_assets": 273850000000.0,
+      "avg_assets": 270810000000.0,
+      "roa": 0.0411
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 3332000000.0,
+      "beginning_total_assets": 273850000000.0,
+      "ending_total_assets": 272995000000.0,
+      "avg_assets": 273422500000.0,
+      "roa": 0.0122
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 2168000000.0,
+      "beginning_total_assets": 272995000000.0,
+      "ending_total_assets": 272631000000.0,
+      "avg_assets": 272813000000.0,
+      "roa": 0.0079
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 2174000000.0,
+      "beginning_total_assets": 272631000000.0,
+      "ending_total_assets": 260002000000.0,
+      "avg_assets": 266316500000.0,
+      "roa": 0.0082
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "CMCSA",
+      "report_date": "2023-09-30",
+      "ebit": 6525000000.0,
+      "tax_rate_for_calcs": 0.27,
+      "nopat": 4763250000.0,
+      "beginning_invested_capital": 186788000000.0,
+      "ending_invested_capital": 185128000000.0,
+      "avg_invested_capital": 185958000000.0,
+      "roic": 0.0256
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2023-12-31",
+      "ebit": 5063000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 3949140000.0,
+      "beginning_invested_capital": 185128000000.0,
+      "ending_invested_capital": 179793000000.0,
+      "avg_invested_capital": 182460500000.0,
+      "roic": 0.0216
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2024-03-31",
+      "ebit": 6107000000.0,
+      "tax_rate_for_calcs": 0.26,
+      "nopat": 4519180000.0,
+      "beginning_invested_capital": 179793000000.0,
+      "ending_invested_capital": 179122000000.0,
+      "avg_invested_capital": 179457500000.0,
+      "roic": 0.0252
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2024-06-30",
+      "ebit": 6201000000.0,
+      "tax_rate_for_calcs": 0.26,
+      "nopat": 4588740000.0,
+      "beginning_invested_capital": 179122000000.0,
+      "ending_invested_capital": 181347000000.0,
+      "avg_invested_capital": 180234500000.0,
+      "roic": 0.0255
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2024-09-30",
+      "ebit": 5856000000.0,
+      "tax_rate_for_calcs": 0.26,
+      "nopat": 4333440000.0,
+      "beginning_invested_capital": 181347000000.0,
+      "ending_invested_capital": 187138000000.0,
+      "avg_invested_capital": 184242500000.0,
+      "roic": 0.0235
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2024-12-31",
+      "ebit": 4643000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 3667970000.0,
+      "beginning_invested_capital": 187138000000.0,
+      "ending_invested_capital": 184653000000.0,
+      "avg_invested_capital": 185895500000.0,
+      "roic": 0.0197
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2025-03-31",
+      "ebit": 5542000000.0,
+      "tax_rate_for_calcs": 0.27,
+      "nopat": 4045660000.0,
+      "beginning_invested_capital": 184653000000.0,
+      "ending_invested_capital": 185760000000.0,
+      "avg_invested_capital": 185206500000.0,
+      "roic": 0.0218
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2025-06-30",
+      "ebit": 15752000000.0,
+      "tax_rate_for_calcs": 0.25,
+      "nopat": 11814000000.0,
+      "beginning_invested_capital": 185760000000.0,
+      "ending_invested_capital": 198379000000.0,
+      "avg_invested_capital": 192069500000.0,
+      "roic": 0.0615
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2025-09-30",
+      "ebit": 5596000000.0,
+      "tax_rate_for_calcs": 0.27,
+      "nopat": 4085080000.0,
+      "beginning_invested_capital": 198379000000.0,
+      "ending_invested_capital": 196144000000.0,
+      "avg_invested_capital": 197261500000.0,
+      "roic": 0.0207
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2025-12-31",
+      "ebit": 3285000000.0,
+      "tax_rate_for_calcs": 0.04,
+      "nopat": 3153600000.0,
+      "beginning_invested_capital": 196144000000.0,
+      "ending_invested_capital": 195840000000.0,
+      "avg_invested_capital": 195992000000.0,
+      "roic": 0.0161
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2026-03-31",
+      "ebit": 3827000000.0,
+      "tax_rate_for_calcs": 0.26,
+      "nopat": 2831980000.0,
+      "beginning_invested_capital": 195840000000.0,
+      "ending_invested_capital": 182886000000.0,
+      "avg_invested_capital": 189363000000.0,
+      "roic": 0.015
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "CMCSA",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0485,
+      "roa": 0.0155,
+      "equity_multiplier": 3.13
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0394,
+      "roa": 0.0124,
+      "equity_multiplier": 3.18
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0467,
+      "roa": 0.0146,
+      "equity_multiplier": 3.2
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0474,
+      "roa": 0.0149,
+      "equity_multiplier": 3.18
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0429,
+      "roa": 0.0136,
+      "equity_multiplier": 3.15
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.0558,
+      "roa": 0.0178,
+      "equity_multiplier": 3.13
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0392,
+      "roa": 0.0126,
+      "equity_multiplier": 3.11
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.1212,
+      "roa": 0.0411,
+      "equity_multiplier": 2.95
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0344,
+      "roa": 0.0122,
+      "equity_multiplier": 2.82
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.0224,
+      "roa": 0.0079,
+      "equity_multiplier": 2.84
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.0235,
+      "roa": 0.0082,
+      "equity_multiplier": 2.87
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "CMCSA",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0155,
+      "net_margin": 0.1344,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0124,
+      "net_margin": 0.1043,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0146,
+      "net_margin": 0.1283,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0149,
+      "net_margin": 0.1323,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0136,
+      "net_margin": 0.1132,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0178,
+      "net_margin": 0.1497,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0126,
+      "net_margin": 0.1129,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0411,
+      "net_margin": 0.3669,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0122,
+      "net_margin": 0.1068,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0079,
+      "net_margin": 0.0671,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "CMCSA",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0082,
+      "net_margin": 0.0691,
+      "asset_turnover": 0.12
+    }
+  ]
+}

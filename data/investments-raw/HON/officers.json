@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "HON",
+    "name": "Mr. Billal M. Hammoud",
+    "title": "President & CEO of Honeywell Building Automation",
+    "age": 52,
+    "born": 1973,
+    "pay": 1760703,
+    "exercised": 0,
+    "unexercised": 139255,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "HON",
+    "name": "Mr. Harsh  Bansal",
+    "title": "Vice President of Investments",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "HON",
+    "name": "Mr. James E. Currier",
+    "title": "President & CEO of Aerospace Technologies",
+    "age": 58,
+    "born": 1967,
+    "pay": 2068581,
+    "exercised": 0,
+    "unexercised": 572425,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "HON",
+    "name": "Mr. Jim  Masso",
+    "title": "President & CEO of Honeywell Process Automation",
+    "age": 40,
+    "born": 1985,
+    "pay": 618058,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "HON",
+    "name": "Mr. Mark  Macaluso",
+    "title": "Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "HON",
+    "name": "Mr. Michal  Stepniak",
+    "title": "Senior VP & CFO",
+    "age": 47,
+    "born": 1978,
+    "pay": 2577312,
+    "exercised": 0,
+    "unexercised": 153311,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "HON",
+    "name": "Mr. Robert D. Mailloux",
+    "title": "VP, Controller & Principal Accounting Officer",
+    "age": 57,
+    "born": 1968,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "HON",
+    "name": "Mr. Suresh  Venkatarayalu",
+    "title": "Senior VP, Chief Technology Officer & President of Honeywell Connected Enterprise",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "HON",
+    "name": "Mr. Victor J. Miller",
+    "title": "VP, Deputy General Counsel & Chief Compliance Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "HON",
+    "name": "Mr. Vimal M. Kapur",
+    "title": "Chairman & CEO",
+    "age": 60,
+    "born": 1965,
+    "pay": 5317705,
+    "exercised": 0,
+    "unexercised": 6065482,
+    "report_date": "2026-07-06"
+  }
+]

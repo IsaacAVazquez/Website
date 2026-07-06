@@ -1,0 +1,1620 @@
+{
+  "quarterly_revenue": [
+    {
+      "symbol": "TJX",
+      "report_date": "2022-04-30T00:00:00.000",
+      "revenue": 11406474000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2022-07-31T00:00:00.000",
+      "revenue": 11843008000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2023-07-31T00:00:00.000",
+      "revenue": 12758000000.0,
+      "prev_year_revenue": 11843008000.0,
+      "yoy_growth": 0.0773
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2023-10-31T00:00:00.000",
+      "revenue": 13265000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-01-31T00:00:00.000",
+      "revenue": 16411000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-04-30T00:00:00.000",
+      "revenue": 12479000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-07-31T00:00:00.000",
+      "revenue": 13468000000.0,
+      "prev_year_revenue": 12758000000.0,
+      "yoy_growth": 0.0557
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-10-31T00:00:00.000",
+      "revenue": 14063000000.0,
+      "prev_year_revenue": 13265000000.0,
+      "yoy_growth": 0.0602
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-01-31T00:00:00.000",
+      "revenue": 16350000000.0,
+      "prev_year_revenue": 16411000000.0,
+      "yoy_growth": -0.0037
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-04-30T00:00:00.000",
+      "revenue": 13111000000.0,
+      "prev_year_revenue": 12479000000.0,
+      "yoy_growth": 0.0506
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-07-31T00:00:00.000",
+      "revenue": 14401000000.0,
+      "prev_year_revenue": 13468000000.0,
+      "yoy_growth": 0.0693
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-10-31T00:00:00.000",
+      "revenue": 15117000000.0,
+      "prev_year_revenue": 14063000000.0,
+      "yoy_growth": 0.0749
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2026-01-31T00:00:00.000",
+      "revenue": 17743000000.0,
+      "prev_year_revenue": 16350000000.0,
+      "yoy_growth": 0.0852
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2026-04-30T00:00:00.000",
+      "revenue": 14323000000.0,
+      "prev_year_revenue": 13111000000.0,
+      "yoy_growth": 0.0924
+    }
+  ],
+  "annual_revenue": [
+    {
+      "symbol": "TJX",
+      "report_date": "2021-01-31T00:00:00.000",
+      "revenue": 32137000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2022-01-31T00:00:00.000",
+      "revenue": 48550000000.0,
+      "prev_year_revenue": 32137000000.0,
+      "yoy_growth": 0.5107
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2023-01-31T00:00:00.000",
+      "revenue": 49936000000.0,
+      "prev_year_revenue": 48550000000.0,
+      "yoy_growth": 0.0285
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-01-31T00:00:00.000",
+      "revenue": 54217000000.0,
+      "prev_year_revenue": 49936000000.0,
+      "yoy_growth": 0.0857
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-01-31T00:00:00.000",
+      "revenue": 56360000000.0,
+      "prev_year_revenue": 54217000000.0,
+      "yoy_growth": 0.0395
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2026-01-31T00:00:00.000",
+      "revenue": 60372000000.0,
+      "prev_year_revenue": 56360000000.0,
+      "yoy_growth": 0.0712
+    }
+  ],
+  "quarterly_operating_income": [
+    {
+      "symbol": "TJX",
+      "report_date": "2022-04-30T00:00:00.000",
+      "operating_income": 1088679000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2022-07-31T00:00:00.000",
+      "operating_income": 1096597000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2023-07-31T00:00:00.000",
+      "operating_income": 1289000000.0,
+      "prev_year_operating_income": 1096597000.0,
+      "yoy_growth": 0.1755
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2023-10-31T00:00:00.000",
+      "operating_income": 1548000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-01-31T00:00:00.000",
+      "operating_income": 1789000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-04-30T00:00:00.000",
+      "operating_income": 1340000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-07-31T00:00:00.000",
+      "operating_income": 1422000000.0,
+      "prev_year_operating_income": 1289000000.0,
+      "yoy_growth": 0.1032
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-10-31T00:00:00.000",
+      "operating_income": 1693000000.0,
+      "prev_year_operating_income": 1548000000.0,
+      "yoy_growth": 0.0937
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-01-31T00:00:00.000",
+      "operating_income": 1847000000.0,
+      "prev_year_operating_income": 1789000000.0,
+      "yoy_growth": 0.0324
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-04-30T00:00:00.000",
+      "operating_income": 1316000000.0,
+      "prev_year_operating_income": 1340000000.0,
+      "yoy_growth": -0.0179
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-07-31T00:00:00.000",
+      "operating_income": 1620000000.0,
+      "prev_year_operating_income": 1422000000.0,
+      "yoy_growth": 0.1392
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-10-31T00:00:00.000",
+      "operating_income": 1888000000.0,
+      "prev_year_operating_income": 1693000000.0,
+      "yoy_growth": 0.1152
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2026-01-31T00:00:00.000",
+      "operating_income": 2354000000.0,
+      "prev_year_operating_income": 1847000000.0,
+      "yoy_growth": 0.2745
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2026-04-30T00:00:00.000",
+      "operating_income": 1686000000.0,
+      "prev_year_operating_income": 1316000000.0,
+      "yoy_growth": 0.2812
+    }
+  ],
+  "annual_operating_income": [
+    {
+      "symbol": "TJX",
+      "report_date": "2021-01-31T00:00:00.000",
+      "operating_income": 582000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2022-01-31T00:00:00.000",
+      "operating_income": 4755000000.0,
+      "prev_year_operating_income": 582000000.0,
+      "yoy_growth": 7.1701
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2023-01-31T00:00:00.000",
+      "operating_income": 4860000000.0,
+      "prev_year_operating_income": 4755000000.0,
+      "yoy_growth": 0.0221
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-01-31T00:00:00.000",
+      "operating_income": 5797000000.0,
+      "prev_year_operating_income": 4860000000.0,
+      "yoy_growth": 0.1928
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-01-31T00:00:00.000",
+      "operating_income": 6302000000.0,
+      "prev_year_operating_income": 5797000000.0,
+      "yoy_growth": 0.0871
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2026-01-31T00:00:00.000",
+      "operating_income": 7178000000.0,
+      "prev_year_operating_income": 6302000000.0,
+      "yoy_growth": 0.139
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "TJX",
+      "report_date": "2022-07-31T00:00:00.000",
+      "ebitda": 1314697000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2023-07-31T00:00:00.000",
+      "ebitda": 1581000000.0,
+      "prev_year_ebitda": 1314697000.0,
+      "yoy_growth": 0.2026
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2023-10-31T00:00:00.000",
+      "ebitda": 1853000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-01-31T00:00:00.000",
+      "ebitda": 2114000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-04-30T00:00:00.000",
+      "ebitda": 1673000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-07-31T00:00:00.000",
+      "ebitda": 1753000000.0,
+      "prev_year_ebitda": 1581000000.0,
+      "yoy_growth": 0.1088
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-10-31T00:00:00.000",
+      "ebitda": 2022000000.0,
+      "prev_year_ebitda": 1853000000.0,
+      "yoy_growth": 0.0912
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-01-31T00:00:00.000",
+      "ebitda": 2215000000.0,
+      "prev_year_ebitda": 2114000000.0,
+      "yoy_growth": 0.0478
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-04-30T00:00:00.000",
+      "ebitda": 1660000000.0,
+      "prev_year_ebitda": 1673000000.0,
+      "yoy_growth": -0.0078
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-07-31T00:00:00.000",
+      "ebitda": 1973000000.0,
+      "prev_year_ebitda": 1753000000.0,
+      "yoy_growth": 0.1255
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-10-31T00:00:00.000",
+      "ebitda": 2251000000.0,
+      "prev_year_ebitda": 2022000000.0,
+      "yoy_growth": 0.1133
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2026-01-31T00:00:00.000",
+      "ebitda": 2736000000.0,
+      "prev_year_ebitda": 2215000000.0,
+      "yoy_growth": 0.2352
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2026-04-30T00:00:00.000",
+      "ebitda": 2075000000.0,
+      "prev_year_ebitda": 1660000000.0,
+      "yoy_growth": 0.25
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "TJX",
+      "report_date": "2021-01-31T00:00:00.000",
+      "ebitda": 1154000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2022-01-31T00:00:00.000",
+      "ebitda": 5385000000.0,
+      "prev_year_ebitda": 1154000000.0,
+      "yoy_growth": 3.6664
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2023-01-31T00:00:00.000",
+      "ebitda": 5607000000.0,
+      "prev_year_ebitda": 5385000000.0,
+      "yoy_growth": 0.0412
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-01-31T00:00:00.000",
+      "ebitda": 7010000000.0,
+      "prev_year_ebitda": 5607000000.0,
+      "yoy_growth": 0.2502
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-01-31T00:00:00.000",
+      "ebitda": 7663000000.0,
+      "prev_year_ebitda": 7010000000.0,
+      "yoy_growth": 0.0932
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2026-01-31T00:00:00.000",
+      "ebitda": 8620000000.0,
+      "prev_year_ebitda": 7663000000.0,
+      "yoy_growth": 0.1249
+    }
+  ],
+  "quarterly_net_income": [
+    {
+      "symbol": "TJX",
+      "report_date": "2022-04-30T00:00:00.000",
+      "net_income_common_stockholders": 587473000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2022-07-31T00:00:00.000",
+      "net_income_common_stockholders": 809340000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2023-07-31T00:00:00.000",
+      "net_income_common_stockholders": 989000000.0,
+      "prev_year_net_income_common_stockholders": 809340000.0,
+      "yoy_growth": 0.222
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2023-10-31T00:00:00.000",
+      "net_income_common_stockholders": 1191000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-01-31T00:00:00.000",
+      "net_income_common_stockholders": 1403000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-04-30T00:00:00.000",
+      "net_income_common_stockholders": 1070000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-07-31T00:00:00.000",
+      "net_income_common_stockholders": 1099000000.0,
+      "prev_year_net_income_common_stockholders": 989000000.0,
+      "yoy_growth": 0.1112
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-10-31T00:00:00.000",
+      "net_income_common_stockholders": 1297000000.0,
+      "prev_year_net_income_common_stockholders": 1191000000.0,
+      "yoy_growth": 0.089
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-01-31T00:00:00.000",
+      "net_income_common_stockholders": 1398000000.0,
+      "prev_year_net_income_common_stockholders": 1403000000.0,
+      "yoy_growth": -0.0036
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-04-30T00:00:00.000",
+      "net_income_common_stockholders": 1036000000.0,
+      "prev_year_net_income_common_stockholders": 1070000000.0,
+      "yoy_growth": -0.0318
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-07-31T00:00:00.000",
+      "net_income_common_stockholders": 1243000000.0,
+      "prev_year_net_income_common_stockholders": 1099000000.0,
+      "yoy_growth": 0.131
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-10-31T00:00:00.000",
+      "net_income_common_stockholders": 1442000000.0,
+      "prev_year_net_income_common_stockholders": 1297000000.0,
+      "yoy_growth": 0.1118
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2026-01-31T00:00:00.000",
+      "net_income_common_stockholders": 1773000000.0,
+      "prev_year_net_income_common_stockholders": 1398000000.0,
+      "yoy_growth": 0.2682
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2026-04-30T00:00:00.000",
+      "net_income_common_stockholders": 1332000000.0,
+      "prev_year_net_income_common_stockholders": 1036000000.0,
+      "yoy_growth": 0.2857
+    }
+  ],
+  "annual_net_income": [
+    {
+      "symbol": "TJX",
+      "report_date": "2021-01-31T00:00:00.000",
+      "net_income_common_stockholders": 90000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2022-01-31T00:00:00.000",
+      "net_income_common_stockholders": 3283000000.0,
+      "prev_year_net_income_common_stockholders": 90000000.0,
+      "yoy_growth": 35.4778
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2023-01-31T00:00:00.000",
+      "net_income_common_stockholders": 3498000000.0,
+      "prev_year_net_income_common_stockholders": 3283000000.0,
+      "yoy_growth": 0.0655
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-01-31T00:00:00.000",
+      "net_income_common_stockholders": 4474000000.0,
+      "prev_year_net_income_common_stockholders": 3498000000.0,
+      "yoy_growth": 0.279
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-01-31T00:00:00.000",
+      "net_income_common_stockholders": 4864000000.0,
+      "prev_year_net_income_common_stockholders": 4474000000.0,
+      "yoy_growth": 0.0872
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2026-01-31T00:00:00.000",
+      "net_income_common_stockholders": 5494000000.0,
+      "prev_year_net_income_common_stockholders": 4864000000.0,
+      "yoy_growth": 0.1295
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "TJX",
+      "report_date": "2022-04-30T00:00:00.000",
+      "free_cash_flow": -948900000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2022-07-31T00:00:00.000",
+      "free_cash_flow": 261600000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2023-07-31T00:00:00.000",
+      "free_cash_flow": 882000000.0,
+      "prev_year_free_cash_flow": 261600000.0,
+      "yoy_growth": 2.3716
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2023-10-31T00:00:00.000",
+      "free_cash_flow": 711000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-01-31T00:00:00.000",
+      "free_cash_flow": 2358000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-04-30T00:00:00.000",
+      "free_cash_flow": 318000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-07-31T00:00:00.000",
+      "free_cash_flow": 1066000000.0,
+      "prev_year_free_cash_flow": 882000000.0,
+      "yoy_growth": 0.2086
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-10-31T00:00:00.000",
+      "free_cash_flow": 624000000.0,
+      "prev_year_free_cash_flow": 711000000.0,
+      "yoy_growth": -0.1224
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-01-31T00:00:00.000",
+      "free_cash_flow": 2190000000.0,
+      "prev_year_free_cash_flow": 2358000000.0,
+      "yoy_growth": -0.0712
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-04-30T00:00:00.000",
+      "free_cash_flow": -103000000.0,
+      "prev_year_free_cash_flow": 318000000.0,
+      "yoy_growth": -1.3239
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-07-31T00:00:00.000",
+      "free_cash_flow": 1330000000.0,
+      "prev_year_free_cash_flow": 1066000000.0,
+      "yoy_growth": 0.2477
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-10-31T00:00:00.000",
+      "free_cash_flow": 1001000000.0,
+      "prev_year_free_cash_flow": 624000000.0,
+      "yoy_growth": 0.6042
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2026-01-31T00:00:00.000",
+      "free_cash_flow": 2689000000.0,
+      "prev_year_free_cash_flow": 2190000000.0,
+      "yoy_growth": 0.2279
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2026-04-30T00:00:00.000",
+      "free_cash_flow": 457000000.0,
+      "prev_year_free_cash_flow": -103000000.0,
+      "yoy_growth": 5.4369
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "TJX",
+      "report_date": "2021-01-31T00:00:00.000",
+      "free_cash_flow": 3994000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2022-01-31T00:00:00.000",
+      "free_cash_flow": 2012000000.0,
+      "prev_year_free_cash_flow": 3994000000.0,
+      "yoy_growth": -0.4962
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2023-01-31T00:00:00.000",
+      "free_cash_flow": 2627000000.0,
+      "prev_year_free_cash_flow": 2012000000.0,
+      "yoy_growth": 0.3057
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-01-31T00:00:00.000",
+      "free_cash_flow": 4335000000.0,
+      "prev_year_free_cash_flow": 2627000000.0,
+      "yoy_growth": 0.6502
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-01-31T00:00:00.000",
+      "free_cash_flow": 4198000000.0,
+      "prev_year_free_cash_flow": 4335000000.0,
+      "yoy_growth": -0.0316
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2026-01-31T00:00:00.000",
+      "free_cash_flow": 4917000000.0,
+      "prev_year_free_cash_flow": 4198000000.0,
+      "yoy_growth": 0.1713
+    }
+  ],
+  "quarterly_eps": [
+    {
+      "symbol": "TJX",
+      "report_date": "1994-04-30T00:00:00.000",
+      "eps": 0.0075,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "1994-07-31T00:00:00.000",
+      "eps": 0.0072,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "1994-10-31T00:00:00.000",
+      "eps": 0.0131,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "1995-01-31T00:00:00.000",
+      "eps": 0.0044,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "1995-04-30T00:00:00.000",
+      "eps": 0.0028,
+      "prev_year_eps": 0.0075,
+      "yoy_growth": -0.6267
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "1995-07-31T00:00:00.000",
+      "eps": 0.0022,
+      "prev_year_eps": 0.0072,
+      "yoy_growth": -0.6944
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "1995-10-31T00:00:00.000",
+      "eps": 0.0131,
+      "prev_year_eps": 0.0131,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "1996-01-31T00:00:00.000",
+      "eps": 0.0038,
+      "prev_year_eps": 0.0044,
+      "yoy_growth": -0.1364
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "1996-04-30T00:00:00.000",
+      "eps": 0.0103,
+      "prev_year_eps": 0.0028,
+      "yoy_growth": 2.6786
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "1996-07-31T00:00:00.000",
+      "eps": 0.0125,
+      "prev_year_eps": 0.0022,
+      "yoy_growth": 4.6818
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "1996-10-31T00:00:00.000",
+      "eps": 0.0312,
+      "prev_year_eps": 0.0131,
+      "yoy_growth": 1.3817
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "1997-01-31T00:00:00.000",
+      "eps": 0.0331,
+      "prev_year_eps": 0.0038,
+      "yoy_growth": 7.7105
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "1997-04-30T00:00:00.000",
+      "eps": 0.0169,
+      "prev_year_eps": 0.0103,
+      "yoy_growth": 0.6408
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "1997-07-31T00:00:00.000",
+      "eps": 0.0181,
+      "prev_year_eps": 0.0125,
+      "yoy_growth": 0.448
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "1997-10-31T00:00:00.000",
+      "eps": 0.0381,
+      "prev_year_eps": 0.0312,
+      "yoy_growth": 0.2212
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "1998-01-31T00:00:00.000",
+      "eps": 0.0362,
+      "prev_year_eps": 0.0331,
+      "yoy_growth": 0.0937
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "1998-04-30T00:00:00.000",
+      "eps": 0.0325,
+      "prev_year_eps": 0.0169,
+      "yoy_growth": 0.9231
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "1998-07-31T00:00:00.000",
+      "eps": 0.0312,
+      "prev_year_eps": 0.0181,
+      "yoy_growth": 0.7238
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "1998-10-31T00:00:00.000",
+      "eps": 0.05,
+      "prev_year_eps": 0.0381,
+      "yoy_growth": 0.3123
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "1999-01-31T00:00:00.000",
+      "eps": 0.0488,
+      "prev_year_eps": 0.0362,
+      "yoy_growth": 0.3481
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "1999-04-30T00:00:00.000",
+      "eps": 0.0488,
+      "prev_year_eps": 0.0325,
+      "yoy_growth": 0.5015
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "1999-07-31T00:00:00.000",
+      "eps": 0.045,
+      "prev_year_eps": 0.0312,
+      "yoy_growth": 0.4423
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "1999-10-31T00:00:00.000",
+      "eps": 0.0625,
+      "prev_year_eps": 0.05,
+      "yoy_growth": 0.25
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2000-01-31T00:00:00.000",
+      "eps": 0.0538,
+      "prev_year_eps": 0.0488,
+      "yoy_growth": 0.1025
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2000-04-30T00:00:00.000",
+      "eps": 0.055,
+      "prev_year_eps": 0.0488,
+      "yoy_growth": 0.127
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2000-07-31T00:00:00.000",
+      "eps": 0.0488,
+      "prev_year_eps": 0.045,
+      "yoy_growth": 0.0844
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2000-10-31T00:00:00.000",
+      "eps": 0.07,
+      "prev_year_eps": 0.0625,
+      "yoy_growth": 0.12
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2001-01-31T00:00:00.000",
+      "eps": 0.06,
+      "prev_year_eps": 0.0538,
+      "yoy_growth": 0.1152
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2001-04-30T00:00:00.000",
+      "eps": 0.055,
+      "prev_year_eps": 0.055,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2001-07-31T00:00:00.000",
+      "eps": 0.05,
+      "prev_year_eps": 0.0488,
+      "yoy_growth": 0.0246
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2001-10-31T00:00:00.000",
+      "eps": 0.05,
+      "prev_year_eps": 0.07,
+      "yoy_growth": -0.2857
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2002-01-31T00:00:00.000",
+      "eps": 0.07,
+      "prev_year_eps": 0.06,
+      "yoy_growth": 0.1667
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2002-04-30T00:00:00.000",
+      "eps": 0.0675,
+      "prev_year_eps": 0.055,
+      "yoy_growth": 0.2273
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2002-07-31T00:00:00.000",
+      "eps": 0.06,
+      "prev_year_eps": 0.05,
+      "yoy_growth": 0.2
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2002-10-31T00:00:00.000",
+      "eps": 0.07,
+      "prev_year_eps": 0.05,
+      "yoy_growth": 0.4
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2003-01-31T00:00:00.000",
+      "eps": 0.0725,
+      "prev_year_eps": 0.07,
+      "yoy_growth": 0.0357
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2003-04-30T00:00:00.000",
+      "eps": 0.055,
+      "prev_year_eps": 0.0675,
+      "yoy_growth": -0.1852
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2003-07-31T00:00:00.000",
+      "eps": 0.06,
+      "prev_year_eps": 0.06,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2003-10-31T00:00:00.000",
+      "eps": 0.09,
+      "prev_year_eps": 0.07,
+      "yoy_growth": 0.2857
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2004-01-31T00:00:00.000",
+      "eps": 0.1175,
+      "prev_year_eps": 0.0725,
+      "yoy_growth": 0.6207
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2004-04-30T00:00:00.000",
+      "eps": 0.0825,
+      "prev_year_eps": 0.055,
+      "yoy_growth": 0.5
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2004-07-31T00:00:00.000",
+      "eps": 0.06,
+      "prev_year_eps": 0.06,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2004-10-31T00:00:00.000",
+      "eps": 0.1025,
+      "prev_year_eps": 0.09,
+      "yoy_growth": 0.1389
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2005-01-31T00:00:00.000",
+      "eps": 0.0875,
+      "prev_year_eps": 0.1175,
+      "yoy_growth": -0.2553
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2005-04-30T00:00:00.000",
+      "eps": 0.07,
+      "prev_year_eps": 0.0825,
+      "yoy_growth": -0.1515
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2005-07-31T00:00:00.000",
+      "eps": 0.0575,
+      "prev_year_eps": 0.06,
+      "yoy_growth": -0.0417
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2005-10-31T00:00:00.000",
+      "eps": 0.08,
+      "prev_year_eps": 0.1025,
+      "yoy_growth": -0.2195
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2006-01-31T00:00:00.000",
+      "eps": 0.15,
+      "prev_year_eps": 0.0875,
+      "yoy_growth": 0.7143
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2006-04-30T00:00:00.000",
+      "eps": 0.085,
+      "prev_year_eps": 0.07,
+      "yoy_growth": 0.2143
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2006-07-31T00:00:00.000",
+      "eps": 0.0725,
+      "prev_year_eps": 0.0575,
+      "yoy_growth": 0.2609
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2006-10-31T00:00:00.000",
+      "eps": 0.12,
+      "prev_year_eps": 0.08,
+      "yoy_growth": 0.5
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2007-01-31T00:00:00.000",
+      "eps": 0.1272,
+      "prev_year_eps": 0.15,
+      "yoy_growth": -0.152
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2007-04-30T00:00:00.000",
+      "eps": 0.085,
+      "prev_year_eps": 0.085,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2007-07-31T00:00:00.000",
+      "eps": 0.0325,
+      "prev_year_eps": 0.0725,
+      "yoy_growth": -0.5517
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2007-10-31T00:00:00.000",
+      "eps": 0.135,
+      "prev_year_eps": 0.12,
+      "yoy_growth": 0.125
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2008-01-31T00:00:00.000",
+      "eps": 0.165,
+      "prev_year_eps": 0.1272,
+      "yoy_growth": 0.2972
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2008-04-30T00:00:00.000",
+      "eps": 0.1106,
+      "prev_year_eps": 0.085,
+      "yoy_growth": 0.3012
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2008-07-31T00:00:00.000",
+      "eps": 0.1197,
+      "prev_year_eps": 0.0325,
+      "yoy_growth": 2.6831
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2008-10-31T00:00:00.000",
+      "eps": 0.145,
+      "prev_year_eps": 0.135,
+      "yoy_growth": 0.0741
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2009-01-31T00:00:00.000",
+      "eps": 0.1456,
+      "prev_year_eps": 0.165,
+      "yoy_growth": -0.1176
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2009-04-30T00:00:00.000",
+      "eps": 0.1225,
+      "prev_year_eps": 0.1106,
+      "yoy_growth": 0.1076
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2009-07-31T00:00:00.000",
+      "eps": 0.1525,
+      "prev_year_eps": 0.1197,
+      "yoy_growth": 0.274
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2009-10-31T00:00:00.000",
+      "eps": 0.2025,
+      "prev_year_eps": 0.145,
+      "yoy_growth": 0.3966
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2010-01-31T00:00:00.000",
+      "eps": 0.235,
+      "prev_year_eps": 0.1456,
+      "yoy_growth": 0.614
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2010-04-30T00:00:00.000",
+      "eps": 0.2,
+      "prev_year_eps": 0.1225,
+      "yoy_growth": 0.6327
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2010-07-31T00:00:00.000",
+      "eps": 0.185,
+      "prev_year_eps": 0.1525,
+      "yoy_growth": 0.2131
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2010-10-31T00:00:00.000",
+      "eps": 0.23,
+      "prev_year_eps": 0.2025,
+      "yoy_growth": 0.1358
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2011-01-31T00:00:00.000",
+      "eps": 0.21,
+      "prev_year_eps": 0.235,
+      "yoy_growth": -0.1064
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2011-04-30T00:00:00.000",
+      "eps": 0.1675,
+      "prev_year_eps": 0.2,
+      "yoy_growth": -0.1625
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2011-07-31T00:00:00.000",
+      "eps": 0.225,
+      "prev_year_eps": 0.185,
+      "yoy_growth": 0.2162
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2011-10-31T00:00:00.000",
+      "eps": 0.265,
+      "prev_year_eps": 0.23,
+      "yoy_growth": 0.1522
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2012-01-31T00:00:00.000",
+      "eps": 0.3116,
+      "prev_year_eps": 0.21,
+      "yoy_growth": 0.4838
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2012-04-30T00:00:00.000",
+      "eps": 0.275,
+      "prev_year_eps": 0.1675,
+      "yoy_growth": 0.6418
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2012-07-31T00:00:00.000",
+      "eps": 0.28,
+      "prev_year_eps": 0.225,
+      "yoy_growth": 0.2444
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2012-10-31T00:00:00.000",
+      "eps": 0.31,
+      "prev_year_eps": 0.265,
+      "yoy_growth": 0.1698
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2013-01-31T00:00:00.000",
+      "eps": 0.41,
+      "prev_year_eps": 0.3116,
+      "yoy_growth": 0.3158
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2013-04-30T00:00:00.000",
+      "eps": 0.31,
+      "prev_year_eps": 0.275,
+      "yoy_growth": 0.1273
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2013-07-31T00:00:00.000",
+      "eps": 0.33,
+      "prev_year_eps": 0.28,
+      "yoy_growth": 0.1786
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2013-10-31T00:00:00.000",
+      "eps": 0.43,
+      "prev_year_eps": 0.31,
+      "yoy_growth": 0.3871
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2014-01-31T00:00:00.000",
+      "eps": 0.405,
+      "prev_year_eps": 0.41,
+      "yoy_growth": -0.0122
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2014-04-30T00:00:00.000",
+      "eps": 0.32,
+      "prev_year_eps": 0.31,
+      "yoy_growth": 0.0323
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2014-07-31T00:00:00.000",
+      "eps": 0.365,
+      "prev_year_eps": 0.33,
+      "yoy_growth": 0.1061
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2014-10-31T00:00:00.000",
+      "eps": 0.425,
+      "prev_year_eps": 0.43,
+      "yoy_growth": -0.0116
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2015-01-31T00:00:00.000",
+      "eps": 0.4733,
+      "prev_year_eps": 0.405,
+      "yoy_growth": 0.1686
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2015-04-30T00:00:00.000",
+      "eps": 0.345,
+      "prev_year_eps": 0.32,
+      "yoy_growth": 0.0781
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2015-07-31T00:00:00.000",
+      "eps": 0.4,
+      "prev_year_eps": 0.365,
+      "yoy_growth": 0.0959
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2015-10-31T00:00:00.000",
+      "eps": 0.43,
+      "prev_year_eps": 0.425,
+      "yoy_growth": 0.0118
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2016-01-31T00:00:00.000",
+      "eps": 0.495,
+      "prev_year_eps": 0.4733,
+      "yoy_growth": 0.0458
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2016-04-30T00:00:00.000",
+      "eps": 0.38,
+      "prev_year_eps": 0.345,
+      "yoy_growth": 0.1014
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2016-07-31T00:00:00.000",
+      "eps": 0.42,
+      "prev_year_eps": 0.4,
+      "yoy_growth": 0.05
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2016-10-31T00:00:00.000",
+      "eps": 0.415,
+      "prev_year_eps": 0.43,
+      "yoy_growth": -0.0349
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2017-01-31T00:00:00.000",
+      "eps": 0.515,
+      "prev_year_eps": 0.495,
+      "yoy_growth": 0.0404
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2017-04-30T00:00:00.000",
+      "eps": 0.41,
+      "prev_year_eps": 0.38,
+      "yoy_growth": 0.0789
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2017-07-31T00:00:00.000",
+      "eps": 0.425,
+      "prev_year_eps": 0.42,
+      "yoy_growth": 0.0119
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2017-10-31T00:00:00.000",
+      "eps": 0.5,
+      "prev_year_eps": 0.415,
+      "yoy_growth": 0.2048
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2018-01-31T00:00:00.000",
+      "eps": 0.685,
+      "prev_year_eps": 0.515,
+      "yoy_growth": 0.3301
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2018-04-30T00:00:00.000",
+      "eps": 0.565,
+      "prev_year_eps": 0.41,
+      "yoy_growth": 0.378
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2018-07-31T00:00:00.000",
+      "eps": 0.585,
+      "prev_year_eps": 0.425,
+      "yoy_growth": 0.3765
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2018-10-31T00:00:00.000",
+      "eps": 0.61,
+      "prev_year_eps": 0.5,
+      "yoy_growth": 0.22
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2019-01-31T00:00:00.000",
+      "eps": 0.68,
+      "prev_year_eps": 0.685,
+      "yoy_growth": -0.0073
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2019-04-30T00:00:00.000",
+      "eps": 0.5677,
+      "prev_year_eps": 0.565,
+      "yoy_growth": 0.0048
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2019-07-31T00:00:00.000",
+      "eps": 0.6176,
+      "prev_year_eps": 0.585,
+      "yoy_growth": 0.0557
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2019-10-31T00:00:00.000",
+      "eps": 0.6765,
+      "prev_year_eps": 0.61,
+      "yoy_growth": 0.109
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2020-01-31T00:00:00.000",
+      "eps": 0.8076,
+      "prev_year_eps": 0.68,
+      "yoy_growth": 0.1876
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2020-04-30T00:00:00.000",
+      "eps": -0.7409,
+      "prev_year_eps": 0.5677,
+      "yoy_growth": -2.3051
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2020-07-31T00:00:00.000",
+      "eps": -0.1787,
+      "prev_year_eps": 0.6176,
+      "yoy_growth": -1.2893
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2020-10-31T00:00:00.000",
+      "eps": 0.7138,
+      "prev_year_eps": 0.6765,
+      "yoy_growth": 0.0551
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2021-01-31T00:00:00.000",
+      "eps": 0.2669,
+      "prev_year_eps": 0.8076,
+      "yoy_growth": -0.6695
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2021-04-30T00:00:00.000",
+      "eps": 0.4371,
+      "prev_year_eps": -0.7409,
+      "yoy_growth": 1.59
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2021-07-31T00:00:00.000",
+      "eps": 0.6437,
+      "prev_year_eps": -0.1787,
+      "yoy_growth": 4.6021
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2021-10-31T00:00:00.000",
+      "eps": 0.8415,
+      "prev_year_eps": 0.7138,
+      "yoy_growth": 0.1789
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2022-01-31T00:00:00.000",
+      "eps": 0.7805,
+      "prev_year_eps": 0.2669,
+      "yoy_growth": 1.9243
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2022-04-30T00:00:00.000",
+      "eps": 0.494,
+      "prev_year_eps": 0.4371,
+      "yoy_growth": 0.1302
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2022-07-31T00:00:00.000",
+      "eps": 0.687,
+      "prev_year_eps": 0.6437,
+      "yoy_growth": 0.0673
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2022-10-31T00:00:00.000",
+      "eps": 0.9066,
+      "prev_year_eps": 0.8415,
+      "yoy_growth": 0.0774
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2023-01-31T00:00:00.000",
+      "eps": 0.8864,
+      "prev_year_eps": 0.7805,
+      "yoy_growth": 0.1357
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2023-04-30T00:00:00.000",
+      "eps": 0.7648,
+      "prev_year_eps": 0.494,
+      "yoy_growth": 0.5482
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2023-07-31T00:00:00.000",
+      "eps": 0.8518,
+      "prev_year_eps": 0.687,
+      "yoy_growth": 0.2399
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2023-10-31T00:00:00.000",
+      "eps": 1.0285,
+      "prev_year_eps": 0.9066,
+      "yoy_growth": 0.1345
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-01-31T00:00:00.000",
+      "eps": 1.2179,
+      "prev_year_eps": 0.8864,
+      "yoy_growth": 0.374
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-04-30T00:00:00.000",
+      "eps": 0.9337,
+      "prev_year_eps": 0.7648,
+      "yoy_growth": 0.2208
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-07-31T00:00:00.000",
+      "eps": 0.9607,
+      "prev_year_eps": 0.8518,
+      "yoy_growth": 0.1278
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-10-31T00:00:00.000",
+      "eps": 1.1367,
+      "prev_year_eps": 1.0285,
+      "yoy_growth": 0.1052
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-01-31T00:00:00.000",
+      "eps": 1.2285,
+      "prev_year_eps": 1.2179,
+      "yoy_growth": 0.0087
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-04-30T00:00:00.000",
+      "eps": 0.9152,
+      "prev_year_eps": 0.9337,
+      "yoy_growth": -0.0198
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-07-31T00:00:00.000",
+      "eps": 1.102,
+      "prev_year_eps": 0.9607,
+      "yoy_growth": 0.1471
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-10-31T00:00:00.000",
+      "eps": 1.2806,
+      "prev_year_eps": 1.1367,
+      "yoy_growth": 0.1266
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2026-01-31T00:00:00.000",
+      "eps": 1.576,
+      "prev_year_eps": 1.2285,
+      "yoy_growth": 0.2829
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2026-04-30T00:00:00.000",
+      "eps": 1.1893,
+      "prev_year_eps": 0.9152,
+      "yoy_growth": 0.2995
+    }
+  ]
+}

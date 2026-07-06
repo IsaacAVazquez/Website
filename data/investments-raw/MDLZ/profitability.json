@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 984000000.0,
+      "beginning_stockholders_equity": 28647000000.0,
+      "ending_stockholders_equity": 28535000000.0,
+      "avg_equity": 28591000000.0,
+      "roe": 0.0344
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 950000000.0,
+      "beginning_stockholders_equity": 28535000000.0,
+      "ending_stockholders_equity": 28332000000.0,
+      "avg_equity": 28433500000.0,
+      "roe": 0.0334
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1412000000.0,
+      "beginning_stockholders_equity": 28332000000.0,
+      "ending_stockholders_equity": 28482000000.0,
+      "avg_equity": 28407000000.0,
+      "roe": 0.0497
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 601000000.0,
+      "beginning_stockholders_equity": 28482000000.0,
+      "ending_stockholders_equity": 27689000000.0,
+      "avg_equity": 28085500000.0,
+      "roe": 0.0214
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 853000000.0,
+      "beginning_stockholders_equity": 27689000000.0,
+      "ending_stockholders_equity": 27854000000.0,
+      "avg_equity": 27771500000.0,
+      "roe": 0.0307
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1745000000.0,
+      "beginning_stockholders_equity": 27854000000.0,
+      "ending_stockholders_equity": 26932000000.0,
+      "avg_equity": 27393000000.0,
+      "roe": 0.0637
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 402000000.0,
+      "beginning_stockholders_equity": 26932000000.0,
+      "ending_stockholders_equity": 25785000000.0,
+      "avg_equity": 26358500000.0,
+      "roe": 0.0153
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 641000000.0,
+      "beginning_stockholders_equity": 25785000000.0,
+      "ending_stockholders_equity": 26193000000.0,
+      "avg_equity": 25989000000.0,
+      "roe": 0.0247
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 743000000.0,
+      "beginning_stockholders_equity": 26193000000.0,
+      "ending_stockholders_equity": 26177000000.0,
+      "avg_equity": 26185000000.0,
+      "roe": 0.0284
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 665000000.0,
+      "beginning_stockholders_equity": 26177000000.0,
+      "ending_stockholders_equity": 25838000000.0,
+      "avg_equity": 26007500000.0,
+      "roe": 0.0256
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 560000000.0,
+      "beginning_stockholders_equity": 25838000000.0,
+      "ending_stockholders_equity": 25750000000.0,
+      "avg_equity": 25794000000.0,
+      "roe": 0.0217
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 984000000.0,
+      "beginning_total_assets": 72025000000.0,
+      "ending_total_assets": 70860000000.0,
+      "avg_assets": 71442500000.0,
+      "roa": 0.0138
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 950000000.0,
+      "beginning_total_assets": 70860000000.0,
+      "ending_total_assets": 71391000000.0,
+      "avg_assets": 71125500000.0,
+      "roa": 0.0134
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1412000000.0,
+      "beginning_total_assets": 71391000000.0,
+      "ending_total_assets": 77624000000.0,
+      "avg_assets": 74507500000.0,
+      "roa": 0.019
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 601000000.0,
+      "beginning_total_assets": 77624000000.0,
+      "ending_total_assets": 73096000000.0,
+      "avg_assets": 75360000000.0,
+      "roa": 0.008
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 853000000.0,
+      "beginning_total_assets": 73096000000.0,
+      "ending_total_assets": 72191000000.0,
+      "avg_assets": 72643500000.0,
+      "roa": 0.0117
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1745000000.0,
+      "beginning_total_assets": 72191000000.0,
+      "ending_total_assets": 68497000000.0,
+      "avg_assets": 70344000000.0,
+      "roa": 0.0248
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 402000000.0,
+      "beginning_total_assets": 68497000000.0,
+      "ending_total_assets": 68927000000.0,
+      "avg_assets": 68712000000.0,
+      "roa": 0.0059
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 641000000.0,
+      "beginning_total_assets": 68927000000.0,
+      "ending_total_assets": 71020000000.0,
+      "avg_assets": 69973500000.0,
+      "roa": 0.0092
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 743000000.0,
+      "beginning_total_assets": 71020000000.0,
+      "ending_total_assets": 71358000000.0,
+      "avg_assets": 71189000000.0,
+      "roa": 0.0104
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 665000000.0,
+      "beginning_total_assets": 71358000000.0,
+      "ending_total_assets": 71487000000.0,
+      "avg_assets": 71422500000.0,
+      "roa": 0.0093
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 560000000.0,
+      "beginning_total_assets": 71487000000.0,
+      "ending_total_assets": 71122000000.0,
+      "avg_assets": 71304500000.0,
+      "roa": 0.0079
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-09-30",
+      "ebit": 1465000000.0,
+      "tax_rate_for_calcs": 0.27,
+      "nopat": 1069450000.0,
+      "beginning_invested_capital": 49873000000.0,
+      "ending_invested_capital": 48521000000.0,
+      "avg_invested_capital": 49197000000.0,
+      "roic": 0.0217
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-12-31",
+      "ebit": 1281000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 999180000.0,
+      "beginning_invested_capital": 48521000000.0,
+      "ending_invested_capital": 47740000000.0,
+      "avg_invested_capital": 48130500000.0,
+      "roic": 0.0208
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-03-31",
+      "ebit": 2804000000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 2131040000.0,
+      "beginning_invested_capital": 47740000000.0,
+      "ending_invested_capital": 47546000000.0,
+      "avg_invested_capital": 47643000000.0,
+      "roic": 0.0447
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-06-30",
+      "ebit": 980000000.0,
+      "tax_rate_for_calcs": 0.35,
+      "nopat": 637000000.0,
+      "beginning_invested_capital": 47546000000.0,
+      "ending_invested_capital": 47442000000.0,
+      "avg_invested_capital": 47494000000.0,
+      "roic": 0.0134
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-09-30",
+      "ebit": 1261000000.0,
+      "tax_rate_for_calcs": 0.29,
+      "nopat": 895310000.0,
+      "beginning_invested_capital": 47442000000.0,
+      "ending_invested_capital": 47658000000.0,
+      "avg_invested_capital": 47550000000.0,
+      "roic": 0.0188
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-12-31",
+      "ebit": 1724000000.0,
+      "tax_rate_for_calcs": 0.14,
+      "nopat": 1482640000.0,
+      "beginning_invested_capital": 47658000000.0,
+      "ending_invested_capital": 44681000000.0,
+      "avg_invested_capital": 46169500000.0,
+      "roic": 0.0321
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-03-31",
+      "ebit": 682000000.0,
+      "tax_rate_for_calcs": 0.28,
+      "nopat": 491040000.0,
+      "beginning_invested_capital": 44681000000.0,
+      "ending_invested_capital": 45323000000.0,
+      "avg_invested_capital": 45002000000.0,
+      "roic": 0.0109
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-06-30",
+      "ebit": 1006000000.0,
+      "tax_rate_for_calcs": 0.27,
+      "nopat": 734380000.0,
+      "beginning_invested_capital": 45323000000.0,
+      "ending_invested_capital": 47080000000.0,
+      "avg_invested_capital": 46201500000.0,
+      "roic": 0.0159
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-09-30",
+      "ebit": 852000000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 681600000.0,
+      "beginning_invested_capital": 47080000000.0,
+      "ending_invested_capital": 47499000000.0,
+      "avg_invested_capital": 47289500000.0,
+      "roic": 0.0144
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-12-31",
+      "ebit": 1073000000.0,
+      "tax_rate_for_calcs": 0.28,
+      "nopat": 772560000.0,
+      "beginning_invested_capital": 47499000000.0,
+      "ending_invested_capital": 47043000000.0,
+      "avg_invested_capital": 47271000000.0,
+      "roic": 0.0163
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2026-03-31",
+      "ebit": 923000000.0,
+      "tax_rate_for_calcs": 0.29,
+      "nopat": 655330000.0,
+      "beginning_invested_capital": 47043000000.0,
+      "ending_invested_capital": 46774000000.0,
+      "avg_invested_capital": 46908500000.0,
+      "roic": 0.014
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0344,
+      "roa": 0.0138,
+      "equity_multiplier": 2.49
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0334,
+      "roa": 0.0134,
+      "equity_multiplier": 2.49
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0497,
+      "roa": 0.019,
+      "equity_multiplier": 2.62
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0214,
+      "roa": 0.008,
+      "equity_multiplier": 2.68
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0307,
+      "roa": 0.0117,
+      "equity_multiplier": 2.62
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.0637,
+      "roa": 0.0248,
+      "equity_multiplier": 2.57
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0153,
+      "roa": 0.0059,
+      "equity_multiplier": 2.59
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.0247,
+      "roa": 0.0092,
+      "equity_multiplier": 2.68
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0284,
+      "roa": 0.0104,
+      "equity_multiplier": 2.73
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.0256,
+      "roa": 0.0093,
+      "equity_multiplier": 2.75
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.0217,
+      "roa": 0.0079,
+      "equity_multiplier": 2.75
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0138,
+      "net_margin": 0.109,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0134,
+      "net_margin": 0.102,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.019,
+      "net_margin": 0.152,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.008,
+      "net_margin": 0.072,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0117,
+      "net_margin": 0.0927,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0248,
+      "net_margin": 0.1817,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0059,
+      "net_margin": 0.0432,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0092,
+      "net_margin": 0.0713,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0104,
+      "net_margin": 0.0763,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0093,
+      "net_margin": 0.0634,
+      "asset_turnover": 0.15
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0079,
+      "net_margin": 0.0556,
+      "asset_turnover": 0.14
+    }
+  ]
+}

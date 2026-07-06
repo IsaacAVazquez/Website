@@ -1,0 +1,1599 @@
+{
+  "quarterly_revenue": [
+    {
+      "symbol": "ORLY",
+      "report_date": "2022-06-30T00:00:00.000",
+      "revenue": 3670737000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2022-09-30T00:00:00.000",
+      "revenue": 3798619000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2022-12-31T00:00:00.000",
+      "revenue": 3644493000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-03-31T00:00:00.000",
+      "revenue": 3707864000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-06-30T00:00:00.000",
+      "revenue": 4068991000.0,
+      "prev_year_revenue": 3670737000.0,
+      "yoy_growth": 0.1085
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-09-30T00:00:00.000",
+      "revenue": 4203380000.0,
+      "prev_year_revenue": 3798619000.0,
+      "yoy_growth": 0.1066
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 3832015000.0,
+      "prev_year_revenue": 3644493000.0,
+      "yoy_growth": 0.0515
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-03-31T00:00:00.000",
+      "revenue": 3976240000.0,
+      "prev_year_revenue": 3707864000.0,
+      "yoy_growth": 0.0724
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-06-30T00:00:00.000",
+      "revenue": 4272201000.0,
+      "prev_year_revenue": 4068991000.0,
+      "yoy_growth": 0.0499
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-09-30T00:00:00.000",
+      "revenue": 4364437000.0,
+      "prev_year_revenue": 4203380000.0,
+      "yoy_growth": 0.0383
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 4095601000.0,
+      "prev_year_revenue": 3832015000.0,
+      "yoy_growth": 0.0688
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-03-31T00:00:00.000",
+      "revenue": 4136924000.0,
+      "prev_year_revenue": 3976240000.0,
+      "yoy_growth": 0.0404
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-06-30T00:00:00.000",
+      "revenue": 4525058000.0,
+      "prev_year_revenue": 4272201000.0,
+      "yoy_growth": 0.0592
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-09-30T00:00:00.000",
+      "revenue": 4705696000.0,
+      "prev_year_revenue": 4364437000.0,
+      "yoy_growth": 0.0782
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 4414314000.0,
+      "prev_year_revenue": 4095601000.0,
+      "yoy_growth": 0.0778
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 4560539000.0,
+      "prev_year_revenue": 4136924000.0,
+      "yoy_growth": 0.1024
+    }
+  ],
+  "annual_revenue": [
+    {
+      "symbol": "ORLY",
+      "report_date": "2019-12-31T00:00:00.000",
+      "revenue": 10149985000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2020-12-31T00:00:00.000",
+      "revenue": 11604493000.0,
+      "prev_year_revenue": 10149985000.0,
+      "yoy_growth": 0.1433
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2021-12-31T00:00:00.000",
+      "revenue": 13327563000.0,
+      "prev_year_revenue": 11604493000.0,
+      "yoy_growth": 0.1485
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2022-12-31T00:00:00.000",
+      "revenue": 14409860000.0,
+      "prev_year_revenue": 13327563000.0,
+      "yoy_growth": 0.0812
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 15812250000.0,
+      "prev_year_revenue": 14409860000.0,
+      "yoy_growth": 0.0973
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 16708479000.0,
+      "prev_year_revenue": 15812250000.0,
+      "yoy_growth": 0.0567
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 17781992000.0,
+      "prev_year_revenue": 16708479000.0,
+      "yoy_growth": 0.0642
+    }
+  ],
+  "quarterly_operating_income": [
+    {
+      "symbol": "ORLY",
+      "report_date": "2022-06-30T00:00:00.000",
+      "operating_income": 798550000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2022-09-30T00:00:00.000",
+      "operating_income": 804194000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2022-12-31T00:00:00.000",
+      "operating_income": 682217000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-03-31T00:00:00.000",
+      "operating_income": 716645000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-06-30T00:00:00.000",
+      "operating_income": 853773000.0,
+      "prev_year_operating_income": 798550000.0,
+      "yoy_growth": 0.0692
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-09-30T00:00:00.000",
+      "operating_income": 897222000.0,
+      "prev_year_operating_income": 804194000.0,
+      "yoy_growth": 0.1157
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 718736000.0,
+      "prev_year_operating_income": 682217000.0,
+      "yoy_growth": 0.0535
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-03-31T00:00:00.000",
+      "operating_income": 752481000.0,
+      "prev_year_operating_income": 716645000.0,
+      "yoy_growth": 0.05
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-06-30T00:00:00.000",
+      "operating_income": 863298000.0,
+      "prev_year_operating_income": 853773000.0,
+      "yoy_growth": 0.0112
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-09-30T00:00:00.000",
+      "operating_income": 896728000.0,
+      "prev_year_operating_income": 897222000.0,
+      "yoy_growth": -0.0006
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 738650000.0,
+      "prev_year_operating_income": 718736000.0,
+      "yoy_growth": 0.0277
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-03-31T00:00:00.000",
+      "operating_income": 741466000.0,
+      "prev_year_operating_income": 752481000.0,
+      "yoy_growth": -0.0146
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-06-30T00:00:00.000",
+      "operating_income": 914470000.0,
+      "prev_year_operating_income": 863298000.0,
+      "yoy_growth": 0.0593
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-09-30T00:00:00.000",
+      "operating_income": 976067000.0,
+      "prev_year_operating_income": 896728000.0,
+      "yoy_growth": 0.0885
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 828609000.0,
+      "prev_year_operating_income": 738650000.0,
+      "yoy_growth": 0.1218
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2026-03-31T00:00:00.000",
+      "operating_income": 841608000.0,
+      "prev_year_operating_income": 741466000.0,
+      "yoy_growth": 0.1351
+    }
+  ],
+  "annual_operating_income": [
+    {
+      "symbol": "ORLY",
+      "report_date": "2019-12-31T00:00:00.000",
+      "operating_income": 1920726000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2020-12-31T00:00:00.000",
+      "operating_income": 2419336000.0,
+      "prev_year_operating_income": 1920726000.0,
+      "yoy_growth": 0.2596
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2021-12-31T00:00:00.000",
+      "operating_income": 2917168000.0,
+      "prev_year_operating_income": 2419336000.0,
+      "yoy_growth": 0.2058
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2022-12-31T00:00:00.000",
+      "operating_income": 2954491000.0,
+      "prev_year_operating_income": 2917168000.0,
+      "yoy_growth": 0.0128
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 3186376000.0,
+      "prev_year_operating_income": 2954491000.0,
+      "yoy_growth": 0.0785
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 3251157000.0,
+      "prev_year_operating_income": 3186376000.0,
+      "yoy_growth": 0.0203
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 3460612000.0,
+      "prev_year_operating_income": 3251157000.0,
+      "yoy_growth": 0.0644
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "ORLY",
+      "report_date": "2022-09-30T00:00:00.000",
+      "ebitda": 895016000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2022-12-31T00:00:00.000",
+      "ebitda": 788463000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-03-31T00:00:00.000",
+      "ebitda": 815739000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-06-30T00:00:00.000",
+      "ebitda": 956645000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-09-30T00:00:00.000",
+      "ebitda": 1002938000.0,
+      "prev_year_ebitda": 895016000.0,
+      "yoy_growth": 0.1206
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 840157000.0,
+      "prev_year_ebitda": 788463000.0,
+      "yoy_growth": 0.0656
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-03-31T00:00:00.000",
+      "ebitda": 867186000.0,
+      "prev_year_ebitda": 815739000.0,
+      "yoy_growth": 0.0631
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-06-30T00:00:00.000",
+      "ebitda": 979624000.0,
+      "prev_year_ebitda": 956645000.0,
+      "yoy_growth": 0.024
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-09-30T00:00:00.000",
+      "ebitda": 1019526000.0,
+      "prev_year_ebitda": 1002938000.0,
+      "yoy_growth": 0.0165
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 863168000.0,
+      "prev_year_ebitda": 840157000.0,
+      "yoy_growth": 0.0274
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-03-31T00:00:00.000",
+      "ebitda": 864139000.0,
+      "prev_year_ebitda": 867186000.0,
+      "yoy_growth": -0.0035
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-06-30T00:00:00.000",
+      "ebitda": 1043727000.0,
+      "prev_year_ebitda": 979624000.0,
+      "yoy_growth": 0.0654
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-09-30T00:00:00.000",
+      "ebitda": 1111882000.0,
+      "prev_year_ebitda": 1019526000.0,
+      "yoy_growth": 0.0906
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 966717000.0,
+      "prev_year_ebitda": 863168000.0,
+      "yoy_growth": 0.12
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2026-03-31T00:00:00.000",
+      "ebitda": 978195000.0,
+      "prev_year_ebitda": 864139000.0,
+      "yoy_growth": 0.132
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "ORLY",
+      "report_date": "2019-12-31T00:00:00.000",
+      "ebitda": 2201179000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2020-12-31T00:00:00.000",
+      "ebitda": 2742166000.0,
+      "prev_year_ebitda": 2201179000.0,
+      "yoy_growth": 0.2458
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2021-12-31T00:00:00.000",
+      "ebitda": 3254899000.0,
+      "prev_year_ebitda": 2742166000.0,
+      "yoy_growth": 0.187
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2022-12-31T00:00:00.000",
+      "ebitda": 3314308000.0,
+      "prev_year_ebitda": 3254899000.0,
+      "yoy_growth": 0.0183
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 3615479000.0,
+      "prev_year_ebitda": 3314308000.0,
+      "yoy_growth": 0.0909
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 3729504000.0,
+      "prev_year_ebitda": 3615479000.0,
+      "yoy_growth": 0.0315
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 3986465000.0,
+      "prev_year_ebitda": 3729504000.0,
+      "yoy_growth": 0.0689
+    }
+  ],
+  "quarterly_net_income": [
+    {
+      "symbol": "ORLY",
+      "report_date": "2022-06-30T00:00:00.000",
+      "net_income_common_stockholders": 576760000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2022-09-30T00:00:00.000",
+      "net_income_common_stockholders": 585438000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2022-12-31T00:00:00.000",
+      "net_income_common_stockholders": 528572000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-03-31T00:00:00.000",
+      "net_income_common_stockholders": 516885000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-06-30T00:00:00.000",
+      "net_income_common_stockholders": 627365000.0,
+      "prev_year_net_income_common_stockholders": 576760000.0,
+      "yoy_growth": 0.0877
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-09-30T00:00:00.000",
+      "net_income_common_stockholders": 649827000.0,
+      "prev_year_net_income_common_stockholders": 585438000.0,
+      "yoy_growth": 0.11
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 552504000.0,
+      "prev_year_net_income_common_stockholders": 528572000.0,
+      "yoy_growth": 0.0453
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-03-31T00:00:00.000",
+      "net_income_common_stockholders": 547238000.0,
+      "prev_year_net_income_common_stockholders": 516885000.0,
+      "yoy_growth": 0.0587
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-06-30T00:00:00.000",
+      "net_income_common_stockholders": 622848000.0,
+      "prev_year_net_income_common_stockholders": 627365000.0,
+      "yoy_growth": -0.0072
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-09-30T00:00:00.000",
+      "net_income_common_stockholders": 665464000.0,
+      "prev_year_net_income_common_stockholders": 649827000.0,
+      "yoy_growth": 0.0241
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 551130000.0,
+      "prev_year_net_income_common_stockholders": 552504000.0,
+      "yoy_growth": -0.0025
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-03-31T00:00:00.000",
+      "net_income_common_stockholders": 538485000.0,
+      "prev_year_net_income_common_stockholders": 547238000.0,
+      "yoy_growth": -0.016
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-06-30T00:00:00.000",
+      "net_income_common_stockholders": 668595000.0,
+      "prev_year_net_income_common_stockholders": 622848000.0,
+      "yoy_growth": 0.0734
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-09-30T00:00:00.000",
+      "net_income_common_stockholders": 725896000.0,
+      "prev_year_net_income_common_stockholders": 665464000.0,
+      "yoy_growth": 0.0908
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 605233000.0,
+      "prev_year_net_income_common_stockholders": 551130000.0,
+      "yoy_growth": 0.0982
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 604181000.0,
+      "prev_year_net_income_common_stockholders": 538485000.0,
+      "yoy_growth": 0.122
+    }
+  ],
+  "annual_net_income": [
+    {
+      "symbol": "ORLY",
+      "report_date": "2019-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1391042000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2020-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1752302000.0,
+      "prev_year_net_income_common_stockholders": 1391042000.0,
+      "yoy_growth": 0.2597
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2021-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2164685000.0,
+      "prev_year_net_income_common_stockholders": 1752302000.0,
+      "yoy_growth": 0.2353
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2022-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2172650000.0,
+      "prev_year_net_income_common_stockholders": 2164685000.0,
+      "yoy_growth": 0.0037
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2346581000.0,
+      "prev_year_net_income_common_stockholders": 2172650000.0,
+      "yoy_growth": 0.0801
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2386680000.0,
+      "prev_year_net_income_common_stockholders": 2346581000.0,
+      "yoy_growth": 0.0171
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2538209000.0,
+      "prev_year_net_income_common_stockholders": 2386680000.0,
+      "yoy_growth": 0.0635
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "ORLY",
+      "report_date": "2022-06-30T00:00:00.000",
+      "free_cash_flow": 577156000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-06-30T00:00:00.000",
+      "free_cash_flow": 699931000.0,
+      "prev_year_free_cash_flow": 577156000.0,
+      "yoy_growth": 0.2127
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-09-30T00:00:00.000",
+      "free_cash_flow": 573270000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 264123000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-03-31T00:00:00.000",
+      "free_cash_flow": 454975000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-06-30T00:00:00.000",
+      "free_cash_flow": 723492000.0,
+      "prev_year_free_cash_flow": 699931000.0,
+      "yoy_growth": 0.0337
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-09-30T00:00:00.000",
+      "free_cash_flow": 513706000.0,
+      "prev_year_free_cash_flow": 573270000.0,
+      "yoy_growth": -0.1039
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 334016000.0,
+      "prev_year_free_cash_flow": 264123000.0,
+      "yoy_growth": 0.2646
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-03-31T00:00:00.000",
+      "free_cash_flow": 468169000.0,
+      "prev_year_free_cash_flow": 454975000.0,
+      "yoy_growth": 0.029
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-06-30T00:00:00.000",
+      "free_cash_flow": 456112000.0,
+      "prev_year_free_cash_flow": 723492000.0,
+      "yoy_growth": -0.3696
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-09-30T00:00:00.000",
+      "free_cash_flow": 304437000.0,
+      "prev_year_free_cash_flow": 513706000.0,
+      "yoy_growth": -0.4074
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 364460000.0,
+      "prev_year_free_cash_flow": 334016000.0,
+      "yoy_growth": 0.0911
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": 788466000.0,
+      "prev_year_free_cash_flow": 468169000.0,
+      "yoy_growth": 0.6841
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "ORLY",
+      "report_date": "2020-12-31T00:00:00.000",
+      "free_cash_flow": 2371024000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2021-12-31T00:00:00.000",
+      "free_cash_flow": 2764457000.0,
+      "prev_year_free_cash_flow": 2371024000.0,
+      "yoy_growth": 0.1659
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2022-12-31T00:00:00.000",
+      "free_cash_flow": 2584908000.0,
+      "prev_year_free_cash_flow": 2764457000.0,
+      "yoy_growth": -0.0649
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 2027820000.0,
+      "prev_year_free_cash_flow": 2584908000.0,
+      "yoy_growth": -0.2155
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 2026189000.0,
+      "prev_year_free_cash_flow": 2027820000.0,
+      "yoy_growth": -0.0008
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 1593178000.0,
+      "prev_year_free_cash_flow": 2026189000.0,
+      "yoy_growth": -0.2137
+    }
+  ],
+  "quarterly_eps": [
+    {
+      "symbol": "ORLY",
+      "report_date": "1988-03-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "1988-06-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "1998-03-31T00:00:00.000",
+      "eps": 0.0045,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "1998-06-30T00:00:00.000",
+      "eps": 0.0058,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "1998-09-30T00:00:00.000",
+      "eps": 0.0063,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "1998-12-31T00:00:00.000",
+      "eps": 0.0068,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "1999-03-31T00:00:00.000",
+      "eps": 0.0065,
+      "prev_year_eps": 0.0045,
+      "yoy_growth": 0.4444
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "1999-06-30T00:00:00.000",
+      "eps": 0.0077,
+      "prev_year_eps": 0.0058,
+      "yoy_growth": 0.3276
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "1999-09-30T00:00:00.000",
+      "eps": 0.0087,
+      "prev_year_eps": 0.0063,
+      "yoy_growth": 0.381
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "1999-12-31T00:00:00.000",
+      "eps": 0.0077,
+      "prev_year_eps": 0.0068,
+      "yoy_growth": 0.1324
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2000-03-31T00:00:00.000",
+      "eps": 0.0077,
+      "prev_year_eps": 0.0065,
+      "yoy_growth": 0.1846
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2000-06-30T00:00:00.000",
+      "eps": 0.0093,
+      "prev_year_eps": 0.0077,
+      "yoy_growth": 0.2078
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2000-09-30T00:00:00.000",
+      "eps": 0.0107,
+      "prev_year_eps": 0.0087,
+      "yoy_growth": 0.2299
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2000-12-31T00:00:00.000",
+      "eps": 0.006,
+      "prev_year_eps": 0.0077,
+      "yoy_growth": -0.2208
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2001-03-31T00:00:00.000",
+      "eps": 0.008,
+      "prev_year_eps": 0.0077,
+      "yoy_growth": 0.039
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2001-06-30T00:00:00.000",
+      "eps": 0.0113,
+      "prev_year_eps": 0.0093,
+      "yoy_growth": 0.2151
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2001-09-30T00:00:00.000",
+      "eps": 0.0127,
+      "prev_year_eps": 0.0107,
+      "yoy_growth": 0.1869
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2001-12-31T00:00:00.000",
+      "eps": 0.01,
+      "prev_year_eps": 0.006,
+      "yoy_growth": 0.6667
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2002-03-31T00:00:00.000",
+      "eps": 0.0103,
+      "prev_year_eps": 0.008,
+      "yoy_growth": 0.2875
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2002-06-30T00:00:00.000",
+      "eps": 0.014,
+      "prev_year_eps": 0.0113,
+      "yoy_growth": 0.2389
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2002-09-30T00:00:00.000",
+      "eps": 0.015,
+      "prev_year_eps": 0.0127,
+      "yoy_growth": 0.1811
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2002-12-31T00:00:00.000",
+      "eps": 0.0117,
+      "prev_year_eps": 0.01,
+      "yoy_growth": 0.17
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2003-03-31T00:00:00.000",
+      "eps": 0.0123,
+      "prev_year_eps": 0.0103,
+      "yoy_growth": 0.1942
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2003-06-30T00:00:00.000",
+      "eps": 0.0167,
+      "prev_year_eps": 0.014,
+      "yoy_growth": 0.1929
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2003-09-30T00:00:00.000",
+      "eps": 0.018,
+      "prev_year_eps": 0.015,
+      "yoy_growth": 0.2
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2003-12-31T00:00:00.000",
+      "eps": 0.0143,
+      "prev_year_eps": 0.0117,
+      "yoy_growth": 0.2222
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2004-03-31T00:00:00.000",
+      "eps": 0.0163,
+      "prev_year_eps": 0.0123,
+      "yoy_growth": 0.3252
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2004-06-30T00:00:00.000",
+      "eps": 0.01,
+      "prev_year_eps": 0.0167,
+      "yoy_growth": -0.4012
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2004-09-30T00:00:00.000",
+      "eps": 0.02,
+      "prev_year_eps": 0.018,
+      "yoy_growth": 0.1111
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2004-12-31T00:00:00.000",
+      "eps": 0.017,
+      "prev_year_eps": 0.0143,
+      "yoy_growth": 0.1888
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2005-03-31T00:00:00.000",
+      "eps": 0.0197,
+      "prev_year_eps": 0.0163,
+      "yoy_growth": 0.2086
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2005-06-30T00:00:00.000",
+      "eps": 0.0253,
+      "prev_year_eps": 0.01,
+      "yoy_growth": 1.53
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2005-09-30T00:00:00.000",
+      "eps": 0.028,
+      "prev_year_eps": 0.02,
+      "yoy_growth": 0.4
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2005-12-31T00:00:00.000",
+      "eps": 0.0233,
+      "prev_year_eps": 0.017,
+      "yoy_growth": 0.3706
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2006-03-31T00:00:00.000",
+      "eps": 0.0233,
+      "prev_year_eps": 0.0197,
+      "yoy_growth": 0.1827
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2006-06-30T00:00:00.000",
+      "eps": 0.0287,
+      "prev_year_eps": 0.0253,
+      "yoy_growth": 0.1344
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2006-09-30T00:00:00.000",
+      "eps": 0.028,
+      "prev_year_eps": 0.028,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2006-12-31T00:00:00.000",
+      "eps": 0.0233,
+      "prev_year_eps": 0.0233,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2007-03-31T00:00:00.000",
+      "eps": 0.028,
+      "prev_year_eps": 0.0233,
+      "yoy_growth": 0.2017
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2007-06-30T00:00:00.000",
+      "eps": 0.03,
+      "prev_year_eps": 0.0287,
+      "yoy_growth": 0.0453
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2007-09-30T00:00:00.000",
+      "eps": 0.0307,
+      "prev_year_eps": 0.028,
+      "yoy_growth": 0.0964
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2007-12-31T00:00:00.000",
+      "eps": 0.0233,
+      "prev_year_eps": 0.0233,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2008-03-31T00:00:00.000",
+      "eps": 0.0267,
+      "prev_year_eps": 0.028,
+      "yoy_growth": -0.0464
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2008-06-30T00:00:00.000",
+      "eps": 0.032,
+      "prev_year_eps": 0.03,
+      "yoy_growth": 0.0667
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2008-09-30T00:00:00.000",
+      "eps": 0.0207,
+      "prev_year_eps": 0.0307,
+      "yoy_growth": -0.3257
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2008-12-31T00:00:00.000",
+      "eps": 0.0213,
+      "prev_year_eps": 0.0233,
+      "yoy_growth": -0.0858
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2009-03-31T00:00:00.000",
+      "eps": 0.0307,
+      "prev_year_eps": 0.0267,
+      "yoy_growth": 0.1498
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2009-06-30T00:00:00.000",
+      "eps": 0.0413,
+      "prev_year_eps": 0.032,
+      "yoy_growth": 0.2906
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2009-09-30T00:00:00.000",
+      "eps": 0.042,
+      "prev_year_eps": 0.0207,
+      "yoy_growth": 1.029
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2009-12-31T00:00:00.000",
+      "eps": 0.0348,
+      "prev_year_eps": 0.0213,
+      "yoy_growth": 0.6338
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2010-03-31T00:00:00.000",
+      "eps": 0.0467,
+      "prev_year_eps": 0.0307,
+      "yoy_growth": 0.5212
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2010-06-30T00:00:00.000",
+      "eps": 0.0473,
+      "prev_year_eps": 0.0413,
+      "yoy_growth": 0.1453
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2010-09-30T00:00:00.000",
+      "eps": 0.0547,
+      "prev_year_eps": 0.042,
+      "yoy_growth": 0.3024
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2010-12-31T00:00:00.000",
+      "eps": 0.0493,
+      "prev_year_eps": 0.0348,
+      "yoy_growth": 0.4167
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2011-03-31T00:00:00.000",
+      "eps": 0.048,
+      "prev_year_eps": 0.0467,
+      "yoy_growth": 0.0278
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2011-06-30T00:00:00.000",
+      "eps": 0.064,
+      "prev_year_eps": 0.0473,
+      "yoy_growth": 0.3531
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2011-09-30T00:00:00.000",
+      "eps": 0.0733,
+      "prev_year_eps": 0.0547,
+      "yoy_growth": 0.34
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2011-12-31T00:00:00.000",
+      "eps": 0.0627,
+      "prev_year_eps": 0.0493,
+      "yoy_growth": 0.2718
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2012-03-31T00:00:00.000",
+      "eps": 0.076,
+      "prev_year_eps": 0.048,
+      "yoy_growth": 0.5833
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2012-06-30T00:00:00.000",
+      "eps": 0.0767,
+      "prev_year_eps": 0.064,
+      "yoy_growth": 0.1984
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2012-09-30T00:00:00.000",
+      "eps": 0.088,
+      "prev_year_eps": 0.0733,
+      "yoy_growth": 0.2005
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2012-12-31T00:00:00.000",
+      "eps": 0.076,
+      "prev_year_eps": 0.0627,
+      "yoy_growth": 0.2121
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2013-03-31T00:00:00.000",
+      "eps": 0.0907,
+      "prev_year_eps": 0.076,
+      "yoy_growth": 0.1934
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2013-06-30T00:00:00.000",
+      "eps": 0.1053,
+      "prev_year_eps": 0.0767,
+      "yoy_growth": 0.3729
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2013-09-30T00:00:00.000",
+      "eps": 0.1127,
+      "prev_year_eps": 0.088,
+      "yoy_growth": 0.2807
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2013-12-31T00:00:00.000",
+      "eps": 0.0933,
+      "prev_year_eps": 0.076,
+      "yoy_growth": 0.2276
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2014-03-31T00:00:00.000",
+      "eps": 0.1073,
+      "prev_year_eps": 0.0907,
+      "yoy_growth": 0.183
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2014-06-30T00:00:00.000",
+      "eps": 0.1273,
+      "prev_year_eps": 0.1053,
+      "yoy_growth": 0.2089
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2014-09-30T00:00:00.000",
+      "eps": 0.1373,
+      "prev_year_eps": 0.1127,
+      "yoy_growth": 0.2183
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2014-12-31T00:00:00.000",
+      "eps": 0.1173,
+      "prev_year_eps": 0.0933,
+      "yoy_growth": 0.2572
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2015-03-31T00:00:00.000",
+      "eps": 0.1373,
+      "prev_year_eps": 0.1073,
+      "yoy_growth": 0.2796
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2015-06-30T00:00:00.000",
+      "eps": 0.1527,
+      "prev_year_eps": 0.1273,
+      "yoy_growth": 0.1995
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2015-09-30T00:00:00.000",
+      "eps": 0.176,
+      "prev_year_eps": 0.1373,
+      "yoy_growth": 0.2819
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2015-12-31T00:00:00.000",
+      "eps": 0.146,
+      "prev_year_eps": 0.1173,
+      "yoy_growth": 0.2447
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2016-03-31T00:00:00.000",
+      "eps": 0.1727,
+      "prev_year_eps": 0.1373,
+      "yoy_growth": 0.2578
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2016-06-30T00:00:00.000",
+      "eps": 0.1767,
+      "prev_year_eps": 0.1527,
+      "yoy_growth": 0.1572
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2016-09-30T00:00:00.000",
+      "eps": 0.1933,
+      "prev_year_eps": 0.176,
+      "yoy_growth": 0.0983
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2016-12-31T00:00:00.000",
+      "eps": 0.1727,
+      "prev_year_eps": 0.146,
+      "yoy_growth": 0.1829
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2017-03-31T00:00:00.000",
+      "eps": 0.1887,
+      "prev_year_eps": 0.1727,
+      "yoy_growth": 0.0926
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2017-06-30T00:00:00.000",
+      "eps": 0.2067,
+      "prev_year_eps": 0.1767,
+      "yoy_growth": 0.1698
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2017-09-30T00:00:00.000",
+      "eps": 0.2147,
+      "prev_year_eps": 0.1933,
+      "yoy_growth": 0.1107
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2017-12-31T00:00:00.000",
+      "eps": 0.2347,
+      "prev_year_eps": 0.1727,
+      "yoy_growth": 0.359
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2018-03-31T00:00:00.000",
+      "eps": 0.2407,
+      "prev_year_eps": 0.1887,
+      "yoy_growth": 0.2756
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2018-06-30T00:00:00.000",
+      "eps": 0.2853,
+      "prev_year_eps": 0.2067,
+      "yoy_growth": 0.3803
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2018-09-30T00:00:00.000",
+      "eps": 0.3,
+      "prev_year_eps": 0.2147,
+      "yoy_growth": 0.3973
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2018-12-31T00:00:00.000",
+      "eps": 0.248,
+      "prev_year_eps": 0.2347,
+      "yoy_growth": 0.0567
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2019-03-31T00:00:00.000",
+      "eps": 0.27,
+      "prev_year_eps": 0.2407,
+      "yoy_growth": 0.1217
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2019-06-30T00:00:00.000",
+      "eps": 0.3007,
+      "prev_year_eps": 0.2853,
+      "yoy_growth": 0.054
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2019-09-30T00:00:00.000",
+      "eps": 0.3389,
+      "prev_year_eps": 0.3,
+      "yoy_growth": 0.1297
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2019-12-31T00:00:00.000",
+      "eps": 0.2832,
+      "prev_year_eps": 0.248,
+      "yoy_growth": 0.1419
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2020-03-31T00:00:00.000",
+      "eps": 0.2647,
+      "prev_year_eps": 0.27,
+      "yoy_growth": -0.0196
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2020-06-30T00:00:00.000",
+      "eps": 0.4736,
+      "prev_year_eps": 0.3007,
+      "yoy_growth": 0.575
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2020-09-30T00:00:00.000",
+      "eps": 0.4713,
+      "prev_year_eps": 0.3389,
+      "yoy_growth": 0.3907
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2020-12-31T00:00:00.000",
+      "eps": 0.36,
+      "prev_year_eps": 0.2832,
+      "yoy_growth": 0.2712
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2021-03-31T00:00:00.000",
+      "eps": 0.4709,
+      "prev_year_eps": 0.2647,
+      "yoy_growth": 0.779
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2021-06-30T00:00:00.000",
+      "eps": 0.5555,
+      "prev_year_eps": 0.4736,
+      "yoy_growth": 0.1729
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2021-09-30T00:00:00.000",
+      "eps": 0.5379,
+      "prev_year_eps": 0.4713,
+      "yoy_growth": 0.1413
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2021-12-31T00:00:00.000",
+      "eps": 0.5093,
+      "prev_year_eps": 0.36,
+      "yoy_growth": 0.4147
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2022-03-31T00:00:00.000",
+      "eps": 0.4781,
+      "prev_year_eps": 0.4709,
+      "yoy_growth": 0.0153
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2022-06-30T00:00:00.000",
+      "eps": 0.5854,
+      "prev_year_eps": 0.5555,
+      "yoy_growth": 0.0538
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2022-09-30T00:00:00.000",
+      "eps": 0.6112,
+      "prev_year_eps": 0.5379,
+      "yoy_growth": 0.1363
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2022-12-31T00:00:00.000",
+      "eps": 0.5579,
+      "prev_year_eps": 0.5093,
+      "yoy_growth": 0.0954
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-03-31T00:00:00.000",
+      "eps": 0.5522,
+      "prev_year_eps": 0.4781,
+      "yoy_growth": 0.155
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-06-30T00:00:00.000",
+      "eps": 0.6816,
+      "prev_year_eps": 0.5854,
+      "yoy_growth": 0.1643
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-09-30T00:00:00.000",
+      "eps": 0.715,
+      "prev_year_eps": 0.6112,
+      "yoy_growth": 0.1698
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-12-31T00:00:00.000",
+      "eps": 0.6173,
+      "prev_year_eps": 0.5579,
+      "yoy_growth": 0.1065
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-03-31T00:00:00.000",
+      "eps": 0.6136,
+      "prev_year_eps": 0.5522,
+      "yoy_growth": 0.1112
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-06-30T00:00:00.000",
+      "eps": 0.7033,
+      "prev_year_eps": 0.6816,
+      "yoy_growth": 0.0318
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-09-30T00:00:00.000",
+      "eps": 0.7605,
+      "prev_year_eps": 0.715,
+      "yoy_growth": 0.0636
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-12-31T00:00:00.000",
+      "eps": 0.6335,
+      "prev_year_eps": 0.6173,
+      "yoy_growth": 0.0262
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-03-31T00:00:00.000",
+      "eps": 0.623,
+      "prev_year_eps": 0.6136,
+      "yoy_growth": 0.0153
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-06-30T00:00:00.000",
+      "eps": 0.7788,
+      "prev_year_eps": 0.7033,
+      "yoy_growth": 0.1074
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-09-30T00:00:00.000",
+      "eps": 0.8513,
+      "prev_year_eps": 0.7605,
+      "yoy_growth": 0.1194
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-12-31T00:00:00.000",
+      "eps": 0.7134,
+      "prev_year_eps": 0.6335,
+      "yoy_growth": 0.1261
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2026-03-31T00:00:00.000",
+      "eps": 0.7171,
+      "prev_year_eps": 0.623,
+      "yoy_growth": 0.151
+    }
+  ]
+}

@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "RTX",
+      "report_date": "2022-06-30",
+      "gross_profit": 3458000000.0,
+      "total_revenue": 16314000000.0,
+      "gross_margin": 0.212
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2022-09-30",
+      "gross_profit": 3487000000.0,
+      "total_revenue": 16951000000.0,
+      "gross_margin": 0.2057
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2023-06-30",
+      "gross_profit": 3797000000.0,
+      "total_revenue": 18315000000.0,
+      "gross_margin": 0.2073
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2023-09-30",
+      "gross_profit": 714000000.0,
+      "total_revenue": 13464000000.0,
+      "gross_margin": 0.053
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2023-12-31",
+      "gross_profit": 4009000000.0,
+      "total_revenue": 19927000000.0,
+      "gross_margin": 0.2012
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-03-31",
+      "gross_profit": 3561000000.0,
+      "total_revenue": 19305000000.0,
+      "gross_margin": 0.1845
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-06-30",
+      "gross_profit": 3580000000.0,
+      "total_revenue": 19721000000.0,
+      "gross_margin": 0.1815
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-09-30",
+      "gross_profit": 4034000000.0,
+      "total_revenue": 20089000000.0,
+      "gross_margin": 0.2008
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-12-31",
+      "gross_profit": 4235000000.0,
+      "total_revenue": 21623000000.0,
+      "gross_margin": 0.1959
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-03-31",
+      "gross_profit": 4116000000.0,
+      "total_revenue": 20306000000.0,
+      "gross_margin": 0.2027
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-06-30",
+      "gross_profit": 4376000000.0,
+      "total_revenue": 21581000000.0,
+      "gross_margin": 0.2028
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-09-30",
+      "gross_profit": 4580000000.0,
+      "total_revenue": 22478000000.0,
+      "gross_margin": 0.2038
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-12-31",
+      "gross_profit": 4717000000.0,
+      "total_revenue": 24238000000.0,
+      "gross_margin": 0.1946
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2026-03-31",
+      "gross_profit": 4594000000.0,
+      "total_revenue": 22076000000.0,
+      "gross_margin": 0.2081
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "RTX",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2020-12-31",
+      "gross_profit": 8531000000.0,
+      "total_revenue": 56587000000.0,
+      "gross_margin": 0.1508
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2021-12-31",
+      "gross_profit": 12491000000.0,
+      "total_revenue": 64388000000.0,
+      "gross_margin": 0.194
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2022-12-31",
+      "gross_profit": 13668000000.0,
+      "total_revenue": 67074000000.0,
+      "gross_margin": 0.2038
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2023-12-31",
+      "gross_profit": 12089000000.0,
+      "total_revenue": 68920000000.0,
+      "gross_margin": 0.1754
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-12-31",
+      "gross_profit": 15410000000.0,
+      "total_revenue": 80738000000.0,
+      "gross_margin": 0.1909
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-12-31",
+      "gross_profit": 17789000000.0,
+      "total_revenue": 88603000000.0,
+      "gross_margin": 0.2008
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "RTX",
+      "report_date": "2022-06-30",
+      "operating_income": 1353000000.0,
+      "total_revenue": 16314000000.0,
+      "operating_margin": 0.0829
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2022-09-30",
+      "operating_income": 1480000000.0,
+      "total_revenue": 16951000000.0,
+      "operating_margin": 0.0873
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2023-06-30",
+      "operating_income": 1940000000.0,
+      "total_revenue": 18315000000.0,
+      "operating_margin": 0.1059
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2023-09-30",
+      "operating_income": -1396000000.0,
+      "total_revenue": 13464000000.0,
+      "operating_margin": -0.1037
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2023-12-31",
+      "operating_income": 1777000000.0,
+      "total_revenue": 19927000000.0,
+      "operating_margin": 0.0892
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-03-31",
+      "operating_income": 1870000000.0,
+      "total_revenue": 19305000000.0,
+      "operating_margin": 0.0969
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-06-30",
+      "operating_income": 529000000.0,
+      "total_revenue": 19721000000.0,
+      "operating_margin": 0.0268
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-09-30",
+      "operating_income": 2028000000.0,
+      "total_revenue": 20089000000.0,
+      "operating_margin": 0.101
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-12-31",
+      "operating_income": 2111000000.0,
+      "total_revenue": 21623000000.0,
+      "operating_margin": 0.0976
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-03-31",
+      "operating_income": 2035000000.0,
+      "total_revenue": 20306000000.0,
+      "operating_margin": 0.1002
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-06-30",
+      "operating_income": 2146000000.0,
+      "total_revenue": 21581000000.0,
+      "operating_margin": 0.0994
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-09-30",
+      "operating_income": 2523000000.0,
+      "total_revenue": 22478000000.0,
+      "operating_margin": 0.1122
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-12-31",
+      "operating_income": 2596000000.0,
+      "total_revenue": 24238000000.0,
+      "operating_margin": 0.1071
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2026-03-31",
+      "operating_income": 2555000000.0,
+      "total_revenue": 22076000000.0,
+      "operating_margin": 0.1157
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "RTX",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2020-12-31",
+      "operating_income": 1294000000.0,
+      "total_revenue": 56587000000.0,
+      "operating_margin": 0.0229
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2021-12-31",
+      "operating_income": 5136000000.0,
+      "total_revenue": 64388000000.0,
+      "operating_margin": 0.0798
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2022-12-31",
+      "operating_income": 5504000000.0,
+      "total_revenue": 67074000000.0,
+      "operating_margin": 0.0821
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2023-12-31",
+      "operating_income": 3561000000.0,
+      "total_revenue": 68920000000.0,
+      "operating_margin": 0.0517
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-12-31",
+      "operating_income": 6538000000.0,
+      "total_revenue": 80738000000.0,
+      "operating_margin": 0.081
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-12-31",
+      "operating_income": 9300000000.0,
+      "total_revenue": 88603000000.0,
+      "operating_margin": 0.105
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "RTX",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 1304000000.0,
+      "total_revenue": 16314000000.0,
+      "net_margin": 0.0799
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": 1387000000.0,
+      "total_revenue": 16951000000.0,
+      "net_margin": 0.0818
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 1327000000.0,
+      "total_revenue": 18315000000.0,
+      "net_margin": 0.0725
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": -984000000.0,
+      "total_revenue": 13464000000.0,
+      "net_margin": -0.0731
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1426000000.0,
+      "total_revenue": 19927000000.0,
+      "net_margin": 0.0716
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1709000000.0,
+      "total_revenue": 19305000000.0,
+      "net_margin": 0.0885
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 111000000.0,
+      "total_revenue": 19721000000.0,
+      "net_margin": 0.0056
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1472000000.0,
+      "total_revenue": 20089000000.0,
+      "net_margin": 0.0733
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1482000000.0,
+      "total_revenue": 21623000000.0,
+      "net_margin": 0.0685
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1535000000.0,
+      "total_revenue": 20306000000.0,
+      "net_margin": 0.0756
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1657000000.0,
+      "total_revenue": 21581000000.0,
+      "net_margin": 0.0768
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1918000000.0,
+      "total_revenue": 22478000000.0,
+      "net_margin": 0.0853
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1622000000.0,
+      "total_revenue": 24238000000.0,
+      "net_margin": 0.0669
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 2059000000.0,
+      "total_revenue": 22076000000.0,
+      "net_margin": 0.0933
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "RTX",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": -3519000000.0,
+      "total_revenue": 56587000000.0,
+      "net_margin": -0.0622
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 3864000000.0,
+      "total_revenue": 64388000000.0,
+      "net_margin": 0.06
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 5197000000.0,
+      "total_revenue": 67074000000.0,
+      "net_margin": 0.0775
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 3195000000.0,
+      "total_revenue": 68920000000.0,
+      "net_margin": 0.0464
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 4774000000.0,
+      "total_revenue": 80738000000.0,
+      "net_margin": 0.0591
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 6732000000.0,
+      "total_revenue": 88603000000.0,
+      "net_margin": 0.076
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "RTX",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 16314000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2022-09-30",
+      "ebitda": 3010000000.0,
+      "total_revenue": 16951000000.0,
+      "ebitda_margin": 0.1776
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2023-06-30",
+      "ebitda": 3023000000.0,
+      "total_revenue": 18315000000.0,
+      "ebitda_margin": 0.1651
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2023-09-30",
+      "ebitda": 143000000.0,
+      "total_revenue": 13464000000.0,
+      "ebitda_margin": 0.0106
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2023-12-31",
+      "ebitda": 3345000000.0,
+      "total_revenue": 19927000000.0,
+      "ebitda_margin": 0.1679
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-03-31",
+      "ebitda": 3330000000.0,
+      "total_revenue": 19305000000.0,
+      "ebitda_margin": 0.1725
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-06-30",
+      "ebitda": 1988000000.0,
+      "total_revenue": 19721000000.0,
+      "ebitda_margin": 0.1008
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-09-30",
+      "ebitda": 3548000000.0,
+      "total_revenue": 20089000000.0,
+      "ebitda_margin": 0.1766
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-12-31",
+      "ebitda": 3662000000.0,
+      "total_revenue": 21623000000.0,
+      "ebitda_margin": 0.1694
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-03-31",
+      "ebitda": 3512000000.0,
+      "total_revenue": 20306000000.0,
+      "ebitda_margin": 0.173
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-06-30",
+      "ebitda": 3596000000.0,
+      "total_revenue": 21581000000.0,
+      "ebitda_margin": 0.1666
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-09-30",
+      "ebitda": 4012000000.0,
+      "total_revenue": 22478000000.0,
+      "ebitda_margin": 0.1785
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-12-31",
+      "ebitda": 3826000000.0,
+      "total_revenue": 24238000000.0,
+      "ebitda_margin": 0.1579
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2026-03-31",
+      "ebitda": 3997000000.0,
+      "total_revenue": 22076000000.0,
+      "ebitda_margin": 0.1811
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "RTX",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2020-12-31",
+      "ebitda": 3211000000.0,
+      "total_revenue": 56587000000.0,
+      "ebitda_margin": 0.0567
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2021-12-31",
+      "ebitda": 10996000000.0,
+      "total_revenue": 64388000000.0,
+      "ebitda_margin": 0.1708
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2022-12-31",
+      "ebitda": 11525000000.0,
+      "total_revenue": 67074000000.0,
+      "ebitda_margin": 0.1718
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2023-12-31",
+      "ebitda": 9700000000.0,
+      "total_revenue": 68920000000.0,
+      "ebitda_margin": 0.1407
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-12-31",
+      "ebitda": 12528000000.0,
+      "total_revenue": 80738000000.0,
+      "ebitda_margin": 0.1552
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-12-31",
+      "ebitda": 14946000000.0,
+      "total_revenue": 88603000000.0,
+      "ebitda_margin": 0.1687
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "RTX",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 766000000.0,
+      "total_revenue": 16314000000.0,
+      "fcf_margin": 0.047
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": 16951000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 33000000.0,
+      "total_revenue": 18315000000.0,
+      "fcf_margin": 0.0018
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 2530000000.0,
+      "total_revenue": 13464000000.0,
+      "fcf_margin": 0.1879
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 3691000000.0,
+      "total_revenue": 19927000000.0,
+      "fcf_margin": 0.1852
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-03-31",
+      "free_cash_flow": -288000000.0,
+      "total_revenue": 19305000000.0,
+      "fcf_margin": -0.0149
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 2041000000.0,
+      "total_revenue": 19721000000.0,
+      "fcf_margin": 0.1035
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 1842000000.0,
+      "total_revenue": 20089000000.0,
+      "fcf_margin": 0.0917
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 328000000.0,
+      "total_revenue": 21623000000.0,
+      "fcf_margin": 0.0152
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 688000000.0,
+      "total_revenue": 20306000000.0,
+      "fcf_margin": 0.0339
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-06-30",
+      "free_cash_flow": -194000000.0,
+      "total_revenue": 21581000000.0,
+      "fcf_margin": -0.009
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 3904000000.0,
+      "total_revenue": 22478000000.0,
+      "fcf_margin": 0.1737
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 3050000000.0,
+      "total_revenue": 24238000000.0,
+      "fcf_margin": 0.1258
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 1211000000.0,
+      "total_revenue": 22076000000.0,
+      "fcf_margin": 0.0549
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "RTX",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 1639000000.0,
+      "total_revenue": 56587000000.0,
+      "fcf_margin": 0.029
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 4629000000.0,
+      "total_revenue": 64388000000.0,
+      "fcf_margin": 0.0719
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 4393000000.0,
+      "total_revenue": 67074000000.0,
+      "fcf_margin": 0.0655
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 4717000000.0,
+      "total_revenue": 68920000000.0,
+      "fcf_margin": 0.0684
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 3923000000.0,
+      "total_revenue": 80738000000.0,
+      "fcf_margin": 0.0486
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 7448000000.0,
+      "total_revenue": 88603000000.0,
+      "fcf_margin": 0.0841
+    }
+  ]
+}

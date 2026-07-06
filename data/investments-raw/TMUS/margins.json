@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "TMUS",
+      "report_date": "2022-06-30",
+      "gross_profit": 10533000000.0,
+      "total_revenue": 19701000000.0,
+      "gross_margin": 0.5346
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2023-06-30",
+      "gross_profit": 12192000000.0,
+      "total_revenue": 19196000000.0,
+      "gross_margin": 0.6351
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2023-09-30",
+      "gross_profit": 12117000000.0,
+      "total_revenue": 19252000000.0,
+      "gross_margin": 0.6294
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2023-12-31",
+      "gross_profit": 12078000000.0,
+      "total_revenue": 20478000000.0,
+      "gross_margin": 0.5898
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2024-03-31",
+      "gross_profit": 12507000000.0,
+      "total_revenue": 19594000000.0,
+      "gross_margin": 0.6383
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2024-06-30",
+      "gross_profit": 13020000000.0,
+      "total_revenue": 19772000000.0,
+      "gross_margin": 0.6585
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2024-09-30",
+      "gross_profit": 13133000000.0,
+      "total_revenue": 20162000000.0,
+      "gross_margin": 0.6514
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2024-12-31",
+      "gross_profit": 13087000000.0,
+      "total_revenue": 21872000000.0,
+      "gross_margin": 0.5983
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2025-03-31",
+      "gross_profit": 13486000000.0,
+      "total_revenue": 20886000000.0,
+      "gross_margin": 0.6457
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2025-06-30",
+      "gross_profit": 13756000000.0,
+      "total_revenue": 21132000000.0,
+      "gross_margin": 0.651
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2025-09-30",
+      "gross_profit": 14231000000.0,
+      "total_revenue": 21957000000.0,
+      "gross_margin": 0.6481
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2025-12-31",
+      "gross_profit": 14062000000.0,
+      "total_revenue": 24334000000.0,
+      "gross_margin": 0.5779
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2026-03-31",
+      "gross_profit": 14280000000.0,
+      "total_revenue": 23107000000.0,
+      "gross_margin": 0.618
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "TMUS",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2020-12-31",
+      "gross_profit": 40131000000.0,
+      "total_revenue": 68397000000.0,
+      "gross_margin": 0.5867
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2021-12-31",
+      "gross_profit": 43513000000.0,
+      "total_revenue": 80118000000.0,
+      "gross_margin": 0.5431
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2022-12-31",
+      "gross_profit": 43365000000.0,
+      "total_revenue": 79571000000.0,
+      "gross_margin": 0.545
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2023-12-31",
+      "gross_profit": 48370000000.0,
+      "total_revenue": 78558000000.0,
+      "gross_margin": 0.6157
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2024-12-31",
+      "gross_profit": 51747000000.0,
+      "total_revenue": 81400000000.0,
+      "gross_margin": 0.6357
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2025-12-31",
+      "gross_profit": 55535000000.0,
+      "total_revenue": 88309000000.0,
+      "gross_margin": 0.6289
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "TMUS",
+      "report_date": "2022-06-30",
+      "operating_income": 1186000000.0,
+      "total_revenue": 19701000000.0,
+      "operating_margin": 0.0602
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2023-06-30",
+      "operating_income": 3810000000.0,
+      "total_revenue": 19196000000.0,
+      "operating_margin": 0.1985
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2023-09-30",
+      "operating_income": 3596000000.0,
+      "total_revenue": 19252000000.0,
+      "operating_margin": 0.1868
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2023-12-31",
+      "operating_income": 3480000000.0,
+      "total_revenue": 20478000000.0,
+      "operating_margin": 0.1699
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2024-03-31",
+      "operating_income": 3998000000.0,
+      "total_revenue": 19594000000.0,
+      "operating_margin": 0.204
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2024-06-30",
+      "operating_income": 4630000000.0,
+      "total_revenue": 19772000000.0,
+      "operating_margin": 0.2342
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2024-09-30",
+      "operating_income": 4796000000.0,
+      "total_revenue": 20162000000.0,
+      "operating_margin": 0.2379
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2024-12-31",
+      "operating_income": 4586000000.0,
+      "total_revenue": 21872000000.0,
+      "operating_margin": 0.2097
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2025-03-31",
+      "operating_income": 4800000000.0,
+      "total_revenue": 20886000000.0,
+      "operating_margin": 0.2298
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2025-06-30",
+      "operating_income": 5213000000.0,
+      "total_revenue": 21132000000.0,
+      "operating_margin": 0.2467
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2025-09-30",
+      "operating_income": 4808000000.0,
+      "total_revenue": 21957000000.0,
+      "operating_margin": 0.219
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2025-12-31",
+      "operating_income": 3736000000.0,
+      "total_revenue": 24334000000.0,
+      "operating_margin": 0.1535
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2026-03-31",
+      "operating_income": 4497000000.0,
+      "total_revenue": 23107000000.0,
+      "operating_margin": 0.1946
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "TMUS",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2020-12-31",
+      "operating_income": 7054000000.0,
+      "total_revenue": 68397000000.0,
+      "operating_margin": 0.1031
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2021-12-31",
+      "operating_income": 6892000000.0,
+      "total_revenue": 80118000000.0,
+      "operating_margin": 0.086
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2022-12-31",
+      "operating_income": 8107000000.0,
+      "total_revenue": 79571000000.0,
+      "operating_margin": 0.1019
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2023-12-31",
+      "operating_income": 14241000000.0,
+      "total_revenue": 78558000000.0,
+      "operating_margin": 0.1813
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2024-12-31",
+      "operating_income": 18010000000.0,
+      "total_revenue": 81400000000.0,
+      "operating_margin": 0.2213
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2025-12-31",
+      "operating_income": 18557000000.0,
+      "total_revenue": 88309000000.0,
+      "operating_margin": 0.2101
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "TMUS",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": -108000000.0,
+      "total_revenue": 19701000000.0,
+      "net_margin": -0.0055
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 2221000000.0,
+      "total_revenue": 19196000000.0,
+      "net_margin": 0.1157
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 2142000000.0,
+      "total_revenue": 19252000000.0,
+      "net_margin": 0.1113
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 2014000000.0,
+      "total_revenue": 20478000000.0,
+      "net_margin": 0.0983
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 2374000000.0,
+      "total_revenue": 19594000000.0,
+      "net_margin": 0.1212
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 2925000000.0,
+      "total_revenue": 19772000000.0,
+      "net_margin": 0.1479
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 3059000000.0,
+      "total_revenue": 20162000000.0,
+      "net_margin": 0.1517
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 2981000000.0,
+      "total_revenue": 21872000000.0,
+      "net_margin": 0.1363
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 2953000000.0,
+      "total_revenue": 20886000000.0,
+      "net_margin": 0.1414
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 3222000000.0,
+      "total_revenue": 21132000000.0,
+      "net_margin": 0.1525
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 2714000000.0,
+      "total_revenue": 21957000000.0,
+      "net_margin": 0.1236
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 2103000000.0,
+      "total_revenue": 24334000000.0,
+      "net_margin": 0.0864
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 2504000000.0,
+      "total_revenue": 23107000000.0,
+      "net_margin": 0.1084
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "TMUS",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 3064000000.0,
+      "total_revenue": 68397000000.0,
+      "net_margin": 0.0448
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 3024000000.0,
+      "total_revenue": 80118000000.0,
+      "net_margin": 0.0377
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 2590000000.0,
+      "total_revenue": 79571000000.0,
+      "net_margin": 0.0325
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 8317000000.0,
+      "total_revenue": 78558000000.0,
+      "net_margin": 0.1059
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 11339000000.0,
+      "total_revenue": 81400000000.0,
+      "net_margin": 0.1393
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 10992000000.0,
+      "total_revenue": 88309000000.0,
+      "net_margin": 0.1245
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "TMUS",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 19701000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2023-06-30",
+      "ebitda": 6909000000.0,
+      "total_revenue": 19196000000.0,
+      "ebitda_margin": 0.3599
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2023-09-30",
+      "ebitda": 6824000000.0,
+      "total_revenue": 19252000000.0,
+      "ebitda_margin": 0.3545
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2023-12-31",
+      "ebitda": 6810000000.0,
+      "total_revenue": 20478000000.0,
+      "ebitda_margin": 0.3326
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2024-03-31",
+      "ebitda": 7389000000.0,
+      "total_revenue": 19594000000.0,
+      "ebitda_margin": 0.3771
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2024-06-30",
+      "ebitda": 7870000000.0,
+      "total_revenue": 19772000000.0,
+      "ebitda_margin": 0.398
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2024-09-30",
+      "ebitda": 7954000000.0,
+      "total_revenue": 20162000000.0,
+      "ebitda_margin": 0.3945
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2024-12-31",
+      "ebitda": 7829000000.0,
+      "total_revenue": 21872000000.0,
+      "ebitda_margin": 0.3579
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2025-03-31",
+      "ebitda": 7952000000.0,
+      "total_revenue": 20886000000.0,
+      "ebitda_margin": 0.3807
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2025-06-30",
+      "ebitda": 8348000000.0,
+      "total_revenue": 21132000000.0,
+      "ebitda_margin": 0.395
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2025-09-30",
+      "ebitda": 7860000000.0,
+      "total_revenue": 21957000000.0,
+      "ebitda_margin": 0.358
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2025-12-31",
+      "ebitda": 7403000000.0,
+      "total_revenue": 24334000000.0,
+      "ebitda_margin": 0.3042
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2026-03-31",
+      "ebitda": 8182000000.0,
+      "total_revenue": 23107000000.0,
+      "ebitda_margin": 0.3541
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "TMUS",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2020-12-31",
+      "ebitda": 20382000000.0,
+      "total_revenue": 68397000000.0,
+      "ebitda_margin": 0.298
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2021-12-31",
+      "ebitda": 23076000000.0,
+      "total_revenue": 80118000000.0,
+      "ebitda_margin": 0.288
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2022-12-31",
+      "ebitda": 20161000000.0,
+      "total_revenue": 79571000000.0,
+      "ebitda_margin": 0.2534
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2023-12-31",
+      "ebitda": 27152000000.0,
+      "total_revenue": 78558000000.0,
+      "ebitda_margin": 0.3456
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2024-12-31",
+      "ebitda": 31042000000.0,
+      "total_revenue": 81400000000.0,
+      "ebitda_margin": 0.3814
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2025-12-31",
+      "ebitda": 31563000000.0,
+      "total_revenue": 88309000000.0,
+      "ebitda_margin": 0.3574
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "TMUS",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 521000000.0,
+      "total_revenue": 19701000000.0,
+      "fcf_margin": 0.0264
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 1533000000.0,
+      "total_revenue": 19196000000.0,
+      "fcf_margin": 0.0799
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 2751000000.0,
+      "total_revenue": 19252000000.0,
+      "fcf_margin": 0.1429
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 2487000000.0,
+      "total_revenue": 20478000000.0,
+      "fcf_margin": 0.1214
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 2396000000.0,
+      "total_revenue": 19594000000.0,
+      "fcf_margin": 0.1223
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 3325000000.0,
+      "total_revenue": 19772000000.0,
+      "fcf_margin": 0.1682
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 1759000000.0,
+      "total_revenue": 20162000000.0,
+      "fcf_margin": 0.0872
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 2502000000.0,
+      "total_revenue": 21872000000.0,
+      "fcf_margin": 0.1144
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 4323000000.0,
+      "total_revenue": 20886000000.0,
+      "fcf_margin": 0.207
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 3754000000.0,
+      "total_revenue": 21132000000.0,
+      "fcf_margin": 0.1776
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 3228000000.0,
+      "total_revenue": 21957000000.0,
+      "fcf_margin": 0.147
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 4122000000.0,
+      "total_revenue": 24334000000.0,
+      "fcf_margin": 0.1694
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 4573000000.0,
+      "total_revenue": 23107000000.0,
+      "fcf_margin": 0.1979
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "TMUS",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2020-12-31",
+      "free_cash_flow": -3727000000.0,
+      "total_revenue": 68397000000.0,
+      "fcf_margin": -0.0545
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2021-12-31",
+      "free_cash_flow": -7775000000.0,
+      "total_revenue": 80118000000.0,
+      "fcf_margin": -0.097
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2022-12-31",
+      "free_cash_flow": -520000000.0,
+      "total_revenue": 79571000000.0,
+      "fcf_margin": -0.0065
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 7748000000.0,
+      "total_revenue": 78558000000.0,
+      "fcf_margin": 0.0986
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 9982000000.0,
+      "total_revenue": 81400000000.0,
+      "fcf_margin": 0.1226
+    },
+    {
+      "symbol": "TMUS",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 15427000000.0,
+      "total_revenue": 88309000000.0,
+      "fcf_margin": 0.1747
+    }
+  ]
+}

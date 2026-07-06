@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "ORLY",
+    "name": "Mr. Brad W. Beckham",
+    "title": "Chief Executive Officer",
+    "age": 46,
+    "born": 1979,
+    "pay": 2815451,
+    "exercised": 869369,
+    "unexercised": 11666335,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "ORLY",
+    "name": "Mr. Brent G. Kirby",
+    "title": "President",
+    "age": 56,
+    "born": 1969,
+    "pay": 2392769,
+    "exercised": 0,
+    "unexercised": 19633204,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "ORLY",
+    "name": "Mr. David E. O'Reilly",
+    "title": "Executive Vice Chairman",
+    "age": 75,
+    "born": 1950,
+    "pay": 773583,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "ORLY",
+    "name": "Mr. Gregory L. Henslee",
+    "title": "Executive Chairman",
+    "age": 64,
+    "born": 1961,
+    "pay": 913686,
+    "exercised": 9569369,
+    "unexercised": 10276653,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "ORLY",
+    "name": "Mr. Jason Lee Tarrant",
+    "title": "Executive Vice President of Store Operations & Sales",
+    "age": 44,
+    "born": 1981,
+    "pay": 1102942,
+    "exercised": 2129743,
+    "unexercised": 7798400,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "ORLY",
+    "name": "Mr. Jeremy Adam Fletcher CPA",
+    "title": "Executive VP & CFO",
+    "age": 47,
+    "born": 1978,
+    "pay": 1619396,
+    "exercised": 310621,
+    "unexercised": 6819885,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "ORLY",
+    "name": "Mr. Robert Allen Dumas",
+    "title": "Senior Vice President of Eastern Store Operations & Sales",
+    "age": 51,
+    "born": 1974,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "ORLY",
+    "name": "Mr. Scott Richard Ross",
+    "title": "Executive VP & Chief Information Officer",
+    "age": 59,
+    "born": 1966,
+    "pay": 1396454,
+    "exercised": 0,
+    "unexercised": 603752,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "ORLY",
+    "name": "Ms. Shari Lynne Reaves",
+    "title": "Senior Vice President of Human Resources & Training",
+    "age": 54,
+    "born": 1971,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "ORLY",
+    "name": "Ms. Tamara F. Conn",
+    "title": "Senior VP of Legal & General Counsel",
+    "age": 54,
+    "born": 1971,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  }
+]

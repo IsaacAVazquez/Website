@@ -1,0 +1,1550 @@
+{
+  "quarterly_revenue": [
+    {
+      "symbol": "SAP",
+      "report_date": "2022-06-30T00:00:00.000",
+      "revenue": 7516000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-06-30T00:00:00.000",
+      "revenue": 7555000000.0,
+      "prev_year_revenue": 7516000000.0,
+      "yoy_growth": 0.0052
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-09-30T00:00:00.000",
+      "revenue": 7744000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 8468000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-03-31T00:00:00.000",
+      "revenue": 8041000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-06-30T00:00:00.000",
+      "revenue": 8289000000.0,
+      "prev_year_revenue": 7555000000.0,
+      "yoy_growth": 0.0972
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-09-30T00:00:00.000",
+      "revenue": 8470000000.0,
+      "prev_year_revenue": 7744000000.0,
+      "yoy_growth": 0.0938
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 9377000000.0,
+      "prev_year_revenue": 8468000000.0,
+      "yoy_growth": 0.1073
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-03-31T00:00:00.000",
+      "revenue": 9013000000.0,
+      "prev_year_revenue": 8041000000.0,
+      "yoy_growth": 0.1209
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-06-30T00:00:00.000",
+      "revenue": 9027000000.0,
+      "prev_year_revenue": 8289000000.0,
+      "yoy_growth": 0.089
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-09-30T00:00:00.000",
+      "revenue": 9076000000.0,
+      "prev_year_revenue": 8470000000.0,
+      "yoy_growth": 0.0715
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 9684000000.0,
+      "prev_year_revenue": 9377000000.0,
+      "yoy_growth": 0.0327
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 9555000000.0,
+      "prev_year_revenue": 9013000000.0,
+      "yoy_growth": 0.0601
+    }
+  ],
+  "annual_revenue": [
+    {
+      "symbol": "SAP",
+      "report_date": "2019-12-31T00:00:00.000",
+      "revenue": 27553000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2020-12-31T00:00:00.000",
+      "revenue": 27338000000.0,
+      "prev_year_revenue": 27553000000.0,
+      "yoy_growth": -0.0078
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2021-12-31T00:00:00.000",
+      "revenue": 26953000000.0,
+      "prev_year_revenue": 27338000000.0,
+      "yoy_growth": -0.0141
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2022-12-31T00:00:00.000",
+      "revenue": 29519000000.0,
+      "prev_year_revenue": 26953000000.0,
+      "yoy_growth": 0.0952
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 31207000000.0,
+      "prev_year_revenue": 29519000000.0,
+      "yoy_growth": 0.0572
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 34176000000.0,
+      "prev_year_revenue": 31207000000.0,
+      "yoy_growth": 0.0951
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 36800000000.0,
+      "prev_year_revenue": 34176000000.0,
+      "yoy_growth": 0.0768
+    }
+  ],
+  "quarterly_operating_income": [
+    {
+      "symbol": "SAP",
+      "report_date": "2022-06-30T00:00:00.000",
+      "operating_income": 802000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-06-30T00:00:00.000",
+      "operating_income": 1368000000.0,
+      "prev_year_operating_income": 802000000.0,
+      "yoy_growth": 0.7057
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-09-30T00:00:00.000",
+      "operating_income": 1687000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 1896000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-03-31T00:00:00.000",
+      "operating_income": 1455000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-06-30T00:00:00.000",
+      "operating_income": 1854000000.0,
+      "prev_year_operating_income": 1368000000.0,
+      "yoy_growth": 0.3553
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-09-30T00:00:00.000",
+      "operating_income": 2163000000.0,
+      "prev_year_operating_income": 1687000000.0,
+      "yoy_growth": 0.2822
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 2339000000.0,
+      "prev_year_operating_income": 1896000000.0,
+      "yoy_growth": 0.2336
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-03-31T00:00:00.000",
+      "operating_income": 2333000000.0,
+      "prev_year_operating_income": 1455000000.0,
+      "yoy_growth": 0.6034
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-06-30T00:00:00.000",
+      "operating_income": 2474000000.0,
+      "prev_year_operating_income": 1854000000.0,
+      "yoy_growth": 0.3344
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-09-30T00:00:00.000",
+      "operating_income": 2470000000.0,
+      "prev_year_operating_income": 2163000000.0,
+      "yoy_growth": 0.1419
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 2343000000.0,
+      "prev_year_operating_income": 2339000000.0,
+      "yoy_growth": 0.0017
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2026-03-31T00:00:00.000",
+      "operating_income": 2752000000.0,
+      "prev_year_operating_income": 2333000000.0,
+      "yoy_growth": 0.1796
+    }
+  ],
+  "annual_operating_income": [
+    {
+      "symbol": "SAP",
+      "report_date": "2019-12-31T00:00:00.000",
+      "operating_income": 5623000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2020-12-31T00:00:00.000",
+      "operating_income": 6621000000.0,
+      "prev_year_operating_income": 5623000000.0,
+      "yoy_growth": 0.1775
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2021-12-31T00:00:00.000",
+      "operating_income": 6465000000.0,
+      "prev_year_operating_income": 6621000000.0,
+      "yoy_growth": -0.0236
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2022-12-31T00:00:00.000",
+      "operating_income": 6051000000.0,
+      "prev_year_operating_income": 6465000000.0,
+      "yoy_growth": -0.064
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 6014000000.0,
+      "prev_year_operating_income": 6051000000.0,
+      "yoy_growth": -0.0061
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 7808000000.0,
+      "prev_year_operating_income": 6014000000.0,
+      "yoy_growth": 0.2983
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 9620000000.0,
+      "prev_year_operating_income": 7808000000.0,
+      "yoy_growth": 0.2321
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "SAP",
+      "report_date": "2023-06-30T00:00:00.000",
+      "ebitda": 1805000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-09-30T00:00:00.000",
+      "ebitda": 2368000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 2322000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-03-31T00:00:00.000",
+      "ebitda": -423000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-06-30T00:00:00.000",
+      "ebitda": 1942000000.0,
+      "prev_year_ebitda": 1805000000.0,
+      "yoy_growth": 0.0759
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-09-30T00:00:00.000",
+      "ebitda": 2709000000.0,
+      "prev_year_ebitda": 2368000000.0,
+      "yoy_growth": 0.144
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 2533000000.0,
+      "prev_year_ebitda": 2322000000.0,
+      "yoy_growth": 0.0909
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-03-31T00:00:00.000",
+      "ebitda": 3097000000.0,
+      "prev_year_ebitda": -423000000.0,
+      "yoy_growth": 8.3215
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-06-30T00:00:00.000",
+      "ebitda": 3089000000.0,
+      "prev_year_ebitda": 1942000000.0,
+      "yoy_growth": 0.5906
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-09-30T00:00:00.000",
+      "ebitda": 3375000000.0,
+      "prev_year_ebitda": 2709000000.0,
+      "yoy_growth": 0.2458
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 2513000000.0,
+      "prev_year_ebitda": 2533000000.0,
+      "yoy_growth": -0.0079
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2026-03-31T00:00:00.000",
+      "ebitda": 3343000000.0,
+      "prev_year_ebitda": 3097000000.0,
+      "yoy_growth": 0.0794
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "SAP",
+      "report_date": "2019-12-31T00:00:00.000",
+      "ebitda": 7079000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2020-12-31T00:00:00.000",
+      "ebitda": 9406000000.0,
+      "prev_year_ebitda": 7079000000.0,
+      "yoy_growth": 0.3287
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2021-12-31T00:00:00.000",
+      "ebitda": 10987000000.0,
+      "prev_year_ebitda": 9406000000.0,
+      "yoy_growth": 0.1681
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2022-12-31T00:00:00.000",
+      "ebitda": 6480000000.0,
+      "prev_year_ebitda": 10987000000.0,
+      "yoy_growth": -0.4102
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 7353000000.0,
+      "prev_year_ebitda": 6480000000.0,
+      "yoy_growth": 0.1347
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 6589000000.0,
+      "prev_year_ebitda": 7353000000.0,
+      "yoy_growth": -0.1039
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 12073000000.0,
+      "prev_year_ebitda": 6589000000.0,
+      "yoy_growth": 0.8323
+    }
+  ],
+  "quarterly_net_income": [
+    {
+      "symbol": "SAP",
+      "report_date": "2022-06-30T00:00:00.000",
+      "net_income_common_stockholders": 334000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-06-30T00:00:00.000",
+      "net_income_common_stockholders": 3161000000.0,
+      "prev_year_net_income_common_stockholders": 334000000.0,
+      "yoy_growth": 8.4641
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-09-30T00:00:00.000",
+      "net_income_common_stockholders": 1278000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1313000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-03-31T00:00:00.000",
+      "net_income_common_stockholders": -828000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-06-30T00:00:00.000",
+      "net_income_common_stockholders": 888000000.0,
+      "prev_year_net_income_common_stockholders": 3161000000.0,
+      "yoy_growth": -0.7191
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-09-30T00:00:00.000",
+      "net_income_common_stockholders": 1463000000.0,
+      "prev_year_net_income_common_stockholders": 1278000000.0,
+      "yoy_growth": 0.1448
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1601000000.0,
+      "prev_year_net_income_common_stockholders": 1313000000.0,
+      "yoy_growth": 0.2193
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-03-31T00:00:00.000",
+      "net_income_common_stockholders": 1780000000.0,
+      "prev_year_net_income_common_stockholders": -828000000.0,
+      "yoy_growth": 3.1498
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-06-30T00:00:00.000",
+      "net_income_common_stockholders": 1697000000.0,
+      "prev_year_net_income_common_stockholders": 888000000.0,
+      "yoy_growth": 0.911
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-09-30T00:00:00.000",
+      "net_income_common_stockholders": 2004000000.0,
+      "prev_year_net_income_common_stockholders": 1463000000.0,
+      "yoy_growth": 0.3698
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1680000000.0,
+      "prev_year_net_income_common_stockholders": 1601000000.0,
+      "yoy_growth": 0.0493
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 1932000000.0,
+      "prev_year_net_income_common_stockholders": 1780000000.0,
+      "yoy_growth": 0.0854
+    }
+  ],
+  "annual_net_income": [
+    {
+      "symbol": "SAP",
+      "report_date": "2019-12-31T00:00:00.000",
+      "net_income_common_stockholders": 3337000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2020-12-31T00:00:00.000",
+      "net_income_common_stockholders": 5145000000.0,
+      "prev_year_net_income_common_stockholders": 3337000000.0,
+      "yoy_growth": 0.5418
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2021-12-31T00:00:00.000",
+      "net_income_common_stockholders": 5256000000.0,
+      "prev_year_net_income_common_stockholders": 5145000000.0,
+      "yoy_growth": 0.0216
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2022-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2284000000.0,
+      "prev_year_net_income_common_stockholders": 5256000000.0,
+      "yoy_growth": -0.5654
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 6139000000.0,
+      "prev_year_net_income_common_stockholders": 2284000000.0,
+      "yoy_growth": 1.6878
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 3124000000.0,
+      "prev_year_net_income_common_stockholders": 6139000000.0,
+      "yoy_growth": -0.4911
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 7161000000.0,
+      "prev_year_net_income_common_stockholders": 3124000000.0,
+      "yoy_growth": 1.2923
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "SAP",
+      "report_date": "2022-06-30T00:00:00.000",
+      "free_cash_flow": 33000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-06-30T00:00:00.000",
+      "free_cash_flow": 710000000.0,
+      "prev_year_free_cash_flow": 33000000.0,
+      "yoy_growth": 20.5152
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-09-30T00:00:00.000",
+      "free_cash_flow": 942000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 1778000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-03-31T00:00:00.000",
+      "free_cash_flow": 2691000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-06-30T00:00:00.000",
+      "free_cash_flow": 1332000000.0,
+      "prev_year_free_cash_flow": 710000000.0,
+      "yoy_growth": 0.8761
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-09-30T00:00:00.000",
+      "free_cash_flow": 1240000000.0,
+      "prev_year_free_cash_flow": 942000000.0,
+      "yoy_growth": 0.3163
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": -819000000.0,
+      "prev_year_free_cash_flow": 1778000000.0,
+      "yoy_growth": -1.4606
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-03-31T00:00:00.000",
+      "free_cash_flow": 3613000000.0,
+      "prev_year_free_cash_flow": 2691000000.0,
+      "yoy_growth": 0.3426
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-06-30T00:00:00.000",
+      "free_cash_flow": 2386000000.0,
+      "prev_year_free_cash_flow": 1332000000.0,
+      "yoy_growth": 0.7913
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-09-30T00:00:00.000",
+      "free_cash_flow": 1301000000.0,
+      "prev_year_free_cash_flow": 1240000000.0,
+      "yoy_growth": 0.0492
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 1117000000.0,
+      "prev_year_free_cash_flow": -819000000.0,
+      "yoy_growth": 2.3639
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": 3274000000.0,
+      "prev_year_free_cash_flow": 3613000000.0,
+      "yoy_growth": -0.0938
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "SAP",
+      "report_date": "2020-12-31T00:00:00.000",
+      "free_cash_flow": 6379000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2021-12-31T00:00:00.000",
+      "free_cash_flow": 5522000000.0,
+      "prev_year_free_cash_flow": 6379000000.0,
+      "yoy_growth": -0.1343
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2022-12-31T00:00:00.000",
+      "free_cash_flow": 4770000000.0,
+      "prev_year_free_cash_flow": 5522000000.0,
+      "yoy_growth": -0.1362
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 5461000000.0,
+      "prev_year_free_cash_flow": 4770000000.0,
+      "yoy_growth": 0.1449
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 4410000000.0,
+      "prev_year_free_cash_flow": 5461000000.0,
+      "yoy_growth": -0.1925
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 8417000000.0,
+      "prev_year_free_cash_flow": 4410000000.0,
+      "yoy_growth": 0.9086
+    }
+  ],
+  "quarterly_eps": [
+    {
+      "symbol": "SAP",
+      "report_date": "1996-03-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "1996-06-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "1996-09-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "1996-12-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "1997-03-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "1997-09-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "1997-12-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "1998-03-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "1998-06-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "1998-09-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "1998-12-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "1999-03-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "1999-06-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "1999-09-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "1999-12-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2000-03-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2000-06-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2000-09-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2000-12-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2001-03-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2001-06-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2001-09-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2001-12-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2002-03-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2002-06-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2002-09-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2002-12-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2003-03-31T00:00:00.000",
+      "eps": 0.1621,
+      "prev_year_eps": 0.0,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2003-06-30T00:00:00.000",
+      "eps": 0.2015,
+      "prev_year_eps": 0.0,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2003-09-30T00:00:00.000",
+      "eps": 0.228,
+      "prev_year_eps": 0.0,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2003-12-31T00:00:00.000",
+      "eps": 0.4075,
+      "prev_year_eps": 0.0,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2004-03-31T00:00:00.000",
+      "eps": 0.2259,
+      "prev_year_eps": 0.1621,
+      "yoy_growth": 0.3936
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2004-06-30T00:00:00.000",
+      "eps": 0.2424,
+      "prev_year_eps": 0.2015,
+      "yoy_growth": 0.203
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2004-09-30T00:00:00.000",
+      "eps": 0.2868,
+      "prev_year_eps": 0.228,
+      "yoy_growth": 0.2579
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2004-12-31T00:00:00.000",
+      "eps": 0.5743,
+      "prev_year_eps": 0.4075,
+      "yoy_growth": 0.4093
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2005-03-31T00:00:00.000",
+      "eps": 0.2687,
+      "prev_year_eps": 0.2259,
+      "yoy_growth": 0.1895
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2005-06-30T00:00:00.000",
+      "eps": 0.2896,
+      "prev_year_eps": 0.2424,
+      "yoy_growth": 0.1947
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2005-09-30T00:00:00.000",
+      "eps": 0.3255,
+      "prev_year_eps": 0.2868,
+      "yoy_growth": 0.1349
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2005-12-31T00:00:00.000",
+      "eps": 0.5897,
+      "prev_year_eps": 0.5743,
+      "yoy_growth": 0.0268
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2006-03-31T00:00:00.000",
+      "eps": 0.2766,
+      "prev_year_eps": 0.2687,
+      "yoy_growth": 0.0294
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2006-06-30T00:00:00.000",
+      "eps": 0.4272,
+      "prev_year_eps": 0.2896,
+      "yoy_growth": 0.4751
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2006-09-30T00:00:00.000",
+      "eps": 0.3822,
+      "prev_year_eps": 0.3255,
+      "yoy_growth": 0.1742
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2006-12-31T00:00:00.000",
+      "eps": 0.8504,
+      "prev_year_eps": 0.5897,
+      "yoy_growth": 0.4421
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2007-03-31T00:00:00.000",
+      "eps": 0.3425,
+      "prev_year_eps": 0.2766,
+      "yoy_growth": 0.2383
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2007-06-30T00:00:00.000",
+      "eps": 0.4988,
+      "prev_year_eps": 0.4272,
+      "yoy_growth": 0.1676
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2007-09-30T00:00:00.000",
+      "eps": 0.4532,
+      "prev_year_eps": 0.3822,
+      "yoy_growth": 0.1858
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2007-12-31T00:00:00.000",
+      "eps": 0.9121,
+      "prev_year_eps": 0.8504,
+      "yoy_growth": 0.0726
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2008-03-31T00:00:00.000",
+      "eps": 0.3056,
+      "prev_year_eps": 0.3425,
+      "yoy_growth": -0.1077
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2008-06-30T00:00:00.000",
+      "eps": 0.5311,
+      "prev_year_eps": 0.4988,
+      "yoy_growth": 0.0648
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2008-09-30T00:00:00.000",
+      "eps": 0.4954,
+      "prev_year_eps": 0.4532,
+      "yoy_growth": 0.0931
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2008-12-31T00:00:00.000",
+      "eps": 0.8955,
+      "prev_year_eps": 0.9121,
+      "yoy_growth": -0.0182
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2009-03-31T00:00:00.000",
+      "eps": 0.2083,
+      "prev_year_eps": 0.3056,
+      "yoy_growth": -0.3184
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2009-06-30T00:00:00.000",
+      "eps": 0.4902,
+      "prev_year_eps": 0.5311,
+      "yoy_growth": -0.077
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2009-09-30T00:00:00.000",
+      "eps": 0.5433,
+      "prev_year_eps": 0.4954,
+      "yoy_growth": 0.0967
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2009-12-31T00:00:00.000",
+      "eps": 0.8419,
+      "prev_year_eps": 0.8955,
+      "yoy_growth": -0.0599
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2010-03-31T00:00:00.000",
+      "eps": 0.456,
+      "prev_year_eps": 0.2083,
+      "yoy_growth": 1.1892
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2010-06-30T00:00:00.000",
+      "eps": 0.5205,
+      "prev_year_eps": 0.4902,
+      "yoy_growth": 0.0618
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2010-09-30T00:00:00.000",
+      "eps": 0.5428,
+      "prev_year_eps": 0.5433,
+      "yoy_growth": -0.0009
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2010-12-31T00:00:00.000",
+      "eps": 0.4884,
+      "prev_year_eps": 0.8419,
+      "yoy_growth": -0.4199
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2011-03-31T00:00:00.000",
+      "eps": 0.4727,
+      "prev_year_eps": 0.456,
+      "yoy_growth": 0.0366
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2011-06-30T00:00:00.000",
+      "eps": 0.7051,
+      "prev_year_eps": 0.5205,
+      "yoy_growth": 0.3547
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2011-09-30T00:00:00.000",
+      "eps": 1.482,
+      "prev_year_eps": 0.5428,
+      "yoy_growth": 1.7303
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2011-12-31T00:00:00.000",
+      "eps": 1.3607,
+      "prev_year_eps": 0.4884,
+      "yoy_growth": 1.786
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2012-03-31T00:00:00.000",
+      "eps": 0.4907,
+      "prev_year_eps": 0.4727,
+      "yoy_growth": 0.0381
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2012-06-30T00:00:00.000",
+      "eps": 0.705,
+      "prev_year_eps": 0.7051,
+      "yoy_growth": -0.0001
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2012-09-30T00:00:00.000",
+      "eps": 0.655,
+      "prev_year_eps": 1.482,
+      "yoy_growth": -0.558
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2012-12-31T00:00:00.000",
+      "eps": 1.1931,
+      "prev_year_eps": 1.3607,
+      "yoy_growth": -0.1232
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2013-03-31T00:00:00.000",
+      "eps": 0.5792,
+      "prev_year_eps": 0.4907,
+      "yoy_growth": 0.1804
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2013-06-30T00:00:00.000",
+      "eps": 0.7959,
+      "prev_year_eps": 0.705,
+      "yoy_growth": 0.1289
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2013-09-30T00:00:00.000",
+      "eps": 0.8534,
+      "prev_year_eps": 0.655,
+      "yoy_growth": 0.3029
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2013-12-31T00:00:00.000",
+      "eps": 1.4974,
+      "prev_year_eps": 1.1931,
+      "yoy_growth": 0.255
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2014-03-31T00:00:00.000",
+      "eps": 0.6162,
+      "prev_year_eps": 0.5792,
+      "yoy_growth": 0.0639
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2014-06-30T00:00:00.000",
+      "eps": 0.6455,
+      "prev_year_eps": 0.7959,
+      "yoy_growth": -0.189
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2014-09-30T00:00:00.000",
+      "eps": 0.9535,
+      "prev_year_eps": 0.8534,
+      "yoy_growth": 0.1173
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2014-12-31T00:00:00.000",
+      "eps": 1.3616,
+      "prev_year_eps": 1.4974,
+      "yoy_growth": -0.0907
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2015-03-31T00:00:00.000",
+      "eps": 0.3878,
+      "prev_year_eps": 0.6162,
+      "yoy_growth": -0.3707
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2015-06-30T00:00:00.000",
+      "eps": 0.433,
+      "prev_year_eps": 0.6455,
+      "yoy_growth": -0.3292
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2015-09-30T00:00:00.000",
+      "eps": 0.8354,
+      "prev_year_eps": 0.9535,
+      "yoy_growth": -0.1239
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2015-12-31T00:00:00.000",
+      "eps": 1.1711,
+      "prev_year_eps": 1.3616,
+      "yoy_growth": -0.1399
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2016-03-31T00:00:00.000",
+      "eps": 0.5293,
+      "prev_year_eps": 0.3878,
+      "yoy_growth": 0.3649
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2016-06-30T00:00:00.000",
+      "eps": 0.7638,
+      "prev_year_eps": 0.433,
+      "yoy_growth": 0.764
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2016-09-30T00:00:00.000",
+      "eps": 0.6823,
+      "prev_year_eps": 0.8354,
+      "yoy_growth": -0.1833
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2016-12-31T00:00:00.000",
+      "eps": 1.3489,
+      "prev_year_eps": 1.1711,
+      "yoy_growth": 0.1518
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2017-03-31T00:00:00.000",
+      "eps": 0.4583,
+      "prev_year_eps": 0.5293,
+      "yoy_growth": -0.1341
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2017-06-30T00:00:00.000",
+      "eps": 0.6261,
+      "prev_year_eps": 0.7638,
+      "yoy_growth": -0.1803
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2017-09-30T00:00:00.000",
+      "eps": 0.9704,
+      "prev_year_eps": 0.6823,
+      "yoy_growth": 0.4222
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2017-12-31T00:00:00.000",
+      "eps": 1.825,
+      "prev_year_eps": 1.3489,
+      "yoy_growth": 0.353
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2018-03-31T00:00:00.000",
+      "eps": 0.7288,
+      "prev_year_eps": 0.4583,
+      "yoy_growth": 0.5902
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2018-06-30T00:00:00.000",
+      "eps": 0.7174,
+      "prev_year_eps": 0.6261,
+      "yoy_growth": 0.1458
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2018-09-30T00:00:00.000",
+      "eps": 0.9478,
+      "prev_year_eps": 0.9704,
+      "yoy_growth": -0.0233
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2018-12-31T00:00:00.000",
+      "eps": 1.6122,
+      "prev_year_eps": 1.825,
+      "yoy_growth": -0.1166
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2019-03-31T00:00:00.000",
+      "eps": -0.1084,
+      "prev_year_eps": 0.7288,
+      "yoy_growth": -1.1487
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2019-06-30T00:00:00.000",
+      "eps": 0.5357,
+      "prev_year_eps": 0.7174,
+      "yoy_growth": -0.2533
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2019-09-30T00:00:00.000",
+      "eps": 1.1603,
+      "prev_year_eps": 0.9478,
+      "yoy_growth": 0.2242
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2019-12-31T00:00:00.000",
+      "eps": 1.517,
+      "prev_year_eps": 1.6122,
+      "yoy_growth": -0.059
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2020-03-31T00:00:00.000",
+      "eps": 0.7529,
+      "prev_year_eps": -0.1084,
+      "yoy_growth": 7.9456
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2020-06-30T00:00:00.000",
+      "eps": 0.8094,
+      "prev_year_eps": 0.5357,
+      "yoy_growth": 0.5109
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2020-09-30T00:00:00.000",
+      "eps": 1.5412,
+      "prev_year_eps": 1.1603,
+      "yoy_growth": 0.3283
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2020-12-31T00:00:00.000",
+      "eps": 1.9277,
+      "prev_year_eps": 1.517,
+      "yoy_growth": 0.2707
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2021-03-31T00:00:00.000",
+      "eps": 1.0616,
+      "prev_year_eps": 0.7529,
+      "yoy_growth": 0.41
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2021-06-30T00:00:00.000",
+      "eps": 1.3859,
+      "prev_year_eps": 0.8094,
+      "yoy_growth": 0.7123
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2021-09-30T00:00:00.000",
+      "eps": 1.4045,
+      "prev_year_eps": 1.5412,
+      "yoy_growth": -0.0887
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2021-12-31T00:00:00.000",
+      "eps": 1.4152,
+      "prev_year_eps": 1.9277,
+      "yoy_growth": -0.2659
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2022-03-31T00:00:00.000",
+      "eps": 0.7047,
+      "prev_year_eps": 1.0616,
+      "yoy_growth": -0.3362
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2022-06-30T00:00:00.000",
+      "eps": 0.3043,
+      "prev_year_eps": 1.3859,
+      "yoy_growth": -0.7804
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2022-09-30T00:00:00.000",
+      "eps": 0.5745,
+      "prev_year_eps": 1.4045,
+      "yoy_growth": -0.591
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2022-12-31T00:00:00.000",
+      "eps": 0.4706,
+      "prev_year_eps": 1.4152,
+      "yoy_growth": -0.6675
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-03-31T00:00:00.000",
+      "eps": 0.4378,
+      "prev_year_eps": 0.7047,
+      "yoy_growth": -0.3787
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-06-30T00:00:00.000",
+      "eps": 0.235,
+      "prev_year_eps": 0.3043,
+      "yoy_growth": -0.2277
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-09-30T00:00:00.000",
+      "eps": 1.1782,
+      "prev_year_eps": 0.5745,
+      "yoy_growth": 1.0508
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "eps": 1.0862,
+      "prev_year_eps": 0.4706,
+      "yoy_growth": 1.3081
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-03-31T00:00:00.000",
+      "eps": -0.7701,
+      "prev_year_eps": 0.4378,
+      "yoy_growth": -2.759
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-06-30T00:00:00.000",
+      "eps": 0.8187,
+      "prev_year_eps": 0.235,
+      "yoy_growth": 2.4838
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-09-30T00:00:00.000",
+      "eps": 1.3643,
+      "prev_year_eps": 1.1782,
+      "yoy_growth": 0.158
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "eps": 1.4522,
+      "prev_year_eps": 1.0862,
+      "yoy_growth": 0.337
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-03-31T00:00:00.000",
+      "eps": 1.5917,
+      "prev_year_eps": -0.7701,
+      "yoy_growth": 3.0669
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-06-30T00:00:00.000",
+      "eps": 1.6399,
+      "prev_year_eps": 0.8187,
+      "yoy_growth": 1.0031
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-09-30T00:00:00.000",
+      "eps": 1.9982,
+      "prev_year_eps": 1.3643,
+      "yoy_growth": 0.4646
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "eps": 1.8333,
+      "prev_year_eps": 1.4522,
+      "yoy_growth": 0.2624
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2026-03-31T00:00:00.000",
+      "eps": 1.9352,
+      "prev_year_eps": 1.5917,
+      "yoy_growth": 0.2158
+    }
+  ]
+}

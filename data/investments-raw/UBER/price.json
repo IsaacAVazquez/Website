@@ -1,0 +1,2270 @@
+[
+  {
+    "symbol": "UBER",
+    "report_date": "2025-07-02",
+    "open": 91.88,
+    "close": 92.05,
+    "high": 94.1,
+    "low": 91.55,
+    "volume": 13604000
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-07-03",
+    "open": 92.63,
+    "close": 93.63,
+    "high": 94.11,
+    "low": 92.61,
+    "volume": 8112600
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-07-07",
+    "open": 93.54,
+    "close": 96.68,
+    "high": 97.12,
+    "low": 93.54,
+    "volume": 29817200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-07-08",
+    "open": 96.89,
+    "close": 97.48,
+    "high": 97.6,
+    "low": 95.11,
+    "volume": 20586800
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-07-09",
+    "open": 97.5,
+    "close": 96.64,
+    "high": 97.715,
+    "low": 96.1,
+    "volume": 14858900
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-07-10",
+    "open": 96.07,
+    "close": 96.4,
+    "high": 97.45,
+    "low": 95.12,
+    "volume": 15644400
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-07-11",
+    "open": 96.125,
+    "close": 95.39,
+    "high": 96.835,
+    "low": 95.27,
+    "volume": 12453500
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-07-14",
+    "open": 95.19,
+    "close": 93.89,
+    "high": 95.48,
+    "low": 93.56,
+    "volume": 14300200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-07-15",
+    "open": 95.0,
+    "close": 92.21,
+    "high": 95.16,
+    "low": 91.85,
+    "volume": 18488400
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-07-16",
+    "open": 92.65,
+    "close": 90.75,
+    "high": 92.75,
+    "low": 89.81,
+    "volume": 17636000
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-07-17",
+    "open": 91.205,
+    "close": 90.5,
+    "high": 91.4,
+    "low": 89.9,
+    "volume": 16903600
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-07-18",
+    "open": 90.8,
+    "close": 90.59,
+    "high": 91.17,
+    "low": 89.405,
+    "volume": 14223500
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-07-21",
+    "open": 90.85,
+    "close": 91.16,
+    "high": 91.93,
+    "low": 90.53,
+    "volume": 12150600
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-07-22",
+    "open": 91.48,
+    "close": 91.79,
+    "high": 92.26,
+    "low": 89.88,
+    "volume": 11561800
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-07-23",
+    "open": 92.7,
+    "close": 89.94,
+    "high": 92.7,
+    "low": 89.865,
+    "volume": 18617900
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-07-24",
+    "open": 91.05,
+    "close": 90.87,
+    "high": 93.61,
+    "low": 90.87,
+    "volume": 23446200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-07-25",
+    "open": 90.49,
+    "close": 91.29,
+    "high": 91.38,
+    "low": 89.5,
+    "volume": 13864100
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-07-28",
+    "open": 91.31,
+    "close": 90.6,
+    "high": 92.35,
+    "low": 90.24,
+    "volume": 11606100
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-07-29",
+    "open": 88.885,
+    "close": 87.11,
+    "high": 89.16,
+    "low": 86.36,
+    "volume": 24966200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-07-30",
+    "open": 87.24,
+    "close": 87.64,
+    "high": 87.805,
+    "low": 86.475,
+    "volume": 16862800
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-07-31",
+    "open": 87.525,
+    "close": 87.75,
+    "high": 88.84,
+    "low": 86.61,
+    "volume": 16922400
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-08-01",
+    "open": 86.505,
+    "close": 86.91,
+    "high": 87.055,
+    "low": 85.42,
+    "volume": 15732500
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-08-04",
+    "open": 87.7,
+    "close": 88.43,
+    "high": 88.59,
+    "low": 87.41,
+    "volume": 15138900
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-08-05",
+    "open": 89.37,
+    "close": 89.39,
+    "high": 90.955,
+    "low": 89.05,
+    "volume": 25856000
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-08-06",
+    "open": 90.95,
+    "close": 89.22,
+    "high": 90.96,
+    "low": 86.3,
+    "volume": 40169800
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-08-07",
+    "open": 90.72,
+    "close": 92.67,
+    "high": 92.74,
+    "low": 89.16,
+    "volume": 28522200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-08-08",
+    "open": 92.96,
+    "close": 89.56,
+    "high": 94.31,
+    "low": 88.91,
+    "volume": 26212500
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-08-11",
+    "open": 89.81,
+    "close": 90.58,
+    "high": 91.43,
+    "low": 88.92,
+    "volume": 16668900
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-08-12",
+    "open": 91.19,
+    "close": 91.73,
+    "high": 92.555,
+    "low": 91.14,
+    "volume": 12509000
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-08-13",
+    "open": 92.05,
+    "close": 90.83,
+    "high": 92.2,
+    "low": 89.91,
+    "volume": 16867300
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-08-14",
+    "open": 90.35,
+    "close": 91.4,
+    "high": 92.32,
+    "low": 90.105,
+    "volume": 14525100
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-08-15",
+    "open": 91.65,
+    "close": 92.6,
+    "high": 93.9,
+    "low": 90.86,
+    "volume": 15841800
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-08-18",
+    "open": 92.22,
+    "close": 93.98,
+    "high": 94.4,
+    "low": 91.89,
+    "volume": 16471300
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-08-19",
+    "open": 94.0,
+    "close": 95.32,
+    "high": 96.595,
+    "low": 93.85,
+    "volume": 21177300
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-08-20",
+    "open": 94.83,
+    "close": 93.73,
+    "high": 94.96,
+    "low": 91.44,
+    "volume": 15194800
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-08-21",
+    "open": 93.62,
+    "close": 94.23,
+    "high": 95.0,
+    "low": 92.81,
+    "volume": 12864100
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-08-22",
+    "open": 94.46,
+    "close": 96.79,
+    "high": 97.54,
+    "low": 94.29,
+    "volume": 15584900
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-08-25",
+    "open": 95.66,
+    "close": 95.16,
+    "high": 97.5,
+    "low": 95.125,
+    "volume": 10938100
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-08-26",
+    "open": 94.88,
+    "close": 96.53,
+    "high": 96.82,
+    "low": 94.36,
+    "volume": 17163400
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-08-27",
+    "open": 96.5,
+    "close": 95.33,
+    "high": 96.95,
+    "low": 95.33,
+    "volume": 11364300
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-08-28",
+    "open": 96.025,
+    "close": 95.96,
+    "high": 96.11,
+    "low": 94.08,
+    "volume": 12024300
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-08-29",
+    "open": 95.995,
+    "close": 93.75,
+    "high": 96.15,
+    "low": 91.61,
+    "volume": 19310000
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-09-02",
+    "open": 92.26,
+    "close": 92.81,
+    "high": 93.537,
+    "low": 91.92,
+    "volume": 12883300
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-09-03",
+    "open": 92.75,
+    "close": 92.94,
+    "high": 94.765,
+    "low": 92.18,
+    "volume": 12052200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-09-04",
+    "open": 93.11,
+    "close": 91.98,
+    "high": 93.125,
+    "low": 90.93,
+    "volume": 15960100
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-09-05",
+    "open": 92.53,
+    "close": 90.99,
+    "high": 92.53,
+    "low": 88.84,
+    "volume": 20384500
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-09-08",
+    "open": 91.38,
+    "close": 94.36,
+    "high": 94.56,
+    "low": 91.38,
+    "volume": 18906600
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-09-09",
+    "open": 94.5,
+    "close": 95.45,
+    "high": 95.48,
+    "low": 92.77,
+    "volume": 11850200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-09-10",
+    "open": 95.51,
+    "close": 94.21,
+    "high": 96.1,
+    "low": 93.71,
+    "volume": 15944200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-09-11",
+    "open": 94.55,
+    "close": 94.68,
+    "high": 96.32,
+    "low": 94.0,
+    "volume": 16190100
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-09-12",
+    "open": 94.49,
+    "close": 95.89,
+    "high": 96.27,
+    "low": 93.71,
+    "volume": 13659200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-09-15",
+    "open": 95.8,
+    "close": 98.85,
+    "high": 98.86,
+    "low": 95.52,
+    "volume": 18652400
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-09-16",
+    "open": 99.42,
+    "close": 97.83,
+    "high": 99.7,
+    "low": 97.02,
+    "volume": 17257900
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-09-17",
+    "open": 96.07,
+    "close": 92.95,
+    "high": 97.24,
+    "low": 92.12,
+    "volume": 44094000
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-09-18",
+    "open": 93.93,
+    "close": 94.7,
+    "high": 95.05,
+    "low": 93.21,
+    "volume": 23075200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-09-19",
+    "open": 95.0,
+    "close": 98.51,
+    "high": 98.83,
+    "low": 94.9,
+    "volume": 38735000
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-09-22",
+    "open": 99.0,
+    "close": 99.39,
+    "high": 101.99,
+    "low": 98.5,
+    "volume": 29820100
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-09-23",
+    "open": 99.86,
+    "close": 97.8,
+    "high": 100.18,
+    "low": 97.645,
+    "volume": 15101100
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-09-24",
+    "open": 98.89,
+    "close": 97.78,
+    "high": 99.86,
+    "low": 96.93,
+    "volume": 12523400
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-09-25",
+    "open": 97.3,
+    "close": 97.6,
+    "high": 97.87,
+    "low": 95.9,
+    "volume": 11255800
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-09-26",
+    "open": 97.795,
+    "close": 98.45,
+    "high": 98.53,
+    "low": 97.03,
+    "volume": 10356100
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-09-29",
+    "open": 99.32,
+    "close": 99.57,
+    "high": 100.26,
+    "low": 98.585,
+    "volume": 16320900
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-09-30",
+    "open": 99.59,
+    "close": 97.97,
+    "high": 99.75,
+    "low": 96.65,
+    "volume": 16793400
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-10-01",
+    "open": 97.475,
+    "close": 96.61,
+    "high": 99.085,
+    "low": 96.57,
+    "volume": 16608500
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-10-02",
+    "open": 97.08,
+    "close": 96.61,
+    "high": 97.21,
+    "low": 94.76,
+    "volume": 16046400
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-10-03",
+    "open": 96.95,
+    "close": 96.6,
+    "high": 98.3,
+    "low": 96.46,
+    "volume": 10556400
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-10-06",
+    "open": 96.96,
+    "close": 100.1,
+    "high": 101.295,
+    "low": 96.89,
+    "volume": 22760900
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-10-07",
+    "open": 100.13,
+    "close": 97.8,
+    "high": 100.69,
+    "low": 97.0,
+    "volume": 12583600
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-10-08",
+    "open": 97.94,
+    "close": 99.28,
+    "high": 99.61,
+    "low": 97.2,
+    "volume": 10071200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-10-09",
+    "open": 99.965,
+    "close": 96.0,
+    "high": 100.17,
+    "low": 95.83,
+    "volume": 13435700
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-10-10",
+    "open": 96.3,
+    "close": 93.4,
+    "high": 96.45,
+    "low": 93.33,
+    "volume": 17021100
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-10-13",
+    "open": 95.0,
+    "close": 94.08,
+    "high": 95.25,
+    "low": 93.43,
+    "volume": 11031400
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-10-14",
+    "open": 93.78,
+    "close": 94.25,
+    "high": 95.18,
+    "low": 92.46,
+    "volume": 11178000
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-10-15",
+    "open": 95.86,
+    "close": 94.52,
+    "high": 96.99,
+    "low": 93.79,
+    "volume": 14347100
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-10-16",
+    "open": 94.44,
+    "close": 92.52,
+    "high": 95.46,
+    "low": 91.18,
+    "volume": 17214800
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-10-17",
+    "open": 92.0,
+    "close": 92.3,
+    "high": 92.83,
+    "low": 91.46,
+    "volume": 14282100
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-10-20",
+    "open": 93.0,
+    "close": 93.7,
+    "high": 94.5,
+    "low": 92.85,
+    "volume": 11274900
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-10-21",
+    "open": 93.59,
+    "close": 93.03,
+    "high": 94.55,
+    "low": 92.97,
+    "volume": 10503300
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-10-22",
+    "open": 92.77,
+    "close": 92.21,
+    "high": 93.415,
+    "low": 91.421,
+    "volume": 11351400
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-10-23",
+    "open": 92.5,
+    "close": 94.61,
+    "high": 95.7,
+    "low": 92.4,
+    "volume": 17121600
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-10-24",
+    "open": 95.15,
+    "close": 94.07,
+    "high": 95.26,
+    "low": 93.9,
+    "volume": 12014600
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-10-27",
+    "open": 94.91,
+    "close": 96.42,
+    "high": 96.66,
+    "low": 94.53,
+    "volume": 11748300
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-10-28",
+    "open": 96.77,
+    "close": 95.43,
+    "high": 97.73,
+    "low": 95.41,
+    "volume": 17138300
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-10-29",
+    "open": 96.24,
+    "close": 95.76,
+    "high": 96.89,
+    "low": 94.53,
+    "volume": 14532900
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-10-30",
+    "open": 95.41,
+    "close": 96.49,
+    "high": 97.62,
+    "low": 94.56,
+    "volume": 13556600
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-10-31",
+    "open": 97.46,
+    "close": 96.5,
+    "high": 98.45,
+    "low": 96.15,
+    "volume": 15333400
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-11-03",
+    "open": 97.66,
+    "close": 99.72,
+    "high": 100.35,
+    "low": 96.78,
+    "volume": 28836500
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-11-04",
+    "open": 91.97,
+    "close": 94.67,
+    "high": 95.03,
+    "low": 90.08,
+    "volume": 48787300
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-11-05",
+    "open": 95.01,
+    "close": 92.75,
+    "high": 95.44,
+    "low": 92.52,
+    "volume": 20150800
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-11-06",
+    "open": 92.0,
+    "close": 92.12,
+    "high": 92.77,
+    "low": 90.82,
+    "volume": 18316200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-11-07",
+    "open": 91.61,
+    "close": 91.99,
+    "high": 93.17,
+    "low": 90.298,
+    "volume": 16489900
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-11-10",
+    "open": 92.99,
+    "close": 94.1,
+    "high": 94.31,
+    "low": 92.25,
+    "volume": 13310200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-11-11",
+    "open": 93.65,
+    "close": 93.6,
+    "high": 94.16,
+    "low": 92.97,
+    "volume": 13276300
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-11-12",
+    "open": 94.11,
+    "close": 93.57,
+    "high": 95.18,
+    "low": 92.76,
+    "volume": 16004600
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-11-13",
+    "open": 93.7,
+    "close": 91.78,
+    "high": 94.06,
+    "low": 91.35,
+    "volume": 16367500
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-11-14",
+    "open": 90.06,
+    "close": 91.62,
+    "high": 92.62,
+    "low": 89.62,
+    "volume": 12475600
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-11-17",
+    "open": 91.31,
+    "close": 92.11,
+    "high": 92.58,
+    "low": 90.74,
+    "volume": 16922500
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-11-18",
+    "open": 92.1,
+    "close": 90.86,
+    "high": 92.923,
+    "low": 89.33,
+    "volume": 17439400
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-11-19",
+    "open": 90.6,
+    "close": 89.53,
+    "high": 91.08,
+    "low": 88.89,
+    "volume": 18256200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-11-20",
+    "open": 90.2,
+    "close": 83.36,
+    "high": 90.54,
+    "low": 82.94,
+    "volume": 41734000
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-11-21",
+    "open": 83.97,
+    "close": 83.87,
+    "high": 84.0,
+    "low": 81.51,
+    "volume": 33783100
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-11-24",
+    "open": 84.15,
+    "close": 83.69,
+    "high": 84.52,
+    "low": 83.03,
+    "volume": 24883200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-11-25",
+    "open": 83.8,
+    "close": 83.69,
+    "high": 84.265,
+    "low": 82.39,
+    "volume": 18482200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-11-26",
+    "open": 84.11,
+    "close": 85.66,
+    "high": 86.355,
+    "low": 83.65,
+    "volume": 20448700
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-11-28",
+    "open": 86.51,
+    "close": 87.54,
+    "high": 87.62,
+    "low": 86.24,
+    "volume": 9069400
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-12-01",
+    "open": 86.99,
+    "close": 86.57,
+    "high": 87.61,
+    "low": 85.475,
+    "volume": 17517200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-12-02",
+    "open": 86.03,
+    "close": 87.57,
+    "high": 88.44,
+    "low": 85.63,
+    "volume": 18930400
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-12-03",
+    "open": 89.845,
+    "close": 90.68,
+    "high": 91.38,
+    "low": 88.952,
+    "volume": 21335800
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-12-04",
+    "open": 90.18,
+    "close": 90.99,
+    "high": 91.0,
+    "low": 89.45,
+    "volume": 13145300
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-12-05",
+    "open": 90.72,
+    "close": 91.32,
+    "high": 92.75,
+    "low": 90.46,
+    "volume": 11154600
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-12-08",
+    "open": 90.77,
+    "close": 92.57,
+    "high": 92.78,
+    "low": 90.77,
+    "volume": 12646900
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-12-09",
+    "open": 91.81,
+    "close": 89.07,
+    "high": 92.01,
+    "low": 88.905,
+    "volume": 17117500
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-12-10",
+    "open": 88.64,
+    "close": 84.16,
+    "high": 88.75,
+    "low": 82.72,
+    "volume": 51202000
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-12-11",
+    "open": 84.055,
+    "close": 85.44,
+    "high": 85.745,
+    "low": 83.34,
+    "volume": 23346300
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-12-12",
+    "open": 85.5,
+    "close": 85.11,
+    "high": 86.45,
+    "low": 84.518,
+    "volume": 16211600
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-12-15",
+    "open": 83.46,
+    "close": 81.86,
+    "high": 83.62,
+    "low": 81.165,
+    "volume": 32070900
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-12-16",
+    "open": 81.745,
+    "close": 80.92,
+    "high": 82.05,
+    "low": 80.26,
+    "volume": 24465100
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-12-17",
+    "open": 80.81,
+    "close": 79.14,
+    "high": 81.3,
+    "low": 78.78,
+    "volume": 28007500
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-12-18",
+    "open": 80.36,
+    "close": 79.69,
+    "high": 80.71,
+    "low": 79.55,
+    "volume": 18681800
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-12-19",
+    "open": 79.77,
+    "close": 79.31,
+    "high": 79.99,
+    "low": 78.31,
+    "volume": 34353300
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-12-22",
+    "open": 81.32,
+    "close": 81.26,
+    "high": 82.25,
+    "low": 80.9,
+    "volume": 20570400
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-12-23",
+    "open": 81.01,
+    "close": 80.97,
+    "high": 81.42,
+    "low": 80.35,
+    "volume": 10445500
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-12-24",
+    "open": 81.01,
+    "close": 81.15,
+    "high": 81.41,
+    "low": 80.58,
+    "volume": 4310700
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-12-26",
+    "open": 81.2,
+    "close": 81.26,
+    "high": 81.5,
+    "low": 80.68,
+    "volume": 6741600
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-12-29",
+    "open": 80.91,
+    "close": 81.5,
+    "high": 82.2,
+    "low": 80.785,
+    "volume": 12072600
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-12-30",
+    "open": 81.74,
+    "close": 82.12,
+    "high": 82.5,
+    "low": 81.53,
+    "volume": 9500700
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2025-12-31",
+    "open": 82.0,
+    "close": 81.71,
+    "high": 82.545,
+    "low": 81.42,
+    "volume": 8428400
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-01-02",
+    "open": 82.04,
+    "close": 82.86,
+    "high": 83.66,
+    "low": 81.47,
+    "volume": 13095100
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-01-05",
+    "open": 81.61,
+    "close": 80.74,
+    "high": 82.84,
+    "low": 79.575,
+    "volume": 24036800
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-01-06",
+    "open": 81.18,
+    "close": 85.54,
+    "high": 85.65,
+    "low": 81.09,
+    "volume": 27508700
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-01-07",
+    "open": 86.24,
+    "close": 86.19,
+    "high": 87.74,
+    "low": 85.655,
+    "volume": 25293400
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-01-08",
+    "open": 85.76,
+    "close": 87.59,
+    "high": 88.24,
+    "low": 85.35,
+    "volume": 15499200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-01-09",
+    "open": 87.27,
+    "close": 85.44,
+    "high": 87.28,
+    "low": 84.884,
+    "volume": 15881500
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-01-12",
+    "open": 84.64,
+    "close": 84.67,
+    "high": 85.48,
+    "low": 83.77,
+    "volume": 12687800
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-01-13",
+    "open": 84.21,
+    "close": 85.41,
+    "high": 85.94,
+    "low": 83.7,
+    "volume": 14809300
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-01-14",
+    "open": 85.37,
+    "close": 84.65,
+    "high": 85.99,
+    "low": 83.5,
+    "volume": 15510800
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-01-15",
+    "open": 85.81,
+    "close": 84.38,
+    "high": 86.35,
+    "low": 82.73,
+    "volume": 18892900
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-01-16",
+    "open": 84.15,
+    "close": 84.85,
+    "high": 85.0,
+    "low": 83.0,
+    "volume": 20738900
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-01-20",
+    "open": 83.06,
+    "close": 83.72,
+    "high": 83.81,
+    "low": 82.35,
+    "volume": 19429300
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-01-21",
+    "open": 84.39,
+    "close": 84.26,
+    "high": 85.61,
+    "low": 82.95,
+    "volume": 21171900
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-01-22",
+    "open": 83.5,
+    "close": 82.56,
+    "high": 85.43,
+    "low": 81.51,
+    "volume": 19457200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-01-23",
+    "open": 82.65,
+    "close": 82.31,
+    "high": 83.56,
+    "low": 81.47,
+    "volume": 14703800
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-01-26",
+    "open": 82.35,
+    "close": 81.98,
+    "high": 83.33,
+    "low": 81.91,
+    "volume": 16556400
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-01-27",
+    "open": 81.95,
+    "close": 81.24,
+    "high": 82.085,
+    "low": 79.86,
+    "volume": 19993700
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-01-28",
+    "open": 81.16,
+    "close": 79.78,
+    "high": 81.847,
+    "low": 79.735,
+    "volume": 19317300
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-01-29",
+    "open": 80.44,
+    "close": 81.7,
+    "high": 82.08,
+    "low": 79.96,
+    "volume": 26857800
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-01-30",
+    "open": 80.91,
+    "close": 80.05,
+    "high": 82.1,
+    "low": 79.42,
+    "volume": 24344100
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-02-02",
+    "open": 79.8,
+    "close": 80.84,
+    "high": 81.89,
+    "low": 79.19,
+    "volume": 18434500
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-02-03",
+    "open": 80.48,
+    "close": 77.93,
+    "high": 80.68,
+    "low": 77.3,
+    "volume": 29490800
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-02-04",
+    "open": 75.625,
+    "close": 73.92,
+    "high": 77.713,
+    "low": 71.88,
+    "volume": 63045000
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-02-05",
+    "open": 73.26,
+    "close": 75.21,
+    "high": 77.22,
+    "low": 73.22,
+    "volume": 33111500
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-02-06",
+    "open": 75.49,
+    "close": 74.77,
+    "high": 75.86,
+    "low": 72.67,
+    "volume": 24470200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-02-09",
+    "open": 74.76,
+    "close": 73.91,
+    "high": 74.815,
+    "low": 73.51,
+    "volume": 17959100
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-02-10",
+    "open": 74.38,
+    "close": 73.5,
+    "high": 75.05,
+    "low": 73.47,
+    "volume": 18958700
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-02-11",
+    "open": 73.76,
+    "close": 71.01,
+    "high": 74.086,
+    "low": 70.65,
+    "volume": 28045000
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-02-12",
+    "open": 72.19,
+    "close": 71.22,
+    "high": 72.63,
+    "low": 69.45,
+    "volume": 33541400
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-02-13",
+    "open": 71.06,
+    "close": 69.99,
+    "high": 71.42,
+    "low": 69.02,
+    "volume": 26526700
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-02-17",
+    "open": 70.66,
+    "close": 70.53,
+    "high": 70.98,
+    "low": 69.7,
+    "volume": 20286100
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-02-18",
+    "open": 70.26,
+    "close": 72.77,
+    "high": 73.27,
+    "low": 70.115,
+    "volume": 18235600
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-02-19",
+    "open": 71.87,
+    "close": 72.94,
+    "high": 74.105,
+    "low": 71.76,
+    "volume": 15897800
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-02-20",
+    "open": 72.65,
+    "close": 73.86,
+    "high": 74.585,
+    "low": 72.56,
+    "volume": 20242200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-02-23",
+    "open": 72.99,
+    "close": 70.72,
+    "high": 73.11,
+    "low": 70.15,
+    "volume": 22921600
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-02-24",
+    "open": 70.62,
+    "close": 71.38,
+    "high": 72.14,
+    "low": 69.95,
+    "volume": 19581100
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-02-25",
+    "open": 72.32,
+    "close": 72.83,
+    "high": 73.16,
+    "low": 71.92,
+    "volume": 19820800
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-02-26",
+    "open": 73.15,
+    "close": 74.8,
+    "high": 76.1,
+    "low": 72.83,
+    "volume": 22449200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-02-27",
+    "open": 73.9,
+    "close": 75.42,
+    "high": 75.78,
+    "low": 73.658,
+    "volume": 20427900
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-03-02",
+    "open": 73.5,
+    "close": 75.95,
+    "high": 76.495,
+    "low": 73.15,
+    "volume": 25779100
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-03-03",
+    "open": 74.5,
+    "close": 76.36,
+    "high": 77.305,
+    "low": 74.02,
+    "volume": 21892500
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-03-04",
+    "open": 76.295,
+    "close": 76.65,
+    "high": 77.04,
+    "low": 75.013,
+    "volume": 19818600
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-03-05",
+    "open": 76.59,
+    "close": 75.44,
+    "high": 78.25,
+    "low": 75.135,
+    "volume": 17894000
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-03-06",
+    "open": 74.73,
+    "close": 75.13,
+    "high": 75.57,
+    "low": 74.19,
+    "volume": 14771200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-03-09",
+    "open": 74.12,
+    "close": 73.84,
+    "high": 74.54,
+    "low": 71.94,
+    "volume": 21208900
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-03-10",
+    "open": 73.97,
+    "close": 72.36,
+    "high": 74.12,
+    "low": 72.18,
+    "volume": 17581500
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-03-11",
+    "open": 74.54,
+    "close": 74.97,
+    "high": 75.6,
+    "low": 73.55,
+    "volume": 21010800
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-03-12",
+    "open": 74.87,
+    "close": 72.97,
+    "high": 75.85,
+    "low": 72.59,
+    "volume": 17082700
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-03-13",
+    "open": 73.295,
+    "close": 73.33,
+    "high": 74.87,
+    "low": 72.69,
+    "volume": 16400700
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-03-16",
+    "open": 74.0,
+    "close": 74.66,
+    "high": 75.38,
+    "low": 74.0,
+    "volume": 15997300
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-03-17",
+    "open": 77.39,
+    "close": 77.79,
+    "high": 79.23,
+    "low": 77.31,
+    "volume": 33146100
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-03-18",
+    "open": 77.43,
+    "close": 76.66,
+    "high": 77.68,
+    "low": 76.48,
+    "volume": 13692700
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-03-19",
+    "open": 76.48,
+    "close": 75.34,
+    "high": 77.845,
+    "low": 75.32,
+    "volume": 13791600
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-03-20",
+    "open": 74.98,
+    "close": 73.89,
+    "high": 74.98,
+    "low": 73.04,
+    "volume": 26161200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-03-23",
+    "open": 75.27,
+    "close": 75.12,
+    "high": 75.82,
+    "low": 74.44,
+    "volume": 14154700
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-03-24",
+    "open": 74.63,
+    "close": 72.34,
+    "high": 75.01,
+    "low": 72.145,
+    "volume": 14404200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-03-25",
+    "open": 73.0,
+    "close": 73.08,
+    "high": 73.84,
+    "low": 72.19,
+    "volume": 11569300
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-03-26",
+    "open": 72.74,
+    "close": 70.55,
+    "high": 72.765,
+    "low": 70.2,
+    "volume": 15412900
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-03-27",
+    "open": 70.11,
+    "close": 69.18,
+    "high": 70.38,
+    "low": 68.46,
+    "volume": 13869700
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-03-30",
+    "open": 69.71,
+    "close": 69.91,
+    "high": 70.5,
+    "low": 68.84,
+    "volume": 13873500
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-03-31",
+    "open": 70.71,
+    "close": 71.93,
+    "high": 72.05,
+    "low": 70.21,
+    "volume": 15886600
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-04-01",
+    "open": 72.43,
+    "close": 71.71,
+    "high": 72.7,
+    "low": 70.81,
+    "volume": 13035000
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-04-02",
+    "open": 70.91,
+    "close": 71.84,
+    "high": 71.97,
+    "low": 69.78,
+    "volume": 12758500
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-04-06",
+    "open": 71.62,
+    "close": 72.17,
+    "high": 72.78,
+    "low": 71.405,
+    "volume": 7751400
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-04-07",
+    "open": 71.78,
+    "close": 71.73,
+    "high": 72.56,
+    "low": 71.11,
+    "volume": 9686300
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-04-08",
+    "open": 75.0,
+    "close": 72.38,
+    "high": 75.43,
+    "low": 72.07,
+    "volume": 13559900
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-04-09",
+    "open": 72.15,
+    "close": 71.81,
+    "high": 72.35,
+    "low": 70.015,
+    "volume": 16500000
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-04-10",
+    "open": 72.32,
+    "close": 70.48,
+    "high": 72.88,
+    "low": 70.04,
+    "volume": 11818200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-04-13",
+    "open": 70.07,
+    "close": 72.34,
+    "high": 72.81,
+    "low": 69.82,
+    "volume": 12690600
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-04-14",
+    "open": 73.165,
+    "close": 72.91,
+    "high": 73.95,
+    "low": 72.24,
+    "volume": 16750300
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-04-15",
+    "open": 73.86,
+    "close": 77.28,
+    "high": 77.93,
+    "low": 73.794,
+    "volume": 19696000
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-04-16",
+    "open": 77.51,
+    "close": 76.48,
+    "high": 78.05,
+    "low": 76.365,
+    "volume": 12771700
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-04-17",
+    "open": 77.415,
+    "close": 77.12,
+    "high": 78.72,
+    "low": 76.61,
+    "volume": 16966600
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-04-20",
+    "open": 76.67,
+    "close": 77.49,
+    "high": 77.705,
+    "low": 75.7,
+    "volume": 11507400
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-04-21",
+    "open": 78.0,
+    "close": 77.26,
+    "high": 78.76,
+    "low": 77.038,
+    "volume": 11698100
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-04-22",
+    "open": 77.7,
+    "close": 75.58,
+    "high": 77.97,
+    "low": 75.1,
+    "volume": 14133000
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-04-23",
+    "open": 76.66,
+    "close": 74.7,
+    "high": 77.177,
+    "low": 73.75,
+    "volume": 18671000
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-04-24",
+    "open": 74.77,
+    "close": 74.64,
+    "high": 74.77,
+    "low": 73.53,
+    "volume": 13007200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-04-27",
+    "open": 74.675,
+    "close": 76.27,
+    "high": 76.95,
+    "low": 74.67,
+    "volume": 14670000
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-04-28",
+    "open": 75.7,
+    "close": 74.11,
+    "high": 76.66,
+    "low": 74.09,
+    "volume": 14039000
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-04-29",
+    "open": 73.67,
+    "close": 74.47,
+    "high": 74.73,
+    "low": 72.78,
+    "volume": 11751800
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-04-30",
+    "open": 74.32,
+    "close": 74.61,
+    "high": 75.02,
+    "low": 73.04,
+    "volume": 16067000
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-05-01",
+    "open": 75.11,
+    "close": 75.12,
+    "high": 75.66,
+    "low": 74.581,
+    "volume": 10867400
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-05-04",
+    "open": 74.925,
+    "close": 73.93,
+    "high": 75.321,
+    "low": 73.52,
+    "volume": 13868400
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-05-05",
+    "open": 74.25,
+    "close": 72.95,
+    "high": 74.8,
+    "low": 72.67,
+    "volume": 27424000
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-05-06",
+    "open": 77.46,
+    "close": 79.17,
+    "high": 80.11,
+    "low": 76.7,
+    "volume": 35783000
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-05-07",
+    "open": 79.825,
+    "close": 76.73,
+    "high": 80.83,
+    "low": 76.3,
+    "volume": 26972300
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-05-08",
+    "open": 77.05,
+    "close": 75.45,
+    "high": 77.05,
+    "low": 74.402,
+    "volume": 16230600
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-05-11",
+    "open": 75.5,
+    "close": 76.15,
+    "high": 77.016,
+    "low": 75.1,
+    "volume": 18996400
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-05-12",
+    "open": 76.2,
+    "close": 76.36,
+    "high": 76.83,
+    "low": 74.41,
+    "volume": 17241000
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-05-13",
+    "open": 75.6,
+    "close": 74.7,
+    "high": 76.05,
+    "low": 74.02,
+    "volume": 14055200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-05-14",
+    "open": 74.665,
+    "close": 74.69,
+    "high": 75.29,
+    "low": 72.875,
+    "volume": 17329500
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-05-15",
+    "open": 74.31,
+    "close": 75.09,
+    "high": 75.565,
+    "low": 73.63,
+    "volume": 16394100
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-05-18",
+    "open": 74.89,
+    "close": 75.08,
+    "high": 75.97,
+    "low": 74.23,
+    "volume": 17776200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-05-19",
+    "open": 75.49,
+    "close": 74.09,
+    "high": 76.01,
+    "low": 73.96,
+    "volume": 17419900
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-05-20",
+    "open": 73.8,
+    "close": 74.6,
+    "high": 74.894,
+    "low": 72.53,
+    "volume": 12764800
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-05-21",
+    "open": 74.245,
+    "close": 73.61,
+    "high": 74.61,
+    "low": 72.9,
+    "volume": 13238700
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-05-22",
+    "open": 73.85,
+    "close": 71.82,
+    "high": 74.97,
+    "low": 71.32,
+    "volume": 19689000
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-05-26",
+    "open": 71.74,
+    "close": 70.12,
+    "high": 71.83,
+    "low": 69.9,
+    "volume": 23281200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-05-27",
+    "open": 69.85,
+    "close": 70.73,
+    "high": 70.94,
+    "low": 69.6,
+    "volume": 23148200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-05-28",
+    "open": 70.17,
+    "close": 70.92,
+    "high": 71.14,
+    "low": 69.58,
+    "volume": 19139100
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-05-29",
+    "open": 70.65,
+    "close": 70.4,
+    "high": 72.24,
+    "low": 69.96,
+    "volume": 50294700
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-06-01",
+    "open": 71.33,
+    "close": 73.77,
+    "high": 74.555,
+    "low": 71.33,
+    "volume": 24119800
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-06-02",
+    "open": 72.6,
+    "close": 71.62,
+    "high": 73.13,
+    "low": 71.315,
+    "volume": 16657700
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-06-03",
+    "open": 71.15,
+    "close": 71.69,
+    "high": 71.875,
+    "low": 70.355,
+    "volume": 17348400
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-06-04",
+    "open": 72.65,
+    "close": 72.21,
+    "high": 73.54,
+    "low": 71.725,
+    "volume": 17576600
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-06-05",
+    "open": 71.84,
+    "close": 70.71,
+    "high": 72.53,
+    "low": 70.31,
+    "volume": 18532300
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-06-08",
+    "open": 70.41,
+    "close": 70.06,
+    "high": 70.935,
+    "low": 69.97,
+    "volume": 18636000
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-06-09",
+    "open": 70.275,
+    "close": 70.38,
+    "high": 71.45,
+    "low": 69.5,
+    "volume": 20029600
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-06-10",
+    "open": 69.7,
+    "close": 68.61,
+    "high": 70.375,
+    "low": 68.61,
+    "volume": 21908800
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-06-11",
+    "open": 68.225,
+    "close": 69.55,
+    "high": 69.565,
+    "low": 67.19,
+    "volume": 24995400
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-06-12",
+    "open": 70.02,
+    "close": 68.85,
+    "high": 70.23,
+    "low": 67.4,
+    "volume": 19678100
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-06-15",
+    "open": 70.62,
+    "close": 72.85,
+    "high": 73.48,
+    "low": 70.46,
+    "volume": 24748700
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-06-16",
+    "open": 73.28,
+    "close": 73.25,
+    "high": 74.285,
+    "low": 72.77,
+    "volume": 17514600
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-06-17",
+    "open": 72.88,
+    "close": 70.91,
+    "high": 73.27,
+    "low": 70.89,
+    "volume": 16144400
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-06-18",
+    "open": 71.97,
+    "close": 71.64,
+    "high": 72.49,
+    "low": 70.78,
+    "volume": 27203300
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-06-22",
+    "open": 71.46,
+    "close": 71.43,
+    "high": 72.45,
+    "low": 70.85,
+    "volume": 21887100
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-06-23",
+    "open": 71.08,
+    "close": 69.67,
+    "high": 71.555,
+    "low": 69.565,
+    "volume": 20733900
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-06-24",
+    "open": 70.3,
+    "close": 73.85,
+    "high": 75.74,
+    "low": 69.7,
+    "volume": 34823300
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-06-25",
+    "open": 74.26,
+    "close": 72.25,
+    "high": 74.55,
+    "low": 72.11,
+    "volume": 14682100
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-06-26",
+    "open": 72.7,
+    "close": 76.2,
+    "high": 76.39,
+    "low": 72.45,
+    "volume": 64581200
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-06-29",
+    "open": 76.0,
+    "close": 75.5,
+    "high": 77.76,
+    "low": 74.2,
+    "volume": 26220700
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-06-30",
+    "open": 74.78,
+    "close": 72.16,
+    "high": 75.03,
+    "low": 71.82,
+    "volume": 27806100
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-07-01",
+    "open": 72.23,
+    "close": 72.66,
+    "high": 73.8,
+    "low": 71.66,
+    "volume": 12648000
+  },
+  {
+    "symbol": "UBER",
+    "report_date": "2026-07-02",
+    "open": 72.79,
+    "close": 74.43,
+    "high": 74.51,
+    "low": 72.33,
+    "volume": 14087900
+  }
+]

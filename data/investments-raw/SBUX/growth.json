@@ -1,0 +1,1529 @@
+{
+  "quarterly_revenue": [
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-06-30T00:00:00.000",
+      "revenue": 8150100000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-09-30T00:00:00.000",
+      "revenue": 8414200000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-06-30T00:00:00.000",
+      "revenue": 9168300000.0,
+      "prev_year_revenue": 8150100000.0,
+      "yoy_growth": 0.1249
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-09-30T00:00:00.000",
+      "revenue": 9373600000.0,
+      "prev_year_revenue": 8414200000.0,
+      "yoy_growth": 0.114
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 9425300000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-03-31T00:00:00.000",
+      "revenue": 8563000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-06-30T00:00:00.000",
+      "revenue": 9113900000.0,
+      "prev_year_revenue": 9168300000.0,
+      "yoy_growth": -0.0059
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-09-30T00:00:00.000",
+      "revenue": 9073900000.0,
+      "prev_year_revenue": 9373600000.0,
+      "yoy_growth": -0.032
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 9397800000.0,
+      "prev_year_revenue": 9425300000.0,
+      "yoy_growth": -0.0029
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-03-31T00:00:00.000",
+      "revenue": 8761600000.0,
+      "prev_year_revenue": 8563000000.0,
+      "yoy_growth": 0.0232
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-06-30T00:00:00.000",
+      "revenue": 9456000000.0,
+      "prev_year_revenue": 9113900000.0,
+      "yoy_growth": 0.0375
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-09-30T00:00:00.000",
+      "revenue": 9569000000.0,
+      "prev_year_revenue": 9073900000.0,
+      "yoy_growth": 0.0546
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 9915100000.0,
+      "prev_year_revenue": 9397800000.0,
+      "yoy_growth": 0.055
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 9531500000.0,
+      "prev_year_revenue": 8761600000.0,
+      "yoy_growth": 0.0879
+    }
+  ],
+  "annual_revenue": [
+    {
+      "symbol": "SBUX",
+      "report_date": "2019-09-30T00:00:00.000",
+      "revenue": 26508600000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2020-09-30T00:00:00.000",
+      "revenue": 23518000000.0,
+      "prev_year_revenue": 26508600000.0,
+      "yoy_growth": -0.1128
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2021-09-30T00:00:00.000",
+      "revenue": 29060600000.0,
+      "prev_year_revenue": 23518000000.0,
+      "yoy_growth": 0.2357
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-09-30T00:00:00.000",
+      "revenue": 32250300000.0,
+      "prev_year_revenue": 29060600000.0,
+      "yoy_growth": 0.1098
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-09-30T00:00:00.000",
+      "revenue": 35975600000.0,
+      "prev_year_revenue": 32250300000.0,
+      "yoy_growth": 0.1155
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-09-30T00:00:00.000",
+      "revenue": 36176200000.0,
+      "prev_year_revenue": 35975600000.0,
+      "yoy_growth": 0.0056
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-09-30T00:00:00.000",
+      "revenue": 37184400000.0,
+      "prev_year_revenue": 36176200000.0,
+      "yoy_growth": 0.0279
+    }
+  ],
+  "quarterly_operating_income": [
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-06-30T00:00:00.000",
+      "operating_income": 1255400000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-09-30T00:00:00.000",
+      "operating_income": 1140000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-06-30T00:00:00.000",
+      "operating_income": 1521300000.0,
+      "prev_year_operating_income": 1255400000.0,
+      "yoy_growth": 0.2118
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-09-30T00:00:00.000",
+      "operating_income": 1586800000.0,
+      "prev_year_operating_income": 1140000000.0,
+      "yoy_growth": 0.3919
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 1429500000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-03-31T00:00:00.000",
+      "operating_income": 1030900000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-06-30T00:00:00.000",
+      "operating_income": 1443600000.0,
+      "prev_year_operating_income": 1521300000.0,
+      "yoy_growth": -0.0511
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-09-30T00:00:00.000",
+      "operating_income": 1203500000.0,
+      "prev_year_operating_income": 1586800000.0,
+      "yoy_growth": -0.2416
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 1075200000.0,
+      "prev_year_operating_income": 1429500000.0,
+      "yoy_growth": -0.2478
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-03-31T00:00:00.000",
+      "operating_income": 658100000.0,
+      "prev_year_operating_income": 1030900000.0,
+      "yoy_growth": -0.3616
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-06-30T00:00:00.000",
+      "operating_income": 899300000.0,
+      "prev_year_operating_income": 1443600000.0,
+      "yoy_growth": -0.377
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-09-30T00:00:00.000",
+      "operating_income": 948100000.0,
+      "prev_year_operating_income": 1203500000.0,
+      "yoy_growth": -0.2122
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 918300000.0,
+      "prev_year_operating_income": 1075200000.0,
+      "yoy_growth": -0.1459
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2026-03-31T00:00:00.000",
+      "operating_income": 802400000.0,
+      "prev_year_operating_income": 658100000.0,
+      "yoy_growth": 0.2193
+    }
+  ],
+  "annual_operating_income": [
+    {
+      "symbol": "SBUX",
+      "report_date": "2019-09-30T00:00:00.000",
+      "operating_income": 3915700000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2020-09-30T00:00:00.000",
+      "operating_income": 1517900000.0,
+      "prev_year_operating_income": 3915700000.0,
+      "yoy_growth": -0.6124
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2021-09-30T00:00:00.000",
+      "operating_income": 4657200000.0,
+      "prev_year_operating_income": 1517900000.0,
+      "yoy_growth": 2.0682
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-09-30T00:00:00.000",
+      "operating_income": 4429700000.0,
+      "prev_year_operating_income": 4657200000.0,
+      "yoy_growth": -0.0488
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-09-30T00:00:00.000",
+      "operating_income": 5502900000.0,
+      "prev_year_operating_income": 4429700000.0,
+      "yoy_growth": 0.2423
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-09-30T00:00:00.000",
+      "operating_income": 5107600000.0,
+      "prev_year_operating_income": 5502900000.0,
+      "yoy_growth": -0.0718
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-09-30T00:00:00.000",
+      "operating_income": 3580800000.0,
+      "prev_year_operating_income": 5107600000.0,
+      "yoy_growth": -0.2989
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-09-30T00:00:00.000",
+      "ebitda": 1583900000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-06-30T00:00:00.000",
+      "ebitda": 1969700000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-09-30T00:00:00.000",
+      "ebitda": 2112800000.0,
+      "prev_year_ebitda": 1583900000.0,
+      "yoy_growth": 0.3339
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 1903600000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-03-31T00:00:00.000",
+      "ebitda": 1532200000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-06-30T00:00:00.000",
+      "ebitda": 1953000000.0,
+      "prev_year_ebitda": 1969700000.0,
+      "yoy_growth": -0.0085
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-09-30T00:00:00.000",
+      "ebitda": 1735100000.0,
+      "prev_year_ebitda": 2112800000.0,
+      "yoy_growth": -0.1788
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 1581700000.0,
+      "prev_year_ebitda": 1903600000.0,
+      "yoy_growth": -0.1691
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-03-31T00:00:00.000",
+      "ebitda": 1064700000.0,
+      "prev_year_ebitda": 1532200000.0,
+      "yoy_growth": -0.3051
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-06-30T00:00:00.000",
+      "ebitda": 1409200000.0,
+      "prev_year_ebitda": 1953000000.0,
+      "yoy_growth": -0.2784
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-09-30T00:00:00.000",
+      "ebitda": 765700000.0,
+      "prev_year_ebitda": 1735100000.0,
+      "yoy_growth": -0.5587
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 1335700000.0,
+      "prev_year_ebitda": 1581700000.0,
+      "yoy_growth": -0.1555
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2026-03-31T00:00:00.000",
+      "ebitda": 1254300000.0,
+      "prev_year_ebitda": 1064700000.0,
+      "yoy_growth": 0.1781
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "SBUX",
+      "report_date": "2020-09-30T00:00:00.000",
+      "ebitda": 3104600000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2021-09-30T00:00:00.000",
+      "ebitda": 7350800000.0,
+      "prev_year_ebitda": 3104600000.0,
+      "yoy_growth": 1.3677
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-09-30T00:00:00.000",
+      "ebitda": 6244200000.0,
+      "prev_year_ebitda": 7350800000.0,
+      "yoy_growth": -0.1505
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-09-30T00:00:00.000",
+      "ebitda": 7402300000.0,
+      "prev_year_ebitda": 6244200000.0,
+      "yoy_growth": 0.1855
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-09-30T00:00:00.000",
+      "ebitda": 7124000000.0,
+      "prev_year_ebitda": 7402300000.0,
+      "yoy_growth": -0.0376
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-09-30T00:00:00.000",
+      "ebitda": 4821400000.0,
+      "prev_year_ebitda": 7124000000.0,
+      "yoy_growth": -0.3232
+    }
+  ],
+  "quarterly_net_income": [
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-06-30T00:00:00.000",
+      "net_income_common_stockholders": 912900000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-09-30T00:00:00.000",
+      "net_income_common_stockholders": 878300000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-06-30T00:00:00.000",
+      "net_income_common_stockholders": 1141700000.0,
+      "prev_year_net_income_common_stockholders": 912900000.0,
+      "yoy_growth": 0.2506
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-09-30T00:00:00.000",
+      "net_income_common_stockholders": 1219300000.0,
+      "prev_year_net_income_common_stockholders": 878300000.0,
+      "yoy_growth": 0.3883
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1024400000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-03-31T00:00:00.000",
+      "net_income_common_stockholders": 772400000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-06-30T00:00:00.000",
+      "net_income_common_stockholders": 1054800000.0,
+      "prev_year_net_income_common_stockholders": 1141700000.0,
+      "yoy_growth": -0.0761
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-09-30T00:00:00.000",
+      "net_income_common_stockholders": 909200000.0,
+      "prev_year_net_income_common_stockholders": 1219300000.0,
+      "yoy_growth": -0.2543
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 780800000.0,
+      "prev_year_net_income_common_stockholders": 1024400000.0,
+      "yoy_growth": -0.2378
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-03-31T00:00:00.000",
+      "net_income_common_stockholders": 384200000.0,
+      "prev_year_net_income_common_stockholders": 772400000.0,
+      "yoy_growth": -0.5026
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-06-30T00:00:00.000",
+      "net_income_common_stockholders": 558300000.0,
+      "prev_year_net_income_common_stockholders": 1054800000.0,
+      "yoy_growth": -0.4707
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-09-30T00:00:00.000",
+      "net_income_common_stockholders": 133200000.0,
+      "prev_year_net_income_common_stockholders": 909200000.0,
+      "yoy_growth": -0.8535
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 293300000.0,
+      "prev_year_net_income_common_stockholders": 780800000.0,
+      "yoy_growth": -0.6244
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 510900000.0,
+      "prev_year_net_income_common_stockholders": 384200000.0,
+      "yoy_growth": 0.3298
+    }
+  ],
+  "annual_net_income": [
+    {
+      "symbol": "SBUX",
+      "report_date": "2019-09-30T00:00:00.000",
+      "net_income_common_stockholders": 3599200000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2020-09-30T00:00:00.000",
+      "net_income_common_stockholders": 928300000.0,
+      "prev_year_net_income_common_stockholders": 3599200000.0,
+      "yoy_growth": -0.7421
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2021-09-30T00:00:00.000",
+      "net_income_common_stockholders": 4199300000.0,
+      "prev_year_net_income_common_stockholders": 928300000.0,
+      "yoy_growth": 3.5236
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-09-30T00:00:00.000",
+      "net_income_common_stockholders": 3281600000.0,
+      "prev_year_net_income_common_stockholders": 4199300000.0,
+      "yoy_growth": -0.2185
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-09-30T00:00:00.000",
+      "net_income_common_stockholders": 4124500000.0,
+      "prev_year_net_income_common_stockholders": 3281600000.0,
+      "yoy_growth": 0.2569
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-09-30T00:00:00.000",
+      "net_income_common_stockholders": 3760900000.0,
+      "prev_year_net_income_common_stockholders": 4124500000.0,
+      "yoy_growth": -0.0882
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-09-30T00:00:00.000",
+      "net_income_common_stockholders": 1856400000.0,
+      "prev_year_net_income_common_stockholders": 3760900000.0,
+      "yoy_growth": -0.5064
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-06-30T00:00:00.000",
+      "free_cash_flow": 841300000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-06-30T00:00:00.000",
+      "free_cash_flow": 1070800000.0,
+      "prev_year_free_cash_flow": 841300000.0,
+      "yoy_growth": 0.2728
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-09-30T00:00:00.000",
+      "free_cash_flow": 1245500000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 1788000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-03-31T00:00:00.000",
+      "free_cash_flow": -153100000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-06-30T00:00:00.000",
+      "free_cash_flow": 945800000.0,
+      "prev_year_free_cash_flow": 1070800000.0,
+      "yoy_growth": -0.1167
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-09-30T00:00:00.000",
+      "free_cash_flow": 737400000.0,
+      "prev_year_free_cash_flow": 1245500000.0,
+      "yoy_growth": -0.4079
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 1379100000.0,
+      "prev_year_free_cash_flow": 1788000000.0,
+      "yoy_growth": -0.2287
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-03-31T00:00:00.000",
+      "free_cash_flow": -297200000.0,
+      "prev_year_free_cash_flow": -153100000.0,
+      "yoy_growth": -0.9412
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-06-30T00:00:00.000",
+      "free_cash_flow": 434300000.0,
+      "prev_year_free_cash_flow": 945800000.0,
+      "yoy_growth": -0.5408
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-09-30T00:00:00.000",
+      "free_cash_flow": 925800000.0,
+      "prev_year_free_cash_flow": 737400000.0,
+      "yoy_growth": 0.2555
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 1274000000.0,
+      "prev_year_free_cash_flow": 1379100000.0,
+      "yoy_growth": -0.0762
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": 91800000.0,
+      "prev_year_free_cash_flow": -297200000.0,
+      "yoy_growth": 1.3089
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "SBUX",
+      "report_date": "2020-09-30T00:00:00.000",
+      "free_cash_flow": 114200000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2021-09-30T00:00:00.000",
+      "free_cash_flow": 4519100000.0,
+      "prev_year_free_cash_flow": 114200000.0,
+      "yoy_growth": 38.5718
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-09-30T00:00:00.000",
+      "free_cash_flow": 2556000000.0,
+      "prev_year_free_cash_flow": 4519100000.0,
+      "yoy_growth": -0.4344
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-09-30T00:00:00.000",
+      "free_cash_flow": 3675100000.0,
+      "prev_year_free_cash_flow": 2556000000.0,
+      "yoy_growth": 0.4378
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-09-30T00:00:00.000",
+      "free_cash_flow": 3318100000.0,
+      "prev_year_free_cash_flow": 3675100000.0,
+      "yoy_growth": -0.0971
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-09-30T00:00:00.000",
+      "free_cash_flow": 2442000000.0,
+      "prev_year_free_cash_flow": 3318100000.0,
+      "yoy_growth": -0.264
+    }
+  ],
+  "quarterly_eps": [
+    {
+      "symbol": "SBUX",
+      "report_date": "1997-12-31T00:00:00.000",
+      "eps": 0.0156,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "1998-03-31T00:00:00.000",
+      "eps": 0.0106,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "1998-06-30T00:00:00.000",
+      "eps": 0.0056,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "1998-09-30T00:00:00.000",
+      "eps": 0.0175,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "1998-12-31T00:00:00.000",
+      "eps": 0.0181,
+      "prev_year_eps": 0.0156,
+      "yoy_growth": 0.1603
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "1999-03-31T00:00:00.000",
+      "eps": 0.0125,
+      "prev_year_eps": 0.0106,
+      "yoy_growth": 0.1792
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "1999-06-30T00:00:00.000",
+      "eps": 0.0162,
+      "prev_year_eps": 0.0056,
+      "yoy_growth": 1.8929
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "1999-09-30T00:00:00.000",
+      "eps": 0.0213,
+      "prev_year_eps": 0.0175,
+      "yoy_growth": 0.2171
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "1999-12-31T00:00:00.000",
+      "eps": 0.0225,
+      "prev_year_eps": 0.0181,
+      "yoy_growth": 0.2431
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2000-03-31T00:00:00.000",
+      "eps": 0.015,
+      "prev_year_eps": 0.0125,
+      "yoy_growth": 0.2
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2000-06-30T00:00:00.000",
+      "eps": 0.0225,
+      "prev_year_eps": 0.0162,
+      "yoy_growth": 0.3889
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2000-09-30T00:00:00.000",
+      "eps": 0.001,
+      "prev_year_eps": 0.0213,
+      "yoy_growth": -0.9531
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2000-12-31T00:00:00.000",
+      "eps": 0.0312,
+      "prev_year_eps": 0.0225,
+      "yoy_growth": 0.3867
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2001-03-31T00:00:00.000",
+      "eps": 0.02,
+      "prev_year_eps": 0.015,
+      "yoy_growth": 0.3333
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2001-06-30T00:00:00.000",
+      "eps": 0.03,
+      "prev_year_eps": 0.0225,
+      "yoy_growth": 0.3333
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2001-09-30T00:00:00.000",
+      "eps": 0.035,
+      "prev_year_eps": 0.001,
+      "yoy_growth": 34.0
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2001-12-31T00:00:00.000",
+      "eps": 0.0425,
+      "prev_year_eps": 0.0312,
+      "yoy_growth": 0.3622
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2002-03-31T00:00:00.000",
+      "eps": 0.02,
+      "prev_year_eps": 0.02,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2002-06-30T00:00:00.000",
+      "eps": 0.035,
+      "prev_year_eps": 0.03,
+      "yoy_growth": 0.1667
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2002-09-30T00:00:00.000",
+      "eps": 0.0375,
+      "prev_year_eps": 0.035,
+      "yoy_growth": 0.0714
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2002-12-31T00:00:00.000",
+      "eps": 0.05,
+      "prev_year_eps": 0.0425,
+      "yoy_growth": 0.1765
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2003-03-31T00:00:00.000",
+      "eps": 0.0325,
+      "prev_year_eps": 0.02,
+      "yoy_growth": 0.625
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2003-06-30T00:00:00.000",
+      "eps": 0.0425,
+      "prev_year_eps": 0.035,
+      "yoy_growth": 0.2143
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2003-09-30T00:00:00.000",
+      "eps": 0.0425,
+      "prev_year_eps": 0.0375,
+      "yoy_growth": 0.1333
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2003-12-31T00:00:00.000",
+      "eps": 0.0675,
+      "prev_year_eps": 0.05,
+      "yoy_growth": 0.35
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2004-03-31T00:00:00.000",
+      "eps": 0.0475,
+      "prev_year_eps": 0.0325,
+      "yoy_growth": 0.4615
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2004-06-30T00:00:00.000",
+      "eps": 0.0592,
+      "prev_year_eps": 0.0425,
+      "yoy_growth": 0.3929
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2004-09-30T00:00:00.000",
+      "eps": 0.0625,
+      "prev_year_eps": 0.0425,
+      "yoy_growth": 0.4706
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2004-12-31T00:00:00.000",
+      "eps": 0.0875,
+      "prev_year_eps": 0.0675,
+      "yoy_growth": 0.2963
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2005-03-31T00:00:00.000",
+      "eps": 0.06,
+      "prev_year_eps": 0.0475,
+      "yoy_growth": 0.2632
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2005-06-30T00:00:00.000",
+      "eps": 0.08,
+      "prev_year_eps": 0.0592,
+      "yoy_growth": 0.3514
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2005-09-30T00:00:00.000",
+      "eps": 0.08,
+      "prev_year_eps": 0.0625,
+      "yoy_growth": 0.28
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2005-12-31T00:00:00.000",
+      "eps": 0.11,
+      "prev_year_eps": 0.0875,
+      "yoy_growth": 0.2571
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2006-03-31T00:00:00.000",
+      "eps": 0.08,
+      "prev_year_eps": 0.06,
+      "yoy_growth": 0.3333
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2006-06-30T00:00:00.000",
+      "eps": 0.09,
+      "prev_year_eps": 0.08,
+      "yoy_growth": 0.125
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2006-09-30T00:00:00.000",
+      "eps": 0.085,
+      "prev_year_eps": 0.08,
+      "yoy_growth": 0.0625
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2006-12-31T00:00:00.000",
+      "eps": 0.13,
+      "prev_year_eps": 0.11,
+      "yoy_growth": 0.1818
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2007-03-31T00:00:00.000",
+      "eps": 0.095,
+      "prev_year_eps": 0.08,
+      "yoy_growth": 0.1875
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2007-06-30T00:00:00.000",
+      "eps": 0.105,
+      "prev_year_eps": 0.09,
+      "yoy_growth": 0.1667
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2007-09-30T00:00:00.000",
+      "eps": 0.105,
+      "prev_year_eps": 0.085,
+      "yoy_growth": 0.2353
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2007-12-31T00:00:00.000",
+      "eps": 0.14,
+      "prev_year_eps": 0.13,
+      "yoy_growth": 0.0769
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2008-03-31T00:00:00.000",
+      "eps": 0.075,
+      "prev_year_eps": 0.095,
+      "yoy_growth": -0.2105
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2008-06-30T00:00:00.000",
+      "eps": -0.005,
+      "prev_year_eps": 0.105,
+      "yoy_growth": -1.0476
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2008-09-30T00:00:00.000",
+      "eps": 0.005,
+      "prev_year_eps": 0.105,
+      "yoy_growth": -0.9524
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2008-12-31T00:00:00.000",
+      "eps": 0.045,
+      "prev_year_eps": 0.14,
+      "yoy_growth": -0.6786
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2009-03-31T00:00:00.000",
+      "eps": 0.015,
+      "prev_year_eps": 0.075,
+      "yoy_growth": -0.8
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2009-06-30T00:00:00.000",
+      "eps": 0.1,
+      "prev_year_eps": -0.005,
+      "yoy_growth": 21.0
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2009-09-30T00:00:00.000",
+      "eps": 0.1,
+      "prev_year_eps": 0.005,
+      "yoy_growth": 19.0
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2009-12-31T00:00:00.000",
+      "eps": 0.16,
+      "prev_year_eps": 0.045,
+      "yoy_growth": 2.5556
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2010-03-31T00:00:00.000",
+      "eps": 0.14,
+      "prev_year_eps": 0.015,
+      "yoy_growth": 8.3333
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2010-06-30T00:00:00.000",
+      "eps": 0.135,
+      "prev_year_eps": 0.1,
+      "yoy_growth": 0.35
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2010-09-30T00:00:00.000",
+      "eps": 0.185,
+      "prev_year_eps": 0.1,
+      "yoy_growth": 0.85
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2010-12-31T00:00:00.000",
+      "eps": 0.225,
+      "prev_year_eps": 0.16,
+      "yoy_growth": 0.4063
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2011-03-31T00:00:00.000",
+      "eps": 0.17,
+      "prev_year_eps": 0.14,
+      "yoy_growth": 0.2143
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2011-06-30T00:00:00.000",
+      "eps": 0.18,
+      "prev_year_eps": 0.135,
+      "yoy_growth": 0.3333
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2011-09-30T00:00:00.000",
+      "eps": 0.235,
+      "prev_year_eps": 0.185,
+      "yoy_growth": 0.2703
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2011-12-31T00:00:00.000",
+      "eps": 0.25,
+      "prev_year_eps": 0.225,
+      "yoy_growth": 0.1111
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2012-03-31T00:00:00.000",
+      "eps": 0.2,
+      "prev_year_eps": 0.17,
+      "yoy_growth": 0.1765
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2012-06-30T00:00:00.000",
+      "eps": 0.215,
+      "prev_year_eps": 0.18,
+      "yoy_growth": 0.1944
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2012-09-30T00:00:00.000",
+      "eps": 0.23,
+      "prev_year_eps": 0.235,
+      "yoy_growth": -0.0213
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2012-12-31T00:00:00.000",
+      "eps": 0.285,
+      "prev_year_eps": 0.25,
+      "yoy_growth": 0.14
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2013-03-31T00:00:00.000",
+      "eps": 0.255,
+      "prev_year_eps": 0.2,
+      "yoy_growth": 0.275
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2013-06-30T00:00:00.000",
+      "eps": 0.275,
+      "prev_year_eps": 0.215,
+      "yoy_growth": 0.2791
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2013-09-30T00:00:00.000",
+      "eps": -0.8178,
+      "prev_year_eps": 0.23,
+      "yoy_growth": -4.5557
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2013-12-31T00:00:00.000",
+      "eps": 0.355,
+      "prev_year_eps": 0.285,
+      "yoy_growth": 0.2456
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2014-03-31T00:00:00.000",
+      "eps": 0.28,
+      "prev_year_eps": 0.255,
+      "yoy_growth": 0.098
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2014-06-30T00:00:00.000",
+      "eps": 0.335,
+      "prev_year_eps": 0.275,
+      "yoy_growth": 0.2182
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2014-09-30T00:00:00.000",
+      "eps": 0.385,
+      "prev_year_eps": -0.8178,
+      "yoy_growth": 1.4708
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2014-12-31T00:00:00.000",
+      "eps": 0.65,
+      "prev_year_eps": 0.355,
+      "yoy_growth": 0.831
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2015-03-31T00:00:00.000",
+      "eps": 0.3263,
+      "prev_year_eps": 0.28,
+      "yoy_growth": 0.1654
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2015-06-30T00:00:00.000",
+      "eps": 0.41,
+      "prev_year_eps": 0.335,
+      "yoy_growth": 0.2239
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2015-09-30T00:00:00.000",
+      "eps": 0.43,
+      "prev_year_eps": 0.385,
+      "yoy_growth": 0.1169
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2015-12-31T00:00:00.000",
+      "eps": 0.46,
+      "prev_year_eps": 0.65,
+      "yoy_growth": -0.2923
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2016-03-31T00:00:00.000",
+      "eps": 0.39,
+      "prev_year_eps": 0.3263,
+      "yoy_growth": 0.1952
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2016-06-30T00:00:00.000",
+      "eps": 0.51,
+      "prev_year_eps": 0.41,
+      "yoy_growth": 0.2439
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2016-09-30T00:00:00.000",
+      "eps": 0.54,
+      "prev_year_eps": 0.43,
+      "yoy_growth": 0.2558
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2016-12-31T00:00:00.000",
+      "eps": 0.51,
+      "prev_year_eps": 0.46,
+      "yoy_growth": 0.1087
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2017-03-31T00:00:00.000",
+      "eps": 0.45,
+      "prev_year_eps": 0.39,
+      "yoy_growth": 0.1538
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2017-06-30T00:00:00.000",
+      "eps": 0.47,
+      "prev_year_eps": 0.51,
+      "yoy_growth": -0.0784
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2017-09-30T00:00:00.000",
+      "eps": 0.54,
+      "prev_year_eps": 0.54,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2017-12-31T00:00:00.000",
+      "eps": 1.57,
+      "prev_year_eps": 0.51,
+      "yoy_growth": 2.0784
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2018-03-31T00:00:00.000",
+      "eps": 0.47,
+      "prev_year_eps": 0.45,
+      "yoy_growth": 0.0444
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2018-06-30T00:00:00.000",
+      "eps": 0.61,
+      "prev_year_eps": 0.47,
+      "yoy_growth": 0.2979
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2018-09-30T00:00:00.000",
+      "eps": 0.56,
+      "prev_year_eps": 0.54,
+      "yoy_growth": 0.037
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2018-12-31T00:00:00.000",
+      "eps": 0.61,
+      "prev_year_eps": 1.57,
+      "yoy_growth": -0.6115
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2019-03-31T00:00:00.000",
+      "eps": 0.53,
+      "prev_year_eps": 0.47,
+      "yoy_growth": 0.1277
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2019-06-30T00:00:00.000",
+      "eps": 1.12,
+      "prev_year_eps": 0.61,
+      "yoy_growth": 0.8361
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2019-09-30T00:00:00.000",
+      "eps": 0.666,
+      "prev_year_eps": 0.56,
+      "yoy_growth": 0.1893
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2019-12-31T00:00:00.000",
+      "eps": 0.7437,
+      "prev_year_eps": 0.61,
+      "yoy_growth": 0.2192
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2020-03-31T00:00:00.000",
+      "eps": 0.2781,
+      "prev_year_eps": 0.53,
+      "yoy_growth": -0.4753
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2020-06-30T00:00:00.000",
+      "eps": -0.5806,
+      "prev_year_eps": 1.12,
+      "yoy_growth": -1.5184
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2020-09-30T00:00:00.000",
+      "eps": 0.333,
+      "prev_year_eps": 0.666,
+      "yoy_growth": -0.5
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2020-12-31T00:00:00.000",
+      "eps": 0.526,
+      "prev_year_eps": 0.7437,
+      "yoy_growth": -0.2927
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2021-03-31T00:00:00.000",
+      "eps": 0.5566,
+      "prev_year_eps": 0.2781,
+      "yoy_growth": 1.0014
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2021-06-30T00:00:00.000",
+      "eps": 0.9724,
+      "prev_year_eps": -0.5806,
+      "yoy_growth": 2.6748
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2021-09-30T00:00:00.000",
+      "eps": 1.4853,
+      "prev_year_eps": 0.333,
+      "yoy_growth": 3.4604
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2021-12-31T00:00:00.000",
+      "eps": 0.6934,
+      "prev_year_eps": 0.526,
+      "yoy_growth": 0.3183
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-03-31T00:00:00.000",
+      "eps": 0.5845,
+      "prev_year_eps": 0.5566,
+      "yoy_growth": 0.0501
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-06-30T00:00:00.000",
+      "eps": 0.7931,
+      "prev_year_eps": 0.9724,
+      "yoy_growth": -0.1844
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-09-30T00:00:00.000",
+      "eps": 0.7621,
+      "prev_year_eps": 1.4853,
+      "yoy_growth": -0.4869
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-12-31T00:00:00.000",
+      "eps": 0.7418,
+      "prev_year_eps": 0.6934,
+      "yoy_growth": 0.0698
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-03-31T00:00:00.000",
+      "eps": 0.788,
+      "prev_year_eps": 0.5845,
+      "yoy_growth": 0.3482
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-06-30T00:00:00.000",
+      "eps": 0.9924,
+      "prev_year_eps": 0.7931,
+      "yoy_growth": 0.2513
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-09-30T00:00:00.000",
+      "eps": 1.0608,
+      "prev_year_eps": 0.7621,
+      "yoy_growth": 0.3919
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-12-31T00:00:00.000",
+      "eps": 0.8981,
+      "prev_year_eps": 0.7418,
+      "yoy_growth": 0.2107
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-03-31T00:00:00.000",
+      "eps": 0.6803,
+      "prev_year_eps": 0.788,
+      "yoy_growth": -0.1367
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-06-30T00:00:00.000",
+      "eps": 0.9287,
+      "prev_year_eps": 0.9924,
+      "yoy_growth": -0.0642
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-09-30T00:00:00.000",
+      "eps": 0.7995,
+      "prev_year_eps": 1.0608,
+      "yoy_growth": -0.2463
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-12-31T00:00:00.000",
+      "eps": 0.6859,
+      "prev_year_eps": 0.8981,
+      "yoy_growth": -0.2363
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-03-31T00:00:00.000",
+      "eps": 0.337,
+      "prev_year_eps": 0.6803,
+      "yoy_growth": -0.5046
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-06-30T00:00:00.000",
+      "eps": 0.4898,
+      "prev_year_eps": 0.9287,
+      "yoy_growth": -0.4726
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-09-30T00:00:00.000",
+      "eps": 0.1167,
+      "prev_year_eps": 0.7995,
+      "yoy_growth": -0.854
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-12-31T00:00:00.000",
+      "eps": 0.2568,
+      "prev_year_eps": 0.6859,
+      "yoy_growth": -0.6256
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2026-03-31T00:00:00.000",
+      "eps": 0.4469,
+      "prev_year_eps": 0.337,
+      "yoy_growth": 0.3261
+    }
+  ]
+}

@@ -1,10 +1,10 @@
 {
   "symbol": "LMT",
-  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
+  "lastUpdated": "2026-07-06T23:55:57.634961+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
+    "snapshotBuiltAt": "2026-07-06T23:55:57.634961+00:00",
     "sections": {
-      "price": "2026-04-24"
+      "price": "2026-07-02"
     }
   },
   "source": "prefetched",
@@ -33,18 +33,19 @@
       "country": "United States",
       "industry": "Aerospace & Defense",
       "sector": "Industrials",
-      "longBusinessSummary": "Lockheed Martin Corporation, an aerospace and defense company, engages in the research, design, development, manufacture, integration, and sustainment of technology systems, products, and services in the United States, Europe, Asia, the Middle East, and internationally. The company operates through four segments: Aeronautics; Missiles and Fire Control (MFC); Rotary and Mission Systems (RMS); and Space. The Aeronautics segment offers combat and air mobility aircraft, unmanned air vehicles, and related technologies. The MFC segment provides air and missile defense systems; tactical missiles and precision strike weapon systems; logistics; fire control systems; mission operations support, readiness, engineering support, and integration services; and ground vehicles. The RMS segment offers military and commercial helicopters, surface ships, sea and land-based missile defense systems, radar and laser systems, sea and air-based mission and combat systems, command and control mission solutions, cyber solutions, simulation and training solutions, and services and supports surface ships. The Space segment provides satellites; space transportation systems; strategic, advanced strike, and defensive systems; and classified systems and services in support of national security systems. This segment also provides network-enabled situational awareness and integrates space and ground global systems to help its customers gather, analyze, and securely distribute critical intelligence data. It serves primarily serves the U.S. government and international customers, as well as foreign military sales contracted through the U.S. government. The company was formerly known as The Lockheed Corporation and changed its name to Lockheed Martin Corporation in March 1995. Lockheed Martin Corporation was founded in 1912 and is based in Bethesda, Maryland.",
+      "longBusinessSummary": "Lockheed Martin Corporation, an aerospace and defense company, engages in the research, design, development, manufacture, integration, and sustainment of technology systems, products, and services in the United States, Europe, Asia, the Middle East, and internationally. The company operates through four segments: Aeronautics; Missiles and Fire Control (MFC); Rotary and Mission Systems (RMS); and Space. The Aeronautics segment offers combat and air mobility aircraft, unmanned air vehicles, and related technologies. The MFC segment provides air and missile defense systems; tactical missiles and precision strike weapon systems; logistics; fire control systems; mission operations support, readiness, engineering support, and integration services; and ground vehicles. The RMS segment offers military and commercial helicopters, surface ships, sea- and land-based missile defense systems, radar and laser systems, sea- and air-based mission and combat systems, command and control mission solutions, cyber solutions, simulation and training solutions, and services and support for surface ships. The Space segment provides satellites; space transportation systems; strategic, advanced strike, and defensive systems; and classified systems and services in support of national security systems. This segment also provides network-enabled situational awareness; and integrates space and ground global systems to help its customers gather, analyze, and securely distribute critical intelligence data. It primarily serves the U.S. government and international customers, as well as foreign military sales contracted through the U.S. government. The company was formerly known as The Lockheed Corporation and changed its name to Lockheed Martin Corporation in March 1995. Lockheed Martin Corporation was founded in 1912 and is based in Bethesda, Maryland.",
       "fullTimeEmployees": 123000,
       "website": "https://www.lockheedmartin.com",
       "shortName": "Lockheed Martin Corporation",
       "longName": "Lockheed Martin Corporation"
     },
     "fundamentals": {
-      "ttmEps": 20.65,
-      "ttmPe": 24.86,
-      "marketCap": 118382880420,
-      "psRatio": 1.58,
-      "pbRatio": 15.81
+      "ttmEps": 20.6486,
+      "ttmPe": 26.44,
+      "marketCap": 125866974876,
+      "psRatio": 1.68,
+      "pbRatio": 16.81,
+      "pegRatio": 0.17
     },
     "profitability": {
       "roe": 20.94,
@@ -81,14 +82,14 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": -11.540000000000001
+        "yoyGrowth": -11.5
       }
     ],
     "income_statement": {
       "quarterly": [
         {
           "Breakdown": "Total Revenue",
-          "TTM": "71844000000.0",
+          "TTM": "75106000000.0",
           "2026-03-31": "18021000000.0",
           "2025-12-31": "20321000000.0",
           "2025-09-30": "18609000000.0",
@@ -108,7 +109,7 @@
         },
         {
           "Breakdown": "Operating Revenue",
-          "TTM": "71844000000.0",
+          "TTM": "75106000000.0",
           "2026-03-31": "18021000000.0",
           "2025-12-31": "20321000000.0",
           "2025-09-30": "18609000000.0",
@@ -128,7 +129,7 @@
         },
         {
           "Breakdown": "Cost of Revenue",
-          "TTM": "65980000000.0",
+          "TTM": "67732000000.0",
           "2026-03-31": "15943000000.0",
           "2025-12-31": "17999000000.0",
           "2025-09-30": "16369000000.0",
@@ -148,7 +149,7 @@
         },
         {
           "Breakdown": "Gross Profit",
-          "TTM": "5864000000.0",
+          "TTM": "7374000000.0",
           "2026-03-31": "2078000000.0",
           "2025-12-31": "2322000000.0",
           "2025-09-30": "2240000000.0",
@@ -168,7 +169,7 @@
         },
         {
           "Breakdown": "Operating Expense",
-          "TTM": "136000000.0",
+          "TTM": "-48000000.0",
           "2026-03-31": "15000000.0",
           "2025-12-31": "-9000000.0",
           "2025-09-30": "-40000000.0",
@@ -248,7 +249,7 @@
         },
         {
           "Breakdown": "Other Operating Expenses",
-          "TTM": "-92000000.0",
+          "TTM": "-48000000.0",
           "2026-03-31": "15000000.0",
           "2025-12-31": "-9000000.0",
           "2025-09-30": "-40000000.0",
@@ -268,7 +269,7 @@
         },
         {
           "Breakdown": "Operating Income",
-          "TTM": "5728000000.0",
+          "TTM": "7422000000.0",
           "2026-03-31": "2063000000.0",
           "2025-12-31": "2331000000.0",
           "2025-09-30": "2280000000.0",
@@ -288,7 +289,7 @@
         },
         {
           "Breakdown": "Net Non-Operating Interest Income Expense",
-          "TTM": "-1062000000.0",
+          "TTM": "-1119000000.0",
           "2026-03-31": "-269000000.0",
           "2025-12-31": "-290000000.0",
           "2025-09-30": "-286000000.0",
@@ -308,7 +309,7 @@
         },
         {
           "Breakdown": "Non-Operating Interest Expense",
-          "TTM": "1062000000.0",
+          "TTM": "1119000000.0",
           "2026-03-31": "269000000.0",
           "2025-12-31": "290000000.0",
           "2025-09-30": "286000000.0",
@@ -328,7 +329,7 @@
         },
         {
           "Breakdown": "Other Income Expense",
-          "TTM": "224000000.0",
+          "TTM": "-643000000.0",
           "2026-03-31": "-20000000.0",
           "2025-12-31": "-510000000.0",
           "2025-09-30": "-56000000.0",
@@ -348,7 +349,7 @@
         },
         {
           "Breakdown": "Other Non Operating Income Expenses",
-          "TTM": "224000000.0",
+          "TTM": "-643000000.0",
           "2026-03-31": "-20000000.0",
           "2025-12-31": "-510000000.0",
           "2025-09-30": "-56000000.0",
@@ -368,7 +369,7 @@
         },
         {
           "Breakdown": "Pretax Income",
-          "TTM": "4890000000.0",
+          "TTM": "5660000000.0",
           "2026-03-31": "1774000000.0",
           "2025-12-31": "1531000000.0",
           "2025-09-30": "1938000000.0",
@@ -388,7 +389,7 @@
         },
         {
           "Breakdown": "Tax Provision",
-          "TTM": "686000000.0",
+          "TTM": "867000000.0",
           "2026-03-31": "286000000.0",
           "2025-12-31": "187000000.0",
           "2025-09-30": "319000000.0",
@@ -408,7 +409,7 @@
         },
         {
           "Breakdown": "Net Income Common Stockholders",
-          "TTM": "4204000000.0",
+          "TTM": "4793000000.0",
           "2026-03-31": "1488000000.0",
           "2025-12-31": "1344000000.0",
           "2025-09-30": "1619000000.0",
@@ -428,7 +429,7 @@
         },
         {
           "Breakdown": "Net Income(Attributable to Parent Company Shareholders)",
-          "TTM": "4204000000.0",
+          "TTM": "4793000000.0",
           "2026-03-31": "1488000000.0",
           "2025-12-31": "1344000000.0",
           "2025-09-30": "1619000000.0",
@@ -448,7 +449,7 @@
         },
         {
           "Breakdown": "Net Income Including Non-Controlling Interests",
-          "TTM": "4204000000.0",
+          "TTM": "4793000000.0",
           "2026-03-31": "1488000000.0",
           "2025-12-31": "1344000000.0",
           "2025-09-30": "1619000000.0",
@@ -468,7 +469,7 @@
         },
         {
           "Breakdown": "Net Income Continuous Operations",
-          "TTM": "4204000000.0",
+          "TTM": "4793000000.0",
           "2026-03-31": "1488000000.0",
           "2025-12-31": "1344000000.0",
           "2025-09-30": "1619000000.0",
@@ -508,7 +509,7 @@
         },
         {
           "Breakdown": "Diluted NI Available to Com Stockholders",
-          "TTM": "4204000000.0",
+          "TTM": "4793000000.0",
           "2026-03-31": "1488000000.0",
           "2025-12-31": "1344000000.0",
           "2025-09-30": "1619000000.0",
@@ -528,7 +529,7 @@
         },
         {
           "Breakdown": "Basic EPS",
-          "TTM": "27.42",
+          "TTM": "20.73",
           "2026-03-31": "6.47",
           "2025-12-31": "5.82",
           "2025-09-30": "6.98",
@@ -548,7 +549,7 @@
         },
         {
           "Breakdown": "Diluted EPS",
-          "TTM": "27.32",
+          "TTM": "20.65",
           "2026-03-31": "6.44",
           "2025-12-31": "5.8",
           "2025-09-30": "6.95",
@@ -568,7 +569,7 @@
         },
         {
           "Breakdown": "Basic Average Shares",
-          "TTM": "253350000.0",
+          "TTM": "231575000.0",
           "2026-03-31": "229900000.0",
           "2025-12-31": "230900000.0",
           "2025-09-30": "231900000.0",
@@ -588,7 +589,7 @@
         },
         {
           "Breakdown": "Diluted Average Shares",
-          "TTM": "254250000.0",
+          "TTM": "232450000.0",
           "2026-03-31": "231100000.0",
           "2025-12-31": "231900000.0",
           "2025-09-30": "232800000.0",
@@ -608,7 +609,7 @@
         },
         {
           "Breakdown": "Total Operating Income as Reported",
-          "TTM": "5956000000.0",
+          "TTM": "7422000000.0",
           "2026-03-31": "2063000000.0",
           "2025-12-31": "2331000000.0",
           "2025-09-30": "2280000000.0",
@@ -628,7 +629,7 @@
         },
         {
           "Breakdown": "Total Expenses",
-          "TTM": "66116000000.0",
+          "TTM": "67684000000.0",
           "2026-03-31": "15958000000.0",
           "2025-12-31": "17990000000.0",
           "2025-09-30": "16329000000.0",
@@ -648,7 +649,7 @@
         },
         {
           "Breakdown": "Net Income from Continuing & Discontinued Operation",
-          "TTM": "4204000000.0",
+          "TTM": "4793000000.0",
           "2026-03-31": "1488000000.0",
           "2025-12-31": "1344000000.0",
           "2025-09-30": "1619000000.0",
@@ -668,7 +669,7 @@
         },
         {
           "Breakdown": "Normalized Income",
-          "TTM": "4204000000.0",
+          "TTM": "4793000000.0",
           "2026-03-31": "1488000000.0",
           "2025-12-31": "1344000000.0",
           "2025-09-30": "1619000000.0",
@@ -688,7 +689,7 @@
         },
         {
           "Breakdown": "Interest Expense",
-          "TTM": "1062000000.0",
+          "TTM": "1119000000.0",
           "2026-03-31": "269000000.0",
           "2025-12-31": "290000000.0",
           "2025-09-30": "286000000.0",
@@ -708,7 +709,7 @@
         },
         {
           "Breakdown": "Net Interest Income",
-          "TTM": "-1062000000.0",
+          "TTM": "-1119000000.0",
           "2026-03-31": "-269000000.0",
           "2025-12-31": "-290000000.0",
           "2025-09-30": "-286000000.0",
@@ -728,7 +729,7 @@
         },
         {
           "Breakdown": "EBIT",
-          "TTM": "5952000000.0",
+          "TTM": "6779000000.0",
           "2026-03-31": "2043000000.0",
           "2025-12-31": "1821000000.0",
           "2025-09-30": "2224000000.0",
@@ -748,7 +749,7 @@
         },
         {
           "Breakdown": "EBITDA",
-          "TTM": "7597000000.0",
+          "TTM": "8467000000.0",
           "2026-03-31": "2441000000.0",
           "2025-12-31": "2284000000.0",
           "2025-09-30": "2652000000.0",
@@ -768,7 +769,7 @@
         },
         {
           "Breakdown": "Reconciled Cost of Revenue",
-          "TTM": "65980000000.0",
+          "TTM": "67732000000.0",
           "2026-03-31": "15943000000.0",
           "2025-12-31": "17999000000.0",
           "2025-09-30": "16369000000.0",
@@ -788,7 +789,7 @@
         },
         {
           "Breakdown": "Reconciled Depreciation",
-          "TTM": "1645000000.0",
+          "TTM": "1688000000.0",
           "2026-03-31": "398000000.0",
           "2025-12-31": "463000000.0",
           "2025-09-30": "428000000.0",
@@ -808,7 +809,7 @@
         },
         {
           "Breakdown": "Net Income from Continuing Operation Net Minority Interest",
-          "TTM": "4204000000.0",
+          "TTM": "4793000000.0",
           "2026-03-31": "1488000000.0",
           "2025-12-31": "1344000000.0",
           "2025-09-30": "1619000000.0",
@@ -828,7 +829,7 @@
         },
         {
           "Breakdown": "Normalized EBITDA",
-          "TTM": "7597000000.0",
+          "TTM": "8467000000.0",
           "2026-03-31": "2441000000.0",
           "2025-12-31": "2284000000.0",
           "2025-09-30": "2652000000.0",
@@ -848,7 +849,7 @@
         },
         {
           "Breakdown": "Tax Rate for Calcs",
-          "TTM": "0.14",
+          "TTM": "0.15",
           "2026-03-31": "0.16",
           "2025-12-31": "0.12",
           "2025-09-30": "0.16",
@@ -3186,7 +3187,7 @@
       "quarterly": [
         {
           "Breakdown": "Operating Cash Flow",
-          "TTM": "5071000000.0",
+          "TTM": "7368000000.0",
           "2026-03-31": "220000000.0",
           "2025-12-31": "3219000000.0",
           "2025-09-30": "3728000000.0",
@@ -3206,7 +3207,7 @@
         },
         {
           "Breakdown": "Cash Flow from Continuing Operating Activities",
-          "TTM": "5071000000.0",
+          "TTM": "7368000000.0",
           "2026-03-31": "220000000.0",
           "2025-12-31": "3219000000.0",
           "2025-09-30": "3728000000.0",
@@ -3226,7 +3227,7 @@
         },
         {
           "Breakdown": "Net Income from Continuing Operations",
-          "TTM": "4204000000.0",
+          "TTM": "4793000000.0",
           "2026-03-31": "1488000000.0",
           "2025-12-31": "1344000000.0",
           "2025-09-30": "1619000000.0",
@@ -3286,7 +3287,7 @@
         },
         {
           "Breakdown": "Depreciation Amortization Depletion",
-          "TTM": "1645000000.0",
+          "TTM": "1688000000.0",
           "2026-03-31": "398000000.0",
           "2025-12-31": "463000000.0",
           "2025-09-30": "428000000.0",
@@ -3306,7 +3307,7 @@
         },
         {
           "Breakdown": "Depreciation & Amortization",
-          "TTM": "1645000000.0",
+          "TTM": "1688000000.0",
           "2026-03-31": "398000000.0",
           "2025-12-31": "463000000.0",
           "2025-09-30": "428000000.0",
@@ -3386,7 +3387,7 @@
         },
         {
           "Breakdown": "Deferred Tax",
-          "TTM": "-1004000000.0",
+          "TTM": "567000000.0",
           "2026-03-31": "161000000.0",
           "2025-12-31": "300000000.0",
           "2025-09-30": "633000000.0",
@@ -3406,7 +3407,7 @@
         },
         {
           "Breakdown": "Deferred Income Tax",
-          "TTM": "-1004000000.0",
+          "TTM": "567000000.0",
           "2026-03-31": "161000000.0",
           "2025-12-31": "300000000.0",
           "2025-09-30": "633000000.0",
@@ -3426,7 +3427,7 @@
         },
         {
           "Breakdown": "Other Non-Cash Items",
-          "TTM": "1839000000.0",
+          "TTM": "755000000.0",
           "2026-03-31": "-498000000.0",
           "2025-12-31": "-1295000000.0",
           "2025-09-30": "424000000.0",
@@ -3466,7 +3467,7 @@
         },
         {
           "Breakdown": "Stock Based Compensation",
-          "TTM": "264000000.0",
+          "TTM": "327000000.0",
           "2026-03-31": "83000000.0",
           "2025-12-31": "89000000.0",
           "2025-09-30": "74000000.0",
@@ -3486,7 +3487,7 @@
         },
         {
           "Breakdown": "Change In Working Capital",
-          "TTM": "-1943000000.0",
+          "TTM": "-1307000000.0",
           "2026-03-31": "-1412000000.0",
           "2025-12-31": "1839000000.0",
           "2025-09-30": "550000000.0",
@@ -3506,7 +3507,7 @@
         },
         {
           "Breakdown": "Change in Receivables",
-          "TTM": "-1939000000.0",
+          "TTM": "-1745000000.0",
           "2026-03-31": "-1305000000.0",
           "2025-12-31": "891000000.0",
           "2025-09-30": "409000000.0",
@@ -3526,7 +3527,7 @@
         },
         {
           "Breakdown": "Changes in Account Receivables",
-          "TTM": "-376000000.0",
+          "TTM": "-298000000.0",
           "2026-03-31": "1579000000.0",
           "2025-12-31": "-57000000.0",
           "2025-09-30": "-538000000.0",
@@ -3546,7 +3547,7 @@
         },
         {
           "Breakdown": "Change in Inventory",
-          "TTM": "-974000000.0",
+          "TTM": "-888000000.0",
           "2026-03-31": "-727000000.0",
           "2025-12-31": "225000000.0",
           "2025-09-30": "-50000000.0",
@@ -3566,7 +3567,7 @@
         },
         {
           "Breakdown": "Change in Payables And Accrued Expense",
-          "TTM": "716000000.0",
+          "TTM": "392000000.0",
           "2026-03-31": "1325000000.0",
           "2025-12-31": "-458000000.0",
           "2025-09-30": "-207000000.0",
@@ -3586,7 +3587,7 @@
         },
         {
           "Breakdown": "Change in Payable",
-          "TTM": "716000000.0",
+          "TTM": "392000000.0",
           "2026-03-31": "1325000000.0",
           "2025-12-31": "-458000000.0",
           "2025-09-30": "-207000000.0",
@@ -3606,7 +3607,7 @@
         },
         {
           "Breakdown": "Change in Tax Payable",
-          "TTM": "361000000.0",
+          "TTM": "-491000000.0",
           "2026-03-31": "103000000.0",
           "2025-12-31": "-155000000.0",
           "2025-09-30": "-351000000.0",
@@ -3626,7 +3627,7 @@
         },
         {
           "Breakdown": "Change in Income Tax Payable",
-          "TTM": "361000000.0",
+          "TTM": "-491000000.0",
           "2026-03-31": "103000000.0",
           "2025-12-31": "-155000000.0",
           "2025-09-30": "-351000000.0",
@@ -3646,7 +3647,7 @@
         },
         {
           "Breakdown": "Change in Account Payable",
-          "TTM": "355000000.0",
+          "TTM": "883000000.0",
           "2026-03-31": "1222000000.0",
           "2025-12-31": "-303000000.0",
           "2025-09-30": "144000000.0",
@@ -3666,7 +3667,7 @@
         },
         {
           "Breakdown": "Change in Other Working Capital",
-          "TTM": "254000000.0",
+          "TTM": "934000000.0",
           "2026-03-31": "-705000000.0",
           "2025-12-31": "1181000000.0",
           "2025-09-30": "398000000.0",
@@ -3686,7 +3687,7 @@
         },
         {
           "Breakdown": "Investing Cash Flow",
-          "TTM": "-2193000000.0",
+          "TTM": "-2088000000.0",
           "2026-03-31": "-541000000.0",
           "2025-12-31": "-513000000.0",
           "2025-09-30": "-319000000.0",
@@ -3706,7 +3707,7 @@
         },
         {
           "Breakdown": "Cash Flow from Continuing Investing Activities",
-          "TTM": "-2193000000.0",
+          "TTM": "-2088000000.0",
           "2026-03-31": "-541000000.0",
           "2025-12-31": "-513000000.0",
           "2025-09-30": "-319000000.0",
@@ -3726,7 +3727,7 @@
         },
         {
           "Breakdown": "Capital Expenditure Reported（CapEx）",
-          "TTM": "-1742000000.0",
+          "TTM": "-1706000000.0",
           "2026-03-31": "-511000000.0",
           "2025-12-31": "-463000000.0",
           "2025-09-30": "-381000000.0",
@@ -3746,7 +3747,7 @@
         },
         {
           "Breakdown": "Net Other Investing Changes",
-          "TTM": "-451000000.0",
+          "TTM": "-382000000.0",
           "2026-03-31": "-30000000.0",
           "2025-12-31": "-50000000.0",
           "2025-09-30": "62000000.0",
@@ -3766,7 +3767,7 @@
         },
         {
           "Breakdown": "Financing Cash Flow",
-          "TTM": "-4108000000.0",
+          "TTM": "-5189000000.0",
           "2026-03-31": "-1906000000.0",
           "2025-12-31": "-2055000000.0",
           "2025-09-30": "-1232000000.0",
@@ -3786,7 +3787,7 @@
         },
         {
           "Breakdown": "Cash Flow from Continuing Financing Activities",
-          "TTM": "-4108000000.0",
+          "TTM": "-5189000000.0",
           "2026-03-31": "-1906000000.0",
           "2025-12-31": "-2055000000.0",
           "2025-09-30": "-1232000000.0",
@@ -3806,7 +3807,7 @@
         },
         {
           "Breakdown": "Net Issuance Payments of Debt",
-          "TTM": "2297000000.0",
+          "TTM": "343000000.0",
           "2026-03-31": "-1000000000.0",
           "2025-12-31": "-500000000.0",
           "2025-09-30": "536000000.0",
@@ -3826,7 +3827,7 @@
         },
         {
           "Breakdown": "Net Long Term Debt Issuance",
-          "TTM": "848000000.0",
+          "TTM": "343000000.0",
           "2026-03-31": "-1000000000.0",
           "2025-12-31": "-500000000.0",
           "2025-09-30": "1985000000.0",
@@ -3866,7 +3867,7 @@
         },
         {
           "Breakdown": "Long Term Debt Payments",
-          "TTM": "-142000000.0",
+          "TTM": "-1642000000.0",
           "2026-03-31": "-1000000000.0",
           "2025-12-31": "-500000000.0",
           "2025-09-30": "0.0",
@@ -3886,7 +3887,7 @@
         },
         {
           "Breakdown": "Net Common Stock Issuance",
-          "TTM": "-3100000000.0",
+          "TTM": "-2250000000.0",
           "2026-03-31": "0.0",
           "2025-12-31": "-750000000.0",
           "2025-09-30": "-1000000000.0",
@@ -3906,7 +3907,7 @@
         },
         {
           "Breakdown": "Common Stock Payments",
-          "TTM": "-3100000000.0",
+          "TTM": "-2250000000.0",
           "2026-03-31": "0.0",
           "2025-12-31": "-750000000.0",
           "2025-09-30": "-1000000000.0",
@@ -3926,7 +3927,7 @@
         },
         {
           "Breakdown": "Cash Dividends Paid",
-          "TTM": "-3094000000.0",
+          "TTM": "-3151000000.0",
           "2026-03-31": "-816000000.0",
           "2025-12-31": "-799000000.0",
           "2025-09-30": "-765000000.0",
@@ -3966,7 +3967,7 @@
         },
         {
           "Breakdown": "Net Other Financing Charges",
-          "TTM": "-211000000.0",
+          "TTM": "-131000000.0",
           "2026-03-31": "-90000000.0",
           "2025-12-31": "-6000000.0",
           "2025-09-30": "-3000000.0",
@@ -3986,7 +3987,7 @@
         },
         {
           "Breakdown": "End Cash Position",
-          "TTM": "1293000000.0",
+          "TTM": "1894000000.0",
           "2026-03-31": "1894000000.0",
           "2025-12-31": "4121000000.0",
           "2025-09-30": "3470000000.0",
@@ -4006,7 +4007,7 @@
         },
         {
           "Breakdown": "Changes in Cash",
-          "TTM": "-1230000000.0",
+          "TTM": "91000000.0",
           "2026-03-31": "-2227000000.0",
           "2025-12-31": "651000000.0",
           "2025-09-30": "2177000000.0",
@@ -4026,7 +4027,7 @@
         },
         {
           "Breakdown": "Beginning Cash Position",
-          "TTM": "2523000000.0",
+          "TTM": "1803000000.0",
           "2026-03-31": "4121000000.0",
           "2025-12-31": "3470000000.0",
           "2025-09-30": "1293000000.0",
@@ -4046,7 +4047,7 @@
         },
         {
           "Breakdown": "Capital Expenditure (CapEx)",
-          "TTM": "-1742000000.0",
+          "TTM": "-1706000000.0",
           "2026-03-31": "-511000000.0",
           "2025-12-31": "-463000000.0",
           "2025-09-30": "-381000000.0",
@@ -4086,7 +4087,7 @@
         },
         {
           "Breakdown": "Repayment of Debt",
-          "TTM": "-142000000.0",
+          "TTM": "-1642000000.0",
           "2026-03-31": "-1000000000.0",
           "2025-12-31": "-500000000.0",
           "2025-09-30": "0.0",
@@ -4106,7 +4107,7 @@
         },
         {
           "Breakdown": "Repurchase of Capital Stock",
-          "TTM": "-3100000000.0",
+          "TTM": "-2250000000.0",
           "2026-03-31": "0.0",
           "2025-12-31": "-750000000.0",
           "2025-09-30": "-1000000000.0",
@@ -4126,7 +4127,7 @@
         },
         {
           "Breakdown": "Free Cash Flow",
-          "TTM": "3329000000.0",
+          "TTM": "5662000000.0",
           "2026-03-31": "-291000000.0",
           "2025-12-31": "2756000000.0",
           "2025-09-30": "3347000000.0",
@@ -4699,393 +4700,17 @@
       ]
     },
     "wacc": {
-      "wacc": 4.61,
-      "costOfEquity": 5.2299999999999995,
+      "wacc": 4.83,
+      "costOfEquity": 5.4399999999999995,
       "costOfDebt": 1.3,
       "taxRate": 16,
-      "beta": 0.1078,
-      "marketCap": 118382880420
+      "beta": 0.1132,
+      "marketCap": 125866974876
     },
     "beta": {
-      "beta5y": 0.1078
+      "beta5y": 0.1132
     },
     "price": [
-      {
-        "date": "2025-04-24",
-        "open": 465.77,
-        "high": 467.59,
-        "low": 460.16,
-        "close": 466.81,
-        "volume": 1105000
-      },
-      {
-        "date": "2025-04-25",
-        "open": 469.99,
-        "high": 478.46,
-        "low": 467.9,
-        "close": 477.64,
-        "volume": 1521700
-      },
-      {
-        "date": "2025-04-28",
-        "open": 479.31,
-        "high": 483.79,
-        "low": 474.29,
-        "close": 476.29,
-        "volume": 1159700
-      },
-      {
-        "date": "2025-04-29",
-        "open": 475.98,
-        "high": 479.3,
-        "low": 473.35,
-        "close": 475.88,
-        "volume": 897100
-      },
-      {
-        "date": "2025-04-30",
-        "open": 478.27,
-        "high": 478.61,
-        "low": 471.13,
-        "close": 477.75,
-        "volume": 1095000
-      },
-      {
-        "date": "2025-05-01",
-        "open": 476,
-        "high": 479.45,
-        "low": 473,
-        "close": 477.72,
-        "volume": 986400
-      },
-      {
-        "date": "2025-05-02",
-        "open": 484.75,
-        "high": 491.07,
-        "low": 467.51,
-        "close": 472.8,
-        "volume": 2090500
-      },
-      {
-        "date": "2025-05-05",
-        "open": 474,
-        "high": 474.49,
-        "low": 469.34,
-        "close": 471.56,
-        "volume": 1150200
-      },
-      {
-        "date": "2025-05-06",
-        "open": 469.77,
-        "high": 471.16,
-        "low": 463.46,
-        "close": 468.21,
-        "volume": 1135400
-      },
-      {
-        "date": "2025-05-07",
-        "open": 468.4,
-        "high": 474.9,
-        "low": 467.06,
-        "close": 471.32,
-        "volume": 1204400
-      },
-      {
-        "date": "2025-05-08",
-        "open": 473,
-        "high": 479,
-        "low": 471.73,
-        "close": 474.53,
-        "volume": 1093100
-      },
-      {
-        "date": "2025-05-09",
-        "open": 475.27,
-        "high": 476.63,
-        "low": 468.08,
-        "close": 473.52,
-        "volume": 978800
-      },
-      {
-        "date": "2025-05-12",
-        "open": 473.5,
-        "high": 475.69,
-        "low": 465.78,
-        "close": 473.16,
-        "volume": 1364500
-      },
-      {
-        "date": "2025-05-13",
-        "open": 472.81,
-        "high": 472.81,
-        "low": 459.14,
-        "close": 459.83,
-        "volume": 1859400
-      },
-      {
-        "date": "2025-05-14",
-        "open": 460.84,
-        "high": 461.8,
-        "low": 445.06,
-        "close": 449.18,
-        "volume": 2129700
-      },
-      {
-        "date": "2025-05-15",
-        "open": 458.97,
-        "high": 465.41,
-        "low": 455.03,
-        "close": 465.14,
-        "volume": 1758700
-      },
-      {
-        "date": "2025-05-16",
-        "open": 466.21,
-        "high": 468.49,
-        "low": 462.66,
-        "close": 468.32,
-        "volume": 1319200
-      },
-      {
-        "date": "2025-05-19",
-        "open": 469.41,
-        "high": 474.44,
-        "low": 467.78,
-        "close": 473.06,
-        "volume": 1199700
-      },
-      {
-        "date": "2025-05-20",
-        "open": 471.23,
-        "high": 477.1,
-        "low": 470.89,
-        "close": 475.82,
-        "volume": 1058500
-      },
-      {
-        "date": "2025-05-21",
-        "open": 480.84,
-        "high": 480.93,
-        "low": 470.05,
-        "close": 470.28,
-        "volume": 1435100
-      },
-      {
-        "date": "2025-05-22",
-        "open": 468.79,
-        "high": 472.87,
-        "low": 467.12,
-        "close": 470.45,
-        "volume": 885000
-      },
-      {
-        "date": "2025-05-23",
-        "open": 467.96,
-        "high": 469.55,
-        "low": 465.56,
-        "close": 468.88,
-        "volume": 866700
-      },
-      {
-        "date": "2025-05-27",
-        "open": 470.8,
-        "high": 476.85,
-        "low": 468.66,
-        "close": 476.85,
-        "volume": 1548000
-      },
-      {
-        "date": "2025-05-28",
-        "open": 477.54,
-        "high": 478.98,
-        "low": 469,
-        "close": 469.98,
-        "volume": 956500
-      },
-      {
-        "date": "2025-05-29",
-        "open": 467.93,
-        "high": 474.56,
-        "low": 465.32,
-        "close": 473.69,
-        "volume": 851000
-      },
-      {
-        "date": "2025-05-30",
-        "open": 473.67,
-        "high": 482.38,
-        "low": 471.06,
-        "close": 482.38,
-        "volume": 2196300
-      },
-      {
-        "date": "2025-06-02",
-        "open": 478.26,
-        "high": 479.73,
-        "low": 474,
-        "close": 478.82,
-        "volume": 1154200
-      },
-      {
-        "date": "2025-06-03",
-        "open": 479,
-        "high": 481.13,
-        "low": 476.54,
-        "close": 480.17,
-        "volume": 1032300
-      },
-      {
-        "date": "2025-06-04",
-        "open": 481.99,
-        "high": 486.86,
-        "low": 481.69,
-        "close": 482.21,
-        "volume": 1273700
-      },
-      {
-        "date": "2025-06-05",
-        "open": 484.37,
-        "high": 485.13,
-        "low": 471.75,
-        "close": 478.03,
-        "volume": 1063100
-      },
-      {
-        "date": "2025-06-06",
-        "open": 477.81,
-        "high": 481.96,
-        "low": 476.97,
-        "close": 481.69,
-        "volume": 714400
-      },
-      {
-        "date": "2025-06-09",
-        "open": 480.28,
-        "high": 482.84,
-        "low": 476.62,
-        "close": 480.83,
-        "volume": 1064100
-      },
-      {
-        "date": "2025-06-10",
-        "open": 480,
-        "high": 481.65,
-        "low": 475.64,
-        "close": 476.9,
-        "volume": 1150400
-      },
-      {
-        "date": "2025-06-11",
-        "open": 464.15,
-        "high": 464.15,
-        "low": 443.41,
-        "close": 456.6,
-        "volume": 3618200
-      },
-      {
-        "date": "2025-06-12",
-        "open": 457.31,
-        "high": 469.27,
-        "low": 456.5,
-        "close": 469.27,
-        "volume": 1700600
-      },
-      {
-        "date": "2025-06-13",
-        "open": 478.97,
-        "high": 488.3,
-        "low": 473.35,
-        "close": 486.45,
-        "volume": 2729700
-      },
-      {
-        "date": "2025-06-16",
-        "open": 482.01,
-        "high": 482.73,
-        "low": 464.52,
-        "close": 467.06,
-        "volume": 2766600
-      },
-      {
-        "date": "2025-06-17",
-        "open": 470.76,
-        "high": 481.58,
-        "low": 467.5,
-        "close": 479.34,
-        "volume": 2191200
-      },
-      {
-        "date": "2025-06-18",
-        "open": 478.45,
-        "high": 482.36,
-        "low": 467.96,
-        "close": 468.6,
-        "volume": 1871200
-      },
-      {
-        "date": "2025-06-20",
-        "open": 469,
-        "high": 474.31,
-        "low": 461.11,
-        "close": 470.56,
-        "volume": 2419400
-      },
-      {
-        "date": "2025-06-23",
-        "open": 472.93,
-        "high": 482.37,
-        "low": 468.53,
-        "close": 472.46,
-        "volume": 2666400
-      },
-      {
-        "date": "2025-06-24",
-        "open": 467.85,
-        "high": 468.7,
-        "low": 457.68,
-        "close": 460.2,
-        "volume": 1970200
-      },
-      {
-        "date": "2025-06-25",
-        "open": 464.21,
-        "high": 464.88,
-        "low": 456.5,
-        "close": 458.39,
-        "volume": 1265500
-      },
-      {
-        "date": "2025-06-26",
-        "open": 459.31,
-        "high": 464.07,
-        "low": 456.64,
-        "close": 457.9,
-        "volume": 1590100
-      },
-      {
-        "date": "2025-06-27",
-        "open": 455.64,
-        "high": 459.18,
-        "low": 451.46,
-        "close": 458.59,
-        "volume": 1996400
-      },
-      {
-        "date": "2025-06-30",
-        "open": 459.45,
-        "high": 463.82,
-        "low": 457.88,
-        "close": 463.14,
-        "volume": 1205600
-      },
-      {
-        "date": "2025-07-01",
-        "open": 463,
-        "high": 469.44,
-        "low": 460,
-        "close": 465.94,
-        "volume": 1242800
-      },
       {
         "date": "2025-07-02",
         "open": 466,
@@ -6724,7 +6349,383 @@
         "high": 526.8,
         "low": 503.6,
         "close": 513.45,
-        "volume": 3085300
+        "volume": 3089200
+      },
+      {
+        "date": "2026-04-27",
+        "open": 514.05,
+        "high": 527.66,
+        "low": 511.91,
+        "close": 513.35,
+        "volume": 2111400
+      },
+      {
+        "date": "2026-04-28",
+        "open": 518.44,
+        "high": 518.68,
+        "low": 507.56,
+        "close": 512.29,
+        "volume": 1456100
+      },
+      {
+        "date": "2026-04-29",
+        "open": 513.97,
+        "high": 516,
+        "low": 501.95,
+        "close": 509.81,
+        "volume": 1619200
+      },
+      {
+        "date": "2026-04-30",
+        "open": 511.08,
+        "high": 518.23,
+        "low": 507.9,
+        "close": 517.97,
+        "volume": 1588400
+      },
+      {
+        "date": "2026-05-01",
+        "open": 517.95,
+        "high": 519.58,
+        "low": 512.12,
+        "close": 512.77,
+        "volume": 1403300
+      },
+      {
+        "date": "2026-05-04",
+        "open": 513.41,
+        "high": 524.5,
+        "low": 512,
+        "close": 518.15,
+        "volume": 1370900
+      },
+      {
+        "date": "2026-05-05",
+        "open": 520,
+        "high": 520,
+        "low": 507.49,
+        "close": 508.93,
+        "volume": 1365200
+      },
+      {
+        "date": "2026-05-06",
+        "open": 508.95,
+        "high": 514.47,
+        "low": 500.31,
+        "close": 514.26,
+        "volume": 1590400
+      },
+      {
+        "date": "2026-05-07",
+        "open": 515.03,
+        "high": 515.5,
+        "low": 503.03,
+        "close": 512.41,
+        "volume": 2056300
+      },
+      {
+        "date": "2026-05-08",
+        "open": 508.59,
+        "high": 512,
+        "low": 504.5,
+        "close": 506.51,
+        "volume": 1293800
+      },
+      {
+        "date": "2026-05-11",
+        "open": 505,
+        "high": 515.63,
+        "low": 502.45,
+        "close": 512.25,
+        "volume": 1363600
+      },
+      {
+        "date": "2026-05-12",
+        "open": 512.5,
+        "high": 522.51,
+        "low": 512.5,
+        "close": 521,
+        "volume": 1163000
+      },
+      {
+        "date": "2026-05-13",
+        "open": 517.47,
+        "high": 520.87,
+        "low": 510.79,
+        "close": 519.94,
+        "volume": 824600
+      },
+      {
+        "date": "2026-05-14",
+        "open": 520.74,
+        "high": 521.43,
+        "low": 515.25,
+        "close": 520.41,
+        "volume": 856600
+      },
+      {
+        "date": "2026-05-15",
+        "open": 521.36,
+        "high": 524.93,
+        "low": 514.73,
+        "close": 516.01,
+        "volume": 1299200
+      },
+      {
+        "date": "2026-05-18",
+        "open": 517.81,
+        "high": 528.39,
+        "low": 512.76,
+        "close": 528.31,
+        "volume": 1382800
+      },
+      {
+        "date": "2026-05-19",
+        "open": 527.51,
+        "high": 530.26,
+        "low": 523.48,
+        "close": 526.63,
+        "volume": 1107600
+      },
+      {
+        "date": "2026-05-20",
+        "open": 526.63,
+        "high": 526.85,
+        "low": 517,
+        "close": 522.59,
+        "volume": 1018900
+      },
+      {
+        "date": "2026-05-21",
+        "open": 523.24,
+        "high": 529.48,
+        "low": 517.02,
+        "close": 522.79,
+        "volume": 1639700
+      },
+      {
+        "date": "2026-05-22",
+        "open": 524.86,
+        "high": 534.27,
+        "low": 524,
+        "close": 533.24,
+        "volume": 1050600
+      },
+      {
+        "date": "2026-05-26",
+        "open": 536,
+        "high": 536.02,
+        "low": 529,
+        "close": 532.9,
+        "volume": 1346600
+      },
+      {
+        "date": "2026-05-27",
+        "open": 531.98,
+        "high": 533.57,
+        "low": 524.25,
+        "close": 531.14,
+        "volume": 1044900
+      },
+      {
+        "date": "2026-05-28",
+        "open": 534.16,
+        "high": 541.21,
+        "low": 531.14,
+        "close": 537.21,
+        "volume": 1137600
+      },
+      {
+        "date": "2026-05-29",
+        "open": 536.24,
+        "high": 537.25,
+        "low": 527.95,
+        "close": 530.45,
+        "volume": 2246900
+      },
+      {
+        "date": "2026-06-01",
+        "open": 523.98,
+        "high": 525.99,
+        "low": 515.88,
+        "close": 516.5,
+        "volume": 1374600
+      },
+      {
+        "date": "2026-06-02",
+        "open": 514.5,
+        "high": 516.71,
+        "low": 510.1,
+        "close": 513.43,
+        "volume": 1079200
+      },
+      {
+        "date": "2026-06-03",
+        "open": 512.25,
+        "high": 524.54,
+        "low": 510.54,
+        "close": 512.03,
+        "volume": 1044000
+      },
+      {
+        "date": "2026-06-04",
+        "open": 517.74,
+        "high": 522.7,
+        "low": 514.14,
+        "close": 519.05,
+        "volume": 851300
+      },
+      {
+        "date": "2026-06-05",
+        "open": 520,
+        "high": 528.01,
+        "low": 519.95,
+        "close": 523.76,
+        "volume": 903100
+      },
+      {
+        "date": "2026-06-08",
+        "open": 523,
+        "high": 527.11,
+        "low": 516.85,
+        "close": 520.07,
+        "volume": 847600
+      },
+      {
+        "date": "2026-06-09",
+        "open": 519,
+        "high": 530.18,
+        "low": 518.87,
+        "close": 530.13,
+        "volume": 1020700
+      },
+      {
+        "date": "2026-06-10",
+        "open": 534.25,
+        "high": 535.2,
+        "low": 524.81,
+        "close": 525.02,
+        "volume": 934300
+      },
+      {
+        "date": "2026-06-11",
+        "open": 528.62,
+        "high": 550.99,
+        "low": 528.26,
+        "close": 548.68,
+        "volume": 1378100
+      },
+      {
+        "date": "2026-06-12",
+        "open": 547,
+        "high": 550.86,
+        "low": 538.31,
+        "close": 540.33,
+        "volume": 1029400
+      },
+      {
+        "date": "2026-06-15",
+        "open": 535.42,
+        "high": 535.8,
+        "low": 528.59,
+        "close": 530.36,
+        "volume": 1196900
+      },
+      {
+        "date": "2026-06-16",
+        "open": 531.26,
+        "high": 538.5,
+        "low": 527.01,
+        "close": 535.95,
+        "volume": 847700
+      },
+      {
+        "date": "2026-06-17",
+        "open": 530.25,
+        "high": 539.47,
+        "low": 528.9,
+        "close": 532.32,
+        "volume": 1142300
+      },
+      {
+        "date": "2026-06-18",
+        "open": 535.56,
+        "high": 536.9,
+        "low": 505.18,
+        "close": 510.95,
+        "volume": 3978800
+      },
+      {
+        "date": "2026-06-22",
+        "open": 508.5,
+        "high": 510,
+        "low": 490.05,
+        "close": 493.6,
+        "volume": 1704900
+      },
+      {
+        "date": "2026-06-23",
+        "open": 498.83,
+        "high": 504.3,
+        "low": 496.53,
+        "close": 503.67,
+        "volume": 827500
+      },
+      {
+        "date": "2026-06-24",
+        "open": 502.94,
+        "high": 503.34,
+        "low": 491.49,
+        "close": 491.64,
+        "volume": 1288400
+      },
+      {
+        "date": "2026-06-25",
+        "open": 495.95,
+        "high": 512.57,
+        "low": 494.25,
+        "close": 505.02,
+        "volume": 1378300
+      },
+      {
+        "date": "2026-06-26",
+        "open": 505.25,
+        "high": 518.24,
+        "low": 503.9,
+        "close": 507.4,
+        "volume": 3672100
+      },
+      {
+        "date": "2026-06-29",
+        "open": 508.5,
+        "high": 510.14,
+        "low": 501.75,
+        "close": 502.07,
+        "volume": 997500
+      },
+      {
+        "date": "2026-06-30",
+        "open": 504,
+        "high": 509.46,
+        "low": 498.3,
+        "close": 509.46,
+        "volume": 1157200
+      },
+      {
+        "date": "2026-07-01",
+        "open": 517,
+        "high": 524.24,
+        "low": 514.35,
+        "close": 521.82,
+        "volume": 1278000
+      },
+      {
+        "date": "2026-07-02",
+        "open": 529,
+        "high": 545.99,
+        "low": 529,
+        "close": 545.91,
+        "volume": 1396900
       }
     ],
     "news": [
@@ -6815,14 +6816,18 @@
         "title": "Chief Technology Officer"
       },
       {
+        "name": "Mark D. Kvasnak",
+        "title": "Vice President of Investor Relations"
+      },
+      {
         "name": "Mr. Christopher J. Wronsky",
         "title": "Senior VP & Chief Human Resource Officer"
       },
       {
         "name": "Mr. Evan T. Scott",
-        "title": "Senior VP & CFO",
-        "age": 47,
-        "yearBorn": 1978,
+        "title": "Chief Financial Officer",
+        "age": 48,
+        "yearBorn": 1977,
         "totalPay": 2382567
       },
       {
@@ -6862,67 +6867,64 @@
         "title": "Senior VP of Enterprise Business & Digital Transformation and Chief information Officer",
         "age": 56,
         "yearBorn": 1969
-      },
-      {
-        "name": "Ms. Stephanie C. Hill",
-        "title": "President of Rotary & Mission Systems",
-        "age": 60,
-        "yearBorn": 1965,
-        "totalPay": 3210198
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.86,
-        "industryAvg": 46.36
+        "value": 26.44,
+        "industryAvg": 38.69
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.58,
-        "industryAvg": 3.05
+        "value": 1.68,
+        "industryAvg": 4.23
       },
       {
         "metric": "P/B Ratio",
-        "value": 15.81,
-        "industryAvg": 6.16
+        "value": 16.81,
+        "industryAvg": 6.18
       },
       {
         "metric": "ROE",
         "value": 20.94,
-        "industryAvg": 4.3
+        "industryAvg": 17.2
       },
       {
         "metric": "ROA",
         "value": 2.5,
-        "industryAvg": 1.08
+        "industryAvg": 4.42
       },
       {
         "metric": "Gross Margin",
         "value": 11.53,
-        "industryAvg": 19.15
+        "industryAvg": 18.38
       },
       {
         "metric": "EBITDA Margin",
         "value": 13.55,
-        "industryAvg": 13.889999999999999
+        "industryAvg": 14.12
       },
       {
         "metric": "Net Margin",
         "value": 8.260000000000002,
-        "industryAvg": 6.74
+        "industryAvg": 6.87
       }
     ],
     "dcf": {
-      "fairValue": 988.17,
-      "currentPrice": 513.45,
-      "upside": 92.46,
-      "wacc": 4.61,
+      "fairValue": 870.59,
+      "currentPrice": 545.91,
+      "upside": 59.47,
+      "wacc": 4.83,
       "growthEstimates": {
-        "Near-term growth (Yrs 1-3)": -11.54,
+        "Near-term growth (Yrs 1-3)": -11.5,
         "Terminal growth": 3
       },
-      "recommendation": "Buy"
+      "recommendation": "Buy",
+      "baseFcf": 20.6486,
+      "nearTermGrowthPct": -11.5,
+      "terminalGrowthPct": 3,
+      "years": 5
     }
   }
 }

@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "GE",
+    "name": "Mr. Christian E. Meisner",
+    "title": "Senior VP & Chief Human Resources Officer",
+    "age": 55,
+    "born": 1970,
+    "pay": 2267604,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "GE",
+    "name": "Mr. Christoph A. Pereira",
+    "title": "Chief Strategy & Risk Officer and CEO of Aerospace Carbon Solutions, SaaS & Sustainability",
+    "age": 52,
+    "born": 1973,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "GE",
+    "name": "Mr. H. Lawrence Culp Jr.",
+    "title": "Chairman & CEO",
+    "age": 62,
+    "born": 1963,
+    "pay": 10262962,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "GE",
+    "name": "Mr. John R. Phillips III",
+    "title": "Senior VP, General Counsel & Secretary",
+    "age": 47,
+    "born": 1978,
+    "pay": 2419640,
+    "exercised": 0,
+    "unexercised": 1333309,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "GE",
+    "name": "Mr. Mohamed  Ali",
+    "title": "President & CEO of Commercial Engines and Services",
+    "age": 55,
+    "born": 1970,
+    "pay": 2355842,
+    "exercised": 342288,
+    "unexercised": 4932000,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "GE",
+    "name": "Mr. Rahul  Ghai",
+    "title": "Senior VP & CFO",
+    "age": 53,
+    "born": 1972,
+    "pay": 3251678,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "GE",
+    "name": "Mr. Ramesh  Singaram",
+    "title": "President & CEO of GE Gas Power's APAC",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "GE",
+    "name": "Mr. Robert M. Giglietti",
+    "title": "VP, Chief Accounting Officer, Controller & Treasurer",
+    "age": 53,
+    "born": 1972,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "GE",
+    "name": "Ms. Blaire  Shoor",
+    "title": "Head of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "GE",
+    "name": "Ms. Tara  DiJulio",
+    "title": "VP, Chief Communications Officer & Chief Corporate Affairs Officer of GE Aerospace",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  }
+]

@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 4374000000.0,
+      "beginning_stockholders_equity": 5059000000.0,
+      "ending_stockholders_equity": 9123000000.0,
+      "avg_equity": 7091000000.0,
+      "roe": 0.6168
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": -349000000.0,
+      "beginning_stockholders_equity": 9123000000.0,
+      "ending_stockholders_equity": 8165000000.0,
+      "avg_equity": 8644000000.0,
+      "roe": -0.0404
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 264000000.0,
+      "beginning_stockholders_equity": 8165000000.0,
+      "ending_stockholders_equity": 7896000000.0,
+      "avg_equity": 8030500000.0,
+      "roe": 0.0329
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 555000000.0,
+      "beginning_stockholders_equity": 7896000000.0,
+      "ending_stockholders_equity": 8002000000.0,
+      "avg_equity": 7949000000.0,
+      "roe": 0.0698
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1368000000.0,
+      "beginning_stockholders_equity": 8002000000.0,
+      "ending_stockholders_equity": 8488000000.0,
+      "avg_equity": 8245000000.0,
+      "roe": 0.1659
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 461000000.0,
+      "beginning_stockholders_equity": 8488000000.0,
+      "ending_stockholders_equity": 8412000000.0,
+      "avg_equity": 8450000000.0,
+      "roe": 0.0546
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 154000000.0,
+      "beginning_stockholders_equity": 8412000000.0,
+      "ending_stockholders_equity": 7937000000.0,
+      "avg_equity": 8174500000.0,
+      "roe": 0.0188
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 642000000.0,
+      "beginning_stockholders_equity": 7937000000.0,
+      "ending_stockholders_equity": 7782000000.0,
+      "avg_equity": 7859500000.0,
+      "roe": 0.0817
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1374000000.0,
+      "beginning_stockholders_equity": 7782000000.0,
+      "ending_stockholders_equity": 8610000000.0,
+      "avg_equity": 8196000000.0,
+      "roe": 0.1676
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 341000000.0,
+      "beginning_stockholders_equity": 8610000000.0,
+      "ending_stockholders_equity": 8199000000.0,
+      "avg_equity": 8404500000.0,
+      "roe": 0.0406
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 160000000.0,
+      "beginning_stockholders_equity": 8199000000.0,
+      "ending_stockholders_equity": 7636000000.0,
+      "avg_equity": 7917500000.0,
+      "roe": 0.0202
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 4374000000.0,
+      "beginning_total_assets": 21188000000.0,
+      "ending_total_assets": 21439000000.0,
+      "avg_assets": 21313500000.0,
+      "roa": 0.2052
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": -349000000.0,
+      "beginning_total_assets": 21439000000.0,
+      "ending_total_assets": 20645000000.0,
+      "avg_assets": 21042000000.0,
+      "roa": -0.0166
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 264000000.0,
+      "beginning_total_assets": 20645000000.0,
+      "ending_total_assets": 24537000000.0,
+      "avg_assets": 22591000000.0,
+      "roa": 0.0117
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 555000000.0,
+      "beginning_total_assets": 24537000000.0,
+      "ending_total_assets": 26320000000.0,
+      "avg_assets": 25428500000.0,
+      "roa": 0.0218
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1368000000.0,
+      "beginning_total_assets": 26320000000.0,
+      "ending_total_assets": 22172000000.0,
+      "avg_assets": 24246000000.0,
+      "roa": 0.0564
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 461000000.0,
+      "beginning_total_assets": 22172000000.0,
+      "ending_total_assets": 20959000000.0,
+      "avg_assets": 21565500000.0,
+      "roa": 0.0214
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 154000000.0,
+      "beginning_total_assets": 20959000000.0,
+      "ending_total_assets": 25056000000.0,
+      "avg_assets": 23007500000.0,
+      "roa": 0.0067
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 642000000.0,
+      "beginning_total_assets": 25056000000.0,
+      "ending_total_assets": 26992000000.0,
+      "avg_assets": 26024000000.0,
+      "roa": 0.0247
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1374000000.0,
+      "beginning_total_assets": 26992000000.0,
+      "ending_total_assets": 23064000000.0,
+      "avg_assets": 25028000000.0,
+      "roa": 0.0549
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 341000000.0,
+      "beginning_total_assets": 23064000000.0,
+      "ending_total_assets": 22208000000.0,
+      "avg_assets": 22636000000.0,
+      "roa": 0.0151
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 160000000.0,
+      "beginning_total_assets": 22208000000.0,
+      "ending_total_assets": 26828000000.0,
+      "avg_assets": 24518000000.0,
+      "roa": 0.0065
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-09-30",
+      "ebit": 1496000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 1181840000.0,
+      "beginning_invested_capital": 7048000000.0,
+      "ending_invested_capital": 11113000000.0,
+      "avg_invested_capital": 9080500000.0,
+      "roic": 0.1302
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-12-31",
+      "ebit": -312000000.0,
+      "tax_rate_for_calcs": 0.09,
+      "nopat": -283920000.0,
+      "beginning_invested_capital": 11113000000.0,
+      "ending_invested_capital": 10156000000.0,
+      "avg_invested_capital": 10634500000.0,
+      "roic": -0.0267
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-03-31",
+      "ebit": 101000000.0,
+      "tax_rate_for_calcs": 0.1,
+      "nopat": 90900000.0,
+      "beginning_invested_capital": 10156000000.0,
+      "ending_invested_capital": 9888000000.0,
+      "avg_invested_capital": 10022000000.0,
+      "roic": 0.0091
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-06-30",
+      "ebit": 497000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 402570000.0,
+      "beginning_invested_capital": 9888000000.0,
+      "ending_invested_capital": 9995000000.0,
+      "avg_invested_capital": 9941500000.0,
+      "roic": 0.0405
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-09-30",
+      "ebit": 1525000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 1204750000.0,
+      "beginning_invested_capital": 9995000000.0,
+      "ending_invested_capital": 10482000000.0,
+      "avg_invested_capital": 10238500000.0,
+      "roic": 0.1177
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-12-31",
+      "ebit": 430000000.0,
+      "tax_rate_for_calcs": 0.26,
+      "nopat": 318200000.0,
+      "beginning_invested_capital": 10482000000.0,
+      "ending_invested_capital": 10407000000.0,
+      "avg_invested_capital": 10444500000.0,
+      "roic": 0.0305
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-03-31",
+      "ebit": 38000000.0,
+      "tax_rate_for_calcs": 0.11,
+      "nopat": 33820000.0,
+      "beginning_invested_capital": 10407000000.0,
+      "ending_invested_capital": 9933000000.0,
+      "avg_invested_capital": 10170000000.0,
+      "roic": 0.0033
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-06-30",
+      "ebit": 612000000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 501840000.0,
+      "beginning_invested_capital": 9933000000.0,
+      "ending_invested_capital": 9779000000.0,
+      "avg_invested_capital": 9856000000.0,
+      "roic": 0.0509
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-09-30",
+      "ebit": 1625000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 1251250000.0,
+      "beginning_invested_capital": 9779000000.0,
+      "ending_invested_capital": 10608000000.0,
+      "avg_invested_capital": 10193500000.0,
+      "roic": 0.1227
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-12-31",
+      "ebit": 269000000.0,
+      "tax_rate_for_calcs": 0.13,
+      "nopat": 234030000.0,
+      "beginning_invested_capital": 10608000000.0,
+      "ending_invested_capital": 10198000000.0,
+      "avg_invested_capital": 10403000000.0,
+      "roic": 0.0225
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2026-03-31",
+      "ebit": 86000000.0,
+      "tax_rate_for_calcs": 0.4,
+      "nopat": 51600000.0,
+      "beginning_invested_capital": 10198000000.0,
+      "ending_invested_capital": 10111000000.0,
+      "avg_invested_capital": 10154500000.0,
+      "roic": 0.0051
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.6168,
+      "roa": 0.2052,
+      "equity_multiplier": 3.01
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": -0.0404,
+      "roa": -0.0166,
+      "equity_multiplier": 2.43
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0329,
+      "roa": 0.0117,
+      "equity_multiplier": 2.81
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0698,
+      "roa": 0.0218,
+      "equity_multiplier": 3.2
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.1659,
+      "roa": 0.0564,
+      "equity_multiplier": 2.94
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.0546,
+      "roa": 0.0214,
+      "equity_multiplier": 2.55
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0188,
+      "roa": 0.0067,
+      "equity_multiplier": 2.81
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.0817,
+      "roa": 0.0247,
+      "equity_multiplier": 3.31
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.1676,
+      "roa": 0.0549,
+      "equity_multiplier": 3.05
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.0406,
+      "roa": 0.0151,
+      "equity_multiplier": 2.69
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.0202,
+      "roa": 0.0065,
+      "equity_multiplier": 3.11
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.2052,
+      "net_margin": 1.2876,
+      "asset_turnover": 0.16
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": -0.0166,
+      "net_margin": -0.1573,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0117,
+      "net_margin": 0.1232,
+      "asset_turnover": 0.09
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0218,
+      "net_margin": 0.202,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0564,
+      "net_margin": 0.3666,
+      "asset_turnover": 0.15
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0214,
+      "net_margin": 0.1859,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0067,
+      "net_margin": 0.0678,
+      "asset_turnover": 0.1
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0247,
+      "net_margin": 0.2074,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0549,
+      "net_margin": 0.3355,
+      "asset_turnover": 0.16
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0151,
+      "net_margin": 0.1228,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0065,
+      "net_margin": 0.0597,
+      "asset_turnover": 0.11
+    }
+  ]
+}

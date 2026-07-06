@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "LOW",
+    "name": "Mr. Brandon J. Sink CPA",
+    "title": "Executive VP & CFO",
+    "age": 49,
+    "born": 1976,
+    "pay": 1814175,
+    "exercised": 516176,
+    "unexercised": 2449951,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "LOW",
+    "name": "Mr. Dan Clayton Griggs Jr.",
+    "title": "Senior VP of Tax & Chief Accounting Officer",
+    "age": 47,
+    "born": 1978,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "LOW",
+    "name": "Mr. Joseph Michael McFarland III",
+    "title": "Executive Vice President of Stores",
+    "age": 55,
+    "born": 1970,
+    "pay": 1849858,
+    "exercised": 6945033,
+    "unexercised": 15674549,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "LOW",
+    "name": "Mr. Luis A. Avila Esq.",
+    "title": "Senior VP of Corporate Governance & Chief Compliance Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "LOW",
+    "name": "Mr. Marvin R. Ellison",
+    "title": "President, CEO & Chairman",
+    "age": 60,
+    "born": 1965,
+    "pay": 4838527,
+    "exercised": 0,
+    "unexercised": 74083552,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "LOW",
+    "name": "Mr. William P. Boltz",
+    "title": "Executive Vice President of Merchandising",
+    "age": 62,
+    "born": 1963,
+    "pay": 1935156,
+    "exercised": 0,
+    "unexercised": 2963136,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "LOW",
+    "name": "Ms. Jennifer E. Wilson",
+    "title": "Senior VP & Chief Marketing Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "LOW",
+    "name": "Ms. Juliette Williams Pryor J.D.",
+    "title": "Executive VP, Chief Legal Officer & Corporate Secretary",
+    "age": 60,
+    "born": 1965,
+    "pay": 4257676,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "LOW",
+    "name": "Ms. Seemantini  Godbole",
+    "title": "Executive VP and Chief Information & Digital Officer",
+    "age": 55,
+    "born": 1970,
+    "pay": 1801639,
+    "exercised": 0,
+    "unexercised": 2518895,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "LOW",
+    "name": "Ms. Shelly  Hubbard",
+    "title": "Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  }
+]

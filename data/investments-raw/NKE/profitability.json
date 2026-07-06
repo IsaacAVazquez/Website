@@ -1,0 +1,442 @@
+{
+  "roe": [
+    {
+      "symbol": "NKE",
+      "report_date": "2023-11-30",
+      "net_income_common_stockholders": 1578000000.0,
+      "beginning_stockholders_equity": 13971000000.0,
+      "ending_stockholders_equity": 14146000000.0,
+      "avg_equity": 14058500000.0,
+      "roe": 0.1122
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2024-02-29",
+      "net_income_common_stockholders": 1172000000.0,
+      "beginning_stockholders_equity": 14146000000.0,
+      "ending_stockholders_equity": 14226000000.0,
+      "avg_equity": 14186000000.0,
+      "roe": 0.0826
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2024-05-31",
+      "net_income_common_stockholders": 1500000000.0,
+      "beginning_stockholders_equity": 14226000000.0,
+      "ending_stockholders_equity": 14430000000.0,
+      "avg_equity": 14328000000.0,
+      "roe": 0.1047
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2024-08-31",
+      "net_income_common_stockholders": 1051000000.0,
+      "beginning_stockholders_equity": 14430000000.0,
+      "ending_stockholders_equity": 13944000000.0,
+      "avg_equity": 14187000000.0,
+      "roe": 0.0741
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2024-11-30",
+      "net_income_common_stockholders": 1163000000.0,
+      "beginning_stockholders_equity": 13944000000.0,
+      "ending_stockholders_equity": 14037000000.0,
+      "avg_equity": 13990500000.0,
+      "roe": 0.0831
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2025-02-28",
+      "net_income_common_stockholders": 794000000.0,
+      "beginning_stockholders_equity": 14037000000.0,
+      "ending_stockholders_equity": 14007000000.0,
+      "avg_equity": 14022000000.0,
+      "roe": 0.0566
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2025-05-31",
+      "net_income_common_stockholders": 211000000.0,
+      "beginning_stockholders_equity": 14007000000.0,
+      "ending_stockholders_equity": 13213000000.0,
+      "avg_equity": 13610000000.0,
+      "roe": 0.0155
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2025-08-31",
+      "net_income_common_stockholders": 727000000.0,
+      "beginning_stockholders_equity": 13213000000.0,
+      "ending_stockholders_equity": 13468000000.0,
+      "avg_equity": 13340500000.0,
+      "roe": 0.0545
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2025-11-30",
+      "net_income_common_stockholders": 792000000.0,
+      "beginning_stockholders_equity": 13468000000.0,
+      "ending_stockholders_equity": 14085000000.0,
+      "avg_equity": 13776500000.0,
+      "roe": 0.0575
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2026-02-28",
+      "net_income_common_stockholders": 520000000.0,
+      "beginning_stockholders_equity": 14085000000.0,
+      "ending_stockholders_equity": 14090000000.0,
+      "avg_equity": 14087500000.0,
+      "roe": 0.0369
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "NKE",
+      "report_date": "2023-11-30",
+      "net_income_common_stockholders": 1578000000.0,
+      "beginning_total_assets": 36786000000.0,
+      "ending_total_assets": 37203000000.0,
+      "avg_assets": 36994500000.0,
+      "roa": 0.0427
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2024-02-29",
+      "net_income_common_stockholders": 1172000000.0,
+      "beginning_total_assets": 37203000000.0,
+      "ending_total_assets": 37356000000.0,
+      "avg_assets": 37279500000.0,
+      "roa": 0.0314
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2024-05-31",
+      "net_income_common_stockholders": 1500000000.0,
+      "beginning_total_assets": 37356000000.0,
+      "ending_total_assets": 38110000000.0,
+      "avg_assets": 37733000000.0,
+      "roa": 0.0398
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2024-08-31",
+      "net_income_common_stockholders": 1051000000.0,
+      "beginning_total_assets": 38110000000.0,
+      "ending_total_assets": 37867000000.0,
+      "avg_assets": 37988500000.0,
+      "roa": 0.0277
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2024-11-30",
+      "net_income_common_stockholders": 1163000000.0,
+      "beginning_total_assets": 37867000000.0,
+      "ending_total_assets": 37959000000.0,
+      "avg_assets": 37913000000.0,
+      "roa": 0.0307
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2025-02-28",
+      "net_income_common_stockholders": 794000000.0,
+      "beginning_total_assets": 37959000000.0,
+      "ending_total_assets": 37793000000.0,
+      "avg_assets": 37876000000.0,
+      "roa": 0.021
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2025-05-31",
+      "net_income_common_stockholders": 211000000.0,
+      "beginning_total_assets": 37793000000.0,
+      "ending_total_assets": 36579000000.0,
+      "avg_assets": 37186000000.0,
+      "roa": 0.0057
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2025-08-31",
+      "net_income_common_stockholders": 727000000.0,
+      "beginning_total_assets": 36579000000.0,
+      "ending_total_assets": 37334000000.0,
+      "avg_assets": 36956500000.0,
+      "roa": 0.0197
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2025-11-30",
+      "net_income_common_stockholders": 792000000.0,
+      "beginning_total_assets": 37334000000.0,
+      "ending_total_assets": 37787000000.0,
+      "avg_assets": 37560500000.0,
+      "roa": 0.0211
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2026-02-28",
+      "net_income_common_stockholders": 520000000.0,
+      "beginning_total_assets": 37787000000.0,
+      "ending_total_assets": 37064000000.0,
+      "avg_assets": 37425500000.0,
+      "roa": 0.0139
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "NKE",
+      "report_date": "2023-11-30",
+      "ebit": 1825000000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 1496500000.0,
+      "beginning_invested_capital": 22906000000.0,
+      "ending_invested_capital": 23082000000.0,
+      "avg_invested_capital": 22994000000.0,
+      "roic": 0.0651
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2024-02-29",
+      "ebit": 1336000000.0,
+      "tax_rate_for_calcs": 0.17,
+      "nopat": 1108880000.0,
+      "beginning_invested_capital": 23082000000.0,
+      "ending_invested_capital": 23162000000.0,
+      "avg_invested_capital": 23122000000.0,
+      "roic": 0.048
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2024-05-31",
+      "ebit": 1546000000.0,
+      "tax_rate_for_calcs": 0.13,
+      "nopat": 1345020000.0,
+      "beginning_invested_capital": 23162000000.0,
+      "ending_invested_capital": 23339000000.0,
+      "avg_invested_capital": 23250500000.0,
+      "roic": 0.0578
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2024-08-31",
+      "ebit": 1209000000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 967200000.0,
+      "beginning_invested_capital": 23339000000.0,
+      "ending_invested_capital": 22954000000.0,
+      "avg_invested_capital": 23146500000.0,
+      "roic": 0.0418
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2024-11-30",
+      "ebit": 1384000000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 1134880000.0,
+      "beginning_invested_capital": 22954000000.0,
+      "ending_invested_capital": 23059000000.0,
+      "avg_invested_capital": 23006500000.0,
+      "roic": 0.0493
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2025-02-28",
+      "ebit": 788000000.0,
+      "tax_rate_for_calcs": 0.06,
+      "nopat": 740720000.0,
+      "beginning_invested_capital": 23059000000.0,
+      "ending_invested_capital": 22967000000.0,
+      "avg_invested_capital": 23013000000.0,
+      "roic": 0.0322
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2025-05-31",
+      "ebit": 321000000.0,
+      "tax_rate_for_calcs": 0.34,
+      "nopat": 211860000.0,
+      "beginning_invested_capital": 22967000000.0,
+      "ending_invested_capital": 21179000000.0,
+      "avg_invested_capital": 22073000000.0,
+      "roic": 0.0096
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2025-08-31",
+      "ebit": 927000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 732330000.0,
+      "beginning_invested_capital": 21179000000.0,
+      "ending_invested_capital": 21468000000.0,
+      "avg_invested_capital": 21323500000.0,
+      "roic": 0.0343
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2025-11-30",
+      "ebit": 1006000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 794740000.0,
+      "beginning_invested_capital": 21468000000.0,
+      "ending_invested_capital": 22100000000.0,
+      "avg_invested_capital": 21784000000.0,
+      "roic": 0.0365
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2026-02-28",
+      "ebit": 553000000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 442400000.0,
+      "beginning_invested_capital": 22100000000.0,
+      "ending_invested_capital": 22119000000.0,
+      "avg_invested_capital": 22109500000.0,
+      "roic": 0.02
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "NKE",
+      "report_date": "2023-11-30T00:00:00.000",
+      "roe": 0.1122,
+      "roa": 0.0427,
+      "equity_multiplier": 2.63
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2024-02-29T00:00:00.000",
+      "roe": 0.0826,
+      "roa": 0.0314,
+      "equity_multiplier": 2.63
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2024-05-31T00:00:00.000",
+      "roe": 0.1047,
+      "roa": 0.0398,
+      "equity_multiplier": 2.63
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2024-08-31T00:00:00.000",
+      "roe": 0.0741,
+      "roa": 0.0277,
+      "equity_multiplier": 2.68
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2024-11-30T00:00:00.000",
+      "roe": 0.0831,
+      "roa": 0.0307,
+      "equity_multiplier": 2.71
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2025-02-28T00:00:00.000",
+      "roe": 0.0566,
+      "roa": 0.021,
+      "equity_multiplier": 2.7
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2025-05-31T00:00:00.000",
+      "roe": 0.0155,
+      "roa": 0.0057,
+      "equity_multiplier": 2.72
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2025-08-31T00:00:00.000",
+      "roe": 0.0545,
+      "roa": 0.0197,
+      "equity_multiplier": 2.77
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2025-11-30T00:00:00.000",
+      "roe": 0.0575,
+      "roa": 0.0211,
+      "equity_multiplier": 2.73
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2026-02-28T00:00:00.000",
+      "roe": 0.0369,
+      "roa": 0.0139,
+      "equity_multiplier": 2.65
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "NKE",
+      "report_date": "2023-11-30T00:00:00.000",
+      "roa": 0.0427,
+      "net_margin": 0.1179,
+      "asset_turnover": 0.36
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2024-02-29T00:00:00.000",
+      "roa": 0.0314,
+      "net_margin": 0.0943,
+      "asset_turnover": 0.33
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2024-05-31T00:00:00.000",
+      "roa": 0.0398,
+      "net_margin": 0.119,
+      "asset_turnover": 0.33
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2024-08-31T00:00:00.000",
+      "roa": 0.0277,
+      "net_margin": 0.0907,
+      "asset_turnover": 0.31
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2024-11-30T00:00:00.000",
+      "roa": 0.0307,
+      "net_margin": 0.0941,
+      "asset_turnover": 0.33
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2025-02-28T00:00:00.000",
+      "roa": 0.021,
+      "net_margin": 0.0705,
+      "asset_turnover": 0.3
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2025-05-31T00:00:00.000",
+      "roa": 0.0057,
+      "net_margin": 0.019,
+      "asset_turnover": 0.3
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2025-08-31T00:00:00.000",
+      "roa": 0.0197,
+      "net_margin": 0.062,
+      "asset_turnover": 0.32
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2025-11-30T00:00:00.000",
+      "roa": 0.0211,
+      "net_margin": 0.0637,
+      "asset_turnover": 0.33
+    },
+    {
+      "symbol": "NKE",
+      "report_date": "2026-02-28T00:00:00.000",
+      "roa": 0.0139,
+      "net_margin": 0.0461,
+      "asset_turnover": 0.3
+    }
+  ]
+}

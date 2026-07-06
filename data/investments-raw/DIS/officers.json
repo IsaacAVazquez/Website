@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "DIS",
+    "name": "Mr. Asad  Ayaz",
+    "title": "Chief Marketing & Brand Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "DIS",
+    "name": "Mr. Horacio E. Gutierrez J.D.",
+    "title": "Senior EVP and Chief Legal & Global Affairs Officer",
+    "age": 59,
+    "born": 1966,
+    "pay": 6140978,
+    "exercised": 0,
+    "unexercised": 1193034,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "DIS",
+    "name": "Mr. Hugh F. Johnston",
+    "title": "Senior Executive VP & CFO",
+    "age": 63,
+    "born": 1962,
+    "pay": 7918292,
+    "exercised": 0,
+    "unexercised": 729132,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "DIS",
+    "name": "Mr. Joe  Schott",
+    "title": "President of Disney Signature Experiences",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "DIS",
+    "name": "Mr. Josh  D'Amaro",
+    "title": "CEO & Director",
+    "age": 53,
+    "born": 1972,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "DIS",
+    "name": "Mr. Paul  Roeder",
+    "title": "Senior Executive VP & Chief Communications Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "DIS",
+    "name": "Mr. Robert Alan Iger",
+    "title": "Senior Advisor & Director",
+    "age": 74,
+    "born": 1951,
+    "pay": 10842511,
+    "exercised": 8317704,
+    "unexercised": 12804975,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "DIS",
+    "name": "Mr. Ronald L. Iden",
+    "title": "Senior VP & Chief Security Officer",
+    "age": 78,
+    "born": 1947,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "DIS",
+    "name": "Ms. Dana  Walden",
+    "title": "President & Chief Creative Officer",
+    "age": 59,
+    "born": 1966,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "DIS",
+    "name": "Ms. Sonia L. Coleman",
+    "title": "Senior EVP & Chief People Officer",
+    "age": 52,
+    "born": 1973,
+    "pay": 3530136,
+    "exercised": 0,
+    "unexercised": 338780,
+    "report_date": "2026-07-06"
+  }
+]

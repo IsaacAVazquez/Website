@@ -1,0 +1,941 @@
+{
+  "quarterly_revenue": [
+    {
+      "symbol": "UBER",
+      "report_date": "2022-06-30T00:00:00.000",
+      "revenue": 8073000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-06-30T00:00:00.000",
+      "revenue": 9230000000.0,
+      "prev_year_revenue": 8073000000.0,
+      "yoy_growth": 0.1433
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-09-30T00:00:00.000",
+      "revenue": 9292000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 9936000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-03-31T00:00:00.000",
+      "revenue": 10131000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-06-30T00:00:00.000",
+      "revenue": 10700000000.0,
+      "prev_year_revenue": 9230000000.0,
+      "yoy_growth": 0.1593
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-09-30T00:00:00.000",
+      "revenue": 11188000000.0,
+      "prev_year_revenue": 9292000000.0,
+      "yoy_growth": 0.204
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 11959000000.0,
+      "prev_year_revenue": 9936000000.0,
+      "yoy_growth": 0.2036
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-03-31T00:00:00.000",
+      "revenue": 11533000000.0,
+      "prev_year_revenue": 10131000000.0,
+      "yoy_growth": 0.1384
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-06-30T00:00:00.000",
+      "revenue": 12651000000.0,
+      "prev_year_revenue": 10700000000.0,
+      "yoy_growth": 0.1823
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-09-30T00:00:00.000",
+      "revenue": 13467000000.0,
+      "prev_year_revenue": 11188000000.0,
+      "yoy_growth": 0.2037
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 14366000000.0,
+      "prev_year_revenue": 11959000000.0,
+      "yoy_growth": 0.2013
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 13203000000.0,
+      "prev_year_revenue": 11533000000.0,
+      "yoy_growth": 0.1448
+    }
+  ],
+  "annual_revenue": [
+    {
+      "symbol": "UBER",
+      "report_date": "2020-12-31T00:00:00.000",
+      "revenue": 11139000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2021-12-31T00:00:00.000",
+      "revenue": 17455000000.0,
+      "prev_year_revenue": 11139000000.0,
+      "yoy_growth": 0.567
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2022-12-31T00:00:00.000",
+      "revenue": 31877000000.0,
+      "prev_year_revenue": 17455000000.0,
+      "yoy_growth": 0.8262
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 37281000000.0,
+      "prev_year_revenue": 31877000000.0,
+      "yoy_growth": 0.1695
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 43978000000.0,
+      "prev_year_revenue": 37281000000.0,
+      "yoy_growth": 0.1796
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 52017000000.0,
+      "prev_year_revenue": 43978000000.0,
+      "yoy_growth": 0.1828
+    }
+  ],
+  "quarterly_operating_income": [
+    {
+      "symbol": "UBER",
+      "report_date": "2022-06-30T00:00:00.000",
+      "operating_income": -713000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-06-30T00:00:00.000",
+      "operating_income": 326000000.0,
+      "prev_year_operating_income": -713000000.0,
+      "yoy_growth": 1.4572
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-09-30T00:00:00.000",
+      "operating_income": 394000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 652000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-03-31T00:00:00.000",
+      "operating_income": 172000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-06-30T00:00:00.000",
+      "operating_income": 796000000.0,
+      "prev_year_operating_income": 326000000.0,
+      "yoy_growth": 1.4417
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-09-30T00:00:00.000",
+      "operating_income": 1061000000.0,
+      "prev_year_operating_income": 394000000.0,
+      "yoy_growth": 1.6929
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 770000000.0,
+      "prev_year_operating_income": 652000000.0,
+      "yoy_growth": 0.181
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-03-31T00:00:00.000",
+      "operating_income": 1228000000.0,
+      "prev_year_operating_income": 172000000.0,
+      "yoy_growth": 6.1395
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-06-30T00:00:00.000",
+      "operating_income": 1450000000.0,
+      "prev_year_operating_income": 796000000.0,
+      "yoy_growth": 0.8216
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-09-30T00:00:00.000",
+      "operating_income": 1113000000.0,
+      "prev_year_operating_income": 1061000000.0,
+      "yoy_growth": 0.049
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 1774000000.0,
+      "prev_year_operating_income": 770000000.0,
+      "yoy_growth": 1.3039
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2026-03-31T00:00:00.000",
+      "operating_income": 1923000000.0,
+      "prev_year_operating_income": 1228000000.0,
+      "yoy_growth": 0.566
+    }
+  ],
+  "annual_operating_income": [
+    {
+      "symbol": "UBER",
+      "report_date": "2020-12-31T00:00:00.000",
+      "operating_income": -4863000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2021-12-31T00:00:00.000",
+      "operating_income": -3834000000.0,
+      "prev_year_operating_income": -4863000000.0,
+      "yoy_growth": 0.2116
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2022-12-31T00:00:00.000",
+      "operating_income": -1832000000.0,
+      "prev_year_operating_income": -3834000000.0,
+      "yoy_growth": 0.5222
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 1110000000.0,
+      "prev_year_operating_income": -1832000000.0,
+      "yoy_growth": 1.6059
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 2799000000.0,
+      "prev_year_operating_income": 1110000000.0,
+      "yoy_growth": 1.5216
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 5565000000.0,
+      "prev_year_operating_income": 2799000000.0,
+      "yoy_growth": 0.9882
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "UBER",
+      "report_date": "2023-06-30T00:00:00.000",
+      "ebitda": 807000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-09-30T00:00:00.000",
+      "ebitda": 547000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 2186000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-03-31T00:00:00.000",
+      "ebitda": -312000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-06-30T00:00:00.000",
+      "ebitda": 1397000000.0,
+      "prev_year_ebitda": 807000000.0,
+      "yoy_growth": 0.7311
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-09-30T00:00:00.000",
+      "ebitda": 3098000000.0,
+      "prev_year_ebitda": 547000000.0,
+      "yoy_growth": 4.6636
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 1202000000.0,
+      "prev_year_ebitda": 2186000000.0,
+      "yoy_growth": -0.4501
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-03-31T00:00:00.000",
+      "ebitda": 1668000000.0,
+      "prev_year_ebitda": -312000000.0,
+      "yoy_growth": 6.3462
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-06-30T00:00:00.000",
+      "ebitda": 1793000000.0,
+      "prev_year_ebitda": 1397000000.0,
+      "yoy_growth": 0.2835
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-09-30T00:00:00.000",
+      "ebitda": 2927000000.0,
+      "prev_year_ebitda": 3098000000.0,
+      "yoy_growth": -0.0552
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 599000000.0,
+      "prev_year_ebitda": 1202000000.0,
+      "yoy_growth": -0.5017
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2026-03-31T00:00:00.000",
+      "ebitda": 795000000.0,
+      "prev_year_ebitda": 1668000000.0,
+      "yoy_growth": -0.5234
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "UBER",
+      "report_date": "2020-12-31T00:00:00.000",
+      "ebitda": -5913000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2021-12-31T00:00:00.000",
+      "ebitda": 360000000.0,
+      "prev_year_ebitda": -5913000000.0,
+      "yoy_growth": 1.0609
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2022-12-31T00:00:00.000",
+      "ebitda": -7914000000.0,
+      "prev_year_ebitda": 360000000.0,
+      "yoy_growth": -22.9833
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 3777000000.0,
+      "prev_year_ebitda": -7914000000.0,
+      "yoy_growth": 1.4773
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 5385000000.0,
+      "prev_year_ebitda": 3777000000.0,
+      "yoy_growth": 0.4257
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 6987000000.0,
+      "prev_year_ebitda": 5385000000.0,
+      "yoy_growth": 0.2975
+    }
+  ],
+  "quarterly_net_income": [
+    {
+      "symbol": "UBER",
+      "report_date": "2022-06-30T00:00:00.000",
+      "net_income_common_stockholders": -2601000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-06-30T00:00:00.000",
+      "net_income_common_stockholders": 394000000.0,
+      "prev_year_net_income_common_stockholders": -2601000000.0,
+      "yoy_growth": 1.1515
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-09-30T00:00:00.000",
+      "net_income_common_stockholders": 221000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1429000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-03-31T00:00:00.000",
+      "net_income_common_stockholders": -654000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-06-30T00:00:00.000",
+      "net_income_common_stockholders": 1015000000.0,
+      "prev_year_net_income_common_stockholders": 394000000.0,
+      "yoy_growth": 1.5761
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-09-30T00:00:00.000",
+      "net_income_common_stockholders": 2612000000.0,
+      "prev_year_net_income_common_stockholders": 221000000.0,
+      "yoy_growth": 10.819
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 6883000000.0,
+      "prev_year_net_income_common_stockholders": 1429000000.0,
+      "yoy_growth": 3.8167
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-03-31T00:00:00.000",
+      "net_income_common_stockholders": 1776000000.0,
+      "prev_year_net_income_common_stockholders": -654000000.0,
+      "yoy_growth": 3.7156
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-06-30T00:00:00.000",
+      "net_income_common_stockholders": 1355000000.0,
+      "prev_year_net_income_common_stockholders": 1015000000.0,
+      "yoy_growth": 0.335
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-09-30T00:00:00.000",
+      "net_income_common_stockholders": 6626000000.0,
+      "prev_year_net_income_common_stockholders": 2612000000.0,
+      "yoy_growth": 1.5368
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 296000000.0,
+      "prev_year_net_income_common_stockholders": 6883000000.0,
+      "yoy_growth": -0.957
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 263000000.0,
+      "prev_year_net_income_common_stockholders": 1776000000.0,
+      "yoy_growth": -0.8519
+    }
+  ],
+  "annual_net_income": [
+    {
+      "symbol": "UBER",
+      "report_date": "2020-12-31T00:00:00.000",
+      "net_income_common_stockholders": -6768000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2021-12-31T00:00:00.000",
+      "net_income_common_stockholders": -496000000.0,
+      "prev_year_net_income_common_stockholders": -6768000000.0,
+      "yoy_growth": 0.9267
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2022-12-31T00:00:00.000",
+      "net_income_common_stockholders": -9141000000.0,
+      "prev_year_net_income_common_stockholders": -496000000.0,
+      "yoy_growth": -17.4294
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1887000000.0,
+      "prev_year_net_income_common_stockholders": -9141000000.0,
+      "yoy_growth": 1.2064
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 9856000000.0,
+      "prev_year_net_income_common_stockholders": 1887000000.0,
+      "yoy_growth": 4.2231
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 10053000000.0,
+      "prev_year_net_income_common_stockholders": 9856000000.0,
+      "yoy_growth": 0.02
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "UBER",
+      "report_date": "2022-06-30T00:00:00.000",
+      "free_cash_flow": 382000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-06-30T00:00:00.000",
+      "free_cash_flow": 1140000000.0,
+      "prev_year_free_cash_flow": 382000000.0,
+      "yoy_growth": 1.9843
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-09-30T00:00:00.000",
+      "free_cash_flow": 905000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 768000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-03-31T00:00:00.000",
+      "free_cash_flow": 1359000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-06-30T00:00:00.000",
+      "free_cash_flow": 1721000000.0,
+      "prev_year_free_cash_flow": 1140000000.0,
+      "yoy_growth": 0.5096
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-09-30T00:00:00.000",
+      "free_cash_flow": 2109000000.0,
+      "prev_year_free_cash_flow": 905000000.0,
+      "yoy_growth": 1.3304
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 1706000000.0,
+      "prev_year_free_cash_flow": 768000000.0,
+      "yoy_growth": 1.2214
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-03-31T00:00:00.000",
+      "free_cash_flow": 2250000000.0,
+      "prev_year_free_cash_flow": 1359000000.0,
+      "yoy_growth": 0.6556
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-06-30T00:00:00.000",
+      "free_cash_flow": 2475000000.0,
+      "prev_year_free_cash_flow": 1721000000.0,
+      "yoy_growth": 0.4381
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-09-30T00:00:00.000",
+      "free_cash_flow": 2230000000.0,
+      "prev_year_free_cash_flow": 2109000000.0,
+      "yoy_growth": 0.0574
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 2808000000.0,
+      "prev_year_free_cash_flow": 1706000000.0,
+      "yoy_growth": 0.646
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": 2286000000.0,
+      "prev_year_free_cash_flow": 2250000000.0,
+      "yoy_growth": 0.016
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "UBER",
+      "report_date": "2020-12-31T00:00:00.000",
+      "free_cash_flow": -3361000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2021-12-31T00:00:00.000",
+      "free_cash_flow": -743000000.0,
+      "prev_year_free_cash_flow": -3361000000.0,
+      "yoy_growth": 0.7789
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2022-12-31T00:00:00.000",
+      "free_cash_flow": 390000000.0,
+      "prev_year_free_cash_flow": -743000000.0,
+      "yoy_growth": 1.5249
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 3362000000.0,
+      "prev_year_free_cash_flow": 390000000.0,
+      "yoy_growth": 7.6205
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 6895000000.0,
+      "prev_year_free_cash_flow": 3362000000.0,
+      "yoy_growth": 1.0509
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 9763000000.0,
+      "prev_year_free_cash_flow": 6895000000.0,
+      "yoy_growth": 0.416
+    }
+  ],
+  "quarterly_eps": [
+    {
+      "symbol": "UBER",
+      "report_date": "2017-03-31T00:00:00.000",
+      "eps": -0.551,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2017-06-30T00:00:00.000",
+      "eps": -0.6241,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2017-09-30T00:00:00.000",
+      "eps": -0.8398,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2017-12-31T00:00:00.000",
+      "eps": -0.3822,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2018-03-31T00:00:00.000",
+      "eps": 2.2276,
+      "prev_year_eps": -0.551,
+      "yoy_growth": 5.0428
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2018-06-30T00:00:00.000",
+      "eps": -0.5218,
+      "prev_year_eps": -0.6241,
+      "yoy_growth": 0.1639
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2018-09-30T00:00:00.000",
+      "eps": -0.586,
+      "prev_year_eps": -0.8398,
+      "yoy_growth": 0.3022
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2018-12-31T00:00:00.000",
+      "eps": -0.5272,
+      "prev_year_eps": -0.3822,
+      "yoy_growth": -0.3794
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2019-03-31T00:00:00.000",
+      "eps": -0.6086,
+      "prev_year_eps": 2.2276,
+      "yoy_growth": -1.2732
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2019-06-30T00:00:00.000",
+      "eps": -3.0843,
+      "prev_year_eps": -0.5218,
+      "yoy_growth": -4.9109
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2019-09-30T00:00:00.000",
+      "eps": -0.6834,
+      "prev_year_eps": -0.586,
+      "yoy_growth": -0.1662
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2019-12-31T00:00:00.000",
+      "eps": -0.6408,
+      "prev_year_eps": -0.5272,
+      "yoy_growth": -0.2155
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2020-03-31T00:00:00.000",
+      "eps": -1.7026,
+      "prev_year_eps": -0.6086,
+      "yoy_growth": -1.7976
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2020-06-30T00:00:00.000",
+      "eps": -1.0208,
+      "prev_year_eps": -3.0843,
+      "yoy_growth": 0.669
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2020-09-30T00:00:00.000",
+      "eps": -0.6205,
+      "prev_year_eps": -0.6834,
+      "yoy_growth": 0.092
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2020-12-31T00:00:00.000",
+      "eps": -0.5399,
+      "prev_year_eps": -0.6408,
+      "yoy_growth": 0.1575
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2021-03-31T00:00:00.000",
+      "eps": -0.0581,
+      "prev_year_eps": -1.7026,
+      "yoy_growth": 0.9659
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2021-06-30T00:00:00.000",
+      "eps": 0.5828,
+      "prev_year_eps": -1.0208,
+      "yoy_growth": 1.5709
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2021-09-30T00:00:00.000",
+      "eps": -1.2765,
+      "prev_year_eps": -0.6205,
+      "yoy_growth": -1.0572
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2021-12-31T00:00:00.000",
+      "eps": 0.4448,
+      "prev_year_eps": -0.5399,
+      "yoy_growth": 1.8239
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2022-03-31T00:00:00.000",
+      "eps": -3.0357,
+      "prev_year_eps": -0.0581,
+      "yoy_growth": -51.2496
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2022-06-30T00:00:00.000",
+      "eps": -1.3241,
+      "prev_year_eps": 0.5828,
+      "yoy_growth": -3.272
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2022-09-30T00:00:00.000",
+      "eps": -0.6093,
+      "prev_year_eps": -1.2765,
+      "yoy_growth": 0.5227
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2022-12-31T00:00:00.000",
+      "eps": 0.2926,
+      "prev_year_eps": 0.4448,
+      "yoy_growth": -0.3422
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-03-31T00:00:00.000",
+      "eps": -0.0781,
+      "prev_year_eps": -3.0357,
+      "yoy_growth": 0.9743
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-06-30T00:00:00.000",
+      "eps": 0.1832,
+      "prev_year_eps": -1.3241,
+      "yoy_growth": 1.1384
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-09-30T00:00:00.000",
+      "eps": 0.0986,
+      "prev_year_eps": -0.6093,
+      "yoy_growth": 1.1618
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-12-31T00:00:00.000",
+      "eps": 0.6734,
+      "prev_year_eps": 0.2926,
+      "yoy_growth": 1.3014
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-03-31T00:00:00.000",
+      "eps": -0.3146,
+      "prev_year_eps": -0.0781,
+      "yoy_growth": -3.0282
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-06-30T00:00:00.000",
+      "eps": 0.4721,
+      "prev_year_eps": 0.1832,
+      "yoy_growth": 1.577
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-09-30T00:00:00.000",
+      "eps": 1.2124,
+      "prev_year_eps": 0.0986,
+      "yoy_growth": 11.2961
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-12-31T00:00:00.000",
+      "eps": 3.2138,
+      "prev_year_eps": 0.6734,
+      "yoy_growth": 3.7725
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-03-31T00:00:00.000",
+      "eps": 0.8367,
+      "prev_year_eps": -0.3146,
+      "yoy_growth": 3.6596
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-06-30T00:00:00.000",
+      "eps": 0.6309,
+      "prev_year_eps": 0.4721,
+      "yoy_growth": 0.3364
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-09-30T00:00:00.000",
+      "eps": 3.1129,
+      "prev_year_eps": 1.2124,
+      "yoy_growth": 1.5676
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-12-31T00:00:00.000",
+      "eps": 0.142,
+      "prev_year_eps": 3.2138,
+      "yoy_growth": -0.9558
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2026-03-31T00:00:00.000",
+      "eps": 0.127,
+      "prev_year_eps": 0.8367,
+      "yoy_growth": -0.8482
+    }
+  ]
+}

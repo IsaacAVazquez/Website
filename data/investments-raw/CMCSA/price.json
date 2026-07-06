@@ -1,0 +1,2270 @@
+[
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-07-02",
+    "open": 33.6551,
+    "close": 33.5801,
+    "high": 33.8425,
+    "low": 33.477,
+    "volume": 25762502
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-07-03",
+    "open": 33.552,
+    "close": 33.7301,
+    "high": 34.1143,
+    "low": 33.5333,
+    "volume": 10841680
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-07-07",
+    "open": 33.6645,
+    "close": 33.2146,
+    "high": 33.8707,
+    "low": 33.149,
+    "volume": 16088760
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-07-08",
+    "open": 33.3458,
+    "close": 33.7395,
+    "high": 33.7957,
+    "low": 33.1678,
+    "volume": 13563597
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-07-09",
+    "open": 33.6645,
+    "close": 33.3833,
+    "high": 33.7676,
+    "low": 33.1678,
+    "volume": 15908437
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-07-10",
+    "open": 33.3271,
+    "close": 33.1959,
+    "high": 33.7113,
+    "low": 33.1584,
+    "volume": 16146591
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-07-11",
+    "open": 33.0272,
+    "close": 32.7929,
+    "high": 33.1303,
+    "low": 32.7648,
+    "volume": 17994315
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-07-14",
+    "open": 32.7085,
+    "close": 33.4021,
+    "high": 33.4302,
+    "low": 32.6148,
+    "volume": 19787835
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-07-15",
+    "open": 33.3833,
+    "close": 32.5398,
+    "high": 33.4395,
+    "low": 32.5211,
+    "volume": 18142094
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-07-16",
+    "open": 32.5867,
+    "close": 32.2399,
+    "high": 32.6804,
+    "low": 32.1275,
+    "volume": 22516794
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-07-17",
+    "open": 32.1462,
+    "close": 32.5211,
+    "high": 32.821,
+    "low": 32.1275,
+    "volume": 18721155
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-07-18",
+    "open": 32.671,
+    "close": 32.3711,
+    "high": 32.7366,
+    "low": 32.268,
+    "volume": 15778903
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-07-21",
+    "open": 32.5679,
+    "close": 32.8116,
+    "high": 32.896,
+    "low": 32.493,
+    "volume": 16874712
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-07-22",
+    "open": 32.9053,
+    "close": 33.0553,
+    "high": 33.5145,
+    "low": 32.8397,
+    "volume": 15528478
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-07-23",
+    "open": 33.149,
+    "close": 33.5426,
+    "high": 33.6457,
+    "low": 33.1115,
+    "volume": 17531237
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-07-24",
+    "open": 33.5708,
+    "close": 33.149,
+    "high": 33.7582,
+    "low": 33.149,
+    "volume": 17215618
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-07-25",
+    "open": 31.9963,
+    "close": 31.5651,
+    "high": 32.2774,
+    "low": 31.1153,
+    "volume": 35130548
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-07-28",
+    "open": 31.5558,
+    "close": 31.4246,
+    "high": 31.6307,
+    "low": 31.2184,
+    "volume": 20947237
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-07-29",
+    "open": 31.4527,
+    "close": 30.7685,
+    "high": 31.537,
+    "low": 30.5342,
+    "volume": 35116571
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-07-30",
+    "open": 30.7685,
+    "close": 30.4592,
+    "high": 31.059,
+    "low": 30.3561,
+    "volume": 38032682
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-07-31",
+    "open": 31.8557,
+    "close": 31.1434,
+    "high": 31.9588,
+    "low": 30.8341,
+    "volume": 43303235
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-08-01",
+    "open": 31.2559,
+    "close": 30.478,
+    "high": 31.3683,
+    "low": 30.4311,
+    "volume": 23900587
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-08-04",
+    "open": 30.5717,
+    "close": 30.5155,
+    "high": 30.881,
+    "low": 30.4499,
+    "volume": 31347180
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-08-05",
+    "open": 30.6467,
+    "close": 30.4686,
+    "high": 30.7685,
+    "low": 30.4217,
+    "volume": 29278587
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-08-06",
+    "open": 30.6092,
+    "close": 30.1406,
+    "high": 30.7029,
+    "low": 30.1125,
+    "volume": 23014230
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-08-07",
+    "open": 30.328,
+    "close": 29.6814,
+    "high": 30.4405,
+    "low": 29.6345,
+    "volume": 26822993
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-08-08",
+    "open": 29.7001,
+    "close": 29.6814,
+    "high": 30.0281,
+    "low": 29.6064,
+    "volume": 17371507
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-08-11",
+    "open": 29.7001,
+    "close": 29.4377,
+    "high": 30.075,
+    "low": 29.0815,
+    "volume": 21291665
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-08-12",
+    "open": 29.5408,
+    "close": 30.0843,
+    "high": 30.328,
+    "low": 29.5408,
+    "volume": 21284089
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-08-13",
+    "open": 30.15,
+    "close": 30.8716,
+    "high": 30.9278,
+    "low": 30.075,
+    "volume": 31729166
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-08-14",
+    "open": 30.6748,
+    "close": 30.8341,
+    "high": 30.9466,
+    "low": 30.553,
+    "volume": 15556647
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-08-15",
+    "open": 30.956,
+    "close": 31.3496,
+    "high": 31.4339,
+    "low": 30.9278,
+    "volume": 22090314
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-08-18",
+    "open": 31.1621,
+    "close": 31.3308,
+    "high": 31.4902,
+    "low": 31.1246,
+    "volume": 26802933
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-08-19",
+    "open": 31.4246,
+    "close": 31.7619,
+    "high": 31.8557,
+    "low": 31.3496,
+    "volume": 17918344
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-08-20",
+    "open": 31.8088,
+    "close": 31.1996,
+    "high": 31.8838,
+    "low": 30.9841,
+    "volume": 21651244
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-08-21",
+    "open": 31.1434,
+    "close": 31.4902,
+    "high": 31.4995,
+    "low": 31.0403,
+    "volume": 17252536
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-08-22",
+    "open": 31.5933,
+    "close": 32.0056,
+    "high": 32.2399,
+    "low": 31.5933,
+    "volume": 26961169
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-08-25",
+    "open": 31.9119,
+    "close": 31.8744,
+    "high": 32.0337,
+    "low": 31.6963,
+    "volume": 18296276
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-08-26",
+    "open": 31.8463,
+    "close": 31.5651,
+    "high": 31.8463,
+    "low": 31.4152,
+    "volume": 23766145
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-08-27",
+    "open": 31.4808,
+    "close": 31.687,
+    "high": 31.7245,
+    "low": 31.3496,
+    "volume": 18694587
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-08-28",
+    "open": 31.7245,
+    "close": 31.462,
+    "high": 31.7619,
+    "low": 31.1715,
+    "volume": 22818329
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-08-29",
+    "open": 31.4527,
+    "close": 31.8369,
+    "high": 31.8557,
+    "low": 31.3589,
+    "volume": 17850910
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-09-02",
+    "open": 31.5839,
+    "close": 31.9869,
+    "high": 32.015,
+    "low": 31.537,
+    "volume": 21662341
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-09-03",
+    "open": 32.0056,
+    "close": 31.7619,
+    "high": 32.0337,
+    "low": 31.3777,
+    "volume": 19108583
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-09-04",
+    "open": 31.8932,
+    "close": 31.8182,
+    "high": 32.2868,
+    "low": 31.6026,
+    "volume": 29809633
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-09-05",
+    "open": 31.9494,
+    "close": 31.7807,
+    "high": 32.2212,
+    "low": 31.4808,
+    "volume": 22531732
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-09-08",
+    "open": 30.5248,
+    "close": 31.865,
+    "high": 31.9681,
+    "low": 30.478,
+    "volume": 29665908
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-09-09",
+    "open": 31.8557,
+    "close": 31.5558,
+    "high": 31.9025,
+    "low": 31.5558,
+    "volume": 18289981
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-09-10",
+    "open": 31.4246,
+    "close": 31.3777,
+    "high": 31.6214,
+    "low": 30.8341,
+    "volume": 18866267
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-09-11",
+    "open": 31.3589,
+    "close": 31.3027,
+    "high": 31.4527,
+    "low": 31.0965,
+    "volume": 23239900
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-09-12",
+    "open": 31.1809,
+    "close": 30.9841,
+    "high": 31.284,
+    "low": 30.4124,
+    "volume": 25474412
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-09-15",
+    "open": 30.956,
+    "close": 30.5717,
+    "high": 31.0684,
+    "low": 30.478,
+    "volume": 22823023
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-09-16",
+    "open": 30.5717,
+    "close": 30.2624,
+    "high": 30.7029,
+    "low": 29.9719,
+    "volume": 23070781
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-09-17",
+    "open": 30.3093,
+    "close": 30.3936,
+    "high": 30.7404,
+    "low": 30.1781,
+    "volume": 17270569
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-09-18",
+    "open": 30.2999,
+    "close": 29.6532,
+    "high": 30.3843,
+    "low": 29.3627,
+    "volume": 41634233
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-09-19",
+    "open": 29.6532,
+    "close": 29.6064,
+    "high": 29.8782,
+    "low": 29.4283,
+    "volume": 57393503
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-09-22",
+    "open": 29.3627,
+    "close": 29.5127,
+    "high": 29.597,
+    "low": 29.3346,
+    "volume": 38791959
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-09-23",
+    "open": 29.6064,
+    "close": 29.6345,
+    "high": 30.1593,
+    "low": 29.6064,
+    "volume": 28049830
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-09-24",
+    "open": 29.7938,
+    "close": 29.6251,
+    "high": 29.7938,
+    "low": 29.4845,
+    "volume": 24464496
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-09-25",
+    "open": 29.7188,
+    "close": 29.6345,
+    "high": 29.9063,
+    "low": 29.5408,
+    "volume": 20702681
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-09-26",
+    "open": 29.6814,
+    "close": 29.7282,
+    "high": 29.8875,
+    "low": 29.5783,
+    "volume": 16608282
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-09-29",
+    "open": 29.8313,
+    "close": 29.5127,
+    "high": 29.8688,
+    "low": 29.4377,
+    "volume": 23759956
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-09-30",
+    "open": 29.4752,
+    "close": 29.447,
+    "high": 29.8126,
+    "low": 29.269,
+    "volume": 40287999
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-10-01",
+    "open": 29.0909,
+    "close": 28.9972,
+    "high": 29.4002,
+    "low": 28.9597,
+    "volume": 32274829
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-10-02",
+    "open": 28.791,
+    "close": 28.4911,
+    "high": 28.866,
+    "low": 28.4724,
+    "volume": 26690578
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-10-03",
+    "open": 28.5192,
+    "close": 28.9597,
+    "high": 29.2409,
+    "low": 28.5005,
+    "volume": 34826773
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-10-06",
+    "open": 28.866,
+    "close": 29.1378,
+    "high": 29.1565,
+    "low": 28.5098,
+    "volume": 29735156
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-10-07",
+    "open": 29.1378,
+    "close": 28.6785,
+    "high": 29.1753,
+    "low": 28.3974,
+    "volume": 32197579
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-10-08",
+    "open": 28.6879,
+    "close": 28.8379,
+    "high": 29.044,
+    "low": 28.5473,
+    "volume": 25357468
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-10-09",
+    "open": 28.9222,
+    "close": 28.1912,
+    "high": 29.0253,
+    "low": 28.1724,
+    "volume": 24066185
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-10-10",
+    "open": 28.2943,
+    "close": 27.6101,
+    "high": 28.4724,
+    "low": 27.582,
+    "volume": 24430886
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-10-13",
+    "open": 27.6757,
+    "close": 27.5633,
+    "high": 27.9007,
+    "low": 27.5445,
+    "volume": 17972655
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-10-14",
+    "open": 27.6007,
+    "close": 28.1068,
+    "high": 28.2193,
+    "low": 27.5633,
+    "volume": 24966413
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-10-15",
+    "open": 28.0506,
+    "close": 27.8538,
+    "high": 28.2287,
+    "low": 27.6007,
+    "volume": 21912552
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-10-16",
+    "open": 27.7976,
+    "close": 27.4227,
+    "high": 27.9569,
+    "low": 27.3196,
+    "volume": 21743966
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-10-17",
+    "open": 27.4602,
+    "close": 27.6851,
+    "high": 27.7788,
+    "low": 27.329,
+    "volume": 22066520
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-10-20",
+    "open": 27.6945,
+    "close": 27.7132,
+    "high": 27.7694,
+    "low": 27.4789,
+    "volume": 18012454
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-10-21",
+    "open": 27.7882,
+    "close": 28.0881,
+    "high": 28.1068,
+    "low": 27.6382,
+    "volume": 32098561
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-10-22",
+    "open": 28.06,
+    "close": 27.5539,
+    "high": 28.1162,
+    "low": 27.5351,
+    "volume": 23490859
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-10-23",
+    "open": 27.7601,
+    "close": 27.4602,
+    "high": 27.7882,
+    "low": 27.4133,
+    "volume": 22618373
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-10-24",
+    "open": 27.6195,
+    "close": 27.4414,
+    "high": 27.7601,
+    "low": 27.4133,
+    "volume": 19207601
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-10-27",
+    "open": 27.5633,
+    "close": 27.5726,
+    "high": 27.8538,
+    "low": 27.4508,
+    "volume": 25722596
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-10-28",
+    "open": 27.4695,
+    "close": 27.4414,
+    "high": 27.5726,
+    "low": 27.3008,
+    "volume": 28876008
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-10-29",
+    "open": 27.3196,
+    "close": 26.7385,
+    "high": 27.4227,
+    "low": 26.6729,
+    "volume": 45729166
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-10-30",
+    "open": 24.4517,
+    "close": 25.6045,
+    "high": 26.3355,
+    "low": 24.1331,
+    "volume": 68328653
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-10-31",
+    "open": 25.0515,
+    "close": 26.0918,
+    "high": 26.1856,
+    "low": 24.6954,
+    "volume": 52397489
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-11-03",
+    "open": 25.9044,
+    "close": 25.2858,
+    "high": 26.0169,
+    "low": 25.0234,
+    "volume": 42307297
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-11-04",
+    "open": 25.3327,
+    "close": 25.717,
+    "high": 25.8107,
+    "low": 25.2015,
+    "volume": 48614334
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-11-05",
+    "open": 25.7263,
+    "close": 26.1856,
+    "high": 26.2324,
+    "low": 25.6607,
+    "volume": 42945896
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-11-06",
+    "open": 26.1762,
+    "close": 25.5951,
+    "high": 26.298,
+    "low": 25.567,
+    "volume": 35022568
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-11-07",
+    "open": 25.8388,
+    "close": 25.6326,
+    "high": 26.0356,
+    "low": 25.314,
+    "volume": 38966093
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-11-10",
+    "open": 25.5389,
+    "close": 25.4171,
+    "high": 25.7545,
+    "low": 25.0703,
+    "volume": 59186383
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-11-11",
+    "open": 25.6514,
+    "close": 25.7263,
+    "high": 25.9138,
+    "low": 25.3515,
+    "volume": 56995939
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-11-12",
+    "open": 25.717,
+    "close": 26.1387,
+    "high": 26.2043,
+    "low": 25.6982,
+    "volume": 33011806
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-11-13",
+    "open": 26.0169,
+    "close": 26.2137,
+    "high": 26.5042,
+    "low": 26.0169,
+    "volume": 34101960
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-11-14",
+    "open": 26.2605,
+    "close": 25.7826,
+    "high": 26.4574,
+    "low": 25.5389,
+    "volume": 40374320
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-11-17",
+    "open": 25.7826,
+    "close": 25.5108,
+    "high": 25.8857,
+    "low": 25.4452,
+    "volume": 28365982
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-11-18",
+    "open": 25.642,
+    "close": 25.642,
+    "high": 25.8201,
+    "low": 25.3702,
+    "volume": 31200787
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-11-19",
+    "open": 25.5764,
+    "close": 25.1828,
+    "high": 25.6514,
+    "low": 25.089,
+    "volume": 29309743
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-11-20",
+    "open": 25.2858,
+    "close": 24.9578,
+    "high": 25.4358,
+    "low": 24.8828,
+    "volume": 26345084
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-11-21",
+    "open": 24.9203,
+    "close": 25.6326,
+    "high": 25.6982,
+    "low": 24.9203,
+    "volume": 33688178
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-11-24",
+    "open": 25.5858,
+    "close": 24.7985,
+    "high": 25.6232,
+    "low": 24.7704,
+    "volume": 55123888
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-11-25",
+    "open": 24.8828,
+    "close": 25.0047,
+    "high": 25.3889,
+    "low": 24.8547,
+    "volume": 32485455
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-11-26",
+    "open": 25.089,
+    "close": 24.9016,
+    "high": 25.1172,
+    "low": 24.836,
+    "volume": 25848609
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-11-28",
+    "open": 24.8172,
+    "close": 25.0141,
+    "high": 25.1921,
+    "low": 24.7891,
+    "volume": 14547478
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-12-01",
+    "open": 24.836,
+    "close": 24.911,
+    "high": 25.1546,
+    "low": 24.7891,
+    "volume": 30211892
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-12-02",
+    "open": 25.0422,
+    "close": 25.3233,
+    "high": 25.5576,
+    "low": 24.7423,
+    "volume": 48848754
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-12-03",
+    "open": 25.2671,
+    "close": 25.7076,
+    "high": 25.7826,
+    "low": 25.164,
+    "volume": 29501163
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-12-04",
+    "open": 25.7545,
+    "close": 25.492,
+    "high": 25.7919,
+    "low": 25.3421,
+    "volume": 43540215
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-12-05",
+    "open": 25.5201,
+    "close": 25.5951,
+    "high": 26.3168,
+    "low": 25.5014,
+    "volume": 50881282
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-12-08",
+    "open": 25.6139,
+    "close": 24.9766,
+    "high": 25.6232,
+    "low": 24.911,
+    "volume": 42823191
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-12-09",
+    "open": 24.9766,
+    "close": 25.1078,
+    "high": 25.239,
+    "low": 24.7891,
+    "volume": 29309316
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-12-10",
+    "open": 25.1921,
+    "close": 25.8482,
+    "high": 25.9606,
+    "low": 25.089,
+    "volume": 39408045
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-12-11",
+    "open": 25.9138,
+    "close": 25.8669,
+    "high": 25.9888,
+    "low": 25.4358,
+    "volume": 49189234
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-12-12",
+    "open": 25.8201,
+    "close": 25.5201,
+    "high": 26.1012,
+    "low": 25.4733,
+    "volume": 30849211
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-12-15",
+    "open": 25.8201,
+    "close": 26.4386,
+    "high": 26.523,
+    "low": 25.7451,
+    "volume": 42691310
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-12-16",
+    "open": 26.4386,
+    "close": 27.8632,
+    "high": 27.9756,
+    "low": 26.1293,
+    "volume": 98031159
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-12-17",
+    "open": 27.7038,
+    "close": 28.4161,
+    "high": 28.6692,
+    "low": 27.582,
+    "volume": 76466448
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-12-18",
+    "open": 28.0412,
+    "close": 28.3693,
+    "high": 28.5192,
+    "low": 27.8725,
+    "volume": 49457691
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-12-19",
+    "open": 28.2474,
+    "close": 27.7132,
+    "high": 28.463,
+    "low": 27.6289,
+    "volume": 97603932
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-12-22",
+    "open": 27.6289,
+    "close": 27.4227,
+    "high": 27.9288,
+    "low": 27.3571,
+    "volume": 32785176
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-12-23",
+    "open": 27.4414,
+    "close": 27.5351,
+    "high": 27.5633,
+    "low": 27.179,
+    "volume": 22459603
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-12-24",
+    "open": 27.5351,
+    "close": 27.91,
+    "high": 27.985,
+    "low": 27.5258,
+    "volume": 11046544
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-12-26",
+    "open": 27.8725,
+    "close": 27.7976,
+    "high": 27.985,
+    "low": 27.657,
+    "volume": 13253527
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-12-29",
+    "open": 27.7976,
+    "close": 27.9944,
+    "high": 28.0225,
+    "low": 27.6664,
+    "volume": 25635529
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-12-30",
+    "open": 27.9288,
+    "close": 28.0881,
+    "high": 28.2099,
+    "low": 27.9007,
+    "volume": 24549536
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2025-12-31",
+    "open": 27.9944,
+    "close": 28.0131,
+    "high": 28.2006,
+    "low": 27.8725,
+    "volume": 18388891
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-01-02",
+    "open": 28.0131,
+    "close": 27.6851,
+    "high": 28.0694,
+    "low": 27.5351,
+    "volume": 25911241
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-01-05",
+    "open": 27.73,
+    "close": 28.13,
+    "high": 28.93,
+    "low": 27.71,
+    "volume": 47571600
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-01-06",
+    "open": 27.84,
+    "close": 27.42,
+    "high": 27.94,
+    "low": 27.1,
+    "volume": 34552600
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-01-07",
+    "open": 27.45,
+    "close": 27.9,
+    "high": 27.91,
+    "low": 27.34,
+    "volume": 36361700
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-01-08",
+    "open": 27.66,
+    "close": 28.21,
+    "high": 28.5,
+    "low": 27.5,
+    "volume": 30813300
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-01-09",
+    "open": 28.13,
+    "close": 28.37,
+    "high": 28.55,
+    "low": 27.78,
+    "volume": 22315300
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-01-12",
+    "open": 28.74,
+    "close": 29.06,
+    "high": 29.32,
+    "low": 28.49,
+    "volume": 40310200
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-01-13",
+    "open": 28.9,
+    "close": 28.48,
+    "high": 29.25,
+    "low": 28.4,
+    "volume": 35155000
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-01-14",
+    "open": 28.05,
+    "close": 28.42,
+    "high": 28.54,
+    "low": 28.03,
+    "volume": 27336300
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-01-15",
+    "open": 28.41,
+    "close": 28.35,
+    "high": 28.55,
+    "low": 28.19,
+    "volume": 31081600
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-01-16",
+    "open": 28.25,
+    "close": 27.82,
+    "high": 28.38,
+    "low": 27.56,
+    "volume": 38596900
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-01-20",
+    "open": 27.83,
+    "close": 28.16,
+    "high": 28.58,
+    "low": 27.69,
+    "volume": 50568300
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-01-21",
+    "open": 28.09,
+    "close": 28.89,
+    "high": 29.01,
+    "low": 28.09,
+    "volume": 44865500
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-01-22",
+    "open": 28.88,
+    "close": 29.23,
+    "high": 29.44,
+    "low": 28.87,
+    "volume": 35617700
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-01-23",
+    "open": 28.98,
+    "close": 29.3,
+    "high": 29.33,
+    "low": 28.76,
+    "volume": 29380200
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-01-26",
+    "open": 29.29,
+    "close": 29.43,
+    "high": 29.5,
+    "low": 29.16,
+    "volume": 43266700
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-01-27",
+    "open": 29.34,
+    "close": 28.7,
+    "high": 29.42,
+    "low": 28.63,
+    "volume": 40826400
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-01-28",
+    "open": 28.83,
+    "close": 28.41,
+    "high": 29.1,
+    "low": 28.24,
+    "volume": 46428800
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-01-29",
+    "open": 27.63,
+    "close": 29.24,
+    "high": 30.11,
+    "low": 27.58,
+    "volume": 65923400
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-01-30",
+    "open": 29.64,
+    "close": 29.75,
+    "high": 29.85,
+    "low": 28.9,
+    "volume": 51300200
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-02-02",
+    "open": 29.62,
+    "close": 29.59,
+    "high": 29.93,
+    "low": 29.4,
+    "volume": 31343400
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-02-03",
+    "open": 29.64,
+    "close": 29.76,
+    "high": 30.28,
+    "low": 29.53,
+    "volume": 37200800
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-02-04",
+    "open": 30.01,
+    "close": 30.5,
+    "high": 31.13,
+    "low": 29.92,
+    "volume": 41031100
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-02-05",
+    "open": 30.53,
+    "close": 30.85,
+    "high": 30.94,
+    "low": 30.35,
+    "volume": 30243800
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-02-06",
+    "open": 30.81,
+    "close": 31.37,
+    "high": 31.43,
+    "low": 30.77,
+    "volume": 30791600
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-02-09",
+    "open": 31.1,
+    "close": 31.61,
+    "high": 31.68,
+    "low": 30.76,
+    "volume": 24316900
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-02-10",
+    "open": 31.59,
+    "close": 32.31,
+    "high": 32.39,
+    "low": 31.53,
+    "volume": 32111400
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-02-11",
+    "open": 32.29,
+    "close": 32.48,
+    "high": 32.84,
+    "low": 32.28,
+    "volume": 27355300
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-02-12",
+    "open": 32.7,
+    "close": 31.82,
+    "high": 32.86,
+    "low": 31.81,
+    "volume": 34309400
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-02-13",
+    "open": 31.7,
+    "close": 31.57,
+    "high": 31.88,
+    "low": 31.12,
+    "volume": 28487900
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-02-17",
+    "open": 31.67,
+    "close": 31.55,
+    "high": 31.95,
+    "low": 31.46,
+    "volume": 28089700
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-02-18",
+    "open": 31.62,
+    "close": 31.6,
+    "high": 31.82,
+    "low": 31.34,
+    "volume": 20768600
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-02-19",
+    "open": 31.57,
+    "close": 31.38,
+    "high": 31.76,
+    "low": 31.21,
+    "volume": 25767800
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-02-20",
+    "open": 31.29,
+    "close": 31.34,
+    "high": 31.45,
+    "low": 30.79,
+    "volume": 25242200
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-02-23",
+    "open": 31.37,
+    "close": 31.63,
+    "high": 31.82,
+    "low": 31.26,
+    "volume": 19564600
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-02-24",
+    "open": 31.48,
+    "close": 31.61,
+    "high": 31.85,
+    "low": 31.36,
+    "volume": 20735400
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-02-25",
+    "open": 31.6,
+    "close": 30.79,
+    "high": 31.77,
+    "low": 30.69,
+    "volume": 32273600
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-02-26",
+    "open": 30.86,
+    "close": 30.85,
+    "high": 31.22,
+    "low": 30.81,
+    "volume": 25478000
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-02-27",
+    "open": 30.71,
+    "close": 30.96,
+    "high": 31.18,
+    "low": 30.39,
+    "volume": 34865700
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-03-02",
+    "open": 30.74,
+    "close": 30.82,
+    "high": 31.06,
+    "low": 30.53,
+    "volume": 22490300
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-03-03",
+    "open": 30.68,
+    "close": 31.01,
+    "high": 31.36,
+    "low": 30.27,
+    "volume": 27217400
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-03-04",
+    "open": 30.85,
+    "close": 32.09,
+    "high": 32.14,
+    "low": 30.63,
+    "volume": 28509100
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-03-05",
+    "open": 31.94,
+    "close": 31.6,
+    "high": 32.4,
+    "low": 31.47,
+    "volume": 24202700
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-03-06",
+    "open": 31.39,
+    "close": 31.91,
+    "high": 31.97,
+    "low": 30.99,
+    "volume": 23119100
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-03-09",
+    "open": 31.64,
+    "close": 31.04,
+    "high": 31.76,
+    "low": 30.47,
+    "volume": 45897400
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-03-10",
+    "open": 30.94,
+    "close": 31.07,
+    "high": 31.18,
+    "low": 30.55,
+    "volume": 21238700
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-03-11",
+    "open": 31.06,
+    "close": 30.57,
+    "high": 31.33,
+    "low": 30.26,
+    "volume": 23701900
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-03-12",
+    "open": 30.33,
+    "close": 30.16,
+    "high": 30.57,
+    "low": 30.0,
+    "volume": 23947600
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-03-13",
+    "open": 30.33,
+    "close": 30.16,
+    "high": 30.55,
+    "low": 30.11,
+    "volume": 20252800
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-03-16",
+    "open": 30.16,
+    "close": 30.34,
+    "high": 30.56,
+    "low": 30.06,
+    "volume": 19653200
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-03-17",
+    "open": 30.6,
+    "close": 30.08,
+    "high": 30.79,
+    "low": 30.05,
+    "volume": 24222000
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-03-18",
+    "open": 29.94,
+    "close": 28.57,
+    "high": 30.11,
+    "low": 28.53,
+    "volume": 36334100
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-03-19",
+    "open": 28.79,
+    "close": 28.98,
+    "high": 29.34,
+    "low": 28.71,
+    "volume": 36163200
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-03-20",
+    "open": 28.93,
+    "close": 29.02,
+    "high": 29.52,
+    "low": 28.84,
+    "volume": 246107100
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-03-23",
+    "open": 29.13,
+    "close": 29.01,
+    "high": 29.39,
+    "low": 28.83,
+    "volume": 31505500
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-03-24",
+    "open": 29.04,
+    "close": 29.22,
+    "high": 29.71,
+    "low": 28.93,
+    "volume": 21804200
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-03-25",
+    "open": 29.16,
+    "close": 28.73,
+    "high": 29.42,
+    "low": 28.61,
+    "volume": 22266800
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-03-26",
+    "open": 28.73,
+    "close": 28.72,
+    "high": 29.15,
+    "low": 28.61,
+    "volume": 28571200
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-03-27",
+    "open": 28.7,
+    "close": 28.33,
+    "high": 28.82,
+    "low": 28.26,
+    "volume": 19776200
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-03-30",
+    "open": 28.61,
+    "close": 28.9,
+    "high": 29.23,
+    "low": 28.38,
+    "volume": 32458500
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-03-31",
+    "open": 29.28,
+    "close": 28.71,
+    "high": 29.29,
+    "low": 28.37,
+    "volume": 28734100
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-04-01",
+    "open": 28.23,
+    "close": 28.05,
+    "high": 28.39,
+    "low": 27.75,
+    "volume": 27163500
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-04-02",
+    "open": 28.04,
+    "close": 27.93,
+    "high": 28.16,
+    "low": 27.58,
+    "volume": 25105400
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-04-06",
+    "open": 27.99,
+    "close": 27.66,
+    "high": 28.17,
+    "low": 27.63,
+    "volume": 19631400
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-04-07",
+    "open": 27.73,
+    "close": 27.79,
+    "high": 27.93,
+    "low": 27.48,
+    "volume": 37148500
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-04-08",
+    "open": 27.79,
+    "close": 27.96,
+    "high": 28.09,
+    "low": 27.66,
+    "volume": 23123100
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-04-09",
+    "open": 27.82,
+    "close": 28.31,
+    "high": 28.32,
+    "low": 27.63,
+    "volume": 24209100
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-04-10",
+    "open": 28.42,
+    "close": 27.93,
+    "high": 28.47,
+    "low": 27.83,
+    "volume": 18153900
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-04-13",
+    "open": 27.95,
+    "close": 28.05,
+    "high": 28.19,
+    "low": 27.59,
+    "volume": 20312900
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-04-14",
+    "open": 27.83,
+    "close": 28.14,
+    "high": 28.38,
+    "low": 27.8,
+    "volume": 17564400
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-04-15",
+    "open": 28.16,
+    "close": 28.3,
+    "high": 28.51,
+    "low": 28.01,
+    "volume": 18045000
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-04-16",
+    "open": 28.34,
+    "close": 29.35,
+    "high": 29.46,
+    "low": 28.27,
+    "volume": 27115800
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-04-17",
+    "open": 29.3,
+    "close": 29.63,
+    "high": 29.78,
+    "low": 29.16,
+    "volume": 32422000
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-04-20",
+    "open": 29.63,
+    "close": 29.73,
+    "high": 30.14,
+    "low": 29.56,
+    "volume": 22174000
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-04-21",
+    "open": 29.76,
+    "close": 29.05,
+    "high": 29.92,
+    "low": 28.89,
+    "volume": 37226100
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-04-22",
+    "open": 29.14,
+    "close": 29.37,
+    "high": 29.53,
+    "low": 29.11,
+    "volume": 25222700
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-04-23",
+    "open": 30.5,
+    "close": 31.64,
+    "high": 32.08,
+    "low": 30.4,
+    "volume": 46477900
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-04-24",
+    "open": 30.96,
+    "close": 27.56,
+    "high": 31.03,
+    "low": 27.5,
+    "volume": 65543100
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-04-27",
+    "open": 27.45,
+    "close": 27.51,
+    "high": 28.01,
+    "low": 27.3,
+    "volume": 31684600
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-04-28",
+    "open": 28.04,
+    "close": 27.64,
+    "high": 28.31,
+    "low": 27.55,
+    "volume": 23549000
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-04-29",
+    "open": 27.49,
+    "close": 26.76,
+    "high": 27.73,
+    "low": 26.6,
+    "volume": 31883500
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-04-30",
+    "open": 26.72,
+    "close": 27.04,
+    "high": 27.35,
+    "low": 26.72,
+    "volume": 41994900
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-05-01",
+    "open": 27.29,
+    "close": 27.19,
+    "high": 27.48,
+    "low": 26.99,
+    "volume": 28829300
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-05-04",
+    "open": 27.0,
+    "close": 27.07,
+    "high": 27.18,
+    "low": 26.89,
+    "volume": 24758600
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-05-05",
+    "open": 26.98,
+    "close": 26.46,
+    "high": 27.22,
+    "low": 26.22,
+    "volume": 31384300
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-05-06",
+    "open": 26.51,
+    "close": 26.44,
+    "high": 26.84,
+    "low": 26.39,
+    "volume": 30097200
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-05-07",
+    "open": 26.38,
+    "close": 26.24,
+    "high": 26.69,
+    "low": 26.11,
+    "volume": 34373800
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-05-08",
+    "open": 26.25,
+    "close": 25.4,
+    "high": 26.26,
+    "low": 25.35,
+    "volume": 36599400
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-05-11",
+    "open": 25.5,
+    "close": 25.03,
+    "high": 25.68,
+    "low": 24.87,
+    "volume": 35016100
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-05-12",
+    "open": 25.29,
+    "close": 24.9,
+    "high": 25.4,
+    "low": 24.8,
+    "volume": 33690600
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-05-13",
+    "open": 24.76,
+    "close": 24.94,
+    "high": 25.08,
+    "low": 24.53,
+    "volume": 33453200
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-05-14",
+    "open": 25.02,
+    "close": 25.17,
+    "high": 25.55,
+    "low": 24.91,
+    "volume": 31812300
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-05-15",
+    "open": 25.38,
+    "close": 24.76,
+    "high": 25.54,
+    "low": 24.69,
+    "volume": 33033500
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-05-18",
+    "open": 24.72,
+    "close": 24.93,
+    "high": 25.36,
+    "low": 24.62,
+    "volume": 34687900
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-05-19",
+    "open": 25.11,
+    "close": 24.8,
+    "high": 25.26,
+    "low": 24.68,
+    "volume": 33394200
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-05-20",
+    "open": 24.87,
+    "close": 24.88,
+    "high": 25.17,
+    "low": 24.74,
+    "volume": 33277100
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-05-21",
+    "open": 24.86,
+    "close": 25.08,
+    "high": 25.14,
+    "low": 24.56,
+    "volume": 27771400
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-05-22",
+    "open": 25.13,
+    "close": 25.21,
+    "high": 25.35,
+    "low": 24.91,
+    "volume": 26573600
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-05-26",
+    "open": 25.32,
+    "close": 25.15,
+    "high": 25.54,
+    "low": 24.84,
+    "volume": 25780100
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-05-27",
+    "open": 25.23,
+    "close": 25.22,
+    "high": 25.83,
+    "low": 25.14,
+    "volume": 25684500
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-05-28",
+    "open": 25.23,
+    "close": 25.16,
+    "high": 25.34,
+    "low": 24.9,
+    "volume": 23353400
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-05-29",
+    "open": 25.05,
+    "close": 24.87,
+    "high": 25.05,
+    "low": 24.78,
+    "volume": 50671300
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-06-01",
+    "open": 24.73,
+    "close": 25.05,
+    "high": 25.09,
+    "low": 24.53,
+    "volume": 24059700
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-06-02",
+    "open": 24.93,
+    "close": 24.85,
+    "high": 25.13,
+    "low": 24.74,
+    "volume": 21999500
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-06-03",
+    "open": 24.73,
+    "close": 23.52,
+    "high": 24.74,
+    "low": 23.43,
+    "volume": 43375400
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-06-04",
+    "open": 23.96,
+    "close": 23.33,
+    "high": 24.25,
+    "low": 23.13,
+    "volume": 45296700
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-06-05",
+    "open": 23.4,
+    "close": 23.82,
+    "high": 23.94,
+    "low": 23.39,
+    "volume": 37177900
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-06-08",
+    "open": 23.76,
+    "close": 23.76,
+    "high": 24.11,
+    "low": 23.52,
+    "volume": 25239900
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-06-09",
+    "open": 23.77,
+    "close": 23.85,
+    "high": 24.02,
+    "low": 23.63,
+    "volume": 33633600
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-06-10",
+    "open": 24.08,
+    "close": 23.97,
+    "high": 24.21,
+    "low": 23.68,
+    "volume": 21978900
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-06-11",
+    "open": 23.95,
+    "close": 23.97,
+    "high": 24.28,
+    "low": 23.87,
+    "volume": 25583300
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-06-12",
+    "open": 24.0,
+    "close": 24.5,
+    "high": 24.51,
+    "low": 23.91,
+    "volume": 26314500
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-06-15",
+    "open": 24.32,
+    "close": 23.97,
+    "high": 24.63,
+    "low": 23.94,
+    "volume": 23585900
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-06-16",
+    "open": 24.04,
+    "close": 23.66,
+    "high": 24.15,
+    "low": 23.32,
+    "volume": 28797800
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-06-17",
+    "open": 23.44,
+    "close": 22.69,
+    "high": 23.5,
+    "low": 22.55,
+    "volume": 40926900
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-06-18",
+    "open": 22.75,
+    "close": 22.43,
+    "high": 22.86,
+    "low": 22.38,
+    "volume": 74561800
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-06-22",
+    "open": 22.25,
+    "close": 22.32,
+    "high": 22.6,
+    "low": 22.13,
+    "volume": 46066700
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-06-23",
+    "open": 22.56,
+    "close": 22.8,
+    "high": 23.05,
+    "low": 22.24,
+    "volume": 40351900
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-06-24",
+    "open": 22.84,
+    "close": 22.64,
+    "high": 23.08,
+    "low": 22.42,
+    "volume": 43019700
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-06-25",
+    "open": 22.66,
+    "close": 22.69,
+    "high": 23.0,
+    "low": 22.63,
+    "volume": 25303800
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-06-26",
+    "open": 22.76,
+    "close": 23.17,
+    "high": 23.23,
+    "low": 22.71,
+    "volume": 42040300
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-06-29",
+    "open": 27.05,
+    "close": 24.22,
+    "high": 27.1,
+    "low": 24.17,
+    "volume": 135440100
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-06-30",
+    "open": 24.71,
+    "close": 24.55,
+    "high": 25.04,
+    "low": 24.07,
+    "volume": 61967200
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-07-01",
+    "open": 24.25,
+    "close": 23.73,
+    "high": 24.49,
+    "low": 23.58,
+    "volume": 52264400
+  },
+  {
+    "symbol": "CMCSA",
+    "report_date": "2026-07-02",
+    "open": 23.79,
+    "close": 23.79,
+    "high": 23.92,
+    "low": 23.08,
+    "volume": 43720500
+  }
+]

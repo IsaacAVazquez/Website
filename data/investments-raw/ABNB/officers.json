@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "ABNB",
+    "name": "Mr. Ahmad  Al-Dahle",
+    "title": "Chief Technology Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "ABNB",
+    "name": "Mr. Brian  Chesky",
+    "title": "Co-Founder, CEO & Chairman of the Board",
+    "age": 43,
+    "born": 1982,
+    "pay": 242122,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "ABNB",
+    "name": "Mr. David C. Bernstein",
+    "title": "Chief Accounting Officer",
+    "age": 63,
+    "born": 1962,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "ABNB",
+    "name": "Mr. Gus  Fuldner",
+    "title": "Head of Global Operations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "ABNB",
+    "name": "Mr. Jay  Carney",
+    "title": "Global Head of Policy & Communications",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "ABNB",
+    "name": "Mr. Joseph  Gebbia",
+    "title": "Co-Founder & Director",
+    "age": 43,
+    "born": 1982,
+    "pay": 62500,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "ABNB",
+    "name": "Mr. Nathan  Blecharczyk",
+    "title": "Co-Founder, Chief Strategy Officer & Director",
+    "age": 41,
+    "born": 1984,
+    "pay": 1310067,
+    "exercised": 24311712,
+    "unexercised": 20095604,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "ABNB",
+    "name": "Mr. Ronald A. Klain J.D.",
+    "title": "Chief Legal Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "ABNB",
+    "name": "Ms. Angela  Yang",
+    "title": "Director of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "ABNB",
+    "name": "Ms. Elinor B. Mertz",
+    "title": "Chief Financial Officer",
+    "age": 48,
+    "born": 1977,
+    "pay": 1361006,
+    "exercised": 1190316,
+    "unexercised": 9171696,
+    "report_date": "2026-07-06"
+  }
+]

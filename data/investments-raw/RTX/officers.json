@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "RTX",
+    "name": "Mr. Christopher T. Calio J.D.",
+    "title": "Chairman & CEO",
+    "age": 51,
+    "born": 1974,
+    "pay": 7169269,
+    "exercised": 858639,
+    "unexercised": 34963212,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "RTX",
+    "name": "Mr. Juan M. de Bedout",
+    "title": "Chief Technology Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "RTX",
+    "name": "Mr. Neil G. Mitchill Jr.",
+    "title": "Executive VP & CFO",
+    "age": 49,
+    "born": 1976,
+    "pay": 3925302,
+    "exercised": 872723,
+    "unexercised": 22854948,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "RTX",
+    "name": "Mr. Philip J. Jasper",
+    "title": "President of Raytheon",
+    "age": 57,
+    "born": 1968,
+    "pay": 2597293,
+    "exercised": 2029569,
+    "unexercised": 10266953,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "RTX",
+    "name": "Mr. Ramsaran  Maharajh Jr., J.D.",
+    "title": "Executive VP & General Counsel",
+    "age": 53,
+    "born": 1972,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "RTX",
+    "name": "Mr. Shane G. Eddy",
+    "title": "President of Pratt & Whitney",
+    "age": 60,
+    "born": 1965,
+    "pay": 2489045,
+    "exercised": 4559226,
+    "unexercised": 15022444,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "RTX",
+    "name": "Mr. Troy D. Brunk",
+    "title": "President of Collins Aerospace",
+    "age": 55,
+    "born": 1970,
+    "pay": 2272771,
+    "exercised": 1187901,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "RTX",
+    "name": "Ms. Amy L. Johnson",
+    "title": "Senior VP & Controller",
+    "age": 50,
+    "born": 1975,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "RTX",
+    "name": "Ms. Robin L. Diamonte",
+    "title": "Chief Investment Officer & VP of Pension Investments",
+    "age": 60,
+    "born": 1965,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "RTX",
+    "name": "Nathan  Ware",
+    "title": "Vice President of Investor Relations.",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  }
+]

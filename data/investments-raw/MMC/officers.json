@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "MMC",
+    "name": "Mr. Dean M. Klisura",
+    "title": "Vice Chair",
+    "age": 61,
+    "born": 1964,
+    "pay": 4670475,
+    "exercised": 1317259,
+    "unexercised": 5406876,
+    "report_date": "2026-01-31"
+  },
+  {
+    "symbol": "MMC",
+    "name": "Mr. Jay H. Gelb C.F.A.",
+    "title": "Head of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-01-31"
+  },
+  {
+    "symbol": "MMC",
+    "name": "Mr. John  Jones",
+    "title": "Senior VP, Chief Marketing & Communications Officer",
+    "age": 53,
+    "born": 1972,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-01-31"
+  },
+  {
+    "symbol": "MMC",
+    "name": "Mr. John Quinlan Doyle",
+    "title": "President, CEO & Director",
+    "age": 61,
+    "born": 1964,
+    "pay": 8385904,
+    "exercised": 0,
+    "unexercised": 57041664,
+    "report_date": "2026-01-31"
+  },
+  {
+    "symbol": "MMC",
+    "name": "Mr. Mark Christopher McGivney",
+    "title": "Senior VP & CFO",
+    "age": 57,
+    "born": 1968,
+    "pay": 4330975,
+    "exercised": 7072591,
+    "unexercised": 6860239,
+    "report_date": "2026-01-31"
+  },
+  {
+    "symbol": "MMC",
+    "name": "Mr. Martin C. South",
+    "title": "Vice Chair",
+    "age": 60,
+    "born": 1965,
+    "pay": 5340833,
+    "exercised": 1958092,
+    "unexercised": 5127882,
+    "report_date": "2026-01-31"
+  },
+  {
+    "symbol": "MMC",
+    "name": "Mr. Patrick  Tomlinson",
+    "title": "Vice Chair",
+    "age": 54,
+    "born": 1971,
+    "pay": 4047644,
+    "exercised": 516773,
+    "unexercised": 2041547,
+    "report_date": "2026-01-31"
+  },
+  {
+    "symbol": "MMC",
+    "name": "Mr. Paul  Beswick",
+    "title": "SVP, Chief Information & Operations Officer",
+    "age": 49,
+    "born": 1976,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-01-31"
+  },
+  {
+    "symbol": "MMC",
+    "name": "Ms. Katherine J. Brennan",
+    "title": "Senior VP & General Counsel",
+    "age": 46,
+    "born": 1979,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-01-31"
+  },
+  {
+    "symbol": "MMC",
+    "name": "Ms. Stacy M. Mills",
+    "title": "VP, Controller & Chief Accounting Officer",
+    "age": 60,
+    "born": 1965,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-01-31"
+  }
+]

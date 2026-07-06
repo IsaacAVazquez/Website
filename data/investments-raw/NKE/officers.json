@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "NKE",
+    "name": "Mr. Craig Anthony Williams",
+    "title": "Full-Time Non-Executive Employee",
+    "age": 55,
+    "born": 1970,
+    "pay": 1267250,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "NKE",
+    "name": "Mr. Elliott J. Hill",
+    "title": "CEO, President & Director",
+    "age": 61,
+    "born": 1964,
+    "pay": 5297497,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "NKE",
+    "name": "Mr. Mark G. Parker",
+    "title": "Executive Chairman",
+    "age": 69,
+    "born": 1956,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "NKE",
+    "name": "Mr. Matthew  Friend",
+    "title": "Executive VP & CFO",
+    "age": 47,
+    "born": 1978,
+    "pay": 1267250,
+    "exercised": 0,
+    "unexercised": 107260,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "NKE",
+    "name": "Mr. Michael  Gonda",
+    "title": "Executive VP & Chief Communications Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "NKE",
+    "name": "Mr. Philip H. Knight",
+    "title": "Co-Founder & Chairman Emeritus",
+    "age": 87,
+    "born": 1938,
+    "pay": 3069594,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "NKE",
+    "name": "Mr. Robert  Leinwand",
+    "title": "EVP & Chief Legal Officer",
+    "age": null,
+    "born": null,
+    "pay": 816877,
+    "exercised": 0,
+    "unexercised": 52270,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "NKE",
+    "name": "Ms. Ann M. Miller",
+    "title": "Executive VP & Global Sports Marketing",
+    "age": 50,
+    "born": 1975,
+    "pay": 1137914,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "NKE",
+    "name": "Ms. Johanna  Nielsen",
+    "title": "VP of Controlling & Principal Accounting Officer",
+    "age": 47,
+    "born": 1978,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "NKE",
+    "name": "Ms. Nicole Hubbard Graham",
+    "title": "Executive VP & Chief Marketing Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "PM",
+    "name": "Dr. Moira  Gilchrist",
+    "title": "Chief Communications Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "PM",
+    "name": "Mr. Emmanuel  Babeau",
+    "title": "Group Chief Financial Officer",
+    "age": 58,
+    "born": 1967,
+    "pay": 4051987,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "PM",
+    "name": "Mr. Frederic  de Wilde",
+    "title": "CEO of PMI International",
+    "age": 58,
+    "born": 1967,
+    "pay": 3581310,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "PM",
+    "name": "Mr. Jacek  Olczak",
+    "title": "Group CEO & Director",
+    "age": 60,
+    "born": 1965,
+    "pay": 7054208,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "PM",
+    "name": "Mr. James R. Bushnell",
+    "title": "Vice President of Investor Relations & Financial Communications",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "PM",
+    "name": "Mr. Massimo  Andolina",
+    "title": "President of Europe Region",
+    "age": 56,
+    "born": 1969,
+    "pay": 3009359,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "PM",
+    "name": "Mr. Michael  Voegele",
+    "title": "Chief Digital & Information Officer",
+    "age": 51,
+    "born": 1974,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "PM",
+    "name": "Mr. Scott  Coutts",
+    "title": "Chief Global Operations Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "PM",
+    "name": "Mr. Yann  Guerin",
+    "title": "Group Chief Legal Officer",
+    "age": 48,
+    "born": 1977,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "PM",
+    "name": "Ms. Stacey  Kennedy",
+    "title": "CEO of PMI U.S.",
+    "age": 52,
+    "born": 1973,
+    "pay": 3353263,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  }
+]

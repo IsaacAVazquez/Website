@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "BA",
+    "name": "Mr. Brad  McMullen",
+    "title": "Senior Vice President of Commercial Sales & Marketing",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "BA",
+    "name": "Mr. Brett C. Gerry J.D.",
+    "title": "Chief Legal Officer & Executive VP of Global Compliance",
+    "age": 53,
+    "born": 1972,
+    "pay": 2380183,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "BA",
+    "name": "Mr. Darrin A. Hostetler",
+    "title": "Chief Compliance Officer & VP of Global Compliance",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "BA",
+    "name": "Mr. Eric  Hill",
+    "title": "Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "BA",
+    "name": "Mr. Howard E. McKenzie",
+    "title": "Chief Engineer and Executive VP of Engineering, Test & Technology",
+    "age": 57,
+    "born": 1968,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "BA",
+    "name": "Mr. Jeffrey S. Shockey",
+    "title": "Executive VP of Government Operations, Global Public Policy & Corporate Strategy",
+    "age": null,
+    "born": null,
+    "pay": 1485221,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "BA",
+    "name": "Mr. Jesus  Malave Jr.",
+    "title": "Executive VP & CFO",
+    "age": 56,
+    "born": 1969,
+    "pay": 10683114,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "BA",
+    "name": "Mr. Robert K. Ortberg",
+    "title": "President, CEO & Director",
+    "age": 65,
+    "born": 1960,
+    "pay": 6081612,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "BA",
+    "name": "Ms. Ann M. Schmidt",
+    "title": "Chief Communications & Brand Officer and Senior VP of Communications & Brand",
+    "age": 49,
+    "born": 1976,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "BA",
+    "name": "Ms. Stephanie F. Pope",
+    "title": "Executive VP & President and CEO of Boeing Commercial Airplanes",
+    "age": 52,
+    "born": 1973,
+    "pay": 4241939,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  }
+]

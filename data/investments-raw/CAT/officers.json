@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "CAT",
+    "name": "Alex  Kapper",
+    "title": "Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "CAT",
+    "name": "Mr. Andrew R. J. Bonfield",
+    "title": "Advisor",
+    "age": 63,
+    "born": 1962,
+    "pay": 2601603,
+    "exercised": 6902462,
+    "unexercised": 898702,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "CAT",
+    "name": "Mr. Bob  De Lange",
+    "title": "Group President of Services, Distribution & Digital",
+    "age": 55,
+    "born": 1970,
+    "pay": 2361317,
+    "exercised": 8231793,
+    "unexercised": 97235608,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "CAT",
+    "name": "Mr. Joseph E. Creed CPA",
+    "title": "Chairman & CEO",
+    "age": 49,
+    "born": 1976,
+    "pay": 4368476,
+    "exercised": 0,
+    "unexercised": 36623136,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "CAT",
+    "name": "Mr. Kyle J. Epley",
+    "title": "Chief Financial Officer",
+    "age": 52,
+    "born": 1973,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "CAT",
+    "name": "Mr. William E. Schaupp",
+    "title": "VP & Chief Accounting Officer",
+    "age": 53,
+    "born": 1972,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "CAT",
+    "name": "Ms. Christine M. Pambianchi",
+    "title": "Chief Human Resources Officer",
+    "age": 57,
+    "born": 1968,
+    "pay": 2075625,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "CAT",
+    "name": "Ms. Denise C. Johnson",
+    "title": "Group President of Resource Industries",
+    "age": 59,
+    "born": 1966,
+    "pay": 2492993,
+    "exercised": 0,
+    "unexercised": 36318824,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "CAT",
+    "name": "Ms. Jaime  Mineart",
+    "title": "Senior VP & CTO",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "CAT",
+    "name": "Ms. Jamie L. Engstrom",
+    "title": "Senior VP & Chief Information Officer",
+    "age": 47,
+    "born": 1978,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  }
+]

@@ -1,0 +1,2270 @@
+[
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-07-02",
+    "open": 90.07,
+    "close": 89.32,
+    "high": 90.35,
+    "low": 88.91,
+    "volume": 3868200
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-07-03",
+    "open": 89.35,
+    "close": 91.33,
+    "high": 91.49,
+    "low": 89.15,
+    "volume": 3187200
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-07-07",
+    "open": 91.1,
+    "close": 92.67,
+    "high": 92.86,
+    "low": 90.77,
+    "volume": 4637900
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-07-08",
+    "open": 92.15,
+    "close": 91.64,
+    "high": 92.82,
+    "low": 90.94,
+    "volume": 4045900
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-07-09",
+    "open": 91.69,
+    "close": 92.58,
+    "high": 92.74,
+    "low": 90.77,
+    "volume": 4128900
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-07-10",
+    "open": 92.21,
+    "close": 92.38,
+    "high": 93.5,
+    "low": 92.21,
+    "volume": 4635000
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-07-11",
+    "open": 92.04,
+    "close": 91.62,
+    "high": 92.19,
+    "low": 90.75,
+    "volume": 3871000
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-07-14",
+    "open": 91.91,
+    "close": 93.12,
+    "high": 93.52,
+    "low": 91.67,
+    "volume": 4598300
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-07-15",
+    "open": 92.55,
+    "close": 91.19,
+    "high": 93.05,
+    "low": 91.16,
+    "volume": 3825300
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-07-16",
+    "open": 91.8,
+    "close": 91.24,
+    "high": 92.04,
+    "low": 90.38,
+    "volume": 4018200
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-07-17",
+    "open": 91.03,
+    "close": 91.59,
+    "high": 92.62,
+    "low": 91.03,
+    "volume": 3826400
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-07-18",
+    "open": 92.2,
+    "close": 92.34,
+    "high": 93.13,
+    "low": 91.97,
+    "volume": 4003300
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-07-21",
+    "open": 92.26,
+    "close": 94.15,
+    "high": 94.64,
+    "low": 92.19,
+    "volume": 5306800
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-07-22",
+    "open": 93.94,
+    "close": 95.35,
+    "high": 95.58,
+    "low": 93.76,
+    "volume": 5070300
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-07-23",
+    "open": 95.09,
+    "close": 95.42,
+    "high": 95.52,
+    "low": 94.43,
+    "volume": 5144700
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-07-24",
+    "open": 95.78,
+    "close": 98.16,
+    "high": 100.1,
+    "low": 95.33,
+    "volume": 8587200
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-07-25",
+    "open": 99.24,
+    "close": 97.66,
+    "high": 99.65,
+    "low": 97.43,
+    "volume": 5514100
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-07-28",
+    "open": 97.65,
+    "close": 97.33,
+    "high": 98.44,
+    "low": 97.08,
+    "volume": 3657700
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-07-29",
+    "open": 97.65,
+    "close": 98.9,
+    "high": 99.59,
+    "low": 97.46,
+    "volume": 4922500
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-07-30",
+    "open": 99.01,
+    "close": 99.38,
+    "high": 100.6,
+    "low": 98.81,
+    "volume": 5165000
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-07-31",
+    "open": 98.76,
+    "close": 98.32,
+    "high": 99.97,
+    "low": 98.1,
+    "volume": 5581800
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-08-01",
+    "open": 99.1,
+    "close": 99.12,
+    "high": 99.8,
+    "low": 97.88,
+    "volume": 4719000
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-08-04",
+    "open": 99.41,
+    "close": 101.37,
+    "high": 101.74,
+    "low": 99.12,
+    "volume": 4339400
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-08-05",
+    "open": 101.39,
+    "close": 102.23,
+    "high": 102.48,
+    "low": 101.16,
+    "volume": 4039100
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-08-06",
+    "open": 102.66,
+    "close": 104.44,
+    "high": 104.67,
+    "low": 102.56,
+    "volume": 6061800
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-08-07",
+    "open": 104.83,
+    "close": 103.47,
+    "high": 104.86,
+    "low": 102.92,
+    "volume": 5632400
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-08-08",
+    "open": 103.38,
+    "close": 103.33,
+    "high": 104.18,
+    "low": 103.19,
+    "volume": 3676900
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-08-11",
+    "open": 103.36,
+    "close": 103.6,
+    "high": 103.71,
+    "low": 102.8,
+    "volume": 4004700
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-08-12",
+    "open": 103.25,
+    "close": 101.89,
+    "high": 103.49,
+    "low": 101.42,
+    "volume": 4258500
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-08-13",
+    "open": 101.95,
+    "close": 102.64,
+    "high": 103.24,
+    "low": 101.91,
+    "volume": 4101900
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-08-14",
+    "open": 102.94,
+    "close": 101.5,
+    "high": 103.34,
+    "low": 101.4,
+    "volume": 7244200
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-08-15",
+    "open": 101.86,
+    "close": 101.54,
+    "high": 101.91,
+    "low": 100.84,
+    "volume": 4281100
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-08-18",
+    "open": 101.91,
+    "close": 101.39,
+    "high": 102.12,
+    "low": 100.99,
+    "volume": 4170400
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-08-19",
+    "open": 101.56,
+    "close": 103.06,
+    "high": 103.1,
+    "low": 101.41,
+    "volume": 4250100
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-08-20",
+    "open": 103.89,
+    "close": 104.0,
+    "high": 104.53,
+    "low": 103.14,
+    "volume": 5341100
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-08-21",
+    "open": 103.71,
+    "close": 102.87,
+    "high": 104.5,
+    "low": 102.84,
+    "volume": 4173800
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-08-22",
+    "open": 103.37,
+    "close": 102.31,
+    "high": 104.0,
+    "low": 102.03,
+    "volume": 3483500
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-08-25",
+    "open": 102.32,
+    "close": 102.47,
+    "high": 102.87,
+    "low": 101.81,
+    "volume": 3102500
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-08-26",
+    "open": 102.43,
+    "close": 103.18,
+    "high": 103.98,
+    "low": 102.0,
+    "volume": 4899000
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-08-27",
+    "open": 103.53,
+    "close": 104.05,
+    "high": 104.14,
+    "low": 103.04,
+    "volume": 3139200
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-08-28",
+    "open": 103.83,
+    "close": 103.99,
+    "high": 104.12,
+    "low": 103.27,
+    "volume": 2961200
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-08-29",
+    "open": 104.19,
+    "close": 103.68,
+    "high": 104.42,
+    "low": 103.35,
+    "volume": 2952700
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-09-02",
+    "open": 103.75,
+    "close": 103.19,
+    "high": 104.35,
+    "low": 102.87,
+    "volume": 3698000
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-09-03",
+    "open": 103.12,
+    "close": 103.84,
+    "high": 103.95,
+    "low": 102.95,
+    "volume": 3123100
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-09-04",
+    "open": 104.02,
+    "close": 105.04,
+    "high": 105.13,
+    "low": 103.77,
+    "volume": 3597900
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-09-05",
+    "open": 105.32,
+    "close": 104.84,
+    "high": 105.32,
+    "low": 103.6,
+    "volume": 4202500
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-09-08",
+    "open": 104.94,
+    "close": 106.4,
+    "high": 106.55,
+    "low": 104.89,
+    "volume": 4360900
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-09-09",
+    "open": 105.74,
+    "close": 106.92,
+    "high": 107.08,
+    "low": 105.02,
+    "volume": 3533500
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-09-10",
+    "open": 106.66,
+    "close": 105.11,
+    "high": 107.2,
+    "low": 104.65,
+    "volume": 4999600
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-09-11",
+    "open": 105.66,
+    "close": 107.82,
+    "high": 108.07,
+    "low": 105.51,
+    "volume": 5272000
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-09-12",
+    "open": 107.43,
+    "close": 107.5,
+    "high": 108.42,
+    "low": 107.2,
+    "volume": 4783100
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-09-15",
+    "open": 107.33,
+    "close": 106.3,
+    "high": 107.9,
+    "low": 105.68,
+    "volume": 6955700
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-09-16",
+    "open": 106.21,
+    "close": 105.39,
+    "high": 107.16,
+    "low": 105.38,
+    "volume": 5495900
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-09-17",
+    "open": 105.45,
+    "close": 104.55,
+    "high": 106.08,
+    "low": 103.74,
+    "volume": 6557600
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-09-18",
+    "open": 104.25,
+    "close": 103.69,
+    "high": 105.39,
+    "low": 103.48,
+    "volume": 6215000
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-09-19",
+    "open": 104.06,
+    "close": 103.93,
+    "high": 104.37,
+    "low": 103.23,
+    "volume": 10047600
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-09-22",
+    "open": 103.34,
+    "close": 103.45,
+    "high": 104.61,
+    "low": 103.18,
+    "volume": 4971000
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-09-23",
+    "open": 102.87,
+    "close": 103.73,
+    "high": 104.13,
+    "low": 100.95,
+    "volume": 5495200
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-09-24",
+    "open": 103.66,
+    "close": 103.47,
+    "high": 104.11,
+    "low": 102.73,
+    "volume": 4982200
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-09-25",
+    "open": 104.03,
+    "close": 104.58,
+    "high": 105.12,
+    "low": 103.39,
+    "volume": 4415700
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-09-26",
+    "open": 105.04,
+    "close": 106.1,
+    "high": 106.3,
+    "low": 104.3,
+    "volume": 3454300
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-09-29",
+    "open": 106.24,
+    "close": 107.55,
+    "high": 107.71,
+    "low": 105.88,
+    "volume": 4527200
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-09-30",
+    "open": 107.5,
+    "close": 107.81,
+    "high": 108.72,
+    "low": 107.5,
+    "volume": 5027500
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-10-01",
+    "open": 107.64,
+    "close": 105.68,
+    "high": 107.96,
+    "low": 105.57,
+    "volume": 4144100
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-10-02",
+    "open": 104.72,
+    "close": 104.97,
+    "high": 105.39,
+    "low": 103.78,
+    "volume": 3388600
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-10-03",
+    "open": 104.77,
+    "close": 104.79,
+    "high": 105.36,
+    "low": 104.16,
+    "volume": 2716000
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-10-06",
+    "open": 104.91,
+    "close": 103.3,
+    "high": 105.23,
+    "low": 102.53,
+    "volume": 4161300
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-10-07",
+    "open": 102.92,
+    "close": 101.85,
+    "high": 103.3,
+    "low": 101.02,
+    "volume": 3967200
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-10-08",
+    "open": 101.75,
+    "close": 100.76,
+    "high": 101.75,
+    "low": 100.67,
+    "volume": 3519900
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-10-09",
+    "open": 101.04,
+    "close": 99.72,
+    "high": 101.55,
+    "low": 99.63,
+    "volume": 3832400
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-10-10",
+    "open": 99.92,
+    "close": 102.15,
+    "high": 102.64,
+    "low": 99.68,
+    "volume": 5487700
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-10-13",
+    "open": 101.82,
+    "close": 102.88,
+    "high": 102.98,
+    "low": 101.62,
+    "volume": 4089000
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-10-14",
+    "open": 103.14,
+    "close": 103.05,
+    "high": 104.06,
+    "low": 102.31,
+    "volume": 4008300
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-10-15",
+    "open": 103.04,
+    "close": 102.12,
+    "high": 103.82,
+    "low": 101.88,
+    "volume": 3958700
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-10-16",
+    "open": 102.18,
+    "close": 101.17,
+    "high": 102.71,
+    "low": 101.0,
+    "volume": 5148300
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-10-17",
+    "open": 101.42,
+    "close": 101.6,
+    "high": 101.7,
+    "low": 100.5,
+    "volume": 4359100
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-10-20",
+    "open": 102.02,
+    "close": 100.97,
+    "high": 102.02,
+    "low": 99.6,
+    "volume": 4888100
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-10-21",
+    "open": 100.95,
+    "close": 101.31,
+    "high": 101.56,
+    "low": 100.48,
+    "volume": 5042500
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-10-22",
+    "open": 101.48,
+    "close": 101.21,
+    "high": 101.74,
+    "low": 100.08,
+    "volume": 4836200
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-10-23",
+    "open": 99.5,
+    "close": 98.27,
+    "high": 101.43,
+    "low": 94.02,
+    "volume": 11597500
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-10-24",
+    "open": 99.47,
+    "close": 97.27,
+    "high": 99.49,
+    "low": 97.18,
+    "volume": 5234700
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-10-27",
+    "open": 96.81,
+    "close": 95.79,
+    "high": 97.02,
+    "low": 95.29,
+    "volume": 6512000
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-10-28",
+    "open": 95.67,
+    "close": 96.3,
+    "high": 97.92,
+    "low": 95.62,
+    "volume": 5797600
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-10-29",
+    "open": 95.58,
+    "close": 94.52,
+    "high": 96.52,
+    "low": 94.13,
+    "volume": 4976900
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-10-30",
+    "open": 95.47,
+    "close": 95.15,
+    "high": 96.37,
+    "low": 94.53,
+    "volume": 5747800
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-10-31",
+    "open": 94.51,
+    "close": 94.44,
+    "high": 95.62,
+    "low": 94.26,
+    "volume": 5746400
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-11-03",
+    "open": 93.98,
+    "close": 91.7,
+    "high": 94.28,
+    "low": 90.18,
+    "volume": 11118400
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-11-04",
+    "open": 92.06,
+    "close": 93.83,
+    "high": 93.91,
+    "low": 91.65,
+    "volume": 6563900
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-11-05",
+    "open": 94.66,
+    "close": 94.94,
+    "high": 96.38,
+    "low": 94.1,
+    "volume": 6896400
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-11-06",
+    "open": 94.55,
+    "close": 95.0,
+    "high": 95.76,
+    "low": 93.66,
+    "volume": 4814600
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-11-07",
+    "open": 95.7,
+    "close": 97.09,
+    "high": 97.39,
+    "low": 95.02,
+    "volume": 6079800
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-11-10",
+    "open": 96.24,
+    "close": 98.1,
+    "high": 98.42,
+    "low": 95.68,
+    "volume": 5319900
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-11-11",
+    "open": 98.49,
+    "close": 99.22,
+    "high": 99.42,
+    "low": 97.88,
+    "volume": 4152100
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-11-12",
+    "open": 98.78,
+    "close": 98.09,
+    "high": 99.13,
+    "low": 98.0,
+    "volume": 3279700
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-11-13",
+    "open": 98.13,
+    "close": 98.35,
+    "high": 99.76,
+    "low": 98.13,
+    "volume": 4446000
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-11-14",
+    "open": 99.6,
+    "close": 98.8,
+    "high": 100.0,
+    "low": 98.03,
+    "volume": 3351700
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-11-17",
+    "open": 99.26,
+    "close": 99.56,
+    "high": 99.67,
+    "low": 98.6,
+    "volume": 4777500
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-11-18",
+    "open": 99.68,
+    "close": 98.33,
+    "high": 100.04,
+    "low": 98.3,
+    "volume": 6109400
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-11-19",
+    "open": 98.32,
+    "close": 98.7,
+    "high": 99.44,
+    "low": 97.87,
+    "volume": 3708500
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-11-20",
+    "open": 98.3,
+    "close": 99.01,
+    "high": 99.6,
+    "low": 98.17,
+    "volume": 4411300
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-11-21",
+    "open": 99.09,
+    "close": 100.43,
+    "high": 101.36,
+    "low": 98.95,
+    "volume": 6554500
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-11-24",
+    "open": 100.62,
+    "close": 99.0,
+    "high": 100.75,
+    "low": 98.66,
+    "volume": 6226600
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-11-25",
+    "open": 99.68,
+    "close": 101.38,
+    "high": 101.58,
+    "low": 99.33,
+    "volume": 4511300
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-11-26",
+    "open": 101.5,
+    "close": 101.51,
+    "high": 101.89,
+    "low": 101.01,
+    "volume": 4032700
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-11-28",
+    "open": 100.96,
+    "close": 101.7,
+    "high": 101.79,
+    "low": 100.75,
+    "volume": 3499200
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-12-01",
+    "open": 101.31,
+    "close": 101.24,
+    "high": 102.46,
+    "low": 100.84,
+    "volume": 4590400
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-12-02",
+    "open": 101.39,
+    "close": 99.84,
+    "high": 101.5,
+    "low": 98.93,
+    "volume": 4650800
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-12-03",
+    "open": 99.71,
+    "close": 98.61,
+    "high": 101.12,
+    "low": 98.11,
+    "volume": 4431900
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-12-04",
+    "open": 99.1,
+    "close": 99.51,
+    "high": 100.0,
+    "low": 98.78,
+    "volume": 3949000
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-12-05",
+    "open": 99.56,
+    "close": 98.89,
+    "high": 99.85,
+    "low": 97.95,
+    "volume": 4517300
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-12-08",
+    "open": 98.86,
+    "close": 98.11,
+    "high": 99.19,
+    "low": 97.99,
+    "volume": 4041300
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-12-09",
+    "open": 97.81,
+    "close": 94.25,
+    "high": 98.13,
+    "low": 93.16,
+    "volume": 8978600
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-12-10",
+    "open": 94.41,
+    "close": 93.63,
+    "high": 95.16,
+    "low": 93.19,
+    "volume": 7453200
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-12-11",
+    "open": 94.22,
+    "close": 93.96,
+    "high": 94.84,
+    "low": 93.74,
+    "volume": 4483800
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-12-12",
+    "open": 94.57,
+    "close": 94.11,
+    "high": 94.93,
+    "low": 93.68,
+    "volume": 4246300
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-12-15",
+    "open": 94.18,
+    "close": 95.14,
+    "high": 95.71,
+    "low": 93.26,
+    "volume": 6611800
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-12-16",
+    "open": 94.87,
+    "close": 92.9,
+    "high": 95.6,
+    "low": 92.77,
+    "volume": 5661200
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-12-17",
+    "open": 92.35,
+    "close": 92.85,
+    "high": 93.64,
+    "low": 92.21,
+    "volume": 6073200
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-12-18",
+    "open": 92.85,
+    "close": 91.79,
+    "high": 93.16,
+    "low": 91.5,
+    "volume": 8208700
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-12-19",
+    "open": 91.85,
+    "close": 91.0,
+    "high": 92.14,
+    "low": 90.63,
+    "volume": 15349900
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-12-22",
+    "open": 91.0,
+    "close": 91.75,
+    "high": 91.86,
+    "low": 90.85,
+    "volume": 4135300
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-12-23",
+    "open": 91.86,
+    "close": 92.07,
+    "high": 92.3,
+    "low": 91.51,
+    "volume": 5276700
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-12-24",
+    "open": 91.95,
+    "close": 92.4,
+    "high": 92.71,
+    "low": 91.78,
+    "volume": 1995600
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-12-26",
+    "open": 92.23,
+    "close": 92.25,
+    "high": 92.67,
+    "low": 91.92,
+    "volume": 2257200
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-12-29",
+    "open": 92.82,
+    "close": 91.78,
+    "high": 92.88,
+    "low": 91.51,
+    "volume": 4027700
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-12-30",
+    "open": 91.51,
+    "close": 91.47,
+    "high": 91.76,
+    "low": 91.06,
+    "volume": 3057300
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2025-12-31",
+    "open": 91.41,
+    "close": 91.21,
+    "high": 91.55,
+    "low": 91.01,
+    "volume": 3844000
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-01-02",
+    "open": 90.74,
+    "close": 90.34,
+    "high": 91.03,
+    "low": 89.97,
+    "volume": 4557300
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-01-05",
+    "open": 89.42,
+    "close": 90.58,
+    "high": 91.03,
+    "low": 89.12,
+    "volume": 5382800
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-01-06",
+    "open": 90.14,
+    "close": 90.39,
+    "high": 90.57,
+    "low": 89.2,
+    "volume": 9940400
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-01-07",
+    "open": 91.27,
+    "close": 90.85,
+    "high": 91.81,
+    "low": 90.48,
+    "volume": 5354300
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-01-08",
+    "open": 90.82,
+    "close": 91.63,
+    "high": 92.43,
+    "low": 90.53,
+    "volume": 6787900
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-01-09",
+    "open": 91.44,
+    "close": 93.8,
+    "high": 94.01,
+    "low": 91.38,
+    "volume": 6722600
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-01-12",
+    "open": 94.06,
+    "close": 95.6,
+    "high": 96.0,
+    "low": 93.92,
+    "volume": 7441900
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-01-13",
+    "open": 95.15,
+    "close": 94.63,
+    "high": 95.54,
+    "low": 94.02,
+    "volume": 4966400
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-01-14",
+    "open": 94.49,
+    "close": 95.02,
+    "high": 95.33,
+    "low": 94.07,
+    "volume": 4905900
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-01-15",
+    "open": 95.06,
+    "close": 93.64,
+    "high": 95.34,
+    "low": 93.08,
+    "volume": 5914700
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-01-16",
+    "open": 93.47,
+    "close": 94.7,
+    "high": 94.82,
+    "low": 92.74,
+    "volume": 6718500
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-01-20",
+    "open": 94.38,
+    "close": 95.24,
+    "high": 95.81,
+    "low": 94.07,
+    "volume": 6141900
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-01-21",
+    "open": 95.16,
+    "close": 98.78,
+    "high": 98.97,
+    "low": 94.95,
+    "volume": 7058800
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-01-22",
+    "open": 98.27,
+    "close": 98.88,
+    "high": 99.31,
+    "low": 97.71,
+    "volume": 4924800
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-01-23",
+    "open": 98.73,
+    "close": 99.23,
+    "high": 99.63,
+    "low": 98.61,
+    "volume": 6236100
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-01-26",
+    "open": 99.76,
+    "close": 100.24,
+    "high": 102.11,
+    "low": 99.64,
+    "volume": 6418500
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-01-27",
+    "open": 100.24,
+    "close": 100.62,
+    "high": 101.2,
+    "low": 100.0,
+    "volume": 4707200
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-01-28",
+    "open": 100.62,
+    "close": 101.37,
+    "high": 101.69,
+    "low": 99.95,
+    "volume": 5550700
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-01-29",
+    "open": 101.38,
+    "close": 98.85,
+    "high": 102.0,
+    "low": 98.46,
+    "volume": 4789400
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-01-30",
+    "open": 98.36,
+    "close": 98.41,
+    "high": 98.86,
+    "low": 97.34,
+    "volume": 6262400
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-02-02",
+    "open": 98.54,
+    "close": 98.01,
+    "high": 98.73,
+    "low": 96.68,
+    "volume": 5791300
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-02-03",
+    "open": 97.22,
+    "close": 97.1,
+    "high": 99.2,
+    "low": 96.82,
+    "volume": 6573700
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-02-04",
+    "open": 97.68,
+    "close": 96.74,
+    "high": 99.06,
+    "low": 96.62,
+    "volume": 10103500
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-02-05",
+    "open": 92.35,
+    "close": 92.86,
+    "high": 95.19,
+    "low": 92.09,
+    "volume": 12164000
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-02-06",
+    "open": 92.12,
+    "close": 94.22,
+    "high": 94.3,
+    "low": 91.1,
+    "volume": 10452900
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-02-09",
+    "open": 94.0,
+    "close": 92.72,
+    "high": 94.38,
+    "low": 91.88,
+    "volume": 6279200
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-02-10",
+    "open": 92.09,
+    "close": 93.44,
+    "high": 93.94,
+    "low": 91.05,
+    "volume": 5182400
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-02-11",
+    "open": 93.46,
+    "close": 94.11,
+    "high": 94.33,
+    "low": 92.82,
+    "volume": 6037600
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-02-12",
+    "open": 94.27,
+    "close": 95.21,
+    "high": 96.16,
+    "low": 94.27,
+    "volume": 6145100
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-02-13",
+    "open": 95.49,
+    "close": 96.66,
+    "high": 97.35,
+    "low": 94.92,
+    "volume": 5952700
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-02-17",
+    "open": 97.03,
+    "close": 92.6,
+    "high": 97.28,
+    "low": 92.42,
+    "volume": 5163600
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-02-18",
+    "open": 92.43,
+    "close": 92.75,
+    "high": 93.63,
+    "low": 91.85,
+    "volume": 4102500
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-02-19",
+    "open": 92.71,
+    "close": 94.17,
+    "high": 94.32,
+    "low": 92.14,
+    "volume": 4742200
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-02-20",
+    "open": 93.69,
+    "close": 93.5,
+    "high": 95.09,
+    "low": 92.33,
+    "volume": 5634600
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-02-23",
+    "open": 92.97,
+    "close": 95.35,
+    "high": 95.91,
+    "low": 92.96,
+    "volume": 7827400
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-02-24",
+    "open": 95.08,
+    "close": 94.33,
+    "high": 95.99,
+    "low": 93.82,
+    "volume": 3845100
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-02-25",
+    "open": 93.5,
+    "close": 91.44,
+    "high": 94.08,
+    "low": 90.83,
+    "volume": 5987100
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-02-26",
+    "open": 91.77,
+    "close": 91.33,
+    "high": 91.99,
+    "low": 90.68,
+    "volume": 9822900
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-02-27",
+    "open": 90.46,
+    "close": 93.88,
+    "high": 94.0,
+    "low": 90.22,
+    "volume": 10004000
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-03-02",
+    "open": 93.99,
+    "close": 95.03,
+    "high": 95.17,
+    "low": 93.46,
+    "volume": 6444400
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-03-03",
+    "open": 93.91,
+    "close": 93.87,
+    "high": 94.72,
+    "low": 92.55,
+    "volume": 5563000
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-03-04",
+    "open": 93.65,
+    "close": 94.27,
+    "high": 94.78,
+    "low": 92.63,
+    "volume": 6029300
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-03-05",
+    "open": 93.63,
+    "close": 94.36,
+    "high": 94.82,
+    "low": 93.06,
+    "volume": 5328400
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-03-06",
+    "open": 94.71,
+    "close": 94.6,
+    "high": 95.56,
+    "low": 93.48,
+    "volume": 5979700
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-03-09",
+    "open": 94.74,
+    "close": 94.61,
+    "high": 95.47,
+    "low": 93.44,
+    "volume": 5922900
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-03-10",
+    "open": 94.4,
+    "close": 94.71,
+    "high": 95.61,
+    "low": 93.9,
+    "volume": 3913500
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-03-11",
+    "open": 94.31,
+    "close": 94.39,
+    "high": 95.0,
+    "low": 93.83,
+    "volume": 4479400
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-03-12",
+    "open": 94.25,
+    "close": 92.98,
+    "high": 95.63,
+    "low": 92.56,
+    "volume": 5801300
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-03-13",
+    "open": 93.55,
+    "close": 91.54,
+    "high": 93.83,
+    "low": 91.04,
+    "volume": 4900000
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-03-16",
+    "open": 91.4,
+    "close": 90.46,
+    "high": 92.07,
+    "low": 89.8,
+    "volume": 6239000
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-03-17",
+    "open": 90.66,
+    "close": 89.39,
+    "high": 91.23,
+    "low": 89.03,
+    "volume": 5506400
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-03-18",
+    "open": 88.5,
+    "close": 87.72,
+    "high": 88.69,
+    "low": 87.09,
+    "volume": 5396500
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-03-19",
+    "open": 88.09,
+    "close": 87.91,
+    "high": 88.59,
+    "low": 87.02,
+    "volume": 5131300
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-03-20",
+    "open": 87.65,
+    "close": 87.3,
+    "high": 88.7,
+    "low": 86.77,
+    "volume": 10368500
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-03-23",
+    "open": 89.08,
+    "close": 88.7,
+    "high": 89.71,
+    "low": 87.52,
+    "volume": 8481800
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-03-24",
+    "open": 88.24,
+    "close": 87.99,
+    "high": 88.95,
+    "low": 87.72,
+    "volume": 5553200
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-03-25",
+    "open": 88.7,
+    "close": 91.16,
+    "high": 91.25,
+    "low": 88.26,
+    "volume": 5630400
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-03-26",
+    "open": 91.53,
+    "close": 92.27,
+    "high": 92.98,
+    "low": 91.25,
+    "volume": 5294500
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-03-27",
+    "open": 92.33,
+    "close": 90.11,
+    "high": 92.63,
+    "low": 90.1,
+    "volume": 6364300
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-03-30",
+    "open": 89.91,
+    "close": 92.11,
+    "high": 92.63,
+    "low": 89.9,
+    "volume": 6008200
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-03-31",
+    "open": 92.36,
+    "close": 92.31,
+    "high": 92.76,
+    "low": 91.09,
+    "volume": 6814300
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-04-01",
+    "open": 92.48,
+    "close": 92.1,
+    "high": 93.23,
+    "low": 91.67,
+    "volume": 5722300
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-04-02",
+    "open": 91.47,
+    "close": 91.42,
+    "high": 92.33,
+    "low": 90.72,
+    "volume": 3696600
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-04-06",
+    "open": 90.5,
+    "close": 92.13,
+    "high": 92.37,
+    "low": 90.29,
+    "volume": 3226500
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-04-07",
+    "open": 91.95,
+    "close": 91.36,
+    "high": 92.31,
+    "low": 91.17,
+    "volume": 3430000
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-04-08",
+    "open": 91.36,
+    "close": 93.06,
+    "high": 93.08,
+    "low": 91.36,
+    "volume": 4383700
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-04-09",
+    "open": 93.6,
+    "close": 94.4,
+    "high": 94.61,
+    "low": 92.45,
+    "volume": 6371100
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-04-10",
+    "open": 94.07,
+    "close": 93.01,
+    "high": 94.07,
+    "low": 92.23,
+    "volume": 4399100
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-04-13",
+    "open": 93.13,
+    "close": 94.01,
+    "high": 94.07,
+    "low": 92.53,
+    "volume": 3644900
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-04-14",
+    "open": 93.28,
+    "close": 93.52,
+    "high": 94.26,
+    "low": 93.1,
+    "volume": 3902500
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-04-15",
+    "open": 93.36,
+    "close": 93.6,
+    "high": 93.88,
+    "low": 92.63,
+    "volume": 4317000
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-04-16",
+    "open": 93.18,
+    "close": 92.71,
+    "high": 94.26,
+    "low": 92.5,
+    "volume": 4107700
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-04-17",
+    "open": 93.03,
+    "close": 93.71,
+    "high": 94.34,
+    "low": 92.66,
+    "volume": 5426300
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-04-20",
+    "open": 93.98,
+    "close": 92.83,
+    "high": 94.4,
+    "low": 92.58,
+    "volume": 5220300
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-04-21",
+    "open": 92.62,
+    "close": 93.81,
+    "high": 93.84,
+    "low": 92.04,
+    "volume": 4832000
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-04-22",
+    "open": 93.81,
+    "close": 93.92,
+    "high": 94.72,
+    "low": 93.41,
+    "volume": 4237900
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-04-23",
+    "open": 93.43,
+    "close": 93.24,
+    "high": 94.25,
+    "low": 92.22,
+    "volume": 4109800
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-04-24",
+    "open": 92.88,
+    "close": 93.13,
+    "high": 93.61,
+    "low": 91.66,
+    "volume": 5220800
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-04-27",
+    "open": 93.37,
+    "close": 91.97,
+    "high": 93.96,
+    "low": 91.91,
+    "volume": 4414900
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-04-28",
+    "open": 92.87,
+    "close": 91.57,
+    "high": 93.46,
+    "low": 91.15,
+    "volume": 4658000
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-04-29",
+    "open": 90.3,
+    "close": 91.69,
+    "high": 91.7,
+    "low": 90.24,
+    "volume": 5631500
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-04-30",
+    "open": 96.02,
+    "close": 99.4,
+    "high": 99.8,
+    "low": 95.84,
+    "volume": 11141100
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-05-01",
+    "open": 100.0,
+    "close": 96.67,
+    "high": 100.63,
+    "low": 95.62,
+    "volume": 7531600
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-05-04",
+    "open": 95.87,
+    "close": 93.98,
+    "high": 97.71,
+    "low": 93.09,
+    "volume": 4705500
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-05-05",
+    "open": 93.78,
+    "close": 95.0,
+    "high": 95.6,
+    "low": 93.78,
+    "volume": 4349800
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-05-06",
+    "open": 94.55,
+    "close": 94.78,
+    "high": 95.67,
+    "low": 94.17,
+    "volume": 4026900
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-05-07",
+    "open": 94.74,
+    "close": 94.58,
+    "high": 95.23,
+    "low": 94.0,
+    "volume": 4253100
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-05-08",
+    "open": 94.58,
+    "close": 92.96,
+    "high": 95.11,
+    "low": 92.91,
+    "volume": 6341000
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-05-11",
+    "open": 92.33,
+    "close": 91.35,
+    "high": 92.43,
+    "low": 90.31,
+    "volume": 8672900
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-05-12",
+    "open": 91.66,
+    "close": 91.84,
+    "high": 92.77,
+    "low": 90.25,
+    "volume": 7238800
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-05-13",
+    "open": 91.12,
+    "close": 89.7,
+    "high": 92.17,
+    "low": 88.82,
+    "volume": 6409700
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-05-14",
+    "open": 89.97,
+    "close": 89.68,
+    "high": 90.68,
+    "low": 88.72,
+    "volume": 7053800
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-05-15",
+    "open": 90.38,
+    "close": 88.49,
+    "high": 90.63,
+    "low": 88.17,
+    "volume": 6309200
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-05-18",
+    "open": 88.82,
+    "close": 91.74,
+    "high": 91.81,
+    "low": 88.65,
+    "volume": 6261600
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-05-19",
+    "open": 92.0,
+    "close": 91.92,
+    "high": 93.11,
+    "low": 91.17,
+    "volume": 4813000
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-05-20",
+    "open": 91.55,
+    "close": 92.22,
+    "high": 93.03,
+    "low": 90.84,
+    "volume": 5344400
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-05-21",
+    "open": 91.68,
+    "close": 92.34,
+    "high": 93.77,
+    "low": 91.28,
+    "volume": 4694600
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-05-22",
+    "open": 92.01,
+    "close": 91.74,
+    "high": 92.94,
+    "low": 91.56,
+    "volume": 4453700
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-05-26",
+    "open": 89.71,
+    "close": 89.87,
+    "high": 90.8,
+    "low": 86.8,
+    "volume": 9060100
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-05-27",
+    "open": 89.87,
+    "close": 89.02,
+    "high": 90.09,
+    "low": 88.25,
+    "volume": 6740200
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-05-28",
+    "open": 89.09,
+    "close": 89.23,
+    "high": 89.65,
+    "low": 88.05,
+    "volume": 6347000
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-05-29",
+    "open": 88.25,
+    "close": 86.88,
+    "high": 89.17,
+    "low": 86.42,
+    "volume": 11502900
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-06-01",
+    "open": 86.38,
+    "close": 86.64,
+    "high": 87.65,
+    "low": 85.45,
+    "volume": 5725800
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-06-02",
+    "open": 86.6,
+    "close": 86.23,
+    "high": 86.64,
+    "low": 85.35,
+    "volume": 6850800
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-06-03",
+    "open": 85.63,
+    "close": 87.38,
+    "high": 87.94,
+    "low": 85.48,
+    "volume": 7427000
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-06-04",
+    "open": 89.05,
+    "close": 88.4,
+    "high": 89.82,
+    "low": 87.32,
+    "volume": 7533200
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-06-05",
+    "open": 89.26,
+    "close": 90.33,
+    "high": 90.57,
+    "low": 88.83,
+    "volume": 11549800
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-06-08",
+    "open": 89.48,
+    "close": 89.02,
+    "high": 90.19,
+    "low": 88.93,
+    "volume": 6905000
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-06-09",
+    "open": 88.76,
+    "close": 89.49,
+    "high": 90.48,
+    "low": 88.3,
+    "volume": 10797700
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-06-10",
+    "open": 90.38,
+    "close": 90.46,
+    "high": 91.32,
+    "low": 89.67,
+    "volume": 5558500
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-06-11",
+    "open": 90.46,
+    "close": 90.1,
+    "high": 91.73,
+    "low": 89.57,
+    "volume": 6660300
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-06-12",
+    "open": 90.1,
+    "close": 91.02,
+    "high": 91.27,
+    "low": 88.48,
+    "volume": 6523200
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-06-15",
+    "open": 90.96,
+    "close": 90.26,
+    "high": 91.89,
+    "low": 89.51,
+    "volume": 5940000
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-06-16",
+    "open": 90.79,
+    "close": 90.68,
+    "high": 91.26,
+    "low": 89.78,
+    "volume": 4401500
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-06-17",
+    "open": 89.8,
+    "close": 88.4,
+    "high": 91.21,
+    "low": 87.79,
+    "volume": 8141700
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-06-18",
+    "open": 88.17,
+    "close": 86.84,
+    "high": 89.34,
+    "low": 86.29,
+    "volume": 15497300
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-06-22",
+    "open": 85.96,
+    "close": 85.63,
+    "high": 86.1,
+    "low": 84.76,
+    "volume": 10896500
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-06-23",
+    "open": 86.87,
+    "close": 87.54,
+    "high": 88.0,
+    "low": 86.48,
+    "volume": 7495800
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-06-24",
+    "open": 87.73,
+    "close": 87.82,
+    "high": 88.72,
+    "low": 87.1,
+    "volume": 6277800
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-06-25",
+    "open": 86.76,
+    "close": 86.9,
+    "high": 88.05,
+    "low": 86.42,
+    "volume": 8263200
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-06-26",
+    "open": 88.19,
+    "close": 89.55,
+    "high": 90.26,
+    "low": 88.05,
+    "volume": 20969700
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-06-29",
+    "open": 89.61,
+    "close": 90.16,
+    "high": 92.51,
+    "low": 89.57,
+    "volume": 8654800
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-06-30",
+    "open": 90.15,
+    "close": 92.09,
+    "high": 92.29,
+    "low": 90.15,
+    "volume": 6458900
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-07-01",
+    "open": 92.79,
+    "close": 92.69,
+    "high": 92.91,
+    "low": 91.69,
+    "volume": 8694100
+  },
+  {
+    "symbol": "ORLY",
+    "report_date": "2026-07-02",
+    "open": 92.8,
+    "close": 90.25,
+    "high": 93.52,
+    "low": 88.0,
+    "volume": 12890900
+  }
+]

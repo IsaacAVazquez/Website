@@ -1,0 +1,57 @@
+[
+  {
+    "symbol": "UBER",
+    "name": "Mr. Andrew G. Macdonald",
+    "title": "President & COO",
+    "age": 40,
+    "born": 1985,
+    "pay": 3260987,
+    "exercised": 4806250,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "UBER",
+    "name": "Mr. Dara  Khosrowshahi",
+    "title": "CEO & Director",
+    "age": 55,
+    "born": 1970,
+    "pay": 4476540,
+    "exercised": 0,
+    "unexercised": 25098372,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "UBER",
+    "name": "Mr. Derek Anthony West J.D.",
+    "title": "Senior VP, Chief Legal Officer & Corporate Secretary",
+    "age": 59,
+    "born": 1966,
+    "pay": 2875486,
+    "exercised": 6673500,
+    "unexercised": 9612000,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "UBER",
+    "name": "Ms. Jill  Hazelbaker",
+    "title": "President & Chief Corporate Affairs Officer",
+    "age": 43,
+    "born": 1982,
+    "pay": 2369988,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "UBER",
+    "name": "Prabhjeet  Singh",
+    "title": "President of Uber India South Asia",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  }
+]

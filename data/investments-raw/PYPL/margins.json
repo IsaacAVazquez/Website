@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-06-30",
+      "gross_profit": 3314000000.0,
+      "total_revenue": 6806000000.0,
+      "gross_margin": 0.4869
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-12-31",
+      "gross_profit": 3671000000.0,
+      "total_revenue": 7383000000.0,
+      "gross_margin": 0.4972
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-06-30",
+      "gross_profit": 3348000000.0,
+      "total_revenue": 7287000000.0,
+      "gross_margin": 0.4594
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-09-30",
+      "gross_profit": 3369000000.0,
+      "total_revenue": 7418000000.0,
+      "gross_margin": 0.4542
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-12-31",
+      "gross_profit": 3672000000.0,
+      "total_revenue": 8026000000.0,
+      "gross_margin": 0.4575
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-03-31",
+      "gross_profit": 3461000000.0,
+      "total_revenue": 7699000000.0,
+      "gross_margin": 0.4495
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-06-30",
+      "gross_profit": 3608000000.0,
+      "total_revenue": 7885000000.0,
+      "gross_margin": 0.4576
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-09-30",
+      "gross_profit": 3654000000.0,
+      "total_revenue": 7847000000.0,
+      "gross_margin": 0.4657
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-12-31",
+      "gross_profit": 3935000000.0,
+      "total_revenue": 8366000000.0,
+      "gross_margin": 0.4704
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-03-31",
+      "gross_profit": 3716000000.0,
+      "total_revenue": 7791000000.0,
+      "gross_margin": 0.477
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-06-30",
+      "gross_profit": 3844000000.0,
+      "total_revenue": 8288000000.0,
+      "gross_margin": 0.4638
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-09-30",
+      "gross_profit": 3871000000.0,
+      "total_revenue": 8417000000.0,
+      "gross_margin": 0.4599
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-12-31",
+      "gross_profit": 4034000000.0,
+      "total_revenue": 8676000000.0,
+      "gross_margin": 0.465
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2026-03-31",
+      "gross_profit": 3810000000.0,
+      "total_revenue": 8353000000.0,
+      "gross_margin": 0.4561
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "PYPL",
+      "report_date": "2019-12-31",
+      "gross_profit": 9602000000.0,
+      "total_revenue": 17772000000.0,
+      "gross_margin": 0.5403
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2020-12-31",
+      "gross_profit": 11779000000.0,
+      "total_revenue": 21454000000.0,
+      "gross_margin": 0.549
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2021-12-31",
+      "gross_profit": 13996000000.0,
+      "total_revenue": 25371000000.0,
+      "gross_margin": 0.5517
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-12-31",
+      "gross_profit": 13773000000.0,
+      "total_revenue": 27518000000.0,
+      "gross_margin": 0.5005
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-12-31",
+      "gross_profit": 13704000000.0,
+      "total_revenue": 29771000000.0,
+      "gross_margin": 0.4603
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-12-31",
+      "gross_profit": 14658000000.0,
+      "total_revenue": 31797000000.0,
+      "gross_margin": 0.461
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-12-31",
+      "gross_profit": 15465000000.0,
+      "total_revenue": 33172000000.0,
+      "gross_margin": 0.4662
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-06-30",
+      "operating_income": 854000000.0,
+      "total_revenue": 6806000000.0,
+      "operating_margin": 0.1255
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-12-31",
+      "operating_income": 1269000000.0,
+      "total_revenue": 7383000000.0,
+      "operating_margin": 0.1719
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-06-30",
+      "operating_income": 1157000000.0,
+      "total_revenue": 7287000000.0,
+      "operating_margin": 0.1588
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-09-30",
+      "operating_income": 1207000000.0,
+      "total_revenue": 7418000000.0,
+      "operating_margin": 0.1627
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-12-31",
+      "operating_income": 1417000000.0,
+      "total_revenue": 8026000000.0,
+      "operating_margin": 0.1766
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-03-31",
+      "operating_income": 1380000000.0,
+      "total_revenue": 7699000000.0,
+      "operating_margin": 0.1792
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-06-30",
+      "operating_income": 1438000000.0,
+      "total_revenue": 7885000000.0,
+      "operating_margin": 0.1824
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-09-30",
+      "operating_income": 1454000000.0,
+      "total_revenue": 7847000000.0,
+      "operating_margin": 0.1853
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-12-31",
+      "operating_income": 1491000000.0,
+      "total_revenue": 8366000000.0,
+      "operating_margin": 0.1782
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-03-31",
+      "operating_income": 1596000000.0,
+      "total_revenue": 7791000000.0,
+      "operating_margin": 0.2049
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-06-30",
+      "operating_income": 1620000000.0,
+      "total_revenue": 8288000000.0,
+      "operating_margin": 0.1955
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-09-30",
+      "operating_income": 1589000000.0,
+      "total_revenue": 8417000000.0,
+      "operating_margin": 0.1888
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-12-31",
+      "operating_income": 1591000000.0,
+      "total_revenue": 8676000000.0,
+      "operating_margin": 0.1834
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2026-03-31",
+      "operating_income": 1562000000.0,
+      "total_revenue": 8353000000.0,
+      "operating_margin": 0.187
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "PYPL",
+      "report_date": "2019-12-31",
+      "operating_income": 2790000000.0,
+      "total_revenue": 17772000000.0,
+      "operating_margin": 0.157
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2020-12-31",
+      "operating_income": 3428000000.0,
+      "total_revenue": 21454000000.0,
+      "operating_margin": 0.1598
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2021-12-31",
+      "operating_income": 4324000000.0,
+      "total_revenue": 25371000000.0,
+      "operating_margin": 0.1704
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-12-31",
+      "operating_income": 4044000000.0,
+      "total_revenue": 27518000000.0,
+      "operating_margin": 0.147
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-12-31",
+      "operating_income": 4944000000.0,
+      "total_revenue": 29771000000.0,
+      "operating_margin": 0.1661
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-12-31",
+      "operating_income": 5763000000.0,
+      "total_revenue": 31797000000.0,
+      "operating_margin": 0.1812
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-12-31",
+      "operating_income": 6396000000.0,
+      "total_revenue": 33172000000.0,
+      "operating_margin": 0.1928
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": -341000000.0,
+      "total_revenue": 6806000000.0,
+      "net_margin": -0.0501
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 921000000.0,
+      "total_revenue": 7383000000.0,
+      "net_margin": 0.1247
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 1029000000.0,
+      "total_revenue": 7287000000.0,
+      "net_margin": 0.1412
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1020000000.0,
+      "total_revenue": 7418000000.0,
+      "net_margin": 0.1375
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1402000000.0,
+      "total_revenue": 8026000000.0,
+      "net_margin": 0.1747
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 888000000.0,
+      "total_revenue": 7699000000.0,
+      "net_margin": 0.1153
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1128000000.0,
+      "total_revenue": 7885000000.0,
+      "net_margin": 0.1431
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1010000000.0,
+      "total_revenue": 7847000000.0,
+      "net_margin": 0.1287
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1121000000.0,
+      "total_revenue": 8366000000.0,
+      "net_margin": 0.134
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1287000000.0,
+      "total_revenue": 7791000000.0,
+      "net_margin": 0.1652
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1261000000.0,
+      "total_revenue": 8288000000.0,
+      "net_margin": 0.1521
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1248000000.0,
+      "total_revenue": 8417000000.0,
+      "net_margin": 0.1483
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1437000000.0,
+      "total_revenue": 8676000000.0,
+      "net_margin": 0.1656
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1113000000.0,
+      "total_revenue": 8353000000.0,
+      "net_margin": 0.1332
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "PYPL",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": 2459000000.0,
+      "total_revenue": 17772000000.0,
+      "net_margin": 0.1384
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 4202000000.0,
+      "total_revenue": 21454000000.0,
+      "net_margin": 0.1959
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 4169000000.0,
+      "total_revenue": 25371000000.0,
+      "net_margin": 0.1643
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 2419000000.0,
+      "total_revenue": 27518000000.0,
+      "net_margin": 0.0879
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 4246000000.0,
+      "total_revenue": 29771000000.0,
+      "net_margin": 0.1426
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 4147000000.0,
+      "total_revenue": 31797000000.0,
+      "net_margin": 0.1304
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 5233000000.0,
+      "total_revenue": 33172000000.0,
+      "net_margin": 0.1578
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 6806000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-12-31",
+      "ebitda": 1525000000.0,
+      "total_revenue": 7383000000.0,
+      "ebitda_margin": 0.2066
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-06-30",
+      "ebitda": 1659000000.0,
+      "total_revenue": 7287000000.0,
+      "ebitda_margin": 0.2277
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-09-30",
+      "ebitda": 1597000000.0,
+      "total_revenue": 7418000000.0,
+      "ebitda_margin": 0.2153
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-12-31",
+      "ebitda": 2143000000.0,
+      "total_revenue": 8026000000.0,
+      "ebitda_margin": 0.267
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-03-31",
+      "ebitda": 1560000000.0,
+      "total_revenue": 7699000000.0,
+      "ebitda_margin": 0.2026
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-06-30",
+      "ebitda": 1755000000.0,
+      "total_revenue": 7885000000.0,
+      "ebitda_margin": 0.2226
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-09-30",
+      "ebitda": 1672000000.0,
+      "total_revenue": 7847000000.0,
+      "ebitda_margin": 0.2131
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-12-31",
+      "ebitda": 1756000000.0,
+      "total_revenue": 8366000000.0,
+      "ebitda_margin": 0.2099
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-03-31",
+      "ebitda": 1951000000.0,
+      "total_revenue": 7791000000.0,
+      "ebitda_margin": 0.2504
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-06-30",
+      "ebitda": 1882000000.0,
+      "total_revenue": 8288000000.0,
+      "ebitda_margin": 0.2271
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-09-30",
+      "ebitda": 1891000000.0,
+      "total_revenue": 8417000000.0,
+      "ebitda_margin": 0.2247
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-12-31",
+      "ebitda": 1972000000.0,
+      "total_revenue": 8676000000.0,
+      "ebitda_margin": 0.2273
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2026-03-31",
+      "ebitda": 1742000000.0,
+      "total_revenue": 8353000000.0,
+      "ebitda_margin": 0.2085
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "PYPL",
+      "report_date": "2019-12-31",
+      "ebitda": 3702000000.0,
+      "total_revenue": 17772000000.0,
+      "ebitda_margin": 0.2083
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2020-12-31",
+      "ebitda": 6463000000.0,
+      "total_revenue": 21454000000.0,
+      "ebitda_margin": 0.3012
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2021-12-31",
+      "ebitda": 5596000000.0,
+      "total_revenue": 25371000000.0,
+      "ebitda_margin": 0.2206
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-12-31",
+      "ebitda": 4987000000.0,
+      "total_revenue": 27518000000.0,
+      "ebitda_margin": 0.1812
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-12-31",
+      "ebitda": 6830000000.0,
+      "total_revenue": 29771000000.0,
+      "ebitda_margin": 0.2294
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-12-31",
+      "ebitda": 6743000000.0,
+      "total_revenue": 31797000000.0,
+      "ebitda_margin": 0.2121
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-12-31",
+      "ebitda": 7696000000.0,
+      "total_revenue": 33172000000.0,
+      "ebitda_margin": 0.232
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 1291000000.0,
+      "total_revenue": 6806000000.0,
+      "fcf_margin": 0.1897
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 7383000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-06-30",
+      "free_cash_flow": -350000000.0,
+      "total_revenue": 7287000000.0,
+      "fcf_margin": -0.048
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 1101000000.0,
+      "total_revenue": 7418000000.0,
+      "fcf_margin": 0.1484
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 2469000000.0,
+      "total_revenue": 8026000000.0,
+      "fcf_margin": 0.3076
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 1763000000.0,
+      "total_revenue": 7699000000.0,
+      "fcf_margin": 0.229
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 1368000000.0,
+      "total_revenue": 7885000000.0,
+      "fcf_margin": 0.1735
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 1445000000.0,
+      "total_revenue": 7847000000.0,
+      "fcf_margin": 0.1841
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 2191000000.0,
+      "total_revenue": 8366000000.0,
+      "fcf_margin": 0.2619
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 964000000.0,
+      "total_revenue": 7791000000.0,
+      "fcf_margin": 0.1237
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 692000000.0,
+      "total_revenue": 8288000000.0,
+      "fcf_margin": 0.0835
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 1718000000.0,
+      "total_revenue": 8417000000.0,
+      "fcf_margin": 0.2041
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 2190000000.0,
+      "total_revenue": 8676000000.0,
+      "fcf_margin": 0.2524
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 903000000.0,
+      "total_revenue": 8353000000.0,
+      "fcf_margin": 0.1081
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "PYPL",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 17772000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 5353000000.0,
+      "total_revenue": 21454000000.0,
+      "fcf_margin": 0.2495
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 4889000000.0,
+      "total_revenue": 25371000000.0,
+      "fcf_margin": 0.1927
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 5107000000.0,
+      "total_revenue": 27518000000.0,
+      "fcf_margin": 0.1856
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 4220000000.0,
+      "total_revenue": 29771000000.0,
+      "fcf_margin": 0.1417
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 6767000000.0,
+      "total_revenue": 31797000000.0,
+      "fcf_margin": 0.2128
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 5564000000.0,
+      "total_revenue": 33172000000.0,
+      "fcf_margin": 0.1677
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "TMUS",
+    "name": "Dr. John C. B. Saw Ph.D.",
+    "title": "President of Technology & CTO",
+    "age": 63,
+    "born": 1962,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "TMUS",
+    "name": "Mr. Andr\u00e9  Almeida",
+    "title": "Chief Broadband, Enterprise & Emerging Business Officer",
+    "age": 48,
+    "born": 1977,
+    "pay": 117301,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "TMUS",
+    "name": "Mr. Daniel J. Drobac",
+    "title": "VP & Chief Accounting Officer",
+    "age": 49,
+    "born": 1976,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "TMUS",
+    "name": "Mr. Jeff  Simon",
+    "title": "Executive VP & Chief Information Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "TMUS",
+    "name": "Mr. Jonathan A. Freier",
+    "title": "Chief Operating Officer",
+    "age": 49,
+    "born": 1976,
+    "pay": 4160630,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "TMUS",
+    "name": "Mr. Mark W. Nelson Esq., J.D.",
+    "title": "Chief Legal Officer & General Counsel",
+    "age": 57,
+    "born": 1968,
+    "pay": 4050013,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "TMUS",
+    "name": "Mr. Michael J. Katz",
+    "title": "Chief Business & Product Officer",
+    "age": 46,
+    "born": 1979,
+    "pay": 4180034,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "TMUS",
+    "name": "Mr. Peter  Osvaldik",
+    "title": "Executive VP & CFO",
+    "age": 48,
+    "born": 1977,
+    "pay": 4132150,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "TMUS",
+    "name": "Mr. Srinivasan  Gopalan",
+    "title": "CEO, President & Director",
+    "age": 55,
+    "born": 1970,
+    "pay": 8325344,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "TMUS",
+    "name": "Ms. Quan  Yao C.F.A.",
+    "title": "Senior Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "SPOT",
+    "name": "Mr. Alex  Norstr\u00f6m",
+    "title": "Co-CEO & Director",
+    "age": 48,
+    "born": 1977,
+    "pay": 444501,
+    "exercised": 0,
+    "unexercised": 64489800,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "SPOT",
+    "name": "Mr. Bryan Daniel Goldberg",
+    "title": "Head of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "SPOT",
+    "name": "Mr. Christian  Luiga",
+    "title": "Chief Financial Officer",
+    "age": 57,
+    "born": 1968,
+    "pay": 4945871,
+    "exercised": 0,
+    "unexercised": 598273,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "SPOT",
+    "name": "Mr. Daniel G. Ek",
+    "title": "Founder & Executive Chairman",
+    "age": 42,
+    "born": 1983,
+    "pay": 694484,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "SPOT",
+    "name": "Mr. Gustav  S\u00f6derstr\u00f6m",
+    "title": "Co-CEO & Director",
+    "age": 48,
+    "born": 1977,
+    "pay": 459434,
+    "exercised": 19953252,
+    "unexercised": 184959616,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "SPOT",
+    "name": "Mr. John P. Giraldo",
+    "title": "Chief Accounting Officer",
+    "age": 57,
+    "born": 1968,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "SPOT",
+    "name": "Mr. Sven Martin Lorentzon",
+    "title": "Co-Founder & Director",
+    "age": 56,
+    "born": 1969,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "SPOT",
+    "name": "Mr. Tanmaya  Trivedi",
+    "title": "Director of Sales",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "SPOT",
+    "name": "Ms. Aditi  Shorewal",
+    "title": "Head of PR & Communications",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "SPOT",
+    "name": "Ms. Dustee Tucker Jenkins",
+    "title": "Chief Public Affairs Officer",
+    "age": 46,
+    "born": 1979,
+    "pay": 860000,
+    "exercised": 1686049,
+    "unexercised": 1434478,
+    "report_date": "2026-07-06"
+  }
+]

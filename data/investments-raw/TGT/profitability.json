@@ -1,0 +1,528 @@
+{
+  "roe": [
+    {
+      "symbol": "TGT",
+      "report_date": "2023-07-31",
+      "net_income_common_stockholders": 835000000.0,
+      "beginning_stockholders_equity": 11605000000.0,
+      "ending_stockholders_equity": 11990000000.0,
+      "avg_equity": 11797500000.0,
+      "roe": 0.0708
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 971000000.0,
+      "beginning_stockholders_equity": 11990000000.0,
+      "ending_stockholders_equity": 12514000000.0,
+      "avg_equity": 12252000000.0,
+      "roe": 0.0793
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 1382000000.0,
+      "beginning_stockholders_equity": 12514000000.0,
+      "ending_stockholders_equity": 13432000000.0,
+      "avg_equity": 12973000000.0,
+      "roe": 0.1065
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": 942000000.0,
+      "beginning_stockholders_equity": 13432000000.0,
+      "ending_stockholders_equity": 13840000000.0,
+      "avg_equity": 13636000000.0,
+      "roe": 0.0691
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": 1192000000.0,
+      "beginning_stockholders_equity": 13840000000.0,
+      "ending_stockholders_equity": 14429000000.0,
+      "avg_equity": 14134500000.0,
+      "roe": 0.0843
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": 854000000.0,
+      "beginning_stockholders_equity": 14429000000.0,
+      "ending_stockholders_equity": 14489000000.0,
+      "avg_equity": 14459000000.0,
+      "roe": 0.0591
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 1103000000.0,
+      "beginning_stockholders_equity": 14489000000.0,
+      "ending_stockholders_equity": 14666000000.0,
+      "avg_equity": 14577500000.0,
+      "roe": 0.0757
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": 1036000000.0,
+      "beginning_stockholders_equity": 14666000000.0,
+      "ending_stockholders_equity": 14947000000.0,
+      "avg_equity": 14806500000.0,
+      "roe": 0.07
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": 935000000.0,
+      "beginning_stockholders_equity": 14947000000.0,
+      "ending_stockholders_equity": 15420000000.0,
+      "avg_equity": 15183500000.0,
+      "roe": 0.0616
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 689000000.0,
+      "beginning_stockholders_equity": 15420000000.0,
+      "ending_stockholders_equity": 15501000000.0,
+      "avg_equity": 15460500000.0,
+      "roe": 0.0446
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 1045000000.0,
+      "beginning_stockholders_equity": 15501000000.0,
+      "ending_stockholders_equity": 16165000000.0,
+      "avg_equity": 15833000000.0,
+      "roe": 0.066
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2026-04-30",
+      "net_income_common_stockholders": 781000000.0,
+      "beginning_stockholders_equity": 16165000000.0,
+      "ending_stockholders_equity": 16395000000.0,
+      "avg_equity": 16280000000.0,
+      "roe": 0.048
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "TGT",
+      "report_date": "2023-07-31",
+      "net_income_common_stockholders": 835000000.0,
+      "beginning_total_assets": 52150000000.0,
+      "ending_total_assets": 53206000000.0,
+      "avg_assets": 52678000000.0,
+      "roa": 0.0159
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 971000000.0,
+      "beginning_total_assets": 53206000000.0,
+      "ending_total_assets": 56229000000.0,
+      "avg_assets": 54717500000.0,
+      "roa": 0.0177
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 1382000000.0,
+      "beginning_total_assets": 56229000000.0,
+      "ending_total_assets": 55356000000.0,
+      "avg_assets": 55792500000.0,
+      "roa": 0.0248
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": 942000000.0,
+      "beginning_total_assets": 55356000000.0,
+      "ending_total_assets": 55117000000.0,
+      "avg_assets": 55236500000.0,
+      "roa": 0.0171
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": 1192000000.0,
+      "beginning_total_assets": 55117000000.0,
+      "ending_total_assets": 55995000000.0,
+      "avg_assets": 55556000000.0,
+      "roa": 0.0215
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": 854000000.0,
+      "beginning_total_assets": 55995000000.0,
+      "ending_total_assets": 58531000000.0,
+      "avg_assets": 57263000000.0,
+      "roa": 0.0149
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 1103000000.0,
+      "beginning_total_assets": 58531000000.0,
+      "ending_total_assets": 57769000000.0,
+      "avg_assets": 58150000000.0,
+      "roa": 0.019
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": 1036000000.0,
+      "beginning_total_assets": 57769000000.0,
+      "ending_total_assets": 56185000000.0,
+      "avg_assets": 56977000000.0,
+      "roa": 0.0182
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": 935000000.0,
+      "beginning_total_assets": 56185000000.0,
+      "ending_total_assets": 57851000000.0,
+      "avg_assets": 57018000000.0,
+      "roa": 0.0164
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 689000000.0,
+      "beginning_total_assets": 57851000000.0,
+      "ending_total_assets": 59991000000.0,
+      "avg_assets": 58921000000.0,
+      "roa": 0.0117
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 1045000000.0,
+      "beginning_total_assets": 59991000000.0,
+      "ending_total_assets": 59490000000.0,
+      "avg_assets": 59740500000.0,
+      "roa": 0.0175
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2026-04-30",
+      "net_income_common_stockholders": 781000000.0,
+      "beginning_total_assets": 59490000000.0,
+      "ending_total_assets": 58010000000.0,
+      "avg_assets": 58750000000.0,
+      "roa": 0.0133
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "TGT",
+      "report_date": "2023-07-31",
+      "ebit": 1213000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 946140000.0,
+      "beginning_invested_capital": 27815000000.0,
+      "ending_invested_capital": 28022000000.0,
+      "avg_invested_capital": 27918500000.0,
+      "roic": 0.0339
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2023-10-31",
+      "ebit": 1342000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 1060180000.0,
+      "beginning_invested_capital": 28022000000.0,
+      "ending_invested_capital": 28509000000.0,
+      "avg_invested_capital": 28265500000.0,
+      "roic": 0.0375
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2024-01-31",
+      "ebit": 1893000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 1457610000.0,
+      "beginning_invested_capital": 28509000000.0,
+      "ending_invested_capital": 29470000000.0,
+      "avg_invested_capital": 28989500000.0,
+      "roic": 0.0503
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2024-04-30",
+      "ebit": 1325000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 1020250000.0,
+      "beginning_invested_capital": 29470000000.0,
+      "ending_invested_capital": 29941000000.0,
+      "avg_invested_capital": 29705500000.0,
+      "roic": 0.0343
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2024-07-31",
+      "ebit": 1655000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 1274350000.0,
+      "beginning_invested_capital": 29941000000.0,
+      "ending_invested_capital": 29723000000.0,
+      "avg_invested_capital": 29832000000.0,
+      "roic": 0.0427
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2024-10-31",
+      "ebit": 1196000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 932880000.0,
+      "beginning_invested_capital": 29723000000.0,
+      "ending_invested_capital": 30470000000.0,
+      "avg_invested_capital": 30096500000.0,
+      "roic": 0.031
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2025-01-31",
+      "ebit": 1496000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 1166880000.0,
+      "beginning_invested_capital": 30470000000.0,
+      "ending_invested_capital": 30606000000.0,
+      "avg_invested_capital": 30538000000.0,
+      "roic": 0.0382
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2025-04-30",
+      "ebit": 1498000000.0,
+      "tax_rate_for_calcs": 0.25,
+      "nopat": 1123500000.0,
+      "beginning_invested_capital": 30606000000.0,
+      "ending_invested_capital": 30420000000.0,
+      "avg_invested_capital": 30513000000.0,
+      "roic": 0.0368
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2025-07-31",
+      "ebit": 1334000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 1027180000.0,
+      "beginning_invested_capital": 30420000000.0,
+      "ending_invested_capital": 31876000000.0,
+      "avg_invested_capital": 31148000000.0,
+      "roic": 0.033
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2025-10-31",
+      "ebit": 974000000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 779200000.0,
+      "beginning_invested_capital": 31876000000.0,
+      "ending_invested_capital": 32000000000.0,
+      "avg_invested_capital": 31938000000.0,
+      "roic": 0.0244
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2026-01-31",
+      "ebit": 1407000000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 1125600000.0,
+      "beginning_invested_capital": 32000000000.0,
+      "ending_invested_capital": 32621000000.0,
+      "avg_invested_capital": 32310500000.0,
+      "roic": 0.0348
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2026-04-30",
+      "ebit": 1150000000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 874000000.0,
+      "beginning_invested_capital": 32621000000.0,
+      "ending_invested_capital": 31810000000.0,
+      "avg_invested_capital": 32215500000.0,
+      "roic": 0.0271
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "TGT",
+      "report_date": "2023-07-31T00:00:00.000",
+      "roe": 0.0708,
+      "roa": 0.0159,
+      "equity_multiplier": 4.45
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2023-10-31T00:00:00.000",
+      "roe": 0.0793,
+      "roa": 0.0177,
+      "equity_multiplier": 4.48
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2024-01-31T00:00:00.000",
+      "roe": 0.1065,
+      "roa": 0.0248,
+      "equity_multiplier": 4.29
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2024-04-30T00:00:00.000",
+      "roe": 0.0691,
+      "roa": 0.0171,
+      "equity_multiplier": 4.04
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2024-07-31T00:00:00.000",
+      "roe": 0.0843,
+      "roa": 0.0215,
+      "equity_multiplier": 3.92
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2024-10-31T00:00:00.000",
+      "roe": 0.0591,
+      "roa": 0.0149,
+      "equity_multiplier": 3.97
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2025-01-31T00:00:00.000",
+      "roe": 0.0757,
+      "roa": 0.019,
+      "equity_multiplier": 3.98
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2025-04-30T00:00:00.000",
+      "roe": 0.07,
+      "roa": 0.0182,
+      "equity_multiplier": 3.85
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2025-07-31T00:00:00.000",
+      "roe": 0.0616,
+      "roa": 0.0164,
+      "equity_multiplier": 3.76
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2025-10-31T00:00:00.000",
+      "roe": 0.0446,
+      "roa": 0.0117,
+      "equity_multiplier": 3.81
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2026-01-31T00:00:00.000",
+      "roe": 0.066,
+      "roa": 0.0175,
+      "equity_multiplier": 3.77
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2026-04-30T00:00:00.000",
+      "roe": 0.048,
+      "roa": 0.0133,
+      "equity_multiplier": 3.61
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "TGT",
+      "report_date": "2023-07-31T00:00:00.000",
+      "roa": 0.0159,
+      "net_margin": 0.0337,
+      "asset_turnover": 0.47
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2023-10-31T00:00:00.000",
+      "roa": 0.0177,
+      "net_margin": 0.0382,
+      "asset_turnover": 0.46
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2024-01-31T00:00:00.000",
+      "roa": 0.0248,
+      "net_margin": 0.0433,
+      "asset_turnover": 0.57
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2024-04-30T00:00:00.000",
+      "roa": 0.0171,
+      "net_margin": 0.0384,
+      "asset_turnover": 0.45
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2024-07-31T00:00:00.000",
+      "roa": 0.0215,
+      "net_margin": 0.0468,
+      "asset_turnover": 0.46
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2024-10-31T00:00:00.000",
+      "roa": 0.0149,
+      "net_margin": 0.0333,
+      "asset_turnover": 0.45
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2025-01-31T00:00:00.000",
+      "roa": 0.019,
+      "net_margin": 0.0357,
+      "asset_turnover": 0.53
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2025-04-30T00:00:00.000",
+      "roa": 0.0182,
+      "net_margin": 0.0434,
+      "asset_turnover": 0.42
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2025-07-31T00:00:00.000",
+      "roa": 0.0164,
+      "net_margin": 0.0371,
+      "asset_turnover": 0.44
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2025-10-31T00:00:00.000",
+      "roa": 0.0117,
+      "net_margin": 0.0273,
+      "asset_turnover": 0.43
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2026-01-31T00:00:00.000",
+      "roa": 0.0175,
+      "net_margin": 0.0343,
+      "asset_turnover": 0.51
+    },
+    {
+      "symbol": "TGT",
+      "report_date": "2026-04-30T00:00:00.000",
+      "roa": 0.0133,
+      "net_margin": 0.0307,
+      "asset_turnover": 0.43
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 {
   "symbol": "MMC",
-  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
+  "lastUpdated": "2026-07-06T23:55:57.634961+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
+    "snapshotBuiltAt": "2026-07-06T23:55:57.634961+00:00",
     "sections": {
       "price": "2026-02-20"
     }
@@ -40,11 +40,12 @@
       "longName": "Marsh & McLennan Companies, Inc."
     },
     "fundamentals": {
-      "ttmEps": 8.34,
-      "ttmPe": 21.5,
+      "ttmEps": 8.3373,
+      "ttmPe": 21.51,
       "marketCap": 87850607404,
       "psRatio": 3.26,
-      "pbRatio": 5.82
+      "pbRatio": 5.82,
+      "pegRatio": 52.46
     },
     "profitability": {
       "roe": 5.43,
@@ -81,7 +82,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 0
+        "yoyGrowth": 0.41000000000000003
       }
     ],
     "income_statement": {
@@ -5186,15 +5187,15 @@
       ]
     },
     "wacc": {
-      "wacc": 8.44,
-      "costOfEquity": 10.290000000000001,
+      "wacc": 8.41,
+      "costOfEquity": 10.25,
       "costOfDebt": 1.0999999999999999,
       "taxRate": 21,
-      "beta": 0.706,
+      "beta": 0.702,
       "marketCap": 87850607404
     },
     "beta": {
-      "beta5y": 0.706
+      "beta5y": 0.702
     },
     "price": [
       {
@@ -6864,7 +6865,7 @@
       {
         "date": "2025-12-17",
         "open": 186.72,
-        "high": 188.55,
+        "high": 188.555,
         "low": 185.64,
         "close": 186.36,
         "volume": 2912666
@@ -6881,7 +6882,7 @@
         "date": "2025-12-19",
         "open": 185.21,
         "high": 186.16,
-        "low": 183.91,
+        "low": 183.915,
         "close": 184.7,
         "volume": 7301445
       },
@@ -6889,7 +6890,7 @@
         "date": "2025-12-22",
         "open": 184.77,
         "high": 186.42,
-        "low": 184.43,
+        "low": 184.4251,
         "close": 185.51,
         "volume": 2252048
       },
@@ -6897,7 +6898,7 @@
         "date": "2025-12-23",
         "open": 185.22,
         "high": 186.17,
-        "low": 184.98,
+        "low": 184.9801,
         "close": 185.9,
         "volume": 1785750
       },
@@ -6911,7 +6912,7 @@
       },
       {
         "date": "2025-12-26",
-        "open": 187.4,
+        "open": 187.395,
         "high": 188.1,
         "low": 186.37,
         "close": 187,
@@ -6944,8 +6945,8 @@
       {
         "date": "2026-01-02",
         "open": 183.71,
-        "high": 185,
-        "low": 181.79,
+        "high": 184.9999,
+        "low": 181.795,
         "close": 182.47,
         "volume": 1983598
       },
@@ -6968,7 +6969,7 @@
       {
         "date": "2026-01-07",
         "open": 184.7,
-        "high": 185.54,
+        "high": 185.5399,
         "low": 181.36,
         "close": 182.9,
         "volume": 2272263
@@ -6976,8 +6977,8 @@
       {
         "date": "2026-01-08",
         "open": 182.82,
-        "high": 187.48,
-        "low": 182.46,
+        "high": 187.475,
+        "low": 182.465,
         "close": 186.9,
         "volume": 2309268
       },
@@ -6992,8 +6993,8 @@
       {
         "date": "2026-01-12",
         "open": 186.31,
-        "high": 187.43,
-        "low": 185.07,
+        "high": 187.4299,
+        "low": 185.065,
         "close": 185.63,
         "volume": 2380616
       },
@@ -7025,7 +7026,7 @@
         "date": "2026-01-16",
         "open": 179.92,
         "high": 182.67,
-        "low": 179.88,
+        "low": 179.8801,
         "close": 182.4,
         "volume": 4296306
       },
@@ -7049,7 +7050,7 @@
         "date": "2026-01-22",
         "open": 178.79,
         "high": 180.73,
-        "low": 178.3,
+        "low": 178.305,
         "close": 180.65,
         "volume": 2518268
       },
@@ -7057,7 +7058,7 @@
         "date": "2026-01-23",
         "open": 179.28,
         "high": 183.27,
-        "low": 178,
+        "low": 178.0001,
         "close": 183.16,
         "volume": 2611224
       },
@@ -7065,7 +7066,7 @@
         "date": "2026-01-26",
         "open": 182.9,
         "high": 185,
-        "low": 182.28,
+        "low": 182.2821,
         "close": 183.66,
         "volume": 3281475
       },
@@ -7073,14 +7074,14 @@
         "date": "2026-01-27",
         "open": 182.11,
         "high": 182.5,
-        "low": 178.52,
+        "low": 178.525,
         "close": 179.18,
         "volume": 3389437
       },
       {
         "date": "2026-01-28",
         "open": 178,
-        "high": 179.74,
+        "high": 179.741,
         "low": 176.75,
         "close": 178.18,
         "volume": 4118265
@@ -7105,7 +7106,7 @@
         "date": "2026-02-02",
         "open": 189.98,
         "high": 191.61,
-        "low": 187.69,
+        "low": 187.6901,
         "close": 188.25,
         "volume": 2811375
       },
@@ -7113,7 +7114,7 @@
         "date": "2026-02-03",
         "open": 187.18,
         "high": 190.36,
-        "low": 186.63,
+        "low": 186.635,
         "close": 188.49,
         "volume": 3063932
       },
@@ -7282,55 +7283,59 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.5,
-        "industryAvg": 20.29
+        "value": 21.51,
+        "industryAvg": 9.17
       },
       {
         "metric": "P/S Ratio",
         "value": 3.26,
-        "industryAvg": 2.71
+        "industryAvg": 0.43
       },
       {
         "metric": "P/B Ratio",
         "value": 5.82,
-        "industryAvg": 3.42
+        "industryAvg": 0.62
       },
       {
         "metric": "ROE",
         "value": 5.43,
-        "industryAvg": 5.76
+        "industryAvg": 17.150000000000002
       },
       {
         "metric": "ROA",
         "value": 1.4000000000000001,
-        "industryAvg": 1.5699999999999998
+        "industryAvg": 4.590000000000001
       },
       {
         "metric": "Gross Margin",
         "value": 40.29,
-        "industryAvg": 42.22
+        "industryAvg": 42.76
       },
       {
         "metric": "EBITDA Margin",
         "value": 23.03,
-        "industryAvg": 29.07
+        "industryAvg": 27.08
       },
       {
         "metric": "Net Margin",
         "value": 12.45,
-        "industryAvg": 16.53
+        "industryAvg": 12.9
       }
     ],
     "dcf": {
-      "fairValue": 149.33,
+      "fairValue": 151.26,
       "currentPrice": 179.32,
-      "upside": -16.73,
-      "wacc": 8.44,
+      "upside": -15.65,
+      "wacc": 8.41,
       "growthEstimates": {
-        "Near-term growth (Yrs 1-3)": 0,
+        "Near-term growth (Yrs 1-3)": 0.41,
         "Terminal growth": 3
       },
-      "recommendation": "Sell"
+      "recommendation": "Sell",
+      "baseFcf": 8.3373,
+      "nearTermGrowthPct": 0.41,
+      "terminalGrowthPct": 3,
+      "years": 5
     }
   }
 }

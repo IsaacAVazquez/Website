@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "SBUX",
+    "name": "Mr. Anand  Varadarajan",
+    "title": "EVP & CTO",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "SBUX",
+    "name": "Mr. Andy  Adams",
+    "title": "Senior Vice President of Global Growth & Concepts",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "SBUX",
+    "name": "Mr. Bao Giang Val Bauduin",
+    "title": "Principal Accounting Officer and Senior VP of Corporate Finance & Development",
+    "age": 49,
+    "born": 1976,
+    "pay": 719698,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "SBUX",
+    "name": "Mr. Brady  Brewer",
+    "title": "Chief Executive Officer of Starbucks International",
+    "age": 52,
+    "born": 1973,
+    "pay": 1300465,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "SBUX",
+    "name": "Mr. Brian R. Niccol",
+    "title": "Chairman & CEO",
+    "age": 51,
+    "born": 1974,
+    "pay": 11111188,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "SBUX",
+    "name": "Mr. Mike  Grams",
+    "title": "EVP & COO",
+    "age": 54,
+    "born": 1971,
+    "pay": 1380012,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "SBUX",
+    "name": "Ms. Catherine R. Smith CPA",
+    "title": "Executive VP & CFO",
+    "age": 61,
+    "born": 1964,
+    "pay": 3306718,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "SBUX",
+    "name": "Ms. Janet  Landers",
+    "title": "Senior Vice President of Business Technology",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "SBUX",
+    "name": "Ms. Pilar  Ramos",
+    "title": "Executive VP & Chief Legal Officer",
+    "age": 52,
+    "born": 1973,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "SBUX",
+    "name": "Ms. Sara  Kelly",
+    "title": "Executive VP & Chief Partner Officer",
+    "age": 45,
+    "born": 1980,
+    "pay": 1151889,
+    "exercised": 502968,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  }
+]

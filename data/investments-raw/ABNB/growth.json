@@ -1,0 +1,941 @@
+{
+  "quarterly_revenue": [
+    {
+      "symbol": "ABNB",
+      "report_date": "2022-06-30T00:00:00.000",
+      "revenue": 2104107000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-06-30T00:00:00.000",
+      "revenue": 2484000000.0,
+      "prev_year_revenue": 2104107000.0,
+      "yoy_growth": 0.1805
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-09-30T00:00:00.000",
+      "revenue": 3397000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 2218000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-03-31T00:00:00.000",
+      "revenue": 2142000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-06-30T00:00:00.000",
+      "revenue": 2748000000.0,
+      "prev_year_revenue": 2484000000.0,
+      "yoy_growth": 0.1063
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-09-30T00:00:00.000",
+      "revenue": 3732000000.0,
+      "prev_year_revenue": 3397000000.0,
+      "yoy_growth": 0.0986
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 2480000000.0,
+      "prev_year_revenue": 2218000000.0,
+      "yoy_growth": 0.1181
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-03-31T00:00:00.000",
+      "revenue": 2272000000.0,
+      "prev_year_revenue": 2142000000.0,
+      "yoy_growth": 0.0607
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-06-30T00:00:00.000",
+      "revenue": 3096000000.0,
+      "prev_year_revenue": 2748000000.0,
+      "yoy_growth": 0.1266
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-09-30T00:00:00.000",
+      "revenue": 4095000000.0,
+      "prev_year_revenue": 3732000000.0,
+      "yoy_growth": 0.0973
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 2778000000.0,
+      "prev_year_revenue": 2480000000.0,
+      "yoy_growth": 0.1202
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 2678000000.0,
+      "prev_year_revenue": 2272000000.0,
+      "yoy_growth": 0.1787
+    }
+  ],
+  "annual_revenue": [
+    {
+      "symbol": "ABNB",
+      "report_date": "2019-12-31T00:00:00.000",
+      "revenue": 4805239000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2020-12-31T00:00:00.000",
+      "revenue": 3378199000.0,
+      "prev_year_revenue": 4805239000.0,
+      "yoy_growth": -0.297
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2021-12-31T00:00:00.000",
+      "revenue": 5992000000.0,
+      "prev_year_revenue": 3378199000.0,
+      "yoy_growth": 0.7737
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2022-12-31T00:00:00.000",
+      "revenue": 8399000000.0,
+      "prev_year_revenue": 5992000000.0,
+      "yoy_growth": 0.4017
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 9917000000.0,
+      "prev_year_revenue": 8399000000.0,
+      "yoy_growth": 0.1807
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 11102000000.0,
+      "prev_year_revenue": 9917000000.0,
+      "yoy_growth": 0.1195
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 12241000000.0,
+      "prev_year_revenue": 11102000000.0,
+      "yoy_growth": 0.1026
+    }
+  ],
+  "quarterly_operating_income": [
+    {
+      "symbol": "ABNB",
+      "report_date": "2022-06-30T00:00:00.000",
+      "operating_income": 457566000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-06-30T00:00:00.000",
+      "operating_income": 523000000.0,
+      "prev_year_operating_income": 457566000.0,
+      "yoy_growth": 0.143
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-09-30T00:00:00.000",
+      "operating_income": 1496000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": -496000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-03-31T00:00:00.000",
+      "operating_income": 101000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-06-30T00:00:00.000",
+      "operating_income": 497000000.0,
+      "prev_year_operating_income": 523000000.0,
+      "yoy_growth": -0.0497
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-09-30T00:00:00.000",
+      "operating_income": 1525000000.0,
+      "prev_year_operating_income": 1496000000.0,
+      "yoy_growth": 0.0194
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 430000000.0,
+      "prev_year_operating_income": -496000000.0,
+      "yoy_growth": 1.8669
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-03-31T00:00:00.000",
+      "operating_income": 38000000.0,
+      "prev_year_operating_income": 101000000.0,
+      "yoy_growth": -0.6238
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-06-30T00:00:00.000",
+      "operating_income": 612000000.0,
+      "prev_year_operating_income": 497000000.0,
+      "yoy_growth": 0.2314
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-09-30T00:00:00.000",
+      "operating_income": 1625000000.0,
+      "prev_year_operating_income": 1525000000.0,
+      "yoy_growth": 0.0656
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 269000000.0,
+      "prev_year_operating_income": 430000000.0,
+      "yoy_growth": -0.3744
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2026-03-31T00:00:00.000",
+      "operating_income": 86000000.0,
+      "prev_year_operating_income": 38000000.0,
+      "yoy_growth": 1.2632
+    }
+  ],
+  "annual_operating_income": [
+    {
+      "symbol": "ABNB",
+      "report_date": "2019-12-31T00:00:00.000",
+      "operating_income": -501543000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2020-12-31T00:00:00.000",
+      "operating_income": -3438792000.0,
+      "prev_year_operating_income": -501543000.0,
+      "yoy_growth": -5.8564
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2021-12-31T00:00:00.000",
+      "operating_income": 542000000.0,
+      "prev_year_operating_income": -3438792000.0,
+      "yoy_growth": 1.1576
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2022-12-31T00:00:00.000",
+      "operating_income": 1891000000.0,
+      "prev_year_operating_income": 542000000.0,
+      "yoy_growth": 2.4889
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 1518000000.0,
+      "prev_year_operating_income": 1891000000.0,
+      "yoy_growth": -0.1973
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 2553000000.0,
+      "prev_year_operating_income": 1518000000.0,
+      "yoy_growth": 0.6818
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 2544000000.0,
+      "prev_year_operating_income": 2553000000.0,
+      "yoy_growth": -0.0035
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-06-30T00:00:00.000",
+      "ebitda": 532000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-09-30T00:00:00.000",
+      "ebitda": 1504000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": -296000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-03-31T00:00:00.000",
+      "ebitda": 115000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-06-30T00:00:00.000",
+      "ebitda": 497000000.0,
+      "prev_year_ebitda": 532000000.0,
+      "yoy_growth": -0.0658
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-09-30T00:00:00.000",
+      "ebitda": 1525000000.0,
+      "prev_year_ebitda": 1504000000.0,
+      "yoy_growth": 0.014
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 452000000.0,
+      "prev_year_ebitda": -296000000.0,
+      "yoy_growth": 2.527
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-03-31T00:00:00.000",
+      "ebitda": 38000000.0,
+      "prev_year_ebitda": 115000000.0,
+      "yoy_growth": -0.6696
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-06-30T00:00:00.000",
+      "ebitda": 612000000.0,
+      "prev_year_ebitda": 497000000.0,
+      "yoy_growth": 0.2314
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-09-30T00:00:00.000",
+      "ebitda": 1625000000.0,
+      "prev_year_ebitda": 1525000000.0,
+      "yoy_growth": 0.0656
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 269000000.0,
+      "prev_year_ebitda": 452000000.0,
+      "yoy_growth": -0.4049
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2026-03-31T00:00:00.000",
+      "ebitda": 86000000.0,
+      "prev_year_ebitda": 38000000.0,
+      "yoy_growth": 1.2632
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "ABNB",
+      "report_date": "2019-12-31T00:00:00.000",
+      "ebitda": -287573000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2020-12-31T00:00:00.000",
+      "ebitda": -4384374000.0,
+      "prev_year_ebitda": -287573000.0,
+      "yoy_growth": -14.2461
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2021-12-31T00:00:00.000",
+      "ebitda": 276000000.0,
+      "prev_year_ebitda": -4384374000.0,
+      "yoy_growth": 1.063
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2022-12-31T00:00:00.000",
+      "ebitda": 1972000000.0,
+      "prev_year_ebitda": 276000000.0,
+      "yoy_growth": 6.1449
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 1518000000.0,
+      "prev_year_ebitda": 1972000000.0,
+      "yoy_growth": -0.2302
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 2553000000.0,
+      "prev_year_ebitda": 1518000000.0,
+      "yoy_growth": 0.6818
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 2544000000.0,
+      "prev_year_ebitda": 2553000000.0,
+      "yoy_growth": -0.0035
+    }
+  ],
+  "quarterly_net_income": [
+    {
+      "symbol": "ABNB",
+      "report_date": "2022-06-30T00:00:00.000",
+      "net_income_common_stockholders": 378841000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-06-30T00:00:00.000",
+      "net_income_common_stockholders": 650000000.0,
+      "prev_year_net_income_common_stockholders": 378841000.0,
+      "yoy_growth": 0.7158
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-09-30T00:00:00.000",
+      "net_income_common_stockholders": 4374000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": -349000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-03-31T00:00:00.000",
+      "net_income_common_stockholders": 264000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-06-30T00:00:00.000",
+      "net_income_common_stockholders": 555000000.0,
+      "prev_year_net_income_common_stockholders": 650000000.0,
+      "yoy_growth": -0.1462
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-09-30T00:00:00.000",
+      "net_income_common_stockholders": 1368000000.0,
+      "prev_year_net_income_common_stockholders": 4374000000.0,
+      "yoy_growth": -0.6872
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 461000000.0,
+      "prev_year_net_income_common_stockholders": -349000000.0,
+      "yoy_growth": 2.3209
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-03-31T00:00:00.000",
+      "net_income_common_stockholders": 154000000.0,
+      "prev_year_net_income_common_stockholders": 264000000.0,
+      "yoy_growth": -0.4167
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-06-30T00:00:00.000",
+      "net_income_common_stockholders": 642000000.0,
+      "prev_year_net_income_common_stockholders": 555000000.0,
+      "yoy_growth": 0.1568
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-09-30T00:00:00.000",
+      "net_income_common_stockholders": 1374000000.0,
+      "prev_year_net_income_common_stockholders": 1368000000.0,
+      "yoy_growth": 0.0044
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 341000000.0,
+      "prev_year_net_income_common_stockholders": 461000000.0,
+      "yoy_growth": -0.2603
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 160000000.0,
+      "prev_year_net_income_common_stockholders": 154000000.0,
+      "yoy_growth": 0.039
+    }
+  ],
+  "annual_net_income": [
+    {
+      "symbol": "ABNB",
+      "report_date": "2019-12-31T00:00:00.000",
+      "net_income_common_stockholders": -674339000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2020-12-31T00:00:00.000",
+      "net_income_common_stockholders": -4584716000.0,
+      "prev_year_net_income_common_stockholders": -674339000.0,
+      "yoy_growth": -5.7988
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2021-12-31T00:00:00.000",
+      "net_income_common_stockholders": -352000000.0,
+      "prev_year_net_income_common_stockholders": -4584716000.0,
+      "yoy_growth": 0.9232
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2022-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1893000000.0,
+      "prev_year_net_income_common_stockholders": -352000000.0,
+      "yoy_growth": 6.3778
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 4792000000.0,
+      "prev_year_net_income_common_stockholders": 1893000000.0,
+      "yoy_growth": 1.5314
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2648000000.0,
+      "prev_year_net_income_common_stockholders": 4792000000.0,
+      "yoy_growth": -0.4474
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2511000000.0,
+      "prev_year_net_income_common_stockholders": 2648000000.0,
+      "yoy_growth": -0.0517
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "ABNB",
+      "report_date": "2022-06-30T00:00:00.000",
+      "free_cash_flow": 794699000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-06-30T00:00:00.000",
+      "free_cash_flow": 909000000.0,
+      "prev_year_free_cash_flow": 794699000.0,
+      "yoy_growth": 0.1438
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-09-30T00:00:00.000",
+      "free_cash_flow": 1325000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 93000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-03-31T00:00:00.000",
+      "free_cash_flow": 1923000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-06-30T00:00:00.000",
+      "free_cash_flow": 1051000000.0,
+      "prev_year_free_cash_flow": 909000000.0,
+      "yoy_growth": 0.1562
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-09-30T00:00:00.000",
+      "free_cash_flow": 1078000000.0,
+      "prev_year_free_cash_flow": 1325000000.0,
+      "yoy_growth": -0.1864
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 466000000.0,
+      "prev_year_free_cash_flow": 93000000.0,
+      "yoy_growth": 4.0108
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-03-31T00:00:00.000",
+      "free_cash_flow": 1789000000.0,
+      "prev_year_free_cash_flow": 1923000000.0,
+      "yoy_growth": -0.0697
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-06-30T00:00:00.000",
+      "free_cash_flow": 975000000.0,
+      "prev_year_free_cash_flow": 1051000000.0,
+      "yoy_growth": -0.0723
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-09-30T00:00:00.000",
+      "free_cash_flow": 1356000000.0,
+      "prev_year_free_cash_flow": 1078000000.0,
+      "yoy_growth": 0.2579
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 526000000.0,
+      "prev_year_free_cash_flow": 466000000.0,
+      "yoy_growth": 0.1288
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": 1708000000.0,
+      "prev_year_free_cash_flow": 1789000000.0,
+      "yoy_growth": -0.0453
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "ABNB",
+      "report_date": "2020-12-31T00:00:00.000",
+      "free_cash_flow": -667103000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2021-12-31T00:00:00.000",
+      "free_cash_flow": 2313000000.0,
+      "prev_year_free_cash_flow": -667103000.0,
+      "yoy_growth": 4.4672
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2022-12-31T00:00:00.000",
+      "free_cash_flow": 3430000000.0,
+      "prev_year_free_cash_flow": 2313000000.0,
+      "yoy_growth": 0.4829
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 3884000000.0,
+      "prev_year_free_cash_flow": 3430000000.0,
+      "yoy_growth": 0.1324
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 4518000000.0,
+      "prev_year_free_cash_flow": 3884000000.0,
+      "yoy_growth": 0.1632
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 4646000000.0,
+      "prev_year_free_cash_flow": 4518000000.0,
+      "yoy_growth": 0.0283
+    }
+  ],
+  "quarterly_eps": [
+    {
+      "symbol": "ABNB",
+      "report_date": "2018-03-31T00:00:00.000",
+      "eps": -0.2469,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2018-06-30T00:00:00.000",
+      "eps": 0.0173,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2018-09-30T00:00:00.000",
+      "eps": 0.5706,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2018-12-31T00:00:00.000",
+      "eps": -0.3694,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2019-03-31T00:00:00.000",
+      "eps": -0.4931,
+      "prev_year_eps": -0.2469,
+      "yoy_growth": -0.9972
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2019-06-30T00:00:00.000",
+      "eps": -0.5022,
+      "prev_year_eps": 0.0173,
+      "yoy_growth": -30.0289
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2019-09-30T00:00:00.000",
+      "eps": 0.4503,
+      "prev_year_eps": 0.5706,
+      "yoy_growth": -0.2108
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2019-12-31T00:00:00.000",
+      "eps": -0.5936,
+      "prev_year_eps": -0.3694,
+      "yoy_growth": -0.6069
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2020-03-31T00:00:00.000",
+      "eps": -0.5752,
+      "prev_year_eps": -0.4931,
+      "yoy_growth": -0.1665
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2020-06-30T00:00:00.000",
+      "eps": -0.972,
+      "prev_year_eps": -0.5022,
+      "yoy_growth": -0.9355
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2020-09-30T00:00:00.000",
+      "eps": 0.3704,
+      "prev_year_eps": 0.4503,
+      "yoy_growth": -0.1774
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2020-12-31T00:00:00.000",
+      "eps": -6.4884,
+      "prev_year_eps": -0.5936,
+      "yoy_growth": -9.9306
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2021-03-31T00:00:00.000",
+      "eps": -1.9506,
+      "prev_year_eps": -0.5752,
+      "yoy_growth": -2.3912
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2021-06-30T00:00:00.000",
+      "eps": -0.1115,
+      "prev_year_eps": -0.972,
+      "yoy_growth": 0.8853
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2021-09-30T00:00:00.000",
+      "eps": 1.2229,
+      "prev_year_eps": 0.3704,
+      "yoy_growth": 2.3016
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2021-12-31T00:00:00.000",
+      "eps": 0.08,
+      "prev_year_eps": -6.4884,
+      "yoy_growth": 1.0123
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2022-03-31T00:00:00.000",
+      "eps": -0.0296,
+      "prev_year_eps": -1.9506,
+      "yoy_growth": 0.9848
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2022-06-30T00:00:00.000",
+      "eps": 0.5542,
+      "prev_year_eps": -0.1115,
+      "yoy_growth": 5.9704
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2022-09-30T00:00:00.000",
+      "eps": 1.7856,
+      "prev_year_eps": 1.2229,
+      "yoy_growth": 0.4601
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2022-12-31T00:00:00.000",
+      "eps": 0.4747,
+      "prev_year_eps": 0.08,
+      "yoy_growth": 4.9338
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-03-31T00:00:00.000",
+      "eps": 0.1746,
+      "prev_year_eps": -0.0296,
+      "yoy_growth": 6.8986
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-06-30T00:00:00.000",
+      "eps": 0.9774,
+      "prev_year_eps": 0.5542,
+      "yoy_growth": 0.7636
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-09-30T00:00:00.000",
+      "eps": 6.6288,
+      "prev_year_eps": 1.7856,
+      "yoy_growth": 2.7124
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2023-12-31T00:00:00.000",
+      "eps": -0.547,
+      "prev_year_eps": 0.4747,
+      "yoy_growth": -2.1523
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-03-31T00:00:00.000",
+      "eps": 0.4052,
+      "prev_year_eps": 0.1746,
+      "yoy_growth": 1.3207
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-06-30T00:00:00.000",
+      "eps": 0.8567,
+      "prev_year_eps": 0.9774,
+      "yoy_growth": -0.1235
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-09-30T00:00:00.000",
+      "eps": 2.1324,
+      "prev_year_eps": 6.6288,
+      "yoy_growth": -0.6783
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2024-12-31T00:00:00.000",
+      "eps": 0.74,
+      "prev_year_eps": -0.547,
+      "yoy_growth": 2.3528
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-03-31T00:00:00.000",
+      "eps": 0.2452,
+      "prev_year_eps": 0.4052,
+      "yoy_growth": -0.3949
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-06-30T00:00:00.000",
+      "eps": 1.0272,
+      "prev_year_eps": 0.8567,
+      "yoy_growth": 0.199
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-09-30T00:00:00.000",
+      "eps": 2.2142,
+      "prev_year_eps": 2.1324,
+      "yoy_growth": 0.0384
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2025-12-31T00:00:00.000",
+      "eps": 0.5554,
+      "prev_year_eps": 0.74,
+      "yoy_growth": -0.2495
+    },
+    {
+      "symbol": "ABNB",
+      "report_date": "2026-03-31T00:00:00.000",
+      "eps": 0.2632,
+      "prev_year_eps": 0.2452,
+      "yoy_growth": 0.0734
+    }
+  ]
+}

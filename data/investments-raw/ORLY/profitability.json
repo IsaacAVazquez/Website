@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 649827000.0,
+      "beginning_stockholders_equity": -1627473000.0,
+      "ending_stockholders_equity": -1760469000.0,
+      "avg_equity": -1693971000.0,
+      "roe": -0.3836
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 552504000.0,
+      "beginning_stockholders_equity": -1760469000.0,
+      "ending_stockholders_equity": -1739278000.0,
+      "avg_equity": -1749873500.0,
+      "roe": -0.3157
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 547238000.0,
+      "beginning_stockholders_equity": -1739278000.0,
+      "ending_stockholders_equity": -1391198000.0,
+      "avg_equity": -1565238000.0,
+      "roe": -0.3496
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 622848000.0,
+      "beginning_stockholders_equity": -1391198000.0,
+      "ending_stockholders_equity": -1583392000.0,
+      "avg_equity": -1487295000.0,
+      "roe": -0.4188
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 665464000.0,
+      "beginning_stockholders_equity": -1583392000.0,
+      "ending_stockholders_equity": -1439064000.0,
+      "avg_equity": -1511228000.0,
+      "roe": -0.4403
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 551130000.0,
+      "beginning_stockholders_equity": -1439064000.0,
+      "ending_stockholders_equity": -1370961000.0,
+      "avg_equity": -1405012500.0,
+      "roe": -0.3923
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 538485000.0,
+      "beginning_stockholders_equity": -1370961000.0,
+      "ending_stockholders_equity": -1357456000.0,
+      "avg_equity": -1364208500.0,
+      "roe": -0.3947
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 668595000.0,
+      "beginning_stockholders_equity": -1357456000.0,
+      "ending_stockholders_equity": -1231862000.0,
+      "avg_equity": -1294659000.0,
+      "roe": -0.5164
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 725896000.0,
+      "beginning_stockholders_equity": -1231862000.0,
+      "ending_stockholders_equity": -894676000.0,
+      "avg_equity": -1063269000.0,
+      "roe": -0.6827
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 605233000.0,
+      "beginning_stockholders_equity": -894676000.0,
+      "ending_stockholders_equity": -763352000.0,
+      "avg_equity": -829014000.0,
+      "roe": -0.7301
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 604181000.0,
+      "beginning_stockholders_equity": -763352000.0,
+      "ending_stockholders_equity": -1067055000.0,
+      "avg_equity": -915203500.0,
+      "roe": -0.6602
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 649827000.0,
+      "beginning_total_assets": 13276623000.0,
+      "ending_total_assets": 13551838000.0,
+      "avg_assets": 13414230500.0,
+      "roa": 0.0484
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 552504000.0,
+      "beginning_total_assets": 13551838000.0,
+      "ending_total_assets": 13872995000.0,
+      "avg_assets": 13712416500.0,
+      "roa": 0.0403
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 547238000.0,
+      "beginning_total_assets": 13872995000.0,
+      "ending_total_assets": 14213054000.0,
+      "avg_assets": 14043024500.0,
+      "roa": 0.039
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 622848000.0,
+      "beginning_total_assets": 14213054000.0,
+      "ending_total_assets": 14393182000.0,
+      "avg_assets": 14303118000.0,
+      "roa": 0.0435
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 665464000.0,
+      "beginning_total_assets": 14393182000.0,
+      "ending_total_assets": 14577522000.0,
+      "avg_assets": 14485352000.0,
+      "roa": 0.0459
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 551130000.0,
+      "beginning_total_assets": 14577522000.0,
+      "ending_total_assets": 14893741000.0,
+      "avg_assets": 14735631500.0,
+      "roa": 0.0374
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 538485000.0,
+      "beginning_total_assets": 14893741000.0,
+      "ending_total_assets": 15293875000.0,
+      "avg_assets": 15093808000.0,
+      "roa": 0.0357
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 668595000.0,
+      "beginning_total_assets": 15293875000.0,
+      "ending_total_assets": 15820619000.0,
+      "avg_assets": 15557247000.0,
+      "roa": 0.043
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 725896000.0,
+      "beginning_total_assets": 15820619000.0,
+      "ending_total_assets": 16279627000.0,
+      "avg_assets": 16050123000.0,
+      "roa": 0.0452
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 605233000.0,
+      "beginning_total_assets": 16279627000.0,
+      "ending_total_assets": 16538253000.0,
+      "avg_assets": 16408940000.0,
+      "roa": 0.0369
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 604181000.0,
+      "beginning_total_assets": 16538253000.0,
+      "ending_total_assets": 16937178000.0,
+      "avg_assets": 16737715500.0,
+      "roa": 0.0361
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-09-30",
+      "ebit": 898028000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 691481560.0,
+      "beginning_invested_capital": 3246229000.0,
+      "ending_invested_capital": 3341881000.0,
+      "avg_invested_capital": 3294055000.0,
+      "roic": 0.2099
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-12-31",
+      "ebit": 727679000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 596696780.0,
+      "beginning_invested_capital": 3341881000.0,
+      "ending_invested_capital": 3830847000.0,
+      "avg_invested_capital": 3586364000.0,
+      "roic": 0.1664
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-03-31",
+      "ebit": 757538000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 590879640.0,
+      "beginning_invested_capital": 3830847000.0,
+      "ending_invested_capital": 3897434000.0,
+      "avg_invested_capital": 3864140500.0,
+      "roic": 0.1529
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-06-30",
+      "ebit": 866387000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 667117990.0,
+      "beginning_invested_capital": 3897434000.0,
+      "ending_invested_capital": 3814382000.0,
+      "avg_invested_capital": 3855908000.0,
+      "roic": 0.173
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-09-30",
+      "ebit": 903087000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 704407860.0,
+      "beginning_invested_capital": 3814382000.0,
+      "ending_invested_capital": 3920746000.0,
+      "avg_invested_capital": 3867564000.0,
+      "roic": 0.1821
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-12-31",
+      "ebit": 740600000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 592480000.0,
+      "beginning_invested_capital": 3920746000.0,
+      "ending_invested_capital": 4149971000.0,
+      "avg_invested_capital": 4035358500.0,
+      "roic": 0.1468
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-03-31",
+      "ebit": 741915000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 586112850.0,
+      "beginning_invested_capital": 4149971000.0,
+      "ending_invested_capital": 4294365000.0,
+      "avg_invested_capital": 4222168000.0,
+      "roic": 0.1388
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-06-30",
+      "ebit": 918792000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 716657760.0,
+      "beginning_invested_capital": 4294365000.0,
+      "ending_invested_capital": 4591882000.0,
+      "avg_invested_capital": 4443123500.0,
+      "roic": 0.1613
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-09-30",
+      "ebit": 983216000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 776740640.0,
+      "beginning_invested_capital": 4591882000.0,
+      "ending_invested_capital": 5020854000.0,
+      "avg_invested_capital": 4806368000.0,
+      "roic": 0.1616
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-12-31",
+      "ebit": 831312000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 656736480.0,
+      "beginning_invested_capital": 5020854000.0,
+      "ending_invested_capital": 5253552000.0,
+      "avg_invested_capital": 5137203000.0,
+      "roic": 0.1278
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2026-03-31",
+      "ebit": 842834000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 648982180.0,
+      "beginning_invested_capital": 5253552000.0,
+      "ending_invested_capital": 5128256000.0,
+      "avg_invested_capital": 5190904000.0,
+      "roic": 0.125
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": -0.3836,
+      "roa": 0.0484,
+      "equity_multiplier": -7.93
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": -0.3157,
+      "roa": 0.0403,
+      "equity_multiplier": -7.83
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": -0.3496,
+      "roa": 0.039,
+      "equity_multiplier": -8.96
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": -0.4188,
+      "roa": 0.0435,
+      "equity_multiplier": -9.63
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": -0.4403,
+      "roa": 0.0459,
+      "equity_multiplier": -9.59
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": -0.3923,
+      "roa": 0.0374,
+      "equity_multiplier": -10.49
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": -0.3947,
+      "roa": 0.0357,
+      "equity_multiplier": -11.06
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": -0.5164,
+      "roa": 0.043,
+      "equity_multiplier": -12.01
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": -0.6827,
+      "roa": 0.0452,
+      "equity_multiplier": -15.1
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": -0.7301,
+      "roa": 0.0369,
+      "equity_multiplier": -19.79
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": -0.6602,
+      "roa": 0.0361,
+      "equity_multiplier": -18.29
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0484,
+      "net_margin": 0.1546,
+      "asset_turnover": 0.31
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0403,
+      "net_margin": 0.1442,
+      "asset_turnover": 0.28
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.039,
+      "net_margin": 0.1376,
+      "asset_turnover": 0.28
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0435,
+      "net_margin": 0.1458,
+      "asset_turnover": 0.3
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0459,
+      "net_margin": 0.1525,
+      "asset_turnover": 0.3
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0374,
+      "net_margin": 0.1346,
+      "asset_turnover": 0.28
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0357,
+      "net_margin": 0.1302,
+      "asset_turnover": 0.27
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.043,
+      "net_margin": 0.1478,
+      "asset_turnover": 0.29
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0452,
+      "net_margin": 0.1543,
+      "asset_turnover": 0.29
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0369,
+      "net_margin": 0.1371,
+      "asset_turnover": 0.27
+    },
+    {
+      "symbol": "ORLY",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0361,
+      "net_margin": 0.1325,
+      "asset_turnover": 0.27
+    }
+  ]
+}

@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "SAP",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1278000000.0,
+      "beginning_stockholders_equity": 41946000000.0,
+      "ending_stockholders_equity": 42959000000.0,
+      "avg_equity": 42452500000.0,
+      "roe": 0.0301
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1313000000.0,
+      "beginning_stockholders_equity": 42959000000.0,
+      "ending_stockholders_equity": 43157000000.0,
+      "avg_equity": 43058000000.0,
+      "roe": 0.0305
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": -828000000.0,
+      "beginning_stockholders_equity": 43157000000.0,
+      "ending_stockholders_equity": 43079000000.0,
+      "avg_equity": 43118000000.0,
+      "roe": -0.0192
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 888000000.0,
+      "beginning_stockholders_equity": 43079000000.0,
+      "ending_stockholders_equity": 41652000000.0,
+      "avg_equity": 42365500000.0,
+      "roe": 0.021
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1463000000.0,
+      "beginning_stockholders_equity": 41652000000.0,
+      "ending_stockholders_equity": 41212000000.0,
+      "avg_equity": 41432000000.0,
+      "roe": 0.0353
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1601000000.0,
+      "beginning_stockholders_equity": 41212000000.0,
+      "ending_stockholders_equity": 45438000000.0,
+      "avg_equity": 43325000000.0,
+      "roe": 0.037
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1780000000.0,
+      "beginning_stockholders_equity": 45438000000.0,
+      "ending_stockholders_equity": 45713000000.0,
+      "avg_equity": 45575500000.0,
+      "roe": 0.0391
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1697000000.0,
+      "beginning_stockholders_equity": 45713000000.0,
+      "ending_stockholders_equity": 40998000000.0,
+      "avg_equity": 43355500000.0,
+      "roe": 0.0391
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 2004000000.0,
+      "beginning_stockholders_equity": 40998000000.0,
+      "ending_stockholders_equity": 42807000000.0,
+      "avg_equity": 41902500000.0,
+      "roe": 0.0478
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1680000000.0,
+      "beginning_stockholders_equity": 42807000000.0,
+      "ending_stockholders_equity": 44586000000.0,
+      "avg_equity": 43696500000.0,
+      "roe": 0.0384
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1932000000.0,
+      "beginning_stockholders_equity": 44586000000.0,
+      "ending_stockholders_equity": 44860000000.0,
+      "avg_equity": 44723000000.0,
+      "roe": 0.0432
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "SAP",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1278000000.0,
+      "beginning_total_assets": 69719000000.0,
+      "ending_total_assets": 68011000000.0,
+      "avg_assets": 68865000000.0,
+      "roa": 0.0186
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1313000000.0,
+      "beginning_total_assets": 68011000000.0,
+      "ending_total_assets": 68335000000.0,
+      "avg_assets": 68173000000.0,
+      "roa": 0.0193
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": -828000000.0,
+      "beginning_total_assets": 68335000000.0,
+      "ending_total_assets": 72915000000.0,
+      "avg_assets": 70625000000.0,
+      "roa": -0.0117
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 888000000.0,
+      "beginning_total_assets": 72915000000.0,
+      "ending_total_assets": 70378000000.0,
+      "avg_assets": 71646500000.0,
+      "roa": 0.0124
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1463000000.0,
+      "beginning_total_assets": 70378000000.0,
+      "ending_total_assets": 69648000000.0,
+      "avg_assets": 70013000000.0,
+      "roa": 0.0209
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1601000000.0,
+      "beginning_total_assets": 69648000000.0,
+      "ending_total_assets": 74237000000.0,
+      "avg_assets": 71942500000.0,
+      "roa": 0.0223
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1780000000.0,
+      "beginning_total_assets": 74237000000.0,
+      "ending_total_assets": 75629000000.0,
+      "avg_assets": 74933000000.0,
+      "roa": 0.0238
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1697000000.0,
+      "beginning_total_assets": 75629000000.0,
+      "ending_total_assets": 68399000000.0,
+      "avg_assets": 72014000000.0,
+      "roa": 0.0236
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 2004000000.0,
+      "beginning_total_assets": 68399000000.0,
+      "ending_total_assets": 68396000000.0,
+      "avg_assets": 68397500000.0,
+      "roa": 0.0293
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1680000000.0,
+      "beginning_total_assets": 68396000000.0,
+      "ending_total_assets": 70362000000.0,
+      "avg_assets": 69379000000.0,
+      "roa": 0.0242
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1932000000.0,
+      "beginning_total_assets": 70362000000.0,
+      "ending_total_assets": 73462000000.0,
+      "avg_assets": 71912000000.0,
+      "roa": 0.0269
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "SAP",
+      "report_date": "2023-09-30",
+      "ebit": 2040000000.0,
+      "tax_rate_for_calcs": 0.28,
+      "nopat": 1468800000.0,
+      "beginning_invested_capital": 41946000000.0,
+      "ending_invested_capital": 42959000000.0,
+      "avg_invested_capital": 42452500000.0,
+      "roic": 0.0346
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-12-31",
+      "ebit": 1991000000.0,
+      "tax_rate_for_calcs": 0.34,
+      "nopat": 1314060000.0,
+      "beginning_invested_capital": 42959000000.0,
+      "ending_invested_capital": 50327000000.0,
+      "avg_invested_capital": 46643000000.0,
+      "roic": 0.0282
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-03-31",
+      "ebit": -736000000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": -618240000.0,
+      "beginning_invested_capital": 50327000000.0,
+      "ending_invested_capital": 43079000000.0,
+      "avg_invested_capital": 46703000000.0,
+      "roic": -0.0132
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-06-30",
+      "ebit": 1629000000.0,
+      "tax_rate_for_calcs": 0.34,
+      "nopat": 1075140000.0,
+      "beginning_invested_capital": 43079000000.0,
+      "ending_invested_capital": 41652000000.0,
+      "avg_invested_capital": 42365500000.0,
+      "roic": 0.0254
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-09-30",
+      "ebit": 2392000000.0,
+      "tax_rate_for_calcs": 0.33,
+      "nopat": 1602640000.0,
+      "beginning_invested_capital": 41652000000.0,
+      "ending_invested_capital": 41212000000.0,
+      "avg_invested_capital": 41432000000.0,
+      "roic": 0.0387
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-12-31",
+      "ebit": 2196000000.0,
+      "tax_rate_for_calcs": 0.27,
+      "nopat": 1603080000.0,
+      "beginning_invested_capital": 41212000000.0,
+      "ending_invested_capital": 54374000000.0,
+      "avg_invested_capital": 47793000000.0,
+      "roic": 0.0335
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-03-31",
+      "ebit": 2748000000.0,
+      "tax_rate_for_calcs": 0.27,
+      "nopat": 2006040000.0,
+      "beginning_invested_capital": 54374000000.0,
+      "ending_invested_capital": 45713000000.0,
+      "avg_invested_capital": 50043500000.0,
+      "roic": 0.0401
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-06-30",
+      "ebit": 2770000000.0,
+      "tax_rate_for_calcs": 0.3,
+      "nopat": 1939000000.0,
+      "beginning_invested_capital": 45713000000.0,
+      "ending_invested_capital": 48112000000.0,
+      "avg_invested_capital": 46912500000.0,
+      "roic": 0.0413
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-09-30",
+      "ebit": 3057000000.0,
+      "tax_rate_for_calcs": 0.25,
+      "nopat": 2292750000.0,
+      "beginning_invested_capital": 48112000000.0,
+      "ending_invested_capital": 42807000000.0,
+      "avg_invested_capital": 45459500000.0,
+      "roic": 0.0504
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-12-31",
+      "ebit": 2188000000.0,
+      "tax_rate_for_calcs": 0.32,
+      "nopat": 1487840000.0,
+      "beginning_invested_capital": 42807000000.0,
+      "ending_invested_capital": 50378000000.0,
+      "avg_invested_capital": 46592500000.0,
+      "roic": 0.0319
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2026-03-31",
+      "ebit": 3038000000.0,
+      "tax_rate_for_calcs": 0.29,
+      "nopat": 2156980000.0,
+      "beginning_invested_capital": 50378000000.0,
+      "ending_invested_capital": 44860000000.0,
+      "avg_invested_capital": 47619000000.0,
+      "roic": 0.0453
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "SAP",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0301,
+      "roa": 0.0186,
+      "equity_multiplier": 1.62
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0305,
+      "roa": 0.0193,
+      "equity_multiplier": 1.58
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": -0.0192,
+      "roa": -0.0117,
+      "equity_multiplier": 1.64
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.021,
+      "roa": 0.0124,
+      "equity_multiplier": 1.69
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0353,
+      "roa": 0.0209,
+      "equity_multiplier": 1.69
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.037,
+      "roa": 0.0223,
+      "equity_multiplier": 1.66
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0391,
+      "roa": 0.0238,
+      "equity_multiplier": 1.64
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.0391,
+      "roa": 0.0236,
+      "equity_multiplier": 1.66
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0478,
+      "roa": 0.0293,
+      "equity_multiplier": 1.63
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.0384,
+      "roa": 0.0242,
+      "equity_multiplier": 1.59
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.0432,
+      "roa": 0.0269,
+      "equity_multiplier": 1.61
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "SAP",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0186,
+      "net_margin": 0.165,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0193,
+      "net_margin": 0.1551,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": -0.0117,
+      "net_margin": -0.103,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0124,
+      "net_margin": 0.1071,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0209,
+      "net_margin": 0.1727,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0223,
+      "net_margin": 0.1707,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0238,
+      "net_margin": 0.1975,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0236,
+      "net_margin": 0.188,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0293,
+      "net_margin": 0.2208,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0242,
+      "net_margin": 0.1735,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0269,
+      "net_margin": 0.2022,
+      "asset_turnover": 0.13
+    }
+  ]
+}

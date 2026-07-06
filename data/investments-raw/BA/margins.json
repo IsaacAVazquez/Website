@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "BA",
+      "report_date": "2022-06-30",
+      "gross_profit": 2122000000.0,
+      "total_revenue": 16681000000.0,
+      "gross_margin": 0.1272
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2022-09-30",
+      "gross_profit": -822000000.0,
+      "total_revenue": 15956000000.0,
+      "gross_margin": -0.0515
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2023-06-30",
+      "gross_profit": 1939000000.0,
+      "total_revenue": 19751000000.0,
+      "gross_margin": 0.0982
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2023-09-30",
+      "gross_profit": 1165000000.0,
+      "total_revenue": 18104000000.0,
+      "gross_margin": 0.0644
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2023-12-31",
+      "gross_profit": 2697000000.0,
+      "total_revenue": 22018000000.0,
+      "gross_margin": 0.1225
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2024-03-31",
+      "gross_profit": 1876000000.0,
+      "total_revenue": 16569000000.0,
+      "gross_margin": 0.1132
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2024-06-30",
+      "gross_profit": 1229000000.0,
+      "total_revenue": 16866000000.0,
+      "gross_margin": 0.0729
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2024-09-30",
+      "gross_profit": -3507000000.0,
+      "total_revenue": 17840000000.0,
+      "gross_margin": -0.1966
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2024-12-31",
+      "gross_profit": -1589000000.0,
+      "total_revenue": 15242000000.0,
+      "gross_margin": -0.1043
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2025-03-31",
+      "gross_profit": 2417000000.0,
+      "total_revenue": 19496000000.0,
+      "gross_margin": 0.124
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2025-06-30",
+      "gross_profit": 2435000000.0,
+      "total_revenue": 22749000000.0,
+      "gross_margin": 0.107
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2025-09-30",
+      "gross_profit": -2375000000.0,
+      "total_revenue": 23270000000.0,
+      "gross_margin": -0.1021
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2025-12-31",
+      "gross_profit": 1812000000.0,
+      "total_revenue": 23948000000.0,
+      "gross_margin": 0.0757
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2026-03-31",
+      "gross_profit": 2546000000.0,
+      "total_revenue": 22217000000.0,
+      "gross_margin": 0.1146
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "BA",
+      "report_date": "2019-12-31",
+      "gross_profit": 4466000000.0,
+      "total_revenue": 76559000000.0,
+      "gross_margin": 0.0583
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2020-12-31",
+      "gross_profit": -5685000000.0,
+      "total_revenue": 58158000000.0,
+      "gross_margin": -0.0978
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2021-12-31",
+      "gross_profit": 3049000000.0,
+      "total_revenue": 62286000000.0,
+      "gross_margin": 0.049
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2022-12-31",
+      "gross_profit": 3530000000.0,
+      "total_revenue": 66608000000.0,
+      "gross_margin": 0.053
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2023-12-31",
+      "gross_profit": 7724000000.0,
+      "total_revenue": 77794000000.0,
+      "gross_margin": 0.0993
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2024-12-31",
+      "gross_profit": -1991000000.0,
+      "total_revenue": 66517000000.0,
+      "gross_margin": -0.0299
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2025-12-31",
+      "gross_profit": 4289000000.0,
+      "total_revenue": 89463000000.0,
+      "gross_margin": 0.0479
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "BA",
+      "report_date": "2022-06-30",
+      "operating_income": 756000000.0,
+      "total_revenue": 16681000000.0,
+      "operating_margin": 0.0453
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2022-09-30",
+      "operating_income": -2775000000.0,
+      "total_revenue": 15956000000.0,
+      "operating_margin": -0.1739
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2023-06-30",
+      "operating_income": -144000000.0,
+      "total_revenue": 19751000000.0,
+      "operating_margin": -0.0073
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2023-09-30",
+      "operating_income": -836000000.0,
+      "total_revenue": 18104000000.0,
+      "operating_margin": -0.0462
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2023-12-31",
+      "operating_income": 281000000.0,
+      "total_revenue": 22018000000.0,
+      "operating_margin": 0.0128
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2024-03-31",
+      "operating_income": -153000000.0,
+      "total_revenue": 16569000000.0,
+      "operating_margin": -0.0092
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2024-06-30",
+      "operating_income": -1102000000.0,
+      "total_revenue": 16866000000.0,
+      "operating_margin": -0.0653
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2024-09-30",
+      "operating_income": -5746000000.0,
+      "total_revenue": 17840000000.0,
+      "operating_margin": -0.3221
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2024-12-31",
+      "operating_income": -3823000000.0,
+      "total_revenue": 15242000000.0,
+      "operating_margin": -0.2508
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2025-03-31",
+      "operating_income": 461000000.0,
+      "total_revenue": 19496000000.0,
+      "operating_margin": 0.0236
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2025-06-30",
+      "operating_income": -268000000.0,
+      "total_revenue": 22749000000.0,
+      "operating_margin": -0.0118
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2025-09-30",
+      "operating_income": -4794000000.0,
+      "total_revenue": 23270000000.0,
+      "operating_margin": -0.206
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2025-12-31",
+      "operating_income": -815000000.0,
+      "total_revenue": 23948000000.0,
+      "operating_margin": -0.034
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2026-03-31",
+      "operating_income": 446000000.0,
+      "total_revenue": 22217000000.0,
+      "operating_margin": 0.0201
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "BA",
+      "report_date": "2019-12-31",
+      "operating_income": -2662000000.0,
+      "total_revenue": 76559000000.0,
+      "operating_margin": -0.0348
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2020-12-31",
+      "operating_income": -12978000000.0,
+      "total_revenue": 58158000000.0,
+      "operating_margin": -0.2232
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2021-12-31",
+      "operating_income": -3357000000.0,
+      "total_revenue": 62286000000.0,
+      "operating_margin": -0.0539
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2022-12-31",
+      "operating_income": -3509000000.0,
+      "total_revenue": 66608000000.0,
+      "operating_margin": -0.0527
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2023-12-31",
+      "operating_income": -821000000.0,
+      "total_revenue": 77794000000.0,
+      "operating_margin": -0.0106
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2024-12-31",
+      "operating_income": -10824000000.0,
+      "total_revenue": 66517000000.0,
+      "operating_margin": -0.1627
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2025-12-31",
+      "operating_income": -5416000000.0,
+      "total_revenue": 89463000000.0,
+      "operating_margin": -0.0605
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "BA",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 193000000.0,
+      "total_revenue": 16681000000.0,
+      "net_margin": 0.0116
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": -3275000000.0,
+      "total_revenue": 15956000000.0,
+      "net_margin": -0.2053
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": -149000000.0,
+      "total_revenue": 19751000000.0,
+      "net_margin": -0.0075
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": -1636000000.0,
+      "total_revenue": 18104000000.0,
+      "net_margin": -0.0904
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": -23000000.0,
+      "total_revenue": 22018000000.0,
+      "net_margin": -0.001
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": -343000000.0,
+      "total_revenue": 16569000000.0,
+      "net_margin": -0.0207
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": -1439000000.0,
+      "total_revenue": 16866000000.0,
+      "net_margin": -0.0853
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": -6170000000.0,
+      "total_revenue": 17840000000.0,
+      "net_margin": -0.3459
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": -3923000000.0,
+      "total_revenue": 15242000000.0,
+      "net_margin": -0.2574
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": -123000000.0,
+      "total_revenue": 19496000000.0,
+      "net_margin": -0.0063
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": -697000000.0,
+      "total_revenue": 22749000000.0,
+      "net_margin": -0.0306
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": -5337000000.0,
+      "total_revenue": 23270000000.0,
+      "net_margin": -0.2294
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 7874000000.0,
+      "total_revenue": 23948000000.0,
+      "net_margin": 0.3288
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": -90000000.0,
+      "total_revenue": 22217000000.0,
+      "net_margin": -0.0041
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "BA",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": -636000000.0,
+      "total_revenue": 76559000000.0,
+      "net_margin": -0.0083
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": -11873000000.0,
+      "total_revenue": 58158000000.0,
+      "net_margin": -0.2042
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": -4202000000.0,
+      "total_revenue": 62286000000.0,
+      "net_margin": -0.0675
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": -4935000000.0,
+      "total_revenue": 66608000000.0,
+      "net_margin": -0.0741
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": -2222000000.0,
+      "total_revenue": 77794000000.0,
+      "net_margin": -0.0286
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": -11875000000.0,
+      "total_revenue": 66517000000.0,
+      "net_margin": -0.1785
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1889000000.0,
+      "total_revenue": 89463000000.0,
+      "net_margin": 0.0211
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "BA",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 16681000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2022-09-30",
+      "ebitda": -2018000000.0,
+      "total_revenue": 15956000000.0,
+      "ebitda_margin": -0.1265
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2023-06-30",
+      "ebitda": 677000000.0,
+      "total_revenue": 19751000000.0,
+      "ebitda_margin": 0.0343
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2023-09-30",
+      "ebitda": -44000000.0,
+      "total_revenue": 18104000000.0,
+      "ebitda_margin": -0.0024
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2023-12-31",
+      "ebitda": 1072000000.0,
+      "total_revenue": 22018000000.0,
+      "ebitda_margin": 0.0487
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2024-03-31",
+      "ebitda": 633000000.0,
+      "total_revenue": 16569000000.0,
+      "ebitda_margin": 0.0382
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2024-06-30",
+      "ebitda": -401000000.0,
+      "total_revenue": 16866000000.0,
+      "ebitda_margin": -0.0238
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2024-09-30",
+      "ebitda": -5052000000.0,
+      "total_revenue": 17840000000.0,
+      "ebitda_margin": -0.2832
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2024-12-31",
+      "ebitda": -2829000000.0,
+      "total_revenue": 15242000000.0,
+      "ebitda_margin": -0.1856
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2025-03-31",
+      "ebitda": 1250000000.0,
+      "total_revenue": 19496000000.0,
+      "ebitda_margin": 0.0641
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2025-06-30",
+      "ebitda": 609000000.0,
+      "total_revenue": 22749000000.0,
+      "ebitda_margin": 0.0268
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2025-09-30",
+      "ebitda": -4014000000.0,
+      "total_revenue": 23270000000.0,
+      "ebitda_margin": -0.1725
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2025-12-31",
+      "ebitda": 9514000000.0,
+      "total_revenue": 23948000000.0,
+      "ebitda_margin": 0.3973
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2026-03-31",
+      "ebitda": 1215000000.0,
+      "total_revenue": 22217000000.0,
+      "ebitda_margin": 0.0547
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "BA",
+      "report_date": "2019-12-31",
+      "ebitda": 734000000.0,
+      "total_revenue": 76559000000.0,
+      "ebitda_margin": 0.0096
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2020-12-31",
+      "ebitda": -10074000000.0,
+      "total_revenue": 58158000000.0,
+      "ebitda_margin": -0.1732
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2021-12-31",
+      "ebitda": -175000000.0,
+      "total_revenue": 62286000000.0,
+      "ebitda_margin": -0.0028
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2022-12-31",
+      "ebitda": -482000000.0,
+      "total_revenue": 66608000000.0,
+      "ebitda_margin": -0.0072
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2023-12-31",
+      "ebitda": 2315000000.0,
+      "total_revenue": 77794000000.0,
+      "ebitda_margin": 0.0298
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2024-12-31",
+      "ebitda": -7649000000.0,
+      "total_revenue": 66517000000.0,
+      "ebitda_margin": -0.115
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2025-12-31",
+      "ebitda": 7359000000.0,
+      "total_revenue": 89463000000.0,
+      "ebitda_margin": 0.0823
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "BA",
+      "report_date": "2022-06-30",
+      "free_cash_flow": -182000000.0,
+      "total_revenue": 16681000000.0,
+      "fcf_margin": -0.0109
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": 15956000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 2579000000.0,
+      "total_revenue": 19751000000.0,
+      "fcf_margin": 0.1306
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2023-09-30",
+      "free_cash_flow": -310000000.0,
+      "total_revenue": 18104000000.0,
+      "fcf_margin": -0.0171
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 2950000000.0,
+      "total_revenue": 22018000000.0,
+      "fcf_margin": 0.134
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2024-03-31",
+      "free_cash_flow": -3929000000.0,
+      "total_revenue": 16569000000.0,
+      "fcf_margin": -0.2371
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2024-06-30",
+      "free_cash_flow": -4415000000.0,
+      "total_revenue": 16866000000.0,
+      "fcf_margin": -0.2618
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2024-09-30",
+      "free_cash_flow": -1956000000.0,
+      "total_revenue": 17840000000.0,
+      "fcf_margin": -0.1096
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2024-12-31",
+      "free_cash_flow": -4098000000.0,
+      "total_revenue": 15242000000.0,
+      "fcf_margin": -0.2689
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2025-03-31",
+      "free_cash_flow": -2290000000.0,
+      "total_revenue": 19496000000.0,
+      "fcf_margin": -0.1175
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2025-06-30",
+      "free_cash_flow": -200000000.0,
+      "total_revenue": 22749000000.0,
+      "fcf_margin": -0.0088
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 238000000.0,
+      "total_revenue": 23270000000.0,
+      "fcf_margin": 0.0102
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 366000000.0,
+      "total_revenue": 23948000000.0,
+      "fcf_margin": 0.0153
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2026-03-31",
+      "free_cash_flow": -1454000000.0,
+      "total_revenue": 22217000000.0,
+      "fcf_margin": -0.0654
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "BA",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 76559000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2020-12-31",
+      "free_cash_flow": -19713000000.0,
+      "total_revenue": 58158000000.0,
+      "fcf_margin": -0.339
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2021-12-31",
+      "free_cash_flow": -4396000000.0,
+      "total_revenue": 62286000000.0,
+      "fcf_margin": -0.0706
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 2290000000.0,
+      "total_revenue": 66608000000.0,
+      "fcf_margin": 0.0344
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 4433000000.0,
+      "total_revenue": 77794000000.0,
+      "fcf_margin": 0.057
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2024-12-31",
+      "free_cash_flow": -14398000000.0,
+      "total_revenue": 66517000000.0,
+      "fcf_margin": -0.2165
+    },
+    {
+      "symbol": "BA",
+      "report_date": "2025-12-31",
+      "free_cash_flow": -1886000000.0,
+      "total_revenue": 89463000000.0,
+      "fcf_margin": -0.0211
+    }
+  ]
+}

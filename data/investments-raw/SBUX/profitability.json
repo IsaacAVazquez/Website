@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1219300000.0,
+      "beginning_stockholders_equity": -8348600000.0,
+      "ending_stockholders_equity": -7994800000.0,
+      "avg_equity": -8171700000.0,
+      "roe": -0.1492
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1024400000.0,
+      "beginning_stockholders_equity": -7994800000.0,
+      "ending_stockholders_equity": -8616000000.0,
+      "avg_equity": -8305400000.0,
+      "roe": -0.1233
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 772400000.0,
+      "beginning_stockholders_equity": -8616000000.0,
+      "ending_stockholders_equity": -8449400000.0,
+      "avg_equity": -8532700000.0,
+      "roe": -0.0905
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1054800000.0,
+      "beginning_stockholders_equity": -8449400000.0,
+      "ending_stockholders_equity": -7945400000.0,
+      "avg_equity": -8197400000.0,
+      "roe": -0.1287
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 909200000.0,
+      "beginning_stockholders_equity": -7945400000.0,
+      "ending_stockholders_equity": -7448900000.0,
+      "avg_equity": -7697150000.0,
+      "roe": -0.1181
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 780800000.0,
+      "beginning_stockholders_equity": -7448900000.0,
+      "ending_stockholders_equity": -7471700000.0,
+      "avg_equity": -7460300000.0,
+      "roe": -0.1047
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 384200000.0,
+      "beginning_stockholders_equity": -7471700000.0,
+      "ending_stockholders_equity": -7622500000.0,
+      "avg_equity": -7547100000.0,
+      "roe": -0.0509
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 558300000.0,
+      "beginning_stockholders_equity": -7622500000.0,
+      "ending_stockholders_equity": -7686000000.0,
+      "avg_equity": -7654250000.0,
+      "roe": -0.0729
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 133200000.0,
+      "beginning_stockholders_equity": -7686000000.0,
+      "ending_stockholders_equity": -8096600000.0,
+      "avg_equity": -7891300000.0,
+      "roe": -0.0169
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 293300000.0,
+      "beginning_stockholders_equity": -8096600000.0,
+      "ending_stockholders_equity": -8388700000.0,
+      "avg_equity": -8242650000.0,
+      "roe": -0.0356
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 510900000.0,
+      "beginning_stockholders_equity": -8388700000.0,
+      "ending_stockholders_equity": -8465100000.0,
+      "avg_equity": -8426900000.0,
+      "roe": -0.0606
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1219300000.0,
+      "beginning_total_assets": 28733000000.0,
+      "ending_total_assets": 29445500000.0,
+      "avg_assets": 29089250000.0,
+      "roa": 0.0419
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1024400000.0,
+      "beginning_total_assets": 29445500000.0,
+      "ending_total_assets": 29179700000.0,
+      "avg_assets": 29312600000.0,
+      "roa": 0.0349
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 772400000.0,
+      "beginning_total_assets": 29179700000.0,
+      "ending_total_assets": 29363200000.0,
+      "avg_assets": 29271450000.0,
+      "roa": 0.0264
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1054800000.0,
+      "beginning_total_assets": 29363200000.0,
+      "ending_total_assets": 30111800000.0,
+      "avg_assets": 29737500000.0,
+      "roa": 0.0355
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 909200000.0,
+      "beginning_total_assets": 30111800000.0,
+      "ending_total_assets": 31339300000.0,
+      "avg_assets": 30725550000.0,
+      "roa": 0.0296
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 780800000.0,
+      "beginning_total_assets": 31339300000.0,
+      "ending_total_assets": 31893100000.0,
+      "avg_assets": 31616200000.0,
+      "roa": 0.0247
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 384200000.0,
+      "beginning_total_assets": 31893100000.0,
+      "ending_total_assets": 31633100000.0,
+      "avg_assets": 31763100000.0,
+      "roa": 0.0121
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 558300000.0,
+      "beginning_total_assets": 31633100000.0,
+      "ending_total_assets": 33649200000.0,
+      "avg_assets": 32641150000.0,
+      "roa": 0.0171
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 133200000.0,
+      "beginning_total_assets": 33649200000.0,
+      "ending_total_assets": 32019700000.0,
+      "avg_assets": 32834450000.0,
+      "roa": 0.0041
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 293300000.0,
+      "beginning_total_assets": 32019700000.0,
+      "ending_total_assets": 32228300000.0,
+      "avg_assets": 32124000000.0,
+      "roa": 0.0091
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 510900000.0,
+      "beginning_total_assets": 32228300000.0,
+      "ending_total_assets": 30557500000.0,
+      "avg_assets": 31392900000.0,
+      "roa": 0.0163
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-09-30",
+      "ebit": 1736300000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 1336951000.0,
+      "beginning_invested_capital": 7066200000.0,
+      "ending_invested_capital": 7404900000.0,
+      "avg_invested_capital": 7235550000.0,
+      "roic": 0.1848
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-12-31",
+      "ebit": 1519200000.0,
+      "tax_rate_for_calcs": 0.26,
+      "nopat": 1124208000.0,
+      "beginning_invested_capital": 7404900000.0,
+      "ending_invested_capital": 6399100000.0,
+      "avg_invested_capital": 6902000000.0,
+      "roic": 0.1629
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-03-31",
+      "ebit": 1133000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 883740000.0,
+      "beginning_invested_capital": 6399100000.0,
+      "ending_invested_capital": 7140200000.0,
+      "avg_invested_capital": 6769650000.0,
+      "roic": 0.1305
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-06-30",
+      "ebit": 1545600000.0,
+      "tax_rate_for_calcs": 0.25,
+      "nopat": 1159200000.0,
+      "beginning_invested_capital": 7140200000.0,
+      "ending_invested_capital": 7629100000.0,
+      "avg_invested_capital": 7384650000.0,
+      "roic": 0.157
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-09-30",
+      "ebit": 1333700000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 1013612000.0,
+      "beginning_invested_capital": 7629100000.0,
+      "ending_invested_capital": 8119500000.0,
+      "avg_invested_capital": 7874300000.0,
+      "roic": 0.1287
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-12-31",
+      "ebit": 1149500000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 873620000.0,
+      "beginning_invested_capital": 8119500000.0,
+      "ending_invested_capital": 8089700000.0,
+      "avg_invested_capital": 8104600000.0,
+      "roic": 0.1078
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-03-31",
+      "ebit": 629400000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 478344000.0,
+      "beginning_invested_capital": 8089700000.0,
+      "ending_invested_capital": 7949300000.0,
+      "avg_invested_capital": 8019500000.0,
+      "roic": 0.0596
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-06-30",
+      "ebit": 961200000.0,
+      "tax_rate_for_calcs": 0.32,
+      "nopat": 653616000.0,
+      "beginning_invested_capital": 7949300000.0,
+      "ending_invested_capital": 9633100000.0,
+      "avg_invested_capital": 8791200000.0,
+      "roic": 0.0743
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-09-30",
+      "ebit": 309700000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 250857000.0,
+      "beginning_invested_capital": 9633100000.0,
+      "ending_invested_capital": 7978200000.0,
+      "avg_invested_capital": 8805650000.0,
+      "roic": 0.0285
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-12-31",
+      "ebit": 903800000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 714002000.0,
+      "beginning_invested_capital": 7978200000.0,
+      "ending_invested_capital": 7691700000.0,
+      "avg_invested_capital": 7834950000.0,
+      "roic": 0.0911
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2026-03-31",
+      "ebit": 865100000.0,
+      "tax_rate_for_calcs": 0.3,
+      "nopat": 605570000.0,
+      "beginning_invested_capital": 7691700000.0,
+      "ending_invested_capital": 6616800000.0,
+      "avg_invested_capital": 7154250000.0,
+      "roic": 0.0846
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": -0.1492,
+      "roa": 0.0419,
+      "equity_multiplier": -3.56
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": -0.1233,
+      "roa": 0.0349,
+      "equity_multiplier": -3.53
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": -0.0905,
+      "roa": 0.0264,
+      "equity_multiplier": -3.43
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": -0.1287,
+      "roa": 0.0355,
+      "equity_multiplier": -3.63
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": -0.1181,
+      "roa": 0.0296,
+      "equity_multiplier": -3.99
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": -0.1047,
+      "roa": 0.0247,
+      "equity_multiplier": -4.24
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": -0.0509,
+      "roa": 0.0121,
+      "equity_multiplier": -4.21
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": -0.0729,
+      "roa": 0.0171,
+      "equity_multiplier": -4.26
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": -0.0169,
+      "roa": 0.0041,
+      "equity_multiplier": -4.12
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": -0.0356,
+      "roa": 0.0091,
+      "equity_multiplier": -3.91
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": -0.0606,
+      "roa": 0.0163,
+      "equity_multiplier": -3.72
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0419,
+      "net_margin": 0.1301,
+      "asset_turnover": 0.32
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0349,
+      "net_margin": 0.1087,
+      "asset_turnover": 0.32
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0264,
+      "net_margin": 0.0902,
+      "asset_turnover": 0.29
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0355,
+      "net_margin": 0.1157,
+      "asset_turnover": 0.31
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0296,
+      "net_margin": 0.1002,
+      "asset_turnover": 0.3
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0247,
+      "net_margin": 0.0831,
+      "asset_turnover": 0.3
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0121,
+      "net_margin": 0.0439,
+      "asset_turnover": 0.28
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0171,
+      "net_margin": 0.059,
+      "asset_turnover": 0.29
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0041,
+      "net_margin": 0.0139,
+      "asset_turnover": 0.29
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0091,
+      "net_margin": 0.0296,
+      "asset_turnover": 0.31
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0163,
+      "net_margin": 0.0536,
+      "asset_turnover": 0.3
+    }
+  ]
+}

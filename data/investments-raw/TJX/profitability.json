@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "TJX",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 1191000000.0,
+      "beginning_stockholders_equity": 6608000000.0,
+      "ending_stockholders_equity": 6833000000.0,
+      "avg_equity": 6720500000.0,
+      "roe": 0.1772
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 1403000000.0,
+      "beginning_stockholders_equity": 6833000000.0,
+      "ending_stockholders_equity": 7302000000.0,
+      "avg_equity": 7067500000.0,
+      "roe": 0.1985
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": 1070000000.0,
+      "beginning_stockholders_equity": 7302000000.0,
+      "ending_stockholders_equity": 7502000000.0,
+      "avg_equity": 7402000000.0,
+      "roe": 0.1446
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": 1099000000.0,
+      "beginning_stockholders_equity": 7502000000.0,
+      "ending_stockholders_equity": 7782000000.0,
+      "avg_equity": 7642000000.0,
+      "roe": 0.1438
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": 1297000000.0,
+      "beginning_stockholders_equity": 7782000000.0,
+      "ending_stockholders_equity": 8173000000.0,
+      "avg_equity": 7977500000.0,
+      "roe": 0.1626
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 1398000000.0,
+      "beginning_stockholders_equity": 8173000000.0,
+      "ending_stockholders_equity": 8393000000.0,
+      "avg_equity": 8283000000.0,
+      "roe": 0.1688
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": 1036000000.0,
+      "beginning_stockholders_equity": 8393000000.0,
+      "ending_stockholders_equity": 8503000000.0,
+      "avg_equity": 8448000000.0,
+      "roe": 0.1226
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": 1243000000.0,
+      "beginning_stockholders_equity": 8503000000.0,
+      "ending_stockholders_equity": 8866000000.0,
+      "avg_equity": 8684500000.0,
+      "roe": 0.1431
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 1442000000.0,
+      "beginning_stockholders_equity": 8866000000.0,
+      "ending_stockholders_equity": 9359000000.0,
+      "avg_equity": 9112500000.0,
+      "roe": 0.1582
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 1773000000.0,
+      "beginning_stockholders_equity": 9359000000.0,
+      "ending_stockholders_equity": 10190000000.0,
+      "avg_equity": 9774500000.0,
+      "roe": 0.1814
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2026-04-30",
+      "net_income_common_stockholders": 1332000000.0,
+      "beginning_stockholders_equity": 10190000000.0,
+      "ending_stockholders_equity": 10403000000.0,
+      "avg_equity": 10296500000.0,
+      "roe": 0.1294
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "TJX",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 1191000000.0,
+      "beginning_total_assets": 28922000000.0,
+      "ending_total_assets": 30351000000.0,
+      "avg_assets": 29636500000.0,
+      "roa": 0.0402
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 1403000000.0,
+      "beginning_total_assets": 30351000000.0,
+      "ending_total_assets": 29747000000.0,
+      "avg_assets": 30049000000.0,
+      "roa": 0.0467
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": 1070000000.0,
+      "beginning_total_assets": 29747000000.0,
+      "ending_total_assets": 29679000000.0,
+      "avg_assets": 29713000000.0,
+      "roa": 0.036
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": 1099000000.0,
+      "beginning_total_assets": 29679000000.0,
+      "ending_total_assets": 30555000000.0,
+      "avg_assets": 30117000000.0,
+      "roa": 0.0365
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": 1297000000.0,
+      "beginning_total_assets": 30555000000.0,
+      "ending_total_assets": 32436000000.0,
+      "avg_assets": 31495500000.0,
+      "roa": 0.0412
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 1398000000.0,
+      "beginning_total_assets": 32436000000.0,
+      "ending_total_assets": 31749000000.0,
+      "avg_assets": 32092500000.0,
+      "roa": 0.0436
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": 1036000000.0,
+      "beginning_total_assets": 31749000000.0,
+      "ending_total_assets": 31858000000.0,
+      "avg_assets": 31803500000.0,
+      "roa": 0.0326
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": 1243000000.0,
+      "beginning_total_assets": 31858000000.0,
+      "ending_total_assets": 32885000000.0,
+      "avg_assets": 32371500000.0,
+      "roa": 0.0384
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 1442000000.0,
+      "beginning_total_assets": 32885000000.0,
+      "ending_total_assets": 35188000000.0,
+      "avg_assets": 34036500000.0,
+      "roa": 0.0424
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 1773000000.0,
+      "beginning_total_assets": 35188000000.0,
+      "ending_total_assets": 35767000000.0,
+      "avg_assets": 35477500000.0,
+      "roa": 0.05
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2026-04-30",
+      "net_income_common_stockholders": 1332000000.0,
+      "beginning_total_assets": 35767000000.0,
+      "ending_total_assets": 36158000000.0,
+      "avg_assets": 35962500000.0,
+      "roa": 0.037
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "TJX",
+      "report_date": "2023-10-31",
+      "ebit": 1608000000.0,
+      "tax_rate_for_calcs": 0.25,
+      "nopat": 1206000000.0,
+      "beginning_invested_capital": 9469000000.0,
+      "ending_invested_capital": 9694000000.0,
+      "avg_invested_capital": 9581500000.0,
+      "roic": 0.1259
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-01-31",
+      "ebit": 1862000000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 1415120000.0,
+      "beginning_invested_capital": 9694000000.0,
+      "ending_invested_capital": 10164000000.0,
+      "avg_invested_capital": 9929000000.0,
+      "roic": 0.1425
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-04-30",
+      "ebit": 1409000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 1084930000.0,
+      "beginning_invested_capital": 10164000000.0,
+      "ending_invested_capital": 10365000000.0,
+      "avg_invested_capital": 10264500000.0,
+      "roic": 0.1057
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-07-31",
+      "ebit": 1488000000.0,
+      "tax_rate_for_calcs": 0.25,
+      "nopat": 1116000000.0,
+      "beginning_invested_capital": 10365000000.0,
+      "ending_invested_capital": 10646000000.0,
+      "avg_invested_capital": 10505500000.0,
+      "roic": 0.1062
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-10-31",
+      "ebit": 1756000000.0,
+      "tax_rate_for_calcs": 0.25,
+      "nopat": 1317000000.0,
+      "beginning_invested_capital": 10646000000.0,
+      "ending_invested_capital": 11038000000.0,
+      "avg_invested_capital": 10842000000.0,
+      "roic": 0.1215
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-01-31",
+      "ebit": 1906000000.0,
+      "tax_rate_for_calcs": 0.26,
+      "nopat": 1410440000.0,
+      "beginning_invested_capital": 11038000000.0,
+      "ending_invested_capital": 11259000000.0,
+      "avg_invested_capital": 11148500000.0,
+      "roic": 0.1265
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-04-30",
+      "ebit": 1364000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 1050280000.0,
+      "beginning_invested_capital": 11259000000.0,
+      "ending_invested_capital": 11370000000.0,
+      "avg_invested_capital": 11314500000.0,
+      "roic": 0.0928
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-07-31",
+      "ebit": 1665000000.0,
+      "tax_rate_for_calcs": 0.25,
+      "nopat": 1248750000.0,
+      "beginning_invested_capital": 11370000000.0,
+      "ending_invested_capital": 11733000000.0,
+      "avg_invested_capital": 11551500000.0,
+      "roic": 0.1081
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-10-31",
+      "ebit": 1935000000.0,
+      "tax_rate_for_calcs": 0.25,
+      "nopat": 1451250000.0,
+      "beginning_invested_capital": 11733000000.0,
+      "ending_invested_capital": 12228000000.0,
+      "avg_invested_capital": 11980500000.0,
+      "roic": 0.1211
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2026-01-31",
+      "ebit": 2409000000.0,
+      "tax_rate_for_calcs": 0.26,
+      "nopat": 1782660000.0,
+      "beginning_invested_capital": 12228000000.0,
+      "ending_invested_capital": 13059000000.0,
+      "avg_invested_capital": 12643500000.0,
+      "roic": 0.141
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2026-04-30",
+      "ebit": 1739000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 1339030000.0,
+      "beginning_invested_capital": 13059000000.0,
+      "ending_invested_capital": 13273000000.0,
+      "avg_invested_capital": 13166000000.0,
+      "roic": 0.1017
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "TJX",
+      "report_date": "2023-10-31T00:00:00.000",
+      "roe": 0.1772,
+      "roa": 0.0402,
+      "equity_multiplier": 4.41
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-01-31T00:00:00.000",
+      "roe": 0.1985,
+      "roa": 0.0467,
+      "equity_multiplier": 4.25
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-04-30T00:00:00.000",
+      "roe": 0.1446,
+      "roa": 0.036,
+      "equity_multiplier": 4.02
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-07-31T00:00:00.000",
+      "roe": 0.1438,
+      "roa": 0.0365,
+      "equity_multiplier": 3.94
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-10-31T00:00:00.000",
+      "roe": 0.1626,
+      "roa": 0.0412,
+      "equity_multiplier": 3.95
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-01-31T00:00:00.000",
+      "roe": 0.1688,
+      "roa": 0.0436,
+      "equity_multiplier": 3.87
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-04-30T00:00:00.000",
+      "roe": 0.1226,
+      "roa": 0.0326,
+      "equity_multiplier": 3.76
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-07-31T00:00:00.000",
+      "roe": 0.1431,
+      "roa": 0.0384,
+      "equity_multiplier": 3.73
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-10-31T00:00:00.000",
+      "roe": 0.1582,
+      "roa": 0.0424,
+      "equity_multiplier": 3.73
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2026-01-31T00:00:00.000",
+      "roe": 0.1814,
+      "roa": 0.05,
+      "equity_multiplier": 3.63
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2026-04-30T00:00:00.000",
+      "roe": 0.1294,
+      "roa": 0.037,
+      "equity_multiplier": 3.5
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "TJX",
+      "report_date": "2023-10-31T00:00:00.000",
+      "roa": 0.0402,
+      "net_margin": 0.0898,
+      "asset_turnover": 0.45
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-01-31T00:00:00.000",
+      "roa": 0.0467,
+      "net_margin": 0.0855,
+      "asset_turnover": 0.55
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-04-30T00:00:00.000",
+      "roa": 0.036,
+      "net_margin": 0.0857,
+      "asset_turnover": 0.42
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-07-31T00:00:00.000",
+      "roa": 0.0365,
+      "net_margin": 0.0816,
+      "asset_turnover": 0.45
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2024-10-31T00:00:00.000",
+      "roa": 0.0412,
+      "net_margin": 0.0922,
+      "asset_turnover": 0.45
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-01-31T00:00:00.000",
+      "roa": 0.0436,
+      "net_margin": 0.0855,
+      "asset_turnover": 0.51
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-04-30T00:00:00.000",
+      "roa": 0.0326,
+      "net_margin": 0.079,
+      "asset_turnover": 0.41
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-07-31T00:00:00.000",
+      "roa": 0.0384,
+      "net_margin": 0.0863,
+      "asset_turnover": 0.44
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2025-10-31T00:00:00.000",
+      "roa": 0.0424,
+      "net_margin": 0.0954,
+      "asset_turnover": 0.44
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2026-01-31T00:00:00.000",
+      "roa": 0.05,
+      "net_margin": 0.0999,
+      "asset_turnover": 0.5
+    },
+    {
+      "symbol": "TJX",
+      "report_date": "2026-04-30T00:00:00.000",
+      "roa": 0.037,
+      "net_margin": 0.093,
+      "asset_turnover": 0.4
+    }
+  ]
+}

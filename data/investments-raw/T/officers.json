@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "T",
+    "name": "Mr. Brett Joseph Feldman",
+    "title": "Senior Vice President of Finance & Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "T",
+    "name": "Mr. David R. McAtee II",
+    "title": "Senior EVP & General Counsel",
+    "age": 56,
+    "born": 1969,
+    "pay": 4934039,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "T",
+    "name": "Mr. Jeffery Scott McElfresh",
+    "title": "Chief Operating Officer",
+    "age": 55,
+    "born": 1970,
+    "pay": 4612074,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "T",
+    "name": "Mr. John T. Stankey",
+    "title": "CEO, President & Chairman",
+    "age": 62,
+    "born": 1963,
+    "pay": 8909937,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "T",
+    "name": "Mr. Larry  Solomon",
+    "title": "Chief Communications Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "T",
+    "name": "Mr. Pascal  Desroches CPA",
+    "title": "Senior EVP & CFO",
+    "age": 61,
+    "born": 1964,
+    "pay": 5144684,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "T",
+    "name": "Mr. Rick  Moore",
+    "title": "Senior Vice President of Corporate Development",
+    "age": 73,
+    "born": 1952,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "T",
+    "name": "Ms. Kellyn Smith Kenny M.B.A.",
+    "title": "Chief Marketing & Growth Officer",
+    "age": 47,
+    "born": 1978,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "T",
+    "name": "Ms. Lori M. Lee",
+    "title": "Global Marketing Officer and Senior EVP of International",
+    "age": 59,
+    "born": 1966,
+    "pay": 2840429,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "T",
+    "name": "Ms. Sabrina  Sanders",
+    "title": "Senior VP, Chief Accounting Officer & Controller",
+    "age": 45,
+    "born": 1980,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  }
+]

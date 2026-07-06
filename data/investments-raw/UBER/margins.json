@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "UBER",
+      "report_date": "2022-06-30",
+      "gross_profit": 2920000000.0,
+      "total_revenue": 8073000000.0,
+      "gross_margin": 0.3617
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-06-30",
+      "gross_profit": 3715000000.0,
+      "total_revenue": 9230000000.0,
+      "gross_margin": 0.4025
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-09-30",
+      "gross_profit": 3666000000.0,
+      "total_revenue": 9292000000.0,
+      "gross_margin": 0.3945
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-12-31",
+      "gross_profit": 3879000000.0,
+      "total_revenue": 9936000000.0,
+      "gross_margin": 0.3904
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-03-31",
+      "gross_profit": 3963000000.0,
+      "total_revenue": 10131000000.0,
+      "gross_margin": 0.3912
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-06-30",
+      "gross_profit": 4212000000.0,
+      "total_revenue": 10700000000.0,
+      "gross_margin": 0.3936
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-09-30",
+      "gross_profit": 4427000000.0,
+      "total_revenue": 11188000000.0,
+      "gross_margin": 0.3957
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-12-31",
+      "gross_profit": 4725000000.0,
+      "total_revenue": 11959000000.0,
+      "gross_margin": 0.3951
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-03-31",
+      "gross_profit": 4596000000.0,
+      "total_revenue": 11533000000.0,
+      "gross_margin": 0.3985
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-06-30",
+      "gross_profit": 5040000000.0,
+      "total_revenue": 12651000000.0,
+      "gross_margin": 0.3984
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-09-30",
+      "gross_profit": 5358000000.0,
+      "total_revenue": 13467000000.0,
+      "gross_margin": 0.3979
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-12-31",
+      "gross_profit": 5685000000.0,
+      "total_revenue": 14366000000.0,
+      "gross_margin": 0.3957
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2026-03-31",
+      "gross_profit": 5945000000.0,
+      "total_revenue": 13203000000.0,
+      "gross_margin": 0.4503
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "UBER",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2020-12-31",
+      "gross_profit": 5985000000.0,
+      "total_revenue": 11139000000.0,
+      "gross_margin": 0.5373
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2021-12-31",
+      "gross_profit": 8104000000.0,
+      "total_revenue": 17455000000.0,
+      "gross_margin": 0.4643
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2022-12-31",
+      "gross_profit": 12218000000.0,
+      "total_revenue": 31877000000.0,
+      "gross_margin": 0.3833
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-12-31",
+      "gross_profit": 14824000000.0,
+      "total_revenue": 37281000000.0,
+      "gross_margin": 0.3976
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-12-31",
+      "gross_profit": 17327000000.0,
+      "total_revenue": 43978000000.0,
+      "gross_margin": 0.394
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-12-31",
+      "gross_profit": 20679000000.0,
+      "total_revenue": 52017000000.0,
+      "gross_margin": 0.3975
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "UBER",
+      "report_date": "2022-06-30",
+      "operating_income": -713000000.0,
+      "total_revenue": 8073000000.0,
+      "operating_margin": -0.0883
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-06-30",
+      "operating_income": 326000000.0,
+      "total_revenue": 9230000000.0,
+      "operating_margin": 0.0353
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-09-30",
+      "operating_income": 394000000.0,
+      "total_revenue": 9292000000.0,
+      "operating_margin": 0.0424
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-12-31",
+      "operating_income": 652000000.0,
+      "total_revenue": 9936000000.0,
+      "operating_margin": 0.0656
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-03-31",
+      "operating_income": 172000000.0,
+      "total_revenue": 10131000000.0,
+      "operating_margin": 0.017
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-06-30",
+      "operating_income": 796000000.0,
+      "total_revenue": 10700000000.0,
+      "operating_margin": 0.0744
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-09-30",
+      "operating_income": 1061000000.0,
+      "total_revenue": 11188000000.0,
+      "operating_margin": 0.0948
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-12-31",
+      "operating_income": 770000000.0,
+      "total_revenue": 11959000000.0,
+      "operating_margin": 0.0644
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-03-31",
+      "operating_income": 1228000000.0,
+      "total_revenue": 11533000000.0,
+      "operating_margin": 0.1065
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-06-30",
+      "operating_income": 1450000000.0,
+      "total_revenue": 12651000000.0,
+      "operating_margin": 0.1146
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-09-30",
+      "operating_income": 1113000000.0,
+      "total_revenue": 13467000000.0,
+      "operating_margin": 0.0826
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-12-31",
+      "operating_income": 1774000000.0,
+      "total_revenue": 14366000000.0,
+      "operating_margin": 0.1235
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2026-03-31",
+      "operating_income": 1923000000.0,
+      "total_revenue": 13203000000.0,
+      "operating_margin": 0.1456
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "UBER",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2020-12-31",
+      "operating_income": -4863000000.0,
+      "total_revenue": 11139000000.0,
+      "operating_margin": -0.4366
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2021-12-31",
+      "operating_income": -3834000000.0,
+      "total_revenue": 17455000000.0,
+      "operating_margin": -0.2197
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2022-12-31",
+      "operating_income": -1832000000.0,
+      "total_revenue": 31877000000.0,
+      "operating_margin": -0.0575
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-12-31",
+      "operating_income": 1110000000.0,
+      "total_revenue": 37281000000.0,
+      "operating_margin": 0.0298
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-12-31",
+      "operating_income": 2799000000.0,
+      "total_revenue": 43978000000.0,
+      "operating_margin": 0.0636
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-12-31",
+      "operating_income": 5565000000.0,
+      "total_revenue": 52017000000.0,
+      "operating_margin": 0.107
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "UBER",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": -2601000000.0,
+      "total_revenue": 8073000000.0,
+      "net_margin": -0.3222
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 394000000.0,
+      "total_revenue": 9230000000.0,
+      "net_margin": 0.0427
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 221000000.0,
+      "total_revenue": 9292000000.0,
+      "net_margin": 0.0238
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1429000000.0,
+      "total_revenue": 9936000000.0,
+      "net_margin": 0.1438
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": -654000000.0,
+      "total_revenue": 10131000000.0,
+      "net_margin": -0.0646
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1015000000.0,
+      "total_revenue": 10700000000.0,
+      "net_margin": 0.0949
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 2612000000.0,
+      "total_revenue": 11188000000.0,
+      "net_margin": 0.2335
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 6883000000.0,
+      "total_revenue": 11959000000.0,
+      "net_margin": 0.5755
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1776000000.0,
+      "total_revenue": 11533000000.0,
+      "net_margin": 0.154
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1355000000.0,
+      "total_revenue": 12651000000.0,
+      "net_margin": 0.1071
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 6626000000.0,
+      "total_revenue": 13467000000.0,
+      "net_margin": 0.492
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 296000000.0,
+      "total_revenue": 14366000000.0,
+      "net_margin": 0.0206
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 263000000.0,
+      "total_revenue": 13203000000.0,
+      "net_margin": 0.0199
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "UBER",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": -6768000000.0,
+      "total_revenue": 11139000000.0,
+      "net_margin": -0.6076
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": -496000000.0,
+      "total_revenue": 17455000000.0,
+      "net_margin": -0.0284
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": -9141000000.0,
+      "total_revenue": 31877000000.0,
+      "net_margin": -0.2868
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1887000000.0,
+      "total_revenue": 37281000000.0,
+      "net_margin": 0.0506
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 9856000000.0,
+      "total_revenue": 43978000000.0,
+      "net_margin": 0.2241
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 10053000000.0,
+      "total_revenue": 52017000000.0,
+      "net_margin": 0.1933
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "UBER",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 8073000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-06-30",
+      "ebitda": 807000000.0,
+      "total_revenue": 9230000000.0,
+      "ebitda_margin": 0.0874
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-09-30",
+      "ebitda": 547000000.0,
+      "total_revenue": 9292000000.0,
+      "ebitda_margin": 0.0589
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-12-31",
+      "ebitda": 2186000000.0,
+      "total_revenue": 9936000000.0,
+      "ebitda_margin": 0.22
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-03-31",
+      "ebitda": -312000000.0,
+      "total_revenue": 10131000000.0,
+      "ebitda_margin": -0.0308
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-06-30",
+      "ebitda": 1397000000.0,
+      "total_revenue": 10700000000.0,
+      "ebitda_margin": 0.1306
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-09-30",
+      "ebitda": 3098000000.0,
+      "total_revenue": 11188000000.0,
+      "ebitda_margin": 0.2769
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-12-31",
+      "ebitda": 1202000000.0,
+      "total_revenue": 11959000000.0,
+      "ebitda_margin": 0.1005
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-03-31",
+      "ebitda": 1668000000.0,
+      "total_revenue": 11533000000.0,
+      "ebitda_margin": 0.1446
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-06-30",
+      "ebitda": 1793000000.0,
+      "total_revenue": 12651000000.0,
+      "ebitda_margin": 0.1417
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-09-30",
+      "ebitda": 2927000000.0,
+      "total_revenue": 13467000000.0,
+      "ebitda_margin": 0.2173
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-12-31",
+      "ebitda": 599000000.0,
+      "total_revenue": 14366000000.0,
+      "ebitda_margin": 0.0417
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2026-03-31",
+      "ebitda": 795000000.0,
+      "total_revenue": 13203000000.0,
+      "ebitda_margin": 0.0602
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "UBER",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2020-12-31",
+      "ebitda": -5913000000.0,
+      "total_revenue": 11139000000.0,
+      "ebitda_margin": -0.5308
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2021-12-31",
+      "ebitda": 360000000.0,
+      "total_revenue": 17455000000.0,
+      "ebitda_margin": 0.0206
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2022-12-31",
+      "ebitda": -7914000000.0,
+      "total_revenue": 31877000000.0,
+      "ebitda_margin": -0.2483
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-12-31",
+      "ebitda": 3777000000.0,
+      "total_revenue": 37281000000.0,
+      "ebitda_margin": 0.1013
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-12-31",
+      "ebitda": 5385000000.0,
+      "total_revenue": 43978000000.0,
+      "ebitda_margin": 0.1224
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-12-31",
+      "ebitda": 6987000000.0,
+      "total_revenue": 52017000000.0,
+      "ebitda_margin": 0.1343
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "UBER",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 382000000.0,
+      "total_revenue": 8073000000.0,
+      "fcf_margin": 0.0473
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 1140000000.0,
+      "total_revenue": 9230000000.0,
+      "fcf_margin": 0.1235
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 905000000.0,
+      "total_revenue": 9292000000.0,
+      "fcf_margin": 0.0974
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 768000000.0,
+      "total_revenue": 9936000000.0,
+      "fcf_margin": 0.0773
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 1359000000.0,
+      "total_revenue": 10131000000.0,
+      "fcf_margin": 0.1341
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 1721000000.0,
+      "total_revenue": 10700000000.0,
+      "fcf_margin": 0.1608
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 2109000000.0,
+      "total_revenue": 11188000000.0,
+      "fcf_margin": 0.1885
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 1706000000.0,
+      "total_revenue": 11959000000.0,
+      "fcf_margin": 0.1427
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 2250000000.0,
+      "total_revenue": 11533000000.0,
+      "fcf_margin": 0.1951
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 2475000000.0,
+      "total_revenue": 12651000000.0,
+      "fcf_margin": 0.1956
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 2230000000.0,
+      "total_revenue": 13467000000.0,
+      "fcf_margin": 0.1656
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 2808000000.0,
+      "total_revenue": 14366000000.0,
+      "fcf_margin": 0.1955
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 2286000000.0,
+      "total_revenue": 13203000000.0,
+      "fcf_margin": 0.1731
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "UBER",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2020-12-31",
+      "free_cash_flow": -3361000000.0,
+      "total_revenue": 11139000000.0,
+      "fcf_margin": -0.3017
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2021-12-31",
+      "free_cash_flow": -743000000.0,
+      "total_revenue": 17455000000.0,
+      "fcf_margin": -0.0426
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 390000000.0,
+      "total_revenue": 31877000000.0,
+      "fcf_margin": 0.0122
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 3362000000.0,
+      "total_revenue": 37281000000.0,
+      "fcf_margin": 0.0902
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 6895000000.0,
+      "total_revenue": 43978000000.0,
+      "fcf_margin": 0.1568
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 9763000000.0,
+      "total_revenue": 52017000000.0,
+      "fcf_margin": 0.1877
+    }
+  ]
+}

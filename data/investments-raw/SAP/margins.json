@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "SAP",
+      "report_date": "2022-06-30",
+      "gross_profit": 5318000000.0,
+      "total_revenue": 7516000000.0,
+      "gross_margin": 0.7076
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-06-30",
+      "gross_profit": 5409000000.0,
+      "total_revenue": 7555000000.0,
+      "gross_margin": 0.7159
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-09-30",
+      "gross_profit": 5637000000.0,
+      "total_revenue": 7744000000.0,
+      "gross_margin": 0.7279
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-12-31",
+      "gross_profit": 6204000000.0,
+      "total_revenue": 8468000000.0,
+      "gross_margin": 0.7326
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-03-31",
+      "gross_profit": 5762000000.0,
+      "total_revenue": 8041000000.0,
+      "gross_margin": 0.7166
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-06-30",
+      "gross_profit": 6017000000.0,
+      "total_revenue": 8289000000.0,
+      "gross_margin": 0.7259
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-09-30",
+      "gross_profit": 6212000000.0,
+      "total_revenue": 8470000000.0,
+      "gross_margin": 0.7334
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-12-31",
+      "gross_profit": 6942000000.0,
+      "total_revenue": 9377000000.0,
+      "gross_margin": 0.7403
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-03-31",
+      "gross_profit": 6607000000.0,
+      "total_revenue": 9013000000.0,
+      "gross_margin": 0.7331
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-06-30",
+      "gross_profit": 6620000000.0,
+      "total_revenue": 9027000000.0,
+      "gross_margin": 0.7334
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-09-30",
+      "gross_profit": 6671000000.0,
+      "total_revenue": 9076000000.0,
+      "gross_margin": 0.735
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-12-31",
+      "gross_profit": 6916000000.0,
+      "total_revenue": 9684000000.0,
+      "gross_margin": 0.7142
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2026-03-31",
+      "gross_profit": 6973000000.0,
+      "total_revenue": 9555000000.0,
+      "gross_margin": 0.7298
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "SAP",
+      "report_date": "2019-12-31",
+      "gross_profit": 19202000000.0,
+      "total_revenue": 27553000000.0,
+      "gross_margin": 0.6969
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2020-12-31",
+      "gross_profit": 19453000000.0,
+      "total_revenue": 27338000000.0,
+      "gross_margin": 0.7116
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2021-12-31",
+      "gross_profit": 19734000000.0,
+      "total_revenue": 26953000000.0,
+      "gross_margin": 0.7322
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2022-12-31",
+      "gross_profit": 21482000000.0,
+      "total_revenue": 29519000000.0,
+      "gross_margin": 0.7277
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-12-31",
+      "gross_profit": 22534000000.0,
+      "total_revenue": 31207000000.0,
+      "gross_margin": 0.7221
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-12-31",
+      "gross_profit": 24932000000.0,
+      "total_revenue": 34176000000.0,
+      "gross_margin": 0.7295
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-12-31",
+      "gross_profit": 26814000000.0,
+      "total_revenue": 36800000000.0,
+      "gross_margin": 0.7286
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "SAP",
+      "report_date": "2022-06-30",
+      "operating_income": 802000000.0,
+      "total_revenue": 7516000000.0,
+      "operating_margin": 0.1067
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-06-30",
+      "operating_income": 1368000000.0,
+      "total_revenue": 7555000000.0,
+      "operating_margin": 0.1811
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-09-30",
+      "operating_income": 1687000000.0,
+      "total_revenue": 7744000000.0,
+      "operating_margin": 0.2178
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-12-31",
+      "operating_income": 1896000000.0,
+      "total_revenue": 8468000000.0,
+      "operating_margin": 0.2239
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-03-31",
+      "operating_income": 1455000000.0,
+      "total_revenue": 8041000000.0,
+      "operating_margin": 0.1809
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-06-30",
+      "operating_income": 1854000000.0,
+      "total_revenue": 8289000000.0,
+      "operating_margin": 0.2237
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-09-30",
+      "operating_income": 2163000000.0,
+      "total_revenue": 8470000000.0,
+      "operating_margin": 0.2554
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-12-31",
+      "operating_income": 2339000000.0,
+      "total_revenue": 9377000000.0,
+      "operating_margin": 0.2494
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-03-31",
+      "operating_income": 2333000000.0,
+      "total_revenue": 9013000000.0,
+      "operating_margin": 0.2588
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-06-30",
+      "operating_income": 2474000000.0,
+      "total_revenue": 9027000000.0,
+      "operating_margin": 0.2741
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-09-30",
+      "operating_income": 2470000000.0,
+      "total_revenue": 9076000000.0,
+      "operating_margin": 0.2721
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-12-31",
+      "operating_income": 2343000000.0,
+      "total_revenue": 9684000000.0,
+      "operating_margin": 0.2419
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2026-03-31",
+      "operating_income": 2752000000.0,
+      "total_revenue": 9555000000.0,
+      "operating_margin": 0.288
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "SAP",
+      "report_date": "2019-12-31",
+      "operating_income": 5623000000.0,
+      "total_revenue": 27553000000.0,
+      "operating_margin": 0.2041
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2020-12-31",
+      "operating_income": 6621000000.0,
+      "total_revenue": 27338000000.0,
+      "operating_margin": 0.2422
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2021-12-31",
+      "operating_income": 6465000000.0,
+      "total_revenue": 26953000000.0,
+      "operating_margin": 0.2399
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2022-12-31",
+      "operating_income": 6051000000.0,
+      "total_revenue": 29519000000.0,
+      "operating_margin": 0.205
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-12-31",
+      "operating_income": 6014000000.0,
+      "total_revenue": 31207000000.0,
+      "operating_margin": 0.1927
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-12-31",
+      "operating_income": 7808000000.0,
+      "total_revenue": 34176000000.0,
+      "operating_margin": 0.2285
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-12-31",
+      "operating_income": 9620000000.0,
+      "total_revenue": 36800000000.0,
+      "operating_margin": 0.2614
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "SAP",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 334000000.0,
+      "total_revenue": 7516000000.0,
+      "net_margin": 0.0444
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 3161000000.0,
+      "total_revenue": 7555000000.0,
+      "net_margin": 0.4184
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1278000000.0,
+      "total_revenue": 7744000000.0,
+      "net_margin": 0.165
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1313000000.0,
+      "total_revenue": 8468000000.0,
+      "net_margin": 0.1551
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": -828000000.0,
+      "total_revenue": 8041000000.0,
+      "net_margin": -0.103
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 888000000.0,
+      "total_revenue": 8289000000.0,
+      "net_margin": 0.1071
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1463000000.0,
+      "total_revenue": 8470000000.0,
+      "net_margin": 0.1727
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1601000000.0,
+      "total_revenue": 9377000000.0,
+      "net_margin": 0.1707
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1780000000.0,
+      "total_revenue": 9013000000.0,
+      "net_margin": 0.1975
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1697000000.0,
+      "total_revenue": 9027000000.0,
+      "net_margin": 0.188
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 2004000000.0,
+      "total_revenue": 9076000000.0,
+      "net_margin": 0.2208
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1680000000.0,
+      "total_revenue": 9684000000.0,
+      "net_margin": 0.1735
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1932000000.0,
+      "total_revenue": 9555000000.0,
+      "net_margin": 0.2022
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "SAP",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": 3337000000.0,
+      "total_revenue": 27553000000.0,
+      "net_margin": 0.1211
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 5145000000.0,
+      "total_revenue": 27338000000.0,
+      "net_margin": 0.1882
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 5256000000.0,
+      "total_revenue": 26953000000.0,
+      "net_margin": 0.195
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 2284000000.0,
+      "total_revenue": 29519000000.0,
+      "net_margin": 0.0774
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 6139000000.0,
+      "total_revenue": 31207000000.0,
+      "net_margin": 0.1967
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 3124000000.0,
+      "total_revenue": 34176000000.0,
+      "net_margin": 0.0914
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 7161000000.0,
+      "total_revenue": 36800000000.0,
+      "net_margin": 0.1946
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "SAP",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 7516000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-06-30",
+      "ebitda": 1805000000.0,
+      "total_revenue": 7555000000.0,
+      "ebitda_margin": 0.2389
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-09-30",
+      "ebitda": 2368000000.0,
+      "total_revenue": 7744000000.0,
+      "ebitda_margin": 0.3058
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-12-31",
+      "ebitda": 2322000000.0,
+      "total_revenue": 8468000000.0,
+      "ebitda_margin": 0.2742
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-03-31",
+      "ebitda": -423000000.0,
+      "total_revenue": 8041000000.0,
+      "ebitda_margin": -0.0526
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-06-30",
+      "ebitda": 1942000000.0,
+      "total_revenue": 8289000000.0,
+      "ebitda_margin": 0.2343
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-09-30",
+      "ebitda": 2709000000.0,
+      "total_revenue": 8470000000.0,
+      "ebitda_margin": 0.3198
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-12-31",
+      "ebitda": 2533000000.0,
+      "total_revenue": 9377000000.0,
+      "ebitda_margin": 0.2701
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-03-31",
+      "ebitda": 3097000000.0,
+      "total_revenue": 9013000000.0,
+      "ebitda_margin": 0.3436
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-06-30",
+      "ebitda": 3089000000.0,
+      "total_revenue": 9027000000.0,
+      "ebitda_margin": 0.3422
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-09-30",
+      "ebitda": 3375000000.0,
+      "total_revenue": 9076000000.0,
+      "ebitda_margin": 0.3719
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-12-31",
+      "ebitda": 2513000000.0,
+      "total_revenue": 9684000000.0,
+      "ebitda_margin": 0.2595
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2026-03-31",
+      "ebitda": 3343000000.0,
+      "total_revenue": 9555000000.0,
+      "ebitda_margin": 0.3499
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "SAP",
+      "report_date": "2019-12-31",
+      "ebitda": 7079000000.0,
+      "total_revenue": 27553000000.0,
+      "ebitda_margin": 0.2569
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2020-12-31",
+      "ebitda": 9406000000.0,
+      "total_revenue": 27338000000.0,
+      "ebitda_margin": 0.3441
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2021-12-31",
+      "ebitda": 10987000000.0,
+      "total_revenue": 26953000000.0,
+      "ebitda_margin": 0.4076
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2022-12-31",
+      "ebitda": 6480000000.0,
+      "total_revenue": 29519000000.0,
+      "ebitda_margin": 0.2195
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-12-31",
+      "ebitda": 7353000000.0,
+      "total_revenue": 31207000000.0,
+      "ebitda_margin": 0.2356
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-12-31",
+      "ebitda": 6589000000.0,
+      "total_revenue": 34176000000.0,
+      "ebitda_margin": 0.1928
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-12-31",
+      "ebitda": 12073000000.0,
+      "total_revenue": 36800000000.0,
+      "ebitda_margin": 0.3281
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "SAP",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 33000000.0,
+      "total_revenue": 7516000000.0,
+      "fcf_margin": 0.0044
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 710000000.0,
+      "total_revenue": 7555000000.0,
+      "fcf_margin": 0.094
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 942000000.0,
+      "total_revenue": 7744000000.0,
+      "fcf_margin": 0.1216
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 1778000000.0,
+      "total_revenue": 8468000000.0,
+      "fcf_margin": 0.21
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 2691000000.0,
+      "total_revenue": 8041000000.0,
+      "fcf_margin": 0.3347
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 1332000000.0,
+      "total_revenue": 8289000000.0,
+      "fcf_margin": 0.1607
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 1240000000.0,
+      "total_revenue": 8470000000.0,
+      "fcf_margin": 0.1464
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-12-31",
+      "free_cash_flow": -819000000.0,
+      "total_revenue": 9377000000.0,
+      "fcf_margin": -0.0873
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 3613000000.0,
+      "total_revenue": 9013000000.0,
+      "fcf_margin": 0.4009
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 2386000000.0,
+      "total_revenue": 9027000000.0,
+      "fcf_margin": 0.2643
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 1301000000.0,
+      "total_revenue": 9076000000.0,
+      "fcf_margin": 0.1433
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 1117000000.0,
+      "total_revenue": 9684000000.0,
+      "fcf_margin": 0.1153
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 3274000000.0,
+      "total_revenue": 9555000000.0,
+      "fcf_margin": 0.3426
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "SAP",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 27553000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 6379000000.0,
+      "total_revenue": 27338000000.0,
+      "fcf_margin": 0.2333
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 5522000000.0,
+      "total_revenue": 26953000000.0,
+      "fcf_margin": 0.2049
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 4770000000.0,
+      "total_revenue": 29519000000.0,
+      "fcf_margin": 0.1616
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 5461000000.0,
+      "total_revenue": 31207000000.0,
+      "fcf_margin": 0.175
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 4410000000.0,
+      "total_revenue": 34176000000.0,
+      "fcf_margin": 0.129
+    },
+    {
+      "symbol": "SAP",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 8417000000.0,
+      "total_revenue": 36800000000.0,
+      "fcf_margin": 0.2287
+    }
+  ]
+}

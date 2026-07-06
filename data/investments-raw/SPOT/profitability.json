@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "SPOT",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 65000000.0,
+      "beginning_stockholders_equity": 2054000000.0,
+      "ending_stockholders_equity": 2139000000.0,
+      "avg_equity": 2096500000.0,
+      "roe": 0.031
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": -70000000.0,
+      "beginning_stockholders_equity": 2139000000.0,
+      "ending_stockholders_equity": 2523000000.0,
+      "avg_equity": 2331000000.0,
+      "roe": -0.03
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 197000000.0,
+      "beginning_stockholders_equity": 2523000000.0,
+      "ending_stockholders_equity": 3309000000.0,
+      "avg_equity": 2916000000.0,
+      "roe": 0.0676
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 274000000.0,
+      "beginning_stockholders_equity": 3309000000.0,
+      "ending_stockholders_equity": 4259000000.0,
+      "avg_equity": 3784000000.0,
+      "roe": 0.0724
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 300000000.0,
+      "beginning_stockholders_equity": 4259000000.0,
+      "ending_stockholders_equity": 4633000000.0,
+      "avg_equity": 4446000000.0,
+      "roe": 0.0675
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 367000000.0,
+      "beginning_stockholders_equity": 4633000000.0,
+      "ending_stockholders_equity": 5525000000.0,
+      "avg_equity": 5079000000.0,
+      "roe": 0.0723
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 225000000.0,
+      "beginning_stockholders_equity": 5525000000.0,
+      "ending_stockholders_equity": 6247000000.0,
+      "avg_equity": 5886000000.0,
+      "roe": 0.0382
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": -86000000.0,
+      "beginning_stockholders_equity": 6247000000.0,
+      "ending_stockholders_equity": 6627000000.0,
+      "avg_equity": 6437000000.0,
+      "roe": -0.0134
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 899000000.0,
+      "beginning_stockholders_equity": 6627000000.0,
+      "ending_stockholders_equity": 7779000000.0,
+      "avg_equity": 7203000000.0,
+      "roe": 0.1248
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1174000000.0,
+      "beginning_stockholders_equity": 7779000000.0,
+      "ending_stockholders_equity": 8329000000.0,
+      "avg_equity": 8054000000.0,
+      "roe": 0.1458
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 721000000.0,
+      "beginning_stockholders_equity": 8329000000.0,
+      "ending_stockholders_equity": 8010000000.0,
+      "avg_equity": 8169500000.0,
+      "roe": 0.0883
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "SPOT",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 65000000.0,
+      "beginning_total_assets": 7312000000.0,
+      "ending_total_assets": 7592000000.0,
+      "avg_assets": 7452000000.0,
+      "roa": 0.0087
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": -70000000.0,
+      "beginning_total_assets": 7592000000.0,
+      "ending_total_assets": 8346000000.0,
+      "avg_assets": 7969000000.0,
+      "roa": -0.0088
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 197000000.0,
+      "beginning_total_assets": 8346000000.0,
+      "ending_total_assets": 9075000000.0,
+      "avg_assets": 8710500000.0,
+      "roa": 0.0226
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 274000000.0,
+      "beginning_total_assets": 9075000000.0,
+      "ending_total_assets": 10146000000.0,
+      "avg_assets": 9610500000.0,
+      "roa": 0.0285
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 300000000.0,
+      "beginning_total_assets": 10146000000.0,
+      "ending_total_assets": 10553000000.0,
+      "avg_assets": 10349500000.0,
+      "roa": 0.029
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 367000000.0,
+      "beginning_total_assets": 10553000000.0,
+      "ending_total_assets": 12005000000.0,
+      "avg_assets": 11279000000.0,
+      "roa": 0.0325
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 225000000.0,
+      "beginning_total_assets": 12005000000.0,
+      "ending_total_assets": 12687000000.0,
+      "avg_assets": 12346000000.0,
+      "roa": 0.0182
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": -86000000.0,
+      "beginning_total_assets": 12687000000.0,
+      "ending_total_assets": 13465000000.0,
+      "avg_assets": 13076000000.0,
+      "roa": -0.0066
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 899000000.0,
+      "beginning_total_assets": 13465000000.0,
+      "ending_total_assets": 14689000000.0,
+      "avg_assets": 14077000000.0,
+      "roa": 0.0639
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1174000000.0,
+      "beginning_total_assets": 14689000000.0,
+      "ending_total_assets": 15015000000.0,
+      "avg_assets": 14852000000.0,
+      "roa": 0.079
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 721000000.0,
+      "beginning_total_assets": 15015000000.0,
+      "ending_total_assets": 13128000000.0,
+      "avg_assets": 14071500000.0,
+      "roa": 0.0512
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "SPOT",
+      "report_date": "2023-09-30",
+      "ebit": 82000000.0,
+      "tax_rate_for_calcs": 0.11,
+      "nopat": 72980000.0,
+      "beginning_invested_capital": 3221000000.0,
+      "ending_invested_capital": 3348000000.0,
+      "avg_invested_capital": 3284500000.0,
+      "roic": 0.0222
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2023-12-31",
+      "ebit": -111000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": -87690000.0,
+      "beginning_invested_capital": 3348000000.0,
+      "ending_invested_capital": 3726000000.0,
+      "avg_invested_capital": 3537000000.0,
+      "roic": -0.0248
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2024-03-31",
+      "ebit": 183000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 144570000.0,
+      "beginning_invested_capital": 3726000000.0,
+      "ending_invested_capital": 4579000000.0,
+      "avg_invested_capital": 4152500000.0,
+      "roic": 0.0348
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2024-06-30",
+      "ebit": 279000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 220410000.0,
+      "beginning_invested_capital": 4579000000.0,
+      "ending_invested_capital": 5582000000.0,
+      "avg_invested_capital": 5080500000.0,
+      "roic": 0.0434
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2024-09-30",
+      "ebit": 407000000.0,
+      "tax_rate_for_calcs": 0.25,
+      "nopat": 305250000.0,
+      "beginning_invested_capital": 5582000000.0,
+      "ending_invested_capital": 5973000000.0,
+      "avg_invested_capital": 5777500000.0,
+      "roic": 0.0528
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2024-12-31",
+      "ebit": 508000000.0,
+      "tax_rate_for_calcs": 0.26,
+      "nopat": 375920000.0,
+      "beginning_invested_capital": 5973000000.0,
+      "ending_invested_capital": 7064000000.0,
+      "avg_invested_capital": 6518500000.0,
+      "roic": 0.0577
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2025-03-31",
+      "ebit": 336000000.0,
+      "tax_rate_for_calcs": 0.31,
+      "nopat": 231840000.0,
+      "beginning_invested_capital": 7064000000.0,
+      "ending_invested_capital": 7901000000.0,
+      "avg_invested_capital": 7482500000.0,
+      "roic": 0.031
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2025-06-30",
+      "ebit": 56000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 44240000.0,
+      "beginning_invested_capital": 7901000000.0,
+      "ending_invested_capital": 8556000000.0,
+      "avg_invested_capital": 8228500000.0,
+      "roic": 0.0054
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2025-09-30",
+      "ebit": 835000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 659650000.0,
+      "beginning_invested_capital": 8556000000.0,
+      "ending_invested_capital": 9520000000.0,
+      "avg_invested_capital": 9038000000.0,
+      "roic": 0.073
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2025-12-31",
+      "ebit": 1028000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 812120000.0,
+      "beginning_invested_capital": 9520000000.0,
+      "ending_invested_capital": 9787000000.0,
+      "avg_invested_capital": 9653500000.0,
+      "roic": 0.0841
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2026-03-31",
+      "ebit": 944000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 726880000.0,
+      "beginning_invested_capital": 9787000000.0,
+      "ending_invested_capital": 8010000000.0,
+      "avg_invested_capital": 8898500000.0,
+      "roic": 0.0817
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "SPOT",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.031,
+      "roa": 0.0087,
+      "equity_multiplier": 3.56
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": -0.03,
+      "roa": -0.0088,
+      "equity_multiplier": 3.41
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0676,
+      "roa": 0.0226,
+      "equity_multiplier": 2.99
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0724,
+      "roa": 0.0285,
+      "equity_multiplier": 2.54
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0675,
+      "roa": 0.029,
+      "equity_multiplier": 2.33
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.0723,
+      "roa": 0.0325,
+      "equity_multiplier": 2.22
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0382,
+      "roa": 0.0182,
+      "equity_multiplier": 2.1
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": -0.0134,
+      "roa": -0.0066,
+      "equity_multiplier": 2.03
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.1248,
+      "roa": 0.0639,
+      "equity_multiplier": 1.95
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.1458,
+      "roa": 0.079,
+      "equity_multiplier": 1.85
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.0883,
+      "roa": 0.0512,
+      "equity_multiplier": 1.72
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "SPOT",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0087,
+      "net_margin": 0.0194,
+      "asset_turnover": 0.45
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": -0.0088,
+      "net_margin": -0.0191,
+      "asset_turnover": 0.46
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0226,
+      "net_margin": 0.0542,
+      "asset_turnover": 0.42
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0285,
+      "net_margin": 0.072,
+      "asset_turnover": 0.4
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.029,
+      "net_margin": 0.0752,
+      "asset_turnover": 0.39
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0325,
+      "net_margin": 0.0865,
+      "asset_turnover": 0.38
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0182,
+      "net_margin": 0.0537,
+      "asset_turnover": 0.34
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": -0.0066,
+      "net_margin": -0.0205,
+      "asset_turnover": 0.32
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0639,
+      "net_margin": 0.2104,
+      "asset_turnover": 0.3
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.079,
+      "net_margin": 0.2591,
+      "asset_turnover": 0.3
+    },
+    {
+      "symbol": "SPOT",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0512,
+      "net_margin": 0.1591,
+      "asset_turnover": 0.32
+    }
+  ]
+}

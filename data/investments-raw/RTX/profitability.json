@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "RTX",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": -984000000.0,
+      "beginning_stockholders_equity": 72480000000.0,
+      "ending_stockholders_equity": 69596000000.0,
+      "avg_equity": 71038000000.0,
+      "roe": -0.0139
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1426000000.0,
+      "beginning_stockholders_equity": 69596000000.0,
+      "ending_stockholders_equity": 59798000000.0,
+      "avg_equity": 64697000000.0,
+      "roe": 0.022
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1709000000.0,
+      "beginning_stockholders_equity": 59798000000.0,
+      "ending_stockholders_equity": 60485000000.0,
+      "avg_equity": 60141500000.0,
+      "roe": 0.0284
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 111000000.0,
+      "beginning_stockholders_equity": 60485000000.0,
+      "ending_stockholders_equity": 58985000000.0,
+      "avg_equity": 59735000000.0,
+      "roe": 0.0019
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1472000000.0,
+      "beginning_stockholders_equity": 58985000000.0,
+      "ending_stockholders_equity": 61114000000.0,
+      "avg_equity": 60049500000.0,
+      "roe": 0.0245
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1482000000.0,
+      "beginning_stockholders_equity": 61114000000.0,
+      "ending_stockholders_equity": 60156000000.0,
+      "avg_equity": 60635000000.0,
+      "roe": 0.0244
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1535000000.0,
+      "beginning_stockholders_equity": 60156000000.0,
+      "ending_stockholders_equity": 61516000000.0,
+      "avg_equity": 60836000000.0,
+      "roe": 0.0252
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1657000000.0,
+      "beginning_stockholders_equity": 61516000000.0,
+      "ending_stockholders_equity": 62398000000.0,
+      "avg_equity": 61957000000.0,
+      "roe": 0.0267
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1918000000.0,
+      "beginning_stockholders_equity": 62398000000.0,
+      "ending_stockholders_equity": 64514000000.0,
+      "avg_equity": 63456000000.0,
+      "roe": 0.0302
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1622000000.0,
+      "beginning_stockholders_equity": 64514000000.0,
+      "ending_stockholders_equity": 65245000000.0,
+      "avg_equity": 64879500000.0,
+      "roe": 0.025
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 2059000000.0,
+      "beginning_stockholders_equity": 65245000000.0,
+      "ending_stockholders_equity": 66280000000.0,
+      "avg_equity": 65762500000.0,
+      "roe": 0.0313
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "RTX",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": -984000000.0,
+      "beginning_total_assets": 162161000000.0,
+      "ending_total_assets": 162443000000.0,
+      "avg_assets": 162302000000.0,
+      "roa": -0.0061
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1426000000.0,
+      "beginning_total_assets": 162443000000.0,
+      "ending_total_assets": 161869000000.0,
+      "avg_assets": 162156000000.0,
+      "roa": 0.0088
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1709000000.0,
+      "beginning_total_assets": 161869000000.0,
+      "ending_total_assets": 160187000000.0,
+      "avg_assets": 161028000000.0,
+      "roa": 0.0106
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 111000000.0,
+      "beginning_total_assets": 160187000000.0,
+      "ending_total_assets": 161169000000.0,
+      "avg_assets": 160678000000.0,
+      "roa": 0.0007
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1472000000.0,
+      "beginning_total_assets": 161169000000.0,
+      "ending_total_assets": 164822000000.0,
+      "avg_assets": 162995500000.0,
+      "roa": 0.009
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1482000000.0,
+      "beginning_total_assets": 164822000000.0,
+      "ending_total_assets": 162861000000.0,
+      "avg_assets": 163841500000.0,
+      "roa": 0.009
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1535000000.0,
+      "beginning_total_assets": 162861000000.0,
+      "ending_total_assets": 164864000000.0,
+      "avg_assets": 163862500000.0,
+      "roa": 0.0094
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1657000000.0,
+      "beginning_total_assets": 164864000000.0,
+      "ending_total_assets": 167139000000.0,
+      "avg_assets": 166001500000.0,
+      "roa": 0.01
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1918000000.0,
+      "beginning_total_assets": 167139000000.0,
+      "ending_total_assets": 168672000000.0,
+      "avg_assets": 167905500000.0,
+      "roa": 0.0114
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1622000000.0,
+      "beginning_total_assets": 168672000000.0,
+      "ending_total_assets": 171079000000.0,
+      "avg_assets": 169875500000.0,
+      "roa": 0.0095
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 2059000000.0,
+      "beginning_total_assets": 171079000000.0,
+      "ending_total_assets": 170431000000.0,
+      "avg_assets": 170755000000.0,
+      "roa": 0.0121
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "RTX",
+      "report_date": "2023-09-30",
+      "ebit": -931000000.0,
+      "tax_rate_for_calcs": 0.29,
+      "nopat": -661010000.0,
+      "beginning_invested_capital": 107833000000.0,
+      "ending_invested_capital": 104856000000.0,
+      "avg_invested_capital": 106344500000.0,
+      "roic": -0.0062
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2023-12-31",
+      "ebit": 2286000000.0,
+      "tax_rate_for_calcs": 0.15,
+      "nopat": 1943100000.0,
+      "beginning_invested_capital": 104856000000.0,
+      "ending_invested_capital": 103625000000.0,
+      "avg_invested_capital": 104240500000.0,
+      "roic": 0.0186
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-03-31",
+      "ebit": 2271000000.0,
+      "tax_rate_for_calcs": 0.06,
+      "nopat": 2134740000.0,
+      "beginning_invested_capital": 103625000000.0,
+      "ending_invested_capital": 103329000000.0,
+      "avg_invested_capital": 103477000000.0,
+      "roic": 0.0206
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-06-30",
+      "ebit": 916000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 723640000.0,
+      "beginning_invested_capital": 103329000000.0,
+      "ending_invested_capital": 101136000000.0,
+      "avg_invested_capital": 102232500000.0,
+      "roic": 0.0071
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-09-30",
+      "ebit": 2454000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 1987740000.0,
+      "beginning_invested_capital": 101136000000.0,
+      "ending_invested_capital": 103270000000.0,
+      "avg_invested_capital": 102203000000.0,
+      "roic": 0.0194
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-12-31",
+      "ebit": 2523000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 1967940000.0,
+      "beginning_invested_capital": 103270000000.0,
+      "ending_invested_capital": 101417000000.0,
+      "avg_invested_capital": 102343500000.0,
+      "roic": 0.0192
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-03-31",
+      "ebit": 2460000000.0,
+      "tax_rate_for_calcs": 0.17,
+      "nopat": 2041800000.0,
+      "beginning_invested_capital": 101417000000.0,
+      "ending_invested_capital": 102816000000.0,
+      "avg_invested_capital": 102116500000.0,
+      "roic": 0.02
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-06-30",
+      "ebit": 2520000000.0,
+      "tax_rate_for_calcs": 0.15,
+      "nopat": 2142000000.0,
+      "beginning_invested_capital": 102816000000.0,
+      "ending_invested_capital": 104376000000.0,
+      "avg_invested_capital": 103596000000.0,
+      "roic": 0.0207
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-09-30",
+      "ebit": 2921000000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 2395220000.0,
+      "beginning_invested_capital": 104376000000.0,
+      "ending_invested_capital": 103573000000.0,
+      "avg_invested_capital": 103974500000.0,
+      "roic": 0.023
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-12-31",
+      "ebit": 2667000000.0,
+      "tax_rate_for_calcs": 0.25,
+      "nopat": 2000250000.0,
+      "beginning_invested_capital": 103573000000.0,
+      "ending_invested_capital": 103149000000.0,
+      "avg_invested_capital": 103361000000.0,
+      "roic": 0.0194
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2026-03-31",
+      "ebit": 2926000000.0,
+      "tax_rate_for_calcs": 0.14,
+      "nopat": 2516360000.0,
+      "beginning_invested_capital": 103149000000.0,
+      "ending_invested_capital": 103693000000.0,
+      "avg_invested_capital": 103421000000.0,
+      "roic": 0.0243
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "RTX",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": -0.0139,
+      "roa": -0.0061,
+      "equity_multiplier": 2.28
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.022,
+      "roa": 0.0088,
+      "equity_multiplier": 2.5
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0284,
+      "roa": 0.0106,
+      "equity_multiplier": 2.68
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0019,
+      "roa": 0.0007,
+      "equity_multiplier": 2.71
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0245,
+      "roa": 0.009,
+      "equity_multiplier": 2.72
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.0244,
+      "roa": 0.009,
+      "equity_multiplier": 2.71
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0252,
+      "roa": 0.0094,
+      "equity_multiplier": 2.68
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.0267,
+      "roa": 0.01,
+      "equity_multiplier": 2.67
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0302,
+      "roa": 0.0114,
+      "equity_multiplier": 2.65
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.025,
+      "roa": 0.0095,
+      "equity_multiplier": 2.63
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.0313,
+      "roa": 0.0121,
+      "equity_multiplier": 2.59
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "RTX",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": -0.0061,
+      "net_margin": -0.0731,
+      "asset_turnover": 0.08
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0088,
+      "net_margin": 0.0716,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0106,
+      "net_margin": 0.0885,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0007,
+      "net_margin": 0.0056,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.009,
+      "net_margin": 0.0733,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.009,
+      "net_margin": 0.0685,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0094,
+      "net_margin": 0.0756,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.01,
+      "net_margin": 0.0768,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0114,
+      "net_margin": 0.0853,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0095,
+      "net_margin": 0.0669,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "RTX",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0121,
+      "net_margin": 0.0933,
+      "asset_turnover": 0.13
+    }
+  ]
+}

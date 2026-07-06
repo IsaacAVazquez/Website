@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "CMCSA",
+    "name": "Mr. Brian L. Roberts",
+    "title": "Chairman & Co-CEO",
+    "age": 65,
+    "born": 1960,
+    "pay": 11675337,
+    "exercised": 5472828,
+    "unexercised": 1486323,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "CMCSA",
+    "name": "Mr. Daniel C. Murdock",
+    "title": "Executive VP, Chief Accounting Officer & Controller",
+    "age": 51,
+    "born": 1974,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "CMCSA",
+    "name": "Mr. David N. Watson",
+    "title": "Vice Chairman",
+    "age": 67,
+    "born": 1958,
+    "pay": 9336534,
+    "exercised": 5212805,
+    "unexercised": 6813369,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "CMCSA",
+    "name": "Mr. Jason S. Armstrong C.F.A.",
+    "title": "Chief Financial Officer",
+    "age": 48,
+    "born": 1977,
+    "pay": 6680574,
+    "exercised": 0,
+    "unexercised": 110980,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "CMCSA",
+    "name": "Mr. Michael J. Cavanagh J.D.",
+    "title": "Co-CEO & Director",
+    "age": 59,
+    "born": 1966,
+    "pay": 11415529,
+    "exercised": 0,
+    "unexercised": 1111719,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "CMCSA",
+    "name": "Mr. Robert L. Eatroff",
+    "title": "Executive Vice President of Global Corporate Development & Strategy",
+    "age": 59,
+    "born": 1966,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "CMCSA",
+    "name": "Mr. Samuel H. Schwartz",
+    "title": "Chief Business Development Officer -Connectivity & Platforms",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "CMCSA",
+    "name": "Mr. Thomas J. Reid",
+    "title": "Chief Legal Officer & Secretary",
+    "age": 61,
+    "born": 1964,
+    "pay": 7422741,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "CMCSA",
+    "name": "Ms. Jennifer Khoury Newcomb",
+    "title": "Chief Communications Officer",
+    "age": 51,
+    "born": 1974,
+    "pay": 4145529,
+    "exercised": 0,
+    "unexercised": 16409,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "CMCSA",
+    "name": "Ms. Marci  Ryvicker",
+    "title": "Executive Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  }
+]

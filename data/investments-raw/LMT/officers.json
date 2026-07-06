@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "LMT",
+    "name": "Dr. Craig  Martell",
+    "title": "Chief Technology Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "LMT",
+    "name": "Mark D. Kvasnak",
+    "title": "Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "LMT",
+    "name": "Mr. Christopher J. Wronsky",
+    "title": "Senior VP & Chief Human Resource Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "LMT",
+    "name": "Mr. Evan T. Scott",
+    "title": "Chief Financial Officer",
+    "age": 48,
+    "born": 1977,
+    "pay": 2382567,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "LMT",
+    "name": "Mr. Frank A. St. John",
+    "title": "Chief Operating Officer",
+    "age": 58,
+    "born": 1967,
+    "pay": 4056161,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "LMT",
+    "name": "Mr. James D. Taiclet Jr.",
+    "title": "Chairman, President & CEO",
+    "age": 64,
+    "born": 1961,
+    "pay": 9785663,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "LMT",
+    "name": "Mr. Kevin James O'Connor J.D.",
+    "title": "Senior Vice President, General Counsel & Corporate Secretary",
+    "age": 57,
+    "born": 1968,
+    "pay": 2496841,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "LMT",
+    "name": "Mr. Timothy S. Cahill",
+    "title": "President of Missiles & Fire Control",
+    "age": 59,
+    "born": 1966,
+    "pay": 2953419,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "LMT",
+    "name": "Ms. Jenna  McMullin",
+    "title": "Senior VP & Chief Communications Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "LMT",
+    "name": "Ms. Maria  Demaree",
+    "title": "Senior VP of Enterprise Business & Digital Transformation and Chief information Officer",
+    "age": 56,
+    "born": 1969,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  }
+]

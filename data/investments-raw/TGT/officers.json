@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "TGT",
+    "name": "Joe  Contrucci",
+    "title": "Senior Vice President of Stores Operations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "TGT",
+    "name": "Mr. Brian C. Cornell",
+    "title": "Executive Chair of the Board",
+    "age": 66,
+    "born": 1959,
+    "pay": 3274808,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "TGT",
+    "name": "Mr. Grant B. McGee J.D.",
+    "title": "Executive VP and Chief Legal & Compliance Officer",
+    "age": 44,
+    "born": 1981,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "TGT",
+    "name": "Mr. James  Lee",
+    "title": "Executive VP & CFO",
+    "age": 50,
+    "born": 1975,
+    "pay": 1303933,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "TGT",
+    "name": "Mr. John  Hulbert",
+    "title": "Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "TGT",
+    "name": "Mr. Matthew A. Liegel",
+    "title": "Senior VP, Chief Accounting Officer & Controller",
+    "age": 48,
+    "born": 1977,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "TGT",
+    "name": "Mr. Michael J. Fiddelke",
+    "title": "CEO & Director",
+    "age": 48,
+    "born": 1977,
+    "pay": 1726311,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "TGT",
+    "name": "Mr. Pratabkumar  Vemana",
+    "title": "Executive VP and Chief Information & Product Officer",
+    "age": 53,
+    "born": 1972,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "TGT",
+    "name": "Ms. Lisa R. Roath",
+    "title": "Executive VP & COO",
+    "age": 47,
+    "born": 1978,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "TGT",
+    "name": "Ms. Melissa K. Kremer",
+    "title": "Executive VP & Chief HR Officer",
+    "age": 47,
+    "born": 1978,
+    "pay": 1263325,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  }
+]

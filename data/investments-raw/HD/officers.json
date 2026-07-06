@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "HD",
+    "name": "Mr. Edward P. Decker",
+    "title": "Chairman, President & CEO",
+    "age": 62,
+    "born": 1963,
+    "pay": 4208959,
+    "exercised": 8786562,
+    "unexercised": 15562045,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "HD",
+    "name": "Mr. Haydn  Chilcott",
+    "title": "Senior Vice President of Operations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "HD",
+    "name": "Mr. Jordan  Broggi",
+    "title": "Executive VP of Customer Experience & President of Online",
+    "age": 41,
+    "born": 1984,
+    "pay": 1482008,
+    "exercised": 0,
+    "unexercised": 527919,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "HD",
+    "name": "Mr. Richard V. McPhail",
+    "title": "Executive VP & CFO",
+    "age": 54,
+    "born": 1971,
+    "pay": 1970303,
+    "exercised": 921219,
+    "unexercised": 7780825,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "HD",
+    "name": "Mr. William D. Bastek",
+    "title": "Executive Vice President of Merchandising",
+    "age": 58,
+    "born": 1967,
+    "pay": 1593452,
+    "exercised": 1694351,
+    "unexercised": 3078592,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "HD",
+    "name": "Ms. Angie  Brown",
+    "title": "Executive VP & Chief Information Officer",
+    "age": 49,
+    "born": 1976,
+    "pay": 85000,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "HD",
+    "name": "Ms. Ann-Marie  Campbell",
+    "title": "Senior Executive Vice President",
+    "age": 59,
+    "born": 1966,
+    "pay": 2384292,
+    "exercised": 0,
+    "unexercised": 3953679,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "HD",
+    "name": "Ms. Franziska  Bell",
+    "title": "Executive VP & CTO",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "HD",
+    "name": "Ms. Isabel  Janci",
+    "title": "VP of Investor Relations & Treasurer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "HD",
+    "name": "Ms. Kimberly R. Scardino",
+    "title": "SVP of Finance, Chief Accounting Officer & Controller",
+    "age": 54,
+    "born": 1971,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  }
+]

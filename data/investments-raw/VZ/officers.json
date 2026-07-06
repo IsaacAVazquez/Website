@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "VZ",
+    "name": "Mr. Anthony T. Skiadas CPA",
+    "title": "Executive VP & CFO",
+    "age": 56,
+    "born": 1969,
+    "pay": 3006860,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "VZ",
+    "name": "Mr. Daniel H. Schulman",
+    "title": "Director & CEO",
+    "age": 67,
+    "born": 1958,
+    "pay": 2890221,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "VZ",
+    "name": "Mr. Hans Erik Vestberg",
+    "title": "Special Adviser",
+    "age": 60,
+    "born": 1965,
+    "pay": 6173453,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "VZ",
+    "name": "Mr. Kyle  Malady",
+    "title": "Executive VP & CEO of Verizon Business Group",
+    "age": 57,
+    "born": 1968,
+    "pay": 3007531,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "VZ",
+    "name": "Mr. Santiago  Tenorio",
+    "title": "CTO & Senior VP of Strategy and Technology Enablement",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "VZ",
+    "name": "Ms. Colleen  Ostrowski",
+    "title": "Senior Vice President of Investor Relations",
+    "age": 51,
+    "born": 1974,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "VZ",
+    "name": "Ms. Leslie  Berland",
+    "title": "Executive VP & Chief Marketing Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "VZ",
+    "name": "Ms. Mary-Lee  Stillwell",
+    "title": "Senior VP of Accounting & External Reporting and Controller",
+    "age": 50,
+    "born": 1975,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "VZ",
+    "name": "Ms. Samantha L. Hammock",
+    "title": "Executive VP & Chief Human Resources Officer",
+    "age": 46,
+    "born": 1979,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "VZ",
+    "name": "Ms. Vandana  Venkatesh",
+    "title": "Executive VP & Chief Legal Officer",
+    "age": 53,
+    "born": 1972,
+    "pay": 2426257,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  }
+]

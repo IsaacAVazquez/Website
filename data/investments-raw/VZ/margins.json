@@ -1,0 +1,547 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "VZ",
+      "report_date": "2023-12-31",
+      "gross_profit": 19948000000.0,
+      "total_revenue": 35130000000.0,
+      "gross_margin": 0.5678
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2024-03-31",
+      "gross_profit": 20109000000.0,
+      "total_revenue": 32981000000.0,
+      "gross_margin": 0.6097
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2024-06-30",
+      "gross_profit": 20325000000.0,
+      "total_revenue": 32796000000.0,
+      "gross_margin": 0.6197
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2024-09-30",
+      "gross_profit": 20090000000.0,
+      "total_revenue": 33330000000.0,
+      "gross_margin": 0.6028
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2024-12-31",
+      "gross_profit": 20167000000.0,
+      "total_revenue": 35681000000.0,
+      "gross_margin": 0.5652
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2025-03-31",
+      "gross_profit": 20429000000.0,
+      "total_revenue": 33485000000.0,
+      "gross_margin": 0.6101
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2025-06-30",
+      "gross_profit": 20619000000.0,
+      "total_revenue": 34504000000.0,
+      "gross_margin": 0.5976
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2025-09-30",
+      "gross_profit": 20475000000.0,
+      "total_revenue": 33821000000.0,
+      "gross_margin": 0.6054
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2025-12-31",
+      "gross_profit": 19903000000.0,
+      "total_revenue": 36381000000.0,
+      "gross_margin": 0.5471
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2026-03-31",
+      "gross_profit": 20767000000.0,
+      "total_revenue": 34440000000.0,
+      "gross_margin": 0.603
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "VZ",
+      "report_date": "2021-12-31",
+      "gross_profit": 77312000000.0,
+      "total_revenue": 133613000000.0,
+      "gross_margin": 0.5786
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2022-12-31",
+      "gross_profit": 77702000000.0,
+      "total_revenue": 136835000000.0,
+      "gross_margin": 0.5679
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2023-12-31",
+      "gross_profit": 79087000000.0,
+      "total_revenue": 133974000000.0,
+      "gross_margin": 0.5903
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2024-12-31",
+      "gross_profit": 80691000000.0,
+      "total_revenue": 134788000000.0,
+      "gross_margin": 0.5987
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2025-12-31",
+      "gross_profit": 81426000000.0,
+      "total_revenue": 138191000000.0,
+      "gross_margin": 0.5892
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "VZ",
+      "report_date": "2023-12-31",
+      "operating_income": 6441000000.0,
+      "total_revenue": 35130000000.0,
+      "operating_margin": 0.1833
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2024-03-31",
+      "operating_income": 7521000000.0,
+      "total_revenue": 32981000000.0,
+      "operating_margin": 0.228
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2024-06-30",
+      "operating_income": 7818000000.0,
+      "total_revenue": 32796000000.0,
+      "operating_margin": 0.2384
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2024-09-30",
+      "operating_income": 5926000000.0,
+      "total_revenue": 33330000000.0,
+      "operating_margin": 0.1778
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2024-12-31",
+      "operating_income": 7421000000.0,
+      "total_revenue": 35681000000.0,
+      "operating_margin": 0.208
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2025-03-31",
+      "operating_income": 7978000000.0,
+      "total_revenue": 33485000000.0,
+      "operating_margin": 0.2383
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2025-06-30",
+      "operating_income": 8172000000.0,
+      "total_revenue": 34504000000.0,
+      "operating_margin": 0.2368
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2025-09-30",
+      "operating_income": 8105000000.0,
+      "total_revenue": 33821000000.0,
+      "operating_margin": 0.2396
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2025-12-31",
+      "operating_income": 5004000000.0,
+      "total_revenue": 36381000000.0,
+      "operating_margin": 0.1375
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2026-03-31",
+      "operating_income": 8242000000.0,
+      "total_revenue": 34440000000.0,
+      "operating_margin": 0.2393
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "VZ",
+      "report_date": "2021-12-31",
+      "operating_income": 32448000000.0,
+      "total_revenue": 133613000000.0,
+      "operating_margin": 0.2429
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2022-12-31",
+      "operating_income": 30467000000.0,
+      "total_revenue": 136835000000.0,
+      "operating_margin": 0.2227
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2023-12-31",
+      "operating_income": 28718000000.0,
+      "total_revenue": 133974000000.0,
+      "operating_margin": 0.2144
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2024-12-31",
+      "operating_income": 28686000000.0,
+      "total_revenue": 134788000000.0,
+      "operating_margin": 0.2128
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2025-12-31",
+      "operating_income": 29259000000.0,
+      "total_revenue": 138191000000.0,
+      "operating_margin": 0.2117
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "VZ",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": -2705000000.0,
+      "total_revenue": 35130000000.0,
+      "net_margin": -0.077
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 4602000000.0,
+      "total_revenue": 32981000000.0,
+      "net_margin": 0.1395
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 4593000000.0,
+      "total_revenue": 32796000000.0,
+      "net_margin": 0.14
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 3306000000.0,
+      "total_revenue": 33330000000.0,
+      "net_margin": 0.0992
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 5005000000.0,
+      "total_revenue": 35681000000.0,
+      "net_margin": 0.1403
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 4879000000.0,
+      "total_revenue": 33485000000.0,
+      "net_margin": 0.1457
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 5003000000.0,
+      "total_revenue": 34504000000.0,
+      "net_margin": 0.145
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 4950000000.0,
+      "total_revenue": 33821000000.0,
+      "net_margin": 0.1464
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 2342000000.0,
+      "total_revenue": 36381000000.0,
+      "net_margin": 0.0644
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 5045000000.0,
+      "total_revenue": 34440000000.0,
+      "net_margin": 0.1465
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "VZ",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 22065000000.0,
+      "total_revenue": 133613000000.0,
+      "net_margin": 0.1651
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 21256000000.0,
+      "total_revenue": 136835000000.0,
+      "net_margin": 0.1553
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 11614000000.0,
+      "total_revenue": 133974000000.0,
+      "net_margin": 0.0867
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 17506000000.0,
+      "total_revenue": 134788000000.0,
+      "net_margin": 0.1299
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 17174000000.0,
+      "total_revenue": 138191000000.0,
+      "net_margin": 0.1243
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "VZ",
+      "report_date": "2023-12-31",
+      "ebitda": 4298000000.0,
+      "total_revenue": 35130000000.0,
+      "ebitda_margin": 0.1223
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2024-03-31",
+      "ebitda": 12155000000.0,
+      "total_revenue": 32981000000.0,
+      "ebitda_margin": 0.3685
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2024-06-30",
+      "ebitda": 12215000000.0,
+      "total_revenue": 32796000000.0,
+      "ebitda_margin": 0.3725
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2024-09-30",
+      "ebitda": 10432000000.0,
+      "total_revenue": 33330000000.0,
+      "ebitda_margin": 0.313
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2024-12-31",
+      "ebitda": 12718000000.0,
+      "total_revenue": 35681000000.0,
+      "ebitda_margin": 0.3564
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2025-03-31",
+      "ebitda": 12682000000.0,
+      "total_revenue": 33485000000.0,
+      "ebitda_margin": 0.3787
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2025-06-30",
+      "ebitda": 12883000000.0,
+      "total_revenue": 34504000000.0,
+      "ebitda_margin": 0.3734
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2025-09-30",
+      "ebitda": 12809000000.0,
+      "total_revenue": 33821000000.0,
+      "ebitda_margin": 0.3787
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2025-12-31",
+      "ebitda": 9341000000.0,
+      "total_revenue": 36381000000.0,
+      "ebitda_margin": 0.2568
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2026-03-31",
+      "ebitda": 13616000000.0,
+      "total_revenue": 34440000000.0,
+      "ebitda_margin": 0.3954
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "VZ",
+      "report_date": "2021-12-31",
+      "ebitda": 49111000000.0,
+      "total_revenue": 133613000000.0,
+      "ebitda_margin": 0.3676
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2022-12-31",
+      "ebitda": 48983000000.0,
+      "total_revenue": 136835000000.0,
+      "ebitda_margin": 0.358
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2023-12-31",
+      "ebitda": 40135000000.0,
+      "total_revenue": 133974000000.0,
+      "ebitda_margin": 0.2996
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2024-12-31",
+      "ebitda": 47520000000.0,
+      "total_revenue": 134788000000.0,
+      "ebitda_margin": 0.3526
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2025-12-31",
+      "ebitda": 47715000000.0,
+      "total_revenue": 138191000000.0,
+      "ebitda_margin": 0.3453
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "VZ",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 137000000.0,
+      "total_revenue": 35130000000.0,
+      "fcf_margin": 0.0039
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 2259000000.0,
+      "total_revenue": 32981000000.0,
+      "fcf_margin": 0.0685
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 5626000000.0,
+      "total_revenue": 32796000000.0,
+      "fcf_margin": 0.1715
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 5808000000.0,
+      "total_revenue": 33330000000.0,
+      "fcf_margin": 0.1743
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 5229000000.0,
+      "total_revenue": 35681000000.0,
+      "fcf_margin": 0.1465
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 3515000000.0,
+      "total_revenue": 33485000000.0,
+      "fcf_margin": 0.105
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 5055000000.0,
+      "total_revenue": 34504000000.0,
+      "fcf_margin": 0.1465
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 6850000000.0,
+      "total_revenue": 33821000000.0,
+      "fcf_margin": 0.2025
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 4256000000.0,
+      "total_revenue": 36381000000.0,
+      "fcf_margin": 0.117
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 3700000000.0,
+      "total_revenue": 34440000000.0,
+      "fcf_margin": 0.1074
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "VZ",
+      "report_date": "2021-12-31",
+      "free_cash_flow": -28343000000.0,
+      "total_revenue": 133613000000.0,
+      "fcf_margin": -0.2121
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 10401000000.0,
+      "total_revenue": 136835000000.0,
+      "fcf_margin": 0.076
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 12912000000.0,
+      "total_revenue": 133974000000.0,
+      "fcf_margin": 0.0964
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 18922000000.0,
+      "total_revenue": 134788000000.0,
+      "fcf_margin": 0.1404
+    },
+    {
+      "symbol": "VZ",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 19676000000.0,
+      "total_revenue": 138191000000.0,
+      "fcf_margin": 0.1424
+    }
+  ]
+}

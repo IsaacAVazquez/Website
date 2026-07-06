@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "MDLZ",
+    "name": "Mr. Brian C. Stevens",
+    "title": "Senior VP, Corporate Controller & Chief Accounting Officer",
+    "age": 50,
+    "born": 1975,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "MDLZ",
+    "name": "Mr. Dirk  Van de Put",
+    "title": "Chairman & CEO",
+    "age": 65,
+    "born": 1960,
+    "pay": 5584200,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "MDLZ",
+    "name": "Mr. Filippo  Catalano",
+    "title": "Chief Information & Digital Officer",
+    "age": 52,
+    "born": 1973,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "MDLZ",
+    "name": "Mr. Gustavo Carlos Valle",
+    "title": "Executive VP & President of North America",
+    "age": 61,
+    "born": 1964,
+    "pay": 1327694,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "MDLZ",
+    "name": "Mr. Luca  Zaramella",
+    "title": "Executive VP, CFO & COO",
+    "age": 56,
+    "born": 1969,
+    "pay": 2931206,
+    "exercised": 624652,
+    "unexercised": 1152404,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "MDLZ",
+    "name": "Mr. Martin  Renaud",
+    "title": "Executive VP and Chief Marketing & Sales Officer",
+    "age": 57,
+    "born": 1968,
+    "pay": 1687256,
+    "exercised": 0,
+    "unexercised": 397339,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "MDLZ",
+    "name": "Mr. Mohit  Bhalla",
+    "title": "Vice President of Corporate Development",
+    "age": 55,
+    "born": 1970,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "MDLZ",
+    "name": "Mr. Shep  Dunlap",
+    "title": "Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "MDLZ",
+    "name": "Mr. Volker  Kuhn",
+    "title": "Executive VP & President of Europe",
+    "age": 57,
+    "born": 1968,
+    "pay": 2423369,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "MDLZ",
+    "name": "Ms. Laura  Stein J.D.",
+    "title": "Executive VP of Corporate & Legal Affairs, General Counsel & Company Secretary",
+    "age": 64,
+    "born": 1961,
+    "pay": 2009258,
+    "exercised": 0,
+    "unexercised": 1008340,
+    "report_date": "2026-07-06"
+  }
+]

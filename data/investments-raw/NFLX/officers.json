@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "NFLX",
+    "name": "Mr. Clete  Willems",
+    "title": "Chief Global Affairs Officer",
+    "age": 45,
+    "born": 1980,
+    "pay": 5468564,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "NFLX",
+    "name": "Mr. David  Hyman J.D.",
+    "title": "Chief Legal Officer & Secretary",
+    "age": 59,
+    "born": 1966,
+    "pay": 6719773,
+    "exercised": 90937936,
+    "unexercised": 14241332,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "NFLX",
+    "name": "Mr. Gregory K. Peters",
+    "title": "Co-CEO, President & Director",
+    "age": 54,
+    "born": 1971,
+    "pay": 11788883,
+    "exercised": 89372000,
+    "unexercised": 143010080,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "NFLX",
+    "name": "Mr. Jeffrey William Karbowski",
+    "title": "Chief Accounting Officer",
+    "age": 46,
+    "born": 1979,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "NFLX",
+    "name": "Mr. Spencer  Wang",
+    "title": "Vice President of Finance, Corporate Development & Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "NFLX",
+    "name": "Mr. Spencer Adam Neumann",
+    "title": "Chief Financial Officer",
+    "age": 55,
+    "born": 1970,
+    "pay": 6811618,
+    "exercised": 25442484,
+    "unexercised": 95993752,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "NFLX",
+    "name": "Mr. Theodore A. Sarandos",
+    "title": "Co-CEO, President & Director",
+    "age": 60,
+    "born": 1965,
+    "pay": 12507548,
+    "exercised": 173482848,
+    "unexercised": 299971392,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "NFLX",
+    "name": "Ms. Dani  Dudeck",
+    "title": "Chief Communications Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "NFLX",
+    "name": "Ms. Elizabeth  Stone",
+    "title": "Chief Product & Technology Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "NFLX",
+    "name": "Ms. Natalie  Gutteridge",
+    "title": "VP of Corporate Legal & Operations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  }
+]

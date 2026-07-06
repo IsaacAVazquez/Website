@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1020000000.0,
+      "beginning_stockholders_equity": 19661000000.0,
+      "ending_stockholders_equity": 19740000000.0,
+      "avg_equity": 19700500000.0,
+      "roe": 0.0518
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1402000000.0,
+      "beginning_stockholders_equity": 19740000000.0,
+      "ending_stockholders_equity": 21051000000.0,
+      "avg_equity": 20395500000.0,
+      "roe": 0.0687
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 888000000.0,
+      "beginning_stockholders_equity": 21051000000.0,
+      "ending_stockholders_equity": 20702000000.0,
+      "avg_equity": 20876500000.0,
+      "roe": 0.0425
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1128000000.0,
+      "beginning_stockholders_equity": 20702000000.0,
+      "ending_stockholders_equity": 20622000000.0,
+      "avg_equity": 20662000000.0,
+      "roe": 0.0546
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1010000000.0,
+      "beginning_stockholders_equity": 20622000000.0,
+      "ending_stockholders_equity": 20174000000.0,
+      "avg_equity": 20398000000.0,
+      "roe": 0.0495
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1121000000.0,
+      "beginning_stockholders_equity": 20174000000.0,
+      "ending_stockholders_equity": 20417000000.0,
+      "avg_equity": 20295500000.0,
+      "roe": 0.0552
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1287000000.0,
+      "beginning_stockholders_equity": 20417000000.0,
+      "ending_stockholders_equity": 20254000000.0,
+      "avg_equity": 20335500000.0,
+      "roe": 0.0633
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1261000000.0,
+      "beginning_stockholders_equity": 20254000000.0,
+      "ending_stockholders_equity": 20201000000.0,
+      "avg_equity": 20227500000.0,
+      "roe": 0.0623
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1248000000.0,
+      "beginning_stockholders_equity": 20201000000.0,
+      "ending_stockholders_equity": 20198000000.0,
+      "avg_equity": 20199500000.0,
+      "roe": 0.0618
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1437000000.0,
+      "beginning_stockholders_equity": 20198000000.0,
+      "ending_stockholders_equity": 20256000000.0,
+      "avg_equity": 20227000000.0,
+      "roe": 0.071
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1113000000.0,
+      "beginning_stockholders_equity": 20256000000.0,
+      "ending_stockholders_equity": 20024000000.0,
+      "avg_equity": 20140000000.0,
+      "roe": 0.0553
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1020000000.0,
+      "beginning_total_assets": 74579000000.0,
+      "ending_total_assets": 76440000000.0,
+      "avg_assets": 75509500000.0,
+      "roa": 0.0135
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1402000000.0,
+      "beginning_total_assets": 76440000000.0,
+      "ending_total_assets": 82166000000.0,
+      "avg_assets": 79303000000.0,
+      "roa": 0.0177
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 888000000.0,
+      "beginning_total_assets": 82166000000.0,
+      "ending_total_assets": 83347000000.0,
+      "avg_assets": 82756500000.0,
+      "roa": 0.0107
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1128000000.0,
+      "beginning_total_assets": 83347000000.0,
+      "ending_total_assets": 84016000000.0,
+      "avg_assets": 83681500000.0,
+      "roa": 0.0135
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1010000000.0,
+      "beginning_total_assets": 84016000000.0,
+      "ending_total_assets": 83511000000.0,
+      "avg_assets": 83763500000.0,
+      "roa": 0.0121
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1121000000.0,
+      "beginning_total_assets": 83511000000.0,
+      "ending_total_assets": 78725000000.0,
+      "avg_assets": 81118000000.0,
+      "roa": 0.0138
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1287000000.0,
+      "beginning_total_assets": 78725000000.0,
+      "ending_total_assets": 81274000000.0,
+      "avg_assets": 79999500000.0,
+      "roa": 0.0161
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1261000000.0,
+      "beginning_total_assets": 81274000000.0,
+      "ending_total_assets": 79777000000.0,
+      "avg_assets": 80525500000.0,
+      "roa": 0.0157
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1248000000.0,
+      "beginning_total_assets": 79777000000.0,
+      "ending_total_assets": 79801000000.0,
+      "avg_assets": 79789000000.0,
+      "roa": 0.0156
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1437000000.0,
+      "beginning_total_assets": 79801000000.0,
+      "ending_total_assets": 80173000000.0,
+      "avg_assets": 79987000000.0,
+      "roa": 0.018
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1113000000.0,
+      "beginning_total_assets": 80173000000.0,
+      "ending_total_assets": 80546000000.0,
+      "avg_assets": 80359500000.0,
+      "roa": 0.0139
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-09-30",
+      "ebit": 1327000000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 1088140000.0,
+      "beginning_invested_capital": 30210000000.0,
+      "ending_invested_capital": 30380000000.0,
+      "avg_invested_capital": 30295000000.0,
+      "roic": 0.0359
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-12-31",
+      "ebit": 1880000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 1466400000.0,
+      "beginning_invested_capital": 30380000000.0,
+      "ending_invested_capital": 30727000000.0,
+      "avg_invested_capital": 30553500000.0,
+      "roic": 0.048
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-03-31",
+      "ebit": 1295000000.0,
+      "tax_rate_for_calcs": 0.27,
+      "nopat": 945350000.0,
+      "beginning_invested_capital": 30727000000.0,
+      "ending_invested_capital": 30385000000.0,
+      "avg_invested_capital": 30556000000.0,
+      "roic": 0.0309
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-06-30",
+      "ebit": 1492000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 1208520000.0,
+      "beginning_invested_capital": 30385000000.0,
+      "ending_invested_capital": 30349000000.0,
+      "avg_invested_capital": 30367000000.0,
+      "roic": 0.0398
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-09-30",
+      "ebit": 1417000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 1091090000.0,
+      "beginning_invested_capital": 30349000000.0,
+      "ending_invested_capital": 30150000000.0,
+      "avg_invested_capital": 30249500000.0,
+      "roic": 0.0361
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-12-31",
+      "ebit": 1507000000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 1205600000.0,
+      "beginning_invested_capital": 30150000000.0,
+      "ending_invested_capital": 30296000000.0,
+      "avg_invested_capital": 30223000000.0,
+      "roic": 0.0399
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-03-31",
+      "ebit": 1706000000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 1364800000.0,
+      "beginning_invested_capital": 30296000000.0,
+      "ending_invested_capital": 31671000000.0,
+      "avg_invested_capital": 30983500000.0,
+      "roic": 0.044
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-06-30",
+      "ebit": 1643000000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 1347260000.0,
+      "beginning_invested_capital": 31671000000.0,
+      "ending_invested_capital": 31497000000.0,
+      "avg_invested_capital": 31584000000.0,
+      "roic": 0.0427
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-09-30",
+      "ebit": 1646000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 1333260000.0,
+      "beginning_invested_capital": 31497000000.0,
+      "ending_invested_capital": 31474000000.0,
+      "avg_invested_capital": 31485500000.0,
+      "roic": 0.0423
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-12-31",
+      "ebit": 1738000000.0,
+      "tax_rate_for_calcs": 0.12,
+      "nopat": 1529440000.0,
+      "beginning_invested_capital": 31474000000.0,
+      "ending_invested_capital": 30243000000.0,
+      "avg_invested_capital": 30858500000.0,
+      "roic": 0.0496
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2026-03-31",
+      "ebit": 1504000000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 1203200000.0,
+      "beginning_invested_capital": 30243000000.0,
+      "ending_invested_capital": 29433000000.0,
+      "avg_invested_capital": 29838000000.0,
+      "roic": 0.0403
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0518,
+      "roa": 0.0135,
+      "equity_multiplier": 3.84
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0687,
+      "roa": 0.0177,
+      "equity_multiplier": 3.88
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0425,
+      "roa": 0.0107,
+      "equity_multiplier": 3.97
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0546,
+      "roa": 0.0135,
+      "equity_multiplier": 4.04
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0495,
+      "roa": 0.0121,
+      "equity_multiplier": 4.09
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.0552,
+      "roa": 0.0138,
+      "equity_multiplier": 4.0
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0633,
+      "roa": 0.0161,
+      "equity_multiplier": 3.93
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.0623,
+      "roa": 0.0157,
+      "equity_multiplier": 3.97
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0618,
+      "roa": 0.0156,
+      "equity_multiplier": 3.96
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.071,
+      "roa": 0.018,
+      "equity_multiplier": 3.94
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.0553,
+      "roa": 0.0139,
+      "equity_multiplier": 3.98
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0135,
+      "net_margin": 0.1375,
+      "asset_turnover": 0.1
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0177,
+      "net_margin": 0.1747,
+      "asset_turnover": 0.1
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0107,
+      "net_margin": 0.1153,
+      "asset_turnover": 0.09
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0135,
+      "net_margin": 0.1431,
+      "asset_turnover": 0.09
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0121,
+      "net_margin": 0.1287,
+      "asset_turnover": 0.09
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0138,
+      "net_margin": 0.134,
+      "asset_turnover": 0.1
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0161,
+      "net_margin": 0.1652,
+      "asset_turnover": 0.1
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0157,
+      "net_margin": 0.1521,
+      "asset_turnover": 0.1
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0156,
+      "net_margin": 0.1483,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.018,
+      "net_margin": 0.1656,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0139,
+      "net_margin": 0.1332,
+      "asset_turnover": 0.1
+    }
+  ]
+}

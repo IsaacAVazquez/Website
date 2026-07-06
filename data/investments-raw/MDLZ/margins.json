@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "MDLZ",
+      "report_date": "2022-06-30",
+      "gross_profit": 2641000000.0,
+      "total_revenue": 7274000000.0,
+      "gross_margin": 0.3631
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-06-30",
+      "gross_profit": 3354000000.0,
+      "total_revenue": 8507000000.0,
+      "gross_margin": 0.3943
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-09-30",
+      "gross_profit": 3494000000.0,
+      "total_revenue": 9029000000.0,
+      "gross_margin": 0.387
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-12-31",
+      "gross_profit": 3470000000.0,
+      "total_revenue": 9314000000.0,
+      "gross_margin": 0.3726
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-03-31",
+      "gross_profit": 4750000000.0,
+      "total_revenue": 9290000000.0,
+      "gross_margin": 0.5113
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-06-30",
+      "gross_profit": 2797000000.0,
+      "total_revenue": 8343000000.0,
+      "gross_margin": 0.3353
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-09-30",
+      "gross_profit": 2999000000.0,
+      "total_revenue": 9204000000.0,
+      "gross_margin": 0.3258
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-12-31",
+      "gross_profit": 3711000000.0,
+      "total_revenue": 9604000000.0,
+      "gross_margin": 0.3864
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-03-31",
+      "gross_profit": 2430000000.0,
+      "total_revenue": 9313000000.0,
+      "gross_margin": 0.2609
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-06-30",
+      "gross_profit": 2937000000.0,
+      "total_revenue": 8984000000.0,
+      "gross_margin": 0.3269
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-09-30",
+      "gross_profit": 2612000000.0,
+      "total_revenue": 9744000000.0,
+      "gross_margin": 0.2681
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-12-31",
+      "gross_profit": 2956000000.0,
+      "total_revenue": 10496000000.0,
+      "gross_margin": 0.2816
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2026-03-31",
+      "gross_profit": 2803000000.0,
+      "total_revenue": 10080000000.0,
+      "gross_margin": 0.2781
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "MDLZ",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2020-12-31",
+      "gross_profit": 10446000000.0,
+      "total_revenue": 26581000000.0,
+      "gross_margin": 0.393
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2021-12-31",
+      "gross_profit": 11254000000.0,
+      "total_revenue": 28720000000.0,
+      "gross_margin": 0.3919
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2022-12-31",
+      "gross_profit": 11312000000.0,
+      "total_revenue": 31496000000.0,
+      "gross_margin": 0.3592
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-12-31",
+      "gross_profit": 13764000000.0,
+      "total_revenue": 36016000000.0,
+      "gross_margin": 0.3822
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-12-31",
+      "gross_profit": 14257000000.0,
+      "total_revenue": 36441000000.0,
+      "gross_margin": 0.3912
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-12-31",
+      "gross_profit": 10935000000.0,
+      "total_revenue": 38537000000.0,
+      "gross_margin": 0.2838
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "MDLZ",
+      "report_date": "2022-06-30",
+      "operating_income": 933000000.0,
+      "total_revenue": 7274000000.0,
+      "operating_margin": 0.1283
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-06-30",
+      "operating_income": 1448000000.0,
+      "total_revenue": 8507000000.0,
+      "operating_margin": 0.1702
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-09-30",
+      "operating_income": 1437000000.0,
+      "total_revenue": 9029000000.0,
+      "operating_margin": 0.1592
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-12-31",
+      "operating_income": 1174000000.0,
+      "total_revenue": 9314000000.0,
+      "operating_margin": 0.126
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-03-31",
+      "operating_income": 2774000000.0,
+      "total_revenue": 9290000000.0,
+      "operating_margin": 0.2986
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-06-30",
+      "operating_income": 869000000.0,
+      "total_revenue": 8343000000.0,
+      "operating_margin": 0.1042
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-09-30",
+      "operating_income": 1329000000.0,
+      "total_revenue": 9204000000.0,
+      "operating_margin": 0.1444
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-12-31",
+      "operating_income": 1693000000.0,
+      "total_revenue": 9604000000.0,
+      "operating_margin": 0.1763
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-03-31",
+      "operating_income": 682000000.0,
+      "total_revenue": 9313000000.0,
+      "operating_margin": 0.0732
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-06-30",
+      "operating_income": 1174000000.0,
+      "total_revenue": 8984000000.0,
+      "operating_margin": 0.1307
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-09-30",
+      "operating_income": 785000000.0,
+      "total_revenue": 9744000000.0,
+      "operating_margin": 0.0806
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-12-31",
+      "operating_income": 979000000.0,
+      "total_revenue": 10496000000.0,
+      "operating_margin": 0.0933
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2026-03-31",
+      "operating_income": 860000000.0,
+      "total_revenue": 10080000000.0,
+      "operating_margin": 0.0853
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "MDLZ",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2020-12-31",
+      "operating_income": 4154000000.0,
+      "total_revenue": 26581000000.0,
+      "operating_margin": 0.1563
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2021-12-31",
+      "operating_income": 4857000000.0,
+      "total_revenue": 28720000000.0,
+      "operating_margin": 0.1691
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2022-12-31",
+      "operating_income": 3796000000.0,
+      "total_revenue": 31496000000.0,
+      "operating_margin": 0.1205
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-12-31",
+      "operating_income": 5611000000.0,
+      "total_revenue": 36016000000.0,
+      "operating_margin": 0.1558
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-12-31",
+      "operating_income": 6665000000.0,
+      "total_revenue": 36441000000.0,
+      "operating_margin": 0.1829
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-12-31",
+      "operating_income": 3620000000.0,
+      "total_revenue": 38537000000.0,
+      "operating_margin": 0.0939
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "MDLZ",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 747000000.0,
+      "total_revenue": 7274000000.0,
+      "net_margin": 0.1027
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 944000000.0,
+      "total_revenue": 8507000000.0,
+      "net_margin": 0.111
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 984000000.0,
+      "total_revenue": 9029000000.0,
+      "net_margin": 0.109
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 950000000.0,
+      "total_revenue": 9314000000.0,
+      "net_margin": 0.102
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1412000000.0,
+      "total_revenue": 9290000000.0,
+      "net_margin": 0.152
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 601000000.0,
+      "total_revenue": 8343000000.0,
+      "net_margin": 0.072
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 853000000.0,
+      "total_revenue": 9204000000.0,
+      "net_margin": 0.0927
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1745000000.0,
+      "total_revenue": 9604000000.0,
+      "net_margin": 0.1817
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 402000000.0,
+      "total_revenue": 9313000000.0,
+      "net_margin": 0.0432
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 641000000.0,
+      "total_revenue": 8984000000.0,
+      "net_margin": 0.0713
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 743000000.0,
+      "total_revenue": 9744000000.0,
+      "net_margin": 0.0763
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 665000000.0,
+      "total_revenue": 10496000000.0,
+      "net_margin": 0.0634
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 560000000.0,
+      "total_revenue": 10080000000.0,
+      "net_margin": 0.0556
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "MDLZ",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 3555000000.0,
+      "total_revenue": 26581000000.0,
+      "net_margin": 0.1337
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 4300000000.0,
+      "total_revenue": 28720000000.0,
+      "net_margin": 0.1497
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 2717000000.0,
+      "total_revenue": 31496000000.0,
+      "net_margin": 0.0863
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 4959000000.0,
+      "total_revenue": 36016000000.0,
+      "net_margin": 0.1377
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 4611000000.0,
+      "total_revenue": 36441000000.0,
+      "net_margin": 0.1265
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 2451000000.0,
+      "total_revenue": 38537000000.0,
+      "net_margin": 0.0636
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "MDLZ",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 7274000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-06-30",
+      "ebitda": 1596000000.0,
+      "total_revenue": 8507000000.0,
+      "ebitda_margin": 0.1876
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-09-30",
+      "ebitda": 1774000000.0,
+      "total_revenue": 9029000000.0,
+      "ebitda_margin": 0.1965
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-12-31",
+      "ebitda": 1594000000.0,
+      "total_revenue": 9314000000.0,
+      "ebitda_margin": 0.1711
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-03-31",
+      "ebitda": 3123000000.0,
+      "total_revenue": 9290000000.0,
+      "ebitda_margin": 0.3362
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-06-30",
+      "ebitda": 1297000000.0,
+      "total_revenue": 8343000000.0,
+      "ebitda_margin": 0.1555
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-09-30",
+      "ebitda": 1596000000.0,
+      "total_revenue": 9204000000.0,
+      "ebitda_margin": 0.1734
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-12-31",
+      "ebitda": 2055000000.0,
+      "total_revenue": 9604000000.0,
+      "ebitda_margin": 0.214
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-03-31",
+      "ebitda": 1006000000.0,
+      "total_revenue": 9313000000.0,
+      "ebitda_margin": 0.108
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-06-30",
+      "ebitda": 1345000000.0,
+      "total_revenue": 8984000000.0,
+      "ebitda_margin": 0.1497
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-09-30",
+      "ebitda": 1195000000.0,
+      "total_revenue": 9744000000.0,
+      "ebitda_margin": 0.1226
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-12-31",
+      "ebitda": 1425000000.0,
+      "total_revenue": 10496000000.0,
+      "ebitda_margin": 0.1358
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2026-03-31",
+      "ebitda": 1266000000.0,
+      "total_revenue": 10080000000.0,
+      "ebitda_margin": 0.1256
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "MDLZ",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2020-12-31",
+      "ebitda": 4922000000.0,
+      "total_revenue": 26581000000.0,
+      "ebitda_margin": 0.1852
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2021-12-31",
+      "ebitda": 5847000000.0,
+      "total_revenue": 28720000000.0,
+      "ebitda_margin": 0.2036
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2022-12-31",
+      "ebitda": 4763000000.0,
+      "total_revenue": 31496000000.0,
+      "ebitda_margin": 0.1512
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-12-31",
+      "ebitda": 7645000000.0,
+      "total_revenue": 36016000000.0,
+      "ebitda_margin": 0.2123
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-12-31",
+      "ebitda": 8071000000.0,
+      "total_revenue": 36441000000.0,
+      "ebitda_margin": 0.2215
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-12-31",
+      "ebitda": 4971000000.0,
+      "total_revenue": 38537000000.0,
+      "ebitda_margin": 0.129
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "MDLZ",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 618000000.0,
+      "total_revenue": 7274000000.0,
+      "fcf_margin": 0.085
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 578000000.0,
+      "total_revenue": 8507000000.0,
+      "fcf_margin": 0.0679
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 892000000.0,
+      "total_revenue": 9029000000.0,
+      "fcf_margin": 0.0988
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 1232000000.0,
+      "total_revenue": 9314000000.0,
+      "fcf_margin": 0.1323
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 1025000000.0,
+      "total_revenue": 9290000000.0,
+      "fcf_margin": 0.1103
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 455000000.0,
+      "total_revenue": 8343000000.0,
+      "fcf_margin": 0.0545
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 989000000.0,
+      "total_revenue": 9204000000.0,
+      "fcf_margin": 0.1075
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 1054000000.0,
+      "total_revenue": 9604000000.0,
+      "fcf_margin": 0.1097
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 815000000.0,
+      "total_revenue": 9313000000.0,
+      "fcf_margin": 0.0875
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 3000000.0,
+      "total_revenue": 8984000000.0,
+      "fcf_margin": 0.0003
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 418000000.0,
+      "total_revenue": 9744000000.0,
+      "fcf_margin": 0.0429
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 1999000000.0,
+      "total_revenue": 10496000000.0,
+      "fcf_margin": 0.1905
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 155000000.0,
+      "total_revenue": 10080000000.0,
+      "fcf_margin": 0.0154
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "MDLZ",
+      "report_date": "2019-12-31",
+      "free_cash_flow": 3040000000.0,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 3101000000.0,
+      "total_revenue": 26581000000.0,
+      "fcf_margin": 0.1167
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 3176000000.0,
+      "total_revenue": 28720000000.0,
+      "fcf_margin": 0.1106
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 3002000000.0,
+      "total_revenue": 31496000000.0,
+      "fcf_margin": 0.0953
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 3602000000.0,
+      "total_revenue": 36016000000.0,
+      "fcf_margin": 0.1
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 3523000000.0,
+      "total_revenue": 36441000000.0,
+      "fcf_margin": 0.0967
+    },
+    {
+      "symbol": "MDLZ",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 3235000000.0,
+      "total_revenue": 38537000000.0,
+      "fcf_margin": 0.0839
+    }
+  ]
+}

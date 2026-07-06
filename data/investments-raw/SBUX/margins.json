@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-06-30",
+      "gross_profit": 2234000000.0,
+      "total_revenue": 8150100000.0,
+      "gross_margin": 0.2741
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-09-30",
+      "gross_profit": 2158500000.0,
+      "total_revenue": 8414200000.0,
+      "gross_margin": 0.2565
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-06-30",
+      "gross_profit": 2606500000.0,
+      "total_revenue": 9168300000.0,
+      "gross_margin": 0.2843
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-09-30",
+      "gross_profit": 2719200000.0,
+      "total_revenue": 9373600000.0,
+      "gross_margin": 0.2901
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-12-31",
+      "gross_profit": 2593200000.0,
+      "total_revenue": 9425300000.0,
+      "gross_margin": 0.2751
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-03-31",
+      "gross_profit": 2190200000.0,
+      "total_revenue": 8563000000.0,
+      "gross_margin": 0.2558
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-06-30",
+      "gross_profit": 2543900000.0,
+      "total_revenue": 9113900000.0,
+      "gross_margin": 0.2791
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-09-30",
+      "gross_profit": 2381700000.0,
+      "total_revenue": 9073900000.0,
+      "gross_margin": 0.2625
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-12-31",
+      "gross_profit": 2301100000.0,
+      "total_revenue": 9397800000.0,
+      "gross_margin": 0.2449
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-03-31",
+      "gross_profit": 1848000000.0,
+      "total_revenue": 8761600000.0,
+      "gross_margin": 0.2109
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-06-30",
+      "gross_profit": 2155700000.0,
+      "total_revenue": 9456000000.0,
+      "gross_margin": 0.228
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-09-30",
+      "gross_profit": 2162600000.0,
+      "total_revenue": 9569000000.0,
+      "gross_margin": 0.226
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-12-31",
+      "gross_profit": 2089200000.0,
+      "total_revenue": 9915100000.0,
+      "gross_margin": 0.2107
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2026-03-31",
+      "gross_profit": 1914400000.0,
+      "total_revenue": 9531500000.0,
+      "gross_margin": 0.2008
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "SBUX",
+      "report_date": "2019-09-30",
+      "gross_profit": 7488100000.0,
+      "total_revenue": 26508600000.0,
+      "gross_margin": 0.2825
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2020-09-30",
+      "gross_profit": 5059100000.0,
+      "total_revenue": 23518000000.0,
+      "gross_margin": 0.2151
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2021-09-30",
+      "gross_profit": 8391000000.0,
+      "total_revenue": 29060600000.0,
+      "gross_margin": 0.2887
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-09-30",
+      "gross_profit": 8371100000.0,
+      "total_revenue": 32250300000.0,
+      "gross_margin": 0.2596
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-09-30",
+      "gross_profit": 9846200000.0,
+      "total_revenue": 35975600000.0,
+      "gross_margin": 0.2737
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-09-30",
+      "gross_profit": 9709100000.0,
+      "total_revenue": 36176200000.0,
+      "gross_margin": 0.2684
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-09-30",
+      "gross_profit": 8467300000.0,
+      "total_revenue": 37184400000.0,
+      "gross_margin": 0.2277
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-06-30",
+      "operating_income": 1255400000.0,
+      "total_revenue": 8150100000.0,
+      "operating_margin": 0.154
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-09-30",
+      "operating_income": 1140000000.0,
+      "total_revenue": 8414200000.0,
+      "operating_margin": 0.1355
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-06-30",
+      "operating_income": 1521300000.0,
+      "total_revenue": 9168300000.0,
+      "operating_margin": 0.1659
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-09-30",
+      "operating_income": 1586800000.0,
+      "total_revenue": 9373600000.0,
+      "operating_margin": 0.1693
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-12-31",
+      "operating_income": 1429500000.0,
+      "total_revenue": 9425300000.0,
+      "operating_margin": 0.1517
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-03-31",
+      "operating_income": 1030900000.0,
+      "total_revenue": 8563000000.0,
+      "operating_margin": 0.1204
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-06-30",
+      "operating_income": 1443600000.0,
+      "total_revenue": 9113900000.0,
+      "operating_margin": 0.1584
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-09-30",
+      "operating_income": 1203500000.0,
+      "total_revenue": 9073900000.0,
+      "operating_margin": 0.1326
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-12-31",
+      "operating_income": 1075200000.0,
+      "total_revenue": 9397800000.0,
+      "operating_margin": 0.1144
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-03-31",
+      "operating_income": 658100000.0,
+      "total_revenue": 8761600000.0,
+      "operating_margin": 0.0751
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-06-30",
+      "operating_income": 899300000.0,
+      "total_revenue": 9456000000.0,
+      "operating_margin": 0.0951
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-09-30",
+      "operating_income": 948100000.0,
+      "total_revenue": 9569000000.0,
+      "operating_margin": 0.0991
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-12-31",
+      "operating_income": 918300000.0,
+      "total_revenue": 9915100000.0,
+      "operating_margin": 0.0926
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2026-03-31",
+      "operating_income": 802400000.0,
+      "total_revenue": 9531500000.0,
+      "operating_margin": 0.0842
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "SBUX",
+      "report_date": "2019-09-30",
+      "operating_income": 3915700000.0,
+      "total_revenue": 26508600000.0,
+      "operating_margin": 0.1477
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2020-09-30",
+      "operating_income": 1517900000.0,
+      "total_revenue": 23518000000.0,
+      "operating_margin": 0.0645
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2021-09-30",
+      "operating_income": 4657200000.0,
+      "total_revenue": 29060600000.0,
+      "operating_margin": 0.1603
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-09-30",
+      "operating_income": 4429700000.0,
+      "total_revenue": 32250300000.0,
+      "operating_margin": 0.1374
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-09-30",
+      "operating_income": 5502900000.0,
+      "total_revenue": 35975600000.0,
+      "operating_margin": 0.153
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-09-30",
+      "operating_income": 5107600000.0,
+      "total_revenue": 36176200000.0,
+      "operating_margin": 0.1412
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-09-30",
+      "operating_income": 3580800000.0,
+      "total_revenue": 37184400000.0,
+      "operating_margin": 0.0963
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 912900000.0,
+      "total_revenue": 8150100000.0,
+      "net_margin": 0.112
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": 878300000.0,
+      "total_revenue": 8414200000.0,
+      "net_margin": 0.1044
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 1141700000.0,
+      "total_revenue": 9168300000.0,
+      "net_margin": 0.1245
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1219300000.0,
+      "total_revenue": 9373600000.0,
+      "net_margin": 0.1301
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1024400000.0,
+      "total_revenue": 9425300000.0,
+      "net_margin": 0.1087
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 772400000.0,
+      "total_revenue": 8563000000.0,
+      "net_margin": 0.0902
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1054800000.0,
+      "total_revenue": 9113900000.0,
+      "net_margin": 0.1157
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 909200000.0,
+      "total_revenue": 9073900000.0,
+      "net_margin": 0.1002
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 780800000.0,
+      "total_revenue": 9397800000.0,
+      "net_margin": 0.0831
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 384200000.0,
+      "total_revenue": 8761600000.0,
+      "net_margin": 0.0439
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 558300000.0,
+      "total_revenue": 9456000000.0,
+      "net_margin": 0.059
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 133200000.0,
+      "total_revenue": 9569000000.0,
+      "net_margin": 0.0139
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 293300000.0,
+      "total_revenue": 9915100000.0,
+      "net_margin": 0.0296
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 510900000.0,
+      "total_revenue": 9531500000.0,
+      "net_margin": 0.0536
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "SBUX",
+      "report_date": "2019-09-30",
+      "net_income_common_stockholders": 3599200000.0,
+      "total_revenue": 26508600000.0,
+      "net_margin": 0.1358
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2020-09-30",
+      "net_income_common_stockholders": 928300000.0,
+      "total_revenue": 23518000000.0,
+      "net_margin": 0.0395
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2021-09-30",
+      "net_income_common_stockholders": 4199300000.0,
+      "total_revenue": 29060600000.0,
+      "net_margin": 0.1445
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": 3281600000.0,
+      "total_revenue": 32250300000.0,
+      "net_margin": 0.1018
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 4124500000.0,
+      "total_revenue": 35975600000.0,
+      "net_margin": 0.1146
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 3760900000.0,
+      "total_revenue": 36176200000.0,
+      "net_margin": 0.104
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1856400000.0,
+      "total_revenue": 37184400000.0,
+      "net_margin": 0.0499
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 8150100000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-09-30",
+      "ebitda": 1583900000.0,
+      "total_revenue": 8414200000.0,
+      "ebitda_margin": 0.1882
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-06-30",
+      "ebitda": 1969700000.0,
+      "total_revenue": 9168300000.0,
+      "ebitda_margin": 0.2148
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-09-30",
+      "ebitda": 2112800000.0,
+      "total_revenue": 9373600000.0,
+      "ebitda_margin": 0.2254
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-12-31",
+      "ebitda": 1903600000.0,
+      "total_revenue": 9425300000.0,
+      "ebitda_margin": 0.202
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-03-31",
+      "ebitda": 1532200000.0,
+      "total_revenue": 8563000000.0,
+      "ebitda_margin": 0.1789
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-06-30",
+      "ebitda": 1953000000.0,
+      "total_revenue": 9113900000.0,
+      "ebitda_margin": 0.2143
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-09-30",
+      "ebitda": 1735100000.0,
+      "total_revenue": 9073900000.0,
+      "ebitda_margin": 0.1912
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-12-31",
+      "ebitda": 1581700000.0,
+      "total_revenue": 9397800000.0,
+      "ebitda_margin": 0.1683
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-03-31",
+      "ebitda": 1064700000.0,
+      "total_revenue": 8761600000.0,
+      "ebitda_margin": 0.1215
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-06-30",
+      "ebitda": 1409200000.0,
+      "total_revenue": 9456000000.0,
+      "ebitda_margin": 0.149
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-09-30",
+      "ebitda": 765700000.0,
+      "total_revenue": 9569000000.0,
+      "ebitda_margin": 0.08
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-12-31",
+      "ebitda": 1335700000.0,
+      "total_revenue": 9915100000.0,
+      "ebitda_margin": 0.1347
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2026-03-31",
+      "ebitda": 1254300000.0,
+      "total_revenue": 9531500000.0,
+      "ebitda_margin": 0.1316
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "SBUX",
+      "report_date": "2019-09-30",
+      "ebitda": null,
+      "total_revenue": 26508600000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2020-09-30",
+      "ebitda": 3104600000.0,
+      "total_revenue": 23518000000.0,
+      "ebitda_margin": 0.132
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2021-09-30",
+      "ebitda": 7350800000.0,
+      "total_revenue": 29060600000.0,
+      "ebitda_margin": 0.2529
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-09-30",
+      "ebitda": 6244200000.0,
+      "total_revenue": 32250300000.0,
+      "ebitda_margin": 0.1936
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-09-30",
+      "ebitda": 7402300000.0,
+      "total_revenue": 35975600000.0,
+      "ebitda_margin": 0.2058
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-09-30",
+      "ebitda": 7124000000.0,
+      "total_revenue": 36176200000.0,
+      "ebitda_margin": 0.1969
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-09-30",
+      "ebitda": 4821400000.0,
+      "total_revenue": 37184400000.0,
+      "ebitda_margin": 0.1297
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 841300000.0,
+      "total_revenue": 8150100000.0,
+      "fcf_margin": 0.1032
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": 8414200000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 1070800000.0,
+      "total_revenue": 9168300000.0,
+      "fcf_margin": 0.1168
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 1245500000.0,
+      "total_revenue": 9373600000.0,
+      "fcf_margin": 0.1329
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 1788000000.0,
+      "total_revenue": 9425300000.0,
+      "fcf_margin": 0.1897
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-03-31",
+      "free_cash_flow": -153100000.0,
+      "total_revenue": 8563000000.0,
+      "fcf_margin": -0.0179
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 945800000.0,
+      "total_revenue": 9113900000.0,
+      "fcf_margin": 0.1038
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 737400000.0,
+      "total_revenue": 9073900000.0,
+      "fcf_margin": 0.0813
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 1379100000.0,
+      "total_revenue": 9397800000.0,
+      "fcf_margin": 0.1467
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-03-31",
+      "free_cash_flow": -297200000.0,
+      "total_revenue": 8761600000.0,
+      "fcf_margin": -0.0339
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 434300000.0,
+      "total_revenue": 9456000000.0,
+      "fcf_margin": 0.0459
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 925800000.0,
+      "total_revenue": 9569000000.0,
+      "fcf_margin": 0.0967
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 1274000000.0,
+      "total_revenue": 9915100000.0,
+      "fcf_margin": 0.1285
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 91800000.0,
+      "total_revenue": 9531500000.0,
+      "fcf_margin": 0.0096
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "SBUX",
+      "report_date": "2019-09-30",
+      "free_cash_flow": null,
+      "total_revenue": 26508600000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2020-09-30",
+      "free_cash_flow": 114200000.0,
+      "total_revenue": 23518000000.0,
+      "fcf_margin": 0.0049
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2021-09-30",
+      "free_cash_flow": 4519100000.0,
+      "total_revenue": 29060600000.0,
+      "fcf_margin": 0.1555
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2022-09-30",
+      "free_cash_flow": 2556000000.0,
+      "total_revenue": 32250300000.0,
+      "fcf_margin": 0.0793
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 3675100000.0,
+      "total_revenue": 35975600000.0,
+      "fcf_margin": 0.1022
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 3318100000.0,
+      "total_revenue": 36176200000.0,
+      "fcf_margin": 0.0917
+    },
+    {
+      "symbol": "SBUX",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 2442000000.0,
+      "total_revenue": 37184400000.0,
+      "fcf_margin": 0.0657
+    }
+  ]
+}

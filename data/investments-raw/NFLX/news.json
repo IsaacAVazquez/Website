@@ -1,0 +1,92 @@
+[
+  {
+    "uuid": "32e2a5fe-6ef7-331b-afc2-15421e1baba5",
+    "symbol": "NFLX",
+    "title": "Top Analyst Reports for Exxon Mobil, Netflix & Alibaba",
+    "publisher": "Zacks",
+    "report_date": "2025-03-12",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/top-analyst-reports-exxon-mobil-201700695.html"
+  },
+  {
+    "uuid": "112b9ed0-72fc-39b4-b756-ca1c14975bc9",
+    "symbol": "NFLX",
+    "title": "The Zacks Analyst Blog Highlights Exxon Mobil, Netflix, Alibaba and CSP",
+    "publisher": "Zacks",
+    "report_date": "2025-03-12",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-exxon-133900108.html"
+  },
+  {
+    "uuid": "ac5a45d5-14ed-389f-9be0-1e190de10f03",
+    "symbol": "NFLX",
+    "title": "Quantum computing, Affirm, Netflix upgrade: Market Minute",
+    "publisher": "Yahoo Finance Video",
+    "report_date": "2025-03-17",
+    "type": "VIDEO",
+    "link": "https://finance.yahoo.com/video/quantum-computing-affirm-netflix-upgrade-150947409.html"
+  },
+  {
+    "uuid": "777e9a00-ffe8-322d-9672-2d52750accd1",
+    "symbol": "NFLX",
+    "title": "Reddit initiated, Netflix upgraded: Wall Street\u2019s top analyst calls",
+    "publisher": "TipRanks",
+    "report_date": "2025-03-18",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/reddit-initiated-netflix-upgraded-wall-134540116.html"
+  },
+  {
+    "uuid": "0b443ff0-85a6-3c59-b7be-44fe4724309f",
+    "symbol": "NFLX",
+    "title": "Closing Bell Movers: GameStop gains 7% on earnings, bitcoin announcement",
+    "publisher": "TipRanks",
+    "report_date": "2025-03-27",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/closing-bell-movers-gamestop-gains-000022309.html"
+  },
+  {
+    "uuid": "58a3eef3-3980-370e-944e-9efac5ab52b3",
+    "symbol": "NFLX",
+    "title": "Now Streaming: Amazon\u2019s film strategy hits the big-screen",
+    "publisher": "TipRanks",
+    "report_date": "2025-04-06",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/now-streaming-amazon-film-strategy-162023294.html"
+  },
+  {
+    "uuid": "eedf2543-ef7a-309c-8f29-28fd659f628b",
+    "symbol": "NFLX",
+    "title": "4 Stocks to Grab Now as Inflation Falls for First Time in Five Years",
+    "publisher": "Zacks",
+    "report_date": "2025-04-11",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/4-stocks-grab-now-inflation-123100076.html"
+  },
+  {
+    "uuid": "05dbfc24-c26d-3a9b-8683-7997581c6245",
+    "symbol": "NFLX",
+    "title": "Stock Market Today: Dow Jones, S&P 500 Close Lower; But This Recent IPO Name Bolts Higher For 3rd Straight Day (Live Coverage)",
+    "publisher": "Investor's Business Daily",
+    "report_date": "2025-04-16",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/m/05dbfc24-c26d-3a9b-8683-7997581c6245/stock-market-today%3A-dow.html"
+  },
+  {
+    "uuid": "31a140c6-af8e-370f-825b-ea2d2f3cb98b",
+    "symbol": "NFLX",
+    "title": "Big banks report Q1 beats, China stops taking Boeing deliveries: Morning Buzz",
+    "publisher": "TipRanks",
+    "report_date": "2025-04-16",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/big-banks-report-q1-beats-155936913.html"
+  },
+  {
+    "uuid": "5217b401-375d-3116-ac7e-9bf4d8831ecd",
+    "symbol": "NFLX",
+    "title": "Stocks making big moves yesterday: Allegro MicroSystems, Netflix, Hewlett Packard Enterprise, Sterling and Rocket Lab",
+    "publisher": "StockStory",
+    "report_date": "2025-04-16",
+    "type": "STORY",
+    "link": "https://finance.yahoo.com/news/stocks-making-big-moves-yesterday-122452289.html"
+  }
+]

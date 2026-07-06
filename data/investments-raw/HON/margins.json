@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "HON",
+      "report_date": "2022-06-30",
+      "gross_profit": 2907000000.0,
+      "total_revenue": 8953000000.0,
+      "gross_margin": 0.3247
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2023-06-30",
+      "gross_profit": 3520000000.0,
+      "total_revenue": 9146000000.0,
+      "gross_margin": 0.3849
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2023-09-30",
+      "gross_profit": 3542000000.0,
+      "total_revenue": 9212000000.0,
+      "gross_margin": 0.3845
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2023-12-31",
+      "gross_profit": 3239000000.0,
+      "total_revenue": 9440000000.0,
+      "gross_margin": 0.3431
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2024-03-31",
+      "gross_profit": 3522000000.0,
+      "total_revenue": 9105000000.0,
+      "gross_margin": 0.3868
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2024-06-30",
+      "gross_profit": 3721000000.0,
+      "total_revenue": 9577000000.0,
+      "gross_margin": 0.3885
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2024-09-30",
+      "gross_profit": 3749000000.0,
+      "total_revenue": 9728000000.0,
+      "gross_margin": 0.3854
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2024-12-31",
+      "gross_profit": 3670000000.0,
+      "total_revenue": 10088000000.0,
+      "gross_margin": 0.3638
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2025-03-31",
+      "gross_profit": 3462000000.0,
+      "total_revenue": 8925000000.0,
+      "gross_margin": 0.3879
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2025-06-30",
+      "gross_profit": 4023000000.0,
+      "total_revenue": 10352000000.0,
+      "gross_margin": 0.3886
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2025-09-30",
+      "gross_profit": 3547000000.0,
+      "total_revenue": 10408000000.0,
+      "gross_margin": 0.3408
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2025-12-31",
+      "gross_profit": 2474000000.0,
+      "total_revenue": 6860000000.0,
+      "gross_margin": 0.3606
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2026-03-31",
+      "gross_profit": 3539000000.0,
+      "total_revenue": 9143000000.0,
+      "gross_margin": 0.3871
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "HON",
+      "report_date": "2019-12-31",
+      "gross_profit": 12370000000.0,
+      "total_revenue": 36709000000.0,
+      "gross_margin": 0.337
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2020-12-31",
+      "gross_profit": 10468000000.0,
+      "total_revenue": 32637000000.0,
+      "gross_margin": 0.3207
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2021-12-31",
+      "gross_profit": 12331000000.0,
+      "total_revenue": 34392000000.0,
+      "gross_margin": 0.3585
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2022-12-31",
+      "gross_profit": 13119000000.0,
+      "total_revenue": 35466000000.0,
+      "gross_margin": 0.3699
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2023-12-31",
+      "gross_profit": 12372000000.0,
+      "total_revenue": 33009000000.0,
+      "gross_margin": 0.3748
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2024-12-31",
+      "gross_profit": 13357000000.0,
+      "total_revenue": 34717000000.0,
+      "gross_margin": 0.3847
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2025-12-31",
+      "gross_profit": 13829000000.0,
+      "total_revenue": 37442000000.0,
+      "gross_margin": 0.3693
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "HON",
+      "report_date": "2022-06-30",
+      "operating_income": 1601000000.0,
+      "total_revenue": 8953000000.0,
+      "operating_margin": 0.1788
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2023-06-30",
+      "operating_income": 2036000000.0,
+      "total_revenue": 9146000000.0,
+      "operating_margin": 0.2226
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2023-09-30",
+      "operating_income": 2080000000.0,
+      "total_revenue": 9212000000.0,
+      "operating_margin": 0.2258
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2023-12-31",
+      "operating_income": 1583000000.0,
+      "total_revenue": 9440000000.0,
+      "operating_margin": 0.1677
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2024-03-31",
+      "operating_income": 1860000000.0,
+      "total_revenue": 9105000000.0,
+      "operating_margin": 0.2043
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2024-06-30",
+      "operating_income": 1978000000.0,
+      "total_revenue": 9577000000.0,
+      "operating_margin": 0.2065
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2024-09-30",
+      "operating_income": 1983000000.0,
+      "total_revenue": 9728000000.0,
+      "operating_margin": 0.2038
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2024-12-31",
+      "operating_income": 1839000000.0,
+      "total_revenue": 10088000000.0,
+      "operating_margin": 0.1823
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2025-03-31",
+      "operating_income": 1736000000.0,
+      "total_revenue": 8925000000.0,
+      "operating_margin": 0.1945
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2025-06-30",
+      "operating_income": 2114000000.0,
+      "total_revenue": 10352000000.0,
+      "operating_margin": 0.2042
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2025-09-30",
+      "operating_income": 1754000000.0,
+      "total_revenue": 10408000000.0,
+      "operating_margin": 0.1685
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2025-12-31",
+      "operating_income": 714000000.0,
+      "total_revenue": 6860000000.0,
+      "operating_margin": 0.1041
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2026-03-31",
+      "operating_income": 1737000000.0,
+      "total_revenue": 9143000000.0,
+      "operating_margin": 0.19
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "HON",
+      "report_date": "2019-12-31",
+      "operating_income": 6851000000.0,
+      "total_revenue": 36709000000.0,
+      "operating_margin": 0.1866
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2020-12-31",
+      "operating_income": 6654000000.0,
+      "total_revenue": 32637000000.0,
+      "operating_margin": 0.2039
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2021-12-31",
+      "operating_income": 6200000000.0,
+      "total_revenue": 34392000000.0,
+      "operating_margin": 0.1803
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2022-12-31",
+      "operating_income": 6427000000.0,
+      "total_revenue": 35466000000.0,
+      "operating_margin": 0.1812
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2023-12-31",
+      "operating_income": 6110000000.0,
+      "total_revenue": 33009000000.0,
+      "operating_margin": 0.1851
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2024-12-31",
+      "operating_income": 6668000000.0,
+      "total_revenue": 34717000000.0,
+      "operating_margin": 0.1921
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2025-12-31",
+      "operating_income": 6567000000.0,
+      "total_revenue": 37442000000.0,
+      "operating_margin": 0.1754
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "HON",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 1261000000.0,
+      "total_revenue": 8953000000.0,
+      "net_margin": 0.1408
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 1487000000.0,
+      "total_revenue": 9146000000.0,
+      "net_margin": 0.1626
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1514000000.0,
+      "total_revenue": 9212000000.0,
+      "net_margin": 0.1644
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1263000000.0,
+      "total_revenue": 9440000000.0,
+      "net_margin": 0.1338
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1463000000.0,
+      "total_revenue": 9105000000.0,
+      "net_margin": 0.1607
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1544000000.0,
+      "total_revenue": 9577000000.0,
+      "net_margin": 0.1612
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1413000000.0,
+      "total_revenue": 9728000000.0,
+      "net_margin": 0.1453
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1285000000.0,
+      "total_revenue": 10088000000.0,
+      "net_margin": 0.1274
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1449000000.0,
+      "total_revenue": 8925000000.0,
+      "net_margin": 0.1624
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1570000000.0,
+      "total_revenue": 10352000000.0,
+      "net_margin": 0.1517
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1825000000.0,
+      "total_revenue": 10408000000.0,
+      "net_margin": 0.1753
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": -115000000.0,
+      "total_revenue": 6860000000.0,
+      "net_margin": -0.0168
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 821000000.0,
+      "total_revenue": 9143000000.0,
+      "net_margin": 0.0898
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "HON",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": 6143000000.0,
+      "total_revenue": 36709000000.0,
+      "net_margin": 0.1673
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 4779000000.0,
+      "total_revenue": 32637000000.0,
+      "net_margin": 0.1464
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 5542000000.0,
+      "total_revenue": 34392000000.0,
+      "net_margin": 0.1611
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 4966000000.0,
+      "total_revenue": 35466000000.0,
+      "net_margin": 0.14
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 5658000000.0,
+      "total_revenue": 33009000000.0,
+      "net_margin": 0.1714
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 5705000000.0,
+      "total_revenue": 34717000000.0,
+      "net_margin": 0.1643
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 4729000000.0,
+      "total_revenue": 37442000000.0,
+      "net_margin": 0.1263
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "HON",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 8953000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2023-06-30",
+      "ebitda": 2375000000.0,
+      "total_revenue": 9146000000.0,
+      "ebitda_margin": 0.2597
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2023-09-30",
+      "ebitda": 2481000000.0,
+      "total_revenue": 9212000000.0,
+      "ebitda_margin": 0.2693
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2023-12-31",
+      "ebitda": 2009000000.0,
+      "total_revenue": 9440000000.0,
+      "ebitda_margin": 0.2128
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2024-03-31",
+      "ebitda": 2382000000.0,
+      "total_revenue": 9105000000.0,
+      "ebitda_margin": 0.2616
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2024-06-30",
+      "ebitda": 2533000000.0,
+      "total_revenue": 9577000000.0,
+      "ebitda_margin": 0.2645
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2024-09-30",
+      "ebitda": 2478000000.0,
+      "total_revenue": 9728000000.0,
+      "ebitda_margin": 0.2547
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2024-12-31",
+      "ebitda": 2212000000.0,
+      "total_revenue": 10088000000.0,
+      "ebitda_margin": 0.2193
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2025-03-31",
+      "ebitda": 2275000000.0,
+      "total_revenue": 8925000000.0,
+      "ebitda_margin": 0.2549
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2025-06-30",
+      "ebitda": 2654000000.0,
+      "total_revenue": 10352000000.0,
+      "ebitda_margin": 0.2564
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2025-09-30",
+      "ebitda": 2973000000.0,
+      "total_revenue": 10408000000.0,
+      "ebitda_margin": 0.2856
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2025-12-31",
+      "ebitda": -127000000.0,
+      "total_revenue": 6860000000.0,
+      "ebitda_margin": -0.0185
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2026-03-31",
+      "ebitda": 1599000000.0,
+      "total_revenue": 9143000000.0,
+      "ebitda_margin": 0.1749
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "HON",
+      "report_date": "2019-12-31",
+      "ebitda": 9004000000.0,
+      "total_revenue": 36709000000.0,
+      "ebitda_margin": 0.2453
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2020-12-31",
+      "ebitda": 7373000000.0,
+      "total_revenue": 32637000000.0,
+      "ebitda_margin": 0.2259
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2021-12-31",
+      "ebitda": 8801000000.0,
+      "total_revenue": 34392000000.0,
+      "ebitda_margin": 0.2559
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2022-12-31",
+      "ebitda": 7997000000.0,
+      "total_revenue": 35466000000.0,
+      "ebitda_margin": 0.2255
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2023-12-31",
+      "ebitda": 7944000000.0,
+      "total_revenue": 33009000000.0,
+      "ebitda_margin": 0.2407
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2024-12-31",
+      "ebitda": 8444000000.0,
+      "total_revenue": 34717000000.0,
+      "ebitda_margin": 0.2432
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2025-12-31",
+      "ebitda": 6820000000.0,
+      "total_revenue": 37442000000.0,
+      "ebitda_margin": 0.1821
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "HON",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 631000000.0,
+      "total_revenue": 8953000000.0,
+      "fcf_margin": 0.0705
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 1127000000.0,
+      "total_revenue": 9146000000.0,
+      "fcf_margin": 0.1232
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 1560000000.0,
+      "total_revenue": 9212000000.0,
+      "fcf_margin": 0.1693
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 2591000000.0,
+      "total_revenue": 9440000000.0,
+      "fcf_margin": 0.2745
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 215000000.0,
+      "total_revenue": 9105000000.0,
+      "fcf_margin": 0.0236
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 1112000000.0,
+      "total_revenue": 9577000000.0,
+      "fcf_margin": 0.1161
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 1718000000.0,
+      "total_revenue": 9728000000.0,
+      "fcf_margin": 0.1766
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 1888000000.0,
+      "total_revenue": 10088000000.0,
+      "fcf_margin": 0.1872
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 407000000.0,
+      "total_revenue": 8925000000.0,
+      "fcf_margin": 0.0456
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 955000000.0,
+      "total_revenue": 10352000000.0,
+      "fcf_margin": 0.0923
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 2914000000.0,
+      "total_revenue": 10408000000.0,
+      "fcf_margin": 0.28
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 1146000000.0,
+      "total_revenue": 6860000000.0,
+      "fcf_margin": 0.1671
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2026-03-31",
+      "free_cash_flow": -873000000.0,
+      "total_revenue": 9143000000.0,
+      "fcf_margin": -0.0955
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "HON",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 36709000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 5302000000.0,
+      "total_revenue": 32637000000.0,
+      "fcf_margin": 0.1625
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 5143000000.0,
+      "total_revenue": 34392000000.0,
+      "fcf_margin": 0.1495
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 4508000000.0,
+      "total_revenue": 35466000000.0,
+      "fcf_margin": 0.1271
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 4599000000.0,
+      "total_revenue": 33009000000.0,
+      "fcf_margin": 0.1393
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 5226000000.0,
+      "total_revenue": 34717000000.0,
+      "fcf_margin": 0.1505
+    },
+    {
+      "symbol": "HON",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 5422000000.0,
+      "total_revenue": 37442000000.0,
+      "fcf_margin": 0.1448
+    }
+  ]
+}

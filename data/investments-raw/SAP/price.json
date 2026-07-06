@@ -1,0 +1,2270 @@
+[
+  {
+    "symbol": "SAP",
+    "report_date": "2025-07-02",
+    "open": 296.48,
+    "close": 298.16,
+    "high": 299.55,
+    "low": 295.82,
+    "volume": 1452100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-07-03",
+    "open": 298.85,
+    "close": 303.72,
+    "high": 304.1,
+    "low": 298.76,
+    "volume": 858000
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-07-07",
+    "open": 304.55,
+    "close": 305.53,
+    "high": 306.97,
+    "low": 303.78,
+    "volume": 1131600
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-07-08",
+    "open": 309.09,
+    "close": 308.76,
+    "high": 310.46,
+    "low": 307.76,
+    "volume": 1552100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-07-09",
+    "open": 310.67,
+    "close": 311.93,
+    "high": 312.26,
+    "low": 309.94,
+    "volume": 795100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-07-10",
+    "open": 313.28,
+    "close": 306.21,
+    "high": 313.28,
+    "low": 306.1,
+    "volume": 1368900
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-07-11",
+    "open": 304.11,
+    "close": 300.85,
+    "high": 304.19,
+    "low": 300.82,
+    "volume": 1105100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-07-14",
+    "open": 297.72,
+    "close": 300.64,
+    "high": 302.11,
+    "low": 296.9,
+    "volume": 902400
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-07-15",
+    "open": 303.43,
+    "close": 301.58,
+    "high": 303.94,
+    "low": 300.73,
+    "volume": 688600
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-07-16",
+    "open": 305.5,
+    "close": 306.02,
+    "high": 306.29,
+    "low": 302.01,
+    "volume": 1021500
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-07-17",
+    "open": 304.37,
+    "close": 308.61,
+    "high": 308.61,
+    "low": 304.37,
+    "volume": 1389000
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-07-18",
+    "open": 309.34,
+    "close": 305.97,
+    "high": 309.73,
+    "low": 305.3,
+    "volume": 1021200
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-07-21",
+    "open": 306.39,
+    "close": 307.27,
+    "high": 308.55,
+    "low": 305.12,
+    "volume": 936700
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-07-22",
+    "open": 306.69,
+    "close": 306.29,
+    "high": 307.66,
+    "low": 303.5,
+    "volume": 2078200
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-07-23",
+    "open": 292.92,
+    "close": 290.63,
+    "high": 294.44,
+    "low": 286.74,
+    "volume": 4638500
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-07-24",
+    "open": 288.29,
+    "close": 286.16,
+    "high": 290.56,
+    "low": 286.16,
+    "volume": 2258100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-07-25",
+    "open": 285.81,
+    "close": 288.03,
+    "high": 288.46,
+    "low": 285.43,
+    "volume": 1608900
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-07-28",
+    "open": 285.27,
+    "close": 282.38,
+    "high": 285.7,
+    "low": 282.0,
+    "volume": 1482300
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-07-29",
+    "open": 285.86,
+    "close": 287.54,
+    "high": 288.62,
+    "low": 285.84,
+    "volume": 1521100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-07-30",
+    "open": 287.75,
+    "close": 290.5,
+    "high": 291.61,
+    "low": 287.12,
+    "volume": 1375500
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-07-31",
+    "open": 290.39,
+    "close": 286.7,
+    "high": 290.72,
+    "low": 285.6,
+    "volume": 1323700
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-08-01",
+    "open": 282.08,
+    "close": 283.0,
+    "high": 284.84,
+    "low": 281.03,
+    "volume": 1578500
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-08-04",
+    "open": 284.21,
+    "close": 283.79,
+    "high": 284.38,
+    "low": 281.92,
+    "volume": 1077000
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-08-05",
+    "open": 286.05,
+    "close": 285.19,
+    "high": 287.1,
+    "low": 283.93,
+    "volume": 1090100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-08-06",
+    "open": 288.37,
+    "close": 291.78,
+    "high": 292.08,
+    "low": 287.92,
+    "volume": 1135700
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-08-07",
+    "open": 299.21,
+    "close": 295.46,
+    "high": 299.48,
+    "low": 292.21,
+    "volume": 1854600
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-08-08",
+    "open": 291.44,
+    "close": 292.12,
+    "high": 293.02,
+    "low": 289.62,
+    "volume": 1159700
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-08-11",
+    "open": 288.88,
+    "close": 287.24,
+    "high": 290.5,
+    "low": 286.71,
+    "volume": 1314300
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-08-12",
+    "open": 273.75,
+    "close": 275.89,
+    "high": 276.2,
+    "low": 268.66,
+    "volume": 5249300
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-08-13",
+    "open": 278.02,
+    "close": 278.82,
+    "high": 281.0,
+    "low": 277.02,
+    "volume": 1663000
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-08-14",
+    "open": 278.48,
+    "close": 278.91,
+    "high": 279.85,
+    "low": 278.1,
+    "volume": 954600
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-08-15",
+    "open": 278.49,
+    "close": 277.85,
+    "high": 279.53,
+    "low": 276.56,
+    "volume": 1292600
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-08-18",
+    "open": 275.88,
+    "close": 276.72,
+    "high": 276.78,
+    "low": 275.49,
+    "volume": 1724200
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-08-19",
+    "open": 277.74,
+    "close": 274.23,
+    "high": 278.52,
+    "low": 273.63,
+    "volume": 1676400
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-08-20",
+    "open": 273.13,
+    "close": 272.53,
+    "high": 273.46,
+    "low": 270.31,
+    "volume": 1249100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-08-21",
+    "open": 270.37,
+    "close": 269.21,
+    "high": 271.42,
+    "low": 268.12,
+    "volume": 1593800
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-08-22",
+    "open": 269.48,
+    "close": 271.11,
+    "high": 272.51,
+    "low": 268.32,
+    "volume": 1450700
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-08-25",
+    "open": 273.17,
+    "close": 270.26,
+    "high": 273.71,
+    "low": 270.26,
+    "volume": 1397300
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-08-26",
+    "open": 271.51,
+    "close": 269.86,
+    "high": 272.31,
+    "low": 269.45,
+    "volume": 1823800
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-08-27",
+    "open": 270.47,
+    "close": 275.11,
+    "high": 275.44,
+    "low": 270.13,
+    "volume": 1111500
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-08-28",
+    "open": 275.74,
+    "close": 275.4,
+    "high": 276.83,
+    "low": 275.15,
+    "volume": 731000
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-08-29",
+    "open": 272.26,
+    "close": 272.16,
+    "high": 272.67,
+    "low": 270.21,
+    "volume": 1208000
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-09-02",
+    "open": 266.83,
+    "close": 266.2,
+    "high": 268.6,
+    "low": 264.18,
+    "volume": 1594400
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-09-03",
+    "open": 268.81,
+    "close": 270.94,
+    "high": 270.99,
+    "low": 267.89,
+    "volume": 1063200
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-09-04",
+    "open": 272.88,
+    "close": 271.99,
+    "high": 273.12,
+    "low": 270.81,
+    "volume": 1012800
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-09-05",
+    "open": 271.67,
+    "close": 269.0,
+    "high": 272.26,
+    "low": 267.29,
+    "volume": 1700400
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-09-08",
+    "open": 268.72,
+    "close": 270.33,
+    "high": 272.02,
+    "low": 268.72,
+    "volume": 1939300
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-09-09",
+    "open": 270.05,
+    "close": 271.48,
+    "high": 271.73,
+    "low": 269.62,
+    "volume": 3125000
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-09-10",
+    "open": 270.3,
+    "close": 260.51,
+    "high": 270.3,
+    "low": 259.83,
+    "volume": 3242100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-09-11",
+    "open": 259.16,
+    "close": 258.19,
+    "high": 259.44,
+    "low": 256.68,
+    "volume": 3282000
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-09-12",
+    "open": 258.17,
+    "close": 257.16,
+    "high": 259.03,
+    "low": 256.91,
+    "volume": 1499900
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-09-15",
+    "open": 251.17,
+    "close": 252.42,
+    "high": 253.25,
+    "low": 249.14,
+    "volume": 3535100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-09-16",
+    "open": 251.51,
+    "close": 253.6,
+    "high": 254.5,
+    "low": 248.32,
+    "volume": 2803800
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-09-17",
+    "open": 259.59,
+    "close": 261.42,
+    "high": 261.52,
+    "low": 256.41,
+    "volume": 3737700
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-09-18",
+    "open": 268.2,
+    "close": 269.74,
+    "high": 271.42,
+    "low": 266.49,
+    "volume": 2962200
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-09-19",
+    "open": 269.25,
+    "close": 266.91,
+    "high": 269.68,
+    "low": 266.81,
+    "volume": 1670700
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-09-22",
+    "open": 263.83,
+    "close": 265.38,
+    "high": 265.69,
+    "low": 263.4,
+    "volume": 1548100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-09-23",
+    "open": 267.24,
+    "close": 265.27,
+    "high": 268.38,
+    "low": 265.14,
+    "volume": 1197100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-09-24",
+    "open": 271.76,
+    "close": 268.85,
+    "high": 272.24,
+    "low": 267.56,
+    "volume": 2045400
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-09-25",
+    "open": 261.51,
+    "close": 262.51,
+    "high": 263.87,
+    "low": 260.92,
+    "volume": 1216300
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-09-26",
+    "open": 262.1,
+    "close": 264.08,
+    "high": 264.5,
+    "low": 261.01,
+    "volume": 965100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-09-29",
+    "open": 262.92,
+    "close": 263.82,
+    "high": 265.65,
+    "low": 262.54,
+    "volume": 1150800
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-09-30",
+    "open": 266.74,
+    "close": 267.21,
+    "high": 268.29,
+    "low": 265.83,
+    "volume": 941100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-10-01",
+    "open": 265.84,
+    "close": 269.99,
+    "high": 270.51,
+    "low": 265.8,
+    "volume": 1394400
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-10-02",
+    "open": 272.09,
+    "close": 271.91,
+    "high": 273.84,
+    "low": 270.8,
+    "volume": 1201300
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-10-03",
+    "open": 269.93,
+    "close": 270.53,
+    "high": 271.16,
+    "low": 268.09,
+    "volume": 1027500
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-10-06",
+    "open": 271.71,
+    "close": 274.28,
+    "high": 274.4,
+    "low": 269.77,
+    "volume": 1229300
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-10-07",
+    "open": 275.0,
+    "close": 273.82,
+    "high": 275.58,
+    "low": 273.59,
+    "volume": 1051500
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-10-08",
+    "open": 275.76,
+    "close": 277.15,
+    "high": 277.5,
+    "low": 274.83,
+    "volume": 1092300
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-10-09",
+    "open": 275.59,
+    "close": 275.79,
+    "high": 276.83,
+    "low": 274.14,
+    "volume": 1157800
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-10-10",
+    "open": 275.86,
+    "close": 265.53,
+    "high": 276.13,
+    "low": 265.48,
+    "volume": 1327600
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-10-13",
+    "open": 267.39,
+    "close": 269.82,
+    "high": 269.84,
+    "low": 265.66,
+    "volume": 783500
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-10-14",
+    "open": 265.94,
+    "close": 270.52,
+    "high": 271.61,
+    "low": 264.54,
+    "volume": 1040700
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-10-15",
+    "open": 271.5,
+    "close": 271.64,
+    "high": 272.94,
+    "low": 269.26,
+    "volume": 955800
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-10-16",
+    "open": 274.08,
+    "close": 269.74,
+    "high": 276.26,
+    "low": 268.86,
+    "volume": 1247600
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-10-17",
+    "open": 267.94,
+    "close": 272.9,
+    "high": 273.02,
+    "low": 267.61,
+    "volume": 1186500
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-10-20",
+    "open": 274.94,
+    "close": 277.91,
+    "high": 279.38,
+    "low": 274.94,
+    "volume": 1464800
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-10-21",
+    "open": 276.59,
+    "close": 280.46,
+    "high": 280.81,
+    "low": 276.04,
+    "volume": 2020600
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-10-22",
+    "open": 277.08,
+    "close": 276.22,
+    "high": 278.85,
+    "low": 273.95,
+    "volume": 3154100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-10-23",
+    "open": 269.92,
+    "close": 278.53,
+    "high": 281.37,
+    "low": 269.92,
+    "volume": 2367400
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-10-24",
+    "open": 276.53,
+    "close": 269.55,
+    "high": 276.54,
+    "low": 268.9,
+    "volume": 2207400
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-10-27",
+    "open": 272.5,
+    "close": 272.16,
+    "high": 274.15,
+    "low": 271.21,
+    "volume": 1970900
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-10-28",
+    "open": 271.91,
+    "close": 270.06,
+    "high": 273.4,
+    "low": 270.04,
+    "volume": 1463700
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-10-29",
+    "open": 264.62,
+    "close": 259.64,
+    "high": 264.73,
+    "low": 258.93,
+    "volume": 2019700
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-10-30",
+    "open": 259.06,
+    "close": 259.19,
+    "high": 263.27,
+    "low": 258.88,
+    "volume": 1445500
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-10-31",
+    "open": 259.04,
+    "close": 260.01,
+    "high": 260.97,
+    "low": 258.14,
+    "volume": 1972100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-11-03",
+    "open": 264.02,
+    "close": 263.96,
+    "high": 265.88,
+    "low": 261.85,
+    "volume": 1171900
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-11-04",
+    "open": 258.68,
+    "close": 259.64,
+    "high": 260.36,
+    "low": 258.32,
+    "volume": 1327500
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-11-05",
+    "open": 259.46,
+    "close": 261.06,
+    "high": 264.1,
+    "low": 259.23,
+    "volume": 983600
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-11-06",
+    "open": 257.85,
+    "close": 253.88,
+    "high": 258.5,
+    "low": 250.99,
+    "volume": 1290800
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-11-07",
+    "open": 250.21,
+    "close": 251.96,
+    "high": 251.97,
+    "low": 249.02,
+    "volume": 1127900
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-11-10",
+    "open": 251.53,
+    "close": 251.76,
+    "high": 251.83,
+    "low": 249.44,
+    "volume": 1028000
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-11-11",
+    "open": 252.11,
+    "close": 254.38,
+    "high": 254.61,
+    "low": 251.27,
+    "volume": 940700
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-11-12",
+    "open": 253.18,
+    "close": 253.34,
+    "high": 255.2,
+    "low": 252.29,
+    "volume": 1170300
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-11-13",
+    "open": 253.4,
+    "close": 251.86,
+    "high": 254.63,
+    "low": 251.81,
+    "volume": 832200
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-11-14",
+    "open": 243.63,
+    "close": 245.03,
+    "high": 247.26,
+    "low": 243.08,
+    "volume": 2523000
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-11-17",
+    "open": 242.65,
+    "close": 238.9,
+    "high": 242.81,
+    "low": 237.25,
+    "volume": 2410400
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-11-18",
+    "open": 238.55,
+    "close": 237.99,
+    "high": 240.44,
+    "low": 236.31,
+    "volume": 1399600
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-11-19",
+    "open": 239.59,
+    "close": 237.97,
+    "high": 240.05,
+    "low": 236.64,
+    "volume": 1183600
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-11-20",
+    "open": 240.66,
+    "close": 233.94,
+    "high": 241.1,
+    "low": 233.51,
+    "volume": 2092200
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-11-21",
+    "open": 237.5,
+    "close": 236.7,
+    "high": 238.9,
+    "low": 234.75,
+    "volume": 1763400
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-11-24",
+    "open": 239.33,
+    "close": 238.29,
+    "high": 239.56,
+    "low": 237.13,
+    "volume": 1856500
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-11-25",
+    "open": 235.72,
+    "close": 237.86,
+    "high": 238.54,
+    "low": 234.08,
+    "volume": 2031400
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-11-26",
+    "open": 238.6,
+    "close": 240.02,
+    "high": 240.94,
+    "low": 237.69,
+    "volume": 1512200
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-11-28",
+    "open": 240.34,
+    "close": 241.75,
+    "high": 242.75,
+    "low": 239.95,
+    "volume": 628700
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-12-01",
+    "open": 241.55,
+    "close": 242.08,
+    "high": 244.1,
+    "low": 241.16,
+    "volume": 1352600
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-12-02",
+    "open": 241.34,
+    "close": 241.72,
+    "high": 243.02,
+    "low": 240.94,
+    "volume": 1626100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-12-03",
+    "open": 241.08,
+    "close": 243.82,
+    "high": 244.21,
+    "low": 240.39,
+    "volume": 1527300
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-12-04",
+    "open": 248.6,
+    "close": 245.47,
+    "high": 248.86,
+    "low": 244.91,
+    "volume": 1706600
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-12-05",
+    "open": 246.82,
+    "close": 247.26,
+    "high": 250.29,
+    "low": 246.51,
+    "volume": 1407600
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-12-08",
+    "open": 245.32,
+    "close": 242.98,
+    "high": 245.77,
+    "low": 242.63,
+    "volume": 1751300
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-12-09",
+    "open": 242.81,
+    "close": 244.13,
+    "high": 244.77,
+    "low": 242.45,
+    "volume": 840000
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-12-10",
+    "open": 243.23,
+    "close": 245.88,
+    "high": 246.97,
+    "low": 242.1,
+    "volume": 896900
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-12-11",
+    "open": 244.64,
+    "close": 247.39,
+    "high": 247.88,
+    "low": 244.5,
+    "volume": 1515200
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-12-12",
+    "open": 246.57,
+    "close": 244.83,
+    "high": 247.52,
+    "low": 244.08,
+    "volume": 1284000
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-12-15",
+    "open": 247.61,
+    "close": 244.49,
+    "high": 247.94,
+    "low": 242.92,
+    "volume": 2105100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-12-16",
+    "open": 242.46,
+    "close": 243.66,
+    "high": 244.75,
+    "low": 240.1,
+    "volume": 1785400
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-12-17",
+    "open": 241.6,
+    "close": 241.42,
+    "high": 244.53,
+    "low": 241.05,
+    "volume": 1152400
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-12-18",
+    "open": 243.73,
+    "close": 244.31,
+    "high": 246.34,
+    "low": 243.44,
+    "volume": 1263200
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-12-19",
+    "open": 243.58,
+    "close": 244.33,
+    "high": 245.5,
+    "low": 242.86,
+    "volume": 1567400
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-12-22",
+    "open": 245.92,
+    "close": 245.3,
+    "high": 246.46,
+    "low": 244.22,
+    "volume": 1153200
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-12-23",
+    "open": 245.98,
+    "close": 244.96,
+    "high": 246.25,
+    "low": 244.12,
+    "volume": 869600
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-12-24",
+    "open": 246.35,
+    "close": 245.6,
+    "high": 246.37,
+    "low": 244.03,
+    "volume": 383400
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-12-26",
+    "open": 245.66,
+    "close": 246.56,
+    "high": 246.59,
+    "low": 244.82,
+    "volume": 491700
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-12-29",
+    "open": 245.63,
+    "close": 246.04,
+    "high": 246.55,
+    "low": 244.77,
+    "volume": 821000
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-12-30",
+    "open": 244.61,
+    "close": 244.59,
+    "high": 245.95,
+    "low": 244.51,
+    "volume": 648600
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2025-12-31",
+    "open": 244.46,
+    "close": 242.91,
+    "high": 245.51,
+    "low": 242.77,
+    "volume": 679700
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-01-02",
+    "open": 242.46,
+    "close": 236.92,
+    "high": 242.69,
+    "low": 234.65,
+    "volume": 1473100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-01-05",
+    "open": 238.07,
+    "close": 240.44,
+    "high": 242.23,
+    "low": 237.42,
+    "volume": 1416300
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-01-06",
+    "open": 236.51,
+    "close": 237.98,
+    "high": 238.63,
+    "low": 234.54,
+    "volume": 1638800
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-01-07",
+    "open": 242.3,
+    "close": 243.43,
+    "high": 245.15,
+    "low": 240.95,
+    "volume": 1434200
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-01-08",
+    "open": 241.26,
+    "close": 241.03,
+    "high": 242.28,
+    "low": 240.19,
+    "volume": 1349100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-01-09",
+    "open": 247.7,
+    "close": 247.11,
+    "high": 248.22,
+    "low": 243.62,
+    "volume": 1737800
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-01-12",
+    "open": 248.56,
+    "close": 248.84,
+    "high": 249.55,
+    "low": 246.98,
+    "volume": 1335200
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-01-13",
+    "open": 254.88,
+    "close": 247.1,
+    "high": 255.9,
+    "low": 245.9,
+    "volume": 2279800
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-01-14",
+    "open": 245.25,
+    "close": 238.88,
+    "high": 245.93,
+    "low": 236.68,
+    "volume": 2206400
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-01-15",
+    "open": 237.88,
+    "close": 235.84,
+    "high": 239.84,
+    "low": 235.41,
+    "volume": 2080200
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-01-16",
+    "open": 234.82,
+    "close": 233.59,
+    "high": 235.0,
+    "low": 231.91,
+    "volume": 1883300
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-01-20",
+    "open": 224.78,
+    "close": 226.92,
+    "high": 228.54,
+    "low": 224.78,
+    "volume": 2598600
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-01-21",
+    "open": 223.53,
+    "close": 225.1,
+    "high": 226.46,
+    "low": 221.71,
+    "volume": 3153900
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-01-22",
+    "open": 221.13,
+    "close": 226.35,
+    "high": 226.63,
+    "low": 220.89,
+    "volume": 3399000
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-01-23",
+    "open": 228.85,
+    "close": 231.07,
+    "high": 234.84,
+    "low": 228.82,
+    "volume": 4046100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-01-26",
+    "open": 234.79,
+    "close": 239.92,
+    "high": 239.99,
+    "low": 234.12,
+    "volume": 2313800
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-01-27",
+    "open": 236.63,
+    "close": 233.94,
+    "high": 237.92,
+    "low": 232.33,
+    "volume": 2014500
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-01-28",
+    "open": 235.56,
+    "close": 236.11,
+    "high": 236.84,
+    "low": 233.97,
+    "volume": 2173000
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-01-29",
+    "open": 199.04,
+    "close": 200.21,
+    "high": 201.44,
+    "low": 195.12,
+    "volume": 9484800
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-01-30",
+    "open": 203.82,
+    "close": 201.04,
+    "high": 204.39,
+    "low": 200.96,
+    "volume": 6265400
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-02-02",
+    "open": 205.58,
+    "close": 207.23,
+    "high": 207.55,
+    "low": 203.63,
+    "volume": 6261500
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-02-03",
+    "open": 201.39,
+    "close": 197.29,
+    "high": 202.2,
+    "low": 195.06,
+    "volume": 8152400
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-02-04",
+    "open": 191.0,
+    "close": 199.68,
+    "high": 200.2,
+    "low": 189.22,
+    "volume": 6630000
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-02-05",
+    "open": 200.7,
+    "close": 197.41,
+    "high": 203.26,
+    "low": 197.08,
+    "volume": 4492300
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-02-06",
+    "open": 200.42,
+    "close": 203.34,
+    "high": 203.51,
+    "low": 199.73,
+    "volume": 3050500
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-02-09",
+    "open": 206.8,
+    "close": 210.41,
+    "high": 210.67,
+    "low": 204.77,
+    "volume": 3576100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-02-10",
+    "open": 210.53,
+    "close": 212.21,
+    "high": 212.98,
+    "low": 210.45,
+    "volume": 3611500
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-02-11",
+    "open": 206.43,
+    "close": 202.65,
+    "high": 207.83,
+    "low": 199.78,
+    "volume": 3619200
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-02-12",
+    "open": 203.26,
+    "close": 203.74,
+    "high": 204.44,
+    "low": 200.37,
+    "volume": 3730600
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-02-13",
+    "open": 205.92,
+    "close": 204.53,
+    "high": 206.92,
+    "low": 203.47,
+    "volume": 2590500
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-02-17",
+    "open": 202.11,
+    "close": 201.47,
+    "high": 203.54,
+    "low": 199.13,
+    "volume": 1653800
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-02-18",
+    "open": 201.82,
+    "close": 205.2,
+    "high": 205.8,
+    "low": 201.18,
+    "volume": 1753100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-02-19",
+    "open": 202.61,
+    "close": 200.26,
+    "high": 203.2,
+    "low": 199.87,
+    "volume": 1856800
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-02-20",
+    "open": 201.13,
+    "close": 202.59,
+    "high": 205.33,
+    "low": 200.37,
+    "volume": 1657200
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-02-23",
+    "open": 199.12,
+    "close": 196.71,
+    "high": 199.22,
+    "low": 196.06,
+    "volume": 2117900
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-02-24",
+    "open": 194.9,
+    "close": 196.46,
+    "high": 198.67,
+    "low": 193.23,
+    "volume": 2947300
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-02-25",
+    "open": 197.45,
+    "close": 198.25,
+    "high": 198.83,
+    "low": 195.06,
+    "volume": 2799100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-02-26",
+    "open": 202.36,
+    "close": 204.68,
+    "high": 206.0,
+    "low": 201.42,
+    "volume": 2266100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-02-27",
+    "open": 200.55,
+    "close": 201.53,
+    "high": 202.85,
+    "low": 198.71,
+    "volume": 2624700
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-03-02",
+    "open": 195.85,
+    "close": 196.01,
+    "high": 198.11,
+    "low": 194.55,
+    "volume": 3509400
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-03-03",
+    "open": 187.94,
+    "close": 196.33,
+    "high": 196.91,
+    "low": 187.94,
+    "volume": 6817400
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-03-04",
+    "open": 193.48,
+    "close": 195.58,
+    "high": 197.1,
+    "low": 193.07,
+    "volume": 3527600
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-03-05",
+    "open": 194.73,
+    "close": 199.48,
+    "high": 200.42,
+    "low": 194.73,
+    "volume": 3389300
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-03-06",
+    "open": 198.16,
+    "close": 202.25,
+    "high": 202.25,
+    "low": 197.34,
+    "volume": 2427900
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-03-09",
+    "open": 199.98,
+    "close": 200.1,
+    "high": 201.49,
+    "low": 197.46,
+    "volume": 3059100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-03-10",
+    "open": 199.9,
+    "close": 195.83,
+    "high": 200.06,
+    "low": 193.63,
+    "volume": 2648700
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-03-11",
+    "open": 194.48,
+    "close": 191.22,
+    "high": 195.79,
+    "low": 188.75,
+    "volume": 3219100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-03-12",
+    "open": 192.39,
+    "close": 190.5,
+    "high": 194.74,
+    "low": 190.33,
+    "volume": 2345000
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-03-13",
+    "open": 191.87,
+    "close": 189.94,
+    "high": 193.25,
+    "low": 189.14,
+    "volume": 1731700
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-03-16",
+    "open": 190.59,
+    "close": 191.63,
+    "high": 191.89,
+    "low": 189.67,
+    "volume": 1812800
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-03-17",
+    "open": 190.43,
+    "close": 190.12,
+    "high": 192.94,
+    "low": 189.23,
+    "volume": 1793700
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-03-18",
+    "open": 189.67,
+    "close": 183.74,
+    "high": 190.98,
+    "low": 183.69,
+    "volume": 2312100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-03-19",
+    "open": 184.43,
+    "close": 185.01,
+    "high": 186.81,
+    "low": 183.19,
+    "volume": 3329400
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-03-20",
+    "open": 177.04,
+    "close": 175.8,
+    "high": 178.03,
+    "low": 174.5,
+    "volume": 5687000
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-03-23",
+    "open": 180.81,
+    "close": 178.16,
+    "high": 181.47,
+    "low": 177.09,
+    "volume": 2420100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-03-24",
+    "open": 172.22,
+    "close": 171.0,
+    "high": 172.65,
+    "low": 169.26,
+    "volume": 3590400
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-03-25",
+    "open": 172.96,
+    "close": 168.95,
+    "high": 173.86,
+    "low": 168.14,
+    "volume": 2449900
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-03-26",
+    "open": 167.72,
+    "close": 167.08,
+    "high": 170.95,
+    "low": 166.3,
+    "volume": 3719600
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-03-27",
+    "open": 167.21,
+    "close": 164.02,
+    "high": 167.4,
+    "low": 163.77,
+    "volume": 2239000
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-03-30",
+    "open": 166.8,
+    "close": 168.29,
+    "high": 170.4,
+    "low": 166.08,
+    "volume": 2673100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-03-31",
+    "open": 169.41,
+    "close": 171.21,
+    "high": 172.91,
+    "low": 167.93,
+    "volume": 2324300
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-04-01",
+    "open": 172.98,
+    "close": 171.36,
+    "high": 173.22,
+    "low": 169.24,
+    "volume": 2311800
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-04-02",
+    "open": 168.27,
+    "close": 171.77,
+    "high": 172.51,
+    "low": 166.92,
+    "volume": 2852100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-04-06",
+    "open": 171.9,
+    "close": 171.12,
+    "high": 172.53,
+    "low": 169.54,
+    "volume": 1424200
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-04-07",
+    "open": 170.22,
+    "close": 169.48,
+    "high": 170.43,
+    "low": 166.62,
+    "volume": 2195900
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-04-08",
+    "open": 177.73,
+    "close": 169.18,
+    "high": 177.9,
+    "low": 169.0,
+    "volume": 3642600
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-04-09",
+    "open": 166.27,
+    "close": 164.5,
+    "high": 166.39,
+    "low": 160.66,
+    "volume": 5260900
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-04-10",
+    "open": 166.28,
+    "close": 163.1,
+    "high": 166.28,
+    "low": 161.91,
+    "volume": 5279900
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-04-13",
+    "open": 162.91,
+    "close": 169.57,
+    "high": 169.81,
+    "low": 162.67,
+    "volume": 3311300
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-04-14",
+    "open": 170.01,
+    "close": 167.81,
+    "high": 171.75,
+    "low": 166.94,
+    "volume": 3100900
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-04-15",
+    "open": 170.97,
+    "close": 172.9,
+    "high": 173.81,
+    "low": 170.15,
+    "volume": 2687900
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-04-16",
+    "open": 179.54,
+    "close": 177.41,
+    "high": 179.95,
+    "low": 176.75,
+    "volume": 5150000
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-04-17",
+    "open": 187.2,
+    "close": 181.22,
+    "high": 188.5,
+    "low": 180.06,
+    "volume": 6647500
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-04-20",
+    "open": 178.09,
+    "close": 178.94,
+    "high": 180.32,
+    "low": 177.06,
+    "volume": 3200900
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-04-21",
+    "open": 177.95,
+    "close": 176.44,
+    "high": 180.67,
+    "low": 176.22,
+    "volume": 3128400
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-04-22",
+    "open": 173.78,
+    "close": 174.02,
+    "high": 176.9,
+    "low": 173.43,
+    "volume": 3424000
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-04-23",
+    "open": 165.96,
+    "close": 163.25,
+    "high": 168.29,
+    "low": 162.0,
+    "volume": 7314600
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-04-24",
+    "open": 175.1,
+    "close": 175.26,
+    "high": 175.83,
+    "low": 171.56,
+    "volume": 6846400
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-04-27",
+    "open": 175.65,
+    "close": 173.44,
+    "high": 177.08,
+    "low": 173.25,
+    "volume": 3327900
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-04-28",
+    "open": 174.03,
+    "close": 173.49,
+    "high": 175.55,
+    "low": 173.15,
+    "volume": 2760500
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-04-29",
+    "open": 171.5,
+    "close": 170.1,
+    "high": 171.57,
+    "low": 169.08,
+    "volume": 3350800
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-04-30",
+    "open": 170.57,
+    "close": 169.49,
+    "high": 171.79,
+    "low": 168.65,
+    "volume": 3158200
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-05-01",
+    "open": 172.64,
+    "close": 170.76,
+    "high": 173.82,
+    "low": 169.5,
+    "volume": 2920000
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-05-04",
+    "open": 172.12,
+    "close": 171.42,
+    "high": 173.99,
+    "low": 171.26,
+    "volume": 3016100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-05-05",
+    "open": 171.02,
+    "close": 172.39,
+    "high": 173.11,
+    "low": 168.9,
+    "volume": 2943100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-05-06",
+    "open": 178.59,
+    "close": 173.13,
+    "high": 178.59,
+    "low": 172.48,
+    "volume": 6245900
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-05-07",
+    "open": 176.11,
+    "close": 174.71,
+    "high": 180.03,
+    "low": 174.62,
+    "volume": 4428800
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-05-08",
+    "open": 174.31,
+    "close": 173.7,
+    "high": 174.34,
+    "low": 170.89,
+    "volume": 3705500
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-05-11",
+    "open": 173.24,
+    "close": 170.1,
+    "high": 173.83,
+    "low": 168.8,
+    "volume": 2791700
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-05-12",
+    "open": 170.44,
+    "close": 167.27,
+    "high": 170.44,
+    "low": 165.6,
+    "volume": 2896900
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-05-13",
+    "open": 162.31,
+    "close": 160.82,
+    "high": 162.69,
+    "low": 158.58,
+    "volume": 5044700
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-05-14",
+    "open": 160.97,
+    "close": 164.18,
+    "high": 165.23,
+    "low": 160.08,
+    "volume": 3454100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-05-15",
+    "open": 168.43,
+    "close": 169.48,
+    "high": 169.77,
+    "low": 166.57,
+    "volume": 3618600
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-05-18",
+    "open": 167.78,
+    "close": 174.62,
+    "high": 175.33,
+    "low": 167.37,
+    "volume": 3140300
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-05-19",
+    "open": 184.23,
+    "close": 178.8,
+    "high": 185.36,
+    "low": 178.52,
+    "volume": 5876700
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-05-20",
+    "open": 176.26,
+    "close": 179.89,
+    "high": 180.16,
+    "low": 174.35,
+    "volume": 3132100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-05-21",
+    "open": 176.12,
+    "close": 176.28,
+    "high": 177.03,
+    "low": 172.73,
+    "volume": 2467100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-05-22",
+    "open": 177.05,
+    "close": 175.95,
+    "high": 179.71,
+    "low": 175.38,
+    "volume": 2000400
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-05-26",
+    "open": 176.53,
+    "close": 175.15,
+    "high": 176.86,
+    "low": 174.8,
+    "volume": 2162300
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-05-27",
+    "open": 174.4,
+    "close": 174.14,
+    "high": 176.96,
+    "low": 173.47,
+    "volume": 1994500
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-05-28",
+    "open": 172.82,
+    "close": 175.46,
+    "high": 177.84,
+    "low": 171.69,
+    "volume": 3516100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-05-29",
+    "open": 175.94,
+    "close": 181.79,
+    "high": 182.82,
+    "low": 175.1,
+    "volume": 5018800
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-06-01",
+    "open": 193.97,
+    "close": 196.11,
+    "high": 196.39,
+    "low": 191.34,
+    "volume": 4681700
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-06-02",
+    "open": 192.74,
+    "close": 190.82,
+    "high": 194.12,
+    "low": 186.89,
+    "volume": 4402000
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-06-03",
+    "open": 185.14,
+    "close": 180.67,
+    "high": 186.01,
+    "low": 180.02,
+    "volume": 2634700
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-06-04",
+    "open": 192.31,
+    "close": 187.14,
+    "high": 192.48,
+    "low": 187.0,
+    "volume": 3925600
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-06-05",
+    "open": 190.68,
+    "close": 184.77,
+    "high": 192.13,
+    "low": 183.8,
+    "volume": 3822400
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-06-08",
+    "open": 182.6,
+    "close": 181.92,
+    "high": 183.67,
+    "low": 181.6,
+    "volume": 2186800
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-06-09",
+    "open": 178.77,
+    "close": 178.92,
+    "high": 180.69,
+    "low": 176.33,
+    "volume": 3227800
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-06-10",
+    "open": 170.1,
+    "close": 170.3,
+    "high": 173.85,
+    "low": 169.4,
+    "volume": 3143200
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-06-11",
+    "open": 163.84,
+    "close": 163.64,
+    "high": 165.46,
+    "low": 160.42,
+    "volume": 4241800
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-06-12",
+    "open": 162.45,
+    "close": 164.18,
+    "high": 164.37,
+    "low": 160.03,
+    "volume": 2504000
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-06-15",
+    "open": 166.52,
+    "close": 164.33,
+    "high": 168.05,
+    "low": 164.2,
+    "volume": 1664300
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-06-16",
+    "open": 167.31,
+    "close": 165.41,
+    "high": 168.19,
+    "low": 164.57,
+    "volume": 1667000
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-06-17",
+    "open": 165.24,
+    "close": 158.79,
+    "high": 166.16,
+    "low": 158.79,
+    "volume": 2659800
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-06-18",
+    "open": 156.55,
+    "close": 155.22,
+    "high": 156.6,
+    "low": 154.13,
+    "volume": 3037100
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-06-22",
+    "open": 150.43,
+    "close": 149.51,
+    "high": 152.86,
+    "low": 149.19,
+    "volume": 2771200
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-06-23",
+    "open": 154.72,
+    "close": 153.38,
+    "high": 155.22,
+    "low": 152.6,
+    "volume": 2682300
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-06-24",
+    "open": 151.99,
+    "close": 152.75,
+    "high": 154.35,
+    "low": 151.42,
+    "volume": 2075500
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-06-25",
+    "open": 149.92,
+    "close": 148.06,
+    "high": 152.55,
+    "low": 148.06,
+    "volume": 2684800
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-06-26",
+    "open": 150.98,
+    "close": 155.09,
+    "high": 155.37,
+    "low": 150.76,
+    "volume": 2229800
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-06-29",
+    "open": 157.53,
+    "close": 154.9,
+    "high": 158.06,
+    "low": 154.67,
+    "volume": 2097000
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-06-30",
+    "open": 152.19,
+    "close": 154.11,
+    "high": 154.78,
+    "low": 151.95,
+    "volume": 2125600
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-07-01",
+    "open": 157.8,
+    "close": 159.15,
+    "high": 160.71,
+    "low": 156.75,
+    "volume": 2849300
+  },
+  {
+    "symbol": "SAP",
+    "report_date": "2026-07-02",
+    "open": 159.87,
+    "close": 162.59,
+    "high": 163.04,
+    "low": 159.55,
+    "volume": 2371200
+  }
+]

@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "GE",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 261000000.0,
+      "beginning_stockholders_equity": 31194000000.0,
+      "ending_stockholders_equity": 28665000000.0,
+      "avg_equity": 29929500000.0,
+      "roe": 0.0087
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1592000000.0,
+      "beginning_stockholders_equity": 28665000000.0,
+      "ending_stockholders_equity": 27403000000.0,
+      "avg_equity": 28034000000.0,
+      "roe": 0.0568
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1539000000.0,
+      "beginning_stockholders_equity": 27403000000.0,
+      "ending_stockholders_equity": 29855000000.0,
+      "avg_equity": 28629000000.0,
+      "roe": 0.0538
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1266000000.0,
+      "beginning_stockholders_equity": 29855000000.0,
+      "ending_stockholders_equity": 18598000000.0,
+      "avg_equity": 24226500000.0,
+      "roe": 0.0523
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1852000000.0,
+      "beginning_stockholders_equity": 18598000000.0,
+      "ending_stockholders_equity": 18874000000.0,
+      "avg_equity": 18736000000.0,
+      "roe": 0.0988
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1899000000.0,
+      "beginning_stockholders_equity": 18874000000.0,
+      "ending_stockholders_equity": 19342000000.0,
+      "avg_equity": 19108000000.0,
+      "roe": 0.0994
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1978000000.0,
+      "beginning_stockholders_equity": 19342000000.0,
+      "ending_stockholders_equity": 19251000000.0,
+      "avg_equity": 19296500000.0,
+      "roe": 0.1025
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 2028000000.0,
+      "beginning_stockholders_equity": 19251000000.0,
+      "ending_stockholders_equity": 19135000000.0,
+      "avg_equity": 19193000000.0,
+      "roe": 0.1057
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 2157000000.0,
+      "beginning_stockholders_equity": 19135000000.0,
+      "ending_stockholders_equity": 18812000000.0,
+      "avg_equity": 18973500000.0,
+      "roe": 0.1137
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 2541000000.0,
+      "beginning_stockholders_equity": 18812000000.0,
+      "ending_stockholders_equity": 18677000000.0,
+      "avg_equity": 18744500000.0,
+      "roe": 0.1356
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1904000000.0,
+      "beginning_stockholders_equity": 18677000000.0,
+      "ending_stockholders_equity": 18057000000.0,
+      "avg_equity": 18367000000.0,
+      "roe": 0.1037
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "GE",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 261000000.0,
+      "beginning_total_assets": 163006000000.0,
+      "ending_total_assets": 156662000000.0,
+      "avg_assets": 159834000000.0,
+      "roa": 0.0016
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1592000000.0,
+      "beginning_total_assets": 156662000000.0,
+      "ending_total_assets": 173300000000.0,
+      "avg_assets": 164981000000.0,
+      "roa": 0.0096
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1539000000.0,
+      "beginning_total_assets": 173300000000.0,
+      "ending_total_assets": 163942000000.0,
+      "avg_assets": 168621000000.0,
+      "roa": 0.0091
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1266000000.0,
+      "beginning_total_assets": 163942000000.0,
+      "ending_total_assets": 123190000000.0,
+      "avg_assets": 143566000000.0,
+      "roa": 0.0088
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1852000000.0,
+      "beginning_total_assets": 123190000000.0,
+      "ending_total_assets": 126698000000.0,
+      "avg_assets": 124944000000.0,
+      "roa": 0.0148
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1899000000.0,
+      "beginning_total_assets": 126698000000.0,
+      "ending_total_assets": 123140000000.0,
+      "avg_assets": 124919000000.0,
+      "roa": 0.0152
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1978000000.0,
+      "beginning_total_assets": 123140000000.0,
+      "ending_total_assets": 124123000000.0,
+      "avg_assets": 123631500000.0,
+      "roa": 0.016
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 2028000000.0,
+      "beginning_total_assets": 124123000000.0,
+      "ending_total_assets": 125256000000.0,
+      "avg_assets": 124689500000.0,
+      "roa": 0.0163
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 2157000000.0,
+      "beginning_total_assets": 125256000000.0,
+      "ending_total_assets": 128243000000.0,
+      "avg_assets": 126749500000.0,
+      "roa": 0.017
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 2541000000.0,
+      "beginning_total_assets": 128243000000.0,
+      "ending_total_assets": 130169000000.0,
+      "avg_assets": 129206000000.0,
+      "roa": 0.0197
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1904000000.0,
+      "beginning_total_assets": 130169000000.0,
+      "ending_total_assets": 128445000000.0,
+      "avg_assets": 129307000000.0,
+      "roa": 0.0147
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "GE",
+      "report_date": "2023-09-30",
+      "ebit": 603000000.0,
+      "tax_rate_for_calcs": 0.08,
+      "nopat": 554760000.0,
+      "beginning_invested_capital": 52973000000.0,
+      "ending_invested_capital": 49488000000.0,
+      "avg_invested_capital": 51230500000.0,
+      "roic": 0.0108
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2023-12-31",
+      "ebit": 2305000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 1820950000.0,
+      "beginning_invested_capital": 49488000000.0,
+      "ending_invested_capital": 47928000000.0,
+      "avg_invested_capital": 48708000000.0,
+      "roic": 0.0374
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2024-03-31",
+      "ebit": 2250000000.0,
+      "tax_rate_for_calcs": 0.12,
+      "nopat": 1980000000.0,
+      "beginning_invested_capital": 47928000000.0,
+      "ending_invested_capital": 50380000000.0,
+      "avg_invested_capital": 49154000000.0,
+      "roic": 0.0403
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2024-06-30",
+      "ebit": 1695000000.0,
+      "tax_rate_for_calcs": 0.09,
+      "nopat": 1542450000.0,
+      "beginning_invested_capital": 50380000000.0,
+      "ending_invested_capital": 38271000000.0,
+      "avg_invested_capital": 44325500000.0,
+      "roic": 0.0348
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2024-09-30",
+      "ebit": 2144000000.0,
+      "tax_rate_for_calcs": 0.11,
+      "nopat": 1908160000.0,
+      "beginning_invested_capital": 38271000000.0,
+      "ending_invested_capital": 38796000000.0,
+      "avg_invested_capital": 38533500000.0,
+      "roic": 0.0495
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2024-12-31",
+      "ebit": 2517000000.0,
+      "tax_rate_for_calcs": 0.17,
+      "nopat": 2089110000.0,
+      "beginning_invested_capital": 38796000000.0,
+      "ending_invested_capital": 38615000000.0,
+      "avg_invested_capital": 38705500000.0,
+      "roic": 0.054
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2025-03-31",
+      "ebit": 2455000000.0,
+      "tax_rate_for_calcs": 0.13,
+      "nopat": 2135850000.0,
+      "beginning_invested_capital": 38615000000.0,
+      "ending_invested_capital": 38822000000.0,
+      "avg_invested_capital": 38718500000.0,
+      "roic": 0.0552
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2025-06-30",
+      "ebit": 2547000000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 2139480000.0,
+      "beginning_invested_capital": 38822000000.0,
+      "ending_invested_capital": 38022000000.0,
+      "avg_invested_capital": 38422000000.0,
+      "roic": 0.0557
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2025-09-30",
+      "ebit": 2740000000.0,
+      "tax_rate_for_calcs": 0.14,
+      "nopat": 2356400000.0,
+      "beginning_invested_capital": 38022000000.0,
+      "ending_invested_capital": 39650000000.0,
+      "avg_invested_capital": 38836000000.0,
+      "roic": 0.0607
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2025-12-31",
+      "ebit": 3101000000.0,
+      "tax_rate_for_calcs": 0.14,
+      "nopat": 2666860000.0,
+      "beginning_invested_capital": 39650000000.0,
+      "ending_invested_capital": 39172000000.0,
+      "avg_invested_capital": 39411000000.0,
+      "roic": 0.0677
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2026-03-31",
+      "ebit": 2593000000.0,
+      "tax_rate_for_calcs": 0.12,
+      "nopat": 2281840000.0,
+      "beginning_invested_capital": 39172000000.0,
+      "ending_invested_capital": 38334000000.0,
+      "avg_invested_capital": 38753000000.0,
+      "roic": 0.0589
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "GE",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0087,
+      "roa": 0.0016,
+      "equity_multiplier": 5.44
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0568,
+      "roa": 0.0096,
+      "equity_multiplier": 5.92
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0538,
+      "roa": 0.0091,
+      "equity_multiplier": 5.91
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0523,
+      "roa": 0.0088,
+      "equity_multiplier": 5.94
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0988,
+      "roa": 0.0148,
+      "equity_multiplier": 6.68
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.0994,
+      "roa": 0.0152,
+      "equity_multiplier": 6.54
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.1025,
+      "roa": 0.016,
+      "equity_multiplier": 6.41
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.1057,
+      "roa": 0.0163,
+      "equity_multiplier": 6.48
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.1137,
+      "roa": 0.017,
+      "equity_multiplier": 6.69
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.1356,
+      "roa": 0.0197,
+      "equity_multiplier": 6.88
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.1037,
+      "roa": 0.0147,
+      "equity_multiplier": 7.05
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "GE",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0016,
+      "net_margin": 0.0281,
+      "asset_turnover": 0.06
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0096,
+      "net_margin": 0.082,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0091,
+      "net_margin": 0.1719,
+      "asset_turnover": 0.05
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0088,
+      "net_margin": 0.1392,
+      "asset_turnover": 0.06
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0148,
+      "net_margin": 0.1882,
+      "asset_turnover": 0.08
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0152,
+      "net_margin": 0.1757,
+      "asset_turnover": 0.09
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.016,
+      "net_margin": 0.1991,
+      "asset_turnover": 0.08
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0163,
+      "net_margin": 0.184,
+      "asset_turnover": 0.09
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.017,
+      "net_margin": 0.1771,
+      "asset_turnover": 0.1
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0197,
+      "net_margin": 0.1998,
+      "asset_turnover": 0.1
+    },
+    {
+      "symbol": "GE",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0147,
+      "net_margin": 0.1536,
+      "asset_turnover": 0.1
+    }
+  ]
+}

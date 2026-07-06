@@ -1,0 +1,1081 @@
+{
+  "quarterly_revenue": [
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-06-30T00:00:00.000",
+      "revenue": 6806000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-12-31T00:00:00.000",
+      "revenue": 7383000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-06-30T00:00:00.000",
+      "revenue": 7287000000.0,
+      "prev_year_revenue": 6806000000.0,
+      "yoy_growth": 0.0707
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-09-30T00:00:00.000",
+      "revenue": 7418000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 8026000000.0,
+      "prev_year_revenue": 7383000000.0,
+      "yoy_growth": 0.0871
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-03-31T00:00:00.000",
+      "revenue": 7699000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-06-30T00:00:00.000",
+      "revenue": 7885000000.0,
+      "prev_year_revenue": 7287000000.0,
+      "yoy_growth": 0.0821
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-09-30T00:00:00.000",
+      "revenue": 7847000000.0,
+      "prev_year_revenue": 7418000000.0,
+      "yoy_growth": 0.0578
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 8366000000.0,
+      "prev_year_revenue": 8026000000.0,
+      "yoy_growth": 0.0424
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-03-31T00:00:00.000",
+      "revenue": 7791000000.0,
+      "prev_year_revenue": 7699000000.0,
+      "yoy_growth": 0.0119
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-06-30T00:00:00.000",
+      "revenue": 8288000000.0,
+      "prev_year_revenue": 7885000000.0,
+      "yoy_growth": 0.0511
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-09-30T00:00:00.000",
+      "revenue": 8417000000.0,
+      "prev_year_revenue": 7847000000.0,
+      "yoy_growth": 0.0726
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 8676000000.0,
+      "prev_year_revenue": 8366000000.0,
+      "yoy_growth": 0.0371
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 8353000000.0,
+      "prev_year_revenue": 7791000000.0,
+      "yoy_growth": 0.0721
+    }
+  ],
+  "annual_revenue": [
+    {
+      "symbol": "PYPL",
+      "report_date": "2019-12-31T00:00:00.000",
+      "revenue": 17772000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2020-12-31T00:00:00.000",
+      "revenue": 21454000000.0,
+      "prev_year_revenue": 17772000000.0,
+      "yoy_growth": 0.2072
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2021-12-31T00:00:00.000",
+      "revenue": 25371000000.0,
+      "prev_year_revenue": 21454000000.0,
+      "yoy_growth": 0.1826
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-12-31T00:00:00.000",
+      "revenue": 27518000000.0,
+      "prev_year_revenue": 25371000000.0,
+      "yoy_growth": 0.0846
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 29771000000.0,
+      "prev_year_revenue": 27518000000.0,
+      "yoy_growth": 0.0819
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 31797000000.0,
+      "prev_year_revenue": 29771000000.0,
+      "yoy_growth": 0.0681
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 33172000000.0,
+      "prev_year_revenue": 31797000000.0,
+      "yoy_growth": 0.0432
+    }
+  ],
+  "quarterly_operating_income": [
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-06-30T00:00:00.000",
+      "operating_income": 854000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-12-31T00:00:00.000",
+      "operating_income": 1269000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-06-30T00:00:00.000",
+      "operating_income": 1157000000.0,
+      "prev_year_operating_income": 854000000.0,
+      "yoy_growth": 0.3548
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-09-30T00:00:00.000",
+      "operating_income": 1207000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 1417000000.0,
+      "prev_year_operating_income": 1269000000.0,
+      "yoy_growth": 0.1166
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-03-31T00:00:00.000",
+      "operating_income": 1380000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-06-30T00:00:00.000",
+      "operating_income": 1438000000.0,
+      "prev_year_operating_income": 1157000000.0,
+      "yoy_growth": 0.2429
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-09-30T00:00:00.000",
+      "operating_income": 1454000000.0,
+      "prev_year_operating_income": 1207000000.0,
+      "yoy_growth": 0.2046
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 1491000000.0,
+      "prev_year_operating_income": 1417000000.0,
+      "yoy_growth": 0.0522
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-03-31T00:00:00.000",
+      "operating_income": 1596000000.0,
+      "prev_year_operating_income": 1380000000.0,
+      "yoy_growth": 0.1565
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-06-30T00:00:00.000",
+      "operating_income": 1620000000.0,
+      "prev_year_operating_income": 1438000000.0,
+      "yoy_growth": 0.1266
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-09-30T00:00:00.000",
+      "operating_income": 1589000000.0,
+      "prev_year_operating_income": 1454000000.0,
+      "yoy_growth": 0.0928
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 1591000000.0,
+      "prev_year_operating_income": 1491000000.0,
+      "yoy_growth": 0.0671
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2026-03-31T00:00:00.000",
+      "operating_income": 1562000000.0,
+      "prev_year_operating_income": 1596000000.0,
+      "yoy_growth": -0.0213
+    }
+  ],
+  "annual_operating_income": [
+    {
+      "symbol": "PYPL",
+      "report_date": "2019-12-31T00:00:00.000",
+      "operating_income": 2790000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2020-12-31T00:00:00.000",
+      "operating_income": 3428000000.0,
+      "prev_year_operating_income": 2790000000.0,
+      "yoy_growth": 0.2287
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2021-12-31T00:00:00.000",
+      "operating_income": 4324000000.0,
+      "prev_year_operating_income": 3428000000.0,
+      "yoy_growth": 0.2614
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-12-31T00:00:00.000",
+      "operating_income": 4044000000.0,
+      "prev_year_operating_income": 4324000000.0,
+      "yoy_growth": -0.0648
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 4944000000.0,
+      "prev_year_operating_income": 4044000000.0,
+      "yoy_growth": 0.2226
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 5763000000.0,
+      "prev_year_operating_income": 4944000000.0,
+      "yoy_growth": 0.1657
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 6396000000.0,
+      "prev_year_operating_income": 5763000000.0,
+      "yoy_growth": 0.1098
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-12-31T00:00:00.000",
+      "ebitda": 1525000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-06-30T00:00:00.000",
+      "ebitda": 1659000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-09-30T00:00:00.000",
+      "ebitda": 1597000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 2143000000.0,
+      "prev_year_ebitda": 1525000000.0,
+      "yoy_growth": 0.4052
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-03-31T00:00:00.000",
+      "ebitda": 1560000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-06-30T00:00:00.000",
+      "ebitda": 1755000000.0,
+      "prev_year_ebitda": 1659000000.0,
+      "yoy_growth": 0.0579
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-09-30T00:00:00.000",
+      "ebitda": 1672000000.0,
+      "prev_year_ebitda": 1597000000.0,
+      "yoy_growth": 0.047
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 1756000000.0,
+      "prev_year_ebitda": 2143000000.0,
+      "yoy_growth": -0.1806
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-03-31T00:00:00.000",
+      "ebitda": 1951000000.0,
+      "prev_year_ebitda": 1560000000.0,
+      "yoy_growth": 0.2506
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-06-30T00:00:00.000",
+      "ebitda": 1882000000.0,
+      "prev_year_ebitda": 1755000000.0,
+      "yoy_growth": 0.0724
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-09-30T00:00:00.000",
+      "ebitda": 1891000000.0,
+      "prev_year_ebitda": 1672000000.0,
+      "yoy_growth": 0.131
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 1972000000.0,
+      "prev_year_ebitda": 1756000000.0,
+      "yoy_growth": 0.123
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2026-03-31T00:00:00.000",
+      "ebitda": 1742000000.0,
+      "prev_year_ebitda": 1951000000.0,
+      "yoy_growth": -0.1071
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "PYPL",
+      "report_date": "2019-12-31T00:00:00.000",
+      "ebitda": 3702000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2020-12-31T00:00:00.000",
+      "ebitda": 6463000000.0,
+      "prev_year_ebitda": 3702000000.0,
+      "yoy_growth": 0.7458
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2021-12-31T00:00:00.000",
+      "ebitda": 5596000000.0,
+      "prev_year_ebitda": 6463000000.0,
+      "yoy_growth": -0.1341
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-12-31T00:00:00.000",
+      "ebitda": 4987000000.0,
+      "prev_year_ebitda": 5596000000.0,
+      "yoy_growth": -0.1088
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 6830000000.0,
+      "prev_year_ebitda": 4987000000.0,
+      "yoy_growth": 0.3696
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 6743000000.0,
+      "prev_year_ebitda": 6830000000.0,
+      "yoy_growth": -0.0127
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 7696000000.0,
+      "prev_year_ebitda": 6743000000.0,
+      "yoy_growth": 0.1413
+    }
+  ],
+  "quarterly_net_income": [
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-06-30T00:00:00.000",
+      "net_income_common_stockholders": -341000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-12-31T00:00:00.000",
+      "net_income_common_stockholders": 921000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-06-30T00:00:00.000",
+      "net_income_common_stockholders": 1029000000.0,
+      "prev_year_net_income_common_stockholders": -341000000.0,
+      "yoy_growth": 4.0176
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-09-30T00:00:00.000",
+      "net_income_common_stockholders": 1020000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1402000000.0,
+      "prev_year_net_income_common_stockholders": 921000000.0,
+      "yoy_growth": 0.5223
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-03-31T00:00:00.000",
+      "net_income_common_stockholders": 888000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-06-30T00:00:00.000",
+      "net_income_common_stockholders": 1128000000.0,
+      "prev_year_net_income_common_stockholders": 1029000000.0,
+      "yoy_growth": 0.0962
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-09-30T00:00:00.000",
+      "net_income_common_stockholders": 1010000000.0,
+      "prev_year_net_income_common_stockholders": 1020000000.0,
+      "yoy_growth": -0.0098
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1121000000.0,
+      "prev_year_net_income_common_stockholders": 1402000000.0,
+      "yoy_growth": -0.2004
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-03-31T00:00:00.000",
+      "net_income_common_stockholders": 1287000000.0,
+      "prev_year_net_income_common_stockholders": 888000000.0,
+      "yoy_growth": 0.4493
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-06-30T00:00:00.000",
+      "net_income_common_stockholders": 1261000000.0,
+      "prev_year_net_income_common_stockholders": 1128000000.0,
+      "yoy_growth": 0.1179
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-09-30T00:00:00.000",
+      "net_income_common_stockholders": 1248000000.0,
+      "prev_year_net_income_common_stockholders": 1010000000.0,
+      "yoy_growth": 0.2356
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1437000000.0,
+      "prev_year_net_income_common_stockholders": 1121000000.0,
+      "yoy_growth": 0.2819
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 1113000000.0,
+      "prev_year_net_income_common_stockholders": 1287000000.0,
+      "yoy_growth": -0.1352
+    }
+  ],
+  "annual_net_income": [
+    {
+      "symbol": "PYPL",
+      "report_date": "2019-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2459000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2020-12-31T00:00:00.000",
+      "net_income_common_stockholders": 4202000000.0,
+      "prev_year_net_income_common_stockholders": 2459000000.0,
+      "yoy_growth": 0.7088
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2021-12-31T00:00:00.000",
+      "net_income_common_stockholders": 4169000000.0,
+      "prev_year_net_income_common_stockholders": 4202000000.0,
+      "yoy_growth": -0.0079
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2419000000.0,
+      "prev_year_net_income_common_stockholders": 4169000000.0,
+      "yoy_growth": -0.4198
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 4246000000.0,
+      "prev_year_net_income_common_stockholders": 2419000000.0,
+      "yoy_growth": 0.7553
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 4147000000.0,
+      "prev_year_net_income_common_stockholders": 4246000000.0,
+      "yoy_growth": -0.0233
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 5233000000.0,
+      "prev_year_net_income_common_stockholders": 4147000000.0,
+      "yoy_growth": 0.2619
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-06-30T00:00:00.000",
+      "free_cash_flow": 1291000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-06-30T00:00:00.000",
+      "free_cash_flow": -350000000.0,
+      "prev_year_free_cash_flow": 1291000000.0,
+      "yoy_growth": -1.2711
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-09-30T00:00:00.000",
+      "free_cash_flow": 1101000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 2469000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-03-31T00:00:00.000",
+      "free_cash_flow": 1763000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-06-30T00:00:00.000",
+      "free_cash_flow": 1368000000.0,
+      "prev_year_free_cash_flow": -350000000.0,
+      "yoy_growth": 4.9086
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-09-30T00:00:00.000",
+      "free_cash_flow": 1445000000.0,
+      "prev_year_free_cash_flow": 1101000000.0,
+      "yoy_growth": 0.3124
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 2191000000.0,
+      "prev_year_free_cash_flow": 2469000000.0,
+      "yoy_growth": -0.1126
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-03-31T00:00:00.000",
+      "free_cash_flow": 964000000.0,
+      "prev_year_free_cash_flow": 1763000000.0,
+      "yoy_growth": -0.4532
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-06-30T00:00:00.000",
+      "free_cash_flow": 692000000.0,
+      "prev_year_free_cash_flow": 1368000000.0,
+      "yoy_growth": -0.4942
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-09-30T00:00:00.000",
+      "free_cash_flow": 1718000000.0,
+      "prev_year_free_cash_flow": 1445000000.0,
+      "yoy_growth": 0.1889
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 2190000000.0,
+      "prev_year_free_cash_flow": 2191000000.0,
+      "yoy_growth": -0.0005
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": 903000000.0,
+      "prev_year_free_cash_flow": 964000000.0,
+      "yoy_growth": -0.0633
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "PYPL",
+      "report_date": "2020-12-31T00:00:00.000",
+      "free_cash_flow": 5353000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2021-12-31T00:00:00.000",
+      "free_cash_flow": 4889000000.0,
+      "prev_year_free_cash_flow": 5353000000.0,
+      "yoy_growth": -0.0867
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-12-31T00:00:00.000",
+      "free_cash_flow": 5107000000.0,
+      "prev_year_free_cash_flow": 4889000000.0,
+      "yoy_growth": 0.0446
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 4220000000.0,
+      "prev_year_free_cash_flow": 5107000000.0,
+      "yoy_growth": -0.1737
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 6767000000.0,
+      "prev_year_free_cash_flow": 4220000000.0,
+      "yoy_growth": 0.6036
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 5564000000.0,
+      "prev_year_free_cash_flow": 6767000000.0,
+      "yoy_growth": -0.1778
+    }
+  ],
+  "quarterly_eps": [
+    {
+      "symbol": "PYPL",
+      "report_date": "2014-03-31T00:00:00.000",
+      "eps": -0.3134,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2014-06-30T00:00:00.000",
+      "eps": 0.2306,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2014-09-30T00:00:00.000",
+      "eps": 0.192,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2014-12-31T00:00:00.000",
+      "eps": 0.2347,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2015-03-31T00:00:00.000",
+      "eps": 0.2092,
+      "prev_year_eps": -0.3134,
+      "yoy_growth": 1.6675
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2015-06-30T00:00:00.000",
+      "eps": 0.25,
+      "prev_year_eps": 0.2306,
+      "yoy_growth": 0.0841
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2015-09-30T00:00:00.000",
+      "eps": 0.25,
+      "prev_year_eps": 0.192,
+      "yoy_growth": 0.3021
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2015-12-31T00:00:00.000",
+      "eps": 0.3,
+      "prev_year_eps": 0.2347,
+      "yoy_growth": 0.2782
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2016-03-31T00:00:00.000",
+      "eps": 0.3,
+      "prev_year_eps": 0.2092,
+      "yoy_growth": 0.434
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2016-06-30T00:00:00.000",
+      "eps": 0.27,
+      "prev_year_eps": 0.25,
+      "yoy_growth": 0.08
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2016-09-30T00:00:00.000",
+      "eps": 0.27,
+      "prev_year_eps": 0.25,
+      "yoy_growth": 0.08
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2016-12-31T00:00:00.000",
+      "eps": 0.32,
+      "prev_year_eps": 0.3,
+      "yoy_growth": 0.0667
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2017-03-31T00:00:00.000",
+      "eps": 0.32,
+      "prev_year_eps": 0.3,
+      "yoy_growth": 0.0667
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2017-06-30T00:00:00.000",
+      "eps": 0.34,
+      "prev_year_eps": 0.27,
+      "yoy_growth": 0.2593
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2017-09-30T00:00:00.000",
+      "eps": 0.31,
+      "prev_year_eps": 0.27,
+      "yoy_growth": 0.1481
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2017-12-31T00:00:00.000",
+      "eps": 0.5,
+      "prev_year_eps": 0.32,
+      "yoy_growth": 0.5625
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2018-03-31T00:00:00.000",
+      "eps": 0.42,
+      "prev_year_eps": 0.32,
+      "yoy_growth": 0.3125
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2018-06-30T00:00:00.000",
+      "eps": 0.44,
+      "prev_year_eps": 0.34,
+      "yoy_growth": 0.2941
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2018-09-30T00:00:00.000",
+      "eps": 0.36,
+      "prev_year_eps": 0.31,
+      "yoy_growth": 0.1613
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2018-12-31T00:00:00.000",
+      "eps": 0.4883,
+      "prev_year_eps": 0.5,
+      "yoy_growth": -0.0234
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2019-03-31T00:00:00.000",
+      "eps": 0.5614,
+      "prev_year_eps": 0.42,
+      "yoy_growth": 0.3367
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2019-06-30T00:00:00.000",
+      "eps": 0.6933,
+      "prev_year_eps": 0.44,
+      "yoy_growth": 0.5757
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2019-09-30T00:00:00.000",
+      "eps": 0.3889,
+      "prev_year_eps": 0.36,
+      "yoy_growth": 0.0803
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2019-12-31T00:00:00.000",
+      "eps": 0.4271,
+      "prev_year_eps": 0.4883,
+      "yoy_growth": -0.1253
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2020-03-31T00:00:00.000",
+      "eps": 0.0709,
+      "prev_year_eps": 0.5614,
+      "yoy_growth": -0.8737
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2020-06-30T00:00:00.000",
+      "eps": 1.2922,
+      "prev_year_eps": 0.6933,
+      "yoy_growth": 0.8638
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2020-09-30T00:00:00.000",
+      "eps": 0.858,
+      "prev_year_eps": 0.3889,
+      "yoy_growth": 1.2062
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2020-12-31T00:00:00.000",
+      "eps": 1.3157,
+      "prev_year_eps": 0.4271,
+      "yoy_growth": 2.0805
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2021-03-31T00:00:00.000",
+      "eps": 0.9218,
+      "prev_year_eps": 0.0709,
+      "yoy_growth": 12.0014
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2021-06-30T00:00:00.000",
+      "eps": 0.9983,
+      "prev_year_eps": 1.2922,
+      "yoy_growth": -0.2274
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2021-09-30T00:00:00.000",
+      "eps": 0.9158,
+      "prev_year_eps": 0.858,
+      "yoy_growth": 0.0674
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2021-12-31T00:00:00.000",
+      "eps": 0.6771,
+      "prev_year_eps": 1.3157,
+      "yoy_growth": -0.4854
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-03-31T00:00:00.000",
+      "eps": 0.4343,
+      "prev_year_eps": 0.9218,
+      "yoy_growth": -0.5289
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-06-30T00:00:00.000",
+      "eps": -0.2945,
+      "prev_year_eps": 0.9983,
+      "yoy_growth": -1.295
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-09-30T00:00:00.000",
+      "eps": 1.1495,
+      "prev_year_eps": 0.9158,
+      "yoy_growth": 0.2552
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2022-12-31T00:00:00.000",
+      "eps": 0.8051,
+      "prev_year_eps": 0.6771,
+      "yoy_growth": 0.189
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-03-31T00:00:00.000",
+      "eps": 0.7011,
+      "prev_year_eps": 0.4343,
+      "yoy_growth": 0.6143
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-06-30T00:00:00.000",
+      "eps": 0.9237,
+      "prev_year_eps": -0.2945,
+      "yoy_growth": 4.1365
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-09-30T00:00:00.000",
+      "eps": 0.929,
+      "prev_year_eps": 1.1495,
+      "yoy_growth": -0.1918
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "eps": 1.2934,
+      "prev_year_eps": 0.8051,
+      "yoy_growth": 0.6065
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-03-31T00:00:00.000",
+      "eps": 0.8284,
+      "prev_year_eps": 0.7011,
+      "yoy_growth": 0.1816
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-06-30T00:00:00.000",
+      "eps": 1.0774,
+      "prev_year_eps": 0.9237,
+      "yoy_growth": 0.1664
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-09-30T00:00:00.000",
+      "eps": 0.9863,
+      "prev_year_eps": 0.929,
+      "yoy_growth": 0.0617
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "eps": 1.1055,
+      "prev_year_eps": 1.2934,
+      "yoy_growth": -0.1453
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-03-31T00:00:00.000",
+      "eps": 1.2883,
+      "prev_year_eps": 0.8284,
+      "yoy_growth": 0.5552
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-06-30T00:00:00.000",
+      "eps": 1.2907,
+      "prev_year_eps": 1.0774,
+      "yoy_growth": 0.198
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-09-30T00:00:00.000",
+      "eps": 1.3,
+      "prev_year_eps": 0.9863,
+      "yoy_growth": 0.3181
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "eps": 1.5304,
+      "prev_year_eps": 1.1055,
+      "yoy_growth": 0.3844
+    },
+    {
+      "symbol": "PYPL",
+      "report_date": "2026-03-31T00:00:00.000",
+      "eps": 1.2098,
+      "prev_year_eps": 1.2883,
+      "yoy_growth": -0.0609
+    }
+  ]
+}

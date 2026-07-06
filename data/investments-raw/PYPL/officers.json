@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "PYPL",
+    "name": "Mr. Antonio J. Lucio",
+    "title": "Chief Marketing & Corporate Affairs Officer",
+    "age": 66,
+    "born": 1959,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "PYPL",
+    "name": "Mr. Bimal  Patel",
+    "title": "Chief Legal Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "PYPL",
+    "name": "Mr. Christopher  Natali",
+    "title": "Senior VP & Chief Accounting Officer",
+    "age": 47,
+    "born": 1978,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "PYPL",
+    "name": "Mr. Enrique J. Lores",
+    "title": "President, CEO & Director",
+    "age": 59,
+    "born": 1966,
+    "pay": 167534,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "PYPL",
+    "name": "Mr. Frank  Keller",
+    "title": "President of Checkout Solutions & PayPal",
+    "age": 51,
+    "born": 1974,
+    "pay": 1766568,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "PYPL",
+    "name": "Mr. Srinivasan  Venkatesan",
+    "title": "Chief Technology Officer",
+    "age": 54,
+    "born": 1971,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "PYPL",
+    "name": "Mr. Steven Eric Winoker",
+    "title": "Chief Investor Relations Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "PYPL",
+    "name": "Ms. Amy  Bonitatibus",
+    "title": "Chief Corporate Affairs & Communications Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "PYPL",
+    "name": "Ms. Jamie S. Miller",
+    "title": "Chief Financial & Operating Officer and Executive VP",
+    "age": 56,
+    "born": 1969,
+    "pay": 1934206,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  },
+  {
+    "symbol": "PYPL",
+    "name": "Ms. Suzan Bulyaba Kereere",
+    "title": "President of Global Markets",
+    "age": 59,
+    "born": 1966,
+    "pay": 1766568,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-06"
+  }
+]

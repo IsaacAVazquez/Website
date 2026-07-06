@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "UBER",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 221000000.0,
+      "beginning_stockholders_equity": 8664000000.0,
+      "ending_stockholders_equity": 9358000000.0,
+      "avg_equity": 9011000000.0,
+      "roe": 0.0245
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1429000000.0,
+      "beginning_stockholders_equity": 9358000000.0,
+      "ending_stockholders_equity": 11249000000.0,
+      "avg_equity": 10303500000.0,
+      "roe": 0.1387
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": -654000000.0,
+      "beginning_stockholders_equity": 11249000000.0,
+      "ending_stockholders_equity": 11058000000.0,
+      "avg_equity": 11153500000.0,
+      "roe": -0.0586
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1015000000.0,
+      "beginning_stockholders_equity": 11058000000.0,
+      "ending_stockholders_equity": 12350000000.0,
+      "avg_equity": 11704000000.0,
+      "roe": 0.0867
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 2612000000.0,
+      "beginning_stockholders_equity": 12350000000.0,
+      "ending_stockholders_equity": 14780000000.0,
+      "avg_equity": 13565000000.0,
+      "roe": 0.1926
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 6883000000.0,
+      "beginning_stockholders_equity": 14780000000.0,
+      "ending_stockholders_equity": 21558000000.0,
+      "avg_equity": 18169000000.0,
+      "roe": 0.3788
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1776000000.0,
+      "beginning_stockholders_equity": 21558000000.0,
+      "ending_stockholders_equity": 21975000000.0,
+      "avg_equity": 21766500000.0,
+      "roe": 0.0816
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1355000000.0,
+      "beginning_stockholders_equity": 21975000000.0,
+      "ending_stockholders_equity": 22598000000.0,
+      "avg_equity": 22286500000.0,
+      "roe": 0.0608
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 6626000000.0,
+      "beginning_stockholders_equity": 22598000000.0,
+      "ending_stockholders_equity": 28134000000.0,
+      "avg_equity": 25366000000.0,
+      "roe": 0.2612
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 296000000.0,
+      "beginning_stockholders_equity": 28134000000.0,
+      "ending_stockholders_equity": 27041000000.0,
+      "avg_equity": 27587500000.0,
+      "roe": 0.0107
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 263000000.0,
+      "beginning_stockholders_equity": 27041000000.0,
+      "ending_stockholders_equity": 24751000000.0,
+      "avg_equity": 25896000000.0,
+      "roe": 0.0102
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "UBER",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 221000000.0,
+      "beginning_total_assets": 34068000000.0,
+      "ending_total_assets": 35949000000.0,
+      "avg_assets": 35008500000.0,
+      "roa": 0.0063
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1429000000.0,
+      "beginning_total_assets": 35949000000.0,
+      "ending_total_assets": 38699000000.0,
+      "avg_assets": 37324000000.0,
+      "roa": 0.0383
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": -654000000.0,
+      "beginning_total_assets": 38699000000.0,
+      "ending_total_assets": 39599000000.0,
+      "avg_assets": 39149000000.0,
+      "roa": -0.0167
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1015000000.0,
+      "beginning_total_assets": 39599000000.0,
+      "ending_total_assets": 41514000000.0,
+      "avg_assets": 40556500000.0,
+      "roa": 0.025
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 2612000000.0,
+      "beginning_total_assets": 41514000000.0,
+      "ending_total_assets": 47117000000.0,
+      "avg_assets": 44315500000.0,
+      "roa": 0.0589
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 6883000000.0,
+      "beginning_total_assets": 47117000000.0,
+      "ending_total_assets": 51244000000.0,
+      "avg_assets": 49180500000.0,
+      "roa": 0.14
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1776000000.0,
+      "beginning_total_assets": 51244000000.0,
+      "ending_total_assets": 52822000000.0,
+      "avg_assets": 52033000000.0,
+      "roa": 0.0341
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1355000000.0,
+      "beginning_total_assets": 52822000000.0,
+      "ending_total_assets": 55982000000.0,
+      "avg_assets": 54402000000.0,
+      "roa": 0.0249
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 6626000000.0,
+      "beginning_total_assets": 55982000000.0,
+      "ending_total_assets": 63344000000.0,
+      "avg_assets": 59663000000.0,
+      "roa": 0.1111
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 296000000.0,
+      "beginning_total_assets": 63344000000.0,
+      "ending_total_assets": 61802000000.0,
+      "avg_assets": 62573000000.0,
+      "roa": 0.0047
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 263000000.0,
+      "beginning_total_assets": 61802000000.0,
+      "ending_total_assets": 59885000000.0,
+      "avg_assets": 60843500000.0,
+      "roa": 0.0043
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "UBER",
+      "report_date": "2023-09-30",
+      "ebit": 342000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 270180000.0,
+      "beginning_invested_capital": 17919000000.0,
+      "ending_invested_capital": 18610000000.0,
+      "avg_invested_capital": 18264500000.0,
+      "roic": 0.0148
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-12-31",
+      "ebit": 1983000000.0,
+      "tax_rate_for_calcs": 0.07,
+      "nopat": 1844190000.0,
+      "beginning_invested_capital": 18610000000.0,
+      "ending_invested_capital": 20708000000.0,
+      "avg_invested_capital": 19659000000.0,
+      "roic": 0.0938
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-03-31",
+      "ebit": -506000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": -399740000.0,
+      "beginning_invested_capital": 20708000000.0,
+      "ending_invested_capital": 20515000000.0,
+      "avg_invested_capital": 20611500000.0,
+      "roic": -0.0194
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-06-30",
+      "ebit": 1216000000.0,
+      "tax_rate_for_calcs": 0.05,
+      "nopat": 1155200000.0,
+      "beginning_invested_capital": 20515000000.0,
+      "ending_invested_capital": 21804000000.0,
+      "avg_invested_capital": 21159500000.0,
+      "roic": 0.0546
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-09-30",
+      "ebit": 2912000000.0,
+      "tax_rate_for_calcs": 0.06,
+      "nopat": 2737280000.0,
+      "beginning_invested_capital": 21804000000.0,
+      "ending_invested_capital": 25766000000.0,
+      "avg_invested_capital": 23785000000.0,
+      "roic": 0.1151
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-12-31",
+      "ebit": 1026000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 810540000.0,
+      "beginning_invested_capital": 25766000000.0,
+      "ending_invested_capital": 31055000000.0,
+      "avg_invested_capital": 28410500000.0,
+      "roic": 0.0285
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-03-31",
+      "ebit": 1490000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 1177100000.0,
+      "beginning_invested_capital": 31055000000.0,
+      "ending_invested_capital": 31475000000.0,
+      "avg_invested_capital": 31265000000.0,
+      "roic": 0.0376
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-06-30",
+      "ebit": 1612000000.0,
+      "tax_rate_for_calcs": 0.09,
+      "nopat": 1466920000.0,
+      "beginning_invested_capital": 31475000000.0,
+      "ending_invested_capital": 33326000000.0,
+      "avg_invested_capital": 32400500000.0,
+      "roic": 0.0453
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-09-30",
+      "ebit": 2732000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 2158280000.0,
+      "beginning_invested_capital": 33326000000.0,
+      "ending_invested_capital": 39899000000.0,
+      "avg_invested_capital": 36612500000.0,
+      "roic": 0.0589
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-12-31",
+      "ebit": 406000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 320740000.0,
+      "beginning_invested_capital": 39899000000.0,
+      "ending_invested_capital": 37562000000.0,
+      "avg_invested_capital": 38730500000.0,
+      "roic": 0.0083
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2026-03-31",
+      "ebit": 604000000.0,
+      "tax_rate_for_calcs": 0.39,
+      "nopat": 368440000.0,
+      "beginning_invested_capital": 37562000000.0,
+      "ending_invested_capital": 35265000000.0,
+      "avg_invested_capital": 36413500000.0,
+      "roic": 0.0101
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "UBER",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0245,
+      "roa": 0.0063,
+      "equity_multiplier": 3.89
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.1387,
+      "roa": 0.0383,
+      "equity_multiplier": 3.62
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": -0.0586,
+      "roa": -0.0167,
+      "equity_multiplier": 3.51
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0867,
+      "roa": 0.025,
+      "equity_multiplier": 3.47
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.1926,
+      "roa": 0.0589,
+      "equity_multiplier": 3.27
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.3788,
+      "roa": 0.14,
+      "equity_multiplier": 2.71
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0816,
+      "roa": 0.0341,
+      "equity_multiplier": 2.39
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.0608,
+      "roa": 0.0249,
+      "equity_multiplier": 2.44
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.2612,
+      "roa": 0.1111,
+      "equity_multiplier": 2.35
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.0107,
+      "roa": 0.0047,
+      "equity_multiplier": 2.28
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.0102,
+      "roa": 0.0043,
+      "equity_multiplier": 2.37
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "UBER",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0063,
+      "net_margin": 0.0238,
+      "asset_turnover": 0.26
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0383,
+      "net_margin": 0.1438,
+      "asset_turnover": 0.27
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": -0.0167,
+      "net_margin": -0.0646,
+      "asset_turnover": 0.26
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.025,
+      "net_margin": 0.0949,
+      "asset_turnover": 0.26
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0589,
+      "net_margin": 0.2335,
+      "asset_turnover": 0.25
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.14,
+      "net_margin": 0.5755,
+      "asset_turnover": 0.24
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0341,
+      "net_margin": 0.154,
+      "asset_turnover": 0.22
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0249,
+      "net_margin": 0.1071,
+      "asset_turnover": 0.23
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.1111,
+      "net_margin": 0.492,
+      "asset_turnover": 0.23
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0047,
+      "net_margin": 0.0206,
+      "asset_turnover": 0.23
+    },
+    {
+      "symbol": "UBER",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0043,
+      "net_margin": 0.0199,
+      "asset_turnover": 0.22
+    }
+  ]
+}
