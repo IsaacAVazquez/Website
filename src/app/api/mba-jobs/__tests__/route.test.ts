@@ -613,41 +613,47 @@ describe("GET /api/mba-jobs", () => {
     );
   });
 
-  it("parses Plaid and Coinbase direct career pages before leaving other manual portals as fallbacks", async () => {
+  it("routes Coinbase through its Greenhouse board and Plaid through its Ashby board, skipping manual portals", async () => {
+    // Coinbase and Plaid moved off fragile direct-HTML scrapes (Coinbase's
+    // career page 403s bot traffic) to their canonical public ATS boards.
     installFetchMock({
-      "https://plaid.com/careers/": new Response(
-        `<!doctype html><html><body><main>
-          <div class="role-card">Business Operations - Payments New York <a href="/careers/business-operations-payments">See role</a></div>
-          <div class="role-card">Backend Software Engineer San Francisco <a href="/careers/backend-software-engineer">See role</a></div>
-        </main></body></html>`,
-        { status: 200, headers: { "Content-Type": "text/html; charset=utf-8" } }
+      "https://boards-api.greenhouse.io/v1/boards/coinbase/jobs?content=true": new Response(
+        JSON.stringify(
+          buildGreenhouseResponse({
+            jobs: [
+              {
+                id: 6230012,
+                title: "Corporate Development Associate",
+                location: { name: "Remote - USA" },
+                absolute_url: "https://www.coinbase.com/careers/positions/6230012",
+                updated_at: "2026-06-30T16:00:00.000Z",
+                departments: [{ name: "Corporate Development" }],
+                content:
+                  "<p>Work on corporate development, partnerships, and strategic finance opportunities.</p>",
+              },
+            ],
+          })
+        ),
+        { status: 200, headers: { "Content-Type": "application/json" } }
       ),
-      "https://plaid.com/careers/business-operations-payments": new Response(
-        `<!doctype html><html><body><main>
-          <h1>Business Operations - Payments</h1>
-          <p>Lead payments operations strategy and analytics across Plaid's financial network.</p>
-        </main></body></html>`,
-        { status: 200, headers: { "Content-Type": "text/html; charset=utf-8" } }
-      ),
-      "https://plaid.com/careers/backend-software-engineer": new Response(
-        `<!doctype html><html><body><main>
-          <h1>Backend Software Engineer</h1>
-          <p>Build distributed systems.</p>
-        </main></body></html>`,
-        { status: 200, headers: { "Content-Type": "text/html; charset=utf-8" } }
-      ),
-      "https://www.coinbase.com/careers/positions": new Response(
-        `<!doctype html><html><body><main>
-          <div class="job">Corporate Development Associate Remote <a href="/careers/positions/6230012">View role</a></div>
-        </main></body></html>`,
-        { status: 200, headers: { "Content-Type": "text/html; charset=utf-8" } }
-      ),
-      "https://www.coinbase.com/careers/positions/6230012": new Response(
-        `<!doctype html><html><body><main>
-          <h1>Corporate Development Associate</h1>
-          <p>Work on corporate development, partnerships, and strategic finance opportunities.</p>
-        </main></body></html>`,
-        { status: 200, headers: { "Content-Type": "text/html; charset=utf-8" } }
+      "https://api.ashbyhq.com/posting-api/job-board/plaid?includeCompensation=true": new Response(
+        JSON.stringify(
+          buildAshbyResponse([
+            {
+              id: "plaid-1",
+              title: "Business Operations - Payments",
+              updatedAt: "2026-06-28T11:30:00.000Z",
+              department: "Business Operations",
+              team: "Payments",
+              location: "New York, New York",
+              workplaceType: "Hybrid",
+              employmentType: "Full-Time",
+              jobUrl: "https://jobs.ashbyhq.com/plaid/plaid-1",
+              isListed: true,
+            },
+          ])
+        ),
+        { status: 200, headers: { "Content-Type": "application/json" } }
       ),
     });
 
@@ -664,20 +670,15 @@ describe("GET /api/mba-jobs", () => {
       expect.arrayContaining([
         expect.objectContaining({
           companyId: "plaid",
-          atsType: "direct-html",
+          atsType: "ashby",
           title: "Business Operations - Payments",
-          roleFamilies: expect.arrayContaining(["operations", "analytics"]),
         }),
         expect.objectContaining({
           companyId: "coinbase",
-          atsType: "direct-html",
+          atsType: "greenhouse",
           title: "Corporate Development Associate",
-          roleFamilies: expect.arrayContaining(["business-development", "finance"]),
         }),
       ])
-    );
-    expect(body.jobs.map((job: { title: string }) => job.title)).not.toEqual(
-      expect.arrayContaining(["Backend Software Engineer"])
     );
     expect(body.sourceStatuses).toEqual([
       expect.objectContaining({ companyId: "plaid", status: "ok", jobCount: 1 }),

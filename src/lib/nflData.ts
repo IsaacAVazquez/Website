@@ -411,6 +411,72 @@ function makeFixtureTeam(
   };
 }
 
+/**
+ * Offset (in ms) of `America/New_York` at a given instant. Positive means the
+ * zone is ahead of UTC, negative means behind (ET is always behind: -5h in
+ * winter EST, -4h in summer EDT). We derive it from `Intl.DateTimeFormat`
+ * rather than hardcoding an offset: format the instant in the zone, read the
+ * wall-clock parts back, interpret them as UTC, and the delta from the original
+ * instant is the zone's offset for that date.
+ */
+function newYorkOffsetMs(instant: Date): number {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York",
+    hourCycle: "h23",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  }).formatToParts(instant);
+  const lookup: Record<string, number> = {};
+  for (const part of parts) {
+    if (part.type !== "literal") lookup[part.type] = Number(part.value);
+  }
+  const asUtc = Date.UTC(
+    lookup.year,
+    lookup.month - 1,
+    lookup.day,
+    lookup.hour,
+    lookup.minute,
+    lookup.second
+  );
+  return asUtc - instant.getTime();
+}
+
+/**
+ * NFLverse `games.csv` stores `gameday` (YYYY-MM-DD) and `gametime` (HH:MM, 24h)
+ * as US/Eastern *wall-clock* time, not UTC. Appending a naive `Z` (as the old
+ * code did) stamped every kickoff 4-5 hours early. This converts the ET
+ * wall-clock time to the correct UTC ISO string, honoring EST vs EDT by date.
+ */
+export function etToUtcIso(gameday: string, gametime: string): string {
+  const dateMatch = /^(\d{4})-(\d{2})-(\d{2})$/.exec(gameday.trim());
+  const timeMatch = /^(\d{1,2}):(\d{2})$/.exec(gametime.trim());
+  if (!dateMatch || !timeMatch) {
+    // Preserve the previous (loose) behavior for unexpected shapes rather than
+    // dropping the fixture; real NFLverse rows always match the patterns above.
+    return `${gameday}T${gametime}:00Z`;
+  }
+  const [, year, month, day] = dateMatch;
+  const [, hour, minute] = timeMatch;
+  // Interpret the ET wall-clock components as if they were UTC, then subtract
+  // the zone's offset at that instant to land on the true UTC instant. NFL
+  // kickoffs never fall in the 2 a.m. DST-transition hour, so a single-pass
+  // offset lookup is exact for every real value.
+  const naiveUtc = Date.UTC(
+    Number(year),
+    Number(month) - 1,
+    Number(day),
+    Number(hour),
+    Number(minute),
+    0
+  );
+  const offsetMs = newYorkOffsetMs(new Date(naiveUtc));
+  return new Date(naiveUtc - offsetMs).toISOString().replace(/\.000Z$/, "Z");
+}
+
 function buildFixtures(
   rows: Record<string, string>[],
   season: string,
@@ -439,7 +505,7 @@ function buildFixtures(
     const gametime = row.gametime?.trim();
     const isoDate = gameday
       ? gametime
-        ? `${gameday}T${gametime}:00Z`
+        ? etToUtcIso(gameday, gametime)
         : `${gameday}T17:00:00Z`
       : "";
     if (!isoDate) continue;

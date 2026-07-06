@@ -2,16 +2,16 @@
   "schemaVersion": 6,
   "season": 2026,
   "week": 0,
-  "generatedAt": "2026-07-01T19:03:44.631Z",
+  "generatedAt": "2026-07-06T06:08:07.605Z",
   "upstreamUpdatedAt": "2026-07-01T18:57:43.000Z",
   "scoringFormat": "HALF_PPR",
   "source": "Published fantasy rankings snapshot generated from FantasyPros public consensus pages. Overall boards come from the public overall consensus page for each scoring format, while flex is derived locally from the published overall board.",
   "adpSource": {
     "provider": "Fantasy Football Calculator",
     "url": "https://fantasyfootballcalculator.com/api/v1/adp/half-ppr?teams=12&year=2026&position=all",
-    "asOf": "2026-07-01T00:00:00.000Z",
-    "sampleSize": 197,
-    "matchedCount": 4
+    "asOf": "2026-07-05T00:00:00.000Z",
+    "sampleSize": 394,
+    "matchedCount": 156
   },
   "positions": {
     "QB": [
@@ -30,6 +30,7 @@
         "maxRank": 2,
         "byeWeek": 7,
         "ownership": 99.3,
+        "adp": 27,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -47,6 +48,7 @@
         "maxRank": 7,
         "byeWeek": 13,
         "ownership": 98.9,
+        "adp": 52.5,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -64,6 +66,7 @@
         "maxRank": 8,
         "byeWeek": 11,
         "ownership": 98.6,
+        "adp": 63.5,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -81,6 +84,7 @@
         "maxRank": 12,
         "byeWeek": 6,
         "ownership": 97.6,
+        "adp": 50,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -98,6 +102,7 @@
         "maxRank": 11,
         "byeWeek": 7,
         "ownership": 97.8,
+        "adp": 84.5,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -115,7 +120,7 @@
         "maxRank": 10,
         "byeWeek": 10,
         "ownership": 97.4,
-        "adp": 98.5,
+        "adp": 95.1,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -133,6 +138,7 @@
         "maxRank": 14,
         "byeWeek": 10,
         "ownership": 93.9,
+        "adp": 106.1,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -150,6 +156,7 @@
         "maxRank": 17,
         "byeWeek": 7,
         "ownership": 93.2,
+        "adp": 77,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -167,6 +174,7 @@
         "maxRank": 15,
         "byeWeek": 7,
         "ownership": 91.5,
+        "adp": 67.9,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -184,6 +192,7 @@
         "maxRank": 15,
         "byeWeek": 14,
         "ownership": 93.7,
+        "adp": 52.8,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -201,6 +210,7 @@
         "maxRank": 20,
         "byeWeek": 8,
         "ownership": 95.7,
+        "adp": 130.2,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -218,6 +228,7 @@
         "maxRank": 17,
         "byeWeek": 8,
         "ownership": 91.5,
+        "adp": 104,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -235,6 +246,7 @@
         "maxRank": 18,
         "byeWeek": 5,
         "ownership": 92.5,
+        "adp": 75.5,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -252,6 +264,7 @@
         "maxRank": 17,
         "byeWeek": 10,
         "ownership": 90.1,
+        "adp": 121.6,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -269,6 +282,7 @@
         "maxRank": 20,
         "byeWeek": 11,
         "ownership": 93.2,
+        "adp": 105.7,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -286,6 +300,7 @@
         "maxRank": 20,
         "byeWeek": 6,
         "ownership": 76.5,
+        "adp": 87,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -337,6 +352,7 @@
         "maxRank": 22,
         "byeWeek": 10,
         "ownership": 61.4,
+        "adp": 127.8,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -405,6 +421,7 @@
         "maxRank": 27,
         "byeWeek": 11,
         "ownership": 46.6,
+        "adp": 146.8,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -1767,6 +1784,7 @@
         "maxRank": 3,
         "byeWeek": 11,
         "ownership": 99.1,
+        "adp": 1.9,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -1802,6 +1820,7 @@
         "maxRank": 8,
         "byeWeek": 8,
         "ownership": 99.4,
+        "adp": 4.9,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -1819,6 +1838,7 @@
         "maxRank": 9,
         "byeWeek": 13,
         "ownership": 99.1,
+        "adp": 6.2,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -1836,6 +1856,7 @@
         "maxRank": 10,
         "byeWeek": 7,
         "ownership": 99.3,
+        "adp": 10.9,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -1853,6 +1874,7 @@
         "maxRank": 12,
         "byeWeek": 13,
         "ownership": 99,
+        "adp": 14.9,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -1870,6 +1892,7 @@
         "maxRank": 14,
         "byeWeek": 6,
         "ownership": 99.1,
+        "adp": 9,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -1887,6 +1910,7 @@
         "maxRank": 13,
         "byeWeek": 6,
         "ownership": 98.5,
+        "adp": 22,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -1904,6 +1928,7 @@
         "maxRank": 15,
         "byeWeek": 10,
         "ownership": 99.2,
+        "adp": 17.7,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -1921,6 +1946,7 @@
         "maxRank": 18,
         "byeWeek": 7,
         "ownership": 98.7,
+        "adp": 18.2,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -1938,6 +1964,7 @@
         "maxRank": 15,
         "byeWeek": 13,
         "ownership": 98.8,
+        "adp": 10.3,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -1955,6 +1982,7 @@
         "maxRank": 20,
         "byeWeek": 5,
         "ownership": 99,
+        "adp": 20.2,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -1972,6 +2000,7 @@
         "maxRank": 21,
         "byeWeek": 14,
         "ownership": 97.5,
+        "adp": 25.3,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -1989,6 +2018,7 @@
         "maxRank": 19,
         "byeWeek": 11,
         "ownership": 98.1,
+        "adp": 31.4,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -2006,7 +2036,7 @@
         "maxRank": 22,
         "byeWeek": 11,
         "ownership": 98.5,
-        "adp": 24.6,
+        "adp": 25.1,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -2024,6 +2054,7 @@
         "maxRank": 22,
         "byeWeek": 13,
         "ownership": 97.4,
+        "adp": 31.3,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -2041,6 +2072,7 @@
         "maxRank": 22,
         "byeWeek": 14,
         "ownership": 97.1,
+        "adp": 33.4,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -2058,6 +2090,7 @@
         "maxRank": 26,
         "byeWeek": 8,
         "ownership": 97,
+        "adp": 41.3,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -2075,6 +2108,7 @@
         "maxRank": 28,
         "byeWeek": 8,
         "ownership": 96.9,
+        "adp": 36.7,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -2092,6 +2126,7 @@
         "maxRank": 27,
         "byeWeek": 10,
         "ownership": 96.2,
+        "adp": 47.6,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -2109,6 +2144,7 @@
         "maxRank": 25,
         "byeWeek": 11,
         "ownership": 94.6,
+        "adp": 49.4,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -2126,6 +2162,7 @@
         "maxRank": 26,
         "byeWeek": 10,
         "ownership": 94.2,
+        "adp": 47.2,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -2143,6 +2180,7 @@
         "maxRank": 31,
         "byeWeek": 11,
         "ownership": 95.1,
+        "adp": 60.5,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -2160,6 +2198,7 @@
         "maxRank": 40,
         "byeWeek": 8,
         "ownership": 93.8,
+        "adp": 55.7,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -2177,6 +2216,7 @@
         "maxRank": 41,
         "byeWeek": 7,
         "ownership": 91.6,
+        "adp": 56.6,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -2194,6 +2234,7 @@
         "maxRank": 48,
         "byeWeek": 11,
         "ownership": 91,
+        "adp": 68.5,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -2211,6 +2252,7 @@
         "maxRank": 33,
         "byeWeek": 9,
         "ownership": 91.4,
+        "adp": 70.7,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -2228,6 +2270,7 @@
         "maxRank": 41,
         "byeWeek": 9,
         "ownership": 90,
+        "adp": 74.5,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -2245,6 +2288,7 @@
         "maxRank": 40,
         "byeWeek": 5,
         "ownership": 92.3,
+        "adp": 81.5,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -2262,6 +2306,7 @@
         "maxRank": 37,
         "byeWeek": 11,
         "ownership": 89.7,
+        "adp": 76.1,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -2279,6 +2324,7 @@
         "maxRank": 37,
         "byeWeek": 9,
         "ownership": 90.7,
+        "adp": 79.6,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -2296,6 +2342,7 @@
         "maxRank": 42,
         "byeWeek": 10,
         "ownership": 90.6,
+        "adp": 96.5,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -2313,6 +2360,7 @@
         "maxRank": 40,
         "byeWeek": 10,
         "ownership": 89.2,
+        "adp": 101.1,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -2330,6 +2378,7 @@
         "maxRank": 43,
         "byeWeek": 11,
         "ownership": 86.3,
+        "adp": 124.3,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -2347,6 +2396,7 @@
         "maxRank": 48,
         "byeWeek": 10,
         "ownership": 88.4,
+        "adp": 89,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -2364,6 +2414,7 @@
         "maxRank": 45,
         "byeWeek": 10,
         "ownership": 86.5,
+        "adp": 115.9,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -2381,6 +2432,7 @@
         "maxRank": 47,
         "byeWeek": 6,
         "ownership": 88,
+        "adp": 100.5,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -2398,6 +2450,7 @@
         "maxRank": 51,
         "byeWeek": 7,
         "ownership": 80.3,
+        "adp": 113,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -2415,6 +2468,7 @@
         "maxRank": 48,
         "byeWeek": 7,
         "ownership": 80.3,
+        "adp": 119.8,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -2432,6 +2486,7 @@
         "maxRank": 50,
         "byeWeek": 6,
         "ownership": 67,
+        "adp": 122.3,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -2449,6 +2504,7 @@
         "maxRank": 56,
         "byeWeek": 8,
         "ownership": 46.7,
+        "adp": 129,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -2466,6 +2522,7 @@
         "maxRank": 115,
         "byeWeek": 5,
         "ownership": 71.6,
+        "adp": 128.3,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -2483,6 +2540,7 @@
         "maxRank": 65,
         "byeWeek": 7,
         "ownership": 49.9,
+        "adp": 153,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -2534,6 +2592,7 @@
         "maxRank": 64,
         "byeWeek": 11,
         "ownership": 73.4,
+        "adp": 164.3,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -2551,6 +2610,7 @@
         "maxRank": 61,
         "byeWeek": 6,
         "ownership": 59,
+        "adp": 140.8,
         "lastUpdated": "2026-07-01T18:37:19.000Z"
       },
       {
@@ -5479,6 +5539,7 @@
         "maxRank": 3,
         "byeWeek": 6,
         "ownership": 99.2,
+        "adp": 4.1,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -5513,6 +5574,7 @@
         "maxRank": 5,
         "byeWeek": 11,
         "ownership": 99.4,
+        "adp": 6.6,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -5530,6 +5592,7 @@
         "maxRank": 6,
         "byeWeek": 6,
         "ownership": 99.2,
+        "adp": 7.9,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -5547,6 +5610,7 @@
         "maxRank": 10,
         "byeWeek": 14,
         "ownership": 99.1,
+        "adp": 13.2,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -5564,6 +5628,7 @@
         "maxRank": 12,
         "byeWeek": 6,
         "ownership": 99,
+        "adp": 13.6,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -5581,6 +5646,7 @@
         "maxRank": 11,
         "byeWeek": 11,
         "ownership": 99,
+        "adp": 13.1,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -5598,6 +5664,7 @@
         "maxRank": 13,
         "byeWeek": 8,
         "ownership": 99.2,
+        "adp": 24.6,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -5615,6 +5682,7 @@
         "maxRank": 18,
         "byeWeek": 11,
         "ownership": 98.7,
+        "adp": 17.1,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -5632,6 +5700,7 @@
         "maxRank": 16,
         "byeWeek": 14,
         "ownership": 98.9,
+        "adp": 18.7,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -5649,6 +5718,7 @@
         "maxRank": 19,
         "byeWeek": 8,
         "ownership": 98,
+        "adp": 21.4,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -5666,6 +5736,7 @@
         "maxRank": 27,
         "byeWeek": 5,
         "ownership": 97.9,
+        "adp": 25.6,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -5683,6 +5754,7 @@
         "maxRank": 27,
         "byeWeek": 10,
         "ownership": 97.8,
+        "adp": 29.5,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -5700,6 +5772,7 @@
         "maxRank": 25,
         "byeWeek": 5,
         "ownership": 98,
+        "adp": 33.6,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -5717,6 +5790,7 @@
         "maxRank": 26,
         "byeWeek": 6,
         "ownership": 97.6,
+        "adp": 24.5,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -5734,6 +5808,7 @@
         "maxRank": 24,
         "byeWeek": 13,
         "ownership": 97,
+        "adp": 28.8,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -5751,6 +5826,7 @@
         "maxRank": 32,
         "byeWeek": 8,
         "ownership": 98.7,
+        "adp": 44.4,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -5768,6 +5844,7 @@
         "maxRank": 25,
         "byeWeek": 13,
         "ownership": 97.3,
+        "adp": 30.7,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -5785,6 +5862,7 @@
         "maxRank": 28,
         "byeWeek": 7,
         "ownership": 96.4,
+        "adp": 39.6,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -5802,7 +5880,7 @@
         "maxRank": 30,
         "byeWeek": 10,
         "ownership": 96,
-        "adp": 48.2,
+        "adp": 48.1,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -5820,6 +5898,7 @@
         "maxRank": 31,
         "byeWeek": 7,
         "ownership": 95.3,
+        "adp": 36,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -5837,6 +5916,7 @@
         "maxRank": 29,
         "byeWeek": 10,
         "ownership": 96.3,
+        "adp": 42.5,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -5854,6 +5934,7 @@
         "maxRank": 35,
         "byeWeek": 10,
         "ownership": 94.3,
+        "adp": 48.6,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -5871,6 +5952,7 @@
         "maxRank": 31,
         "byeWeek": 11,
         "ownership": 97.1,
+        "adp": 38,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -5888,6 +5970,7 @@
         "maxRank": 33,
         "byeWeek": 6,
         "ownership": 95.2,
+        "adp": 42.3,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -5905,6 +5988,7 @@
         "maxRank": 42,
         "byeWeek": 8,
         "ownership": 93.4,
+        "adp": 50.4,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -5922,6 +6006,7 @@
         "maxRank": 36,
         "byeWeek": 11,
         "ownership": 91.9,
+        "adp": 60.9,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -5939,6 +6024,7 @@
         "maxRank": 44,
         "byeWeek": 7,
         "ownership": 94.2,
+        "adp": 67.8,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -5956,6 +6042,7 @@
         "maxRank": 37,
         "byeWeek": 10,
         "ownership": 93.6,
+        "adp": 53.8,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -5973,6 +6060,7 @@
         "maxRank": 62,
         "byeWeek": 9,
         "ownership": 93.4,
+        "adp": 62.7,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -5990,6 +6078,7 @@
         "maxRank": 43,
         "byeWeek": 13,
         "ownership": 91.2,
+        "adp": 56.2,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -6007,6 +6096,7 @@
         "maxRank": 50,
         "byeWeek": 14,
         "ownership": 91.9,
+        "adp": 67,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -6024,6 +6114,7 @@
         "maxRank": 45,
         "byeWeek": 9,
         "ownership": 92.7,
+        "adp": 58.4,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -6041,6 +6132,7 @@
         "maxRank": 42,
         "byeWeek": 10,
         "ownership": 91.2,
+        "adp": 70.7,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -6058,6 +6150,7 @@
         "maxRank": 49,
         "byeWeek": 7,
         "ownership": 90.5,
+        "adp": 73.7,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -6075,6 +6168,7 @@
         "maxRank": 53,
         "byeWeek": 10,
         "ownership": 88.7,
+        "adp": 84.3,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -6092,6 +6186,7 @@
         "maxRank": 74,
         "byeWeek": 8,
         "ownership": 89.5,
+        "adp": 87.9,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -6109,6 +6204,7 @@
         "maxRank": 50,
         "byeWeek": 14,
         "ownership": 89.3,
+        "adp": 80.5,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -6126,6 +6222,7 @@
         "maxRank": 53,
         "byeWeek": 7,
         "ownership": 89,
+        "adp": 73.9,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -6143,6 +6240,7 @@
         "maxRank": 67,
         "byeWeek": 10,
         "ownership": 89.3,
+        "adp": 106.1,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -6160,6 +6258,7 @@
         "maxRank": 51,
         "byeWeek": 9,
         "ownership": 88.8,
+        "adp": 78.3,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -6177,6 +6276,7 @@
         "maxRank": 52,
         "byeWeek": 7,
         "ownership": 86.9,
+        "adp": 99.8,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -6194,6 +6294,7 @@
         "maxRank": 52,
         "byeWeek": 7,
         "ownership": 81.4,
+        "adp": 89.8,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -6211,6 +6312,7 @@
         "maxRank": 68,
         "byeWeek": 8,
         "ownership": 85.3,
+        "adp": 101.1,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -6228,6 +6330,7 @@
         "maxRank": 56,
         "byeWeek": 9,
         "ownership": 82.1,
+        "adp": 109.3,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -6245,6 +6348,7 @@
         "maxRank": 55,
         "byeWeek": 6,
         "ownership": 85.5,
+        "adp": 90.2,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -6262,6 +6366,7 @@
         "maxRank": 64,
         "byeWeek": 11,
         "ownership": 78.8,
+        "adp": 84.5,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -6279,6 +6384,7 @@
         "maxRank": 62,
         "byeWeek": 13,
         "ownership": 81.1,
+        "adp": 88.7,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -6296,6 +6402,7 @@
         "maxRank": 59,
         "byeWeek": 5,
         "ownership": 80.7,
+        "adp": 91.8,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -6313,6 +6420,7 @@
         "maxRank": 62,
         "byeWeek": 8,
         "ownership": 52.5,
+        "adp": 120.2,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -6347,6 +6455,7 @@
         "maxRank": 68,
         "byeWeek": 11,
         "ownership": 74.3,
+        "adp": 107.9,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -6364,6 +6473,7 @@
         "maxRank": 112,
         "byeWeek": 11,
         "ownership": 70,
+        "adp": 115.8,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -6381,6 +6491,7 @@
         "maxRank": 76,
         "byeWeek": 5,
         "ownership": 53.1,
+        "adp": 113.3,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -6398,6 +6509,7 @@
         "maxRank": 89,
         "byeWeek": 11,
         "ownership": 71,
+        "adp": 109.3,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -6415,6 +6527,7 @@
         "maxRank": 72,
         "byeWeek": 11,
         "ownership": 46.8,
+        "adp": 126,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -6449,6 +6562,7 @@
         "maxRank": 115,
         "byeWeek": 13,
         "ownership": 48.3,
+        "adp": 131.6,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -6466,6 +6580,7 @@
         "maxRank": 102,
         "byeWeek": 6,
         "ownership": 40.8,
+        "adp": 130.5,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -6500,6 +6615,7 @@
         "maxRank": 113,
         "byeWeek": 11,
         "ownership": 41.2,
+        "adp": 134.4,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -6551,6 +6667,7 @@
         "maxRank": 105,
         "byeWeek": 13,
         "ownership": 27.6,
+        "adp": 132.2,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -10394,6 +10511,7 @@
         "maxRank": 2,
         "byeWeek": 13,
         "ownership": 99.2,
+        "adp": 45.4,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -10411,6 +10529,7 @@
         "maxRank": 4,
         "byeWeek": 14,
         "ownership": 99.1,
+        "adp": 35.9,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -10428,6 +10547,7 @@
         "maxRank": 9,
         "byeWeek": 10,
         "ownership": 98.4,
+        "adp": 51.3,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -10445,6 +10565,7 @@
         "maxRank": 7,
         "byeWeek": 13,
         "ownership": 98.2,
+        "adp": 60.8,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -10462,6 +10583,7 @@
         "maxRank": 10,
         "byeWeek": 11,
         "ownership": 93.8,
+        "adp": 78,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -10479,6 +10601,7 @@
         "maxRank": 11,
         "byeWeek": 11,
         "ownership": 95.3,
+        "adp": 77.2,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -10496,6 +10619,7 @@
         "maxRank": 10,
         "byeWeek": 11,
         "ownership": 95.8,
+        "adp": 86,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -10513,6 +10637,7 @@
         "maxRank": 12,
         "byeWeek": 6,
         "ownership": 95.2,
+        "adp": 72.9,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -10530,6 +10655,7 @@
         "maxRank": 19,
         "byeWeek": 5,
         "ownership": 91.7,
+        "adp": 101.7,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -10564,6 +10690,7 @@
         "maxRank": 24,
         "byeWeek": 8,
         "ownership": 92.3,
+        "adp": 111.6,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -10581,6 +10708,7 @@
         "maxRank": 17,
         "byeWeek": 14,
         "ownership": 90.4,
+        "adp": 132.2,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -10598,6 +10726,7 @@
         "maxRank": 17,
         "byeWeek": 10,
         "ownership": 89.6,
+        "adp": 137.2,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -10615,6 +10744,7 @@
         "maxRank": 28,
         "byeWeek": 8,
         "ownership": 86.1,
+        "adp": 152.6,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -10632,6 +10762,7 @@
         "maxRank": 20,
         "byeWeek": 13,
         "ownership": 84.8,
+        "adp": 134.1,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -10683,6 +10814,7 @@
         "maxRank": 25,
         "byeWeek": 7,
         "ownership": 52.5,
+        "adp": 162.2,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13296,6 +13428,7 @@
         "maxRank": 5,
         "byeWeek": 11,
         "ownership": 99.1,
+        "adp": 1.9,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13331,6 +13464,7 @@
         "maxRank": 6,
         "byeWeek": 6,
         "ownership": 99.2,
+        "adp": 4.1,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13365,6 +13499,7 @@
         "maxRank": 8,
         "byeWeek": 11,
         "ownership": 99.4,
+        "adp": 6.6,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13382,6 +13517,7 @@
         "maxRank": 11,
         "byeWeek": 6,
         "ownership": 99.2,
+        "adp": 7.9,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13399,6 +13535,7 @@
         "maxRank": 17,
         "byeWeek": 8,
         "ownership": 99.4,
+        "adp": 4.9,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13416,6 +13553,7 @@
         "maxRank": 21,
         "byeWeek": 13,
         "ownership": 99.1,
+        "adp": 6.2,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13433,6 +13571,7 @@
         "maxRank": 19,
         "byeWeek": 14,
         "ownership": 99.1,
+        "adp": 13.2,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13450,6 +13589,7 @@
         "maxRank": 26,
         "byeWeek": 6,
         "ownership": 99,
+        "adp": 13.6,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13467,6 +13607,7 @@
         "maxRank": 23,
         "byeWeek": 7,
         "ownership": 99.3,
+        "adp": 10.9,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13484,6 +13625,7 @@
         "maxRank": 30,
         "byeWeek": 13,
         "ownership": 99,
+        "adp": 14.9,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13501,6 +13643,7 @@
         "maxRank": 29,
         "byeWeek": 11,
         "ownership": 99,
+        "adp": 13.1,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13518,6 +13661,7 @@
         "maxRank": 30,
         "byeWeek": 6,
         "ownership": 99.1,
+        "adp": 9,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13535,6 +13679,7 @@
         "maxRank": 30,
         "byeWeek": 8,
         "ownership": 99.2,
+        "adp": 24.6,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13552,6 +13697,7 @@
         "maxRank": 32,
         "byeWeek": 13,
         "ownership": 99.2,
+        "adp": 45.4,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13569,6 +13715,7 @@
         "maxRank": 33,
         "byeWeek": 6,
         "ownership": 98.5,
+        "adp": 22,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13586,6 +13733,7 @@
         "maxRank": 40,
         "byeWeek": 10,
         "ownership": 99.2,
+        "adp": 17.7,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13603,6 +13751,7 @@
         "maxRank": 39,
         "byeWeek": 11,
         "ownership": 98.7,
+        "adp": 17.1,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13620,6 +13769,7 @@
         "maxRank": 35,
         "byeWeek": 14,
         "ownership": 98.9,
+        "adp": 18.7,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13637,6 +13787,7 @@
         "maxRank": 50,
         "byeWeek": 7,
         "ownership": 98.7,
+        "adp": 18.2,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13654,6 +13805,7 @@
         "maxRank": 56,
         "byeWeek": 14,
         "ownership": 99.1,
+        "adp": 35.9,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13671,6 +13823,7 @@
         "maxRank": 40,
         "byeWeek": 13,
         "ownership": 98.8,
+        "adp": 10.3,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13688,6 +13841,7 @@
         "maxRank": 41,
         "byeWeek": 8,
         "ownership": 98,
+        "adp": 21.4,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13705,6 +13859,7 @@
         "maxRank": 56,
         "byeWeek": 5,
         "ownership": 99,
+        "adp": 20.2,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13722,6 +13877,7 @@
         "maxRank": 59,
         "byeWeek": 5,
         "ownership": 97.9,
+        "adp": 25.6,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13739,6 +13895,7 @@
         "maxRank": 59,
         "byeWeek": 10,
         "ownership": 97.8,
+        "adp": 29.5,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13756,6 +13913,7 @@
         "maxRank": 50,
         "byeWeek": 5,
         "ownership": 98,
+        "adp": 33.6,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13773,6 +13931,7 @@
         "maxRank": 55,
         "byeWeek": 14,
         "ownership": 97.5,
+        "adp": 25.3,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13790,6 +13949,7 @@
         "maxRank": 58,
         "byeWeek": 6,
         "ownership": 97.6,
+        "adp": 24.5,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13807,6 +13967,7 @@
         "maxRank": 51,
         "byeWeek": 11,
         "ownership": 98.1,
+        "adp": 31.4,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13824,6 +13985,7 @@
         "maxRank": 48,
         "byeWeek": 13,
         "ownership": 97,
+        "adp": 28.8,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13841,6 +14003,7 @@
         "maxRank": 74,
         "byeWeek": 8,
         "ownership": 98.7,
+        "adp": 44.4,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13858,7 +14021,7 @@
         "maxRank": 62,
         "byeWeek": 11,
         "ownership": 98.5,
-        "adp": 24.6,
+        "adp": 25.1,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13876,6 +14039,7 @@
         "maxRank": 52,
         "byeWeek": 13,
         "ownership": 97.4,
+        "adp": 31.3,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13893,6 +14057,7 @@
         "maxRank": 54,
         "byeWeek": 13,
         "ownership": 97.3,
+        "adp": 30.7,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13910,6 +14075,7 @@
         "maxRank": 63,
         "byeWeek": 7,
         "ownership": 96.4,
+        "adp": 39.6,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13927,6 +14093,7 @@
         "maxRank": 57,
         "byeWeek": 14,
         "ownership": 97.1,
+        "adp": 33.4,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13944,6 +14111,7 @@
         "maxRank": 94,
         "byeWeek": 10,
         "ownership": 98.4,
+        "adp": 51.3,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13961,7 +14129,7 @@
         "maxRank": 68,
         "byeWeek": 10,
         "ownership": 96,
-        "adp": 48.2,
+        "adp": 48.1,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13979,6 +14147,7 @@
         "maxRank": 67,
         "byeWeek": 8,
         "ownership": 97,
+        "adp": 41.3,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -13996,6 +14165,7 @@
         "maxRank": 70,
         "byeWeek": 7,
         "ownership": 95.3,
+        "adp": 36,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14013,6 +14183,7 @@
         "maxRank": 64,
         "byeWeek": 10,
         "ownership": 96.3,
+        "adp": 42.5,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14030,6 +14201,7 @@
         "maxRank": 91,
         "byeWeek": 10,
         "ownership": 94.3,
+        "adp": 48.6,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14047,6 +14219,7 @@
         "maxRank": 68,
         "byeWeek": 11,
         "ownership": 97.1,
+        "adp": 38,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14064,6 +14237,7 @@
         "maxRank": 75,
         "byeWeek": 6,
         "ownership": 95.2,
+        "adp": 42.3,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14081,6 +14255,7 @@
         "maxRank": 72,
         "byeWeek": 8,
         "ownership": 96.9,
+        "adp": 36.7,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14098,6 +14273,7 @@
         "maxRank": 65,
         "byeWeek": 11,
         "ownership": 94.6,
+        "adp": 49.4,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14115,6 +14291,7 @@
         "maxRank": 72,
         "byeWeek": 10,
         "ownership": 96.2,
+        "adp": 47.6,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14132,6 +14309,7 @@
         "maxRank": 101,
         "byeWeek": 8,
         "ownership": 93.4,
+        "adp": 50.4,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14149,6 +14327,7 @@
         "maxRank": 67,
         "byeWeek": 10,
         "ownership": 94.2,
+        "adp": 47.2,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14166,6 +14345,7 @@
         "maxRank": 83,
         "byeWeek": 11,
         "ownership": 91.9,
+        "adp": 60.9,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14183,6 +14363,7 @@
         "maxRank": 85,
         "byeWeek": 11,
         "ownership": 95.1,
+        "adp": 60.5,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14200,6 +14381,7 @@
         "maxRank": 90,
         "byeWeek": 13,
         "ownership": 98.2,
+        "adp": 60.8,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14217,6 +14399,7 @@
         "maxRank": 108,
         "byeWeek": 7,
         "ownership": 94.2,
+        "adp": 67.8,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14234,6 +14417,7 @@
         "maxRank": 88,
         "byeWeek": 10,
         "ownership": 93.6,
+        "adp": 53.8,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14251,6 +14435,7 @@
         "maxRank": 117,
         "byeWeek": 8,
         "ownership": 93.8,
+        "adp": 55.7,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14268,6 +14453,7 @@
         "maxRank": 120,
         "byeWeek": 7,
         "ownership": 91.6,
+        "adp": 56.6,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14285,6 +14471,7 @@
         "maxRank": 96,
         "byeWeek": 11,
         "ownership": 93.8,
+        "adp": 78,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14302,6 +14489,7 @@
         "maxRank": 165,
         "byeWeek": 9,
         "ownership": 93.4,
+        "adp": 62.7,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14319,6 +14507,7 @@
         "maxRank": 119,
         "byeWeek": 11,
         "ownership": 91,
+        "adp": 68.5,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14336,6 +14525,7 @@
         "maxRank": 88,
         "byeWeek": 9,
         "ownership": 91.4,
+        "adp": 70.7,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14353,6 +14543,7 @@
         "maxRank": 102,
         "byeWeek": 13,
         "ownership": 91.2,
+        "adp": 56.2,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14370,6 +14561,7 @@
         "maxRank": 125,
         "byeWeek": 14,
         "ownership": 91.9,
+        "adp": 67,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14387,6 +14579,7 @@
         "maxRank": 111,
         "byeWeek": 11,
         "ownership": 95.3,
+        "adp": 77.2,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14404,6 +14597,7 @@
         "maxRank": 106,
         "byeWeek": 9,
         "ownership": 92.7,
+        "adp": 58.4,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14421,6 +14615,7 @@
         "maxRank": 121,
         "byeWeek": 9,
         "ownership": 90,
+        "adp": 74.5,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14438,6 +14633,7 @@
         "maxRank": 101,
         "byeWeek": 10,
         "ownership": 91.2,
+        "adp": 70.7,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14455,6 +14651,7 @@
         "maxRank": 102,
         "byeWeek": 11,
         "ownership": 89.7,
+        "adp": 76.1,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14472,6 +14669,7 @@
         "maxRank": 117,
         "byeWeek": 5,
         "ownership": 92.3,
+        "adp": 81.5,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14489,6 +14687,7 @@
         "maxRank": 107,
         "byeWeek": 9,
         "ownership": 90.7,
+        "adp": 79.6,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14506,6 +14705,7 @@
         "maxRank": 116,
         "byeWeek": 7,
         "ownership": 90.5,
+        "adp": 73.7,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14523,6 +14723,7 @@
         "maxRank": 104,
         "byeWeek": 11,
         "ownership": 95.8,
+        "adp": 86,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14540,6 +14741,7 @@
         "maxRank": 110,
         "byeWeek": 6,
         "ownership": 95.2,
+        "adp": 72.9,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14557,6 +14759,7 @@
         "maxRank": 135,
         "byeWeek": 10,
         "ownership": 88.7,
+        "adp": 84.3,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14574,6 +14777,7 @@
         "maxRank": 133,
         "byeWeek": 10,
         "ownership": 90.6,
+        "adp": 96.5,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14591,6 +14795,7 @@
         "maxRank": 203,
         "byeWeek": 8,
         "ownership": 89.5,
+        "adp": 87.9,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14608,6 +14813,7 @@
         "maxRank": 125,
         "byeWeek": 14,
         "ownership": 89.3,
+        "adp": 80.5,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14625,6 +14831,7 @@
         "maxRank": 117,
         "byeWeek": 10,
         "ownership": 89.2,
+        "adp": 101.1,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14642,6 +14849,7 @@
         "maxRank": 135,
         "byeWeek": 7,
         "ownership": 89,
+        "adp": 73.9,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14659,6 +14867,7 @@
         "maxRank": 177,
         "byeWeek": 10,
         "ownership": 89.3,
+        "adp": 106.1,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14676,6 +14885,7 @@
         "maxRank": 138,
         "byeWeek": 11,
         "ownership": 86.3,
+        "adp": 124.3,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14693,6 +14903,7 @@
         "maxRank": 142,
         "byeWeek": 10,
         "ownership": 88.4,
+        "adp": 89,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14710,6 +14921,7 @@
         "maxRank": 127,
         "byeWeek": 9,
         "ownership": 88.8,
+        "adp": 78.3,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14727,6 +14939,7 @@
         "maxRank": 132,
         "byeWeek": 7,
         "ownership": 86.9,
+        "adp": 99.8,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14744,6 +14957,7 @@
         "maxRank": 130,
         "byeWeek": 7,
         "ownership": 81.4,
+        "adp": 89.8,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14761,6 +14975,7 @@
         "maxRank": 157,
         "byeWeek": 5,
         "ownership": 91.7,
+        "adp": 101.7,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14778,6 +14993,7 @@
         "maxRank": 140,
         "byeWeek": 10,
         "ownership": 86.5,
+        "adp": 115.9,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14795,6 +15011,7 @@
         "maxRank": 165,
         "byeWeek": 8,
         "ownership": 85.3,
+        "adp": 101.1,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14812,6 +15029,7 @@
         "maxRank": 142,
         "byeWeek": 9,
         "ownership": 82.1,
+        "adp": 109.3,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14829,6 +15047,7 @@
         "maxRank": 139,
         "byeWeek": 6,
         "ownership": 85.5,
+        "adp": 90.2,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14846,6 +15065,7 @@
         "maxRank": 140,
         "byeWeek": 6,
         "ownership": 88,
+        "adp": 100.5,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14880,6 +15100,7 @@
         "maxRank": 147,
         "byeWeek": 7,
         "ownership": 80.3,
+        "adp": 113,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14897,6 +15118,7 @@
         "maxRank": 169,
         "byeWeek": 11,
         "ownership": 78.8,
+        "adp": 84.5,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14914,6 +15136,7 @@
         "maxRank": 165,
         "byeWeek": 13,
         "ownership": 81.1,
+        "adp": 88.7,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14931,6 +15154,7 @@
         "maxRank": 208,
         "byeWeek": 8,
         "ownership": 92.3,
+        "adp": 111.6,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14948,6 +15172,7 @@
         "maxRank": 148,
         "byeWeek": 14,
         "ownership": 90.4,
+        "adp": 132.2,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14965,6 +15190,7 @@
         "maxRank": 144,
         "byeWeek": 7,
         "ownership": 80.3,
+        "adp": 119.8,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14982,6 +15208,7 @@
         "maxRank": 144,
         "byeWeek": 10,
         "ownership": 89.6,
+        "adp": 137.2,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -14999,6 +15226,7 @@
         "maxRank": 225,
         "byeWeek": 8,
         "ownership": 86.1,
+        "adp": 152.6,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -15016,6 +15244,7 @@
         "maxRank": 147,
         "byeWeek": 6,
         "ownership": 67,
+        "adp": 122.3,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -15033,6 +15262,7 @@
         "maxRank": 153,
         "byeWeek": 5,
         "ownership": 80.7,
+        "adp": 91.8,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -15050,6 +15280,7 @@
         "maxRank": 169,
         "byeWeek": 8,
         "ownership": 46.7,
+        "adp": 129,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -15067,6 +15298,7 @@
         "maxRank": 153,
         "byeWeek": 8,
         "ownership": 52.5,
+        "adp": 120.2,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -15101,6 +15333,7 @@
         "maxRank": 172,
         "byeWeek": 13,
         "ownership": 84.8,
+        "adp": 134.1,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -15118,6 +15351,7 @@
         "maxRank": 221,
         "byeWeek": 7,
         "ownership": 49.9,
+        "adp": 153,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -15135,6 +15369,7 @@
         "maxRank": 179,
         "byeWeek": 11,
         "ownership": 74.3,
+        "adp": 107.9,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -15152,6 +15387,7 @@
         "maxRank": 308,
         "byeWeek": 11,
         "ownership": 70,
+        "adp": 115.8,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -15169,6 +15405,7 @@
         "maxRank": 369,
         "byeWeek": 5,
         "ownership": 71.6,
+        "adp": 128.3,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -15203,6 +15440,7 @@
         "maxRank": 224,
         "byeWeek": 11,
         "ownership": 73.4,
+        "adp": 164.3,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -15237,6 +15475,7 @@
         "maxRank": 207,
         "byeWeek": 5,
         "ownership": 53.1,
+        "adp": 113.3,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -15254,6 +15493,7 @@
         "maxRank": 246,
         "byeWeek": 11,
         "ownership": 71,
+        "adp": 109.3,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -15271,6 +15511,7 @@
         "maxRank": 176,
         "byeWeek": 6,
         "ownership": 59,
+        "adp": 140.8,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -15339,6 +15580,7 @@
         "maxRank": 208,
         "byeWeek": 7,
         "ownership": 52.5,
+        "adp": 162.2,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -15390,6 +15632,7 @@
         "maxRank": 196,
         "byeWeek": 11,
         "ownership": 46.8,
+        "adp": 126,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -15458,6 +15701,7 @@
         "maxRank": 288,
         "byeWeek": 6,
         "ownership": 40.8,
+        "adp": 130.5,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -15509,6 +15753,7 @@
         "maxRank": 315,
         "byeWeek": 13,
         "ownership": 48.3,
+        "adp": 131.6,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -15543,6 +15788,7 @@
         "maxRank": 311,
         "byeWeek": 11,
         "ownership": 41.2,
+        "adp": 134.4,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -15730,6 +15976,7 @@
         "maxRank": 295,
         "byeWeek": 13,
         "ownership": 27.6,
+        "adp": 132.2,
         "lastUpdated": "2026-07-01T18:57:43.000Z"
       },
       {
@@ -20715,6 +20962,7 @@
         "maxRank": 3,
         "byeWeek": 14,
         "ownership": 96.8,
+        "adp": 120.4,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -20749,6 +20997,7 @@
         "maxRank": 5,
         "byeWeek": 7,
         "ownership": 94.2,
+        "adp": 108.7,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -20766,6 +21015,7 @@
         "maxRank": 13,
         "byeWeek": 7,
         "ownership": 84.6,
+        "adp": 151.9,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -20783,6 +21033,7 @@
         "maxRank": 6,
         "byeWeek": 11,
         "ownership": 90.4,
+        "adp": 119.8,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -20885,6 +21136,7 @@
         "maxRank": 19,
         "byeWeek": 10,
         "ownership": 24.7,
+        "adp": 155.6,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -20902,6 +21154,7 @@
         "maxRank": 15,
         "byeWeek": 6,
         "ownership": 53,
+        "adp": 131.7,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -20987,6 +21240,7 @@
         "maxRank": 20,
         "byeWeek": 10,
         "ownership": 7.9,
+        "adp": 174.5,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -21328,6 +21582,7 @@
         "maxRank": 3,
         "byeWeek": 8,
         "ownership": 94.5,
+        "adp": 103.5,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -21345,6 +21600,7 @@
         "maxRank": 7,
         "byeWeek": 10,
         "ownership": 92.4,
+        "adp": 91.9,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -21362,6 +21618,7 @@
         "maxRank": 6,
         "byeWeek": 11,
         "ownership": 94.9,
+        "adp": 84,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -21379,6 +21636,7 @@
         "maxRank": 10,
         "byeWeek": 11,
         "ownership": 76.5,
+        "adp": 100.9,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -21396,6 +21654,7 @@
         "maxRank": 9,
         "byeWeek": 10,
         "ownership": 81.7,
+        "adp": 127,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -21413,6 +21672,7 @@
         "maxRank": 20,
         "byeWeek": 6,
         "ownership": 61.7,
+        "adp": 136.3,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -21430,6 +21690,7 @@
         "maxRank": 18,
         "byeWeek": 11,
         "ownership": 78.9,
+        "adp": 106.4,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -21464,6 +21725,7 @@
         "maxRank": 14,
         "byeWeek": 7,
         "ownership": 66.1,
+        "adp": 128.2,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -21481,6 +21743,7 @@
         "maxRank": 18,
         "byeWeek": 7,
         "ownership": 50.2,
+        "adp": 157.7,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -21498,6 +21761,7 @@
         "maxRank": 20,
         "byeWeek": 13,
         "ownership": 45.8,
+        "adp": 141.9,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -21549,6 +21813,7 @@
         "maxRank": 18,
         "byeWeek": 6,
         "ownership": 47.6,
+        "adp": 133.7,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -21583,6 +21848,7 @@
         "maxRank": 19,
         "byeWeek": 7,
         "ownership": 31.9,
+        "adp": 135.6,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -21787,6 +22053,7 @@
         "maxRank": 31,
         "byeWeek": 7,
         "ownership": 16.5,
+        "adp": 149.6,
         "lastUpdated": "2026-07-01T18:37:20.000Z"
       },
       {
@@ -21875,6 +22142,7 @@
       "maxRank": 5,
       "byeWeek": 11,
       "ownership": 99.1,
+      "adp": 1.9,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -21910,6 +22178,7 @@
       "maxRank": 6,
       "byeWeek": 6,
       "ownership": 99.2,
+      "adp": 4.1,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -21944,6 +22213,7 @@
       "maxRank": 8,
       "byeWeek": 11,
       "ownership": 99.4,
+      "adp": 6.6,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -21961,6 +22231,7 @@
       "maxRank": 11,
       "byeWeek": 6,
       "ownership": 99.2,
+      "adp": 7.9,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -21978,6 +22249,7 @@
       "maxRank": 17,
       "byeWeek": 8,
       "ownership": 99.4,
+      "adp": 4.9,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -21995,6 +22267,7 @@
       "maxRank": 21,
       "byeWeek": 13,
       "ownership": 99.1,
+      "adp": 6.2,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22012,6 +22285,7 @@
       "maxRank": 19,
       "byeWeek": 14,
       "ownership": 99.1,
+      "adp": 13.2,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22029,6 +22303,7 @@
       "maxRank": 26,
       "byeWeek": 6,
       "ownership": 99,
+      "adp": 13.6,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22046,6 +22321,7 @@
       "maxRank": 23,
       "byeWeek": 7,
       "ownership": 99.3,
+      "adp": 10.9,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22063,6 +22339,7 @@
       "maxRank": 30,
       "byeWeek": 13,
       "ownership": 99,
+      "adp": 14.9,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22080,6 +22357,7 @@
       "maxRank": 29,
       "byeWeek": 11,
       "ownership": 99,
+      "adp": 13.1,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22097,6 +22375,7 @@
       "maxRank": 30,
       "byeWeek": 6,
       "ownership": 99.1,
+      "adp": 9,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22114,6 +22393,7 @@
       "maxRank": 30,
       "byeWeek": 8,
       "ownership": 99.2,
+      "adp": 24.6,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22131,6 +22411,7 @@
       "maxRank": 32,
       "byeWeek": 13,
       "ownership": 99.2,
+      "adp": 45.4,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22148,6 +22429,7 @@
       "maxRank": 33,
       "byeWeek": 6,
       "ownership": 98.5,
+      "adp": 22,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22165,6 +22447,7 @@
       "maxRank": 40,
       "byeWeek": 10,
       "ownership": 99.2,
+      "adp": 17.7,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22182,6 +22465,7 @@
       "maxRank": 39,
       "byeWeek": 11,
       "ownership": 98.7,
+      "adp": 17.1,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22199,6 +22483,7 @@
       "maxRank": 35,
       "byeWeek": 14,
       "ownership": 98.9,
+      "adp": 18.7,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22216,6 +22501,7 @@
       "maxRank": 50,
       "byeWeek": 7,
       "ownership": 98.7,
+      "adp": 18.2,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22233,6 +22519,7 @@
       "maxRank": 56,
       "byeWeek": 14,
       "ownership": 99.1,
+      "adp": 35.9,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22250,6 +22537,7 @@
       "maxRank": 40,
       "byeWeek": 13,
       "ownership": 98.8,
+      "adp": 10.3,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22267,6 +22555,7 @@
       "maxRank": 41,
       "byeWeek": 8,
       "ownership": 98,
+      "adp": 21.4,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22284,6 +22573,7 @@
       "maxRank": 56,
       "byeWeek": 5,
       "ownership": 99,
+      "adp": 20.2,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22301,6 +22591,7 @@
       "maxRank": 41,
       "byeWeek": 7,
       "ownership": 99.3,
+      "adp": 27,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22318,6 +22609,7 @@
       "maxRank": 59,
       "byeWeek": 5,
       "ownership": 97.9,
+      "adp": 25.6,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22335,6 +22627,7 @@
       "maxRank": 59,
       "byeWeek": 10,
       "ownership": 97.8,
+      "adp": 29.5,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22352,6 +22645,7 @@
       "maxRank": 50,
       "byeWeek": 5,
       "ownership": 98,
+      "adp": 33.6,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22369,6 +22663,7 @@
       "maxRank": 55,
       "byeWeek": 14,
       "ownership": 97.5,
+      "adp": 25.3,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22386,6 +22681,7 @@
       "maxRank": 58,
       "byeWeek": 6,
       "ownership": 97.6,
+      "adp": 24.5,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22403,6 +22699,7 @@
       "maxRank": 51,
       "byeWeek": 11,
       "ownership": 98.1,
+      "adp": 31.4,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22420,6 +22717,7 @@
       "maxRank": 62,
       "byeWeek": 13,
       "ownership": 98.9,
+      "adp": 52.5,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22437,6 +22735,7 @@
       "maxRank": 48,
       "byeWeek": 13,
       "ownership": 97,
+      "adp": 28.8,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22454,6 +22753,7 @@
       "maxRank": 69,
       "byeWeek": 11,
       "ownership": 98.6,
+      "adp": 63.5,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22471,6 +22771,7 @@
       "maxRank": 74,
       "byeWeek": 8,
       "ownership": 98.7,
+      "adp": 44.4,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22488,7 +22789,7 @@
       "maxRank": 62,
       "byeWeek": 11,
       "ownership": 98.5,
-      "adp": 24.6,
+      "adp": 25.1,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22506,6 +22807,7 @@
       "maxRank": 52,
       "byeWeek": 13,
       "ownership": 97.4,
+      "adp": 31.3,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22523,6 +22825,7 @@
       "maxRank": 54,
       "byeWeek": 13,
       "ownership": 97.3,
+      "adp": 30.7,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22540,6 +22843,7 @@
       "maxRank": 63,
       "byeWeek": 7,
       "ownership": 96.4,
+      "adp": 39.6,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22557,6 +22861,7 @@
       "maxRank": 57,
       "byeWeek": 14,
       "ownership": 97.1,
+      "adp": 33.4,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22574,6 +22879,7 @@
       "maxRank": 94,
       "byeWeek": 10,
       "ownership": 98.4,
+      "adp": 51.3,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22591,7 +22897,7 @@
       "maxRank": 68,
       "byeWeek": 10,
       "ownership": 96,
-      "adp": 48.2,
+      "adp": 48.1,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22609,6 +22915,7 @@
       "maxRank": 67,
       "byeWeek": 8,
       "ownership": 97,
+      "adp": 41.3,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22626,6 +22933,7 @@
       "maxRank": 70,
       "byeWeek": 7,
       "ownership": 95.3,
+      "adp": 36,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22643,6 +22951,7 @@
       "maxRank": 64,
       "byeWeek": 10,
       "ownership": 96.3,
+      "adp": 42.5,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22660,6 +22969,7 @@
       "maxRank": 97,
       "byeWeek": 6,
       "ownership": 97.6,
+      "adp": 50,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22677,6 +22987,7 @@
       "maxRank": 91,
       "byeWeek": 10,
       "ownership": 94.3,
+      "adp": 48.6,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22694,6 +23005,7 @@
       "maxRank": 68,
       "byeWeek": 11,
       "ownership": 97.1,
+      "adp": 38,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22711,6 +23023,7 @@
       "maxRank": 75,
       "byeWeek": 6,
       "ownership": 95.2,
+      "adp": 42.3,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22728,6 +23041,7 @@
       "maxRank": 72,
       "byeWeek": 8,
       "ownership": 96.9,
+      "adp": 36.7,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22745,6 +23059,7 @@
       "maxRank": 65,
       "byeWeek": 11,
       "ownership": 94.6,
+      "adp": 49.4,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22762,6 +23077,7 @@
       "maxRank": 72,
       "byeWeek": 10,
       "ownership": 96.2,
+      "adp": 47.6,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22779,6 +23095,7 @@
       "maxRank": 101,
       "byeWeek": 8,
       "ownership": 93.4,
+      "adp": 50.4,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22796,6 +23113,7 @@
       "maxRank": 67,
       "byeWeek": 10,
       "ownership": 94.2,
+      "adp": 47.2,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22813,6 +23131,7 @@
       "maxRank": 83,
       "byeWeek": 11,
       "ownership": 91.9,
+      "adp": 60.9,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22830,6 +23149,7 @@
       "maxRank": 85,
       "byeWeek": 11,
       "ownership": 95.1,
+      "adp": 60.5,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22847,6 +23167,7 @@
       "maxRank": 90,
       "byeWeek": 7,
       "ownership": 97.8,
+      "adp": 84.5,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22864,7 +23185,7 @@
       "maxRank": 78,
       "byeWeek": 10,
       "ownership": 97.4,
-      "adp": 98.5,
+      "adp": 95.1,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22882,6 +23203,7 @@
       "maxRank": 90,
       "byeWeek": 13,
       "ownership": 98.2,
+      "adp": 60.8,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22899,6 +23221,7 @@
       "maxRank": 108,
       "byeWeek": 7,
       "ownership": 94.2,
+      "adp": 67.8,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22916,6 +23239,7 @@
       "maxRank": 88,
       "byeWeek": 10,
       "ownership": 93.6,
+      "adp": 53.8,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22933,6 +23257,7 @@
       "maxRank": 117,
       "byeWeek": 8,
       "ownership": 93.8,
+      "adp": 55.7,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22950,6 +23275,7 @@
       "maxRank": 120,
       "byeWeek": 7,
       "ownership": 91.6,
+      "adp": 56.6,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22967,6 +23293,7 @@
       "maxRank": 96,
       "byeWeek": 11,
       "ownership": 93.8,
+      "adp": 78,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -22984,6 +23311,7 @@
       "maxRank": 103,
       "byeWeek": 10,
       "ownership": 93.9,
+      "adp": 106.1,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23001,6 +23329,7 @@
       "maxRank": 165,
       "byeWeek": 9,
       "ownership": 93.4,
+      "adp": 62.7,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23018,6 +23347,7 @@
       "maxRank": 119,
       "byeWeek": 11,
       "ownership": 91,
+      "adp": 68.5,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23035,6 +23365,7 @@
       "maxRank": 112,
       "byeWeek": 7,
       "ownership": 93.2,
+      "adp": 77,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23052,6 +23383,7 @@
       "maxRank": 88,
       "byeWeek": 9,
       "ownership": 91.4,
+      "adp": 70.7,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23069,6 +23401,7 @@
       "maxRank": 102,
       "byeWeek": 13,
       "ownership": 91.2,
+      "adp": 56.2,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23086,6 +23419,7 @@
       "maxRank": 125,
       "byeWeek": 14,
       "ownership": 91.9,
+      "adp": 67,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23103,6 +23437,7 @@
       "maxRank": 104,
       "byeWeek": 7,
       "ownership": 91.5,
+      "adp": 67.9,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23120,6 +23455,7 @@
       "maxRank": 111,
       "byeWeek": 11,
       "ownership": 95.3,
+      "adp": 77.2,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23137,6 +23473,7 @@
       "maxRank": 106,
       "byeWeek": 9,
       "ownership": 92.7,
+      "adp": 58.4,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23154,6 +23491,7 @@
       "maxRank": 121,
       "byeWeek": 9,
       "ownership": 90,
+      "adp": 74.5,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23171,6 +23509,7 @@
       "maxRank": 101,
       "byeWeek": 10,
       "ownership": 91.2,
+      "adp": 70.7,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23188,6 +23527,7 @@
       "maxRank": 102,
       "byeWeek": 11,
       "ownership": 89.7,
+      "adp": 76.1,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23205,6 +23545,7 @@
       "maxRank": 117,
       "byeWeek": 5,
       "ownership": 92.3,
+      "adp": 81.5,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23222,6 +23563,7 @@
       "maxRank": 107,
       "byeWeek": 9,
       "ownership": 90.7,
+      "adp": 79.6,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23239,6 +23581,7 @@
       "maxRank": 116,
       "byeWeek": 7,
       "ownership": 90.5,
+      "adp": 73.7,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23256,6 +23599,7 @@
       "maxRank": 104,
       "byeWeek": 14,
       "ownership": 93.7,
+      "adp": 52.8,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23273,6 +23617,7 @@
       "maxRank": 128,
       "byeWeek": 8,
       "ownership": 95.7,
+      "adp": 130.2,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23290,6 +23635,7 @@
       "maxRank": 104,
       "byeWeek": 11,
       "ownership": 95.8,
+      "adp": 86,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23307,6 +23653,7 @@
       "maxRank": 110,
       "byeWeek": 6,
       "ownership": 95.2,
+      "adp": 72.9,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23324,6 +23671,7 @@
       "maxRank": 135,
       "byeWeek": 10,
       "ownership": 88.7,
+      "adp": 84.3,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23341,6 +23689,7 @@
       "maxRank": 133,
       "byeWeek": 10,
       "ownership": 90.6,
+      "adp": 96.5,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23358,6 +23707,7 @@
       "maxRank": 203,
       "byeWeek": 8,
       "ownership": 89.5,
+      "adp": 87.9,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23375,6 +23725,7 @@
       "maxRank": 125,
       "byeWeek": 14,
       "ownership": 89.3,
+      "adp": 80.5,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23392,6 +23743,7 @@
       "maxRank": 112,
       "byeWeek": 8,
       "ownership": 91.5,
+      "adp": 104,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23409,6 +23761,7 @@
       "maxRank": 117,
       "byeWeek": 10,
       "ownership": 89.2,
+      "adp": 101.1,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23426,6 +23779,7 @@
       "maxRank": 135,
       "byeWeek": 7,
       "ownership": 89,
+      "adp": 73.9,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23443,6 +23797,7 @@
       "maxRank": 177,
       "byeWeek": 10,
       "ownership": 89.3,
+      "adp": 106.1,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23460,6 +23815,7 @@
       "maxRank": 138,
       "byeWeek": 11,
       "ownership": 86.3,
+      "adp": 124.3,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23477,6 +23833,7 @@
       "maxRank": 142,
       "byeWeek": 10,
       "ownership": 88.4,
+      "adp": 89,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23494,6 +23851,7 @@
       "maxRank": 127,
       "byeWeek": 9,
       "ownership": 88.8,
+      "adp": 78.3,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23511,6 +23869,7 @@
       "maxRank": 132,
       "byeWeek": 7,
       "ownership": 86.9,
+      "adp": 99.8,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23528,6 +23887,7 @@
       "maxRank": 125,
       "byeWeek": 5,
       "ownership": 92.5,
+      "adp": 75.5,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23545,6 +23905,7 @@
       "maxRank": 133,
       "byeWeek": 10,
       "ownership": 90.1,
+      "adp": 121.6,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23562,6 +23923,7 @@
       "maxRank": 130,
       "byeWeek": 7,
       "ownership": 81.4,
+      "adp": 89.8,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23579,6 +23941,7 @@
       "maxRank": 157,
       "byeWeek": 5,
       "ownership": 91.7,
+      "adp": 101.7,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23596,6 +23959,7 @@
       "maxRank": 140,
       "byeWeek": 10,
       "ownership": 86.5,
+      "adp": 115.9,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23613,6 +23977,7 @@
       "maxRank": 149,
       "byeWeek": 11,
       "ownership": 93.2,
+      "adp": 105.7,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23630,6 +23995,7 @@
       "maxRank": 165,
       "byeWeek": 8,
       "ownership": 85.3,
+      "adp": 101.1,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23647,6 +24013,7 @@
       "maxRank": 142,
       "byeWeek": 9,
       "ownership": 82.1,
+      "adp": 109.3,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23664,6 +24031,7 @@
       "maxRank": 139,
       "byeWeek": 6,
       "ownership": 85.5,
+      "adp": 90.2,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23681,6 +24049,7 @@
       "maxRank": 140,
       "byeWeek": 6,
       "ownership": 88,
+      "adp": 100.5,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23715,6 +24084,7 @@
       "maxRank": 134,
       "byeWeek": 6,
       "ownership": 76.5,
+      "adp": 87,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23732,6 +24102,7 @@
       "maxRank": 147,
       "byeWeek": 7,
       "ownership": 80.3,
+      "adp": 113,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23749,6 +24120,7 @@
       "maxRank": 169,
       "byeWeek": 11,
       "ownership": 78.8,
+      "adp": 84.5,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23783,6 +24155,7 @@
       "maxRank": 165,
       "byeWeek": 13,
       "ownership": 81.1,
+      "adp": 88.7,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23800,6 +24173,7 @@
       "maxRank": 208,
       "byeWeek": 8,
       "ownership": 92.3,
+      "adp": 111.6,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23817,6 +24191,7 @@
       "maxRank": 148,
       "byeWeek": 14,
       "ownership": 90.4,
+      "adp": 132.2,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23834,6 +24209,7 @@
       "maxRank": 144,
       "byeWeek": 7,
       "ownership": 80.3,
+      "adp": 119.8,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23851,6 +24227,7 @@
       "maxRank": 144,
       "byeWeek": 10,
       "ownership": 89.6,
+      "adp": 137.2,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23868,6 +24245,7 @@
       "maxRank": 225,
       "byeWeek": 8,
       "ownership": 86.1,
+      "adp": 152.6,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23902,6 +24280,7 @@
       "maxRank": 147,
       "byeWeek": 6,
       "ownership": 67,
+      "adp": 122.3,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23919,6 +24298,7 @@
       "maxRank": 154,
       "byeWeek": 10,
       "ownership": 61.4,
+      "adp": 127.8,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23936,6 +24316,7 @@
       "maxRank": 153,
       "byeWeek": 5,
       "ownership": 80.7,
+      "adp": 91.8,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23953,6 +24334,7 @@
       "maxRank": 169,
       "byeWeek": 8,
       "ownership": 46.7,
+      "adp": 129,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -23970,6 +24352,7 @@
       "maxRank": 153,
       "byeWeek": 8,
       "ownership": 52.5,
+      "adp": 120.2,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -24021,6 +24404,7 @@
       "maxRank": 172,
       "byeWeek": 13,
       "ownership": 84.8,
+      "adp": 134.1,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -24038,6 +24422,7 @@
       "maxRank": 221,
       "byeWeek": 7,
       "ownership": 49.9,
+      "adp": 153,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -24072,6 +24457,7 @@
       "maxRank": 179,
       "byeWeek": 11,
       "ownership": 74.3,
+      "adp": 107.9,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -24089,6 +24475,7 @@
       "maxRank": 308,
       "byeWeek": 11,
       "ownership": 70,
+      "adp": 115.8,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -24106,6 +24493,7 @@
       "maxRank": 369,
       "byeWeek": 5,
       "ownership": 71.6,
+      "adp": 128.3,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -24140,6 +24528,7 @@
       "maxRank": 224,
       "byeWeek": 11,
       "ownership": 73.4,
+      "adp": 164.3,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -24174,6 +24563,7 @@
       "maxRank": 207,
       "byeWeek": 5,
       "ownership": 53.1,
+      "adp": 113.3,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -24191,6 +24581,7 @@
       "maxRank": 246,
       "byeWeek": 11,
       "ownership": 71,
+      "adp": 109.3,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -24208,6 +24599,7 @@
       "maxRank": 176,
       "byeWeek": 6,
       "ownership": 59,
+      "adp": 140.8,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -24293,6 +24685,7 @@
       "maxRank": 213,
       "byeWeek": 11,
       "ownership": 46.6,
+      "adp": 146.8,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -24310,6 +24703,7 @@
       "maxRank": 208,
       "byeWeek": 7,
       "ownership": 52.5,
+      "adp": 162.2,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -24361,6 +24755,7 @@
       "maxRank": 196,
       "byeWeek": 11,
       "ownership": 46.8,
+      "adp": 126,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -24446,6 +24841,7 @@
       "maxRank": 288,
       "byeWeek": 6,
       "ownership": 40.8,
+      "adp": 130.5,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -24497,6 +24893,7 @@
       "maxRank": 315,
       "byeWeek": 13,
       "ownership": 48.3,
+      "adp": 131.6,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -24531,6 +24928,7 @@
       "maxRank": 311,
       "byeWeek": 11,
       "ownership": 41.2,
+      "adp": 134.4,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -24752,6 +25150,7 @@
       "maxRank": 295,
       "byeWeek": 13,
       "ownership": 27.6,
+      "adp": 132.2,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -24786,6 +25185,7 @@
       "maxRank": 307,
       "byeWeek": 8,
       "ownership": 94.5,
+      "adp": 103.5,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -24921,6 +25321,7 @@
       "maxRank": 310,
       "byeWeek": 10,
       "ownership": 92.4,
+      "adp": 91.9,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -24989,6 +25390,7 @@
       "maxRank": 308,
       "byeWeek": 11,
       "ownership": 94.9,
+      "adp": 84,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -25006,6 +25408,7 @@
       "maxRank": 309,
       "byeWeek": 11,
       "ownership": 76.5,
+      "adp": 100.9,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -25056,6 +25459,7 @@
       "maxRank": 319,
       "byeWeek": 10,
       "ownership": 81.7,
+      "adp": 127,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -25124,6 +25528,7 @@
       "maxRank": 353,
       "byeWeek": 7,
       "ownership": 66.1,
+      "adp": 128.2,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -25209,6 +25614,7 @@
       "maxRank": 327,
       "byeWeek": 14,
       "ownership": 96.8,
+      "adp": 120.4,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -25243,6 +25649,7 @@
       "maxRank": 327,
       "byeWeek": 11,
       "ownership": 78.9,
+      "adp": 106.4,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -25277,6 +25684,7 @@
       "maxRank": 355,
       "byeWeek": 6,
       "ownership": 61.7,
+      "adp": 136.3,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -25294,6 +25702,7 @@
       "maxRank": 329,
       "byeWeek": 7,
       "ownership": 94.2,
+      "adp": 108.7,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -25362,6 +25771,7 @@
       "maxRank": 385,
       "byeWeek": 7,
       "ownership": 50.2,
+      "adp": 157.7,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -25379,6 +25789,7 @@
       "maxRank": 330,
       "byeWeek": 11,
       "ownership": 90.4,
+      "adp": 119.8,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -25413,6 +25824,7 @@
       "maxRank": 331,
       "byeWeek": 7,
       "ownership": 84.6,
+      "adp": 151.9,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -25600,6 +26012,7 @@
       "maxRank": 406,
       "byeWeek": 13,
       "ownership": 45.8,
+      "adp": 141.9,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -25787,6 +26200,7 @@
       "maxRank": 591,
       "byeWeek": 6,
       "ownership": 47.6,
+      "adp": 133.7,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -25906,6 +26320,7 @@
       "maxRank": 440,
       "byeWeek": 6,
       "ownership": 53,
+      "adp": 131.7,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -25940,6 +26355,7 @@
       "maxRank": 597,
       "byeWeek": 7,
       "ownership": 31.9,
+      "adp": 135.6,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -26007,6 +26423,7 @@
       "maxRank": 533,
       "byeWeek": 10,
       "ownership": 24.7,
+      "adp": 155.6,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -26670,6 +27087,7 @@
       "maxRank": 620,
       "byeWeek": 10,
       "ownership": 7.9,
+      "adp": 174.5,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {
@@ -29313,6 +29731,7 @@
       "maxRank": 704,
       "byeWeek": 7,
       "ownership": 16.5,
+      "adp": 149.6,
       "lastUpdated": "2026-07-01T18:57:43.000Z"
     },
     {

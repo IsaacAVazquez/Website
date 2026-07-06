@@ -169,6 +169,40 @@ function isPositiveIntegerString(value: string): boolean {
   return /^[1-9]\d*$/.test(value);
 }
 
+/**
+ * Total games played across a standings table. A completed or in-progress
+ * season is > 0; a freshly rolled-over season that hasn't kicked off yet is 0
+ * (football-data.org returns a zeroed 20-row placeholder in that window).
+ */
+export function sumPlayedGames(
+  standings: readonly Pick<PremierLeagueStandingRow, "playedGames">[]
+): number {
+  return standings.reduce((total, row) => total + (row.playedGames ?? 0), 0);
+}
+
+function seasonStartYear(startDate?: string | null): number | null {
+  if (!startDate) return null;
+  const year = new Date(startDate).getUTCFullYear();
+  return Number.isFinite(year) ? year : null;
+}
+
+/**
+ * True when the competition's current season hasn't actually started, so the
+ * live endpoints return a placeholder. football-data.org rolls the season
+ * pointer weeks ahead of kickoff: the Premier League table comes back zeroed,
+ * and (as with La Liga) the season's start date is still in the future. Either
+ * signal means we should pin to the completed prior season instead.
+ */
+function seasonNotStarted(
+  season: FootballDataSeason | null | undefined,
+  standings: readonly Pick<PremierLeagueStandingRow, "playedGames">[],
+  now: Date = new Date()
+): boolean {
+  if (standings.length > 0 && sumPlayedGames(standings) === 0) return true;
+  const startMs = season?.startDate ? new Date(season.startDate).getTime() : NaN;
+  return Number.isFinite(startMs) && startMs > now.getTime();
+}
+
 function normalizeFixtureTeam(rawTeam: FootballDataTeam | null | undefined): PremierLeagueFixtureTeam | null {
   const id = rawTeam?.id;
   if (typeof id !== "number" || !Number.isFinite(id)) {
@@ -472,10 +506,11 @@ function buildCompetitionMeta(
   };
 }
 
-function buildQueryString(params: Record<string, string | number>): string {
+function buildQueryString(params: Record<string, string | number | undefined>): string {
   const searchParams = new URLSearchParams();
 
   for (const [key, value] of Object.entries(params)) {
+    if (value === undefined) continue;
     searchParams.set(key, String(value));
   }
 
@@ -509,15 +544,25 @@ export function createEmptyPremierLeagueTeamSnapshot(): PremierLeagueTeamSnapsho
   };
 }
 
-export async function getPremierLeagueSummary(): Promise<PremierLeagueSummary> {
+export async function getPremierLeagueSummary(
+  options?: { season?: number }
+): Promise<PremierLeagueSummary> {
+  // When a season is pinned, thread it onto every competition-scoped request so
+  // standings, fixtures, teams, and scorers all describe the same season.
+  const seasonParams = options?.season ? { season: options.season } : {};
+  const seasonQuery = options?.season
+    ? `?${buildQueryString({ season: options.season })}`
+    : "";
+
   const standingsPromise = fetchFootballDataJson<FootballDataCompetitionStandingsResponse>(
-    `/competitions/${PREMIER_LEAGUE_CODE}/standings`,
+    `/competitions/${PREMIER_LEAGUE_CODE}/standings${seasonQuery}`,
     SUMMARY_REVALIDATE_SECONDS
   );
   const recentFixturesPromise = fetchFootballDataJson<FootballDataMatchesResponse>(
     `/competitions/${PREMIER_LEAGUE_CODE}/matches?${buildQueryString({
       status: "FINISHED",
       limit: RECENT_FIXTURE_LIMIT,
+      ...seasonParams,
     })}`,
     SUMMARY_REVALIDATE_SECONDS
   );
@@ -525,15 +570,16 @@ export async function getPremierLeagueSummary(): Promise<PremierLeagueSummary> {
     `/competitions/${PREMIER_LEAGUE_CODE}/matches?${buildQueryString({
       status: "SCHEDULED",
       limit: UPCOMING_FIXTURE_LIMIT,
+      ...seasonParams,
     })}`,
     SUMMARY_REVALIDATE_SECONDS
   );
   const teamsPromise = fetchFootballDataJson<FootballDataCompetitionTeamsResponse>(
-    `/competitions/${PREMIER_LEAGUE_CODE}/teams`,
+    `/competitions/${PREMIER_LEAGUE_CODE}/teams${seasonQuery}`,
     SUMMARY_REVALIDATE_SECONDS
   );
   const scorersPromise = fetchFootballDataJson<FootballDataScorersResponse>(
-    `/competitions/${PREMIER_LEAGUE_CODE}/scorers`,
+    `/competitions/${PREMIER_LEAGUE_CODE}/scorers${seasonQuery}`,
     SUMMARY_REVALIDATE_SECONDS
   );
   // Season-long fixture log for the goals-per-matchday pulse — every FINISHED
@@ -541,6 +587,7 @@ export async function getPremierLeagueSummary(): Promise<PremierLeagueSummary> {
   const seasonFixturesPromise = fetchFootballDataJson<FootballDataMatchesResponse>(
     `/competitions/${PREMIER_LEAGUE_CODE}/matches?${buildQueryString({
       status: "FINISHED",
+      ...seasonParams,
     })}`,
     SEASON_FIXTURES_REVALIDATE_SECONDS
   );
@@ -569,6 +616,20 @@ export async function getPremierLeagueSummary(): Promise<PremierLeagueSummary> {
   const standings = (standingsGroup?.table ?? [])
     .map((row) => normalizeStandingRow(row))
     .filter((row): row is PremierLeagueStandingRow => row !== null);
+
+  // Off-season rollover guard. football-data.org advances the competition
+  // pointer to the new season (e.g. 2026/27) weeks before it kicks off and
+  // returns a zeroed 20-row table (every club position-ordered on 0 points, 0
+  // played) — surfacing that wipes the dashboard. When the standings have rows
+  // but zero games played and the caller hasn't already pinned a season,
+  // re-fetch pinned to the completed prior season so the page shows a real
+  // final table. Re-pins at most once (the recursive call passes a season).
+  if (options?.season === undefined && seasonNotStarted(standingsResponse.season, standings)) {
+    const currentSeasonStart = seasonStartYear(standingsResponse.season?.startDate);
+    if (currentSeasonStart !== null) {
+      return getPremierLeagueSummary({ season: currentSeasonStart - 1 });
+    }
+  }
 
   const recentFixtures = (recentFixturesResponse.matches ?? [])
     .map((match) => normalizeFixture(match))
@@ -677,8 +738,10 @@ function readExistingPLTeamSnapshots(filePath: string): Record<string, PremierLe
   }
 }
 
-export async function buildPremierLeagueSnapshot(options?: { skipTeamSnapshots?: boolean }): Promise<PremierLeagueSnapshot> {
-  const summary = await getPremierLeagueSummary();
+export async function buildPremierLeagueSnapshot(options?: { skipTeamSnapshots?: boolean; season?: number }): Promise<PremierLeagueSnapshot> {
+  const summary = await getPremierLeagueSummary(
+    options?.season ? { season: options.season } : undefined
+  );
   const generatedAt = new Date().toISOString();
   let teamSnapshots: Record<string, PremierLeagueTeamSnapshot>;
 

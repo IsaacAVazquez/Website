@@ -119,22 +119,77 @@ describe("POST /api/mba-jobs/email", () => {
     expect(mockSend).not.toHaveBeenCalled();
   });
 
-  it("rejects oversized job digests", async () => {
+  it("caps an oversized digest to 25 jobs instead of rejecting it", async () => {
     const response = await POST(
       makeRequest({
         to: "allowed@example.com",
-        jobs: Array.from({ length: 26 }, (_, index) => ({
+        jobs: Array.from({ length: 30 }, (_, index) => ({
           ...validJob,
           id: `job-${index}`,
+          title: `MBA Role ${index}`,
           applyUrl: `https://jobs.example.com/apply/${index}`,
         })),
       })
     );
     const body = await response.json();
 
-    expect(response.status).toBe(400);
-    expect(body.error).toMatch(/1-25 valid jobs/i);
-    expect(mockSend).not.toHaveBeenCalled();
+    expect(response.status).toBe(200);
+    expect(body.ok).toBe(true);
+    expect(mockSend).toHaveBeenCalledTimes(1);
+    const emailPayload = mockSend.mock.calls[0][0];
+    // Capped to the first 25 entries: role 24 is kept, roles 25+ are dropped.
+    expect(emailPayload.html).toContain("25 MBA role");
+    expect(emailPayload.html).toContain("MBA Role 24");
+    expect(emailPayload.html).not.toContain("MBA Role 25");
+    expect(emailPayload.html).not.toContain("MBA Role 29");
+  });
+
+  it("skips undated / direct-HTML jobs and sends only the valid ones", async () => {
+    const response = await POST(
+      makeRequest({
+        to: "allowed@example.com",
+        jobs: [
+          {
+            ...validJob,
+            id: "valid-1",
+            title: "Valid Role One",
+            applyUrl: "https://jobs.example.com/apply/1",
+          },
+          {
+            ...validJob,
+            id: "undated-1",
+            title: "Undated Direct HTML Role",
+            postedAt: "",
+            applyUrl: "https://jobs.example.com/apply/2",
+          },
+          {
+            ...validJob,
+            id: "valid-2",
+            title: "Valid Role Two",
+            applyUrl: "https://jobs.example.com/apply/3",
+          },
+          {
+            ...validJob,
+            id: "bad-date-1",
+            title: "Unparsable Date Role",
+            postedAt: "not-a-real-date",
+            applyUrl: "https://jobs.example.com/apply/4",
+          },
+        ],
+      })
+    );
+    const body = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(body.ok).toBe(true);
+    expect(mockSend).toHaveBeenCalledTimes(1);
+    const emailPayload = mockSend.mock.calls[0][0];
+    expect(emailPayload.html).toContain("Valid Role One");
+    expect(emailPayload.html).toContain("Valid Role Two");
+    expect(emailPayload.html).not.toContain("Undated Direct HTML Role");
+    expect(emailPayload.html).not.toContain("Unparsable Date Role");
+    // Only the two dated jobs survive the filter.
+    expect(emailPayload.html).toContain("2 MBA role");
   });
 
   it("rejects unsafe apply URLs", async () => {

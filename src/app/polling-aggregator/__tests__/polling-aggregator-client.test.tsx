@@ -22,6 +22,21 @@ describe("PollingAggregatorClient", () => {
     mockReplace.mockReset();
   });
 
+  it("discloses that the data is illustrative sample data, not real polling", () => {
+    render(
+      <PollingAggregatorClient
+        initialState={DEFAULT_POLLING_STATE}
+        snapshot={pollingSnapshot}
+      />
+    );
+
+    // Guards the sample-data disclosure so a revert to the fabricated-as-real
+    // provenance fails CI (see docs/DATA_SOURCE_AUDIT_2026-07.md).
+    expect(
+      screen.getByText(/illustrative sample data, not real polling/i)
+    ).toBeVisible();
+  });
+
   it("renders the overview and navigates view tabs", () => {
     render(
       <PollingAggregatorClient

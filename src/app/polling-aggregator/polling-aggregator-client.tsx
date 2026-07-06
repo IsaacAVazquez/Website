@@ -759,13 +759,29 @@ export function PollingAggregatorClient({ initialState, snapshot }: Props) {
             Polling Aggregator
           </h1>
           <p className="home-body max-w-none">
-            Presidential approval, generic ballot averages, and key 2026 Senate and governor race polls aggregated from public pollsters.
+            Presidential approval, generic ballot averages, and 2026 Senate and governor race polls in one view.
           </p>
           <div className="flex flex-wrap gap-2 pt-2">
             {["2026 Midterms", `Updated ${lastUpdated}`, snapshot.sourceLabel, `${snapshot.approvalPolls.length + snapshot.genericBallotPolls.length} polls tracked`].map((label) => (
               <span key={label} className="resume-chip">{label}</span>
             ))}
           </div>
+        </div>
+
+        {/* Sample-data disclosure. This dashboard currently renders illustrative
+            placeholder data, not real polling. Replace with the live VoteHub
+            feed (see docs/DATA_SOURCE_AUDIT_2026-07.md) and remove this note. */}
+        <div
+          role="note"
+          className="rounded-[var(--radius-2xl)] p-4"
+          style={{
+            border: "1px solid var(--home-warning)",
+            background: "color-mix(in srgb, var(--home-warning) 8%, var(--home-paper))",
+          }}
+        >
+          <p className="home-body max-w-none" style={{ margin: 0 }}>
+            This page currently shows illustrative sample data, not real polling. The numbers, pollsters, and races are placeholders for demonstrating the aggregator interface, so please don&apos;t read them as actual 2026 polling.
+          </p>
         </div>
 
         {/* View tabs */}

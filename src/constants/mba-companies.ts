@@ -35,7 +35,7 @@ export const MBA_COMPANIES: MBACompany[] = [
   {
     id: "plaid",
     name: "Plaid",
-    atsType: "direct-html",
+    atsType: "ashby",
     sourceKey: "plaid",
     category: "fintech",
     careersUrl: "https://plaid.com/careers",
@@ -66,7 +66,7 @@ export const MBA_COMPANIES: MBACompany[] = [
   {
     id: "coinbase",
     name: "Coinbase",
-    atsType: "direct-html",
+    atsType: "greenhouse",
     sourceKey: "coinbase",
     category: "fintech",
     careersUrl: "https://www.coinbase.com/careers",
@@ -161,8 +161,8 @@ export const MBA_COMPANIES: MBACompany[] = [
   {
     id: "doordash",
     name: "DoorDash",
-    atsType: "manual",
-    sourceKey: "doordash",
+    atsType: "greenhouse",
+    sourceKey: "doordashusa",
     category: "startup",
     careersUrl: "https://careersatdoordash.com/",
     color: MBA_CATEGORY_COLORS.startup,

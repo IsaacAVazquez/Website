@@ -47,6 +47,8 @@ describe("GET /api/golf/summary", () => {
         status: "Cut line is set and Saturday pairings are next.",
         fieldSize: 132,
         cutLine: -1,
+        cutState: "made",
+        cutCount: 76,
         generatedAt: "2026-04-16T19:05:00.000Z",
       },
       heroStats: {
@@ -54,6 +56,8 @@ describe("GET /api/golf/summary", () => {
         leaderScore: -8,
         playersUnderPar: 14,
         cutLine: -1,
+        cutState: "made",
+        cutCount: 76,
         fieldSize: 132,
       },
       leaderboard: [],

@@ -26,6 +26,8 @@ const WATCHED_KEY = "mba_watched_companies_v2";
 const POLL_INTERVAL_MS = 30 * 60 * 1_000; // 30 minutes
 const DEDUPE_WINDOW_MS = 2_000;
 const MAX_SEEN_IDS = 500;
+// Mirrors MAX_DIGEST_JOBS in /api/mba-jobs/email. Keep these in sync.
+const EMAIL_DIGEST_MAX_JOBS = 25;
 
 // ---------------------------------------------------------------------------
 // Default watched companies (all non-manual)
@@ -371,7 +373,16 @@ export function useMBAJobs(options: UseMBAJobsOptions = {}): UseMBAJobsResult {
   }
 
   async function sendEmailDigest(to: string, jobsToSend?: MBAJob[]) {
-    const payload = jobsToSend ?? jobs;
+    // Mirror the email API contract before posting: it accepts at most
+    // EMAIL_DIGEST_MAX_JOBS and drops any job whose postedAt is unparsable
+    // (every direct-HTML source is undated). Filter and cap here so a large
+    // or scrape-heavy feed does not get the whole digest rejected. The list
+    // is already sorted newest-first, so undated jobs fall to the bottom and
+    // the freshest dated roles survive the cap.
+    const source = jobsToSend ?? jobs;
+    const payload = source
+      .filter((job) => Number.isFinite(new Date(job.postedAt).getTime()))
+      .slice(0, EMAIL_DIGEST_MAX_JOBS);
     if (payload.length === 0) return;
     setEmailSending(true);
     setEmailResult(null);

@@ -1,7 +1,7 @@
 /**
  * @jest-environment node
  */
-import { getMlbSummary } from "../mlbData";
+import { getCurrentSeason, getMlbSummary } from "../mlbData";
 
 function jsonResponse(payload: unknown, status = 200): Response {
   return new Response(JSON.stringify(payload), {
@@ -334,6 +334,25 @@ function routeFetch(input: RequestInfo | URL): Response {
 
   throw new Error(`Unexpected fetch URL in test: ${url}`);
 }
+
+describe("getCurrentSeason", () => {
+  // The MLB regular season and postseason (through the early-November World
+  // Series) all resolve within the same calendar year. The refresh cron runs
+  // March through November, never December, so the season should only roll
+  // forward in December — not in November, when a next-season request would
+  // return empty/zeroed standings and break World Series coverage.
+  it("keeps the current year through November (World Series window)", () => {
+    expect(getCurrentSeason(new Date("2026-11-15T12:00:00Z"))).toBe("2026");
+  });
+
+  it("rolls forward to the next season in December", () => {
+    expect(getCurrentSeason(new Date("2026-12-15T12:00:00Z"))).toBe("2027");
+  });
+
+  it("returns the current year mid-season", () => {
+    expect(getCurrentSeason(new Date("2026-07-04T12:00:00Z"))).toBe("2026");
+  });
+});
 
 describe("getMlbSummary", () => {
   afterEach(() => {

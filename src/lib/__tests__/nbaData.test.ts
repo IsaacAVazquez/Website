@@ -1,7 +1,14 @@
 /**
  * @jest-environment node
  */
-import { getNbaSummary } from "../nbaData";
+import {
+  getNbaSummary,
+  buildSeasonLabel,
+  resolveNbaSeasonEndYear,
+  createEmptyNbaSnapshot,
+  preservePriorFixtures,
+} from "../nbaData";
+import type { NbaFixture, NbaTeamSnapshot } from "../../types/nba";
 
 function jsonResponse(payload: unknown, status = 200): Response {
   return new Response(JSON.stringify(payload), {
@@ -360,8 +367,10 @@ describe("getNbaSummary", () => {
 
     const summary = await getNbaSummary();
 
-    // Season label derived from the standings season.displayName.
-    expect(summary.season).toBe("2025-26");
+    // Season label is now derived from the pinned calendar season rather than
+    // ESPN's (sometimes-rolled) displayName, so it stays a real "YYYY-YY" label.
+    expect(summary.season).toMatch(/^\d{4}-\d{2}$/);
+    expect(summary.season).toBe(buildSeasonLabel(resolveNbaSeasonEndYear(new Date())));
 
     // generatedAt is an ISO string — assert shape, not the exact value.
     expect(typeof summary.generatedAt).toBe("string");
@@ -465,8 +474,9 @@ describe("getNbaSummary", () => {
     expect(summary.recentFixtures).toEqual([]);
     expect(summary.upcomingFixtures).toEqual([]);
     expect(summary.teams).toEqual([]);
-    // Season falls back to a stable label when no season is provided.
-    expect(summary.season).toBe("Current season");
+    // Even when ESPN returns an empty feed, the season label comes from the
+    // pinned calendar season, so it stays a real "YYYY-YY" label.
+    expect(summary.season).toBe(buildSeasonLabel(resolveNbaSeasonEndYear(new Date())));
     expect(typeof summary.generatedAt).toBe("string");
   });
 
@@ -557,5 +567,103 @@ describe("getNbaSummary", () => {
     expect(summary.scorers).toHaveLength(1);
     expect(summary.scorers[0].name).toBe("Real Scorer");
     expect(summary.scorers[0].rank).toBe(1);
+  });
+});
+
+describe("season labelling", () => {
+  it("labels the season from ESPN's pinned ending year, not the rolled displayName", () => {
+    // ESPN keys the 2025-26 season by its ENDING year (season=2026). During the
+    // 2025-26 Finals it rolled the standings feed's `displayName` to "2026-27"
+    // while still serving 2025-26 final records, so the committed snapshot read
+    // "2026-27". The label must be built from the pinned ending year instead, so
+    // 2026 reads "2025-26", not "2026-27".
+    expect(buildSeasonLabel(2026)).toBe("2025-26");
+    expect(buildSeasonLabel(2027)).toBe("2026-27");
+    expect(buildSeasonLabel(2025)).toBe("2024-25");
+  });
+
+  it("resolves the NBA season ending year from the calendar (October rollover)", () => {
+    // January through September belong to the season that ends this calendar
+    // year; October through December belong to the season that tips off this
+    // year and ends the next.
+    expect(resolveNbaSeasonEndYear(new Date("2026-06-15T00:00:00Z"))).toBe(2026); // Finals
+    expect(resolveNbaSeasonEndYear(new Date("2026-07-05T00:00:00Z"))).toBe(2026); // off-season gap
+    expect(resolveNbaSeasonEndYear(new Date("2026-09-30T00:00:00Z"))).toBe(2026); // pre-tip
+    expect(resolveNbaSeasonEndYear(new Date("2026-10-15T00:00:00Z"))).toBe(2027); // new season
+    expect(resolveNbaSeasonEndYear(new Date("2027-01-10T00:00:00Z"))).toBe(2027); // mid new season
+  });
+});
+
+describe("preservePriorFixtures (off-season fixtures guard)", () => {
+  const fixture = (id: string): NbaFixture => ({
+    id,
+    utcDate: "2026-06-19T00:00:00Z",
+    status: "FINISHED",
+    matchday: null,
+    stage: "Playoffs",
+    homeTeam: { id: "1", name: "Home", shortName: "Home", abbreviation: "HOM", crest: null },
+    awayTeam: { id: "2", name: "Away", shortName: "Away", abbreviation: "AWY", crest: null },
+    score: { winner: "HOME_TEAM", home: 100, away: 98 },
+  });
+
+  const teamSnapshot = (
+    recentFixtures: NbaFixture[],
+    upcomingFixtures: NbaFixture[]
+  ): NbaTeamSnapshot => ({
+    team: null,
+    recentFixtures,
+    upcomingFixtures,
+    form: { sequence: [], wins: 0, losses: 0, pointsFor: 0, pointsAgainst: 0 },
+    generatedAt: "2026-06-20T00:00:00Z",
+  });
+
+  it("carries prior fixtures forward when the fresh build has an empty scoreboard window", () => {
+    // Off-season refresh: standings and leaders update but ESPN's scoreboard
+    // window is empty. Fixtures must not regress to zero, so the committed
+    // snapshot's fixtures are carried forward while the fresh season/standings
+    // win — which is what lets the workflow commit the correction on its own.
+    const previous = {
+      ...createEmptyNbaSnapshot(),
+      season: "2025-26",
+      recentFixtures: [fixture("g1"), fixture("g2")],
+      teamSnapshots: { lal: teamSnapshot([fixture("g1")], []) },
+    };
+    const next = {
+      ...createEmptyNbaSnapshot(),
+      season: "2025-26",
+      recentFixtures: [],
+      upcomingFixtures: [],
+      teamSnapshots: { lal: teamSnapshot([], []) },
+    };
+
+    const merged = preservePriorFixtures(next, previous);
+
+    expect(merged.recentFixtures.map((f) => f.id)).toEqual(["g1", "g2"]);
+    expect(merged.teamSnapshots.lal.recentFixtures).toHaveLength(1);
+    // Non-fixture fields still come from the fresh build.
+    expect(merged.season).toBe("2025-26");
+  });
+
+  it("keeps the fresh fixtures when the new build has its own", () => {
+    const previous = {
+      ...createEmptyNbaSnapshot(),
+      recentFixtures: [fixture("stale")],
+    };
+    const next = {
+      ...createEmptyNbaSnapshot(),
+      recentFixtures: [fixture("live1"), fixture("live2")],
+      upcomingFixtures: [fixture("live3")],
+    };
+
+    const merged = preservePriorFixtures(next, previous);
+
+    expect(merged.recentFixtures.map((f) => f.id)).toEqual(["live1", "live2"]);
+    expect(merged.upcomingFixtures.map((f) => f.id)).toEqual(["live3"]);
+  });
+
+  it("no-ops when there is no prior snapshot or the prior also has no fixtures", () => {
+    const next = createEmptyNbaSnapshot();
+    expect(preservePriorFixtures(next, null)).toBe(next);
+    expect(preservePriorFixtures(next, createEmptyNbaSnapshot())).toBe(next);
   });
 });

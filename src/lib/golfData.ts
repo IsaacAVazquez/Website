@@ -1,4 +1,5 @@
 import type {
+  GolfCutState,
   GolfLeaderboardEntry,
   GolfPlayerOption,
   GolfPlayerSnapshot,
@@ -129,7 +130,18 @@ interface EspnEvent {
   competitions?: EspnCompetition[] | null;
   courses?: EspnCourse[] | null;
   status?: EspnCompetitionStatus | null;
-  tournament?: { displayName?: string | null } | null;
+  tournament?: {
+    displayName?: string | null;
+    // ESPN publishes the cut here, not on status: cutScore is the to-par cut
+    // (e.g. -3), cutRound the round it applies after, cutCount the survivors.
+    // cutRound is a static format field (present even after the event is FINAL),
+    // so its presence tells us the format has a cut at all; numberOfRounds
+    // confirms ESPN fully described the format.
+    cutScore?: EspnScoreObject | number | null;
+    cutRound?: number | null;
+    cutCount?: number | null;
+    numberOfRounds?: number | null;
+  } | null;
   league?: EspnLeague | null;
   leagues?: EspnLeague[] | null;
 }
@@ -221,6 +233,63 @@ function parseCutLine(cut: EspnCompetitionStatus["cutLine"]): number | null {
     return Number.isFinite(parsed) ? parsed : null;
   }
   return null;
+}
+
+/**
+ * Resolves a tournament's cut line from ESPN's real shape. ESPN publishes the cut
+ * on `event.tournament.cutScore` (a to-par number like -3) and leaves the legacy
+ * `status.cutLine` empty, so read the tournament first and only fall back to the
+ * status fields for safety. Returns null when no cut score is set — the cut is
+ * either not yet made or the event genuinely has none — while preserving an
+ * even-par cut of 0 rather than collapsing it to "missing".
+ */
+export function extractCutScore(
+  event: EspnEvent | null | undefined
+): number | null {
+  if (!event) return null;
+  const fromTournament = parseCutLine(event.tournament?.cutScore ?? null);
+  if (fromTournament != null) return fromTournament;
+  const competition = event.competitions?.[0];
+  return parseCutLine(
+    competition?.status?.cutLine ?? event.status?.cutLine ?? null
+  );
+}
+
+/**
+ * Resolves the cut line into a three-way state so the UI can tell "the cut is
+ * still to come" apart from "this event has no cut", instead of collapsing both
+ * to a bare "TBD". ESPN carries `cutRound`/`cutCount`/`numberOfRounds` as static
+ * format fields on `event.tournament`, so a positive `cutRound` means the format
+ * has a cut (pending until `cutScore` is set), and an explicitly absent cut round
+ * on an otherwise-described format is a genuine no-cut event. Anything short of
+ * that stays "unknown" → the UI shows a neutral "TBD" rather than a false "No cut".
+ */
+export function deriveCutState(event: EspnEvent | null | undefined): {
+  cutLine: number | null;
+  cutState: GolfCutState;
+  cutCount: number | null;
+} {
+  const cutLine = extractCutScore(event);
+  const tournament = event?.tournament ?? null;
+  const cutRound =
+    typeof tournament?.cutRound === "number" ? tournament.cutRound : null;
+  const cutCount =
+    typeof tournament?.cutCount === "number" ? tournament.cutCount : null;
+  const describedFormat =
+    tournament != null && typeof tournament.numberOfRounds === "number";
+
+  let cutState: GolfCutState;
+  if (cutLine != null) {
+    cutState = "made";
+  } else if (cutRound != null && cutRound > 0) {
+    cutState = "pending";
+  } else if (describedFormat && (cutRound === null || cutRound === 0)) {
+    cutState = "none";
+  } else {
+    cutState = "unknown";
+  }
+
+  return { cutLine, cutState, cutCount };
 }
 
 function pickEvent(events: EspnEvent[]): EspnEvent | null {
@@ -334,6 +403,7 @@ export async function buildGolfSnapshotData(): Promise<GolfSnapshot> {
     ? startYear
     : new Date(generatedAt).getFullYear();
 
+  const cut = deriveCutState(event);
   const tournament: GolfTournament = {
     id: `${slugify(name) || event.id || "tournament"}-${year}`,
     name,
@@ -350,7 +420,9 @@ export async function buildGolfSnapshotData(): Promise<GolfSnapshot> {
     roundLabel: period ? `Round ${period}` : "",
     status: statusType?.detail ?? statusType?.description ?? "",
     fieldSize: competitors.length,
-    cutLine: parseCutLine(competition.status?.cutLine),
+    cutLine: cut.cutLine,
+    cutState: cut.cutState,
+    cutCount: cut.cutCount,
     generatedAt,
   };
 
@@ -491,6 +563,8 @@ export async function buildGolfSnapshotData(): Promise<GolfSnapshot> {
       leaderScore: leaderboard[0]?.totalToPar ?? null,
       playersUnderPar: leaderboard.filter((entry) => entry.totalToPar < 0).length,
       cutLine: tournament.cutLine,
+      cutState: tournament.cutState,
+      cutCount: tournament.cutCount,
       fieldSize: tournament.fieldSize,
     },
     leaderboard,

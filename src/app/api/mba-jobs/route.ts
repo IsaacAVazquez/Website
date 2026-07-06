@@ -469,67 +469,6 @@ function parseNextData<T>(html: string): T {
   return JSON.parse(raw) as T;
 }
 
-function normalizeAbsoluteUrl(href: string, baseUrl: string): string | null {
-  try {
-    return new URL(href, baseUrl).toString();
-  } catch {
-    return null;
-  }
-}
-
-function getCompactElementText(value: string): string {
-  return decodeHtmlEntities(value)
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function parseAnchorJobs(
-  html: string,
-  options: {
-    baseUrl: string;
-    linkMatcher: (href: string) => boolean;
-    fallbackDepartment?: string;
-  }
-): DirectHtmlJobSeed[] {
-  const $ = load(html);
-  const seen = new Set<string>();
-  const jobs: DirectHtmlJobSeed[] = [];
-
-  $("a[href]").each((_, element) => {
-    const rawHref = $(element).attr("href") ?? "";
-    const applyUrl = normalizeAbsoluteUrl(rawHref, options.baseUrl);
-    if (!applyUrl || !options.linkMatcher(applyUrl) || seen.has(applyUrl)) return;
-
-    const container = $(element).closest("article, li, [data-testid], [class*=job], [class*=role], div");
-    const text = getCompactElementText(container.text() || $(element).text());
-    const linkText = getCompactElementText($(element).text());
-    const title = [linkText, text]
-      .map((candidate) =>
-        candidate
-          .replace(/\b(see role|view role|apply|learn more|read more)\b/gi, " ")
-          .replace(/\s+/g, " ")
-          .trim()
-      )
-      .find((candidate) => candidate.length >= 4 && candidate.length <= 120);
-
-    if (!title) return;
-    seen.add(applyUrl);
-
-    jobs.push({
-      id: applyUrl,
-      title,
-      location: "See role",
-      department: options.fallbackDepartment ?? "General",
-      applyUrl,
-      detailUrl: applyUrl,
-      postedAt: "",
-      snippet: text ? truncatePlainText(text, MAX_SNIPPET_LENGTH) : null,
-    });
-  });
-
-  return jobs;
-}
-
 interface MiroOpenPositionsPageData {
   props: {
     pageProps: {
@@ -555,59 +494,6 @@ interface MiroVacancyPageData {
 }
 
 const DIRECT_HTML_PARSERS: Record<string, DirectHtmlParser> = {
-  plaid: {
-    jobsUrl: "https://plaid.com/careers/",
-    parseList(html) {
-      return parseAnchorJobs(html, {
-        baseUrl: "https://plaid.com/careers/",
-        fallbackDepartment: "General",
-        linkMatcher: (href) =>
-          href.includes("plaid.com/careers") &&
-          !href.endsWith("/careers/") &&
-          !href.includes("#"),
-      });
-    },
-    parseDetail(html, seed) {
-      const $ = load(html);
-      const title = getCompactElementText($("h1").first().text()) || seed.title;
-      const body = getCompactElementText($("main").text() || $("body").text());
-      return {
-        department: seed.department,
-        location: seed.location,
-        snippet: body ? truncatePlainText(body, MAX_SNIPPET_LENGTH) : seed.snippet,
-        applyUrl: seed.applyUrl,
-        postedAt: seed.postedAt,
-        ...(title ? { title } : {}),
-      };
-    },
-  },
-  coinbase: {
-    jobsUrl: "https://www.coinbase.com/careers/positions",
-    parseList(html) {
-      return parseAnchorJobs(html, {
-        baseUrl: "https://www.coinbase.com/careers/positions",
-        fallbackDepartment: "General",
-        linkMatcher: (href) =>
-          href.includes("coinbase.com") &&
-          href.includes("/careers/positions") &&
-          !href.endsWith("/careers/positions") &&
-          !href.includes("#"),
-      });
-    },
-    parseDetail(html, seed) {
-      const $ = load(html);
-      const title = getCompactElementText($("h1").first().text()) || seed.title;
-      const body = getCompactElementText($("main").text() || $("body").text());
-      return {
-        department: seed.department,
-        location: seed.location,
-        snippet: body ? truncatePlainText(body, MAX_SNIPPET_LENGTH) : seed.snippet,
-        applyUrl: seed.applyUrl,
-        postedAt: seed.postedAt,
-        ...(title ? { title } : {}),
-      };
-    },
-  },
   miro: {
     jobsUrl: "https://us.miro.com/careers/open-positions/",
     parseList(html) {

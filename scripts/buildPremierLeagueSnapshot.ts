@@ -2,7 +2,7 @@ import { config } from "dotenv";
 import { promises as fs } from "fs";
 import path from "path";
 config({ path: path.resolve(__dirname, "../.env.local") });
-import { buildPremierLeagueSnapshot } from "../src/lib/premierLeagueData";
+import { buildPremierLeagueSnapshot, sumPlayedGames } from "../src/lib/premierLeagueData";
 import type { PremierLeagueSnapshot } from "../src/types/premier-league";
 import { readGeneratedSnapshot } from "./snapshotFallback";
 
@@ -20,8 +20,13 @@ async function writeFileAtomic(filePath: string, content: string): Promise<void>
   await fs.rename(tmp, filePath);
 }
 
+// A valid table has rows AND at least one game played. A rolled-over season
+// returns a zeroed 20-row placeholder (rows present, 0 played); treating that
+// as "no standings" routes it through the keep-previous fallback rather than
+// overwriting the good committed table.
 function hasStandings(snapshot: PremierLeagueSnapshot | null): boolean {
-  return Boolean(snapshot && snapshot.summary.standings.length > 0);
+  const standings = snapshot?.summary.standings ?? [];
+  return standings.length > 0 && sumPlayedGames(standings) > 0;
 }
 
 async function main() {

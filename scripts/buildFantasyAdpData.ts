@@ -1,5 +1,6 @@
 import { rename, writeFile } from "fs/promises";
 import path from "path";
+import { fileURLToPath } from "url";
 import { withRetry } from "./fetchRetry";
 import { readGeneratedSnapshot } from "./snapshotFallback";
 import { fetchFantasyAdpBoard, type FantasyAdpEntry } from "@/lib/fantasyAdpSource";
@@ -27,6 +28,41 @@ interface FantasyAdpDatasetRecord {
 type FantasyAdpDataRecord = Record<ScoringFormat, FantasyAdpDatasetRecord>;
 
 const SCORING_FORMATS: ScoringFormat[] = ["PPR", "HALF_PPR", "STANDARD"];
+
+// Minimum players a fresh ADP board must carry to be trusted. Fantasy Football
+// Calculator's annual late-June mock-pool rollover briefly returns boards of
+// 1-4 players; healthy boards run ~130-200. A board below this floor is treated
+// as unusable so it can't overwrite a fuller previous board.
+export const MIN_ADP_ENTRIES = 50;
+
+export type AdpFormatResolution = {
+  record: FantasyAdpDatasetRecord | null;
+  source: "fresh" | "previous" | "thin-fresh" | "empty";
+};
+
+/**
+ * Chooses the ADP record to keep for one scoring format. A fresh board is used
+ * only when it clears the entry floor; a thin board or a failed fetch (null
+ * fresh) falls back to the previous fuller board so good data is never
+ * overwritten by a rollover blip. With no usable previous, a thin fresh board
+ * is still better than nothing.
+ */
+export function resolveAdpFormat(
+  fresh: FantasyAdpDatasetRecord | null,
+  previous: FantasyAdpDatasetRecord | null,
+  floor: number = MIN_ADP_ENTRIES
+): AdpFormatResolution {
+  if (fresh && fresh.entries.length >= floor) {
+    return { record: fresh, source: "fresh" };
+  }
+  if (previous && previous.entries.length > 0) {
+    return { record: previous, source: "previous" };
+  }
+  if (fresh) {
+    return { record: fresh, source: "thin-fresh" };
+  }
+  return { record: null, source: "empty" };
+}
 
 function pause(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -66,63 +102,72 @@ export const fantasyAdpData: Record<
 async function main() {
   const generatedAt = new Date().toISOString();
   const season = getSnapshotSeason();
+  const previous = readGeneratedSnapshot<FantasyAdpDataRecord>(OUTPUT_PATH, "fantasyAdpData");
   const dataset = {} as FantasyAdpDataRecord;
+  const notes: string[] = [];
 
-  try {
-    for (const scoringFormat of SCORING_FORMATS) {
+  // Resolve each scoring format independently: a failed or thin fetch for one
+  // format keeps that format's previous board (with its older, disclosed asOf)
+  // rather than discarding every format or overwriting good data with a blip.
+  for (const scoringFormat of SCORING_FORMATS) {
+    let fresh: FantasyAdpDatasetRecord | null = null;
+    try {
       const board = await withRetry(`ADP ${scoringFormat}`, () =>
         fetchFantasyAdpBoard(scoringFormat, season)
       );
-      dataset[scoringFormat] = {
+      fresh = {
         entries: board.entries,
         asOf: board.asOf,
         sampleSize: board.sampleSize,
         sourceUrl: board.sourceUrl,
       };
-      await pause(250);
-    }
-  } catch (error) {
-    console.warn(
-      `[adp] fetch failed: ${error instanceof Error ? error.message : String(error)}`
-    );
-
-    const previous = readGeneratedSnapshot<FantasyAdpDataRecord>(OUTPUT_PATH, "fantasyAdpData");
-    const previousEntryCount = previous
-      ? SCORING_FORMATS.reduce(
-          (total, format) => total + (previous[format]?.entries?.length ?? 0),
-          0
-        )
-      : 0;
-
-    if (previousEntryCount > 0) {
+    } catch (error) {
       console.warn(
-        `[adp] keeping previous ADP data (asOf ${previous?.PPR?.asOf ?? "unknown"}); snapshots will disclose the older as-of date.`
+        `[adp] ${scoringFormat} fetch failed: ${error instanceof Error ? error.message : String(error)}`
       );
-    } else {
-      console.warn("[adp] no previous ADP data to fall back to; snapshots will ship without ADP.");
     }
 
-    // Leave the existing generated module (previous data or empty seed)
-    // untouched and exit cleanly so the rest of the update chain proceeds.
+    const previousRecord = previous?.[scoringFormat] ?? null;
+    const resolution = resolveAdpFormat(fresh, previousRecord);
+    dataset[scoringFormat] = resolution.record ?? {
+      entries: [],
+      asOf: null,
+      sampleSize: null,
+      sourceUrl: previousRecord?.sourceUrl ?? fresh?.sourceUrl ?? "",
+    };
+    notes.push(
+      `${scoringFormat}: ${dataset[scoringFormat].entries.length} entries (${resolution.source}, asOf ${
+        dataset[scoringFormat].asOf ?? "unknown"
+      }, ${dataset[scoringFormat].sampleSize ?? "?"} drafts)`
+    );
+    await pause(250);
+  }
+
+  const totalEntries = SCORING_FORMATS.reduce(
+    (total, format) => total + (dataset[format]?.entries.length ?? 0),
+    0
+  );
+
+  if (totalEntries === 0) {
+    console.warn("[adp] no ADP data (fresh or previous); leaving the existing module untouched.");
     return;
   }
 
   await atomicWriteFile(OUTPUT_PATH, renderGeneratedModule(dataset, generatedAt));
 
-  for (const scoringFormat of SCORING_FORMATS) {
-    console.log(
-      `${scoringFormat}: ${dataset[scoringFormat].entries.length} ADP entries (asOf ${
-        dataset[scoringFormat].asOf ?? "unknown"
-      }, ${dataset[scoringFormat].sampleSize ?? "?"} drafts)`
-    );
-  }
-
+  for (const note of notes) console.log(`[adp] ${note}`);
   console.log(`Wrote fantasy ADP data: ${OUTPUT_PATH}`);
 }
 
-main().catch((error) => {
-  // Unexpected failures (filesystem, programming errors) are still non-fatal:
-  // ADP must never block the consensus refresh.
-  console.warn(`[adp] unexpected failure: ${error instanceof Error ? error.message : String(error)}`);
-  process.exit(0);
-});
+const isMainModule =
+  process.argv[1] !== undefined &&
+  path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+
+if (isMainModule) {
+  main().catch((error) => {
+    // Unexpected failures (filesystem, programming errors) are still non-fatal:
+    // ADP must never block the consensus refresh.
+    console.warn(`[adp] unexpected failure: ${error instanceof Error ? error.message : String(error)}`);
+    process.exit(0);
+  });
+}

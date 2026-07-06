@@ -2,6 +2,7 @@
  * @jest-environment node
  */
 import {
+  buildFixture,
   buildWorldCupSnapshotData,
   classifyStageByDate,
 } from "../worldCupData";
@@ -111,6 +112,8 @@ function makeEvent(opts: {
   completed?: boolean;
   homeWinner?: boolean;
   awayWinner?: boolean;
+  homeShootout?: number | null;
+  awayShootout?: number | null;
 }) {
   const statusType = {
     state: opts.state ?? "post",
@@ -130,6 +133,11 @@ function makeEvent(opts: {
             homeAway: "home",
             winner: opts.homeWinner ?? false,
             score: opts.homeScore ?? null,
+            // Only attach shootoutScore when a shootout occurred, mirroring
+            // ESPN (the field is absent from regular-time results).
+            ...(opts.homeShootout != null
+              ? { shootoutScore: opts.homeShootout }
+              : {}),
             team: {
               id: `t-${opts.homeAbbr}`,
               displayName: opts.homeName,
@@ -142,6 +150,9 @@ function makeEvent(opts: {
             homeAway: "away",
             winner: opts.awayWinner ?? false,
             score: opts.awayScore ?? null,
+            ...(opts.awayShootout != null
+              ? { shootoutScore: opts.awayShootout }
+              : {}),
             team: {
               id: `t-${opts.awayAbbr}`,
               displayName: opts.awayName,
@@ -157,17 +168,66 @@ function makeEvent(opts: {
   };
 }
 
+function makeLeader(opts: {
+  id: string;
+  name: string;
+  teamName: string;
+  teamAbbr: string;
+  value: number;
+}) {
+  return {
+    displayValue: `Matches: 5, Value: ${opts.value}`,
+    value: opts.value,
+    athlete: {
+      id: opts.id,
+      displayName: opts.name,
+      shortName: opts.name,
+      jersey: "10",
+      team: {
+        id: `team-${opts.teamAbbr}`,
+        name: opts.teamName,
+        displayName: opts.teamName,
+        abbreviation: opts.teamAbbr,
+      },
+    },
+  };
+}
+
+/** ESPN /statistics shape: a two-entry `stats` array of leader categories. */
+function makeStatistics(opts: {
+  goals?: Parameters<typeof makeLeader>[0][];
+  assists?: Parameters<typeof makeLeader>[0][];
+} = {}) {
+  return {
+    stats: [
+      {
+        name: "goalsLeaders",
+        displayName: "Goals",
+        leaders: (opts.goals ?? []).map(makeLeader),
+      },
+      {
+        name: "assistsLeaders",
+        displayName: "Assists",
+        leaders: (opts.assists ?? []).map(makeLeader),
+      },
+    ],
+  };
+}
+
 /**
  * Route fetch() by URL. The scoreboard is paged across the tournament window in
  * ~10-day chunks; this mock returns the group-stage events only for the page
- * covering June 11 and empty events for every other page.
+ * covering June 11 and empty events for every other page. The /statistics
+ * endpoint defaults to no leaders (empty scorers).
  */
 function mockFetch(opts: {
   standings?: unknown;
   events?: ReturnType<typeof makeEvent>[];
   eventsWindowStart?: string; // YYYYMMDD that the events page begins with
+  statistics?: unknown;
 } = {}) {
   const standings = opts.standings ?? makeStandingsResponse();
+  const statistics = opts.statistics ?? makeStatistics();
   const events = opts.events ?? [
     // Group-stage matches (dates well before the 2026-06-28 R32 boundary).
     makeEvent({
@@ -200,6 +260,9 @@ function mockFetch(opts: {
       const url = typeof input === "string" ? input : input.toString();
       if (url.includes("/standings")) {
         return Promise.resolve(jsonResponse(standings));
+      }
+      if (url.includes("/statistics")) {
+        return Promise.resolve(jsonResponse(statistics));
       }
       if (url.includes("/scoreboard")) {
         // Only the page whose range starts on the events window carries events.
@@ -262,6 +325,57 @@ describe("classifyStageByDate", () => {
     expect(classifyStageByDate(null).stage).toBe("Group stage");
     expect(classifyStageByDate(undefined).stage).toBe("Group stage");
     expect(classifyStageByDate("not-a-date").stage).toBe("Group stage");
+  });
+});
+
+describe("buildFixture", () => {
+  it("captures penalty shootout scores for a knockout tie level after regulation", () => {
+    // A Round-of-32 tie level at 1-1 after regulation, decided 4-2 on
+    // penalties. ESPN flags the shootout winner via the competitor `winner`
+    // flag and reports each side's `shootoutScore`.
+    const fixture = buildFixture(
+      makeEvent({
+        id: "evt-pens",
+        date: "2026-06-28T18:00:00Z",
+        homeName: "Spain",
+        homeAbbr: "ESP",
+        awayName: "Portugal",
+        awayAbbr: "POR",
+        homeScore: 1,
+        awayScore: 1,
+        homeWinner: true,
+        homeShootout: 4,
+        awayShootout: 2,
+      })
+    );
+
+    expect(fixture).not.toBeNull();
+    // Regulation score and the real winner are preserved.
+    expect(fixture?.score.winner).toBe("HOME_TEAM");
+    expect(fixture?.score.home).toBe(1);
+    expect(fixture?.score.away).toBe(1);
+    // The shootout result is threaded through so the UI can render
+    // "1-1 (4-2 pens)" instead of a bare draw with a winner.
+    expect(fixture?.score.shootoutHome).toBe(4);
+    expect(fixture?.score.shootoutAway).toBe(2);
+  });
+
+  it("omits shootout fields for a regular-time result", () => {
+    const fixture = buildFixture(
+      makeEvent({
+        id: "evt-reg",
+        date: "2026-06-11T18:00:00Z",
+        homeName: "Mexico",
+        homeAbbr: "MEX",
+        awayName: "Canada",
+        awayAbbr: "CAN",
+        homeScore: 2,
+        awayScore: 0,
+        homeWinner: true,
+      })
+    );
+
+    expect(fixture?.score).toEqual({ winner: "HOME_TEAM", home: 2, away: 0 });
   });
 });
 

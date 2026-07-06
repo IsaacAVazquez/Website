@@ -1,4 +1,4 @@
-export type NewsFeedId = "atlantic" | "nyt" | "guardian" | "bbc" | "npr" | "wapo";
+export type NewsFeedId = "atlantic" | "nyt" | "guardian" | "bbc" | "npr" | "aljazeera";
 
 export interface NewsFeedDefinition {
   id: NewsFeedId;
@@ -39,10 +39,10 @@ export const NEWS_FEEDS = [
     color: "#4A90D9",
   },
   {
-    id: "wapo",
-    name: "Washington Post",
-    url: "https://feeds.washingtonpost.com/rss/world",
-    color: "#2E2E2E",
+    id: "aljazeera",
+    name: "Al Jazeera",
+    url: "https://www.aljazeera.com/xml/rss/all.xml",
+    color: "#FA9000",
   },
 ] as const satisfies readonly NewsFeedDefinition[];
 

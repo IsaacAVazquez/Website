@@ -144,6 +144,31 @@ function buildSeasonLabel(startDate?: string | null, endDate?: string | null): s
   return "Current season";
 }
 
+function seasonStartYear(startDate?: string | null): number | null {
+  if (!startDate) return null;
+  const year = new Date(startDate).getUTCFullYear();
+  return Number.isFinite(year) ? year : null;
+}
+
+/**
+ * True when the competition's current season hasn't actually started, so the
+ * live endpoints return a placeholder. football-data.org rolls the season
+ * pointer weeks ahead of kickoff: for La Liga the standings keep last season's
+ * completed table under a future-dated label with empty scorers/matches, and
+ * for the Premier League the table is zeroed outright. Either signal — rows
+ * with zero games played, or a season whose start date is still in the future —
+ * means we should pin to the completed prior season instead.
+ */
+function seasonNotStarted(
+  season: FootballDataSeason | null | undefined,
+  clubs: readonly LaLigaClub[],
+  now: Date = new Date()
+): boolean {
+  if (clubs.length > 0 && clubs.every((club) => club.played === 0)) return true;
+  const startMs = season?.startDate ? new Date(season.startDate).getTime() : NaN;
+  return Number.isFinite(startMs) && startMs > now.getTime();
+}
+
 function normalizeFixtureTeam(raw: FootballDataTeam | null | undefined): LaLigaFixtureTeam | null {
   const id = raw?.id;
   if (typeof id !== "number" || !Number.isFinite(id)) return null;
@@ -373,9 +398,10 @@ async function fetchFootballDataJson<T>(path: string, revalidateSeconds: number)
   throw lastError;
 }
 
-function buildQueryString(params: Record<string, string | number>): string {
+function buildQueryString(params: Record<string, string | number | undefined>): string {
   const searchParams = new URLSearchParams();
   for (const [key, value] of Object.entries(params)) {
+    if (value === undefined) continue;
     searchParams.set(key, String(value));
   }
   return searchParams.toString();
@@ -403,7 +429,7 @@ export function createEmptyLaLigaSnapshot(): LaLigaSnapshot {
   };
 }
 
-export async function getLaLigaSummary(): Promise<{
+export async function getLaLigaSummary(options?: { season?: number }): Promise<{
   season: string;
   matchday: number;
   clubs: LaLigaClub[];
@@ -415,31 +441,38 @@ export async function getLaLigaSummary(): Promise<{
   teams: LaLigaTeamOption[];
   generatedAt: string;
 }> {
+  // When a season is pinned, thread it onto every competition-scoped request so
+  // standings, fixtures, teams, and scorers all describe the same season.
+  const seasonParams = options?.season ? { season: options.season } : {};
+  const seasonQuery = options?.season
+    ? `?${buildQueryString({ season: options.season })}`
+    : "";
+
   const [standingsResponse, recentRes, upcomingRes, teamsRes, scorersRes, seasonFixturesRes] = await Promise.all([
     fetchFootballDataJson<FootballDataCompetitionStandingsResponse>(
-      `/competitions/${LA_LIGA_CODE}/standings`,
+      `/competitions/${LA_LIGA_CODE}/standings${seasonQuery}`,
       SUMMARY_REVALIDATE_SECONDS
     ),
     fetchFootballDataJson<FootballDataMatchesResponse>(
-      `/competitions/${LA_LIGA_CODE}/matches?${buildQueryString({ status: "FINISHED", limit: RECENT_FIXTURE_LIMIT })}`,
+      `/competitions/${LA_LIGA_CODE}/matches?${buildQueryString({ status: "FINISHED", limit: RECENT_FIXTURE_LIMIT, ...seasonParams })}`,
       SUMMARY_REVALIDATE_SECONDS
     ),
     fetchFootballDataJson<FootballDataMatchesResponse>(
-      `/competitions/${LA_LIGA_CODE}/matches?${buildQueryString({ status: "SCHEDULED", limit: UPCOMING_FIXTURE_LIMIT })}`,
+      `/competitions/${LA_LIGA_CODE}/matches?${buildQueryString({ status: "SCHEDULED", limit: UPCOMING_FIXTURE_LIMIT, ...seasonParams })}`,
       SUMMARY_REVALIDATE_SECONDS
     ),
     fetchFootballDataJson<FootballDataCompetitionTeamsResponse>(
-      `/competitions/${LA_LIGA_CODE}/teams`,
+      `/competitions/${LA_LIGA_CODE}/teams${seasonQuery}`,
       SUMMARY_REVALIDATE_SECONDS
     ),
     fetchFootballDataJson<FootballDataScorersResponse>(
-      `/competitions/${LA_LIGA_CODE}/scorers`,
+      `/competitions/${LA_LIGA_CODE}/scorers${seasonQuery}`,
       SUMMARY_REVALIDATE_SECONDS
     ),
     // Season-long fixture log for the goals-per-matchday pulse — every
     // FINISHED match, no `limit`, distinct from the 8-most-recent `recentRes`.
     fetchFootballDataJson<FootballDataMatchesResponse>(
-      `/competitions/${LA_LIGA_CODE}/matches?${buildQueryString({ status: "FINISHED" })}`,
+      `/competitions/${LA_LIGA_CODE}/matches?${buildQueryString({ status: "FINISHED", ...seasonParams })}`,
       SEASON_FIXTURES_REVALIDATE_SECONDS
     ),
   ]);
@@ -452,6 +485,17 @@ export async function getLaLigaSummary(): Promise<{
   const clubs = (standingsGroup?.table ?? [])
     .map((row) => normalizeStandingRow(row))
     .filter((c): c is LaLigaClub => c !== null);
+
+  // Off-season rollover guard: if the current season hasn't started, re-fetch
+  // pinned to the completed prior season so the page shows a real final table
+  // with a correct label and populated scorers instead of an empty/stale one.
+  // Re-pins at most once (the recursive call passes a season).
+  if (options?.season === undefined && seasonNotStarted(standingsResponse.season, clubs)) {
+    const currentSeasonStart = seasonStartYear(standingsResponse.season?.startDate);
+    if (currentSeasonStart !== null) {
+      return getLaLigaSummary({ season: currentSeasonStart - 1 });
+    }
+  }
 
   const scorers = (scorersRes.scorers ?? [])
     .map((entry, i) => normalizeScorer(entry, i + 1))
@@ -565,8 +609,10 @@ function readExistingTeamSnapshots(filePath: string): Record<string, LaLigaTeamS
   }
 }
 
-export async function buildLaLigaSnapshot(options?: { skipTeamSnapshots?: boolean }): Promise<LaLigaSnapshot> {
-  const summary = await getLaLigaSummary();
+export async function buildLaLigaSnapshot(options?: { skipTeamSnapshots?: boolean; season?: number }): Promise<LaLigaSnapshot> {
+  const summary = await getLaLigaSummary(
+    options?.season ? { season: options.season } : undefined
+  );
   const generatedAt = new Date().toISOString();
   let teamSnapshots: Record<string, LaLigaTeamSnapshot>;
 

@@ -46,6 +46,22 @@ function isFresh(entry: CacheEntry, now: number): boolean {
   return now - entry.completedAt < ttl;
 }
 
+// A timed-out fetch rejects with an AbortError once FETCH_TIMEOUT_MS elapses.
+// Surface that as a plain "timed out" note instead of the runtime's raw
+// "This operation was aborted" string, and pass other errors through as-is.
+function describeFeedError(reason: unknown): string {
+  if (
+    reason instanceof Error &&
+    (reason.name === "AbortError" || /abort/i.test(reason.message))
+  ) {
+    return `timed out after ${FETCH_TIMEOUT_MS / 1000}s`;
+  }
+  if (reason instanceof Error && reason.message) {
+    return reason.message;
+  }
+  return "unknown error";
+}
+
 async function fetchAllFeeds(): Promise<FeedFetchResult> {
   const errors: string[] = [];
 
@@ -83,7 +99,7 @@ async function fetchAllFeeds(): Promise<FeedFetchResult> {
       continue;
     }
 
-    errors.push(`${NEWS_FEEDS[index].name}: ${result.reason?.message ?? "unknown error"}`);
+    errors.push(`${NEWS_FEEDS[index].name}: ${describeFeedError(result.reason)}`);
   }
 
   articles.sort((left, right) => {
