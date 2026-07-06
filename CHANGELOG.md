@@ -13,6 +13,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Serve last-good news-pulse headlines when a refresh fails ([#281](https://github.com/IsaacAVazquez/Website/pull/281)).
 - Compact GitHub trending snapshot and query topic:ai ([#282](https://github.com/IsaacAVazquez/Website/pull/282)).
 - Use Greenhouse first_published for MBA job posted dates ([#283](https://github.com/IsaacAVazquez/Website/pull/283)).
+- Normalize The Guardian news-pulse feed to its front page ([#284](https://github.com/IsaacAVazquez/Website/pull/284)).
 
 ---
 
