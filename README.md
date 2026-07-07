@@ -3,7 +3,7 @@
 Portfolio, writing, fantasy football analytics, investment research, and standalone data tools built on Next.js 16.
 
 **Live:** [isaacavazquez.com](https://isaacavazquez.com)
-**Last updated:** 2026-06-10
+**Last updated:** 2026-07-07
 
 ---
 
@@ -62,6 +62,7 @@ The site is portfolio-first. `Writing` is live and promoted in the global header
 | `/tech-startup-tracker` | Curated startup funding tracker |
 | `/writing` | Writing index |
 | `/writing/[slug]` | Article page |
+| `/writing/topics/[topic]` | Writing topic index |
 | `/march-madness-2026` | Seasonal bracket analysis |
 | `/fantasy-football/*` | Fantasy football tools |
 | `/ai-dev-tools` | AI development tools directory |
@@ -80,7 +81,9 @@ The site is portfolio-first. `Writing` is live and promoted in the global header
 | `/museum-log` | Museum visit log |
 | `/travel` | Browser-persisted travel planner |
 | `/now` | Current focus / status page |
-| `/changelog` | Site changelog |
+| `/changelog` | Running log of what's shipped |
+| `/release-notes` | Release notes, grouped by month |
+| `/arcade` | Reactor, a neon reflex arcade game (style experiment) |
 | `/resume` | Resume |
 | `/contact` | Contact page |
 | `/accessibility` | Accessibility statement |
@@ -134,7 +137,7 @@ npm run update:spacex
 npm run update:spacex-images
 ```
 
-`prebuild` runs a league-only football snapshot refresh automatically; `postbuild` runs `next-sitemap`.
+`prebuild` runs a league-only football snapshot refresh automatically; `postbuild` runs `next-sitemap` and `scripts/patch-nft-sharp.mjs`.
 
 ---
 
