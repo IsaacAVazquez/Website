@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-07T12:13:41.500Z",
+  "generatedAt": "2026-07-07T22:34:47.559Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -128,7 +128,7 @@
       {
         "id": "upcoming",
         "label": "Upcoming queue",
-        "value": "130",
+        "value": "129",
         "description": "currently published future SpaceX missions from Launch Library 2"
       },
       {
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-07-07T12:13:36.063Z"
+    "generatedAt": "2026-07-07T22:34:41.695Z"
   },
   "upcomingLaunches": [
     {
@@ -314,6 +314,46 @@
       }
     },
     {
+      "id": "ac897b9f-44d2-4ff4-8416-1a0a076e98a2",
+      "name": "Flight 13",
+      "flightNumber": 705,
+      "upcoming": true,
+      "success": null,
+      "details": "13th test flight of the two-stage Starship launch vehicle. Second flight of Starship V3",
+      "dateUtc": "2026-07-14T22:45:00Z",
+      "dateUnix": 1784069100,
+      "dateLocal": "2026-07-14T22:45:00Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Starship V3",
+      "launchpadName": "Orbital Launch Pad 2",
+      "launchpadLocation": "SpaceX Starbase, TX, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/0be5c2f84b0c0132.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 2,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": "https://www.spacex.com/vehicles/starship/",
+        "wikipedia": "https://en.wikipedia.org/wiki/SpaceX_Starship",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/0be5c2f84b0c0132.jpg"
+        ]
+      }
+    },
+    {
       "id": "be8b4b0d-1989-48a5-a96d-e8e4d59ed8b3",
       "name": "Globalstar 2-R Mission 1 (x 9)",
       "flightNumber": 707,
@@ -350,46 +390,6 @@
         "patchLarge": null,
         "flickrOriginal": [
           "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
-      "id": "ac897b9f-44d2-4ff4-8416-1a0a076e98a2",
-      "name": "Flight 13",
-      "flightNumber": 707,
-      "upcoming": true,
-      "success": null,
-      "details": "13th test flight of the two-stage Starship launch vehicle. Second flight of Starship V3",
-      "dateUtc": "2026-07-31T00:00:00Z",
-      "dateUnix": 1785456000,
-      "dateLocal": "2026-07-31T00:00:00Z",
-      "datePrecision": "month",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Starship V3",
-      "launchpadName": "Orbital Launch Pad 2",
-      "launchpadLocation": "SpaceX Starbase, TX, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/0be5c2f84b0c0132.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 2,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": "https://www.spacex.com/vehicles/starship/",
-        "wikipedia": "https://en.wikipedia.org/wiki/SpaceX_Starship",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/0be5c2f84b0c0132.jpg"
         ]
       }
     },
@@ -2180,15 +2180,15 @@
     "ac897b9f-44d2-4ff4-8416-1a0a076e98a2": {
       "id": "ac897b9f-44d2-4ff4-8416-1a0a076e98a2",
       "name": "Flight 13",
-      "flightNumber": 707,
+      "flightNumber": 705,
       "upcoming": true,
       "success": null,
       "details": "13th test flight of the two-stage Starship launch vehicle. Second flight of Starship V3",
-      "dateUtc": "2026-07-31T00:00:00Z",
-      "dateUnix": 1785456000,
-      "dateLocal": "2026-07-31T00:00:00Z",
-      "datePrecision": "month",
-      "tbd": true,
+      "dateUtc": "2026-07-14T22:45:00Z",
+      "dateUnix": 1784069100,
+      "dateLocal": "2026-07-14T22:45:00Z",
+      "datePrecision": "hour",
+      "tbd": false,
       "net": true,
       "rocketName": "Starship V3",
       "launchpadName": "Orbital Launch Pad 2",
@@ -2199,7 +2199,7 @@
       "payloadCount": 1,
       "capsuleCount": 0,
       "coreCount": 2,
-      "hasExactTime": false,
+      "hasExactTime": true,
       "isStaleSchedule": false,
       "links": {
         "webcast": null,
@@ -2217,7 +2217,7 @@
         ]
       },
       "staticFireDateUtc": null,
-      "window": 0,
+      "window": 7860,
       "failures": [],
       "rocket": {
         "id": "522",
@@ -2935,6 +2935,6 @@
       }
     ],
     "rangeLabel": "Aug 25 – Jul 26",
-    "generatedAt": "2026-07-07T12:13:41.500Z"
+    "generatedAt": "2026-07-07T22:34:47.559Z"
   }
 }
