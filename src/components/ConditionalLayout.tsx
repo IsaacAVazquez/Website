@@ -85,6 +85,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
     "/spacex-mission-control",
     "/tech-startup-tracker",
     "/travel",
+    "/travel-deals",
     "/wine-cellar",
     "/world-cup-2026",
     "/writing",

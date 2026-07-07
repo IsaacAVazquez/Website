@@ -52,6 +52,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/fintech-tools/interchange-iq": "2026-04-02",
   "/food-map": "2026-04-28",
   "/travel": "2026-05-04",
+  "/travel-deals": "2026-07-07",
 };
 
 // --- Priority + changefreq classification -------------------------------
@@ -127,6 +128,7 @@ const CHANGEFREQ_BY_ROUTE = {
   "/recipe-finder": "monthly",
   "/wine-cellar": "monthly",
   "/travel": "monthly",
+  "/travel-deals": "monthly",
   "/museum-log": "monthly",
 };
 
