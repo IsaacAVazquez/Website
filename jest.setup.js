@@ -47,6 +47,8 @@ if (typeof window !== 'undefined') {
 }
 
 // Mock next/navigation
+// redirect() and notFound() throw in real Next.js; mirror that so dynamic-route
+// page tests hit a catchable, identifiable error instead of "x is not a function".
 jest.mock('next/navigation', () => ({
   useRouter() {
     return {
@@ -54,6 +56,8 @@ jest.mock('next/navigation', () => ({
       replace: jest.fn(),
       prefetch: jest.fn(),
       back: jest.fn(),
+      forward: jest.fn(),
+      refresh: jest.fn(),
       pathname: '/',
       query: {},
       asPath: '/',
@@ -64,6 +68,19 @@ jest.mock('next/navigation', () => ({
   },
   useSearchParams() {
     return new URLSearchParams()
+  },
+  useParams() {
+    return {}
+  },
+  redirect(url) {
+    const error = new Error(`NEXT_REDIRECT:${url}`)
+    error.digest = `NEXT_REDIRECT;replace;${url};307;`
+    throw error
+  },
+  notFound() {
+    const error = new Error('NEXT_NOT_FOUND')
+    error.digest = 'NEXT_HTTP_ERROR_FALLBACK;404'
+    throw error
   },
 }))
 
