@@ -10,6 +10,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Add scorepool: exact-score prediction pool CLI ([#298](https://github.com/IsaacAVazquez/Website/pull/298)).
 - Refresh README routes and build notes ([#293](https://github.com/IsaacAVazquez/Website/pull/293)).
 - Add Travel Deal Lab, a trip cost optimizer at /travel-deals ([#295](https://github.com/IsaacAVazquez/Website/pull/295)).
+- Add La Liga 2025-26 season article series ([#294](https://github.com/IsaacAVazquez/Website/pull/294)).
 
 ---
 
