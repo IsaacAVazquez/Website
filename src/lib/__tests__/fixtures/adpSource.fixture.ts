@@ -113,12 +113,3 @@ export const ADP_SOURCE_PAYLOAD_FIXTURE = {
     },
   ],
 };
-
-// Jest treats every file under __tests__ as a suite, so the fixture carries a
-// self-test, matching fantasyProsPublicSource.fixture.ts.
-describe("adpSource fixture", () => {
-  it("exports the representative ADP payload", () => {
-    expect(ADP_SOURCE_PAYLOAD_FIXTURE.meta.total_drafts).toBe(421);
-    expect(ADP_SOURCE_PAYLOAD_FIXTURE.players.some((player) => player.position === "DEF")).toBe(true);
-  });
-});
