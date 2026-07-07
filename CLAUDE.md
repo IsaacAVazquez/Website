@@ -119,6 +119,15 @@ Shared conventions worth internalizing:
   from the route page — `ProjectsContent.tsx` still exists but is **not** the live path.
 - Writing posts live in `content/blog/`; `src/lib/blog.ts` reads frontmatter and
   converts MD/MDX to HTML via `remark`. Live routes: `/writing`, `/writing/[slug]`.
+- **Cover images are part of publishing, not an afterthought.** Every post has a
+  plan entry in `scripts/data/articleCoverImages.ts` (one per slug): a `wikimedia`
+  photo (fetched license-safe by `npm run update:article-images`, saved to
+  `public/images/writing/covers/`, written into `coverImage*` frontmatter), an
+  `editorial-card` for abstract pieces that keep the generated
+  `/writing/<slug>/opengraph-image`, or a hand-curated `manual` photo. When you
+  add a post, add its plan entry in the same change. The fetch is blocked in the
+  agent sandbox (image hosts are egress-denied) and runs in CI or locally.
+  Runbook: `docs/ARTICLE_IMAGE_WORKFLOW.md`.
 
 ### Browser-persisted tools
 
@@ -225,6 +234,7 @@ Subsystem references:
 - `PERSONAL_INTEREST_TOOLS.md` — the browser-persisted localStorage tools
 - `RETIREMENT_PLANNER_ENGINE.md` — the pure projection/Monte Carlo engine
 - `docs/DATA_UPDATE_OPERATIONS.md` — command → artifact → schedule runbook for every refresh
+- `docs/ARTICLE_IMAGE_WORKFLOW.md` — blog cover-image plan, the fetch builder, and the writing-time step
 
 **Legacy / historical** (keep for traceability; do not quote as current without checking
 code): `docs/archive/*` (incl. `docs/archive/plans/*`), `content-redesign/*`, root-level

@@ -331,6 +331,11 @@ The MLB, NBA, and NFL dashboards read committed TypeScript snapshots at runtime.
 - `npm run update:spacex` and its alias `npm run update:spacex-data` write `src/data/spacexSnapshot.generated.json`.
 - `npm run update:spacex-images` writes `src/data/spacexImageManifest.generated.json`, `public/data/spacex/image-reference-index.json`, and cached image files under `public/data/spacex/images/`.
 
+### Article cover image workflow
+
+- `npm run update:article-images` gives blog posts a real, license-safe cover photo in place of the generated `/writing/<slug>/opengraph-image` card, per the plan in `scripts/data/articleCoverImages.ts` (one entry per published slug). It fetches freely licensed photos from Wikimedia Commons, saves them under `public/images/writing/covers/`, and writes the `coverImage*` frontmatter. Pass `--only=<slug>` when publishing a single post, `--force` to re-fetch, or `--dry-run` to preview.
+- The agent sandbox blocks image hosts, so this runs in the `update-article-images.yml` Action or on a networked machine, not in-session. Adding a post means adding its plan entry in the same change; abstract pieces intentionally keep the editorial card. Full runbook: `docs/ARTICLE_IMAGE_WORKFLOW.md`.
+
 ### Build and asset workflow
 
 - `npm run build` runs `prebuild`, `next build --webpack`, and npm `postbuild`
@@ -381,6 +386,7 @@ The MLB, NBA, and NFL dashboards read committed TypeScript snapshots at runtime.
 | `npm run update:spacex` | Rebuild the checked-in SpaceX Mission Control data snapshot |
 | `npm run update:spacex-data` | Alias of `npm run update:spacex` |
 | `npm run update:spacex-images` | Rebuild cached SpaceX image snapshots and manifests |
+| `npm run update:article-images` | Fetch license-safe blog cover photos per `scripts/data/articleCoverImages.ts` |
 | `npm run generate:icons` | Regenerate PWA icons |
 
 ---
@@ -404,6 +410,7 @@ Checked-in operational workflows:
 - `.github/workflows/update-world-cup.yml`
 - `.github/workflows/update-bay-area-transit.yml`
 - `.github/workflows/update-earthquake.yml`
+- `.github/workflows/update-article-images.yml`
 - `netlify/functions/purge-cache.ts`
 
 Current behavior:
