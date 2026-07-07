@@ -8,6 +8,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 - Article cover images: license-safe photos and a writing-time workflow ([#299](https://github.com/IsaacAVazquez/Website/pull/299)).
 - Add scorepool: exact-score prediction pool CLI ([#298](https://github.com/IsaacAVazquez/Website/pull/298)).
+- Refresh README routes and build notes ([#293](https://github.com/IsaacAVazquez/Website/pull/293)).
 
 ---
 
