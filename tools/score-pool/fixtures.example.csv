@@ -1,0 +1,5 @@
+match_id,home,away,commence_time,odds_format,home_odds,draw_odds,away_odds,ou_line,over_odds,under_odds,btts_yes,btts_no,home_odds_open,draw_odds_open,away_odds_open,correct_score,context,note,lineup_unconfirmed,injury_question
+ESP-GER,Spain,Germany,2026-07-08T19:00:00Z,decimal,2.55,3.20,2.95,2.5,2.05,1.80,1.95,1.85,,,,1-0:7.5;0-0:9.0;1-1:8.0;2-1:9.0,draw_suits_both,"Knockout tie: level after 90 goes to extra time and penalties, but the pool scores the 90-minute result. Both sides may be content to take it deep.",true,false
+BRA-KOR,Brazil,South Korea,2026-07-09T15:00:00Z,decimal,1.40,4.80,8.00,2.5,1.75,2.05,2.10,1.70,,,,,"",Clear favourite; Brazil expected to control.,false,false
+FRA-POL,France,Poland,2026-07-09T19:00:00Z,american,-140,260,380,2.5,-105,-115,100,-120,,,,,dead_rubber;heavy_rotation_home,"France already through as group winners and likely to rotate heavily; Poland need the win.",true,true
+ARG-NED,Argentina,Netherlands,2026-07-10T19:00:00Z,decimal,2.30,3.10,3.30,2.5,1.95,1.90,1.90,1.90,2.60,3.20,2.90,,"",Argentina has shortened since the line opened.,false,false

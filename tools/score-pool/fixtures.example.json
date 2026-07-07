@@ -1,0 +1,41 @@
+{
+  "matches": [
+    {
+      "match_id": "ESP-GER",
+      "home": "Spain",
+      "away": "Germany",
+      "commence_time": "2026-07-08T19:00:00Z",
+      "odds": {
+        "format": "decimal",
+        "bookmaker": "pinnacle",
+        "three_way": { "home": 2.55, "draw": 3.20, "away": 2.95 },
+        "over_under": { "line": 2.5, "over": 2.05, "under": 1.80 },
+        "btts": { "yes": 1.95, "no": 1.85 },
+        "correct_score": { "1-0": 7.5, "0-0": 9.0, "1-1": 8.0, "2-1": 9.0, "0-1": 8.0 },
+        "three_way_open": { "home": 2.70, "draw": 3.25, "away": 2.80 }
+      },
+      "context": {
+        "draw_suits_both": true,
+        "lineup_unconfirmed": true,
+        "note": "Knockout tie: level after 90 goes to extra time and penalties, but the pool scores the 90-minute result. Both sides may be content to take it deep."
+      }
+    },
+    {
+      "match_id": "ARG-NED",
+      "home": "Argentina",
+      "away": "Netherlands",
+      "commence_time": "2026-07-10T19:00:00Z",
+      "odds": {
+        "format": "decimal",
+        "three_way": { "home": 2.30, "draw": 3.10, "away": 3.30 },
+        "over_under": { "line": 2.5, "over": 1.95, "under": 1.90 },
+        "btts": { "yes": 1.90, "no": 1.90 },
+        "three_way_open": { "home": 2.60, "draw": 3.20, "away": 2.90 },
+        "over_under_open": { "line": 2.5, "over": 2.00, "under": 1.85 }
+      },
+      "context": {
+        "note": "Argentina has shortened since the line opened."
+      }
+    }
+  ]
+}
