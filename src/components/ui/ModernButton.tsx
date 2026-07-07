@@ -55,8 +55,8 @@ export const ModernButton = React.memo(function ModernButton({
       "shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)]"
     ),
     secondary: cn(
-      "bg-[color-mix(in_srgb,var(--home-paper-alt)_78%,white)]",
-      "hover:bg-[color-mix(in_srgb,var(--home-paper-alt)_90%,white)]",
+      "bg-[color-mix(in_srgb,var(--home-paper-alt)_78%,var(--home-elev-mix))]",
+      "hover:bg-[color-mix(in_srgb,var(--home-paper-alt)_90%,var(--home-elev-mix))]",
       "text-[var(--home-ink)]",
       "border border-[var(--home-rule)]",
       "shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)]"
@@ -64,13 +64,13 @@ export const ModernButton = React.memo(function ModernButton({
     outline: cn(
       "border border-[var(--home-rule)]",
       "text-[var(--home-ink)]",
-      "hover:bg-[color-mix(in_srgb,var(--home-paper-alt)_78%,white)]",
+      "hover:bg-[color-mix(in_srgb,var(--home-paper-alt)_78%,var(--home-elev-mix))]",
       "hover:border-[color-mix(in_srgb,var(--home-stone)_58%,var(--home-rule))]"
     ),
     ghost: cn(
       "text-[var(--home-ink-muted)]",
       "hover:text-[var(--home-ink)]",
-      "hover:bg-[color-mix(in_srgb,var(--home-paper-alt)_78%,white)]"
+      "hover:bg-[color-mix(in_srgb,var(--home-paper-alt)_78%,var(--home-elev-mix))]"
     ),
     accent: cn(
       "bg-[var(--home-signal)] hover:bg-[color-mix(in_srgb,var(--home-signal)_88%,var(--home-ink))]",

@@ -28,7 +28,7 @@ const accessibilityFeatures = [
   {
     emoji: "👆",
     title: "44px touch targets",
-    detail: "All interactive controls are sized for comfortable mobile use (WCAG AAA).",
+    detail: "Interactive controls target at least 44px for comfortable mobile use, and I am still bringing a few smaller ones up to that size.",
   },
   {
     emoji: "🎬",
@@ -132,10 +132,11 @@ export default function AccessibilityPage() {
               with disabilities.
             </p>
             <p className="mb-0 text-base leading-7" style={strongBodyStyle}>
-              This site is fully conformant with WCAG 2.1 Level AA, and I aim for AAA where possible.
+              I build this site to conform with WCAG 2.1 Level AA, and I aim for AAA where I can.
             </p>
             <p className="mb-0 text-sm leading-6" style={bodyStyle}>
-              Fully conformant means the content meets the standard without exceptions.
+              What that means in practice is that I test against the AA success criteria and keep fixing the
+              gaps I find, rather than treating the standard as met without exception.
             </p>
           </article>
 

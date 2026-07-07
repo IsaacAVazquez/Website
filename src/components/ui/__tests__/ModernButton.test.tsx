@@ -18,7 +18,7 @@ describe('ModernButton', () => {
   it('applies secondary variant correctly', () => {
     render(<ModernButton variant="secondary">Button</ModernButton>)
     const button = screen.getByText('Button')
-    expect(button).toHaveClass('bg-[color-mix(in_srgb,var(--home-paper-alt)_78%,white)]')
+    expect(button).toHaveClass('bg-[color-mix(in_srgb,var(--home-paper-alt)_78%,var(--home-elev-mix))]')
   })
 
   it('applies outline variant correctly', () => {
