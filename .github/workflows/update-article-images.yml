@@ -1,0 +1,115 @@
+name: Refresh Article Cover Images
+
+# Gives blog posts real, license-safe cover photos in place of the generated
+# editorial card, per the plan in scripts/data/articleCoverImages.ts.
+#
+# Runs where the network is open (GitHub-hosted runners), which the agent
+# sandbox is not — Wikimedia Commons is blocked there by egress policy. The
+# weekly pass only fetches covers that are still missing, so a newly published
+# `wikimedia` article picks one up automatically. Use the manual dispatch to
+# backfill, target a single slug, or force a re-fetch.
+
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "Comma-separated slugs to limit to (blank = all missing)"
+        required: false
+        default: ""
+      force:
+        description: "Re-fetch even posts that already have a cover"
+        type: boolean
+        required: false
+        default: false
+  schedule:
+    # Weekly, Monday 06:40 UTC — backfill covers for any new articles.
+    - cron: "40 6 * * 1"
+
+concurrency:
+  group: refresh-article-images
+  cancel-in-progress: false
+
+jobs:
+  refresh-article-images:
+    name: Refresh Article Cover Images
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline --no-audit --fund=false
+
+      - name: Refresh article cover images
+        run: |
+          ARGS=""
+          if [ -n "${{ github.event.inputs.only }}" ]; then
+            ARGS="$ARGS --only=${{ github.event.inputs.only }}"
+          fi
+          if [ "${{ github.event.inputs.force }}" = "true" ]; then
+            ARGS="$ARGS --force"
+          fi
+          # Fail-soft: individual posts that error are skipped, so a single
+          # unreachable image never blocks committing the covers that landed.
+          npm run update:article-images -- $ARGS || true
+        env:
+          NODE_ENV: production
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if [ -z "$(git status --porcelain -- content/blog public/images/writing/covers)" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No new cover images."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            git status --porcelain -- content/blog public/images/writing/covers
+          fi
+
+      - name: Commit and push cover images
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          bash scripts/ci/commit-and-push-snapshot.sh \
+            "chore: refresh article cover images [automated] [skip ci]" \
+            content/blog public/images/writing/covers
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Trigger Netlify deploy
+        if: steps.check_changes.outputs.changed == 'true'
+        env:
+          NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
+        run: |
+          if [ -z "$NETLIFY_BUILD_HOOK" ]; then
+            echo "NETLIFY_BUILD_HOOK secret not configured; skipping deploy trigger."
+            exit 0
+          fi
+          curl -fsS -X POST -d '{}' "$NETLIFY_BUILD_HOOK" \
+            && echo "Netlify build hook triggered." \
+            || echo "::warning::Netlify build hook request failed; the daily scheduled rebuild will pick up the change."
+
+      - name: Create job summary
+        if: always()
+        run: |
+          echo "## Article Cover Image Refresh" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Status:** ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
+          if [ "${{ steps.check_changes.outputs.changed }}" = "true" ]; then
+            echo "**Result:** New cover images committed." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "**Result:** All planned covers already present." >> "$GITHUB_STEP_SUMMARY"
+          fi

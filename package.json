@@ -39,6 +39,7 @@
     "update:spacex-images": "tsx scripts/buildSpaceXImageSnapshots.ts",
     "update:fantasy": "tsx scripts/buildFantasyPositionData.ts && tsx scripts/buildFantasyAdpData.ts && tsx scripts/buildFantasySnapshots.ts",
     "update:investments": ".venv/bin/python3 scripts/fetch_investments_data.py && tsx scripts/buildInvestmentsSnapshots.ts",
+    "update:article-images": "tsx scripts/buildArticleCoverImages.ts",
     "generate:icons": "node scripts/generate-pwa-icons.mjs"
   },
   "dependencies": {
