@@ -1,0 +1,18 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+build/
+dist/
+
+# Local working files the tool writes (state, snapshots, structured output)
+state.json
+*.snapshot.json
+out.json
+
+# Personal config/fixtures (the *.example.* files are committed; your own aren't)
+scorepool.toml
+/fixtures.csv
+/fixtures.json
