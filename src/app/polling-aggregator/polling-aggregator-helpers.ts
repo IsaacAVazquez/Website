@@ -105,7 +105,7 @@ export function getActiveViewStyle(isActive: boolean): CSSProperties {
   }
   return {
     borderColor: "var(--home-rule)",
-    background: "color-mix(in srgb, var(--home-paper-alt) 80%, white)",
+    background: "color-mix(in srgb, var(--home-paper-alt) 80%, var(--home-elev-mix))",
     color: "var(--home-ink-muted)",
   };
 }
@@ -119,7 +119,7 @@ export function getRowStyle(isSelected: boolean): CSSProperties {
   }
   return {
     borderColor: "var(--home-rule)",
-    background: "color-mix(in srgb, var(--home-paper-alt) 80%, white)",
+    background: "color-mix(in srgb, var(--home-paper-alt) 80%, var(--home-elev-mix))",
   };
 }
 
