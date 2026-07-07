@@ -62,6 +62,7 @@ const LIFESTYLE = new Set([
   "wine-cellar",
   "recipe-finder",
   "travel-planner",
+  "travel-deal-lab",
 ]);
 
 // Display order is intentional: the strongest product surfaces (fintech,

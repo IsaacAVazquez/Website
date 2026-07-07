@@ -434,6 +434,18 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       tags: ['Travel', 'Itinerary', 'Journal', 'Personal Productivity', 'Next.js'],
     },
     {
+      id: 'page-travel-deal-lab',
+      title: 'Travel Deal Lab',
+      excerpt:
+        'Travel cost optimizer: when to book, whether a fare or award is a deal, a budget split, and a curated playbook and toolkit for finding deals on flights and hotels.',
+      content:
+        'Travel deal lab how to find travel deals cheap flights when to book flights hotel deals points miles award value cents per point trip budget fare price alert booking window optimizer Next.js TypeScript',
+      url: '/travel-deals',
+      type: 'project',
+      category: 'Personal Productivity Tools',
+      tags: ['Travel', 'Deals', 'Flights', 'Points & Miles', 'Budgeting', 'Next.js'],
+    },
+    {
       id: 'page-ai-dev-tools',
       title: 'AI Dev Tool Ecosystem',
       excerpt:

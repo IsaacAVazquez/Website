@@ -1,11 +1,12 @@
 # Personal-Interest Tools
 
-The browser-persisted lifestyle surfaces: `/travel`, `/wine-cellar`,
-`/museum-log`, `/recipe-finder`, and `/food-map`. They have no server, no API,
-and no snapshot pipeline — state lives in the user's browser. This doc captures
-the shared pattern and the per-tool specifics so the next one is easy to add.
+The browser-persisted lifestyle surfaces: `/travel`, `/travel-deals`,
+`/wine-cellar`, `/museum-log`, `/recipe-finder`, and `/food-map`. They have no
+server, no API, and no snapshot pipeline — state lives in the user's browser.
+This doc captures the shared pattern and the per-tool specifics so the next one
+is easy to add.
 
-**Last updated:** 2026-06-16
+**Last updated:** 2026-07-07
 
 ---
 
@@ -96,6 +97,22 @@ Two hook flavors are in use, both valid:
 - Persisted: the user's pantry only, under `recipe-finder:pantry:v1`. The recipe
   corpus is curated and read-only; the client scores recipes against the pantry
   (staple pantry items don't count against a "missing ingredients" score).
+
+### `/travel-deals` — Travel Deal Lab *(curated catalog + pure engine + light state)*
+
+- Files: `src/lib/travelDeals.ts` (pure engine), `src/types/travelDeals.ts`,
+  curated dataset `src/data/travelDealsSnapshot.ts`; client
+  `src/app/travel-deals/travel-deal-lab-client.tsx`.
+- Persisted: the trip setup (region, departure date, nights, travelers, budget)
+  and the "applied" tactic ids, under `travel-deals:v1`. The calculators' quick
+  inputs (a quoted fare, a points award) are ephemeral component state.
+- The engine is framework-free and unit-tested (`src/lib/__tests__/travelDeals.test.ts`):
+  booking-window timing, a fare deal-score against a typical band, cents-per-point
+  award valuation, and a budget split. It reasons against curated fare bands and a
+  points baseline that are tagged `TRAVEL_DEALS_VERIFIED = false` with a
+  `TRAVEL_DEALS_AS_OF` date and disclosed on-page as estimates, following the
+  curated-unverified convention. The tactics and recommended tools are a
+  hand-authored playbook. A companion to the `/travel` planner, not a replacement.
 
 ### `/food-map` — curated map *(no persistence)*
 

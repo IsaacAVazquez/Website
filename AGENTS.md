@@ -48,6 +48,7 @@ Primary live routes:
 - `/food-map`
 - `/recipe-finder`
 - `/travel`
+- `/travel-deals`
 - `/wine-cellar`
 - `/news-pulse`
 - `/spacex-mission-control`
@@ -126,6 +127,7 @@ Self-shell routes currently include:
 - `/spacex-mission-control`
 - `/tech-startup-tracker`
 - `/travel`
+- `/travel-deals`
 - `/wine-cellar`
 - `/world-cup-2026`
 - `/writing`

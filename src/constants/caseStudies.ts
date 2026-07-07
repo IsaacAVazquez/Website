@@ -1044,6 +1044,38 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     tradeoffs: [],
     retrospective: "",
   },
+  "travel-deal-lab": {
+    slug: "travel-deal-lab",
+    title: "Travel Deal Lab",
+    description:
+      "A travel cost optimizer that tells you when to book, whether a fare or an award is a good deal, and how to split a budget, then hands you the playbook and tools for finding deals.",
+    role: "Product Builder & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "Pure engine", "Local persistence"],
+    metrics: "Booking-window timing · Fare deal-score · Cash-vs-points check",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/travel-deals",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built a travel optimizer that turns a trip's shape into concrete decisions: when to book for the destination, whether a quoted fare beats the typical band, and what an award redemption is really worth per point.",
+      impact:
+        "Puts the timing, valuation, and budgeting calls that actually move a trip's cost on one surface, backed by a pure, unit-tested engine and a curated deal-finding playbook.",
+    },
+    problem: {
+      context:
+        "Finding travel deals is scattered across fare trackers, points blogs, and budgeting spreadsheets, and most of the advice is generic rather than tied to the trip in front of you.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
 };
 
 const HOMEPAGE_FEATURED_SLUGS = [
@@ -1066,6 +1098,7 @@ const PORTFOLIO_PROJECT_ORDER = [
   "wine-cellar",
   "recipe-finder",
   "travel-planner",
+  "travel-deal-lab",
   "budget-planner",
   "mba-role-tracker",
   "polling-aggregator",
