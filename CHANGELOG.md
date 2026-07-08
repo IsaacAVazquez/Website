@@ -7,6 +7,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 ## 2026-07-08
 
 - Expand suite coverage, prune dead test infra, ratchet gates ([#292](https://github.com/IsaacAVazquez/Website/pull/292)).
+- World Cup 2026 knockout-stage recap articles ([#302](https://github.com/IsaacAVazquez/Website/pull/302)).
 
 ---
 
