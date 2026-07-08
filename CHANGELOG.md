@@ -4,6 +4,12 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-07-08
+
+- Expand suite coverage, prune dead test infra, ratchet gates ([#292](https://github.com/IsaacAVazquez/Website/pull/292)).
+
+---
+
 ## 2026-07-07
 
 - Article cover images: license-safe photos and a writing-time workflow ([#299](https://github.com/IsaacAVazquez/Website/pull/299)).
