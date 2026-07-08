@@ -1,51 +1,171 @@
 # Isaac Vazquez
 
-> Product Manager and UC Berkeley Haas MBA Candidate with 5+ years building SaaS products reaching 60M+ users. Case studies, product thinking, and PM frameworks.
+> Product manager and UC Berkeley Haas MBA Candidate with 6+ years across SaaS, analytics, civic tech, and QA-to-product work. Builds AI workflow, fintech, sports-data, and decision-support products.
+
+Last reviewed: 2026-07-08
 
 ## About
 
-Isaac Vazquez is a Technical Product Manager and UC Berkeley Haas MBA Candidate (Class of 2027). He has 6+ years of experience in SaaS and consumer technology, with a background spanning product strategy, quality engineering, and cross-functional leadership. He is a Consortium Fellow and MLT Professional Development Fellow.
+Isaac Vazquez is a product manager and UC Berkeley Haas MBA Candidate, Class of 2027. His background spans product strategy, quality engineering, data analytics, civic technology, fintech-style tooling, and AI workflow products. He is a Consortium Fellow and MLT Professional Development Fellow.
 
 - Website: https://isaacavazquez.com
 - LinkedIn: https://www.linkedin.com/in/isaac-vazquez/
 - GitHub: https://github.com/IsaacAVazquez
-- Email: isaacavazquez95@gmail.com
+- Email: IsaacVazquez@berkeley.edu
+- Full public sitemap: https://isaacavazquez.com/sitemap.xml
+- RSS feed: https://isaacavazquez.com/api/rss
 
-## Sections
+## Retrieval Hints
 
-### Portfolio & Case Studies
-- URL: https://isaacavazquez.com/portfolio
-- Description: Product management case studies showcasing strategic thinking, cross-functional leadership, and measurable business outcomes. Each follows a Problem-Process-Result framework. Highlights include scaling platforms to 60M+ users and driving $4M revenue impact.
+- Canonical project route: https://isaacavazquez.com/portfolio
+- Canonical writing route: https://isaacavazquez.com/writing
+- Legacy `/projects`, `/work`, and `/blog` URLs redirect to canonical routes.
+- The on-site `/search` page is a lightweight navigation layer, not a comprehensive public index.
+- Most dashboard pages are snapshot-backed. They read committed data at request time rather than calling external APIs live.
+
+## Core Pages
+
+### Homepage
+- URL: https://isaacavazquez.com
+- Use for: Professional identity, portfolio overview, current product focus, live tool directory.
 
 ### About
 - URL: https://isaacavazquez.com/about
-- Description: Professional background, career journey, and product management philosophy.
+- Use for: Background, MBA context, credentials, product philosophy, expertise areas.
 
 ### Resume
 - URL: https://isaacavazquez.com/resume
-- Description: Professional resume with experience at Civitech, and education at UC Berkeley Haas and Florida State University.
+- Use for: Role history, education, skills, recruiting context.
+
+### Portfolio
+- URL: https://isaacavazquez.com/portfolio
+- Use for: Product case studies, live tools, measurable project work, product judgment examples.
 
 ### Writing
 - URL: https://isaacavazquez.com/writing
-- Description: Articles on product management, product strategy, data-driven decisions, and lessons from an MBA journey.
+- Use for: Long-form articles on product management, AI workflows, QA, fintech, sports analytics, and dashboard builds.
 
 ### Contact
 - URL: https://isaacavazquez.com/contact
-- Description: Get in touch for product management opportunities, consulting, or collaboration.
+- Use for: Collaboration, recruiting, consulting, and direct contact.
 
-### Fantasy Football Analytics
+## Live Tools And Dashboards
+
+### Investment Research
+- URL: https://isaacavazquez.com/investments
+- Description: Public investment research platform with portfolio tracking, quote snapshots, stock comparisons, and retirement-planning experiments.
+
+### Interchange IQ
+- URL: https://isaacavazquez.com/fintech-tools/interchange-iq
+- Description: Payment fee analyzer comparing flat-rate and interchange-plus processor economics with adjustable volume, ticket size, and card mix.
+
+### Budget Planner
+- URL: https://isaacavazquez.com/fintech-tools/budget-planner
+- Description: Browser-persisted budgeting workspace for income, category planning, savings targets, and manual expense tracking.
+
+### Fantasy Football
 - URL: https://isaacavazquez.com/fantasy-football
-- Description: Live fantasy football tier rankings (QB/RB/WR/TE/K/DST/Flex) with interactive D3.js visualizations, clustering algorithms, and draft assistance tools.
+- Description: Snapshot-backed fantasy football rankings with position filters, scoring formats, tier views, ADP signals, and draft prep.
+
+### Fantasy Football Draft Assistant
+- URL: https://isaacavazquez.com/fantasy-football/draft-tracker
+- Description: Manual snake-draft tracker with local persistence, roster-pressure cues, queueing, notes, and comparison state.
+
+### Frontier Model Tracker
+- URL: https://isaacavazquez.com/frontier-models
+- Description: Curated model-comparison surface for context windows, pricing, modalities, reasoning support, and product-selection tradeoffs.
+
+### AI Dev Tools
+- URL: https://isaacavazquez.com/ai-dev-tools
+- Description: Directory of AI coding and agent tools with pricing, model support, source links, and market context.
+
+### Decision Lab
+- URL: https://isaacavazquez.com/decision-lab
+- Description: Product-bet triage tool that scores impact, confidence, effort, and reversibility before forcing a ship, test, or hold recommendation.
+
+### GitHub Trending Pulse
+- URL: https://isaacavazquez.com/github-trending-pulse
+- Description: Daily-refreshed snapshot of active public GitHub repositories by language and topic, including weekly star movement.
+
+### Tech Startup Tracker
+- URL: https://isaacavazquez.com/tech-startup-tracker
+- Description: Curated private-company tracker by sector and funding stage, with valuation, latest round, total raised, and momentum context.
+
+### News Pulse
+- URL: https://isaacavazquez.com/news-pulse
+- Description: RSS-backed media analytics dashboard for coverage patterns, topic frequency, and lightweight sentiment across major outlets.
+
+### MBA Internship Notifications
+- URL: https://isaacavazquez.com/mba-internship-notifications
+- Description: Recruiting-intelligence tracker for MBA internships and business roles across public company job boards.
+
+### Sports And Event Dashboards
+- Formula 1: https://isaacavazquez.com/formula-1
+- Fantasy Formula 1: https://isaacavazquez.com/fantasy-formula-1
+- Premier League: https://isaacavazquez.com/premier-league
+- La Liga: https://isaacavazquez.com/la-liga
+- MLB: https://isaacavazquez.com/mlb
+- NBA: https://isaacavazquez.com/nba
+- NFL: https://isaacavazquez.com/nfl
+- Golf: https://isaacavazquez.com/golf
+- World Cup 2026: https://isaacavazquez.com/world-cup-2026
+- March Madness 2026: https://isaacavazquez.com/march-madness-2026
+
+### Civic, Space, Transit, And Personal Tools
+- Bay Area Transit: https://isaacavazquez.com/bay-area-transit
+- Earthquake Pulse: https://isaacavazquez.com/earthquake-pulse
+- SpaceX Mission Control: https://isaacavazquez.com/spacex-mission-control
+- Polling Aggregator: https://isaacavazquez.com/polling-aggregator
+- Food Map: https://isaacavazquez.com/food-map
+- Recipe Finder: https://isaacavazquez.com/recipe-finder
+- Travel Planner: https://isaacavazquez.com/travel
+- Travel Deals: https://isaacavazquez.com/travel-deals
+- Wine Cellar: https://isaacavazquez.com/wine-cellar
+- Museum Log: https://isaacavazquez.com/museum-log
+
+## Writing Clusters
+
+### Agentic AI And Product Workflows
+- Topic page: https://isaacavazquez.com/writing/topics/agentic-ai
+- Representative articles:
+  - https://isaacavazquez.com/writing/agentic-ai-explained-for-product-managers
+  - https://isaacavazquez.com/writing/evaluate-agentic-ai-product-pm-framework
+  - https://isaacavazquez.com/writing/what-an-ai-agent-actually-costs-in-production
+  - https://isaacavazquez.com/writing/context-engineering-replacing-prompt-engineering
+
+### PM Workflows And Quality Systems
+- Topic pages:
+  - https://isaacavazquez.com/writing/topics/pm-workflows
+  - https://isaacavazquez.com/writing/topics/systems-quality
+- Representative articles:
+  - https://isaacavazquez.com/writing/qa-automation-daily-deploys
+  - https://isaacavazquez.com/writing/proactive-performance-intelligence
+  - https://isaacavazquez.com/writing/scaling-civic-engagement-platform
+  - https://isaacavazquez.com/writing/textout-platform
+
+### Fintech Product And Pricing
+- Topic page: https://isaacavazquez.com/writing/topics/fintech-product-pricing
+- Representative articles:
+  - https://isaacavazquez.com/writing/interchange-iq-payment-fee-analyzer
+  - https://isaacavazquez.com/writing/building-an-investment-research-platform
+  - https://isaacavazquez.com/writing/pricing-strategy-initiative
+
+### Dashboard Build Notes
+- Representative articles:
+  - https://isaacavazquez.com/writing/building-the-pulse-dashboard-family
+  - https://isaacavazquez.com/writing/building-news-pulse-dashboard
+  - https://isaacavazquez.com/writing/building-a-github-trending-dashboard
+  - https://isaacavazquez.com/writing/building-a-bart-transit-dashboard
+  - https://isaacavazquez.com/writing/building-spacex-mission-control
 
 ## Expertise
 
-- Product Strategy & Roadmapping
-- Product Discovery & User Research
-- Experimentation & A/B Testing
-- Cross-Functional Leadership
-- Data Analysis & Analytics
-- Go-to-Market Planning
-- Stakeholder Management
-- Quality Assurance & Test Automation
-- SaaS & Consumer Technology
-- Civic Technology
+- Product strategy and roadmapping
+- Product discovery and user research
+- Experimentation and A/B testing
+- Cross-functional leadership
+- Data analysis and analytics
+- AI workflow products and agentic AI evaluation
+- Fintech product development and pricing analysis
+- Quality engineering and test automation
+- SaaS and civic technology

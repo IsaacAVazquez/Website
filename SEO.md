@@ -2,7 +2,7 @@
 
 Reference for the SEO architecture in this Next.js 16 App Router project.
 
-**Last updated:** 2026-06-19
+**Last updated:** 2026-07-08
 
 ---
 
@@ -325,7 +325,7 @@ The sitemap is **allowlist-driven**. `next-sitemap.config.js` is a thin wrapper 
 
 ### Output fields
 
-Each entry emits only `loc` and `lastmod`. There are **no `priority` or `changefreq` values** — the config sets `autoLastmod: false` and the helper supplies an explicit `lastmod` per route. (Earlier versions of this doc described priority tiers; that scheme no longer exists.)
+Each entry emits `loc`, `lastmod`, `changefreq`, and `priority`. The config sets `autoLastmod: false`; `src/lib/sitemap.js` supplies explicit freshness and classification metadata per route. The Jest sitemap consistency test compares all four fields against `public/sitemap.xml`.
 
 ### How `src/lib/sitemap.js` builds the list
 
@@ -364,19 +364,19 @@ Current status of metadata and structured data across all pages. Use this to ide
 | Page | Metadata | ogType | canonicalUrl | dateModified | Structured Data | Breadcrumbs | Status |
 |---|---|---|---|---|---|---|---|
 | `/` | `constructMetadata` | website | `/` | 2026-02-22 | ProfilePage, WebSite, Person | N/A (root) | OK |
-| `/about` | `generateAIOptimizedMetadata` | website | `/about` | 2025-02-05 | Breadcrumb, ProfilePage | Yes | OK |
+| `/about` | `generateAIOptimizedMetadata` | website | `/about` | 2026-05-27 | Breadcrumb, ProfilePage | Yes | OK |
 | `/contact` | `constructMetadata` | website | `/contact` | 2026-03-16 | BreadcrumbList, ContactPage | Yes | OK |
 | `/resume` | `constructMetadata` | website | `/resume` | 2025-02-05 | BreadcrumbList, Person, JobPosting | Yes | OK |
-| `/portfolio` | `constructMetadata` | website | `/portfolio` | None | None | None | **Gap** |
-| `/portfolio/[slug]` | `generateMetadata` | article | `/portfolio/{slug}` | None | None | None | **Gap** |
-| `/writing` | `constructMetadata` | website | `/writing` | 2025-02-05 | BreadcrumbList, Article (list) | Yes | OK |
+| `/portfolio` | `constructMetadata` | website | `/portfolio` | 2026-04-04 | ItemList | No visible breadcrumb; structured index present | OK |
+| `/portfolio/[slug]` | `generateMetadata` | article | `/portfolio/{slug}` | 2026-04-04 | Breadcrumb, CreativeWork on non-redirect entries | Yes, when rendered | OK; current slugs redirect to live tools |
+| `/writing` | `constructMetadata` | website | `/writing` | 2026-04-15 | BreadcrumbList, Article (list) | Yes | OK |
 | `/writing/[slug]` | `generateMetadata` | article | full URL | post dates | Breadcrumb, Article | Yes | OK |
 | `/investments` | `constructMetadata` | website | `/investments` | 2026-03-16 | BreadcrumbList, SoftwareApplication | Yes | OK |
 | `/accessibility` | `constructMetadata` | website | full URL | 2025-02-05 | None | None | **Gap** |
-| `/search` | `constructMetadata` | website | full URL | 2025-02-05 | None | None | **Gap** |
-| `/admin` | None | N/A | N/A | N/A | None | None | **Gap** |
-| `/fantasy-football` | `constructMetadata` | website | relative | 2026-03-18 | BreadcrumbList, SportsApp, FAQ | Yes | OK |
-| `/fantasy-football/draft-tracker` | `constructMetadata` | website | relative | 2026-03-18 | WebApplication | None | **Gap** |
+| `/search` | `constructMetadata` | website | `/search` | 2025-02-05 | None | None | OK, `noIndex` |
+| `/admin` | layout metadata | N/A | N/A | N/A | None | None | OK, `noIndex` |
+| `/fantasy-football` | `constructMetadata` | website | relative | 2026-04-21 | BreadcrumbList, SportsApp, FAQ | Yes | OK |
+| `/fantasy-football/draft-tracker` | `constructMetadata` | website | relative | 2026-04-21 | BreadcrumbList, SoftwareApplication | Yes | OK |
 | `/fantasy-football/rb-tiers` | Redirect | — | — | — | — | — | OK |
 | `/fantasy-football/tiers/[pos]` | Redirect | — | — | — | — | — | OK |
 | `/premier-league` | `constructMetadata` | website | relative | snapshot date | BreadcrumbList, SportsApp | Yes | OK |
@@ -386,17 +386,13 @@ Current status of metadata and structured data across all pages. Use this to ide
 | `/spacex-mission-control` | `constructMetadata` | website | relative | 2026-04-01 | BreadcrumbList, SoftwareApp | Yes | OK |
 | `/polling-aggregator` | `constructMetadata` | website | relative | snapshot date | BreadcrumbList, SportsApp | Yes | OK |
 | `/fintech-tools/budget-planner` | `constructMetadata` | website | relative | 2026-04-03 | BreadcrumbList, SoftwareApp | Yes | OK |
-| `/fintech-tools/interchange-iq` | `constructMetadata` | website | relative | None | None | None | **Gap** |
+| `/fintech-tools/interchange-iq` | `constructMetadata` | website | relative | 2026-04-02 | BreadcrumbList, SoftwareApplication | Yes | OK |
 
 ### Gaps to address
 
-1. **`/portfolio`** — Missing structured data and breadcrumbs. Should have `BreadcrumbList` + `ItemList` or `CreativeWork` schema.
-2. **`/portfolio/[slug]`** — Has `ogType: "article"` in metadata but renders no structured data or breadcrumbs in JSX. Should match the `/writing/[slug]` pattern with `Breadcrumb` + `Article` schemas. Also missing `datePublished`/`dateModified` in the metadata call.
-3. **`/accessibility`** — Missing structured data and breadcrumbs. Low priority but should have a `BreadcrumbList` at minimum.
-4. **`/search`** — Missing structured data and breadcrumbs. Consider `noIndex: true` since the search index is limited.
-5. **`/admin`** — No metadata export at all. Should export `constructMetadata({ noIndex: true })` to prevent indexing.
-6. **`/fantasy-football/draft-tracker`** — Missing breadcrumb structured data despite having a parent route.
-7. **`/fintech-tools/interchange-iq`** — Missing `dateModified`, structured data, and breadcrumbs.
+1. **`/accessibility`** — Missing structured data and breadcrumbs. Low priority but should have a `BreadcrumbList` at minimum.
+2. **`/portfolio`** — Emits `ItemList` structured data, but no visible breadcrumb trail. Add visible breadcrumbs only if the page design calls for it.
+3. **`/search`** — Correctly `noIndex`; leave it out of sitemap because the search API is intentionally limited.
 
 ---
 

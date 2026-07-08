@@ -440,11 +440,17 @@ export function generateArticleSchema(data: ArticleSchemaData) {
     headline: data.headline,
     description: data.description,
     url: data.url || siteConfig.url,
-    datePublished: data.datePublished || new Date().toISOString(),
-    dateModified: data.dateModified || new Date().toISOString(),
     inLanguage: data.inLanguage || "en-US",
     isAccessibleForFree: data.isAccessibleForFree ?? true,
   };
+
+  if (data.datePublished) {
+    schema.datePublished = data.datePublished;
+  }
+
+  if (data.dateModified || data.datePublished) {
+    schema.dateModified = data.dateModified || data.datePublished;
+  }
 
   // Images (can be single or array)
   if (data.image) {
@@ -529,17 +535,17 @@ export function generateArticleSchema(data: ArticleSchemaData) {
  * Generates enhanced CreativeWork schema for portfolio projects
  */
 export function generateProjectSchema(data: ProjectSchemaData) {
+  const slug = data.name.toLowerCase().replace(/\s+/g, "-");
+  const resolvedUrl = data.url || `${siteConfig.url}/portfolio/${slug}`;
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
-    "@id": `${data.url || siteConfig.url}/portfolio/${data.name
-      .toLowerCase()
-      .replace(/\s+/g, "-")}#project`,
+    "@id": `${resolvedUrl}#project`,
     name: data.name,
     description: data.description,
-    url: data.url || siteConfig.url,
-    dateCreated: data.dateCreated,
-    dateModified: data.dateModified || new Date().toISOString(),
+    url: resolvedUrl,
+    ...(data.dateCreated && { dateCreated: data.dateCreated }),
+    ...(data.dateModified && { dateModified: data.dateModified }),
     ...(data.datePublished && { datePublished: data.datePublished }),
     inLanguage: "en-US",
     isAccessibleForFree: true,
@@ -689,7 +695,7 @@ export function generateProfilePageSchema(data: {
     description:
       data.description ||
       `Professional profile of ${data.person.name || siteConfig.name}`,
-    dateModified: data.lastReviewed || new Date().toISOString(),
+    ...(data.lastReviewed && { dateModified: data.lastReviewed }),
     mainEntity: generateEnhancedPersonSchema(data.person),
   };
 }

@@ -2,7 +2,7 @@
 
 Current metadata and structured-data reference.
 
-**Last updated:** 2026-06-19
+**Last updated:** 2026-07-08
 
 ---
 
@@ -46,13 +46,13 @@ Dynamic routes use `generateMetadata(...)` where needed.
 
 ### Standalone data tools
 
-- `/news-pulse`, `/spacex-mission-control`, `/polling-aggregator`, and `/fintech-tools/budget-planner` include route metadata and structured data
-- `/fintech-tools/interchange-iq` currently has metadata but no date-modified or structured-data block
+- `/news-pulse`, `/spacex-mission-control`, `/polling-aggregator`, `/fintech-tools/budget-planner`, and `/fintech-tools/interchange-iq` include route metadata and structured data
 
 ### Writing
 
 - writing index emits breadcrumb and per-post article structured data
 - article pages generate route-specific metadata from post frontmatter
+- portfolio index emits an ItemList; non-redirect case-study pages emit breadcrumb plus CreativeWork structured data
 
 ---
 

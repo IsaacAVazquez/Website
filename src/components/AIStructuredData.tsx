@@ -36,7 +36,12 @@ interface AIStructuredDataProps {
     | { type: "Breadcrumb"; data: { items: BreadcrumbItem[] } }
     | {
         type: "ProfilePage";
-        data: { person: PersonSchemaData; url?: string; description?: string };
+        data: {
+          person: PersonSchemaData;
+          url?: string;
+          description?: string;
+          lastReviewed?: string;
+        };
       }
     | {
         type: "ItemList";

@@ -53,6 +53,7 @@ export default function AboutPage() {
           type: "ProfilePage",
           data: {
             url: "https://isaacavazquez.com/about",
+            lastReviewed: "2026-05-27",
             description:
               "Professional profile of Isaac Vazquez - product manager and UC Berkeley Haas MBA Candidate with a background in QA, analytics, and product work across SaaS, civic tech, and fintech-style tools.",
             person: {

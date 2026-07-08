@@ -1,9 +1,12 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
+import { AIStructuredData } from "@/components/AIStructuredData";
 import { ArrowLeft, ArrowRight, ExternalLink, BrandGithub } from "@/components/ui/ServerIcons";
 import { caseStudiesData, getPortfolioProjects } from "@/constants/caseStudies";
-import { constructMetadata } from "@/lib/seo";
+import { absoluteUrl, constructMetadata, siteConfig } from "@/lib/seo";
+
+const CASE_STUDY_SEO_DATE = "2026-04-04";
 
 export async function generateStaticParams() {
   return Object.keys(caseStudiesData).map((slug) => ({
@@ -29,7 +32,9 @@ export async function generateMetadata({
     title: caseStudy.title,
     description: caseStudy.description,
     ogType: "article",
-    articleAuthor: "https://isaacavazquez.com/about",
+    datePublished: CASE_STUDY_SEO_DATE,
+    dateModified: CASE_STUDY_SEO_DATE,
+    articleAuthor: `${siteConfig.url}/about`,
     articleSection: "Product Management",
     articleTags: ["Product Management", caseStudy.role, ...caseStudy.tools.slice(0, 3)],
     canonicalUrl: `/portfolio/${slug}`,
@@ -109,10 +114,61 @@ export default async function CaseStudyPage({
   const nextSlug =
     currentIndex < allSlugs.length - 1 ? allSlugs[currentIndex + 1] : null;
   const nextCaseStudy = nextSlug ? caseStudiesData[nextSlug] : null;
+  const projectUrl = absoluteUrl(`/portfolio/${slug}`);
+  const projectKeywords = Array.from(
+    new Set(["Product Management", "Case Study", caseStudy.role, ...caseStudy.tools])
+  );
+  const breadcrumbs = [
+    { name: "Home", url: "/" },
+    { name: "Projects", url: "/portfolio" },
+    { name: caseStudy.title, url: `/portfolio/${slug}` },
+  ];
 
   return (
-    <section className="home-page home-section min-h-screen" aria-label={caseStudy.title}>
-      <article className="home-shell home-shell-tight space-y-12">
+    <>
+      <AIStructuredData
+        schema={{
+          type: "Breadcrumb",
+          data: { items: breadcrumbs },
+        }}
+      />
+      <AIStructuredData
+        schema={{
+          type: "Project",
+          data: {
+            name: caseStudy.title,
+            description: caseStudy.description,
+            url: projectUrl,
+            datePublished: CASE_STUDY_SEO_DATE,
+            dateModified: CASE_STUDY_SEO_DATE,
+            author: {
+              name: siteConfig.name,
+              jobTitle: "Product Manager",
+              url: siteConfig.url,
+            },
+            creator: {
+              name: siteConfig.name,
+              jobTitle: "Product Manager",
+              url: siteConfig.url,
+            },
+            keywords: projectKeywords,
+            skillsUsed: caseStudy.tools,
+            technologies: caseStudy.tools,
+            problemSolved: caseStudy.problem.context || caseStudy.overview.summary,
+            solutionDescription:
+              caseStudy.process.approach || caseStudy.overview.summary,
+            impact: caseStudy.overview.impact || caseStudy.metrics,
+            isPartOf: {
+              "@type": "CollectionPage",
+              name: "Isaac Vazquez Projects",
+              url: absoluteUrl("/portfolio"),
+            },
+          },
+        }}
+      />
+
+      <section className="home-page home-section min-h-screen" aria-label={caseStudy.title}>
+        <article className="home-shell home-shell-tight space-y-12">
         <Link
           href="/portfolio"
           className="inline-flex items-center gap-2 rounded-md text-sm font-semibold text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-ink)] focus-visible:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
@@ -527,7 +583,8 @@ export default async function CaseStudyPage({
             </Link>
           </footer>
         )}
-      </article>
-    </section>
+        </article>
+      </section>
+    </>
   );
 }
