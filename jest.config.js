@@ -26,7 +26,6 @@ const customJestConfig = {
     '!src/**/__tests__/**',
     '!src/app/layout.tsx',
     '!src/app/page.tsx',
-    '!src/middleware.ts',
     '!src/data/backup/**',
   ],
 
@@ -34,10 +33,10 @@ const customJestConfig = {
   // Start at achievable levels; ratchet upward as coverage improves.
   coverageThreshold: {
     global: {
-      branches: 45,
-      functions: 58,
-      lines: 60,
-      statements: 58,
+      branches: 49,
+      functions: 61,
+      lines: 64,
+      statements: 62,
     },
   },
 
@@ -50,6 +49,8 @@ const customJestConfig = {
   // Exclude e2e tests from Jest
   testPathIgnorePatterns: [
     '/node_modules/',
+    // Data fixtures live under __tests__/fixtures but are not test suites.
+    '/__tests__/fixtures/',
     '/e2e/',
     '/.next/',
     '/.open-next/',
