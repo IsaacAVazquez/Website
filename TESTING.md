@@ -2,7 +2,7 @@
 
 Current testing setup for the repo.
 
-**Last updated:** 2026-06-19
+**Last updated:** 2026-07-06
 
 ---
 
@@ -40,14 +40,9 @@ npm run test:e2e:debug
 
 ## Coverage Thresholds
 
-Current Jest thresholds in `jest.config.js` are intentionally modest:
-
-- branches: `20`
-- functions: `25`
-- lines: `25`
-- statements: `25`
-
-Do not document or assume older 70% thresholds.
+`jest.config.js` (`coverageThreshold.global`) is the single source of truth for the
+enforced coverage gates, applied in CI through `npm run test:ci`. They ratchet upward
+as coverage improves, so read the config rather than trusting a restated number here.
 
 ---
 
@@ -68,7 +63,10 @@ Do not document or assume older 70% thresholds.
 
 - `e2e/*.spec.ts`
 
-Current e2e coverage includes navigation, homepage, portfolio shell, accessibility, writing, search, investments, fantasy football, March Madness, and footer CTA scenarios.
+Current e2e coverage includes navigation, homepage, portfolio shell, accessibility,
+writing, search, investments, fantasy football, March Madness, footer CTA, the résumé
+PDF download, product surfaces (football/F1/GitHub/polling/SpaceX/fintech/news-pulse
+dashboards), and personal-interest tool persistence (`persisted-tools.spec.ts`).
 
 ---
 

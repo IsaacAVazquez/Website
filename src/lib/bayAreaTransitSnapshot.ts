@@ -53,9 +53,12 @@ export function isTransitStationIdShape(stationId: string): boolean {
 }
 
 export function isValidTransitStationId(stationId: string): boolean {
+  // Use hasOwn (not `in`) so prototype keys like "constructor"/"toString" can't
+  // resolve through the prototype chain and turn a 404 into a cacheable 200
+  // serializing a built-in, matching the world-cup validator's guard.
   return (
     TRANSIT_STATION_ID_PATTERN.test(stationId) &&
-    stationId in bayAreaTransitSnapshot.stationBoards
+    Object.hasOwn(bayAreaTransitSnapshot.stationBoards, stationId)
   );
 }
 

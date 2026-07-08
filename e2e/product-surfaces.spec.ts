@@ -131,4 +131,16 @@ test.describe("Product surfaces", () => {
     await expect(page.getByText("E2E lunch")).toBeVisible();
     await expectNoHorizontalOverflow(page);
   });
+
+  test("news pulse dashboard boots and switches editorial views", async ({
+    page,
+  }) => {
+    await expectHealthyRoute(page, "/news-pulse", /News Pulse/i);
+    await expect(page.getByTestId("news-pulse-shell")).toBeVisible();
+
+    const coverageTab = page.getByRole("tab", { name: /Coverage Map/i });
+    await coverageTab.click();
+    await expect(coverageTab).toHaveAttribute("aria-selected", "true");
+    await expectNoHorizontalOverflow(page);
+  });
 });
