@@ -55,12 +55,12 @@ Fill gaps and replace generic/empty values with descriptive text.
 
 Surfaces that already exist but aren't reachable or indexed.
 
-### P2-A: Surface fantasy sub-routes
+### P2-A: Surface the draft tracker
 **Status:** Not started | **Effort:** Small (2–3 hrs)
-`/fantasy-football/draft-tracker` and the eight
-`/fantasy-football/tiers/[position]` SEO pages are built but not linked from the
-`/fantasy-football` landing page, so they're effectively orphaned. Add in-page
-navigation/links.
+`/fantasy-football/draft-tracker` is built but not linked from the
+`/fantasy-football` landing page, so it's effectively orphaned. Add in-page
+navigation to it. (The `/fantasy-football/tiers/[position]` and `/rb-tiers`
+routes are redirect-only shims to the main fantasy page, not standalone pages.)
 - **Files:** `src/app/fantasy-football/fantasy-football-client.tsx`
 
 ### P2-B: Wire up the RSS feed
