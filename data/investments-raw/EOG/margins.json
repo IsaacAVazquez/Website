@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "EOG",
+      "report_date": "2022-06-30",
+      "gross_profit": 7258000000.0,
+      "total_revenue": 8645000000.0,
+      "gross_margin": 0.8396
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2022-09-30",
+      "gross_profit": 6190000000.0,
+      "total_revenue": 7598000000.0,
+      "gross_margin": 0.8147
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2022-12-31",
+      "gross_profit": 5104000000.0,
+      "total_revenue": 6494000000.0,
+      "gross_margin": 0.786
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2023-03-31",
+      "gross_profit": 4027000000.0,
+      "total_revenue": 5579000000.0,
+      "gross_margin": 0.7218
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2023-06-30",
+      "gross_profit": 4086000000.0,
+      "total_revenue": 5460000000.0,
+      "gross_margin": 0.7484
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2023-09-30",
+      "gross_profit": 4440000000.0,
+      "total_revenue": 6113000000.0,
+      "gross_margin": 0.7263
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2023-12-31",
+      "gross_profit": 4544000000.0,
+      "total_revenue": 6030000000.0,
+      "gross_margin": 0.7536
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2024-03-31",
+      "gross_profit": 3951000000.0,
+      "total_revenue": 5834000000.0,
+      "gross_margin": 0.6772
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2024-06-30",
+      "gross_profit": 4232000000.0,
+      "total_revenue": 6029000000.0,
+      "gross_margin": 0.7019
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2024-09-30",
+      "gross_profit": 3997000000.0,
+      "total_revenue": 5865000000.0,
+      "gross_margin": 0.6815
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2024-12-31",
+      "gross_profit": 3796000000.0,
+      "total_revenue": 5650000000.0,
+      "gross_margin": 0.6719
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2025-03-31",
+      "gross_profit": 3988000000.0,
+      "total_revenue": 5842000000.0,
+      "gross_margin": 0.6826
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2025-06-30",
+      "gross_profit": 3451000000.0,
+      "total_revenue": 5355000000.0,
+      "gross_margin": 0.6444
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2025-09-30",
+      "gross_profit": 3545000000.0,
+      "total_revenue": 5732000000.0,
+      "gross_margin": 0.6185
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2025-12-31",
+      "gross_profit": 3328000000.0,
+      "total_revenue": 5653000000.0,
+      "gross_margin": 0.5887
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2026-03-31",
+      "gross_profit": 4449000000.0,
+      "total_revenue": 6758000000.0,
+      "gross_margin": 0.6583
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "EOG",
+      "report_date": "2019-12-31",
+      "gross_profit": 11345928000.0,
+      "total_revenue": 16941727000.0,
+      "gross_margin": 0.6697
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2020-12-31",
+      "gross_profit": 4952000000.0,
+      "total_revenue": 9874000000.0,
+      "gross_margin": 0.5015
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2021-12-31",
+      "gross_profit": 13461000000.0,
+      "total_revenue": 19669000000.0,
+      "gross_margin": 0.6844
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2022-12-31",
+      "gross_profit": 23032000000.0,
+      "total_revenue": 29492000000.0,
+      "gross_margin": 0.781
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2023-12-31",
+      "gross_profit": 16616000000.0,
+      "total_revenue": 23182000000.0,
+      "gross_margin": 0.7168
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2024-12-31",
+      "gross_profit": 15976000000.0,
+      "total_revenue": 23378000000.0,
+      "gross_margin": 0.6834
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2025-12-31",
+      "gross_profit": 14312000000.0,
+      "total_revenue": 22582000000.0,
+      "gross_margin": 0.6338
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "EOG",
+      "report_date": "2022-06-30",
+      "operating_income": 4274000000.0,
+      "total_revenue": 8645000000.0,
+      "operating_margin": 0.4944
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2022-09-30",
+      "operating_income": 3797000000.0,
+      "total_revenue": 7598000000.0,
+      "operating_margin": 0.4997
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2022-12-31",
+      "operating_income": 2789000000.0,
+      "total_revenue": 6494000000.0,
+      "operating_margin": 0.4295
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2023-03-31",
+      "operating_income": 2161000000.0,
+      "total_revenue": 5579000000.0,
+      "operating_margin": 0.3873
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2023-06-30",
+      "operating_income": 1913000000.0,
+      "total_revenue": 5460000000.0,
+      "operating_margin": 0.3504
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2023-09-30",
+      "operating_income": 2533000000.0,
+      "total_revenue": 6113000000.0,
+      "operating_margin": 0.4144
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2023-12-31",
+      "operating_income": 2285000000.0,
+      "total_revenue": 6030000000.0,
+      "operating_margin": 0.3789
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2024-03-31",
+      "operating_income": 2027000000.0,
+      "total_revenue": 5834000000.0,
+      "operating_margin": 0.3474
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2024-06-30",
+      "operating_income": 2238000000.0,
+      "total_revenue": 6029000000.0,
+      "operating_margin": 0.3712
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2024-09-30",
+      "operating_income": 2032000000.0,
+      "total_revenue": 5865000000.0,
+      "operating_margin": 0.3465
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2024-12-31",
+      "operating_income": 1956000000.0,
+      "total_revenue": 5650000000.0,
+      "operating_margin": 0.3462
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2025-03-31",
+      "operating_income": 2095000000.0,
+      "total_revenue": 5842000000.0,
+      "operating_margin": 0.3586
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2025-06-30",
+      "operating_income": 1679000000.0,
+      "total_revenue": 5355000000.0,
+      "operating_margin": 0.3135
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2025-09-30",
+      "operating_income": 1809000000.0,
+      "total_revenue": 5732000000.0,
+      "operating_margin": 0.3156
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2025-12-31",
+      "operating_income": 1667000000.0,
+      "total_revenue": 5653000000.0,
+      "operating_margin": 0.2949
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2026-03-31",
+      "operating_income": 2493000000.0,
+      "total_revenue": 6758000000.0,
+      "operating_margin": 0.3689
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "EOG",
+      "report_date": "2019-12-31",
+      "operating_income": 3913019000.0,
+      "total_revenue": 16941727000.0,
+      "operating_margin": 0.231
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2020-12-31",
+      "operating_income": 458000000.0,
+      "total_revenue": 9874000000.0,
+      "operating_margin": 0.0464
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2021-12-31",
+      "operating_income": 7613000000.0,
+      "total_revenue": 19669000000.0,
+      "operating_margin": 0.3871
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2022-12-31",
+      "operating_income": 14256000000.0,
+      "total_revenue": 29492000000.0,
+      "operating_margin": 0.4834
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2023-12-31",
+      "operating_income": 8892000000.0,
+      "total_revenue": 23182000000.0,
+      "operating_margin": 0.3836
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2024-12-31",
+      "operating_income": 8253000000.0,
+      "total_revenue": 23378000000.0,
+      "operating_margin": 0.353
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2025-12-31",
+      "operating_income": 7250000000.0,
+      "total_revenue": 22582000000.0,
+      "operating_margin": 0.3211
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "EOG",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 2238000000.0,
+      "total_revenue": 8645000000.0,
+      "net_margin": 0.2589
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": 2854000000.0,
+      "total_revenue": 7598000000.0,
+      "net_margin": 0.3756
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 2277000000.0,
+      "total_revenue": 6494000000.0,
+      "net_margin": 0.3506
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": 2023000000.0,
+      "total_revenue": 5579000000.0,
+      "net_margin": 0.3626
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 1553000000.0,
+      "total_revenue": 5460000000.0,
+      "net_margin": 0.2844
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 2030000000.0,
+      "total_revenue": 6113000000.0,
+      "net_margin": 0.3321
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1988000000.0,
+      "total_revenue": 6030000000.0,
+      "net_margin": 0.3297
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1789000000.0,
+      "total_revenue": 5834000000.0,
+      "net_margin": 0.3067
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1690000000.0,
+      "total_revenue": 6029000000.0,
+      "net_margin": 0.2803
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1673000000.0,
+      "total_revenue": 5865000000.0,
+      "net_margin": 0.2853
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1251000000.0,
+      "total_revenue": 5650000000.0,
+      "net_margin": 0.2214
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1463000000.0,
+      "total_revenue": 5842000000.0,
+      "net_margin": 0.2504
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1345000000.0,
+      "total_revenue": 5355000000.0,
+      "net_margin": 0.2512
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1471000000.0,
+      "total_revenue": 5732000000.0,
+      "net_margin": 0.2566
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 701000000.0,
+      "total_revenue": 5653000000.0,
+      "net_margin": 0.124
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1980000000.0,
+      "total_revenue": 6758000000.0,
+      "net_margin": 0.293
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "EOG",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": 2734910000.0,
+      "total_revenue": 16941727000.0,
+      "net_margin": 0.1614
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": -605000000.0,
+      "total_revenue": 9874000000.0,
+      "net_margin": -0.0613
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 4664000000.0,
+      "total_revenue": 19669000000.0,
+      "net_margin": 0.2371
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 7759000000.0,
+      "total_revenue": 29492000000.0,
+      "net_margin": 0.2631
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 7594000000.0,
+      "total_revenue": 23182000000.0,
+      "net_margin": 0.3276
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 6403000000.0,
+      "total_revenue": 23378000000.0,
+      "net_margin": 0.2739
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 4980000000.0,
+      "total_revenue": 22582000000.0,
+      "net_margin": 0.2205
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "EOG",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 8645000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2022-09-30",
+      "ebitda": 4610000000.0,
+      "total_revenue": 7598000000.0,
+      "ebitda_margin": 0.6067
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2022-12-31",
+      "ebitda": 3779000000.0,
+      "total_revenue": 6494000000.0,
+      "ebitda_margin": 0.5819
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2023-03-31",
+      "ebitda": 3435000000.0,
+      "total_revenue": 5579000000.0,
+      "ebitda_margin": 0.6157
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2023-06-30",
+      "ebitda": 2887000000.0,
+      "total_revenue": 5460000000.0,
+      "ebitda_margin": 0.5288
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2023-09-30",
+      "ebitda": 3507000000.0,
+      "total_revenue": 6113000000.0,
+      "ebitda_margin": 0.5737
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2023-12-31",
+      "ebitda": 3500000000.0,
+      "total_revenue": 6030000000.0,
+      "ebitda_margin": 0.5804
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2024-03-31",
+      "ebitda": 3407000000.0,
+      "total_revenue": 5834000000.0,
+      "ebitda_margin": 0.584
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2024-06-30",
+      "ebitda": 3180000000.0,
+      "total_revenue": 6029000000.0,
+      "ebitda_margin": 0.5275
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2024-09-30",
+      "ebitda": 3196000000.0,
+      "total_revenue": 5865000000.0,
+      "ebitda_margin": 0.5449
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2024-12-31",
+      "ebitda": 2681000000.0,
+      "total_revenue": 5650000000.0,
+      "ebitda_margin": 0.4745
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2025-03-31",
+      "ebitda": 2937000000.0,
+      "total_revenue": 5842000000.0,
+      "ebitda_margin": 0.5027
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2025-06-30",
+      "ebitda": 2855000000.0,
+      "total_revenue": 5355000000.0,
+      "ebitda_margin": 0.5331
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2025-09-30",
+      "ebitda": 3064000000.0,
+      "total_revenue": 5732000000.0,
+      "ebitda_margin": 0.5345
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2025-12-31",
+      "ebitda": 2202000000.0,
+      "total_revenue": 5653000000.0,
+      "ebitda_margin": 0.3895
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2026-03-31",
+      "ebitda": 3814000000.0,
+      "total_revenue": 6758000000.0,
+      "ebitda_margin": 0.5644
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "EOG",
+      "report_date": "2019-12-31",
+      "ebitda": 7480100000.0,
+      "total_revenue": 16941727000.0,
+      "ebitda_margin": 0.4415
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2020-12-31",
+      "ebitda": 2866000000.0,
+      "total_revenue": 9874000000.0,
+      "ebitda_margin": 0.2903
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2021-12-31",
+      "ebitda": 9762000000.0,
+      "total_revenue": 19669000000.0,
+      "ebitda_margin": 0.4963
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2022-12-31",
+      "ebitda": 13622000000.0,
+      "total_revenue": 29492000000.0,
+      "ebitda_margin": 0.4619
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2023-12-31",
+      "ebitda": 13329000000.0,
+      "total_revenue": 23182000000.0,
+      "ebitda_margin": 0.575
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2024-12-31",
+      "ebitda": 12464000000.0,
+      "total_revenue": 23378000000.0,
+      "ebitda_margin": 0.5332
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2025-12-31",
+      "ebitda": 11058000000.0,
+      "total_revenue": 22582000000.0,
+      "ebitda_margin": 0.4897
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "EOG",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 624000000.0,
+      "total_revenue": 8645000000.0,
+      "fcf_margin": 0.0722
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2022-09-30",
+      "free_cash_flow": 3568000000.0,
+      "total_revenue": 7598000000.0,
+      "fcf_margin": 0.4696
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 6494000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": 5579000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 756000000.0,
+      "total_revenue": 5460000000.0,
+      "fcf_margin": 0.1385
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 1186000000.0,
+      "total_revenue": 6113000000.0,
+      "fcf_margin": 0.194
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 1582000000.0,
+      "total_revenue": 6030000000.0,
+      "fcf_margin": 0.2624
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 1068000000.0,
+      "total_revenue": 5834000000.0,
+      "fcf_margin": 0.1831
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 1219000000.0,
+      "total_revenue": 6029000000.0,
+      "fcf_margin": 0.2022
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 2086000000.0,
+      "total_revenue": 5865000000.0,
+      "fcf_margin": 0.3557
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 1398000000.0,
+      "total_revenue": 5650000000.0,
+      "fcf_margin": 0.2474
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 806000000.0,
+      "total_revenue": 5842000000.0,
+      "fcf_margin": 0.138
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 239000000.0,
+      "total_revenue": 5355000000.0,
+      "fcf_margin": 0.0446
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 1448000000.0,
+      "total_revenue": 5732000000.0,
+      "fcf_margin": 0.2526
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 957000000.0,
+      "total_revenue": 5653000000.0,
+      "fcf_margin": 0.1693
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 1322000000.0,
+      "total_revenue": 6758000000.0,
+      "fcf_margin": 0.1956
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "EOG",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 16941727000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 1543000000.0,
+      "total_revenue": 9874000000.0,
+      "fcf_margin": 0.1563
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 4941000000.0,
+      "total_revenue": 19669000000.0,
+      "fcf_margin": 0.2512
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 6093000000.0,
+      "total_revenue": 29492000000.0,
+      "fcf_margin": 0.2066
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 5155000000.0,
+      "total_revenue": 23182000000.0,
+      "fcf_margin": 0.2224
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 5771000000.0,
+      "total_revenue": 23378000000.0,
+      "fcf_margin": 0.2469
+    },
+    {
+      "symbol": "EOG",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 3450000000.0,
+      "total_revenue": 22582000000.0,
+      "fcf_margin": 0.1528
+    }
+  ]
+}

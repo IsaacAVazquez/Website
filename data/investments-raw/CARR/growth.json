@@ -1,0 +1,920 @@
+{
+  "quarterly_revenue": [
+    {
+      "symbol": "CARR",
+      "report_date": "2022-06-30T00:00:00.000",
+      "revenue": 5211000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2022-09-30T00:00:00.000",
+      "revenue": 5451000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2023-06-30T00:00:00.000",
+      "revenue": 5992000000.0,
+      "prev_year_revenue": 5211000000.0,
+      "yoy_growth": 0.1499
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "revenue": 4935000000.0,
+      "prev_year_revenue": 5451000000.0,
+      "yoy_growth": -0.0947
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 5102000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-03-31T00:00:00.000",
+      "revenue": 5420000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-06-30T00:00:00.000",
+      "revenue": 5934000000.0,
+      "prev_year_revenue": 5992000000.0,
+      "yoy_growth": -0.0097
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "revenue": 5984000000.0,
+      "prev_year_revenue": 4935000000.0,
+      "yoy_growth": 0.2126
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 5148000000.0,
+      "prev_year_revenue": 5102000000.0,
+      "yoy_growth": 0.009
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-03-31T00:00:00.000",
+      "revenue": 5218000000.0,
+      "prev_year_revenue": 5420000000.0,
+      "yoy_growth": -0.0373
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-06-30T00:00:00.000",
+      "revenue": 6113000000.0,
+      "prev_year_revenue": 5934000000.0,
+      "yoy_growth": 0.0302
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "revenue": 5579000000.0,
+      "prev_year_revenue": 5984000000.0,
+      "yoy_growth": -0.0677
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 4837000000.0,
+      "prev_year_revenue": 5148000000.0,
+      "yoy_growth": -0.0604
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 5341000000.0,
+      "prev_year_revenue": 5218000000.0,
+      "yoy_growth": 0.0236
+    }
+  ],
+  "annual_revenue": [
+    {
+      "symbol": "CARR",
+      "report_date": "2020-12-31T00:00:00.000",
+      "revenue": 17456000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2021-12-31T00:00:00.000",
+      "revenue": 20613000000.0,
+      "prev_year_revenue": 17456000000.0,
+      "yoy_growth": 0.1809
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2022-12-31T00:00:00.000",
+      "revenue": 17288000000.0,
+      "prev_year_revenue": 20613000000.0,
+      "yoy_growth": -0.1613
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 18951000000.0,
+      "prev_year_revenue": 17288000000.0,
+      "yoy_growth": 0.0962
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 22486000000.0,
+      "prev_year_revenue": 18951000000.0,
+      "yoy_growth": 0.1865
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 21747000000.0,
+      "prev_year_revenue": 22486000000.0,
+      "yoy_growth": -0.0329
+    }
+  ],
+  "quarterly_operating_income": [
+    {
+      "symbol": "CARR",
+      "report_date": "2022-06-30T00:00:00.000",
+      "operating_income": 711000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2022-09-30T00:00:00.000",
+      "operating_income": 710000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2023-06-30T00:00:00.000",
+      "operating_income": 820000000.0,
+      "prev_year_operating_income": 711000000.0,
+      "yoy_growth": 0.1533
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "operating_income": 696000000.0,
+      "prev_year_operating_income": 710000000.0,
+      "yoy_growth": -0.0197
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 303000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-03-31T00:00:00.000",
+      "operating_income": 386000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-06-30T00:00:00.000",
+      "operating_income": 626000000.0,
+      "prev_year_operating_income": 820000000.0,
+      "yoy_growth": -0.2366
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "operating_income": 706000000.0,
+      "prev_year_operating_income": 696000000.0,
+      "yoy_growth": 0.0144
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 379000000.0,
+      "prev_year_operating_income": 303000000.0,
+      "yoy_growth": 0.2508
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-03-31T00:00:00.000",
+      "operating_income": 563000000.0,
+      "prev_year_operating_income": 386000000.0,
+      "yoy_growth": 0.4585
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-06-30T00:00:00.000",
+      "operating_income": 795000000.0,
+      "prev_year_operating_income": 626000000.0,
+      "yoy_growth": 0.27
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "operating_income": 495000000.0,
+      "prev_year_operating_income": 706000000.0,
+      "yoy_growth": -0.2989
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 54000000.0,
+      "prev_year_operating_income": 379000000.0,
+      "yoy_growth": -0.8575
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2026-03-31T00:00:00.000",
+      "operating_income": 240000000.0,
+      "prev_year_operating_income": 563000000.0,
+      "yoy_growth": -0.5737
+    }
+  ],
+  "annual_operating_income": [
+    {
+      "symbol": "CARR",
+      "report_date": "2020-12-31T00:00:00.000",
+      "operating_income": 1870000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2021-12-31T00:00:00.000",
+      "operating_income": 2357000000.0,
+      "prev_year_operating_income": 1870000000.0,
+      "yoy_growth": 0.2604
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2022-12-31T00:00:00.000",
+      "operating_income": 1904000000.0,
+      "prev_year_operating_income": 2357000000.0,
+      "yoy_growth": -0.1922
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 2062000000.0,
+      "prev_year_operating_income": 1904000000.0,
+      "yoy_growth": 0.083
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 2098000000.0,
+      "prev_year_operating_income": 2062000000.0,
+      "yoy_growth": 0.0175
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 1907000000.0,
+      "prev_year_operating_income": 2098000000.0,
+      "yoy_growth": -0.091
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "CARR",
+      "report_date": "2022-09-30T00:00:00.000",
+      "ebitda": 1643000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2023-06-30T00:00:00.000",
+      "ebitda": 653000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "ebitda": 639000000.0,
+      "prev_year_ebitda": 1643000000.0,
+      "yoy_growth": -0.6111
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 805000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-03-31T00:00:00.000",
+      "ebitda": 708000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-06-30T00:00:00.000",
+      "ebitda": 1036000000.0,
+      "prev_year_ebitda": 653000000.0,
+      "yoy_growth": 0.5865
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "ebitda": 1213000000.0,
+      "prev_year_ebitda": 639000000.0,
+      "yoy_growth": 0.8983
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 1129000000.0,
+      "prev_year_ebitda": 805000000.0,
+      "yoy_growth": 0.4025
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-03-31T00:00:00.000",
+      "ebitda": 963000000.0,
+      "prev_year_ebitda": 708000000.0,
+      "yoy_growth": 0.3602
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-06-30T00:00:00.000",
+      "ebitda": 1244000000.0,
+      "prev_year_ebitda": 1036000000.0,
+      "yoy_growth": 0.2008
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "ebitda": 874000000.0,
+      "prev_year_ebitda": 1213000000.0,
+      "yoy_growth": -0.2795
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 449000000.0,
+      "prev_year_ebitda": 1129000000.0,
+      "yoy_growth": -0.6023
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2026-03-31T00:00:00.000",
+      "ebitda": 596000000.0,
+      "prev_year_ebitda": 963000000.0,
+      "yoy_growth": -0.3811
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "CARR",
+      "report_date": "2020-12-31T00:00:00.000",
+      "ebitda": 3489000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2021-12-31T00:00:00.000",
+      "ebitda": 2695000000.0,
+      "prev_year_ebitda": 3489000000.0,
+      "yoy_growth": -0.2276
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2022-12-31T00:00:00.000",
+      "ebitda": 2232000000.0,
+      "prev_year_ebitda": 2695000000.0,
+      "yoy_growth": -0.1718
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 2796000000.0,
+      "prev_year_ebitda": 2232000000.0,
+      "yoy_growth": 0.2527
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 4086000000.0,
+      "prev_year_ebitda": 2796000000.0,
+      "yoy_growth": 0.4614
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 3530000000.0,
+      "prev_year_ebitda": 4086000000.0,
+      "yoy_growth": -0.1361
+    }
+  ],
+  "quarterly_net_income": [
+    {
+      "symbol": "CARR",
+      "report_date": "2022-06-30T00:00:00.000",
+      "net_income_common_stockholders": 573000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2022-09-30T00:00:00.000",
+      "net_income_common_stockholders": 1312000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2023-06-30T00:00:00.000",
+      "net_income_common_stockholders": 199000000.0,
+      "prev_year_net_income_common_stockholders": 573000000.0,
+      "yoy_growth": -0.6527
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "net_income_common_stockholders": 357000000.0,
+      "prev_year_net_income_common_stockholders": 1312000000.0,
+      "yoy_growth": -0.7279
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 420000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-03-31T00:00:00.000",
+      "net_income_common_stockholders": 269000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-06-30T00:00:00.000",
+      "net_income_common_stockholders": 2337000000.0,
+      "prev_year_net_income_common_stockholders": 199000000.0,
+      "yoy_growth": 10.7437
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "net_income_common_stockholders": 447000000.0,
+      "prev_year_net_income_common_stockholders": 357000000.0,
+      "yoy_growth": 0.2521
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2551000000.0,
+      "prev_year_net_income_common_stockholders": 420000000.0,
+      "yoy_growth": 5.0738
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-03-31T00:00:00.000",
+      "net_income_common_stockholders": 412000000.0,
+      "prev_year_net_income_common_stockholders": 269000000.0,
+      "yoy_growth": 0.5316
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-06-30T00:00:00.000",
+      "net_income_common_stockholders": 591000000.0,
+      "prev_year_net_income_common_stockholders": 2337000000.0,
+      "yoy_growth": -0.7471
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "net_income_common_stockholders": 428000000.0,
+      "prev_year_net_income_common_stockholders": 447000000.0,
+      "yoy_growth": -0.0425
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 53000000.0,
+      "prev_year_net_income_common_stockholders": 2551000000.0,
+      "yoy_growth": -0.9792
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 238000000.0,
+      "prev_year_net_income_common_stockholders": 412000000.0,
+      "yoy_growth": -0.4223
+    }
+  ],
+  "annual_net_income": [
+    {
+      "symbol": "CARR",
+      "report_date": "2020-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1982000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2021-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1664000000.0,
+      "prev_year_net_income_common_stockholders": 1982000000.0,
+      "yoy_growth": -0.1604
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2022-12-31T00:00:00.000",
+      "net_income_common_stockholders": 3534000000.0,
+      "prev_year_net_income_common_stockholders": 1664000000.0,
+      "yoy_growth": 1.1238
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1349000000.0,
+      "prev_year_net_income_common_stockholders": 3534000000.0,
+      "yoy_growth": -0.6183
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 5604000000.0,
+      "prev_year_net_income_common_stockholders": 1349000000.0,
+      "yoy_growth": 3.1542
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1484000000.0,
+      "prev_year_net_income_common_stockholders": 5604000000.0,
+      "yoy_growth": -0.7352
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "CARR",
+      "report_date": "2022-06-30T00:00:00.000",
+      "free_cash_flow": -34000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2022-09-30T00:00:00.000",
+      "free_cash_flow": 699000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2023-06-30T00:00:00.000",
+      "free_cash_flow": 310000000.0,
+      "prev_year_free_cash_flow": -34000000.0,
+      "yoy_growth": 10.1176
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "free_cash_flow": 968000000.0,
+      "prev_year_free_cash_flow": 699000000.0,
+      "yoy_growth": 0.3848
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 829000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-03-31T00:00:00.000",
+      "free_cash_flow": -62000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-06-30T00:00:00.000",
+      "free_cash_flow": 552000000.0,
+      "prev_year_free_cash_flow": 310000000.0,
+      "yoy_growth": 0.7806
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "free_cash_flow": -361000000.0,
+      "prev_year_free_cash_flow": 968000000.0,
+      "yoy_growth": -1.3729
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": -85000000.0,
+      "prev_year_free_cash_flow": 829000000.0,
+      "yoy_growth": -1.1025
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-03-31T00:00:00.000",
+      "free_cash_flow": 420000000.0,
+      "prev_year_free_cash_flow": -62000000.0,
+      "yoy_growth": 7.7742
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-06-30T00:00:00.000",
+      "free_cash_flow": 568000000.0,
+      "prev_year_free_cash_flow": 552000000.0,
+      "yoy_growth": 0.029
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "free_cash_flow": 224000000.0,
+      "prev_year_free_cash_flow": -361000000.0,
+      "yoy_growth": 1.6205
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 909000000.0,
+      "prev_year_free_cash_flow": -85000000.0,
+      "yoy_growth": 11.6941
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": -15000000.0,
+      "prev_year_free_cash_flow": 420000000.0,
+      "yoy_growth": -1.0357
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "CARR",
+      "report_date": "2020-12-31T00:00:00.000",
+      "free_cash_flow": 1380000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2021-12-31T00:00:00.000",
+      "free_cash_flow": 1893000000.0,
+      "prev_year_free_cash_flow": 1380000000.0,
+      "yoy_growth": 0.3717
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2022-12-31T00:00:00.000",
+      "free_cash_flow": 1426000000.0,
+      "prev_year_free_cash_flow": 1893000000.0,
+      "yoy_growth": -0.2467
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 2168000000.0,
+      "prev_year_free_cash_flow": 1426000000.0,
+      "yoy_growth": 0.5203
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 44000000.0,
+      "prev_year_free_cash_flow": 2168000000.0,
+      "yoy_growth": -0.9797
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 2121000000.0,
+      "prev_year_free_cash_flow": 44000000.0,
+      "yoy_growth": 47.2045
+    }
+  ],
+  "quarterly_eps": [
+    {
+      "symbol": "CARR",
+      "report_date": "2019-03-31T00:00:00.000",
+      "eps": 0.46,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2019-06-30T00:00:00.000",
+      "eps": 0.91,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2019-09-30T00:00:00.000",
+      "eps": 0.57,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2019-12-31T00:00:00.000",
+      "eps": 0.508,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2020-03-31T00:00:00.000",
+      "eps": 0.1108,
+      "prev_year_eps": 0.46,
+      "yoy_growth": -0.7591
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2020-06-30T00:00:00.000",
+      "eps": 0.2997,
+      "prev_year_eps": 0.91,
+      "yoy_growth": -0.6707
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2020-09-30T00:00:00.000",
+      "eps": 0.8406,
+      "prev_year_eps": 0.57,
+      "yoy_growth": 0.4747
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2020-12-31T00:00:00.000",
+      "eps": 0.995,
+      "prev_year_eps": 0.508,
+      "yoy_growth": 0.9587
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2021-03-31T00:00:00.000",
+      "eps": 0.4316,
+      "prev_year_eps": 0.1108,
+      "yoy_growth": 2.8953
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2021-06-30T00:00:00.000",
+      "eps": 0.5466,
+      "prev_year_eps": 0.2997,
+      "yoy_growth": 0.8238
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2021-09-30T00:00:00.000",
+      "eps": 0.5258,
+      "prev_year_eps": 0.8406,
+      "yoy_growth": -0.3745
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2021-12-31T00:00:00.000",
+      "eps": 0.3647,
+      "prev_year_eps": 0.995,
+      "yoy_growth": -0.6335
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2022-03-31T00:00:00.000",
+      "eps": 1.5776,
+      "prev_year_eps": 0.4316,
+      "yoy_growth": 2.6552
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2022-06-30T00:00:00.000",
+      "eps": 0.6642,
+      "prev_year_eps": 0.5466,
+      "yoy_growth": 0.2151
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2022-09-30T00:00:00.000",
+      "eps": 1.5318,
+      "prev_year_eps": 0.5258,
+      "yoy_growth": 1.9133
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2022-12-31T00:00:00.000",
+      "eps": 0.3168,
+      "prev_year_eps": 0.3647,
+      "yoy_growth": -0.1313
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2023-03-31T00:00:00.000",
+      "eps": 0.4377,
+      "prev_year_eps": 1.5776,
+      "yoy_growth": -0.7226
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2023-06-30T00:00:00.000",
+      "eps": 0.2339,
+      "prev_year_eps": 0.6642,
+      "yoy_growth": -0.6478
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "eps": 0.4177,
+      "prev_year_eps": 1.5318,
+      "yoy_growth": -0.7273
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "eps": 0.4917,
+      "prev_year_eps": 0.3168,
+      "yoy_growth": 0.5521
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-03-31T00:00:00.000",
+      "eps": 0.1939,
+      "prev_year_eps": 0.4377,
+      "yoy_growth": -0.557
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-06-30T00:00:00.000",
+      "eps": 0.5812,
+      "prev_year_eps": 0.2339,
+      "yoy_growth": 1.4848
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "eps": 0.4885,
+      "prev_year_eps": 0.4177,
+      "yoy_growth": 0.1695
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "eps": 0.8468,
+      "prev_year_eps": 0.4917,
+      "yoy_growth": 0.7222
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-03-31T00:00:00.000",
+      "eps": 0.4691,
+      "prev_year_eps": 0.1939,
+      "yoy_growth": 1.4193
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-06-30T00:00:00.000",
+      "eps": 0.7018,
+      "prev_year_eps": 0.5812,
+      "yoy_growth": 0.2075
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "eps": 0.474,
+      "prev_year_eps": 0.4885,
+      "yoy_growth": -0.0297
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "eps": 0.0626,
+      "prev_year_eps": 0.8468,
+      "yoy_growth": -0.9261
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2026-03-31T00:00:00.000",
+      "eps": 0.2836,
+      "prev_year_eps": 0.4691,
+      "yoy_growth": -0.3954
+    }
+  ]
+}

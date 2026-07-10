@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "MSI",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 464000000.0,
+      "beginning_stockholders_equity": 337000000.0,
+      "ending_stockholders_equity": 362000000.0,
+      "avg_equity": 349500000.0,
+      "roe": 1.3276
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 596000000.0,
+      "beginning_stockholders_equity": 362000000.0,
+      "ending_stockholders_equity": 724000000.0,
+      "avg_equity": 543000000.0,
+      "roe": 1.0976
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": -39000000.0,
+      "beginning_stockholders_equity": 724000000.0,
+      "ending_stockholders_equity": 521000000.0,
+      "avg_equity": 622500000.0,
+      "roe": -0.0627
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 443000000.0,
+      "beginning_stockholders_equity": 521000000.0,
+      "ending_stockholders_equity": 802000000.0,
+      "avg_equity": 661500000.0,
+      "roe": 0.6697
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 562000000.0,
+      "beginning_stockholders_equity": 802000000.0,
+      "ending_stockholders_equity": 1326000000.0,
+      "avg_equity": 1064000000.0,
+      "roe": 0.5282
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 611000000.0,
+      "beginning_stockholders_equity": 1326000000.0,
+      "ending_stockholders_equity": 1703000000.0,
+      "avg_equity": 1514500000.0,
+      "roe": 0.4034
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 430000000.0,
+      "beginning_stockholders_equity": 1703000000.0,
+      "ending_stockholders_equity": 1641000000.0,
+      "avg_equity": 1672000000.0,
+      "roe": 0.2572
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 513000000.0,
+      "beginning_stockholders_equity": 1641000000.0,
+      "ending_stockholders_equity": 1968000000.0,
+      "avg_equity": 1804500000.0,
+      "roe": 0.2843
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 562000000.0,
+      "beginning_stockholders_equity": 1968000000.0,
+      "ending_stockholders_equity": 2327000000.0,
+      "avg_equity": 2147500000.0,
+      "roe": 0.2617
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 649000000.0,
+      "beginning_stockholders_equity": 2327000000.0,
+      "ending_stockholders_equity": 2410000000.0,
+      "avg_equity": 2368500000.0,
+      "roe": 0.274
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 366000000.0,
+      "beginning_stockholders_equity": 2410000000.0,
+      "ending_stockholders_equity": 2544000000.0,
+      "avg_equity": 2477000000.0,
+      "roe": 0.1478
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "MSI",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 464000000.0,
+      "beginning_total_assets": 12252000000.0,
+      "ending_total_assets": 12436000000.0,
+      "avg_assets": 12344000000.0,
+      "roa": 0.0376
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 596000000.0,
+      "beginning_total_assets": 12436000000.0,
+      "ending_total_assets": 13336000000.0,
+      "avg_assets": 12886000000.0,
+      "roa": 0.0463
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": -39000000.0,
+      "beginning_total_assets": 13336000000.0,
+      "ending_total_assets": 13326000000.0,
+      "avg_assets": 13331000000.0,
+      "roa": -0.0029
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 443000000.0,
+      "beginning_total_assets": 13326000000.0,
+      "ending_total_assets": 13345000000.0,
+      "avg_assets": 13335500000.0,
+      "roa": 0.0332
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 562000000.0,
+      "beginning_total_assets": 13345000000.0,
+      "ending_total_assets": 13889000000.0,
+      "avg_assets": 13617000000.0,
+      "roa": 0.0413
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 611000000.0,
+      "beginning_total_assets": 13889000000.0,
+      "ending_total_assets": 14595000000.0,
+      "avg_assets": 14242000000.0,
+      "roa": 0.0429
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 430000000.0,
+      "beginning_total_assets": 14595000000.0,
+      "ending_total_assets": 14433000000.0,
+      "avg_assets": 14514000000.0,
+      "roa": 0.0296
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 513000000.0,
+      "beginning_total_assets": 14433000000.0,
+      "ending_total_assets": 16412000000.0,
+      "avg_assets": 15422500000.0,
+      "roa": 0.0333
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 562000000.0,
+      "beginning_total_assets": 16412000000.0,
+      "ending_total_assets": 18799000000.0,
+      "avg_assets": 17605500000.0,
+      "roa": 0.0319
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 649000000.0,
+      "beginning_total_assets": 18799000000.0,
+      "ending_total_assets": 19389000000.0,
+      "avg_assets": 19094000000.0,
+      "roa": 0.034
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 366000000.0,
+      "beginning_total_assets": 19389000000.0,
+      "ending_total_assets": 19080000000.0,
+      "avg_assets": 19234500000.0,
+      "roa": 0.019
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "MSI",
+      "report_date": "2023-09-30",
+      "ebit": 652000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 515080000.0,
+      "beginning_invested_capital": 6352000000.0,
+      "ending_invested_capital": 6379000000.0,
+      "avg_invested_capital": 6365500000.0,
+      "roic": 0.0809
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2023-12-31",
+      "ebit": 793000000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 666120000.0,
+      "beginning_invested_capital": 6379000000.0,
+      "ending_invested_capital": 6742000000.0,
+      "avg_invested_capital": 6560500000.0,
+      "roic": 0.1015
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-03-31",
+      "ebit": -29000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": -22910000.0,
+      "beginning_invested_capital": 6742000000.0,
+      "ending_invested_capital": 6828000000.0,
+      "avg_invested_capital": 6785000000.0,
+      "roic": -0.0034
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-06-30",
+      "ebit": 667000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 513590000.0,
+      "beginning_invested_capital": 6828000000.0,
+      "ending_invested_capital": 7110000000.0,
+      "avg_invested_capital": 6969000000.0,
+      "roic": 0.0737
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-09-30",
+      "ebit": 768000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 622080000.0,
+      "beginning_invested_capital": 7110000000.0,
+      "ending_invested_capital": 7322000000.0,
+      "avg_invested_capital": 7216000000.0,
+      "roic": 0.0862
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-12-31",
+      "ebit": 862000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 672360000.0,
+      "beginning_invested_capital": 7322000000.0,
+      "ending_invested_capital": 7700000000.0,
+      "avg_invested_capital": 7511000000.0,
+      "roic": 0.0895
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-03-31",
+      "ebit": 616000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 486640000.0,
+      "beginning_invested_capital": 7700000000.0,
+      "ending_invested_capital": 7640000000.0,
+      "avg_invested_capital": 7670000000.0,
+      "roic": 0.0634
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-06-30",
+      "ebit": 751000000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 570760000.0,
+      "beginning_invested_capital": 7640000000.0,
+      "ending_invested_capital": 9699000000.0,
+      "avg_invested_capital": 8669500000.0,
+      "roic": 0.0658
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-09-30",
+      "ebit": 828000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 645840000.0,
+      "beginning_invested_capital": 9699000000.0,
+      "ending_invested_capital": 11666000000.0,
+      "avg_invested_capital": 10682500000.0,
+      "roic": 0.0605
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-12-31",
+      "ebit": 977000000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 742520000.0,
+      "beginning_invested_capital": 11666000000.0,
+      "ending_invested_capital": 11572000000.0,
+      "avg_invested_capital": 11619000000.0,
+      "roic": 0.0639
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2026-03-31",
+      "ebit": 552000000.0,
+      "tax_rate_for_calcs": 0.17,
+      "nopat": 458160000.0,
+      "beginning_invested_capital": 11572000000.0,
+      "ending_invested_capital": 11509000000.0,
+      "avg_invested_capital": 11540500000.0,
+      "roic": 0.0397
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "MSI",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 1.3276,
+      "roa": 0.0376,
+      "equity_multiplier": 35.31
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 1.0976,
+      "roa": 0.0463,
+      "equity_multiplier": 23.71
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": -0.0627,
+      "roa": -0.0029,
+      "equity_multiplier": 21.62
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.6697,
+      "roa": 0.0332,
+      "equity_multiplier": 20.17
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.5282,
+      "roa": 0.0413,
+      "equity_multiplier": 12.79
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.4034,
+      "roa": 0.0429,
+      "equity_multiplier": 9.4
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.2572,
+      "roa": 0.0296,
+      "equity_multiplier": 8.69
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.2843,
+      "roa": 0.0333,
+      "equity_multiplier": 8.54
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.2617,
+      "roa": 0.0319,
+      "equity_multiplier": 8.2
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.274,
+      "roa": 0.034,
+      "equity_multiplier": 8.06
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.1478,
+      "roa": 0.019,
+      "equity_multiplier": 7.78
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "MSI",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0376,
+      "net_margin": 0.1815,
+      "asset_turnover": 0.21
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0463,
+      "net_margin": 0.2092,
+      "asset_turnover": 0.22
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": -0.0029,
+      "net_margin": -0.0163,
+      "asset_turnover": 0.18
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0332,
+      "net_margin": 0.1686,
+      "asset_turnover": 0.2
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0413,
+      "net_margin": 0.2014,
+      "asset_turnover": 0.21
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0429,
+      "net_margin": 0.2029,
+      "asset_turnover": 0.21
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0296,
+      "net_margin": 0.1701,
+      "asset_turnover": 0.17
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0333,
+      "net_margin": 0.1855,
+      "asset_turnover": 0.18
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0319,
+      "net_margin": 0.1868,
+      "asset_turnover": 0.17
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.034,
+      "net_margin": 0.192,
+      "asset_turnover": 0.18
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.019,
+      "net_margin": 0.1349,
+      "asset_turnover": 0.14
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "ETN",
+    "name": "Mr. Antonio C. Galvao",
+    "title": "President of Mobility Group",
+    "age": 63,
+    "born": 1962,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "ETN",
+    "name": "Mr. David B. Foster",
+    "title": "Executive VP & CFO",
+    "age": 53,
+    "born": 1972,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "ETN",
+    "name": "Mr. Heath B. Monesmith",
+    "title": "President & COO of Electrical Sector",
+    "age": 54,
+    "born": 1971,
+    "pay": 1660520,
+    "exercised": 0,
+    "unexercised": 6796919,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "ETN",
+    "name": "Mr. Howard  Liu",
+    "title": "President of Asia Pacific Region - Electrical Sector",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "ETN",
+    "name": "Mr. Jimmy  Yam",
+    "title": "Vice President of Sales",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "ETN",
+    "name": "Mr. Kaled H. Awada",
+    "title": "Executive VP & Chief Human Resources Officer",
+    "age": 50,
+    "born": 1975,
+    "pay": 1582464,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "ETN",
+    "name": "Mr. Paulo Ruiz Sternadt",
+    "title": "CEO & Director",
+    "age": 50,
+    "born": 1975,
+    "pay": 2391001,
+    "exercised": 895968,
+    "unexercised": 6736955,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "ETN",
+    "name": "Mr. Sergio  Letelier",
+    "title": "Senior Vice President of Strategy & Corporate Development",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "ETN",
+    "name": "Mr. Yan  Jin",
+    "title": "Senior Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "ETN",
+    "name": "Ms. Lucy Clark Dougherty",
+    "title": "Executive VP & Chief Legal Officer",
+    "age": 55,
+    "born": 1970,
+    "pay": 1725728,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  }
+]

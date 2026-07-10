@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "APH",
+      "report_date": "2022-06-30",
+      "gross_profit": 1004200000.0,
+      "total_revenue": 3136800000.0,
+      "gross_margin": 0.3201
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2023-03-31",
+      "gross_profit": 943400000.0,
+      "total_revenue": 2974000000.0,
+      "gross_margin": 0.3172
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2023-06-30",
+      "gross_profit": 991700000.0,
+      "total_revenue": 3053900000.0,
+      "gross_margin": 0.3247
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2023-09-30",
+      "gross_profit": 1048500000.0,
+      "total_revenue": 3199200000.0,
+      "gross_margin": 0.3277
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2023-12-31",
+      "gross_profit": 1100400000.0,
+      "total_revenue": 3327500000.0,
+      "gross_margin": 0.3307
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-03-31",
+      "gross_profit": 1089000000.0,
+      "total_revenue": 3256300000.0,
+      "gross_margin": 0.3344
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-06-30",
+      "gross_profit": 1213100000.0,
+      "total_revenue": 3609700000.0,
+      "gross_margin": 0.3361
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-09-30",
+      "gross_profit": 1356900000.0,
+      "total_revenue": 4038800000.0,
+      "gross_margin": 0.336
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-12-31",
+      "gross_profit": 1480700000.0,
+      "total_revenue": 4317800000.0,
+      "gross_margin": 0.3429
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-03-31",
+      "gross_profit": 1644000000.0,
+      "total_revenue": 4811000000.0,
+      "gross_margin": 0.3417
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-06-30",
+      "gross_profit": 2053300000.0,
+      "total_revenue": 5650300000.0,
+      "gross_margin": 0.3634
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-09-30",
+      "gross_profit": 2359300000.0,
+      "total_revenue": 6194400000.0,
+      "gross_margin": 0.3809
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-12-31",
+      "gross_profit": 2461100000.0,
+      "total_revenue": 6439000000.0,
+      "gross_margin": 0.3822
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2026-03-31",
+      "gross_profit": 2800200000.0,
+      "total_revenue": 7620100000.0,
+      "gross_margin": 0.3675
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "APH",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2020-12-31",
+      "gross_profit": 2664100000.0,
+      "total_revenue": 8598900000.0,
+      "gross_margin": 0.3098
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2021-12-31",
+      "gross_profit": 3401800000.0,
+      "total_revenue": 10876300000.0,
+      "gross_margin": 0.3128
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2022-12-31",
+      "gross_profit": 4028200000.0,
+      "total_revenue": 12623000000.0,
+      "gross_margin": 0.3191
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2023-12-31",
+      "gross_profit": 4084100000.0,
+      "total_revenue": 12554700000.0,
+      "gross_margin": 0.3253
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-12-31",
+      "gross_profit": 5139700000.0,
+      "total_revenue": 15222700000.0,
+      "gross_margin": 0.3376
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-12-31",
+      "gross_profit": 8517700000.0,
+      "total_revenue": 23094700000.0,
+      "gross_margin": 0.3688
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "APH",
+      "report_date": "2022-06-30",
+      "operating_income": 648800000.0,
+      "total_revenue": 3136800000.0,
+      "operating_margin": 0.2068
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2023-03-31",
+      "operating_income": 597100000.0,
+      "total_revenue": 2974000000.0,
+      "operating_margin": 0.2008
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2023-06-30",
+      "operating_income": 623900000.0,
+      "total_revenue": 3053900000.0,
+      "operating_margin": 0.2043
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2023-09-30",
+      "operating_income": 666900000.0,
+      "total_revenue": 3199200000.0,
+      "operating_margin": 0.2085
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2023-12-31",
+      "operating_income": 706200000.0,
+      "total_revenue": 3327500000.0,
+      "operating_margin": 0.2122
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-03-31",
+      "operating_income": 684800000.0,
+      "total_revenue": 3256300000.0,
+      "operating_margin": 0.2103
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-06-30",
+      "operating_income": 768800000.0,
+      "total_revenue": 3609700000.0,
+      "operating_margin": 0.213
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-09-30",
+      "operating_income": 864900000.0,
+      "total_revenue": 4038800000.0,
+      "operating_margin": 0.2141
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-12-31",
+      "operating_income": 965700000.0,
+      "total_revenue": 4317800000.0,
+      "operating_margin": 0.2237
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-03-31",
+      "operating_income": 1068800000.0,
+      "total_revenue": 4811000000.0,
+      "operating_margin": 0.2222
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-06-30",
+      "operating_income": 1430800000.0,
+      "total_revenue": 5650300000.0,
+      "operating_margin": 0.2532
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-09-30",
+      "operating_income": 1702300000.0,
+      "total_revenue": 6194400000.0,
+      "operating_margin": 0.2748
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-12-31",
+      "operating_income": 1770100000.0,
+      "total_revenue": 6439000000.0,
+      "operating_margin": 0.2749
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2026-03-31",
+      "operating_income": 1948700000.0,
+      "total_revenue": 7620100000.0,
+      "operating_margin": 0.2557
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "APH",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2020-12-31",
+      "operating_income": 1649900000.0,
+      "total_revenue": 8598900000.0,
+      "operating_margin": 0.1919
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2021-12-31",
+      "operating_income": 2175500000.0,
+      "total_revenue": 10876300000.0,
+      "operating_margin": 0.2
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2022-12-31",
+      "operating_income": 2607300000.0,
+      "total_revenue": 12623000000.0,
+      "operating_margin": 0.2066
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2023-12-31",
+      "operating_income": 2594200000.0,
+      "total_revenue": 12554700000.0,
+      "operating_margin": 0.2066
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-12-31",
+      "operating_income": 3284300000.0,
+      "total_revenue": 15222700000.0,
+      "operating_margin": 0.2158
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-12-31",
+      "operating_income": 5972000000.0,
+      "total_revenue": 23094700000.0,
+      "operating_margin": 0.2586
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "APH",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 472500000.0,
+      "total_revenue": 3136800000.0,
+      "net_margin": 0.1506
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": 439200000.0,
+      "total_revenue": 2974000000.0,
+      "net_margin": 0.1477
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 460500000.0,
+      "total_revenue": 3053900000.0,
+      "net_margin": 0.1508
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 513900000.0,
+      "total_revenue": 3199200000.0,
+      "net_margin": 0.1606
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 514400000.0,
+      "total_revenue": 3327500000.0,
+      "net_margin": 0.1546
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 548700000.0,
+      "total_revenue": 3256300000.0,
+      "net_margin": 0.1685
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 524800000.0,
+      "total_revenue": 3609700000.0,
+      "net_margin": 0.1454
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 604400000.0,
+      "total_revenue": 4038800000.0,
+      "net_margin": 0.1496
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 746200000.0,
+      "total_revenue": 4317800000.0,
+      "net_margin": 0.1728
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 737800000.0,
+      "total_revenue": 4811000000.0,
+      "net_margin": 0.1534
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1091300000.0,
+      "total_revenue": 5650300000.0,
+      "net_margin": 0.1931
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1245700000.0,
+      "total_revenue": 6194400000.0,
+      "net_margin": 0.2011
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1195500000.0,
+      "total_revenue": 6439000000.0,
+      "net_margin": 0.1857
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 933000000.0,
+      "total_revenue": 7620100000.0,
+      "net_margin": 0.1224
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "APH",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 1203400000.0,
+      "total_revenue": 8598900000.0,
+      "net_margin": 0.1399
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 1590800000.0,
+      "total_revenue": 10876300000.0,
+      "net_margin": 0.1463
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 1902300000.0,
+      "total_revenue": 12623000000.0,
+      "net_margin": 0.1507
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1928000000.0,
+      "total_revenue": 12554700000.0,
+      "net_margin": 0.1536
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 2424000000.0,
+      "total_revenue": 15222700000.0,
+      "net_margin": 0.1592
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 4270300000.0,
+      "total_revenue": 23094700000.0,
+      "net_margin": 0.1849
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "APH",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 3136800000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2023-03-31",
+      "ebitda": 692100000.0,
+      "total_revenue": 2974000000.0,
+      "ebitda_margin": 0.2327
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2023-06-30",
+      "ebitda": 725000000.0,
+      "total_revenue": 3053900000.0,
+      "ebitda_margin": 0.2374
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2023-09-30",
+      "ebitda": 768100000.0,
+      "total_revenue": 3199200000.0,
+      "ebitda_margin": 0.2401
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2023-12-31",
+      "ebitda": 815400000.0,
+      "total_revenue": 3327500000.0,
+      "ebitda_margin": 0.245
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-03-31",
+      "ebitda": 804600000.0,
+      "total_revenue": 3256300000.0,
+      "ebitda_margin": 0.2471
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-06-30",
+      "ebitda": 843700000.0,
+      "total_revenue": 3609700000.0,
+      "ebitda_margin": 0.2337
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-09-30",
+      "ebitda": 1032000000.0,
+      "total_revenue": 4038800000.0,
+      "ebitda_margin": 0.2555
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-12-31",
+      "ebitda": 1121000000.0,
+      "total_revenue": 4317800000.0,
+      "ebitda_margin": 0.2596
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-03-31",
+      "ebitda": 1275700000.0,
+      "total_revenue": 4811000000.0,
+      "ebitda_margin": 0.2652
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-06-30",
+      "ebitda": 1638400000.0,
+      "total_revenue": 5650300000.0,
+      "ebitda_margin": 0.29
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-09-30",
+      "ebitda": 1949300000.0,
+      "total_revenue": 6194400000.0,
+      "ebitda_margin": 0.3147
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-12-31",
+      "ebitda": 2027500000.0,
+      "total_revenue": 6439000000.0,
+      "ebitda_margin": 0.3149
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2026-03-31",
+      "ebitda": 2339400000.0,
+      "total_revenue": 7620100000.0,
+      "ebitda_margin": 0.307
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "APH",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2020-12-31",
+      "ebitda": 1950100000.0,
+      "total_revenue": 8598900000.0,
+      "ebitda_margin": 0.2268
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2021-12-31",
+      "ebitda": 2500300000.0,
+      "total_revenue": 10876300000.0,
+      "ebitda_margin": 0.2299
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2022-12-31",
+      "ebitda": 2988700000.0,
+      "total_revenue": 12623000000.0,
+      "ebitda_margin": 0.2368
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2023-12-31",
+      "ebitda": 3000700000.0,
+      "total_revenue": 12554700000.0,
+      "ebitda_margin": 0.239
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-12-31",
+      "ebitda": 3801400000.0,
+      "total_revenue": 15222700000.0,
+      "ebitda_margin": 0.2497
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-12-31",
+      "ebitda": 6890900000.0,
+      "total_revenue": 23094700000.0,
+      "ebitda_margin": 0.2984
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "APH",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 451400000.0,
+      "total_revenue": 3136800000.0,
+      "fcf_margin": 0.1439
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": 2974000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 441000000.0,
+      "total_revenue": 3053900000.0,
+      "fcf_margin": 0.1444
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 543400000.0,
+      "total_revenue": 3199200000.0,
+      "fcf_margin": 0.1699
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 736800000.0,
+      "total_revenue": 3327500000.0,
+      "fcf_margin": 0.2214
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 505200000.0,
+      "total_revenue": 3256300000.0,
+      "fcf_margin": 0.1551
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 522800000.0,
+      "total_revenue": 3609700000.0,
+      "fcf_margin": 0.1448
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 474000000.0,
+      "total_revenue": 4038800000.0,
+      "fcf_margin": 0.1174
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 647300000.0,
+      "total_revenue": 4317800000.0,
+      "fcf_margin": 0.1499
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 576300000.0,
+      "total_revenue": 4811000000.0,
+      "fcf_margin": 0.1198
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 1119700000.0,
+      "total_revenue": 5650300000.0,
+      "fcf_margin": 0.1982
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 1213600000.0,
+      "total_revenue": 6194400000.0,
+      "fcf_margin": 0.1959
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 1468500000.0,
+      "total_revenue": 6439000000.0,
+      "fcf_margin": 0.2281
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 829900000.0,
+      "total_revenue": 7620100000.0,
+      "fcf_margin": 0.1089
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "APH",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 1315200000.0,
+      "total_revenue": 8598900000.0,
+      "fcf_margin": 0.1529
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 1179700000.0,
+      "total_revenue": 10876300000.0,
+      "fcf_margin": 0.1085
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 1790800000.0,
+      "total_revenue": 12623000000.0,
+      "fcf_margin": 0.1419
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 2155900000.0,
+      "total_revenue": 12554700000.0,
+      "fcf_margin": 0.1717
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 2149300000.0,
+      "total_revenue": 15222700000.0,
+      "fcf_margin": 0.1412
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 4378100000.0,
+      "total_revenue": 23094700000.0,
+      "fcf_margin": 0.1896
+    }
+  ]
+}

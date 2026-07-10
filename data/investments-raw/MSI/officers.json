@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "MSI",
+    "name": "Dr. Mahesh  Saptharishi Ph.D.",
+    "title": "Executive VP & CTO",
+    "age": 46,
+    "born": 1979,
+    "pay": 2469300,
+    "exercised": 0,
+    "unexercised": 19613212,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "MSI",
+    "name": "Dr. Rajan S. Naik Ph.D.",
+    "title": "Senior Vice President of Strategy & Ventures",
+    "age": 53,
+    "born": 1972,
+    "pay": 1559814,
+    "exercised": 1369872,
+    "unexercised": 14678901,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "MSI",
+    "name": "Mr. Brian  Piotrowski",
+    "title": "Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "MSI",
+    "name": "Mr. Gregory Q. Brown",
+    "title": "Chairman & CEO",
+    "age": 65,
+    "born": 1960,
+    "pay": 6357305,
+    "exercised": 83790664,
+    "unexercised": 311808320,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "MSI",
+    "name": "Mr. James A. Niewiara",
+    "title": "Senior VP & General Counsel",
+    "age": 56,
+    "born": 1969,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "MSI",
+    "name": "Mr. Jason J. Winkler",
+    "title": "Executive VP & CFO",
+    "age": 51,
+    "born": 1974,
+    "pay": 2539408,
+    "exercised": 0,
+    "unexercised": 15617617,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "MSI",
+    "name": "Mr. John P. Molloy",
+    "title": "Executive VP & COO",
+    "age": 53,
+    "born": 1972,
+    "pay": 2843615,
+    "exercised": 10622859,
+    "unexercised": 6686180,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "MSI",
+    "name": "Mr. Michael D. Annes",
+    "title": "Senior Vice President of Business Development",
+    "age": 61,
+    "born": 1964,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "MSI",
+    "name": "Ms. Katherine A. Maher",
+    "title": "Corporate VP & Chief Accounting Officer",
+    "age": 42,
+    "born": 1983,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "MSI",
+    "name": "Ms. Kathryn  Moore",
+    "title": "Senior Vice President of Human Resources",
+    "age": 52,
+    "born": 1973,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  }
+]

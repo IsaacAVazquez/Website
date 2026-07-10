@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "GWW",
+    "name": "Mr. Barry  Greenhouse",
+    "title": "Senior Vice President of Merchandising & Supplier Management",
+    "age": 52,
+    "born": 1973,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "GWW",
+    "name": "Mr. Donald G. Macpherson",
+    "title": "Chairman & CEO",
+    "age": 57,
+    "born": 1968,
+    "pay": 3157689,
+    "exercised": 20286624,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "GWW",
+    "name": "Mr. Jonny  LeRoy",
+    "title": "Senior VP &  CTO",
+    "age": 53,
+    "born": 1972,
+    "pay": 1152721,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "GWW",
+    "name": "Mr. Kyle  Bland",
+    "title": "Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "GWW",
+    "name": "Mr. Masaya  Suzuki",
+    "title": "Managing Director of Endless Assortment Business",
+    "age": 50,
+    "born": 1975,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "GWW",
+    "name": "Ms. Deidra Cheeks Merriwether",
+    "title": "CFO & Senior VP",
+    "age": 56,
+    "born": 1969,
+    "pay": 1533372,
+    "exercised": 0,
+    "unexercised": 1632131,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "GWW",
+    "name": "Ms. Laurie R. Thomson",
+    "title": "VP, Controller & Principal Accounting Officer",
+    "age": 50,
+    "born": 1975,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "GWW",
+    "name": "Ms. Melanie J. Tinto",
+    "title": "Senior VP & Chief Human Resources Officer",
+    "age": 52,
+    "born": 1973,
+    "pay": 1271983,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "GWW",
+    "name": "Ms. Nancy L. Berardinelli-Krantz",
+    "title": "Senior VP & Chief Legal Officer",
+    "age": 47,
+    "born": 1978,
+    "pay": 1246641,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "GWW",
+    "name": "Ms. Paige K. Robbins",
+    "title": "Senior VP & President of Grainger Business Unit",
+    "age": 56,
+    "born": 1969,
+    "pay": 1533647,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  }
+]

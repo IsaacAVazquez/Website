@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "AMT",
+    "name": "Mr. Eugene M. Noel",
+    "title": "Executive VP & COO",
+    "age": 56,
+    "born": 1969,
+    "pay": 1581269,
+    "exercised": 0,
+    "unexercised": 3332160,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "AMT",
+    "name": "Mr. Juan A. Font",
+    "title": "Senior VP and President & CEO of Coresite",
+    "age": 55,
+    "born": 1970,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "AMT",
+    "name": "Mr. Julian  Plumstead",
+    "title": "Senior Vice President of M&A and Business Development - Europe, Africa and Latin America",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "AMT",
+    "name": "Mr. Paul  Blanchett",
+    "title": "SVP & Chief Accounting Officer",
+    "age": 41,
+    "born": 1984,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "AMT",
+    "name": "Mr. Rodney M. Smith",
+    "title": "Executive VP, CFO & Treasurer",
+    "age": 59,
+    "born": 1966,
+    "pay": 1647286,
+    "exercised": 3163067,
+    "unexercised": 2776813,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "AMT",
+    "name": "Mr. Spencer Harris Kurn",
+    "title": "Senior Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "AMT",
+    "name": "Mr. Steven O. Vondran J.D.",
+    "title": "President, CEO & Director",
+    "age": 54,
+    "born": 1971,
+    "pay": 3325757,
+    "exercised": 0,
+    "unexercised": 2707355,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "AMT",
+    "name": "Ms. Brenna D. Jones",
+    "title": "SVP & Chief Human Resources Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "AMT",
+    "name": "Ms. Colleen Richards Powell",
+    "title": "Senior VP & Chief Diversity, Equity and Inclusion Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "AMT",
+    "name": "Ms. Ruth T. Dowling",
+    "title": "Executive VP, Chief Administrative Officer, General Counsel & Secretary",
+    "age": 55,
+    "born": 1970,
+    "pay": 1547966,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  }
+]

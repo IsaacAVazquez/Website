@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "SLB",
+      "report_date": "2022-06-30",
+      "gross_profit": 1205000000.0,
+      "total_revenue": 6773000000.0,
+      "gross_margin": 0.1779
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2023-06-30",
+      "gross_profit": 1597000000.0,
+      "total_revenue": 8099000000.0,
+      "gross_margin": 0.1972
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2023-09-30",
+      "gross_profit": 1718000000.0,
+      "total_revenue": 8310000000.0,
+      "gross_margin": 0.2067
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2023-12-31",
+      "gross_profit": 1796000000.0,
+      "total_revenue": 8990000000.0,
+      "gross_margin": 0.1998
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-03-31",
+      "gross_profit": 1700000000.0,
+      "total_revenue": 8707000000.0,
+      "gross_margin": 0.1952
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-06-30",
+      "gross_profit": 1877000000.0,
+      "total_revenue": 9139000000.0,
+      "gross_margin": 0.2054
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-09-30",
+      "gross_profit": 1922000000.0,
+      "total_revenue": 9159000000.0,
+      "gross_margin": 0.2098
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-12-31",
+      "gross_profit": 1961000000.0,
+      "total_revenue": 9284000000.0,
+      "gross_margin": 0.2112
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-03-31",
+      "gross_profit": 1606000000.0,
+      "total_revenue": 8490000000.0,
+      "gross_margin": 0.1892
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-06-30",
+      "gross_profit": 1612000000.0,
+      "total_revenue": 8546000000.0,
+      "gross_margin": 0.1886
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-09-30",
+      "gross_profit": 1558000000.0,
+      "total_revenue": 8928000000.0,
+      "gross_margin": 0.1745
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-12-31",
+      "gross_profit": 1729000000.0,
+      "total_revenue": 9745000000.0,
+      "gross_margin": 0.1774
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2026-03-31",
+      "gross_profit": 1331000000.0,
+      "total_revenue": 8721000000.0,
+      "gross_margin": 0.1526
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "SLB",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2020-12-31",
+      "gross_profit": 2601000000.0,
+      "total_revenue": 23601000000.0,
+      "gross_margin": 0.1102
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2021-12-31",
+      "gross_profit": 3658000000.0,
+      "total_revenue": 22929000000.0,
+      "gross_margin": 0.1595
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2022-12-31",
+      "gross_profit": 5161000000.0,
+      "total_revenue": 28091000000.0,
+      "gross_margin": 0.1837
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2023-12-31",
+      "gross_profit": 6563000000.0,
+      "total_revenue": 33135000000.0,
+      "gross_margin": 0.1981
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-12-31",
+      "gross_profit": 7460000000.0,
+      "total_revenue": 36289000000.0,
+      "gross_margin": 0.2056
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-12-31",
+      "gross_profit": 6507000000.0,
+      "total_revenue": 35708000000.0,
+      "gross_margin": 0.1822
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "SLB",
+      "report_date": "2022-06-30",
+      "operating_income": 965000000.0,
+      "total_revenue": 6773000000.0,
+      "operating_margin": 0.1425
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2023-06-30",
+      "operating_income": 1338000000.0,
+      "total_revenue": 8099000000.0,
+      "operating_margin": 0.1652
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2023-09-30",
+      "operating_income": 1451000000.0,
+      "total_revenue": 8310000000.0,
+      "operating_margin": 0.1746
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2023-12-31",
+      "operating_income": 1513000000.0,
+      "total_revenue": 8990000000.0,
+      "operating_margin": 0.1683
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-03-31",
+      "operating_income": 1397000000.0,
+      "total_revenue": 8707000000.0,
+      "operating_margin": 0.1604
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-06-30",
+      "operating_income": 1595000000.0,
+      "total_revenue": 9139000000.0,
+      "operating_margin": 0.1745
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-09-30",
+      "operating_income": 1645000000.0,
+      "total_revenue": 9159000000.0,
+      "operating_margin": 0.1796
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-12-31",
+      "operating_income": 1689000000.0,
+      "total_revenue": 9284000000.0,
+      "operating_margin": 0.1819
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-03-31",
+      "operating_income": 1338000000.0,
+      "total_revenue": 8490000000.0,
+      "operating_margin": 0.1576
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-06-30",
+      "operating_income": 1345000000.0,
+      "total_revenue": 8546000000.0,
+      "operating_margin": 0.1574
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-09-30",
+      "operating_income": 1316000000.0,
+      "total_revenue": 8928000000.0,
+      "operating_margin": 0.1474
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-12-31",
+      "operating_income": 1458000000.0,
+      "total_revenue": 9745000000.0,
+      "operating_margin": 0.1496
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2026-03-31",
+      "operating_income": 1070000000.0,
+      "total_revenue": 8721000000.0,
+      "operating_margin": 0.1227
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "SLB",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2020-12-31",
+      "operating_income": 1656000000.0,
+      "total_revenue": 23601000000.0,
+      "operating_margin": 0.0702
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2021-12-31",
+      "operating_income": 2765000000.0,
+      "total_revenue": 22929000000.0,
+      "operating_margin": 0.1206
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2022-12-31",
+      "operating_income": 4151000000.0,
+      "total_revenue": 28091000000.0,
+      "operating_margin": 0.1478
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2023-12-31",
+      "operating_income": 5488000000.0,
+      "total_revenue": 33135000000.0,
+      "operating_margin": 0.1656
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-12-31",
+      "operating_income": 6326000000.0,
+      "total_revenue": 36289000000.0,
+      "operating_margin": 0.1743
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-12-31",
+      "operating_income": 5458000000.0,
+      "total_revenue": 35708000000.0,
+      "operating_margin": 0.1529
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "SLB",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 959000000.0,
+      "total_revenue": 6773000000.0,
+      "net_margin": 0.1416
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 1033000000.0,
+      "total_revenue": 8099000000.0,
+      "net_margin": 0.1275
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1123000000.0,
+      "total_revenue": 8310000000.0,
+      "net_margin": 0.1351
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1112000000.0,
+      "total_revenue": 8990000000.0,
+      "net_margin": 0.1237
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1068000000.0,
+      "total_revenue": 8707000000.0,
+      "net_margin": 0.1227
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1112000000.0,
+      "total_revenue": 9139000000.0,
+      "net_margin": 0.1217
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1186000000.0,
+      "total_revenue": 9159000000.0,
+      "net_margin": 0.1295
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1095000000.0,
+      "total_revenue": 9284000000.0,
+      "net_margin": 0.1179
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 797000000.0,
+      "total_revenue": 8490000000.0,
+      "net_margin": 0.0939
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1014000000.0,
+      "total_revenue": 8546000000.0,
+      "net_margin": 0.1187
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 739000000.0,
+      "total_revenue": 8928000000.0,
+      "net_margin": 0.0828
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 824000000.0,
+      "total_revenue": 9745000000.0,
+      "net_margin": 0.0846
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 752000000.0,
+      "total_revenue": 8721000000.0,
+      "net_margin": 0.0862
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "SLB",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": -10518000000.0,
+      "total_revenue": 23601000000.0,
+      "net_margin": -0.4457
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 1881000000.0,
+      "total_revenue": 22929000000.0,
+      "net_margin": 0.082
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 3441000000.0,
+      "total_revenue": 28091000000.0,
+      "net_margin": 0.1225
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 4203000000.0,
+      "total_revenue": 33135000000.0,
+      "net_margin": 0.1268
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 4461000000.0,
+      "total_revenue": 36289000000.0,
+      "net_margin": 0.1229
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 3374000000.0,
+      "total_revenue": 35708000000.0,
+      "net_margin": 0.0945
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "SLB",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 6773000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2023-06-30",
+      "ebitda": 1981000000.0,
+      "total_revenue": 8099000000.0,
+      "ebitda_margin": 0.2446
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2023-09-30",
+      "ebitda": 2103000000.0,
+      "total_revenue": 8310000000.0,
+      "ebitda_margin": 0.2531
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2023-12-31",
+      "ebitda": 1619000000.0,
+      "total_revenue": 8990000000.0,
+      "ebitda_margin": 0.1801
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-03-31",
+      "ebitda": 2070000000.0,
+      "total_revenue": 8707000000.0,
+      "ebitda_margin": 0.2377
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-06-30",
+      "ebitda": 2184000000.0,
+      "total_revenue": 9139000000.0,
+      "ebitda_margin": 0.239
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-09-30",
+      "ebitda": 2283000000.0,
+      "total_revenue": 9159000000.0,
+      "ebitda_margin": 0.2493
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-12-31",
+      "ebitda": 1532000000.0,
+      "total_revenue": 9284000000.0,
+      "ebitda_margin": 0.165
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-03-31",
+      "ebitda": 1850000000.0,
+      "total_revenue": 8490000000.0,
+      "ebitda_margin": 0.2179
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-06-30",
+      "ebitda": 2060000000.0,
+      "total_revenue": 8546000000.0,
+      "ebitda_margin": 0.241
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-09-30",
+      "ebitda": 1780000000.0,
+      "total_revenue": 8928000000.0,
+      "ebitda_margin": 0.1994
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-12-31",
+      "ebitda": 1267000000.0,
+      "total_revenue": 9745000000.0,
+      "ebitda_margin": 0.13
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2026-03-31",
+      "ebitda": 1757000000.0,
+      "total_revenue": 8721000000.0,
+      "ebitda_margin": 0.2015
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "SLB",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2020-12-31",
+      "ebitda": -8739000000.0,
+      "total_revenue": 23601000000.0,
+      "ebitda_margin": -0.3703
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2021-12-31",
+      "ebitda": 4617000000.0,
+      "total_revenue": 22929000000.0,
+      "ebitda_margin": 0.2014
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2022-12-31",
+      "ebitda": 6430000000.0,
+      "total_revenue": 28091000000.0,
+      "ebitda_margin": 0.2289
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2023-12-31",
+      "ebitda": 7544000000.0,
+      "total_revenue": 33135000000.0,
+      "ebitda_margin": 0.2277
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-12-31",
+      "ebitda": 8069000000.0,
+      "total_revenue": 36289000000.0,
+      "ebitda_margin": 0.2224
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-12-31",
+      "ebitda": 6958000000.0,
+      "total_revenue": 35708000000.0,
+      "ebitda_margin": 0.1949
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "SLB",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 88000000.0,
+      "total_revenue": 6773000000.0,
+      "fcf_margin": 0.013
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 1189000000.0,
+      "total_revenue": 8099000000.0,
+      "fcf_margin": 0.1468
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 1092000000.0,
+      "total_revenue": 8310000000.0,
+      "fcf_margin": 0.1314
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 2396000000.0,
+      "total_revenue": 8990000000.0,
+      "fcf_margin": 0.2665
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-03-31",
+      "free_cash_flow": -101000000.0,
+      "total_revenue": 8707000000.0,
+      "fcf_margin": -0.0116
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 1002000000.0,
+      "total_revenue": 9139000000.0,
+      "fcf_margin": 0.1096
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 1848000000.0,
+      "total_revenue": 9159000000.0,
+      "fcf_margin": 0.2018
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 1724000000.0,
+      "total_revenue": 9284000000.0,
+      "fcf_margin": 0.1857
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 211000000.0,
+      "total_revenue": 8490000000.0,
+      "fcf_margin": 0.0249
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 822000000.0,
+      "total_revenue": 8546000000.0,
+      "fcf_margin": 0.0962
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 1105000000.0,
+      "total_revenue": 8928000000.0,
+      "fcf_margin": 0.1238
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 2405000000.0,
+      "total_revenue": 9745000000.0,
+      "fcf_margin": 0.2468
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 80000000.0,
+      "total_revenue": 8721000000.0,
+      "fcf_margin": 0.0092
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "SLB",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 1727000000.0,
+      "total_revenue": 23601000000.0,
+      "fcf_margin": 0.0732
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 3471000000.0,
+      "total_revenue": 22929000000.0,
+      "fcf_margin": 0.1514
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 2005000000.0,
+      "total_revenue": 28091000000.0,
+      "fcf_margin": 0.0714
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 4545000000.0,
+      "total_revenue": 33135000000.0,
+      "fcf_margin": 0.1372
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 4473000000.0,
+      "total_revenue": 36289000000.0,
+      "fcf_margin": 0.1233
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 4543000000.0,
+      "total_revenue": 35708000000.0,
+      "fcf_margin": 0.1272
+    }
+  ]
+}

@@ -1,0 +1,528 @@
+{
+  "roe": [
+    {
+      "symbol": "NEE",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 2795000000.0,
+      "beginning_stockholders_equity": 42896000000.0,
+      "ending_stockholders_equity": 44793000000.0,
+      "avg_equity": 43844500000.0,
+      "roe": 0.0637
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1219000000.0,
+      "beginning_stockholders_equity": 44793000000.0,
+      "ending_stockholders_equity": 47095000000.0,
+      "avg_equity": 45944000000.0,
+      "roe": 0.0265
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1210000000.0,
+      "beginning_stockholders_equity": 47095000000.0,
+      "ending_stockholders_equity": 47468000000.0,
+      "avg_equity": 47281500000.0,
+      "roe": 0.0256
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 2268000000.0,
+      "beginning_stockholders_equity": 47468000000.0,
+      "ending_stockholders_equity": 48641000000.0,
+      "avg_equity": 48054500000.0,
+      "roe": 0.0472
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1622000000.0,
+      "beginning_stockholders_equity": 48641000000.0,
+      "ending_stockholders_equity": 49140000000.0,
+      "avg_equity": 48890500000.0,
+      "roe": 0.0332
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1852000000.0,
+      "beginning_stockholders_equity": 49140000000.0,
+      "ending_stockholders_equity": 50051000000.0,
+      "avg_equity": 49595500000.0,
+      "roe": 0.0373
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1203000000.0,
+      "beginning_stockholders_equity": 50051000000.0,
+      "ending_stockholders_equity": 50101000000.0,
+      "avg_equity": 50076000000.0,
+      "roe": 0.024
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 833000000.0,
+      "beginning_stockholders_equity": 50101000000.0,
+      "ending_stockholders_equity": 49812000000.0,
+      "avg_equity": 49956500000.0,
+      "roe": 0.0167
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 2028000000.0,
+      "beginning_stockholders_equity": 49812000000.0,
+      "ending_stockholders_equity": 50797000000.0,
+      "avg_equity": 50304500000.0,
+      "roe": 0.0403
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 2438000000.0,
+      "beginning_stockholders_equity": 50797000000.0,
+      "ending_stockholders_equity": 54181000000.0,
+      "avg_equity": 52489000000.0,
+      "roe": 0.0464
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1535000000.0,
+      "beginning_stockholders_equity": 54181000000.0,
+      "ending_stockholders_equity": 54608000000.0,
+      "avg_equity": 54394500000.0,
+      "roe": 0.0282
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 2182000000.0,
+      "beginning_stockholders_equity": 54608000000.0,
+      "ending_stockholders_equity": 55222000000.0,
+      "avg_equity": 54915000000.0,
+      "roe": 0.0397
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "NEE",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 2795000000.0,
+      "beginning_total_assets": 165357000000.0,
+      "ending_total_assets": 168275000000.0,
+      "avg_assets": 166816000000.0,
+      "roa": 0.0168
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1219000000.0,
+      "beginning_total_assets": 168275000000.0,
+      "ending_total_assets": 171674000000.0,
+      "avg_assets": 169974500000.0,
+      "roa": 0.0072
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1210000000.0,
+      "beginning_total_assets": 171674000000.0,
+      "ending_total_assets": 177489000000.0,
+      "avg_assets": 174581500000.0,
+      "roa": 0.0069
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 2268000000.0,
+      "beginning_total_assets": 177489000000.0,
+      "ending_total_assets": 179950000000.0,
+      "avg_assets": 178719500000.0,
+      "roa": 0.0127
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1622000000.0,
+      "beginning_total_assets": 179950000000.0,
+      "ending_total_assets": 184724000000.0,
+      "avg_assets": 182337000000.0,
+      "roa": 0.0089
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1852000000.0,
+      "beginning_total_assets": 184724000000.0,
+      "ending_total_assets": 186013000000.0,
+      "avg_assets": 185368500000.0,
+      "roa": 0.01
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1203000000.0,
+      "beginning_total_assets": 186013000000.0,
+      "ending_total_assets": 190144000000.0,
+      "avg_assets": 188078500000.0,
+      "roa": 0.0064
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 833000000.0,
+      "beginning_total_assets": 190144000000.0,
+      "ending_total_assets": 194264000000.0,
+      "avg_assets": 192204000000.0,
+      "roa": 0.0043
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 2028000000.0,
+      "beginning_total_assets": 194264000000.0,
+      "ending_total_assets": 198830000000.0,
+      "avg_assets": 196547000000.0,
+      "roa": 0.0103
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 2438000000.0,
+      "beginning_total_assets": 198830000000.0,
+      "ending_total_assets": 204354000000.0,
+      "avg_assets": 201592000000.0,
+      "roa": 0.0121
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1535000000.0,
+      "beginning_total_assets": 204354000000.0,
+      "ending_total_assets": 212721000000.0,
+      "avg_assets": 208537500000.0,
+      "roa": 0.0074
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 2182000000.0,
+      "beginning_total_assets": 212721000000.0,
+      "ending_total_assets": 221424000000.0,
+      "avg_assets": 217072500000.0,
+      "roa": 0.0101
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "NEE",
+      "report_date": "2023-06-30",
+      "ebit": 3196000000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 2684640000.0,
+      "beginning_invested_capital": 113537000000.0,
+      "ending_invested_capital": 116966000000.0,
+      "avg_invested_capital": 115251500000.0,
+      "roic": 0.0233
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-09-30",
+      "ebit": 999000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 789210000.0,
+      "beginning_invested_capital": 116966000000.0,
+      "ending_invested_capital": 120417000000.0,
+      "avg_invested_capital": 118691500000.0,
+      "roic": 0.0066
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-12-31",
+      "ebit": 3063000000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 2572920000.0,
+      "beginning_invested_capital": 120417000000.0,
+      "ending_invested_capital": 120679000000.0,
+      "avg_invested_capital": 120548000000.0,
+      "roic": 0.0213
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-03-31",
+      "ebit": 2487000000.0,
+      "tax_rate_for_calcs": 0.11,
+      "nopat": 2213430000.0,
+      "beginning_invested_capital": 120679000000.0,
+      "ending_invested_capital": 128578000000.0,
+      "avg_invested_capital": 124628500000.0,
+      "roic": 0.0178
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-06-30",
+      "ebit": 2052000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 1621080000.0,
+      "beginning_invested_capital": 128578000000.0,
+      "ending_invested_capital": 131773000000.0,
+      "avg_invested_capital": 130175500000.0,
+      "roic": 0.0125
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-09-30",
+      "ebit": 3413000000.0,
+      "tax_rate_for_calcs": 0.0,
+      "nopat": 3413000000.0,
+      "beginning_invested_capital": 131773000000.0,
+      "ending_invested_capital": 132818000000.0,
+      "avg_invested_capital": 132295500000.0,
+      "roic": 0.0258
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-12-31",
+      "ebit": 319000000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 267960000.0,
+      "beginning_invested_capital": 132818000000.0,
+      "ending_invested_capital": 132434000000.0,
+      "avg_invested_capital": 132626000000.0,
+      "roic": 0.002
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-03-31",
+      "ebit": 1717000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 1356430000.0,
+      "beginning_invested_capital": 132434000000.0,
+      "ending_invested_capital": 139490000000.0,
+      "avg_invested_capital": 135962000000.0,
+      "roic": 0.01
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-06-30",
+      "ebit": 2443000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 1929970000.0,
+      "beginning_invested_capital": 139490000000.0,
+      "ending_invested_capital": 143986000000.0,
+      "avg_invested_capital": 141738000000.0,
+      "roic": 0.0136
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-09-30",
+      "ebit": 3038000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 2400020000.0,
+      "beginning_invested_capital": 143986000000.0,
+      "ending_invested_capital": 147303000000.0,
+      "avg_invested_capital": 145644500000.0,
+      "roic": 0.0165
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-12-31",
+      "ebit": 1903000000.0,
+      "tax_rate_for_calcs": 0.17,
+      "nopat": 1579490000.0,
+      "beginning_invested_capital": 147303000000.0,
+      "ending_invested_capital": 150227000000.0,
+      "avg_invested_capital": 148765000000.0,
+      "roic": 0.0106
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2026-03-31",
+      "ebit": 2486000000.0,
+      "tax_rate_for_calcs": 0.4,
+      "nopat": 1491600000.0,
+      "beginning_invested_capital": 150227000000.0,
+      "ending_invested_capital": 159625000000.0,
+      "avg_invested_capital": 154926000000.0,
+      "roic": 0.0096
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "NEE",
+      "report_date": "2023-06-30T00:00:00.000",
+      "roe": 0.0637,
+      "roa": 0.0168,
+      "equity_multiplier": 3.79
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0265,
+      "roa": 0.0072,
+      "equity_multiplier": 3.68
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0256,
+      "roa": 0.0069,
+      "equity_multiplier": 3.71
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0472,
+      "roa": 0.0127,
+      "equity_multiplier": 3.72
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0332,
+      "roa": 0.0089,
+      "equity_multiplier": 3.73
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0373,
+      "roa": 0.01,
+      "equity_multiplier": 3.73
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.024,
+      "roa": 0.0064,
+      "equity_multiplier": 3.75
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0167,
+      "roa": 0.0043,
+      "equity_multiplier": 3.88
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.0403,
+      "roa": 0.0103,
+      "equity_multiplier": 3.91
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0464,
+      "roa": 0.0121,
+      "equity_multiplier": 3.83
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.0282,
+      "roa": 0.0074,
+      "equity_multiplier": 3.81
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.0397,
+      "roa": 0.0101,
+      "equity_multiplier": 3.93
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "NEE",
+      "report_date": "2023-06-30T00:00:00.000",
+      "roa": 0.0168,
+      "net_margin": 0.3803,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0072,
+      "net_margin": 0.17,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0069,
+      "net_margin": 0.1759,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0127,
+      "net_margin": 0.3957,
+      "asset_turnover": 0.03
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0089,
+      "net_margin": 0.2673,
+      "asset_turnover": 0.03
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.01,
+      "net_margin": 0.2447,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0064,
+      "net_margin": 0.2234,
+      "asset_turnover": 0.03
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0043,
+      "net_margin": 0.1333,
+      "asset_turnover": 0.03
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0103,
+      "net_margin": 0.3027,
+      "asset_turnover": 0.03
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0121,
+      "net_margin": 0.3061,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0074,
+      "net_margin": 0.2362,
+      "asset_turnover": 0.03
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0101,
+      "net_margin": 0.3256,
+      "asset_turnover": 0.03
+    }
+  ]
+}

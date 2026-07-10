@@ -1,0 +1,528 @@
+{
+  "roe": [
+    {
+      "symbol": "UPS",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 2081000000.0,
+      "beginning_stockholders_equity": 20038000000.0,
+      "ending_stockholders_equity": 20019000000.0,
+      "avg_equity": 20028500000.0,
+      "roe": 0.1039
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1127000000.0,
+      "beginning_stockholders_equity": 20019000000.0,
+      "ending_stockholders_equity": 19168000000.0,
+      "avg_equity": 19593500000.0,
+      "roe": 0.0575
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1605000000.0,
+      "beginning_stockholders_equity": 19168000000.0,
+      "ending_stockholders_equity": 17306000000.0,
+      "avg_equity": 18237000000.0,
+      "roe": 0.088
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1113000000.0,
+      "beginning_stockholders_equity": 17306000000.0,
+      "ending_stockholders_equity": 16909000000.0,
+      "avg_equity": 17107500000.0,
+      "roe": 0.0651
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1409000000.0,
+      "beginning_stockholders_equity": 16909000000.0,
+      "ending_stockholders_equity": 17030000000.0,
+      "avg_equity": 16969500000.0,
+      "roe": 0.083
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1539000000.0,
+      "beginning_stockholders_equity": 17030000000.0,
+      "ending_stockholders_equity": 16857000000.0,
+      "avg_equity": 16943500000.0,
+      "roe": 0.0908
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1721000000.0,
+      "beginning_stockholders_equity": 16857000000.0,
+      "ending_stockholders_equity": 16718000000.0,
+      "avg_equity": 16787500000.0,
+      "roe": 0.1025
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1187000000.0,
+      "beginning_stockholders_equity": 16718000000.0,
+      "ending_stockholders_equity": 15660000000.0,
+      "avg_equity": 16189000000.0,
+      "roe": 0.0733
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1283000000.0,
+      "beginning_stockholders_equity": 15660000000.0,
+      "ending_stockholders_equity": 15750000000.0,
+      "avg_equity": 15705000000.0,
+      "roe": 0.0817
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1311000000.0,
+      "beginning_stockholders_equity": 15750000000.0,
+      "ending_stockholders_equity": 15823000000.0,
+      "avg_equity": 15786500000.0,
+      "roe": 0.083
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1791000000.0,
+      "beginning_stockholders_equity": 15823000000.0,
+      "ending_stockholders_equity": 16227000000.0,
+      "avg_equity": 16025000000.0,
+      "roe": 0.1118
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 864000000.0,
+      "beginning_stockholders_equity": 16227000000.0,
+      "ending_stockholders_equity": 15763000000.0,
+      "avg_equity": 15995000000.0,
+      "roe": 0.054
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "UPS",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 2081000000.0,
+      "beginning_total_assets": 72189000000.0,
+      "ending_total_assets": 70347000000.0,
+      "avg_assets": 71268000000.0,
+      "roa": 0.0292
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1127000000.0,
+      "beginning_total_assets": 70347000000.0,
+      "ending_total_assets": 70281000000.0,
+      "avg_assets": 70314000000.0,
+      "roa": 0.016
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1605000000.0,
+      "beginning_total_assets": 70281000000.0,
+      "ending_total_assets": 70857000000.0,
+      "avg_assets": 70569000000.0,
+      "roa": 0.0227
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1113000000.0,
+      "beginning_total_assets": 70857000000.0,
+      "ending_total_assets": 67628000000.0,
+      "avg_assets": 69242500000.0,
+      "roa": 0.0161
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1409000000.0,
+      "beginning_total_assets": 67628000000.0,
+      "ending_total_assets": 69418000000.0,
+      "avg_assets": 68523000000.0,
+      "roa": 0.0206
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1539000000.0,
+      "beginning_total_assets": 69418000000.0,
+      "ending_total_assets": 68263000000.0,
+      "avg_assets": 68840500000.0,
+      "roa": 0.0224
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1721000000.0,
+      "beginning_total_assets": 68263000000.0,
+      "ending_total_assets": 70070000000.0,
+      "avg_assets": 69166500000.0,
+      "roa": 0.0249
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1187000000.0,
+      "beginning_total_assets": 70070000000.0,
+      "ending_total_assets": 68466000000.0,
+      "avg_assets": 69268000000.0,
+      "roa": 0.0171
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1283000000.0,
+      "beginning_total_assets": 68466000000.0,
+      "ending_total_assets": 70923000000.0,
+      "avg_assets": 69694500000.0,
+      "roa": 0.0184
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1311000000.0,
+      "beginning_total_assets": 70923000000.0,
+      "ending_total_assets": 71392000000.0,
+      "avg_assets": 71157500000.0,
+      "roa": 0.0184
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1791000000.0,
+      "beginning_total_assets": 71392000000.0,
+      "ending_total_assets": 73090000000.0,
+      "avg_assets": 72241000000.0,
+      "roa": 0.0248
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 864000000.0,
+      "beginning_total_assets": 73090000000.0,
+      "ending_total_assets": 71809000000.0,
+      "avg_assets": 72449500000.0,
+      "roa": 0.0119
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "UPS",
+      "report_date": "2023-06-30",
+      "ebit": 2911000000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 2212360000.0,
+      "beginning_invested_capital": 41861000000.0,
+      "ending_invested_capital": 40366000000.0,
+      "avg_invested_capital": 41113500000.0,
+      "roic": 0.0538
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2023-09-30",
+      "ebit": 1467000000.0,
+      "tax_rate_for_calcs": 0.11,
+      "nopat": 1305630000.0,
+      "beginning_invested_capital": 40366000000.0,
+      "ending_invested_capital": 40293000000.0,
+      "avg_invested_capital": 40329500000.0,
+      "roic": 0.0324
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2023-12-31",
+      "ebit": 2270000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 1770600000.0,
+      "beginning_invested_capital": 40293000000.0,
+      "ending_invested_capital": 39570000000.0,
+      "avg_invested_capital": 39931500000.0,
+      "roic": 0.0443
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2024-03-31",
+      "ebit": 1731000000.0,
+      "tax_rate_for_calcs": 0.28,
+      "nopat": 1246320000.0,
+      "beginning_invested_capital": 39570000000.0,
+      "ending_invested_capital": 36922000000.0,
+      "avg_invested_capital": 38246000000.0,
+      "roic": 0.0326
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2024-06-30",
+      "ebit": 2081000000.0,
+      "tax_rate_for_calcs": 0.25,
+      "nopat": 1560750000.0,
+      "beginning_invested_capital": 36922000000.0,
+      "ending_invested_capital": 39235000000.0,
+      "avg_invested_capital": 38078500000.0,
+      "roic": 0.041
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2024-09-30",
+      "ebit": 2140000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 1733400000.0,
+      "beginning_invested_capital": 39235000000.0,
+      "ending_invested_capital": 38787000000.0,
+      "avg_invested_capital": 39011000000.0,
+      "roic": 0.0444
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2024-12-31",
+      "ebit": 2356000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 1908360000.0,
+      "beginning_invested_capital": 38787000000.0,
+      "ending_invested_capital": 38002000000.0,
+      "avg_invested_capital": 38394500000.0,
+      "roic": 0.0497
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2025-03-31",
+      "ebit": 1745000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 1361100000.0,
+      "beginning_invested_capital": 38002000000.0,
+      "ending_invested_capital": 37029000000.0,
+      "avg_invested_capital": 37515500000.0,
+      "roic": 0.0363
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2025-06-30",
+      "ebit": 1900000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 1463000000.0,
+      "beginning_invested_capital": 37029000000.0,
+      "ending_invested_capital": 40490000000.0,
+      "avg_invested_capital": 38759500000.0,
+      "roic": 0.0377
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2025-09-30",
+      "ebit": 1898000000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 1556360000.0,
+      "beginning_invested_capital": 40490000000.0,
+      "ending_invested_capital": 40605000000.0,
+      "avg_invested_capital": 40547500000.0,
+      "roic": 0.0384
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2025-12-31",
+      "ebit": 2638000000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 2004880000.0,
+      "beginning_invested_capital": 40605000000.0,
+      "ending_invested_capital": 40354000000.0,
+      "avg_invested_capital": 40479500000.0,
+      "roic": 0.0495
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2026-03-31",
+      "ebit": 1390000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 1070300000.0,
+      "beginning_invested_capital": 40354000000.0,
+      "ending_invested_capital": 40149000000.0,
+      "avg_invested_capital": 40251500000.0,
+      "roic": 0.0266
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "UPS",
+      "report_date": "2023-06-30T00:00:00.000",
+      "roe": 0.1039,
+      "roa": 0.0292,
+      "equity_multiplier": 3.56
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0575,
+      "roa": 0.016,
+      "equity_multiplier": 3.59
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.088,
+      "roa": 0.0227,
+      "equity_multiplier": 3.88
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0651,
+      "roa": 0.0161,
+      "equity_multiplier": 4.04
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.083,
+      "roa": 0.0206,
+      "equity_multiplier": 4.03
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0908,
+      "roa": 0.0224,
+      "equity_multiplier": 4.05
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.1025,
+      "roa": 0.0249,
+      "equity_multiplier": 4.12
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0733,
+      "roa": 0.0171,
+      "equity_multiplier": 4.29
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.0817,
+      "roa": 0.0184,
+      "equity_multiplier": 4.44
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.083,
+      "roa": 0.0184,
+      "equity_multiplier": 4.51
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.1118,
+      "roa": 0.0248,
+      "equity_multiplier": 4.51
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.054,
+      "roa": 0.0119,
+      "equity_multiplier": 4.54
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "UPS",
+      "report_date": "2023-06-30T00:00:00.000",
+      "roa": 0.0292,
+      "net_margin": 0.0944,
+      "asset_turnover": 0.31
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.016,
+      "net_margin": 0.0535,
+      "asset_turnover": 0.3
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0227,
+      "net_margin": 0.0644,
+      "asset_turnover": 0.35
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0161,
+      "net_margin": 0.0513,
+      "asset_turnover": 0.31
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0206,
+      "net_margin": 0.0646,
+      "asset_turnover": 0.32
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0224,
+      "net_margin": 0.0692,
+      "asset_turnover": 0.32
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0249,
+      "net_margin": 0.068,
+      "asset_turnover": 0.37
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0171,
+      "net_margin": 0.0551,
+      "asset_turnover": 0.31
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0184,
+      "net_margin": 0.0605,
+      "asset_turnover": 0.3
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0184,
+      "net_margin": 0.0612,
+      "asset_turnover": 0.3
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0248,
+      "net_margin": 0.0732,
+      "asset_turnover": 0.34
+    },
+    {
+      "symbol": "UPS",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0119,
+      "net_margin": 0.0408,
+      "asset_turnover": 0.29
+    }
+  ]
+}

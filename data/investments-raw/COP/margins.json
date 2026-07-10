@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "COP",
+      "report_date": "2022-06-30",
+      "gross_profit": 8376000000.0,
+      "total_revenue": 21161000000.0,
+      "gross_margin": 0.3958
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2022-09-30",
+      "gross_profit": 8091000000.0,
+      "total_revenue": 21013000000.0,
+      "gross_margin": 0.385
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2022-12-31",
+      "gross_profit": 5939000000.0,
+      "total_revenue": 18558000000.0,
+      "gross_margin": 0.32
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2023-06-30",
+      "gross_profit": 3839000000.0,
+      "total_revenue": 12351000000.0,
+      "gross_margin": 0.3108
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2023-09-30",
+      "gross_profit": 4617000000.0,
+      "total_revenue": 14250000000.0,
+      "gross_margin": 0.324
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2023-12-31",
+      "gross_profit": 4795000000.0,
+      "total_revenue": 14729000000.0,
+      "gross_margin": 0.3255
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2024-03-31",
+      "gross_profit": 4288000000.0,
+      "total_revenue": 13848000000.0,
+      "gross_margin": 0.3096
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2024-06-30",
+      "gross_profit": 4264000000.0,
+      "total_revenue": 13620000000.0,
+      "gross_margin": 0.3131
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2024-09-30",
+      "gross_profit": 3643000000.0,
+      "total_revenue": 13041000000.0,
+      "gross_margin": 0.2793
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2024-12-31",
+      "gross_profit": 4188000000.0,
+      "total_revenue": 14236000000.0,
+      "gross_margin": 0.2942
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2025-03-31",
+      "gross_profit": 5077000000.0,
+      "total_revenue": 16517000000.0,
+      "gross_margin": 0.3074
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2025-06-30",
+      "gross_profit": 3509000000.0,
+      "total_revenue": 14004000000.0,
+      "gross_margin": 0.2506
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2025-09-30",
+      "gross_profit": 3625000000.0,
+      "total_revenue": 15031000000.0,
+      "gross_margin": 0.2412
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2025-12-31",
+      "gross_profit": 2577000000.0,
+      "total_revenue": 13392000000.0,
+      "gross_margin": 0.1924
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2026-03-31",
+      "gross_profit": 4296000000.0,
+      "total_revenue": 15761000000.0,
+      "gross_margin": 0.2726
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "COP",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2020-12-31",
+      "gross_profit": 841000000.0,
+      "total_revenue": 18784000000.0,
+      "gross_margin": 0.0448
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2021-12-31",
+      "gross_profit": 14768000000.0,
+      "total_revenue": 45828000000.0,
+      "gross_margin": 0.3222
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2022-12-31",
+      "gross_profit": 30013000000.0,
+      "total_revenue": 78494000000.0,
+      "gross_margin": 0.3824
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2023-12-31",
+      "gross_profit": 18203000000.0,
+      "total_revenue": 56141000000.0,
+      "gross_margin": 0.3242
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2024-12-31",
+      "gross_profit": 16383000000.0,
+      "total_revenue": 54745000000.0,
+      "gross_margin": 0.2993
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2025-12-31",
+      "gross_profit": 14788000000.0,
+      "total_revenue": 58944000000.0,
+      "gross_margin": 0.2509
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "COP",
+      "report_date": "2022-06-30",
+      "operating_income": 7117000000.0,
+      "total_revenue": 21161000000.0,
+      "operating_margin": 0.3363
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2022-09-30",
+      "operating_income": 7011000000.0,
+      "total_revenue": 21013000000.0,
+      "operating_margin": 0.3337
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2022-12-31",
+      "operating_income": 4797000000.0,
+      "total_revenue": 18558000000.0,
+      "operating_margin": 0.2585
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2023-06-30",
+      "operating_income": 3039000000.0,
+      "total_revenue": 12351000000.0,
+      "operating_margin": 0.2461
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2023-09-30",
+      "operating_income": 3820000000.0,
+      "total_revenue": 14250000000.0,
+      "operating_margin": 0.2681
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2023-12-31",
+      "operating_income": 4088000000.0,
+      "total_revenue": 14729000000.0,
+      "operating_margin": 0.2775
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2024-03-31",
+      "operating_income": 3443000000.0,
+      "total_revenue": 13848000000.0,
+      "operating_margin": 0.2486
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2024-06-30",
+      "operating_income": 3462000000.0,
+      "total_revenue": 13620000000.0,
+      "operating_margin": 0.2542
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2024-09-30",
+      "operating_income": 2911000000.0,
+      "total_revenue": 13041000000.0,
+      "operating_margin": 0.2232
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2024-12-31",
+      "operating_income": 2967000000.0,
+      "total_revenue": 14236000000.0,
+      "operating_margin": 0.2084
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2025-03-31",
+      "operating_income": 4218000000.0,
+      "total_revenue": 16517000000.0,
+      "operating_margin": 0.2554
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2025-06-30",
+      "operating_income": 2606000000.0,
+      "total_revenue": 14004000000.0,
+      "operating_margin": 0.1861
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2025-09-30",
+      "operating_income": 2758000000.0,
+      "total_revenue": 15031000000.0,
+      "operating_margin": 0.1835
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2025-12-31",
+      "operating_income": 1760000000.0,
+      "total_revenue": 13392000000.0,
+      "operating_margin": 0.1314
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2026-03-31",
+      "operating_income": 3387000000.0,
+      "total_revenue": 15761000000.0,
+      "operating_margin": 0.2149
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "COP",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2020-12-31",
+      "operating_income": -1800000000.0,
+      "total_revenue": 18784000000.0,
+      "operating_margin": -0.0958
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2021-12-31",
+      "operating_income": 12071000000.0,
+      "total_revenue": 45828000000.0,
+      "operating_margin": 0.2634
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2022-12-31",
+      "operating_income": 25462000000.0,
+      "total_revenue": 78494000000.0,
+      "operating_margin": 0.3244
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2023-12-31",
+      "operating_income": 15026000000.0,
+      "total_revenue": 56141000000.0,
+      "operating_margin": 0.2676
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2024-12-31",
+      "operating_income": 12783000000.0,
+      "total_revenue": 54745000000.0,
+      "operating_margin": 0.2335
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2025-12-31",
+      "operating_income": 11342000000.0,
+      "total_revenue": 58944000000.0,
+      "operating_margin": 0.1924
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "COP",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 5145000000.0,
+      "total_revenue": 21161000000.0,
+      "net_margin": 0.2431
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": 4527000000.0,
+      "total_revenue": 21013000000.0,
+      "net_margin": 0.2154
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 3189000000.0,
+      "total_revenue": 18558000000.0,
+      "net_margin": 0.1718
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 2224000000.0,
+      "total_revenue": 12351000000.0,
+      "net_margin": 0.1801
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 2798000000.0,
+      "total_revenue": 14250000000.0,
+      "net_margin": 0.1964
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 2972000000.0,
+      "total_revenue": 14729000000.0,
+      "net_margin": 0.2018
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 2542000000.0,
+      "total_revenue": 13848000000.0,
+      "net_margin": 0.1836
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 2322000000.0,
+      "total_revenue": 13620000000.0,
+      "net_margin": 0.1705
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 2052000000.0,
+      "total_revenue": 13041000000.0,
+      "net_margin": 0.1573
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 2279000000.0,
+      "total_revenue": 14236000000.0,
+      "net_margin": 0.1601
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 2840000000.0,
+      "total_revenue": 16517000000.0,
+      "net_margin": 0.1719
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1964000000.0,
+      "total_revenue": 14004000000.0,
+      "net_margin": 0.1402
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1720000000.0,
+      "total_revenue": 15031000000.0,
+      "net_margin": 0.1144
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1437000000.0,
+      "total_revenue": 13392000000.0,
+      "net_margin": 0.1073
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 2177000000.0,
+      "total_revenue": 15761000000.0,
+      "net_margin": 0.1381
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "COP",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": -2707000000.0,
+      "total_revenue": 18784000000.0,
+      "net_margin": -0.1441
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 8060000000.0,
+      "total_revenue": 45828000000.0,
+      "net_margin": 0.1759
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 18620000000.0,
+      "total_revenue": 78494000000.0,
+      "net_margin": 0.2372
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 10922000000.0,
+      "total_revenue": 56141000000.0,
+      "net_margin": 0.1945
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 9218000000.0,
+      "total_revenue": 54745000000.0,
+      "net_margin": 0.1684
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 7961000000.0,
+      "total_revenue": 58944000000.0,
+      "net_margin": 0.1351
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "COP",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 21161000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2022-09-30",
+      "ebitda": 9571000000.0,
+      "total_revenue": 21013000000.0,
+      "ebitda_margin": 0.4555
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2022-12-31",
+      "ebitda": 7480000000.0,
+      "total_revenue": 18558000000.0,
+      "ebitda_margin": 0.4031
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2023-06-30",
+      "ebitda": 5653000000.0,
+      "total_revenue": 12351000000.0,
+      "ebitda_margin": 0.4577
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2023-09-30",
+      "ebitda": 6506000000.0,
+      "total_revenue": 14250000000.0,
+      "ebitda_margin": 0.4566
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2023-12-31",
+      "ebitda": 6796000000.0,
+      "total_revenue": 14729000000.0,
+      "ebitda_margin": 0.4614
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2024-03-31",
+      "ebitda": 6323000000.0,
+      "total_revenue": 13848000000.0,
+      "ebitda_margin": 0.4566
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2024-06-30",
+      "ebitda": 6300000000.0,
+      "total_revenue": 13620000000.0,
+      "ebitda_margin": 0.4626
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2024-09-30",
+      "ebitda": 5890000000.0,
+      "total_revenue": 13041000000.0,
+      "ebitda_margin": 0.4517
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2024-12-31",
+      "ebitda": 5908000000.0,
+      "total_revenue": 14236000000.0,
+      "ebitda_margin": 0.415
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2025-03-31",
+      "ebitda": 7511000000.0,
+      "total_revenue": 16517000000.0,
+      "ebitda_margin": 0.4547
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2025-06-30",
+      "ebitda": 6267000000.0,
+      "total_revenue": 14004000000.0,
+      "ebitda_margin": 0.4475
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2025-09-30",
+      "ebitda": 6126000000.0,
+      "total_revenue": 15031000000.0,
+      "ebitda_margin": 0.4076
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2025-12-31",
+      "ebitda": 5666000000.0,
+      "total_revenue": 13392000000.0,
+      "ebitda_margin": 0.4231
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2026-03-31",
+      "ebitda": 6564000000.0,
+      "total_revenue": 15761000000.0,
+      "ebitda_margin": 0.4165
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "COP",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2020-12-31",
+      "ebitda": 3439000000.0,
+      "total_revenue": 18784000000.0,
+      "ebitda_margin": 0.1831
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2021-12-31",
+      "ebitda": 21090000000.0,
+      "total_revenue": 45828000000.0,
+      "ebitda_margin": 0.4602
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2022-12-31",
+      "ebitda": 37127000000.0,
+      "total_revenue": 78494000000.0,
+      "ebitda_margin": 0.473
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2023-12-31",
+      "ebitda": 25783000000.0,
+      "total_revenue": 56141000000.0,
+      "ebitda_margin": 0.4593
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2024-12-31",
+      "ebitda": 24425000000.0,
+      "total_revenue": 54745000000.0,
+      "ebitda_margin": 0.4462
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2025-12-31",
+      "ebitda": 25570000000.0,
+      "total_revenue": 58944000000.0,
+      "ebitda_margin": 0.4338
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "COP",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 5946000000.0,
+      "total_revenue": 21161000000.0,
+      "fcf_margin": 0.281
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": 21013000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 18558000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 931000000.0,
+      "total_revenue": 12351000000.0,
+      "fcf_margin": 0.0754
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 2900000000.0,
+      "total_revenue": 14250000000.0,
+      "fcf_margin": 0.2035
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 2380000000.0,
+      "total_revenue": 14729000000.0,
+      "fcf_margin": 0.1616
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 2069000000.0,
+      "total_revenue": 13848000000.0,
+      "fcf_margin": 0.1494
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 1950000000.0,
+      "total_revenue": 13620000000.0,
+      "fcf_margin": 0.1432
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 2847000000.0,
+      "total_revenue": 13041000000.0,
+      "fcf_margin": 0.2183
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 1140000000.0,
+      "total_revenue": 14236000000.0,
+      "fcf_margin": 0.0801
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 2737000000.0,
+      "total_revenue": 16517000000.0,
+      "fcf_margin": 0.1657
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 199000000.0,
+      "total_revenue": 14004000000.0,
+      "fcf_margin": 0.0142
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 3012000000.0,
+      "total_revenue": 15031000000.0,
+      "fcf_margin": 0.2004
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 1295000000.0,
+      "total_revenue": 13392000000.0,
+      "fcf_margin": 0.0967
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 1347000000.0,
+      "total_revenue": 15761000000.0,
+      "fcf_margin": 0.0855
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "COP",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 87000000.0,
+      "total_revenue": 18784000000.0,
+      "fcf_margin": 0.0046
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 11672000000.0,
+      "total_revenue": 45828000000.0,
+      "fcf_margin": 0.2547
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 18155000000.0,
+      "total_revenue": 78494000000.0,
+      "fcf_margin": 0.2313
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 8717000000.0,
+      "total_revenue": 56141000000.0,
+      "fcf_margin": 0.1553
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 8006000000.0,
+      "total_revenue": 54745000000.0,
+      "fcf_margin": 0.1462
+    },
+    {
+      "symbol": "COP",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 7243000000.0,
+      "total_revenue": 58944000000.0,
+      "fcf_margin": 0.1229
+    }
+  ]
+}

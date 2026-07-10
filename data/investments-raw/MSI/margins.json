@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "MSI",
+      "report_date": "2022-06-30",
+      "gross_profit": 990000000.0,
+      "total_revenue": 2140000000.0,
+      "gross_margin": 0.4626
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2023-06-30",
+      "gross_profit": 1189000000.0,
+      "total_revenue": 2403000000.0,
+      "gross_margin": 0.4948
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2023-09-30",
+      "gross_profit": 1280000000.0,
+      "total_revenue": 2556000000.0,
+      "gross_margin": 0.5008
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2023-12-31",
+      "gross_profit": 1455000000.0,
+      "total_revenue": 2849000000.0,
+      "gross_margin": 0.5107
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-03-31",
+      "gross_profit": 1192000000.0,
+      "total_revenue": 2389000000.0,
+      "gross_margin": 0.499
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-06-30",
+      "gross_profit": 1339000000.0,
+      "total_revenue": 2628000000.0,
+      "gross_margin": 0.5095
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-09-30",
+      "gross_profit": 1433000000.0,
+      "total_revenue": 2790000000.0,
+      "gross_margin": 0.5136
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-12-31",
+      "gross_profit": 1549000000.0,
+      "total_revenue": 3011000000.0,
+      "gross_margin": 0.5144
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-03-31",
+      "gross_profit": 1300000000.0,
+      "total_revenue": 2528000000.0,
+      "gross_margin": 0.5142
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-06-30",
+      "gross_profit": 1413000000.0,
+      "total_revenue": 2765000000.0,
+      "gross_margin": 0.511
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-09-30",
+      "gross_profit": 1554000000.0,
+      "total_revenue": 3009000000.0,
+      "gross_margin": 0.5165
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-12-31",
+      "gross_profit": 1768000000.0,
+      "total_revenue": 3380000000.0,
+      "gross_margin": 0.5231
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2026-03-31",
+      "gross_profit": 1362000000.0,
+      "total_revenue": 2714000000.0,
+      "gross_margin": 0.5018
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "MSI",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2020-12-31",
+      "gross_profit": 3608000000.0,
+      "total_revenue": 7414000000.0,
+      "gross_margin": 0.4866
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2021-12-31",
+      "gross_profit": 4040000000.0,
+      "total_revenue": 8171000000.0,
+      "gross_margin": 0.4944
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2022-12-31",
+      "gross_profit": 4229000000.0,
+      "total_revenue": 9112000000.0,
+      "gross_margin": 0.4641
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2023-12-31",
+      "gross_profit": 4970000000.0,
+      "total_revenue": 9978000000.0,
+      "gross_margin": 0.4981
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-12-31",
+      "gross_profit": 5512000000.0,
+      "total_revenue": 10817000000.0,
+      "gross_margin": 0.5096
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-12-31",
+      "gross_profit": 6035000000.0,
+      "total_revenue": 11682000000.0,
+      "gross_margin": 0.5166
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "MSI",
+      "report_date": "2022-06-30",
+      "operating_income": 378000000.0,
+      "total_revenue": 2140000000.0,
+      "operating_margin": 0.1766
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2023-06-30",
+      "operating_income": 550000000.0,
+      "total_revenue": 2403000000.0,
+      "operating_margin": 0.2289
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2023-09-30",
+      "operating_income": 646000000.0,
+      "total_revenue": 2556000000.0,
+      "operating_margin": 0.2527
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2023-12-31",
+      "operating_income": 774000000.0,
+      "total_revenue": 2849000000.0,
+      "operating_margin": 0.2717
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-03-31",
+      "operating_income": 538000000.0,
+      "total_revenue": 2389000000.0,
+      "operating_margin": 0.2252
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-06-30",
+      "operating_income": 653000000.0,
+      "total_revenue": 2628000000.0,
+      "operating_margin": 0.2485
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-09-30",
+      "operating_income": 722000000.0,
+      "total_revenue": 2790000000.0,
+      "operating_margin": 0.2588
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-12-31",
+      "operating_income": 776000000.0,
+      "total_revenue": 3011000000.0,
+      "operating_margin": 0.2577
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-03-31",
+      "operating_income": 594000000.0,
+      "total_revenue": 2528000000.0,
+      "operating_margin": 0.235
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-06-30",
+      "operating_income": 693000000.0,
+      "total_revenue": 2765000000.0,
+      "operating_margin": 0.2506
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-09-30",
+      "operating_income": 766000000.0,
+      "total_revenue": 3009000000.0,
+      "operating_margin": 0.2546
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-12-31",
+      "operating_income": 905000000.0,
+      "total_revenue": 3380000000.0,
+      "operating_margin": 0.2678
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2026-03-31",
+      "operating_income": 581000000.0,
+      "total_revenue": 2714000000.0,
+      "operating_margin": 0.2141
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "MSI",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2020-12-31",
+      "operating_income": 1414000000.0,
+      "total_revenue": 7414000000.0,
+      "operating_margin": 0.1907
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2021-12-31",
+      "operating_income": 1717000000.0,
+      "total_revenue": 8171000000.0,
+      "operating_margin": 0.2101
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2022-12-31",
+      "operating_income": 1743000000.0,
+      "total_revenue": 9112000000.0,
+      "operating_margin": 0.1913
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2023-12-31",
+      "operating_income": 2359000000.0,
+      "total_revenue": 9978000000.0,
+      "operating_margin": 0.2364
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-12-31",
+      "operating_income": 2689000000.0,
+      "total_revenue": 10817000000.0,
+      "operating_margin": 0.2486
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-12-31",
+      "operating_income": 2959000000.0,
+      "total_revenue": 11682000000.0,
+      "operating_margin": 0.2533
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "MSI",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 228000000.0,
+      "total_revenue": 2140000000.0,
+      "net_margin": 0.1065
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 371000000.0,
+      "total_revenue": 2403000000.0,
+      "net_margin": 0.1544
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 464000000.0,
+      "total_revenue": 2556000000.0,
+      "net_margin": 0.1815
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 596000000.0,
+      "total_revenue": 2849000000.0,
+      "net_margin": 0.2092
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": -39000000.0,
+      "total_revenue": 2389000000.0,
+      "net_margin": -0.0163
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 443000000.0,
+      "total_revenue": 2628000000.0,
+      "net_margin": 0.1686
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 562000000.0,
+      "total_revenue": 2790000000.0,
+      "net_margin": 0.2014
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 611000000.0,
+      "total_revenue": 3011000000.0,
+      "net_margin": 0.2029
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 430000000.0,
+      "total_revenue": 2528000000.0,
+      "net_margin": 0.1701
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 513000000.0,
+      "total_revenue": 2765000000.0,
+      "net_margin": 0.1855
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 562000000.0,
+      "total_revenue": 3009000000.0,
+      "net_margin": 0.1868
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 649000000.0,
+      "total_revenue": 3380000000.0,
+      "net_margin": 0.192
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 366000000.0,
+      "total_revenue": 2714000000.0,
+      "net_margin": 0.1349
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "MSI",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 949000000.0,
+      "total_revenue": 7414000000.0,
+      "net_margin": 0.128
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 1245000000.0,
+      "total_revenue": 8171000000.0,
+      "net_margin": 0.1524
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 1363000000.0,
+      "total_revenue": 9112000000.0,
+      "net_margin": 0.1496
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1709000000.0,
+      "total_revenue": 9978000000.0,
+      "net_margin": 0.1713
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1577000000.0,
+      "total_revenue": 10817000000.0,
+      "net_margin": 0.1458
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 2154000000.0,
+      "total_revenue": 11682000000.0,
+      "net_margin": 0.1844
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "MSI",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 2140000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2023-06-30",
+      "ebitda": 637000000.0,
+      "total_revenue": 2403000000.0,
+      "ebitda_margin": 0.2651
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2023-09-30",
+      "ebitda": 738000000.0,
+      "total_revenue": 2556000000.0,
+      "ebitda_margin": 0.2887
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2023-12-31",
+      "ebitda": 878000000.0,
+      "total_revenue": 2849000000.0,
+      "ebitda_margin": 0.3082
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-03-31",
+      "ebitda": 54000000.0,
+      "total_revenue": 2389000000.0,
+      "ebitda_margin": 0.0226
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-06-30",
+      "ebitda": 750000000.0,
+      "total_revenue": 2628000000.0,
+      "ebitda_margin": 0.2854
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-09-30",
+      "ebitda": 852000000.0,
+      "total_revenue": 2790000000.0,
+      "ebitda_margin": 0.3054
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-12-31",
+      "ebitda": 948000000.0,
+      "total_revenue": 3011000000.0,
+      "ebitda_margin": 0.3148
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-03-31",
+      "ebitda": 697000000.0,
+      "total_revenue": 2528000000.0,
+      "ebitda_margin": 0.2757
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-06-30",
+      "ebitda": 837000000.0,
+      "total_revenue": 2765000000.0,
+      "ebitda_margin": 0.3027
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-09-30",
+      "ebitda": 943000000.0,
+      "total_revenue": 3009000000.0,
+      "ebitda_margin": 0.3134
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-12-31",
+      "ebitda": 1120000000.0,
+      "total_revenue": 3380000000.0,
+      "ebitda_margin": 0.3314
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2026-03-31",
+      "ebitda": 695000000.0,
+      "total_revenue": 2714000000.0,
+      "ebitda_margin": 0.2561
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "MSI",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2020-12-31",
+      "ebitda": 1816000000.0,
+      "total_revenue": 7414000000.0,
+      "ebitda_margin": 0.2449
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2021-12-31",
+      "ebitda": 2205000000.0,
+      "total_revenue": 8171000000.0,
+      "ebitda_margin": 0.2699
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2022-12-31",
+      "ebitda": 2195000000.0,
+      "total_revenue": 9112000000.0,
+      "ebitda_margin": 0.2409
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2023-12-31",
+      "ebitda": 2751000000.0,
+      "total_revenue": 9978000000.0,
+      "ebitda_margin": 0.2757
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-12-31",
+      "ebitda": 2603000000.0,
+      "total_revenue": 10817000000.0,
+      "ebitda_margin": 0.2406
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-12-31",
+      "ebitda": 3597000000.0,
+      "total_revenue": 11682000000.0,
+      "ebitda_margin": 0.3079
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "MSI",
+      "report_date": "2022-06-30",
+      "free_cash_flow": -49000000.0,
+      "total_revenue": 2140000000.0,
+      "fcf_margin": -0.0229
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 40000000.0,
+      "total_revenue": 2403000000.0,
+      "fcf_margin": 0.0166
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 649000000.0,
+      "total_revenue": 2556000000.0,
+      "fcf_margin": 0.2539
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 1164000000.0,
+      "total_revenue": 2849000000.0,
+      "fcf_margin": 0.4086
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 336000000.0,
+      "total_revenue": 2389000000.0,
+      "fcf_margin": 0.1406
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 112000000.0,
+      "total_revenue": 2628000000.0,
+      "fcf_margin": 0.0426
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 702000000.0,
+      "total_revenue": 2790000000.0,
+      "fcf_margin": 0.2516
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 984000000.0,
+      "total_revenue": 3011000000.0,
+      "fcf_margin": 0.3268
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 473000000.0,
+      "total_revenue": 2528000000.0,
+      "fcf_margin": 0.1871
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 225000000.0,
+      "total_revenue": 2765000000.0,
+      "fcf_margin": 0.0814
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 732000000.0,
+      "total_revenue": 3009000000.0,
+      "fcf_margin": 0.2433
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 1142000000.0,
+      "total_revenue": 3380000000.0,
+      "fcf_margin": 0.3379
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 389000000.0,
+      "total_revenue": 2714000000.0,
+      "fcf_margin": 0.1433
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "MSI",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 1396000000.0,
+      "total_revenue": 7414000000.0,
+      "fcf_margin": 0.1883
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 1594000000.0,
+      "total_revenue": 8171000000.0,
+      "fcf_margin": 0.1951
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 1567000000.0,
+      "total_revenue": 9112000000.0,
+      "fcf_margin": 0.172
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 1791000000.0,
+      "total_revenue": 9978000000.0,
+      "fcf_margin": 0.1795
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 2134000000.0,
+      "total_revenue": 10817000000.0,
+      "fcf_margin": 0.1973
+    },
+    {
+      "symbol": "MSI",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 2572000000.0,
+      "total_revenue": 11682000000.0,
+      "fcf_margin": 0.2202
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "WM",
+    "name": "Mr. Charles C. Boettcher J.D.",
+    "title": "Executive VP of Corporate Development & Chief Legal Officer",
+    "age": 51,
+    "born": 1974,
+    "pay": 1357356,
+    "exercised": 3335416,
+    "unexercised": 891402,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "WM",
+    "name": "Mr. Charles S. Schwager",
+    "title": "VP and Chief Compliance & Ethics Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "WM",
+    "name": "Mr. David L. Reed",
+    "title": "CFO & Executive VP",
+    "age": 47,
+    "born": 1978,
+    "pay": 973849,
+    "exercised": 0,
+    "unexercised": 241279,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "WM",
+    "name": "Mr. Edward A. Egl",
+    "title": "Director of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "WM",
+    "name": "Mr. James C. Fish Jr.",
+    "title": "CEO & Director",
+    "age": 63,
+    "born": 1962,
+    "pay": 4242287,
+    "exercised": 3411294,
+    "unexercised": 226014,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "WM",
+    "name": "Mr. John A. Carroll",
+    "title": "VP & Chief Accounting Officer",
+    "age": 52,
+    "born": 1973,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "WM",
+    "name": "Mr. John J. Morris Jr.",
+    "title": "President",
+    "age": 55,
+    "born": 1970,
+    "pay": 2344000,
+    "exercised": 2636501,
+    "unexercised": 68386,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "WM",
+    "name": "Mr. Johnson  Varkey",
+    "title": "Senior VP & Chief Information Officer",
+    "age": 52,
+    "born": 1973,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "WM",
+    "name": "Mr. Rafael E. Carrasco",
+    "title": "Senior Vice President of Enterprise Strategy",
+    "age": 53,
+    "born": 1972,
+    "pay": 1455586,
+    "exercised": 412404,
+    "unexercised": 1812690,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "WM",
+    "name": "Ms. Tara J. Hemmer",
+    "title": "Executive VP & COO",
+    "age": 52,
+    "born": 1973,
+    "pay": 1507213,
+    "exercised": 5776116,
+    "unexercised": 555311,
+    "report_date": "2026-07-09"
+  }
+]

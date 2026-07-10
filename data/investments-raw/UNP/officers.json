@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "UNP",
+    "name": "Kate  Ottoson",
+    "title": "Director of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "UNP",
+    "name": "Mr. Eric J. Gehringer",
+    "title": "Executive Vice President of Operations",
+    "age": 46,
+    "born": 1979,
+    "pay": 1778453,
+    "exercised": 0,
+    "unexercised": 1243533,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "UNP",
+    "name": "Mr. Kenny G. Rocker",
+    "title": "Executive Vice President of Marketing & Sales",
+    "age": 53,
+    "born": 1972,
+    "pay": 1653571,
+    "exercised": 0,
+    "unexercised": 2141681,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "UNP",
+    "name": "Mr. Rahul  Jalali",
+    "title": "Executive VP & Chief Information Officer",
+    "age": 51,
+    "born": 1974,
+    "pay": 1445964,
+    "exercised": 0,
+    "unexercised": 363750,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "UNP",
+    "name": "Mr. Vincenzo James Vena",
+    "title": "CEO & Director",
+    "age": 66,
+    "born": 1959,
+    "pay": 5296229,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "UNP",
+    "name": "Ms. Carrie J. Powers",
+    "title": "VP, Controller & Chief Accounting Officer",
+    "age": 54,
+    "born": 1971,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "UNP",
+    "name": "Ms. Christina B. Conlin",
+    "title": "Executive VP, Chief Legal Officer & Corporate Secretary",
+    "age": 52,
+    "born": 1973,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "UNP",
+    "name": "Ms. Elizabeth F. Whited",
+    "title": "Advisor",
+    "age": 59,
+    "born": 1966,
+    "pay": 1289351,
+    "exercised": 663225,
+    "unexercised": 1521505,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "UNP",
+    "name": "Ms. Jennifer L. Hamann",
+    "title": "Executive VP & CFO",
+    "age": 57,
+    "born": 1968,
+    "pay": 1838444,
+    "exercised": 453460,
+    "unexercised": 2665164,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "UNP",
+    "name": "Ms. Rebecca B. Gregory",
+    "title": "Senior Vice President of Administration",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  }
+]

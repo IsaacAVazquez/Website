@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "ITW",
+      "report_date": "2022-06-30",
+      "gross_profit": 1619000000.0,
+      "total_revenue": 4011000000.0,
+      "gross_margin": 0.4036
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2022-09-30",
+      "gross_profit": 1640000000.0,
+      "total_revenue": 4011000000.0,
+      "gross_margin": 0.4089
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2022-12-31",
+      "gross_profit": 1662000000.0,
+      "total_revenue": 3971000000.0,
+      "gross_margin": 0.4185
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2023-03-31",
+      "gross_profit": 1678000000.0,
+      "total_revenue": 4019000000.0,
+      "gross_margin": 0.4175
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2023-06-30",
+      "gross_profit": 1730000000.0,
+      "total_revenue": 4074000000.0,
+      "gross_margin": 0.4246
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2023-09-30",
+      "gross_profit": 1712000000.0,
+      "total_revenue": 4031000000.0,
+      "gross_margin": 0.4247
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2023-12-31",
+      "gross_profit": 1671000000.0,
+      "total_revenue": 3983000000.0,
+      "gross_margin": 0.4195
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-03-31",
+      "gross_profit": 1828000000.0,
+      "total_revenue": 3973000000.0,
+      "gross_margin": 0.4601
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-06-30",
+      "gross_profit": 1765000000.0,
+      "total_revenue": 4027000000.0,
+      "gross_margin": 0.4383
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-09-30",
+      "gross_profit": 1736000000.0,
+      "total_revenue": 3966000000.0,
+      "gross_margin": 0.4377
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-12-31",
+      "gross_profit": 1711000000.0,
+      "total_revenue": 3932000000.0,
+      "gross_margin": 0.4351
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-03-31",
+      "gross_profit": 1678000000.0,
+      "total_revenue": 3839000000.0,
+      "gross_margin": 0.4371
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-06-30",
+      "gross_profit": 1782000000.0,
+      "total_revenue": 4053000000.0,
+      "gross_margin": 0.4397
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-09-30",
+      "gross_profit": 1806000000.0,
+      "total_revenue": 4059000000.0,
+      "gross_margin": 0.4449
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-12-31",
+      "gross_profit": 1809000000.0,
+      "total_revenue": 4093000000.0,
+      "gross_margin": 0.442
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2026-03-31",
+      "gross_profit": 1760000000.0,
+      "total_revenue": 4016000000.0,
+      "gross_margin": 0.4382
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "ITW",
+      "report_date": "2019-12-31",
+      "gross_profit": 5922000000.0,
+      "total_revenue": 14109000000.0,
+      "gross_margin": 0.4197
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2020-12-31",
+      "gross_profit": 5199000000.0,
+      "total_revenue": 12574000000.0,
+      "gross_margin": 0.4135
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2021-12-31",
+      "gross_profit": 5966000000.0,
+      "total_revenue": 14455000000.0,
+      "gross_margin": 0.4127
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2022-12-31",
+      "gross_profit": 6503000000.0,
+      "total_revenue": 15932000000.0,
+      "gross_margin": 0.4082
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2023-12-31",
+      "gross_profit": 6791000000.0,
+      "total_revenue": 16107000000.0,
+      "gross_margin": 0.4216
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-12-31",
+      "gross_profit": 7040000000.0,
+      "total_revenue": 15898000000.0,
+      "gross_margin": 0.4428
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-12-31",
+      "gross_profit": 7075000000.0,
+      "total_revenue": 16044000000.0,
+      "gross_margin": 0.441
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "ITW",
+      "report_date": "2022-06-30",
+      "operating_income": 926000000.0,
+      "total_revenue": 4011000000.0,
+      "operating_margin": 0.2309
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2022-09-30",
+      "operating_income": 983000000.0,
+      "total_revenue": 4011000000.0,
+      "operating_margin": 0.2451
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2022-12-31",
+      "operating_income": 986000000.0,
+      "total_revenue": 3971000000.0,
+      "operating_margin": 0.2483
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2023-03-31",
+      "operating_income": 972000000.0,
+      "total_revenue": 4019000000.0,
+      "operating_margin": 0.2419
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2023-06-30",
+      "operating_income": 1010000000.0,
+      "total_revenue": 4074000000.0,
+      "operating_margin": 0.2479
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2023-09-30",
+      "operating_income": 1070000000.0,
+      "total_revenue": 4031000000.0,
+      "operating_margin": 0.2654
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2023-12-31",
+      "operating_income": 988000000.0,
+      "total_revenue": 3983000000.0,
+      "operating_margin": 0.2481
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-03-31",
+      "operating_income": 1127000000.0,
+      "total_revenue": 3973000000.0,
+      "operating_margin": 0.2837
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-06-30",
+      "operating_income": 1054000000.0,
+      "total_revenue": 4027000000.0,
+      "operating_margin": 0.2617
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-09-30",
+      "operating_income": 1052000000.0,
+      "total_revenue": 3966000000.0,
+      "operating_margin": 0.2653
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-12-31",
+      "operating_income": 1031000000.0,
+      "total_revenue": 3932000000.0,
+      "operating_margin": 0.2622
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-03-31",
+      "operating_income": 951000000.0,
+      "total_revenue": 3839000000.0,
+      "operating_margin": 0.2477
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-06-30",
+      "operating_income": 1068000000.0,
+      "total_revenue": 4053000000.0,
+      "operating_margin": 0.2635
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-09-30",
+      "operating_income": 1112000000.0,
+      "total_revenue": 4059000000.0,
+      "operating_margin": 0.274
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-12-31",
+      "operating_income": 1085000000.0,
+      "total_revenue": 4093000000.0,
+      "operating_margin": 0.2651
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2026-03-31",
+      "operating_income": 1020000000.0,
+      "total_revenue": 4016000000.0,
+      "operating_margin": 0.254
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "ITW",
+      "report_date": "2019-12-31",
+      "operating_income": 3402000000.0,
+      "total_revenue": 14109000000.0,
+      "operating_margin": 0.2411
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2020-12-31",
+      "operating_income": 2882000000.0,
+      "total_revenue": 12574000000.0,
+      "operating_margin": 0.2292
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2021-12-31",
+      "operating_income": 3477000000.0,
+      "total_revenue": 14455000000.0,
+      "operating_margin": 0.2405
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2022-12-31",
+      "operating_income": 3790000000.0,
+      "total_revenue": 15932000000.0,
+      "operating_margin": 0.2379
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2023-12-31",
+      "operating_income": 4040000000.0,
+      "total_revenue": 16107000000.0,
+      "operating_margin": 0.2508
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-12-31",
+      "operating_income": 4264000000.0,
+      "total_revenue": 15898000000.0,
+      "operating_margin": 0.2682
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-12-31",
+      "operating_income": 4216000000.0,
+      "total_revenue": 16044000000.0,
+      "operating_margin": 0.2628
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "ITW",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 738000000.0,
+      "total_revenue": 4011000000.0,
+      "net_margin": 0.184
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": 727000000.0,
+      "total_revenue": 4011000000.0,
+      "net_margin": 0.1813
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 907000000.0,
+      "total_revenue": 3971000000.0,
+      "net_margin": 0.2284
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": 714000000.0,
+      "total_revenue": 4019000000.0,
+      "net_margin": 0.1777
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 754000000.0,
+      "total_revenue": 4074000000.0,
+      "net_margin": 0.1851
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 772000000.0,
+      "total_revenue": 4031000000.0,
+      "net_margin": 0.1915
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 717000000.0,
+      "total_revenue": 3983000000.0,
+      "net_margin": 0.18
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 819000000.0,
+      "total_revenue": 3973000000.0,
+      "net_margin": 0.2061
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 759000000.0,
+      "total_revenue": 4027000000.0,
+      "net_margin": 0.1885
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1160000000.0,
+      "total_revenue": 3966000000.0,
+      "net_margin": 0.2925
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 750000000.0,
+      "total_revenue": 3932000000.0,
+      "net_margin": 0.1907
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 700000000.0,
+      "total_revenue": 3839000000.0,
+      "net_margin": 0.1823
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 755000000.0,
+      "total_revenue": 4053000000.0,
+      "net_margin": 0.1863
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 821000000.0,
+      "total_revenue": 4059000000.0,
+      "net_margin": 0.2023
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 790000000.0,
+      "total_revenue": 4093000000.0,
+      "net_margin": 0.193
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 768000000.0,
+      "total_revenue": 4016000000.0,
+      "net_margin": 0.1912
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "ITW",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": 2521000000.0,
+      "total_revenue": 14109000000.0,
+      "net_margin": 0.1787
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 2109000000.0,
+      "total_revenue": 12574000000.0,
+      "net_margin": 0.1677
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 2694000000.0,
+      "total_revenue": 14455000000.0,
+      "net_margin": 0.1864
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 3034000000.0,
+      "total_revenue": 15932000000.0,
+      "net_margin": 0.1904
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 2957000000.0,
+      "total_revenue": 16107000000.0,
+      "net_margin": 0.1836
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 3488000000.0,
+      "total_revenue": 15898000000.0,
+      "net_margin": 0.2194
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 3066000000.0,
+      "total_revenue": 16044000000.0,
+      "net_margin": 0.1911
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "ITW",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 4011000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2022-09-30",
+      "ebitda": 1042000000.0,
+      "total_revenue": 4011000000.0,
+      "ebitda_margin": 0.2598
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2022-12-31",
+      "ebitda": 1276000000.0,
+      "total_revenue": 3971000000.0,
+      "ebitda_margin": 0.3213
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2023-03-31",
+      "ebitda": 1081000000.0,
+      "total_revenue": 4019000000.0,
+      "ebitda_margin": 0.269
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2023-06-30",
+      "ebitda": 1130000000.0,
+      "total_revenue": 4074000000.0,
+      "ebitda_margin": 0.2774
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2023-09-30",
+      "ebitda": 1177000000.0,
+      "total_revenue": 4031000000.0,
+      "ebitda_margin": 0.292
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2023-12-31",
+      "ebitda": 1096000000.0,
+      "total_revenue": 3983000000.0,
+      "ebitda_margin": 0.2752
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-03-31",
+      "ebitda": 1240000000.0,
+      "total_revenue": 3973000000.0,
+      "ebitda_margin": 0.3121
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-06-30",
+      "ebitda": 1179000000.0,
+      "total_revenue": 4027000000.0,
+      "ebitda_margin": 0.2928
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-09-30",
+      "ebitda": 1535000000.0,
+      "total_revenue": 3966000000.0,
+      "ebitda_margin": 0.387
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-12-31",
+      "ebitda": 1153000000.0,
+      "total_revenue": 3932000000.0,
+      "ebitda_margin": 0.2932
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-03-31",
+      "ebitda": 1058000000.0,
+      "total_revenue": 3839000000.0,
+      "ebitda_margin": 0.2756
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-06-30",
+      "ebitda": 1171000000.0,
+      "total_revenue": 4053000000.0,
+      "ebitda_margin": 0.2889
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-09-30",
+      "ebitda": 1224000000.0,
+      "total_revenue": 4059000000.0,
+      "ebitda_margin": 0.3016
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-12-31",
+      "ebitda": 1202000000.0,
+      "total_revenue": 4093000000.0,
+      "ebitda_margin": 0.2937
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2026-03-31",
+      "ebitda": 1139000000.0,
+      "total_revenue": 4016000000.0,
+      "ebitda_margin": 0.2836
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "ITW",
+      "report_date": "2019-12-31",
+      "ebitda": 3668000000.0,
+      "total_revenue": 14109000000.0,
+      "ebitda_margin": 0.26
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2020-12-31",
+      "ebitda": 3337000000.0,
+      "total_revenue": 12574000000.0,
+      "ebitda_margin": 0.2654
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2021-12-31",
+      "ebitda": 3938000000.0,
+      "total_revenue": 14455000000.0,
+      "ebitda_margin": 0.2724
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2022-12-31",
+      "ebitda": 4455000000.0,
+      "total_revenue": 15932000000.0,
+      "ebitda_margin": 0.2796
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2023-12-31",
+      "ebitda": 4484000000.0,
+      "total_revenue": 16107000000.0,
+      "ebitda_margin": 0.2784
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-12-31",
+      "ebitda": 5107000000.0,
+      "total_revenue": 15898000000.0,
+      "ebitda_margin": 0.3212
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-12-31",
+      "ebitda": 4655000000.0,
+      "total_revenue": 16044000000.0,
+      "ebitda_margin": 0.2901
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "ITW",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 420000000.0,
+      "total_revenue": 4011000000.0,
+      "fcf_margin": 0.1047
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": 4011000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 3971000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": 4019000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 705000000.0,
+      "total_revenue": 4074000000.0,
+      "fcf_margin": 0.173
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 856000000.0,
+      "total_revenue": 4031000000.0,
+      "fcf_margin": 0.2124
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 908000000.0,
+      "total_revenue": 3983000000.0,
+      "fcf_margin": 0.228
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 494000000.0,
+      "total_revenue": 3973000000.0,
+      "fcf_margin": 0.1243
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 571000000.0,
+      "total_revenue": 4027000000.0,
+      "fcf_margin": 0.1418
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 783000000.0,
+      "total_revenue": 3966000000.0,
+      "fcf_margin": 0.1974
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 996000000.0,
+      "total_revenue": 3932000000.0,
+      "fcf_margin": 0.2533
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 496000000.0,
+      "total_revenue": 3839000000.0,
+      "fcf_margin": 0.1292
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 449000000.0,
+      "total_revenue": 4053000000.0,
+      "fcf_margin": 0.1108
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 904000000.0,
+      "total_revenue": 4059000000.0,
+      "fcf_margin": 0.2227
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 858000000.0,
+      "total_revenue": 4093000000.0,
+      "fcf_margin": 0.2096
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 528000000.0,
+      "total_revenue": 4016000000.0,
+      "fcf_margin": 0.1315
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "ITW",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 14109000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 2571000000.0,
+      "total_revenue": 12574000000.0,
+      "fcf_margin": 0.2045
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 2261000000.0,
+      "total_revenue": 14455000000.0,
+      "fcf_margin": 0.1564
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 1936000000.0,
+      "total_revenue": 15932000000.0,
+      "fcf_margin": 0.1215
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 3084000000.0,
+      "total_revenue": 16107000000.0,
+      "fcf_margin": 0.1915
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 2844000000.0,
+      "total_revenue": 15898000000.0,
+      "fcf_margin": 0.1789
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 2707000000.0,
+      "total_revenue": 16044000000.0,
+      "fcf_margin": 0.1687
+    }
+  ]
+}

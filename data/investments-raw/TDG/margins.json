@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "TDG",
+      "report_date": "2022-06-30",
+      "gross_profit": 816000000.0,
+      "total_revenue": 1398000000.0,
+      "gross_margin": 0.5837
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2023-06-30",
+      "gross_profit": 1029000000.0,
+      "total_revenue": 1744000000.0,
+      "gross_margin": 0.59
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2023-09-30",
+      "gross_profit": 1092000000.0,
+      "total_revenue": 1852000000.0,
+      "gross_margin": 0.5896
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2023-12-31",
+      "gross_profit": 1042000000.0,
+      "total_revenue": 1789000000.0,
+      "gross_margin": 0.5824
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2024-03-31",
+      "gross_profit": 1152000000.0,
+      "total_revenue": 1919000000.0,
+      "gross_margin": 0.6003
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2024-06-30",
+      "gross_profit": 1220000000.0,
+      "total_revenue": 2046000000.0,
+      "gross_margin": 0.5963
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2024-09-30",
+      "gross_profit": 1259000000.0,
+      "total_revenue": 2186000000.0,
+      "gross_margin": 0.5759
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2024-12-31",
+      "gross_profit": 1235000000.0,
+      "total_revenue": 2006000000.0,
+      "gross_margin": 0.6157
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2025-03-31",
+      "gross_profit": 1274000000.0,
+      "total_revenue": 2150000000.0,
+      "gross_margin": 0.5926
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2025-06-30",
+      "gross_profit": 1332000000.0,
+      "total_revenue": 2237000000.0,
+      "gross_margin": 0.5954
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2025-09-30",
+      "gross_profit": 1470000000.0,
+      "total_revenue": 2437000000.0,
+      "gross_margin": 0.6032
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2025-12-31",
+      "gross_profit": 1352000000.0,
+      "total_revenue": 2285000000.0,
+      "gross_margin": 0.5917
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2026-03-31",
+      "gross_profit": 1511000000.0,
+      "total_revenue": 2544000000.0,
+      "gross_margin": 0.5939
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "TDG",
+      "report_date": "2019-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2020-09-30",
+      "gross_profit": 2647000000.0,
+      "total_revenue": 5103000000.0,
+      "gross_margin": 0.5187
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2021-09-30",
+      "gross_profit": 2513000000.0,
+      "total_revenue": 4798000000.0,
+      "gross_margin": 0.5238
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2022-09-30",
+      "gross_profit": 3099000000.0,
+      "total_revenue": 5429000000.0,
+      "gross_margin": 0.5708
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2023-09-30",
+      "gross_profit": 3842000000.0,
+      "total_revenue": 6585000000.0,
+      "gross_margin": 0.5834
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2024-09-30",
+      "gross_profit": 4672000000.0,
+      "total_revenue": 7940000000.0,
+      "gross_margin": 0.5884
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2025-09-30",
+      "gross_profit": 5311000000.0,
+      "total_revenue": 8831000000.0,
+      "gross_margin": 0.6014
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "TDG",
+      "report_date": "2022-06-30",
+      "operating_income": 599000000.0,
+      "total_revenue": 1398000000.0,
+      "operating_margin": 0.4285
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2023-06-30",
+      "operating_income": 789000000.0,
+      "total_revenue": 1744000000.0,
+      "operating_margin": 0.4524
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2023-09-30",
+      "operating_income": 859000000.0,
+      "total_revenue": 1852000000.0,
+      "operating_margin": 0.4638
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2023-12-31",
+      "operating_income": 788000000.0,
+      "total_revenue": 1789000000.0,
+      "operating_margin": 0.4405
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2024-03-31",
+      "operating_income": 878000000.0,
+      "total_revenue": 1919000000.0,
+      "operating_margin": 0.4575
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2024-06-30",
+      "operating_income": 955000000.0,
+      "total_revenue": 2046000000.0,
+      "operating_margin": 0.4668
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2024-09-30",
+      "operating_income": 956000000.0,
+      "total_revenue": 2186000000.0,
+      "operating_margin": 0.4373
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2024-12-31",
+      "operating_income": 978000000.0,
+      "total_revenue": 2006000000.0,
+      "operating_margin": 0.4875
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2025-03-31",
+      "operating_income": 996000000.0,
+      "total_revenue": 2150000000.0,
+      "operating_margin": 0.4633
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2025-06-30",
+      "operating_income": 1045000000.0,
+      "total_revenue": 2237000000.0,
+      "operating_margin": 0.4671
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2025-09-30",
+      "operating_income": 1169000000.0,
+      "total_revenue": 2437000000.0,
+      "operating_margin": 0.4797
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2025-12-31",
+      "operating_income": 1047000000.0,
+      "total_revenue": 2285000000.0,
+      "operating_margin": 0.4582
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2026-03-31",
+      "operating_income": 1187000000.0,
+      "total_revenue": 2544000000.0,
+      "operating_margin": 0.4666
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "TDG",
+      "report_date": "2019-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2020-09-30",
+      "operating_income": 1751000000.0,
+      "total_revenue": 5103000000.0,
+      "operating_margin": 0.3431
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2021-09-30",
+      "operating_income": 1691000000.0,
+      "total_revenue": 4798000000.0,
+      "operating_margin": 0.3524
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2022-09-30",
+      "operating_income": 2215000000.0,
+      "total_revenue": 5429000000.0,
+      "operating_margin": 0.408
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2023-09-30",
+      "operating_income": 2923000000.0,
+      "total_revenue": 6585000000.0,
+      "operating_margin": 0.4439
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2024-09-30",
+      "operating_income": 3577000000.0,
+      "total_revenue": 7940000000.0,
+      "operating_margin": 0.4505
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2025-09-30",
+      "operating_income": 4189000000.0,
+      "total_revenue": 8831000000.0,
+      "operating_margin": 0.4744
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "TDG",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 238000000.0,
+      "total_revenue": 1398000000.0,
+      "net_margin": 0.1702
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 351000000.0,
+      "total_revenue": 1744000000.0,
+      "net_margin": 0.2013
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 415000000.0,
+      "total_revenue": 1852000000.0,
+      "net_margin": 0.2241
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 281000000.0,
+      "total_revenue": 1789000000.0,
+      "net_margin": 0.1571
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 403000000.0,
+      "total_revenue": 1919000000.0,
+      "net_margin": 0.21
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 461000000.0,
+      "total_revenue": 2046000000.0,
+      "net_margin": 0.2253
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 336000000.0,
+      "total_revenue": 2186000000.0,
+      "net_margin": 0.1537
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 444000000.0,
+      "total_revenue": 2006000000.0,
+      "net_margin": 0.2213
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 479000000.0,
+      "total_revenue": 2150000000.0,
+      "net_margin": 0.2228
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 492000000.0,
+      "total_revenue": 2237000000.0,
+      "net_margin": 0.2199
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 451000000.0,
+      "total_revenue": 2437000000.0,
+      "net_margin": 0.1851
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 386000000.0,
+      "total_revenue": 2285000000.0,
+      "net_margin": 0.1689
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 535000000.0,
+      "total_revenue": 2544000000.0,
+      "net_margin": 0.2103
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "TDG",
+      "report_date": "2019-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2020-09-30",
+      "net_income_common_stockholders": 514000000.0,
+      "total_revenue": 5103000000.0,
+      "net_margin": 0.1007
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2021-09-30",
+      "net_income_common_stockholders": 607000000.0,
+      "total_revenue": 4798000000.0,
+      "net_margin": 0.1265
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": 780000000.0,
+      "total_revenue": 5429000000.0,
+      "net_margin": 0.1437
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1260000000.0,
+      "total_revenue": 6585000000.0,
+      "net_margin": 0.1913
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1481000000.0,
+      "total_revenue": 7940000000.0,
+      "net_margin": 0.1865
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1866000000.0,
+      "total_revenue": 8831000000.0,
+      "net_margin": 0.2113
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "TDG",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 1398000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2023-06-30",
+      "ebitda": 830000000.0,
+      "total_revenue": 1744000000.0,
+      "ebitda_margin": 0.4759
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2023-09-30",
+      "ebitda": 911000000.0,
+      "total_revenue": 1852000000.0,
+      "ebitda_margin": 0.4919
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2023-12-31",
+      "ebitda": 859000000.0,
+      "total_revenue": 1789000000.0,
+      "ebitda_margin": 0.4802
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2024-03-31",
+      "ebitda": 917000000.0,
+      "total_revenue": 1919000000.0,
+      "ebitda_margin": 0.4779
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2024-06-30",
+      "ebitda": 994000000.0,
+      "total_revenue": 2046000000.0,
+      "ebitda_margin": 0.4858
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2024-09-30",
+      "ebitda": 1041000000.0,
+      "total_revenue": 2186000000.0,
+      "ebitda_margin": 0.4762
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2024-12-31",
+      "ebitda": 1087000000.0,
+      "total_revenue": 2006000000.0,
+      "ebitda_margin": 0.5419
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2025-03-31",
+      "ebitda": 1089000000.0,
+      "total_revenue": 2150000000.0,
+      "ebitda_margin": 0.5065
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2025-06-30",
+      "ebitda": 1124000000.0,
+      "total_revenue": 2237000000.0,
+      "ebitda_margin": 0.5025
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2025-09-30",
+      "ebitda": 1269000000.0,
+      "total_revenue": 2437000000.0,
+      "ebitda_margin": 0.5207
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2025-12-31",
+      "ebitda": 1147000000.0,
+      "total_revenue": 2285000000.0,
+      "ebitda_margin": 0.502
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2026-03-31",
+      "ebitda": 1289000000.0,
+      "total_revenue": 2544000000.0,
+      "ebitda_margin": 0.5067
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "TDG",
+      "report_date": "2019-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2020-09-30",
+      "ebitda": 2052000000.0,
+      "total_revenue": 5103000000.0,
+      "ebitda_margin": 0.4021
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2021-09-30",
+      "ebitda": 2027000000.0,
+      "total_revenue": 4798000000.0,
+      "ebitda_margin": 0.4225
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2022-09-30",
+      "ebitda": 2456000000.0,
+      "total_revenue": 5429000000.0,
+      "ebitda_margin": 0.4524
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2023-09-30",
+      "ebitda": 3148000000.0,
+      "total_revenue": 6585000000.0,
+      "ebitda_margin": 0.4781
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2024-09-30",
+      "ebitda": 3813000000.0,
+      "total_revenue": 7940000000.0,
+      "ebitda_margin": 0.4802
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2025-09-30",
+      "ebitda": 4568000000.0,
+      "total_revenue": 8831000000.0,
+      "ebitda_margin": 0.5173
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "TDG",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 280000000.0,
+      "total_revenue": 1398000000.0,
+      "fcf_margin": 0.2003
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2022-09-30",
+      "free_cash_flow": 240000000.0,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 370000000.0,
+      "total_revenue": 1744000000.0,
+      "fcf_margin": 0.2122
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 425000000.0,
+      "total_revenue": 1852000000.0,
+      "fcf_margin": 0.2295
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 600000000.0,
+      "total_revenue": 1789000000.0,
+      "fcf_margin": 0.3354
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 181000000.0,
+      "total_revenue": 1919000000.0,
+      "fcf_margin": 0.0943
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 568000000.0,
+      "total_revenue": 2046000000.0,
+      "fcf_margin": 0.2776
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 531000000.0,
+      "total_revenue": 2186000000.0,
+      "fcf_margin": 0.2429
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 710000000.0,
+      "total_revenue": 2006000000.0,
+      "fcf_margin": 0.3539
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 92000000.0,
+      "total_revenue": 2150000000.0,
+      "fcf_margin": 0.0428
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 573000000.0,
+      "total_revenue": 2237000000.0,
+      "fcf_margin": 0.2561
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 441000000.0,
+      "total_revenue": 2437000000.0,
+      "fcf_margin": 0.181
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 772000000.0,
+      "total_revenue": 2285000000.0,
+      "fcf_margin": 0.3379
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 64000000.0,
+      "total_revenue": 2544000000.0,
+      "fcf_margin": 0.0252
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "TDG",
+      "report_date": "2019-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2020-09-30",
+      "free_cash_flow": 1108000000.0,
+      "total_revenue": 5103000000.0,
+      "fcf_margin": 0.2171
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2021-09-30",
+      "free_cash_flow": 808000000.0,
+      "total_revenue": 4798000000.0,
+      "fcf_margin": 0.1684
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2022-09-30",
+      "free_cash_flow": 829000000.0,
+      "total_revenue": 5429000000.0,
+      "fcf_margin": 0.1527
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 1236000000.0,
+      "total_revenue": 6585000000.0,
+      "fcf_margin": 0.1877
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 1880000000.0,
+      "total_revenue": 7940000000.0,
+      "fcf_margin": 0.2368
+    },
+    {
+      "symbol": "TDG",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 1816000000.0,
+      "total_revenue": 8831000000.0,
+      "fcf_margin": 0.2056
+    }
+  ]
+}

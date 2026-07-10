@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "ITW",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 772000000.0,
+      "beginning_stockholders_equity": 3093000000.0,
+      "ending_stockholders_equity": 3003000000.0,
+      "avg_equity": 3048000000.0,
+      "roe": 0.2533
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 717000000.0,
+      "beginning_stockholders_equity": 3003000000.0,
+      "ending_stockholders_equity": 3012000000.0,
+      "avg_equity": 3007500000.0,
+      "roe": 0.2384
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 819000000.0,
+      "beginning_stockholders_equity": 3012000000.0,
+      "ending_stockholders_equity": 3020000000.0,
+      "avg_equity": 3016000000.0,
+      "roe": 0.2716
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 759000000.0,
+      "beginning_stockholders_equity": 3020000000.0,
+      "ending_stockholders_equity": 2961000000.0,
+      "avg_equity": 2990500000.0,
+      "roe": 0.2538
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1160000000.0,
+      "beginning_stockholders_equity": 2961000000.0,
+      "ending_stockholders_equity": 3391000000.0,
+      "avg_equity": 3176000000.0,
+      "roe": 0.3652
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 750000000.0,
+      "beginning_stockholders_equity": 3391000000.0,
+      "ending_stockholders_equity": 3316000000.0,
+      "avg_equity": 3353500000.0,
+      "roe": 0.2236
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 700000000.0,
+      "beginning_stockholders_equity": 3316000000.0,
+      "ending_stockholders_equity": 3241000000.0,
+      "avg_equity": 3278500000.0,
+      "roe": 0.2135
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 755000000.0,
+      "beginning_stockholders_equity": 3241000000.0,
+      "ending_stockholders_equity": 3210000000.0,
+      "avg_equity": 3225500000.0,
+      "roe": 0.2341
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 821000000.0,
+      "beginning_stockholders_equity": 3210000000.0,
+      "ending_stockholders_equity": 3208000000.0,
+      "avg_equity": 3209000000.0,
+      "roe": 0.2558
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 790000000.0,
+      "beginning_stockholders_equity": 3208000000.0,
+      "ending_stockholders_equity": 3225000000.0,
+      "avg_equity": 3216500000.0,
+      "roe": 0.2456
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 768000000.0,
+      "beginning_stockholders_equity": 3225000000.0,
+      "ending_stockholders_equity": 3229000000.0,
+      "avg_equity": 3227000000.0,
+      "roe": 0.238
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "ITW",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 772000000.0,
+      "beginning_total_assets": 15652000000.0,
+      "ending_total_assets": 15395000000.0,
+      "avg_assets": 15523500000.0,
+      "roa": 0.0497
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 717000000.0,
+      "beginning_total_assets": 15395000000.0,
+      "ending_total_assets": 15518000000.0,
+      "avg_assets": 15456500000.0,
+      "roa": 0.0464
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 819000000.0,
+      "beginning_total_assets": 15518000000.0,
+      "ending_total_assets": 15653000000.0,
+      "avg_assets": 15585500000.0,
+      "roa": 0.0525
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 759000000.0,
+      "beginning_total_assets": 15653000000.0,
+      "ending_total_assets": 15577000000.0,
+      "avg_assets": 15615000000.0,
+      "roa": 0.0486
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1160000000.0,
+      "beginning_total_assets": 15577000000.0,
+      "ending_total_assets": 15824000000.0,
+      "avg_assets": 15700500000.0,
+      "roa": 0.0739
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 750000000.0,
+      "beginning_total_assets": 15824000000.0,
+      "ending_total_assets": 15067000000.0,
+      "avg_assets": 15445500000.0,
+      "roa": 0.0486
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 700000000.0,
+      "beginning_total_assets": 15067000000.0,
+      "ending_total_assets": 15468000000.0,
+      "avg_assets": 15267500000.0,
+      "roa": 0.0458
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 755000000.0,
+      "beginning_total_assets": 15468000000.0,
+      "ending_total_assets": 16048000000.0,
+      "avg_assets": 15758000000.0,
+      "roa": 0.0479
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 821000000.0,
+      "beginning_total_assets": 16048000000.0,
+      "ending_total_assets": 16135000000.0,
+      "avg_assets": 16091500000.0,
+      "roa": 0.051
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 790000000.0,
+      "beginning_total_assets": 16135000000.0,
+      "ending_total_assets": 16148000000.0,
+      "avg_assets": 16141500000.0,
+      "roa": 0.0489
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 768000000.0,
+      "beginning_total_assets": 16148000000.0,
+      "ending_total_assets": 16264000000.0,
+      "avg_assets": 16206000000.0,
+      "roa": 0.0474
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "ITW",
+      "report_date": "2023-09-30",
+      "ebit": 1080000000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 820800000.0,
+      "beginning_invested_capital": 11315000000.0,
+      "ending_invested_capital": 11069000000.0,
+      "avg_invested_capital": 11192000000.0,
+      "roic": 0.0733
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2023-12-31",
+      "ebit": 997000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 767690000.0,
+      "beginning_invested_capital": 11069000000.0,
+      "ending_invested_capital": 11176000000.0,
+      "avg_invested_capital": 11122500000.0,
+      "roic": 0.069
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-03-31",
+      "ebit": 1143000000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 868680000.0,
+      "beginning_invested_capital": 11176000000.0,
+      "ending_invested_capital": 11345000000.0,
+      "avg_invested_capital": 11260500000.0,
+      "roic": 0.0771
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-06-30",
+      "ebit": 1080000000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 820800000.0,
+      "beginning_invested_capital": 11345000000.0,
+      "ending_invested_capital": 11434000000.0,
+      "avg_invested_capital": 11389500000.0,
+      "roic": 0.0721
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-09-30",
+      "ebit": 1431000000.0,
+      "tax_rate_for_calcs": 0.15,
+      "nopat": 1216350000.0,
+      "beginning_invested_capital": 11434000000.0,
+      "ending_invested_capital": 11737000000.0,
+      "avg_invested_capital": 11585500000.0,
+      "roic": 0.105
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-12-31",
+      "ebit": 1051000000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 798760000.0,
+      "beginning_invested_capital": 11737000000.0,
+      "ending_invested_capital": 11179000000.0,
+      "avg_invested_capital": 11458000000.0,
+      "roic": 0.0697
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-03-31",
+      "ebit": 963000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 751140000.0,
+      "beginning_invested_capital": 11179000000.0,
+      "ending_invested_capital": 11504000000.0,
+      "avg_invested_capital": 11341500000.0,
+      "roic": 0.0662
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-06-30",
+      "ebit": 1072000000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 814720000.0,
+      "beginning_invested_capital": 11504000000.0,
+      "ending_invested_capital": 12147000000.0,
+      "avg_invested_capital": 11825500000.0,
+      "roic": 0.0689
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-09-30",
+      "ebit": 1124000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 876720000.0,
+      "beginning_invested_capital": 12147000000.0,
+      "ending_invested_capital": 12150000000.0,
+      "avg_invested_capital": 12148500000.0,
+      "roic": 0.0722
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-12-31",
+      "ebit": 1099000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 846230000.0,
+      "beginning_invested_capital": 12150000000.0,
+      "ending_invested_capital": 12194000000.0,
+      "avg_invested_capital": 12172000000.0,
+      "roic": 0.0695
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2026-03-31",
+      "ebit": 1040000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 821600000.0,
+      "beginning_invested_capital": 12194000000.0,
+      "ending_invested_capital": 12377000000.0,
+      "avg_invested_capital": 12285500000.0,
+      "roic": 0.0669
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "ITW",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.2533,
+      "roa": 0.0497,
+      "equity_multiplier": 5.1
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.2384,
+      "roa": 0.0464,
+      "equity_multiplier": 5.14
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.2716,
+      "roa": 0.0525,
+      "equity_multiplier": 5.17
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.2538,
+      "roa": 0.0486,
+      "equity_multiplier": 5.22
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.3652,
+      "roa": 0.0739,
+      "equity_multiplier": 4.94
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.2236,
+      "roa": 0.0486,
+      "equity_multiplier": 4.6
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.2135,
+      "roa": 0.0458,
+      "equity_multiplier": 4.66
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.2341,
+      "roa": 0.0479,
+      "equity_multiplier": 4.89
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.2558,
+      "roa": 0.051,
+      "equity_multiplier": 5.02
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.2456,
+      "roa": 0.0489,
+      "equity_multiplier": 5.02
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.238,
+      "roa": 0.0474,
+      "equity_multiplier": 5.02
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "ITW",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0497,
+      "net_margin": 0.1915,
+      "asset_turnover": 0.26
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0464,
+      "net_margin": 0.18,
+      "asset_turnover": 0.26
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0525,
+      "net_margin": 0.2061,
+      "asset_turnover": 0.25
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0486,
+      "net_margin": 0.1885,
+      "asset_turnover": 0.26
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0739,
+      "net_margin": 0.2925,
+      "asset_turnover": 0.25
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0486,
+      "net_margin": 0.1907,
+      "asset_turnover": 0.25
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0458,
+      "net_margin": 0.1823,
+      "asset_turnover": 0.25
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0479,
+      "net_margin": 0.1863,
+      "asset_turnover": 0.26
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.051,
+      "net_margin": 0.2023,
+      "asset_turnover": 0.25
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0489,
+      "net_margin": 0.193,
+      "asset_turnover": 0.25
+    },
+    {
+      "symbol": "ITW",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0474,
+      "net_margin": 0.1912,
+      "asset_turnover": 0.25
+    }
+  ]
+}

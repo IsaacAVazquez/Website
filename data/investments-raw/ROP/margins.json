@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "ROP",
+      "report_date": "2022-06-30",
+      "gross_profit": 911500000.0,
+      "total_revenue": 1310800000.0,
+      "gross_margin": 0.6954
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2022-09-30",
+      "gross_profit": 941800000.0,
+      "total_revenue": 1350300000.0,
+      "gross_margin": 0.6975
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2022-12-31",
+      "gross_profit": 1002300000.0,
+      "total_revenue": 1430900000.0,
+      "gross_margin": 0.7005
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2023-03-31",
+      "gross_profit": 1018600000.0,
+      "total_revenue": 1469700000.0,
+      "gross_margin": 0.6931
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2023-06-30",
+      "gross_profit": 1067100000.0,
+      "total_revenue": 1531200000.0,
+      "gross_margin": 0.6969
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2023-09-30",
+      "gross_profit": 1096300000.0,
+      "total_revenue": 1563400000.0,
+      "gross_margin": 0.7012
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2023-12-31",
+      "gross_profit": 1125200000.0,
+      "total_revenue": 1613500000.0,
+      "gross_margin": 0.6974
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2024-03-31",
+      "gross_profit": 1181000000.0,
+      "total_revenue": 1680700000.0,
+      "gross_margin": 0.7027
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2024-06-30",
+      "gross_profit": 1193300000.0,
+      "total_revenue": 1716800000.0,
+      "gross_margin": 0.6951
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2024-09-30",
+      "gross_profit": 1221700000.0,
+      "total_revenue": 1764600000.0,
+      "gross_margin": 0.6923
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2024-12-31",
+      "gross_profit": 1282300000.0,
+      "total_revenue": 1877100000.0,
+      "gross_margin": 0.6831
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2025-03-31",
+      "gross_profit": 1293700000.0,
+      "total_revenue": 1882800000.0,
+      "gross_margin": 0.6871
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2025-06-30",
+      "gross_profit": 1345400000.0,
+      "total_revenue": 1943600000.0,
+      "gross_margin": 0.6922
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2025-09-30",
+      "gross_profit": 1403000000.0,
+      "total_revenue": 2017500000.0,
+      "gross_margin": 0.6954
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2025-12-31",
+      "gross_profit": 1429900000.0,
+      "total_revenue": 2058600000.0,
+      "gross_margin": 0.6946
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2026-03-31",
+      "gross_profit": 1453800000.0,
+      "total_revenue": 2095300000.0,
+      "gross_margin": 0.6938
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "ROP",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2020-12-31",
+      "gross_profit": 2828300000.0,
+      "total_revenue": 4022400000.0,
+      "gross_margin": 0.7031
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2021-12-31",
+      "gross_profit": 3407600000.0,
+      "total_revenue": 4833800000.0,
+      "gross_margin": 0.705
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2022-12-31",
+      "gross_profit": 3752800000.0,
+      "total_revenue": 5371800000.0,
+      "gross_margin": 0.6986
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2023-12-31",
+      "gross_profit": 4307200000.0,
+      "total_revenue": 6177800000.0,
+      "gross_margin": 0.6972
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2024-12-31",
+      "gross_profit": 4878300000.0,
+      "total_revenue": 7039200000.0,
+      "gross_margin": 0.693
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2025-12-31",
+      "gross_profit": 5472000000.0,
+      "total_revenue": 7902500000.0,
+      "gross_margin": 0.6924
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "ROP",
+      "report_date": "2022-06-30",
+      "operating_income": 362900000.0,
+      "total_revenue": 1310800000.0,
+      "operating_margin": 0.2769
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2022-09-30",
+      "operating_income": 393200000.0,
+      "total_revenue": 1350300000.0,
+      "operating_margin": 0.2912
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2022-12-31",
+      "operating_income": 412500000.0,
+      "total_revenue": 1430900000.0,
+      "operating_margin": 0.2883
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2023-03-31",
+      "operating_income": 401000000.0,
+      "total_revenue": 1469700000.0,
+      "operating_margin": 0.2728
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2023-06-30",
+      "operating_income": 435300000.0,
+      "total_revenue": 1531200000.0,
+      "operating_margin": 0.2843
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2023-09-30",
+      "operating_income": 446100000.0,
+      "total_revenue": 1563400000.0,
+      "operating_margin": 0.2853
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2023-12-31",
+      "operating_income": 462800000.0,
+      "total_revenue": 1613500000.0,
+      "operating_margin": 0.2868
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2024-03-31",
+      "operating_income": 481300000.0,
+      "total_revenue": 1680700000.0,
+      "operating_margin": 0.2864
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2024-06-30",
+      "operating_income": 494200000.0,
+      "total_revenue": 1716800000.0,
+      "operating_margin": 0.2879
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2024-09-30",
+      "operating_income": 496600000.0,
+      "total_revenue": 1764600000.0,
+      "operating_margin": 0.2814
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2024-12-31",
+      "operating_income": 524700000.0,
+      "total_revenue": 1877100000.0,
+      "operating_margin": 0.2795
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2025-03-31",
+      "operating_income": 525800000.0,
+      "total_revenue": 1882800000.0,
+      "operating_margin": 0.2793
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2025-06-30",
+      "operating_income": 548300000.0,
+      "total_revenue": 1943600000.0,
+      "operating_margin": 0.2821
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2025-09-30",
+      "operating_income": 573000000.0,
+      "total_revenue": 2017500000.0,
+      "operating_margin": 0.284
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2025-12-31",
+      "operating_income": 588300000.0,
+      "total_revenue": 2058600000.0,
+      "operating_margin": 0.2858
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2026-03-31",
+      "operating_income": 569600000.0,
+      "total_revenue": 2095300000.0,
+      "operating_margin": 0.2718
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "ROP",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2020-12-31",
+      "operating_income": 1082900000.0,
+      "total_revenue": 4022400000.0,
+      "operating_margin": 0.2692
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2021-12-31",
+      "operating_income": 1335600000.0,
+      "total_revenue": 4833800000.0,
+      "operating_margin": 0.2763
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2022-12-31",
+      "operating_income": 1524500000.0,
+      "total_revenue": 5371800000.0,
+      "operating_margin": 0.2838
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2023-12-31",
+      "operating_income": 1745200000.0,
+      "total_revenue": 6177800000.0,
+      "operating_margin": 0.2825
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2024-12-31",
+      "operating_income": 1996800000.0,
+      "total_revenue": 7039200000.0,
+      "operating_margin": 0.2837
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2025-12-31",
+      "operating_income": 2235400000.0,
+      "total_revenue": 7902500000.0,
+      "operating_margin": 0.2829
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "ROP",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 268800000.0,
+      "total_revenue": 1310800000.0,
+      "net_margin": 0.2051
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": 327000000.0,
+      "total_revenue": 1350300000.0,
+      "net_margin": 0.2422
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 1928400000.0,
+      "total_revenue": 1430900000.0,
+      "net_margin": 1.3477
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": 283100000.0,
+      "total_revenue": 1469700000.0,
+      "net_margin": 0.1926
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 364900000.0,
+      "total_revenue": 1531200000.0,
+      "net_margin": 0.2383
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 347200000.0,
+      "total_revenue": 1563400000.0,
+      "net_margin": 0.2221
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 389000000.0,
+      "total_revenue": 1613500000.0,
+      "net_margin": 0.2411
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 382000000.0,
+      "total_revenue": 1680700000.0,
+      "net_margin": 0.2273
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 337100000.0,
+      "total_revenue": 1716800000.0,
+      "net_margin": 0.1964
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 367900000.0,
+      "total_revenue": 1764600000.0,
+      "net_margin": 0.2085
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 462300000.0,
+      "total_revenue": 1877100000.0,
+      "net_margin": 0.2463
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 331100000.0,
+      "total_revenue": 1882800000.0,
+      "net_margin": 0.1759
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 378300000.0,
+      "total_revenue": 1943600000.0,
+      "net_margin": 0.1946
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 398500000.0,
+      "total_revenue": 2017500000.0,
+      "net_margin": 0.1975
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 428400000.0,
+      "total_revenue": 2058600000.0,
+      "net_margin": 0.2081
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 508900000.0,
+      "total_revenue": 2095300000.0,
+      "net_margin": 0.2429
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "ROP",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 949700000.0,
+      "total_revenue": 4022400000.0,
+      "net_margin": 0.2361
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 1152600000.0,
+      "total_revenue": 4833800000.0,
+      "net_margin": 0.2384
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 4544700000.0,
+      "total_revenue": 5371800000.0,
+      "net_margin": 0.846
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1384200000.0,
+      "total_revenue": 6177800000.0,
+      "net_margin": 0.2241
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1549300000.0,
+      "total_revenue": 7039200000.0,
+      "net_margin": 0.2201
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1536300000.0,
+      "total_revenue": 7902500000.0,
+      "net_margin": 0.1944
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "ROP",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 1310800000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2022-09-30",
+      "ebitda": 553200000.0,
+      "total_revenue": 1350300000.0,
+      "ebitda_margin": 0.4097
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2022-12-31",
+      "ebitda": 545900000.0,
+      "total_revenue": 1430900000.0,
+      "ebitda_margin": 0.3815
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2023-03-31",
+      "ebitda": 581200000.0,
+      "total_revenue": 1469700000.0,
+      "ebitda_margin": 0.3955
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2023-06-30",
+      "ebitda": 682700000.0,
+      "total_revenue": 1531200000.0,
+      "ebitda_margin": 0.4459
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2023-09-30",
+      "ebitda": 676200000.0,
+      "total_revenue": 1563400000.0,
+      "ebitda_margin": 0.4325
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2023-12-31",
+      "ebitda": 722900000.0,
+      "total_revenue": 1613500000.0,
+      "ebitda_margin": 0.448
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2024-03-31",
+      "ebitda": 731300000.0,
+      "total_revenue": 1680700000.0,
+      "ebitda_margin": 0.4351
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2024-06-30",
+      "ebitda": 694300000.0,
+      "total_revenue": 1716800000.0,
+      "ebitda_margin": 0.4044
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2024-09-30",
+      "ebitda": 740900000.0,
+      "total_revenue": 1764600000.0,
+      "ebitda_margin": 0.4199
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2024-12-31",
+      "ebitda": 872700000.0,
+      "total_revenue": 1877100000.0,
+      "ebitda_margin": 0.4649
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2025-03-31",
+      "ebitda": 694000000.0,
+      "total_revenue": 1882800000.0,
+      "ebitda_margin": 0.3686
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2025-06-30",
+      "ebitda": 788100000.0,
+      "total_revenue": 1943600000.0,
+      "ebitda_margin": 0.4055
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2025-09-30",
+      "ebitda": 819000000.0,
+      "total_revenue": 2017500000.0,
+      "ebitda_margin": 0.4059
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2025-12-31",
+      "ebitda": 858200000.0,
+      "total_revenue": 2058600000.0,
+      "ebitda_margin": 0.4169
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2026-03-31",
+      "ebitda": 964700000.0,
+      "total_revenue": 2095300000.0,
+      "ebitda_margin": 0.4604
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "ROP",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2020-12-31",
+      "ebitda": 1571400000.0,
+      "total_revenue": 4022400000.0,
+      "ebitda_margin": 0.3907
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2021-12-31",
+      "ebitda": 1881700000.0,
+      "total_revenue": 4833800000.0,
+      "ebitda_margin": 0.3893
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2022-12-31",
+      "ebitda": 2124500000.0,
+      "total_revenue": 5371800000.0,
+      "ebitda_margin": 0.3955
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2023-12-31",
+      "ebitda": 2663000000.0,
+      "total_revenue": 6177800000.0,
+      "ebitda_margin": 0.4311
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2024-12-31",
+      "ebitda": 3039200000.0,
+      "total_revenue": 7039200000.0,
+      "ebitda_margin": 0.4318
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2025-12-31",
+      "ebitda": 3159300000.0,
+      "total_revenue": 7902500000.0,
+      "ebitda_margin": 0.3998
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "ROP",
+      "report_date": "2022-06-30",
+      "free_cash_flow": -78300000.0,
+      "total_revenue": 1310800000.0,
+      "fcf_margin": -0.0597
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": 1350300000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 1430900000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": 1469700000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 295100000.0,
+      "total_revenue": 1531200000.0,
+      "fcf_margin": 0.1927
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 607700000.0,
+      "total_revenue": 1563400000.0,
+      "fcf_margin": 0.3887
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 580300000.0,
+      "total_revenue": 1613500000.0,
+      "fcf_margin": 0.3597
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 512600000.0,
+      "total_revenue": 1680700000.0,
+      "fcf_margin": 0.305
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 366600000.0,
+      "total_revenue": 1716800000.0,
+      "fcf_margin": 0.2135
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 719200000.0,
+      "total_revenue": 1764600000.0,
+      "fcf_margin": 0.4076
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 683800000.0,
+      "total_revenue": 1877100000.0,
+      "fcf_margin": 0.3643
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 506800000.0,
+      "total_revenue": 1882800000.0,
+      "fcf_margin": 0.2692
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 373200000.0,
+      "total_revenue": 1943600000.0,
+      "fcf_margin": 0.192
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 841900000.0,
+      "total_revenue": 2017500000.0,
+      "fcf_margin": 0.4173
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 713700000.0,
+      "total_revenue": 2058600000.0,
+      "fcf_margin": 0.3467
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 562400000.0,
+      "total_revenue": 2095300000.0,
+      "fcf_margin": 0.2684
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "ROP",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 1482700000.0,
+      "total_revenue": 4022400000.0,
+      "fcf_margin": 0.3686
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 1953700000.0,
+      "total_revenue": 4833800000.0,
+      "fcf_margin": 0.4042
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 664300000.0,
+      "total_revenue": 5371800000.0,
+      "fcf_margin": 0.1237
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 1927100000.0,
+      "total_revenue": 6177800000.0,
+      "fcf_margin": 0.3119
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 2282200000.0,
+      "total_revenue": 7039200000.0,
+      "fcf_margin": 0.3242
+    },
+    {
+      "symbol": "ROP",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 2435600000.0,
+      "total_revenue": 7902500000.0,
+      "fcf_margin": 0.3082
+    }
+  ]
+}

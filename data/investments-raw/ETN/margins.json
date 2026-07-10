@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "ETN",
+      "report_date": "2022-06-30",
+      "gross_profit": 1707000000.0,
+      "total_revenue": 5212000000.0,
+      "gross_margin": 0.3275
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2022-09-30",
+      "gross_profit": 1768000000.0,
+      "total_revenue": 5313000000.0,
+      "gross_margin": 0.3328
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-06-30",
+      "gross_profit": 2119000000.0,
+      "total_revenue": 5866000000.0,
+      "gross_margin": 0.3612
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-09-30",
+      "gross_profit": 2196000000.0,
+      "total_revenue": 5880000000.0,
+      "gross_margin": 0.3735
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-12-31",
+      "gross_profit": 2235000000.0,
+      "total_revenue": 5967000000.0,
+      "gross_margin": 0.3746
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-03-31",
+      "gross_profit": 2218000000.0,
+      "total_revenue": 5943000000.0,
+      "gross_margin": 0.3732
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-06-30",
+      "gross_profit": 2410000000.0,
+      "total_revenue": 6350000000.0,
+      "gross_margin": 0.3795
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-09-30",
+      "gross_profit": 2446000000.0,
+      "total_revenue": 6345000000.0,
+      "gross_margin": 0.3855
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-12-31",
+      "gross_profit": 2429000000.0,
+      "total_revenue": 6240000000.0,
+      "gross_margin": 0.3893
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-03-31",
+      "gross_profit": 2447000000.0,
+      "total_revenue": 6377000000.0,
+      "gross_margin": 0.3837
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-06-30",
+      "gross_profit": 2597000000.0,
+      "total_revenue": 7028000000.0,
+      "gross_margin": 0.3695
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-09-30",
+      "gross_profit": 2675000000.0,
+      "total_revenue": 6988000000.0,
+      "gross_margin": 0.3828
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-12-31",
+      "gross_profit": 2598000000.0,
+      "total_revenue": 7055000000.0,
+      "gross_margin": 0.3682
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2026-03-31",
+      "gross_profit": 2652000000.0,
+      "total_revenue": 7451000000.0,
+      "gross_margin": 0.3559
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "ETN",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2020-12-31",
+      "gross_profit": 5450000000.0,
+      "total_revenue": 17858000000.0,
+      "gross_margin": 0.3052
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2021-12-31",
+      "gross_profit": 6335000000.0,
+      "total_revenue": 19628000000.0,
+      "gross_margin": 0.3228
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2022-12-31",
+      "gross_profit": 6887000000.0,
+      "total_revenue": 20752000000.0,
+      "gross_margin": 0.3319
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-12-31",
+      "gross_profit": 8434000000.0,
+      "total_revenue": 23196000000.0,
+      "gross_margin": 0.3636
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-12-31",
+      "gross_profit": 9503000000.0,
+      "total_revenue": 24878000000.0,
+      "gross_margin": 0.382
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-12-31",
+      "gross_profit": 10317000000.0,
+      "total_revenue": 27448000000.0,
+      "gross_margin": 0.3759
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "ETN",
+      "report_date": "2022-06-30",
+      "operating_income": 711000000.0,
+      "total_revenue": 5212000000.0,
+      "operating_margin": 0.1364
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2022-09-30",
+      "operating_income": 790000000.0,
+      "total_revenue": 5313000000.0,
+      "operating_margin": 0.1487
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-06-30",
+      "operating_income": 946000000.0,
+      "total_revenue": 5866000000.0,
+      "operating_margin": 0.1613
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-09-30",
+      "operating_income": 1060000000.0,
+      "total_revenue": 5880000000.0,
+      "operating_margin": 0.1803
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-12-31",
+      "operating_income": 1078000000.0,
+      "total_revenue": 5967000000.0,
+      "operating_margin": 0.1807
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-03-31",
+      "operating_income": 1004000000.0,
+      "total_revenue": 5943000000.0,
+      "operating_margin": 0.1689
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-06-30",
+      "operating_income": 1193000000.0,
+      "total_revenue": 6350000000.0,
+      "operating_margin": 0.1879
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-09-30",
+      "operating_income": 1211000000.0,
+      "total_revenue": 6345000000.0,
+      "operating_margin": 0.1909
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-12-31",
+      "operating_income": 1225000000.0,
+      "total_revenue": 6240000000.0,
+      "operating_margin": 0.1963
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-03-31",
+      "operating_income": 1201000000.0,
+      "total_revenue": 6377000000.0,
+      "operating_margin": 0.1883
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-06-30",
+      "operating_income": 1256000000.0,
+      "total_revenue": 7028000000.0,
+      "operating_margin": 0.1787
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-09-30",
+      "operating_income": 1367000000.0,
+      "total_revenue": 6988000000.0,
+      "operating_margin": 0.1956
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-12-31",
+      "operating_income": 1386000000.0,
+      "total_revenue": 7055000000.0,
+      "operating_margin": 0.1965
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2026-03-31",
+      "operating_income": 1172000000.0,
+      "total_revenue": 7451000000.0,
+      "operating_margin": 0.1573
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "ETN",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2020-12-31",
+      "operating_income": 1824000000.0,
+      "total_revenue": 17858000000.0,
+      "operating_margin": 0.1021
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2021-12-31",
+      "operating_income": 2463000000.0,
+      "total_revenue": 19628000000.0,
+      "operating_margin": 0.1255
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2022-12-31",
+      "operating_income": 2995000000.0,
+      "total_revenue": 20752000000.0,
+      "operating_margin": 0.1443
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-12-31",
+      "operating_income": 3885000000.0,
+      "total_revenue": 23196000000.0,
+      "operating_margin": 0.1675
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-12-31",
+      "operating_income": 4632000000.0,
+      "total_revenue": 24878000000.0,
+      "operating_margin": 0.1862
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-12-31",
+      "operating_income": 5209000000.0,
+      "total_revenue": 27448000000.0,
+      "operating_margin": 0.1898
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "ETN",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 601000000.0,
+      "total_revenue": 5212000000.0,
+      "net_margin": 0.1153
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": 607000000.0,
+      "total_revenue": 5313000000.0,
+      "net_margin": 0.1142
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 744000000.0,
+      "total_revenue": 5866000000.0,
+      "net_margin": 0.1268
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 891000000.0,
+      "total_revenue": 5880000000.0,
+      "net_margin": 0.1515
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 945000000.0,
+      "total_revenue": 5967000000.0,
+      "net_margin": 0.1584
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 821000000.0,
+      "total_revenue": 5943000000.0,
+      "net_margin": 0.1381
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 993000000.0,
+      "total_revenue": 6350000000.0,
+      "net_margin": 0.1564
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1009000000.0,
+      "total_revenue": 6345000000.0,
+      "net_margin": 0.159
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 971000000.0,
+      "total_revenue": 6240000000.0,
+      "net_margin": 0.1556
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 964000000.0,
+      "total_revenue": 6377000000.0,
+      "net_margin": 0.1512
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 982000000.0,
+      "total_revenue": 7028000000.0,
+      "net_margin": 0.1397
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1010000000.0,
+      "total_revenue": 6988000000.0,
+      "net_margin": 0.1445
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1132000000.0,
+      "total_revenue": 7055000000.0,
+      "net_margin": 0.1605
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 866000000.0,
+      "total_revenue": 7451000000.0,
+      "net_margin": 0.1162
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "ETN",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 1410000000.0,
+      "total_revenue": 17858000000.0,
+      "net_margin": 0.079
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 2144000000.0,
+      "total_revenue": 19628000000.0,
+      "net_margin": 0.1092
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 2462000000.0,
+      "total_revenue": 20752000000.0,
+      "net_margin": 0.1186
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 3218000000.0,
+      "total_revenue": 23196000000.0,
+      "net_margin": 0.1387
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 3794000000.0,
+      "total_revenue": 24878000000.0,
+      "net_margin": 0.1525
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 4087000000.0,
+      "total_revenue": 27448000000.0,
+      "net_margin": 0.1489
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "ETN",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 5212000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2022-09-30",
+      "ebitda": 994000000.0,
+      "total_revenue": 5313000000.0,
+      "ebitda_margin": 0.1871
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-06-30",
+      "ebitda": 1168000000.0,
+      "total_revenue": 5866000000.0,
+      "ebitda_margin": 0.1991
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-09-30",
+      "ebitda": 1341000000.0,
+      "total_revenue": 5880000000.0,
+      "ebitda_margin": 0.2281
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-12-31",
+      "ebitda": 1346000000.0,
+      "total_revenue": 5967000000.0,
+      "ebitda_margin": 0.2256
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-03-31",
+      "ebitda": 1256000000.0,
+      "total_revenue": 5943000000.0,
+      "ebitda_margin": 0.2113
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-06-30",
+      "ebitda": 1451000000.0,
+      "total_revenue": 6350000000.0,
+      "ebitda_margin": 0.2285
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-09-30",
+      "ebitda": 1468000000.0,
+      "total_revenue": 6345000000.0,
+      "ebitda_margin": 0.2314
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-12-31",
+      "ebitda": 1443000000.0,
+      "total_revenue": 6240000000.0,
+      "ebitda_margin": 0.2313
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-03-31",
+      "ebitda": 1442000000.0,
+      "total_revenue": 6377000000.0,
+      "ebitda_margin": 0.2261
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-06-30",
+      "ebitda": 1518000000.0,
+      "total_revenue": 7028000000.0,
+      "ebitda_margin": 0.216
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-09-30",
+      "ebitda": 1600000000.0,
+      "total_revenue": 6988000000.0,
+      "ebitda_margin": 0.229
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-12-31",
+      "ebitda": 1620000000.0,
+      "total_revenue": 7055000000.0,
+      "ebitda_margin": 0.2296
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2026-03-31",
+      "ebitda": 1485000000.0,
+      "total_revenue": 7451000000.0,
+      "ebitda_margin": 0.1993
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "ETN",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2020-12-31",
+      "ebitda": 2706000000.0,
+      "total_revenue": 17858000000.0,
+      "ebitda_margin": 0.1515
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2021-12-31",
+      "ebitda": 3962000000.0,
+      "total_revenue": 19628000000.0,
+      "ebitda_margin": 0.2019
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2022-12-31",
+      "ebitda": 4009000000.0,
+      "total_revenue": 20752000000.0,
+      "ebitda_margin": 0.1932
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-12-31",
+      "ebitda": 4904000000.0,
+      "total_revenue": 23196000000.0,
+      "ebitda_margin": 0.2114
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-12-31",
+      "ebitda": 5617000000.0,
+      "total_revenue": 24878000000.0,
+      "ebitda_margin": 0.2258
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-12-31",
+      "ebitda": 6179000000.0,
+      "total_revenue": 27448000000.0,
+      "ebitda_margin": 0.2251
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "ETN",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 201000000.0,
+      "total_revenue": 5212000000.0,
+      "fcf_margin": 0.0386
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": 5313000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 690000000.0,
+      "total_revenue": 5866000000.0,
+      "fcf_margin": 0.1176
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 913000000.0,
+      "total_revenue": 5880000000.0,
+      "fcf_margin": 0.1553
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 1055000000.0,
+      "total_revenue": 5967000000.0,
+      "fcf_margin": 0.1768
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 292000000.0,
+      "total_revenue": 5943000000.0,
+      "fcf_margin": 0.0491
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 759000000.0,
+      "total_revenue": 6350000000.0,
+      "fcf_margin": 0.1195
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 1126000000.0,
+      "total_revenue": 6345000000.0,
+      "fcf_margin": 0.1775
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 1342000000.0,
+      "total_revenue": 6240000000.0,
+      "fcf_margin": 0.2151
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 91000000.0,
+      "total_revenue": 6377000000.0,
+      "fcf_margin": 0.0143
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 716000000.0,
+      "total_revenue": 7028000000.0,
+      "fcf_margin": 0.1019
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 1173000000.0,
+      "total_revenue": 6988000000.0,
+      "fcf_margin": 0.1679
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 1573000000.0,
+      "total_revenue": 7055000000.0,
+      "fcf_margin": 0.223
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 314000000.0,
+      "total_revenue": 7451000000.0,
+      "fcf_margin": 0.0421
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "ETN",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 2555000000.0,
+      "total_revenue": 17858000000.0,
+      "fcf_margin": 0.1431
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 1588000000.0,
+      "total_revenue": 19628000000.0,
+      "fcf_margin": 0.0809
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 1935000000.0,
+      "total_revenue": 20752000000.0,
+      "fcf_margin": 0.0932
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 2867000000.0,
+      "total_revenue": 23196000000.0,
+      "fcf_margin": 0.1236
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 3519000000.0,
+      "total_revenue": 24878000000.0,
+      "fcf_margin": 0.1415
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 3553000000.0,
+      "total_revenue": 27448000000.0,
+      "fcf_margin": 0.1294
+    }
+  ]
+}

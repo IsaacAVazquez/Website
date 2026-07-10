@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "FDX",
+    "name": "Mr. Claude F. Russ",
+    "title": "Enterprise VP, Interim CFO & Interim Chief Accounting Officer",
+    "age": 49,
+    "born": 1976,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "FDX",
+    "name": "Mr. John W. Dietrich",
+    "title": "Executive Officer",
+    "age": 60,
+    "born": 1965,
+    "pay": 2749952,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "FDX",
+    "name": "Mr. R. Brad Martin",
+    "title": "Executive Chairman",
+    "age": 73,
+    "born": 1952,
+    "pay": 200378,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "FDX",
+    "name": "Mr. Rajesh  Subramaniam",
+    "title": "President, CEO & Director",
+    "age": 59,
+    "born": 1966,
+    "pay": 6521967,
+    "exercised": 0,
+    "unexercised": 10020358,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "FDX",
+    "name": "Mr. Vishal  Talwar",
+    "title": "Executive VP, Chief Digital & Information Officer and President of FedEx Dataworks",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "FDX",
+    "name": "Ms. Brie A. Carere",
+    "title": "Executive VP & Chief Customer Officer",
+    "age": 46,
+    "born": 1979,
+    "pay": 2611920,
+    "exercised": 0,
+    "unexercised": 2467735,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "FDX",
+    "name": "Ms. Gina F. Adams",
+    "title": "Executive VP, General Counsel & Secretary",
+    "age": 66,
+    "born": 1959,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "FDX",
+    "name": "Ms. Jenifer  Hollander",
+    "title": "Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "FDX",
+    "name": "Ms. Jill C. Brannon",
+    "title": "Executive VP & Chief Sales Officer",
+    "age": 61,
+    "born": 1964,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "FDX",
+    "name": "Ms. Tracy B. Brightman",
+    "title": "Executive VP & Chief People Officer",
+    "age": 62,
+    "born": 1963,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  }
+]

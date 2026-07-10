@@ -1,0 +1,1529 @@
+{
+  "quarterly_revenue": [
+    {
+      "symbol": "DUK",
+      "report_date": "2022-06-30T00:00:00.000",
+      "revenue": 6685000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2022-12-31T00:00:00.000",
+      "revenue": 6983000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2023-06-30T00:00:00.000",
+      "revenue": 6578000000.0,
+      "prev_year_revenue": 6685000000.0,
+      "yoy_growth": -0.016
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2023-09-30T00:00:00.000",
+      "revenue": 7994000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 7212000000.0,
+      "prev_year_revenue": 6983000000.0,
+      "yoy_growth": 0.0328
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-03-31T00:00:00.000",
+      "revenue": 7671000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-06-30T00:00:00.000",
+      "revenue": 7172000000.0,
+      "prev_year_revenue": 6578000000.0,
+      "yoy_growth": 0.0903
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-09-30T00:00:00.000",
+      "revenue": 8154000000.0,
+      "prev_year_revenue": 7994000000.0,
+      "yoy_growth": 0.02
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 7360000000.0,
+      "prev_year_revenue": 7212000000.0,
+      "yoy_growth": 0.0205
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-03-31T00:00:00.000",
+      "revenue": 8249000000.0,
+      "prev_year_revenue": 7671000000.0,
+      "yoy_growth": 0.0753
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-06-30T00:00:00.000",
+      "revenue": 7508000000.0,
+      "prev_year_revenue": 7172000000.0,
+      "yoy_growth": 0.0468
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-09-30T00:00:00.000",
+      "revenue": 8542000000.0,
+      "prev_year_revenue": 8154000000.0,
+      "yoy_growth": 0.0476
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 7938000000.0,
+      "prev_year_revenue": 7360000000.0,
+      "yoy_growth": 0.0785
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 9178000000.0,
+      "prev_year_revenue": 8249000000.0,
+      "yoy_growth": 0.1126
+    }
+  ],
+  "annual_revenue": [
+    {
+      "symbol": "DUK",
+      "report_date": "2019-12-31T00:00:00.000",
+      "revenue": 25079000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2020-12-31T00:00:00.000",
+      "revenue": 23366000000.0,
+      "prev_year_revenue": 25079000000.0,
+      "yoy_growth": -0.0683
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2021-12-31T00:00:00.000",
+      "revenue": 24621000000.0,
+      "prev_year_revenue": 23366000000.0,
+      "yoy_growth": 0.0537
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2022-12-31T00:00:00.000",
+      "revenue": 28768000000.0,
+      "prev_year_revenue": 24621000000.0,
+      "yoy_growth": 0.1684
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 29060000000.0,
+      "prev_year_revenue": 28768000000.0,
+      "yoy_growth": 0.0102
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 30357000000.0,
+      "prev_year_revenue": 29060000000.0,
+      "yoy_growth": 0.0446
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 32237000000.0,
+      "prev_year_revenue": 30357000000.0,
+      "yoy_growth": 0.0619
+    }
+  ],
+  "quarterly_operating_income": [
+    {
+      "symbol": "DUK",
+      "report_date": "2022-06-30T00:00:00.000",
+      "operating_income": 1396000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2022-12-31T00:00:00.000",
+      "operating_income": 1522000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2023-06-30T00:00:00.000",
+      "operating_income": 1399000000.0,
+      "prev_year_operating_income": 1396000000.0,
+      "yoy_growth": 0.0021
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2023-09-30T00:00:00.000",
+      "operating_income": 2191000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 1838000000.0,
+      "prev_year_operating_income": 1522000000.0,
+      "yoy_growth": 0.2076
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-03-31T00:00:00.000",
+      "operating_income": 1951000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-06-30T00:00:00.000",
+      "operating_income": 1744000000.0,
+      "prev_year_operating_income": 1399000000.0,
+      "yoy_growth": 0.2466
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-09-30T00:00:00.000",
+      "operating_income": 2132000000.0,
+      "prev_year_operating_income": 2191000000.0,
+      "yoy_growth": -0.0269
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 2110000000.0,
+      "prev_year_operating_income": 1838000000.0,
+      "yoy_growth": 0.148
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-03-31T00:00:00.000",
+      "operating_income": 2337000000.0,
+      "prev_year_operating_income": 1951000000.0,
+      "yoy_growth": 0.1978
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-06-30T00:00:00.000",
+      "operating_income": 1819000000.0,
+      "prev_year_operating_income": 1744000000.0,
+      "yoy_growth": 0.043
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-09-30T00:00:00.000",
+      "operating_income": 2317000000.0,
+      "prev_year_operating_income": 2132000000.0,
+      "yoy_growth": 0.0868
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 2104000000.0,
+      "prev_year_operating_income": 2110000000.0,
+      "yoy_growth": -0.0028
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2026-03-31T00:00:00.000",
+      "operating_income": 2341000000.0,
+      "prev_year_operating_income": 2337000000.0,
+      "yoy_growth": 0.0017
+    }
+  ],
+  "annual_operating_income": [
+    {
+      "symbol": "DUK",
+      "report_date": "2019-12-31T00:00:00.000",
+      "operating_income": 5705000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2020-12-31T00:00:00.000",
+      "operating_income": 5538000000.0,
+      "prev_year_operating_income": 5705000000.0,
+      "yoy_growth": -0.0293
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2021-12-31T00:00:00.000",
+      "operating_income": 5841000000.0,
+      "prev_year_operating_income": 5538000000.0,
+      "yoy_growth": 0.0547
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2022-12-31T00:00:00.000",
+      "operating_income": 6424000000.0,
+      "prev_year_operating_income": 5841000000.0,
+      "yoy_growth": 0.0998
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 7103000000.0,
+      "prev_year_operating_income": 6424000000.0,
+      "yoy_growth": 0.1057
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 7938000000.0,
+      "prev_year_operating_income": 7103000000.0,
+      "yoy_growth": 0.1176
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 8577000000.0,
+      "prev_year_operating_income": 7938000000.0,
+      "yoy_growth": 0.0805
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "DUK",
+      "report_date": "2022-12-31T00:00:00.000",
+      "ebitda": 2850000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2023-06-30T00:00:00.000",
+      "ebitda": 3169000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2023-09-30T00:00:00.000",
+      "ebitda": 3911000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 3596000000.0,
+      "prev_year_ebitda": 2850000000.0,
+      "yoy_growth": 0.2618
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-03-31T00:00:00.000",
+      "ebitda": 3683000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-06-30T00:00:00.000",
+      "ebitda": 3461000000.0,
+      "prev_year_ebitda": 3169000000.0,
+      "yoy_growth": 0.0921
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-09-30T00:00:00.000",
+      "ebitda": 4017000000.0,
+      "prev_year_ebitda": 3911000000.0,
+      "yoy_growth": 0.0271
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 3836000000.0,
+      "prev_year_ebitda": 3596000000.0,
+      "yoy_growth": 0.0667
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-03-31T00:00:00.000",
+      "ebitda": 4177000000.0,
+      "prev_year_ebitda": 3683000000.0,
+      "yoy_growth": 0.1341
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-06-30T00:00:00.000",
+      "ebitda": 3992000000.0,
+      "prev_year_ebitda": 3461000000.0,
+      "yoy_growth": 0.1534
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-09-30T00:00:00.000",
+      "ebitda": 4617000000.0,
+      "prev_year_ebitda": 4017000000.0,
+      "yoy_growth": 0.1494
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 4264000000.0,
+      "prev_year_ebitda": 3836000000.0,
+      "yoy_growth": 0.1116
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2026-03-31T00:00:00.000",
+      "ebitda": 4749000000.0,
+      "prev_year_ebitda": 4177000000.0,
+      "yoy_growth": 0.1369
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "DUK",
+      "report_date": "2019-12-31T00:00:00.000",
+      "ebitda": 10849000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2020-12-31T00:00:00.000",
+      "ebitda": 8503000000.0,
+      "prev_year_ebitda": 10849000000.0,
+      "yoy_growth": -0.2162
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2021-12-31T00:00:00.000",
+      "ebitda": 11861000000.0,
+      "prev_year_ebitda": 8503000000.0,
+      "yoy_growth": 0.3949
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2022-12-31T00:00:00.000",
+      "ebitda": 12360000000.0,
+      "prev_year_ebitda": 11861000000.0,
+      "yoy_growth": 0.0421
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 13865000000.0,
+      "prev_year_ebitda": 12360000000.0,
+      "yoy_growth": 0.1218
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 14997000000.0,
+      "prev_year_ebitda": 13865000000.0,
+      "yoy_growth": 0.0816
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 17050000000.0,
+      "prev_year_ebitda": 14997000000.0,
+      "yoy_growth": 0.1369
+    }
+  ],
+  "quarterly_net_income": [
+    {
+      "symbol": "DUK",
+      "report_date": "2022-06-30T00:00:00.000",
+      "net_income_common_stockholders": 881000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2022-12-31T00:00:00.000",
+      "net_income_common_stockholders": -637000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2023-06-30T00:00:00.000",
+      "net_income_common_stockholders": -234000000.0,
+      "prev_year_net_income_common_stockholders": 881000000.0,
+      "yoy_growth": -1.2656
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2023-09-30T00:00:00.000",
+      "net_income_common_stockholders": 1213000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 991000000.0,
+      "prev_year_net_income_common_stockholders": -637000000.0,
+      "yoy_growth": 2.5557
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-03-31T00:00:00.000",
+      "net_income_common_stockholders": 1099000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-06-30T00:00:00.000",
+      "net_income_common_stockholders": 886000000.0,
+      "prev_year_net_income_common_stockholders": -234000000.0,
+      "yoy_growth": 4.7863
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-09-30T00:00:00.000",
+      "net_income_common_stockholders": 1226000000.0,
+      "prev_year_net_income_common_stockholders": 1213000000.0,
+      "yoy_growth": 0.0107
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1191000000.0,
+      "prev_year_net_income_common_stockholders": 991000000.0,
+      "yoy_growth": 0.2018
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-03-31T00:00:00.000",
+      "net_income_common_stockholders": 1365000000.0,
+      "prev_year_net_income_common_stockholders": 1099000000.0,
+      "yoy_growth": 0.242
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-06-30T00:00:00.000",
+      "net_income_common_stockholders": 971000000.0,
+      "prev_year_net_income_common_stockholders": 886000000.0,
+      "yoy_growth": 0.0959
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-09-30T00:00:00.000",
+      "net_income_common_stockholders": 1407000000.0,
+      "prev_year_net_income_common_stockholders": 1226000000.0,
+      "yoy_growth": 0.1476
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1169000000.0,
+      "prev_year_net_income_common_stockholders": 1191000000.0,
+      "yoy_growth": -0.0185
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 1536000000.0,
+      "prev_year_net_income_common_stockholders": 1365000000.0,
+      "yoy_growth": 0.1253
+    }
+  ],
+  "annual_net_income": [
+    {
+      "symbol": "DUK",
+      "report_date": "2019-12-31T00:00:00.000",
+      "net_income_common_stockholders": 3707000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2020-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1270000000.0,
+      "prev_year_net_income_common_stockholders": 3707000000.0,
+      "yoy_growth": -0.6574
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2021-12-31T00:00:00.000",
+      "net_income_common_stockholders": 3802000000.0,
+      "prev_year_net_income_common_stockholders": 1270000000.0,
+      "yoy_growth": 1.9937
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2022-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2444000000.0,
+      "prev_year_net_income_common_stockholders": 3802000000.0,
+      "yoy_growth": -0.3572
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2735000000.0,
+      "prev_year_net_income_common_stockholders": 2444000000.0,
+      "yoy_growth": 0.1191
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 4402000000.0,
+      "prev_year_net_income_common_stockholders": 2735000000.0,
+      "yoy_growth": 0.6095
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 4912000000.0,
+      "prev_year_net_income_common_stockholders": 4402000000.0,
+      "yoy_growth": 0.1159
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "DUK",
+      "report_date": "2022-06-30T00:00:00.000",
+      "free_cash_flow": -326000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2023-06-30T00:00:00.000",
+      "free_cash_flow": -817000000.0,
+      "prev_year_free_cash_flow": -326000000.0,
+      "yoy_growth": -1.5061
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2023-09-30T00:00:00.000",
+      "free_cash_flow": 479000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": -725000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-03-31T00:00:00.000",
+      "free_cash_flow": -734000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-06-30T00:00:00.000",
+      "free_cash_flow": -43000000.0,
+      "prev_year_free_cash_flow": -817000000.0,
+      "yoy_growth": 0.9474
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-09-30T00:00:00.000",
+      "free_cash_flow": 537000000.0,
+      "prev_year_free_cash_flow": 479000000.0,
+      "yoy_growth": 0.1211
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 288000000.0,
+      "prev_year_free_cash_flow": -725000000.0,
+      "yoy_growth": 1.3972
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-03-31T00:00:00.000",
+      "free_cash_flow": -971000000.0,
+      "prev_year_free_cash_flow": -734000000.0,
+      "yoy_growth": -0.3229
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-06-30T00:00:00.000",
+      "free_cash_flow": -417000000.0,
+      "prev_year_free_cash_flow": -43000000.0,
+      "yoy_growth": -8.6977
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-09-30T00:00:00.000",
+      "free_cash_flow": 179000000.0,
+      "prev_year_free_cash_flow": 537000000.0,
+      "yoy_growth": -0.6667
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": -485000000.0,
+      "prev_year_free_cash_flow": 288000000.0,
+      "yoy_growth": -2.684
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": -2576000000.0,
+      "prev_year_free_cash_flow": -971000000.0,
+      "yoy_growth": -1.6529
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "DUK",
+      "report_date": "2020-12-31T00:00:00.000",
+      "free_cash_flow": -1051000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2021-12-31T00:00:00.000",
+      "free_cash_flow": -1425000000.0,
+      "prev_year_free_cash_flow": -1051000000.0,
+      "yoy_growth": -0.3559
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2022-12-31T00:00:00.000",
+      "free_cash_flow": -5440000000.0,
+      "prev_year_free_cash_flow": -1425000000.0,
+      "yoy_growth": -2.8175
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": -2726000000.0,
+      "prev_year_free_cash_flow": -5440000000.0,
+      "yoy_growth": 0.4989
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 48000000.0,
+      "prev_year_free_cash_flow": -2726000000.0,
+      "yoy_growth": 1.0176
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": -1694000000.0,
+      "prev_year_free_cash_flow": 48000000.0,
+      "yoy_growth": -36.2917
+    }
+  ],
+  "quarterly_eps": [
+    {
+      "symbol": "DUK",
+      "report_date": "1998-03-31T00:00:00.000",
+      "eps": 1.335,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "1998-06-30T00:00:00.000",
+      "eps": 1.14,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "1998-09-30T00:00:00.000",
+      "eps": 1.755,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "1998-12-31T00:00:00.000",
+      "eps": 0.9,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "1999-03-31T00:00:00.000",
+      "eps": 1.245,
+      "prev_year_eps": 1.335,
+      "yoy_growth": -0.0674
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "1999-06-30T00:00:00.000",
+      "eps": 1.155,
+      "prev_year_eps": 1.14,
+      "yoy_growth": 0.0132
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "1999-09-30T00:00:00.000",
+      "eps": 1.785,
+      "prev_year_eps": 1.755,
+      "yoy_growth": 0.0171
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "1999-12-31T00:00:00.000",
+      "eps": -0.795,
+      "prev_year_eps": 0.9,
+      "yoy_growth": -1.8833
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2000-03-31T00:00:00.000",
+      "eps": 1.59,
+      "prev_year_eps": 1.245,
+      "yoy_growth": 0.2771
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2000-06-30T00:00:00.000",
+      "eps": 1.32,
+      "prev_year_eps": 1.155,
+      "yoy_growth": 0.1429
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2000-09-30T00:00:00.000",
+      "eps": 3.105,
+      "prev_year_eps": 1.785,
+      "yoy_growth": 0.7395
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2000-12-31T00:00:00.000",
+      "eps": 1.14,
+      "prev_year_eps": -0.795,
+      "yoy_growth": 2.434
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2001-03-31T00:00:00.000",
+      "eps": 2.19,
+      "prev_year_eps": 1.59,
+      "yoy_growth": 0.3774
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2001-06-30T00:00:00.000",
+      "eps": 1.59,
+      "prev_year_eps": 1.32,
+      "yoy_growth": 0.2045
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2001-09-30T00:00:00.000",
+      "eps": 3.03,
+      "prev_year_eps": 3.105,
+      "yoy_growth": -0.0242
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2001-12-31T00:00:00.000",
+      "eps": 0.84,
+      "prev_year_eps": 1.14,
+      "yoy_growth": -0.2632
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2002-03-31T00:00:00.000",
+      "eps": 1.44,
+      "prev_year_eps": 2.19,
+      "yoy_growth": -0.3425
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2002-06-30T00:00:00.000",
+      "eps": 1.68,
+      "prev_year_eps": 1.59,
+      "yoy_growth": 0.0566
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2002-09-30T00:00:00.000",
+      "eps": 0.81,
+      "prev_year_eps": 3.03,
+      "yoy_growth": -0.7327
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2002-12-31T00:00:00.000",
+      "eps": -0.18,
+      "prev_year_eps": 0.84,
+      "yoy_growth": -1.2143
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2003-03-31T00:00:00.000",
+      "eps": 1.29,
+      "prev_year_eps": 1.44,
+      "yoy_growth": -0.1042
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2003-06-30T00:00:00.000",
+      "eps": 1.38,
+      "prev_year_eps": 1.68,
+      "yoy_growth": -0.1786
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2003-09-30T00:00:00.000",
+      "eps": 0.15,
+      "prev_year_eps": 0.81,
+      "yoy_growth": -0.8148
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2003-12-31T00:00:00.000",
+      "eps": -5.97,
+      "prev_year_eps": -0.18,
+      "yoy_growth": -32.1667
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2004-03-31T00:00:00.000",
+      "eps": 0.21,
+      "prev_year_eps": 1.29,
+      "yoy_growth": -0.8372
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2004-06-30T00:00:00.000",
+      "eps": 1.29,
+      "prev_year_eps": 1.38,
+      "yoy_growth": -0.0652
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2004-09-30T00:00:00.000",
+      "eps": 1.26,
+      "prev_year_eps": 0.15,
+      "yoy_growth": 7.4
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2004-12-31T00:00:00.000",
+      "eps": 1.08,
+      "prev_year_eps": -5.97,
+      "yoy_growth": 1.1809
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2005-03-31T00:00:00.000",
+      "eps": 2.61,
+      "prev_year_eps": 0.21,
+      "yoy_growth": 11.4286
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2005-06-30T00:00:00.000",
+      "eps": 0.96,
+      "prev_year_eps": 1.29,
+      "yoy_growth": -0.2558
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2005-09-30T00:00:00.000",
+      "eps": 1.1546,
+      "prev_year_eps": 1.26,
+      "yoy_growth": -0.0837
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2005-12-31T00:00:00.000",
+      "eps": 1.8056,
+      "prev_year_eps": 1.08,
+      "yoy_growth": 0.6719
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2006-03-31T00:00:00.000",
+      "eps": 1.4611,
+      "prev_year_eps": 2.61,
+      "yoy_growth": -0.4402
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2006-06-30T00:00:00.000",
+      "eps": 0.9484,
+      "prev_year_eps": 0.96,
+      "yoy_growth": -0.0121
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2006-09-30T00:00:00.000",
+      "eps": 1.14,
+      "prev_year_eps": 1.1546,
+      "yoy_growth": -0.0126
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2006-12-31T00:00:00.000",
+      "eps": 0.9154,
+      "prev_year_eps": 1.8056,
+      "yoy_growth": -0.493
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2007-03-31T00:00:00.000",
+      "eps": 0.8352,
+      "prev_year_eps": 1.4611,
+      "yoy_growth": -0.4284
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2007-06-30T00:00:00.000",
+      "eps": 0.7056,
+      "prev_year_eps": 0.9484,
+      "yoy_growth": -0.256
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2007-09-30T00:00:00.000",
+      "eps": 1.4395,
+      "prev_year_eps": 1.14,
+      "yoy_growth": 0.2627
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2007-12-31T00:00:00.000",
+      "eps": 0.5853,
+      "prev_year_eps": 0.9154,
+      "yoy_growth": -0.3606
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2008-03-31T00:00:00.000",
+      "eps": 1.101,
+      "prev_year_eps": 0.8352,
+      "yoy_growth": 0.3182
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2008-06-30T00:00:00.000",
+      "eps": 0.7949,
+      "prev_year_eps": 0.7056,
+      "yoy_growth": 0.1266
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2008-09-30T00:00:00.000",
+      "eps": 0.5087,
+      "prev_year_eps": 1.4395,
+      "yoy_growth": -0.6466
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2008-12-31T00:00:00.000",
+      "eps": 0.6236,
+      "prev_year_eps": 0.5853,
+      "yoy_growth": 0.0654
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2009-03-31T00:00:00.000",
+      "eps": 0.81,
+      "prev_year_eps": 1.101,
+      "yoy_growth": -0.2643
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2009-06-30T00:00:00.000",
+      "eps": 0.63,
+      "prev_year_eps": 0.7949,
+      "yoy_growth": -0.2074
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2009-09-30T00:00:00.000",
+      "eps": 0.24,
+      "prev_year_eps": 0.5087,
+      "yoy_growth": -0.5282
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2009-12-31T00:00:00.000",
+      "eps": 0.7942,
+      "prev_year_eps": 0.6236,
+      "yoy_growth": 0.2736
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2010-03-31T00:00:00.000",
+      "eps": 1.02,
+      "prev_year_eps": 0.81,
+      "yoy_growth": 0.2593
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2010-06-30T00:00:00.000",
+      "eps": -0.51,
+      "prev_year_eps": 0.63,
+      "yoy_growth": -1.8095
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2010-09-30T00:00:00.000",
+      "eps": 1.53,
+      "prev_year_eps": 0.24,
+      "yoy_growth": 5.375
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2010-12-31T00:00:00.000",
+      "eps": 0.96,
+      "prev_year_eps": 0.7942,
+      "yoy_growth": 0.2088
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2011-03-31T00:00:00.000",
+      "eps": 1.14,
+      "prev_year_eps": 1.02,
+      "yoy_growth": 0.1176
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2011-06-30T00:00:00.000",
+      "eps": 0.99,
+      "prev_year_eps": -0.51,
+      "yoy_growth": 2.9412
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2011-09-30T00:00:00.000",
+      "eps": 1.05,
+      "prev_year_eps": 1.53,
+      "yoy_growth": -0.3137
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2011-12-31T00:00:00.000",
+      "eps": 0.66,
+      "prev_year_eps": 0.96,
+      "yoy_growth": -0.3125
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2012-03-31T00:00:00.000",
+      "eps": 0.66,
+      "prev_year_eps": 1.14,
+      "yoy_growth": -0.4211
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2012-06-30T00:00:00.000",
+      "eps": 0.99,
+      "prev_year_eps": 0.99,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2012-09-30T00:00:00.000",
+      "eps": 0.85,
+      "prev_year_eps": 1.05,
+      "yoy_growth": -0.1905
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2012-12-31T00:00:00.000",
+      "eps": 0.62,
+      "prev_year_eps": 0.66,
+      "yoy_growth": -0.0606
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2013-03-31T00:00:00.000",
+      "eps": 0.8993,
+      "prev_year_eps": 0.66,
+      "yoy_growth": 0.3626
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2013-06-30T00:00:00.000",
+      "eps": 0.48,
+      "prev_year_eps": 0.99,
+      "yoy_growth": -0.5152
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2013-09-30T00:00:00.000",
+      "eps": 1.42,
+      "prev_year_eps": 0.85,
+      "yoy_growth": 0.6706
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2013-12-31T00:00:00.000",
+      "eps": 0.97,
+      "prev_year_eps": 0.62,
+      "yoy_growth": 0.5645
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2014-03-31T00:00:00.000",
+      "eps": -0.14,
+      "prev_year_eps": 0.8993,
+      "yoy_growth": -1.1557
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2014-06-30T00:00:00.000",
+      "eps": 0.86,
+      "prev_year_eps": 0.48,
+      "yoy_growth": 0.7917
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2014-09-30T00:00:00.000",
+      "eps": 1.1513,
+      "prev_year_eps": 1.42,
+      "yoy_growth": -0.1892
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2014-12-31T00:00:00.000",
+      "eps": 0.2532,
+      "prev_year_eps": 0.97,
+      "yoy_growth": -0.739
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2015-03-31T00:00:00.000",
+      "eps": 1.2811,
+      "prev_year_eps": -0.14,
+      "yoy_growth": 10.1507
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2015-06-30T00:00:00.000",
+      "eps": 0.776,
+      "prev_year_eps": 0.86,
+      "yoy_growth": -0.0977
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2015-09-30T00:00:00.000",
+      "eps": 1.3619,
+      "prev_year_eps": 1.1513,
+      "yoy_growth": 0.1829
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2015-12-31T00:00:00.000",
+      "eps": 0.6977,
+      "prev_year_eps": 0.2532,
+      "yoy_growth": 1.7555
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2016-03-31T00:00:00.000",
+      "eps": 1.01,
+      "prev_year_eps": 1.2811,
+      "yoy_growth": -0.2116
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2016-06-30T00:00:00.000",
+      "eps": 0.74,
+      "prev_year_eps": 0.776,
+      "yoy_growth": -0.0464
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2016-09-30T00:00:00.000",
+      "eps": 1.7,
+      "prev_year_eps": 1.3619,
+      "yoy_growth": 0.2483
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2016-12-31T00:00:00.000",
+      "eps": -0.3248,
+      "prev_year_eps": 0.6977,
+      "yoy_growth": -1.4655
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2017-03-31T00:00:00.000",
+      "eps": 1.02,
+      "prev_year_eps": 1.01,
+      "yoy_growth": 0.0099
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2017-06-30T00:00:00.000",
+      "eps": 0.98,
+      "prev_year_eps": 0.74,
+      "yoy_growth": 0.3243
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2017-09-30T00:00:00.000",
+      "eps": 1.36,
+      "prev_year_eps": 1.7,
+      "yoy_growth": -0.2
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2017-12-31T00:00:00.000",
+      "eps": 1.0,
+      "prev_year_eps": -0.3248,
+      "yoy_growth": 4.0788
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2018-03-31T00:00:00.000",
+      "eps": 0.88,
+      "prev_year_eps": 1.02,
+      "yoy_growth": -0.1373
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2018-06-30T00:00:00.000",
+      "eps": 0.71,
+      "prev_year_eps": 0.98,
+      "yoy_growth": -0.2755
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2018-09-30T00:00:00.000",
+      "eps": 1.5154,
+      "prev_year_eps": 1.36,
+      "yoy_growth": 0.1143
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2018-12-31T00:00:00.000",
+      "eps": 0.65,
+      "prev_year_eps": 1.0,
+      "yoy_growth": -0.35
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2019-03-31T00:00:00.000",
+      "eps": 1.238,
+      "prev_year_eps": 0.88,
+      "yoy_growth": 0.4068
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2019-06-30T00:00:00.000",
+      "eps": 1.1264,
+      "prev_year_eps": 0.71,
+      "yoy_growth": 0.5865
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2019-09-30T00:00:00.000",
+      "eps": 1.8203,
+      "prev_year_eps": 1.5154,
+      "yoy_growth": 0.2012
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2019-12-31T00:00:00.000",
+      "eps": 0.9029,
+      "prev_year_eps": 0.65,
+      "yoy_growth": 0.3891
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2020-03-31T00:00:00.000",
+      "eps": 1.2215,
+      "prev_year_eps": 1.238,
+      "yoy_growth": -0.0133
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2020-06-30T00:00:00.000",
+      "eps": -1.1116,
+      "prev_year_eps": 1.1264,
+      "yoy_growth": -1.9869
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2020-09-30T00:00:00.000",
+      "eps": 1.7211,
+      "prev_year_eps": 1.8203,
+      "yoy_growth": -0.0545
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2020-12-31T00:00:00.000",
+      "eps": -0.1038,
+      "prev_year_eps": 0.9029,
+      "yoy_growth": -1.115
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2021-03-31T00:00:00.000",
+      "eps": 1.2393,
+      "prev_year_eps": 1.2215,
+      "yoy_growth": 0.0146
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2021-06-30T00:00:00.000",
+      "eps": 0.9766,
+      "prev_year_eps": -1.1116,
+      "yoy_growth": 1.8786
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2021-09-30T00:00:00.000",
+      "eps": 1.7763,
+      "prev_year_eps": 1.7211,
+      "yoy_growth": 0.0321
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2021-12-31T00:00:00.000",
+      "eps": 0.9519,
+      "prev_year_eps": -0.1038,
+      "yoy_growth": 10.1705
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2022-03-31T00:00:00.000",
+      "eps": 1.0623,
+      "prev_year_eps": 1.2393,
+      "yoy_growth": -0.1428
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2022-06-30T00:00:00.000",
+      "eps": 1.1597,
+      "prev_year_eps": 0.9766,
+      "yoy_growth": 0.1875
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2022-09-30T00:00:00.000",
+      "eps": 1.7961,
+      "prev_year_eps": 1.7763,
+      "yoy_growth": 0.0111
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2022-12-31T00:00:00.000",
+      "eps": -0.6896,
+      "prev_year_eps": 0.9519,
+      "yoy_growth": -1.7244
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2023-03-31T00:00:00.000",
+      "eps": 0.9935,
+      "prev_year_eps": 1.0623,
+      "yoy_growth": -0.0648
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2023-06-30T00:00:00.000",
+      "eps": -0.3035,
+      "prev_year_eps": 1.1597,
+      "yoy_growth": -1.2617
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2023-09-30T00:00:00.000",
+      "eps": 1.5733,
+      "prev_year_eps": 1.7961,
+      "yoy_growth": -0.124
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2023-12-31T00:00:00.000",
+      "eps": 1.4254,
+      "prev_year_eps": -0.6896,
+      "yoy_growth": 3.067
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-03-31T00:00:00.000",
+      "eps": 1.4384,
+      "prev_year_eps": 0.9935,
+      "yoy_growth": 0.4478
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-06-30T00:00:00.000",
+      "eps": 1.1282,
+      "prev_year_eps": -0.3035,
+      "yoy_growth": 4.7173
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-09-30T00:00:00.000",
+      "eps": 1.564,
+      "prev_year_eps": 1.5733,
+      "yoy_growth": -0.0059
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-12-31T00:00:00.000",
+      "eps": 1.5511,
+      "prev_year_eps": 1.4254,
+      "yoy_growth": 0.0882
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-03-31T00:00:00.000",
+      "eps": 1.7516,
+      "prev_year_eps": 1.4384,
+      "yoy_growth": 0.2177
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-06-30T00:00:00.000",
+      "eps": 1.2497,
+      "prev_year_eps": 1.1282,
+      "yoy_growth": 0.1077
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-09-30T00:00:00.000",
+      "eps": 1.8085,
+      "prev_year_eps": 1.564,
+      "yoy_growth": 0.1563
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-12-31T00:00:00.000",
+      "eps": 1.5026,
+      "prev_year_eps": 1.5511,
+      "yoy_growth": -0.0313
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2026-03-31T00:00:00.000",
+      "eps": 1.9718,
+      "prev_year_eps": 1.7516,
+      "yoy_growth": 0.1257
+    }
+  ]
+}

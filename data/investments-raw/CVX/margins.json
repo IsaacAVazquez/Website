@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "CVX",
+      "report_date": "2022-06-30",
+      "gross_profit": 21669000000.0,
+      "total_revenue": 65372000000.0,
+      "gross_margin": 0.3315
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2022-09-30",
+      "gross_profit": 21217000000.0,
+      "total_revenue": 63508000000.0,
+      "gross_margin": 0.3341
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2022-12-31",
+      "gross_profit": 15085000000.0,
+      "total_revenue": 54523000000.0,
+      "gross_margin": 0.2767
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2023-03-31",
+      "gross_profit": 15909000000.0,
+      "total_revenue": 48842000000.0,
+      "gross_margin": 0.3257
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2023-06-30",
+      "gross_profit": 14711000000.0,
+      "total_revenue": 47216000000.0,
+      "gross_margin": 0.3116
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2023-09-30",
+      "gross_profit": 15569000000.0,
+      "total_revenue": 51922000000.0,
+      "gross_margin": 0.2999
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2023-12-31",
+      "gross_profit": 14202000000.0,
+      "total_revenue": 48933000000.0,
+      "gross_margin": 0.2902
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-03-31",
+      "gross_profit": 14748000000.0,
+      "total_revenue": 46580000000.0,
+      "gross_margin": 0.3166
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-06-30",
+      "gross_profit": 14703000000.0,
+      "total_revenue": 49574000000.0,
+      "gross_margin": 0.2966
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-09-30",
+      "gross_profit": 14262000000.0,
+      "total_revenue": 48926000000.0,
+      "gross_margin": 0.2915
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-12-31",
+      "gross_profit": 13213000000.0,
+      "total_revenue": 48334000000.0,
+      "gross_margin": 0.2734
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-03-31",
+      "gross_profit": 13368000000.0,
+      "total_revenue": 46101000000.0,
+      "gross_margin": 0.29
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-06-30",
+      "gross_profit": 13173000000.0,
+      "total_revenue": 44375000000.0,
+      "gross_margin": 0.2969
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-09-30",
+      "gross_profit": 14990000000.0,
+      "total_revenue": 48169000000.0,
+      "gross_margin": 0.3112
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-12-31",
+      "gross_profit": 14555000000.0,
+      "total_revenue": 45787000000.0,
+      "gross_margin": 0.3179
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2026-03-31",
+      "gross_profit": 13483000000.0,
+      "total_revenue": 47556000000.0,
+      "gross_margin": 0.2835
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "CVX",
+      "report_date": "2019-12-31",
+      "gross_profit": 30534000000.0,
+      "total_revenue": 139865000000.0,
+      "gross_margin": 0.2183
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2020-12-31",
+      "gross_profit": 22815000000.0,
+      "total_revenue": 94471000000.0,
+      "gross_margin": 0.2415
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2021-12-31",
+      "gross_profit": 45432000000.0,
+      "total_revenue": 155606000000.0,
+      "gross_margin": 0.292
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2022-12-31",
+      "gross_profit": 73982000000.0,
+      "total_revenue": 235717000000.0,
+      "gross_margin": 0.3139
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2023-12-31",
+      "gross_profit": 60391000000.0,
+      "total_revenue": 196913000000.0,
+      "gross_margin": 0.3067
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-12-31",
+      "gross_profit": 56926000000.0,
+      "total_revenue": 193414000000.0,
+      "gross_margin": 0.2943
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-12-31",
+      "gross_profit": 56086000000.0,
+      "total_revenue": 184432000000.0,
+      "gross_margin": 0.3041
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "CVX",
+      "report_date": "2022-06-30",
+      "operating_income": 12742000000.0,
+      "total_revenue": 65372000000.0,
+      "operating_margin": 0.1949
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2022-09-30",
+      "operating_income": 11801000000.0,
+      "total_revenue": 63508000000.0,
+      "operating_margin": 0.1858
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2022-12-31",
+      "operating_income": 8017000000.0,
+      "total_revenue": 54523000000.0,
+      "operating_margin": 0.147
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2023-03-31",
+      "operating_income": 7721000000.0,
+      "total_revenue": 48842000000.0,
+      "operating_margin": 0.1581
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2023-06-30",
+      "operating_income": 6316000000.0,
+      "total_revenue": 47216000000.0,
+      "operating_margin": 0.1338
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2023-09-30",
+      "operating_income": 6785000000.0,
+      "total_revenue": 51922000000.0,
+      "operating_margin": 0.1307
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2023-12-31",
+      "operating_income": 5407000000.0,
+      "total_revenue": 48933000000.0,
+      "operating_margin": 0.1105
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-03-31",
+      "operating_income": 5952000000.0,
+      "total_revenue": 46580000000.0,
+      "operating_margin": 0.1278
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-06-30",
+      "operating_income": 5590000000.0,
+      "total_revenue": 49574000000.0,
+      "operating_margin": 0.1128
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-09-30",
+      "operating_income": 4959000000.0,
+      "total_revenue": 48926000000.0,
+      "operating_margin": 0.1014
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-12-31",
+      "operating_income": 2416000000.0,
+      "total_revenue": 48334000000.0,
+      "operating_margin": 0.05
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-03-31",
+      "operating_income": 4297000000.0,
+      "total_revenue": 46101000000.0,
+      "operating_margin": 0.0932
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-06-30",
+      "operating_income": 4057000000.0,
+      "total_revenue": 44375000000.0,
+      "operating_margin": 0.0914
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-09-30",
+      "operating_income": 4297000000.0,
+      "total_revenue": 48169000000.0,
+      "operating_margin": 0.0892
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-12-31",
+      "operating_income": 4023000000.0,
+      "total_revenue": 45787000000.0,
+      "operating_margin": 0.0879
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2026-03-31",
+      "operating_income": 3222000000.0,
+      "total_revenue": 47556000000.0,
+      "operating_margin": 0.0678
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "CVX",
+      "report_date": "2019-12-31",
+      "operating_income": -317000000.0,
+      "total_revenue": 139865000000.0,
+      "operating_margin": -0.0023
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2020-12-31",
+      "operating_income": -6097000000.0,
+      "total_revenue": 94471000000.0,
+      "operating_margin": -0.0645
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2021-12-31",
+      "operating_income": 16180000000.0,
+      "total_revenue": 155606000000.0,
+      "operating_margin": 0.104
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2022-12-31",
+      "operating_income": 39950000000.0,
+      "total_revenue": 235717000000.0,
+      "operating_margin": 0.1695
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2023-12-31",
+      "operating_income": 26229000000.0,
+      "total_revenue": 196913000000.0,
+      "operating_margin": 0.1332
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-12-31",
+      "operating_income": 18917000000.0,
+      "total_revenue": 193414000000.0,
+      "operating_margin": 0.0978
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-12-31",
+      "operating_income": 16674000000.0,
+      "total_revenue": 184432000000.0,
+      "operating_margin": 0.0904
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "CVX",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 11622000000.0,
+      "total_revenue": 65372000000.0,
+      "net_margin": 0.1778
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": 11231000000.0,
+      "total_revenue": 63508000000.0,
+      "net_margin": 0.1768
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 6353000000.0,
+      "total_revenue": 54523000000.0,
+      "net_margin": 0.1165
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": 6574000000.0,
+      "total_revenue": 48842000000.0,
+      "net_margin": 0.1346
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 6010000000.0,
+      "total_revenue": 47216000000.0,
+      "net_margin": 0.1273
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 6526000000.0,
+      "total_revenue": 51922000000.0,
+      "net_margin": 0.1257
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 2259000000.0,
+      "total_revenue": 48933000000.0,
+      "net_margin": 0.0462
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 5501000000.0,
+      "total_revenue": 46580000000.0,
+      "net_margin": 0.1181
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 4434000000.0,
+      "total_revenue": 49574000000.0,
+      "net_margin": 0.0894
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 4487000000.0,
+      "total_revenue": 48926000000.0,
+      "net_margin": 0.0917
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 3239000000.0,
+      "total_revenue": 48334000000.0,
+      "net_margin": 0.067
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 3500000000.0,
+      "total_revenue": 46101000000.0,
+      "net_margin": 0.0759
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 2490000000.0,
+      "total_revenue": 44375000000.0,
+      "net_margin": 0.0561
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 3539000000.0,
+      "total_revenue": 48169000000.0,
+      "net_margin": 0.0735
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 2770000000.0,
+      "total_revenue": 45787000000.0,
+      "net_margin": 0.0605
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 2210000000.0,
+      "total_revenue": 47556000000.0,
+      "net_margin": 0.0465
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "CVX",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": 2924000000.0,
+      "total_revenue": 139865000000.0,
+      "net_margin": 0.0209
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": -5543000000.0,
+      "total_revenue": 94471000000.0,
+      "net_margin": -0.0587
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 15625000000.0,
+      "total_revenue": 155606000000.0,
+      "net_margin": 0.1004
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 35465000000.0,
+      "total_revenue": 235717000000.0,
+      "net_margin": 0.1505
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 21369000000.0,
+      "total_revenue": 196913000000.0,
+      "net_margin": 0.1085
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 17661000000.0,
+      "total_revenue": 193414000000.0,
+      "net_margin": 0.0913
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 12299000000.0,
+      "total_revenue": 184432000000.0,
+      "net_margin": 0.0667
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "CVX",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 65372000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2022-09-30",
+      "ebitda": 19137000000.0,
+      "total_revenue": 63508000000.0,
+      "ebitda_margin": 0.3013
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2022-12-31",
+      "ebitda": 14926000000.0,
+      "total_revenue": 54523000000.0,
+      "ebitda_margin": 0.2738
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2023-03-31",
+      "ebitda": 13265000000.0,
+      "total_revenue": 48842000000.0,
+      "ebitda_margin": 0.2716
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2023-06-30",
+      "ebitda": 11516000000.0,
+      "total_revenue": 47216000000.0,
+      "ebitda_margin": 0.2439
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2023-09-30",
+      "ebitda": 13049000000.0,
+      "total_revenue": 51922000000.0,
+      "ebitda_margin": 0.2513
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2023-12-31",
+      "ebitda": 7212000000.0,
+      "total_revenue": 48933000000.0,
+      "ebitda_margin": 0.1474
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-03-31",
+      "ebitda": 12159000000.0,
+      "total_revenue": 46580000000.0,
+      "ebitda_margin": 0.261
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-06-30",
+      "ebitda": 11334000000.0,
+      "total_revenue": 49574000000.0,
+      "ebitda_margin": 0.2286
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-09-30",
+      "ebitda": 10883000000.0,
+      "total_revenue": 48926000000.0,
+      "ebitda_margin": 0.2224
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-12-31",
+      "ebitda": 10349000000.0,
+      "total_revenue": 48334000000.0,
+      "ebitda_margin": 0.2141
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-03-31",
+      "ebitda": 10030000000.0,
+      "total_revenue": 46101000000.0,
+      "ebitda_margin": 0.2176
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-06-30",
+      "ebitda": 8830000000.0,
+      "total_revenue": 44375000000.0,
+      "ebitda_margin": 0.199
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-09-30",
+      "ebitda": 11633000000.0,
+      "total_revenue": 48169000000.0,
+      "ebitda_margin": 0.2415
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-12-31",
+      "ebitda": 10924000000.0,
+      "total_revenue": 45787000000.0,
+      "ebitda_margin": 0.2386
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2026-03-31",
+      "ebitda": 10183000000.0,
+      "total_revenue": 47556000000.0,
+      "ebitda_margin": 0.2141
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "CVX",
+      "report_date": "2019-12-31",
+      "ebitda": 35534000000.0,
+      "total_revenue": 139865000000.0,
+      "ebitda_margin": 0.2541
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2020-12-31",
+      "ebitda": 10436000000.0,
+      "total_revenue": 94471000000.0,
+      "ebitda_margin": 0.1105
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2021-12-31",
+      "ebitda": 39364000000.0,
+      "total_revenue": 155606000000.0,
+      "ebitda_margin": 0.253
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2022-12-31",
+      "ebitda": 65485000000.0,
+      "total_revenue": 235717000000.0,
+      "ebitda_margin": 0.2778
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2023-12-31",
+      "ebitda": 47815000000.0,
+      "total_revenue": 196913000000.0,
+      "ebitda_margin": 0.2428
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-12-31",
+      "ebitda": 45811000000.0,
+      "total_revenue": 193414000000.0,
+      "ebitda_margin": 0.2369
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-12-31",
+      "ebitda": 41417000000.0,
+      "total_revenue": 184432000000.0,
+      "ebitda_margin": 0.2246
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "CVX",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 10600000000.0,
+      "total_revenue": 65372000000.0,
+      "fcf_margin": 0.1621
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": 63508000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 54523000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": 48842000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 2540000000.0,
+      "total_revenue": 47216000000.0,
+      "fcf_margin": 0.0538
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 5000000000.0,
+      "total_revenue": 51922000000.0,
+      "fcf_margin": 0.0963
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 8073000000.0,
+      "total_revenue": 48933000000.0,
+      "fcf_margin": 0.165
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 2739000000.0,
+      "total_revenue": 46580000000.0,
+      "fcf_margin": 0.0588
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 2329000000.0,
+      "total_revenue": 49574000000.0,
+      "fcf_margin": 0.047
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 5619000000.0,
+      "total_revenue": 48926000000.0,
+      "fcf_margin": 0.1148
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 4357000000.0,
+      "total_revenue": 48334000000.0,
+      "fcf_margin": 0.0901
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 1262000000.0,
+      "total_revenue": 46101000000.0,
+      "fcf_margin": 0.0274
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 4864000000.0,
+      "total_revenue": 44375000000.0,
+      "fcf_margin": 0.1096
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 4941000000.0,
+      "total_revenue": 48169000000.0,
+      "fcf_margin": 0.1026
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 5525000000.0,
+      "total_revenue": 45787000000.0,
+      "fcf_margin": 0.1207
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2026-03-31",
+      "free_cash_flow": -1549000000.0,
+      "total_revenue": 47556000000.0,
+      "fcf_margin": -0.0326
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "CVX",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 139865000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 1655000000.0,
+      "total_revenue": 94471000000.0,
+      "fcf_margin": 0.0175
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 21131000000.0,
+      "total_revenue": 155606000000.0,
+      "fcf_margin": 0.1358
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 37628000000.0,
+      "total_revenue": 235717000000.0,
+      "fcf_margin": 0.1596
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 19780000000.0,
+      "total_revenue": 196913000000.0,
+      "fcf_margin": 0.1005
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 15044000000.0,
+      "total_revenue": 193414000000.0,
+      "fcf_margin": 0.0778
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 16592000000.0,
+      "total_revenue": 184432000000.0,
+      "fcf_margin": 0.09
+    }
+  ]
+}

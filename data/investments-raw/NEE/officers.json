@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "NEE",
+    "name": "Mr. Brian W. Bolster",
+    "title": "President & CEO of NextEra Energy Resources",
+    "age": 52,
+    "born": 1973,
+    "pay": 2936842,
+    "exercised": 0,
+    "unexercised": 132136,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "NEE",
+    "name": "Mr. Charles E. Sieving J.D.",
+    "title": "Executive VP and Chief Legal, Environmental & Federal Regulatory Affairs Officer",
+    "age": 52,
+    "born": 1973,
+    "pay": 3666743,
+    "exercised": 0,
+    "unexercised": 3579983,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "NEE",
+    "name": "Mr. David  Flechner",
+    "title": "VP of Compliance & Corporate Secretary",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "NEE",
+    "name": "Mr. John W. Ketchum J.D.",
+    "title": "President, CEO & Chairman",
+    "age": 54,
+    "born": 1971,
+    "pay": 7241427,
+    "exercised": 0,
+    "unexercised": 20513980,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "NEE",
+    "name": "Mr. Mark  Eidelman",
+    "title": "Director of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "NEE",
+    "name": "Mr. Mark E. Hickson",
+    "title": "Executive Vice President of Corporate Development & Strategy",
+    "age": 57,
+    "born": 1968,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "NEE",
+    "name": "Mr. Michael H. Dunne",
+    "title": "CFO & Executive VP of Finance",
+    "age": 49,
+    "born": 1976,
+    "pay": 2127377,
+    "exercised": 0,
+    "unexercised": 569324,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "NEE",
+    "name": "Mr. Ronald R. Reagan",
+    "title": "Executive Vice President of Engineering, Construction & Integrated Supply Chain",
+    "age": 56,
+    "born": 1969,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "NEE",
+    "name": "Mr. William John Gough",
+    "title": "VP, Controller and Chief Accounting Officer",
+    "age": 38,
+    "born": 1987,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "NEE",
+    "name": "Ms. Nicole J. Daggs",
+    "title": "Executive Vice President of Human Resources & Corporate Services",
+    "age": 50,
+    "born": 1975,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  }
+]

@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "UNP",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1528000000.0,
+      "beginning_stockholders_equity": 13194000000.0,
+      "ending_stockholders_equity": 14004000000.0,
+      "avg_equity": 13599000000.0,
+      "roe": 0.1124
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1652000000.0,
+      "beginning_stockholders_equity": 14004000000.0,
+      "ending_stockholders_equity": 14788000000.0,
+      "avg_equity": 14396000000.0,
+      "roe": 0.1148
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1641000000.0,
+      "beginning_stockholders_equity": 14788000000.0,
+      "ending_stockholders_equity": 15665000000.0,
+      "avg_equity": 15226500000.0,
+      "roe": 0.1078
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1673000000.0,
+      "beginning_stockholders_equity": 15665000000.0,
+      "ending_stockholders_equity": 16489000000.0,
+      "avg_equity": 16077000000.0,
+      "roe": 0.1041
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1671000000.0,
+      "beginning_stockholders_equity": 16489000000.0,
+      "ending_stockholders_equity": 16584000000.0,
+      "avg_equity": 16536500000.0,
+      "roe": 0.101
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1762000000.0,
+      "beginning_stockholders_equity": 16584000000.0,
+      "ending_stockholders_equity": 16890000000.0,
+      "avg_equity": 16737000000.0,
+      "roe": 0.1053
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1626000000.0,
+      "beginning_stockholders_equity": 16890000000.0,
+      "ending_stockholders_equity": 16039000000.0,
+      "avg_equity": 16464500000.0,
+      "roe": 0.0988
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1876000000.0,
+      "beginning_stockholders_equity": 16039000000.0,
+      "ending_stockholders_equity": 16258000000.0,
+      "avg_equity": 16148500000.0,
+      "roe": 0.1162
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1788000000.0,
+      "beginning_stockholders_equity": 16258000000.0,
+      "ending_stockholders_equity": 17304000000.0,
+      "avg_equity": 16781000000.0,
+      "roe": 0.1065
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1848000000.0,
+      "beginning_stockholders_equity": 17304000000.0,
+      "ending_stockholders_equity": 18467000000.0,
+      "avg_equity": 17885500000.0,
+      "roe": 0.1033
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1701000000.0,
+      "beginning_stockholders_equity": 18467000000.0,
+      "ending_stockholders_equity": 19418000000.0,
+      "avg_equity": 18942500000.0,
+      "roe": 0.0898
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "UNP",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1528000000.0,
+      "beginning_total_assets": 66033000000.0,
+      "ending_total_assets": 66540000000.0,
+      "avg_assets": 66286500000.0,
+      "roa": 0.0231
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1652000000.0,
+      "beginning_total_assets": 66540000000.0,
+      "ending_total_assets": 67132000000.0,
+      "avg_assets": 66836000000.0,
+      "roa": 0.0247
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1641000000.0,
+      "beginning_total_assets": 67132000000.0,
+      "ending_total_assets": 67266000000.0,
+      "avg_assets": 67199000000.0,
+      "roa": 0.0244
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1673000000.0,
+      "beginning_total_assets": 67266000000.0,
+      "ending_total_assets": 67817000000.0,
+      "avg_assets": 67541500000.0,
+      "roa": 0.0248
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1671000000.0,
+      "beginning_total_assets": 67817000000.0,
+      "ending_total_assets": 67570000000.0,
+      "avg_assets": 67693500000.0,
+      "roa": 0.0247
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1762000000.0,
+      "beginning_total_assets": 67570000000.0,
+      "ending_total_assets": 67715000000.0,
+      "avg_assets": 67642500000.0,
+      "roa": 0.026
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1626000000.0,
+      "beginning_total_assets": 67715000000.0,
+      "ending_total_assets": 68492000000.0,
+      "avg_assets": 68103500000.0,
+      "roa": 0.0239
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1876000000.0,
+      "beginning_total_assets": 68492000000.0,
+      "ending_total_assets": 68576000000.0,
+      "avg_assets": 68534000000.0,
+      "roa": 0.0274
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1788000000.0,
+      "beginning_total_assets": 68576000000.0,
+      "ending_total_assets": 68647000000.0,
+      "avg_assets": 68611500000.0,
+      "roa": 0.0261
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1848000000.0,
+      "beginning_total_assets": 68647000000.0,
+      "ending_total_assets": 69698000000.0,
+      "avg_assets": 69172500000.0,
+      "roa": 0.0267
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1701000000.0,
+      "beginning_total_assets": 69698000000.0,
+      "ending_total_assets": 69644000000.0,
+      "avg_assets": 69671000000.0,
+      "roa": 0.0244
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "UNP",
+      "report_date": "2023-09-30",
+      "ebit": 2283000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 1780740000.0,
+      "beginning_invested_capital": 46496000000.0,
+      "ending_invested_capital": 46881000000.0,
+      "avg_invested_capital": 46688500000.0,
+      "roic": 0.0381
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2023-12-31",
+      "ebit": 2515000000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 1911400000.0,
+      "beginning_invested_capital": 46881000000.0,
+      "ending_invested_capital": 47367000000.0,
+      "avg_invested_capital": 47124000000.0,
+      "roic": 0.0406
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2024-03-31",
+      "ebit": 2464000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 1897280000.0,
+      "beginning_invested_capital": 47367000000.0,
+      "ending_invested_capital": 47593000000.0,
+      "avg_invested_capital": 47480000000.0,
+      "roic": 0.04
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2024-06-30",
+      "ebit": 2503000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 1927310000.0,
+      "beginning_invested_capital": 47593000000.0,
+      "ending_invested_capital": 48381000000.0,
+      "avg_invested_capital": 47987000000.0,
+      "roic": 0.0402
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2024-09-30",
+      "ebit": 2503000000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 1902280000.0,
+      "beginning_invested_capital": 48381000000.0,
+      "ending_invested_capital": 47997000000.0,
+      "avg_invested_capital": 48189000000.0,
+      "roic": 0.0395
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2024-12-31",
+      "ebit": 2593000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 1996610000.0,
+      "beginning_invested_capital": 47997000000.0,
+      "ending_invested_capital": 48082000000.0,
+      "avg_invested_capital": 48039500000.0,
+      "roic": 0.0416
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2025-03-31",
+      "ebit": 2449000000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 1861240000.0,
+      "beginning_invested_capital": 48082000000.0,
+      "ending_invested_capital": 48881000000.0,
+      "avg_invested_capital": 48481500000.0,
+      "roic": 0.0384
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2025-06-30",
+      "ebit": 2648000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 2144880000.0,
+      "beginning_invested_capital": 48881000000.0,
+      "ending_invested_capital": 49071000000.0,
+      "avg_invested_capital": 48976000000.0,
+      "roic": 0.0438
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2025-09-30",
+      "ebit": 2645000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 2036650000.0,
+      "beginning_invested_capital": 49071000000.0,
+      "ending_invested_capital": 49111000000.0,
+      "avg_invested_capital": 49091000000.0,
+      "roic": 0.0415
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2025-12-31",
+      "ebit": 2733000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 2104410000.0,
+      "beginning_invested_capital": 49111000000.0,
+      "ending_invested_capital": 50281000000.0,
+      "avg_invested_capital": 49696000000.0,
+      "roic": 0.0423
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2026-03-31",
+      "ebit": 2549000000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 1937240000.0,
+      "beginning_invested_capital": 50281000000.0,
+      "ending_invested_capital": 50069000000.0,
+      "avg_invested_capital": 50175000000.0,
+      "roic": 0.0386
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "UNP",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.1124,
+      "roa": 0.0231,
+      "equity_multiplier": 4.87
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.1148,
+      "roa": 0.0247,
+      "equity_multiplier": 4.65
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.1078,
+      "roa": 0.0244,
+      "equity_multiplier": 4.42
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.1041,
+      "roa": 0.0248,
+      "equity_multiplier": 4.2
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.101,
+      "roa": 0.0247,
+      "equity_multiplier": 4.09
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.1053,
+      "roa": 0.026,
+      "equity_multiplier": 4.05
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0988,
+      "roa": 0.0239,
+      "equity_multiplier": 4.13
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.1162,
+      "roa": 0.0274,
+      "equity_multiplier": 4.24
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.1065,
+      "roa": 0.0261,
+      "equity_multiplier": 4.08
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.1033,
+      "roa": 0.0267,
+      "equity_multiplier": 3.87
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.0898,
+      "roa": 0.0244,
+      "equity_multiplier": 3.68
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "UNP",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0231,
+      "net_margin": 0.2572,
+      "asset_turnover": 0.09
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0247,
+      "net_margin": 0.2682,
+      "asset_turnover": 0.09
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0244,
+      "net_margin": 0.2721,
+      "asset_turnover": 0.09
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0248,
+      "net_margin": 0.2785,
+      "asset_turnover": 0.09
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0247,
+      "net_margin": 0.2743,
+      "asset_turnover": 0.09
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.026,
+      "net_margin": 0.2879,
+      "asset_turnover": 0.09
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0239,
+      "net_margin": 0.2698,
+      "asset_turnover": 0.09
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0274,
+      "net_margin": 0.3048,
+      "asset_turnover": 0.09
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0261,
+      "net_margin": 0.2864,
+      "asset_turnover": 0.09
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0267,
+      "net_margin": 0.3037,
+      "asset_turnover": 0.09
+    },
+    {
+      "symbol": "UNP",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0244,
+      "net_margin": 0.2736,
+      "asset_turnover": 0.09
+    }
+  ]
+}

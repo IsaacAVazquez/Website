@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "SO",
+    "name": "Mr. Christopher C. Womack",
+    "title": "CEO, President & Chairman",
+    "age": 67,
+    "born": 1958,
+    "pay": 5431992,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "SO",
+    "name": "Mr. Daniel S. Tucker",
+    "title": "Senior Advisor",
+    "age": 55,
+    "born": 1970,
+    "pay": 2442857,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "SO",
+    "name": "Mr. David P. Poroch",
+    "title": "Executive VP & CFO",
+    "age": 55,
+    "born": 1970,
+    "pay": 1599434,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "SO",
+    "name": "Mr. Greg  MacLeod",
+    "title": "Director of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "SO",
+    "name": "Mr. J. Jeffrey Peoples",
+    "title": "Chairman, President & CEO of Alabama Power Company",
+    "age": 65,
+    "born": 1960,
+    "pay": 2460797,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "SO",
+    "name": "Mr. Matthew M. Kim",
+    "title": "SVP, Comptroller & Chief Accounting Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "SO",
+    "name": "Mr. Stanley W. Connally Jr.",
+    "title": "Executive VP & COO",
+    "age": 56,
+    "born": 1969,
+    "pay": 2327228,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "SO",
+    "name": "Mr. Sterling A. Spainhour Jr., J.D.",
+    "title": "Executive VP & Chief Legal Officer",
+    "age": 56,
+    "born": 1969,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "SO",
+    "name": "Ms. Kimberly Scheibe Greene",
+    "title": "Chairman, President & CEO of Georgia Power",
+    "age": 59,
+    "born": 1966,
+    "pay": 2873203,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "SO",
+    "name": "Ms. Sloane N. Drake",
+    "title": "Executive VP & Chief Human Resources Officer",
+    "age": 48,
+    "born": 1977,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  }
+]

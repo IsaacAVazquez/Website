@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "PLD",
+    "name": "Mr. Carter H. Andrus",
+    "title": "Chief Operating Officer",
+    "age": 45,
+    "born": 1980,
+    "pay": 1655500,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "PLD",
+    "name": "Mr. Daniel Stephen Letter",
+    "title": "CEO & Director",
+    "age": 47,
+    "born": 1978,
+    "pay": 2689635,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "PLD",
+    "name": "Mr. Hamid R. Moghadam",
+    "title": "Co-Founder & Executive Chairman",
+    "age": 68,
+    "born": 1957,
+    "pay": 1630001,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "PLD",
+    "name": "Mr. Joseph  Ghazal",
+    "title": "Executive Officer",
+    "age": 53,
+    "born": 1972,
+    "pay": 1382476,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "PLD",
+    "name": "Mr. Sineesh  Keshav",
+    "title": "Chief Technical Officer & Chief Technology Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "PLD",
+    "name": "Mr. Timothy D. Arndt",
+    "title": "Chief Financial Officer",
+    "age": 51,
+    "born": 1974,
+    "pay": 2073192,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "PLD",
+    "name": "Ms. Deborah K. Briones",
+    "title": "Chief Legal Officer, General Counsel & Secretary",
+    "age": 53,
+    "born": 1972,
+    "pay": 1279635,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "PLD",
+    "name": "Ms. Jane  Wu",
+    "title": "China Board Chairperson",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "PLD",
+    "name": "Ms. Nathaalie  Carey",
+    "title": "Chief Administrative Officer & Chief Human Resources Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "PLD",
+    "name": "Ms. Trisha  Burns",
+    "title": "Chief Accounting Officer",
+    "age": 43,
+    "born": 1982,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  }
+]

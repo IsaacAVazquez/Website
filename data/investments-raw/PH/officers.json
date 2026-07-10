@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "PH",
+    "name": "Jeffrey J. Miller",
+    "title": "Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "PH",
+    "name": "Mr. Aidan  Gormley",
+    "title": "Director of Global Communications & Branding",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "PH",
+    "name": "Mr. Andrew D. Ross",
+    "title": "President & COO",
+    "age": 58,
+    "born": 1967,
+    "pay": 2864723,
+    "exercised": 6270878,
+    "unexercised": 11551511,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "PH",
+    "name": "Mr. Dinu J. Parel",
+    "title": "VP and Chief Digital & Information Officer",
+    "age": 43,
+    "born": 1982,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "PH",
+    "name": "Mr. Douglas A. Gilbert",
+    "title": "Vice President of Global Sales & Marketing",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "PH",
+    "name": "Mr. Joseph R. Leonti J.D.",
+    "title": "Executive VP, General Counsel & Secretary",
+    "age": 53,
+    "born": 1972,
+    "pay": 2252140,
+    "exercised": 2162839,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "PH",
+    "name": "Mr. Mark T. Czaja",
+    "title": "VP and Chief Technology & Innovation Officer",
+    "age": 62,
+    "born": 1963,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "PH",
+    "name": "Mr. Patrick M. Scott",
+    "title": "VP & President of Fluid Connectors Group",
+    "age": 46,
+    "born": 1979,
+    "pay": 1933650,
+    "exercised": 0,
+    "unexercised": 3723378,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "PH",
+    "name": "Mr. Todd M. Leombruno",
+    "title": "Executive VP & CFO",
+    "age": 55,
+    "born": 1970,
+    "pay": 2792907,
+    "exercised": 0,
+    "unexercised": 18167258,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "PH",
+    "name": "Ms. Jennifer A.  Parmentier",
+    "title": "Chairman of the Board & CEO",
+    "age": 58,
+    "born": 1967,
+    "pay": 6063164,
+    "exercised": 9056641,
+    "unexercised": 19711668,
+    "report_date": "2026-07-09"
+  }
+]

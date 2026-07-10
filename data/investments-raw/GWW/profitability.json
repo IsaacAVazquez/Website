@@ -1,0 +1,571 @@
+{
+  "roe": [
+    {
+      "symbol": "GWW",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": 488000000.0,
+      "beginning_stockholders_equity": 2440000000.0,
+      "ending_stockholders_equity": 2735000000.0,
+      "avg_equity": 2587500000.0,
+      "roe": 0.1886
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 470000000.0,
+      "beginning_stockholders_equity": 2735000000.0,
+      "ending_stockholders_equity": 2935000000.0,
+      "avg_equity": 2835000000.0,
+      "roe": 0.1658
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 476000000.0,
+      "beginning_stockholders_equity": 2935000000.0,
+      "ending_stockholders_equity": 3090000000.0,
+      "avg_equity": 3012500000.0,
+      "roe": 0.158
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 395000000.0,
+      "beginning_stockholders_equity": 3090000000.0,
+      "ending_stockholders_equity": 3115000000.0,
+      "avg_equity": 3102500000.0,
+      "roe": 0.1273
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 478000000.0,
+      "beginning_stockholders_equity": 3115000000.0,
+      "ending_stockholders_equity": 3199000000.0,
+      "avg_equity": 3157000000.0,
+      "roe": 0.1514
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 470000000.0,
+      "beginning_stockholders_equity": 3199000000.0,
+      "ending_stockholders_equity": 3277000000.0,
+      "avg_equity": 3238000000.0,
+      "roe": 0.1452
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 486000000.0,
+      "beginning_stockholders_equity": 3277000000.0,
+      "ending_stockholders_equity": 3503000000.0,
+      "avg_equity": 3390000000.0,
+      "roe": 0.1434
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 475000000.0,
+      "beginning_stockholders_equity": 3503000000.0,
+      "ending_stockholders_equity": 3358000000.0,
+      "avg_equity": 3430500000.0,
+      "roe": 0.1385
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 479000000.0,
+      "beginning_stockholders_equity": 3358000000.0,
+      "ending_stockholders_equity": 3480000000.0,
+      "avg_equity": 3419000000.0,
+      "roe": 0.1401
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 482000000.0,
+      "beginning_stockholders_equity": 3480000000.0,
+      "ending_stockholders_equity": 3674000000.0,
+      "avg_equity": 3577000000.0,
+      "roe": 0.1347
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 294000000.0,
+      "beginning_stockholders_equity": 3674000000.0,
+      "ending_stockholders_equity": 3561000000.0,
+      "avg_equity": 3617500000.0,
+      "roe": 0.0813
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 451000000.0,
+      "beginning_stockholders_equity": 3561000000.0,
+      "ending_stockholders_equity": 3736000000.0,
+      "avg_equity": 3648500000.0,
+      "roe": 0.1236
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 555000000.0,
+      "beginning_stockholders_equity": 3736000000.0,
+      "ending_stockholders_equity": 3930000000.0,
+      "avg_equity": 3833000000.0,
+      "roe": 0.1448
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "GWW",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": 488000000.0,
+      "beginning_total_assets": 7588000000.0,
+      "ending_total_assets": 7825000000.0,
+      "avg_assets": 7706500000.0,
+      "roa": 0.0633
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 470000000.0,
+      "beginning_total_assets": 7825000000.0,
+      "ending_total_assets": 8031000000.0,
+      "avg_assets": 7928000000.0,
+      "roa": 0.0593
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 476000000.0,
+      "beginning_total_assets": 8031000000.0,
+      "ending_total_assets": 8140000000.0,
+      "avg_assets": 8085500000.0,
+      "roa": 0.0589
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 395000000.0,
+      "beginning_total_assets": 8140000000.0,
+      "ending_total_assets": 8147000000.0,
+      "avg_assets": 8143500000.0,
+      "roa": 0.0485
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 478000000.0,
+      "beginning_total_assets": 8147000000.0,
+      "ending_total_assets": 8400000000.0,
+      "avg_assets": 8273500000.0,
+      "roa": 0.0578
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 470000000.0,
+      "beginning_total_assets": 8400000000.0,
+      "ending_total_assets": 8352000000.0,
+      "avg_assets": 8376000000.0,
+      "roa": 0.0561
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 486000000.0,
+      "beginning_total_assets": 8352000000.0,
+      "ending_total_assets": 9114000000.0,
+      "avg_assets": 8733000000.0,
+      "roa": 0.0557
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 475000000.0,
+      "beginning_total_assets": 9114000000.0,
+      "ending_total_assets": 8829000000.0,
+      "avg_assets": 8971500000.0,
+      "roa": 0.0529
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 479000000.0,
+      "beginning_total_assets": 8829000000.0,
+      "ending_total_assets": 8658000000.0,
+      "avg_assets": 8743500000.0,
+      "roa": 0.0548
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 482000000.0,
+      "beginning_total_assets": 8658000000.0,
+      "ending_total_assets": 8937000000.0,
+      "avg_assets": 8797500000.0,
+      "roa": 0.0548
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 294000000.0,
+      "beginning_total_assets": 8937000000.0,
+      "ending_total_assets": 8848000000.0,
+      "avg_assets": 8892500000.0,
+      "roa": 0.0331
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 451000000.0,
+      "beginning_total_assets": 8848000000.0,
+      "ending_total_assets": 8962000000.0,
+      "avg_assets": 8905000000.0,
+      "roa": 0.0506
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 555000000.0,
+      "beginning_total_assets": 8962000000.0,
+      "ending_total_assets": 9473000000.0,
+      "avg_assets": 9217500000.0,
+      "roa": 0.0602
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "GWW",
+      "report_date": "2023-03-31",
+      "ebit": 686000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 528220000.0,
+      "beginning_invested_capital": 4759000000.0,
+      "ending_invested_capital": 5050000000.0,
+      "avg_invested_capital": 4904500000.0,
+      "roic": 0.1077
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2023-06-30",
+      "ebit": 669000000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 508440000.0,
+      "beginning_invested_capital": 5050000000.0,
+      "ending_invested_capital": 5243000000.0,
+      "avg_invested_capital": 5146500000.0,
+      "roic": 0.0988
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2023-09-30",
+      "ebit": 674000000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 512240000.0,
+      "beginning_invested_capital": 5243000000.0,
+      "ending_invested_capital": 5384000000.0,
+      "avg_invested_capital": 5313500000.0,
+      "roic": 0.0964
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2023-12-31",
+      "ebit": 564000000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 428640000.0,
+      "beginning_invested_capital": 5384000000.0,
+      "ending_invested_capital": 5415000000.0,
+      "avg_invested_capital": 5399500000.0,
+      "roic": 0.0794
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2024-03-31",
+      "ebit": 676000000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 513760000.0,
+      "beginning_invested_capital": 5415000000.0,
+      "ending_invested_capital": 5483000000.0,
+      "avg_invested_capital": 5449000000.0,
+      "roic": 0.0943
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2024-06-30",
+      "ebit": 656000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 505120000.0,
+      "beginning_invested_capital": 5483000000.0,
+      "ending_invested_capital": 5565000000.0,
+      "avg_invested_capital": 5524000000.0,
+      "roic": 0.0914
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2024-09-30",
+      "ebit": 690000000.0,
+      "tax_rate_for_calcs": 0.25,
+      "nopat": 517500000.0,
+      "beginning_invested_capital": 5565000000.0,
+      "ending_invested_capital": 6279000000.0,
+      "avg_invested_capital": 5922000000.0,
+      "roic": 0.0874
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2024-12-31",
+      "ebit": 639000000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 511200000.0,
+      "beginning_invested_capital": 6279000000.0,
+      "ending_invested_capital": 6136000000.0,
+      "avg_invested_capital": 6207500000.0,
+      "roic": 0.0824
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2025-03-31",
+      "ebit": 678000000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 515280000.0,
+      "beginning_invested_capital": 6136000000.0,
+      "ending_invested_capital": 5761000000.0,
+      "avg_invested_capital": 5948500000.0,
+      "roic": 0.0866
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2025-06-30",
+      "ebit": 681000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 524370000.0,
+      "beginning_invested_capital": 5761000000.0,
+      "ending_invested_capital": 6017000000.0,
+      "avg_invested_capital": 5889000000.0,
+      "roic": 0.089
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2025-09-30",
+      "ebit": 512000000.0,
+      "tax_rate_for_calcs": 0.35,
+      "nopat": 332800000.0,
+      "beginning_invested_capital": 6017000000.0,
+      "ending_invested_capital": 5930000000.0,
+      "avg_invested_capital": 5973500000.0,
+      "roic": 0.0557
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2025-12-31",
+      "ebit": 640000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 492800000.0,
+      "beginning_invested_capital": 5930000000.0,
+      "ending_invested_capital": 6224000000.0,
+      "avg_invested_capital": 6077000000.0,
+      "roic": 0.0811
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2026-03-31",
+      "ebit": 796000000.0,
+      "tax_rate_for_calcs": 0.25,
+      "nopat": 597000000.0,
+      "beginning_invested_capital": 6224000000.0,
+      "ending_invested_capital": 6341000000.0,
+      "avg_invested_capital": 6282500000.0,
+      "roic": 0.095
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "GWW",
+      "report_date": "2023-03-31T00:00:00.000",
+      "roe": 0.1886,
+      "roa": 0.0633,
+      "equity_multiplier": 2.98
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2023-06-30T00:00:00.000",
+      "roe": 0.1658,
+      "roa": 0.0593,
+      "equity_multiplier": 2.8
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.158,
+      "roa": 0.0589,
+      "equity_multiplier": 2.68
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.1273,
+      "roa": 0.0485,
+      "equity_multiplier": 2.62
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.1514,
+      "roa": 0.0578,
+      "equity_multiplier": 2.62
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.1452,
+      "roa": 0.0561,
+      "equity_multiplier": 2.59
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.1434,
+      "roa": 0.0557,
+      "equity_multiplier": 2.57
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.1385,
+      "roa": 0.0529,
+      "equity_multiplier": 2.62
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.1401,
+      "roa": 0.0548,
+      "equity_multiplier": 2.56
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.1347,
+      "roa": 0.0548,
+      "equity_multiplier": 2.46
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0813,
+      "roa": 0.0331,
+      "equity_multiplier": 2.46
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.1236,
+      "roa": 0.0506,
+      "equity_multiplier": 2.44
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.1448,
+      "roa": 0.0602,
+      "equity_multiplier": 2.41
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "GWW",
+      "report_date": "2023-03-31T00:00:00.000",
+      "roa": 0.0633,
+      "net_margin": 0.1193,
+      "asset_turnover": 0.53
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2023-06-30T00:00:00.000",
+      "roa": 0.0593,
+      "net_margin": 0.1124,
+      "asset_turnover": 0.53
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0589,
+      "net_margin": 0.1131,
+      "asset_turnover": 0.52
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0485,
+      "net_margin": 0.0988,
+      "asset_turnover": 0.49
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0578,
+      "net_margin": 0.1129,
+      "asset_turnover": 0.51
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0561,
+      "net_margin": 0.109,
+      "asset_turnover": 0.51
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0557,
+      "net_margin": 0.1108,
+      "asset_turnover": 0.5
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0529,
+      "net_margin": 0.1122,
+      "asset_turnover": 0.47
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0548,
+      "net_margin": 0.1112,
+      "asset_turnover": 0.49
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0548,
+      "net_margin": 0.1058,
+      "asset_turnover": 0.52
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0331,
+      "net_margin": 0.0631,
+      "asset_turnover": 0.52
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0506,
+      "net_margin": 0.1019,
+      "asset_turnover": 0.5
+    },
+    {
+      "symbol": "GWW",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0602,
+      "net_margin": 0.117,
+      "asset_turnover": 0.51
+    }
+  ]
+}

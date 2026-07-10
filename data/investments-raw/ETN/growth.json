@@ -1,0 +1,1501 @@
+{
+  "quarterly_revenue": [
+    {
+      "symbol": "ETN",
+      "report_date": "2022-06-30T00:00:00.000",
+      "revenue": 5212000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2022-09-30T00:00:00.000",
+      "revenue": 5313000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-06-30T00:00:00.000",
+      "revenue": 5866000000.0,
+      "prev_year_revenue": 5212000000.0,
+      "yoy_growth": 0.1255
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-09-30T00:00:00.000",
+      "revenue": 5880000000.0,
+      "prev_year_revenue": 5313000000.0,
+      "yoy_growth": 0.1067
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 5967000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-03-31T00:00:00.000",
+      "revenue": 5943000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-06-30T00:00:00.000",
+      "revenue": 6350000000.0,
+      "prev_year_revenue": 5866000000.0,
+      "yoy_growth": 0.0825
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-09-30T00:00:00.000",
+      "revenue": 6345000000.0,
+      "prev_year_revenue": 5880000000.0,
+      "yoy_growth": 0.0791
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 6240000000.0,
+      "prev_year_revenue": 5967000000.0,
+      "yoy_growth": 0.0458
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-03-31T00:00:00.000",
+      "revenue": 6377000000.0,
+      "prev_year_revenue": 5943000000.0,
+      "yoy_growth": 0.073
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-06-30T00:00:00.000",
+      "revenue": 7028000000.0,
+      "prev_year_revenue": 6350000000.0,
+      "yoy_growth": 0.1068
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-09-30T00:00:00.000",
+      "revenue": 6988000000.0,
+      "prev_year_revenue": 6345000000.0,
+      "yoy_growth": 0.1013
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 7055000000.0,
+      "prev_year_revenue": 6240000000.0,
+      "yoy_growth": 0.1306
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 7451000000.0,
+      "prev_year_revenue": 6377000000.0,
+      "yoy_growth": 0.1684
+    }
+  ],
+  "annual_revenue": [
+    {
+      "symbol": "ETN",
+      "report_date": "2020-12-31T00:00:00.000",
+      "revenue": 17858000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2021-12-31T00:00:00.000",
+      "revenue": 19628000000.0,
+      "prev_year_revenue": 17858000000.0,
+      "yoy_growth": 0.0991
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2022-12-31T00:00:00.000",
+      "revenue": 20752000000.0,
+      "prev_year_revenue": 19628000000.0,
+      "yoy_growth": 0.0573
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 23196000000.0,
+      "prev_year_revenue": 20752000000.0,
+      "yoy_growth": 0.1178
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 24878000000.0,
+      "prev_year_revenue": 23196000000.0,
+      "yoy_growth": 0.0725
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 27448000000.0,
+      "prev_year_revenue": 24878000000.0,
+      "yoy_growth": 0.1033
+    }
+  ],
+  "quarterly_operating_income": [
+    {
+      "symbol": "ETN",
+      "report_date": "2022-06-30T00:00:00.000",
+      "operating_income": 711000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2022-09-30T00:00:00.000",
+      "operating_income": 790000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-06-30T00:00:00.000",
+      "operating_income": 946000000.0,
+      "prev_year_operating_income": 711000000.0,
+      "yoy_growth": 0.3305
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-09-30T00:00:00.000",
+      "operating_income": 1060000000.0,
+      "prev_year_operating_income": 790000000.0,
+      "yoy_growth": 0.3418
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 1078000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-03-31T00:00:00.000",
+      "operating_income": 1004000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-06-30T00:00:00.000",
+      "operating_income": 1193000000.0,
+      "prev_year_operating_income": 946000000.0,
+      "yoy_growth": 0.2611
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-09-30T00:00:00.000",
+      "operating_income": 1211000000.0,
+      "prev_year_operating_income": 1060000000.0,
+      "yoy_growth": 0.1425
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 1225000000.0,
+      "prev_year_operating_income": 1078000000.0,
+      "yoy_growth": 0.1364
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-03-31T00:00:00.000",
+      "operating_income": 1201000000.0,
+      "prev_year_operating_income": 1004000000.0,
+      "yoy_growth": 0.1962
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-06-30T00:00:00.000",
+      "operating_income": 1256000000.0,
+      "prev_year_operating_income": 1193000000.0,
+      "yoy_growth": 0.0528
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-09-30T00:00:00.000",
+      "operating_income": 1367000000.0,
+      "prev_year_operating_income": 1211000000.0,
+      "yoy_growth": 0.1288
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 1386000000.0,
+      "prev_year_operating_income": 1225000000.0,
+      "yoy_growth": 0.1314
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2026-03-31T00:00:00.000",
+      "operating_income": 1172000000.0,
+      "prev_year_operating_income": 1201000000.0,
+      "yoy_growth": -0.0241
+    }
+  ],
+  "annual_operating_income": [
+    {
+      "symbol": "ETN",
+      "report_date": "2020-12-31T00:00:00.000",
+      "operating_income": 1824000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2021-12-31T00:00:00.000",
+      "operating_income": 2463000000.0,
+      "prev_year_operating_income": 1824000000.0,
+      "yoy_growth": 0.3503
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2022-12-31T00:00:00.000",
+      "operating_income": 2995000000.0,
+      "prev_year_operating_income": 2463000000.0,
+      "yoy_growth": 0.216
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 3885000000.0,
+      "prev_year_operating_income": 2995000000.0,
+      "yoy_growth": 0.2972
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 4632000000.0,
+      "prev_year_operating_income": 3885000000.0,
+      "yoy_growth": 0.1923
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 5209000000.0,
+      "prev_year_operating_income": 4632000000.0,
+      "yoy_growth": 0.1246
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "ETN",
+      "report_date": "2022-09-30T00:00:00.000",
+      "ebitda": 994000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-06-30T00:00:00.000",
+      "ebitda": 1168000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-09-30T00:00:00.000",
+      "ebitda": 1341000000.0,
+      "prev_year_ebitda": 994000000.0,
+      "yoy_growth": 0.3491
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 1346000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-03-31T00:00:00.000",
+      "ebitda": 1256000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-06-30T00:00:00.000",
+      "ebitda": 1451000000.0,
+      "prev_year_ebitda": 1168000000.0,
+      "yoy_growth": 0.2423
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-09-30T00:00:00.000",
+      "ebitda": 1468000000.0,
+      "prev_year_ebitda": 1341000000.0,
+      "yoy_growth": 0.0947
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 1443000000.0,
+      "prev_year_ebitda": 1346000000.0,
+      "yoy_growth": 0.0721
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-03-31T00:00:00.000",
+      "ebitda": 1442000000.0,
+      "prev_year_ebitda": 1256000000.0,
+      "yoy_growth": 0.1481
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-06-30T00:00:00.000",
+      "ebitda": 1518000000.0,
+      "prev_year_ebitda": 1451000000.0,
+      "yoy_growth": 0.0462
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-09-30T00:00:00.000",
+      "ebitda": 1600000000.0,
+      "prev_year_ebitda": 1468000000.0,
+      "yoy_growth": 0.0899
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 1620000000.0,
+      "prev_year_ebitda": 1443000000.0,
+      "yoy_growth": 0.1227
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2026-03-31T00:00:00.000",
+      "ebitda": 1485000000.0,
+      "prev_year_ebitda": 1442000000.0,
+      "yoy_growth": 0.0298
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "ETN",
+      "report_date": "2020-12-31T00:00:00.000",
+      "ebitda": 2706000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2021-12-31T00:00:00.000",
+      "ebitda": 3962000000.0,
+      "prev_year_ebitda": 2706000000.0,
+      "yoy_growth": 0.4642
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2022-12-31T00:00:00.000",
+      "ebitda": 4009000000.0,
+      "prev_year_ebitda": 3962000000.0,
+      "yoy_growth": 0.0119
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 4904000000.0,
+      "prev_year_ebitda": 4009000000.0,
+      "yoy_growth": 0.2232
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 5617000000.0,
+      "prev_year_ebitda": 4904000000.0,
+      "yoy_growth": 0.1454
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 6179000000.0,
+      "prev_year_ebitda": 5617000000.0,
+      "yoy_growth": 0.1001
+    }
+  ],
+  "quarterly_net_income": [
+    {
+      "symbol": "ETN",
+      "report_date": "2022-06-30T00:00:00.000",
+      "net_income_common_stockholders": 601000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2022-09-30T00:00:00.000",
+      "net_income_common_stockholders": 607000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-06-30T00:00:00.000",
+      "net_income_common_stockholders": 744000000.0,
+      "prev_year_net_income_common_stockholders": 601000000.0,
+      "yoy_growth": 0.2379
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-09-30T00:00:00.000",
+      "net_income_common_stockholders": 891000000.0,
+      "prev_year_net_income_common_stockholders": 607000000.0,
+      "yoy_growth": 0.4679
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 945000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-03-31T00:00:00.000",
+      "net_income_common_stockholders": 821000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-06-30T00:00:00.000",
+      "net_income_common_stockholders": 993000000.0,
+      "prev_year_net_income_common_stockholders": 744000000.0,
+      "yoy_growth": 0.3347
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-09-30T00:00:00.000",
+      "net_income_common_stockholders": 1009000000.0,
+      "prev_year_net_income_common_stockholders": 891000000.0,
+      "yoy_growth": 0.1324
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 971000000.0,
+      "prev_year_net_income_common_stockholders": 945000000.0,
+      "yoy_growth": 0.0275
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-03-31T00:00:00.000",
+      "net_income_common_stockholders": 964000000.0,
+      "prev_year_net_income_common_stockholders": 821000000.0,
+      "yoy_growth": 0.1742
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-06-30T00:00:00.000",
+      "net_income_common_stockholders": 982000000.0,
+      "prev_year_net_income_common_stockholders": 993000000.0,
+      "yoy_growth": -0.0111
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-09-30T00:00:00.000",
+      "net_income_common_stockholders": 1010000000.0,
+      "prev_year_net_income_common_stockholders": 1009000000.0,
+      "yoy_growth": 0.001
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1132000000.0,
+      "prev_year_net_income_common_stockholders": 971000000.0,
+      "yoy_growth": 0.1658
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 866000000.0,
+      "prev_year_net_income_common_stockholders": 964000000.0,
+      "yoy_growth": -0.1017
+    }
+  ],
+  "annual_net_income": [
+    {
+      "symbol": "ETN",
+      "report_date": "2020-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1410000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2021-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2144000000.0,
+      "prev_year_net_income_common_stockholders": 1410000000.0,
+      "yoy_growth": 0.5206
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2022-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2462000000.0,
+      "prev_year_net_income_common_stockholders": 2144000000.0,
+      "yoy_growth": 0.1483
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 3218000000.0,
+      "prev_year_net_income_common_stockholders": 2462000000.0,
+      "yoy_growth": 0.3071
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 3794000000.0,
+      "prev_year_net_income_common_stockholders": 3218000000.0,
+      "yoy_growth": 0.179
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 4087000000.0,
+      "prev_year_net_income_common_stockholders": 3794000000.0,
+      "yoy_growth": 0.0772
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "ETN",
+      "report_date": "2022-06-30T00:00:00.000",
+      "free_cash_flow": 201000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-06-30T00:00:00.000",
+      "free_cash_flow": 690000000.0,
+      "prev_year_free_cash_flow": 201000000.0,
+      "yoy_growth": 2.4328
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-09-30T00:00:00.000",
+      "free_cash_flow": 913000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 1055000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-03-31T00:00:00.000",
+      "free_cash_flow": 292000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-06-30T00:00:00.000",
+      "free_cash_flow": 759000000.0,
+      "prev_year_free_cash_flow": 690000000.0,
+      "yoy_growth": 0.1
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-09-30T00:00:00.000",
+      "free_cash_flow": 1126000000.0,
+      "prev_year_free_cash_flow": 913000000.0,
+      "yoy_growth": 0.2333
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 1342000000.0,
+      "prev_year_free_cash_flow": 1055000000.0,
+      "yoy_growth": 0.272
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-03-31T00:00:00.000",
+      "free_cash_flow": 91000000.0,
+      "prev_year_free_cash_flow": 292000000.0,
+      "yoy_growth": -0.6884
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-06-30T00:00:00.000",
+      "free_cash_flow": 716000000.0,
+      "prev_year_free_cash_flow": 759000000.0,
+      "yoy_growth": -0.0567
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-09-30T00:00:00.000",
+      "free_cash_flow": 1173000000.0,
+      "prev_year_free_cash_flow": 1126000000.0,
+      "yoy_growth": 0.0417
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 1573000000.0,
+      "prev_year_free_cash_flow": 1342000000.0,
+      "yoy_growth": 0.1721
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": 314000000.0,
+      "prev_year_free_cash_flow": 91000000.0,
+      "yoy_growth": 2.4505
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "ETN",
+      "report_date": "2020-12-31T00:00:00.000",
+      "free_cash_flow": 2555000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2021-12-31T00:00:00.000",
+      "free_cash_flow": 1588000000.0,
+      "prev_year_free_cash_flow": 2555000000.0,
+      "yoy_growth": -0.3785
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2022-12-31T00:00:00.000",
+      "free_cash_flow": 1935000000.0,
+      "prev_year_free_cash_flow": 1588000000.0,
+      "yoy_growth": 0.2185
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 2867000000.0,
+      "prev_year_free_cash_flow": 1935000000.0,
+      "yoy_growth": 0.4817
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 3519000000.0,
+      "prev_year_free_cash_flow": 2867000000.0,
+      "yoy_growth": 0.2274
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 3553000000.0,
+      "prev_year_free_cash_flow": 3519000000.0,
+      "yoy_growth": 0.0097
+    }
+  ],
+  "quarterly_eps": [
+    {
+      "symbol": "ETN",
+      "report_date": "1998-03-31T00:00:00.000",
+      "eps": 0.355,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "1998-06-30T00:00:00.000",
+      "eps": 0.3925,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "1998-09-30T00:00:00.000",
+      "eps": 0.2,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "1998-12-31T00:00:00.000",
+      "eps": 0.2525,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "1999-03-31T00:00:00.000",
+      "eps": 0.2925,
+      "prev_year_eps": 0.355,
+      "yoy_growth": -0.1761
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "1999-06-30T00:00:00.000",
+      "eps": 0.4275,
+      "prev_year_eps": 0.3925,
+      "yoy_growth": 0.0892
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "1999-09-30T00:00:00.000",
+      "eps": 0.615,
+      "prev_year_eps": 0.2,
+      "yoy_growth": 2.075
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "1999-12-31T00:00:00.000",
+      "eps": 0.7525,
+      "prev_year_eps": 0.2525,
+      "yoy_growth": 1.9802
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2000-03-31T00:00:00.000",
+      "eps": 0.4425,
+      "prev_year_eps": 0.2925,
+      "yoy_growth": 0.5128
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2000-06-30T00:00:00.000",
+      "eps": 0.49,
+      "prev_year_eps": 0.4275,
+      "yoy_growth": 0.1462
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2000-09-30T00:00:00.000",
+      "eps": 0.32,
+      "prev_year_eps": 0.615,
+      "yoy_growth": -0.4797
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2000-12-31T00:00:00.000",
+      "eps": 0.3,
+      "prev_year_eps": 0.7525,
+      "yoy_growth": -0.6013
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2001-03-31T00:00:00.000",
+      "eps": 0.18,
+      "prev_year_eps": 0.4425,
+      "yoy_growth": -0.5932
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2001-06-30T00:00:00.000",
+      "eps": 0.1725,
+      "prev_year_eps": 0.49,
+      "yoy_growth": -0.648
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2001-09-30T00:00:00.000",
+      "eps": 0.1425,
+      "prev_year_eps": 0.32,
+      "yoy_growth": -0.5547
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2001-12-31T00:00:00.000",
+      "eps": 0.105,
+      "prev_year_eps": 0.3,
+      "yoy_growth": -0.65
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2002-03-31T00:00:00.000",
+      "eps": 0.1175,
+      "prev_year_eps": 0.18,
+      "yoy_growth": -0.3472
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2002-06-30T00:00:00.000",
+      "eps": 0.3025,
+      "prev_year_eps": 0.1725,
+      "yoy_growth": 0.7536
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2002-09-30T00:00:00.000",
+      "eps": 0.325,
+      "prev_year_eps": 0.1425,
+      "yoy_growth": 1.2807
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2002-12-31T00:00:00.000",
+      "eps": 0.235,
+      "prev_year_eps": 0.105,
+      "yoy_growth": 1.2381
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2003-03-31T00:00:00.000",
+      "eps": 0.25,
+      "prev_year_eps": 0.1175,
+      "yoy_growth": 1.1277
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2003-06-30T00:00:00.000",
+      "eps": 0.3175,
+      "prev_year_eps": 0.3025,
+      "yoy_growth": 0.0496
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2003-09-30T00:00:00.000",
+      "eps": 0.3475,
+      "prev_year_eps": 0.325,
+      "yoy_growth": 0.0692
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2003-12-31T00:00:00.000",
+      "eps": 0.36,
+      "prev_year_eps": 0.235,
+      "yoy_growth": 0.5319
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2004-03-31T00:00:00.000",
+      "eps": 0.425,
+      "prev_year_eps": 0.25,
+      "yoy_growth": 0.7
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2004-06-30T00:00:00.000",
+      "eps": 0.515,
+      "prev_year_eps": 0.3175,
+      "yoy_growth": 0.622
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2004-09-30T00:00:00.000",
+      "eps": 0.545,
+      "prev_year_eps": 0.3475,
+      "yoy_growth": 0.5683
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2004-12-31T00:00:00.000",
+      "eps": 0.58,
+      "prev_year_eps": 0.36,
+      "yoy_growth": 0.6111
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2005-03-31T00:00:00.000",
+      "eps": 0.5948,
+      "prev_year_eps": 0.425,
+      "yoy_growth": 0.3995
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2005-06-30T00:00:00.000",
+      "eps": 0.6812,
+      "prev_year_eps": 0.515,
+      "yoy_growth": 0.3227
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2005-09-30T00:00:00.000",
+      "eps": 0.645,
+      "prev_year_eps": 0.545,
+      "yoy_growth": 0.1835
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2005-12-31T00:00:00.000",
+      "eps": 0.6876,
+      "prev_year_eps": 0.58,
+      "yoy_growth": 0.1855
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2006-03-31T00:00:00.000",
+      "eps": 0.6793,
+      "prev_year_eps": 0.5948,
+      "yoy_growth": 0.1421
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2006-06-30T00:00:00.000",
+      "eps": 0.8198,
+      "prev_year_eps": 0.6812,
+      "yoy_growth": 0.2035
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2006-09-30T00:00:00.000",
+      "eps": 0.69,
+      "prev_year_eps": 0.645,
+      "yoy_growth": 0.0698
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2006-12-31T00:00:00.000",
+      "eps": 0.7954,
+      "prev_year_eps": 0.6876,
+      "yoy_growth": 0.1568
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2007-03-31T00:00:00.000",
+      "eps": 0.78,
+      "prev_year_eps": 0.6793,
+      "yoy_growth": 0.1482
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2007-06-30T00:00:00.000",
+      "eps": 0.8184,
+      "prev_year_eps": 0.8198,
+      "yoy_growth": -0.0017
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2007-09-30T00:00:00.000",
+      "eps": 0.7912,
+      "prev_year_eps": 0.69,
+      "yoy_growth": 0.1467
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2007-12-31T00:00:00.000",
+      "eps": 0.8505,
+      "prev_year_eps": 0.7954,
+      "yoy_growth": 0.0693
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2008-03-31T00:00:00.000",
+      "eps": 0.82,
+      "prev_year_eps": 0.78,
+      "yoy_growth": 0.0513
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2008-06-30T00:00:00.000",
+      "eps": 1.0177,
+      "prev_year_eps": 0.8184,
+      "yoy_growth": 0.2435
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2008-09-30T00:00:00.000",
+      "eps": 0.9353,
+      "prev_year_eps": 0.7912,
+      "yoy_growth": 0.1821
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2008-12-31T00:00:00.000",
+      "eps": 0.4892,
+      "prev_year_eps": 0.8505,
+      "yoy_growth": -0.4248
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2009-03-31T00:00:00.000",
+      "eps": -0.1505,
+      "prev_year_eps": 0.82,
+      "yoy_growth": -1.1835
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2009-06-30T00:00:00.000",
+      "eps": 0.0865,
+      "prev_year_eps": 1.0177,
+      "yoy_growth": -0.915
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2009-09-30T00:00:00.000",
+      "eps": 0.5703,
+      "prev_year_eps": 0.9353,
+      "yoy_growth": -0.3902
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2009-12-31T00:00:00.000",
+      "eps": 0.625,
+      "prev_year_eps": 0.4892,
+      "yoy_growth": 0.2776
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2010-03-31T00:00:00.000",
+      "eps": 0.457,
+      "prev_year_eps": -0.1505,
+      "yoy_growth": 4.0365
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2010-06-30T00:00:00.000",
+      "eps": 0.6639,
+      "prev_year_eps": 0.0865,
+      "yoy_growth": 6.6751
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2010-09-30T00:00:00.000",
+      "eps": 0.7869,
+      "prev_year_eps": 0.5703,
+      "yoy_growth": 0.3798
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2010-12-31T00:00:00.000",
+      "eps": 0.8168,
+      "prev_year_eps": 0.625,
+      "yoy_growth": 0.3069
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2011-03-31T00:00:00.000",
+      "eps": 0.8302,
+      "prev_year_eps": 0.457,
+      "yoy_growth": 0.8166
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2011-06-30T00:00:00.000",
+      "eps": 0.9719,
+      "prev_year_eps": 0.6639,
+      "yoy_growth": 0.4639
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2011-09-30T00:00:00.000",
+      "eps": 1.0676,
+      "prev_year_eps": 0.7869,
+      "yoy_growth": 0.3567
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2011-12-31T00:00:00.000",
+      "eps": 1.0707,
+      "prev_year_eps": 0.8168,
+      "yoy_growth": 0.3108
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2012-03-31T00:00:00.000",
+      "eps": 0.9152,
+      "prev_year_eps": 0.8302,
+      "yoy_growth": 0.1024
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2012-06-30T00:00:00.000",
+      "eps": 1.1252,
+      "prev_year_eps": 0.9719,
+      "yoy_growth": 0.1577
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2012-09-30T00:00:00.000",
+      "eps": 1.0153,
+      "prev_year_eps": 1.0676,
+      "yoy_growth": -0.049
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2012-12-31T00:00:00.000",
+      "eps": 0.4657,
+      "prev_year_eps": 1.0707,
+      "yoy_growth": -0.5651
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2013-03-31T00:00:00.000",
+      "eps": 0.7956,
+      "prev_year_eps": 0.9152,
+      "yoy_growth": -0.1307
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2013-06-30T00:00:00.000",
+      "eps": 1.0372,
+      "prev_year_eps": 1.1252,
+      "yoy_growth": -0.0782
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2013-09-30T00:00:00.000",
+      "eps": 1.0687,
+      "prev_year_eps": 1.0153,
+      "yoy_growth": 0.0526
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2013-12-31T00:00:00.000",
+      "eps": 1.0017,
+      "prev_year_eps": 0.4657,
+      "yoy_growth": 1.151
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2014-03-31T00:00:00.000",
+      "eps": 0.9169,
+      "prev_year_eps": 0.7956,
+      "yoy_growth": 0.1525
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2014-06-30T00:00:00.000",
+      "eps": 0.3574,
+      "prev_year_eps": 1.0372,
+      "yoy_growth": -0.6554
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2014-09-30T00:00:00.000",
+      "eps": 1.2615,
+      "prev_year_eps": 1.0687,
+      "yoy_growth": 0.1804
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2014-12-31T00:00:00.000",
+      "eps": 1.2296,
+      "prev_year_eps": 1.0017,
+      "yoy_growth": 0.2275
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2015-03-31T00:00:00.000",
+      "eps": 0.9915,
+      "prev_year_eps": 0.9169,
+      "yoy_growth": 0.0814
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2015-06-30T00:00:00.000",
+      "eps": 1.1402,
+      "prev_year_eps": 0.3574,
+      "yoy_growth": 2.1903
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2015-09-30T00:00:00.000",
+      "eps": 0.9563,
+      "prev_year_eps": 1.2615,
+      "yoy_growth": -0.2419
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2015-12-31T00:00:00.000",
+      "eps": 1.1498,
+      "prev_year_eps": 1.2296,
+      "yoy_growth": -0.0649
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2016-03-31T00:00:00.000",
+      "eps": 0.8786,
+      "prev_year_eps": 0.9915,
+      "yoy_growth": -0.1139
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2016-06-30T00:00:00.000",
+      "eps": 1.0714,
+      "prev_year_eps": 1.1402,
+      "yoy_growth": -0.0603
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2016-09-30T00:00:00.000",
+      "eps": 1.1479,
+      "prev_year_eps": 0.9563,
+      "yoy_growth": 0.2004
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2016-12-31T00:00:00.000",
+      "eps": 1.1141,
+      "prev_year_eps": 1.1498,
+      "yoy_growth": -0.031
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2017-03-31T00:00:00.000",
+      "eps": 0.9579,
+      "prev_year_eps": 0.8786,
+      "yoy_growth": 0.0903
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2017-06-30T00:00:00.000",
+      "eps": 1.1502,
+      "prev_year_eps": 1.0714,
+      "yoy_growth": 0.0735
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2017-09-30T00:00:00.000",
+      "eps": 3.1469,
+      "prev_year_eps": 1.1479,
+      "yoy_growth": 1.7414
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2017-12-31T00:00:00.000",
+      "eps": 1.4302,
+      "prev_year_eps": 1.1141,
+      "yoy_growth": 0.2837
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2018-03-31T00:00:00.000",
+      "eps": 1.1048,
+      "prev_year_eps": 0.9579,
+      "yoy_growth": 0.1534
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2018-06-30T00:00:00.000",
+      "eps": 1.3949,
+      "prev_year_eps": 1.1502,
+      "yoy_growth": 0.2127
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2018-09-30T00:00:00.000",
+      "eps": 0.9535,
+      "prev_year_eps": 3.1469,
+      "yoy_growth": -0.697
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2018-12-31T00:00:00.000",
+      "eps": 1.4593,
+      "prev_year_eps": 1.4302,
+      "yoy_growth": 0.0203
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2019-03-31T00:00:00.000",
+      "eps": 1.23,
+      "prev_year_eps": 1.1048,
+      "yoy_growth": 0.1133
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2019-06-30T00:00:00.000",
+      "eps": 1.5,
+      "prev_year_eps": 1.3949,
+      "yoy_growth": 0.0753
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2019-09-30T00:00:00.000",
+      "eps": 1.4364,
+      "prev_year_eps": 0.9535,
+      "yoy_growth": 0.5064
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2019-12-31T00:00:00.000",
+      "eps": 1.0871,
+      "prev_year_eps": 1.4593,
+      "yoy_growth": -0.2551
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2020-03-31T00:00:00.000",
+      "eps": 1.0654,
+      "prev_year_eps": 1.23,
+      "yoy_growth": -0.1338
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2020-06-30T00:00:00.000",
+      "eps": 0.1271,
+      "prev_year_eps": 1.5,
+      "yoy_growth": -0.9153
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2020-09-30T00:00:00.000",
+      "eps": 1.1086,
+      "prev_year_eps": 1.4364,
+      "yoy_growth": -0.2282
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2020-12-31T00:00:00.000",
+      "eps": 1.1836,
+      "prev_year_eps": 1.0871,
+      "yoy_growth": 0.0888
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2021-03-31T00:00:00.000",
+      "eps": 1.1424,
+      "prev_year_eps": 1.0654,
+      "yoy_growth": 0.0723
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2021-06-30T00:00:00.000",
+      "eps": 1.2606,
+      "prev_year_eps": 0.1271,
+      "yoy_growth": 8.9182
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2021-09-30T00:00:00.000",
+      "eps": 1.5651,
+      "prev_year_eps": 1.1086,
+      "yoy_growth": 0.4118
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2021-12-31T00:00:00.000",
+      "eps": 1.3703,
+      "prev_year_eps": 1.1836,
+      "yoy_growth": 0.1577
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2022-03-31T00:00:00.000",
+      "eps": 1.324,
+      "prev_year_eps": 1.1424,
+      "yoy_growth": 0.159
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2022-06-30T00:00:00.000",
+      "eps": 1.4999,
+      "prev_year_eps": 1.2606,
+      "yoy_growth": 0.1898
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2022-09-30T00:00:00.000",
+      "eps": 1.5164,
+      "prev_year_eps": 1.5651,
+      "yoy_growth": -0.0311
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2022-12-31T00:00:00.000",
+      "eps": 1.8012,
+      "prev_year_eps": 1.3703,
+      "yoy_growth": 0.3145
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-03-31T00:00:00.000",
+      "eps": 1.593,
+      "prev_year_eps": 1.324,
+      "yoy_growth": 0.2032
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-06-30T00:00:00.000",
+      "eps": 1.8568,
+      "prev_year_eps": 1.4999,
+      "yoy_growth": 0.2379
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-09-30T00:00:00.000",
+      "eps": 2.2186,
+      "prev_year_eps": 1.5164,
+      "yoy_growth": 0.4631
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2023-12-31T00:00:00.000",
+      "eps": 2.3544,
+      "prev_year_eps": 1.8012,
+      "yoy_growth": 0.3071
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-03-31T00:00:00.000",
+      "eps": 2.0428,
+      "prev_year_eps": 1.593,
+      "yoy_growth": 0.2824
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-06-30T00:00:00.000",
+      "eps": 2.4763,
+      "prev_year_eps": 1.8568,
+      "yoy_growth": 0.3336
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-09-30T00:00:00.000",
+      "eps": 2.5295,
+      "prev_year_eps": 2.2186,
+      "yoy_growth": 0.1401
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2024-12-31T00:00:00.000",
+      "eps": 2.452,
+      "prev_year_eps": 2.3544,
+      "yoy_growth": 0.0415
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-03-31T00:00:00.000",
+      "eps": 2.4492,
+      "prev_year_eps": 2.0428,
+      "yoy_growth": 0.1989
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-06-30T00:00:00.000",
+      "eps": 2.5089,
+      "prev_year_eps": 2.4763,
+      "yoy_growth": 0.0132
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-09-30T00:00:00.000",
+      "eps": 2.5891,
+      "prev_year_eps": 2.5295,
+      "yoy_growth": 0.0236
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2025-12-31T00:00:00.000",
+      "eps": 2.9063,
+      "prev_year_eps": 2.452,
+      "yoy_growth": 0.1853
+    },
+    {
+      "symbol": "ETN",
+      "report_date": "2026-03-31T00:00:00.000",
+      "eps": 2.2251,
+      "prev_year_eps": 2.4492,
+      "yoy_growth": -0.0915
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "APH",
+    "name": "Mr. Ben J. Reed",
+    "title": "Vice President of Corporate Development",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "APH",
+    "name": "Mr. Craig A. Lampo CPA",
+    "title": "Executive VP & CFO",
+    "age": 55,
+    "born": 1970,
+    "pay": 2327924,
+    "exercised": 85334320,
+    "unexercised": 218374432,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "APH",
+    "name": "Mr. David M. Silverman",
+    "title": "Executive Vice President of Human Resources",
+    "age": 47,
+    "born": 1978,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "APH",
+    "name": "Mr. Lance E. D'Amico J.D.",
+    "title": "Executive VP, General Counsel & Secretary",
+    "age": 56,
+    "born": 1969,
+    "pay": 670665,
+    "exercised": 4586250,
+    "unexercised": 26096992,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "APH",
+    "name": "Mr. Luc  Walter",
+    "title": "President of Harsh Environment Solutions Division",
+    "age": 66,
+    "born": 1959,
+    "pay": 2258680,
+    "exercised": 78473376,
+    "unexercised": 14723112,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "APH",
+    "name": "Mr. Michael R. Ivas",
+    "title": "SVP, Corporate Controller & Principal Accounting Officer",
+    "age": 54,
+    "born": 1971,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "APH",
+    "name": "Mr. Peter J. Straub",
+    "title": "President of the Interconnect & Sensor Systems Division",
+    "age": 57,
+    "born": 1968,
+    "pay": 1599986,
+    "exercised": 23451120,
+    "unexercised": 35042932,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "APH",
+    "name": "Mr. Richard Adam Norwitt J.D.",
+    "title": "President, CEO & Chairman",
+    "age": 55,
+    "born": 1970,
+    "pay": 7692082,
+    "exercised": 116318816,
+    "unexercised": 559921728,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "APH",
+    "name": "Mr. William J. Doherty",
+    "title": "President of Communications Solutions Division",
+    "age": 66,
+    "born": 1959,
+    "pay": 2086809,
+    "exercised": 60368144,
+    "unexercised": 34096764,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "APH",
+    "name": "Ms. Sherri Ann Scribner",
+    "title": "Vice President of Strategy & Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  }
+]

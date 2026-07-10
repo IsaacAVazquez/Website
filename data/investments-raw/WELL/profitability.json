@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "WELL",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 127470000.0,
+      "beginning_stockholders_equity": 21204441000.0,
+      "ending_stockholders_equity": 22954036000.0,
+      "avg_equity": 22079238500.0,
+      "roe": 0.0058
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 83911000.0,
+      "beginning_stockholders_equity": 22954036000.0,
+      "ending_stockholders_equity": 25404376000.0,
+      "avg_equity": 24179206000.0,
+      "roe": 0.0035
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 127146000.0,
+      "beginning_stockholders_equity": 25404376000.0,
+      "ending_stockholders_equity": 27547943000.0,
+      "avg_equity": 26476159500.0,
+      "roe": 0.0048
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 254714000.0,
+      "beginning_stockholders_equity": 27547943000.0,
+      "ending_stockholders_equity": 28976426000.0,
+      "avg_equity": 28262184500.0,
+      "roe": 0.009
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 449849000.0,
+      "beginning_stockholders_equity": 28976426000.0,
+      "ending_stockholders_equity": 30334281000.0,
+      "avg_equity": 29655353500.0,
+      "roe": 0.0152
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 119971000.0,
+      "beginning_stockholders_equity": 30334281000.0,
+      "ending_stockholders_equity": 31956208000.0,
+      "avg_equity": 31145244500.0,
+      "roe": 0.0039
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 257957000.0,
+      "beginning_stockholders_equity": 31956208000.0,
+      "ending_stockholders_equity": 33956759000.0,
+      "avg_equity": 32956483500.0,
+      "roe": 0.0078
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 301888000.0,
+      "beginning_stockholders_equity": 33956759000.0,
+      "ending_stockholders_equity": 35900526000.0,
+      "avg_equity": 34928642500.0,
+      "roe": 0.0086
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 280559000.0,
+      "beginning_stockholders_equity": 35900526000.0,
+      "ending_stockholders_equity": 38756818000.0,
+      "avg_equity": 37328672000.0,
+      "roe": 0.0075
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 96441000.0,
+      "beginning_stockholders_equity": 38756818000.0,
+      "ending_stockholders_equity": 42129498000.0,
+      "avg_equity": 40443158000.0,
+      "roe": 0.0024
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 728672000.0,
+      "beginning_stockholders_equity": 42129498000.0,
+      "ending_stockholders_equity": 43793675000.0,
+      "avg_equity": 42961586500.0,
+      "roe": 0.017
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "WELL",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 127470000.0,
+      "beginning_total_assets": 40064135000.0,
+      "ending_total_assets": 41654702000.0,
+      "avg_assets": 40859418500.0,
+      "roa": 0.0031
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 83911000.0,
+      "beginning_total_assets": 41654702000.0,
+      "ending_total_assets": 44012166000.0,
+      "avg_assets": 42833434000.0,
+      "roa": 0.002
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 127146000.0,
+      "beginning_total_assets": 44012166000.0,
+      "ending_total_assets": 44553585000.0,
+      "avg_assets": 44282875500.0,
+      "roa": 0.0029
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 254714000.0,
+      "beginning_total_assets": 44553585000.0,
+      "ending_total_assets": 45533937000.0,
+      "avg_assets": 45043761000.0,
+      "roa": 0.0057
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 449849000.0,
+      "beginning_total_assets": 45533937000.0,
+      "ending_total_assets": 48953698000.0,
+      "avg_assets": 47243817500.0,
+      "roa": 0.0095
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 119971000.0,
+      "beginning_total_assets": 48953698000.0,
+      "ending_total_assets": 51044308000.0,
+      "avg_assets": 49999003000.0,
+      "roa": 0.0024
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 257957000.0,
+      "beginning_total_assets": 51044308000.0,
+      "ending_total_assets": 53293614000.0,
+      "avg_assets": 52168961000.0,
+      "roa": 0.0049
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 301888000.0,
+      "beginning_total_assets": 53293614000.0,
+      "ending_total_assets": 55833495000.0,
+      "avg_assets": 54563554500.0,
+      "roa": 0.0055
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 280559000.0,
+      "beginning_total_assets": 55833495000.0,
+      "ending_total_assets": 59504802000.0,
+      "avg_assets": 57669148500.0,
+      "roa": 0.0049
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 96441000.0,
+      "beginning_total_assets": 59504802000.0,
+      "ending_total_assets": 67303047000.0,
+      "avg_assets": 63403924500.0,
+      "roa": 0.0015
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 728672000.0,
+      "beginning_total_assets": 67303047000.0,
+      "ending_total_assets": 67220556000.0,
+      "avg_assets": 67261801500.0,
+      "roa": 0.0108
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "WELL",
+      "report_date": "2023-09-30",
+      "ebit": 228767000.0,
+      "tax_rate_for_calcs": 0.06,
+      "nopat": 215040980.0,
+      "beginning_invested_capital": 37195578000.0,
+      "ending_invested_capital": 38788274000.0,
+      "avg_invested_capital": 37991926000.0,
+      "roic": 0.0057
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2023-12-31",
+      "ebit": 242037000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 191209230.0,
+      "beginning_invested_capital": 38788274000.0,
+      "ending_invested_capital": 41139925000.0,
+      "avg_invested_capital": 39964099500.0,
+      "roic": 0.0048
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-03-31",
+      "ebit": 288219000.0,
+      "tax_rate_for_calcs": 0.04,
+      "nopat": 276690240.0,
+      "beginning_invested_capital": 41139925000.0,
+      "ending_invested_capital": 41753088000.0,
+      "avg_invested_capital": 41446506500.0,
+      "roic": 0.0067
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-06-30",
+      "ebit": 223856000.0,
+      "tax_rate_for_calcs": 0.01,
+      "nopat": 221617440.0,
+      "beginning_invested_capital": 41753088000.0,
+      "ending_invested_capital": 42912193000.0,
+      "avg_invested_capital": 42332640500.0,
+      "roic": 0.0052
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-09-30",
+      "ebit": 322916000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 255103640.0,
+      "beginning_invested_capital": 42912193000.0,
+      "ending_invested_capital": 46097904000.0,
+      "avg_invested_capital": 44505048500.0,
+      "roic": 0.0057
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-12-31",
+      "ebit": 263712000.0,
+      "tax_rate_for_calcs": 0.0,
+      "nopat": 263712000.0,
+      "beginning_invested_capital": 46097904000.0,
+      "ending_invested_capital": 47456465000.0,
+      "avg_invested_capital": 46777184500.0,
+      "roic": 0.0056
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-03-31",
+      "ebit": 343669000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 271498510.0,
+      "beginning_invested_capital": 47456465000.0,
+      "ending_invested_capital": 49680616000.0,
+      "avg_invested_capital": 48568540500.0,
+      "roic": 0.0056
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-06-30",
+      "ebit": 439370000.0,
+      "tax_rate_for_calcs": 0.0,
+      "nopat": 439370000.0,
+      "beginning_invested_capital": 49680616000.0,
+      "ending_invested_capital": 51871629000.0,
+      "avg_invested_capital": 50776122500.0,
+      "roic": 0.0087
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-09-30",
+      "ebit": 455158000.0,
+      "tax_rate_for_calcs": 0.01,
+      "nopat": 450606420.0,
+      "beginning_invested_capital": 51871629000.0,
+      "ending_invested_capital": 55609180000.0,
+      "avg_invested_capital": 53740404500.0,
+      "roic": 0.0084
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-12-31",
+      "ebit": -1066267000.0,
+      "tax_rate_for_calcs": 0.0,
+      "nopat": -1066267000.0,
+      "beginning_invested_capital": 55609180000.0,
+      "ending_invested_capital": 61326800000.0,
+      "avg_invested_capital": 58467990000.0,
+      "roic": -0.0182
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2026-03-31",
+      "ebit": 537958000.0,
+      "tax_rate_for_calcs": 0.03,
+      "nopat": 521819260.0,
+      "beginning_invested_capital": 61326800000.0,
+      "ending_invested_capital": 61727243000.0,
+      "avg_invested_capital": 61527021500.0,
+      "roic": 0.0085
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "WELL",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0058,
+      "roa": 0.0031,
+      "equity_multiplier": 1.87
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0035,
+      "roa": 0.002,
+      "equity_multiplier": 1.75
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0048,
+      "roa": 0.0029,
+      "equity_multiplier": 1.66
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.009,
+      "roa": 0.0057,
+      "equity_multiplier": 1.58
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0152,
+      "roa": 0.0095,
+      "equity_multiplier": 1.6
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.0039,
+      "roa": 0.0024,
+      "equity_multiplier": 1.62
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0078,
+      "roa": 0.0049,
+      "equity_multiplier": 1.59
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.0086,
+      "roa": 0.0055,
+      "equity_multiplier": 1.56
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0075,
+      "roa": 0.0049,
+      "equity_multiplier": 1.53
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.0024,
+      "roa": 0.0015,
+      "equity_multiplier": 1.6
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.017,
+      "roa": 0.0108,
+      "equity_multiplier": 1.57
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "WELL",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0031,
+      "net_margin": 0.0784,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.002,
+      "net_margin": 0.0488,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0029,
+      "net_margin": 0.0695,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0057,
+      "net_margin": 0.1421,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0095,
+      "net_margin": 0.2237,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0024,
+      "net_margin": 0.0541,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0049,
+      "net_margin": 0.108,
+      "asset_turnover": 0.05
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0055,
+      "net_margin": 0.12,
+      "asset_turnover": 0.05
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0049,
+      "net_margin": 0.1068,
+      "asset_turnover": 0.05
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0015,
+      "net_margin": 0.0308,
+      "asset_turnover": 0.05
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0108,
+      "net_margin": 0.2204,
+      "asset_turnover": 0.05
+    }
+  ]
+}

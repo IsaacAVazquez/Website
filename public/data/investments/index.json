@@ -1,34 +1,6 @@
 {
   "symbols": [
     "MMC",
-    "PM",
-    "MO",
-    "SBUX",
-    "MDLZ",
-    "TJX",
-    "TGT",
-    "LOW",
-    "HD",
-    "NKE",
-    "ORLY",
-    "BKNG",
-    "ABNB",
-    "PYPL",
-    "UBER",
-    "NFLX",
-    "DIS",
-    "TMUS",
-    "VZ",
-    "T",
-    "CMCSA",
-    "SPOT",
-    "SAP",
-    "GE",
-    "CAT",
-    "HON",
-    "RTX",
-    "BA",
-    "LMT",
     "UNP",
     "DE",
     "GD",
@@ -150,10 +122,38 @@
     "ANET",
     "PANW",
     "CRWD",
+    "PM",
+    "MO",
+    "SBUX",
+    "MDLZ",
+    "TJX",
+    "TGT",
+    "LOW",
+    "HD",
+    "NKE",
+    "ORLY",
+    "BKNG",
+    "ABNB",
+    "PYPL",
+    "UBER",
+    "NFLX",
+    "DIS",
+    "TMUS",
+    "VZ",
+    "T",
+    "CMCSA",
+    "SPOT",
+    "SAP",
+    "GE",
+    "CAT",
+    "HON",
+    "RTX",
+    "BA",
+    "LMT",
     "SPY"
   ],
   "failed": [],
-  "lastUpdated": "2026-07-06T23:55:57.634961+00:00",
+  "lastUpdated": "2026-07-10T00:00:01.448379+00:00",
   "entries": [
     {
       "symbol": "MMC",
@@ -162,396 +162,172 @@
       "searchText": "mmc marsh & mclennan companies, inc. marsh & mclennan companies, inc."
     },
     {
-      "symbol": "PM",
-      "shortName": "Philip Morris International Inc.",
-      "longName": "Philip Morris International Inc.",
-      "searchText": "pm philip morris international inc. philip morris international inc."
-    },
-    {
-      "symbol": "MO",
-      "shortName": "Altria Group, Inc.",
-      "longName": "Altria Group, Inc.",
-      "searchText": "mo altria group, inc. altria group, inc."
-    },
-    {
-      "symbol": "SBUX",
-      "shortName": "Starbucks Corporation",
-      "longName": "Starbucks Corporation",
-      "searchText": "sbux starbucks corporation starbucks corporation"
-    },
-    {
-      "symbol": "MDLZ",
-      "shortName": "Mondelez International, Inc.",
-      "longName": "Mondelez International, Inc.",
-      "searchText": "mdlz mondelez international, inc. mondelez international, inc."
-    },
-    {
-      "symbol": "TJX",
-      "shortName": "TJX Companies, Inc.",
-      "longName": "TJX Companies, Inc.",
-      "searchText": "tjx tjx companies, inc. tjx companies, inc."
-    },
-    {
-      "symbol": "TGT",
-      "shortName": "Target Corporation",
-      "longName": "Target Corporation",
-      "searchText": "tgt target corporation target corporation"
-    },
-    {
-      "symbol": "LOW",
-      "shortName": "Lowe's Companies, Inc.",
-      "longName": "Lowe's Companies, Inc.",
-      "searchText": "low lowe's companies, inc. lowe's companies, inc."
-    },
-    {
-      "symbol": "HD",
-      "shortName": "Home Depot, Inc.",
-      "longName": "Home Depot, Inc.",
-      "searchText": "hd home depot, inc. home depot, inc."
-    },
-    {
-      "symbol": "NKE",
-      "shortName": "NIKE, Inc.",
-      "longName": "NIKE, Inc.",
-      "searchText": "nke nike, inc. nike, inc."
-    },
-    {
-      "symbol": "ORLY",
-      "shortName": "O'Reilly Automotive, Inc.",
-      "longName": "O'Reilly Automotive, Inc.",
-      "searchText": "orly o'reilly automotive, inc. o'reilly automotive, inc."
-    },
-    {
-      "symbol": "BKNG",
-      "shortName": "Booking Holdings Inc.",
-      "longName": "Booking Holdings Inc.",
-      "searchText": "bkng booking holdings inc. booking holdings inc."
-    },
-    {
-      "symbol": "ABNB",
-      "shortName": "Airbnb, Inc.",
-      "longName": "Airbnb, Inc.",
-      "searchText": "abnb airbnb, inc. airbnb, inc."
-    },
-    {
-      "symbol": "PYPL",
-      "shortName": "PayPal Holdings, Inc.",
-      "longName": "PayPal Holdings, Inc.",
-      "searchText": "pypl paypal holdings, inc. paypal holdings, inc."
-    },
-    {
-      "symbol": "UBER",
-      "shortName": "Uber Technologies, Inc.",
-      "longName": "Uber Technologies, Inc.",
-      "searchText": "uber uber technologies, inc. uber technologies, inc."
-    },
-    {
-      "symbol": "NFLX",
-      "shortName": "Netflix, Inc.",
-      "longName": "Netflix, Inc.",
-      "searchText": "nflx netflix, inc. netflix, inc."
-    },
-    {
-      "symbol": "DIS",
-      "shortName": "Walt Disney Company",
-      "longName": "Walt Disney Company",
-      "searchText": "dis walt disney company walt disney company"
-    },
-    {
-      "symbol": "TMUS",
-      "shortName": "T-Mobile US, Inc.",
-      "longName": "T-Mobile US, Inc.",
-      "searchText": "tmus t-mobile us, inc. t-mobile us, inc."
-    },
-    {
-      "symbol": "VZ",
-      "shortName": "Verizon Communications Inc.",
-      "longName": "Verizon Communications Inc.",
-      "searchText": "vz verizon communications inc. verizon communications inc."
-    },
-    {
-      "symbol": "T",
-      "shortName": "AT&T Inc.",
-      "longName": "AT&T Inc.",
-      "searchText": "t at&t inc. at&t inc."
-    },
-    {
-      "symbol": "CMCSA",
-      "shortName": "Comcast Corporation",
-      "longName": "Comcast Corporation",
-      "searchText": "cmcsa comcast corporation comcast corporation"
-    },
-    {
-      "symbol": "SPOT",
-      "shortName": "Spotify Technology S.A.",
-      "longName": "Spotify Technology S.A.",
-      "searchText": "spot spotify technology s.a. spotify technology s.a."
-    },
-    {
-      "symbol": "SAP",
-      "shortName": "SAP SE",
-      "longName": "SAP SE",
-      "searchText": "sap sap se sap se"
-    },
-    {
-      "symbol": "GE",
-      "shortName": "GE Aerospace",
-      "longName": "GE Aerospace",
-      "searchText": "ge ge aerospace ge aerospace"
-    },
-    {
-      "symbol": "CAT",
-      "shortName": "Caterpillar Inc.",
-      "longName": "Caterpillar Inc.",
-      "searchText": "cat caterpillar inc. caterpillar inc."
-    },
-    {
-      "symbol": "HON",
-      "shortName": "Honeywell International Inc.",
-      "longName": "Honeywell International Inc.",
-      "searchText": "hon honeywell international inc. honeywell international inc."
-    },
-    {
-      "symbol": "RTX",
-      "shortName": "RTX Corporation",
-      "longName": "RTX Corporation",
-      "searchText": "rtx rtx corporation rtx corporation"
-    },
-    {
-      "symbol": "BA",
-      "shortName": "Boeing Company",
-      "longName": "Boeing Company",
-      "searchText": "ba boeing company boeing company"
-    },
-    {
-      "symbol": "LMT",
-      "shortName": "Lockheed Martin Corporation",
-      "longName": "Lockheed Martin Corporation",
-      "searchText": "lmt lockheed martin corporation lockheed martin corporation"
-    },
-    {
       "symbol": "UNP",
       "shortName": "Union Pacific Corporation",
       "longName": "Union Pacific Corporation",
-      "searchText": "unp union pacific corporation union pacific corporation",
-      "stale": true,
-      "asOf": "2026-04-29T19:21:59.962390+00:00"
+      "searchText": "unp union pacific corporation union pacific corporation"
     },
     {
       "symbol": "DE",
       "shortName": "Deere & Company",
       "longName": "Deere & Company",
-      "searchText": "de deere & company deere & company",
-      "stale": true,
-      "asOf": "2026-04-29T19:21:59.962390+00:00"
+      "searchText": "de deere & company deere & company"
     },
     {
       "symbol": "GD",
       "shortName": "General Dynamics Corporation",
       "longName": "General Dynamics Corporation",
-      "searchText": "gd general dynamics corporation general dynamics corporation",
-      "stale": true,
-      "asOf": "2026-04-29T19:21:59.962390+00:00"
+      "searchText": "gd general dynamics corporation general dynamics corporation"
     },
     {
       "symbol": "NOC",
       "shortName": "Northrop Grumman Corporation",
       "longName": "Northrop Grumman Corporation",
-      "searchText": "noc northrop grumman corporation northrop grumman corporation",
-      "stale": true,
-      "asOf": "2026-04-29T19:21:59.962390+00:00"
+      "searchText": "noc northrop grumman corporation northrop grumman corporation"
     },
     {
       "symbol": "ETN",
       "shortName": "Eaton Corporation plc",
       "longName": "Eaton Corporation plc",
-      "searchText": "etn eaton corporation plc eaton corporation plc",
-      "stale": true,
-      "asOf": "2026-04-29T19:21:59.962390+00:00"
+      "searchText": "etn eaton corporation plc eaton corporation plc"
     },
     {
       "symbol": "ITW",
       "shortName": "Illinois Tool Works Inc.",
       "longName": "Illinois Tool Works Inc.",
-      "searchText": "itw illinois tool works inc. illinois tool works inc.",
-      "stale": true,
-      "asOf": "2026-04-29T19:21:59.962390+00:00"
+      "searchText": "itw illinois tool works inc. illinois tool works inc."
     },
     {
       "symbol": "EMR",
       "shortName": "Emerson Electric Co.",
       "longName": "Emerson Electric Co.",
-      "searchText": "emr emerson electric co. emerson electric co.",
-      "stale": true,
-      "asOf": "2026-04-29T19:21:59.962390+00:00"
+      "searchText": "emr emerson electric co. emerson electric co."
     },
     {
       "symbol": "WM",
       "shortName": "Waste Management, Inc.",
       "longName": "Waste Management, Inc.",
-      "searchText": "wm waste management, inc. waste management, inc.",
-      "stale": true,
-      "asOf": "2026-04-29T19:21:59.962390+00:00"
+      "searchText": "wm waste management, inc. waste management, inc."
     },
     {
       "symbol": "FDX",
       "shortName": "FedEx Corporation",
       "longName": "FedEx Corporation",
-      "searchText": "fdx fedex corporation fedex corporation",
-      "stale": true,
-      "asOf": "2026-04-29T19:21:59.962390+00:00"
+      "searchText": "fdx fedex corporation fedex corporation"
     },
     {
       "symbol": "UPS",
       "shortName": "United Parcel Service, Inc.",
       "longName": "United Parcel Service, Inc.",
-      "searchText": "ups united parcel service, inc. united parcel service, inc.",
-      "stale": true,
-      "asOf": "2026-04-29T19:21:59.962390+00:00"
+      "searchText": "ups united parcel service, inc. united parcel service, inc."
     },
     {
       "symbol": "CARR",
       "shortName": "Carrier Global Corporation",
       "longName": "Carrier Global Corporation",
-      "searchText": "carr carrier global corporation carrier global corporation",
-      "stale": true,
-      "asOf": "2026-04-29T19:21:59.962390+00:00"
+      "searchText": "carr carrier global corporation carrier global corporation"
     },
     {
       "symbol": "GWW",
       "shortName": "W.W. Grainger, Inc.",
       "longName": "W.W. Grainger, Inc.",
-      "searchText": "gww w.w. grainger, inc. w.w. grainger, inc.",
-      "stale": true,
-      "asOf": "2026-04-29T19:21:59.962390+00:00"
+      "searchText": "gww w.w. grainger, inc. w.w. grainger, inc."
     },
     {
       "symbol": "TDG",
       "shortName": "TransDigm Group Incorporated",
       "longName": "TransDigm Group Incorporated",
-      "searchText": "tdg transdigm group incorporated transdigm group incorporated",
-      "stale": true,
-      "asOf": "2026-04-29T19:21:59.962390+00:00"
+      "searchText": "tdg transdigm group incorporated transdigm group incorporated"
     },
     {
       "symbol": "ROP",
       "shortName": "Roper Technologies, Inc.",
       "longName": "Roper Technologies, Inc.",
-      "searchText": "rop roper technologies, inc. roper technologies, inc.",
-      "stale": true,
-      "asOf": "2026-04-29T19:21:59.962390+00:00"
+      "searchText": "rop roper technologies, inc. roper technologies, inc."
     },
     {
       "symbol": "MSI",
       "shortName": "Motorola Solutions, Inc.",
       "longName": "Motorola Solutions, Inc.",
-      "searchText": "msi motorola solutions, inc. motorola solutions, inc.",
-      "stale": true,
-      "asOf": "2026-04-29T19:21:59.962390+00:00"
+      "searchText": "msi motorola solutions, inc. motorola solutions, inc."
     },
     {
       "symbol": "APH",
       "shortName": "Amphenol Corporation",
       "longName": "Amphenol Corporation",
-      "searchText": "aph amphenol corporation amphenol corporation",
-      "stale": true,
-      "asOf": "2026-04-29T19:21:59.962390+00:00"
+      "searchText": "aph amphenol corporation amphenol corporation"
     },
     {
       "symbol": "PH",
       "shortName": "Parker-Hannifin Corporation",
       "longName": "Parker-Hannifin Corporation",
-      "searchText": "ph parker-hannifin corporation parker-hannifin corporation",
-      "stale": true,
-      "asOf": "2026-04-29T19:21:59.962390+00:00"
+      "searchText": "ph parker-hannifin corporation parker-hannifin corporation"
     },
     {
       "symbol": "XOM",
       "shortName": "Exxon Mobil Corporation",
       "longName": "Exxon Mobil Corporation",
-      "searchText": "xom exxon mobil corporation exxon mobil corporation",
-      "stale": true,
-      "asOf": "2026-04-29T19:21:59.962390+00:00"
+      "searchText": "xom exxon mobil corporation exxon mobil corporation"
     },
     {
       "symbol": "CVX",
       "shortName": "Chevron Corporation",
       "longName": "Chevron Corporation",
-      "searchText": "cvx chevron corporation chevron corporation",
-      "stale": true,
-      "asOf": "2026-04-29T19:21:59.962390+00:00"
+      "searchText": "cvx chevron corporation chevron corporation"
     },
     {
       "symbol": "COP",
       "shortName": "ConocoPhillips",
       "longName": "ConocoPhillips",
-      "searchText": "cop conocophillips conocophillips",
-      "stale": true,
-      "asOf": "2026-04-29T19:21:59.962390+00:00"
+      "searchText": "cop conocophillips conocophillips"
     },
     {
       "symbol": "SLB",
       "shortName": "SLB",
       "longName": "SLB",
-      "searchText": "slb slb slb",
-      "stale": true,
-      "asOf": "2026-04-29T19:21:59.962390+00:00"
+      "searchText": "slb slb slb"
     },
     {
       "symbol": "EOG",
       "shortName": "EOG Resources, Inc.",
       "longName": "EOG Resources, Inc.",
-      "searchText": "eog eog resources, inc. eog resources, inc.",
-      "stale": true,
-      "asOf": "2026-04-29T19:21:59.962390+00:00"
+      "searchText": "eog eog resources, inc. eog resources, inc."
     },
     {
       "symbol": "NEE",
       "shortName": "NextEra Energy, Inc.",
       "longName": "NextEra Energy, Inc.",
-      "searchText": "nee nextera energy, inc. nextera energy, inc.",
-      "stale": true,
-      "asOf": "2026-04-29T19:21:59.962390+00:00"
+      "searchText": "nee nextera energy, inc. nextera energy, inc."
     },
     {
       "symbol": "SO",
       "shortName": "Southern Company",
       "longName": "Southern Company",
-      "searchText": "so southern company southern company",
-      "stale": true,
-      "asOf": "2026-04-29T19:21:59.962390+00:00"
+      "searchText": "so southern company southern company"
     },
     {
       "symbol": "DUK",
       "shortName": "Duke Energy Corporation",
       "longName": "Duke Energy Corporation",
-      "searchText": "duk duke energy corporation duke energy corporation",
-      "stale": true,
-      "asOf": "2026-04-29T19:21:59.962390+00:00"
+      "searchText": "duk duke energy corporation duke energy corporation"
     },
     {
       "symbol": "AMT",
       "shortName": "American Tower Corporation",
       "longName": "American Tower Corporation",
-      "searchText": "amt american tower corporation american tower corporation",
-      "stale": true,
-      "asOf": "2026-04-29T19:21:59.962390+00:00"
+      "searchText": "amt american tower corporation american tower corporation"
     },
     {
       "symbol": "PLD",
       "shortName": "Prologis, Inc.",
       "longName": "Prologis, Inc.",
-      "searchText": "pld prologis, inc. prologis, inc.",
-      "stale": true,
-      "asOf": "2026-04-29T19:21:59.962390+00:00"
+      "searchText": "pld prologis, inc. prologis, inc."
     },
     {
       "symbol": "WELL",
       "shortName": "Welltower Inc.",
       "longName": "Welltower Inc.",
-      "searchText": "well welltower inc. welltower inc.",
-      "stale": true,
-      "asOf": "2026-04-29T19:21:59.962390+00:00"
+      "searchText": "well welltower inc. welltower inc."
     },
     {
       "symbol": "PSA",
@@ -639,7 +415,7 @@
       "longName": "Advanced Micro Devices, Inc.",
       "searchText": "amd advanced micro devices, inc. advanced micro devices, inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "INTC",
@@ -647,7 +423,7 @@
       "longName": "Intel Corporation",
       "searchText": "intc intel corporation intel corporation",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "QCOM",
@@ -655,7 +431,7 @@
       "longName": "QUALCOMM Incorporated",
       "searchText": "qcom qualcomm incorporated qualcomm incorporated",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "TXN",
@@ -663,7 +439,7 @@
       "longName": "Texas Instruments Incorporated",
       "searchText": "txn texas instruments incorporated texas instruments incorporated",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "AMAT",
@@ -671,7 +447,7 @@
       "longName": "Applied Materials, Inc.",
       "searchText": "amat applied materials, inc. applied materials, inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "MU",
@@ -679,7 +455,7 @@
       "longName": "Micron Technology, Inc.",
       "searchText": "mu micron technology, inc. micron technology, inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "LRCX",
@@ -687,7 +463,7 @@
       "longName": "Lam Research Corporation",
       "searchText": "lrcx lam research corporation lam research corporation",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "KLAC",
@@ -695,7 +471,7 @@
       "longName": "KLA Corporation",
       "searchText": "klac kla corporation kla corporation",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "MRVL",
@@ -703,7 +479,7 @@
       "longName": "Marvell Technology, Inc.",
       "searchText": "mrvl marvell technology, inc. marvell technology, inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "ADI",
@@ -711,7 +487,7 @@
       "longName": "Analog Devices, Inc.",
       "searchText": "adi analog devices, inc. analog devices, inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "NXPI",
@@ -719,7 +495,7 @@
       "longName": "NXP Semiconductors N.V.",
       "searchText": "nxpi nxp semiconductors n.v. nxp semiconductors n.v.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "ON",
@@ -727,7 +503,7 @@
       "longName": "ON Semiconductor Corporation",
       "searchText": "on on semiconductor corporation on semiconductor corporation",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "BRK-B",
@@ -735,7 +511,7 @@
       "longName": "Berkshire Hathaway Inc.",
       "searchText": "brk-b berkshire hathaway inc. berkshire hathaway inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "JPM",
@@ -743,7 +519,7 @@
       "longName": "JPMorgan Chase & Co.",
       "searchText": "jpm jpmorgan chase & co. jpmorgan chase & co.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "V",
@@ -751,7 +527,7 @@
       "longName": "Visa Inc.",
       "searchText": "v visa inc. visa inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "MA",
@@ -759,7 +535,7 @@
       "longName": "Mastercard Incorporated",
       "searchText": "ma mastercard incorporated mastercard incorporated",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "BAC",
@@ -767,7 +543,7 @@
       "longName": "Bank of America Corporation",
       "searchText": "bac bank of america corporation bank of america corporation",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "WFC",
@@ -775,7 +551,7 @@
       "longName": "Wells Fargo & Company",
       "searchText": "wfc wells fargo & company wells fargo & company",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "GS",
@@ -783,7 +559,7 @@
       "longName": "Goldman Sachs Group, Inc.",
       "searchText": "gs goldman sachs group, inc. goldman sachs group, inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "MS",
@@ -791,7 +567,7 @@
       "longName": "Morgan Stanley",
       "searchText": "ms morgan stanley morgan stanley",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "AXP",
@@ -799,7 +575,7 @@
       "longName": "American Express Company",
       "searchText": "axp american express company american express company",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "BLK",
@@ -807,7 +583,7 @@
       "longName": "BlackRock, Inc.",
       "searchText": "blk blackrock, inc. blackrock, inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "SCHW",
@@ -815,7 +591,7 @@
       "longName": "Charles Schwab Corporation",
       "searchText": "schw charles schwab corporation charles schwab corporation",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "CME",
@@ -823,7 +599,7 @@
       "longName": "CME Group Inc.",
       "searchText": "cme cme group inc. cme group inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "SPGI",
@@ -831,7 +607,7 @@
       "longName": "S&P Global Inc.",
       "searchText": "spgi s&p global inc. s&p global inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "MCO",
@@ -839,7 +615,7 @@
       "longName": "Moody's Corporation",
       "searchText": "mco moody's corporation moody's corporation",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "PNC",
@@ -847,7 +623,7 @@
       "longName": "PNC Financial Services Group",
       "searchText": "pnc pnc financial services group pnc financial services group",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "USB",
@@ -855,7 +631,7 @@
       "longName": "U.S. Bancorp",
       "searchText": "usb u.s. bancorp u.s. bancorp",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "BX",
@@ -863,7 +639,7 @@
       "longName": "Blackstone Inc.",
       "searchText": "bx blackstone inc. blackstone inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "KKR",
@@ -871,7 +647,7 @@
       "longName": "KKR & Co. Inc.",
       "searchText": "kkr kkr & co. inc. kkr & co. inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "APO",
@@ -879,7 +655,7 @@
       "longName": "Apollo Global Management, Inc.",
       "searchText": "apo apollo global management, inc. apollo global management, inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "UNH",
@@ -887,7 +663,7 @@
       "longName": "UnitedHealth Group Incorporated",
       "searchText": "unh unitedhealth group incorporated unitedhealth group incorporated",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "LLY",
@@ -895,7 +671,7 @@
       "longName": "Eli Lilly and Company",
       "searchText": "lly eli lilly and company eli lilly and company",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "JNJ",
@@ -903,7 +679,7 @@
       "longName": "Johnson & Johnson",
       "searchText": "jnj johnson & johnson johnson & johnson",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "ABBV",
@@ -911,7 +687,7 @@
       "longName": "AbbVie Inc.",
       "searchText": "abbv abbvie inc. abbvie inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "PFE",
@@ -919,7 +695,7 @@
       "longName": "Pfizer Inc.",
       "searchText": "pfe pfizer inc. pfizer inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "AMGN",
@@ -927,7 +703,7 @@
       "longName": "Amgen Inc.",
       "searchText": "amgn amgen inc. amgen inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "ISRG",
@@ -935,7 +711,7 @@
       "longName": "Intuitive Surgical, Inc.",
       "searchText": "isrg intuitive surgical, inc. intuitive surgical, inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "TMO",
@@ -943,7 +719,7 @@
       "longName": "Thermo Fisher Scientific Inc.",
       "searchText": "tmo thermo fisher scientific inc. thermo fisher scientific inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "VRTX",
@@ -951,7 +727,7 @@
       "longName": "Vertex Pharmaceuticals Incorporated",
       "searchText": "vrtx vertex pharmaceuticals incorporated vertex pharmaceuticals incorporated",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "BSX",
@@ -959,7 +735,7 @@
       "longName": "Boston Scientific Corporation",
       "searchText": "bsx boston scientific corporation boston scientific corporation",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "GILD",
@@ -967,7 +743,7 @@
       "longName": "Gilead Sciences, Inc.",
       "searchText": "gild gilead sciences, inc. gilead sciences, inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "REGN",
@@ -975,7 +751,7 @@
       "longName": "Regeneron Pharmaceuticals, Inc.",
       "searchText": "regn regeneron pharmaceuticals, inc. regeneron pharmaceuticals, inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "ZTS",
@@ -983,7 +759,7 @@
       "longName": "Zoetis Inc.",
       "searchText": "zts zoetis inc. zoetis inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "ELV",
@@ -991,7 +767,7 @@
       "longName": "Elevance Health, Inc.",
       "searchText": "elv elevance health, inc. elevance health, inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "CVS",
@@ -999,7 +775,7 @@
       "longName": "CVS Health Corporation",
       "searchText": "cvs cvs health corporation cvs health corporation",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "HCA",
@@ -1007,7 +783,7 @@
       "longName": "HCA Healthcare, Inc.",
       "searchText": "hca hca healthcare, inc. hca healthcare, inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "CI",
@@ -1015,7 +791,7 @@
       "longName": "Cigna Group",
       "searchText": "ci cigna group cigna group",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "MDT",
@@ -1023,7 +799,7 @@
       "longName": "Medtronic plc",
       "searchText": "mdt medtronic plc medtronic plc",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "GEHC",
@@ -1031,7 +807,7 @@
       "longName": "GE HealthCare Technologies Inc.",
       "searchText": "gehc ge healthcare technologies inc. ge healthcare technologies inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "NVO",
@@ -1039,7 +815,7 @@
       "longName": "Novo Nordisk A/S",
       "searchText": "nvo novo nordisk a/s novo nordisk a/s",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "WMT",
@@ -1047,7 +823,7 @@
       "longName": "Walmart Inc.",
       "searchText": "wmt walmart inc. walmart inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "COST",
@@ -1055,7 +831,7 @@
       "longName": "Costco Wholesale Corporation",
       "searchText": "cost costco wholesale corporation costco wholesale corporation",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "KO",
@@ -1063,7 +839,7 @@
       "longName": "Coca-Cola Company",
       "searchText": "ko coca-cola company coca-cola company",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "PG",
@@ -1071,7 +847,7 @@
       "longName": "Procter & Gamble Company",
       "searchText": "pg procter & gamble company procter & gamble company",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "PEP",
@@ -1079,7 +855,7 @@
       "longName": "PepsiCo, Inc.",
       "searchText": "pep pepsico, inc. pepsico, inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "MCD",
@@ -1087,7 +863,7 @@
       "longName": "McDonald's Corporation",
       "searchText": "mcd mcdonald's corporation mcdonald's corporation",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "CDNS",
@@ -1095,7 +871,7 @@
       "longName": "Cadence Design Systems, Inc.",
       "searchText": "cdns cadence design systems, inc. cadence design systems, inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "SNPS",
@@ -1103,7 +879,7 @@
       "longName": "Synopsys, Inc.",
       "searchText": "snps synopsys, inc. synopsys, inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "NET",
@@ -1111,7 +887,7 @@
       "longName": "Cloudflare, Inc.",
       "searchText": "net cloudflare, inc. cloudflare, inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "AAPL",
@@ -1119,7 +895,7 @@
       "longName": "Apple Inc.",
       "searchText": "aapl apple inc. apple inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "MSFT",
@@ -1127,7 +903,7 @@
       "longName": "Microsoft Corporation",
       "searchText": "msft microsoft corporation microsoft corporation",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "NVDA",
@@ -1135,7 +911,7 @@
       "longName": "NVIDIA Corporation",
       "searchText": "nvda nvidia corporation nvidia corporation",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "GOOGL",
@@ -1143,7 +919,7 @@
       "longName": "Alphabet Inc.",
       "searchText": "googl alphabet inc. alphabet inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "AMZN",
@@ -1151,7 +927,7 @@
       "longName": "Amazon.com, Inc.",
       "searchText": "amzn amazon.com, inc. amazon.com, inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "META",
@@ -1159,7 +935,7 @@
       "longName": "Meta Platforms, Inc.",
       "searchText": "meta meta platforms, inc. meta platforms, inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "TSLA",
@@ -1167,7 +943,7 @@
       "longName": "Tesla, Inc.",
       "searchText": "tsla tesla, inc. tesla, inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "AVGO",
@@ -1175,7 +951,7 @@
       "longName": "Broadcom Inc.",
       "searchText": "avgo broadcom inc. broadcom inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "TSM",
@@ -1183,7 +959,7 @@
       "longName": "Taiwan Semiconductor Manufacturing",
       "searchText": "tsm taiwan semiconductor manufacturing taiwan semiconductor manufacturing",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "ASML",
@@ -1191,7 +967,7 @@
       "longName": "ASML Holding N.V.",
       "searchText": "asml asml holding n.v. asml holding n.v.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "ORCL",
@@ -1199,7 +975,7 @@
       "longName": "Oracle Corporation",
       "searchText": "orcl oracle corporation oracle corporation",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "CRM",
@@ -1207,7 +983,7 @@
       "longName": "Salesforce, Inc.",
       "searchText": "crm salesforce, inc. salesforce, inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "ADBE",
@@ -1215,7 +991,7 @@
       "longName": "Adobe Inc.",
       "searchText": "adbe adobe inc. adobe inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "NOW",
@@ -1223,7 +999,7 @@
       "longName": "ServiceNow, Inc.",
       "searchText": "now servicenow, inc. servicenow, inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "INTU",
@@ -1231,7 +1007,7 @@
       "longName": "Intuit Inc.",
       "searchText": "intu intuit inc. intuit inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "IBM",
@@ -1239,7 +1015,7 @@
       "longName": "International Business Machines",
       "searchText": "ibm international business machines international business machines",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "PLTR",
@@ -1247,7 +1023,7 @@
       "longName": "Palantir Technologies Inc.",
       "searchText": "pltr palantir technologies inc. palantir technologies inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "WDAY",
@@ -1255,7 +1031,7 @@
       "longName": "Workday, Inc.",
       "searchText": "wday workday, inc. workday, inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "APP",
@@ -1263,7 +1039,7 @@
       "longName": "AppLovin Corporation",
       "searchText": "app applovin corporation applovin corporation",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "SHOP",
@@ -1271,7 +1047,7 @@
       "longName": "Shopify Inc.",
       "searchText": "shop shopify inc. shopify inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "ANET",
@@ -1279,7 +1055,7 @@
       "longName": "Arista Networks, Inc.",
       "searchText": "anet arista networks, inc. arista networks, inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "PANW",
@@ -1287,7 +1063,7 @@
       "longName": "Palo Alto Networks, Inc.",
       "searchText": "panw palo alto networks, inc. palo alto networks, inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "CRWD",
@@ -1295,7 +1071,231 @@
       "longName": "CrowdStrike Holdings, Inc.",
       "searchText": "crwd crowdstrike holdings, inc. crowdstrike holdings, inc.",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
+    },
+    {
+      "symbol": "PM",
+      "shortName": "Philip Morris International Inc.",
+      "longName": "Philip Morris International Inc.",
+      "searchText": "pm philip morris international inc. philip morris international inc.",
+      "stale": true,
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
+    },
+    {
+      "symbol": "MO",
+      "shortName": "Altria Group, Inc.",
+      "longName": "Altria Group, Inc.",
+      "searchText": "mo altria group, inc. altria group, inc.",
+      "stale": true,
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
+    },
+    {
+      "symbol": "SBUX",
+      "shortName": "Starbucks Corporation",
+      "longName": "Starbucks Corporation",
+      "searchText": "sbux starbucks corporation starbucks corporation",
+      "stale": true,
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
+    },
+    {
+      "symbol": "MDLZ",
+      "shortName": "Mondelez International, Inc.",
+      "longName": "Mondelez International, Inc.",
+      "searchText": "mdlz mondelez international, inc. mondelez international, inc.",
+      "stale": true,
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
+    },
+    {
+      "symbol": "TJX",
+      "shortName": "TJX Companies, Inc.",
+      "longName": "TJX Companies, Inc.",
+      "searchText": "tjx tjx companies, inc. tjx companies, inc.",
+      "stale": true,
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
+    },
+    {
+      "symbol": "TGT",
+      "shortName": "Target Corporation",
+      "longName": "Target Corporation",
+      "searchText": "tgt target corporation target corporation",
+      "stale": true,
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
+    },
+    {
+      "symbol": "LOW",
+      "shortName": "Lowe's Companies, Inc.",
+      "longName": "Lowe's Companies, Inc.",
+      "searchText": "low lowe's companies, inc. lowe's companies, inc.",
+      "stale": true,
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
+    },
+    {
+      "symbol": "HD",
+      "shortName": "Home Depot, Inc.",
+      "longName": "Home Depot, Inc.",
+      "searchText": "hd home depot, inc. home depot, inc.",
+      "stale": true,
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
+    },
+    {
+      "symbol": "NKE",
+      "shortName": "NIKE, Inc.",
+      "longName": "NIKE, Inc.",
+      "searchText": "nke nike, inc. nike, inc.",
+      "stale": true,
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
+    },
+    {
+      "symbol": "ORLY",
+      "shortName": "O'Reilly Automotive, Inc.",
+      "longName": "O'Reilly Automotive, Inc.",
+      "searchText": "orly o'reilly automotive, inc. o'reilly automotive, inc.",
+      "stale": true,
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
+    },
+    {
+      "symbol": "BKNG",
+      "shortName": "Booking Holdings Inc.",
+      "longName": "Booking Holdings Inc.",
+      "searchText": "bkng booking holdings inc. booking holdings inc.",
+      "stale": true,
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
+    },
+    {
+      "symbol": "ABNB",
+      "shortName": "Airbnb, Inc.",
+      "longName": "Airbnb, Inc.",
+      "searchText": "abnb airbnb, inc. airbnb, inc.",
+      "stale": true,
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
+    },
+    {
+      "symbol": "PYPL",
+      "shortName": "PayPal Holdings, Inc.",
+      "longName": "PayPal Holdings, Inc.",
+      "searchText": "pypl paypal holdings, inc. paypal holdings, inc.",
+      "stale": true,
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
+    },
+    {
+      "symbol": "UBER",
+      "shortName": "Uber Technologies, Inc.",
+      "longName": "Uber Technologies, Inc.",
+      "searchText": "uber uber technologies, inc. uber technologies, inc.",
+      "stale": true,
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
+    },
+    {
+      "symbol": "NFLX",
+      "shortName": "Netflix, Inc.",
+      "longName": "Netflix, Inc.",
+      "searchText": "nflx netflix, inc. netflix, inc.",
+      "stale": true,
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
+    },
+    {
+      "symbol": "DIS",
+      "shortName": "Walt Disney Company",
+      "longName": "Walt Disney Company",
+      "searchText": "dis walt disney company walt disney company",
+      "stale": true,
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
+    },
+    {
+      "symbol": "TMUS",
+      "shortName": "T-Mobile US, Inc.",
+      "longName": "T-Mobile US, Inc.",
+      "searchText": "tmus t-mobile us, inc. t-mobile us, inc.",
+      "stale": true,
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
+    },
+    {
+      "symbol": "VZ",
+      "shortName": "Verizon Communications Inc.",
+      "longName": "Verizon Communications Inc.",
+      "searchText": "vz verizon communications inc. verizon communications inc.",
+      "stale": true,
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
+    },
+    {
+      "symbol": "T",
+      "shortName": "AT&T Inc.",
+      "longName": "AT&T Inc.",
+      "searchText": "t at&t inc. at&t inc.",
+      "stale": true,
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
+    },
+    {
+      "symbol": "CMCSA",
+      "shortName": "Comcast Corporation",
+      "longName": "Comcast Corporation",
+      "searchText": "cmcsa comcast corporation comcast corporation",
+      "stale": true,
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
+    },
+    {
+      "symbol": "SPOT",
+      "shortName": "Spotify Technology S.A.",
+      "longName": "Spotify Technology S.A.",
+      "searchText": "spot spotify technology s.a. spotify technology s.a.",
+      "stale": true,
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
+    },
+    {
+      "symbol": "SAP",
+      "shortName": "SAP SE",
+      "longName": "SAP SE",
+      "searchText": "sap sap se sap se",
+      "stale": true,
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
+    },
+    {
+      "symbol": "GE",
+      "shortName": "GE Aerospace",
+      "longName": "GE Aerospace",
+      "searchText": "ge ge aerospace ge aerospace",
+      "stale": true,
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
+    },
+    {
+      "symbol": "CAT",
+      "shortName": "Caterpillar Inc.",
+      "longName": "Caterpillar Inc.",
+      "searchText": "cat caterpillar inc. caterpillar inc.",
+      "stale": true,
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
+    },
+    {
+      "symbol": "HON",
+      "shortName": "Honeywell International Inc.",
+      "longName": "Honeywell International Inc.",
+      "searchText": "hon honeywell international inc. honeywell international inc.",
+      "stale": true,
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
+    },
+    {
+      "symbol": "RTX",
+      "shortName": "RTX Corporation",
+      "longName": "RTX Corporation",
+      "searchText": "rtx rtx corporation rtx corporation",
+      "stale": true,
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
+    },
+    {
+      "symbol": "BA",
+      "shortName": "Boeing Company",
+      "longName": "Boeing Company",
+      "searchText": "ba boeing company boeing company",
+      "stale": true,
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
+    },
+    {
+      "symbol": "LMT",
+      "shortName": "Lockheed Martin Corporation",
+      "longName": "Lockheed Martin Corporation",
+      "searchText": "lmt lockheed martin corporation lockheed martin corporation",
+      "stale": true,
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     },
     {
       "symbol": "SPY",
@@ -1303,7 +1303,7 @@
       "longName": "SPDR S&P 500 ETF Trust",
       "searchText": "spy spdr s&p 500 etf trust spdr s&p 500 etf trust",
       "stale": true,
-      "asOf": "2026-07-02T23:53:41.175846+00:00"
+      "asOf": "2026-07-06T23:55:57.634961+00:00"
     }
   ]
 }

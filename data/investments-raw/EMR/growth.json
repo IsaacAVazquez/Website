@@ -1,0 +1,1480 @@
+{
+  "quarterly_revenue": [
+    {
+      "symbol": "EMR",
+      "report_date": "2022-06-30T00:00:00.000",
+      "revenue": 5005000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2023-06-30T00:00:00.000",
+      "revenue": 3946000000.0,
+      "prev_year_revenue": 5005000000.0,
+      "yoy_growth": -0.2116
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "revenue": 4090000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 4117000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2024-03-31T00:00:00.000",
+      "revenue": 4376000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2024-06-30T00:00:00.000",
+      "revenue": 4380000000.0,
+      "prev_year_revenue": 3946000000.0,
+      "yoy_growth": 0.11
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "revenue": 4619000000.0,
+      "prev_year_revenue": 4090000000.0,
+      "yoy_growth": 0.1293
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 4175000000.0,
+      "prev_year_revenue": 4117000000.0,
+      "yoy_growth": 0.0141
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2025-03-31T00:00:00.000",
+      "revenue": 4432000000.0,
+      "prev_year_revenue": 4376000000.0,
+      "yoy_growth": 0.0128
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2025-06-30T00:00:00.000",
+      "revenue": 4553000000.0,
+      "prev_year_revenue": 4380000000.0,
+      "yoy_growth": 0.0395
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "revenue": 4855000000.0,
+      "prev_year_revenue": 4619000000.0,
+      "yoy_growth": 0.0511
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 4346000000.0,
+      "prev_year_revenue": 4175000000.0,
+      "yoy_growth": 0.041
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 4562000000.0,
+      "prev_year_revenue": 4432000000.0,
+      "yoy_growth": 0.0293
+    }
+  ],
+  "annual_revenue": [
+    {
+      "symbol": "EMR",
+      "report_date": "2020-09-30T00:00:00.000",
+      "revenue": 16785000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2021-09-30T00:00:00.000",
+      "revenue": 12932000000.0,
+      "prev_year_revenue": 16785000000.0,
+      "yoy_growth": -0.2296
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2022-09-30T00:00:00.000",
+      "revenue": 13804000000.0,
+      "prev_year_revenue": 12932000000.0,
+      "yoy_growth": 0.0674
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "revenue": 15165000000.0,
+      "prev_year_revenue": 13804000000.0,
+      "yoy_growth": 0.0986
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "revenue": 17492000000.0,
+      "prev_year_revenue": 15165000000.0,
+      "yoy_growth": 0.1534
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "revenue": 18016000000.0,
+      "prev_year_revenue": 17492000000.0,
+      "yoy_growth": 0.03
+    }
+  ],
+  "quarterly_operating_income": [
+    {
+      "symbol": "EMR",
+      "report_date": "2022-06-30T00:00:00.000",
+      "operating_income": 947000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2023-06-30T00:00:00.000",
+      "operating_income": 832000000.0,
+      "prev_year_operating_income": 947000000.0,
+      "yoy_growth": -0.1214
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "operating_income": 773000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 365000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2024-03-31T00:00:00.000",
+      "operating_income": 715000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2024-06-30T00:00:00.000",
+      "operating_income": 796000000.0,
+      "prev_year_operating_income": 832000000.0,
+      "yoy_growth": -0.0433
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "operating_income": 790000000.0,
+      "prev_year_operating_income": 773000000.0,
+      "yoy_growth": 0.022
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 782000000.0,
+      "prev_year_operating_income": 365000000.0,
+      "yoy_growth": 1.1425
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2025-03-31T00:00:00.000",
+      "operating_income": 859000000.0,
+      "prev_year_operating_income": 715000000.0,
+      "yoy_growth": 0.2014
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2025-06-30T00:00:00.000",
+      "operating_income": 908000000.0,
+      "prev_year_operating_income": 796000000.0,
+      "yoy_growth": 0.1407
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "operating_income": 982000000.0,
+      "prev_year_operating_income": 790000000.0,
+      "yoy_growth": 0.243
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 864000000.0,
+      "prev_year_operating_income": 782000000.0,
+      "yoy_growth": 0.1049
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2026-03-31T00:00:00.000",
+      "operating_income": 901000000.0,
+      "prev_year_operating_income": 859000000.0,
+      "yoy_growth": 0.0489
+    }
+  ],
+  "annual_operating_income": [
+    {
+      "symbol": "EMR",
+      "report_date": "2020-09-30T00:00:00.000",
+      "operating_income": 2784000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2021-09-30T00:00:00.000",
+      "operating_income": 1959000000.0,
+      "prev_year_operating_income": 2784000000.0,
+      "yoy_growth": -0.2963
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2022-09-30T00:00:00.000",
+      "operating_income": 2356000000.0,
+      "prev_year_operating_income": 1959000000.0,
+      "yoy_growth": 0.2027
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "operating_income": 2759000000.0,
+      "prev_year_operating_income": 2356000000.0,
+      "yoy_growth": 0.1711
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "operating_income": 2666000000.0,
+      "prev_year_operating_income": 2759000000.0,
+      "yoy_growth": -0.0337
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "operating_income": 3532000000.0,
+      "prev_year_operating_income": 2666000000.0,
+      "yoy_growth": 0.3248
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "EMR",
+      "report_date": "2023-06-30T00:00:00.000",
+      "ebitda": 1089000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "ebitda": 1229000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 681000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2024-03-31T00:00:00.000",
+      "ebitda": 1225000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2024-06-30T00:00:00.000",
+      "ebitda": 928000000.0,
+      "prev_year_ebitda": 1089000000.0,
+      "yoy_growth": -0.1478
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "ebitda": 1271000000.0,
+      "prev_year_ebitda": 1229000000.0,
+      "yoy_growth": 0.0342
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 1210000000.0,
+      "prev_year_ebitda": 681000000.0,
+      "yoy_growth": 0.7768
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2025-03-31T00:00:00.000",
+      "ebitda": 1099000000.0,
+      "prev_year_ebitda": 1225000000.0,
+      "yoy_growth": -0.1029
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2025-06-30T00:00:00.000",
+      "ebitda": 1201000000.0,
+      "prev_year_ebitda": 928000000.0,
+      "yoy_growth": 0.2942
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "ebitda": 1417000000.0,
+      "prev_year_ebitda": 1271000000.0,
+      "yoy_growth": 0.1149
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 1250000000.0,
+      "prev_year_ebitda": 1210000000.0,
+      "yoy_growth": 0.0331
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2026-03-31T00:00:00.000",
+      "ebitda": 1272000000.0,
+      "prev_year_ebitda": 1099000000.0,
+      "yoy_growth": 0.1574
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "EMR",
+      "report_date": "2020-09-30T00:00:00.000",
+      "ebitda": 3364000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2021-09-30T00:00:00.000",
+      "ebitda": 2689000000.0,
+      "prev_year_ebitda": 3364000000.0,
+      "yoy_growth": -0.2007
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2022-09-30T00:00:00.000",
+      "ebitda": 3502000000.0,
+      "prev_year_ebitda": 2689000000.0,
+      "yoy_growth": 0.3023
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "ebitda": 4215000000.0,
+      "prev_year_ebitda": 3502000000.0,
+      "yoy_growth": 0.2036
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "ebitda": 4032000000.0,
+      "prev_year_ebitda": 4215000000.0,
+      "yoy_growth": -0.0434
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "ebitda": 4839000000.0,
+      "prev_year_ebitda": 4032000000.0,
+      "yoy_growth": 0.2001
+    }
+  ],
+  "quarterly_net_income": [
+    {
+      "symbol": "EMR",
+      "report_date": "2022-06-30T00:00:00.000",
+      "net_income_common_stockholders": 921000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2023-06-30T00:00:00.000",
+      "net_income_common_stockholders": 9352000000.0,
+      "prev_year_net_income_common_stockholders": 921000000.0,
+      "yoy_growth": 9.1542
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "net_income_common_stockholders": 744000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 142000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2024-03-31T00:00:00.000",
+      "net_income_common_stockholders": 501000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2024-06-30T00:00:00.000",
+      "net_income_common_stockholders": 329000000.0,
+      "prev_year_net_income_common_stockholders": 9352000000.0,
+      "yoy_growth": -0.9648
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "net_income_common_stockholders": 996000000.0,
+      "prev_year_net_income_common_stockholders": 744000000.0,
+      "yoy_growth": 0.3387
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 585000000.0,
+      "prev_year_net_income_common_stockholders": 142000000.0,
+      "yoy_growth": 3.1197
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2025-03-31T00:00:00.000",
+      "net_income_common_stockholders": 485000000.0,
+      "prev_year_net_income_common_stockholders": 501000000.0,
+      "yoy_growth": -0.0319
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2025-06-30T00:00:00.000",
+      "net_income_common_stockholders": 586000000.0,
+      "prev_year_net_income_common_stockholders": 329000000.0,
+      "yoy_growth": 0.7812
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "net_income_common_stockholders": 636000000.0,
+      "prev_year_net_income_common_stockholders": 996000000.0,
+      "yoy_growth": -0.3614
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 605000000.0,
+      "prev_year_net_income_common_stockholders": 585000000.0,
+      "yoy_growth": 0.0342
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 618000000.0,
+      "prev_year_net_income_common_stockholders": 485000000.0,
+      "yoy_growth": 0.2742
+    }
+  ],
+  "annual_net_income": [
+    {
+      "symbol": "EMR",
+      "report_date": "2020-09-30T00:00:00.000",
+      "net_income_common_stockholders": 1965000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2021-09-30T00:00:00.000",
+      "net_income_common_stockholders": 2303000000.0,
+      "prev_year_net_income_common_stockholders": 1965000000.0,
+      "yoy_growth": 0.172
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2022-09-30T00:00:00.000",
+      "net_income_common_stockholders": 3231000000.0,
+      "prev_year_net_income_common_stockholders": 2303000000.0,
+      "yoy_growth": 0.403
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "net_income_common_stockholders": 13219000000.0,
+      "prev_year_net_income_common_stockholders": 3231000000.0,
+      "yoy_growth": 3.0913
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "net_income_common_stockholders": 1968000000.0,
+      "prev_year_net_income_common_stockholders": 13219000000.0,
+      "yoy_growth": -0.8511
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "net_income_common_stockholders": 2293000000.0,
+      "prev_year_net_income_common_stockholders": 1968000000.0,
+      "yoy_growth": 0.1651
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "EMR",
+      "report_date": "2022-06-30T00:00:00.000",
+      "free_cash_flow": 630000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2023-06-30T00:00:00.000",
+      "free_cash_flow": 721000000.0,
+      "prev_year_free_cash_flow": 630000000.0,
+      "yoy_growth": 0.1444
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "free_cash_flow": -812000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 338000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2024-03-31T00:00:00.000",
+      "free_cash_flow": 661000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2024-06-30T00:00:00.000",
+      "free_cash_flow": 998000000.0,
+      "prev_year_free_cash_flow": 721000000.0,
+      "yoy_growth": 0.3842
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "free_cash_flow": 916000000.0,
+      "prev_year_free_cash_flow": -812000000.0,
+      "yoy_growth": 2.1281
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 694000000.0,
+      "prev_year_free_cash_flow": 338000000.0,
+      "yoy_growth": 1.0533
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2025-03-31T00:00:00.000",
+      "free_cash_flow": 154000000.0,
+      "prev_year_free_cash_flow": 661000000.0,
+      "yoy_growth": -0.767
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2025-06-30T00:00:00.000",
+      "free_cash_flow": 977000000.0,
+      "prev_year_free_cash_flow": 998000000.0,
+      "yoy_growth": -0.021
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "free_cash_flow": 842000000.0,
+      "prev_year_free_cash_flow": 916000000.0,
+      "yoy_growth": -0.0808
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 602000000.0,
+      "prev_year_free_cash_flow": 694000000.0,
+      "yoy_growth": -0.1326
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": 694000000.0,
+      "prev_year_free_cash_flow": 154000000.0,
+      "yoy_growth": 3.5065
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "EMR",
+      "report_date": "2020-09-30T00:00:00.000",
+      "free_cash_flow": 2545000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2021-09-30T00:00:00.000",
+      "free_cash_flow": 3171000000.0,
+      "prev_year_free_cash_flow": 2545000000.0,
+      "yoy_growth": 0.246
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2022-09-30T00:00:00.000",
+      "free_cash_flow": 2623000000.0,
+      "prev_year_free_cash_flow": 3171000000.0,
+      "yoy_growth": -0.1728
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "free_cash_flow": 274000000.0,
+      "prev_year_free_cash_flow": 2623000000.0,
+      "yoy_growth": -0.8955
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "free_cash_flow": 2913000000.0,
+      "prev_year_free_cash_flow": 274000000.0,
+      "yoy_growth": 9.6314
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "free_cash_flow": 2667000000.0,
+      "prev_year_free_cash_flow": 2913000000.0,
+      "yoy_growth": -0.0844
+    }
+  ],
+  "quarterly_eps": [
+    {
+      "symbol": "EMR",
+      "report_date": "1997-12-31T00:00:00.000",
+      "eps": 0.32,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "1998-03-31T00:00:00.000",
+      "eps": 0.345,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "1998-06-30T00:00:00.000",
+      "eps": 0.365,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "1998-09-30T00:00:00.000",
+      "eps": 0.355,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "1998-12-31T00:00:00.000",
+      "eps": 0.345,
+      "prev_year_eps": 0.32,
+      "yoy_growth": 0.0781
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "1999-03-31T00:00:00.000",
+      "eps": 0.37,
+      "prev_year_eps": 0.345,
+      "yoy_growth": 0.0725
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "1999-06-30T00:00:00.000",
+      "eps": 0.395,
+      "prev_year_eps": 0.365,
+      "yoy_growth": 0.0822
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "1999-09-30T00:00:00.000",
+      "eps": 0.39,
+      "prev_year_eps": 0.355,
+      "yoy_growth": 0.0986
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "1999-12-31T00:00:00.000",
+      "eps": 0.375,
+      "prev_year_eps": 0.345,
+      "yoy_growth": 0.087
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2000-03-31T00:00:00.000",
+      "eps": 0.41,
+      "prev_year_eps": 0.37,
+      "yoy_growth": 0.1081
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2000-06-30T00:00:00.000",
+      "eps": 0.435,
+      "prev_year_eps": 0.395,
+      "yoy_growth": 0.1013
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2000-09-30T00:00:00.000",
+      "eps": 0.43,
+      "prev_year_eps": 0.39,
+      "yoy_growth": 0.1026
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2000-12-31T00:00:00.000",
+      "eps": 0.415,
+      "prev_year_eps": 0.375,
+      "yoy_growth": 0.1067
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2001-03-31T00:00:00.000",
+      "eps": 0.415,
+      "prev_year_eps": 0.41,
+      "yoy_growth": 0.0122
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2001-06-30T00:00:00.000",
+      "eps": 0.385,
+      "prev_year_eps": 0.435,
+      "yoy_growth": -0.1149
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2001-09-30T00:00:00.000",
+      "eps": -0.015,
+      "prev_year_eps": 0.43,
+      "yoy_growth": -1.0349
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2001-12-31T00:00:00.000",
+      "eps": 0.305,
+      "prev_year_eps": 0.415,
+      "yoy_growth": -0.2651
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2002-03-31T00:00:00.000",
+      "eps": 0.325,
+      "prev_year_eps": 0.415,
+      "yoy_growth": -0.2169
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2002-06-30T00:00:00.000",
+      "eps": 0.335,
+      "prev_year_eps": 0.385,
+      "yoy_growth": -0.1299
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2002-09-30T00:00:00.000",
+      "eps": 0.295,
+      "prev_year_eps": -0.015,
+      "yoy_growth": 20.6667
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2002-12-31T00:00:00.000",
+      "eps": 0.26,
+      "prev_year_eps": 0.305,
+      "yoy_growth": -0.1475
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2003-03-31T00:00:00.000",
+      "eps": 0.28,
+      "prev_year_eps": 0.325,
+      "yoy_growth": -0.1385
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2003-06-30T00:00:00.000",
+      "eps": 0.33,
+      "prev_year_eps": 0.335,
+      "yoy_growth": -0.0149
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2003-09-30T00:00:00.000",
+      "eps": 0.33,
+      "prev_year_eps": 0.295,
+      "yoy_growth": 0.1186
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2003-12-31T00:00:00.000",
+      "eps": 0.29,
+      "prev_year_eps": 0.26,
+      "yoy_growth": 0.1154
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2004-03-31T00:00:00.000",
+      "eps": 0.375,
+      "prev_year_eps": 0.28,
+      "yoy_growth": 0.3393
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2004-06-30T00:00:00.000",
+      "eps": 0.405,
+      "prev_year_eps": 0.33,
+      "yoy_growth": 0.2273
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2004-09-30T00:00:00.000",
+      "eps": 0.42,
+      "prev_year_eps": 0.33,
+      "yoy_growth": 0.2727
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2004-12-31T00:00:00.000",
+      "eps": 0.35,
+      "prev_year_eps": 0.29,
+      "yoy_growth": 0.2069
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2005-03-31T00:00:00.000",
+      "eps": 0.415,
+      "prev_year_eps": 0.375,
+      "yoy_growth": 0.1067
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2005-06-30T00:00:00.000",
+      "eps": 0.43,
+      "prev_year_eps": 0.405,
+      "yoy_growth": 0.0617
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2005-09-30T00:00:00.000",
+      "eps": 0.505,
+      "prev_year_eps": 0.42,
+      "yoy_growth": 0.2024
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2005-12-31T00:00:00.000",
+      "eps": 0.48,
+      "prev_year_eps": 0.35,
+      "yoy_growth": 0.3714
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2006-03-31T00:00:00.000",
+      "eps": 0.525,
+      "prev_year_eps": 0.415,
+      "yoy_growth": 0.2651
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2006-06-30T00:00:00.000",
+      "eps": 0.59,
+      "prev_year_eps": 0.43,
+      "yoy_growth": 0.3721
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2006-09-30T00:00:00.000",
+      "eps": 0.645,
+      "prev_year_eps": 0.505,
+      "yoy_growth": 0.2772
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2006-12-31T00:00:00.000",
+      "eps": 0.55,
+      "prev_year_eps": 0.48,
+      "yoy_growth": 0.1458
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2007-03-31T00:00:00.000",
+      "eps": 0.61,
+      "prev_year_eps": 0.525,
+      "yoy_growth": 0.1619
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2007-06-30T00:00:00.000",
+      "eps": 0.72,
+      "prev_year_eps": 0.59,
+      "yoy_growth": 0.2203
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2007-09-30T00:00:00.000",
+      "eps": 0.775,
+      "prev_year_eps": 0.645,
+      "yoy_growth": 0.2016
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2007-12-31T00:00:00.000",
+      "eps": 0.71,
+      "prev_year_eps": 0.55,
+      "yoy_growth": 0.2909
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2008-03-31T00:00:00.000",
+      "eps": 0.69,
+      "prev_year_eps": 0.61,
+      "yoy_growth": 0.1311
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2008-06-30T00:00:00.000",
+      "eps": 0.78,
+      "prev_year_eps": 0.72,
+      "yoy_growth": 0.0833
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2008-09-30T00:00:00.000",
+      "eps": 0.8716,
+      "prev_year_eps": 0.775,
+      "yoy_growth": 0.1246
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2008-12-31T00:00:00.000",
+      "eps": 0.6,
+      "prev_year_eps": 0.71,
+      "yoy_growth": -0.1549
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2009-03-31T00:00:00.000",
+      "eps": 0.49,
+      "prev_year_eps": 0.69,
+      "yoy_growth": -0.2899
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2009-06-30T00:00:00.000",
+      "eps": 0.51,
+      "prev_year_eps": 0.78,
+      "yoy_growth": -0.3462
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2009-09-30T00:00:00.000",
+      "eps": 0.67,
+      "prev_year_eps": 0.8716,
+      "yoy_growth": -0.2313
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2009-12-31T00:00:00.000",
+      "eps": 0.56,
+      "prev_year_eps": 0.6,
+      "yoy_growth": -0.0667
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2010-03-31T00:00:00.000",
+      "eps": 0.53,
+      "prev_year_eps": 0.49,
+      "yoy_growth": 0.0816
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2010-06-30T00:00:00.000",
+      "eps": 0.77,
+      "prev_year_eps": 0.51,
+      "yoy_growth": 0.5098
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2010-09-30T00:00:00.000",
+      "eps": 0.9951,
+      "prev_year_eps": 0.67,
+      "yoy_growth": 0.4852
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2010-12-31T00:00:00.000",
+      "eps": 0.63,
+      "prev_year_eps": 0.56,
+      "yoy_growth": 0.125
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2011-03-31T00:00:00.000",
+      "eps": 0.73,
+      "prev_year_eps": 0.53,
+      "yoy_growth": 0.3774
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2011-06-30T00:00:00.000",
+      "eps": 0.9067,
+      "prev_year_eps": 0.77,
+      "yoy_growth": 0.1775
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2011-09-30T00:00:00.000",
+      "eps": 1.0299,
+      "prev_year_eps": 0.9951,
+      "yoy_growth": 0.035
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2011-12-31T00:00:00.000",
+      "eps": 0.5,
+      "prev_year_eps": 0.63,
+      "yoy_growth": -0.2063
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2012-03-31T00:00:00.000",
+      "eps": 0.74,
+      "prev_year_eps": 0.73,
+      "yoy_growth": 0.0137
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2012-06-30T00:00:00.000",
+      "eps": 1.0486,
+      "prev_year_eps": 0.9067,
+      "yoy_growth": 0.1565
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2012-09-30T00:00:00.000",
+      "eps": 0.3839,
+      "prev_year_eps": 1.0299,
+      "yoy_growth": -0.6272
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2012-12-31T00:00:00.000",
+      "eps": 0.62,
+      "prev_year_eps": 0.5,
+      "yoy_growth": 0.24
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2013-03-31T00:00:00.000",
+      "eps": 0.77,
+      "prev_year_eps": 0.74,
+      "yoy_growth": 0.0405
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2013-06-30T00:00:00.000",
+      "eps": 0.27,
+      "prev_year_eps": 1.0486,
+      "yoy_growth": -0.7425
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2013-09-30T00:00:00.000",
+      "eps": 1.125,
+      "prev_year_eps": 0.3839,
+      "yoy_growth": 1.9305
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2013-12-31T00:00:00.000",
+      "eps": 0.65,
+      "prev_year_eps": 0.62,
+      "yoy_growth": 0.0484
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2014-03-31T00:00:00.000",
+      "eps": 0.7757,
+      "prev_year_eps": 0.77,
+      "yoy_growth": 0.0074
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2014-06-30T00:00:00.000",
+      "eps": 1.0351,
+      "prev_year_eps": 0.27,
+      "yoy_growth": 2.8337
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2014-09-30T00:00:00.000",
+      "eps": 0.586,
+      "prev_year_eps": 1.125,
+      "yoy_growth": -0.4791
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2014-12-31T00:00:00.000",
+      "eps": 0.7557,
+      "prev_year_eps": 0.65,
+      "yoy_growth": 0.1626
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2015-03-31T00:00:00.000",
+      "eps": 1.42,
+      "prev_year_eps": 0.7757,
+      "yoy_growth": 0.8306
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2015-06-30T00:00:00.000",
+      "eps": 0.84,
+      "prev_year_eps": 1.0351,
+      "yoy_growth": -0.1885
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2015-09-30T00:00:00.000",
+      "eps": 0.98,
+      "prev_year_eps": 0.586,
+      "yoy_growth": 0.6724
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2015-12-31T00:00:00.000",
+      "eps": 0.53,
+      "prev_year_eps": 0.7557,
+      "yoy_growth": -0.2987
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2016-03-31T00:00:00.000",
+      "eps": 0.57,
+      "prev_year_eps": 1.42,
+      "yoy_growth": -0.5986
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2016-06-30T00:00:00.000",
+      "eps": 0.74,
+      "prev_year_eps": 0.84,
+      "yoy_growth": -0.119
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2016-09-30T00:00:00.000",
+      "eps": 0.68,
+      "prev_year_eps": 0.98,
+      "yoy_growth": -0.3061
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2016-12-31T00:00:00.000",
+      "eps": 0.3461,
+      "prev_year_eps": 0.53,
+      "yoy_growth": -0.347
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2017-03-31T00:00:00.000",
+      "eps": 0.432,
+      "prev_year_eps": 0.57,
+      "yoy_growth": -0.2421
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2017-06-30T00:00:00.000",
+      "eps": 0.6198,
+      "prev_year_eps": 0.74,
+      "yoy_growth": -0.1624
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2017-09-30T00:00:00.000",
+      "eps": 0.7854,
+      "prev_year_eps": 0.68,
+      "yoy_growth": 0.155
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2017-12-31T00:00:00.000",
+      "eps": 0.61,
+      "prev_year_eps": 0.3461,
+      "yoy_growth": 0.7625
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2018-03-31T00:00:00.000",
+      "eps": 0.76,
+      "prev_year_eps": 0.432,
+      "yoy_growth": 0.7593
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2018-06-30T00:00:00.000",
+      "eps": 1.12,
+      "prev_year_eps": 0.6198,
+      "yoy_growth": 0.807
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2018-09-30T00:00:00.000",
+      "eps": 0.9764,
+      "prev_year_eps": 0.7854,
+      "yoy_growth": 0.2432
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2018-12-31T00:00:00.000",
+      "eps": 0.74,
+      "prev_year_eps": 0.61,
+      "yoy_growth": 0.2131
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2019-03-31T00:00:00.000",
+      "eps": 0.84,
+      "prev_year_eps": 0.76,
+      "yoy_growth": 0.1053
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2019-06-30T00:00:00.000",
+      "eps": 0.97,
+      "prev_year_eps": 1.12,
+      "yoy_growth": -0.1339
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2019-09-30T00:00:00.000",
+      "eps": 1.1611,
+      "prev_year_eps": 0.9764,
+      "yoy_growth": 0.1892
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2019-12-31T00:00:00.000",
+      "eps": 0.5309,
+      "prev_year_eps": 0.74,
+      "yoy_growth": -0.2826
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2020-03-31T00:00:00.000",
+      "eps": 0.8462,
+      "prev_year_eps": 0.84,
+      "yoy_growth": 0.0074
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2020-06-30T00:00:00.000",
+      "eps": 0.665,
+      "prev_year_eps": 0.97,
+      "yoy_growth": -0.3144
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2020-09-30T00:00:00.000",
+      "eps": 1.2028,
+      "prev_year_eps": 1.1611,
+      "yoy_growth": 0.0359
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2020-12-31T00:00:00.000",
+      "eps": 0.7393,
+      "prev_year_eps": 0.5309,
+      "yoy_growth": 0.3925
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2021-03-31T00:00:00.000",
+      "eps": 0.9307,
+      "prev_year_eps": 0.8462,
+      "yoy_growth": 0.0999
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2021-06-30T00:00:00.000",
+      "eps": 1.0414,
+      "prev_year_eps": 0.665,
+      "yoy_growth": 0.566
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2021-09-30T00:00:00.000",
+      "eps": 1.1157,
+      "prev_year_eps": 1.2028,
+      "yoy_growth": -0.0724
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2021-12-31T00:00:00.000",
+      "eps": 1.2473,
+      "prev_year_eps": 0.7393,
+      "yoy_growth": 0.6871
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2022-03-31T00:00:00.000",
+      "eps": 0.7175,
+      "prev_year_eps": 0.9307,
+      "yoy_growth": -0.2291
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2022-06-30T00:00:00.000",
+      "eps": 0.3791,
+      "prev_year_eps": 1.0414,
+      "yoy_growth": -0.636
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2022-09-30T00:00:00.000",
+      "eps": 0.8158,
+      "prev_year_eps": 1.1157,
+      "yoy_growth": -0.2688
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2022-12-31T00:00:00.000",
+      "eps": 0.5608,
+      "prev_year_eps": 1.2473,
+      "yoy_growth": -0.5504
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2023-03-31T00:00:00.000",
+      "eps": 0.924,
+      "prev_year_eps": 0.7175,
+      "yoy_growth": 0.2878
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2023-06-30T00:00:00.000",
+      "eps": 1.1202,
+      "prev_year_eps": 0.3791,
+      "yoy_growth": 1.9549
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "eps": 1.2198,
+      "prev_year_eps": 0.8158,
+      "yoy_growth": 0.4952
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "eps": 0.2477,
+      "prev_year_eps": 0.5608,
+      "yoy_growth": -0.5583
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2024-03-31T00:00:00.000",
+      "eps": 0.8727,
+      "prev_year_eps": 0.924,
+      "yoy_growth": -0.0555
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2024-06-30T00:00:00.000",
+      "eps": 0.5724,
+      "prev_year_eps": 1.1202,
+      "yoy_growth": -0.489
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "eps": 1.7355,
+      "prev_year_eps": 1.2198,
+      "yoy_growth": 0.4228
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "eps": 1.0243,
+      "prev_year_eps": 0.2477,
+      "yoy_growth": 3.1352
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2025-03-31T00:00:00.000",
+      "eps": 0.8578,
+      "prev_year_eps": 0.8727,
+      "yoy_growth": -0.0171
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2025-06-30T00:00:00.000",
+      "eps": 1.0377,
+      "prev_year_eps": 0.5724,
+      "yoy_growth": 0.8129
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "eps": 1.1264,
+      "prev_year_eps": 1.7355,
+      "yoy_growth": -0.351
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "eps": 1.0725,
+      "prev_year_eps": 1.0243,
+      "yoy_growth": 0.0471
+    },
+    {
+      "symbol": "EMR",
+      "report_date": "2026-03-31T00:00:00.000",
+      "eps": 1.0977,
+      "prev_year_eps": 0.8578,
+      "yoy_growth": 0.2797
+    }
+  ]
+}

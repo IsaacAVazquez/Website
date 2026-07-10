@@ -1,0 +1,528 @@
+{
+  "roe": [
+    {
+      "symbol": "XOM",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 7880000000.0,
+      "beginning_stockholders_equity": 198685000000.0,
+      "ending_stockholders_equity": 199046000000.0,
+      "avg_equity": 198865500000.0,
+      "roe": 0.0396
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 9070000000.0,
+      "beginning_stockholders_equity": 199046000000.0,
+      "ending_stockholders_equity": 199703000000.0,
+      "avg_equity": 199374500000.0,
+      "roe": 0.0455
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 7630000000.0,
+      "beginning_stockholders_equity": 199703000000.0,
+      "ending_stockholders_equity": 204802000000.0,
+      "avg_equity": 202252500000.0,
+      "roe": 0.0377
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 8220000000.0,
+      "beginning_stockholders_equity": 204802000000.0,
+      "ending_stockholders_equity": 205250000000.0,
+      "avg_equity": 205026000000.0,
+      "roe": 0.0401
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 9240000000.0,
+      "beginning_stockholders_equity": 205250000000.0,
+      "ending_stockholders_equity": 268405000000.0,
+      "avg_equity": 236827500000.0,
+      "roe": 0.039
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 8610000000.0,
+      "beginning_stockholders_equity": 268405000000.0,
+      "ending_stockholders_equity": 268592000000.0,
+      "avg_equity": 268498500000.0,
+      "roe": 0.0321
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 7610000000.0,
+      "beginning_stockholders_equity": 268592000000.0,
+      "ending_stockholders_equity": 263705000000.0,
+      "avg_equity": 266148500000.0,
+      "roe": 0.0286
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 7713000000.0,
+      "beginning_stockholders_equity": 263705000000.0,
+      "ending_stockholders_equity": 262720000000.0,
+      "avg_equity": 263212500000.0,
+      "roe": 0.0293
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 7082000000.0,
+      "beginning_stockholders_equity": 262720000000.0,
+      "ending_stockholders_equity": 262593000000.0,
+      "avg_equity": 262656500000.0,
+      "roe": 0.027
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 7548000000.0,
+      "beginning_stockholders_equity": 262593000000.0,
+      "ending_stockholders_equity": 260561000000.0,
+      "avg_equity": 261577000000.0,
+      "roe": 0.0289
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 6501000000.0,
+      "beginning_stockholders_equity": 260561000000.0,
+      "ending_stockholders_equity": 259386000000.0,
+      "avg_equity": 259973500000.0,
+      "roe": 0.025
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 4183000000.0,
+      "beginning_stockholders_equity": 259386000000.0,
+      "ending_stockholders_equity": 254381000000.0,
+      "avg_equity": 256883500000.0,
+      "roe": 0.0163
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "XOM",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 7880000000.0,
+      "beginning_total_assets": 369371000000.0,
+      "ending_total_assets": 363248000000.0,
+      "avg_assets": 366309500000.0,
+      "roa": 0.0215
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 9070000000.0,
+      "beginning_total_assets": 363248000000.0,
+      "ending_total_assets": 372259000000.0,
+      "avg_assets": 367753500000.0,
+      "roa": 0.0247
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 7630000000.0,
+      "beginning_total_assets": 372259000000.0,
+      "ending_total_assets": 376317000000.0,
+      "avg_assets": 374288000000.0,
+      "roa": 0.0204
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 8220000000.0,
+      "beginning_total_assets": 376317000000.0,
+      "ending_total_assets": 377918000000.0,
+      "avg_assets": 377117500000.0,
+      "roa": 0.0218
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 9240000000.0,
+      "beginning_total_assets": 377918000000.0,
+      "ending_total_assets": 460707000000.0,
+      "avg_assets": 419312500000.0,
+      "roa": 0.022
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 8610000000.0,
+      "beginning_total_assets": 460707000000.0,
+      "ending_total_assets": 461916000000.0,
+      "avg_assets": 461311500000.0,
+      "roa": 0.0187
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 7610000000.0,
+      "beginning_total_assets": 461916000000.0,
+      "ending_total_assets": 453475000000.0,
+      "avg_assets": 457695500000.0,
+      "roa": 0.0166
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 7713000000.0,
+      "beginning_total_assets": 453475000000.0,
+      "ending_total_assets": 451908000000.0,
+      "avg_assets": 452691500000.0,
+      "roa": 0.017
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 7082000000.0,
+      "beginning_total_assets": 451908000000.0,
+      "ending_total_assets": 447597000000.0,
+      "avg_assets": 449752500000.0,
+      "roa": 0.0157
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 7548000000.0,
+      "beginning_total_assets": 447597000000.0,
+      "ending_total_assets": 454340000000.0,
+      "avg_assets": 450968500000.0,
+      "roa": 0.0167
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 6501000000.0,
+      "beginning_total_assets": 454340000000.0,
+      "ending_total_assets": 448980000000.0,
+      "avg_assets": 451660000000.0,
+      "roa": 0.0144
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 4183000000.0,
+      "beginning_total_assets": 448980000000.0,
+      "ending_total_assets": 464410000000.0,
+      "avg_assets": 456695000000.0,
+      "roa": 0.0092
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "XOM",
+      "report_date": "2023-06-30",
+      "ebit": 11905000000.0,
+      "tax_rate_for_calcs": 0.33,
+      "nopat": 7976350000.0,
+      "beginning_invested_capital": 240131000000.0,
+      "ending_invested_capital": 240542000000.0,
+      "avg_invested_capital": 240336500000.0,
+      "roic": 0.0332
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2023-09-30",
+      "ebit": 13868000000.0,
+      "tax_rate_for_calcs": 0.34,
+      "nopat": 9152880000.0,
+      "beginning_invested_capital": 240542000000.0,
+      "ending_invested_capital": 240956000000.0,
+      "avg_invested_capital": 240749000000.0,
+      "roic": 0.038
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2023-12-31",
+      "ebit": 10897000000.0,
+      "tax_rate_for_calcs": 0.25,
+      "nopat": 8172750000.0,
+      "beginning_invested_capital": 240956000000.0,
+      "ending_invested_capital": 242537000000.0,
+      "avg_invested_capital": 241746500000.0,
+      "roic": 0.0338
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2024-03-31",
+      "ebit": 12590000000.0,
+      "tax_rate_for_calcs": 0.36,
+      "nopat": 8057600000.0,
+      "beginning_invested_capital": 242537000000.0,
+      "ending_invested_capital": 245690000000.0,
+      "avg_invested_capital": 244113500000.0,
+      "roic": 0.033
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2024-06-30",
+      "ebit": 13936000000.0,
+      "tax_rate_for_calcs": 0.34,
+      "nopat": 9197760000.0,
+      "beginning_invested_capital": 245690000000.0,
+      "ending_invested_capital": 311591000000.0,
+      "avg_invested_capital": 278640500000.0,
+      "roic": 0.033
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2024-09-30",
+      "ebit": 13233000000.0,
+      "tax_rate_for_calcs": 0.35,
+      "nopat": 8601450000.0,
+      "beginning_invested_capital": 311591000000.0,
+      "ending_invested_capital": 311142000000.0,
+      "avg_invested_capital": 311366500000.0,
+      "roic": 0.0276
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2024-12-31",
+      "ebit": 10110000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 8189100000.0,
+      "beginning_invested_capital": 311142000000.0,
+      "ending_invested_capital": 301464000000.0,
+      "avg_invested_capital": 306303000000.0,
+      "roic": 0.0267
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2025-03-31",
+      "ebit": 11805000000.0,
+      "tax_rate_for_calcs": 0.31,
+      "nopat": 8145450000.0,
+      "beginning_invested_capital": 301464000000.0,
+      "ending_invested_capital": 300271000000.0,
+      "avg_invested_capital": 300867500000.0,
+      "roic": 0.0271
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2025-06-30",
+      "ebit": 10850000000.0,
+      "tax_rate_for_calcs": 0.34,
+      "nopat": 7161000000.0,
+      "beginning_invested_capital": 300271000000.0,
+      "ending_invested_capital": 301582000000.0,
+      "avg_invested_capital": 300926500000.0,
+      "roic": 0.0238
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2025-09-30",
+      "ebit": 11022000000.0,
+      "tax_rate_for_calcs": 0.32,
+      "nopat": 7494960000.0,
+      "beginning_invested_capital": 301582000000.0,
+      "ending_invested_capital": 302597000000.0,
+      "avg_invested_capital": 302089500000.0,
+      "roic": 0.0248
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2025-12-31",
+      "ebit": 8194000000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 6719080000.0,
+      "beginning_invested_capital": 302597000000.0,
+      "ending_invested_capital": 296610000000.0,
+      "avg_invested_capital": 299603500000.0,
+      "roic": 0.0224
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2026-03-31",
+      "ebit": 7262000000.0,
+      "tax_rate_for_calcs": 0.36,
+      "nopat": 4647680000.0,
+      "beginning_invested_capital": 296610000000.0,
+      "ending_invested_capital": 302042000000.0,
+      "avg_invested_capital": 299326000000.0,
+      "roic": 0.0155
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "XOM",
+      "report_date": "2023-06-30T00:00:00.000",
+      "roe": 0.0396,
+      "roa": 0.0215,
+      "equity_multiplier": 1.84
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0455,
+      "roa": 0.0247,
+      "equity_multiplier": 1.84
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0377,
+      "roa": 0.0204,
+      "equity_multiplier": 1.85
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0401,
+      "roa": 0.0218,
+      "equity_multiplier": 1.84
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.039,
+      "roa": 0.022,
+      "equity_multiplier": 1.77
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0321,
+      "roa": 0.0187,
+      "equity_multiplier": 1.72
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.0286,
+      "roa": 0.0166,
+      "equity_multiplier": 1.72
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0293,
+      "roa": 0.017,
+      "equity_multiplier": 1.72
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.027,
+      "roa": 0.0157,
+      "equity_multiplier": 1.72
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0289,
+      "roa": 0.0167,
+      "equity_multiplier": 1.73
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.025,
+      "roa": 0.0144,
+      "equity_multiplier": 1.74
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.0163,
+      "roa": 0.0092,
+      "equity_multiplier": 1.77
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "XOM",
+      "report_date": "2023-06-30T00:00:00.000",
+      "roa": 0.0215,
+      "net_margin": 0.0975,
+      "asset_turnover": 0.22
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0247,
+      "net_margin": 0.1024,
+      "asset_turnover": 0.24
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0204,
+      "net_margin": 0.0934,
+      "asset_turnover": 0.22
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0218,
+      "net_margin": 0.1022,
+      "asset_turnover": 0.21
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.022,
+      "net_margin": 0.1027,
+      "asset_turnover": 0.21
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0187,
+      "net_margin": 0.0981,
+      "asset_turnover": 0.19
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0166,
+      "net_margin": 0.0939,
+      "asset_turnover": 0.18
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.017,
+      "net_margin": 0.0952,
+      "asset_turnover": 0.18
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0157,
+      "net_margin": 0.0891,
+      "asset_turnover": 0.18
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0167,
+      "net_margin": 0.0906,
+      "asset_turnover": 0.18
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0144,
+      "net_margin": 0.0812,
+      "asset_turnover": 0.18
+    },
+    {
+      "symbol": "XOM",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0092,
+      "net_margin": 0.0503,
+      "asset_turnover": 0.18
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "COP",
+    "name": "Mr. Andrew D. Lundquist",
+    "title": "Senior Vice President of Government Affairs",
+    "age": 64,
+    "born": 1961,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "COP",
+    "name": "Mr. Andrew M. O'Brien",
+    "title": "Executive VP of Strategy & Commercial and CFO",
+    "age": 50,
+    "born": 1975,
+    "pay": 2170903,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "COP",
+    "name": "Mr. Dodd W. DeCamp",
+    "title": "President-Middle East Russia & Caspian Region",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "COP",
+    "name": "Mr. Guy Allen Baber IV, CPA",
+    "title": "Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "COP",
+    "name": "Mr. John David Wright BSc, CFA, P.Eng.",
+    "title": "President of Global Supply",
+    "age": 65,
+    "born": 1960,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "COP",
+    "name": "Mr. Kirk L. Johnson",
+    "title": "Executive Vice President of Global Operations & Technical Functions",
+    "age": 49,
+    "born": 1976,
+    "pay": 2150655,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "COP",
+    "name": "Mr. Nicholas G. Olds",
+    "title": "Executive Vice President of Lower 48 & Global HSE",
+    "age": 55,
+    "born": 1970,
+    "pay": 2784156,
+    "exercised": 0,
+    "unexercised": 532838,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "COP",
+    "name": "Mr. Ryan M. Lance",
+    "title": "Chairman & CEO",
+    "age": 63,
+    "born": 1962,
+    "pay": 6906651,
+    "exercised": 48681564,
+    "unexercised": 22225714,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "COP",
+    "name": "Ms. Heather G. Hrap",
+    "title": "Senior Vice President of Human Resources & Real Estate and Facilities Services",
+    "age": 52,
+    "born": 1973,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "COP",
+    "name": "Ms. Kelly Brunetti Rose J.D.",
+    "title": "Senior VP of Legal, General Counsel & Corporate Secretary",
+    "age": 58,
+    "born": 1967,
+    "pay": 2458155,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  }
+]
