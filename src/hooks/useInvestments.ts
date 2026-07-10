@@ -17,6 +17,17 @@ const QUOTE_CACHE_TTL_MS = 5 * 60 * 1000;
 const PARTIAL_FALLBACK_WARNING =
   "Some live prices are temporarily unavailable. Portfolio totals are using your saved cost basis where needed.";
 
+function formatFallbackWarning(symbols: string[]): string {
+  const uniqueSymbols = Array.from(new Set(symbols.map((symbol) => symbol.toUpperCase()))).sort();
+  if (uniqueSymbols.length === 0) return PARTIAL_FALLBACK_WARNING;
+
+  const displayedSymbols = uniqueSymbols.slice(0, 4).join(", ");
+  const remainingCount = uniqueSymbols.length - 4;
+  const suffix = remainingCount > 0 ? `, and ${remainingCount} more` : "";
+
+  return `Live prices are temporarily unavailable for ${displayedSymbols}${suffix}. Portfolio totals are using your saved cost basis where needed.`;
+}
+
 // ─── localStorage helpers ────────────────────────────────────────────────────
 
 function safeWrite(key: string, value: string): void {
@@ -282,16 +293,18 @@ export function useInvestments(): UseInvestmentsReturn {
       const { quotes: q, warning } = await fetchQuotesWithStatus(symbols);
       if (isMounted.current) {
         const canPersistSnapshot = canPersistPortfolioSnapshot(currentHoldings, q);
-        const hasFallbackPrices = currentHoldings.some(
-          (holding) => !hasUsableQuote(q.get(holding.symbol))
-        );
+        const fallbackSymbols = currentHoldings
+          .filter((holding) => !hasUsableQuote(q.get(holding.symbol)))
+          .map((holding) => holding.symbol);
+        const hasFallbackPrices = fallbackSymbols.length > 0;
+        const fallbackWarning = formatFallbackWarning(fallbackSymbols);
 
         setQuotes(q);
         saveCachedQuotes(q);
         if (canPersistSnapshot) {
           setLastUpdated(new Date());
         }
-        setError(warning ?? (hasFallbackPrices ? PARTIAL_FALLBACK_WARNING : null));
+        setError(warning ?? (hasFallbackPrices ? fallbackWarning : null));
 
         if (canPersistSnapshot) {
           const enhanced = buildEnhanced(currentHoldings, q, false);

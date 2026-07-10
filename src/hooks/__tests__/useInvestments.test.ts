@@ -1,13 +1,22 @@
+import { renderHook, waitFor } from "@testing-library/react";
 import {
   buildEnhanced,
   buildSummary,
   canPersistPortfolioSnapshot,
   upsertSnapshots,
+  useInvestments,
 } from "@/hooks/useInvestments";
 import type { PortfolioSnapshot } from "@/components/investments/PortfolioPerformanceChart";
 import type { PortfolioHolding, StockQuote } from "@/types/investment";
 
+const originalFetch = global.fetch;
+
 describe("useInvestments derived calculations", () => {
+  afterEach(() => {
+    window.localStorage.clear();
+    global.fetch = originalFetch;
+  });
+
   it("falls back to average cost when a quote fetch returns an error placeholder", () => {
     const holdings: PortfolioHolding[] = [
       { symbol: "AAPL", shares: 10, averageCost: 150 },
@@ -139,6 +148,60 @@ describe("useInvestments derived calculations", () => {
     ]);
 
     expect(canPersistPortfolioSnapshot(holdings, quotes)).toBe(false);
+  });
+
+  it("names holdings that fall back to cost basis after quote placeholders", async () => {
+    window.localStorage.setItem(
+      "portfolio_holdings",
+      JSON.stringify([
+        { symbol: "AAPL", shares: 10, averageCost: 150 },
+        { symbol: "MSFT", shares: 5, averageCost: 300 },
+      ])
+    );
+
+    global.fetch = jest.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({
+        allFailed: false,
+        quotes: [
+          {
+            symbol: "AAPL",
+            price: 175,
+            change: 2,
+            changePercent: 1.16,
+            dayHigh: 176,
+            dayLow: 172,
+            open: 173,
+            previousClose: 173,
+            volume: 1000,
+            marketCap: 0,
+            name: "Apple Inc.",
+          },
+          {
+            symbol: "MSFT",
+            price: 0,
+            change: 0,
+            changePercent: 0,
+            dayHigh: 0,
+            dayLow: 0,
+            open: 0,
+            previousClose: 0,
+            volume: 0,
+            marketCap: 0,
+            name: "MSFT",
+            error: "Failed to fetch",
+          },
+        ],
+      }),
+    });
+
+    const { result } = renderHook(() => useInvestments());
+
+    await waitFor(() => {
+      expect(result.current.error).toBe(
+        "Live prices are temporarily unavailable for MSFT. Portfolio totals are using your saved cost basis where needed."
+      );
+    });
   });
 
   it("replaces the current day snapshot instead of leaving it stale", () => {

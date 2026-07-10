@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { ModernButton } from "@/components/ui/ModernButton";
 import { TerminalPanel } from "./TerminalPanel";
 import { IconPlus, IconX } from "@tabler/icons-react";
-import type { PortfolioHolding } from "@/types/investment";
+import { getClientInvestmentsIndex } from "@/lib/investmentsClientData";
+import type { InvestmentIndexEntry, PortfolioHolding } from "@/types/investment";
 
 interface Props {
   onAdd: (holding: PortfolioHolding) => void;
@@ -38,6 +39,33 @@ export function AddStockForm({ onAdd }: Props) {
   const [date, setDate] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [errorField, setErrorField] = useState<"symbol" | "shares" | "cost" | null>(null);
+  const [indexEntries, setIndexEntries] = useState<InvestmentIndexEntry[]>([]);
+  const [indexError, setIndexError] = useState(false);
+
+  const supportedSymbols = useMemo(
+    () => new Set(indexEntries.map((entry) => entry.symbol)),
+    [indexEntries]
+  );
+
+  useEffect(() => {
+    let active = true;
+
+    getClientInvestmentsIndex()
+      .then((index) => {
+        if (!active) return;
+        setIndexEntries(index.entries ?? []);
+        setIndexError(false);
+      })
+      .catch(() => {
+        if (!active) return;
+        setIndexEntries([]);
+        setIndexError(true);
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
 
   function clearError() {
     setError(null);
@@ -48,6 +76,24 @@ export function AddStockForm({ onAdd }: Props) {
     const sym = symbol.trim().toUpperCase();
     if (!sym) return { field: "symbol", message: "Symbol is required." };
     if (!SYMBOL_RE.test(sym)) return { field: "symbol", message: "Invalid symbol format (e.g. AAPL, BRK-B)." };
+    if (indexError) {
+      return {
+        field: "symbol",
+        message: "Ticker coverage could not be checked. Try again in a moment.",
+      };
+    }
+    if (supportedSymbols.size === 0) {
+      return {
+        field: "symbol",
+        message: "Ticker coverage is still loading. Try again in a moment.",
+      };
+    }
+    if (!supportedSymbols.has(sym)) {
+      return {
+        field: "symbol",
+        message: `${sym} is not in the curated research set, so live prices are unavailable for that holding.`,
+      };
+    }
     const sh = parseFloat(shares);
     if (!shares || isNaN(sh) || sh <= 0) return { field: "shares", message: "Shares must be a positive number." };
     const c = parseFloat(cost);
@@ -111,9 +157,19 @@ export function AddStockForm({ onAdd }: Props) {
             placeholder="AAPL"
             autoFocus
             autoComplete="off"
+            list="add-symbol-options"
             aria-invalid={errorField === "symbol" ? true : undefined}
             aria-describedby={errorField === "symbol" ? "add-form-error" : undefined}
           />
+          <datalist id="add-symbol-options">
+            {indexEntries.map((entry) => (
+              <option
+                key={entry.symbol}
+                value={entry.symbol}
+                label={entry.longName !== entry.symbol ? entry.longName : entry.shortName}
+              />
+            ))}
+          </datalist>
           <Field
             label="Shares"
             id="add-shares"

@@ -16,6 +16,7 @@ jest.mock("../ComparisonTab", () => ({
 
 import { StockSearch } from "../StockSearch";
 import { StockResearch } from "../StockResearch";
+import { AddStockForm } from "../AddStockForm";
 import { __testUtils as liveQuoteTestUtils } from "@/hooks/useLiveQuote";
 import { __testUtils as stockDataTestUtils } from "@/hooks/useStockData";
 import { clearClientInvestmentDataCachesForTests } from "@/lib/investmentsClientData";
@@ -302,6 +303,51 @@ describe("investments UI", () => {
 
     expect(onChange).not.toHaveBeenCalled();
     expect(container.textContent).toContain("This workspace currently supports the curated research set only.");
+  });
+
+  it("blocks adding holdings that cannot receive live prices", async () => {
+    mockFetch.mockResolvedValue({
+      ok: true,
+      json: async () => curatedIndex,
+    });
+
+    const onAdd = jest.fn();
+
+    await act(async () => {
+      root.render(<AddStockForm onAdd={onAdd} />);
+    });
+    await flushPromises();
+
+    await act(async () => {
+      const button = Array.from(container.querySelectorAll("button")).find((item) =>
+        item.textContent?.includes("Add Holding")
+      ) as HTMLButtonElement | undefined;
+      button?.click();
+    });
+    await flushPromises();
+
+    const symbolInput = container.querySelector("#add-symbol") as HTMLInputElement | null;
+    const sharesInput = container.querySelector("#add-shares") as HTMLInputElement | null;
+    const costInput = container.querySelector("#add-cost") as HTMLInputElement | null;
+
+    await act(async () => {
+      if (!symbolInput || !sharesInput || !costInput) return;
+      setInputValue(symbolInput, "SHOP");
+      setInputValue(sharesInput, "3");
+      setInputValue(costInput, "80");
+    });
+
+    await act(async () => {
+      const button = Array.from(container.querySelectorAll("button")).find((item) =>
+        item.textContent?.includes("Add Position")
+      ) as HTMLButtonElement | undefined;
+      button?.click();
+    });
+
+    expect(onAdd).not.toHaveBeenCalled();
+    expect(container.textContent).toContain(
+      "SHOP is not in the curated research set, so live prices are unavailable for that holding."
+    );
   });
 
   it("uses live quotes for current price while labeling stale historical data", async () => {
