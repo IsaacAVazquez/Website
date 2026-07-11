@@ -19,6 +19,18 @@ import {
   getBlogPostSlugs,
   getBlogPostBySlug,
   getLatestBlogPostPreviews,
+  getAllBlogPosts,
+  getAllBlogPostPreviews,
+  getBlogPostsByCategory,
+  getBlogPostsByTag,
+  getFeaturedBlogPosts,
+  getAllCategories,
+  getAllTags,
+  searchBlogPosts,
+  getRelatedBlogPosts,
+  getArchiveBlogPostPreviews,
+  getCuratedBlogPostPreviewsByCluster,
+  isBlogPostPublished,
   BlogPost,
 } from '../blog';
 
@@ -361,5 +373,186 @@ describe('filtering helpers', () => {
       expect(sorted[1].slug).toBe('post-3'); // 2024-02-01
       expect(sorted[2].slug).toBe('post-2'); // 2024-01-01
     });
+  });
+});
+
+// ─── Aggregation helpers exercised through the real exported functions ─────
+// The block above tests re-implementations of the filter logic; this block
+// drives the actual exported functions end-to-end via the fs/matter mocks so
+// getAllBlogPosts and its consumers run for real.
+
+describe('aggregation helpers (real functions)', () => {
+  type FixturePost = {
+    frontmatter: ReturnType<typeof makeFrontmatter>;
+    content?: string;
+  };
+
+  function setupPosts(postsBySlug: Record<string, FixturePost>): void {
+    const slugs = Object.keys(postsBySlug);
+    mockFs.existsSync = jest.fn().mockReturnValue(true);
+    mockFs.mkdirSync = jest.fn();
+    (mockFs.readdirSync as jest.Mock).mockReturnValue(
+      slugs.map((slug) => `${slug}.mdx`)
+    );
+    // Return the resolved path so the matter mock can recover the slug from it.
+    (mockFs.readFileSync as jest.Mock).mockImplementation((filePath: string) =>
+      String(filePath)
+    );
+    mockMatter.mockImplementation((raw: string) => {
+      const slug = slugs.find((candidate) =>
+        String(raw).includes(`${candidate}.mdx`) ||
+        String(raw).includes(`${candidate}.md`)
+      );
+      const post = slug ? postsBySlug[slug] : undefined;
+      return {
+        data: post?.frontmatter ?? {},
+        content: post?.content ?? 'body content',
+      };
+    });
+  }
+
+  const FIXTURE: Record<string, FixturePost> = {
+    'tech-a': {
+      frontmatter: makeFrontmatter({
+        title: 'Testing at Scale',
+        category: 'Tech',
+        tags: ['js', 'node'],
+        featured: true,
+        publishedAt: '2024-03-01',
+      }),
+      content: 'alpha content',
+    },
+    'tech-b': {
+      frontmatter: makeFrontmatter({
+        title: 'React Patterns',
+        category: 'Tech',
+        tags: ['js', 'react'],
+        publishedAt: '2024-02-01',
+      }),
+      content: 'beta content',
+    },
+    'product-c': {
+      frontmatter: makeFrontmatter({
+        title: 'Roadmapping',
+        category: 'Product',
+        tags: ['pm', 'strategy'],
+        publishedAt: '2024-01-01',
+      }),
+      content: 'gamma content',
+    },
+  };
+
+  beforeEach(() => {
+    setupPosts(FIXTURE);
+  });
+
+  it('getAllBlogPostPreviews returns published previews sorted newest first', () => {
+    const previews = getAllBlogPostPreviews();
+    expect(previews.map((p) => p.slug)).toEqual(['tech-a', 'tech-b', 'product-c']);
+  });
+
+  it('excludes future-dated posts from listings', () => {
+    setupPosts({
+      published: {
+        frontmatter: makeFrontmatter({ title: 'Now', publishedAt: '2024-01-01' }),
+      },
+      future: {
+        frontmatter: makeFrontmatter({ title: 'Later', publishedAt: '2999-01-01' }),
+      },
+    });
+    const previews = getAllBlogPostPreviews();
+    expect(previews.map((p) => p.slug)).toEqual(['published']);
+  });
+
+  it('getAllBlogPosts renders and sorts every published post', async () => {
+    const all = await getAllBlogPosts();
+    expect(all.map((p) => p.slug)).toEqual(['tech-a', 'tech-b', 'product-c']);
+    expect(all[0].content).toContain('Processed content');
+  });
+
+  it('getBlogPostsByCategory matches case-insensitively', async () => {
+    const tech = await getBlogPostsByCategory('tech');
+    expect(tech.map((p) => p.slug).sort()).toEqual(['tech-a', 'tech-b']);
+  });
+
+  it('getBlogPostsByTag matches case-insensitively', async () => {
+    const withReact = await getBlogPostsByTag('REACT');
+    expect(withReact.map((p) => p.slug)).toEqual(['tech-b']);
+  });
+
+  it('getFeaturedBlogPosts returns only featured posts', async () => {
+    const featured = await getFeaturedBlogPosts();
+    expect(featured.map((p) => p.slug)).toEqual(['tech-a']);
+  });
+
+  it('getAllCategories returns unique sorted categories', async () => {
+    expect(await getAllCategories()).toEqual(['Product', 'Tech']);
+  });
+
+  it('getAllTags returns unique sorted tags', async () => {
+    expect(await getAllTags()).toEqual(['js', 'node', 'pm', 'react', 'strategy']);
+  });
+
+  it('searchBlogPosts matches title and tags case-insensitively', async () => {
+    expect((await searchBlogPosts('react')).map((p) => p.slug)).toEqual([
+      'tech-b',
+    ]);
+    expect((await searchBlogPosts('roadmapping')).map((p) => p.slug)).toEqual([
+      'product-c',
+    ]);
+  });
+
+  it('getRelatedBlogPosts ranks same-category, shared-tag posts first', async () => {
+    const related = await getRelatedBlogPosts('tech-a', 2);
+    expect(related[0].slug).toBe('tech-b'); // Tech + shared 'js'
+    expect(related).toHaveLength(2);
+    expect(related.some((p) => p.slug === 'tech-a')).toBe(false);
+  });
+
+  it('getRelatedBlogPosts returns [] for an unknown slug', async () => {
+    setupPosts({});
+    expect(await getRelatedBlogPosts('missing')).toEqual([]);
+  });
+
+  it('getArchiveBlogPostPreviews returns posts without a cluster', () => {
+    const archive = getArchiveBlogPostPreviews();
+    expect(archive).toHaveLength(3);
+  });
+
+  it('getCuratedBlogPostPreviewsByCluster returns a keyed record', () => {
+    const byCluster = getCuratedBlogPostPreviewsByCluster();
+    // No fixture post declares a cluster, so every bucket is empty but present.
+    for (const value of Object.values(byCluster)) {
+      expect(Array.isArray(value)).toBe(true);
+    }
+  });
+
+  it('drops posts with invalid frontmatter instead of throwing', () => {
+    setupPosts({
+      valid: {
+        frontmatter: makeFrontmatter({ title: 'Valid', publishedAt: '2024-01-01' }),
+      },
+      broken: {
+        // Missing required title -> assertValidFrontmatter throws -> preview null.
+        frontmatter: makeFrontmatter({ title: '', publishedAt: '2024-01-01' }),
+      },
+    });
+    const previews = getAllBlogPostPreviews();
+    expect(previews.map((p) => p.slug)).toEqual(['valid']);
+  });
+});
+
+describe('isBlogPostPublished', () => {
+  it('is true when the publish date has arrived and false when it is future', () => {
+    expect(isBlogPostPublished({ publishedAt: '2024-01-01' }, '2024-06-01')).toBe(
+      true
+    );
+    expect(isBlogPostPublished({ publishedAt: '2999-01-01' }, '2024-06-01')).toBe(
+      false
+    );
+    // Same-day counts as published.
+    expect(isBlogPostPublished({ publishedAt: '2024-06-01' }, '2024-06-01')).toBe(
+      true
+    );
   });
 });

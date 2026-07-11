@@ -1,7 +1,13 @@
 /**
  * @jest-environment node
  */
-import { getCurrentSeason, getMlbSummary } from "../mlbData";
+import {
+  getCurrentSeason,
+  getMlbSummary,
+  getMlbTeamSnapshot,
+  isValidMlbTeamId,
+  createEmptyMlbSnapshot,
+} from "../mlbData";
 
 function jsonResponse(payload: unknown, status = 200): Response {
   return new Response(JSON.stringify(payload), {
@@ -494,5 +500,345 @@ describe("getMlbSummary", () => {
     expect(summary.pitchingLeaders.wins).toEqual([]);
     expect(summary.pitchingLeaders.strikeouts).toEqual([]);
     expect(typeof summary.season).toBe("string");
+  });
+});
+
+// ---- Team snapshot fixtures ----------------------------------------------
+
+function teamDetailPayload() {
+  return {
+    teams: [
+      {
+        id: 147,
+        name: "New York Yankees",
+        teamName: "Yankees",
+        shortName: "NY Yankees",
+        locationName: "New York",
+        abbreviation: "NYY",
+        league: { id: AL_LEAGUE_ID, name: "American League" },
+        division: { id: 201, name: "American League East" },
+        venue: { name: "Yankee Stadium" },
+        firstYearOfPlay: "1903",
+      },
+    ],
+  };
+}
+
+function teamRecentSchedulePayload() {
+  return {
+    dates: [
+      {
+        date: "2026-06-10",
+        games: [
+          // past-1: Yankees (147) at home, win.
+          {
+            gamePk: 910001,
+            gameDate: "2026-06-10T23:05:00Z",
+            gameType: "R",
+            status: { abstractGameState: "Final", detailedState: "Final" },
+            teams: {
+              home: {
+                team: { id: 147, name: "New York Yankees", abbreviation: "NYY" },
+                score: 6,
+                isWinner: true,
+              },
+              away: {
+                team: { id: 111, name: "Boston Red Sox", abbreviation: "BOS" },
+                score: 3,
+                isWinner: false,
+              },
+            },
+          },
+        ],
+      },
+      {
+        date: "2026-06-12",
+        games: [
+          // past-2: Yankees (147) on the road, loss (home team wins).
+          {
+            gamePk: 910002,
+            gameDate: "2026-06-12T23:05:00Z",
+            gameType: "R",
+            status: { abstractGameState: "Final", detailedState: "Final" },
+            teams: {
+              home: {
+                team: { id: 111, name: "Boston Red Sox", abbreviation: "BOS" },
+                score: 5,
+                isWinner: true,
+              },
+              away: {
+                team: { id: 147, name: "New York Yankees", abbreviation: "NYY" },
+                score: 2,
+                isWinner: false,
+              },
+            },
+          },
+          // A non-final game inside the recent window must be excluded from recentGames.
+          {
+            gamePk: 910003,
+            gameDate: "2026-06-12T20:00:00Z",
+            gameType: "R",
+            status: { abstractGameState: "Live", detailedState: "In Progress" },
+            teams: {
+              home: {
+                team: { id: 147, name: "New York Yankees", abbreviation: "NYY" },
+                score: 1,
+              },
+              away: {
+                team: { id: 119, name: "Los Angeles Dodgers", abbreviation: "LAD" },
+                score: 1,
+              },
+            },
+          },
+        ],
+      },
+    ],
+  };
+}
+
+function teamUpcomingSchedulePayload() {
+  return {
+    dates: [
+      {
+        date: "2026-06-25",
+        games: [
+          // future-1: scheduled, soonest.
+          {
+            gamePk: 920001,
+            gameDate: "2026-06-25T23:05:00Z",
+            gameType: "R",
+            status: { abstractGameState: "Preview", detailedState: "Scheduled" },
+            teams: {
+              home: { team: { id: 147, name: "New York Yankees", abbreviation: "NYY" } },
+              away: { team: { id: 119, name: "Los Angeles Dodgers", abbreviation: "LAD" } },
+            },
+          },
+          // A FINISHED game inside the upcoming window must be excluded from upcomingGames.
+          {
+            gamePk: 920003,
+            gameDate: "2026-06-25T18:00:00Z",
+            gameType: "R",
+            status: { abstractGameState: "Final", detailedState: "Final" },
+            teams: {
+              home: {
+                team: { id: 147, name: "New York Yankees", abbreviation: "NYY" },
+                score: 4,
+                isWinner: true,
+              },
+              away: {
+                team: { id: 111, name: "Boston Red Sox", abbreviation: "BOS" },
+                score: 2,
+                isWinner: false,
+              },
+            },
+          },
+        ],
+      },
+      {
+        date: "2026-06-27",
+        games: [
+          // future-2: scheduled, later.
+          {
+            gamePk: 920002,
+            gameDate: "2026-06-27T23:05:00Z",
+            gameType: "R",
+            status: { abstractGameState: "Preview", detailedState: "Scheduled" },
+            teams: {
+              home: { team: { id: 111, name: "Boston Red Sox", abbreviation: "BOS" } },
+              away: { team: { id: 147, name: "New York Yankees", abbreviation: "NYY" } },
+            },
+          },
+        ],
+      },
+    ],
+  };
+}
+
+// Routes the four endpoints getMlbTeamSnapshot can hit: the teams list (used to
+// build the lookup when none is passed), the single-team detail (/teams/:id?),
+// and the recent/upcoming schedule windows (split by their start/end dates).
+function makeTeamRouter(payloads: {
+  teams?: unknown;
+  detail: unknown;
+  recent: unknown;
+  upcoming: unknown;
+}) {
+  return async (input: RequestInfo | URL): Promise<Response> => {
+    const url = typeof input === "string" ? input : input.toString();
+    if (/\/teams\/\d+\?/.test(url)) {
+      return jsonResponse(payloads.detail);
+    }
+    if (url.includes("/teams?")) {
+      return jsonResponse(payloads.teams ?? teamsPayload());
+    }
+    if (url.includes("/schedule?")) {
+      const startMatch = url.match(/startDate=([^&]+)/);
+      const endMatch = url.match(/endDate=([^&]+)/);
+      const start = startMatch ? startMatch[1] : "";
+      const end = endMatch ? endMatch[1] : "";
+      const today = new Date().toISOString().slice(0, 10);
+      if (end && end < today) return jsonResponse(payloads.recent);
+      if (start && start >= today) return jsonResponse(payloads.upcoming);
+      return jsonResponse(payloads.recent);
+    }
+    throw new Error(`Unexpected fetch URL in test: ${url}`);
+  };
+}
+
+describe("isValidMlbTeamId", () => {
+  it("accepts positive integer ids and rejects everything else", () => {
+    expect(isValidMlbTeamId("147")).toBe(true);
+    expect(isValidMlbTeamId("1")).toBe(true);
+    expect(isValidMlbTeamId("119")).toBe(true);
+    expect(isValidMlbTeamId("0")).toBe(false); // leading zero / zero not allowed
+    expect(isValidMlbTeamId("012")).toBe(false); // leading zero
+    expect(isValidMlbTeamId("")).toBe(false);
+    expect(isValidMlbTeamId("-1")).toBe(false);
+    expect(isValidMlbTeamId("12a")).toBe(false);
+    expect(isValidMlbTeamId("1.5")).toBe(false);
+    expect(isValidMlbTeamId("abc")).toBe(false);
+    expect(isValidMlbTeamId(" 147")).toBe(false);
+  });
+});
+
+describe("createEmptyMlbSnapshot", () => {
+  it("returns a fully-shaped empty snapshot", () => {
+    const snap = createEmptyMlbSnapshot();
+
+    expect(typeof snap.season).toBe("string");
+    expect(snap.updatedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(snap.sourceLabel).toBe("MLB Stats API");
+    expect(snap.sourceUrls.standings).toContain("statsapi.mlb.com/api/v1/standings");
+    expect(snap.sourceUrls.schedule).toContain("statsapi.mlb.com/api/v1/schedule");
+    expect(snap.sourceUrls.leaders).toContain("statsapi.mlb.com/api/v1/stats/leaders");
+
+    expect(snap.teams).toEqual([]);
+    expect(snap.standings).toEqual([]);
+    expect(snap.recentGames).toEqual([]);
+    expect(snap.upcomingGames).toEqual([]);
+    expect(snap.hittingLeaders).toEqual({
+      homeRuns: [],
+      runsBattedIn: [],
+      battingAverage: [],
+    });
+    expect(snap.pitchingLeaders).toEqual({
+      earnedRunAverage: [],
+      wins: [],
+      strikeouts: [],
+    });
+    expect(snap.teamSnapshots).toEqual({});
+  });
+});
+
+describe("getMlbTeamSnapshot", () => {
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  it("rejects an invalid team id before hitting the network", async () => {
+    const fetchSpy = jest.spyOn(global, "fetch");
+    await expect(getMlbTeamSnapshot("bad-id")).rejects.toMatchObject({
+      status: 400,
+    });
+    expect(fetchSpy).not.toHaveBeenCalled();
+  });
+
+  it("normalizes the profile, splits recent/upcoming games, and derives form", async () => {
+    jest
+      .spyOn(global, "fetch")
+      .mockImplementation(
+        makeTeamRouter({
+          detail: teamDetailPayload(),
+          recent: teamRecentSchedulePayload(),
+          upcoming: teamUpcomingSchedulePayload(),
+        }) as unknown as typeof fetch
+      );
+
+    const snapshot = await getMlbTeamSnapshot("147");
+
+    // --- Profile: normalized from the /teams/:id detail feed. ---
+    expect(snapshot.team).not.toBeNull();
+    expect(snapshot.team).toMatchObject({
+      id: "147",
+      name: "New York Yankees",
+      shortName: "Yankees",
+      abbreviation: "NYY",
+      league: "AL",
+      division: "AL East",
+      venue: "Yankee Stadium",
+      founded: 1903,
+      primaryColor: null,
+    });
+    expect(snapshot.team?.logo).toContain("147.svg");
+
+    // --- Recent games: only FINISHED, newest-first; live game dropped. ---
+    expect(snapshot.recentGames.map((g) => g.id)).toEqual(["910002", "910001"]);
+    expect(snapshot.recentGames.every((g) => g.status === "FINISHED")).toBe(true);
+    // Enrichment: known team lookup supplies the shortName on the home side.
+    const past1 = snapshot.recentGames.find((g) => g.id === "910001");
+    expect(past1?.homeTeam.shortName).toBe("Yankees");
+    expect(past1?.score.winner).toBe("HOME_TEAM");
+
+    // --- Upcoming games: only non-FINISHED, soonest-first; final game dropped. ---
+    expect(snapshot.upcomingGames.map((g) => g.id)).toEqual(["920001", "920002"]);
+    expect(snapshot.upcomingGames.every((g) => g.status !== "FINISHED")).toBe(true);
+
+    // --- Form: derived from the (ordered) recent games. ---
+    // Iteration order is [910002 (away loss), 910001 (home win)].
+    expect(snapshot.form.wins).toBe(1);
+    expect(snapshot.form.losses).toBe(1);
+    expect(snapshot.form.sequence).toEqual(["L", "W"]);
+    expect(snapshot.form.runsFor).toBe(8); // 2 (away) + 6 (home)
+    expect(snapshot.form.runsAgainst).toBe(8); // 5 (away) + 3 (home)
+
+    expect(typeof snapshot.generatedAt).toBe("string");
+    expect(() => new Date(snapshot.generatedAt).toISOString()).not.toThrow();
+  });
+
+  it("returns a null profile when the detail feed has no team, keeping games/form empty", async () => {
+    jest
+      .spyOn(global, "fetch")
+      .mockImplementation(
+        makeTeamRouter({
+          detail: { teams: [] },
+          recent: { dates: [] },
+          upcoming: { dates: [] },
+        }) as unknown as typeof fetch
+      );
+
+    const snapshot = await getMlbTeamSnapshot("147");
+
+    expect(snapshot.team).toBeNull();
+    expect(snapshot.recentGames).toEqual([]);
+    expect(snapshot.upcomingGames).toEqual([]);
+    expect(snapshot.form).toEqual({
+      sequence: [],
+      wins: 0,
+      losses: 0,
+      runsFor: 0,
+      runsAgainst: 0,
+    });
+  });
+
+  it("surfaces a 404 from the upstream team detail feed", async () => {
+    jest
+      .spyOn(global, "fetch")
+      .mockImplementation(async (input: RequestInfo | URL) => {
+        const url = typeof input === "string" ? input : input.toString();
+        if (/\/teams\/\d+\?/.test(url)) {
+          return jsonResponse({}, 404);
+        }
+        if (url.includes("/teams?")) {
+          return jsonResponse(teamsPayload());
+        }
+        if (url.includes("/schedule?")) {
+          return jsonResponse({ dates: [] });
+        }
+        throw new Error(`Unexpected fetch URL in test: ${url}`);
+      });
+
+    await expect(getMlbTeamSnapshot("147")).rejects.toMatchObject({
+      status: 404,
+    });
   });
 });

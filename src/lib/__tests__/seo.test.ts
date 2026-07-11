@@ -1,8 +1,14 @@
 import {
+  absoluteUrl,
+  calculateReadingTime,
   constructMetadata,
   fitMetaDescription,
   fitSearchTitle,
   generateAIOptimizedMetadata,
+  generateArticleStructuredData,
+  generateOrganizationStructuredData,
+  generatePersonStructuredData,
+  generateProjectStructuredData,
   safeJsonLd,
   siteConfig,
 } from "../seo";
@@ -96,6 +102,186 @@ describe("generateAIOptimizedMetadata", () => {
     expect((metadata.twitter as { title: string }).title).toBe(
       `About | ${siteConfig.name}`
     );
+  });
+});
+
+describe("absoluteUrl", () => {
+  it("returns the site url when given no path", () => {
+    expect(absoluteUrl()).toBe(siteConfig.url);
+  });
+
+  it("passes absolute http(s) urls through untouched", () => {
+    expect(absoluteUrl("https://example.com/x")).toBe("https://example.com/x");
+  });
+
+  it("prefixes relative paths with the site origin and a leading slash", () => {
+    expect(absoluteUrl("about")).toBe(`${siteConfig.url}/about`);
+    expect(absoluteUrl("/about")).toBe(`${siteConfig.url}/about`);
+  });
+});
+
+describe("calculateReadingTime", () => {
+  it("rounds up to whole minutes at 200 wpm", () => {
+    expect(calculateReadingTime("word ".repeat(200).trim())).toBe(1);
+    expect(calculateReadingTime("word ".repeat(201).trim())).toBe(2);
+    expect(calculateReadingTime("just a few words")).toBe(1);
+  });
+});
+
+describe("generateProjectStructuredData", () => {
+  it("builds a SoftwareApplication node with sensible defaults", () => {
+    const data = generateProjectStructuredData({
+      name: "QA Platform",
+      description: "A testing platform",
+      author: "Isaac Vazquez",
+    }) as Record<string, unknown>;
+
+    expect(data["@type"]).toBe("SoftwareApplication");
+    expect(data.name).toBe("QA Platform");
+    expect(data.applicationCategory).toBe("WebApplication");
+    expect(typeof data.dateModified).toBe("string");
+    expect((data.author as Record<string, unknown>).name).toBe("Isaac Vazquez");
+  });
+
+  it("honors provided category, keywords, and dateModified", () => {
+    const data = generateProjectStructuredData({
+      name: "N",
+      description: "D",
+      author: "A",
+      keywords: ["a", "b"],
+      applicationCategory: "DeveloperApplication",
+      dateModified: "2026-01-01T00:00:00.000Z",
+    }) as Record<string, unknown>;
+
+    expect(data.keywords).toBe("a, b");
+    expect(data.applicationCategory).toBe("DeveloperApplication");
+    expect(data.dateModified).toBe("2026-01-01T00:00:00.000Z");
+  });
+});
+
+describe("generatePersonStructuredData", () => {
+  it("includes credentials, socials, and organizations by default", () => {
+    const data = generatePersonStructuredData() as Record<string, unknown>;
+    expect(data["@type"]).toBe("Person");
+    expect(Array.isArray(data.sameAs)).toBe(true);
+    expect(Array.isArray(data.knowsAbout)).toBe(true);
+    expect(Array.isArray(data.hasCredential)).toBe(true);
+    expect(data.worksFor).toBeDefined();
+    expect(Array.isArray(data.alumniOf)).toBe(true);
+  });
+
+  it("omits optional sections when toggled off", () => {
+    const data = generatePersonStructuredData({
+      includeCredentials: false,
+      includeSocials: false,
+      includeOrganizations: false,
+    }) as Record<string, unknown>;
+    expect(data.sameAs).toBeUndefined();
+    expect(data.knowsAbout).toBeUndefined();
+    expect(data.hasCredential).toBeUndefined();
+    expect(data.worksFor).toBeUndefined();
+    expect(data.alumniOf).toBeUndefined();
+  });
+});
+
+describe("generateArticleStructuredData", () => {
+  it("falls back to defaults for author, image, and dateModified", () => {
+    const data = generateArticleStructuredData({
+      title: "Post",
+      description: "About the post",
+      datePublished: "2026-02-01",
+      url: "https://isaacavazquez.com/writing/post",
+    }) as Record<string, unknown>;
+
+    expect(data["@type"]).toBe("Article");
+    expect(data.headline).toBe("Post");
+    expect(data.dateModified).toBe("2026-02-01");
+    expect((data.author as Record<string, unknown>).name).toBe(siteConfig.name);
+    expect(data.image).toContain(siteConfig.url);
+  });
+
+  it("uses explicit author, image, keywords, and dateModified", () => {
+    const data = generateArticleStructuredData({
+      title: "Post",
+      description: "D",
+      author: "Guest",
+      datePublished: "2026-02-01",
+      dateModified: "2026-03-01",
+      image: "https://cdn.example/cover.png",
+      keywords: ["seo", "next"],
+      url: "https://isaacavazquez.com/writing/post",
+    }) as Record<string, unknown>;
+
+    expect((data.author as Record<string, unknown>).name).toBe("Guest");
+    expect(data.image).toBe("https://cdn.example/cover.png");
+    expect(data.dateModified).toBe("2026-03-01");
+    expect(data.keywords).toBe("seo, next");
+  });
+});
+
+describe("generateOrganizationStructuredData", () => {
+  it("omits the location node when no location is given", () => {
+    const data = generateOrganizationStructuredData({
+      name: "Civitech",
+      description: "Civic tech",
+    }) as Record<string, unknown>;
+    expect(data["@type"]).toBe("Organization");
+    expect(data.location).toBeUndefined();
+  });
+
+  it("adds a Place node when a location is given", () => {
+    const data = generateOrganizationStructuredData({
+      name: "Civitech",
+      description: "Civic tech",
+      location: "Austin, TX",
+      foundingDate: "2019",
+    }) as Record<string, unknown>;
+    expect((data.location as Record<string, unknown>)["@type"]).toBe("Place");
+    expect((data.location as Record<string, unknown>).name).toBe("Austin, TX");
+    expect(data.foundingDate).toBe("2019");
+  });
+});
+
+describe("generateAIOptimizedMetadata (enhanced description + dates)", () => {
+  it("prepends the summary and appends expertise to the description", () => {
+    const metadata = generateAIOptimizedMetadata({
+      title: "About",
+      description: "Base description",
+      summary: "TL;DR",
+      expertise: ["Product", "QA"],
+    });
+    expect(metadata.description).toBe(
+      "TL;DR | Base description | Expertise: Product, QA"
+    );
+  });
+
+  it("emits article date meta tags when publish/modify dates are set", () => {
+    const metadata = generateAIOptimizedMetadata({
+      title: "About",
+      description: "Base",
+      datePublished: "2026-02-01",
+      dateModified: "2026-03-01",
+      readingTime: 4,
+      author: { name: "Isaac", title: "PM", credentials: ["MBA"] },
+    });
+    const other = metadata.other as Record<string, string>;
+    expect(other["article:published_time"]).toBe("2026-02-01");
+    expect(other["article:modified_time"]).toBe("2026-03-01");
+    expect(other["og:updated_time"]).toBe("2026-03-01");
+    expect(other["ai:readingTime"]).toBe("4 minutes");
+    expect(metadata.authors).toEqual([
+      expect.objectContaining({ name: "Isaac" }),
+    ]);
+  });
+
+  it("sets noindex robots when requested", () => {
+    const metadata = generateAIOptimizedMetadata({
+      title: "Hidden",
+      description: "Base",
+      noIndex: true,
+    });
+    const robots = metadata.robots as { index: boolean };
+    expect(robots.index).toBe(false);
   });
 });
 
