@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "EMR",
+    "name": "Doug  Ashby",
+    "title": "Director of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "EMR",
+    "name": "Mr. Michael  Tang",
+    "title": "Senior VP, Secretary & Chief Legal Officer",
+    "age": 51,
+    "born": 1974,
+    "pay": 1769053,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "EMR",
+    "name": "Mr. Michael H. Train",
+    "title": "Senior VP & Chief Sustainability Officer",
+    "age": 63,
+    "born": 1962,
+    "pay": 2117782,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "EMR",
+    "name": "Mr. Michael J. Baughman",
+    "title": "Executive VP, Chief Accounting Officer & CFO",
+    "age": 60,
+    "born": 1965,
+    "pay": 2353975,
+    "exercised": 0,
+    "unexercised": 667400,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "EMR",
+    "name": "Mr. Nick J. Piazza",
+    "title": "Senior VP & Chief People Officer",
+    "age": 47,
+    "born": 1978,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "EMR",
+    "name": "Mr. Peter  Zornio",
+    "title": "Senior VP & CTO",
+    "age": 62,
+    "born": 1963,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "EMR",
+    "name": "Mr. Ram R. Krishnan",
+    "title": "Executive VP & COO",
+    "age": 53,
+    "born": 1972,
+    "pay": 2839564,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "EMR",
+    "name": "Mr. Surendralal Lanca Karsanbhai",
+    "title": "President, CEO & Director",
+    "age": 55,
+    "born": 1970,
+    "pay": 5789937,
+    "exercised": 0,
+    "unexercised": 1285200,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "EMR",
+    "name": "Ms. Lisa A. Flavin",
+    "title": "Senior VP, Chief Transformation & Chief Compliance Officer",
+    "age": 60,
+    "born": 1965,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "EMR",
+    "name": "Ms. Vidya  Ramnath",
+    "title": "Senior VP & Chief Marketing Officer",
+    "age": 58,
+    "born": 1967,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  }
+]

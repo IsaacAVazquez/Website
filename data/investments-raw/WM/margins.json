@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "WM",
+      "report_date": "2022-06-30",
+      "gross_profit": 1885000000.0,
+      "total_revenue": 5027000000.0,
+      "gross_margin": 0.375
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2023-06-30",
+      "gross_profit": 1933000000.0,
+      "total_revenue": 5119000000.0,
+      "gross_margin": 0.3776
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2023-09-30",
+      "gross_profit": 2010000000.0,
+      "total_revenue": 5198000000.0,
+      "gross_margin": 0.3867
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2023-12-31",
+      "gross_profit": 2071000000.0,
+      "total_revenue": 5217000000.0,
+      "gross_margin": 0.397
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2024-03-31",
+      "gross_profit": 2019000000.0,
+      "total_revenue": 5159000000.0,
+      "gross_margin": 0.3914
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2024-06-30",
+      "gross_profit": 2111000000.0,
+      "total_revenue": 5402000000.0,
+      "gross_margin": 0.3908
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2024-09-30",
+      "gross_profit": 2210000000.0,
+      "total_revenue": 5609000000.0,
+      "gross_margin": 0.394
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2024-12-31",
+      "gross_profit": 2340000000.0,
+      "total_revenue": 5893000000.0,
+      "gross_margin": 0.3971
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2025-03-31",
+      "gross_profit": 2406000000.0,
+      "total_revenue": 6018000000.0,
+      "gross_margin": 0.3998
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2025-06-30",
+      "gross_profit": 2591000000.0,
+      "total_revenue": 6430000000.0,
+      "gross_margin": 0.403
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2025-09-30",
+      "gross_profit": 2610000000.0,
+      "total_revenue": 6443000000.0,
+      "gross_margin": 0.4051
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2025-12-31",
+      "gross_profit": 2620000000.0,
+      "total_revenue": 6313000000.0,
+      "gross_margin": 0.415
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2026-03-31",
+      "gross_profit": 2533000000.0,
+      "total_revenue": 6227000000.0,
+      "gross_margin": 0.4068
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "WM",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2020-12-31",
+      "gross_profit": 5877000000.0,
+      "total_revenue": 15218000000.0,
+      "gross_margin": 0.3862
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2021-12-31",
+      "gross_profit": 6820000000.0,
+      "total_revenue": 17931000000.0,
+      "gross_margin": 0.3803
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2022-12-31",
+      "gross_profit": 7404000000.0,
+      "total_revenue": 19698000000.0,
+      "gross_margin": 0.3759
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2023-12-31",
+      "gross_profit": 7820000000.0,
+      "total_revenue": 20426000000.0,
+      "gross_margin": 0.3828
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2024-12-31",
+      "gross_profit": 8680000000.0,
+      "total_revenue": 22063000000.0,
+      "gross_margin": 0.3934
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2025-12-31",
+      "gross_profit": 10192000000.0,
+      "total_revenue": 25204000000.0,
+      "gross_margin": 0.4044
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "WM",
+      "report_date": "2022-06-30",
+      "operating_income": 890000000.0,
+      "total_revenue": 5027000000.0,
+      "operating_margin": 0.177
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2023-06-30",
+      "operating_income": 945000000.0,
+      "total_revenue": 5119000000.0,
+      "operating_margin": 0.1846
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2023-09-30",
+      "operating_income": 1021000000.0,
+      "total_revenue": 5198000000.0,
+      "operating_margin": 0.1964
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2023-12-31",
+      "operating_income": 1032000000.0,
+      "total_revenue": 5217000000.0,
+      "operating_margin": 0.1978
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2024-03-31",
+      "operating_income": 1014000000.0,
+      "total_revenue": 5159000000.0,
+      "operating_margin": 0.1965
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2024-06-30",
+      "operating_income": 1067000000.0,
+      "total_revenue": 5402000000.0,
+      "operating_margin": 0.1975
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2024-09-30",
+      "operating_income": 1127000000.0,
+      "total_revenue": 5609000000.0,
+      "operating_margin": 0.2009
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2024-12-31",
+      "operating_income": 941000000.0,
+      "total_revenue": 5893000000.0,
+      "operating_margin": 0.1597
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2025-03-31",
+      "operating_income": 1028000000.0,
+      "total_revenue": 6018000000.0,
+      "operating_margin": 0.1708
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2025-06-30",
+      "operating_income": 1187000000.0,
+      "total_revenue": 6430000000.0,
+      "operating_margin": 0.1846
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2025-09-30",
+      "operating_income": 1216000000.0,
+      "total_revenue": 6443000000.0,
+      "operating_margin": 0.1887
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2025-12-31",
+      "operating_income": 1176000000.0,
+      "total_revenue": 6313000000.0,
+      "operating_margin": 0.1863
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2026-03-31",
+      "operating_income": 1091000000.0,
+      "total_revenue": 6227000000.0,
+      "operating_margin": 0.1752
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "WM",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2020-12-31",
+      "operating_income": 2478000000.0,
+      "total_revenue": 15218000000.0,
+      "operating_margin": 0.1628
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2021-12-31",
+      "operating_income": 2957000000.0,
+      "total_revenue": 17931000000.0,
+      "operating_margin": 0.1649
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2022-12-31",
+      "operating_income": 3428000000.0,
+      "total_revenue": 19698000000.0,
+      "operating_margin": 0.174
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2023-12-31",
+      "operating_income": 3823000000.0,
+      "total_revenue": 20426000000.0,
+      "operating_margin": 0.1872
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2024-12-31",
+      "operating_income": 4149000000.0,
+      "total_revenue": 22063000000.0,
+      "operating_margin": 0.1881
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2025-12-31",
+      "operating_income": 4607000000.0,
+      "total_revenue": 25204000000.0,
+      "operating_margin": 0.1828
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "WM",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 587000000.0,
+      "total_revenue": 5027000000.0,
+      "net_margin": 0.1168
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 615000000.0,
+      "total_revenue": 5119000000.0,
+      "net_margin": 0.1201
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 663000000.0,
+      "total_revenue": 5198000000.0,
+      "net_margin": 0.1275
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 493000000.0,
+      "total_revenue": 5217000000.0,
+      "net_margin": 0.0945
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 708000000.0,
+      "total_revenue": 5159000000.0,
+      "net_margin": 0.1372
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 680000000.0,
+      "total_revenue": 5402000000.0,
+      "net_margin": 0.1259
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 760000000.0,
+      "total_revenue": 5609000000.0,
+      "net_margin": 0.1355
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 598000000.0,
+      "total_revenue": 5893000000.0,
+      "net_margin": 0.1015
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 637000000.0,
+      "total_revenue": 6018000000.0,
+      "net_margin": 0.1058
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 726000000.0,
+      "total_revenue": 6430000000.0,
+      "net_margin": 0.1129
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 603000000.0,
+      "total_revenue": 6443000000.0,
+      "net_margin": 0.0936
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 742000000.0,
+      "total_revenue": 6313000000.0,
+      "net_margin": 0.1175
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 723000000.0,
+      "total_revenue": 6227000000.0,
+      "net_margin": 0.1161
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "WM",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 1496000000.0,
+      "total_revenue": 15218000000.0,
+      "net_margin": 0.0983
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 1816000000.0,
+      "total_revenue": 17931000000.0,
+      "net_margin": 0.1013
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 2238000000.0,
+      "total_revenue": 19698000000.0,
+      "net_margin": 0.1136
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 2304000000.0,
+      "total_revenue": 20426000000.0,
+      "net_margin": 0.1128
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 2746000000.0,
+      "total_revenue": 22063000000.0,
+      "net_margin": 0.1245
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 2708000000.0,
+      "total_revenue": 25204000000.0,
+      "net_margin": 0.1074
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "WM",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 5027000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2023-06-30",
+      "ebitda": 1455000000.0,
+      "total_revenue": 5119000000.0,
+      "ebitda_margin": 0.2842
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2023-09-30",
+      "ebitda": 1518000000.0,
+      "total_revenue": 5198000000.0,
+      "ebitda_margin": 0.292
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2023-12-31",
+      "ebitda": 1298000000.0,
+      "total_revenue": 5217000000.0,
+      "ebitda_margin": 0.2488
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2024-03-31",
+      "ebitda": 1513000000.0,
+      "total_revenue": 5159000000.0,
+      "ebitda_margin": 0.2933
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2024-06-30",
+      "ebitda": 1573000000.0,
+      "total_revenue": 5402000000.0,
+      "ebitda_margin": 0.2912
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2024-09-30",
+      "ebitda": 1684000000.0,
+      "total_revenue": 5609000000.0,
+      "ebitda_margin": 0.3002
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2024-12-31",
+      "ebitda": 1553000000.0,
+      "total_revenue": 5893000000.0,
+      "ebitda_margin": 0.2635
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2025-03-31",
+      "ebitda": 1676000000.0,
+      "total_revenue": 6018000000.0,
+      "ebitda_margin": 0.2785
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2025-06-30",
+      "ebitda": 1868000000.0,
+      "total_revenue": 6430000000.0,
+      "ebitda_margin": 0.2905
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2025-09-30",
+      "ebitda": 1729000000.0,
+      "total_revenue": 6443000000.0,
+      "ebitda_margin": 0.2684
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2025-12-31",
+      "ebitda": 1928000000.0,
+      "total_revenue": 6313000000.0,
+      "ebitda_margin": 0.3054
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2026-03-31",
+      "ebitda": 1812000000.0,
+      "total_revenue": 6227000000.0,
+      "ebitda_margin": 0.291
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "WM",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2020-12-31",
+      "ebitda": 3989000000.0,
+      "total_revenue": 15218000000.0,
+      "ebitda_margin": 0.2621
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2021-12-31",
+      "ebitda": 4713000000.0,
+      "total_revenue": 17931000000.0,
+      "ebitda_margin": 0.2628
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2022-12-31",
+      "ebitda": 5334000000.0,
+      "total_revenue": 19698000000.0,
+      "ebitda_margin": 0.2708
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2023-12-31",
+      "ebitda": 5592000000.0,
+      "total_revenue": 20426000000.0,
+      "ebitda_margin": 0.2738
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2024-12-31",
+      "ebitda": 6323000000.0,
+      "total_revenue": 22063000000.0,
+      "ebitda_margin": 0.2866
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2025-12-31",
+      "ebitda": 7201000000.0,
+      "total_revenue": 25204000000.0,
+      "ebitda_margin": 0.2857
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "WM",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 497000000.0,
+      "total_revenue": 5027000000.0,
+      "fcf_margin": 0.0989
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 510000000.0,
+      "total_revenue": 5119000000.0,
+      "fcf_margin": 0.0996
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 590000000.0,
+      "total_revenue": 5198000000.0,
+      "fcf_margin": 0.1135
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 340000000.0,
+      "total_revenue": 5217000000.0,
+      "fcf_margin": 0.0652
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 699000000.0,
+      "total_revenue": 5159000000.0,
+      "fcf_margin": 0.1355
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 487000000.0,
+      "total_revenue": 5402000000.0,
+      "fcf_margin": 0.0902
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 577000000.0,
+      "total_revenue": 5609000000.0,
+      "fcf_margin": 0.1029
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 396000000.0,
+      "total_revenue": 5893000000.0,
+      "fcf_margin": 0.0672
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 377000000.0,
+      "total_revenue": 6018000000.0,
+      "fcf_margin": 0.0626
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 813000000.0,
+      "total_revenue": 6430000000.0,
+      "fcf_margin": 0.1264
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 816000000.0,
+      "total_revenue": 6443000000.0,
+      "fcf_margin": 0.1266
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 810000000.0,
+      "total_revenue": 6313000000.0,
+      "fcf_margin": 0.1283
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 851000000.0,
+      "total_revenue": 6227000000.0,
+      "fcf_margin": 0.1367
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "WM",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 1771000000.0,
+      "total_revenue": 15218000000.0,
+      "fcf_margin": 0.1164
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 2434000000.0,
+      "total_revenue": 17931000000.0,
+      "fcf_margin": 0.1357
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 1949000000.0,
+      "total_revenue": 19698000000.0,
+      "fcf_margin": 0.0989
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 1824000000.0,
+      "total_revenue": 20426000000.0,
+      "fcf_margin": 0.0893
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 2159000000.0,
+      "total_revenue": 22063000000.0,
+      "fcf_margin": 0.0979
+    },
+    {
+      "symbol": "WM",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 2816000000.0,
+      "total_revenue": 25204000000.0,
+      "fcf_margin": 0.1117
+    }
+  ]
+}

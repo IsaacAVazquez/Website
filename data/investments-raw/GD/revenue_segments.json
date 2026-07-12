@@ -1,0 +1,11 @@
+{
+  "by_segment": {
+    "error": "'Ticker' object has no attribute 'revenue_by_segment'"
+  },
+  "by_geography": {
+    "error": "'Ticker' object has no attribute 'revenue_by_geography'"
+  },
+  "by_product": {
+    "error": "'Ticker' object has no attribute 'revenue_by_product'"
+  }
+}

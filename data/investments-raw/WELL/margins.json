@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "WELL",
+      "report_date": "2022-06-30",
+      "gross_profit": 618453000.0,
+      "total_revenue": 1472536000.0,
+      "gross_margin": 0.42
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2023-06-30",
+      "gross_profit": 622926000.0,
+      "total_revenue": 1581598000.0,
+      "gross_margin": 0.3939
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2023-09-30",
+      "gross_profit": 631262000.0,
+      "total_revenue": 1626535000.0,
+      "gross_margin": 0.3881
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2023-12-31",
+      "gross_profit": 681871000.0,
+      "total_revenue": 1717949000.0,
+      "gross_margin": 0.3969
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-03-31",
+      "gross_profit": 733677000.0,
+      "total_revenue": 1830590000.0,
+      "gross_margin": 0.4008
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-06-30",
+      "gross_profit": 681440000.0,
+      "total_revenue": 1792737000.0,
+      "gross_margin": 0.3801
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-09-30",
+      "gross_profit": 798355000.0,
+      "total_revenue": 2011056000.0,
+      "gross_margin": 0.397
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-12-31",
+      "gross_profit": 809935000.0,
+      "total_revenue": 2219235000.0,
+      "gross_margin": 0.365
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-03-31",
+      "gross_profit": 926197000.0,
+      "total_revenue": 2388587000.0,
+      "gross_margin": 0.3878
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-06-30",
+      "gross_profit": 1001430000.0,
+      "total_revenue": 2516141000.0,
+      "gross_margin": 0.398
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-09-30",
+      "gross_profit": 1051013000.0,
+      "total_revenue": 2628061000.0,
+      "gross_margin": 0.3999
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-12-31",
+      "gross_profit": 1200415000.0,
+      "total_revenue": 3134347000.0,
+      "gross_margin": 0.383
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2026-03-31",
+      "gross_profit": 1250282000.0,
+      "total_revenue": 3305702000.0,
+      "gross_margin": 0.3782
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "WELL",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2020-12-31",
+      "gross_profit": 1988715000.0,
+      "total_revenue": 4586538000.0,
+      "gross_margin": 0.4336
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2021-12-31",
+      "gross_profit": 1934919000.0,
+      "total_revenue": 4709481000.0,
+      "gross_margin": 0.4109
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2022-12-31",
+      "gross_profit": 2217298000.0,
+      "total_revenue": 5776068000.0,
+      "gross_margin": 0.3839
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2023-12-31",
+      "gross_profit": 2530455000.0,
+      "total_revenue": 6478231000.0,
+      "gross_margin": 0.3906
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-12-31",
+      "gross_profit": 3023407000.0,
+      "total_revenue": 7853618000.0,
+      "gross_margin": 0.385
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-12-31",
+      "gross_profit": 4179055000.0,
+      "total_revenue": 10667136000.0,
+      "gross_margin": 0.3918
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "WELL",
+      "report_date": "2022-06-30",
+      "operating_income": 271439000.0,
+      "total_revenue": 1472536000.0,
+      "operating_margin": 0.1843
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2023-06-30",
+      "operating_income": 234238000.0,
+      "total_revenue": 1581598000.0,
+      "operating_margin": 0.1481
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2023-09-30",
+      "operating_income": 241783000.0,
+      "total_revenue": 1626535000.0,
+      "operating_margin": 0.1486
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2023-12-31",
+      "operating_income": 254297000.0,
+      "total_revenue": 1717949000.0,
+      "operating_margin": 0.148
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-03-31",
+      "operating_income": 313482000.0,
+      "total_revenue": 1830590000.0,
+      "operating_margin": 0.1712
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-06-30",
+      "operating_income": 238667000.0,
+      "total_revenue": 1792737000.0,
+      "operating_margin": 0.1331
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-09-30",
+      "operating_income": 312482000.0,
+      "total_revenue": 2011056000.0,
+      "operating_margin": 0.1554
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-12-31",
+      "operating_income": 281067000.0,
+      "total_revenue": 2219235000.0,
+      "operating_margin": 0.1267
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-03-31",
+      "operating_income": 378577000.0,
+      "total_revenue": 2388587000.0,
+      "operating_margin": 0.1585
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-06-30",
+      "operating_income": 443332000.0,
+      "total_revenue": 2516141000.0,
+      "operating_margin": 0.1762
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-09-30",
+      "operating_income": 476989000.0,
+      "total_revenue": 2628061000.0,
+      "operating_margin": 0.1815
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-12-31",
+      "operating_income": -943730000.0,
+      "total_revenue": 3134347000.0,
+      "operating_margin": -0.3011
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2026-03-31",
+      "operating_income": 558424000.0,
+      "total_revenue": 3305702000.0,
+      "operating_margin": 0.1689
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "WELL",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2020-12-31",
+      "operating_income": 727448000.0,
+      "total_revenue": 4586538000.0,
+      "operating_margin": 0.1586
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2021-12-31",
+      "operating_income": 763356000.0,
+      "total_revenue": 4709481000.0,
+      "operating_margin": 0.1621
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2022-12-31",
+      "operating_income": 746220000.0,
+      "total_revenue": 5776068000.0,
+      "operating_margin": 0.1292
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2023-12-31",
+      "operating_income": 940454000.0,
+      "total_revenue": 6478231000.0,
+      "operating_margin": 0.1452
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-12-31",
+      "operating_income": 1145698000.0,
+      "total_revenue": 7853618000.0,
+      "operating_margin": 0.1459
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-12-31",
+      "operating_income": 355168000.0,
+      "total_revenue": 10667136000.0,
+      "operating_margin": 0.0333
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "WELL",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 89784000.0,
+      "total_revenue": 1472536000.0,
+      "net_margin": 0.061
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 103040000.0,
+      "total_revenue": 1581598000.0,
+      "net_margin": 0.0651
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 127470000.0,
+      "total_revenue": 1626535000.0,
+      "net_margin": 0.0784
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 83911000.0,
+      "total_revenue": 1717949000.0,
+      "net_margin": 0.0488
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 127146000.0,
+      "total_revenue": 1830590000.0,
+      "net_margin": 0.0695
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 254714000.0,
+      "total_revenue": 1792737000.0,
+      "net_margin": 0.1421
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 449849000.0,
+      "total_revenue": 2011056000.0,
+      "net_margin": 0.2237
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 119971000.0,
+      "total_revenue": 2219235000.0,
+      "net_margin": 0.0541
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 257957000.0,
+      "total_revenue": 2388587000.0,
+      "net_margin": 0.108
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 301888000.0,
+      "total_revenue": 2516141000.0,
+      "net_margin": 0.12
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 280559000.0,
+      "total_revenue": 2628061000.0,
+      "net_margin": 0.1068
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 96441000.0,
+      "total_revenue": 3134347000.0,
+      "net_margin": 0.0308
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 728672000.0,
+      "total_revenue": 3305702000.0,
+      "net_margin": 0.2204
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "WELL",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 978844000.0,
+      "total_revenue": 4586538000.0,
+      "net_margin": 0.2134
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 336138000.0,
+      "total_revenue": 4709481000.0,
+      "net_margin": 0.0714
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 141214000.0,
+      "total_revenue": 5776068000.0,
+      "net_margin": 0.0244
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 340094000.0,
+      "total_revenue": 6478231000.0,
+      "net_margin": 0.0525
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 951680000.0,
+      "total_revenue": 7853618000.0,
+      "net_margin": 0.1212
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 936845000.0,
+      "total_revenue": 10667136000.0,
+      "net_margin": 0.0878
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "WELL",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 1472536000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2023-06-30",
+      "ebitda": 656755000.0,
+      "total_revenue": 1581598000.0,
+      "ebitda_margin": 0.4152
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2023-09-30",
+      "ebitda": 578809000.0,
+      "total_revenue": 1626535000.0,
+      "ebitda_margin": 0.3559
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2023-12-31",
+      "ebitda": 634317000.0,
+      "total_revenue": 1717949000.0,
+      "ebitda_margin": 0.3692
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-03-31",
+      "ebitda": 667182000.0,
+      "total_revenue": 1830590000.0,
+      "ebitda_margin": 0.3645
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-06-30",
+      "ebitda": 620921000.0,
+      "total_revenue": 1792737000.0,
+      "ebitda_margin": 0.3464
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-09-30",
+      "ebitda": 741906000.0,
+      "total_revenue": 2011056000.0,
+      "ebitda_margin": 0.3689
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-12-31",
+      "ebitda": 748327000.0,
+      "total_revenue": 2219235000.0,
+      "ebitda_margin": 0.3372
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-03-31",
+      "ebitda": 843307000.0,
+      "total_revenue": 2388587000.0,
+      "ebitda_margin": 0.3531
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-06-30",
+      "ebitda": 947716000.0,
+      "total_revenue": 2516141000.0,
+      "ebitda_margin": 0.3767
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-09-30",
+      "ebitda": 978824000.0,
+      "total_revenue": 2628061000.0,
+      "ebitda_margin": 0.3725
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-12-31",
+      "ebitda": -459389000.0,
+      "total_revenue": 3134347000.0,
+      "ebitda_margin": -0.1466
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2026-03-31",
+      "ebitda": 1170167000.0,
+      "total_revenue": 3305702000.0,
+      "ebitda_margin": 0.354
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "WELL",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2020-12-31",
+      "ebitda": 1532616000.0,
+      "total_revenue": 4586538000.0,
+      "ebitda_margin": 0.3342
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2021-12-31",
+      "ebitda": 1713781000.0,
+      "total_revenue": 4709481000.0,
+      "ebitda_margin": 0.3639
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2022-12-31",
+      "ebitda": 2039490000.0,
+      "total_revenue": 5776068000.0,
+      "ebitda_margin": 0.3531
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2023-12-31",
+      "ebitda": 2401110000.0,
+      "total_revenue": 6478231000.0,
+      "ebitda_margin": 0.3706
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-12-31",
+      "ebitda": 2778336000.0,
+      "total_revenue": 7853618000.0,
+      "ebitda_margin": 0.3538
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-12-31",
+      "ebitda": 2310458000.0,
+      "total_revenue": 10667136000.0,
+      "ebitda_margin": 0.2166
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "WELL",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 388424000.0,
+      "total_revenue": 1472536000.0,
+      "fcf_margin": 0.2638
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 243624000.0,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 404375000.0,
+      "total_revenue": 1581598000.0,
+      "fcf_margin": 0.2557
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 425109000.0,
+      "total_revenue": 1626535000.0,
+      "fcf_margin": 0.2614
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 355955000.0,
+      "total_revenue": 1717949000.0,
+      "fcf_margin": 0.2072
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 392997000.0,
+      "total_revenue": 1830590000.0,
+      "fcf_margin": 0.2147
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 590941000.0,
+      "total_revenue": 1792737000.0,
+      "fcf_margin": 0.3296
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 669316000.0,
+      "total_revenue": 2011056000.0,
+      "fcf_margin": 0.3328
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 545052000.0,
+      "total_revenue": 2219235000.0,
+      "fcf_margin": 0.2456
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 587438000.0,
+      "total_revenue": 2388587000.0,
+      "fcf_margin": 0.2459
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 761381000.0,
+      "total_revenue": 2516141000.0,
+      "fcf_margin": 0.3026
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 852206000.0,
+      "total_revenue": 2628061000.0,
+      "fcf_margin": 0.3243
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 646853000.0,
+      "total_revenue": 3134347000.0,
+      "fcf_margin": 0.2064
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 661562000.0,
+      "total_revenue": 3305702000.0,
+      "fcf_margin": 0.2001
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "WELL",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 1347284000.0,
+      "total_revenue": 4586538000.0,
+      "fcf_margin": 0.2937
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 1255973000.0,
+      "total_revenue": 4709481000.0,
+      "fcf_margin": 0.2667
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 1298217000.0,
+      "total_revenue": 5776068000.0,
+      "fcf_margin": 0.2248
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 1551162000.0,
+      "total_revenue": 6478231000.0,
+      "fcf_margin": 0.2394
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 2198306000.0,
+      "total_revenue": 7853618000.0,
+      "fcf_margin": 0.2799
+    },
+    {
+      "symbol": "WELL",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 2847878000.0,
+      "total_revenue": 10667136000.0,
+      "fcf_margin": 0.267
+    }
+  ]
+}

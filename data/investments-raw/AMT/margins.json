@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "AMT",
+      "report_date": "2022-06-30",
+      "gross_profit": 1851400000.0,
+      "total_revenue": 2674300000.0,
+      "gross_margin": 0.6923
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2023-03-31",
+      "gross_profit": 1961100000.0,
+      "total_revenue": 2767200000.0,
+      "gross_margin": 0.7087
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2023-06-30",
+      "gross_profit": 1944400000.0,
+      "total_revenue": 2771700000.0,
+      "gross_margin": 0.7015
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2023-09-30",
+      "gross_profit": 1883100000.0,
+      "total_revenue": 2521100000.0,
+      "gross_margin": 0.7469
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2023-12-31",
+      "gross_profit": 1975300000.0,
+      "total_revenue": 2786700000.0,
+      "gross_margin": 0.7088
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-03-31",
+      "gross_profit": 2045800000.0,
+      "total_revenue": 2834100000.0,
+      "gross_margin": 0.7219
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-06-30",
+      "gross_profit": 1895400000.0,
+      "total_revenue": 2544700000.0,
+      "gross_margin": 0.7448
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-09-30",
+      "gross_profit": 1870500000.0,
+      "total_revenue": 2522300000.0,
+      "gross_margin": 0.7416
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-12-31",
+      "gross_profit": 1893200000.0,
+      "total_revenue": 2547600000.0,
+      "gross_margin": 0.7431
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-03-31",
+      "gross_profit": 1928300000.0,
+      "total_revenue": 2562800000.0,
+      "gross_margin": 0.7524
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-06-30",
+      "gross_profit": 1938200000.0,
+      "total_revenue": 2626900000.0,
+      "gross_margin": 0.7378
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-09-30",
+      "gross_profit": 2006600000.0,
+      "total_revenue": 2717400000.0,
+      "gross_margin": 0.7384
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-12-31",
+      "gross_profit": 2023400000.0,
+      "total_revenue": 2737500000.0,
+      "gross_margin": 0.7391
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2026-03-31",
+      "gross_profit": 2034200000.0,
+      "total_revenue": 2737500000.0,
+      "gross_margin": 0.7431
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "AMT",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2020-12-31",
+      "gross_profit": 5814300000.0,
+      "total_revenue": 8041500000.0,
+      "gross_margin": 0.723
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2021-12-31",
+      "gross_profit": 6674900000.0,
+      "total_revenue": 9356900000.0,
+      "gross_margin": 0.7134
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2022-12-31",
+      "gross_profit": 7076200000.0,
+      "total_revenue": 9645400000.0,
+      "gross_margin": 0.7336
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2023-12-31",
+      "gross_profit": 7450700000.0,
+      "total_revenue": 10012200000.0,
+      "gross_margin": 0.7442
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-12-31",
+      "gross_profit": 7552800000.0,
+      "total_revenue": 10127200000.0,
+      "gross_margin": 0.7458
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-12-31",
+      "gross_profit": 7896500000.0,
+      "total_revenue": 10644600000.0,
+      "gross_margin": 0.7418
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "AMT",
+      "report_date": "2022-06-30",
+      "operating_income": 782300000.0,
+      "total_revenue": 2674300000.0,
+      "operating_margin": 0.2925
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2023-03-31",
+      "operating_income": 775600000.0,
+      "total_revenue": 2767200000.0,
+      "operating_margin": 0.2803
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2023-06-30",
+      "operating_income": 873700000.0,
+      "total_revenue": 2771700000.0,
+      "operating_margin": 0.3152
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2023-09-30",
+      "operating_income": 913000000.0,
+      "total_revenue": 2521100000.0,
+      "operating_margin": 0.3621
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2023-12-31",
+      "operating_income": 1146500000.0,
+      "total_revenue": 2786700000.0,
+      "operating_margin": 0.4114
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-03-31",
+      "operating_income": 1236600000.0,
+      "total_revenue": 2834100000.0,
+      "operating_margin": 0.4363
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-06-30",
+      "operating_income": 1156200000.0,
+      "total_revenue": 2544700000.0,
+      "operating_margin": 0.4544
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-09-30",
+      "operating_income": 1139200000.0,
+      "total_revenue": 2522300000.0,
+      "operating_margin": 0.4517
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-12-31",
+      "operating_income": 1166600000.0,
+      "total_revenue": 2547600000.0,
+      "operating_margin": 0.4579
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-03-31",
+      "operating_income": 1254100000.0,
+      "total_revenue": 2562800000.0,
+      "operating_margin": 0.4893
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-06-30",
+      "operating_income": 1197700000.0,
+      "total_revenue": 2626900000.0,
+      "operating_margin": 0.4559
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-09-30",
+      "operating_income": 1233300000.0,
+      "total_revenue": 2717400000.0,
+      "operating_margin": 0.4539
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-12-31",
+      "operating_income": 1244100000.0,
+      "total_revenue": 2737500000.0,
+      "operating_margin": 0.4545
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2026-03-31",
+      "operating_income": 1239200000.0,
+      "total_revenue": 2737500000.0,
+      "operating_margin": 0.4527
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "AMT",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2020-12-31",
+      "operating_income": 3127600000.0,
+      "total_revenue": 8041500000.0,
+      "operating_margin": 0.3889
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2021-12-31",
+      "operating_income": 3328400000.0,
+      "total_revenue": 9356900000.0,
+      "operating_margin": 0.3557
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2022-12-31",
+      "operating_income": 2922700000.0,
+      "total_revenue": 9645400000.0,
+      "operating_margin": 0.303
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2023-12-31",
+      "operating_income": 3536800000.0,
+      "total_revenue": 10012200000.0,
+      "operating_margin": 0.3532
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-12-31",
+      "operating_income": 4603000000.0,
+      "total_revenue": 10127200000.0,
+      "operating_margin": 0.4545
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-12-31",
+      "operating_income": 4929200000.0,
+      "total_revenue": 10644600000.0,
+      "operating_margin": 0.4631
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "AMT",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 898200000.0,
+      "total_revenue": 2674300000.0,
+      "net_margin": 0.3359
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": 335800000.0,
+      "total_revenue": 2767200000.0,
+      "net_margin": 0.1214
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 475700000.0,
+      "total_revenue": 2771700000.0,
+      "net_margin": 0.1716
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 586900000.0,
+      "total_revenue": 2521100000.0,
+      "net_margin": 0.2328
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 84900000.0,
+      "total_revenue": 2786700000.0,
+      "net_margin": 0.0305
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 917400000.0,
+      "total_revenue": 2834100000.0,
+      "net_margin": 0.3237
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 900300000.0,
+      "total_revenue": 2544700000.0,
+      "net_margin": 0.3538
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": -792300000.0,
+      "total_revenue": 2522300000.0,
+      "net_margin": -0.3141
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1229600000.0,
+      "total_revenue": 2547600000.0,
+      "net_margin": 0.4827
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 488700000.0,
+      "total_revenue": 2562800000.0,
+      "net_margin": 0.1907
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 366800000.0,
+      "total_revenue": 2626900000.0,
+      "net_margin": 0.1396
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 853300000.0,
+      "total_revenue": 2717400000.0,
+      "net_margin": 0.314
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 820700000.0,
+      "total_revenue": 2737500000.0,
+      "net_margin": 0.2998
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 859500000.0,
+      "total_revenue": 2737500000.0,
+      "net_margin": 0.314
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "AMT",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 1690600000.0,
+      "total_revenue": 8041500000.0,
+      "net_margin": 0.2102
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 2567700000.0,
+      "total_revenue": 9356900000.0,
+      "net_margin": 0.2744
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 1765800000.0,
+      "total_revenue": 9645400000.0,
+      "net_margin": 0.1831
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1483300000.0,
+      "total_revenue": 10012200000.0,
+      "net_margin": 0.1481
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 2255000000.0,
+      "total_revenue": 10127200000.0,
+      "net_margin": 0.2227
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 2529500000.0,
+      "total_revenue": 10644600000.0,
+      "net_margin": 0.2376
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "AMT",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 2674300000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2023-03-31",
+      "ebitda": 1502700000.0,
+      "total_revenue": 2767200000.0,
+      "ebitda_margin": 0.543
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2023-06-30",
+      "ebitda": 1587400000.0,
+      "total_revenue": 2771700000.0,
+      "ebitda_margin": 0.5727
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2023-09-30",
+      "ebitda": 1943700000.0,
+      "total_revenue": 2521100000.0,
+      "ebitda_margin": 0.771
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2023-12-31",
+      "ebitda": 1150800000.0,
+      "total_revenue": 2786700000.0,
+      "ebitda_margin": 0.413
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-03-31",
+      "ebitda": 1947000000.0,
+      "total_revenue": 2834100000.0,
+      "ebitda_margin": 0.687
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-06-30",
+      "ebitda": 1771700000.0,
+      "total_revenue": 2544700000.0,
+      "ebitda_margin": 0.6962
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-09-30",
+      "ebitda": 1420100000.0,
+      "total_revenue": 2522300000.0,
+      "ebitda_margin": 0.563
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-12-31",
+      "ebitda": 2127800000.0,
+      "total_revenue": 2547600000.0,
+      "ebitda_margin": 0.8352
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-03-31",
+      "ebitda": 1435300000.0,
+      "total_revenue": 2562800000.0,
+      "ebitda_margin": 0.5601
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-06-30",
+      "ebitda": 1364700000.0,
+      "total_revenue": 2626900000.0,
+      "ebitda_margin": 0.5195
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-09-30",
+      "ebitda": 1820000000.0,
+      "total_revenue": 2717400000.0,
+      "ebitda_margin": 0.6698
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-12-31",
+      "ebitda": 1825200000.0,
+      "total_revenue": 2737500000.0,
+      "ebitda_margin": 0.6667
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2026-03-31",
+      "ebitda": 1883600000.0,
+      "total_revenue": 2737500000.0,
+      "ebitda_margin": 0.6881
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "AMT",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2020-12-31",
+      "ebitda": 4496900000.0,
+      "total_revenue": 8041500000.0,
+      "ebitda_margin": 0.5592
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2021-12-31",
+      "ebitda": 6032900000.0,
+      "total_revenue": 9356900000.0,
+      "ebitda_margin": 0.6448
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2022-12-31",
+      "ebitda": 6577100000.0,
+      "total_revenue": 9645400000.0,
+      "ebitda_margin": 0.6819
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2023-12-31",
+      "ebitda": 6004000000.0,
+      "total_revenue": 10012200000.0,
+      "ebitda_margin": 0.5997
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-12-31",
+      "ebitda": 7154100000.0,
+      "total_revenue": 10127200000.0,
+      "ebitda_margin": 0.7064
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-12-31",
+      "ebitda": 6445200000.0,
+      "total_revenue": 10644600000.0,
+      "ebitda_margin": 0.6055
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "AMT",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 545200000.0,
+      "total_revenue": 2674300000.0,
+      "fcf_margin": 0.2039
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": 2767200000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 788500000.0,
+      "total_revenue": 2771700000.0,
+      "fcf_margin": 0.2845
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 909900000.0,
+      "total_revenue": 2521100000.0,
+      "fcf_margin": 0.3609
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 617300000.0,
+      "total_revenue": 2786700000.0,
+      "fcf_margin": 0.2215
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 886900000.0,
+      "total_revenue": 2834100000.0,
+      "fcf_margin": 0.3129
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 1013300000.0,
+      "total_revenue": 2544700000.0,
+      "fcf_margin": 0.3982
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 1044700000.0,
+      "total_revenue": 2522300000.0,
+      "fcf_margin": 0.4142
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 755600000.0,
+      "total_revenue": 2547600000.0,
+      "fcf_margin": 0.2966
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 963900000.0,
+      "total_revenue": 2562800000.0,
+      "fcf_margin": 0.3761
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 976900000.0,
+      "total_revenue": 2626900000.0,
+      "fcf_margin": 0.3719
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 994500000.0,
+      "total_revenue": 2717400000.0,
+      "fcf_margin": 0.366
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 848300000.0,
+      "total_revenue": 2737500000.0,
+      "fcf_margin": 0.3099
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 951100000.0,
+      "total_revenue": 2737500000.0,
+      "fcf_margin": 0.3474
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "AMT",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 2849700000.0,
+      "total_revenue": 8041500000.0,
+      "fcf_margin": 0.3544
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 3443200000.0,
+      "total_revenue": 9356900000.0,
+      "fcf_margin": 0.368
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 1822600000.0,
+      "total_revenue": 9645400000.0,
+      "fcf_margin": 0.189
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 2924300000.0,
+      "total_revenue": 10012200000.0,
+      "fcf_margin": 0.2921
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 3700500000.0,
+      "total_revenue": 10127200000.0,
+      "fcf_margin": 0.3654
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 3783600000.0,
+      "total_revenue": 10644600000.0,
+      "fcf_margin": 0.3554
+    }
+  ]
+}

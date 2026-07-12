@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "CARR",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 357000000.0,
+      "beginning_stockholders_equity": 7969000000.0,
+      "ending_stockholders_equity": 8184000000.0,
+      "avg_equity": 8076500000.0,
+      "roe": 0.0442
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 420000000.0,
+      "beginning_stockholders_equity": 8184000000.0,
+      "ending_stockholders_equity": 8677000000.0,
+      "avg_equity": 8430500000.0,
+      "roe": 0.0498
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 269000000.0,
+      "beginning_stockholders_equity": 8677000000.0,
+      "ending_stockholders_equity": 11561000000.0,
+      "avg_equity": 10119000000.0,
+      "roe": 0.0266
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 2337000000.0,
+      "beginning_stockholders_equity": 11561000000.0,
+      "ending_stockholders_equity": 13768000000.0,
+      "avg_equity": 12664500000.0,
+      "roe": 0.1845
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 447000000.0,
+      "beginning_stockholders_equity": 13768000000.0,
+      "ending_stockholders_equity": 14693000000.0,
+      "avg_equity": 14230500000.0,
+      "roe": 0.0314
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 2551000000.0,
+      "beginning_stockholders_equity": 14693000000.0,
+      "ending_stockholders_equity": 14081000000.0,
+      "avg_equity": 14387000000.0,
+      "roe": 0.1773
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 412000000.0,
+      "beginning_stockholders_equity": 14081000000.0,
+      "ending_stockholders_equity": 13859000000.0,
+      "avg_equity": 13970000000.0,
+      "roe": 0.0295
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 591000000.0,
+      "beginning_stockholders_equity": 13859000000.0,
+      "ending_stockholders_equity": 14706000000.0,
+      "avg_equity": 14282500000.0,
+      "roe": 0.0414
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 428000000.0,
+      "beginning_stockholders_equity": 14706000000.0,
+      "ending_stockholders_equity": 14509000000.0,
+      "avg_equity": 14607500000.0,
+      "roe": 0.0293
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 53000000.0,
+      "beginning_stockholders_equity": 14509000000.0,
+      "ending_stockholders_equity": 13804000000.0,
+      "avg_equity": 14156500000.0,
+      "roe": 0.0037
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 238000000.0,
+      "beginning_stockholders_equity": 13804000000.0,
+      "ending_stockholders_equity": 13452000000.0,
+      "avg_equity": 13628000000.0,
+      "roe": 0.0175
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "CARR",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 357000000.0,
+      "beginning_total_assets": 26284000000.0,
+      "ending_total_assets": 26544000000.0,
+      "avg_assets": 26414000000.0,
+      "roa": 0.0135
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 420000000.0,
+      "beginning_total_assets": 26544000000.0,
+      "ending_total_assets": 32822000000.0,
+      "avg_assets": 29683000000.0,
+      "roa": 0.0141
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 269000000.0,
+      "beginning_total_assets": 32822000000.0,
+      "ending_total_assets": 40810000000.0,
+      "avg_assets": 36816000000.0,
+      "roa": 0.0073
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 2337000000.0,
+      "beginning_total_assets": 40810000000.0,
+      "ending_total_assets": 40424000000.0,
+      "avg_assets": 40617000000.0,
+      "roa": 0.0575
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 447000000.0,
+      "beginning_total_assets": 40424000000.0,
+      "ending_total_assets": 40201000000.0,
+      "avg_assets": 40312500000.0,
+      "roa": 0.0111
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 2551000000.0,
+      "beginning_total_assets": 40201000000.0,
+      "ending_total_assets": 37403000000.0,
+      "avg_assets": 38802000000.0,
+      "roa": 0.0657
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 412000000.0,
+      "beginning_total_assets": 37403000000.0,
+      "ending_total_assets": 36447000000.0,
+      "avg_assets": 36925000000.0,
+      "roa": 0.0112
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 591000000.0,
+      "beginning_total_assets": 36447000000.0,
+      "ending_total_assets": 38493000000.0,
+      "avg_assets": 37470000000.0,
+      "roa": 0.0158
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 428000000.0,
+      "beginning_total_assets": 38493000000.0,
+      "ending_total_assets": 38077000000.0,
+      "avg_assets": 38285000000.0,
+      "roa": 0.0112
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 53000000.0,
+      "beginning_total_assets": 38077000000.0,
+      "ending_total_assets": 37190000000.0,
+      "avg_assets": 37633500000.0,
+      "roa": 0.0014
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 238000000.0,
+      "beginning_total_assets": 37190000000.0,
+      "ending_total_assets": 37186000000.0,
+      "avg_assets": 37188000000.0,
+      "roa": 0.0064
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "CARR",
+      "report_date": "2023-09-30",
+      "ebit": 544000000.0,
+      "tax_rate_for_calcs": 0.38,
+      "nopat": 337280000.0,
+      "beginning_invested_capital": 16758000000.0,
+      "ending_invested_capital": 16969000000.0,
+      "avg_invested_capital": 16863500000.0,
+      "roic": 0.02
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2023-12-31",
+      "ebit": 670000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 529300000.0,
+      "beginning_invested_capital": 16969000000.0,
+      "ending_invested_capital": 22970000000.0,
+      "avg_invested_capital": 19969500000.0,
+      "roic": 0.0265
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-03-31",
+      "ebit": 400000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 324000000.0,
+      "beginning_invested_capital": 22970000000.0,
+      "ending_invested_capital": 28456000000.0,
+      "avg_invested_capital": 25713000000.0,
+      "roic": 0.0126
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-06-30",
+      "ebit": 742000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 586180000.0,
+      "beginning_invested_capital": 28456000000.0,
+      "ending_invested_capital": 27090000000.0,
+      "avg_invested_capital": 27773000000.0,
+      "roic": 0.0211
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-09-30",
+      "ebit": 901000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 702780000.0,
+      "beginning_invested_capital": 27090000000.0,
+      "ending_invested_capital": 27125000000.0,
+      "avg_invested_capital": 27107500000.0,
+      "roic": 0.0259
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-12-31",
+      "ebit": 811000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 640690000.0,
+      "beginning_invested_capital": 27125000000.0,
+      "ending_invested_capital": 26443000000.0,
+      "avg_invested_capital": 26784000000.0,
+      "roic": 0.0239
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-03-31",
+      "ebit": 660000000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 528000000.0,
+      "beginning_invested_capital": 26443000000.0,
+      "ending_invested_capital": 25043000000.0,
+      "avg_invested_capital": 25743000000.0,
+      "roic": 0.0205
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-06-30",
+      "ebit": 927000000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 741600000.0,
+      "beginning_invested_capital": 25043000000.0,
+      "ending_invested_capital": 26149000000.0,
+      "avg_invested_capital": 25596000000.0,
+      "roic": 0.029
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-09-30",
+      "ebit": 549000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 433710000.0,
+      "beginning_invested_capital": 26149000000.0,
+      "ending_invested_capital": 26425000000.0,
+      "avg_invested_capital": 26287000000.0,
+      "roic": 0.0165
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-12-31",
+      "ebit": 120000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 94800000.0,
+      "beginning_invested_capital": 26425000000.0,
+      "ending_invested_capital": 25637000000.0,
+      "avg_invested_capital": 26031000000.0,
+      "roic": 0.0036
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2026-03-31",
+      "ebit": 281000000.0,
+      "tax_rate_for_calcs": 0.4,
+      "nopat": 168600000.0,
+      "beginning_invested_capital": 25637000000.0,
+      "ending_invested_capital": 25610000000.0,
+      "avg_invested_capital": 25623500000.0,
+      "roic": 0.0066
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "CARR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0442,
+      "roa": 0.0135,
+      "equity_multiplier": 3.27
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0498,
+      "roa": 0.0141,
+      "equity_multiplier": 3.53
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0266,
+      "roa": 0.0073,
+      "equity_multiplier": 3.64
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.1845,
+      "roa": 0.0575,
+      "equity_multiplier": 3.21
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0314,
+      "roa": 0.0111,
+      "equity_multiplier": 2.83
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.1773,
+      "roa": 0.0657,
+      "equity_multiplier": 2.7
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0295,
+      "roa": 0.0112,
+      "equity_multiplier": 2.63
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.0414,
+      "roa": 0.0158,
+      "equity_multiplier": 2.62
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0293,
+      "roa": 0.0112,
+      "equity_multiplier": 2.62
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.0037,
+      "roa": 0.0014,
+      "equity_multiplier": 2.64
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.0175,
+      "roa": 0.0064,
+      "equity_multiplier": 2.73
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "CARR",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0135,
+      "net_margin": 0.0723,
+      "asset_turnover": 0.19
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0141,
+      "net_margin": 0.0823,
+      "asset_turnover": 0.17
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0073,
+      "net_margin": 0.0496,
+      "asset_turnover": 0.15
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0575,
+      "net_margin": 0.3938,
+      "asset_turnover": 0.15
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0111,
+      "net_margin": 0.0747,
+      "asset_turnover": 0.15
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0657,
+      "net_margin": 0.4955,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0112,
+      "net_margin": 0.079,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0158,
+      "net_margin": 0.0967,
+      "asset_turnover": 0.16
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0112,
+      "net_margin": 0.0767,
+      "asset_turnover": 0.15
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0014,
+      "net_margin": 0.011,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "CARR",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0064,
+      "net_margin": 0.0446,
+      "asset_turnover": 0.14
+    }
+  ]
+}

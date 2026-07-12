@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "ITW",
+    "name": "Erin  Linnihan",
+    "title": "Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "ITW",
+    "name": "Mr. Axel R. J. Beck",
+    "title": "Executive Vice President of Food Equipment",
+    "age": 59,
+    "born": 1966,
+    "pay": 1623227,
+    "exercised": 0,
+    "unexercised": 2508439,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "ITW",
+    "name": "Mr. Christopher A. O'Herlihy",
+    "title": "President, CEO & Director",
+    "age": 61,
+    "born": 1964,
+    "pay": 4455265,
+    "exercised": 7091843,
+    "unexercised": 13397937,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "ITW",
+    "name": "Mr. Christopher P. Rauch",
+    "title": "Senior VP, General Counsel & Secretary",
+    "age": 55,
+    "born": 1970,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "ITW",
+    "name": "Mr. Javier Gracia Carbonell",
+    "title": "Executive Vice President of Automotive OEM",
+    "age": 52,
+    "born": 1973,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "ITW",
+    "name": "Mr. Kenneth T. Escoe",
+    "title": "Executive Vice President of Specialty Products",
+    "age": 49,
+    "born": 1976,
+    "pay": 1527920,
+    "exercised": 0,
+    "unexercised": 1540860,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "ITW",
+    "name": "Mr. Michael M. Larsen",
+    "title": "Senior VP & CFO",
+    "age": 56,
+    "born": 1969,
+    "pay": 3210588,
+    "exercised": 5268843,
+    "unexercised": 5226915,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "ITW",
+    "name": "Mr. Randall J. Scheuneman",
+    "title": "VP, Chief Accounting Officer & Principal Accounting Officer",
+    "age": 57,
+    "born": 1968,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "ITW",
+    "name": "Ms. Mary Katherine Lawler",
+    "title": "Senior VP & Chief Human Resources Officer",
+    "age": 59,
+    "born": 1966,
+    "pay": 1711998,
+    "exercised": 0,
+    "unexercised": 5758431,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "ITW",
+    "name": "Ms. Sharon A. Szafranski",
+    "title": "Executive Vice President of Welding",
+    "age": 58,
+    "born": 1967,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  }
+]

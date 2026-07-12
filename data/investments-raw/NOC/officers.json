@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "NOC",
+    "name": "Dr. Robert J. Fleming",
+    "title": "Corporate VP & President of Northrop Grumman Space Systems Sector",
+    "age": 52,
+    "born": 1973,
+    "pay": 2364748,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "NOC",
+    "name": "Mr. Bruce W. Stephenson",
+    "title": "Vice President of Corporate Strategy & Technology",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "NOC",
+    "name": "Mr. John Thomas Greene",
+    "title": "Corporate VP & CFO",
+    "age": 59,
+    "born": 1966,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "NOC",
+    "name": "Mr. Michael A. Hardesty",
+    "title": "Corporate VP, Controller & Chief Accounting Officer",
+    "age": 53,
+    "born": 1972,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "NOC",
+    "name": "Mr. Rajender K. Chandhok",
+    "title": "Vice President of Trust Administration and Investments",
+    "age": 76,
+    "born": 1949,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "NOC",
+    "name": "Mr. Thomas H. Jones",
+    "title": "Corporate VP & President of Aeronautics Systems Sector",
+    "age": 58,
+    "born": 1967,
+    "pay": 2082923,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "NOC",
+    "name": "Mr. Todd B. Ernst",
+    "title": "Vice President, Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "NOC",
+    "name": "Mr. Travis  Garriss",
+    "title": "VP & Chief Information and Digital Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "NOC",
+    "name": "Ms. Kathy J. Warden",
+    "title": "Chair, CEO & President",
+    "age": 53,
+    "born": 1972,
+    "pay": 7337196,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "NOC",
+    "name": "Ms. Roshan S. Roeder",
+    "title": "Corporate VP & President of Mission Systems Sector",
+    "age": 45,
+    "born": 1980,
+    "pay": 1895395,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  }
+]

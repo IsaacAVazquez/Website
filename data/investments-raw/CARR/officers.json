@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "CARR",
+    "name": "Mr. David L. Gitlin",
+    "title": "Chairman & CEO",
+    "age": 56,
+    "born": 1969,
+    "pay": 3343539,
+    "exercised": 0,
+    "unexercised": 67301656,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "CARR",
+    "name": "Mr. Edward  Dryden",
+    "title": "President of Climate Solutions Transportation",
+    "age": 46,
+    "born": 1979,
+    "pay": 1200506,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "CARR",
+    "name": "Mr. Gaurang  Pandya ACCA, B.Com (H)",
+    "title": "President of Climate Solutions Americas & Europe Commercial",
+    "age": 48,
+    "born": 1977,
+    "pay": 1068107,
+    "exercised": 0,
+    "unexercised": 1121876,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "CARR",
+    "name": "Mr. Machiel  Duijser",
+    "title": "Senior Vice President of Operations",
+    "age": 52,
+    "born": 1973,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "CARR",
+    "name": "Mr. Michael Lotfy Gierges",
+    "title": "President of Climate Solutions Asia Pacific, Middle East & Africa",
+    "age": 40,
+    "born": 1985,
+    "pay": 3467429,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "CARR",
+    "name": "Mr. Michael S. Rednor C.F.A.",
+    "title": "Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "CARR",
+    "name": "Mr. Patrick P. Goris",
+    "title": "Executive VP and Chief Financial & Strategy Officer",
+    "age": 53,
+    "born": 1972,
+    "pay": 1444862,
+    "exercised": 0,
+    "unexercised": 5546052,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "CARR",
+    "name": "Mr. Timothy N. White",
+    "title": "Senior VP of Engineering & Technology",
+    "age": 51,
+    "born": 1974,
+    "pay": 1398977,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "CARR",
+    "name": "Ms. Beril  Yildiz",
+    "title": "VP, Controller & Chief Accounting Officer",
+    "age": 46,
+    "born": 1979,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "CARR",
+    "name": "Ms. Nadia  Villeneuve",
+    "title": "Senior VP and Chief People & Communications",
+    "age": 51,
+    "born": 1974,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  }
+]

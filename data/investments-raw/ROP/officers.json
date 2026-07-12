@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "ROP",
+    "name": "Mr. Harold C. Flynn Jr.",
+    "title": "Senior VP & Group Executive",
+    "age": 60,
+    "born": 1965,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "ROP",
+    "name": "Mr. Jason P. Conley CPA",
+    "title": "Executive VP & CFO",
+    "age": 49,
+    "born": 1976,
+    "pay": 1905193,
+    "exercised": 4152621,
+    "unexercised": 8225306,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "ROP",
+    "name": "Mr. Jeffrey B. Paulsen",
+    "title": "Senior VP & Group Executive",
+    "age": 64,
+    "born": 1961,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "ROP",
+    "name": "Mr. John K. Stipancich",
+    "title": "Executive VP, Chief Legal Officer & Corporate Secretary",
+    "age": 56,
+    "born": 1969,
+    "pay": 2104422,
+    "exercised": 852197,
+    "unexercised": 6732998,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "ROP",
+    "name": "Mr. Laurence Neil Hunn",
+    "title": "President, CEO & Director",
+    "age": 53,
+    "born": 1972,
+    "pay": 3573259,
+    "exercised": 7704675,
+    "unexercised": 36700616,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "ROP",
+    "name": "Mr. Michael P. Corkery",
+    "title": "Senior VP & Group Executive",
+    "age": 62,
+    "born": 1963,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "ROP",
+    "name": "Mr. Satish  Maripuri",
+    "title": "Senior VP & Group Executive",
+    "age": 59,
+    "born": 1966,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "ROP",
+    "name": "Mr. Zack  Moxcey",
+    "title": "Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "ROP",
+    "name": "Ms. Janet  Glazer",
+    "title": "Senior Vice President of Acquisition & Investment Development",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "ROP",
+    "name": "Ms. Laura  Newell-McLaughlin",
+    "title": "Chief Operating Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  }
+]

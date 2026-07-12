@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "TDG",
+    "name": "Mary  Hartman",
+    "title": "Director of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "TDG",
+    "name": "Mr. Alex  Feil",
+    "title": "Executive Vice President",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "TDG",
+    "name": "Mr. Armani  Vadiee",
+    "title": "General Counsel, Chief Compliance Officer & Secretary",
+    "age": 44,
+    "born": 1981,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "TDG",
+    "name": "Mr. Jason  Marlin",
+    "title": "Executive Vice President",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "TDG",
+    "name": "Mr. Joel B. Reiss",
+    "title": "Co-Chief Operating Officer",
+    "age": 55,
+    "born": 1970,
+    "pay": 31053671,
+    "exercised": 40545216,
+    "unexercised": 127567960,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "TDG",
+    "name": "Mr. Kevin  McHenry",
+    "title": "Executive Vice President",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "TDG",
+    "name": "Mr. Michael J. Lisman",
+    "title": "CEO, President & Director",
+    "age": 41,
+    "born": 1984,
+    "pay": 28530024,
+    "exercised": 0,
+    "unexercised": 135383744,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "TDG",
+    "name": "Mr. Patrick Joseph Murphy",
+    "title": "Co-Chief Operating Officer",
+    "age": 52,
+    "born": 1973,
+    "pay": 13843634,
+    "exercised": 3266663,
+    "unexercised": 49532668,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "TDG",
+    "name": "Ms. Paula  Wheeler",
+    "title": "Executive Vice President",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "TDG",
+    "name": "Ms. Sarah L. Wynne",
+    "title": "Chief Financial Officer",
+    "age": 52,
+    "born": 1973,
+    "pay": 11399291,
+    "exercised": 4457965,
+    "unexercised": 33381436,
+    "report_date": "2026-07-09"
+  }
+]

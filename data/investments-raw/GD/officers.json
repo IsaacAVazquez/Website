@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "GD",
+    "name": "Mr. Danny  Deep",
+    "title": "President",
+    "age": 55,
+    "born": 1970,
+    "pay": 3544278,
+    "exercised": 0,
+    "unexercised": 16367571,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "GD",
+    "name": "Mr. Gregory S. Gallopoulos",
+    "title": "Senior VP, General Counsel & Secretary",
+    "age": 65,
+    "born": 1960,
+    "pay": 1758747,
+    "exercised": 2526242,
+    "unexercised": 5856439,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "GD",
+    "name": "Mr. Jason W. Aiken CPA",
+    "title": "Executive Vice President of Combat & Mission Systems",
+    "age": 53,
+    "born": 1972,
+    "pay": 3580442,
+    "exercised": 3163535,
+    "unexercised": 30626016,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "GD",
+    "name": "Mr. Mark L. Burns",
+    "title": "Executive Vice President",
+    "age": 65,
+    "born": 1960,
+    "pay": 2925810,
+    "exercised": 9276056,
+    "unexercised": 17188844,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "GD",
+    "name": "Mr. Shane A. Berg",
+    "title": "Senior Vice President of Human Resources, Strategy & Administration",
+    "age": 53,
+    "born": 1972,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "GD",
+    "name": "Ms. Elizabeth L. Schmid",
+    "title": "Senior Vice President for Government Relations & Communications",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "GD",
+    "name": "Ms. Kimberly A. Kuryea",
+    "title": "Senior VP & CFO",
+    "age": 58,
+    "born": 1967,
+    "pay": 3135011,
+    "exercised": 0,
+    "unexercised": 23134262,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "GD",
+    "name": "Ms. Marguerite Amy Gilliland",
+    "title": "Executive Vice President",
+    "age": 50,
+    "born": 1975,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "GD",
+    "name": "Ms. Phebe N. Novakovic",
+    "title": "Chairperson & CEO",
+    "age": 67,
+    "born": 1958,
+    "pay": 8164003,
+    "exercised": 29859444,
+    "unexercised": 71341008,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "GD",
+    "name": "Nicole M. Shelton",
+    "title": "Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  }
+]

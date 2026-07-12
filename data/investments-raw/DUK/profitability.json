@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "DUK",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1213000000.0,
+      "beginning_stockholders_equity": 48333000000.0,
+      "ending_stockholders_equity": 49006000000.0,
+      "avg_equity": 48669500000.0,
+      "roe": 0.0249
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 991000000.0,
+      "beginning_stockholders_equity": 49006000000.0,
+      "ending_stockholders_equity": 49111000000.0,
+      "avg_equity": 49058500000.0,
+      "roe": 0.0202
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1099000000.0,
+      "beginning_stockholders_equity": 49111000000.0,
+      "ending_stockholders_equity": 49551000000.0,
+      "avg_equity": 49331000000.0,
+      "roe": 0.0223
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 886000000.0,
+      "beginning_stockholders_equity": 49551000000.0,
+      "ending_stockholders_equity": 49707000000.0,
+      "avg_equity": 49629000000.0,
+      "roe": 0.0179
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1226000000.0,
+      "beginning_stockholders_equity": 49707000000.0,
+      "ending_stockholders_equity": 49133000000.0,
+      "avg_equity": 49420000000.0,
+      "roe": 0.0248
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1191000000.0,
+      "beginning_stockholders_equity": 49133000000.0,
+      "ending_stockholders_equity": 50127000000.0,
+      "avg_equity": 49630000000.0,
+      "roe": 0.024
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1365000000.0,
+      "beginning_stockholders_equity": 50127000000.0,
+      "ending_stockholders_equity": 50670000000.0,
+      "avg_equity": 50398500000.0,
+      "roe": 0.0271
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 971000000.0,
+      "beginning_stockholders_equity": 50670000000.0,
+      "ending_stockholders_equity": 50891000000.0,
+      "avg_equity": 50780500000.0,
+      "roe": 0.0191
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1407000000.0,
+      "beginning_stockholders_equity": 50891000000.0,
+      "ending_stockholders_equity": 51462000000.0,
+      "avg_equity": 51176500000.0,
+      "roe": 0.0275
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1169000000.0,
+      "beginning_stockholders_equity": 51462000000.0,
+      "ending_stockholders_equity": 51842000000.0,
+      "avg_equity": 51652000000.0,
+      "roe": 0.0226
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1536000000.0,
+      "beginning_stockholders_equity": 51842000000.0,
+      "ending_stockholders_equity": 54457000000.0,
+      "avg_equity": 53149500000.0,
+      "roe": 0.0289
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "DUK",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1213000000.0,
+      "beginning_total_assets": 180076000000.0,
+      "ending_total_assets": 181160000000.0,
+      "avg_assets": 180618000000.0,
+      "roa": 0.0067
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 991000000.0,
+      "beginning_total_assets": 181160000000.0,
+      "ending_total_assets": 176893000000.0,
+      "avg_assets": 179026500000.0,
+      "roa": 0.0055
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1099000000.0,
+      "beginning_total_assets": 176893000000.0,
+      "ending_total_assets": 178670000000.0,
+      "avg_assets": 177781500000.0,
+      "roa": 0.0062
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 886000000.0,
+      "beginning_total_assets": 178670000000.0,
+      "ending_total_assets": 181575000000.0,
+      "avg_assets": 180122500000.0,
+      "roa": 0.0049
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1226000000.0,
+      "beginning_total_assets": 181575000000.0,
+      "ending_total_assets": 183566000000.0,
+      "avg_assets": 182570500000.0,
+      "roa": 0.0067
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1191000000.0,
+      "beginning_total_assets": 183566000000.0,
+      "ending_total_assets": 186343000000.0,
+      "avg_assets": 184954500000.0,
+      "roa": 0.0064
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1365000000.0,
+      "beginning_total_assets": 186343000000.0,
+      "ending_total_assets": 187476000000.0,
+      "avg_assets": 186909500000.0,
+      "roa": 0.0073
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 971000000.0,
+      "beginning_total_assets": 187476000000.0,
+      "ending_total_assets": 189713000000.0,
+      "avg_assets": 188594500000.0,
+      "roa": 0.0051
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1407000000.0,
+      "beginning_total_assets": 189713000000.0,
+      "ending_total_assets": 192293000000.0,
+      "avg_assets": 191003000000.0,
+      "roa": 0.0074
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1169000000.0,
+      "beginning_total_assets": 192293000000.0,
+      "ending_total_assets": 195736000000.0,
+      "avg_assets": 194014500000.0,
+      "roa": 0.006
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1536000000.0,
+      "beginning_total_assets": 195736000000.0,
+      "ending_total_assets": 198048000000.0,
+      "avg_assets": 196892000000.0,
+      "roa": 0.0078
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "DUK",
+      "report_date": "2023-09-30",
+      "ebit": 2289000000.0,
+      "tax_rate_for_calcs": 0.03,
+      "nopat": 2220330000.0,
+      "beginning_invested_capital": 124349000000.0,
+      "ending_invested_capital": 125585000000.0,
+      "avg_invested_capital": 124967000000.0,
+      "roic": 0.0178
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2023-12-31",
+      "ebit": 2050000000.0,
+      "tax_rate_for_calcs": 0.1,
+      "nopat": 1845000000.0,
+      "beginning_invested_capital": 125585000000.0,
+      "ending_invested_capital": 126689000000.0,
+      "avg_invested_capital": 126137000000.0,
+      "roic": 0.0146
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-03-31",
+      "ebit": 2149000000.0,
+      "tax_rate_for_calcs": 0.13,
+      "nopat": 1869630000.0,
+      "beginning_invested_capital": 126689000000.0,
+      "ending_invested_capital": 128997000000.0,
+      "avg_invested_capital": 127843000000.0,
+      "roic": 0.0146
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-06-30",
+      "ebit": 1895000000.0,
+      "tax_rate_for_calcs": 0.13,
+      "nopat": 1648650000.0,
+      "beginning_invested_capital": 128997000000.0,
+      "ending_invested_capital": 130194000000.0,
+      "avg_invested_capital": 129595500000.0,
+      "roic": 0.0127
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-09-30",
+      "ebit": 2325000000.0,
+      "tax_rate_for_calcs": 0.11,
+      "nopat": 2069250000.0,
+      "beginning_invested_capital": 130194000000.0,
+      "ending_invested_capital": 132228000000.0,
+      "avg_invested_capital": 131211000000.0,
+      "roic": 0.0158
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-12-31",
+      "ebit": 2209000000.0,
+      "tax_rate_for_calcs": 0.08,
+      "nopat": 2032280000.0,
+      "beginning_invested_capital": 132228000000.0,
+      "ending_invested_capital": 133427000000.0,
+      "avg_invested_capital": 132827500000.0,
+      "roic": 0.0153
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-03-31",
+      "ebit": 2486000000.0,
+      "tax_rate_for_calcs": 0.12,
+      "nopat": 2187680000.0,
+      "beginning_invested_capital": 133427000000.0,
+      "ending_invested_capital": 136145000000.0,
+      "avg_invested_capital": 134786000000.0,
+      "roic": 0.0162
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-06-30",
+      "ebit": 2024000000.0,
+      "tax_rate_for_calcs": 0.11,
+      "nopat": 1801360000.0,
+      "beginning_invested_capital": 136145000000.0,
+      "ending_invested_capital": 137351000000.0,
+      "avg_invested_capital": 136748000000.0,
+      "roic": 0.0132
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-09-30",
+      "ebit": 2532000000.0,
+      "tax_rate_for_calcs": 0.11,
+      "nopat": 2253480000.0,
+      "beginning_invested_capital": 137351000000.0,
+      "ending_invested_capital": 139127000000.0,
+      "avg_invested_capital": 138239000000.0,
+      "roic": 0.0163
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-12-31",
+      "ebit": 2304000000.0,
+      "tax_rate_for_calcs": 0.11,
+      "nopat": 2050560000.0,
+      "beginning_invested_capital": 139127000000.0,
+      "ending_invested_capital": 140705000000.0,
+      "avg_invested_capital": 139916000000.0,
+      "roic": 0.0147
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2026-03-31",
+      "ebit": 2865000000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 2349300000.0,
+      "beginning_invested_capital": 140705000000.0,
+      "ending_invested_capital": 143729000000.0,
+      "avg_invested_capital": 142217000000.0,
+      "roic": 0.0165
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "DUK",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0249,
+      "roa": 0.0067,
+      "equity_multiplier": 3.72
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0202,
+      "roa": 0.0055,
+      "equity_multiplier": 3.67
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0223,
+      "roa": 0.0062,
+      "equity_multiplier": 3.6
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0179,
+      "roa": 0.0049,
+      "equity_multiplier": 3.65
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0248,
+      "roa": 0.0067,
+      "equity_multiplier": 3.7
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.024,
+      "roa": 0.0064,
+      "equity_multiplier": 3.75
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0271,
+      "roa": 0.0073,
+      "equity_multiplier": 3.71
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.0191,
+      "roa": 0.0051,
+      "equity_multiplier": 3.75
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0275,
+      "roa": 0.0074,
+      "equity_multiplier": 3.72
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.0226,
+      "roa": 0.006,
+      "equity_multiplier": 3.77
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.0289,
+      "roa": 0.0078,
+      "equity_multiplier": 3.71
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "DUK",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0067,
+      "net_margin": 0.1517,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0055,
+      "net_margin": 0.1374,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0062,
+      "net_margin": 0.1433,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0049,
+      "net_margin": 0.1235,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0067,
+      "net_margin": 0.1504,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0064,
+      "net_margin": 0.1618,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0073,
+      "net_margin": 0.1655,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0051,
+      "net_margin": 0.1293,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0074,
+      "net_margin": 0.1647,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.006,
+      "net_margin": 0.1473,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "DUK",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0078,
+      "net_margin": 0.1674,
+      "asset_turnover": 0.05
+    }
+  ]
+}

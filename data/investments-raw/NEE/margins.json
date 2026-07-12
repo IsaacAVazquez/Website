@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "NEE",
+      "report_date": "2022-06-30",
+      "gross_profit": 2617000000.0,
+      "total_revenue": 5183000000.0,
+      "gross_margin": 0.5049
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2022-12-31",
+      "gross_profit": 3396000000.0,
+      "total_revenue": 6164000000.0,
+      "gross_margin": 0.5509
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-03-31",
+      "gross_profit": 4282000000.0,
+      "total_revenue": 6716000000.0,
+      "gross_margin": 0.6376
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-06-30",
+      "gross_profit": 4863000000.0,
+      "total_revenue": 7349000000.0,
+      "gross_margin": 0.6617
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-09-30",
+      "gross_profit": 4422000000.0,
+      "total_revenue": 7172000000.0,
+      "gross_margin": 0.6166
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-12-31",
+      "gross_profit": 4411000000.0,
+      "total_revenue": 6878000000.0,
+      "gross_margin": 0.6413
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-03-31",
+      "gross_profit": 3402000000.0,
+      "total_revenue": 5731000000.0,
+      "gross_margin": 0.5936
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-06-30",
+      "gross_profit": 3618000000.0,
+      "total_revenue": 6069000000.0,
+      "gross_margin": 0.5961
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-09-30",
+      "gross_profit": 4869000000.0,
+      "total_revenue": 7567000000.0,
+      "gross_margin": 0.6435
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-12-31",
+      "gross_profit": 2977000000.0,
+      "total_revenue": 5385000000.0,
+      "gross_margin": 0.5528
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-03-31",
+      "gross_profit": 3909000000.0,
+      "total_revenue": 6247000000.0,
+      "gross_margin": 0.6257
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-06-30",
+      "gross_profit": 4296000000.0,
+      "total_revenue": 6700000000.0,
+      "gross_margin": 0.6412
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-09-30",
+      "gross_profit": 5133000000.0,
+      "total_revenue": 7966000000.0,
+      "gross_margin": 0.6444
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-12-31",
+      "gross_profit": 3731000000.0,
+      "total_revenue": 6500000000.0,
+      "gross_margin": 0.574
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2026-03-31",
+      "gross_profit": 3950000000.0,
+      "total_revenue": 6701000000.0,
+      "gross_margin": 0.5895
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "NEE",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2020-12-31",
+      "gross_profit": 10707000000.0,
+      "total_revenue": 17997000000.0,
+      "gross_margin": 0.5949
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2021-12-31",
+      "gross_profit": 8561000000.0,
+      "total_revenue": 17069000000.0,
+      "gross_margin": 0.5016
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2022-12-31",
+      "gross_profit": 10139000000.0,
+      "total_revenue": 20956000000.0,
+      "gross_margin": 0.4838
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-12-31",
+      "gross_profit": 17976000000.0,
+      "total_revenue": 28114000000.0,
+      "gross_margin": 0.6394
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-12-31",
+      "gross_profit": 14867000000.0,
+      "total_revenue": 24753000000.0,
+      "gross_margin": 0.6006
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-12-31",
+      "gross_profit": 17069000000.0,
+      "total_revenue": 27412000000.0,
+      "gross_margin": 0.6227
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "NEE",
+      "report_date": "2022-06-30",
+      "operating_income": 947000000.0,
+      "total_revenue": 5183000000.0,
+      "operating_margin": 0.1827
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2022-12-31",
+      "operating_income": 1720000000.0,
+      "total_revenue": 6164000000.0,
+      "operating_margin": 0.279
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-03-31",
+      "operating_income": 2944000000.0,
+      "total_revenue": 6716000000.0,
+      "operating_margin": 0.4384
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-06-30",
+      "operating_income": 2793000000.0,
+      "total_revenue": 7349000000.0,
+      "operating_margin": 0.3801
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-09-30",
+      "operating_income": 1829000000.0,
+      "total_revenue": 7172000000.0,
+      "operating_margin": 0.255
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-12-31",
+      "operating_income": 2266000000.0,
+      "total_revenue": 6878000000.0,
+      "operating_margin": 0.3295
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-03-31",
+      "operating_income": 1955000000.0,
+      "total_revenue": 5731000000.0,
+      "operating_margin": 0.3411
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-06-30",
+      "operating_income": 1641000000.0,
+      "total_revenue": 6069000000.0,
+      "operating_margin": 0.2704
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-09-30",
+      "operating_income": 2625000000.0,
+      "total_revenue": 7567000000.0,
+      "operating_margin": 0.3469
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-12-31",
+      "operating_income": 907000000.0,
+      "total_revenue": 5385000000.0,
+      "operating_margin": 0.1684
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-03-31",
+      "operating_income": 2220000000.0,
+      "total_revenue": 6247000000.0,
+      "operating_margin": 0.3554
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-06-30",
+      "operating_income": 1893000000.0,
+      "total_revenue": 6700000000.0,
+      "operating_margin": 0.2825
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-09-30",
+      "operating_income": 2384000000.0,
+      "total_revenue": 7966000000.0,
+      "operating_margin": 0.2993
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-12-31",
+      "operating_income": 1523000000.0,
+      "total_revenue": 6500000000.0,
+      "operating_margin": 0.2343
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2026-03-31",
+      "operating_income": 1951000000.0,
+      "total_revenue": 6701000000.0,
+      "operating_margin": 0.2912
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "NEE",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2020-12-31",
+      "operating_income": 4946000000.0,
+      "total_revenue": 17997000000.0,
+      "operating_margin": 0.2748
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2021-12-31",
+      "operating_income": 2836000000.0,
+      "total_revenue": 17069000000.0,
+      "operating_margin": 0.1661
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2022-12-31",
+      "operating_income": 3559000000.0,
+      "total_revenue": 20956000000.0,
+      "operating_margin": 0.1698
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-12-31",
+      "operating_income": 9832000000.0,
+      "total_revenue": 28114000000.0,
+      "operating_margin": 0.3497
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-12-31",
+      "operating_income": 7127000000.0,
+      "total_revenue": 24753000000.0,
+      "operating_margin": 0.2879
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-12-31",
+      "operating_income": 8020000000.0,
+      "total_revenue": 27412000000.0,
+      "operating_margin": 0.2926
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "NEE",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 1380000000.0,
+      "total_revenue": 5183000000.0,
+      "net_margin": 0.2663
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 1522000000.0,
+      "total_revenue": 6164000000.0,
+      "net_margin": 0.2469
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": 2086000000.0,
+      "total_revenue": 6716000000.0,
+      "net_margin": 0.3106
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 2795000000.0,
+      "total_revenue": 7349000000.0,
+      "net_margin": 0.3803
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1219000000.0,
+      "total_revenue": 7172000000.0,
+      "net_margin": 0.17
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1210000000.0,
+      "total_revenue": 6878000000.0,
+      "net_margin": 0.1759
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 2268000000.0,
+      "total_revenue": 5731000000.0,
+      "net_margin": 0.3957
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1622000000.0,
+      "total_revenue": 6069000000.0,
+      "net_margin": 0.2673
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1852000000.0,
+      "total_revenue": 7567000000.0,
+      "net_margin": 0.2447
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1203000000.0,
+      "total_revenue": 5385000000.0,
+      "net_margin": 0.2234
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 833000000.0,
+      "total_revenue": 6247000000.0,
+      "net_margin": 0.1333
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 2028000000.0,
+      "total_revenue": 6700000000.0,
+      "net_margin": 0.3027
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 2438000000.0,
+      "total_revenue": 7966000000.0,
+      "net_margin": 0.3061
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1535000000.0,
+      "total_revenue": 6500000000.0,
+      "net_margin": 0.2362
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 2182000000.0,
+      "total_revenue": 6701000000.0,
+      "net_margin": 0.3256
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "NEE",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 2919000000.0,
+      "total_revenue": 17997000000.0,
+      "net_margin": 0.1622
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 3573000000.0,
+      "total_revenue": 17069000000.0,
+      "net_margin": 0.2093
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 4147000000.0,
+      "total_revenue": 20956000000.0,
+      "net_margin": 0.1979
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 7310000000.0,
+      "total_revenue": 28114000000.0,
+      "net_margin": 0.26
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 6946000000.0,
+      "total_revenue": 24753000000.0,
+      "net_margin": 0.2806
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 6835000000.0,
+      "total_revenue": 27412000000.0,
+      "net_margin": 0.2493
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "NEE",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 5183000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2022-12-31",
+      "ebitda": 3825000000.0,
+      "total_revenue": 6164000000.0,
+      "ebitda_margin": 0.6205
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-03-31",
+      "ebitda": 4247000000.0,
+      "total_revenue": 6716000000.0,
+      "ebitda_margin": 0.6324
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-06-30",
+      "ebitda": 4747000000.0,
+      "total_revenue": 7349000000.0,
+      "ebitda_margin": 0.6459
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-09-30",
+      "ebitda": 3025000000.0,
+      "total_revenue": 7172000000.0,
+      "ebitda_margin": 0.4218
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-12-31",
+      "ebitda": 4744000000.0,
+      "total_revenue": 6878000000.0,
+      "ebitda_margin": 0.6897
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-03-31",
+      "ebitda": 3475000000.0,
+      "total_revenue": 5731000000.0,
+      "ebitda_margin": 0.6064
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-06-30",
+      "ebitda": 3523000000.0,
+      "total_revenue": 6069000000.0,
+      "ebitda_margin": 0.5805
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-09-30",
+      "ebitda": 5133000000.0,
+      "total_revenue": 7567000000.0,
+      "ebitda_margin": 0.6783
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-12-31",
+      "ebitda": 1901000000.0,
+      "total_revenue": 5385000000.0,
+      "ebitda_margin": 0.353
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-03-31",
+      "ebitda": 2893000000.0,
+      "total_revenue": 6247000000.0,
+      "ebitda_margin": 0.4631
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-06-30",
+      "ebitda": 4300000000.0,
+      "total_revenue": 6700000000.0,
+      "ebitda_margin": 0.6418
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-09-30",
+      "ebitda": 5231000000.0,
+      "total_revenue": 7966000000.0,
+      "ebitda_margin": 0.6567
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-12-31",
+      "ebitda": 3618000000.0,
+      "total_revenue": 6500000000.0,
+      "ebitda_margin": 0.5566
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2026-03-31",
+      "ebitda": 3948000000.0,
+      "total_revenue": 6701000000.0,
+      "ebitda_margin": 0.5892
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "NEE",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2020-12-31",
+      "ebitda": 8678000000.0,
+      "total_revenue": 17997000000.0,
+      "ebitda_margin": 0.4822
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2021-12-31",
+      "ebitda": 8659000000.0,
+      "total_revenue": 17069000000.0,
+      "ebitda_margin": 0.5073
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2022-12-31",
+      "ebitda": 9207000000.0,
+      "total_revenue": 20956000000.0,
+      "ebitda_margin": 0.4393
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-12-31",
+      "ebitda": 16763000000.0,
+      "total_revenue": 28114000000.0,
+      "ebitda_margin": 0.5963
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-12-31",
+      "ebitda": 14033000000.0,
+      "total_revenue": 24753000000.0,
+      "ebitda_margin": 0.5669
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-12-31",
+      "ebitda": 16043000000.0,
+      "total_revenue": 27412000000.0,
+      "ebitda_margin": 0.5853
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "NEE",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 606000000.0,
+      "total_revenue": 5183000000.0,
+      "fcf_margin": 0.1169
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 6164000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": 6716000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 582000000.0,
+      "total_revenue": 7349000000.0,
+      "fcf_margin": 0.0792
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 1008000000.0,
+      "total_revenue": 7172000000.0,
+      "fcf_margin": 0.1405
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 784000000.0,
+      "total_revenue": 6878000000.0,
+      "fcf_margin": 0.114
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 609000000.0,
+      "total_revenue": 5731000000.0,
+      "fcf_margin": 0.1063
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 1790000000.0,
+      "total_revenue": 6069000000.0,
+      "fcf_margin": 0.2949
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 2208000000.0,
+      "total_revenue": 7567000000.0,
+      "fcf_margin": 0.2918
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 139000000.0,
+      "total_revenue": 5385000000.0,
+      "fcf_margin": 0.0258
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 268000000.0,
+      "total_revenue": 6247000000.0,
+      "fcf_margin": 0.0429
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 1120000000.0,
+      "total_revenue": 6700000000.0,
+      "fcf_margin": 0.1672
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 1546000000.0,
+      "total_revenue": 7966000000.0,
+      "fcf_margin": 0.1941
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 277000000.0,
+      "total_revenue": 6500000000.0,
+      "fcf_margin": 0.0426
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2026-03-31",
+      "free_cash_flow": -580000000.0,
+      "total_revenue": 6701000000.0,
+      "fcf_margin": -0.0866
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "NEE",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 224000000.0,
+      "total_revenue": 17997000000.0,
+      "fcf_margin": 0.0124
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2021-12-31",
+      "free_cash_flow": -277000000.0,
+      "total_revenue": 17069000000.0,
+      "fcf_margin": -0.0162
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2022-12-31",
+      "free_cash_flow": -1480000000.0,
+      "total_revenue": 20956000000.0,
+      "fcf_margin": -0.0706
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 1753000000.0,
+      "total_revenue": 28114000000.0,
+      "fcf_margin": 0.0624
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 4746000000.0,
+      "total_revenue": 24753000000.0,
+      "fcf_margin": 0.1917
+    },
+    {
+      "symbol": "NEE",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 3211000000.0,
+      "total_revenue": 27412000000.0,
+      "fcf_margin": 0.1171
+    }
+  ]
+}

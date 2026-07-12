@@ -1,0 +1,2270 @@
+[
+  {
+    "symbol": "CARR",
+    "report_date": "2025-07-08",
+    "open": 74.71,
+    "close": 74.9,
+    "high": 75.405,
+    "low": 74.36,
+    "volume": 4506600
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-07-09",
+    "open": 75.41,
+    "close": 75.89,
+    "high": 76.015,
+    "low": 74.75,
+    "volume": 4119300
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-07-10",
+    "open": 76.0,
+    "close": 76.77,
+    "high": 77.28,
+    "low": 75.5,
+    "volume": 3461600
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-07-11",
+    "open": 75.85,
+    "close": 76.62,
+    "high": 76.905,
+    "low": 75.76,
+    "volume": 3805100
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-07-14",
+    "open": 76.29,
+    "close": 76.61,
+    "high": 76.775,
+    "low": 75.99,
+    "volume": 2566400
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-07-15",
+    "open": 75.95,
+    "close": 75.38,
+    "high": 76.66,
+    "low": 75.36,
+    "volume": 3194900
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-07-16",
+    "open": 75.41,
+    "close": 75.43,
+    "high": 75.64,
+    "low": 74.08,
+    "volume": 4424900
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-07-17",
+    "open": 75.4,
+    "close": 76.93,
+    "high": 77.0,
+    "low": 75.145,
+    "volume": 2778000
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-07-18",
+    "open": 77.19,
+    "close": 76.63,
+    "high": 77.26,
+    "low": 76.41,
+    "volume": 5031700
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-07-21",
+    "open": 76.8,
+    "close": 75.97,
+    "high": 76.96,
+    "low": 75.96,
+    "volume": 4393400
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-07-22",
+    "open": 75.82,
+    "close": 76.42,
+    "high": 76.52,
+    "low": 75.44,
+    "volume": 3395300
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-07-23",
+    "open": 77.9,
+    "close": 79.61,
+    "high": 80.74,
+    "low": 77.81,
+    "volume": 6914600
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-07-24",
+    "open": 79.81,
+    "close": 79.44,
+    "high": 80.65,
+    "low": 79.44,
+    "volume": 3574500
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-07-25",
+    "open": 79.79,
+    "close": 80.73,
+    "high": 80.81,
+    "low": 79.51,
+    "volume": 3401200
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-07-28",
+    "open": 80.92,
+    "close": 80.18,
+    "high": 81.09,
+    "low": 80.02,
+    "volume": 7126100
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-07-29",
+    "open": 73.88,
+    "close": 71.67,
+    "high": 74.74,
+    "low": 70.99,
+    "volume": 13098800
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-07-30",
+    "open": 71.45,
+    "close": 68.2,
+    "high": 71.46,
+    "low": 67.74,
+    "volume": 10081700
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-07-31",
+    "open": 68.0,
+    "close": 68.62,
+    "high": 69.61,
+    "low": 68.0,
+    "volume": 7641100
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-08-01",
+    "open": 68.0,
+    "close": 66.92,
+    "high": 68.0,
+    "low": 66.44,
+    "volume": 5451600
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-08-04",
+    "open": 66.71,
+    "close": 66.54,
+    "high": 67.35,
+    "low": 66.16,
+    "volume": 4833800
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-08-05",
+    "open": 66.86,
+    "close": 66.38,
+    "high": 66.89,
+    "low": 65.75,
+    "volume": 3658900
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-08-06",
+    "open": 66.56,
+    "close": 66.11,
+    "high": 66.56,
+    "low": 65.64,
+    "volume": 3578900
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-08-07",
+    "open": 66.91,
+    "close": 66.36,
+    "high": 67.0,
+    "low": 66.099,
+    "volume": 4024700
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-08-08",
+    "open": 66.51,
+    "close": 66.03,
+    "high": 66.89,
+    "low": 65.963,
+    "volume": 3321200
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-08-11",
+    "open": 65.87,
+    "close": 64.88,
+    "high": 65.94,
+    "low": 64.54,
+    "volume": 5173000
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-08-12",
+    "open": 65.35,
+    "close": 65.73,
+    "high": 66.13,
+    "low": 65.01,
+    "volume": 2989300
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-08-13",
+    "open": 66.02,
+    "close": 67.05,
+    "high": 67.225,
+    "low": 65.505,
+    "volume": 3761200
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-08-14",
+    "open": 66.39,
+    "close": 65.76,
+    "high": 66.63,
+    "low": 65.49,
+    "volume": 3743200
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-08-15",
+    "open": 66.03,
+    "close": 65.4,
+    "high": 66.21,
+    "low": 65.33,
+    "volume": 2968200
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-08-18",
+    "open": 65.34,
+    "close": 66.49,
+    "high": 66.57,
+    "low": 65.3,
+    "volume": 3660500
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-08-19",
+    "open": 66.49,
+    "close": 66.98,
+    "high": 67.81,
+    "low": 66.07,
+    "volume": 6606600
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-08-20",
+    "open": 66.82,
+    "close": 66.84,
+    "high": 67.19,
+    "low": 66.405,
+    "volume": 5520200
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-08-21",
+    "open": 66.6,
+    "close": 65.01,
+    "high": 66.7,
+    "low": 64.905,
+    "volume": 10279800
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-08-22",
+    "open": 65.34,
+    "close": 67.75,
+    "high": 67.98,
+    "low": 65.05,
+    "volume": 5535000
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-08-25",
+    "open": 67.42,
+    "close": 66.0,
+    "high": 67.75,
+    "low": 65.96,
+    "volume": 4921300
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-08-26",
+    "open": 66.12,
+    "close": 66.48,
+    "high": 66.56,
+    "low": 65.25,
+    "volume": 5909300
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-08-27",
+    "open": 66.46,
+    "close": 67.59,
+    "high": 68.06,
+    "low": 66.35,
+    "volume": 7197500
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-08-28",
+    "open": 67.8,
+    "close": 66.17,
+    "high": 67.93,
+    "low": 65.94,
+    "volume": 3615200
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-08-29",
+    "open": 66.37,
+    "close": 65.2,
+    "high": 66.5,
+    "low": 64.89,
+    "volume": 6863600
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-09-02",
+    "open": 64.16,
+    "close": 63.5,
+    "high": 64.5,
+    "low": 62.73,
+    "volume": 6414700
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-09-03",
+    "open": 63.46,
+    "close": 62.47,
+    "high": 63.71,
+    "low": 61.765,
+    "volume": 6925600
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-09-04",
+    "open": 62.88,
+    "close": 63.54,
+    "high": 63.68,
+    "low": 62.45,
+    "volume": 4471300
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-09-05",
+    "open": 64.35,
+    "close": 65.51,
+    "high": 65.633,
+    "low": 64.185,
+    "volume": 5021900
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-09-08",
+    "open": 65.62,
+    "close": 65.61,
+    "high": 66.135,
+    "low": 65.06,
+    "volume": 5761700
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-09-09",
+    "open": 64.4,
+    "close": 63.47,
+    "high": 64.86,
+    "low": 62.45,
+    "volume": 5695200
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-09-10",
+    "open": 63.84,
+    "close": 62.5,
+    "high": 64.8,
+    "low": 60.1,
+    "volume": 13960300
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-09-11",
+    "open": 62.0,
+    "close": 62.3,
+    "high": 63.26,
+    "low": 61.65,
+    "volume": 7588500
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-09-12",
+    "open": 61.77,
+    "close": 61.67,
+    "high": 62.53,
+    "low": 61.38,
+    "volume": 5224900
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-09-15",
+    "open": 61.9,
+    "close": 61.24,
+    "high": 62.0,
+    "low": 60.68,
+    "volume": 6925600
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-09-16",
+    "open": 61.68,
+    "close": 60.93,
+    "high": 61.9,
+    "low": 60.87,
+    "volume": 5181000
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-09-17",
+    "open": 61.21,
+    "close": 60.72,
+    "high": 62.38,
+    "low": 60.23,
+    "volume": 7077800
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-09-18",
+    "open": 61.14,
+    "close": 61.1,
+    "high": 61.69,
+    "low": 60.71,
+    "volume": 4700800
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-09-19",
+    "open": 61.2,
+    "close": 60.39,
+    "high": 61.28,
+    "low": 60.36,
+    "volume": 5733500
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-09-22",
+    "open": 60.0,
+    "close": 60.31,
+    "high": 60.47,
+    "low": 59.66,
+    "volume": 4220000
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-09-23",
+    "open": 60.52,
+    "close": 59.74,
+    "high": 60.81,
+    "low": 59.435,
+    "volume": 5200200
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-09-24",
+    "open": 59.5,
+    "close": 58.99,
+    "high": 60.05,
+    "low": 58.96,
+    "volume": 4148000
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-09-25",
+    "open": 58.56,
+    "close": 58.75,
+    "high": 59.275,
+    "low": 58.32,
+    "volume": 4821200
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-09-26",
+    "open": 58.9,
+    "close": 58.84,
+    "high": 59.28,
+    "low": 58.59,
+    "volume": 6079400
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-09-29",
+    "open": 59.64,
+    "close": 59.13,
+    "high": 59.64,
+    "low": 58.75,
+    "volume": 4745100
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-09-30",
+    "open": 59.0,
+    "close": 59.7,
+    "high": 59.81,
+    "low": 58.94,
+    "volume": 6126800
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-10-01",
+    "open": 59.4,
+    "close": 59.46,
+    "high": 59.81,
+    "low": 59.2,
+    "volume": 3592600
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-10-02",
+    "open": 59.33,
+    "close": 58.9,
+    "high": 60.06,
+    "low": 58.73,
+    "volume": 3830100
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-10-03",
+    "open": 58.93,
+    "close": 59.65,
+    "high": 59.95,
+    "low": 58.7,
+    "volume": 5611200
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-10-06",
+    "open": 60.35,
+    "close": 59.81,
+    "high": 60.77,
+    "low": 59.553,
+    "volume": 5103500
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-10-07",
+    "open": 59.83,
+    "close": 59.18,
+    "high": 60.095,
+    "low": 59.03,
+    "volume": 5700500
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-10-08",
+    "open": 59.05,
+    "close": 59.8,
+    "high": 60.52,
+    "low": 58.61,
+    "volume": 8457300
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-10-09",
+    "open": 60.07,
+    "close": 58.1,
+    "high": 60.49,
+    "low": 57.665,
+    "volume": 6201100
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-10-10",
+    "open": 58.55,
+    "close": 56.66,
+    "high": 59.255,
+    "low": 56.57,
+    "volume": 5625800
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-10-13",
+    "open": 57.43,
+    "close": 56.87,
+    "high": 57.71,
+    "low": 56.705,
+    "volume": 3240900
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-10-14",
+    "open": 55.53,
+    "close": 57.5,
+    "high": 57.875,
+    "low": 55.33,
+    "volume": 6553500
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-10-15",
+    "open": 57.44,
+    "close": 57.21,
+    "high": 58.3,
+    "low": 56.77,
+    "volume": 7907900
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-10-16",
+    "open": 57.32,
+    "close": 56.75,
+    "high": 57.375,
+    "low": 56.3,
+    "volume": 7265600
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-10-17",
+    "open": 56.82,
+    "close": 56.2,
+    "high": 57.0,
+    "low": 56.14,
+    "volume": 6011900
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-10-20",
+    "open": 56.79,
+    "close": 57.67,
+    "high": 57.69,
+    "low": 56.79,
+    "volume": 7440800
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-10-21",
+    "open": 57.34,
+    "close": 59.82,
+    "high": 59.965,
+    "low": 57.15,
+    "volume": 5984500
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-10-22",
+    "open": 60.17,
+    "close": 56.74,
+    "high": 60.575,
+    "low": 56.61,
+    "volume": 10575300
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-10-23",
+    "open": 56.99,
+    "close": 57.12,
+    "high": 57.51,
+    "low": 56.6,
+    "volume": 3932400
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-10-24",
+    "open": 57.91,
+    "close": 57.84,
+    "high": 58.39,
+    "low": 57.65,
+    "volume": 4292700
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-10-27",
+    "open": 58.44,
+    "close": 58.29,
+    "high": 58.93,
+    "low": 57.85,
+    "volume": 6363700
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-10-28",
+    "open": 60.0,
+    "close": 58.74,
+    "high": 60.56,
+    "low": 58.445,
+    "volume": 9614600
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-10-29",
+    "open": 57.8,
+    "close": 60.75,
+    "high": 62.325,
+    "low": 57.5,
+    "volume": 13232900
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-10-30",
+    "open": 60.07,
+    "close": 58.85,
+    "high": 61.0,
+    "low": 58.35,
+    "volume": 10231800
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-10-31",
+    "open": 58.65,
+    "close": 59.49,
+    "high": 59.82,
+    "low": 57.93,
+    "volume": 5294800
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-11-03",
+    "open": 58.94,
+    "close": 57.86,
+    "high": 59.425,
+    "low": 57.56,
+    "volume": 4744500
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-11-04",
+    "open": 57.36,
+    "close": 57.55,
+    "high": 57.905,
+    "low": 56.84,
+    "volume": 5135400
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-11-05",
+    "open": 57.16,
+    "close": 56.85,
+    "high": 57.74,
+    "low": 56.62,
+    "volume": 6333200
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-11-06",
+    "open": 56.71,
+    "close": 56.57,
+    "high": 57.72,
+    "low": 56.43,
+    "volume": 5344400
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-11-07",
+    "open": 55.97,
+    "close": 57.51,
+    "high": 57.52,
+    "low": 55.59,
+    "volume": 5669400
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-11-10",
+    "open": 57.71,
+    "close": 57.33,
+    "high": 57.8,
+    "low": 56.14,
+    "volume": 4054700
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-11-11",
+    "open": 57.57,
+    "close": 56.97,
+    "high": 57.6,
+    "low": 56.635,
+    "volume": 3955100
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-11-12",
+    "open": 57.16,
+    "close": 55.99,
+    "high": 57.75,
+    "low": 54.99,
+    "volume": 7253700
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-11-13",
+    "open": 55.95,
+    "close": 55.16,
+    "high": 57.11,
+    "low": 55.035,
+    "volume": 5356900
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-11-14",
+    "open": 54.57,
+    "close": 54.1,
+    "high": 54.888,
+    "low": 53.96,
+    "volume": 6034900
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-11-17",
+    "open": 54.14,
+    "close": 53.13,
+    "high": 54.2,
+    "low": 52.95,
+    "volume": 5766600
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-11-18",
+    "open": 52.71,
+    "close": 52.01,
+    "high": 53.25,
+    "low": 51.954,
+    "volume": 6507000
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-11-19",
+    "open": 52.42,
+    "close": 51.25,
+    "high": 52.42,
+    "low": 51.03,
+    "volume": 6655600
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-11-20",
+    "open": 51.5,
+    "close": 50.36,
+    "high": 51.99,
+    "low": 50.3,
+    "volume": 6400900
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-11-21",
+    "open": 50.88,
+    "close": 52.41,
+    "high": 52.72,
+    "low": 50.57,
+    "volume": 12733000
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-11-24",
+    "open": 52.4,
+    "close": 51.75,
+    "high": 53.08,
+    "low": 51.64,
+    "volume": 9383900
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-11-25",
+    "open": 52.26,
+    "close": 53.95,
+    "high": 54.19,
+    "low": 52.135,
+    "volume": 11511500
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-11-26",
+    "open": 54.03,
+    "close": 54.36,
+    "high": 54.862,
+    "low": 53.705,
+    "volume": 6536600
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-11-28",
+    "open": 54.6,
+    "close": 54.88,
+    "high": 54.905,
+    "low": 54.105,
+    "volume": 2897200
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-12-01",
+    "open": 54.06,
+    "close": 54.25,
+    "high": 54.86,
+    "low": 53.91,
+    "volume": 6689200
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-12-02",
+    "open": 54.66,
+    "close": 53.82,
+    "high": 54.73,
+    "low": 53.44,
+    "volume": 3768800
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-12-03",
+    "open": 53.59,
+    "close": 54.62,
+    "high": 54.65,
+    "low": 53.2,
+    "volume": 9752500
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-12-04",
+    "open": 53.98,
+    "close": 54.5,
+    "high": 55.135,
+    "low": 53.62,
+    "volume": 12206300
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-12-05",
+    "open": 54.52,
+    "close": 54.29,
+    "high": 54.8,
+    "low": 54.0,
+    "volume": 9063800
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-12-08",
+    "open": 54.24,
+    "close": 53.03,
+    "high": 54.36,
+    "low": 52.99,
+    "volume": 13159200
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-12-09",
+    "open": 52.81,
+    "close": 52.84,
+    "high": 53.43,
+    "low": 52.02,
+    "volume": 12466900
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-12-10",
+    "open": 52.95,
+    "close": 53.4,
+    "high": 54.07,
+    "low": 52.34,
+    "volume": 16529100
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-12-11",
+    "open": 53.74,
+    "close": 54.15,
+    "high": 54.59,
+    "low": 53.17,
+    "volume": 6583800
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-12-12",
+    "open": 54.86,
+    "close": 52.94,
+    "high": 54.87,
+    "low": 52.79,
+    "volume": 6481000
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-12-15",
+    "open": 53.34,
+    "close": 52.58,
+    "high": 53.34,
+    "low": 52.22,
+    "volume": 7322300
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-12-16",
+    "open": 52.76,
+    "close": 53.44,
+    "high": 53.66,
+    "low": 52.37,
+    "volume": 8125700
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-12-17",
+    "open": 53.46,
+    "close": 52.4,
+    "high": 53.74,
+    "low": 51.93,
+    "volume": 9700300
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-12-18",
+    "open": 53.43,
+    "close": 53.2,
+    "high": 54.06,
+    "low": 53.11,
+    "volume": 8212600
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-12-19",
+    "open": 53.05,
+    "close": 53.77,
+    "high": 53.81,
+    "low": 52.73,
+    "volume": 12875300
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-12-22",
+    "open": 53.98,
+    "close": 53.2,
+    "high": 54.125,
+    "low": 52.97,
+    "volume": 5929900
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-12-23",
+    "open": 53.23,
+    "close": 53.34,
+    "high": 53.64,
+    "low": 52.88,
+    "volume": 4527900
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-12-24",
+    "open": 53.57,
+    "close": 53.5,
+    "high": 53.66,
+    "low": 53.16,
+    "volume": 1663200
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-12-26",
+    "open": 53.4,
+    "close": 53.59,
+    "high": 53.65,
+    "low": 53.22,
+    "volume": 2101500
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-12-29",
+    "open": 53.56,
+    "close": 53.61,
+    "high": 53.82,
+    "low": 53.4,
+    "volume": 3640300
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-12-30",
+    "open": 53.46,
+    "close": 53.43,
+    "high": 53.885,
+    "low": 53.18,
+    "volume": 3498000
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2025-12-31",
+    "open": 53.32,
+    "close": 52.84,
+    "high": 53.54,
+    "low": 52.78,
+    "volume": 3218700
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-01-02",
+    "open": 53.11,
+    "close": 53.52,
+    "high": 53.955,
+    "low": 52.53,
+    "volume": 3555000
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-01-05",
+    "open": 53.05,
+    "close": 53.79,
+    "high": 54.47,
+    "low": 53.05,
+    "volume": 4295800
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-01-06",
+    "open": 52.09,
+    "close": 53.5,
+    "high": 53.675,
+    "low": 50.24,
+    "volume": 8715500
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-01-07",
+    "open": 53.7,
+    "close": 52.57,
+    "high": 54.38,
+    "low": 52.44,
+    "volume": 8282200
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-01-08",
+    "open": 52.16,
+    "close": 53.86,
+    "high": 53.91,
+    "low": 51.76,
+    "volume": 5410700
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-01-09",
+    "open": 54.55,
+    "close": 56.25,
+    "high": 56.38,
+    "low": 54.175,
+    "volume": 8947300
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-01-12",
+    "open": 56.17,
+    "close": 55.38,
+    "high": 56.28,
+    "low": 55.33,
+    "volume": 10882700
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-01-13",
+    "open": 55.53,
+    "close": 55.21,
+    "high": 55.925,
+    "low": 55.02,
+    "volume": 5450900
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-01-14",
+    "open": 55.53,
+    "close": 55.6,
+    "high": 55.805,
+    "low": 54.695,
+    "volume": 4810700
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-01-15",
+    "open": 56.14,
+    "close": 55.55,
+    "high": 56.155,
+    "low": 55.19,
+    "volume": 4935200
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-01-16",
+    "open": 55.27,
+    "close": 56.19,
+    "high": 56.35,
+    "low": 54.625,
+    "volume": 8978700
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-01-20",
+    "open": 54.87,
+    "close": 55.21,
+    "high": 55.43,
+    "low": 54.62,
+    "volume": 7741700
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-01-21",
+    "open": 55.59,
+    "close": 57.74,
+    "high": 57.86,
+    "low": 55.33,
+    "volume": 11325000
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-01-22",
+    "open": 58.33,
+    "close": 57.44,
+    "high": 58.43,
+    "low": 57.065,
+    "volume": 9094200
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-01-23",
+    "open": 57.55,
+    "close": 57.3,
+    "high": 57.71,
+    "low": 56.71,
+    "volume": 8858900
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-01-26",
+    "open": 57.27,
+    "close": 57.37,
+    "high": 57.625,
+    "low": 56.82,
+    "volume": 6775200
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-01-27",
+    "open": 57.35,
+    "close": 57.07,
+    "high": 57.58,
+    "low": 56.85,
+    "volume": 6098900
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-01-28",
+    "open": 55.88,
+    "close": 57.91,
+    "high": 58.62,
+    "low": 55.589,
+    "volume": 16514300
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-01-29",
+    "open": 58.93,
+    "close": 59.79,
+    "high": 59.79,
+    "low": 58.379,
+    "volume": 9329200
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-01-30",
+    "open": 59.42,
+    "close": 59.58,
+    "high": 60.035,
+    "low": 59.25,
+    "volume": 10553200
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-02-02",
+    "open": 59.43,
+    "close": 60.36,
+    "high": 60.785,
+    "low": 59.33,
+    "volume": 6550100
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-02-03",
+    "open": 60.13,
+    "close": 61.2,
+    "high": 61.37,
+    "low": 60.01,
+    "volume": 9264200
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-02-04",
+    "open": 62.24,
+    "close": 63.55,
+    "high": 64.14,
+    "low": 62.075,
+    "volume": 14052200
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-02-05",
+    "open": 64.61,
+    "close": 63.1,
+    "high": 64.89,
+    "low": 60.69,
+    "volume": 21704800
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-02-06",
+    "open": 62.97,
+    "close": 63.92,
+    "high": 65.24,
+    "low": 62.77,
+    "volume": 11800700
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-02-09",
+    "open": 63.71,
+    "close": 65.32,
+    "high": 65.385,
+    "low": 63.29,
+    "volume": 8375700
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-02-10",
+    "open": 65.75,
+    "close": 65.82,
+    "high": 66.5,
+    "low": 65.49,
+    "volume": 6264100
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-02-11",
+    "open": 66.16,
+    "close": 67.08,
+    "high": 67.285,
+    "low": 66.16,
+    "volume": 6080500
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-02-12",
+    "open": 67.65,
+    "close": 64.89,
+    "high": 68.33,
+    "low": 64.87,
+    "volume": 8020900
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-02-13",
+    "open": 64.97,
+    "close": 65.4,
+    "high": 65.93,
+    "low": 64.52,
+    "volume": 6101100
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-02-17",
+    "open": 65.33,
+    "close": 66.43,
+    "high": 66.8,
+    "low": 65.28,
+    "volume": 5073000
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-02-18",
+    "open": 66.42,
+    "close": 64.33,
+    "high": 66.55,
+    "low": 64.26,
+    "volume": 5748300
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-02-19",
+    "open": 63.25,
+    "close": 62.92,
+    "high": 63.36,
+    "low": 61.0,
+    "volume": 8515200
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-02-20",
+    "open": 62.98,
+    "close": 64.14,
+    "high": 65.02,
+    "low": 62.814,
+    "volume": 4356300
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-02-23",
+    "open": 63.94,
+    "close": 63.46,
+    "high": 65.245,
+    "low": 63.155,
+    "volume": 3807300
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-02-24",
+    "open": 63.69,
+    "close": 63.53,
+    "high": 64.57,
+    "low": 63.52,
+    "volume": 3630400
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-02-25",
+    "open": 61.895,
+    "close": 61.5,
+    "high": 62.03,
+    "low": 60.275,
+    "volume": 6746500
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-02-26",
+    "open": 61.77,
+    "close": 62.76,
+    "high": 63.225,
+    "low": 61.49,
+    "volume": 4943900
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-02-27",
+    "open": 62.14,
+    "close": 64.4,
+    "high": 64.635,
+    "low": 61.98,
+    "volume": 7534300
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-03-02",
+    "open": 63.43,
+    "close": 63.84,
+    "high": 64.1,
+    "low": 62.75,
+    "volume": 3643400
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-03-03",
+    "open": 61.39,
+    "close": 61.17,
+    "high": 62.19,
+    "low": 60.27,
+    "volume": 5126600
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-03-04",
+    "open": 61.5,
+    "close": 61.08,
+    "high": 61.875,
+    "low": 60.495,
+    "volume": 4254700
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-03-05",
+    "open": 60.63,
+    "close": 60.4,
+    "high": 61.46,
+    "low": 59.58,
+    "volume": 5437300
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-03-06",
+    "open": 59.08,
+    "close": 58.35,
+    "high": 59.15,
+    "low": 57.645,
+    "volume": 8869200
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-03-09",
+    "open": 57.2,
+    "close": 58.72,
+    "high": 59.09,
+    "low": 56.43,
+    "volume": 7501400
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-03-10",
+    "open": 58.03,
+    "close": 58.43,
+    "high": 59.37,
+    "low": 57.87,
+    "volume": 6877700
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-03-11",
+    "open": 58.31,
+    "close": 58.69,
+    "high": 58.92,
+    "low": 57.875,
+    "volume": 6476500
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-03-12",
+    "open": 58.03,
+    "close": 56.49,
+    "high": 58.43,
+    "low": 56.35,
+    "volume": 9301500
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-03-13",
+    "open": 57.17,
+    "close": 55.65,
+    "high": 57.7,
+    "low": 55.23,
+    "volume": 5905300
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-03-16",
+    "open": 56.02,
+    "close": 55.85,
+    "high": 56.61,
+    "low": 55.7,
+    "volume": 5718800
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-03-17",
+    "open": 56.34,
+    "close": 56.98,
+    "high": 57.22,
+    "low": 55.84,
+    "volume": 5225600
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-03-18",
+    "open": 56.79,
+    "close": 57.61,
+    "high": 58.15,
+    "low": 56.54,
+    "volume": 6799700
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-03-19",
+    "open": 56.91,
+    "close": 58.97,
+    "high": 59.25,
+    "low": 56.57,
+    "volume": 8325500
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-03-20",
+    "open": 59.0,
+    "close": 58.07,
+    "high": 59.57,
+    "low": 57.7,
+    "volume": 13673700
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-03-23",
+    "open": 59.69,
+    "close": 58.3,
+    "high": 60.2,
+    "low": 58.27,
+    "volume": 7394400
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-03-24",
+    "open": 57.47,
+    "close": 58.58,
+    "high": 59.25,
+    "low": 56.935,
+    "volume": 6335500
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-03-25",
+    "open": 59.45,
+    "close": 59.25,
+    "high": 59.9,
+    "low": 58.43,
+    "volume": 4271100
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-03-26",
+    "open": 58.71,
+    "close": 54.67,
+    "high": 59.25,
+    "low": 54.585,
+    "volume": 11988700
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-03-27",
+    "open": 54.88,
+    "close": 54.25,
+    "high": 55.49,
+    "low": 54.03,
+    "volume": 6960800
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-03-30",
+    "open": 55.04,
+    "close": 54.36,
+    "high": 55.24,
+    "low": 53.77,
+    "volume": 5721500
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-03-31",
+    "open": 55.69,
+    "close": 56.31,
+    "high": 56.73,
+    "low": 55.23,
+    "volume": 6677500
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-04-01",
+    "open": 56.64,
+    "close": 56.9,
+    "high": 57.79,
+    "low": 56.215,
+    "volume": 5783900
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-04-02",
+    "open": 55.93,
+    "close": 55.71,
+    "high": 57.035,
+    "low": 55.29,
+    "volume": 5650300
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-04-06",
+    "open": 55.34,
+    "close": 55.59,
+    "high": 55.915,
+    "low": 55.065,
+    "volume": 4117500
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-04-07",
+    "open": 55.15,
+    "close": 55.44,
+    "high": 55.55,
+    "low": 54.65,
+    "volume": 5266700
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-04-08",
+    "open": 58.0,
+    "close": 58.29,
+    "high": 58.88,
+    "low": 57.92,
+    "volume": 5957100
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-04-09",
+    "open": 58.09,
+    "close": 61.46,
+    "high": 61.76,
+    "low": 58.09,
+    "volume": 6070400
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-04-10",
+    "open": 62.09,
+    "close": 63.34,
+    "high": 63.99,
+    "low": 61.75,
+    "volume": 7428600
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-04-13",
+    "open": 63.29,
+    "close": 64.32,
+    "high": 64.43,
+    "low": 62.88,
+    "volume": 6643900
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-04-14",
+    "open": 64.29,
+    "close": 64.66,
+    "high": 64.99,
+    "low": 63.36,
+    "volume": 4610400
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-04-15",
+    "open": 64.01,
+    "close": 58.55,
+    "high": 64.01,
+    "low": 57.7,
+    "volume": 16954400
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-04-16",
+    "open": 58.75,
+    "close": 59.71,
+    "high": 60.72,
+    "low": 57.85,
+    "volume": 8885400
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-04-17",
+    "open": 60.31,
+    "close": 61.32,
+    "high": 62.965,
+    "low": 60.19,
+    "volume": 6461100
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-04-20",
+    "open": 61.18,
+    "close": 61.65,
+    "high": 62.21,
+    "low": 60.89,
+    "volume": 5076000
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-04-21",
+    "open": 61.78,
+    "close": 61.71,
+    "high": 63.07,
+    "low": 61.4,
+    "volume": 5105400
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-04-22",
+    "open": 62.34,
+    "close": 60.65,
+    "high": 62.54,
+    "low": 60.38,
+    "volume": 4346400
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-04-23",
+    "open": 61.28,
+    "close": 61.54,
+    "high": 62.53,
+    "low": 60.73,
+    "volume": 5574100
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-04-24",
+    "open": 61.73,
+    "close": 60.97,
+    "high": 62.21,
+    "low": 60.5,
+    "volume": 5582400
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-04-27",
+    "open": 61.53,
+    "close": 61.91,
+    "high": 62.9,
+    "low": 61.44,
+    "volume": 6271300
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-04-28",
+    "open": 61.65,
+    "close": 62.0,
+    "high": 62.295,
+    "low": 61.03,
+    "volume": 6536900
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-04-29",
+    "open": 63.03,
+    "close": 61.74,
+    "high": 63.76,
+    "low": 61.0,
+    "volume": 8941500
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-04-30",
+    "open": 64.21,
+    "close": 67.17,
+    "high": 69.04,
+    "low": 63.67,
+    "volume": 15777700
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-05-01",
+    "open": 67.2,
+    "close": 67.62,
+    "high": 68.495,
+    "low": 66.51,
+    "volume": 7348600
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-05-04",
+    "open": 67.17,
+    "close": 65.89,
+    "high": 67.62,
+    "low": 65.125,
+    "volume": 4928900
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-05-05",
+    "open": 66.22,
+    "close": 64.18,
+    "high": 66.62,
+    "low": 64.08,
+    "volume": 6926200
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-05-06",
+    "open": 66.11,
+    "close": 67.9,
+    "high": 68.48,
+    "low": 65.85,
+    "volume": 7663800
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-05-07",
+    "open": 68.58,
+    "close": 67.22,
+    "high": 68.65,
+    "low": 66.45,
+    "volume": 7627100
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-05-08",
+    "open": 67.6,
+    "close": 66.83,
+    "high": 68.39,
+    "low": 66.5,
+    "volume": 5032000
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-05-11",
+    "open": 66.87,
+    "close": 65.88,
+    "high": 67.0,
+    "low": 65.64,
+    "volume": 5310500
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-05-12",
+    "open": 65.49,
+    "close": 65.56,
+    "high": 65.99,
+    "low": 64.74,
+    "volume": 3907800
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-05-13",
+    "open": 65.85,
+    "close": 65.57,
+    "high": 66.2,
+    "low": 65.0,
+    "volume": 3660800
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-05-14",
+    "open": 66.03,
+    "close": 66.73,
+    "high": 67.065,
+    "low": 65.35,
+    "volume": 3823500
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-05-15",
+    "open": 65.78,
+    "close": 64.67,
+    "high": 66.1,
+    "low": 64.4,
+    "volume": 4099300
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-05-18",
+    "open": 64.56,
+    "close": 64.51,
+    "high": 64.85,
+    "low": 63.46,
+    "volume": 5492300
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-05-19",
+    "open": 63.73,
+    "close": 61.44,
+    "high": 63.98,
+    "low": 61.38,
+    "volume": 7210000
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-05-20",
+    "open": 61.84,
+    "close": 63.59,
+    "high": 63.89,
+    "low": 61.235,
+    "volume": 5360100
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-05-21",
+    "open": 61.65,
+    "close": 62.18,
+    "high": 63.355,
+    "low": 61.12,
+    "volume": 11118000
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-05-22",
+    "open": 62.6,
+    "close": 63.14,
+    "high": 63.95,
+    "low": 61.915,
+    "volume": 4926800
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-05-26",
+    "open": 64.04,
+    "close": 64.89,
+    "high": 65.15,
+    "low": 63.71,
+    "volume": 5746300
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-05-27",
+    "open": 65.48,
+    "close": 64.51,
+    "high": 66.15,
+    "low": 64.37,
+    "volume": 6325800
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-05-28",
+    "open": 63.51,
+    "close": 63.81,
+    "high": 64.43,
+    "low": 62.32,
+    "volume": 11959700
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-05-29",
+    "open": 63.51,
+    "close": 63.87,
+    "high": 65.29,
+    "low": 63.055,
+    "volume": 10392700
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-06-01",
+    "open": 63.05,
+    "close": 65.11,
+    "high": 65.32,
+    "low": 62.67,
+    "volume": 8101400
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-06-02",
+    "open": 66.87,
+    "close": 66.42,
+    "high": 69.83,
+    "low": 66.31,
+    "volume": 8157300
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-06-03",
+    "open": 66.1,
+    "close": 67.58,
+    "high": 68.84,
+    "low": 65.62,
+    "volume": 6225800
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-06-04",
+    "open": 67.86,
+    "close": 68.54,
+    "high": 68.78,
+    "low": 67.62,
+    "volume": 5505700
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-06-05",
+    "open": 67.66,
+    "close": 67.16,
+    "high": 67.66,
+    "low": 66.43,
+    "volume": 6387800
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-06-08",
+    "open": 67.2,
+    "close": 67.35,
+    "high": 68.32,
+    "low": 66.56,
+    "volume": 5451400
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-06-09",
+    "open": 68.06,
+    "close": 71.24,
+    "high": 71.27,
+    "low": 67.92,
+    "volume": 10221000
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-06-10",
+    "open": 71.4,
+    "close": 67.97,
+    "high": 71.595,
+    "low": 67.815,
+    "volume": 7555800
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-06-11",
+    "open": 68.71,
+    "close": 69.74,
+    "high": 70.16,
+    "low": 67.5,
+    "volume": 6321600
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-06-12",
+    "open": 70.11,
+    "close": 69.91,
+    "high": 70.5,
+    "low": 68.735,
+    "volume": 4414900
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-06-15",
+    "open": 71.53,
+    "close": 71.13,
+    "high": 72.65,
+    "low": 71.1,
+    "volume": 5412100
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-06-16",
+    "open": 71.44,
+    "close": 71.15,
+    "high": 72.525,
+    "low": 71.1,
+    "volume": 4347400
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-06-17",
+    "open": 71.14,
+    "close": 69.49,
+    "high": 72.35,
+    "low": 69.34,
+    "volume": 5650500
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-06-18",
+    "open": 71.82,
+    "close": 71.81,
+    "high": 72.89,
+    "low": 71.02,
+    "volume": 7953500
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-06-22",
+    "open": 72.0,
+    "close": 71.85,
+    "high": 72.41,
+    "low": 71.24,
+    "volume": 4969000
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-06-23",
+    "open": 70.2,
+    "close": 70.75,
+    "high": 71.76,
+    "low": 70.18,
+    "volume": 5385400
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-06-24",
+    "open": 71.69,
+    "close": 74.06,
+    "high": 74.398,
+    "low": 71.6,
+    "volume": 5919000
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-06-25",
+    "open": 74.95,
+    "close": 76.0,
+    "high": 76.76,
+    "low": 74.66,
+    "volume": 5512100
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-06-26",
+    "open": 74.95,
+    "close": 73.59,
+    "high": 75.135,
+    "low": 73.11,
+    "volume": 8195100
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-06-29",
+    "open": 73.24,
+    "close": 73.43,
+    "high": 74.11,
+    "low": 72.73,
+    "volume": 4463600
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-06-30",
+    "open": 74.03,
+    "close": 73.35,
+    "high": 74.68,
+    "low": 73.12,
+    "volume": 5604700
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-07-01",
+    "open": 73.015,
+    "close": 72.07,
+    "high": 73.76,
+    "low": 71.36,
+    "volume": 3941400
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-07-02",
+    "open": 72.39,
+    "close": 70.07,
+    "high": 72.605,
+    "low": 69.36,
+    "volume": 6157300
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-07-06",
+    "open": 70.6,
+    "close": 70.1,
+    "high": 70.75,
+    "low": 69.15,
+    "volume": 5481100
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-07-07",
+    "open": 69.72,
+    "close": 68.67,
+    "high": 69.996,
+    "low": 67.59,
+    "volume": 5077000
+  },
+  {
+    "symbol": "CARR",
+    "report_date": "2026-07-08",
+    "open": 67.6,
+    "close": 66.74,
+    "high": 68.6081,
+    "low": 65.78,
+    "volume": 5330242
+  }
+]

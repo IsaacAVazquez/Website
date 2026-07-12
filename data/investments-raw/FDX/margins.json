@@ -1,0 +1,799 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "FDX",
+      "report_date": "2022-05-31",
+      "gross_profit": 5748000000.0,
+      "total_revenue": 24394000000.0,
+      "gross_margin": 0.2356
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2022-08-31",
+      "gross_profit": 4707000000.0,
+      "total_revenue": 23242000000.0,
+      "gross_margin": 0.2025
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2022-11-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2023-02-28",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2023-05-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2023-08-31",
+      "gross_profit": 4713000000.0,
+      "total_revenue": 21681000000.0,
+      "gross_margin": 0.2174
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2023-11-30",
+      "gross_profit": 4577000000.0,
+      "total_revenue": 22165000000.0,
+      "gross_margin": 0.2065
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2024-02-29",
+      "gross_profit": 4539000000.0,
+      "total_revenue": 21738000000.0,
+      "gross_margin": 0.2088
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2024-05-31",
+      "gross_profit": 5123000000.0,
+      "total_revenue": 22109000000.0,
+      "gross_margin": 0.2317
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2024-08-31",
+      "gross_profit": 4376000000.0,
+      "total_revenue": 21579000000.0,
+      "gross_margin": 0.2028
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2024-11-30",
+      "gross_profit": 4579000000.0,
+      "total_revenue": 21967000000.0,
+      "gross_margin": 0.2084
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2025-02-28",
+      "gross_profit": 4731000000.0,
+      "total_revenue": 22160000000.0,
+      "gross_margin": 0.2135
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2025-05-31",
+      "gross_profit": 5309000000.0,
+      "total_revenue": 22220000000.0,
+      "gross_margin": 0.2389
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2025-08-31",
+      "gross_profit": 4694000000.0,
+      "total_revenue": 22244000000.0,
+      "gross_margin": 0.211
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2025-11-30",
+      "gross_profit": 5132000000.0,
+      "total_revenue": 23469000000.0,
+      "gross_margin": 0.2187
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2026-02-28",
+      "gross_profit": 5123000000.0,
+      "total_revenue": 24000000000.0,
+      "gross_margin": 0.2135
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "FDX",
+      "report_date": "2020-05-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2021-05-31",
+      "gross_profit": 17954000000.0,
+      "total_revenue": 83959000000.0,
+      "gross_margin": 0.2138
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2022-05-31",
+      "gross_profit": 20167000000.0,
+      "total_revenue": 93512000000.0,
+      "gross_margin": 0.2157
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2023-05-31",
+      "gross_profit": 19166000000.0,
+      "total_revenue": 90155000000.0,
+      "gross_margin": 0.2126
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2024-05-31",
+      "gross_profit": 18952000000.0,
+      "total_revenue": 87693000000.0,
+      "gross_margin": 0.2161
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2025-05-31",
+      "gross_profit": 18995000000.0,
+      "total_revenue": 87926000000.0,
+      "gross_margin": 0.216
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "FDX",
+      "report_date": "2022-05-31",
+      "operating_income": 1984000000.0,
+      "total_revenue": 24394000000.0,
+      "operating_margin": 0.0813
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2022-08-31",
+      "operating_income": 1229000000.0,
+      "total_revenue": 23242000000.0,
+      "operating_margin": 0.0529
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2022-11-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2023-02-28",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2023-05-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2023-08-31",
+      "operating_income": 1590000000.0,
+      "total_revenue": 21681000000.0,
+      "operating_margin": 0.0733
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2023-11-30",
+      "operating_income": 1421000000.0,
+      "total_revenue": 22165000000.0,
+      "operating_margin": 0.0641
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2024-02-29",
+      "operating_income": 1357000000.0,
+      "total_revenue": 21738000000.0,
+      "operating_margin": 0.0624
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2024-05-31",
+      "operating_income": 1930000000.0,
+      "total_revenue": 22109000000.0,
+      "operating_margin": 0.0873
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2024-08-31",
+      "operating_income": 1208000000.0,
+      "total_revenue": 21579000000.0,
+      "operating_margin": 0.056
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2024-11-30",
+      "operating_income": 1378000000.0,
+      "total_revenue": 21967000000.0,
+      "operating_margin": 0.0627
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2025-02-28",
+      "operating_income": 1476000000.0,
+      "total_revenue": 22160000000.0,
+      "operating_margin": 0.0666
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2025-05-31",
+      "operating_income": 1937000000.0,
+      "total_revenue": 22220000000.0,
+      "operating_margin": 0.0872
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2025-08-31",
+      "operating_income": 1298000000.0,
+      "total_revenue": 22244000000.0,
+      "operating_margin": 0.0584
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2025-11-30",
+      "operating_income": 1621000000.0,
+      "total_revenue": 23469000000.0,
+      "operating_margin": 0.0691
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2026-02-28",
+      "operating_income": 1615000000.0,
+      "total_revenue": 24000000000.0,
+      "operating_margin": 0.0673
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "FDX",
+      "report_date": "2020-05-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2021-05-31",
+      "operating_income": 5973000000.0,
+      "total_revenue": 83959000000.0,
+      "operating_margin": 0.0711
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2022-05-31",
+      "operating_income": 6523000000.0,
+      "total_revenue": 93512000000.0,
+      "operating_margin": 0.0698
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2023-05-31",
+      "operating_income": 5338000000.0,
+      "total_revenue": 90155000000.0,
+      "operating_margin": 0.0592
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2024-05-31",
+      "operating_income": 6298000000.0,
+      "total_revenue": 87693000000.0,
+      "operating_margin": 0.0718
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2025-05-31",
+      "operating_income": 5994000000.0,
+      "total_revenue": 87926000000.0,
+      "operating_margin": 0.0682
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "FDX",
+      "report_date": "2022-05-31",
+      "net_income_common_stockholders": 558000000.0,
+      "total_revenue": 24394000000.0,
+      "net_margin": 0.0229
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2022-08-31",
+      "net_income_common_stockholders": 875000000.0,
+      "total_revenue": 23242000000.0,
+      "net_margin": 0.0376
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2022-11-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2023-02-28",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2023-05-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2023-08-31",
+      "net_income_common_stockholders": 1077000000.0,
+      "total_revenue": 21681000000.0,
+      "net_margin": 0.0497
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2023-11-30",
+      "net_income_common_stockholders": 898000000.0,
+      "total_revenue": 22165000000.0,
+      "net_margin": 0.0405
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2024-02-29",
+      "net_income_common_stockholders": 878000000.0,
+      "total_revenue": 21738000000.0,
+      "net_margin": 0.0404
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2024-05-31",
+      "net_income_common_stockholders": 1472000000.0,
+      "total_revenue": 22109000000.0,
+      "net_margin": 0.0666
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2024-08-31",
+      "net_income_common_stockholders": 793000000.0,
+      "total_revenue": 21579000000.0,
+      "net_margin": 0.0367
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2024-11-30",
+      "net_income_common_stockholders": 739000000.0,
+      "total_revenue": 21967000000.0,
+      "net_margin": 0.0336
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2025-02-28",
+      "net_income_common_stockholders": 908000000.0,
+      "total_revenue": 22160000000.0,
+      "net_margin": 0.041
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2025-05-31",
+      "net_income_common_stockholders": 1646000000.0,
+      "total_revenue": 22220000000.0,
+      "net_margin": 0.0741
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2025-08-31",
+      "net_income_common_stockholders": 823000000.0,
+      "total_revenue": 22244000000.0,
+      "net_margin": 0.037
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2025-11-30",
+      "net_income_common_stockholders": 955000000.0,
+      "total_revenue": 23469000000.0,
+      "net_margin": 0.0407
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2026-02-28",
+      "net_income_common_stockholders": 1054000000.0,
+      "total_revenue": 24000000000.0,
+      "net_margin": 0.0439
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "FDX",
+      "report_date": "2020-05-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2021-05-31",
+      "net_income_common_stockholders": 5220000000.0,
+      "total_revenue": 83959000000.0,
+      "net_margin": 0.0622
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2022-05-31",
+      "net_income_common_stockholders": 3819000000.0,
+      "total_revenue": 93512000000.0,
+      "net_margin": 0.0408
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2023-05-31",
+      "net_income_common_stockholders": 3966000000.0,
+      "total_revenue": 90155000000.0,
+      "net_margin": 0.044
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2024-05-31",
+      "net_income_common_stockholders": 4325000000.0,
+      "total_revenue": 87693000000.0,
+      "net_margin": 0.0493
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2025-05-31",
+      "net_income_common_stockholders": 4087000000.0,
+      "total_revenue": 87926000000.0,
+      "net_margin": 0.0465
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "FDX",
+      "report_date": "2022-05-31",
+      "ebitda": null,
+      "total_revenue": 24394000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2022-08-31",
+      "ebitda": 2253000000.0,
+      "total_revenue": 23242000000.0,
+      "ebitda_margin": 0.0969
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2022-11-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2023-02-28",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2023-05-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2023-08-31",
+      "ebitda": 2661000000.0,
+      "total_revenue": 21681000000.0,
+      "ebitda_margin": 0.1227
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2023-11-30",
+      "ebitda": 2461000000.0,
+      "total_revenue": 22165000000.0,
+      "ebitda_margin": 0.111
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2024-02-29",
+      "ebitda": 2429000000.0,
+      "total_revenue": 21738000000.0,
+      "ebitda_margin": 0.1117
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2024-05-31",
+      "ebitda": 3317000000.0,
+      "total_revenue": 22109000000.0,
+      "ebitda_margin": 0.15
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2024-08-31",
+      "ebitda": 2286000000.0,
+      "total_revenue": 21579000000.0,
+      "ebitda_margin": 0.1059
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2024-11-30",
+      "ebitda": 2441000000.0,
+      "total_revenue": 21967000000.0,
+      "ebitda_margin": 0.1111
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2025-02-28",
+      "ebitda": 2542000000.0,
+      "total_revenue": 22160000000.0,
+      "ebitda_margin": 0.1147
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2025-05-31",
+      "ebitda": 3230000000.0,
+      "total_revenue": 22220000000.0,
+      "ebitda_margin": 0.1454
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2025-08-31",
+      "ebitda": 2390000000.0,
+      "total_revenue": 22244000000.0,
+      "ebitda_margin": 0.1074
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2025-11-30",
+      "ebitda": 2689000000.0,
+      "total_revenue": 23469000000.0,
+      "ebitda_margin": 0.1146
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2026-02-28",
+      "ebitda": 2727000000.0,
+      "total_revenue": 24000000000.0,
+      "ebitda_margin": 0.1136
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "FDX",
+      "report_date": "2020-05-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2021-05-31",
+      "ebitda": 11260000000.0,
+      "total_revenue": 83959000000.0,
+      "ebitda_margin": 0.1341
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2022-05-31",
+      "ebitda": 9555000000.0,
+      "total_revenue": 93512000000.0,
+      "ebitda_margin": 0.1022
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2023-05-31",
+      "ebitda": 10233000000.0,
+      "total_revenue": 90155000000.0,
+      "ebitda_margin": 0.1135
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2024-05-31",
+      "ebitda": 10868000000.0,
+      "total_revenue": 87693000000.0,
+      "ebitda_margin": 0.1239
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2025-05-31",
+      "ebitda": 10494000000.0,
+      "total_revenue": 87926000000.0,
+      "ebitda_margin": 0.1194
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "FDX",
+      "report_date": "2022-05-31",
+      "free_cash_flow": 1118000000.0,
+      "total_revenue": 24394000000.0,
+      "fcf_margin": 0.0458
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2022-08-31",
+      "free_cash_flow": null,
+      "total_revenue": 23242000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2022-11-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2023-02-28",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2023-05-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2023-08-31",
+      "free_cash_flow": 940000000.0,
+      "total_revenue": 21681000000.0,
+      "fcf_margin": 0.0434
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2023-11-30",
+      "free_cash_flow": 469000000.0,
+      "total_revenue": 22165000000.0,
+      "fcf_margin": 0.0212
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2024-02-29",
+      "free_cash_flow": 231000000.0,
+      "total_revenue": 21738000000.0,
+      "fcf_margin": 0.0106
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2024-05-31",
+      "free_cash_flow": 1496000000.0,
+      "total_revenue": 22109000000.0,
+      "fcf_margin": 0.0677
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2024-08-31",
+      "free_cash_flow": 420000000.0,
+      "total_revenue": 21579000000.0,
+      "fcf_margin": 0.0195
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2024-11-30",
+      "free_cash_flow": 500000000.0,
+      "total_revenue": 21967000000.0,
+      "fcf_margin": 0.0228
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2025-02-28",
+      "free_cash_flow": 1015000000.0,
+      "total_revenue": 22160000000.0,
+      "fcf_margin": 0.0458
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2025-05-31",
+      "free_cash_flow": 1046000000.0,
+      "total_revenue": 22220000000.0,
+      "fcf_margin": 0.0471
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2025-08-31",
+      "free_cash_flow": 1093000000.0,
+      "total_revenue": 22244000000.0,
+      "fcf_margin": 0.0491
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2025-11-30",
+      "free_cash_flow": 1194000000.0,
+      "total_revenue": 23469000000.0,
+      "fcf_margin": 0.0509
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2026-02-28",
+      "free_cash_flow": 1038000000.0,
+      "total_revenue": 24000000000.0,
+      "fcf_margin": 0.0432
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "FDX",
+      "report_date": "2019-05-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2020-05-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2021-05-31",
+      "free_cash_flow": 4251000000.0,
+      "total_revenue": 83959000000.0,
+      "fcf_margin": 0.0506
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2022-05-31",
+      "free_cash_flow": 3069000000.0,
+      "total_revenue": 93512000000.0,
+      "fcf_margin": 0.0328
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2023-05-31",
+      "free_cash_flow": 2674000000.0,
+      "total_revenue": 90155000000.0,
+      "fcf_margin": 0.0297
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2024-05-31",
+      "free_cash_flow": 3136000000.0,
+      "total_revenue": 87693000000.0,
+      "fcf_margin": 0.0358
+    },
+    {
+      "symbol": "FDX",
+      "report_date": "2025-05-31",
+      "free_cash_flow": 2981000000.0,
+      "total_revenue": 87926000000.0,
+      "fcf_margin": 0.0339
+    }
+  ]
+}

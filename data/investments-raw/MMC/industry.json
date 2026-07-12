@@ -5725,6 +5725,27 @@
       "total_market_cap": 69088000.0,
       "total_ttm_net_income": 7533321.0,
       "industry_pe": 9.17
+    },
+    {
+      "report_date": "2026-07-06T00:00:00.000",
+      "industry": "Insurance Brokers",
+      "total_market_cap": 293028157318.63,
+      "total_ttm_net_income": 13120453339.95,
+      "industry_pe": 22.33
+    },
+    {
+      "report_date": "2026-07-07T00:00:00.000",
+      "industry": "Insurance Brokers",
+      "total_market_cap": 297387644472.13,
+      "total_ttm_net_income": 13120453339.95,
+      "industry_pe": 22.67
+    },
+    {
+      "report_date": "2026-07-08T00:00:00.000",
+      "industry": "Insurance Brokers",
+      "total_market_cap": 297133515675.99,
+      "total_ttm_net_income": 13112920018.95,
+      "industry_pe": 22.66
     }
   ],
   "ps_ratio": [
@@ -11453,6 +11474,27 @@
       "total_market_cap": 75578377.0,
       "total_ttm_revenue": 174262746.0,
       "industry_ps_ratio": 0.43
+    },
+    {
+      "report_date": "2026-07-06T00:00:00.000",
+      "industry": "Insurance Brokers",
+      "total_market_cap": 304462906754.63,
+      "total_ttm_revenue": 89900984591.23001,
+      "industry_ps_ratio": 3.39
+    },
+    {
+      "report_date": "2026-07-07T00:00:00.000",
+      "industry": "Insurance Brokers",
+      "total_market_cap": 308946099023.13,
+      "total_ttm_revenue": 89900984591.23001,
+      "industry_ps_ratio": 3.44
+    },
+    {
+      "report_date": "2026-07-08T00:00:00.000",
+      "industry": "Insurance Brokers",
+      "total_market_cap": 308211886860.99,
+      "total_ttm_revenue": 89879508845.23001,
+      "industry_ps_ratio": 3.43
     }
   ],
   "pb_ratio": [
@@ -18791,6 +18833,27 @@
       "total_market_cap": 75578429.72,
       "total_bve": 121647119.0,
       "industry_pb_ratio": 0.62
+    },
+    {
+      "report_date": "2026-07-06T00:00:00.000",
+      "industry": "Insurance Brokers",
+      "total_market_cap": 303196214148.77,
+      "total_bve": 75508117321.17001,
+      "industry_pb_ratio": 4.02
+    },
+    {
+      "report_date": "2026-07-07T00:00:00.000",
+      "industry": "Insurance Brokers",
+      "total_market_cap": 307145578426.64996,
+      "total_bve": 75508117321.17001,
+      "industry_pb_ratio": 4.07
+    },
+    {
+      "report_date": "2026-07-08T00:00:00.000",
+      "industry": "Insurance Brokers",
+      "total_market_cap": 306642940818.86,
+      "total_bve": 75446512202.17001,
+      "industry_pb_ratio": 4.06
     }
   ],
   "roe": [

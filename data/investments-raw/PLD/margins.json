@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "PLD",
+      "report_date": "2022-06-30",
+      "gross_profit": 924563000.0,
+      "total_revenue": 1252080000.0,
+      "gross_margin": 0.7384
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2022-09-30",
+      "gross_profit": 1335630000.0,
+      "total_revenue": 1750892000.0,
+      "gross_margin": 0.7628
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2023-06-30",
+      "gross_profit": 1912127000.0,
+      "total_revenue": 2450971000.0,
+      "gross_margin": 0.7802
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2023-09-30",
+      "gross_profit": 1414519000.0,
+      "total_revenue": 1914664000.0,
+      "gross_margin": 0.7388
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2023-12-31",
+      "gross_profit": 1402164000.0,
+      "total_revenue": 1889247000.0,
+      "gross_margin": 0.7422
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2024-03-31",
+      "gross_profit": 1423553000.0,
+      "total_revenue": 1956621000.0,
+      "gross_margin": 0.7276
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2024-06-30",
+      "gross_profit": 1492183000.0,
+      "total_revenue": 2007954000.0,
+      "gross_margin": 0.7431
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2024-09-30",
+      "gross_profit": 1547622000.0,
+      "total_revenue": 2036389000.0,
+      "gross_margin": 0.76
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2024-12-31",
+      "gross_profit": 1681011000.0,
+      "total_revenue": 2200646000.0,
+      "gross_margin": 0.7639
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2025-03-31",
+      "gross_profit": 1590571000.0,
+      "total_revenue": 2139665000.0,
+      "gross_margin": 0.7434
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2025-06-30",
+      "gross_profit": 1630989000.0,
+      "total_revenue": 2183869000.0,
+      "gross_margin": 0.7468
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2025-09-30",
+      "gross_profit": 1659976000.0,
+      "total_revenue": 2213881000.0,
+      "gross_margin": 0.7498
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2025-12-31",
+      "gross_profit": 1673937000.0,
+      "total_revenue": 2252712000.0,
+      "gross_margin": 0.7431
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2026-03-31",
+      "gross_profit": 1695551000.0,
+      "total_revenue": 2297723000.0,
+      "gross_margin": 0.7379
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "PLD",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2020-12-31",
+      "gross_profit": 3268631000.0,
+      "total_revenue": 4438735000.0,
+      "gross_margin": 0.7364
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2021-12-31",
+      "gross_profit": 3510953000.0,
+      "total_revenue": 4759440000.0,
+      "gross_margin": 0.7377
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2022-12-31",
+      "gross_profit": 4464598000.0,
+      "total_revenue": 5973692000.0,
+      "gross_margin": 0.7474
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2023-12-31",
+      "gross_profit": 6013134000.0,
+      "total_revenue": 8023469000.0,
+      "gross_margin": 0.7494
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2024-12-31",
+      "gross_profit": 6144369000.0,
+      "total_revenue": 8201610000.0,
+      "gross_margin": 0.7492
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2025-12-31",
+      "gross_profit": 6555473000.0,
+      "total_revenue": 8790127000.0,
+      "gross_margin": 0.7458
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "PLD",
+      "report_date": "2022-06-30",
+      "operating_income": 427515000.0,
+      "total_revenue": 1252080000.0,
+      "operating_margin": 0.3414
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2022-09-30",
+      "operating_income": 839273000.0,
+      "total_revenue": 1750892000.0,
+      "operating_margin": 0.4793
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2023-06-30",
+      "operating_income": 1202152000.0,
+      "total_revenue": 2450971000.0,
+      "operating_margin": 0.4905
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2023-09-30",
+      "operating_income": 663494000.0,
+      "total_revenue": 1914664000.0,
+      "operating_margin": 0.3465
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2023-12-31",
+      "operating_income": 643841000.0,
+      "total_revenue": 1889247000.0,
+      "operating_margin": 0.3408
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2024-03-31",
+      "operating_income": 662513000.0,
+      "total_revenue": 1956621000.0,
+      "operating_margin": 0.3386
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2024-06-30",
+      "operating_income": 736838000.0,
+      "total_revenue": 2007954000.0,
+      "operating_margin": 0.367
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2024-09-30",
+      "operating_income": 784520000.0,
+      "total_revenue": 2036389000.0,
+      "operating_margin": 0.3853
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2024-12-31",
+      "operating_income": 914170000.0,
+      "total_revenue": 2200646000.0,
+      "operating_margin": 0.4154
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2025-03-31",
+      "operating_income": 814163000.0,
+      "total_revenue": 2139665000.0,
+      "operating_margin": 0.3805
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2025-06-30",
+      "operating_income": 855191000.0,
+      "total_revenue": 2183869000.0,
+      "operating_margin": 0.3916
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2025-09-30",
+      "operating_income": 892591000.0,
+      "total_revenue": 2213881000.0,
+      "operating_margin": 0.4032
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2025-12-31",
+      "operating_income": 852357000.0,
+      "total_revenue": 2252712000.0,
+      "operating_margin": 0.3784
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2026-03-31",
+      "operating_income": 827032000.0,
+      "total_revenue": 2297723000.0,
+      "operating_margin": 0.3599
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "PLD",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2020-12-31",
+      "operating_income": 1401807000.0,
+      "total_revenue": 4438735000.0,
+      "operating_margin": 0.3158
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2021-12-31",
+      "operating_income": 1617409000.0,
+      "total_revenue": 4759440000.0,
+      "operating_margin": 0.3398
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2022-12-31",
+      "operating_income": 2280402000.0,
+      "total_revenue": 5973692000.0,
+      "operating_margin": 0.3817
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2023-12-31",
+      "operating_income": 3084483000.0,
+      "total_revenue": 8023469000.0,
+      "operating_margin": 0.3844
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2024-12-31",
+      "operating_income": 3098041000.0,
+      "total_revenue": 8201610000.0,
+      "operating_margin": 0.3777
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2025-12-31",
+      "operating_income": 3414302000.0,
+      "total_revenue": 8790127000.0,
+      "operating_margin": 0.3884
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "PLD",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 609855000.0,
+      "total_revenue": 1252080000.0,
+      "net_margin": 0.4871
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": 1013933000.0,
+      "total_revenue": 1750892000.0,
+      "net_margin": 0.5791
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 1214553000.0,
+      "total_revenue": 2450971000.0,
+      "net_margin": 0.4955
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 746174000.0,
+      "total_revenue": 1914664000.0,
+      "net_margin": 0.3897
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 629476000.0,
+      "total_revenue": 1889247000.0,
+      "net_margin": 0.3332
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 584263000.0,
+      "total_revenue": 1956621000.0,
+      "net_margin": 0.2986
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 859845000.0,
+      "total_revenue": 2007954000.0,
+      "net_margin": 0.4282
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1004267000.0,
+      "total_revenue": 2036389000.0,
+      "net_margin": 0.4932
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1277379000.0,
+      "total_revenue": 2200646000.0,
+      "net_margin": 0.5805
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 591501000.0,
+      "total_revenue": 2139665000.0,
+      "net_margin": 0.2764
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 569724000.0,
+      "total_revenue": 2183869000.0,
+      "net_margin": 0.2609
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 762897000.0,
+      "total_revenue": 2213881000.0,
+      "net_margin": 0.3446
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1398227000.0,
+      "total_revenue": 2252712000.0,
+      "net_margin": 0.6207
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 980476000.0,
+      "total_revenue": 2297723000.0,
+      "net_margin": 0.4267
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "PLD",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 1473122000.0,
+      "total_revenue": 4438735000.0,
+      "net_margin": 0.3319
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 2933571000.0,
+      "total_revenue": 4759440000.0,
+      "net_margin": 0.6164
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 3358796000.0,
+      "total_revenue": 5973692000.0,
+      "net_margin": 0.5623
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 3053373000.0,
+      "total_revenue": 8023469000.0,
+      "net_margin": 0.3806
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 3725754000.0,
+      "total_revenue": 8201610000.0,
+      "net_margin": 0.4543
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 3322349000.0,
+      "total_revenue": 8790127000.0,
+      "net_margin": 0.378
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "PLD",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 1252080000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2022-09-30",
+      "ebitda": 1573177000.0,
+      "total_revenue": 1750892000.0,
+      "ebitda_margin": 0.8985
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2023-06-30",
+      "ebitda": 2110704000.0,
+      "total_revenue": 2450971000.0,
+      "ebitda_margin": 0.8612
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2023-09-30",
+      "ebitda": 1663447000.0,
+      "total_revenue": 1914664000.0,
+      "ebitda_margin": 0.8688
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2023-12-31",
+      "ebitda": 1524450000.0,
+      "total_revenue": 1889247000.0,
+      "ebitda_margin": 0.8069
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2024-03-31",
+      "ebitda": 1494112000.0,
+      "total_revenue": 1956621000.0,
+      "ebitda_margin": 0.7636
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2024-06-30",
+      "ebitda": 1800132000.0,
+      "total_revenue": 2007954000.0,
+      "ebitda_margin": 0.8965
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2024-09-30",
+      "ebitda": 1947043000.0,
+      "total_revenue": 2036389000.0,
+      "ebitda_margin": 0.9561
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2024-12-31",
+      "ebitda": 2290786000.0,
+      "total_revenue": 2200646000.0,
+      "ebitda_margin": 1.041
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2025-03-31",
+      "ebitda": 1566961000.0,
+      "total_revenue": 2139665000.0,
+      "ebitda_margin": 0.7323
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2025-06-30",
+      "ebitda": 1554796000.0,
+      "total_revenue": 2183869000.0,
+      "ebitda_margin": 0.7119
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2025-09-30",
+      "ebitda": 1782068000.0,
+      "total_revenue": 2213881000.0,
+      "ebitda_margin": 0.805
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2025-12-31",
+      "ebitda": 2463918000.0,
+      "total_revenue": 2252712000.0,
+      "ebitda_margin": 1.0938
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2026-03-31",
+      "ebitda": 2078292000.0,
+      "total_revenue": 2297723000.0,
+      "ebitda_margin": 0.9045
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "PLD",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2020-12-31",
+      "ebitda": 3608964000.0,
+      "total_revenue": 4438735000.0,
+      "ebitda_margin": 0.8131
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2021-12-31",
+      "ebitda": 5150884000.0,
+      "total_revenue": 4759440000.0,
+      "ebitda_margin": 1.0822
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2022-12-31",
+      "ebitda": 5795490000.0,
+      "total_revenue": 5973692000.0,
+      "ebitda_margin": 0.9702
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2023-12-31",
+      "ebitda": 6567797000.0,
+      "total_revenue": 8023469000.0,
+      "ebitda_margin": 0.8186
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2024-12-31",
+      "ebitda": 7532693000.0,
+      "total_revenue": 8201610000.0,
+      "ebitda_margin": 0.9184
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2025-12-31",
+      "ebitda": 7367603000.0,
+      "total_revenue": 8790127000.0,
+      "ebitda_margin": 0.8382
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "PLD",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 803950000.0,
+      "total_revenue": 1252080000.0,
+      "fcf_margin": 0.6421
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": 1750892000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 1215138000.0,
+      "total_revenue": 2450971000.0,
+      "fcf_margin": 0.4958
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 1969201000.0,
+      "total_revenue": 1914664000.0,
+      "fcf_margin": 1.0285
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 1074422000.0,
+      "total_revenue": 1889247000.0,
+      "fcf_margin": 0.5687
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 1055460000.0,
+      "total_revenue": 1956621000.0,
+      "fcf_margin": 0.5394
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 1086453000.0,
+      "total_revenue": 2007954000.0,
+      "fcf_margin": 0.5411
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 1434845000.0,
+      "total_revenue": 2036389000.0,
+      "fcf_margin": 0.7046
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 1335451000.0,
+      "total_revenue": 2200646000.0,
+      "fcf_margin": 0.6068
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 1160753000.0,
+      "total_revenue": 2139665000.0,
+      "fcf_margin": 0.5425
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 1241717000.0,
+      "total_revenue": 2183869000.0,
+      "fcf_margin": 0.5686
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 1447728000.0,
+      "total_revenue": 2213881000.0,
+      "fcf_margin": 0.6539
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 1158236000.0,
+      "total_revenue": 2252712000.0,
+      "fcf_margin": 0.5142
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 1288136000.0,
+      "total_revenue": 2297723000.0,
+      "fcf_margin": 0.5606
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "PLD",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 2937005000.0,
+      "total_revenue": 4438735000.0,
+      "fcf_margin": 0.6617
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 2996042000.0,
+      "total_revenue": 4759440000.0,
+      "fcf_margin": 0.6295
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 4126430000.0,
+      "total_revenue": 5973692000.0,
+      "fcf_margin": 0.6908
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 5373058000.0,
+      "total_revenue": 8023469000.0,
+      "fcf_margin": 0.6697
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 4912209000.0,
+      "total_revenue": 8201610000.0,
+      "fcf_margin": 0.5989
+    },
+    {
+      "symbol": "PLD",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 5008434000.0,
+      "total_revenue": 8790127000.0,
+      "fcf_margin": 0.5698
+    }
+  ]
+}

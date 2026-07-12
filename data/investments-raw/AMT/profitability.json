@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "AMT",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 586900000.0,
+      "beginning_stockholders_equity": 5166400000.0,
+      "ending_stockholders_equity": 4533300000.0,
+      "avg_equity": 4849850000.0,
+      "roe": 0.121
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 84900000.0,
+      "beginning_stockholders_equity": 4533300000.0,
+      "ending_stockholders_equity": 4198200000.0,
+      "avg_equity": 4365750000.0,
+      "roe": 0.0194
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 917400000.0,
+      "beginning_stockholders_equity": 4198200000.0,
+      "ending_stockholders_equity": 4047800000.0,
+      "avg_equity": 4123000000.0,
+      "roe": 0.2225
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 900300000.0,
+      "beginning_stockholders_equity": 4047800000.0,
+      "ending_stockholders_equity": 3856000000.0,
+      "avg_equity": 3951900000.0,
+      "roe": 0.2278
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": -792300000.0,
+      "beginning_stockholders_equity": 3856000000.0,
+      "ending_stockholders_equity": 3641700000.0,
+      "avg_equity": 3748850000.0,
+      "roe": -0.2113
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1229600000.0,
+      "beginning_stockholders_equity": 3641700000.0,
+      "ending_stockholders_equity": 3382200000.0,
+      "avg_equity": 3511950000.0,
+      "roe": 0.3501
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 488700000.0,
+      "beginning_stockholders_equity": 3382200000.0,
+      "ending_stockholders_equity": 3534800000.0,
+      "avg_equity": 3458500000.0,
+      "roe": 0.1413
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 366800000.0,
+      "beginning_stockholders_equity": 3534800000.0,
+      "ending_stockholders_equity": 3712800000.0,
+      "avg_equity": 3623800000.0,
+      "roe": 0.1012
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 853300000.0,
+      "beginning_stockholders_equity": 3712800000.0,
+      "ending_stockholders_equity": 3952700000.0,
+      "avg_equity": 3832750000.0,
+      "roe": 0.2226
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 820700000.0,
+      "beginning_stockholders_equity": 3952700000.0,
+      "ending_stockholders_equity": 3652500000.0,
+      "avg_equity": 3802600000.0,
+      "roe": 0.2158
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 859500000.0,
+      "beginning_stockholders_equity": 3652500000.0,
+      "ending_stockholders_equity": 3522600000.0,
+      "avg_equity": 3587550000.0,
+      "roe": 0.2396
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "AMT",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 586900000.0,
+      "beginning_total_assets": 66879000000.0,
+      "ending_total_assets": 65653000000.0,
+      "avg_assets": 66266000000.0,
+      "roa": 0.0089
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 84900000.0,
+      "beginning_total_assets": 65653000000.0,
+      "ending_total_assets": 66027600000.0,
+      "avg_assets": 65840300000.0,
+      "roa": 0.0013
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 917400000.0,
+      "beginning_total_assets": 66027600000.0,
+      "ending_total_assets": 66679000000.0,
+      "avg_assets": 66353300000.0,
+      "roa": 0.0138
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 900300000.0,
+      "beginning_total_assets": 66679000000.0,
+      "ending_total_assets": 65837800000.0,
+      "avg_assets": 66258400000.0,
+      "roa": 0.0136
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": -792300000.0,
+      "beginning_total_assets": 65837800000.0,
+      "ending_total_assets": 62816800000.0,
+      "avg_assets": 64327300000.0,
+      "roa": -0.0123
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1229600000.0,
+      "beginning_total_assets": 62816800000.0,
+      "ending_total_assets": 61077400000.0,
+      "avg_assets": 61947100000.0,
+      "roa": 0.0198
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 488700000.0,
+      "beginning_total_assets": 61077400000.0,
+      "ending_total_assets": 62055600000.0,
+      "avg_assets": 61566500000.0,
+      "roa": 0.0079
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 366800000.0,
+      "beginning_total_assets": 62055600000.0,
+      "ending_total_assets": 63754500000.0,
+      "avg_assets": 62905050000.0,
+      "roa": 0.0058
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 853300000.0,
+      "beginning_total_assets": 63754500000.0,
+      "ending_total_assets": 63888700000.0,
+      "avg_assets": 63821600000.0,
+      "roa": 0.0134
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 820700000.0,
+      "beginning_total_assets": 63888700000.0,
+      "ending_total_assets": 63190400000.0,
+      "avg_assets": 63539550000.0,
+      "roa": 0.0129
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 859500000.0,
+      "beginning_total_assets": 63190400000.0,
+      "ending_total_assets": 63234600000.0,
+      "avg_assets": 63212500000.0,
+      "roa": 0.0136
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "AMT",
+      "report_date": "2023-09-30",
+      "ebit": 1180800000.0,
+      "tax_rate_for_calcs": 0.06,
+      "nopat": 1109952000.0,
+      "beginning_invested_capital": 43961000000.0,
+      "ending_invested_capital": 43133200000.0,
+      "avg_invested_capital": 43547100000.0,
+      "roic": 0.0255
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2023-12-31",
+      "ebit": 385900000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 304861000.0,
+      "beginning_invested_capital": 43133200000.0,
+      "ending_invested_capital": 42999500000.0,
+      "avg_invested_capital": 43066350000.0,
+      "roic": 0.0071
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-03-31",
+      "ebit": 1397600000.0,
+      "tax_rate_for_calcs": 0.11,
+      "nopat": 1243864000.0,
+      "beginning_invested_capital": 42999500000.0,
+      "ending_invested_capital": 43307300000.0,
+      "avg_invested_capital": 43153400000.0,
+      "roic": 0.0288
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-06-30",
+      "ebit": 1210000000.0,
+      "tax_rate_for_calcs": 0.09,
+      "nopat": 1101100000.0,
+      "beginning_invested_capital": 43307300000.0,
+      "ending_invested_capital": 42824400000.0,
+      "avg_invested_capital": 43065850000.0,
+      "roic": 0.0256
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-09-30",
+      "ebit": 907300000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 707694000.0,
+      "beginning_invested_capital": 42824400000.0,
+      "ending_invested_capital": 40740000000.0,
+      "avg_invested_capital": 41782200000.0,
+      "roic": 0.0169
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-12-31",
+      "ebit": 1626900000.0,
+      "tax_rate_for_calcs": 0.06,
+      "nopat": 1529286000.0,
+      "beginning_invested_capital": 40740000000.0,
+      "ending_invested_capital": 39884000000.0,
+      "avg_invested_capital": 40312000000.0,
+      "roic": 0.0379
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-03-31",
+      "ebit": 942800000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 763668000.0,
+      "beginning_invested_capital": 39884000000.0,
+      "ending_invested_capital": 40397100000.0,
+      "avg_invested_capital": 40140550000.0,
+      "roic": 0.019
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-06-30",
+      "ebit": 854400000.0,
+      "tax_rate_for_calcs": 0.26,
+      "nopat": 632256000.0,
+      "beginning_invested_capital": 40397100000.0,
+      "ending_invested_capital": 41197300000.0,
+      "avg_invested_capital": 40797200000.0,
+      "roic": 0.0155
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-09-30",
+      "ebit": 1297100000.0,
+      "tax_rate_for_calcs": 0.04,
+      "nopat": 1245216000.0,
+      "beginning_invested_capital": 41197300000.0,
+      "ending_invested_capital": 41191600000.0,
+      "avg_invested_capital": 41194450000.0,
+      "roic": 0.0302
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-12-31",
+      "ebit": 1309300000.0,
+      "tax_rate_for_calcs": 0.13,
+      "nopat": 1139091000.0,
+      "beginning_invested_capital": 41191600000.0,
+      "ending_invested_capital": 40872800000.0,
+      "avg_invested_capital": 41032200000.0,
+      "roic": 0.0278
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2026-03-31",
+      "ebit": 1365400000.0,
+      "tax_rate_for_calcs": 0.14,
+      "nopat": 1174244000.0,
+      "beginning_invested_capital": 40872800000.0,
+      "ending_invested_capital": 40844100000.0,
+      "avg_invested_capital": 40858450000.0,
+      "roic": 0.0287
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "AMT",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.121,
+      "roa": 0.0089,
+      "equity_multiplier": 13.6
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0194,
+      "roa": 0.0013,
+      "equity_multiplier": 14.92
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.2225,
+      "roa": 0.0138,
+      "equity_multiplier": 16.12
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.2278,
+      "roa": 0.0136,
+      "equity_multiplier": 16.75
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": -0.2113,
+      "roa": -0.0123,
+      "equity_multiplier": 17.18
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.3501,
+      "roa": 0.0198,
+      "equity_multiplier": 17.68
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.1413,
+      "roa": 0.0079,
+      "equity_multiplier": 17.89
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.1012,
+      "roa": 0.0058,
+      "equity_multiplier": 17.45
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.2226,
+      "roa": 0.0134,
+      "equity_multiplier": 16.61
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.2158,
+      "roa": 0.0129,
+      "equity_multiplier": 16.73
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.2396,
+      "roa": 0.0136,
+      "equity_multiplier": 17.62
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "AMT",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0089,
+      "net_margin": 0.2328,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0013,
+      "net_margin": 0.0305,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0138,
+      "net_margin": 0.3237,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0136,
+      "net_margin": 0.3538,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": -0.0123,
+      "net_margin": -0.3141,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0198,
+      "net_margin": 0.4827,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0079,
+      "net_margin": 0.1907,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0058,
+      "net_margin": 0.1396,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0134,
+      "net_margin": 0.314,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0129,
+      "net_margin": 0.2998,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "AMT",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0136,
+      "net_margin": 0.314,
+      "asset_turnover": 0.04
+    }
+  ]
+}

@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "SLB",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1123000000.0,
+      "beginning_stockholders_equity": 18608000000.0,
+      "ending_stockholders_equity": 19386000000.0,
+      "avg_equity": 18997000000.0,
+      "roe": 0.0591
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1112000000.0,
+      "beginning_stockholders_equity": 19386000000.0,
+      "ending_stockholders_equity": 20189000000.0,
+      "avg_equity": 19787500000.0,
+      "roe": 0.0562
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1068000000.0,
+      "beginning_stockholders_equity": 20189000000.0,
+      "ending_stockholders_equity": 20736000000.0,
+      "avg_equity": 20462500000.0,
+      "roe": 0.0522
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1112000000.0,
+      "beginning_stockholders_equity": 20736000000.0,
+      "ending_stockholders_equity": 21071000000.0,
+      "avg_equity": 20903500000.0,
+      "roe": 0.0532
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1186000000.0,
+      "beginning_stockholders_equity": 21071000000.0,
+      "ending_stockholders_equity": 21511000000.0,
+      "avg_equity": 21291000000.0,
+      "roe": 0.0557
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1095000000.0,
+      "beginning_stockholders_equity": 21511000000.0,
+      "ending_stockholders_equity": 21130000000.0,
+      "avg_equity": 21320500000.0,
+      "roe": 0.0514
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 797000000.0,
+      "beginning_stockholders_equity": 21130000000.0,
+      "ending_stockholders_equity": 19515000000.0,
+      "avg_equity": 20322500000.0,
+      "roe": 0.0392
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1014000000.0,
+      "beginning_stockholders_equity": 19515000000.0,
+      "ending_stockholders_equity": 20302000000.0,
+      "avg_equity": 19908500000.0,
+      "roe": 0.0509
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 739000000.0,
+      "beginning_stockholders_equity": 20302000000.0,
+      "ending_stockholders_equity": 25635000000.0,
+      "avg_equity": 22968500000.0,
+      "roe": 0.0322
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 824000000.0,
+      "beginning_stockholders_equity": 25635000000.0,
+      "ending_stockholders_equity": 26109000000.0,
+      "avg_equity": 25872000000.0,
+      "roe": 0.0318
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 752000000.0,
+      "beginning_stockholders_equity": 26109000000.0,
+      "ending_stockholders_equity": 26177000000.0,
+      "avg_equity": 26143000000.0,
+      "roe": 0.0288
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "SLB",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1123000000.0,
+      "beginning_total_assets": 44826000000.0,
+      "ending_total_assets": 45813000000.0,
+      "avg_assets": 45319500000.0,
+      "roa": 0.0248
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1112000000.0,
+      "beginning_total_assets": 45813000000.0,
+      "ending_total_assets": 47957000000.0,
+      "avg_assets": 46885000000.0,
+      "roa": 0.0237
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1068000000.0,
+      "beginning_total_assets": 47957000000.0,
+      "ending_total_assets": 47856000000.0,
+      "avg_assets": 47906500000.0,
+      "roa": 0.0223
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1112000000.0,
+      "beginning_total_assets": 47856000000.0,
+      "ending_total_assets": 49373000000.0,
+      "avg_assets": 48614500000.0,
+      "roa": 0.0229
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1186000000.0,
+      "beginning_total_assets": 49373000000.0,
+      "ending_total_assets": 49775000000.0,
+      "avg_assets": 49574000000.0,
+      "roa": 0.0239
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1095000000.0,
+      "beginning_total_assets": 49775000000.0,
+      "ending_total_assets": 48935000000.0,
+      "avg_assets": 49355000000.0,
+      "roa": 0.0222
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 797000000.0,
+      "beginning_total_assets": 48935000000.0,
+      "ending_total_assets": 49002000000.0,
+      "avg_assets": 48968500000.0,
+      "roa": 0.0163
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1014000000.0,
+      "beginning_total_assets": 49002000000.0,
+      "ending_total_assets": 48769000000.0,
+      "avg_assets": 48885500000.0,
+      "roa": 0.0207
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 739000000.0,
+      "beginning_total_assets": 48769000000.0,
+      "ending_total_assets": 55093000000.0,
+      "avg_assets": 51931000000.0,
+      "roa": 0.0142
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 824000000.0,
+      "beginning_total_assets": 55093000000.0,
+      "ending_total_assets": 54868000000.0,
+      "avg_assets": 54980500000.0,
+      "roa": 0.015
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 752000000.0,
+      "beginning_total_assets": 54868000000.0,
+      "ending_total_assets": 54526000000.0,
+      "avg_assets": 54697000000.0,
+      "roa": 0.0137
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "SLB",
+      "report_date": "2023-09-30",
+      "ebit": 1524000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 1234440000.0,
+      "beginning_invested_capital": 31943000000.0,
+      "ending_invested_capital": 32531000000.0,
+      "avg_invested_capital": 32237000000.0,
+      "roic": 0.0383
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2023-12-31",
+      "ebit": 1563000000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 1250400000.0,
+      "beginning_invested_capital": 32531000000.0,
+      "ending_invested_capital": 32154000000.0,
+      "avg_invested_capital": 32342500000.0,
+      "roic": 0.0387
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-03-31",
+      "ebit": 1470000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 1190700000.0,
+      "beginning_invested_capital": 32154000000.0,
+      "ending_invested_capital": 32906000000.0,
+      "avg_invested_capital": 32530000000.0,
+      "roic": 0.0366
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-06-30",
+      "ebit": 1553000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 1257930000.0,
+      "beginning_invested_capital": 32906000000.0,
+      "ending_invested_capital": 34260000000.0,
+      "avg_invested_capital": 33583000000.0,
+      "roic": 0.0375
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-09-30",
+      "ebit": 1643000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 1330830000.0,
+      "beginning_invested_capital": 34260000000.0,
+      "ending_invested_capital": 34434000000.0,
+      "avg_invested_capital": 34347000000.0,
+      "roic": 0.0387
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-12-31",
+      "ebit": 1518000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 1229580000.0,
+      "beginning_invested_capital": 34434000000.0,
+      "ending_invested_capital": 33204000000.0,
+      "avg_invested_capital": 33819000000.0,
+      "roic": 0.0364
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-03-31",
+      "ebit": 1210000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 943800000.0,
+      "beginning_invested_capital": 33204000000.0,
+      "ending_invested_capital": 33517000000.0,
+      "avg_invested_capital": 33360500000.0,
+      "roic": 0.0283
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-06-30",
+      "ebit": 1427000000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 1170140000.0,
+      "beginning_invested_capital": 33517000000.0,
+      "ending_invested_capital": 34000000000.0,
+      "avg_invested_capital": 33758500000.0,
+      "roic": 0.0347
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-09-30",
+      "ebit": 1142000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 879340000.0,
+      "beginning_invested_capital": 34000000000.0,
+      "ending_invested_capital": 38401000000.0,
+      "avg_invested_capital": 36200500000.0,
+      "roic": 0.0243
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-12-31",
+      "ebit": 1069000000.0,
+      "tax_rate_for_calcs": 0.15,
+      "nopat": 908650000.0,
+      "beginning_invested_capital": 38401000000.0,
+      "ending_invested_capital": 37745000000.0,
+      "avg_invested_capital": 38073000000.0,
+      "roic": 0.0239
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2026-03-31",
+      "ebit": 1072000000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 857600000.0,
+      "beginning_invested_capital": 37745000000.0,
+      "ending_invested_capital": 37785000000.0,
+      "avg_invested_capital": 37765000000.0,
+      "roic": 0.0227
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "SLB",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0591,
+      "roa": 0.0248,
+      "equity_multiplier": 2.38
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0562,
+      "roa": 0.0237,
+      "equity_multiplier": 2.37
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0522,
+      "roa": 0.0223,
+      "equity_multiplier": 2.34
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0532,
+      "roa": 0.0229,
+      "equity_multiplier": 2.32
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0557,
+      "roa": 0.0239,
+      "equity_multiplier": 2.33
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.0514,
+      "roa": 0.0222,
+      "equity_multiplier": 2.32
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0392,
+      "roa": 0.0163,
+      "equity_multiplier": 2.4
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.0509,
+      "roa": 0.0207,
+      "equity_multiplier": 2.46
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0322,
+      "roa": 0.0142,
+      "equity_multiplier": 2.27
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.0318,
+      "roa": 0.015,
+      "equity_multiplier": 2.12
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.0288,
+      "roa": 0.0137,
+      "equity_multiplier": 2.1
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "SLB",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0248,
+      "net_margin": 0.1351,
+      "asset_turnover": 0.18
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0237,
+      "net_margin": 0.1237,
+      "asset_turnover": 0.19
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0223,
+      "net_margin": 0.1227,
+      "asset_turnover": 0.18
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0229,
+      "net_margin": 0.1217,
+      "asset_turnover": 0.19
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0239,
+      "net_margin": 0.1295,
+      "asset_turnover": 0.18
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0222,
+      "net_margin": 0.1179,
+      "asset_turnover": 0.19
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0163,
+      "net_margin": 0.0939,
+      "asset_turnover": 0.17
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0207,
+      "net_margin": 0.1187,
+      "asset_turnover": 0.17
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0142,
+      "net_margin": 0.0828,
+      "asset_turnover": 0.17
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.015,
+      "net_margin": 0.0846,
+      "asset_turnover": 0.18
+    },
+    {
+      "symbol": "SLB",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0137,
+      "net_margin": 0.0862,
+      "asset_turnover": 0.16
+    }
+  ]
+}

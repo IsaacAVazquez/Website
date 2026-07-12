@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "EOG",
+    "name": "Chase  Krieger",
+    "title": "Vice President of Corporate Development",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "EOG",
+    "name": "Laura B. Distefano",
+    "title": "VP & Chief Accounting Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "EOG",
+    "name": "Lori A. Geiger",
+    "title": "Vice President of Marketing",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "EOG",
+    "name": "Mr. Ezra Y. Yacob",
+    "title": "CEO & Chairman",
+    "age": 48,
+    "born": 1977,
+    "pay": 4847008,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "EOG",
+    "name": "Mr. Jeffrey R. Leitzell",
+    "title": "Executive VP & COO",
+    "age": 45,
+    "born": 1980,
+    "pay": 1962005,
+    "exercised": 393989,
+    "unexercised": 731403,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "EOG",
+    "name": "Mr. Michael P. Donaldson",
+    "title": "Executive VP & Chief Legal Officer",
+    "age": 62,
+    "born": 1963,
+    "pay": 1996068,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "EOG",
+    "name": "Mr. Pearce Wheless Hammond Jr., C.F.A.",
+    "title": "Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "EOG",
+    "name": "Mr. Sandeep  Bhakhri",
+    "title": "Senior VP and Chief Information & Technology Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "EOG",
+    "name": "Ms. Ann D. Janssen",
+    "title": "Executive VP & CFO",
+    "age": 60,
+    "born": 1965,
+    "pay": 1787354,
+    "exercised": 0,
+    "unexercised": 1130262,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "EOG",
+    "name": "Ms. Michele L. Hatz",
+    "title": "Senior VP & Chief Human Resources Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  }
+]

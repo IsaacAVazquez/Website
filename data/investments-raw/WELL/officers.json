@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "WELL",
+    "name": "Mr. Jeff  Stott",
+    "title": "Chief Technology Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "WELL",
+    "name": "Mr. John  Olympitis",
+    "title": "Executive VP & Head of Corporate Development",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "WELL",
+    "name": "Mr. John F. Burkart",
+    "title": "Vice Chairman & COO",
+    "age": 61,
+    "born": 1964,
+    "pay": 2976500,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "WELL",
+    "name": "Mr. Joshua T. Fieweger",
+    "title": "Senior VP & Chief Accounting Officer",
+    "age": 44,
+    "born": 1981,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "WELL",
+    "name": "Mr. Matthew Grant McQueen J.D.",
+    "title": "Chief Legal Officer, General Counsel & Corporate Secretary",
+    "age": 52,
+    "born": 1973,
+    "pay": 2551500,
+    "exercised": 0,
+    "unexercised": 303325,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "WELL",
+    "name": "Mr. Nikhil  Chaudhri",
+    "title": "Co-President & Chief Investment Officer",
+    "age": 37,
+    "born": 1988,
+    "pay": 3551850,
+    "exercised": 0,
+    "unexercised": 657342,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "WELL",
+    "name": "Mr. Shankh S. Mitra",
+    "title": "CEO & Director",
+    "age": 44,
+    "born": 1981,
+    "pay": 7911537,
+    "exercised": 0,
+    "unexercised": 3033959,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "WELL",
+    "name": "Mr. Timothy G. McHugh C.F.A.",
+    "title": "Co-President & CFO",
+    "age": 40,
+    "born": 1985,
+    "pay": 3201500,
+    "exercised": 0,
+    "unexercised": 600609,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "WELL",
+    "name": "Mr. Tucker  Joseph",
+    "title": "Chief Information Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  },
+  {
+    "symbol": "WELL",
+    "name": "Ms. Pam  Byrne",
+    "title": "Senior VP & Head of Human Capital",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0,
+    "report_date": "2026-07-09"
+  }
+]

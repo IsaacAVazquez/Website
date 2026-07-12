@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "APH",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 513900000.0,
+      "beginning_stockholders_equity": 7513700000.0,
+      "ending_stockholders_equity": 7856800000.0,
+      "avg_equity": 7685250000.0,
+      "roe": 0.0669
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 514400000.0,
+      "beginning_stockholders_equity": 7856800000.0,
+      "ending_stockholders_equity": 8346500000.0,
+      "avg_equity": 8101650000.0,
+      "roe": 0.0635
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 548700000.0,
+      "beginning_stockholders_equity": 8346500000.0,
+      "ending_stockholders_equity": 8681500000.0,
+      "avg_equity": 8514000000.0,
+      "roe": 0.0644
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 524800000.0,
+      "beginning_stockholders_equity": 8681500000.0,
+      "ending_stockholders_equity": 8980100000.0,
+      "avg_equity": 8830800000.0,
+      "roe": 0.0594
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 604400000.0,
+      "beginning_stockholders_equity": 8980100000.0,
+      "ending_stockholders_equity": 9452500000.0,
+      "avg_equity": 9216300000.0,
+      "roe": 0.0656
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 746200000.0,
+      "beginning_stockholders_equity": 9452500000.0,
+      "ending_stockholders_equity": 9792000000.0,
+      "avg_equity": 9622250000.0,
+      "roe": 0.0775
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 737800000.0,
+      "beginning_stockholders_equity": 9792000000.0,
+      "ending_stockholders_equity": 10301200000.0,
+      "avg_equity": 10046600000.0,
+      "roe": 0.0734
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1091300000.0,
+      "beginning_stockholders_equity": 10301200000.0,
+      "ending_stockholders_equity": 11519300000.0,
+      "avg_equity": 10910250000.0,
+      "roe": 0.1
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1245700000.0,
+      "beginning_stockholders_equity": 11519300000.0,
+      "ending_stockholders_equity": 12520300000.0,
+      "avg_equity": 12019800000.0,
+      "roe": 0.1036
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1195500000.0,
+      "beginning_stockholders_equity": 12520300000.0,
+      "ending_stockholders_equity": 13413100000.0,
+      "avg_equity": 12966700000.0,
+      "roe": 0.0922
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 933000000.0,
+      "beginning_stockholders_equity": 13413100000.0,
+      "ending_stockholders_equity": 13976800000.0,
+      "avg_equity": 13694950000.0,
+      "roe": 0.0681
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "APH",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 513900000.0,
+      "beginning_total_assets": 15237900000.0,
+      "ending_total_assets": 15759000000.0,
+      "avg_assets": 15498450000.0,
+      "roa": 0.0332
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 514400000.0,
+      "beginning_total_assets": 15759000000.0,
+      "ending_total_assets": 16526400000.0,
+      "avg_assets": 16142700000.0,
+      "roa": 0.0319
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 548700000.0,
+      "beginning_total_assets": 16526400000.0,
+      "ending_total_assets": 16722500000.0,
+      "avg_assets": 16624450000.0,
+      "roa": 0.033
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 524800000.0,
+      "beginning_total_assets": 16722500000.0,
+      "ending_total_assets": 18586800000.0,
+      "avg_assets": 17654650000.0,
+      "roa": 0.0297
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 604400000.0,
+      "beginning_total_assets": 18586800000.0,
+      "ending_total_assets": 19585600000.0,
+      "avg_assets": 19086200000.0,
+      "roa": 0.0317
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 746200000.0,
+      "beginning_total_assets": 19585600000.0,
+      "ending_total_assets": 21440200000.0,
+      "avg_assets": 20512900000.0,
+      "roa": 0.0364
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 737800000.0,
+      "beginning_total_assets": 21440200000.0,
+      "ending_total_assets": 22902100000.0,
+      "avg_assets": 22171150000.0,
+      "roa": 0.0333
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1091300000.0,
+      "beginning_total_assets": 22902100000.0,
+      "ending_total_assets": 25668400000.0,
+      "avg_assets": 24285250000.0,
+      "roa": 0.0449
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1245700000.0,
+      "beginning_total_assets": 25668400000.0,
+      "ending_total_assets": 27143000000.0,
+      "avg_assets": 26405700000.0,
+      "roa": 0.0472
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1195500000.0,
+      "beginning_total_assets": 27143000000.0,
+      "ending_total_assets": 36236900000.0,
+      "avg_assets": 31689950000.0,
+      "roa": 0.0377
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 933000000.0,
+      "beginning_total_assets": 36236900000.0,
+      "ending_total_assets": 42133800000.0,
+      "avg_assets": 39185350000.0,
+      "roa": 0.0238
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "APH",
+      "report_date": "2023-09-30",
+      "ebit": 667100000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 547022000.0,
+      "beginning_invested_capital": 11832900000.0,
+      "ending_invested_capital": 12148800000.0,
+      "avg_invested_capital": 11990850000.0,
+      "roic": 0.0456
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2023-12-31",
+      "ebit": 700400000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 546312000.0,
+      "beginning_invested_capital": 12148800000.0,
+      "ending_invested_capital": 12683800000.0,
+      "avg_invested_capital": 12416300000.0,
+      "roic": 0.044
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-03-31",
+      "ebit": 700800000.0,
+      "tax_rate_for_calcs": 0.17,
+      "nopat": 581664000.0,
+      "beginning_invested_capital": 12683800000.0,
+      "ending_invested_capital": 12990900000.0,
+      "avg_invested_capital": 12837350000.0,
+      "roic": 0.0453
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-06-30",
+      "ebit": 720100000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 576080000.0,
+      "beginning_invested_capital": 12990900000.0,
+      "ending_invested_capital": 14419500000.0,
+      "avg_invested_capital": 13705200000.0,
+      "roic": 0.042
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-09-30",
+      "ebit": 830700000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 656253000.0,
+      "beginning_invested_capital": 14419500000.0,
+      "ending_invested_capital": 14936600000.0,
+      "avg_invested_capital": 14678050000.0,
+      "roic": 0.0447
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-12-31",
+      "ebit": 977200000.0,
+      "tax_rate_for_calcs": 0.17,
+      "nopat": 811076000.0,
+      "beginning_invested_capital": 14936600000.0,
+      "ending_invested_capital": 16678100000.0,
+      "avg_invested_capital": 15807350000.0,
+      "roic": 0.0513
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-03-31",
+      "ebit": 1039400000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 800338000.0,
+      "beginning_invested_capital": 16678100000.0,
+      "ending_invested_capital": 17468100000.0,
+      "avg_invested_capital": 17073100000.0,
+      "roic": 0.0469
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-06-30",
+      "ebit": 1429000000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 1171780000.0,
+      "beginning_invested_capital": 17468100000.0,
+      "ending_invested_capital": 19581700000.0,
+      "avg_invested_capital": 18524900000.0,
+      "roic": 0.0633
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-09-30",
+      "ebit": 1721600000.0,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": 1308416000.0,
+      "beginning_invested_capital": 19581700000.0,
+      "ending_invested_capital": 20587400000.0,
+      "avg_invested_capital": 20084550000.0,
+      "roic": 0.0651
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-12-31",
+      "ebit": 1778500000.0,
+      "tax_rate_for_calcs": 0.27,
+      "nopat": 1298305000.0,
+      "beginning_invested_capital": 20587400000.0,
+      "ending_invested_capital": 28915100000.0,
+      "avg_invested_capital": 24751250000.0,
+      "roic": 0.0525
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2026-03-31",
+      "ebit": 1853600000.0,
+      "tax_rate_for_calcs": 0.4,
+      "nopat": 1112160000.0,
+      "beginning_invested_capital": 28915100000.0,
+      "ending_invested_capital": 32725700000.0,
+      "avg_invested_capital": 30820400000.0,
+      "roic": 0.0361
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "APH",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0669,
+      "roa": 0.0332,
+      "equity_multiplier": 2.02
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0635,
+      "roa": 0.0319,
+      "equity_multiplier": 1.99
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0644,
+      "roa": 0.033,
+      "equity_multiplier": 1.95
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0594,
+      "roa": 0.0297,
+      "equity_multiplier": 2.0
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0656,
+      "roa": 0.0317,
+      "equity_multiplier": 2.07
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.0775,
+      "roa": 0.0364,
+      "equity_multiplier": 2.13
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0734,
+      "roa": 0.0333,
+      "equity_multiplier": 2.2
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.1,
+      "roa": 0.0449,
+      "equity_multiplier": 2.23
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.1036,
+      "roa": 0.0472,
+      "equity_multiplier": 2.19
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.0922,
+      "roa": 0.0377,
+      "equity_multiplier": 2.45
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.0681,
+      "roa": 0.0238,
+      "equity_multiplier": 2.86
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "APH",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0332,
+      "net_margin": 0.1606,
+      "asset_turnover": 0.21
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0319,
+      "net_margin": 0.1546,
+      "asset_turnover": 0.21
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.033,
+      "net_margin": 0.1685,
+      "asset_turnover": 0.2
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0297,
+      "net_margin": 0.1454,
+      "asset_turnover": 0.2
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0317,
+      "net_margin": 0.1496,
+      "asset_turnover": 0.21
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0364,
+      "net_margin": 0.1728,
+      "asset_turnover": 0.21
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0333,
+      "net_margin": 0.1534,
+      "asset_turnover": 0.22
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0449,
+      "net_margin": 0.1931,
+      "asset_turnover": 0.23
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0472,
+      "net_margin": 0.2011,
+      "asset_turnover": 0.23
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0377,
+      "net_margin": 0.1857,
+      "asset_turnover": 0.2
+    },
+    {
+      "symbol": "APH",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0238,
+      "net_margin": 0.1224,
+      "asset_turnover": 0.19
+    }
+  ]
+}

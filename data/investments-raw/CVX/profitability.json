@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "CVX",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 6526000000.0,
+      "beginning_stockholders_equity": 158325000000.0,
+      "ending_stockholders_equity": 165265000000.0,
+      "avg_equity": 161795000000.0,
+      "roe": 0.0403
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 2259000000.0,
+      "beginning_stockholders_equity": 165265000000.0,
+      "ending_stockholders_equity": 160957000000.0,
+      "avg_equity": 163111000000.0,
+      "roe": 0.0138
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 5501000000.0,
+      "beginning_stockholders_equity": 160957000000.0,
+      "ending_stockholders_equity": 160625000000.0,
+      "avg_equity": 160791000000.0,
+      "roe": 0.0342
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 4434000000.0,
+      "beginning_stockholders_equity": 160625000000.0,
+      "ending_stockholders_equity": 159233000000.0,
+      "avg_equity": 159929000000.0,
+      "roe": 0.0277
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 4487000000.0,
+      "beginning_stockholders_equity": 159233000000.0,
+      "ending_stockholders_equity": 156202000000.0,
+      "avg_equity": 157717500000.0,
+      "roe": 0.0284
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 3239000000.0,
+      "beginning_stockholders_equity": 156202000000.0,
+      "ending_stockholders_equity": 152318000000.0,
+      "avg_equity": 154260000000.0,
+      "roe": 0.021
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 3500000000.0,
+      "beginning_stockholders_equity": 152318000000.0,
+      "ending_stockholders_equity": 149244000000.0,
+      "avg_equity": 150781000000.0,
+      "roe": 0.0232
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 2490000000.0,
+      "beginning_stockholders_equity": 149244000000.0,
+      "ending_stockholders_equity": 146417000000.0,
+      "avg_equity": 147830500000.0,
+      "roe": 0.0168
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 3539000000.0,
+      "beginning_stockholders_equity": 146417000000.0,
+      "ending_stockholders_equity": 189843000000.0,
+      "avg_equity": 168130000000.0,
+      "roe": 0.021
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 2770000000.0,
+      "beginning_stockholders_equity": 189843000000.0,
+      "ending_stockholders_equity": 186450000000.0,
+      "avg_equity": 188146500000.0,
+      "roe": 0.0147
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 2210000000.0,
+      "beginning_stockholders_equity": 186450000000.0,
+      "ending_stockholders_equity": 183715000000.0,
+      "avg_equity": 185082500000.0,
+      "roe": 0.0119
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "CVX",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 6526000000.0,
+      "beginning_total_assets": 251779000000.0,
+      "ending_total_assets": 263927000000.0,
+      "avg_assets": 257853000000.0,
+      "roa": 0.0253
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 2259000000.0,
+      "beginning_total_assets": 263927000000.0,
+      "ending_total_assets": 261632000000.0,
+      "avg_assets": 262779500000.0,
+      "roa": 0.0086
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 5501000000.0,
+      "beginning_total_assets": 261632000000.0,
+      "ending_total_assets": 261651000000.0,
+      "avg_assets": 261641500000.0,
+      "roa": 0.021
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 4434000000.0,
+      "beginning_total_assets": 261651000000.0,
+      "ending_total_assets": 260644000000.0,
+      "avg_assets": 261147500000.0,
+      "roa": 0.017
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 4487000000.0,
+      "beginning_total_assets": 260644000000.0,
+      "ending_total_assets": 259232000000.0,
+      "avg_assets": 259938000000.0,
+      "roa": 0.0173
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 3239000000.0,
+      "beginning_total_assets": 259232000000.0,
+      "ending_total_assets": 256938000000.0,
+      "avg_assets": 258085000000.0,
+      "roa": 0.0126
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 3500000000.0,
+      "beginning_total_assets": 256938000000.0,
+      "ending_total_assets": 256397000000.0,
+      "avg_assets": 256667500000.0,
+      "roa": 0.0136
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 2490000000.0,
+      "beginning_total_assets": 256397000000.0,
+      "ending_total_assets": 250820000000.0,
+      "avg_assets": 253608500000.0,
+      "roa": 0.0098
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 3539000000.0,
+      "beginning_total_assets": 250820000000.0,
+      "ending_total_assets": 326501000000.0,
+      "avg_assets": 288660500000.0,
+      "roa": 0.0123
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 2770000000.0,
+      "beginning_total_assets": 326501000000.0,
+      "ending_total_assets": 324012000000.0,
+      "avg_assets": 325256500000.0,
+      "roa": 0.0085
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 2210000000.0,
+      "beginning_total_assets": 324012000000.0,
+      "ending_total_assets": 329551000000.0,
+      "avg_assets": 326781500000.0,
+      "roa": 0.0068
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "CVX",
+      "report_date": "2023-09-30",
+      "ebit": 8852000000.0,
+      "tax_rate_for_calcs": 0.25,
+      "nopat": 6639000000.0,
+      "beginning_invested_capital": 179839000000.0,
+      "ending_invested_capital": 185824000000.0,
+      "avg_invested_capital": 182831500000.0,
+      "roic": 0.0363
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2023-12-31",
+      "ebit": 3610000000.0,
+      "tax_rate_for_calcs": 0.36,
+      "nopat": 2310400000.0,
+      "beginning_invested_capital": 185824000000.0,
+      "ending_invested_capital": 181159000000.0,
+      "avg_invested_capital": 183491500000.0,
+      "roic": 0.0126
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-03-31",
+      "ebit": 8040000000.0,
+      "tax_rate_for_calcs": 0.3,
+      "nopat": 5628000000.0,
+      "beginning_invested_capital": 181159000000.0,
+      "ending_invested_capital": 182460000000.0,
+      "avg_invested_capital": 181809500000.0,
+      "roic": 0.031
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-06-30",
+      "ebit": 7149000000.0,
+      "tax_rate_for_calcs": 0.37,
+      "nopat": 4503870000.0,
+      "beginning_invested_capital": 182460000000.0,
+      "ending_invested_capital": 182417000000.0,
+      "avg_invested_capital": 182438500000.0,
+      "roic": 0.0247
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-09-30",
+      "ebit": 6653000000.0,
+      "tax_rate_for_calcs": 0.31,
+      "nopat": 4590570000.0,
+      "beginning_invested_capital": 182417000000.0,
+      "ending_invested_capital": 182043000000.0,
+      "avg_invested_capital": 182230000000.0,
+      "roic": 0.0252
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-12-31",
+      "ebit": 6258000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 4943820000.0,
+      "beginning_invested_capital": 182043000000.0,
+      "ending_invested_capital": 176255000000.0,
+      "avg_invested_capital": 179149000000.0,
+      "roic": 0.0276
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-03-31",
+      "ebit": 5795000000.0,
+      "tax_rate_for_calcs": 0.37,
+      "nopat": 3650850000.0,
+      "beginning_invested_capital": 176255000000.0,
+      "ending_invested_capital": 178925000000.0,
+      "avg_invested_capital": 177590000000.0,
+      "roic": 0.0206
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-06-30",
+      "ebit": 4421000000.0,
+      "tax_rate_for_calcs": 0.39,
+      "nopat": 2696810000.0,
+      "beginning_invested_capital": 178925000000.0,
+      "ending_invested_capital": 175884000000.0,
+      "avg_invested_capital": 177404500000.0,
+      "roic": 0.0152
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-09-30",
+      "ebit": 5784000000.0,
+      "tax_rate_for_calcs": 0.33,
+      "nopat": 3875280000.0,
+      "beginning_invested_capital": 175884000000.0,
+      "ending_invested_capital": 231387000000.0,
+      "avg_invested_capital": 203635500000.0,
+      "roic": 0.019
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-12-31",
+      "ebit": 4960000000.0,
+      "tax_rate_for_calcs": 0.38,
+      "nopat": 3075200000.0,
+      "beginning_invested_capital": 231387000000.0,
+      "ending_invested_capital": 225763000000.0,
+      "avg_invested_capital": 228575000000.0,
+      "roic": 0.0135
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2026-03-31",
+      "ebit": 4291000000.0,
+      "tax_rate_for_calcs": 0.4,
+      "nopat": 2574600000.0,
+      "beginning_invested_capital": 225763000000.0,
+      "ending_invested_capital": 229143000000.0,
+      "avg_invested_capital": 227453000000.0,
+      "roic": 0.0113
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "CVX",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0403,
+      "roa": 0.0253,
+      "equity_multiplier": 1.59
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0138,
+      "roa": 0.0086,
+      "equity_multiplier": 1.6
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0342,
+      "roa": 0.021,
+      "equity_multiplier": 1.63
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0277,
+      "roa": 0.017,
+      "equity_multiplier": 1.63
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0284,
+      "roa": 0.0173,
+      "equity_multiplier": 1.64
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.021,
+      "roa": 0.0126,
+      "equity_multiplier": 1.67
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0232,
+      "roa": 0.0136,
+      "equity_multiplier": 1.71
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.0168,
+      "roa": 0.0098,
+      "equity_multiplier": 1.71
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.021,
+      "roa": 0.0123,
+      "equity_multiplier": 1.71
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.0147,
+      "roa": 0.0085,
+      "equity_multiplier": 1.73
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.0119,
+      "roa": 0.0068,
+      "equity_multiplier": 1.75
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "CVX",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0253,
+      "net_margin": 0.1257,
+      "asset_turnover": 0.2
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0086,
+      "net_margin": 0.0462,
+      "asset_turnover": 0.19
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.021,
+      "net_margin": 0.1181,
+      "asset_turnover": 0.18
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.017,
+      "net_margin": 0.0894,
+      "asset_turnover": 0.19
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0173,
+      "net_margin": 0.0917,
+      "asset_turnover": 0.19
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0126,
+      "net_margin": 0.067,
+      "asset_turnover": 0.19
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0136,
+      "net_margin": 0.0759,
+      "asset_turnover": 0.18
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0098,
+      "net_margin": 0.0561,
+      "asset_turnover": 0.17
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0123,
+      "net_margin": 0.0735,
+      "asset_turnover": 0.17
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0085,
+      "net_margin": 0.0605,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "CVX",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0068,
+      "net_margin": 0.0465,
+      "asset_turnover": 0.15
+    }
+  ]
+}
