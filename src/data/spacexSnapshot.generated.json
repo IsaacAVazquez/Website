@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-11T22:11:32.341Z",
+  "generatedAt": "2026-07-12T10:49:15.938Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -128,7 +128,7 @@
       {
         "id": "upcoming",
         "label": "Upcoming queue",
-        "value": "128",
+        "value": "129",
         "description": "currently published future SpaceX missions from Launch Library 2"
       },
       {
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-07-11T22:11:28.018Z"
+    "generatedAt": "2026-07-12T10:49:11.233Z"
   },
   "upcomingLaunches": [
     {
@@ -234,49 +234,9 @@
       }
     },
     {
-      "id": "ac897b9f-44d2-4ff4-8416-1a0a076e98a2",
-      "name": "Flight 13",
-      "flightNumber": 705,
-      "upcoming": true,
-      "success": null,
-      "details": "13th test flight of the two-stage Starship launch vehicle. Second flight of Starship V3",
-      "dateUtc": "2026-07-15T22:45:00Z",
-      "dateUnix": 1784155500,
-      "dateLocal": "2026-07-15T22:45:00Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Starship V3",
-      "launchpadName": "Orbital Launch Pad 2",
-      "launchpadLocation": "SpaceX Starbase, TX, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/0be5c2f84b0c0132.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 2,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": "https://www.spacex.com/vehicles/starship/",
-        "wikipedia": "https://en.wikipedia.org/wiki/SpaceX_Starship",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/0be5c2f84b0c0132.jpg"
-        ]
-      }
-    },
-    {
       "id": "d9adedc4-8fa1-4a36-84f9-43b8893a6865",
       "name": "SDA Tranche 1 Transport Layer E",
-      "flightNumber": 706,
+      "flightNumber": 705,
       "upcoming": true,
       "success": null,
       "details": "Tranche 1 Transport Layer E is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.",
@@ -310,6 +270,46 @@
         "patchLarge": null,
         "flickrOriginal": [
           "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
+      "id": "ac897b9f-44d2-4ff4-8416-1a0a076e98a2",
+      "name": "Flight 13",
+      "flightNumber": 706,
+      "upcoming": true,
+      "success": null,
+      "details": "13th test flight of the two-stage Starship launch vehicle. Second flight of Starship V3.\r\n\r\nFor the first time, Starship will carry 20 V3 Starlink satellites to space, which will extend solar arrays and antennas and will attempt to connect with ground stations in South Africa and the larger Starlink constellation via high-capacity lasers. \r\n\r\n6 of the satellites have been modified with a suite of cameras to scan Starship’s heat shield and transmit imagery down to operators to continue testing methods of analyzing Starship’s heat shield readiness for return to launch site on future missions. Several tiles on Starship have been painted white to simulate missing tiles and serve as imaging targets in the test.",
+      "dateUtc": "2026-07-16T22:45:00Z",
+      "dateUnix": 1784241900,
+      "dateLocal": "2026-07-16T22:45:00Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Starship V3",
+      "launchpadName": "Orbital Launch Pad 2",
+      "launchpadLocation": "SpaceX Starbase, TX, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/0be5c2f84b0c0132.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 2,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": "https://www.spacex.com/vehicles/starship/",
+        "wikipedia": "https://en.wikipedia.org/wiki/SpaceX_Starship",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/0be5c2f84b0c0132.jpg"
         ]
       }
     },
@@ -394,46 +394,6 @@
       }
     },
     {
-      "id": "be8b4b0d-1989-48a5-a96d-e8e4d59ed8b3",
-      "name": "Globalstar 2-R Mission 1 (x 9)",
-      "flightNumber": 710,
-      "upcoming": true,
-      "success": null,
-      "details": "The Globalstar global mobile communications network offers global, digital real time voice, data and fax services via its Low Earth Orbit satellite constellation. The constellation operates in a 1410 km orbit inclined at 52 degrees.\r\n\r\nIn early 2022, Globalstar contracted with MDA for the construction of 17 new 2nd generation refresh satellites to replenish the existing constellation. Rocket Lab is sub-contracted to build the satellites' buses and the launch dispensers.",
-      "dateUtc": "2026-07-31T00:00:00Z",
-      "dateUnix": 1785456000,
-      "dateLocal": "2026-07-31T00:00:00Z",
-      "datePrecision": "month",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 40",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Globalstar",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
       "id": "0f6780cf-edae-4d7c-99d6-ce7de784d140",
       "name": "MRV-1",
       "flightNumber": 710,
@@ -461,6 +421,46 @@
         "webcast": null,
         "article": null,
         "wikipedia": "",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
+      "id": "be8b4b0d-1989-48a5-a96d-e8e4d59ed8b3",
+      "name": "Globalstar 2-R Mission 1 (x 9)",
+      "flightNumber": 710,
+      "upcoming": true,
+      "success": null,
+      "details": "The Globalstar global mobile communications network offers global, digital real time voice, data and fax services via its Low Earth Orbit satellite constellation. The constellation operates in a 1410 km orbit inclined at 52 degrees.\r\n\r\nIn early 2022, Globalstar contracted with MDA for the construction of 17 new 2nd generation refresh satellites to replenish the existing constellation. Rocket Lab is sub-contracted to build the satellites' buses and the launch dispensers.",
+      "dateUtc": "2026-07-31T00:00:00Z",
+      "dateUnix": 1785456000,
+      "dateLocal": "2026-07-31T00:00:00Z",
+      "datePrecision": "month",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 40",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Globalstar",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -634,12 +634,12 @@
       }
     },
     {
-      "id": "cb1762f0-90f4-4902-a5f6-655a7ade25bf",
-      "name": "SDA Tranche 2 Tracking Layer B",
+      "id": "fcbc4550-e69e-4458-a9e6-4a5b6b6b15a5",
+      "name": "SDA Tranche 1 Tracking Layer E",
       "flightNumber": 724,
       "upcoming": true,
       "success": null,
-      "details": "Classified mission launched by the Space Development Agency (SDA) for Tranche 2 Tracking Layer.",
+      "details": "Tranche 1 Tracking Layer E is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
       "dateUtc": "2026-09-30T00:00:00Z",
       "dateUnix": 1790726400,
       "dateLocal": "2026-09-30T00:00:00Z",
@@ -647,128 +647,8 @@
       "tbd": true,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Unknown Pad",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
-      "id": "ad358a4d-c541-409b-9366-9c2f2da4aeb9",
-      "name": "O3b mPower 11-13",
-      "flightNumber": 724,
-      "upcoming": true,
-      "success": null,
-      "details": "3 high-throughput communications satellites in Medium Earth Orbit (MEO) built by Boeing and operated by SES.",
-      "dateUtc": "2026-09-30T00:00:00Z",
-      "dateUnix": 1790726400,
-      "dateLocal": "2026-09-30T00:00:00Z",
-      "datePrecision": "month",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Unknown Pad",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/SES_S.A.",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
-      "id": "18441371-8b2e-457c-afb5-1ec1b11ab630",
-      "name": "Crew-13",
-      "flightNumber": 724,
-      "upcoming": true,
-      "success": null,
-      "details": "SpaceX Crew-13 is the thirteenth crewed operational flight of a Crew Dragon spacecraft to the International Space Station as part of NASA's Commercial Crew Program.",
-      "dateUtc": "2026-09-30T00:00:00Z",
-      "dateUnix": 1790726400,
-      "dateLocal": "2026-09-30T00:00:00Z",
-      "datePrecision": "month",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 40",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/b210241b31da2900.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": "https://www.nasa.gov/exploration/commercial/crew/index.html",
-        "wikipedia": "https://en.wikipedia.org/wiki/Commercial_Crew_Program",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/b210241b31da2900.jpg"
-        ]
-      }
-    },
-    {
-      "id": "0a07a23e-606a-4589-bf3e-c3e41bd4de51",
-      "name": "SDA Tranche 2 Tracking Layer A",
-      "flightNumber": 724,
-      "upcoming": true,
-      "success": null,
-      "details": "Classified mission launched by the Space Development Agency (SDA) for Tranche 2 Tracking Layer.",
-      "dateUtc": "2026-09-30T00:00:00Z",
-      "dateUnix": 1790726400,
-      "dateLocal": "2026-09-30T00:00:00Z",
-      "datePrecision": "quarter",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Unknown Pad",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
       "patchImage": null,
       "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
       "crewCount": 0,
@@ -834,12 +714,12 @@
       }
     },
     {
-      "id": "fcbc4550-e69e-4458-a9e6-4a5b6b6b15a5",
-      "name": "SDA Tranche 1 Tracking Layer E",
+      "id": "c5783e2b-d458-4b99-9936-4043c236190b",
+      "name": "SDA Tranche 1 Transport Layer F",
       "flightNumber": 724,
       "upcoming": true,
       "success": null,
-      "details": "Tranche 1 Tracking Layer E is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
+      "details": "Tranche 1 Transport Layer F is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.",
       "dateUtc": "2026-09-30T00:00:00Z",
       "dateUnix": 1790726400,
       "dateLocal": "2026-09-30T00:00:00Z",
@@ -874,12 +754,52 @@
       }
     },
     {
-      "id": "c5783e2b-d458-4b99-9936-4043c236190b",
-      "name": "SDA Tranche 1 Transport Layer F",
+      "id": "cb1762f0-90f4-4902-a5f6-655a7ade25bf",
+      "name": "SDA Tranche 2 Tracking Layer B",
       "flightNumber": 724,
       "upcoming": true,
       "success": null,
-      "details": "Tranche 1 Transport Layer F is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.",
+      "details": "Classified mission launched by the Space Development Agency (SDA) for Tranche 2 Tracking Layer.",
+      "dateUtc": "2026-09-30T00:00:00Z",
+      "dateUnix": 1790726400,
+      "dateLocal": "2026-09-30T00:00:00Z",
+      "datePrecision": "quarter",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Unknown Pad",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
+      "id": "4541ce85-0e38-42ac-a9a0-20474bb5f2cd",
+      "name": "SDA Tranche 1 Transport Layer D",
+      "flightNumber": 724,
+      "upcoming": true,
+      "success": null,
+      "details": "Tranche 1 Transport Layer D is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.",
       "dateUtc": "2026-09-30T00:00:00Z",
       "dateUnix": 1790726400,
       "dateLocal": "2026-09-30T00:00:00Z",
@@ -889,6 +809,46 @@
       "rocketName": "Falcon 9 Block 5",
       "launchpadName": "Space Launch Complex 4E",
       "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
+      "id": "0a07a23e-606a-4589-bf3e-c3e41bd4de51",
+      "name": "SDA Tranche 2 Tracking Layer A",
+      "flightNumber": 724,
+      "upcoming": true,
+      "success": null,
+      "details": "Classified mission launched by the Space Development Agency (SDA) for Tranche 2 Tracking Layer.",
+      "dateUtc": "2026-09-30T00:00:00Z",
+      "dateUnix": 1790726400,
+      "dateLocal": "2026-09-30T00:00:00Z",
+      "datePrecision": "quarter",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Unknown Pad",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
       "patchImage": null,
       "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
       "crewCount": 0,
@@ -994,21 +954,21 @@
       }
     },
     {
-      "id": "4541ce85-0e38-42ac-a9a0-20474bb5f2cd",
-      "name": "SDA Tranche 1 Transport Layer D",
+      "id": "ad358a4d-c541-409b-9366-9c2f2da4aeb9",
+      "name": "O3b mPower 11-13",
       "flightNumber": 724,
       "upcoming": true,
       "success": null,
-      "details": "Tranche 1 Transport Layer D is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.",
+      "details": "3 high-throughput communications satellites in Medium Earth Orbit (MEO) built by Boeing and operated by SES.",
       "dateUtc": "2026-09-30T00:00:00Z",
       "dateUnix": 1790726400,
       "dateLocal": "2026-09-30T00:00:00Z",
-      "datePrecision": "quarter",
+      "datePrecision": "month",
       "tbd": true,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "launchpadName": "Unknown Pad",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
       "patchImage": null,
       "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
       "crewCount": 0,
@@ -1020,7 +980,7 @@
       "links": {
         "webcast": null,
         "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
+        "wikipedia": "https://en.wikipedia.org/wiki/SES_S.A.",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -1030,6 +990,46 @@
         "patchLarge": null,
         "flickrOriginal": [
           "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
+      "id": "18441371-8b2e-457c-afb5-1ec1b11ab630",
+      "name": "Crew-13",
+      "flightNumber": 724,
+      "upcoming": true,
+      "success": null,
+      "details": "SpaceX Crew-13 is the thirteenth crewed operational flight of a Crew Dragon spacecraft to the International Space Station as part of NASA's Commercial Crew Program.",
+      "dateUtc": "2026-09-30T00:00:00Z",
+      "dateUnix": 1790726400,
+      "dateLocal": "2026-09-30T00:00:00Z",
+      "datePrecision": "month",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 40",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/b210241b31da2900.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": "https://www.nasa.gov/exploration/commercial/crew/index.html",
+        "wikipedia": "https://en.wikipedia.org/wiki/Commercial_Crew_Program",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/b210241b31da2900.jpg"
         ]
       }
     },
@@ -2180,13 +2180,13 @@
     "ac897b9f-44d2-4ff4-8416-1a0a076e98a2": {
       "id": "ac897b9f-44d2-4ff4-8416-1a0a076e98a2",
       "name": "Flight 13",
-      "flightNumber": 705,
+      "flightNumber": 706,
       "upcoming": true,
       "success": null,
-      "details": "13th test flight of the two-stage Starship launch vehicle. Second flight of Starship V3",
-      "dateUtc": "2026-07-15T22:45:00Z",
-      "dateUnix": 1784155500,
-      "dateLocal": "2026-07-15T22:45:00Z",
+      "details": "13th test flight of the two-stage Starship launch vehicle. Second flight of Starship V3.\r\n\r\nFor the first time, Starship will carry 20 V3 Starlink satellites to space, which will extend solar arrays and antennas and will attempt to connect with ground stations in South Africa and the larger Starlink constellation via high-capacity lasers. \r\n\r\n6 of the satellites have been modified with a suite of cameras to scan Starship’s heat shield and transmit imagery down to operators to continue testing methods of analyzing Starship’s heat shield readiness for return to launch site on future missions. Several tiles on Starship have been painted white to simulate missing tiles and serve as imaging targets in the test.",
+      "dateUtc": "2026-07-16T22:45:00Z",
+      "dateUnix": 1784241900,
+      "dateLocal": "2026-07-16T22:45:00Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -2203,7 +2203,7 @@
       "isStaleSchedule": false,
       "links": {
         "webcast": null,
-        "article": "https://www.spacex.com/vehicles/starship/",
+        "article": "https://www.spacex.com/launches/starship-flight-13",
         "wikipedia": "https://en.wikipedia.org/wiki/SpaceX_Starship",
         "presskit": null,
         "redditLaunch": null,
@@ -2217,7 +2217,7 @@
         ]
       },
       "staticFireDateUtc": null,
-      "window": 7860,
+      "window": 5400,
       "failures": [],
       "rocket": {
         "id": "522",
@@ -2571,6 +2571,105 @@
       "capsules": [],
       "cores": []
     },
+    "d9adedc4-8fa1-4a36-84f9-43b8893a6865": {
+      "id": "d9adedc4-8fa1-4a36-84f9-43b8893a6865",
+      "name": "SDA Tranche 1 Transport Layer E",
+      "flightNumber": 705,
+      "upcoming": true,
+      "success": null,
+      "details": "Tranche 1 Transport Layer E is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.",
+      "dateUtc": "2026-07-16T20:22:00Z",
+      "dateUnix": 1784233320,
+      "dateLocal": "2026-07-16T20:22:00Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      },
+      "staticFireDateUtc": null,
+      "window": 2820,
+      "failures": [],
+      "rocket": {
+        "id": "164",
+        "name": "Falcon 9 Block 5",
+        "type": "Block 5",
+        "active": true,
+        "boosters": 0,
+        "stages": 2,
+        "costPerLaunch": 52000000,
+        "successRatePct": 100,
+        "firstFlight": "2018-05-11",
+        "company": "SpaceX",
+        "country": "USA",
+        "description": "Falcon 9 is a two-stage rocket designed and manufactured by SpaceX for the reliable and safe transport of satellites and the Dragon spacecraft into orbit. The Block 5 variant is the fifth major interval aimed at improving upon the ability for rapid reusability.",
+        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_9",
+        "heightMeters": 70,
+        "diameterMeters": 3.65,
+        "massKg": 549000,
+        "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
+        "flickrImages": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      },
+      "launchpad": {
+        "id": "16",
+        "name": "Space Launch Complex 4E",
+        "fullName": "Space Launch Complex 4E",
+        "locality": "Vandenberg SFB, CA, USA",
+        "region": null,
+        "timezone": "America/Los_Angeles",
+        "status": null,
+        "details": "Space Launch Complex 4 East (SLC-4E) is a launch site at Vandenberg Space Force Base, California, U.S.\r\n\r\nThe pad was previously used by Atlas and Titan rockets between 1963 and 2005. The pad was built for use by Atlas-Agena rockets, but was later rebuilt to handle Titan rockets.",
+        "image": "/data/spacex/images/b752567507d74cae.jpg"
+      },
+      "crew": [],
+      "payloads": [
+        {
+          "id": "6404",
+          "name": "SDA Tranche 1 Transport Layer E",
+          "type": "Government/Top Secret",
+          "customers": [
+            "Space Development Agency"
+          ],
+          "manufacturers": [
+            "SpaceX"
+          ],
+          "nationalities": [
+            "USA"
+          ],
+          "orbit": "Polar Orbit",
+          "regime": "PO",
+          "massKg": null,
+          "massLbs": null
+        }
+      ],
+      "capsules": [],
+      "cores": []
+    },
     "62d4cd48-ed28-418b-b58c-526781a50a39": {
       "id": "62d4cd48-ed28-418b-b58c-526781a50a39",
       "name": "Starlink Group 10-42",
@@ -2835,6 +2934,6 @@
       }
     ],
     "rangeLabel": "Aug 25 – Jul 26",
-    "generatedAt": "2026-07-11T22:11:32.340Z"
+    "generatedAt": "2026-07-12T10:49:15.937Z"
   }
 }
