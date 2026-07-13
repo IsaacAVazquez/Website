@@ -10,7 +10,14 @@ import {
   generateProfessionalServiceSchema,
   generateProfilePageSchema,
   generateProjectSchema,
+  type PersonSchemaData,
 } from "../ai-seo";
+
+// generateArticleSchema handles string authors/keywords at runtime (via typeof /
+// Array.isArray guards), but ArticleSchemaData types them narrower. Cast the raw
+// strings so tsc is satisfied while still exercising those runtime branches.
+const stringAuthor = (name: string) => name as unknown as PersonSchemaData;
+const stringKeywords = (value: string) => value as unknown as string[];
 
 describe("AI SEO structured-data generators", () => {
   it("does not fabricate article freshness dates", () => {
@@ -227,7 +234,7 @@ describe("generateArticleSchema (rich fields)", () => {
     const schema = generateArticleSchema({
       headline: "Piece",
       image: ["a.png", "b.png"],
-      author: [{ name: "Isaac" }, "Guest Writer"],
+      author: [{ name: "Isaac" }, stringAuthor("Guest Writer")],
       publisher: { name: "Self", url: "https://isaacavazquez.com" },
       articleSection: "Essays",
       articleBody: "Body text",
@@ -255,8 +262,8 @@ describe("generateArticleSchema (rich fields)", () => {
   it("unwraps a single author into an object rather than an array", () => {
     const schema = generateArticleSchema({
       headline: "Piece",
-      author: "Solo Author",
-      keywords: "single-string",
+      author: stringAuthor("Solo Author"),
+      keywords: stringKeywords("single-string"),
     }) as Record<string, unknown>;
 
     expect(Array.isArray(schema.author)).toBe(false);
