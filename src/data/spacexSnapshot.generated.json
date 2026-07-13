@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-12T22:12:14.121Z",
+  "generatedAt": "2026-07-13T12:18:56.772Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-07-12T22:12:07.167Z"
+    "generatedAt": "2026-07-13T12:18:52.028Z"
   },
   "upcomingLaunches": [
     {
@@ -394,46 +394,6 @@
       }
     },
     {
-      "id": "0f6780cf-edae-4d7c-99d6-ce7de784d140",
-      "name": "MRV-1",
-      "flightNumber": 710,
-      "upcoming": true,
-      "success": null,
-      "details": "The SpaceLogistics MRV-1 is a mission extension payload including a mission robotic vehicle (MRV) and multiple mission extension pods (MEPs).",
-      "dateUtc": "2026-07-31T00:00:00Z",
-      "dateUnix": 1785456000,
-      "dateLocal": "2026-07-31T00:00:00Z",
-      "datePrecision": "month",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Unknown Pad",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
       "id": "be8b4b0d-1989-48a5-a96d-e8e4d59ed8b3",
       "name": "Globalstar 2-R Mission 1 (x 9)",
       "flightNumber": 710,
@@ -461,6 +421,46 @@
         "webcast": null,
         "article": null,
         "wikipedia": "https://en.wikipedia.org/wiki/Globalstar",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
+      "id": "0f6780cf-edae-4d7c-99d6-ce7de784d140",
+      "name": "MRV-1",
+      "flightNumber": 710,
+      "upcoming": true,
+      "success": null,
+      "details": "The SpaceLogistics MRV-1 is a mission extension payload including a mission robotic vehicle (MRV) and multiple mission extension pods (MEPs).",
+      "dateUtc": "2026-07-31T00:00:00Z",
+      "dateUnix": 1785456000,
+      "dateLocal": "2026-07-31T00:00:00Z",
+      "datePrecision": "month",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Unknown Pad",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -514,46 +514,6 @@
       }
     },
     {
-      "id": "c703fab3-2ce4-4cf1-861d-754da3f3ad42",
-      "name": "SDA Tranche 2 Transport Layer A",
-      "flightNumber": 714,
-      "upcoming": true,
-      "success": null,
-      "details": "Classified mission launched by the Space Development Agency (SDA) for Tranche 2 Transport Layer.",
-      "dateUtc": "2026-08-31T00:00:00Z",
-      "dateUnix": 1788134400,
-      "dateLocal": "2026-08-31T00:00:00Z",
-      "datePrecision": "month",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
       "id": "bf2c3027-a314-403e-a416-2bfd5d165ad1",
       "name": "Dragon CRS-2 SpX-35",
       "flightNumber": 714,
@@ -590,6 +550,46 @@
         "patchLarge": null,
         "flickrOriginal": [
           "/data/spacex/images/23daeec6dfd54d52.jpg"
+        ]
+      }
+    },
+    {
+      "id": "c703fab3-2ce4-4cf1-861d-754da3f3ad42",
+      "name": "SDA Tranche 2 Transport Layer A",
+      "flightNumber": 714,
+      "upcoming": true,
+      "success": null,
+      "details": "Classified mission launched by the Space Development Agency (SDA) for Tranche 2 Transport Layer.",
+      "dateUtc": "2026-08-31T00:00:00Z",
+      "dateUnix": 1788134400,
+      "dateLocal": "2026-08-31T00:00:00Z",
+      "datePrecision": "month",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
         ]
       }
     },
@@ -674,12 +674,52 @@
       }
     },
     {
-      "id": "2d0472b9-463d-49c8-afb1-7925e49a3368",
-      "name": "SDA Tranche 1 Tracking Layer A",
+      "id": "cb1762f0-90f4-4902-a5f6-655a7ade25bf",
+      "name": "SDA Tranche 2 Tracking Layer B",
       "flightNumber": 724,
       "upcoming": true,
       "success": null,
-      "details": "Tranche 1 Tracking Layer A is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
+      "details": "Classified mission launched by the Space Development Agency (SDA) for Tranche 2 Tracking Layer.",
+      "dateUtc": "2026-09-30T00:00:00Z",
+      "dateUnix": 1790726400,
+      "dateLocal": "2026-09-30T00:00:00Z",
+      "datePrecision": "quarter",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Unknown Pad",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
+      "id": "da43dc2c-00af-4cc1-8ef1-90a60b2eb9e5",
+      "name": "SDA Tranche 1 Transport Layer A",
+      "flightNumber": 724,
+      "upcoming": true,
+      "success": null,
+      "details": "Tranche 1 Transport Layer A is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.\r\n\r\nThis launch carries 21 satellites manufactured by Northrop Grumman.",
       "dateUtc": "2026-09-30T00:00:00Z",
       "dateUnix": 1790726400,
       "dateLocal": "2026-09-30T00:00:00Z",
@@ -692,7 +732,7 @@
       "patchImage": null,
       "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
       "crewCount": 0,
-      "payloadCount": 1,
+      "payloadCount": 21,
       "capsuleCount": 0,
       "coreCount": 1,
       "hasExactTime": false,
@@ -754,12 +794,12 @@
       }
     },
     {
-      "id": "cb1762f0-90f4-4902-a5f6-655a7ade25bf",
-      "name": "SDA Tranche 2 Tracking Layer B",
+      "id": "4541ce85-0e38-42ac-a9a0-20474bb5f2cd",
+      "name": "SDA Tranche 1 Transport Layer D",
       "flightNumber": 724,
       "upcoming": true,
       "success": null,
-      "details": "Classified mission launched by the Space Development Agency (SDA) for Tranche 2 Tracking Layer.",
+      "details": "Tranche 1 Transport Layer D is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.",
       "dateUtc": "2026-09-30T00:00:00Z",
       "dateUnix": 1790726400,
       "dateLocal": "2026-09-30T00:00:00Z",
@@ -767,8 +807,8 @@
       "tbd": true,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Unknown Pad",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
       "patchImage": null,
       "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
       "crewCount": 0,
@@ -794,12 +834,12 @@
       }
     },
     {
-      "id": "4541ce85-0e38-42ac-a9a0-20474bb5f2cd",
-      "name": "SDA Tranche 1 Transport Layer D",
+      "id": "2d0472b9-463d-49c8-afb1-7925e49a3368",
+      "name": "SDA Tranche 1 Tracking Layer A",
       "flightNumber": 724,
       "upcoming": true,
       "success": null,
-      "details": "Tranche 1 Transport Layer D is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.",
+      "details": "Tranche 1 Tracking Layer A is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
       "dateUtc": "2026-09-30T00:00:00Z",
       "dateUnix": 1790726400,
       "dateLocal": "2026-09-30T00:00:00Z",
@@ -893,46 +933,6 @@
       "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
       "crewCount": 0,
       "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
-      "id": "da43dc2c-00af-4cc1-8ef1-90a60b2eb9e5",
-      "name": "SDA Tranche 1 Transport Layer A",
-      "flightNumber": 724,
-      "upcoming": true,
-      "success": null,
-      "details": "Tranche 1 Transport Layer A is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.\r\n\r\nThis launch carries 21 satellites manufactured by Northrop Grumman.",
-      "dateUtc": "2026-09-30T00:00:00Z",
-      "dateUnix": 1790726400,
-      "dateLocal": "2026-09-30T00:00:00Z",
-      "datePrecision": "quarter",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 21,
       "capsuleCount": 0,
       "coreCount": 1,
       "hasExactTime": false,
@@ -2934,6 +2934,6 @@
       }
     ],
     "rangeLabel": "Aug 25 – Jul 26",
-    "generatedAt": "2026-07-12T22:12:14.120Z"
+    "generatedAt": "2026-07-13T12:18:56.772Z"
   }
 }
