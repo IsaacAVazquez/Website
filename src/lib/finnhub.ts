@@ -68,6 +68,15 @@ const INDEX_JSON_PATH = path.join(
 
 let cachedAllowlist: Set<string> | null = null;
 
+export class FinnhubAllowlistUnavailableError extends Error {
+  readonly status = 503;
+
+  constructor() {
+    super("Curated symbol list is temporarily unavailable.");
+    this.name = "FinnhubAllowlistUnavailableError";
+  }
+}
+
 function toSymbolSet(parsed: { symbols?: unknown }): Set<string> {
   const symbols = Array.isArray(parsed.symbols)
     ? parsed.symbols.filter((s): s is string => typeof s === "string")
@@ -135,7 +144,7 @@ export async function getAllowedSymbols(
   console.error(
     "finnhub: failed to resolve investments allowlist from disk or public asset"
   );
-  return new Set<string>();
+  throw new FinnhubAllowlistUnavailableError();
 }
 
 export async function isAllowedSymbol(

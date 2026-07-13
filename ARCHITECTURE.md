@@ -81,8 +81,8 @@ Update workflow:
 - `npm run update:football` — full update for both leagues (~16 min, run locally then commit snapshots)
 - `npm run update:premier-league` — PL only
 - `npm run update:la-liga` — La Liga only
-- `prebuild` runs a standings/fixtures/scorers-only fast path through `scripts/updateFootballSnapshots.ts --league-only`
-- GitHub Actions also provide daily per-league snapshot refresh workflows
+- GitHub Actions provide daily per-league snapshot refresh workflows
+- production builds consume committed snapshots without calling football-data.org
 
 ### March Madness
 
@@ -218,14 +218,14 @@ The system is token-driven:
 
 - deployed on Netlify
 - build command comes from `netlify.toml`
-- `prebuild` runs the fast football snapshot refresh path before `next build`
+- production builds consume committed snapshots without running data refreshes
 - `next-sitemap` runs after build
 - `next.config.mjs` handles redirects, tracing exclusions, image config, and bundle splitting
 
 Notable build constraints:
 
 - `better-sqlite3` and `sharp` are kept out of inappropriate bundles
-- `typescript.ignoreBuildErrors` is still enabled, so doc and code reviewers should not assume builds are type-clean
+- `npm run typecheck` is enforced in CI before the production build
 
 ---
 

@@ -42,6 +42,13 @@ changes.
 | Frontier models | `update:frontier-models` | `buildFrontierModelsSnapshot.ts` | `scripts/data/frontierModels.source.ts` | `src/data/frontierModelsSnapshot.ts` | none — curated | manual |
 | Article cover images | `update:article-images` | `buildArticleCoverImages.ts` (plan: `scripts/data/articleCoverImages.ts`) | Wikimedia Commons *(no token)* | `public/images/writing/covers/*` + `content/blog/*.mdx` frontmatter | `update-article-images.yml` | weekly Mon 06:40 UTC + dispatch |
 
+Investment raw provider responses under `data/investments-raw/` are transient
+builder inputs. The directory is gitignored for new files, but existing
+historical files remain tracked until the repository cleanup migration. The
+workflow commits only the compact public snapshots, which keeps the raw files
+out of automated commits, and a failed symbol keeps its prior snapshot and
+original freshness metadata.
+
 **No update path (not snapshot-built):**
 - `/polling-aggregator` — static committed `src/data/pollingSnapshot.ts`, edited by hand.
 - `/news-pulse` — API-backed at request time (`/api/news-pulse`), no committed snapshot.
@@ -59,17 +66,17 @@ changes.
 
 ---
 
-## Build-time refresh (Netlify)
+## Build and refresh boundary
 
-- `prebuild` runs `tsx scripts/updateFootballSnapshots.ts --league-only` on every
-  deploy — the fast standings/fixtures/scorers path for the two soccer leagues.
-- A daily cron-job.org ping to the Netlify build hook triggers a production
-  deploy, so the league-only football refresh and any newly committed snapshots
-  go live without manual steps.
-- **NFL is intentionally not in `prebuild`** — it refreshes only via
-  `update-nfl.yml` (or a manual run).
-- `update:football` (the ~16-min full refresh, incl. per-team fixtures + form) is
-  a **local weekly** task, not a build step.
+- Production builds consume committed snapshots and never call external data
+  providers. This keeps deploys reproducible and prevents a provider outage from
+  changing or delaying an otherwise unrelated release.
+- Premier League and La Liga refresh through their dedicated daily workflows;
+  NFL refreshes through `update-nfl.yml` (or a manual run).
+- `update:football` (the ~16-min full refresh, including per-team fixtures and
+  form) remains an explicit local task, not a build step.
+- A deploy hook publishes newly committed snapshots, but publication must be
+  verified separately from the refresh job.
 
 ---
 

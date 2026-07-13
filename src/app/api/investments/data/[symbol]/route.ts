@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import type { InvestmentSection } from "@/types/investment";
 import { getInvestmentContext, getInvestmentDataEnvelope } from "@/lib/investmentsData";
-import { isAllowedSymbol } from "@/lib/finnhub";
+import { FinnhubAllowlistUnavailableError, isAllowedSymbol } from "@/lib/finnhub";
 import { logger } from "@/lib/logger";
+import { buildQueryCacheHeaders, NO_STORE_HEADERS } from "@/lib/apiCacheHeaders";
 
 const VALID_SECTIONS: InvestmentSection[] = [
   "price",
@@ -23,10 +24,9 @@ const VALID_SECTIONS: InvestmentSection[] = [
   "officers",
 ];
 
-const SUCCESS_CACHE_HEADERS = {
-  "Cache-Control": "public, max-age=3600, stale-while-revalidate=86400",
-};
-const NO_STORE_HEADERS = { "Cache-Control": "no-store" };
+const SUCCESS_CACHE_HEADERS = buildQueryCacheHeaders(
+  "public, max-age=3600, stale-while-revalidate=86400"
+);
 
 /**
  * Strict symbol shape. Forbids leading dots/dashes and consecutive
@@ -87,6 +87,13 @@ export async function GET(
       headers: SUCCESS_CACHE_HEADERS,
     });
   } catch (error) {
+    if (error instanceof FinnhubAllowlistUnavailableError) {
+      return NextResponse.json(
+        { error: error.message },
+        { status: error.status, headers: NO_STORE_HEADERS }
+      );
+    }
+
     const err = error as Error & { status?: number };
     logger.error("Investments data API error", error);
     const status = err.status ?? 500;

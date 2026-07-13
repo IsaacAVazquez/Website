@@ -306,6 +306,7 @@ export async function buildBayAreaTransitSnapshotData(): Promise<TransitSnapshot
 
   // 5. Elevator outages.
   let elevator: TransitElevatorStatus[];
+  let elevatorStatus: "fresh" | "unavailable" = "fresh";
   try {
     const elevatorResponse = await fetchBartJson<{
       root?: { bsa?: BartAdvisory | BartAdvisory[] | null } | null;
@@ -326,6 +327,7 @@ export async function buildBayAreaTransitSnapshotData(): Promise<TransitSnapshot
       });
   } catch {
     elevator = [];
+    elevatorStatus = "unavailable";
   }
 
   // 6. Real-time departures for every station in one call.
@@ -412,6 +414,11 @@ export async function buildBayAreaTransitSnapshotData(): Promise<TransitSnapshot
     stations,
     advisories,
     elevator,
+    sectionStatus: {
+      advisories: "fresh",
+      elevator: elevatorStatus,
+      departures: "fresh",
+    },
     defaultStation,
   };
 

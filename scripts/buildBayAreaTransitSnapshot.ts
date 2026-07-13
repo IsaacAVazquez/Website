@@ -5,8 +5,8 @@
  *   npm run update:bay-area-transit
  *
  * BART's legacy API needs no token (the published demo key is baked into the
- * builder). If the fetch or parse fails, the existing snapshot is kept instead
- * of being wiped — matching the Formula 1 and golf pipelines.
+ * builder). If the fetch or parse fails, the existing snapshot stays on disk
+ * and the command exits nonzero so automation reports the failed attempt.
  */
 
 import { renameSync, writeFileSync } from "node:fs";
@@ -57,7 +57,6 @@ async function main() {
         "🚆 Transit snapshot refresh failed; keeping the existing snapshot.",
         error
       );
-      return;
     }
     throw error;
   }

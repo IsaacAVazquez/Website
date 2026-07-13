@@ -26,9 +26,25 @@ describe("GET /api/spacex/launches", () => {
     const body = await response.json();
 
     expect(response.status).toBe(400);
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
     expect(body.error).toMatch(/invalid status/i);
     expect(mockGetMissionLaunchCards).not.toHaveBeenCalled();
   });
+
+  it.each(["0", "1.5", "6launches", "101"])(
+    "rejects invalid limits without caching them",
+    async (limit) => {
+      const response = await GET(
+        new NextRequest(
+          `https://isaacavazquez.com/api/spacex/launches?status=upcoming&limit=${limit}`
+        )
+      );
+
+      expect(response.status).toBe(400);
+      expect(response.headers.get("Cache-Control")).toBe("no-store");
+      expect(mockGetMissionLaunchCards).not.toHaveBeenCalled();
+    }
+  );
 
   it("returns normalized launch cards with cache headers", async () => {
     mockGetMissionLaunchCards.mockResolvedValue([
@@ -81,6 +97,7 @@ describe("GET /api/spacex/launches", () => {
     expect(body.launches).toHaveLength(1);
     expect(mockGetMissionLaunchCards).toHaveBeenCalledWith("past", 6);
     expect(response.headers.get("Cache-Control")).toContain("max-age=120");
+    expect(response.headers.get("Netlify-Vary")).toBe("query");
   });
 
   it("maps upstream rate limits to a provider-unavailable response", async () => {
@@ -94,6 +111,7 @@ describe("GET /api/spacex/launches", () => {
     const body = await response.json();
 
     expect(response.status).toBe(503);
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
     expect(body.error).toMatch(/temporarily rate limited/i);
     expect(body.launches).toEqual([]);
   });

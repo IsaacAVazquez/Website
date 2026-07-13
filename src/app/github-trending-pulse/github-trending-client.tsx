@@ -243,6 +243,13 @@ export function GitHubTrendingClient({
               <Clock3 aria-hidden="true" size={14} />
               {snapshot.activityWindowDays}d active repo window
             </span>
+            {snapshot.sourceStatus?.status === "degraded" ? (
+              <span className="inline-flex min-h-[32px] items-center gap-2 rounded-full border border-[var(--home-warning)] bg-[color-mix(in_srgb,var(--home-warning)_8%,var(--home-paper-alt))] px-3 text-[var(--home-warning)]">
+                {snapshot.sourceStatus.reusedSegments.length > 0
+                  ? `${snapshot.sourceStatus.reusedSegments.length} segments using earlier data`
+                  : `${snapshot.sourceStatus.failedSegments.length} segments unavailable`}
+              </span>
+            ) : null}
           </div>
         </div>
 

@@ -2,7 +2,9 @@ import { promises as fs } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import {
+  FRONTIER_MODELS_AS_OF,
   FRONTIER_MODELS_SOURCE,
+  FRONTIER_MODELS_VERIFIED,
   PROVIDER_LABELS,
 } from "./data/frontierModels.source";
 import { buildFrontierModelsSnapshot as buildSnapshotData } from "../src/lib/frontierModels";
@@ -36,7 +38,10 @@ export async function buildFrontierModelsSnapshot(
   const snapshot = buildSnapshotData(
     FRONTIER_MODELS_SOURCE,
     PROVIDER_LABELS,
-    generatedAt
+    generatedAt,
+    "Curated by Isaac Vazquez",
+    FRONTIER_MODELS_AS_OF,
+    FRONTIER_MODELS_VERIFIED
   );
 
   const fileContents = `import type { FrontierModelsSnapshot } from "@/types/frontierModels";

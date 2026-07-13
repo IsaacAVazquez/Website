@@ -100,6 +100,12 @@ export default async function InvestmentsPage({ searchParams }: InvestmentsPageP
         initialState={initialState}
         datasetLastUpdated={index?.lastUpdated ?? null}
         datasetSymbolCount={index?.symbols?.length ?? 0}
+        datasetFreshCount={
+          index?.freshCount ?? index?.entries?.filter((entry) => !entry.stale).length ?? 0
+        }
+        datasetStaleCount={
+          index?.staleCount ?? index?.entries?.filter((entry) => entry.stale).length ?? 0
+        }
         datasetFailedCount={index?.failed?.length ?? 0}
       />
     </>

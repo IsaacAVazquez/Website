@@ -13,6 +13,7 @@ Current API route inventory for the app.
 | Route | Methods | Notes |
 |------|---------|-------|
 | `/api/auth/[...nextauth]` | GET, POST | NextAuth credential auth for `/admin` |
+| `/api/data-revisions` | GET | No-cache revision and freshness ledger used to verify production publication |
 
 ### Fantasy football
 

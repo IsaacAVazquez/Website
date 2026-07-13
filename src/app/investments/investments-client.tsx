@@ -15,6 +15,8 @@ interface InvestmentsClientProps {
   initialState: InvestmentsSearchState;
   datasetLastUpdated?: string | null;
   datasetSymbolCount?: number;
+  datasetFreshCount?: number;
+  datasetStaleCount?: number;
   datasetFailedCount?: number;
 }
 
@@ -22,6 +24,8 @@ export function InvestmentsClient({
   initialState,
   datasetLastUpdated = null,
   datasetSymbolCount = 0,
+  datasetFreshCount = 0,
+  datasetStaleCount = 0,
   datasetFailedCount = 0,
 }: InvestmentsClientProps) {
   const router = useRouter();
@@ -106,6 +110,8 @@ export function InvestmentsClient({
           onResearchTabChange={handleTabChange}
           datasetLastUpdated={datasetLastUpdated}
           datasetSymbolCount={datasetSymbolCount}
+          datasetFreshCount={datasetFreshCount}
+          datasetStaleCount={datasetStaleCount}
           datasetFailedCount={datasetFailedCount}
         />
       </div>

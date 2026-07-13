@@ -70,6 +70,11 @@ export interface GitHubTrendingSnapshot {
   languages: GitHubTrendingSegment[];
   topics: GitHubTrendingSegment[];
   totals: GitHubTrendingSnapshotTotals;
+  sourceStatus?: {
+    status: "fresh" | "degraded";
+    failedSegments: string[];
+    reusedSegments: string[];
+  };
 }
 
 /**

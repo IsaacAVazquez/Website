@@ -177,6 +177,66 @@ function normalizeRepository(
   };
 }
 
+function restorePreviousSegment(
+  segment: TrackedSegmentConfig,
+  previousSnapshot: GitHubTrendingSnapshot | null
+): GitHubTrendingSourceSegment | null {
+  if (!previousSnapshot) return null;
+
+  const previousSegment = [
+    ...(Array.isArray(previousSnapshot.languages)
+      ? previousSnapshot.languages
+      : []),
+    ...(Array.isArray(previousSnapshot.topics) ? previousSnapshot.topics : []),
+  ].find((candidate) => candidate.key === segment.key);
+  if (!previousSegment) return null;
+
+  const repositoriesById = new Map(
+    (Array.isArray(previousSnapshot.repositories)
+      ? previousSnapshot.repositories
+      : []
+    ).map((repository) => [repository.id, repository])
+  );
+  const repositories = previousSegment.repoIds.flatMap((repositoryId) => {
+    const repository = repositoriesById.get(repositoryId);
+    if (!repository) return [];
+
+    return [
+      {
+        id: repository.id,
+        nodeId: repository.nodeId,
+        name: repository.name,
+        fullName: repository.fullName,
+        owner: repository.owner,
+        description: repository.description,
+        url: repository.url,
+        homepageUrl: repository.homepageUrl,
+        primaryLanguage: repository.primaryLanguage,
+        topics: repository.topics,
+        stars: repository.stars,
+        forks: repository.forks,
+        openIssues: repository.openIssues,
+        watchers: repository.watchers,
+        licenseSpdxId: repository.licenseSpdxId,
+        pushedAt: repository.pushedAt,
+        createdAt: repository.createdAt,
+        updatedAt: repository.updatedAt,
+      } satisfies GitHubTrendingSourceRepository,
+    ];
+  });
+
+  if (repositories.length === 0) return null;
+
+  return {
+    key: previousSegment.key,
+    label: previousSegment.label,
+    kind: previousSegment.kind,
+    query: previousSegment.query,
+    sourceUrl: previousSegment.sourceUrl,
+    repositories,
+  };
+}
+
 async function readPreviousSnapshot(
   snapshotPath: string,
   logger: Pick<Console, "warn">
@@ -297,6 +357,7 @@ export async function buildGitHubTrendingSnapshot(
   const retryBackoffMs = options.retryBackoffMs ?? 1_500;
   const segments: GitHubTrendingSourceSegment[] = [];
   const failedSegments: string[] = [];
+  const reusedSegments: string[] = [];
 
   for (let index = 0; index < TRACKED_SEGMENTS.length; index += 1) {
     const segment = TRACKED_SEGMENTS[index];
@@ -314,11 +375,14 @@ export async function buildGitHubTrendingSnapshot(
         )
       );
     } catch (error) {
-      // A single segment that stays down after retries is skipped rather than
-      // failing the whole refresh — the other segments still get fresh data.
       failedSegments.push(segment.label);
+      const previousSegment = restorePreviousSegment(segment, previousSnapshot);
+      if (previousSegment) {
+        segments.push(previousSegment);
+        reusedSegments.push(segment.label);
+      }
       logger.warn(
-        `Skipping GitHub trending segment "${segment.label}" after ${maxAttempts} attempts: ${
+        `${previousSegment ? "Reusing" : "Skipping"} GitHub trending segment "${segment.label}" after ${maxAttempts} attempts: ${
           error instanceof Error ? error.message : String(error)
         }`
       );
@@ -339,15 +403,22 @@ export async function buildGitHubTrendingSnapshot(
     );
   }
 
-  const snapshot = buildSnapshotData({
-    generatedAt,
-    windowDays: WINDOW_DAYS,
-    activityWindowDays: ACTIVITY_WINDOW_DAYS,
-    sourceLabel: "GitHub Search API",
-    sourceUrl: "https://docs.github.com/rest/search/search#search-repositories",
-    segments,
-    previousSnapshot,
-  });
+  const snapshot: GitHubTrendingSnapshot = {
+    ...buildSnapshotData({
+      generatedAt,
+      windowDays: WINDOW_DAYS,
+      activityWindowDays: ACTIVITY_WINDOW_DAYS,
+      sourceLabel: "GitHub Search API",
+      sourceUrl: "https://docs.github.com/rest/search/search#search-repositories",
+      segments,
+      previousSnapshot,
+    }),
+    sourceStatus: {
+      status: failedSegments.length > 0 ? "degraded" : "fresh",
+      failedSegments,
+      reusedSegments,
+    },
+  };
 
   const fileContents = `import type { GitHubTrendingSnapshot } from "@/types/githubTrending";
 

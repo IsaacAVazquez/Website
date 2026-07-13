@@ -325,6 +325,66 @@ describe("spacexData image normalization", () => {
     expect(mockFetch).not.toHaveBeenCalled();
   });
 
+  it("derives basic detail for listed cards that were not hydrated", async () => {
+    const listedLaunch = {
+      id: "63aa7636-d2b7-457f-a3e6-27e564e42942",
+      name: "Snapshot Mission",
+      flightNumber: 701,
+      upcoming: true,
+      success: null,
+      details: "Snapshot launch detail",
+      dateUtc: "2027-05-02T11:55:10Z",
+      dateUnix: 1809258910,
+      dateLocal: "2027-05-02T11:55:10Z",
+      datePrecision: "hour",
+      tbd: false,
+      net: true,
+      rocketName: "Falcon 9",
+      launchpadName: "SLC-40",
+      launchpadLocation: "Cape Canaveral, Florida",
+      patchImage: null,
+      vehicleImage: "/data/spacex/images/vehicle.png",
+      crewCount: 0,
+      payloadCount: 1,
+      capsuleCount: 0,
+      coreCount: 1,
+      hasExactTime: true,
+      isStaleSchedule: false,
+      links: {
+        webcast: null,
+        article: null,
+        wikipedia: null,
+        presskit: null,
+        redditLaunch: null,
+        redditCampaign: null,
+        redditMedia: null,
+        youtubeId: null,
+        patchSmall: null,
+        patchLarge: null,
+        flickrOriginal: [],
+      },
+    } satisfies MissionLaunchCard;
+
+    setSpaceXSnapshotForTests({
+      generatedAt: "2026-04-12T00:00:00.000Z",
+      sourceLabel: "test snapshot",
+      summary: null,
+      upcomingLaunches: [listedLaunch],
+      pastLaunches: [],
+      launchDetails: {},
+      cadence: null,
+    });
+
+    const detail = await getMissionLaunchDetail(listedLaunch.id, {
+      source: "snapshot",
+    });
+
+    expect(detail.id).toBe(listedLaunch.id);
+    expect(detail.rocket?.name).toBe("Falcon 9");
+    expect(detail.launchpad?.name).toBe("SLC-40");
+    expect(mockFetch).not.toHaveBeenCalled();
+  });
+
   it("falls back to live detail fetches when a launch is outside the local snapshot window", async () => {
     setSpaceXSnapshotForTests({
       generatedAt: "2026-04-12T00:00:00.000Z",

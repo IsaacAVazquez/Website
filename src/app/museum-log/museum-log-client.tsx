@@ -51,6 +51,7 @@ import {
   formatRuntime,
   formatShortDate,
   formatUpdated,
+  getMuseumExhibitStatus,
   ratingBadgeStyle,
   REGION_FILTER_OPTIONS,
   REGION_LABEL,
@@ -62,6 +63,7 @@ import {
   TYPE_LABEL,
 } from "./museum-log-helpers";
 import { HomeStatsPanel } from "@/components/home/HomeStatsPanel";
+import { toLocalDateKey } from "@/lib/date-formatters";
 
 interface Props {
   initialState: MuseumRouteState;
@@ -880,6 +882,13 @@ function MuseumDetailView({
   const visitLogEntries = snapshot.visitLog
     .filter((v) => v.museumId === museum.id)
     .sort((a, b) => b.date.localeCompare(a.date));
+  // The local calendar date stays null through SSR and the first client render —
+  // the page is server-rendered in the server timezone, so computing it during
+  // render can disagree with the visitor's date and cause a hydration mismatch.
+  const [today, setToday] = useState<string | null>(null);
+  useEffect(() => {
+    setToday(toLocalDateKey());
+  }, []);
 
   return (
     <div className="space-y-6">
@@ -941,7 +950,7 @@ function MuseumDetailView({
               onLogQuickVisit={() =>
                 onLogVisit({
                   museumId: museum.id,
-                  date: new Date().toISOString().slice(0, 10),
+                  date: toLocalDateKey(),
                   rating: museum.curatorRating,
                 })
               }
@@ -1028,20 +1037,29 @@ function MuseumDetailView({
             <section className="home-card" style={{ padding: "1.25rem 1.5rem" }}>
               <header className="border-b border-[var(--home-rule)] pb-4">
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-                  Now on view
+                  Exhibition calendar
                 </p>
                 <h3 className="mt-2 text-lg font-semibold text-[var(--home-ink)]">
-                  Current exhibitions
+                  Current, upcoming, and past exhibitions
                 </h3>
               </header>
               <ol className="mt-4 space-y-3">
-                {museum.exhibits.map((ex) => (
+                {museum.exhibits.map((ex) => {
+                  const status = getMuseumExhibitStatus(ex, today);
+                  return (
                   <li
                     key={ex.id}
                     className="rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] p-3"
                   >
                     <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      <p className="text-base font-semibold text-[var(--home-ink)]">{ex.title}</p>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <p className="text-base font-semibold text-[var(--home-ink)]">{ex.title}</p>
+                        {status && (
+                          <span className="rounded-full border border-[var(--home-rule)] px-2 py-0.5 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                            {status}
+                          </span>
+                        )}
+                      </div>
                       <span className="text-xs text-[var(--home-ink-muted)]">
                         {formatShortDate(ex.startDate)} –{" "}
                         {ex.endDate ? formatShortDate(ex.endDate) : "Permanent"}
@@ -1054,7 +1072,8 @@ function MuseumDetailView({
                       </p>
                     )}
                   </li>
-                ))}
+                  );
+                })}
               </ol>
             </section>
           )}
@@ -1100,7 +1119,7 @@ function MuseumDetailView({
                     onSubmit={(rating, note) =>
                       onLogVisit({
                         museumId: museum.id,
-                        date: new Date().toISOString().slice(0, 10),
+                        date: toLocalDateKey(),
                         rating,
                         note: note || undefined,
                       })
@@ -1291,6 +1310,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
   const {
     state: userState,
     hydrated,
+    persistenceStatus,
     isWatchlisted,
     isLiked,
     findVisit,
@@ -1342,7 +1362,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
   function logQuickVisit(museum: Museum) {
     logVisit({
       museumId: museum.id,
-      date: new Date().toISOString().slice(0, 10),
+      date: toLocalDateKey(),
       rating: museum.curatorRating,
     });
   }
@@ -1506,6 +1526,24 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
               <span className="tool-meta-chip-spacer" />
               <span className="tool-meta-chip-meta">Updated {lastUpdated}</span>
             </div>
+
+            {persistenceStatus === "memory-only" ? (
+              <div
+                className="rounded-[var(--radius-sm)] border px-4 py-3 text-sm leading-6"
+                style={{
+                  borderColor:
+                    "color-mix(in srgb, var(--home-warning) 35%, var(--home-rule))",
+                  background:
+                    "color-mix(in srgb, var(--home-warning) 10%, var(--home-paper-alt))",
+                  color: "var(--home-ink-muted)",
+                }}
+                role="status"
+              >
+                Museum log changes are available in this tab, but browser
+                storage is unavailable, so they may not remain after you close
+                it.
+              </div>
+            ) : null}
 
             <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,320px)]">
               <div className="space-y-5">

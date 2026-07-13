@@ -3,6 +3,10 @@ import {
   createEmptyTransitSummary,
   getTransitSummary,
 } from "@/lib/bayAreaTransitSnapshot";
+import {
+  createDataResponseHeaders,
+  createDataRevisionEntry,
+} from "@/lib/dataRevision";
 import { logger } from "@/lib/logger";
 
 const SUCCESS_CACHE_HEADERS = {
@@ -17,9 +21,22 @@ const ERROR_CACHE_HEADERS = {
 export async function GET() {
   try {
     const summary = await getTransitSummary();
+    const revision = createDataRevisionEntry({
+      surface: "bay-area-transit",
+      payload: summary,
+      sourceAsOf: summary.system?.generatedAt ?? null,
+      maxAgeMs: 8 * 60 * 60 * 1000,
+      status:
+        summary.sectionStatus?.elevator === "unavailable"
+          ? "degraded"
+          : undefined,
+    });
 
     return NextResponse.json(summary, {
-      headers: SUCCESS_CACHE_HEADERS,
+      headers: {
+        ...SUCCESS_CACHE_HEADERS,
+        ...createDataResponseHeaders(revision),
+      },
     });
   } catch (error) {
     const err = error as Error & { status?: number };

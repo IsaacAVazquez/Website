@@ -3,6 +3,10 @@ import {
   createEmptyEarthquakeSummary,
   getEarthquakeSummary,
 } from "@/lib/earthquakeSnapshot";
+import {
+  createDataResponseHeaders,
+  createDataRevisionEntry,
+} from "@/lib/dataRevision";
 import { logger } from "@/lib/logger";
 
 const SUCCESS_CACHE_HEADERS = {
@@ -17,9 +21,18 @@ const ERROR_CACHE_HEADERS = {
 export async function GET() {
   try {
     const summary = await getEarthquakeSummary();
+    const revision = createDataRevisionEntry({
+      surface: "earthquake",
+      payload: summary,
+      sourceAsOf: summary.generatedAt,
+      maxAgeMs: 2 * 60 * 60 * 1000,
+    });
 
     return NextResponse.json(summary, {
-      headers: SUCCESS_CACHE_HEADERS,
+      headers: {
+        ...SUCCESS_CACHE_HEADERS,
+        ...createDataResponseHeaders(revision),
+      },
     });
   } catch (error) {
     const err = error as Error & { status?: number };

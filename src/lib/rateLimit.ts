@@ -70,6 +70,10 @@ class RateLimiter {
       reset: this.store[key].resetTime
     };
   }
+
+  reset(): void {
+    this.store = {};
+  }
 }
 
 // Create rate limiters for different endpoints
@@ -86,6 +90,15 @@ export const authRateLimiter = new RateLimiter({
 export const fantasyRateLimiter = new RateLimiter({
   interval: 60 * 1000, // 1 minute
   uniqueTokenPerInterval: 10 // 10 requests per minute for fantasy data
+});
+
+// The jobs page issues one uncached fetch per company checkbox toggle plus
+// mount/focus refreshes, so a real user can legitimately burst well past a
+// handful of requests per minute. 30/min stays comfortably above that while
+// still capping abusive fan-out (each uncached request hits ~30 boards).
+export const mbaJobsRateLimiter = new RateLimiter({
+  interval: 60 * 1000,
+  uniqueTokenPerInterval: 30,
 });
 
 export const emailDigestRateLimiter = new RateLimiter({
@@ -146,7 +159,8 @@ export function rateLimitResponse(result: ReturnType<RateLimiter["check"]>) {
         "X-RateLimit-Limit": result.limit.toString(),
         "X-RateLimit-Remaining": result.remaining.toString(),
         "X-RateLimit-Reset": result.reset.toString(),
-        "Retry-After": Math.ceil((result.reset - Date.now()) / 1000).toString()
+        "Retry-After": Math.ceil((result.reset - Date.now()) / 1000).toString(),
+        "Cache-Control": "no-store",
       }
     }
   );

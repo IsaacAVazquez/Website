@@ -94,7 +94,8 @@ describe("useMBAJobs", () => {
     mockJobsResponse([jobA, jobB]);
 
     const { result } = renderHook(() => useMBAJobs());
-    await waitFor(() => expect(result.current.jobs).toHaveLength(2));
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+    expect(result.current.jobs).toHaveLength(2);
 
     expect(result.current.newJobCount).toBe(2);
 
@@ -115,7 +116,8 @@ describe("useMBAJobs", () => {
     mockJobsResponse([jobA, jobB]);
 
     const { result } = renderHook(() => useMBAJobs());
-    await waitFor(() => expect(result.current.jobs).toHaveLength(2));
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+    expect(result.current.jobs).toHaveLength(2);
 
     act(() => {
       result.current.markAllSeen();
@@ -140,7 +142,7 @@ describe("useMBAJobs", () => {
   });
 
   it("toggles a company off and on and persists the watched set", async () => {
-    mockJobsResponse([jobA]);
+    const fetchSpy = mockJobsResponse([jobA]);
 
     const { result } = renderHook(() => useMBAJobs());
     await waitFor(() => expect(result.current.isLoading).toBe(false));
@@ -150,6 +152,8 @@ describe("useMBAJobs", () => {
     act(() => {
       result.current.toggleCompany("stripe");
     });
+    await waitFor(() => expect(fetchSpy).toHaveBeenCalledTimes(2));
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
 
     expect(result.current.watchedCompanyIds.has("stripe")).toBe(false);
     let persisted = JSON.parse(window.localStorage.getItem(WATCHED_KEY) ?? "[]");
@@ -158,14 +162,36 @@ describe("useMBAJobs", () => {
     act(() => {
       result.current.toggleCompany("stripe");
     });
+    await waitFor(() => expect(fetchSpy).toHaveBeenCalledTimes(3));
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
 
     expect(result.current.watchedCompanyIds.has("stripe")).toBe(true);
     persisted = JSON.parse(window.localStorage.getItem(WATCHED_KEY) ?? "[]");
     expect(persisted).toContain("stripe");
   });
 
+  it("drops persisted watched company ids that are no longer known", async () => {
+    window.localStorage.setItem(
+      WATCHED_KEY,
+      JSON.stringify(["stripe", "retired-company"])
+    );
+    const fetchSpy = mockJobsResponse([jobA]);
+
+    const { result } = renderHook(() => useMBAJobs());
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+
+    const requestedUrl = new URL(
+      String(fetchSpy.mock.calls[0][0]),
+      "https://isaacavazquez.com"
+    );
+    expect(requestedUrl.searchParams.get("companies")).toBe("stripe");
+    expect(result.current.watchedCompanyIds.has("stripe")).toBe(true);
+    expect(result.current.watchedCompanyIds.has("retired-company")).toBe(false);
+    expect(result.current.error).toBeNull();
+  });
+
   it("setAllCompanies(false) clears the watched set and persists it", async () => {
-    mockJobsResponse([jobA]);
+    const fetchSpy = mockJobsResponse([jobA]);
 
     const { result } = renderHook(() => useMBAJobs());
     await waitFor(() => expect(result.current.isLoading).toBe(false));
@@ -173,6 +199,8 @@ describe("useMBAJobs", () => {
     act(() => {
       result.current.setAllCompanies(false);
     });
+    await waitFor(() => expect(fetchSpy).toHaveBeenCalledTimes(2));
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
 
     expect(result.current.watchedCompanyIds.size).toBe(0);
     const persisted = JSON.parse(
@@ -183,6 +211,8 @@ describe("useMBAJobs", () => {
     act(() => {
       result.current.setAllCompanies(true);
     });
+    await waitFor(() => expect(fetchSpy).toHaveBeenCalledTimes(3));
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
 
     expect(result.current.watchedCompanyIds.size).toBeGreaterThan(0);
   });
@@ -192,9 +222,44 @@ describe("useMBAJobs", () => {
 
     const { result } = renderHook(() => useMBAJobs());
 
-    await waitFor(() => expect(result.current.error).not.toBeNull());
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
     expect(result.current.error).toContain("500");
     expect(result.current.jobs).toHaveLength(0);
+  });
+
+  it("surfaces structured outage detail from a 503 body alongside the error", async () => {
+    const outageErrors = [
+      { companyId: "stripe", companyName: "Stripe", message: "upstream timeout" },
+    ];
+    const outageStatuses = [
+      {
+        companyId: "stripe",
+        companyName: "Stripe",
+        atsType: "greenhouse" as const,
+        status: "failed" as const,
+        jobCount: 0,
+        message: "upstream timeout",
+      },
+    ];
+    installFetch(async () =>
+      jsonResponse(
+        {
+          jobs: [],
+          fetchedAt: "2026-06-23T12:00:00.000Z",
+          errors: outageErrors,
+          companiesRequested: ["stripe"],
+          sourceStatuses: outageStatuses,
+        },
+        503
+      )
+    );
+
+    const { result } = renderHook(() => useMBAJobs());
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+
+    expect(result.current.error).toContain("503");
+    expect(result.current.fetchErrors).toEqual(outageErrors);
+    expect(result.current.sourceStatuses).toEqual(outageStatuses);
   });
 
   it("reads seen ids persisted before mount (cross-tab sync)", async () => {
@@ -202,7 +267,8 @@ describe("useMBAJobs", () => {
     mockJobsResponse([jobA, jobB]);
 
     const { result } = renderHook(() => useMBAJobs());
-    await waitFor(() => expect(result.current.jobs).toHaveLength(2));
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+    expect(result.current.jobs).toHaveLength(2);
 
     expect(result.current.seenIds.has("stripe-1")).toBe(true);
     expect(result.current.newJobCount).toBe(1);
@@ -217,7 +283,8 @@ describe("useMBAJobs", () => {
     });
 
     const { result } = renderHook(() => useMBAJobs());
-    await waitFor(() => expect(result.current.jobs).toHaveLength(1));
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+    expect(result.current.jobs).toHaveLength(1);
 
     await act(async () => {
       await result.current.sendEmailDigest("isaac@example.com");

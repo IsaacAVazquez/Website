@@ -1,7 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { UserMuseumState, UserVisit } from "@/types/museum";
+import {
+  readValidatedBrowserStorage,
+  writeBrowserStorageJson,
+} from "@/lib/browserStorage";
+import { isLocalDateKey } from "@/lib/date-formatters";
+import { useLocalStoragePersistenceStatus } from "@/hooks/useLocalStorageString";
 
 const STORAGE_KEY = "museum_log_user_state_v1";
 
@@ -11,47 +17,92 @@ const EMPTY_STATE: UserMuseumState = {
   liked: [],
 };
 
-function safeRead(): UserMuseumState {
-  if (typeof window === "undefined") return EMPTY_STATE;
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return EMPTY_STATE;
-    const parsed = JSON.parse(raw) as Partial<UserMuseumState>;
-    return {
-      visited: Array.isArray(parsed.visited) ? parsed.visited : [],
-      watchlist: Array.isArray(parsed.watchlist) ? parsed.watchlist : [],
-      liked: Array.isArray(parsed.liked) ? parsed.liked : [],
-    };
-  } catch {
-    return EMPTY_STATE;
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return value !== null && typeof value === "object" && !Array.isArray(value);
+}
+
+function decodeIdList(value: unknown): string[] {
+  if (!Array.isArray(value)) return [];
+  return Array.from(
+    new Set(
+      value
+        .filter((entry): entry is string => typeof entry === "string")
+        .map((entry) => entry.trim())
+        .filter(Boolean),
+    ),
+  );
+}
+
+function decodeVisit(value: unknown): UserVisit | undefined {
+  if (!isRecord(value)) return undefined;
+  if (
+    typeof value.museumId !== "string" ||
+    value.museumId.trim().length === 0 ||
+    !isLocalDateKey(value.date) ||
+    typeof value.rating !== "number" ||
+    !Number.isFinite(value.rating) ||
+    value.rating < 0 ||
+    value.rating > 5
+  ) {
+    return undefined;
   }
+  return {
+    museumId: value.museumId.trim(),
+    date: value.date,
+    rating: value.rating,
+    ...(typeof value.note === "string" && value.note.trim()
+      ? { note: value.note.trim() }
+      : {}),
+  };
+}
+
+function decodeMuseumState(value: unknown): UserMuseumState | undefined {
+  if (!isRecord(value)) return undefined;
+  const visitsByMuseum = new Map<string, UserVisit>();
+  if (Array.isArray(value.visited)) {
+    for (const entry of value.visited) {
+      const visit = decodeVisit(entry);
+      if (visit) visitsByMuseum.set(visit.museumId, visit);
+    }
+  }
+  return {
+    visited: Array.from(visitsByMuseum.values()).sort((a, b) => b.date.localeCompare(a.date)),
+    watchlist: decodeIdList(value.watchlist),
+    liked: decodeIdList(value.liked),
+  };
+}
+
+function safeRead(): UserMuseumState {
+  return readValidatedBrowserStorage(STORAGE_KEY, decodeMuseumState, () => ({
+    visited: [],
+    watchlist: [],
+    liked: [],
+  })).value;
 }
 
 function safeWrite(state: UserMuseumState): void {
-  if (typeof window === "undefined") return;
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-  } catch {
-    // Quota / private mode — fail silently and keep working in memory.
-  }
+  writeBrowserStorageJson(STORAGE_KEY, state);
 }
 
 export function useMuseumLog() {
+  const persistenceStatus = useLocalStoragePersistenceStatus(STORAGE_KEY);
   const [state, setState] = useState<UserMuseumState>(EMPTY_STATE);
+  const stateRef = useRef<UserMuseumState>(EMPTY_STATE);
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
+    const stored = safeRead();
+    stateRef.current = stored;
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setState(safeRead());
+    setState(stored);
     setHydrated(true);
   }, []);
 
   const update = useCallback((mutator: (prev: UserMuseumState) => UserMuseumState) => {
-    setState((prev) => {
-      const next = mutator(prev);
-      safeWrite(next);
-      return next;
-    });
+    const next = mutator(stateRef.current);
+    stateRef.current = next;
+    safeWrite(next);
+    setState(next);
   }, []);
 
   const isWatchlisted = useCallback(
@@ -128,6 +179,7 @@ export function useMuseumLog() {
   return {
     state,
     hydrated,
+    persistenceStatus,
     isWatchlisted,
     isLiked,
     findVisit,

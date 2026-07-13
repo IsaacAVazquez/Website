@@ -14,6 +14,13 @@ import {
   type RetirementPlanInput,
   type RetirementResult,
 } from "@/lib/retirement";
+import { decodeRetirementPlan } from "@/lib/retirement/persistence";
+import {
+  readValidatedBrowserStorage,
+  writeBrowserStorageJson,
+  type PersistenceStatus,
+} from "@/lib/browserStorage";
+import { useLocalStoragePersistenceStatus } from "@/hooks/useLocalStorageString";
 
 const STORAGE_KEY = "retirement_plan";
 const STORAGE_VERSION = 1;
@@ -31,43 +38,21 @@ export interface RetirementSeed {
 }
 
 function safeWrite(plan: RetirementPlanInput): void {
-  if (typeof window === "undefined") return;
-  try {
-    const payload: StoredPlan = { version: STORAGE_VERSION, plan };
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
-  } catch {
-    // Quota exceeded or storage disabled — projection still works in-memory.
-  }
+  const payload: StoredPlan = { version: STORAGE_VERSION, plan };
+  writeBrowserStorageJson(STORAGE_KEY, payload);
 }
 
 function loadPlan(): RetirementPlanInput | null {
-  if (typeof window === "undefined") return null;
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return null;
-    const parsed = JSON.parse(raw) as StoredPlan;
-    if (!parsed || parsed.version !== STORAGE_VERSION || !parsed.plan) return null;
-    // Merge over defaults so newly-added fields are always present.
-    const base = createDefaultPlan();
-    const merged = {
-      ...base,
-      ...parsed.plan,
-      otherIncome: { ...base.otherIncome, ...parsed.plan.otherIncome },
-      allocation: { ...base.allocation, ...parsed.plan.allocation },
-      assumptions: {
-        ...base.assumptions,
-        ...parsed.plan.assumptions,
-        taxRates: { ...base.assumptions.taxRates, ...parsed.plan.assumptions?.taxRates },
-      },
-    };
-    // The inputs clamp these relationships at edit time, but a stored plan can
-    // still violate them (e.g. current age raised past a saved retirement age).
-    merged.retirementAge = Math.max(merged.retirementAge, merged.currentAge + 1);
-    merged.horizonAge = Math.max(merged.horizonAge, merged.retirementAge + 1);
-    return merged;
-  } catch {
-    return null;
-  }
+  return readValidatedBrowserStorage<RetirementPlanInput | null>(
+    STORAGE_KEY,
+    (value) => {
+      if (!value || typeof value !== "object" || Array.isArray(value)) return undefined;
+      const stored = value as Partial<StoredPlan>;
+      if (stored.version !== STORAGE_VERSION) return undefined;
+      return decodeRetirementPlan(stored.plan);
+    },
+    () => null,
+  ).value;
 }
 
 function seedFreshPlan(seed?: RetirementSeed): RetirementPlanInput {
@@ -99,6 +84,7 @@ export interface UseRetirementPlanReturn {
   isComputing: boolean;
   /** True when the engine failed on the current inputs (not just still computing). */
   hasError: boolean;
+  persistenceStatus: PersistenceStatus;
   updatePlan: (updates: Partial<RetirementPlanInput>) => void;
   updateAssumptions: (updates: Partial<RetirementAssumptions>) => void;
   updateAllocation: (updates: Partial<AllocationInput>) => void;
@@ -114,6 +100,7 @@ export interface UseRetirementPlanReturn {
 }
 
 export function useRetirementPlan(seed?: RetirementSeed): UseRetirementPlanReturn {
+  const persistenceStatus = useLocalStoragePersistenceStatus(STORAGE_KEY);
   const [plan, setPlan] = useState<RetirementPlanInput>(() => createDefaultPlan());
   const [debouncedPlan, setDebouncedPlan] = useState<RetirementPlanInput>(plan);
   const [ready, setReady] = useState(false);
@@ -274,6 +261,7 @@ export function useRetirementPlan(seed?: RetirementSeed): UseRetirementPlanRetur
     ready,
     isComputing,
     hasError,
+    persistenceStatus,
     updatePlan,
     updateAssumptions,
     updateAllocation,

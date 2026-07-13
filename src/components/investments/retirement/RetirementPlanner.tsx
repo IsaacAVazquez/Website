@@ -20,7 +20,7 @@ interface Props {
 export function RetirementPlanner({ portfolioValue, seedAllocation }: Props) {
   const seed: RetirementSeed = { portfolioValue, allocation: seedAllocation };
   const controller = useRetirementPlan(seed);
-  const { result, ready, isComputing, hasError } = controller;
+  const { result, ready, isComputing, hasError, persistenceStatus } = controller;
 
   return (
     <section
@@ -45,6 +45,13 @@ export function RetirementPlanner({ portfolioValue, seedAllocation }: Props) {
         read, then open the advanced sections to refine accounts, allocation, income, and
         assumptions.
       </p>
+
+      {persistenceStatus === "memory-only" ? (
+        <div className="invest-retire-loading" role="status">
+          Plan changes are available in this tab, but browser storage is
+          unavailable, so they may not remain after you close it.
+        </div>
+      ) : null}
 
       <div className="invest-retire-layout">
         <div className="invest-retire-col-inputs">

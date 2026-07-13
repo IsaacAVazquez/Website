@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getMissionLaunchDetail, isValidMissionLaunchId } from "@/lib/spacexData";
 import { logger } from "@/lib/logger";
+import { NO_STORE_HEADERS } from "@/lib/apiCacheHeaders";
 
 export async function GET(
   _request: Request,
@@ -9,11 +10,14 @@ export async function GET(
   const { id } = await params;
 
   if (!isValidMissionLaunchId(id)) {
-    return NextResponse.json({ error: "Invalid launch id" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Invalid launch id" },
+      { status: 400, headers: NO_STORE_HEADERS }
+    );
   }
 
   try {
-    const launch = await getMissionLaunchDetail(id);
+    const launch = await getMissionLaunchDetail(id, { source: "snapshot" });
 
     return NextResponse.json(launch, {
       headers: {
@@ -36,7 +40,7 @@ export async function GET(
       {
         error: message,
       },
-      { status }
+      { status, headers: NO_STORE_HEADERS }
     );
   }
 }

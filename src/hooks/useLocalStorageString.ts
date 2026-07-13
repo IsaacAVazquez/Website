@@ -1,6 +1,13 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { useCallback, useSyncExternalStore } from "react";
+import {
+  emitBrowserStorageChange,
+  getBrowserStorageSnapshot,
+  getBrowserStorageStatusSnapshot,
+  subscribeBrowserStorage,
+  type PersistenceStatus,
+} from "@/lib/browserStorage";
 
 /**
  * Low-level glue for reading a single localStorage key reactively, shared by the
@@ -10,51 +17,32 @@ import { useSyncExternalStore } from "react";
  * `useWineCellar`, generalized to any key.
  */
 
-const listenersByKey = new Map<string, Set<() => void>>();
-let storageBound = false;
-
-function ensureStorageListener() {
-  if (storageBound || typeof window === "undefined") return;
-  storageBound = true;
-  window.addEventListener("storage", (event) => {
-    if (event.key === null) {
-      // A full clear() — wake every subscriber.
-      listenersByKey.forEach((set) => set.forEach((listener) => listener()));
-      return;
-    }
-    listenersByKey.get(event.key)?.forEach((listener) => listener());
-  });
-}
-
 /** Notify same-tab subscribers after a write (cross-tab is handled by `storage`). */
 export function emitLocalStoreChange(key: string) {
-  listenersByKey.get(key)?.forEach((listener) => listener());
-}
-
-function subscribe(key: string, listener: () => void) {
-  ensureStorageListener();
-  let set = listenersByKey.get(key);
-  if (!set) {
-    set = new Set();
-    listenersByKey.set(key, set);
-  }
-  set.add(listener);
-  return () => {
-    set!.delete(listener);
-  };
+  emitBrowserStorageChange(key);
 }
 
 export function useLocalStorageString(key: string, serverFallback = ""): string {
+  const subscribe = useCallback(
+    (listener: () => void) => subscribeBrowserStorage(key, listener),
+    [key],
+  );
   return useSyncExternalStore(
-    (listener) => subscribe(key, listener),
-    () => {
-      if (typeof window === "undefined") return serverFallback;
-      try {
-        return window.localStorage.getItem(key) ?? serverFallback;
-      } catch {
-        return serverFallback;
-      }
-    },
+    subscribe,
+    () => getBrowserStorageSnapshot(key, serverFallback),
     () => serverFallback,
+  );
+}
+
+/** Whether writes for this key are durable or only retained in this tab. */
+export function useLocalStoragePersistenceStatus(key: string): PersistenceStatus {
+  const subscribe = useCallback(
+    (listener: () => void) => subscribeBrowserStorage(key, listener),
+    [key],
+  );
+  return useSyncExternalStore(
+    subscribe,
+    () => getBrowserStorageStatusSnapshot(key),
+    () => "persistent",
   );
 }

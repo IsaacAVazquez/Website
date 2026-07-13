@@ -726,6 +726,11 @@ describe("GET /api/mba-jobs", () => {
     const body = await response.json();
 
     expect(response.status).toBe(200);
+    // Partial failures are routine, cacheable successes; only total failures
+    // and stale fallbacks get no-store.
+    expect(response.headers.get("Cache-Control")).toBe(
+      "public, s-maxage=1800, stale-while-revalidate=3600"
+    );
     expect(body.jobs).toHaveLength(1);
     expect(body.errors).toEqual([
       {
@@ -747,6 +752,313 @@ describe("GET /api/mba-jobs", () => {
         message: "upstream timeout",
       }),
     ]);
+  });
+
+  it("caches a degraded result with success headers so one failing board does not disable edge caching", async () => {
+    jest.useFakeTimers();
+    try {
+      installFetchMock({
+        "https://boards-api.greenhouse.io/v1/boards/stripe/jobs?content=true": new Response(
+          JSON.stringify(
+            buildGreenhouseResponse({
+              jobs: [
+                {
+                  id: 9001,
+                  title: "MBA Product Intern",
+                  location: { name: "San Francisco, CA" },
+                  absolute_url: "https://example.com/jobs/9001",
+                  updated_at: "2026-04-14T16:00:00.000Z",
+                  departments: [{ name: "Product" }],
+                  content: "<p>MBA summer product internship.</p>",
+                },
+              ],
+            })
+          ),
+          { status: 200, headers: { "Content-Type": "application/json" } }
+        ),
+        "https://boards-api.greenhouse.io/v1/boards/brex/jobs?content=true": new Error(
+          "upstream timeout"
+        ),
+      });
+
+      const first = await GET(
+        new NextRequest(
+          "https://isaacavazquez.com/api/mba-jobs?companies=stripe,brex"
+        )
+      );
+      const firstBody = await first.json();
+
+      expect(first.status).toBe(200);
+      expect(first.headers.get("Cache-Control")).toBe(
+        "public, s-maxage=1800, stale-while-revalidate=3600"
+      );
+      expect(firstBody.jobs).toHaveLength(1);
+
+      // Past the 2-minute error TTL but well within the 30-minute success
+      // TTL: the degraded result must be served from cache, not re-fanned
+      // out to every board.
+      jest.advanceTimersByTime(5 * 60 * 1000);
+      const fetchCallsAfterFirst = mockFetch.mock.calls.length;
+
+      const second = await GET(
+        new NextRequest(
+          "https://isaacavazquez.com/api/mba-jobs?companies=stripe,brex"
+        )
+      );
+      const secondBody = await second.json();
+
+      expect(second.status).toBe(200);
+      expect(mockFetch.mock.calls.length).toBe(fetchCallsAfterFirst);
+      expect(secondBody.jobs).toEqual(firstBody.jobs);
+      expect(secondBody.fetchedAt).toBe(firstBody.fetchedAt);
+    } finally {
+      jest.useRealTimers();
+    }
+  });
+
+  it("returns a non-cacheable 503 when every requested source is unavailable", async () => {
+    installFetchMock({
+      "https://boards-api.greenhouse.io/v1/boards/stripe/jobs?content=true": new Error(
+        "upstream timeout"
+      ),
+    });
+
+    const response = await GET(
+      new NextRequest("https://isaacavazquez.com/api/mba-jobs?companies=stripe")
+    );
+    const body = await response.json();
+
+    expect(response.status).toBe(503);
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
+    expect(body.jobs).toEqual([]);
+    expect(body.errors).toEqual([
+      {
+        companyId: "stripe",
+        companyName: "Stripe",
+        message: "upstream timeout",
+      },
+    ]);
+    expect(body.sourceStatuses).toEqual([
+      expect.objectContaining({
+        companyId: "stripe",
+        status: "failed",
+        jobCount: 0,
+      }),
+    ]);
+  });
+
+  it("treats an external-only Adzuna outage as a non-cacheable 503", async () => {
+    process.env.ADZUNA_APP_ID = "test-id";
+    process.env.ADZUNA_APP_KEY = "test-key";
+    const adzunaUrl =
+      "https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=test-id&app_key=test-key&results_per_page=25&what=MBA+intern+product+marketing+strategy+operations+finance+growth&content-type=application%2Fjson";
+
+    installFetchMock({
+      [adzunaUrl]: new Error("Adzuna unavailable"),
+    });
+
+    const response = await GET(
+      new NextRequest(
+        "https://isaacavazquez.com/api/mba-jobs?companies=&external=on"
+      )
+    );
+    const body = await response.json();
+
+    expect(response.status).toBe(503);
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
+    expect(body.jobs).toEqual([]);
+    expect(body.errors).toEqual([
+      expect.objectContaining({
+        companyId: "external-adzuna",
+        message: "Adzuna unavailable",
+      }),
+    ]);
+    expect(body.sourceStatuses).toEqual([
+      expect.objectContaining({
+        companyId: "external-adzuna",
+        status: "failed",
+        jobCount: 0,
+      }),
+    ]);
+  });
+
+  it("serves the last complete result without caching it when a later refresh fails", async () => {
+    jest.useFakeTimers();
+    try {
+      installFetchMock({
+        "https://boards-api.greenhouse.io/v1/boards/stripe/jobs?content=true": new Response(
+          JSON.stringify(
+            buildGreenhouseResponse({
+              jobs: [
+                {
+                  id: 7001,
+                  title: "MBA Product Intern",
+                  location: { name: "San Francisco, CA" },
+                  absolute_url: "https://example.com/jobs/7001",
+                  updated_at: "2026-04-14T16:00:00.000Z",
+                  departments: [{ name: "Product" }],
+                  content: "<p>MBA summer product internship.</p>",
+                },
+              ],
+            })
+          ),
+          { status: 200, headers: { "Content-Type": "application/json" } }
+        ),
+      });
+
+      const first = await GET(
+        new NextRequest("https://isaacavazquez.com/api/mba-jobs?companies=stripe")
+      );
+      const firstBody = await first.json();
+      expect(first.status).toBe(200);
+      expect(firstBody.jobs).toHaveLength(1);
+
+      jest.advanceTimersByTime(31 * 60 * 1000);
+      installFetchMock({
+        "https://boards-api.greenhouse.io/v1/boards/stripe/jobs?content=true": new Error(
+          "upstream timeout"
+        ),
+      });
+
+      const second = await GET(
+        new NextRequest("https://isaacavazquez.com/api/mba-jobs?companies=stripe")
+      );
+      const secondBody = await second.json();
+
+      expect(second.status).toBe(200);
+      expect(second.headers.get("Cache-Control")).toBe("no-store");
+      expect(secondBody.jobs).toEqual(firstBody.jobs);
+      expect(secondBody.fetchedAt).toBe(firstBody.fetchedAt);
+      expect(secondBody.errors).toEqual([
+        expect.objectContaining({
+          companyId: "stripe",
+          message: "upstream timeout",
+        }),
+      ]);
+      expect(secondBody.sourceStatuses).toEqual([
+        expect.objectContaining({ companyId: "stripe", status: "failed" }),
+      ]);
+    } finally {
+      jest.useRealTimers();
+    }
+  });
+
+  it("allows the app's legitimate request cadence before rate limiting kicks in", async () => {
+    installFetchMock({});
+
+    // Checkbox toggles, mount, and focus refreshes can easily exceed 6
+    // requests in a minute; the limiter must not 429 real usage. It still
+    // caps abuse at 30 requests per minute per IP.
+    for (let i = 0; i < 30; i++) {
+      const response = await GET(
+        new NextRequest("https://isaacavazquez.com/api/mba-jobs?companies=")
+      );
+      expect(response.status).toBe(200);
+    }
+
+    const overLimit = await GET(
+      new NextRequest("https://isaacavazquez.com/api/mba-jobs?companies=")
+    );
+    expect(overLimit.status).toBe(429);
+  });
+
+  it("backfills a degraded response with last-good jobs from the failed boards", async () => {
+    jest.useFakeTimers();
+    try {
+      const stripeResponse = () =>
+        new Response(
+          JSON.stringify(
+            buildGreenhouseResponse({
+              jobs: [
+                {
+                  id: 9101,
+                  title: "MBA Product Intern",
+                  location: { name: "San Francisco, CA" },
+                  absolute_url: "https://example.com/jobs/9101",
+                  updated_at: "2026-04-14T16:00:00.000Z",
+                  departments: [{ name: "Product" }],
+                  content: "<p>MBA summer product internship.</p>",
+                },
+              ],
+            })
+          ),
+          { status: 200, headers: { "Content-Type": "application/json" } }
+        );
+
+      installFetchMock({
+        "https://boards-api.greenhouse.io/v1/boards/stripe/jobs?content=true":
+          stripeResponse(),
+        "https://boards-api.greenhouse.io/v1/boards/brex/jobs?content=true": new Response(
+          JSON.stringify(
+            buildGreenhouseResponse({
+              jobs: [
+                {
+                  id: 9102,
+                  title: "MBA Strategy Intern",
+                  location: { name: "New York, NY" },
+                  absolute_url: "https://example.com/jobs/9102",
+                  updated_at: "2026-04-14T15:00:00.000Z",
+                  departments: [{ name: "Strategy" }],
+                  content: "<p>MBA summer strategy internship.</p>",
+                },
+              ],
+            })
+          ),
+          { status: 200, headers: { "Content-Type": "application/json" } }
+        ),
+      });
+
+      const first = await GET(
+        new NextRequest(
+          "https://isaacavazquez.com/api/mba-jobs?companies=stripe,brex"
+        )
+      );
+      const firstBody = await first.json();
+      expect(first.status).toBe(200);
+      expect(firstBody.jobs).toHaveLength(2);
+
+      // Past the success TTL so the next request re-fetches, with Brex down.
+      jest.advanceTimersByTime(31 * 60 * 1000);
+      installFetchMock({
+        "https://boards-api.greenhouse.io/v1/boards/stripe/jobs?content=true":
+          stripeResponse(),
+        "https://boards-api.greenhouse.io/v1/boards/brex/jobs?content=true": new Error(
+          "upstream timeout"
+        ),
+      });
+
+      const second = await GET(
+        new NextRequest(
+          "https://isaacavazquez.com/api/mba-jobs?companies=stripe,brex"
+        )
+      );
+      const secondBody = await second.json();
+
+      expect(second.status).toBe(200);
+      // Brex's last-good posting survives its board outage instead of
+      // silently vanishing from the feed.
+      expect(secondBody.jobs).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({ id: "stripe-9101" }),
+          expect.objectContaining({ id: "brex-9102" }),
+        ])
+      );
+      expect(secondBody.jobs).toHaveLength(2);
+      expect(secondBody.errors).toEqual([
+        expect.objectContaining({ companyId: "brex", message: "upstream timeout" }),
+      ]);
+      expect(secondBody.sourceStatuses).toEqual([
+        expect.objectContaining({ companyId: "stripe", status: "ok", jobCount: 1 }),
+        expect.objectContaining({
+          companyId: "brex",
+          status: "failed",
+          jobCount: 1,
+          message: expect.stringContaining("previously fetched"),
+        }),
+      ]);
+    } finally {
+      jest.useRealTimers();
+    }
   });
 
   it("treats an explicit empty companies query as an empty scan", async () => {
@@ -792,14 +1104,15 @@ describe("GET /api/mba-jobs", () => {
 
     const response = await GET(
       new NextRequest(
-        "https://isaacavazquez.com/api/mba-jobs?companies=STRIPE,stripe,microsoft,unknown"
+        "https://isaacavazquez.com/api/mba-jobs?companies=STRIPE,stripe,microsoft"
       )
     );
     const body = await response.json();
 
     expect(response.status).toBe(200);
     expect(mockFetch).toHaveBeenCalledTimes(1);
-    expect(body.companiesRequested).toEqual(["stripe", "microsoft", "unknown"]);
+    expect(body.companiesRequested).toEqual(["stripe", "microsoft"]);
+    expect(response.headers.get("Netlify-Vary")).toBe("query");
     expect(body.sourceStatuses).toEqual([
       expect.objectContaining({
         companyId: "stripe",
@@ -812,6 +1125,36 @@ describe("GET /api/mba-jobs", () => {
         jobCount: 0,
       }),
     ]);
+  });
+
+  it("rejects unknown company ids without caching the response", async () => {
+    installFetchMock({});
+
+    const response = await GET(
+      new NextRequest(
+        "https://isaacavazquez.com/api/mba-jobs?companies=stripe,unknown"
+      )
+    );
+    const body = await response.json();
+
+    expect(response.status).toBe(400);
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
+    expect(body.unknownCompanyIds).toEqual(["unknown"]);
+    expect(mockFetch).not.toHaveBeenCalled();
+  });
+
+  it("rejects unsupported external values", async () => {
+    installFetchMock({});
+
+    const response = await GET(
+      new NextRequest(
+        "https://isaacavazquez.com/api/mba-jobs?companies=&external=yes"
+      )
+    );
+
+    expect(response.status).toBe(400);
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
+    expect(mockFetch).not.toHaveBeenCalled();
   });
 
   it("reports external leads as disabled when the opt-in is on without Adzuna keys", async () => {

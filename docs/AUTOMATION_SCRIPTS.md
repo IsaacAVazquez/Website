@@ -38,8 +38,8 @@ Current operational files under `scripts/`:
 
 | Command | Underlying workflow |
 | --- | --- |
-| `npm run build` | Runs `prebuild`, `next build --webpack`, then npm `postbuild` |
-| `npm run prebuild` | Runs the football `--league-only` fast path automatically before build |
+| `npm run build` | Runs `next build --webpack`, then npm `postbuild`; consumes committed snapshots without refreshing data |
+| `npm run typecheck` | Runs the standalone TypeScript gate used by CI |
 | `npm run update:football` | Full football snapshot refresh — both PL and La Liga (~16 min) |
 | `npm run update:premier-league` | PL snapshot only — `buildPremierLeagueSnapshot.ts` (~8 min) |
 | `npm run update:la-liga` | La Liga snapshot only — `updateLaLigaSnapshot.ts` (~8 min) |

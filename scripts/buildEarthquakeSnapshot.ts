@@ -6,8 +6,8 @@
  *   npm run update:earthquake
  *
  * The USGS feeds need no token. If the fetch or parse fails, the existing
- * snapshot is kept instead of being wiped — matching the Formula 1 / golf
- * pipelines.
+ * snapshot stays on disk and the command exits nonzero, so automation reports
+ * the failed attempt without replacing good data.
  */
 
 import { renameSync, writeFileSync } from "node:fs";
@@ -55,7 +55,6 @@ async function main() {
         "🌎 Earthquake snapshot refresh failed; keeping the existing snapshot.",
         error
       );
-      return;
     }
     throw error;
   }

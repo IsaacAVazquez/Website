@@ -23,6 +23,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v7
         with:
+          ref: main
           fetch-depth: 1
 
       - name: Set up Node.js
@@ -73,11 +74,19 @@ jobs:
           }
 
           const repoCount = Number(snapshot && snapshot.totals && snapshot.totals.repositories);
+          const sourceStatus = snapshot?.sourceStatus?.status ?? 'unknown';
+          const failedSegments = snapshot?.sourceStatus?.failedSegments ?? [];
           console.log('Snapshot repository count:', repoCount);
+          console.log('Source status:', sourceStatus);
+          console.log('Failed segments:', failedSegments.join(', ') || 'none');
 
           if (!Number.isFinite(repoCount) || repoCount < MIN_REPOS) {
             console.error('::error::Refusing to commit a degraded snapshot. Got ' + repoCount + ' repos; expected at least ' + MIN_REPOS + '.');
             process.exit(1);
+          }
+
+          if (sourceStatus === 'degraded') {
+            console.warn('::warning::Snapshot is degraded; failed segments are explicitly recorded and prior segment data is reused when available.');
           }
 
           fs.writeFileSync(process.env.GITHUB_OUTPUT, 'repo_count=' + repoCount + '\n', { flag: 'a' });

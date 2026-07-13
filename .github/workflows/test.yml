@@ -62,6 +62,9 @@ jobs:
         if: steps.node-modules-cache.outputs.cache-hit != 'true'
         run: npm ci
 
+      - name: Check TypeScript
+        run: npm run typecheck
+
       - name: Build application
         run: npm run build
 

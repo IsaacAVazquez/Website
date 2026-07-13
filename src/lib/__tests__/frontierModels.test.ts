@@ -40,7 +40,7 @@ function sourceModel(overrides: Partial<FrontierSourceModel>): FrontierSourceMod
   };
 }
 
-const snapshot = buildFrontierModelsSnapshot(
+    const snapshot = buildFrontierModelsSnapshot(
   [
     sourceModel({
       id: "premium",
@@ -92,6 +92,7 @@ describe("frontierModels", () => {
     expect(blendedPricePerMTokens({ ...premiumModel, inputPricePerMTokens: null })).toBe(
       40
     );
+
     expect(blendedPricePerMTokens({ ...premiumModel, outputPricePerMTokens: null })).toBe(
       12
     );
@@ -107,6 +108,8 @@ describe("frontierModels", () => {
 
   it("builds sorted snapshots with provider and tier summaries", () => {
     expect(snapshot.sourceLabel).toBe("Fixture source");
+    expect(snapshot.asOf).toBe("2026-05-04");
+    expect(snapshot.verified).toBe(false);
     expect(snapshot.models.map((model) => model.id)).toEqual([
       "budget",
       "standard",

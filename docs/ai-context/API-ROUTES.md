@@ -11,6 +11,7 @@ Current API route map.
 | Endpoint | Methods | Purpose |
 |---------|---------|---------|
 | `/api/auth/[...nextauth]` | GET, POST | Admin auth |
+| `/api/data-revisions` | GET | No-cache revision and freshness ledger used to verify production publication |
 | `/api/bay-area-transit/stations/[stationId]` | GET | Snapshot-backed BART per-station departure board |
 | `/api/bay-area-transit/summary` | GET | Snapshot-backed BART lines, advisories, and system status |
 | `/api/earthquake-pulse/summary` | GET | Snapshot-backed USGS earthquake summary with embedded detail payloads |

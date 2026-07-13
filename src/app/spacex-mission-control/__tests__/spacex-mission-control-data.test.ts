@@ -126,7 +126,9 @@ describe("loadMissionControlInitialData", () => {
       cadence: null,
     });
     expect(mockGetMissionLaunchCards).toHaveBeenCalledWith("past", 10);
-    expect(mockGetMissionLaunchDetail).toHaveBeenCalledWith(launchCard.id);
+    expect(mockGetMissionLaunchDetail).toHaveBeenCalledWith(launchCard.id, {
+      source: "snapshot",
+    });
   });
 
   it("keeps successful payloads when another preload request fails", async () => {

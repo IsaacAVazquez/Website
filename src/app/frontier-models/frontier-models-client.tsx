@@ -161,7 +161,7 @@ export function FrontierModelsClient({
     {
       label: "Budget tier",
       value: <span className="tabular-nums">{budgetTier}</span>,
-      sub: "Sub-$1/M input pricing",
+      sub: "Input and output both under $1/M",
     },
     {
       label: "Premium tier",
@@ -201,7 +201,8 @@ export function FrontierModelsClient({
           pricing, and modality coverage. Side-by-side facts, no marketing.
         </p>
         <p className="text-xs uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
-          Curated by Isaac · Refreshed manually · Updated {updatedAt}
+          Curated by Isaac · Data as of {snapshot.asOf ?? snapshot.generatedAt.slice(0, 10)} · Updated {updatedAt}
+          {!snapshot.verified ? " · Independent review pending" : ""}
         </p>
       </header>
 

@@ -144,8 +144,25 @@ async function main() {
   // the deployed public/data/investments set half-applied. Successful symbols
   // still complete; failures are collected, logged, and surfaced via a
   // non-zero exit code so CI does not silently pass a partial refresh.
+  const staleSymbols = new Set(
+    (index.entries ?? [])
+      .filter((entry) => entry.stale)
+      .map((entry) => entry.symbol.toUpperCase())
+  );
+
   const results = await Promise.allSettled(
-    index.symbols.map((symbol) => buildSymbolSnapshot(symbol, index.lastUpdated))
+    index.symbols.map(async (symbol) => {
+      if (staleSymbols.has(symbol.toUpperCase())) {
+        // The latest provider fetch failed. Keep the committed snapshot and its
+        // original per-section timestamps rather than rebuilding old raw files
+        // with this run's global `lastUpdated` value.
+        console.warn(
+          `[${symbol}] Latest fetch failed — keeping the existing snapshot and freshness metadata.`
+        );
+        return;
+      }
+      await buildSymbolSnapshot(symbol, index.lastUpdated);
+    })
   );
 
   const failures = results.flatMap((result, i) =>

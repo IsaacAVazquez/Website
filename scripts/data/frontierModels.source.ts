@@ -21,6 +21,9 @@ export const PROVIDER_LABELS: Record<FrontierProvider, string> = {
   mistral: "Mistral",
 };
 
+export const FRONTIER_MODELS_AS_OF = "2026-04-29";
+export const FRONTIER_MODELS_VERIFIED = false;
+
 export const FRONTIER_MODELS_SOURCE: FrontierModelSource[] = [
   {
     id: "anthropic-claude-opus-4-7",

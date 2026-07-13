@@ -3,6 +3,7 @@ import {
   averageRating,
   filterMuseums,
   formatAdmission,
+  getMuseumExhibitStatus,
   formatRuntime,
   sortMuseums,
   starFractions,
@@ -121,5 +122,32 @@ describe("museum-log-helpers", () => {
     expect(starFractions(4.25)).toEqual([1, 1, 1, 1, 0.5]);
     expect(starFractions(-1)).toEqual([0, 0, 0, 0, 0]);
     expect(starFractions(5.4)).toEqual([1, 1, 1, 1, 1]);
+  });
+
+  it("classifies exhibitions against a calendar date", () => {
+    expect(
+      getMuseumExhibitStatus(
+        { startDate: "2026-06-01", endDate: "2026-08-01" },
+        "2026-07-10"
+      )
+    ).toBe("current");
+    expect(
+      getMuseumExhibitStatus(
+        { startDate: "2026-08-10", endDate: null },
+        "2026-07-10"
+      )
+    ).toBe("upcoming");
+    expect(
+      getMuseumExhibitStatus(
+        { startDate: "2026-01-01", endDate: "2026-04-01" },
+        "2026-07-10"
+      )
+    ).toBe("ended");
+  });
+
+  it("returns no status before the local calendar date is known", () => {
+    expect(
+      getMuseumExhibitStatus({ startDate: "2026-06-01", endDate: "2026-08-01" }, null)
+    ).toBeNull();
   });
 });

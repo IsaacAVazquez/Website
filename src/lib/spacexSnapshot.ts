@@ -52,6 +52,55 @@ function normalizeSnapshot(value: unknown): MissionControlSnapshot {
   };
 }
 
+function createCardDetailFallback(card: MissionLaunchCard): MissionLaunchDetail {
+  return {
+    ...card,
+    staticFireDateUtc: null,
+    window: null,
+    failures: [],
+    rocket: card.rocketName
+      ? {
+          id: null,
+          name: card.rocketName,
+          type: null,
+          active: null,
+          boosters: null,
+          stages: null,
+          costPerLaunch: null,
+          successRatePct: null,
+          firstFlight: null,
+          company: "SpaceX",
+          country: null,
+          description: null,
+          wikipedia: null,
+          heightMeters: null,
+          diameterMeters: null,
+          massKg: null,
+          image: card.vehicleImage,
+          flickrImages: card.vehicleImage ? [card.vehicleImage] : [],
+        }
+      : null,
+    launchpad:
+      card.launchpadName || card.launchpadLocation
+        ? {
+            id: null,
+            name: card.launchpadName,
+            fullName: card.launchpadName,
+            locality: card.launchpadLocation,
+            region: null,
+            timezone: null,
+            status: null,
+            details: null,
+            image: null,
+          }
+        : null,
+    crew: [],
+    payloads: [],
+    capsules: [],
+    cores: [],
+  };
+}
+
 export function getSpaceXSnapshot(): MissionControlSnapshot {
   return snapshotOverride ?? normalizeSnapshot(generatedSnapshot);
 }
@@ -73,7 +122,17 @@ export function getSpaceXSnapshotLaunches(
 }
 
 export function getSpaceXSnapshotLaunchDetail(id: string): MissionLaunchDetail | null {
-  return getSpaceXSnapshot().launchDetails[id] ?? null;
+  const snapshot = getSpaceXSnapshot();
+  const hydratedDetail = snapshot.launchDetails[id];
+  if (hydratedDetail) {
+    return hydratedDetail;
+  }
+
+  const card = [...snapshot.upcomingLaunches, ...snapshot.pastLaunches].find(
+    (launch) => launch.id === id
+  );
+
+  return card ? createCardDetailFallback(card) : null;
 }
 
 export function getSpaceXSnapshotLaunchDetails(): Record<string, MissionLaunchDetail> {

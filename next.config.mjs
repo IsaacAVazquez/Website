@@ -186,9 +186,6 @@ const nextConfig = {
     ];
   },
 
-  typescript: {
-    ignoreBuildErrors: true,
-  },
   outputFileTracingRoot: __dirname,
   // Prevent native modules from being bundled into server functions.
   serverExternalPackages: ['better-sqlite3', 'sharp'],

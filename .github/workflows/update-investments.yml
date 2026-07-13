@@ -28,6 +28,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v7
         with:
+          ref: main
           fetch-depth: 1
 
       - name: Set up Node.js
@@ -124,9 +125,15 @@ jobs:
           const ageHours = (Date.now() - lastUpdated.getTime()) / (1000 * 60 * 60);
           const successCount = Array.isArray(index.symbols) ? index.symbols.length : 0;
           const failedCount = Array.isArray(index.failed) ? index.failed.length : 0;
+          const freshCount = Number.isInteger(index.freshCount)
+            ? index.freshCount
+            : (Array.isArray(index.entries) ? index.entries.filter((entry) => !entry.stale).length : 0);
+          const staleCount = Number.isInteger(index.staleCount)
+            ? index.staleCount
+            : (Array.isArray(index.entries) ? index.entries.filter((entry) => entry.stale).length : 0);
           console.log('Index lastUpdated:', index.lastUpdated);
           console.log('Age (hours):', ageHours.toFixed(2));
-          console.log('Symbols succeeded:', successCount, 'failed:', failedCount);
+          console.log('Symbols available:', successCount, 'fresh:', freshCount, 'stale:', staleCount, 'unavailable:', failedCount);
 
           if (ageHours > 2) {
             console.error('::error::index.lastUpdated is older than 2 hours after a refresh run. The Python fetch likely failed silently.');
@@ -135,6 +142,18 @@ jobs:
           if (successCount === 0) {
             console.error('::error::index.symbols is empty. The Python fetch produced no successful symbols.');
             process.exit(1);
+          }
+          if (freshCount === 0) {
+            console.error('::error::No symbols refreshed successfully. Refusing to report a stale-only recovery as a successful refresh.');
+            process.exit(1);
+          }
+          if (freshCount + staleCount !== successCount) {
+            console.error('::error::Fresh/stale counts do not reconcile with the available symbol count.');
+            process.exit(1);
+          }
+          const staleRatio = staleCount / successCount;
+          if (staleRatio > 0.8) {
+            console.warn('::warning::' + (staleRatio * 100).toFixed(1) + '% of symbols are using earlier snapshots.');
           }
 
           // Quality check: when defeatbeta-api silently returns empty data
@@ -168,13 +187,13 @@ jobs:
             process.exit(1);
           }
 
-          fs.writeFileSync(process.env.GITHUB_OUTPUT, 'success_count=' + successCount + '\nfailed_count=' + failedCount + '\nwith_price=' + withPrice + '\n', { flag: 'a' });
+          fs.writeFileSync(process.env.GITHUB_OUTPUT, 'success_count=' + successCount + '\nfresh_count=' + freshCount + '\nstale_count=' + staleCount + '\nfailed_count=' + failedCount + '\nwith_price=' + withPrice + '\n', { flag: 'a' });
           "
 
       - name: Check for investments data changes
         id: check_changes
         run: |
-          if [ -z "$(git status --porcelain -- public/data/investments data/investments-raw)" ]; then
+          if [ -z "$(git status --porcelain -- public/data/investments)" ]; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No changes detected in investments data"
           else
@@ -187,8 +206,7 @@ jobs:
         run: |
           bash scripts/ci/commit-and-push-snapshot.sh \
             "chore: refresh investments snapshots [automated] [skip ci]" \
-            public/data/investments \
-            data/investments-raw
+            public/data/investments
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -293,8 +311,10 @@ jobs:
           echo "**Schedule:** Mon + Thu at 22:15 UTC" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
           if [ -n "${{ steps.verify_freshness.outputs.success_count }}" ]; then
-            echo "**Symbols succeeded:** ${{ steps.verify_freshness.outputs.success_count }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "**Symbols failed:** ${{ steps.verify_freshness.outputs.failed_count }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Symbols available:** ${{ steps.verify_freshness.outputs.success_count }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Fresh this run:** ${{ steps.verify_freshness.outputs.fresh_count }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Using earlier snapshots:** ${{ steps.verify_freshness.outputs.stale_count }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Unavailable:** ${{ steps.verify_freshness.outputs.failed_count }}" >> "$GITHUB_STEP_SUMMARY"
             if [ -n "${{ steps.verify_freshness.outputs.with_price }}" ]; then
               echo "**With valid price history:** ${{ steps.verify_freshness.outputs.with_price }}" >> "$GITHUB_STEP_SUMMARY"
             fi

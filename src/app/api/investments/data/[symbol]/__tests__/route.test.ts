@@ -8,14 +8,29 @@ jest.mock("@/lib/investmentsData", () => ({
   getInvestmentDataEnvelope: jest.fn(),
 }));
 
+jest.mock("@/lib/finnhub", () => {
+  const actual = jest.requireActual("@/lib/finnhub");
+  return {
+    ...actual,
+    isAllowedSymbol: jest.fn(),
+  };
+});
+
 import { GET } from "../route";
 import { getInvestmentContext, getInvestmentDataEnvelope } from "@/lib/investmentsData";
+import {
+  FinnhubAllowlistUnavailableError,
+  isAllowedSymbol,
+} from "@/lib/finnhub";
 
 const mockGetInvestmentContext = getInvestmentContext as jest.MockedFunction<
   typeof getInvestmentContext
 >;
 const mockGetInvestmentDataEnvelope =
   getInvestmentDataEnvelope as jest.MockedFunction<typeof getInvestmentDataEnvelope>;
+const mockIsAllowedSymbol = isAllowedSymbol as jest.MockedFunction<
+  typeof isAllowedSymbol
+>;
 
 function makeRequest(symbol: string, section = "info") {
   return GET(
@@ -29,6 +44,7 @@ function makeRequest(symbol: string, section = "info") {
 describe("GET /api/investments/data/[symbol]", () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    mockIsAllowedSymbol.mockImplementation(async (symbol) => symbol !== "ZZZZZ");
   });
 
   it("returns prefetched envelopes for curated symbols", async () => {
@@ -86,6 +102,7 @@ describe("GET /api/investments/data/[symbol]", () => {
       expect.objectContaining({ source: "prefetched", seeded: true }),
       { assetOrigin: "http://localhost:3000" }
     );
+    expect(response.headers.get("Netlify-Vary")).toBe("query");
   });
 
   it("rejects invalid ticker symbols", async () => {
@@ -140,6 +157,20 @@ describe("GET /api/investments/data/[symbol]", () => {
     expect(mockGetInvestmentContext).toHaveBeenCalledWith("AAPL", {
       assetOrigin: "http://localhost:3000",
     });
+  });
+
+  it("returns a no-store 503 when the curated symbol allowlist is unavailable", async () => {
+    mockIsAllowedSymbol.mockRejectedValueOnce(
+      new FinnhubAllowlistUnavailableError()
+    );
+
+    const response = await makeRequest("AAPL");
+    const body = await response.json();
+
+    expect(response.status).toBe(503);
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
+    expect(body.error).toMatch(/symbol list is temporarily unavailable/i);
+    expect(mockGetInvestmentContext).not.toHaveBeenCalled();
   });
 
   it("returns a trimmed 404 without leaking freshness metadata when a section is unavailable", async () => {

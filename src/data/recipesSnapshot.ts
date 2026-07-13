@@ -402,7 +402,7 @@ export const RECIPES: Recipe[] = [
       { name: "ginger", display: "1 tbsp grated ginger" },
       { name: "soy sauce", display: "3 tbsp soy sauce" },
       { name: "rice vinegar", display: "1 tbsp rice vinegar" },
-      { name: "honey", display: "1 tbsp honey or maple syrup" },
+      { name: "maple syrup", display: "1 tbsp maple syrup" },
       { name: "cornstarch", display: "1 tsp cornstarch" },
       { name: "sesame oil", display: "1 tsp sesame oil" },
       { name: "rice", display: "Cooked rice for serving" },
@@ -411,7 +411,7 @@ export const RECIPES: Recipe[] = [
     instructions: [
       "Press tofu, then sear in hot oil until golden on all sides; remove.",
       "Stir-fry vegetables 3 minutes, add garlic and ginger 30 seconds.",
-      "Whisk soy, vinegar, honey, sesame oil, and cornstarch with 1/4 cup water; pour in.",
+      "Whisk soy, vinegar, maple syrup, sesame oil, and cornstarch with 1/4 cup water; pour in.",
       "Return tofu, toss until glossy, and serve over rice.",
     ],
   },

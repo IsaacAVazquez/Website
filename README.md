@@ -137,7 +137,7 @@ npm run update:spacex
 npm run update:spacex-images
 ```
 
-`prebuild` runs a league-only football snapshot refresh automatically; `postbuild` runs `next-sitemap` and `scripts/patch-nft-sharp.mjs`.
+Football refreshes run through their explicit update commands and scheduled workflows; production builds only consume committed snapshots. `postbuild` runs `next-sitemap` and `scripts/patch-nft-sharp.mjs`.
 
 ---
 

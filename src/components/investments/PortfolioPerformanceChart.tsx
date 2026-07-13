@@ -19,6 +19,7 @@ import {
 } from "d3";
 import React, { useRef, useEffect, useState, useCallback } from "react";
 import { useTheme } from "next-themes";
+import { parseLocalDateKey, toLocalDateKey } from "@/lib/date-formatters";
 import { TerminalPanel } from "./TerminalPanel";
 
 export interface PortfolioSnapshot {
@@ -72,7 +73,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
 
     const cutoff = new Date();
     cutoff.setDate(cutoff.getDate() - range.days);
-    const cutoffStr = cutoff.toISOString().slice(0, 10);
+    const cutoffStr = toLocalDateKey(cutoff);
 
     return snapshots.filter((s) => s.date >= cutoffStr);
   }, [snapshots, selectedRange]);
@@ -96,7 +97,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
 
     // Parse data
     const data = filteredSnapshots.map((s) => ({
-      date: new Date(s.date),
+      date: parseLocalDateKey(s.date) ?? new Date(s.date),
       value: s.totalValue,
       cost: s.totalCost,
     }));
@@ -295,11 +296,12 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
         hoverDot.style("opacity", 0);
         tooltip.style.opacity = "0";
       });
-  }, [filteredSnapshots, containerWidth, resolvedTheme]);
+  }, [filteredSnapshots, containerWidth]);
 
   useEffect(() => {
+    if (!resolvedTheme) return;
     drawChart();
-  }, [drawChart]);
+  }, [drawChart, resolvedTheme]);
 
   if (snapshots.length < 2) {
     return (
@@ -308,13 +310,13 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
           className="text-base font-semibold mb-0"
           style={{ color: "var(--home-ink)" }}
         >
-          Portfolio Performance
+          Portfolio Value History
         </h3>
         <div
           className="py-12 text-center text-sm"
           style={{ color: "var(--home-ink-soft)" }}
         >
-          Performance tracking starts after 2 days of data
+          Value history starts after 2 days of data
         </div>
       </TerminalPanel>
     );
@@ -328,7 +330,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
             className="text-base font-semibold"
             style={{ color: "var(--home-ink)" }}
           >
-            Portfolio Performance
+            Portfolio Value History
           </h3>
           <p className="mt-1 text-xs text-[var(--home-ink-soft)]">
             Value versus cost basis across the saved snapshot history.

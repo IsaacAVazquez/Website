@@ -38,6 +38,36 @@ function buildQuoteResponse(symbol: string, price: number, name: string) {
   };
 }
 
+// The quotes route answers 503 when every requested symbol failed, but the
+// body still carries the structured per-symbol error placeholders.
+function buildErrorQuoteResponse(symbol: string, error: string) {
+  return {
+    ok: false,
+    status: 503,
+    json: async () => ({
+      quotes: [
+        {
+          symbol,
+          price: 0,
+          change: 0,
+          changePercent: 0,
+          dayHigh: 0,
+          dayLow: 0,
+          open: 0,
+          previousClose: 0,
+          volume: 0,
+          marketCap: 0,
+          name: symbol,
+          error,
+        },
+      ],
+      rateLimited: true,
+      allFailed: true,
+      timestamp: "2026-03-30T08:01:00.000Z",
+    }),
+  };
+}
+
 describe("useLiveQuote", () => {
   beforeEach(() => {
     __testUtils.clearQuoteCache();
@@ -125,5 +155,37 @@ describe("useLiveQuote", () => {
     expect(result.current.quote?.price).toBe(203.1);
     // The stale quote stays on screen, but the failed refresh is not silent.
     expect(result.current.error).toMatch(/temporarily unavailable/i);
+  });
+
+  it("does not cache an error-valued quote over the last good quote", async () => {
+    const rateLimitMessage =
+      "Live price is temporarily unavailable right now. Try again in a few minutes.";
+    (global.fetch as jest.Mock)
+      .mockResolvedValueOnce(buildQuoteResponse("AAPL", 203.1, "Apple Inc."))
+      .mockResolvedValueOnce(buildErrorQuoteResponse("AAPL", rateLimitMessage))
+      .mockResolvedValueOnce(buildQuoteResponse("AAPL", 204.25, "Apple Inc."));
+
+    const { result } = renderHook(() => useLiveQuote("AAPL"));
+
+    await waitFor(() => expect(result.current.quote?.price).toBe(203.1));
+
+    act(() => {
+      result.current.refetch();
+    });
+
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+    expect(result.current.quote?.price).toBe(203.1);
+    expect(result.current.quote?.error).toBeUndefined();
+    // The per-quote message from the 503 body reaches the UI, not the
+    // generic fallback.
+    expect(result.current.error).toBe(rateLimitMessage);
+
+    act(() => {
+      result.current.refetch();
+    });
+
+    await waitFor(() => expect(result.current.quote?.price).toBe(204.25));
+    expect(result.current.error).toBeNull();
+    expect(global.fetch).toHaveBeenCalledTimes(3);
   });
 });

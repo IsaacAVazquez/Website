@@ -260,6 +260,7 @@ describe("buildBayAreaTransitSnapshotData", () => {
     // Elevator: "all elevators in service" filtered out, the outage remains.
     expect(summary.elevator).toHaveLength(1);
     expect(summary.elevator[0].description).toContain("Powell St.");
+    expect(summary.sectionStatus?.elevator).toBe("fresh");
 
     // Departures: per-station board populated and keyed by lowercase abbr.
     const embrBoard = stationBoards["embr"];
@@ -325,6 +326,7 @@ describe("buildBayAreaTransitSnapshotData", () => {
     // Elevator gracefully degrades to empty without taking down the build.
     expect(summary.elevator).toEqual([]);
     expect(summary.heroStats.elevatorOutages).toBe(0);
+    expect(summary.sectionStatus?.elevator).toBe("unavailable");
     // Other feeds remain intact.
     expect(summary.lines.length).toBeGreaterThan(0);
     expect(summary.stations).toHaveLength(12);

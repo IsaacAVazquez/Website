@@ -36,6 +36,8 @@ interface Props {
   onResearchTabChange: (tab: ResearchTab) => void;
   datasetLastUpdated?: string | null;
   datasetSymbolCount?: number;
+  datasetFreshCount?: number;
+  datasetStaleCount?: number;
   datasetFailedCount?: number;
 }
 
@@ -61,6 +63,8 @@ export function InvestmentsDashboard({
   onResearchTabChange,
   datasetLastUpdated,
   datasetSymbolCount = 0,
+  datasetFreshCount = 0,
+  datasetStaleCount = 0,
   datasetFailedCount = 0,
 }: Props) {
   const {
@@ -70,6 +74,7 @@ export function InvestmentsDashboard({
     error,
     lastUpdated,
     snapshots,
+    persistenceStatus,
     addHolding,
     updateHolding,
     removeHolding,
@@ -281,11 +286,25 @@ export function InvestmentsDashboard({
               {datasetSymbolCount} {datasetSymbolCount === 1 ? "company" : "companies"}
             </span>
           ) : null}
+          {datasetFreshCount > 0 ? (
+            <>
+              <span className="invest-dataset-chip-divider" aria-hidden="true">·</span>
+              <span>{datasetFreshCount} refreshed</span>
+            </>
+          ) : null}
+          {datasetStaleCount > 0 ? (
+            <>
+              <span className="invest-dataset-chip-divider" aria-hidden="true">·</span>
+              <span className="invest-dataset-chip-warn">
+                {datasetStaleCount} using earlier snapshots
+              </span>
+            </>
+          ) : null}
           {datasetFailedCount > 0 ? (
             <>
               <span className="invest-dataset-chip-divider" aria-hidden="true">·</span>
               <span className="invest-dataset-chip-warn">
-                {datasetFailedCount} pending
+                {datasetFailedCount} unavailable
               </span>
             </>
           ) : null}
@@ -296,6 +315,13 @@ export function InvestmentsDashboard({
         {error ? (
           <div className="mt-4 rounded-[var(--radius-sm)] border border-[color-mix(in_srgb,var(--home-warning)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-warning)_10%,var(--home-paper-alt))] px-4 py-3 text-sm text-[var(--home-ink-muted)]">
             {error}
+          </div>
+        ) : null}
+
+        {persistenceStatus === "memory-only" ? (
+          <div className="mt-4 rounded-[var(--radius-sm)] border border-[color-mix(in_srgb,var(--home-warning)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-warning)_10%,var(--home-paper-alt))] px-4 py-3 text-sm text-[var(--home-ink-muted)]" role="status">
+            Portfolio changes are available in this tab, but browser storage is
+            unavailable, so they may not remain after you close it.
           </div>
         ) : null}
 

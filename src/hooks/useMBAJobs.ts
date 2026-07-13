@@ -37,6 +37,8 @@ const DEFAULT_WATCHED_IDS = new Set<string>(
   MBA_COMPANIES.filter((c) => c.atsType !== "manual").map((c) => c.id)
 );
 
+const KNOWN_COMPANY_IDS = new Set<string>(MBA_COMPANIES.map((c) => c.id));
+
 // ---------------------------------------------------------------------------
 // localStorage helpers
 // ---------------------------------------------------------------------------
@@ -63,12 +65,33 @@ function loadWatchedCompanies(): Set<string> {
   const raw = localStorage.getItem(WATCHED_KEY);
   if (!raw) return new Set(DEFAULT_WATCHED_IDS);
   const parsed = safeParseStringArray(raw);
-  return new Set(parsed);
+  // Drop ids that no longer exist in MBA_COMPANIES: the API rejects unknown
+  // ids with a 400, so replaying a stale persisted id would break every
+  // fetch. The persisted value self-repairs on the next save.
+  return new Set(parsed.filter((id) => KNOWN_COMPANY_IDS.has(id)));
 }
 
 function saveWatchedCompanies(ids: Set<string>) {
   if (typeof window === "undefined") return;
   localStorage.setItem(WATCHED_KEY, JSON.stringify(Array.from(ids)));
+}
+
+// The API's 503 outage payload is a full MBAJobsApiResponse whose errors and
+// sourceStatuses explain which boards failed. Recover that detail from a
+// non-ok response so the source health panel can still render it; return
+// null for anything unstructured (non-JSON, plain error bodies).
+async function parseOutageBody(
+  res: Response
+): Promise<Pick<MBAJobsApiResponse, "errors" | "sourceStatuses"> | null> {
+  try {
+    const body = (await res.json()) as Partial<MBAJobsApiResponse> | null;
+    if (body && Array.isArray(body.errors) && Array.isArray(body.sourceStatuses)) {
+      return { errors: body.errors, sourceStatuses: body.sourceStatuses };
+    }
+  } catch {
+    // Non-JSON body; fall through to the generic error path.
+  }
+  return null;
 }
 
 // ---------------------------------------------------------------------------
@@ -245,7 +268,18 @@ export function useMBAJobs(options: UseMBAJobsOptions = {}): UseMBAJobsResult {
 
       try {
         const res = await fetch(url);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        if (!res.ok) {
+          const outage = await parseOutageBody(res);
+          if (
+            outage &&
+            isMountedRef.current &&
+            requestIdRef.current === requestId
+          ) {
+            setFetchErrors(outage.errors);
+            setSourceStatuses(outage.sourceStatuses ?? []);
+          }
+          throw new Error(`HTTP ${res.status}`);
+        }
         const data = (await res.json()) as MBAJobsApiResponse;
 
         if (!isMountedRef.current || requestIdRef.current !== requestId) return;

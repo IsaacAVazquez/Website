@@ -76,6 +76,11 @@ describe("GET /api/earthquake-pulse/summary", () => {
     expect(response.headers.get("Cache-Control")).toBe(
       "public, max-age=300, stale-while-revalidate=900"
     );
+    expect(response.headers.get("X-Data-Revision")).toMatch(/^[a-f0-9]{64}$/);
+    expect(response.headers.get("X-Data-Source")).toBe("git-snapshot");
+    expect(response.headers.get("Last-Modified")).toBe(
+      "Mon, 06 Jul 2026 12:00:00 GMT"
+    );
     expect(mockLoggerError).not.toHaveBeenCalled();
   });
 

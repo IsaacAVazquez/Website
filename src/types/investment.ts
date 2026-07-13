@@ -230,6 +230,12 @@ export interface InvestmentsIndex {
   symbols: string[];
   failed: string[];
   lastUpdated: string;
+  /** When the latest refresh attempt ran, even if no symbol refreshed. */
+  refreshAttemptedAt?: string;
+  /** Symbols fetched successfully during the latest refresh attempt. */
+  freshCount?: number;
+  /** Symbols recovered from an earlier snapshot after their latest fetch failed. */
+  staleCount?: number;
   entries?: InvestmentIndexEntry[];
 }
 

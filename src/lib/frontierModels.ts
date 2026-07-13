@@ -71,7 +71,9 @@ export function buildFrontierModelsSnapshot(
   source: FrontierSourceModel[],
   providerLabels: Record<FrontierProvider, string>,
   generatedAt: string,
-  sourceLabel = "Curated by Isaac Vazquez"
+  sourceLabel = "Curated by Isaac Vazquez",
+  asOf = generatedAt.slice(0, 10),
+  verified = false
 ): FrontierModelsSnapshot {
   const models: FrontierModel[] = source
     .map((entry) => ({
@@ -107,6 +109,8 @@ export function buildFrontierModelsSnapshot(
 
   return {
     generatedAt,
+    asOf,
+    verified,
     sourceLabel,
     models,
     providers,

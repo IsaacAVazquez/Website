@@ -22,11 +22,25 @@ describe("update-investments workflow contract", () => {
     expect(workflow).toContain("run: npm run update:investments");
   });
 
-  it("passes the public snapshots and raw dataset paths to the shared commit helper", () => {
-    // Raw per-section fetch output lives outside public/ so it never ships
-    // with a deploy; both locations must be staged for a refresh commit.
+  it("distinguishes fresh results from stale recoveries", () => {
+    expect(workflow).toContain("freshCount === 0");
+    expect(workflow).toContain("freshCount + staleCount !== successCount");
+    expect(workflow).toContain("staleRatio > 0.8");
+  });
+
+  it("commits only deployable snapshots, not raw provider responses", () => {
     expect(workflow).toContain("bash scripts/ci/commit-and-push-snapshot.sh");
     expect(workflow).toContain("public/data/investments");
-    expect(workflow).toContain("data/investments-raw");
+    expect(workflow).not.toContain("data/investments-raw");
+  });
+
+  it("keeps stale symbols on their prior snapshot timestamps", () => {
+    const builder = fs.readFileSync(
+      path.join(process.cwd(), "scripts", "buildInvestmentsSnapshots.ts"),
+      "utf8"
+    );
+
+    expect(builder).toContain("staleSymbols.has");
+    expect(builder).toContain("keeping the existing snapshot and freshness metadata");
   });
 });

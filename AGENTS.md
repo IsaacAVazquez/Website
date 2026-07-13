@@ -168,6 +168,7 @@ Footer variants:
 Confirm live API routes from `src/app/api/**/route.ts`. Current routes:
 
 - `/api/auth/[...nextauth]`
+- `/api/data-revisions` (no-cache production snapshot revision and freshness ledger)
 - `/api/bay-area-transit/summary` and `/api/bay-area-transit/stations/[stationId]`
 - `/api/earthquake-pulse/summary`
 - `/api/fantasy-data`
@@ -269,7 +270,7 @@ Inputs and outputs:
 - index file: `public/data/investments/index.json`
 - compacted snapshot output: `public/data/investments/{SYMBOL}/snapshot.json`
 
-Only the index and the compacted snapshots live under `public/` (and ship with deploys); the raw per-section files stay in `data/investments-raw/`. Symbols with no raw sections on disk are stale-served: the builder keeps their committed snapshot instead of failing.
+Only the index and compacted snapshots under `public/` ship with deploys and are committed by the refresh workflow. Raw per-section files stay in the `data/investments-raw/` workspace as transient builder inputs. That directory is gitignored for new files, but existing historical files remain tracked until the repository cleanup migration, and the refresh workflow's narrowed `public/data/investments` pathspec keeps them out of automated commits. When a symbol fetch fails, the builder keeps its committed snapshot and original freshness metadata.
 
 ### Football dashboard data workflow
 
@@ -311,7 +312,7 @@ Inputs and outputs:
 - Premier League snapshot output: `src/data/premierLeagueSnapshot.ts`
 - La Liga snapshot output: `src/data/laLigaSnapshot.ts`
 
-`prebuild` runs `tsx scripts/updateFootballSnapshots.ts --league-only` as the faster standings/fixtures/scorers refresh path during `npm run build`.
+Production builds consume the committed football snapshots without calling football-data.org. Refreshes run only through the explicit commands and scheduled workflows above.
 
 ### US sports dashboard data workflow
 
@@ -340,8 +341,8 @@ The MLB, NBA, and NFL dashboards read committed TypeScript snapshots at runtime.
 
 ### Build and asset workflow
 
-- `npm run build` runs `prebuild`, `next build --webpack`, and npm `postbuild`
-- `npm run prebuild` runs `tsx scripts/updateFootballSnapshots.ts --league-only` as the faster standings/fixtures/scorers refresh path before builds
+- `npm run build` runs `next build --webpack` and npm `postbuild`; it does not refresh data
+- `npm run typecheck` runs the standalone TypeScript gate enforced by CI
 - `postbuild` runs `next-sitemap` and `scripts/patch-nft-sharp.mjs`
 - `npm run analyze` enables bundle analysis and still runs the npm `postbuild` hook
 - `npm run build:analyze` runs `ANALYZE=true next build --webpack` directly and skips npm `postbuild`
@@ -354,8 +355,8 @@ The MLB, NBA, and NFL dashboards read committed TypeScript snapshots at runtime.
 | Command | Use |
 | --- | --- |
 | `npm run dev` | Start the Next.js dev server |
-| `npm run build` | Production build plus the football `prebuild` fast path and `postbuild` sitemap/NFT patch steps |
-| `npm run prebuild` | Run the football `--league-only` fast path used automatically before build |
+| `npm run build` | Production build plus the `postbuild` sitemap/NFT patch steps; consumes committed snapshots |
+| `npm run typecheck` | Run the standalone TypeScript gate enforced by CI |
 | `npm run postbuild` | Run sitemap generation and the NFT sharp patch used automatically after build |
 | `npm run start` | Serve the production build |
 | `npm run lint` | Run ESLint against `src` |
@@ -418,7 +419,7 @@ Checked-in operational workflows:
 Current behavior:
 
 - `test.yml` runs unit tests, build, sharded Chromium Playwright E2E, and lint on pushes to `main` or `develop`, plus pull requests targeting `main` or `develop`; full-matrix Playwright runs only on pushes to `main`
-- `update-investments.yml` runs on manual dispatch and on Mondays and Thursdays at `22:15 UTC`, then commits refreshed files under `public/data/investments` and `data/investments-raw` when the curated dataset changes
+- `update-investments.yml` runs on manual dispatch and on Mondays and Thursdays at `22:15 UTC`, then commits refreshed compact snapshots under `public/data/investments`; raw provider responses are not committed
 - `update-premier-league.yml` runs on manual dispatch and daily at `06:15 UTC` during the season (August through May; skipped June and July), then commits `src/data/premierLeagueSnapshot.ts` when it changes
 - `update-la-liga.yml` runs on manual dispatch and daily at `06:30 UTC` during the season (August through May; skipped June and July), then commits `src/data/laLigaSnapshot.ts` when it changes
 - `update-fantasy.yml` runs on manual dispatch and on Wednesdays at `17:00 UTC`, then commits the generated fantasy snapshot artifacts when they change
@@ -434,7 +435,7 @@ Current behavior:
 - `update-earthquake.yml` runs on manual dispatch and hourly (minute 20), then commits `src/data/earthquakeSnapshot.ts` when it changes
 - The tech startup tracker has no workflow by design — its dataset is editorially curated, so refreshes happen by editing the seed and running `npm run update:tech-startups` locally
 - All 14 snapshot `update-*.yml` workflows commit and push through the shared `scripts/ci/commit-and-push-snapshot.sh` helper (usage: `commit-and-push-snapshot.sh <commit-message> <pathspec...>`). It sets the `github-actions[bot]` identity, exits cleanly on a no-op refresh, and pushes to `HEAD:main` with a fetch/`rebase --autostash` retry loop (default 8 attempts, `SNAPSHOT_PUSH_ATTEMPTS` override) plus capped exponential backoff to absorb concurrent snapshot-bot pushes. Behavior is asserted by `.github/workflows/__tests__/snapshot-workflows.test.ts` and `update-investments.test.ts`.
-- A daily cron-job.org ping to the Netlify build hook triggers production deploys; `prebuild` refreshes Premier League and La Liga league-level snapshots with `tsx scripts/updateFootballSnapshots.ts --league-only`
+- A daily cron-job.org ping to the Netlify build hook triggers a production deploy of the latest committed snapshots; data refreshes remain separate workflows
 - `purge-cache.ts` is protected by `Authorization: Bearer <CRON_SECRET>` or `x-cron-secret` and calls Netlify Durable Cache purge; query-string secrets are intentionally rejected
 - Historical caveat: `vercel.json` still declares a cron for `/api/scheduled-update`, but no matching route exists. Treat that config as historical until confirmed.
 

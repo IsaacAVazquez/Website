@@ -15,6 +15,7 @@ import {
   timeFormat,
 } from "d3";
 import { useReducedMotion } from "framer-motion";
+import { parseLocalDateKey, toLocalDateKey } from "@/lib/date-formatters";
 import {
   formatBalance,
   formatPercent,
@@ -69,7 +70,7 @@ export function PortfolioHeroCard({
       if (r.days === Infinity) break;
       const cutoff = new Date();
       cutoff.setDate(cutoff.getDate() - r.days);
-      const cutoffStr = cutoff.toISOString().slice(0, 10);
+      const cutoffStr = toLocalDateKey(cutoff);
       if (snapshots.filter((s) => s.date >= cutoffStr).length >= 2) {
         return r.label;
       }
@@ -87,7 +88,7 @@ export function PortfolioHeroCard({
     if (!r || r.days === Infinity) return snapshots;
     const cutoff = new Date();
     cutoff.setDate(cutoff.getDate() - r.days);
-    const cutoffStr = cutoff.toISOString().slice(0, 10);
+    const cutoffStr = toLocalDateKey(cutoff);
     return snapshots.filter((s) => s.date >= cutoffStr);
   }, [snapshots, range]);
 
@@ -134,7 +135,10 @@ export function PortfolioHeroCard({
       return;
     }
 
-    const data = filteredSnapshots.map((s) => ({ date: new Date(s.date), value: s.totalValue }));
+    const data = filteredSnapshots.map((s) => ({
+      date: parseLocalDateKey(s.date) ?? new Date(s.date),
+      value: s.totalValue,
+    }));
 
     const xScale = scaleTime()
       .domain(extent(data, (d) => d.date) as [Date, Date])

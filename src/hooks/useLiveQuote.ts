@@ -6,6 +6,7 @@ import type { StockQuote } from "@/types/investment";
 interface QuotePayload {
   quotes?: StockQuote[];
   timestamp?: string;
+  error?: string;
 }
 
 interface CachedQuote {
@@ -106,20 +107,40 @@ async function fetchQuote(symbol: string): Promise<CachedQuote> {
 
   const promise = fetch(`/api/investments/quotes?symbols=${encodeURIComponent(upperSymbol)}`)
     .then(async (response) => {
-      if (!response.ok) {
-        throw new Error("Live pricing is temporarily unavailable.");
+      let payload: QuotePayload | null = null;
+      try {
+        payload = (await response.json()) as QuotePayload;
+      } catch {
+        payload = null;
       }
 
-      const payload = (await response.json()) as QuotePayload;
-      const quote = payload.quotes?.find((item) => item.symbol === upperSymbol);
+      if (!response.ok) {
+        // Failures arrive as 503/400 with the structured body still attached
+        // (per-symbol error placeholders plus a top-level error). Surface the
+        // specific message so the UI can explain rate limits and eligibility.
+        const message =
+          payload?.quotes?.find((item) => item.symbol === upperSymbol)?.error ??
+          payload?.error;
+        throw new Error(
+          typeof message === "string" && message.length > 0
+            ? message
+            : "Live pricing is temporarily unavailable."
+        );
+      }
+
+      const quote = payload?.quotes?.find((item) => item.symbol === upperSymbol);
 
       if (!quote) {
         throw new Error("Live pricing is temporarily unavailable.");
       }
 
+      if (quote.error) {
+        throw new Error(quote.error);
+      }
+
       const cachedEntry: CachedQuote = {
         quote,
-        lastUpdated: payload.timestamp ?? new Date().toISOString(),
+        lastUpdated: payload?.timestamp ?? new Date().toISOString(),
         fetchedAt: Date.now(),
       };
 

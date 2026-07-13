@@ -8,13 +8,21 @@ jest.mock("@/lib/finnhub", () => {
   return {
     ...actual,
     fetchFinnhubQuote: jest.fn(),
+    getAllowedSymbols: jest.fn(),
   };
 });
 
 import { GET } from "../route";
-import { fetchFinnhubQuote } from "@/lib/finnhub";
+import {
+  fetchFinnhubQuote,
+  FinnhubAllowlistUnavailableError,
+  getAllowedSymbols,
+} from "@/lib/finnhub";
 
 const mockFetchFinnhubQuote = fetchFinnhubQuote as jest.MockedFunction<typeof fetchFinnhubQuote>;
+const mockGetAllowedSymbols = getAllowedSymbols as jest.MockedFunction<
+  typeof getAllowedSymbols
+>;
 
 const errorQuote = (symbol: string, error: string) => ({
   symbol,
@@ -34,6 +42,7 @@ const errorQuote = (symbol: string, error: string) => ({
 describe("GET /api/investments/quotes", () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    mockGetAllowedSymbols.mockResolvedValue(new Set(["AAPL", "MSFT"]));
   });
 
   it("returns friendly placeholder errors when live quote fetches fail", async () => {
@@ -46,7 +55,8 @@ describe("GET /api/investments/quotes", () => {
     );
     const body = await response.json();
 
-    expect(response.status).toBe(200);
+    expect(response.status).toBe(503);
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
     expect(body.allFailed).toBe(true);
     expect(body.rateLimited).toBe(false);
     expect(body.quotes[0].symbol).toBe("AAPL");
@@ -63,7 +73,8 @@ describe("GET /api/investments/quotes", () => {
     );
     const body = await response.json();
 
-    expect(response.status).toBe(200);
+    expect(response.status).toBe(503);
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
     expect(body.allFailed).toBe(true);
     expect(body.rateLimited).toBe(true);
     expect(body.quotes[0].error).toMatch(/few minutes/i);
@@ -94,6 +105,7 @@ describe("GET /api/investments/quotes", () => {
     const body = await response.json();
 
     expect(response.status).toBe(200);
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
     expect(body.allFailed).toBe(false);
     expect(body.rateLimited).toBe(false);
     expect(body.quotes).toHaveLength(2);
@@ -101,5 +113,103 @@ describe("GET /api/investments/quotes", () => {
     expect(body.quotes[0].error).toBeUndefined();
     expect(body.quotes[1].symbol).toBe("MSFT");
     expect(body.quotes[1].error).toMatch(/temporarily unavailable/i);
+  });
+
+  it("varies fully successful cached responses by query", async () => {
+    mockFetchFinnhubQuote.mockResolvedValueOnce({
+      symbol: "AAPL",
+      price: 203.1,
+      change: 2.1,
+      changePercent: 1.05,
+      dayHigh: 204,
+      dayLow: 200.5,
+      open: 201.5,
+      previousClose: 201,
+      volume: 0,
+      marketCap: 0,
+      name: "AAPL",
+    });
+
+    const response = await GET(
+      new NextRequest("https://isaacavazquez.com/api/investments/quotes?symbols=AAPL")
+    );
+
+    expect(response.status).toBe(200);
+    expect(response.headers.get("Netlify-Vary")).toBe("query");
+    expect(response.headers.get("Cache-Control")).toContain("max-age=30");
+  });
+
+  it.each(["", "AAPL,,MSFT", "BAD SYMBOL"])(
+    "rejects malformed symbol queries without caching them",
+    async (symbols) => {
+      const response = await GET(
+        new NextRequest(
+          `https://isaacavazquez.com/api/investments/quotes?symbols=${encodeURIComponent(symbols)}`
+        )
+      );
+
+      expect(response.status).toBe(400);
+      expect(response.headers.get("Cache-Control")).toBe("no-store");
+      expect(mockFetchFinnhubQuote).not.toHaveBeenCalled();
+    }
+  );
+
+  it("rejects non-curated symbols without caching the response", async () => {
+    const response = await GET(
+      new NextRequest("https://isaacavazquez.com/api/investments/quotes?symbols=ZZZZZ")
+    );
+
+    expect(response.status).toBe(400);
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
+    expect(mockFetchFinnhubQuote).not.toHaveBeenCalled();
+  });
+
+  it("keeps valid quotes usable when a mixed request includes a non-curated symbol", async () => {
+    mockFetchFinnhubQuote.mockResolvedValueOnce({
+      symbol: "AAPL",
+      price: 203.1,
+      change: 2.1,
+      changePercent: 1.05,
+      dayHigh: 204,
+      dayLow: 200.5,
+      open: 201.5,
+      previousClose: 201,
+      volume: 0,
+      marketCap: 0,
+      name: "AAPL",
+    });
+
+    const response = await GET(
+      new NextRequest(
+        "https://isaacavazquez.com/api/investments/quotes?symbols=AAPL,ZZZZZ"
+      )
+    );
+    const body = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
+    expect(body.quotes).toEqual([
+      expect.objectContaining({ symbol: "AAPL", price: 203.1 }),
+      expect.objectContaining({
+        symbol: "ZZZZZ",
+        error: expect.stringMatching(/not eligible/i),
+      }),
+    ]);
+  });
+
+  it("returns 503 when the curated allowlist cannot be resolved", async () => {
+    mockGetAllowedSymbols.mockRejectedValueOnce(
+      new FinnhubAllowlistUnavailableError()
+    );
+
+    const response = await GET(
+      new NextRequest("https://isaacavazquez.com/api/investments/quotes?symbols=AAPL")
+    );
+    const body = await response.json();
+
+    expect(response.status).toBe(503);
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
+    expect(body.error).toMatch(/temporarily unavailable/i);
+    expect(mockFetchFinnhubQuote).not.toHaveBeenCalled();
   });
 });

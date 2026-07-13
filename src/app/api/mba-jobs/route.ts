@@ -9,6 +9,15 @@ import type {
 } from "@/types/mba-jobs";
 import { MBA_COMPANIES } from "@/constants/mba-companies";
 import { matchMBAJobRole } from "@/lib/mba-job-matching";
+import {
+  buildQueryCacheHeaders,
+  NO_STORE_HEADERS,
+} from "@/lib/apiCacheHeaders";
+import {
+  getClientIp,
+  mbaJobsRateLimiter,
+  rateLimitResponse,
+} from "@/lib/rateLimit";
 
 const TIMEOUT_MS = 8_000;
 const MAX_SNIPPET_LENGTH = 220;
@@ -772,13 +781,18 @@ async function fetchAdzunaExternalLeads(): Promise<ExternalFetchResult> {
 
 const SUCCESS_TTL_MS = 30 * 60 * 1000; // 30 minutes
 const ERROR_TTL_MS = 2 * 60 * 1000; // 2 minutes
-const ERROR_CACHE_CONTROL_HEADER = "no-store";
 const SUCCESS_CACHE_CONTROL_HEADER =
   "public, s-maxage=1800, stale-while-revalidate=3600";
+const SUCCESS_CACHE_HEADERS = buildQueryCacheHeaders(
+  SUCCESS_CACHE_CONTROL_HEADER
+);
+const KNOWN_COMPANY_IDS = new Set(MBA_COMPANIES.map((company) => company.id));
 
 interface JobsFetchResult {
   body: MBAJobsApiResponse;
   isError: boolean;
+  isDegraded: boolean;
+  isStale?: boolean;
 }
 
 interface JobsCacheEntry {
@@ -788,12 +802,31 @@ interface JobsCacheEntry {
 }
 
 const jobsCache = new Map<string, JobsCacheEntry>();
+const lastGoodJobs = new Map<string, JobsFetchResult>();
+const MAX_CACHE_KEYS = 100;
+
+function setBoundedCacheValue<T>(map: Map<string, T>, key: string, value: T): void {
+  map.delete(key);
+  map.set(key, value);
+
+  while (map.size > MAX_CACHE_KEYS) {
+    const oldestKey = map.keys().next().value;
+    if (typeof oldestKey !== "string") break;
+    map.delete(oldestKey);
+  }
+}
 
 function isJobsFresh(entry: JobsCacheEntry, now: number): boolean {
   if (entry.completedAt === null || entry.value === null) {
     return true; // in-flight
   }
-  const ttl = entry.value.isError ? ERROR_TTL_MS : SUCCESS_TTL_MS;
+  // Degraded-but-successful results (some boards failed, others answered)
+  // deliberately get the success TTL: partial failures are routine at this
+  // fan-out, and the short error TTL would re-hit ~30 boards every 2 minutes
+  // whenever a single board is chronically down. Only total failures and
+  // stale fallbacks retry quickly.
+  const ttl =
+    entry.value.isError || entry.value.isStale ? ERROR_TTL_MS : SUCCESS_TTL_MS;
   return now - entry.completedAt < ttl;
 }
 
@@ -846,6 +879,13 @@ async function fetchAllJobs(
     const externalResult = await fetchAdzunaExternalLeads();
     jobs.push(...externalResult.jobs);
     sourceStatuses.push(externalResult.status);
+    if (externalResult.status.status === "failed") {
+      errors.push({
+        companyId: externalResult.status.companyId,
+        companyName: externalResult.status.companyName,
+        message: externalResult.status.message ?? "External leads failed.",
+      });
+    }
   }
 
   const dedupedJobs = dedupeJobs(jobs);
@@ -854,8 +894,22 @@ async function fetchAllJobs(
     (a, b) => getPostedAtTime(b.postedAt) - getPostedAtTime(a.postedAt)
   );
 
-  // If every target failed, treat as an error so the cache TTL is short.
-  const isError = dedupedJobs.length === 0 && errors.length > 0;
+  const attemptedSources = sourceStatuses.filter(
+    (source) => source.status === "ok" || source.status === "failed"
+  );
+  const failedSources = attemptedSources.filter(
+    (source) => source.status === "failed"
+  );
+  const allAttemptedSourcesFailed =
+    attemptedSources.length > 0 &&
+    failedSources.length === attemptedSources.length;
+
+  // An empty result is trustworthy only when at least one attempted source
+  // actually responded. If every attempted source failed, return an error so
+  // clients keep their previous jobs rather than replacing them with an empty
+  // outage payload.
+  const isError = dedupedJobs.length === 0 && allAttemptedSourcesFailed;
+  const isDegraded = failedSources.length > 0 && !isError;
 
   return {
     body: {
@@ -866,6 +920,67 @@ async function fetchAllJobs(
       sourceStatuses,
     },
     isError,
+    isDegraded,
+  };
+}
+
+function buildStaleJobsResult(
+  good: JobsFetchResult,
+  failure: JobsFetchResult
+): JobsFetchResult {
+  return {
+    body: {
+      ...good.body,
+      errors: failure.body.errors,
+      sourceStatuses: failure.body.sourceStatuses,
+    },
+    isError: false,
+    isDegraded: true,
+    isStale: true,
+  };
+}
+
+// When only some boards failed, backfill the response with the last-good
+// jobs from exactly those failed sources so a partial outage does not make
+// their postings silently vanish. Fresh jobs win on id collisions, and the
+// failed sources' statuses note that earlier data is being served.
+function mergeLastGoodIntoDegraded(
+  good: JobsFetchResult,
+  degraded: JobsFetchResult
+): JobsFetchResult {
+  const failedCompanyIds = new Set(
+    (degraded.body.sourceStatuses ?? [])
+      .filter((source) => source.status === "failed")
+      .map((source) => source.companyId)
+  );
+  const freshJobIds = new Set(degraded.body.jobs.map((job) => job.id));
+  const recoveredJobs = good.body.jobs.filter(
+    (job) => failedCompanyIds.has(job.companyId) && !freshJobIds.has(job.id)
+  );
+  if (recoveredJobs.length === 0) return degraded;
+
+  const recoveredCounts = new Map<string, number>();
+  recoveredJobs.forEach((job) => {
+    recoveredCounts.set(job.companyId, (recoveredCounts.get(job.companyId) ?? 0) + 1);
+  });
+
+  const jobs = [...degraded.body.jobs, ...recoveredJobs].sort(
+    (a, b) => getPostedAtTime(b.postedAt) - getPostedAtTime(a.postedAt)
+  );
+  const sourceStatuses = (degraded.body.sourceStatuses ?? []).map((source) => {
+    const recoveredCount = recoveredCounts.get(source.companyId);
+    if (source.status !== "failed" || !recoveredCount) return source;
+    return {
+      ...source,
+      jobCount: recoveredCount,
+      message: `${source.message ?? "unknown error"} (serving previously fetched roles)`,
+    };
+  });
+
+  return {
+    body: { ...degraded.body, jobs, sourceStatuses },
+    isError: false,
+    isDegraded: true,
   };
 }
 
@@ -891,17 +1006,35 @@ function getOrFetchJobs(
         sourceStatuses: [],
       },
       isError: true,
+      isDegraded: false,
     }),
     completedAt: null,
     value: null,
   };
 
   entry.promise = (async () => {
-    try {
-      const result = await fetchAllJobs(targets, includeExternalLeads);
-      entry.value = result;
+    const settle = (result: JobsFetchResult): JobsFetchResult => {
+      let served = result;
+
+      if (!result.isError && !result.isDegraded) {
+        setBoundedCacheValue(lastGoodJobs, cacheKey, result);
+      } else if (result.isError) {
+        const good = lastGoodJobs.get(cacheKey);
+        if (good) served = buildStaleJobsResult(good, result);
+      } else {
+        // Degraded: some boards answered, some failed. Never promote this to
+        // lastGoodJobs, but do backfill the failed boards from it.
+        const good = lastGoodJobs.get(cacheKey);
+        if (good) served = mergeLastGoodIntoDegraded(good, result);
+      }
+
+      entry.value = served;
       entry.completedAt = Date.now();
-      return result;
+      return served;
+    };
+
+    try {
+      return settle(await fetchAllJobs(targets, includeExternalLeads));
     } catch (error) {
       const message = error instanceof Error ? error.message : "unknown error";
       const result: JobsFetchResult = {
@@ -920,14 +1053,13 @@ function getOrFetchJobs(
           })),
         },
         isError: true,
+        isDegraded: false,
       };
-      entry.value = result;
-      entry.completedAt = Date.now();
-      return result;
+      return settle(result);
     }
   })();
 
-  jobsCache.set(cacheKey, entry);
+  setBoundedCacheValue(jobsCache, cacheKey, entry);
   return entry.promise;
 }
 
@@ -986,8 +1118,38 @@ function orderSourceStatuses(
 }
 
 export async function GET(request: NextRequest) {
+  const rate = mbaJobsRateLimiter.check(`mba-jobs:${getClientIp(request)}`);
+  if (!rate.success) {
+    return rateLimitResponse(rate);
+  }
+
   const requestedIds = normalizeRequestedCompanyIds(request);
-  const includeExternalLeads = request.nextUrl.searchParams.get("external") === "on";
+  const externalParam = request.nextUrl.searchParams.get("external");
+  if (
+    externalParam !== null &&
+    externalParam !== "on" &&
+    externalParam !== "off"
+  ) {
+    return NextResponse.json(
+      { error: "Invalid external parameter." },
+      { status: 400, headers: NO_STORE_HEADERS }
+    );
+  }
+
+  const unknownCompanyIds = requestedIds.filter(
+    (companyId) => !KNOWN_COMPANY_IDS.has(companyId)
+  );
+  if (unknownCompanyIds.length > 0) {
+    return NextResponse.json(
+      {
+        error: "One or more company ids are unknown.",
+        unknownCompanyIds,
+      },
+      { status: 400, headers: NO_STORE_HEADERS }
+    );
+  }
+
+  const includeExternalLeads = externalParam === "on";
 
   const targets = MBA_COMPANIES.filter(
     (c): c is PollableMBACompany =>
@@ -1016,11 +1178,11 @@ export async function GET(request: NextRequest) {
     companiesRequested: requestedIds,
     sourceStatuses,
   }, {
-    headers: {
-      "Cache-Control": result.isError
-        ? ERROR_CACHE_CONTROL_HEADER
-        : SUCCESS_CACHE_CONTROL_HEADER,
-    },
+    status: result.isError ? 503 : 200,
+    // Degraded results stay edge-cacheable (see isJobsFresh); only total
+    // failures and stale fallbacks are kept out of the cache.
+    headers:
+      result.isError || result.isStale ? NO_STORE_HEADERS : SUCCESS_CACHE_HEADERS,
   });
 }
 
@@ -1032,4 +1194,6 @@ export async function GET(request: NextRequest) {
   Symbol.for("__mbaJobsCacheResetForTesting")
 ] = (): void => {
   jobsCache.clear();
+  lastGoodJobs.clear();
+  mbaJobsRateLimiter.reset();
 };

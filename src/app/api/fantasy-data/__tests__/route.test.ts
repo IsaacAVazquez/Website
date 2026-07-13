@@ -101,6 +101,7 @@ describe("GET /api/fantasy-data", () => {
     expect(body.metadata.slice.available).toBe(true);
     expect(body.metadata.slice.rangeKind).toBe("position");
     expect(body.metadata.upstreamUpdatedAt).toMatch(/^20\d{2}-/);
+    expect(response.headers.get("Netlify-Vary")).toBe("query");
   });
 
   it("returns unavailable metadata instead of overall fallback data for an overall-only legacy ppr slice", async () => {
@@ -127,6 +128,36 @@ describe("GET /api/fantasy-data", () => {
     expect(body.metadata.scoringFormat).toBe("HALF_PPR");
     expect(body.metadata.slice.available).toBe(true);
     expect(body.metadata.slice.sourceKind).toBe("shared_position_consensus");
+  });
+
+  it.each([
+    ["scoring", { scoring: "" }],
+    ["position", { position: "" }],
+    ["all", { all: "" }],
+  ])("treats an empty %s parameter as absent and serves defaults", async (_parameter, params) => {
+    const response = await GET(makeRequest(params));
+    const body = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(body.success).toBe(true);
+    expect(body.players).toBeDefined();
+    expect(body.metadata.position).toBe("overall");
+    expect(body.metadata.scoringFormat).toBe("PPR");
+  });
+
+  it.each([
+    [{ scoring: "points-per-reception" }, "scoring"],
+    [{ position: "defense" }, "position"],
+    [{ all: "yes" }, "all"],
+  ])("rejects invalid query values without caching them", async (params, parameter) => {
+    const response = await GET(makeRequest(params));
+    const body = await response.json();
+
+    expect(response.status).toBe(400);
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
+    expect(response.headers.get("Netlify-Vary")).toBeNull();
+    expect(body.error).toContain(parameter);
+    expect(mockLoadFantasySnapshot).not.toHaveBeenCalled();
   });
 
   it("returns the full snapshot when all=true", async () => {

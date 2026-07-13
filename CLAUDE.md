@@ -52,9 +52,9 @@ secondary authority-building content — not a generic blog template. The surfac
 - NextAuth v4 for `/admin`
 - Netlify deployment via `@netlify/plugin-nextjs`
 
-Build pipeline: `prebuild` runs a league-only football snapshot refresh; `postbuild`
-runs `next-sitemap` and `scripts/patch-nft-sharp.mjs`. Full command and data-refresh
-runbooks live in `AGENTS.md` and `docs/DATA_UPDATE_OPERATIONS.md`.
+Build pipeline: `npm run build` consumes committed snapshots without mutating data;
+`postbuild` runs `next-sitemap` and `scripts/patch-nft-sharp.mjs`. Full command and
+data-refresh runbooks live in `AGENTS.md` and `docs/DATA_UPDATE_OPERATIONS.md`.
 
 ---
 

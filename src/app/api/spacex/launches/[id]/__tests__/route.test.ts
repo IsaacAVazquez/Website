@@ -125,6 +125,10 @@ describe("GET /api/spacex/launches/[id]", () => {
     expect(response.status).toBe(200);
     expect(body.id).toBe("5eb87d46ffd86e000604b388");
     expect(response.headers.get("Cache-Control")).toContain("max-age=300");
+    expect(mockGetMissionLaunchDetail).toHaveBeenCalledWith(
+      "5eb87d46ffd86e000604b388",
+      { source: "snapshot" }
+    );
   });
 
   it("maps upstream rate limits to a provider-unavailable response", async () => {
@@ -139,5 +143,6 @@ describe("GET /api/spacex/launches/[id]", () => {
 
     expect(response.status).toBe(503);
     expect(body.error).toMatch(/temporarily rate limited/i);
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
   });
 });

@@ -1,5 +1,6 @@
 import { act, renderHook, waitFor } from "@testing-library/react";
 import { createDefaultPlan, type RetirementPlanInput } from "@/lib/retirement";
+import { resetBrowserStorageMemory } from "@/lib/browserStorage";
 import { useRetirementPlan, type RetirementSeed } from "../useRetirementPlan";
 
 const STORAGE_KEY = "retirement_plan";
@@ -16,6 +17,13 @@ function readStoredPlan(): RetirementPlanInput {
 
 describe("useRetirementPlan", () => {
   beforeEach(() => {
+    resetBrowserStorageMemory();
+    window.localStorage.clear();
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+    resetBrowserStorageMemory();
     window.localStorage.clear();
   });
 
@@ -164,5 +172,67 @@ describe("useRetirementPlan", () => {
 
     expect(result.current.plan.desiredAnnualSpend).toBe(createDefaultPlan().desiredAnnualSpend);
     expect(result.current.plan.accounts.some((a) => a.balance === 300000)).toBe(true);
+  });
+
+  it("repairs malformed stored plan fields before running the engine", async () => {
+    window.localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({
+        version: STORAGE_VERSION,
+        plan: {
+          currentAge: "unknown",
+          retirementAge: 20,
+          horizonAge: 10,
+          desiredAnnualSpend: "a lot",
+          accounts: [{ id: "", type: "mystery", balance: "all of it" }],
+          allocation: { stocks: 70, bonds: "thirty" },
+          assumptions: { simulations: 1_000_000, withdrawalStrategy: "wishful" },
+        },
+      }),
+    );
+
+    const { result } = renderHook(() => useRetirementPlan());
+    await waitFor(() => expect(result.current.ready).toBe(true));
+
+    expect(result.current.plan.currentAge).toBe(35);
+    expect(result.current.plan.retirementAge).toBe(36);
+    expect(result.current.plan.horizonAge).toBe(37);
+    expect(result.current.plan.desiredAnnualSpend).toBe(60000);
+    expect(result.current.plan.accounts).toEqual([]);
+    expect(result.current.plan.allocation).toMatchObject({ stocks: 70, bonds: 15 });
+    expect(result.current.plan.assumptions.simulations).toBe(10000);
+    expect(result.current.plan.assumptions.withdrawalStrategy).toBe("fixed-real");
+  });
+
+  it("keeps retirement age above a valid current age when the stored value has the wrong type", async () => {
+    const stored = createDefaultPlan();
+    window.localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({
+        version: STORAGE_VERSION,
+        plan: { ...stored, currentAge: 70, retirementAge: "sixty-five" },
+      }),
+    );
+
+    const { result } = renderHook(() => useRetirementPlan());
+    await waitFor(() => expect(result.current.ready).toBe(true));
+
+    expect(result.current.plan.currentAge).toBe(70);
+    // The type-corrupted retirement age must not fall back below currentAge + 1.
+    expect(result.current.plan.retirementAge).toBe(71);
+    expect(result.current.plan.horizonAge).toBeGreaterThanOrEqual(72);
+  });
+
+  it("surfaces memory-only persistence when a plan write is rejected", async () => {
+    const { result } = renderHook(() => useRetirementPlan());
+    await waitFor(() => expect(result.current.ready).toBe(true));
+    jest.spyOn(Storage.prototype, "setItem").mockImplementation(() => {
+      throw new DOMException("blocked", "QuotaExceededError");
+    });
+
+    act(() => result.current.updatePlan({ desiredAnnualSpend: 123456 }));
+
+    expect(result.current.plan.desiredAnnualSpend).toBe(123456);
+    await waitFor(() => expect(result.current.persistenceStatus).toBe("memory-only"));
   });
 });

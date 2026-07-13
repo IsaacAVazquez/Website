@@ -100,10 +100,10 @@ describe("GET /api/search", () => {
     // contribute a baseline score for an otherwise non-matching entry.
     mockGetAllBlogPostPreviews.mockReturnValue([
       {
-        ...(SAMPLE_PREVIEW as Record<string, unknown>),
+        ...SAMPLE_PREVIEW,
         publishedAt: "2020-01-01",
       },
-    ] as unknown as ReturnType<typeof getAllBlogPostPreviews>);
+    ]);
 
     const response = await GET(
       makeRequest("?q=zzqxnomatchtoken1234567890")

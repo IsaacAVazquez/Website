@@ -64,7 +64,7 @@ Update paths:
 - `npm run update:football` for both leagues
 - `npm run update:premier-league` for Premier League only
 - `npm run update:la-liga` for La Liga only
-- `prebuild` runs the faster `scripts/updateFootballSnapshots.ts --league-only` path during `npm run build`
+- production builds consume committed football snapshots without calling external providers
 
 Runtime API routes read those committed snapshots instead of calling `football-data.org`.
 

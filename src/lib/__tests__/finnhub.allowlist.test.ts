@@ -12,6 +12,7 @@ jest.mock("fs", () => ({ readFileSync: jest.fn() }));
 
 import { readFileSync } from "fs";
 import {
+  FinnhubAllowlistUnavailableError,
   getAllowedSymbols,
   isAllowedSymbol,
   __resetAllowlistCacheForTests,
@@ -81,7 +82,7 @@ describe("finnhub allowlist resolution", () => {
     expect(await isAllowedSymbol(".AAPL")).toBe(false);
   });
 
-  it("fails closed on a total miss but does not cache the empty result", async () => {
+  it("reports a total miss as unavailable but does not cache the failure", async () => {
     mockReadFileSync.mockImplementation(() => {
       throw enoent();
     });
@@ -89,8 +90,9 @@ describe("finnhub allowlist resolution", () => {
     global.fetch = jest
       .fn()
       .mockRejectedValue(new Error("network down")) as unknown as typeof fetch;
-    const firstAttempt = await getAllowedSymbols();
-    expect(firstAttempt.size).toBe(0);
+    await expect(getAllowedSymbols()).rejects.toBeInstanceOf(
+      FinnhubAllowlistUnavailableError
+    );
 
     // A later request (asset now reachable) must recover rather than stay
     // wedged on a cached empty set for the life of the process.

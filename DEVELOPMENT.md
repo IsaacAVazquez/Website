@@ -122,6 +122,7 @@ Do not assume old doc paths are current. Check the actual route tree first.
 - portfolio state is browser-local
 - quotes are refreshed via `/api/investments/quotes`
 - research data comes through curated research endpoints, not a generic catch-all API
+- raw provider responses under `data/investments-raw/` are a transient builder workspace, gitignored for new files though existing historical files remain tracked until the repository cleanup migration; the refresh workflow commits only compact snapshots under `public/data/investments/`, so raw files stay out of automated commits
 
 ### Fantasy football
 
@@ -152,7 +153,7 @@ git commit -m "data: refresh football snapshots"
 git push
 ```
 
-`prebuild` runs `scripts/updateFootballSnapshots.ts --league-only` before `next build`, which refreshes the faster standings/fixtures/scorers path. The checked-in GitHub Actions workflows also refresh Premier League and La Liga snapshots daily and commit changes when the data moves. Full local team fixture/form refreshes still use `npm run update:football`.
+The checked-in GitHub Actions workflows refresh Premier League and La Liga snapshots daily and commit changes when the data moves. Production builds consume those committed snapshots and do not call football-data.org. Full local team fixture/form refreshes still use `npm run update:football`.
 
 Requires `FOOTBALL_DATA_API_TOKEN` in `.env.local` (free tier, 10 req/min limit). Without it, the dashboard still loads from the last committed snapshot.
 
@@ -185,9 +186,9 @@ There is no live `/admin/analytics` page in the current route tree.
 ## Build And Deployment Notes
 
 - deployment target is Netlify
-- `prebuild` runs `scripts/updateFootballSnapshots.ts --league-only` (standings, fixtures, scorers only — not full team snapshots)
+- builds consume committed snapshots and do not mutate data or call external providers
 - `next-sitemap` runs during postbuild
-- `typescript.ignoreBuildErrors` is still enabled in `next.config.mjs`
+- `npm run typecheck` is enforced before the production build in CI
 - build-time tracing excludes large optional assets and packages
 - the snapshot-refresh GitHub Actions workflows (all `.github/workflows/update-*.yml`) commit and push their refreshed snapshots through the shared `scripts/ci/commit-and-push-snapshot.sh` helper, which sets the `github-actions[bot]` identity, no-ops cleanly when nothing changed, and retries the push with rebase + backoff so concurrent snapshot bots do not collide on `main`
 

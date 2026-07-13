@@ -1,11 +1,29 @@
 import type {
   Museum,
+  MuseumExhibit,
   MuseumRegion,
   MuseumSort,
   MuseumType,
   MuseumTypeFilter,
   MuseumRegionFilter,
 } from "@/types/museum";
+
+export type MuseumExhibitStatus = "current" | "upcoming" | "ended";
+
+/**
+ * Classifies an exhibit against a local calendar date. `today` is null until the
+ * client knows its local date (it is not computed during SSR, where the server
+ * timezone can disagree with the visitor's) — return null so no status renders.
+ */
+export function getMuseumExhibitStatus(
+  exhibit: Pick<MuseumExhibit, "startDate" | "endDate">,
+  today: string | null
+): MuseumExhibitStatus | null {
+  if (today === null) return null;
+  if (exhibit.startDate > today) return "upcoming";
+  if (exhibit.endDate !== null && exhibit.endDate < today) return "ended";
+  return "current";
+}
 
 // ─── Date formatters ──────────────────────────────────────────────────────────
 

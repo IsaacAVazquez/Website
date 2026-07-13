@@ -1,5 +1,6 @@
 import { act, renderHook, waitFor } from "@testing-library/react";
 import type { UserMuseumState, UserVisit } from "@/types/museum";
+import { resetBrowserStorageMemory } from "@/lib/browserStorage";
 import { useMuseumLog } from "../useMuseumLog";
 
 const STORAGE_KEY = "museum_log_user_state_v1";
@@ -10,6 +11,13 @@ function readStored(): UserMuseumState {
 
 describe("useMuseumLog", () => {
   beforeEach(() => {
+    resetBrowserStorageMemory();
+    window.localStorage.clear();
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+    resetBrowserStorageMemory();
     window.localStorage.clear();
   });
 
@@ -149,5 +157,42 @@ describe("useMuseumLog", () => {
 
     expect(result.current.state).toEqual({ visited: [], watchlist: [], liked: [] });
     expect(readStored()).toEqual({ visited: [], watchlist: [], liked: [] });
+  });
+
+  it("repairs malformed persisted lists and drops invalid visits", async () => {
+    window.localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({
+        visited: [
+          { museumId: "met", date: "2026-05-01", rating: 4.5 },
+          { museumId: "bad-date", date: "2026-02-30", rating: 4 },
+          { museumId: "bad-rating", date: "2026-01-01", rating: "five" },
+        ],
+        watchlist: ["moma", 42, "moma", ""],
+        liked: "not-an-array",
+      }),
+    );
+
+    const { result } = renderHook(() => useMuseumLog());
+    await waitFor(() => expect(result.current.hydrated).toBe(true));
+
+    expect(result.current.state).toEqual({
+      visited: [{ museumId: "met", date: "2026-05-01", rating: 4.5 }],
+      watchlist: ["moma"],
+      liked: [],
+    });
+  });
+
+  it("keeps changes usable in memory when durable writes fail", async () => {
+    const { result } = renderHook(() => useMuseumLog());
+    await waitFor(() => expect(result.current.hydrated).toBe(true));
+    jest.spyOn(Storage.prototype, "setItem").mockImplementation(() => {
+      throw new DOMException("blocked", "QuotaExceededError");
+    });
+
+    act(() => result.current.toggleLiked("met"));
+
+    expect(result.current.isLiked("met")).toBe(true);
+    await waitFor(() => expect(result.current.persistenceStatus).toBe("memory-only"));
   });
 });

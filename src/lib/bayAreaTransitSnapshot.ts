@@ -29,6 +29,11 @@ export function createEmptyTransitSummary(): TransitSummary {
     stations: [],
     advisories: [],
     elevator: [],
+    sectionStatus: {
+      advisories: "unavailable",
+      elevator: "unavailable",
+      departures: "unavailable",
+    },
     defaultStation: null,
   };
 }

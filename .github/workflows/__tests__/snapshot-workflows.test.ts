@@ -26,6 +26,18 @@ describe("snapshot refresh workflow infrastructure", () => {
     }
   });
 
+  it("checks out main before any refresh that can push to main", () => {
+    for (const workflowPath of updateWorkflowFiles) {
+      const workflow = fs.readFileSync(workflowPath, "utf8");
+      const checkoutBlock = workflow.match(
+        /uses: actions\/checkout@v7[\s\S]*?(?=\n\s+- name:)/
+      )?.[0];
+
+      expect(checkoutBlock).toBeDefined();
+      expect(checkoutBlock).toContain("ref: main");
+    }
+  });
+
   it("keeps inline snapshot pushes out of every workflow, not just update-*", () => {
     // Defense-in-depth: the shared helper is the single push path in the repo.
     // The check above only globs update-*.yml, so a future workflow under a
@@ -47,6 +59,32 @@ describe("snapshot refresh workflow infrastructure", () => {
     expect(helper).toContain("git push origin HEAD:main");
     expect(helper).toContain("git rebase --autostash origin/main");
     expect(helper).toContain("SNAPSHOT_PUSH_ATTEMPTS");
+  });
+
+  it("verifies high-frequency snapshot revisions in canonical production", () => {
+    for (const file of ["update-earthquake.yml", "update-bay-area-transit.yml"]) {
+      const workflow = fs.readFileSync(path.join(workflowsDir, file), "utf8");
+      expect(workflow).toContain("ensure-production-data-revision.sh");
+      expect(workflow).toContain("steps.verify_quality.outputs.revision");
+      expect(workflow).toContain("https://isaacavazquez.com/api/data-revisions");
+      // The workflow hash must match the /api/data-revisions ledger, which
+      // hashes each surface at summary grain — never the full snapshot.
+      expect(workflow).toContain(".update(JSON.stringify(summary))");
+      expect(workflow).not.toContain(".update(JSON.stringify(snapshot))");
+    }
+
+    const verifier = fs.readFileSync(
+      path.join(
+        process.cwd(),
+        "scripts",
+        "ci",
+        "ensure-production-data-revision.sh"
+      ),
+      "utf8"
+    );
+    expect(verifier).toContain("cacheBust=");
+    expect(verifier).toContain("Build hook triggered");
+    expect(verifier).toContain("Production did not serve");
   });
 
   it("uses modern action majors across workflows", () => {
@@ -82,5 +120,19 @@ describe("snapshot refresh workflow infrastructure", () => {
     expect(workflow.match(/actions\/download-artifact@v8/g)).toHaveLength(2);
     expect(workflow.match(/tar -xf next-build\.tar/g)).toHaveLength(2);
     expect(workflow).not.toContain("key: next-build-");
+  });
+
+  it("typechecks before building without running a data refresh in prebuild", () => {
+    const workflow = fs.readFileSync(path.join(workflowsDir, "test.yml"), "utf8");
+    const packageJson = JSON.parse(
+      fs.readFileSync(path.join(process.cwd(), "package.json"), "utf8")
+    ) as { scripts?: Record<string, string> };
+
+    expect(packageJson.scripts?.typecheck).toBe("tsc --noEmit --pretty false");
+    expect(packageJson.scripts?.prebuild).toBeUndefined();
+    expect(workflow.indexOf("run: npm run typecheck")).toBeGreaterThan(-1);
+    expect(workflow.indexOf("run: npm run typecheck")).toBeLessThan(
+      workflow.indexOf("run: npm run build")
+    );
   });
 });

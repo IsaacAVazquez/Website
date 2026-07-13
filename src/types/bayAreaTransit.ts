@@ -102,6 +102,14 @@ export interface TransitSystem {
   seed: boolean;
 }
 
+export type TransitSectionStatus = "fresh" | "unavailable";
+
+export interface TransitSectionStatuses {
+  advisories: TransitSectionStatus;
+  elevator: TransitSectionStatus;
+  departures: TransitSectionStatus;
+}
+
 export interface TransitSummary {
   system: TransitSystem | null;
   heroStats: TransitHeroStats;
@@ -109,6 +117,8 @@ export interface TransitSummary {
   stations: TransitStation[];
   advisories: TransitAdvisory[];
   elevator: TransitElevatorStatus[];
+  /** Per-feed health so an unavailable source is not presented as a zero. */
+  sectionStatus?: TransitSectionStatuses;
   /** Lowercased abbreviation of the station to show by default. */
   defaultStation: string | null;
 }

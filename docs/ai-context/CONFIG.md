@@ -35,7 +35,7 @@ Important current behavior:
 - `poweredByHeader = false`
 - site-wide security headers via `async headers()` (HSTS, X-Content-Type-Options, X-Frame-Options DENY, Referrer-Policy, Permissions-Policy, X-DNS-Prefetch-Control); a global CSP is still a TODO
 - `compiler.removeConsole` in production
-- `typescript.ignoreBuildErrors = true`
+- TypeScript build errors are enforced; `npm run typecheck` also runs explicitly in CI
 - `serverExternalPackages = ['better-sqlite3', 'sharp']`
 - tracing excludes heavy image and investments data assets from server bundles
 - image remote patterns include Unsplash and Cloudinary; `dangerouslyAllowSVG` is on with an image-scoped CSP (`script-src 'none'; sandbox`) for remote crest/logo SVGs
@@ -115,7 +115,7 @@ Posts are discovered from `content/blog/`.
 
 ## Build Steps (`package.json`)
 
-- `prebuild`: `tsx scripts/updateFootballSnapshots.ts --league-only` — refreshes Premier League + La Liga standings/scorers/fixtures on every Netlify deploy (~2 min)
+- `typecheck`: `tsc --noEmit --pretty false` — standalone CI type gate
 - `build`: `next build --webpack`
 - `postbuild`: `next-sitemap && node scripts/patch-nft-sharp.mjs` — regenerates the sitemap, then patches the function bundle so the optional `sharp` native module never ships
 - `dev` and `build` both pass `--webpack` (Turbopack is not used)

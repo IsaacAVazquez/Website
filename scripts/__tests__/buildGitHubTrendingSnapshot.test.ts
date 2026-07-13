@@ -135,6 +135,11 @@ describe("buildGitHubTrendingSnapshot resilience", () => {
     expect(snapshot.totals.languages).toBe(7);
     expect(snapshot.totals.topics).toBe(7);
     expect(snapshot.totals.repositories).toBe(14);
+    expect(snapshot.sourceStatus).toEqual({
+      status: "fresh",
+      failedSegments: [],
+      reusedSegments: [],
+    });
     expect(fetchImpl).toHaveBeenCalledTimes(14);
     await expect(readSnapshotRaw(projectRoot)).resolves.toContain(
       "export const githubTrendingSnapshot"
@@ -181,6 +186,11 @@ describe("buildGitHubTrendingSnapshot resilience", () => {
     });
 
     expect(snapshot.totals.repositories).toBe(11);
+    expect(snapshot.sourceStatus).toEqual({
+      status: "degraded",
+      failedSegments: ["Swift", "LLMs", "Security"],
+      reusedSegments: [],
+    });
     await expect(readSnapshotRaw(projectRoot)).resolves.toContain(
       "export const githubTrendingSnapshot"
     );

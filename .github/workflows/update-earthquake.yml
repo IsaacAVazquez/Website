@@ -17,7 +17,7 @@ jobs:
   refresh-earthquake:
     name: Refresh Earthquake Snapshot
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
 
     permissions:
       contents: write
@@ -27,6 +27,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v7
         with:
+          ref: main
           fetch-depth: 1
 
       - name: Set up Node.js
@@ -48,6 +49,7 @@ jobs:
         run: |
           node -e "
           const fs = require('fs');
+          const crypto = require('crypto');
 
           const SNAPSHOT_PATH = 'src/data/earthquakeSnapshot.ts';
 
@@ -78,12 +80,17 @@ jobs:
           const significant = Array.isArray(summary.significant) ? summary.significant.length : 0;
           const regions = Array.isArray(summary.regions) ? summary.regions.length : 0;
           const total7d = summary.heroStats ? summary.heroStats.total7d : 0;
+          const revision = crypto
+            .createHash('sha256')
+            .update(JSON.stringify(summary))
+            .digest('hex');
 
           console.log('Recent (24h):', recent);
           console.log('Significant (30d):', significant);
           console.log('Regions:', regions);
           console.log('Total 7d:', total7d);
           console.log('Feed updated:', summary.feedUpdated);
+          console.log('Revision:', revision);
 
           if (recent === 0 && significant === 0 && regions === 0) {
             console.error('::error::Refusing to commit a degraded earthquake snapshot: every section is empty.');
@@ -94,7 +101,8 @@ jobs:
             process.env.GITHUB_OUTPUT,
             'recent=' + recent + '\n' +
               'significant=' + significant + '\n' +
-              'total7d=' + total7d + '\n',
+              'total7d=' + total7d + '\n' +
+              'revision=' + revision + '\n',
             { flag: 'a' }
           );
           "
@@ -119,22 +127,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # Snapshot commits carry [skip ci], so the live site otherwise only picks
-      # up the refresh on the daily cron-job.org build hook. This deploys
-      # promptly when the snapshot actually changed, and no-ops until the
-      # NETLIFY_BUILD_HOOK secret is configured.
-      - name: Trigger Netlify deploy
-        if: steps.check_changes.outputs.changed == 'true'
+      # A refresh is not complete until the canonical site serves the expected
+      # content revision. If production is already current this is a no-op;
+      # otherwise trigger a deploy and poll the no-cache revision endpoint.
+      - name: Ensure production serves the refreshed revision
         env:
+          EXPECTED_REVISION: ${{ steps.verify_quality.outputs.revision }}
           NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
+          PRODUCTION_DATA_URL: https://isaacavazquez.com/api/data-revisions
         run: |
-          if [ -z "$NETLIFY_BUILD_HOOK" ]; then
-            echo "NETLIFY_BUILD_HOOK secret not configured; skipping deploy trigger."
-            exit 0
-          fi
-          curl -fsS -X POST -d '{}' "$NETLIFY_BUILD_HOOK" \
-            && echo "Netlify build hook triggered." \
-            || echo "::warning::Netlify build hook request failed; the daily scheduled rebuild will pick up the snapshot."
+          bash scripts/ci/ensure-production-data-revision.sh \
+            earthquake "$EXPECTED_REVISION" "$PRODUCTION_DATA_URL" "$NETLIFY_BUILD_HOOK"
 
       - name: Create job summary
         if: always()

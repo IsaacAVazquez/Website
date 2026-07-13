@@ -160,16 +160,16 @@ describe("buildGolfSnapshotData", () => {
     const { summary, playerSnapshots } = await buildGolfSnapshotData();
 
     // Tournament metadata is derived from the featured event + course.
-    expect(summary.tournament.name).toBe(
+    expect(summary.tournament?.name).toBe(
       "the Memorial Tournament pres. by Workday"
     );
-    expect(summary.tournament.tour).toBe("PGA TOUR");
-    expect(summary.tournament.coursePar).toBe(72);
-    expect(summary.tournament.location).toBe("Dublin, Ohio, USA");
-    expect(summary.tournament.id).toContain("2026");
-    expect(summary.tournament.fieldSize).toBe(5);
-    expect(summary.tournament.cutLine).toBe(1);
-    expect(summary.tournament.roundLabel).toBe("Round 2");
+    expect(summary.tournament?.tour).toBe("PGA TOUR");
+    expect(summary.tournament?.coursePar).toBe(72);
+    expect(summary.tournament?.location).toBe("Dublin, Ohio, USA");
+    expect(summary.tournament?.id).toContain("2026");
+    expect(summary.tournament?.fieldSize).toBe(5);
+    expect(summary.tournament?.cutLine).toBe(1);
+    expect(summary.tournament?.roundLabel).toBe("Round 2");
 
     // Leaderboard is sorted by finishing position; leader is Scheffler.
     expect(summary.leaderboard[0].playerName).toBe("Scottie Scheffler");
@@ -248,7 +248,7 @@ describe("buildGolfSnapshotData", () => {
       );
 
     const { summary } = await buildGolfSnapshotData();
-    expect(summary.tournament.name).toBe(
+    expect(summary.tournament?.name).toBe(
       "the Memorial Tournament pres. by Workday"
     );
   });
@@ -288,7 +288,7 @@ describe("buildGolfSnapshotData", () => {
       );
 
     const { summary } = await buildGolfSnapshotData();
-    expect(summary.tournament.name).toBe("May Championship");
+    expect(summary.tournament?.name).toBe("May Championship");
   });
 });
 
@@ -416,7 +416,7 @@ describe("buildGolfSnapshotData cut line", () => {
       .mockResolvedValue(jsonResponse(leaderboardWithTournamentCut()));
 
     const { summary } = await buildGolfSnapshotData();
-    expect(summary.tournament.cutLine).toBe(-3);
+    expect(summary.tournament?.cutLine).toBe(-3);
     expect(summary.heroStats.cutLine).toBe(-3);
   });
 
@@ -443,6 +443,6 @@ describe("buildGolfSnapshotData cut line", () => {
     jest.spyOn(global, "fetch").mockResolvedValue(jsonResponse(noCut));
 
     const { summary } = await buildGolfSnapshotData();
-    expect(summary.tournament.cutLine).toBeNull();
+    expect(summary.tournament?.cutLine).toBeNull();
   });
 });

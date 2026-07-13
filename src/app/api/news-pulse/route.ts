@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { parseNewsFeed } from "@/lib/news-pulse-feed-parser";
-import { NEWS_FEEDS } from "@/lib/news-pulse-sources";
+import { NEWS_FEEDS, type NewsFeedId } from "@/lib/news-pulse-sources";
 import type { NewsArticle } from "@/lib/news-pulse-utils";
 
 const CACHE_CONTROL_HEADER = "public, s-maxage=300, stale-while-revalidate=600";
@@ -15,6 +15,8 @@ interface FeedResponseBody {
   articles: NewsArticle[];
   fetchedAt: string;
   errors: string[];
+  dataStatus: "fresh" | "degraded" | "stale-fallback" | "unavailable";
+  staleSources?: string[];
   message?: string;
 }
 
@@ -22,6 +24,10 @@ interface FeedFetchResult {
   body: FeedResponseBody;
   status: number;
   isError: boolean;
+  // Some feeds failed but every served article is fresh. Reported in the body
+  // (dataStatus: "degraded") but cached like a success — one dead feed must
+  // not disable CDN caching or the 5-minute server TTL for the whole route.
+  isDegraded?: boolean;
   // A usable but stale response: the latest refresh failed, so we serve the last
   // good headlines. Cached with the short error TTL (retry soon) but returned to
   // the client as a 200 with a note rather than a blank 503.
@@ -41,9 +47,14 @@ interface CacheEntry {
 // fresh fan-out to all 6 feeds.
 const cache = new Map<string, CacheEntry>();
 
-// The last successful (200) fetch, kept so a failed refresh can serve stale
-// headlines instead of a blank 503 while the feeds recover.
-let lastGood: FeedFetchResult | null = null;
+interface LastGoodFeed {
+  articles: NewsArticle[];
+  fetchedAt: string;
+}
+
+// Keep last-good data at the source grain. A partial refresh can then update
+// the feeds that responded without deleting healthy data for a failed feed.
+const lastGoodByFeed = new Map<NewsFeedId, LastGoodFeed>();
 
 function isFresh(entry: CacheEntry, now: number): boolean {
   if (entry.completedAt === null || entry.value === null) {
@@ -75,6 +86,8 @@ function describeFeedError(reason: unknown): string {
 
 async function fetchAllFeeds(): Promise<FeedFetchResult> {
   const errors: string[] = [];
+  const staleSources: string[] = [];
+  const fetchedAt = new Date().toISOString();
 
   const results = await Promise.allSettled(
     NEWS_FEEDS.map(async (feed) => {
@@ -104,13 +117,25 @@ async function fetchAllFeeds(): Promise<FeedFetchResult> {
   );
 
   const articles: NewsArticle[] = [];
+  let successfulFeedCount = 0;
   for (const [index, result] of results.entries()) {
+    const feed = NEWS_FEEDS[index];
     if (result.status === "fulfilled") {
+      successfulFeedCount += 1;
       articles.push(...result.value);
+      lastGoodByFeed.set(feed.id, {
+        articles: result.value,
+        fetchedAt,
+      });
       continue;
     }
 
-    errors.push(`${NEWS_FEEDS[index].name}: ${describeFeedError(result.reason)}`);
+    errors.push(`${feed.name}: ${describeFeedError(result.reason)}`);
+    const lastGoodFeed = lastGoodByFeed.get(feed.id);
+    if (lastGoodFeed) {
+      articles.push(...lastGoodFeed.articles);
+      staleSources.push(feed.name);
+    }
   }
 
   articles.sort((left, right) => {
@@ -121,13 +146,43 @@ async function fetchAllFeeds(): Promise<FeedFetchResult> {
 
   const body: FeedResponseBody = {
     articles,
-    fetchedAt: new Date().toISOString(),
+    fetchedAt,
     errors,
+    dataStatus: errors.length > 0 ? "degraded" : "fresh",
+    ...(staleSources.length > 0 ? { staleSources } : {}),
   };
 
-  if (articles.length === 0) {
+  if (successfulFeedCount === 0) {
+    if (articles.length > 0) {
+      const lastSuccessfulAt = Math.max(
+        ...Array.from(lastGoodByFeed.values(), (feed) =>
+          Date.parse(feed.fetchedAt)
+        ).filter(Number.isFinite)
+      );
+
+      return {
+        body: {
+          ...body,
+          fetchedAt: Number.isFinite(lastSuccessfulAt)
+            ? new Date(lastSuccessfulAt).toISOString()
+            : fetchedAt,
+          dataStatus: "stale-fallback",
+          message:
+            "Showing the last good headlines — the most recent refresh could not reach the feeds.",
+        },
+        status: 200,
+        isError: false,
+        isDegraded: true,
+        isStale: true,
+      };
+    }
+
     return {
-      body: { ...body, message: TOTAL_OUTAGE_MESSAGE },
+      body: {
+        ...body,
+        dataStatus: "unavailable",
+        message: TOTAL_OUTAGE_MESSAGE,
+      },
       status: 503,
       isError: true,
     };
@@ -137,24 +192,8 @@ async function fetchAllFeeds(): Promise<FeedFetchResult> {
     body,
     status: 200,
     isError: false,
-  };
-}
-
-function buildStaleResult(
-  good: FeedFetchResult,
-  failure: FeedFetchResult
-): FeedFetchResult {
-  return {
-    body: {
-      articles: good.body.articles,
-      fetchedAt: good.body.fetchedAt,
-      errors: failure.body.errors,
-      message:
-        "Showing the last good headlines — the most recent refresh could not reach the feeds.",
-    },
-    status: 200,
-    isError: false,
-    isStale: true,
+    isDegraded: errors.length > 0,
+    isStale: staleSources.length > 0,
   };
 }
 
@@ -168,7 +207,12 @@ function getOrFetch(key: string): Promise<FeedFetchResult> {
 
   const entry: CacheEntry = {
     promise: Promise.resolve<FeedFetchResult>({
-      body: { articles: [], fetchedAt: "", errors: [] },
+      body: {
+        articles: [],
+        fetchedAt: "",
+        errors: [],
+        dataStatus: "unavailable",
+      },
       status: 0,
       isError: true,
     }),
@@ -178,19 +222,9 @@ function getOrFetch(key: string): Promise<FeedFetchResult> {
 
   entry.promise = (async () => {
     const settle = (result: FeedFetchResult): FeedFetchResult => {
-      if (!result.isError) {
-        lastGood = result;
-        entry.value = result;
-        entry.completedAt = Date.now();
-        return result;
-      }
-      // The refresh failed. Serve the last good headlines (stale) rather than a
-      // blank 503 when we have them, so the dashboard survives a transient feed
-      // outage; the short TTL means we retry soon.
-      const served = lastGood ? buildStaleResult(lastGood, result) : result;
-      entry.value = served;
+      entry.value = result;
       entry.completedAt = Date.now();
-      return served;
+      return result;
     };
 
     try {
@@ -202,6 +236,7 @@ function getOrFetch(key: string): Promise<FeedFetchResult> {
           articles: [],
           fetchedAt: new Date().toISOString(),
           errors: [message],
+          dataStatus: "unavailable",
           message: TOTAL_OUTAGE_MESSAGE,
         },
         status: 503,
@@ -235,5 +270,5 @@ export async function GET() {
   Symbol.for("__newsPulseCacheResetForTesting")
 ] = (): void => {
   cache.clear();
-  lastGood = null;
+  lastGoodByFeed.clear();
 };

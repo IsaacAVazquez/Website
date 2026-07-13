@@ -45,6 +45,10 @@ export interface FrontierModelPriceTierSummary {
 
 export interface FrontierModelsSnapshot {
   generatedAt: string;
+  /** Date the manually curated facts were last reviewed. */
+  asOf?: string;
+  /** Whether every listed record completed an independent source review. */
+  verified?: boolean;
   sourceLabel: string;
   models: FrontierModel[];
   providers: FrontierModelProviderSummary[];

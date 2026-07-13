@@ -1,4 +1,5 @@
 import type { Recipe } from "../recipes";
+import { RECIPES } from "@/data/recipesSnapshot";
 import {
   formatTotalTime,
   getIngredientCatalog,
@@ -93,5 +94,15 @@ describe("recipes", () => {
     ]);
     expect(formatTotalTime(recipes[0])).toBe("25 min");
     expect(formatTotalTime(recipes[1])).toBe("1 hr 5 min");
+  });
+
+  it("does not include honey in recipes labeled vegan", () => {
+    const violations = RECIPES.filter((recipe) => recipe.diet?.includes("vegan"))
+      .filter((recipe) =>
+        recipe.ingredients.some((ingredient) => ingredient.name === "honey")
+      )
+      .map((recipe) => recipe.id);
+
+    expect(violations).toEqual([]);
   });
 });

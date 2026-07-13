@@ -602,7 +602,10 @@ export function BayAreaTransitClient({
     {
       label: "Elevator outages",
       tooltip: "Elevators reported out of service.",
-      value: `${summary.heroStats.elevatorOutages}`,
+      value:
+        summary.sectionStatus?.elevator === "unavailable"
+          ? "Unavailable"
+          : `${summary.heroStats.elevatorOutages}`,
     },
     {
       label: "Default station",
@@ -905,8 +908,27 @@ export function BayAreaTransitClient({
                     </p>
                   </div>
 
+                  {summary.sectionStatus?.elevator === "unavailable" ? (
+                    <div
+                      className="rounded-[var(--radius-3xl)] border px-5 py-4 text-sm leading-6"
+                      style={{
+                        borderColor:
+                          "color-mix(in srgb, var(--home-warning) 26%, var(--home-rule))",
+                        background:
+                          "color-mix(in srgb, var(--home-warning) 8%, var(--home-paper-alt))",
+                        color: "var(--home-ink)",
+                        fontFamily: "var(--font-home-sans)",
+                      }}
+                      role="status"
+                    >
+                      BART&apos;s elevator status feed was unavailable for this
+                      snapshot, so no outage count is shown.
+                    </div>
+                  ) : null}
+
                   {summary.advisories.length === 0 &&
-                  summary.elevator.length === 0 ? (
+                  summary.elevator.length === 0 &&
+                  summary.sectionStatus?.elevator !== "unavailable" ? (
                     <div
                       className="flex items-center gap-3 rounded-[var(--radius-3xl)] border px-5 py-5"
                       style={{
@@ -932,7 +954,8 @@ export function BayAreaTransitClient({
                         snapshot time.
                       </p>
                     </div>
-                  ) : (
+                  ) : summary.advisories.length > 0 ||
+                    summary.elevator.length > 0 ? (
                     <div className="space-y-3">
                       {summary.advisories.map((advisory) => (
                         <div
@@ -1001,7 +1024,7 @@ export function BayAreaTransitClient({
                         </div>
                       ))}
                     </div>
-                  )}
+                  ) : null}
                 </>
               ) : null}
             </div>

@@ -569,22 +569,20 @@ def main() -> None:
         finally:
             signal.alarm(0)
 
-    # The downstream TypeScript builder and CI verify step only read
-    # `index.failed` as `string[]`. Keep that contract while still surfacing
-    # the richer reasons in the run log for humans triaging.
-    #
     # Resilience: before declaring a symbol unavailable, fall back to any good
     # snapshot already on disk from an earlier run (mirrors the "keep previous
     # snapshot on failed fetch" pattern used by the other dashboards). Recovered
     # symbols re-enter `symbols`/`entries` flagged stale, so they stay
     # searchable and servable rather than disappearing on a partial run.
+    fresh_symbols = list(successful)
+    available_symbols = list(successful)
     still_failed: list[dict[str, str]] = []
     recovered: list[str] = []
     for item in failed:
         symbol = item["symbol"]
         stale_entry = stale_entry_from_prior_snapshot(symbol)
         if stale_entry is not None:
-            successful.append(symbol)
+            available_symbols.append(symbol)
             entries.append(stale_entry)
             recovered.append(symbol)
         else:
@@ -598,18 +596,36 @@ def main() -> None:
             f"(served stale): {', '.join(recovered)}"
         )
 
+    attempted_at = datetime.now(timezone.utc).isoformat()
+    previous_last_updated = None
+    previous_index_path = PUBLIC_DIR / "index.json"
+    if previous_index_path.exists():
+        try:
+            with open(previous_index_path, "r", encoding="utf-8") as f:
+                previous_index = json.load(f)
+            previous_last_updated = previous_index.get("lastUpdated")
+        except (OSError, json.JSONDecodeError):
+            previous_last_updated = None
+
     index_data = {
-        "symbols": successful,
+        "symbols": available_symbols,
         "failed": failed_symbols,
-        "lastUpdated": datetime.now(timezone.utc).isoformat(),
+        # `lastUpdated` advances only when this run fetched at least one symbol.
+        # `refreshAttemptedAt` records every attempt, including a total outage.
+        "lastUpdated": attempted_at if fresh_symbols else previous_last_updated or attempted_at,
+        "refreshAttemptedAt": attempted_at,
+        "freshCount": len(fresh_symbols),
+        "staleCount": len(recovered),
         "entries": entries,
     }
     write_json(PUBLIC_DIR / "index.json", index_data)
 
     print("=" * 60)
-    print(f"Done. {len(successful)}/{len(symbols)} symbols processed.")
-    if successful:
-        print(f"  Success: {', '.join(successful)}")
+    print(f"Done. {len(available_symbols)}/{len(symbols)} symbols available.")
+    print(f"  Fresh this run: {len(fresh_symbols)}")
+    print(f"  Served stale:   {len(recovered)}")
+    if fresh_symbols:
+        print(f"  Refreshed: {', '.join(fresh_symbols)}")
     if failed:
         print("  Failed:")
         for item in failed:

@@ -232,8 +232,115 @@ describe("GET /api/news-pulse", () => {
       // no-store header so clients re-fetch and we retry the feeds soon.
       expect(second.status).toBe(200);
       expect(body.articles).toHaveLength(6);
+      expect(body.dataStatus).toBe("stale-fallback");
+      expect(body.staleSources).toHaveLength(NEWS_FEEDS.length);
       expect(body.message).toMatch(/last good headlines/i);
       expect(second.headers.get("Cache-Control")).toBe("no-store");
+    } finally {
+      jest.useRealTimers();
+    }
+  });
+
+  it("merges a partial refresh with per-feed last-good data without shrinking later fallbacks", async () => {
+    jest.useFakeTimers();
+    try {
+      installFetchMock(buildFeedMap());
+      const first = await GET();
+      expect(first.status).toBe(200);
+      expect((await first.json()).articles).toHaveLength(6);
+
+      jest.advanceTimersByTime(6 * 60 * 1000);
+      installFetchMock(buildFeedMap({
+        [FEED_URLS.nyt]: makeRssFeed({
+          title: "Updated NYT Headline",
+          link: "https://www.nytimes.com/2026/04/03/world/updated-story.html",
+          description: "Updated NYT summary",
+          pubDate: "Fri, 03 Apr 2026 19:30:00 GMT",
+          category: "World",
+        }),
+        [FEED_URLS.bbc]: new Error("network down"),
+      }));
+
+      const partial = await GET();
+      const partialBody = await partial.json();
+
+      expect(partial.status).toBe(200);
+      expect(partial.headers.get("Cache-Control")).toBe("no-store");
+      expect(partialBody.dataStatus).toBe("degraded");
+      expect(partialBody.staleSources).toEqual(["BBC"]);
+      expect(partialBody.articles).toHaveLength(6);
+      expect(partialBody.articles).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({ source: "nyt", title: "Updated NYT Headline" }),
+          expect.objectContaining({ source: "bbc", title: "BBC Headline" }),
+        ]),
+      );
+
+      jest.advanceTimersByTime(31 * 1000);
+      installFetchMock(
+        Object.fromEntries(
+          NEWS_FEEDS.map((feed) => [feed.url, new Error("network down")]),
+        ),
+      );
+
+      const outage = await GET();
+      const outageBody = await outage.json();
+
+      expect(outage.status).toBe(200);
+      expect(outageBody.dataStatus).toBe("stale-fallback");
+      expect(outageBody.articles).toHaveLength(6);
+      expect(outageBody.articles).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({ source: "nyt", title: "Updated NYT Headline" }),
+          expect.objectContaining({ source: "bbc", title: "BBC Headline" }),
+        ]),
+      );
+    } finally {
+      jest.useRealTimers();
+    }
+  });
+
+  it("keeps the public success cache policy when one feed fails without stale fallback", async () => {
+    jest.useFakeTimers();
+    try {
+      // No prior refresh, so the failed feed has no last-good data: the result
+      // is degraded (one source missing) but every served article is fresh.
+      installFetchMock(buildFeedMap({
+        [FEED_URLS.bbc]: new Error("network down"),
+      }));
+
+      const response = await GET();
+      const body = await response.json();
+
+      expect(response.status).toBe(200);
+      expect(body.dataStatus).toBe("degraded");
+      expect(body.errors).toEqual(["BBC: network down"]);
+      expect(body.staleSources).toBeUndefined();
+      // A partial-but-fresh result stays CDN-cacheable. One chronically dead
+      // feed must not flip the whole route to no-store.
+      expect(response.headers.get("Cache-Control")).toBe(
+        "public, s-maxage=300, stale-while-revalidate=600",
+      );
+
+      // ...and it keeps the 5-minute success TTL: 31s later (past the error
+      // TTL) the cached result is served without a fresh feed fan-out.
+      const callsAfterFirstFetch = mockFetch.mock.calls.length;
+      jest.advanceTimersByTime(31 * 1000);
+      const cached = await GET();
+      expect(cached.status).toBe(200);
+      expect(mockFetch.mock.calls.length).toBe(callsAfterFirstFetch);
+
+      // Past the success TTL, a fully-failed refresh still opts out of
+      // caching (stale-fallback served from last-good data).
+      jest.advanceTimersByTime(5 * 60 * 1000);
+      installFetchMock(
+        Object.fromEntries(
+          NEWS_FEEDS.map((feed) => [feed.url, new Error("network down")]),
+        ),
+      );
+      const outage = await GET();
+      expect((await outage.json()).dataStatus).toBe("stale-fallback");
+      expect(outage.headers.get("Cache-Control")).toBe("no-store");
     } finally {
       jest.useRealTimers();
     }
@@ -318,6 +425,11 @@ describe("GET /api/news-pulse", () => {
     const body = await response.json();
 
     expect(response.status).toBe(200);
+    // Degraded without stale fallback stays on the public success cache policy.
+    expect(response.headers.get("Cache-Control")).toBe(
+      "public, s-maxage=300, stale-while-revalidate=600",
+    );
+    expect(body.dataStatus).toBe("degraded");
     expect(body.articles).toHaveLength(4);
     expect(body.articles).toEqual(
       expect.arrayContaining([
@@ -360,9 +472,10 @@ describe("GET /api/news-pulse", () => {
     const body = await response.json();
 
     expect(response.status).toBe(503);
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
+    expect(body.dataStatus).toBe("unavailable");
     expect(body.articles).toEqual([]);
     expect(body.message).toMatch(/No usable headlines came through/i);
     expect(body.errors).toHaveLength(NEWS_FEEDS.length);
   });
 });
-

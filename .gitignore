@@ -85,6 +85,10 @@ scripts/*backup*
 
 # Large data files (script-only usage)
 scripts/player-matching-results.json
+# Provider responses are transient builder inputs. Existing historical files
+# may remain tracked until the repository cleanup migration, but new/updated
+# raw investment dumps must not be committed.
+data/investments-raw/
 
 # Git worktrees
 .worktrees/
