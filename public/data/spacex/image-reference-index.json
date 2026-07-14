@@ -1539,43 +1539,6 @@
       "crew": []
     }
   },
-  "e6159040-124e-4a2a-91db-41f5a48acfd8": {
-    "launchId": "e6159040-124e-4a2a-91db-41f5a48acfd8",
-    "launchName": "Falcon 9 Block 5 | Starlink Group 10-47",
-    "window": "previous",
-    "images": {
-      "launch": [
-        {
-          "label": "Falcon 9 Block 5 | Starlink Group 10-47",
-          "localPath": "/data/spacex/images/b317ff9ea04bd623.png",
-          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon2520925_image_20221009234147.png"
-        }
-      ],
-      "patch": [
-        {
-          "label": "Space X Starlink Mission Patch",
-          "localPath": "/data/spacex/images/1927035cad14a77c.png",
-          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/space2520x252_mission_patch_20221011205756.png"
-        }
-      ],
-      "rocket": [
-        {
-          "label": "Falcon 9 Block 5",
-          "localPath": "/data/spacex/images/83daf3ce21b64d93.jpg",
-          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_image_20230807133459.jpeg"
-        }
-      ],
-      "spacecraft": [],
-      "pad": [
-        {
-          "label": "Space Launch Complex 40",
-          "localPath": "/data/spacex/images/9b1f5cf5035d37b9.jpg",
-          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/map_images/pad_80_20200803143323.jpg"
-        }
-      ],
-      "crew": []
-    }
-  },
   "e61d353c-db55-4a57-8184-0fab187231e6": {
     "launchId": "e61d353c-db55-4a57-8184-0fab187231e6",
     "launchName": "Falcon 9 Block 5 | Globalstar 2-R Mission 2 (x 8)",
@@ -1596,42 +1559,6 @@
           "label": "Space Launch Complex 40",
           "localPath": "/data/spacex/images/9b1f5cf5035d37b9.jpg",
           "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/map_images/pad_80_20200803143323.jpg"
-        }
-      ],
-      "crew": []
-    }
-  },
-  "ed83366c-872c-4484-97c1-bc74832304fc": {
-    "launchId": "ed83366c-872c-4484-97c1-bc74832304fc",
-    "launchName": "Starship | Flight 12",
-    "window": "previous",
-    "images": {
-      "launch": [
-        {
-          "label": "Starship | Flight 12",
-          "localPath": "/data/spacex/images/8d4560ae6a29b1ef.jpg",
-          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/starship_liftof_image_20260523085855.jpg"
-        },
-        {
-          "label": "Starship | Flight 12",
-          "localPath": "/data/spacex/images/0be5c2f84b0c0132.jpg",
-          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/starship_on_the_image_20250111100520.jpg"
-        }
-      ],
-      "patch": [
-        {
-          "label": "Starship IFT patch",
-          "localPath": "/data/spacex/images/c044d36407569003.png",
-          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/starship2520if_mission_patch_20230414221655.png"
-        }
-      ],
-      "rocket": [],
-      "spacecraft": [],
-      "pad": [
-        {
-          "label": "Orbital Launch Pad 2",
-          "localPath": "/data/spacex/images/71650fb231037f47.jpg",
-          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/map_images/pad_orbital_launch_mount_b_20241126031254.jpg"
         }
       ],
       "crew": []
