@@ -1056,6 +1056,37 @@
       "crew": []
     }
   },
+  "c1bd775a-2fff-45bb-9726-765b69817c19": {
+    "launchId": "c1bd775a-2fff-45bb-9726-765b69817c19",
+    "launchName": "Falcon Heavy | USSF-75",
+    "window": "upcoming",
+    "images": {
+      "launch": [
+        {
+          "label": "Falcon Heavy | USSF-75",
+          "localPath": "/data/spacex/images/c62ac3115cf4d061.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_heavy_image_20220129192819.jpeg"
+        }
+      ],
+      "patch": [],
+      "rocket": [
+        {
+          "label": "Falcon Heavy",
+          "localPath": "/data/spacex/images/c62ac3115cf4d061.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_heavy_image_20220129192819.jpeg"
+        }
+      ],
+      "spacecraft": [],
+      "pad": [
+        {
+          "label": "Launch Complex 39A",
+          "localPath": "/data/spacex/images/14b5a064429f38e9.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/map_images/pad_87_20200803143537.jpg"
+        }
+      ],
+      "crew": []
+    }
+  },
   "c3f48f48-0e0a-4bca-917e-de494cfca35b": {
     "launchId": "c3f48f48-0e0a-4bca-917e-de494cfca35b",
     "launchName": "Falcon 9 Block 5 | BlueBird Block 2 #3-5",
@@ -1534,6 +1565,31 @@
           "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_image_20230807133459.jpeg"
         }
       ],
+      "spacecraft": [],
+      "pad": [
+        {
+          "label": "Space Launch Complex 40",
+          "localPath": "/data/spacex/images/9b1f5cf5035d37b9.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/map_images/pad_80_20200803143323.jpg"
+        }
+      ],
+      "crew": []
+    }
+  },
+  "e61d353c-db55-4a57-8184-0fab187231e6": {
+    "launchId": "e61d353c-db55-4a57-8184-0fab187231e6",
+    "launchName": "Falcon 9 Block 5 | Globalstar 2-R Mission 2 (x 8)",
+    "window": "upcoming",
+    "images": {
+      "launch": [
+        {
+          "label": "Falcon 9 Block 5 | Globalstar 2-R Mission 2 (x 8)",
+          "localPath": "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_image_20230807133459.jpeg"
+        }
+      ],
+      "patch": [],
+      "rocket": [],
       "spacecraft": [],
       "pad": [
         {
