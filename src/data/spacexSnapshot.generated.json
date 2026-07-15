@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-15T11:05:36.641Z",
+  "generatedAt": "2026-07-15T22:27:13.830Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -9,9 +9,9 @@
       "upcoming": true,
       "success": null,
       "details": "Tranche 1 Transport Layer E is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.\r\n\r\nThis launch carries 21 satellites manufactured by York Space Systems.",
-      "dateUtc": "2026-07-16T20:32:00Z",
-      "dateUnix": 1784233920,
-      "dateLocal": "2026-07-16T20:32:00Z",
+      "dateUtc": "2026-07-16T20:32:27Z",
+      "dateUnix": 1784233947,
+      "dateLocal": "2026-07-16T20:32:27Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -49,9 +49,9 @@
       "upcoming": true,
       "success": null,
       "details": "Tranche 1 Transport Layer E is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.\r\n\r\nThis launch carries 21 satellites manufactured by York Space Systems.",
-      "dateUtc": "2026-07-16T20:32:00Z",
-      "dateUnix": 1784233920,
-      "dateLocal": "2026-07-16T20:32:00Z",
+      "dateUtc": "2026-07-16T20:32:27Z",
+      "dateUnix": 1784233947,
+      "dateLocal": "2026-07-16T20:32:27Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-07-15T11:05:32.181Z"
+    "generatedAt": "2026-07-15T22:27:09.252Z"
   },
   "upcomingLaunches": [
     {
@@ -160,9 +160,9 @@
       "upcoming": true,
       "success": null,
       "details": "Tranche 1 Transport Layer E is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.\r\n\r\nThis launch carries 21 satellites manufactured by York Space Systems.",
-      "dateUtc": "2026-07-16T20:32:00Z",
-      "dateUnix": 1784233920,
-      "dateLocal": "2026-07-16T20:32:00Z",
+      "dateUtc": "2026-07-16T20:32:27Z",
+      "dateUnix": 1784233947,
+      "dateLocal": "2026-07-16T20:32:27Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -2084,9 +2084,9 @@
       "upcoming": true,
       "success": null,
       "details": "Tranche 1 Transport Layer E is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.\r\n\r\nThis launch carries 21 satellites manufactured by York Space Systems.",
-      "dateUtc": "2026-07-16T20:32:00Z",
-      "dateUnix": 1784233920,
-      "dateLocal": "2026-07-16T20:32:00Z",
+      "dateUtc": "2026-07-16T20:32:27Z",
+      "dateUnix": 1784233947,
+      "dateLocal": "2026-07-16T20:32:27Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -2835,6 +2835,6 @@
       }
     ],
     "rangeLabel": "Aug 25 – Jul 26",
-    "generatedAt": "2026-07-15T11:05:36.641Z"
+    "generatedAt": "2026-07-15T22:27:13.830Z"
   }
 }
