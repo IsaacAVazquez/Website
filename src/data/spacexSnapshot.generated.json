@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-15T22:27:13.830Z",
+  "generatedAt": "2026-07-16T11:15:12.980Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-07-15T22:27:09.252Z"
+    "generatedAt": "2026-07-16T11:15:00.415Z"
   },
   "upcomingLaunches": [
     {
@@ -434,6 +434,46 @@
       }
     },
     {
+      "id": "56a85c82-ea71-449b-828c-b583f6f4a18b",
+      "name": "BlueBird Block 2 #6-8",
+      "flightNumber": 714,
+      "upcoming": true,
+      "success": null,
+      "details": "AST SpaceMobile’s Block 2 BlueBird satellites are designed to deliver up to 10 times the bandwidth capacity of the BlueBird Block 1 satellites, required to achieve 24/7 continuous cellular broadband service coverage in the United States, with beams designed to support a capacity of up to 40 MHz, enabling peak data transmission speeds up to 120 Mbps, supporting voice, full data and video applications. The Block 2 BlueBirds, featuring as large as 2400 square foot communications arrays, will be the largest satellites ever commercially deployed in Low Earth orbit once launched.\r\n\r\nThis launch will feature 3 satellites.",
+      "dateUtc": "2026-08-31T00:00:00Z",
+      "dateUnix": 1788134400,
+      "dateLocal": "2026-08-31T00:00:00Z",
+      "datePrecision": "month",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 40",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/fcff0e91470c97ae.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Cape_Canaveral_Air_Force_Station_Space_Launch_Complex_40",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/fcff0e91470c97ae.jpg"
+        ]
+      }
+    },
+    {
       "id": "bf2c3027-a314-403e-a416-2bfd5d165ad1",
       "name": "Dragon CRS-2 SpX-35",
       "flightNumber": 714,
@@ -514,23 +554,23 @@
       }
     },
     {
-      "id": "56a85c82-ea71-449b-828c-b583f6f4a18b",
-      "name": "BlueBird Block 2 #6-8",
-      "flightNumber": 714,
+      "id": "2d0472b9-463d-49c8-afb1-7925e49a3368",
+      "name": "SDA Tranche 1 Tracking Layer A",
+      "flightNumber": 724,
       "upcoming": true,
       "success": null,
-      "details": "AST SpaceMobile’s Block 2 BlueBird satellites are designed to deliver up to 10 times the bandwidth capacity of the BlueBird Block 1 satellites, required to achieve 24/7 continuous cellular broadband service coverage in the United States, with beams designed to support a capacity of up to 40 MHz, enabling peak data transmission speeds up to 120 Mbps, supporting voice, full data and video applications. The Block 2 BlueBirds, featuring as large as 2400 square foot communications arrays, will be the largest satellites ever commercially deployed in Low Earth orbit once launched.\r\n\r\nThis launch will feature 3 satellites.",
-      "dateUtc": "2026-08-31T00:00:00Z",
-      "dateUnix": 1788134400,
-      "dateLocal": "2026-08-31T00:00:00Z",
-      "datePrecision": "month",
+      "details": "Tranche 1 Tracking Layer A is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
+      "dateUtc": "2026-09-30T00:00:00Z",
+      "dateUnix": 1790726400,
+      "dateLocal": "2026-09-30T00:00:00Z",
+      "datePrecision": "quarter",
       "tbd": true,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 40",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
       "patchImage": null,
-      "vehicleImage": "/data/spacex/images/fcff0e91470c97ae.jpg",
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
       "crewCount": 0,
       "payloadCount": 1,
       "capsuleCount": 0,
@@ -540,7 +580,7 @@
       "links": {
         "webcast": null,
         "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Cape_Canaveral_Air_Force_Station_Space_Launch_Complex_40",
+        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -549,7 +589,7 @@
         "patchSmall": null,
         "patchLarge": null,
         "flickrOriginal": [
-          "/data/spacex/images/fcff0e91470c97ae.jpg"
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
         ]
       }
     },
@@ -569,86 +609,6 @@
       "rocketName": "Falcon 9 Block 5",
       "launchpadName": "Space Launch Complex 4E",
       "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
-      "id": "c5783e2b-d458-4b99-9936-4043c236190b",
-      "name": "SDA Tranche 1 Transport Layer F",
-      "flightNumber": 724,
-      "upcoming": true,
-      "success": null,
-      "details": "Tranche 1 Transport Layer F is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.",
-      "dateUtc": "2026-09-30T00:00:00Z",
-      "dateUnix": 1790726400,
-      "dateLocal": "2026-09-30T00:00:00Z",
-      "datePrecision": "quarter",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
-      "id": "cb1762f0-90f4-4902-a5f6-655a7ade25bf",
-      "name": "SDA Tranche 2 Tracking Layer B",
-      "flightNumber": 724,
-      "upcoming": true,
-      "success": null,
-      "details": "Classified mission launched by the Space Development Agency (SDA) for Tranche 2 Tracking Layer.",
-      "dateUtc": "2026-09-30T00:00:00Z",
-      "dateUnix": 1790726400,
-      "dateLocal": "2026-09-30T00:00:00Z",
-      "datePrecision": "quarter",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Unknown Pad",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
       "patchImage": null,
       "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
       "crewCount": 0,
@@ -701,6 +661,46 @@
         "webcast": null,
         "article": null,
         "wikipedia": "https://en.wikipedia.org/wiki/SES_S.A.",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
+      "id": "cb1762f0-90f4-4902-a5f6-655a7ade25bf",
+      "name": "SDA Tranche 2 Tracking Layer B",
+      "flightNumber": 724,
+      "upcoming": true,
+      "success": null,
+      "details": "Classified mission launched by the Space Development Agency (SDA) for Tranche 2 Tracking Layer.",
+      "dateUtc": "2026-09-30T00:00:00Z",
+      "dateUnix": 1790726400,
+      "dateLocal": "2026-09-30T00:00:00Z",
+      "datePrecision": "quarter",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Unknown Pad",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -834,12 +834,12 @@
       }
     },
     {
-      "id": "dca8749f-1552-485a-8061-f1ad79055b8d",
-      "name": "SDA Tranche 1 Tracking Layer C",
+      "id": "c5783e2b-d458-4b99-9936-4043c236190b",
+      "name": "SDA Tranche 1 Transport Layer F",
       "flightNumber": 724,
       "upcoming": true,
       "success": null,
-      "details": "Tranche 1 Tracking Layer C is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
+      "details": "Tranche 1 Transport Layer F is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.",
       "dateUtc": "2026-09-30T00:00:00Z",
       "dateUnix": 1790726400,
       "dateLocal": "2026-09-30T00:00:00Z",
@@ -874,12 +874,12 @@
       }
     },
     {
-      "id": "2d0472b9-463d-49c8-afb1-7925e49a3368",
-      "name": "SDA Tranche 1 Tracking Layer A",
+      "id": "dca8749f-1552-485a-8061-f1ad79055b8d",
+      "name": "SDA Tranche 1 Tracking Layer C",
       "flightNumber": 724,
       "upcoming": true,
       "success": null,
-      "details": "Tranche 1 Tracking Layer A is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
+      "details": "Tranche 1 Tracking Layer C is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
       "dateUtc": "2026-09-30T00:00:00Z",
       "dateUnix": 1790726400,
       "dateLocal": "2026-09-30T00:00:00Z",
@@ -1034,8 +1034,8 @@
       }
     },
     {
-      "id": "d08d8b46-353b-4eee-ab5e-e1385b329008",
-      "name": "Rivada 11",
+      "id": "fa895702-687b-4ba3-95fb-9462a2c9844b",
+      "name": "Rivada 5",
       "flightNumber": 757,
       "upcoming": true,
       "success": null,
@@ -1074,25 +1074,25 @@
       }
     },
     {
-      "id": "2f31a7f0-968a-448d-b447-333bf0341078",
-      "name": "Rivada 4",
+      "id": "e61d353c-db55-4a57-8184-0fab187231e6",
+      "name": "Globalstar 2-R Mission 2 (x 8)",
       "flightNumber": 757,
       "upcoming": true,
       "success": null,
-      "details": "24 satellites for Rivada's internet constellation.",
+      "details": "The Globalstar global mobile communications network offers global, digital real time voice, data and fax services via its Low Earth Orbit satellite constellation. The constellation operates in a 1410 km orbit inclined at 52 degrees.\r\n\r\nIn early 2022, Globalstar contracted with MDA for the construction of 17 new 2nd generation refresh satellites to replenish the existing constellation. Rocket Lab is sub-contracted to build the satellites' buses and the launch dispensers.",
       "dateUtc": "2026-12-31T00:00:00Z",
       "dateUnix": 1798675200,
       "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "year",
+      "datePrecision": "half",
       "tbd": true,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "launchpadName": "Space Launch Complex 40",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
       "patchImage": null,
       "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
       "crewCount": 0,
-      "payloadCount": 24,
+      "payloadCount": 1,
       "capsuleCount": 0,
       "coreCount": 1,
       "hasExactTime": false,
@@ -1100,7 +1100,7 @@
       "links": {
         "webcast": null,
         "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Rivada_Networks",
+        "wikipedia": "https://en.wikipedia.org/wiki/Globalstar",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -2201,14 +2201,14 @@
       "hasExactTime": true,
       "isStaleSchedule": false,
       "links": {
-        "webcast": null,
+        "webcast": "https://www.youtube.com/watch?v=2r31rEkUUaA",
         "article": "https://www.spacex.com/launches/starship-flight-13",
         "wikipedia": "https://en.wikipedia.org/wiki/SpaceX_Starship",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
         "redditMedia": null,
-        "youtubeId": null,
+        "youtubeId": "2r31rEkUUaA",
         "patchSmall": "/data/spacex/images/c044d36407569003.png",
         "patchLarge": "/data/spacex/images/c044d36407569003.png",
         "flickrOriginal": [
@@ -2835,6 +2835,6 @@
       }
     ],
     "rangeLabel": "Aug 25 – Jul 26",
-    "generatedAt": "2026-07-15T22:27:13.830Z"
+    "generatedAt": "2026-07-16T11:15:12.980Z"
   }
 }
