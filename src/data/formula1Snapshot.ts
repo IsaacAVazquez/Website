@@ -13,8 +13,8 @@ export const formula1Snapshot: Formula1Snapshot = {
     "constructorStandings": "https://api.openf1.org/v1/championship_teams?session_key=11326"
   },
   "season": 2026,
-  "generatedAt": "2026-07-17T10:08:08.704Z",
-  "defaultMeetingKey": "1290",
+  "generatedAt": "2026-07-18T09:42:27.843Z",
+  "defaultMeetingKey": "1291",
   "standingsMeetingKey": "1289",
   "meetings": [
     {
@@ -4310,7 +4310,7 @@ export const formula1Snapshot: Formula1Snapshot = {
       "gmtOffset": "02:00:00",
       "startAt": "2026-07-17T11:30:00+00:00",
       "endAt": "2026-07-19T15:00:00+00:00",
-      "status": "upcoming",
+      "status": "live",
       "hasSprint": false,
       "raceSessionKey": "11334",
       "raceStartsAt": "2026-07-19T13:00:00+00:00",
@@ -5491,63 +5491,63 @@ export const formula1Snapshot: Formula1Snapshot = {
     "season": 2026,
     "totalRaces": 24,
     "completedRaces": 11,
-    "upcomingRaces": 13,
+    "upcomingRaces": 12,
     "sprintWeekends": 6
   },
   "nextMeeting": {
-    "key": "1290",
-    "name": "Belgian Grand Prix",
-    "officialName": "FORMULA 1 MOËT & CHANDON BELGIAN GRAND PRIX 2026",
-    "location": "Spa-Francorchamps",
-    "countryName": "Belgium",
-    "countryCode": "BEL",
-    "countryFlag": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/belgium-flag.png",
-    "circuitKey": "7",
-    "circuitShortName": "Spa-Francorchamps",
-    "circuitType": "Temporary - Road",
-    "circuitImage": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Belgium%20carbon.png",
+    "key": "1291",
+    "name": "Hungarian Grand Prix",
+    "officialName": "FORMULA 1 AWS HUNGARIAN GRAND PRIX 2026",
+    "location": "Budapest",
+    "countryName": "Hungary",
+    "countryCode": "HUN",
+    "countryFlag": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/hungary-flag.png",
+    "circuitKey": "4",
+    "circuitShortName": "Hungaroring",
+    "circuitType": "Permanent",
+    "circuitImage": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Hungary%20carbon.png",
     "gmtOffset": "02:00:00",
-    "startAt": "2026-07-17T11:30:00+00:00",
-    "endAt": "2026-07-19T15:00:00+00:00",
+    "startAt": "2026-07-24T11:30:00+00:00",
+    "endAt": "2026-07-26T15:00:00+00:00",
     "status": "upcoming",
     "hasSprint": false,
-    "raceSessionKey": "11334",
-    "raceStartsAt": "2026-07-19T13:00:00+00:00",
+    "raceSessionKey": "11342",
+    "raceStartsAt": "2026-07-26T13:00:00+00:00",
     "sessions": [
       {
-        "key": "11327",
+        "key": "11335",
         "name": "Practice 1",
         "type": "Practice",
-        "startAt": "2026-07-17T11:30:00+00:00",
-        "endAt": "2026-07-17T12:30:00+00:00"
+        "startAt": "2026-07-24T11:30:00+00:00",
+        "endAt": "2026-07-24T12:30:00+00:00"
       },
       {
-        "key": "11328",
+        "key": "11336",
         "name": "Practice 2",
         "type": "Practice",
-        "startAt": "2026-07-17T15:00:00+00:00",
-        "endAt": "2026-07-17T16:00:00+00:00"
+        "startAt": "2026-07-24T15:00:00+00:00",
+        "endAt": "2026-07-24T16:00:00+00:00"
       },
       {
-        "key": "11329",
+        "key": "11337",
         "name": "Practice 3",
         "type": "Practice",
-        "startAt": "2026-07-18T10:30:00+00:00",
-        "endAt": "2026-07-18T11:30:00+00:00"
+        "startAt": "2026-07-25T10:30:00+00:00",
+        "endAt": "2026-07-25T11:30:00+00:00"
       },
       {
-        "key": "11330",
+        "key": "11338",
         "name": "Qualifying",
         "type": "Qualifying",
-        "startAt": "2026-07-18T14:00:00+00:00",
-        "endAt": "2026-07-18T15:00:00+00:00"
+        "startAt": "2026-07-25T14:00:00+00:00",
+        "endAt": "2026-07-25T15:00:00+00:00"
       },
       {
-        "key": "11334",
+        "key": "11342",
         "name": "Race",
         "type": "Race",
-        "startAt": "2026-07-19T13:00:00+00:00",
-        "endAt": "2026-07-19T15:00:00+00:00"
+        "startAt": "2026-07-26T13:00:00+00:00",
+        "endAt": "2026-07-26T15:00:00+00:00"
       }
     ],
     "classification": [],
