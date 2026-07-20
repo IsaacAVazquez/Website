@@ -110,7 +110,7 @@ export function ContactInstrument() {
           </div>
           <p className={styles.status}>
             <span className={styles.statusDot} aria-hidden="true" />
-            Based in Berkeley, CA · usually replies within a day
+            Based in Berkeley, CA · open to new conversations
           </p>
         </div>
       </div>

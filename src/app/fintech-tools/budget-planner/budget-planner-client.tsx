@@ -7,16 +7,19 @@ import {
   ArrowRight,
   CalendarRange,
   ChartPie,
+  Download,
   Landmark,
   ListChecks,
   PiggyBank,
   Plus,
   ReceiptText,
+  RotateCcw,
   Sparkles,
   Trash2,
 } from "lucide-react";
 import { getReducedMotionVariants, fadeInVariants } from "@/components/investments/animations";
 import {
+  buildBudgetCsv,
   formatBudgetMonthLabel,
   getAdjacentBudgetMonthKey,
   getDefaultExpenseDate,
@@ -103,8 +106,10 @@ export function BudgetPlannerClient() {
     updateExpense,
     removeExpense,
     findExpense,
+    clearMonth,
   } = useBudgetPlanner();
   const [newCategoryName, setNewCategoryName] = useState("");
+  const [confirmReset, setConfirmReset] = useState(false);
   const [editingExpenseId, setEditingExpenseId] = useState<string | null>(null);
   const [expenseDraft, setExpenseDraft] = useState<ExpenseDraft>(() =>
     createEmptyExpenseDraft(activeMonthKey, activeMonth.categories[0]?.id ?? "")
@@ -183,10 +188,33 @@ export function BudgetPlannerClient() {
   function handleMonthChange(nextMonthKey: string) {
     if (!isBudgetMonthKey(nextMonthKey)) return;
     setEditingExpenseId(null);
+    setConfirmReset(false);
     setExpenseDraft(
       createEmptyExpenseDraft(nextMonthKey, activeMonth.categories[0]?.id ?? "")
     );
     selectMonth(nextMonthKey);
+  }
+
+  function handleExportCsv() {
+    if (typeof window === "undefined") return;
+    const blob = new Blob([buildBudgetCsv(activeMonth, summary)], {
+      type: "text/csv;charset=utf-8",
+    });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.download = `budget-${activeMonthKey}.csv`;
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  function handleResetMonth() {
+    clearMonth();
+    setConfirmReset(false);
+    setEditingExpenseId(null);
+    setExpenseDraft(createEmptyExpenseDraft(activeMonthKey, ""));
   }
 
   function handleAddCategory(event: FormEvent<HTMLFormElement>) {
@@ -311,6 +339,49 @@ export function BudgetPlannerClient() {
                 >
                   <ArrowRight className="h-4 w-4" />
                 </button>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2">
+                <button
+                  type="button"
+                  onClick={handleExportCsv}
+                  className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-[var(--home-rule)] px-4 py-2 text-1xs font-semibold text-[var(--home-ink)] transition-colors hover:bg-[color-mix(in_srgb,var(--home-signal)_14%,transparent)]"
+                >
+                  <Download className="h-4 w-4" aria-hidden="true" />
+                  Export CSV
+                </button>
+                {confirmReset ? (
+                  <>
+                    <button
+                      type="button"
+                      onClick={handleResetMonth}
+                      className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-1xs font-semibold transition-colors"
+                      style={{
+                        borderColor: "var(--home-negative)",
+                        color: "var(--home-negative)",
+                      }}
+                    >
+                      <RotateCcw className="h-4 w-4" aria-hidden="true" />
+                      Reset month?
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setConfirmReset(false)}
+                      className="inline-flex min-h-[44px] items-center rounded-full border border-[var(--home-rule)] px-4 py-2 text-1xs font-semibold text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-ink)]"
+                    >
+                      Cancel
+                    </button>
+                  </>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => setConfirmReset(true)}
+                    className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-[var(--home-rule)] px-4 py-2 text-1xs font-semibold text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-ink)]"
+                  >
+                    <RotateCcw className="h-4 w-4" aria-hidden="true" />
+                    Reset month
+                  </button>
+                )}
               </div>
             </div>
 

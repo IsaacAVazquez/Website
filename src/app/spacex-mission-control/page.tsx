@@ -9,6 +9,7 @@ export const metadata = constructMetadata({
   description:
     "Mission-control-style SpaceX launch board with next-launch visibility, past and upcoming mission browsing, and relationship-aware mission detail panels.",
   canonicalUrl: "/spacex-mission-control",
+  image: "/spacex-mission-control/opengraph-image",
   dateModified: "2026-04-01",
   aiMetadata: {
     profession: "Product Manager",

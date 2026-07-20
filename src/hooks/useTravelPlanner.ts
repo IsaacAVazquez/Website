@@ -2,6 +2,10 @@
 
 import { useMemo, useState, useSyncExternalStore } from "react";
 import {
+  getBrowserStorageSnapshot,
+  subscribeBrowserStorage,
+} from "@/lib/browserStorage";
+import {
   TRAVEL_PLANNER_STORAGE_KEY,
   calculateTripSummary,
   createActivity,
@@ -13,38 +17,6 @@ import {
   saveTrips,
 } from "@/lib/travelPlanner";
 import type { JournalEntry, Trip, TripActivity } from "@/types/travel";
-
-const travelListeners = new Set<() => void>();
-
-function emit() {
-  travelListeners.forEach((listener) => listener());
-}
-
-function subscribe(listener: () => void) {
-  travelListeners.add(listener);
-
-  function handleStorage(event: StorageEvent) {
-    if (event.key === null || event.key === TRAVEL_PLANNER_STORAGE_KEY) {
-      listener();
-    }
-  }
-
-  if (typeof window !== "undefined") {
-    window.addEventListener("storage", handleStorage);
-  }
-
-  return () => {
-    travelListeners.delete(listener);
-    if (typeof window !== "undefined") {
-      window.removeEventListener("storage", handleStorage);
-    }
-  };
-}
-
-function getSnapshot() {
-  if (typeof window === "undefined") return "[]";
-  return window.localStorage.getItem(TRAVEL_PLANNER_STORAGE_KEY) ?? "[]";
-}
 
 export interface NewTripInput {
   name: string;
@@ -71,7 +43,11 @@ export interface JournalDraft {
 }
 
 export function useTravelPlanner() {
-  const snapshot = useSyncExternalStore(subscribe, getSnapshot, () => "[]");
+  const snapshot = useSyncExternalStore(
+    (listener) => subscribeBrowserStorage(TRAVEL_PLANNER_STORAGE_KEY, listener),
+    () => getBrowserStorageSnapshot(TRAVEL_PLANNER_STORAGE_KEY, "[]"),
+    () => "[]"
+  );
   const trips = useMemo(() => parseTrips(snapshot), [snapshot]);
 
   const [requestedTripId, setRequestedTripId] = useState<string | null>(null);
@@ -91,8 +67,9 @@ export function useTravelPlanner() {
   );
 
   function commit(nextTrips: Trip[]) {
+    // saveTrips writes through the guarded shared store, which notifies
+    // subscribers itself, so no manual emit is needed here.
     saveTrips(nextTrips);
-    emit();
   }
 
   function updateTrip(tripId: string, updater: (trip: Trip) => Trip) {

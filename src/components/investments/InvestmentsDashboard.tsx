@@ -470,6 +470,15 @@ export function InvestmentsDashboard({
       />
     </section>
 
+    <p
+      role="note"
+      className="mx-auto mt-2 flex max-w-3xl items-start gap-2 text-2xs leading-6 text-[var(--home-ink-muted)]"
+    >
+      <IconHelp size={14} className="mt-0.5 shrink-0" aria-hidden="true" />
+      Research, valuations, and portfolio figures here are for general information
+      and education only and are not investment, tax, or financial advice.
+    </p>
+
     {/* Retirement planner — projects whether the portfolio + savings last
         through retirement, with allocation-derived Monte Carlo. Offers the
         live portfolio value as a one-click starting balance. */}

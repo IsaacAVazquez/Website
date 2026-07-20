@@ -463,7 +463,7 @@ function computePhase(
     return {
       phase: "Upcoming",
       status:
-        "Group standings, the bracket, and scorers fill in here once the tournament kicks off on June 11.",
+        "Group standings and the bracket fill in here once the tournament kicks off on June 11.",
     };
   }
   // Pick the latest-dated "Final" so a single fixture is selected even if the
@@ -497,7 +497,7 @@ function computePhase(
   return {
     phase: "Upcoming",
     status:
-      "Group standings, the bracket, and scorers fill in here once the tournament kicks off on June 11.",
+      "Group standings and the bracket fill in here once the tournament kicks off on June 11.",
   };
 }
 

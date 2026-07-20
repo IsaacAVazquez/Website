@@ -10,6 +10,7 @@ export const metadata = constructMetadata({
   description:
     "Frequently refreshed global earthquake monitor covering the past 24 hours of seismic activity, significant quakes worldwide, magnitude distribution, and the busiest regions.",
   canonicalUrl: "/earthquake-pulse",
+  image: "/earthquake-pulse/opengraph-image",
   dateModified: earthquakeSnapshot.summary.generatedAt?.slice(0, 10),
   aiMetadata: {
     profession: "Product Manager",

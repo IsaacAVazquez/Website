@@ -205,6 +205,7 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
   const [error, setError] = useState<string | null>(null);
   const [feedErrors, setFeedErrors] = useState<string[]>([]);
   const [fetchedAt, setFetchedAt] = useState("");
+  const [reloadKey, setReloadKey] = useState(0);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -258,7 +259,7 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
       clearTimeout(timeoutId);
       controller.abort();
     };
-  }, []);
+  }, [reloadKey]);
 
   const filteredArticles = useMemo(
     () =>
@@ -482,7 +483,7 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
         {loading ? (
           <LoadingState />
         ) : error ? (
-          <ErrorState message={error} />
+          <ErrorState message={error} onRetry={() => setReloadKey((k) => k + 1)} />
         ) : routeState.view === "headlines" ? (
           <HeadlinesView articles={filteredArticles} variants={variants} />
         ) : routeState.view === "coverage" ? (
@@ -521,7 +522,7 @@ function LoadingState() {
   );
 }
 
-function ErrorState({ message }: { message: string }) {
+function ErrorState({ message, onRetry }: { message: string; onRetry: () => void }) {
   return (
     <StatusPanel
       title="I could not load the feeds."
@@ -529,6 +530,11 @@ function ErrorState({ message }: { message: string }) {
       tone="error"
       icon={<CircleAlert className="h-5 w-5" aria-hidden="true" />}
       statusRole="alert"
+      action={
+        <button type="button" onClick={onRetry} className="home-button home-button-secondary">
+          Try again
+        </button>
+      }
     />
   );
 }

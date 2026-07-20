@@ -34,6 +34,7 @@ import {
 } from "@/components/ui/ServerIcons";
 import type {
   LaLigaClub,
+  LaLigaDetailTab,
   LaLigaLeader,
   LaLigaRouteState,
   LaLigaSummarySnapshot,
@@ -148,7 +149,9 @@ export function LaLigaClient({
     }).format(new Date(summary.updatedAt))
   ), [summary.updatedAt]);
   const hasManagedParams =
-    searchParams.get("view") !== null || searchParams.get("club") !== null;
+    searchParams.get("view") !== null ||
+    searchParams.get("club") !== null ||
+    searchParams.get("detail") !== null;
   const routeState = hasManagedParams
     ? normalizeState(searchParams, defaultState, aliasMap)
     : initialState;
@@ -168,6 +171,7 @@ export function LaLigaClient({
     {
       view: routeState.view,
       club: selectedClubId,
+      detail: routeState.detail,
     },
     defaultState,
     aliasMap,
@@ -201,7 +205,7 @@ export function LaLigaClient({
       ? selectedClubId
       : nextClubs[0]?.id ?? defaultState.club;
 
-    navigate({ view, club: nextClub });
+    navigate({ view, club: nextClub, detail: routeState.detail });
   }
 
   function handleClubChange(clubId: string) {
@@ -214,6 +218,7 @@ export function LaLigaClient({
     navigate({
       view: routeState.view,
       club: canonicalizeClubId(clubId, aliasMap) ?? defaultState.club,
+      detail: routeState.detail,
     });
   }
 
@@ -266,7 +271,10 @@ export function LaLigaClient({
     };
   }, [selectedClub, teamSnapshots]);
 
-  const [activeDetailTab, setActiveDetailTab] = useState<"club" | "fixtures" | "scorers">("club");
+  const activeDetailTab = routeState.detail;
+  function setActiveDetailTab(detail: LaLigaDetailTab) {
+    navigate({ view: routeState.view, club: selectedClubId, detail });
+  }
   // Mirrors a genuinely resolvable explicit `?club=` on first render (an
   // unknown/unaliasable value shouldn't pop the overlay just because the
   // query string carried something) — `handleClubChange` flips this on every
@@ -494,10 +502,10 @@ export function LaLigaClient({
           cells={statsPanelCells}
           pills={[
             { label: "Standings", href: "#laliga-standings", icon: ChartBar },
-            { label: "Top scorers", href: "?view=table", icon: User },
-            { label: "Recent fixtures", href: "?view=table", icon: Calendar },
-            { label: "Upcoming fixtures", href: "?view=table", icon: Calendar },
-            { label: "Club detail", href: "?view=table", icon: Briefcase },
+            { label: "Top scorers", href: "?detail=scorers", icon: User },
+            { label: "Recent fixtures", href: "?detail=fixtures", icon: Calendar },
+            { label: "Upcoming fixtures", href: "?detail=fixtures", icon: Calendar },
+            { label: "Club detail", href: "?detail=club", icon: Briefcase },
             { label: "Article", href: "/writing", icon: Article },
           ]}
         />

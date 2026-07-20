@@ -135,7 +135,10 @@ export interface LaLigaSnapshot {
 
 export type LaLigaSummarySnapshot = Omit<LaLigaSnapshot, "teamSnapshots">;
 
+export type LaLigaDetailTab = "club" | "fixtures" | "scorers";
+
 export interface LaLigaRouteState {
   view: LaLigaView;
   club: string;
+  detail: LaLigaDetailTab;
 }

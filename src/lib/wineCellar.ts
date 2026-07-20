@@ -1,3 +1,7 @@
+import {
+  getBrowserStorageSnapshot,
+  writeBrowserStorageString,
+} from "@/lib/browserStorage";
 import type {
   WineEntry,
   WineSummary,
@@ -179,7 +183,9 @@ export function parseWineEntries(raw: string | null): WineEntry[] {
 export function loadWineEntries(storage?: Pick<Storage, "getItem">): WineEntry[] {
   if (storage) return parseWineEntries(storage.getItem(WINE_CELLAR_STORAGE_KEY));
   if (typeof window === "undefined") return [];
-  return parseWineEntries(window.localStorage.getItem(WINE_CELLAR_STORAGE_KEY));
+  // Read through the shared memory-mirrored store so an entry still reads back
+  // even when a prior durable write failed (Safari private mode / quota).
+  return parseWineEntries(getBrowserStorageSnapshot(WINE_CELLAR_STORAGE_KEY, "[]"));
 }
 
 export function saveWineEntries(
@@ -191,8 +197,9 @@ export function saveWineEntries(
     storage.setItem(WINE_CELLAR_STORAGE_KEY, payload);
     return;
   }
-  if (typeof window === "undefined") return;
-  window.localStorage.setItem(WINE_CELLAR_STORAGE_KEY, payload);
+  // Guarded write: mirrors in memory first, then attempts durable storage, so a
+  // QuotaExceededError never throws out of the interaction and aborts the save.
+  writeBrowserStorageString(WINE_CELLAR_STORAGE_KEY, payload);
 }
 
 function pickMostFrequent(values: string[]): string | null {

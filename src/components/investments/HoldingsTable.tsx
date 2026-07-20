@@ -281,6 +281,40 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
   );
 }
 
+function escapeCsvValue(value: string | number): string {
+  const raw = String(value);
+  return /[",\r\n]/.test(raw) ? `"${raw.replace(/"/g, '""')}"` : raw;
+}
+
+function buildHoldingsCsv(holdings: EnhancedHolding[]): string {
+  const header = [
+    "symbol",
+    "name",
+    "shares",
+    "averageCost",
+    "currentPrice",
+    "currentValue",
+    "gainLoss",
+    "gainLossPercent",
+  ];
+  const rows = holdings.map((h) =>
+    [
+      h.symbol,
+      h.name,
+      h.shares,
+      h.averageCost,
+      h.currentPrice,
+      h.currentValue,
+      h.gainLoss,
+      h.gainLossPercent,
+    ]
+      .map(escapeCsvValue)
+      .join(","),
+  );
+  // Leading BOM so Excel opens the UTF-8 file with the right encoding.
+  return `\uFEFF${[header.join(","), ...rows].join("\r\n")}`;
+}
+
 export function HoldingsTable({ holdings, onUpdate, onRemove, onResearch }: Props) {
   const sorted = React.useMemo(
     () =>
@@ -289,6 +323,21 @@ export function HoldingsTable({ holdings, onUpdate, onRemove, onResearch }: Prop
       ),
     [holdings],
   );
+
+  function handleExportCsv() {
+    if (typeof window === "undefined" || holdings.length === 0) return;
+    const blob = new Blob([buildHoldingsCsv(sorted)], {
+      type: "text/csv;charset=utf-8",
+    });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.download = `portfolio-holdings-${new Date().toISOString().slice(0, 10)}.csv`;
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    URL.revokeObjectURL(url);
+  }
 
   return (
     <section id="holdings-list" className="invest-panel scroll-mt-28">
@@ -299,6 +348,16 @@ export function HoldingsTable({ holdings, onUpdate, onRemove, onResearch }: Prop
             {holdings.length} {holdings.length === 1 ? "position" : "positions"} · sorted by allocation
           </div>
         </div>
+        {holdings.length > 0 ? (
+          <button
+            type="button"
+            className="invest-ghost"
+            onClick={handleExportCsv}
+            aria-label="Export holdings as a CSV file"
+          >
+            Export CSV
+          </button>
+        ) : null}
       </div>
       <div className="overflow-x-auto">
         <table className="invest-holdings">

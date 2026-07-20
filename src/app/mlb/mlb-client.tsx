@@ -531,6 +531,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                           routeState.view === "wildcard"
                             ? row.wildCardRank ?? row.divisionRank
                             : row.divisionRank;
+                        const zone = getTeamZone(row);
                         return (
                           <tr
                             key={row.id}
@@ -538,9 +539,16 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                             style={getTableRowStyle(isSelected)}
                           >
                             <td className="rounded-l-2xl px-3 py-3 align-middle">
-                              <span className="text-sm font-semibold text-[var(--home-ink)]">
-                                {positionLabel}
-                              </span>
+                              <div className="flex items-center gap-2">
+                                <span
+                                  className="h-2 w-2 flex-shrink-0 rounded-full"
+                                  style={{ backgroundColor: getZoneDotColor(zone) }}
+                                  title={getZoneLabel(zone)}
+                                />
+                                <span className="text-sm font-semibold text-[var(--home-ink)]">
+                                  {positionLabel}
+                                </span>
+                              </div>
                             </td>
                             <td className="px-3 py-3 align-middle">
                               <button
@@ -914,24 +922,37 @@ function LeagueLeaders({
   }
 
   return (
-    <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-      {populated.map((group) => (
-        <div key={group.title}>
-          <div className="flex items-start justify-between gap-3">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
-                Leaderboard
-              </p>
-              <h3 className="mt-2 text-xl font-bold text-[var(--home-ink)]">{group.title}</h3>
+    <div className="space-y-4">
+      <div className="flex flex-wrap items-center justify-end gap-3">
+        <a
+          href={sourceUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-sm font-medium text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-signal)]"
+        >
+          Official
+          <ExternalLink className="h-4 w-4" />
+        </a>
+      </div>
+      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {populated.map((group) => (
+          <div key={group.title}>
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
+                  Leaderboard
+                </p>
+                <h3 className="mt-2 text-xl font-bold text-[var(--home-ink)]">{group.title}</h3>
+              </div>
             </div>
+            <LeaderList
+              leaders={leadersToEntries(group.leaders, group.statLabel === "AVG" || group.statLabel === "ERA" ? 3 : 0)}
+              statLabel={group.statLabel}
+              clubLookup={teamLookup}
+            />
           </div>
-          <LeaderList
-            leaders={leadersToEntries(group.leaders, group.statLabel === "AVG" || group.statLabel === "ERA" ? 3 : 0)}
-            statLabel={group.statLabel}
-            clubLookup={teamLookup}
-          />
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
@@ -981,6 +1002,38 @@ function getTableRowStyle(isSelected: boolean): CSSProperties {
 function formatRunDiff(diff: number): string {
   if (!Number.isFinite(diff) || diff === 0) return "0";
   return diff > 0 ? `+${diff}` : `${diff}`;
+}
+
+type MlbZone = "division" | "wildcard" | "out";
+
+function getTeamZone(row: MlbStandingsRow): MlbZone {
+  if (row.divisionRank === 1) return "division";
+  if (row.wildCardRank !== null && row.wildCardRank <= 3) return "wildcard";
+  return "out";
+}
+
+function getZoneLabel(zone: MlbZone): string {
+  switch (zone) {
+    case "division":
+      return "Division leader";
+    case "wildcard":
+      return "Wild card slot";
+    case "out":
+    default:
+      return "Out of postseason";
+  }
+}
+
+function getZoneDotColor(zone: MlbZone): string {
+  switch (zone) {
+    case "division":
+      return "var(--home-positive)";
+    case "wildcard":
+      return "color-mix(in srgb, var(--home-positive) 55%, var(--home-ink))";
+    case "out":
+    default:
+      return "color-mix(in srgb, var(--home-ink) 65%, var(--home-stone))";
+  }
 }
 
 function getPressurePoints(row: MlbStandingsRow): string[] {

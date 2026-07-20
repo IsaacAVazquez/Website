@@ -19,6 +19,7 @@ import {
 } from "@/components/investments/animations";
 import {
   DEFAULT_WINE_FILTERS,
+  WINE_CELLAR_STORAGE_KEY,
   WINE_TYPES,
   WINE_TYPE_LABELS,
   getTodayIsoDate,
@@ -26,6 +27,7 @@ import {
   type WineSortKey,
 } from "@/lib/wineCellar";
 import { useWineCellar } from "@/hooks/useWineCellar";
+import { useLocalStoragePersistenceStatus } from "@/hooks/useLocalStorageString";
 import type { WineEntry, WineType } from "@/types/wine";
 import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
 
@@ -178,6 +180,7 @@ export function WineCellarClient() {
     removeEntry,
     findEntry,
   } = useWineCellar();
+  const persistenceStatus = useLocalStoragePersistenceStatus(WINE_CELLAR_STORAGE_KEY);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [formDraft, setFormDraft] = useState<WineFormDraft>(() =>
     createEmptyFormDraft()
@@ -294,6 +297,22 @@ export function WineCellarClient() {
           animate="visible"
           className="flex flex-col gap-6"
         >
+          {persistenceStatus === "memory-only" ? (
+            <div
+              className="rounded-[var(--radius-sm)] border px-4 py-3 text-sm leading-6"
+              style={{
+                borderColor:
+                  "color-mix(in srgb, var(--home-warning) 35%, var(--home-rule))",
+                background:
+                  "color-mix(in srgb, var(--home-warning) 10%, var(--home-paper-alt))",
+                color: "var(--home-ink-muted)",
+              }}
+              role="status"
+            >
+              Your cellar is available in this tab, but browser storage is
+              unavailable, so entries may not remain after you close it.
+            </div>
+          ) : null}
           <div className="tool-topbar" id="cellar">
             <div>
               <p className="tool-crumbs">

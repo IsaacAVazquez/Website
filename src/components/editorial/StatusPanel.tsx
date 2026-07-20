@@ -6,6 +6,8 @@ interface StatusPanelProps {
   tone?: "default" | "error" | "warning";
   icon?: ReactNode;
   statusRole?: "status" | "alert";
+  /** Optional action rendered under the message (e.g. a retry button). */
+  action?: ReactNode;
 }
 
 /**
@@ -19,6 +21,7 @@ export function StatusPanel({
   tone = "default",
   icon,
   statusRole,
+  action,
 }: StatusPanelProps) {
   // Auto-derive the ARIA role from tone (error → alert, otherwise status) so
   // every instance gets a live region even if the caller doesn't pass one;
@@ -76,6 +79,7 @@ export function StatusPanel({
       >
         {message}
       </p>
+      {action ? <div className="mt-6 flex justify-center">{action}</div> : null}
     </div>
   );
 }

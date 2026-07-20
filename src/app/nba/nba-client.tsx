@@ -114,6 +114,17 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
     [allTeams]
   );
   const scorersByTeam = useMemo(() => groupLeadersByTeam(summary.scorers), [summary.scorers]);
+  const reboundersByTeam = useMemo(() => groupLeadersByTeam(summary.rebounders), [summary.rebounders]);
+  const assistsByTeam = useMemo(() => groupLeadersByTeam(summary.assistLeaders), [summary.assistLeaders]);
+  const hottestTeam = useMemo(() => {
+    const pool = allTeams.filter((team) => /^W\d+/i.test(team.streak ?? ""));
+    pool.sort(
+      (a, b) =>
+        (Number.parseInt((b.streak ?? "").slice(1), 10) || 0) -
+        (Number.parseInt((a.streak ?? "").slice(1), 10) || 0)
+    );
+    return pool[0] ?? null;
+  }, [allTeams]);
   const logoByTeamId = useMemo(
     () =>
       new Map(
@@ -254,6 +265,8 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
   const teamStoryline = getTeamStoryline(selectedTeam, conferenceContext);
   const teamPressurePoints = getTeamPressurePoints(selectedTeam, conferenceContext, teamRanks);
   const teamScorers = scorersByTeam.get(selectedTeam.id) ?? [];
+  const teamRebounders = reboundersByTeam.get(selectedTeam.id) ?? [];
+  const teamAssists = assistsByTeam.get(selectedTeam.id) ?? [];
   const formSequence = teamSnapshot?.form?.sequence ?? [];
   const recentFixtures = (teamSnapshot?.recentFixtures ?? []).slice(0, 3);
   const upcomingFixtures = (teamSnapshot?.upcomingFixtures ?? []).slice(0, 3);
@@ -305,6 +318,12 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
             biggestDifferentialTeam.pointDifferential > 0 ? "+" : ""
           }${biggestDifferentialTeam.pointDifferential.toFixed(1)}`
         : "—",
+    },
+    {
+      label: "Hottest streak",
+      tooltip: "Team currently riding the longest active winning streak.",
+      value: hottestTeam ? `${hottestTeam.shortName} · ${hottestTeam.streak}` : "—",
+      sub: hottestTeam ? `Last 10: ${hottestTeam.lastTen ?? "—"}` : "No active win streaks",
     },
     {
       label: "East playoff line",
@@ -596,6 +615,8 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
                         : "—",
                     ],
                     ["GB", formatGamesBack(selectedTeam.gamesBack)],
+                    ["L10", selectedTeam.lastTen ?? "—"],
+                    ["Streak", selectedTeam.streak ?? "—"],
                     ["Offense", `#${teamRanks.offense}`],
                     ["Defense", `#${teamRanks.defense}`],
                     ["PF/g", selectedTeam.pointsFor.toFixed(1)],
@@ -711,12 +732,26 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
                     </ul>
                   </div>
 
-                  <TeamLeaderCard
-                    title="Top scorer"
-                    leader={teamScorers[0]}
-                    statLabel="Points"
-                    emptyLabel="No top-10 scorer for this team in the latest snapshot."
-                  />
+                  <div className="grid gap-3 sm:grid-cols-3">
+                    <TeamLeaderCard
+                      title="Top scorer"
+                      leader={teamScorers[0]}
+                      statLabel="Points"
+                      emptyLabel="No top-10 scorer for this team in the latest snapshot."
+                    />
+                    <TeamLeaderCard
+                      title="Top rebounder"
+                      leader={teamRebounders[0]}
+                      statLabel="Rebounds"
+                      emptyLabel="No top-10 rebounder for this team in the latest snapshot."
+                    />
+                    <TeamLeaderCard
+                      title="Top playmaker"
+                      leader={teamAssists[0]}
+                      statLabel="Assists"
+                      emptyLabel="No top-10 playmaker for this team in the latest snapshot."
+                    />
+                  </div>
 
                   <p className="text-sm leading-relaxed text-[var(--home-ink-muted)]">
                     {teamStoryline}
@@ -801,6 +836,13 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
                     </div>
                   </div>
                 )}
+                {summary.recentFixtures.length === 0 &&
+                  summary.upcomingFixtures.length === 0 && (
+                    <p className="text-sm text-[var(--home-ink-muted)] md:col-span-2">
+                      No games are on the schedule right now. Recent results and upcoming
+                      matchups will appear here once the next snapshot is published.
+                    </p>
+                  )}
               </div>
             )}
 

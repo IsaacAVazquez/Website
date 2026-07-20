@@ -350,6 +350,18 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       tags: ['World Cup', 'FIFA', 'Soccer', 'Football', 'Sports Data', 'Dashboard'],
     },
     {
+      id: 'page-score-pools',
+      title: 'Score Pools',
+      excerpt:
+        'Exact-score prediction engine for pool play, with market-calibrated scoreline distributions, expected-points pick rankings, and leaderboard-aware recommendations from a checked-in odds snapshot.',
+      content:
+        'score pools exact score prediction pick sheet Dixon-Coles scoreline distribution de-vig odds expected points optimizer leaderboard pool scoring predictions markets dashboard',
+      url: '/score-pools',
+      type: 'project',
+      category: 'Sports Data Tools',
+      tags: ['Score Pools', 'Predictions', 'Exact Score', 'Dixon-Coles', 'Expected Points', 'Sports Data', 'Dashboard'],
+    },
+    {
       id: 'page-bay-area-transit',
       title: 'Bay Area Transit Pulse',
       excerpt:
@@ -536,6 +548,28 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       content:
         'changelog updates releases new tools shipped changes history site log',
       url: '/changelog',
+      type: 'page',
+      category: 'Site',
+    },
+    {
+      id: 'page-release-notes',
+      title: 'Release Notes',
+      excerpt:
+        'Site updates in reverse chronological order, grouped by month, covering new features, dashboards, writing, and fixes as they shipped.',
+      content:
+        'release notes updates shipped features dashboards writing fixes monthly log changelog companion site',
+      url: '/release-notes',
+      type: 'page',
+      category: 'Site',
+    },
+    {
+      id: 'page-arcade',
+      title: 'Reactor Arcade',
+      excerpt:
+        'Reactor is a neon synthwave reflex game built into the site, a deliberate style experiment where you light the live cell, dodge the decoys, and keep the combo alive.',
+      content:
+        'arcade Reactor game synthwave neon reflex reaction combo browser style experiment play',
+      url: '/arcade',
       type: 'page',
       category: 'Site',
     },

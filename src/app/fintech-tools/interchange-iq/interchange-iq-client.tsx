@@ -150,6 +150,14 @@ export function InterchangeIQClient() {
   const savings  = bestFlat.monthlyFee - bestIC.monthlyFee;
   const savingsVsWorst = worst.monthlyFee - cheapest.monthlyFee;
 
+  // The Flat-rate / Interchange-plus nav tabs narrow the processor table to that
+  // pricing model; the global verdict/stats stay computed from the full set.
+  const visibleResults = useMemo(() => {
+    if (activeView === "flat-rate") return results.filter((r) => r.model === "Flat Rate");
+    if (activeView === "interchange-plus") return results.filter((r) => r.model === "Interchange+");
+    return results;
+  }, [results, activeView]);
+
   const breakevenTicket = calcStripeBreakevenTicket(cardMix);
 
   const cardMixLabel =
@@ -344,12 +352,12 @@ export function InterchangeIQClient() {
                     color: "var(--home-ink-muted)",
                   }}
                 >
-                  {results.length} options · sorted cheapest first
+                  {visibleResults.length} options · sorted cheapest first
                 </p>
               </header>
 
               <ul className="m-0 list-none p-0">
-                {results.map((r, i) => {
+                {visibleResults.map((r, i) => {
                   const isBest = i === 0;
                   return (
                     <li

@@ -1,5 +1,10 @@
 import type { ReadonlyURLSearchParams } from "next/navigation";
-import type { LaLigaClub, LaLigaRouteState, LaLigaView } from "@/types/la-liga";
+import type {
+  LaLigaClub,
+  LaLigaDetailTab,
+  LaLigaRouteState,
+  LaLigaView,
+} from "@/types/la-liga";
 
 // Pure, snapshot-free route-state core for /la-liga. Importing this module never
 // pulls the multi-thousand-line `laLigaSnapshot` into the bundle, so the client
@@ -13,6 +18,9 @@ export const LA_LIGA_ROUTE = "/la-liga";
 export const LA_LIGA_FALLBACK_CLUB = "barcelona";
 
 const VALID_VIEWS = new Set<LaLigaView>(["table", "title-race", "europe", "relegation"]);
+
+export const LA_LIGA_DETAIL_OPTIONS = ["club", "fixtures", "scorers"] as const;
+const VALID_DETAILS = new Set<LaLigaDetailTab>(LA_LIGA_DETAIL_OPTIONS);
 
 export type SearchParamInput =
   | URLSearchParams
@@ -85,6 +93,7 @@ export function resolveDefaultState(clubs: readonly LaLigaClub[]): LaLigaRouteSt
   return {
     view: "table",
     club: clubs[0]?.id ?? LA_LIGA_FALLBACK_CLUB,
+    detail: "club",
   };
 }
 
@@ -95,12 +104,16 @@ export function normalizeState(
 ): LaLigaRouteState {
   const view = readParam(input, "view");
   const club = canonicalizeClubId(readParam(input, "club"), aliasMap);
+  const detail = readParam(input, "detail");
 
   return {
     view: VALID_VIEWS.has((view ?? "") as LaLigaView)
       ? (view as LaLigaView)
       : defaultState.view,
     club: club ?? defaultState.club,
+    detail: VALID_DETAILS.has((detail ?? "") as LaLigaDetailTab)
+      ? (detail as LaLigaDetailTab)
+      : defaultState.detail,
   };
 }
 
@@ -125,6 +138,12 @@ export function buildHref(
     params.delete("club");
   } else {
     params.set("club", canonicalClubId);
+  }
+
+  if (state.detail && state.detail !== defaultState.detail) {
+    params.set("detail", state.detail);
+  } else {
+    params.delete("detail");
   }
 
   const query = params.toString();

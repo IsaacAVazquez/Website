@@ -1053,6 +1053,7 @@ function TeamDetailCard({
               ["Pts", `${standing.points}`],
               ["W-D-L", `${standing.wins}-${standing.draws}-${standing.losses}`],
               ["GF", `${standing.goalsFor}`],
+              ["GA", `${standing.goalsAgainst}`],
               [
                 "GD",
                 standing.goalDifference > 0

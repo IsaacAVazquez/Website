@@ -183,6 +183,28 @@ const nextConfig = {
         destination: '/Isaac_Vazquez_Resume.pdf',
         permanent: true,
       },
+
+      // RSS feed aliases for easier subscription
+      {
+        source: '/rss',
+        destination: '/api/rss',
+        permanent: false,
+      },
+      {
+        source: '/feed',
+        destination: '/api/rss',
+        permanent: false,
+      },
+      {
+        source: '/feed.xml',
+        destination: '/api/rss',
+        permanent: false,
+      },
+      {
+        source: '/rss.xml',
+        destination: '/api/rss',
+        permanent: false,
+      },
     ];
   },
 
