@@ -12,6 +12,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Application insights and a needs-attention list ([#316](https://github.com/IsaacAVazquez/Website/pull/316)).
 - Sync stale component names and workflow inventory with code ([#310](https://github.com/IsaacAVazquez/Website/pull/310)).
 - Give four projects their own distinct card icons ([#311](https://github.com/IsaacAVazquez/Website/pull/311)).
+- Live-first serving, daily fallback snapshot ([#325](https://github.com/IsaacAVazquez/Website/pull/325)).
 
 ---
 
