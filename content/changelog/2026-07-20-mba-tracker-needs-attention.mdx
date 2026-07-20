@@ -1,0 +1,12 @@
+---
+title: The MBA tracker now tells me what to chase
+publishedAt: "2026-07-20"
+category: Update
+summary: The application pipeline gained a needs-attention list, a conversion funnel with response and interview rates, and inline priority controls.
+tags:
+  - mba-tracker
+---
+
+For a while the [application pipeline](/mba-internship-notifications?view=applications) was quietly collecting follow-up dates and deadlines and then mostly sitting on them, which is the opposite of what a tracker is for. So I added a needs-attention list at the top of the pipeline that pulls out the follow-ups that are overdue or due today, plus the deadlines closing in on roles I have not submitted yet, and each row carries the one action I actually want in that moment, whether that is marking a follow-up done, marking a role applied, or opening it. It reads straight from the same browser-local data the rest of the tracker uses, so nothing personal leaves the page.
+
+The pipeline also reads back a little more honestly now. Instead of three raw counts it shows a small funnel from saved, to applied, to interviewing, to offer, along with the share of submitted applications that got a response or reached an interview, so I can tell whether the problem is volume or conversion. I wired priority into the cards while I was in there, since I had been able to set it in the edit dialog but not from the board, and high-priority roles now sort to the top of each column. The math behind all of it lives in a small pure module with its own tests, which is the part I trust most.

@@ -8,6 +8,7 @@ import {
   useRef,
   useState,
   type CSSProperties,
+  type ReactNode,
 } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -15,8 +16,12 @@ import {
   Bell,
   BellOff,
   BriefcaseBusiness,
+  CalendarClock,
   CalendarDays,
+  CheckCircle2,
+  ChevronRight,
   CircleAlert,
+  Clock,
   Download,
   Edit3,
   ExternalLink,
@@ -48,10 +53,21 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
 import {
+  MBA_APPLICATION_PRIORITIES,
   MBA_APPLICATION_PRIORITY_LABELS,
   MBA_APPLICATION_STATUSES,
   MBA_APPLICATION_STATUS_LABELS,
 } from "@/lib/mba-applications";
+import {
+  describeAttentionItem,
+  getApplicationAttentionItems,
+  isFollowUpAttention,
+  sortApplicationsForColumn,
+  summarizeApplicationPipeline,
+  type MBAApplicationInsights,
+  type MBAAttentionItem,
+  type MBAAttentionKind,
+} from "@/lib/mba-application-insights";
 import { useMBAApplications } from "@/hooks/useMBAApplications";
 import { useMBAJobs } from "@/hooks/useMBAJobs";
 import { MBA_COMPANIES, MBA_COMPANY_MAP } from "@/constants/mba-companies";
@@ -208,6 +224,29 @@ const ACTIVE_APPLICATION_STATUSES: MBAApplicationStatus[] = [
   "offer",
   "rejected",
 ];
+
+// Progression stages shown in the pipeline funnel (outcome branches like
+// "rejected" are reported separately rather than as a funnel step).
+const APPLICATION_FUNNEL_STAGES: {
+  key: keyof MBAApplicationInsights["funnel"];
+  label: string;
+}[] = [
+  { key: "saved", label: "Saved" },
+  { key: "applied", label: "Applied" },
+  { key: "interviewing", label: "Interview" },
+  { key: "offer", label: "Offer" },
+];
+
+const ATTENTION_KIND_ACCENTS: Record<MBAAttentionKind, string> = {
+  "follow-up-overdue": "var(--home-negative)",
+  "deadline-passed": "var(--home-negative)",
+  "follow-up-today": "var(--home-signal)",
+  "deadline-soon": "var(--home-warning)",
+};
+
+function formatRate(value: number | null): string {
+  return value === null ? "—" : `${Math.round(value * 100)}%`;
+}
 
 function getReadableAccentColor(accent: string): string {
   return `color-mix(in srgb, var(--home-ink) 76%, ${accent} 24%)`;
@@ -1342,15 +1381,292 @@ function CompanyFilterStrip({
   );
 }
 
+function InsightTile({
+  label,
+  value,
+  sub,
+  tone = "default",
+}: {
+  label: string;
+  value: ReactNode;
+  sub?: string;
+  tone?: "default" | "good";
+}) {
+  const valueColor =
+    tone === "good"
+      ? "color-mix(in srgb, var(--home-positive) 60%, var(--home-ink))"
+      : "var(--home-ink)";
+  return (
+    <div
+      className="rounded-[var(--radius-3xl)] border p-4"
+      style={{ borderColor: "var(--home-rule)" }}
+    >
+      <p className="home-meta mb-0">{label}</p>
+      <p
+        className="mb-0 mt-2 text-2xl font-semibold tabular-nums"
+        style={{ color: valueColor }}
+      >
+        {value}
+      </p>
+      {sub && <p className="home-note-copy mb-0 mt-1 text-xs">{sub}</p>}
+    </div>
+  );
+}
+
+function PipelineInsights({ insights }: { insights: MBAApplicationInsights }) {
+  const { funnel, submitted } = insights;
+  return (
+    <div className="space-y-5">
+      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <InsightTile
+          label="Active"
+          value={insights.total}
+          sub="In play right now"
+          tone={insights.total > 0 ? "good" : "default"}
+        />
+        <InsightTile label="Submitted" value={submitted} sub="Applied or further" />
+        <InsightTile
+          label="Response rate"
+          value={formatRate(insights.responseRate)}
+          sub={
+            submitted > 0
+              ? `${insights.responded} of ${submitted} heard back`
+              : "No submissions yet"
+          }
+        />
+        <InsightTile
+          label="Interview rate"
+          value={formatRate(insights.interviewRate)}
+          sub={
+            submitted > 0
+              ? `${insights.interviews} reached interview`
+              : "No submissions yet"
+          }
+        />
+      </div>
+
+      <div
+        className="rounded-[var(--radius-3xl)] border p-4"
+        style={{
+          borderColor: "var(--home-rule)",
+          background: "color-mix(in srgb, var(--home-paper-alt) 58%, var(--home-elev-mix))",
+        }}
+      >
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <p className="home-meta mb-0">Pipeline funnel</p>
+          <p
+            className="mb-0 text-xs"
+            style={{ color: "var(--home-ink-muted)", fontFamily: CHIP_FONT_FAMILY }}
+          >
+            {funnel.rejected} rejected · {insights.archived} archived
+          </p>
+        </div>
+        <div className="mt-3 flex flex-wrap items-center gap-2">
+          {APPLICATION_FUNNEL_STAGES.map((stage, index) => (
+            <div key={stage.key} className="flex items-center gap-2">
+              <div
+                className="min-w-[5.25rem] rounded-[var(--radius-2xl)] border px-3 py-2"
+                style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)" }}
+              >
+                <p
+                  className="mb-0 text-lg font-semibold tabular-nums"
+                  style={{ color: "var(--home-ink)", fontFamily: CHIP_FONT_FAMILY }}
+                >
+                  {funnel[stage.key]}
+                </p>
+                <p className="home-meta mb-0">{stage.label}</p>
+              </div>
+              {index < APPLICATION_FUNNEL_STAGES.length - 1 && (
+                <ChevronRight
+                  className="h-4 w-4 shrink-0"
+                  style={{ color: "var(--home-ink-muted)" }}
+                  aria-hidden="true"
+                />
+              )}
+            </div>
+          ))}
+        </div>
+        <p className="home-note-copy mb-0 mt-3 text-xs">
+          Rates are the share of submitted applications (applied or further) that reached each
+          stage, computed from your browser-local pipeline.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function AttentionRow({
+  item,
+  onEdit,
+  onMarkApplied,
+  onClearFollowUp,
+}: {
+  item: MBAAttentionItem;
+  onEdit: (application: MBATrackedApplication) => void;
+  onMarkApplied: (id: string) => void;
+  onClearFollowUp: (id: string) => void;
+}) {
+  const { application } = item;
+  const accent = ATTENTION_KIND_ACCENTS[item.kind];
+  const isFollowUp = isFollowUpAttention(item.kind);
+  const Icon = isFollowUp ? Clock : CalendarClock;
+
+  return (
+    <div
+      className="flex flex-col gap-3 rounded-[var(--radius-3xl)] border p-4 sm:flex-row sm:items-center sm:justify-between"
+      style={{
+        borderColor: `color-mix(in srgb, ${accent} 30%, var(--home-rule))`,
+        background: `color-mix(in srgb, ${accent} 8%, var(--home-paper))`,
+      }}
+    >
+      <div className="flex min-w-0 items-start gap-3">
+        <span
+          className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full"
+          style={{
+            background: `color-mix(in srgb, ${accent} 18%, var(--home-paper))`,
+            color: getReadableAccentColor(accent),
+          }}
+          aria-hidden="true"
+        >
+          <Icon className="h-4 w-4" />
+        </span>
+        <div className="min-w-0">
+          <p className="home-meta mb-0">{application.jobSnapshot.companyName}</p>
+          <p
+            className="mb-0 mt-1 text-sm font-semibold"
+            style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
+          >
+            {application.jobSnapshot.title}
+          </p>
+          <p
+            className="mb-0 mt-1 text-xs font-semibold"
+            style={{ color: getReadableAccentColor(accent), fontFamily: CHIP_FONT_FAMILY }}
+          >
+            {describeAttentionItem(item)}
+          </p>
+        </div>
+      </div>
+      <div className="flex flex-wrap items-center gap-2">
+        {isFollowUp ? (
+          <button
+            type="button"
+            onClick={() => onClearFollowUp(application.id)}
+            className="home-button home-button-secondary text-sm"
+          >
+            <CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />
+            Mark done
+          </button>
+        ) : (
+          <button
+            type="button"
+            onClick={() => onMarkApplied(application.id)}
+            className="home-button home-button-secondary text-sm"
+          >
+            <BriefcaseBusiness className="h-3.5 w-3.5" aria-hidden="true" />
+            Mark applied
+          </button>
+        )}
+        <button
+          type="button"
+          onClick={() => onEdit(application)}
+          className="home-button home-button-secondary text-sm"
+        >
+          <Edit3 className="h-3.5 w-3.5" aria-hidden="true" />
+          Edit
+        </button>
+        {application.jobSnapshot.applyUrl && (
+          <CardActionLink
+            href={application.jobSnapshot.applyUrl}
+            label="Open"
+            ariaLabel={`Open ${application.jobSnapshot.title} at ${application.jobSnapshot.companyName}`}
+            trailingIcon
+          />
+        )}
+      </div>
+    </div>
+  );
+}
+
+function NeedsAttentionPanel({
+  items,
+  hasApplications,
+  onEdit,
+  onMarkApplied,
+  onClearFollowUp,
+}: {
+  items: MBAAttentionItem[];
+  hasApplications: boolean;
+  onEdit: (application: MBATrackedApplication) => void;
+  onMarkApplied: (id: string) => void;
+  onClearFollowUp: (id: string) => void;
+}) {
+  // Nothing to nudge about until the pipeline has at least one application.
+  if (!hasApplications) return null;
+
+  return (
+    <section className="space-y-4" aria-labelledby="mba-attention-heading">
+      <SectionLead
+        kicker="Needs attention"
+        title="What to chase today."
+        description="Overdue and same-day follow-ups plus deadlines closing on roles you have not submitted yet, pulled straight from your tracked pipeline."
+        id="mba-attention-heading"
+      />
+      <div className="section-panel">
+        {items.length === 0 ? (
+          <div className="flex items-center gap-3">
+            <span
+              className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full"
+              style={{
+                background: "color-mix(in srgb, var(--home-positive) 16%, var(--home-paper))",
+                color: "color-mix(in srgb, var(--home-positive) 60%, var(--home-ink))",
+              }}
+              aria-hidden="true"
+            >
+              <CheckCircle2 className="h-5 w-5" />
+            </span>
+            <div>
+              <p
+                className="mb-0 text-sm font-semibold"
+                style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
+              >
+                You&rsquo;re all caught up.
+              </p>
+              <p className="home-note-copy mb-0 mt-1 text-sm">
+                No follow-ups or deadlines need action right now. Add a follow-up date when you
+                apply and it will surface here on the day.
+              </p>
+            </div>
+          </div>
+        ) : (
+          <ul className="space-y-3">
+            {items.map((item) => (
+              <li key={`${item.application.id}-${item.kind}`}>
+                <AttentionRow
+                  item={item}
+                  onEdit={onEdit}
+                  onMarkApplied={onMarkApplied}
+                  onClearFollowUp={onClearFollowUp}
+                />
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </section>
+  );
+}
+
 function ApplicationCard({
   application,
   onStatusChange,
+  onPriorityChange,
   onEdit,
   onArchive,
   onRemove,
 }: {
   application: MBATrackedApplication;
   onStatusChange: (status: MBAApplicationStatus) => void;
+  onPriorityChange: (priority: MBAApplicationPriority) => void;
   onEdit: () => void;
   onArchive: () => void;
   onRemove: () => void;
@@ -1421,6 +1737,21 @@ function ApplicationCard({
             </option>
           ))}
         </select>
+        <select
+          value={application.priority}
+          onChange={(event) =>
+            onPriorityChange(event.target.value as MBAApplicationPriority)
+          }
+          className="min-h-[44px] rounded-full border px-3 py-2 text-sm"
+          style={applicationInputStyle}
+          aria-label={`Priority for ${application.jobSnapshot.title}`}
+        >
+          {MBA_APPLICATION_PRIORITIES.map((priority) => (
+            <option key={priority} value={priority}>
+              {MBA_APPLICATION_PRIORITY_LABELS[priority]} priority
+            </option>
+          ))}
+        </select>
         <button type="button" onClick={onEdit} className="home-button home-button-secondary text-sm">
           <Edit3 className="h-3.5 w-3.5" aria-hidden="true" />
           Edit
@@ -1458,9 +1789,11 @@ function ApplicationCard({
 
 function ApplicationPipeline({
   applications,
+  insights,
   onCreate,
   onEdit,
   onStatusChange,
+  onPriorityChange,
   onArchive,
   onRemove,
   onExportJson,
@@ -1468,9 +1801,11 @@ function ApplicationPipeline({
   onImport,
 }: {
   applications: MBATrackedApplication[];
+  insights: MBAApplicationInsights;
   onCreate: () => void;
   onEdit: (application: MBATrackedApplication) => void;
   onStatusChange: (id: string, status: MBAApplicationStatus) => void;
+  onPriorityChange: (id: string, priority: MBAApplicationPriority) => void;
   onArchive: (id: string) => void;
   onRemove: (id: string) => void;
   onExportJson: () => void;
@@ -1481,7 +1816,6 @@ function ApplicationPipeline({
   const [statusFilter, setStatusFilter] = useState<MBAApplicationStatus | "all">("all");
   const [importMessage, setImportMessage] = useState<string | null>(null);
   const importInputRef = useRef<HTMLInputElement | null>(null);
-  const today = getTodayDateKey();
 
   const filteredApplications = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
@@ -1503,19 +1837,6 @@ function ApplicationPipeline({
     });
   }, [applications, query, statusFilter]);
 
-  const overdueCount = applications.filter(
-    (application) =>
-      application.status !== "archived" &&
-      application.followUpDate !== null &&
-      application.followUpDate < today
-  ).length;
-  const todayCount = applications.filter(
-    (application) =>
-      application.status !== "archived" && application.followUpDate === today
-  ).length;
-  const activeCount = applications.filter(
-    (application) => application.status !== "archived"
-  ).length;
   const statusesToShow =
     statusFilter === "all" ? ACTIVE_APPLICATION_STATUSES : [statusFilter];
 
@@ -1545,26 +1866,7 @@ function ApplicationPipeline({
         id="mba-application-pipeline-heading"
       />
       <div className="section-panel space-y-6">
-        <div className="grid gap-3 md:grid-cols-3">
-          <div className="rounded-[var(--radius-3xl)] border p-4" style={{ borderColor: "var(--home-rule)" }}>
-            <p className="home-meta mb-0">Active applications</p>
-            <p className="mb-0 mt-2 text-2xl font-semibold tabular-nums" style={{ color: "var(--home-ink)" }}>
-              {activeCount}
-            </p>
-          </div>
-          <div className="rounded-[var(--radius-3xl)] border p-4" style={{ borderColor: "var(--home-rule)" }}>
-            <p className="home-meta mb-0">Due today</p>
-            <p className="mb-0 mt-2 text-2xl font-semibold tabular-nums" style={{ color: "var(--home-ink)" }}>
-              {todayCount}
-            </p>
-          </div>
-          <div className="rounded-[var(--radius-3xl)] border p-4" style={{ borderColor: "var(--home-rule)" }}>
-            <p className="home-meta mb-0">Overdue follow-ups</p>
-            <p className="mb-0 mt-2 text-2xl font-semibold tabular-nums" style={{ color: "var(--home-ink)" }}>
-              {overdueCount}
-            </p>
-          </div>
-        </div>
+        <PipelineInsights insights={insights} />
 
         <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
           <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_220px] xl:min-w-[34rem]">
@@ -1653,8 +1955,10 @@ function ApplicationPipeline({
         ) : (
           <div className="grid gap-4 xl:grid-cols-5">
             {statusesToShow.map((status) => {
-              const statusApplications = filteredApplications.filter(
-                (application) => application.status === status
+              const statusApplications = sortApplicationsForColumn(
+                filteredApplications.filter(
+                  (application) => application.status === status
+                )
               );
               return (
                 <div key={status} className="space-y-3">
@@ -1685,6 +1989,9 @@ function ApplicationPipeline({
                         application={application}
                         onStatusChange={(nextStatus) =>
                           onStatusChange(application.id, nextStatus)
+                        }
+                        onPriorityChange={(nextPriority) =>
+                          onPriorityChange(application.id, nextPriority)
                         }
                         onEdit={() => onEdit(application)}
                         onArchive={() => onArchive(application.id)}
@@ -1838,12 +2145,22 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
     addManualApplication,
     updateApplication,
     updateStatus,
+    updatePriority,
     archiveApplication,
     removeApplication,
     importApplications,
     exportJson,
     exportCsv,
   } = useMBAApplications();
+  const applicationTodayKey = getTodayDateKey();
+  const applicationInsights = useMemo(
+    () => summarizeApplicationPipeline(applications, applicationTodayKey),
+    [applications, applicationTodayKey]
+  );
+  const attentionItems = useMemo(
+    () => getApplicationAttentionItems(applications, applicationTodayKey),
+    [applications, applicationTodayKey]
+  );
   const activeFilters = hasActiveFilters(uiState);
   const effectiveState = useMemo(
     () => ({ ...uiState, q: deferredQuery, location: deferredLocation }),
@@ -2058,6 +2375,10 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
     trackJob(job, status);
   }
 
+  function handleClearFollowUp(id: string) {
+    updateApplication(id, { followUpDate: null });
+  }
+
   function handleExportJson() {
     downloadTextFile(
       `mba-applications-${getTodayDateKey()}.json`,
@@ -2270,17 +2591,28 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
           <SourceHealthPanel sourceStatuses={sourceStatuses} isLoading={isLoading} />
 
           {uiState.view === "applications" ? (
-            <ApplicationPipeline
-              applications={applications}
-              onCreate={() => openApplicationDialog(null)}
-              onEdit={openApplicationDialog}
-              onStatusChange={updateStatus}
-              onArchive={archiveApplication}
-              onRemove={removeApplication}
-              onExportJson={handleExportJson}
-              onExportCsv={handleExportCsv}
-              onImport={importApplications}
-            />
+            <>
+              <NeedsAttentionPanel
+                items={attentionItems}
+                hasApplications={applications.length > 0}
+                onEdit={openApplicationDialog}
+                onMarkApplied={(id) => updateStatus(id, "applied")}
+                onClearFollowUp={handleClearFollowUp}
+              />
+              <ApplicationPipeline
+                applications={applications}
+                insights={applicationInsights}
+                onCreate={() => openApplicationDialog(null)}
+                onEdit={openApplicationDialog}
+                onStatusChange={updateStatus}
+                onPriorityChange={updatePriority}
+                onArchive={archiveApplication}
+                onRemove={removeApplication}
+                onExportJson={handleExportJson}
+                onExportCsv={handleExportCsv}
+                onImport={importApplications}
+              />
+            </>
           ) : (
             <>
           {fetchErrors.length > 0 && !isLoading && (
