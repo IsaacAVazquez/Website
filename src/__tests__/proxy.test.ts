@@ -16,19 +16,24 @@ describe("proxy security headers", () => {
     expect(contentSecurityPolicy).not.toContain("googletagmanager");
     expect(contentSecurityPolicy).not.toContain("google-analytics.com");
     expect(contentSecurityPolicy).not.toContain("contentsquare");
-    expect(contentSecurityPolicy).not.toContain("unpkg.com");
     expect(response.headers.get("Netlify-CDN-Cache-Control")).toBe("no-store");
   });
 
-  it("allows the pinned Leaflet CDN only on the Food Map route", () => {
-    const response = proxy(new NextRequest("https://example.com/food-map"));
-    const contentSecurityPolicy = response.headers.get("Content-Security-Policy");
+  it("allows the pinned Leaflet CDN on every route so client-side navigation to the Food Map keeps working", () => {
+    // The CSP that governs the Food Map after an in-app <Link> transition is
+    // the one served with the originating document, so the allowance must not
+    // be scoped to the /food-map path.
+    for (const path of ["/food-map", "/", "/portfolio"]) {
+      const response = proxy(new NextRequest(`https://example.com${path}`));
+      const contentSecurityPolicy = response.headers.get("Content-Security-Policy");
 
-    expect(contentSecurityPolicy).toContain("script-src 'self'");
-    expect(contentSecurityPolicy).toContain("https://unpkg.com");
-    expect(contentSecurityPolicy).toMatch(
-      /style-src [^;]*https:\/\/unpkg\.com/,
-    );
+      expect(contentSecurityPolicy).toMatch(
+        /script-src [^;]*https:\/\/unpkg\.com/,
+      );
+      expect(contentSecurityPolicy).toMatch(
+        /style-src [^;]*https:\/\/unpkg\.com/,
+      );
+    }
   });
 
   it("keeps security headers on legacy writing redirects", () => {

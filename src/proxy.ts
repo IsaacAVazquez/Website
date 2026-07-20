@@ -26,21 +26,21 @@ export function buildContentSecurityPolicy(
   request: NextRequest,
   production = isProduction,
 ) {
-  const loadsLeafletFromCdn = request.nextUrl.pathname === "/food-map";
+  // Food Map injects pinned Leaflet assets from unpkg at runtime. The
+  // allowance cannot be scoped to the /food-map document: a client-side
+  // navigation keeps the CSP of whatever document the visitor landed on, so a
+  // per-route policy blocks the map on every in-app transition. Self-hosting
+  // Leaflet would let this narrow again.
   const scriptSrc = [
     "'self'",
     "'unsafe-inline'",
     ...(production ? [] : ["'unsafe-eval'"]),
     "https://static.cloudflareinsights.com",
-    ...(loadsLeafletFromCdn ? ["https://unpkg.com"] : []),
+    "https://unpkg.com",
     ...(analyticsEnabled ? ["https://www.googletagmanager.com"] : []),
   ];
 
-  const styleSrc = [
-    "'self'",
-    "'unsafe-inline'",
-    ...(loadsLeafletFromCdn ? ["https://unpkg.com"] : []),
-  ];
+  const styleSrc = ["'self'", "'unsafe-inline'", "https://unpkg.com"];
 
   const connectSrc = [
     "'self'",
