@@ -96,10 +96,10 @@ describe("FrontierModelsClient", () => {
       />
     );
 
-    fireEvent.click(screen.getByRole("button", { name: "GPT-5" }));
+    fireEvent.click(screen.getByRole("button", { name: "GPT-5.6" }));
 
     expect(mockPush).toHaveBeenLastCalledWith(
-      "/frontier-models?model=openai-gpt-5",
+      "/frontier-models?model=openai-gpt-5-6",
       { scroll: false }
     );
   });
