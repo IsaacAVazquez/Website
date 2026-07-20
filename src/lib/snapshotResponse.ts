@@ -1,3 +1,4 @@
+import { buildCdnCacheHeaders } from "@/lib/apiCacheHeaders";
 import {
   createDataResponseHeaders,
   createDataRevisionEntry,
@@ -36,7 +37,7 @@ export function createSnapshotResponseHeaders({
   });
 
   return {
-    "Cache-Control": cacheControl,
+    ...buildCdnCacheHeaders(cacheControl),
     ...createDataResponseHeaders(revision),
   };
 }
