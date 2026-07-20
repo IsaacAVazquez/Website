@@ -28,13 +28,13 @@ These features are complete and functional but unreachable through normal browsi
 
 ### `/fantasy-football/draft-tracker` — Built but Not Linked
 
-- **What exists:** A working draft tracker page with `DraftTierChart` visualization.
+- **What exists:** A working draft tracker page with tier columns and draft analytics (`DraftTierColumns`, `DraftAnalyticsPanel`).
 - **The problem:** The fantasy football landing page (`/fantasy-football`) doesn't link to it. Users can only reach it by knowing the URL.
 
-### `/fantasy-football/tiers/[position]` — 8 SEO Pages, No UI Links
+### `/fantasy-football/tiers/[position]` and `/rb-tiers` — Redirect-Only Shims
 
-- **What exists:** Individual tier ranking pages for QB, RB, WR, TE, K, DST, and Flex positions. These are proper SEO landing pages with position-specific content.
-- **The problem:** The fantasy football UI doesn't link to these pages. They exist for search engine traffic but are invisible to users browsing the site.
+- **What exists:** These routes now `redirect()` to the main fantasy page (e.g. `/fantasy-football?position=rb&scoring=ppr`). The computed-tier pages they once served were removed along with the clustering engine; there is no unique content here anymore.
+- **The problem:** None to surface — treat them as legacy redirects, not orphaned SEO landing pages.
 
 ### 3 of 5 Portfolio Case Studies — Unreachable
 
