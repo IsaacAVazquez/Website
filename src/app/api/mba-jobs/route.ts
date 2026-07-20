@@ -20,6 +20,8 @@ import {
   rateLimitResponse,
 } from "@/lib/rateLimit";
 import { readDurableJson, writeDurableJson } from "@/lib/durableJsonCache";
+import type { DataDeliveryStatus } from "@/lib/dataRevision";
+import { recordRuntimeSurfaceHeartbeat } from "@/lib/runtimeSurfaceHeartbeat";
 
 const TIMEOUT_MS = 8_000;
 const MAX_SNIPPET_LENGTH = 220;
@@ -1036,22 +1038,39 @@ function getOrFetchJobs(
 
     const settle = async (result: JobsFetchResult): Promise<JobsFetchResult> => {
       let served = result;
+      let status: DataDeliveryStatus;
 
       if (!result.isError && !result.isDegraded) {
         setBoundedCacheValue(lastGoodJobs, cacheKey, result);
         await writeDurableJson(getDurableJobsKey(cacheKey), result);
+        status = "fresh";
       } else if (result.isError) {
         const good = lastGoodJobs.get(cacheKey);
-        if (good) served = buildStaleJobsResult(good, result);
+        if (good) {
+          served = buildStaleJobsResult(good, result);
+          status = "stale-fallback";
+        } else {
+          status = "unavailable";
+        }
       } else {
         // Degraded: some boards answered, some failed. Never promote this to
         // lastGoodJobs, but do backfill the failed boards from it.
         const good = lastGoodJobs.get(cacheKey);
         if (good) served = mergeLastGoodIntoDegraded(good, result);
+        status = "degraded";
       }
 
       entry.value = served;
       entry.completedAt = Date.now();
+      // Stamp the revision-ledger heartbeat with the served condition. A total
+      // outage with no last-good (unavailable) served nothing, so it's skipped
+      // and the last known-good heartbeat stands.
+      if (status !== "unavailable") {
+        await recordRuntimeSurfaceHeartbeat("mba-jobs", {
+          fetchedAt: served.body.fetchedAt,
+          status,
+        });
+      }
       return served;
     };
 

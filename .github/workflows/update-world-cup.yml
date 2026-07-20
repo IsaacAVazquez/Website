@@ -1,10 +1,14 @@
 name: Refresh World Cup Snapshot
 
 on:
-  # The 2026 FIFA World Cup runs June 11 through July 19. Refresh every 30 minutes
-  # across June and July to keep group standings, fixtures, and the bracket
-  # current. ESPN's site API needs no token. Outside those months there is
-  # nothing to refresh, so the schedule stays dormant.
+  # The cron only fires in June and July, the months a World Cup can run, but a
+  # coarse month gate isn't enough: with the 2026 tournament over, an unguarded
+  # schedule would still wake every 30 minutes each following June and July and
+  # commit no-op churn. The "Determine tournament window" step below reads the
+  # start and end dates out of the committed snapshot and skips the refresh
+  # entirely outside a short window around them, so the workflow self-arms when a
+  # future tournament's dates are seeded and stays dormant the rest of the time.
+  # ESPN's site API needs no token.
   schedule:
     # Staggered off :20 so it doesn't race the hourly earthquake and 6h transit
     # refreshes (which also push to main) over the same minute.
@@ -39,19 +43,52 @@ jobs:
           node-version: "20"
           cache: "npm"
 
+      - name: Determine tournament window
+        id: window
+        run: |
+          node -e "
+          const fs = require('fs');
+          const src = fs.readFileSync('src/data/worldCupSnapshot.ts', 'utf8');
+          const startMatch = src.match(/\"startDate\":\s*\"([0-9-]+)\"/);
+          const endMatch = src.match(/\"endDate\":\s*\"([0-9-]+)\"/);
+          const DAY = 24 * 60 * 60 * 1000;
+          const now = new Date();
+          // Arm two days before kickoff (pre-tournament friendlies, seeding) and
+          // stay armed three days past the final to catch late corrections, then
+          // go dormant until a future snapshot moves the dates forward.
+          const PRE_ROLL_DAYS = 2;
+          const POST_ROLL_DAYS = 3;
+          let active = true;
+          let reason = 'snapshot carried no start/end dates, defaulting to active';
+          if (startMatch && endMatch) {
+            const start = new Date(startMatch[1] + 'T00:00:00Z').getTime() - PRE_ROLL_DAYS * DAY;
+            const end = new Date(endMatch[1] + 'T23:59:59Z').getTime() + POST_ROLL_DAYS * DAY;
+            active = now.getTime() >= start && now.getTime() <= end;
+            reason = active
+              ? 'within tournament window ' + startMatch[1] + ' to ' + endMatch[1]
+              : 'outside tournament window ' + startMatch[1] + ' to ' + endMatch[1];
+          }
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, 'active=' + active + '\n');
+          console.log('Tournament window active:', active, '-', reason);
+          "
+
       - name: Install dependencies
+        if: steps.window.outputs.active == 'true'
         run: npm ci --prefer-offline --no-audit --fund=false
 
       - name: Refresh World Cup snapshot
+        if: steps.window.outputs.active == 'true'
         run: npm run update:world-cup
         env:
           NODE_ENV: production
 
       - name: Verify refresh freshness
+        if: steps.window.outputs.active == 'true'
         run: npx tsx scripts/verifyDataRefresh.ts world-cup
 
       - name: Verify World Cup snapshot quality
         id: verify_quality
+        if: steps.window.outputs.active == 'true'
         run: |
           node -e "
           const fs = require('fs');
@@ -109,6 +146,7 @@ jobs:
 
       - name: Check for snapshot changes
         id: check_changes
+        if: steps.window.outputs.active == 'true'
         run: |
           if [ -z "$(git status --porcelain -- src/data/worldCupSnapshot.ts)" ]; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
@@ -135,6 +173,9 @@ jobs:
           echo "**Status:** ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
           echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
+          if [ "${{ steps.window.outputs.active }}" != "true" ]; then
+            echo "Outside the tournament window, so the refresh was skipped. The schedule re-arms when the committed snapshot's start and end dates move forward." >> "$GITHUB_STEP_SUMMARY"
+          fi
           if [ -n "${{ steps.verify_quality.outputs.teams }}" ]; then
             echo "**Phase:** ${{ steps.verify_quality.outputs.phase }}" >> "$GITHUB_STEP_SUMMARY"
             echo "**Groups:** ${{ steps.verify_quality.outputs.groups }}" >> "$GITHUB_STEP_SUMMARY"

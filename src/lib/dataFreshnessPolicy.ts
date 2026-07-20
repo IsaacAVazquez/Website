@@ -23,10 +23,12 @@ export type DataSurfaceId =
   | "museum-log"
   | "travel-deals"
   | "food-map"
-  | "polling";
+  | "polling"
+  | "news-pulse"
+  | "mba-jobs";
 
 interface DataFreshnessPolicy {
-  source: "git-snapshot" | "curated-snapshot";
+  source: "git-snapshot" | "curated-snapshot" | "runtime-fetch";
   maxAgeMs: (now: Date) => number;
 }
 
@@ -94,6 +96,12 @@ const POLICIES: Record<DataSurfaceId, DataFreshnessPolicy> = {
   "travel-deals": { source: "curated-snapshot", maxAgeMs: () => 30 * DAY_MS },
   "food-map": { source: "curated-snapshot", maxAgeMs: () => 90 * DAY_MS },
   polling: { source: "git-snapshot", maxAgeMs: () => 21 * DAY_MS },
+  // Request-time surfaces. "Source age" is the last refresh that served usable
+  // data, read from the durable heartbeat. Targets are generous because these
+  // only refresh when the route is actually hit, so a quiet stretch shouldn't
+  // read as a broken pipeline. News headlines move faster than job boards.
+  "news-pulse": { source: "runtime-fetch", maxAgeMs: () => 6 * HOUR_MS },
+  "mba-jobs": { source: "runtime-fetch", maxAgeMs: () => 30 * HOUR_MS },
 };
 
 export const DATA_SURFACE_IDS = Object.freeze(
