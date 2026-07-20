@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import path from "node:path";
 import { expect, test, type Locator, type Page } from "@playwright/test";
 
 async function getReadyFantasyShell(page: Page) {
@@ -265,11 +267,24 @@ test.describe("Fantasy football rankings", () => {
 
 test.describe("Fantasy football draft tracker", () => {
   test("loads the correct board for every scoring format", async ({ page }) => {
+    // The expected first pick is read from the same committed snapshot the
+    // board renders, not hardcoded — scheduled data refreshes reorder the
+    // rankings and a name literal goes stale within days.
     const scoringFormats = [
-      { label: "PPR", topPlayer: "Ja'Marr Chase" },
-      { label: "Half PPR", topPlayer: "Bijan Robinson" },
-      { label: "Standard", topPlayer: "Jahmyr Gibbs" },
-    ] as const;
+      { label: "PPR", file: "ppr" },
+      { label: "Half PPR", file: "half_ppr" },
+      { label: "Standard", file: "standard" },
+    ].map((scoring) => {
+      const snapshot = JSON.parse(
+        readFileSync(
+          path.join(process.cwd(), "public", "data", "fantasy", `${scoring.file}.json`),
+          "utf8"
+        )
+      ) as { overall: Array<{ name: string }> };
+      const topPlayer = snapshot.overall[0]?.name;
+      expect(topPlayer, `${scoring.label} snapshot has an overall board`).toBeTruthy();
+      return { label: scoring.label, topPlayer: topPlayer! };
+    });
 
     await page.goto("/fantasy-football/draft-tracker");
     await waitForDraftTrackerHydration(page);
