@@ -14,7 +14,31 @@ source upgrades worth taking.
 Status legend: `[ ]` open · `[x]` done · `[~]` in progress · `[U]` needs a human
 (secret/approval I can't do from code).
 
-## Landed 2026-07-05/06 (branch `fix/data-source-audit-highpri`, uncommitted)
+## 2026-07-20 live-data migration wave
+
+A follow-up architecture pass concluded the snapshot philosophy is right for
+rate-limited upstreams but the git-commit-plus-rebuild transport is the weak
+part, and shipped eight PRs against it. Statuses below are updated where these
+land on audit items; the wave also introduced two things the audit did not
+anticipate:
+
+- **The blob-backed refresh lane** (Netlify scheduled function → the
+  `dashboard-snapshots` Blobs store → cache-tag purge, committed seed as
+  fallback). Piloted on frontier-models (PR #329) and polling (PR #331, stacked
+  on #329). Pattern doc: `../SNAPSHOT_DRIVEN_DASHBOARDS.md`.
+- **A deliberate decision against Next ISR** on this runtime (documented bug
+  history in `opennextjs-netlify`): the API tier instead opts into Netlify's
+  durable CDN cache via shared header helpers (PR #327).
+
+The wave: #325 earthquake live-first (merged 2026-07-20); #326 BART_API_KEY
+env support; #327 durable CDN caching; #328 MLB request-time live scoreboard;
+#329 frontier-models daily fact check; #330 PL/La Liga token-gated live
+refresh (inert until `FOOTBALL_DATA_API_TOKEN` is set in the Netlify runtime
+env); #331 polling on the blob lane; #332 F1 slim summary + per-meeting route.
+Separately verified the same day: Netlify deploy previews fail repo-wide on a
+pre-existing issue (also on merged PRs #309-#311), unrelated to these changes.
+
+## Landed 2026-07-05/06 (merged to main 2026-07-06 via PR #277)
 
 Fixed with tests, and where a live dashboard was affected the committed snapshot
 was regenerated so the fix is visible immediately:
@@ -74,15 +98,12 @@ World Cup refresh, and everything else are gated by the daily cron-job.org build
 ping at best and multi-day human deploy gaps at worst. This is the highest-leverage
 fix in the whole audit and it's a zero-code change.
 
-- [U] **Set the `NETLIFY_BUILD_HOOK` GitHub Actions secret.** The code side is
-  done: all 14 snapshot workflows now have a "Trigger Netlify deploy" step that
-  POSTs the build hook when the snapshot actually changed (and no-ops cleanly
-  until the secret exists; NBA also respects its off-season gate). To finish,
-  create a build hook in Netlify (Site configuration → Build & deploy → Build
-  hooks, branch `main`) and add its URL as a repo secret named exactly
-  `NETLIFY_BUILD_HOOK` (GitHub repo Settings → Secrets and variables → Actions).
-  That switches every dashboard from up-to-a-day-behind to deploy-on-refresh.
-  (Only Isaac can set the secret.)
+- [x] **Set the `NETLIFY_BUILD_HOOK` GitHub Actions secret.** Isaac set the
+  secret 2026-07-06 (verified in the repo's Actions secrets). The delivery
+  design has since been centralized: individual workflows no longer POST the
+  hook; `publish-data.yml` coalesces successful refreshes, fires the hook only
+  when production is behind, hard-fails if the secret is missing, and verifies
+  the `/api/data-revisions` ledger before closing a publication incident.
 
 ---
 
@@ -107,9 +128,12 @@ fix in the whole audit and it's a zero-code change.
   fallback, fall back per-format instead of all-or-nothing, then re-run.
   Files: `scripts/buildFantasyAdpData.ts:71`, `src/lib/fantasyAdpSource.ts:146`.
 
-- [~] **Polling aggregator is serving fabricated data.** Interim disclosure +
-  the page metadata reword landed 2026-07-06 (see "Landed" above); only the real
-  VoteHub pipeline below remains. The hand-edited snapshot
+- [x] **Polling aggregator is serving fabricated data.** Interim disclosure +
+  the page metadata reword landed 2026-07-06 (see "Landed" above), and the real
+  VoteHub pipeline shipped afterward (`scripts/buildPollingSnapshot.ts` +
+  `update-polling.yml`, every 6h). PR #331 (open, 2026-07-20) moves the
+  refresh to the blob lane with the workflow reduced to a daily seed refresh.
+  Original finding, for the record: the hand-edited snapshot
   lists 2026 Senate races in NV/WI/PA/AZ that aren't on the 2026 ballot, recycles
   2024 matchups, has Ruben Gallego running in two states at once, and attributes
   invented numbers to real pollsters, during an election year with a live countdown
@@ -203,20 +227,29 @@ fix in the whole audit and it's a zero-code change.
   locally instead of 55s/ticker. SEC EDGAR companyfacts as a free official
   fundamentals hedge. `https://huggingface.co/datasets/defeatbeta/yahoo-finance-data`.
 
-- [ ] **Earthquake → request-time USGS + ISR.** Drop the hourly snapshot commit
-  entirely (the noisiest workflow); fetch USGS at request time with Next ISR on
-  Netlify (verified to work on the runtime). Deletes `update-earthquake.yml`.
+- [x] **Earthquake → request-time USGS + ISR.** Done, with two deliberate
+  deviations. Request-time USGS serving landed first
+  (`getEarthquakeSummary({ preferLive: true })`); PR #325 (merged 2026-07-20)
+  added a 60s single-flight cache and cut the hourly cron to a daily
+  fallback-seed refresh. `update-earthquake.yml` was kept as that daily seed
+  refresher rather than deleted, and ISR was skipped in favor of CDN
+  `s-maxage`/SWR plus the durable directive (PR #327) after the follow-up
+  research found a bug history in the runtime's ISR support.
 
-- [ ] **Frontier-models is 67 days stale** (still lists Opus 4.7 as flagship, two
-  Anthropic generations behind). Build a semi-automated builder on `models.dev`
-  `api.json` (keyless, near 1:1 schema) cross-checked against OpenRouter
-  `/api/v1/models`; add a visible stale badge past ~45 days and the `verified:false`
-  disclosure CLAUDE.md claims but the code lacks.
+- [~] **Frontier-models is 67 days stale** (still lists Opus 4.7 as flagship, two
+  Anthropic generations behind). The seed was hand-refreshed (asOf 2026-07-20,
+  with the `verified:false` + review-window disclosure now on-page), and PR
+  #329 (open) adds the automated layer: a daily Netlify scheduled function
+  fact-checks the curated seed against `models.dev` `api.json` and OpenRouter
+  `/api/v1/models`, stamps each model `confirmed`/`updated`/`curated-only`, and
+  serves via the blob lane. A live dry run on 2026-07-20 found 6 of 9 entries
+  had drifted facts, confirming the check's value.
 
-- [ ] **Formula 1 serializes its full 145KB snapshot into every response** on two
-  per-request-dynamic routes. Add a summary accessor + per-meeting API route; pass
-  only the summary to the client. Files: `src/app/formula-1/page.tsx:83`,
-  `src/app/fantasy-formula-1/page.tsx:82`.
+- [~] **Formula 1 serializes its full 145KB snapshot into every response** on two
+  per-request-dynamic routes. PR #332 (open) adds the summary accessor,
+  `/api/formula-1/summary`, and `/api/formula-1/meetings/[meetingId]`, with the
+  client lazy-fetching meeting detail: 156KB serialized per request drops to
+  57KB plus 1.4-12.7KB per opened meeting.
 
 - [ ] **Adopt Jolpica-F1** (Ergast successor) for F1 standings/schedule/results
   (fresher than OpenF1's daily, had Saturday's sprint points same day); keep OpenF1
@@ -224,19 +257,21 @@ fix in the whole audit and it's a zero-code change.
 
 - [ ] **All ~15 dashboards render dynamically per request** despite fully static
   committed data (each awaits `searchParams`). Set `export const revalidate`/static
-  where possible.
+  where possible. *Decision note 2026-07-20:* page-level ISR was deliberately
+  rejected (runtime ISR bug history); the API tier is now durable-CDN-cached
+  instead (PR #327). Page-level static rendering remains open as written.
 
-- [ ] **`/api/fantasy-data` re-reads and re-parses ~700KB JSON per request** with
-  no module cache (unlike investments' 5-min TTL). Add a cache.
-  Files: `src/lib/fantasySnapshotServer.ts:9`.
+- [x] **`/api/fantasy-data` re-reads and re-parses ~700KB JSON per request** with
+  no module cache (unlike investments' 5-min TTL). Done via PR #280: a 5-minute
+  TTL cache in `src/lib/fantasySnapshotServer.ts`, resettable for tests.
 
 - [ ] **SpaceX: hotlink launch images via Netlify Image CDN**, drop the 7.4MB of
   committed originals from git; render through `next/image`.
   Files: `scripts/buildSpaceXImageSnapshots.ts`, `MissionImageFrame.tsx:98`.
 
-- [ ] **Retire `/api/stocks`** (orphaned near-duplicate of
-  `/api/investments/quotes`, still spends Finnhub quota). Deprecation/Sunset
-  headers then a 410 stub. Twelve API routes total have no first-party consumer.
+- [x] **Retire `/api/stocks`** (orphaned near-duplicate of
+  `/api/investments/quotes`, still spends Finnhub quota). Done via PR #280: the
+  route is a 410 Gone stub with Deprecation/Sunset headers and spends no quota.
 
 ---
 
@@ -245,29 +280,50 @@ fix in the whole audit and it's a zero-code change.
 - [ ] **Fantasy: replace the FantasyPros HTML scrape with their free public API
   key** (`api.fantasypros.com/public/v2`, `x-api-key`). Removes the single most
   fragile dependency. Add a daily July-September cron for draft-prep peak.
+  *Research note 2026-07-20:* the $0 tier is build/test only with sample data;
+  a production personal key comes bundled with the ~$9/mo membership, and
+  publicly republishing rankings may brush the redistribution line. Read the
+  terms before switching.
 - [ ] **MLB: enrich existing calls** — probable pitchers via `hydrate`, wildCard
   standings, 4 verified new leaders categories. Use `/api/v1/seasons?sportId=1` as
-  the season-of-record to fix the November stall robustly.
-- [ ] **GitHub trending: compact the JSON** (43% is indentation), refresh topic
+  the season-of-record to fix the November stall robustly. *Adjacent but
+  separate:* PR #328 (open, 2026-07-20) added a request-time live scoreboard to
+  `/api/mlb/summary`; this enrich item remains untouched.
+- [~] **GitHub trending: compact the JSON** (43% is indentation), refresh topic
   qualifiers (`topic:ai` matches 6x more than `topic:artificial-intelligence`),
-  consider OSS Insight trends API for a real velocity signal.
-- [ ] **Bay Area transit: register a personal BART key** (free, removes demo-key
+  consider OSS Insight trends API for a real velocity signal. Compact
+  stringify + `topic:ai` landed via PR #282; the OSS Insight velocity signal is
+  the remaining open piece.
+- [~] **Bay Area transit: register a personal BART key** (free, removes demo-key
   risk); consider the 511.org token to cover Muni/Caltrain/AC Transit and make the
-  page genuinely Bay Area (requires on-page attribution).
-- [ ] **World Cup: post-tournament cleanup plan** — the cron re-arms every
-  June/July; park or delete the workflow after the July 19 final.
+  page genuinely Bay Area (requires on-page attribution). Code side is PR #326
+  (open): `BART_API_KEY` read at call time with the demo key as fallback, wired
+  through the workflow and `.env.example`. Registering the key and setting it in
+  the Netlify env plus the Actions secret is Isaac's step; 511.org remains open.
+- [x] **World Cup: post-tournament cleanup plan** — the cron re-arms every
+  June/July; park or delete the workflow after the July 19 final. Resolved by
+  the workflow's self-disarming window gate: it reads `startDate`/`endDate`
+  out of the committed snapshot and skips outside a 2-day pre-roll / 3-day
+  post-roll window. Verified 2026-07-20 (endDate 2026-07-19), so it goes
+  dormant from July 23 until a future tournament's dates are seeded.
 - [ ] **Shared: route more builders through `scripts/fetchRetry.ts`** (only 3 of
   ~15 use it; F1 has no retries at all), extract a shared `atomicWrite.ts`, and
   fix the golf workflow's expression-injection surface (ESPN tournament name
   interpolated into a `run:` script under `contents: write`).
-- [ ] **Stagger the shared `:20` cron minute** — earthquake, transit, and world-cup
-  all fire at :20 and race over pushes to main.
-- [ ] **News-pulse: add a last-good fallback** (currently discards the cache entry
-  on TTL expiry, so refresh failures 503 for 5 minutes). Normalize the feed mix to
-  homepage-level feeds for apples-to-apples comparison.
-- [ ] **MBA jobs: map Greenhouse `first_published`** instead of `updated_at` for
+- [x] **Stagger the shared `:20` cron minute** — earthquake, transit, and world-cup
+  all fire at :20 and race over pushes to main. Resolved in stages: transit
+  moved to :35 and world-cup to :50 (PR #280), and the last collision source
+  went away when earthquake dropped to a daily 06:20 run (PR #325, merged
+  2026-07-20).
+- [~] **News-pulse: add a last-good fallback** (currently discards the cache entry
+  on TTL expiry, so refresh failures 503 for 5 minutes). The fallback landed via
+  PR #281 and was later hardened with per-feed last-good state persisted in
+  Netlify Blobs, so cold starts keep it. The feed-mix normalization to
+  homepage-level feeds is the remaining open piece.
+- [~] **MBA jobs: map Greenhouse `first_published`** instead of `updated_at` for
   posted dates; add Workday CXS + Amazon endpoints (research-verified, verifier
-  timed out — re-confirm before shipping).
+  timed out — re-confirm before shipping). `first_published` landed via PR #283
+  (verified locally 20/20); the Workday CXS + Amazon endpoints remain open.
 
 ---
 
