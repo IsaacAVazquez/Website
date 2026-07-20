@@ -22,8 +22,9 @@ Current operational files under `scripts/`:
 | `buildSpaceXImageSnapshots.ts` | Cache SpaceX reference images and rebuild image manifests |
 | `buildSpaceXSnapshot.ts` | Rebuild `src/data/spacexSnapshot.generated.json` |
 | `fetch_investments_data.py` | Pull raw investment data before snapshot generation |
+| `generatePublicSitemap.mjs` | Regenerate the public sitemap from the canonical route inventory and current snapshot timestamps |
 | `generate-pwa-icons.mjs` | Rebuild icon assets |
-| `patch-nft-sharp.mjs` | Postbuild patch step used after `next-sitemap` |
+| `patch-nft-sharp.mjs` | Postbuild patch step used after sitemap generation |
 | `updateFootballSnapshots.ts` | Orchestrates full football refresh (both PL and La Liga); with `--league-only` flag runs standings-only fast path used in prebuild |
 | `updateLaLigaSnapshot.ts` | Rebuild `src/data/laLigaSnapshot.ts` from football-data.org (~8 min) |
 | `updateMlbSnapshot.ts` | Rebuild `src/data/mlbSnapshot.ts` from the public MLB Stats API |

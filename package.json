@@ -6,7 +6,7 @@
     "dev": "next dev --webpack",
     "update:football": "tsx scripts/updateFootballSnapshots.ts",
     "build": "next build --webpack",
-    "postbuild": "next-sitemap && node scripts/patch-nft-sharp.mjs",
+    "postbuild": "npm run generate:sitemap && node scripts/patch-nft-sharp.mjs",
     "start": "next start",
     "lint": "eslint src",
     "typecheck": "tsc --noEmit --pretty false",
@@ -42,7 +42,8 @@
     "update:fantasy": "tsx scripts/buildFantasyPositionData.ts && tsx scripts/buildFantasyAdpData.ts && tsx scripts/buildFantasySnapshots.ts",
     "update:investments": ".venv/bin/python3 scripts/fetch_investments_data.py && tsx scripts/buildInvestmentsSnapshots.ts",
     "update:article-images": "tsx scripts/buildArticleCoverImages.ts",
-    "generate:icons": "node scripts/generate-pwa-icons.mjs"
+    "generate:icons": "node scripts/generate-pwa-icons.mjs",
+    "generate:sitemap": "node scripts/generatePublicSitemap.mjs"
   },
   "dependencies": {
     "@netlify/blobs": "^10.7.9",

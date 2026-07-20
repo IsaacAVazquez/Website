@@ -3,10 +3,10 @@
  *
  * Regression coverage for the curated-symbol allowlist that gates the Finnhub
  * quote proxies. The bug this guards against: inside the deployed Netlify
- * function, public/data/investments/index.json is stripped from the bundle, so
- * the old readFileSync-only loader failed closed and every symbol was rejected
- * as "not eligible for live pricing" — even with a valid Finnhub key. The
- * allowlist must fall back to the committed public asset over HTTP.
+ * runtime, public/data/investments/index.json may be absent from the bundle, so
+ * a readFileSync-only loader would fail closed and reject every symbol. Netlify
+ * packages the file explicitly, while other runtimes can still recover through
+ * the committed public asset over HTTP.
  */
 jest.mock("fs", () => ({ readFileSync: jest.fn() }));
 
@@ -58,7 +58,7 @@ describe("finnhub allowlist resolution", () => {
   });
 
   it("falls back to the public asset over HTTP when the local file is absent", async () => {
-    // Simulate the deployed function: the bundled file is gone.
+    // Simulate a runtime where the bundled file is gone.
     mockReadFileSync.mockImplementation(() => {
       throw enoent();
     });

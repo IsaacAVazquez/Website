@@ -117,7 +117,7 @@ Posts are discovered from `content/blog/`.
 
 - `typecheck`: `tsc --noEmit --pretty false` — standalone CI type gate
 - `build`: `next build --webpack`
-- `postbuild`: `next-sitemap && node scripts/patch-nft-sharp.mjs` — regenerates the sitemap, then patches the function bundle so the optional `sharp` native module never ships
+- `postbuild`: `npm run generate:sitemap && node scripts/patch-nft-sharp.mjs` regenerates the sitemap, then patches the function bundle so the optional `sharp` native module never ships
 - `dev` and `build` both pass `--webpack` (Turbopack is not used)
 
 ---

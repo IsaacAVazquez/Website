@@ -8,6 +8,10 @@
 
 [functions]
   directory = "netlify/functions"
+  # Investment APIs read committed snapshots from the filesystem. The Next.js
+  # standalone bundle intentionally omits public assets, so include this data
+  # explicitly instead of relying on a server-side fetch back into the deploy.
+  included_files = ["public/data/investments/**"]
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"

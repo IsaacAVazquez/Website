@@ -349,7 +349,7 @@ The MLB, NBA, and NFL dashboards read committed TypeScript snapshots at runtime.
 
 - `npm run build` runs `next build --webpack` and npm `postbuild`; it does not refresh data
 - `npm run typecheck` runs the standalone TypeScript gate enforced by CI
-- `postbuild` runs `next-sitemap` and `scripts/patch-nft-sharp.mjs`
+- `postbuild` runs `scripts/generatePublicSitemap.mjs` and `scripts/patch-nft-sharp.mjs`
 - `npm run analyze` enables bundle analysis and still runs the npm `postbuild` hook
 - `npm run build:analyze` runs `ANALYZE=true next build --webpack` directly and skips npm `postbuild`
 - `npm run generate:icons` rebuilds PWA icons
@@ -363,7 +363,7 @@ The MLB, NBA, and NFL dashboards read committed TypeScript snapshots at runtime.
 | `npm run dev` | Start the Next.js dev server |
 | `npm run build` | Production build plus the `postbuild` sitemap/NFT patch steps; consumes committed snapshots |
 | `npm run typecheck` | Run the standalone TypeScript gate enforced by CI |
-| `npm run postbuild` | Run sitemap generation and the NFT sharp patch used automatically after build |
+| `npm run postbuild` | Regenerate the public sitemap and run the NFT sharp patch used automatically after build |
 | `npm run start` | Serve the production build |
 | `npm run lint` | Run ESLint against `src` |
 | `npm test` | Run Jest |
@@ -444,7 +444,7 @@ Current behavior:
 - `update-polling.yml` runs every six hours and refreshes the VoteHub-backed polling snapshot
 - `audit-curated-data.yml` checks review dates, verification flags, and structural integrity across Frontier Models, Tech Startups, AI Dev Tools, Museum Log, Travel Deals, and Food Map every Monday
 - The tech startup tracker has no workflow by design — its dataset is editorially curated, so refreshes happen by editing the seed and running `npm run update:tech-startups` locally
-- All 16 snapshot `update-*.yml` workflows commit and push through the shared `scripts/ci/commit-and-push-snapshot.sh` helper (usage: `commit-and-push-snapshot.sh <commit-message> <pathspec...>`). It sets the `github-actions[bot]` identity, exits cleanly on a no-op refresh, and pushes to `HEAD:main` with a fetch/`rebase --autostash` retry loop (default 8 attempts, `SNAPSHOT_PUSH_ATTEMPTS` override) plus capped exponential backoff to absorb concurrent snapshot-bot pushes. Behavior is asserted by `.github/workflows/__tests__/snapshot-workflows.test.ts` and `update-investments.test.ts`.
+- All 16 snapshot `update-*.yml` workflows commit and push through the shared `scripts/ci/commit-and-push-snapshot.sh` helper (usage: `commit-and-push-snapshot.sh <commit-message> <pathspec...>`). It regenerates and stages sitemap freshness metadata with the snapshot, sets the `github-actions[bot]` identity, exits cleanly on a no-op refresh, and pushes to `HEAD:main` with a fetch/`rebase --autostash` retry loop (default 8 attempts, `SNAPSHOT_PUSH_ATTEMPTS` override) plus capped exponential backoff to absorb concurrent snapshot-bot pushes. Behavior is asserted by `.github/workflows/__tests__/snapshot-workflows.test.ts` and `update-investments.test.ts`.
 - `publish-data.yml` coalesces successful refreshes, triggers the Netlify build hook when production is behind, and verifies the full `/api/data-revisions` ledger before closing publication incidents
 - `purge-cache.ts` is protected by `Authorization: Bearer <CRON_SECRET>` or `x-cron-secret` and calls Netlify Durable Cache purge; query-string secrets are intentionally rejected
 - Historical caveat: `vercel.json` still declares a cron for `/api/scheduled-update`, but no matching route exists. Treat that config as historical until confirmed.

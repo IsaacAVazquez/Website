@@ -139,7 +139,7 @@ npm run update:spacex
 npm run update:spacex-images
 ```
 
-Football refreshes run through their explicit update commands and scheduled workflows; production builds only consume committed snapshots. `postbuild` runs `next-sitemap` and `scripts/patch-nft-sharp.mjs`.
+Football refreshes run through their explicit update commands and scheduled workflows; production builds only consume committed snapshots. `postbuild` runs `scripts/generatePublicSitemap.mjs` and `scripts/patch-nft-sharp.mjs`.
 
 ---
 

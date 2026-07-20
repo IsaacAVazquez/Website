@@ -10,17 +10,15 @@ const CANONICAL_PRODUCTION_ORIGIN = "https://isaacavazquez.com";
  * Resolve the origin to fetch committed `/public/data/investments` assets from
  * when they are not present on the local filesystem.
  *
- * Inside the deployed Netlify function the investments snapshots are stripped
- * from the bundle (`outputFileTracingExcludes` in `next.config.mjs` plus the
- * `rm -rf` of the standalone `public/data` directory in `netlify.toml`), so the
- * only way server code can read them is over HTTP from the deploy origin. This
- * is the single source of truth for that origin so the precedence can't drift
- * between the curated-data loader and the Finnhub allowlist.
+ * Netlify packages the investments snapshots with the server handler through
+ * `functions.included_files`, so the filesystem is the production fast path.
+ * This resolver supports other runtimes that omit public assets and keeps the
+ * HTTP fallback origin consistent between the data loader and quote allowlist.
  *
  * Always resolves to an origin: an explicit override or env var when present,
- * otherwise the canonical production origin. (The disk-first callers only reach
- * the HTTP fallback when the bundled file is missing, i.e. in the deployed
- * function, so a non-null origin in local dev is harmless.)
+ * otherwise the canonical production origin. The disk-first callers only reach
+ * the HTTP fallback when a bundled file is missing, so a non-null origin in
+ * local development is harmless.
  */
 export function getInvestmentsAssetOrigin(
   options: AssetOriginOptions = {}
