@@ -70,6 +70,10 @@ const SCORING_OPTIONS: { key: FantasyRouteScoring; label: string }[] = [
 /** How many list rows render before the "Load more" sentinel kicks in. */
 const RANKINGS_PAGE_SIZE = 60;
 
+const subscribeToHydration = () => () => undefined;
+const getHydratedSnapshot = () => true;
+const getServerHydratedSnapshot = () => false;
+
 const fadeIn = {
   hidden: { opacity: 0, y: 12 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.35 } },
@@ -305,6 +309,11 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
   const [visibleCount, setVisibleCount] = useState(RANKINGS_PAGE_SIZE);
   const [queueClearArmed, setQueueClearArmed] = useState(false);
   const sentinelRef = useRef<HTMLDivElement | null>(null);
+  const isHydrated = useSyncExternalStore(
+    subscribeToHydration,
+    getHydratedSnapshot,
+    getServerHydratedSnapshot
+  );
 
   const queue = usePlayerQueue();
   const notes = usePlayerNotes();
@@ -577,6 +586,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
       className="home-page home-dash min-h-screen"
       aria-label="Fantasy football rankings"
       data-testid="fantasy-football-shell"
+      data-hydrated={isHydrated ? "true" : "false"}
     >
       <div className="home-shell home-shell-wide home-section space-y-4 sm:space-y-5">
         <motion.div className="space-y-4 pt-2" variants={variants} initial="hidden" animate="visible">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { ChevronDown, Download, Redo2, RotateCcw, Timer, Undo2 } from "lucide-react";
 import { DraftAnalyticsPanel } from "./components/DraftAnalyticsPanel";
@@ -38,11 +38,20 @@ const ACTION_STYLE = {
   color: "var(--home-ink)",
 } as const;
 
+const subscribeToHydration = () => () => undefined;
+const getHydratedSnapshot = () => true;
+const getServerHydratedSnapshot = () => false;
+
 function publishedDraftRank(player: Player): string {
   return formatRankValue(player.rankEcr ?? player.averageRank);
 }
 
 export function DraftTrackerClient() {
+  const isHydrated = useSyncExternalStore(
+    subscribeToHydration,
+    getHydratedSnapshot,
+    getServerHydratedSnapshot
+  );
   const {
     draftState,
     updateSettings,
@@ -178,7 +187,11 @@ export function DraftTrackerClient() {
   }
 
   return (
-    <section className="home-page home-dash min-h-screen">
+    <section
+      className="home-page home-dash min-h-screen"
+      data-testid="fantasy-draft-tracker-shell"
+      data-hydrated={isHydrated ? "true" : "false"}
+    >
       <div className="home-shell home-shell-wide home-section space-y-4 sm:space-y-5">
         <Breadcrumbs customItems={DRAFT_TRACKER_BREADCRUMBS} className="pt-2" />
         {persistenceError ? (

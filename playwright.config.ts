@@ -11,6 +11,7 @@ import { defineConfig, devices } from '@playwright/test'
  */
 const FULL_MATRIX = process.env.E2E_FULL_MATRIX === '1'
 const IS_CI = !!process.env.CI
+const IS_CI_FULL_MATRIX = IS_CI && FULL_MATRIX
 const E2E_PORT = process.env.E2E_PORT ?? process.env.PORT ?? '3000'
 const BASE_URL = process.env.E2E_BASE_URL ?? `http://localhost:${E2E_PORT}`
 const OUTPUT_DIR =
@@ -54,9 +55,10 @@ export default defineConfig({
      runtime when something is genuinely broken. */
   retries: IS_CI ? 1 : 0,
 
-  /* On CI, run against `next start` (no on-demand compile), so workers can
-     run in parallel safely. Locally we keep 2 to match developer flow. */
-  workers: IS_CI ? 4 : 2,
+  /* The mixed Firefox/WebKit matrix is substantially heavier than Chromium.
+     Keep it at two workers on GitHub's two-core runners so browser processes
+     do not starve each other; the sharded Chromium jobs retain four workers. */
+  workers: IS_CI_FULL_MATRIX ? 2 : IS_CI ? 4 : 2,
 
   /* Reporter: list output in CI logs (useful for triage), html locally. */
   reporter: IS_CI
@@ -64,16 +66,16 @@ export default defineConfig({
     : [['html', { open: 'never' }]],
 
   /* Test timeout — production server doesn't need the dev cold-start budget. */
-  timeout: IS_CI ? 30_000 : 60_000,
+  timeout: IS_CI_FULL_MATRIX ? 45_000 : IS_CI ? 30_000 : 60_000,
 
   expect: {
-    timeout: IS_CI ? 10_000 : 15_000,
+    timeout: IS_CI_FULL_MATRIX ? 15_000 : IS_CI ? 10_000 : 15_000,
   },
 
   use: {
     baseURL: BASE_URL,
-    navigationTimeout: IS_CI ? 15_000 : 30_000,
-    actionTimeout: IS_CI ? 10_000 : 15_000,
+    navigationTimeout: IS_CI_FULL_MATRIX ? 20_000 : IS_CI ? 15_000 : 30_000,
+    actionTimeout: IS_CI_FULL_MATRIX ? 15_000 : IS_CI ? 10_000 : 15_000,
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
   },

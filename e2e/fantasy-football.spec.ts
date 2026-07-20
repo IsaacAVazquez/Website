@@ -1,5 +1,17 @@
 import { expect, test, type Locator, type Page } from "@playwright/test";
 
+async function getReadyFantasyShell(page: Page) {
+  const shell = page.locator('[data-testid="fantasy-football-shell"]');
+  await expect(shell).toHaveAttribute("data-hydrated", "true");
+  return shell;
+}
+
+async function waitForDraftTrackerHydration(page: Page) {
+  await expect(
+    page.locator('[data-testid="fantasy-draft-tracker-shell"]')
+  ).toHaveAttribute("data-hydrated", "true");
+}
+
 async function selectPosition(
   page: Page,
   shell: Locator,
@@ -44,7 +56,7 @@ test.describe("Fantasy football rankings", () => {
 
     for (const scoring of scoringFormats) {
       await page.goto(`/fantasy-football?position=overall&scoring=${scoring.key}`);
-      const shell = page.locator('[data-testid="fantasy-football-shell"]');
+      const shell = await getReadyFantasyShell(page);
       const board = shell.locator('article[aria-labelledby="rankings-board-heading"]');
 
       await expect(shell.getByRole("button", { name: new RegExp(`^${scoring.label}$`) })).toHaveAttribute(
@@ -70,7 +82,7 @@ test.describe("Fantasy football rankings", () => {
 
   test("loads the canonical rankings board and supports PPR position switching", async ({ page }) => {
     await page.goto("/fantasy-football");
-    const shell = page.locator('[data-testid="fantasy-football-shell"]');
+    const shell = await getReadyFantasyShell(page);
 
     await expect(page.getByRole("heading", { name: /Rankings first\. Draft utility second\./i })).toBeVisible();
     await expect(page).toHaveURL(/position=overall/);
@@ -96,7 +108,7 @@ test.describe("Fantasy football rankings", () => {
     page,
   }) => {
     await page.goto("/fantasy-football?position=rb&scoring=standard");
-    const shell = page.locator('[data-testid="fantasy-football-shell"]');
+    const shell = await getReadyFantasyShell(page);
 
     await expect(page.getByRole("heading", { name: /RB rankings/i })).toBeVisible();
     await expect(page.getByText("No Data Available")).toHaveCount(0);
@@ -118,7 +130,7 @@ test.describe("Fantasy football rankings", () => {
 
   test("repeated switching uses stable static data without rate-limit failures", async ({ page }) => {
     await page.goto("/fantasy-football?position=overall&scoring=standard");
-    const shell = page.locator('[data-testid="fantasy-football-shell"]');
+    const shell = await getReadyFantasyShell(page);
 
     for (const target of ["RB", "WR", "QB", "TE"]) {
       await selectPosition(page, shell, target, target.toLowerCase());
@@ -154,7 +166,7 @@ test.describe("Fantasy football rankings", () => {
 
   test("searches the board and switches between list and tier views", async ({ page }) => {
     await page.goto("/fantasy-football?position=overall&scoring=ppr");
-    const shell = page.locator('[data-testid="fantasy-football-shell"]');
+    const shell = await getReadyFantasyShell(page);
     const rankingsBoard = shell.locator('article[aria-labelledby="rankings-board-heading"]');
     const search = shell.getByLabel("Search the current rankings board");
 
@@ -175,7 +187,7 @@ test.describe("Fantasy football rankings", () => {
 
   test("keeps position-only queued players visible after switching boards", async ({ page }) => {
     await page.goto("/fantasy-football?position=k&scoring=ppr");
-    const shell = page.locator('[data-testid="fantasy-football-shell"]');
+    const shell = await getReadyFantasyShell(page);
 
     await shell.getByRole("button", { name: "Add Brandon Aubrey to queue" }).click();
     await selectPosition(page, shell, "RB", "rb");
@@ -193,7 +205,7 @@ test.describe("Fantasy football rankings", () => {
   test("persists a private note and compares players accessibly", async ({ page, isMobile }) => {
     test.skip(isMobile, "Desktop list exposes inline compare controls; mobile compare is available in player detail.");
     await page.goto("/fantasy-football?position=overall&scoring=ppr");
-    const shell = page.locator('[data-testid="fantasy-football-shell"]');
+    const shell = await getReadyFantasyShell(page);
 
     await shell.getByRole("button", { name: /Open Ja'Marr Chase detail/ }).click();
     const note = page.getByRole("textbox", { name: "Private note" });
@@ -256,6 +268,7 @@ test.describe("Fantasy football draft tracker", () => {
     ] as const;
 
     await page.goto("/fantasy-football/draft-tracker");
+    await waitForDraftTrackerHydration(page);
 
     for (const scoring of scoringFormats) {
       await page.getByRole("button", { name: new RegExp(`^${scoring.label}`) }).click();
@@ -276,6 +289,7 @@ test.describe("Fantasy football draft tracker", () => {
 
   test("loads, records picks, and persists after reload", async ({ page }) => {
     await page.goto("/fantasy-football/draft-tracker");
+    await waitForDraftTrackerHydration(page);
 
     await expect(page.getByRole("heading", { name: /Manual draft tracking that actually stays usable\./i })).toBeVisible();
     await page.getByRole("button", { name: /Start draft assistant/i }).click();
