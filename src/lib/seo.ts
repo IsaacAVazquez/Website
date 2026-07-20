@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { profile, profileSameAs } from "./profile";
+import { generateAIMetaTags } from "./ai-seo";
 
 export interface ProjectStructuredData {
   name: string;
@@ -126,6 +127,7 @@ export function constructMetadata({
   articleAuthor,
   articleSection,
   articleTags,
+  aiMetadata,
 }: {
   title?: string;
   description?: string;
@@ -140,6 +142,18 @@ export function constructMetadata({
   articleAuthor?: string;
   articleSection?: string;
   articleTags?: string[];
+  /** AI/AEO hints emitted as extra meta tags for answer engines */
+  aiMetadata?: {
+    expertise?: string[];
+    specialty?: string;
+    profession?: string;
+    industry?: string[];
+    topics?: string[];
+    contentType?: string;
+    context?: string;
+    summary?: string;
+    primaryFocus?: string;
+  };
 } = {}): Metadata {
   // Brand every page title exactly once: append the site name unless the
   // caller already worked it into the title string.
@@ -151,7 +165,8 @@ export function constructMetadata({
   const metadataBase = new URL(siteConfig.url);
   const absoluteCanonical = absoluteUrl(canonicalPath);
   const absoluteImage = absoluteUrl(image);
-  const otherMeta: Record<string, string> = {};
+  const aiTags = aiMetadata ? generateAIMetaTags(aiMetadata) : {};
+  const otherMeta: Record<string, string> = { ...aiTags };
   if (dateModified) {
     otherMeta["og:updated_time"] = dateModified;
   }

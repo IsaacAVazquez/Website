@@ -9,6 +9,27 @@ export const metadata = constructMetadata({
     "The projects I've shipped across AI workflows, fintech, analytics, civic tech, and sports data, with the product decisions behind them.",
   canonicalUrl: "/portfolio",
   dateModified: "2026-07-16",
+  aiMetadata: {
+    profession: "Product Manager",
+    expertise: [
+      "Product Strategy",
+      "Platform Scaling",
+      "Data-Driven Decisions",
+      "Cross-Functional Leadership",
+      "Experimentation & A/B Testing",
+    ],
+    topics: [
+      "Product Management Projects",
+      "SaaS Product Strategy",
+      "Revenue Impact",
+      "User Growth",
+    ],
+    contentType: "Portfolio / Projects",
+    context:
+      "Portfolio of product management projects by Isaac Vazquez, covering live tools, analytics products, reliability work, and professional case studies.",
+    summary:
+      "All projects demonstrating product management experience across platform scale, analytics, and investment research tooling.",
+  },
 });
 
 export default function PortfolioPage() {
