@@ -14,6 +14,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Give four projects their own distinct card icons ([#311](https://github.com/IsaacAVazquez/Website/pull/311)).
 - Live-first serving, daily fallback snapshot ([#325](https://github.com/IsaacAVazquez/Website/pull/325)).
 - Support a personal BART API key ([#326](https://github.com/IsaacAVazquez/Website/pull/326)).
+- Sync the data-source audit backlog to current reality ([#333](https://github.com/IsaacAVazquez/Website/pull/333)).
 
 ---
 
