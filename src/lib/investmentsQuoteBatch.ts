@@ -12,6 +12,7 @@ export async function fetchQuotesWithConcurrency(
 ): Promise<StockQuote[]> {
   const quotes = new Array<StockQuote>(symbols.length);
   let nextIndex = 0;
+  let deadlineReached = false;
   const deadlineAt = Date.now() + requestBudgetMs;
 
   const deadlineQuote = (symbol: string): StockQuote => ({
@@ -31,7 +32,10 @@ export async function fetchQuotesWithConcurrency(
 
   const fetchBeforeDeadline = (symbol: string): Promise<StockQuote> => {
     const remainingMs = deadlineAt - Date.now();
-    if (remainingMs <= 0) return Promise.resolve(deadlineQuote(symbol));
+    if (remainingMs <= 0) {
+      deadlineReached = true;
+      return Promise.resolve(deadlineQuote(symbol));
+    }
 
     return new Promise((resolve) => {
       let settled = false;
@@ -42,7 +46,10 @@ export async function fetchQuotesWithConcurrency(
         resolve(quote);
       };
       const timeoutId = setTimeout(
-        () => finish(deadlineQuote(symbol)),
+        () => {
+          deadlineReached = true;
+          finish(deadlineQuote(symbol));
+        },
         remainingMs,
       );
       void fetchFinnhubQuote(symbol, { timeoutMs: remainingMs }).then(
@@ -53,7 +60,11 @@ export async function fetchQuotesWithConcurrency(
   };
 
   async function worker() {
-    while (nextIndex < symbols.length && Date.now() < deadlineAt) {
+    while (
+      nextIndex < symbols.length &&
+      !deadlineReached &&
+      Date.now() < deadlineAt
+    ) {
       const index = nextIndex;
       nextIndex += 1;
       quotes[index] = await fetchBeforeDeadline(symbols[index]);
