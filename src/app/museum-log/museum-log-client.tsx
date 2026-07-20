@@ -887,6 +887,10 @@ function MuseumDetailView({
   // render can disagree with the visitor's date and cause a hydration mismatch.
   const [today, setToday] = useState<string | null>(null);
   useEffect(() => {
+    // Intentional mount-only client date: it must stay null through SSR and the
+    // first client render (see above) to avoid a hydration mismatch, so the
+    // set-state-in-effect pattern is correct here.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setToday(toLocalDateKey());
   }, []);
 

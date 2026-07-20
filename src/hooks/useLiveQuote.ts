@@ -107,7 +107,7 @@ async function fetchQuote(symbol: string): Promise<CachedQuote> {
 
   const promise = fetch(`/api/investments/quotes?symbols=${encodeURIComponent(upperSymbol)}`)
     .then(async (response) => {
-      let payload: QuotePayload | null = null;
+      let payload: QuotePayload | null;
       try {
         payload = (await response.json()) as QuotePayload;
       } catch {
