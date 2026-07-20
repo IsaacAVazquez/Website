@@ -84,6 +84,9 @@ describe("GET /api/la-liga/summary", () => {
     expect(response.headers.get("Cache-Control")).toBe(
       "public, max-age=300, stale-while-revalidate=900"
     );
+    // The route opts into the token-gated request-time refresh; without a
+    // configured token the accessor still serves the committed snapshot.
+    expect(mockGetLaLigaSummarySnapshot).toHaveBeenCalledWith({ preferLive: true });
   });
 
   it("returns a stable empty payload when the snapshot is unavailable", async () => {

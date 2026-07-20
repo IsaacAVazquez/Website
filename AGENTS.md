@@ -207,7 +207,7 @@ npm run dev
 
 - Prefer Node 20 locally to match GitHub Actions.
 - `npm run update:investments` also requires `.venv/bin/python3`.
-- `npm run update:football`, `npm run update:premier-league`, and `npm run update:la-liga` use `FOOTBALL_DATA_API_TOKEN` only when rebuilding checked-in football snapshots.
+- `npm run update:football`, `npm run update:premier-league`, and `npm run update:la-liga` use `FOOTBALL_DATA_API_TOKEN` only when rebuilding checked-in football snapshots. The same token is optional at runtime: when set in the deploy environment, the Premier League and La Liga summary APIs refresh standings and fixtures at request time (5-minute in-memory TTL) and fall back to the committed snapshots; without it they serve the committed snapshots only.
 - `npm run update:mlb`, `npm run update:nba`, `npm run update:nfl`, `npm run update:golf`, and `npm run update:world-cup` use public sports data sources and do not require auth tokens.
 - `npm run update:bay-area-transit` uses BART's public legacy API. Set the optional `BART_API_KEY` (free registration at api.bart.gov/api/register.aspx) to replace the published demo-key fallback; no token setup is required to get started.
 - `npm run update:tech-startups` processes a hand-maintained seed inside `scripts/buildTechStartupSnapshot.ts`; there is no live source to poll.

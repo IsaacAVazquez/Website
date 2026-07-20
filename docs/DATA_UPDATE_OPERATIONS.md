@@ -27,8 +27,8 @@ fallback.
 | Fantasy football | `update:fantasy` | `buildFantasyPositionData.ts` → `buildFantasyAdpData.ts` → `buildFantasySnapshots.ts` | FantasyPros cheatsheets + FF Calculator ADP | `public/data/fantasy/{ppr,half_ppr,standard}.json`, `src/data/fantasy*.generated.ts` | `update-fantasy.yml` | daily July through September; weekly otherwise |
 | Investments | `update:investments` | `fetch_investments_data.py` (needs `.venv`) → `buildInvestmentsSnapshots.ts` | `defeatbeta-api` (Python) | `public/data/investments/index.json` + `{SYMBOL}/snapshot.json` | `update-investments.yml` | weekdays 22:15 UTC |
 | Football (both) | `update:football` | `updateFootballSnapshots.ts` | football-data.org *(token)* | `src/data/premierLeagueSnapshot.ts` + `laLigaSnapshot.ts` | none *(full run is manual ~weekly)* | manual |
-| Premier League | `update:premier-league` | `buildPremierLeagueSnapshot.ts` | football-data.org *(token)* | `src/data/premierLeagueSnapshot.ts` | `update-premier-league.yml` | every 4h, August through May |
-| La Liga | `update:la-liga` | `updateLaLigaSnapshot.ts` | football-data.org *(token)* | `src/data/laLigaSnapshot.ts` | `update-la-liga.yml` | every 4h, August through May |
+| Premier League | `update:premier-league` | `buildPremierLeagueSnapshot.ts` | football-data.org *(token; the summary API also refreshes standings/fixtures at request time when the token is set)* | `src/data/premierLeagueSnapshot.ts` | `update-premier-league.yml` | every 4h, August through May |
+| La Liga | `update:la-liga` | `updateLaLigaSnapshot.ts` | football-data.org *(token; the summary API also refreshes standings/fixtures at request time when the token is set)* | `src/data/laLigaSnapshot.ts` | `update-la-liga.yml` | every 4h, August through May |
 | NFL | `update:nfl` | `updateNflSnapshot.ts` | NFLverse CSVs | `src/data/nflSnapshot.ts` | `update-nfl.yml` | Tue 10:35 UTC, September through February |
 | MLB | `update:mlb` | `updateMlbSnapshot.ts` | MLB Stats API | `src/data/mlbSnapshot.ts` | `update-mlb.yml` | every 4h, March through November (fallback seed; the API serves live statsapi at request time) |
 | NBA | `update:nba` | `updateNbaSnapshot.ts` | ESPN NBA | `src/data/nbaSnapshot.ts` | `update-nba.yml` | every 4h, mid-October through June |
@@ -78,7 +78,7 @@ the fallback and the editorial source of truth. See the lane description in
 
 | Need | Used by |
 |------|---------|
-| `FOOTBALL_DATA_API_TOKEN` | `update:football`, `update:premier-league`, `update:la-liga` (only when rebuilding) |
+| `FOOTBALL_DATA_API_TOKEN` | `update:football`, `update:premier-league`, `update:la-liga` (only when rebuilding). Optional at runtime: when set in the deploy environment, the Premier League and La Liga summary APIs also refresh standings and fixtures at request time (5-minute in-memory TTL, committed snapshots as fallback) |
 | `THE_ODDS_API_KEY` (required in the scheduled workflow) | `update:score-pools` |
 | `API_FOOTBALL_KEY` (required in the scheduled workflow) | `update:score-pools` |
 | `GITHUB_TOKEN` / `GH_TOKEN` (optional, higher rate limit) | `update:github-trending` |
@@ -94,7 +94,10 @@ the fallback and the editorial source of truth. See the lane description in
   providers. Earthquake, BART, and MLB make separate request-time refreshes
   and keep those snapshots as fallbacks.
 - Premier League and La Liga refresh through their dedicated daily workflows;
-  NFL refreshes through `update-nfl.yml` (or a manual run).
+  NFL refreshes through `update-nfl.yml` (or a manual run). When
+  `FOOTBALL_DATA_API_TOKEN` is set at runtime, the PL and La Liga summary APIs
+  additionally refresh standings and fixtures at request time and fall back to
+  the committed snapshots.
 - `update:football` (the ~16-min full refresh, including per-team fixtures and
   form) remains an explicit local task, not a build step.
 - `publish-data.yml` coalesces successful refresh workflows, triggers the

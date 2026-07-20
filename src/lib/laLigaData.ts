@@ -8,6 +8,7 @@ import type {
   LaLigaLeader,
   LaLigaMatchdayGoals,
   LaLigaSnapshot,
+  LaLigaSummarySnapshot,
   LaLigaTeamOption,
   LaLigaTeamProfile,
   LaLigaTeamSnapshot,
@@ -547,6 +548,92 @@ export async function getLaLigaSummary(options?: { season?: number }): Promise<{
     teams,
     generatedAt: new Date().toISOString(),
   };
+}
+
+/**
+ * Request-time refresh used by the summary accessor when a football-data.org
+ * token is configured. Only the standings (clubs plus the season label and
+ * matchday from the same response) and the recent/upcoming fixture lists are
+ * refreshed (3 upstream requests); every other section keeps the committed
+ * snapshot's value. A section that fails, comes back empty, or reflects the
+ * rolled-over-but-unstarted season keeps the committed value. If no section
+ * refreshes, this throws so the caller falls back to the committed snapshot
+ * wholesale without caching the failure.
+ */
+export async function buildLaLigaLiveSummary(
+  baseSummary: LaLigaSummarySnapshot
+): Promise<LaLigaSummarySnapshot> {
+  const [standingsResult, recentResult, upcomingResult] = await Promise.allSettled([
+    fetchFootballDataJson<FootballDataCompetitionStandingsResponse>(
+      `/competitions/${LA_LIGA_CODE}/standings`,
+      SUMMARY_REVALIDATE_SECONDS
+    ),
+    fetchFootballDataJson<FootballDataMatchesResponse>(
+      `/competitions/${LA_LIGA_CODE}/matches?${buildQueryString({ status: "FINISHED", limit: RECENT_FIXTURE_LIMIT })}`,
+      SUMMARY_REVALIDATE_SECONDS
+    ),
+    fetchFootballDataJson<FootballDataMatchesResponse>(
+      `/competitions/${LA_LIGA_CODE}/matches?${buildQueryString({ status: "SCHEDULED", limit: UPCOMING_FIXTURE_LIMIT })}`,
+      SUMMARY_REVALIDATE_SECONDS
+    ),
+  ]);
+
+  const summary: LaLigaSummarySnapshot = { ...baseSummary };
+  let refreshedSections = 0;
+
+  if (standingsResult.status === "fulfilled") {
+    const standingsGroup =
+      standingsResult.value.standings?.find((g) => g?.type === "TOTAL") ??
+      standingsResult.value.standings?.[0] ??
+      null;
+    const clubs = (standingsGroup?.table ?? [])
+      .map((row) => normalizeStandingRow(row))
+      .filter((c): c is LaLigaClub => c !== null);
+
+    // A zeroed rolled-over table (season pointer advanced, no games played)
+    // would wipe the dashboard, so the committed table is kept instead.
+    if (clubs.length > 0 && !seasonNotStarted(standingsResult.value.season, clubs)) {
+      summary.clubs = clubs;
+      summary.season = buildSeasonLabel(
+        standingsResult.value.season?.startDate,
+        standingsResult.value.season?.endDate
+      );
+      summary.matchday = standingsResult.value.season?.currentMatchday ?? summary.matchday;
+      refreshedSections += 1;
+    }
+  }
+
+  if (recentResult.status === "fulfilled") {
+    const recentFixtures = (recentResult.value.matches ?? [])
+      .map((m) => normalizeFixture(m))
+      .filter((f): f is LaLigaFixture => f !== null)
+      .sort((a, b) => new Date(b.utcDate).getTime() - new Date(a.utcDate).getTime())
+      .slice(0, RECENT_FIXTURE_LIMIT);
+
+    if (recentFixtures.length > 0) {
+      summary.recentFixtures = recentFixtures;
+      refreshedSections += 1;
+    }
+  }
+
+  if (upcomingResult.status === "fulfilled") {
+    const upcomingFixtures = (upcomingResult.value.matches ?? [])
+      .map((m) => normalizeFixture(m))
+      .filter((f): f is LaLigaFixture => f !== null)
+      .sort((a, b) => new Date(a.utcDate).getTime() - new Date(b.utcDate).getTime())
+      .slice(0, UPCOMING_FIXTURE_LIMIT);
+
+    if (upcomingFixtures.length > 0) {
+      summary.upcomingFixtures = upcomingFixtures;
+      refreshedSections += 1;
+    }
+  }
+
+  if (refreshedSections === 0) {
+    throw createLaLigaDataError("La Liga live refresh produced no usable sections.", 503);
+  }
+
+  return { ...summary, updatedAt: new Date().toISOString().slice(0, 10) };
 }
 
 export async function getLaLigaTeamSnapshot(teamId: string): Promise<LaLigaTeamSnapshot> {

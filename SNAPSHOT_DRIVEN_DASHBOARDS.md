@@ -149,8 +149,8 @@ by BART abbr, world-cup `/teams/[teamId]` by team slug.
 
 | Route(s) | Snapshot | Builder / `npm run` | Workflow | Upstream source | Cadence |
 |---|---|---|---|---|---|
-| `/premier-league` | `src/data/premierLeagueSnapshot.ts` | `buildPremierLeagueSnapshot.ts` · `update:premier-league` / `update:football` | `update-premier-league.yml` | football-data.org (token) | daily 06:15 UTC, Aug–May |
-| `/la-liga` | `src/data/laLigaSnapshot.ts` | `updateLaLigaSnapshot.ts` · `update:la-liga` / `update:football` | `update-la-liga.yml` | football-data.org (token) | daily 06:30 UTC, Aug–May |
+| `/premier-league` | `src/data/premierLeagueSnapshot.ts` | `buildPremierLeagueSnapshot.ts` · `update:premier-league` / `update:football` | `update-premier-league.yml` | football-data.org (token; the summary API also refreshes standings/fixtures at request time when the token is set) | daily 06:15 UTC, Aug–May |
+| `/la-liga` | `src/data/laLigaSnapshot.ts` | `updateLaLigaSnapshot.ts` · `update:la-liga` / `update:football` | `update-la-liga.yml` | football-data.org (token; the summary API also refreshes standings/fixtures at request time when the token is set) | daily 06:30 UTC, Aug–May |
 | `/nfl` | `src/data/nflSnapshot.ts` | `updateNflSnapshot.ts` · `update:nfl` | `update-nfl.yml` | NFLverse CSVs | Tue 10:35 UTC, Sep–Feb |
 | `/mlb` | `src/data/mlbSnapshot.ts` | `updateMlbSnapshot.ts` · `update:mlb` | `update-mlb.yml` | MLB Stats API | daily 10:05 UTC, Mar–Nov (fallback seed; the API serves live statsapi at request time) |
 | `/nba` | `src/data/nbaSnapshot.ts` | `updateNbaSnapshot.ts` · `update:nba` | `update-nba.yml` | ESPN NBA | daily 10:20 UTC, mid-Oct–Jun |
