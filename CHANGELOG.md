@@ -16,6 +16,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Support a personal BART API key ([#326](https://github.com/IsaacAVazquez/Website/pull/326)).
 - Sync the data-source audit backlog to current reality ([#333](https://github.com/IsaacAVazquez/Website/pull/333)).
 - Re-land the blob-lane migration stranded by the stacked merge ([#334](https://github.com/IsaacAVazquez/Website/pull/334)).
+- E2E: stop hardcoding draft-tracker top picks ([#335](https://github.com/IsaacAVazquez/Website/pull/335)).
 
 ---
 
