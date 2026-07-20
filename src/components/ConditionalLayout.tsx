@@ -81,6 +81,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
     "/portfolio",
     "/recipe-finder",
     "/resume",
+    "/score-pools",
     "/search",
     "/spacex-mission-control",
     "/tech-startup-tracker",
@@ -93,6 +94,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
   const isSelfShellRoute =
     selfShellRoutes.has(pathname) ||
     pathname.startsWith("/portfolio/") ||
+    pathname.startsWith("/score-pools/") ||
     pathname.startsWith("/writing/");
   const compactFooterRoutes = new Set(["/", "/contact"]);
   const footerVariant: FooterVariant = compactFooterRoutes.has(pathname)

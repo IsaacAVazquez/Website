@@ -48,6 +48,8 @@ Current API route inventory for the app.
 | `/api/nfl/teams/[teamId]` | GET | Snapshot-backed NFL team drilldown payload |
 | `/api/world-cup/summary` | GET | Snapshot-backed 2026 FIFA World Cup groups, knockout rounds, fixtures, and scorers |
 | `/api/world-cup/teams/[teamId]` | GET | Snapshot-backed World Cup team drilldown payload, keyed by lowercased team slug |
+| `/api/score-pools/summary` | GET | Snapshot-backed score-pools league summaries (fixture counts, sources, freshness) |
+| `/api/score-pools/leagues/[key]` | GET | Snapshot-backed league payload with fixtures, results, standings, and capped odds history |
 
 ### Civic / transit / geo
 

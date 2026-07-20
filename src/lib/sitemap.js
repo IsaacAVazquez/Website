@@ -42,6 +42,9 @@ const STATIC_ROUTE_LASTMOD = {
   "/spacex-mission-control": "2026-04-01",
   "/polling-aggregator": readPollingLastmod(),
   "/premier-league": readPremierLeagueLastmod(),
+  "/score-pools": readScorePoolsLastmod(),
+  "/score-pools/tracker": readScorePoolsLastmod(),
+  "/score-pools/settings": readScorePoolsLastmod(),
   "/la-liga": readLaLigaLastmod(),
   "/nfl": readNflLastmod(),
   "/world-cup-2026": readWorldCupLastmod(),
@@ -118,6 +121,10 @@ const CHANGEFREQ_BY_ROUTE = {
   "/mlb": "daily",
   "/world-cup-2026": "daily",
   "/polling-aggregator": "weekly",
+  // Score pools — odds snapshot refreshes every six hours
+  "/score-pools": "daily",
+  "/score-pools/tracker": "daily",
+  "/score-pools/settings": "monthly",
   // Sub-daily refresh cadence
   "/earthquake-pulse": "hourly",
   "/bay-area-transit": "hourly",
@@ -239,6 +246,12 @@ function readGitHubTrendingLastmod() {
 function readTechStartupLastmod() {
   return toIsoString(
     readFirstMatch("src/data/techStartupSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+  );
+}
+
+function readScorePoolsLastmod() {
+  return toIsoString(
+    readFirstMatch("src/data/scorePoolsSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 

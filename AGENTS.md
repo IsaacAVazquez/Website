@@ -37,6 +37,7 @@ Primary live routes:
 - `/earthquake-pulse`
 - `/world-cup-2026`
 - `/bay-area-transit`
+- `/score-pools` (+ `/score-pools/tracker`, `/score-pools/settings`)
 - `/writing` and `/writing/[slug]`
 - `/resume`
 - `/contact`
@@ -124,6 +125,7 @@ Self-shell routes currently include:
 - `/portfolio/[slug]`
 - `/recipe-finder`
 - `/resume`
+- `/score-pools` (+ `/score-pools/*` subroutes)
 - `/spacex-mission-control`
 - `/tech-startup-tracker`
 - `/travel`
@@ -331,6 +333,7 @@ The MLB, NBA, and NFL dashboards read committed TypeScript snapshots at runtime.
 - `npm run update:github-trending` writes `src/data/githubTrendingSnapshot.ts` from the GitHub Search API; use `GITHUB_TOKEN` or `GH_TOKEN` locally for higher rate limits.
 - `npm run update:tech-startups` writes `src/data/techStartupSnapshot.ts` from the hand-maintained seed in `scripts/buildTechStartupSnapshot.ts`. The dataset is editorially curated with an `asOf` date and `verified: false` flag; refresh it by editing the seed, not by polling an API.
 - `npm run update:frontier-models` writes `src/data/frontierModelsSnapshot.ts` from the curated source file in `scripts/data/`.
+- `npm run update:score-pools` writes `src/data/scorePoolsSnapshot.ts` from The Odds API (`THE_ODDS_API_KEY`) and API-Football (`API_FOOTBALL_KEY`), merged with manual entries in `scripts/data/scorePools.manual.ts` and CSV drops in `scripts/data/score-pools/`. Both tokens are optional; without them the snapshot builds from manual/CSV only. Odds history is append-only and capped per fixture so line movement stays queryable. See `SCORE_POOLS_ENGINE.md`.
 - `npm run update:spacex` and its alias `npm run update:spacex-data` write `src/data/spacexSnapshot.generated.json`.
 - `npm run update:spacex-images` writes `src/data/spacexImageManifest.generated.json`, `public/data/spacex/image-reference-index.json`, and cached image files under `public/data/spacex/images/`.
 
@@ -381,6 +384,7 @@ The MLB, NBA, and NFL dashboards read committed TypeScript snapshots at runtime.
 | `npm run update:nfl` | Rebuild the checked-in NFL snapshot |
 | `npm run update:golf` | Rebuild the checked-in golf leaderboard snapshot |
 | `npm run update:world-cup` | Rebuild the checked-in World Cup 2026 snapshot |
+| `npm run update:score-pools` | Rebuild the checked-in score-pools snapshot (fixtures, results, standings, capped odds history) |
 | `npm run update:bay-area-transit` | Rebuild the checked-in Bay Area Transit (BART) snapshot |
 | `npm run update:formula-1` | Rebuild the checked-in Formula 1 snapshot |
 | `npm run update:frontier-models` | Rebuild the checked-in Frontier Models snapshot |
@@ -411,6 +415,7 @@ Checked-in operational workflows:
 - `.github/workflows/update-nfl.yml`
 - `.github/workflows/update-golf.yml`
 - `.github/workflows/update-world-cup.yml`
+- `.github/workflows/update-score-pools.yml`
 - `.github/workflows/update-bay-area-transit.yml`
 - `.github/workflows/update-earthquake.yml`
 - `.github/workflows/update-article-images.yml`
@@ -469,6 +474,7 @@ Subsystem references:
 - `SNAPSHOT_DRIVEN_DASHBOARDS.md` — shared snapshot-driven dashboard pattern
 - `PERSONAL_INTEREST_TOOLS.md` — browser-persisted localStorage tools
 - `RETIREMENT_PLANNER_ENGINE.md` — pure retirement projection engine
+- `SCORE_POOLS_ENGINE.md` — exact-score prediction engine and its data flow
 - `docs/DATA_UPDATE_OPERATIONS.md` — command → artifact → schedule runbook
 
 Older plans, redesign notes, and summary docs are kept for history. Check `docs/README.md` before treating a markdown file as current.

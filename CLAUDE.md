@@ -135,7 +135,7 @@ Shared conventions worth internalizing:
 investments portfolio, retirement plan, and fantasy draft tracker keep state in
 localStorage via dedicated hooks. Reference: `PERSONAL_INTEREST_TOOLS.md`.
 
-### Two engines worth knowing
+### Three engines worth knowing
 
 - **Retirement planner** (`src/lib/retirement/*`) — framework-free, unit-tested
   projection + seeded Monte Carlo engine surfaced in the investments dashboard.
@@ -146,6 +146,12 @@ localStorage via dedicated hooks. Reference: `PERSONAL_INTEREST_TOOLS.md`.
 - **Draft analytics** (`src/lib/draftAnalytics.ts`) — pure, unit-tested engine
   (reaches/steals vs. an ADP-or-consensus baseline, position-run detection, per-team
   grades) rendered in the draft tracker.
+- **Score pools** (`src/lib/scorePools/*`) — pure, unit-tested exact-score prediction
+  engine: odds de-vig, market-calibrated Dixon-Coles scoreline distribution with a
+  90-minute vs final-result scoring basis, expected-points optimizer, and a
+  standing-aware leaderboard layer. Calibration compromises surface in `diagnostics` —
+  keep the honesty framing (as-of stamps, sample/manual labels, residual disclosure)
+  intact. Full spec: `SCORE_POOLS_ENGINE.md`.
 
 ### Fantasy football specifics
 
@@ -233,6 +239,10 @@ Subsystem references:
 - `SNAPSHOT_DRIVEN_DASHBOARDS.md` — the shared snapshot → builder → action → API pattern
 - `PERSONAL_INTEREST_TOOLS.md` — the browser-persisted localStorage tools
 - `RETIREMENT_PLANNER_ENGINE.md` — the pure projection/Monte Carlo engine
+- `SCORE_POOLS_ENGINE.md` — the exact-score prediction engine (`/score-pools`): de-vig →
+  market-calibrated Dixon-Coles scoreline distribution → expected-points optimizer →
+  leaderboard layer. Pure modules in `src/lib/scorePools/`; snapshot-driven data with
+  capped append-only odds history; pool config/picks in localStorage.
 - `docs/DATA_UPDATE_OPERATIONS.md` — command → artifact → schedule runbook for every refresh
 - `docs/ARTICLE_IMAGE_WORKFLOW.md` — blog cover-image plan, the fetch builder, and the writing-time step
 
