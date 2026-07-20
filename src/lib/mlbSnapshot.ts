@@ -1,4 +1,5 @@
 import { mlbSnapshot } from "@/data/mlbSnapshot";
+import { buildMlbLiveSummaryData } from "@/lib/mlbData";
 import type { MlbSummarySnapshot, MlbTeamSnapshot } from "@/types/mlb";
 
 const SUMMARY_GAME_LIMIT = 10;
@@ -77,8 +78,46 @@ export function isValidMlbTeamId(teamId: string): boolean {
   return MLB_TEAM_ID_PATTERN.test(teamId) && teamId in mlbSnapshot.teamSnapshots;
 }
 
-export async function getMlbSummarySnapshot(): Promise<MlbSummarySnapshot> {
-  return clampMlbSummarySnapshot(mlbSnapshot);
+interface MlbSummaryOptions {
+  preferLive?: boolean;
+}
+
+const LIVE_CACHE_TTL_MS = 60_000;
+let liveSummaryCache:
+  | { summary: MlbSummarySnapshot; expiresAt: number }
+  | null = null;
+let liveSummaryInflight: Promise<MlbSummarySnapshot> | null = null;
+
+export function resetMlbLiveCacheForTests(): void {
+  liveSummaryCache = null;
+  liveSummaryInflight = null;
+}
+
+export async function getMlbSummarySnapshot(
+  options: MlbSummaryOptions = {}
+): Promise<MlbSummarySnapshot> {
+  if (!options.preferLive) return clampMlbSummarySnapshot(mlbSnapshot);
+  if (liveSummaryCache && liveSummaryCache.expiresAt > Date.now()) {
+    return liveSummaryCache.summary;
+  }
+  if (liveSummaryInflight) return liveSummaryInflight;
+
+  liveSummaryInflight = buildMlbLiveSummaryData(clampMlbSummarySnapshot(mlbSnapshot))
+    .then((summary) => {
+      liveSummaryCache = {
+        summary,
+        expiresAt: Date.now() + LIVE_CACHE_TTL_MS,
+      };
+      return summary;
+    })
+    // The committed snapshot is the last-known-good fallback when statsapi is
+    // unavailable. Failures are never cached, so the next request retries.
+    .catch(() => clampMlbSummarySnapshot(mlbSnapshot))
+    .finally(() => {
+      liveSummaryInflight = null;
+    });
+
+  return liveSummaryInflight;
 }
 
 export async function getMlbTeamSnapshot(teamId: string): Promise<MlbTeamSnapshot> {

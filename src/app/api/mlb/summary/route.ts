@@ -6,7 +6,7 @@ import {
 import { logger } from "@/lib/logger";
 import { createSnapshotResponseHeaders } from "@/lib/snapshotResponse";
 
-const SUCCESS_CACHE_CONTROL = "public, max-age=300, stale-while-revalidate=900";
+const SUCCESS_CACHE_CONTROL = "public, max-age=60, stale-while-revalidate=300";
 // Errors (4xx/5xx) must NOT be cached by the CDN — otherwise a transient
 // upstream failure poisons the cache for the full success TTL.
 const ERROR_CACHE_HEADERS = {
@@ -15,13 +15,14 @@ const ERROR_CACHE_HEADERS = {
 
 export async function GET() {
   try {
-    const summary = await getMlbSummarySnapshot();
+    const summary = await getMlbSummarySnapshot({ preferLive: true });
     return NextResponse.json(summary, {
       headers: createSnapshotResponseHeaders({
         surface: "mlb",
         payload: summary,
         sourceAsOf: summary.updatedAt,
         cacheControl: SUCCESS_CACHE_CONTROL,
+        source: "statsapi-runtime-with-snapshot-fallback",
       }),
     });
   } catch (error) {
