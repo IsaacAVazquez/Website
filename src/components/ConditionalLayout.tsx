@@ -61,6 +61,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
     "/fantasy-football/draft-tracker",
     "/fintech-tools/budget-planner",
     "/fintech-tools/interchange-iq",
+    "/fintech-tools/rent-vs-buy",
     "/food-map",
     "/formula-1",
     "/frontier-models",
