@@ -1,6 +1,6 @@
 import { StructuredData } from "@/components/StructuredData";
 import { formula1Snapshot } from "@/data/formula1Snapshot";
-import { getFormula1Snapshot } from "@/lib/formula1Snapshot";
+import { getFormula1Summary } from "@/lib/formula1Snapshot";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { FantasyFormula1Client } from "./fantasy-formula-1-client";
 import { normalizeFantasyFormula1State } from "./fantasy-formula-1-state";
@@ -25,7 +25,7 @@ export default async function FantasyFormula1Page({
   searchParams,
 }: FantasyFormula1PageProps) {
   const initialState = normalizeFantasyFormula1State(await searchParams);
-  const snapshot = await getFormula1Snapshot();
+  const summary = await getFormula1Summary();
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "Fantasy Formula 1", url: "/fantasy-formula-1" },
@@ -56,10 +56,10 @@ export default async function FantasyFormula1Page({
             "Budget-aware optimizer with locked picks",
             "Local browser persistence by season",
           ],
-          dateModified: snapshot.generatedAt,
+          dateModified: summary.generatedAt,
         }}
       />
-      <FantasyFormula1Client initialState={initialState} snapshot={snapshot} />
+      <FantasyFormula1Client initialState={initialState} summary={summary} />
     </>
   );
 }

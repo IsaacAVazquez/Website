@@ -30,7 +30,7 @@ import {
   sanitizeFantasyFormula1Lineup,
   summarizeFantasyFormula1Lineup,
 } from "@/lib/fantasyFormula1";
-import type { Formula1Snapshot } from "@/types/formula1";
+import type { Formula1Summary } from "@/types/formula1";
 import type {
   FantasyFormula1Asset,
   FantasyFormula1Lineup,
@@ -53,7 +53,7 @@ import {
 
 interface FantasyFormula1ClientProps {
   initialState: FantasyFormula1RouteState;
-  snapshot: Formula1Snapshot;
+  summary: Formula1Summary;
 }
 
 const UPDATED_AT_FORMATTER = new Intl.DateTimeFormat("en-US", {
@@ -723,7 +723,7 @@ function parsePersistedLineup(value: string | null): FantasyFormula1Lineup | nul
 
 export function FantasyFormula1Client({
   initialState,
-  snapshot,
+  summary: seasonSummary,
 }: FantasyFormula1ClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -735,8 +735,8 @@ export function FantasyFormula1Client({
     () => (hasManagedParams ? normalizeFantasyFormula1State(searchParams) : initialState),
     [hasManagedParams, initialState, searchParams]
   );
-  const assets = useMemo(() => buildFantasyFormula1Assets(snapshot), [snapshot]);
-  const storageKey = getFantasyFormula1StorageKey(snapshot.season);
+  const assets = useMemo(() => buildFantasyFormula1Assets(seasonSummary), [seasonSummary]);
+  const storageKey = getFantasyFormula1StorageKey(seasonSummary.season);
   const [lineup, setLineup] = useState<FantasyFormula1Lineup>(EMPTY_FANTASY_FORMULA1_LINEUP);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -873,11 +873,11 @@ export function FantasyFormula1Client({
   }, [assets, routeState.focus, routeState.sort]);
 
   const topAsset = sortedAssets[0] ?? null;
-  const nextRaceLabel = snapshot.nextMeeting?.name ?? "No upcoming race";
-  const nextRaceMeta = snapshot.nextMeeting?.raceStartsAt
-    ? formatUpdatedAt(snapshot.nextMeeting.raceStartsAt)
-    : snapshot.nextMeeting?.startAt
-      ? formatUpdatedAt(snapshot.nextMeeting.startAt)
+  const nextRaceLabel = seasonSummary.nextMeeting?.name ?? "No upcoming race";
+  const nextRaceMeta = seasonSummary.nextMeeting?.raceStartsAt
+    ? formatUpdatedAt(seasonSummary.nextMeeting.raceStartsAt)
+    : seasonSummary.nextMeeting?.startAt
+      ? formatUpdatedAt(seasonSummary.nextMeeting.startAt)
       : "TBD";
   const completeLabel = summary.isComplete ? "Complete" : "Incomplete";
   const statsCells: HomeStatsCell[] = [
@@ -919,8 +919,8 @@ export function FantasyFormula1Client({
     },
     {
       label: "Snapshot",
-      value: formatUpdatedAt(snapshot.generatedAt),
-      sub: snapshot.sourceLabel,
+      value: formatUpdatedAt(seasonSummary.generatedAt),
+      sub: seasonSummary.sourceLabel,
     },
   ];
 
@@ -976,7 +976,7 @@ export function FantasyFormula1Client({
               <div>
                 <p className="home-kicker mb-1">Model slate</p>
                 <h2 className="text-xl font-semibold tracking-[-0.04em]">
-                  {snapshot.season} season snapshot
+                  {seasonSummary.season} season snapshot
                 </h2>
                 <p className="mb-0 mt-2 text-sm leading-6 text-[var(--home-ink-muted)]">
                   {selectedAssetNames

@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import type { Formula1Snapshot } from "@/types/formula1";
+import type { Formula1Snapshot, Formula1Summary } from "@/types/formula1";
 import { Formula1Client } from "../formula-1-client";
 import { DEFAULT_FORMULA1_STATE } from "../formula-1-state";
 
@@ -224,24 +224,70 @@ const snapshotFixture: Formula1Snapshot = {
   lastCompletedMeeting: null,
 };
 
+const summaryFixture: Formula1Summary = {
+  ...snapshotFixture,
+  meetings: snapshotFixture.meetings.map(
+    ({ classification: _classification, podium: _podium, ...meta }) => meta
+  ),
+};
+
+const defaultMeetingDetail =
+  snapshotFixture.meetings.find((meeting) => meeting.key === "1283") ?? null;
+
+function createMeetingFetchMock() {
+  return jest.fn(async (input: RequestInfo | URL) => {
+    const key = String(input).split("/").pop() ?? "";
+    const meeting = snapshotFixture.meetings.find((candidate) => candidate.key === key);
+
+    if (!meeting) {
+      return {
+        ok: false,
+        status: 404,
+        json: async () => ({ error: "Formula 1 meeting snapshot was not found." }),
+      };
+    }
+
+    return {
+      ok: true,
+      status: 200,
+      json: async () => meeting,
+    };
+  });
+}
+
 describe("Formula1Client", () => {
   beforeEach(() => {
     currentSearchParams = new URLSearchParams();
     mockPush.mockReset();
     mockReplace.mockReset();
+    global.fetch = createMeetingFetchMock() as unknown as typeof fetch;
   });
 
   it("renders the hero without rewriting the default route", async () => {
-    render(<Formula1Client initialState={DEFAULT_FORMULA1_STATE} snapshot={snapshotFixture} />);
+    render(
+      <Formula1Client
+        initialState={DEFAULT_FORMULA1_STATE}
+        summary={summaryFixture}
+        initialMeeting={defaultMeetingDetail}
+      />
+    );
 
     expect(screen.getByRole("heading", { name: "Formula 1 Pulse" })).toBeInTheDocument();
     await waitFor(() => expect(mockReplace).not.toHaveBeenCalled());
+    // The default meeting is seeded server-side, so no detail fetch fires.
+    expect(global.fetch).not.toHaveBeenCalled();
   });
 
   it("canonicalizes invalid query params back to the default route", async () => {
     currentSearchParams = new URLSearchParams("view=bad&meeting=nope");
 
-    render(<Formula1Client initialState={DEFAULT_FORMULA1_STATE} snapshot={snapshotFixture} />);
+    render(
+      <Formula1Client
+        initialState={DEFAULT_FORMULA1_STATE}
+        summary={summaryFixture}
+        initialMeeting={defaultMeetingDetail}
+      />
+    );
 
     await waitFor(() =>
       expect(mockReplace).toHaveBeenCalledWith("/formula-1", { scroll: false })
@@ -252,7 +298,13 @@ describe("Formula1Client", () => {
     const user = userEvent.setup();
     currentSearchParams = new URLSearchParams("meeting=1281");
 
-    render(<Formula1Client initialState={DEFAULT_FORMULA1_STATE} snapshot={snapshotFixture} />);
+    render(
+      <Formula1Client
+        initialState={DEFAULT_FORMULA1_STATE}
+        summary={summaryFixture}
+        initialMeeting={defaultMeetingDetail}
+      />
+    );
 
     await user.click(screen.getByRole("button", { name: "Drivers" }));
 
@@ -268,12 +320,61 @@ describe("Formula1Client", () => {
   it("updates the URL when selecting a different race strip meeting", async () => {
     const user = userEvent.setup();
 
-    render(<Formula1Client initialState={DEFAULT_FORMULA1_STATE} snapshot={snapshotFixture} />);
+    render(
+      <Formula1Client
+        initialState={DEFAULT_FORMULA1_STATE}
+        summary={summaryFixture}
+        initialMeeting={defaultMeetingDetail}
+      />
+    );
 
     await user.click(screen.getByRole("button", { name: /Japanese Grand Prix/i }));
 
     expect(mockPush).toHaveBeenCalledWith("/formula-1?meeting=1281", {
       scroll: false,
     });
+  });
+
+  it("fetches a deep-linked meeting's detail on demand and renders its classification", async () => {
+    currentSearchParams = new URLSearchParams("meeting=1281");
+
+    render(
+      <Formula1Client
+        initialState={{ view: "overview", meeting: "1281" }}
+        summary={summaryFixture}
+        initialMeeting={null}
+      />
+    );
+
+    expect(screen.getByText(/loading race weekend detail/i)).toBeInTheDocument();
+
+    await waitFor(() =>
+      expect(screen.getByText(/1 · George RUSSELL/)).toBeInTheDocument()
+    );
+    expect(global.fetch).toHaveBeenCalledWith(
+      "/api/formula-1/meetings/1281",
+      expect.objectContaining({ signal: expect.anything() })
+    );
+  });
+
+  it("shows an error state when the meeting detail fetch fails", async () => {
+    global.fetch = jest.fn(async () => ({
+      ok: false,
+      status: 503,
+      json: async () => ({ error: "Unable to load the Formula 1 meeting snapshot" }),
+    })) as unknown as typeof fetch;
+    currentSearchParams = new URLSearchParams("meeting=1281");
+
+    render(
+      <Formula1Client
+        initialState={{ view: "overview", meeting: "1281" }}
+        summary={summaryFixture}
+        initialMeeting={null}
+      />
+    );
+
+    await waitFor(() =>
+      expect(screen.getByRole("alert")).toHaveTextContent(/unable to load/i)
+    );
   });
 });

@@ -1,9 +1,9 @@
 import { StructuredData } from "@/components/StructuredData";
 import { formula1Snapshot } from "@/data/formula1Snapshot";
-import { getFormula1Snapshot } from "@/lib/formula1Snapshot";
+import { getFormula1Meeting, getFormula1Summary } from "@/lib/formula1Snapshot";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { Formula1Client } from "./formula-1-client";
-import { normalizeFormula1State } from "./formula-1-state";
+import { normalizeFormula1State, resolveFormula1State } from "./formula-1-state";
 
 export const metadata = constructMetadata({
   title: "Formula 1 Pulse",
@@ -22,7 +22,13 @@ interface Formula1PageProps {
 
 export default async function Formula1Page({ searchParams }: Formula1PageProps) {
   const initialState = normalizeFormula1State(await searchParams);
-  const snapshot = await getFormula1Snapshot();
+  const summary = await getFormula1Summary();
+  // Seed the initially selected meeting server-side so a direct or deep-linked
+  // load paints its full detail without a client fetch.
+  const resolvedState = resolveFormula1State(initialState, summary);
+  const initialMeeting = resolvedState.meeting
+    ? await getFormula1Meeting(resolvedState.meeting).catch(() => null)
+    : null;
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "Formula 1 Pulse", url: "/formula-1" },
@@ -52,10 +58,14 @@ export default async function Formula1Page({ searchParams }: Formula1PageProps) 
             "Grand Prix calendar with schedules and classifications",
             "Snapshot-driven route that avoids a live runtime dependency",
           ],
-          dateModified: snapshot.generatedAt,
+          dateModified: summary.generatedAt,
         }}
       />
-      <Formula1Client initialState={initialState} snapshot={snapshot} />
+      <Formula1Client
+        initialState={initialState}
+        summary={summary}
+        initialMeeting={initialMeeting}
+      />
     </>
   );
 }

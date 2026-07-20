@@ -1,7 +1,7 @@
 import type { ReadonlyURLSearchParams } from "next/navigation";
 import type {
   Formula1RouteState,
-  Formula1Snapshot,
+  Formula1Summary,
   Formula1View,
 } from "@/types/formula1";
 
@@ -78,10 +78,10 @@ export function normalizeFormula1State(input: SearchParamInput): Formula1RouteSt
 
 export function resolveFormula1State(
   state: Formula1RouteState,
-  snapshot: Formula1Snapshot
+  summary: Pick<Formula1Summary, "meetings" | "defaultMeetingKey">
 ): Formula1RouteState {
-  const validMeetingKeys = new Set(snapshot.meetings.map((meeting) => meeting.key));
-  const defaultMeetingKey = snapshot.defaultMeetingKey ?? snapshot.meetings[0]?.key ?? null;
+  const validMeetingKeys = new Set(summary.meetings.map((meeting) => meeting.key));
+  const defaultMeetingKey = summary.defaultMeetingKey ?? summary.meetings[0]?.key ?? null;
 
   return {
     view: VALID_VIEWS.has(state.view) ? state.view : DEFAULT_FORMULA1_STATE.view,

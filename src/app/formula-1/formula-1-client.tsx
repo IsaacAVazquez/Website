@@ -13,6 +13,7 @@ import {
   ArrowDown,
   ArrowUp,
   CalendarDays,
+  CircleAlert,
   Clock,
   Flag,
   MapPinned,
@@ -23,10 +24,11 @@ import {
 import type {
   Formula1ConstructorStanding,
   Formula1DriverStanding,
+  Formula1MeetingMeta,
   Formula1MeetingSummary,
   Formula1RaceResultEntry,
   Formula1RouteState,
-  Formula1Snapshot,
+  Formula1Summary,
   Formula1View,
 } from "@/types/formula1";
 import {
@@ -49,7 +51,8 @@ import styles from "./formula-1.module.css";
 
 interface Formula1ClientProps {
   initialState: Formula1RouteState;
-  snapshot: Formula1Snapshot;
+  summary: Formula1Summary;
+  initialMeeting: Formula1MeetingSummary | null;
 }
 
 const SHORT_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
@@ -125,7 +128,21 @@ function formatGmtOffset(value: string | null): string | null {
   return `UTC${sign}${match[2].padStart(2, "0")}:${match[3]}`;
 }
 
-function getMeetingStatusCopy(meeting: Formula1MeetingSummary): string {
+async function fetchFormula1Meeting(
+  meetingKey: string,
+  signal: AbortSignal
+): Promise<Formula1MeetingSummary> {
+  const response = await fetch(`/api/formula-1/meetings/${meetingKey}`, { signal });
+  const payload = (await response.json()) as Formula1MeetingSummary & { error?: string };
+
+  if (!response.ok) {
+    throw new Error(payload.error || "Unable to load the race weekend detail.");
+  }
+
+  return payload;
+}
+
+function getMeetingStatusCopy(meeting: Formula1MeetingMeta): string {
   if (meeting.status === "upcoming") {
     return "Next weekend";
   }
@@ -137,7 +154,7 @@ function getMeetingStatusCopy(meeting: Formula1MeetingSummary): string {
   return "Latest result";
 }
 
-function getMeetingToneStyle(status: Formula1MeetingSummary["status"]): CSSProperties {
+function getMeetingToneStyle(status: Formula1MeetingMeta["status"]): CSSProperties {
   switch (status) {
     case "upcoming":
       return {
@@ -301,7 +318,7 @@ function TrackOutline({
   meeting,
   className = "",
 }: {
-  meeting: Formula1MeetingSummary;
+  meeting: Formula1MeetingMeta;
   className?: string;
 }) {
   if (meeting.circuitImage) {
@@ -326,7 +343,7 @@ function TrackOutline({
   );
 }
 
-function CircuitMarker({ meeting }: { meeting: Formula1MeetingSummary }) {
+function CircuitMarker({ meeting }: { meeting: Formula1MeetingMeta }) {
   return (
     <div
       className="hidden h-20 w-24 flex-shrink-0 flex-col items-center justify-center gap-1.5 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_82%,var(--home-elev-mix))] p-2.5 text-center sm:flex"
@@ -985,7 +1002,7 @@ function MeetingStrip({
   selectedMeetingKey,
   onSelect,
 }: {
-  meetings: Formula1MeetingSummary[];
+  meetings: Formula1MeetingMeta[];
   selectedMeetingKey: string | null;
   onSelect: (meetingKey: string) => void;
 }) {
@@ -1031,7 +1048,7 @@ function CalendarTimeline({
   selectedMeetingKey,
   onSelect,
 }: {
-  meetings: Formula1MeetingSummary[];
+  meetings: Formula1MeetingMeta[];
   selectedMeetingKey: string | null;
   onSelect: (meetingKey: string) => void;
 }) {
@@ -1117,9 +1134,12 @@ function ViewToggle({
   );
 }
 
-function getRaceStripMeetings(snapshot: Formula1Snapshot, selectedMeeting: Formula1MeetingSummary | null) {
-  const completed = snapshot.meetings.filter((meeting) => meeting.status === "completed").slice(-3);
-  const upcoming = snapshot.meetings.filter((meeting) => meeting.status === "upcoming").slice(0, 3);
+function getRaceStripMeetings(
+  summary: Formula1Summary,
+  selectedMeeting: Formula1MeetingMeta | null
+) {
+  const completed = summary.meetings.filter((meeting) => meeting.status === "completed").slice(-3);
+  const upcoming = summary.meetings.filter((meeting) => meeting.status === "upcoming").slice(0, 3);
   const raceStrip = [...completed, ...upcoming];
 
   if (selectedMeeting && !raceStrip.some((meeting) => meeting.key === selectedMeeting.key)) {
@@ -1129,7 +1149,58 @@ function getRaceStripMeetings(snapshot: Formula1Snapshot, selectedMeeting: Formu
   return raceStrip.slice(0, 6);
 }
 
-export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) {
+/**
+ * Placeholder card while a meeting's full detail (schedule + classification)
+ * loads from /api/formula-1/meetings/[meetingId], or when that fetch fails.
+ * Mirrors the async states the golf drilldown uses.
+ */
+function MeetingDetailFallback({
+  meeting,
+  error,
+}: {
+  meeting: Formula1MeetingMeta;
+  error: string | null;
+}) {
+  return (
+    <section className="home-card p-5 sm:p-6">
+      <div className="flex items-center gap-2">
+        <p className="home-kicker mb-0">{getMeetingStatusCopy(meeting)}</p>
+        <CountryFlag flagUrl={meeting.countryFlag} countryName={meeting.countryName} />
+      </div>
+      <h2
+        className="mt-1 text-[1.4rem] font-semibold tracking-[-0.05em] text-[var(--home-ink)]"
+        style={{ fontFamily: "var(--font-home-sans)" }}
+      >
+        {meeting.name}
+      </h2>
+      {error ? (
+        <div
+          className="mt-4 rounded-[var(--radius-2xl)] border px-4 py-4"
+          role="alert"
+          style={{
+            borderColor: "color-mix(in srgb, var(--home-negative) 24%, var(--home-rule))",
+            background: "color-mix(in srgb, var(--home-negative) 8%, var(--home-paper-alt))",
+          }}
+        >
+          <div className="flex items-start gap-3">
+            <CircleAlert
+              className="mt-0.5 h-4 w-4 shrink-0"
+              style={{ color: "var(--home-negative)" }}
+              aria-hidden="true"
+            />
+            <p className="mb-0 text-sm leading-6 text-[var(--home-ink)]">{error}</p>
+          </div>
+        </div>
+      ) : (
+        <p className="mb-0 mt-4 text-sm leading-6 text-[var(--home-ink-muted)]" role="status">
+          Loading race weekend detail…
+        </p>
+      )}
+    </section>
+  );
+}
+
+export function Formula1Client({ initialState, summary, initialMeeting }: Formula1ClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const currentQuery = searchParams.toString();
@@ -1137,12 +1208,28 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
   const hasManagedParams =
     searchParams.get("view") !== null || searchParams.get("meeting") !== null;
   const routeState = hasManagedParams ? normalizeFormula1State(searchParams) : initialState;
-  const resolvedState = resolveFormula1State(routeState, snapshot);
+  const resolvedState = resolveFormula1State(routeState, summary);
   const desiredHref = buildFormula1Href(
     resolvedState,
     searchParams,
-    snapshot.defaultMeetingKey
+    summary.defaultMeetingKey
   );
+
+  // Full meeting detail cache, keyed by meeting key. Seeded with everything
+  // the summary already carries in full so the default paint needs no fetch;
+  // other meetings load on demand from /api/formula-1/meetings/[meetingId].
+  const [meetingDetails, setMeetingDetails] = useState<Record<string, Formula1MeetingSummary>>(
+    () => {
+      const seeded: Record<string, Formula1MeetingSummary> = {};
+      for (const meeting of [summary.nextMeeting, summary.lastCompletedMeeting, initialMeeting]) {
+        if (meeting) {
+          seeded[meeting.key] = meeting;
+        }
+      }
+      return seeded;
+    }
+  );
+  const [meetingDetailErrors, setMeetingDetailErrors] = useState<Record<string, string>>({});
 
   useEffect(() => {
     if (currentHref === desiredHref) {
@@ -1155,11 +1242,11 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
   }, [currentHref, desiredHref, router]);
 
   function navigate(nextState: Formula1RouteState) {
-    const resolvedNextState = resolveFormula1State(nextState, snapshot);
+    const resolvedNextState = resolveFormula1State(nextState, summary);
     const href = buildFormula1Href(
       resolvedNextState,
       searchParams,
-      snapshot.defaultMeetingKey
+      summary.defaultMeetingKey
     );
 
     if (href === currentHref) {
@@ -1171,30 +1258,84 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
     });
   }
 
-  const selectedMeeting = useMemo(
+  const selectedMeetingMeta = useMemo(
     () =>
-      snapshot.meetings.find((meeting) => meeting.key === resolvedState.meeting) ??
-      snapshot.nextMeeting ??
-      snapshot.lastCompletedMeeting ??
-      snapshot.meetings[0] ??
+      summary.meetings.find((meeting) => meeting.key === resolvedState.meeting) ??
+      summary.nextMeeting ??
+      summary.lastCompletedMeeting ??
+      summary.meetings[0] ??
       null,
-    [resolvedState.meeting, snapshot]
+    [resolvedState.meeting, summary]
   );
+  const selectedMeetingKey = selectedMeetingMeta?.key ?? null;
+  const selectedMeeting = selectedMeetingKey
+    ? meetingDetails[selectedMeetingKey] ?? null
+    : null;
+  const selectedMeetingError = selectedMeetingKey
+    ? meetingDetailErrors[selectedMeetingKey] ?? null
+    : null;
 
-  const highlightMeeting = snapshot.nextMeeting ?? snapshot.lastCompletedMeeting ?? selectedMeeting;
+  useEffect(() => {
+    if (!selectedMeetingKey) {
+      return;
+    }
+
+    if (meetingDetails[selectedMeetingKey] || meetingDetailErrors[selectedMeetingKey]) {
+      return;
+    }
+
+    const controller = new AbortController();
+    let cancelled = false;
+
+    fetchFormula1Meeting(selectedMeetingKey, controller.signal)
+      .then((meeting) => {
+        if (cancelled) {
+          return;
+        }
+
+        setMeetingDetails((current) =>
+          current[selectedMeetingKey] ? current : { ...current, [selectedMeetingKey]: meeting }
+        );
+        setMeetingDetailErrors((current) => {
+          if (!(selectedMeetingKey in current)) {
+            return current;
+          }
+
+          const next = { ...current };
+          delete next[selectedMeetingKey];
+          return next;
+        });
+      })
+      .catch((error: Error) => {
+        if (!cancelled && error.name !== "AbortError") {
+          setMeetingDetailErrors((current) => ({
+            ...current,
+            [selectedMeetingKey]: error.message || "Unable to load the race weekend detail.",
+          }));
+        }
+      });
+
+    return () => {
+      cancelled = true;
+      controller.abort();
+    };
+  }, [meetingDetailErrors, meetingDetails, selectedMeetingKey]);
+
+  const highlightMeeting: Formula1MeetingMeta | null =
+    summary.nextMeeting ?? summary.lastCompletedMeeting ?? selectedMeetingMeta;
   const highlightIsUpcoming =
     highlightMeeting?.status === "upcoming" || highlightMeeting?.status === "live";
-  const driverLeader = snapshot.driverStandings[0] ?? null;
-  const driverRunnerUp = snapshot.driverStandings[1] ?? null;
-  const constructorLeader = snapshot.constructorStandings[0] ?? null;
-  const constructorRunnerUp = snapshot.constructorStandings[1] ?? null;
+  const driverLeader = summary.driverStandings[0] ?? null;
+  const driverRunnerUp = summary.driverStandings[1] ?? null;
+  const constructorLeader = summary.constructorStandings[0] ?? null;
+  const constructorRunnerUp = summary.constructorStandings[1] ?? null;
   const raceStripMeetings = useMemo(
-    () => getRaceStripMeetings(snapshot, selectedMeeting),
-    [selectedMeeting, snapshot]
+    () => getRaceStripMeetings(summary, selectedMeetingMeta),
+    [selectedMeetingMeta, summary]
   );
 
   // Stats panel cells
-  const lastCompletedMeeting = snapshot.lastCompletedMeeting;
+  const lastCompletedMeeting = summary.lastCompletedMeeting;
   const lastWinner = lastCompletedMeeting?.podium?.[0] ?? null;
   const driverGap = driverLeader && driverRunnerUp ? driverLeader.points - driverRunnerUp.points : null;
   const constructorGap = constructorLeader && constructorRunnerUp
@@ -1205,7 +1346,7 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
     {
       label: "Rounds",
       tooltip: "Completed grands prix relative to the full season schedule.",
-      value: `${snapshot.seasonMetrics.completedRaces} / ${snapshot.seasonMetrics.totalRaces}`,
+      value: `${summary.seasonMetrics.completedRaces} / ${summary.seasonMetrics.totalRaces}`,
     },
     {
       label: "Driver leader",
@@ -1235,7 +1376,7 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
     {
       label: "Sprint weekends",
       tooltip: "Number of sprint-format weekends scheduled this season.",
-      value: String(snapshot.seasonMetrics.sprintWeekends),
+      value: String(summary.seasonMetrics.sprintWeekends),
     },
     {
       label: "Last GP winner",
@@ -1283,18 +1424,18 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
             </p>
 
             <div className="mt-6 flex flex-wrap gap-2">
-              <span className="resume-chip">{snapshot.season} season</span>
+              <span className="resume-chip">{summary.season} season</span>
               <span className="resume-chip">
-                {snapshot.seasonMetrics.completedRaces} of {snapshot.seasonMetrics.totalRaces} races complete
+                {summary.seasonMetrics.completedRaces} of {summary.seasonMetrics.totalRaces} races complete
               </span>
-              <span className="resume-chip">{snapshot.sourceLabel}</span>
-              <span className="resume-chip">Updated {formatUpdatedAt(snapshot.generatedAt)}</span>
+              <span className="resume-chip">{summary.sourceLabel}</span>
+              <span className="resume-chip">Updated {formatUpdatedAt(summary.generatedAt)}</span>
             </div>
 
             <div className="mt-7 max-w-[34rem]">
               <SeasonProgress
-                completed={snapshot.seasonMetrics.completedRaces}
-                total={snapshot.seasonMetrics.totalRaces}
+                completed={summary.seasonMetrics.completedRaces}
+                total={summary.seasonMetrics.totalRaces}
               />
             </div>
 
@@ -1307,7 +1448,7 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
                   onSelect={(nextView) =>
                     navigate({
                       view: nextView,
-                      meeting: selectedMeeting?.key ?? snapshot.defaultMeetingKey,
+                      meeting: selectedMeetingKey ?? summary.defaultMeetingKey,
                     })
                   }
                 />
@@ -1401,7 +1542,7 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
       <HomeStatsPanel
         id="f1-stats-panel"
         title="Formula 1 at a glance"
-        meta={`Live · refreshed ${formatUpdatedAt(snapshot.generatedAt)}`}
+        meta={`Live · refreshed ${formatUpdatedAt(summary.generatedAt)}`}
         cells={statsPanelCells}
         pills={[
           { label: "Drivers", href: "?view=drivers", icon: User },
@@ -1422,7 +1563,7 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
                 description="Bars scale to the leader so the championship spread reads in one look."
                 icon={<Trophy size={16} />}
               />
-              <DriverLeaderboard standings={snapshot.driverStandings} limit={8} />
+              <DriverLeaderboard standings={summary.driverStandings} limit={8} />
             </article>
 
             <article className="home-card p-5 sm:p-6">
@@ -1432,12 +1573,12 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
                 description="Team points against the garage out front, colored by livery."
                 icon={<Flag size={16} />}
               />
-              <ConstructorLeaderboard standings={snapshot.constructorStandings} limit={8} />
+              <ConstructorLeaderboard standings={summary.constructorStandings} limit={8} />
             </article>
           </section>
 
-          {snapshot.lastCompletedMeeting ? (
-            <PodiumDisplay meeting={snapshot.lastCompletedMeeting} />
+          {summary.lastCompletedMeeting ? (
+            <PodiumDisplay meeting={summary.lastCompletedMeeting} />
           ) : null}
 
           <section className="home-card p-5 sm:p-6">
@@ -1450,7 +1591,7 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
 
             <MeetingStrip
               meetings={raceStripMeetings}
-              selectedMeetingKey={selectedMeeting?.key ?? null}
+              selectedMeetingKey={selectedMeetingKey}
               onSelect={(meetingKey) =>
                 navigate({
                   view: "overview",
@@ -1460,7 +1601,11 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
             />
           </section>
 
-          {selectedMeeting ? <MeetingDetailPanel meeting={selectedMeeting} compact /> : null}
+          {selectedMeeting ? (
+            <MeetingDetailPanel meeting={selectedMeeting} compact />
+          ) : selectedMeetingMeta ? (
+            <MeetingDetailFallback meeting={selectedMeetingMeta} error={selectedMeetingError} />
+          ) : null}
         </>
       ) : null}
 
@@ -1472,7 +1617,7 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
             description="Point bars are tied to the latest race-backed snapshot, not a live-session guess."
             icon={<Trophy size={16} />}
           />
-          <DriverLeaderboard standings={snapshot.driverStandings} />
+          <DriverLeaderboard standings={summary.driverStandings} />
         </section>
       ) : null}
 
@@ -1484,7 +1629,7 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
             description="Team-first so you can read race-to-race movement without hunting through both garage lineups."
             icon={<Flag size={16} />}
           />
-          <ConstructorLeaderboard standings={snapshot.constructorStandings} />
+          <ConstructorLeaderboard standings={summary.constructorStandings} />
         </section>
       ) : null}
 
@@ -1504,8 +1649,8 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
               <CalendarDays className="text-[var(--home-ink-muted)]" size={18} />
             </div>
             <CalendarTimeline
-              meetings={snapshot.meetings}
-              selectedMeetingKey={selectedMeeting?.key ?? null}
+              meetings={summary.meetings}
+              selectedMeetingKey={selectedMeetingKey}
               onSelect={(meetingKey) =>
                 navigate({
                   view: "calendar",
@@ -1515,7 +1660,11 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
             />
           </div>
 
-          {selectedMeeting ? <MeetingDetailPanel meeting={selectedMeeting} /> : null}
+          {selectedMeeting ? (
+            <MeetingDetailPanel meeting={selectedMeeting} />
+          ) : selectedMeetingMeta ? (
+            <MeetingDetailFallback meeting={selectedMeetingMeta} error={selectedMeetingError} />
+          ) : null}
         </section>
       ) : null}
 
@@ -1541,7 +1690,7 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
             OpenF1 is community-run and unofficial. This dashboard is not affiliated with Formula 1,
             the FIA, or Formula One Management. Read the{" "}
             <a
-              href={snapshot.sourceUrls.docs}
+              href={summary.sourceUrls.docs}
               className="text-[var(--home-signal)] underline decoration-transparent transition-[color,text-decoration-color] duration-200 hover:decoration-current"
             >
               docs

@@ -2,7 +2,7 @@ import type {
   Formula1ConstructorStanding,
   Formula1DriverStanding,
   Formula1RaceResultEntry,
-  Formula1Snapshot,
+  Formula1Summary,
 } from "@/types/formula1";
 import type {
   FantasyFormula1Asset,
@@ -27,6 +27,21 @@ export const EMPTY_FANTASY_FORMULA1_LINEUP: FantasyFormula1Lineup = {
   lockedAssetIds: [],
 };
 
+/**
+ * The slice of the Formula 1 snapshot the fantasy model actually reads. Both
+ * the slim Formula1Summary and the full Formula1Snapshot satisfy it, so the
+ * fantasy page can pass the slim payload without serializing every meeting's
+ * classification.
+ */
+export type FantasyFormula1SnapshotInput = Pick<
+  Formula1Summary,
+  | "seasonMetrics"
+  | "nextMeeting"
+  | "driverStandings"
+  | "constructorStandings"
+  | "lastCompletedMeeting"
+>;
+
 function roundToTenths(value: number): number {
   return Math.round(value * 10) / 10;
 }
@@ -35,11 +50,11 @@ function clamp(value: number, min: number, max: number): number {
   return Math.max(min, Math.min(max, value));
 }
 
-function getCompletedRaceCount(snapshot: Formula1Snapshot): number {
+function getCompletedRaceCount(snapshot: FantasyFormula1SnapshotInput): number {
   return Math.max(snapshot.seasonMetrics.completedRaces, 1);
 }
 
-function getSprintMultiplier(snapshot: Formula1Snapshot): number {
+function getSprintMultiplier(snapshot: FantasyFormula1SnapshotInput): number {
   return snapshot.nextMeeting?.hasSprint ? 1.12 : 1;
 }
 
@@ -90,15 +105,19 @@ function getRisk(kind: "driver" | "constructor", delta: number, position: number
   return "low" as const;
 }
 
-function getLastPublishedClassification(snapshot: Formula1Snapshot): Formula1RaceResultEntry[] {
-  return (
-    snapshot.meetings
-      .filter((meeting) => meeting.resultPublished && meeting.classification.length > 0)
-      .at(-1)?.classification ?? []
-  );
+// Reads the fallback classification from the last completed meeting, which is
+// the only meeting the slim summary carries in full. If that race's result is
+// not published yet the fallback is empty until the next snapshot refresh.
+function getLastPublishedClassification(
+  snapshot: FantasyFormula1SnapshotInput
+): Formula1RaceResultEntry[] {
+  const lastCompleted = snapshot.lastCompletedMeeting;
+  return lastCompleted?.resultPublished && lastCompleted.classification.length > 0
+    ? lastCompleted.classification
+    : [];
 }
 
-function buildDriverRows(snapshot: Formula1Snapshot): Formula1DriverStanding[] {
+function buildDriverRows(snapshot: FantasyFormula1SnapshotInput): Formula1DriverStanding[] {
   if (snapshot.driverStandings.length > 0) {
     return snapshot.driverStandings;
   }
@@ -121,7 +140,7 @@ function buildDriverRows(snapshot: Formula1Snapshot): Formula1DriverStanding[] {
     }));
 }
 
-function buildConstructorRows(snapshot: Formula1Snapshot): Formula1ConstructorStanding[] {
+function buildConstructorRows(snapshot: FantasyFormula1SnapshotInput): Formula1ConstructorStanding[] {
   if (snapshot.constructorStandings.length > 0) {
     return snapshot.constructorStandings;
   }
@@ -155,7 +174,7 @@ function buildConstructorRows(snapshot: Formula1Snapshot): Formula1ConstructorSt
 function buildDriverAsset(
   standing: Formula1DriverStanding,
   index: number,
-  snapshot: Formula1Snapshot,
+  snapshot: FantasyFormula1SnapshotInput,
   fieldSize: number
 ): FantasyFormula1Asset {
   const completedRaces = getCompletedRaceCount(snapshot);
@@ -198,7 +217,7 @@ function buildDriverAsset(
 function buildConstructorAsset(
   standing: Formula1ConstructorStanding,
   index: number,
-  snapshot: Formula1Snapshot,
+  snapshot: FantasyFormula1SnapshotInput,
   fieldSize: number
 ): FantasyFormula1Asset {
   const completedRaces = getCompletedRaceCount(snapshot);
@@ -238,7 +257,9 @@ function buildConstructorAsset(
   };
 }
 
-export function buildFantasyFormula1Assets(snapshot: Formula1Snapshot): FantasyFormula1Asset[] {
+export function buildFantasyFormula1Assets(
+  snapshot: FantasyFormula1SnapshotInput
+): FantasyFormula1Asset[] {
   const driverRows = buildDriverRows(snapshot);
   const constructorRows = buildConstructorRows(snapshot);
   const driverAssets = driverRows.map((standing, index) =>

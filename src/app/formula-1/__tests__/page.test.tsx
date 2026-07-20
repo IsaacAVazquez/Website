@@ -1,10 +1,15 @@
 import { render, screen } from "@testing-library/react";
-import type { Formula1RouteState, Formula1Snapshot } from "@/types/formula1";
+import type {
+  Formula1MeetingSummary,
+  Formula1RouteState,
+  Formula1Summary,
+} from "@/types/formula1";
 import Formula1Page, { metadata } from "../page";
 
 type Formula1ClientProps = {
   initialState: Formula1RouteState;
-  snapshot: Formula1Snapshot;
+  summary: Formula1Summary;
+  initialMeeting: Formula1MeetingSummary | null;
 };
 
 const mockFormula1Client = jest.fn<void, [Formula1ClientProps]>();
@@ -39,6 +44,30 @@ describe("Formula1Page", () => {
           meeting: "1281",
         },
       })
+    );
+  });
+
+  it("passes a slim summary without per-meeting results plus the seeded meeting detail", async () => {
+    const page = await Formula1Page({
+      searchParams: Promise.resolve({}),
+    });
+
+    render(page);
+
+    const props = mockFormula1Client.mock.calls.at(-1)?.[0];
+    expect(props).toBeDefined();
+    expect(props!.summary.meetings.length).toBeGreaterThan(0);
+    for (const meeting of props!.summary.meetings) {
+      expect(meeting).not.toHaveProperty("classification");
+      expect(meeting).not.toHaveProperty("podium");
+    }
+
+    // The resolved default meeting ships as full detail so first paint needs
+    // no client fetch.
+    expect(props!.initialMeeting).not.toBeNull();
+    expect(Array.isArray(props!.initialMeeting!.classification)).toBe(true);
+    expect(props!.initialMeeting!.key).toBe(
+      props!.summary.defaultMeetingKey ?? props!.summary.meetings[0]!.key
     );
   });
 

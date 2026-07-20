@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import type { Formula1DriverStanding, Formula1Snapshot } from "@/types/formula1";
+import type { Formula1DriverStanding, Formula1Summary } from "@/types/formula1";
 import { getFantasyFormula1StorageKey } from "@/lib/fantasyFormula1";
 import { FantasyFormula1Client } from "../fantasy-formula-1-client";
 import { DEFAULT_FANTASY_FORMULA1_STATE } from "../fantasy-formula-1-state";
@@ -42,8 +42,8 @@ function driver(
   };
 }
 
-function createSnapshot(overrides: Partial<Formula1Snapshot> = {}): Formula1Snapshot {
-  const snapshot: Formula1Snapshot = {
+function createSummary(overrides: Partial<Formula1Summary> = {}): Formula1Summary {
+  const summary: Formula1Summary = {
     sourceLabel: "OpenF1 historical snapshot",
     sourceUrls: {
       docs: "https://openf1.org/docs/",
@@ -130,7 +130,7 @@ function createSnapshot(overrides: Partial<Formula1Snapshot> = {}): Formula1Snap
     lastCompletedMeeting: null,
   };
 
-  return { ...snapshot, ...overrides };
+  return { ...summary, ...overrides };
 }
 
 describe("FantasyFormula1Client", () => {
@@ -146,7 +146,7 @@ describe("FantasyFormula1Client", () => {
     render(
       <FantasyFormula1Client
         initialState={DEFAULT_FANTASY_FORMULA1_STATE}
-        snapshot={createSnapshot()}
+        summary={createSummary()}
       />
     );
 
@@ -185,7 +185,7 @@ describe("FantasyFormula1Client", () => {
     render(
       <FantasyFormula1Client
         initialState={DEFAULT_FANTASY_FORMULA1_STATE}
-        snapshot={createSnapshot()}
+        summary={createSummary()}
       />
     );
 
@@ -209,7 +209,7 @@ describe("FantasyFormula1Client", () => {
     render(
       <FantasyFormula1Client
         initialState={DEFAULT_FANTASY_FORMULA1_STATE}
-        snapshot={createSnapshot({ driverStandings: [], constructorStandings: [] })}
+        summary={createSummary({ driverStandings: [], constructorStandings: [] })}
       />
     );
 
