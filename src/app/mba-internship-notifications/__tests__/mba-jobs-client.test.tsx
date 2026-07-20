@@ -6,6 +6,16 @@ import { MBA_COMPANIES } from "@/constants/mba-companies";
 import type { MBAJob, MBATrackedApplication } from "@/types/mba-jobs";
 import { useMBAJobs } from "@/hooks/useMBAJobs";
 import { useMBAApplications } from "@/hooks/useMBAApplications";
+import { toApplicationDateKey } from "@/lib/mba-application-insights";
+
+// A YYYY-MM-DD key `days` from today, anchored at local noon so the calendar
+// day is stable regardless of the test machine's clock or DST.
+function dayKeyOffset(days: number): string {
+  const date = new Date();
+  date.setHours(12, 0, 0, 0);
+  date.setDate(date.getDate() + days);
+  return toApplicationDateKey(date);
+}
 
 const mockPush = jest.fn();
 let currentSearchParams = new URLSearchParams();
@@ -540,5 +550,104 @@ describe("MBAJobsClient", () => {
     );
 
     expect(updateStatus).toHaveBeenCalledWith("app-1", "offer");
+  });
+
+  it("summarizes the pipeline funnel and conversion rates in the applications view", () => {
+    currentSearchParams = new URLSearchParams("view=applications");
+    const applications = [
+      buildApplication({ id: "a1", jobId: "j1", status: "saved" }),
+      buildApplication({ id: "a2", jobId: "j2", status: "applied" }),
+      buildApplication({ id: "a3", jobId: "j3", status: "applied" }),
+      buildApplication({ id: "a4", jobId: "j4", status: "interviewing" }),
+      buildApplication({ id: "a5", jobId: "j5", status: "offer" }),
+    ];
+    mockUseMBAApplications.mockReturnValue(
+      buildApplicationsHookValue({ applications, activeApplications: applications })
+    );
+
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    // submitted = applied(2) + interviewing(1) + offer(1) = 4; responded = 2.
+    expect(screen.getByText("Response rate")).toBeVisible();
+    expect(screen.getByText("2 of 4 heard back")).toBeVisible();
+    expect(screen.getByText("Pipeline funnel")).toBeVisible();
+    // The old ad-hoc stat cards are gone.
+    expect(screen.queryByText("Overdue follow-ups")).not.toBeInTheDocument();
+  });
+
+  it("surfaces overdue follow-ups in the needs-attention panel and clears them", () => {
+    currentSearchParams = new URLSearchParams("view=applications");
+    const updateApplication = jest.fn();
+    const application = buildApplication({
+      status: "applied",
+      followUpDate: dayKeyOffset(-3),
+      jobSnapshot: {
+        ...buildApplication().jobSnapshot,
+        companyName: "Acme",
+        title: "Strategy Manager",
+      },
+    });
+    mockUseMBAApplications.mockReturnValue(
+      buildApplicationsHookValue({
+        applications: [application],
+        activeApplications: [application],
+        updateApplication,
+      })
+    );
+
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    expect(screen.getByText("What to chase today.")).toBeVisible();
+    expect(screen.getByText("Follow-up overdue by 3 days")).toBeVisible();
+
+    fireEvent.click(screen.getByRole("button", { name: "Mark done" }));
+    expect(updateApplication).toHaveBeenCalledWith("app-1", { followUpDate: null });
+  });
+
+  it("marks an approaching-deadline role applied straight from the attention panel", () => {
+    currentSearchParams = new URLSearchParams("view=applications");
+    const updateStatus = jest.fn();
+    const application = buildApplication({
+      status: "saved",
+      deadline: dayKeyOffset(2),
+    });
+    mockUseMBAApplications.mockReturnValue(
+      buildApplicationsHookValue({
+        applications: [application],
+        activeApplications: [application],
+        updateStatus,
+      })
+    );
+
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    expect(screen.getByText("Deadline in 2 days")).toBeVisible();
+
+    fireEvent.click(screen.getByRole("button", { name: "Mark applied" }));
+    expect(updateStatus).toHaveBeenCalledWith("app-1", "applied");
+  });
+
+  it("shows an all-caught-up state and changes priority inline from a card", () => {
+    currentSearchParams = new URLSearchParams("view=applications");
+    const updatePriority = jest.fn();
+    const application = buildApplication({ status: "applied", priority: "medium" });
+    mockUseMBAApplications.mockReturnValue(
+      buildApplicationsHookValue({
+        applications: [application],
+        activeApplications: [application],
+        updatePriority,
+      })
+    );
+
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    // No follow-ups or deadlines are pending, so the panel reassures instead.
+    expect(screen.getByText(/You.re all caught up\./)).toBeVisible();
+
+    fireEvent.change(
+      screen.getByLabelText("Priority for MBA Product Intern"),
+      { target: { value: "high" } }
+    );
+    expect(updatePriority).toHaveBeenCalledWith("app-1", "high");
   });
 });
