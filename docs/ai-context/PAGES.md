@@ -12,7 +12,7 @@ Fast route reference for the current app.
 |------|------|----------------|
 | `/` | `src/app/page.tsx` | Server page composing client sections |
 | `/about` | `src/app/about/page.tsx` | Server page -> `About` client component |
-| `/portfolio` | `src/app/portfolio/page.tsx` | Server page -> `PortfolioV3` client (searchable, filtered project index) |
+| `/portfolio` | `src/app/portfolio/page.tsx` | Server page -> `PortfolioInstrument` client (searchable, filtered project index) |
 | `/portfolio/[slug]` | `src/app/portfolio/[slug]/page.tsx` | Server detail page |
 | `/resume` | `src/app/resume/page.tsx` | Server page -> client resume UI |
 | `/contact` | `src/app/contact/page.tsx` | Server page -> `ContactContent` |
@@ -120,8 +120,8 @@ Footer behavior:
 
 ### `/portfolio`
 
-- server page calls `getPortfolioProjects()` and hands the full non-`comingSoon` project index to the `PortfolioV3` client (`src/components/portfolio/PortfolioV3.tsx`)
-- `PortfolioV3` adds a client-side project search, category filter tablist, a featured project, sortable + paginated grid, and a marquee band that sits between the project grid and the pager
+- server page calls `getPortfolioProjects()` and hands the full non-`comingSoon` project index to the `PortfolioInstrument` client (`src/components/portfolio/PortfolioInstrument.tsx`)
+- `PortfolioInstrument` adds a client-side project search, category filter tablist, a featured project, sortable + paginated grid, and a marquee band that sits between the project grid and the pager
 - cards should make role, problem space, and impact scannable before click-through
 - do not document `ProjectsContent.tsx` as the primary live implementation
 

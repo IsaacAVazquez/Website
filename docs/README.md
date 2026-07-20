@@ -101,8 +101,6 @@ These remain in the repo for context, but they should not be treated as live sou
 - `../content-redesign/*`
 - `../content/*`
 - `../public/project-screenshots/README.md`
-- `../src/app/admin/README_scoring_format.md`
-- `../.open-next/assets/project-screenshots/README.md`
 
 Historical files should have an explicit banner where practical. If one conflicts with code or a current doc, trust the current doc and then the code.
 

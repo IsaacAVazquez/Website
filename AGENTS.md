@@ -427,6 +427,7 @@ Checked-in operational workflows:
 Current behavior:
 
 - `test.yml` runs unit tests, build, sharded Chromium Playwright E2E, and lint on pushes to `main` or `develop`, plus pull requests targeting `main` or `develop`; full-matrix Playwright runs only on pushes to `main`
+- `changelog-on-merge.yml` appends a dated bullet to `CHANGELOG.md` on `main` for every merged pull request; add the `skip-changelog` label to opt a PR out. Snapshot-refresh bots push straight to `main` without a PR, so they never trigger it, and the commit lands with `[skip ci]` to avoid a trigger loop
 - `update-investments.yml` runs on manual dispatch and weekdays at `22:15 UTC`, then commits refreshed compact snapshots under `public/data/investments`; raw provider responses are not committed
 - `update-premier-league.yml` and `update-la-liga.yml` run every four hours during the season (August through May; skipped June and July)
 - `update-fantasy.yml` runs daily July through September and weekly otherwise

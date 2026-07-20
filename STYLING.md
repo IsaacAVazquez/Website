@@ -31,7 +31,7 @@ Legacy semantic tokens (`--surface-*`, `--text-*`, `--border-*`, `--color-primar
 - `src/app/globals.css`
 - `tailwind.config.ts`
 - `src/components/ui/*`
-- `src/components/home/HomePageContent.tsx`
+- `src/components/home/HomeInstrument.tsx`
 
 ---
 
@@ -344,7 +344,7 @@ Base: `.home-button` — 48px min-height, pill shape (radius 999px), Instrument 
 
 ### Writing Archive Cards (`/writing`)
 
-The archive cards on `/writing` are owned by `src/app/writing/page.tsx`, not `src/components/home/HomePageContent.tsx`.
+The archive cards on `/writing` are owned by `src/app/writing/page.tsx`, not `src/components/home/HomeInstrument.tsx`.
 Do not use the home writing-preview card as the visual source of truth for the archive page.
 
 The footer metadata row on both `CuratedWritingCard` and `ArchiveWritingCard` is a locked pattern and should stay visually stable:

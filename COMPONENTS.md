@@ -4,8 +4,8 @@ Current component map for the live application.
 
 **Last updated:** 2026-07-12
 
-> The homepage, about, portfolio, contact, and writing-archive surfaces moved to
-> dedicated `*V3` composition roots in the 2026-05-31 refresh (commit `66063bb`).
+> The homepage, about, portfolio, contact, and writing-archive surfaces each render
+> a single dedicated `*Instrument` composition root (the Working Instrument redesign).
 > The older single-purpose homepage components (`ModernHero`, `ThinkingPreview`,
 > `ContactSection`) and the `FeaturedWorkSection`/`ContactContent` names this doc
 > previously listed are no longer wired into any route — see *Legacy Or Unwired
@@ -29,17 +29,17 @@ Current component map for the live application.
 
 ### Homepage, about, portfolio, contact, writing
 
-Each of these editorial surfaces renders a single dedicated `*V3` composition
-root (introduced in the 2026-05-31 refresh). The route page is a thin server
-shell that passes data in.
+Each of these editorial surfaces renders a single dedicated `*Instrument`
+composition root (the Working Instrument redesign). The route page is a thin
+server shell that passes data in.
 
 | Component | File | Role |
 |----------|------|------|
-| `HomePageV3` | `src/components/home/HomePageV3.tsx` | Homepage composition root (hero, featured work, writing, contact). Props: `featuredProjects`, `recentPosts`, `heroIndex` |
-| `AboutV3` | `src/components/about/AboutV3.tsx` | `/about` content |
-| `PortfolioV3` | `src/components/portfolio/PortfolioV3.tsx` | `/portfolio` project grid and surfacing |
-| `ContactV3` | `src/components/contact/ContactV3.tsx` | `/contact` content |
-| `WritingArchiveV3` | `src/components/writing/WritingArchiveV3.tsx` | `/writing` archive index |
+| `HomeInstrument` | `src/components/home/HomeInstrument.tsx` | Homepage composition root (hero, featured work, writing, contact). Props: `featuredProjects`, `recentPosts`, `heroIndex`, `liveToolGroups`, `liveFeed` |
+| `AboutInstrument` | `src/components/about/AboutInstrument.tsx` | `/about` content |
+| `PortfolioInstrument` | `src/components/portfolio/PortfolioInstrument.tsx` | `/portfolio` project grid and surfacing |
+| `ContactInstrument` | `src/components/contact/ContactInstrument.tsx` | `/contact` content |
+| `WritingInstrument` | `src/components/writing/WritingInstrument.tsx` | `/writing` archive index |
 | `ProjectDetailModal` | `src/components/ProjectDetailModal.tsx` | Legacy project modal, imported only by `ProjectsContent.tsx` (non-primary flow) |
 
 ### Writing and structured data
@@ -153,7 +153,6 @@ Most reused primitives:
 - `ThemeToggle`
 - `SectionIntro`
 - `ServerIcons`
-- `button.tsx`
 - `dropdown-menu.tsx`
 
 Editorial shared components also live under `src/components/editorial/`; use them when working in the current `--home-*` visual system.
@@ -171,8 +170,8 @@ Styling guidance for these lives in `STYLING.md`.
 
 ### Homepage
 
-`src/app/page.tsx` renders `HomePageV3` (plus the `StructuredData` /
-`AIStructuredData` JSON-LD injectors). `HomePageV3` is a self-contained
+`src/app/page.tsx` renders `HomeInstrument` (plus the `StructuredData` /
+`AIStructuredData` JSON-LD injectors). `HomeInstrument` is a self-contained
 composition; the older `ModernHero` / `ThinkingPreview` / `ContactSection` files
 and `WritingPreview.tsx` still exist in the repo but are no longer wired into the
 homepage.
@@ -213,7 +212,7 @@ These files still exist, but should not be described as the primary live path wi
 - `src/components/ProjectDetailModal.tsx` (imported only by `ProjectsContent.tsx`)
 
 They remain useful as historical or alternate implementation context. The
-`*V3` composition roots replaced them on the live routes.
+`*Instrument` composition roots replaced them on the live routes.
 
 ---
 
