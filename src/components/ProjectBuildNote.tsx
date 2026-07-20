@@ -1,14 +1,18 @@
 import Link from "next/link";
 import { ArrowRight } from "@/components/ui/ServerIcons";
+import { PROJECT_BUILD_NOTE_CONTEXT } from "@/components/projectBuildNoteContent";
 
 interface ProjectBuildNoteProps {
   href: string;
-  purpose?: string;
-  method?: string;
+  route: string;
 }
 
-export function ProjectBuildNote({ href, purpose, method }: ProjectBuildNoteProps) {
-  const hasProjectContext = Boolean(purpose && method);
+// The purpose/method prose lives in projectBuildNoteContent and is looked up
+// here (not passed from ConditionalLayout) so the whole aside — component and
+// prose — code-splits into one chunk that only build-note routes load.
+export function ProjectBuildNote({ href, route }: ProjectBuildNoteProps) {
+  const context = PROJECT_BUILD_NOTE_CONTEXT[route];
+  const hasProjectContext = Boolean(context);
 
   return (
     <aside
@@ -27,10 +31,10 @@ export function ProjectBuildNote({ href, purpose, method }: ProjectBuildNoteProp
             >
               {hasProjectContext ? "What I use it for" : "Why I built it this way"}
             </h2>
-            {hasProjectContext ? (
+            {context ? (
               <div className="space-y-3">
-                <p className="home-body mb-0">{purpose}</p>
-                <p className="home-body mb-0">{method}</p>
+                <p className="home-body mb-0">{context.purpose}</p>
+                <p className="home-body mb-0">{context.method}</p>
               </div>
             ) : (
               <p className="home-body mb-0">
