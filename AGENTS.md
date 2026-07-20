@@ -190,7 +190,7 @@ Confirm live API routes from `src/app/api/**/route.ts`. Current routes:
 - `/api/stocks`
 - `/api/world-cup/summary` and `/api/world-cup/teams/[teamId]`
 
-The dashboard APIs read committed snapshot files; they do not call external services at request time.
+Most dashboard APIs read committed snapshot files at request time. The exceptions that call external services at request time are the earthquake-pulse, bay-area-transit, news-pulse, mba-jobs, investments quotes, and MLB summary routes; each keeps the committed snapshot (or cached data) as its fallback.
 
 ---
 

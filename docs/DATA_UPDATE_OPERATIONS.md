@@ -14,8 +14,9 @@ architecture or the per-workflow prose:
 The `update:*` commands write committed TypeScript or JSON artifacts. A failed
 or empty fetch keeps the previous snapshot, and every scheduled job now checks
 the artifact timestamp against one shared freshness policy before it can
-commit. Earthquake and BART APIs also refresh their time-sensitive data at
-request time, with the committed artifact retained as the last-good fallback.
+commit. Earthquake, BART, and MLB APIs also refresh their time-sensitive data
+at request time, with the committed artifact retained as the last-good
+fallback.
 
 ---
 
@@ -29,7 +30,7 @@ request time, with the committed artifact retained as the last-good fallback.
 | Premier League | `update:premier-league` | `buildPremierLeagueSnapshot.ts` | football-data.org *(token)* | `src/data/premierLeagueSnapshot.ts` | `update-premier-league.yml` | every 4h, August through May |
 | La Liga | `update:la-liga` | `updateLaLigaSnapshot.ts` | football-data.org *(token)* | `src/data/laLigaSnapshot.ts` | `update-la-liga.yml` | every 4h, August through May |
 | NFL | `update:nfl` | `updateNflSnapshot.ts` | NFLverse CSVs | `src/data/nflSnapshot.ts` | `update-nfl.yml` | Tue 10:35 UTC, September through February |
-| MLB | `update:mlb` | `updateMlbSnapshot.ts` | MLB Stats API | `src/data/mlbSnapshot.ts` | `update-mlb.yml` | every 4h, March through November |
+| MLB | `update:mlb` | `updateMlbSnapshot.ts` | MLB Stats API | `src/data/mlbSnapshot.ts` | `update-mlb.yml` | every 4h, March through November (fallback seed; the API serves live statsapi at request time) |
 | NBA | `update:nba` | `updateNbaSnapshot.ts` | ESPN NBA | `src/data/nbaSnapshot.ts` | `update-nba.yml` | every 4h, mid-October through June |
 | Golf | `update:golf` | `buildGolfSnapshot.ts` | ESPN golf | `src/data/golfSnapshot.ts` | `update-golf.yml` | every 3h Thursday through Sunday; daily otherwise |
 | Formula 1 | `update:formula-1` | `buildFormula1Snapshot.ts` | OpenF1 | `src/data/formula1Snapshot.ts` | `update-formula-1.yml` | every 3h Thursday through Sunday; daily otherwise |
@@ -82,8 +83,8 @@ in Netlify Blobs so cold starts do not erase their fallback.
 ## Build and refresh boundary
 
 - Production builds consume committed snapshots and never call external data
-  providers. Earthquake and BART make separate request-time refreshes and keep
-  those snapshots as fallbacks.
+  providers. Earthquake, BART, and MLB make separate request-time refreshes
+  and keep those snapshots as fallbacks.
 - Premier League and La Liga refresh through their dedicated daily workflows;
   NFL refreshes through `update-nfl.yml` (or a manual run).
 - `update:football` (the ~16-min full refresh, including per-team fixtures and
