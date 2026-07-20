@@ -1,4 +1,4 @@
-import { renderHook, waitFor } from "@testing-library/react";
+import { act, renderHook, waitFor } from "@testing-library/react";
 import {
   FANTASY_DRAFT_STORAGE_KEY,
   useDraftState,
@@ -75,5 +75,54 @@ describe("useDraftState persisted-state loading", () => {
 
     expect(result.current.draftState.picks).toEqual([]);
     expect(result.current.draftState.undoHistory).toEqual([]);
+  });
+
+  it("rejects duplicate player picks at the state boundary", async () => {
+    const { result } = renderHook(() => useDraftState());
+    await waitFor(() => expect(result.current.isLoaded).toBe(true));
+
+    const player = {
+      id: "duplicate-player",
+      name: "Duplicate Player",
+      team: "SF",
+      position: "RB" as const,
+      rank: 1,
+      averageRank: 1,
+      standardDeviation: 0,
+      tier: 1,
+    };
+
+    act(() => {
+      result.current.startDraft();
+      result.current.draftPlayer(player);
+      result.current.draftPlayer(player);
+    });
+
+    expect(result.current.draftState.picks).toHaveLength(1);
+    expect(result.current.draftState.currentPick).toBe(2);
+  });
+
+  it("uses renamed teams in the on-clock label", async () => {
+    const { result } = renderHook(() => useDraftState());
+    await waitFor(() => expect(result.current.isLoaded).toBe(true));
+
+    act(() => result.current.setTeamName(1, "Fourth and Long"));
+
+    expect(result.current.currentTeamName).toBe("Fourth and Long (you)");
+  });
+
+  it("keeps working in memory when localStorage reads are blocked", async () => {
+    const getItem = jest.spyOn(Storage.prototype, "getItem").mockImplementation(() => {
+      throw new DOMException("blocked", "SecurityError");
+    });
+    try {
+      const { result } = renderHook(() => useDraftState());
+      await waitFor(() => expect(result.current.isLoaded).toBe(true));
+
+      expect(result.current.persistenceError).toMatch(/blocking local saves/i);
+      expect(result.current.draftState.picks).toEqual([]);
+    } finally {
+      getItem.mockRestore();
+    }
   });
 });

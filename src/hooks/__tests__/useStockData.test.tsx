@@ -114,7 +114,9 @@ describe("useStockData", () => {
     await flushPromises();
 
     expect(infoState?.source).toBe("prefetched");
-    expect(infoState?.capabilities.compare).toBe(true);
+    // One meaningful comparison section is not enough to advertise a useful
+    // peer comparison, even if a legacy snapshot declared the flag true.
+    expect(infoState?.capabilities.compare).toBe(false);
     expect(infoState?.data?.shortName).toBe("Apple");
     expect(infoState?.freshness).toEqual({
       snapshotBuiltAt: "2026-03-16T08:00:00.000Z",

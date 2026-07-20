@@ -380,6 +380,24 @@ describe("useFantasySnapshot", () => {
     expect(result.current.sliceMetadata).toBeNull();
   });
 
+  it("retries after both snapshot sources fail", async () => {
+    (global.fetch as jest.Mock)
+      .mockResolvedValueOnce({ ok: false, json: async () => ({}) })
+      .mockResolvedValueOnce({ ok: false, json: async () => ({}) })
+      .mockResolvedValueOnce({ ok: true, json: async () => buildSnapshotPayload() });
+
+    const { result } = renderHook(() =>
+      useFantasySnapshot({ position: "qb", scoring: "standard" })
+    );
+
+    await waitFor(() => expect(result.current.error).toMatch(/unavailable/i));
+    act(() => result.current.retry());
+    await waitFor(() => expect(result.current.players).toHaveLength(1));
+
+    expect(result.current.error).toBeNull();
+    expect(global.fetch).toHaveBeenCalledTimes(3);
+  });
+
   it("aborts a stalled static fetch and falls back to the API route", async () => {
     jest.useFakeTimers();
     try {

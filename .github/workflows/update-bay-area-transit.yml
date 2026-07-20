@@ -47,6 +47,9 @@ jobs:
         env:
           NODE_ENV: production
 
+      - name: Verify refresh freshness
+        run: npx tsx scripts/verifyDataRefresh.ts bay-area-transit
+
       - name: Verify transit snapshot quality
         id: verify_quality
         run: |
@@ -139,15 +142,6 @@ jobs:
             src/data/bayAreaTransitSnapshot.ts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Ensure production serves the refreshed revision
-        env:
-          EXPECTED_REVISION: ${{ steps.verify_quality.outputs.revision }}
-          NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
-          PRODUCTION_DATA_URL: https://isaacavazquez.com/api/data-revisions
-        run: |
-          bash scripts/ci/ensure-production-data-revision.sh \
-            bay-area-transit "$EXPECTED_REVISION" "$PRODUCTION_DATA_URL" "$NETLIFY_BUILD_HOOK"
 
       - name: Create job summary
         if: always()

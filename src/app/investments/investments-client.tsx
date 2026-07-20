@@ -9,6 +9,7 @@ import {
   normalizeInvestmentsState,
 } from "./investments-state";
 import type { ResearchTab } from "./investments-state";
+import type { InvestmentsPriceHealth } from "@/types/investment";
 import styles from "./investments.module.css";
 
 interface InvestmentsClientProps {
@@ -18,6 +19,7 @@ interface InvestmentsClientProps {
   datasetFreshCount?: number;
   datasetStaleCount?: number;
   datasetFailedCount?: number;
+  datasetPriceHealth?: InvestmentsPriceHealth | null;
 }
 
 export function InvestmentsClient({
@@ -27,6 +29,7 @@ export function InvestmentsClient({
   datasetFreshCount = 0,
   datasetStaleCount = 0,
   datasetFailedCount = 0,
+  datasetPriceHealth = null,
 }: InvestmentsClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -113,6 +116,7 @@ export function InvestmentsClient({
           datasetFreshCount={datasetFreshCount}
           datasetStaleCount={datasetStaleCount}
           datasetFailedCount={datasetFailedCount}
+          datasetPriceHealth={datasetPriceHealth}
         />
       </div>
     </section>

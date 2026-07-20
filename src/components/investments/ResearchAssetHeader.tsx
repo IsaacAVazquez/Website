@@ -14,7 +14,6 @@ import { formatHistoryAsOf } from "@/lib/investmentsHistory";
 import type {
   BetaData,
   CompanyInfo,
-  DcfData,
   Fundamentals,
   MarginsData,
   PriceData,
@@ -68,6 +67,20 @@ function formatRefreshLabel(raw: string | Date | null | undefined): string {
   if (minutes < 60) return `Refreshed ${minutes}m ago`;
   const h = Math.floor(minutes / 60);
   return `Refreshed ${h}h ago`;
+}
+
+function formatMarketAsOf(raw: string | null | undefined): string {
+  if (!raw) return "an earlier response";
+  const date = new Date(raw);
+  if (Number.isNaN(date.getTime())) return "an earlier response";
+  return date.toLocaleString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    timeZoneName: "short",
+  });
 }
 
 function formatCompactCurrency(n: number | undefined): string {
@@ -157,7 +170,6 @@ export function ResearchAssetHeader({
 }: Props) {
   const { data: info, freshness } = useStockData<CompanyInfo>(symbol || null, "info");
   const { data: fundamentals } = useStockData<Fundamentals>(symbol || null, "fundamentals");
-  const { data: dcf } = useStockData<DcfData>(symbol || null, "dcf");
   const { data: profitability } = useStockData<Profitability>(symbol || null, "profitability");
   const { data: marginsRaw } = useStockData<MarginsData>(symbol || null, "margins");
   const { data: beta } = useStockData<BetaData>(symbol || null, "beta");
@@ -189,8 +201,6 @@ export function ResearchAssetHeader({
   const trailingLow = trailingYear.length
     ? Math.min(...trailingYear.map((p) => p.low ?? p.close ?? 0))
     : undefined;
-  const dcfUpside = dcf?.upside;
-
   const keyMetrics: KeyMetric[] = [
     {
       label: "Market cap",
@@ -233,19 +243,6 @@ export function ResearchAssetHeader({
       hint: "Five-year price beta vs. the market.",
       value: formatRatio(beta?.beta5y, 2),
     },
-    {
-      label: "DCF upside",
-      hint: "Implied upside vs. the discounted-cash-flow fair value.",
-      value: formatPercent1(dcfUpside, true),
-      tone:
-        dcfUpside === undefined
-          ? "default"
-          : dcfUpside >= 15
-            ? "pos"
-            : dcfUpside <= -5
-              ? "neg"
-              : "default",
-    },
   ];
 
   // 52-week range as a positioned dot on a track, not text — the trailing
@@ -269,10 +266,12 @@ export function ResearchAssetHeader({
     (quoteName && quoteName.toUpperCase() !== upper ? quoteName : null) ||
     upper;
 
-  const livePrice = quote && !quote.error ? quote.price : undefined;
-  const dayChange = quote && !quote.error ? quote.change : undefined;
-  const dayChangePct = quote && !quote.error ? quote.changePercent : undefined;
-  const displayPrice = livePrice ?? savedClose;
+  const hasCurrentQuote = Boolean(quote && !quote.error && !quote.isFallback);
+  const livePrice = hasCurrentQuote ? quote?.price : undefined;
+  const savedMarketPrice = quote?.isFallback && !quote.error ? quote.price : undefined;
+  const dayChange = hasCurrentQuote ? quote?.change : undefined;
+  const dayChangePct = hasCurrentQuote ? quote?.changePercent : undefined;
+  const displayPrice = livePrice ?? savedMarketPrice ?? savedClose;
   const px =
     displayPrice !== undefined
       ? formatBalance(displayPrice)
@@ -280,22 +279,27 @@ export function ResearchAssetHeader({
   const positive = (dayChange ?? 0) >= 0;
   const priceEyebrow =
     livePrice !== undefined
-      ? "Live quote"
-      : quoteLoading && savedClose === undefined
-        ? "Fetching live quote"
-        : savedClose !== undefined
-          ? `Price as of ${savedCloseLabel}`
-          : "No price data";
+      ? "Latest market quote"
+      : savedMarketPrice !== undefined
+        ? "Saved market quote"
+        : quoteLoading && savedClose === undefined
+          ? "Fetching market quote"
+          : savedClose !== undefined
+            ? `Price as of ${savedCloseLabel}`
+            : "No price data";
   const showSavedCloseNote =
-    livePrice === undefined && savedClose !== undefined && !quoteLoading;
+    livePrice === undefined && savedMarketPrice === undefined && savedClose !== undefined && !quoteLoading;
+  const showSavedMarketNote = savedMarketPrice !== undefined && !quoteLoading;
   const showQuoteUnavailableNote = livePrice === undefined && Boolean(quoteError);
+  const savedMarketLabel = formatMarketAsOf(lastUpdated ?? quote?.asOf);
 
   // Surface snapshot staleness honestly: when the curated fundamentals snapshot
   // is more than a week old (e.g. a symbol served from a prior run because the
   // latest fetch failed for it), badge the "as of" date. Fresh symbols stay
-  // quiet. Note this is the *fundamentals* snapshot age, not the live quote.
+  // quiet. Note this is the fundamentals snapshot age, not the market quote.
   const snapshotBuiltAt = freshness?.snapshotBuiltAt ?? null;
   const snapshotIsStale = isSnapshotStale(snapshotBuiltAt);
+  const retainedSections = freshness?.retainedSections ?? [];
 
   return (
     <section className="research-asset-card" aria-label={`${upper} asset summary`}>
@@ -324,10 +328,18 @@ export function ResearchAssetHeader({
             {info?.industry && info.industry !== info.sector ? (
               <span className="research-badge-pill tag">{info.industry}</span>
             ) : null}
+            {retainedSections.length > 0 ? (
+              <span
+                className="research-badge-pill tag"
+                title={`Earlier valid data retained for: ${retainedSections.join(", ")}.`}
+              >
+                Partial snapshot
+              </span>
+            ) : null}
             {snapshotIsStale && snapshotBuiltAt ? (
               <span
                 className="research-asset-stale"
-                title="This company's research data comes from an earlier snapshot — the latest data refresh did not include it. Live price (above) is still current."
+                title="This company's research data comes from an earlier snapshot. The market quote above is sourced separately."
               >
                 <DataFreshnessIndicator lastUpdated={snapshotBuiltAt} mode="dataset" />
               </span>
@@ -348,7 +360,9 @@ export function ResearchAssetHeader({
 
         <div className="research-asset-price">
           <span className="research-asset-price-eyebrow">
-            <span className="invest-hero-livedot" aria-hidden="true" />
+            {livePrice !== undefined ? (
+              <span className="invest-hero-livedot" aria-hidden="true" />
+            ) : null}
             {priceEyebrow}
           </span>
           <p className="research-asset-px">
@@ -362,16 +376,19 @@ export function ResearchAssetHeader({
                   {formatSignedCurrency(dayChange)}
                 </span>
                 <span className={positive ? "pos" : "neg"}>
-                  {formatPercent(dayChangePct)} today
+                  {formatPercent(dayChangePct)} latest session
                 </span>
               </>
             ) : (
               <>
+                {showSavedMarketNote ? (
+                  <span>Showing the last saved market quote from {savedMarketLabel}.</span>
+                ) : null}
                 {showSavedCloseNote ? (
                   <span>Showing the latest saved close from {savedCloseLabel}.</span>
                 ) : null}
                 {showQuoteUnavailableNote ? (
-                  <span>Live pricing is temporarily unavailable.</span>
+                  <span>Market quote is temporarily unavailable.</span>
                 ) : null}
               </>
             )}

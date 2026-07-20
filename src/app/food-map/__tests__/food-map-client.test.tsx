@@ -41,7 +41,8 @@ describe("FoodMapClient", () => {
     expect(
       screen.getByRole("heading", { level: 1, name: /^food map$/i })
     ).toBeVisible();
-    expect(screen.getByText(/Showing 12 of 12 in Austin\./i)).toBeVisible();
+    expect(screen.getByText(/Showing 12 of 12 in Austin/i)).toBeVisible();
+    expect(screen.getByText(/Reviewed 2026-04-28/i)).toBeVisible();
     expect(
       screen.getByText(/Pins are colored by who recommends them\./i)
     ).toBeVisible();

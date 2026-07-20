@@ -108,7 +108,6 @@ const appleSnapshot = {
     price: true,
     beta: true,
     wacc: true,
-    dcf: true,
     industry: true,
     news: true,
     compare: true,
@@ -136,7 +135,6 @@ const appleSnapshot = {
     cash_flow: { quarterly: [], annual: [] },
     beta: { beta5y: 1.12 },
     wacc: { wacc: 8.4 },
-    dcf: { fairValue: 220, currentPrice: 198, upside: 11.1, recommendation: "Hold" },
     industry: [{ metric: "P/E (TTM)", value: 28.4, industryAvg: 31.2 }],
     news: [{ title: "Apple expands services push", publisher: "Reuters" }],
     price: [
@@ -168,7 +166,6 @@ const visaSnapshot = {
       pegRatio: 2.4,
       marketCap: 620000000000,
     },
-    dcf: { fairValue: 340, currentPrice: 340.12, upside: -3.5, recommendation: "Hold" },
     beta: { beta5y: 0.95 },
     price: [
       { date: "2026-02-26", open: 334, high: 339, low: 333, close: 338.2, volume: 900 },
@@ -305,7 +302,7 @@ describe("investments UI", () => {
     expect(container.textContent).toContain("This workspace currently supports the curated research set only.");
   });
 
-  it("blocks adding holdings that cannot receive live prices", async () => {
+  it("blocks adding holdings that cannot receive market quotes", async () => {
     mockFetch.mockResolvedValue({
       ok: true,
       json: async () => curatedIndex,
@@ -346,11 +343,11 @@ describe("investments UI", () => {
 
     expect(onAdd).not.toHaveBeenCalled();
     expect(container.textContent).toContain(
-      "SHOP is not in the curated research set, so live prices are unavailable for that holding."
+      "SHOP is not in the curated research set, so market quotes are unavailable for that holding."
     );
   });
 
-  it("uses live quotes for current price while labeling stale historical data", async () => {
+  it("uses market quotes for current price while labeling stale historical data", async () => {
     mockFetch.mockImplementation((input: RequestInfo | URL) => {
       const url = String(input);
 
@@ -385,6 +382,8 @@ describe("investments UI", () => {
                 volume: 2500000,
                 marketCap: 0,
                 name: "Visa Inc.",
+                asOf: new Date().toISOString(),
+                source: "finnhub",
               },
             ],
             timestamp: "2026-03-16T15:30:00.000Z",
@@ -410,24 +409,22 @@ describe("investments UI", () => {
 
     expect(container.textContent).toContain("Visa Inc.");
     expect(container.textContent).toContain("$352.45");
-    expect(container.textContent).toContain("Live quote");
+    expect(container.textContent).toContain("Latest market quote");
 
     const tabs = queryTabs(container);
     expect(tabs).toEqual(
       expect.arrayContaining([
         "Overview",
-        "Financials",
         "Growth",
         "Valuation",
         "Industry",
-        "DCF",
         "Chart",
         "Compare",
       ])
     );
   });
 
-  it("falls back to the saved close and price-as-of copy when live quotes are unavailable", async () => {
+  it("falls back to the saved close and price-as-of copy when market quotes are unavailable", async () => {
     mockFetch.mockImplementation((input: RequestInfo | URL) => {
       const url = String(input);
 
@@ -472,10 +469,10 @@ describe("investments UI", () => {
     expect(container.textContent).toContain("$198.00");
     expect(container.textContent).toContain("Price as of Mar 15, 2026");
     expect(container.textContent).toContain("Showing the latest saved close from Mar 15, 2026.");
-    expect(container.textContent).toContain("Live pricing is temporarily unavailable.");
+    expect(container.textContent).toContain("Market quote is temporarily unavailable.");
   });
 
-  it("shows a no-price state when neither live quotes nor historical prices are available", async () => {
+  it("shows a no-price state when neither market quotes nor historical prices are available", async () => {
     mockFetch.mockImplementation((input: RequestInfo | URL) => {
       const url = String(input);
 
@@ -519,7 +516,7 @@ describe("investments UI", () => {
     expect(container.textContent).toContain("Apple Inc.");
     expect(container.textContent).toContain("Unavailable");
     expect(container.textContent).toContain("No price data");
-    expect(container.textContent).toContain("Live pricing is temporarily unavailable.");
+    expect(container.textContent).toContain("Market quote is temporarily unavailable.");
     expect(container.textContent).not.toContain("Price as of Mar 16, 2026");
   });
 });

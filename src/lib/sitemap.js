@@ -190,7 +190,7 @@ function readInvestmentsLastmod() {
 
 function readPollingLastmod() {
   return toIsoString(
-    readFirstMatch("src/data/pollingSnapshot.ts", /generatedAt:\s*"([^"]+)"/)
+    readFirstMatch("src/data/pollingSnapshot.ts", /"?generatedAt"?:\s*"([^"]+)"/)
   );
 }
 

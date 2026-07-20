@@ -10,7 +10,7 @@ import {
   saveIdList,
   toggleIdCapped,
 } from "@/lib/fantasyLocal";
-import { emitLocalStoreChange, useLocalStorageString } from "@/hooks/useLocalStorageString";
+import { emitLocalStoreChange, useLocalStoragePersistenceStatus, useLocalStorageString } from "@/hooks/useLocalStorageString";
 
 /**
  * The compare tray: up to three player ids pinned for a side-by-side look.
@@ -18,6 +18,7 @@ import { emitLocalStoreChange, useLocalStorageString } from "@/hooks/useLocalSto
  */
 export function useCompareTray() {
   const raw = useLocalStorageString(FANTASY_COMPARE_STORAGE_KEY, "[]");
+  const persistenceStatus = useLocalStoragePersistenceStatus(FANTASY_COMPARE_STORAGE_KEY);
   const compareIds = useMemo(() => parseIdList(raw).slice(0, FANTASY_COMPARE_LIMIT), [raw]);
   const compareSet = useMemo(() => new Set(compareIds), [compareIds]);
 
@@ -42,5 +43,5 @@ export function useCompareTray() {
 
   const clear = useCallback(() => commit(() => []), [commit]);
 
-  return { compareIds, compareSet, inCompare, isFull, limit: FANTASY_COMPARE_LIMIT, toggle, remove, clear };
+  return { compareIds, compareSet, inCompare, isFull, limit: FANTASY_COMPARE_LIMIT, toggle, remove, clear, persistenceStatus };
 }

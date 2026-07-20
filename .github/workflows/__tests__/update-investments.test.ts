@@ -10,22 +10,23 @@ describe("update-investments workflow contract", () => {
     "utf8"
   );
 
-  it("keeps the Mon+Thu 22:15 UTC schedule and manual trigger", () => {
-    // Schedule is intentionally Mon + Thu (not weekdays) to stay under the
-    // GitHub Actions spending budget while still refreshing within a 3-day
-    // window. See the comment in update-investments.yml.
-    expect(workflow).toContain('cron: "15 22 * * 1,4"');
+  it("keeps the weekday 22:15 UTC schedule and manual trigger", () => {
+    expect(workflow).toContain('cron: "15 22 * * 1-5"');
     expect(workflow).toContain("workflow_dispatch:");
   });
 
   it("runs the investments refresh command", () => {
     expect(workflow).toContain("run: npm run update:investments");
+    expect(workflow).toContain("defeatbeta-api==0.0.47");
   });
 
   it("distinguishes fresh results from stale recoveries", () => {
     expect(workflow).toContain("freshCount === 0");
     expect(workflow).toContain("freshCount + staleCount !== successCount");
     expect(workflow).toContain("staleRatio > 0.8");
+    expect(workflow).toContain("partialRatio > 0.5");
+    expect(workflow).toContain('MAX_PRICE_AGE_DAYS: "7"');
+    expect(workflow).toContain("delayedFreshSymbols.length > 0");
   });
 
   it("commits only deployable snapshots, not raw provider responses", () => {

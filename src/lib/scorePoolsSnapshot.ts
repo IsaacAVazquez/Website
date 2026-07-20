@@ -86,6 +86,19 @@ export function getScorePoolsSnapshotData(): ScorePoolsSnapshot {
   return scorePoolsSnapshot;
 }
 
+export function hasLiveScorePoolsData(
+  snapshot: ScorePoolsSnapshot = scorePoolsSnapshot
+): boolean {
+  return snapshot.leagues.some(
+    (league) =>
+      !league.sample &&
+      league.fixtures.length > 0 &&
+      league.fixtures.some((fixture) =>
+        fixture.odds.some((odds) => !odds.manual)
+      )
+  );
+}
+
 // ─── Engine input mapping ────────────────────────────────────────────────────
 
 export function latestOddsEntry(fixture: SnapshotFixture): SnapshotOddsEntry | null {

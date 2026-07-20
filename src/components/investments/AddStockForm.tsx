@@ -91,7 +91,7 @@ export function AddStockForm({ onAdd }: Props) {
     if (!supportedSymbols.has(sym)) {
       return {
         field: "symbol",
-        message: `${sym} is not in the curated research set, so live prices are unavailable for that holding.`,
+        message: `${sym} is not in the curated research set, so market quotes are unavailable for that holding.`,
       };
     }
     const sh = parseFloat(shares);

@@ -1,7 +1,7 @@
 // ─── Poll metadata ────────────────────────────────────────────────────────────
 
 export type SampleType = "LV" | "RV" | "A"; // Likely Voters, Registered Voters, Adults
-export type PollMethodology = "online" | "phone" | "mixed" | "ivr";
+export type PollMethodology = "online" | "phone" | "mixed" | "ivr" | "unknown";
 export type Party = "D" | "R" | "I" | "L";
 export type RaceRating =
   | "Safe D"
@@ -20,7 +20,7 @@ export interface BasePoll {
   endDate: string;   // ISO date
   sampleSize: number;
   sampleType: SampleType;
-  moe: number; // margin of error in points
+  moe: number | null; // margin of error in points when the source exposes it
   methodology: PollMethodology;
 }
 
@@ -93,6 +93,7 @@ export interface Race {
 
 export interface PollingSnapshot {
   generatedAt: string; // ISO datetime
+  sourceAsOf?: string; // newest field-end date in the source
   sourceLabel: string;
   approvalAvg: ApprovalAverage;
   approvalTrend: ApprovalDataPoint[];

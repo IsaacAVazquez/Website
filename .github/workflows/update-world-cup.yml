@@ -1,14 +1,14 @@
 name: Refresh World Cup Snapshot
 
 on:
-  # The 2026 FIFA World Cup runs June 11 – July 19. Refresh every six hours
+  # The 2026 FIFA World Cup runs June 11 through July 19. Refresh every 30 minutes
   # across June and July to keep group standings, fixtures, and the bracket
   # current. ESPN's site API needs no token. Outside those months there is
   # nothing to refresh, so the schedule stays dormant.
   schedule:
     # Staggered off :20 so it doesn't race the hourly earthquake and 6h transit
     # refreshes (which also push to main) over the same minute.
-    - cron: "50 */6 * 6,7 *"
+    - cron: "20,50 * * 6,7 *"
   workflow_dispatch:
 
 # Don't stack a manual dispatch on top of a scheduled run.
@@ -46,6 +46,9 @@ jobs:
         run: npm run update:world-cup
         env:
           NODE_ENV: production
+
+      - name: Verify refresh freshness
+        run: npx tsx scripts/verifyDataRefresh.ts world-cup
 
       - name: Verify World Cup snapshot quality
         id: verify_quality
@@ -123,23 +126,6 @@ jobs:
             src/data/worldCupSnapshot.ts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # Snapshot commits carry [skip ci], so without this the live site only
-      # picks up the refresh on the daily cron-job.org build hook — up to a
-      # day behind a six-hour cadence. Optional: a no-op until the
-      # NETLIFY_BUILD_HOOK secret is configured.
-      - name: Trigger Netlify deploy
-        if: steps.check_changes.outputs.changed == 'true'
-        env:
-          NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
-        run: |
-          if [ -z "$NETLIFY_BUILD_HOOK" ]; then
-            echo "NETLIFY_BUILD_HOOK secret not configured; skipping deploy trigger."
-            exit 0
-          fi
-          curl -fsS -X POST -d '{}' "$NETLIFY_BUILD_HOOK" \
-            && echo "Netlify build hook triggered." \
-            || echo "::warning::Netlify build hook request failed; the daily scheduled rebuild will pick up the snapshot."
 
       - name: Create job summary
         if: always()

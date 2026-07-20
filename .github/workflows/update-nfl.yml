@@ -43,6 +43,9 @@ jobs:
         env:
           NODE_ENV: production
 
+      - name: Verify refresh freshness
+        run: npx tsx scripts/verifyDataRefresh.ts nfl
+
       - name: Verify NFL snapshot quality
         id: verify_quality
         run: |
@@ -149,23 +152,6 @@ jobs:
             src/data/nflSnapshot.ts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # Snapshot commits carry [skip ci], so the live site otherwise only picks
-      # up the refresh on the daily cron-job.org build hook. This deploys
-      # promptly when the snapshot actually changed, and no-ops until the
-      # NETLIFY_BUILD_HOOK secret is configured.
-      - name: Trigger Netlify deploy
-        if: steps.check_changes.outputs.changed == 'true'
-        env:
-          NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
-        run: |
-          if [ -z "$NETLIFY_BUILD_HOOK" ]; then
-            echo "NETLIFY_BUILD_HOOK secret not configured; skipping deploy trigger."
-            exit 0
-          fi
-          curl -fsS -X POST -d '{}' "$NETLIFY_BUILD_HOOK" \
-            && echo "Netlify build hook triggered." \
-            || echo "::warning::Netlify build hook request failed; the daily scheduled rebuild will pick up the snapshot."
 
       - name: Create job summary
         if: always()

@@ -27,6 +27,7 @@ import type { ResearchTab } from "@/app/investments/investments-state";
 import { InstrumentTape, type InstrumentTapeItem } from "@/components/editorial/InstrumentTape";
 import { formatCurrency, formatPercent } from "@/lib/investmentFormatting";
 import { holdingColor } from "./holdingPalette";
+import type { InvestmentsPriceHealth } from "@/types/investment";
 import styles from "@/app/investments/investments.module.css";
 
 interface Props {
@@ -39,6 +40,7 @@ interface Props {
   datasetFreshCount?: number;
   datasetStaleCount?: number;
   datasetFailedCount?: number;
+  datasetPriceHealth?: InvestmentsPriceHealth | null;
 }
 
 interface NavItem {
@@ -66,6 +68,7 @@ export function InvestmentsDashboard({
   datasetFreshCount = 0,
   datasetStaleCount = 0,
   datasetFailedCount = 0,
+  datasetPriceHealth = null,
 }: Props) {
   const {
     enhancedHoldings,
@@ -131,9 +134,8 @@ export function InvestmentsDashboard({
 
   const isEmpty = enhancedHoldings.length === 0;
 
-  // Quote tape: one line per holding, symbol/price/signed day % — the same
-  // enhancedHoldings array (live quote-driven) the holdings ledger renders,
-  // just projected onto the shared InstrumentTape strip.
+  // Quote tape uses only live/saved market prices. Cost basis is an accounting
+  // input and should never masquerade as a quote.
   const tapeItems: InstrumentTapeItem[] = useMemo(
     () =>
       enhancedHoldings.map((h) => {
@@ -145,10 +147,14 @@ export function InvestmentsDashboard({
               <span className={styles.quoteSym} style={{ borderLeft: `3px solid ${holdingColor(h.symbol)}`, paddingLeft: 8 }}>
                 {h.symbol}
               </span>
-              <span className={styles.quotePx}>{formatCurrency(h.currentPrice)}</span>
-              <span className={positive ? "text-[var(--home-positive)]" : "text-[var(--home-negative)]"}>
-                {formatPercent(h.dayChangePercent)}
+              <span className={styles.quotePx}>
+                {h.priceSource === "costBasis" ? "Price unavailable" : formatCurrency(h.currentPrice)}
               </span>
+              {h.priceSource === "live" ? (
+                <span className={positive ? "text-[var(--home-positive)]" : "text-[var(--home-negative)]"}>
+                  {formatPercent(h.dayChangePercent)}
+                </span>
+              ) : null}
             </span>
           ),
         };
@@ -283,7 +289,7 @@ export function InvestmentsDashboard({
           ) : null}
           {datasetSymbolCount > 0 ? (
             <span>
-              {datasetSymbolCount} {datasetSymbolCount === 1 ? "company" : "companies"}
+              {datasetSymbolCount} {datasetSymbolCount === 1 ? "security" : "securities"}
             </span>
           ) : null}
           {datasetFreshCount > 0 ? (
@@ -308,8 +314,22 @@ export function InvestmentsDashboard({
               </span>
             </>
           ) : null}
+          {datasetPriceHealth && datasetPriceHealth.pricedCount > 0 ? (
+            <>
+              <span className="invest-dataset-chip-divider" aria-hidden="true">·</span>
+              <span>{datasetPriceHealth.recentCount} recent price histories</span>
+            </>
+          ) : null}
+          {datasetPriceHealth && datasetPriceHealth.delayedCount > 0 ? (
+            <>
+              <span className="invest-dataset-chip-divider" aria-hidden="true">·</span>
+              <span className="invest-dataset-chip-warn">
+                {datasetPriceHealth.delayedCount} delayed histories
+              </span>
+            </>
+          ) : null}
           <span className="invest-dataset-chip-spacer" />
-          <span className="invest-dataset-chip-meta">Live prices via Finnhub</span>
+          <span className="invest-dataset-chip-meta">Market quotes via Finnhub</span>
         </div>
 
         {error ? (
@@ -372,11 +392,12 @@ export function InvestmentsDashboard({
           </section>
         ) : null}
 
-        {!isEmpty ? (
+        {enhancedHoldings.some((holding) => holding.priceSource === "live") ? (
           <section className="invest-rail-movers">
-            <p className="invest-rail-section-label">Today's movers</p>
+            <p className="invest-rail-section-label">Latest movers</p>
             <ul className="invest-rail-mover-list">
               {[...enhancedHoldings]
+                .filter((holding) => holding.priceSource === "live")
                 .sort(
                   (a, b) =>
                     Math.abs(b.dayChangePercent) - Math.abs(a.dayChangePercent),

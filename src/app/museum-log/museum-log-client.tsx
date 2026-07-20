@@ -1,6 +1,13 @@
 "use client";
 
-import { startTransition, useEffect, useMemo, useState, type ReactNode } from "react";
+import {
+  startTransition,
+  useEffect,
+  useMemo,
+  useState,
+  useSyncExternalStore,
+  type ReactNode,
+} from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   Bookmark,
@@ -69,6 +76,9 @@ interface Props {
   initialState: MuseumRouteState;
   snapshot: MuseumSnapshot;
 }
+
+const subscribeToLocalDate = () => () => {};
+const getServerLocalDate = () => null;
 
 // ─── Primitives ────────────────────────────────────────────────────────────────
 
@@ -882,13 +892,13 @@ function MuseumDetailView({
   const visitLogEntries = snapshot.visitLog
     .filter((v) => v.museumId === museum.id)
     .sort((a, b) => b.date.localeCompare(a.date));
-  // The local calendar date stays null through SSR and the first client render —
-  // the page is server-rendered in the server timezone, so computing it during
-  // render can disagree with the visitor's date and cause a hydration mismatch.
-  const [today, setToday] = useState<string | null>(null);
-  useEffect(() => {
-    setToday(toLocalDateKey());
-  }, []);
+  // The server snapshot stays null because its timezone can differ from the
+  // visitor's. React reads the local date after hydration without an effect.
+  const today = useSyncExternalStore(
+    subscribeToLocalDate,
+    toLocalDateKey,
+    getServerLocalDate,
+  );
 
   return (
     <div className="space-y-6">
@@ -1524,7 +1534,9 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                 {snapshot.visitLog.length} visits logged
               </span>
               <span className="tool-meta-chip-spacer" />
-              <span className="tool-meta-chip-meta">Updated {lastUpdated}</span>
+              <span className="tool-meta-chip-meta">
+                Updated {lastUpdated} · I would verify admission and exhibitions before visiting.
+              </span>
             </div>
 
             {persistenceStatus === "memory-only" ? (

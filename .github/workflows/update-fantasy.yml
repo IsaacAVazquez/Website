@@ -1,8 +1,11 @@
 name: Update Fantasy Football Snapshots
 
 on:
+  # Rankings move daily through draft season. Outside July through September,
+  # a weekly pass is enough to catch provider corrections and rollover work.
   schedule:
-    - cron: "0 17 * * 3"
+    - cron: "0 17 * 7-9 *"
+    - cron: "0 17 * 1-6,10-12 3"
   workflow_dispatch:
 
 # Don't stack a manual dispatch on top of a scheduled run.
@@ -40,6 +43,9 @@ jobs:
         run: npm run update:fantasy
         env:
           NODE_ENV: production
+
+      - name: Verify refresh freshness
+        run: npx tsx scripts/verifyDataRefresh.ts fantasy-football
 
       # Quality gate: a partial scrape (e.g. FantasyPros throttling some
       # positions) can produce a snapshot with mostly empty boards and slip
@@ -157,23 +163,6 @@ jobs:
             public/data/fantasy/ppr.json \
             public/data/fantasy/half_ppr.json \
             public/data/fantasy/standard.json
-
-      # Snapshot commits carry [skip ci], so the live site otherwise only picks
-      # up the refresh on the daily cron-job.org build hook. This deploys
-      # promptly when the snapshot actually changed, and no-ops until the
-      # NETLIFY_BUILD_HOOK secret is configured.
-      - name: Trigger Netlify deploy
-        if: steps.check_changes.outputs.changed == 'true'
-        env:
-          NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
-        run: |
-          if [ -z "$NETLIFY_BUILD_HOOK" ]; then
-            echo "NETLIFY_BUILD_HOOK secret not configured; skipping deploy trigger."
-            exit 0
-          fi
-          curl -fsS -X POST -d '{}' "$NETLIFY_BUILD_HOOK" \
-            && echo "Netlify build hook triggered." \
-            || echo "::warning::Netlify build hook request failed; the daily scheduled rebuild will pick up the snapshot."
 
       - name: Create job summary
         if: always()

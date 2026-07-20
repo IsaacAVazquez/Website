@@ -13,7 +13,7 @@ Usage:
     (or: npm run update:investments, which also builds curated snapshots)
 
 Requirements:
-    .venv/bin/pip install defeatbeta-api
+    .venv/bin/pip install defeatbeta-api==0.0.47
 """
 
 import json
@@ -31,7 +31,7 @@ try:
     from defeatbeta_api.data.ticker import Ticker  # type: ignore
 except ImportError:
     print("Error: defeatbeta-api is not installed.")
-    print("Install it with:  .venv/bin/pip install defeatbeta-api")
+    print("Install it with:  .venv/bin/pip install defeatbeta-api==0.0.47")
     sys.exit(1)
 
 import pandas as pd  # type: ignore  # noqa: E402 — guaranteed by defeatbeta-api
@@ -102,16 +102,37 @@ def symbol_price_freshness(symbol: str) -> str:
     return str(snapshot.get("lastUpdated") or "")
 
 
-def sort_symbols_stalest_first(symbols: list[str]) -> list[str]:
+def sort_symbols_stalest_first(
+    symbols: list[str],
+    fetch_attempts: dict[str, str] | None = None,
+) -> list[str]:
     """Order symbols by ascending prior-snapshot freshness so each budget-limited
     run advances the stalest (and never-fetched) symbols first. The fetch loop
     stops dispatching once GLOBAL_BUDGET_SECONDS is exhausted, so in fixed file
     order the tail of the list would never refresh (~24 of 151 symbols fit the
     22-minute budget); rotating the stalest to the front lets the cursor sweep
-    the whole universe across successive runs. Python's sort is stable, so
-    symbols with equal freshness keep their original file order.
+    the whole universe across successive runs. A persisted last-attempt time is
+    the primary key, so a permanently failing old symbol cannot stay first
+    forever. Price freshness breaks ties; Python's stable sort then preserves
+    file order.
     """
-    return sorted(symbols, key=symbol_price_freshness)
+    attempts = fetch_attempts or {}
+    return sorted(
+        symbols,
+        key=lambda symbol: (attempts.get(symbol, ""), symbol_price_freshness(symbol)),
+    )
+
+
+def read_previous_index() -> dict:
+    index_path = PUBLIC_DIR / "index.json"
+    if not index_path.exists():
+        return {}
+    try:
+        with open(index_path, "r", encoding="utf-8") as f:
+            value = json.load(f)
+        return value if isinstance(value, dict) else {}
+    except (OSError, json.JSONDecodeError):
+        return {}
 
 
 def read_company_names() -> dict[str, str]:
@@ -134,10 +155,18 @@ def read_company_names() -> dict[str, str]:
 CURATED_COMPANY_NAMES = read_company_names()
 
 
+class SymbolTimeout(Exception):
+    """Raised when an individual symbol exhausts its active time budget."""
+
+
 def safe_call(fn):
     """Call fn(), returning {"error": ...} on failure."""
     try:
         return fn()
+    except SymbolTimeout:
+        # This is process control, not a provider-field error. Let the outer
+        # symbol loop retain the prior deployed snapshot.
+        raise
     except Exception as exc:
         return {"error": str(exc)}
 
@@ -250,6 +279,50 @@ def build_index_entry(symbol: str, info_payload) -> dict[str, str]:
     }
 
 
+MAX_PRICE_AGE_DAYS = int(os.environ.get("MAX_PRICE_AGE_DAYS", "7"))
+
+
+def get_latest_price_date(price_payload) -> str | None:
+    """Return the latest valid source date in a provider price payload."""
+    if not isinstance(price_payload, list):
+        return None
+
+    latest: str | None = None
+    for row in price_payload:
+        if not isinstance(row, dict):
+            continue
+        value = row.get("report_date") or row.get("date")
+        if not isinstance(value, str) or not value.strip():
+            continue
+        candidate = value.strip()[:10]
+        try:
+            datetime.fromisoformat(candidate)
+        except ValueError:
+            continue
+        if latest is None or candidate > latest:
+            latest = candidate
+    return latest
+
+
+def validate_price_freshness(symbol: str, price_payload) -> str:
+    """Reject a provider response whose newest market date is too old."""
+    latest = get_latest_price_date(price_payload)
+    if latest is None:
+        raise ValueError("price history has no valid source date")
+
+    source_date = datetime.fromisoformat(latest).date()
+    today = datetime.now(timezone.utc).date()
+    age_days = (today - source_date).days
+    if age_days < -1:
+        raise ValueError(f"price history is future-dated ({latest})")
+    if age_days > MAX_PRICE_AGE_DAYS:
+        raise ValueError(
+            f"price history is stale ({latest}, {age_days} days old; "
+            f"maximum {MAX_PRICE_AGE_DAYS})"
+        )
+    return latest
+
+
 def stale_entry_from_prior_snapshot(symbol: str) -> dict | None:
     """Recover an index entry from a previously-built snapshot on disk.
 
@@ -290,6 +363,9 @@ def stale_entry_from_prior_snapshot(symbol: str) -> dict | None:
     as_of = freshness.get("snapshotBuiltAt") if isinstance(freshness, dict) else None
     entry["stale"] = True
     entry["asOf"] = as_of or snapshot.get("lastUpdated")
+    section_dates = freshness.get("sections") if isinstance(freshness, dict) else None
+    if isinstance(section_dates, dict) and isinstance(section_dates.get("price"), str):
+        entry["priceAsOf"] = section_dates["price"]
     return entry
 
 
@@ -308,12 +384,13 @@ def fetch_officers(t: Ticker, out: Path) -> None:
     write_json(out / "officers.json", df_to_json(safe_call(lambda: t.officers())))
 
 
-def fetch_price(t: Ticker, out: Path) -> None:
+def fetch_price(t: Ticker, out: Path):
     print("  price...")
     result = df_to_json(safe_call(lambda: t.price()))
     if isinstance(result, list):
         result = result[-252:]
     write_json(out / "price.json", result)
+    return result
 
 
 def fetch_beta(t: Ticker, out: Path) -> None:
@@ -398,6 +475,10 @@ def statement_to_json(stmt) -> object:
         return stmt
     try:
         return df_to_json(stmt.df())
+    except SymbolTimeout:
+        # ITIMER_REAL is one-shot. If this escapes as an ordinary section error,
+        # the rest of the symbol would continue without a watchdog.
+        raise
     except Exception as exc:
         return {"error": str(exc)}
 
@@ -425,11 +506,6 @@ def fetch_wacc(t: Ticker, out: Path) -> None:
     write_json(out / "wacc.json", df_to_json(safe_call(lambda: t.wacc())))
 
 
-def fetch_dcf(t: Ticker, out: Path) -> None:
-    print("  dcf...")
-    write_json(out / "dcf.json", df_to_json(safe_call(lambda: t.dcf())))
-
-
 def fetch_industry(t: Ticker, out: Path) -> None:
     print("  industry...")
     data = {}
@@ -453,19 +529,6 @@ def fetch_industry(t: Ticker, out: Path) -> None:
     write_json(out / "industry.json", data)
 
 
-def fetch_revenue_segments(t: Ticker, out: Path) -> None:
-    print("  revenue_segments...")
-    data = {}
-    for key, fn in [
-        ("by_segment",   lambda: t.revenue_by_segment()),
-        ("by_geography", lambda: t.revenue_by_geography()),
-        ("by_product",   lambda: t.revenue_by_product()),
-    ]:
-        result = safe_call(fn)
-        data[key] = df_to_json(result)
-    write_json(out / "revenue_segments.json", data)
-
-
 def fetch_news(t: Ticker, out: Path) -> None:
     print("  news...")
     result = safe_call(lambda: t.news())
@@ -486,7 +549,8 @@ def fetch_symbol(symbol: str, out_dir: Path) -> dict[str, str]:
     t = Ticker(symbol)
     info_payload = fetch_info(t, out_dir)
     fetch_officers(t, out_dir)
-    fetch_price(t, out_dir)
+    price_payload = fetch_price(t, out_dir)
+    price_as_of = validate_price_freshness(symbol, price_payload)
     fetch_beta(t, out_dir)
     fetch_fundamentals(t, out_dir)
     fetch_profitability(t, out_dir)
@@ -494,11 +558,11 @@ def fetch_symbol(symbol: str, out_dir: Path) -> dict[str, str]:
     fetch_growth(t, out_dir)
     fetch_statements(t, out_dir)
     fetch_wacc(t, out_dir)
-    fetch_dcf(t, out_dir)
     fetch_industry(t, out_dir)
-    fetch_revenue_segments(t, out_dir)
     fetch_news(t, out_dir)
-    return build_index_entry(symbol, info_payload)
+    entry = build_index_entry(symbol, info_payload)
+    entry["priceAsOf"] = price_as_of
+    return entry
 
 
 # ---------------------------------------------------------------------------
@@ -513,24 +577,62 @@ def fetch_symbol(symbol: str, out_dir: Path) -> dict[str, str]:
 # Global budget: a soft cap that stops dispatching new symbols once we're
 # close to the CI hard timeout. Anything not reached gets recorded as failed
 # with a clear reason, so downstream verification can catch a partial run.
-PER_SYMBOL_TIMEOUT_SECONDS = int(os.environ.get("PER_SYMBOL_TIMEOUT_SECONDS", "600"))
+PER_SYMBOL_TIMEOUT_SECONDS = int(os.environ.get("PER_SYMBOL_TIMEOUT_SECONDS", "180"))
+RETRY_FAILED_SYMBOL_TIMEOUT_SECONDS = int(
+    os.environ.get("RETRY_FAILED_SYMBOL_TIMEOUT_SECONDS", "60")
+)
+MAX_LONG_TIMEOUTS_PER_RUN = int(os.environ.get("MAX_LONG_TIMEOUTS_PER_RUN", "2"))
 _global_budget_env = os.environ.get("GLOBAL_BUDGET_SECONDS", "").strip()
 GLOBAL_BUDGET_SECONDS: int | None = int(_global_budget_env) if _global_budget_env else None
+_active_symbol_timeout_seconds = float(PER_SYMBOL_TIMEOUT_SECONDS)
 
 
-class SymbolTimeout(Exception):
-    """Raised when an individual symbol exceeds PER_SYMBOL_TIMEOUT_SECONDS."""
+def symbol_timeout_seconds(
+    elapsed_seconds: float,
+    retrying_failed_symbol: bool = False,
+) -> float:
+    """Return a symbol timer that cannot overrun the global soft budget."""
+    per_symbol_limit = (
+        min(PER_SYMBOL_TIMEOUT_SECONDS, RETRY_FAILED_SYMBOL_TIMEOUT_SECONDS)
+        if retrying_failed_symbol
+        else PER_SYMBOL_TIMEOUT_SECONDS
+    )
+    if GLOBAL_BUDGET_SECONDS is None:
+        return float(per_symbol_limit)
+    remaining = float(GLOBAL_BUDGET_SECONDS) - elapsed_seconds
+    return max(0.0, min(float(per_symbol_limit), remaining))
 
 
 def _alarm_handler(signum, frame):  # noqa: ARG001 — signal handler signature
-    raise SymbolTimeout(f"per-symbol timeout after {PER_SYMBOL_TIMEOUT_SECONDS}s")
+    raise SymbolTimeout(
+        f"symbol time budget exhausted after {_active_symbol_timeout_seconds:.1f}s"
+    )
 
 
 def main() -> None:
-    symbols = sort_symbols_stalest_first(read_symbols())
+    global _active_symbol_timeout_seconds
+    previous_index = read_previous_index()
+    previous_attempts = previous_index.get("fetchAttempts")
+    fetch_attempts = {
+        str(symbol).upper(): timestamp
+        for symbol, timestamp in (
+            previous_attempts.items() if isinstance(previous_attempts, dict) else []
+        )
+        if isinstance(timestamp, str) and timestamp
+    }
+    previous_failures = previous_index.get("fetchFailures")
+    fetch_failures = {
+        str(symbol).upper(): value
+        for symbol, value in (
+            previous_failures.items() if isinstance(previous_failures, dict) else []
+        )
+        if isinstance(value, dict)
+    }
+    symbols = sort_symbols_stalest_first(read_symbols(), fetch_attempts)
     print(f"Processing {len(symbols)} symbols (stalest first): {', '.join(symbols)}")
     print(f"Output directory: {OUTPUT_DIR}")
     print(f"Per-symbol timeout: {PER_SYMBOL_TIMEOUT_SECONDS}s")
+    print(f"Retry timeout:      {RETRY_FAILED_SYMBOL_TIMEOUT_SECONDS}s")
     if GLOBAL_BUDGET_SECONDS:
         print(f"Global budget:      {GLOBAL_BUDGET_SECONDS}s")
     print()
@@ -538,36 +640,67 @@ def main() -> None:
     successful: list[str] = []
     failed: list[dict[str, str]] = []
     entries: list[dict[str, str]] = []
+    long_timeout_failures = 0
 
     signal.signal(signal.SIGALRM, _alarm_handler)
     start = time.monotonic()
 
     for symbol in symbols:
         elapsed = time.monotonic() - start
-        if GLOBAL_BUDGET_SECONDS and elapsed >= GLOBAL_BUDGET_SECONDS:
+        use_retry_timeout = (
+            symbol in fetch_failures or
+            long_timeout_failures >= MAX_LONG_TIMEOUTS_PER_RUN
+        )
+        active_timeout = symbol_timeout_seconds(
+            elapsed,
+            retrying_failed_symbol=use_retry_timeout,
+        )
+        if active_timeout <= 0:
             reason = f"global time budget exhausted at {elapsed:.0f}s"
             print(f"[{symbol}] SKIPPED: {reason}")
             failed.append({"symbol": symbol, "reason": reason})
             continue
 
         print(f"[{symbol}] Starting...")
+        symbol_attempted_at = datetime.now(timezone.utc).isoformat()
+        fetch_attempts[symbol] = symbol_attempted_at
         out_dir = OUTPUT_DIR / symbol
-        signal.alarm(PER_SYMBOL_TIMEOUT_SECONDS)
+        _active_symbol_timeout_seconds = active_timeout
+        signal.setitimer(signal.ITIMER_REAL, active_timeout)
         try:
             index_entry = fetch_symbol(symbol, out_dir)
             successful.append(symbol)
             entries.append(index_entry)
+            fetch_failures.pop(symbol, None)
             print(f"[{symbol}] Done.\n")
         except SymbolTimeout as exc:
+            if not use_retry_timeout:
+                long_timeout_failures += 1
             failed.append({"symbol": symbol, "reason": str(exc)})
+            previous_failure = fetch_failures.get(symbol, {})
+            previous_count = previous_failure.get("consecutiveFailures", 0)
+            fetch_failures[symbol] = {
+                "lastAttemptedAt": symbol_attempted_at,
+                "consecutiveFailures": previous_count + 1
+                if isinstance(previous_count, int)
+                else 1,
+            }
             print(f"[{symbol}] TIMEOUT: {exc}\n")
             write_json(out_dir / "error.json", {"symbol": symbol, "error": str(exc)})
         except Exception as exc:
             failed.append({"symbol": symbol, "reason": str(exc)})
+            previous_failure = fetch_failures.get(symbol, {})
+            previous_count = previous_failure.get("consecutiveFailures", 0)
+            fetch_failures[symbol] = {
+                "lastAttemptedAt": symbol_attempted_at,
+                "consecutiveFailures": previous_count + 1
+                if isinstance(previous_count, int)
+                else 1,
+            }
             print(f"[{symbol}] FAILED: {exc}\n")
             write_json(out_dir / "error.json", {"symbol": symbol, "error": str(exc)})
         finally:
-            signal.alarm(0)
+            signal.setitimer(signal.ITIMER_REAL, 0)
 
     # Resilience: before declaring a symbol unavailable, fall back to any good
     # snapshot already on disk from an earlier run (mirrors the "keep previous
@@ -597,15 +730,7 @@ def main() -> None:
         )
 
     attempted_at = datetime.now(timezone.utc).isoformat()
-    previous_last_updated = None
-    previous_index_path = PUBLIC_DIR / "index.json"
-    if previous_index_path.exists():
-        try:
-            with open(previous_index_path, "r", encoding="utf-8") as f:
-                previous_index = json.load(f)
-            previous_last_updated = previous_index.get("lastUpdated")
-        except (OSError, json.JSONDecodeError):
-            previous_last_updated = None
+    previous_last_updated = previous_index.get("lastUpdated")
 
     index_data = {
         "symbols": available_symbols,
@@ -616,6 +741,8 @@ def main() -> None:
         "refreshAttemptedAt": attempted_at,
         "freshCount": len(fresh_symbols),
         "staleCount": len(recovered),
+        "fetchAttempts": fetch_attempts,
+        "fetchFailures": fetch_failures,
         "entries": entries,
     }
     write_json(PUBLIC_DIR / "index.json", index_data)

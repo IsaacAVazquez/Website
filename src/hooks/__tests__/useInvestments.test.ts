@@ -25,11 +25,40 @@ function validQuote(symbol: string, price = 100): StockQuote {
     volume: 1000,
     marketCap: 0,
     name: symbol,
+    asOf: new Date().toISOString(),
+    source: "finnhub",
   };
 }
 
 function errorQuote(symbol: string, error: string): StockQuote {
   return { ...validQuote(symbol, 0), error };
+}
+
+function createDeferred<T>() {
+  let resolve!: (value: T | PromiseLike<T>) => void;
+  let reject!: (reason?: unknown) => void;
+  const promise = new Promise<T>((res, rej) => {
+    resolve = res;
+    reject = rej;
+  });
+  return { promise, resolve, reject };
+}
+
+interface StoredQuoteCache {
+  version?: number;
+  entries?: Array<{ fetchedAt: number; quote: StockQuote }>;
+  quotes?: StockQuote[];
+}
+
+function readStoredQuoteCache(): StoredQuoteCache {
+  return JSON.parse(
+    window.localStorage.getItem("portfolio_quotes_cache") ?? "{}",
+  ) as StoredQuoteCache;
+}
+
+function readStoredQuotes(): StockQuote[] {
+  const cache = readStoredQuoteCache();
+  return cache.entries?.map((entry) => entry.quote) ?? cache.quotes ?? [];
 }
 
 describe("useInvestments derived calculations", () => {
@@ -66,6 +95,8 @@ describe("useInvestments derived calculations", () => {
           volume: 1000,
           marketCap: 0,
           name: "Apple Inc.",
+          asOf: new Date().toISOString(),
+          source: "finnhub",
         },
       ],
       [
@@ -119,6 +150,8 @@ describe("useInvestments derived calculations", () => {
           volume: 1000,
           marketCap: 0,
           name: "Apple Inc.",
+          asOf: new Date().toISOString(),
+          source: "finnhub",
         },
       ],
     ]);
@@ -131,6 +164,56 @@ describe("useInvestments derived calculations", () => {
     expect(rawSummary.totalValue).toBe(1100);
     expect(rawSummary.dayChange).toBe(100);
     expect(dayChangePercent).toBe(10);
+  });
+
+  it("uses a saved quote for value without carrying its old day move", () => {
+    const holdings: PortfolioHolding[] = [
+      { symbol: "AAPL", shares: 10, averageCost: 100 },
+    ];
+    const quotes = new Map<string, StockQuote>([
+      ["AAPL", { ...validQuote("AAPL", 110), change: 10, changePercent: 10, isFallback: true }],
+    ]);
+
+    const [holding] = buildEnhanced(holdings, quotes, false);
+
+    expect(holding.priceSource).toBe("saved");
+    expect(holding.currentValue).toBe(1100);
+    expect(holding.dayChange).toBe(0);
+    expect(holding.dayChangePercent).toBe(0);
+  });
+
+  it("does not treat an old provider quote as current market data", () => {
+    const holdings: PortfolioHolding[] = [
+      { symbol: "AAPL", shares: 10, averageCost: 100 },
+    ];
+    const oldAsOf = new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString();
+    const quotes = new Map<string, StockQuote>([
+      [
+        "AAPL",
+        {
+          ...validQuote("AAPL", 110),
+          source: "finnhub",
+          asOf: oldAsOf,
+        },
+      ],
+    ]);
+
+    const [holding] = buildEnhanced(holdings, quotes, false);
+    expect(holding.priceSource).toBe("saved");
+    expect(holding.dayChange).toBe(0);
+    expect(canPersistPortfolioSnapshot(holdings, quotes)).toBe(false);
+  });
+
+  it("does not treat a source-less quote as current even with a recent timestamp", () => {
+    const holdings: PortfolioHolding[] = [
+      { symbol: "AAPL", shares: 1, averageCost: 100 },
+    ];
+    const sourceLess = validQuote("AAPL", 110);
+    delete sourceLess.source;
+    const quotes = new Map([["AAPL", sourceLess]]);
+
+    expect(buildEnhanced(holdings, quotes, false)[0].priceSource).toBe("saved");
+    expect(canPersistPortfolioSnapshot(holdings, quotes)).toBe(false);
   });
 
   it("does not persist a portfolio snapshot when any holding falls back to cost basis", () => {
@@ -178,6 +261,19 @@ describe("useInvestments derived calculations", () => {
     expect(canPersistPortfolioSnapshot(holdings, quotes)).toBe(false);
   });
 
+  it("does not persist a mixed-session portfolio valuation", () => {
+    const holdings: PortfolioHolding[] = [
+      { symbol: "AAPL", shares: 1, averageCost: 100 },
+      { symbol: "MSFT", shares: 1, averageCost: 200 },
+    ];
+    const quotes = new Map<string, StockQuote>([
+      ["AAPL", { ...validQuote("AAPL", 110), asOf: "2026-07-10T20:00:00.000Z" }],
+      ["MSFT", { ...validQuote("MSFT", 210), asOf: "2026-07-11T20:00:00.000Z" }],
+    ]);
+
+    expect(canPersistPortfolioSnapshot(holdings, quotes)).toBe(false);
+  });
+
   it("names holdings that fall back to cost basis after quote placeholders", async () => {
     window.localStorage.setItem(
       "portfolio_holdings",
@@ -204,6 +300,8 @@ describe("useInvestments derived calculations", () => {
             volume: 1000,
             marketCap: 0,
             name: "Apple Inc.",
+            asOf: new Date().toISOString(),
+            source: "finnhub",
           },
           {
             symbol: "MSFT",
@@ -227,13 +325,12 @@ describe("useInvestments derived calculations", () => {
 
     await waitFor(() => {
       expect(result.current.error).toBe(
-        "Live prices are temporarily unavailable for MSFT. Portfolio totals are using your saved cost basis where needed."
+        "Market quotes are temporarily unavailable for MSFT. Portfolio totals are using your saved cost basis where needed."
       );
     });
-    const cache = JSON.parse(
-      window.localStorage.getItem("portfolio_quotes_cache") ?? "null",
-    ) as { quotes?: StockQuote[] } | null;
-    expect(cache?.quotes).toEqual([expect.objectContaining({ symbol: "AAPL", price: 175 })]);
+    expect(readStoredQuotes()).toEqual([
+      expect.objectContaining({ symbol: "AAPL", price: 175 }),
+    ]);
   });
 
   it("persists the quote cache and lastUpdated when one symbol keeps failing", async () => {
@@ -256,10 +353,9 @@ describe("useInvestments derived calculations", () => {
     const { result } = renderHook(() => useInvestments());
 
     await waitFor(() => expect(result.current.lastUpdated).not.toBeNull());
-    const cache = JSON.parse(
-      window.localStorage.getItem("portfolio_quotes_cache") ?? "null",
-    ) as { quotes?: StockQuote[] } | null;
-    expect(cache?.quotes).toEqual([expect.objectContaining({ symbol: "AAPL", price: 175 })]);
+    expect(readStoredQuotes()).toEqual([
+      expect.objectContaining({ symbol: "AAPL", price: 175 }),
+    ]);
     // MSFT has no usable quote anywhere (fresh or last-good), so the daily
     // performance snapshot is still withheld.
     expect(result.current.snapshots).toHaveLength(0);
@@ -290,7 +386,7 @@ describe("useInvestments derived calculations", () => {
     await waitFor(
       () => {
         expect(result.current.error).toBe(
-          "Live prices are temporarily unavailable. Portfolio totals are using your saved cost basis.",
+          "Market quotes are temporarily unavailable for AAPL. Portfolio totals are using your saved cost basis where needed.",
         );
       },
       { timeout: 4000 },
@@ -319,7 +415,7 @@ describe("useInvestments derived calculations", () => {
 
     await waitFor(() => {
       expect(result.current.error).toBe(
-        "Live prices are temporarily unavailable for ZZZZ. Portfolio totals are using your saved cost basis where needed.",
+        "Market quotes are temporarily unavailable for ZZZZ. Portfolio totals are using your saved cost basis where needed.",
       );
     });
     expect(global.fetch).toHaveBeenCalledTimes(1);
@@ -425,11 +521,117 @@ describe("useInvestments derived calculations", () => {
 
     await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
     await waitFor(() => expect(result.current.enhancedHoldings[0]?.currentPrice).toBe(110));
-    const cache = JSON.parse(
-      window.localStorage.getItem("portfolio_quotes_cache") ?? "{}",
-    ) as { quotes?: StockQuote[] };
-    expect(cache.quotes).toEqual([expect.objectContaining({ symbol: "AAPL", price: 110 })]);
-    expect(cache.quotes?.some((quote) => quote.error)).toBe(false);
+    expect(readStoredQuotes()).toEqual([
+      expect.objectContaining({ symbol: "AAPL", price: 110 }),
+    ]);
+    expect(readStoredQuotes().some((quote) => quote.error)).toBe(false);
+  });
+
+  it("paints cached quotes as saved values, then refreshes them in the background", async () => {
+    const asOf = new Date(Date.now() - 60_000).toISOString();
+    window.localStorage.setItem(
+      "portfolio_holdings",
+      JSON.stringify([{ symbol: "AAPL", shares: 2, averageCost: 90 }]),
+    );
+    window.localStorage.setItem(
+      "portfolio_quotes_cache",
+      JSON.stringify({
+        timestamp: Date.now(),
+        quotes: [{ ...validQuote("AAPL", 110), asOf }],
+      }),
+    );
+    const response = createDeferred<{
+      ok: boolean;
+      status: number;
+      json: () => Promise<unknown>;
+    }>();
+    global.fetch = jest.fn().mockReturnValue(response.promise);
+
+    const { result } = renderHook(() => useInvestments());
+
+    await waitFor(() => expect(result.current.enhancedHoldings).toHaveLength(1));
+    expect(result.current.enhancedHoldings[0]).toMatchObject({
+      currentPrice: 110,
+      priceSource: "saved",
+      dayChange: 0,
+      dayChangePercent: 0,
+    });
+    expect(result.current.lastUpdated?.toISOString()).toBe(asOf);
+    expect(global.fetch).toHaveBeenCalledTimes(1);
+
+    response.resolve({
+      ok: true,
+      status: 200,
+      json: async () => ({ quotes: [validQuote("AAPL", 115)], allFailed: false }),
+    });
+    await waitFor(() =>
+      expect(result.current.enhancedHoldings[0]).toMatchObject({
+        currentPrice: 115,
+        priceSource: "live",
+      }),
+    );
+  });
+
+  it("revalidates a visible long-lived tab once per cache window", async () => {
+    window.localStorage.setItem(
+      "portfolio_holdings",
+      JSON.stringify([{ symbol: "AAPL", shares: 1, averageCost: 90 }]),
+    );
+    global.fetch = jest.fn()
+      .mockResolvedValueOnce({
+        ok: true,
+        status: 200,
+        json: async () => ({ quotes: [validQuote("AAPL", 110)], allFailed: false }),
+      })
+      .mockResolvedValueOnce({
+        ok: true,
+        status: 200,
+        json: async () => ({ quotes: [validQuote("AAPL", 115)], allFailed: false }),
+      });
+
+    const { result } = renderHook(() => useInvestments());
+    await waitFor(() => expect(result.current.enhancedHoldings[0]?.currentPrice).toBe(110));
+
+    const baseNow = Date.now();
+    jest.spyOn(Date, "now").mockReturnValue(baseNow + 5 * 60 * 1000 + 1);
+    act(() => window.dispatchEvent(new Event("focus")));
+
+    await waitFor(() => expect(result.current.enhancedHoldings[0]?.currentPrice).toBe(115));
+    expect(global.fetch).toHaveBeenCalledTimes(2);
+
+    act(() => window.dispatchEvent(new Event("focus")));
+    await act(async () => Promise.resolve());
+    expect(global.fetch).toHaveBeenCalledTimes(2);
+  });
+
+  it("describes a structured all-failed refresh as a saved-quote fallback", async () => {
+    window.localStorage.setItem(
+      "portfolio_holdings",
+      JSON.stringify([{ symbol: "AAPL", shares: 1, averageCost: 90 }]),
+    );
+    global.fetch = jest.fn()
+      .mockResolvedValueOnce({
+        ok: true,
+        status: 200,
+        json: async () => ({ quotes: [validQuote("AAPL", 110)], allFailed: false }),
+      })
+      .mockResolvedValueOnce({
+        ok: false,
+        status: 503,
+        json: async () => ({
+          quotes: [errorQuote("AAPL", "Live price is temporarily unavailable.")],
+          allFailed: true,
+        }),
+      });
+
+    const { result } = renderHook(() => useInvestments());
+    await waitFor(() => expect(result.current.enhancedHoldings[0]?.priceSource).toBe("live"));
+
+    act(() => result.current.refetch());
+    await waitFor(() => expect(result.current.enhancedHoldings[0]?.priceSource).toBe("saved"));
+    expect(result.current.error).toBe(
+      "Market quotes are temporarily unavailable for AAPL. Portfolio totals are showing the last saved quote for those holdings.",
+    );
   });
 
   it("preserves a last-good price when a later response fails for that symbol", async () => {
@@ -440,8 +642,9 @@ describe("useInvestments derived calculations", () => {
         { symbol: "MSFT", shares: 1, averageCost: 250 },
       ]),
     );
+    const cachedAt = Date.now() - 1_000;
     const cachedPayload = {
-      timestamp: Date.now(),
+      timestamp: cachedAt,
       quotes: [validQuote("AAPL", 100), validQuote("MSFT", 300)],
     };
     window.localStorage.setItem("portfolio_quotes_cache", JSON.stringify(cachedPayload));
@@ -463,27 +666,111 @@ describe("useInvestments derived calculations", () => {
     act(() => result.current.refetch());
 
     await waitFor(() =>
-      expect(result.current.error).toContain("showing the last saved live price"),
+      expect(result.current.error).toContain("showing the last saved quote"),
     );
     expect(result.current.enhancedHoldings.find((holding) => holding.symbol === "AAPL")?.currentPrice)
       .toBe(105);
     expect(result.current.enhancedHoldings.find((holding) => holding.symbol === "MSFT")?.currentPrice)
       .toBe(300);
-    // The fresh AAPL quote refreshes the cache; MSFT carries its last-good price.
-    const cache = JSON.parse(
-      window.localStorage.getItem("portfolio_quotes_cache") ?? "null",
-    ) as { quotes?: StockQuote[] } | null;
-    expect(cache?.quotes).toEqual(
+    expect(result.current.enhancedHoldings.find((holding) => holding.symbol === "MSFT")?.priceSource)
+      .toBe("saved");
+    // The prior usable MSFT quote remains cached under its original per-symbol
+    // timestamp; AAPL's successful response advances only AAPL.
+    const cache = readStoredQuoteCache();
+    expect(cache.version).toBe(2);
+    expect(readStoredQuotes()).toEqual(
       expect.arrayContaining([
         expect.objectContaining({ symbol: "AAPL", price: 105 }),
         expect.objectContaining({ symbol: "MSFT", price: 300 }),
       ]),
     );
-    // Every holding has a usable quote in the merged map, so the daily
-    // snapshot is still recorded.
-    expect(result.current.snapshots).toEqual([
-      expect.objectContaining({ totalValue: 405, totalCost: 340, holdingCount: 2 }),
-    ]);
+    expect(
+      cache.entries?.find((entry) => entry.quote.symbol === "MSFT")?.fetchedAt,
+    ).toBe(cachedAt);
+    // A cached fallback stays visible but cannot be written into today's
+    // performance history as though it came from the current response.
+    expect(result.current.snapshots).toEqual([]);
+  });
+
+  it("ignores an older overlapping response after the holdings set changes", async () => {
+    window.localStorage.setItem(
+      "portfolio_holdings",
+      JSON.stringify([{ symbol: "AAPL", shares: 1, averageCost: 90 }]),
+    );
+    const first = createDeferred<{ ok: boolean; status: number; json: () => Promise<unknown> }>();
+    const second = createDeferred<{ ok: boolean; status: number; json: () => Promise<unknown> }>();
+    global.fetch = jest.fn().mockImplementation((input: string) => {
+      const symbols = new URL(input, "http://localhost").searchParams.get("symbols");
+      return symbols === "AAPL,MSFT" ? second.promise : first.promise;
+    });
+
+    const { result } = renderHook(() => useInvestments());
+    await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
+
+    act(() => {
+      result.current.addHolding({ symbol: "MSFT", shares: 1, averageCost: 250 });
+    });
+    await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(2));
+
+    second.resolve({
+      ok: true,
+      status: 200,
+      json: async () => ({
+        allFailed: false,
+        quotes: [validQuote("AAPL", 105), validQuote("MSFT", 305)],
+      }),
+    });
+    await waitFor(() =>
+      expect(result.current.enhancedHoldings.find((holding) => holding.symbol === "MSFT")?.currentPrice)
+        .toBe(305),
+    );
+
+    first.resolve({
+      ok: true,
+      status: 200,
+      json: async () => ({ allFailed: false, quotes: [validQuote("AAPL", 95)] }),
+    });
+    await act(async () => {
+      await Promise.resolve();
+      await Promise.resolve();
+    });
+
+    expect(result.current.enhancedHoldings.find((holding) => holding.symbol === "AAPL")?.currentPrice)
+      .toBe(105);
+    expect(result.current.enhancedHoldings.find((holding) => holding.symbol === "MSFT")?.currentPrice)
+      .toBe(305);
+  });
+
+  it("downgrades prior quotes to saved values after a thrown refresh failure", async () => {
+    window.localStorage.setItem(
+      "portfolio_holdings",
+      JSON.stringify([{ symbol: "AAPL", shares: 2, averageCost: 90 }]),
+    );
+    global.fetch = jest.fn()
+      .mockResolvedValueOnce({
+        ok: true,
+        status: 200,
+        json: async () => ({ allFailed: false, quotes: [validQuote("AAPL", 110)] }),
+      })
+      .mockResolvedValueOnce({
+        ok: false,
+        status: 429,
+        json: async () => ({ error: "Too many requests" }),
+      });
+
+    const { result } = renderHook(() => useInvestments());
+    await waitFor(() => expect(result.current.enhancedHoldings[0]?.priceSource).toBe("live"));
+
+    act(() => result.current.refetch());
+
+    await waitFor(() => expect(result.current.error).toMatch(/HTTP 429/));
+    expect(result.current.enhancedHoldings[0]).toMatchObject({
+      currentPrice: 110,
+      priceSource: "saved",
+      dayChange: 0,
+      dayChangePercent: 0,
+    });
+    expect(global.fetch).toHaveBeenCalledTimes(2);
   });
 
   it("batches portfolios larger than the 25-symbol route limit", async () => {

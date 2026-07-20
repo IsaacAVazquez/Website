@@ -39,6 +39,16 @@ jobs:
       - name: Install dependencies
         run: npm ci --prefer-offline --no-audit --fund=false
 
+      - name: Validate live provider configuration
+        env:
+          THE_ODDS_API_KEY: ${{ secrets.THE_ODDS_API_KEY }}
+          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
+        run: |
+          if [ -z "$THE_ODDS_API_KEY" ] || [ -z "$API_FOOTBALL_KEY" ]; then
+            echo "::error::THE_ODDS_API_KEY and API_FOOTBALL_KEY are required for a live score-pools refresh."
+            exit 1
+          fi
+
       - name: Refresh score-pools snapshot
         run: npm run update:score-pools
         env:
@@ -48,59 +58,10 @@ jobs:
 
       - name: Verify score-pools snapshot quality
         id: verify_quality
-        run: |
-          node -e "
-          const fs = require('fs');
+        run: npx tsx scripts/verifyScorePoolsSnapshot.ts
 
-          const SNAPSHOT_PATH = 'src/data/scorePoolsSnapshot.ts';
-
-          if (!fs.existsSync(SNAPSHOT_PATH)) {
-            console.error('::error::Snapshot file is missing at ' + SNAPSHOT_PATH);
-            process.exit(1);
-          }
-
-          const source = fs.readFileSync(SNAPSHOT_PATH, 'utf8');
-          const match = source.match(
-            /export const scorePoolsSnapshot: ScorePoolsSnapshot = (\{[\s\S]*\});\s*$/
-          );
-          if (!match) {
-            console.error('::error::Could not parse snapshot export from ' + SNAPSHOT_PATH);
-            process.exit(1);
-          }
-
-          let snapshot;
-          try {
-            snapshot = JSON.parse(match[1]);
-          } catch (err) {
-            console.error('::error::JSON.parse failed on score-pools snapshot body: ' + String(err));
-            process.exit(1);
-          }
-
-          const leagues = Array.isArray(snapshot.leagues) ? snapshot.leagues : [];
-          const fixtures = leagues.reduce((sum, l) => sum + (l.fixtures?.length ?? 0), 0);
-          const odds = leagues.reduce(
-            (sum, l) => sum + (l.fixtures ?? []).reduce((s, f) => s + (f.odds?.length ?? 0), 0),
-            0
-          );
-
-          console.log('Leagues:', leagues.length);
-          console.log('Fixtures:', fixtures);
-          console.log('Odds snapshots:', odds);
-          console.log('Generated at:', snapshot.generatedAt);
-
-          if (leagues.length === 0) {
-            console.error('::error::Refusing to commit a score-pools snapshot with no leagues.');
-            process.exit(1);
-          }
-
-          fs.writeFileSync(
-            process.env.GITHUB_OUTPUT,
-            'leagues=' + leagues.length + '\n' +
-              'fixtures=' + fixtures + '\n' +
-              'odds=' + odds + '\n',
-            { flag: 'a' }
-          );
-          "
+      - name: Verify refresh freshness
+        run: npx tsx scripts/verifyDataRefresh.ts score-pools
 
       - name: Check for snapshot changes
         id: check_changes
@@ -122,20 +83,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # Snapshot commits carry [skip ci]; deploy promptly when the odds moved.
-      - name: Trigger Netlify deploy
-        if: steps.check_changes.outputs.changed == 'true'
-        env:
-          NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
-        run: |
-          if [ -z "$NETLIFY_BUILD_HOOK" ]; then
-            echo "NETLIFY_BUILD_HOOK secret not configured; skipping deploy trigger."
-            exit 0
-          fi
-          curl -fsS -X POST -d '{}' "$NETLIFY_BUILD_HOOK" \
-            && echo "Netlify build hook triggered." \
-            || echo "::warning::Netlify build hook request failed; the daily scheduled rebuild will pick up the snapshot."
-
       - name: Create job summary
         if: always()
         env:
@@ -153,6 +100,9 @@ jobs:
             echo "**Leagues:** $LEAGUES" >> "$GITHUB_STEP_SUMMARY"
             echo "**Fixtures:** $FIXTURES" >> "$GITHUB_STEP_SUMMARY"
             echo "**Odds snapshots:** $ODDS" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Live leagues:** ${{ steps.verify_quality.outputs.live_leagues }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Live fixtures:** ${{ steps.verify_quality.outputs.live_fixtures }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Live odds snapshots:** ${{ steps.verify_quality.outputs.live_odds }}" >> "$GITHUB_STEP_SUMMARY"
             echo "" >> "$GITHUB_STEP_SUMMARY"
           fi
           if [ "${{ steps.check_changes.outputs.changed }}" = "true" ]; then

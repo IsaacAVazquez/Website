@@ -1,0 +1,86 @@
+name: Audit Curated Data
+
+on:
+  schedule:
+    - cron: "25 15 * * 1"
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      issues: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          ref: main
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline --no-audit --fund=false
+
+      - name: Audit review dates and verification
+        id: audit
+        continue-on-error: true
+        run: npx tsx scripts/auditCuratedData.ts
+
+      - name: Open or update curated data review
+        if: steps.audit.outcome == 'failure'
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const title = "Curated datasets need review";
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: "open",
+              labels: "curated-data-review",
+              per_page: 1,
+            });
+            if (existing.data[0]) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.data[0].number,
+                body: `The weekly review still finds overdue or unverified data. Run: ${runUrl}`,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body: `One or more curated datasets are overdue, unverified, or structurally invalid. Review the workflow summary: ${runUrl}`,
+                labels: ["curated-data-review", "automation"],
+              });
+            }
+
+      - name: Close resolved curated data review
+        if: steps.audit.outcome == 'success'
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: "open",
+              labels: "curated-data-review",
+              per_page: 10,
+            });
+            for (const issue of existing.data) {
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                state: "closed",
+              });
+            }

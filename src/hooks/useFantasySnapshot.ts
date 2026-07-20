@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { fantasySnapshotRevision } from "@/data/fantasySnapshotRevision.generated";
 import { logger } from "@/lib/logger";
 import {
@@ -30,6 +30,7 @@ interface UseFantasySnapshotResult {
   sliceMetadataMap: FantasySnapshotSliceMap | null;
   isLoading: boolean;
   error: string | null;
+  retry: () => void;
 }
 
 const snapshotCache = new Map<string, FantasySnapshot>();
@@ -155,6 +156,13 @@ export function useFantasySnapshot({
   });
   const [isLoading, setIsLoading] = useState(snapshotCache.get(cacheKey) === undefined);
   const [error, setError] = useState<string | null>(null);
+  const [requestVersion, setRequestVersion] = useState(0);
+
+  const retry = useCallback(() => {
+    snapshotCache.delete(cacheKey);
+    inflightSnapshotRequests.delete(cacheKey);
+    setRequestVersion((version) => version + 1);
+  }, [cacheKey]);
 
   useEffect(() => {
     let cancelled = false;
@@ -194,7 +202,7 @@ export function useFantasySnapshot({
     return () => {
       cancelled = true;
     };
-  }, [cacheKey, scoring]);
+  }, [cacheKey, requestVersion, scoring]);
 
   const players = useMemo<Player[]>(() => {
     if (!snapshot) {
@@ -242,5 +250,6 @@ export function useFantasySnapshot({
     sliceMetadataMap: snapshot?.sliceMetadata ?? null,
     isLoading,
     error,
+    retry,
   };
 }

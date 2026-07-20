@@ -135,9 +135,12 @@ describe("GET /api/bay-area-transit/stations/[stationId]", () => {
     expect(body.departures).toHaveLength(1);
     expect(body.departures[0].destinationAbbr).toBe("BERY");
     expect(response.headers.get("Cache-Control")).toBe(
-      "public, max-age=300, stale-while-revalidate=900"
+      "public, max-age=30, stale-while-revalidate=120"
     );
-    expect(mockGetTransitStationBoard).toHaveBeenCalledWith("lake");
+    expect(response.headers.get("X-Data-Revision")).toMatch(/^[a-f0-9]{64}$/);
+    expect(mockGetTransitStationBoard).toHaveBeenCalledWith("lake", {
+      preferLive: true,
+    });
     expect(mockLoggerError).not.toHaveBeenCalled();
   });
 

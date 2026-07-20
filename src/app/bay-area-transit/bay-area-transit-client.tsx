@@ -150,6 +150,18 @@ async function fetchTransitStationBoard(
   return payload;
 }
 
+async function fetchTransitSummary(signal: AbortSignal): Promise<TransitSummary> {
+  const response = await fetch("/api/bay-area-transit/summary", {
+    cache: "no-store",
+    signal,
+  });
+  const payload = (await response.json()) as TransitSummary & { error?: string };
+  if (!response.ok) {
+    throw new Error(payload.error || "Unable to refresh transit summary.");
+  }
+  return payload;
+}
+
 function StatBlock({
   label,
   value,
@@ -410,11 +422,12 @@ function DepartureRow({
 
 export function BayAreaTransitClient({
   initialState,
-  summary,
+  summary: initialSummary,
   initialStationBoard,
 }: BayAreaTransitClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const [summary, setSummary] = useState(initialSummary);
   const currentQuery = searchParams.toString();
   const currentHref = `${TRANSIT_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
   const hasManagedParams =
@@ -465,6 +478,41 @@ export function BayAreaTransitClient({
   const system = summary.system;
   const selectedStation =
     summary.stations.find((station) => station.id === selectedStationId) ?? null;
+  const staleSections = Object.entries(summary.sectionStatus ?? {})
+    .filter(([, status]) => status !== "fresh")
+    .map(([section]) => section);
+
+  useEffect(() => {
+    let active = true;
+    let controller: AbortController | null = null;
+
+    async function refreshSummary() {
+      controller?.abort();
+      controller = new AbortController();
+      try {
+        const nextSummary = await fetchTransitSummary(controller.signal);
+        if (!active) return;
+        setSummary(nextSummary);
+        setStationBoards({});
+        setStationBoardErrors({});
+      } catch (error) {
+        if (!(error instanceof DOMException && error.name === "AbortError")) {
+          // Keep the last good summary and station board on transient failures.
+        }
+      }
+    }
+
+    void refreshSummary();
+    const interval = window.setInterval(() => {
+      if (document.visibilityState === "visible") void refreshSummary();
+    }, 60_000);
+
+    return () => {
+      active = false;
+      controller?.abort();
+      window.clearInterval(interval);
+    };
+  }, []);
 
   useEffect(() => {
     if (currentHref === desiredHref) {
@@ -605,6 +653,8 @@ export function BayAreaTransitClient({
       value:
         summary.sectionStatus?.elevator === "unavailable"
           ? "Unavailable"
+          : summary.sectionStatus?.elevator === "stale-fallback"
+            ? `${summary.heroStats.elevatorOutages} last known`
           : `${summary.heroStats.elevatorOutages}`,
     },
     {
@@ -678,10 +728,15 @@ export function BayAreaTransitClient({
               <div className="flex flex-wrap items-center gap-2">
                 <span className="home-kicker">{system.abbr}</span>
                 <span className="home-pill">
-                  {summary.heroStats.activeAdvisories === 0
+                  {summary.sectionStatus?.advisories !== "fresh"
+                    ? "Last good alerts"
+                    : summary.heroStats.activeAdvisories === 0
                     ? "Normal service"
                     : `${summary.heroStats.activeAdvisories} alert${summary.heroStats.activeAdvisories === 1 ? "" : "s"}`}
                 </span>
+                {staleSections.length > 0 ? (
+                  <span className="home-pill">Partial fallback</span>
+                ) : null}
                 {system.seed ? <span className="home-pill">Seed data</span> : null}
               </div>
 
@@ -707,8 +762,9 @@ export function BayAreaTransitClient({
                   }}
                 >
                   I wanted the BART map, the next trains, and any service alerts
-                  in one calm screen instead of three apps. This snapshot keeps
-                  the network readable without pretending it is a live feed.
+                  in one calm screen instead of three apps. The browser refreshes
+                  every minute, and each feed keeps its last good result when BART
+                  has a temporary outage.
                 </p>
               </div>
             </div>
@@ -751,7 +807,7 @@ export function BayAreaTransitClient({
                 <p className="mb-0 flex items-center gap-2">
                   <TimerReset className="h-4 w-4 shrink-0" aria-hidden="true" />
                   <span>
-                    Snapshot refreshed {formatGeneratedAt(system.generatedAt)}
+                    Refreshed {formatGeneratedAt(system.generatedAt)}
                   </span>
                 </p>
               </div>
@@ -762,7 +818,7 @@ export function BayAreaTransitClient({
         <HomeStatsPanel
           id="transit-stats-panel"
           title="BART at a glance"
-          meta={`Snapshot · refreshed ${formatGeneratedAt(system.generatedAt)}`}
+          meta={`Live · refreshed ${formatGeneratedAt(system.generatedAt)}`}
           cells={statsPanelCells}
           pills={[
             {
@@ -903,12 +959,12 @@ export function BayAreaTransitClient({
                         fontFamily: "var(--font-home-sans)",
                       }}
                     >
-                      Advisories and elevator outages posted by BART at snapshot
-                      time.
+                      Advisories and elevator outages posted by BART at the last
+                      refresh.
                     </p>
                   </div>
 
-                  {summary.sectionStatus?.elevator === "unavailable" ? (
+                  {staleSections.length > 0 ? (
                     <div
                       className="rounded-[var(--radius-3xl)] border px-5 py-4 text-sm leading-6"
                       style={{
@@ -921,14 +977,15 @@ export function BayAreaTransitClient({
                       }}
                       role="status"
                     >
-                      BART&apos;s elevator status feed was unavailable for this
-                      snapshot, so no outage count is shown.
+                      BART did not return fresh {staleSections.join(", ")} data on
+                      this pass, so I kept the last good result instead of showing
+                      a false zero.
                     </div>
                   ) : null}
 
                   {summary.advisories.length === 0 &&
                   summary.elevator.length === 0 &&
-                  summary.sectionStatus?.elevator !== "unavailable" ? (
+                  staleSections.length === 0 ? (
                     <div
                       className="flex items-center gap-3 rounded-[var(--radius-3xl)] border px-5 py-5"
                       style={{
@@ -950,8 +1007,8 @@ export function BayAreaTransitClient({
                           fontFamily: "var(--font-home-sans)",
                         }}
                       >
-                        No delays reported and all elevators in service at
-                        snapshot time.
+                        No delays reported and all elevators in service at the
+                        last refresh.
                       </p>
                     </div>
                   ) : summary.advisories.length > 0 ||
@@ -1037,7 +1094,7 @@ export function BayAreaTransitClient({
                   "color-mix(in srgb, var(--home-paper-alt) 82%, var(--home-elev-mix))",
               }}
             >
-              <p className="home-kicker mb-2">Snapshot note</p>
+              <p className="home-kicker mb-2">Data note</p>
               <p
                 className="mb-0 text-sm leading-7"
                 style={{
@@ -1047,7 +1104,7 @@ export function BayAreaTransitClient({
               >
                 {system.seed
                   ? "This is a hand-authored seed shipped with the app. The first refresh from the BART public API replaces it with the full network and real-time departures."
-                  : "This page is a checked-in BART snapshot rather than a live feed. Lines, departures, and alerts reflect the local dataset generated from the BART public API."}
+                  : "The route catalog comes from the checked-in snapshot. Departures, advisories, and elevator outages refresh from BART in the browser, with the last good snapshot held back as a fallback."}
               </p>
             </div>
           </div>

@@ -15,6 +15,9 @@ import styles from "@/app/investments/investments.module.css";
 interface Props {
   summary: PortfolioSummaryType;
   holdings: EnhancedHolding[];
+  marketStatus: string;
+  hasLiveQuotes: boolean;
+  allQuotesLive: boolean;
 }
 
 interface ComputedStats {
@@ -51,7 +54,9 @@ function computeStats(holdings: EnhancedHolding[]): ComputedStats {
   );
   const best = sortedByReturn[0] ?? null;
 
-  const sortedByDayMove = [...holdings].sort(
+  const sortedByDayMove = holdings
+    .filter((holding) => holding.priceSource === "live")
+    .sort(
     (a, b) => Math.abs(b.dayChangePercent) - Math.abs(a.dayChangePercent),
   );
   const biggestMove = sortedByDayMove[0] ?? null;
@@ -105,7 +110,13 @@ function StatCell({ label, hint, value, sub, tone = "default", subTone = "defaul
   );
 }
 
-export function PortfolioStatsGrid({ summary, holdings }: Props) {
+export function PortfolioStatsGrid({
+  summary,
+  holdings,
+  marketStatus,
+  hasLiveQuotes,
+  allQuotesLive,
+}: Props) {
   const gainPositive = summary.totalGainLoss >= 0;
   const dayPositive = summary.dayChange >= 0;
   const stats = computeStats(holdings);
@@ -117,17 +128,21 @@ export function PortfolioStatsGrid({ summary, holdings }: Props) {
     >
       <div className={styles.statsCap}>
         <span>Portfolio stats</span>
-        <span className={styles.statsLive}>Live across saved positions</span>
+        <span className={styles.statsLive}>{marketStatus}</span>
       </div>
 
       <div className={styles.statsGrid}>
         <StatCell
           label="Day P/L"
-          hint="Today's change in portfolio value, summed across all positions."
-          value={formatSignedCurrency(summary.dayChange)}
-          sub={formatPercent(summary.dayChangePercent)}
-          tone={dayPositive ? "pos" : "neg"}
-          subTone={dayPositive ? "pos" : "neg"}
+          hint="Latest market-session change, summed across positions with current quotes."
+          value={hasLiveQuotes ? formatSignedCurrency(summary.dayChange) : "—"}
+          sub={
+            hasLiveQuotes
+              ? `${formatPercent(summary.dayChangePercent)}${allQuotesLive ? "" : " · partial"}`
+              : "No current quotes"
+          }
+          tone={hasLiveQuotes ? (dayPositive ? "pos" : "neg") : "default"}
+          subTone={hasLiveQuotes ? (dayPositive ? "pos" : "neg") : "default"}
         />
         <StatCell
           label="All-time return"
@@ -186,7 +201,7 @@ export function PortfolioStatsGrid({ summary, holdings }: Props) {
         />
         <StatCell
           label="Biggest day move"
-          hint="Position with the largest absolute change today."
+          hint="Position with the largest absolute change in the latest quoted session."
           value={stats.biggestDayMove?.symbol ?? "—"}
           sub={
             stats.biggestDayMove

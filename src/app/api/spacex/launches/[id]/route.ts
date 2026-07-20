@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { getMissionLaunchDetail, isValidMissionLaunchId } from "@/lib/spacexData";
 import { logger } from "@/lib/logger";
 import { NO_STORE_HEADERS } from "@/lib/apiCacheHeaders";
+import { createSnapshotResponseHeaders } from "@/lib/snapshotResponse";
+import { getSpaceXSnapshot } from "@/lib/spacexSnapshot";
 
 export async function GET(
   _request: Request,
@@ -18,11 +20,15 @@ export async function GET(
 
   try {
     const launch = await getMissionLaunchDetail(id, { source: "snapshot" });
+    const snapshot = getSpaceXSnapshot();
 
     return NextResponse.json(launch, {
-      headers: {
-        "Cache-Control": "public, max-age=300, stale-while-revalidate=1800",
-      },
+      headers: createSnapshotResponseHeaders({
+        surface: "spacex",
+        payload: launch,
+        sourceAsOf: snapshot.generatedAt,
+        cacheControl: "public, max-age=300, stale-while-revalidate=1800",
+      }),
     });
   } catch (error) {
     const err = error as Error & { status?: number };

@@ -61,30 +61,66 @@ describe("snapshot refresh workflow infrastructure", () => {
     expect(helper).toContain("SNAPSHOT_PUSH_ATTEMPTS");
   });
 
-  it("verifies high-frequency snapshot revisions in canonical production", () => {
-    for (const file of ["update-earthquake.yml", "update-bay-area-transit.yml"]) {
-      const workflow = fs.readFileSync(path.join(workflowsDir, file), "utf8");
-      expect(workflow).toContain("ensure-production-data-revision.sh");
-      expect(workflow).toContain("steps.verify_quality.outputs.revision");
-      expect(workflow).toContain("https://isaacavazquez.com/api/data-revisions");
-      // The workflow hash must match the /api/data-revisions ledger, which
-      // hashes each surface at summary grain — never the full snapshot.
-      expect(workflow).toContain(".update(JSON.stringify(summary))");
-      expect(workflow).not.toContain(".update(JSON.stringify(snapshot))");
-    }
-
+  it("publishes and verifies snapshot workflows through one coalesced job", () => {
+    const publicationWorkflow = fs.readFileSync(
+      path.join(workflowsDir, "publish-data.yml"),
+      "utf8"
+    );
     const verifier = fs.readFileSync(
       path.join(
         process.cwd(),
         "scripts",
         "ci",
-        "ensure-production-data-revision.sh"
+        "ensure-production-data-ledger.mjs"
       ),
       "utf8"
     );
-    expect(verifier).toContain("cacheBust=");
-    expect(verifier).toContain("Build hook triggered");
-    expect(verifier).toContain("Production did not serve");
+
+    expect(publicationWorkflow).toContain("workflow_run:");
+    expect(publicationWorkflow).toContain("group: publish-refreshed-data");
+    expect(publicationWorkflow).toContain("cancel-in-progress: true");
+    expect(publicationWorkflow).toContain("printDataLedgerRevision.ts");
+    expect(publicationWorkflow).toContain("ensure-production-data-ledger.mjs");
+    expect(publicationWorkflow).toContain("NETLIFY_BUILD_HOOK is required");
+    expect(verifier).toContain("cacheBust");
+    expect(verifier).toContain("Production health endpoint rejected");
+    expect(verifier).toContain("Production did not serve data ledger");
+
+    for (const workflowPath of updateWorkflowFiles) {
+      if (path.basename(workflowPath) === "update-article-images.yml") continue;
+      const workflow = fs.readFileSync(workflowPath, "utf8");
+      expect(workflow).not.toContain("NETLIFY_BUILD_HOOK");
+      expect(workflow).not.toContain("Trigger Netlify deploy");
+    }
+  });
+
+  it("rejects stale artifacts before scheduled refreshes can commit", () => {
+    const scheduledSnapshotWorkflows = [
+      "update-earthquake.yml",
+      "update-bay-area-transit.yml",
+      "update-world-cup.yml",
+      "update-mlb.yml",
+      "update-nba.yml",
+      "update-nfl.yml",
+      "update-golf.yml",
+      "update-formula-1.yml",
+      "update-github-trending.yml",
+      "update-spacex.yml",
+      "update-premier-league.yml",
+      "update-la-liga.yml",
+      "update-fantasy.yml",
+      "update-investments.yml",
+      "update-polling.yml",
+      "update-score-pools.yml",
+    ];
+
+    for (const workflowName of scheduledSnapshotWorkflows) {
+      const workflow = fs.readFileSync(path.join(workflowsDir, workflowName), "utf8");
+      expect(workflow).toContain("npx tsx scripts/verifyDataRefresh.ts");
+      expect(workflow.indexOf("npx tsx scripts/verifyDataRefresh.ts")).toBeLessThan(
+        workflow.indexOf("bash scripts/ci/commit-and-push-snapshot.sh")
+      );
+    }
   });
 
   it("uses modern action majors across workflows", () => {

@@ -32,6 +32,18 @@ export function createDataRevision(payload: unknown): string {
     .digest("hex");
 }
 
+export function createDataLedgerRevision(
+  entries: readonly DataRevisionEntry[]
+): string {
+  return createDataRevision(
+    entries.map(({ surface, revision, sourceAsOf }) => ({
+      surface,
+      revision,
+      sourceAsOf,
+    }))
+  );
+}
+
 export function getDataDeliveryStatus(
   sourceAsOf: string | null,
   maxAgeMs: number,

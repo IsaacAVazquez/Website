@@ -1,8 +1,8 @@
 /**
  * Finnhub quote client
  *
- * Replaces Yahoo Finance for live stock prices.
- * Free tier: 60 req/min.
+ * Runtime market quote source. Provider entitlements and public-display terms
+ * must be verified separately from this client implementation.
  *
  * Quote endpoint returns: { c, d, dp, h, l, o, pc, t }
  * (current, change, changePercent, high, low, open, prevClose, timestamp)
@@ -17,7 +17,12 @@ import {
 } from "@/lib/investmentsAssetOrigin";
 
 const FINNHUB_API_KEY = process.env.FINNHUB_API_KEY ?? "";
-const TIMEOUT_MS = 8_000;
+const TIMEOUT_MS = 5_000;
+const ALLOWLIST_TIMEOUT_MS = 2_000;
+const QUOTE_CACHE_TTL_MS = 30_000;
+// Four days covers normal weekends and most exchange holidays without letting
+// an old weekly close masquerade as a current market quote.
+const MAX_QUOTE_AGE_MS = 4 * 24 * 60 * 60 * 1000;
 
 const TEMPORARY_ERROR = "Live price is temporarily unavailable. Showing the latest saved data instead.";
 const RATE_LIMITED_ERROR = "Live price is temporarily unavailable right now. Try again in a few minutes.";
@@ -25,6 +30,8 @@ const NO_PRICE_ERROR = "Live price is unavailable for this symbol right now.";
 
 // Module-level rate limit tracker
 let rateLimitedUntil = 0;
+const quoteCache = new Map<string, { quote: StockQuote; expiresAt: number }>();
+const quoteInflight = new Map<string, Promise<StockQuote>>();
 
 export function isRateLimited(): boolean {
   return Date.now() < rateLimitedUntil;
@@ -67,6 +74,7 @@ const INDEX_JSON_PATH = path.join(
 );
 
 let cachedAllowlist: Set<string> | null = null;
+let allowlistInflight: Promise<Set<string>> | null = null;
 
 export class FinnhubAllowlistUnavailableError extends Error {
   readonly status = 503;
@@ -100,9 +108,12 @@ async function fetchAllowlistFromPublicAsset(
   if (!origin) {
     return new Set<string>();
   }
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), ALLOWLIST_TIMEOUT_MS);
   try {
     const response = await fetch(new URL(INDEX_RELATIVE_PATH, origin).toString(), {
       cache: "force-cache",
+      signal: controller.signal,
     });
     if (!response.ok) {
       return new Set<string>();
@@ -110,6 +121,8 @@ async function fetchAllowlistFromPublicAsset(
     return toSymbolSet(await response.json());
   } catch {
     return new Set<string>();
+  } finally {
+    clearTimeout(timeoutId);
   }
 }
 
@@ -135,7 +148,15 @@ export async function getAllowedSymbols(
     return cachedAllowlist;
   }
 
-  const fromPublic = await fetchAllowlistFromPublicAsset(options);
+  const inflight =
+    allowlistInflight ?? fetchAllowlistFromPublicAsset(options);
+  allowlistInflight = inflight;
+  let fromPublic: Set<string>;
+  try {
+    fromPublic = await inflight;
+  } finally {
+    if (allowlistInflight === inflight) allowlistInflight = null;
+  }
   if (fromPublic.size > 0) {
     cachedAllowlist = fromPublic;
     return cachedAllowlist;
@@ -162,6 +183,13 @@ export async function isAllowedSymbol(
 // Not exported through the module's public consumers.
 export function __resetAllowlistCacheForTests(): void {
   cachedAllowlist = null;
+  allowlistInflight = null;
+}
+
+export function __resetQuoteStateForTests(): void {
+  rateLimitedUntil = 0;
+  quoteCache.clear();
+  quoteInflight.clear();
 }
 
 function errorQuote(symbol: string, message: string): StockQuote {
@@ -181,11 +209,20 @@ function errorQuote(symbol: string, message: string): StockQuote {
   };
 }
 
+function toFinnhubProviderSymbol(symbol: string): string {
+  // The curated research universe keeps Yahoo-style BRK-B for historical
+  // snapshot compatibility; Finnhub expects the US class-share form BRK.B.
+  return symbol === "BRK-B" ? "BRK.B" : symbol;
+}
+
 /**
  * Fetch a live quote from Finnhub.
  * Always returns a StockQuote — sets the `error` field on failure.
  */
-export async function fetchFinnhubQuote(symbol: string): Promise<StockQuote> {
+async function fetchFinnhubQuoteFromProvider(
+  symbol: string,
+  timeoutMs = TIMEOUT_MS,
+): Promise<StockQuote> {
   if (!FINNHUB_API_KEY) {
     return errorQuote(symbol, TEMPORARY_ERROR);
   }
@@ -195,13 +232,21 @@ export async function fetchFinnhubQuote(symbol: string): Promise<StockQuote> {
   }
 
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), TIMEOUT_MS);
+  const boundedTimeoutMs =
+    Number.isFinite(timeoutMs) && timeoutMs > 0
+      ? Math.max(1, Math.min(TIMEOUT_MS, Math.floor(timeoutMs)))
+      : TIMEOUT_MS;
+  const timeoutId = setTimeout(() => controller.abort(), boundedTimeoutMs);
 
   try {
+    const providerSymbol = toFinnhubProviderSymbol(symbol);
     const res = await fetch(
-      `https://finnhub.io/api/v1/quote?symbol=${encodeURIComponent(symbol)}&token=${FINNHUB_API_KEY}`,
+      `https://finnhub.io/api/v1/quote?symbol=${encodeURIComponent(providerSymbol)}`,
       {
-        headers: { Accept: "application/json" },
+        headers: {
+          Accept: "application/json",
+          "X-Finnhub-Token": FINNHUB_API_KEY,
+        },
         cache: "no-store",
         signal: controller.signal,
       }
@@ -216,29 +261,114 @@ export async function fetchFinnhubQuote(symbol: string): Promise<StockQuote> {
       return errorQuote(symbol, TEMPORARY_ERROR);
     }
 
-    const data = await res.json();
-    const price: number = data.c ?? 0;
+    const data = await res.json() as Record<string, unknown>;
+    const finiteNumber = (value: unknown): number | undefined =>
+      typeof value === "number" && Number.isFinite(value) ? value : undefined;
+    const price = finiteNumber(data.c);
+    const providerTimestampSeconds = Number(data.t);
+    const providerTimestampMs = providerTimestampSeconds * 1000;
+    const now = Date.now();
 
-    if (!price) {
+    if (price === undefined || price <= 0) {
+      return errorQuote(symbol, NO_PRICE_ERROR);
+    }
+    if (
+      !Number.isFinite(providerTimestampMs) ||
+      providerTimestampMs <= 0 ||
+      providerTimestampMs > now + 5 * 60 * 1000 ||
+      now - providerTimestampMs > MAX_QUOTE_AGE_MS
+    ) {
+      return errorQuote(symbol, NO_PRICE_ERROR);
+    }
+
+    const change = finiteNumber(data.d);
+    const changePercent = finiteNumber(data.dp);
+    const dayHigh = finiteNumber(data.h);
+    const dayLow = finiteNumber(data.l);
+    const open = finiteNumber(data.o);
+    const previousClose = finiteNumber(data.pc);
+    if (
+      change === undefined ||
+      changePercent === undefined ||
+      dayHigh === undefined ||
+      dayLow === undefined ||
+      open === undefined ||
+      previousClose === undefined ||
+      dayHigh <= 0 ||
+      dayLow <= 0 ||
+      open <= 0 ||
+      previousClose <= 0 ||
+      dayLow > open ||
+      dayHigh < open ||
+      dayHigh < dayLow
+    ) {
+      return errorQuote(symbol, NO_PRICE_ERROR);
+    }
+
+    const expectedChange = price - previousClose;
+    const expectedPercent = (expectedChange / previousClose) * 100;
+    if (
+      Math.abs(change - expectedChange) > Math.max(0.05, previousClose * 0.001) ||
+      Math.abs(changePercent - expectedPercent) > 0.15
+    ) {
       return errorQuote(symbol, NO_PRICE_ERROR);
     }
 
     return {
       symbol,
       price,
-      change: data.d ?? 0,
-      changePercent: data.dp ?? 0,
-      dayHigh: data.h ?? 0,
-      dayLow: data.l ?? 0,
-      open: data.o ?? 0,
-      previousClose: data.pc ?? 0,
+      change,
+      changePercent,
+      dayHigh,
+      dayLow,
+      open,
+      previousClose,
       volume: 0,
       marketCap: 0,
       name: symbol,
+      asOf: new Date(providerTimestampMs).toISOString(),
+      source: "finnhub",
     };
   } catch {
     return errorQuote(symbol, TEMPORARY_ERROR);
   } finally {
     clearTimeout(timeoutId);
   }
+}
+
+/**
+ * Fetch a quote with per-symbol process-local caching and in-flight
+ * coalescing. This does not replace a distributed provider quota, but it
+ * prevents duplicate requests for the same symbol within one server instance.
+ */
+export async function fetchFinnhubQuote(
+  symbol: string,
+  options: { timeoutMs?: number } = {},
+): Promise<StockQuote> {
+  const upperSymbol = symbol.toUpperCase();
+  const cached = quoteCache.get(upperSymbol);
+  if (cached && cached.expiresAt > Date.now()) {
+    return cached.quote;
+  }
+
+  const inflight = quoteInflight.get(upperSymbol);
+  if (inflight) return inflight;
+
+  const promise = fetchFinnhubQuoteFromProvider(
+    upperSymbol,
+    options.timeoutMs,
+  )
+    .then((quote) => {
+      if (!quote.error) {
+        quoteCache.set(upperSymbol, {
+          quote,
+          expiresAt: Date.now() + QUOTE_CACHE_TTL_MS,
+        });
+      }
+      return quote;
+    })
+    .finally(() => quoteInflight.delete(upperSymbol));
+
+  quoteInflight.set(upperSymbol, promise);
+  return promise;
 }

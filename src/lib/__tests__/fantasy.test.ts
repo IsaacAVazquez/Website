@@ -2,11 +2,29 @@
  * @jest-environment node
  */
 import {
+  FANTASY_ROUTE_POSITIONS,
   FANTASY_SNAPSHOT_SCHEMA_VERSION,
+  getAllFantasySnapshotPlayers,
+  getFantasyPlayersForPosition,
+  getFantasySliceMetadata,
   normalizeFantasySnapshot,
   publishFantasyPlayer,
 } from "@/lib/fantasy";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import type { Player } from "@/types";
+
+const PUBLISHED_SCORING_SNAPSHOTS = [
+  ["ppr", "PPR"],
+  ["half_ppr", "HALF_PPR"],
+  ["standard", "STANDARD"],
+] as const;
+
+function readPublishedSnapshot(scoring: (typeof PUBLISHED_SCORING_SNAPSHOTS)[number][0]) {
+  return JSON.parse(
+    readFileSync(join(process.cwd(), "public", "data", "fantasy", `${scoring}.json`), "utf8")
+  ) as unknown;
+}
 
 describe("fantasy snapshot normalization", () => {
   it("normalizes a legacy PPR snapshot and keeps real position slices available", () => {
@@ -92,6 +110,70 @@ describe("fantasy snapshot normalization", () => {
     expect(snapshot.sliceMetadata.dst.available).toBe(true);
     expect(snapshot.sliceMetadata.dst.sourceKind).toBe("shared_position_consensus");
     expect(snapshot.positions.DST).toHaveLength(1);
+    expect(getAllFantasySnapshotPlayers(snapshot).map((player) => player.id)).toEqual([
+      "legacy-rb",
+      "legacy-dst",
+    ]);
+  });
+
+  it("unions position-only players without duplicating FLEX entries", () => {
+    const snapshot = normalizeFantasySnapshot(
+      {
+        season: 2026,
+        week: 0,
+        generatedAt: "2026-07-01T00:00:00.000Z",
+        scoringFormat: "PPR",
+        source: "snapshot",
+        positions: {
+          RB: [
+            {
+              id: "rb-1",
+              name: "Ranked Back",
+              team: "ATL",
+              position: "RB",
+              averageRank: 1,
+              standardDeviation: 1,
+            },
+          ],
+          FLEX: [
+            {
+              id: "rb-1",
+              name: "Ranked Back",
+              team: "ATL",
+              position: "RB",
+              averageRank: 1,
+              standardDeviation: 1,
+            },
+          ],
+          K: [
+            {
+              id: "k-1",
+              name: "Specialist Kicker",
+              team: "DAL",
+              position: "K",
+              averageRank: 1,
+              standardDeviation: 1,
+            },
+          ],
+        },
+        overall: [
+          {
+            id: "rb-1",
+            name: "Ranked Back",
+            team: "ATL",
+            position: "RB",
+            averageRank: 1,
+            standardDeviation: 1,
+          },
+        ],
+      },
+      "ppr"
+    );
+
+    expect(getAllFantasySnapshotPlayers(snapshot).map((player) => player.id)).toEqual([
+      "rb-1",
+      "k-1",
+    ]);
   });
 
   it("still refuses to synthesize a position board from overall-only legacy data", () => {
@@ -205,6 +287,40 @@ describe("fantasy snapshot normalization", () => {
       "ppr"
     );
     expect(zeroMatches.adpSource).toBeNull();
+  });
+});
+
+describe("published fantasy scoring snapshots", () => {
+  it.each(PUBLISHED_SCORING_SNAPSHOTS)(
+    "keeps every %s board published and internally consistent",
+    (scoring, expectedFormat) => {
+      const snapshot = normalizeFantasySnapshot(readPublishedSnapshot(scoring), scoring);
+
+      expect(snapshot.scoringFormat).toBe(expectedFormat);
+      expect(snapshot.schemaVersion).toBe(FANTASY_SNAPSHOT_SCHEMA_VERSION);
+
+      for (const position of FANTASY_ROUTE_POSITIONS) {
+        const players = getFantasyPlayersForPosition(snapshot, position);
+        const metadata = getFantasySliceMetadata(snapshot, position);
+
+        expect(metadata.available).toBe(true);
+        expect(metadata.playerCount).toBe(players.length);
+        expect(players.length).toBeGreaterThan(0);
+        expect(new Set(players.map((player) => player.id)).size).toBe(players.length);
+        expect(players.every((player) => Number.isFinite(player.averageRank))).toBe(true);
+      }
+    }
+  );
+
+  it("ships genuinely distinct rankings for the three scoring formats", () => {
+    const rankingSignature = (scoring: (typeof PUBLISHED_SCORING_SNAPSHOTS)[number][0]) =>
+      normalizeFantasySnapshot(readPublishedSnapshot(scoring), scoring)
+        .overall.slice(0, 25)
+        .map((player) => `${player.id}:${player.averageRank}`)
+        .join("|");
+
+    const signatures = PUBLISHED_SCORING_SNAPSHOTS.map(([scoring]) => rankingSignature(scoring));
+    expect(new Set(signatures).size).toBe(PUBLISHED_SCORING_SNAPSHOTS.length);
   });
 });
 

@@ -7,7 +7,7 @@ import {
   formatComparisonMetricValue,
   isLowerBetterMetric,
 } from "@/lib/investmentFormatting";
-import type { BetaData, DcfData, Fundamentals, IndustryData, WaccData } from "@/types/investment";
+import type { BetaData, Fundamentals, IndustryData, WaccData } from "@/types/investment";
 import { ErrorState } from "./ErrorState";
 import { MetricTooltip } from "./MetricTooltip";
 
@@ -121,7 +121,6 @@ export function ValuationRatiosPanel({
   const { data: fundamentals } = useStockData<Fundamentals>(symbol, "fundamentals");
   const { data: wacc } = useStockData<WaccData>(symbol, "wacc");
   const { data: beta } = useStockData<BetaData>(symbol, "beta");
-  const { data: dcf } = useStockData<DcfData>(symbol, "dcf");
   const rows = extractRows(industryRaw);
 
   if (!showIndustryComparison) {
@@ -159,15 +158,6 @@ export function ValuationRatiosPanel({
           <StandaloneMetric
             label="WACC"
             value={formatValue(wacc?.wacc, "percent")}
-          />
-          <StandaloneMetric
-            label="DCF Fair Value"
-            value={formatValue(dcf?.fairValue, "currency")}
-            detail={
-              dcf?.upside !== undefined
-                ? `${formatValue(dcf.upside, "percent")} implied upside`
-                : undefined
-            }
           />
           <StandaloneMetric
             label="Market Cap"

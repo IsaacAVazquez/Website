@@ -7,7 +7,7 @@ import { normalizePollingState } from "./polling-aggregator-state";
 export const metadata = constructMetadata({
   title: "Polling Aggregator",
   description:
-    "Interactive polling-aggregator dashboard covering presidential approval, the generic congressional ballot, and 2026 Senate and governor races. Currently displays illustrative sample data rather than live polling.",
+    "Interactive polling dashboard using VoteHub data for presidential approval and the 2026 generic congressional ballot.",
   canonicalUrl: "/polling-aggregator",
   dateModified: pollingSnapshot.generatedAt.slice(0, 10),
   aiMetadata: {
@@ -31,9 +31,9 @@ export const metadata = constructMetadata({
     ],
     contentType: "Software Application",
     context:
-      "Standalone political polling-aggregator dashboard by Isaac Vazquez covering presidential approval, the generic ballot, and 2026 Senate and governor races. It currently renders illustrative sample data to demonstrate the aggregator interface rather than live polling.",
+      "Standalone political polling dashboard by Isaac Vazquez using VoteHub data for presidential approval and the 2026 generic ballot.",
     summary:
-      "Polling aggregator dashboard for presidential approval trends, the generic congressional ballot, and competitive 2026 midterm races.",
+      "Polling dashboard for presidential approval trends and the 2026 generic congressional ballot.",
     primaryFocus:
       "Snapshot-driven political data exploration, polling averages, and shareable race views",
   },
@@ -67,16 +67,15 @@ export default async function PollingAggregatorPage({ searchParams }: PollingPag
         data={{
           name: "Polling Aggregator",
           description:
-            "Interactive polling-aggregator dashboard for presidential approval, the generic ballot, and 2026 midterm races, currently showing illustrative sample data rather than live polling.",
+            "Interactive polling dashboard for presidential approval and the 2026 generic ballot using VoteHub data.",
           url: "https://isaacavazquez.com/polling-aggregator",
           applicationCategory: "NewsApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           featureList: [
             "Presidential approval rating trend and poll table",
             "Generic congressional ballot average",
-            "2026 Senate race tracker with poll history",
-            "2026 Governor race tracker with poll history",
-            "Deep-linkable views and race drilldowns",
+            "VoteHub source attribution and field-date freshness",
+            "Deep-linkable overview and approval views",
           ],
         }}
       />

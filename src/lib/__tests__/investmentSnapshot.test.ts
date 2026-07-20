@@ -1,6 +1,20 @@
 import { buildInvestmentSnapshot } from "../investmentSnapshot";
 
 describe("buildInvestmentSnapshot", () => {
+  it("rejects impossible calendar dates from price history", () => {
+    const snapshot = buildInvestmentSnapshot("TEST", "2026-03-01T00:00:00.000Z", {
+      price: [
+        { report_date: "2026-02-28", open: 10, high: 11, low: 9, close: 10, volume: 100 },
+        { report_date: "2026-02-30", open: 10, high: 11, low: 9, close: 10, volume: 100 },
+      ],
+    });
+
+    expect(snapshot.sections.price).toEqual([
+      { date: "2026-02-28", open: 10, high: 11, low: 9, close: 10, volume: 100 },
+    ]);
+    expect(snapshot.freshness?.sections.price).toBe("2026-02-28");
+  });
+
   it("normalizes sections, deduplicates/sorts prices, and caps output", () => {
     const rawPrice = Array.from({ length: 300 }, (_, index) => {
       const date = new Date(Date.UTC(2025, 0, 1 + index));
@@ -99,6 +113,8 @@ describe("buildInvestmentSnapshot", () => {
     expect(snapshot.sections.news).toHaveLength(10);
     expect(snapshot.capabilities.news).toBe(true);
     expect(snapshot.capabilities.price).toBe(true);
+    expect(snapshot.capabilities).not.toHaveProperty("dcf");
+    expect(snapshot.sections).not.toHaveProperty("dcf");
     expect(snapshot.sections.info).toMatchObject({
       shortName: "Apple Inc.",
       longName: "Apple Inc.",

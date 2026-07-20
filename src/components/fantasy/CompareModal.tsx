@@ -192,7 +192,7 @@ export function CompareModal({ players, publishedRank, onClose, onRemove }: Comp
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 18, scale: 0.98 }}
           transition={{ duration: reduceMotion ? 0 : 0.22, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="relative max-h-[88vh] w-full max-w-2xl overflow-auto rounded-[var(--radius-3xl)] border p-5 outline-none"
+          className="relative max-h-[88vh] w-full max-w-2xl overscroll-contain overflow-auto rounded-[var(--radius-3xl)] border p-5"
           style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)", boxShadow: "var(--shadow-xl)" }}
         >
           <div className="mb-4 flex items-center justify-between">

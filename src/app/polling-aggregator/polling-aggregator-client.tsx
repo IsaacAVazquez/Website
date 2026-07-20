@@ -320,7 +320,8 @@ function RaceSidebar({ race }: { race: Race }) {
                   </span>
                 </div>
                 <p className="mt-0.5 text-xs text-[var(--home-ink-muted)]">
-                  {formatDate(poll.endDate)} · {poll.sampleSize.toLocaleString()} {poll.sampleType} · ±{poll.moe}
+                  {formatDate(poll.endDate)} · {poll.sampleSize.toLocaleString()} {poll.sampleType}
+                  {poll.moe === null ? "" : ` · ±${poll.moe}`}
                 </p>
                 <div className="mt-2 flex flex-wrap gap-2">
                   {poll.candidates.map((c) => (
@@ -738,7 +739,10 @@ export function PollingAggregatorClient({ initialState, snapshot }: Props) {
     navigate({ view: routeState.view, race: raceId });
   }
 
-  const lastUpdated = useMemo(() => formatUpdated(snapshot.generatedAt), [snapshot.generatedAt]);
+  const lastUpdated = useMemo(
+    () => formatUpdated(snapshot.sourceAsOf ?? snapshot.generatedAt),
+    [snapshot.generatedAt, snapshot.sourceAsOf]
+  );
 
   return (
     <section className="home-page min-h-screen">
@@ -759,7 +763,8 @@ export function PollingAggregatorClient({ initialState, snapshot }: Props) {
             Polling Aggregator
           </h1>
           <p className="home-body max-w-none">
-            Presidential approval, generic ballot averages, and 2026 Senate and governor race polls in one view.
+            Presidential approval and the 2026 generic ballot in one view, built
+            from attributed public polls rather than placeholder races.
           </p>
           <div className="flex flex-wrap gap-2 pt-2">
             {["2026 Midterms", `Updated ${lastUpdated}`, snapshot.sourceLabel, `${snapshot.approvalPolls.length + snapshot.genericBallotPolls.length} polls tracked`].map((label) => (
@@ -768,9 +773,7 @@ export function PollingAggregatorClient({ initialState, snapshot }: Props) {
           </div>
         </div>
 
-        {/* Sample-data disclosure. This dashboard currently renders illustrative
-            placeholder data, not real polling. Replace with the live VoteHub
-            feed (see docs/DATA_SOURCE_AUDIT_2026-07.md) and remove this note. */}
+        {/* Source disclosure and attribution for the CC BY 4.0 polling feed. */}
         <div
           role="note"
           className="rounded-[var(--radius-2xl)] p-4"
@@ -780,7 +783,17 @@ export function PollingAggregatorClient({ initialState, snapshot }: Props) {
           }}
         >
           <p className="home-body max-w-none" style={{ margin: 0 }}>
-            This page currently shows illustrative sample data, not real polling. The numbers, pollsters, and races are placeholders for demonstrating the aggregator interface, so please don&apos;t read them as actual 2026 polling.
+            Approval and generic ballot polls come from the{" "}
+            <a
+              href="https://votehub.com/polls/api/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-4"
+            >
+              VoteHub Polling API
+            </a>{" "}
+            under CC BY 4.0. I leave statewide race averages empty until the
+            source includes candidate-party metadata I can verify.
           </p>
         </div>
 
@@ -793,7 +806,11 @@ export function PollingAggregatorClient({ initialState, snapshot }: Props) {
             width: "fit-content",
           }}
         >
-          {POLLING_VIEW_OPTIONS.map((key) => (
+          {POLLING_VIEW_OPTIONS.filter(
+            (key) =>
+              (key !== "senate" || snapshot.senateRaces.length > 0) &&
+              (key !== "governors" || snapshot.governorRaces.length > 0)
+          ).map((key) => (
             <button
               key={key}
               type="button"

@@ -2,28 +2,26 @@ import { NextRequest, NextResponse } from "next/server";
 import { getInvestmentsIndex } from "@/lib/investmentsData";
 import { logger } from "@/lib/logger";
 import { NO_STORE_HEADERS } from "@/lib/apiCacheHeaders";
-import {
-  createDataResponseHeaders,
-  createDataRevisionEntry,
-} from "@/lib/dataRevision";
+import { createSnapshotResponseHeaders } from "@/lib/snapshotResponse";
 
 export async function GET(request: NextRequest) {
   try {
     const index = await getInvestmentsIndex({ assetOrigin: request.nextUrl.origin });
-    const revision = createDataRevisionEntry({
-      surface: "investments",
-      payload: index,
-      sourceAsOf: index.lastUpdated,
-      // The refresh runs Mon+Thu 22:15 UTC; the Thu -> Mon gap is exactly 96h,
-      // so a 120h window keeps an on-cadence snapshot from reading stale.
-      maxAgeMs: 5 * 24 * 60 * 60 * 1000,
-      status: (index.staleCount ?? 0) > 0 ? "degraded" : undefined,
-    });
+    const status =
+      (index.staleCount ?? index.entries?.filter((entry) => entry.stale).length ?? 0) > 0 ||
+      (index.partialCount ?? index.entries?.filter((entry) => entry.partial).length ?? 0) > 0 ||
+      (index.priceHealth?.delayedCount ?? 0) > 0 ||
+      (index.priceHealth?.missingCount ?? 0) > 0
+        ? "degraded"
+        : undefined;
     return NextResponse.json(index, {
-      headers: {
-        "Cache-Control": "public, max-age=300, stale-while-revalidate=3600",
-        ...createDataResponseHeaders(revision),
-      },
+      headers: createSnapshotResponseHeaders({
+        surface: "investments",
+        payload: index,
+        sourceAsOf: index.lastUpdated,
+        cacheControl: "public, max-age=300, stale-while-revalidate=3600",
+        status,
+      }),
     });
   } catch (error) {
     const err = error as Error & { status?: number };

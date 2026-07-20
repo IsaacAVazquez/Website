@@ -3,15 +3,10 @@ import {
   createEmptyTransitSummary,
   getTransitSummary,
 } from "@/lib/bayAreaTransitSnapshot";
-import {
-  createDataResponseHeaders,
-  createDataRevisionEntry,
-} from "@/lib/dataRevision";
 import { logger } from "@/lib/logger";
+import { createSnapshotResponseHeaders } from "@/lib/snapshotResponse";
 
-const SUCCESS_CACHE_HEADERS = {
-  "Cache-Control": "public, max-age=300, stale-while-revalidate=900",
-};
+const SUCCESS_CACHE_CONTROL = "public, max-age=30, stale-while-revalidate=120";
 // Errors (4xx/5xx) must NOT be cached by the CDN — otherwise a transient
 // failure poisons the cache for the full success TTL.
 const ERROR_CACHE_HEADERS = {
@@ -20,23 +15,22 @@ const ERROR_CACHE_HEADERS = {
 
 export async function GET() {
   try {
-    const summary = await getTransitSummary();
-    const revision = createDataRevisionEntry({
-      surface: "bay-area-transit",
-      payload: summary,
-      sourceAsOf: summary.system?.generatedAt ?? null,
-      maxAgeMs: 8 * 60 * 60 * 1000,
-      status:
-        summary.sectionStatus?.elevator === "unavailable"
-          ? "degraded"
-          : undefined,
-    });
+    const summary = await getTransitSummary({ preferLive: true });
 
     return NextResponse.json(summary, {
-      headers: {
-        ...SUCCESS_CACHE_HEADERS,
-        ...createDataResponseHeaders(revision),
-      },
+      headers: createSnapshotResponseHeaders({
+        surface: "bay-area-transit",
+        payload: summary,
+        sourceAsOf: summary.system?.generatedAt ?? null,
+        cacheControl: SUCCESS_CACHE_CONTROL,
+        source: "bart-runtime-with-snapshot-fallback",
+        status:
+          Object.values(summary.sectionStatus ?? {}).some(
+            (sectionStatus) => sectionStatus !== "fresh"
+          )
+            ? "degraded"
+            : undefined,
+      }),
     });
   } catch (error) {
     const err = error as Error & { status?: number };

@@ -1,11 +1,11 @@
 name: Refresh NBA Snapshot
 
 on:
-  # Daily during the NBA season and playoffs. The October entry starts mid-month
+  # Every four hours during the NBA season and playoffs. October starts mid-month
   # to avoid failing before ESPN has regular-season leaders populated.
   schedule:
-    - cron: "20 10 15-31 10 *"
-    - cron: "20 10 * 1-6,11-12 *"
+    - cron: "20 */4 15-31 10 *"
+    - cron: "20 */4 * 1-6,11-12 *"
   workflow_dispatch:
 
 # Don't stack a manual dispatch on top of a scheduled run.
@@ -43,6 +43,9 @@ jobs:
         run: npm run update:nba
         env:
           NODE_ENV: production
+
+      - name: Verify refresh freshness
+        run: npx tsx scripts/verifyDataRefresh.ts nba
 
       - name: Verify NBA snapshot quality
         id: verify_quality
@@ -169,23 +172,6 @@ jobs:
             src/data/nbaSnapshot.ts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # Snapshot commits carry [skip ci], so the live site otherwise only picks
-      # up the refresh on the daily cron-job.org build hook. This deploys
-      # promptly whenever the snapshot actually changed, and no-ops until the
-      # NETLIFY_BUILD_HOOK secret is set.
-      - name: Trigger Netlify deploy
-        if: steps.check_changes.outputs.changed == 'true'
-        env:
-          NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
-        run: |
-          if [ -z "$NETLIFY_BUILD_HOOK" ]; then
-            echo "NETLIFY_BUILD_HOOK secret not configured; skipping deploy trigger."
-            exit 0
-          fi
-          curl -fsS -X POST -d '{}' "$NETLIFY_BUILD_HOOK" \
-            && echo "Netlify build hook triggered." \
-            || echo "::warning::Netlify build hook request failed; the daily scheduled rebuild will pick up the snapshot."
 
       - name: Create job summary
         if: always()

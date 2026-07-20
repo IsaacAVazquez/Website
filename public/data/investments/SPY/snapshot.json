@@ -11,9 +11,9 @@
   "capabilities": {
     "price": true,
     "info": true,
-    "fundamentals": true,
-    "profitability": true,
-    "margins": true,
+    "fundamentals": false,
+    "profitability": false,
+    "margins": false,
     "growth": false,
     "income_statement": false,
     "balance_sheet": false,
@@ -22,9 +22,8 @@
     "industry": false,
     "beta": false,
     "news": false,
-    "dcf": false,
     "officers": false,
-    "compare": true
+    "compare": false
   },
   "sections": {
     "info": {

@@ -85,6 +85,7 @@ describe("FantasyFootballClient", () => {
     currentSearchParams = new URLSearchParams("position=rb&scoring=ppr");
     mockPush.mockReset();
     mockReplace.mockReset();
+    mockUseFantasySnapshot.mockReset();
   });
 
   it("renders an available PPR board in the editorial shell and keeps the desktop rail sticky", () => {
@@ -536,5 +537,65 @@ describe("FantasyFootballClient", () => {
     expect(screen.getByText("Joe Mixon")).toBeVisible();
     expect(screen.queryByText("Saquon Barkley")).not.toBeInTheDocument();
     expect(screen.getByText("47")).toBeVisible();
+  });
+
+  it("keeps scoring controls available when the selected position slice is unavailable", () => {
+    const retry = jest.fn();
+    mockUseFantasySnapshot.mockReturnValue({
+      players: [],
+      snapshot: null,
+      metadata: null,
+      sliceMetadata: {
+        available: false,
+        sourceKind: "position_consensus",
+        rangeKind: "position",
+        playerCount: 0,
+        reason: "Source did not publish this slice.",
+      },
+      sliceMetadataMap: {
+        ...buildSliceMetadataMap(),
+        rb: {
+          available: false,
+          sourceKind: "position_consensus",
+          rangeKind: "position",
+          playerCount: 0,
+          reason: "Source did not publish this slice.",
+        },
+      },
+      isLoading: false,
+      error: null,
+      retry,
+    });
+
+    render(
+      <FantasyFootballClient initialState={{ position: "rb", scoring: "ppr", view: "list" }} />
+    );
+
+    const halfPpr = screen.getByRole("button", { name: "Half PPR" });
+    expect(halfPpr).not.toBeDisabled();
+    fireEvent.click(halfPpr);
+    expect(mockPush).toHaveBeenCalledWith(expect.stringContaining("scoring=half_ppr"), { scroll: false });
+  });
+
+  it("offers an in-place retry when rankings fail to load", () => {
+    const retry = jest.fn();
+    mockUseFantasySnapshot.mockReturnValue({
+      players: [],
+      snapshot: null,
+      metadata: null,
+      sliceMetadata: null,
+      sliceMetadataMap: null,
+      isLoading: false,
+      error: "Fantasy rankings are unavailable right now.",
+      retry,
+    });
+
+    render(
+      <FantasyFootballClient initialState={{ position: "rb", scoring: "ppr", view: "list" }} />
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: "Retry rankings" }));
+    expect(retry).toHaveBeenCalledTimes(1);
+    expect(mockUseFantasySnapshot).toHaveBeenCalledTimes(1);
   });
 });

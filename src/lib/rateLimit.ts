@@ -82,6 +82,16 @@ export const apiRateLimiter = new RateLimiter({
   uniqueTokenPerInterval: 30 // 30 requests per minute
 });
 
+// Public market-data fan-out is materially more expensive than ordinary API
+// reads. Keep this separate so unrelated endpoints do not expand the quote
+// allowance. The source migration should add a shared edge/provider quota;
+// this is the local process guard.
+export const investmentsQuoteRateLimiter = new RateLimiter({
+  interval: 60 * 1000,
+  // Seven 25-symbol batches cover the entire 151-symbol curated universe once.
+  uniqueTokenPerInterval: 7,
+});
+
 export const authRateLimiter = new RateLimiter({
   interval: 15 * 60 * 1000, // 15 minutes
   uniqueTokenPerInterval: 5 // 5 attempts per 15 minutes

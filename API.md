@@ -55,9 +55,9 @@ Current API route inventory for the app.
 
 | Route | Methods | Notes |
 |------|---------|-------|
-| `/api/bay-area-transit/summary` | GET | Snapshot-backed BART lines, advisories, and system status |
-| `/api/bay-area-transit/stations/[stationId]` | GET | Snapshot-backed per-station departure board, keyed by lowercased BART abbreviation |
-| `/api/earthquake-pulse/summary` | GET | Snapshot-backed USGS earthquake feed summary (detail payloads embedded; no per-event route) |
+| `/api/bay-area-transit/summary` | GET | BART catalog plus request-time advisories and departures with snapshot fallback |
+| `/api/bay-area-transit/stations/[stationId]` | GET | Request-time station board with snapshot fallback, keyed by lowercased BART abbreviation |
+| `/api/earthquake-pulse/summary` | GET | Request-time USGS earthquake summary with checked-in last-good fallback |
 
 ### MBA internship notifications
 

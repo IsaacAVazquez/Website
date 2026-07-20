@@ -6,7 +6,6 @@ import { useStockData } from "@/hooks/useStockData";
 import { IconExternalLink } from "@tabler/icons-react";
 import type {
   CompanyInfo,
-  DcfData,
   GrowthData,
   Margin,
   MarginsData,
@@ -92,30 +91,15 @@ function formatPay(value: number | undefined): string {
 }
 
 function buildSignals({
-  dcf,
   profitability,
   margins,
   growth,
 }: {
-  dcf?: DcfData;
   profitability?: Profitability;
   margins?: Margin;
   growth?: GrowthData;
 }) {
   const signals: { label: string; tone: "positive" | "neutral" | "negative"; body: string }[] = [];
-
-  if (dcf?.upside !== undefined) {
-    signals.push({
-      label: "Valuation",
-      tone: dcf.upside >= 15 ? "positive" : dcf.upside <= -10 ? "negative" : "neutral",
-      body:
-        dcf.upside >= 15
-          ? `Model implies ${formatPercent(dcf.upside, true)} upside.`
-          : dcf.upside <= -10
-            ? `Model implies ${formatPercent(Math.abs(dcf.upside))} downside.`
-            : `Model sits near fair value at ${formatPercent(dcf.upside, true)}.`,
-    });
-  }
 
   if (profitability?.roic !== undefined || margins?.netMargin !== undefined) {
     const roic = profitability?.roic ?? 0;
@@ -155,7 +139,6 @@ function toneClasses(tone: "positive" | "neutral" | "negative") {
 
 export function ResearchOverview({ symbol, showNews = true }: Props) {
   const { data: info } = useStockData<CompanyInfo>(symbol, "info");
-  const { data: dcf } = useStockData<DcfData>(symbol, "dcf");
   const { data: profitability } = useStockData<Profitability>(symbol, "profitability");
   const { data: marginsRaw } = useStockData<MarginsData>(symbol, "margins");
   const { data: growth } = useStockData<GrowthData>(symbol, "growth");
@@ -172,7 +155,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
     });
   }, [showNews, newsRaw]);
   const officers = Array.isArray(officersRaw) ? officersRaw.slice(0, 8) : [];
-  const signals = buildSignals({ dcf: dcf ?? undefined, profitability: profitability ?? undefined, margins, growth: growth ?? undefined });
+  const signals = buildSignals({ profitability: profitability ?? undefined, margins, growth: growth ?? undefined });
 
   return (
     <div className="space-y-5">

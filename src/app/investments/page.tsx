@@ -107,6 +107,7 @@ export default async function InvestmentsPage({ searchParams }: InvestmentsPageP
           index?.staleCount ?? index?.entries?.filter((entry) => entry.stale).length ?? 0
         }
         datasetFailedCount={index?.failed?.length ?? 0}
+        datasetPriceHealth={index?.priceHealth ?? null}
       />
     </>
   );

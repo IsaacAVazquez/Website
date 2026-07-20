@@ -1,11 +1,31 @@
 import {
   createDataResponseHeaders,
   createDataRevision,
+  createDataLedgerRevision,
   createDataRevisionEntry,
   getDataDeliveryStatus,
 } from "@/lib/dataRevision";
 
 describe("data revision metadata", () => {
+  it("creates one deterministic revision for a complete ledger", () => {
+    const entry = createDataRevisionEntry({
+      surface: "fixture",
+      payload: { count: 1 },
+      sourceAsOf: "2026-07-19T00:00:00Z",
+      maxAgeMs: 60_000,
+      now: Date.parse("2026-07-19T00:00:30Z"),
+    });
+
+    expect(createDataLedgerRevision([entry])).toBe(
+      createDataLedgerRevision([entry])
+    );
+    expect(createDataLedgerRevision([entry])).toBe(
+      createDataLedgerRevision([{ ...entry, status: "degraded" }])
+    );
+    expect(createDataLedgerRevision([entry])).not.toBe(
+      createDataLedgerRevision([{ ...entry, revision: "changed" }])
+    );
+  });
   it("creates a deterministic content revision", () => {
     const payload = { generatedAt: "2026-07-10T12:00:00.000Z", count: 4 };
 

@@ -95,8 +95,8 @@ Update workflow:
 - `/mlb`, `/nba`, and `/nfl` use committed TypeScript snapshots and matching `/api/{league}/*` routes
 - `/golf` uses `src/data/golfSnapshot.ts`, rebuilt by `npm run update:golf` from ESPN's public golf leaderboard endpoint
 - `/world-cup-2026` uses `src/data/worldCupSnapshot.ts` and `/api/world-cup/*`, rebuilt by `npm run update:world-cup` from ESPN's public World Cup endpoints
-- `/bay-area-transit` uses `src/data/bayAreaTransitSnapshot.ts` and `/api/bay-area-transit/*`, rebuilt by `npm run update:bay-area-transit` from BART's public API
-- `/earthquake-pulse` uses `src/data/earthquakeSnapshot.ts` and `/api/earthquake-pulse/summary`, rebuilt by `npm run update:earthquake` from public USGS GeoJSON feeds
+- `/bay-area-transit` uses a committed route catalog and last-good snapshot, while `/api/bay-area-transit/*` refreshes departures and alerts from BART at request time
+- `/earthquake-pulse` uses `src/data/earthquakeSnapshot.ts` as fallback while `/api/earthquake-pulse/summary` refreshes from USGS at request time
 - `/tech-startup-tracker` uses the editorially curated `src/data/techStartupSnapshot.ts`, rebuilt by `npm run update:tech-startups` from a hand-maintained seed
 - `/travel` is a browser-persisted travel planner backed by `src/hooks/useTravelPlanner.ts`
 - `/formula-1` and `/fantasy-formula-1` use `src/data/formula1Snapshot.ts`
@@ -104,7 +104,7 @@ Update workflow:
 - `/github-trending-pulse` uses `src/data/githubTrendingSnapshot.ts`
 - `/news-pulse` uses `/api/news-pulse` and `src/lib/news-pulse-utils.ts`
 - `/spacex-mission-control` uses `src/components/spacex/` and `/api/spacex/*`
-- `/polling-aggregator` uses a committed polling snapshot in `src/data/pollingSnapshot.ts`
+- `/polling-aggregator` uses a VoteHub-backed committed polling snapshot in `src/data/pollingSnapshot.ts`
 - `/food-map`, `/recipe-finder`, `/wine-cellar`, `/museum-log`, `/travel`, `/now`, and `/changelog` are live personal or utility surfaces
 - `/fintech-tools/budget-planner` uses `src/hooks/useBudgetPlanner.ts`
 - `/fintech-tools/interchange-iq` is a client-side fee analyzer

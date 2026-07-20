@@ -16,6 +16,7 @@ const OPEN_F1_PROJECT_URL = "https://openf1.org/";
 const OPEN_F1_MIN_YEAR = 2023;
 const REQUEST_TIMEOUT_MS = 15_000;
 const DEFAULT_MIN_INTERVAL_MS = 2_100;
+const REQUEST_ATTEMPTS = 3;
 
 interface OpenF1Meeting {
   meeting_key?: number | null;
@@ -404,34 +405,52 @@ function createOpenF1Requester(
       url.searchParams.set(key, String(value));
     }
 
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+    let lastError: unknown;
+    for (let attempt = 1; attempt <= REQUEST_ATTEMPTS; attempt += 1) {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
 
-    try {
-      const response = await fetchImpl(url.toString(), {
-        headers: {
-          accept: "application/json",
-        },
-        signal: controller.signal,
-      });
+      try {
+        const response = await fetchImpl(url.toString(), {
+          headers: { accept: "application/json" },
+          signal: controller.signal,
+        });
 
-      if (!response.ok) {
-        throw createFormula1DataError(
-          `Formula 1 data request failed with status ${response.status}.`,
-          response.status
-        );
+        if (!response.ok) {
+          const error = createFormula1DataError(
+            `Formula 1 data request failed with status ${response.status}.`,
+            response.status
+          );
+          const retryable = response.status === 429 || response.status >= 500;
+          if (!retryable || attempt === REQUEST_ATTEMPTS) throw error;
+          lastError = error;
+          const retryAfter = Number(response.headers.get("retry-after"));
+          await sleep(
+            Number.isFinite(retryAfter) && retryAfter >= 0
+              ? retryAfter * 1_000
+              : 1_000 * 2 ** (attempt - 1)
+          );
+          continue;
+        }
+
+        return (await response.json()) as T;
+      } catch (error) {
+        const normalizedError =
+          isObject(error) && error.name === "AbortError"
+            ? createFormula1DataError("Formula 1 data request timed out.", 504)
+            : error;
+        lastError = normalizedError;
+        const status = isObject(normalizedError) ? normalizedError.status : undefined;
+        const retryable =
+          typeof status !== "number" || status === 429 || status >= 500;
+        if (!retryable || attempt === REQUEST_ATTEMPTS) throw normalizedError;
+        await sleep(1_000 * 2 ** (attempt - 1));
+      } finally {
+        clearTimeout(timeout);
       }
-
-      return (await response.json()) as T;
-    } catch (error) {
-      if (isObject(error) && error.name === "AbortError") {
-        throw createFormula1DataError("Formula 1 data request timed out.", 504);
-      }
-
-      throw error;
-    } finally {
-      clearTimeout(timeout);
     }
+
+    throw lastError;
   };
 }
 

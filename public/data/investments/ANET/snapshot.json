@@ -18,11 +18,10 @@
     "income_statement": true,
     "balance_sheet": true,
     "cash_flow": true,
-    "wacc": true,
+    "wacc": false,
     "industry": true,
     "beta": true,
     "news": true,
-    "dcf": false,
     "officers": true,
     "compare": true
   },

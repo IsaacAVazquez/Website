@@ -1,5 +1,7 @@
 import type { MuseumSnapshot } from "@/types/museum";
 
+export const MUSEUM_SNAPSHOT_VERIFIED = false;
+
 /**
  * Curated, snapshot-driven museum catalog. The catalog itself is the "film
  * database" equivalent. Curator reviews + visit log + lists are authored

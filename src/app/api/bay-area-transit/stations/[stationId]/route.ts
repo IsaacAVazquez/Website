@@ -6,10 +6,9 @@ import {
   isValidTransitStationId,
 } from "@/lib/bayAreaTransitSnapshot";
 import { logger } from "@/lib/logger";
+import { createSnapshotResponseHeaders } from "@/lib/snapshotResponse";
 
-const SUCCESS_CACHE_HEADERS = {
-  "Cache-Control": "public, max-age=300, stale-while-revalidate=900",
-};
+const SUCCESS_CACHE_CONTROL = "public, max-age=30, stale-while-revalidate=120";
 // Errors (4xx/5xx) must NOT be cached by the CDN. Distinguishes 400 (bad input)
 // from 404 (valid input, unknown id), matching the rest of the data surfaces.
 const ERROR_CACHE_HEADERS = {
@@ -49,10 +48,16 @@ export async function GET(
   }
 
   try {
-    const board = await getTransitStationBoard(stationId);
+    const board = await getTransitStationBoard(stationId, { preferLive: true });
 
     return NextResponse.json(board, {
-      headers: SUCCESS_CACHE_HEADERS,
+      headers: createSnapshotResponseHeaders({
+        surface: "bay-area-transit",
+        payload: board,
+        sourceAsOf: board.generatedAt,
+        cacheControl: SUCCESS_CACHE_CONTROL,
+        source: "bart-runtime-with-snapshot-fallback",
+      }),
     });
   } catch (error) {
     const err = error as Error & { status?: number };

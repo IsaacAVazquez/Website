@@ -1,4 +1,5 @@
 import { bayAreaTransitSnapshot } from "@/data/bayAreaTransitSnapshot";
+import { buildBayAreaTransitLiveSnapshotData } from "@/lib/bayAreaTransitData";
 import type {
   TransitStationBoard,
   TransitSummary,
@@ -67,14 +68,54 @@ export function isValidTransitStationId(stationId: string): boolean {
   );
 }
 
-export async function getTransitSummary(): Promise<TransitSummary> {
-  return bayAreaTransitSnapshot.summary;
+interface TransitSnapshotOptions {
+  preferLive?: boolean;
+}
+
+const LIVE_CACHE_TTL_MS = 45_000;
+let liveSnapshotCache:
+  | { snapshot: typeof bayAreaTransitSnapshot; expiresAt: number }
+  | null = null;
+let liveSnapshotInflight: Promise<typeof bayAreaTransitSnapshot> | null = null;
+
+async function getTransitSnapshot(
+  options: TransitSnapshotOptions = {}
+): Promise<typeof bayAreaTransitSnapshot> {
+  if (!options.preferLive) return bayAreaTransitSnapshot;
+  if (liveSnapshotCache && liveSnapshotCache.expiresAt > Date.now()) {
+    return liveSnapshotCache.snapshot;
+  }
+  if (liveSnapshotInflight) return liveSnapshotInflight;
+
+  liveSnapshotInflight = buildBayAreaTransitLiveSnapshotData(bayAreaTransitSnapshot)
+    .then((snapshot) => {
+      const typedSnapshot = snapshot as typeof bayAreaTransitSnapshot;
+      liveSnapshotCache = {
+        snapshot: typedSnapshot,
+        expiresAt: Date.now() + LIVE_CACHE_TTL_MS,
+      };
+      return typedSnapshot;
+    })
+    .catch(() => bayAreaTransitSnapshot)
+    .finally(() => {
+      liveSnapshotInflight = null;
+    });
+
+  return liveSnapshotInflight;
+}
+
+export async function getTransitSummary(
+  options: TransitSnapshotOptions = {}
+): Promise<TransitSummary> {
+  return (await getTransitSnapshot(options)).summary;
 }
 
 export async function getTransitStationBoard(
-  stationId: string
+  stationId: string,
+  options: TransitSnapshotOptions = {}
 ): Promise<TransitStationBoard> {
-  const board = bayAreaTransitSnapshot.stationBoards[stationId];
+  const snapshot = await getTransitSnapshot(options);
+  const board = snapshot.stationBoards[stationId];
 
   if (!board) {
     throw createTransitSnapshotError(

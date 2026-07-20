@@ -39,11 +39,7 @@ export const METRIC_DEFINITIONS: Record<string, string> = {
   "Asset Turnover": "Revenue divided by total assets. Shows how efficiently the company generates revenue from its asset base.",
   "Equity Multiplier": "Total assets divided by shareholder equity. A higher value indicates more financial leverage.",
 
-  // DCF
-  "DCF Upside": "Model-implied return vs. the current market price, based on a Discounted Cash Flow valuation.",
-  "Fair Value": "The DCF model's estimate of intrinsic value per share.",
-  "DCF Fair Value": "The DCF model's estimate of intrinsic value per share.",
-  "WACC": "Weighted Average Cost of Capital. The discount rate used in the DCF model. Reflects the blended cost of equity and debt financing.",
+  "WACC": "Weighted Average Cost of Capital. The estimated blended cost of equity and debt, used as a hurdle rate in valuation and capital allocation.",
 
   // Growth
   "YoY": "Year-over-Year. The percentage change compared to the same period a year ago.",

@@ -9,6 +9,9 @@
 // Detail links resolve to a Google Maps search so they stay valid if a venue
 // moves; always verify hours before making a trip.
 
+export const FOOD_MAP_AS_OF = "2026-04-28";
+export const FOOD_MAP_VERIFIED = false;
+
 export type LatLng = [number, number];
 
 /* -------------------------------------------------------------------------- */

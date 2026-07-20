@@ -31,6 +31,9 @@ interface Props {
   onAddHolding?: () => void;
   onRefresh?: () => void;
   lastUpdated?: Date | null;
+  marketStatus: string;
+  hasLiveQuotes: boolean;
+  allQuotesLive: boolean;
 }
 
 const RANGES = [
@@ -60,6 +63,9 @@ export function PortfolioHeroCard({
   onAddHolding,
   onRefresh,
   lastUpdated,
+  marketStatus,
+  hasLiveQuotes,
+  allQuotesLive,
 }: Props) {
   // null = automatic: the narrowest range with at least two saved points.
   // History only records a point on days the page is visited, so a fixed 1M
@@ -293,7 +299,7 @@ export function PortfolioHeroCard({
         <div className="invest-hero-left">
           <span className="invest-hero-eyebrow">
             <span className="invest-hero-livedot" aria-hidden="true" />
-            Total portfolio value · Live
+            Fetching market quotes
           </span>
           <div className="my-3 h-12 w-56 rounded bg-[var(--home-paper-alt)] animate-pulse" />
           <div className="h-5 w-44 rounded bg-[var(--home-paper-alt)] animate-pulse" />
@@ -312,8 +318,8 @@ export function PortfolioHeroCard({
     <section id="performance" className="invest-hero scroll-mt-28" aria-label="Portfolio total value">
       <div className="invest-hero-left">
         <span className="invest-hero-eyebrow">
-          <span className="invest-hero-livedot" aria-hidden="true" />
-          Total portfolio value · Live
+          {hasLiveQuotes ? <span className="invest-hero-livedot" aria-hidden="true" /> : null}
+          Total portfolio value · {marketStatus}
         </span>
 
         <p className="invest-hero-balance">
@@ -323,12 +329,18 @@ export function PortfolioHeroCard({
         </p>
 
         <div className="invest-hero-delta">
-          <span className={`chip ${dayPositive ? "pos" : "neg"}`}>
-            {formatSignedCurrency(summary.dayChange)}
-          </span>
-          <span className={dayPositive ? "text-[var(--home-positive)]" : "text-[var(--home-negative)]"}>
-            {formatPercent(summary.dayChangePercent)} today
-          </span>
+          {hasLiveQuotes ? (
+            <>
+              <span className={`chip ${dayPositive ? "pos" : "neg"}`}>
+                {formatSignedCurrency(summary.dayChange)}
+              </span>
+              <span className={dayPositive ? "text-[var(--home-positive)]" : "text-[var(--home-negative)]"}>
+                {formatPercent(summary.dayChangePercent)} latest session{allQuotesLive ? "" : " · partial"}
+              </span>
+            </>
+          ) : (
+            <span className="muted">Day change unavailable</span>
+          )}
           <span className="muted">·</span>
           <span className="muted">
             {formatPercent(summary.totalGainLossPercent)} all time

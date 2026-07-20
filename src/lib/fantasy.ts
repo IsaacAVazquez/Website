@@ -197,6 +197,27 @@ export function routePositionToSnapshotPosition(position: FantasyRoutePosition):
   }
 }
 
+/**
+ * Returns every uniquely identifiable player carried by a scoring snapshot.
+ * Overall rankings intentionally omit some specialists, while FLEX repeats
+ * players from RB/WR/TE, so the union starts with overall and de-duplicates
+ * every position slice by the stable player id.
+ */
+export function getAllFantasySnapshotPlayers(snapshot: FantasySnapshot): Player[] {
+  const playersById = new Map<string, Player>();
+
+  for (const player of snapshot.overall) {
+    playersById.set(player.id, player);
+  }
+  for (const position of FANTASY_SNAPSHOT_POSITIONS) {
+    for (const player of snapshot.positions[position]) {
+      if (!playersById.has(player.id)) playersById.set(player.id, player);
+    }
+  }
+
+  return Array.from(playersById.values());
+}
+
 function snapshotPositionToRoutePosition(position: FantasySnapshotPosition): FantasyRoutePosition {
   switch (position) {
     case "QB":

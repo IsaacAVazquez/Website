@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { parseNewsFeed } from "@/lib/news-pulse-feed-parser";
 import { NEWS_FEEDS, type NewsFeedId } from "@/lib/news-pulse-sources";
 import type { NewsArticle } from "@/lib/news-pulse-utils";
+import { readDurableJson, writeDurableJson } from "@/lib/durableJsonCache";
 
 const CACHE_CONTROL_HEADER = "public, s-maxage=300, stale-while-revalidate=600";
 const ERROR_CACHE_CONTROL_HEADER = "no-store";
@@ -10,6 +11,7 @@ const SUCCESS_TTL_MS = 5 * 60 * 1000;
 const ERROR_TTL_MS = 30 * 1000;
 const TOTAL_OUTAGE_MESSAGE =
   "No usable headlines came through on this refresh. I could not build a trustworthy comparison view.";
+const DURABLE_LAST_GOOD_MAX_AGE_MS = 24 * 60 * 60 * 1000;
 
 interface FeedResponseBody {
   articles: NewsArticle[];
@@ -55,6 +57,24 @@ interface LastGoodFeed {
 // Keep last-good data at the source grain. A partial refresh can then update
 // the feeds that responded without deleting healthy data for a failed feed.
 const lastGoodByFeed = new Map<NewsFeedId, LastGoodFeed>();
+let durableHydrationPromise: Promise<void> | null = null;
+
+function hydrateDurableLastGood(): Promise<void> {
+  if (durableHydrationPromise) return durableHydrationPromise;
+  durableHydrationPromise = (async () => {
+    const saved = await readDurableJson<
+      Partial<Record<NewsFeedId, LastGoodFeed>>
+    >("news-pulse/feeds", DURABLE_LAST_GOOD_MAX_AGE_MS);
+    if (!saved) return;
+    for (const feed of NEWS_FEEDS) {
+      const value = saved[feed.id];
+      if (value && !lastGoodByFeed.has(feed.id)) {
+        lastGoodByFeed.set(feed.id, value);
+      }
+    }
+  })();
+  return durableHydrationPromise;
+}
 
 function isFresh(entry: CacheEntry, now: number): boolean {
   if (entry.completedAt === null || entry.value === null) {
@@ -85,6 +105,7 @@ function describeFeedError(reason: unknown): string {
 }
 
 async function fetchAllFeeds(): Promise<FeedFetchResult> {
+  await hydrateDurableLastGood();
   const errors: string[] = [];
   const staleSources: string[] = [];
   const fetchedAt = new Date().toISOString();
@@ -136,6 +157,15 @@ async function fetchAllFeeds(): Promise<FeedFetchResult> {
       articles.push(...lastGoodFeed.articles);
       staleSources.push(feed.name);
     }
+  }
+
+  if (successfulFeedCount > 0) {
+    await writeDurableJson(
+      "news-pulse/feeds",
+      Object.fromEntries(lastGoodByFeed) as Partial<
+        Record<NewsFeedId, LastGoodFeed>
+      >
+    );
   }
 
   articles.sort((left, right) => {
@@ -271,4 +301,5 @@ export async function GET() {
 ] = (): void => {
   cache.clear();
   lastGoodByFeed.clear();
+  durableHydrationPromise = null;
 };

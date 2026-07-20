@@ -1,11 +1,10 @@
 name: Refresh Investments Snapshots
 
 on:
-  # Twice a week: Mon + Thu at 22:15 UTC. Was weekdays (5x/week); cut to 2x
-  # to keep us under the Actions spending budget while still refreshing
-  # within a 3-day window. Run manually anytime via workflow_dispatch.
+  # Weekdays at 22:15 UTC, after the US market close. Run manually anytime via
+  # workflow_dispatch.
   schedule:
-    - cron: "15 22 * * 1,4"
+    - cron: "15 22 * * 1-5"
   workflow_dispatch:
 
 # Cancel stacked runs (e.g. dispatch fired while a scheduled run is queued)
@@ -18,7 +17,9 @@ jobs:
   refresh-investments:
     name: Refresh Investments Data
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    # The 22-minute fetch budget starts after setup; leave room for checkout,
+    # dependency restore, snapshot build, verification, cache save, and push.
+    timeout-minutes: 35
 
     permissions:
       contents: write
@@ -50,14 +51,14 @@ jobs:
         uses: actions/cache@v6
         with:
           path: .venv
-          key: investments-venv-${{ runner.os }}-py3.11-defeatbeta-api
+          key: investments-venv-${{ runner.os }}-py3.11-defeatbeta-api-0.0.47
 
       - name: Create venv and install fetch dependency
         if: steps.venv-cache.outputs.cache-hit != 'true'
         run: |
           python -m venv .venv
           .venv/bin/pip install --upgrade pip
-          .venv/bin/pip install defeatbeta-api
+          .venv/bin/pip install defeatbeta-api==0.0.47
 
       # defeatbeta-api stores its DuckDB/parquet cache at /tmp/defeatbeta. The
       # very first ticker fetch on a fresh runner downloads the upstream
@@ -88,18 +89,32 @@ jobs:
       - name: Install dependencies
         run: npm ci --prefer-offline --no-audit --fund=false
 
+      - name: Test investments fetch watchdogs
+        run: .venv/bin/python3 -m unittest scripts.tests.test_fetch_investments_data
+
       - name: Refresh investments snapshots
         run: npm run update:investments
         env:
           NODE_ENV: production
-          # Per-symbol watchdog: catch a single hung defeatbeta-api call
-          # before it eats the whole job. 10 minutes is generous for a
-          # single ticker, even on a partly-cold cache.
-          PER_SYMBOL_TIMEOUT_SECONDS: "600"
+          # Bound first attempts tightly enough that one or two new provider
+          # hangs cannot consume the run before scheduler state is committed.
+          PER_SYMBOL_TIMEOUT_SECONDS: "180"
+          # A symbol that already failed gets a shorter watchdog on later runs
+          # so one permanent provider hang cannot starve the rotation.
+          RETRY_FAILED_SYMBOL_TIMEOUT_SECONDS: "60"
+          # After two long first-attempt timeouts, all remaining symbols use
+          # the retry cap for this run even if their ledger is not committed.
+          MAX_LONG_TIMEOUTS_PER_RUN: "2"
           # Global soft cap: stop dispatching new symbols ~3 min before the
           # 25 min hard timeout so the build/verify steps still get to run
           # and the partial cache gets saved cleanly.
           GLOBAL_BUDGET_SECONDS: "1320"
+          # A non-empty array is not enough. Reject any provider response whose
+          # last market date is more than a week old.
+          MAX_PRICE_AGE_DAYS: "7"
+
+      - name: Verify refresh freshness
+        run: npx tsx scripts/verifyDataRefresh.ts investments
 
       # Save the (possibly partially warmed) cache even on timeout/cancellation
       # so the next run can resume from whatever the previous run got through.
@@ -131,6 +146,9 @@ jobs:
           const staleCount = Number.isInteger(index.staleCount)
             ? index.staleCount
             : (Array.isArray(index.entries) ? index.entries.filter((entry) => entry.stale).length : 0);
+          const partialCount = Number.isInteger(index.partialCount)
+            ? index.partialCount
+            : (Array.isArray(index.entries) ? index.entries.filter((entry) => entry.partial).length : 0);
           console.log('Index lastUpdated:', index.lastUpdated);
           console.log('Age (hours):', ageHours.toFixed(2));
           console.log('Symbols available:', successCount, 'fresh:', freshCount, 'stale:', staleCount, 'unavailable:', failedCount);
@@ -155,6 +173,18 @@ jobs:
           if (staleRatio > 0.8) {
             console.warn('::warning::' + (staleRatio * 100).toFixed(1) + '% of symbols are using earlier snapshots.');
           }
+          if (staleRatio > 0.9) {
+            console.error('::error::More than 90% of the research universe is using earlier snapshots.');
+            process.exit(1);
+          }
+          const partialRatio = partialCount / successCount;
+          if (partialRatio > 0.25) {
+            console.warn('::warning::' + (partialRatio * 100).toFixed(1) + '% of symbols retained one or more earlier sections.');
+          }
+          if (partialRatio > 0.5) {
+            console.error('::error::More than 50% of the research universe retained earlier sections; likely a systemic provider outage.');
+            process.exit(1);
+          }
 
           // Quality check: when defeatbeta-api silently returns empty data
           // for every ticker (the documented failure mode after a hang or
@@ -162,14 +192,30 @@ jobs:
           // but the resulting snapshots are mostly empty. Catch that by
           // counting symbols whose final snapshot has real price history.
           const QUALITY_THRESHOLD = 0.8;
+          const MAX_PRICE_AGE_DAYS = 7;
           let withPrice = 0;
           const missingPrice = [];
+          const staleEntrySymbols = new Set(
+            Array.isArray(index.entries)
+              ? index.entries.filter((entry) => entry.stale === true).map((entry) => entry.symbol)
+              : []
+          );
+          const delayedFreshSymbols = [];
           for (const symbol of index.symbols) {
             const snapshotPath = path.join(DATA_DIR, symbol, 'snapshot.json');
             try {
               const snapshot = JSON.parse(fs.readFileSync(snapshotPath, 'utf8'));
               if (snapshot && snapshot.capabilities && snapshot.capabilities.price === true) {
                 withPrice += 1;
+                const priceAsOf = snapshot.freshness && snapshot.freshness.sections
+                  ? snapshot.freshness.sections.price
+                  : null;
+                const ageDays = priceAsOf
+                  ? Math.floor((lastUpdated.getTime() - new Date(priceAsOf + 'T00:00:00Z').getTime()) / 86400000)
+                  : Number.POSITIVE_INFINITY;
+                if (!staleEntrySymbols.has(symbol) && (ageDays < -1 || ageDays > MAX_PRICE_AGE_DAYS)) {
+                  delayedFreshSymbols.push(symbol + ':' + (priceAsOf || 'missing'));
+                }
               } else {
                 missingPrice.push(symbol);
               }
@@ -184,6 +230,10 @@ jobs:
           }
           if (ratio < QUALITY_THRESHOLD) {
             console.error('::error::Only ' + (ratio * 100).toFixed(1) + '% of symbols have valid price history (threshold: ' + (QUALITY_THRESHOLD * 100) + '%). Likely a silent upstream failure — refusing to commit a degraded snapshot.');
+            process.exit(1);
+          }
+          if (delayedFreshSymbols.length > 0) {
+            console.error('::error::Symbols marked fresh have delayed price history: ' + delayedFreshSymbols.slice(0, 20).join(', '));
             process.exit(1);
           }
 
@@ -209,23 +259,6 @@ jobs:
             public/data/investments
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # Snapshot commits carry [skip ci], so the live site otherwise only picks
-      # up the refresh on the daily cron-job.org build hook. This deploys
-      # promptly when the snapshot actually changed, and no-ops until the
-      # NETLIFY_BUILD_HOOK secret is configured.
-      - name: Trigger Netlify deploy
-        if: steps.check_changes.outputs.changed == 'true'
-        env:
-          NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
-        run: |
-          if [ -z "$NETLIFY_BUILD_HOOK" ]; then
-            echo "NETLIFY_BUILD_HOOK secret not configured; skipping deploy trigger."
-            exit 0
-          fi
-          curl -fsS -X POST -d '{}' "$NETLIFY_BUILD_HOOK" \
-            && echo "Netlify build hook triggered." \
-            || echo "::warning::Netlify build hook request failed; the daily scheduled rebuild will pick up the snapshot."
 
       - name: Notify on failure via GitHub issue
         if: failure()
@@ -308,7 +341,7 @@ jobs:
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "**Status:** ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
           echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Schedule:** Mon + Thu at 22:15 UTC" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Schedule:** Weekdays at 22:15 UTC" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
           if [ -n "${{ steps.verify_freshness.outputs.success_count }}" ]; then
             echo "**Symbols available:** ${{ steps.verify_freshness.outputs.success_count }}" >> "$GITHUB_STEP_SUMMARY"

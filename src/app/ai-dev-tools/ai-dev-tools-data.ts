@@ -62,6 +62,7 @@ export interface AiDevTool {
 }
 
 export const AI_DEV_TOOLS_GENERATED_AT = "2026-04-28T19:00:00.000Z";
+export const AI_DEV_TOOLS_VERIFIED = false;
 
 export const AI_DEV_TOOL_CATEGORY_LABELS: Record<AiDevToolCategory, string> = {
   ide: "AI IDE",

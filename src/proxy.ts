@@ -10,7 +10,22 @@ const analyticsEnabled = /^G-[A-Z0-9]+$/i.test(
   process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() ?? "",
 );
 
-function buildContentSecurityPolicy() {
+function isSecureRequest(request: NextRequest) {
+  const forwardedProtocol = request.headers
+    .get("x-forwarded-proto")
+    ?.split(",", 1)[0]
+    ?.trim()
+    .toLowerCase();
+
+  return forwardedProtocol
+    ? forwardedProtocol === "https"
+    : request.nextUrl.protocol === "https:";
+}
+
+export function buildContentSecurityPolicy(
+  request: NextRequest,
+  production = isProduction,
+) {
   const scriptSrc = [
     "'self'",
     "'unsafe-inline'",
@@ -42,12 +57,17 @@ function buildContentSecurityPolicy() {
     "frame-ancestors 'none'",
     "base-uri 'self'",
     "form-action 'self'",
-    ...(isProduction ? ["upgrade-insecure-requests"] : []),
+    ...(production && isSecureRequest(request)
+      ? ["upgrade-insecure-requests"]
+      : []),
   ].join("; ");
 }
 
-function withSecurityHeaders(response: NextResponse) {
-  response.headers.set("Content-Security-Policy", buildContentSecurityPolicy());
+function withSecurityHeaders(response: NextResponse, request: NextRequest) {
+  response.headers.set(
+    "Content-Security-Policy",
+    buildContentSecurityPolicy(request),
+  );
   response.headers.set("X-Frame-Options", "DENY");
   response.headers.set("X-Content-Type-Options", "nosniff");
   response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
@@ -66,15 +86,21 @@ export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   if (pathname === "/blog") {
-    return withSecurityHeaders(NextResponse.redirect(new URL("/writing", request.url)));
+    return withSecurityHeaders(
+      NextResponse.redirect(new URL("/writing", request.url)),
+      request,
+    );
   }
 
   if (pathname.startsWith("/blog/")) {
     const slug = pathname.replace("/blog/", "");
-    return withSecurityHeaders(NextResponse.redirect(new URL(`/writing/${slug}`, request.url)));
+    return withSecurityHeaders(
+      NextResponse.redirect(new URL(`/writing/${slug}`, request.url)),
+      request,
+    );
   }
 
-  return withSecurityHeaders(NextResponse.next());
+  return withSecurityHeaders(NextResponse.next(), request);
 }
 
 // Apply to all routes except static files and API routes.

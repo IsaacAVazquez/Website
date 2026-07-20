@@ -60,6 +60,7 @@ export function DraftTrackerClient() {
     isDraftComplete,
     currentTeamName,
     userTeam,
+    persistenceError,
   } = useDraftState();
 
   const notes = usePlayerNotes();
@@ -77,6 +78,7 @@ export function DraftTrackerClient() {
   const [showStats, setShowStats] = useState(false);
   const [showTeamEditor, setShowTeamEditor] = useState(false);
   const [exportToast, setExportToast] = useState<string | null>(null);
+  const [resetArmed, setResetArmed] = useState(false);
 
   const draftedPlayerIds = useMemo(
     () => new Set(draftState.picks.map((pick) => pick.player.id)),
@@ -179,6 +181,19 @@ export function DraftTrackerClient() {
     <section className="home-page home-dash min-h-screen">
       <div className="home-shell home-shell-wide home-section space-y-4 sm:space-y-5">
         <Breadcrumbs customItems={DRAFT_TRACKER_BREADCRUMBS} className="pt-2" />
+        {persistenceError ? (
+          <div
+            role="status"
+            className="rounded-[var(--radius-3xl)] border px-4 py-3 text-sm"
+            style={{
+              borderColor: "color-mix(in srgb, var(--home-warning) 55%, var(--home-rule))",
+              background: "color-mix(in srgb, var(--home-warning) 10%, var(--home-paper))",
+            }}
+          >
+            <p className="font-semibold">Local save is unavailable.</p>
+            <p className="mt-1" style={{ color: "var(--home-ink-muted)" }}>{persistenceError}</p>
+          </div>
+        ) : null}
         <div className="space-y-4">
           <div className="space-y-3">
             <p className="home-kicker mb-0">Draft Assistant</p>
@@ -542,15 +557,42 @@ export function DraftTrackerClient() {
                     </button>
                   ))}
                 </div>
-                <button
-                  type="button"
-                  onClick={() => resetDraft()}
-                  className="flex min-h-[48px] items-center justify-center gap-2 rounded-full border px-4 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200"
-                  style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
-                >
-                  <RotateCcw className="h-4 w-4" />
-                  Reset draft
-                </button>
+                {resetArmed ? (
+                  <div
+                    className="grid grid-cols-2 gap-2 rounded-[var(--radius-3xl)] border p-2"
+                    style={{ borderColor: "var(--home-negative)" }}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setResetArmed(false)}
+                      className="min-h-[44px] rounded-full border px-3 text-sm font-semibold"
+                      style={ACTION_STYLE}
+                    >
+                      Keep draft
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        resetDraft();
+                        setResetArmed(false);
+                      }}
+                      className="min-h-[44px] rounded-full border px-3 text-sm font-semibold"
+                      style={{ borderColor: "var(--home-negative)", background: "var(--home-negative)", color: "var(--home-paper)" }}
+                    >
+                      Confirm reset
+                    </button>
+                  </div>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => setResetArmed(true)}
+                    className="flex min-h-[48px] items-center justify-center gap-2 rounded-full border px-4 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200"
+                    style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
+                  >
+                    <RotateCcw className="h-4 w-4" />
+                    Reset draft
+                  </button>
+                )}
                 <Link
                   href="/fantasy-football"
                   className="flex min-h-[48px] items-center justify-center gap-2 rounded-full border px-4 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200"

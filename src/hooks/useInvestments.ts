@@ -13,7 +13,7 @@ import {
   writeBrowserStorageJson,
   type PersistenceStatus,
 } from "@/lib/browserStorage";
-import { isLocalDateKey, toLocalDateKey } from "@/lib/date-formatters";
+import { isLocalDateKey } from "@/lib/date-formatters";
 import { useLocalStoragePersistenceStatus } from "@/hooks/useLocalStorageString";
 
 const STORAGE_KEY = "portfolio_holdings";
@@ -21,9 +21,18 @@ const SNAPSHOTS_KEY = "portfolio_snapshots";
 const QUOTES_CACHE_KEY = "portfolio_quotes_cache";
 const MAX_SNAPSHOTS = 365;
 const MAX_QUOTES_PER_REQUEST = 25;
+const MAX_CONCURRENT_QUOTE_BATCHES = 2;
 const QUOTE_CACHE_TTL_MS = 5 * 60 * 1000;
+const MAX_CURRENT_QUOTE_AGE_MS = 4 * 24 * 60 * 60 * 1000;
 const PARTIAL_FALLBACK_WARNING =
-  "Some live prices are temporarily unavailable. Portfolio totals are using your saved cost basis where needed.";
+  "Some market quotes are temporarily unavailable. Portfolio totals are using your saved cost basis where needed.";
+
+class QuoteBatchError extends Error {
+  constructor(message: string, readonly retryable: boolean) {
+    super(message);
+    this.name = "QuoteBatchError";
+  }
+}
 
 function formatFallbackWarning(
   symbols: string[],
@@ -36,12 +45,12 @@ function formatFallbackWarning(
   const remainingCount = uniqueSymbols.length - 4;
   const suffix = remainingCount > 0 ? `, and ${remainingCount} more` : "";
 
-  const prefix = `Live prices are temporarily unavailable for ${displayedSymbols}${suffix}.`;
+  const prefix = `Market quotes are temporarily unavailable for ${displayedSymbols}${suffix}.`;
   if (options.hasLastGood && options.hasCostBasis) {
-    return `${prefix} Portfolio totals are showing the last saved live price where available and using your saved cost basis otherwise.`;
+    return `${prefix} Portfolio totals are showing the last saved quote where available and using your saved cost basis otherwise.`;
   }
   if (options.hasLastGood) {
-    return `${prefix} Portfolio totals are showing the last saved live price for those holdings.`;
+    return `${prefix} Portfolio totals are showing the last saved quote for those holdings.`;
   }
   return `${prefix} Portfolio totals are using your saved cost basis where needed.`;
 }
@@ -98,6 +107,10 @@ function decodeSnapshot(value: unknown): PortfolioSnapshot | undefined {
   }
   return {
     date: value.date,
+    ...(typeof value.valuationAsOf === "string" &&
+    Number.isFinite(Date.parse(value.valuationAsOf))
+      ? { valuationAsOf: value.valuationAsOf }
+      : {}),
     totalValue: value.totalValue,
     totalCost: value.totalCost,
     holdingCount: value.holdingCount as number,
@@ -148,6 +161,9 @@ function decodeStockQuote(value: unknown): StockQuote | undefined {
     volume: value.volume as number,
     marketCap: value.marketCap as number,
     name: value.name,
+    ...(typeof value.asOf === "string" ? { asOf: value.asOf } : {}),
+    ...(value.source === "finnhub" ? { source: value.source } : {}),
+    ...(value.isFallback === true ? { isFallback: true } : {}),
     ...(typeof value.error === "string" ? { error: value.error } : {}),
   };
 }
@@ -184,50 +200,109 @@ function saveSnapshot(snapshot: PortfolioSnapshot): void {
   writeBrowserStorageJson(SNAPSHOTS_KEY, updated);
 }
 
+interface CachedQuoteEntry {
+  fetchedAt: number;
+  quote: StockQuote;
+}
+
 interface CachedQuotes {
-  timestamp: number;
-  quotes: StockQuote[];
+  version: 2;
+  entries: CachedQuoteEntry[];
+}
+
+function decodeCachedQuotes(value: unknown): CachedQuotes | undefined {
+  if (!isRecord(value)) return undefined;
+
+  if (value.version === 2 && Array.isArray(value.entries)) {
+    const entries = value.entries.flatMap((entry): CachedQuoteEntry[] => {
+      if (!isRecord(entry) || !isFiniteNumber(entry.fetchedAt)) return [];
+      const quote = decodeStockQuote(entry.quote);
+      return quote ? [{ fetchedAt: entry.fetchedAt, quote }] : [];
+    });
+    return { version: 2, entries };
+  }
+
+  // Migrate the original whole-cache timestamp shape without extending the
+  // age of any quote. The next successful response rewrites it as v2.
+  if (isFiniteNumber(value.timestamp) && Array.isArray(value.quotes)) {
+    return {
+      version: 2,
+      entries: value.quotes.flatMap((quoteValue): CachedQuoteEntry[] => {
+        const quote = decodeStockQuote(quoteValue);
+        return quote ? [{ fetchedAt: value.timestamp as number, quote }] : [];
+      }),
+    };
+  }
+
+  return undefined;
+}
+
+function readCachedQuoteEntries(): CachedQuoteEntry[] {
+  const stored = readValidatedBrowserStorage<CachedQuotes>(
+    QUOTES_CACHE_KEY,
+    decodeCachedQuotes,
+    () => ({ version: 2, entries: [] }),
+  );
+  return stored.source === "valid" ? stored.value.entries : [];
 }
 
 function loadCachedQuotes(): {
   quotes: Map<string, StockQuote>;
-  fetchedAt: Date;
+  lastUpdated: Date;
 } | null {
-  const stored = readValidatedBrowserStorage<CachedQuotes>(
-    QUOTES_CACHE_KEY,
-    (value) => {
-      if (!isRecord(value) || !isFiniteNumber(value.timestamp) || !Array.isArray(value.quotes)) {
-        return undefined;
-      }
-      return {
-        timestamp: value.timestamp,
-        quotes: value.quotes
-          .map(decodeStockQuote)
-          .filter((quote): quote is StockQuote => !!quote),
-      };
-    },
-    () => ({ timestamp: 0, quotes: [] }),
-  );
-  if (stored.source !== "valid") return null;
-  const parsed = stored.value;
   try {
-    if (Date.now() - parsed.timestamp > QUOTE_CACHE_TTL_MS) {
-      return null;
-    }
+    const now = Date.now();
+    const entries = readCachedQuoteEntries().filter(
+      ({ fetchedAt }) => fetchedAt <= now + 60_000 && now - fetchedAt <= QUOTE_CACHE_TTL_MS,
+    );
     const map = new Map<string, StockQuote>();
-    for (const q of parsed.quotes) {
-      if (hasUsableQuote(q)) map.set(q.symbol, q);
+    for (const { quote } of entries) {
+      if (hasCurrentMarketQuote(quote)) {
+        // A browser cache is a last-good value, not proof that this render
+        // received a current quote. Keep its prior-session move out of Day P/L.
+        map.set(quote.symbol, { ...quote, isFallback: true });
+      }
     }
-    return { quotes: map, fetchedAt: new Date(parsed.timestamp) };
+    if (map.size === 0) return null;
+
+    const providerTimestamps = [...map.values()]
+      .map((quote) => quote.asOf ? Date.parse(quote.asOf) : Number.NaN)
+      .filter(Number.isFinite);
+    const fallbackTimestamps = entries.map(({ fetchedAt }) => fetchedAt);
+    const lastUpdatedMs = providerTimestamps.length > 0
+      ? Math.max(...providerTimestamps)
+      : Math.max(...fallbackTimestamps);
+
+    return { quotes: map, lastUpdated: new Date(lastUpdatedMs) };
   } catch {
     return null;
   }
 }
 
 function saveCachedQuotes(quotes: Map<string, StockQuote>): void {
+  const now = Date.now();
+  const entriesBySymbol = new Map(
+    readCachedQuoteEntries()
+      .filter(({ fetchedAt, quote }) =>
+        fetchedAt <= now + 60_000 &&
+        now - fetchedAt <= QUOTE_CACHE_TTL_MS &&
+        hasCurrentMarketQuote(quote)
+      )
+      .map((entry) => [entry.quote.symbol, entry]),
+  );
+
+  for (const quote of quotes.values()) {
+    if (!hasCurrentMarketQuote(quote)) continue;
+    const { isFallback: _isFallback, ...persistedQuote } = quote;
+    entriesBySymbol.set(quote.symbol, {
+      fetchedAt: now,
+      quote: persistedQuote,
+    });
+  }
+
   const payload: CachedQuotes = {
-    timestamp: Date.now(),
-    quotes: Array.from(quotes.values()).filter(hasUsableQuote),
+    version: 2,
+    entries: [...entriesBySymbol.values()],
   };
   writeBrowserStorageJson(QUOTES_CACHE_KEY, payload);
 }
@@ -263,28 +338,33 @@ async function fetchQuoteBatch(
             lastError = new Error(`Quote fetch failed: HTTP ${res.status}`);
             continue;
           }
-          throw new Error(`Failed to fetch quotes: HTTP ${res.status}`);
+          throw new QuoteBatchError(
+            `Failed to fetch quotes: HTTP ${res.status}`,
+            false,
+          );
         }
-        throw new Error("Quote service returned an invalid response");
+        throw new QuoteBatchError("Quote service returned an invalid response", true);
       }
       // The route answers 503 when every curated symbol failed and 400 when no
-      // requested symbol is eligible for live pricing, but both still carry the
+      // requested symbol is eligible for market quotes, but both still carry the
       // structured quotes payload (per-symbol error placeholders). Treat those
       // like a successful response — retrying would just re-fire the full
       // server-side fan-out — and let the fallback messaging take over.
       const map = new Map<string, StockQuote>();
       for (const value of data.quotes) {
         const quote = decodeStockQuote(value);
-        if (hasUsableQuote(quote)) map.set(quote.symbol, quote);
+        if (hasCurrentMarketQuote(quote)) map.set(quote.symbol, quote);
       }
       return {
         quotes: map,
-        warning: data.allFailed === true
-          ? "Live prices are temporarily unavailable. Portfolio totals are using your saved cost basis."
-          : null,
+        // The caller knows whether a failed symbol has a last-good quote or
+        // must use cost basis, so fallback copy is derived after the batches
+        // are merged instead of guessing here.
+        warning: null,
       };
     } catch (err) {
       lastError = err as Error;
+      if (err instanceof QuoteBatchError && !err.retryable) throw err;
       if (attempt >= MAX_RETRIES) throw lastError;
     }
   }
@@ -302,7 +382,32 @@ async function fetchQuotesWithStatus(
     batches.push(uniqueSymbols.slice(index, index + MAX_QUOTES_PER_REQUEST));
   }
 
-  const results = await Promise.allSettled(batches.map(fetchQuoteBatch));
+  const results = new Array<PromiseSettledResult<Awaited<ReturnType<typeof fetchQuoteBatch>>>>(
+    batches.length,
+  );
+  let nextBatchIndex = 0;
+
+  async function batchWorker() {
+    while (nextBatchIndex < batches.length) {
+      const index = nextBatchIndex;
+      nextBatchIndex += 1;
+      try {
+        results[index] = {
+          status: "fulfilled",
+          value: await fetchQuoteBatch(batches[index]),
+        };
+      } catch (reason) {
+        results[index] = { status: "rejected", reason };
+      }
+    }
+  }
+
+  await Promise.all(
+    Array.from(
+      { length: Math.min(MAX_CONCURRENT_QUOTE_BATCHES, batches.length) },
+      () => batchWorker(),
+    ),
+  );
   const quotes = new Map<string, StockQuote>();
   let warning: string | null = null;
   let lastError: Error | null = null;
@@ -328,11 +433,56 @@ function hasUsableQuote(quote?: StockQuote): quote is StockQuote {
   return !!quote && !quote.error && Number.isFinite(quote.price) && quote.price > 0;
 }
 
+function hasCurrentMarketQuote(quote?: StockQuote): quote is StockQuote {
+  if (!hasUsableQuote(quote) || quote.isFallback) return false;
+  if (quote.source !== "finnhub") return false;
+  if (!quote.asOf) return false;
+  const sourceTimestamp = Date.parse(quote.asOf);
+  if (!Number.isFinite(sourceTimestamp)) return false;
+  const ageMs = Date.now() - sourceTimestamp;
+  return ageMs >= -5 * 60 * 1000 && ageMs <= MAX_CURRENT_QUOTE_AGE_MS;
+}
+
+function marketSessionDate(asOf: string): string | null {
+  const date = new Date(asOf);
+  if (Number.isNaN(date.getTime())) return null;
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(date);
+  const byType = new Map(parts.map((part) => [part.type, part.value]));
+  const value = `${byType.get("year")}-${byType.get("month")}-${byType.get("day")}`;
+  return isLocalDateKey(value) ? value : null;
+}
+
+function portfolioValuationSession(
+  holdings: PortfolioHolding[],
+  quotes: Map<string, StockQuote>,
+): { date: string; valuationAsOf: string } | null {
+  const timestamps = holdings.flatMap((holding) => {
+    const quote = quotes.get(holding.symbol);
+    return hasCurrentMarketQuote(quote) && quote.asOf ? [quote.asOf] : [];
+  });
+  if (timestamps.length !== holdings.length) return null;
+  const sessionDates = new Set(
+    timestamps.map(marketSessionDate).filter((value): value is string => !!value),
+  );
+  if (sessionDates.size !== 1) return null;
+  const timestampValues = timestamps.map(Date.parse).filter(Number.isFinite);
+  if (timestampValues.length !== timestamps.length) return null;
+  return {
+    date: [...sessionDates][0],
+    valuationAsOf: new Date(Math.max(...timestampValues)).toISOString(),
+  };
+}
+
 export function canPersistPortfolioSnapshot(
   holdings: PortfolioHolding[],
   quotes: Map<string, StockQuote>
 ): boolean {
-  return holdings.length > 0 && holdings.every((holding) => hasUsableQuote(quotes.get(holding.symbol)));
+  return holdings.length > 0 && portfolioValuationSession(holdings, quotes) !== null;
 }
 
 export function buildEnhanced(
@@ -349,12 +499,20 @@ export function buildEnhanced(
   return holdings.map((h) => {
     const q = quotes.get(h.symbol);
     const currentPrice = hasUsableQuote(q) ? q.price : h.averageCost;
+    const priceSource: EnhancedHolding["priceSource"] = hasUsableQuote(q)
+      ? !hasCurrentMarketQuote(q)
+        ? "saved"
+        : "live"
+      : "costBasis";
     const currentValue = h.shares * currentPrice;
     const totalCost = h.shares * h.averageCost;
     const gainLoss = currentValue - totalCost;
     const gainLossPercent = totalCost > 0 ? (gainLoss / totalCost) * 100 : 0;
-    const dayChange = hasUsableQuote(q) ? h.shares * q.change : 0;
-    const dayChangePercent = hasUsableQuote(q) ? q.changePercent : 0;
+    // A saved quote can still value the position, but its day move belongs to
+    // an earlier response and must not be rolled into today's portfolio P/L.
+    const hasCurrentQuote = hasCurrentMarketQuote(q);
+    const dayChange = hasCurrentQuote ? h.shares * q.change : 0;
+    const dayChangePercent = hasCurrentQuote ? q.changePercent : 0;
     const allocationPercent = totalValue > 0 ? (currentValue / totalValue) * 100 : null;
 
     return {
@@ -368,6 +526,7 @@ export function buildEnhanced(
       dayChangePercent,
       allocationPercent,
       name: hasUsableQuote(q) ? q.name : h.symbol,
+      priceSource,
       isLoading: isLoading && !hasUsableQuote(q),
       error: q?.error,
     };
@@ -417,6 +576,8 @@ export function useInvestments(): UseInvestmentsReturn {
   const holdingsRef = useRef<PortfolioHolding[]>([]);
   const quotesRef = useRef<Map<string, StockQuote>>(new Map());
   const fetchedSymbolKeyRef = useRef<string>("");
+  const latestQuoteRequestId = useRef(0);
+  const lastQuoteRequestAtRef = useRef(0);
 
   // Hydrate from localStorage on mount — including cached quotes for instant paint
   useEffect(() => {
@@ -430,42 +591,59 @@ export function useInvestments(): UseInvestmentsReturn {
     if (cached && cached.quotes.size > 0) {
       quotesRef.current = cached.quotes;
       setQuotes(cached.quotes);
-      setLastUpdated(cached.fetchedAt);
-      // Mark this symbol set as already fetched so the symbol-diff effect
-      // below won't immediately refetch if the cache covers current holdings.
-      if (initial.every((h) => hasUsableQuote(cached.quotes.get(h.symbol)))) {
-        fetchedSymbolKeyRef.current = symbolKey(initial);
-      }
+      setLastUpdated(cached.lastUpdated);
+      // Cached quotes paint immediately as saved values. The symbol effect
+      // still starts a background refresh so a five-minute browser cache can
+      // never suppress the first market request for this tab.
     }
     return () => { isMounted.current = false; };
   }, []);
 
   const fetchAllQuotes = useCallback(async (currentHoldings: PortfolioHolding[]) => {
-    if (currentHoldings.length === 0) return;
+    const requestId = latestQuoteRequestId.current + 1;
+    latestQuoteRequestId.current = requestId;
+    if (currentHoldings.length === 0) {
+      quotesRef.current = new Map();
+      setQuotes(new Map());
+      setError(null);
+      setLastUpdated(null);
+      setIsLoading(false);
+      return;
+    }
+    lastQuoteRequestAtRef.current = Date.now();
     setIsLoading(true);
     setError(null);
     try {
       const symbols = currentHoldings.map((h) => h.symbol);
       const { quotes: freshQuotes, warning } = await fetchQuotesWithStatus(symbols);
-      if (isMounted.current) {
+      if (isMounted.current && latestQuoteRequestId.current === requestId) {
         const previousQuotes = quotesRef.current;
         const nextQuotes = new Map<string, StockQuote>();
         for (const holding of currentHoldings) {
           const freshQuote = freshQuotes.get(holding.symbol);
           const previousQuote = previousQuotes.get(holding.symbol);
-          if (hasUsableQuote(freshQuote)) {
+          if (hasCurrentMarketQuote(freshQuote)) {
             nextQuotes.set(holding.symbol, freshQuote);
           } else if (hasUsableQuote(previousQuote)) {
-            nextQuotes.set(holding.symbol, previousQuote);
+            nextQuotes.set(holding.symbol, {
+              ...previousQuote,
+              isFallback: true,
+            });
           }
         }
 
         const hasFreshQuote = currentHoldings.some((holding) =>
-          hasUsableQuote(freshQuotes.get(holding.symbol)),
+          hasCurrentMarketQuote(freshQuotes.get(holding.symbol)),
         );
-        const canPersistSnapshot = canPersistPortfolioSnapshot(currentHoldings, nextQuotes);
+        // A newly dated portfolio snapshot must come entirely from this
+        // response. Cached fallbacks may remain visible, but mixing them into
+        // today's history would silently rewrite stale prices as current.
+        const canPersistSnapshot = canPersistPortfolioSnapshot(
+          currentHoldings,
+          freshQuotes
+        );
         const fallbackSymbols = currentHoldings
-          .filter((holding) => !hasUsableQuote(freshQuotes.get(holding.symbol)))
+          .filter((holding) => !hasCurrentMarketQuote(freshQuotes.get(holding.symbol)))
           .map((holding) => holding.symbol);
         const lastGoodFallbackSymbols = fallbackSymbols.filter((symbol) =>
           hasUsableQuote(previousQuotes.get(symbol)),
@@ -487,18 +665,30 @@ export function useInvestments(): UseInvestmentsReturn {
         // stores usable quotes. Gating this on a fully-fresh response would
         // let one chronically failing symbol disable the cache forever.
         if (hasFreshQuote) {
-          saveCachedQuotes(nextQuotes);
-          setLastUpdated(new Date());
+          // Persist only quotes returned by this response. Re-saving carried
+          // fallbacks under a new cache timestamp would make their age look
+          // newer than it is after any other symbol succeeds.
+          saveCachedQuotes(freshQuotes);
+          const providerTimestamps = [...freshQuotes.values()]
+            .map((quote) => quote.asOf ? Date.parse(quote.asOf) : Number.NaN)
+            .filter(Number.isFinite);
+          setLastUpdated(
+            providerTimestamps.length > 0
+              ? new Date(Math.max(...providerTimestamps))
+              : new Date()
+          );
         }
         setError(warning ?? (hasFallbackPrices ? fallbackWarning : null));
 
         if (canPersistSnapshot) {
+          const valuationSession = portfolioValuationSession(currentHoldings, freshQuotes);
+          if (!valuationSession) return;
           const enhanced = buildEnhanced(currentHoldings, nextQuotes, false);
           const summary = buildSummary(enhanced);
           const totalCost = enhanced.reduce((s, h) => s + h.totalCost, 0);
-          const today = toLocalDateKey();
           const snap: PortfolioSnapshot = {
-            date: today,
+            date: valuationSession.date,
+            valuationAsOf: valuationSession.valuationAsOf,
             totalValue: summary.totalValue,
             totalCost,
             holdingCount: currentHoldings.length,
@@ -508,11 +698,25 @@ export function useInvestments(): UseInvestmentsReturn {
         setSnapshots(loadSnapshots());
       }
     } catch (err) {
-      if (isMounted.current) {
-        setError((err as Error).message || "Live prices are temporarily unavailable.");
+      if (isMounted.current && latestQuoteRequestId.current === requestId) {
+        const fallbackQuotes = new Map<string, StockQuote>();
+        for (const holding of currentHoldings) {
+          const previousQuote = quotesRef.current.get(holding.symbol);
+          if (hasUsableQuote(previousQuote)) {
+            fallbackQuotes.set(holding.symbol, {
+              ...previousQuote,
+              isFallback: true,
+            });
+          }
+        }
+        quotesRef.current = fallbackQuotes;
+        setQuotes(fallbackQuotes);
+        setError((err as Error).message || "Market quotes are temporarily unavailable.");
       }
     } finally {
-      if (isMounted.current) setIsLoading(false);
+      if (isMounted.current && latestQuoteRequestId.current === requestId) {
+        setIsLoading(false);
+      }
     }
   }, []);
 
@@ -529,6 +733,29 @@ export function useInvestments(): UseInvestmentsReturn {
     fetchedSymbolKeyRef.current = key;
     fetchAllQuotes(holdings);
   }, [holdings, fetchAllQuotes]);
+
+  // Revalidate a visible long-lived tab. The timestamp gate prevents focus
+  // churn from multiplying requests, while manual refresh and symbol changes
+  // continue to bypass this background throttle.
+  useEffect(() => {
+    const maybeRefresh = () => {
+      if (document.visibilityState === "hidden") return;
+      const currentHoldings = holdingsRef.current;
+      if (currentHoldings.length === 0) return;
+      const elapsedMs = Date.now() - lastQuoteRequestAtRef.current;
+      if (elapsedMs >= 0 && elapsedMs < QUOTE_CACHE_TTL_MS) return;
+      void fetchAllQuotes(currentHoldings);
+    };
+
+    const intervalId = window.setInterval(maybeRefresh, QUOTE_CACHE_TTL_MS);
+    window.addEventListener("focus", maybeRefresh);
+    document.addEventListener("visibilitychange", maybeRefresh);
+    return () => {
+      window.clearInterval(intervalId);
+      window.removeEventListener("focus", maybeRefresh);
+      document.removeEventListener("visibilitychange", maybeRefresh);
+    };
+  }, [fetchAllQuotes]);
 
   // ─── CRUD ─────────────────────────────────────────────────────────────────
 
@@ -588,7 +815,10 @@ export function useInvestments(): UseInvestmentsReturn {
         ? (rawSummary.totalGainLoss / rawSummary.totalCost) * 100
         : 0,
     dayChangePercent: (() => {
-      const previousValue = rawSummary.totalValue - rawSummary.dayChange;
+      const liveValue = enhancedHoldings
+        .filter((holding) => holding.priceSource === "live")
+        .reduce((sum, holding) => sum + holding.currentValue, 0);
+      const previousValue = liveValue - rawSummary.dayChange;
       return previousValue > 0 ? (rawSummary.dayChange / previousValue) * 100 : 0;
     })(),
   };

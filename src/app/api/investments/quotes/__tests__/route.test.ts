@@ -13,11 +13,13 @@ jest.mock("@/lib/finnhub", () => {
 });
 
 import { GET } from "../route";
+import { fetchQuotesWithConcurrency } from "@/lib/investmentsQuoteBatch";
 import {
   fetchFinnhubQuote,
   FinnhubAllowlistUnavailableError,
   getAllowedSymbols,
 } from "@/lib/finnhub";
+import { investmentsQuoteRateLimiter } from "@/lib/rateLimit";
 
 const mockFetchFinnhubQuote = fetchFinnhubQuote as jest.MockedFunction<typeof fetchFinnhubQuote>;
 const mockGetAllowedSymbols = getAllowedSymbols as jest.MockedFunction<
@@ -42,6 +44,7 @@ const errorQuote = (symbol: string, error: string) => ({
 describe("GET /api/investments/quotes", () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    investmentsQuoteRateLimiter.reset();
     mockGetAllowedSymbols.mockResolvedValue(new Set(["AAPL", "MSFT"]));
   });
 
@@ -211,5 +214,31 @@ describe("GET /api/investments/quotes", () => {
     expect(response.headers.get("Cache-Control")).toBe("no-store");
     expect(body.error).toMatch(/temporarily unavailable/i);
     expect(mockFetchFinnhubQuote).not.toHaveBeenCalled();
+  });
+
+  it("returns deadline placeholders instead of serially waiting through every provider wave", async () => {
+    const symbols = Array.from({ length: 10 }, (_, index) => `T${index}`);
+    mockFetchFinnhubQuote.mockImplementation(
+      () => new Promise(() => undefined),
+    );
+
+    const quotes = await fetchQuotesWithConcurrency(symbols, 5);
+
+    expect(quotes).toHaveLength(10);
+    expect(quotes).toEqual(
+      expect.arrayContaining(
+        symbols.map((symbol) =>
+          expect.objectContaining({
+            symbol,
+            error: expect.stringMatching(/time limit/i),
+          })
+        )
+      )
+    );
+    expect(mockFetchFinnhubQuote).toHaveBeenCalledTimes(5);
+    for (const [, options] of mockFetchFinnhubQuote.mock.calls) {
+      expect(options?.timeoutMs).toBeGreaterThan(0);
+      expect(options?.timeoutMs).toBeLessThanOrEqual(5);
+    }
   });
 });

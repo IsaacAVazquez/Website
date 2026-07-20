@@ -424,3 +424,155 @@ export async function buildBayAreaTransitSnapshotData(): Promise<TransitSnapshot
 
   return { summary, stationBoards };
 }
+
+/**
+ * Refreshes the time-sensitive BART sections without rebuilding the static
+ * station and route catalog. Each feed can fall back independently, so one bad
+ * endpoint does not erase departures or turn an outage into a false zero.
+ */
+export async function buildBayAreaTransitLiveSnapshotData(
+  fallback: TransitSnapshot
+): Promise<TransitSnapshot> {
+  const generatedAt = new Date().toISOString();
+  const [advisoriesResult, elevatorResult, departuresResult] =
+    await Promise.allSettled([
+      fetchBartJson<{
+        root?: { bsa?: BartAdvisory | BartAdvisory[] | null } | null;
+      }>("bsa.aspx?cmd=bsa"),
+      fetchBartJson<{
+        root?: { bsa?: BartAdvisory | BartAdvisory[] | null } | null;
+      }>("bsa.aspx?cmd=elev"),
+      fetchBartJson<{
+        root?: {
+          time?: string | null;
+          date?: string | null;
+          station?: BartEtdStation[] | null;
+        } | null;
+      }>("etd.aspx?cmd=etd&orig=ALL"),
+    ]);
+
+  if (
+    advisoriesResult.status === "rejected" &&
+    elevatorResult.status === "rejected" &&
+    departuresResult.status === "rejected"
+  ) {
+    throw new Error("Every BART live feed was unavailable.");
+  }
+
+  const advisories =
+    advisoriesResult.status === "fulfilled"
+      ? asArray(advisoriesResult.value.root?.bsa)
+          .map((advisory, index): TransitAdvisory => ({
+            id: `advisory-${index}`,
+            type: (advisory.type ?? "").trim(),
+            description: readCdata(advisory.description),
+            station: advisory.station ? advisory.station.trim() || null : null,
+            posted: (advisory.posted ?? "").trim(),
+          }))
+          .filter((advisory) => {
+            const text = advisory.description.toLowerCase();
+            return text !== "" && !text.startsWith("no delays");
+          })
+      : fallback.summary.advisories;
+
+  const elevator =
+    elevatorResult.status === "fulfilled"
+      ? asArray(elevatorResult.value.root?.bsa)
+          .map((entry, index): TransitElevatorStatus => ({
+            id: `elevator-${index}`,
+            description: readCdata(entry.description),
+            posted: (entry.posted ?? "").trim(),
+          }))
+          .filter((entry) => {
+            const text = entry.description.toLowerCase();
+            return (
+              text !== "" &&
+              !text.includes("all elevators are in service") &&
+              !text.includes("no elevators")
+            );
+          })
+      : fallback.summary.elevator;
+
+  let stationBoards = fallback.stationBoards;
+  let trainsTracked = fallback.summary.heroStats.trainsTracked;
+  let feedTime = fallback.summary.system?.feedTime ?? "";
+
+  if (departuresResult.status === "fulfilled") {
+    const response = departuresResult.value;
+    const boards: Record<string, TransitStationBoard> = {};
+    trainsTracked = 0;
+    feedTime = [response.root?.date, response.root?.time]
+      .filter(Boolean)
+      .join(" ");
+
+    for (const etdStation of asArray(response.root?.station)) {
+      if (!etdStation.abbr) continue;
+      const abbr = etdStation.abbr.toUpperCase();
+      const id = abbr.toLowerCase();
+      const departures: TransitDeparture[] = [];
+
+      for (const etd of asArray(etdStation.etd)) {
+        for (const estimate of asArray(etd.estimate)) {
+          departures.push({
+            destination: (etd.destination ?? "").trim(),
+            destinationAbbr: (etd.abbreviation ?? "").trim(),
+            minutes: parseMinutes(estimate.minutes),
+            platform: (estimate.platform ?? "").trim(),
+            direction: (estimate.direction ?? "").trim(),
+            length: toNumber(estimate.length),
+            colorName: (estimate.color ?? "").trim() || "Line",
+            hexColor: estimate.hexcolor ?? "#888888",
+            delaySeconds: toNumber(estimate.delay),
+            bikesAllowed: estimate.bikeflag === "1",
+          });
+        }
+      }
+
+      departures.sort((a, b) => (a.minutes ?? -1) - (b.minutes ?? -1));
+      trainsTracked += departures.length;
+      boards[id] = {
+        id,
+        abbr,
+        name: (etdStation.name ?? "").trim(),
+        departures,
+        generatedAt,
+      };
+    }
+
+    if (Object.keys(boards).length > 0) stationBoards = boards;
+  }
+
+  const defaultStation =
+    ["embr", "mont", "powl", "12th", "mcar"].find(
+      (id) => (stationBoards[id]?.departures.length ?? 0) > 0
+    ) ??
+    Object.values(stationBoards).find((board) => board.departures.length > 0)?.id ??
+    fallback.summary.defaultStation;
+
+  return {
+    summary: {
+      ...fallback.summary,
+      system: fallback.summary.system
+        ? { ...fallback.summary.system, feedTime, generatedAt, seed: false }
+        : null,
+      heroStats: {
+        ...fallback.summary.heroStats,
+        activeAdvisories: advisories.length,
+        elevatorOutages: elevator.length,
+        trainsTracked,
+      },
+      advisories,
+      elevator,
+      sectionStatus: {
+        advisories:
+          advisoriesResult.status === "fulfilled" ? "fresh" : "stale-fallback",
+        elevator:
+          elevatorResult.status === "fulfilled" ? "fresh" : "stale-fallback",
+        departures:
+          departuresResult.status === "fulfilled" ? "fresh" : "stale-fallback",
+      },
+      defaultStation,
+    },
+    stationBoards,
+  };
+}

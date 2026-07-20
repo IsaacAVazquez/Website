@@ -30,7 +30,7 @@ describe("DataFreshnessIndicator", () => {
       />
     );
 
-    expect(screen.getByText("Live snapshot fetched 30m ago")).toBeInTheDocument();
+    expect(screen.getByText("Market quote 30m ago")).toBeInTheDocument();
   });
 
   it("uses an explicit date label for historical price timestamps", () => {

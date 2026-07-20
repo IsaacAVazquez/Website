@@ -6,10 +6,8 @@ import {
   isValidNbaTeamId,
 } from "@/lib/nbaSnapshot";
 import { logger } from "@/lib/logger";
+import { createSnapshotResponseHeaders } from "@/lib/snapshotResponse";
 
-const SUCCESS_CACHE_HEADERS = {
-  "Cache-Control": "public, max-age=300, stale-while-revalidate=900",
-};
 // Errors (4xx/5xx) must NOT be cached by the CDN — otherwise a transient
 // upstream failure or malformed input poisons the cache for the full success
 // TTL. Distinguishes 400 (bad input) from 404 (valid input, unknown id).
@@ -42,7 +40,14 @@ export async function GET(
 
   try {
     const snapshot = await getNbaTeamSnapshot(teamId);
-    return NextResponse.json(snapshot, { headers: SUCCESS_CACHE_HEADERS });
+    return NextResponse.json(snapshot, {
+      headers: createSnapshotResponseHeaders({
+        surface: "nba",
+        payload: snapshot,
+        sourceAsOf: snapshot.generatedAt,
+        cacheControl: "public, max-age=300, stale-while-revalidate=900",
+      }),
+    });
   } catch (error) {
     const err = error as Error & { status?: number };
     if ((err.status ?? 500) >= 500) {

@@ -2,7 +2,7 @@
 
 Current component ownership reference.
 
-**Last updated:** 2026-06-19
+**Last updated:** 2026-07-12
 
 ---
 
@@ -64,7 +64,6 @@ Primary investments components:
 - `ResearchOverview`
 - `ComparisonTab`
 - `PriceChartPanel`
-- `DCFPanel`
 - `FundamentalsPanel`
 - `FinancialStatementsPanel`
 - `GrowthPanel`

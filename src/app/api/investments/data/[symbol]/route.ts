@@ -16,10 +16,8 @@ const VALID_SECTIONS: InvestmentSection[] = [
   "cash_flow",
   "wacc",
   "industry",
-  "revenue_segments",
   "beta",
   "news",
-  "dcf",
   "info",
   "officers",
 ];

@@ -60,6 +60,7 @@ Use these when the task is specifically about setup, deployment, data operations
 - `AUTOMATION_SCRIPTS.md`
 - `CRON_SETUP.md`
 - `DATA_UPDATE_OPERATIONS.md` (consolidated command → artifact → schedule runbook)
+- `INVESTMENTS_DATA_SOURCES.md` (investments provider, licensing, provenance, and migration ledger)
 - `ENVIRONMENT_CONFIGURATION.md`
 - `FANTASY_PLATFORM_SETUP.md`
 - `SECURITY.md`

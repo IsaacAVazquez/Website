@@ -22,7 +22,7 @@ describe("PollingAggregatorClient", () => {
     mockReplace.mockReset();
   });
 
-  it("discloses that the data is illustrative sample data, not real polling", () => {
+  it("attributes the polling source and explains the race-data limit", () => {
     render(
       <PollingAggregatorClient
         initialState={DEFAULT_POLLING_STATE}
@@ -30,11 +30,11 @@ describe("PollingAggregatorClient", () => {
       />
     );
 
-    // Guards the sample-data disclosure so a revert to the fabricated-as-real
-    // provenance fails CI (see docs/DATA_SOURCE_AUDIT_2026-07.md).
-    expect(
-      screen.getByText(/illustrative sample data, not real polling/i)
-    ).toBeVisible();
+    expect(screen.getByRole("link", { name: /votehub polling api/i })).toHaveAttribute(
+      "href",
+      "https://votehub.com/polls/api/"
+    );
+    expect(screen.getByText(/candidate-party metadata/i)).toBeVisible();
   });
 
   it("renders the overview and navigates view tabs", () => {
@@ -55,25 +55,15 @@ describe("PollingAggregatorClient", () => {
     });
   });
 
-  it("navigates race selection in the Senate table", () => {
-    const firstRace = pollingSnapshot.senateRaces[0];
-
+  it("does not offer race tabs without verified candidate-party metadata", () => {
     render(
       <PollingAggregatorClient
-        initialState={{ view: "senate", race: null }}
+        initialState={DEFAULT_POLLING_STATE}
         snapshot={pollingSnapshot}
       />
     );
 
-    fireEvent.click(
-      screen.getByRole("button", {
-        name: `Show ${firstRace.state} ${firstRace.office} race`,
-      })
-    );
-
-    expect(mockPush).toHaveBeenLastCalledWith(
-      `/polling-aggregator?view=senate&race=${firstRace.id}`,
-      { scroll: false }
-    );
+    expect(screen.queryByRole("button", { name: "Senate" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Governors" })).not.toBeInTheDocument();
   });
 });

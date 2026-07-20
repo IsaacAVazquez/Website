@@ -1,0 +1,100 @@
+name: Refresh Polling Snapshot
+
+on:
+  schedule:
+    - cron: "55 */6 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: refresh-polling
+  cancel-in-progress: false
+
+jobs:
+  refresh-polling:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline --no-audit --fund=false
+
+      - name: Refresh polling snapshot
+        run: npm run update:polling
+
+      - name: Verify refresh freshness
+        run: npx tsx scripts/verifyDataRefresh.ts polling
+
+      - name: Commit and push refreshed snapshot
+        run: |
+          bash scripts/ci/commit-and-push-snapshot.sh \
+            "chore: refresh polling snapshot [automated] [skip ci]" \
+            src/data/pollingSnapshot.ts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Open polling refresh incident
+        if: failure()
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const title = "Polling refresh failed";
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: "open",
+              labels: "polling-refresh-failure",
+              per_page: 1,
+            });
+            if (existing.data[0]) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.data[0].number,
+                body: `Polling refresh failed again. Run: ${runUrl}`,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body: `The VoteHub polling refresh failed. Run: ${runUrl}`,
+                labels: ["polling-refresh-failure", "automation"],
+              });
+            }
+
+      - name: Close resolved polling incidents
+        if: success()
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: "open",
+              labels: "polling-refresh-failure",
+              per_page: 10,
+            });
+            for (const issue of existing.data) {
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                state: "closed",
+              });
+            }

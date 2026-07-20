@@ -1,15 +1,19 @@
 import { NextResponse } from "next/server";
 import { getMissionControlSummary } from "@/lib/spacexData";
 import { logger } from "@/lib/logger";
+import { createSnapshotResponseHeaders } from "@/lib/snapshotResponse";
 
 export async function GET() {
   try {
     const summary = await getMissionControlSummary();
 
     return NextResponse.json(summary, {
-      headers: {
-        "Cache-Control": "public, max-age=120, stale-while-revalidate=600",
-      },
+      headers: createSnapshotResponseHeaders({
+        surface: "spacex",
+        payload: summary,
+        sourceAsOf: summary.generatedAt,
+        cacheControl: "public, max-age=120, stale-while-revalidate=600",
+      }),
     });
   } catch (error) {
     const err = error as Error & { status?: number };

@@ -1,10 +1,13 @@
 import { NextResponse } from "next/server";
-import { createEmptyScorePoolsSummary, getScorePoolsSummary } from "@/lib/scorePoolsSnapshot";
+import { scorePoolsSnapshot } from "@/data/scorePoolsSnapshot";
+import {
+  createEmptyScorePoolsSummary,
+  getScorePoolsSummary,
+  hasLiveScorePoolsData,
+} from "@/lib/scorePoolsSnapshot";
 import { logger } from "@/lib/logger";
+import { createSnapshotResponseHeaders } from "@/lib/snapshotResponse";
 
-const SUCCESS_CACHE_HEADERS = {
-  "Cache-Control": "public, max-age=300, stale-while-revalidate=900",
-};
 const ERROR_CACHE_HEADERS = {
   "Cache-Control": "no-store",
 };
@@ -12,7 +15,17 @@ const ERROR_CACHE_HEADERS = {
 export async function GET() {
   try {
     const summary = await getScorePoolsSummary();
-    return NextResponse.json(summary, { headers: SUCCESS_CACHE_HEADERS });
+    return NextResponse.json(summary, {
+      headers: createSnapshotResponseHeaders({
+        surface: "score-pools",
+        payload: scorePoolsSnapshot,
+        sourceAsOf: scorePoolsSnapshot.generatedAt,
+        cacheControl: "public, max-age=300, stale-while-revalidate=900",
+        status: hasLiveScorePoolsData(scorePoolsSnapshot)
+          ? undefined
+          : "degraded",
+      }),
+    });
   } catch (error) {
     const err = error as Error & { status?: number };
     if ((err.status ?? 500) >= 500) {

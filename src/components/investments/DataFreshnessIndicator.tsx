@@ -64,7 +64,7 @@ export function DataFreshnessIndicator({
     mode === "dataset"
       ? "Dataset updated"
       : mode === "live"
-        ? "Live snapshot fetched"
+        ? "Market quote"
         : mode === "price"
           ? "Price as of"
         : "Updated";

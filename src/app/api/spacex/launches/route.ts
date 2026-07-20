@@ -3,10 +3,11 @@ import type { MissionControlStatus } from "@/types/spacex";
 import { getMissionLaunchCards } from "@/lib/spacexData";
 import { logger } from "@/lib/logger";
 import { buildQueryCacheHeaders, NO_STORE_HEADERS } from "@/lib/apiCacheHeaders";
+import { createSnapshotResponseHeaders } from "@/lib/snapshotResponse";
+import { getSpaceXSnapshot } from "@/lib/spacexSnapshot";
 
-const SUCCESS_CACHE_HEADERS = buildQueryCacheHeaders(
+const SUCCESS_CACHE_CONTROL =
   "public, max-age=120, stale-while-revalidate=600"
-);
 
 function isValidStatus(status: string): status is MissionControlStatus {
   return status === "upcoming" || status === "past";
@@ -36,13 +37,21 @@ export async function GET(request: NextRequest) {
 
   try {
     const launches = await getMissionLaunchCards(status, limit);
+    const payload = { launches };
+    const snapshot = getSpaceXSnapshot();
 
     return NextResponse.json(
+      payload,
       {
-        launches,
-      },
-      {
-        headers: SUCCESS_CACHE_HEADERS,
+        headers: {
+          ...buildQueryCacheHeaders(SUCCESS_CACHE_CONTROL),
+          ...createSnapshotResponseHeaders({
+            surface: "spacex",
+            payload,
+            sourceAsOf: snapshot.generatedAt,
+            cacheControl: SUCCESS_CACHE_CONTROL,
+          }),
+        },
       }
     );
   } catch (error) {

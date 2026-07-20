@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { createHash } from "node:crypto";
 import { load } from "cheerio";
 import type {
   MBAATSType,
@@ -18,6 +19,7 @@ import {
   mbaJobsRateLimiter,
   rateLimitResponse,
 } from "@/lib/rateLimit";
+import { readDurableJson, writeDurableJson } from "@/lib/durableJsonCache";
 
 const TIMEOUT_MS = 8_000;
 const MAX_SNIPPET_LENGTH = 220;
@@ -102,7 +104,9 @@ async function fetchJson<T>(url: string): Promise<T> {
   try {
     const res = await fetch(url, {
       signal: controller.signal,
-      next: { revalidate: 1800 },
+      // Some ATS responses exceed Next's 2 MB fetch-cache limit. The route's
+      // normalized in-memory cache and response cache handle reuse instead.
+      cache: "no-store",
     });
 
     if (!res.ok) {
@@ -122,7 +126,9 @@ async function fetchText(url: string): Promise<string> {
   try {
     const res = await fetch(url, {
       signal: controller.signal,
-      next: { revalidate: 1800 },
+      // Some careers pages exceed Next's 2 MB fetch-cache limit. The route's
+      // normalized in-memory cache and response cache handle reuse instead.
+      cache: "no-store",
     });
 
     if (!res.ok) {
@@ -804,6 +810,11 @@ interface JobsCacheEntry {
 const jobsCache = new Map<string, JobsCacheEntry>();
 const lastGoodJobs = new Map<string, JobsFetchResult>();
 const MAX_CACHE_KEYS = 100;
+const DURABLE_LAST_GOOD_MAX_AGE_MS = 24 * 60 * 60 * 1000;
+
+function getDurableJobsKey(cacheKey: string): string {
+  return `mba-jobs/${createHash("sha256").update(cacheKey).digest("hex")}`;
+}
 
 function setBoundedCacheValue<T>(map: Map<string, T>, key: string, value: T): void {
   map.delete(key);
@@ -1013,11 +1024,22 @@ function getOrFetchJobs(
   };
 
   entry.promise = (async () => {
-    const settle = (result: JobsFetchResult): JobsFetchResult => {
+    if (!lastGoodJobs.has(cacheKey)) {
+      const durableGood = await readDurableJson<JobsFetchResult>(
+        getDurableJobsKey(cacheKey),
+        DURABLE_LAST_GOOD_MAX_AGE_MS
+      );
+      if (durableGood && !durableGood.isError && !durableGood.isDegraded) {
+        setBoundedCacheValue(lastGoodJobs, cacheKey, durableGood);
+      }
+    }
+
+    const settle = async (result: JobsFetchResult): Promise<JobsFetchResult> => {
       let served = result;
 
       if (!result.isError && !result.isDegraded) {
         setBoundedCacheValue(lastGoodJobs, cacheKey, result);
+        await writeDurableJson(getDurableJobsKey(cacheKey), result);
       } else if (result.isError) {
         const good = lastGoodJobs.get(cacheKey);
         if (good) served = buildStaleJobsResult(good, result);
@@ -1034,7 +1056,7 @@ function getOrFetchJobs(
     };
 
     try {
-      return settle(await fetchAllJobs(targets, includeExternalLeads));
+      return await settle(await fetchAllJobs(targets, includeExternalLeads));
     } catch (error) {
       const message = error instanceof Error ? error.message : "unknown error";
       const result: JobsFetchResult = {
@@ -1055,7 +1077,7 @@ function getOrFetchJobs(
         isError: true,
         isDegraded: false,
       };
-      return settle(result);
+      return await settle(result);
     }
   })();
 

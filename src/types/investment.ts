@@ -22,6 +22,12 @@ export interface StockQuote {
   volume: number;
   marketCap: number;
   name: string;
+  /** Provider-reported market timestamp for this quote. */
+  asOf?: string;
+  /** Identifies the upstream quote provider shown in the UI. */
+  source?: "finnhub";
+  /** True when the price is a previously saved quote used after refresh failed. */
+  isFallback?: boolean;
   error?: string;
 }
 
@@ -35,6 +41,7 @@ export interface EnhancedHolding extends PortfolioHolding {
   dayChangePercent: number;
   allocationPercent: number | null;
   name: string;
+  priceSource: "live" | "saved" | "costBasis";
   isLoading: boolean;
   error?: string;
 }
@@ -142,32 +149,6 @@ export interface NewsItem {
 
 export type NewsData = NewsItem[] | { error: string };
 
-export interface DcfData {
-  fairValue?: number;
-  currentPrice?: number;
-  upside?: number;
-  wacc?: number;
-  growthEstimates?: Record<string, number>;
-  recommendation?: "Buy" | "Sell" | "Hold" | string;
-  error?: string;
-  /**
-   * Raw model inputs behind `fairValue`, exposed so the DCF panel can offer a
-   * client-side "what-if" recompute instead of only displaying the one
-   * precomputed scenario. `baseFcf` is the same per-share cash-flow base the
-   * server model projects forward (see `computeDcf` in
-   * investmentTransforms.ts); `nearTermGrowthPct`/`terminalGrowthPct` and
-   * `wacc` are the growth/discount assumptions that produced `fairValue`.
-   * Recomputing with these unchanged values must reproduce `fairValue`
-   * exactly — that's what lets "reset to baseline" mean something concrete.
-   * Undefined on older snapshots built before this field existed; panels
-   * must fall back to a read-only display when absent.
-   */
-  baseFcf?: number;
-  nearTermGrowthPct?: number;
-  terminalGrowthPct?: number;
-  years?: number;
-}
-
 export interface CompanyInfo {
   address?: string;
   city?: string;
@@ -236,7 +217,29 @@ export interface InvestmentsIndex {
   freshCount?: number;
   /** Symbols recovered from an earlier snapshot after their latest fetch failed. */
   staleCount?: number;
+  /** Symbols whose latest snapshot retained one or more earlier sections. */
+  partialCount?: number;
+  /** Per-symbol attempt ledger used to prevent budget-limited refresh starvation. */
+  fetchAttempts?: Record<string, string>;
+  /** Actually attempted symbols that remain on a shorter retry timeout. */
+  fetchFailures?: Record<
+    string,
+    { lastAttemptedAt: string; consecutiveFailures: number }
+  >;
+  /** Price-history quality measured from the per-symbol snapshots. */
+  priceHealth?: InvestmentsPriceHealth;
   entries?: InvestmentIndexEntry[];
+}
+
+export interface InvestmentsPriceHealth {
+  assessedAt: string;
+  maxAgeDays: number;
+  pricedCount: number;
+  recentCount: number;
+  delayedCount: number;
+  missingCount: number;
+  oldestAsOf: string | null;
+  latestAsOf: string | null;
 }
 
 export interface InvestmentIndexEntry {
@@ -249,6 +252,14 @@ export interface InvestmentIndexEntry {
   stale?: boolean;
   /** ISO date the served snapshot was built/last updated (for stale entries). */
   asOf?: string | null;
+  /** Latest trading date present in the committed historical price series. */
+  priceAsOf?: string | null;
+  /** True when price history misses the configured completed-session window. */
+  priceDelayed?: boolean;
+  /** True when one or more prior valid sections were retained. */
+  partial?: boolean;
+  /** Prior valid sections retained after a partial provider response. */
+  retainedSections?: InvestmentSection[];
 }
 
 // ============================================================
@@ -266,10 +277,8 @@ export type InvestmentSection =
   | "cash_flow"
   | "wacc"
   | "industry"
-  | "revenue_segments"
   | "beta"
   | "news"
-  | "dcf"
   | "info"
   | "officers";
 
@@ -284,6 +293,8 @@ export type InvestmentCapabilities = Partial<
 export interface InvestmentSnapshotFreshness {
   snapshotBuiltAt: string | null;
   sections: Partial<Record<InvestmentSection, string | null>>;
+  /** Sections retained from an earlier valid snapshot after a partial refresh. */
+  retainedSections?: InvestmentSection[];
 }
 
 export interface InvestmentDataEnvelope<T> {

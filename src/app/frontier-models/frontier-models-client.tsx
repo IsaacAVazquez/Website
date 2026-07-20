@@ -1,6 +1,6 @@
 "use client";
 
-import { startTransition, useEffect, useMemo } from "react";
+import { startTransition, useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { EmptyPanel } from "@/components/football/EmptyPanel";
 import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
@@ -141,6 +141,17 @@ export function FrontierModelsClient({
   const premiumTier = snapshot.priceTiers.find((t) => t.id === "premium")?.count ?? 0;
 
   const updatedAt = formatGeneratedAt(snapshot.generatedAt);
+  const [reviewIsOverdue, setReviewIsOverdue] = useState(!snapshot.verified);
+  useEffect(() => {
+    const reviewAgeMs =
+      Date.now() - Date.parse(snapshot.asOf ?? snapshot.generatedAt);
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Freshness depends on the browser clock and must not create unstable SSR markup
+    setReviewIsOverdue(
+      !snapshot.verified ||
+        !Number.isFinite(reviewAgeMs) ||
+        reviewAgeMs > 45 * 24 * 60 * 60 * 1000
+    );
+  }, [snapshot.asOf, snapshot.generatedAt, snapshot.verified]);
 
   const frontierCells: HomeStatsCell[] = [
     {
@@ -205,6 +216,17 @@ export function FrontierModelsClient({
           {!snapshot.verified ? " · Independent review pending" : ""}
         </p>
       </header>
+
+      {reviewIsOverdue ? (
+        <div
+          role="status"
+          className="rounded-[var(--radius-2xl)] border border-[var(--home-warning)] bg-[color-mix(in_srgb,var(--home-warning)_8%,var(--home-paper))] p-4 text-sm leading-6 text-[var(--home-ink)]"
+        >
+          This dataset is outside its 45-day review window or still unverified. I
+          would not use its prices or model availability for a purchase decision
+          until the source list is reviewed.
+        </div>
+      ) : null}
 
       <HomeStatsPanel
         id="frontier-models-stats"

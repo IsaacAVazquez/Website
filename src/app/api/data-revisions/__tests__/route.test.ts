@@ -6,6 +6,7 @@ import { GET as getTransitSummary } from "@/app/api/bay-area-transit/summary/rou
 import { bayAreaTransitSnapshot } from "@/data/bayAreaTransitSnapshot";
 import { earthquakeSnapshot } from "@/data/earthquakeSnapshot";
 import { createDataRevision, type DataRevisionEntry } from "@/lib/dataRevision";
+import { DATA_SURFACE_IDS } from "@/lib/dataFreshnessPolicy";
 
 async function getLedgerEntry(surface: string): Promise<DataRevisionEntry> {
   const response = await GET();
@@ -17,6 +18,14 @@ async function getLedgerEntry(surface: string): Promise<DataRevisionEntry> {
 }
 
 describe("GET /api/data-revisions", () => {
+  it("publishes one health entry for every registered snapshot surface", async () => {
+    const response = await GET();
+    const body = (await response.json()) as { entries: DataRevisionEntry[] };
+
+    expect(body.entries.map((entry) => entry.surface).sort()).toEqual(
+      [...DATA_SURFACE_IDS].sort()
+    );
+  });
   it("hashes bay-area-transit at the same summary grain as the summary route", async () => {
     const entry = await getLedgerEntry("bay-area-transit");
 
@@ -36,11 +45,9 @@ describe("GET /api/data-revisions", () => {
     expect(entry.revision).toBe(createDataRevision(earthquakeSnapshot.summary));
   });
 
-  it("gives investments a freshness window that covers the Thu -> Mon refresh gap", async () => {
+  it("gives weekday investment refreshes a weekend-safe freshness window", async () => {
     const entry = await getLedgerEntry("investments");
 
-    // The refresh runs Mon+Thu 22:15 UTC; the longest on-schedule gap is 96h,
-    // so the window must exceed it or every Monday reads stale-fallback.
-    expect(entry.maxAgeSeconds).toBe(5 * 24 * 60 * 60);
+    expect(entry.maxAgeSeconds).toBe(102 * 60 * 60);
   });
 });

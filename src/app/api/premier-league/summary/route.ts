@@ -4,10 +4,9 @@ import {
   getPremierLeagueSummary,
 } from "@/lib/premierLeagueSnapshot";
 import { logger } from "@/lib/logger";
+import { createSnapshotResponseHeaders } from "@/lib/snapshotResponse";
 
-const SUCCESS_CACHE_HEADERS = {
-  "Cache-Control": "public, max-age=300, stale-while-revalidate=900",
-};
+const SUCCESS_CACHE_CONTROL = "public, max-age=300, stale-while-revalidate=900";
 // Errors (4xx/5xx) must NOT be cached by the CDN — otherwise a transient
 // upstream failure poisons the cache for the full success TTL.
 const ERROR_CACHE_HEADERS = {
@@ -19,7 +18,12 @@ export async function GET() {
     const summary = await getPremierLeagueSummary();
 
     return NextResponse.json(summary, {
-      headers: SUCCESS_CACHE_HEADERS,
+      headers: createSnapshotResponseHeaders({
+        surface: "premier-league",
+        payload: summary,
+        sourceAsOf: summary.generatedAt,
+        cacheControl: SUCCESS_CACHE_CONTROL,
+      }),
     });
   } catch (error) {
     const err = error as Error & { status?: number };

@@ -8,7 +8,7 @@ import { normalizeEarthquakeState } from "./earthquake-state";
 export const metadata = constructMetadata({
   title: "Earthquake Pulse",
   description:
-    "Snapshot-backed global earthquake monitor covering the past 24 hours of seismic activity, significant quakes worldwide, magnitude distribution, and the busiest regions, all on one calm, deep-linkable screen.",
+    "Frequently refreshed global earthquake monitor covering the past 24 hours of seismic activity, significant quakes worldwide, magnitude distribution, and the busiest regions.",
   canonicalUrl: "/earthquake-pulse",
   dateModified: earthquakeSnapshot.summary.generatedAt?.slice(0, 10),
   aiMetadata: {
@@ -31,11 +31,11 @@ export const metadata = constructMetadata({
     ],
     contentType: "Software Application",
     context:
-      "Standalone earthquake dashboard by Isaac Vazquez that packages checked-in USGS snapshots into a clean, shareable product surface.",
+      "Standalone earthquake dashboard by Isaac Vazquez that refreshes from USGS and retains a checked-in last-good fallback.",
     summary:
       "Global earthquake monitor for the past 24 hours, significant worldwide quakes, and regional activity.",
     primaryFocus:
-      "Snapshot-backed seismic context, magnitude distribution, and mobile-friendly data product UX",
+      "Live seismic context, magnitude distribution, and mobile-friendly data product UX",
   },
 });
 
@@ -73,7 +73,7 @@ export default async function EarthquakePulsePage({
         data={{
           name: "Earthquake Pulse",
           description:
-            "Snapshot-backed global earthquake monitor for the past 24 hours of seismic activity, significant quakes worldwide, and regional breakdowns.",
+            "Frequently refreshed global earthquake monitor for the past 24 hours of seismic activity, significant quakes worldwide, and regional breakdowns.",
           url: "https://isaacavazquez.com/earthquake-pulse",
           applicationCategory: "ReferenceApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
@@ -81,7 +81,7 @@ export default async function EarthquakePulsePage({
             "Recent and significant earthquake views backed by shareable URL state",
             "Selected-quake detail with depth, felt reports, and tsunami flags",
             "Magnitude distribution and busiest-region breakdowns over the past week",
-            "Local snapshot rendering without a live third-party runtime dependency",
+            "Checked-in last-good fallback when USGS is unavailable",
           ],
           dateModified: earthquakeSnapshot.summary.generatedAt ?? "",
         }}

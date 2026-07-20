@@ -427,7 +427,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
             Trend and volume from the curated research snapshot.
           </p>
           <p className="mt-2 text-xs text-[var(--home-ink-muted)]">
-            Historical series through {formatHistoryAsOf(latestHistoricalDate)}. Live pricing, when available, appears in the research header.
+            Historical series through {formatHistoryAsOf(latestHistoricalDate)}. The latest market quote, when available, appears in the research header.
           </p>
           {historyFreshness.isStale ? (
             <p className="mt-1 text-xs font-medium text-[var(--home-warning)]">

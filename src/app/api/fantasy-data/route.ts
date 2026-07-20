@@ -14,10 +14,11 @@ import { loadFantasySnapshot } from "@/lib/fantasySnapshotServer";
 import { fantasyRateLimiter, getClientIdentifier, rateLimitResponse } from "@/lib/rateLimit";
 import { logger } from "@/lib/logger";
 import { buildQueryCacheHeaders, NO_STORE_HEADERS } from "@/lib/apiCacheHeaders";
+import { createSnapshotResponseHeaders } from "@/lib/snapshotResponse";
 
-const SUCCESS_CACHE_HEADERS = buildQueryCacheHeaders(
-  "public, max-age=3600, stale-while-revalidate=86400"
-);
+const SUCCESS_CACHE_CONTROL =
+  "public, max-age=3600, stale-while-revalidate=86400";
+const SUCCESS_CACHE_HEADERS = buildQueryCacheHeaders(SUCCESS_CACHE_CONTROL);
 
 const VALID_SCORING_PARAMS = new Set([
   "ppr",
@@ -94,7 +95,17 @@ export async function GET(request: NextRequest) {
         },
       };
 
-      return NextResponse.json(response, { headers: SUCCESS_CACHE_HEADERS });
+      return NextResponse.json(response, {
+        headers: {
+          ...SUCCESS_CACHE_HEADERS,
+          ...createSnapshotResponseHeaders({
+            surface: "fantasy-football",
+            payload: response,
+            sourceAsOf: snapshot.generatedAt,
+            cacheControl: SUCCESS_CACHE_CONTROL,
+          }),
+        },
+      });
     }
 
     const players = getFantasyPlayersForPosition(snapshot, position);
@@ -115,7 +126,17 @@ export async function GET(request: NextRequest) {
       },
     };
 
-    return NextResponse.json(response, { headers: SUCCESS_CACHE_HEADERS });
+    return NextResponse.json(response, {
+      headers: {
+        ...SUCCESS_CACHE_HEADERS,
+        ...createSnapshotResponseHeaders({
+          surface: "fantasy-football",
+          payload: response,
+          sourceAsOf: snapshot.generatedAt,
+          cacheControl: SUCCESS_CACHE_CONTROL,
+        }),
+      },
+    });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Unknown fantasy snapshot error";
     logger.error(`Fantasy snapshot read failed: ${message}`);

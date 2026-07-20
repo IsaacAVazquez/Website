@@ -4,6 +4,7 @@ import {
   startTransition,
   useEffect,
   useMemo,
+  useState,
   type CSSProperties,
 } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -490,9 +491,13 @@ function QuakeDetailPanel({ quake }: { quake: QuakeEvent | null }) {
   );
 }
 
-export function EarthquakeClient({ initialState, summary }: EarthquakeClientProps) {
+export function EarthquakeClient({
+  initialState,
+  summary: initialSummary,
+}: EarthquakeClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const [summary, setSummary] = useState(initialSummary);
   const currentQuery = searchParams.toString();
   const currentHref = `${EARTHQUAKE_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
   const hasManagedParams =
@@ -521,6 +526,43 @@ export function EarthquakeClient({ initialState, summary }: EarthquakeClientProp
   );
 
   const hasData = summary.recent.length > 0 || summary.significant.length > 0;
+
+  useEffect(() => {
+    let active = true;
+    let controller: AbortController | null = null;
+
+    async function refreshSummary() {
+      controller?.abort();
+      controller = new AbortController();
+
+      try {
+        const response = await fetch("/api/earthquake-pulse/summary", {
+          cache: "no-store",
+          signal: controller.signal,
+        });
+        if (!response.ok) return;
+        const nextSummary = (await response.json()) as EarthquakeSummary;
+        if (active && nextSummary.generatedAt) {
+          setSummary(nextSummary);
+        }
+      } catch (error) {
+        if (!(error instanceof DOMException && error.name === "AbortError")) {
+          // Keep the last good summary visible through transient network errors.
+        }
+      }
+    }
+
+    void refreshSummary();
+    const interval = window.setInterval(() => {
+      if (document.visibilityState === "visible") void refreshSummary();
+    }, 5 * 60 * 1000);
+
+    return () => {
+      active = false;
+      controller?.abort();
+      window.clearInterval(interval);
+    };
+  }, []);
 
   useEffect(() => {
     if (currentHref === desiredHref) {
@@ -670,7 +712,8 @@ export function EarthquakeClient({ initialState, summary }: EarthquakeClientProp
                 >
                   I wanted the planet&apos;s last day of shaking on one calm screen:
                   what just moved, what was big enough to matter, and where the ground
-                  is busiest. This is a checked-in USGS snapshot, not a live feed.
+                  is busiest. The browser checks USGS every five minutes and keeps the
+                  last good snapshot visible if the feed drops.
                 </p>
               </div>
             </div>

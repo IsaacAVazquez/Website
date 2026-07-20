@@ -33,7 +33,7 @@ export function InvestmentsFreshnessBanner({
       {symbolCount > 0 && (
         <span className="text-[var(--home-ink-muted)]">
           <span className="font-semibold text-[var(--home-ink)]">{symbolCount}</span>{" "}
-          {symbolCount === 1 ? "company" : "companies"}
+          {symbolCount === 1 ? "security" : "securities"}
           {failedCount && failedCount > 0 ? (
             <span className="ml-1 text-[var(--home-warning)]">
               ({failedCount} unavailable)
@@ -42,12 +42,12 @@ export function InvestmentsFreshnessBanner({
         </span>
       )}
       <span className="text-[var(--home-ink-muted)]">
-        Live prices via Finnhub
+        Market quotes via Finnhub
       </span>
       {isStale && (
         <span
           className="inline-flex items-center gap-1 rounded-full bg-[color-mix(in_srgb,var(--home-warning)_18%,var(--home-paper))] px-2 py-0.5 text-2xs font-semibold uppercase tracking-wide text-[var(--home-warning)]"
-          title="The automated refresh has not produced newer data. Runs weekdays at 22:15 UTC."
+          title="The automated refresh has not produced newer data. Runs Mondays and Thursdays at 22:15 UTC."
         >
           Refresh pending
         </span>

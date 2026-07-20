@@ -2,10 +2,10 @@ name: Refresh Premier League Snapshot
 
 on:
   schedule:
-    # Daily at 06:15 UTC during the PL season (Aug–May). Skipped Jun/Jul
+    # Every four hours during the PL season (Aug through May). Skipped Jun/Jul
     # because the league is on summer break — no fixtures, no standings
     # changes, so the daily run would just burn minutes.
-    - cron: "15 6 * 1-5,8-12 *"
+    - cron: "15 */4 * 1-5,8-12 *"
   workflow_dispatch:
 
 # Don't stack a manual dispatch on top of a scheduled run.
@@ -45,6 +45,9 @@ jobs:
         env:
           FOOTBALL_DATA_API_TOKEN: ${{ secrets.FOOTBALL_DATA_API_TOKEN }}
           NODE_ENV: production
+
+      - name: Verify refresh freshness
+        run: npx tsx scripts/verifyDataRefresh.ts premier-league
 
       # Quality gate: require ≥18 teams in standings before we'll commit.
       # The PL is a 20-team league; <18 means the upstream returned a
@@ -115,23 +118,6 @@ jobs:
             src/data/premierLeagueSnapshot.ts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # Snapshot commits carry [skip ci], so the live site otherwise only picks
-      # up the refresh on the daily cron-job.org build hook. This deploys
-      # promptly when the snapshot actually changed, and no-ops until the
-      # NETLIFY_BUILD_HOOK secret is configured.
-      - name: Trigger Netlify deploy
-        if: steps.check_changes.outputs.changed == 'true'
-        env:
-          NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
-        run: |
-          if [ -z "$NETLIFY_BUILD_HOOK" ]; then
-            echo "NETLIFY_BUILD_HOOK secret not configured; skipping deploy trigger."
-            exit 0
-          fi
-          curl -fsS -X POST -d '{}' "$NETLIFY_BUILD_HOOK" \
-            && echo "Netlify build hook triggered." \
-            || echo "::warning::Netlify build hook request failed; the daily scheduled rebuild will pick up the snapshot."
 
       - name: Create job summary
         if: always()

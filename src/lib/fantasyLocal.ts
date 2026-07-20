@@ -10,6 +10,8 @@
  * a DOM.
  */
 
+import { readBrowserStorageString, writeBrowserStorageString } from "@/lib/browserStorage";
+
 export const FANTASY_QUEUE_STORAGE_KEY = "fantasy-player-queue-v1";
 export const FANTASY_NOTES_STORAGE_KEY = "fantasy-player-notes-v1";
 export const FANTASY_COMPARE_STORAGE_KEY = "fantasy-compare-v1";
@@ -127,22 +129,13 @@ export function setNoteEntry(
 }
 
 function readRaw(key: string): string | null {
-  if (typeof window === "undefined") return null;
-  try {
-    return window.localStorage.getItem(key);
-  } catch {
-    return null;
-  }
+  return readBrowserStorageString(key).value;
 }
 
 function writeRaw(key: string, value: string): void {
-  if (typeof window === "undefined") return;
-  try {
-    window.localStorage.setItem(key, value);
-  } catch {
-    // Best-effort: storage may be full or disabled (private mode). Failing a
-    // write should never crash a draft, so swallow it.
-  }
+  // Mirror the value in memory before attempting localStorage so the current
+  // tab remains usable when durable browser storage is blocked or full.
+  writeBrowserStorageString(key, value);
 }
 
 export function loadIdList(key: string): string[] {

@@ -42,6 +42,7 @@ describe("finnhub allowlist resolution", () => {
   });
 
   afterEach(() => {
+    jest.useRealTimers();
     global.fetch = realFetch;
   });
 
@@ -113,5 +114,42 @@ describe("finnhub allowlist resolution", () => {
     await getAllowedSymbols();
 
     expect(global.fetch).toHaveBeenCalledTimes(1);
+  });
+
+  it("coalesces a cold public fetch, aborts it on timeout, and can recover", async () => {
+    mockReadFileSync.mockImplementation(() => {
+      throw enoent();
+    });
+    process.env.URL = "https://isaacavazquez.com";
+    jest.useFakeTimers();
+    global.fetch = jest.fn().mockImplementation(
+      (_input: RequestInfo | URL, init?: RequestInit) =>
+        new Promise((_resolve, reject) => {
+          const signal = init?.signal;
+          signal?.addEventListener("abort", () => {
+            reject(new DOMException("aborted", "AbortError"));
+          });
+        }),
+    ) as unknown as typeof fetch;
+
+    const pending = Promise.allSettled([
+      getAllowedSymbols(),
+      getAllowedSymbols(),
+    ]);
+    expect(global.fetch).toHaveBeenCalledTimes(1);
+    jest.advanceTimersByTime(2_000);
+    const results = await pending;
+
+    expect(results).toHaveLength(2);
+    for (const result of results) {
+      expect(result.status).toBe("rejected");
+      if (result.status === "rejected") {
+        expect(result.reason).toBeInstanceOf(FinnhubAllowlistUnavailableError);
+      }
+    }
+
+    jest.useRealTimers();
+    mockPublicAsset(["AAPL"]);
+    await expect(getAllowedSymbols()).resolves.toEqual(new Set(["AAPL"]));
   });
 });

@@ -4,7 +4,6 @@
  * Used by both the API route (server-side) and useStockData hook (client-side)
  * to convert raw pre-fetched JSON into the shapes expected by UI components.
  */
-import type { DcfData } from "@/types/investment";
 import { getCuratedCompanyName } from "@/lib/investmentCompanyNames";
 
 type RawRecord = Record<string, unknown>;
@@ -204,7 +203,10 @@ export function transformSection(section: string, raw: unknown): unknown {
     section === "cash_flow"
   ) {
     const d = raw as { quarterly?: RawRecord[]; annual?: RawRecord[] };
-    return { quarterly: d.quarterly ?? [], annual: d.annual ?? [] };
+    return {
+      quarterly: Array.isArray(d.quarterly) ? d.quarterly : [],
+      annual: Array.isArray(d.annual) ? d.annual : [],
+    };
   }
 
   // --- news ---
@@ -227,7 +229,7 @@ export function transformSection(section: string, raw: unknown): unknown {
     }));
   }
 
-  // Pass through all other sections unchanged (price, officers, revenue_segments)
+  // Pass through all other sections unchanged (price and officers).
   return raw;
 }
 
@@ -269,73 +271,4 @@ export function transformIndustryWithStockValues(
       return { metric: label, value: stockValue, industryAvg };
     })
     .filter((r) => r.industryAvg !== undefined);
-}
-
-export function computeDcf(
-  waccRaw: unknown,
-  fundRaw: unknown,
-  growthRaw: unknown,
-  priceRaw: unknown,
-): DcfData {
-  if (!waccRaw || !fundRaw || !growthRaw || !priceRaw) {
-    return { error: "Insufficient data for DCF calculation" };
-  }
-
-  const waccArr = waccRaw as RawRecord[];
-  const waccRec = waccArr[waccArr.length - 1];
-  const wacc = waccRec?.wacc != null ? Number(waccRec.wacc) : undefined;
-
-  const fundData = fundRaw as Record<string, unknown[]>;
-  const baseFCF = latest(fundData.ttmEps, "tailing_eps");
-
-  const growthData = growthRaw as Record<string, unknown[]>;
-  const epsArr = growthData.quarterly_eps ?? [];
-  const latestEpsGrowthRec = [...epsArr]
-    .reverse()
-    .find((r: unknown) => (r as RawRecord).yoy_growth != null) as RawRecord | undefined;
-  const rawGrowth = latestEpsGrowthRec ? Number(latestEpsGrowthRec.yoy_growth) : 0;
-  const gShort = Math.max(-0.3, Math.min(0.5, rawGrowth));
-
-  const priceArr = priceRaw as RawRecord[];
-  const currentPrice =
-    priceArr.length > 0 ? Number(priceArr[priceArr.length - 1].close) : undefined;
-
-  if (!wacc || !baseFCF || !currentPrice) {
-    return { error: "Insufficient data for DCF calculation" };
-  }
-
-  const gTerminal = 0.03;
-  const effectiveWacc = Math.max(wacc, gTerminal + 0.01);
-
-  let fcf = baseFCF;
-  let pvSum = 0;
-  for (let i = 1; i <= 5; i++) {
-    const g = gShort + (gTerminal - gShort) * (i / 5);
-    fcf = fcf * (1 + g);
-    pvSum += fcf / Math.pow(1 + effectiveWacc, i);
-  }
-  const terminalValue = (fcf * (1 + gTerminal)) / (effectiveWacc - gTerminal);
-  const pvTerminal = terminalValue / Math.pow(1 + effectiveWacc, 5);
-  const fairValue = pvSum + pvTerminal;
-  const upside = ((fairValue - currentPrice) / currentPrice) * 100;
-  const recommendation = upside > 20 ? "Buy" : upside < -10 ? "Sell" : "Hold";
-
-  return {
-    fairValue: Math.round(fairValue * 100) / 100,
-    currentPrice: Math.round(currentPrice * 100) / 100,
-    upside: Math.round(upside * 100) / 100,
-    wacc: Math.round(effectiveWacc * 10000) / 100,
-    growthEstimates: {
-      "Near-term growth (Yrs 1-3)": Math.round(gShort * 10000) / 100,
-      "Terminal growth": 3.0,
-    },
-    recommendation,
-    // Raw assumptions behind the figures above, for an interactive client-side
-    // recompute (DCFPanel). Recomputing with these unchanged reproduces
-    // `fairValue` exactly — see dcfRecompute() in the panel.
-    baseFcf: Math.round(baseFCF * 10000) / 10000,
-    nearTermGrowthPct: Math.round(gShort * 10000) / 100,
-    terminalGrowthPct: Math.round(gTerminal * 10000) / 100,
-    years: 5,
-  };
 }

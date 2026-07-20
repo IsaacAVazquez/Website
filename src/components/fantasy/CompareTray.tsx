@@ -40,7 +40,7 @@ export function CompareTray({ resolvePlayer, publishedRank }: CompareTrayProps) 
             animate={{ opacity: 1, y: 0 }}
             exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: reduceMotion ? 0 : 0.2 }}
-            className="fixed inset-x-0 bottom-0 z-50 flex justify-center px-3 pb-3"
+            className="fixed inset-x-0 bottom-0 z-50 flex justify-center px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]"
           >
             <div
               className="flex w-full max-w-3xl flex-wrap items-center gap-2 rounded-[var(--radius-3xl)] border px-3 py-2.5"
@@ -64,7 +64,7 @@ export function CompareTray({ resolvePlayer, publishedRank }: CompareTrayProps) 
                       type="button"
                       onClick={() => compare.remove(player.id)}
                       aria-label={`Remove ${player.name} from compare`}
-                      className="inline-flex h-4 w-4 items-center justify-center rounded-full"
+                      className="-my-3 -mr-2 inline-flex h-11 w-11 items-center justify-center rounded-full"
                       style={{ background: "color-mix(in srgb, var(--home-ink) 12%, transparent)" }}
                     >
                       <X size={11} aria-hidden="true" />

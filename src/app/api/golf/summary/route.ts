@@ -1,10 +1,9 @@
 import { NextResponse } from "next/server";
 import { createEmptyGolfSummary, getGolfSummary } from "@/lib/golfSnapshot";
 import { logger } from "@/lib/logger";
+import { createSnapshotResponseHeaders } from "@/lib/snapshotResponse";
 
-const SUCCESS_CACHE_HEADERS = {
-  "Cache-Control": "public, max-age=300, stale-while-revalidate=900",
-};
+const SUCCESS_CACHE_CONTROL = "public, max-age=300, stale-while-revalidate=900";
 // Errors (4xx/5xx) must NOT be cached by the CDN — otherwise a transient
 // upstream failure poisons the cache for the full success TTL.
 const ERROR_CACHE_HEADERS = {
@@ -16,7 +15,12 @@ export async function GET() {
     const summary = await getGolfSummary();
 
     return NextResponse.json(summary, {
-      headers: SUCCESS_CACHE_HEADERS,
+      headers: createSnapshotResponseHeaders({
+        surface: "golf",
+        payload: summary,
+        sourceAsOf: summary.tournament?.generatedAt ?? null,
+        cacheControl: SUCCESS_CACHE_CONTROL,
+      }),
     });
   } catch (error) {
     const err = error as Error & { status?: number };

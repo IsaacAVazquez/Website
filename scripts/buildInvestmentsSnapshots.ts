@@ -1,7 +1,20 @@
 import { promises as fs } from "fs";
 import path from "path";
 import { buildInvestmentSnapshot } from "../src/lib/investmentSnapshot";
-import type { InvestmentsIndex } from "../src/types/investment";
+import {
+  getPriceAsOf,
+  mergeInvestmentSnapshots,
+  normalizeInvestmentSnapshot,
+} from "../src/lib/investmentFreshness";
+import {
+  buildInvestmentsPriceHealth,
+  isRecentInvestmentPrice,
+} from "../src/lib/investmentsPriceHealth";
+import type {
+  InvestmentIndexEntry,
+  InvestmentSnapshot,
+  InvestmentsIndex,
+} from "../src/types/investment";
 
 type RawSectionName =
   | "info"
@@ -54,6 +67,10 @@ const REQUIRED_RAW_SECTIONS: RawSectionName[] = [
   "beta",
   "price",
 ];
+const PRICE_HEALTH_MAX_AGE_DAYS = Number.parseInt(
+  process.env.MAX_PRICE_AGE_DAYS ?? "7",
+  10
+);
 
 async function readJson<T>(filePath: string): Promise<T | undefined> {
   try {
@@ -120,7 +137,13 @@ async function buildSymbolSnapshot(
     );
   }
 
-  const snapshot = buildInvestmentSnapshot(symbol, lastUpdated, rawSections);
+  const builtSnapshot = buildInvestmentSnapshot(symbol, lastUpdated, rawSections);
+  const priorSnapshot = await readJson<InvestmentSnapshot>(
+    path.join(PUBLIC_DIR, symbol, "snapshot.json")
+  );
+  const snapshot = priorSnapshot
+    ? mergeInvestmentSnapshots(builtSnapshot, priorSnapshot)
+    : builtSnapshot;
   const publicSymbolDir = path.join(PUBLIC_DIR, symbol);
   await fs.mkdir(publicSymbolDir, { recursive: true });
   await writeJsonAtomic(
@@ -132,6 +155,96 @@ async function buildSymbolSnapshot(
   // a full ~25-min Python re-fetch to recover. We keep the raw files in
   // data/investments-raw/ so a snapshot rebuild is a fast local-only
   // operation — and out of public/ so they never ship with a deploy.
+}
+
+async function sanitizeExistingSnapshot(symbol: string): Promise<void> {
+  const snapshotPath = path.join(PUBLIC_DIR, symbol, "snapshot.json");
+  const priorSnapshot = await readJson<InvestmentSnapshot>(snapshotPath);
+  if (!priorSnapshot) {
+    throw new Error(`Missing retained snapshot for stale symbol ${symbol}`);
+  }
+
+  const normalized = normalizeInvestmentSnapshot(priorSnapshot);
+  await writeJsonAtomic(snapshotPath, `${JSON.stringify(normalized, null, 2)}\n`);
+}
+
+async function enrichIndexPriceHealth(
+  index: InvestmentsIndex
+): Promise<InvestmentsIndex> {
+  const existingEntries = new Map(
+    (index.entries ?? []).map((entry) => [entry.symbol.toUpperCase(), entry])
+  );
+  const priceDates: Array<string | null> = [];
+
+  const entries = await Promise.all(
+    index.symbols.map(async (symbol): Promise<InvestmentIndexEntry> => {
+      const upperSymbol = symbol.toUpperCase();
+      const prior = existingEntries.get(upperSymbol);
+      const snapshot = await readJson<InvestmentSnapshot>(
+        path.join(PUBLIC_DIR, upperSymbol, "snapshot.json")
+      );
+      const priceAsOf =
+        snapshot?.freshness?.sections?.price ??
+        getPriceAsOf(snapshot?.sections?.price);
+      const isDelayed = !isRecentInvestmentPrice(
+        priceAsOf,
+        index.lastUpdated,
+        PRICE_HEALTH_MAX_AGE_DAYS
+      );
+      const hasRetainedSections =
+        (snapshot?.freshness?.retainedSections?.length ?? 0) > 0;
+      const retainedSections = snapshot?.freshness?.retainedSections ?? [];
+
+      priceDates.push(priceAsOf);
+
+      return {
+        symbol: upperSymbol,
+        shortName: prior?.shortName ?? upperSymbol,
+        longName: prior?.longName ?? prior?.shortName ?? upperSymbol,
+        searchText: prior?.searchText ?? upperSymbol.toLowerCase(),
+        // `stale` is reserved for a failed fetch recovered from an earlier
+        // snapshot. Delayed price data and retained optional sections are
+        // separate quality dimensions and must not rewrite fetch counts.
+        ...(prior?.stale && prior.asOf ? { stale: true } : {}),
+        ...(isDelayed ? { priceDelayed: true } : {}),
+        ...(hasRetainedSections
+          ? { partial: true, retainedSections }
+          : {}),
+        ...(prior?.asOf ? { asOf: prior.asOf } : {}),
+        ...(priceAsOf ? { priceAsOf } : {}),
+      };
+    })
+  );
+
+  const priceHealth = buildInvestmentsPriceHealth(
+    priceDates,
+    index.lastUpdated,
+    PRICE_HEALTH_MAX_AGE_DAYS
+  );
+  const derivedStaleCount = entries.filter((entry) => entry.stale).length;
+  const reportedFreshCount = index.freshCount;
+  const reportedStaleCount = index.staleCount;
+  const countsReconcile =
+    typeof reportedStaleCount === "number" &&
+    Number.isInteger(reportedStaleCount) &&
+    typeof reportedFreshCount === "number" &&
+    Number.isInteger(reportedFreshCount) &&
+    reportedStaleCount === derivedStaleCount &&
+    reportedFreshCount + reportedStaleCount === entries.length;
+  const staleCount = countsReconcile ? reportedStaleCount : derivedStaleCount;
+  const freshCount = countsReconcile
+    ? reportedFreshCount
+    : Math.max(0, entries.length - staleCount);
+  const partialCount = entries.filter((entry) => entry.partial).length;
+
+  return {
+    ...index,
+    freshCount,
+    staleCount,
+    partialCount,
+    entries,
+    priceHealth,
+  };
 }
 
 async function main() {
@@ -146,7 +259,7 @@ async function main() {
   // non-zero exit code so CI does not silently pass a partial refresh.
   const staleSymbols = new Set(
     (index.entries ?? [])
-      .filter((entry) => entry.stale)
+      .filter((entry) => entry.stale && entry.asOf)
       .map((entry) => entry.symbol.toUpperCase())
   );
 
@@ -155,10 +268,31 @@ async function main() {
       if (staleSymbols.has(symbol.toUpperCase())) {
         // The latest provider fetch failed. Keep the committed snapshot and its
         // original per-section timestamps rather than rebuilding old raw files
-        // with this run's global `lastUpdated` value.
+        // with this run's global `lastUpdated` value. Re-normalize the retained
+        // artifact so legacy error placeholders and retired sections cannot
+        // remain reachable through the public static file.
         console.warn(
           `[${symbol}] Latest fetch failed — keeping the existing snapshot and freshness metadata.`
         );
+        await sanitizeExistingSnapshot(symbol);
+        return;
+      }
+      const rawPrice = await readJson<unknown>(
+        path.join(RAW_DIR, symbol, "price.json")
+      );
+      const rawPriceAsOf = getPriceAsOf(rawPrice);
+      if (
+        rawPrice !== undefined &&
+        !isRecentInvestmentPrice(
+          rawPriceAsOf,
+          index.lastUpdated,
+          PRICE_HEALTH_MAX_AGE_DAYS
+        )
+      ) {
+        console.warn(
+          `[${symbol}] Raw price history is delayed (${rawPriceAsOf ?? "missing"}) — retaining the existing snapshot.`
+        );
+        await sanitizeExistingSnapshot(symbol);
         return;
       }
       await buildSymbolSnapshot(symbol, index.lastUpdated);
@@ -183,6 +317,12 @@ async function main() {
     );
     process.exitCode = 1;
   }
+
+  const enrichedIndex = await enrichIndexPriceHealth(index);
+  await writeJsonAtomic(
+    path.join(PUBLIC_DIR, "index.json"),
+    `${JSON.stringify(enrichedIndex, null, 2)}\n`
+  );
 }
 
 main().catch((error) => {

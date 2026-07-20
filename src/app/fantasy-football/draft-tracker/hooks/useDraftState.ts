@@ -142,6 +142,7 @@ export const useDraftState = () => {
   });
 
   const [isLoaded, setIsLoaded] = useState(false);
+  const [persistenceError, setPersistenceError] = useState<string | null>(null);
 
   // Load from localStorage on mount
   useEffect(() => {
@@ -158,7 +159,15 @@ export const useDraftState = () => {
         // Ignore — localStorage may be disabled or full; we'll just skip.
       }
 
-      const saved = localStorage.getItem(FANTASY_DRAFT_STORAGE_KEY);
+      let saved: string | null = null;
+      try {
+        saved = localStorage.getItem(FANTASY_DRAFT_STORAGE_KEY);
+      } catch {
+        // The tracker remains fully usable in memory when browser storage is
+        // blocked. Surface that limitation instead of letting the page crash.
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- report an external storage failure detected during hydration
+        setPersistenceError("This draft is running in this tab, but your browser is blocking local saves.");
+      }
       if (saved) {
         try {
           const parsedState = JSON.parse(saved) as PersistedDraftState;
@@ -217,7 +226,6 @@ export const useDraftState = () => {
                 ? parsedState.draftId
                 : defaults.draftId,
           };
-          // eslint-disable-next-line react-hooks/set-state-in-effect
           setDraftState(merged);
         } catch (error) {
           console.error('Error loading draft state from localStorage:', error);
@@ -238,7 +246,12 @@ export const useDraftState = () => {
   useEffect(() => {
     if (isLoaded && typeof window !== 'undefined') {
       const saveState = { ...draftState };
-      localStorage.setItem(FANTASY_DRAFT_STORAGE_KEY, JSON.stringify(saveState));
+      try {
+        localStorage.setItem(FANTASY_DRAFT_STORAGE_KEY, JSON.stringify(saveState));
+      } catch {
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- report an external storage failure detected while persisting
+        setPersistenceError("This draft is running in this tab, but changes cannot be saved locally.");
+      }
     }
   }, [draftState, isLoaded]);
 
@@ -271,7 +284,10 @@ export const useDraftState = () => {
   const draftPlayer = useCallback((player: Player) => {
     setDraftState(prev => {
       const totalPicks = prev.settings.totalTeams * prev.settings.rounds;
-      if (prev.currentPick > totalPicks) {
+      if (
+        prev.currentPick > totalPicks ||
+        prev.picks.some((pick) => pick.player.id === player.id)
+      ) {
         return prev;
       }
 
@@ -375,6 +391,7 @@ export const useDraftState = () => {
       if (prev.currentPick > totalPicks) return prev;
 
       const player = prev.undoHistory[prev.undoHistory.length - 1].player;
+      if (prev.picks.some((pick) => pick.player.id === player.id)) return prev;
       const currentTeam = calculateDraftOrder(prev.currentPick, prev.settings.totalTeams, prev.settings.draftType);
       const currentRound = calculateCurrentRound(prev.currentPick, prev.settings.totalTeams);
 
@@ -606,8 +623,10 @@ export const useDraftState = () => {
 
   const currentTeamName = useMemo(() => {
     if (isDraftComplete) return 'Draft Complete';
-    return currentTeamNumber === draftState.settings.userTeam ? 'Your Turn' : `Team ${currentTeamNumber}`;
-  }, [currentTeamNumber, draftState.settings.userTeam, isDraftComplete]);
+    const resolvedName = resolveTeamName(currentTeamNumber);
+    if (currentTeamNumber !== draftState.settings.userTeam) return resolvedName;
+    return resolvedName === `Team ${currentTeamNumber}` ? 'Your Turn' : `${resolvedName} (you)`;
+  }, [currentTeamNumber, draftState.settings.userTeam, isDraftComplete, resolveTeamName]);
 
   const userTeam = useMemo(() => {
     return draftState.teams.find(team => team.teamNumber === draftState.settings.userTeam);
@@ -634,5 +653,6 @@ export const useDraftState = () => {
     currentTeamName,
     userTeam,
     isLoaded,
+    persistenceError,
   };
 };

@@ -6,10 +6,8 @@ import {
   isWorldCupTeamIdShape,
 } from "@/lib/worldCupSnapshot";
 import { logger } from "@/lib/logger";
+import { createSnapshotResponseHeaders } from "@/lib/snapshotResponse";
 
-const SUCCESS_CACHE_HEADERS = {
-  "Cache-Control": "public, max-age=300, stale-while-revalidate=900",
-};
 // Errors (4xx/5xx) must NOT be cached by the CDN. Distinguishes 400 (bad input)
 // from 404 (valid input, unknown id).
 const ERROR_CACHE_HEADERS = {
@@ -41,7 +39,14 @@ export async function GET(
 
   try {
     const snapshot = await getWorldCupTeamSnapshot(teamId);
-    return NextResponse.json(snapshot, { headers: SUCCESS_CACHE_HEADERS });
+    return NextResponse.json(snapshot, {
+      headers: createSnapshotResponseHeaders({
+        surface: "world-cup",
+        payload: snapshot,
+        sourceAsOf: snapshot.generatedAt,
+        cacheControl: "public, max-age=300, stale-while-revalidate=900",
+      }),
+    });
   } catch (error) {
     const err = error as Error & { status?: number };
     if ((err.status ?? 500) >= 500) {

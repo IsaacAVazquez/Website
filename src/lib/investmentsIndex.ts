@@ -49,6 +49,12 @@ export function normalizeInvestmentIndexEntry(
       rawSearchText === symbolOnlySearchText ? fallbackSearchText : rawSearchText,
     ...(entry.stale ? { stale: true } : {}),
     ...(entry.asOf ? { asOf: entry.asOf } : {}),
+    ...(entry.priceAsOf ? { priceAsOf: entry.priceAsOf } : {}),
+    ...(entry.priceDelayed ? { priceDelayed: true } : {}),
+    ...(entry.partial ? { partial: true } : {}),
+    ...(entry.retainedSections?.length
+      ? { retainedSections: [...entry.retainedSections] }
+      : {}),
   };
 }
 
@@ -77,15 +83,25 @@ export function normalizeInvestmentsIndex(index: InvestmentsIndex): InvestmentsI
         searchText: entry.searchText,
         stale: entry.stale,
         asOf: entry.asOf,
+        priceAsOf: entry.priceAsOf,
+        priceDelayed: entry.priceDelayed,
+        partial: entry.partial,
+        retainedSections: entry.retainedSections,
       })
     );
   });
 
+  const entries = index.symbols
+    .map((symbol) => bySymbol.get(symbol.trim().toUpperCase()))
+    .filter((entry): entry is InvestmentIndexEntry => !!entry);
+  const derivedStaleCount = entries.filter((entry) => entry.stale).length;
+
   return {
     ...index,
     symbols: index.symbols.map((symbol) => symbol.trim().toUpperCase()),
-    entries: index.symbols
-      .map((symbol) => bySymbol.get(symbol.trim().toUpperCase()))
-      .filter((entry): entry is InvestmentIndexEntry => !!entry),
+    freshCount: index.freshCount ?? Math.max(0, entries.length - derivedStaleCount),
+    staleCount: index.staleCount ?? derivedStaleCount,
+    partialCount: index.partialCount ?? entries.filter((entry) => entry.partial).length,
+    entries,
   };
 }

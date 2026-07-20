@@ -1,13 +1,23 @@
 import {
   FANTASY_COMPARE_LIMIT,
   FANTASY_NOTE_MAX_LENGTH,
+  FANTASY_QUEUE_STORAGE_KEY,
+  loadIdList,
   parseIdList,
   parseNotes,
   reorderIds,
+  saveIdList,
   setNoteEntry,
   toggleId,
   toggleIdCapped,
 } from "@/lib/fantasyLocal";
+import { resetBrowserStorageMemory } from "@/lib/browserStorage";
+
+afterEach(() => {
+  resetBrowserStorageMemory();
+  localStorage.clear();
+  jest.restoreAllMocks();
+});
 
 describe("fantasyLocal id lists", () => {
   it("parses a clean list and de-duplicates preserving order", () => {
@@ -41,6 +51,16 @@ describe("fantasyLocal id lists", () => {
     // Out-of-range source is a no-op (same reference).
     const list = ["a", "b"];
     expect(reorderIds(list, 5, 0)).toBe(list);
+  });
+
+  it("keeps queue writes in memory when durable storage is blocked", () => {
+    jest.spyOn(Storage.prototype, "setItem").mockImplementation(() => {
+      throw new DOMException("blocked", "QuotaExceededError");
+    });
+
+    saveIdList(FANTASY_QUEUE_STORAGE_KEY, ["a", "b"]);
+
+    expect(loadIdList(FANTASY_QUEUE_STORAGE_KEY)).toEqual(["a", "b"]);
   });
 });
 

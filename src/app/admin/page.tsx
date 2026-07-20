@@ -6,6 +6,7 @@ import { useSession, signOut, signIn } from 'next-auth/react';
 import { IconLogout, IconLock } from '@tabler/icons-react';
 import { ModernButton } from '@/components/ui/ModernButton';
 import { WarmCard } from '@/components/ui/WarmCard';
+import { LocalDataBackupCard } from '@/components/admin/LocalDataBackupCard';
 
 const FANTASY_WORKFLOW_URL =
   'https://github.com/IsaacAVazquez/Website/actions/workflows/update-fantasy.yml';
@@ -158,7 +159,7 @@ export default function AdminPage() {
             <p className="home-kicker mb-2">Fantasy Football</p>
             <h2 className="text-xl font-semibold mb-2">Published rankings snapshot</h2>
             <p className="text-sm mb-4" style={{ color: 'var(--home-ink-muted)' }}>
-              Rankings are built from FantasyPros public cheatsheets and committed as static JSON. Refresh runs weekly on Wednesdays; trigger manually via{' '}
+              Rankings are built from FantasyPros public cheatsheets and committed as static JSON. Refresh runs daily during draft season and weekly outside it; trigger manually via{' '}
               <code className="text-xs">workflow_dispatch</code>.
             </p>
             <a
@@ -176,7 +177,7 @@ export default function AdminPage() {
             <p className="home-kicker mb-2">Football Dashboards</p>
             <h2 className="text-xl font-semibold mb-2">Premier League & La Liga</h2>
             <p className="text-sm mb-4" style={{ color: 'var(--home-ink-muted)' }}>
-              League data refreshes on a schedule via the football-data.org API. Team-level snapshots (sidebar fixtures, form strip) require a manual local run.
+              League data refreshes every four hours during the season via the football-data.org API. Team-level snapshots (sidebar fixtures, form strip) require a manual local run.
             </p>
             <a
               href={FOOTBALL_WORKFLOW_URL}
@@ -188,6 +189,8 @@ export default function AdminPage() {
               Open GitHub Actions workflow →
             </a>
           </article>
+
+          <LocalDataBackupCard />
         </div>
       </div>
     </div>

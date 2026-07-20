@@ -32,6 +32,7 @@
     "update:world-cup": "tsx scripts/buildWorldCupSnapshot.ts",
     "update:bay-area-transit": "tsx scripts/buildBayAreaTransitSnapshot.ts",
     "update:frontier-models": "tsx scripts/buildFrontierModelsSnapshot.ts",
+    "update:polling": "tsx scripts/buildPollingSnapshot.ts",
     "update:github-trending": "tsx scripts/buildGitHubTrendingSnapshot.ts",
     "update:tech-startups": "tsx scripts/buildTechStartupSnapshot.ts",
     "update:score-pools": "tsx scripts/buildScorePoolsSnapshot.ts",
@@ -44,6 +45,7 @@
     "generate:icons": "node scripts/generate-pwa-icons.mjs"
   },
   "dependencies": {
+    "@netlify/blobs": "^10.7.9",
     "@radix-ui/react-dropdown-menu": "^2.1.18",
     "@radix-ui/react-slot": "^1.2.4",
     "@tabler/icons-react": "^3.41.1",

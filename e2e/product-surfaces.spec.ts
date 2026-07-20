@@ -1,9 +1,14 @@
 import { expect, test, type Page } from "@playwright/test";
 
 async function expectHealthyRoute(page: Page, path: string, h1: RegExp) {
-  const response = await page.goto(path);
+  // A parallel local Next dev server can abort one navigation while another
+  // route finishes compiling. Retry that development-only handoff once the
+  // server settles; production E2E runs do not need the retry.
+  await expect(async () => {
+    const response = await page.goto(path);
+    expect(response?.status()).toBeLessThan(400);
+  }).toPass({ timeout: 30_000 });
 
-  expect(response?.status()).toBeLessThan(400);
   await expect(page.getByRole("heading", { level: 1, name: h1 })).toBeVisible();
   await expect(page.locator("h1")).toHaveCount(1);
 }
@@ -74,10 +79,8 @@ test.describe("Product surfaces", () => {
     page,
   }) => {
     await expectHealthyRoute(page, "/polling-aggregator?view=senate", /Polling Aggregator/i);
-    await expect(page.getByRole("button", { name: /^Senate$/i })).toHaveAttribute(
-      "aria-pressed",
-      "true"
-    );
+    await expect(page).toHaveURL(/view=senate/);
+    await expect(page.getByRole("heading", { level: 2, name: /Senate Races/i })).toBeVisible();
     await expect(page.getByRole("table", { name: /Senate race ratings/i })).toBeVisible();
     await expectNoHorizontalOverflow(page);
 
@@ -96,9 +99,15 @@ test.describe("Product surfaces", () => {
 
     // The mission detail panel is a drawer that opens when a mission is
     // selected (the page is a launch board, not an always-open detail view),
-    // so select the first mission card and confirm the drawer renders.
-    await page.locator('[data-testid^="mission-card-"]').first().click();
-    await expect(page.getByTestId("mission-detail-panel")).toBeVisible();
+    // so select the first mission card and confirm the drawer renders. The
+    // parallel dev server can perform a one-time Fast Refresh reload while it
+    // compiles another route, so retry the interaction if that clears state.
+    await expect(async () => {
+      await page.locator('[data-testid^="mission-card-"]').first().click();
+      await expect(page.getByTestId("mission-detail-panel")).toBeVisible({
+        timeout: 5_000,
+      });
+    }).toPass({ timeout: 20_000 });
   });
 
   test("fintech tools accept calculator and ledger input", async ({ page }) => {

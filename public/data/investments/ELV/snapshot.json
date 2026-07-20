@@ -22,7 +22,6 @@
     "industry": true,
     "beta": false,
     "news": false,
-    "dcf": false,
     "officers": true,
     "compare": true
   },

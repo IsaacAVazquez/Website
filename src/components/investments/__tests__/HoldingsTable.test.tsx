@@ -34,6 +34,7 @@ function makeHolding(overrides: Partial<EnhancedHolding> = {}): EnhancedHolding 
     dayChangePercent: 2.11,
     allocationPercent: 60,
     name: "Apple Inc.",
+    priceSource: "live",
     isLoading: false,
     ...overrides,
   };
@@ -75,6 +76,16 @@ describe("HoldingsTable", () => {
     // signed gain uses a "+" prefix
     expect(screen.getByText("+$481.20")).toBeInTheDocument();
     expect(screen.getByText("+32.08%")).toBeInTheDocument();
+  });
+
+  it("labels saved quotes and cost-basis substitutions", () => {
+    renderTable([
+      makeHolding({ symbol: "AAPL", priceSource: "saved" }),
+      makeHolding({ symbol: "MSFT", priceSource: "costBasis" }),
+    ]);
+
+    expect(screen.getByText("Saved quote")).toBeInTheDocument();
+    expect(screen.getByText("Cost basis")).toBeInTheDocument();
   });
 
   it("pluralizes the position count in the panel header", () => {

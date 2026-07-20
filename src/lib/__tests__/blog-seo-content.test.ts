@@ -104,6 +104,17 @@ describe("World Cup blog content rules", () => {
         continue;
       }
 
+      if (data.coverImage === `/images/writing/covers/${slug}.jpg`) {
+        expect(data.coverImageAlt).toEqual(expect.any(String));
+        expect(data.coverImageCredit).toEqual(
+          expect.stringContaining("Wikimedia Commons")
+        );
+        expect(data.coverImageCreditUrl).toEqual(
+          expect.stringMatching(/^https:\/\/commons\.wikimedia\.org\/wiki\/File:/)
+        );
+        continue;
+      }
+
       expect(data.coverImage).toBe(`/writing/${slug}/opengraph-image`);
     }
   });

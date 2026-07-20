@@ -27,6 +27,7 @@ export interface UseLiveQuoteReturn extends UseLiveQuoteState {
 }
 
 const QUOTE_TTL_MS = 60 * 1000;
+const MAX_CURRENT_QUOTE_AGE_MS = 4 * 24 * 60 * 60 * 1000;
 const quoteCache = new Map<string, CachedQuote>();
 const inflightQuotes = new Map<string, Promise<CachedQuote>>();
 
@@ -41,6 +42,7 @@ type LiveQuoteAction =
   | { type: "reset" }
   | { type: "start"; preserveQuote: boolean }
   | { type: "success"; entry: CachedQuote }
+  | { type: "expire" }
   | { type: "error"; message: string; preserveQuote: boolean };
 
 function liveQuoteReducer(
@@ -70,13 +72,19 @@ function liveQuoteReducer(
         error: action.entry.quote.error ?? null,
         lastUpdated: action.entry.lastUpdated,
       };
+    case "expire":
+      if (!state.quote || state.quote.isFallback) return state;
+      return {
+        ...state,
+        quote: { ...state.quote, isFallback: true },
+      };
     case "error":
       if (action.preserveQuote && state.quote) {
-        // Keep showing the last good quote, but don't swallow the failure —
-        // consumers gate values on `quote && !quote.error`, so surfacing the
-        // hook-level error only feeds the freshness messaging.
+        // Keep showing the last good value, but mark it as saved so consumers
+        // cannot present its old day move as a current market response.
         return {
           ...state,
+          quote: { ...state.quote, isFallback: true },
           isLoading: false,
           error: action.message,
         };
@@ -111,7 +119,7 @@ async function fetchQuote(symbol: string): Promise<CachedQuote> {
       try {
         payload = (await response.json()) as QuotePayload;
       } catch {
-        payload = null;
+        // Keep the default null payload so the generic provider error is used.
       }
 
       if (!response.ok) {
@@ -124,23 +132,40 @@ async function fetchQuote(symbol: string): Promise<CachedQuote> {
         throw new Error(
           typeof message === "string" && message.length > 0
             ? message
-            : "Live pricing is temporarily unavailable."
+            : "Market quote is temporarily unavailable."
         );
       }
 
       const quote = payload?.quotes?.find((item) => item.symbol === upperSymbol);
 
       if (!quote) {
-        throw new Error("Live pricing is temporarily unavailable.");
+        throw new Error("Market quote is temporarily unavailable.");
       }
 
       if (quote.error) {
         throw new Error(quote.error);
       }
 
+      if (quote.source !== "finnhub") {
+        throw new Error("Market quote source could not be verified.");
+      }
+
+      const sourceTimestamp = quote.asOf ? Date.parse(quote.asOf) : Number.NaN;
+      const ageMs = Date.now() - sourceTimestamp;
+      if (
+        !Number.isFinite(sourceTimestamp) ||
+        ageMs < -5 * 60 * 1000 ||
+        ageMs > MAX_CURRENT_QUOTE_AGE_MS
+      ) {
+        throw new Error("Market quote is not current enough to display.");
+      }
+
       const cachedEntry: CachedQuote = {
         quote,
-        lastUpdated: payload?.timestamp ?? new Date().toISOString(),
+        // Prefer the provider's market timestamp. The top-level payload time is
+        // only when this API response was assembled and must not make an old
+        // or after-hours quote look newly traded.
+        lastUpdated: quote.asOf ?? payload?.timestamp ?? null,
         fetchedAt: Date.now(),
       };
 
@@ -197,7 +222,7 @@ export function useLiveQuote(symbol: string | null): UseLiveQuoteReturn {
           message:
             error instanceof Error
               ? error.message
-              : "Live pricing is temporarily unavailable.",
+              : "Market quote is temporarily unavailable.",
           preserveQuote,
         });
       });
@@ -206,6 +231,46 @@ export function useLiveQuote(symbol: string | null): UseLiveQuoteReturn {
       cancelled = true;
     };
   }, [fetchKey, symbol]);
+
+  useEffect(() => {
+    if (!symbol) return;
+    const upperSymbol = symbol.toUpperCase();
+    const revalidate = () => {
+      if (document.visibilityState === "hidden") return;
+      if (inflightQuotes.has(upperSymbol)) return;
+      const cached = quoteCache.get(upperSymbol);
+      if (cached && Date.now() - cached.fetchedAt < QUOTE_TTL_MS) return;
+      setFetchKey((current) => current + 1);
+    };
+
+    const intervalId = window.setInterval(revalidate, QUOTE_TTL_MS);
+    window.addEventListener("focus", revalidate);
+    document.addEventListener("visibilitychange", revalidate);
+    return () => {
+      window.clearInterval(intervalId);
+      window.removeEventListener("focus", revalidate);
+      document.removeEventListener("visibilitychange", revalidate);
+    };
+  }, [symbol]);
+
+  useEffect(() => {
+    const sourceTimestamp = state.quote?.asOf
+      ? Date.parse(state.quote.asOf)
+      : Number.NaN;
+    if (
+      !state.quote ||
+      state.quote.isFallback ||
+      !Number.isFinite(sourceTimestamp)
+    ) {
+      return;
+    }
+    const remainingMs = sourceTimestamp + MAX_CURRENT_QUOTE_AGE_MS - Date.now();
+    const timeoutId = window.setTimeout(
+      () => dispatch({ type: "expire" }),
+      Math.max(0, remainingMs),
+    );
+    return () => window.clearTimeout(timeoutId);
+  }, [state.quote]);
 
   const refetch = useCallback(() => {
     if (!symbol) return;

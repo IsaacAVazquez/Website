@@ -10,7 +10,6 @@ import { formatHistoryAsOf, getHistoricalPriceFreshness } from "@/lib/investment
 import type {
   BetaData,
   CompanyInfo,
-  DcfData,
   Fundamentals,
   MarginsData,
   PriceData,
@@ -72,7 +71,6 @@ function MetricRow({ label, value, tone = "default" }: { label: string; value: s
 export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false }: Props) {
   const { data: info } = useStockData<CompanyInfo>(symbol || null, "info");
   const { data: fundamentals } = useStockData<Fundamentals>(symbol || null, "fundamentals");
-  const { data: dcf } = useStockData<DcfData>(symbol || null, "dcf");
   const { data: profitability } = useStockData<Profitability>(symbol || null, "profitability");
   const { data: marginsRaw } = useStockData<MarginsData>(symbol || null, "margins");
   const { data: beta } = useStockData<BetaData>(symbol || null, "beta");
@@ -107,27 +105,11 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
   const displayedDayChangePercent = quote && !quote.error ? quote.changePercent : undefined;
   const displayName = (!quote?.error ? quote?.name : undefined) ?? info?.longName ?? info?.shortName ?? "";
 
-  const stance = dcf?.recommendation ?? null;
-  const stanceTone = stance
-    ? stance.toLowerCase().includes("buy")
-      ? "positive"
-      : stance.toLowerCase().includes("sell")
-        ? "negative"
-        : "default"
-    : "default";
-  const stanceColorClass =
-    stanceTone === "positive"
-      ? "text-[color-mix(in_srgb,var(--home-positive)_70%,var(--home-ink))]"
-      : stanceTone === "negative"
-        ? "text-[color-mix(in_srgb,var(--home-negative)_70%,var(--home-ink))]"
-        : "text-[var(--home-ink-muted)]";
-
   const priceFreshnessMode = livePrice !== undefined ? "live" : "dataset";
   const priceFreshnessLastUpdated = livePrice !== undefined ? liveQuoteLastUpdated : historicalPriceAsOf;
   const dataFreshnessLastUpdated = snapshotBuiltAt ?? datasetLastUpdated;
 
-  const dcfUpside = dcf?.upside;
-  const effectiveWacc = dcf?.wacc ?? wacc?.wacc;
+  const effectiveWacc = wacc?.wacc;
 
   return (
     <div className="space-y-3">
@@ -154,19 +136,14 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
 
       {symbol ? (
         <>
-          {/* Company identity + stance */}
+          {/* Company identity */}
           <div className="rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 ">
             <p className="text-sm font-semibold leading-snug text-[var(--home-ink)]">
               {[displayName || symbol, symbol !== (displayName || symbol) ? symbol : null, info?.sector, info?.industry].filter(Boolean).join(" · ")}
             </p>
-            {stance ? (
-              <p className={`mt-2 text-base font-bold ${stanceColorClass}`}>
-                {stance}
-              </p>
-            ) : null}
           </div>
 
-          {/* Live price */}
+          {/* Market quote */}
           <div className="rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 ">
             <p className="mb-2 text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
               Latest Price
@@ -200,7 +177,7 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
                 ? `Historical chart through ${formatHistoryAsOf(historicalPriceAsOf)}.`
                 : historicalPriceAsOf
                   ? `Showing the latest saved close from ${formatHistoryAsOf(historicalPriceAsOf)}.`
-                  : "Live pricing is temporarily unavailable."}
+                  : "Market quote is temporarily unavailable."}
             </p>
             {quoteError ? (
               <p className="mt-1 text-2xs font-medium text-[var(--home-warning)]">
@@ -231,12 +208,6 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
               <MetricRow label="Net Margin" value={fmtN(margins?.netMargin, "percent", 1)} />
               <MetricRow label="FCF Margin" value={fmtN(margins?.fcfMargin, "percent", 1)} />
               <MetricRow label="ROIC" value={fmtN(profitability?.roic, "percent", 1)} />
-              <MetricRow
-                label="DCF Upside"
-                value={fmtSigned(dcfUpside)}
-                tone={dcfUpside !== undefined ? (dcfUpside > 0 ? "positive" : dcfUpside < -5 ? "negative" : "default") : "default"}
-              />
-              <MetricRow label="Fair Value" value={fmtN(dcf?.fairValue, "currency")} />
               <MetricRow label="WACC" value={fmtN(effectiveWacc, "percent", 1)} />
               <MetricRow
                 label="52W Range"

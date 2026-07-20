@@ -152,6 +152,14 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
     });
   }, [data, symbolA, symbolB, resolvedTheme]);
 
+  if (data.length < 3) {
+    return (
+      <p className="py-12 text-center text-sm text-[var(--home-ink-muted)]">
+        There are not enough shared, verified metrics to draw this comparison.
+      </p>
+    );
+  }
+
   return (
     <div className="flex flex-col items-center gap-3">
       <svg

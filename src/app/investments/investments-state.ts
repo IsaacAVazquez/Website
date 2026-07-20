@@ -7,7 +7,6 @@ export type ResearchTab =
   | "growth"
   | "valuation"
   | "industry"
-  | "dcf"
   | "chart"
   | "compare";
 
@@ -36,7 +35,6 @@ const VALID_SECTIONS = new Set<ResearchTab>([
   "growth",
   "valuation",
   "industry",
-  "dcf",
   "chart",
   "compare",
 ]);

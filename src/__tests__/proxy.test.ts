@@ -1,7 +1,7 @@
 /** @jest-environment node */
 
 import { NextRequest } from "next/server";
-import { proxy, config } from "@/proxy";
+import { buildContentSecurityPolicy, proxy, config } from "@/proxy";
 
 describe("proxy security headers", () => {
   it("keeps CSP enabled for HTML routes without analytics vendor domains", () => {
@@ -26,5 +26,22 @@ describe("proxy security headers", () => {
     expect(response.headers.get("location")).toBe("https://example.com/writing/example-post");
     expect(response.headers.get("Content-Security-Policy")).toContain("default-src 'self'");
     expect(response.headers.get("X-Frame-Options")).toBe("DENY");
+  });
+
+  it("only upgrades subresources for browser-facing HTTPS requests", () => {
+    const localRequest = new NextRequest(
+      "http://localhost:3000/fantasy-football",
+    );
+    const forwardedRequest = new NextRequest(
+      "http://internal:3000/fantasy-football",
+      { headers: { "x-forwarded-proto": "https" } },
+    );
+
+    expect(buildContentSecurityPolicy(localRequest, true)).not.toContain(
+      "upgrade-insecure-requests",
+    );
+    expect(buildContentSecurityPolicy(forwardedRequest, true)).toContain(
+      "upgrade-insecure-requests",
+    );
   });
 });

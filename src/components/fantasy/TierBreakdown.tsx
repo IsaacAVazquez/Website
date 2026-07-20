@@ -189,7 +189,7 @@ export function TierBreakdown({
                         {...(interactive
                           ? { type: "button" as const, onClick: () => onSelectPlayer?.(player), "aria-label": `Open ${player.name} detail` }
                           : {})}
-                        className={`grid min-h-[38px] min-w-0 flex-1 grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 rounded-full px-3 py-1.5 text-sm ${
+                        className={`grid min-h-touch min-w-0 flex-1 grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 rounded-full px-3 py-1.5 text-sm ${
                           interactive ? "text-left" : ""
                         }`}
                         style={{ color: "var(--home-ink)" }}

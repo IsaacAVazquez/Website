@@ -129,6 +129,8 @@ const visaSnapshot = {
   },
 };
 
+const currentQuoteAsOf = new Date().toISOString();
+
 const quotesBySymbol = {
   AAPL: {
     symbol: "AAPL",
@@ -142,6 +144,8 @@ const quotesBySymbol = {
     volume: 1000000,
     marketCap: 0,
     name: "Apple Inc.",
+    asOf: currentQuoteAsOf,
+    source: "finnhub",
   },
   V: {
     symbol: "V",
@@ -155,6 +159,8 @@ const quotesBySymbol = {
     volume: 2500000,
     marketCap: 0,
     name: "Visa Inc.",
+    asOf: currentQuoteAsOf,
+    source: "finnhub",
   },
 } as const;
 
@@ -247,7 +253,7 @@ test.describe("Investments", () => {
     await expect(page.getByRole("textbox", { name: /search stock symbol/i })).toHaveValue("V");
     await expect(page.getByText("Visa Inc.")).toBeVisible();
     await expect(page.getByText("$352.45")).toBeVisible();
-    await expect(page.getByText(/live quote/i).first()).toBeVisible();
+    await expect(page.getByText(/latest market quote/i).first()).toBeVisible();
 
     await page.getByRole("tab", { name: /^chart$/i }).click();
     await expect(page).toHaveURL(/section=chart/);
@@ -363,7 +369,7 @@ test.describe("Investments", () => {
     await expect(page.getByText("$340.12")).toBeVisible();
     await expect(page.getByText(/price as of feb 27, 2026/i)).toBeVisible();
     await expect(page.getByText(/showing the latest saved close from feb 27, 2026/i)).toBeVisible();
-    await expect(page.getByText(/live pricing is temporarily unavailable/i)).toBeVisible();
+    await expect(page.getByText(/market quote is temporarily unavailable/i)).toBeVisible();
     await expect(page.getByText(/^Unavailable$/)).toHaveCount(0);
   });
 

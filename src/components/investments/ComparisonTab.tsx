@@ -10,7 +10,6 @@ import type {
   Profitability,
   MarginsData,
   BetaData,
-  DcfData,
   InvestmentsIndex,
 } from "@/types/investment";
 
@@ -84,17 +83,17 @@ function fmt(v: number | null | undefined, style: "decimal" | "percent" | "curre
 //   P/E, P/S, P/B  → raw ratio  (25 = 25×)
 //   ROE/ROA/margin → percentage (25 = 25%)
 //   Beta           → decimal    (1.2)
-//   Growth/DCF     → percentage (20 = 20%)
+//   Growth         → percentage (20 = 20%)
 
-function avg(scores: number[]): number {
-  return scores.length === 0 ? 50 : scores.reduce((a, b) => a + b, 0) / scores.length;
+function avg(scores: number[]): number | null {
+  return scores.length === 0 ? null : scores.reduce((a, b) => a + b, 0) / scores.length;
 }
 
 function scoreValuation(
   pe: number | null | undefined,
   ps: number | null | undefined,
   pb: number | null | undefined,
-): number {
+): number | null {
   const scores: number[] = [];
   if (pe != null && isFinite(pe) && pe > 0) {
     scores.push(pe < 10 ? 95 : pe < 15 ? 82 : pe < 20 ? 68 : pe < 30 ? 52 : pe < 45 ? 35 : pe < 70 ? 20 : 8);
@@ -108,8 +107,8 @@ function scoreValuation(
   return avg(scores);
 }
 
-function scoreGrowth(growthRate: number | null): number {
-  if (growthRate == null || !isFinite(growthRate)) return 50;
+function scoreGrowth(growthRate: number | null): number | null {
+  if (growthRate == null || !isFinite(growthRate)) return null;
   // growthRate is in percentage units (e.g. 25 = 25%)
   return growthRate > 30 ? 95 : growthRate > 20 ? 82 : growthRate > 10 ? 67 : growthRate > 5 ? 52 : growthRate > 0 ? 36 : growthRate > -10 ? 20 : 8;
 }
@@ -118,7 +117,7 @@ function scoreProfitability(
   roe: number | null | undefined,
   roa: number | null | undefined,
   netMargin: number | null | undefined,
-): number {
+): number | null {
   const scores: number[] = [];
   if (roe != null && isFinite(roe)) {
     scores.push(roe > 30 ? 95 : roe > 20 ? 80 : roe > 10 ? 65 : roe > 0 ? 42 : 10);
@@ -132,14 +131,9 @@ function scoreProfitability(
   return avg(scores);
 }
 
-function scoreSafety(beta: number | null | undefined): number {
-  if (beta == null || !isFinite(beta)) return 50;
+function scoreSafety(beta: number | null | undefined): number | null {
+  if (beta == null || !isFinite(beta)) return null;
   return beta < 0.3 ? 95 : beta < 0.6 ? 82 : beta < 0.8 ? 70 : beta < 1.0 ? 60 : beta < 1.2 ? 50 : beta < 1.5 ? 36 : beta < 2.0 ? 22 : 10;
-}
-
-function scoreDcfUpside(upside: number | null | undefined): number {
-  if (upside == null || !isFinite(upside)) return 50;
-  return upside > 50 ? 95 : upside > 30 ? 80 : upside > 15 ? 65 : upside > 5 ? 50 : upside > 0 ? 36 : upside > -15 ? 22 : 8;
 }
 
 // ─── Growth data helpers ───────────────────────────────────────────────────
@@ -215,7 +209,6 @@ export function ComparisonTab() {
   const { data: profA, isLoading: l3 } = useStockData<Profitability>(symbolA, "profitability");
   const { data: marginsRawA, isLoading: l4 } = useStockData<MarginsData>(symbolA, "margins");
   const { data: betaA, isLoading: l5 } = useStockData<BetaData>(symbolA, "beta");
-  const { data: dcfA, isLoading: l6 } = useStockData<DcfData>(symbolA, "dcf");
 
   // ── Fetch data for stock B ──────────────────────────────────────────────
   const { data: fundB, isLoading: l7 } = useStockData<Fundamentals>(symbolB, "fundamentals");
@@ -223,9 +216,7 @@ export function ComparisonTab() {
   const { data: profB, isLoading: l9 } = useStockData<Profitability>(symbolB, "profitability");
   const { data: marginsRawB, isLoading: l10 } = useStockData<MarginsData>(symbolB, "margins");
   const { data: betaB, isLoading: l11 } = useStockData<BetaData>(symbolB, "beta");
-  const { data: dcfB, isLoading: l12 } = useStockData<DcfData>(symbolB, "dcf");
-
-  const isLoading = l1 || l2 || l3 || l4 || l5 || l6 || l7 || l8 || l9 || l10 || l11 || l12;
+  const isLoading = l1 || l2 || l3 || l4 || l5 || l7 || l8 || l9 || l10 || l11;
 
   // ── Derived: latest margins ─────────────────────────────────────────────
   const marginsA = Array.isArray(marginsRawA) ? marginsRawA[marginsRawA.length - 1] : undefined;
@@ -233,7 +224,7 @@ export function ComparisonTab() {
 
   // ── Radar scores (absolute benchmarks — independent of comparison stock) ──
   const radarData = useMemo((): RadarDimension[] => {
-    return [
+    const dimensions = [
       {
         dimension: "Valuation",
         scoreA: scoreValuation(fundA?.ttmPe, fundA?.psRatio, fundA?.pbRatio),
@@ -254,13 +245,12 @@ export function ComparisonTab() {
         scoreA: scoreSafety(betaA?.beta5y),
         scoreB: scoreSafety(betaB?.beta5y),
       },
-      {
-        dimension: "DCF Upside",
-        scoreA: scoreDcfUpside(dcfA?.upside),
-        scoreB: scoreDcfUpside(dcfB?.upside),
-      },
     ];
-  }, [fundA, fundB, growthRawA, growthRawB, profA, profB, marginsA, marginsB, betaA, betaB, dcfA, dcfB]);
+    return dimensions.filter(
+      (dimension): dimension is RadarDimension =>
+        dimension.scoreA !== null && dimension.scoreB !== null
+    );
+  }, [fundA, fundB, growthRawA, growthRawB, profA, profB, marginsA, marginsB, betaA, betaB]);
 
   // ── Metric table rows ──────────────────────────────────────────────────
   const valuationRows: MetricRow[] = [
@@ -311,16 +301,6 @@ export function ComparisonTab() {
     { label: "ROIC",          valueA: fmt(profA?.roic, "percent"),            valueB: fmt(profB?.roic, "percent"),            higherIsBetter: true },
   ];
 
-  const dcfRows: MetricRow[] = [
-    // Absolute per-share prices aren't comparable across two different
-    // companies, so neither side gets a "better" flag.
-    { label: "DCF Fair Value",   valueA: fmt(dcfA?.fairValue, "currency"),  valueB: fmt(dcfB?.fairValue, "currency"),  higherIsBetter: null },
-    { label: "Current Price",    valueA: fmt(dcfA?.currentPrice, "currency"), valueB: fmt(dcfB?.currentPrice, "currency"), higherIsBetter: null },
-    { label: "DCF Upside %",     valueA: fmt(dcfA?.upside, "percent"),      valueB: fmt(dcfB?.upside, "percent"),      higherIsBetter: true },
-    { label: "WACC",             valueA: fmt(dcfA?.wacc, "percent"),        valueB: fmt(dcfB?.wacc, "percent"),        higherIsBetter: false },
-    { label: "Beta (5Y)",        valueA: fmt(betaA?.beta5y),                valueB: fmt(betaB?.beta5y),                higherIsBetter: false },
-  ];
-
   // ── Render ─────────────────────────────────────────────────────────────
   return (
     <div className="space-y-6">
@@ -363,7 +343,7 @@ export function ComparisonTab() {
           </div>
         </div>
         <p className="mt-4 text-sm leading-6 text-[var(--home-ink-muted)]">
-          Compare valuation, growth, profitability, risk, and DCF upside using the same curated data snapshot for both companies.
+          Compare valuation, growth, profitability, and price risk using the same curated data snapshot for both companies. Missing inputs stay out of the radar instead of being scored as average.
         </p>
       </div>
 
@@ -395,12 +375,6 @@ export function ComparisonTab() {
             <ComparisonMetricTable
               title="Profitability"
               rows={profitabilityRows}
-              symbolA={symbolA}
-              symbolB={symbolB}
-            />
-            <ComparisonMetricTable
-              title="DCF &amp; Risk"
-              rows={dcfRows}
               symbolA={symbolA}
               symbolB={symbolB}
             />

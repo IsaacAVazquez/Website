@@ -183,6 +183,7 @@ Confirm live API routes from `src/app/api/**/route.ts`. Current routes:
 - `/api/news-pulse`
 - `/api/nfl/summary` and `/api/nfl/teams/[teamId]`
 - `/api/premier-league/summary` and `/api/premier-league/teams/[teamId]`
+- `/api/score-pools/summary` and `/api/score-pools/leagues/[key]`
 - `/api/rss`
 - `/api/search`
 - `/api/spacex/summary`, `/api/spacex/launches`, `/api/spacex/launches/[id]`
@@ -213,7 +214,7 @@ npm run dev
 - `npm run update:github-trending` reads the public GitHub Search API. GitHub Actions passes `GITHUB_TOKEN` for higher rate limits.
 - `npm run update:spacex` and `npm run update:spacex-images` read public Launch Library / SpaceDevs endpoints. An API key is not strictly required, but the anonymous tier is heavily rate limited (shared CI IPs get 429'd fast, which silently freezes the snapshot) — set the optional `SPACEDEVS_API_TOKEN` to authenticate and raise the limit. The `update-spacex.yml` workflow now also fails loudly if the snapshot goes stale (older than 4 days).
 - `npm run update:frontier-models` rebuilds `src/data/frontierModelsSnapshot.ts` from `scripts/data/frontierModels.source.ts`.
-- If the investments fetch step fails on imports, install the Python dependency with `.venv/bin/pip install defeatbeta-api`.
+- If the investments fetch step fails on imports, install the pinned Python dependency with `.venv/bin/pip install defeatbeta-api==0.0.47`.
 
 ### Day-to-day verification
 
@@ -274,6 +275,8 @@ Inputs and outputs:
 
 Only the index and compacted snapshots under `public/` ship with deploys and are committed by the refresh workflow. Raw per-section files stay in the `data/investments-raw/` workspace as transient builder inputs. That directory is gitignored for new files, but existing historical files remain tracked until the repository cleanup migration, and the refresh workflow's narrowed `public/data/investments` pathspec keeps them out of automated commits. When a symbol fetch fails, the builder keeps its committed snapshot and original freshness metadata.
 
+The refresh now rejects a symbol when its latest market date is more than seven calendar days old, even if the provider returned a non-empty price array. The index records per-symbol `priceAsOf` plus aggregate `priceHealth`, and the UI reports recent and delayed histories separately from snapshot build time. The legacy EPS-based DCF and its Buy/Hold/Sell output are disabled until a statement-backed model replaces them. Current provider, licensing, and migration decisions live in `docs/INVESTMENTS_DATA_SOURCES.md`.
+
 ### Football dashboard data workflow
 
 The football dashboards read committed TypeScript snapshots at runtime. The token is only needed when rebuilding those snapshots.
@@ -333,7 +336,7 @@ The MLB, NBA, and NFL dashboards read committed TypeScript snapshots at runtime.
 - `npm run update:github-trending` writes `src/data/githubTrendingSnapshot.ts` from the GitHub Search API; use `GITHUB_TOKEN` or `GH_TOKEN` locally for higher rate limits.
 - `npm run update:tech-startups` writes `src/data/techStartupSnapshot.ts` from the hand-maintained seed in `scripts/buildTechStartupSnapshot.ts`. The dataset is editorially curated with an `asOf` date and `verified: false` flag; refresh it by editing the seed, not by polling an API.
 - `npm run update:frontier-models` writes `src/data/frontierModelsSnapshot.ts` from the curated source file in `scripts/data/`.
-- `npm run update:score-pools` writes `src/data/scorePoolsSnapshot.ts` from The Odds API (`THE_ODDS_API_KEY`) and API-Football (`API_FOOTBALL_KEY`), merged with manual entries in `scripts/data/scorePools.manual.ts` and CSV drops in `scripts/data/score-pools/`. Both tokens are optional; without them the snapshot builds from manual/CSV only. Odds history is append-only and capped per fixture so line movement stays queryable. See `SCORE_POOLS_ENGINE.md`.
+- `npm run update:score-pools` writes `src/data/scorePoolsSnapshot.ts` from The Odds API (`THE_ODDS_API_KEY`) and API-Football (`API_FOOTBALL_KEY`), merged with manual entries in `scripts/data/scorePools.manual.ts` and CSV drops in `scripts/data/score-pools/`. Local manual runs can omit the tokens, but the scheduled workflow requires both and rejects sample-only output. Odds history is append-only and capped per fixture so line movement stays queryable. See `SCORE_POOLS_ENGINE.md`.
 - `npm run update:spacex` and its alias `npm run update:spacex-data` write `src/data/spacexSnapshot.generated.json`.
 - `npm run update:spacex-images` writes `src/data/spacexImageManifest.generated.json`, `public/data/spacex/image-reference-index.json`, and cached image files under `public/data/spacex/images/`.
 
@@ -424,23 +427,25 @@ Checked-in operational workflows:
 Current behavior:
 
 - `test.yml` runs unit tests, build, sharded Chromium Playwright E2E, and lint on pushes to `main` or `develop`, plus pull requests targeting `main` or `develop`; full-matrix Playwright runs only on pushes to `main`
-- `update-investments.yml` runs on manual dispatch and on Mondays and Thursdays at `22:15 UTC`, then commits refreshed compact snapshots under `public/data/investments`; raw provider responses are not committed
-- `update-premier-league.yml` runs on manual dispatch and daily at `06:15 UTC` during the season (August through May; skipped June and July), then commits `src/data/premierLeagueSnapshot.ts` when it changes
-- `update-la-liga.yml` runs on manual dispatch and daily at `06:30 UTC` during the season (August through May; skipped June and July), then commits `src/data/laLigaSnapshot.ts` when it changes
-- `update-fantasy.yml` runs on manual dispatch and on Wednesdays at `17:00 UTC`, then commits the generated fantasy snapshot artifacts when they change
+- `update-investments.yml` runs on manual dispatch and weekdays at `22:15 UTC`, then commits refreshed compact snapshots under `public/data/investments`; raw provider responses are not committed
+- `update-premier-league.yml` and `update-la-liga.yml` run every four hours during the season (August through May; skipped June and July)
+- `update-fantasy.yml` runs daily July through September and weekly otherwise
 - `update-github-trending.yml` runs on manual dispatch and daily at `07:45 UTC`, then commits `src/data/githubTrendingSnapshot.ts` when tracked repositories change
-- `update-formula-1.yml` runs on manual dispatch and daily at `08:10 UTC`, then commits `src/data/formula1Snapshot.ts` when it changes
+- `update-formula-1.yml` runs every three hours Thursday through Sunday and daily otherwise
 - `update-spacex.yml` runs on manual dispatch and daily at `09:25 UTC` and `21:25 UTC`, then commits SpaceX data, manifest, image reference, and cached image artifacts when they change
-- `update-mlb.yml` runs on manual dispatch and daily March through November at `10:05 UTC`, then commits `src/data/mlbSnapshot.ts` when it changes
-- `update-nba.yml` runs on manual dispatch and daily from mid-October through June at `10:20 UTC`, then commits `src/data/nbaSnapshot.ts` when it changes
+- `update-mlb.yml` runs every four hours March through November
+- `update-nba.yml` runs every four hours from mid-October through June
 - `update-nfl.yml` runs on manual dispatch and Tuesdays September through February at `10:35 UTC`, then commits `src/data/nflSnapshot.ts` when it changes
-- `update-golf.yml` runs on manual dispatch and daily at `08:40 UTC`, then commits `src/data/golfSnapshot.ts` when it changes
-- `update-world-cup.yml` runs on manual dispatch and every six hours during June and July, then commits `src/data/worldCupSnapshot.ts` when it changes
+- `update-golf.yml` runs every three hours Thursday through Sunday and daily otherwise
+- `update-world-cup.yml` runs every 30 minutes during June and July
+- `update-score-pools.yml` runs every six hours, requires both live provider tokens, and rejects provider-empty or stale live-league output
 - `update-bay-area-transit.yml` runs on manual dispatch and every six hours year-round, then commits `src/data/bayAreaTransitSnapshot.ts` when it changes
 - `update-earthquake.yml` runs on manual dispatch and hourly (minute 20), then commits `src/data/earthquakeSnapshot.ts` when it changes
+- `update-polling.yml` runs every six hours and refreshes the VoteHub-backed polling snapshot
+- `audit-curated-data.yml` checks review dates, verification flags, and structural integrity across Frontier Models, Tech Startups, AI Dev Tools, Museum Log, Travel Deals, and Food Map every Monday
 - The tech startup tracker has no workflow by design — its dataset is editorially curated, so refreshes happen by editing the seed and running `npm run update:tech-startups` locally
-- All 14 snapshot `update-*.yml` workflows commit and push through the shared `scripts/ci/commit-and-push-snapshot.sh` helper (usage: `commit-and-push-snapshot.sh <commit-message> <pathspec...>`). It sets the `github-actions[bot]` identity, exits cleanly on a no-op refresh, and pushes to `HEAD:main` with a fetch/`rebase --autostash` retry loop (default 8 attempts, `SNAPSHOT_PUSH_ATTEMPTS` override) plus capped exponential backoff to absorb concurrent snapshot-bot pushes. Behavior is asserted by `.github/workflows/__tests__/snapshot-workflows.test.ts` and `update-investments.test.ts`.
-- A daily cron-job.org ping to the Netlify build hook triggers a production deploy of the latest committed snapshots; data refreshes remain separate workflows
+- All 16 snapshot `update-*.yml` workflows commit and push through the shared `scripts/ci/commit-and-push-snapshot.sh` helper (usage: `commit-and-push-snapshot.sh <commit-message> <pathspec...>`). It sets the `github-actions[bot]` identity, exits cleanly on a no-op refresh, and pushes to `HEAD:main` with a fetch/`rebase --autostash` retry loop (default 8 attempts, `SNAPSHOT_PUSH_ATTEMPTS` override) plus capped exponential backoff to absorb concurrent snapshot-bot pushes. Behavior is asserted by `.github/workflows/__tests__/snapshot-workflows.test.ts` and `update-investments.test.ts`.
+- `publish-data.yml` coalesces successful refreshes, triggers the Netlify build hook when production is behind, and verifies the full `/api/data-revisions` ledger before closing publication incidents
 - `purge-cache.ts` is protected by `Authorization: Bearer <CRON_SECRET>` or `x-cron-secret` and calls Netlify Durable Cache purge; query-string secrets are intentionally rejected
 - Historical caveat: `vercel.json` still declares a cron for `/api/scheduled-update`, but no matching route exists. Treat that config as historical until confirmed.
 

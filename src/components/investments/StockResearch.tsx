@@ -17,7 +17,6 @@ import { ValuationRatiosPanel } from "./ValuationRatiosPanel";
 import { ProfitabilityPanel } from "./ProfitabilityPanel";
 import { GrowthPanel } from "./GrowthPanel";
 import { IndustryPanel } from "./IndustryPanel";
-import { DCFPanel } from "./DCFPanel";
 import { ComparisonTab } from "./ComparisonTab";
 import { PriceChartPanel } from "./PriceChartPanel";
 import { StockSearch } from "./StockSearch";
@@ -49,7 +48,6 @@ const TABS: { key: ResearchTab; label: string }[] = [
   { key: "growth",       label: "Growth" },
   { key: "valuation",    label: "Valuation" },
   { key: "industry",     label: "Industry" },
-  { key: "dcf",          label: "DCF" },
   { key: "chart",        label: "Chart" },
   { key: "compare",      label: "Compare" },
 ];
@@ -79,7 +77,6 @@ function isTabAvailable(tab: ResearchTab, capabilities: InvestmentCapabilities):
     case "growth":      return capabilities.growth !== false;
     case "valuation":   return capabilities.fundamentals !== false;
     case "industry":    return capabilities.industry === true;
-    case "dcf":         return capabilities.dcf === true;
     case "chart":       return capabilities.price !== false;
     case "compare":     return capabilities.compare === true;
     default:            return true;
@@ -302,7 +299,6 @@ export function StockResearch({
                     />
                   )}
                   {resolvedActiveTab === "industry" && <IndustryPanel symbol={symbol} />}
-                  {resolvedActiveTab === "dcf" && <DCFPanel symbol={symbol} />}
                   {resolvedActiveTab === "chart" && <PriceChartPanel symbol={symbol} />}
                 </motion.div>
               </AnimatePresence>

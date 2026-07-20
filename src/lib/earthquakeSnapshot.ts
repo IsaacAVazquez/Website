@@ -1,4 +1,5 @@
 import { earthquakeSnapshot } from "@/data/earthquakeSnapshot";
+import { buildEarthquakeSnapshotData } from "@/lib/earthquakeData";
 import type { EarthquakeSummary, QuakeEvent } from "@/types/earthquake";
 
 interface EarthquakeSnapshotError extends Error {
@@ -54,7 +55,23 @@ export function isValidQuakeId(quakeId: string): boolean {
   );
 }
 
-export async function getEarthquakeSummary(): Promise<EarthquakeSummary> {
+interface EarthquakeSummaryOptions {
+  preferLive?: boolean;
+}
+
+export async function getEarthquakeSummary(
+  options: EarthquakeSummaryOptions = {}
+): Promise<EarthquakeSummary> {
+  if (options.preferLive) {
+    try {
+      return (await buildEarthquakeSnapshotData()).summary;
+    } catch {
+      // The committed snapshot is the last-known-good fallback when USGS is
+      // unavailable. Its generatedAt timestamp keeps the fallback explicit in
+      // response headers and the UI instead of making old data look current.
+    }
+  }
+
   return earthquakeSnapshot.summary;
 }
 

@@ -1,12 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 import type { StockQuote } from "@/types/investment";
 import {
-  fetchFinnhubQuote,
   FinnhubAllowlistUnavailableError,
   getAllowedSymbols,
   isValidSymbol,
 } from "@/lib/finnhub";
-import { apiRateLimiter, getClientIp, rateLimitResponse } from "@/lib/rateLimit";
+import { fetchQuotesWithConcurrency } from "@/lib/investmentsQuoteBatch";
+import {
+  getClientIp,
+  investmentsQuoteRateLimiter,
+  rateLimitResponse,
+} from "@/lib/rateLimit";
 import { logger } from "@/lib/logger";
 import { buildQueryCacheHeaders, NO_STORE_HEADERS } from "@/lib/apiCacheHeaders";
 
@@ -23,9 +27,10 @@ const SUCCESS_CACHE_HEADERS = buildQueryCacheHeaders(
  * Fetches live portfolio quotes via Finnhub.
  *
  * Hardening:
- *  - Per-IP rate limit (30 req/min) backed by the in-process apiRateLimiter
+ *  - Dedicated per-IP limit (7 req/min) for market-data fan-out
  *  - Allowlist of curated symbols (public/data/investments/index.json)
  *  - Caps to 25 symbols per request
+ *  - Stops provider fan-out after a six-second route budget
  *  - Caches successful responses 30s + 60s SWR; errors get no-store
  *
  * GET /api/investments/quotes?symbols=AAPL,MSFT
@@ -34,7 +39,7 @@ export async function GET(request: NextRequest) {
   // Rate limit by client IP only (no user-agent), so a single noisy IP can't
   // bypass the limit by varying its user-agent string.
   const clientIp = getClientIp(request);
-  const rate = apiRateLimiter.check(`quotes:${clientIp}`);
+  const rate = investmentsQuoteRateLimiter.check(`quotes:${clientIp}`);
   if (!rate.success) {
     return rateLimitResponse(rate);
   }
@@ -103,7 +108,7 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const validQuotes = await Promise.all(validSymbols.map(fetchFinnhubQuote));
+    const validQuotes = await fetchQuotesWithConcurrency(validSymbols);
     const failedQuotes = validQuotes.filter((quote) => quote.error);
     const allFailed = failedQuotes.length === validQuotes.length;
     const rateLimited = failedQuotes.some(

@@ -25,6 +25,49 @@ async function selectScoring(
 }
 
 test.describe("Fantasy football rankings", () => {
+  test("publishes every position in PPR, Half PPR, and Standard", async ({ page }) => {
+    const scoringFormats = [
+      { key: "ppr", label: "PPR" },
+      { key: "half_ppr", label: "Half PPR" },
+      { key: "standard", label: "Standard" },
+    ] as const;
+    const positions = [
+      { key: "overall", label: "Overall" },
+      { key: "qb", label: "QB" },
+      { key: "rb", label: "RB" },
+      { key: "wr", label: "WR" },
+      { key: "te", label: "TE" },
+      { key: "flex", label: "Flex" },
+      { key: "k", label: "K" },
+      { key: "dst", label: "DST" },
+    ] as const;
+
+    for (const scoring of scoringFormats) {
+      await page.goto(`/fantasy-football?position=overall&scoring=${scoring.key}`);
+      const shell = page.locator('[data-testid="fantasy-football-shell"]');
+      const board = shell.locator('article[aria-labelledby="rankings-board-heading"]');
+
+      await expect(shell.getByRole("button", { name: new RegExp(`^${scoring.label}$`) })).toHaveAttribute(
+        "aria-pressed",
+        "true"
+      );
+
+      for (const position of positions) {
+        if (position.key !== "overall") {
+          await selectPosition(page, shell, position.label, position.key);
+        }
+        await expect(page.getByRole("heading", { name: new RegExp(`${position.label} rankings`, "i") })).toBeVisible();
+        await expect(board.getByText("No Data Available")).toHaveCount(0);
+        await expect(board.getByRole("button", { name: /^Open .+ detail/ }).first()).toBeVisible();
+      }
+
+      await shell.getByRole("radio", { name: "Tiers" }).click();
+      await expect(page).toHaveURL(/view=tiers/);
+      await expect(shell.getByLabel("DST tier breakdown")).toBeVisible();
+      await expect(shell.getByText("Tier 1").first()).toBeVisible();
+    }
+  });
+
   test("loads the canonical rankings board and supports PPR position switching", async ({ page }) => {
     await page.goto("/fantasy-football");
     const shell = page.locator('[data-testid="fantasy-football-shell"]');
@@ -108,9 +151,129 @@ test.describe("Fantasy football rankings", () => {
       expect(computedPosition).toBe("sticky");
     }
   });
+
+  test("searches the board and switches between list and tier views", async ({ page }) => {
+    await page.goto("/fantasy-football?position=overall&scoring=ppr");
+    const shell = page.locator('[data-testid="fantasy-football-shell"]');
+    const rankingsBoard = shell.locator('article[aria-labelledby="rankings-board-heading"]');
+    const search = shell.getByLabel("Search the current rankings board");
+
+    await search.fill("Ja'Marr Chase");
+    await expect(search).toHaveValue("Ja'Marr Chase");
+    await expect(rankingsBoard.getByText("Ja'Marr Chase", { exact: true }).first()).toBeVisible();
+    await expect(rankingsBoard.getByText("Bijan Robinson", { exact: true })).toHaveCount(0);
+    await shell.getByRole("button", { name: "Clear search" }).click();
+
+    await shell.getByRole("radio", { name: "Tiers" }).click();
+    await expect(page).toHaveURL(/view=tiers/);
+    await expect(shell.getByLabel("Overall tier breakdown")).toBeVisible();
+    await expect(shell.getByText("Tier 1").first()).toBeVisible();
+
+    await shell.getByRole("radio", { name: "List" }).click();
+    await expect(page).not.toHaveURL(/view=tiers/);
+  });
+
+  test("keeps position-only queued players visible after switching boards", async ({ page }) => {
+    await page.goto("/fantasy-football?position=k&scoring=ppr");
+    const shell = page.locator('[data-testid="fantasy-football-shell"]');
+
+    await shell.getByRole("button", { name: "Add Brandon Aubrey to queue" }).click();
+    await selectPosition(page, shell, "RB", "rb");
+    await expect(shell.getByText("Brandon Aubrey", { exact: true })).toBeVisible();
+
+    const clearQueue = shell.getByRole("button", { name: "Clear queue" });
+    await expect(clearQueue).toBeVisible();
+    const clearBox = await clearQueue.boundingBox();
+    expect(clearBox?.height).toBeGreaterThanOrEqual(44);
+    await clearQueue.click();
+    await shell.getByRole("button", { name: "Confirm clear queue" }).click();
+    await expect(shell.getByText("0 starred")).toBeVisible();
+  });
+
+  test("persists a private note and compares players accessibly", async ({ page, isMobile }) => {
+    test.skip(isMobile, "Desktop list exposes inline compare controls; mobile compare is available in player detail.");
+    await page.goto("/fantasy-football?position=overall&scoring=ppr");
+    const shell = page.locator('[data-testid="fantasy-football-shell"]');
+
+    await shell.getByRole("button", { name: /Open Ja'Marr Chase detail/ }).click();
+    const note = page.getByRole("textbox", { name: "Private note" });
+    await note.fill("Target at the first-round turn");
+    await page.getByRole("button", { name: "Close", exact: true }).click();
+
+    await shell.getByRole("button", { name: /Open Ja'Marr Chase detail/ }).click();
+    await expect(page.getByRole("textbox", { name: "Private note" })).toHaveValue("Target at the first-round turn");
+    await page.keyboard.press("Escape");
+
+    await shell.getByRole("button", { name: "Add Ja'Marr Chase to compare" }).click();
+    await shell.getByRole("button", { name: "Add Bijan Robinson to compare" }).click();
+    await page.getByRole("button", { name: "Compare 2" }).click();
+
+    const dialog = page.getByRole("dialog", { name: "Compare players" });
+    await expect(dialog).toBeVisible();
+    await expect(dialog.getByText("Ja'Marr Chase", { exact: true })).toBeVisible();
+    await expect(dialog.getByText("Bijan Robinson", { exact: true })).toBeVisible();
+    await page.keyboard.press("Escape");
+    await expect(dialog).toBeHidden();
+  });
+
+  test("renders without horizontal overflow at 360px", async ({ page }) => {
+    await page.setViewportSize({ width: 360, height: 800 });
+    await page.goto("/fantasy-football?position=overall&scoring=ppr");
+
+    const horizontalOverflow = await page.evaluate(
+      () => document.documentElement.scrollWidth - document.documentElement.clientWidth
+    );
+    expect(horizontalOverflow).toBeLessThanOrEqual(1);
+    await expect(page.getByRole("link", { name: /Launch draft assistant/i }).first()).toBeVisible();
+  });
+
+  test("supports the fantasy rankings in dark mode", async ({ page }) => {
+    await page.addInitScript(() => window.localStorage.setItem("theme", "light"));
+    await page.goto("/fantasy-football?position=overall&scoring=ppr");
+    const toggle = page.locator('button[aria-label^="Theme:"]:visible').first();
+    await expect(toggle).toBeVisible();
+
+    const initialPaper = await page.evaluate(() =>
+      getComputedStyle(document.documentElement).getPropertyValue("--home-paper").trim()
+    );
+    await toggle.click();
+    await expect(page.locator("html")).toHaveClass(/dark/);
+    const darkPaper = await page.evaluate(() =>
+      getComputedStyle(document.documentElement).getPropertyValue("--home-paper").trim()
+    );
+
+    expect(darkPaper).not.toBe(initialPaper);
+    await expect(page.getByRole("heading", { name: /Overall rankings/i })).toBeVisible();
+  });
 });
 
 test.describe("Fantasy football draft tracker", () => {
+  test("loads the correct board for every scoring format", async ({ page }) => {
+    const scoringFormats = [
+      { label: "PPR", topPlayer: "Ja'Marr Chase" },
+      { label: "Half PPR", topPlayer: "Bijan Robinson" },
+      { label: "Standard", topPlayer: "Jahmyr Gibbs" },
+    ] as const;
+
+    await page.goto("/fantasy-football/draft-tracker");
+
+    for (const scoring of scoringFormats) {
+      await page.getByRole("button", { name: new RegExp(`^${scoring.label}`) }).click();
+      await page.getByRole("button", { name: /Start draft assistant/i }).click();
+
+      await expect(page.getByText(`${scoring.label} scoring`, { exact: true })).toBeVisible();
+      await expect(page.getByText("Draft assistant unavailable for this scoring format")).toHaveCount(0);
+      const firstPick = page.getByRole("button", { name: "Log pick" }).first().locator("..");
+      await expect(firstPick).toContainText(scoring.topPlayer);
+      await page.getByRole("button", { name: "Log pick" }).first().click();
+      await expect(page.getByText(/1 of \d+ picks logged/i)).toBeVisible();
+
+      await page.getByRole("button", { name: "Reset draft" }).click();
+      await page.getByRole("button", { name: "Confirm reset" }).click();
+      await expect(page.getByRole("button", { name: /Start draft assistant/i })).toBeVisible();
+    }
+  });
+
   test("loads, records picks, and persists after reload", async ({ page }) => {
     await page.goto("/fantasy-football/draft-tracker");
 
@@ -128,6 +291,11 @@ test.describe("Fantasy football draft tracker", () => {
 
     await expect(page.getByText(/2 of \d+ picks logged/i)).toBeVisible();
     await expect(page.getByText("No Data Available")).toHaveCount(0);
+
+    await page.getByRole("button", { name: "Reset draft" }).click();
+    await expect(page.getByRole("button", { name: "Confirm reset" })).toBeVisible();
+    await page.getByRole("button", { name: "Keep draft" }).click();
+    await expect(page.getByText(/2 of \d+ picks logged/i)).toBeVisible();
   });
 });
 

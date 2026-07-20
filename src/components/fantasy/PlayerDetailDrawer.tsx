@@ -154,7 +154,7 @@ export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onCl
             animate={{ opacity: 1, y: 0 }}
             exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 24 }}
             transition={{ duration: reduceMotion ? 0 : 0.24, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="relative flex max-h-[88vh] w-full flex-col gap-4 overflow-y-auto rounded-t-[var(--radius-3xl)] border p-5 outline-none sm:max-h-none sm:h-full sm:w-[26rem] sm:rounded-l-[var(--radius-3xl)] sm:rounded-tr-none"
+            className="relative flex max-h-[88vh] w-full flex-col gap-4 overscroll-contain overflow-y-auto rounded-t-[var(--radius-3xl)] border p-5 sm:max-h-none sm:h-full sm:w-[26rem] sm:rounded-l-[var(--radius-3xl)] sm:rounded-tr-none"
             style={{
               borderColor: "var(--home-rule)",
               background: "var(--home-paper)",
@@ -310,6 +310,7 @@ export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onCl
               </label>
               <textarea
                 id="player-note"
+                name="player-note"
                 value={draftNote}
                 maxLength={notes.maxLength}
                 onChange={(event) => {
@@ -318,7 +319,7 @@ export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onCl
                 }}
                 rows={2}
                 placeholder="Handcuff for Hall… target round 6… avoid."
-                className="w-full resize-none rounded-[var(--radius-3xl)] border px-3 py-2 text-sm outline-none"
+                className="w-full resize-none rounded-[var(--radius-3xl)] border px-3 py-2 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--home-signal)]"
                 style={{
                   borderColor: "var(--home-rule)",
                   background: "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",

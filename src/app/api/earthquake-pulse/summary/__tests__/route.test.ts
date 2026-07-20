@@ -74,10 +74,13 @@ describe("GET /api/earthquake-pulse/summary", () => {
     expect(body.heroStats.strongest24hPlace).toBe("off the coast of Chile");
     expect(body.heroStats.total24h).toBe(42);
     expect(response.headers.get("Cache-Control")).toBe(
-      "public, max-age=300, stale-while-revalidate=900"
+      "public, max-age=60, stale-while-revalidate=300"
     );
     expect(response.headers.get("X-Data-Revision")).toMatch(/^[a-f0-9]{64}$/);
-    expect(response.headers.get("X-Data-Source")).toBe("git-snapshot");
+    expect(response.headers.get("X-Data-Source")).toBe(
+      "usgs-runtime-with-snapshot-fallback"
+    );
+    expect(mockGetEarthquakeSummary).toHaveBeenCalledWith({ preferLive: true });
     expect(response.headers.get("Last-Modified")).toBe(
       "Mon, 06 Jul 2026 12:00:00 GMT"
     );

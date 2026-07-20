@@ -24,6 +24,7 @@ import {
   FANTASY_SCORING_LABELS,
   FantasyRoutePosition,
   FantasyRouteScoring,
+  getAllFantasySnapshotPlayers,
   getFantasyPlayerSearchText,
   getFantasyWeekLabel,
 } from "@/lib/fantasy";
@@ -302,6 +303,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
   const [showStats, setShowStats] = useState(false);
   const [showLegend, setShowLegend] = useState(false);
   const [visibleCount, setVisibleCount] = useState(RANKINGS_PAGE_SIZE);
+  const [queueClearArmed, setQueueClearArmed] = useState(false);
   const sentinelRef = useRef<HTMLDivElement | null>(null);
 
   const queue = usePlayerQueue();
@@ -313,6 +315,12 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
     getDensitySnapshot,
     () => "comfortable" as FantasyBoardDensity
   );
+
+  useEffect(() => {
+    if (!queueClearArmed) return;
+    const timeout = window.setTimeout(() => setQueueClearArmed(false), 5_000);
+    return () => window.clearTimeout(timeout);
+  }, [queueClearArmed]);
 
   const hasManagedParams = searchParams.get("position") !== null || searchParams.get("scoring") !== null;
   const routeState = useMemo<FantasySearchState>(
@@ -349,13 +357,17 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
     });
   }
 
-  const { players, metadata, sliceMetadata, sliceMetadataMap, isLoading, error } = useFantasySnapshot({
+  const { players, snapshot, metadata, sliceMetadata, sliceMetadataMap, isLoading, error, retry } = useFantasySnapshot({
     position: routeState.position,
     scoring: routeState.scoring,
   });
-  // A scoring-wide lookup powers the queue card, compare tray, and detail drawer
-  // when a pinned player belongs to a different board than the one in view.
-  const { players: allBoardPlayers } = useFantasySnapshot({ scoring: routeState.scoring, all: true });
+  // Every position hook receives the normalized full snapshot. Reuse it for
+  // cross-board queue and compare lookups instead of creating a second data
+  // subscription for the same scoring file.
+  const allBoardPlayers = useMemo(
+    () => (snapshot ? getAllFantasySnapshotPlayers(snapshot) : players),
+    [players, snapshot]
+  );
 
   const playerLookup = useMemo(() => {
     const map = new Map<string, Player>();
@@ -365,6 +377,10 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
   }, [allBoardPlayers, players]);
 
   const currentSliceUnavailable = Boolean(sliceMetadata && !sliceMetadata.available);
+  const localToolsMemoryOnly =
+    queue.persistenceStatus === "memory-only" ||
+    notes.persistenceStatus === "memory-only" ||
+    compare.persistenceStatus === "memory-only";
   const adpSource = metadata?.adpSource ?? null;
   const adpAvailable = Boolean(adpSource);
   const adpFreshness = getFantasyAdpFreshness(adpSource?.asOf, metadata?.season);
@@ -408,6 +424,11 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
 
   useEffect(() => {
     if (!hasMore || typeof IntersectionObserver === "undefined") return;
+    // On narrow screens the supporting rail sits below the rankings card.
+    // Auto-extending the list while someone scrolls toward that rail can keep
+    // moving the queue and freshness sections away from them, so mobile uses
+    // the explicit Load more control instead.
+    if (!window.matchMedia("(min-width: 1024px)").matches) return;
     const el = sentinelRef.current;
     if (!el) return;
 
@@ -433,7 +454,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
 
   const snapshotWeekLabel = metadata
     ? `${metadata.season} ${getFantasyWeekLabel(metadata.week)}`
-    : "Loading";
+    : "Loading…";
 
   const fantasyStatsCells: HomeStatsCell[] = [
     {
@@ -629,11 +650,38 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
 
         {showLegend && <FantasyBoardLegend id="fantasy-board-legend" />}
 
+        {localToolsMemoryOnly ? (
+          <div
+            role="status"
+            className="rounded-[var(--radius-3xl)] border px-4 py-3 text-sm"
+            style={{
+              borderColor: "color-mix(in srgb, var(--home-warning) 55%, var(--home-rule))",
+              background: "color-mix(in srgb, var(--home-warning) 10%, var(--home-paper))",
+            }}
+          >
+            <p className="font-semibold">Browser storage is unavailable.</p>
+            <p className="mt-1" style={{ color: "var(--home-ink-muted)" }}>
+              Queue, notes, and compare still work in this tab, but they will not survive a reload.
+            </p>
+          </div>
+        ) : null}
+
         {error && (
           <article className="home-card p-5 sm:p-6" style={{ borderColor: "var(--home-negative)" }}>
             <p className="font-semibold" style={{ color: "var(--home-negative)" }}>
               {error}
             </p>
+            <p className="mt-2 text-sm" style={{ color: "var(--home-ink-muted)" }}>
+              Check your connection and try loading the published snapshot again.
+            </p>
+            <button
+              type="button"
+              onClick={retry}
+              className="mt-4 inline-flex min-h-[44px] items-center rounded-full border px-4 text-sm font-semibold"
+              style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
+            >
+              Retry rankings
+            </button>
           </article>
         )}
 
@@ -681,7 +729,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                   style={{ color: "var(--home-ink-muted)" }}
                 >
                   {isLoading
-                    ? "Loading players..."
+                    ? "Loading players…"
                     : currentSliceUnavailable
                       ? "Board unavailable"
                       : routeState.view === "list" && hasMore
@@ -711,7 +759,6 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                         key={option.key}
                         type="button"
                         aria-pressed={active}
-                        disabled={currentSliceUnavailable}
                         onClick={() => updateRouteState({ scoring: option.key })}
                         className="inline-flex min-h-[44px] items-center rounded-full border px-4 text-sm font-semibold transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60"
                         style={
@@ -744,7 +791,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                     onChange={(event) => setSearchQuery(event.target.value)}
                     disabled={currentSliceUnavailable}
                     autoComplete="off"
-                    placeholder={`Search ${FANTASY_POSITION_LABELS[routeState.position].toLowerCase()} board`}
+                    placeholder={`Search ${FANTASY_POSITION_LABELS[routeState.position].toLowerCase()} board…`}
                     className="min-h-[48px] w-full rounded-[var(--radius-3xl)] border px-11 pr-10 text-sm transition-[background-color,border-color,box-shadow] duration-200 placeholder:text-[var(--home-ink-muted)] disabled:cursor-not-allowed disabled:opacity-60"
                     style={{
                       borderColor: "var(--home-rule)",
@@ -850,7 +897,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
           <aside className="grid gap-5 lg:sticky lg:top-24 lg:self-start">
             <article className="home-card p-5 sm:p-6">
               <div className="flex items-center gap-3">
-                <Shield className="h-5 w-5" style={{ color: "var(--home-signal)" }} />
+                <Shield className="h-5 w-5" style={{ color: "var(--home-signal)" }} aria-hidden="true" />
                 <div>
                   <p className="home-kicker mb-0">Freshness</p>
                   <p className="text-sm font-semibold">{currentSourceKindLabel}</p>
@@ -920,7 +967,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
             <article className="home-card p-5 sm:p-6">
               <div className="flex items-center justify-between gap-3">
                 <div className="flex items-center gap-3">
-                  <Star className="h-5 w-5" style={{ color: "var(--home-signal)" }} fill="currentColor" />
+                  <Star className="h-5 w-5" style={{ color: "var(--home-signal)" }} fill="currentColor" aria-hidden="true" />
                   <div>
                     <p className="home-kicker mb-0">My Queue</p>
                     <p className="text-sm font-semibold">{queue.queue.length} starred</p>
@@ -929,11 +976,19 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                 {queue.queue.length > 0 && (
                   <button
                     type="button"
-                    onClick={() => queue.clear()}
-                    className="text-xs font-semibold"
-                    style={{ color: "var(--home-ink-muted)" }}
+                    onClick={() => {
+                      if (queueClearArmed) {
+                        queue.clear();
+                        setQueueClearArmed(false);
+                        return;
+                      }
+                      setQueueClearArmed(true);
+                    }}
+                    aria-label={queueClearArmed ? "Confirm clear queue" : "Clear queue"}
+                    className="inline-flex min-h-touch items-center rounded-full px-3 text-xs font-semibold"
+                    style={{ color: queueClearArmed ? "var(--home-negative)" : "var(--home-ink-muted)" }}
                   >
-                    Clear
+                    {queueClearArmed ? "Confirm clear" : "Clear queue"}
                   </button>
                 )}
               </div>
@@ -1008,7 +1063,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                 style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
               >
                 Launch draft assistant
-                <ArrowUpRight className="h-4 w-4" />
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </article>
           </aside>

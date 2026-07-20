@@ -11,6 +11,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
 import { IconSearch } from "@tabler/icons-react";
 import {
+  FOOD_MAP_AS_OF,
   FOOD_MAP_CITIES,
   FOOD_MAP_CURATORS,
   FOOD_MAP_PLACES,
@@ -555,7 +556,7 @@ function FoodMapWorkbench({
             </span>
             <span className="tool-meta-chip-spacer" />
             <span className="tool-meta-chip-meta">
-              Showing {visiblePlaces.length} of {cityCount} in {activeCity.name}.
+              Showing {visiblePlaces.length} of {cityCount} in {activeCity.name} · Reviewed {FOOD_MAP_AS_OF} · I would still verify hours before going.
             </span>
           </div>
 

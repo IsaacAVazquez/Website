@@ -87,7 +87,7 @@ export function ResearchPosition({ position }: Props) {
         <div>
           <p className="invest-rail-section-label">Your position</p>
           <p className="mt-1 text-xs text-[var(--home-ink-soft)]">
-            From your local portfolio. Live price when available, else last saved close.
+            From your local portfolio. Latest market quote when available, else last saved close.
           </p>
         </div>
         <span className="research-badge-pill held">

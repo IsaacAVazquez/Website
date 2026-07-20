@@ -141,10 +141,20 @@ export function TechStartupClient({
   // stable placeholder pre-mount so both the header chip and the stats-panel
   // meta stay hydration-safe.
   const [relativeUpdated, setRelativeUpdated] = useState("recently");
+  const [sourceIsOverdue, setSourceIsOverdue] = useState(!snapshot.verified);
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- Compute the relative timestamp only after mount to avoid SSR/client hydration drift
     setRelativeUpdated(relativeAge(snapshot.generatedAt));
   }, [snapshot.generatedAt]);
+  useEffect(() => {
+    const sourceAgeMs = Date.now() - Date.parse(snapshot.asOf);
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Freshness depends on the browser clock and must not create unstable SSR markup
+    setSourceIsOverdue(
+      !snapshot.verified ||
+        !Number.isFinite(sourceAgeMs) ||
+        sourceAgeMs > 180 * 24 * 60 * 60 * 1000
+    );
+  }, [snapshot.asOf, snapshot.verified]);
 
   function navigate(nextState: TechStartupRouteState) {
     const resolvedNext = resolveTechStartupState(nextState, snapshot);
@@ -245,6 +255,17 @@ export function TechStartupClient({
           </dl>
         </section>
       </header>
+
+      {sourceIsOverdue ? (
+        <div
+          role="status"
+          className="rounded-[var(--radius-2xl)] border border-[var(--home-warning)] bg-[color-mix(in_srgb,var(--home-warning)_8%,var(--home-paper))] p-4 text-sm leading-6 text-[var(--home-ink)]"
+        >
+          These private-company figures are past the review window or still
+          unverified. I keep them visible as directional research, not current
+          financial facts.
+        </div>
+      ) : null}
 
       <HomeStatsPanel
         id="tech-startup-stats"

@@ -25,8 +25,7 @@ const CANONICAL_PRODUCTION_ORIGIN = "https://isaacavazquez.com";
 export function getInvestmentsAssetOrigin(
   options: AssetOriginOptions = {}
 ): string | null {
-  const configuredOrigin =
-    options.assetOrigin ??
+  const trustedConfiguredOrigin =
     process.env.URL ??
     process.env.DEPLOY_PRIME_URL ??
     process.env.DEPLOY_URL ??
@@ -42,5 +41,38 @@ export function getInvestmentsAssetOrigin(
     // the same hardcoded fallback in seo.ts.
     CANONICAL_PRODUCTION_ORIGIN;
 
-  return configuredOrigin ? configuredOrigin.replace(/\/$/, "") : null;
+  const normalizeOrigin = (value: string | null | undefined): string | null => {
+    if (!value) return null;
+    try {
+      return new URL(value).origin;
+    } catch {
+      return null;
+    }
+  };
+
+  const trustedOrigins = new Set(
+    [
+      CANONICAL_PRODUCTION_ORIGIN,
+      trustedConfiguredOrigin,
+      process.env.URL,
+      process.env.DEPLOY_PRIME_URL,
+      process.env.DEPLOY_URL,
+      process.env.SITE_URL,
+      process.env.NEXT_PUBLIC_SITE_URL,
+      process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null,
+      ...(process.env.NODE_ENV !== "production"
+        ? ["http://localhost:3000", "http://127.0.0.1:3000"]
+        : []),
+    ]
+      .map(normalizeOrigin)
+      .filter((value): value is string => value !== null)
+  );
+
+  const requestedOrigin = normalizeOrigin(options.assetOrigin);
+  const configuredOrigin =
+    requestedOrigin && trustedOrigins.has(requestedOrigin)
+      ? requestedOrigin
+      : normalizeOrigin(trustedConfiguredOrigin);
+
+  return configuredOrigin;
 }

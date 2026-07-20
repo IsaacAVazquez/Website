@@ -347,7 +347,7 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
             GitHub traction, and release velocity in one place.
           </p>
           <p className="mb-0 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
-            Curated snapshot · Updated {updatedAt}
+            Curated snapshot · Updated {updatedAt} · I verify pricing and releases manually
           </p>
         </div>
         <div className="home-card p-5">

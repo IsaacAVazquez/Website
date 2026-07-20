@@ -14,7 +14,12 @@ function createDeferred<T>() {
   return { promise, resolve, reject };
 }
 
-function buildQuoteResponse(symbol: string, price: number, name: string) {
+function buildQuoteResponse(
+  symbol: string,
+  price: number,
+  name: string,
+  asOf = new Date().toISOString(),
+) {
   return {
     ok: true,
     json: async () => ({
@@ -31,6 +36,8 @@ function buildQuoteResponse(symbol: string, price: number, name: string) {
           volume: 1000000,
           marketCap: 1000000000,
           name,
+          asOf,
+          source: "finnhub",
         },
       ],
       timestamp: "2026-03-30T08:00:00.000Z",
@@ -75,7 +82,8 @@ describe("useLiveQuote", () => {
   });
 
   afterEach(() => {
-    jest.resetAllMocks();
+    jest.useRealTimers();
+    jest.restoreAllMocks();
   });
 
   afterAll(() => {
@@ -153,6 +161,7 @@ describe("useLiveQuote", () => {
 
     await waitFor(() => expect(result.current.isLoading).toBe(false));
     expect(result.current.quote?.price).toBe(203.1);
+    expect(result.current.quote?.isFallback).toBe(true);
     // The stale quote stays on screen, but the failed refresh is not silent.
     expect(result.current.error).toMatch(/temporarily unavailable/i);
   });
@@ -187,5 +196,45 @@ describe("useLiveQuote", () => {
     await waitFor(() => expect(result.current.quote?.price).toBe(204.25));
     expect(result.current.error).toBeNull();
     expect(global.fetch).toHaveBeenCalledTimes(3);
+  });
+
+  it("revalidates on focus after the short cache window", async () => {
+    (global.fetch as jest.Mock)
+      .mockResolvedValueOnce(buildQuoteResponse("AAPL", 203.1, "Apple Inc."))
+      .mockResolvedValueOnce(buildQuoteResponse("AAPL", 204.25, "Apple Inc."));
+
+    const { result } = renderHook(() => useLiveQuote("AAPL"));
+    await waitFor(() => expect(result.current.quote?.price).toBe(203.1));
+
+    const baseNow = Date.now();
+    jest.spyOn(Date, "now").mockReturnValue(baseNow + 60_001);
+    act(() => window.dispatchEvent(new Event("focus")));
+
+    await waitFor(() => expect(result.current.quote?.price).toBe(204.25));
+    expect(global.fetch).toHaveBeenCalledTimes(2);
+
+    act(() => window.dispatchEvent(new Event("focus")));
+    await act(async () => Promise.resolve());
+    expect(global.fetch).toHaveBeenCalledTimes(2);
+  });
+
+  it("marks a quote saved when its provider timestamp expires", async () => {
+    const now = new Date("2026-07-12T20:00:00.000Z");
+    jest.useFakeTimers();
+    jest.setSystemTime(now);
+    jest.spyOn(document, "visibilityState", "get").mockReturnValue("hidden");
+    (global.fetch as jest.Mock).mockResolvedValue(
+      buildQuoteResponse("AAPL", 203.1, "Apple Inc.", now.toISOString()),
+    );
+
+    const { result } = renderHook(() => useLiveQuote("AAPL"));
+    await waitFor(() => expect(result.current.quote?.price).toBe(203.1));
+    expect(result.current.quote?.isFallback).not.toBe(true);
+
+    act(() => {
+      jest.advanceTimersByTime(4 * 24 * 60 * 60 * 1000 + 1);
+    });
+
+    expect(result.current.quote?.isFallback).toBe(true);
   });
 });

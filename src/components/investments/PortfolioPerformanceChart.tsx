@@ -24,6 +24,8 @@ import { TerminalPanel } from "./TerminalPanel";
 
 export interface PortfolioSnapshot {
   date: string; // "2026-03-05"
+  /** Latest provider timestamp represented by this session valuation. */
+  valuationAsOf?: string;
   totalValue: number;
   totalCost: number;
   holdingCount: number;

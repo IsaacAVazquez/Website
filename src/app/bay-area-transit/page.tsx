@@ -11,7 +11,7 @@ import { normalizeTransitState } from "./bay-area-transit-state";
 export const metadata = constructMetadata({
   title: "Bay Area Transit Pulse",
   description:
-    "Snapshot-backed BART dashboard for the Bay Area, with lines and colors, live-style departure boards by station, and active service alerts in one calm screen.",
+    "BART dashboard for the Bay Area with a stable line directory, frequently refreshed departure boards, and active service alerts in one calm screen.",
   canonicalUrl: "/bay-area-transit",
   image: "/bay-area-transit/opengraph-image",
   dateModified: bayAreaTransitSnapshot.summary.system?.generatedAt?.slice(0, 10),
@@ -35,11 +35,11 @@ export const metadata = constructMetadata({
     ],
     contentType: "Software Application",
     context:
-      "Standalone Bay Area transit dashboard by Isaac Vazquez that packages a checked-in BART snapshot into a clean, shareable product surface.",
+      "Standalone Bay Area transit dashboard by Isaac Vazquez that combines a checked-in route catalog with frequently refreshed BART departures and alerts.",
     summary:
       "Bay Area BART dashboard for scanning lines, station departures, and service alerts.",
     primaryFocus:
-      "Snapshot-backed transit context, station-level departures, and mobile-friendly civic product UX",
+      "Live transit context, station-level departures, and mobile-friendly civic product UX",
   },
 });
 
@@ -87,7 +87,7 @@ export default async function BayAreaTransitPage({
         data={{
           name: "Bay Area Transit Pulse",
           description:
-            "Snapshot-backed BART dashboard for Bay Area lines, station departures, and service alerts.",
+            "BART dashboard for Bay Area lines, frequently refreshed station departures, and service alerts.",
           url: "https://isaacavazquez.com/bay-area-transit",
           applicationCategory: "TravelApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
@@ -95,7 +95,7 @@ export default async function BayAreaTransitPage({
             "Line directory with official BART colors and end-to-end routes",
             "Per-station departure boards backed by shareable URL state",
             "Active service alerts and elevator outages",
-            "Local snapshot rendering without a live third-party runtime dependency",
+            "Last-good snapshot fallback when a BART feed is unavailable",
           ],
           dateModified: bayAreaTransitSnapshot.summary.system?.generatedAt ?? "",
         }}

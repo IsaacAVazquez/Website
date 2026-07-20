@@ -102,7 +102,7 @@ export interface TransitSystem {
   seed: boolean;
 }
 
-export type TransitSectionStatus = "fresh" | "unavailable";
+export type TransitSectionStatus = "fresh" | "stale-fallback" | "unavailable";
 
 export interface TransitSectionStatuses {
   advisories: TransitSectionStatus;

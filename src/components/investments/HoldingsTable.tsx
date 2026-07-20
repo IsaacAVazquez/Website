@@ -159,14 +159,25 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
           </div>
         </div>
       </td>
-      <td className="num">{formatCurrency(holding.currentPrice)}</td>
       <td className="num">
-        <span
-          className={dayPositive ? "text-[var(--home-positive)]" : "text-[var(--home-negative)]"}
-          style={{ fontWeight: 600 }}
-        >
-          {formatPercent(holding.dayChangePercent)}
-        </span>
+        <div>{formatCurrency(holding.currentPrice)}</div>
+        {holding.priceSource !== "live" ? (
+          <div className="text-3xs font-medium text-[var(--home-warning)]">
+            {holding.priceSource === "saved" ? "Saved quote" : "Cost basis"}
+          </div>
+        ) : null}
+      </td>
+      <td className="num">
+        {holding.priceSource === "live" ? (
+          <span
+            className={dayPositive ? "text-[var(--home-positive)]" : "text-[var(--home-negative)]"}
+            style={{ fontWeight: 600 }}
+          >
+            {formatPercent(holding.dayChangePercent)}
+          </span>
+        ) : (
+          <span className="text-[var(--home-ink-muted)]">—</span>
+        )}
       </td>
       <td className="col-trend">
         {sparkData.length >= 2 ? (

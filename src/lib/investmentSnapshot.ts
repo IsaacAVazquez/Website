@@ -1,8 +1,8 @@
-import { computeDcf, transformIndustryWithStockValues, transformSection } from "@/lib/investmentTransforms";
+import { transformIndustryWithStockValues, transformSection } from "@/lib/investmentTransforms";
 import { buildInvestmentFreshness, getPriceAsOf } from "@/lib/investmentFreshness";
+import { buildInvestmentCapabilities } from "@/lib/investmentCapabilities";
+import { isStrictIsoCalendarDate } from "@/lib/investmentsPriceHealth";
 import type {
-  DcfData,
-  InvestmentCapabilities,
   InvestmentSection,
   InvestmentSnapshot,
   NewsData,
@@ -52,13 +52,22 @@ function normalizePriceRows(raw: unknown): PriceData | undefined {
 
       if (
         !date ||
-        [open, high, low, close, volume].some((value) => Number.isNaN(value))
+        !isStrictIsoCalendarDate(date) ||
+        [open, high, low, close, volume].some((value) => !Number.isFinite(value)) ||
+        open <= 0 ||
+        high <= 0 ||
+        low <= 0 ||
+        close <= 0 ||
+        volume < 0 ||
+        low > Math.min(open, close) ||
+        high < Math.max(open, close) ||
+        high < low
       ) {
         return null;
       }
 
       return {
-        date,
+        date: date.slice(0, 10),
         open,
         high,
         low,
@@ -135,46 +144,6 @@ function normalizeSection(
   return hasErrorShape(transformed) ? undefined : transformed;
 }
 
-function buildCapabilities(
-  sections: Partial<Record<InvestmentSection, unknown>>
-): InvestmentCapabilities {
-  const capabilities: InvestmentCapabilities = {
-    price: hasRows(sections.price),
-    info: sections.info !== undefined,
-    fundamentals: sections.fundamentals !== undefined,
-    profitability: sections.profitability !== undefined,
-    margins: hasRows(sections.margins),
-    growth: hasRows(sections.growth),
-    income_statement:
-      !!sections.income_statement &&
-      typeof sections.income_statement === "object" &&
-      (((sections.income_statement as JsonRecord).quarterly as unknown[] | undefined)?.length ?? 0) +
-        (((sections.income_statement as JsonRecord).annual as unknown[] | undefined)?.length ?? 0) >
-        0,
-    balance_sheet:
-      !!sections.balance_sheet &&
-      typeof sections.balance_sheet === "object" &&
-      (((sections.balance_sheet as JsonRecord).quarterly as unknown[] | undefined)?.length ?? 0) +
-        (((sections.balance_sheet as JsonRecord).annual as unknown[] | undefined)?.length ?? 0) >
-        0,
-    cash_flow:
-      !!sections.cash_flow &&
-      typeof sections.cash_flow === "object" &&
-      (((sections.cash_flow as JsonRecord).quarterly as unknown[] | undefined)?.length ?? 0) +
-        (((sections.cash_flow as JsonRecord).annual as unknown[] | undefined)?.length ?? 0) >
-        0,
-    wacc: sections.wacc !== undefined,
-    industry: hasRows(sections.industry),
-    beta: sections.beta !== undefined,
-    news: hasRows(sections.news),
-    dcf: sections.dcf !== undefined,
-    officers: hasRows(sections.officers),
-    compare: true,
-  };
-
-  return capabilities;
-}
-
 export interface RawInvestmentSnapshotInputs {
   info?: unknown;
   fundamentals?: unknown;
@@ -227,12 +196,7 @@ export function buildInvestmentSnapshot(
     ? undefined
     : industry;
 
-  const dcf = raw.wacc && raw.fundamentals && raw.growth && normalizedPrice
-    ? computeDcf(raw.wacc, raw.fundamentals, raw.growth, normalizedPrice)
-    : undefined;
-  sections.dcf = dcf && !hasErrorShape(dcf) ? (dcf as DcfData) : undefined;
-
-  const capabilities = buildCapabilities(sections);
+  const capabilities = buildInvestmentCapabilities(sections);
   const freshness = buildInvestmentFreshness({
     snapshotBuiltAt: lastUpdated,
     sections: {

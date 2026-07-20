@@ -2,7 +2,7 @@
 
 Current component map for the live application.
 
-**Last updated:** 2026-06-19
+**Last updated:** 2026-07-12
 
 > The homepage, about, portfolio, contact, and writing-archive surfaces moved to
 > dedicated `*V3` composition roots in the 2026-05-31 refresh (commit `66063bb`).
@@ -86,7 +86,7 @@ composes the portfolio and research surfaces (all under
 
 - Portfolio: `PortfolioSummary`, `PortfolioHeroCard`, `PortfolioStatsGrid`, `HoldingsTable`, `AddStockForm`, `AllocationChart`, `PortfolioPerformanceChart`, `Sparkline`
 - Research: `StockResearch`, `StockSearch`, `ResearchOverview`, `ResearchSidebar`, `ResearchSection`, `ResearchAssetHeader`, `ResearchPosition`
-- Research panels: `PriceChartPanel`, `DCFPanel`, `FinancialStatementsPanel`, `GrowthPanel`, `ValuationRatiosPanel`, `ProfitabilityPanel`, `IndustryPanel`
+- Research panels: `PriceChartPanel`, `FinancialStatementsPanel`, `GrowthPanel`, `ValuationRatiosPanel`, `ProfitabilityPanel`, `IndustryPanel`
 - Comparison: `ComparisonTab`, `ComparisonMetricTable`, `ComparisonRadarChart`
 - Freshness / chrome: `DataFreshnessIndicator`, `InvestmentsFreshnessBanner`, `MetricTooltip`, `ErrorState`
 

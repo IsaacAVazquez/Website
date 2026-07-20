@@ -67,10 +67,13 @@ describe("GET /api/bay-area-transit/summary", () => {
     expect(body.heroStats.stationCount).toBe(50);
     expect(body.defaultStation).toBe("embr");
     expect(response.headers.get("Cache-Control")).toBe(
-      "public, max-age=300, stale-while-revalidate=900"
+      "public, max-age=30, stale-while-revalidate=120"
     );
     expect(response.headers.get("X-Data-Revision")).toMatch(/^[a-f0-9]{64}$/);
-    expect(response.headers.get("X-Data-Source")).toBe("git-snapshot");
+    expect(response.headers.get("X-Data-Source")).toBe(
+      "bart-runtime-with-snapshot-fallback"
+    );
+    expect(mockGetTransitSummary).toHaveBeenCalledWith({ preferLive: true });
   });
 
   it("returns a stable empty payload when the summary lookup fails", async () => {

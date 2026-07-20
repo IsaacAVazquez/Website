@@ -1,93 +1,159 @@
 import { NextResponse } from "next/server";
+import {
+  AI_DEV_TOOLS_GENERATED_AT,
+  AI_DEV_TOOLS_VERIFIED,
+  aiDevTools,
+} from "@/app/ai-dev-tools/ai-dev-tools-data";
+import {
+  FOOD_MAP_AS_OF,
+  FOOD_MAP_PLACES,
+  FOOD_MAP_VERIFIED,
+} from "@/app/food-map/food-map-data";
 import { bayAreaTransitSnapshot } from "@/data/bayAreaTransitSnapshot";
 import { earthquakeSnapshot } from "@/data/earthquakeSnapshot";
 import { formula1Snapshot } from "@/data/formula1Snapshot";
+import { frontierModelsSnapshot } from "@/data/frontierModelsSnapshot";
 import { githubTrendingSnapshot } from "@/data/githubTrendingSnapshot";
 import { golfSnapshot } from "@/data/golfSnapshot";
+import { laLigaSnapshot } from "@/data/laLigaSnapshot";
+import { mlbSnapshot } from "@/data/mlbSnapshot";
+import { nbaSnapshot } from "@/data/nbaSnapshot";
+import { nflSnapshot } from "@/data/nflSnapshot";
+import { pollingSnapshot } from "@/data/pollingSnapshot";
+import { premierLeagueSnapshot } from "@/data/premierLeagueSnapshot";
+import { scorePoolsSnapshot } from "@/data/scorePoolsSnapshot";
+import { techStartupSnapshot } from "@/data/techStartupSnapshot";
+import {
+  DEAL_TACTICS,
+  DESTINATION_REGIONS,
+  RECOMMENDED_TOOLS,
+  TRAVEL_DEALS_AS_OF,
+  TRAVEL_DEALS_VERIFIED,
+} from "@/data/travelDealsSnapshot";
+import {
+  MUSEUM_SNAPSHOT_VERIFIED,
+  museumSnapshot,
+} from "@/data/museumSnapshot";
 import { worldCupSnapshot } from "@/data/worldCupSnapshot";
-import { createDataRevisionEntry } from "@/lib/dataRevision";
+import { getDataFreshnessPolicy, type DataSurfaceId } from "@/lib/dataFreshnessPolicy";
+import {
+  createDataLedgerRevision,
+  createDataRevisionEntry,
+} from "@/lib/dataRevision";
 import { getSpaceXSnapshot } from "@/lib/spacexSnapshot";
+import { hasLiveScorePoolsData } from "@/lib/scorePoolsSnapshot";
+import fantasySnapshot from "../../../../public/data/fantasy/ppr.json";
 import investmentsIndex from "../../../../public/data/investments/index.json";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
-const HOUR_MS = 60 * 60 * 1000;
-
 export async function GET() {
   const now = Date.now();
+  const nowDate = new Date(now);
   const spacexSnapshot = getSpaceXSnapshot();
+  const entry = (
+    surface: DataSurfaceId,
+    payload: unknown,
+    sourceAsOf: string | null,
+    status?: "degraded"
+  ) => {
+    const policy = getDataFreshnessPolicy(surface, nowDate);
+    return createDataRevisionEntry({
+      surface,
+      payload,
+      sourceAsOf,
+      maxAgeMs: policy.maxAgeMs,
+      source: policy.source,
+      now,
+      status,
+    });
+  };
   const entries = [
-    createDataRevisionEntry({
-      surface: "earthquake",
-      payload: earthquakeSnapshot.summary,
-      sourceAsOf: earthquakeSnapshot.summary.generatedAt,
-      maxAgeMs: 2 * HOUR_MS,
-      now,
-    }),
-    createDataRevisionEntry({
-      surface: "bay-area-transit",
-      // Summary grain, matching /api/bay-area-transit/summary's X-Data-Revision.
-      payload: bayAreaTransitSnapshot.summary,
-      sourceAsOf: bayAreaTransitSnapshot.summary.system?.generatedAt ?? null,
-      maxAgeMs: 8 * HOUR_MS,
-      now,
-    }),
-    createDataRevisionEntry({
-      surface: "formula-1",
-      payload: formula1Snapshot,
-      sourceAsOf: formula1Snapshot.generatedAt,
-      maxAgeMs: 48 * HOUR_MS,
-      now,
-    }),
-    createDataRevisionEntry({
-      surface: "github-trending",
-      payload: githubTrendingSnapshot,
-      sourceAsOf: githubTrendingSnapshot.generatedAt,
-      maxAgeMs: 36 * HOUR_MS,
-      now,
-    }),
-    createDataRevisionEntry({
-      surface: "golf",
-      payload: golfSnapshot,
-      sourceAsOf: golfSnapshot.summary.tournament?.generatedAt ?? null,
-      maxAgeMs: 36 * HOUR_MS,
-      now,
-    }),
-    createDataRevisionEntry({
-      surface: "investments",
-      payload: investmentsIndex,
-      sourceAsOf: investmentsIndex.lastUpdated,
-      // The refresh runs Mon+Thu 22:15 UTC; the Thu -> Mon gap is exactly 96h,
-      // so a 120h window keeps an on-cadence snapshot from reading stale.
-      maxAgeMs: 5 * 24 * HOUR_MS,
-      now,
-      status:
-        investmentsIndex.entries.some(
-          (entry) => "stale" in entry && entry.stale === true
-        )
-          ? "degraded"
-          : undefined,
-    }),
-    createDataRevisionEntry({
-      surface: "spacex",
-      payload: spacexSnapshot,
-      sourceAsOf: spacexSnapshot.generatedAt,
-      maxAgeMs: 36 * HOUR_MS,
-      now,
-    }),
-    createDataRevisionEntry({
-      surface: "world-cup",
-      payload: worldCupSnapshot,
-      sourceAsOf: worldCupSnapshot.tournament.generatedAt,
-      maxAgeMs: 8 * HOUR_MS,
-      now,
-    }),
+    entry("earthquake", earthquakeSnapshot.summary, earthquakeSnapshot.summary.generatedAt),
+    entry(
+      "bay-area-transit",
+      bayAreaTransitSnapshot.summary,
+      bayAreaTransitSnapshot.summary.system?.generatedAt ?? null
+    ),
+    entry("formula-1", formula1Snapshot, formula1Snapshot.generatedAt),
+    entry("github-trending", githubTrendingSnapshot, githubTrendingSnapshot.generatedAt),
+    entry("golf", golfSnapshot, golfSnapshot.summary.tournament?.generatedAt ?? null),
+    entry(
+      "investments",
+      investmentsIndex,
+      investmentsIndex.lastUpdated,
+      investmentsIndex.entries.some(
+        (item) => "stale" in item && item.stale === true
+      )
+        ? "degraded"
+        : undefined
+    ),
+    entry("spacex", spacexSnapshot, spacexSnapshot.generatedAt),
+    entry("world-cup", worldCupSnapshot, worldCupSnapshot.tournament.generatedAt),
+    entry(
+      "premier-league",
+      premierLeagueSnapshot.summary,
+      premierLeagueSnapshot.summary.generatedAt
+    ),
+    entry("la-liga", laLigaSnapshot, laLigaSnapshot.updatedAt),
+    entry("mlb", mlbSnapshot, mlbSnapshot.updatedAt),
+    entry("nba", nbaSnapshot, nbaSnapshot.updatedAt),
+    entry("nfl", nflSnapshot, nflSnapshot.updatedAt),
+    entry("fantasy-football", fantasySnapshot, fantasySnapshot.generatedAt),
+    entry(
+      "score-pools",
+      scorePoolsSnapshot,
+      scorePoolsSnapshot.generatedAt,
+      hasLiveScorePoolsData(scorePoolsSnapshot) ? undefined : "degraded"
+    ),
+    entry(
+      "frontier-models",
+      frontierModelsSnapshot,
+      frontierModelsSnapshot.asOf ?? frontierModelsSnapshot.generatedAt,
+      frontierModelsSnapshot.verified === false ? "degraded" : undefined
+    ),
+    entry(
+      "tech-startups",
+      techStartupSnapshot,
+      techStartupSnapshot.asOf ?? techStartupSnapshot.generatedAt,
+      techStartupSnapshot.verified === false ? "degraded" : undefined
+    ),
+    entry(
+      "ai-dev-tools",
+      aiDevTools,
+      AI_DEV_TOOLS_GENERATED_AT,
+      AI_DEV_TOOLS_VERIFIED ? undefined : "degraded"
+    ),
+    entry(
+      "museum-log",
+      museumSnapshot,
+      museumSnapshot.generatedAt,
+      MUSEUM_SNAPSHOT_VERIFIED ? undefined : "degraded"
+    ),
+    entry(
+      "travel-deals",
+      { destinations: DESTINATION_REGIONS, tactics: DEAL_TACTICS, tools: RECOMMENDED_TOOLS },
+      TRAVEL_DEALS_AS_OF,
+      TRAVEL_DEALS_VERIFIED ? undefined : "degraded"
+    ),
+    entry(
+      "food-map",
+      FOOD_MAP_PLACES,
+      FOOD_MAP_AS_OF,
+      FOOD_MAP_VERIFIED ? undefined : "degraded"
+    ),
+    entry(
+      "polling",
+      pollingSnapshot,
+      pollingSnapshot.sourceAsOf ?? pollingSnapshot.generatedAt
+    ),
   ];
 
   return NextResponse.json(
     {
       checkedAt: new Date(now).toISOString(),
+      revision: createDataLedgerRevision(entries),
       entries,
     },
     {
