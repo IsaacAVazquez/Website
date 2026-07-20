@@ -185,23 +185,23 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
           "url": data.url || siteConfig.url,
           "author": normalizePerson(author),
           ...(dateModified ? { dateModified } : {}),
-          "about": {
+          "about": data.about || {
             "@type": "Thing",
             "name": "Fantasy Football",
             "description": "Strategic game based on NFL player performance statistics"
           },
-          "audience": {
+          "audience": data.audience || {
             "@type": "Audience",
             "audienceType": "Fantasy Football Players"
           },
-          "featureList": [
+          "featureList": data.featureList || [
             "Overall and position-specific rankings",
             "PPR, Half PPR, and Standard scoring",
             "FantasyPros consensus tiers and expert ranges",
             "Published snapshot freshness metadata",
             "Manual draft assistant with local persistence"
           ],
-          "screenshot": `${siteConfig.url}${siteConfig.ogImage}`,
+          "screenshot": data.screenshot || data.image || `${siteConfig.url}${siteConfig.ogImage}`,
           "offers": offers || {
             "@type": "Offer",
             "price": "0",

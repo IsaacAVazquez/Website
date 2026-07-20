@@ -31,6 +31,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/museum-log": "2026-04-04",
   "/nba": "2026-04-04",
   "/now": "2026-04-13",
+  "/release-notes": "2026-07-02",
   "/recipe-finder": "2026-04-04",
   "/wine-cellar": "2026-04-04",
   "/bay-area-transit": readBayAreaTransitLastmod(),
@@ -92,6 +93,7 @@ const CHANGEFREQ_BY_ROUTE = {
   "/writing": "weekly",
   "/now": "monthly",
   "/changelog": "weekly",
+  "/release-notes": "weekly",
   // Standalone style-experiment page
   "/arcade": "monthly",
   // Fantasy football — weekly FantasyPros + ADP refresh

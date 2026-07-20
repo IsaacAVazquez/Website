@@ -27,7 +27,16 @@ describe("la-liga-state", () => {
     ).toEqual({
       view: "europe",
       club: "bet",
+      detail: "club",
     });
+  });
+
+  it("normalizes the detail tab and falls back on an invalid value", () => {
+    expect(normalizeLaLigaState({ detail: "scorers" }).detail).toBe("scorers");
+    expect(normalizeLaLigaState({ detail: "fixtures" }).detail).toBe("fixtures");
+    expect(normalizeLaLigaState({ detail: "nope" }).detail).toBe(
+      DEFAULT_LA_LIGA_STATE.detail
+    );
   });
 
   it("canonicalizes football-data team ids back to the shareable club ids", () => {
@@ -40,6 +49,7 @@ describe("la-liga-state", () => {
     ).toEqual({
       view: "table",
       club: "fcb",
+      detail: "club",
     });
   });
 
@@ -56,6 +66,7 @@ describe("la-liga-state", () => {
         {
           view: "europe",
           club: "90",
+          detail: "club",
         },
         new URLSearchParams("ref=portfolio")
       )
@@ -67,5 +78,22 @@ describe("la-liga-state", () => {
         new URLSearchParams("ref=portfolio&view=europe&club=bet")
       )
     ).toBe("/la-liga?ref=portfolio");
+  });
+
+  it("serializes a non-default detail tab and strips the default", () => {
+    expect(
+      buildLaLigaHref({
+        view: "table",
+        club: DEFAULT_LA_LIGA_STATE.club,
+        detail: "scorers",
+      })
+    ).toBe("/la-liga?detail=scorers");
+
+    expect(
+      buildLaLigaHref(
+        { view: "table", club: DEFAULT_LA_LIGA_STATE.club, detail: "club" },
+        new URLSearchParams("detail=scorers")
+      )
+    ).toBe("/la-liga");
   });
 });

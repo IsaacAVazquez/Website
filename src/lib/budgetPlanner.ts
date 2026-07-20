@@ -292,3 +292,35 @@ export function calculateBudgetSummary(month: BudgetMonth): BudgetSummary {
     recentExpenses: expenseEntries.slice(0, 5),
   };
 }
+
+/** RFC 4180 quoting for a CSV field. */
+export function escapeCsvValue(value: string | number): string {
+  const raw = String(value);
+  return /[",\r\n]/.test(raw) ? `"${raw.replace(/"/g, '""')}"` : raw;
+}
+
+/**
+ * Serialize a month's expense ledger plus a totals block to CSV. A leading BOM
+ * keeps Excel on UTF-8, and rows use CRLF endings per RFC 4180.
+ */
+export function buildBudgetCsv(month: BudgetMonth, summary: BudgetSummary): string {
+  const lines: string[] = [];
+  lines.push(["date", "category", "note", "amount"].join(","));
+  for (const entry of summary.expenseEntries) {
+    lines.push(
+      [entry.date, entry.categoryName, entry.note, entry.amount]
+        .map(escapeCsvValue)
+        .join(",")
+    );
+  }
+  lines.push("");
+  lines.push(["summary", "amount"].join(","));
+  lines.push(["Income", month.income].map(escapeCsvValue).join(","));
+  lines.push(["Budgeted", summary.budgetedTotal].map(escapeCsvValue).join(","));
+  lines.push(["Spent", summary.spentTotal].map(escapeCsvValue).join(","));
+  lines.push(
+    ["Remaining to spend", summary.remainingToSpend].map(escapeCsvValue).join(",")
+  );
+  lines.push(["Savings target", month.savingsTarget].map(escapeCsvValue).join(","));
+  return `\uFEFF${lines.join("\r\n")}`;
+}

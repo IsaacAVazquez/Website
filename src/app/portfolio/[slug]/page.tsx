@@ -104,8 +104,12 @@ export default async function CaseStudyPage({
 
   const allSlugs = getPortfolioProjects().map((study) => study.slug);
   const currentIndex = allSlugs.indexOf(slug);
+  const prevSlug = currentIndex > 0 ? allSlugs[currentIndex - 1] : null;
   const nextSlug =
-    currentIndex < allSlugs.length - 1 ? allSlugs[currentIndex + 1] : null;
+    currentIndex >= 0 && currentIndex < allSlugs.length - 1
+      ? allSlugs[currentIndex + 1]
+      : null;
+  const prevCaseStudy = prevSlug ? caseStudiesData[prevSlug] : null;
   const nextCaseStudy = nextSlug ? caseStudiesData[nextSlug] : null;
   const projectUrl = absoluteUrl(`/portfolio/${slug}`);
   const projectKeywords = Array.from(
@@ -545,35 +549,71 @@ export default async function CaseStudyPage({
           </section>
         )}
 
-        {nextCaseStudy && (
+        {(prevCaseStudy || nextCaseStudy) && (
           <footer
             className="pt-10"
             style={{ borderTop: "1px solid var(--home-rule)" }}
+            aria-label="Case study navigation"
           >
-            <p className="home-kicker mb-3">Next case study</p>
-            <Link href={`/portfolio/${nextCaseStudy.slug}`} className="block group">
-              {/* Lift only on hover-capable pointers — touch devices don't get the sticky transform. */}
-              <div className="home-card home-project-card p-6 sm:p-8 transition-transform duration-200 [@media(hover:hover)]:group-hover:-translate-y-0.5">
-                <div className="flex justify-between items-start gap-6">
-                  <div className="space-y-2">
-                    <h3 className="text-xl mb-0" style={subsectionTitleStyle}>
-                      {nextCaseStudy.title}
-                    </h3>
-                    <p className="mb-0 text-base leading-7" style={bodyStyle}>
-                      {nextCaseStudy.description}
-                    </p>
-                    <p className="mb-0 text-sm font-semibold" style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-signal)" }}>
-                      {nextCaseStudy.metrics}
-                    </p>
+            <div className="grid gap-4 md:grid-cols-2">
+              {prevCaseStudy ? (
+                <Link
+                  href={`/portfolio/${prevCaseStudy.slug}`}
+                  rel="prev"
+                  className="block group"
+                >
+                  {/* Lift only on hover-capable pointers — touch devices don't get the sticky transform. */}
+                  <div className="home-card home-project-card h-full p-6 sm:p-8 transition-transform duration-200 [@media(hover:hover)]:group-hover:-translate-y-0.5">
+                    <div className="flex items-start justify-between gap-6">
+                      <span style={{ color: "var(--home-ink-muted)" }}>
+                        <ArrowLeft className="h-5 w-5 flex-shrink-0 transition-transform group-hover:-translate-x-1" />
+                      </span>
+                      <div className="space-y-2 text-right">
+                        <p className="home-kicker mb-0">Previous case study</p>
+                        <h3 className="text-xl mb-0" style={subsectionTitleStyle}>
+                          {prevCaseStudy.title}
+                        </h3>
+                        <p className="mb-0 text-base leading-7" style={bodyStyle}>
+                          {prevCaseStudy.description}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  <span style={{ color: "var(--home-ink-muted)" }}>
-                    <ArrowRight
-                      className="h-5 w-5 flex-shrink-0 transition-transform group-hover:translate-x-1"
-                    />
-                  </span>
-                </div>
-              </div>
-            </Link>
+                </Link>
+              ) : (
+                <span aria-hidden="true" />
+              )}
+              {nextCaseStudy ? (
+                <Link
+                  href={`/portfolio/${nextCaseStudy.slug}`}
+                  rel="next"
+                  className="block group"
+                >
+                  {/* Lift only on hover-capable pointers — touch devices don't get the sticky transform. */}
+                  <div className="home-card home-project-card h-full p-6 sm:p-8 transition-transform duration-200 [@media(hover:hover)]:group-hover:-translate-y-0.5">
+                    <div className="flex items-start justify-between gap-6">
+                      <div className="space-y-2">
+                        <p className="home-kicker mb-0">Next case study</p>
+                        <h3 className="text-xl mb-0" style={subsectionTitleStyle}>
+                          {nextCaseStudy.title}
+                        </h3>
+                        <p className="mb-0 text-base leading-7" style={bodyStyle}>
+                          {nextCaseStudy.description}
+                        </p>
+                        <p className="mb-0 text-sm font-semibold" style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-signal)" }}>
+                          {nextCaseStudy.metrics}
+                        </p>
+                      </div>
+                      <span style={{ color: "var(--home-ink-muted)" }}>
+                        <ArrowRight className="h-5 w-5 flex-shrink-0 transition-transform group-hover:translate-x-1" />
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              ) : (
+                <span aria-hidden="true" />
+              )}
+            </div>
           </footer>
         )}
         </article>

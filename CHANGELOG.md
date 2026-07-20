@@ -7,6 +7,9 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 ## 2026-07-20
 
 - Score pools: exact-score prediction engine, data layer, and pick sheet ([#308](https://github.com/IsaacAVazquez/Website/pull/308)).
+- Close feature gaps across dashboards, tools, and SEO ([#319](https://github.com/IsaacAVazquez/Website/pull/319)).
+- Backfill changelog with missing PRs #296 and #297 ([#309](https://github.com/IsaacAVazquez/Website/pull/309)).
+- Application insights and a needs-attention list ([#316](https://github.com/IsaacAVazquez/Website/pull/316)).
 
 ---
 
@@ -24,6 +27,8 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Refresh README routes and build notes ([#293](https://github.com/IsaacAVazquez/Website/pull/293)).
 - Add Travel Deal Lab, a trip cost optimizer at /travel-deals ([#295](https://github.com/IsaacAVazquez/Website/pull/295)).
 - Add La Liga 2025-26 season article series ([#294](https://github.com/IsaacAVazquez/Website/pull/294)).
+- Add backdated 2025-26 Premier League season article series ([#296](https://github.com/IsaacAVazquez/Website/pull/296)).
+- Add 2026 Formula 1 race review articles (rounds 1-9) ([#297](https://github.com/IsaacAVazquez/Website/pull/297)).
 - Design review (July 2026) + first-batch quick-win fixes ([#300](https://github.com/IsaacAVazquez/Website/pull/300)).
 
 ---
