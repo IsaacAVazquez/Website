@@ -53,7 +53,7 @@ secondary authority-building content — not a generic blog template. The surfac
 - Netlify deployment via `@netlify/plugin-nextjs`
 
 Build pipeline: `npm run build` consumes committed snapshots without mutating data;
-`postbuild` runs `next-sitemap` and `scripts/patch-nft-sharp.mjs`. Full command and
+`postbuild` runs `scripts/generatePublicSitemap.mjs` and `scripts/patch-nft-sharp.mjs`. Full command and
 data-refresh runbooks live in `AGENTS.md` and `docs/DATA_UPDATE_OPERATIONS.md`.
 
 ---

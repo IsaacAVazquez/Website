@@ -56,9 +56,29 @@ describe("snapshot refresh workflow infrastructure", () => {
     );
 
     expect(helper).toContain("git add -- \"$@\"");
+    expect(helper).toContain("node scripts/generatePublicSitemap.mjs");
+    expect(helper).toContain('git add -- "$@" public/sitemap.xml');
+    expect(helper).toContain('unmerged_files="$(git diff --name-only --diff-filter=U)"');
+    expect(helper).toContain(
+      'if [[ "$sitemap_enabled" == true && "$unmerged_files" == "public/sitemap.xml" ]]'
+    );
+    expect(helper).toContain("git commit --amend --no-edit");
     expect(helper).toContain("git push origin HEAD:main");
     expect(helper).toContain("git rebase --autostash origin/main");
     expect(helper).toContain("SNAPSHOT_PUSH_ATTEMPTS");
+  });
+
+  it("installs sitemap dependencies before snapshot commits", () => {
+    for (const workflowPath of updateWorkflowFiles) {
+      const workflow = fs.readFileSync(workflowPath, "utf8");
+      const helperIndex = workflow.indexOf(
+        "bash scripts/ci/commit-and-push-snapshot.sh"
+      );
+      if (helperIndex === -1) continue;
+
+      expect(workflow.indexOf("npm ci")).toBeGreaterThan(-1);
+      expect(workflow.indexOf("npm ci")).toBeLessThan(helperIndex);
+    }
   });
 
   it("publishes and verifies snapshot workflows through one coalesced job", () => {
