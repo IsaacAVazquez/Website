@@ -11,31 +11,6 @@ export const metadata = constructMetadata({
   canonicalUrl: "/spacex-mission-control",
   image: "/spacex-mission-control/opengraph-image",
   dateModified: "2026-04-01",
-  aiMetadata: {
-    profession: "Product Manager",
-    specialty: "Data products, interactive dashboards, and relationship-aware exploratory interfaces",
-    expertise: [
-      "Next.js",
-      "Mission control UX",
-      "API normalization",
-      "Launch data storytelling",
-      "Interactive dashboards",
-    ],
-    industry: ["Aerospace", "Media", "Developer Tools"],
-    topics: [
-      "SpaceX launch tracker",
-      "mission control interface",
-      "launch board",
-      "SpaceX API project",
-    ],
-    contentType: "Software Application",
-    context:
-      "Standalone interactive product surface by Isaac Vazquez that packages public SpaceX launch data into a mission-control-style experience.",
-    summary:
-      "Launch board for SpaceX missions with next-launch hero, upcoming and past filters, and deep-linkable mission detail panels.",
-    primaryFocus:
-      "Productized data UX, relationship-aware API integration, and operational dashboard design",
-  },
 });
 
 interface SpaceXMissionControlPageProps {

@@ -12,31 +12,6 @@ export const metadata = constructMetadata({
   canonicalUrl: "/golf",
   image: "/golf/opengraph-image",
   dateModified: golfSnapshot.summary.tournament?.generatedAt?.slice(0, 10),
-  aiMetadata: {
-    profession: "Product Manager",
-    specialty: "Sports dashboards, deep-linkable product surfaces, and snapshot-backed analytics UX",
-    expertise: [
-      "Next.js",
-      "Sports dashboard design",
-      "Golf product UX",
-      "Snapshot-driven applications",
-      "Deep-linkable state",
-    ],
-    industry: ["Sports", "Media", "Analytics"],
-    topics: [
-      "PGA Tour leaderboard",
-      "golf dashboard",
-      "player drilldowns",
-      "round-by-round movement",
-    ],
-    contentType: "Software Application",
-    context:
-      "Standalone golf dashboard by Isaac Vazquez that packages a checked-in tournament snapshot into a fast, shareable dashboard.",
-    summary:
-      "PGA Tour tournament dashboard for leaderboard scanning, player cards, and golfer drilldowns.",
-    primaryFocus:
-      "Snapshot-backed tournament context, player movement, and mobile-friendly sports product UX",
-  },
 });
 
 interface GolfPageProps {

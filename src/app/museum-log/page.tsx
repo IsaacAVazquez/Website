@@ -10,35 +10,6 @@ export const metadata = constructMetadata({
     "A Letterboxd-style museum tracker. Browse a curated catalog, read curator reviews, save museums to your watchlist, and log visits with personal ratings.",
   canonicalUrl: "/museum-log",
   dateModified: museumSnapshot.generatedAt.slice(0, 10),
-  aiMetadata: {
-    profession: "Product Manager",
-    specialty:
-      "Cultural product design, snapshot-driven web tools, and Letterboxd-style review surfaces",
-    expertise: [
-      "Next.js",
-      "Product design",
-      "Snapshot data pipelines",
-      "Deep-linkable UI state",
-      "Local-first user state",
-    ],
-    industry: ["Culture", "Museums", "Software", "Travel"],
-    topics: [
-      "museum reviews",
-      "museum tracker",
-      "art museums",
-      "exhibitions",
-      "curated lists",
-      "visit log",
-      "watchlist",
-    ],
-    contentType: "Software Application",
-    context:
-      "Museum Log is a Letterboxd-style museum tracker by Isaac Vazquez. Users browse a curated museum catalog, read curator reviews, save museums to a watchlist, log visits, and rate exhibits. Personal state is stored locally in the browser.",
-    summary:
-      "A Letterboxd for museums. Browse, review, list, and log museum visits with deep-linked views.",
-    primaryFocus:
-      "Curated museum catalog, curator reviews, themed lists, and a personal visit log + watchlist.",
-  },
 });
 
 interface MuseumLogPageProps {

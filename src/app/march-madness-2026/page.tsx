@@ -16,31 +16,6 @@ export const metadata = constructMetadata({
   canonicalUrl: "/march-madness-2026",
   dateModified: MARCH_MADNESS_UPDATED_AT,
   image: "/march-madness-2026/opengraph-image",
-  aiMetadata: {
-    profession: "Product Manager",
-    specialty: "Sports analytics storytelling, data visualization, and interactive product packaging",
-    expertise: [
-      "March Madness Bracket Analysis",
-      "Sports Analytics",
-      "Data Storytelling",
-      "Interactive Product Design",
-      "Next.js",
-    ],
-    industry: ["Sports Analytics", "Media", "Product Management"],
-    topics: [
-      "March Madness bracket",
-      "NCAA tournament upset picks",
-      "Final Four predictions",
-      "Sports analytics UX",
-    ],
-    contentType: "Interactive Sports Analysis",
-    context:
-      "Hybrid portfolio project and editorial sports-analysis page by Isaac Vazquez that turns a bracket model into an interactive page you can click through by region.",
-    summary:
-      "Interactive 2026 March Madness bracket with upset picks, Final Four predictions, and a time-zone travel penalty model.",
-    primaryFocus:
-      "Search-friendly sports analysis, interactive storytelling, and analytics-driven bracket picks",
-  },
 });
 
 interface MarchMadnessPageProps {

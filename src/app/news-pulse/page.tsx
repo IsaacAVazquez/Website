@@ -10,31 +10,6 @@ export const metadata = constructMetadata({
   canonicalUrl: "/news-pulse",
   dateModified: "2026-04-01",
   image: "/news-pulse/opengraph-image",
-  aiMetadata: {
-    profession: "Product Manager",
-    specialty: "News media analytics, AI-adjacent tooling for editorial workflows, and media industry strategy",
-    expertise: [
-      "News Media Analytics",
-      "RSS Feed Aggregation",
-      "Sentiment Analysis",
-      "Topic Extraction",
-      "Next.js",
-    ],
-    industry: ["News Media", "Media Technology", "Product Management"],
-    topics: [
-      "News aggregation dashboard",
-      "Media coverage analysis",
-      "Headline sentiment analysis",
-      "Cross-outlet topic tracking",
-    ],
-    contentType: "Software Application",
-    context:
-      "Portfolio project by Isaac Vazquez demonstrating news media analytics thinking, relevant to media strategy roles focused on AI integration and editorial innovation.",
-    summary:
-      "Live dashboard pulling RSS feeds from The Atlantic, NYT, The Guardian, BBC, NPR, and Al Jazeera to visualize coverage patterns, trending topics, and headline sentiment.",
-    primaryFocus:
-      "News media analytics, cross-outlet coverage visualization, and lightweight NLP for editorial intelligence",
-  },
 });
 
 interface NewsPulsePageProps {

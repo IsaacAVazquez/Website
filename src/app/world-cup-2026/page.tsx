@@ -15,33 +15,6 @@ export const metadata = constructMetadata({
   canonicalUrl: "/world-cup-2026",
   image: "/world-cup-2026/opengraph-image",
   dateModified: worldCupSnapshot.tournament.generatedAt.slice(0, 10),
-  aiMetadata: {
-    profession: "Product Manager",
-    specialty:
-      "Interactive dashboards, sports data products, and productized exploratory tools",
-    expertise: [
-      "Next.js",
-      "Sports dashboard design",
-      "Deep-linkable UI state",
-      "Snapshot-driven data products",
-      "Information architecture",
-    ],
-    industry: ["Sports", "Media", "Analytics"],
-    topics: [
-      "2026 FIFA World Cup",
-      "group standings",
-      "knockout bracket",
-      "match schedule",
-      "host cities",
-    ],
-    contentType: "Software Application",
-    context:
-      "Standalone 2026 FIFA World Cup tracker by Isaac Vazquez that packages a curated ESPN snapshot into a deep-linkable dashboard covering groups, the knockout bracket, and the schedule.",
-    summary:
-      "World Cup dashboard for group standings, the 32-team knockout bracket, the full schedule, and host venues.",
-    primaryFocus:
-      "Fast local data exploration with shareable URL state across the group stage and knockout rounds",
-  },
 });
 
 interface WorldCupPageProps {

@@ -15,30 +15,6 @@ export const metadata = constructMetadata({
   canonicalUrl: "/la-liga",
   image: "/la-liga/opengraph-image",
   dateModified: laLigaSnapshot.updatedAt,
-  aiMetadata: {
-    profession: "Product Manager",
-    specialty: "Interactive dashboards, sports data products, and interactive data tools",
-    expertise: [
-      "Next.js",
-      "Sports dashboard design",
-      "Deep-linkable UI state",
-      "Snapshot-driven data products",
-      "Information architecture",
-    ],
-    industry: ["Sports", "Media", "Analytics"],
-    topics: [
-      "La Liga standings",
-      "soccer dashboard",
-      "European qualification tracker",
-      "relegation battle",
-    ],
-    contentType: "Software Application",
-    context:
-      "Standalone soccer intelligence tool by Isaac Vazquez that packages a curated La Liga standings snapshot into a deep-linkable dashboard.",
-    summary:
-      "La Liga dashboard for standings, title race, Europe line, relegation pressure, and official stat leaders.",
-    primaryFocus: "Fast local data exploration with shareable URL state and clear competition pressure views",
-  },
 });
 
 interface LaLigaPageProps {

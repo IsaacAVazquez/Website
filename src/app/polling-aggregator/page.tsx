@@ -10,33 +10,6 @@ export const metadata = constructMetadata({
     "Interactive polling dashboard using VoteHub data for presidential approval and the 2026 generic congressional ballot.",
   canonicalUrl: "/polling-aggregator",
   dateModified: pollingSnapshot.generatedAt.slice(0, 10),
-  aiMetadata: {
-    profession: "Product Manager",
-    specialty: "Data aggregation, political analytics, and interactive dashboard design",
-    expertise: [
-      "Next.js",
-      "Political data products",
-      "Dashboard design",
-      "Polling aggregation methodology",
-      "Deep-linkable UI state",
-    ],
-    industry: ["Politics", "Media", "Analytics", "Civic Tech"],
-    topics: [
-      "presidential approval rating",
-      "generic ballot polling",
-      "2026 midterm elections",
-      "Senate race tracker",
-      "governor race tracker",
-      "polling average",
-    ],
-    contentType: "Software Application",
-    context:
-      "Standalone political polling dashboard by Isaac Vazquez using VoteHub data for presidential approval and the 2026 generic ballot.",
-    summary:
-      "Polling dashboard for presidential approval trends and the 2026 generic congressional ballot.",
-    primaryFocus:
-      "Snapshot-driven political data exploration, polling averages, and shareable race views",
-  },
 });
 
 interface PollingPageProps {

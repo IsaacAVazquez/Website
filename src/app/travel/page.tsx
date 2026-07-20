@@ -8,31 +8,6 @@ export const metadata = constructMetadata({
     "Plan trips, track day-by-day itineraries, and journal as you go. Browser-persisted, no account required.",
   canonicalUrl: "/travel",
   dateModified: "2026-05-04",
-  aiMetadata: {
-    profession: "Product Manager",
-    specialty: "Travel planning UX, itinerary tracking, and trip journaling",
-    expertise: [
-      "Trip Planning",
-      "Itinerary Management",
-      "Travel Journaling",
-      "Client-side Persistence",
-      "Next.js",
-    ],
-    industry: ["Travel", "Personal Productivity", "Product Management"],
-    topics: [
-      "Trip planning",
-      "Itinerary tracking",
-      "Travel journaling",
-      "Browser-persisted travel notes",
-    ],
-    contentType: "Software Application",
-    context:
-      "Standalone travel planner tool that lets you draft trips, lay out a day-by-day itinerary, check off stops, and keep a per-trip journal. State is saved in your browser.",
-    summary:
-      "Travel planner for trip dates, day-by-day activities, and per-day journal entries.",
-    primaryFocus:
-      "Trip planning, itinerary tracking, and reflective travel journaling",
-  },
 });
 
 export default function TravelPlannerPage() {

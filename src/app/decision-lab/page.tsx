@@ -9,30 +9,6 @@ export const metadata = constructMetadata({
     "Product-bet triage tool for scoring impact, confidence, effort, and reversibility before calling ship, test, or hold.",
   canonicalUrl: "/decision-lab",
   dateModified: "2026-04-17",
-  aiMetadata: {
-    profession: "Product Manager",
-    specialty: "Decision-support tooling, product strategy, and roadmap triage",
-    expertise: [
-      "Product Bet Evaluation",
-      "Roadmap Prioritization",
-      "Decision Support UX",
-      "Next.js",
-    ],
-    industry: ["Product Management", "SaaS", "Decision Intelligence"],
-    topics: [
-      "product bet triage",
-      "roadmap decision support",
-      "impact confidence effort reversibility",
-      "ship test hold framework",
-    ],
-    contentType: "Software Application",
-    context:
-      "Standalone product project by Isaac Vazquez that turns product-bet judgment into a transparent decision workspace.",
-    summary:
-      "Interactive Decision Lab for scoring product bets across impact, confidence, effort, and reversibility with a deterministic ship, test, or hold recommendation.",
-    primaryFocus:
-      "Product triage, decision-support interfaces, and transparent recommendation logic",
-  },
 });
 
 interface DecisionLabPageProps {

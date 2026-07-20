@@ -9,32 +9,6 @@ export const metadata = constructMetadata({
   canonicalUrl: "/fintech-tools/interchange-iq",
   image: "/fintech-tools/interchange-iq/opengraph-image",
   dateModified: "2026-04-02",
-  aiMetadata: {
-    profession: "Product Manager",
-    specialty:
-      "Payments product thinking, interchange economics, and processor-pricing comparison tools",
-    expertise: [
-      "Payment Processing",
-      "Interchange Pricing",
-      "Fintech Product Design",
-      "Pricing Modeling",
-      "Next.js",
-    ],
-    industry: ["Fintech", "Payments", "Product Management"],
-    topics: [
-      "Interchange rates",
-      "Processor comparison",
-      "Flat-rate vs interchange-plus pricing",
-      "Payment processing fees",
-    ],
-    contentType: "Software Application",
-    context:
-      "Standalone fintech tool by Isaac Vazquez that models real interchange economics across Stripe, Square, PayPal, and Adyen so you can compare flat-rate against interchange-plus pricing before committing.",
-    summary:
-      "Fee analyzer that compares flat-rate and interchange-plus processor economics from real interchange rates.",
-    primaryFocus:
-      "Helping a merchant see which pricing model actually costs less at their volume and mix",
-  },
 });
 
 export default function InterchangeIQPage() {

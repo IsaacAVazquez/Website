@@ -12,32 +12,6 @@ export const metadata = constructMetadata({
   canonicalUrl: "/earthquake-pulse",
   image: "/earthquake-pulse/opengraph-image",
   dateModified: earthquakeSnapshot.summary.generatedAt?.slice(0, 10),
-  aiMetadata: {
-    profession: "Product Manager",
-    specialty:
-      "Data dashboards, deep-linkable product surfaces, and snapshot-backed analytics UX",
-    expertise: [
-      "Next.js",
-      "Data dashboard design",
-      "Geospatial data UX",
-      "Snapshot-driven applications",
-      "Deep-linkable state",
-    ],
-    industry: ["Science", "Media", "Analytics"],
-    topics: [
-      "earthquake monitoring",
-      "USGS seismic data",
-      "magnitude distribution",
-      "global seismic activity",
-    ],
-    contentType: "Software Application",
-    context:
-      "Standalone earthquake dashboard by Isaac Vazquez that refreshes from USGS and retains a checked-in last-good fallback.",
-    summary:
-      "Global earthquake monitor for the past 24 hours, significant worldwide quakes, and regional activity.",
-    primaryFocus:
-      "Live seismic context, magnitude distribution, and mobile-friendly data product UX",
-  },
 });
 
 interface EarthquakePageProps {

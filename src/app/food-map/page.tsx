@@ -9,30 +9,6 @@ export const metadata = constructMetadata({
     "A curated, deep-linkable map of where to eat across Austin, San Francisco, New York, New Orleans, LA, and Tokyo, filterable by city, curator (Anthony Bourdain, Isaac's picks, top-rated on Google), and cuisine.",
   canonicalUrl: "/food-map",
   dateModified: "2026-06-08",
-  aiMetadata: {
-    profession: "Product Manager",
-    specialty: "Editorial product surfaces, deep-linkable filtering, and curated city guides",
-    expertise: [
-      "Next.js",
-      "Editorial UI",
-      "Deep-linkable state",
-      "Curated content design",
-    ],
-    industry: ["Food & Beverage", "Travel", "Local Guides"],
-    topics: [
-      "where to eat",
-      "curated food map",
-      "anthony bourdain restaurants",
-      "multi-city restaurant guide",
-    ],
-    contentType: "Software Application",
-    context:
-      "Standalone food map by Isaac Vazquez: a curator-driven, multi-city restaurant guide on an interactive map.",
-    summary:
-      "Curator-driven restaurant map across six cities with city, curator, and cuisine filters and a shareable URL state.",
-    primaryFocus:
-      "Curated city guides, editorial product UX, and deep-linkable filtering models",
-  },
 });
 
 interface FoodMapPageProps {

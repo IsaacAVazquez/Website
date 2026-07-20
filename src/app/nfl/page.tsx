@@ -11,32 +11,6 @@ export const metadata = constructMetadata({
     "Interactive NFL dashboard with conference seedings, division leaders, playoff cutoffs, point differential context, and snapshot stat leaders for passing, rushing, receiving, and sacks.",
   canonicalUrl: "/nfl",
   dateModified: nflSnapshot.updatedAt,
-  aiMetadata: {
-    profession: "Product Manager",
-    specialty:
-      "Interactive dashboards, sports data products, and interactive data tools",
-    expertise: [
-      "Next.js",
-      "Sports dashboard design",
-      "Deep-linkable UI state",
-      "Snapshot-driven data products",
-      "Information architecture",
-    ],
-    industry: ["Sports", "Media", "Analytics"],
-    topics: [
-      "NFL standings",
-      "playoff seeding",
-      "division leaders",
-      "stat leaders",
-    ],
-    contentType: "Software Application",
-    context:
-      "Standalone NFL intelligence tool by Isaac Vazquez that packages a curated NFLverse snapshot into a deep-linkable dashboard.",
-    summary:
-      "NFL dashboard for conference seedings, division leaders, playoff race, and snapshot stat leaders.",
-    primaryFocus:
-      "Fast local data exploration with shareable URL state and clear competition pressure views",
-  },
 });
 
 interface NflPageProps {

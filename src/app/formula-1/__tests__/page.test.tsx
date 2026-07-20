@@ -45,7 +45,7 @@ describe("Formula1Page", () => {
   it("declares the canonical Formula 1 route metadata", () => {
     expect(metadata.alternates?.canonical).toBe("/formula-1");
     expect(metadata.title).toEqual({
-      absolute: "Formula 1 Pulse | Isaac Vazquez Portfolio",
+      absolute: "Formula 1 Pulse | Isaac Vazquez",
     });
     expect(metadata.description).toMatch(/Formula 1 dashboard/i);
   });

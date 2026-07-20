@@ -140,22 +140,10 @@ export function constructMetadata({
   articleAuthor?: string;
   articleSection?: string;
   articleTags?: string[];
-  aiMetadata?: {
-    expertise?: string[];
-    specialty?: string;
-    profession?: string;
-    industry?: string[];
-    topics?: string[];
-    contentType?: string;
-    context?: string;
-    summary?: string;
-    primaryFocus?: string;
-  };
 } = {}): Metadata {
-  const resolvedTitle =
-    title && title.length < 30 && ogType === "website"
-      ? `${title} | ${siteConfig.name} Portfolio`
-      : title ?? siteConfig.title;
+  // Brand every page title exactly once: append the site name unless the
+  // caller already worked it into the title string.
+  const resolvedTitle = title ? composeSocialTitle(title) : siteConfig.title;
   const socialTitle = composeSocialTitle(resolvedTitle);
   const resolvedDescription = fitMetaDescription(description);
 

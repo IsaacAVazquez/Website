@@ -11,26 +11,6 @@ export const metadata = constructMetadata({
     "Fantasy Formula 1 team optimizer that uses the checked-in OpenF1 season snapshot, model-based prices, and official-style roster constraints for practical lineup planning.",
   canonicalUrl: "/fantasy-formula-1",
   dateModified: formula1Snapshot.generatedAt.slice(0, 10),
-  aiMetadata: {
-    profession: "Product Manager",
-    specialty: "Interactive sports dashboards, fantasy tools, and data product UX",
-    expertise: [
-      "Next.js",
-      "Fantasy sports tooling",
-      "Formula 1 analytics",
-      "Optimization UX",
-      "Snapshot-driven interfaces",
-    ],
-    industry: ["Sports", "Media", "Analytics"],
-    topics: ["Fantasy Formula 1", "Formula 1 optimizer", "F1 fantasy team builder"],
-    contentType: "Software Application",
-    context:
-      "Standalone Fantasy Formula 1 project by Isaac Vazquez that turns a checked-in OpenF1 snapshot into a practical team optimizer.",
-    summary:
-      "Fantasy Formula 1 Optimizer turns a checked-in OpenF1 snapshot into five-driver, two-constructor lineups you can plan under a model budget.",
-    primaryFocus:
-      "Fantasy sports decision support, lineup optimization, and snapshot-backed sports data UX",
-  },
 });
 
 interface FantasyFormula1PageProps {

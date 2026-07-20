@@ -9,31 +9,6 @@ export const metadata = constructMetadata({
   canonicalUrl: "/fintech-tools/budget-planner",
   dateModified: "2026-04-03",
   image: "/fintech-tools/budget-planner/opengraph-image",
-  aiMetadata: {
-    profession: "Product Manager",
-    specialty: "Budgeting UX, fintech product thinking, and personal finance workflow design",
-    expertise: [
-      "Budget Planning",
-      "Fintech Product Design",
-      "Client-side Persistence",
-      "Financial Workflow UX",
-      "Next.js",
-    ],
-    industry: ["Fintech", "Personal Finance", "Product Management"],
-    topics: [
-      "Monthly budgeting tool",
-      "Expense tracking",
-      "Category budgets",
-      "Savings planning",
-    ],
-    contentType: "Software Application",
-    context:
-      "Standalone budgeting tool built as a public product project that demonstrates practical personal finance UX and browser-persisted state design.",
-    summary:
-      "Budget planner for monthly income allocation, category budgeting, savings targets, and manual expense tracking.",
-    primaryFocus:
-      "Budget planning, cash-flow awareness, and transparent client-side budgeting workflows",
-  },
 });
 
 export default function BudgetPlannerPage() {

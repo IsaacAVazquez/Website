@@ -11,33 +11,6 @@ export const metadata = constructMetadata({
     "Curated tracker of frontier large language models with context windows, pricing, modality coverage, and editorial notes, built for product teams comparing frontier models as the price and capability tiers collapse.",
   canonicalUrl: "/frontier-models",
   dateModified: frontierModelsSnapshot.generatedAt.slice(0, 10),
-  aiMetadata: {
-    profession: "Product Manager",
-    specialty:
-      "Editorial AI tooling dashboards, model economics, and decision-ready market trackers",
-    expertise: [
-      "Large language models",
-      "Model economics",
-      "Pricing analysis",
-      "Snapshot-driven dashboards",
-      "Deep-linkable state",
-    ],
-    industry: ["Artificial Intelligence", "Developer Tools", "Software"],
-    topics: [
-      "Frontier model tracker",
-      "LLM pricing",
-      "Context windows",
-      "Reasoning models",
-      "Model selection",
-    ],
-    contentType: "Software Application",
-    context:
-      "Standalone Frontier Model Tracker by Isaac Vazquez that curates leading LLM specs into a fast, shareable comparison surface.",
-    summary:
-      "Frontier Model Tracker compares leading large language models across price, context window, modality, and reasoning support.",
-    primaryFocus:
-      "Decision-ready model comparison for product teams sizing AI workloads",
-  },
 });
 
 interface FrontierModelsPageProps {

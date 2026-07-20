@@ -14,30 +14,6 @@ export const metadata = constructMetadata({
     "Interactive NBA dashboard with conference standings, playoff seeding, play-in race context, and snapshot leaderboards for points, rebounds, and assists.",
   canonicalUrl: "/nba",
   dateModified: nbaSnapshot.updatedAt,
-  aiMetadata: {
-    profession: "Product Manager",
-    specialty: "Interactive dashboards, sports data products, and interactive data tools",
-    expertise: [
-      "Next.js",
-      "Sports dashboard design",
-      "Deep-linkable UI state",
-      "Snapshot-driven data products",
-      "Information architecture",
-    ],
-    industry: ["Sports", "Media", "Analytics"],
-    topics: [
-      "NBA standings",
-      "basketball dashboard",
-      "playoff seeding",
-      "play-in tournament",
-    ],
-    contentType: "Software Application",
-    context:
-      "Standalone basketball intelligence tool by Isaac Vazquez that packages a curated NBA standings snapshot into a deep-linkable dashboard.",
-    summary:
-      "NBA dashboard for conference standings, playoff seeding, the play-in race, and league stat leaders.",
-    primaryFocus: "Fast local data exploration with shareable URL state and clear competition-pressure views",
-  },
 });
 
 interface NbaPageProps {

@@ -15,32 +15,6 @@ export const metadata = constructMetadata({
   canonicalUrl: "/bay-area-transit",
   image: "/bay-area-transit/opengraph-image",
   dateModified: bayAreaTransitSnapshot.summary.system?.generatedAt?.slice(0, 10),
-  aiMetadata: {
-    profession: "Product Manager",
-    specialty:
-      "Civic dashboards, deep-linkable product surfaces, and snapshot-backed analytics UX",
-    expertise: [
-      "Next.js",
-      "Transit dashboard design",
-      "Bay Area / BART data",
-      "Snapshot-driven applications",
-      "Deep-linkable state",
-    ],
-    industry: ["Transportation", "Civic Tech", "Analytics"],
-    topics: [
-      "BART departures",
-      "Bay Area transit",
-      "service alerts",
-      "rail line map",
-    ],
-    contentType: "Software Application",
-    context:
-      "Standalone Bay Area transit dashboard by Isaac Vazquez that combines a checked-in route catalog with frequently refreshed BART departures and alerts.",
-    summary:
-      "Bay Area BART dashboard for scanning lines, station departures, and service alerts.",
-    primaryFocus:
-      "Live transit context, station-level departures, and mobile-friendly civic product UX",
-  },
 });
 
 interface TransitPageProps {

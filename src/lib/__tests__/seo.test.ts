@@ -52,7 +52,7 @@ describe('constructMetadata', () => {
   it('openGraph title contains siteConfig.name', () => {
     const metadata = constructMetadata({ title: 'My Page' });
     const og = metadata.openGraph as { title: string };
-    expect(og.title).toBe(`My Page | ${siteConfig.name} Portfolio`);
+    expect(og.title).toBe(`My Page | ${siteConfig.name}`);
   });
 
   it('includes authors with siteConfig.name', () => {
@@ -66,7 +66,7 @@ describe('constructMetadata', () => {
     const metadata = constructMetadata({ title: "Projects" });
 
     expect(metadata.title).toEqual({
-      absolute: `Projects | ${siteConfig.name} Portfolio`,
+      absolute: `Projects | ${siteConfig.name}`,
     });
   });
 
@@ -75,8 +75,28 @@ describe('constructMetadata', () => {
     const og = metadata.openGraph as { title: string };
     const twitter = metadata.twitter as { title: string };
 
-    expect(og.title).toBe(`Projects | ${siteConfig.name} Portfolio`);
-    expect(twitter.title).toBe(`Projects | ${siteConfig.name} Portfolio`);
+    expect(og.title).toBe(`Projects | ${siteConfig.name}`);
+    expect(twitter.title).toBe(`Projects | ${siteConfig.name}`);
+  });
+
+  it("brands long titles and article titles the same as short website titles", () => {
+    const longTitle = "March Madness 2026 Bracket Analysis";
+    const long = constructMetadata({ title: longTitle });
+    const article = constructMetadata({ title: "A Post", ogType: "article" });
+
+    expect(long.title).toEqual({
+      absolute: `${longTitle} | ${siteConfig.name}`,
+    });
+    expect(article.title).toEqual({
+      absolute: `A Post | ${siteConfig.name}`,
+    });
+  });
+
+  it("does not double-brand a title that already names the site", () => {
+    const branded = `What I'm Building Now | ${siteConfig.name}`;
+    const metadata = constructMetadata({ title: branded });
+
+    expect(metadata.title).toEqual({ absolute: branded });
   });
 });
 
@@ -88,13 +108,13 @@ describe("generateAIOptimizedMetadata", () => {
     });
 
     expect(metadata.title).toEqual({
-      absolute: `About | ${siteConfig.name} Portfolio`,
+      absolute: `About | ${siteConfig.name}`,
     });
     expect((metadata.openGraph as { title: string }).title).toBe(
-      `About | ${siteConfig.name} Portfolio`
+      `About | ${siteConfig.name}`
     );
     expect((metadata.twitter as { title: string }).title).toBe(
-      `About | ${siteConfig.name} Portfolio`
+      `About | ${siteConfig.name}`
     );
   });
 

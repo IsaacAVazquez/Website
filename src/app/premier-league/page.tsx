@@ -14,31 +14,6 @@ export const metadata = constructMetadata({
     "Premier League dashboard with standings, recent and upcoming fixtures, and club-level drilldowns backed by a checked-in snapshot.",
   canonicalUrl: "/premier-league",
   dateModified: premierLeagueSnapshot.summary.generatedAt.slice(0, 10),
-  aiMetadata: {
-    profession: "Product Manager",
-    specialty: "Interactive sports dashboards, snapshot-driven product surfaces, and exploratory data UX",
-    expertise: [
-      "Next.js",
-      "Sports data products",
-      "Dashboard design",
-      "Snapshot normalization",
-      "Deep-linkable UI state",
-    ],
-    industry: ["Sports", "Media", "Analytics"],
-    topics: [
-      "Premier League standings",
-      "soccer dashboard",
-      "fixture tracker",
-      "club form explorer",
-    ],
-    contentType: "Software Application",
-    context:
-      "Standalone Premier League tool by Isaac Vazquez that packages a checked-in competition snapshot into a deep-linkable product surface.",
-    summary:
-      "Premier League dashboard for standings, fixtures, and club-level recent-form drilldowns.",
-    primaryFocus:
-      "Snapshot-driven sports exploration, fast dashboard UX, and shareable league views",
-  },
 });
 
 interface PremierLeaguePageProps {

@@ -13,31 +13,6 @@ export const metadata = constructMetadata({
   canonicalUrl: "/investments",
   dateModified: investmentsIndex.lastUpdated.slice(0, 10),
   image: "/investments/opengraph-image",
-  aiMetadata: {
-    profession: "Product Manager",
-    specialty: "Investment research tooling, analytics UX, and fintech product thinking",
-    expertise: [
-      "Fintech Product Strategy",
-      "Investment Research Workflows",
-      "Data Visualization",
-      "Financial Analysis Interfaces",
-      "Next.js",
-    ],
-    industry: ["Fintech", "Wealth Tech", "SaaS"],
-    topics: [
-      "Investment Research Platform",
-      "Portfolio Analytics",
-      "Equity Analysis",
-      "Financial Statements",
-    ],
-    contentType: "Software Application",
-    context:
-      "Public investment research workspace for exploring snapshot-backed company analysis and portfolio tracking.",
-    summary:
-      "Investment research workspace for snapshot-backed company analysis, valuation review, and portfolio tracking.",
-    primaryFocus:
-      "Investment research workflows, analytics UX, and data-driven decision support",
-  },
 });
 
 interface InvestmentsPageProps {

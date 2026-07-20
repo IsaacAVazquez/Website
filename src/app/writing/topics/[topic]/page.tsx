@@ -38,13 +38,6 @@ export async function generateMetadata({
     title: topic.seoTitle,
     description: topic.metaDescription,
     canonicalUrl: `/writing/topics/${topic.slug}`,
-    aiMetadata: {
-      profession: "Product Manager",
-      topics: [topic.label],
-      contentType: "Editorial Topic Archive",
-      context: topic.description,
-      summary: topic.metaDescription,
-    },
   });
 }
 

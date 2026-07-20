@@ -10,33 +10,6 @@ export const metadata = constructMetadata({
     "Exact-score prediction engine for pool play, with market-calibrated scoreline distributions, expected-points pick rankings, and leaderboard-aware recommendations from a checked-in odds snapshot.",
   canonicalUrl: "/score-pools",
   dateModified: scorePoolsSnapshot.generatedAt.slice(0, 10),
-  aiMetadata: {
-    profession: "Product Manager",
-    specialty:
-      "Sports prediction modeling, market-calibrated probability engines, and decision-support tools",
-    expertise: [
-      "Next.js",
-      "Probability modeling",
-      "Sports betting markets",
-      "Expected-value optimization",
-      "Snapshot-driven data products",
-    ],
-    industry: ["Sports", "Analytics"],
-    topics: [
-      "exact score prediction",
-      "prediction pools",
-      "Dixon-Coles model",
-      "expected points optimization",
-      "odds de-vigging",
-    ],
-    contentType: "Software Application",
-    context:
-      "Standalone prediction-pool tool by Isaac Vazquez that turns de-vigged market odds into a calibrated scoreline distribution and standing-aware pick recommendations.",
-    summary:
-      "Pick sheet for exact-score pools: market-anchored scoreline model, expected-points optimizer, and leaderboard-aware recommendations.",
-    primaryFocus:
-      "Turning live odds into defensible exact-score picks under configurable pool scoring rules",
-  },
 });
 
 interface ScorePoolsPageProps {

@@ -10,35 +10,6 @@ export const metadata = constructMetadata({
     "Directory of AI coding and agent tools with pricing tiers, model support, GitHub stars, release cadence, and deep-linkable filters.",
   canonicalUrl: "/ai-dev-tools",
   dateModified: AI_DEV_TOOLS_GENERATED_AT.slice(0, 10),
-  aiMetadata: {
-    profession: "Product Manager",
-    specialty:
-      "Developer tools, AI coding agents, market maps, and decision-ready product comparison surfaces",
-    expertise: [
-      "AI developer tools",
-      "Coding agents",
-      "Developer experience",
-      "Deep-linkable filtering",
-      "Next.js",
-    ],
-    industry: ["Artificial Intelligence", "Developer Tools", "Software"],
-    topics: [
-      "AI coding tools",
-      "AI agents",
-      "Cursor",
-      "Claude Code",
-      "GitHub Copilot",
-      "Devin",
-      "Cline",
-    ],
-    contentType: "Software Application",
-    context:
-      "Standalone AI dev tool directory by Isaac Vazquez comparing coding assistants and agents across pricing, model support, GitHub traction, and release cadence.",
-    summary:
-      "Filterable directory of AI coding and agent tools including Cursor, Claude Code, GitHub Copilot, Devin, Cline, OpenCode, Kilo Code, and more.",
-    primaryFocus:
-      "AI developer tool market comparison, model access, pricing, open-source traction, and release velocity",
-  },
 });
 
 interface AiDevToolsPageProps {

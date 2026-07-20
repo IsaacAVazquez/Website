@@ -11,32 +11,6 @@ export const metadata = constructMetadata({
     "Daily-refreshed dashboard tracking active public GitHub repositories by language and topic, with weekly star movement from checked-in snapshots.",
   canonicalUrl: "/github-trending-pulse",
   dateModified: githubTrendingSnapshot.generatedAt.slice(0, 10),
-  aiMetadata: {
-    profession: "Product Manager",
-    specialty:
-      "Developer tooling dashboards, public API data products, and snapshot-driven trend tracking",
-    expertise: [
-      "GitHub API",
-      "Developer tools",
-      "Snapshot pipelines",
-      "Trend analysis",
-      "Next.js",
-    ],
-    industry: ["Developer Tools", "Open Source", "Software"],
-    topics: [
-      "GitHub trending repositories",
-      "Open source momentum",
-      "Weekly star deltas",
-      "Developer tool tracking",
-    ],
-    contentType: "Software Application",
-    context:
-      "Standalone GitHub Trending Pulse dashboard by Isaac Vazquez that tracks active public repositories by language and topic using the public GitHub API.",
-    summary:
-      "GitHub Trending Pulse tracks active repositories, language and topic segments, and weekly star movement from daily snapshots.",
-    primaryFocus:
-      "Data freshness and open source momentum tracking for developer tooling research",
-  },
 });
 
 interface GitHubTrendingPageProps {

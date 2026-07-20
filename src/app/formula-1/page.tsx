@@ -11,31 +11,6 @@ export const metadata = constructMetadata({
     "Formula 1 dashboard for the current season with the next Grand Prix, driver and constructor standings, and race-by-race context from a checked-in OpenF1 snapshot.",
   canonicalUrl: "/formula-1",
   dateModified: formula1Snapshot.generatedAt.slice(0, 10),
-  aiMetadata: {
-    profession: "Product Manager",
-    specialty: "Interactive sports dashboards, snapshot-driven tooling, and exploratory data UX",
-    expertise: [
-      "Next.js",
-      "Sports dashboard design",
-      "Snapshot normalization",
-      "Data product UX",
-      "Deep-linkable state",
-    ],
-    industry: ["Sports", "Media", "Analytics"],
-    topics: [
-      "Formula 1 dashboard",
-      "driver standings",
-      "constructor standings",
-      "Grand Prix calendar",
-    ],
-    contentType: "Software Application",
-    context:
-      "Standalone Formula 1 project by Isaac Vazquez that packages historical OpenF1 data into a fast, shareable season dashboard.",
-    summary:
-      "Formula 1 Pulse tracks the next Grand Prix, championship tables, and race-by-race context through a checked-in snapshot.",
-    primaryFocus:
-      "Snapshot-driven sports exploration, season-level dashboard UX, and fast route state sharing",
-  },
 });
 
 interface Formula1PageProps {
