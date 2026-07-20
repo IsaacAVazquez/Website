@@ -26,12 +26,20 @@ export function buildContentSecurityPolicy(
   request: NextRequest,
   production = isProduction,
 ) {
+  const loadsLeafletFromCdn = request.nextUrl.pathname === "/food-map";
   const scriptSrc = [
     "'self'",
     "'unsafe-inline'",
-    ...(isProduction ? [] : ["'unsafe-eval'"]),
+    ...(production ? [] : ["'unsafe-eval'"]),
     "https://static.cloudflareinsights.com",
+    ...(loadsLeafletFromCdn ? ["https://unpkg.com"] : []),
     ...(analyticsEnabled ? ["https://www.googletagmanager.com"] : []),
+  ];
+
+  const styleSrc = [
+    "'self'",
+    "'unsafe-inline'",
+    ...(loadsLeafletFromCdn ? ["https://unpkg.com"] : []),
   ];
 
   const connectSrc = [
@@ -50,13 +58,16 @@ export function buildContentSecurityPolicy(
   return [
     "default-src 'self'",
     `script-src ${scriptSrc.join(" ")}`,
-    "style-src 'self' 'unsafe-inline'",
+    `style-src ${styleSrc.join(" ")}`,
     "img-src 'self' data: https: blob:",
     "font-src 'self'",
     `connect-src ${connectSrc.join(" ")}`,
     "frame-ancestors 'none'",
     "base-uri 'self'",
     "form-action 'self'",
+    // WebKit applies this directive to localhost subresources too. Only emit it
+    // when the browser-facing request is already HTTPS so local production-mode
+    // testing does not rewrite localhost assets to an unavailable TLS URL.
     ...(production && isSecureRequest(request)
       ? ["upgrade-insecure-requests"]
       : []),
