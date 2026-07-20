@@ -46,6 +46,9 @@ jobs:
         run: npm run update:bay-area-transit
         env:
           NODE_ENV: production
+          # Optional personal key; the builder falls back to BART's published
+          # demo key when the secret is unset.
+          BART_API_KEY: ${{ secrets.BART_API_KEY }}
 
       - name: Verify refresh freshness
         run: npx tsx scripts/verifyDataRefresh.ts bay-area-transit

@@ -35,7 +35,7 @@ request time, with the committed artifact retained as the last-good fallback.
 | Formula 1 | `update:formula-1` | `buildFormula1Snapshot.ts` | OpenF1 | `src/data/formula1Snapshot.ts` | `update-formula-1.yml` | every 3h Thursday through Sunday; daily otherwise |
 | World Cup 2026 | `update:world-cup` | `buildWorldCupSnapshot.ts` | ESPN `soccer/fifa.world` | `src/data/worldCupSnapshot.ts` | `update-world-cup.yml` | every 30m, June through July |
 | Score pools | `update:score-pools` | `buildScorePoolsSnapshot.ts` | The Odds API + API-Football *(tokens required for live leagues)* + manual/CSV | `src/data/scorePoolsSnapshot.ts` | `update-score-pools.yml` | every 6h |
-| Bay Area Transit | `update:bay-area-transit` | `buildBayAreaTransitSnapshot.ts` | BART public API *(demo key)* | `src/data/bayAreaTransitSnapshot.ts` | `update-bay-area-transit.yml` | every 6h, year-round |
+| Bay Area Transit | `update:bay-area-transit` | `buildBayAreaTransitSnapshot.ts` | BART public API *(`BART_API_KEY` optional; demo-key fallback)* | `src/data/bayAreaTransitSnapshot.ts` | `update-bay-area-transit.yml` | every 6h, year-round |
 | Earthquake Pulse | `update:earthquake` | `buildEarthquakeSnapshot.ts` | USGS GeoJSON feeds | `src/data/earthquakeSnapshot.ts` | `update-earthquake.yml` | hourly (min 20) |
 | GitHub Trending | `update:github-trending` | `buildGitHubTrendingSnapshot.ts` | GitHub Search API *(`GITHUB_TOKEN` optional)* | `src/data/githubTrendingSnapshot.ts` | `update-github-trending.yml` | daily 07:45 UTC |
 | SpaceX data | `update:spacex` *(alias `update:spacex-data`)* | `buildSpaceXSnapshot.ts` | Launch Library / SpaceDevs | `src/data/spacexSnapshot.generated.json` | `update-spacex.yml` | daily 09:25 + 21:25 UTC |
@@ -74,8 +74,9 @@ in Netlify Blobs so cold starts do not erase their fallback.
 | `THE_ODDS_API_KEY` (required in the scheduled workflow) | `update:score-pools` |
 | `API_FOOTBALL_KEY` (required in the scheduled workflow) | `update:score-pools` |
 | `GITHUB_TOKEN` / `GH_TOKEN` (optional, higher rate limit) | `update:github-trending` |
+| `BART_API_KEY` (optional; falls back to the published demo key) | request-time transit refresh, `update:bay-area-transit` |
 | Python `.venv` (`.venv/bin/python3`; `defeatbeta-api`) | `update:investments` |
-| *No token* | MLB, NBA, NFL, golf, Formula 1, World Cup, BART, USGS, SpaceX, VoteHub polling |
+| *No token* | MLB, NBA, NFL, golf, Formula 1, World Cup, BART (demo-key fallback), USGS, SpaceX, VoteHub polling |
 
 ---
 

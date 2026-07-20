@@ -25,7 +25,16 @@ import type {
  */
 
 const BART_API_BASE = "https://api.bart.gov/api";
-const BART_PUBLIC_KEY = "MW9S-E7SL-26DU-VV8V";
+// BART's published demo key, shared by everyone and rotated at BART's
+// discretion. Registering a personal key is free
+// (https://api.bart.gov/api/register.aspx) and survives demo-key rotations —
+// set BART_API_KEY in the runtime env and the refresh workflow to use one.
+// Read at call time so a deploy-time env change needs no rebuild of this module.
+const BART_DEMO_KEY = "MW9S-E7SL-26DU-VV8V";
+
+function bartApiKey(): string {
+  return process.env.BART_API_KEY?.trim() || BART_DEMO_KEY;
+}
 const REQUEST_TIMEOUT_MS = 15_000;
 const MIN_STATIONS = 10;
 const MIN_LINES = 3;
@@ -140,7 +149,7 @@ function asArray<T>(value: T | T[] | null | undefined): T[] {
 
 async function fetchBartJson<T>(path: string): Promise<T> {
   const separator = path.includes("?") ? "&" : "?";
-  const url = `${BART_API_BASE}/${path}${separator}key=${BART_PUBLIC_KEY}&json=y`;
+  const url = `${BART_API_BASE}/${path}${separator}key=${encodeURIComponent(bartApiKey())}&json=y`;
   let lastError: unknown;
   for (let attempt = 0; attempt < 3; attempt += 1) {
     try {
