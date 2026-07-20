@@ -80,7 +80,6 @@ export const Footer = ({ variant = "full" }: FooterProps) => {
               {[
                 { href: "/now", label: "Now", external: false },
                 { href: "/changelog", label: "Changelog", external: false },
-                { href: "/release-notes", label: "Release Notes", external: false },
                 { href: "/accessibility", label: "Accessibility", external: false },
               ].map((item) => (
                 <Link

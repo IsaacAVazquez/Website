@@ -159,6 +159,13 @@ const nextConfig = {
         destination: '/writing/:slug',
         permanent: true,
       },
+
+      // Release history has one canonical home.
+      {
+        source: '/release-notes',
+        destination: '/changelog',
+        permanent: true,
+      },
       
       // Contact page variations
       {
