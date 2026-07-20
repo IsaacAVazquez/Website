@@ -34,6 +34,7 @@
     "update:frontier-models": "tsx scripts/buildFrontierModelsSnapshot.ts",
     "update:github-trending": "tsx scripts/buildGitHubTrendingSnapshot.ts",
     "update:tech-startups": "tsx scripts/buildTechStartupSnapshot.ts",
+    "update:score-pools": "tsx scripts/buildScorePoolsSnapshot.ts",
     "update:spacex": "tsx scripts/buildSpaceXSnapshot.ts",
     "update:spacex-data": "tsx scripts/buildSpaceXSnapshot.ts",
     "update:spacex-images": "tsx scripts/buildSpaceXImageSnapshots.ts",
