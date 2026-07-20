@@ -208,8 +208,12 @@ outcome (`confirmed` / `updated` / `curated-only`) surfaced in the on-page
 disclosure line.
 
 **Related but not this pattern:**
-- `/polling-aggregator` reads a committed `src/data/pollingSnapshot.ts` with **no
-  builder or Action** — a static curated snapshot.
+- `/polling-aggregator` is the **second blob-lane surface**: the shared
+  VoteHub fetch/transform lives in `src/lib/pollingData.ts`, a Netlify
+  scheduled function (`netlify/functions/refresh-polling.ts`, every 6h)
+  writes the `polling` blob and purges its cache tag, the page reads
+  blob-first via `src/lib/pollingSnapshot.ts`, and `update-polling.yml`
+  refreshes the committed seed daily as the fallback.
 - `/news-pulse` is **API-backed at request time** (`/api/news-pulse` →
   `src/lib/news-pulse-utils.ts`), not a build-time snapshot.
 
