@@ -1,0 +1,38 @@
+---
+title: "The Agent Threat Model Is Not Just Prompt Injection, It's Everything the Agent Depends On"
+excerpt: "The security conversation about agents fixates on someone injecting the model, and that risk is real. The one I think is underweighted is the supply chain, because every tool, integration, and dependency an agent can call is a trust boundary you may not control, and each one can hand your agent adversarial input or change behavior under you."
+publishedAt: "2026-04-19"
+category: "Software Engineering"
+tags: ["Software Engineering", "AI Security", "Supply Chain", "Agentic AI", "MCP"]
+featured: false
+cluster: "Systems & Quality"
+author: "Isaac Vazquez"
+seo:
+  title: "Agent Supply Chain Risk: Beyond Prompt Injection"
+  description: "Why the AI agent threat model extends past prompt injection to the whole supply chain of tools, integrations, and dependencies an agent calls. Applying software supply-chain hygiene to agent architectures."
+  keywords: ["AI agent security", "agent supply chain", "prompt injection", "MCP security", "tool call security", "AI dependencies"]
+---
+
+# The Agent Threat Model Is Not Just Prompt Injection, It's Everything the Agent Depends On
+
+Most of the security writing about agents right now is about prompt injection, the scenario where an attacker slips instructions into the model's input and gets it to do something it should not. That is a real risk and worth taking seriously, and I also think the fixation on it is crowding out a threat that is larger and less discussed, which is the supply chain the agent sits on top of. An agent is not just a model reading a prompt, it is a model wired to a set of tools, integrations, and services it can call, and every one of those is a dependency with its own provenance, its own trustworthiness, and its own ability to return data the agent will act on. The injection conversation treats the prompt as the attack surface, and I think the more honest picture is that everything the agent depends on is part of the attack surface, and most of it is code and services you did not write and may not have vetted.
+
+What I keep coming back to is that we have seen this movie before with software dependencies, and the lessons we learned there, slowly and painfully, apply almost directly to agents, if we choose to notice.
+
+## Every tool an agent can call is a trust boundary you inherited
+
+The moment an agent can call a tool, whether that is an internal service, a third-party API, or one of the integration servers that have become the standard way to connect agents to systems, you have added a trust boundary, and the data that comes back across it is input your agent will act on. If one of those tools is compromised, malicious, or simply buggy, it can return content designed to steer the agent, and from the agent's perspective that content is indistinguishable from legitimate results. This is why I think the right default is to treat every tool response as untrusted input, the same way a careful web application treats everything coming from a client, because a tool that returns adversarial text is a prompt injection vector that did not come through the prompt at all. The number of these boundaries grows with every integration you add, and each one is a place where something you do not control gets to influence what your agent does next.
+
+## The model itself is a supply-chain element that can change under you
+
+It is easy to think of the model as the fixed part and the tools as the variable part, but the model is a dependency too, with a provenance and a version and a behavior that can change when the provider updates it. A model that shifts under you, through a silent update or a new default, can change how your agent behaves in ways you did not test and did not choose, and if you are not pinning versions and watching for behavioral drift, you are trusting a critical dependency to stay stable on someone else's schedule. This is the same discipline as pinning a library version instead of always pulling the latest, and for the same reason, because uncontrolled updates to a component your system depends on are a reliability and security risk whether the component is a package or a model. Treating the model as a versioned dependency you manage, rather than a service that is simply always current, is part of taking the supply chain seriously.
+
+## Transitive risk is the part nobody has a map for
+
+The hardest version of this is transitive, because the tools your agent calls often call other services, and the integration servers you connect may themselves depend on things you have never looked at, which means your agent's real dependency graph extends well past the tools you explicitly wired up. In software we learned that the dangerous dependency is usually not the one you chose, it is the one three levels down that you never evaluated, and agents inherit exactly this problem the moment they call anything with its own dependencies. The uncomfortable truth is that most teams cannot draw their agent's full trust graph, cannot say with confidence what every tool it can reach actually does or depends on, and that gap is where the supply-chain risk hides. You cannot secure a graph you cannot see, and the first honest step is usually admitting how much of it is currently invisible.
+
+## The response is the hygiene software already had to learn
+
+The good news is that we are not starting from nothing, because the practices that eventually made software supply chains more defensible map cleanly onto agents. Vet and pin your dependencies, meaning the tools and models your agent relies on, rather than trusting whatever is newest. Apply least privilege so a compromised tool or a confused agent can only reach what it genuinely needs. Treat every external boundary as untrusted input and validate what comes back rather than acting on it blindly. And log the tool calls so that when something goes wrong you can reconstruct the path it took through your dependency graph. None of this is novel, which is the point, because the agent supply chain is a new instance of an old problem, and the discipline that hardened software dependencies is the discipline that will harden agents, if we apply it early instead of after the first incident.
+
+The pattern I would pull out of this is that the agent threat model is bigger than the prompt, because an agent is a system wired to a lot of things it does not control, and every one of those things is a trust boundary. Prompt injection is one entry point, and the tools, integrations, and the model itself are all others, and the supply-chain framing is what ties them together into a threat you can actually reason about. We spent years learning to treat software dependencies as untrusted until proven otherwise, and the sooner we extend that same suspicion to everything an agent depends on, the fewer of these incidents we will be cleaning up later, because the alternative is trusting a graph we have not even finished drawing.

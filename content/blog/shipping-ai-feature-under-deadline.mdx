@@ -1,0 +1,38 @@
+---
+title: "Shipping an AI Feature on a Deadline: The Demo Was Never the Hard Part"
+excerpt: "The demo makes an AI feature look almost done, and then teams blow the deadline in the last mile. From doing it a few times, the deadline risk is never building the happy path, it's the eval, the fallback, and the edge cases, and the way to hit the date is to decide early what good enough means and build the failure handling as a real feature."
+publishedAt: "2026-04-12"
+category: "Product Management"
+tags: ["Product Management", "AI Products", "Shipping", "Evals", "AI Features"]
+featured: false
+cluster: "PM Workflows"
+author: "Isaac Vazquez"
+seo:
+  title: "Shipping an AI Feature Under a Deadline Without Missing It"
+  description: "Why AI features blow deadlines in the last mile, and how to ship on time. Scope around what you can evaluate, build the fallback first, and treat failure handling as a first-class feature."
+  keywords: ["shipping AI features", "AI product deadline", "AI feature eval", "demo to production AI", "AI product management"]
+---
+
+# Shipping an AI Feature on a Deadline: The Demo Was Never the Hard Part
+
+There is a specific way AI features miss their ship dates, and it is almost always the same way. The demo comes together fast, faster than a normal feature, and everyone including the PM concludes the thing is nearly done, and then the last mile eats weeks nobody budgeted because the gap between a working demo and a shippable feature turns out to be where all the actual work lives. I have watched this happen and I have caused it happen, and the lesson I took is that the demo is a misleading signal about progress, because the demo is the happy path and the feature is everything else. The reason AI features are deceptive on a deadline is that they front-load the satisfying part, the part where the model does something impressive on a good input, and back-load the hard part, the part where you have to handle every input that is not good, and the hard part is most of the work.
+
+What I think this means is that hitting the date on an AI feature is mostly about refusing to be fooled by the demo, and scoping the work around the failure handling from the start rather than discovering it at the end.
+
+## The demo is maybe a fifth of the work, and it is the wrong fifth to measure by
+
+When a model does the impressive thing on a clean input, it feels like the feature is done, and it is not, because a feature is a promise about behavior across all the inputs users will actually send, not just the ones that make a good demo. The other four fifths of the work is handling the cases where the model is wrong, slow, refuses, hallucinates, or returns something in a shape your product cannot use, and that work does not show up in the demo at all, which is exactly why it gets underestimated. I try to treat the demo as evidence that the ceiling is reachable and nothing more, and to explicitly not update my estimate of how done we are based on it, because the demo working tells you almost nothing about how close the feature is. The teams that hit their dates are the ones that internalized this and planned the edge-case work as the bulk of the project instead of a cleanup pass at the end.
+
+## If you cannot evaluate good, you cannot ship responsibly, so scope around what you can measure
+
+The decision that most determines whether an AI feature ships on time is made early, and it is deciding what good enough means in a way you can actually measure. If you cannot define and check whether the feature's output is acceptable, you cannot tell whether it is ready, you can only tell whether the demo still works, and shipping on that basis is how you end up with a feature that embarrasses you in production. So the first real move is to scope the feature toward something evaluable, a task narrow enough that you can build a set of representative cases and a way to score whether the model handles them. This is not bureaucracy, it is the thing that lets you know you are done, and a feature scoped so that good is measurable will ship, while a feature scoped so that good is a vibe will slip indefinitely because no one can say when it is finished. Narrowing the domain until you can evaluate it is the highest-leverage scoping decision available.
+
+## Build the fallback first, because the failure path is the feature
+
+The instinct is to build the happy path first and add error handling later, and for AI features I think that instinct is backwards, because the failure path is not an edge case you bolt on, it is a core part of what you are shipping. What happens when the model is uncertain, returns something malformed, takes too long, or refuses, is not a rare exception, it is a routine occurrence you will hit constantly in production, and if the fallback is an afterthought the feature will feel broken the first week. I would rather build the fallback early, decide up front what the product does when the model does not cooperate, whether that is a graceful degradation, a handoff to a human, a safe default, or a clear message, and treat that behavior as a feature with the same weight as the happy path. Deciding the failure behavior first also clarifies the whole design, because it forces you to confront how often the model will fail and to build something that is fine when it does.
+
+## When you have to cut, cut the domain, not the eval or the fallback
+
+Deadlines force cuts, and the question is what to cut, and for AI features there is a right answer that teams routinely get wrong. The temptation under time pressure is to skip the evaluation and skip the fallback, because those are the invisible work that does not demo, and that is exactly the work that keeps the feature from being an embarrassment, so cutting it is cutting the parts that make the feature safe to ship. The cut that actually works is narrowing the domain, shipping the feature for a smaller, more controlled slice of inputs where you can guarantee quality, and expanding later. A feature that does one narrow thing reliably is shippable and a feature that does everything unreliably is not, so when the date is at risk, shrink what the feature attempts rather than shrinking your ability to tell whether it works or your plan for when it does not. Scope down the ambition, keep the eval and the fallback.
+
+The pattern I would pull out of this is that shipping an AI feature on time is a discipline of not being fooled by the demo and treating the unglamorous work as the real project. Decide early what good enough means in a way you can measure, build the failure handling as a first-class part of the feature rather than an afterthought, and when the deadline squeezes you, cut the breadth of what the feature attempts instead of cutting the eval or the fallback that make it safe. The demo was always going to come together fast, and it was never the hard part, and the teams that miss their dates are the ones who let a good demo convince them otherwise.

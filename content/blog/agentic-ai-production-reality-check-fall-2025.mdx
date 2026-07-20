@@ -1,0 +1,38 @@
+---
+title: "A Reality Check on AI Agents in Production, From Someone Watching Them Ship"
+excerpt: "The agent conversation this fall is stuck between two bad positions, that agents will replace everyone and that agents are useless demos. What I see from teams actually deploying them is narrower and more useful. They work in a specific shape and break in a predictable one, and most failed deployments are a mismatch between the two."
+publishedAt: "2025-09-21"
+category: "Agentic AI"
+tags: ["Agentic AI", "AI Agents", "Production", "Product Management", "AI Reliability"]
+featured: false
+cluster: "Agentic AI"
+author: "Isaac Vazquez"
+seo:
+  title: "AI Agents in Production: A Fall 2025 Reality Check"
+  description: "Where AI agents actually work in production and where they break. A grounded look at scoped tasks, tool constraints, long-horizon failure, and why most agent deployments fail on task shape, not capability."
+  keywords: ["AI agents production", "agentic AI 2025", "AI agent reliability", "agent failure modes", "deploying AI agents"]
+---
+
+# A Reality Check on AI Agents in Production, From Someone Watching Them Ship
+
+The agent conversation this fall has settled into two positions that are both wrong, and the gap between them is where all the useful information lives. On one side is the claim that agents are about to autonomously run whole functions and replace the people in them, and on the other is the claim that they are impressive demos that fall apart the moment they touch real work. I have spent enough time around teams actually putting agents into production to think both of these miss the same thing, which is that agent reliability is not a single dial that is either high or low. Agents work well in a specific shape of task and break in a predictable shape of task, and once you can see the difference, most of the argument dissolves, because the question stops being whether agents work and becomes whether the thing you are pointing one at is shaped like the things they do well.
+
+What I think this means is that the successful deployments are not the ones with the best models, they are the ones that picked tasks with the right shape, and the failures are usually a shape mismatch dressed up as a capability problem.
+
+## They work when the task is scoped, verifiable, and tool-constrained
+
+The agents that hold up in production tend to share three traits, and none of them is about raw intelligence. The task is scoped, meaning it has a clear beginning and end rather than an open-ended goal. The result is verifiable, meaning there is a way to check whether the output is right, ideally an automated one like a test suite or a schema or a downstream system that rejects bad input. And the tools are constrained, meaning the agent can only take a bounded set of actions rather than roam freely. When those three things are true, an agent closing a scoped ticket, transforming data into a checkable format, or driving a well-defined workflow, it is genuinely reliable in a way that is easy to underrate if you have only seen the flashy open-ended demos. The unglamorous, bounded tasks are where the technology is quietly earning its keep right now.
+
+## They break on long horizons, where errors compound silently
+
+The mirror image is the shape that breaks, and it is worth naming precisely because it is where the disappointing deployments live. Agents struggle on long-horizon tasks, the ones that require many steps chained together toward a goal that is not checkable until the end, because errors compound. A small mistake early is not caught, the agent builds on it, and by the time you can evaluate the result the whole chain has drifted somewhere useless, often while reporting confidently that it succeeded. The silent part is the dangerous part, because a system that fails loudly is a system you can build around, and a system that fails while claiming success is one that erodes trust and creates cleanup work you did not budget for. Any time I see a team point an agent at a long, open-ended objective with no intermediate checkpoints, I can predict the outcome, and it is not the demo.
+
+## The eval and observability gap is the thing most teams skipped
+
+The reason so many teams cannot tell which of these shapes they are in is that they deployed agents without the instrumentation to know how they are doing, and I think this is the most common and most fixable mistake. A traditional software feature either works or throws an error you can see, but an agent produces plausible output that is sometimes wrong in ways no exception will flag, which means you need evaluation and observability built in from the start, not bolted on after something embarrassing happens. Teams that invested in measuring their agents, in checking outputs against a bar, logging the tool calls, and watching the failure patterns, know exactly where their agents are reliable and where they are not, and they can expand the scope with confidence. Teams that skipped it are flying blind and mistaking the absence of visible errors for correctness, which is a different and worse thing.
+
+## Managing an agent is closer to managing a person than running a program
+
+The last shift I would flag is organizational rather than technical, which is that the teams getting real value have stopped treating agents like deterministic software and started treating them more like a capable but unsupervised new hire. That means giving them bounded responsibility, checking their work until trust is earned, escalating to a human at the right moments, and being clear about what they are and are not allowed to do on their own. This framing is not a metaphor for its own sake, it changes the design, because it pushes you toward approval steps, toward least-privilege access, and toward the human-in-the-loop checkpoints that turn a risky autonomous system into a useful supervised one. The organizations that struggle are usually the ones that expected to hand an agent a goal and walk away, and the ones that succeed built the supervision in.
+
+The pattern I would pull out of the last several months is that agent reliability is a property of task shape far more than of model quality, and the whole debate about whether agents work is really a debate that has not specified the task. Scoped, verifiable, tool-constrained work is where they are already dependable, long-horizon open-ended work is where they still break, and the difference between a team that gets value and a team that gets burned is usually whether they matched the deployment to the shape and instrumented it well enough to know the difference. That is a less exciting story than either replacement or uselessness, and it is the one that actually helps you decide where to point one next.

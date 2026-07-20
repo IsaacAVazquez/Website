@@ -1,0 +1,40 @@
+---
+title: "OpenAI's DevDay Was Not About the Models, It Was About Owning the Surface"
+excerpt: "The DevDay coverage got pulled toward the model announcements and the benchmarks. I think that missed the actual move, which is OpenAI turning ChatGPT into the place software gets used and repositioning itself as a platform rather than a model vendor. That changes the build-on-them calculus for every product team."
+publishedAt: "2025-10-05"
+category: "AI"
+tags: ["AI", "OpenAI", "Platform Strategy", "Agents", "Product Management"]
+featured: false
+archiveBucket: "Signals & Commentary"
+author: "Isaac Vazquez"
+seo:
+  title: "OpenAI DevDay 2025 and the Platform Play Behind It"
+  description: "My take on OpenAI's 2025 DevDay, where apps inside ChatGPT and AgentKit reveal a platform strategy that changes how every product team should think about building on OpenAI."
+  keywords: ["OpenAI DevDay 2025", "AgentKit", "apps in ChatGPT", "Apps SDK", "OpenAI platform strategy", "AI agents", "Model Context Protocol"]
+---
+
+# OpenAI's DevDay Was Not About the Models, It Was About Owning the Surface
+
+Most of what I read about OpenAI's DevDay this week got pulled toward the parts that are easiest to write about, which were the model updates and the demos that make for good clips. There was a more capable GPT-5 tier and an updated video model, and those are real and people will benchmark them against everything else. But I think treating those as the story is a mistake, because the announcements that actually matter were not about the models at all. They were about distribution. OpenAI used this event to reposition ChatGPT from a place you go to ask questions into a place where other companies' software runs, and to hand developers the tools to build agents inside that environment, and if that repositioning works it changes the calculation for every product team deciding what to build on top of OpenAI.
+
+## Apps running inside ChatGPT is a distribution move, not a feature
+
+The clearest signal was the new ability for third-party apps to run directly inside ChatGPT through a new apps developer kit built on the Model Context Protocol, which is the same open integration standard that has been quietly becoming the default way agents connect to outside systems. The demos were mundane on purpose. You ask ChatGPT to mock up a poster and a design tool renders it inside the conversation, you ask about a course and a learning platform surfaces the video, all without leaving the chat. The point is not that any one of these integrations is impressive. The point is that OpenAI is telling software companies to come render inside ChatGPT rather than making users leave to visit them.
+
+I have spent enough time thinking about where usage actually happens to know how significant that framing is. The most valuable real estate in software has always been the place people already are, the default surface they open without thinking, and OpenAI is making a serious claim to be that surface. If a meaningful share of your users start their task by typing into ChatGPT rather than opening your app, then being available inside ChatGPT stops being a nice integration and starts being a distribution channel you cannot afford to skip. That is the same dynamic that made being in an app store matter, and it comes with the same tradeoff, which is that the channel that gives you reach also gets to set the terms.
+
+## AgentKit is OpenAI moving down into the build layer
+
+The second announcement that I think got underweighted was AgentKit, a set of tools for building, deploying, and tuning agents, including a visual canvas for wiring up and versioning multi-step agent workflows and a registry of prebuilt connectors to things like Google Drive, SharePoint, Dropbox, and Teams, plus third-party integrations through the same protocol. On its own this reads as developer convenience. In context it is OpenAI moving down the stack into the layer where, until now, a bunch of independent frameworks and startups lived, the glue that teams have been assembling by hand to turn a model into an agent that can actually do work across their systems.
+
+What I read into that is OpenAI trying to own not just the model you call but the scaffolding you build the agent with and the connectors the agent reaches through. If the tooling to build an agent, the workflow builder, and the catalog of integrations all come from OpenAI, then the default path of least resistance for a team standing up an agent runs entirely through OpenAI's stack, and the switching cost to move that agent to a different model provider later goes up with every OpenAI-specific piece you adopt. That is a familiar platform pattern. You make the first mile free and easy, and the ease is the thing that quietly binds you.
+
+## What this actually changes for product teams
+
+So the practical question, and the one I would be asking if I were running product anywhere near this, is whether you build a destination or a surface inside someone else's destination. The case for building inside ChatGPT is obvious and strong, because the reach is enormous, ChatGPT has hundreds of millions of weekly users, and showing up where they already are beats trying to drag them to a product they have to remember to open. For a lot of tools, especially ones that are a feature rather than a habit, being callable inside the conversation might be the best distribution they will ever get.
+
+The case against is the one every developer who has lived on someone else's platform already knows in their bones. When you build on a platform, the platform owner can see what works, can change the terms, can decide your category is strategic and build it themselves, and can disintermediate you from the customer relationship you thought you owned. We watched this play out on mobile app stores and on social platforms for a decade, and the lesson was not that you should never build on a platform, because plenty of good businesses did. The lesson was that you should go in clear-eyed about the fact that your distribution is rented, and that the landlord's incentives are not your incentives. Building on OpenAI now carries exactly that shape of risk, and the teams that will regret it are the ones that treat the reach as free rather than as a position that can be revised.
+
+## The pattern I would pull out of this
+
+The pattern I would pull out of DevDay is that OpenAI has decided the model was the wedge and the platform is the business. Selling tokens is a real business but a brutal one, because models get commoditized and buyers switch on price and benchmark, and OpenAI clearly does not want to be a vendor that lives and dies on being half a point ahead on an eval. Owning the surface where software gets used, and the tooling that software gets built with, is a far more defensible position, and it is the same position that turned the operating system and the app store into some of the best businesses in the history of the industry. The benchmark talk was the part that was easy to cover, but the strategy was in the parts that were easy to overlook, and I think in a year the DevDay that mattered will be remembered as the one where OpenAI stopped acting like a model company and started acting like a platform.
