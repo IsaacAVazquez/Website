@@ -2,6 +2,10 @@
 
 import { useMemo, useState, useSyncExternalStore } from "react";
 import {
+  getBrowserStorageSnapshot,
+  subscribeBrowserStorage,
+} from "@/lib/browserStorage";
+import {
   applyWineDraft,
   calculateWineSummary,
   createWineEntry,
@@ -16,42 +20,10 @@ import {
 } from "@/lib/wineCellar";
 import type { WineEntry } from "@/types/wine";
 
-const wineCellarListeners = new Set<() => void>();
-
-function emitWineCellarChange() {
-  wineCellarListeners.forEach((listener) => listener());
-}
-
-function subscribeWineCellarChange(listener: () => void) {
-  wineCellarListeners.add(listener);
-
-  function handleStorage(event: StorageEvent) {
-    if (event.key === null || event.key === WINE_CELLAR_STORAGE_KEY) {
-      listener();
-    }
-  }
-
-  if (typeof window !== "undefined") {
-    window.addEventListener("storage", handleStorage);
-  }
-
-  return () => {
-    wineCellarListeners.delete(listener);
-    if (typeof window !== "undefined") {
-      window.removeEventListener("storage", handleStorage);
-    }
-  };
-}
-
-function getWineCellarSnapshot() {
-  if (typeof window === "undefined") return "[]";
-  return window.localStorage.getItem(WINE_CELLAR_STORAGE_KEY) ?? "[]";
-}
-
 export function useWineCellar() {
   const storedSnapshot = useSyncExternalStore(
-    subscribeWineCellarChange,
-    getWineCellarSnapshot,
+    (listener) => subscribeBrowserStorage(WINE_CELLAR_STORAGE_KEY, listener),
+    () => getBrowserStorageSnapshot(WINE_CELLAR_STORAGE_KEY, "[]"),
     () => "[]"
   );
 
@@ -73,10 +45,12 @@ export function useWineCellar() {
   }
 
   function commitEntries(updater: (current: WineEntry[]) => WineEntry[]) {
+    // Read fresh at commit time (loadWineEntries goes through the mirror-aware
+    // shared store) so a concurrent cross-tab write isn't clobbered by a
+    // render-captured value. saveWineEntries notifies subscribers itself.
     const current = loadWineEntries();
     const next = updater(current);
     saveWineEntries(next);
-    emitWineCellarChange();
   }
 
   function addEntry(draft: WineDraft) {

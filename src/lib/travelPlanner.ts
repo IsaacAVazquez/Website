@@ -1,3 +1,7 @@
+import {
+  getBrowserStorageSnapshot,
+  writeBrowserStorageString,
+} from "@/lib/browserStorage";
 import type {
   ActivityCategory,
   JournalEntry,
@@ -336,7 +340,9 @@ export function parseTrips(raw: string | null): Trip[] {
 export function loadTrips(storage?: Pick<Storage, "getItem">): Trip[] {
   if (storage) return parseTrips(storage.getItem(TRAVEL_PLANNER_STORAGE_KEY));
   if (typeof window === "undefined") return [];
-  return parseTrips(window.localStorage.getItem(TRAVEL_PLANNER_STORAGE_KEY));
+  // Read through the shared memory-mirrored store so a trip still reads back
+  // even when a prior durable write failed (Safari private mode / quota).
+  return parseTrips(getBrowserStorageSnapshot(TRAVEL_PLANNER_STORAGE_KEY, "[]"));
 }
 
 export function saveTrips(trips: Trip[], storage?: Pick<Storage, "setItem">) {
@@ -345,8 +351,9 @@ export function saveTrips(trips: Trip[], storage?: Pick<Storage, "setItem">) {
     storage.setItem(TRAVEL_PLANNER_STORAGE_KEY, payload);
     return;
   }
-  if (typeof window === "undefined") return;
-  window.localStorage.setItem(TRAVEL_PLANNER_STORAGE_KEY, payload);
+  // Guarded write: mirrors in memory first, then attempts durable storage, so a
+  // QuotaExceededError never throws out of the interaction and aborts the save.
+  writeBrowserStorageString(TRAVEL_PLANNER_STORAGE_KEY, payload);
 }
 
 interface CreateTripInput {

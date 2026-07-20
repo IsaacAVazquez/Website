@@ -37,6 +37,7 @@ import {
   JOURNAL_MOODS,
   JOURNAL_MOOD_LABELS,
   MAX_ITINERARY_DAYS,
+  TRAVEL_PLANNER_STORAGE_KEY,
   formatActivityTimeRange,
   formatDayHeading,
   formatTripDateRange,
@@ -49,6 +50,7 @@ import {
   type JournalDraft,
   useTravelPlanner,
 } from "@/hooks/useTravelPlanner";
+import { useLocalStoragePersistenceStatus } from "@/hooks/useLocalStorageString";
 import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
 import type { ActivityCategory, JournalEntry, Trip, TripActivity } from "@/types/travel";
 
@@ -129,6 +131,7 @@ const textareaInput = `${fieldInput} min-h-[88px] resize-y`;
 
 export function TravelPlannerClient() {
   const planner = useTravelPlanner();
+  const persistenceStatus = useLocalStoragePersistenceStatus(TRAVEL_PLANNER_STORAGE_KEY);
   const {
     trips,
     activeTrip,
@@ -286,6 +289,22 @@ export function TravelPlannerClient() {
         className="tool-page-stack"
         data-testid="travel-planner-shell"
       >
+        {persistenceStatus === "memory-only" ? (
+          <div
+            className="rounded-[var(--radius-sm)] border px-4 py-3 text-sm leading-6"
+            style={{
+              borderColor:
+                "color-mix(in srgb, var(--home-warning) 35%, var(--home-rule))",
+              background:
+                "color-mix(in srgb, var(--home-warning) 10%, var(--home-paper-alt))",
+              color: "var(--home-ink-muted)",
+            }}
+            role="status"
+          >
+            Your trips are available in this tab, but browser storage is
+            unavailable, so changes may not remain after you close it.
+          </div>
+        ) : null}
         <div className="tool-shell">
           <aside className="tool-sidebar" aria-label="Travel planner navigation">
             <div className="tool-brand">

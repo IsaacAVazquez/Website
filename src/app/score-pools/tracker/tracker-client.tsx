@@ -312,6 +312,22 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                                     ? ` (aet ${formatScoreline(row.result.afterExtraTime)})`
                                     : ""}
                                   {row.result.penaltyWinner ? " p" : ""}
+                                  {activePool.manualResults[row.fixture.id] && !row.fixture.result ? (
+                                    <span className="mt-1 flex items-center gap-2 font-sans">
+                                      <span className="rounded-full border border-[var(--home-rule)] px-1.5 py-0.5 text-3xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                                        manual
+                                      </span>
+                                      <button
+                                        type="button"
+                                        onClick={() =>
+                                          setManualResult(activePool.id, row.fixture.id, null)
+                                        }
+                                        className="inline-flex min-h-[44px] items-center text-2xs font-semibold text-[var(--home-signal)] hover:underline"
+                                      >
+                                        Clear
+                                      </button>
+                                    </span>
+                                  ) : null}
                                 </>
                               ) : (
                                 <span className="text-2xs text-[var(--home-ink-muted)]">pending</span>
@@ -485,6 +501,25 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                                 >
                                   Save
                                 </button>
+                                {existing ? (
+                                  <button
+                                    type="button"
+                                    className={PILL_BUTTON}
+                                    onClick={() => {
+                                      updateRival(activePool.id, selectedRival.id, (rival) => {
+                                        const picks = { ...rival.picks };
+                                        delete picks[fixture.id];
+                                        return { ...rival, picks };
+                                      });
+                                      setRivalPickDrafts((drafts) => ({
+                                        ...drafts,
+                                        [fixture.id]: { home: "", away: "" },
+                                      }));
+                                    }}
+                                  >
+                                    Clear
+                                  </button>
+                                ) : null}
                               </span>
                             </li>
                           );

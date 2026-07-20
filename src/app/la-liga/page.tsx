@@ -13,6 +13,7 @@ export const metadata = constructMetadata({
   description:
     "Interactive La Liga dashboard with standings, title-race context, European qualification cutoffs, relegation pressure, and official snapshot leaderboards.",
   canonicalUrl: "/la-liga",
+  image: "/la-liga/opengraph-image",
   dateModified: laLigaSnapshot.updatedAt,
   aiMetadata: {
     profession: "Product Manager",

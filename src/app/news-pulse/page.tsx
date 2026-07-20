@@ -80,10 +80,7 @@ export default async function NewsPulsePage({ searchParams }: NewsPulsePageProps
           ],
         }}
       />
-      <NewsPulseClient
-        key={`${initialState.view}-${initialState.source}`}
-        initialState={initialState}
-      />
+      <NewsPulseClient initialState={initialState} />
     </>
   );
 }

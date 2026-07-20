@@ -4,6 +4,8 @@
 User-agent: *
 # Block non-public surfaces and build assets
 Disallow: /api/
+# ...but the public RSS feed lives under /api and should stay crawlable
+Allow: /api/rss
 Disallow: /admin/
 Disallow: /_next/
 Disallow: /node_modules/

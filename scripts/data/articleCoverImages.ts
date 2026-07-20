@@ -58,6 +58,7 @@ const ABSTRACT_QA = "Abstract QA/engineering piece; no natural photo, stock woul
 const ABSTRACT_PRODUCT = "Product/process piece about software; no non-generic subject photo.";
 const ABSTRACT_MACRO = "Diffuse macro/markets commentary; no single neutral subject to picture.";
 const ABSTRACT_FINTECH = "Fintech product piece; only generic money/calculator stock available.";
+const RECAP_CARD = "Season-recap post that already ships a bespoke editorial cover card in frontmatter; keep it.";
 
 export const ARTICLE_COVER_IMAGES: ArticleCoverImageSpec[] = [
   // ---------------------------------------------------------------------------
@@ -216,4 +217,47 @@ export const ARTICLE_COVER_IMAGES: ArticleCoverImageSpec[] = [
   { slug: "building-an-investment-research-platform", strategy: "editorial-card", reason: ABSTRACT_FINTECH },
   { slug: "interchange-iq-payment-fee-analyzer", strategy: "editorial-card", reason: ABSTRACT_FINTECH },
   { slug: "pricing-strategy-initiative", strategy: "editorial-card", reason: ABSTRACT_FINTECH },
+
+  // ---------------------------------------------------------------------------
+  // 2025-26 season recaps — Grand Prix, Premier League, La Liga, World Cup
+  // ---------------------------------------------------------------------------
+  // These recaps already ship a bespoke editorial cover card in frontmatter.
+  { slug: "2026-australian-grand-prix-mercedes-new-era", strategy: "editorial-card", reason: RECAP_CARD },
+  { slug: "2026-austrian-grand-prix-russell-title-race", strategy: "editorial-card", reason: RECAP_CARD },
+  { slug: "2026-barcelona-catalunya-grand-prix-hamilton-ferrari", strategy: "editorial-card", reason: RECAP_CARD },
+  { slug: "2026-british-grand-prix-leclerc-silverstone", strategy: "editorial-card", reason: RECAP_CARD },
+  { slug: "2026-canadian-grand-prix-mercedes-civil-war", strategy: "editorial-card", reason: RECAP_CARD },
+  { slug: "2026-chinese-grand-prix-antonelli-first-win", strategy: "editorial-card", reason: RECAP_CARD },
+  { slug: "2026-japanese-grand-prix-antonelli-title-lead", strategy: "editorial-card", reason: RECAP_CARD },
+  { slug: "2026-miami-grand-prix-mclaren-mercedes", strategy: "editorial-card", reason: RECAP_CARD },
+  { slug: "2026-monaco-grand-prix-antonelli-grand-slam", strategy: "editorial-card", reason: RECAP_CARD },
+  { slug: "premier-league-2025-26-april-title-swing", strategy: "editorial-card", reason: RECAP_CARD },
+  { slug: "premier-league-2025-26-arsenal-champions", strategy: "editorial-card", reason: RECAP_CARD },
+  { slug: "premier-league-2025-26-august-opening-weeks", strategy: "editorial-card", reason: RECAP_CARD },
+  { slug: "premier-league-2025-26-awards", strategy: "editorial-card", reason: RECAP_CARD },
+  { slug: "premier-league-2025-26-december-festive-fixtures", strategy: "editorial-card", reason: RECAP_CARD },
+  { slug: "premier-league-2025-26-february-run-in-shape", strategy: "editorial-card", reason: RECAP_CARD },
+  { slug: "premier-league-2025-26-january-wobble-window", strategy: "editorial-card", reason: RECAP_CARD },
+  { slug: "premier-league-2025-26-march-united-surge", strategy: "editorial-card", reason: RECAP_CARD },
+  { slug: "premier-league-2025-26-november-clean-sheets", strategy: "editorial-card", reason: RECAP_CARD },
+  { slug: "premier-league-2025-26-october-arsenal-go-top", strategy: "editorial-card", reason: RECAP_CARD },
+  { slug: "premier-league-2025-26-relegation-and-survival", strategy: "editorial-card", reason: RECAP_CARD },
+  { slug: "premier-league-2025-26-season-in-review", strategy: "editorial-card", reason: RECAP_CARD },
+  { slug: "premier-league-2025-26-september-promoted-teams", strategy: "editorial-card", reason: RECAP_CARD },
+  { slug: "world-cup-2026-round-of-16-recap", strategy: "editorial-card", reason: RECAP_CARD },
+  { slug: "world-cup-2026-round-of-32-recap", strategy: "editorial-card", reason: RECAP_CARD },
+  // La Liga round-ups have no cover yet; fetch a licensed match photo like the peers.
+  { slug: "la-liga-2025-26-arbeloa-madrid-midseason", strategy: "wikimedia", query: "La Liga football soccer match stadium", alt: "A football match at a stadium" },
+  { slug: "la-liga-2025-26-barcelona-clinch-title", strategy: "wikimedia", query: "La Liga football soccer match stadium", alt: "A football match at a stadium" },
+  { slug: "la-liga-2025-26-barcelona-retake-top", strategy: "wikimedia", query: "La Liga football soccer match stadium", alt: "A football match at a stadium" },
+  { slug: "la-liga-2025-26-final-day", strategy: "wikimedia", query: "La Liga football soccer match stadium", alt: "A football match at a stadium" },
+  { slug: "la-liga-2025-26-first-clasico", strategy: "wikimedia", query: "La Liga football soccer match stadium", alt: "A football match at a stadium" },
+  { slug: "la-liga-2025-26-joan-garcia-zamora", strategy: "wikimedia", query: "La Liga football soccer match stadium", alt: "A football match at a stadium" },
+  { slug: "la-liga-2025-26-mbappe-pichichi", strategy: "wikimedia", query: "La Liga football soccer match stadium", alt: "A football match at a stadium" },
+  { slug: "la-liga-2025-26-oviedo-relegated", strategy: "wikimedia", query: "La Liga football soccer match stadium", alt: "A football match at a stadium" },
+  { slug: "la-liga-2025-26-real-madrid-flying-start", strategy: "wikimedia", query: "La Liga football soccer match stadium", alt: "A football match at a stadium" },
+  { slug: "la-liga-2025-26-season-preview", strategy: "wikimedia", query: "La Liga football soccer match stadium", alt: "A football match at a stadium" },
+  { slug: "la-liga-2025-26-season-verdict", strategy: "wikimedia", query: "La Liga football soccer match stadium", alt: "A football match at a stadium" },
+  { slug: "la-liga-2025-26-supercopa-alonso-sacked", strategy: "wikimedia", query: "La Liga football soccer match stadium", alt: "A football match at a stadium" },
+  { slug: "la-liga-2025-26-title-race-run-in", strategy: "wikimedia", query: "La Liga football soccer match stadium", alt: "A football match at a stadium" },
 ];

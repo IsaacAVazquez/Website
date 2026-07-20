@@ -286,17 +286,26 @@ function LeaderboardTable({
   selectedPlayerId: string | null;
   onSelectPlayer: (playerId: string) => void;
 }) {
+  const roundCount = Math.min(
+    4,
+    rows.reduce((max, row) => Math.max(max, row.roundScores.length), 0)
+  );
+  const roundLabels = Array.from({ length: roundCount }, (_, i) => `R${i + 1}`);
+  const headerLabels = ["Pos", "Player", "Total", "Today", "Thru", ...roundLabels, "Move"];
+
   return (
     <div className="hidden overflow-hidden rounded-[var(--radius-3xl)] border md:block" style={{ borderColor: "var(--home-rule)" }}>
       <table className="w-full border-separate border-spacing-0">
-        <caption className="sr-only">PGA Tour Pulse leaderboard with position, total, today&apos;s score, round scores, and movement.</caption>
+        <caption className="sr-only">PGA Tour Pulse leaderboard with position, total, today&apos;s score, holes played, round scores, and movement.</caption>
         <colgroup>
           <col style={{ width: "72px" }} />
           <col />
           <col style={{ width: "90px" }} />
           <col style={{ width: "90px" }} />
           <col style={{ width: "70px" }} />
-          <col style={{ width: "70px" }} />
+          {roundLabels.map((label) => (
+            <col key={label} style={{ width: "70px" }} />
+          ))}
           <col style={{ width: "120px" }} />
         </colgroup>
         <thead>
@@ -306,7 +315,7 @@ function LeaderboardTable({
               color: "var(--home-ink-muted)",
             }}
           >
-            {["Pos", "Player", "Total", "Today", "R1", "R2", "Move"].map((label) => (
+            {headerLabels.map((label) => (
               <th
                 key={label}
                 scope="col"
@@ -375,14 +384,17 @@ function LeaderboardTable({
                   className="px-4 py-3 align-middle text-sm"
                   style={{ ...cellStyle, color: "var(--home-ink-muted)" }}
                 >
-                  {row.roundScores[0]}
+                  {row.thru}
                 </td>
-                <td
-                  className="px-4 py-3 align-middle text-sm"
-                  style={{ ...cellStyle, color: "var(--home-ink-muted)" }}
-                >
-                  {row.roundScores[1]}
-                </td>
+                {roundLabels.map((label, i) => (
+                  <td
+                    key={label}
+                    className="px-4 py-3 align-middle text-sm"
+                    style={{ ...cellStyle, color: "var(--home-ink-muted)" }}
+                  >
+                    {row.roundScores[i] != null ? String(row.roundScores[i]) : "—"}
+                  </td>
+                ))}
                 <td className="px-4 py-3 align-middle" style={cellStyle}>
                   <MovementPill movement={row.movement} />
                 </td>
@@ -404,6 +416,12 @@ function MobileLeaderboardCards({
   selectedPlayerId: string | null;
   onSelectPlayer: (playerId: string) => void;
 }) {
+  const roundCount = Math.min(
+    4,
+    rows.reduce((max, row) => Math.max(max, row.roundScores.length), 0)
+  );
+  const roundLabels = Array.from({ length: roundCount }, (_, i) => `R${i + 1}`);
+
   return (
     <div className="space-y-3 md:hidden">
       {rows.map((row) => {
@@ -458,23 +476,21 @@ function MobileLeaderboardCards({
               </div>
             </div>
 
-            <div className="mt-4 grid grid-cols-4 gap-2">
+            <div className="mt-4 grid grid-cols-3 gap-2">
               <StatBlock
                 label="Today"
                 value={formatScoreToPar(row.today)}
                 detail={row.status}
                 valueColor={getScoreToParColor(row.today)}
               />
-              <StatBlock
-                label="R1"
-                value={row.roundScores[0] != null ? String(row.roundScores[0]) : "—"}
-                detail="Opening round"
-              />
-              <StatBlock
-                label="R2"
-                value={row.roundScores[1] != null ? String(row.roundScores[1]) : "—"}
-                detail="Second round"
-              />
+              {roundLabels.map((label, i) => (
+                <StatBlock
+                  key={label}
+                  label={label}
+                  value={row.roundScores[i] != null ? String(row.roundScores[i]) : "—"}
+                  detail={`Round ${i + 1}`}
+                />
+              ))}
               <StatBlock label="Thru" value={row.thru} detail="Tournament status" />
             </div>
           </button>

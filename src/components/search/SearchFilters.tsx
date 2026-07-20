@@ -26,7 +26,8 @@ const categories = [
   { id: 'Agentic AI', label: 'Agentic AI' },
   { id: 'Product Management', label: 'Product Management' },
   { id: 'Fantasy Football Analytics', label: 'Fantasy Football' },
-  { id: 'Sports Analytics', label: 'Sports Analytics' },
+  { id: 'Sports Data Tools', label: 'Sports Dashboards' },
+  { id: 'Sports Analytics', label: 'Sports Writing' },
   { id: 'QA Engineering', label: 'QA Engineering' },
   { id: 'Fintech Product', label: 'Fintech' },
 ];

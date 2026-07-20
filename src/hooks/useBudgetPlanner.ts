@@ -200,6 +200,10 @@ export function useBudgetPlanner(initialMonthKey = getCurrentBudgetMonthKey()) {
     return activeMonth.expenses.find((expense) => expense.id === expenseId);
   }
 
+  function clearMonth() {
+    updateActiveMonth(() => createBudgetMonth(activeMonthKey));
+  }
+
   return {
     activeMonth,
     activeMonthKey,
@@ -215,5 +219,6 @@ export function useBudgetPlanner(initialMonthKey = getCurrentBudgetMonthKey()) {
     updateExpense,
     removeExpense,
     findExpense,
+    clearMonth,
   };
 }

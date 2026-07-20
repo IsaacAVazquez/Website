@@ -1211,6 +1211,27 @@ export function BayAreaTransitClient({
                           {stationBoardError}
                         </p>
                       </div>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setStationBoardErrors((current) => {
+                            if (!selectedStationId || !(selectedStationId in current)) {
+                              return current;
+                            }
+                            const next = { ...current };
+                            delete next[selectedStationId];
+                            return next;
+                          })
+                        }
+                        className="mt-4 inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-colors"
+                        style={{
+                          borderColor: "var(--home-rule)",
+                          color: "var(--home-ink)",
+                          fontFamily: "var(--font-home-sans)",
+                        }}
+                      >
+                        Try again
+                      </button>
                     </div>
                   ) : null}
 
