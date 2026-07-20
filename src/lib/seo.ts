@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { profile } from "./profile";
+import { profile, profileSameAs } from "./profile";
 
 export interface ProjectStructuredData {
   name: string;
@@ -332,98 +332,57 @@ export function generateAIOptimizedMetadata(
 }
 
 /**
- * Generate Person structured data with enhanced credentials
+ * The canonical Person entity for JSON-LD. Every schema that describes Isaac
+ * must build on this object so a single @id never ships divergent copies —
+ * StructuredData's Person branch and ai-seo's enhanced /about schema both
+ * start from here.
  */
-export function generatePersonStructuredData(options?: {
-  includeCredentials?: boolean;
-  includeSocials?: boolean;
-  includeOrganizations?: boolean;
-}): object {
-  const {
-    includeCredentials = true,
-    includeSocials = true,
-    includeOrganizations = true,
-  } = options || {};
+export function buildPersonEntity(): Record<string, unknown> {
+  // education[0] is the current program (affiliation), education[1] the
+  // completed degree (alumniOf). Emit only schema.org-valid fields — the
+  // profile entries also carry degree/startDate/endDate for other surfaces.
+  const [currentEducation, completedEducation] = profile.education;
 
-  const personData: Record<string, unknown> = {
-    "@context": "https://schema.org",
+  return {
     "@type": "Person",
     "@id": personSchemaId,
-    "name": siteConfig.name,
-    "jobTitle": profile.fullTitle,
-    "description": siteConfig.description,
-    "url": personCanonicalUrl,
-    "image": `${siteConfig.url}${siteConfig.ogImage}`,
-  };
-
-  if (includeSocials) {
-    personData["sameAs"] = [
-      siteConfig.links.linkedin,
-      siteConfig.links.github,
-    ];
-  }
-
-  if (includeCredentials) {
-    personData["knowsAbout"] = [
-      "Product Management",
-      "Product Strategy",
-      "Technical Product Leadership",
-      "Quality Assurance",
-      "Test Automation",
-      "Consumer Technology",
-      "SaaS Platforms",
-      "Data Analytics",
-      "Cross-functional Leadership",
-      "User Research",
-      "Experimentation Strategy",
-    ];
-
-    personData["hasCredential"] = [
-      {
-        "@type": "EducationalOccupationalCredential",
-        "credentialCategory": "degree",
-        "name": "MBA Candidate",
-        "educationalLevel": "Master's Degree",
-        "recognizedBy": {
-          "@type": "CollegeOrUniversity",
-          "name": "UC Berkeley Haas School of Business",
-        },
-      },
-      {
-        "@type": "EducationalOccupationalCredential",
-        "credentialCategory": "award",
-        "name": "Consortium Fellow",
-      },
-      {
-        "@type": "EducationalOccupationalCredential",
-        "credentialCategory": "award",
-        "name": "MLT Professional Development Fellow",
-      },
-    ];
-  }
-
-  if (includeOrganizations) {
-    personData["affiliation"] = {
+    name: siteConfig.name,
+    jobTitle: profile.fullTitle,
+    description: siteConfig.description,
+    url: personCanonicalUrl,
+    image: absoluteUrl(siteConfig.ogImage),
+    sameAs: profileSameAs,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: profile.location.locality,
+      addressRegion: profile.location.region,
+      addressCountry: profile.location.country,
+    },
+    affiliation: {
       "@type": "CollegeOrUniversity",
-      "name": profile.education[0].name,
-      "description": profile.education[0].description,
-    };
-
-    personData["alumniOf"] = [profile.education[1]];
-    personData["worksFor"] = {
+      name: currentEducation.name,
+      description: currentEducation.description,
+    },
+    alumniOf: [
+      {
+        "@type": "CollegeOrUniversity",
+        name: completedEducation.name,
+        description: completedEducation.description,
+      },
+    ],
+    worksFor: {
       "@type": "Organization",
-      "name": profile.currentRole.organization,
-    };
-    personData["hasOccupation"] = [
+      name: profile.currentRole.organization,
+    },
+    hasOccupation: [
       {
         "@type": "Occupation",
-        "name": "Product Manager",
-        "skills": profile.knowsAbout,
+        name: "Product Manager",
+        skills: profile.knowsAbout,
       },
-    ];
-  }
-
-  return personData;
+    ],
+    knowsAbout: profile.knowsAbout,
+  };
 }
 
 /**

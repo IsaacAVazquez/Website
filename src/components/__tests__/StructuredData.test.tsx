@@ -93,4 +93,37 @@ describe("StructuredData", () => {
     );
     expect(JSON.stringify(schema)).not.toContain('"worksFor":{"@type":"Organization","name":"Civitech"');
   });
+
+  it("emits only schema.org-valid fields on education entities", () => {
+    const schema = readSchema(
+      renderToStaticMarkup(<StructuredData type="Person" />)
+    );
+    const serialized = JSON.stringify(schema);
+
+    // The profile's education entries carry degree/startDate/endDate for
+    // other surfaces; none of those are valid CollegeOrUniversity properties.
+    expect(serialized).not.toContain('"degree"');
+    expect(schema.alumniOf).toEqual([
+      {
+        "@type": "CollegeOrUniversity",
+        name: "Florida State University",
+        description:
+          "Bachelor of Arts - Political Science and International Affairs",
+      },
+    ]);
+  });
+
+  it("maps a WebPage title to name without leaking a nonstandard title key", () => {
+    const schema = readSchema(
+      renderToStaticMarkup(
+        <StructuredData
+          type="WebPage"
+          data={{ title: "Accessibility Statement", url: "https://isaacavazquez.com/accessibility" }}
+        />
+      )
+    );
+
+    expect(schema.name).toBe("Accessibility Statement");
+    expect(schema.title).toBeUndefined();
+  });
 });

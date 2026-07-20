@@ -6,11 +6,7 @@
  * and E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) signals.
  */
 
-import {
-  personCanonicalUrl,
-  personSchemaId,
-  siteConfig,
-} from "./seo";
+import { buildPersonEntity, siteConfig } from "./seo";
 
 // ============================================================================
 // TYPES & INTERFACES
@@ -201,20 +197,26 @@ export interface BreadcrumbItem {
  * Generates comprehensive Person schema with AI-optimized expertise signals
  */
 export function generateEnhancedPersonSchema(data: PersonSchemaData) {
+  // Start from the canonical Person entity so this schema can only extend the
+  // shared node, never diverge from it under the same @id.
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "@id": personSchemaId,
-    name: data.name || siteConfig.name,
-    alternateName: data.name || siteConfig.name,
-    description: data.description || siteConfig.description,
-    url: personCanonicalUrl,
-    image: data.image || `${siteConfig.url}${siteConfig.ogImage}`,
-    sameAs: data.sameAs || [
-      siteConfig.links.linkedin,
-      siteConfig.links.github,
-    ],
+    ...buildPersonEntity(),
   };
+
+  if (data.name) {
+    schema.name = data.name;
+    schema.alternateName = data.name;
+  }
+  if (data.description) {
+    schema.description = data.description;
+  }
+  if (data.image) {
+    schema.image = data.image;
+  }
+  if (data.sameAs) {
+    schema.sameAs = data.sameAs;
+  }
 
   // Job title and professional identity
   if (data.jobTitle) {
