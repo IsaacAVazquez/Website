@@ -1,5 +1,6 @@
 import { StructuredData } from "@/components/StructuredData";
 import { pollingSnapshot } from "@/data/pollingSnapshot";
+import { getPollingSnapshot } from "@/lib/pollingSnapshot";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { PollingAggregatorClient } from "./polling-aggregator-client";
 import { normalizePollingState } from "./polling-aggregator-state";
@@ -21,6 +22,7 @@ interface PollingPageProps {
 
 export default async function PollingAggregatorPage({ searchParams }: PollingPageProps) {
   const initialState = normalizePollingState(await searchParams);
+  const snapshot = await getPollingSnapshot();
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "Polling Aggregator", url: "/polling-aggregator" },
@@ -52,7 +54,7 @@ export default async function PollingAggregatorPage({ searchParams }: PollingPag
           ],
         }}
       />
-      <PollingAggregatorClient initialState={initialState} snapshot={pollingSnapshot} />
+      <PollingAggregatorClient initialState={initialState} snapshot={snapshot} />
     </>
   );
 }

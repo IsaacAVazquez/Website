@@ -1,8 +1,13 @@
 name: Refresh Polling Snapshot
 
 on:
+  # Daily fallback-seed refresh. Day-to-day freshness comes from the Netlify
+  # scheduled function (netlify/functions/refresh-polling.ts), which writes
+  # the VoteHub data to the dashboard-snapshots blob store every six hours
+  # without a commit or rebuild. This workflow only keeps the committed
+  # cold-start seed warm.
   schedule:
-    - cron: "55 */6 * * *"
+    - cron: "55 5 * * *"
   workflow_dispatch:
 
 concurrency:

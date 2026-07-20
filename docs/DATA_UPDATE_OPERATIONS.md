@@ -46,7 +46,7 @@ request time, with the committed artifact retained as the last-good fallback.
 | Museum log | none | hand-authored catalog | museum websites and curator notes | `src/data/museumSnapshot.ts` | `audit-curated-data.yml` | weekly review |
 | Travel deals | none | hand-authored estimates | editorial fare bands and tactics | `src/data/travelDealsSnapshot.ts` | `audit-curated-data.yml` | weekly review |
 | Food map | none | hand-authored catalog | curator recommendations and map references | `src/app/food-map/food-map-data.ts` | `audit-curated-data.yml` | weekly review |
-| Polling | `update:polling` | `buildPollingSnapshot.ts` | VoteHub Polling API, CC BY 4.0 | `src/data/pollingSnapshot.ts` | `update-polling.yml` | every 6h |
+| Polling | `update:polling` *(seed)* | `buildPollingSnapshot.ts` + `netlify/functions/refresh-polling.ts` (shared `src/lib/pollingData.ts`) | VoteHub Polling API, CC BY 4.0 | `src/data/pollingSnapshot.ts` *(seed)* + `dashboard-snapshots` blob | `update-polling.yml` *(seed)* + Netlify scheduled function | seed daily 05:55 UTC; blob every 6h |
 | Article cover images | `update:article-images` | `buildArticleCoverImages.ts` (plan: `scripts/data/articleCoverImages.ts`) | Wikimedia Commons *(no token)* | `public/images/writing/covers/*` + `content/blog/*.mdx` frontmatter | `update-article-images.yml` | weekly Mon 06:40 UTC + dispatch |
 
 Investment raw provider responses under `data/investments-raw/` are transient
