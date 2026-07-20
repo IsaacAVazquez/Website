@@ -174,6 +174,7 @@ Confirm live API routes from `src/app/api/**/route.ts`. Current routes:
 - `/api/bay-area-transit/summary` and `/api/bay-area-transit/stations/[stationId]`
 - `/api/earthquake-pulse/summary`
 - `/api/fantasy-data`
+- `/api/frontier-models/summary`
 - `/api/golf/summary` and `/api/golf/players/[playerId]`
 - `/api/investments/index`, `/api/investments/quotes`, `/api/investments/data/[symbol]`
 - `/api/la-liga/summary` and `/api/la-liga/teams/[teamId]`
@@ -444,6 +445,7 @@ Current behavior:
 - `update-earthquake.yml` runs on manual dispatch and hourly (minute 20), then commits `src/data/earthquakeSnapshot.ts` when it changes
 - `update-polling.yml` runs every six hours and refreshes the VoteHub-backed polling snapshot
 - `audit-curated-data.yml` checks review dates, verification flags, and structural integrity across Frontier Models, Tech Startups, AI Dev Tools, Museum Log, Travel Deals, and Food Map every Monday
+- `netlify/functions/refresh-frontier-models.ts` is a Netlify scheduled function (daily 07:30 UTC, no GitHub Action) that fact-checks the frontier-models seed against models.dev and OpenRouter, writes the result to the `dashboard-snapshots` Netlify Blobs store, and purges the `frontier-models` CDN cache tag; the committed seed stays the fallback
 - The tech startup tracker has no workflow by design — its dataset is editorially curated, so refreshes happen by editing the seed and running `npm run update:tech-startups` locally
 - All 16 snapshot `update-*.yml` workflows commit and push through the shared `scripts/ci/commit-and-push-snapshot.sh` helper (usage: `commit-and-push-snapshot.sh <commit-message> <pathspec...>`). It regenerates and stages sitemap freshness metadata with the snapshot, sets the `github-actions[bot]` identity, exits cleanly on a no-op refresh, and pushes to `HEAD:main` with a fetch/`rebase --autostash` retry loop (default 8 attempts, `SNAPSHOT_PUSH_ATTEMPTS` override) plus capped exponential backoff to absorb concurrent snapshot-bot pushes. Behavior is asserted by `.github/workflows/__tests__/snapshot-workflows.test.ts` and `update-investments.test.ts`.
 - `publish-data.yml` coalesces successful refreshes, triggers the Netlify build hook when production is behind, and verifies the full `/api/data-revisions` ledger before closing publication incidents

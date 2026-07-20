@@ -41,7 +41,7 @@ request time, with the committed artifact retained as the last-good fallback.
 | SpaceX data | `update:spacex` *(alias `update:spacex-data`)* | `buildSpaceXSnapshot.ts` | Launch Library / SpaceDevs | `src/data/spacexSnapshot.generated.json` | `update-spacex.yml` | daily 09:25 + 21:25 UTC |
 | SpaceX images | `update:spacex-images` | `buildSpaceXImageSnapshots.ts` | launch image assets | `src/data/spacexImageManifest.generated.json`, `public/data/spacex/*` | `update-spacex.yml` | daily 09:25 + 21:25 UTC |
 | Tech startups | `update:tech-startups` | `buildTechStartupSnapshot.ts` | curated seed *(in script)* | `src/data/techStartupSnapshot.ts` | none *(curated)* | manual |
-| Frontier models | `update:frontier-models` | `buildFrontierModelsSnapshot.ts` | `scripts/data/frontierModels.source.ts` | `src/data/frontierModelsSnapshot.ts` | none *(curated)* | manual |
+| Frontier models | `update:frontier-models` *(seed)* | `buildFrontierModelsSnapshot.ts` + `netlify/functions/refresh-frontier-models.ts` | `scripts/data/frontierModels.source.ts` + models.dev/OpenRouter fact check | `src/data/frontierModelsSnapshot.ts` *(seed)* + `dashboard-snapshots` blob | Netlify scheduled function *(no Action)* | seed manual; facts daily 07:30 UTC |
 | AI dev tools | none | hand-authored catalog | official product and repository sources | `src/app/ai-dev-tools/ai-dev-tools-data.ts` | `audit-curated-data.yml` | weekly review |
 | Museum log | none | hand-authored catalog | museum websites and curator notes | `src/data/museumSnapshot.ts` | `audit-curated-data.yml` | weekly review |
 | Travel deals | none | hand-authored estimates | editorial fare bands and tactics | `src/data/travelDealsSnapshot.ts` | `audit-curated-data.yml` | weekly review |
@@ -63,6 +63,13 @@ source and licensing ledger is `INVESTMENTS_DATA_SOURCES.md`.
 News Pulse remains API-backed at request time and has no committed snapshot. Its
 last good per-feed data, and the MBA jobs route's last good result, are persisted
 in Netlify Blobs so cold starts do not erase their fallback.
+
+Frontier models pilots the blob-backed refresh lane: a daily Netlify scheduled
+function fact-checks the curated seed against models.dev and OpenRouter, writes
+the result to the `dashboard-snapshots` blob store, and purges the surface's
+CDN cache tag. No commit and no rebuild is involved; the committed seed stays
+the fallback and the editorial source of truth. See the lane description in
+`../SNAPSHOT_DRIVEN_DASHBOARDS.md`.
 
 ---
 
