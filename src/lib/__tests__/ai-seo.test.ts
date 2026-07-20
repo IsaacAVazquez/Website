@@ -1,5 +1,4 @@
 import {
-  generateAIMetaTags,
   generateArticleSchema,
   generateBreadcrumbSchema,
   generateEnhancedPersonSchema,
@@ -98,39 +97,6 @@ describe("AI SEO structured-data generators", () => {
     expect((schema.mainEntity as Record<string, unknown>)["@type"]).toBe(
       "Person"
     );
-  });
-});
-
-describe("generateAIMetaTags", () => {
-  it("returns an empty object when nothing is provided", () => {
-    expect(generateAIMetaTags({})).toEqual({});
-  });
-
-  it("serializes list fields with commas and duplicates topics into article:tag", () => {
-    const tags = generateAIMetaTags({
-      expertise: ["Product", "QA"],
-      specialty: "AI products",
-      profession: "PM",
-      industry: ["SaaS", "Civic"],
-      topics: ["evals", "agents"],
-      contentType: "article",
-      context: "portfolio",
-      summary: "A short summary",
-      primaryFocus: "product strategy",
-    });
-
-    expect(tags.expertise).toBe("Product, QA");
-    expect(tags.industry).toBe("SaaS, Civic");
-    expect(tags.topics).toBe("evals, agents");
-    expect(tags["article:tag"]).toBe("evals, agents");
-    expect(tags["content-type"]).toBe("article");
-    expect(tags["primary-focus"]).toBe("product strategy");
-  });
-
-  it("skips empty arrays", () => {
-    const tags = generateAIMetaTags({ expertise: [], industry: [], topics: [] });
-    expect(tags.expertise).toBeUndefined();
-    expect(tags.topics).toBeUndefined();
   });
 });
 

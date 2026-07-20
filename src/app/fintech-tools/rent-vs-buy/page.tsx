@@ -9,31 +9,6 @@ export const metadata = constructMetadata({
   canonicalUrl: "/fintech-tools/rent-vs-buy",
   dateModified: "2026-07-20",
   image: "/fintech-tools/rent-vs-buy/opengraph-image",
-  aiMetadata: {
-    profession: "Product Manager",
-    specialty: "Personal finance modeling, fintech product thinking, and decision-support UX",
-    expertise: [
-      "Rent vs. Buy Analysis",
-      "Financial Modeling",
-      "Opportunity Cost",
-      "Mortgage Amortization",
-      "Next.js",
-    ],
-    industry: ["Fintech", "Personal Finance", "Real Estate"],
-    topics: [
-      "Rent versus buy",
-      "Break-even analysis",
-      "Home affordability",
-      "Net worth projection",
-    ],
-    contentType: "Software Application",
-    context:
-      "Standalone housing-decision tool built as a public product project that models the full net-worth tradeoff between renting and buying rather than just the monthly payment.",
-    summary:
-      "Rent-vs-buy calculator with a month-by-month net-worth model, opportunity-cost accounting, and a break-even year.",
-    primaryFocus:
-      "Housing decisions, opportunity cost, and transparent break-even analysis between renting and buying",
-  },
 });
 
 export default function RentVsBuyPage() {
