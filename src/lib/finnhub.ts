@@ -57,13 +57,10 @@ export function isValidSymbol(symbol: string): boolean {
 // /api/investments/quotes and /api/stocks proxies — only symbols Isaac has
 // chosen to research can hit the paid Finnhub key.
 //
-// It is sourced from public/data/investments/index.json. In dev and tests that
-// file is on disk, but inside the deployed Netlify function it is stripped from
-// the bundle (excluded from output file tracing in next.config.mjs and removed
-// by the netlify.toml build command), so a plain readFileSync throws ENOENT and
-// the allowlist would otherwise fail closed for every symbol. We therefore fall
-// back to fetching the committed public asset over HTTP — exactly how the
-// curated-data loader (investmentsData.ts) resolves the same file.
+// It is sourced from public/data/investments/index.json. Netlify packages that
+// directory with the server handler through `functions.included_files`, which
+// keeps the filesystem path reliable in production. The HTTP read remains as a
+// fallback for runtimes that omit public assets from their function bundle.
 const INDEX_RELATIVE_PATH = "/data/investments/index.json";
 const INDEX_JSON_PATH = path.join(
   process.cwd(),
