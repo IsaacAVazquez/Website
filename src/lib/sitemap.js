@@ -53,6 +53,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/fantasy-football/draft-tracker": readFantasyLastmod(),
   "/fintech-tools/budget-planner": "2026-04-03",
   "/fintech-tools/interchange-iq": "2026-04-02",
+  "/fintech-tools/rent-vs-buy": "2026-07-20",
   "/food-map": "2026-04-28",
   "/travel": "2026-05-04",
   "/travel-deals": "2026-07-07",
@@ -131,6 +132,7 @@ const CHANGEFREQ_BY_ROUTE = {
   // Browser-persisted / curated personal-interest + fintech tools
   "/fintech-tools/budget-planner": "monthly",
   "/fintech-tools/interchange-iq": "monthly",
+  "/fintech-tools/rent-vs-buy": "monthly",
   "/food-map": "monthly",
   "/recipe-finder": "monthly",
   "/wine-cellar": "monthly",

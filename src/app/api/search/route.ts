@@ -410,6 +410,18 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       tags: ['Budget', 'Personal Finance', 'Fintech Product'],
     },
     {
+      id: 'page-rent-vs-buy',
+      title: 'Rent vs. Buy Calculator',
+      excerpt:
+        'Month-by-month rent-vs-buy net-worth model with opportunity-cost accounting and a break-even year.',
+      content:
+        'Rent vs buy calculator break-even year home affordability mortgage opportunity cost down payment net worth fintech tool personal finance',
+      url: '/fintech-tools/rent-vs-buy',
+      type: 'project',
+      category: 'Fintech Product',
+      tags: ['Rent vs Buy', 'Personal Finance', 'Housing', 'Fintech Product'],
+    },
+    {
       id: 'page-pga-tour-pulse',
       title: 'PGA Tour Pulse',
       excerpt:

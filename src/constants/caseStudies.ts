@@ -189,6 +189,39 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     retrospective: "",
   },
 
+  "rent-vs-buy-calculator": {
+    slug: "rent-vs-buy-calculator",
+    title: "Rent vs. Buy Calculator",
+    description:
+      "I built a rent-vs-buy calculator that runs a month-by-month net-worth model, credits the renter the opportunity cost of a buyer's down payment and closing costs, and reports the exact year buying pulls ahead instead of stopping at the monthly payment.",
+    role: "Full-Stack Developer & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "React", "Financial Modeling"],
+    metrics: "Break-even year · Opportunity-cost model · Browser persistence",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/fintech-tools/rent-vs-buy",
+    featured: true,
+
+    overview: {
+      summary:
+        "I created a housing-decision tool that models the full net-worth tradeoff between renting and buying rather than just comparing monthly payments.",
+      impact:
+        "Turns one of the most-searched personal finance questions into a transparent break-even year you can pressure-test against your own assumptions.",
+    },
+    problem: {
+      context:
+        "Most rent-vs-buy calculators stop at the monthly payment and ignore the opportunity cost of the cash a buyer ties up in a down payment, so they quietly bias the answer toward buying.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
   "news-pulse-dashboard": {
     slug: "news-pulse-dashboard",
     title: "News Pulse Dashboard",
@@ -1100,6 +1133,7 @@ const PORTFOLIO_PROJECT_ORDER = [
   "travel-planner",
   "travel-deal-lab",
   "budget-planner",
+  "rent-vs-buy-calculator",
   "mba-role-tracker",
   "polling-aggregator",
   "spacex-mission-control",
