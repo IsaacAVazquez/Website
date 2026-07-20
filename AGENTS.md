@@ -159,7 +159,7 @@ Footer variants:
 - Shared portfolio-shell primitives must not use `transition-all`. Transition specific properties instead.
 - Portfolio-shell routes must keep the primary message and main CTA visible in the initial mobile viewport whenever the route has a hero.
 - Portfolio and writing cards should surface role, problem space, and impact in the default scan state.
-- The `/portfolio` index is rendered by `src/components/portfolio/PortfolioV3.tsx`, which carries a client-side project search (tokenized AND match over title, description, role, timeline, metrics, summary, category, and tools) and a marquee band that sits between the project grid and the pager.
+- The `/portfolio` index is rendered by `src/components/portfolio/PortfolioInstrument.tsx`, which carries a client-side project search (tokenized AND match over title, description, role, timeline, metrics, summary, category, and tools) and a marquee band that sits between the project grid and the pager.
 - `/api/search` is still limited and mostly hardcoded. Do not describe it as comprehensive site search.
 - `ProjectsContent.tsx` and `WritingPreview.tsx` still exist, but they are not the primary live path for the current shell.
 
@@ -403,6 +403,7 @@ The MLB, NBA, and NFL dashboards read committed TypeScript snapshots at runtime.
 Checked-in operational workflows:
 
 - `.github/workflows/test.yml`
+- `.github/workflows/changelog-on-merge.yml`
 - `.github/workflows/update-investments.yml`
 - `.github/workflows/update-premier-league.yml`
 - `.github/workflows/update-la-liga.yml`
@@ -424,6 +425,7 @@ Checked-in operational workflows:
 Current behavior:
 
 - `test.yml` runs unit tests, build, sharded Chromium Playwright E2E, and lint on pushes to `main` or `develop`, plus pull requests targeting `main` or `develop`; full-matrix Playwright runs only on pushes to `main`
+- `changelog-on-merge.yml` appends a dated bullet to `CHANGELOG.md` on `main` for every merged pull request; add the `skip-changelog` label to opt a PR out. Snapshot-refresh bots push straight to `main` without a PR, so they never trigger it, and the commit lands with `[skip ci]` to avoid a trigger loop
 - `update-investments.yml` runs on manual dispatch and on Mondays and Thursdays at `22:15 UTC`, then commits refreshed compact snapshots under `public/data/investments`; raw provider responses are not committed
 - `update-premier-league.yml` runs on manual dispatch and daily at `06:15 UTC` during the season (August through May; skipped June and July), then commits `src/data/premierLeagueSnapshot.ts` when it changes
 - `update-la-liga.yml` runs on manual dispatch and daily at `06:30 UTC` during the season (August through May; skipped June and July), then commits `src/data/laLigaSnapshot.ts` when it changes
@@ -436,10 +438,11 @@ Current behavior:
 - `update-nfl.yml` runs on manual dispatch and Tuesdays September through February at `10:35 UTC`, then commits `src/data/nflSnapshot.ts` when it changes
 - `update-golf.yml` runs on manual dispatch and daily at `08:40 UTC`, then commits `src/data/golfSnapshot.ts` when it changes
 - `update-world-cup.yml` runs on manual dispatch and every six hours during June and July, then commits `src/data/worldCupSnapshot.ts` when it changes
+- `update-score-pools.yml` runs on manual dispatch and every six hours (minute 23), then commits `src/data/scorePoolsSnapshot.ts` when odds, results, or standings change
 - `update-bay-area-transit.yml` runs on manual dispatch and every six hours year-round, then commits `src/data/bayAreaTransitSnapshot.ts` when it changes
 - `update-earthquake.yml` runs on manual dispatch and hourly (minute 20), then commits `src/data/earthquakeSnapshot.ts` when it changes
 - The tech startup tracker has no workflow by design — its dataset is editorially curated, so refreshes happen by editing the seed and running `npm run update:tech-startups` locally
-- All 14 snapshot `update-*.yml` workflows commit and push through the shared `scripts/ci/commit-and-push-snapshot.sh` helper (usage: `commit-and-push-snapshot.sh <commit-message> <pathspec...>`). It sets the `github-actions[bot]` identity, exits cleanly on a no-op refresh, and pushes to `HEAD:main` with a fetch/`rebase --autostash` retry loop (default 8 attempts, `SNAPSHOT_PUSH_ATTEMPTS` override) plus capped exponential backoff to absorb concurrent snapshot-bot pushes. Behavior is asserted by `.github/workflows/__tests__/snapshot-workflows.test.ts` and `update-investments.test.ts`.
+- All 16 `update-*.yml` workflows commit and push through the shared `scripts/ci/commit-and-push-snapshot.sh` helper (usage: `commit-and-push-snapshot.sh <commit-message> <pathspec...>`). It sets the `github-actions[bot]` identity, exits cleanly on a no-op refresh, and pushes to `HEAD:main` with a fetch/`rebase --autostash` retry loop (default 8 attempts, `SNAPSHOT_PUSH_ATTEMPTS` override) plus capped exponential backoff to absorb concurrent snapshot-bot pushes. Behavior is asserted by `.github/workflows/__tests__/snapshot-workflows.test.ts` and `update-investments.test.ts`.
 - A daily cron-job.org ping to the Netlify build hook triggers a production deploy of the latest committed snapshots; data refreshes remain separate workflows
 - `purge-cache.ts` is protected by `Authorization: Bearer <CRON_SECRET>` or `x-cron-secret` and calls Netlify Durable Cache purge; query-string secrets are intentionally rejected
 - Historical caveat: `vercel.json` still declares a cron for `/api/scheduled-update`, but no matching route exists. Treat that config as historical until confirmed.
