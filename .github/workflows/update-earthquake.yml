@@ -1,11 +1,13 @@
 name: Refresh Earthquake Snapshot
 
 on:
-  # Hourly pass. USGS feeds update every minute, but an hourly snapshot keeps the
-  # dashboard current without spending runner minutes constantly. The USGS public
+  # Daily fallback refresh. The summary API fetches USGS live at request time
+  # (getEarthquakeSummary preferLive), so the committed snapshot only matters as
+  # the cold-start / outage fallback — a daily pass keeps that seed warm without
+  # the hourly commit churn the dashboard no longer needs. The USGS public
   # GeoJSON feeds need no token.
   schedule:
-    - cron: "20 * * * *"
+    - cron: "20 6 * * *"
   workflow_dispatch:
 
 # Don't stack a manual dispatch on top of a scheduled run.
@@ -137,7 +139,7 @@ jobs:
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "**Status:** ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
           echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Schedule:** Hourly at :20 UTC" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Schedule:** Daily at 06:20 UTC (fallback seed; the API serves live USGS)" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
           if [ -n "${{ steps.verify_quality.outputs.recent }}" ]; then
             echo "**Recent (24h):** ${{ steps.verify_quality.outputs.recent }}" >> "$GITHUB_STEP_SUMMARY"
