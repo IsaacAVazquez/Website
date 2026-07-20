@@ -13,6 +13,19 @@ export type FrontierPriceTier = "budget" | "standard" | "premium";
 
 export type FrontierView = "list" | "chart";
 
+/**
+ * Outcome of the daily automated fact check against models.dev and
+ * OpenRouter. "confirmed" means the checkable numbers matched the curated
+ * entry, "updated" means the live catalogs corrected them, and
+ * "curated-only" means no catalog entry matched, so the curated facts stand
+ * unchecked.
+ */
+export interface FrontierModelLiveCheck {
+  status: "confirmed" | "updated" | "curated-only";
+  checkedAt: string;
+  source: "models.dev" | "openrouter" | null;
+}
+
 export interface FrontierModel {
   id: string;
   provider: FrontierProvider;
@@ -29,6 +42,7 @@ export interface FrontierModel {
   reasoning: boolean;
   editorialNote: string;
   docsUrl: string | null;
+  liveCheck?: FrontierModelLiveCheck;
 }
 
 export interface FrontierModelProviderSummary {
@@ -53,6 +67,14 @@ export interface FrontierModelsSnapshot {
   models: FrontierModel[];
   providers: FrontierModelProviderSummary[];
   priceTiers: FrontierModelPriceTierSummary[];
+  /** Present when the daily automated fact check has run (blob-served data). */
+  liveFacts?: {
+    checkedAt: string;
+    sources: string[];
+    updated: number;
+    confirmed: number;
+    curatedOnly: number;
+  };
 }
 
 export type FrontierProviderFilter = FrontierProvider | "all";

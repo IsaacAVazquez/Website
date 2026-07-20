@@ -163,12 +163,49 @@ by BART abbr, world-cup `/teams/[teamId]` by team slug.
 | `/github-trending-pulse` | `src/data/githubTrendingSnapshot.ts` | `buildGitHubTrendingSnapshot.ts` · `update:github-trending` | `update-github-trending.yml` | GitHub Search API | daily 07:45 UTC |
 | `/spacex-mission-control` | `src/data/spacexSnapshot.generated.json` (+ image manifest) | `buildSpaceXSnapshot.ts` · `update:spacex` | `update-spacex.yml` | Launch Library / SpaceDevs | daily 09:25 + 21:25 UTC |
 | `/tech-startup-tracker` | `src/data/techStartupSnapshot.ts` | `buildTechStartupSnapshot.ts` · `update:tech-startups` | none (curated) | hand-maintained seed | manual |
-| `/frontier-models` | `src/data/frontierModelsSnapshot.ts` | `buildFrontierModelsSnapshot.ts` · `update:frontier-models` | none (curated) | `scripts/data/frontierModels.source.ts` | manual |
+| `/frontier-models` | `src/data/frontierModelsSnapshot.ts` (seed) + `dashboard-snapshots` blob | `buildFrontierModelsSnapshot.ts` · `update:frontier-models` (seed) | `netlify/functions/refresh-frontier-models.ts` (scheduled function, not an Action) | curated seed + models.dev/OpenRouter fact check | seed manual; facts daily 07:30 UTC |
 
 **Curated surfaces** (`tech-startup-tracker`, `frontier-models`) have no Action
 because there's no live source to poll — figures are approximate, tagged with an
 `asOf` date and a `verified: false` flag, and disclosed on-page. Refresh by
-editing the seed and re-running the builder.
+editing the seed and re-running the builder. Frontier-models additionally runs
+the blob-backed fact check described below; the curated seed and editorial
+notes remain the source of truth for what is listed.
+
+---
+
+## The blob-backed refresh lane (pilot: frontier-models)
+
+The git-commit pipeline above couples data freshness to deploys: every refresh
+is a bot commit, and production only advances when `publish-data.yml` fires the
+build hook. For surfaces whose data can refresh without review, there is a
+second lane that skips both:
+
+1. A **Netlify scheduled function** (`netlify/functions/refresh-frontier-models.ts`,
+   in-code `config.schedule`, 30s execution cap) fetches the upstream sources.
+2. It writes the refreshed snapshot to the **`dashboard-snapshots` Netlify
+   Blobs store** via `src/lib/snapshotBlobStore.ts` (strong consistency,
+   `{ savedAt, value }` envelope). Reads are fail-soft and return `null`
+   off-Netlify or on any store error; **writes throw**, so a broken refresh is
+   a failed function run in the Netlify logs, never silent stasis.
+3. It purges the surface's **CDN cache tag** (`purgeCache({ tags })`), so API
+   responses flip to the fresh data immediately instead of aging out.
+4. The accessor (`src/lib/frontierModelsSnapshot.ts`) reads **blob first with
+   the committed seed as fallback**, behind a short in-memory TTL. A blob
+   older than its max age is ignored — a dead refresh function must not keep
+   stamping old facts as fresh — and local dev and tests always serve the seed.
+
+The committed seed keeps every property the git lane had (reviewable diffs,
+local dev, cold-start data); the blob only carries the freshness. Failure at
+any step leaves the previous blob or the seed serving.
+
+For frontier-models specifically the refresh is a **fact check, not a rewrite**:
+the curated catalog decides which models are listed and every editorial note,
+while models.dev + OpenRouter (both keyless) refresh pricing, context windows,
+output limits, and cutoffs. Matching is exact-normalized-name per provider,
+never fuzzy (the fantasy ADP rule), and each model carries a `liveCheck`
+outcome (`confirmed` / `updated` / `curated-only`) surfaced in the on-page
+disclosure line.
 
 **Related but not this pattern:**
 - `/polling-aggregator` reads a committed `src/data/pollingSnapshot.ts` with **no
