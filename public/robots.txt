@@ -12,6 +12,9 @@ Disallow: /_next/
 Allow: /_next/static/
 Allow: /_next/image
 Disallow: /node_modules/
+# Allow the public RSS feed even though it lives under /api/
+Allow: /api/rss
+# Allow important pages for SEO
 Allow: /
 
 # Search and answer-engine retrieval crawlers may index public pages.

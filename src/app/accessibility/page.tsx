@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { constructMetadata } from "@/lib/seo";
+import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
 import Link from "next/link";
 
@@ -111,6 +111,17 @@ export default function AccessibilityPage() {
           description: accessibilityDescription,
           url: "https://isaacavazquez.com/accessibility",
           dateModified: "2026-07-16",
+        }}
+      />
+      <StructuredData
+        type="BreadcrumbList"
+        data={{
+          items: (
+            generateBreadcrumbStructuredData([
+              { name: "Home", url: "/" },
+              { name: "Accessibility", url: "/accessibility" },
+            ]) as { itemListElement: object[] }
+          ).itemListElement,
         }}
       />
       <section className="home-page home-section min-h-screen" aria-label="Accessibility statement">
