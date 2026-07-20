@@ -7,6 +7,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 ## 2026-07-20
 
 - Score pools: exact-score prediction engine, data layer, and pick sheet ([#308](https://github.com/IsaacAVazquez/Website/pull/308)).
+- Close feature gaps across dashboards, tools, and SEO ([#319](https://github.com/IsaacAVazquez/Website/pull/319)).
 
 ---
 
