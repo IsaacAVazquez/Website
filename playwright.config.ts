@@ -56,9 +56,9 @@ export default defineConfig({
   retries: IS_CI ? 1 : 0,
 
   /* The mixed Firefox/WebKit matrix is substantially heavier than Chromium.
-     Keep it at two workers on GitHub's two-core runners so browser processes
-     do not starve each other; the sharded Chromium jobs retain four workers. */
-  workers: IS_CI_FULL_MATRIX ? 2 : IS_CI ? 4 : 2,
+     Run one browser at a time on GitHub's two-core runners so WebKit and the
+     Next.js server do not starve each other; Chromium shards retain four. */
+  workers: IS_CI_FULL_MATRIX ? 1 : IS_CI ? 4 : 2,
 
   /* Reporter: list output in CI logs (useful for triage), html locally. */
   reporter: IS_CI

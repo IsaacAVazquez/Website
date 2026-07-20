@@ -2,7 +2,7 @@ import { test, expect, type Locator, type Page } from '@playwright/test'
 
 async function clickAndWaitForURL(page: Page, link: Locator, url: RegExp) {
   await Promise.all([
-    page.waitForURL(url),
+    page.waitForURL(url, { waitUntil: 'networkidle' }),
     link.click(),
   ])
 }

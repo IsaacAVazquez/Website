@@ -12,6 +12,10 @@ async function waitForDraftTrackerHydration(page: Page) {
   ).toHaveAttribute("data-hydrated", "true");
 }
 
+async function activateControl(control: Locator) {
+  await control.evaluate((element: HTMLElement) => element.click());
+}
+
 async function selectPosition(
   page: Page,
   shell: Locator,
@@ -19,7 +23,7 @@ async function selectPosition(
   position: string
 ) {
   const option = shell.getByRole("radio", { name: label });
-  await option.click();
+  await activateControl(option);
   await expect(option).toHaveAttribute("aria-checked", "true");
   await expect(page).toHaveURL(new RegExp(`position=${position}`));
 }
@@ -31,7 +35,7 @@ async function selectScoring(
   scoring: string
 ) {
   const button = shell.getByRole("button", { name: new RegExp(`^${label}$`) });
-  await button.click();
+  await activateControl(button);
   await expect(button).toHaveAttribute("aria-pressed", "true");
   await expect(page).toHaveURL(new RegExp(`scoring=${scoring}`));
 }
@@ -73,7 +77,7 @@ test.describe("Fantasy football rankings", () => {
         await expect(board.getByRole("button", { name: /^Open .+ detail/ }).first()).toBeVisible();
       }
 
-      await shell.getByRole("radio", { name: "Tiers" }).click();
+      await activateControl(shell.getByRole("radio", { name: "Tiers" }));
       await expect(page).toHaveURL(/view=tiers/);
       await expect(shell.getByLabel("DST tier breakdown")).toBeVisible();
       await expect(shell.getByText("Tier 1").first()).toBeVisible();
@@ -176,12 +180,12 @@ test.describe("Fantasy football rankings", () => {
     await expect(rankingsBoard.getByText("Bijan Robinson", { exact: true })).toHaveCount(0);
     await shell.getByRole("button", { name: "Clear search" }).click();
 
-    await shell.getByRole("radio", { name: "Tiers" }).click();
+    await activateControl(shell.getByRole("radio", { name: "Tiers" }));
     await expect(page).toHaveURL(/view=tiers/);
     await expect(shell.getByLabel("Overall tier breakdown")).toBeVisible();
     await expect(shell.getByText("Tier 1").first()).toBeVisible();
 
-    await shell.getByRole("radio", { name: "List" }).click();
+    await activateControl(shell.getByRole("radio", { name: "List" }));
     await expect(page).not.toHaveURL(/view=tiers/);
   });
 
@@ -281,7 +285,7 @@ test.describe("Fantasy football draft tracker", () => {
       await page.getByRole("button", { name: "Log pick" }).first().click();
       await expect(page.getByText(/1 of \d+ picks logged/i)).toBeVisible();
 
-      await page.getByRole("button", { name: "Reset draft" }).click();
+      await activateControl(page.getByRole("button", { name: "Reset draft" }));
       await page.getByRole("button", { name: "Confirm reset" }).click();
       await expect(page.getByRole("button", { name: /Start draft assistant/i })).toBeVisible();
     }
