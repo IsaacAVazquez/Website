@@ -11,11 +11,11 @@ interface ConditionalLayoutProps {
   children: React.ReactNode;
 }
 
-interface ProjectBuildNoteConfig {
-  href: string;
-  purpose?: string;
-  method?: string;
-}
+// Purpose and method render only as a pair, so an entry either provides both
+// or neither — a half-filled entry would silently fall back to generic copy.
+type ProjectBuildNoteConfig =
+  | { href: string; purpose?: never; method?: never }
+  | { href: string; purpose: string; method: string };
 
 const projectBuildNotes: Record<string, ProjectBuildNoteConfig> = {
   "/ai-dev-tools": {
