@@ -1220,6 +1220,41 @@
   resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-16.2.9.tgz#6e36f17dd615c52761691b7f5be1d9d161abed2a"
   integrity sha512-qr2VL3Ce5QrwgO2yh1ujSBawrimjVKX8FGF/cOynmdYKJY0BdHpGVNIRK1tqONB10Vkm25Ub1BD2bkjWs4+96w==
 
+"@next/swc-darwin-x64@16.2.9":
+  version "16.2.9"
+  resolved "https://registry.yarnpkg.com/@next/swc-darwin-x64/-/swc-darwin-x64-16.2.9.tgz#817f3609c231b07d6910c074eeaf7c41ae781f2d"
+  integrity sha512-7IAtK4MeybpqRV9GRABWEhJ62mOS+rzWOzOTFie4cSEtm12xsoOMJRcECoZx3FHPzFAqN/IJtHqWAFOLfl152w==
+
+"@next/swc-linux-arm64-gnu@16.2.9":
+  version "16.2.9"
+  resolved "https://registry.yarnpkg.com/@next/swc-linux-arm64-gnu/-/swc-linux-arm64-gnu-16.2.9.tgz#f7314d5c268a6c440208c46da92ab8d914c02d36"
+  integrity sha512-hBD75iWpUtkL9SmQmcRhmLomn9jgkPzCEkbOcLgHymPEKzv+6ONy13RRiIEz/iEObjkS2Jlb5gYS2XGoS3X4rw==
+
+"@next/swc-linux-arm64-musl@16.2.9":
+  version "16.2.9"
+  resolved "https://registry.yarnpkg.com/@next/swc-linux-arm64-musl/-/swc-linux-arm64-musl-16.2.9.tgz#9258cf7a3f2f10a605ef85fb76601123f3b1d5ab"
+  integrity sha512-qZTI3pf9SGc/obr8NkQAekBxmp1QK+kVm+VAf3BALLfFAj+1kUhkTxmrWpVos9R/UYIA8AWX2p6cGI5WdwzVUA==
+
+"@next/swc-linux-x64-gnu@16.2.9":
+  version "16.2.9"
+  resolved "https://registry.yarnpkg.com/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-16.2.9.tgz#a6db6095f6495c6d55c48ba946b1578f5e75a359"
+  integrity sha512-xm0HfRNX+UkH4R3c18ynswjj5o5uEj/7iI9p9omdtTSIsRCzQqkGMA+10nzJ4EHnYC3as65IMhbbl5fWRUWHYg==
+
+"@next/swc-linux-x64-musl@16.2.9":
+  version "16.2.9"
+  resolved "https://registry.yarnpkg.com/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-16.2.9.tgz#d7f857879886c3a378285fea438ba4636fcc3a9a"
+  integrity sha512-QumimHkGEG6vM3PfEDWKyKen03NcqLOkeKB1EfcPe7VxzmEiCa4jNnMyBn/US5zcd/VE1CI+O8Ovb3lfjVHfGw==
+
+"@next/swc-win32-arm64-msvc@16.2.9":
+  version "16.2.9"
+  resolved "https://registry.yarnpkg.com/@next/swc-win32-arm64-msvc/-/swc-win32-arm64-msvc-16.2.9.tgz#d6d67c8e803b2c44b76b16495b5eda47165faf43"
+  integrity sha512-hzQpKZvw8rAwI6A2uQh6SacCSvNAXaIkPNsWwzqqfRiIMiXMfH936skDhz1OO6KpvdKkJrgHHtqQOq5PIXOvdQ==
+
+"@next/swc-win32-x64-msvc@16.2.9":
+  version "16.2.9"
+  resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-16.2.9.tgz#6e36f17dd615c52761691b7f5be1d9d161abed2a"
+  integrity sha512-qr2VL3Ce5QrwgO2yh1ujSBawrimjVKX8FGF/cOynmdYKJY0BdHpGVNIRK1tqONB10Vkm25Ub1BD2bkjWs4+96w==
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz"
@@ -6010,6 +6045,11 @@ nanoid@^3.3.16, nanoid@^3.3.6:
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.16.tgz#a04d8ec4b1f10009d2d533947aefe4293737816c"
   integrity sha512-bzlKTyNJ7+LdGIIwy8ijFpIqEQIvafahV7eYykJ8Cvh42EdJeODoJ6gUJXpQJvej1BddH8OqTXZNE/KfbWAu8Q==
 
+nanoid@^3.3.16, nanoid@^3.3.6:
+  version "3.3.16"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.16.tgz#a04d8ec4b1f10009d2d533947aefe4293737816c"
+  integrity sha512-bzlKTyNJ7+LdGIIwy8ijFpIqEQIvafahV7eYykJ8Cvh42EdJeODoJ6gUJXpQJvej1BddH8OqTXZNE/KfbWAu8Q==
+
 napi-postinstall@^0.3.0:
   version "0.3.4"
   resolved "https://registry.npmjs.org/napi-postinstall/-/napi-postinstall-0.3.4.tgz"
@@ -6429,6 +6469,15 @@ postcss@8.4.31:
     source-map-js "^1.0.2"
 
 postcss@^8.5.12, postcss@^8.5.6:
+  version "8.5.20"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.5.20.tgz#316a139da79484ce55969fa7bb6f2f1abcc14060"
+  integrity sha512-lW616l85ucIQL+FocMmL7pQFPqBmwejrCMg+iPxyImlrANNJG9NHq/RkyCZopDhd8C3LA03PHRJDjkbGu8vvug==
+  dependencies:
+    nanoid "^3.3.16"
+    picocolors "^1.1.1"
+    source-map-js "^1.2.1"
+
+postcss@^8.5.6:
   version "8.5.20"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.5.20.tgz#316a139da79484ce55969fa7bb6f2f1abcc14060"
   integrity sha512-lW616l85ucIQL+FocMmL7pQFPqBmwejrCMg+iPxyImlrANNJG9NHq/RkyCZopDhd8C3LA03PHRJDjkbGu8vvug==
@@ -7244,10 +7293,10 @@ synckit@^0.11.8:
   dependencies:
     "@pkgr/core" "^0.3.6"
 
-tailwind-merge@^3.5.0:
-  version "3.5.0"
-  resolved "https://registry.npmjs.org/tailwind-merge/-/tailwind-merge-3.5.0.tgz"
-  integrity sha512-I8K9wewnVDkL1NTGoqWmVEIlUcB9gFriAEkXkfCjX5ib8ezGxtR3xD7iZIxrfArjEsH7F1CHD4RFUtxefdqV/A==
+tailwind-merge@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/tailwind-merge/-/tailwind-merge-3.6.0.tgz#88d83242d1dd7bc847223f73dcf210dd1f2ee11c"
+  integrity sha512-uxL7qAVQriqRQPAyK3pj66VqskWqoZ37PW94jwOTwNfq/z9oyu1V+eqrZqtR2+fCiXdYOZe/Modt8GtvqNzu+w==
 
 tailwindcss-animate@^1.0.7:
   version "1.0.7"
