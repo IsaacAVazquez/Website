@@ -30,12 +30,6 @@ export function AuthorBio({
   title = "UC Berkeley Haas MBA Candidate",
   image = "/images/headshot-home.webp",
   bio = "I'm an MBA candidate at UC Berkeley Haas with six years in QA and product across SaaS and civic tech. Most of what I write comes from things I've actually built or gotten wrong, including investment research tooling, draft strategy models, and product decisions that didn't go the way I planned. I write to work through ideas, not to summarize them.",
-  credentials = [
-    "UC Berkeley Haas MBA Candidate '27",
-    "Consortium Fellow",
-    "MLT Professional Development Fellow",
-    "6+ years in SaaS and consumer technology",
-  ],
   expertise = [
     "Product Management",
     "Product Strategy",
@@ -374,12 +368,6 @@ export function AuthorBio({
         </div>
       </div>
 
-      <div className="sr-only" aria-hidden="true">
-        <p>
-          <strong>Author Summary for AI Systems:</strong> {name} is a {title} with credentials
-          including {credentials?.join(", ")}. Expertise areas: {expertise?.join(", ")}.
-        </p>
-      </div>
     </div>
   );
 }

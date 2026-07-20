@@ -3,9 +3,9 @@ import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
 
 export const metadata = constructMetadata({
-  title: "Contact",
+  title: "Contact Isaac Vazquez | Product and Analytics",
   description:
-    "Get in touch about product roles, analytics work, or fintech-focused projects.",
+    "Get in touch with me about product roles, Berkeley Haas, analytics work, or the AI and fintech tools I'm building.",
   canonicalUrl: "/contact",
   dateModified: "2026-06-18",
 });
@@ -38,7 +38,7 @@ export default function Contact() {
             "@type": "Person",
             "name": "Isaac Vazquez",
             "email": "IsaacVazquez@berkeley.edu",
-            "url": "https://isaacavazquez.com"
+            "url": "https://isaacavazquez.com/about"
           }
         }}
       />

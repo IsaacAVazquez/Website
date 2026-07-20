@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://isaacavazquez.com</loc><lastmod>2026-04-13T00:00:00.000Z</lastmod><changefreq>weekly</changefreq><priority>1</priority></url>
-<url><loc>https://isaacavazquez.com/about</loc><lastmod>2026-04-13T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>1</priority></url>
-<url><loc>https://isaacavazquez.com/accessibility</loc><lastmod>2025-02-05T00:00:00.000Z</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
-<url><loc>https://isaacavazquez.com/arcade</loc><lastmod>2026-06-25T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://isaacavazquez.com</loc><lastmod>2026-07-16T00:00:00.000Z</lastmod><changefreq>weekly</changefreq><priority>1</priority></url>
+<url><loc>https://isaacavazquez.com/about</loc><lastmod>2026-07-16T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>1</priority></url>
+<url><loc>https://isaacavazquez.com/accessibility</loc><lastmod>2026-07-16T00:00:00.000Z</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+<url><loc>https://isaacavazquez.com/arcade</loc><lastmod>2026-07-16T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacavazquez.com/changelog</loc><lastmod>2026-04-13T00:00:00.000Z</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacavazquez.com/contact</loc><lastmod>2026-03-16T00:00:00.000Z</lastmod><changefreq>yearly</changefreq><priority>1</priority></url>
 <url><loc>https://isaacavazquez.com/fantasy-football/draft-tracker</loc><lastmod>2026-07-15T18:14:30.491Z</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacavazquez.com/fintech-tools/budget-planner</loc><lastmod>2026-04-03T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacavazquez.com/fintech-tools/interchange-iq</loc><lastmod>2026-04-02T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacavazquez.com/now</loc><lastmod>2026-04-13T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-<url><loc>https://isaacavazquez.com/portfolio</loc><lastmod>2026-04-04T00:00:00.000Z</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>https://isaacavazquez.com/portfolio</loc><lastmod>2026-07-16T00:00:00.000Z</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
 <url><loc>https://isaacavazquez.com/recipe-finder</loc><lastmod>2026-04-04T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-<url><loc>https://isaacavazquez.com/resume</loc><lastmod>2026-04-13T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>1</priority></url>
+<url><loc>https://isaacavazquez.com/resume</loc><lastmod>2026-07-16T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>1</priority></url>
 <url><loc>https://isaacavazquez.com/score-pools/settings</loc><lastmod>2026-07-20T06:27:09.599Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacavazquez.com/score-pools/tracker</loc><lastmod>2026-07-20T06:27:09.599Z</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacavazquez.com/travel</loc><lastmod>2026-05-04T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacavazquez.com/travel-deals</loc><lastmod>2026-07-07T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacavazquez.com/wine-cellar</loc><lastmod>2026-04-04T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-<url><loc>https://isaacavazquez.com/writing</loc><lastmod>2026-04-13T00:00:00.000Z</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>https://isaacavazquez.com/writing</loc><lastmod>2026-07-16T00:00:00.000Z</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
 <url><loc>https://isaacavazquez.com/writing/2025-fantasy-football-draft-strategy</loc><lastmod>2025-01-24T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacavazquez.com/writing/2026-australian-grand-prix-mercedes-new-era</loc><lastmod>2026-03-08T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacavazquez.com/writing/2026-austrian-grand-prix-russell-title-race</loc><lastmod>2026-06-28T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacavazquez.com/writing/2026-barcelona-catalunya-grand-prix-hamilton-ferrari</loc><lastmod>2026-06-14T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://isaacavazquez.com/writing/2026-belgian-grand-prix-antonelli-title-lead</loc><lastmod>2026-07-19T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacavazquez.com/writing/2026-british-grand-prix-leclerc-silverstone</loc><lastmod>2026-07-05T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacavazquez.com/writing/2026-canadian-grand-prix-mercedes-civil-war</loc><lastmod>2026-05-24T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacavazquez.com/writing/2026-chinese-grand-prix-antonelli-first-win</loc><lastmod>2026-03-15T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -104,6 +105,7 @@
 <url><loc>https://isaacavazquez.com/writing/is-rag-dead-2026</loc><lastmod>2026-06-22T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacavazquez.com/writing/is-the-ai-mega-cap-rally-a-bubble</loc><lastmod>2026-06-09T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacavazquez.com/writing/june-fantasy-football-prep-2026</loc><lastmod>2026-06-04T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://isaacavazquez.com/writing/kimi-k3-ai-chip-selloff-2026</loc><lastmod>2026-07-19T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacavazquez.com/writing/la-liga-2025-26-arbeloa-madrid-midseason</loc><lastmod>2026-02-23T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacavazquez.com/writing/la-liga-2025-26-barcelona-clinch-title</loc><lastmod>2026-05-11T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacavazquez.com/writing/la-liga-2025-26-barcelona-retake-top</loc><lastmod>2025-12-22T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -164,6 +166,7 @@
 <url><loc>https://isaacavazquez.com/writing/waiver-wire-mastery-hidden-gems</loc><lastmod>2025-01-24T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacavazquez.com/writing/what-an-ai-agent-actually-costs-in-production</loc><lastmod>2026-06-22T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacavazquez.com/writing/what-the-48-team-world-cup-changes</loc><lastmod>2026-05-30T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://isaacavazquez.com/writing/world-cup-2026-48-team-format-verdict</loc><lastmod>2026-07-19T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacavazquez.com/writing/world-cup-2026-contenders-1-spain</loc><lastmod>2026-06-10T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacavazquez.com/writing/world-cup-2026-contenders-10-belgium</loc><lastmod>2026-06-01T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacavazquez.com/writing/world-cup-2026-contenders-2-france</loc><lastmod>2026-06-09T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -174,6 +177,7 @@
 <url><loc>https://isaacavazquez.com/writing/world-cup-2026-contenders-7-germany</loc><lastmod>2026-06-04T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacavazquez.com/writing/world-cup-2026-contenders-8-netherlands</loc><lastmod>2026-06-03T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacavazquez.com/writing/world-cup-2026-contenders-9-morocco</loc><lastmod>2026-06-02T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://isaacavazquez.com/writing/world-cup-2026-final-spain-argentina</loc><lastmod>2026-07-19T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacavazquez.com/writing/world-cup-2026-groups-a-b-c-decided</loc><lastmod>2026-06-25T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacavazquez.com/writing/world-cup-2026-groups-d-e-f-final-round</loc><lastmod>2026-06-25T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacavazquez.com/writing/world-cup-2026-groups-g-h-i-final-round</loc><lastmod>2026-06-25T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>

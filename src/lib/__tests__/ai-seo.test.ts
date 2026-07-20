@@ -1,5 +1,7 @@
 import {
   generateArticleSchema,
+  generateBreadcrumbSchema,
+  generateEnhancedPersonSchema,
   generateProfilePageSchema,
   generateProjectSchema,
 } from "../ai-seo";
@@ -48,5 +50,28 @@ describe("AI SEO structured-data generators", () => {
     }) as Record<string, unknown>;
 
     expect(schema.dateModified).toBeUndefined();
+  });
+
+  it("uses one canonical person id even when a caller supplies the homepage URL", () => {
+    const schema = generateEnhancedPersonSchema({
+      name: "Isaac Vazquez",
+      url: "https://isaacavazquez.com",
+    }) as Record<string, unknown>;
+
+    expect(schema["@id"]).toBe(
+      "https://isaacavazquez.com/about#person"
+    );
+    expect(schema.url).toBe("https://isaacavazquez.com/about");
+  });
+
+  it("gives each breadcrumb trail a page-specific id", () => {
+    const schema = generateBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "Writing", url: "/writing" },
+    ]) as Record<string, unknown>;
+
+    expect(schema["@id"]).toBe(
+      "https://isaacavazquez.com/writing#breadcrumb"
+    );
   });
 });

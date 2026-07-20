@@ -4,31 +4,11 @@ import { PortfolioInstrument } from "@/components/portfolio/PortfolioInstrument"
 import { AIStructuredData } from "@/components/AIStructuredData";
 
 export const metadata = constructMetadata({
-  title: "Projects",
+  title: "Isaac Vazquez Projects | AI, Fintech and Analytics",
   description:
-    "All projects across product strategy, analytics, platform reliability, and investment research tooling.",
+    "The projects I've shipped across AI workflows, fintech, analytics, civic tech, and sports data, with the product decisions behind them.",
   canonicalUrl: "/portfolio",
-  aiMetadata: {
-    profession: "Product Manager",
-    expertise: [
-      "Product Strategy",
-      "Platform Scaling",
-      "Data-Driven Decisions",
-      "Cross-Functional Leadership",
-      "Experimentation & A/B Testing",
-    ],
-    topics: [
-      "Product Management Projects",
-      "SaaS Product Strategy",
-      "Revenue Impact",
-      "User Growth",
-    ],
-    contentType: "Portfolio / Projects",
-    context:
-      "Portfolio of product management projects by Isaac Vazquez, covering live tools, analytics products, reliability work, and professional case studies.",
-    summary:
-      "All projects demonstrating product management experience across platform scale, analytics, and investment research tooling.",
-  },
+  dateModified: "2026-07-16",
 });
 
 export default function PortfolioPage() {

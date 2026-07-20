@@ -15,35 +15,11 @@ import { generateBreadcrumbStructuredData, constructMetadata } from "@/lib/seo";
 import { WritingInstrument } from "@/components/writing/WritingInstrument";
 
 export const metadata = constructMetadata({
-  title: "Writing",
+  title: "Isaac Vazquez Writing | Product, AI and Fintech",
   description:
-    "Writing on PM workflows, agentic AI, fintech product thinking, systems design, and the product decisions behind the tools I build.",
+    "My essays and notes on product management, AI workflows, fintech, quality systems, and the tools I'm building.",
   canonicalUrl: "/writing",
-  dateModified: "2026-04-15",
-  aiMetadata: {
-    expertise: [
-      "Product Management",
-      "AI Workflows",
-      "Agentic AI",
-      "Fintech Product Thinking",
-      "Quality Engineering",
-      "Systems Design",
-    ],
-    contentType: "Editorial Archive",
-    profession: "Product Manager",
-    industry: ["Technology", "SaaS", "Fintech"],
-    topics: [
-      "Product Management",
-      "AI Workflow Design",
-      "Agentic AI",
-      "Fintech Product",
-      "Reliability",
-    ],
-    context:
-      "A curated writing archive focused on PM, AI workflow, agentic product thinking, and decision-support tools, with broader archive posts kept discoverable but secondary.",
-    primaryFocus:
-      "Qualified-lead writing for PM, AI workflow, and fintech/product-tool discovery",
-  },
+  dateModified: "2026-07-16",
 });
 
 function readingMinutes(rt: string): number {

@@ -6,7 +6,11 @@
  * and E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) signals.
  */
 
-import { siteConfig } from "./seo";
+import {
+  personCanonicalUrl,
+  personSchemaId,
+  siteConfig,
+} from "./seo";
 
 // ============================================================================
 // TYPES & INTERFACES
@@ -26,6 +30,7 @@ export interface PersonSchemaData {
   expertise?: ExpertiseArea[];
   awards?: Award[];
   alumniOf?: EducationalOrganization[];
+  affiliation?: Organization[];
   worksFor?: Organization;
   hasOccupation?: OccupationData[];
   memberOf?: Organization[];
@@ -61,7 +66,12 @@ export interface EducationalOrganization {
 }
 
 export interface Organization {
-  "@type"?: "Organization" | "Corporation" | "NonprofitOrganization";
+  "@type"?:
+    | "Organization"
+    | "Corporation"
+    | "NonprofitOrganization"
+    | "CollegeOrUniversity"
+    | "EducationalOrganization";
   name: string;
   description?: string;
   url?: string;
@@ -184,66 +194,6 @@ export interface BreadcrumbItem {
 }
 
 // ============================================================================
-// AI-SPECIFIC META TAGS
-// ============================================================================
-
-/**
- * Generates AI-specific meta tags for better parsing by LLMs and AI search engines
- */
-export function generateAIMetaTags(data: {
-  expertise?: string[];
-  specialty?: string;
-  profession?: string;
-  industry?: string[];
-  topics?: string[];
-  contentType?: string;
-  context?: string;
-  summary?: string;
-  primaryFocus?: string;
-}) {
-  const metaTags: Record<string, string> = {};
-
-  if (data.expertise && data.expertise.length > 0) {
-    metaTags["expertise"] = data.expertise.join(", ");
-  }
-
-  if (data.specialty) {
-    metaTags["specialty"] = data.specialty;
-  }
-
-  if (data.profession) {
-    metaTags["profession"] = data.profession;
-  }
-
-  if (data.industry && data.industry.length > 0) {
-    metaTags["industry"] = data.industry.join(", ");
-  }
-
-  if (data.topics && data.topics.length > 0) {
-    metaTags["topics"] = data.topics.join(", ");
-    metaTags["article:tag"] = data.topics.join(", ");
-  }
-
-  if (data.contentType) {
-    metaTags["content-type"] = data.contentType;
-  }
-
-  if (data.context) {
-    metaTags["context"] = data.context;
-  }
-
-  if (data.summary) {
-    metaTags["summary"] = data.summary;
-  }
-
-  if (data.primaryFocus) {
-    metaTags["primary-focus"] = data.primaryFocus;
-  }
-
-  return metaTags;
-}
-
-// ============================================================================
 // ENHANCED PERSON SCHEMA
 // ============================================================================
 
@@ -254,11 +204,11 @@ export function generateEnhancedPersonSchema(data: PersonSchemaData) {
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Person",
-    "@id": `${data.url || siteConfig.url}#person`,
+    "@id": personSchemaId,
     name: data.name || siteConfig.name,
     alternateName: data.name || siteConfig.name,
     description: data.description || siteConfig.description,
-    url: data.url || siteConfig.url,
+    url: personCanonicalUrl,
     image: data.image || `${siteConfig.url}${siteConfig.ogImage}`,
     sameAs: data.sameAs || [
       siteConfig.links.linkedin,
@@ -287,23 +237,14 @@ export function generateEnhancedPersonSchema(data: PersonSchemaData) {
     };
   }
 
-  // Knowledge areas (simple list)
-  if (data.knowsAbout && data.knowsAbout.length > 0) {
-    schema.knowsAbout = data.knowsAbout;
-  }
-
-  // Detailed expertise with proficiency levels
-  if (data.expertise && data.expertise.length > 0) {
-    schema.hasCredential = data.expertise.map((exp) => ({
-      "@type": "EducationalOccupationalCredential",
-      name: exp.name,
-      description: exp.description,
-      competencyRequired: exp.proficiencyLevel,
-      credentialCategory: "Skill",
-      ...(exp.yearsExperience && {
-        validFor: `P${exp.yearsExperience}Y`,
-      }),
-    }));
+  const knowledgeAreas = Array.from(
+    new Set([
+      ...(data.knowsAbout || []),
+      ...(data.expertise || []).map((area) => area.name),
+    ]),
+  );
+  if (knowledgeAreas.length > 0) {
+    schema.knowsAbout = knowledgeAreas;
   }
 
   // Awards and recognition
@@ -329,6 +270,15 @@ export function generateEnhancedPersonSchema(data: PersonSchemaData) {
       ...(edu.url && { url: edu.url }),
       ...(edu.startDate && { startDate: edu.startDate }),
       ...(edu.endDate && { endDate: edu.endDate }),
+    }));
+  }
+
+  if (data.affiliation && data.affiliation.length > 0) {
+    schema.affiliation = data.affiliation.map((org) => ({
+      "@type": org["@type"] || "Organization",
+      name: org.name,
+      ...(org.description && { description: org.description }),
+      ...(org.url && { url: org.url }),
     }));
   }
 
@@ -658,10 +608,17 @@ export function generateFAQSchema(items: FAQItem[]) {
  * Generates BreadcrumbList schema for navigation context
  */
 export function generateBreadcrumbSchema(items: BreadcrumbItem[]) {
+  const finalItem = items.at(-1);
+  const pageUrl = finalItem
+    ? finalItem.url.startsWith("http")
+      ? finalItem.url
+      : `${siteConfig.url}${finalItem.url}`
+    : siteConfig.url;
+
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    "@id": `${siteConfig.url}#breadcrumb`,
+    "@id": `${pageUrl}#breadcrumb`,
     itemListElement: items.map((item, index) => ({
       "@type": "ListItem",
       position: item.position || index + 1,
@@ -691,7 +648,7 @@ export function generateProfilePageSchema(data: {
     "@type": "ProfilePage",
     "@id": `${data.url || siteConfig.url}#profilepage`,
     url: data.url || siteConfig.url,
-    name: `${data.person.name || siteConfig.name} - Professional Profile`,
+    name: `${data.person.name || siteConfig.name} | Professional Profile`,
     description:
       data.description ||
       `Professional profile of ${data.person.name || siteConfig.name}`,

@@ -1,7 +1,6 @@
 import { readFile } from "fs/promises";
 import path from "path";
 import { StructuredData } from "@/components/StructuredData";
-import { AIStructuredData } from "@/components/AIStructuredData";
 import { HomeInstrument } from "@/components/home/HomeInstrument";
 import type {
   HomeLiveFeedData,
@@ -17,7 +16,6 @@ import { getAllBlogPostPreviews } from "@/lib/blog";
 import { getLiveToolGroups } from "@/constants/toolCategories";
 import { getEarthquakeSummary } from "@/lib/earthquakeSnapshot";
 import { getSpaceXSnapshotSummary } from "@/lib/spacexSnapshot";
-import { profile, profileSameAs } from "@/lib/profile";
 
 export { metadata } from "./metadata";
 
@@ -129,6 +127,19 @@ export default async function Home() {
   // ships. Live tools are projects with a real hosted destination set on the
   // case study.
   const allPosts = getAllBlogPostPreviews();
+  const preferredWritingSlugs = [
+    "agentic-ai-line-item-not-pilot",
+    "building-an-investment-research-platform",
+    "qa-automation-daily-deploys",
+  ];
+  const preferredWritingSet = new Set(preferredWritingSlugs);
+  const recentPosts = [
+    ...preferredWritingSlugs.flatMap((slug) => {
+      const post = allPosts.find((candidate) => candidate.slug === slug);
+      return post ? [post] : [];
+    }),
+    ...allPosts.filter((post) => !preferredWritingSet.has(post.slug)),
+  ].slice(0, 3);
   const allProjects = getPortfolioProjects();
   // The "Live tools" directory groups every project that ships a real
   // destination (on-site route or hosted app) by category, so the homepage
@@ -149,66 +160,14 @@ export default async function Home() {
     <>
       <HomeInstrument
         featuredProjects={featuredProjects}
-        recentPosts={allPosts}
+        recentPosts={recentPosts}
         heroIndex={heroIndex}
         liveToolGroups={liveToolGroups}
         liveFeed={liveFeed}
       />
 
-      <StructuredData type="ProfilePage" />
+      <StructuredData type="Person" />
       <StructuredData type="WebSite" />
-      <AIStructuredData
-        schema={{
-          type: "Person",
-          data: {
-            name: profile.name,
-            jobTitle: profile.fullTitle,
-            description: profile.description,
-            url: "https://isaacavazquez.com",
-            image: "https://isaacavazquez.com/opengraph-image",
-            email: profile.email,
-            sameAs: profileSameAs,
-            address: {
-              addressLocality: profile.location.locality,
-              addressRegion: profile.location.region,
-              addressCountry: profile.location.country,
-            },
-            knowsAbout: profile.knowsAbout,
-            expertise: [
-              {
-                name: "Product Management",
-                proficiencyLevel: "Advanced",
-                yearsExperience: 3,
-                description: "Product strategy, discovery, roadmapping, and cross-functional leadership",
-              },
-              {
-                name: "Quality Assurance",
-                proficiencyLevel: "Expert",
-                yearsExperience: 6,
-                description: "Test automation, quality strategy, release management, and continuous improvement",
-              },
-            ],
-            alumniOf: [
-              {
-                "@type": "CollegeOrUniversity",
-                name: profile.education[0].name,
-                description: profile.education[0].description,
-              },
-              {
-                "@type": "CollegeOrUniversity",
-                name: profile.education[1].name,
-                description: profile.education[1].description,
-              },
-            ],
-            worksFor: {
-              "@type": "Organization",
-              name: profile.employer.name,
-              description: profile.employer.description,
-              url: profile.employer.url,
-            },
-          },
-        }}
-      />
     </>
   );
 }

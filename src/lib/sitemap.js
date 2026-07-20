@@ -4,15 +4,15 @@ const path = require("path");
 const matter = require("gray-matter");
 
 const STATIC_ROUTE_LASTMOD = {
-  "/": "2026-04-13",
-  "/about": "2026-04-13",
-  "/accessibility": "2025-02-05",
+  "/": "2026-07-16",
+  "/about": "2026-07-16",
+  "/accessibility": "2026-07-16",
   "/ai-dev-tools": "2026-04-28",
-  "/arcade": "2026-06-25",
+  "/arcade": "2026-07-16",
   "/contact": "2026-03-16",
-  "/resume": "2026-04-13",
-  "/portfolio": "2026-04-04",
-  "/writing": "2026-04-13",
+  "/resume": "2026-07-16",
+  "/portfolio": "2026-07-16",
+  "/writing": "2026-07-16",
   "/writing/topics/agentic-ai": "2026-06-22",
   "/writing/topics/fintech-product-pricing": "2026-06-22",
   "/writing/topics/pm-workflows": "2026-06-22",

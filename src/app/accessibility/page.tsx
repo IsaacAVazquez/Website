@@ -1,12 +1,16 @@
 import { Metadata } from "next";
 import { constructMetadata } from "@/lib/seo";
+import { StructuredData } from "@/components/StructuredData";
 import Link from "next/link";
 
+const accessibilityDescription =
+  "How I approach digital accessibility on this site, including WCAG 2.1 AA conformance, keyboard navigation, screen reader support, and reduced motion.";
+
 export const metadata: Metadata = constructMetadata({
-  title: "Accessibility",
-  description: "How I approach digital accessibility on this site, including WCAG 2.1 AA conformance, keyboard navigation, screen reader support, and reduced motion.",
+  title: "Accessibility Statement | Isaac Vazquez",
+  description: accessibilityDescription,
   canonicalUrl: "https://isaacavazquez.com/accessibility",
-  dateModified: "2025-02-05",
+  dateModified: "2026-07-16",
 });
 
 const accessibilityFeatures = [
@@ -99,7 +103,17 @@ const strongBodyStyle = {
 
 export default function AccessibilityPage() {
   return (
-    <section className="home-page home-section min-h-screen" aria-label="Accessibility statement">
+    <>
+      <StructuredData
+        type="WebPage"
+        data={{
+          title: "Accessibility Statement",
+          description: accessibilityDescription,
+          url: "https://isaacavazquez.com/accessibility",
+          dateModified: "2026-07-16",
+        }}
+      />
+      <section className="home-page home-section min-h-screen" aria-label="Accessibility statement">
       <div className="home-shell home-shell-tight space-y-10">
         <header className="space-y-4">
           <p className="home-kicker mb-0">Accessibility · Updated April 2026</p>
@@ -312,6 +326,7 @@ export default function AccessibilityPage() {
           .
         </footer>
       </div>
-    </section>
+      </section>
+    </>
   );
 }

@@ -4,7 +4,12 @@ import { notFound, redirect } from "next/navigation";
 import { AIStructuredData } from "@/components/AIStructuredData";
 import { ArrowLeft, ArrowRight, ExternalLink, BrandGithub } from "@/components/ui/ServerIcons";
 import { caseStudiesData, getPortfolioProjects } from "@/constants/caseStudies";
-import { absoluteUrl, constructMetadata, siteConfig } from "@/lib/seo";
+import {
+  absoluteUrl,
+  constructMetadata,
+  fitSearchTitle,
+  siteConfig,
+} from "@/lib/seo";
 
 const CASE_STUDY_SEO_DATE = "2026-04-04";
 
@@ -29,7 +34,7 @@ export async function generateMetadata({
   }
 
   return constructMetadata({
-    title: caseStudy.title,
+    title: fitSearchTitle(caseStudy.title),
     description: caseStudy.description,
     ogType: "article",
     datePublished: CASE_STUDY_SEO_DATE,
@@ -38,18 +43,6 @@ export async function generateMetadata({
     articleSection: "Product Management",
     articleTags: ["Product Management", caseStudy.role, ...caseStudy.tools.slice(0, 3)],
     canonicalUrl: `/portfolio/${slug}`,
-    aiMetadata: {
-      profession: "Product Manager",
-      expertise: caseStudy.tools,
-      topics: [
-        "Product Management Case Study",
-        caseStudy.role,
-        ...caseStudy.tools.slice(0, 3),
-      ],
-      contentType: "Case Study",
-      context: `PM case study by ${caseStudy.role}. ${caseStudy.overview.summary}. Key metrics include ${caseStudy.metrics}.`,
-      summary: caseStudy.overview.summary,
-    },
   });
 }
 

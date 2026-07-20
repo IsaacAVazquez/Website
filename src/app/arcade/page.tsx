@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { Press_Start_2P, VT323 } from "next/font/google";
+import { StructuredData } from "@/components/StructuredData";
 import { constructMetadata } from "@/lib/seo";
 import ArcadeClient from "./ArcadeClient";
 
@@ -23,16 +24,29 @@ const vt323 = VT323({
 });
 
 export const metadata: Metadata = constructMetadata({
-  title: "Reactor — Arcade",
+  title: "Reactor Arcade | Isaac Vazquez",
   description:
     "Reactor is a neon synthwave reflex arcade game inside Isaac Vazquez's portfolio, a deliberate style experiment where you light the live cell, dodge the decoys, and keep the combo alive.",
   canonicalUrl: "https://isaacavazquez.com/arcade",
+  dateModified: "2026-07-16",
 });
 
 export default function ArcadePage() {
   return (
-    <div className={`${pressStart.variable} ${vt323.variable}`}>
-      <ArcadeClient />
-    </div>
+    <>
+      <StructuredData
+        type="WebPage"
+        data={{
+          title: "Reactor Arcade",
+          description:
+            "Reactor is a neon reflex game inside Isaac Vazquez's portfolio, built as a deliberate visual and interaction experiment.",
+          url: "https://isaacavazquez.com/arcade",
+          dateModified: "2026-07-16",
+        }}
+      />
+      <div className={`${pressStart.variable} ${vt323.variable}`}>
+        <ArcadeClient />
+      </div>
+    </>
   );
 }

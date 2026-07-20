@@ -161,7 +161,9 @@ export default function Resume() {
         <div className={styles.shell}>
           <div className={styles.mastheadRow}>
             <div>
-              <p className={styles.kicker}>Résumé · product manager &amp; builder</p>
+              <p className={styles.kicker}>
+                Isaac Vazquez · résumé · product manager &amp; builder
+              </p>
               <h1 className={styles.title}>
                 Product, <em>reliability</em>, and data.
               </h1>

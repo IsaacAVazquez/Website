@@ -80,7 +80,7 @@ const notBuilding = [
 ];
 
 export const metadata: Metadata = constructMetadata({
-  title: "Now",
+  title: "What I'm Building Now | Isaac Vazquez",
   description: `What Isaac Vazquez is focused on right now, including current work, reading, side projects, and location. Updated ${NOW_UPDATED_LABEL}.`,
   canonicalUrl: "https://isaacavazquez.com/now",
   dateModified: NOW_UPDATED,

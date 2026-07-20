@@ -30,8 +30,9 @@ describe("StructuredData", () => {
     expect(schema.dateModified).toBeUndefined();
     expect(schema.author).toEqual({
       "@type": "Person",
+      "@id": "https://isaacavazquez.com/about#person",
       name: "Isaac Vazquez",
-      url: "https://isaacavazquez.com",
+      url: "https://isaacavazquez.com/about",
     });
   });
 
@@ -56,8 +57,40 @@ describe("StructuredData", () => {
     expect(schema.dateModified).toBe("2026-06-22");
     expect(schema.author).toEqual({
       "@type": "Person",
+      "@id": "https://isaacavazquez.com/about#person",
       name: "Isaac Vazquez",
       url: "https://isaacavazquez.com/about",
     });
+  });
+
+  it("models Haas as current education and Haas@Work as the current role", () => {
+    const schema = readSchema(
+      renderToStaticMarkup(<StructuredData type="Person" />)
+    );
+
+    expect(schema["@id"]).toBe(
+      "https://isaacavazquez.com/about#person"
+    );
+    expect(schema.worksFor).toEqual(
+      expect.objectContaining({ name: "Haas@Work" })
+    );
+    expect(schema.affiliation).toEqual(
+      expect.objectContaining({
+        "@type": "CollegeOrUniversity",
+        name: "UC Berkeley Haas School of Business",
+      })
+    );
+    expect(schema.alumniOf).toEqual([
+      expect.objectContaining({ name: "Florida State University" }),
+    ]);
+    expect(schema.hasOccupation).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          "@type": "Occupation",
+          name: "Product Manager",
+        }),
+      ])
+    );
+    expect(JSON.stringify(schema)).not.toContain('"worksFor":{"@type":"Organization","name":"Civitech"');
   });
 });

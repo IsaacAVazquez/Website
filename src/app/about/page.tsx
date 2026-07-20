@@ -4,31 +4,11 @@ import { profile, profileSameAs } from "@/lib/profile";
 import { AboutInstrument } from "@/components/about/AboutInstrument";
 
 export const metadata = generateAIOptimizedMetadata({
-  title: "About",
-  description: profile.shortDescription,
-  summary:
-    "UC Berkeley Haas MBA candidate with six years across QA, analytics, product work, and fintech-style decision tools.",
-  expertise: [
-    "Product Management",
-    "Product Strategy",
-    "Quality Engineering",
-    "Test Automation",
-    "Data Analytics",
-    "Cross-functional Leadership",
-    "User Research",
-    "SaaS Platforms",
-    "Consumer Technology",
-    "Fintech Product Development",
-  ],
-  context:
-    "UC Berkeley Haas MBA Candidate • Consortium Fellow • MLT Professional Development Fellow • Based in Berkeley, California • Focused on SaaS, analytics, AI workflow, and fintech-style product work",
-  author: {
-    name: profile.name,
-    title: profile.fullTitle,
-    credentials: profile.credentials,
-  },
+  title: "About Isaac Vazquez | Product Manager and Berkeley Haas MBA",
+  description:
+    "I'm Isaac Vazquez, a Berkeley Haas MBA candidate and product manager with six years across QA, analytics, SaaS, and civic tech.",
   canonicalUrl: "https://isaacavazquez.com/about",
-  dateModified: "2026-05-27",
+  dateModified: "2026-07-16",
 });
 
 export default function AboutPage() {
@@ -53,39 +33,36 @@ export default function AboutPage() {
           type: "ProfilePage",
           data: {
             url: "https://isaacavazquez.com/about",
-            lastReviewed: "2026-05-27",
+            lastReviewed: "2026-07-16",
             description:
-              "Professional profile of Isaac Vazquez - product manager and UC Berkeley Haas MBA Candidate with a background in QA, analytics, and product work across SaaS, civic tech, and fintech-style tools.",
+              "Isaac Vazquez is a product manager and Berkeley Haas MBA candidate with six years across QA, analytics, SaaS, and civic tech.",
             person: {
               name: profile.name,
               jobTitle: profile.fullTitle,
               description: profile.description,
-              url: "https://isaacavazquez.com",
+              url: "https://isaacavazquez.com/about",
               email: profile.email,
               sameAs: profileSameAs,
-              expertise: [
+              knowsAbout: profile.knowsAbout,
+              affiliation: [
                 {
-                  name: "Product Management",
-                  proficiencyLevel: "Advanced",
-                  yearsExperience: 3,
-                },
-                {
-                  name: "Quality Assurance",
-                  proficiencyLevel: "Expert",
-                  yearsExperience: 6,
-                },
-                {
-                  name: "Data Analysis",
-                  proficiencyLevel: "Advanced",
-                  yearsExperience: 6,
-                },
-                {
-                  name: "Fintech Product Development",
-                  proficiencyLevel: "Intermediate",
-                  yearsExperience: 1,
+                  "@type": "CollegeOrUniversity",
+                  name: profile.education[0].name,
+                  description: profile.education[0].description,
                 },
               ],
-              alumniOf: profile.education,
+              alumniOf: [profile.education[1]],
+              worksFor: {
+                "@type": "Organization",
+                name: profile.currentRole.organization,
+              },
+              hasOccupation: [
+                {
+                  "@type": "Occupation",
+                  name: "Product Manager",
+                  skills: profile.knowsAbout,
+                },
+              ],
             },
           },
         }}

@@ -7,10 +7,6 @@ import {
   siteConfig,
 } from "../seo";
 
-jest.mock('@/lib/ai-seo', () => ({
-  generateAIMetaTags: jest.fn(() => ({})),
-}));
-
 describe('constructMetadata', () => {
   it('uses siteConfig defaults when called with no arguments', () => {
     const metadata = constructMetadata();
@@ -56,7 +52,7 @@ describe('constructMetadata', () => {
   it('openGraph title contains siteConfig.name', () => {
     const metadata = constructMetadata({ title: 'My Page' });
     const og = metadata.openGraph as { title: string };
-    expect(og.title).toBe(`My Page | ${siteConfig.name}`);
+    expect(og.title).toBe(`My Page | ${siteConfig.name} Portfolio`);
   });
 
   it('includes authors with siteConfig.name', () => {
@@ -66,10 +62,12 @@ describe('constructMetadata', () => {
     );
   });
 
-  it("returns a page title string when a custom title is provided", () => {
+  it("returns an absolute page title when a custom title is provided", () => {
     const metadata = constructMetadata({ title: "Projects" });
 
-    expect(metadata.title).toBe("Projects");
+    expect(metadata.title).toEqual({
+      absolute: `Projects | ${siteConfig.name} Portfolio`,
+    });
   });
 
   it("keeps social titles branded once for route-specific titles", () => {
@@ -77,8 +75,8 @@ describe('constructMetadata', () => {
     const og = metadata.openGraph as { title: string };
     const twitter = metadata.twitter as { title: string };
 
-    expect(og.title).toBe(`Projects | ${siteConfig.name}`);
-    expect(twitter.title).toBe(`Projects | ${siteConfig.name}`);
+    expect(og.title).toBe(`Projects | ${siteConfig.name} Portfolio`);
+    expect(twitter.title).toBe(`Projects | ${siteConfig.name} Portfolio`);
   });
 });
 
@@ -89,13 +87,30 @@ describe("generateAIOptimizedMetadata", () => {
       description: "Bay Area product manager",
     });
 
-    expect(metadata.title).toBe("About");
+    expect(metadata.title).toEqual({
+      absolute: `About | ${siteConfig.name} Portfolio`,
+    });
     expect((metadata.openGraph as { title: string }).title).toBe(
-      `About | ${siteConfig.name}`
+      `About | ${siteConfig.name} Portfolio`
     );
     expect((metadata.twitter as { title: string }).title).toBe(
-      `About | ${siteConfig.name}`
+      `About | ${siteConfig.name} Portfolio`
     );
+  });
+
+  it("does not emit custom AI meta tags or expand the visible description", () => {
+    const metadata = generateAIOptimizedMetadata({
+      title: "About",
+      description: "A plain description that matches the visible page.",
+      summary: "A search-only summary",
+      expertise: ["Product Management", "AI Workflows"],
+      context: "Search-only context",
+    });
+
+    expect(metadata.description).toBe(
+      "A plain description that matches the visible page."
+    );
+    expect(metadata.other).toEqual({});
   });
 });
 
@@ -135,7 +150,7 @@ describe("search metadata fitting", () => {
     );
 
     expect(title.length).toBeLessThanOrEqual(60);
-    expect(title.endsWith("…")).toBe(true);
+    expect(title.endsWith("…")).toBe(false);
   });
 
   it("keeps descriptions within the search display budget", () => {

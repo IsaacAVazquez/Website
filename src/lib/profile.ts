@@ -18,11 +18,18 @@ export const profile = {
     github: "https://github.com/IsaacAVazquez",
     linkedin: "https://www.linkedin.com/in/isaac-vazquez/",
   },
-  employer: {
+  currentRole: {
+    title: "Innovation Consultant Team Lead",
+    organization: "Haas@Work",
+    startDate: "2026-01",
+  },
+  formerEmployer: {
     name: "Civitech",
     url: "https://civitech.io",
     description:
       "Civic technology company focused on voter engagement and public-interest digital infrastructure.",
+    startDate: "2022-01",
+    endDate: "2025-08",
   },
   credentials: [
     "UC Berkeley Haas MBA Candidate '27",

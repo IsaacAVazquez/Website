@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return constructMetadata({
     title: "Changelog",
     description:
-      "A running log of what's shipped on this site. New features, fixes, writing, and experiments.",
+      "A running log of what I've shipped on this site, including new features, fixes, essays, data updates, and the experiments I kept or retired.",
     canonicalUrl: "https://isaacavazquez.com/changelog",
     dateModified: latest || undefined,
   });

@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import { generateAIMetaTags } from "./ai-seo";
 import { profile } from "./profile";
 
 export interface ProjectStructuredData {
@@ -48,7 +47,7 @@ function resolveSiteUrl(): string {
 
 export const siteConfig = {
   name: profile.name,
-  title: "Product Manager | UC Berkeley Haas MBA | Portfolio & Case Studies",
+  title: "Product Manager and Berkeley Haas MBA",
   description: profile.description,
   url: resolveSiteUrl(),
   ogImage: "/opengraph-image", // 1200x630 OG image optimized for social media & AI previews
@@ -70,13 +69,20 @@ export const absoluteUrl = (path?: string) => {
   return `${base}${normalizedPath}`;
 };
 
-function truncateMetadataText(value: string, maxLength: number): string {
+export const personCanonicalUrl = absoluteUrl("/about");
+export const personSchemaId = `${personCanonicalUrl}#person`;
+
+function truncateMetadataText(
+  value: string,
+  maxLength: number,
+  suffix = "…",
+): string {
   const normalized = value.replace(/\s+/g, " ").trim();
   if (normalized.length <= maxLength) {
     return normalized;
   }
 
-  const availableLength = maxLength - 1;
+  const availableLength = maxLength - suffix.length;
   const candidate = normalized.slice(0, availableLength + 1);
   const lastSpace = candidate.lastIndexOf(" ");
   const cutAt =
@@ -86,11 +92,15 @@ function truncateMetadataText(value: string, maxLength: number): string {
 
   return `${candidate
     .slice(0, cutAt)
-    .replace(/[\s,;:|/-]+$/g, "")}…`;
+    .replace(/[\s,;:|/-]+$/g, "")}${suffix}`;
 }
 
 export function fitSearchTitle(title: string): string {
-  return truncateMetadataText(title.split(" | ")[0], 60);
+  const withoutTrailingBrand = title.replace(
+    new RegExp(`\\s+\\|\\s+${siteConfig.name}$`, "i"),
+    "",
+  );
+  return truncateMetadataText(withoutTrailingBrand, 60, "");
 }
 
 export function fitMetaDescription(description: string): string {
@@ -116,7 +126,6 @@ export function constructMetadata({
   articleAuthor,
   articleSection,
   articleTags,
-  aiMetadata,
 }: {
   title?: string;
   description?: string;
@@ -143,16 +152,18 @@ export function constructMetadata({
     primaryFocus?: string;
   };
 } = {}): Metadata {
-  // Generate AI-specific meta tags
-  const aiTags = aiMetadata ? generateAIMetaTags(aiMetadata) : {};
-  const resolvedTitle = title ?? siteConfig.title;
+  const resolvedTitle =
+    title && title.length < 30 && ogType === "website"
+      ? `${title} | ${siteConfig.name} Portfolio`
+      : title ?? siteConfig.title;
   const socialTitle = composeSocialTitle(resolvedTitle);
+  const resolvedDescription = fitMetaDescription(description);
 
   const canonicalPath = canonicalUrl || siteConfig.url;
   const metadataBase = new URL(siteConfig.url);
   const absoluteCanonical = absoluteUrl(canonicalPath);
   const absoluteImage = absoluteUrl(image);
-  const otherMeta: Record<string, string> = { ...aiTags };
+  const otherMeta: Record<string, string> = {};
   if (dateModified) {
     otherMeta["og:updated_time"] = dateModified;
   }
@@ -162,7 +173,7 @@ export function constructMetadata({
     locale: "en_US" as const,
     url: absoluteCanonical,
     title: socialTitle,
-    description,
+    description: resolvedDescription,
     siteName: siteConfig.name,
     images: [
       {
@@ -181,7 +192,7 @@ export function constructMetadata({
           type: "article" as const,
           publishedTime: datePublished,
           modifiedTime: dateModified,
-          authors: [articleAuthor ?? siteConfig.url],
+          authors: [articleAuthor ?? personCanonicalUrl],
           section: articleSection,
           tags: articleTags,
         }
@@ -192,13 +203,13 @@ export function constructMetadata({
 
   return {
     title: title
-      ? resolvedTitle
+      ? { absolute: resolvedTitle }
       : {
-          default: `${siteConfig.name} – ${siteConfig.title}`,
+          default: `${siteConfig.name} | ${siteConfig.title}`,
           template: `%s | ${siteConfig.name}`,
         },
-    description,
-    authors: [{ name: siteConfig.name, url: siteConfig.url }],
+    description: resolvedDescription,
+    authors: [{ name: siteConfig.name, url: personCanonicalUrl }],
     creator: siteConfig.name,
     publisher: siteConfig.name,
     formatDetection: {
@@ -210,7 +221,7 @@ export function constructMetadata({
     twitter: {
       card: "summary_large_image",
       title: socialTitle,
-      description,
+      description: resolvedDescription,
       images: [absoluteImage],
       creator: "@isaacvazquez",
       site: "@isaacvazquez",
@@ -242,7 +253,6 @@ export function constructMetadata({
         'max-snippet': -1,
       },
     },
-    // Add AI-specific meta tags
     other: otherMeta,
     verification: {
       google: process.env.GOOGLE_SITE_VERIFICATION,
@@ -258,11 +268,12 @@ export function generateProjectStructuredData(project: ProjectStructuredData): o
     "description": project.description,
     "image": project.image,
     "dateCreated": project.dateCreated,
-    "dateModified": project.dateModified || new Date().toISOString(),
+    "dateModified": project.dateModified,
     "author": {
       "@type": "Person",
+      "@id": personSchemaId,
       "name": project.author,
-      "url": siteConfig.url,
+      "url": personCanonicalUrl,
     },
     "keywords": project.keywords?.join(", "),
     "programmingLanguage": project.programmingLanguage,
@@ -304,8 +315,9 @@ export function generateBreadcrumbStructuredData(
 }
 
 /**
- * Generate AI-optimized metadata for pages
- * Includes clear summaries, expertise markers, and context for AI systems
+ * Generate standard metadata for pages that still use the legacy helper name.
+ * Summary and expertise remain accepted for caller compatibility, but visible
+ * copy and structured data carry those signals instead of custom meta tags.
  */
 export function generateAIOptimizedMetadata(
   pageData: AIOptimizedMetadata
@@ -313,114 +325,22 @@ export function generateAIOptimizedMetadata(
   const {
     title,
     description,
-    summary,
-    expertise,
-    context,
-    author,
     datePublished,
     dateModified,
-    readingTime,
     canonicalUrl,
     noIndex,
     image,
   } = pageData;
 
-  // Construct enhanced description with AI-friendly structure
-  let enhancedDescription = description;
-  if (summary) {
-    enhancedDescription = `${summary} | ${description}`;
-  }
-  if (expertise && expertise.length > 0) {
-    enhancedDescription += ` | Expertise: ${expertise.join(", ")}`;
-  }
-
-  const canonicalPath = canonicalUrl || siteConfig.url;
-  const absoluteCanonical = absoluteUrl(canonicalPath);
-  const absoluteImage = absoluteUrl(image || siteConfig.ogImage);
-  const metadataBase = new URL(siteConfig.url);
-  const robots = noIndex
-    ? {
-        index: false,
-        follow: true,
-        nocache: true,
-        googleBot: {
-          index: false,
-          follow: true,
-        },
-      }
-    : {
-        index: true,
-        follow: true,
-        googleBot: {
-          index: true,
-          follow: true,
-          "max-video-preview": -1,
-          "max-image-preview": "large" as const,
-          "max-snippet": -1,
-        },
-      };
-
-  // Build metadata
-  const metadata: Metadata = {
+  return constructMetadata({
     title,
-    description: enhancedDescription,
-    metadataBase,
-    alternates: {
-      canonical: canonicalPath,
-      languages: {
-        "en-US": canonicalPath,
-      },
-    },
-    robots,
-    authors: author
-      ? [{ name: author.name, url: siteConfig.url }]
-      : [{ name: siteConfig.name, url: siteConfig.url }],
-    creator: siteConfig.name,
-    publisher: siteConfig.name,
-    openGraph: {
-      type: "website",
-      locale: "en_US",
-      url: absoluteCanonical,
-      title: composeSocialTitle(title),
-      description: enhancedDescription,
-      siteName: siteConfig.name,
-      images: [
-        {
-          url: absoluteImage,
-          width: 1200,
-          height: 630,
-          alt: composeSocialTitle(title),
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: composeSocialTitle(title),
-      description: enhancedDescription,
-      images: [absoluteImage],
-      creator: "@isaacvazquez",
-    },
-    other: {
-      // AI-specific metadata for better understanding
-      "ai:summary": summary || description,
-      "ai:expertise": expertise?.join(", ") || "",
-      "ai:context": context || "",
-      "ai:readingTime": readingTime ? `${readingTime} minutes` : "",
-    },
-  };
-
-  if (datePublished) {
-    (metadata.other as Record<string, string>)["article:published_time"] =
-      datePublished;
-  }
-
-  if (dateModified) {
-    const other = metadata.other as Record<string, string>;
-    other["article:modified_time"] = dateModified;
-    other["og:updated_time"] = dateModified;
-  }
-
-  return metadata;
+    description,
+    image,
+    noIndex,
+    canonicalUrl,
+    datePublished,
+    dateModified,
+  });
 }
 
 /**
@@ -440,10 +360,11 @@ export function generatePersonStructuredData(options?: {
   const personData: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": personSchemaId,
     "name": siteConfig.name,
-    "jobTitle": "Technical Product Manager",
+    "jobTitle": profile.fullTitle,
     "description": siteConfig.description,
-    "url": siteConfig.url,
+    "url": personCanonicalUrl,
     "image": `${siteConfig.url}${siteConfig.ogImage}`,
   };
 
@@ -494,22 +415,22 @@ export function generatePersonStructuredData(options?: {
   }
 
   if (includeOrganizations) {
-    personData["worksFor"] = {
-      "@type": "Organization",
-      "name": "Civitech",
-      "description": "Civic technology company specializing in voter engagement platforms",
+    personData["affiliation"] = {
+      "@type": "CollegeOrUniversity",
+      "name": profile.education[0].name,
+      "description": profile.education[0].description,
     };
 
-    personData["alumniOf"] = [
+    personData["alumniOf"] = [profile.education[1]];
+    personData["worksFor"] = {
+      "@type": "Organization",
+      "name": profile.currentRole.organization,
+    };
+    personData["hasOccupation"] = [
       {
-        "@type": "CollegeOrUniversity",
-        "name": "UC Berkeley Haas School of Business",
-        "sameAs": "https://haas.berkeley.edu",
-      },
-      {
-        "@type": "CollegeOrUniversity",
-        "name": "Florida State University",
-        "sameAs": "https://www.fsu.edu",
+        "@type": "Occupation",
+        "name": "Product Manager",
+        "skills": profile.knowsAbout,
       },
     ];
   }
@@ -540,13 +461,15 @@ export function generateArticleStructuredData(article: {
     "dateModified": article.dateModified || article.datePublished,
     "author": {
       "@type": "Person",
+      "@id": personSchemaId,
       "name": article.author || siteConfig.name,
-      "url": siteConfig.url,
+      "url": personCanonicalUrl,
     },
     "publisher": {
       "@type": "Person",
+      "@id": personSchemaId,
       "name": siteConfig.name,
-      "url": siteConfig.url,
+      "url": personCanonicalUrl,
     },
     "mainEntityOfPage": {
       "@type": "WebPage",

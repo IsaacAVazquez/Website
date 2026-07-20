@@ -61,12 +61,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     articleSection: getBlogPostCollectionLabel(post),
     articleTags: post.seo?.keywords || post.tags,
     canonicalUrl: `${siteConfig.url}/writing/${slug}`,
-    aiMetadata: {
-      expertise: post.seo?.keywords || post.tags || [],
-      contentType: "Article",
-      profession: "Product Manager",
-      summary: metadataDescription,
-    },
   });
 }
 
@@ -124,7 +118,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             author: {
               name: "Isaac Vazquez",
               jobTitle: "Product Manager & UC Berkeley Haas MBA Candidate",
-              url: siteConfig.url,
+              url: `${siteConfig.url}/about`,
             },
             datePublished: post.publishedAt,
             dateModified: post.updatedAt || post.publishedAt,

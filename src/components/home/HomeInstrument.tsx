@@ -78,7 +78,7 @@ export function HomeInstrument({
           <div className={styles.heroGrid}>
             <div>
               <p className={styles.kicker}>
-                Product manager &amp; builder · Berkeley, CA
+                Isaac Vazquez · Product manager &amp; builder · Berkeley, CA
               </p>
               <h1 id="home-hero-heading" className={styles.headline}>
                 I build tools that make hard problems <em>easier</em> to act
