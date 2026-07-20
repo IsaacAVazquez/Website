@@ -441,7 +441,7 @@ Current behavior:
 - `update-world-cup.yml` runs every 30 minutes during June and July
 - `update-score-pools.yml` runs every six hours, requires both live provider tokens, and rejects provider-empty or stale live-league output
 - `update-bay-area-transit.yml` runs on manual dispatch and every six hours year-round, then commits `src/data/bayAreaTransitSnapshot.ts` when it changes
-- `update-earthquake.yml` runs on manual dispatch and hourly (minute 20), then commits `src/data/earthquakeSnapshot.ts` when it changes
+- `update-earthquake.yml` runs on manual dispatch and daily at 06:20 UTC, then commits `src/data/earthquakeSnapshot.ts` when it changes — a fallback-seed refresh only, since the summary API fetches USGS live at request time
 - `update-polling.yml` runs every six hours and refreshes the VoteHub-backed polling snapshot
 - `audit-curated-data.yml` checks review dates, verification flags, and structural integrity across Frontier Models, Tech Startups, AI Dev Tools, Museum Log, Travel Deals, and Food Map every Monday
 - The tech startup tracker has no workflow by design — its dataset is editorially curated, so refreshes happen by editing the seed and running `npm run update:tech-startups` locally

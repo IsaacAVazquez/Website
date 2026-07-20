@@ -36,7 +36,7 @@ request time, with the committed artifact retained as the last-good fallback.
 | World Cup 2026 | `update:world-cup` | `buildWorldCupSnapshot.ts` | ESPN `soccer/fifa.world` | `src/data/worldCupSnapshot.ts` | `update-world-cup.yml` | every 30m, June through July |
 | Score pools | `update:score-pools` | `buildScorePoolsSnapshot.ts` | The Odds API + API-Football *(tokens required for live leagues)* + manual/CSV | `src/data/scorePoolsSnapshot.ts` | `update-score-pools.yml` | every 6h |
 | Bay Area Transit | `update:bay-area-transit` | `buildBayAreaTransitSnapshot.ts` | BART public API *(demo key)* | `src/data/bayAreaTransitSnapshot.ts` | `update-bay-area-transit.yml` | every 6h, year-round |
-| Earthquake Pulse | `update:earthquake` | `buildEarthquakeSnapshot.ts` | USGS GeoJSON feeds | `src/data/earthquakeSnapshot.ts` | `update-earthquake.yml` | hourly (min 20) |
+| Earthquake Pulse | `update:earthquake` | `buildEarthquakeSnapshot.ts` | USGS GeoJSON feeds | `src/data/earthquakeSnapshot.ts` | `update-earthquake.yml` | daily 06:20 UTC (fallback seed; the API serves live USGS) |
 | GitHub Trending | `update:github-trending` | `buildGitHubTrendingSnapshot.ts` | GitHub Search API *(`GITHUB_TOKEN` optional)* | `src/data/githubTrendingSnapshot.ts` | `update-github-trending.yml` | daily 07:45 UTC |
 | SpaceX data | `update:spacex` *(alias `update:spacex-data`)* | `buildSpaceXSnapshot.ts` | Launch Library / SpaceDevs | `src/data/spacexSnapshot.generated.json` | `update-spacex.yml` | daily 09:25 + 21:25 UTC |
 | SpaceX images | `update:spacex-images` | `buildSpaceXImageSnapshots.ts` | launch image assets | `src/data/spacexImageManifest.generated.json`, `public/data/spacex/*` | `update-spacex.yml` | daily 09:25 + 21:25 UTC |
@@ -124,7 +124,7 @@ commits, then pushes to `HEAD:main` with a retry loop (default 8 attempts;
 override via `SNAPSHOT_PUSH_ATTEMPTS`). On each push rejection it
 `git fetch origin main` and `git rebase --autostash origin/main`, then retries
 with capped exponential backoff plus jitter, which absorbs the contention from
-many snapshot bots (earthquake hourly, world cup, transit, etc.) pushing to
+many snapshot bots (world cup in-tournament, transit, etc.) pushing to
 `main` concurrently. It bails (exit 1) only on a genuine rebase conflict or after
 exhausting every attempt. Usage is asserted by
 `.github/workflows/__tests__/snapshot-workflows.test.ts` (and the investments
