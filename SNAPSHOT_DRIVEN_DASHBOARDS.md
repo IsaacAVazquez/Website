@@ -103,7 +103,7 @@ Usage is `commit-and-push-snapshot.sh <commit-message> <pathspec...>`. The scrip
    jitter.
 
 The retry loop exists because `main` moves constantly — many snapshot bots
-(earthquake hourly, world cup, transit, etc.) push to the same branch and collide.
+(world cup every 30 minutes in-tournament, transit, etc.) push to the same branch and collide.
 A refresh commit only touches its own snapshot files, so a rebase never truly
 conflicts; the failure mode is just losing the race repeatedly. The script bails
 (exit 1) only on a **genuine rebase conflict** (it aborts the rebase) or after
@@ -159,7 +159,7 @@ by BART abbr, world-cup `/teams/[teamId]` by team slug.
 | `/world-cup-2026` | `src/data/worldCupSnapshot.ts` | `buildWorldCupSnapshot.ts` · `update:world-cup` | `update-world-cup.yml` | ESPN `soccer/fifa.world` | every 6h, Jun–Jul |
 | `/score-pools` (+ `/tracker`, `/settings`) | `src/data/scorePoolsSnapshot.ts` | `buildScorePoolsSnapshot.ts` · `update:score-pools` | `update-score-pools.yml` | The Odds API + API-Football (tokens optional) + manual/CSV | every 6h |
 | `/bay-area-transit` | `src/data/bayAreaTransitSnapshot.ts` | `buildBayAreaTransitSnapshot.ts` · `update:bay-area-transit` | `update-bay-area-transit.yml` | BART public API (demo key) | every 6h, year-round |
-| `/earthquake-pulse` | `src/data/earthquakeSnapshot.ts` | `buildEarthquakeSnapshot.ts` · `update:earthquake` | `update-earthquake.yml` | USGS GeoJSON feeds | hourly (min 20) |
+| `/earthquake-pulse` | `src/data/earthquakeSnapshot.ts` | `buildEarthquakeSnapshot.ts` · `update:earthquake` | `update-earthquake.yml` | USGS GeoJSON feeds | daily 06:20 UTC (fallback seed; the API serves live USGS at request time) |
 | `/github-trending-pulse` | `src/data/githubTrendingSnapshot.ts` | `buildGitHubTrendingSnapshot.ts` · `update:github-trending` | `update-github-trending.yml` | GitHub Search API | daily 07:45 UTC |
 | `/spacex-mission-control` | `src/data/spacexSnapshot.generated.json` (+ image manifest) | `buildSpaceXSnapshot.ts` · `update:spacex` | `update-spacex.yml` | Launch Library / SpaceDevs | daily 09:25 + 21:25 UTC |
 | `/tech-startup-tracker` | `src/data/techStartupSnapshot.ts` | `buildTechStartupSnapshot.ts` · `update:tech-startups` | none (curated) | hand-maintained seed | manual |

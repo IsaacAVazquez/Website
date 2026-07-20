@@ -125,7 +125,7 @@ commits, then pushes to `HEAD:main` with a retry loop (default 8 attempts;
 override via `SNAPSHOT_PUSH_ATTEMPTS`). On each push rejection it
 `git fetch origin main` and `git rebase --autostash origin/main`, then retries
 with capped exponential backoff plus jitter, which absorbs the contention from
-many snapshot bots (earthquake hourly, world cup, transit, etc.) pushing to
+many snapshot bots (world cup in-tournament, transit, etc.) pushing to
 `main` concurrently. It bails (exit 1) only on a genuine rebase conflict or after
 exhausting every attempt. Usage is asserted by
 `.github/workflows/__tests__/snapshot-workflows.test.ts` (and the investments
