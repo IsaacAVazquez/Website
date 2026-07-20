@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { IconMapPin } from "@tabler/icons-react";
 import {
   loadLeaflet,
-  OSM_ATTRIBUTION,
-  OSM_TILE_URL,
+  cartoTiles,
+  type LeafletLayer,
   type LeafletLayerGroup,
   type LeafletMap,
   type LeafletMarker,
@@ -30,6 +30,8 @@ interface FoodMapLeafletProps {
   zoom: number;
   /** When true, jump instead of animating (honors prefers-reduced-motion). */
   reduceMotion?: boolean;
+  /** Drives the basemap: a moody dark field-map vs. a warm daylight one. */
+  isDark?: boolean;
 }
 
 const escapeHtml = (value: string): string =>
@@ -47,13 +49,9 @@ const escapeHtml = (value: string): string =>
 
 const pinIcon = (L: LeafletStatic, color: string, active: boolean) =>
   L.divIcon({
-    className: "food-map-pin",
-    html: `<span style="
-      display:block;width:${active ? 30 : 22}px;height:${active ? 30 : 22}px;
-      border-radius:50% 50% 50% 0;transform:rotate(-45deg);
-      background:${color};border:2px solid #fff;
-      box-shadow:0 2px 6px rgba(0,0,0,0.35);
-      ${active ? "outline:3px solid rgba(0,0,0,0.18);outline-offset:1px;" : ""}
+    className: `fm-pin-el${active ? " fm-pin-active" : ""}`,
+    html: `<span class="fm-pin-dot" style="
+      width:${active ? 30 : 22}px;height:${active ? 30 : 22}px;background:${color};
     "></span>`,
     iconSize: active ? [30, 30] : [22, 22],
     iconAnchor: active ? [15, 28] : [11, 21],
@@ -67,11 +65,13 @@ export function FoodMapLeaflet({
   center,
   zoom,
   reduceMotion = false,
+  isDark = false,
 }: FoodMapLeafletProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const leafletRef = useRef<LeafletStatic | null>(null);
   const mapRef = useRef<LeafletMap | null>(null);
   const groupRef = useRef<LeafletLayerGroup | null>(null);
+  const tileRef = useRef<LeafletLayer | null>(null);
   const markersRef = useRef<Map<string, LeafletMarker>>(new Map());
   // Tracks the last spot set we fit the viewport to, so re-styling the active
   // pin doesn't refit the bounds and fight the separate fly-to effect.
@@ -95,9 +95,11 @@ export function FoodMapLeaflet({
           center,
           zoom
         );
-        L.tileLayer(OSM_TILE_URL, { attribution: OSM_ATTRIBUTION, maxZoom: 19 }).addTo(
-          map
-        );
+        const tiles = cartoTiles(isDark);
+        tileRef.current = L.tileLayer(tiles.url, {
+          attribution: tiles.attribution,
+          maxZoom: 19,
+        }).addTo(map);
         groupRef.current = L.layerGroup().addTo(map);
         mapRef.current = map;
         setStatus("ready");
@@ -112,11 +114,27 @@ export function FoodMapLeaflet({
       mapRef.current?.remove();
       mapRef.current = null;
       groupRef.current = null;
+      tileRef.current = null;
       markers.clear();
     };
-    // Only run on mount — center/zoom changes are handled below.
+    // Only run on mount — center/zoom/theme changes are handled below.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Swap the basemap when the theme flips, without tearing down the map.
+  useEffect(() => {
+    const L = leafletRef.current;
+    const map = mapRef.current;
+    if (status !== "ready" || !L || !map) return;
+    if (tileRef.current) {
+      tileRef.current.remove();
+    }
+    const tiles = cartoTiles(isDark);
+    tileRef.current = L.tileLayer(tiles.url, {
+      attribution: tiles.attribution,
+      maxZoom: 19,
+    }).addTo(map);
+  }, [isDark, status]);
 
   // Rebuild markers whenever the set of spots (or active highlight) changes.
   const spotsKey = spots.map((s) => s.id).join(",");
@@ -136,7 +154,7 @@ export function FoodMapLeaflet({
         icon: pinIcon(L, color, isActive),
       }).addTo(group);
       marker.bindPopup(
-        `<strong>${escapeHtml(spot.name)}</strong><br/><span style="color:#555">${escapeHtml(
+        `<span class="fm-popup-title">${escapeHtml(spot.name)}</span><br/><span class="fm-popup-sub">${escapeHtml(
           getFoodMapCuisine(spot.cuisine).label
         )}</span>`
       );
@@ -181,18 +199,10 @@ export function FoodMapLeaflet({
 
   if (status === "error") {
     return (
-      <div
-        className="flex min-h-[320px] flex-col items-center justify-center gap-3 rounded-[var(--radius-3xl)] p-8 text-center"
-        style={{
-          border: "1px solid var(--home-rule)",
-          background: "color-mix(in srgb, var(--home-paper) 90%, var(--home-elev-mix))",
-        }}
-        role="img"
-        aria-label="Map unavailable"
-      >
-        <IconMapPin size={28} aria-hidden="true" style={{ color: "var(--home-ink-muted)" }} />
-        <p className="max-w-xs text-sm" style={{ color: "var(--home-ink-muted)" }}>
-          The interactive map couldn&apos;t load right now. The full list of spots is
+      <div className="fm-map-fallback" role="img" aria-label="Map unavailable">
+        <IconMapPin size={28} aria-hidden="true" />
+        <p style={{ maxWidth: "22rem", margin: 0, fontSize: 13.5 }}>
+          The interactive map couldn&apos;t load right now. The full list of stops is
           still below.
         </p>
       </div>
@@ -200,27 +210,15 @@ export function FoodMapLeaflet({
   }
 
   return (
-    <div className="relative h-[420px] w-full">
+    <div style={{ position: "relative" }}>
       <div
         ref={containerRef}
-        className="h-full min-h-[320px] w-full rounded-[var(--radius-3xl)]"
-        style={{
-          border: "1px solid var(--home-rule)",
-          background: "color-mix(in srgb, var(--home-paper) 90%, var(--home-elev-mix))",
-        }}
+        className="fm-map"
         role="application"
         aria-label="Map of recommended food spots"
       />
       {status === "loading" && (
-        <div
-          className="absolute inset-0 flex items-center justify-center rounded-[var(--radius-3xl)] text-sm"
-          style={{
-            background: "color-mix(in srgb, var(--home-paper) 90%, var(--home-elev-mix))",
-            color: "var(--home-ink-muted)",
-          }}
-        >
-          Loading map…
-        </div>
+        <div className="fm-map-loading">Loading map…</div>
       )}
     </div>
   );

@@ -5,10 +5,10 @@ import {
   useEffect,
   useMemo,
   useState,
-  type CSSProperties,
 } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useTheme } from "next-themes";
 import { IconSearch } from "@tabler/icons-react";
 import {
   FOOD_MAP_AS_OF,
@@ -40,35 +40,68 @@ import {
   toggleCurator,
   type FoodMapState,
 } from "./food-map-state";
-import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
 import { FoodMapLeaflet } from "./food-map-leaflet";
+import "./food-map.css";
 
 interface FoodMapClientProps {
   initialState: FoodMapState;
 }
 
 const fadeIn = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.35 } },
+  hidden: { opacity: 0, y: 14 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
 };
 
 const noMotion = {
-  hidden: { opacity: 0, y: 12 },
+  hidden: { opacity: 0, y: 14 },
   visible: { opacity: 1, y: 0, transition: { duration: 0 } },
 };
 
-function getPanelStyle(): CSSProperties {
-  return {
-    background: "color-mix(in srgb, var(--home-paper-alt) 74%, var(--home-elev-mix))",
-    border: "1px solid var(--home-rule)",
-    boxShadow: "var(--shadow-sm)",
-  };
+/* -------------------------------------------------------------------------- */
+/* Masthead ticker                                                            */
+/* -------------------------------------------------------------------------- */
+
+function HeroTicker() {
+  // A printed marquee of the cities and a few flagship cuisines, doubled so the
+  // CSS translate loops seamlessly. Motion is paused under prefers-reduced-motion.
+  const words = useMemo(() => {
+    const cities = FOOD_MAP_CITIES.map((c) => c.name);
+    const cuisines = [
+      "Barbecue",
+      "Tacos",
+      "Ramen",
+      "Oysters",
+      "Pintxos",
+      "New Nordic",
+      "Pastrami",
+      "Wood-fired pizza",
+    ];
+    return [...cities, ...cuisines];
+  }, []);
+
+  const line = (
+    <span aria-hidden="true">
+      {words.map((word) => (
+        <span key={word}>{word}</span>
+      ))}
+    </span>
+  );
+
+  return (
+    <div className="fm-ticker" aria-hidden="true">
+      <div className="fm-ticker-track">
+        {line}
+        {line}
+      </div>
+    </div>
+  );
 }
 
-const FILTER_LABEL_CLASS =
-  "text-2xs font-bold uppercase tracking-[0.14em]";
+/* -------------------------------------------------------------------------- */
+/* Filter chips                                                               */
+/* -------------------------------------------------------------------------- */
 
-function CityChips({
+function CityTabs({
   state,
   counts,
   onSelect,
@@ -78,7 +111,7 @@ function CityChips({
   onSelect: (id: FoodMapCityId) => void;
 }) {
   return (
-    <div role="radiogroup" aria-label="Choose a city" className="flex flex-wrap gap-2">
+    <div role="radiogroup" aria-label="Choose a city" className="fm-chiprow">
       {FOOD_MAP_CITIES.map((city) => {
         const isActive = state.city === city.id;
         return (
@@ -88,24 +121,10 @@ function CityChips({
             role="radio"
             aria-checked={isActive}
             onClick={() => onSelect(city.id)}
-            className="resume-chip min-h-touch transition-[transform,border-color,background-color,box-shadow] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
-            style={{
-              borderColor: isActive
-                ? "color-mix(in srgb, var(--home-signal) 45%, var(--home-rule))"
-                : "var(--home-rule)",
-              background: isActive
-                ? "color-mix(in srgb, var(--home-signal) 18%, var(--home-paper))"
-                : "var(--home-paper-raised)",
-              color: "var(--home-ink)",
-            }}
+            className="fm-tab"
           >
             {city.name}
-            <span
-              className="ml-2 text-2xs uppercase tracking-[0.12em]"
-              style={{ color: "var(--home-ink-muted)" }}
-            >
-              {counts[city.id] ?? 0}
-            </span>
+            <span className="fm-tab-count">{counts[city.id] ?? 0}</span>
           </button>
         );
       })}
@@ -113,7 +132,7 @@ function CityChips({
   );
 }
 
-function CuratorChips({
+function CuratorStamps({
   state,
   onToggle,
 }: {
@@ -121,7 +140,7 @@ function CuratorChips({
   onToggle: (id: FoodMapCuratorId) => void;
 }) {
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="fm-chiprow">
       {FOOD_MAP_CURATORS.map((curator) => {
         const isActive = state.curators.includes(curator.id);
         return (
@@ -130,22 +149,10 @@ function CuratorChips({
             type="button"
             onClick={() => onToggle(curator.id)}
             aria-pressed={isActive}
-            className="resume-chip min-h-touch inline-flex items-center gap-2 transition-[transform,border-color,background-color,box-shadow] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
-            style={{
-              borderColor: isActive
-                ? `color-mix(in srgb, ${curator.accent} 55%, var(--home-rule))`
-                : "var(--home-rule)",
-              background: isActive
-                ? `color-mix(in srgb, ${curator.accent} 18%, var(--home-paper))`
-                : "var(--home-paper-raised)",
-              color: "var(--home-ink)",
-            }}
+            className="fm-stamp"
+            style={{ ["--fm-accent" as string]: curator.accent }}
           >
-            <span
-              aria-hidden="true"
-              className="inline-block h-2 w-2 rounded-full"
-              style={{ background: curator.accent }}
-            />
+            <span className="fm-stamp-dot" aria-hidden="true" />
             {curator.name}
           </button>
         );
@@ -154,7 +161,7 @@ function CuratorChips({
   );
 }
 
-function CuisineChips({
+function CuisinePills({
   cuisines,
   state,
   onToggle,
@@ -166,9 +173,8 @@ function CuisineChips({
   if (cuisines.length === 0) {
     return null;
   }
-
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="fm-chiprow">
       {cuisines.map((cuisine) => {
         const isActive = state.cuisines.includes(cuisine.id);
         return (
@@ -177,16 +183,7 @@ function CuisineChips({
             type="button"
             onClick={() => onToggle(cuisine.id)}
             aria-pressed={isActive}
-            className="resume-chip min-h-touch transition-[transform,border-color,background-color,box-shadow] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
-            style={{
-              borderColor: isActive
-                ? "color-mix(in srgb, var(--home-signal) 38%, var(--home-rule))"
-                : "var(--home-rule)",
-              background: isActive
-                ? "color-mix(in srgb, var(--home-signal) 14%, var(--home-paper))"
-                : "var(--home-paper-raised)",
-              color: "var(--home-ink)",
-            }}
+            className="fm-pill"
           >
             {cuisine.label}
           </button>
@@ -196,12 +193,18 @@ function CuisineChips({
   );
 }
 
-function PlaceCard({
+/* -------------------------------------------------------------------------- */
+/* Place index                                                               */
+/* -------------------------------------------------------------------------- */
+
+function PlaceTicket({
   place,
+  index,
   isSelected,
   onSelect,
 }: {
   place: FoodMapPlace;
+  index: number;
   isSelected: boolean;
   onSelect: (id: string) => void;
 }) {
@@ -214,51 +217,51 @@ function PlaceCard({
       type="button"
       onClick={() => onSelect(place.id)}
       aria-pressed={isSelected}
-      className="home-card min-h-touch w-full rounded-[var(--radius-3xl)] p-4 text-left transition-[transform,border-color,background-color,box-shadow] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
-      style={{
-        ...getPanelStyle(),
-        background: isSelected
-          ? `color-mix(in srgb, ${accent} 14%, var(--home-paper))`
-          : "color-mix(in srgb, var(--home-paper-alt) 70%, var(--home-elev-mix))",
-        borderColor: isSelected
-          ? `color-mix(in srgb, ${accent} 35%, var(--home-rule))`
-          : "var(--home-rule)",
-        boxShadow: isSelected ? "var(--shadow-md)" : "var(--shadow-sm)",
-      }}
+      className="fm-ticket"
+      style={{ ["--fm-accent" as string]: accent }}
     >
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <p className="home-kicker mb-1">{cuisine.label}</p>
-          <p
-            className="mb-1 text-base font-semibold tracking-[-0.03em]"
-            style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
-          >
-            {place.name}
-          </p>
-          <p
-            className="mb-0 text-sm leading-relaxed"
-            style={{ color: "var(--home-ink-muted)" }}
-          >
-            {locale}
-          </p>
-        </div>
-        {place.price ? (
-          <span
-            className="resume-chip"
-            style={{
-              borderColor: "var(--home-rule)",
-              background: "var(--home-paper-raised)",
-            }}
-          >
-            {place.price}
-          </span>
-        ) : null}
-      </div>
+      <span className="fm-ticket-index" aria-hidden="true">
+        {String(index + 1).padStart(2, "0")}
+      </span>
+      <p className="fm-ticket-cuisine">{cuisine.label}</p>
+      <p className="fm-ticket-name">{place.name}</p>
+      <p className="fm-ticket-meta">
+        <span>{locale}</span>
+        {place.price ? <span className="fm-ticket-price">{place.price}</span> : null}
+      </p>
     </button>
   );
 }
 
-function PlaceDetail({
+/* -------------------------------------------------------------------------- */
+/* Rail                                                                      */
+/* -------------------------------------------------------------------------- */
+
+function CuratorPassport() {
+  return (
+    <div className="fm-passport">
+      {FOOD_MAP_CURATORS.map((curator) => (
+        <div
+          key={curator.id}
+          className="fm-passport-card"
+          style={{ ["--fm-accent" as string]: curator.accent }}
+        >
+          <p className="fm-passport-name">
+            <span
+              aria-hidden="true"
+              className="fm-stamp-dot"
+              style={{ ["--fm-accent" as string]: curator.accent }}
+            />
+            {curator.name}
+          </p>
+          <p className="fm-passport-blurb">{curator.blurb}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function PlaceDossier({
   place,
   onClear,
 }: {
@@ -274,81 +277,37 @@ function PlaceDetail({
   const curatorNames = place.curators.map((id) => getFoodMapCurator(id).name);
 
   return (
-    <div className="flex flex-col gap-4">
-      <button
-        type="button"
-        onClick={onClear}
-        className="self-start min-h-touch rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] transition-[transform,border-color,background-color,color] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
-        style={{
-          ...getPanelStyle(),
-          color: "var(--home-ink)",
-          fontFamily: "var(--font-home-sans)",
-        }}
-      >
-        Clear pick
+    <div className="fm-dossier" style={{ ["--fm-accent" as string]: accent }}>
+      <button type="button" onClick={onClear} className="fm-back">
+        ← Clear pick
       </button>
 
-      <div
-        className="rounded-[var(--radius-3xl)] p-5"
-        style={{
-          ...getPanelStyle(),
-          background: `color-mix(in srgb, ${accent} 12%, var(--home-paper))`,
-          borderColor: `color-mix(in srgb, ${accent} 30%, var(--home-rule))`,
-        }}
-      >
-        <p className="home-kicker mb-1">{cuisine.label}</p>
-        <h2
-          className="text-[1.35rem] font-semibold tracking-[-0.04em]"
-          style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
-        >
-          {place.name}
-        </h2>
-        <p
-          className="mb-0 mt-1 text-sm leading-relaxed"
-          style={{ color: "var(--home-ink-muted)" }}
-        >
+      <div className="fm-dossier-head" style={{ ["--fm-accent" as string]: accent }}>
+        <p className="fm-dossier-cuisine">{cuisine.label}</p>
+        <h2 className="fm-dossier-name">{place.name}</h2>
+        <p className="fm-dossier-locale">
           {locale}
           {place.price ? ` · ${place.price}` : ""}
         </p>
 
-        <div className="mt-4 grid gap-3">
-          <div className="rounded-[var(--radius-3xl)] px-4 py-3" style={getPanelStyle()}>
-            <p className="home-kicker mb-1">Order</p>
-            <p
-              className="mb-0 text-sm font-semibold tracking-[-0.02em]"
-              style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
-            >
-              {place.order}
-            </p>
+        <div className="fm-dossier-rows">
+          <div className="fm-dossier-row">
+            <p className="fm-dossier-row-label">Order</p>
+            <p className="fm-dossier-row-val">{place.order}</p>
           </div>
-          <div className="rounded-[var(--radius-3xl)] px-4 py-3" style={getPanelStyle()}>
-            <p className="home-kicker mb-1">Recommended by</p>
-            <p
-              className="mb-0 text-sm font-semibold tracking-[-0.02em]"
-              style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
-            >
-              {curatorNames.join(" · ")}
-            </p>
+          <div className="fm-dossier-row">
+            <p className="fm-dossier-row-label">Recommended by</p>
+            <p className="fm-dossier-row-val">{curatorNames.join(" · ")}</p>
           </div>
         </div>
 
-        <p
-          className="mt-4 text-sm leading-relaxed"
-          style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
-        >
-          {place.why}
-        </p>
+        <p className="fm-dossier-why">{place.why}</p>
 
         <a
           href={mapsLink(place)}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-4 inline-flex min-h-touch items-center gap-2 self-start rounded-full px-4 py-2 text-sm font-semibold transition-[transform,border-color,background-color,color] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
-          style={{
-            ...getPanelStyle(),
-            color: "var(--home-ink)",
-            fontFamily: "var(--font-home-sans)",
-          }}
+          className="fm-dossier-link"
         >
           Open in Google Maps ↗
         </a>
@@ -357,45 +316,21 @@ function PlaceDetail({
   );
 }
 
-function CuratorLegend() {
-  return (
-    <div className="flex flex-col gap-3">
-      {FOOD_MAP_CURATORS.map((curator) => (
-        <div key={curator.id} className="rounded-[var(--radius-3xl)] p-4" style={getPanelStyle()}>
-          <div className="mb-1 flex items-center gap-2">
-            <span
-              aria-hidden="true"
-              className="inline-block h-2.5 w-2.5 rounded-full"
-              style={{ background: curator.accent }}
-            />
-            <p
-              className={FILTER_LABEL_CLASS}
-              style={{ color: "var(--home-ink)" }}
-            >
-              {curator.name}
-            </p>
-          </div>
-          <p
-            className="mb-0 text-xs leading-relaxed"
-            style={{ color: "var(--home-ink-muted)" }}
-          >
-            {curator.blurb}
-          </p>
-        </div>
-      ))}
-    </div>
-  );
-}
+/* -------------------------------------------------------------------------- */
+/* Workbench                                                                  */
+/* -------------------------------------------------------------------------- */
 
 function FoodMapWorkbench({
   routeState,
   variants,
   reduceMotion,
+  isDark,
   onCommit,
 }: {
   routeState: FoodMapState;
   variants: typeof fadeIn;
   reduceMotion: boolean;
+  isDark: boolean;
   onCommit: (next: FoodMapState) => void;
 }) {
   const [searchQuery, setSearchQuery] = useState("");
@@ -431,7 +366,9 @@ function FoodMapWorkbench({
   const cityCounts = useMemo(() => countPlacesByCity(FOOD_MAP_PLACES), []);
   const cityCount = cityCounts[routeState.city] ?? 0;
 
-  const selectedPlace = routeState.pick ? getFoodMapPlaceInCity(routeState.pick, routeState.city) : undefined;
+  const selectedPlace = routeState.pick
+    ? getFoodMapPlaceInCity(routeState.pick, routeState.city)
+    : undefined;
 
   const hasFilters =
     routeState.curators.length > 0 ||
@@ -464,119 +401,93 @@ function FoodMapWorkbench({
     onCommit(resetFoodMapFilters(routeState));
   }
 
-  const activeFilterCount =
-    routeState.curators.length +
-    routeState.cuisines.length +
-    (searchQuery.trim().length > 0 ? 1 : 0);
-
   const bourdainCount = FOOD_MAP_PLACES.filter((p) =>
     p.curators.includes("bourdain")
   ).length;
 
-  const foodMapStatsCells: HomeStatsCell[] = [
-    {
-      label: "Curated stops",
-      value: FOOD_MAP_PLACES.length.toLocaleString(),
-    },
-    {
-      label: "Cities",
-      value: FOOD_MAP_CITIES.length.toLocaleString(),
-    },
-    {
-      label: "Curators",
-      value: FOOD_MAP_CURATORS.length.toLocaleString(),
-    },
-    {
-      label: `Cuisines in ${activeCity.name}`,
-      value: cityCuisines.length.toLocaleString(),
-    },
-    {
-      label: `Stops in ${activeCity.name}`,
-      value: cityCount.toLocaleString(),
-    },
-    {
-      label: "Currently visible",
-      value: visiblePlaces.length.toLocaleString(),
-      sub: `of ${cityCount}`,
-    },
-    {
-      label: "Active filters",
-      value: activeFilterCount,
-      sub: hasFilters ? "Tap reset to clear" : "None applied",
-    },
-    {
-      label: "Bourdain picks",
-      value: bourdainCount.toLocaleString(),
-      sub: "across all cities",
-    },
-  ];
-
   return (
-    <section
-      className="home-page min-h-screen"
-      aria-label="Food Map"
-      data-testid="food-map-shell"
-    >
-      <div className="home-shell home-section">
-        <motion.div
-          variants={variants}
-          initial="hidden"
-          animate="visible"
-          className="flex flex-col gap-6"
-        >
-          <div className="tool-topbar" id="food-map-main">
-            <div>
-              <p className="tool-crumbs">
-                Food Map / <strong>{activeCity.name}</strong>
-              </p>
-              <h1>Food Map</h1>
+    <section className="fm" aria-label="Food Map" data-testid="food-map-shell">
+      <div className="fm-shell">
+        <motion.div variants={variants} initial="hidden" animate="visible">
+          {/* Masthead */}
+          <header className="fm-hero" id="food-map-main">
+            <div className="fm-hero-top">
+              <div>
+                <p className="fm-kicker">A field guide · where to eat</p>
+                <h1 className="fm-title">
+                  Food <em>Map</em>
+                </h1>
+                <p className="fm-lede">
+                  The spots I actually send people to, plus the ones the late Anthony
+                  Bourdain and the crowd swear by, plotted across ten cities from Austin
+                  to Tokyo. Pick a city, filter by who is vouching for it, and pull up
+                  what to order before you go.
+                </p>
+              </div>
+
+              <div className="fm-stamp-badge" aria-hidden="true">
+                <span className="fm-stamp-small">Est. now</span>
+                <span className="fm-stamp-big">EAT HERE</span>
+                <span className="fm-stamp-small">no reservations</span>
+              </div>
             </div>
 
-            <label className="tool-search" aria-label="Filter by name or cuisine">
-              <IconSearch size={14} aria-hidden="true" />
-              <input
-                type="search"
-                placeholder="Filter by name or cuisine…"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-            </label>
+            <HeroTicker />
+          </header>
+
+          {/* Search + stats */}
+          <div className="fm-ribbon">
+            <div className="fm-stat">
+              <p className="fm-stat-label">Curated stops</p>
+              <p className="fm-stat-val">{FOOD_MAP_PLACES.length}</p>
+            </div>
+            <div className="fm-stat">
+              <p className="fm-stat-label">Cities</p>
+              <p className="fm-stat-val">{FOOD_MAP_CITIES.length}</p>
+            </div>
+            <div className="fm-stat">
+              <p className="fm-stat-label">Bourdain picks</p>
+              <p className="fm-stat-val">{bourdainCount}</p>
+            </div>
+            <div className="fm-stat">
+              <p className="fm-stat-label">In {activeCity.name}</p>
+              <p className="fm-stat-val">
+                {visiblePlaces.length}
+                <em>/{cityCount}</em>
+              </p>
+            </div>
           </div>
 
-          <div className="tool-meta-chip" role="status" aria-live="polite">
-            <span className="tool-meta-chip-dot" aria-hidden="true" />
+          <div className="fm-status" role="status" aria-live="polite">
+            <span className="fm-status-dot" aria-hidden="true" />
             <span>
-              <strong>{FOOD_MAP_PLACES.length}</strong> curated stops
-            </span>
-            <span className="tool-meta-chip-divider" aria-hidden="true">
-              ·
-            </span>
-            <span>
-              <strong>{FOOD_MAP_CITIES.length}</strong> cities
-            </span>
-            <span className="tool-meta-chip-spacer" />
-            <span className="tool-meta-chip-meta">
-              Showing {visiblePlaces.length} of {cityCount} in {activeCity.name} · Reviewed {FOOD_MAP_AS_OF} · I would still verify hours before going.
+              Showing {visiblePlaces.length} of {cityCount} in {activeCity.name} ·
+              Reviewed {FOOD_MAP_AS_OF} · I would still verify hours before going.
             </span>
           </div>
 
-          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,320px)]">
-            <div className="flex flex-col gap-4">
-              <HomeStatsPanel
-                id="food-map-stats"
-                title="Food Map at a glance"
-                meta={`${visiblePlaces.length} of ${cityCount} visible in ${activeCity.name}`}
-                hideLiveDot
-                cells={foodMapStatsCells}
-                pills={[
-                  { label: "All stops", href: "/food-map" },
-                  { label: "Tokyo", href: "/food-map?city=tokyo" },
-                  { label: "Bourdain picks", href: "/food-map?curator=bourdain" },
-                  { label: "New York", href: "/food-map?city=nyc" },
-                ]}
-              />
-
-              <div className="tool-card tool-card-hero overflow-hidden p-4 sm:p-5">
+          {/* Main grid */}
+          <div className="fm-grid">
+            <div className="fm-col">
+              {/* Map */}
+              <div className="fm-mapwrap">
+                <div className="fm-mapwrap-head">
+                  <p className="fm-kicker">The map · {activeCity.name}</p>
+                  <span className="fm-map-legend" aria-hidden="true">
+                    {FOOD_MAP_CURATORS.map((c) => (
+                      <i key={c.id}>
+                        <b style={{ background: c.accent }} />
+                        {c.name.split(" ")[0]}
+                      </i>
+                    ))}
+                  </span>
+                </div>
+                <div className="fm-map-ticks" aria-hidden="true">
+                  <span />
+                  <span />
+                  <span />
+                  <span />
+                </div>
                 <FoodMapLeaflet
                   spots={filteredPlaces}
                   activeSpotId={routeState.pick}
@@ -584,94 +495,82 @@ function FoodMapWorkbench({
                   center={activeCity.center}
                   zoom={activeCity.zoom}
                   reduceMotion={reduceMotion}
+                  isDark={isDark}
                 />
               </div>
 
-              <div className="tool-card flex flex-col" style={{ gap: 14 }}>
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <p className="home-kicker mb-0">Filters</p>
+              {/* Filters */}
+              <div className="fm-panel">
+                <div className="fm-deck-head">
+                  <p className="fm-kicker">Filters</p>
                   <button
                     type="button"
                     onClick={handleResetFilters}
                     disabled={!hasFilters}
-                    className="min-h-touch rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] transition-[transform,border-color,background-color,color,box-shadow] duration-200 ease disabled:cursor-not-allowed disabled:opacity-55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
-                    style={{
-                      ...getPanelStyle(),
-                      color: "var(--home-ink)",
-                      fontFamily: "var(--font-home-sans)",
-                    }}
+                    className="fm-reset"
                   >
-                    Reset filters
+                    Reset
                   </button>
                 </div>
 
-                <div className="flex flex-col gap-2">
-                  <span
-                    className={FILTER_LABEL_CLASS}
-                    style={{ color: "var(--home-ink-muted)" }}
-                  >
-                    City
-                  </span>
-                  <CityChips
-                    state={routeState}
-                    counts={cityCounts}
-                    onSelect={handleSelectCity}
-                  />
-                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 16, marginTop: 14 }}>
+                  <div className="fm-fieldset">
+                    <span className="fm-legend">City</span>
+                    <CityTabs
+                      state={routeState}
+                      counts={cityCounts}
+                      onSelect={handleSelectCity}
+                    />
+                  </div>
 
-                <div className="flex flex-col gap-2">
-                  <span
-                    className={FILTER_LABEL_CLASS}
-                    style={{ color: "var(--home-ink-muted)" }}
-                  >
-                    Curator
-                  </span>
-                  <CuratorChips state={routeState} onToggle={handleToggleCurator} />
-                </div>
+                  <div className="fm-fieldset">
+                    <span className="fm-legend">Curator</span>
+                    <CuratorStamps state={routeState} onToggle={handleToggleCurator} />
+                  </div>
 
-                <div className="flex flex-col gap-2">
-                  <span
-                    className={FILTER_LABEL_CLASS}
-                    style={{ color: "var(--home-ink-muted)" }}
-                  >
-                    Cuisine
-                  </span>
-                  <CuisineChips
-                    cuisines={cityCuisines}
-                    state={routeState}
-                    onToggle={handleToggleCuisine}
-                  />
+                  <div className="fm-fieldset">
+                    <span className="fm-legend">Cuisine</span>
+                    <CuisinePills
+                      cuisines={cityCuisines}
+                      state={routeState}
+                      onToggle={handleToggleCuisine}
+                    />
+                  </div>
                 </div>
               </div>
 
+              {/* Index */}
+              <div className="fm-index-head">
+                <h2 className="fm-index-title">The stops</h2>
+                <label className="fm-search" aria-label="Filter by name or cuisine">
+                  <IconSearch size={15} aria-hidden="true" />
+                  <input
+                    type="search"
+                    placeholder="Filter by name or cuisine…"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                  />
+                </label>
+              </div>
+
               {visiblePlaces.length === 0 ? (
-                <div className="tool-empty">
-                  <p className="text-sm font-semibold" style={{ color: "var(--home-ink)" }}>
-                    Nothing matches that combination yet.
-                  </p>
+                <div className="fm-empty">
+                  <p className="fm-empty-title">Nothing matches that combination yet.</p>
                   <p>
-                    The list intentionally stays short, so a few filters can rule it
-                    out entirely.
+                    The list intentionally stays short, so a few filters can rule it out
+                    entirely. Loosen one and it comes back.
                   </p>
-                  <button
-                    type="button"
-                    onClick={handleResetFilters}
-                    className="mt-4 min-h-touch rounded-full px-4 py-2 text-sm font-semibold transition-[transform,border-color,background-color,color] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
-                    style={{
-                      ...getPanelStyle(),
-                      color: "var(--home-ink)",
-                      fontFamily: "var(--font-home-sans)",
-                    }}
-                  >
+                  <button type="button" onClick={handleResetFilters} className="fm-reset">
                     Reset filters
                   </button>
                 </div>
               ) : (
-                <div className="grid gap-3 md:grid-cols-2">
-                  {visiblePlaces.map((place) => (
-                    <PlaceCard
+                <div className="fm-index">
+                  {visiblePlaces.map((place, i) => (
+                    <PlaceTicket
                       key={place.id}
                       place={place}
+                      index={i}
                       isSelected={routeState.pick === place.id}
                       onSelect={handleSelectPlace}
                     />
@@ -680,28 +579,21 @@ function FoodMapWorkbench({
               )}
             </div>
 
-            <aside
-              aria-label="Food map side panel"
-              className="flex flex-col gap-4 rounded-[var(--radius-3xl)] p-5 lg:sticky lg:top-24 lg:self-start"
-              style={getPanelStyle()}
-            >
+            {/* Rail */}
+            <aside aria-label="Food map side panel" className="fm-rail">
               {selectedPlace ? (
-                <PlaceDetail place={selectedPlace} onClear={handleClearPick} />
+                <PlaceDossier place={selectedPlace} onClear={handleClearPick} />
               ) : (
                 <>
-                  <p className="tool-rail-label">Curators</p>
-                  <p
-                    className="-mt-1 text-xs leading-relaxed"
-                    style={{ color: "var(--home-ink-muted)" }}
-                  >
-                    Pins are colored by who recommends them. Tap a pin or a card to
-                    see why it earns the spot.
+                  <p className="fm-kicker">The curators</p>
+                  <p className="fm-rail-lede">
+                    Pins are colored by who recommends them. Tap a pin or a stop to see
+                    what to order and why it earns the spot.
                   </p>
-                  <CuratorLegend />
+                  <CuratorPassport />
                 </>
               )}
-
-              <p className="tool-rail-foot">
+              <p className="fm-rail-foot">
                 These are the spots I actually send people to.
               </p>
             </aside>
@@ -728,6 +620,11 @@ export function FoodMapClient({ initialState }: FoodMapClientProps) {
   const shouldReduceMotion = useReducedMotion();
   const variants = shouldReduceMotion ? noMotion : fadeIn;
 
+  // Theme drives the map basemap (dark field-map vs. warm daylight). This only
+  // feeds the client-only Leaflet map, so there's no SSR markup to mismatch.
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
+
   const normalizedRouteState = normalizeFoodMapState(searchParams);
   const currentQuery = searchParams.toString();
   const currentHref = currentQuery ? `${FOOD_MAP_ROUTE}?${currentQuery}` : FOOD_MAP_ROUTE;
@@ -752,9 +649,8 @@ export function FoodMapClient({ initialState }: FoodMapClientProps) {
       routeState={routeState}
       variants={variants}
       reduceMotion={Boolean(shouldReduceMotion)}
-      onCommit={(next) =>
-        router.replace(buildFoodMapHref(next), { scroll: false })
-      }
+      isDark={isDark}
+      onCommit={(next) => router.replace(buildFoodMapHref(next), { scroll: false })}
     />
   );
 }

@@ -24,6 +24,7 @@ export interface LeafletMap {
 
 export interface LeafletLayer {
   addTo(target: LeafletMap | LeafletLayerGroup): LeafletLayer;
+  remove(): void;
 }
 
 export interface LeafletLayerGroup {
@@ -95,6 +96,17 @@ export function loadLeaflet(): Promise<LeafletStatic> {
   return cached;
 }
 
-export const OSM_TILE_URL = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
-export const OSM_ATTRIBUTION =
-  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+// CARTO basemaps give the food map its own cinematic look: a moody "dark
+// matter" field-map at night, a warm "voyager" one by day. Both are free
+// raster tiles that only require OSM + CARTO attribution.
+const CARTO_ATTRIBUTION =
+  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
+
+export function cartoTiles(isDark: boolean): { url: string; attribution: string } {
+  return {
+    url: isDark
+      ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png"
+      : "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png",
+    attribution: CARTO_ATTRIBUTION,
+  };
+}

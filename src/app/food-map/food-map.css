@@ -1,0 +1,948 @@
+/* ==========================================================================
+   Food Map — "After Hours" field guide skin
+   --------------------------------------------------------------------------
+   This file is a deliberate, self-contained departure from the site-wide
+   editorial system (see CLAUDE.md → Styling). The food map is repurposed as a
+   late-night, printed field-guide surface: espresso + warm cream, big display
+   serif, ticket-stub cards, passport stamps, and a cinematic map. Everything
+   lives under `.fm` and defines its own local tokens so it never leaks into
+   the shared `--home-*` palette. Curator hues come straight from the data
+   (see food-map-data.ts) and are passed in as inline `--fm-accent`.
+   ========================================================================== */
+
+.fm {
+  /* ---- Local palette: warm daylight market ---- */
+  --fm-ink: #241b12;
+  --fm-ink-dim: #6b5b47;
+  --fm-ink-faint: #9c8a71;
+  --fm-paper: #f5ecdb;
+  --fm-surface: #fffaf0;
+  --fm-surface-2: #f0e5d0;
+  --fm-line: #e2d5bd;
+  --fm-line-strong: #c9b795;
+  --fm-tomato: #c14634;
+  --fm-saffron: #b9791c;
+  --fm-basil: #3d7a51;
+  --fm-signal: #d94a2f;
+  --fm-invert: #fffaf0;
+  --fm-glow: 0 0 0 rgba(0, 0, 0, 0);
+
+  /* ---- Local radii — crisper than the ticket edges around it ---- */
+  --fm-r-sm: 4px;
+  --fm-r: 8px;
+  --fm-r-lg: 14px;
+  --fm-r-pill: 999px;
+
+  --fm-shadow-sm: 0 1px 0 rgba(36, 27, 18, 0.04), 0 10px 24px -20px rgba(36, 27, 18, 0.5);
+  --fm-shadow: 0 2px 0 rgba(36, 27, 18, 0.05), 0 26px 60px -34px rgba(36, 27, 18, 0.62);
+
+  position: relative;
+  color: var(--fm-ink);
+  background: var(--fm-paper);
+  font-family: var(--font-home-sans);
+  isolation: isolate;
+  overflow: clip;
+}
+
+.dark .fm {
+  /* ---- Local palette: espresso after hours ---- */
+  --fm-ink: #f3e8d5;
+  --fm-ink-dim: #b8a586;
+  --fm-ink-faint: #8a7860;
+  --fm-paper: #120e0a;
+  --fm-surface: #1c1610;
+  --fm-surface-2: #262019;
+  --fm-line: #362c20;
+  --fm-line-strong: #4e3f2d;
+  --fm-tomato: #ef6a52;
+  --fm-saffron: #e6a537;
+  --fm-basil: #67ae76;
+  --fm-signal: #ff6a4d;
+  --fm-invert: #120e0a;
+
+  --fm-shadow-sm: 0 1px 0 rgba(0, 0, 0, 0.3), 0 12px 26px -20px rgba(0, 0, 0, 0.8);
+  --fm-shadow: 0 2px 0 rgba(0, 0, 0, 0.35), 0 30px 70px -34px rgba(0, 0, 0, 0.9);
+}
+
+/* Warm grain / lamp-glow wash behind everything. */
+.fm::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 80% at 8% -6%, color-mix(in srgb, var(--fm-signal) 12%, transparent), transparent 60%),
+    radial-gradient(90% 60% at 100% 0%, color-mix(in srgb, var(--fm-saffron) 14%, transparent), transparent 55%);
+  opacity: 0.9;
+}
+
+.fm-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(20px, 4vw, 40px) clamp(16px, 4vw, 44px) 72px;
+}
+
+/* Shared label stamp — mono, letterspaced, printed. */
+.fm-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--fm-ink-dim);
+}
+.fm-kicker::before {
+  content: "";
+  width: 18px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+/* ==========================================================================
+   Masthead
+   ========================================================================== */
+
+.fm-hero {
+  position: relative;
+  border: 1px solid var(--fm-line);
+  border-radius: var(--fm-r-lg);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--fm-surface) 92%, transparent), var(--fm-paper));
+  box-shadow: var(--fm-shadow);
+  overflow: hidden;
+  padding: clamp(24px, 4vw, 44px);
+}
+
+/* Registration ticks in the corners — a printed-map tell. */
+.fm-hero::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px dashed color-mix(in srgb, var(--fm-line-strong) 70%, transparent);
+  border-radius: calc(var(--fm-r-lg) - 6px);
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+.fm-hero-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.fm-title {
+  margin: 14px 0 0;
+  font-family: var(--font-home-serif);
+  font-weight: 400;
+  font-size: clamp(3rem, 9vw, 6.2rem);
+  line-height: 0.86;
+  letter-spacing: -0.03em;
+  color: var(--fm-ink);
+}
+.fm-title em {
+  font-style: italic;
+  color: var(--fm-signal);
+}
+
+.fm-lede {
+  margin: 18px 0 0;
+  max-width: 56ch;
+  font-size: clamp(0.98rem, 0.4vw + 0.9rem, 1.12rem);
+  line-height: 1.7;
+  color: var(--fm-ink-dim);
+}
+
+/* Passport stamp, top-right of the masthead. */
+.fm-stamp-badge {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 108px;
+  height: 108px;
+  border-radius: var(--fm-r-pill);
+  border: 2px solid color-mix(in srgb, var(--fm-signal) 60%, var(--fm-line-strong));
+  color: color-mix(in srgb, var(--fm-signal) 78%, var(--fm-ink));
+  transform: rotate(-9deg);
+  text-align: center;
+  font-family: var(--font-mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  background:
+    repeating-conic-gradient(from 0deg, transparent 0deg 8deg, color-mix(in srgb, var(--fm-signal) 8%, transparent) 8deg 16deg);
+  opacity: 0.92;
+}
+.fm-stamp-badge span {
+  display: block;
+}
+.fm-stamp-badge .fm-stamp-big {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  margin-top: 2px;
+}
+.fm-stamp-badge .fm-stamp-small {
+  font-size: 8.5px;
+  margin-top: 3px;
+  opacity: 0.8;
+}
+
+/* Marquee ticker of cuisines / cities. */
+.fm-ticker {
+  position: relative;
+  z-index: 1;
+  margin-top: 26px;
+  border-top: 1px solid var(--fm-line);
+  border-bottom: 1px solid var(--fm-line);
+  padding: 0;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.fm-ticker-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 22px;
+  white-space: nowrap;
+  padding: 11px 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fm-ink-dim);
+  will-change: transform;
+  animation: fm-marquee 34s linear infinite;
+}
+.fm-ticker-track span {
+  display: inline-flex;
+  align-items: center;
+  gap: 22px;
+}
+.fm-ticker-track span::after {
+  content: "◆";
+  font-size: 7px;
+  color: var(--fm-signal);
+  opacity: 0.7;
+}
+@keyframes fm-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ==========================================================================
+   Search
+   ========================================================================== */
+
+.fm-search {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: min(300px, 100%);
+  min-height: 44px;
+  padding: 8px 16px;
+  border-radius: var(--fm-r-pill);
+  border: 1px solid var(--fm-line-strong);
+  background: color-mix(in srgb, var(--fm-surface) 88%, var(--fm-paper));
+  color: var(--fm-ink-dim);
+  box-shadow: var(--fm-shadow-sm);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.fm-search:focus-within {
+  border-color: color-mix(in srgb, var(--fm-signal) 55%, var(--fm-line-strong));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--fm-signal) 20%, transparent);
+}
+.fm-search input {
+  all: unset;
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  color: var(--fm-ink);
+}
+.fm-search input::placeholder { color: var(--fm-ink-faint); }
+
+/* ==========================================================================
+   Stats ribbon — a torn ticket stub
+   ========================================================================== */
+
+.fm-ribbon {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  margin-top: 20px;
+  border: 1px solid var(--fm-line);
+  border-radius: var(--fm-r);
+  background: var(--fm-surface);
+  box-shadow: var(--fm-shadow-sm);
+  overflow: hidden;
+}
+@media (max-width: 720px) {
+  .fm-ribbon { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.fm-stat {
+  position: relative;
+  padding: 16px 18px;
+  min-width: 0;
+}
+.fm-stat + .fm-stat::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 12px;
+  bottom: 12px;
+  border-left: 1px dashed var(--fm-line-strong);
+  opacity: 0.7;
+}
+@media (max-width: 720px) {
+  .fm-stat:nth-child(odd) + .fm-stat::before { border-left-style: dashed; }
+}
+.fm-stat-label {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fm-ink-faint);
+}
+.fm-stat-val {
+  margin: 6px 0 0;
+  font-family: var(--font-home-serif);
+  font-size: clamp(1.7rem, 1vw + 1.3rem, 2.2rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--fm-ink);
+  font-variant-numeric: tabular-nums;
+}
+.fm-stat-val em {
+  font-style: normal;
+  font-size: 0.5em;
+  color: var(--fm-ink-faint);
+  margin-left: 4px;
+}
+
+/* Live status line. */
+.fm-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 16px;
+  padding: 7px 15px;
+  border-radius: var(--fm-r-pill);
+  border: 1px solid var(--fm-line);
+  background: color-mix(in srgb, var(--fm-surface) 80%, var(--fm-paper));
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.03em;
+  color: var(--fm-ink-dim);
+}
+.fm-status strong { color: var(--fm-ink); font-weight: 600; }
+.fm-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--fm-signal);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--fm-signal) 22%, transparent);
+  animation: fm-pulse 2.4s ease-in-out infinite;
+}
+@keyframes fm-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+/* ==========================================================================
+   Layout grid
+   ========================================================================== */
+
+.fm-grid {
+  display: grid;
+  gap: 22px;
+  margin-top: 24px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 340px);
+}
+@media (max-width: 1000px) {
+  .fm-grid { grid-template-columns: minmax(0, 1fr); }
+}
+.fm-col { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+
+.fm-panel {
+  border: 1px solid var(--fm-line);
+  border-radius: var(--fm-r);
+  background: var(--fm-surface);
+  box-shadow: var(--fm-shadow-sm);
+  padding: 20px;
+}
+
+.fm-rail {
+  position: sticky;
+  top: 92px;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 1px solid var(--fm-line);
+  border-radius: var(--fm-r);
+  background: var(--fm-surface);
+  box-shadow: var(--fm-shadow);
+  padding: 20px;
+}
+@media (max-width: 1000px) {
+  .fm-rail { position: static; }
+}
+
+/* ==========================================================================
+   Filter deck
+   ========================================================================== */
+
+.fm-deck-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.fm-reset {
+  min-height: 44px;
+  padding: 7px 14px;
+  border-radius: var(--fm-r-pill);
+  border: 1px solid var(--fm-line-strong);
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fm-ink-dim);
+  cursor: pointer;
+  transition: color 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
+}
+.fm-reset:hover:not(:disabled) {
+  color: var(--fm-signal);
+  border-color: color-mix(in srgb, var(--fm-signal) 55%, var(--fm-line-strong));
+}
+.fm-reset:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.fm-fieldset { display: flex; flex-direction: column; gap: 10px; }
+.fm-legend {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--fm-ink-faint);
+}
+.fm-chiprow { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* City = bold destination tab. */
+.fm-tab {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  min-height: 44px;
+  padding: 9px 16px;
+  border-radius: var(--fm-r-sm);
+  border: 1px solid var(--fm-line-strong);
+  background: color-mix(in srgb, var(--fm-surface) 70%, var(--fm-paper));
+  color: var(--fm-ink);
+  font-family: var(--font-home-serif);
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease;
+}
+.fm-tab:hover { transform: translateY(-1px); }
+.fm-tab[aria-checked="true"] {
+  border-color: transparent;
+  background: var(--fm-ink);
+  color: var(--fm-invert);
+  box-shadow: 0 6px 18px -10px color-mix(in srgb, var(--fm-ink) 80%, transparent);
+}
+.fm-tab-count {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--fm-ink-faint);
+}
+.fm-tab[aria-checked="true"] .fm-tab-count {
+  color: color-mix(in srgb, var(--fm-invert) 70%, transparent);
+}
+
+/* Curator = passport stamp button. */
+.fm-stamp {
+  --fm-accent: var(--fm-signal);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 14px;
+  border-radius: var(--fm-r-pill);
+  border: 1.5px solid var(--fm-line-strong);
+  background: transparent;
+  color: var(--fm-ink);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.18s ease, background-color 0.18s ease, color 0.18s ease, transform 0.15s ease;
+}
+.fm-stamp:hover { transform: translateY(-1px); }
+.fm-stamp-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--fm-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--fm-accent) 24%, transparent);
+}
+.fm-stamp[aria-pressed="true"] {
+  border-color: var(--fm-accent);
+  background: color-mix(in srgb, var(--fm-accent) 16%, transparent);
+  color: color-mix(in srgb, var(--fm-accent) 42%, var(--fm-ink));
+}
+
+/* Cuisine = printed pill. */
+.fm-pill {
+  min-height: 44px;
+  padding: 7px 13px;
+  border-radius: var(--fm-r-sm);
+  border: 1px solid var(--fm-line);
+  background: color-mix(in srgb, var(--fm-surface) 70%, var(--fm-paper));
+  color: var(--fm-ink-dim);
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.18s ease, background-color 0.18s ease, color 0.18s ease;
+}
+.fm-pill:hover { color: var(--fm-ink); border-color: var(--fm-line-strong); }
+.fm-pill[aria-pressed="true"] {
+  border-color: color-mix(in srgb, var(--fm-signal) 55%, var(--fm-line-strong));
+  background: color-mix(in srgb, var(--fm-signal) 14%, transparent);
+  color: color-mix(in srgb, var(--fm-signal) 45%, var(--fm-ink));
+}
+
+/* Focus ring — shared. */
+.fm :focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--fm-signal) 45%, transparent);
+}
+
+/* ==========================================================================
+   Map frame
+   ========================================================================== */
+
+.fm-mapwrap {
+  position: relative;
+  border: 1px solid var(--fm-line-strong);
+  border-radius: var(--fm-r);
+  background: var(--fm-surface-2);
+  box-shadow: var(--fm-shadow);
+  padding: 12px;
+  overflow: hidden;
+}
+.fm-mapwrap-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 2px 4px 12px;
+}
+.fm-mapwrap-head .fm-kicker { color: var(--fm-ink-dim); }
+.fm-map-legend {
+  display: inline-flex;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fm-ink-faint);
+}
+.fm-map-legend i {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-style: normal;
+}
+.fm-map-legend b {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Corner registration ticks on the map itself. */
+.fm-map-ticks {
+  position: absolute;
+  inset: 12px;
+  pointer-events: none;
+  z-index: 500;
+}
+.fm-map-ticks span {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid color-mix(in srgb, var(--fm-signal) 70%, transparent);
+}
+.fm-map-ticks span:nth-child(1) { top: 8px; left: 8px; border-right: 0; border-bottom: 0; }
+.fm-map-ticks span:nth-child(2) { top: 8px; right: 8px; border-left: 0; border-bottom: 0; }
+.fm-map-ticks span:nth-child(3) { bottom: 8px; left: 8px; border-right: 0; border-top: 0; }
+.fm-map-ticks span:nth-child(4) { bottom: 8px; right: 8px; border-left: 0; border-top: 0; }
+
+.fm-map {
+  height: clamp(360px, 52vh, 520px);
+  width: 100%;
+  border-radius: var(--fm-r-sm);
+  overflow: hidden;
+}
+.fm-map-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  height: clamp(360px, 52vh, 520px);
+  text-align: center;
+  padding: 32px;
+  color: var(--fm-ink-dim);
+}
+.fm-map-loading {
+  position: absolute;
+  inset: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--fm-r-sm);
+  background: color-mix(in srgb, var(--fm-surface-2) 88%, transparent);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fm-ink-faint);
+  z-index: 600;
+}
+
+/* Leaflet chrome, restyled to match. */
+.fm-map .leaflet-control-zoom a {
+  background: var(--fm-surface);
+  color: var(--fm-ink);
+  border-color: var(--fm-line-strong);
+}
+.fm-map .leaflet-control-attribution {
+  background: color-mix(in srgb, var(--fm-surface) 82%, transparent);
+  color: var(--fm-ink-faint);
+}
+.fm-map .leaflet-control-attribution a { color: var(--fm-ink-dim); }
+.fm-map .leaflet-popup-content-wrapper {
+  background: var(--fm-surface);
+  color: var(--fm-ink);
+  border-radius: var(--fm-r-sm);
+  border: 1px solid var(--fm-line-strong);
+  box-shadow: var(--fm-shadow);
+}
+.fm-map .leaflet-popup-tip {
+  background: var(--fm-surface);
+  border: 1px solid var(--fm-line-strong);
+}
+.fm-map .leaflet-popup-content { margin: 10px 14px; font-family: var(--font-home-sans); }
+.fm-map .fm-popup-title {
+  font-family: var(--font-home-serif);
+  font-size: 16px;
+  letter-spacing: -0.01em;
+}
+.fm-map .fm-popup-sub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fm-ink-faint);
+}
+
+/* Custom teardrop pin — white keyline reads on both dark and light basemaps. */
+.fm-pin-el { background: transparent; border: 0; }
+.fm-pin-dot {
+  display: block;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  border: 2px solid rgba(255, 251, 240, 0.95);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.45);
+}
+.fm-pin-active .fm-pin-dot {
+  box-shadow: 0 0 0 4px rgba(255, 251, 240, 0.5), 0 4px 12px rgba(0, 0, 0, 0.55);
+  animation: fm-ping 1.8s ease-out infinite;
+}
+@keyframes fm-ping {
+  0% { box-shadow: 0 0 0 3px rgba(255, 251, 240, 0.6), 0 4px 12px rgba(0, 0, 0, 0.55); }
+  70% { box-shadow: 0 0 0 13px rgba(255, 251, 240, 0), 0 4px 12px rgba(0, 0, 0, 0.55); }
+  100% { box-shadow: 0 0 0 13px rgba(255, 251, 240, 0), 0 4px 12px rgba(0, 0, 0, 0.55); }
+}
+
+/* ==========================================================================
+   Place index — ticket stubs
+   ========================================================================== */
+
+.fm-index-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 0 2px;
+}
+.fm-index-title {
+  margin: 0;
+  font-family: var(--font-home-serif);
+  font-size: clamp(1.5rem, 1.2vw + 1.1rem, 2rem);
+  letter-spacing: -0.02em;
+  color: var(--fm-ink);
+}
+.fm-index {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (max-width: 620px) {
+  .fm-index { grid-template-columns: minmax(0, 1fr); }
+}
+
+.fm-ticket {
+  --fm-accent: var(--fm-signal);
+  position: relative;
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 18px 18px 18px 20px;
+  border: 1px solid var(--fm-line);
+  border-left: 4px solid var(--fm-accent);
+  border-radius: var(--fm-r-sm);
+  background: var(--fm-surface);
+  box-shadow: var(--fm-shadow-sm);
+  cursor: pointer;
+  transition: transform 0.16s ease, border-color 0.18s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+.fm-ticket:hover { transform: translateY(-2px); box-shadow: var(--fm-shadow); }
+.fm-ticket[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--fm-accent) 10%, var(--fm-surface));
+  border-color: color-mix(in srgb, var(--fm-accent) 45%, var(--fm-line));
+  border-left-color: var(--fm-accent);
+}
+
+.fm-ticket-index {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--fm-ink-faint);
+}
+.fm-ticket-cuisine {
+  margin: 0 0 6px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--fm-accent);
+}
+.fm-ticket-name {
+  margin: 0;
+  padding-right: 28px;
+  font-family: var(--font-home-serif);
+  font-size: 1.32rem;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--fm-ink);
+}
+.fm-ticket-meta {
+  margin: 8px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12.5px;
+  color: var(--fm-ink-dim);
+}
+.fm-ticket-price {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--fm-basil);
+  padding: 2px 7px;
+  border: 1px solid color-mix(in srgb, var(--fm-basil) 40%, var(--fm-line));
+  border-radius: var(--fm-r-sm);
+}
+
+/* Empty state. */
+.fm-empty {
+  border: 1px dashed var(--fm-line-strong);
+  border-radius: var(--fm-r);
+  background: color-mix(in srgb, var(--fm-surface) 70%, var(--fm-paper));
+  padding: 32px 24px;
+  text-align: center;
+}
+.fm-empty-title {
+  margin: 0;
+  font-family: var(--font-home-serif);
+  font-size: 1.4rem;
+  color: var(--fm-ink);
+}
+.fm-empty p { margin: 8px auto 0; max-width: 40ch; font-size: 13.5px; color: var(--fm-ink-dim); }
+.fm-empty button { margin-top: 18px; }
+
+/* ==========================================================================
+   Rail — dossier + curator passport
+   ========================================================================== */
+
+.fm-rail-lede {
+  margin: -4px 0 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--fm-ink-dim);
+}
+.fm-rail-foot {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px dashed var(--fm-line-strong);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  color: var(--fm-ink-faint);
+}
+
+.fm-passport { display: flex; flex-direction: column; gap: 10px; }
+.fm-passport-card {
+  --fm-accent: var(--fm-signal);
+  position: relative;
+  padding: 14px 14px 14px 16px;
+  border: 1px solid var(--fm-line);
+  border-left: 3px solid var(--fm-accent);
+  border-radius: var(--fm-r-sm);
+  background: color-mix(in srgb, var(--fm-surface) 60%, var(--fm-paper));
+}
+.fm-passport-name {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--fm-ink);
+}
+.fm-passport-blurb {
+  margin: 6px 0 0;
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--fm-ink-dim);
+}
+
+/* Dossier for a selected place. */
+.fm-dossier { display: flex; flex-direction: column; gap: 14px; }
+.fm-back {
+  align-self: flex-start;
+  min-height: 44px;
+  padding: 7px 14px;
+  border-radius: var(--fm-r-pill);
+  border: 1px solid var(--fm-line-strong);
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fm-ink-dim);
+  cursor: pointer;
+  transition: color 0.18s ease, border-color 0.18s ease;
+}
+.fm-back:hover { color: var(--fm-signal); border-color: color-mix(in srgb, var(--fm-signal) 55%, var(--fm-line-strong)); }
+
+.fm-dossier-head {
+  --fm-accent: var(--fm-signal);
+  padding: 16px 16px 18px;
+  border: 1px solid color-mix(in srgb, var(--fm-accent) 30%, var(--fm-line));
+  border-top: 4px solid var(--fm-accent);
+  border-radius: var(--fm-r-sm);
+  background: color-mix(in srgb, var(--fm-accent) 9%, var(--fm-surface));
+}
+.fm-dossier-cuisine {
+  margin: 0 0 6px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--fm-accent);
+}
+.fm-dossier-name {
+  margin: 0;
+  font-family: var(--font-home-serif);
+  font-size: 1.7rem;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--fm-ink);
+}
+.fm-dossier-locale {
+  margin: 8px 0 0;
+  font-size: 12.5px;
+  color: var(--fm-ink-dim);
+}
+
+.fm-dossier-rows { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+.fm-dossier-row {
+  padding: 11px 13px;
+  border: 1px solid var(--fm-line);
+  border-radius: var(--fm-r-sm);
+  background: color-mix(in srgb, var(--fm-surface) 65%, var(--fm-paper));
+}
+.fm-dossier-row-label {
+  margin: 0 0 3px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fm-ink-faint);
+}
+.fm-dossier-row-val {
+  margin: 0;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--fm-ink);
+}
+.fm-dossier-why {
+  margin: 16px 0 0;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--fm-ink);
+}
+.fm-dossier-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  margin-top: 16px;
+  min-height: 44px;
+  padding: 11px 18px;
+  border-radius: var(--fm-r-pill);
+  border: 0;
+  background: var(--fm-ink);
+  color: var(--fm-invert);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.15s ease, opacity 0.18s ease;
+}
+.fm-dossier-link:hover { transform: translateY(-1px); opacity: 0.92; }
+
+/* ==========================================================================
+   Reduced motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .fm-ticker-track { animation: none; transform: none; }
+  .fm-status-dot { animation: none; }
+  .fm-pin-active .fm-pin-dot { animation: none; }
+  .fm-tab:hover,
+  .fm-stamp:hover,
+  .fm-ticket:hover,
+  .fm-dossier-link:hover { transform: none; }
+}
