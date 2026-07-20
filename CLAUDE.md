@@ -2,7 +2,7 @@
 
 Deep implementation context for Claude Code and other agents working in this repo.
 
-**Last updated:** 2026-07-02
+**Last updated:** 2026-07-15
 
 ---
 
@@ -107,9 +107,10 @@ Shared conventions worth internalizing:
 - **Fail-soft refresh:** a failed or empty fetch keeps the previous snapshot rather
   than wiping it (shared `readGeneratedSnapshot` fallback). Several seeds ship empty
   or with a hand-authored seed so the page is useful before the first live refresh.
-- **Curated, unverified datasets** (`/tech-startup-tracker`, `/frontier-models`, and
-  the retirement planner CMAs) are tagged with an `asOf` date + a `verified: false`
-  flag and disclose their unverified state on-page. Keep that disclosure intact.
+- **Curated, unverified datasets** include `/tech-startup-tracker`, `/frontier-models`,
+  `/ai-dev-tools`, `/museum-log`, `/travel-deals`, `/food-map`, and the retirement
+  planner CMAs. Their review dates, verification flags, and structural checks feed the
+  weekly curated-data audit. Keep the on-page source and estimate disclosures intact.
 - **Shared football components** in `src/components/football/*` back the soccer, NBA,
   MLB, and NFL dashboards (`FixtureCard`, `LeaderList`, `StatCard`, etc.).
 
@@ -269,12 +270,6 @@ reference; older root-level SEO audits are historical.
 
 ## Writing Voice
 
-Apply Isaac's writing voice by default to any prose, document, or deliverable you produce for this repo, from articles and blog content under `content/blog/` to UI copy, page descriptions, bios, hero text, readouts, and emails. It does not apply to code. When copy doesn't already conform, rewrite it to match rather than patching around it. `WRITING_VOICE.md` is the canonical spec; this is the working summary.
+Apply Isaac's writing voice by default to any prose, document, or deliverable you produce for this repo, from articles and blog content under `content/blog/` to UI copy, page descriptions, bios, hero text, readouts, and emails. It does not apply to code. `WRITING_VOICE.md` is the canonical spec and is deliberately not duplicated here, so read it before writing or editing any copy, and rewrite non-conforming copy to match it rather than patching around it.
 
-The voice is first-person, direct, and opinion-forward, like a senior practitioner explaining something they actually worked through. Use "I" often, state opinions without corporate hedging, and write in flowing prose paragraphs that string related points into sentences instead of bullets. Weave data and specifics into the sentences rather than isolating them in callouts, and acknowledge the tradeoffs before landing a clear position.
-
-Keep it plainer and more explanatory than punchy. Say the plain literal thing even when it runs a little longer, and don't reach for vivid, aphoristic, or metaphorical compressions or for editorializing color adjectives. Treat stylized sentence fragments and staccato contrast pairs as rare emphasis rather than the default, and smooth them into flowing sentences joined with "but" or "and." Use rhetorical questions sparingly. Prefer long accumulating sentences with stacked clauses and "from X, to Y, to Z" lists over crafted parallelism or tricolons. Don't chase synonym variety, since repeating a word is fine. Keep the calibrated hedging ("it looks like," "I think," "probably," "at least," "actually") as a real feature of the voice, and stay general where the source was general rather than inventing proper nouns or details that weren't provided.
-
-Never use em dashes (—) as a stylistic device; colons as sentence connectors (write "The problem is X", not "The problem: X"); bullet lists with bold labels (prefer prose, though a plain reference table in a catalog is fine); tables of contents; business-framework names as section headers; "comprehensive guide" or "complete guide" openers; generic "Conclusion" sections; end-of-document "Next Steps" bullet lists; or "About the Author" sections. Use section headers only where a long piece genuinely needs them, and prefer unhyphenated compound technical phrases ("invoice to cash," "day to day").
-
-Condense aggressively in polished essays and deliverables, but in emails and explainers tolerate mild redundancy for clarity and warmth. Shift register by context. Email openers are warm and casual, and marketing or event copy is warm, earnest, inclusive, and enthusiastic, emphasizing community over being cool.
+The load-bearing points, as a reminder and not a substitute: first-person, direct, opinion-forward prose; plainer and more explanatory than punchy, with long accumulating sentences over fragments; calibrated hedging kept as a feature of the voice, never stripped; personal anchors (Civitech, Haas, Lyft, Juno) woven in as evidence without inventing details; no em dashes as stylistic devices, no colons as sentence connectors, no bullet lists with bold labels; condense hard in polished pieces. The full hard-rule list, the AI tells to strip, the essay structure, and the register shifts all live in `WRITING_VOICE.md`.

@@ -1,6 +1,6 @@
 # Writing Voice
 
-**Last updated:** 2026-06-30
+**Last updated:** 2026-07-15
 
 This document governs all writing for Isaac, from articles and blog content under `content/blog/` to UI copy, page descriptions, bios, hero text, readouts, and emails. It does not govern code. Any agent or collaborator editing, creating, or rewriting text must follow these rules exactly.
 
@@ -46,8 +46,14 @@ Other rhythm rules:
 - Prefer long accumulating sentences with stacked clauses and "from X, to Y, to Z" lists over crafted parallelism or tricolons. A drafted "We throw the parties, we run the boards, we book the rooms" becomes a single accumulating sentence built on "from planning, to being involved, to booking."
 - Use reciprocal both-and framing, where something is described as both an output of a system and a thing that reinforces that same system, as in "byproducts of the system as much as they are things that reinforce that system."
 - Don't chase synonym variety, since repeating a word is fine
-- Keep the calibrated hedging ("it looks like," "I think," "probably," "at least," "actually") as a real feature of the voice, not something to strip out. Two markers recur and should stay. Use "actually" as a mid-sentence qualifier, as in "they're not actually following through," and "What that means is" or "What I think this means is" to introduce an interpretation.
+- Keep the calibrated hedging ("it looks like," "I think," "I'd argue," "I feel like," "I would guess," "I half think," "probably," "at least," "actually") as a real feature of the voice, not something to strip out. Two markers recur and should stay. Use "actually" as a mid-sentence qualifier, as in "they're not actually following through," and "What that means is" or "What I think this means is" to introduce an interpretation.
 - Stay general where the source was general, and don't invent proper nouns or details that weren't provided
+
+---
+
+## Personal Anchors
+
+Weave personal experience and biographical anchors in as evidence alongside the data. Isaac's recurring anchors are Civitech, Haas, Lyft, and Juno. When writing in his voice, look for natural places to ground a point in a first-person reference like that rather than only citing third-party sources or data, but never invent specific details or numbers he hasn't given.
 
 ---
 
@@ -65,7 +71,7 @@ Never use these patterns, regardless of topic:
 - No "Next Steps" bullet lists at the end
 - No "About the Author" sections
 
-Prefer unhyphenated compound technical phrases ("invoice to cash," "day to day").
+Prefer unhyphenated compound technical phrases ("invoice to cash," "procure to pay," "day to day").
 
 ---
 
@@ -91,9 +97,67 @@ Shift register to fit the format. Email openers are warm and casual, like "Hey A
 When the piece is an opinion essay, follow this shape:
 
 - Open with a thesis framed as a personal observation set against the surrounding discourse, the thing everyone else seems to be saying and where I see it differently
-- Pivot into the argument
+- Pivot into the argument sparingly, usually through a single rhetorical question
 - Walk through two to four short case paragraphs, each naming the case in its first sentence and landing a verdict
 - Close with a "the pattern I'd pull out of this is" synthesis rather than a generic conclusion
+- No section headers within short pieces like this
+
+---
+
+## AI Tells to Strip
+
+These patterns read as machine-generated and should come out of any draft on sight. They were folded in from a generic AI-writing auditor in July 2026 and filtered against the rules above, so nothing here overrides the voice. Where generic anti-AI advice conflicts with this file, this file wins. In particular, never strip the calibrated hedging, never chop flowing sentences into punchy fragments for variety, and leave the conversational asides ("What's interesting here is...," "What makes this worth paying attention to...") and the sparing rhetorical pivots alone. Generic auditors flag all of those as AI tells, and here they are the voice. The one refinement worth keeping on the hedging is not to stack two hedges on one verb, so "could potentially create" becomes "could create" and "may eventually unlock" becomes "may unlock." One soft modal per claim does the work.
+
+Cut the contrast pivot "It's not X, it's Y" and its split-sentence form ("The headline isn't the speed. The real story is Y."), and just state the positive claim. Prefer "is" and "has" over inflated copulas like "serves as," "boasts," "features," and "represents." Name the source instead of writing "experts believe" or "studies show." Delete significance inflation ("a watershed moment," "marking a pivotal moment") and empty closers ("only time will tell," "the future looks bright," "as we move forward"), and if a prediction is worth making, make it falsifiable. Drop template phrases ("Whether you're X or Y," "In today's...," "In an era where"), "Let's" transition openers ("Let's dive in," "Let's unpack this"), and stacked formal transitions ("Moreover," "Furthermore," "Additionally"), restructuring so the connection is obvious instead. Don't pile up emphasis words ("Notably," "Importantly," "Interestingly") to tell the reader how to feel, and don't pad material into numbered lists ("Three key takeaways") it doesn't actually have. Remove chatbot artifacts entirely ("I hope this helps!", "Great question!", "In this article, we will explore"), along with anything that leaked from a chat tool, meaning unfilled placeholders like "[Your Name]", internal citation tokens like "citeturn0search0", and tracking parameters like "utm_source=chatgpt.com" on links. On social posts, two or three specific hashtags at most.
+
+The vocabulary below is the reliable word-level signal. Replace on sight, in body text and headers both. This is a catalog, so a reference table is the right form.
+
+| Replace | With |
+| --- | --- |
+| delve / delve into | dig into, look at |
+| leverage (verb) / utilize | use |
+| robust | strong, reliable |
+| comprehensive | thorough, full |
+| seamless | smooth, easy |
+| cutting-edge | latest, newest |
+| game-changer / transformative / revolutionize | (describe what actually changed) |
+| landscape / ecosystem / realm (metaphors) | field, space, market, system, community |
+| tapestry / beacon / symphony (metaphors) | (rewrite plainly) |
+| paradigm | model, approach |
+| testament to | shows, proves |
+| pivotal / crucial / paramount | important, key |
+| underscores | shows, highlights |
+| meticulous | careful, detailed |
+| embark / commence | start, begin |
+| endeavor | effort, try |
+| harness / unleash / empower | use, enable, let |
+| foster / cultivate | build, encourage, grow |
+| elevate / bolster | improve, strengthen |
+| streamline | simplify, speed up |
+| spearhead | lead, run |
+| resonate with | connect with, matter to |
+| facilitate | help, enable, run |
+| navigate (metaphor) | work through, handle |
+| myriad / plethora | many (or give a number) |
+| nuanced / multifaceted | (name the actual detail) |
+| burgeoning / nascent | growing, new, early |
+| vibrant / thriving / bustling | (describe it, or cite a number) |
+| nestled | is in, sits in |
+| holistic | complete, whole |
+| actionable | practical, concrete |
+| impactful | effective (or describe the impact) |
+| learnings | lessons, findings |
+| best practices | what works, the standard approach |
+| thought leader | expert (or describe the contribution) |
+| synergy | (describe the combined effect) |
+| interplay | relationship, interaction |
+| at its core | (cut, just state the thing) |
+| deep dive / unpack | look at, explain, walk through |
+| in order to | to |
+| due to the fact that | because |
+| it's worth noting that | (cut, just state it) |
+| when it comes to | (talk about the thing directly) |
+| at the end of the day | (cut) |
 
 ---
 
@@ -101,7 +165,7 @@ When the piece is an opinion essay, follow this shape:
 
 The articles below demonstrate the voice correctly. Read them before editing or creating new content:
 
-- `content/blog/rb-vs-wr-draft-strategy-modeling-positional-value.mdx` — data woven into prose, clear positional argument
-- `content/blog/building-an-investment-research-platform.mdx` — product rationale in first person, restraint as a feature
+- `content/blog/rb-vs-wr-draft-strategy-modeling-positional-value.mdx` (data woven into prose, clear positional argument)
+- `content/blog/building-an-investment-research-platform.mdx` (product rationale in first person, restraint as a feature)
 
 The original 22 articles in `content/blog/` were rewritten to this voice in April 2026; the directory has since grown well beyond that. Every article in `content/blog/` follows this voice and can be used as a reference.
