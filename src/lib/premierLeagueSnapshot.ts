@@ -1,4 +1,5 @@
 import { premierLeagueSnapshot } from "@/data/premierLeagueSnapshot";
+import { buildPremierLeagueLiveSummary } from "@/lib/premierLeagueData";
 import type {
   PremierLeagueSummary,
   PremierLeagueTeamSnapshot,
@@ -86,8 +87,66 @@ export function isValidPremierLeagueTeamId(teamId: string): boolean {
   return PL_TEAM_ID_PATTERN.test(teamId) && teamId in premierLeagueSnapshot.teamSnapshots;
 }
 
-export async function getPremierLeagueSummary(): Promise<PremierLeagueSummary> {
-  return clampPremierLeagueSummary(premierLeagueSnapshot.summary);
+interface PremierLeagueSummaryOptions {
+  preferLive?: boolean;
+}
+
+// Request-time live refresh (football-data.org) is double-gated: the caller
+// must ask for it (`preferLive`) and FOOTBALL_DATA_API_TOKEN must be set in
+// the environment. The token is read per call, so an un-configured deploy
+// never fetches and keeps returning the committed snapshot unchanged. The
+// live path mirrors the bay-area-transit accessor: a 5-minute in-memory TTL
+// plus a single-flight guard, which bounds upstream traffic to roughly one
+// 3-request refresh per 5 minutes per instance, well inside the
+// football-data.org free tier of 10 requests per minute.
+const LIVE_SUMMARY_TTL_MS = 5 * 60 * 1000;
+let liveSummaryCache:
+  | { summary: PremierLeagueSummary; expiresAt: number }
+  | null = null;
+let liveSummaryInflight: Promise<PremierLeagueSummary> | null = null;
+
+export function resetPremierLeagueLiveSummaryCacheForTests(): void {
+  liveSummaryCache = null;
+  liveSummaryInflight = null;
+}
+
+function hasFootballDataToken(): boolean {
+  return Boolean(process.env.FOOTBALL_DATA_API_TOKEN?.trim());
+}
+
+async function getPremierLeagueSummarySource(
+  options: PremierLeagueSummaryOptions
+): Promise<PremierLeagueSummary> {
+  if (!options.preferLive || !hasFootballDataToken()) {
+    return premierLeagueSnapshot.summary;
+  }
+  if (liveSummaryCache && liveSummaryCache.expiresAt > Date.now()) {
+    return liveSummaryCache.summary;
+  }
+  if (liveSummaryInflight) return liveSummaryInflight;
+
+  liveSummaryInflight = buildPremierLeagueLiveSummary(premierLeagueSnapshot.summary)
+    .then((summary) => {
+      liveSummaryCache = {
+        summary,
+        expiresAt: Date.now() + LIVE_SUMMARY_TTL_MS,
+      };
+      return summary;
+    })
+    // A failed refresh serves the committed snapshot and is NOT cached, so
+    // the next request retries the live path.
+    .catch(() => premierLeagueSnapshot.summary)
+    .finally(() => {
+      liveSummaryInflight = null;
+    });
+
+  return liveSummaryInflight;
+}
+
+export async function getPremierLeagueSummary(
+  options: PremierLeagueSummaryOptions = {}
+): Promise<PremierLeagueSummary> {
+  return clampPremierLeagueSummary(await getPremierLeagueSummarySource(options));
 }
 
 export async function getPremierLeagueTeamSnapshot(
