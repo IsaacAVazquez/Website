@@ -24,6 +24,8 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Refresh README routes and build notes ([#293](https://github.com/IsaacAVazquez/Website/pull/293)).
 - Add Travel Deal Lab, a trip cost optimizer at /travel-deals ([#295](https://github.com/IsaacAVazquez/Website/pull/295)).
 - Add La Liga 2025-26 season article series ([#294](https://github.com/IsaacAVazquez/Website/pull/294)).
+- Add backdated 2025-26 Premier League season article series ([#296](https://github.com/IsaacAVazquez/Website/pull/296)).
+- Add 2026 Formula 1 race review articles (rounds 1-9) ([#297](https://github.com/IsaacAVazquez/Website/pull/297)).
 - Design review (July 2026) + first-batch quick-win fixes ([#300](https://github.com/IsaacAVazquez/Website/pull/300)).
 
 ---
