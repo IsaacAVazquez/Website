@@ -332,4 +332,31 @@ describe("buildBayAreaTransitSnapshotData", () => {
     expect(summary.stations).toHaveLength(12);
     expect(summary.advisories).toHaveLength(1);
   }, 20000);
+
+  it("uses BART_API_KEY from the env when set, falling back to the demo key", async () => {
+    const spy = mockFetch(defaultFetcher);
+    const priorKey = process.env.BART_API_KEY;
+    process.env.BART_API_KEY = "TEST-KEY-1234";
+
+    try {
+      await buildBayAreaTransitSnapshotData();
+      const urls = spy.mock.calls.map((call) => String(call[0]));
+      expect(urls.length).toBeGreaterThan(0);
+      expect(urls.every((url) => url.includes("key=TEST-KEY-1234"))).toBe(true);
+
+      spy.mockClear();
+      delete process.env.BART_API_KEY;
+      await buildBayAreaTransitSnapshotData();
+      const fallbackUrls = spy.mock.calls.map((call) => String(call[0]));
+      expect(
+        fallbackUrls.every((url) => url.includes("key=MW9S-E7SL-26DU-VV8V"))
+      ).toBe(true);
+    } finally {
+      if (priorKey === undefined) {
+        delete process.env.BART_API_KEY;
+      } else {
+        process.env.BART_API_KEY = priorKey;
+      }
+    }
+  }, 20000);
 });

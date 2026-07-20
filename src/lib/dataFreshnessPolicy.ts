@@ -47,7 +47,9 @@ function inMonthRange(now: Date, start: number, end: number): boolean {
 }
 
 const POLICIES: Record<DataSurfaceId, DataFreshnessPolicy> = {
-  earthquake: { source: "git-snapshot", maxAgeMs: () => 2 * HOUR_MS },
+  // The summary API serves live USGS data at request time; the committed
+  // artifact is only the cold-start fallback, refreshed daily (06:20 UTC).
+  earthquake: { source: "git-snapshot", maxAgeMs: () => 26 * HOUR_MS },
   "bay-area-transit": { source: "git-snapshot", maxAgeMs: () => 8 * HOUR_MS },
   "formula-1": {
     source: "git-snapshot",

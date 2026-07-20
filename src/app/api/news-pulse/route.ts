@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { buildCdnCacheHeaders } from "@/lib/apiCacheHeaders";
 import { parseNewsFeed } from "@/lib/news-pulse-feed-parser";
 import { NEWS_FEEDS, type NewsFeedId } from "@/lib/news-pulse-sources";
 import type { NewsArticle } from "@/lib/news-pulse-utils";
@@ -295,11 +296,10 @@ export async function GET() {
 
   return NextResponse.json(result.body, {
     status: result.status,
-    headers: {
-      "Cache-Control": result.isError || result.isStale
-        ? ERROR_CACHE_CONTROL_HEADER
-        : CACHE_CONTROL_HEADER,
-    },
+    headers:
+      result.isError || result.isStale
+        ? { "Cache-Control": ERROR_CACHE_CONTROL_HEADER }
+        : buildCdnCacheHeaders(CACHE_CONTROL_HEADER),
   });
 }
 

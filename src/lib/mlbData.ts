@@ -10,6 +10,7 @@ import type {
   MlbPitchingLeaders,
   MlbSnapshot,
   MlbStandingsRow,
+  MlbSummarySnapshot,
   MlbTeamOption,
   MlbTeamProfile,
   MlbTeamSnapshot,
@@ -572,6 +573,107 @@ export async function getMlbSummary(): Promise<{
     hittingLeaders: { homeRuns, runsBattedIn, battingAverage },
     pitchingLeaders: { earnedRunAverage, wins, strikeouts },
     generatedAt: new Date().toISOString(),
+  };
+}
+
+// Live schedule windows are fetched at request time, so they bypass the
+// framework fetch cache; the accessor's in-memory TTL cache bounds call volume.
+const LIVE_SCHEDULE_REVALIDATE_SECONDS = 0;
+
+function fetchLiveScheduleWindow(
+  startOffsetDays: number,
+  endOffsetDays: number
+): Promise<StatsApiScheduleResponse> {
+  return fetchStatsApiJson<StatsApiScheduleResponse>(
+    `/schedule?${buildQueryString({
+      sportId: SPORT_ID,
+      startDate: dateOffsetIso(startOffsetDays),
+      endDate: dateOffsetIso(endOffsetDays),
+    })}`,
+    LIVE_SCHEDULE_REVALIDATE_SECONDS
+  );
+}
+
+function collectScheduleGames(
+  response: StatsApiScheduleResponse,
+  teamLookup: Map<string, MlbTeamOption>
+): MlbGame[] {
+  const games: MlbGame[] = [];
+  for (const date of response.dates ?? []) {
+    for (const raw of date.games ?? []) {
+      const game = normalizeGame(raw, teamLookup);
+      if (game) games.push(game);
+    }
+  }
+  return games;
+}
+
+/**
+ * Request-time refresh of only the time-sensitive summary sections: yesterday's
+ * finals and today's scoreboard (live scores and game states). Standings,
+ * leaders, and the team list always come from the committed snapshot passed in
+ * as the fallback. Each schedule window falls back to the committed games when
+ * its fetch fails; the builder throws only when both windows fail so the
+ * accessor can fall back to the committed summary wholesale. Two upstream
+ * calls per refresh, mirroring buildBayAreaTransitLiveSnapshotData.
+ */
+export async function buildMlbLiveSummaryData(
+  fallback: MlbSummarySnapshot
+): Promise<MlbSummarySnapshot> {
+  const teamLookup = new Map(fallback.teams.map((team) => [team.id, team]));
+
+  const [yesterdayResult, todayResult] = await Promise.allSettled([
+    fetchLiveScheduleWindow(-1, -1),
+    fetchLiveScheduleWindow(0, 0),
+  ]);
+
+  if (yesterdayResult.status === "rejected" && todayResult.status === "rejected") {
+    throw createMlbDataError("Every MLB live schedule window was unavailable.", 503);
+  }
+
+  const freshFinished: MlbGame[] = [];
+  let upcomingGames = fallback.upcomingGames;
+
+  if (yesterdayResult.status === "fulfilled") {
+    for (const game of collectScheduleGames(yesterdayResult.value, teamLookup)) {
+      if (game.status === "FINISHED") freshFinished.push(game);
+    }
+  }
+
+  if (todayResult.status === "fulfilled") {
+    const todayGames = collectScheduleGames(todayResult.value, teamLookup);
+    const todayIds = new Set(todayGames.map((game) => game.id));
+    const pending = todayGames.filter((game) => game.status !== "FINISHED");
+    for (const game of todayGames) {
+      if (game.status === "FINISHED") freshFinished.push(game);
+    }
+    // Fresh pending games replace their committed entries so live scores and
+    // game states stay current. Committed entries for today's now-finished
+    // games drop out here and re-enter through recentGames instead.
+    upcomingGames = [
+      ...pending,
+      ...fallback.upcomingGames.filter((game) => !todayIds.has(game.id)),
+    ]
+      .sort((a, b) => new Date(a.utcDate).getTime() - new Date(b.utcDate).getTime())
+      .slice(0, UPCOMING_GAME_LIMIT);
+  }
+
+  let recentGames = fallback.recentGames;
+  if (freshFinished.length > 0) {
+    const freshIds = new Set(freshFinished.map((game) => game.id));
+    recentGames = [
+      ...freshFinished,
+      ...fallback.recentGames.filter((game) => !freshIds.has(game.id)),
+    ]
+      .sort((a, b) => new Date(b.utcDate).getTime() - new Date(a.utcDate).getTime())
+      .slice(0, RECENT_GAME_LIMIT);
+  }
+
+  return {
+    ...fallback,
+    updatedAt: new Date().toISOString().slice(0, 10),
+    recentGames,
+    upcomingGames,
   };
 }
 

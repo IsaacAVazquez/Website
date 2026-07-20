@@ -15,7 +15,10 @@ const ERROR_CACHE_HEADERS = {
 
 export async function GET() {
   try {
-    const summary = await getLaLigaSummarySnapshot();
+    // preferLive is a no-op unless FOOTBALL_DATA_API_TOKEN is configured; the
+    // accessor then refreshes standings and fixtures at request time behind a
+    // 5-minute in-memory cache, with the committed snapshot as fallback.
+    const summary = await getLaLigaSummarySnapshot({ preferLive: true });
     return NextResponse.json(summary, {
       headers: createSnapshotResponseHeaders({
         surface: "la-liga",

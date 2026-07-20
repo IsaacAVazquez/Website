@@ -175,6 +175,7 @@ Confirm live API routes from `src/app/api/**/route.ts`. Current routes:
 - `/api/earthquake-pulse/summary`
 - `/api/fantasy-data`
 - `/api/formula-1/summary` and `/api/formula-1/meetings/[meetingId]`
+- `/api/frontier-models/summary`
 - `/api/golf/summary` and `/api/golf/players/[playerId]`
 - `/api/investments/index`, `/api/investments/quotes`, `/api/investments/data/[symbol]`
 - `/api/la-liga/summary` and `/api/la-liga/teams/[teamId]`
@@ -191,7 +192,7 @@ Confirm live API routes from `src/app/api/**/route.ts`. Current routes:
 - `/api/stocks`
 - `/api/world-cup/summary` and `/api/world-cup/teams/[teamId]`
 
-The dashboard APIs read committed snapshot files; they do not call external services at request time.
+Most dashboard APIs read committed snapshot files at request time. The exceptions that call external services at request time are the earthquake-pulse, bay-area-transit, news-pulse, mba-jobs, investments quotes, and MLB summary routes; each keeps the committed snapshot (or cached data) as its fallback.
 
 ---
 
@@ -207,9 +208,9 @@ npm run dev
 
 - Prefer Node 20 locally to match GitHub Actions.
 - `npm run update:investments` also requires `.venv/bin/python3`.
-- `npm run update:football`, `npm run update:premier-league`, and `npm run update:la-liga` use `FOOTBALL_DATA_API_TOKEN` only when rebuilding checked-in football snapshots.
+- `npm run update:football`, `npm run update:premier-league`, and `npm run update:la-liga` use `FOOTBALL_DATA_API_TOKEN` only when rebuilding checked-in football snapshots. The same token is optional at runtime: when set in the deploy environment, the Premier League and La Liga summary APIs refresh standings and fixtures at request time (5-minute in-memory TTL) and fall back to the committed snapshots; without it they serve the committed snapshots only.
 - `npm run update:mlb`, `npm run update:nba`, `npm run update:nfl`, `npm run update:golf`, and `npm run update:world-cup` use public sports data sources and do not require auth tokens.
-- `npm run update:bay-area-transit` uses BART's public legacy API with the published demo key baked into the builder; no token setup required.
+- `npm run update:bay-area-transit` uses BART's public legacy API. Set the optional `BART_API_KEY` (free registration at api.bart.gov/api/register.aspx) to replace the published demo-key fallback; no token setup is required to get started.
 - `npm run update:tech-startups` processes a hand-maintained seed inside `scripts/buildTechStartupSnapshot.ts`; there is no live source to poll.
 - `npm run update:formula-1` reads historical OpenF1 endpoints and does not require an API key.
 - `npm run update:github-trending` reads the public GitHub Search API. GitHub Actions passes `GITHUB_TOKEN` for higher rate limits.
@@ -442,9 +443,10 @@ Current behavior:
 - `update-world-cup.yml` runs every 30 minutes during June and July
 - `update-score-pools.yml` runs every six hours, requires both live provider tokens, and rejects provider-empty or stale live-league output
 - `update-bay-area-transit.yml` runs on manual dispatch and every six hours year-round, then commits `src/data/bayAreaTransitSnapshot.ts` when it changes
-- `update-earthquake.yml` runs on manual dispatch and hourly (minute 20), then commits `src/data/earthquakeSnapshot.ts` when it changes
+- `update-earthquake.yml` runs on manual dispatch and daily at 06:20 UTC, then commits `src/data/earthquakeSnapshot.ts` when it changes — a fallback-seed refresh only, since the summary API fetches USGS live at request time
 - `update-polling.yml` runs every six hours and refreshes the VoteHub-backed polling snapshot
 - `audit-curated-data.yml` checks review dates, verification flags, and structural integrity across Frontier Models, Tech Startups, AI Dev Tools, Museum Log, Travel Deals, and Food Map every Monday
+- `netlify/functions/refresh-frontier-models.ts` is a Netlify scheduled function (daily 07:30 UTC, no GitHub Action) that fact-checks the frontier-models seed against models.dev and OpenRouter, writes the result to the `dashboard-snapshots` Netlify Blobs store, and purges the `frontier-models` CDN cache tag; the committed seed stays the fallback
 - The tech startup tracker has no workflow by design — its dataset is editorially curated, so refreshes happen by editing the seed and running `npm run update:tech-startups` locally
 - All 16 snapshot `update-*.yml` workflows commit and push through the shared `scripts/ci/commit-and-push-snapshot.sh` helper (usage: `commit-and-push-snapshot.sh <commit-message> <pathspec...>`). It regenerates and stages sitemap freshness metadata with the snapshot, sets the `github-actions[bot]` identity, exits cleanly on a no-op refresh, and pushes to `HEAD:main` with a fetch/`rebase --autostash` retry loop (default 8 attempts, `SNAPSHOT_PUSH_ATTEMPTS` override) plus capped exponential backoff to absorb concurrent snapshot-bot pushes. Behavior is asserted by `.github/workflows/__tests__/snapshot-workflows.test.ts` and `update-investments.test.ts`.
 - `publish-data.yml` coalesces successful refreshes, triggers the Netlify build hook when production is behind, and verifies the full `/api/data-revisions` ledger before closing publication incidents

@@ -2,12 +2,14 @@
  * @jest-environment node
  */
 import {
+  buildMlbLiveSummaryData,
   getCurrentSeason,
   getMlbSummary,
   getMlbTeamSnapshot,
   isValidMlbTeamId,
   createEmptyMlbSnapshot,
 } from "../mlbData";
+import type { MlbGame, MlbSummarySnapshot, MlbTeamOption } from "@/types/mlb";
 
 function jsonResponse(payload: unknown, status = 200): Response {
   return new Response(JSON.stringify(payload), {
@@ -839,6 +841,268 @@ describe("getMlbTeamSnapshot", () => {
 
     await expect(getMlbTeamSnapshot("147")).rejects.toMatchObject({
       status: 404,
+    });
+  });
+});
+
+// ---- Live summary builder --------------------------------------------------
+
+function isoDate(daysFromToday: number): string {
+  const date = new Date();
+  date.setUTCDate(date.getUTCDate() + daysFromToday);
+  return date.toISOString().slice(0, 10);
+}
+
+function isoDateTime(daysFromToday: number, time = "T20:00:00Z"): string {
+  return `${isoDate(daysFromToday)}${time}`;
+}
+
+const LIVE_TEAMS: MlbTeamOption[] = [
+  {
+    id: "147",
+    name: "New York Yankees",
+    shortName: "Yankees",
+    abbreviation: "NYY",
+    league: "AL",
+    division: "AL East",
+    venue: "Yankee Stadium",
+    logo: "https://www.mlbstatic.com/team-logos/147.svg",
+  },
+  {
+    id: "111",
+    name: "Boston Red Sox",
+    shortName: "Red Sox",
+    abbreviation: "BOS",
+    league: "AL",
+    division: "AL East",
+    venue: "Fenway Park",
+    logo: "https://www.mlbstatic.com/team-logos/111.svg",
+  },
+];
+
+function committedGame(
+  id: string,
+  utcDate: string,
+  status: string,
+  score: MlbGame["score"] = { winner: null, home: null, away: null }
+): MlbGame {
+  return {
+    id,
+    utcDate,
+    status,
+    matchday: null,
+    stage: "R",
+    homeTeam: {
+      id: "147",
+      name: "New York Yankees",
+      shortName: "Yankees",
+      abbreviation: "NYY",
+      crest: "https://www.mlbstatic.com/team-logos/147.svg",
+    },
+    awayTeam: {
+      id: "111",
+      name: "Boston Red Sox",
+      shortName: "Red Sox",
+      abbreviation: "BOS",
+      crest: "https://www.mlbstatic.com/team-logos/111.svg",
+    },
+    score,
+  };
+}
+
+function liveFallbackSummary(): MlbSummarySnapshot {
+  return {
+    season: "2026",
+    updatedAt: isoDate(-1),
+    sourceLabel: "MLB Stats API",
+    sourceUrls: { standings: "standings", schedule: "schedule", leaders: "leaders" },
+    teams: LIVE_TEAMS,
+    standings: [],
+    recentGames: [
+      committedGame("900001", isoDateTime(-3), "FINISHED", {
+        winner: "HOME_TEAM",
+        home: 4,
+        away: 1,
+      }),
+    ],
+    upcomingGames: [
+      committedGame("900101", isoDateTime(0), "Scheduled"),
+      committedGame("900103", isoDateTime(0, "T17:00:00Z"), "Scheduled"),
+      committedGame("900102", isoDateTime(1), "Scheduled"),
+    ],
+    hittingLeaders: { homeRuns: [], runsBattedIn: [], battingAverage: [] },
+    pitchingLeaders: { earnedRunAverage: [], wins: [], strikeouts: [] },
+  };
+}
+
+function rawScheduleGame(
+  gamePk: number,
+  gameDate: string,
+  abstractGameState: string,
+  detailedState: string,
+  homeScore: number | null = null,
+  awayScore: number | null = null
+) {
+  return {
+    gamePk,
+    gameDate,
+    gameType: "R",
+    status: { abstractGameState, detailedState },
+    teams: {
+      home: {
+        team: { id: 147, name: "New York Yankees", abbreviation: "NYY" },
+        score: homeScore,
+        isWinner: null,
+      },
+      away: {
+        team: { id: 111, name: "Boston Red Sox", abbreviation: "BOS" },
+        score: awayScore,
+        isWinner: null,
+      },
+    },
+  };
+}
+
+function makeLiveScheduleRouter(
+  yesterdayResponse: () => Response,
+  todayResponse: () => Response
+) {
+  return async (input: RequestInfo | URL): Promise<Response> => {
+    const url = typeof input === "string" ? input : input.toString();
+    if (!url.includes("/schedule?")) {
+      throw new Error(`Unexpected fetch URL in test: ${url}`);
+    }
+    const startMatch = url.match(/startDate=([^&]+)/);
+    const start = startMatch ? startMatch[1] : "";
+    if (start < isoDate(0)) return yesterdayResponse();
+    return todayResponse();
+  };
+}
+
+describe("buildMlbLiveSummaryData", () => {
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  it("merges yesterday's finals and today's scoreboard into the committed summary", async () => {
+    jest.spyOn(global, "fetch").mockImplementation(
+      makeLiveScheduleRouter(
+        () =>
+          jsonResponse({
+            dates: [
+              {
+                date: isoDate(-1),
+                games: [
+                  rawScheduleGame(900050, isoDateTime(-1), "Final", "Final", 3, 2),
+                ],
+              },
+            ],
+          }),
+        () =>
+          jsonResponse({
+            dates: [
+              {
+                date: isoDate(0),
+                games: [
+                  rawScheduleGame(
+                    900101,
+                    isoDateTime(0),
+                    "Live",
+                    "In Progress",
+                    2,
+                    1
+                  ),
+                  rawScheduleGame(
+                    900103,
+                    isoDateTime(0, "T17:00:00Z"),
+                    "Final",
+                    "Final",
+                    6,
+                    5
+                  ),
+                ],
+              },
+            ],
+          })
+      ) as unknown as typeof fetch
+    );
+
+    const fallback = liveFallbackSummary();
+    const summary = await buildMlbLiveSummaryData(fallback);
+
+    // Today's in-progress game replaces its committed entry with live score
+    // and state; the now-finished game leaves the upcoming list.
+    expect(summary.upcomingGames.map((g) => g.id)).toEqual(["900101", "900102"]);
+    const liveGame = summary.upcomingGames[0];
+    expect(liveGame.status).toBe("In Progress");
+    expect(liveGame.score).toEqual({ winner: null, home: 2, away: 1 });
+    // Known-team enrichment still applies to live games.
+    expect(liveGame.homeTeam.shortName).toBe("Yankees");
+
+    // Finals from both windows merge ahead of the committed recents, newest first.
+    expect(summary.recentGames.map((g) => g.id)).toEqual([
+      "900103",
+      "900050",
+      "900001",
+    ]);
+    expect(summary.recentGames[0].score).toEqual({
+      winner: "HOME_TEAM",
+      home: 6,
+      away: 5,
+    });
+
+    // Non-time-sensitive sections stay committed; the stamp refreshes.
+    expect(summary.standings).toBe(fallback.standings);
+    expect(summary.hittingLeaders).toBe(fallback.hittingLeaders);
+    expect(summary.teams).toBe(fallback.teams);
+    expect(summary.updatedAt).toBe(isoDate(0));
+  });
+
+  it("keeps the committed games for a window whose fetch fails", async () => {
+    jest.spyOn(global, "fetch").mockImplementation(
+      makeLiveScheduleRouter(
+        () => jsonResponse({}, 404),
+        () =>
+          jsonResponse({
+            dates: [
+              {
+                date: isoDate(0),
+                games: [
+                  rawScheduleGame(
+                    900103,
+                    isoDateTime(0, "T17:00:00Z"),
+                    "Final",
+                    "Final",
+                    6,
+                    5
+                  ),
+                ],
+              },
+            ],
+          })
+      ) as unknown as typeof fetch
+    );
+
+    const fallback = liveFallbackSummary();
+    const summary = await buildMlbLiveSummaryData(fallback);
+
+    // Yesterday's window failed, so only today's final joins the committed recents.
+    expect(summary.recentGames.map((g) => g.id)).toEqual(["900103", "900001"]);
+    expect(summary.upcomingGames.map((g) => g.id)).toEqual(["900101", "900102"]);
+  });
+
+  it("throws when every live schedule window fails so callers can fall back wholesale", async () => {
+    jest
+      .spyOn(global, "fetch")
+      .mockImplementation(
+        makeLiveScheduleRouter(
+          () => jsonResponse({}, 404),
+          () => jsonResponse({}, 404)
+        ) as unknown as typeof fetch
+      );
+
+    await expect(buildMlbLiveSummaryData(liveFallbackSummary())).rejects.toMatchObject({
+      status: 503,
     });
   });
 });

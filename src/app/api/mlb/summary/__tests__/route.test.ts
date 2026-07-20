@@ -88,8 +88,12 @@ describe("GET /api/mlb/summary", () => {
     expect(body.standings[0].shortName).toBe("Yankees");
     expect(body.teams[0].abbreviation).toBe("NYY");
     expect(response.headers.get("Cache-Control")).toBe(
-      "public, max-age=300, stale-while-revalidate=900"
+      "public, max-age=60, stale-while-revalidate=300"
     );
+    expect(response.headers.get("X-Data-Source")).toBe(
+      "statsapi-runtime-with-snapshot-fallback"
+    );
+    expect(mockGetMlbSummarySnapshot).toHaveBeenCalledWith({ preferLive: true });
   });
 
   it("returns a stable empty payload when the snapshot is unavailable", async () => {

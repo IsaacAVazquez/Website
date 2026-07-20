@@ -666,6 +666,96 @@ export async function getPremierLeagueSummary(
   };
 }
 
+/**
+ * Request-time refresh used by the summary accessor when a football-data.org
+ * token is configured. Only the standings and the recent/upcoming fixture
+ * lists are refreshed (3 upstream requests); every other section keeps the
+ * committed snapshot's value. A section that fails, comes back empty, or
+ * reflects the rolled-over-but-unstarted season keeps the committed value.
+ * If no section refreshes, this throws so the caller falls back to the
+ * committed snapshot wholesale without caching the failure.
+ */
+export async function buildPremierLeagueLiveSummary(
+  baseSummary: PremierLeagueSummary
+): Promise<PremierLeagueSummary> {
+  const [standingsResult, recentResult, upcomingResult] = await Promise.allSettled([
+    fetchFootballDataJson<FootballDataCompetitionStandingsResponse>(
+      `/competitions/${PREMIER_LEAGUE_CODE}/standings`,
+      SUMMARY_REVALIDATE_SECONDS
+    ),
+    fetchFootballDataJson<FootballDataMatchesResponse>(
+      `/competitions/${PREMIER_LEAGUE_CODE}/matches?${buildQueryString({
+        status: "FINISHED",
+        limit: RECENT_FIXTURE_LIMIT,
+      })}`,
+      SUMMARY_REVALIDATE_SECONDS
+    ),
+    fetchFootballDataJson<FootballDataMatchesResponse>(
+      `/competitions/${PREMIER_LEAGUE_CODE}/matches?${buildQueryString({
+        status: "SCHEDULED",
+        limit: UPCOMING_FIXTURE_LIMIT,
+      })}`,
+      SUMMARY_REVALIDATE_SECONDS
+    ),
+  ]);
+
+  const summary: PremierLeagueSummary = { ...baseSummary };
+  let refreshedSections = 0;
+
+  if (standingsResult.status === "fulfilled") {
+    const standingsGroup =
+      standingsResult.value.standings?.find((group) => group?.type === "TOTAL") ??
+      standingsResult.value.standings?.[0] ??
+      null;
+    const standings = (standingsGroup?.table ?? [])
+      .map((row) => normalizeStandingRow(row))
+      .filter((row): row is PremierLeagueStandingRow => row !== null);
+
+    // A zeroed rolled-over table (season pointer advanced, no games played)
+    // would wipe the dashboard, so the committed table is kept instead.
+    if (standings.length > 0 && !seasonNotStarted(standingsResult.value.season, standings)) {
+      summary.standings = standings;
+      summary.competition = buildCompetitionMeta(standingsResult.value);
+      refreshedSections += 1;
+    }
+  }
+
+  if (recentResult.status === "fulfilled") {
+    const recentFixtures = (recentResult.value.matches ?? [])
+      .map((match) => normalizeFixture(match))
+      .filter((match): match is PremierLeagueFixture => match !== null)
+      .sort(sortFixturesDescending)
+      .slice(0, RECENT_FIXTURE_LIMIT);
+
+    if (recentFixtures.length > 0) {
+      summary.recentFixtures = recentFixtures;
+      refreshedSections += 1;
+    }
+  }
+
+  if (upcomingResult.status === "fulfilled") {
+    const upcomingFixtures = (upcomingResult.value.matches ?? [])
+      .map((match) => normalizeFixture(match))
+      .filter((match): match is PremierLeagueFixture => match !== null)
+      .sort(sortFixturesAscending)
+      .slice(0, UPCOMING_FIXTURE_LIMIT);
+
+    if (upcomingFixtures.length > 0) {
+      summary.upcomingFixtures = upcomingFixtures;
+      refreshedSections += 1;
+    }
+  }
+
+  if (refreshedSections === 0) {
+    throw createPremierLeagueDataError(
+      "Premier League live refresh produced no usable sections.",
+      503
+    );
+  }
+
+  return { ...summary, generatedAt: new Date().toISOString() };
+}
+
 export async function getPremierLeagueTeamSnapshot(
   teamId: string
 ): Promise<PremierLeagueTeamSnapshot> {

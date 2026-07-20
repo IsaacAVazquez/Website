@@ -14,8 +14,9 @@ architecture or the per-workflow prose:
 The `update:*` commands write committed TypeScript or JSON artifacts. A failed
 or empty fetch keeps the previous snapshot, and every scheduled job now checks
 the artifact timestamp against one shared freshness policy before it can
-commit. Earthquake and BART APIs also refresh their time-sensitive data at
-request time, with the committed artifact retained as the last-good fallback.
+commit. Earthquake, BART, and MLB APIs also refresh their time-sensitive data
+at request time, with the committed artifact retained as the last-good
+fallback.
 
 ---
 
@@ -26,22 +27,22 @@ request time, with the committed artifact retained as the last-good fallback.
 | Fantasy football | `update:fantasy` | `buildFantasyPositionData.ts` → `buildFantasyAdpData.ts` → `buildFantasySnapshots.ts` | FantasyPros cheatsheets + FF Calculator ADP | `public/data/fantasy/{ppr,half_ppr,standard}.json`, `src/data/fantasy*.generated.ts` | `update-fantasy.yml` | daily July through September; weekly otherwise |
 | Investments | `update:investments` | `fetch_investments_data.py` (needs `.venv`) → `buildInvestmentsSnapshots.ts` | `defeatbeta-api` (Python) | `public/data/investments/index.json` + `{SYMBOL}/snapshot.json` | `update-investments.yml` | weekdays 22:15 UTC |
 | Football (both) | `update:football` | `updateFootballSnapshots.ts` | football-data.org *(token)* | `src/data/premierLeagueSnapshot.ts` + `laLigaSnapshot.ts` | none *(full run is manual ~weekly)* | manual |
-| Premier League | `update:premier-league` | `buildPremierLeagueSnapshot.ts` | football-data.org *(token)* | `src/data/premierLeagueSnapshot.ts` | `update-premier-league.yml` | every 4h, August through May |
-| La Liga | `update:la-liga` | `updateLaLigaSnapshot.ts` | football-data.org *(token)* | `src/data/laLigaSnapshot.ts` | `update-la-liga.yml` | every 4h, August through May |
+| Premier League | `update:premier-league` | `buildPremierLeagueSnapshot.ts` | football-data.org *(token; the summary API also refreshes standings/fixtures at request time when the token is set)* | `src/data/premierLeagueSnapshot.ts` | `update-premier-league.yml` | every 4h, August through May |
+| La Liga | `update:la-liga` | `updateLaLigaSnapshot.ts` | football-data.org *(token; the summary API also refreshes standings/fixtures at request time when the token is set)* | `src/data/laLigaSnapshot.ts` | `update-la-liga.yml` | every 4h, August through May |
 | NFL | `update:nfl` | `updateNflSnapshot.ts` | NFLverse CSVs | `src/data/nflSnapshot.ts` | `update-nfl.yml` | Tue 10:35 UTC, September through February |
-| MLB | `update:mlb` | `updateMlbSnapshot.ts` | MLB Stats API | `src/data/mlbSnapshot.ts` | `update-mlb.yml` | every 4h, March through November |
+| MLB | `update:mlb` | `updateMlbSnapshot.ts` | MLB Stats API | `src/data/mlbSnapshot.ts` | `update-mlb.yml` | every 4h, March through November (fallback seed; the API serves live statsapi at request time) |
 | NBA | `update:nba` | `updateNbaSnapshot.ts` | ESPN NBA | `src/data/nbaSnapshot.ts` | `update-nba.yml` | every 4h, mid-October through June |
 | Golf | `update:golf` | `buildGolfSnapshot.ts` | ESPN golf | `src/data/golfSnapshot.ts` | `update-golf.yml` | every 3h Thursday through Sunday; daily otherwise |
 | Formula 1 | `update:formula-1` | `buildFormula1Snapshot.ts` | OpenF1 | `src/data/formula1Snapshot.ts` | `update-formula-1.yml` | every 3h Thursday through Sunday; daily otherwise |
 | World Cup 2026 | `update:world-cup` | `buildWorldCupSnapshot.ts` | ESPN `soccer/fifa.world` | `src/data/worldCupSnapshot.ts` | `update-world-cup.yml` | every 30m, June through July |
 | Score pools | `update:score-pools` | `buildScorePoolsSnapshot.ts` | The Odds API + API-Football *(tokens required for live leagues)* + manual/CSV | `src/data/scorePoolsSnapshot.ts` | `update-score-pools.yml` | every 6h |
-| Bay Area Transit | `update:bay-area-transit` | `buildBayAreaTransitSnapshot.ts` | BART public API *(demo key)* | `src/data/bayAreaTransitSnapshot.ts` | `update-bay-area-transit.yml` | every 6h, year-round |
+| Bay Area Transit | `update:bay-area-transit` | `buildBayAreaTransitSnapshot.ts` | BART public API *(`BART_API_KEY` optional; demo-key fallback)* | `src/data/bayAreaTransitSnapshot.ts` | `update-bay-area-transit.yml` | every 6h, year-round |
 | Earthquake Pulse | `update:earthquake` | `buildEarthquakeSnapshot.ts` | USGS GeoJSON feeds | `src/data/earthquakeSnapshot.ts` | `update-earthquake.yml` | hourly (min 20) |
 | GitHub Trending | `update:github-trending` | `buildGitHubTrendingSnapshot.ts` | GitHub Search API *(`GITHUB_TOKEN` optional)* | `src/data/githubTrendingSnapshot.ts` | `update-github-trending.yml` | daily 07:45 UTC |
 | SpaceX data | `update:spacex` *(alias `update:spacex-data`)* | `buildSpaceXSnapshot.ts` | Launch Library / SpaceDevs | `src/data/spacexSnapshot.generated.json` | `update-spacex.yml` | daily 09:25 + 21:25 UTC |
 | SpaceX images | `update:spacex-images` | `buildSpaceXImageSnapshots.ts` | launch image assets | `src/data/spacexImageManifest.generated.json`, `public/data/spacex/*` | `update-spacex.yml` | daily 09:25 + 21:25 UTC |
 | Tech startups | `update:tech-startups` | `buildTechStartupSnapshot.ts` | curated seed *(in script)* | `src/data/techStartupSnapshot.ts` | none *(curated)* | manual |
-| Frontier models | `update:frontier-models` | `buildFrontierModelsSnapshot.ts` | `scripts/data/frontierModels.source.ts` | `src/data/frontierModelsSnapshot.ts` | none *(curated)* | manual |
+| Frontier models | `update:frontier-models` *(seed)* | `buildFrontierModelsSnapshot.ts` + `netlify/functions/refresh-frontier-models.ts` | `scripts/data/frontierModels.source.ts` + models.dev/OpenRouter fact check | `src/data/frontierModelsSnapshot.ts` *(seed)* + `dashboard-snapshots` blob | Netlify scheduled function *(no Action)* | seed manual; facts daily 07:30 UTC |
 | AI dev tools | none | hand-authored catalog | official product and repository sources | `src/app/ai-dev-tools/ai-dev-tools-data.ts` | `audit-curated-data.yml` | weekly review |
 | Museum log | none | hand-authored catalog | museum websites and curator notes | `src/data/museumSnapshot.ts` | `audit-curated-data.yml` | weekly review |
 | Travel deals | none | hand-authored estimates | editorial fare bands and tactics | `src/data/travelDealsSnapshot.ts` | `audit-curated-data.yml` | weekly review |
@@ -64,28 +65,39 @@ News Pulse remains API-backed at request time and has no committed snapshot. Its
 last good per-feed data, and the MBA jobs route's last good result, are persisted
 in Netlify Blobs so cold starts do not erase their fallback.
 
+Frontier models pilots the blob-backed refresh lane: a daily Netlify scheduled
+function fact-checks the curated seed against models.dev and OpenRouter, writes
+the result to the `dashboard-snapshots` blob store, and purges the surface's
+CDN cache tag. No commit and no rebuild is involved; the committed seed stays
+the fallback and the editorial source of truth. See the lane description in
+`../SNAPSHOT_DRIVEN_DASHBOARDS.md`.
+
 ---
 
 ## Tokens / prerequisites
 
 | Need | Used by |
 |------|---------|
-| `FOOTBALL_DATA_API_TOKEN` | `update:football`, `update:premier-league`, `update:la-liga` (only when rebuilding) |
+| `FOOTBALL_DATA_API_TOKEN` | `update:football`, `update:premier-league`, `update:la-liga` (only when rebuilding). Optional at runtime: when set in the deploy environment, the Premier League and La Liga summary APIs also refresh standings and fixtures at request time (5-minute in-memory TTL, committed snapshots as fallback) |
 | `THE_ODDS_API_KEY` (required in the scheduled workflow) | `update:score-pools` |
 | `API_FOOTBALL_KEY` (required in the scheduled workflow) | `update:score-pools` |
 | `GITHUB_TOKEN` / `GH_TOKEN` (optional, higher rate limit) | `update:github-trending` |
+| `BART_API_KEY` (optional; falls back to the published demo key) | request-time transit refresh, `update:bay-area-transit` |
 | Python `.venv` (`.venv/bin/python3`; `defeatbeta-api`) | `update:investments` |
-| *No token* | MLB, NBA, NFL, golf, Formula 1, World Cup, BART, USGS, SpaceX, VoteHub polling |
+| *No token* | MLB, NBA, NFL, golf, Formula 1, World Cup, BART (demo-key fallback), USGS, SpaceX, VoteHub polling |
 
 ---
 
 ## Build and refresh boundary
 
 - Production builds consume committed snapshots and never call external data
-  providers. Earthquake and BART make separate request-time refreshes and keep
-  those snapshots as fallbacks.
+  providers. Earthquake, BART, and MLB make separate request-time refreshes
+  and keep those snapshots as fallbacks.
 - Premier League and La Liga refresh through their dedicated daily workflows;
-  NFL refreshes through `update-nfl.yml` (or a manual run).
+  NFL refreshes through `update-nfl.yml` (or a manual run). When
+  `FOOTBALL_DATA_API_TOKEN` is set at runtime, the PL and La Liga summary APIs
+  additionally refresh standings and fixtures at request time and fall back to
+  the committed snapshots.
 - `update:football` (the ~16-min full refresh, including per-team fixtures and
   form) remains an explicit local task, not a build step.
 - `publish-data.yml` coalesces successful refresh workflows, triggers the
@@ -124,7 +136,7 @@ commits, then pushes to `HEAD:main` with a retry loop (default 8 attempts;
 override via `SNAPSHOT_PUSH_ATTEMPTS`). On each push rejection it
 `git fetch origin main` and `git rebase --autostash origin/main`, then retries
 with capped exponential backoff plus jitter, which absorbs the contention from
-many snapshot bots (earthquake hourly, world cup, transit, etc.) pushing to
+many snapshot bots (world cup in-tournament, transit, etc.) pushing to
 `main` concurrently. It bails (exit 1) only on a genuine rebase conflict or after
 exhausting every attempt. Usage is asserted by
 `.github/workflows/__tests__/snapshot-workflows.test.ts` (and the investments

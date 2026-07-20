@@ -214,6 +214,9 @@ export function FrontierModelsClient({
         <p className="text-xs uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
           Curated by Isaac · Data as of {snapshot.asOf ?? snapshot.generatedAt.slice(0, 10)} · Updated {updatedAt}
           {!snapshot.verified ? " · Independent review pending" : ""}
+          {snapshot.liveFacts
+            ? ` · Facts auto-checked ${snapshot.liveFacts.checkedAt.slice(0, 10)} against ${snapshot.liveFacts.sources.join(" + ")}`
+            : ""}
         </p>
       </header>
 
