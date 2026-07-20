@@ -552,17 +552,6 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       category: 'Site',
     },
     {
-      id: 'page-release-notes',
-      title: 'Release Notes',
-      excerpt:
-        'Site updates in reverse chronological order, grouped by month, covering new features, dashboards, writing, and fixes as they shipped.',
-      content:
-        'release notes updates shipped features dashboards writing fixes monthly log changelog companion site',
-      url: '/release-notes',
-      type: 'page',
-      category: 'Site',
-    },
-    {
       id: 'page-arcade',
       title: 'Reactor Arcade',
       excerpt:

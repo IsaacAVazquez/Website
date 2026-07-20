@@ -207,7 +207,6 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
     "/premier-league",
     "/portfolio",
     "/recipe-finder",
-    "/release-notes",
     "/resume",
     "/score-pools",
     "/search",
