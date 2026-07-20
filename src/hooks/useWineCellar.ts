@@ -11,6 +11,7 @@ import {
   createWineEntry,
   DEFAULT_WINE_FILTERS,
   filterAndSortWines,
+  loadWineEntries,
   parseWineEntries,
   saveWineEntries,
   WINE_CELLAR_STORAGE_KEY,
@@ -44,9 +45,11 @@ export function useWineCellar() {
   }
 
   function commitEntries(updater: (current: WineEntry[]) => WineEntry[]) {
-    // `entries` reflects the current shared-store snapshot; saveWineEntries
-    // writes through the guarded store, which notifies subscribers itself.
-    const next = updater(entries);
+    // Read fresh at commit time (loadWineEntries goes through the mirror-aware
+    // shared store) so a concurrent cross-tab write isn't clobbered by a
+    // render-captured value. saveWineEntries notifies subscribers itself.
+    const current = loadWineEntries();
+    const next = updater(current);
     saveWineEntries(next);
   }
 
