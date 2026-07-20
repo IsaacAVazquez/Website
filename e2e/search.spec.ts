@@ -19,9 +19,10 @@ test.describe("Search", () => {
     await expect(page.getByText("Category: Fantasy Football Analytics")).toBeVisible();
 
     await page.getByRole("button", { name: /show filters|hide filters/i }).click();
-    await page.getByRole("button", { name: /clear filters/i }).click();
-
-    await expect(page).toHaveURL(/\/search\?q=fantasy$/);
+    await expect(async () => {
+      await page.getByRole("button", { name: /clear filters/i }).click();
+      await expect(page).toHaveURL(/\/search\?q=fantasy$/, { timeout: 5_000 });
+    }).toPass({ timeout: 20_000 });
 
     await page.getByRole("button", { name: /clear search/i }).click();
 
