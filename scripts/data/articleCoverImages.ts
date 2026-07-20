@@ -77,6 +77,7 @@ export const ARTICLE_COVER_IMAGES: ArticleCoverImageSpec[] = [
 
   { slug: "building-a-fantasy-formula-1-optimizer", strategy: "wikimedia", query: "Formula 1 car racing Grand Prix", alt: "A Formula 1 car during a Grand Prix" },
   { slug: "building-a-formula-1-dashboard", strategy: "wikimedia", query: "Formula 1 Grand Prix cars circuit", alt: "Formula 1 cars racing on a circuit" },
+  { slug: "2026-belgian-grand-prix-antonelli-title-lead", strategy: "wikimedia", query: "Formula 1 Belgian Grand Prix Spa Francorchamps", alt: "Formula 1 cars racing at Spa-Francorchamps" },
 
   { slug: "building-a-la-liga-dashboard", strategy: "wikimedia", query: "football soccer match stadium Spain", alt: "A football match at a packed stadium" },
   { slug: "building-a-premier-league-dashboard", strategy: "wikimedia", query: "Premier League football stadium match", alt: "A Premier League football match at a stadium" },
@@ -87,6 +88,8 @@ export const ARTICLE_COVER_IMAGES: ArticleCoverImageSpec[] = [
   { slug: "world-cup-2026-groups-g-h-i-final-round", strategy: "wikimedia", query: "football soccer pitch players match", alt: "Players on a football pitch" },
   { slug: "world-cup-2026-groups-j-k-l-final-round", strategy: "wikimedia", query: "football soccer goal net pitch", alt: "A football and goal net" },
   { slug: "world-cup-2026-top-ten-contenders", strategy: "wikimedia", query: "football soccer stadium match large", alt: "A football match at a large stadium" },
+  { slug: "world-cup-2026-48-team-format-verdict", strategy: "wikimedia", query: "football soccer stadium supporters match", alt: "Supporters watching a football match in a stadium" },
+  { slug: "world-cup-2026-final-spain-argentina", strategy: "wikimedia", query: "Spain national football team match", alt: "Spain's national football team during a match" },
 
   { slug: "building-a-pga-tour-dashboard", strategy: "wikimedia", query: "golf tournament player green PGA", alt: "A golfer on the green during a tournament" },
   { slug: "building-an-mlb-dashboard", strategy: "wikimedia", query: "MLB baseball stadium game", alt: "A Major League Baseball game at a stadium" },
@@ -148,6 +151,7 @@ export const ARTICLE_COVER_IMAGES: ArticleCoverImageSpec[] = [
   { slug: "agentic-ai-line-item-not-pilot", strategy: "editorial-card", reason: ABSTRACT_AI },
   { slug: "ai-coding-tools-developer-displacement-2026", strategy: "editorial-card", reason: ABSTRACT_AI },
   { slug: "ai-productivity-not-in-macro-data-yet", strategy: "editorial-card", reason: ABSTRACT_MACRO },
+  { slug: "kimi-k3-ai-chip-selloff-2026", strategy: "editorial-card", reason: ABSTRACT_MACRO },
   { slug: "building-a-polling-aggregator", strategy: "editorial-card", reason: "Election-polling tool; avoid charged/partisan imagery on portfolio." },
   { slug: "building-a-tech-startup-tracker", strategy: "editorial-card", reason: ABSTRACT_PRODUCT },
   { slug: "mcp-winning-integration-war-enterprise-default", strategy: "editorial-card", reason: ABSTRACT_AI },
