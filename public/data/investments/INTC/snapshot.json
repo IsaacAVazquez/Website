@@ -22,7 +22,6 @@
     "industry": true,
     "beta": true,
     "news": true,
-    "dcf": true,
     "officers": true,
     "compare": true
   },
@@ -8029,21 +8028,6 @@
         "value": -27.46,
         "industryAvg": 44.98
       }
-    ],
-    "dcf": {
-      "fairValue": -1.97,
-      "currentPrice": 109.84,
-      "upside": -101.8,
-      "wacc": 20.83,
-      "growthEstimates": {
-        "Near-term growth (Yrs 1-3)": -30,
-        "Terminal growth": 3
-      },
-      "recommendation": "Sell",
-      "baseFcf": -0.6263,
-      "nearTermGrowthPct": -30,
-      "terminalGrowthPct": 3,
-      "years": 5
-    }
+    ]
   }
 }

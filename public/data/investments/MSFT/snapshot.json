@@ -1,11 +1,17 @@
 {
   "symbol": "MSFT",
-  "lastUpdated": "2026-07-10T00:00:01.448379+00:00",
+  "lastUpdated": "2026-07-20T23:39:29.444726+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-07-10T00:00:01.448379+00:00",
+    "snapshotBuiltAt": "2026-07-20T23:39:29.444726+00:00",
     "sections": {
-      "price": "2026-07-01"
-    }
+      "price": "2026-07-17"
+    },
+    "retainedSections": [
+      "fundamentals",
+      "wacc",
+      "beta",
+      "news"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -40,10 +46,10 @@
     },
     "fundamentals": {
       "ttmEps": 16.79,
-      "ttmPe": 22.89,
-      "marketCap": 2854598886516,
-      "psRatio": 8.97,
-      "pbRatio": 6.89,
+      "ttmPe": 23.46,
+      "marketCap": 2925466153554,
+      "psRatio": 9.19,
+      "pbRatio": 7.06,
       "pegRatio": 0.98
     },
     "profitability": {
@@ -5558,94 +5564,6 @@
     },
     "price": [
       {
-        "date": "2025-07-01",
-        "open": 496.47,
-        "high": 498.05,
-        "low": 490.98,
-        "close": 492.05,
-        "volume": 19945400
-      },
-      {
-        "date": "2025-07-02",
-        "open": 489.99,
-        "high": 493.5,
-        "low": 488.7,
-        "close": 491.09,
-        "volume": 16319600
-      },
-      {
-        "date": "2025-07-03",
-        "open": 493.81,
-        "high": 500.13,
-        "low": 493.44,
-        "close": 498.84,
-        "volume": 13984800
-      },
-      {
-        "date": "2025-07-07",
-        "open": 497.38,
-        "high": 498.75,
-        "low": 495.23,
-        "close": 497.72,
-        "volume": 13981600
-      },
-      {
-        "date": "2025-07-08",
-        "open": 497.24,
-        "high": 498.2,
-        "low": 494.11,
-        "close": 496.62,
-        "volume": 11846600
-      },
-      {
-        "date": "2025-07-09",
-        "open": 500.3,
-        "high": 506.78,
-        "low": 499.74,
-        "close": 503.51,
-        "volume": 18659500
-      },
-      {
-        "date": "2025-07-10",
-        "open": 503.05,
-        "high": 504.44,
-        "low": 497.75,
-        "close": 501.48,
-        "volume": 16492100
-      },
-      {
-        "date": "2025-07-11",
-        "open": 498.47,
-        "high": 505.03,
-        "low": 497.8,
-        "close": 503.32,
-        "volume": 16459500
-      },
-      {
-        "date": "2025-07-14",
-        "open": 501.52,
-        "high": 503.97,
-        "low": 501.03,
-        "close": 503.02,
-        "volume": 12058800
-      },
-      {
-        "date": "2025-07-15",
-        "open": 503.02,
-        "high": 508.3,
-        "low": 502.79,
-        "close": 505.82,
-        "volume": 14927200
-      },
-      {
-        "date": "2025-07-16",
-        "open": 505.18,
-        "high": 506.72,
-        "low": 501.89,
-        "close": 505.62,
-        "volume": 15154400
-      },
-      {
         "date": "2025-07-17",
         "open": 505.68,
         "high": 513.37,
@@ -7567,11 +7485,99 @@
       },
       {
         "date": "2026-07-01",
-        "open": 380.825,
+        "open": 380.83,
         "high": 388.83,
         "low": 374.89,
         "close": 384.28,
-        "volume": 43832611
+        "volume": 48065800
+      },
+      {
+        "date": "2026-07-02",
+        "open": 384.48,
+        "high": 392.2,
+        "low": 383.7,
+        "close": 390.49,
+        "volume": 42128900
+      },
+      {
+        "date": "2026-07-06",
+        "open": 387.04,
+        "high": 389.15,
+        "low": 381.22,
+        "close": 386.74,
+        "volume": 34224500
+      },
+      {
+        "date": "2026-07-07",
+        "open": 392.49,
+        "high": 395.57,
+        "low": 388.22,
+        "close": 388.84,
+        "volume": 29297500
+      },
+      {
+        "date": "2026-07-08",
+        "open": 384.03,
+        "high": 385.31,
+        "low": 381.33,
+        "close": 383.34,
+        "volume": 25908300
+      },
+      {
+        "date": "2026-07-09",
+        "open": 374.45,
+        "high": 384.65,
+        "low": 373.35,
+        "close": 384.36,
+        "volume": 31083200
+      },
+      {
+        "date": "2026-07-10",
+        "open": 387.8,
+        "high": 391.91,
+        "low": 381.5,
+        "close": 385.1,
+        "volume": 24644600
+      },
+      {
+        "date": "2026-07-13",
+        "open": 387.75,
+        "high": 393.65,
+        "low": 384.15,
+        "close": 390.99,
+        "volume": 28914900
+      },
+      {
+        "date": "2026-07-14",
+        "open": 382.82,
+        "high": 388.19,
+        "low": 378.65,
+        "close": 384.93,
+        "volume": 27863900
+      },
+      {
+        "date": "2026-07-15",
+        "open": 387.8,
+        "high": 398.96,
+        "low": 386.4,
+        "close": 395.63,
+        "volume": 36253700
+      },
+      {
+        "date": "2026-07-16",
+        "open": 398.31,
+        "high": 405.99,
+        "low": 392.05,
+        "close": 401.1,
+        "volume": 37047400
+      },
+      {
+        "date": "2026-07-17",
+        "open": 394.86,
+        "high": 398.39,
+        "low": 389.39,
+        "close": 393.82,
+        "volume": 33010300
       }
     ],
     "news": [
@@ -7669,6 +7675,10 @@
         "totalPay": 4532750
       },
       {
+        "name": "Mr. Frank X. Shaw",
+        "title": "Chief Communications Officer"
+      },
+      {
         "name": "Mr. Jonathan M. Palmer",
         "title": "Corporate Vice President & Chief Legal Officer"
       },
@@ -7689,13 +7699,6 @@
         "age": 58,
         "yearBorn": 1967,
         "totalPay": 12251294
-      },
-      {
-        "name": "Mr. Takeshi Numoto",
-        "title": "Executive VP & Chief Marketing Officer",
-        "age": 53,
-        "yearBorn": 1972,
-        "totalPay": 2871250
       },
       {
         "name": "Ms. Alice L. Jolla",
@@ -7720,43 +7723,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.89,
-        "industryAvg": 27.08
+        "value": 23.46,
+        "industryAvg": 32.71
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.97,
-        "industryAvg": 5.93
+        "value": 9.19,
+        "industryAvg": 5.53
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.89,
-        "industryAvg": 7.21
+        "value": 7.06,
+        "industryAvg": 6.91
       },
       {
         "metric": "ROE",
         "value": 7.89,
-        "industryAvg": 26.529999999999998
+        "industryAvg": 5.88
       },
       {
         "metric": "ROA",
         "value": 4.67,
-        "industryAvg": 10.32
+        "industryAvg": 2.25
       },
       {
         "metric": "Gross Margin",
         "value": 67.63,
-        "industryAvg": 49.47
+        "industryAvg": 50.24999999999999
       },
       {
         "metric": "EBITDA Margin",
         "value": 60.67,
-        "industryAvg": 33.97
+        "industryAvg": 33.1
       },
       {
         "metric": "Net Margin",
         "value": 38.34,
-        "industryAvg": 18.759999999999998
+        "industryAvg": 17.07
       }
     ]
   }

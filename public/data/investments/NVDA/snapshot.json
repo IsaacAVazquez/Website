@@ -1,11 +1,17 @@
 {
   "symbol": "NVDA",
-  "lastUpdated": "2026-07-10T00:00:01.448379+00:00",
+  "lastUpdated": "2026-07-20T23:39:29.444726+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-07-10T00:00:01.448379+00:00",
+    "snapshotBuiltAt": "2026-07-20T23:39:29.444726+00:00",
     "sections": {
-      "price": "2026-07-01"
-    }
+      "price": "2026-07-17"
+    },
+    "retainedSections": [
+      "fundamentals",
+      "wacc",
+      "beta",
+      "news"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -32,7 +38,7 @@
       "country": "United States",
       "industry": "Semiconductors",
       "sector": "Technology",
-      "longBusinessSummary": "NVIDIA Corporation operates as a data center scale AI infrastructure company in the United States, Taiwan, China, Hong Kong, Europe, and internationally. It operates through Compute & Networking, and Graphics segments. The Compute & Networking segment provides data center accelerated computing and networking platforms and artificial intelligence solutions and software, and automotive platforms and autonomous and electric vehicle solutions, including software. The Graphics segment offers GeForce GPUs for gaming and PCs; Quadro/NVIDIA RTX GPUs for enterprise workstation graphics. The company's products are used in gaming, professional visualization, data center, and automotive markets. It sells its products to original equipment manufacturers, original device manufacturers, system integrators and distributors, independent software vendors, cloud service providers, add-in board manufacturers, distributors, automotive manufacturers and tier-1 automotive suppliers, and other ecosystem participants. NVIDIA Corporation has a strategic collaboration with Palantir Technologies Inc. to deliver an intelligent engine for running NVIDIA AI and Nemotron open models in sovereign environments. NVIDIA Corporation was incorporated in 1993 and is headquartered in Santa Clara, California.",
+      "longBusinessSummary": "NVIDIA Corporation operates as a data center scale AI infrastructure company in the United States, Taiwan, China, Hong Kong, Europe, and internationally. It operates through Compute & Networking, and Graphics segments. The Compute & Networking segment provides data center accelerated computing and networking platforms and artificial intelligence solutions and software, and automotive platforms and autonomous and electric vehicle solutions, including software. The Graphics segment offers GeForce GPUs for gaming and PCs; Quadro/NVIDIA RTX GPUs for enterprise workstation graphics. The company's products are used in gaming, professional visualization, data center, and automotive markets. It sells its products to original equipment manufacturers, original device manufacturers, system integrators and distributors, independent software vendors, cloud service providers, add-in board manufacturers, distributors, automotive manufacturers and tier-1 automotive suppliers, and other ecosystem participants. NVIDIA Corporation was incorporated in 1993 and is headquartered in Santa Clara, California.",
       "fullTimeEmployees": 42000,
       "website": "https://www.nvidia.com",
       "shortName": "NVIDIA Corporation",
@@ -40,10 +46,10 @@
     },
     "fundamentals": {
       "ttmEps": 6.5299,
-      "ttmPe": 30.26,
-      "marketCap": 4785585180000,
-      "psRatio": 18.88,
-      "pbRatio": 24.48,
+      "ttmPe": 31.06,
+      "marketCap": 4912261010000,
+      "psRatio": 19.38,
+      "pbRatio": 25.13,
       "pegRatio": 0.14
     },
     "profitability": {
@@ -5703,94 +5709,6 @@
     },
     "price": [
       {
-        "date": "2025-07-01",
-        "open": 156.29,
-        "high": 157.2,
-        "low": 151.49,
-        "close": 153.3,
-        "volume": 213143600
-      },
-      {
-        "date": "2025-07-02",
-        "open": 152.98,
-        "high": 157.6,
-        "low": 152.97,
-        "close": 157.25,
-        "volume": 171224100
-      },
-      {
-        "date": "2025-07-03",
-        "open": 158.37,
-        "high": 160.98,
-        "low": 157.77,
-        "close": 159.34,
-        "volume": 143716100
-      },
-      {
-        "date": "2025-07-07",
-        "open": 158.2,
-        "high": 159.31,
-        "low": 157.34,
-        "close": 158.24,
-        "volume": 140139000
-      },
-      {
-        "date": "2025-07-08",
-        "open": 159.33,
-        "high": 160.22,
-        "low": 158.39,
-        "close": 160,
-        "volume": 138133000
-      },
-      {
-        "date": "2025-07-09",
-        "open": 161.22,
-        "high": 164.42,
-        "low": 161.16,
-        "close": 162.88,
-        "volume": 183656400
-      },
-      {
-        "date": "2025-07-10",
-        "open": 164.32,
-        "high": 164.5,
-        "low": 161.61,
-        "close": 164.1,
-        "volume": 167704100
-      },
-      {
-        "date": "2025-07-11",
-        "open": 163.72,
-        "high": 167.89,
-        "low": 163.47,
-        "close": 164.92,
-        "volume": 193633300
-      },
-      {
-        "date": "2025-07-14",
-        "open": 165.37,
-        "high": 165.49,
-        "low": 162.02,
-        "close": 164.07,
-        "volume": 136975800
-      },
-      {
-        "date": "2025-07-15",
-        "open": 171.19,
-        "high": 172.4,
-        "low": 169.2,
-        "close": 170.7,
-        "volume": 230627400
-      },
-      {
-        "date": "2025-07-16",
-        "open": 171.06,
-        "high": 171.75,
-        "low": 168.9,
-        "close": 171.37,
-        "volume": 158831500
-      },
-      {
         "date": "2025-07-17",
         "open": 172.02,
         "high": 174.16,
@@ -7712,11 +7630,99 @@
       },
       {
         "date": "2026-07-01",
-        "open": 196.17,
+        "open": 196.2,
         "high": 199.85,
         "low": 193.45,
         "close": 197.58,
-        "volume": 134672012
+        "volume": 146147600
+      },
+      {
+        "date": "2026-07-02",
+        "open": 197.14,
+        "high": 200.06,
+        "low": 192.35,
+        "close": 194.83,
+        "volume": 142068700
+      },
+      {
+        "date": "2026-07-06",
+        "open": 194.42,
+        "high": 197.55,
+        "low": 193.99,
+        "close": 195.55,
+        "volume": 108999000
+      },
+      {
+        "date": "2026-07-07",
+        "open": 192.37,
+        "high": 198.41,
+        "low": 191.14,
+        "close": 196.93,
+        "volume": 124154600
+      },
+      {
+        "date": "2026-07-08",
+        "open": 195.18,
+        "high": 205.16,
+        "low": 195.06,
+        "close": 204.12,
+        "volume": 147419100
+      },
+      {
+        "date": "2026-07-09",
+        "open": 204.46,
+        "high": 204.59,
+        "low": 198.96,
+        "close": 202.78,
+        "volume": 132037400
+      },
+      {
+        "date": "2026-07-10",
+        "open": 202,
+        "high": 211,
+        "low": 201.92,
+        "close": 210.96,
+        "volume": 148421000
+      },
+      {
+        "date": "2026-07-13",
+        "open": 208.54,
+        "high": 210.57,
+        "low": 203,
+        "close": 203.53,
+        "volume": 121411000
+      },
+      {
+        "date": "2026-07-14",
+        "open": 208.2,
+        "high": 212.55,
+        "low": 203.8,
+        "close": 211.8,
+        "volume": 124379600
+      },
+      {
+        "date": "2026-07-15",
+        "open": 211.96,
+        "high": 213.81,
+        "low": 206.04,
+        "close": 212.5,
+        "volume": 124797200
+      },
+      {
+        "date": "2026-07-16",
+        "open": 210.17,
+        "high": 211.08,
+        "low": 205.85,
+        "close": 207.4,
+        "volume": 122986100
+      },
+      {
+        "date": "2026-07-17",
+        "open": 202.64,
+        "high": 206.65,
+        "low": 197.97,
+        "close": 202.81,
+        "volume": 144033900
       }
     ],
     "news": [
@@ -7866,43 +7872,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 30.26,
-        "industryAvg": 38.83
+        "value": 31.06,
+        "industryAvg": 0.2
       },
       {
         "metric": "P/S Ratio",
-        "value": 18.88,
-        "industryAvg": 15.8
+        "value": 19.38,
+        "industryAvg": 0.11
       },
       {
         "metric": "P/B Ratio",
-        "value": 24.48,
-        "industryAvg": 13.64
+        "value": 25.13,
+        "industryAvg": 0.09
       },
       {
         "metric": "ROE",
         "value": 33.06,
-        "industryAvg": 36.52
+        "industryAvg": 28.189999999999998
       },
       {
         "metric": "ROA",
         "value": 25.019999999999996,
-        "industryAvg": 22.8
+        "industryAvg": 20.11
       },
       {
         "metric": "Gross Margin",
         "value": 74.92999999999999,
-        "industryAvg": 60.45
+        "industryAvg": 79.2
       },
       {
         "metric": "EBITDA Margin",
         "value": 87,
-        "industryAvg": 57.410000000000004
+        "industryAvg": 105.33999999999999
       },
       {
         "metric": "Net Margin",
         "value": 71.46000000000001,
-        "industryAvg": 38.92
+        "industryAvg": 76.53999999999999
       }
     ]
   }
