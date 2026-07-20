@@ -116,3 +116,20 @@ export interface Formula1Snapshot {
   nextMeeting: Formula1MeetingSummary | null;
   lastCompletedMeeting: Formula1MeetingSummary | null;
 }
+
+/**
+ * Meeting metadata without the per-race result arrays. This is what the
+ * meetings list ships as in the slim summary so the full classification for
+ * every round never rides along with list rendering.
+ */
+export type Formula1MeetingMeta = Omit<Formula1MeetingSummary, "classification" | "podium">;
+
+/**
+ * Slim payload for the Formula 1 surfaces: everything the pages need on first
+ * paint (hero stats, standings, the meetings list as metadata, and the full
+ * next/last-completed meeting detail) without serializing every meeting's
+ * classification. Per-meeting detail loads via /api/formula-1/meetings/[meetingId].
+ */
+export interface Formula1Summary extends Omit<Formula1Snapshot, "meetings"> {
+  meetings: Formula1MeetingMeta[];
+}
