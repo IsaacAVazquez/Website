@@ -26,17 +26,21 @@ describe("GET /api/data-revisions", () => {
       [...DATA_SURFACE_IDS].sort()
     );
   });
-  it("hashes bay-area-transit at the same summary grain as the summary route", async () => {
+  it("tracks the committed transit summary while the live route identifies its delivered payload", async () => {
     const entry = await getLedgerEntry("bay-area-transit");
 
-    // The ledger and /api/bay-area-transit/summary must publish the same
-    // identifier for the surface, so both hash the summary object.
+    // The ledger identifies the committed fallback used for publication checks.
+    // The runtime route may overlay newer BART data, so its revision must hash
+    // the payload it actually delivered instead of pretending it is the snapshot.
     expect(entry.revision).toBe(
       createDataRevision(bayAreaTransitSnapshot.summary)
     );
 
     const summaryResponse = await getTransitSummary();
-    expect(summaryResponse.headers.get("X-Data-Revision")).toBe(entry.revision);
+    const deliveredSummary = await summaryResponse.json();
+    expect(summaryResponse.headers.get("X-Data-Revision")).toBe(
+      createDataRevision(deliveredSummary)
+    );
   });
 
   it("keeps earthquake at summary grain", async () => {
