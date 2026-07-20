@@ -46,7 +46,7 @@ Other rhythm rules:
 - Prefer long accumulating sentences with stacked clauses and "from X, to Y, to Z" lists over crafted parallelism or tricolons. A drafted "We throw the parties, we run the boards, we book the rooms" becomes a single accumulating sentence built on "from planning, to being involved, to booking."
 - Use reciprocal both-and framing, where something is described as both an output of a system and a thing that reinforces that same system, as in "byproducts of the system as much as they are things that reinforce that system."
 - Don't chase synonym variety, since repeating a word is fine
-- Keep the calibrated hedging ("it looks like," "I think," "I'd argue," "I feel like," "I would guess," "I half think," "probably," "at least," "actually") as a real feature of the voice, not something to strip out. Two markers recur and should stay. Use "actually" as a mid-sentence qualifier, as in "they're not actually following through," and "What that means is" or "What I think this means is" to introduce an interpretation.
+- Keep the calibrated hedging ("it looks like," "I think," "I'd argue," "I feel like," "I would guess," "probably," "at least," "actually") as a real feature of the voice, not something to strip out. Two markers recur and should stay. Use "actually" as a mid-sentence qualifier, as in "they're not actually following through," and "What that means is" or "What I think this means is" to introduce an interpretation.
 - Stay general where the source was general, and don't invent proper nouns or details that weren't provided
 
 ---
