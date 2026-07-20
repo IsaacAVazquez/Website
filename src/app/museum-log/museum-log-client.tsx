@@ -887,6 +887,10 @@ function MuseumDetailView({
   // render can disagree with the visitor's date and cause a hydration mismatch.
   const [today, setToday] = useState<string | null>(null);
   useEffect(() => {
+    // Deferred to a mount effect on purpose (see above): the local calendar date
+    // is client-only, so setting it here rather than during render is what keeps
+    // SSR and hydration in agreement.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setToday(toLocalDateKey());
   }, []);
 
