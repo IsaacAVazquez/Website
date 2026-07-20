@@ -1,7 +1,12 @@
 /**
  * @jest-environment node
  */
-import { getLaLigaSummary } from "../laLigaData";
+import {
+  getLaLigaSummary,
+  getLaLigaTeamSnapshot,
+  isValidLaLigaTeamId,
+  createEmptyLaLigaSnapshot,
+} from "../laLigaData";
 
 function jsonResponse(payload: unknown, status = 200): Response {
   return new Response(JSON.stringify(payload), {
@@ -399,5 +404,283 @@ describe("getLaLigaSummary", () => {
     // No season dates -> fallback label, and matchday defaults to 0.
     expect(summary.season).toBe("Current season");
     expect(summary.matchday).toBe(0);
+  });
+});
+
+// --- Team snapshot fixture builders ---------------------------------------
+
+/**
+ * The team-detail endpoint (`/teams/{id}`) returns the club object directly
+ * (not wrapped in `{ team }`), and carries the extra profile fields — founded,
+ * clubColors, and coach.name — that the list/fixture endpoints omit.
+ */
+function teamDetailPayload() {
+  return {
+    id: 81,
+    name: "FC Barcelona",
+    shortName: "Barça",
+    tla: "FCB",
+    crest: "https://crests.example/FCB.png",
+    venue: "Spotify Camp Nou",
+    founded: 1899,
+    clubColors: "Blue / Garnet",
+    website: "https://www.fcbarcelona.com",
+    coach: { name: "Hansi Flick" },
+  };
+}
+
+function teamFinishedMatchesPayload() {
+  return {
+    matches: [
+      // Barça win at home (HOME_TEAM winner).
+      {
+        id: 3001,
+        utcDate: "2026-01-10T20:00:00Z",
+        status: "FINISHED",
+        matchday: 20,
+        stage: "REGULAR_SEASON",
+        homeTeam: BARCA,
+        awayTeam: ATLETI,
+        score: { winner: "HOME_TEAM", fullTime: { home: 3, away: 1 } },
+      },
+      // Barça draw away.
+      {
+        id: 3002,
+        utcDate: "2026-01-17T18:30:00Z",
+        status: "FINISHED",
+        matchday: 21,
+        stage: "REGULAR_SEASON",
+        homeTeam: MADRID,
+        awayTeam: BARCA,
+        score: { winner: "DRAW", fullTime: { home: 2, away: 2 } },
+      },
+      // Barça loss at home (AWAY_TEAM winner) — newest, sorts first.
+      {
+        id: 3003,
+        utcDate: "2026-01-24T21:00:00Z",
+        status: "FINISHED",
+        matchday: 22,
+        stage: "REGULAR_SEASON",
+        homeTeam: BARCA,
+        awayTeam: MADRID,
+        score: { winner: "AWAY_TEAM", fullTime: { home: 0, away: 2 } },
+      },
+      // Malformed: missing utcDate -> normalizeFixture returns null, dropped.
+      {
+        id: 3004,
+        status: "FINISHED",
+        matchday: 19,
+        homeTeam: BARCA,
+        awayTeam: ATLETI,
+        score: { winner: "HOME_TEAM", fullTime: { home: 1, away: 0 } },
+      },
+    ],
+  };
+}
+
+function teamScheduledMatchesPayload() {
+  return {
+    matches: [
+      {
+        id: 4002,
+        utcDate: "2026-02-07T20:00:00Z",
+        status: "SCHEDULED",
+        matchday: 24,
+        homeTeam: BARCA,
+        awayTeam: ATLETI,
+        score: { winner: null, fullTime: { home: null, away: null } },
+      },
+      {
+        id: 4001,
+        utcDate: "2026-02-01T16:15:00Z",
+        status: "SCHEDULED",
+        matchday: 23,
+        homeTeam: MADRID,
+        awayTeam: BARCA,
+        score: { winner: null, fullTime: { home: null, away: null } },
+      },
+    ],
+  };
+}
+
+/**
+ * Routes the three `getLaLigaTeamSnapshot` requests. The team-detail URL
+ * (`/teams/{id}`) and the fixtures URLs (`/teams/{id}/matches?...`) both
+ * contain `/teams/`, so `/matches` is matched first.
+ */
+function routeTeamFetch(detailPayload: unknown) {
+  return (input: RequestInfo | URL) => {
+    const url = String(input);
+    if (url.includes("/matches")) {
+      if (url.includes("status=FINISHED")) {
+        return Promise.resolve(jsonResponse(teamFinishedMatchesPayload()));
+      }
+      if (url.includes("status=SCHEDULED")) {
+        return Promise.resolve(jsonResponse(teamScheduledMatchesPayload()));
+      }
+    }
+    if (url.includes("/teams/")) return Promise.resolve(jsonResponse(detailPayload));
+    throw new Error(`Unexpected fetch URL in test: ${url}`);
+  };
+}
+
+describe("getLaLigaTeamSnapshot", () => {
+  const ORIGINAL_TOKEN = process.env.FOOTBALL_DATA_API_TOKEN;
+
+  beforeEach(() => {
+    process.env.FOOTBALL_DATA_API_TOKEN = "test-token";
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+    if (ORIGINAL_TOKEN === undefined) {
+      delete process.env.FOOTBALL_DATA_API_TOKEN;
+    } else {
+      process.env.FOOTBALL_DATA_API_TOKEN = ORIGINAL_TOKEN;
+    }
+  });
+
+  it("normalizes the team profile, splits fixtures, and derives form", async () => {
+    jest
+      .spyOn(global, "fetch")
+      .mockImplementation((input: RequestInfo | URL) => routeTeamFetch(teamDetailPayload())(input));
+
+    const snapshot = await getLaLigaTeamSnapshot("81");
+
+    // Profile carries the extra team-detail fields (founded, clubColors,
+    // manager) plus the venue and TLA-resolved accent color.
+    expect(snapshot.team).toMatchObject({
+      id: "81",
+      name: "FC Barcelona",
+      shortName: "Barça",
+      tla: "FCB",
+      crest: "https://crests.example/FCB.png",
+      venue: "Spotify Camp Nou",
+      accentColor: "#A50044",
+      founded: 1899,
+      clubColors: "Blue / Garnet",
+      manager: "Hansi Flick",
+    });
+
+    // Recent fixtures newest-first, capped at 5; the malformed (no utcDate)
+    // match is dropped.
+    expect(snapshot.recentFixtures.map((f) => f.id)).toEqual(["3003", "3002", "3001"]);
+    // Upcoming fixtures soonest-first.
+    expect(snapshot.upcomingFixtures.map((f) => f.id)).toEqual(["4001", "4002"]);
+
+    // Form derived over the newest-first recent fixtures: loss (0-2 at home),
+    // draw (2-2 away), win (3-1 at home) — exercising all three branches.
+    expect(snapshot.form).toEqual({
+      sequence: ["L", "D", "W"],
+      wins: 1,
+      draws: 1,
+      losses: 1,
+      points: 4,
+      goalsFor: 5,
+      goalsAgainst: 5,
+    });
+
+    expect(typeof snapshot.generatedAt).toBe("string");
+    expect(Number.isNaN(Date.parse(snapshot.generatedAt))).toBe(false);
+  });
+
+  it("falls back on missing profile fields and handles empty fixtures", async () => {
+    // Minimal detail: no shortName (falls back to name), crest via crestUrl,
+    // no venue/founded/clubColors/coach (all null).
+    const detail = {
+      id: 78,
+      name: "Club Atlético de Madrid",
+      tla: "ATM",
+      crestUrl: "https://crests.example/ATM-alt.png",
+    };
+    jest.spyOn(global, "fetch").mockImplementation((input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes("/matches")) return Promise.resolve(jsonResponse({ matches: [] }));
+      if (url.includes("/teams/")) return Promise.resolve(jsonResponse(detail));
+      throw new Error(`Unexpected fetch URL in test: ${url}`);
+    });
+
+    const snapshot = await getLaLigaTeamSnapshot("78");
+
+    expect(snapshot.team).toMatchObject({
+      id: "78",
+      name: "Club Atlético de Madrid",
+      shortName: "Club Atlético de Madrid", // no shortName -> name
+      tla: "ATM",
+      crest: "https://crests.example/ATM-alt.png", // crest -> crestUrl fallback
+      venue: null,
+      accentColor: "#CB3524",
+      founded: null,
+      clubColors: null,
+      manager: null,
+    });
+    expect(snapshot.recentFixtures).toEqual([]);
+    expect(snapshot.upcomingFixtures).toEqual([]);
+    expect(snapshot.form).toEqual({
+      sequence: [],
+      wins: 0,
+      draws: 0,
+      losses: 0,
+      points: 0,
+      goalsFor: 0,
+      goalsAgainst: 0,
+    });
+  });
+
+  it("rejects an invalid team id before hitting the network", async () => {
+    const fetchSpy = jest.spyOn(global, "fetch");
+    await expect(getLaLigaTeamSnapshot("bad-id")).rejects.toMatchObject({ status: 400 });
+    await expect(getLaLigaTeamSnapshot("0")).rejects.toMatchObject({ status: 400 });
+    expect(fetchSpy).not.toHaveBeenCalled();
+  });
+
+  it("surfaces a 404 from the upstream team-detail feed", async () => {
+    // 404 is a 4xx, so fetchFootballDataJson throws immediately with no retry
+    // backoff — keeps the test fast.
+    jest.spyOn(global, "fetch").mockImplementation((input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes("/matches")) return Promise.resolve(jsonResponse({ matches: [] }));
+      if (url.includes("/teams/")) return Promise.resolve(jsonResponse({}, 404));
+      throw new Error(`Unexpected fetch URL in test: ${url}`);
+    });
+
+    await expect(getLaLigaTeamSnapshot("81")).rejects.toMatchObject({ status: 404 });
+  });
+});
+
+describe("isValidLaLigaTeamId", () => {
+  it("accepts positive-integer ids and rejects everything else", () => {
+    expect(isValidLaLigaTeamId("81")).toBe(true);
+    expect(isValidLaLigaTeamId("1")).toBe(true);
+    expect(isValidLaLigaTeamId("100")).toBe(true);
+    expect(isValidLaLigaTeamId("0")).toBe(false); // zero
+    expect(isValidLaLigaTeamId("01")).toBe(false); // leading zero
+    expect(isValidLaLigaTeamId("")).toBe(false);
+    expect(isValidLaLigaTeamId("12a")).toBe(false);
+    expect(isValidLaLigaTeamId("abc")).toBe(false);
+    expect(isValidLaLigaTeamId("-5")).toBe(false);
+    expect(isValidLaLigaTeamId(" 81")).toBe(false); // leading space
+  });
+});
+
+describe("createEmptyLaLigaSnapshot", () => {
+  it("returns a fully-formed empty snapshot shell", () => {
+    const snap = createEmptyLaLigaSnapshot();
+    expect(snap).toMatchObject({
+      season: "2025/26",
+      matchday: 0,
+      sourceLabel: "football-data.org",
+      sourceUrls: { standings: "", scorers: "", assists: "" },
+      clubs: [],
+      scorers: [],
+      assists: [],
+      goalsPerMatchday: [],
+      recentFixtures: [],
+      upcomingFixtures: [],
+      teams: [],
+      teamSnapshots: {},
+    });
+    // updatedAt is today's date, YYYY-MM-DD.
+    expect(snap.updatedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
   });
 });

@@ -190,6 +190,68 @@ export interface BreadcrumbItem {
 }
 
 // ============================================================================
+// AI META TAGS
+// ============================================================================
+
+/**
+ * Serializes AI-optimized metadata hints (expertise, topics, context, etc.) into
+ * a flat record of meta tags. List fields are comma-joined and topics are also
+ * mirrored into `article:tag`.
+ */
+export function generateAIMetaTags(data: {
+  expertise?: string[];
+  specialty?: string;
+  profession?: string;
+  industry?: string[];
+  topics?: string[];
+  contentType?: string;
+  context?: string;
+  summary?: string;
+  primaryFocus?: string;
+}) {
+  const metaTags: Record<string, string> = {};
+
+  if (data.expertise && data.expertise.length > 0) {
+    metaTags["expertise"] = data.expertise.join(", ");
+  }
+
+  if (data.specialty) {
+    metaTags["specialty"] = data.specialty;
+  }
+
+  if (data.profession) {
+    metaTags["profession"] = data.profession;
+  }
+
+  if (data.industry && data.industry.length > 0) {
+    metaTags["industry"] = data.industry.join(", ");
+  }
+
+  if (data.topics && data.topics.length > 0) {
+    metaTags["topics"] = data.topics.join(", ");
+    metaTags["article:tag"] = data.topics.join(", ");
+  }
+
+  if (data.contentType) {
+    metaTags["content-type"] = data.contentType;
+  }
+
+  if (data.context) {
+    metaTags["context"] = data.context;
+  }
+
+  if (data.summary) {
+    metaTags["summary"] = data.summary;
+  }
+
+  if (data.primaryFocus) {
+    metaTags["primary-focus"] = data.primaryFocus;
+  }
+
+  return metaTags;
+}
+
+// ============================================================================
 // ENHANCED PERSON SCHEMA
 // ============================================================================
 

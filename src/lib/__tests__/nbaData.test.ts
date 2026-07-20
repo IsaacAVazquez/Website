@@ -3,6 +3,8 @@
  */
 import {
   getNbaSummary,
+  getNbaTeamSnapshot,
+  isValidNbaTeamId,
   buildSeasonLabel,
   resolveNbaSeasonEndYear,
   createEmptyNbaSnapshot,
@@ -591,6 +593,156 @@ describe("season labelling", () => {
     expect(resolveNbaSeasonEndYear(new Date("2026-09-30T00:00:00Z"))).toBe(2026); // pre-tip
     expect(resolveNbaSeasonEndYear(new Date("2026-10-15T00:00:00Z"))).toBe(2027); // new season
     expect(resolveNbaSeasonEndYear(new Date("2027-01-10T00:00:00Z"))).toBe(2027); // mid new season
+  });
+});
+
+describe("isValidNbaTeamId", () => {
+  it("accepts 2-4 character alphanumeric ids and rejects others", () => {
+    expect(isValidNbaTeamId("lal")).toBe(true);
+    expect(isValidNbaTeamId("BOS")).toBe(true);
+    expect(isValidNbaTeamId("13")).toBe(true);
+    expect(isValidNbaTeamId("a")).toBe(false); // too short
+    expect(isValidNbaTeamId("toolong")).toBe(false); // too long
+    expect(isValidNbaTeamId("la-l")).toBe(false); // hyphen
+    expect(isValidNbaTeamId("")).toBe(false);
+  });
+});
+
+describe("getNbaTeamSnapshot", () => {
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  function routeTeamFetch(payloads: { schedule: unknown; detail: unknown }) {
+    return (input: RequestInfo | URL) => {
+      const url = typeof input === "string" ? input : input.toString();
+      if (url.includes("/schedule")) {
+        return Promise.resolve(jsonResponse(payloads.schedule));
+      }
+      if (url.includes("/teams/")) {
+        return Promise.resolve(jsonResponse(payloads.detail));
+      }
+      return Promise.reject(new Error(`Unexpected fetch URL: ${url}`));
+    };
+  }
+
+  it("rejects an invalid team id before hitting the network", async () => {
+    const fetchSpy = jest.spyOn(global, "fetch");
+    await expect(getNbaTeamSnapshot("bad-id")).rejects.toMatchObject({
+      status: 400,
+    });
+    expect(fetchSpy).not.toHaveBeenCalled();
+  });
+
+  it("normalizes the profile, splits fixtures, and derives form from wins", async () => {
+    const detail = {
+      team: {
+        id: "13",
+        abbreviation: "LAL",
+        displayName: "Los Angeles Lakers",
+        shortDisplayName: "Lakers",
+        color: "552583",
+        logo: "https://logos.example/LAL.png",
+        venue: { fullName: "Crypto.com Arena" },
+      },
+    };
+    const schedule = {
+      team: detail.team,
+      season: { year: 2025 },
+      events: [
+        makeEvent({
+          id: "past-1",
+          date: "2026-06-10T00:00:00Z",
+          completed: true,
+          homeAbbr: "LAL",
+          homeName: "Los Angeles Lakers",
+          awayAbbr: "BOS",
+          awayName: "Boston Celtics",
+          homeScore: "110",
+          awayScore: "100",
+          homeWinner: true,
+        }),
+        makeEvent({
+          id: "past-2",
+          date: "2026-06-12T00:00:00Z",
+          completed: true,
+          homeAbbr: "DEN",
+          homeName: "Denver Nuggets",
+          awayAbbr: "LAL",
+          awayName: "Los Angeles Lakers",
+          homeScore: "120",
+          awayScore: "98",
+          homeWinner: true,
+        }),
+        makeEvent({
+          id: "future-1",
+          date: "2026-06-25T00:00:00Z",
+          completed: false,
+          homeAbbr: "LAL",
+          homeName: "Los Angeles Lakers",
+          awayAbbr: "OKC",
+          awayName: "Oklahoma City Thunder",
+        }),
+      ],
+    };
+
+    jest.spyOn(global, "fetch").mockImplementation(
+      routeTeamFetch({ schedule, detail }) as unknown as typeof fetch
+    );
+
+    const snapshot = await getNbaTeamSnapshot("lal", "west");
+
+    expect(snapshot.team?.id).toBe("lal");
+    expect(snapshot.team?.name).toBe("Los Angeles Lakers");
+    expect(snapshot.team?.conference).toBe("west");
+    expect(snapshot.team?.primaryColor).toBe("552583");
+
+    // Fixtures: two finished (newest first), one upcoming.
+    expect(snapshot.recentFixtures.map((f) => f.id)).toEqual(["past-2", "past-1"]);
+    expect(snapshot.upcomingFixtures.map((f) => f.id)).toEqual(["future-1"]);
+
+    // Form: won past-1 (home win) but lost past-2 (away, home won).
+    expect(snapshot.form.wins).toBe(1);
+    expect(snapshot.form.losses).toBe(1);
+    expect(snapshot.form.sequence).toHaveLength(2);
+    expect(typeof snapshot.generatedAt).toBe("string");
+  });
+
+  it("falls back to the schedule team when the detail feed has no team", async () => {
+    const scheduleTeam = {
+      id: "2",
+      abbreviation: "BOS",
+      displayName: "Boston Celtics",
+      shortDisplayName: "Celtics",
+      logo: "https://logos.example/BOS.png",
+    };
+    jest.spyOn(global, "fetch").mockImplementation(
+      routeTeamFetch({
+        schedule: { team: scheduleTeam, events: [] },
+        detail: { team: null },
+      }) as unknown as typeof fetch
+    );
+
+    const snapshot = await getNbaTeamSnapshot("bos");
+    expect(snapshot.team?.id).toBe("bos");
+    expect(snapshot.recentFixtures).toEqual([]);
+    expect(snapshot.form.sequence).toEqual([]);
+  });
+
+  it("surfaces a 404 from the upstream schedule feed", async () => {
+    jest.spyOn(global, "fetch").mockImplementation(
+      ((input: RequestInfo | URL) => {
+        const url = typeof input === "string" ? input : input.toString();
+        if (url.includes("/schedule")) {
+          return Promise.resolve(jsonResponse({}, 404));
+        }
+        return Promise.resolve(jsonResponse({ team: null }));
+      }) as unknown as typeof fetch
+    );
+
+    await expect(getNbaTeamSnapshot("lal")).rejects.toMatchObject({
+      status: 404,
+    });
   });
 });
 
