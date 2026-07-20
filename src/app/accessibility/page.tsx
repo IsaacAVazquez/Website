@@ -1,11 +1,12 @@
 import { Metadata } from "next";
-import { constructMetadata } from "@/lib/seo";
+import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { StructuredData } from "@/components/StructuredData";
 import Link from "next/link";
 
 export const metadata: Metadata = constructMetadata({
   title: "Accessibility",
   description: "How I approach digital accessibility on this site, including WCAG 2.1 AA conformance, keyboard navigation, screen reader support, and reduced motion.",
-  canonicalUrl: "https://isaacavazquez.com/accessibility",
+  canonicalUrl: "/accessibility",
   dateModified: "2025-02-05",
 });
 
@@ -100,6 +101,17 @@ const strongBodyStyle = {
 export default function AccessibilityPage() {
   return (
     <section className="home-page home-section min-h-screen" aria-label="Accessibility statement">
+      <StructuredData
+        type="BreadcrumbList"
+        data={{
+          items: (
+            generateBreadcrumbStructuredData([
+              { name: "Home", url: "/" },
+              { name: "Accessibility", url: "/accessibility" },
+            ]) as { itemListElement: object[] }
+          ).itemListElement,
+        }}
+      />
       <div className="home-shell home-shell-tight space-y-10">
         <header className="space-y-4">
           <p className="home-kicker mb-0">Accessibility · Updated April 2026</p>

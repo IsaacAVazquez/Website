@@ -29,6 +29,33 @@ function normalizePerson(value: unknown) {
   };
 }
 
+// Article/BlogPosting publisher must be an Organization with a logo to be
+// eligible for Google's Article rich result. Represent the personal brand as
+// an Organization rather than reusing the author Person.
+function normalizeOrganizationPublisher(value: unknown) {
+  const logo = {
+    "@type": "ImageObject",
+    url: `${siteConfig.url}/icons/icon-512x512.png`,
+    width: 512,
+    height: 512,
+  };
+
+  if (value && typeof value === "object") {
+    return {
+      "@type": "Organization",
+      logo,
+      ...(value as Record<string, unknown>),
+    };
+  }
+
+  return {
+    "@type": "Organization",
+    name: typeof value === "string" ? value : siteConfig.name,
+    url: siteConfig.url,
+    logo,
+  };
+}
+
 export function StructuredData({ type = "Person", data = {} }: StructuredDataProps) {
   const getStructuredData = () => {
     const baseData = {
@@ -163,7 +190,7 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
           ...applicationData,
           "@type": "SoftwareApplication",
           "name": data.name || "Project",
-          "description": data.description || "",
+          ...(data.description ? { description: data.description } : {}),
           "image": data.image,
           ...(dateCreated ? { dateCreated } : {}),
           ...(dateModified ? { dateModified } : {}),
@@ -181,13 +208,17 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
         };
       }
 
-      case "BreadcrumbList":
+      case "BreadcrumbList": {
+        // Destructure `items` out so it isn't re-emitted as an invalid
+        // top-level property alongside the computed `itemListElement`.
+        const { items, ...breadcrumbRest } = data;
         return {
           ...baseData,
           "@type": "BreadcrumbList",
-          "itemListElement": data.items || [],
-          ...data,
+          "itemListElement": items || [],
+          ...breadcrumbRest,
         };
+      }
 
       case "SportsApplication": {
         const {
@@ -233,13 +264,17 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
         };
       }
 
-      case "FAQPage":
+      case "FAQPage": {
+        // Destructure `questions` out so it isn't re-emitted as an invalid
+        // top-level property alongside the computed `mainEntity`.
+        const { questions, ...faqRest } = data;
         return {
           ...baseData,
           "@type": "FAQPage",
-          "mainEntity": data.questions || [],
-          ...data,
+          "mainEntity": questions || [],
+          ...faqRest,
         };
+      }
 
       case "CreativeWork": {
         const {
@@ -255,7 +290,7 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
           ...creativeWorkData,
           "@type": "CreativeWork",
           "name": data.name || "Portfolio Project",
-          "description": data.description || "",
+          ...(data.description ? { description: data.description } : {}),
           "author": normalizePerson(author),
           "creator": normalizePerson(creator),
           ...(dateCreated ? { dateCreated } : {}),
@@ -288,12 +323,9 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
           "provider": {
             "@type": "Person",
             "name": siteConfig.name,
-            "jobTitle": "Technical Product Manager",
+            "jobTitle": profile.fullTitle,
             "url": siteConfig.url,
-            "sameAs": [
-              siteConfig.links.linkedin,
-              siteConfig.links.github
-            ]
+            "sameAs": profileSameAs
           },
           ...data,
         };
@@ -324,14 +356,11 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
           "mainEntity": {
             "@type": "Person",
             "name": siteConfig.name,
-            "jobTitle": "Technical Product Manager & UC Berkeley MBA Candidate",
+            "jobTitle": profile.fullTitle,
             "description": siteConfig.description,
             "url": siteConfig.url,
             "image": `${siteConfig.url}${siteConfig.ogImage}`,
-            "sameAs": [
-              siteConfig.links.linkedin,
-              siteConfig.links.github,
-            ],
+            "sameAs": profileSameAs,
           },
           ...data,
         };
@@ -374,7 +403,7 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
             ? { dateModified: dateModified || datePublished }
             : {}),
           "author": normalizePerson(author || authorName),
-          "publisher": normalizePerson(publisher),
+          "publisher": normalizeOrganizationPublisher(publisher),
           "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": data.url || siteConfig.url,

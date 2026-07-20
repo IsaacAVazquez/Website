@@ -8,6 +8,7 @@ export const metadata = constructMetadata({
   description:
     "All projects across product strategy, analytics, platform reliability, and investment research tooling.",
   canonicalUrl: "/portfolio",
+  dateModified: "2026-04-04",
   aiMetadata: {
     profession: "Product Manager",
     expertise: [
@@ -36,6 +37,17 @@ export default function PortfolioPage() {
 
   return (
     <>
+      <AIStructuredData
+        schema={{
+          type: "Breadcrumb",
+          data: {
+            items: [
+              { name: "Home", url: "/" },
+              { name: "Projects", url: "/portfolio" },
+            ],
+          },
+        }}
+      />
       <AIStructuredData
         schema={{
           type: "ItemList",

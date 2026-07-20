@@ -51,7 +51,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
-        <meta name="theme-color" content="#F6F5F1" />
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F6F5F1" />
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#151412" />
         <meta name="color-scheme" content="light dark" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <meta name="mobile-web-app-capable" content="yes" />

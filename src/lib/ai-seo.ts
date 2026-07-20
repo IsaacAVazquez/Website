@@ -7,6 +7,7 @@
  */
 
 import { siteConfig } from "./seo";
+import { profileSameAs } from "./profile";
 
 // ============================================================================
 // TYPES & INTERFACES
@@ -260,10 +261,7 @@ export function generateEnhancedPersonSchema(data: PersonSchemaData) {
     description: data.description || siteConfig.description,
     url: data.url || siteConfig.url,
     image: data.image || `${siteConfig.url}${siteConfig.ogImage}`,
-    sameAs: data.sameAs || [
-      siteConfig.links.linkedin,
-      siteConfig.links.github,
-    ],
+    sameAs: data.sameAs || profileSameAs,
   };
 
   // Job title and professional identity
@@ -470,14 +468,31 @@ export function generateArticleSchema(data: ArticleSchemaData) {
     }
   }
 
-  // Publisher
-  if (data.publisher) {
-    schema.publisher = {
-      "@type": "Organization",
-      name: data.publisher.name,
-      ...(data.publisher.url && { url: data.publisher.url }),
-    };
-  }
+  // Publisher — always emit an Organization with a logo so the Article stays
+  // eligible for Google's rich result even when the caller omits a publisher.
+  schema.publisher = data.publisher
+    ? {
+        "@type": "Organization",
+        name: data.publisher.name,
+        ...(data.publisher.url && { url: data.publisher.url }),
+        logo: {
+          "@type": "ImageObject",
+          url: `${siteConfig.url}/icons/icon-512x512.png`,
+          width: 512,
+          height: 512,
+        },
+      }
+    : {
+        "@type": "Organization",
+        name: siteConfig.name,
+        url: siteConfig.url,
+        logo: {
+          "@type": "ImageObject",
+          url: `${siteConfig.url}/icons/icon-512x512.png`,
+          width: 512,
+          height: 512,
+        },
+      };
 
   // Article section/category
   if (data.articleSection) {

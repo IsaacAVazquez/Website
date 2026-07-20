@@ -7,6 +7,7 @@ export const metadata: Metadata = constructMetadata({
   title: "Analytics Event Reference",
   description:
     "Internal reference for the Google Analytics 4 event tracking wired into this site: event names, parameters, triggers, and setup.",
+  canonicalUrl: "/analytics-reference",
   noIndex: true,
 });
 

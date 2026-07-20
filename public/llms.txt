@@ -2,7 +2,7 @@
 
 > Product manager and UC Berkeley Haas MBA Candidate with 6+ years across SaaS, analytics, civic tech, and QA-to-product work. Builds AI workflow, fintech, sports-data, and decision-support products.
 
-Last reviewed: 2026-07-08
+Last reviewed: 2026-07-20
 
 ## About
 
@@ -49,6 +49,14 @@ Isaac Vazquez is a product manager and UC Berkeley Haas MBA Candidate, Class of 
 - URL: https://isaacavazquez.com/contact
 - Use for: Collaboration, recruiting, consulting, and direct contact.
 
+### Now
+- URL: https://isaacavazquez.com/now
+- Use for: What Isaac is currently focused on, reading, and building.
+
+### Changelog
+- URL: https://isaacavazquez.com/changelog
+- Use for: Recent site updates, new tools, and shipped changes.
+
 ## Live Tools And Dashboards
 
 ### Investment Research
@@ -70,6 +78,10 @@ Isaac Vazquez is a product manager and UC Berkeley Haas MBA Candidate, Class of 
 ### Fantasy Football Draft Assistant
 - URL: https://isaacavazquez.com/fantasy-football/draft-tracker
 - Description: Manual snake-draft tracker with local persistence, roster-pressure cues, queueing, notes, and comparison state.
+
+### Score Pools
+- URL: https://isaacavazquez.com/score-pools
+- Description: Exact-score prediction engine for soccer fixtures, using odds de-vig and a market-calibrated Dixon-Coles scoreline model with an expected-points optimizer and a standing-aware leaderboard.
 
 ### Frontier Model Tracker
 - URL: https://isaacavazquez.com/frontier-models
