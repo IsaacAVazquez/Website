@@ -3,28 +3,41 @@ import { ArrowRight } from "@/components/ui/ServerIcons";
 
 interface ProjectBuildNoteProps {
   href: string;
+  purpose?: string;
+  method?: string;
 }
 
-export function ProjectBuildNote({ href }: ProjectBuildNoteProps) {
+export function ProjectBuildNote({ href, purpose, method }: ProjectBuildNoteProps) {
+  const hasProjectContext = Boolean(purpose && method);
+
   return (
     <aside
       aria-labelledby="project-build-note-title"
       className="border-t border-[var(--home-rule)] bg-[var(--home-paper-alt)]"
     >
       <div className="home-shell py-8 sm:py-10">
-        <p className="home-kicker mb-2">Build notes</p>
+        <p className="home-kicker mb-2">
+          {hasProjectContext ? "Project context" : "Build notes"}
+        </p>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div className="max-w-2xl">
+          <div className={hasProjectContext ? "max-w-3xl" : "max-w-2xl"}>
             <h2
               id="project-build-note-title"
               className="mb-2 text-2xl font-semibold tracking-[-0.04em] text-[var(--home-ink)]"
             >
-              Why I built it this way
+              {hasProjectContext ? "What I use it for" : "Why I built it this way"}
             </h2>
-            <p className="home-body mb-0">
-              The project write-up covers the product decision, the technical tradeoffs, and
-              what I would change after shipping it.
-            </p>
+            {hasProjectContext ? (
+              <div className="space-y-3">
+                <p className="home-body mb-0">{purpose}</p>
+                <p className="home-body mb-0">{method}</p>
+              </div>
+            ) : (
+              <p className="home-body mb-0">
+                The project write-up covers the product decision, the technical tradeoffs, and
+                what I would change after shipping it.
+              </p>
+            )}
           </div>
           <Link
             href={href}
