@@ -47,6 +47,7 @@ Current route inventory and page ownership for the live app.
 | `/golf` | `src/app/golf/page.tsx` | Snapshot-backed PGA Tour leaderboard dashboard (`npm run update:golf`, daily GitHub Actions refresh) |
 | `/earthquake-pulse` | `src/app/earthquake-pulse/page.tsx` | Snapshot-backed global earthquake monitor (USGS feeds) |
 | `/world-cup-2026` | `src/app/world-cup-2026/page.tsx` | Snapshot-backed 2026 FIFA World Cup hub (groups, knockout bracket, schedule, venues) |
+| `/score-pools` (+ `/tracker`, `/settings`) | `src/app/score-pools/page.tsx` | Exact-score prediction pool engine: market-calibrated scoreline model, expected-points pick sheet, tracker, and settings (`npm run update:score-pools`, 6-hourly refresh) |
 | `/tech-startup-tracker` | `src/app/tech-startup-tracker/page.tsx` | Curated tech startup funding tracker (sector/stage, valuations, momentum) |
 | `/bay-area-transit` | `src/app/bay-area-transit/page.tsx` | Snapshot-backed BART dashboard (lines, station departures, advisories) |
 | `/news-pulse` | `src/app/news-pulse/page.tsx` | News Pulse dashboard |
@@ -126,6 +127,7 @@ These routes manage more of their own spacing and width:
 - `/investments`
 - `/la-liga`
 - `/march-madness-2026`
+- `/score-pools` (+ `/score-pools/tracker`, `/score-pools/settings`)
 - `/mba-internship-notifications`
 - `/museum-log`
 - `/news-pulse`
