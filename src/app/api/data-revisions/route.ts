@@ -42,6 +42,10 @@ import {
 } from "@/lib/dataRevision";
 import { getSpaceXSnapshot } from "@/lib/spacexSnapshot";
 import { hasLiveScorePoolsData } from "@/lib/scorePoolsSnapshot";
+import {
+  readRuntimeSurfaceHeartbeat,
+  type RuntimeSurfaceHeartbeat,
+} from "@/lib/runtimeSurfaceHeartbeat";
 import fantasySnapshot from "../../../../public/data/fantasy/ppr.json";
 import investmentsIndex from "../../../../public/data/investments/index.json";
 
@@ -52,6 +56,10 @@ export async function GET() {
   const now = Date.now();
   const nowDate = new Date(now);
   const spacexSnapshot = getSpaceXSnapshot();
+  const [newsPulseHeartbeat, mbaJobsHeartbeat] = await Promise.all([
+    readRuntimeSurfaceHeartbeat("news-pulse"),
+    readRuntimeSurfaceHeartbeat("mba-jobs"),
+  ]);
   const entry = (
     surface: DataSurfaceId,
     payload: unknown,
@@ -67,6 +75,30 @@ export async function GET() {
       source: policy.source,
       now,
       status,
+    });
+  };
+  // Request-time surfaces carry no committed artifact. Their source time and
+  // condition come from the durable heartbeat each route writes on refresh. A
+  // missing heartbeat (no successful fetch yet, or running off-Netlify) falls
+  // through to "unavailable" via the null sourceAsOf. A non-fresh heartbeat
+  // status is passed through so a currently-failing source reads as such even
+  // when the last good data is still within the age target.
+  const runtimeEntry = (
+    surface: DataSurfaceId,
+    heartbeat: RuntimeSurfaceHeartbeat | null
+  ) => {
+    const policy = getDataFreshnessPolicy(surface, nowDate);
+    return createDataRevisionEntry({
+      surface,
+      payload: heartbeat ?? { surface },
+      sourceAsOf: heartbeat?.fetchedAt ?? null,
+      maxAgeMs: policy.maxAgeMs,
+      source: policy.source,
+      now,
+      status:
+        heartbeat && heartbeat.status !== "fresh"
+          ? heartbeat.status
+          : undefined,
     });
   };
   const entries = [
@@ -148,6 +180,8 @@ export async function GET() {
       pollingSnapshot,
       pollingSnapshot.sourceAsOf ?? pollingSnapshot.generatedAt
     ),
+    runtimeEntry("news-pulse", newsPulseHeartbeat),
+    runtimeEntry("mba-jobs", mbaJobsHeartbeat),
   ];
 
   return NextResponse.json(

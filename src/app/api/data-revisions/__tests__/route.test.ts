@@ -54,4 +54,16 @@ describe("GET /api/data-revisions", () => {
 
     expect(entry.maxAgeSeconds).toBe(102 * 60 * 60);
   });
+
+  it("reports runtime-fetch surfaces as unavailable until a durable heartbeat exists", async () => {
+    // The test runtime is not Netlify, so the durable heartbeat store returns
+    // nothing and both request-time surfaces fall through to unavailable with a
+    // null source time rather than being omitted from the ledger.
+    for (const surface of ["news-pulse", "mba-jobs"] as const) {
+      const entry = await getLedgerEntry(surface);
+      expect(entry.source).toBe("runtime-fetch");
+      expect(entry.status).toBe("unavailable");
+      expect(entry.sourceAsOf).toBeNull();
+    }
+  });
 });

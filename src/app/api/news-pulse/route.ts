@@ -3,6 +3,7 @@ import { parseNewsFeed } from "@/lib/news-pulse-feed-parser";
 import { NEWS_FEEDS, type NewsFeedId } from "@/lib/news-pulse-sources";
 import type { NewsArticle } from "@/lib/news-pulse-utils";
 import { readDurableJson, writeDurableJson } from "@/lib/durableJsonCache";
+import { recordRuntimeSurfaceHeartbeat } from "@/lib/runtimeSurfaceHeartbeat";
 
 const CACHE_CONTROL_HEADER = "public, s-maxage=300, stale-while-revalidate=600";
 const ERROR_CACHE_CONTROL_HEADER = "no-store";
@@ -258,7 +259,17 @@ function getOrFetch(key: string): Promise<FeedFetchResult> {
     };
 
     try {
-      return settle(await fetchAllFeeds());
+      const result = settle(await fetchAllFeeds());
+      // Stamp the revision-ledger heartbeat with the served condition. A total
+      // outage (unavailable) served nothing, so it's skipped and the last
+      // known-good heartbeat stands.
+      if (result.body.dataStatus !== "unavailable") {
+        await recordRuntimeSurfaceHeartbeat("news-pulse", {
+          fetchedAt: result.body.fetchedAt,
+          status: result.body.dataStatus,
+        });
+      }
+      return result;
     } catch (error) {
       const message = error instanceof Error ? error.message : "unknown error";
       return settle({
