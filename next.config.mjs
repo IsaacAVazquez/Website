@@ -244,6 +244,7 @@ const nextConfig = {
   //   - all external data APIs run at build time, so browser connect is 'self'
   //   - next-themes + Next bootstrap + JSON-LD need inline <script>
   //   - Framer Motion + style attributes need inline styles
+  //   - Food Map loads pinned Leaflet assets from unpkg.com
   //   - team crests/logos load from many remote CDNs via <img> (img-src https:)
   //
   // Once reports confirm no legitimate surface is flagged (and inline scripts
@@ -256,8 +257,8 @@ const nextConfig = {
       "object-src 'none'",
       "frame-ancestors 'none'",
       "form-action 'self'",
-      "script-src 'self' 'unsafe-inline'",
-      "style-src 'self' 'unsafe-inline'",
+      "script-src 'self' 'unsafe-inline' https://unpkg.com",
+      "style-src 'self' 'unsafe-inline' https://unpkg.com",
       "img-src 'self' data: blob: https:",
       "font-src 'self'",
       "connect-src 'self'",
