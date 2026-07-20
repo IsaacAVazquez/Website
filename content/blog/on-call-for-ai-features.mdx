@@ -1,0 +1,38 @@
+---
+title: "If You Shipped a Feature With a Model in It, You Need an On-Call Story First"
+excerpt: "Teams ship AI features and then discover they have no idea when the feature is failing, because a feature with a model in it fails differently than normal software. It fails plausibly, not loudly, and the QA discipline that catches that is on-call and observability adapted for systems that are confidently wrong."
+publishedAt: "2026-01-25"
+category: "QA Engineering"
+tags: ["QA Engineering", "AI Reliability", "Observability", "On-Call", "AI Testing"]
+featured: false
+cluster: "Systems & Quality"
+author: "Isaac Vazquez"
+seo:
+  title: "On-Call for AI Features: Monitoring Systems That Fail Plausibly"
+  description: "Why AI features need an on-call and observability story before they ship. How to monitor probabilistic systems that fail silently, set statistical SLOs, and write a runbook for an AI incident."
+  keywords: ["AI observability", "on-call AI features", "monitoring LLM production", "AI reliability", "AI SLO", "QA for AI"]
+---
+
+# If You Shipped a Feature With a Model in It, You Need an On-Call Story First
+
+I spent enough years in QA to have a reflex about shipping, which is to ask how we will know when this breaks, and I have noticed that AI features tend to ship without an answer to that question. A team builds something with a model in it, the demo works, the launch goes fine, and then weeks later someone notices that the quality has quietly degraded, or that the feature has been refusing reasonable requests, or that it has been confidently wrong in a way no one was watching for. The reason this keeps happening is that a feature with a model in it fails differently than normal software, and the monitoring most teams have was built for the way normal software fails. Regular code breaks loudly, with an error and a stack trace you can alert on. An AI feature breaks by producing plausible output that happens to be wrong, and nothing throws, so nothing pages, and you find out from a user or from a metric moving in the wrong direction long after the fact.
+
+What I think this means is that an AI feature is not ready to ship when the demo works, it is ready when you can answer how you will know it is failing in production, and that answer is an on-call and observability story you have to build on purpose.
+
+## AI features fail plausibly, so error monitoring is the wrong instrument
+
+The core problem is that the failure mode is silence. Traditional observability is built around exceptions and error rates, the assumption that when something goes wrong the system will tell you, and that assumption is exactly what breaks with a model. A model handed a bad input or drifting into a bad pattern does not throw, it produces a confident, well-formatted, wrong answer, and every dashboard that watches for errors stays green while the actual quality falls. So the first shift is to stop monitoring only for errors and start monitoring the output itself, because the thing that will hurt you is not a spike in exceptions, it is a slow rise in answers that are fluent and incorrect, and no amount of watching your error rate will surface it. You have to look at what the system is actually saying, not just whether it crashed.
+
+## What to watch is quality signals, not just system health
+
+Once you accept that you are monitoring output, the question becomes what to watch, and the useful signals are different from the usual system-health metrics. Latency and cost still matter and are easy, but the ones that catch quality problems are things like how often the model is refusing or hedging when it should be answering, whether the distribution of its outputs is drifting from what you validated, and, most usefully, what users do in response. A rising rate of users rephrasing, correcting, thumbs-downing, or abandoning is often the earliest and most honest signal that the feature has degraded, because your users are running a continuous evaluation whether you asked them to or not. Instrumenting those reactions and treating them as a quality alarm, rather than as passive feedback you look at quarterly, is one of the highest-leverage things a team can do, because it turns the people already noticing the problem into your monitoring system.
+
+## SLOs for a probabilistic system are statistical, not absolute
+
+The instinct from traditional reliability is to set a target and alert when it is violated, and that instinct is right, but it has to be adapted, because you cannot assert that a model's output equals an expected value the way you assert an API returns the right status code. A service level objective for an AI feature is statistical, a statement that the output meets the bar on some high percentage of a representative sample, scored by whatever oracle fits the task, and the alert fires when that rate regresses rather than when any single output is wrong. This is the same adjustment eval-driven teams already made, moving from deterministic assertions to measured pass rates, and it belongs in production monitoring too, because a probabilistic system needs a probabilistic bar. The point is not perfection on every response, it is catching the moment the pass rate drops, because that drop is the signal that something upstream, a model update, a prompt change, a shift in inputs, has moved the system off the behavior you signed off on.
+
+## The runbook for an AI incident has moves normal incidents do not
+
+The last piece is the on-call runbook, and an AI incident has levers a normal one does not, which is worth working out before you are in the middle of one at two in the morning. When quality drops, the cause is often not the code, it is the prompt, the model version, or the context being retrieved, and the response is to be able to roll those back independently. Being able to revert a prompt to a known-good version, pin a model that just changed under you, or fall back to a safer, simpler behavior while you diagnose, are the AI-specific moves that turn an incident into a controlled one. Teams that shipped without these discover during the incident that they cannot roll back the thing that actually broke, because the model quietly updated or the prompt is entangled with the deploy, and that is a bad time to learn it. The runbook should assume the failure is in the model layer, because often it is, and give on-call a way to act on that layer directly.
+
+The pattern I would pull out of this is that a feature with a model in it inherits a failure mode traditional software does not have, which is being confidently and silently wrong, and none of the monitoring built for loud failures will catch it. The fix is not exotic, it is the QA and reliability discipline we already know, pointed at the output instead of the errors, with quality signals and user reactions as the alarms, statistical SLOs instead of absolute ones, and a runbook that can roll back the model layer. Build that before you ship, not after the first quiet degradation, because the alternative is finding out from your users that the feature has been broken for a week, and by then the trust is the thing you are trying to recover.

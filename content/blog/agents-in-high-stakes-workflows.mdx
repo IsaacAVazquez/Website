@@ -1,0 +1,38 @@
+---
+title: "When an Agent Touches Money, Autonomy Is the Wrong Default"
+excerpt: "The agent conversation has moved to let it act on its own, and for low-stakes work that is fine. The moment an agent can move money, change production, or take an action you cannot take back, the design question stops being how autonomous can we make it and becomes how do we keep the consequential actions inspectable and reversible."
+publishedAt: "2026-02-22"
+category: "Agentic AI"
+tags: ["Agentic AI", "AI Agents", "Product Management", "AI Safety", "Guardrails"]
+featured: false
+cluster: "Agentic AI"
+author: "Isaac Vazquez"
+seo:
+  title: "High-Stakes AI Agents: Why Autonomy Is the Wrong Default"
+  description: "How to design AI agents for high-stakes workflows where actions are irreversible. Why reversibility, least privilege, real approval steps, and audit trails matter more than raw autonomy."
+  keywords: ["high-stakes AI agents", "agent guardrails", "AI agent approvals", "least privilege AI", "reversible actions agents", "agentic AI design"]
+---
+
+# When an Agent Touches Money, Autonomy Is the Wrong Default
+
+A lot of the agent conversation right now is a competition over how much you can let the thing do on its own, and for a whole class of tasks that competition is fine, because the cost of a mistake is a wasted minute and a retry. My worry is that the same instinct, more autonomy is better, is getting carried into workflows where it does not belong, the ones where an agent can move money, change a production system, send something to a customer, or take any action that you cannot cleanly undo. In those workflows I think autonomy is the wrong default, and not because agents are not capable, but because the question you should be asking changes. For low-stakes work the question is how much can we automate. For high-stakes work the question is how do we make the consequential actions inspectable and reversible, and those are different design problems that happen to share a technology.
+
+What I think this means is that the interesting engineering in high-stakes agents is not the autonomy, it is the structure you build around the two or three actions that actually matter.
+
+## Reversibility is the axis that should decide how much autonomy an action gets
+
+The most useful way I have found to reason about this is to sort an agent's possible actions by whether they can be taken back, because reversibility, not difficulty, is what should govern how much freedom an action gets. Reading data, drafting a response, proposing a change, all of these are reversible in the sense that a wrong one costs nothing you cannot recover, and it is completely reasonable to let an agent do them freely. Moving money, deleting records, deploying to production, sending an irreversible message, these are the actions where a single confident mistake is expensive and permanent, and they deserve a different level of control regardless of how good the agent is. Designing an agent well starts with drawing that line explicitly, marking which actions are recoverable and which are not, because everything else follows from where that line sits.
+
+## Least privilege is the same discipline we already apply to every other system
+
+None of this is a new idea, which is the point, because we already know how to constrain systems that can do damage and we have simply been slow to apply it to agents. Least privilege, the principle that a component should be able to do only what its job requires and nothing more, is standard practice for service accounts and API keys, and it is exactly the discipline an agent needs. An agent that only ever needs to read from three systems and write to one should not have credentials that let it touch anything else, because the blast radius of a compromised or confused agent is defined by what it is allowed to do, not by what it was supposed to do. Scoping an agent's permissions tightly is boring, well-understood security work, and it is the single highest-leverage thing you can do to make a high-stakes agent safe, precisely because it caps the worst case no matter how the agent misbehaves.
+
+## Approval steps only work if you design against rubber-stamping
+
+The obvious answer to irreversible actions is a human approval step, and I believe in them, but I want to be honest about their failure mode, because a badly designed approval step is worse than none. If an agent asks a human to confirm every action, including the harmless ones, the human learns to click approve reflexively, and by the time a genuinely consequential action shows up they are rubber-stamping it along with everything else. The approval that protects you is the one that is rare, specific, and legible, surfacing only the actions that actually carry risk and giving the human enough context to make a real decision rather than a reflex one. That means the design work is not adding confirmations, it is deciding which handful of actions are worth interrupting a person for and making those interruptions carry real information, so that the human's attention is spent where it matters instead of spread thin across a hundred trivial clicks.
+
+## Audit trails and undo are what let you recover when the other layers fail
+
+The last piece is accepting that some bad action will get through eventually, and building so that when it does you can see what happened and reverse it. An audit trail that logs every action an agent took, with enough detail to reconstruct why, is what turns an incident from a mystery into a cleanup, and the ability to undo, whether through soft deletes, staged changes, or transactions you can roll back, is what turns a permanent mistake into a temporary one. I think of these as the layer that assumes the earlier layers will sometimes fail, which they will, because no amount of scoping and approval catches everything. The teams that will be comfortable giving agents real responsibility are the ones that can answer two questions at any time, what did the agent do and can we take it back, and if the answer to either is no, the workflow was not ready for an agent.
+
+The pattern I would pull out of this is that high-stakes agent design is mostly not about the agent, it is about the small number of actions that carry real consequences and the structure you wrap around them. Sort actions by reversibility, scope permissions to the minimum, make approvals rare and meaningful, and keep an audit trail you can act on, and you can give an agent genuine responsibility without betting the business on it never making a mistake. Chasing maximum autonomy in these workflows gets the question backwards, because the goal was never to remove the human from the consequential decisions, it was to remove them from the trivial ones so their attention is available for the decisions that cannot be undone.

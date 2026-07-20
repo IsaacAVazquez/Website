@@ -264,4 +264,57 @@ export const ARTICLE_COVER_IMAGES: ArticleCoverImageSpec[] = [
   { slug: "la-liga-2025-26-season-verdict", strategy: "wikimedia", query: "La Liga football soccer match stadium", alt: "A football match at a stadium" },
   { slug: "la-liga-2025-26-supercopa-alonso-sacked", strategy: "wikimedia", query: "La Liga football soccer match stadium", alt: "A football match at a stadium" },
   { slug: "la-liga-2025-26-title-race-run-in", strategy: "wikimedia", query: "La Liga football soccer match stadium", alt: "A football match at a stadium" },
+
+  // ---------------------------------------------------------------------------
+  // Weekly series — year coverage (Sundays, 2025-07-20 through 2026-07-19)
+  // ---------------------------------------------------------------------------
+
+  // Sports & Fantasy — concrete sport imagery
+  { slug: "world-cup-2026-quarterfinals-recap", strategy: "wikimedia", query: "FIFA World Cup soccer match stadium", alt: "A soccer match in a large stadium" },
+  { slug: "world-cup-2026-final-spain-champions", strategy: "wikimedia", query: "FIFA World Cup final soccer stadium", alt: "A soccer stadium during a major match" },
+  { slug: "fantasy-football-training-camp-2025-signal-vs-noise", strategy: "wikimedia", query: "NFL training camp football practice", alt: "American football players at practice" },
+  { slug: "fantasy-football-2025-draft-tiers-adp", strategy: "wikimedia", query: "American football NFL game action", alt: "American football players during a game" },
+  { slug: "fantasy-football-2025-draft-day-decisions", strategy: "wikimedia", query: "American football NFL game", alt: "American football players during a game" },
+  { slug: "nfl-2025-week-1-overreactions", strategy: "wikimedia", query: "NFL football game action", alt: "American football players during a game" },
+  { slug: "fantasy-football-2025-playoff-push", strategy: "wikimedia", query: "American football NFL stadium game", alt: "An American football game in a stadium" },
+  { slug: "mlb-2025-postseason-what-october-rewards", strategy: "wikimedia", query: "MLB baseball game pitcher", alt: "A baseball game in progress" },
+  { slug: "super-bowl-lx-preview-seahawks-patriots", strategy: "wikimedia", query: "American football NFL stadium game day", alt: "An American football stadium on game day" },
+  { slug: "super-bowl-lx-seahawks-defense", strategy: "wikimedia", query: "American football NFL game action", alt: "American football players during a game" },
+  { slug: "space-2025-year-in-review", strategy: "wikimedia", query: "rocket launch spaceflight", alt: "A rocket launching" },
+  { slug: "apple-iphone-17-ai-strategy-2025", strategy: "wikimedia", query: "iPhone smartphone", alt: "A modern smartphone" },
+  { slug: "ces-2026-what-mattered", strategy: "wikimedia", query: "humanoid robot technology", alt: "A humanoid robot" },
+
+  // Signals & Commentary — editorial cards (macro/AI commentary, stock would be filler)
+  { slug: "ai-talent-war-summer-2025", strategy: "editorial-card", reason: ABSTRACT_AI },
+  { slug: "hyperscaler-capex-2025-when-does-it-pay-off", strategy: "editorial-card", reason: ABSTRACT_MACRO },
+  { slug: "openai-devday-2025-platform-play", strategy: "editorial-card", reason: ABSTRACT_AI },
+  { slug: "ai-circular-financing-2025", strategy: "editorial-card", reason: ABSTRACT_MACRO },
+  { slug: "2025-off-year-elections-signal", strategy: "editorial-card", reason: "Diffuse politics and economy commentary; no single neutral subject to picture." },
+  { slug: "gpt-5-1-and-the-model-release-treadmill", strategy: "editorial-card", reason: ABSTRACT_AI },
+  { slug: "ai-2025-year-in-review-agents-mainstream", strategy: "editorial-card", reason: ABSTRACT_AI },
+  { slug: "2026-predictions-what-i-actually-believe", strategy: "editorial-card", reason: ABSTRACT_AI },
+  { slug: "ai-capex-vs-real-economy-2026", strategy: "editorial-card", reason: ABSTRACT_MACRO },
+  { slug: "ai-mid-february-2026-signals", strategy: "editorial-card", reason: ABSTRACT_AI },
+  { slug: "week-in-tech-march-22-2026", strategy: "editorial-card", reason: ABSTRACT_MACRO },
+  { slug: "markets-ai-mid-may-2026", strategy: "editorial-card", reason: ABSTRACT_MACRO },
+  { slug: "wwdc-2026-apple-ai-recap", strategy: "editorial-card", reason: ABSTRACT_AI },
+  { slug: "gpt-5-launch-what-actually-changed", strategy: "editorial-card", reason: ABSTRACT_AI },
+
+  // Agentic AI cluster
+  { slug: "agentic-ai-production-reality-check-fall-2025", strategy: "editorial-card", reason: ABSTRACT_AI },
+  { slug: "agents-in-high-stakes-workflows", strategy: "editorial-card", reason: ABSTRACT_AI },
+  { slug: "context-window-arms-race-2026", strategy: "editorial-card", reason: ABSTRACT_AI },
+
+  // Systems & Quality cluster
+  { slug: "on-call-for-ai-features", strategy: "editorial-card", reason: ABSTRACT_QA },
+  { slug: "supply-chain-risk-agent-era", strategy: "editorial-card", reason: ABSTRACT_QA },
+
+  // PM Workflows cluster
+  { slug: "ai-annual-planning-pm-2026", strategy: "editorial-card", reason: ABSTRACT_PM },
+  { slug: "product-management-2026-what-the-job-becomes", strategy: "editorial-card", reason: ABSTRACT_PM },
+  { slug: "shipping-ai-feature-under-deadline", strategy: "editorial-card", reason: ABSTRACT_PM },
+
+  // Fintech Product & Pricing
+  { slug: "2026-investing-setup-rates-and-risk", strategy: "editorial-card", reason: ABSTRACT_FINTECH },
+  { slug: "tariff-volatility-boring-portfolio", strategy: "editorial-card", reason: ABSTRACT_FINTECH },
 ];
