@@ -174,6 +174,7 @@ Confirm live API routes from `src/app/api/**/route.ts`. Current routes:
 - `/api/bay-area-transit/summary` and `/api/bay-area-transit/stations/[stationId]`
 - `/api/earthquake-pulse/summary`
 - `/api/fantasy-data`
+- `/api/formula-1/summary` and `/api/formula-1/meetings/[meetingId]`
 - `/api/golf/summary` and `/api/golf/players/[playerId]`
 - `/api/investments/index`, `/api/investments/quotes`, `/api/investments/data/[symbol]`
 - `/api/la-liga/summary` and `/api/la-liga/teams/[teamId]`
