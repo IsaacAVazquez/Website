@@ -131,8 +131,9 @@ fix in the whole audit and it's a zero-code change.
 - [x] **Polling aggregator is serving fabricated data.** Interim disclosure +
   the page metadata reword landed 2026-07-06 (see "Landed" above), and the real
   VoteHub pipeline shipped afterward (`scripts/buildPollingSnapshot.ts` +
-  `update-polling.yml`, every 6h). PR #331 (open, 2026-07-20) moves the
-  refresh to the blob lane with the workflow reduced to a daily seed refresh.
+  `update-polling.yml`, every 6h). The blob-lane move (workflow reduced to a
+  daily seed refresh) is PR #334 — a re-land of #331, which GitHub marked
+  merged but which only ever merged into the #329 stack branch, not main.
   Original finding, for the record: the hand-edited snapshot
   lists 2026 Senate races in NV/WI/PA/AZ that aren't on the 2026 ballot, recycles
   2024 matchups, has Ruben Gallego running in two states at once, and attributes
