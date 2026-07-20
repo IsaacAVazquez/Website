@@ -127,19 +127,7 @@ export default async function Home() {
   // ships. Live tools are projects with a real hosted destination set on the
   // case study.
   const allPosts = getAllBlogPostPreviews();
-  const preferredWritingSlugs = [
-    "agentic-ai-line-item-not-pilot",
-    "building-an-investment-research-platform",
-    "qa-automation-daily-deploys",
-  ];
-  const preferredWritingSet = new Set(preferredWritingSlugs);
-  const recentPosts = [
-    ...preferredWritingSlugs.flatMap((slug) => {
-      const post = allPosts.find((candidate) => candidate.slug === slug);
-      return post ? [post] : [];
-    }),
-    ...allPosts.filter((post) => !preferredWritingSet.has(post.slug)),
-  ].slice(0, 3);
+  const recentPosts = allPosts.slice(0, 3);
   const allProjects = getPortfolioProjects();
   // The "Live tools" directory groups every project that ships a real
   // destination (on-site route or hosted app) by category, so the homepage
