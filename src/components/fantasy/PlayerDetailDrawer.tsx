@@ -31,6 +31,12 @@ interface PlayerDetailDrawerProps {
    * per-player adp values are present in the data.
    */
   adpAvailable?: boolean;
+  /**
+   * Whether the calling board ranks players on the overall scale (overall/flex),
+   * so the ADP value/reach signal is meaningful. False on position boards, where
+   * rankEcr is the position rank and isn't comparable to an overall ADP.
+   */
+  valueSignalAvailable?: boolean;
   onClose: () => void;
 }
 
@@ -60,6 +66,7 @@ function StatCell({ label, children }: { label: string; children: React.ReactNod
  */
 export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onClose,
   adpAvailable = true,
+  valueSignalAvailable = true,
 }: PlayerDetailDrawerProps) {
   const reduceMotion = useReducedMotion();
   const panelRef = useRef<HTMLDivElement>(null);
@@ -120,7 +127,8 @@ export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onCl
   }, [player, onClose]);
 
   const isOpen = Boolean(player);
-  const valueSignal = player && adpAvailable ? getValueVsAdp(player) : null;
+  const valueSignal =
+    player && adpAvailable && valueSignalAvailable ? getValueVsAdp(player) : null;
   const spread = player ? getConsensusSpread(player) : null;
   const isQueued = player ? queue.isQueued(player.id) : false;
   const inCompare = player ? compare.inCompare(player.id) : false;

@@ -39,16 +39,26 @@ function compareByPublishedDateDesc(
 }
 
 async function renderMarkdown(content: string): Promise<string> {
-  const [{ remark }, { default: remarkGfm }, { default: remarkHtml }] =
-    await Promise.all([
-      import("remark"),
-      import("remark-gfm"),
-      import("remark-html"),
-    ]);
+  const [
+    { remark },
+    { default: remarkGfm },
+    { default: remarkRehype },
+    { default: rehypeSanitize },
+    { default: rehypeStringify },
+  ] = await Promise.all([
+    import("remark"),
+    import("remark-gfm"),
+    import("remark-rehype"),
+    import("rehype-sanitize"),
+    import("rehype-stringify"),
+  ]);
 
+  // Sanitize on render so untrusted HTML can never reach dangerouslySetInnerHTML.
   const processed = await remark()
     .use(remarkGfm)
-    .use(remarkHtml, { sanitize: true })
+    .use(remarkRehype)
+    .use(rehypeSanitize)
+    .use(rehypeStringify)
     .process(content);
 
   return processed.toString();
@@ -95,6 +105,17 @@ export async function getAllChangelogEntries(): Promise<ChangelogEntry[]> {
     if (!source) continue;
 
     const { metadata, content } = source;
+    // Skip malformed entries rather than let a missing title/date poison the sort
+    // with a NaN timestamp. Entries are machine-appended, so this guards against a
+    // bad write, not an expected path.
+    if (
+      !metadata.title ||
+      !metadata.publishedAt ||
+      Number.isNaN(new Date(metadata.publishedAt).getTime())
+    ) {
+      console.warn(`Skipping malformed changelog entry: ${slug}`);
+      continue;
+    }
     entries.push({
       slug,
       title: metadata.title,
@@ -117,6 +138,7 @@ export function getLatestChangelogEntryDate(): string | null {
     const source = readChangelogSource(slug);
     if (!source) continue;
     const date = source.metadata.publishedAt;
+    if (!date || Number.isNaN(new Date(date).getTime())) continue;
     if (!latest || new Date(date).getTime() > new Date(latest).getTime()) {
       latest = date;
     }

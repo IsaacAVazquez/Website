@@ -194,9 +194,16 @@ export function simulatePath(
       // plus Social Security, pension, and part-time income — can no longer
       // fund the desired lifestyle as the funding-shortfall point instead.
       if (strategy === "fixed-percent" && depletionAge === null) {
-        const realDraw = (swr * startBalance) / inflationFactor;
-        const realOtherIncome = otherIncome / inflationFactor;
-        if (realDraw + realOtherIncome < FIXED_PERCENT_SPEND_FLOOR * input.desiredAnnualSpend) {
+        // Total real income the plan actually funds this year. Because
+        // netNeed = spending − otherIncome, the portfolio draw already nets out
+        // guaranteed income, so total real income is max(swr·balance,
+        // otherIncome) — guaranteed income sets a floor and must be counted
+        // once, not added on top of a draw that already accounts for it. (The
+        // old `realDraw + realOtherIncome` double-counted it, masking real
+        // shortfalls whenever guaranteed income ran between ~40% and ~80% of the
+        // desired spend.)
+        const realIncome = Math.max(swr * startBalance, otherIncome) / inflationFactor;
+        if (realIncome < FIXED_PERCENT_SPEND_FLOOR * input.desiredAnnualSpend) {
           depletionAge = age;
         }
       }

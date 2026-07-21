@@ -7,18 +7,20 @@ jest.mock("remark", () => ({
   })),
 }));
 jest.mock("remark-gfm", () => jest.fn());
-jest.mock("remark-html", () => jest.fn());
+jest.mock("remark-rehype", () => jest.fn());
+jest.mock("rehype-sanitize", () => jest.fn());
+jest.mock("rehype-stringify", () => jest.fn());
 
 import fs from "fs";
 import matter from "gray-matter";
 import { remark } from "remark";
-import remarkHtml from "remark-html";
+import rehypeSanitize from "rehype-sanitize";
 import { getAllChangelogEntries } from "../changelog";
 
 const mockFs = fs as jest.Mocked<typeof fs>;
 const mockMatter = matter as unknown as jest.Mock;
 const mockRemark = remark as unknown as jest.Mock;
-const mockRemarkHtml = remarkHtml as unknown as jest.Mock;
+const mockRehypeSanitize = rehypeSanitize as unknown as jest.Mock;
 
 describe("getAllChangelogEntries", () => {
   beforeEach(() => {
@@ -41,6 +43,6 @@ describe("getAllChangelogEntries", () => {
     await getAllChangelogEntries();
     const processor = mockRemark.mock.results.at(-1)?.value;
 
-    expect(processor.use).toHaveBeenCalledWith(mockRemarkHtml, { sanitize: true });
+    expect(processor.use).toHaveBeenCalledWith(mockRehypeSanitize);
   });
 });

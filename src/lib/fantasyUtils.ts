@@ -131,6 +131,12 @@ export const ADP_SIGNAL_THRESHOLD = 10;
  * Positive delta means the market drafts him later than the experts rank him
  * (a value), negative means earlier (a reach). Returns null when the player
  * has no ADP reading or no usable rank.
+ *
+ * Invariant: `adp` is an overall draft position, so `rankEcr` must be on the
+ * overall scale for the delta to mean anything. Only call this for players from
+ * the overall or flex boards; on a position board `rankEcr` is the position rank
+ * (e.g. QB9) and the result is meaningless. Callers gate on the board scale (see
+ * the `valueSignalAvailable` prop threaded to the board, drawer, and compare).
  */
 export function getValueVsAdp(
   player: Player

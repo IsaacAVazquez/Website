@@ -13,6 +13,8 @@ import { CompareModal } from "./CompareModal";
 interface CompareTrayProps {
   resolvePlayer: (id: string) => Player | undefined;
   publishedRank?: (player: Player) => string;
+  /** Passed through to CompareModal — see PlayerDetailDrawer for the rationale. */
+  valueSignalAvailable?: boolean;
 }
 
 /**
@@ -20,7 +22,7 @@ interface CompareTrayProps {
  * page and opens the side-by-side modal. Renders nothing until at least one
  * player is pinned, so it never steals space during normal browsing.
  */
-export function CompareTray({ resolvePlayer, publishedRank }: CompareTrayProps) {
+export function CompareTray({ resolvePlayer, publishedRank, valueSignalAvailable = true }: CompareTrayProps) {
   const reduceMotion = useReducedMotion();
   const compare = useCompareTray();
   const [open, setOpen] = useState(false);
@@ -100,6 +102,7 @@ export function CompareTray({ resolvePlayer, publishedRank }: CompareTrayProps) 
         <CompareModal
           players={players}
           publishedRank={publishedRank}
+          valueSignalAvailable={valueSignalAvailable}
           onClose={() => setOpen(false)}
           onRemove={(id) => {
             compare.remove(id);

@@ -1,5 +1,4 @@
 import type {
-  FrontierModel,
   FrontierModelsSnapshot,
   FrontierModality,
   FrontierProvider,

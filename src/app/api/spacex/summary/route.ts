@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getMissionControlSummary } from "@/lib/spacexData";
 import { logger } from "@/lib/logger";
 import { createSnapshotResponseHeaders } from "@/lib/snapshotResponse";
+import { NO_STORE_HEADERS } from "@/lib/apiCacheHeaders";
 
 export async function GET() {
   try {
@@ -30,7 +31,7 @@ export async function GET() {
       {
         error: message,
       },
-      { status }
+      { status, headers: NO_STORE_HEADERS }
     );
   }
 }

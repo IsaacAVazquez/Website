@@ -179,22 +179,30 @@ function stripLeadingMarkdownH1(content: string): string {
 }
 
 async function renderBlogPostHtml(content: string): Promise<string> {
-  const [{ remark }, { default: remarkGfm }, { default: remarkHtml }] =
-    await Promise.all([
-      import("remark"),
-      import("remark-gfm"),
-      import("remark-html"),
-    ]);
+  const [
+    { remark },
+    { default: remarkGfm },
+    { default: remarkRehype },
+    { default: rehypeSanitize },
+    { default: rehypeStringify },
+  ] = await Promise.all([
+    import("remark"),
+    import("remark-gfm"),
+    import("remark-rehype"),
+    import("rehype-sanitize"),
+    import("rehype-stringify"),
+  ]);
 
-  // Note: the `{ sanitize: true }` option on remark-html is deprecated
-  // (and was effectively a no-op in modern remark). All posts under
-  // content/blog are author-controlled (single-author repo, committed by
-  // Isaac only) and never user-generated, so no runtime HTML sanitization
-  // is enforced here. If user-generated content is ever introduced, switch
-  // to a remark-rehype + rehype-sanitize + rehype-stringify chain.
+  // Posts are author-controlled today, but rendering through rehype-sanitize means
+  // the safety no longer rests on that assumption: unsafe HTML (raw <script>,
+  // javascript: URLs, inline event handlers) is stripped before the result ever
+  // reaches dangerouslySetInnerHTML, so introducing third-party or user-supplied
+  // content later can't turn this path into stored XSS.
   const processedContent = await remark()
     .use(remarkGfm)
-    .use(remarkHtml)
+    .use(remarkRehype)
+    .use(rehypeSanitize)
+    .use(rehypeStringify)
     .process(content);
 
   return processedContent.toString();

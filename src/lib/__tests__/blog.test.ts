@@ -8,13 +8,17 @@ jest.mock('remark', () => ({
   })),
 }));
 jest.mock('remark-gfm', () => jest.fn());
-jest.mock('remark-html', () => jest.fn());
+jest.mock('remark-rehype', () => jest.fn());
+jest.mock('rehype-sanitize', () => jest.fn());
+jest.mock('rehype-stringify', () => jest.fn());
 
 import fs from 'fs';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import remarkGfm from 'remark-gfm';
-import remarkHtml from 'remark-html';
+import remarkRehype from 'remark-rehype';
+import rehypeSanitize from 'rehype-sanitize';
+import rehypeStringify from 'rehype-stringify';
 import {
   getBlogPostSlugs,
   getBlogPostBySlug,
@@ -38,7 +42,9 @@ const mockFs = fs as jest.Mocked<typeof fs>;
 const mockMatter = matter as unknown as jest.Mock;
 const mockRemark = remark as unknown as jest.Mock;
 const mockRemarkGfm = remarkGfm as unknown as jest.Mock;
-const mockRemarkHtml = remarkHtml as unknown as jest.Mock;
+const mockRemarkRehype = remarkRehype as unknown as jest.Mock;
+const mockRehypeSanitize = rehypeSanitize as unknown as jest.Mock;
+const mockRehypeStringify = rehypeStringify as unknown as jest.Mock;
 
 function makeFrontmatter(overrides: Partial<BlogPost> = {}) {
   return {
@@ -182,7 +188,9 @@ describe('getBlogPostBySlug', () => {
     const processor = mockRemark.mock.results.at(-1)?.value;
 
     expect(processor.use).toHaveBeenNthCalledWith(1, mockRemarkGfm);
-    expect(processor.use).toHaveBeenNthCalledWith(2, mockRemarkHtml);
+    expect(processor.use).toHaveBeenNthCalledWith(2, mockRemarkRehype);
+    expect(processor.use).toHaveBeenNthCalledWith(3, mockRehypeSanitize);
+    expect(processor.use).toHaveBeenNthCalledWith(4, mockRehypeStringify);
   });
 });
 
