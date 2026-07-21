@@ -51,7 +51,11 @@ export function latest(arr: unknown, field: string): number | undefined {
   const found = [...arr]
     .reverse()
     .find((r: RawRecord) => r[field] != null) as RawRecord | undefined;
-  return found ? Number(found[field]) : undefined;
+  if (!found) return undefined;
+  // Guard against dirty snapshot values (e.g. "N/A"): Number() would yield NaN,
+  // which slips past downstream `!= null` checks and renders as a broken figure.
+  const value = Number(found[field]);
+  return Number.isFinite(value) ? value : undefined;
 }
 
 export function transformSection(section: string, raw: unknown): unknown {
