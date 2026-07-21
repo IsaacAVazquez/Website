@@ -39,16 +39,26 @@ function compareByPublishedDateDesc(
 }
 
 async function renderMarkdown(content: string): Promise<string> {
-  const [{ remark }, { default: remarkGfm }, { default: remarkHtml }] =
-    await Promise.all([
-      import("remark"),
-      import("remark-gfm"),
-      import("remark-html"),
-    ]);
+  const [
+    { remark },
+    { default: remarkGfm },
+    { default: remarkRehype },
+    { default: rehypeSanitize },
+    { default: rehypeStringify },
+  ] = await Promise.all([
+    import("remark"),
+    import("remark-gfm"),
+    import("remark-rehype"),
+    import("rehype-sanitize"),
+    import("rehype-stringify"),
+  ]);
 
+  // Sanitize on render so untrusted HTML can never reach dangerouslySetInnerHTML.
   const processed = await remark()
     .use(remarkGfm)
-    .use(remarkHtml, { sanitize: true })
+    .use(remarkRehype)
+    .use(rehypeSanitize)
+    .use(rehypeStringify)
     .process(content);
 
   return processed.toString();

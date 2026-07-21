@@ -5,7 +5,9 @@ jest.mock("remark", () => ({
   })),
 }));
 jest.mock("remark-gfm", () => jest.fn());
-jest.mock("remark-html", () => jest.fn());
+jest.mock("remark-rehype", () => jest.fn());
+jest.mock("rehype-sanitize", () => jest.fn());
+jest.mock("rehype-stringify", () => jest.fn());
 
 import {
   getAllBlogPostPreviews,
