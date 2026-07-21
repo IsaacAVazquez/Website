@@ -1,0 +1,131 @@
+{
+  "projectId": "f4a2b881-7dae-4667-b2bd-c5a938909087",
+  "shape": "package",
+  "pkg": "isaac-vazquez-portfolio",
+  "globalName": "WorkingInstrument",
+  "tsconfig": "tsconfig.json",
+  "srcDir": "src/components",
+  "cssEntry": ".design-sync/.cache/compiled-globals.css",
+  "extraFonts": [
+    ".design-sync/fonts/fonts.css"
+  ],
+  "guidelinesGlob": [
+    "STYLING.md",
+    "DESIGN_CHECKLIST.md",
+    "WRITING_VOICE.md"
+  ],
+  "provider": {
+    "component": "PreviewProvider"
+  },
+  "overrides": {
+    "ClubDrawer": {
+      "cardMode": "single",
+      "primaryStory": "OpenClubDetail"
+    },
+    "DropdownMenu": {
+      "cardMode": "single",
+      "primaryStory": "OpenMenu"
+    },
+    "GoalsPulseStrip": {
+      "cardMode": "column"
+    },
+    "StatFascia": {
+      "cardMode": "column"
+    },
+    "AuthorBio": {
+      "cardMode": "column"
+    },
+    "Heading": {
+      "cardMode": "column"
+    },
+    "OptimizedImage": {
+      "cardMode": "column"
+    },
+    "SectionIntro": {
+      "cardMode": "column"
+    }
+  },
+  "componentSrcMap": {
+    "Badge": "src/components/ui/Badge.tsx",
+    "Chip": "src/components/ui/Chip.tsx",
+    "Heading": "src/components/ui/Heading.tsx",
+    "Kicker": "src/components/ui/Kicker.tsx",
+    "MetricCallout": "src/components/ui/MetricCallout.tsx",
+    "ModernButton": "src/components/ui/ModernButton.tsx",
+    "PageSummary": "src/components/ui/PageSummary.tsx",
+    "Paragraph": "src/components/ui/Paragraph.tsx",
+    "ReadoutPanel": "src/components/ui/ReadoutPanel.tsx",
+    "SectionIntro": "src/components/ui/SectionIntro.tsx",
+    "ThemeToggle": "src/components/ui/ThemeToggle.tsx",
+    "WarmCard": "src/components/ui/WarmCard.tsx",
+    "AuthorBio": "src/components/ui/AuthorBio.tsx",
+    "ExpertSignal": "src/components/ui/ExpertSignal.tsx",
+    "JourneyTimeline": "src/components/ui/JourneyTimeline.tsx",
+    "OptimizedImage": "src/components/ui/OptimizedImage.tsx",
+    "DropdownMenu": "src/components/ui/dropdown-menu.tsx",
+    "EditorialPillButton": "src/components/editorial/EditorialPillButton.tsx",
+    "StatusPanel": "src/components/editorial/StatusPanel.tsx",
+    "InlineSectionLead": "src/components/editorial/InlineSectionLead.tsx",
+    "UtilityStrip": "src/components/editorial/UtilityStrip.tsx",
+    "InstrumentTape": "src/components/editorial/InstrumentTape.tsx",
+    "SurfaceCard": "src/components/football/SurfaceCard.tsx",
+    "StatCard": "src/components/football/StatCard.tsx",
+    "MetricCard": "src/components/football/MetricCard.tsx",
+    "TeamResultPill": "src/components/football/TeamResultPill.tsx",
+    "InfoChip": "src/components/football/InfoChip.tsx",
+    "CrestAvatar": "src/components/football/CrestAvatar.tsx",
+    "EmptyPanel": "src/components/football/EmptyPanel.tsx",
+    "FixtureCard": "src/components/football/FixtureCard.tsx",
+    "FixtureGroupSection": "src/components/football/FixtureGroupSection.tsx",
+    "LeaderList": "src/components/football/LeaderList.tsx",
+    "LeaderLedger": "src/components/football/LeaderLedger.tsx",
+    "ResultsTape": "src/components/football/ResultsTape.tsx",
+    "GoalsPulseStrip": "src/components/football/GoalsPulseStrip.tsx",
+    "StatFascia": "src/components/football/StatFascia.tsx",
+    "SegmentedTabs": "src/components/football/SegmentedTabs.tsx",
+    "FixtureLedgerSection": "src/components/football/FixtureLedger.tsx",
+    "ClubDrawer": "src/components/football/ClubDrawer.tsx"
+  },
+  "dtsPropsFor": {
+    "Badge": "  variant?: \"default\" | \"success\" | \"warning\" | \"error\" | \"outline\";\n  size?: \"sm\" | \"md\" | \"lg\";\n  children: React.ReactNode;\n  glow?: boolean;\n  href?: string;\n  className?: string;\n  id?: string;\n  style?: React.CSSProperties;",
+    "Chip": "  tone?: \"default\" | \"signal\";\n  children?: React.ReactNode;\n  className?: string;\n  id?: string;\n  style?: React.CSSProperties;",
+    "Heading": "  className?: string;\n  children: React.ReactNode;\n  as?: React.ElementType;\n  level?: 1 | 2 | 3 | 4 | 5 | 6;",
+    "Kicker": "  variant?: \"dot\" | \"plain\";\n  children?: React.ReactNode;\n  className?: string;\n  id?: string;\n  style?: React.CSSProperties;",
+    "MetricCallout": "  value: string | number;\n  label: string;\n  improvement?: string;\n  icon?: React.ReactNode;\n  variant?: \"default\" | \"success\" | \"warning\" | \"primary\";\n  size?: \"sm\" | \"md\" | \"lg\";\n  animateValue?: boolean;\n  className?: string;",
+    "ModernButton": "  href?: string;\n  variant?: \"outline\" | \"primary\" | \"secondary\" | \"ghost\" | \"accent\" | \"mono\";\n  size?: \"sm\" | \"md\" | \"lg\";\n  children: React.ReactNode;\n  ariaLabel?: string;\n  fullWidth?: boolean;\n  className?: string;\n  style?: React.CSSProperties;\n  id?: string;",
+    "PageSummary": "  title?: string;\n  summary: React.ReactNode;\n  tldr?: React.ReactNode;\n  context?: React.ReactNode;\n  variant?: \"default\" | \"compact\" | \"featured\";\n  showIcon?: boolean;\n  className?: string;",
+    "Paragraph": "  className?: string;\n  children: React.ReactNode;",
+    "ReadoutPanel": "  label?: React.ReactNode;\n  stamp?: React.ReactNode;\n  rows?: Array<{ label: string; value: React.ReactNode }>;\n  children?: React.ReactNode;\n  footer?: React.ReactNode;\n  className?: string;\n  style?: React.CSSProperties;",
+    "SectionIntro": "  eyebrow?: string;\n  title: React.ReactNode;\n  description?: React.ReactNode;\n  actions?: React.ReactNode;\n  headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;\n  align?: \"center\" | \"left\";\n  size?: \"md\" | \"lg\";\n  className?: string;\n  titleClassName?: string;\n  descriptionClassName?: string;",
+    "ThemeToggle": "  className?: string;",
+    "WarmCard": "  children: React.ReactNode;\n  className?: string;\n  hover?: boolean;\n  padding?: \"sm\" | \"md\" | \"lg\" | \"none\" | \"xl\";\n  ariaLabel?: string;\n  ariaDescription?: string;\n  onClick?: (e: React.MouseEvent<Element, MouseEvent>) => void;",
+    "AuthorBio": "  name?: string;\n  title?: string;\n  image?: string;\n  bio?: string;\n  credentials?: Array<string>;\n  expertise?: Array<string>;\n  social?: { linkedin?: string; github?: string; email?: string; website?: string };\n  variant?: \"inline\" | \"compact\" | \"full\" | \"light\";\n  showImage?: boolean;\n  showSocial?: boolean;\n  className?: string;",
+    "ExpertSignal": "  type?: \"credential\" | \"achievement\" | \"expertise\" | \"education\" | \"experience\" | \"award\";\n  label: string;\n  value?: React.ReactNode;\n  icon?: React.ReactNode;\n  verified?: boolean;\n  variant?: \"default\" | \"inline\" | \"compact\" | \"badge\";\n  className?: string;",
+    "OptimizedImage": "  src: string;\n  alt: string;\n  width?: number;\n  height?: number;\n  className?: string;\n  priority?: boolean;\n  lazy?: boolean;\n  placeholder?: \"blur\" | \"empty\";\n  blurDataURL?: string;\n  quality?: number;\n  sizes?: string;\n  fill?: boolean;\n  objectFit?: \"none\" | \"contain\" | \"cover\" | \"fill\" | \"scale-down\";\n  objectPosition?: string;\n  onLoad?: () => void;\n  onError?: () => void;",
+    "DropdownMenu": "  children?: React.ReactNode;\n  dir?: \"ltr\" | \"rtl\";\n  open?: boolean;\n  defaultOpen?: boolean;\n  onOpenChange?: (open: boolean) => void;\n  modal?: boolean;",
+    "EditorialPillButton": "  active: boolean;\n  children: React.ReactNode;\n  onClick: () => void;\n  title?: string;\n  role?: \"tab\";\n  ariaSelected?: boolean;\n  size?: \"sm\" | \"md\";",
+    "StatusPanel": "  title: string;\n  message: string;\n  tone?: \"default\" | \"warning\" | \"error\";\n  icon?: React.ReactNode;\n  statusRole?: \"alert\" | \"status\";\n  action?: React.ReactNode;",
+    "InlineSectionLead": "  kicker: string;\n  children: React.ReactNode;\n  maxWidthClassName?: string;",
+    "UtilityStrip": "  children: React.ReactNode;",
+    "InstrumentTape": "  label?: React.ReactNode;\n  items: Array<{ key: string; content: React.ReactNode }>;\n  ariaLabel: string;\n  className?: string;\n  emptyFallback?: React.ReactNode;",
+    "SurfaceCard": "  children: React.ReactNode;\n  className?: string;",
+    "StatCard": "  eyebrow: string;\n  title?: string;\n  metric: string;\n  detail: string;\n  icon: React.ReactNode;\n  variant?: \"compact\" | \"full\";",
+    "MetricCard": "  label: string;\n  value: string;\n  detail?: string;\n  icon?: React.ReactNode;\n  className?: string;",
+    "TeamResultPill": "  result: \"W\" | \"D\" | \"L\";",
+    "InfoChip": "  label: string;",
+    "CrestAvatar": "  crest: null | string;\n  name: string;\n  size?: \"sm\" | \"md\" | \"lg\";",
+    "EmptyPanel": "  title: string;\n  description: string;",
+    "FixtureCard": "  fixture: { id: string; utcDate: string; status: string; matchday: null | number; homeTeam: { id: string; shortName: string; crest: null | string }; awayTeam: { id: string; shortName: string; crest: null | string }; score: { winner: null | string; home: null | number; away: null | number; shootoutHome?: null | number; shootoutAway?: null | number } };\n  contextTeamId?: null | string;\n  onOpenTeam?: (teamId: string) => void;\n  compact?: boolean;\n  style?: React.CSSProperties;\n  periodLabel?: string;\n  fallbackLabel?: string;",
+    "FixtureGroupSection": "  title: string;\n  description: string;\n  fixtures: Array<{ id: string; utcDate: string; status: string; matchday: null | number; homeTeam: { id: string; shortName: string; crest: null | string }; awayTeam: { id: string; shortName: string; crest: null | string }; score: { winner: null | string; home: null | number; away: null | number; shootoutHome?: null | number; shootoutAway?: null | number } }>;\n  contextTeamId?: null | string;\n  onOpenTeam?: (teamId: string) => void;\n  getFallbackLabel?: (fixture: { id: string; utcDate: string; status: string; matchday: null | number; homeTeam: { id: string; shortName: string; crest: null | string }; awayTeam: { id: string; shortName: string; crest: null | string }; score: { winner: null | string; home: null | number; away: null | number; shootoutHome?: null | number; shootoutAway?: null | number } }) => string;",
+    "LeaderList": "  leaders: Array<{ rank: number; name: string; clubId: string; clubCode: string; total: number; appearances: number; perMatch: number }>;\n  statLabel: string;\n  clubLookup?: Map<string, string>;",
+    "LeaderLedger": "  title: string;\n  entries: Array<{ rank: number; name: string; clubCode: string; value: number }>;\n  unit: string;\n  emptyLabel?: string;",
+    "ResultsTape": "  recentFixtures: Array<{ id: string; utcDate: string; status: string; homeTeam: { shortName: string; tla?: null | string }; awayTeam: { shortName: string; tla?: null | string }; score: { winner: null | \"HOME_TEAM\" | \"AWAY_TEAM\" | \"DRAW\"; home: null | number; away: null | number } }>;\n  upcomingFixtures: Array<{ id: string; utcDate: string; status: string; homeTeam: { shortName: string; tla?: null | string }; awayTeam: { shortName: string; tla?: null | string }; score: { winner: null | \"HOME_TEAM\" | \"AWAY_TEAM\" | \"DRAW\"; home: null | number; away: null | number } }>;\n  label?: React.ReactNode;\n  emptyFallback?: React.ReactNode;\n  className?: string;",
+    "GoalsPulseStrip": "  data: Array<{ matchday: number; totalGoals: number }>;\n  capLabel?: string;\n  className?: string;",
+    "StatFascia": "  items: Array<{ eyebrow: string; metric: string; detail?: string }>;\n  dense?: boolean;\n  className?: string;",
+    "SegmentedTabs": "  tabs: Array<{ id: string; label: string }>;\n  activeId: string;\n  onChange: (id: string) => void;\n  ariaLabel: string;\n  idPrefix: string;\n  panelId: string;\n  className?: string;",
+    "FixtureLedgerSection": "  groups: Array<{ key: string; label: string; fixtures: Array<{ id: string; utcDate: string; status: string; matchday: null | number; homeTeam: { id: string; shortName: string; crest: null | string }; awayTeam: { id: string; shortName: string; crest: null | string }; score: { winner: null | string; home: null | number; away: null | number; shootoutHome?: null | number; shootoutAway?: null | number } }> }>;\n  onOpenTeam?: (teamId: string) => void;",
+    "ClubDrawer": "  club: null | { id: string; name: string; crest: null | string; accentColor?: null | string; position: number; points: number; played: number; won: number; draw: number; lost: number; goalsFor: number; goalsAgainst: number; goalDifference: number; manager?: null | string; venue?: null | string };\n  formSequence: Array<\"W\" | \"D\" | \"L\">;\n  topScorers: Array<{ name: string; goals: number; assists: number }>;\n  recentFixtures: Array<{ id: string; utcDate: string; status: string; matchday: null | number; homeTeam: { id: string; shortName: string; crest: null | string }; awayTeam: { id: string; shortName: string; crest: null | string }; score: { winner: null | string; home: null | number; away: null | number; shootoutHome?: null | number; shootoutAway?: null | number } }>;\n  upcomingFixtures: Array<{ id: string; utcDate: string; status: string; matchday: null | number; homeTeam: { id: string; shortName: string; crest: null | string }; awayTeam: { id: string; shortName: string; crest: null | string }; score: { winner: null | string; home: null | number; away: null | number; shootoutHome?: null | number; shootoutAway?: null | number } }>;\n  isLoadingDetail?: boolean;\n  detailError?: null | string;\n  onClose: () => void;\n  testId?: string;",
+    "JourneyTimeline": "  // JourneyTimeline takes no props."
+  },
+  "readmeHeader": ".design-sync/conventions.md"
+}
