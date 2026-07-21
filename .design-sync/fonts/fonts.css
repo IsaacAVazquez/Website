@@ -1,0 +1,46 @@
+/*
+ * Working Instrument type stack for design-sync bundles.
+ * The site loads these three families through next/font/google, which defines
+ * the --font-* variables at runtime; static previews and claude.ai/design
+ * renders get the same stack from these @font-face rules instead.
+ * woff2 files: latin subsets pulled from Google Fonts (OFL), 2026-07-20.
+ */
+
+@font-face {
+  font-family: "Instrument Sans";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("./instrument-sans-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./instrument-serif-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./instrument-serif-italic-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Fragment Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./fragment-mono-latin.woff2") format("woff2");
+}
+
+/* next/font defines these on <html> in the app; previews get them here. */
+:root {
+  --font-instrument-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-instrument-serif: "Instrument Serif", Georgia, serif;
+  --font-fragment-mono: "Fragment Mono", ui-monospace, SFMono-Regular, monospace;
+}
