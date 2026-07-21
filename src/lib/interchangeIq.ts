@@ -120,6 +120,15 @@ export function calcStripeBreakevenTicket(mix: CardMix): number | null {
     mix.debitFraction * INTERCHANGE_RATES.visaMcDebit.rate +
     mix.amexFraction * INTERCHANGE_RATES.amex.rate;
 
+  // Per-transaction fixed interchange the IC+ processor passes through on top of
+  // its own markup. Leaving this out (and flipping the fixed-fee sign) produced
+  // a phantom positive breakeven and told small-ticket merchants flat rate wins
+  // when IC+ is actually cheaper.
+  const interchangeFixed =
+    mix.creditFraction * INTERCHANGE_RATES.visaMcCredit.fixed +
+    mix.debitFraction * INTERCHANGE_RATES.visaMcDebit.fixed +
+    mix.amexFraction * INTERCHANGE_RATES.amex.fixed;
+
   const stripeFlat = PROCESSORS.find((processor) => processor.id === "stripe") as
     | FlatProcessor
     | undefined;
@@ -129,9 +138,13 @@ export function calcStripeBreakevenTicket(mix: CardMix): number | null {
 
   if (!stripeFlat || !stripeIC) return null;
 
-  const rateDiff =
-    stripeFlat.pctRate - (interchangeEffRate + stripeIC.markupPct);
-  const fixedDiff = stripeFlat.fixedFee - stripeIC.markupFixed;
+  // Solve flat.pct·T + flat.fixed = ic.eff·T + ic.fixed + ic.markupPct·T +
+  // ic.markupFixed for the ticket T where the two per-transaction costs meet.
+  // Flat's percentage rate is higher, so a crossover only exists when flat's
+  // fixed fee is the larger fixed component; otherwise IC+ wins at every ticket.
+  const rateDiff = stripeFlat.pctRate - (interchangeEffRate + stripeIC.markupPct);
+  const fixedDiff = interchangeFixed + stripeIC.markupFixed - stripeFlat.fixedFee;
+  const breakeven = rateDiff > 0 ? fixedDiff / rateDiff : null;
 
-  return rateDiff > 0 ? fixedDiff / rateDiff : null;
+  return breakeven !== null && breakeven > 0 ? breakeven : null;
 }

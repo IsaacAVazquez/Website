@@ -53,8 +53,28 @@ describe("interchangeIq", () => {
     expect(results[0].perTxAvg).toBeCloseTo(1.49, 2);
   });
 
-  it("returns a Stripe flat-rate breakeven ticket for favorable card mixes", () => {
-    expect(calcStripeBreakevenTicket(buildCardMix(65, 18))).toBeCloseTo(14.14, 2);
+  it("returns null when Stripe IC+ beats flat rate at every ticket size", () => {
+    // For the default mix, IC+'s effective per-transaction cost sits below flat
+    // rate's at every positive ticket (the true crossover is negative), so there
+    // is no flat-rate breakeven to report.
+    expect(calcStripeBreakevenTicket(buildCardMix(65, 18))).toBeNull();
+  });
+
+  it("returns the ticket where flat rate and IC+ per-transaction costs cross", () => {
+    // A debit-heavy mix pushes fixed interchange high enough that flat rate's
+    // lower percentage wins on small tickets, so a positive breakeven exists.
+    const mix = buildCardMix(0, 0); // all debit
+    const breakeven = calcStripeBreakevenTicket(mix);
+    expect(breakeven).not.toBeNull();
+    expect(breakeven!).toBeGreaterThan(0);
+
+    // Cross-check against the full cost model: at the breakeven ticket, Stripe
+    // flat and Stripe IC+ must cost the same per transaction, which proves it is
+    // the real crossover rather than an artifact of the formula.
+    const results = calcProcessorResults(10_000, breakeven!, mix);
+    const flat = results.find((result) => result.id === "stripe")!;
+    const ic = results.find((result) => result.id === "stripe_ic")!;
+    expect(flat.perTxAvg).toBeCloseTo(ic.perTxAvg, 6);
   });
 
   it("keeps zero volume calculations finite", () => {
