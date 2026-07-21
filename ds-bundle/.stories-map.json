@@ -1,0 +1,364 @@
+{
+  "global": "WorkingInstrument",
+  "pkg": "isaac-vazquez-portfolio",
+  "pkgDir": "/Users/isaacvazquez/Website",
+  "extraEntries": [],
+  "exported": [
+    "AuthorBio",
+    "Badge",
+    "Chip",
+    "ClubDrawer",
+    "CrestAvatar",
+    "DropdownMenu",
+    "EditorialPillButton",
+    "EmptyPanel",
+    "ExpertSignal",
+    "FixtureCard",
+    "FixtureGroupSection",
+    "FixtureLedgerSection",
+    "GoalsPulseStrip",
+    "Heading",
+    "InfoChip",
+    "InlineSectionLead",
+    "InstrumentTape",
+    "JourneyTimeline",
+    "Kicker",
+    "LeaderLedger",
+    "LeaderList",
+    "MetricCallout",
+    "MetricCard",
+    "ModernButton",
+    "OptimizedImage",
+    "PageSummary",
+    "Paragraph",
+    "ReadoutPanel",
+    "ResultsTape",
+    "SectionIntro",
+    "SegmentedTabs",
+    "StatCard",
+    "StatFascia",
+    "StatusPanel",
+    "SurfaceCard",
+    "TeamResultPill",
+    "ThemeToggle",
+    "UtilityStrip",
+    "WarmCard"
+  ],
+  "storybookStatic": null,
+  "keyRecipe": 7,
+  "cfgSliceGlobal": "5b6075ff3b2f6f6fb58a06ccd2678d1450ea82cced2ee60365cd63baf5746454",
+  "components": [
+    {
+      "name": "AuthorBio",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "6088e2c0ad1e7442",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "Badge",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "37f3c124ad5cc1fb",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "Chip",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "a573989552b6f1ba",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "ClubDrawer",
+      "group": "football",
+      "srcSha": null,
+      "sourceKey": "bc189554a8dd78c7",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "CrestAvatar",
+      "group": "football",
+      "srcSha": null,
+      "sourceKey": "2bf77fb0e743d09a",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "DropdownMenu",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "5be62745bdf8e4fb",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "EditorialPillButton",
+      "group": "editorial",
+      "srcSha": null,
+      "sourceKey": "5cecff635d4ec7d2",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "EmptyPanel",
+      "group": "football",
+      "srcSha": null,
+      "sourceKey": "c44e8bee5c96e511",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "ExpertSignal",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "7c8593effb79f5f2",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "FixtureCard",
+      "group": "football",
+      "srcSha": null,
+      "sourceKey": "c0dc1cde9dc8e6e4",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "FixtureGroupSection",
+      "group": "football",
+      "srcSha": null,
+      "sourceKey": "936bacf5925feaa9",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "FixtureLedgerSection",
+      "group": "football",
+      "srcSha": null,
+      "sourceKey": "b094e50e925c3b17",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "GoalsPulseStrip",
+      "group": "football",
+      "srcSha": null,
+      "sourceKey": "5680e065cad80bf9",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "Heading",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "e3ff6b86e0dffcfa",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "InfoChip",
+      "group": "football",
+      "srcSha": null,
+      "sourceKey": "ffeb74299c8a48ec",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "InlineSectionLead",
+      "group": "editorial",
+      "srcSha": null,
+      "sourceKey": "f9bf5f718cd8d724",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "InstrumentTape",
+      "group": "editorial",
+      "srcSha": null,
+      "sourceKey": "b46f69ee825e2f83",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "JourneyTimeline",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "d020e85ac61d9094",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "Kicker",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "bb2ec5248e921fd0",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "LeaderLedger",
+      "group": "football",
+      "srcSha": null,
+      "sourceKey": "984b1715e8183ef8",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "LeaderList",
+      "group": "football",
+      "srcSha": null,
+      "sourceKey": "2dd0dd1eb228de65",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "MetricCallout",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "f572d96baf4a141d",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "MetricCard",
+      "group": "football",
+      "srcSha": null,
+      "sourceKey": "87561c945dd9235d",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "ModernButton",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "55dcaa1131d57fca",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "OptimizedImage",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "23b17492a4866e82",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "PageSummary",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "4eae5c4ee2db32ef",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "Paragraph",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "0554c0d98be4fa17",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "ReadoutPanel",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "41b609285668cc06",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "ResultsTape",
+      "group": "football",
+      "srcSha": null,
+      "sourceKey": "cba3cdea1293af0a",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "SectionIntro",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "a6ec0b98b64246b3",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "SegmentedTabs",
+      "group": "football",
+      "srcSha": null,
+      "sourceKey": "c83b913b80da1655",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "StatCard",
+      "group": "football",
+      "srcSha": null,
+      "sourceKey": "73fd109274f3bc25",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "StatFascia",
+      "group": "football",
+      "srcSha": null,
+      "sourceKey": "eaebbefeace5bbc4",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "StatusPanel",
+      "group": "editorial",
+      "srcSha": null,
+      "sourceKey": "60ab6ebfac6c9335",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "SurfaceCard",
+      "group": "football",
+      "srcSha": null,
+      "sourceKey": "318b00b5c4a18e3c",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "TeamResultPill",
+      "group": "football",
+      "srcSha": null,
+      "sourceKey": "6f524f8e58bb3cd4",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "ThemeToggle",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "101b0916eb038b7d",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "UtilityStrip",
+      "group": "editorial",
+      "srcSha": null,
+      "sourceKey": "97d23efd5e5df644",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    },
+    {
+      "name": "WarmCard",
+      "group": "general",
+      "srcSha": null,
+      "sourceKey": "68e304e093f70142",
+      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
+      "stories": []
+    }
+  ]
+}
