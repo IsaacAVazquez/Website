@@ -1,11 +1,17 @@
 {
   "symbol": "MDLZ",
-  "lastUpdated": "2026-07-10T00:00:01.448379+00:00",
+  "lastUpdated": "2026-07-21T23:37:48.967691+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-07-10T00:00:01.448379+00:00",
+    "snapshotBuiltAt": "2026-07-21T23:37:48.967691+00:00",
     "sections": {
-      "price": "2026-07-02"
-    }
+      "price": "2026-07-20"
+    },
+    "retainedSections": [
+      "fundamentals",
+      "wacc",
+      "beta",
+      "news"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -40,10 +46,10 @@
     },
     "fundamentals": {
       "ttmEps": 2.017,
-      "ttmPe": 30.2,
-      "marketCap": 78187109318,
-      "psRatio": 1.99,
-      "pbRatio": 3.04,
+      "ttmPe": 29.88,
+      "marketCap": 77365573446,
+      "psRatio": 1.97,
+      "pbRatio": 3,
       "pegRatio": 0.73
     },
     "profitability": {
@@ -5836,94 +5842,6 @@
     },
     "price": [
       {
-        "date": "2025-07-02",
-        "open": 68.98,
-        "high": 69.81,
-        "low": 68.59,
-        "close": 69.56,
-        "volume": 8959600
-      },
-      {
-        "date": "2025-07-03",
-        "open": 69.47,
-        "high": 69.52,
-        "low": 68.8,
-        "close": 68.99,
-        "volume": 3342900
-      },
-      {
-        "date": "2025-07-07",
-        "open": 68.96,
-        "high": 69.03,
-        "low": 68.03,
-        "close": 68.82,
-        "volume": 7336000
-      },
-      {
-        "date": "2025-07-08",
-        "open": 68.49,
-        "high": 68.55,
-        "low": 67.85,
-        "close": 68.19,
-        "volume": 6727800
-      },
-      {
-        "date": "2025-07-09",
-        "open": 68.3,
-        "high": 68.35,
-        "low": 66.15,
-        "close": 66.85,
-        "volume": 11457400
-      },
-      {
-        "date": "2025-07-10",
-        "open": 66.55,
-        "high": 67.39,
-        "low": 65.9,
-        "close": 67.15,
-        "volume": 7360000
-      },
-      {
-        "date": "2025-07-11",
-        "open": 66.75,
-        "high": 67.36,
-        "low": 66.01,
-        "close": 67.18,
-        "volume": 6171100
-      },
-      {
-        "date": "2025-07-14",
-        "open": 67.18,
-        "high": 67.66,
-        "low": 67.02,
-        "close": 67.64,
-        "volume": 5324800
-      },
-      {
-        "date": "2025-07-15",
-        "open": 67.4,
-        "high": 67.53,
-        "low": 66.7,
-        "close": 66.74,
-        "volume": 5092700
-      },
-      {
-        "date": "2025-07-16",
-        "open": 66.8,
-        "high": 67.52,
-        "low": 66.49,
-        "close": 67.47,
-        "volume": 5336200
-      },
-      {
-        "date": "2025-07-17",
-        "open": 68.3,
-        "high": 69.85,
-        "low": 68.26,
-        "close": 69.8,
-        "volume": 9140000
-      },
-      {
         "date": "2025-07-18",
         "open": 69.89,
         "high": 70.5,
@@ -7850,6 +7768,94 @@
         "low": 59.57,
         "close": 60.91,
         "volume": 8917700
+      },
+      {
+        "date": "2026-07-06",
+        "open": 60.95,
+        "high": 61.08,
+        "low": 58.88,
+        "close": 59.17,
+        "volume": 8108500
+      },
+      {
+        "date": "2026-07-07",
+        "open": 60.36,
+        "high": 61.2,
+        "low": 59.73,
+        "close": 60.22,
+        "volume": 8435000
+      },
+      {
+        "date": "2026-07-08",
+        "open": 60.25,
+        "high": 60.43,
+        "low": 59.16,
+        "close": 59.48,
+        "volume": 8908600
+      },
+      {
+        "date": "2026-07-09",
+        "open": 58.93,
+        "high": 59.1,
+        "low": 58.25,
+        "close": 58.3,
+        "volume": 6919200
+      },
+      {
+        "date": "2026-07-10",
+        "open": 58.1,
+        "high": 58.91,
+        "low": 57.82,
+        "close": 58.83,
+        "volume": 6428300
+      },
+      {
+        "date": "2026-07-13",
+        "open": 59.5,
+        "high": 60.78,
+        "low": 59.42,
+        "close": 59.86,
+        "volume": 6541400
+      },
+      {
+        "date": "2026-07-14",
+        "open": 59.51,
+        "high": 59.71,
+        "low": 58.67,
+        "close": 58.8,
+        "volume": 8906300
+      },
+      {
+        "date": "2026-07-15",
+        "open": 58.33,
+        "high": 59.27,
+        "low": 57.87,
+        "close": 58.72,
+        "volume": 8501300
+      },
+      {
+        "date": "2026-07-16",
+        "open": 59.37,
+        "high": 61.48,
+        "low": 59.23,
+        "close": 61.42,
+        "volume": 13166900
+      },
+      {
+        "date": "2026-07-17",
+        "open": 62.18,
+        "high": 63.04,
+        "low": 60.65,
+        "close": 61,
+        "volume": 10296200
+      },
+      {
+        "date": "2026-07-20",
+        "open": 60.67,
+        "high": 60.9,
+        "low": 59.69,
+        "close": 60.27,
+        "volume": 7888400
       }
     ],
     "news": [
@@ -7936,6 +7942,12 @@
     ],
     "officers": [
       {
+        "name": "Mr. Amit Banati",
+        "title": "Executive VP & CFO",
+        "age": 56,
+        "yearBorn": 1969
+      },
+      {
         "name": "Mr. Brian C. Stevens",
         "title": "Senior VP, Corporate Controller & Chief Accounting Officer",
         "age": 50,
@@ -7963,7 +7975,7 @@
       },
       {
         "name": "Mr. Luca Zaramella",
-        "title": "Executive VP, CFO & COO",
+        "title": "Executive VP & COO",
         "age": 56,
         "yearBorn": 1969,
         "totalPay": 2931206
@@ -7974,12 +7986,6 @@
         "age": 57,
         "yearBorn": 1968,
         "totalPay": 1687256
-      },
-      {
-        "name": "Mr. Mohit Bhalla",
-        "title": "Vice President of Corporate Development",
-        "age": 55,
-        "yearBorn": 1970
       },
       {
         "name": "Mr. Shep Dunlap",
@@ -8003,43 +8009,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 30.2,
-        "industryAvg": 5.88
+        "value": 29.88,
+        "industryAvg": 39.36
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.99,
-        "industryAvg": 0.3
+        "value": 1.97,
+        "industryAvg": 2.86
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.04,
-        "industryAvg": 0.92
+        "value": 3,
+        "industryAvg": 3.64
       },
       {
         "metric": "ROE",
         "value": 2.17,
-        "industryAvg": 11.92
+        "industryAvg": 3.17
       },
       {
         "metric": "ROA",
         "value": 0.79,
-        "industryAvg": 4.42
+        "industryAvg": 1.17
       },
       {
         "metric": "Gross Margin",
         "value": 27.810000000000002,
-        "industryAvg": 30.14
+        "industryAvg": 30.48
       },
       {
         "metric": "EBITDA Margin",
         "value": 12.559999999999999,
-        "industryAvg": 14.64
+        "industryAvg": 15.52
       },
       {
         "metric": "Net Margin",
         "value": 5.56,
-        "industryAvg": 7.28
+        "industryAvg": 7.57
       }
     ]
   }
