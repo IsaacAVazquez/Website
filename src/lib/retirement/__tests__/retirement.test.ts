@@ -320,8 +320,9 @@ describe("fixed-percent funding shortfall", () => {
 
   it("counts guaranteed income toward the lifestyle floor", () => {
     // Same shrinking portfolio as the flagged case, but Social Security covers
-    // most of the lifestyle on its own — total income never drops below 80% of
-    // the desired spend, so no shortfall should be flagged.
+    // most of the draw, so the portfolio barely shrinks and the modeled real
+    // lifestyle (max of the 4% draw and guaranteed income) stays above 80% of the
+    // desired spend the whole horizon — no shortfall.
     const plan = planWith({
       ...common,
       otherIncome: {
@@ -335,6 +336,29 @@ describe("fixed-percent funding shortfall", () => {
     const years = common.horizonAge - common.currentAge;
     const path = simulatePath(plan, new Array(years + 1).fill(0), REF_YEAR);
     expect(path.depletionAge).toBeNull();
+  });
+
+  it("flags a shortfall the old double-count masked (mid-range guaranteed income)", () => {
+    // Regression for the guaranteed-income double-count. Social Security of 20k
+    // sits between 40% and 80% of the 40k desired spend. As the 4% draw shrinks
+    // the balance, the real lifestyle the plan actually funds — max(draw, SS) —
+    // crosses 80% of 40k = 32k, even though draw + SS (the old buggy sum) never
+    // would. The shortfall must be flagged; the old code reported none.
+    const plan = planWith({
+      ...common,
+      otherIncome: {
+        ...base.otherIncome,
+        socialSecurityAnnual: 20000,
+        socialSecurityClaimAge: 65,
+        socialSecurityCola: true,
+      },
+      assumptions: fixedPercent,
+    });
+    const years = common.horizonAge - common.currentAge;
+    const path = simulatePath(plan, new Array(years + 1).fill(0), REF_YEAR);
+    // Flagged mid-horizon (the early-claim SS reduction decays the balance a bit
+    // faster than the nominal 20k would); the old double-count reported null here.
+    expect(path.depletionAge).toBe(76);
   });
 });
 
