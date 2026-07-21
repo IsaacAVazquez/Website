@@ -4,6 +4,12 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-07-21
+
+- Working Instrument design-sync inputs ([#344](https://github.com/IsaacAVazquez/Website/pull/344)).
+
+---
+
 ## 2026-07-20
 
 - Score pools: exact-score prediction engine, data layer, and pick sheet ([#308](https://github.com/IsaacAVazquez/Website/pull/308)).
