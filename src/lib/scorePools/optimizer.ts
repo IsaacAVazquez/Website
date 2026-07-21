@@ -51,10 +51,14 @@ export function evaluateCandidate(
     if (points > 0) {
       expected += cell.probability * points;
       expectedSquare += cell.probability * points * points;
+      // Only count a tier toward the "banked anything" floor when it actually
+      // earns points. A pool can zero out a tier (e.g. correctOutcome: 0), and
+      // scorePickAgainstCell still labels the structural component; without this
+      // guard pAnyPoints/pZero would credit a 0-point tier as banked.
+      if (component === "exact") pExact += cell.probability;
+      else if (component === "difference") pDifference += cell.probability;
+      else if (component === "outcome") pOutcomeOnly += cell.probability;
     }
-    if (component === "exact") pExact += cell.probability;
-    else if (component === "difference") pDifference += cell.probability;
-    else if (component === "outcome") pOutcomeOnly += cell.probability;
   }
 
   const variance = Math.max(0, expectedSquare - expected * expected);
