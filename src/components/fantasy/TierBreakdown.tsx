@@ -168,7 +168,7 @@ export function TierBreakdown({
               })()}
             </header>
 
-            <ul role="list" className="mt-4 grid gap-2 [grid-template-columns:repeat(auto-fill,minmax(15rem,1fr))]">
+            <ul role="list" className="mt-4 grid gap-2 [grid-template-columns:repeat(auto-fit,minmax(18rem,1fr))]">
               {group.players.map((player) => {
                 const queued = isQueued?.(player.id) ?? false;
                 const interactive = Boolean(onSelectPlayer);
@@ -201,14 +201,13 @@ export function TierBreakdown({
                         >
                           {getPublishedRank(player)}
                         </span>
-                        <span className="min-w-0 truncate font-semibold">{player.name}</span>
+                        <span className="min-w-0 font-semibold leading-tight">{player.name}</span>
                         {player.team && (
                           <span
-                            className="shrink-0 text-xs font-medium uppercase tracking-[0.1em]"
+                            className="shrink-0 text-2xs font-medium uppercase tracking-[0.06em]"
                             style={{ color: "var(--home-ink-muted)" }}
                           >
                             {player.team}
-                            {player.byeWeek ? ` · Bye ${player.byeWeek}` : ""}
                           </span>
                         )}
                       </Pill>

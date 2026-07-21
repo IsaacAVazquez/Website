@@ -164,11 +164,11 @@ export function getValueVsAdp(
  * in sync with the "Value" entry in FANTASY_BOARD_LEGEND below.
  */
 export const FANTASY_VALUE_TOOLTIP =
-  "Value means drafters take this player later than the experts rank him, so you can often get him at a discount. The number is how many draft slots later than his consensus rank he goes on average.";
+  "Value is his ADP minus his consensus rank, the number on the left of the row. A positive figure means drafters take him that many slots later than the experts rank him, so you can usually get him at a discount. It compares his ADP against that rank, not the Avg shown beside it.";
 
 /** Hover copy for the amber "Reach" chip, the mirror of FANTASY_VALUE_TOOLTIP. */
 export const FANTASY_REACH_TOOLTIP =
-  "Reach means drafters take this player earlier than the experts rank him, so picking him here likely passes up better value. The number is how many draft slots earlier than his consensus rank he goes on average.";
+  "Reach is his ADP minus his consensus rank, the number on the left of the row, and here it comes out negative. Drafters take him that many slots earlier than the experts rank him, so picking him here usually passes up better value. It compares his ADP against that rank, not the Avg shown beside it.";
 
 export interface FantasyLegendEntry {
   /** Short label, matching the wording that appears on the board itself. */

@@ -35,6 +35,88 @@ export const ROSTER_STARTER_TARGETS = {
 
 export type RosterTargetPosition = keyof typeof ROSTER_STARTER_TARGETS;
 
+/**
+ * Total roster count worth carrying at each position. The extra RB/WR beyond the
+ * two base starters cover both the weekly flex slot and bench depth, so the flex
+ * is never modeled as its own position; a second TE and a backup QB round it out,
+ * and K/DST stay one-deep. Standard-league defaults, hardcoded like the starter
+ * targets since the tracker has no per-league roster settings.
+ */
+export const ROSTER_DEPTH_TARGETS = { RB: 4, WR: 4, QB: 2, TE: 2 } as const;
+
+export type RosterNeedLevel = "starter" | "depth";
+
+export interface RosterNeed {
+  slot: RosterTargetPosition;
+  level: RosterNeedLevel;
+}
+
+/**
+ * Tiebreak order when two needs share a level and gap: skill positions before
+ * kicker and defense, so the board never nags about a K in the early rounds.
+ */
+const NEED_POSITION_PRIORITY: Record<RosterTargetPosition, number> = {
+  RB: 0,
+  WR: 1,
+  QB: 2,
+  TE: 3,
+  K: 4,
+  DST: 5,
+};
+
+/**
+ * What the user's roster still wants, most urgent first, across two levels: an
+ * open starting slot (below the base target) and bench depth (a set starting
+ * core but below the depth target). The weekly flex is not a position of its
+ * own — the RB/WR/TE depth targets already keep those positions wanted after the
+ * base starters, which is exactly what fills a flex. Depth is suppressed while
+ * any skill starter is still open, so a slot never shows twice. Shared with the
+ * board's priority tags and roster-pressure panel so they never disagree.
+ */
+export function getRosterNeeds(team: {
+  positionCounts: TeamRoster["positionCounts"];
+}): RosterNeed[] {
+  const counts = team.positionCounts;
+  const countOf = (position: RosterTargetPosition): number => counts[position] ?? 0;
+
+  const needs: RosterNeed[] = [];
+
+  // 1. Starting slots still open, biggest shortfall first.
+  const starterHoles = (Object.keys(ROSTER_STARTER_TARGETS) as RosterTargetPosition[])
+    .map((position) => ({ position, gap: ROSTER_STARTER_TARGETS[position] - countOf(position) }))
+    .filter((entry) => entry.gap > 0)
+    .sort(
+      (left, right) =>
+        right.gap - left.gap ||
+        NEED_POSITION_PRIORITY[left.position] - NEED_POSITION_PRIORITY[right.position]
+    );
+  for (const hole of starterHoles) {
+    needs.push({ slot: hole.position, level: "starter" });
+  }
+
+  // 2. Bench depth, once the skill starters (QB/RB/WR/TE) are set. K and DST are
+  // required starters people fill last, so their open slots don't hold back depth
+  // guidance the way a missing RB or WR would.
+  const skillStarterHoleRemaining = starterHoles.some(
+    (hole) => hole.position !== "K" && hole.position !== "DST"
+  );
+  if (!skillStarterHoleRemaining) {
+    const depthHoles = (Object.keys(ROSTER_DEPTH_TARGETS) as (keyof typeof ROSTER_DEPTH_TARGETS)[])
+      .map((position) => ({ position, gap: ROSTER_DEPTH_TARGETS[position] - countOf(position) }))
+      .filter((entry) => entry.gap > 0)
+      .sort(
+        (left, right) =>
+          right.gap - left.gap ||
+          NEED_POSITION_PRIORITY[left.position] - NEED_POSITION_PRIORITY[right.position]
+      );
+    for (const hole of depthHoles) {
+      needs.push({ slot: hole.position, level: "depth" });
+    }
+  }
+
+  return needs;
+}
+
 const GRADE_SCALE: readonly { maxPercentile: number; grade: string }[] = [
   { maxPercentile: 0.125, grade: "A+" },
   { maxPercentile: 0.25, grade: "A" },

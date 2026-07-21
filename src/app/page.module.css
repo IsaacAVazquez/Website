@@ -56,42 +56,27 @@
   padding: clamp(1.25rem, 2.5vw, 2.25rem) 0 clamp(2rem, 4vw, 3rem);
 }
 
-/* The hero plate: a bone slab with the instrument's graph paper ruled
-   across it — the same rendering in both themes (dark mode's inversion,
-   kept; a raw ink slab clashed in light). The plate rebinds the local
-   aliases so every child — headline, buttons, the panel instrument —
-   keeps its existing token math: in light mode "ink" resolves to the
-   bone alt-paper and "paper" to ink; in dark mode the global tokens
-   already resolve that way, so the .page bindings are restored below. */
+/* The hero plate: a raised paper card ruled with the instrument's faint
+   graph paper, matching every other surface on the site. It uses the same
+   local aliases as the rest of the page (--hp-ink = text, --hp-paper =
+   surface), so light/dark flips upstream in globals.css with no per-theme
+   override here. */
 .plate {
-  --hp-ink: var(--home-paper-alt);
-  --hp-paper: var(--home-ink);
-  --hp-muted: color-mix(in srgb, var(--home-paper-alt) 60%, transparent);
-  --hp-rule: color-mix(in srgb, var(--home-paper-alt) 18%, transparent);
-  --hp-rule-soft: color-mix(in srgb, var(--home-paper-alt) 10%, transparent);
-
-  background: var(--hp-ink);
-  color: var(--hp-paper);
-  border: 1px solid var(--home-rule);
+  background: var(--home-paper-raised);
+  color: var(--hp-ink);
+  border: 1px solid var(--hp-rule);
   padding: clamp(1.75rem, 3.5vw, 3.25rem) clamp(1.25rem, 2.5vw, 2.75rem);
   position: relative;
   overflow: hidden;
 }
 
-:global(.dark) .plate {
-  --hp-ink: var(--home-ink);
-  --hp-paper: var(--home-paper);
-  --hp-muted: var(--home-ink-muted);
-  --hp-rule: var(--home-rule);
-  --hp-rule-soft: color-mix(in srgb, var(--home-rule) 55%, transparent);
-}
-
-/* ---- Hero live-feed instrument (sits inside the dark hero plate) ---- */
+/* ---- Hero live-feed instrument (a nested readout inside the hero card) ---- */
 .feedPanel {
   position: relative;
+  border: 1px solid var(--hp-rule);
   border-top: 3px solid var(--home-signal);
-  background: color-mix(in srgb, var(--hp-paper) 6%, var(--hp-ink));
-  color: var(--hp-paper);
+  background: var(--home-paper-alt);
+  color: var(--hp-ink);
 }
 .feedCap {
   display: flex;
@@ -99,18 +84,18 @@
   justify-content: space-between;
   gap: 8px;
   padding: 12px 16px;
-  border-bottom: 1px solid color-mix(in srgb, var(--hp-paper) 18%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--hp-ink) 18%, transparent);
   font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--hp-paper) 64%, transparent);
+  color: color-mix(in srgb, var(--hp-ink) 64%, transparent);
 }
 .feedCapLive {
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  color: color-mix(in srgb, var(--hp-paper) 82%, transparent);
+  color: color-mix(in srgb, var(--hp-ink) 82%, transparent);
 }
 .feedDot {
   position: relative;
@@ -136,7 +121,7 @@
 }
 .feedRd {
   padding: 13px 16px;
-  border-bottom: 1px solid color-mix(in srgb, var(--hp-paper) 12%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--hp-ink) 12%, transparent);
 }
 .feedRdHead {
   display: flex;
@@ -149,11 +134,11 @@
   text-transform: uppercase;
 }
 .feedRdSrc {
-  color: color-mix(in srgb, var(--hp-paper) 68%, transparent);
+  color: color-mix(in srgb, var(--hp-ink) 68%, transparent);
 }
 .feedRdMeta {
   font-variant-numeric: tabular-nums;
-  color: color-mix(in srgb, var(--hp-paper) 48%, transparent);
+  color: color-mix(in srgb, var(--hp-ink) 48%, transparent);
 }
 .feedUp {
   color: var(--home-positive);
@@ -172,20 +157,20 @@
   font-size: 2rem;
   line-height: 1;
   font-variant-numeric: tabular-nums;
-  color: var(--hp-paper);
+  color: var(--hp-ink);
 }
 .feedRdUnit {
   font-family: var(--font-mono);
   font-size: 0.6rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--hp-paper) 44%, transparent);
+  color: color-mix(in srgb, var(--hp-ink) 44%, transparent);
 }
 .feedRdSub {
   margin-top: 5px;
   font-size: 0.8rem;
   line-height: 1.35;
-  color: color-mix(in srgb, var(--hp-paper) 66%, transparent);
+  color: color-mix(in srgb, var(--hp-ink) 66%, transparent);
 }
 .feedSpark {
   display: block;
@@ -194,7 +179,7 @@
   margin-top: 9px;
 }
 .feedBar {
-  fill: color-mix(in srgb, var(--hp-paper) 24%, transparent);
+  fill: color-mix(in srgb, var(--hp-ink) 24%, transparent);
 }
 .feedBarLast {
   fill: var(--home-signal);
@@ -212,12 +197,12 @@
   font-size: 1.2rem;
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.02em;
-  color: var(--hp-paper);
+  color: var(--hp-ink);
   flex-shrink: 0;
 }
 .feedRdName {
   font-size: 0.76rem;
-  color: color-mix(in srgb, var(--hp-paper) 56%, transparent);
+  color: color-mix(in srgb, var(--hp-ink) 56%, transparent);
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -233,19 +218,19 @@
   font-size: 0.7rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--hp-paper) 64%, transparent);
+  color: color-mix(in srgb, var(--hp-ink) 64%, transparent);
   overflow: hidden;
 }
 .feedNowLead {
   flex-shrink: 0;
-  color: color-mix(in srgb, var(--hp-paper) 82%, transparent);
+  color: color-mix(in srgb, var(--hp-ink) 82%, transparent);
 }
 .feedNowText {
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: color-mix(in srgb, var(--hp-paper) 60%, transparent);
+  color: color-mix(in srgb, var(--hp-ink) 60%, transparent);
 }
 @keyframes feedBlip {
   0%,
@@ -280,7 +265,7 @@
   inset: 0;
   background-image: linear-gradient(
     to right,
-    color-mix(in srgb, var(--hp-paper) 7%, transparent) 1px,
+    color-mix(in srgb, var(--hp-ink) 7%, transparent) 1px,
     transparent 1px
   );
   background-size: calc(100% / 12) 100%;
@@ -298,9 +283,16 @@
   align-items: start;
 }
 
+/* Both columns must be free to shrink below their content's min-content;
+   otherwise a long mono readout string floors the track wider than a phone
+   and the plate's overflow clip eats the right edge. */
+.heroGrid > * {
+  min-width: 0;
+}
+
 @media (max-width: 880px) {
   .heroGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -309,7 +301,7 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: color-mix(in srgb, var(--hp-paper) 64%, transparent);
+  color: color-mix(in srgb, var(--hp-ink) 64%, transparent);
   margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
 }
 
@@ -323,14 +315,14 @@
 }
 
 .headline {
-  font-size: clamp(2.5rem, 5.2vw, 4.9rem);
+  font-size: clamp(2.15rem, 5.2vw, 4.9rem);
   font-weight: 650;
   line-height: 0.98;
   letter-spacing: -0.04em;
   margin: 0;
   max-width: 14ch;
   text-wrap: balance;
-  color: var(--hp-paper);
+  color: var(--hp-ink);
 }
 
 .headline em {
@@ -350,7 +342,7 @@
   margin: clamp(1.1rem, 2vw, 1.6rem) 0 0;
   font-size: clamp(1rem, 1.25vw, 1.125rem);
   line-height: 1.6;
-  color: color-mix(in srgb, var(--hp-paper) 74%, transparent);
+  color: color-mix(in srgb, var(--hp-ink) 74%, transparent);
   max-width: 46ch;
 }
 
@@ -361,8 +353,9 @@
   margin-top: clamp(1.4rem, 2.6vw, 2.1rem);
 }
 
-/* Hero buttons live on the ink plate, so the pair inverts: solid = paper
-   fill, ghost = paper hairline. Both hover to signal. */
+/* Hero buttons match the site's standard CTA pair (see ContactCta): solid
+   is an ink fill that hovers to signal, ghost is a rule hairline that hovers
+   to signal. */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -370,32 +363,34 @@
   min-height: 46px;
   padding: 11px 20px;
   border-radius: 2px;
-  border: 1px solid var(--hp-paper);
+  border: 1px solid var(--hp-rule);
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 400;
   letter-spacing: 0.09em;
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--hp-paper);
+  color: var(--hp-ink);
   transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
 }
 
 .btnSolid {
-  background: var(--hp-paper);
-  color: var(--hp-ink);
+  background: var(--hp-ink);
+  border-color: var(--hp-ink);
+  color: var(--home-paper);
 }
 
 .btnSolid:hover,
 .btnSolid:focus-visible {
   background: var(--hp-signal);
   border-color: var(--hp-signal);
-  color: var(--hp-paper);
+  color: var(--home-paper);
 }
 
 .btnGhost {
   background: transparent;
-  border-color: color-mix(in srgb, var(--hp-paper) 38%, transparent);
+  border-color: var(--hp-rule);
+  color: var(--hp-ink);
 }
 
 .btnGhost:hover,

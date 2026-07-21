@@ -66,8 +66,8 @@ export function HomeInstrument({
 
   return (
     <div className={styles.page}>
-      {/* Hero — a contained ink plate with the claim + live index. The one
-          full-bleed-feeling bold moment on the page; inverts in dark mode. */}
+      {/* Hero — a contained raised card with the claim + live index, using the
+          site's standard paper/ink surface system in both themes. */}
       <section
         className={styles.hero}
         aria-labelledby="home-hero-heading"

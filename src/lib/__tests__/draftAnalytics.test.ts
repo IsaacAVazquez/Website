@@ -9,6 +9,7 @@ import {
   getPickBaseline,
   getPickDelta,
   getReachStealThreshold,
+  getRosterNeeds,
   getTeamValueTotal,
   REACH_STEAL_MIN_THRESHOLD,
 } from "@/lib/draftAnalytics";
@@ -210,5 +211,75 @@ describe("getLiveDraftSignals", () => {
 
     // Far past the run window, the run is no longer "active".
     expect(getLiveDraftSignals(picks, 60).activeRun).toBeNull();
+  });
+});
+
+describe("getRosterNeeds", () => {
+  const counts = (overrides: Partial<TeamRoster["positionCounts"]> = {}) => ({
+    QB: 0,
+    RB: 0,
+    WR: 0,
+    TE: 0,
+    K: 0,
+    DST: 0,
+    ...overrides,
+  });
+  const needsFor = (overrides: Partial<TeamRoster["positionCounts"]> = {}) =>
+    getRosterNeeds({ positionCounts: counts(overrides) });
+  const slots = (needs: ReturnType<typeof getRosterNeeds>) => needs.map((need) => need.slot);
+
+  it("opens on skill starters before kicker/defense, never inventing a flex slot", () => {
+    const needs = needsFor();
+
+    expect(needs.every((need) => need.level === "starter")).toBe(true);
+    expect(needs.map((need) => need.slot).sort()).toEqual(["DST", "K", "QB", "RB", "TE", "WR"]);
+    expect(needs.some((need) => (need.slot as string) === "FLEX")).toBe(false);
+
+    // RB and WR (gap 2) lead; K and DST never sit above a skill starter.
+    expect(slots(needs).slice(0, 2).sort()).toEqual(["RB", "WR"]);
+    expect(slots(needs).indexOf("K")).toBeGreaterThan(slots(needs).indexOf("QB"));
+
+    // No depth while any starting slot is still open.
+    expect(needs.some((need) => need.level === "depth")).toBe(false);
+  });
+
+  it("surfaces RB/WR/TE depth once the base starters are set, which is what fills a flex", () => {
+    const needs = needsFor({ RB: 2, WR: 2, TE: 1, QB: 1, K: 1, DST: 1 });
+
+    expect(needs.some((need) => need.level === "starter")).toBe(false);
+    const depth = needs.filter((need) => need.level === "depth").map((need) => need.slot);
+    expect(depth).toEqual(expect.arrayContaining(["RB", "WR", "QB", "TE"]));
+    // RB and WR (gap 2) rank ahead of QB and TE (gap 1) within depth.
+    expect(depth.indexOf("RB")).toBeLessThan(depth.indexOf("QB"));
+    expect(depth.indexOf("WR")).toBeLessThan(depth.indexOf("TE"));
+  });
+
+  it("holds depth back for a missing skill starter but not for an open K or DST", () => {
+    // A missing starting RB suppresses all depth guidance...
+    expect(needsFor({ RB: 0, WR: 2, TE: 1, QB: 1, K: 1, DST: 1 }).some((need) => need.level === "depth")).toBe(
+      false
+    );
+
+    // ...but open K/DST (drafted last) do not block depth.
+    const withKicker = needsFor({ RB: 2, WR: 2, TE: 1, QB: 1, K: 0, DST: 0 });
+    expect(withKicker.some((need) => need.level === "depth")).toBe(true);
+    expect(
+      withKicker
+        .filter((need) => need.level === "starter")
+        .map((need) => need.slot)
+        .sort()
+    ).toEqual(["DST", "K"]);
+  });
+
+  it("never lists a position as both a starter and a depth need", () => {
+    const needs = needsFor({ RB: 0, WR: 2, TE: 1, QB: 1, K: 1, DST: 1 });
+    const rbNeeds = needs.filter((need) => need.slot === "RB");
+
+    expect(rbNeeds).toHaveLength(1);
+    expect(rbNeeds[0].level).toBe("starter");
+  });
+
+  it("returns nothing once starter and depth targets are all met", () => {
+    expect(needsFor({ RB: 4, WR: 4, TE: 2, QB: 2, K: 1, DST: 1 })).toHaveLength(0);
   });
 });

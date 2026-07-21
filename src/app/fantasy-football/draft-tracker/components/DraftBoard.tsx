@@ -1,13 +1,19 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import type { CSSProperties } from "react";
 import { GitCompareArrows, Info, Star } from "lucide-react";
 import { Player, TeamRoster } from "@/types";
 import type { FantasySnapshot } from "@/lib/fantasy";
 import { useDebounce } from "@/hooks/useDebounce";
 import { usePlayerQueue } from "@/hooks/usePlayerQueue";
 import { useCompareTray } from "@/hooks/useCompareTray";
-import { getReachStealThreshold, ROSTER_STARTER_TARGETS } from "@/lib/draftAnalytics";
+import {
+  getReachStealThreshold,
+  getRosterNeeds,
+  type RosterNeed,
+  type RosterNeedLevel,
+} from "@/lib/draftAnalytics";
 import {
   FANTASY_AVG_RANK_TOOLTIP,
   FANTASY_CHIP_CLASS,
@@ -51,21 +57,43 @@ const POSITION_OPTIONS: PositionFilterOption<BoardFilter>[] = [
   { value: "DST", label: "DST", position: "DST" },
 ];
 
-function getRosterNeedOrder(userTeam: TeamRoster | undefined): string[] {
-  if (!userTeam) {
-    return ["RB", "WR", "QB"];
+const EMPTY_POSITION_COUNTS: TeamRoster["positionCounts"] = {
+  QB: 0,
+  RB: 0,
+  WR: 0,
+  TE: 0,
+  K: 0,
+  DST: 0,
+};
+
+// A need reads as green while it is an open starting slot (starter or flex) and
+// muted once it is only bench depth, so the eye lands on real lineup holes first.
+function needChipStyle(level: RosterNeedLevel): CSSProperties {
+  if (level === "depth") {
+    return {
+      borderColor: "var(--home-rule)",
+      background: "color-mix(in srgb, var(--home-paper-alt) 52%, var(--home-elev-mix))",
+      color: "var(--home-ink-muted)",
+    };
   }
+  return {
+    borderColor: "color-mix(in srgb, var(--home-positive) 28%, var(--home-rule))",
+    background: "color-mix(in srgb, var(--home-positive) 10%, var(--home-paper))",
+  };
+}
 
-  const counts = userTeam.positionCounts;
+function needChipLabel(need: RosterNeed): string {
+  return need.level === "depth" ? `${need.slot} depth` : `Need ${need.slot}`;
+}
 
-  return Object.entries(ROSTER_STARTER_TARGETS)
-    .map(([position, target]) => ({
-      position,
-      gap: target - counts[position as keyof typeof counts],
-    }))
-    .sort((left, right) => right.gap - left.gap)
-    .filter((entry) => entry.gap > 0)
-    .map((entry) => entry.position);
+function needPressureLabel(need: RosterNeed): string {
+  return need.level === "depth" ? `Add ${need.slot} depth` : `Prioritize ${need.slot}`;
+}
+
+function needTitle(need: RosterNeed): string {
+  return need.level === "starter"
+    ? "An open starting spot your roster still needs to fill"
+    : "Bench depth worth adding once your starting lineup is set";
 }
 
 function matchesFilter(player: Player, filter: BoardFilter): boolean {
@@ -132,7 +160,40 @@ export function DraftBoard({
 
   const bestAvailable = filteredPlayers.slice(0, visibleCount);
   const hasMore = visibleCount < filteredPlayers.length;
-  const rosterNeeds = getRosterNeedOrder(userTeam);
+
+  const rosterNeeds = useMemo(
+    () => getRosterNeeds({ positionCounts: userTeam?.positionCounts ?? EMPTY_POSITION_COUNTS }),
+    [userTeam]
+  );
+
+  // Resolve each open need to the single best available player at that slot, so
+  // "Priority" flags your top RB / top WR rather than every player at the
+  // position. Needs are walked most-urgent first and each player is claimed once,
+  // so the top RB fills the RB starter slot and the flex points at the next best.
+  const priorityByPlayerId = useMemo(() => {
+    const map = new Map<string, RosterNeed>();
+    const claimed = new Set<string>();
+    for (const need of rosterNeeds) {
+      const best = availablePlayers.find(
+        (candidate) => candidate.position === need.slot && !claimed.has(candidate.id)
+      );
+      if (best) {
+        claimed.add(best.id);
+        map.set(best.id, need);
+      }
+    }
+    return map;
+  }, [availablePlayers, rosterNeeds]);
+
+  // The tier-columns view flags a position as a "Need" only for open starting and
+  // flex slots; bench depth stays a softer list-view-only signal.
+  const columnNeedPositions = useMemo(
+    () =>
+      Array.from(
+        new Set(rosterNeeds.filter((need) => need.level !== "depth").map((need) => need.slot))
+      ),
+    [rosterNeeds]
+  );
 
   // Watchlist players still on the board — the "is my guy still here?" glance.
   const queuedAvailable = useMemo(() => {
@@ -199,15 +260,12 @@ export function DraftBoard({
         <div className="flex flex-wrap gap-2">
           {rosterNeeds.slice(0, 3).map((need) => (
             <span
-              key={`need-${need}`}
+              key={`need-${need.slot}-${need.level}`}
               className={FANTASY_CHIP_CLASS}
-              title="Your roster still has an open starting spot at this position"
-              style={{
-                borderColor: "color-mix(in srgb, var(--home-positive) 28%, var(--home-rule))",
-                background: "color-mix(in srgb, var(--home-positive) 10%, var(--home-paper))",
-              }}
+              title={needTitle(need)}
+              style={needChipStyle(need.level)}
             >
-              Need {need}
+              {needChipLabel(need)}
             </span>
           ))}
         </div>
@@ -251,7 +309,7 @@ export function DraftBoard({
           draftedPlayerIds={draftedPlayerIds}
           onDraftPlayer={onDraftPlayer}
           isDraftComplete={isDraftComplete}
-          rosterNeeds={rosterNeeds}
+          rosterNeeds={columnNeedPositions}
         />
       ) : (
         <div className="mt-5 grid gap-4 xl:grid-cols-[minmax(0,1fr)_17rem]">
@@ -317,7 +375,8 @@ export function DraftBoard({
               ) : (
                 <>
                   {bestAvailable.map((player) => {
-                    const fitsCurrentNeed = rosterNeeds.includes(player.position);
+                    const priorityNeed = priorityByPlayerId.get(player.id);
+                    const isStartingPriority = Boolean(priorityNeed) && priorityNeed!.level !== "depth";
                     const isValueAtCurrentPick =
                       Number.isFinite(player.adp) &&
                       currentPick - (player.adp as number) >= getReachStealThreshold(currentRound);
@@ -329,10 +388,10 @@ export function DraftBoard({
                         key={player.id}
                         className="relative overflow-hidden rounded-[var(--radius-3xl)] border"
                         style={{
-                          borderColor: fitsCurrentNeed
+                          borderColor: isStartingPriority
                             ? "color-mix(in srgb, var(--home-positive) 28%, var(--home-rule))"
                             : "var(--home-rule)",
-                          background: fitsCurrentNeed
+                          background: isStartingPriority
                             ? "color-mix(in srgb, var(--home-positive) 7%, var(--home-paper))"
                             : "color-mix(in srgb, var(--home-paper-alt) 42%, var(--home-elev-mix))",
                         }}
@@ -359,16 +418,17 @@ export function DraftBoard({
                                 <span className={FANTASY_CHIP_CLASS} style={getPositionTone(player.position)}>
                                   {player.position}
                                 </span>
-                                {fitsCurrentNeed && (
+                                {priorityNeed && (
                                   <span
                                     className={FANTASY_CHIP_CLASS}
-                                    title="Fills a starting spot your roster still needs"
-                                    style={{
-                                      borderColor: "color-mix(in srgb, var(--home-positive) 28%, var(--home-rule))",
-                                      background: "color-mix(in srgb, var(--home-positive) 10%, var(--home-paper))",
-                                    }}
+                                    title={
+                                      priorityNeed.level === "depth"
+                                        ? "Best available at a position where you still want bench depth"
+                                        : "Best available player at a starting spot your roster still needs"
+                                    }
+                                    style={needChipStyle(priorityNeed.level)}
                                   >
-                                    Priority
+                                    {priorityNeed.level === "depth" ? "Depth" : "Priority"}
                                   </span>
                                 )}
                                 {isValueAtCurrentPick && (
@@ -501,19 +561,16 @@ export function DraftBoard({
               <div className="mt-3 grid gap-2">
                 {rosterNeeds.length === 0 ? (
                   <p className="text-sm" style={{ color: "var(--home-ink-muted)" }}>
-                    You have the core starting spots covered.
+                    You have your starters, flex, and core depth covered.
                   </p>
                 ) : (
                   rosterNeeds.map((need) => (
                     <div
-                      key={`pressure-${need}`}
+                      key={`pressure-${need.slot}-${need.level}`}
                       className="rounded-[var(--radius-3xl)] border px-3 py-2 text-sm font-semibold"
-                      style={{
-                        borderColor: "color-mix(in srgb, var(--home-positive) 28%, var(--home-rule))",
-                        background: "color-mix(in srgb, var(--home-positive) 10%, var(--home-paper))",
-                      }}
+                      style={needChipStyle(need.level)}
                     >
-                      Prioritize {need}
+                      {needPressureLabel(need)}
                     </div>
                   ))
                 )}
