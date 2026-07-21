@@ -19,6 +19,12 @@ import { RankDistributionBar } from "./RankDistributionBar";
 interface CompareModalProps {
   players: Player[];
   publishedRank?: (player: Player) => string;
+  /**
+   * Whether the board these players came from ranks on the overall scale, so the
+   * ADP value/reach signal is meaningful. False on position boards, where rankEcr
+   * is position-scoped and not comparable to an overall ADP (see getValueVsAdp).
+   */
+  valueSignalAvailable?: boolean;
   onClose: () => void;
   onRemove: (id: string) => void;
 }
@@ -68,7 +74,7 @@ function bestIndex(players: Player[], key: string, direction: Direction): number
   return distinct.size > 1 ? best : -1;
 }
 
-export function CompareModal({ players, publishedRank, onClose, onRemove }: CompareModalProps) {
+export function CompareModal({ players, publishedRank, valueSignalAvailable = true, onClose, onRemove }: CompareModalProps) {
   const reduceMotion = useReducedMotion();
   const panelRef = useRef<HTMLDivElement>(null);
   const restoreFocusRef = useRef<HTMLElement | null>(null);
@@ -134,7 +140,7 @@ export function CompareModal({ players, publishedRank, onClose, onRemove }: Comp
       label: "Market ADP",
       direction: "lower",
       render: (p) => {
-        const signal = getValueVsAdp(p);
+        const signal = valueSignalAvailable ? getValueVsAdp(p) : null;
         return (
           <span className="inline-flex items-center gap-1.5">
             {formatAdp(p.adp)}

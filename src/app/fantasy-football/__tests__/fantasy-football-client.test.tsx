@@ -375,7 +375,11 @@ describe("FantasyFootballClient", () => {
 
     expect(screen.getAllByText(/^ADP$/).length).toBeGreaterThan(0);
     expect(screen.getByText("2.2")).toBeVisible();
-    expect(screen.getByText(/Value \+14/)).toBeVisible();
+    // Value/Reach compares consensus rank to overall ADP, so it is suppressed on
+    // position boards where rankEcr is the position rank (see getValueVsAdp). The
+    // ADP number still renders; only the scale-invalid chip is withheld.
+    expect(screen.queryByText(/Value \+14/)).not.toBeInTheDocument();
+    expect(screen.getByText("34.1")).toBeVisible();
     // The unmatched player shows the blank marker instead of a fabricated number.
     expect(screen.getAllByText("--").length).toBeGreaterThan(0);
     // Provenance is disclosed in the freshness rail.

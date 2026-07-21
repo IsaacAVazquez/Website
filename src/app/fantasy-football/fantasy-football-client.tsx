@@ -189,7 +189,11 @@ function getPlayerDescriptor(
           Avg {Number(player.rankAverage).toFixed(2)}
           <MetricTooltip term="Average rank" definition={FANTASY_AVG_RANK_TOOLTIP} />
         </span>
-        {adpAvailable && <ValueReachBadge player={player} />}
+        {/* Value/Reach compares consensus rank to overall ADP, so it's only valid
+            where rankEcr is on the overall scale — the overall and flex boards. On
+            a position board rankEcr is the position rank (QB9), not comparable to
+            an overall ADP, so suppress the chip there. */}
+        {adpAvailable && isOverallView && <ValueReachBadge player={player} />}
       </span>
     );
   }
@@ -1085,11 +1089,13 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
         publishedRank={detailPlayer ? getPublishedBoardRank(detailPlayer, routeState.position) : undefined}
         boardTierCount={maxTier > 0 ? maxTier : undefined}
         adpAvailable={adpAvailable}
+        valueSignalAvailable={routeState.position === "overall" || routeState.position === "flex"}
         onClose={() => setDetailPlayer(null)}
       />
       <CompareTray
         resolvePlayer={(id) => playerLookup.get(id)}
         publishedRank={(player) => getPublishedBoardRank(player, routeState.position)}
+        valueSignalAvailable={routeState.position === "overall" || routeState.position === "flex"}
       />
     </section>
   );
