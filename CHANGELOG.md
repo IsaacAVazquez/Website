@@ -7,6 +7,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 ## 2026-07-21
 
 - Working Instrument design-sync inputs ([#344](https://github.com/IsaacAVazquez/Website/pull/344)).
+- Correctness, robustness, and security fixes from code review ([#345](https://github.com/IsaacAVazquez/Website/pull/345)).
 
 ---
 
