@@ -325,14 +325,14 @@ export const mlbSnapshot: MlbSnapshot = {
       "wildCardRank": null,
       "gamesBack": 0,
       "wildCardGamesBack": 0,
-      "wins": 53,
+      "wins": 54,
       "losses": 47,
-      "pct": 0.53,
-      "runsScored": 479,
-      "runsAllowed": 437,
-      "runDifferential": 42,
-      "streak": "L1",
-      "last10": "6-4"
+      "pct": 0.535,
+      "runsScored": 483,
+      "runsAllowed": 439,
+      "runDifferential": 44,
+      "streak": "W1",
+      "last10": "7-3"
     },
     {
       "id": "114",
@@ -344,7 +344,7 @@ export const mlbSnapshot: MlbSnapshot = {
       "divisionRank": 2,
       "leagueRank": 4,
       "wildCardRank": 2,
-      "gamesBack": 0.5,
+      "gamesBack": 1,
       "wildCardGamesBack": 1,
       "wins": 54,
       "losses": 49,
@@ -365,7 +365,7 @@ export const mlbSnapshot: MlbSnapshot = {
       "divisionRank": 3,
       "leagueRank": 9,
       "wildCardRank": 6,
-      "gamesBack": 4.5,
+      "gamesBack": 5,
       "wildCardGamesBack": 3,
       "wins": 50,
       "losses": 53,
@@ -386,7 +386,7 @@ export const mlbSnapshot: MlbSnapshot = {
       "divisionRank": 4,
       "leagueRank": 11,
       "wildCardRank": 8,
-      "gamesBack": 6,
+      "gamesBack": 6.5,
       "wildCardGamesBack": 4.5,
       "wins": 48,
       "losses": 54,
@@ -407,7 +407,7 @@ export const mlbSnapshot: MlbSnapshot = {
       "divisionRank": 5,
       "leagueRank": 14,
       "wildCardRank": 11,
-      "gamesBack": 11.5,
+      "gamesBack": 12,
       "wildCardGamesBack": 10,
       "wins": 43,
       "losses": 60,
@@ -536,12 +536,12 @@ export const mlbSnapshot: MlbSnapshot = {
       "gamesBack": 0,
       "wildCardGamesBack": 0,
       "wins": 51,
-      "losses": 50,
-      "pct": 0.505,
-      "runsScored": 425,
-      "runsAllowed": 453,
-      "runDifferential": -28,
-      "streak": "W1",
+      "losses": 51,
+      "pct": 0.5,
+      "runsScored": 427,
+      "runsAllowed": 457,
+      "runDifferential": -30,
+      "streak": "L1",
       "last10": "5-5"
     },
     {
@@ -554,7 +554,7 @@ export const mlbSnapshot: MlbSnapshot = {
       "divisionRank": 2,
       "leagueRank": 7,
       "wildCardRank": 4,
-      "gamesBack": 1,
+      "gamesBack": 0.5,
       "wildCardGamesBack": 2,
       "wins": 51,
       "losses": 52,
@@ -575,7 +575,7 @@ export const mlbSnapshot: MlbSnapshot = {
       "divisionRank": 3,
       "leagueRank": 10,
       "wildCardRank": 7,
-      "gamesBack": 2.5,
+      "gamesBack": 2,
       "wildCardGamesBack": 3.5,
       "wins": 50,
       "losses": 54,
@@ -596,7 +596,7 @@ export const mlbSnapshot: MlbSnapshot = {
       "divisionRank": 4,
       "leagueRank": 13,
       "wildCardRank": 10,
-      "gamesBack": 8.5,
+      "gamesBack": 8,
       "wildCardGamesBack": 9.5,
       "wins": 43,
       "losses": 59,
@@ -617,7 +617,7 @@ export const mlbSnapshot: MlbSnapshot = {
       "divisionRank": 5,
       "leagueRank": 15,
       "wildCardRank": 12,
-      "gamesBack": 11,
+      "gamesBack": 10.5,
       "wildCardGamesBack": 12,
       "wins": 41,
       "losses": 62,
@@ -998,6 +998,32 @@ export const mlbSnapshot: MlbSnapshot = {
       }
     },
     {
+      "id": "822873",
+      "utcDate": "2026-07-23T00:05:00Z",
+      "status": "FINISHED",
+      "matchday": null,
+      "stage": "R",
+      "homeTeam": {
+        "id": "140",
+        "name": "Texas Rangers",
+        "shortName": "Rangers",
+        "abbreviation": "TEX",
+        "crest": "https://www.mlbstatic.com/team-logos/140.svg"
+      },
+      "awayTeam": {
+        "id": "145",
+        "name": "Chicago White Sox",
+        "shortName": "White Sox",
+        "abbreviation": "CWS",
+        "crest": "https://www.mlbstatic.com/team-logos/145.svg"
+      },
+      "score": {
+        "winner": "AWAY_TEAM",
+        "home": 2,
+        "away": 4
+      }
+    },
+    {
       "id": "824896",
       "utcDate": "2026-07-22T23:15:00Z",
       "status": "FINISHED",
@@ -1177,32 +1203,6 @@ export const mlbSnapshot: MlbSnapshot = {
         "winner": "AWAY_TEAM",
         "home": 0,
         "away": 1
-      }
-    },
-    {
-      "id": "825055",
-      "utcDate": "2026-07-22T19:40:00Z",
-      "status": "FINISHED",
-      "matchday": null,
-      "stage": "R",
-      "homeTeam": {
-        "id": "109",
-        "name": "Arizona Diamondbacks",
-        "shortName": "D-backs",
-        "abbreviation": "AZ",
-        "crest": "https://www.mlbstatic.com/team-logos/109.svg"
-      },
-      "awayTeam": {
-        "id": "133",
-        "name": "Athletics",
-        "shortName": "Athletics",
-        "abbreviation": "ATH",
-        "crest": "https://www.mlbstatic.com/team-logos/133.svg"
-      },
-      "score": {
-        "winner": "HOME_TEAM",
-        "home": 15,
-        "away": 5
       }
     }
   ],
@@ -2315,7 +2315,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 11,
         "runsAgainst": 13
       },
-      "generatedAt": "2026-07-23T02:50:56.702Z"
+      "generatedAt": "2026-07-23T06:32:11.821Z"
     },
     "109": {
       "team": {
@@ -2607,7 +2607,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 36,
         "runsAgainst": 25
       },
-      "generatedAt": "2026-07-23T02:50:56.702Z"
+      "generatedAt": "2026-07-23T06:32:11.821Z"
     },
     "110": {
       "team": {
@@ -2898,7 +2898,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 18,
         "runsAgainst": 15
       },
-      "generatedAt": "2026-07-23T02:50:56.702Z"
+      "generatedAt": "2026-07-23T06:32:11.821Z"
     },
     "111": {
       "team": {
@@ -3189,7 +3189,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 19,
         "runsAgainst": 14
       },
-      "generatedAt": "2026-07-23T02:50:56.702Z"
+      "generatedAt": "2026-07-23T06:32:11.821Z"
     },
     "112": {
       "team": {
@@ -3481,7 +3481,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 34,
         "runsAgainst": 18
       },
-      "generatedAt": "2026-07-23T02:50:56.702Z"
+      "generatedAt": "2026-07-23T06:32:11.821Z"
     },
     "113": {
       "team": {
@@ -3773,7 +3773,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 21,
         "runsAgainst": 29
       },
-      "generatedAt": "2026-07-23T02:50:56.702Z"
+      "generatedAt": "2026-07-23T06:32:11.821Z"
     },
     "114": {
       "team": {
@@ -4065,7 +4065,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 30,
         "runsAgainst": 26
       },
-      "generatedAt": "2026-07-23T02:50:56.702Z"
+      "generatedAt": "2026-07-23T06:32:11.821Z"
     },
     "115": {
       "team": {
@@ -4357,7 +4357,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 27,
         "runsAgainst": 34
       },
-      "generatedAt": "2026-07-23T02:50:56.702Z"
+      "generatedAt": "2026-07-23T06:32:11.821Z"
     },
     "116": {
       "team": {
@@ -4649,7 +4649,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 24,
         "runsAgainst": 21
       },
-      "generatedAt": "2026-07-23T02:50:56.702Z"
+      "generatedAt": "2026-07-23T06:32:11.821Z"
     },
     "117": {
       "team": {
@@ -4941,7 +4941,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 22,
         "runsAgainst": 19
       },
-      "generatedAt": "2026-07-23T02:50:56.702Z"
+      "generatedAt": "2026-07-23T06:32:11.821Z"
     },
     "118": {
       "team": {
@@ -5233,7 +5233,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 20,
         "runsAgainst": 29
       },
-      "generatedAt": "2026-07-23T02:50:56.702Z"
+      "generatedAt": "2026-07-23T06:32:11.821Z"
     },
     "119": {
       "team": {
@@ -5525,7 +5525,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 27,
         "runsAgainst": 20
       },
-      "generatedAt": "2026-07-23T02:50:56.702Z"
+      "generatedAt": "2026-07-23T06:32:11.821Z"
     },
     "120": {
       "team": {
@@ -5817,7 +5817,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 28,
         "runsAgainst": 28
       },
-      "generatedAt": "2026-07-23T02:50:56.702Z"
+      "generatedAt": "2026-07-23T06:32:11.821Z"
     },
     "121": {
       "team": {
@@ -6109,7 +6109,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 17,
         "runsAgainst": 19
       },
-      "generatedAt": "2026-07-23T02:50:56.702Z"
+      "generatedAt": "2026-07-23T06:32:11.821Z"
     },
     "133": {
       "team": {
@@ -6401,7 +6401,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 32,
         "runsAgainst": 29
       },
-      "generatedAt": "2026-07-23T02:50:56.702Z"
+      "generatedAt": "2026-07-23T06:32:11.821Z"
     },
     "134": {
       "team": {
@@ -6692,7 +6692,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 17,
         "runsAgainst": 14
       },
-      "generatedAt": "2026-07-23T02:50:56.702Z"
+      "generatedAt": "2026-07-23T06:32:11.821Z"
     },
     "135": {
       "team": {
@@ -6984,7 +6984,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 36,
         "runsAgainst": 21
       },
-      "generatedAt": "2026-07-23T02:50:56.702Z"
+      "generatedAt": "2026-07-23T06:32:11.821Z"
     },
     "136": {
       "team": {
@@ -7276,7 +7276,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 23,
         "runsAgainst": 15
       },
-      "generatedAt": "2026-07-23T02:50:56.702Z"
+      "generatedAt": "2026-07-23T06:32:11.821Z"
     },
     "137": {
       "team": {
@@ -7568,7 +7568,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 15,
         "runsAgainst": 22
       },
-      "generatedAt": "2026-07-23T02:50:56.702Z"
+      "generatedAt": "2026-07-23T06:32:11.821Z"
     },
     "138": {
       "team": {
@@ -7860,7 +7860,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 14,
         "runsAgainst": 21
       },
-      "generatedAt": "2026-07-23T02:50:56.702Z"
+      "generatedAt": "2026-07-23T06:32:11.821Z"
     },
     "139": {
       "team": {
@@ -8152,7 +8152,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 30,
         "runsAgainst": 18
       },
-      "generatedAt": "2026-07-23T02:50:56.702Z"
+      "generatedAt": "2026-07-23T06:32:11.821Z"
     },
     "140": {
       "team": {
@@ -8168,6 +8168,32 @@ export const mlbSnapshot: MlbSnapshot = {
         "primaryColor": null
       },
       "recentGames": [
+        {
+          "id": "822873",
+          "utcDate": "2026-07-23T00:05:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "140",
+            "name": "Texas Rangers",
+            "shortName": "Rangers",
+            "abbreviation": "TEX",
+            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
+          },
+          "awayTeam": {
+            "id": "145",
+            "name": "Chicago White Sox",
+            "shortName": "White Sox",
+            "abbreviation": "CWS",
+            "crest": "https://www.mlbstatic.com/team-logos/145.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 2,
+            "away": 4
+          }
+        },
         {
           "id": "822871",
           "utcDate": "2026-07-22T00:05:00Z",
@@ -8270,32 +8296,6 @@ export const mlbSnapshot: MlbSnapshot = {
             "winner": "AWAY_TEAM",
             "home": 6,
             "away": 7
-          }
-        },
-        {
-          "id": "824901",
-          "utcDate": "2026-07-17T23:15:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "144",
-            "name": "Atlanta Braves",
-            "shortName": "Braves",
-            "abbreviation": "ATL",
-            "crest": "https://www.mlbstatic.com/team-logos/144.svg"
-          },
-          "awayTeam": {
-            "id": "140",
-            "name": "Texas Rangers",
-            "shortName": "Rangers",
-            "abbreviation": "TEX",
-            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 15,
-            "away": 1
           }
         }
       ],
@@ -8433,18 +8433,18 @@ export const mlbSnapshot: MlbSnapshot = {
       ],
       "form": {
         "sequence": [
+          "L",
           "W",
           "L",
           "L",
-          "W",
-          "L"
+          "W"
         ],
         "wins": 2,
         "losses": 3,
-        "runsFor": 26,
-        "runsAgainst": 39
+        "runsFor": 27,
+        "runsAgainst": 28
       },
-      "generatedAt": "2026-07-23T02:50:56.702Z"
+      "generatedAt": "2026-07-23T06:32:11.821Z"
     },
     "141": {
       "team": {
@@ -8736,7 +8736,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 6,
         "runsAgainst": 26
       },
-      "generatedAt": "2026-07-23T02:50:56.702Z"
+      "generatedAt": "2026-07-23T06:32:11.821Z"
     },
     "142": {
       "team": {
@@ -9028,7 +9028,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 19,
         "runsAgainst": 40
       },
-      "generatedAt": "2026-07-23T02:50:56.702Z"
+      "generatedAt": "2026-07-23T06:32:11.821Z"
     },
     "143": {
       "team": {
@@ -9320,7 +9320,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 23,
         "runsAgainst": 25
       },
-      "generatedAt": "2026-07-23T02:50:56.702Z"
+      "generatedAt": "2026-07-23T06:32:11.821Z"
     },
     "144": {
       "team": {
@@ -9612,7 +9612,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 27,
         "runsAgainst": 28
       },
-      "generatedAt": "2026-07-23T02:50:56.702Z"
+      "generatedAt": "2026-07-23T06:32:11.821Z"
     },
     "145": {
       "team": {
@@ -9628,6 +9628,32 @@ export const mlbSnapshot: MlbSnapshot = {
         "primaryColor": null
       },
       "recentGames": [
+        {
+          "id": "822873",
+          "utcDate": "2026-07-23T00:05:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "140",
+            "name": "Texas Rangers",
+            "shortName": "Rangers",
+            "abbreviation": "TEX",
+            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
+          },
+          "awayTeam": {
+            "id": "145",
+            "name": "Chicago White Sox",
+            "shortName": "White Sox",
+            "abbreviation": "CWS",
+            "crest": "https://www.mlbstatic.com/team-logos/145.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 2,
+            "away": 4
+          }
+        },
         {
           "id": "822871",
           "utcDate": "2026-07-22T00:05:00Z",
@@ -9730,32 +9756,6 @@ export const mlbSnapshot: MlbSnapshot = {
             "winner": "HOME_TEAM",
             "home": 1,
             "away": 0
-          }
-        },
-        {
-          "id": "822789",
-          "utcDate": "2026-07-17T23:15:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "141",
-            "name": "Toronto Blue Jays",
-            "shortName": "Blue Jays",
-            "abbreviation": "TOR",
-            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
-          },
-          "awayTeam": {
-            "id": "145",
-            "name": "Chicago White Sox",
-            "shortName": "White Sox",
-            "abbreviation": "CWS",
-            "crest": "https://www.mlbstatic.com/team-logos/145.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 4,
-            "away": 12
           }
         }
       ],
@@ -9893,18 +9893,18 @@ export const mlbSnapshot: MlbSnapshot = {
       ],
       "form": {
         "sequence": [
+          "W",
           "L",
           "W",
           "W",
-          "L",
-          "W"
+          "L"
         ],
         "wins": 3,
         "losses": 2,
-        "runsFor": 25,
-        "runsAgainst": 18
+        "runsFor": 17,
+        "runsAgainst": 16
       },
-      "generatedAt": "2026-07-23T02:50:56.702Z"
+      "generatedAt": "2026-07-23T06:32:11.821Z"
     },
     "146": {
       "team": {
@@ -10196,7 +10196,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 17,
         "runsAgainst": 29
       },
-      "generatedAt": "2026-07-23T02:50:56.702Z"
+      "generatedAt": "2026-07-23T06:32:11.821Z"
     },
     "147": {
       "team": {
@@ -10487,7 +10487,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 15,
         "runsAgainst": 11
       },
-      "generatedAt": "2026-07-23T02:50:56.702Z"
+      "generatedAt": "2026-07-23T06:32:11.821Z"
     },
     "158": {
       "team": {
@@ -10779,7 +10779,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 23,
         "runsAgainst": 17
       },
-      "generatedAt": "2026-07-23T02:50:56.702Z"
+      "generatedAt": "2026-07-23T06:32:11.821Z"
     }
   }
 };
