@@ -38,6 +38,7 @@ export async function GET() {
       <link>${baseUrl}/writing/${escapeXml(post.slug)}</link>
       <description>${escapeXml(post.seo?.description || post.excerpt || post.title)}</description>
       <pubDate>${new Date(post.publishedAt).toUTCString()}</pubDate>
+      <atom:updated>${new Date(post.updatedAt || post.publishedAt).toISOString()}</atom:updated>
       <guid isPermaLink="true">${baseUrl}/writing/${escapeXml(post.slug)}</guid>
     </item>
     `).join('')}

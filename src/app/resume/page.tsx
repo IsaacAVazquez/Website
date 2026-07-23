@@ -7,7 +7,7 @@ export const metadata = constructMetadata({
   description:
     "My resume covers six years across civic tech, QA, analytics, and product work, plus my Berkeley Haas MBA and current product focus.",
   canonicalUrl: "/resume",
-  dateModified: "2026-07-16",
+  dateModified: "2026-07-23",
 });
 
 export default function ResumePage() {

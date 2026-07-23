@@ -18,7 +18,7 @@ describe("March Madness companion article file", () => {
     expect(data.tags).toEqual(
       expect.arrayContaining(["March Madness", "Sports Analytics", "Bracket Analysis"])
     );
-    expect(data.seo.title).toMatch(/best upset picks and final four predictions/i);
+    expect(data.seo.title).toBe("2026 March Madness Bracket Analysis");
     expect(content).toContain("[March Madness 2026 Bracket Analysis](/march-madness-2026)");
     expect(content).toContain("[best upset picks view](/march-madness-2026?view=picks)");
     expect(content).toContain("[time-zone model](/march-madness-2026?view=time-zones)");

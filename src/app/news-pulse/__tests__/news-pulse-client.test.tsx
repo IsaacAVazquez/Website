@@ -128,6 +128,32 @@ describe("NewsPulseClient", () => {
     expect(screen.queryByText(/Story clusters across outlets/i)).not.toBeInTheDocument();
   });
 
+  it("renders server-provided headlines before the browser refresh resolves", () => {
+    mockFetch.mockImplementation(
+      () =>
+        new Promise(() => {
+          return undefined;
+        }),
+    );
+
+    const { unmount } = render(
+      <NewsPulseClient
+        initialFeed={{
+          ...baseResponse,
+          dataStatus: "fresh",
+        }}
+        initialState={DEFAULT_NEWS_PULSE_STATE}
+      />,
+    );
+
+    expect(
+      screen.getByRole("heading", { level: 2, name: sampleArticles[0].title }),
+    ).toBeVisible();
+    expect(screen.queryByText("Refreshing live feeds")).not.toBeInTheDocument();
+
+    unmount();
+  });
+
   it("clears a stale source filter when switching away from headlines", async () => {
     const user = userEvent.setup();
     currentSearchParams = new URLSearchParams("source=guardian");
@@ -290,4 +316,3 @@ describe("NewsPulseClient", () => {
     ).toBeVisible();
   });
 });
-

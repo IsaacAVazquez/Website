@@ -134,9 +134,28 @@ describe("article search metadata rules", () => {
       const description = fitMetaDescription(
         data.seo?.description || data.excerpt || data.title
       );
+      const brandedTitle = `${title} | Isaac Vazquez`;
 
-      expect(title.length).toBeLessThanOrEqual(60);
+      expect(brandedTitle.length).toBeLessThanOrEqual(60);
       expect(description.length).toBeLessThanOrEqual(160);
+    }
+  });
+
+  it("keeps publication and update dates valid and chronological", () => {
+    const files = fs
+      .readdirSync(blogDirectory)
+      .filter((file) => file.endsWith(".mdx") || file.endsWith(".md"));
+
+    for (const file of files) {
+      const { data } = matter(
+        fs.readFileSync(path.join(blogDirectory, file), "utf8")
+      );
+      expect(data.publishedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+
+      if (data.updatedAt) {
+        expect(data.updatedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+        expect(data.updatedAt >= data.publishedAt).toBe(true);
+      }
     }
   });
 });

@@ -1,5 +1,22 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import styles from "./not-found.module.css";
+
+export const metadata: Metadata = {
+  title: {
+    absolute: "Page Not Found | Isaac Vazquez",
+  },
+  description:
+    "The requested page is not available. Use the site links to return home or continue to projects and writing.",
+  alternates: {
+    canonical: undefined,
+    languages: {},
+  },
+  robots: {
+    index: false,
+    follow: true,
+  },
+};
 
 // A deliberately over-the-top 90s "GeoCities" 404 page. It intentionally
 // breaks from the site's editorial design system for comedic effect; all of

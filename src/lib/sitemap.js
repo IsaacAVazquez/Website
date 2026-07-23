@@ -10,7 +10,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/ai-dev-tools": "2026-04-28",
   "/arcade": "2026-07-16",
   "/contact": "2026-03-16",
-  "/resume": "2026-07-16",
+  "/resume": "2026-07-23",
   "/portfolio": "2026-07-16",
   "/writing": "2026-07-16",
   "/writing/topics/agentic-ai": "2026-06-22",
@@ -26,7 +26,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/formula-1": "2026-04-04",
   "/fantasy-formula-1": readFormula1Lastmod(),
   "/frontier-models": "2026-04-04",
-  "/mba-internship-notifications": "2026-04-04",
+  "/mba-internship-notifications": "2026-07-23",
   "/mlb": "2026-04-04",
   "/museum-log": "2026-04-04",
   "/nba": "2026-04-04",
@@ -34,20 +34,20 @@ const STATIC_ROUTE_LASTMOD = {
   "/recipe-finder": "2026-04-04",
   "/wine-cellar": "2026-04-04",
   "/bay-area-transit": readBayAreaTransitLastmod(),
-  "/changelog": "2026-04-13",
+  "/changelog": "2026-07-23",
   "/github-trending-pulse": readGitHubTrendingLastmod(),
   "/tech-startup-tracker": readTechStartupLastmod(),
   "/investments": readInvestmentsLastmod(),
-  "/news-pulse": "2026-04-01",
+  "/news-pulse": "2026-07-23",
   "/spacex-mission-control": "2026-04-01",
   "/polling-aggregator": readPollingLastmod(),
   "/premier-league": readPremierLeagueLastmod(),
-  "/score-pools": readScorePoolsLastmod(),
-  "/score-pools/tracker": readScorePoolsLastmod(),
-  "/score-pools/settings": readScorePoolsLastmod(),
+  "/score-pools": latestIso(readScorePoolsLastmod(), "2026-07-23"),
+  "/score-pools/tracker": latestIso(readScorePoolsLastmod(), "2026-07-23"),
+  "/score-pools/settings": latestIso(readScorePoolsLastmod(), "2026-07-23"),
   "/la-liga": readLaLigaLastmod(),
   "/nfl": readNflLastmod(),
-  "/world-cup-2026": readWorldCupLastmod(),
+  "/world-cup-2026": latestIso(readWorldCupLastmod(), "2026-07-23"),
   "/march-madness-2026": "2026-03-17",
   "/fantasy-football": readFantasyLastmod(),
   "/fantasy-football/draft-tracker": readFantasyLastmod(),
@@ -177,6 +177,14 @@ function toIsoString(value) {
 
   const normalizedValue = value.length === 10 ? `${value}T00:00:00.000Z` : value;
   return new Date(normalizedValue).toISOString();
+}
+
+function latestIso(...values) {
+  return values
+    .map(toIsoString)
+    .filter(Boolean)
+    .sort()
+    .at(-1);
 }
 
 function readFirstMatch(filePath, pattern) {

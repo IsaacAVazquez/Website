@@ -32,11 +32,12 @@ const RETRIEVAL_AGENTS = [
   "Perplexity-User",
 ];
 
+const PUBLIC_GENERATIVE_AGENTS = ["Google-Extended"];
+
 const TRAINING_AGENTS = [
   "GPTBot",
   "ClaudeBot",
   "CCBot",
-  "Google-Extended",
   "Applebot-Extended",
   "Meta-ExternalAgent",
   "Amazonbot",
@@ -55,6 +56,15 @@ describe("public crawler policy", () => {
     expect(rulesFor(userAgent)).toContain("Allow: /api/rss");
   });
 
+  it.each(PUBLIC_GENERATIVE_AGENTS)(
+    "allows %s to use public pages for grounding",
+    (userAgent) => {
+      expect(rulesFor(userAgent)).toContain("Allow: /");
+      expect(rulesFor(userAgent)).toContain("Allow: /api/rss");
+      expect(rulesFor(userAgent)).not.toContain("Disallow: /\n");
+    }
+  );
+
   it.each(TRAINING_AGENTS)(
     "blocks the %s training crawler from everything",
     (userAgent) => {
@@ -62,7 +72,7 @@ describe("public crawler policy", () => {
     }
   );
 
-  it.each(["*", "OAI-SearchBot", "Googlebot"])(
+  it.each(["*", "OAI-SearchBot", "Google-Extended", "Googlebot"])(
     "keeps rendering assets fetchable for %s so pages index styled and hydrated",
     (userAgent) => {
       // Googlebot has no named group, so it inherits * — assert both resolve
@@ -74,6 +84,15 @@ describe("public crawler policy", () => {
     }
   );
 
+  it.each(["*", "OAI-SearchBot", "Google-Extended", "Googlebot"])(
+    "blocks the exact /admin route for %s",
+    (userAgent) => {
+      const rules = rulesFor(userAgent === "Googlebot" ? "*" : userAgent);
+
+      expect(rules).toContain("Disallow: /admin");
+    }
+  );
+
   it("keeps the retrieval group's rules in sync with the * group", () => {
     // A named group fully replaces * (RFC 9309), so any path blocked or
     // re-allowed for anonymous crawlers must be mirrored for retrieval bots.
@@ -81,6 +100,15 @@ describe("public crawler policy", () => {
       directiveLines("*", "Disallow")
     );
     expect(directiveLines("OAI-SearchBot", "Allow")).toEqual(
+      directiveLines("*", "Allow")
+    );
+  });
+
+  it("keeps Google-Extended exclusions in sync with the public group", () => {
+    expect(directiveLines("Google-Extended", "Disallow")).toEqual(
+      directiveLines("*", "Disallow")
+    );
+    expect(directiveLines("Google-Extended", "Allow")).toEqual(
       directiveLines("*", "Allow")
     );
   });
@@ -107,7 +135,6 @@ describe("SEO page sitemap freshness", () => {
     "/about",
     "/accessibility",
     "/arcade",
-    "/resume",
     "/portfolio",
     "/writing",
   ])(
@@ -120,4 +147,23 @@ describe("SEO page sitemap freshness", () => {
       expect(entry?.lastmod).toBe("2026-07-16T00:00:00.000Z");
     }
   );
+
+  it.each([
+    "/mba-internship-notifications",
+    "/news-pulse",
+    "/changelog",
+    "/resume",
+    "/score-pools",
+    "/score-pools/tracker",
+    "/score-pools/settings",
+    "/world-cup-2026",
+  ])("records the audit implementation for %s", (pathname) => {
+    const entry = getPublicSitemapEntries().find(
+      ({ loc }: { loc: string }) => loc === pathname
+    );
+
+    expect(new Date(entry?.lastmod ?? 0).getTime()).toBeGreaterThanOrEqual(
+      new Date("2026-07-23T00:00:00.000Z").getTime()
+    );
+  });
 });

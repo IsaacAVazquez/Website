@@ -10,12 +10,14 @@ import { publishedDateFormatter } from "@/lib/utils";
 
 export async function generateMetadata(): Promise<Metadata> {
   const latest = getLatestChangelogEntryDate();
+  const interfaceUpdatedAt = "2026-07-23";
   return constructMetadata({
     title: "Changelog",
     description:
       "A running log of what I've shipped on this site, including new features, fixes, essays, data updates, and the experiments I kept or retired.",
     canonicalUrl: "https://isaacavazquez.com/changelog",
-    dateModified: latest || undefined,
+    dateModified:
+      latest && latest > interfaceUpdatedAt ? latest : interfaceUpdatedAt,
   });
 }
 

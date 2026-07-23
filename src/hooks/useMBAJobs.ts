@@ -154,10 +154,12 @@ export interface UseMBAJobsResult {
 
 export interface UseMBAJobsOptions {
   externalLeads?: boolean;
+  initialData?: MBAJobsApiResponse;
 }
 
 export function useMBAJobs(options: UseMBAJobsOptions = {}): UseMBAJobsResult {
   const externalLeadsEnabled = options.externalLeads === true;
+  const initialData = options.initialData;
   // ── Seen IDs (external store for cross-tab sync) ───────────────────────
   const rawSeenSnapshot = useSyncExternalStore(
     subscribeSeenIds,
@@ -205,17 +207,25 @@ export function useMBAJobs(options: UseMBAJobsOptions = {}): UseMBAJobsResult {
   }, []);
 
   // ── Fetch state ────────────────────────────────────────────────────────
-  const [jobs, setJobs] = useState<MBAJob[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [jobs, setJobs] = useState<MBAJob[]>(initialData?.jobs ?? []);
+  const [isLoading, setIsLoading] = useState(!initialData);
   const [error, setError] = useState<string | null>(null);
-  const [fetchErrors, setFetchErrors] = useState<MBAJobsFetchError[]>([]);
-  const [sourceStatuses, setSourceStatuses] = useState<MBAJobsSourceStatus[]>([]);
-  const [lastFetchedAt, setLastFetchedAt] = useState<Date | null>(null);
+  const [fetchErrors, setFetchErrors] = useState<MBAJobsFetchError[]>(
+    initialData?.errors ?? []
+  );
+  const [sourceStatuses, setSourceStatuses] = useState<MBAJobsSourceStatus[]>(
+    initialData?.sourceStatuses ?? []
+  );
+  const [lastFetchedAt, setLastFetchedAt] = useState<Date | null>(
+    initialData?.fetchedAt ? new Date(initialData.fetchedAt) : null
+  );
 
   const isMountedRef = useRef(true);
   const requestIdRef = useRef(0);
   const lastRefreshAtRef = useRef(0);
-  const prevJobIdsRef = useRef<Set<string>>(new Set());
+  const prevJobIdsRef = useRef<Set<string>>(
+    new Set(initialData?.jobs.map((job) => job.id) ?? [])
+  );
 
   useEffect(() => {
     isMountedRef.current = true;
@@ -315,7 +325,7 @@ export function useMBAJobs(options: UseMBAJobsOptions = {}): UseMBAJobsResult {
   // ── Initial fetch ──────────────────────────────────────────────────────
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- One-shot mount-time fetch; fetchJobs internally manages loading/error state
-    fetchJobs({ showLoading: true });
+    fetchJobs({ showLoading: !initialData });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

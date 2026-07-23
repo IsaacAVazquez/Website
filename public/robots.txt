@@ -5,7 +5,7 @@ User-agent: *
 Disallow: /api/
 # ...but the public RSS feed lives under /api and should stay crawlable
 Allow: /api/rss
-Disallow: /admin/
+Disallow: /admin
 Disallow: /_next/
 # ...but rendering assets must stay fetchable or crawlers index unstyled,
 # unhydrated pages (longest-match Allow beats the /_next/ Disallow).
@@ -26,7 +26,19 @@ User-agent: PerplexityBot
 User-agent: Perplexity-User
 Disallow: /api/
 Allow: /api/rss
-Disallow: /admin/
+Disallow: /admin
+Disallow: /_next/
+Allow: /_next/static/
+Allow: /_next/image
+Disallow: /node_modules/
+Allow: /
+
+# Google-Extended controls Gemini grounding and other generative uses without
+# changing Google Search, AI Overviews, or AI Mode eligibility.
+User-agent: Google-Extended
+Disallow: /api/
+Allow: /api/rss
+Disallow: /admin
 Disallow: /_next/
 Allow: /_next/static/
 Allow: /_next/image
@@ -37,7 +49,6 @@ Allow: /
 User-agent: GPTBot
 User-agent: ClaudeBot
 User-agent: CCBot
-User-agent: Google-Extended
 User-agent: Applebot-Extended
 User-agent: Meta-ExternalAgent
 User-agent: Amazonbot

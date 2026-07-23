@@ -96,11 +96,13 @@ function truncateMetadataText(
 }
 
 export function fitSearchTitle(title: string): string {
+  const brandSuffix = ` | ${siteConfig.name}`;
   const withoutTrailingBrand = title.replace(
     new RegExp(`\\s+\\|\\s+${siteConfig.name}$`, "i"),
     "",
   );
-  return truncateMetadataText(withoutTrailingBrand, 60, "");
+  const unbrandedBudget = 60 - brandSuffix.length;
+  return truncateMetadataText(withoutTrailingBrand, unbrandedBudget);
 }
 
 export function fitMetaDescription(description: string): string {

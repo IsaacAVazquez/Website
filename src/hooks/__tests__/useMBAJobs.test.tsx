@@ -90,6 +90,30 @@ describe("useMBAJobs", () => {
     expect(String(fetchSpy.mock.calls[0][0])).toContain("/api/mba-jobs");
   });
 
+  it("uses server-provided jobs while the browser refresh is pending", () => {
+    const fetchSpy = installFetch(
+      async () =>
+        new Promise(() => {
+          return undefined;
+        }),
+    );
+    const initialData = buildResponse([jobA, jobB]);
+
+    const { result, unmount } = renderHook(() =>
+      useMBAJobs({ initialData })
+    );
+
+    expect(result.current.isLoading).toBe(false);
+    expect(result.current.jobs.map((job) => job.id)).toEqual([
+      "stripe-1",
+      "brex-1",
+    ]);
+    expect(result.current.lastFetchedAt).toBeInstanceOf(Date);
+    expect(fetchSpy).toHaveBeenCalled();
+
+    unmount();
+  });
+
   it("derives newJobCount from unseen jobs and updates after marking one seen", async () => {
     mockJobsResponse([jobA, jobB]);
 

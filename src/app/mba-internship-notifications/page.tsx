@@ -1,4 +1,5 @@
 import { StructuredData } from "@/components/StructuredData";
+import { getMBAJobsData } from "@/lib/mbaJobsServer";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { MBAJobsClient } from "./mba-jobs-client";
 import { normalizeMBAJobsState } from "./mba-jobs-state";
@@ -8,7 +9,7 @@ export const metadata = constructMetadata({
   description:
     "Live dashboard monitoring 32 tech company career pages and public job boards for MBA internships plus full-time business roles across product, PMM, strategy, operations, growth, and finance.",
   canonicalUrl: "/mba-internship-notifications",
-  dateModified: "2026-04-15",
+  dateModified: "2026-07-23",
 });
 
 interface MBAJobsPageProps {
@@ -26,6 +27,16 @@ interface MBAJobsPageProps {
 
 export default async function MBAJobsPage({ searchParams }: MBAJobsPageProps) {
   const initialState = normalizeMBAJobsState(await searchParams);
+  const initialResult = await getMBAJobsData(
+    undefined,
+    initialState.external === "on"
+  );
+  const initialData = initialResult.isError
+    ? undefined
+    : {
+        ...initialResult.body,
+        jobs: initialResult.body.jobs.slice(0, 60),
+      };
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "Job Search", url: "/mba-internship-notifications" },
@@ -50,6 +61,7 @@ export default async function MBAJobsPage({ searchParams }: MBAJobsPageProps) {
           description:
             "Career page and public job board monitor for MBA internships and full-time business roles across 32 tech companies, with optional external job leads.",
           url: "https://isaacavazquez.com/mba-internship-notifications",
+          dateModified: "2026-07-23",
           applicationCategory: "BusinessApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           author: "Isaac Vazquez",
@@ -64,7 +76,7 @@ export default async function MBAJobsPage({ searchParams }: MBAJobsPageProps) {
           ],
         }}
       />
-      <MBAJobsClient initialState={initialState} />
+      <MBAJobsClient initialData={initialData} initialState={initialState} />
     </>
   );
 }

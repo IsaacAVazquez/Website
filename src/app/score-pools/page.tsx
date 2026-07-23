@@ -3,13 +3,14 @@ import { scorePoolsSnapshot } from "@/data/scorePoolsSnapshot";
 import { getScorePoolsSnapshotData } from "@/lib/scorePoolsSnapshot";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { ScorePoolsClient } from "./score-pools-client";
+import { getScorePoolsModifiedDate } from "./score-pools-metadata";
 
 export const metadata = constructMetadata({
   title: "Score Pools",
   description:
     "Exact-score prediction engine for pool play, with market-calibrated scoreline distributions, expected-points pick rankings, and leaderboard-aware recommendations from a checked-in odds snapshot.",
   canonicalUrl: "/score-pools",
-  dateModified: scorePoolsSnapshot.generatedAt.slice(0, 10),
+  dateModified: getScorePoolsModifiedDate(scorePoolsSnapshot.generatedAt),
 });
 
 interface ScorePoolsPageProps {
@@ -41,10 +42,14 @@ export default async function ScorePoolsPage({ searchParams }: ScorePoolsPagePro
       <StructuredData
         type="SportsApplication"
         data={{
+          "@id": "https://isaacavazquez.com/score-pools#application",
           name: "Score Pools",
           description:
             "Exact-score prediction engine for pool play: de-vigged odds, a market-calibrated scoreline distribution, and expected-points pick rankings under configurable scoring rules.",
           url: "https://isaacavazquez.com/score-pools",
+          dateModified: getScorePoolsModifiedDate(
+            scorePoolsSnapshot.generatedAt
+          ),
           applicationCategory: "SportsApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           featureList: [

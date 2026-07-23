@@ -4,6 +4,7 @@ import {
   startTransition,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type CSSProperties,
 } from "react";
@@ -27,6 +28,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { SOURCE_META } from "@/lib/news-pulse-sources";
+import type { NewsPulseFeedResponse } from "@/lib/newsPulseServer";
 import type { NewsArticle, TopicCluster } from "@/lib/news-pulse-utils";
 import {
   analyzeSentiment,
@@ -47,15 +49,11 @@ import {
 } from "./news-pulse-state";
 
 interface NewsPulseClientProps {
+  initialFeed?: NewsPulseFeedResponse;
   initialState: NewsPulseSearchState;
 }
 
-interface FeedResponse {
-  articles: NewsArticle[];
-  fetchedAt: string;
-  errors: string[];
-  message?: string;
-}
+type FeedResponse = NewsPulseFeedResponse;
 
 const fadeIn = {
   hidden: { opacity: 0, y: 12 },
@@ -182,7 +180,10 @@ function SourceDropdown({
   );
 }
 
-export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
+export function NewsPulseClient({
+  initialFeed,
+  initialState,
+}: NewsPulseClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const shouldReduceMotion = useReducedMotion();
@@ -200,12 +201,22 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
     startTransition(() => router.push(href, { scroll: false }));
   }
 
-  const [articles, setArticles] = useState<NewsArticle[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [feedErrors, setFeedErrors] = useState<string[]>([]);
-  const [fetchedAt, setFetchedAt] = useState("");
+  const hasUsableInitialFeed = (initialFeed?.articles.length ?? 0) > 0;
+  const [articles, setArticles] = useState<NewsArticle[]>(
+    initialFeed?.articles ?? []
+  );
+  const [loading, setLoading] = useState(!initialFeed);
+  const [error, setError] = useState<string | null>(
+    initialFeed?.dataStatus === "unavailable"
+      ? initialFeed.message ?? "I could not load the feeds."
+      : null
+  );
+  const [feedErrors, setFeedErrors] = useState<string[]>(
+    initialFeed?.errors ?? []
+  );
+  const [fetchedAt, setFetchedAt] = useState(initialFeed?.fetchedAt ?? "");
   const [reloadKey, setReloadKey] = useState(0);
+  const hasCompletedInitialRefresh = useRef(false);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -217,7 +228,10 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
     }, 15000);
 
     async function loadFeeds() {
-      setLoading(true);
+      const showLoading =
+        hasCompletedInitialRefresh.current || !hasUsableInitialFeed;
+      hasCompletedInitialRefresh.current = true;
+      if (showLoading) setLoading(true);
       setError(null);
       setFeedErrors([]);
 
@@ -259,7 +273,7 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
       clearTimeout(timeoutId);
       controller.abort();
     };
-  }, [reloadKey]);
+  }, [hasUsableInitialFeed, reloadKey]);
 
   const filteredArticles = useMemo(
     () =>
@@ -571,6 +585,7 @@ function HeadlinesView({
     <>
     <motion.div
       className="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
+      data-testid="news-headlines-grid"
       variants={variants}
       initial="hidden"
       animate="visible"

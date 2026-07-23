@@ -8,6 +8,23 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const require = createRequire(import.meta.url);
 
+const retiredPortfolioDestinations = {
+  "investment-analytics-platform": "/investments",
+  "textout-platform": "/writing/textout-platform",
+  "runningmate-platform": "/writing/runningmate-platform-launch",
+  "civic-engagement-platform-scale":
+    "/writing/scaling-civic-engagement-platform",
+  "campaign-analytics-dashboard":
+    "/writing/campaign-self-service-analytics",
+  "qa-automation-framework": "/writing/qa-automation-daily-deploys",
+  "pulse-dashboards": "/writing/building-the-pulse-dashboard-family",
+  "performance-intelligence":
+    "/writing/proactive-performance-intelligence",
+  "pricing-strategy-initiative": "/writing/pricing-strategy-initiative",
+  "digital-acquisition-strategy":
+    "/writing/digital-acquisition-strategy",
+};
+
 const nextConfig = {
   poweredByHeader: false,
   // URL redirects for better SEO and user experience
@@ -24,65 +41,26 @@ const nextConfig = {
         destination: '/portfolio',
         permanent: true,
       },
+      // Resolve retired project slugs directly from both legacy route families.
+      // These must precede the wildcard so /projects/<slug> does not take a
+      // second redirect through /portfolio/<slug>.
+      ...Object.entries(retiredPortfolioDestinations).flatMap(
+        ([slug, destination]) => [
+          {
+            source: `/projects/${slug}`,
+            destination,
+            permanent: true,
+          },
+          {
+            source: `/portfolio/${slug}`,
+            destination,
+            permanent: true,
+          },
+        ],
+      ),
       {
         source: '/projects/:path*',
         destination: '/portfolio/:path*',
-        permanent: true,
-      },
-      // Redirect external-link portfolio slugs to their real destinations
-      {
-        source: '/portfolio/investment-analytics-platform',
-        destination: '/investments',
-        permanent: true,
-      },
-
-      // Legacy professional case studies moved to /writing
-      {
-        source: '/portfolio/textout-platform',
-        destination: '/writing/textout-platform',
-        permanent: true,
-      },
-      {
-        source: '/portfolio/runningmate-platform',
-        destination: '/writing/runningmate-platform-launch',
-        permanent: true,
-      },
-      {
-        source: '/portfolio/civic-engagement-platform-scale',
-        destination: '/writing/scaling-civic-engagement-platform',
-        permanent: true,
-      },
-      {
-        source: '/portfolio/campaign-analytics-dashboard',
-        destination: '/writing/campaign-self-service-analytics',
-        permanent: true,
-      },
-      {
-        source: '/portfolio/qa-automation-framework',
-        destination: '/writing/qa-automation-daily-deploys',
-        permanent: true,
-      },
-      {
-        // Pulse Dashboards was a meta write-up of the Pulse family, not a
-        // standalone tool — it lives as a /writing article; the nine dashboards
-        // are each their own portfolio project.
-        source: '/portfolio/pulse-dashboards',
-        destination: '/writing/building-the-pulse-dashboard-family',
-        permanent: true,
-      },
-      {
-        source: '/portfolio/performance-intelligence',
-        destination: '/writing/proactive-performance-intelligence',
-        permanent: true,
-      },
-      {
-        source: '/portfolio/pricing-strategy-initiative',
-        destination: '/writing/pricing-strategy-initiative',
-        permanent: true,
-      },
-      {
-        source: '/portfolio/digital-acquisition-strategy',
-        destination: '/writing/digital-acquisition-strategy',
         permanent: true,
       },
 

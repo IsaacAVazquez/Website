@@ -84,6 +84,7 @@ import type {
   MBAJob,
   MBAJobRoleFamily,
   MBAJobRoleType,
+  MBAJobsApiResponse,
   MBAJobsSearchState,
   MBAJobsSourceStatus,
   MBATrackedApplication,
@@ -2080,10 +2081,14 @@ function SourceHealthPanel({
 // ---------------------------------------------------------------------------
 
 interface MBAJobsClientProps {
+  initialData?: MBAJobsApiResponse;
   initialState: MBAJobsSearchState;
 }
 
-export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
+export function MBAJobsClient({
+  initialData,
+  initialState,
+}: MBAJobsClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const shouldReduceMotion = useReducedMotion();
@@ -2131,7 +2136,10 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
     emailSending,
     emailResult,
     clearEmailResult,
-  } = useMBAJobs({ externalLeads: uiState.external === "on" });
+  } = useMBAJobs({
+    externalLeads: uiState.external === "on",
+    initialData,
+  });
 
   const [emailDialogOpen, setEmailDialogOpen] = useState(false);
   const [applicationDialogOpen, setApplicationDialogOpen] = useState(false);

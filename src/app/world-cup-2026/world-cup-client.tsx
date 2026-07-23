@@ -630,9 +630,9 @@ function GroupTable({
   return (
     <SurfaceCard className="p-4 sm:p-5">
       <div className="flex items-center justify-between border-b border-[var(--home-rule)] pb-3">
-        <h3 className="text-base font-bold text-[var(--home-ink)]">
+        <h2 className="text-base font-bold text-[var(--home-ink)]">
           {group.name}
-        </h3>
+        </h2>
         <span className="text-xs uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
           {group.standings.length} teams
         </span>

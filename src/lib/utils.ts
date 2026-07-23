@@ -2,6 +2,7 @@ export const publishedDateFormatter = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
   year: "numeric",
+  timeZone: "UTC",
 });
 
 export const isMobile = () => {

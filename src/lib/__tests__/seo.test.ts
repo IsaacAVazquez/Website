@@ -292,13 +292,24 @@ describe("safeJsonLd", () => {
 });
 
 describe("search metadata fitting", () => {
-  it("keeps titles within the search display budget", () => {
+  it("reserves room for the brand within the search display budget", () => {
     const title = fitSearchTitle(
       "AI Product Manager Interview Questions: What Is Actually Asked in 2026"
     );
+    const brandedTitle = `${title} | ${siteConfig.name}`;
 
-    expect(title.length).toBeLessThanOrEqual(60);
-    expect(title.endsWith("…")).toBe(false);
+    expect(brandedTitle.length).toBeLessThanOrEqual(60);
+    expect(title.endsWith("…")).toBe(true);
+    expect(title.endsWith("and…")).toBe(false);
+  });
+
+  it("removes an existing trailing brand before fitting the title", () => {
+    const title = fitSearchTitle(
+      `A deliberately long route title that already carries the brand | ${siteConfig.name}`
+    );
+
+    expect(`${title} | ${siteConfig.name}`.length).toBeLessThanOrEqual(60);
+    expect(title).not.toContain(siteConfig.name);
   });
 
   it("keeps descriptions within the search display budget", () => {

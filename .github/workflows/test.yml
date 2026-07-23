@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
@@ -23,6 +25,11 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Review writing freshness dates
+        env:
+          BLOG_DATE_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: npm run check:blog-dates -- --base="$BLOG_DATE_BASE"
 
       - name: Run unit tests with coverage
         run: npm run test:ci

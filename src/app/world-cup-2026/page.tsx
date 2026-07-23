@@ -14,7 +14,10 @@ export const metadata = constructMetadata({
     "Interactive 2026 FIFA World Cup dashboard with group standings, the expanded 32-team knockout bracket, the match schedule across the United States, Canada, and Mexico, and host venue context.",
   canonicalUrl: "/world-cup-2026",
   image: "/world-cup-2026/opengraph-image",
-  dateModified: worldCupSnapshot.tournament.generatedAt.slice(0, 10),
+  dateModified:
+    worldCupSnapshot.tournament.generatedAt.slice(0, 10) > "2026-07-23"
+      ? worldCupSnapshot.tournament.generatedAt.slice(0, 10)
+      : "2026-07-23",
 });
 
 interface WorldCupPageProps {
@@ -63,7 +66,10 @@ export default async function WorldCupPage({ searchParams }: WorldCupPageProps) 
             "Host venue context across the United States, Canada, and Mexico",
             "Fast local-first rendering without a live third-party runtime dependency",
           ],
-          dateModified: worldCupSnapshot.tournament.generatedAt,
+          dateModified:
+            worldCupSnapshot.tournament.generatedAt > "2026-07-23T00:00:00.000Z"
+              ? worldCupSnapshot.tournament.generatedAt
+              : "2026-07-23T00:00:00.000Z",
         }}
       />
       <WorldCupClient

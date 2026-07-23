@@ -2,13 +2,14 @@
 title: "Which Model to Use Is Now an Architecture Question, Not a Budget Question"
 excerpt: "Model pricing has collapsed fast enough that the old decision framework for choosing an AI model is obsolete. What replaces it is closer to system design than cost optimization, and builders who still treat this as a budget exercise are leaving a lot of value on the table."
 publishedAt: "2026-04-21"
+updatedAt: "2026-07-23"
 category: "Agentic AI"
 tags: ["AI", "Model Economics", "Reasoning Models", "Product Strategy", "AI Architecture", "Claude", "GPT", "Gemini", "Agentic AI"]
 featured: false
 author: "Isaac Vazquez"
 archiveBucket: "Signals & Commentary"
 seo:
-  title: "The New Model Economics: Choosing AI Models in 2026"
+  title: "The New Model Economics for Choosing AI Models"
   description: "Model pricing has collapsed dramatically. Choosing between frontier, mid-tier, and fast models is now an architecture question. Here is how to think about it, where reasoning models earn their premium, and what commoditization of mid-tier changes for builders."
   keywords: ["AI model economics", "reasoning models", "model pricing", "Claude", "GPT", "Gemini", "AI architecture", "cost optimization", "frontier models"]
 ---
@@ -23,9 +24,9 @@ I still see teams optimizing for the old problem. I'd argue that's now where the
 
 ## The shape of the cost collapse
 
-The numbers on this are worth stating clearly. Frontier reasoning models that cost $15 to $60 per million output tokens eighteen months ago are now in the $3 to $10 range for equivalent or better capability. Mid-tier models that were the default choice at around $3 to $5 are now sitting below $1 for most workloads, and the gap between mid-tier quality and frontier quality has narrowed more than it has widened on the tasks most products actually care about. The fast-and-cheap tier, which is where a lot of production inference was being routed for cost reasons, has gotten dramatically cheaper too, but that's the less interesting part of the story.
+The numbers are worth stating clearly, with an as-of date because they move too fast to treat as permanent. As of July 23, 2026, [OpenAI lists](https://developers.openai.com/api/docs/pricing) GPT-5.6 Sol at $5 per million input tokens and $30 per million output tokens, Terra at $2.50 and $15, and Luna at $1 and $6. [Anthropic lists](https://platform.claude.com/docs/en/about-claude/pricing) Fable 5 at $10 and $50, Opus 4.8 at $5 and $25, Sonnet 5 at an introductory $2 and $10 through August, and Haiku 4.5 at $1 and $5. [Google publishes](https://ai.google.dev/gemini-api/docs/pricing) separate Gemini rates by model and service tier. The exact brackets differ, but the pattern inside each vendor is the part I care about. There is enough price and capability range to design a pipeline instead of forcing one model to do every job.
 
-The interesting part is that the ratio between frontier and mid-tier pricing matters less than it used to because the absolute numbers are small enough to stop being the binding constraint for most product decisions. When frontier inference costs were eating 60% of your unit economics, of course you were routing aggressively to cheaper models. When it's eating 8% of unit economics, the question shifts to where that 8% is buying you the most marginal product quality.
+The ratio between frontier and mid-tier pricing matters less once inference stops being the binding constraint for a particular product. If frontier inference consumes 60% of the unit economics, routing aggressively to cheaper models is the obvious move. If it consumes 8%, the better question is where that 8% buys the most marginal product quality. Those percentages are examples, not market averages, and the actual threshold depends on the workload.
 
 ## Why this turns it into an architecture question
 
@@ -43,9 +44,9 @@ The cost collapse hasn't eliminated the premium on reasoning models, it's just c
 
 Where I've consistently seen the premium justified is in tasks where the cost of a wrong answer is asymmetrically high. Contract analysis is an obvious example. The cost of a reasoning model getting a clause interpretation right, when a faster model would have missed a nuance that blows up later, is several orders of magnitude larger than the inference cost difference. Similar for medical decision support, structured financial analysis, and complex code review of systems where bugs are expensive. In these, the reasoning premium is not a luxury. It's the only economically correct choice.
 
-Where the reasoning premium is rarely worth it is on tasks with low asymmetry of error costs and high volume. Routine customer support responses, content moderation at scale, straightforward summarization, classification tasks where "mostly right" is the requirement. A fast mid-tier model gets you 95% of the quality at 10% of the cost, and the 5% quality gap is not worth paying for because the downside of the marginal wrong answer is small. Teams that route these workloads through reasoning models anyway, because they're building against "always use the best," are burning budget without product benefit.
+Where the reasoning premium is rarely worth it is on tasks with low asymmetry of error costs and high volume. Routine customer support responses, content moderation at scale, straightforward summarization, classification tasks where "mostly right" is the requirement. A fast mid-tier model can get close enough at a fraction of the cost, and the remaining quality gap may not be worth paying for because the downside of the marginal wrong answer is small. Teams that route these workloads through reasoning models anyway, because they are building against "always use the best," are burning budget without product benefit.
 
-The practical framework I use when designing these systems is something like: What does it cost me if this model gets this wrong? How often does it get wrong? What's the alternative model's quality for this specific task? Almost every workload sorts itself into reasoning-worthwhile or not-reasoning-worthwhile once you answer those three questions honestly.
+The practical framework I use when designing these systems comes down to three questions. What does it cost me if this model gets this wrong? How often does it get it wrong? What is the alternative model's quality for this specific task? Almost every workload sorts itself into reasoning-worthwhile or not-reasoning-worthwhile once you answer those three questions honestly.
 
 ## What commoditization of mid-tier changes for builders
 
@@ -57,10 +58,10 @@ The third implication, which I think is underweighted, is that the advantage for
 
 ## What I'd watch next
 
-The trajectory that interests me most is where the cost curve flattens. We've had a year of roughly 5x price reductions per year on frontier capability, but that can't continue indefinitely. When it flattens, probably within the next twelve months, the interesting question will be what the steady-state ratios are between tiers and how product architectures settle around those ratios.
+The trajectory that interests me most is where the cost curve flattens. List prices have kept falling, but that cannot continue at the same pace indefinitely. When the curve flattens, probably within the next twelve months, the interesting question will be what the steady-state ratios are between tiers and how product architectures settle around those ratios.
 
 My guess is that we end up in a world where frontier reasoning inference costs something like $2 to $5 per million output tokens, mid-tier costs something under $0.50, and fast/cheap costs under $0.10. At those numbers, the architecture question becomes how many fast calls you can run to preprocess and route to a single frontier call that does the hard thinking? The answer is "a lot," and that answer shapes the product.
 
 Builders who start architecting for that world now will have a meaningful head start on those who wait for pricing to settle. The patterns you develop for multi-model pipelines are going to matter more over time, not less.
 
-For the earlier version of this argument, and more on the category of tasks where reasoning models justify their cost, I wrote about that [here](/writing/reasoning-model-economics-when-to-use-which). For the build-vs-buy framing of how this interacts with platform decisions, [this piece](/writing/build-vs-buy-agentic-ai-platform) has more.
+The earlier article on [when reasoning models justify their cost](/writing/reasoning-model-economics-when-to-use-which) has the first version of this argument. My piece on [the build-versus-buy decision for agentic AI platforms](/writing/build-vs-buy-agentic-ai-platform) covers how the same economics affect platform choices.

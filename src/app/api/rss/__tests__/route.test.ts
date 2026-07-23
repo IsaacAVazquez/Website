@@ -48,6 +48,9 @@ describe("GET /api/rss", () => {
     expect(body).toContain("<title>Alpha &amp; Beta</title>");
     expect(body).toContain("<description>Alpha &amp; Beta description</description>");
     expect(body).toContain("<link>https://isaacavazquez.com/writing/alpha-post</link>");
+    expect(body).toContain(
+      "<atom:updated>2026-04-02T00:00:00.000Z</atom:updated>"
+    );
   });
 
   it("falls back to the post excerpt when no SEO description exists", async () => {
@@ -138,6 +141,9 @@ describe("GET /api/rss", () => {
     );
     expect(body).toContain(
       "<guid isPermaLink=\"true\">https://preview.isaacavazquez.com/writing/older-but-updated</guid>"
+    );
+    expect(body).toContain(
+      "<atom:updated>2026-04-03T12:34:56.000Z</atom:updated>"
     );
   });
 });

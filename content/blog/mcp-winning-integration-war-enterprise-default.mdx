@@ -2,20 +2,21 @@
 title: "MCP Has Already Won the Integration War. Most People Haven't Noticed Yet."
 excerpt: "The Model Context Protocol moved from interesting standard to default integration layer faster than most people tracking enterprise software realized. Here is why that happened, what it displaces, and what builders should be doing about it now."
 publishedAt: "2026-04-21"
+updatedAt: "2026-07-23"
 category: "Agentic AI"
 tags: ["AI", "MCP", "Model Context Protocol", "Integration", "Enterprise Software", "Agentic AI", "API", "Platform Strategy"]
 featured: false
 author: "Isaac Vazquez"
 archiveBucket: "Signals & Commentary"
 seo:
-  title: "MCP Is Winning the AI Integration War: What It Means for Enterprise Software"
+  title: "How MCP Changes Enterprise Software Integration"
   description: "The Model Context Protocol has quietly become the default integration layer for AI agents. Here is why enterprise adoption accelerated, what it displaces, and how builders should respond."
   keywords: ["MCP", "Model Context Protocol", "AI integration", "enterprise AI", "agentic AI", "iPaaS", "Zapier", "MuleSoft", "AI agents", "integration layer"]
 ---
 
 # MCP Has Already Won the Integration War. Most People Haven't Noticed Yet.
 
-About a year ago I wrote a piece arguing that MCP was becoming the default integration layer for AI agents. At the time that was a forward-looking claim with genuine counterfactual scenarios attached to it. Anthropic had published the protocol, a handful of early adopters had built servers, and the open question was whether the ecosystem would converge on MCP or fragment across vendor-specific approaches. A year on, that question has been answered, and it's not close.
+About a year ago I wrote a piece arguing that MCP was becoming the default integration layer for AI agents. At the time that was a forward-looking claim with genuine counterfactual scenarios attached to it. Anthropic had published the protocol, a handful of early adopters had built servers, and the open question was whether the market would converge on MCP or fragment across vendor-specific approaches. A year on, that question has been answered, and it's not close.
 
 MCP has won. Not in the sense that every integration in the world runs through it, which it doesn't and won't. But in the sense that when a builder sits down to figure out how an AI agent will talk to their product, MCP is now the default answer and everything else is an exception. That shift happened faster than I expected, and the implications for the integration layer of the enterprise software stack are larger than I think most people have priced in.
 
@@ -23,9 +24,9 @@ MCP has won. Not in the sense that every integration in the world runs through i
 
 The thing that made MCP's adoption curve unusual is that it didn't follow the typical protocol-war pattern. Most of those, whether you're looking at SOAP versus REST or the early smart-contract standards, went through a long period of competing standards, market confusion, and eventual consolidation driven by the dominant platform vendor. MCP compressed that timeline dramatically because the market conditions were unusual. Every AI company and every enterprise software vendor had the same problem at the same time, which was that their users wanted AI agents that could act across systems, and building that one vendor at a time was going to be a losing game. When Anthropic published a reasonable open standard, the incentive for everyone else to adopt it rather than write their own was unusually strong.
 
-What tipped the ecosystem was not a single vendor announcement. It was the first wave of enterprises that started building their internal platforms around MCP. Once the agent-facing interface of an enterprise's internal tools was MCP, the cost calculus for every external vendor flipped. Supporting MCP natively became the obvious path, because any vendor that didn't was going to be harder to integrate into that enterprise's agent workflows than a vendor that did. That's how a standard goes from "worth considering" to "assumed" in a remarkably short period.
+What tipped the market was not a single vendor announcement. It was the first wave of enterprises that started building their internal platforms around MCP. Once the agent-facing interface of an enterprise's internal tools was MCP, the cost calculus for every external vendor flipped. Supporting MCP natively became the obvious path, because any vendor that didn't was going to be harder to integrate into that enterprise's agent workflows than a vendor that did. That's how a standard goes from "worth considering" to "assumed" in a remarkably short period.
 
-By early 2026 the major cloud providers were all shipping native MCP support. The large developer tooling companies had MCP-first agent integrations. And most revealing, the CRM and ERP vendors, which are usually the slowest to adopt anything new because their enterprise customers move glacially, started announcing MCP roadmaps. When Salesforce, ServiceNow, and SAP all signal movement in the same direction within a quarter of each other, the standard has won.
+By mid-2026 [AWS](https://aws.amazon.com/blogs/aws/the-aws-mcp-server-is-now-generally-available/), [Azure](https://learn.microsoft.com/en-us/azure/developer/azure-mcp-server/overview), and [Google Cloud](https://cloud.google.com/blog/products/ai-machine-learning/google-managed-mcp-servers-are-available-for-everyone) were all shipping native MCP support, and the large developer tooling companies had MCP-first agent integrations. The more revealing move came from enterprise application vendors, which usually adopt new interfaces more carefully because their customers have longer procurement and implementation cycles. [Salesforce](https://www.salesforce.com/news/stories/salesforce-headless-360-announcement/agentforce-developer-experience-tdx-release/) was exposing platform capabilities as MCP tools by April, and [ServiceNow](https://newsroom.servicenow.com/press-releases/details/2026/ServiceNow-opens-its-full-system-of-action-to-every-AI-Agent-in-the-enterprise/default.aspx) made its MCP Server generally available across its workflow platform. When the cloud layer and the enterprise application layer move in the same direction, I think the standard has won.
 
 ## What this displaces
 
@@ -35,7 +36,7 @@ The most obvious place this creates pressure is the integration middleware space
 
 I don't think this means iPaaS companies disappear. The smart ones are already pivoting to orchestration, observability, and governance of agentic workflows, which are real and underserved problems. Zapier's agent platform is a clear example of this. But the simple "connect these two apps" business is getting commoditized, and the companies that were built around that as their primary wedge are going to have a harder time than their market caps currently suggest.
 
-A less obvious place MCP creates pressure is in how enterprise software gets bought. The historical buying pattern was that you evaluated a tool largely on its own merits, possibly with some attention to integration capabilities. When agents become the primary way people interact with enterprise systems, which I think happens for a meaningful chunk of knowledge work within two years, the evaluation criteria shift. "How well does your tool surface through MCP" becomes a first-class question. Vendors that can't answer it credibly will lose deals they would have otherwise won. This is already showing up in enterprise procurement conversations in late 2026.
+A less obvious place MCP creates pressure is in how enterprise software gets bought. The historical buying pattern was that you evaluated a tool largely on its own merits, possibly with some attention to integration capabilities. When agents become the primary way people interact with enterprise systems, which I think happens for a meaningful chunk of knowledge work within two years, the evaluation criteria shift. "How well does your tool surface through MCP" becomes a first-class question, and vendors that cannot answer it credibly will probably lose deals they would have otherwise won.
 
 ## What builders should be doing now
 
@@ -45,7 +46,7 @@ The box-checking version is what I see most teams shipping right now. They take 
 
 The version that works looks different. Tool definitions are higher-level and task-oriented rather than CRUD-oriented, descriptions include the kind of context an agent needs to choose correctly, and the surface area is deliberately smaller than your full API. It looks more like designing a good command-line interface than wrapping an HTTP API. That's the craft that distinguishes the MCP servers that actually work from the ones that exist. Most vendors haven't learned this yet. The ones that figure it out first will have a noticeable edge in how well their products work inside agent workflows.
 
-The second thing builders should be doing is thinking carefully about the trust boundary. Every MCP server you expose is a potential pivot point for a compromised agent context. Least privilege, audit logging, and human-in-the-loop checkpoints for destructive actions are not optional. I wrote about the agentic attack surface in the cybersecurity piece, and nothing I've seen since then has made me less worried about it.
+The second thing builders should be doing is thinking carefully about the trust boundary. Every MCP server you expose is a potential pivot point for a compromised agent context. Least privilege, audit logging, and human-in-the-loop checkpoints for destructive actions are not optional. I wrote about the agentic attack surface in [my cybersecurity analysis](/writing/cybersecurity-in-age-of-ai-software-engineer-perspective), and nothing I've seen since then has made me less worried about it.
 
 ## Where I think the integration layer sits in three years
 
@@ -53,4 +54,4 @@ My best guess is that the integration layer of the enterprise software stack loo
 
 What does not happen is that MCP ends. Standards like this, once adopted at this scale, tend to persist longer than anyone expects. TCP/IP is still how the internet runs. SQL is still how most databases get queried. MCP doesn't need to be perfect to be durable. It just needs to be the thing everyone agreed on, and it already is.
 
-For the broader context of why this matters for build-vs-buy decisions in agentic AI, I wrote about that tradeoff [here](/writing/build-vs-buy-agentic-ai-platform). For the original framing of what MCP is and why it matters, the earlier piece is [here](/writing/mcp-integration-layer-what-it-means).
+For the broader context, I wrote about [the build-versus-buy decision for agentic AI platforms](/writing/build-vs-buy-agentic-ai-platform). The earlier piece on [MCP as the integration layer](/writing/mcp-integration-layer-what-it-means) has the original framing of the protocol and why I thought it mattered.

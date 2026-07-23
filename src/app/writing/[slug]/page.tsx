@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return constructMetadata({
     title: metadataTitle,
     description: metadataDescription,
-    image: post.coverImage,
+    image: `/writing/${slug}/opengraph-image`,
     ogType: "article",
     datePublished: post.publishedAt,
     dateModified: post.updatedAt || post.publishedAt,
@@ -234,6 +234,29 @@ export default async function BlogPostPage({ params }: PageProps) {
                   >
                     {publishedDateFormatter.format(new Date(post.publishedAt))}
                   </time>
+                  {post.updatedAt && post.updatedAt !== post.publishedAt ? (
+                    <>
+                      <span
+                        aria-hidden="true"
+                        style={{ color: "var(--home-ink-muted)" }}
+                      >
+                        ·
+                      </span>
+                      <span
+                        style={{
+                          fontSize: "0.85rem",
+                          color: "var(--home-ink-muted)",
+                        }}
+                      >
+                        Updated{" "}
+                        <time dateTime={post.updatedAt}>
+                          {publishedDateFormatter.format(
+                            new Date(post.updatedAt)
+                          )}
+                        </time>
+                      </span>
+                    </>
+                  ) : null}
                   <span aria-hidden="true" style={{ color: "var(--home-ink-muted)" }}>
                     ·
                   </span>

@@ -14,7 +14,7 @@ describe("Writing article metadata", () => {
     mockGetBlogPostBySlug.mockReset();
   });
 
-  it("uses the article-specific cover image for open graph and twitter cards", async () => {
+  it("uses the generated 1200x630 card for open graph and twitter cards", async () => {
     mockGetBlogPostBySlug.mockResolvedValue({
       slug: "test-post",
       title: "Test Post",
@@ -28,7 +28,7 @@ describe("Writing article metadata", () => {
       readingTime: "4 min read",
       wordCount: 800,
       author: "Isaac Vazquez",
-      coverImage: "/writing/test-post/opengraph-image",
+      coverImage: "/images/writing/covers/test-post.jpg",
       cluster: "PM Workflows",
       cta: undefined,
       seo: {

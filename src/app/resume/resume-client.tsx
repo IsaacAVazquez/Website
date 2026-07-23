@@ -214,7 +214,7 @@ export default function Resume() {
         <div className={styles.resumeGrid}>
           <div>
             <div className={styles.rblock}>
-              <p className={styles.rblockTitle}>Experience</p>
+              <h2 className={styles.rblockTitle}>Experience</h2>
               {experience.map((job) => (
                 <div className={styles.job} key={`${job.company}-${job.role}`}>
                   <div className={styles.jobHead}>
@@ -230,7 +230,7 @@ export default function Resume() {
 
           <div>
             <div className={styles.rblock}>
-              <p className={styles.rblockTitle}>Skills</p>
+              <h2 className={styles.rblockTitle}>Skills</h2>
               {skillCategories.map((category) => (
                 <div className={styles.skillGroup} key={category.category}>
                   <p className={styles.skillLbl}>{category.category}</p>
@@ -246,7 +246,7 @@ export default function Resume() {
             </div>
 
             <div className={styles.rblock}>
-              <p className={styles.rblockTitle}>Education</p>
+              <h2 className={styles.rblockTitle}>Education</h2>
               {education.map((entry) => (
                 <div className={styles.job} key={entry.role}>
                   <div className={styles.jobHead}>
@@ -262,7 +262,7 @@ export default function Resume() {
             </div>
 
             <div className={styles.rblock}>
-              <p className={styles.rblockTitle}>Interests</p>
+              <h2 className={styles.rblockTitle}>Interests</h2>
               <div className={styles.chipRow}>
                 {INTERESTS.map((interest) => (
                   <span key={interest} className="resume-chip cursor-default">
