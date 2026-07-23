@@ -1,11 +1,17 @@
 {
   "symbol": "CRM",
-  "lastUpdated": "2026-07-10T00:00:01.448379+00:00",
+  "lastUpdated": "2026-07-21T23:37:48.967691+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-07-10T00:00:01.448379+00:00",
+    "snapshotBuiltAt": "2026-07-21T23:37:48.967691+00:00",
     "sections": {
-      "price": "2026-07-01"
-    }
+      "price": "2026-07-20"
+    },
+    "retainedSections": [
+      "fundamentals",
+      "wacc",
+      "beta",
+      "news"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -40,10 +46,10 @@
     },
     "fundamentals": {
       "ttmEps": 8.6388,
-      "ttmPe": 18.89,
-      "marketCap": 133685370000,
-      "psRatio": 3.12,
-      "pbRatio": 3.9,
+      "ttmPe": 20.12,
+      "marketCap": 142334010000,
+      "psRatio": 3.32,
+      "pbRatio": 4.16,
       "pegRatio": 0.36
     },
     "profitability": {
@@ -5397,102 +5403,6 @@
     },
     "price": [
       {
-        "date": "2025-07-01",
-        "open": 272.08,
-        "high": 274,
-        "low": 270.64,
-        "close": 271.91,
-        "volume": 6256800
-      },
-      {
-        "date": "2025-07-02",
-        "open": 271.52,
-        "high": 271.71,
-        "low": 265.65,
-        "close": 269.21,
-        "volume": 6115200
-      },
-      {
-        "date": "2025-07-03",
-        "open": 269.7,
-        "high": 274.73,
-        "low": 269.32,
-        "close": 272.15,
-        "volume": 5031800
-      },
-      {
-        "date": "2025-07-07",
-        "open": 271.51,
-        "high": 274,
-        "low": 268.21,
-        "close": 269.8,
-        "volume": 6283500
-      },
-      {
-        "date": "2025-07-08",
-        "open": 270.79,
-        "high": 276.8,
-        "low": 269.73,
-        "close": 273.65,
-        "volume": 6661200
-      },
-      {
-        "date": "2025-07-09",
-        "open": 274.36,
-        "high": 275.56,
-        "low": 269.37,
-        "close": 270.92,
-        "volume": 6373600
-      },
-      {
-        "date": "2025-07-10",
-        "open": 270.9,
-        "high": 271.49,
-        "low": 263.21,
-        "close": 263.97,
-        "volume": 7244600
-      },
-      {
-        "date": "2025-07-11",
-        "open": 262.58,
-        "high": 262.95,
-        "low": 257.26,
-        "close": 258.07,
-        "volume": 7011200
-      },
-      {
-        "date": "2025-07-14",
-        "open": 258.6,
-        "high": 262.23,
-        "low": 257.5,
-        "close": 259.68,
-        "volume": 6533900
-      },
-      {
-        "date": "2025-07-15",
-        "open": 261,
-        "high": 261.81,
-        "low": 257.23,
-        "close": 257.58,
-        "volume": 5201500
-      },
-      {
-        "date": "2025-07-16",
-        "open": 258.93,
-        "high": 258.98,
-        "low": 254.52,
-        "close": 257.95,
-        "volume": 5649500
-      },
-      {
-        "date": "2025-07-17",
-        "open": 257.99,
-        "high": 260.2,
-        "low": 256.65,
-        "close": 259.88,
-        "volume": 5837400
-      },
-      {
         "date": "2025-07-18",
         "open": 260.3,
         "high": 262.98,
@@ -7410,7 +7320,103 @@
         "high": 165.81,
         "low": 161.2,
         "close": 163.23,
-        "volume": 13957646
+        "volume": 14164600
+      },
+      {
+        "date": "2026-07-02",
+        "open": 163,
+        "high": 167.21,
+        "low": 162,
+        "close": 166.11,
+        "volume": 10486300
+      },
+      {
+        "date": "2026-07-06",
+        "open": 163.99,
+        "high": 167.72,
+        "low": 162.37,
+        "close": 165.65,
+        "volume": 10595500
+      },
+      {
+        "date": "2026-07-07",
+        "open": 169.22,
+        "high": 172.38,
+        "low": 167.68,
+        "close": 169.52,
+        "volume": 13057900
+      },
+      {
+        "date": "2026-07-08",
+        "open": 167.37,
+        "high": 167.53,
+        "low": 164.78,
+        "close": 166.58,
+        "volume": 9792400
+      },
+      {
+        "date": "2026-07-09",
+        "open": 158.33,
+        "high": 163.8,
+        "low": 156.48,
+        "close": 162.5,
+        "volume": 13858600
+      },
+      {
+        "date": "2026-07-10",
+        "open": 165.6,
+        "high": 166.3,
+        "low": 162.42,
+        "close": 163.32,
+        "volume": 8321500
+      },
+      {
+        "date": "2026-07-13",
+        "open": 165.92,
+        "high": 172.76,
+        "low": 165.92,
+        "close": 171.22,
+        "volume": 14020700
+      },
+      {
+        "date": "2026-07-14",
+        "open": 162.49,
+        "high": 171.35,
+        "low": 161.47,
+        "close": 167.56,
+        "volume": 13507900
+      },
+      {
+        "date": "2026-07-15",
+        "open": 170.52,
+        "high": 172.8,
+        "low": 166.56,
+        "close": 167,
+        "volume": 13328100
+      },
+      {
+        "date": "2026-07-16",
+        "open": 170.84,
+        "high": 174.54,
+        "low": 166.88,
+        "close": 172.68,
+        "volume": 12057500
+      },
+      {
+        "date": "2026-07-17",
+        "open": 171.5,
+        "high": 175.43,
+        "low": 169.75,
+        "close": 170.77,
+        "volume": 10191500
+      },
+      {
+        "date": "2026-07-20",
+        "open": 167.86,
+        "high": 175.39,
+        "low": 166.5,
+        "close": 173.79,
+        "volume": 13423600
       }
     ],
     "news": [
@@ -7497,8 +7503,11 @@
     ],
     "officers": [
       {
-        "name": "Mr. Bill Patterson",
-        "title": "Executive VP & GM of CRM Applications"
+        "name": "Mr. David Schmaier",
+        "title": "President & Chief Strategy Officer",
+        "age": 61,
+        "yearBorn": 1964,
+        "totalPay": 2297750
       },
       {
         "name": "Mr. Marc R. Benioff",
@@ -7522,6 +7531,10 @@
         "totalPay": 2291250
       },
       {
+        "name": "Mr. Patrick Stokes",
+        "title": "President & Chief Marketing Officer"
+      },
+      {
         "name": "Mr. Sabastian V. Niles",
         "title": "President, Chief Legal Officer & Corporate Secretary",
         "age": 45,
@@ -7542,61 +7555,57 @@
         "yearBorn": 1965
       },
       {
-        "name": "Mr. Vala Afshar",
-        "title": "Chief Digital Evangelist"
+        "name": "Ms. Nathalie Scardino",
+        "title": "President & Chief People Officer"
       },
       {
-        "name": "Ms. Polly A. Sumner",
-        "title": "Chief Adoption Officer",
-        "age": 48,
-        "yearBorn": 1977,
-        "totalPay": 630000
-      },
-      {
-        "name": "Ms. Suzanne DiBianca",
-        "title": "Executive VP & Chief Impact Officer"
+        "name": "Ms. Robin L. Washington CPA",
+        "title": "President, Chief Operating & Financial Officer and Director",
+        "age": 62,
+        "yearBorn": 1963,
+        "totalPay": 11668529
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.89,
-        "industryAvg": 24.07
+        "value": 20.12,
+        "industryAvg": 46.16
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.12,
-        "industryAvg": 4.24
+        "value": 3.32,
+        "industryAvg": 4.4
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.9,
-        "industryAvg": 4.58
+        "value": 4.16,
+        "industryAvg": 3.01
       },
       {
         "metric": "ROE",
         "value": 4.51,
-        "industryAvg": -0.2
+        "industryAvg": -7.049999999999999
       },
       {
         "metric": "ROA",
         "value": 1.92,
-        "industryAvg": -0.11
+        "industryAvg": -3.81
       },
       {
         "metric": "Gross Margin",
         "value": 76.92,
-        "industryAvg": 63.129999999999995
+        "industryAvg": 64.53999999999999
       },
       {
         "metric": "EBITDA Margin",
         "value": 36.14,
-        "industryAvg": 20.75
+        "industryAvg": 18.87
       },
       {
         "metric": "Net Margin",
         "value": 18.93,
-        "industryAvg": -0.33
+        "industryAvg": -31.34
       }
     ]
   }

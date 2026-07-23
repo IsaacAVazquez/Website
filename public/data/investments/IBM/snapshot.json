@@ -1,11 +1,17 @@
 {
   "symbol": "IBM",
-  "lastUpdated": "2026-07-10T00:00:01.448379+00:00",
+  "lastUpdated": "2026-07-21T23:37:48.967691+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-07-10T00:00:01.448379+00:00",
+    "snapshotBuiltAt": "2026-07-21T23:37:48.967691+00:00",
     "sections": {
-      "price": "2026-07-01"
-    }
+      "price": "2026-07-20"
+    },
+    "retainedSections": [
+      "fundamentals",
+      "wacc",
+      "beta",
+      "news"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -32,7 +38,7 @@
       "country": "United States",
       "industry": "Information Technology Services",
       "sector": "Technology",
-      "longBusinessSummary": "International Business Machines Corporation, together with its subsidiaries, provides integrated solutions and services in the Americas, Europe, the Middle East, Africa, and the Asia Pacific. It operates through Software, Consulting, Infrastructure, and Financing segments. The Software segment offers hybrid cloud and AI platforms that allow clients to realize their digital and AI transformations across the applications, data, and environments in which they operate. The Consulting segment delivers strategy and technology services and intelligent operations, providing business transformation, technology implementation, managed services, application modernization, and AI-powered solutions. The Infrastructure segment provides on-premises and cloud-based server, and storage solutions, as well as life-cycle services for hybrid cloud infrastructure deployment. Its Financing segment offers client and commercial financing, and facilitates IBM clients' acquisition of hardware, software, and services. It has strategic partnerships with various companies, including hyperscalers, service providers, global system integrators, and software and hardware vendors that include Adobe, Amazon Web Services, Microsoft, Oracle, Salesforce, Samsung Electronics and SAP, and others. Additionally, the company operate a data streaming platform. The company has a strategic collaboration with Arm Holdings plc for the development of new dual-architecture hardware that helps enterprises run future AI and data intensive workloads; and strategic partnership with three.ws to advance ai-powered 3d agent technology; has a collaboration with Lightwell to help strengthen open source software supply chain. The company was formerly known as Computing-Tabulating-Recording Co. International Business Machines Corporation was incorporated in 1911 and is headquartered in Armonk, New York.",
+      "longBusinessSummary": "International Business Machines Corporation, together with its subsidiaries, provides integrated solutions and services in the Americas, Europe, the Middle East, Africa, and the Asia Pacific. It operates through Software, Consulting, Infrastructure, and Financing segments. The Software segment offers hybrid cloud and AI platforms that allow clients to realize their digital and AI transformations across the applications, data, and environments in which they operate. The Consulting segment delivers strategy and technology services and intelligent operations, providing business transformation, technology implementation, managed services, application modernization, and AI-powered solutions. The Infrastructure segment provides on-premises and cloud-based server, and storage solutions, as well as life-cycle services for hybrid cloud infrastructure deployment. The Financing segment offers client and commercial financing, and facilitates IBM clients' acquisition of hardware, software, and services. It operates a data streaming platform. The company has strategic partnerships with various companies, including hyperscalers, service providers, global system integrators, and software and hardware vendors that include Adobe, Amazon Web Services, Microsoft, Oracle, Salesforce, Samsung Electronics and SAP, and others. It also has a strategic collaboration with Arm Holdings plc for the development of new dual-architecture hardware that helps enterprises run future AI and data intensive workloads; strategic partnership with three.ws to advance ai-powered 3d agent technology; and collaboration with Lightwell to help strengthen open source software supply chain. The company was formerly known as Computing-Tabulating-Recording Co. and changed its name to International Business Machines Corporation in 1924. International Business Machines Corporation was incorporated in 1911 and is headquartered in Armonk, New York.",
       "fullTimeEmployees": 264300,
       "website": "https://www.ibm.com",
       "shortName": "International Business Machines",
@@ -40,10 +46,10 @@
     },
     "fundamentals": {
       "ttmEps": 11.3093,
-      "ttmPe": 25.31,
-      "marketCap": 269075000000,
-      "psRatio": 3.9,
-      "pbRatio": 8.16,
+      "ttmPe": 18.83,
+      "marketCap": 200220000000,
+      "psRatio": 2.91,
+      "pbRatio": 6.07,
       "pegRatio": 1.75
     },
     "profitability": {
@@ -6365,102 +6371,6 @@
     },
     "price": [
       {
-        "date": "2025-07-01",
-        "open": 294.55,
-        "high": 295.11,
-        "low": 290.08,
-        "close": 291.2,
-        "volume": 3272800
-      },
-      {
-        "date": "2025-07-02",
-        "open": 290,
-        "high": 290.19,
-        "low": 286.9,
-        "close": 287.65,
-        "volume": 3257500
-      },
-      {
-        "date": "2025-07-03",
-        "open": 287.94,
-        "high": 292.32,
-        "low": 287.9,
-        "close": 291.97,
-        "volume": 1853300
-      },
-      {
-        "date": "2025-07-07",
-        "open": 292.5,
-        "high": 295.22,
-        "low": 290.36,
-        "close": 292.47,
-        "volume": 4488100
-      },
-      {
-        "date": "2025-07-08",
-        "open": 293.1,
-        "high": 295.61,
-        "low": 289.49,
-        "close": 290.42,
-        "volume": 2925300
-      },
-      {
-        "date": "2025-07-09",
-        "open": 291.39,
-        "high": 291.6,
-        "low": 288.63,
-        "close": 290.14,
-        "volume": 2971300
-      },
-      {
-        "date": "2025-07-10",
-        "open": 288.9,
-        "high": 288.9,
-        "low": 282.21,
-        "close": 287.43,
-        "volume": 3487800
-      },
-      {
-        "date": "2025-07-11",
-        "open": 285.01,
-        "high": 287.43,
-        "low": 282.92,
-        "close": 283.59,
-        "volume": 3790700
-      },
-      {
-        "date": "2025-07-14",
-        "open": 282.83,
-        "high": 284.93,
-        "low": 281.71,
-        "close": 283.79,
-        "volume": 2857100
-      },
-      {
-        "date": "2025-07-15",
-        "open": 283.77,
-        "high": 284.15,
-        "low": 280.73,
-        "close": 282.7,
-        "volume": 2864100
-      },
-      {
-        "date": "2025-07-16",
-        "open": 282.75,
-        "high": 283.87,
-        "low": 279.87,
-        "close": 281.92,
-        "volume": 2804800
-      },
-      {
-        "date": "2025-07-17",
-        "open": 281.5,
-        "high": 283.46,
-        "low": 280.9,
-        "close": 282,
-        "volume": 3337200
-      },
-      {
         "date": "2025-07-18",
         "open": 283.38,
         "high": 287.16,
@@ -8375,10 +8285,106 @@
       {
         "date": "2026-07-01",
         "open": 279.66,
-        "high": 294.46,
-        "low": 279.18,
+        "high": 294.49,
+        "low": 278.96,
         "close": 286.25,
-        "volume": 5729943
+        "volume": 6905800
+      },
+      {
+        "date": "2026-07-02",
+        "open": 283.14,
+        "high": 290.93,
+        "low": 282.28,
+        "close": 289.52,
+        "volume": 5944100
+      },
+      {
+        "date": "2026-07-06",
+        "open": 288.35,
+        "high": 300.82,
+        "low": 287.65,
+        "close": 299.52,
+        "volume": 7181500
+      },
+      {
+        "date": "2026-07-07",
+        "open": 305.66,
+        "high": 311.8,
+        "low": 300.49,
+        "close": 306.13,
+        "volume": 8618600
+      },
+      {
+        "date": "2026-07-08",
+        "open": 300.77,
+        "high": 303.82,
+        "low": 295.59,
+        "close": 302.05,
+        "volume": 7416700
+      },
+      {
+        "date": "2026-07-09",
+        "open": 285.84,
+        "high": 297.28,
+        "low": 284.44,
+        "close": 295.3,
+        "volume": 10842000
+      },
+      {
+        "date": "2026-07-10",
+        "open": 297.26,
+        "high": 298.77,
+        "low": 287.5,
+        "close": 287.56,
+        "volume": 3640100
+      },
+      {
+        "date": "2026-07-13",
+        "open": 290.5,
+        "high": 297.5,
+        "low": 289.1,
+        "close": 290.23,
+        "volume": 5024200
+      },
+      {
+        "date": "2026-07-14",
+        "open": 226.37,
+        "high": 229.92,
+        "low": 213.22,
+        "close": 217.07,
+        "volume": 67440900
+      },
+      {
+        "date": "2026-07-15",
+        "open": 220.97,
+        "high": 223.81,
+        "low": 211.03,
+        "close": 211.2,
+        "volume": 29590400
+      },
+      {
+        "date": "2026-07-16",
+        "open": 208.82,
+        "high": 219.95,
+        "low": 204.44,
+        "close": 219.05,
+        "volume": 22533300
+      },
+      {
+        "date": "2026-07-17",
+        "open": 215.62,
+        "high": 217.17,
+        "low": 210.22,
+        "close": 212.67,
+        "volume": 13150200
+      },
+      {
+        "date": "2026-07-20",
+        "open": 210.07,
+        "high": 216.28,
+        "low": 208.82,
+        "close": 213,
+        "volume": 9576500
       }
     ],
     "news": [
@@ -8465,8 +8471,16 @@
     ],
     "officers": [
       {
-        "name": "Dr. Bernard S. Meyerson Ph.D.",
-        "title": "Chief Innovation Officer Emeritus"
+        "name": "Dr. Kareem Yusuf Ph.D.",
+        "title": "SVP of Ecosystem, Strategic Partners & Initiatives",
+        "age": 53,
+        "yearBorn": 1972
+      },
+      {
+        "name": "Dr. Nicola Hodson",
+        "title": "Chief Executive of UK & Ireland",
+        "age": 59,
+        "yearBorn": 1966
       },
       {
         "name": "Mr. Arvind Krishna",
@@ -8474,6 +8488,10 @@
         "age": 62,
         "yearBorn": 1963,
         "totalPay": 7351817
+      },
+      {
+        "name": "Mr. Dinesh Nirmal",
+        "title": "Senior Vice President of Software"
       },
       {
         "name": "Mr. Gary D. Cohn",
@@ -8490,8 +8508,10 @@
         "totalPay": 4113265
       },
       {
-        "name": "Mr. Jonathan H. Adashek",
-        "title": "Senior Vice President of Marketing & Communications"
+        "name": "Mr. Mohamad S. Ali",
+        "title": "Senior Vice President of IBM Consulting",
+        "age": 55,
+        "yearBorn": 1970
       },
       {
         "name": "Mr. Robert D. Thomas",
@@ -8501,67 +8521,59 @@
         "totalPay": 3702023
       },
       {
+        "name": "Ms. Ana Paula de Jesus Assis",
+        "title": "SVP, Chair and GM of IBM EMEA & Growth Markets",
+        "age": 51,
+        "yearBorn": 1974
+      },
+      {
         "name": "Ms. Anne E. Robinson",
         "title": "Senior VP & Chief Legal Officer",
         "age": 54,
         "yearBorn": 1971,
         "totalPay": 3138695
-      },
-      {
-        "name": "Ms. Joanne Wright",
-        "title": "Senior Vice President of Transformation & Operations"
-      },
-      {
-        "name": "Ms. Nickle Jaclyn LaMoreaux",
-        "title": "Senior VP & Chief Human Resources Officer",
-        "age": 45,
-        "yearBorn": 1980
-      },
-      {
-        "name": "Olympia McNerney",
-        "title": "Global Head of Investor Relations"
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 25.31,
-        "industryAvg": 15.36
+        "value": 18.83,
+        "industryAvg": 16.1
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.9,
-        "industryAvg": 1.46
+        "value": 2.91,
+        "industryAvg": 1.31
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.16,
-        "industryAvg": 3.42
+        "value": 6.07,
+        "industryAvg": 1.13
       },
       {
         "metric": "ROE",
         "value": 3.71,
-        "industryAvg": 17.61
+        "industryAvg": 4.84
       },
       {
         "metric": "ROA",
         "value": 0.79,
-        "industryAvg": 6.0600000000000005
+        "industryAvg": 1.6400000000000001
       },
       {
         "metric": "Gross Margin",
         "value": 56.230000000000004,
-        "industryAvg": 31.979999999999997
+        "industryAvg": 31.119999999999997
       },
       {
         "metric": "EBITDA Margin",
         "value": 19.689999999999998,
-        "industryAvg": 16.34
+        "industryAvg": 16.29
       },
       {
         "metric": "Net Margin",
         "value": 7.64,
-        "industryAvg": 8.110000000000001
+        "industryAvg": 8.81
       }
     ]
   }

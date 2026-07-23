@@ -1,11 +1,17 @@
 {
   "symbol": "ADBE",
-  "lastUpdated": "2026-07-10T00:00:01.448379+00:00",
+  "lastUpdated": "2026-07-21T23:37:48.967691+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-07-10T00:00:01.448379+00:00",
+    "snapshotBuiltAt": "2026-07-21T23:37:48.967691+00:00",
     "sections": {
-      "price": "2026-07-01"
-    }
+      "price": "2026-07-20"
+    },
+    "retainedSections": [
+      "fundamentals",
+      "wacc",
+      "beta",
+      "news"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -40,10 +46,10 @@
     },
     "fundamentals": {
       "ttmEps": 17.4839,
-      "ttmPe": 12.07,
-      "marketCap": 84181020000,
-      "psRatio": 3.34,
-      "pbRatio": 7.31,
+      "ttmPe": 13.43,
+      "marketCap": 93661260000,
+      "psRatio": 3.72,
+      "pbRatio": 8.13,
       "pegRatio": 1.5
     },
     "profitability": {
@@ -5884,102 +5890,6 @@
     },
     "price": [
       {
-        "date": "2025-07-01",
-        "open": 385.1,
-        "high": 392.58,
-        "low": 381.52,
-        "close": 392.1,
-        "volume": 4516400
-      },
-      {
-        "date": "2025-07-02",
-        "open": 384.64,
-        "high": 386.88,
-        "low": 372.73,
-        "close": 378.47,
-        "volume": 6912200
-      },
-      {
-        "date": "2025-07-03",
-        "open": 378,
-        "high": 383.2,
-        "low": 377.8,
-        "close": 379.31,
-        "volume": 2863700
-      },
-      {
-        "date": "2025-07-07",
-        "open": 378.9,
-        "high": 382.22,
-        "low": 375.52,
-        "close": 376.93,
-        "volume": 3545100
-      },
-      {
-        "date": "2025-07-08",
-        "open": 378.5,
-        "high": 386.6,
-        "low": 377.18,
-        "close": 382.24,
-        "volume": 3708200
-      },
-      {
-        "date": "2025-07-09",
-        "open": 383.5,
-        "high": 384.75,
-        "low": 370.91,
-        "close": 373.38,
-        "volume": 4726600
-      },
-      {
-        "date": "2025-07-10",
-        "open": 371.99,
-        "high": 373.5,
-        "low": 365.51,
-        "close": 371.43,
-        "volume": 4022500
-      },
-      {
-        "date": "2025-07-11",
-        "open": 368,
-        "high": 371.15,
-        "low": 362.7,
-        "close": 363.35,
-        "volume": 3548700
-      },
-      {
-        "date": "2025-07-14",
-        "open": 363.19,
-        "high": 367.68,
-        "low": 360.18,
-        "close": 366.99,
-        "volume": 2898700
-      },
-      {
-        "date": "2025-07-15",
-        "open": 367,
-        "high": 368.32,
-        "low": 363.88,
-        "close": 364.18,
-        "volume": 2551000
-      },
-      {
-        "date": "2025-07-16",
-        "open": 364.59,
-        "high": 365.55,
-        "low": 358.71,
-        "close": 361.77,
-        "volume": 3592900
-      },
-      {
-        "date": "2025-07-17",
-        "open": 360.6,
-        "high": 366.96,
-        "low": 359.28,
-        "close": 366.45,
-        "volume": 3340500
-      },
-      {
         "date": "2025-07-18",
         "open": 367.07,
         "high": 367.79,
@@ -7893,11 +7803,107 @@
       },
       {
         "date": "2026-07-01",
-        "open": 209.765,
+        "open": 209.43,
         "high": 213.66,
         "low": 207.06,
         "close": 210.98,
-        "volume": 5848317
+        "volume": 5863800
+      },
+      {
+        "date": "2026-07-02",
+        "open": 215.55,
+        "high": 222.15,
+        "low": 213.74,
+        "close": 219.72,
+        "volume": 7903100
+      },
+      {
+        "date": "2026-07-06",
+        "open": 216.1,
+        "high": 219.76,
+        "low": 212.9,
+        "close": 218.07,
+        "volume": 4800200
+      },
+      {
+        "date": "2026-07-07",
+        "open": 221.16,
+        "high": 230.74,
+        "low": 220.29,
+        "close": 221.54,
+        "volume": 8615000
+      },
+      {
+        "date": "2026-07-08",
+        "open": 221.39,
+        "high": 222.5,
+        "low": 216.93,
+        "close": 220.94,
+        "volume": 4508400
+      },
+      {
+        "date": "2026-07-09",
+        "open": 214.12,
+        "high": 222.71,
+        "low": 213.09,
+        "close": 222.65,
+        "volume": 4552900
+      },
+      {
+        "date": "2026-07-10",
+        "open": 226.5,
+        "high": 228.4,
+        "low": 222.82,
+        "close": 223.64,
+        "volume": 3206800
+      },
+      {
+        "date": "2026-07-13",
+        "open": 226.75,
+        "high": 232.08,
+        "low": 225,
+        "close": 230.61,
+        "volume": 4624000
+      },
+      {
+        "date": "2026-07-14",
+        "open": 221.16,
+        "high": 224.2,
+        "low": 218,
+        "close": 220.78,
+        "volume": 5823400
+      },
+      {
+        "date": "2026-07-15",
+        "open": 223.16,
+        "high": 231.53,
+        "low": 222.91,
+        "close": 224.56,
+        "volume": 4771400
+      },
+      {
+        "date": "2026-07-16",
+        "open": 228.71,
+        "high": 235.48,
+        "low": 222.04,
+        "close": 235.31,
+        "volume": 5787300
+      },
+      {
+        "date": "2026-07-17",
+        "open": 235.26,
+        "high": 240.15,
+        "low": 232.36,
+        "close": 237.25,
+        "volume": 7269900
+      },
+      {
+        "date": "2026-07-20",
+        "open": 235.67,
+        "high": 236.66,
+        "low": 227.5,
+        "close": 234.74,
+        "volume": 5122100
       }
     ],
     "news": [
@@ -7984,6 +7990,28 @@
     ],
     "officers": [
       {
+        "name": "Dr. Anil S. Chakravarthy",
+        "title": "President of Customer Experience Orchestration Business",
+        "age": 57,
+        "yearBorn": 1968,
+        "totalPay": 1889926
+      },
+      {
+        "name": "Mr. David Wadhwani",
+        "title": "President of Creativity & Productivity Business",
+        "age": 53,
+        "yearBorn": 1972,
+        "totalPay": 1885686
+      },
+      {
+        "name": "Mr. Douglas G. Clark C.F.A.",
+        "title": "Vice President of Investor Relations"
+      },
+      {
+        "name": "Mr. Shanmugh Natarajan",
+        "title": "MD of India & VP of Products"
+      },
+      {
         "name": "Mr. Shantanu Narayen",
         "title": "Chairman & CEO",
         "age": 61,
@@ -7991,52 +8019,77 @@
         "totalPay": 5797825
       },
       {
+        "name": "Mr. Steven Day",
+        "title": "Interim CFO and Senior VP of Finance, Technology, Security & Operations",
+        "age": 57,
+        "yearBorn": 1968
+      },
+      {
+        "name": "Ms. Adele Louise Pentland",
+        "title": "EVP of Legal & Government Relations, Chief Legal Officer and Corporate Secretary",
+        "age": 53,
+        "yearBorn": 1972,
+        "totalPay": 3055813
+      },
+      {
+        "name": "Ms. Gloria Chen",
+        "title": "Chief People Officer & Executive VP of Employee Experience",
+        "age": 60,
+        "yearBorn": 1965
+      },
+      {
         "name": "Ms. Jillian Forusz",
         "title": "Senior VP, Chief Accounting Officer & Corporate Controller",
         "age": 50,
         "yearBorn": 1975
+      },
+      {
+        "name": "Ms. Lara H. Balazs",
+        "title": "Chief Marketing Officer & Executive Vice President of Global Marketing",
+        "age": 55,
+        "yearBorn": 1970
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 12.07,
-        "industryAvg": 24.07
+        "value": 13.43,
+        "industryAvg": 46.35
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.34,
-        "industryAvg": 4.24
+        "value": 3.72,
+        "industryAvg": 4.4
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.31,
-        "industryAvg": 4.58
+        "value": 8.13,
+        "industryAvg": 3.01
       },
       {
         "metric": "ROE",
         "value": 14.92,
-        "industryAvg": -0.2
+        "industryAvg": -7.049999999999999
       },
       {
         "metric": "ROA",
         "value": 5.74,
-        "industryAvg": -0.11
+        "industryAvg": -3.81
       },
       {
         "metric": "Gross Margin",
         "value": 89.2,
-        "industryAvg": 63.129999999999995
+        "industryAvg": 64.53999999999999
       },
       {
         "metric": "EBITDA Margin",
         "value": 37.72,
-        "industryAvg": 20.75
+        "industryAvg": 18.87
       },
       {
         "metric": "Net Margin",
         "value": 25.869999999999997,
-        "industryAvg": -0.33
+        "industryAvg": -31.34
       }
     ]
   }
