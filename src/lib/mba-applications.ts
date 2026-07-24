@@ -434,7 +434,16 @@ export function parseMBAApplicationsImport(raw: string): MBATrackedApplication[]
 }
 
 function csvCell(value: unknown): string {
-  const text = String(value ?? "");
+  let text = String(value ?? "");
+  // Neutralize spreadsheet formula injection (CWE-1236). A cell that begins
+  // with =, +, -, @, tab, or carriage return is evaluated as a formula by
+  // Excel/Sheets, so an attacker-influenced field (a scraped job's location or
+  // department, or any field from an imported tracker JSON) could exfiltrate
+  // adjacent cells. Prefix a single quote so the spreadsheet treats it as
+  // literal text. Do this before the quote/comma/newline wrapping below.
+  if (/^[=+\-@\t\r]/.test(text)) {
+    text = `'${text}`;
+  }
   if (/[",\n\r]/.test(text)) {
     return `"${text.replace(/"/g, "\"\"")}"`;
   }

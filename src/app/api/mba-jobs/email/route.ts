@@ -123,7 +123,10 @@ function isAllowedRecipient(email: string): boolean {
   if (allowedRecipients.length === 0) return false;
 
   return allowedRecipients.some((allowed) => {
-    if (allowed === "*") return true;
+    // No wildcard open-relay branch: a "*" entry would let any unauthenticated
+    // caller send mail from the domain-verified sender to arbitrary recipients
+    // (CWE-862). Only exact addresses and explicit "@domain" suffixes match; a
+    // literal "*" in the env list is treated as a normal (never-matching) entry.
     if (allowed.startsWith("@")) return email.endsWith(allowed);
     return email === allowed;
   });

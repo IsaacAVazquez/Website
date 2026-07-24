@@ -1,6 +1,7 @@
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { createHash, timingSafeEqual } from "crypto";
+import { authRateLimiter, getClientIpFromHeaders } from "@/lib/rateLimit";
 
 /**
  * Constant-time string comparison.
@@ -25,7 +26,7 @@ export const authOptions: NextAuthOptions = {
         username: { label: "Username", type: "text" },
         password: { label: "Password", type: "password" }
       },
-      async authorize(credentials) {
+      async authorize(credentials, req) {
         const expectedUsername = process.env.ADMIN_USERNAME;
         const expectedPassword = process.env.ADMIN_PASSWORD;
 
@@ -38,6 +39,21 @@ export const authOptions: NextAuthOptions = {
         }
 
         if (!credentials?.username || !credentials?.password) {
+          return null;
+        }
+
+        // Throttle online credential guessing (CWE-307). NextAuth's credentials
+        // provider adds no built-in brute-force protection, so without this an
+        // attacker can make unlimited password attempts against the single
+        // admin account. authRateLimiter allows 5 attempts per 15 minutes per
+        // client IP; once exhausted, further attempts are refused as if the
+        // credentials were wrong (each call to check() counts as one attempt).
+        // NOTE: the limiter is per-process in-memory, so on multi-instance
+        // serverless it throttles per instance rather than globally — a shared
+        // store would close that residual gap.
+        const clientIp = getClientIpFromHeaders(req?.headers);
+        const throttle = authRateLimiter.check(`admin-login:${clientIp}`);
+        if (!throttle.success) {
           return null;
         }
 

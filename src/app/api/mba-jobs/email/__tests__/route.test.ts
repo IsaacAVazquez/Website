@@ -119,6 +119,24 @@ describe("POST /api/mba-jobs/email", () => {
     expect(mockSend).not.toHaveBeenCalled();
   });
 
+  it("does not treat a '*' allowlist entry as an open relay", async () => {
+    // A literal "*" must no longer match every recipient (CWE-862). With only
+    // "*" configured, an arbitrary recipient is rejected rather than mailed.
+    process.env.MBA_DIGEST_ALLOWED_RECIPIENTS = "*";
+
+    const response = await POST(
+      makeRequest({
+        to: "victim@anywhere.example",
+        jobs: [validJob],
+      })
+    );
+    const body = await response.json();
+
+    expect(response.status).toBe(403);
+    expect(body.error).toMatch(/approved recipients/i);
+    expect(mockSend).not.toHaveBeenCalled();
+  });
+
   it("caps an oversized digest to 25 jobs instead of rejecting it", async () => {
     const response = await POST(
       makeRequest({
@@ -229,7 +247,7 @@ describe("POST /api/mba-jobs/email", () => {
   });
 
   it("rejects requests with more than 5 recipients in the to array", async () => {
-    process.env.MBA_DIGEST_ALLOWED_RECIPIENTS = "*";
+    process.env.MBA_DIGEST_ALLOWED_RECIPIENTS = "@example.com";
 
     const response = await POST(
       makeRequest({
@@ -252,7 +270,7 @@ describe("POST /api/mba-jobs/email", () => {
   });
 
   it("dedupes recipients before applying the per-request ceiling", async () => {
-    process.env.MBA_DIGEST_ALLOWED_RECIPIENTS = "*";
+    process.env.MBA_DIGEST_ALLOWED_RECIPIENTS = "@example.com";
 
     const response = await POST(
       makeRequest({
@@ -276,7 +294,7 @@ describe("POST /api/mba-jobs/email", () => {
   });
 
   it("returns 429 when the per-day recipient ceiling would be exceeded", async () => {
-    process.env.MBA_DIGEST_ALLOWED_RECIPIENTS = "*";
+    process.env.MBA_DIGEST_ALLOWED_RECIPIENTS = "@example.com";
 
     // Exhaust the day: 10 requests of 5 recipients each = 50 (the cap).
     // Each request comes from a unique client so the per-IP rate limit
