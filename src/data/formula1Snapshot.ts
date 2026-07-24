@@ -13,8 +13,8 @@ export const formula1Snapshot: Formula1Snapshot = {
     "constructorStandings": "https://api.openf1.org/v1/championship_teams?session_key=11334"
   },
   "season": 2026,
-  "generatedAt": "2026-07-24T08:39:41.718Z",
-  "defaultMeetingKey": "1291",
+  "generatedAt": "2026-07-24T14:06:40.487Z",
+  "defaultMeetingKey": "1292",
   "standingsMeetingKey": "1290",
   "meetings": [
     {
@@ -4772,7 +4772,7 @@ export const formula1Snapshot: Formula1Snapshot = {
       "gmtOffset": "02:00:00",
       "startAt": "2026-07-24T11:30:00+00:00",
       "endAt": "2026-07-26T15:00:00+00:00",
-      "status": "upcoming",
+      "status": "live",
       "hasSprint": false,
       "raceSessionKey": "11342",
       "raceStartsAt": "2026-07-26T13:00:00+00:00",
@@ -5893,63 +5893,63 @@ export const formula1Snapshot: Formula1Snapshot = {
     "season": 2026,
     "totalRaces": 24,
     "completedRaces": 12,
-    "upcomingRaces": 12,
+    "upcomingRaces": 11,
     "sprintWeekends": 6
   },
   "nextMeeting": {
-    "key": "1291",
-    "name": "Hungarian Grand Prix",
-    "officialName": "FORMULA 1 AWS HUNGARIAN GRAND PRIX 2026",
-    "location": "Budapest",
-    "countryName": "Hungary",
-    "countryCode": "HUN",
-    "countryFlag": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/hungary-flag.png",
-    "circuitKey": "4",
-    "circuitShortName": "Hungaroring",
+    "key": "1292",
+    "name": "Dutch Grand Prix",
+    "officialName": "FORMULA 1 HEINEKEN DUTCH GRAND PRIX 2026",
+    "location": "Zandvoort",
+    "countryName": "Netherlands",
+    "countryCode": "NED",
+    "countryFlag": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/netherlands-flag.png",
+    "circuitKey": "55",
+    "circuitShortName": "Zandvoort",
     "circuitType": "Permanent",
-    "circuitImage": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Hungary%20carbon.png",
+    "circuitImage": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Netherlands%20carbon.png",
     "gmtOffset": "02:00:00",
-    "startAt": "2026-07-24T11:30:00+00:00",
-    "endAt": "2026-07-26T15:00:00+00:00",
+    "startAt": "2026-08-21T10:30:00+00:00",
+    "endAt": "2026-08-23T15:00:00+00:00",
     "status": "upcoming",
-    "hasSprint": false,
-    "raceSessionKey": "11342",
-    "raceStartsAt": "2026-07-26T13:00:00+00:00",
+    "hasSprint": true,
+    "raceSessionKey": "11353",
+    "raceStartsAt": "2026-08-23T13:00:00+00:00",
     "sessions": [
       {
-        "key": "11335",
+        "key": "11343",
         "name": "Practice 1",
         "type": "Practice",
-        "startAt": "2026-07-24T11:30:00+00:00",
-        "endAt": "2026-07-24T12:30:00+00:00"
+        "startAt": "2026-08-21T10:30:00+00:00",
+        "endAt": "2026-08-21T11:30:00+00:00"
       },
       {
-        "key": "11336",
-        "name": "Practice 2",
-        "type": "Practice",
-        "startAt": "2026-07-24T15:00:00+00:00",
-        "endAt": "2026-07-24T16:00:00+00:00"
+        "key": "11344",
+        "name": "Sprint Qualifying",
+        "type": "Qualifying",
+        "startAt": "2026-08-21T14:30:00+00:00",
+        "endAt": "2026-08-21T15:14:00+00:00"
       },
       {
-        "key": "11337",
-        "name": "Practice 3",
-        "type": "Practice",
-        "startAt": "2026-07-25T10:30:00+00:00",
-        "endAt": "2026-07-25T11:30:00+00:00"
+        "key": "11348",
+        "name": "Sprint",
+        "type": "Race",
+        "startAt": "2026-08-22T10:00:00+00:00",
+        "endAt": "2026-08-22T11:00:00+00:00"
       },
       {
-        "key": "11338",
+        "key": "11349",
         "name": "Qualifying",
         "type": "Qualifying",
-        "startAt": "2026-07-25T14:00:00+00:00",
-        "endAt": "2026-07-25T15:00:00+00:00"
+        "startAt": "2026-08-22T14:00:00+00:00",
+        "endAt": "2026-08-22T15:00:00+00:00"
       },
       {
-        "key": "11342",
+        "key": "11353",
         "name": "Race",
         "type": "Race",
-        "startAt": "2026-07-26T13:00:00+00:00",
-        "endAt": "2026-07-26T15:00:00+00:00"
+        "startAt": "2026-08-23T13:00:00+00:00",
+        "endAt": "2026-08-23T15:00:00+00:00"
       }
     ],
     "classification": [],
