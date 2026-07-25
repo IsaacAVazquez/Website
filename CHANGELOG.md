@@ -4,6 +4,12 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-07-25
+
+- Harden admin login, email allowlist, and CSV export ([#352](https://github.com/IsaacAVazquez/Website/pull/352)).
+
+---
+
 ## 2026-07-21
 
 - Working Instrument design-sync inputs ([#344](https://github.com/IsaacAVazquez/Website/pull/344)).
