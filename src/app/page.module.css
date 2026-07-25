@@ -1,25 +1,32 @@
-/* ============================================================
-   Home — Working Instrument (2026-07 redesign).
-   Instrument Sans display + body, Fragment Mono readouts, one
-   signal accent reserved for data, state, and action.
-
-   Module-scoped names alias the global --home-* tokens (never
-   fresh hex) so light/dark flips upstream in globals.css.
-   ============================================================ */
+/*
+ * Home — "The Atlas" survey-chart world (redesign 2026-07, refined post-critique).
+ *
+ * An evolution of Working Instrument into a survey chart: limestone paper,
+ * graphite ink, one signal accent, mono readouts, plus graticule linework,
+ * plate numbers, grid refs, corner ticks, and a legend. Cartographic marks
+ * carry real information: the featured projects are plotted on the overview
+ * map at refs their cards echo. Tokens are the site-wide --home-* palette
+ * (see DESIGN.md); this module only aliases them. No raw hex, no color-mix
+ * toward white/black.
+ */
 
 .page {
-  --hp-paper: var(--home-paper);
-  --hp-paper-alt: var(--home-paper-alt);
-  --hp-raised: var(--home-paper-raised);
-  --hp-ink: var(--home-ink);
-  --hp-muted: var(--home-ink-muted);
-  --hp-signal: var(--home-signal);
-  --hp-rule: var(--home-rule);
-  --hp-rule-soft: color-mix(in srgb, var(--home-rule) 55%, transparent);
+  /* Local aliases onto the global Working Instrument tokens. */
+  --atlas-paper: var(--home-paper);
+  --atlas-raised: var(--home-paper-raised);
+  --atlas-ink: var(--home-ink);
+  --atlas-muted: var(--home-ink-muted);
+  --atlas-signal: var(--home-signal);
+  --atlas-signal-soft: var(--home-signal-soft);
+  --atlas-rule: var(--home-rule);
+  /* Darker tone for 10px mono micro-labels so small text clears WCAG AA. */
+  --atlas-micro: color-mix(in srgb, var(--home-ink) 62%, var(--home-paper));
+  /* Graticule + faint ruling, derived from the ink so both themes track. */
+  --atlas-grat: color-mix(in srgb, var(--home-ink) 9%, transparent);
+  --atlas-grat-soft: color-mix(in srgb, var(--home-ink) 5%, transparent);
 
-  min-height: 100vh;
-  background: var(--hp-paper);
-  color: var(--hp-ink);
+  background-color: var(--atlas-paper);
+  color: var(--atlas-ink);
   font-family: var(--font-home-sans);
   -webkit-font-smoothing: antialiased;
 }
@@ -30,299 +37,167 @@
   box-sizing: border-box;
 }
 
-.page ::selection {
-  background: color-mix(in srgb, var(--hp-signal) 24%, transparent);
-  color: var(--hp-ink);
-}
-
 .shell {
-  max-width: 88rem;
-  margin: 0 auto;
-  padding: 0 clamp(1.25rem, 2.5vw, 2.5rem);
-}
-
-/* Mono micro-label used for kickers, readout captions, and card metadata. */
-.mono {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-/* ============== Hero ============== */
-
-.hero {
-  padding: clamp(1.25rem, 2.5vw, 2.25rem) 0 clamp(2rem, 4vw, 3rem);
-}
-
-/* The hero plate: a raised paper card ruled with the instrument's faint
-   graph paper, matching every other surface on the site. It uses the same
-   local aliases as the rest of the page (--hp-ink = text, --hp-paper =
-   surface), so light/dark flips upstream in globals.css with no per-theme
-   override here. */
-.plate {
-  background: var(--home-paper-raised);
-  color: var(--hp-ink);
-  border: 1px solid var(--hp-rule);
-  padding: clamp(1.75rem, 3.5vw, 3.25rem) clamp(1.25rem, 2.5vw, 2.75rem);
-  position: relative;
-  overflow: hidden;
-}
-
-/* ---- Hero live-feed instrument (a nested readout inside the hero card) ---- */
-.feedPanel {
-  position: relative;
-  border: 1px solid var(--hp-rule);
-  border-top: 3px solid var(--home-signal);
-  background: var(--home-paper-alt);
-  color: var(--hp-ink);
-}
-.feedCap {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  padding: 12px 16px;
-  border-bottom: 1px solid color-mix(in srgb, var(--hp-ink) 18%, transparent);
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: color-mix(in srgb, var(--hp-ink) 64%, transparent);
-}
-.feedCapLive {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  color: color-mix(in srgb, var(--hp-ink) 82%, transparent);
-}
-.feedDot {
-  position: relative;
-  width: 7px;
-  height: 7px;
-  flex-shrink: 0;
-  display: inline-block;
-}
-.feedDot > span {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: var(--home-signal);
-  animation: feedBlip 1.9s ease-in-out infinite;
-}
-.feedDot::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 1px solid var(--home-signal);
-  animation: feedRing 1.9s ease-out infinite;
-}
-.feedRd {
-  padding: 13px 16px;
-  border-bottom: 1px solid color-mix(in srgb, var(--hp-ink) 12%, transparent);
-}
-.feedRdHead {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 10px;
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-.feedRdSrc {
-  color: color-mix(in srgb, var(--hp-ink) 68%, transparent);
-}
-.feedRdMeta {
-  font-variant-numeric: tabular-nums;
-  color: color-mix(in srgb, var(--hp-ink) 48%, transparent);
-}
-.feedUp {
-  color: var(--home-positive);
-}
-.feedDown {
-  color: var(--home-negative);
-}
-.feedRdFigure {
-  display: flex;
-  align-items: baseline;
-  gap: 9px;
-  margin-top: 8px;
-}
-.feedRdBig {
-  font-family: var(--font-mono);
-  font-size: 2rem;
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
-  color: var(--hp-ink);
-}
-.feedRdUnit {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: color-mix(in srgb, var(--hp-ink) 44%, transparent);
-}
-.feedRdSub {
-  margin-top: 5px;
-  font-size: 0.8rem;
-  line-height: 1.35;
-  color: color-mix(in srgb, var(--hp-ink) 66%, transparent);
-}
-.feedSpark {
-  display: block;
   width: 100%;
-  height: 26px;
-  margin-top: 9px;
+  max-width: 86rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
 }
-.feedBar {
-  fill: color-mix(in srgb, var(--hp-ink) 24%, transparent);
-}
-.feedBarLast {
-  fill: var(--home-signal);
-}
-.feedRdLine {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  margin-top: 6px;
-}
-.feedClock,
-.feedRdPrice {
-  font-family: var(--font-mono);
-  font-size: 1.2rem;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.02em;
-  color: var(--hp-ink);
-  flex-shrink: 0;
-}
-.feedRdName {
-  font-size: 0.76rem;
-  color: color-mix(in srgb, var(--hp-ink) 56%, transparent);
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  text-align: right;
-}
-.feedNow {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 16px;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: color-mix(in srgb, var(--hp-ink) 64%, transparent);
-  overflow: hidden;
-}
-.feedNowLead {
-  flex-shrink: 0;
-  color: color-mix(in srgb, var(--hp-ink) 82%, transparent);
-}
-.feedNowText {
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  color: color-mix(in srgb, var(--hp-ink) 60%, transparent);
-}
-@keyframes feedBlip {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.38;
-  }
-}
-@keyframes feedRing {
-  0% {
-    transform: scale(1);
-    opacity: 0.5;
-  }
-  70%,
-  100% {
-    transform: scale(2.8);
-    opacity: 0;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .feedDot > span,
-  .feedDot::after {
-    animation: none;
+
+@media (min-width: 640px) {
+  .shell {
+    padding-inline: 1.5rem;
   }
 }
 
-.plate::before {
-  content: "";
+@media (min-width: 1024px) {
+  .shell {
+    padding-inline: 2rem;
+  }
+}
+
+/* ---- Plate: the signature chart sheet -------------------------------- */
+
+.plate {
+  position: relative;
+  border: 1px solid var(--atlas-rule);
+  border-radius: 6px;
+  background-color: var(--atlas-raised);
+  /* A faint survey graticule behind the sheet. */
+  background-image:
+    linear-gradient(var(--atlas-grat-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--atlas-grat-soft) 1px, transparent 1px);
+  background-size: 30px 30px;
+  background-position: -1px -1px;
+  padding: clamp(1.1rem, 2.4vw, 2.1rem);
+}
+
+.plateBar {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+  padding-bottom: 0.7rem;
+  margin-bottom: clamp(1.1rem, 2.4vw, 1.9rem);
+  border-bottom: 1px solid var(--atlas-rule);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.plateNo {
+  color: var(--atlas-signal);
+  font-weight: 400;
+}
+
+.plateName {
+  color: var(--atlas-ink);
+}
+
+.plateCoord {
+  margin-left: auto;
+  color: var(--atlas-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Registered corner ticks — four L-marks pinning a large plate like a chart
+   sheet. Reserved for the hero and about plates; work cards stay clean. */
+.ticks {
   position: absolute;
-  inset: 0;
-  background-image: linear-gradient(
-    to right,
-    color-mix(in srgb, var(--hp-ink) 7%, transparent) 1px,
-    transparent 1px
-  );
-  background-size: calc(100% / 12) 100%;
+  inset: 6px;
   pointer-events: none;
 }
 
-.heroGrid {
-  position: relative;
+.tickTL,
+.tickTR,
+.tickBL,
+.tickBR {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-color: var(--atlas-muted);
+  border-style: solid;
+  border-width: 0;
+  opacity: 0.55;
+}
+
+.tickTL {
+  top: 0;
+  left: 0;
+  border-top-width: 1px;
+  border-left-width: 1px;
+}
+.tickTR {
+  top: 0;
+  right: 0;
+  border-top-width: 1px;
+  border-right-width: 1px;
+}
+.tickBL {
+  bottom: 0;
+  left: 0;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+}
+.tickBR {
+  bottom: 0;
+  right: 0;
+  border-bottom-width: 1px;
+  border-right-width: 1px;
+}
+
+/* ---- Hero / Plate 00 -------------------------------------------------- */
+
+.hero {
+  padding-top: clamp(1rem, 2.5vw, 2rem);
+  padding-bottom: clamp(1.25rem, 2.5vw, 2rem);
 }
 
 .heroGrid {
   display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(280px, 1fr);
-  gap: clamp(2rem, 4vw, 4rem);
-  align-items: start;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  align-items: stretch;
 }
 
-/* Both columns must be free to shrink below their content's min-content;
-   otherwise a long mono readout string floors the track wider than a phone
-   and the plate's overflow clip eats the right edge. */
 .heroGrid > * {
   min-width: 0;
 }
 
-@media (max-width: 880px) {
+/* Give the cartouche the dominant column so the claim + primary CTA win the
+   first fixation over the chart field. */
+@media (min-width: 1000px) {
   .heroGrid {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: 1.18fr 0.82fr;
+    gap: clamp(2rem, 4vw, 3.5rem);
   }
 }
 
-.kicker {
-  composes: mono;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  color: color-mix(in srgb, var(--hp-ink) 64%, transparent);
-  margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
+.cartouche {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
-.kicker::before {
-  content: "";
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--hp-signal);
-  flex-shrink: 0;
+.kicker {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--atlas-muted);
+  margin: 0 0 clamp(0.9rem, 2vw, 1.4rem);
 }
 
 .headline {
-  font-size: clamp(2.15rem, 5.2vw, 4.9rem);
-  font-weight: 650;
-  line-height: 0.98;
-  letter-spacing: -0.04em;
-  margin: 0;
-  max-width: 14ch;
+  font-family: var(--font-home-sans);
+  font-weight: 600;
+  font-size: clamp(2rem, 1.3rem + 4vw, 3.5rem);
+  line-height: 1.04;
+  letter-spacing: -0.045em;
   text-wrap: balance;
-  color: var(--hp-ink);
+  color: var(--atlas-ink);
+  margin: 0;
+  max-width: 18ch;
 }
 
 .headline em {
@@ -332,549 +207,715 @@
   letter-spacing: -0.01em;
 }
 
-/* The claim ends on a signal-orange full stop — the instrument's one
-   typographic flourish. */
 .stop {
-  color: var(--hp-signal);
+  color: var(--atlas-signal);
 }
 
 .dek {
-  margin: clamp(1.1rem, 2vw, 1.6rem) 0 0;
-  font-size: clamp(1rem, 1.25vw, 1.125rem);
+  font-size: var(--text-base);
   line-height: 1.6;
-  color: color-mix(in srgb, var(--hp-ink) 74%, transparent);
-  max-width: 46ch;
+  color: var(--atlas-muted);
+  max-width: 34rem;
+  margin: clamp(1rem, 2vw, 1.5rem) 0 0;
 }
 
 .ctas {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: clamp(1.4rem, 2.6vw, 2.1rem);
+  gap: 0.7rem;
+  margin-top: clamp(1.25rem, 2.5vw, 1.9rem);
 }
 
-/* Hero buttons match the site's standard CTA pair (see ContactCta): solid
-   is an ink fill that hovers to signal, ghost is a rule hairline that hovers
-   to signal. */
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  min-height: 46px;
-  padding: 11px 20px;
-  border-radius: 2px;
-  border: 1px solid var(--hp-rule);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 400;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding: 0 1.4rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-home-sans);
+  font-weight: 600;
+  font-size: 0.95rem;
   text-decoration: none;
-  color: var(--hp-ink);
-  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    color 0.2s ease, transform 0.2s ease;
 }
 
 .btnSolid {
-  background: var(--hp-ink);
-  border-color: var(--hp-ink);
-  color: var(--home-paper);
+  background-color: var(--atlas-ink);
+  color: var(--atlas-paper);
+  border: 1px solid var(--atlas-ink);
 }
 
 .btnSolid:hover,
 .btnSolid:focus-visible {
-  background: var(--hp-signal);
-  border-color: var(--hp-signal);
-  color: var(--home-paper);
+  background-color: var(--atlas-signal);
+  border-color: var(--atlas-signal);
+  transform: translateY(-1px);
 }
 
 .btnGhost {
-  background: transparent;
-  border-color: var(--hp-rule);
-  color: var(--hp-ink);
+  background-color: transparent;
+  color: var(--atlas-ink);
+  border: 1px solid var(--atlas-rule);
 }
 
 .btnGhost:hover,
 .btnGhost:focus-visible {
-  color: var(--hp-signal);
-  border-color: var(--hp-signal);
+  background-color: var(--atlas-signal-soft);
+  border-color: var(--atlas-signal);
+  transform: translateY(-1px);
 }
 
-/* Live index panel — the hero's right rail. Real counts, real feed. Panel
-   shell (bezel, cap row, rows) now lives in the reusable ReadoutPanel
-   component (src/components/ui/ReadoutPanel.tsx); what's left here is
-   content-specific formatting for what HomeInstrument feeds into its slots. */
-
-.capStamp {
-  margin-left: 2px;
+/* Survey index — measured counts as a legend strip. Leads with shipped work:
+   Projects reads in ink with a signal label, the rest sit quieter so no single
+   figure out-shouts the headline. */
+.index {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: clamp(1.5rem, 3vw, 2.25rem) 0 0;
+  border-top: 1px solid var(--atlas-rule);
 }
 
-/* Live-index dot: a blinking core with an expanding ring, same motif as the
-   "Live" badges elsewhere on the page but with motion. Reduced-motion users
-   get a plain solid dot — the ring only exists inside the no-preference
-   query below, so there's nothing static left behind to look unfinished. */
-.liveDot {
+.indexCell {
+  padding: 0.85rem 0.9rem 0.2rem 0;
+  border-right: 1px solid var(--atlas-rule);
+}
+
+.indexCell:last-child {
+  border-right: 0;
+}
+
+.indexCell dt {
+  font-family: var(--font-mono);
+  font-size: var(--text-3xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--atlas-muted);
+}
+
+.indexCell dd {
+  margin: 0.2rem 0 0;
+  font-family: var(--font-mono);
+  font-size: clamp(1.15rem, 0.95rem + 0.7vw, 1.5rem);
+  font-variant-numeric: tabular-nums;
+  color: var(--atlas-muted);
+  line-height: 1;
+}
+
+.indexPrimary dt {
+  color: var(--atlas-signal);
+}
+
+.indexPrimary dd {
+  color: var(--atlas-ink);
+}
+
+/* ---- Chart field: graticule map + live field readings ---------------- */
+
+.chartField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  min-width: 0;
+}
+
+.chartMap {
+  position: relative;
+  border: 1px solid var(--atlas-rule);
+  border-radius: 4px;
+  background-color: color-mix(in srgb, var(--home-paper) 55%, transparent);
+  /* Denser graticule for the map itself. */
+  background-image:
+    linear-gradient(var(--atlas-grat) 1px, transparent 1px),
+    linear-gradient(90deg, var(--atlas-grat) 1px, transparent 1px);
+  background-size: 22px 22px;
+  aspect-ratio: 16 / 10;
+  min-height: 168px;
+  overflow: hidden;
+}
+
+.compass {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.1em;
+  color: var(--atlas-muted);
+}
+
+.compass::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 1px;
+  height: 10px;
+  background-color: var(--atlas-signal);
+  transform: translateX(-50%);
+}
+
+/* Faint domain regions labeling the territory (context, no markers). */
+.zone {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-mono);
+  font-size: var(--text-3xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--home-ink) 34%, var(--home-paper));
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* The three featured projects plotted as the signal markers; the ref is
+   echoed on the matching card so it locates a real surveyed site. */
+.plot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  white-space: nowrap;
+}
+
+.plotDot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background-color: var(--atlas-signal);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--home-signal) 20%, transparent);
+  flex: none;
+}
+
+.plotRef {
+  font-family: var(--font-mono);
+  font-size: var(--text-3xs);
+  letter-spacing: 0.08em;
+  color: var(--atlas-micro);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Legend key — defines the plotted marker (real key, not a fake scale). */
+.legend {
+  position: absolute;
+  left: 10px;
+  bottom: 9px;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.legendDot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background-color: var(--atlas-signal);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--home-signal) 20%, transparent);
+  flex: none;
+}
+
+.legendText {
+  font-family: var(--font-mono);
+  font-size: var(--text-3xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--atlas-micro);
+}
+
+/* ---- Live field readings (HomeLiveFeed) ------------------------------ */
+
+.feedPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border: 1px solid var(--atlas-rule);
+  border-radius: 4px;
+  background-color: var(--atlas-raised);
+  padding: 0.9rem 1rem 0.85rem;
+}
+
+.feedCap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid var(--atlas-rule);
+  font-family: var(--font-mono);
+  font-size: var(--text-3xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--atlas-micro);
+}
+
+.feedCapLive {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--atlas-ink);
+}
+
+.feedDot {
   position: relative;
   width: 7px;
   height: 7px;
-  flex-shrink: 0;
-  display: inline-block;
+  display: inline-flex;
+  flex: none;
 }
 
-.liveDot > span {
+.feedDot > span {
   position: absolute;
   inset: 0;
-  border-radius: 50%;
-  background: var(--hp-signal);
+  border-radius: var(--radius-pill);
+  background-color: var(--atlas-signal);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .liveDot > span {
-    animation: hp-blip 1.9s ease-in-out infinite;
-  }
-
-  .liveDot::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    border: 1px solid var(--hp-signal);
-    animation: hp-ring 1.9s ease-out infinite;
-  }
+.feedDot > span::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: var(--radius-pill);
+  border: 1px solid color-mix(in srgb, var(--home-signal) 45%, transparent);
+  animation: atlasPing 3.2s ease-out infinite;
 }
 
-@keyframes hp-blip {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.38;
-  }
-}
-
-@keyframes hp-ring {
+@keyframes atlasPing {
   0% {
-    transform: scale(1);
-    opacity: 0.5;
+    transform: scale(0.7);
+    opacity: 0.7;
   }
   70%,
   100% {
-    transform: scale(2.8);
+    transform: scale(1.5);
     opacity: 0;
   }
 }
 
-/* Ticking Pacific-time readout — plain digit changes, not decorative
-   motion, so it isn't gated behind prefers-reduced-motion. */
 .panelClock {
   display: inline-flex;
   align-items: baseline;
   gap: 6px;
+  font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
-  letter-spacing: 0.09em;
-  color: color-mix(in srgb, var(--hp-ink) 82%, transparent);
+  letter-spacing: 0.06em;
+  color: var(--atlas-muted);
 }
 
 .panelClockZone {
   font-size: 0.84em;
-  color: var(--hp-muted);
+  color: color-mix(in srgb, var(--home-ink-muted) 75%, transparent);
 }
 
-.spark {
-  padding: 14px 16px 4px;
-  border-bottom: 1px solid var(--hp-rule-soft);
-}
-
-.spark svg {
-  width: 100%;
-  height: 72px;
-  display: block;
-}
-
-.sparkFill {
-  opacity: 0.09;
-}
-
-/* Dashed midline — a plain reference gridline behind the pulse, same idiom
-   as the design kit's ship-cadence chart. */
-.sparkGrid {
-  stroke: var(--hp-rule);
-  stroke-width: 1;
-  stroke-dasharray: 2 5;
-}
-
-/* Draw the pulse line in once. pathLength=100 normalizes the dash math;
-   reduced-motion (and no-JS) users get the finished line immediately. */
-@media (prefers-reduced-motion: no-preference) {
-  .sparkLine {
-    stroke-dasharray: 100;
-    stroke-dashoffset: 100;
-    animation: hp-spark-draw 1100ms ease 300ms forwards;
-  }
-
-  .sparkDot {
-    opacity: 0;
-    animation: hp-spark-dot 300ms ease 1250ms forwards;
-  }
-}
-
-@keyframes hp-spark-draw {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes hp-spark-dot {
-  to {
-    opacity: 1;
-  }
-}
-
-/* One-shot ping on the sparkline's end dot — expands and fades once, in
-   sync with the dot fading in, rather than looping like the panel's live
-   dot. Reduced-motion users just get the plain dot with no ping at all. */
-.sparkPing {
-  opacity: 0;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .sparkPing {
-    animation: hp-spark-ping 900ms ease 1250ms forwards;
-  }
-}
-
-@keyframes hp-spark-ping {
-  0% {
-    r: 3.5px;
-    opacity: 0.5;
-  }
-  100% {
-    r: 10px;
-    opacity: 0;
-  }
-}
-
-.sparkCap {
-  composes: mono;
-  display: block;
-  padding: 8px 0 10px;
-  color: var(--hp-muted);
-}
-
-.nowLine {
-  composes: mono;
+.feedRd {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 16px;
-  color: var(--hp-muted);
-  overflow: hidden;
+  flex-direction: column;
+  gap: 0.3rem;
 }
 
-.nowLine::before {
-  content: "";
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--hp-signal);
-  flex-shrink: 0;
+.feedRdHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-3xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
-.nowLead {
-  flex-shrink: 0;
-  color: color-mix(in srgb, var(--hp-ink) 82%, transparent);
+.feedRdSrc {
+  color: var(--atlas-micro);
 }
 
-.nowText {
+.feedRdMeta {
+  color: var(--atlas-micro);
+  font-variant-numeric: tabular-nums;
+}
+
+.feedUp {
+  color: var(--home-positive);
+}
+
+.feedDown {
+  color: var(--home-negative);
+}
+
+.feedRdFigure {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.feedRdBig {
+  font-family: var(--font-mono);
+  font-size: 1.35rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--atlas-ink);
+  line-height: 1;
+}
+
+.feedRdUnit {
+  font-family: var(--font-mono);
+  font-size: var(--text-3xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--atlas-micro);
+}
+
+.feedRdSub {
+  font-family: var(--font-home-sans);
+  font-size: var(--text-xs);
+  color: var(--atlas-muted);
+}
+
+.feedRdLine {
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+}
+
+.feedClock {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--atlas-signal);
+  flex: none;
+}
+
+.feedRdPrice {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--atlas-ink);
+  flex: none;
+}
+
+.feedRdName {
+  font-family: var(--font-home-sans);
+  font-size: var(--text-xs);
+  color: var(--atlas-muted);
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .nowText {
-    animation: hp-now-in 480ms ease both;
-  }
+.feedSpark {
+  display: block;
+  width: 100%;
+  height: 26px;
+  margin-top: 0.15rem;
 }
 
-@keyframes hp-now-in {
-  from {
-    opacity: 0;
-    transform: translateY(4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.feedBar {
+  fill: color-mix(in srgb, var(--home-ink) 32%, transparent);
 }
 
-/* ============== Section primitives ============== */
+.feedBarLast {
+  fill: var(--atlas-signal);
+}
+
+.feedNow {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--atlas-rule);
+  font-family: var(--font-mono);
+  font-size: var(--text-3xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--atlas-micro);
+  overflow: hidden;
+}
+
+.feedNowLead {
+  flex: none;
+  color: var(--atlas-ink);
+}
+
+.feedNowText {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Legacy NowLine (unused) — kept so its class refs resolve. */
+.nowLine {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-3xs);
+  color: var(--atlas-muted);
+}
+.nowLead {
+  color: var(--atlas-ink);
+}
+.nowText {
+  color: var(--atlas-muted);
+}
+
+/* ---- Sections -------------------------------------------------------- */
 
 .section {
-  padding: clamp(2.75rem, 5.5vw, 4.75rem) 0;
-  border-bottom: 1px solid var(--hp-rule);
+  padding-block: clamp(2.25rem, 5vw, 4rem);
 }
 
-/* The closing ContactCta brings its own top hairline, so the section that
-   precedes it drops its bottom rule to avoid a doubled divider. */
 .sectionLast {
-  border-bottom: 0;
+  padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
 }
 
 .sectionHead {
   display: flex;
-  align-items: baseline;
+  align-items: flex-end;
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
-  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
 }
 
 .sectionTitleWrap {
   display: flex;
-  align-items: baseline;
-  gap: 12px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.sectionPlate {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--atlas-signal);
 }
 
 .sectionTitle {
-  font-size: clamp(1.7rem, 3vw, 2.7rem);
-  font-weight: 640;
-  letter-spacing: -0.035em;
-  line-height: 1.02;
+  font-family: var(--font-home-sans);
+  font-weight: 600;
+  font-size: clamp(1.75rem, 1.3rem + 1.8vw, 2.6rem);
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  color: var(--atlas-ink);
   margin: 0;
-  color: var(--hp-ink);
-}
-
-.countBadge {
-  composes: mono;
-  color: var(--hp-signal);
-  border: 1px solid var(--hp-rule);
-  border-radius: 2px;
-  padding: 4px 10px;
 }
 
 .sectionLink {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 0.4rem;
   min-height: 44px;
-  font-size: 0.92rem;
-  font-weight: 560;
-  color: var(--hp-ink);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--atlas-muted);
   text-decoration: none;
-  border-bottom: 1px solid var(--hp-signal);
-  transition: color 160ms ease;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .sectionLink:hover,
 .sectionLink:focus-visible {
-  color: var(--hp-signal);
+  color: var(--atlas-signal);
+  border-color: var(--atlas-signal);
 }
 
 .sectionDek {
-  margin: -0.75rem 0 clamp(1.5rem, 3vw, 2.25rem);
-  font-size: 0.95rem;
-  color: var(--hp-muted);
-  max-width: 52ch;
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  color: var(--atlas-muted);
+  max-width: 42rem;
+  margin: clamp(0.9rem, 2vw, 1.3rem) 0 0;
 }
 
-/* ============== Selected work cells ============== */
+/* ---- Plate 01: surveyed sites (work) --------------------------------- */
 
-/* Fused hairline grid: cells share rules like an instrument fascia instead
-   of floating as separate rounded cards. The 1px gap over a rule-colored
-   track draws every shared border exactly once. */
 .workGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--hp-rule);
-  border: 1px solid var(--hp-rule);
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: clamp(1.4rem, 3vw, 2.1rem);
 }
 
-@media (max-width: 1160px) {
+@media (min-width: 640px) {
   .workGrid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 720px) {
+@media (min-width: 1000px) {
   .workGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 .workCard {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 22px 22px 18px;
-  min-height: 196px;
-  background: var(--hp-paper);
+  border: 1px solid var(--atlas-rule);
+  border-radius: 6px;
+  background-color: var(--atlas-raised);
+  padding: 0.85rem 0.95rem 1rem;
   text-decoration: none;
-  color: var(--hp-ink);
-  transition: background-color 160ms ease, box-shadow 160ms ease;
+  color: var(--atlas-ink);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .workCard:hover,
 .workCard:focus-visible {
-  background: var(--hp-raised);
-  box-shadow: inset 0 3px 0 var(--hp-signal);
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--home-signal) 40%, var(--home-rule));
+  box-shadow: var(--shadow-lg);
 }
 
-/* Project cover art — the committed pixel-art SVG tiles, bled to the cell
-   edges. The tiles ship their own background, so they read in both themes. */
 .cardArt {
   position: relative;
-  margin: -22px -22px 4px;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 16 / 10;
+  border: 1px solid var(--atlas-rule);
+  border-radius: 3px;
   overflow: hidden;
-  border-bottom: 1px solid var(--hp-rule);
+  background-color: var(--atlas-paper);
+  margin-bottom: 0.85rem;
 }
 
-.cardArt img {
+.cardArt :global(img) {
   object-fit: cover;
+}
+
+.cardGridRef {
+  position: absolute;
+  top: 6px;
+  left: 7px;
+  padding: 1px 5px;
+  border-radius: 2px;
+  background-color: color-mix(in srgb, var(--home-paper) 82%, transparent);
+  border: 1px solid var(--atlas-rule);
+  font-family: var(--font-mono);
+  font-size: var(--text-3xs);
+  letter-spacing: 0.06em;
+  color: var(--atlas-micro);
 }
 
 .cardTop {
   display: flex;
-  align-items: baseline;
-  gap: 10px;
-  color: var(--hp-muted);
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-3xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--atlas-micro);
 }
 
 .cardNum {
-  font-family: var(--font-mono);
-  font-size: 1.9rem;
-  line-height: 1;
-  color: var(--hp-muted);
-  font-variant-numeric: tabular-nums;
-  opacity: 0.55;
+  color: var(--atlas-signal);
 }
 
 .cardCat {
-  composes: mono;
-  color: var(--hp-muted);
-}
-
-.cardTop .live {
-  margin-left: auto;
-}
-
-.workCard h3 {
-  font-size: 1.3rem;
-  font-weight: 620;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  margin: 0;
-}
-
-.workCard p {
-  font-size: 0.9rem;
-  line-height: 1.55;
-  color: var(--hp-muted);
-  margin: 0;
-  max-inline-size: none;
-}
-
-.cardFoot {
-  composes: mono;
-  margin-top: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  color: var(--hp-muted);
+  color: var(--atlas-micro);
 }
 
 .live {
+  margin-left: auto;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  color: var(--hp-signal);
+  gap: 0.3rem;
+  color: var(--atlas-ink);
 }
 
 .live::before {
   content: "";
   width: 6px;
   height: 6px;
-  border-radius: 50%;
-  background: var(--hp-signal);
+  border-radius: var(--radius-pill);
+  background-color: var(--atlas-signal);
 }
 
-/* ============== About band ============== */
+.workCard h3 {
+  font-family: var(--font-home-sans);
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--atlas-ink);
+  margin: 0.6rem 0 0.4rem;
+}
+
+.workCard p {
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  color: var(--atlas-muted);
+  margin: 0;
+  flex: 1;
+}
+
+.cardFoot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.95rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--atlas-rule);
+  font-family: var(--font-mono);
+  font-size: var(--text-3xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--atlas-micro);
+}
+
+.cardGo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--atlas-ink);
+}
+
+.workCard:hover .cardGo,
+.workCard:focus-visible .cardGo {
+  color: var(--atlas-signal);
+}
+
+/* ---- Plate 02: the surveyor (about) ---------------------------------- */
 
 .aboutGrid {
   display: grid;
-  grid-template-columns: minmax(200px, 0.55fr) minmax(0, 1.2fr) minmax(230px, 0.6fr);
-  gap: clamp(1.75rem, 3.5vw, 3.5rem);
-  align-items: start;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
 }
 
-@media (max-width: 1080px) {
+@media (min-width: 880px) {
   .aboutGrid {
-    grid-template-columns: minmax(200px, 0.6fr) minmax(0, 1.4fr);
+    grid-template-columns: 0.8fr 1.3fr 0.9fr;
+    align-items: start;
   }
-
-  .aboutFacts {
-    grid-column: 1 / -1;
-  }
-}
-
-@media (max-width: 880px) {
-  .aboutGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Quick-facts rail — the old meta band's content, put to work beside the bio. */
-.aboutFacts {
-  border-top: 1px solid var(--hp-rule);
-}
-
-.factRow {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  padding: 12px 2px 13px;
-  border-bottom: 1px solid var(--hp-rule-soft);
-}
-
-.factLbl {
-  composes: mono;
-  color: var(--hp-muted);
-}
-
-.factVal {
-  font-size: 0.93rem;
-  font-weight: 560;
-  color: var(--hp-ink);
 }
 
 .aboutPhoto {
   position: relative;
-  border-radius: 0;
+  border: 1px solid var(--atlas-rule);
+  border-radius: 4px;
   overflow: hidden;
-  border: 1px solid var(--hp-rule);
-  max-width: 22rem;
+  background-color: var(--atlas-paper);
+  max-width: 20rem;
 }
 
-.aboutPhoto img {
+.aboutPhoto :global(img) {
   display: block;
   width: 100%;
   height: auto;
 }
 
 .aboutBody h2 {
-  font-size: clamp(1.6rem, 2.9vw, 2.5rem);
-  font-weight: 620;
-  letter-spacing: -0.03em;
-  line-height: 1.06;
+  font-family: var(--font-home-sans);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.1rem);
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+  color: var(--atlas-ink);
   margin: 0 0 1rem;
   max-width: 24ch;
-  text-wrap: balance;
-  color: var(--hp-ink);
 }
 
 .aboutBody h2 em {
@@ -884,160 +925,222 @@
 }
 
 .aboutBody p {
-  font-size: 1rem;
+  font-size: var(--text-base);
   line-height: 1.65;
-  color: var(--hp-muted);
-  max-width: 56ch;
+  color: var(--atlas-muted);
   margin: 0 0 0.9rem;
+  max-width: 40rem;
 }
 
 .aboutLink {
-  composes: sectionLink;
-}
-
-/* ============== Live tools directory ============== */
-
-/* Category groups vary a lot in size (Sports has 12 tools, Civic has 1), so
-   they flow in CSS columns rather than a row-locked grid — otherwise the
-   tallest group leaves dead space under every shorter column. */
-.toolGroups {
-  column-count: 3;
-  column-gap: clamp(1.25rem, 2.5vw, 2rem);
-}
-
-@media (max-width: 1000px) {
-  .toolGroups {
-    column-count: 2;
-  }
-}
-
-@media (max-width: 640px) {
-  .toolGroups {
-    column-count: 1;
-  }
-}
-
-.toolGroup {
-  break-inside: avoid;
-  margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
-  border-top: 1px solid var(--hp-rule);
-  padding-top: 10px;
-}
-
-.toolGroupLabel {
-  composes: mono;
-  display: block;
-  color: var(--hp-muted);
-  padding-bottom: 4px;
-}
-
-.toolList {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.toolList li {
-  margin: 0;
-}
-
-.toolRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  min-height: 44px;
-  padding: 8px 6px;
-  border-bottom: 1px solid var(--hp-rule-soft);
-  text-decoration: none;
-  color: var(--hp-ink);
-  font-size: 0.95rem;
-  font-weight: 500;
-  transition: color 160ms ease, box-shadow 160ms ease, padding-left 160ms ease;
-}
-
-.toolRow:hover,
-.toolRow:focus-visible {
-  color: var(--hp-signal);
-  box-shadow: inset 3px 0 0 var(--hp-signal);
-  padding-left: 12px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .toolRow,
-  .toolRow:hover {
-    padding-left: 6px;
-    transition: color 160ms ease;
-  }
-}
-
-.go {
-  composes: mono;
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  color: var(--hp-muted);
-  flex-shrink: 0;
+  gap: 0.4rem;
+  min-height: 44px;
+  margin-top: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--atlas-ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--atlas-rule);
+  padding-bottom: 2px;
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-.toolRow:hover .go,
-.toolRow:focus-visible .go {
-  color: var(--hp-signal);
+.aboutLink:hover,
+.aboutLink:focus-visible {
+  color: var(--atlas-signal);
+  border-color: var(--atlas-signal);
 }
 
-/* ============== Writing ledger ============== */
+.aboutFacts {
+  margin: 0;
+  border-top: 1px solid var(--atlas-rule);
+}
+
+.factRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--atlas-rule);
+}
+
+.factLbl {
+  font-family: var(--font-mono);
+  font-size: var(--text-3xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--atlas-micro);
+}
+
+.factVal {
+  font-family: var(--font-home-sans);
+  font-size: var(--text-sm);
+  color: var(--atlas-ink);
+  margin: 0;
+}
+
+/* ---- Plate 03: the wider territory (tools, demoted) ------------------ */
+
+.territory {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.7rem;
+  border: 1px solid var(--atlas-rule);
+  border-radius: 6px;
+  background-color: var(--atlas-raised);
+  padding: clamp(1.1rem, 2.4vw, 1.6rem);
+}
+
+.territoryHead {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+}
+
+.territoryTitle {
+  font-family: var(--font-home-sans);
+  font-weight: 600;
+  font-size: clamp(1.15rem, 1rem + 0.6vw, 1.4rem);
+  letter-spacing: -0.02em;
+  color: var(--atlas-ink);
+  margin: 0;
+}
+
+.territoryCopy {
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--atlas-muted);
+  max-width: 52rem;
+  margin: 0;
+}
+
+.territoryLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+  margin-top: 0.15rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--atlas-ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--atlas-rule);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.territoryLink:hover,
+.territoryLink:focus-visible {
+  color: var(--atlas-signal);
+  border-color: var(--atlas-signal);
+}
+
+/* ---- Plate 04: field log (writing) ----------------------------------- */
 
 .writeList {
-  border-top: 1px solid var(--hp-rule);
+  margin-top: clamp(1.4rem, 3vw, 2.1rem);
+  border-top: 1px solid var(--atlas-rule);
 }
 
 .writeRow {
   display: grid;
-  grid-template-columns: 108px minmax(0, 1fr) auto;
-  gap: 14px;
-  align-items: baseline;
+  grid-template-columns: auto auto 1fr auto;
+  align-items: center;
+  gap: 0.75rem 1.1rem;
   min-height: 44px;
-  padding: 16px 2px;
-  border-bottom: 1px solid var(--hp-rule-soft);
+  padding: 1rem 0.6rem;
+  border-bottom: 1px solid var(--atlas-rule);
   text-decoration: none;
-  color: var(--hp-ink);
+  color: var(--atlas-ink);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.writeRow:hover,
+.writeRow:focus-visible {
+  background-color: color-mix(in srgb, var(--home-signal) 5%, transparent);
+  box-shadow: inset 3px 0 0 var(--atlas-signal);
+}
+
+.folioNo {
+  font-family: var(--font-mono);
+  font-size: var(--text-3xs);
+  color: var(--atlas-signal);
+  font-variant-numeric: tabular-nums;
+}
+
+.folio {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--atlas-muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.writeRow h3 {
+  font-family: var(--font-home-sans);
+  font-weight: 600;
+  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.3rem);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--atlas-ink);
+  margin: 0;
+  min-width: 0;
+}
+
+.rowMeta {
+  font-family: var(--font-mono);
+  font-size: var(--text-3xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--atlas-micro);
+  white-space: nowrap;
+}
+
+.rowGo {
+  color: var(--atlas-muted);
+  display: inline-flex;
+}
+
+.writeRow:hover .rowGo,
+.writeRow:focus-visible .rowGo {
+  color: var(--atlas-signal);
 }
 
 @media (max-width: 640px) {
   .writeRow {
-    grid-template-columns: 1fr;
-    gap: 4px;
+    grid-template-columns: auto 1fr;
+    gap: 0.35rem 0.75rem;
   }
-}
-
-.folio {
-  composes: mono;
-  color: var(--hp-muted);
-}
-
-.writeRow h3 {
-  font-size: clamp(1.15rem, 1.6vw, 1.45rem);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.25;
-  margin: 0;
-  transition: color 160ms ease;
-}
-
-.writeRow:hover h3,
-.writeRow:focus-visible h3 {
-  color: var(--hp-signal);
-}
-
-.rowMeta {
-  composes: mono;
-  color: var(--hp-muted);
-  text-align: right;
-}
-
-@media (max-width: 640px) {
+  .writeRow h3 {
+    grid-column: 1 / -1;
+    order: 3;
+  }
   .rowMeta {
-    text-align: left;
+    order: 4;
+    grid-column: 1 / -1;
+  }
+  .rowGo {
+    display: none;
   }
 }
 
+/* ---- Motion ---------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .btnSolid:hover,
+  .btnGhost:hover,
+  .workCard:hover {
+    transform: none;
+  }
+  .feedDot > span::after {
+    animation: none;
+  }
+}

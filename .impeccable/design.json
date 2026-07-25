@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-25T00:00:00Z",
+  "title": "Design System: The Working Instrument",
+  "extensions": {
+    "colorMeta": {
+      "signal-orange": { "role": "primary", "displayName": "Signal Orange", "canonical": "#C93F19", "dark": "#FF6B3B", "tonalRamp": ["#2E0E05", "#5A1B0B", "#862813", "#A8331A", "#C93F19", "#E4633E", "#F0977B", "#F8C9BB"] },
+      "signal-soft": { "role": "primary", "displayName": "Signal Soft", "canonical": "#F6E0D7", "dark": "#462214", "tonalRamp": ["#462214", "#6E3922", "#96513A", "#C07E68", "#DBA99A", "#EBC9BC", "#F6E0D7", "#FCF0EA"] },
+      "limestone-paper": { "role": "neutral", "displayName": "Limestone Paper", "canonical": "#F6F5F1", "dark": "#151412", "tonalRamp": ["#151412", "#2A2823", "#454138", "#6E695C", "#9B9585", "#C4BFB2", "#EFEDE6", "#F6F5F1"] },
+      "paper-alt": { "role": "neutral", "displayName": "Paper Alt", "canonical": "#EFEDE6", "dark": "#1C1B18", "tonalRamp": ["#1C1B18", "#302E29", "#4A473F", "#6F6B60", "#9B968A", "#C6C2B7", "#E4E1D9", "#EFEDE6"] },
+      "graphite-ink": { "role": "neutral", "displayName": "Graphite Ink", "canonical": "#191813", "dark": "#ECEAE2", "tonalRamp": ["#191813", "#33312A", "#4E4B41", "#6F6B60", "#948F81", "#B9B4A6", "#D9D5CB", "#ECEAE2"] },
+      "ink-muted": { "role": "neutral", "displayName": "Ink Muted", "canonical": "#6F6B60", "dark": "#9B9585", "tonalRamp": ["#26241E", "#3D3A31", "#545045", "#6F6B60", "#8C8778", "#ACA797", "#CBC7BA", "#E7E4DB"] },
+      "stone": { "role": "neutral", "displayName": "Stone", "canonical": "#D8D4C9", "dark": "#45423B", "tonalRamp": ["#2C2A24", "#45423B", "#615D52", "#847F72", "#A8A395", "#C4BFB2", "#D8D4C9", "#EAE7DF"] },
+      "rule": { "role": "neutral", "displayName": "Rule Hairline", "canonical": "rgba(25, 24, 19, 0.14)", "dark": "rgba(236, 234, 226, 0.16)", "tonalRamp": [] },
+      "positive": { "role": "tertiary", "displayName": "Positive", "canonical": "#059669", "dark": "#34D399", "tonalRamp": ["#022C1F", "#03482F", "#046141", "#057D55", "#059669", "#10B981", "#34D399", "#A7F3D0"] },
+      "warning": { "role": "tertiary", "displayName": "Warning", "canonical": "#D97706", "dark": "#FBBF24", "tonalRamp": ["#3A2102", "#5E3603", "#834B04", "#B06305", "#D97706", "#F59E0B", "#FBBF24", "#FDE68A"] },
+      "negative": { "role": "tertiary", "displayName": "Negative", "canonical": "#DC2626", "dark": "#F87171", "tonalRamp": ["#3F0D0D", "#661414", "#8C1C1C", "#B92020", "#DC2626", "#EF4444", "#F87171", "#FCA5A5"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headlines and the wordmark. Instrument Sans 600, tight -0.08em tracking." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles, capped near 12ch. Instrument Sans 600, -0.065em." },
+      "title": { "displayName": "Title", "purpose": "Project and writing card titles. Instrument Sans 600, -0.05em." },
+      "body": { "displayName": "Body", "purpose": "Reading copy at line-height 1.65, ~40rem measure." },
+      "serif": { "displayName": "Serif Accent", "purpose": "One Instrument Serif italic gesture per surface; never body copy." },
+      "label": { "displayName": "Label / Mono", "purpose": "Fragment Mono kickers, metadata, readouts. Weight 400 only, +0.14em, uppercase." }
+    },
+    "shadows": [
+      { "name": "subtle", "value": "0 1px 2px 0 rgba(0,0,0,0.05)", "purpose": "Resting shadow for softer legacy card variants." },
+      { "name": "card", "value": "0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05)", "purpose": "Default card shadow where one is used." },
+      { "name": "lifted", "value": "0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.04)", "purpose": "Hover lift and elevated panels." },
+      { "name": "floating", "value": "0 20px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.04)", "purpose": "Headshot frame and rare floating surfaces." }
+    ],
+    "motion": [
+      { "name": "easing-smooth", "value": "cubic-bezier(0.25, 0.46, 0.45, 0.94)", "purpose": "Default easing for entrances and reveals." },
+      { "name": "easing-spring", "value": "cubic-bezier(0.34, 1.56, 0.64, 1)", "purpose": "Occasional overshoot for playful state changes." },
+      { "name": "reveal", "value": "fade + translateY(18px) over 700ms, plays once", "purpose": "Section reveal; entrances never loop, nothing marquees." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ink-solid primary action; hover blends the fill toward Signal Orange.",
+      "html": "<button class=\"ds-btn-primary\">View the work</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 1.5rem; font-family: 'Instrument Sans', system-ui, sans-serif; font-weight: 600; font-size: 0.95rem; color: #F6F5F1; background: #191813; border: none; border-radius: 999px; cursor: pointer; transition: background 0.2s ease, transform 0.2s ease; } .ds-btn-primary:hover { background: #C93F19; transform: translateY(-1px); } .ds-btn-primary:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(201,63,25,0.3); }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Hairline ghost action on paper; hover adds a Signal Soft tint.",
+      "html": "<button class=\"ds-btn-secondary\">Read more</button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 1.5rem; font-family: 'Instrument Sans', system-ui, sans-serif; font-weight: 600; font-size: 0.95rem; color: #191813; background: #F6F5F1; border: 1px solid #D8D4C9; border-radius: 999px; cursor: pointer; transition: background 0.2s ease, border-color 0.2s ease; } .ds-btn-secondary:hover { background: #F6E0D7; border-color: #C93F19; } .ds-btn-secondary:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(201,63,25,0.3); }"
+    },
+    {
+      "name": "Instrument Panel",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "The signature hairline panel: rule border over raised paper, sharp 10px corner, flat at rest, lifts on hover.",
+      "html": "<article class=\"ds-panel\"><span class=\"ds-kicker\">Project 01</span><h3 class=\"ds-panel-title\">Investment Analytics Platform</h3><p class=\"ds-panel-body\">Live market data, portfolio tracking, and side-by-side equity research in one surface.</p></article>",
+      "css": ".ds-panel { display: block; padding: 1.5rem; background: color-mix(in srgb, #F6F5F1 92%, #ffffff); border: 1px solid rgba(25,24,19,0.14); border-radius: 10px; transition: transform 0.2s ease, box-shadow 0.2s ease; } .ds-panel:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.04); } .ds-kicker { display: inline-block; font-family: 'Fragment Mono', ui-monospace, monospace; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: #6F6B60; } .ds-panel-title { margin: 0.5rem 0 0.4rem; font-family: 'Instrument Sans', system-ui, sans-serif; font-weight: 600; font-size: 1.55rem; letter-spacing: -0.05em; color: #191813; } .ds-panel-body { margin: 0; font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 1.02rem; line-height: 1.65; color: #6F6B60; }"
+    },
+    {
+      "name": "Search Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Paper-alt field with a hairline border and a sharp 2px corner; focus shifts the border to the accent.",
+      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"Search\" />",
+      "css": ".ds-input { width: 100%; padding: 0.5rem 0.75rem; font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 0.95rem; color: #191813; background: #EFEDE6; border: 1px solid rgba(25,24,19,0.14); border-radius: 2px; transition: border-color 0.2s ease, box-shadow 0.2s ease; } .ds-input::placeholder { color: #6F6B60; } .ds-input:focus-visible { outline: none; border-color: #C93F19; box-shadow: 0 0 0 3px rgba(201,63,25,0.3); }"
+    },
+    {
+      "name": "Tag Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Signal-soft pill for tags and small numbered badges.",
+      "html": "<span class=\"ds-chip\">Fintech</span>",
+      "css": ".ds-chip { display: inline-flex; align-items: center; padding: 0.25rem 0.6rem; font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.02em; color: #191813; background: #F6E0D7; border-radius: 999px; }"
+    },
+    {
+      "name": "Nav Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Quiet ink-muted nav link; the active link gets an inset 2px Signal Orange underline.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-link ds-nav-link--active\" href=\"#\">Writing</a><a class=\"ds-nav-link\" href=\"#\">Portfolio</a></nav>",
+      "css": ".ds-nav { display: inline-flex; gap: 1.5rem; align-items: center; } .ds-nav-link { position: relative; font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 0.95rem; color: #6F6B60; text-decoration: none; padding-bottom: 4px; transition: color 0.2s ease; } .ds-nav-link:hover { color: #191813; } .ds-nav-link--active { color: #191813; } .ds-nav-link--active::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: #C93F19; }"
+    },
+    {
+      "name": "Mono Readout Row",
+      "kind": "custom",
+      "refersTo": "readout-row",
+      "description": "The signature instrument primitive: a mono label paired with a tabular-numeral value, hairline-divided into a stat strip.",
+      "html": "<dl class=\"ds-readout\"><div class=\"ds-readout-cell\"><dt class=\"ds-readout-label\">Uptime</dt><dd class=\"ds-readout-value\">99.999%</dd></div><div class=\"ds-readout-cell\"><dt class=\"ds-readout-label\">NPS</dt><dd class=\"ds-readout-value\">23 &rarr; 36</dd></div></dl>",
+      "css": ".ds-readout { display: flex; margin: 0; border-top: 1px solid rgba(25,24,19,0.14); } .ds-readout-cell { flex: 1; padding: 0.75rem 1rem; } .ds-readout-cell + .ds-readout-cell { border-left: 1px solid rgba(25,24,19,0.14); } .ds-readout-label { font-family: 'Fragment Mono', ui-monospace, monospace; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: #6F6B60; margin: 0; } .ds-readout-value { font-family: 'Fragment Mono', ui-monospace, monospace; font-size: 1.25rem; font-variant-numeric: tabular-nums; color: #191813; margin: 0.25rem 0 0; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Working Instrument",
+    "overview": "This is the visual language of a precision measuring tool that someone actually uses, not a showpiece kept behind glass. Cool limestone paper, graphite ink, hairline rules, and monospace readouts give the site the feel of a well-made analog instrument or a careful field notebook, and a single burnt orange-red accent behaves like the one lit indicator on that instrument, meaning it only appears where something is live, active, or worth acting on. The system is deliberately quiet so that the writing and the data are the loudest things on any screen. Surfaces earn emphasis through type and hairlines rather than through color washes, gradients, or heavy shadow. Corners are sharp on purpose, radii stay small, and depth comes from thin rules and restrained lifts rather than from glow. The whole system reads as precise and restrained, and that precision is the point, because it signals a builder who cares about exactness.",
+    "keyCharacteristics": [
+      "Limestone paper, graphite ink, and hairline rules carry the structure; color is not the structure.",
+      "Exactly one accent, Signal Orange, reserved for data, state, and action.",
+      "Sharp plates: radii top out around 8 to 10px, never soft 1rem-plus corners.",
+      "Flat by default; depth is a hairline or a small lift on state, not ambient shadow.",
+      "Monospace readouts with tabular numerals for anything measured or counted.",
+      "One serif italic gesture per surface, and no more."
+    ],
+    "rules": [
+      { "name": "The One Signal Rule", "body": "Signal Orange appears on no more than about 10% of any screen and only where something is genuinely data, state, or action. Its rarity is what makes it read as a signal. If it is being used as a decorative fill or a section background, it is being used wrong.", "section": "colors" },
+      { "name": "The Mix-Toward-Token Rule", "body": "Intermediate tones are produced with color-mix() toward another token, never toward literal white or black. Elevated surfaces mix toward --home-elev-mix, which flips to white in light and black in dark, so a lifted panel darkens correctly in dark mode instead of glowing.", "section": "colors" },
+      { "name": "The Legacy-Accent Prohibition", "body": "The old accents --home-haze (blue), --home-acid (yellow-green), and --home-moss survive only as token definitions for pre-redesign consumers. Do not use them in new work. Categorical needs resolve to ink and stone mixes, and status resolves to the positive, warning, and negative tokens.", "section": "colors" },
+      { "name": "The One Gesture Rule", "body": "Instrument Serif italic appears at most once per surface, as a single dek word or a closing statement, and never as body copy. One gesture keeps it expressive; two make it decoration.", "section": "typography" },
+      { "name": "The Honest Mono Rule", "body": "Fragment Mono is weight 400 only. Do not fake bold mono by stacking weight; if emphasis is needed, use Instrument Sans instead.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "Surfaces sit flat at rest and are separated by hairline rules and tonal steps. A shadow or a lift is a response to state (hover, focus, elevation), not a resting decoration. The canonical instrument panel is a --home-rule hairline border over a --home-paper-raised fill with a 10px radius and no resting shadow at all.", "section": "elevation" },
+      { "name": "The Sharp Plate Rule", "body": "Card and panel corners stay at or below roughly 8 to 10px. Do not reintroduce soft 1rem-plus card radii; the sharpness is what makes the surfaces read as instrument plates rather than as generic web cards. Buttons and chips are the exception and stay fully pill-shaped.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use the --home-* tokens directly in new code (--home-paper, --home-ink, --home-ink-muted, --home-rule, --home-signal), never raw hex.",
+      "Do keep Signal Orange to data, state, and action, and to roughly 10% of a screen at most.",
+      "Do build depth from hairlines and tonal steps first, and add a shadow or lift only on state.",
+      "Do set measured values in Fragment Mono with tabular numerals, and keep it at weight 400.",
+      "Do mix intermediate tones toward another token or toward --home-elev-mix, so dark mode inverts correctly.",
+      "Do keep card and panel radii sharp (<=10px), 44px minimum touch targets, one page-level h1 and main per self-shell route, and a reduced-motion guard on every animation."
+    ],
+    "donts": [
+      "Don't use Signal Orange, or any color, as a decorative background wash or gradient.",
+      "Don't reintroduce soft 1rem-plus card corners; the plates stay sharp.",
+      "Don't use the legacy accents --home-haze, --home-acid, or --home-moss in new work.",
+      "Don't color-mix() toward literal white or black; it breaks the lifted surfaces in dark mode.",
+      "Don't use Instrument Serif for body copy or use it more than once per surface, and don't fake a bold Fragment Mono weight.",
+      "Don't ship arbitrary text-[Npx] micro-type or transition-all in shared primitives."
+    ]
+  }
+}

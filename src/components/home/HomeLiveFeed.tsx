@@ -100,7 +100,13 @@ function LaunchClock({ launch }: { launch: HomeLiveFeedLaunch }) {
     if (!validTarget) return;
     const tick = () => {
       const remaining = targetMs - Date.now();
-      setCountdown("T− " + formatCountdown(Math.max(0, remaining)));
+      // A committed snapshot can outlive its launch window; once the target is
+      // in the past, show a standby label rather than a dead "T− 00:00:00".
+      if (remaining <= 0) {
+        setCountdown("Standing by");
+        return;
+      }
+      setCountdown("T− " + formatCountdown(remaining));
     };
     tick();
     const id = setInterval(tick, 1000);
