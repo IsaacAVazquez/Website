@@ -51,7 +51,8 @@ There are no live `/api/fantasy-pros-*`, `/api/data-manager`, or `/api/scheduled
 
 | Variable | Required | Purpose |
 | --- | --- | --- |
-| `RESEND_API_KEY` | yes for `/api/mba-jobs/email` | Resend API key used to deliver the MBA jobs digest |
+| `RESEND_API_KEY` | yes for both email endpoints | Resend API key used to deliver the MBA jobs digest and create newsletter contacts |
+| `RESEND_NEWSLETTER_SEGMENT_ID` | recommended for `/api/newsletter/subscribe` | Resend segment that receives public newsletter signups; when omitted, signups are created as unsegmented contacts |
 | `MBA_DIGEST_ALLOWED_RECIPIENTS` | yes for `/api/mba-jobs/email` | Comma-separated recipient allowlist; entries can be exact emails or domains such as `@example.edu` |
 
 ---

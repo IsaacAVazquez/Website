@@ -158,6 +158,61 @@ export function getValueVsAdp(
   return { delta, signal };
 }
 
+export interface FantasyDraftMarketSignal {
+  player: Player;
+  delta: number;
+}
+
+export interface FantasyDraftMarketSignals {
+  values: FantasyDraftMarketSignal[];
+  reaches: FantasyDraftMarketSignal[];
+}
+
+/**
+ * Pulls the largest expert-versus-drafter gaps from an overall board. This is
+ * deliberately a current market read, not an ADP movement claim, because the
+ * snapshot only publishes the latest ADP sample.
+ */
+export function getFantasyDraftMarketSignals(
+  players: Player[],
+  limit = 4
+): FantasyDraftMarketSignals {
+  const values: FantasyDraftMarketSignal[] = [];
+  const reaches: FantasyDraftMarketSignal[] = [];
+
+  for (const player of players) {
+    const result = getValueVsAdp(player);
+    if (result?.signal === "value") {
+      values.push({ player, delta: result.delta });
+    } else if (result?.signal === "reach") {
+      reaches.push({ player, delta: result.delta });
+    }
+  }
+
+  const tieBreak = (
+    left: FantasyDraftMarketSignal,
+    right: FantasyDraftMarketSignal
+  ) =>
+    (left.player.rankEcr ?? left.player.averageRank ?? Number.MAX_SAFE_INTEGER) -
+      (right.player.rankEcr ??
+        right.player.averageRank ??
+        Number.MAX_SAFE_INTEGER) ||
+    left.player.name.localeCompare(right.player.name);
+
+  return {
+    values: values
+      .toSorted(
+        (left, right) => right.delta - left.delta || tieBreak(left, right)
+      )
+      .slice(0, Math.max(0, limit)),
+    reaches: reaches
+      .toSorted(
+        (left, right) => left.delta - right.delta || tieBreak(left, right)
+      )
+      .slice(0, Math.max(0, limit)),
+  };
+}
+
 /**
  * Hover copy for the green "Value" chip. Explains the ADP-vs-consensus gap in
  * plain language so a drafter does not have to infer what the chip means. Kept

@@ -194,6 +194,18 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       tags: ['GitHub', 'Open Source', 'Developer Tools', 'Dashboard'],
     },
     {
+      id: 'page-agent-build-index',
+      title: 'Agent Build Index',
+      excerpt:
+        'Weekly ranking of active public AI agent repositories by measured GitHub star movement.',
+      content:
+        'AI agents agentic coding open source GitHub stars developer tools skills context MCP weekly trend index',
+      url: '/agent-build-index',
+      type: 'project',
+      category: 'Developer Tools',
+      tags: ['AI Agents', 'GitHub', 'Open Source', 'Developer Tools'],
+    },
+    {
       id: 'page-spacex',
       title: 'SpaceX Mission Control',
       excerpt:

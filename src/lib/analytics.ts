@@ -69,6 +69,8 @@ export const GA_EVENT = {
   listingFilter: "listing_filter",
   listingSearch: "listing_search",
   scrollDepth: "scroll_depth",
+  newsletterSubscribe: "newsletter_subscribe",
+  acquisitionClick: "acquisition_click",
 } as const;
 
 export type NavLocation =
@@ -126,13 +128,34 @@ export function trackScrollDepth(params: {
   trackEvent(GA_EVENT.scrollDepth, params);
 }
 
+/** Successful opt-in through one of the site's email signup forms. */
+export function trackNewsletterSubscribe(params: {
+  signup_location: string;
+}): void {
+  trackEvent(GA_EVENT.newsletterSubscribe, params);
+}
+
+/** A click from a discovery surface into a deeper tool or workflow. */
+export function trackAcquisitionClick(params: {
+  surface: string;
+  action: string;
+  destination: string;
+}): void {
+  trackEvent(GA_EVENT.acquisitionClick, params);
+}
+
 // ---------------------------------------------------------------------------
 // Reference catalogue — drives /analytics-reference
 // ---------------------------------------------------------------------------
 
 export interface AnalyticsEventDoc {
   name: string;
-  category: "Navigation" | "Code samples" | "Listings" | "Engagement";
+  category:
+    | "Navigation"
+    | "Code samples"
+    | "Listings"
+    | "Engagement"
+    | "Audience";
   description: string;
   trigger: string;
   parameters: { name: string; description: string; example: string }[];
@@ -202,6 +225,44 @@ export const ANALYTICS_EVENTS: AnalyticsEventDoc[] = [
     parameters: [
       { name: "percent_scrolled", description: "Milestone reached.", example: "50" },
       { name: "page_path", description: "Path of the page.", example: "/writing/some-post" },
+    ],
+  },
+  {
+    name: GA_EVENT.newsletterSubscribe,
+    category: "Audience",
+    description:
+      "Fires after the newsletter API confirms a reader was added to the email list.",
+    trigger: "Submit a valid email through a newsletter signup form.",
+    parameters: [
+      {
+        name: "signup_location",
+        description: "Surface where the form was submitted.",
+        example: "agent_build_index",
+      },
+    ],
+  },
+  {
+    name: GA_EVENT.acquisitionClick,
+    category: "Engagement",
+    description:
+      "Fires when a reader moves from a discovery module into a deeper tool or workflow.",
+    trigger: "Select a tracked call to action on a focused acquisition surface.",
+    parameters: [
+      {
+        name: "surface",
+        description: "Surface containing the call to action.",
+        example: "fantasy_draft_market",
+      },
+      {
+        name: "action",
+        description: "Short label for the selected action.",
+        example: "launch_draft_assistant",
+      },
+      {
+        name: "destination",
+        description: "Internal path the reader selected.",
+        example: "/fantasy-football/draft-tracker",
+      },
     ],
   },
 ];

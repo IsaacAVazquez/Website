@@ -9,6 +9,7 @@ import {
   isAnalyticsEnabled,
   trackEvent,
   trackNavigationClick,
+  trackNewsletterSubscribe,
   trackScrollDepth,
 } from "@/lib/analytics";
 
@@ -27,6 +28,7 @@ describe("analytics core", () => {
 
     trackEvent("navigation_click", { link_text: "Home" });
     trackNavigationClick({ link_text: "Home", link_url: "/", nav_location: "header_primary" });
+    trackNewsletterSubscribe({ signup_location: "writing" });
     trackScrollDepth({ percent_scrolled: 50, page_path: "/" });
 
     expect(gtag).not.toHaveBeenCalled();

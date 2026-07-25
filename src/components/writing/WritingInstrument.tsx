@@ -15,6 +15,7 @@ import { trackListingFilter } from "@/lib/analytics";
 import { BLOG_TOPIC_PAGES } from "@/lib/blog-config";
 import { publishedDateFormatter } from "@/lib/utils";
 import { Chip } from "@/components/ui/Chip";
+import { NewsletterSignup } from "@/components/newsletter/NewsletterSignup";
 import styles from "@/app/writing/writing.module.css";
 
 export interface WritingArchivePost {
@@ -450,35 +451,26 @@ export function WritingInstrument({
                 One essay a month, when it&rsquo;s <em>worth</em> sending.
               </h2>
               <p className={styles.ctaCopy}>
-                No roundups, no SEO bait. Just the long-form work, the
-                occasional memo template, and an honest note about what
-                I&rsquo;m wrong about lately.
+                I send the new builds, the useful pieces of data, and the
+                occasional position I changed my mind about. I would rather
+                send less often than fill another inbox.
               </p>
             </div>
-            {/* No managed-list yet — point readers at the RSS feed and the
-                direct contact channel. Both are real, working, and don't
-                pretend a newsletter pipeline exists where it doesn't. */}
             <div className={styles.ctaActions}>
+              <NewsletterSignup source="writing" compact />
               <a
                 href="/api/rss"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={styles.ctaBtn}
+                className={`${styles.ctaBtn} ${styles.ctaBtnGhost}`}
               >
                 Subscribe via RSS
                 <IconArrowRight size={14} aria-hidden="true" />
               </a>
-              <a
-                href="mailto:IsaacVazquez@berkeley.edu?subject=Hello"
-                className={`${styles.ctaBtn} ${styles.ctaBtnGhost}`}
-              >
-                Email me directly
-                <IconArrowRight size={14} aria-hidden="true" />
-              </a>
               <div className={styles.ctaMeta}>
                 <span>{posts.length} posts</span>
-                <span>Open RSS</span>
-                <span>No managed list</span>
+                <span>Monthly at most</span>
+                <span>RSS stays open</span>
               </div>
             </div>
           </div>

@@ -69,6 +69,7 @@ The site is portfolio-first. `Writing` is live and promoted in the global header
 | `/ai-dev-tools` | AI development tools directory |
 | `/frontier-models` | Frontier model tracker |
 | `/github-trending-pulse` | GitHub Trending Pulse dashboard |
+| `/agent-build-index` | Focused weekly AI agent repository index |
 | `/food-map` | Food map |
 | `/recipe-finder` | Recipe finder |
 | `/wine-cellar` | Wine cellar |

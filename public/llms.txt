@@ -99,6 +99,10 @@ Isaac Vazquez is a product manager and UC Berkeley Haas MBA Candidate, Class of 
 - URL: https://isaacavazquez.com/github-trending-pulse
 - Description: Daily-refreshed snapshot of active public GitHub repositories by language and topic, including weekly star movement.
 
+### Agent Build Index
+- URL: https://isaacavazquez.com/agent-build-index
+- Description: Focused weekly ranking of public AI agent repositories by measured GitHub star movement, with source, freshness, and baseline disclosures.
+
 ### Tech Startup Tracker
 - URL: https://isaacavazquez.com/tech-startup-tracker
 - Description: Curated private-company tracker by sector and funding stage, with valuation, latest round, total raised, and momentum context.

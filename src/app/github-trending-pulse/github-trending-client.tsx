@@ -331,6 +331,11 @@ export function GitHubTrendingClient({
           },
         ]}
         pills={[
+          {
+            label: "Agent Build Index",
+            href: "/agent-build-index",
+            icon: FileText,
+          },
           { label: "Languages", href: "/github-trending-pulse", icon: ChartBar },
           { label: "Topics", href: "/github-trending-pulse?view=topic", icon: FileText },
           { label: "Most starred", href: "/github-trending-pulse?sort=stars", icon: Briefcase },

@@ -43,6 +43,7 @@ Primary live routes:
 - `/contact`
 - `/fantasy-football/*`
 - `/march-madness-2026`
+- `/agent-build-index`
 - `/ai-dev-tools`
 - `/frontier-models`
 - `/decision-lab`
@@ -97,6 +98,7 @@ Shared shell files:
 Self-shell routes currently include:
 
 - `/about`
+- `/agent-build-index`
 - `/ai-dev-tools`
 - `/bay-area-transit`
 - `/changelog`
@@ -180,6 +182,7 @@ Confirm live API routes from `src/app/api/**/route.ts`. Current routes:
 - `/api/investments/index`, `/api/investments/quotes`, `/api/investments/data/[symbol]`
 - `/api/la-liga/summary` and `/api/la-liga/teams/[teamId]`
 - `/api/mba-jobs` and `/api/mba-jobs/email`
+- `/api/newsletter/subscribe`
 - `/api/mlb/summary` and `/api/mlb/teams/[teamId]`
 - `/api/nba/summary` and `/api/nba/teams/[teamId]`
 - `/api/news-pulse`

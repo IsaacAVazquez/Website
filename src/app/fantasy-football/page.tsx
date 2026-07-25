@@ -1,14 +1,15 @@
 import { StructuredData } from "@/components/StructuredData";
+import { fantasySnapshotRevision } from "@/data/fantasySnapshotRevision.generated";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { FantasyFootballClient } from "./fantasy-football-client";
 import { normalizeFantasyState } from "./fantasy-state";
 
 export const metadata = constructMetadata({
-  title: "Fantasy Football Rankings",
+  title: "2026 Fantasy Football Rankings and ADP",
   description:
-    "Snapshot-backed fantasy football rankings sourced from FantasyPros public consensus pages, with freshness metadata, scoring toggles, and a linked draft assistant.",
+    "Current 2026 fantasy football rankings, tiers, and expert-versus-ADP draft market gaps for PPR, Half PPR, and Standard scoring.",
   canonicalUrl: "/fantasy-football",
-  dateModified: "2026-04-21",
+  dateModified: fantasySnapshotRevision.slice(0, 10),
 });
 
 interface FantasyFootballPageProps {
@@ -45,6 +46,7 @@ export default async function FantasyFootballPage({ searchParams }: FantasyFootb
           featureList: [
             "Overall and position-specific rankings",
             "PPR, Half PPR, and Standard scoring",
+            "Current expert-versus-ADP draft market gaps",
             "Published snapshot timestamps",
             "Manual draft tracker with local persistence",
           ],
@@ -68,6 +70,14 @@ export default async function FantasyFootballPage({ searchParams }: FantasyFootb
               acceptedAnswer: {
                 "@type": "Answer",
                 text: "Yes. The board supports overall plus published position-specific views, and any unsupported scoring-position combinations are labeled as unavailable instead of showing derived fallback data.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "What does the draft market section show?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "It compares the current overall expert consensus rank with mock draft ADP. A market discount means drafters take a player later than experts rank him, while a market premium means drafters take him earlier.",
               },
             },
             {

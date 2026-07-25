@@ -39,6 +39,7 @@ Current route inventory and page ownership for the live app.
 | `/ai-dev-tools` | `src/app/ai-dev-tools/page.tsx` | Filterable AI coding and agent tool directory |
 | `/frontier-models` | `src/app/frontier-models/page.tsx` | Snapshot-backed frontier model tracker |
 | `/github-trending-pulse` | `src/app/github-trending-pulse/page.tsx` | Snapshot-backed GitHub repository trend dashboard |
+| `/agent-build-index` | `src/app/agent-build-index/page.tsx` | Server-rendered weekly AI agent repository index derived from the GitHub Trending snapshot |
 | `/premier-league` | `src/app/premier-league/page.tsx` | Snapshot-backed Premier League dashboard |
 | `/la-liga` | `src/app/la-liga/page.tsx` | Snapshot-backed La Liga dashboard |
 | `/mlb` | `src/app/mlb/page.tsx` | Snapshot-backed MLB dashboard |
@@ -67,7 +68,7 @@ Current route inventory and page ownership for the live app.
 
 | Route | File | Notes |
 |------|------|-------|
-| `/fantasy-football` | `src/app/fantasy-football/page.tsx` | FantasyPros consensus rankings board (`fantasy-football-client.tsx`): deep-linkable position pill bar, PPR/Half-PPR/Standard scoring selector, per-board search, List/Tiers view toggle (`?view=tiers`), Comfortable/Compact density, infinite-scroll windowing, shared player detail drawer, compare tray, watchlist queue, private notes, and a freshness/ADP-source sidebar |
+| `/fantasy-football` | `src/app/fantasy-football/page.tsx` | FantasyPros consensus rankings board (`fantasy-football-client.tsx`): deep-linkable position pill bar, PPR/Half-PPR/Standard scoring selector, current expert-versus-ADP draft market gaps, per-board search, List/Tiers view toggle (`?view=tiers`), Comfortable/Compact density, infinite-scroll windowing, shared player detail drawer, compare tray, watchlist queue, private notes, newsletter signup, and a freshness/ADP-source sidebar |
 | `/fantasy-football/tiers/[position]` | `src/app/fantasy-football/tiers/[position]/page.tsx` | Redirects to the canonical fantasy board with query parameters |
 | `/fantasy-football/rb-tiers` | `src/app/fantasy-football/rb-tiers/page.tsx` | Redirects to the canonical RB board with query parameters |
 | `/fantasy-football/draft-tracker` | `src/app/fantasy-football/draft-tracker/page.tsx` | Draft tracker |

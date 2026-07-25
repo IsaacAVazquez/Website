@@ -129,6 +129,14 @@ Shared conventions worth internalizing:
   add a post, add its plan entry in the same change. The fetch is blocked in the
   agent sandbox (image hosts are egress-denied) and runs in CI or locally.
   Runbook: `docs/ARTICLE_IMAGE_WORKFLOW.md`.
+- **Voice reference articles** (the worked examples for `WRITING_VOICE.md`):
+  `content/blog/rb-vs-wr-draft-strategy-modeling-positional-value.mdx` (data woven into
+  prose, clear positional argument) and
+  `content/blog/building-an-investment-research-platform.mdx` (product rationale in first
+  person, restraint as a feature). The original 22 articles were rewritten to the voice in
+  April 2026 and every article in `content/blog/` now follows it, so any of them works as
+  a reference. Fantasy football and QA articles especially tend to be padded, so cut
+  those hardest.
 
 ### Browser-persisted tools
 
@@ -265,11 +273,3 @@ reference; older root-level SEO audits are historical.
   and the investments API routes.
 - When adding a new data dashboard, follow the snapshot-driven pattern end to end
   (snapshot, builder, fail-soft fetch, accessors, API route, and an `error.tsx`).
-
----
-
-## Writing Voice
-
-Apply Isaac's writing voice by default to any prose, document, or deliverable you produce for this repo, from articles and blog content under `content/blog/` to UI copy, page descriptions, bios, hero text, readouts, and emails. It does not apply to code. `WRITING_VOICE.md` is the canonical spec and is deliberately not duplicated here, so read it before writing or editing any copy, and rewrite non-conforming copy to match it rather than patching around it.
-
-The load-bearing points, as a reminder and not a substitute: first-person, direct, opinion-forward prose; plainer and more explanatory than punchy, with long accumulating sentences over fragments; calibrated hedging kept as a feature of the voice, never stripped; personal anchors (Civitech, Haas, Lyft, Juno) woven in as evidence without inventing details; no em dashes as stylistic devices, no colons as sentence connectors, no bullet lists with bold labels; condense hard in polished pieces. The full hard-rule list, the AI tells to strip, the essay structure, and the register shifts all live in `WRITING_VOICE.md`.

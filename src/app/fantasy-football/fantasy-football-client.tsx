@@ -33,9 +33,11 @@ import {
   FANTASY_CHIP_CLASS,
   FANTASY_REACH_TOOLTIP,
   FANTASY_VALUE_TOOLTIP,
+  formatAdp,
   formatUpdatedAt,
   formatRankValue,
   getFantasyAdpFreshness,
+  getFantasyDraftMarketSignals,
   getPositionTone,
   getSnapshotStaleness,
   getSnapshotStalenessLabel,
@@ -43,8 +45,10 @@ import {
   getTierGap,
   getValueVsAdp,
   withTierBreaks,
+  type FantasyDraftMarketSignal,
   type FantasySnapshotStaleness,
 } from "@/lib/fantasyUtils";
+import { trackAcquisitionClick } from "@/lib/analytics";
 import {
   CompareTray,
   FantasyBoardLegend,
@@ -59,6 +63,7 @@ import { MetricTooltip } from "@/components/investments/MetricTooltip";
 import { Player } from "@/types";
 import { buildFantasyHref, FantasySearchState, normalizeFantasyState } from "./fantasy-state";
 import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
+import { NewsletterSignup } from "@/components/newsletter/NewsletterSignup";
 
 const POSITION_OPTIONS: FantasyRoutePosition[] = ["overall", "qb", "rb", "wr", "te", "flex", "k", "dst"];
 const SCORING_OPTIONS: { key: FantasyRouteScoring; label: string }[] = [
@@ -206,6 +211,78 @@ function getPlayerDescriptor(
       {part}
     </Fragment>
   ));
+}
+
+function DraftMarketColumn({
+  heading,
+  explanation,
+  signals,
+  tone,
+  onSelect,
+}: {
+  heading: string;
+  explanation: string;
+  signals: FantasyDraftMarketSignal[];
+  tone: "value" | "reach";
+  onSelect: (player: Player) => void;
+}) {
+  const toneColor =
+    tone === "value" ? "var(--home-positive)" : "var(--home-warning)";
+
+  return (
+    <section
+      className="border-t border-[var(--home-rule)] p-4 sm:p-5 lg:border-l lg:border-t-0"
+      aria-label={`${heading} players`}
+    >
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <h3 className="text-lg font-semibold tracking-[-0.015em]">{heading}</h3>
+          <p className="mt-1 text-xs leading-5 text-[var(--home-ink-muted)]">
+            {explanation}
+          </p>
+        </div>
+        <span
+          className="rounded-full border px-2.5 py-1 font-mono text-xs"
+          style={{
+            borderColor: `color-mix(in srgb, ${toneColor} 38%, var(--home-rule))`,
+            background: `color-mix(in srgb, ${toneColor} 10%, var(--home-paper))`,
+          }}
+        >
+          {signals.length} shown
+        </span>
+      </div>
+      <ol className="mt-4 space-y-1">
+        {signals.map(({ player, delta }, index) => (
+          <li key={player.id}>
+            <button
+              type="button"
+              onClick={() => onSelect(player)}
+              className="grid min-h-[52px] w-full grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-3 rounded-[var(--radius-2xl)] px-2 text-left transition-[background-color,color] hover:bg-[var(--home-paper-raised)] focus-visible:bg-[var(--home-paper-raised)]"
+              aria-label={`Open ${player.name}, ${Math.abs(delta)} spot ${tone} signal`}
+            >
+              <span className="font-mono text-xs tabular-nums text-[var(--home-ink-muted)]">
+                {(index + 1).toString().padStart(2, "0")}
+              </span>
+              <span className="min-w-0">
+                <span className="block truncate text-sm font-semibold">
+                  {player.name}
+                </span>
+                <span className="block text-xs text-[var(--home-ink-muted)]">
+                  {player.position} · {player.team} · ADP {formatAdp(player.adp)}
+                </span>
+              </span>
+              <span
+                className="font-mono text-sm font-semibold tabular-nums"
+                style={{ color: toneColor }}
+              >
+                {delta > 0 ? `+${delta}` : delta}
+              </span>
+            </button>
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
 }
 
 type FantasyBoardDensity = "comfortable" | "compact";
@@ -397,6 +474,13 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
   const adpSource = metadata?.adpSource ?? null;
   const adpAvailable = Boolean(adpSource);
   const adpFreshness = getFantasyAdpFreshness(adpSource?.asOf, metadata?.season);
+  const draftMarketSignals = useMemo(
+    () => getFantasyDraftMarketSignals(snapshot?.overall ?? [], 4),
+    [snapshot]
+  );
+  const hasDraftMarketSignals =
+    draftMarketSignals.values.length > 0 ||
+    draftMarketSignals.reaches.length > 0;
   const selectedScoringLabel = FANTASY_SCORING_LABELS[routeState.scoring];
   const currentSourceUpdatedAt = sliceMetadata?.updatedAt ?? metadata?.upstreamUpdatedAt ?? null;
   const currentSourceKindLabel = getSourceKindLabel(sliceMetadata?.sourceKind);
@@ -615,6 +699,13 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
             <div className="flex flex-wrap items-center gap-3 pt-1">
               <Link
                 href="/fantasy-football/draft-tracker"
+                onClick={() =>
+                  trackAcquisitionClick({
+                    surface: "fantasy_hero",
+                    action: "launch_draft_assistant",
+                    destination: "/fantasy-football/draft-tracker",
+                  })
+                }
                 className="inline-flex min-h-[48px] items-center gap-2 rounded-full border px-5 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200"
                 style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
               >
@@ -649,6 +740,14 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                   style={{ transform: showLegend ? "rotate(180deg)" : "none" }}
                 />
               </button>
+              {hasDraftMarketSignals ? (
+                <a
+                  href="#draft-market"
+                  className="inline-flex min-h-[44px] items-center rounded-full px-2 text-sm font-semibold text-[var(--home-ink-muted)] underline decoration-[var(--home-rule)] underline-offset-4 transition-[color,decoration-color] hover:text-[var(--home-signal)] hover:decoration-[var(--home-signal)] focus-visible:text-[var(--home-signal)]"
+                >
+                  See the draft market
+                </a>
+              ) : null}
             </div>
           </div>
         </motion.div>
@@ -678,6 +777,65 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
               Queue, notes, and compare still work in this tab, but they will not survive a reload.
             </p>
           </div>
+        ) : null}
+
+        {adpAvailable && hasDraftMarketSignals ? (
+          <section
+            id="draft-market"
+            className="home-card scroll-mt-28 overflow-hidden"
+            aria-labelledby="draft-market-heading"
+          >
+            <div className="grid lg:grid-cols-[minmax(17rem,0.8fr)_minmax(0,1fr)_minmax(0,1fr)]">
+              <div className="p-5 sm:p-6">
+                <p className="home-kicker mb-1">Draft market</p>
+                <h2
+                  id="draft-market-heading"
+                  className="max-w-[16ch] text-2xl font-semibold leading-[1.03] tracking-[-0.03em]"
+                >
+                  Where experts and drafters disagree
+                </h2>
+                <p className="mt-3 text-sm leading-6 text-[var(--home-ink-muted)]">
+                  I compare the overall consensus rank with current mock draft
+                  ADP. The largest gaps are useful places to look, but they are
+                  not forecasts and they can move quickly during camp.
+                </p>
+                <p className="mt-4 font-mono text-xs leading-5 text-[var(--home-ink-muted)]">
+                  {adpSource?.provider}
+                  {adpSource?.asOf
+                    ? ` · ${formatUpdatedAt(adpSource.asOf)}`
+                    : ""}
+                </p>
+              </div>
+              <DraftMarketColumn
+                heading="Market discounts"
+                explanation="Drafters are taking these players later than the consensus rank."
+                signals={draftMarketSignals.values}
+                tone="value"
+                onSelect={(player) => {
+                  trackAcquisitionClick({
+                    surface: "fantasy_draft_market",
+                    action: "open_value_player",
+                    destination: player.id,
+                  });
+                  setDetailPlayer(player);
+                }}
+              />
+              <DraftMarketColumn
+                heading="Market premiums"
+                explanation="Drafters are taking these players earlier than the consensus rank."
+                signals={draftMarketSignals.reaches}
+                tone="reach"
+                onSelect={(player) => {
+                  trackAcquisitionClick({
+                    surface: "fantasy_draft_market",
+                    action: "open_reach_player",
+                    destination: player.id,
+                  });
+                  setDetailPlayer(player);
+                }}
+              />
+            </div>
+          </section>
         ) : null}
 
         {error && (
@@ -1073,12 +1231,33 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
               </p>
               <Link
                 href="/fantasy-football/draft-tracker"
+                onClick={() =>
+                  trackAcquisitionClick({
+                    surface: "fantasy_sidebar",
+                    action: "launch_draft_assistant",
+                    destination: "/fantasy-football/draft-tracker",
+                  })
+                }
                 className="mt-5 inline-flex min-h-[48px] items-center gap-2 rounded-full border px-4 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200"
                 style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
               >
                 Launch draft assistant
                 <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
               </Link>
+            </article>
+
+            <article className="home-card p-5 sm:p-6">
+              <p className="home-kicker mb-1">Draft updates</p>
+              <h3 className="text-xl font-semibold tracking-[-0.02em]">
+                I will send the board when camp actually changes it.
+              </h3>
+              <p className="mt-3 text-sm leading-7 text-[var(--home-ink-muted)]">
+                No daily roundup. I will send the meaningful ADP gaps, tier
+                changes, and the draft work I would use myself.
+              </p>
+              <div className="mt-4">
+                <NewsletterSignup source="fantasy_football" />
+              </div>
             </article>
           </aside>
         </div>

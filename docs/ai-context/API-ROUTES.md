@@ -25,6 +25,7 @@ Current API route map.
 | `/api/la-liga/teams/[teamId]` | GET | Snapshot-backed team drilldown payload for `/la-liga` |
 | `/api/mba-jobs` | GET | Live MBA-role aggregator across Greenhouse/Lever/Ashby/direct-HTML boards for `/mba-internship-notifications` |
 | `/api/mba-jobs/email` | POST | Sends grouped digest of supplied jobs via Resend |
+| `/api/newsletter/subscribe` | POST | Creates an opted-in Resend contact from the public newsletter form |
 | `/api/mlb/summary` | GET | Snapshot-backed MLB standings, fixtures, and leaders |
 | `/api/mlb/teams/[teamId]` | GET | Snapshot-backed MLB team drilldown payload |
 | `/api/nba/summary` | GET | Snapshot-backed NBA standings, scoreboard, and leaders |

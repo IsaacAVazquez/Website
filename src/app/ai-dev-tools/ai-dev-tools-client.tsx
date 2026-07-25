@@ -371,6 +371,7 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
           { label: "All tools", href: "/ai-dev-tools", icon: ChartBar },
           { label: "Cloud agents", href: "/ai-dev-tools?category=cloud-agent", icon: Database },
           { label: "Terminal agents", href: "/ai-dev-tools?category=terminal-agent", icon: FileText },
+          { label: "Agent Build Index", href: "/agent-build-index", icon: ChartBar },
           { label: "Editor extensions", href: "/ai-dev-tools?category=editor-extension", icon: Briefcase },
           { label: "Open source", href: "/ai-dev-tools?source=open-source", icon: BrandGithub },
         ]}

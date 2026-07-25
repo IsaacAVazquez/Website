@@ -1,35 +1,46 @@
 # Writing Voice
 
-**Last updated:** 2026-07-15
+**Last synced:** 2026-07-24
 
-This document governs all writing for Isaac, from articles and blog content under `content/blog/` to UI copy, page descriptions, bios, hero text, readouts, and emails. It does not govern code. Any agent or collaborator editing, creating, or rewriting text must follow these rules exactly.
+This file is a copy of my Claude.ai profile instructions and is the canonical voice spec for every tool that can read a file. Syncing goes from the profile to this spec and never the reverse, so when the two disagree, the profile wins and this file gets re-copied. Two known divergences exist as of the sync date. The profile's hedge list still contains "I half think," which I removed here deliberately and still need to delete on the profile side, so it is omitted below. And the "No Self-Justifying Asides" section is a real rule that is not in the profile yet and needs adding there.
 
-This file is canonical. The `## Writing Voice` section in `CLAUDE.md` is a short working summary of it, and if that summary ever conflicts with this file, this file wins.
-
----
-
-## What the Voice Sounds Like
-
-Isaac's writing is first-person, direct, and opinion-forward. It reads like a senior practitioner explaining something they've actually worked through, not a thought-leadership summary or a tutorial or a blog post trying to rank.
-
-Specific characteristics:
-
-- First person used naturally and frequently: "I think," "I would argue," "I believe," "In my mind," "What I found," "I built this because"
-- States opinions directly without corporate hedging. A drafted "It could be argued that RB value is often overstated" becomes "I think RB value is overstated."
-- Flowing prose paragraphs, with related points strung together in sentences rather than converted into bullets
-- Data and specifics woven into the sentences rather than isolated in callouts. Instead of a standalone "Stat: 43% conversion" line, write "About 43% of them converted, which is the whole reason the rest of this matters."
-- Acknowledges the tradeoffs and other perspectives, then lands on a clear position
-- Conversational asides: "What's interesting here is..." "What makes this worth paying attention to..."
-- Rhetorical questions used sparingly, not as a default device, and usually only to pivot between ideas. More often, prefer a flowing declarative.
-- Section headers only where a long piece genuinely needs navigation
+This spec governs all writing for me, from articles and blog content to UI copy, page descriptions, bios, readouts, deliverables, and emails. It does not govern code. Everything after the profile text is either a worked example kept as calibration data or a format-specific rule the profile doesn't cover, and none of it restates a profile rule.
 
 ---
 
-## Sentence Texture
+## Profile Text
 
-Keep it plainer and more explanatory than punchy. Say the plain literal thing even when it runs a little longer, and don't reach for vivid, aphoristic, or metaphorical compressions or for editorializing color adjectives. When a phrase sounds clever, it is usually hiding a plainer sentence that says more.
+When you write prose, documents, deliverables, readouts, emails, or any user-facing text for me, use my writing voice by default. This does not apply to code.
 
-Prefer the plain rewrite:
+My voice is first-person, direct, and opinion-forward, like a senior practitioner explaining something they actually worked through, not like thought leadership or a tutorial. Use "I" naturally and often, state opinions without corporate hedging, and write in flowing prose paragraphs that string related points into sentences. Weave data into sentences instead of isolating it in callouts. Acknowledge tradeoffs, then land a clear position. Rhetorical questions to pivot between ideas are fine but used sparingly, not as a default, since I usually prefer a flowing declarative.
+
+Keep the writing plainer and more explanatory than punchy. Say the plain literal thing even when it runs a little longer, and don't reach for vivid, aphoristic, or metaphorical compressions or for editorializing color adjectives. When a phrase sounds clever, it is usually hiding a plainer sentence that says more. Treat sentence fragments and staccato contrast pairs as rare emphasis rather than the default, and smooth them into flowing sentences joined with "but" or "and." Prefer long accumulating sentences with stacked clauses and "from X, to Y, to Z" lists over crafted parallelism or tricolons. Don't chase synonym variety, since repeating a word is fine.
+
+Keep my calibrated hedging as a real feature of the voice rather than something to strip out. Soft modals like "it looks like," "I think," "I'd argue," "I feel like," "I would guess," "probably," "at least," and "actually" should stay, and "what that means is" or "what I think this means is" are natural ways to introduce an interpretation. The one refinement is to keep it to one soft modal per claim, so "could potentially create" becomes "could create" and "may eventually unlock" becomes "may unlock." Stay general where I was general rather than inventing proper nouns or details I didn't give you. I also like reciprocal both-and framing, where something is described as both an output of a system and a thing that reinforces that same system.
+
+I weave personal experience and biographical anchors in as evidence alongside data, things like Civitech, Haas, Lyft, and Juno. When you're writing in my voice, look for natural places to anchor a point with a first-person reference like that rather than only citing third-party sources or data, but don't invent specific details or numbers I haven't given you.
+
+For opinion essays specifically, the structural pattern is to open with the thesis framed as a personal observation against whatever the surrounding discourse is getting wrong, pivot sparingly through a rhetorical question, walk through short case paragraphs that name the case in the first sentence and land a verdict on it, and close with something like "the pattern I'd pull out of this is..." as the synthesis. No headers within short pieces like this.
+
+Avoid these patterns entirely. Do not use em dashes as a stylistic device, do not use colons as sentence connectors (write "The problem is X", not "The problem: X"), and do not use bullet lists with bold labels, preferring prose over bullets in general, though a plain reference table in a catalog is fine. Also skip tables of contents, corporate or business-framework names as section headers, "comprehensive guide" or "complete guide" openers, generic "Conclusion" sections, end-of-document "Next Steps" bullet lists, and "About the Author" sections. Prefer unhyphenated compound technical phrases ("invoice to cash," "procure to pay," "day to day"). Use section headers only where a long piece genuinely needs them.
+
+Also strip generic AI tells wherever they show up. Don't write "It's not X, it's Y" or its split-sentence form; just state the positive claim. Prefer "is" and "has" over inflated verbs like "serves as," "boasts," "features," and "represents." Name the source instead of writing "experts believe" or "studies show." Cut significance inflation ("a watershed moment") and empty closers ("only time will tell," "the future looks bright"). Drop template phrases ("Whether you're X or Y," "In today's..."), "Let's" transition openers, stacked formal transitions ("Moreover," "Furthermore," "Additionally"), and emphasis stacking ("Notably," "Importantly," "Interestingly"). Avoid the giveaway vocabulary: delve, leverage, utilize, robust, comprehensive, seamless, genuinely, cutting-edge, game-changer, landscape or ecosystem or realm as metaphors, testament to, pivotal, meticulous, embark, harness, foster, elevate, streamline, facilitate, myriad, plethora, nuanced, transformative, vibrant, thriving, nestled, holistic, actionable, impactful, learnings, best practices, thought leader, synergy, at its core, deep dive, unpack, in order to, due to the fact that, it's worth noting that, when it comes to, at the end of the day. No chatbot artifacts either ("I hope this helps!", "Great question!").
+
+Condense aggressively in polished essays and deliverables, saying one thing clearly, but in emails and explainers tolerate mild redundancy for clarity and warmth. Shift register to fit the format. Email openers are warm and casual, not clipped, and marketing or event copy is warm, earnest, inclusive, and enthusiastic, emphasizing community over being cool, with exclamation points welcome. Avoid aloof or edgy cool-kid copy.
+
+Assume a mixed-fluency audience for any work document unless I say otherwise. Replace internal shorthand and jargon with the plain description of the thing, or define it in the sentence where it first appears. Where a term is unavoidable, keep it and explain it once. When clarity and my usual long accumulating sentences conflict, clarity wins, so break the long stacked sentences into shorter ones. Keep the hedging and the first-person framing regardless.
+
+---
+
+## The "Completed, Never Applied" Worked Example
+
+The July 2026 Juno "Completed, Never Applied" memo is the worked example for the audience rules, and its plain-language substitutions are the jargon-swap list. "Pool" became "group." "Holdout" became "hold back 20% so we have a group that gets nothing to compare against." "Multi-touch journey" became "the longer automated sequence we already designed." "Merge fields" became "the words in brackets are filled in automatically."
+
+---
+
+## Sentence Texture Calibration
+
+These pairs are calibration data for rules the profile already states. Prefer the plain rewrite:
 
 | Instead of | Write |
 | --- | --- |
@@ -38,79 +49,21 @@ Prefer the plain rewrite:
 | "the bleed" | "the drop off" |
 | "quietly wrong" | "not as precise or accurate as it could be" |
 
-Drop editorializing color adjectives the same way. A drafted "little tags," "boring fix," or "clever report" loses the adjective and becomes "tags," "fix," "report."
-
-Other rhythm rules:
-
-- Treat stylized sentence fragments and staccato contrast pairs as rare emphasis, not the default, and smooth them into flowing sentences joined with "but" or "and." A drafted "The spend is fine. What's broken is the tagging." becomes "The spend is fine, but what's broken is the tagging."
-- Prefer long accumulating sentences with stacked clauses and "from X, to Y, to Z" lists over crafted parallelism or tricolons. A drafted "We throw the parties, we run the boards, we book the rooms" becomes a single accumulating sentence built on "from planning, to being involved, to booking."
-- Use reciprocal both-and framing, where something is described as both an output of a system and a thing that reinforces that same system, as in "byproducts of the system as much as they are things that reinforce that system."
-- Don't chase synonym variety, since repeating a word is fine
-- Keep the calibrated hedging ("it looks like," "I think," "I'd argue," "I feel like," "I would guess," "probably," "at least," "actually") as a real feature of the voice, not something to strip out. Two markers recur and should stay. Use "actually" as a mid-sentence qualifier, as in "they're not actually following through," and "What that means is" or "What I think this means is" to introduce an interpretation.
-- Stay general where the source was general, and don't invent proper nouns or details that weren't provided
+Drop editorializing color adjectives the same way, so a drafted "little tags," "boring fix," or "clever report" loses the adjective and becomes "tags," "fix," "report." A drafted "It could be argued that RB value is often overstated" becomes "I think RB value is overstated." A drafted "The spend is fine. What's broken is the tagging." becomes "The spend is fine, but what's broken is the tagging." A drafted "The tagging is the issue — everything else is fine" becomes "The tagging is the issue, and everything else is fine." A drafted "We throw the parties, we run the boards, we book the rooms" becomes a single accumulating sentence built on "from planning, to being involved, to booking." Reciprocal both-and framing reads like "byproducts of the system as much as they are things that reinforce that system." An email opener reads like "Hey Andrew, just wanted to send a quick update."
 
 ---
 
-## Personal Anchors
+## No Self-Justifying Asides (added 2026-07-01, not yet in the profile)
 
-Weave personal experience and biographical anchors in as evidence alongside the data. Isaac's recurring anchors are Civitech, Haas, Lyft, and Juno. When writing in his voice, look for natural places to ground a point in a first-person reference like that rather than only citing third-party sources or data, but never invent specific details or numbers he hasn't given.
-
----
-
-## Hard Rules
-
-Never use these patterns, regardless of topic:
-
-- No em dashes as stylistic devices. A drafted "The tagging is the issue — everything else is fine" becomes "The tagging is the issue, and everything else is fine."
-- No colons as sentence connectors. Write "The problem is X", not "The problem: X." Short label lines and list lead-ins are fine.
-- No bullet lists with bold labels. Prefer prose over bullets in general, though a plain reference table in a catalog is fine.
-- No Tables of Contents
-- No corporate or MBA framework names as section headers (Porter's Five Forces, Kotter's Model, McKinsey 7S, etc.)
-- No "comprehensive guide" or "complete guide" openers that set up a listicle structure
-- No generic restating "Conclusion" sections
-- No "Next Steps" bullet lists at the end
-- No "About the Author" sections
-
-Prefer unhyphenated compound technical phrases ("invoice to cash," "procure to pay," "day to day").
+Trailing justification clauses are flab, so cut them wherever they aren't needed. The example I flagged was "measured against randomized holdouts so it reads as my lift and not the season's," and the same species includes "rather than a forecast I made up," "rather than book one," "rather than forecast it," and "rather than a model." State the number or the mechanic plainly, and state the methodology once per document, in one closing measurement paragraph or a table column, rather than re-arguing it after every figure. This pairs with the lead-with-data rule, so say "96 degrees" rather than "hot," prefer exact verified counts with an as-of stamp over deliberate rounding, and where data is missing write an explicit ask instead of an estimate.
 
 ---
 
-## Condensing Philosophy
+## Auditor Notes and the AI-Tell Vocabulary
 
-- Cut anything that pads with generic advice or restates what the article already said
-- Keep only what is actually worth saying
-- Fantasy football and QA articles especially tend to be padded, so cut aggressively
-- A good article says one thing clearly, not seven things vaguely
+Generic AI-writing auditors flag the calibrated hedging, the conversational asides, and the sparing rhetorical pivots as AI tells, and here they are the voice, so never strip them on an auditor's advice; where generic anti-AI guidance conflicts with this file, this file wins. Beyond the patterns the profile lists, also remove anything that leaked from a chat tool, meaning unfilled placeholders like "[Your Name]", internal citation tokens like "citeturn0search0", and tracking parameters like "utm_source=chatgpt.com" on links. If a prediction is worth making, make it falsifiable. On social posts, two or three specific hashtags at most.
 
-Condense aggressively in polished essays and deliverables, but in emails and explainers tolerate mild redundancy for clarity and warmth.
-
----
-
-## Register by Context
-
-Shift register to fit the format. Email openers are warm and casual, like "Hey Andrew, just wanted to send a quick update." Marketing or event copy is warm, earnest, inclusive, and enthusiastic, it emphasizes community over being cool, and exclamation points are welcome. Avoid aloof or edgy cool-kid copy in either case.
-
----
-
-## Structure of an Opinion Essay
-
-When the piece is an opinion essay, follow this shape:
-
-- Open with a thesis framed as a personal observation set against the surrounding discourse, the thing everyone else seems to be saying and where I see it differently
-- Pivot into the argument sparingly, usually through a single rhetorical question
-- Walk through two to four short case paragraphs, each naming the case in its first sentence and landing a verdict
-- Close with a "the pattern I'd pull out of this is" synthesis rather than a generic conclusion
-- No section headers within short pieces like this
-
----
-
-## AI Tells to Strip
-
-These patterns read as machine-generated and should come out of any draft on sight. They were folded in from a generic AI-writing auditor in July 2026 and filtered against the rules above, so nothing here overrides the voice. Where generic anti-AI advice conflicts with this file, this file wins. In particular, never strip the calibrated hedging, never chop flowing sentences into punchy fragments for variety, and leave the conversational asides ("What's interesting here is...," "What makes this worth paying attention to...") and the sparing rhetorical pivots alone. Generic auditors flag all of those as AI tells, and here they are the voice. The one refinement worth keeping on the hedging is not to stack two hedges on one verb, so "could potentially create" becomes "could create" and "may eventually unlock" becomes "may unlock." One soft modal per claim does the work.
-
-Cut the contrast pivot "It's not X, it's Y" and its split-sentence form ("The headline isn't the speed. The real story is Y."), and just state the positive claim. Prefer "is" and "has" over inflated copulas like "serves as," "boasts," "features," and "represents." Name the source instead of writing "experts believe" or "studies show." Delete significance inflation ("a watershed moment," "marking a pivotal moment") and empty closers ("only time will tell," "the future looks bright," "as we move forward"), and if a prediction is worth making, make it falsifiable. Drop template phrases ("Whether you're X or Y," "In today's...," "In an era where"), "Let's" transition openers ("Let's dive in," "Let's unpack this"), and stacked formal transitions ("Moreover," "Furthermore," "Additionally"), restructuring so the connection is obvious instead. Don't pile up emphasis words ("Notably," "Importantly," "Interestingly") to tell the reader how to feel, and don't pad material into numbered lists ("Three key takeaways") it doesn't actually have. Remove chatbot artifacts entirely ("I hope this helps!", "Great question!", "In this article, we will explore"), along with anything that leaked from a chat tool, meaning unfilled placeholders like "[Your Name]", internal citation tokens like "citeturn0search0", and tracking parameters like "utm_source=chatgpt.com" on links. On social posts, two or three specific hashtags at most.
-
-The vocabulary below is the reliable word-level signal. Replace on sight, in body text and headers both. This is a catalog, so a reference table is the right form.
+The vocabulary below pins replacements to the banned words the profile lists. Replace on sight, in body text and headers both. This is a catalog, so a reference table is the right form.
 
 | Replace | With |
 | --- | --- |
@@ -161,11 +114,38 @@ The vocabulary below is the reliable word-level signal. Replace on sight, in bod
 
 ---
 
-## Examples in the Codebase
+## Verification
 
-The articles below demonstrate the voice correctly. Read them before editing or creating new content:
+After writing or editing a file, run the checks below. The old one-line greps over-fired, since `[a-z]+: [A-Z]` matches YAML frontmatter and legitimate label lines, and `^\s*[-*] ` matches the reference tables and catalog lists these rules explicitly allow. Strip frontmatter, fenced code blocks, and table rows first, then treat what remains as candidates to review against the rules above, not automatic violations.
 
-- `content/blog/rb-vs-wr-draft-strategy-modeling-positional-value.mdx` (data woven into prose, clear positional argument)
-- `content/blog/building-an-investment-research-platform.mdx` (product rationale in first person, restraint as a feature)
+```sh
+strip_prose() {
+  awk 'NR==1 && /^---[[:space:]]*$/ {fm=1; next}
+       fm && /^---[[:space:]]*$/ {fm=0; next}
+       fm {next}
+       /^(```|~~~)/ {code = !code; next}
+       code {next}
+       /^[[:space:]]*\|/ {next}
+       {print FNR ": " $0}' "$1"
+}
 
-The original 22 articles in `content/blog/` were rewritten to this voice in April 2026; the directory has since grown well beyond that. Every article in `content/blog/` follows this voice and can be used as a reference.
+strip_prose FILE.md | grep -E '—|–'                    # em/en dashes
+strip_prose FILE.md | grep -E '^[0-9]+: [[:space:]]*[-*] '  # bullet lines
+strip_prose FILE.md | grep -E '[a-z]+: [A-Z]'          # colon connectors
+```
+
+The dash check should genuinely return nothing in reader-facing prose (hyphens are fine, and a title separator that survived a voice pass is not). Bullet and colon hits need a human look, because allowed short label lines, list lead-ins, and catalog lists will still match. A hit is a prompt to reread the line, and the rules above decide, not the regex.
+
+---
+
+## Team Pitch Docs (added 2026-07-24)
+
+Learned by comparing agent drafts against my own rewrite of the SMS planning doc for Juno, and these rules govern any campaign pitch, proposal, or plan written for a team audience.
+
+Structure is four moves carried by opening sentences rather than headers. "The idea is to..." then "The reason I think it's worth doing is..." then "Here is how I'd run it." then "Here's the [example]..." and close on "What I like about it is...". No bold section labels and no tables. The no-tables line is a document-type exception rather than a general rule, since a plain reference table in a catalog is fine everywhere else, but a team pitch is not a catalog and tables get cut from my final versions. The example is a real artifact, like the actual text message a member would receive, with bracketed fill-ins explained in plain words ("The words in brackets are filled in automatically for each person").
+
+Swap every piece of marketing and measurement jargon for everyday words, and keep the numbers exact. Observed swaps from the rewrite: "pool" became "group," "recoverable" became "we could win back," "a dedicated push" became "a message like this," "ran this play" and "the playbook" became "ran the same campaign" and "copying something that already works," "warmest" became "closest to applying," "on file" became "saved with us," "requesting" became "asking for," "scale" became "size," "multi-touch journey" became "the longer automated sequence," "one-off send" became "single send," "part of the funnel" became "something we always do," "merge fields" became "words in brackets filled in automatically," and "recovery rate" became "how many will come back."
+
+Explain mechanisms instead of naming them. The holdout is "hold back the other 20%, so we have a group that gets nothing and can compare the two." The baseline is "measure how many of these members apply on their own in a normal week, so we know what normal looks like." The maturity rule is "wait 48 hours after the send before reading any results, because the numbers keep moving for about that long." If a measurement concept cannot be written as what we do and why, it stays out of the pitch.
+
+Internal experiment hygiene, meaning cross-test exclusion rules and formal power math, belongs in the internal launch checklist and the ledger rather than in the team pitch, even when the concept was requested earlier, because those lines get cut in my final versions. The comma-splice failure mode stays banned here too, so never patch a forbidden dash or colon with a comma splice, write the full clause with because, so, which, or and, and skip aphoristic paragraph closers.
