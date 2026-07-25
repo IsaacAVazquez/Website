@@ -125,19 +125,41 @@ export const emailDigestRateLimiter = new RateLimiter({
  * entry is client-supplied and spoofable, so it is intentionally the last
  * resort. Returns "unknown" when nothing is available (a single shared bucket).
  */
-export function getClientIp(request: NextRequest): string {
-  const netlifyIp = request.headers.get("x-nf-client-connection-ip");
+function resolveClientIp(
+  getHeader: (name: string) => string | null | undefined
+): string {
+  const netlifyIp = getHeader("x-nf-client-connection-ip");
   if (netlifyIp) {
     return netlifyIp.trim();
   }
 
-  const realIp = request.headers.get("x-real-ip");
+  const realIp = getHeader("x-real-ip");
   if (realIp) {
     return realIp.trim();
   }
 
-  const forwarded = request.headers.get("x-forwarded-for");
+  const forwarded = getHeader("x-forwarded-for");
   return forwarded?.split(",")[0]?.trim() || "unknown";
+}
+
+export function getClientIp(request: NextRequest): string {
+  return resolveClientIp((name) => request.headers.get(name));
+}
+
+/**
+ * Resolve the client IP from a plain headers object (lowercased keys), for
+ * contexts that do not have a NextRequest — notably NextAuth's `authorize`
+ * callback, whose `req.headers` is a plain object rather than a Headers
+ * instance. Same header precedence as getClientIp; returns "unknown" (a single
+ * shared bucket) when nothing is available.
+ */
+export function getClientIpFromHeaders(
+  headers: Record<string, string | string[] | undefined> | undefined
+): string {
+  return resolveClientIp((name) => {
+    const value = headers?.[name];
+    return Array.isArray(value) ? value[0] : value;
+  });
 }
 
 // Helper function to get client identifier.

