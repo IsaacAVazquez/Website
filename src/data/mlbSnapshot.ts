@@ -2315,7 +2315,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 16,
         "runsAgainst": 20
       },
-      "generatedAt": "2026-07-26T02:53:19.508Z"
+      "generatedAt": "2026-07-26T06:38:07.339Z"
     },
     "109": {
       "team": {
@@ -2607,7 +2607,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 37,
         "runsAgainst": 23
       },
-      "generatedAt": "2026-07-26T02:53:19.508Z"
+      "generatedAt": "2026-07-26T06:38:07.339Z"
     },
     "110": {
       "team": {
@@ -2898,7 +2898,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 17,
         "runsAgainst": 16
       },
-      "generatedAt": "2026-07-26T02:53:19.508Z"
+      "generatedAt": "2026-07-26T06:38:07.339Z"
     },
     "111": {
       "team": {
@@ -3189,7 +3189,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 13,
         "runsAgainst": 18
       },
-      "generatedAt": "2026-07-26T02:53:19.508Z"
+      "generatedAt": "2026-07-26T06:38:07.339Z"
     },
     "112": {
       "team": {
@@ -3481,7 +3481,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 32,
         "runsAgainst": 17
       },
-      "generatedAt": "2026-07-26T02:53:19.508Z"
+      "generatedAt": "2026-07-26T06:38:07.339Z"
     },
     "113": {
       "team": {
@@ -3773,7 +3773,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 13,
         "runsAgainst": 22
       },
-      "generatedAt": "2026-07-26T02:53:19.508Z"
+      "generatedAt": "2026-07-26T06:38:07.339Z"
     },
     "114": {
       "team": {
@@ -4065,7 +4065,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 15,
         "runsAgainst": 29
       },
-      "generatedAt": "2026-07-26T02:53:19.508Z"
+      "generatedAt": "2026-07-26T06:38:07.339Z"
     },
     "115": {
       "team": {
@@ -4357,7 +4357,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 21,
         "runsAgainst": 32
       },
-      "generatedAt": "2026-07-26T02:53:19.508Z"
+      "generatedAt": "2026-07-26T06:38:07.339Z"
     },
     "116": {
       "team": {
@@ -4649,7 +4649,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 15,
         "runsAgainst": 19
       },
-      "generatedAt": "2026-07-26T02:53:19.508Z"
+      "generatedAt": "2026-07-26T06:38:07.339Z"
     },
     "117": {
       "team": {
@@ -4941,7 +4941,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 31,
         "runsAgainst": 16
       },
-      "generatedAt": "2026-07-26T02:53:19.508Z"
+      "generatedAt": "2026-07-26T06:38:07.339Z"
     },
     "118": {
       "team": {
@@ -5233,7 +5233,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 15,
         "runsAgainst": 14
       },
-      "generatedAt": "2026-07-26T02:53:19.508Z"
+      "generatedAt": "2026-07-26T06:38:07.339Z"
     },
     "119": {
       "team": {
@@ -5525,7 +5525,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 26,
         "runsAgainst": 21
       },
-      "generatedAt": "2026-07-26T02:53:19.508Z"
+      "generatedAt": "2026-07-26T06:38:07.339Z"
     },
     "120": {
       "team": {
@@ -5817,7 +5817,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 29,
         "runsAgainst": 17
       },
-      "generatedAt": "2026-07-26T02:53:19.508Z"
+      "generatedAt": "2026-07-26T06:38:07.339Z"
     },
     "121": {
       "team": {
@@ -6109,7 +6109,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 15,
         "runsAgainst": 20
       },
-      "generatedAt": "2026-07-26T02:53:19.508Z"
+      "generatedAt": "2026-07-26T06:38:07.339Z"
     },
     "133": {
       "team": {
@@ -6401,7 +6401,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 17,
         "runsAgainst": 25
       },
-      "generatedAt": "2026-07-26T02:53:19.508Z"
+      "generatedAt": "2026-07-26T06:38:07.339Z"
     },
     "134": {
       "team": {
@@ -6692,7 +6692,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 7,
         "runsAgainst": 19
       },
-      "generatedAt": "2026-07-26T02:53:19.508Z"
+      "generatedAt": "2026-07-26T06:38:07.339Z"
     },
     "135": {
       "team": {
@@ -6984,7 +6984,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 30,
         "runsAgainst": 20
       },
-      "generatedAt": "2026-07-26T02:53:19.508Z"
+      "generatedAt": "2026-07-26T06:38:07.339Z"
     },
     "136": {
       "team": {
@@ -7276,7 +7276,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 18,
         "runsAgainst": 21
       },
-      "generatedAt": "2026-07-26T02:53:19.508Z"
+      "generatedAt": "2026-07-26T06:38:07.339Z"
     },
     "137": {
       "team": {
@@ -7568,7 +7568,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 25,
         "runsAgainst": 20
       },
-      "generatedAt": "2026-07-26T02:53:19.508Z"
+      "generatedAt": "2026-07-26T06:38:07.339Z"
     },
     "138": {
       "team": {
@@ -7860,7 +7860,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 17,
         "runsAgainst": 19
       },
-      "generatedAt": "2026-07-26T02:53:19.508Z"
+      "generatedAt": "2026-07-26T06:38:07.339Z"
     },
     "139": {
       "team": {
@@ -8152,7 +8152,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 31,
         "runsAgainst": 10
       },
-      "generatedAt": "2026-07-26T02:53:19.508Z"
+      "generatedAt": "2026-07-26T06:38:07.339Z"
     },
     "140": {
       "team": {
@@ -8444,7 +8444,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 27,
         "runsAgainst": 19
       },
-      "generatedAt": "2026-07-26T02:53:19.508Z"
+      "generatedAt": "2026-07-26T06:38:07.339Z"
     },
     "141": {
       "team": {
@@ -8736,7 +8736,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 17,
         "runsAgainst": 23
       },
-      "generatedAt": "2026-07-26T02:53:19.508Z"
+      "generatedAt": "2026-07-26T06:38:07.339Z"
     },
     "142": {
       "team": {
@@ -9028,7 +9028,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 17,
         "runsAgainst": 14
       },
-      "generatedAt": "2026-07-26T02:53:19.508Z"
+      "generatedAt": "2026-07-26T06:38:07.339Z"
     },
     "143": {
       "team": {
@@ -9320,7 +9320,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 17,
         "runsAgainst": 22
       },
-      "generatedAt": "2026-07-26T02:53:19.508Z"
+      "generatedAt": "2026-07-26T06:38:07.339Z"
     },
     "144": {
       "team": {
@@ -9612,7 +9612,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 25,
         "runsAgainst": 28
       },
-      "generatedAt": "2026-07-26T02:53:19.508Z"
+      "generatedAt": "2026-07-26T06:38:07.339Z"
     },
     "145": {
       "team": {
@@ -9904,7 +9904,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 20,
         "runsAgainst": 28
       },
-      "generatedAt": "2026-07-26T02:53:19.508Z"
+      "generatedAt": "2026-07-26T06:38:07.339Z"
     },
     "146": {
       "team": {
@@ -10196,7 +10196,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 14,
         "runsAgainst": 29
       },
-      "generatedAt": "2026-07-26T02:53:19.508Z"
+      "generatedAt": "2026-07-26T06:38:07.339Z"
     },
     "147": {
       "team": {
@@ -10487,7 +10487,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 9,
         "runsAgainst": 6
       },
-      "generatedAt": "2026-07-26T02:53:19.508Z"
+      "generatedAt": "2026-07-26T06:38:07.339Z"
     },
     "158": {
       "team": {
@@ -10779,7 +10779,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "runsFor": 22,
         "runsAgainst": 20
       },
-      "generatedAt": "2026-07-26T02:53:19.508Z"
+      "generatedAt": "2026-07-26T06:38:07.339Z"
     }
   }
 };
