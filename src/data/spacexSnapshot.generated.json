@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-28T11:32:36.737Z",
+  "generatedAt": "2026-07-29T11:38:01.296Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -9,9 +9,9 @@
       "upcoming": true,
       "success": null,
       "details": "Classified payload for the US National Reconnaissance Office.",
-      "dateUtc": "2026-07-30T07:09:00Z",
-      "dateUnix": 1785395340,
-      "dateLocal": "2026-07-30T07:09:00Z",
+      "dateUtc": "2026-07-30T07:09:01Z",
+      "dateUnix": 1785395341,
+      "dateLocal": "2026-07-30T07:09:01Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -19,7 +19,7 @@
       "launchpadName": "Space Launch Complex 40",
       "launchpadLocation": "Cape Canaveral SFS, FL, USA",
       "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "vehicleImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_at_slc_image_20260729112529.jpeg",
       "crewCount": 0,
       "payloadCount": 1,
       "capsuleCount": 0,
@@ -38,7 +38,7 @@
         "patchSmall": null,
         "patchLarge": null,
         "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
+          "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_at_slc_image_20260729112529.jpeg"
         ]
       }
     },
@@ -49,9 +49,9 @@
       "upcoming": true,
       "success": null,
       "details": "Classified payload for the US National Reconnaissance Office.",
-      "dateUtc": "2026-07-30T07:09:00Z",
-      "dateUnix": 1785395340,
-      "dateLocal": "2026-07-30T07:09:00Z",
+      "dateUtc": "2026-07-30T07:09:01Z",
+      "dateUnix": 1785395341,
+      "dateLocal": "2026-07-30T07:09:01Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -59,7 +59,7 @@
       "launchpadName": "Space Launch Complex 40",
       "launchpadLocation": "Cape Canaveral SFS, FL, USA",
       "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "vehicleImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_at_slc_image_20260729112529.jpeg",
       "crewCount": 0,
       "payloadCount": 1,
       "capsuleCount": 0,
@@ -78,7 +78,7 @@
         "patchSmall": null,
         "patchLarge": null,
         "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
+          "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_at_slc_image_20260729112529.jpeg"
         ]
       }
     },
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-07-28T11:32:31.157Z"
+    "generatedAt": "2026-07-29T11:37:56.715Z"
   },
   "upcomingLaunches": [
     {
@@ -160,9 +160,9 @@
       "upcoming": true,
       "success": null,
       "details": "Classified payload for the US National Reconnaissance Office.",
-      "dateUtc": "2026-07-30T07:09:00Z",
-      "dateUnix": 1785395340,
-      "dateLocal": "2026-07-30T07:09:00Z",
+      "dateUtc": "2026-07-30T07:09:01Z",
+      "dateUnix": 1785395341,
+      "dateLocal": "2026-07-30T07:09:01Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -170,7 +170,7 @@
       "launchpadName": "Space Launch Complex 40",
       "launchpadLocation": "Cape Canaveral SFS, FL, USA",
       "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "vehicleImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_at_slc_image_20260729112529.jpeg",
       "crewCount": 0,
       "payloadCount": 1,
       "capsuleCount": 0,
@@ -189,7 +189,7 @@
         "patchSmall": null,
         "patchLarge": null,
         "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
+          "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_at_slc_image_20260729112529.jpeg"
         ]
       }
     },
@@ -274,9 +274,49 @@
       }
     },
     {
+      "id": "56a85c82-ea71-449b-828c-b583f6f4a18b",
+      "name": "BlueBird Block 2 #6-8",
+      "flightNumber": 713,
+      "upcoming": true,
+      "success": null,
+      "details": "AST SpaceMobile’s Block 2 BlueBird satellites are designed to deliver up to 10 times the bandwidth capacity of the BlueBird Block 1 satellites, required to achieve 24/7 continuous cellular broadband service coverage in the United States, with beams designed to support a capacity of up to 40 MHz, enabling peak data transmission speeds up to 120 Mbps, supporting voice, full data and video applications. The Block 2 BlueBirds, featuring as large as 2400 square foot communications arrays, will be the largest satellites ever commercially deployed in Low Earth orbit once launched.\r\n\r\nThis launch will feature 3 satellites.",
+      "dateUtc": "2026-08-05T07:42:00Z",
+      "dateUnix": 1785915720,
+      "dateLocal": "2026-08-05T07:42:00Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 40",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/fcff0e91470c97ae.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Cape_Canaveral_Air_Force_Station_Space_Launch_Complex_40",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/fcff0e91470c97ae.jpg"
+        ]
+      }
+    },
+    {
       "id": "e4316d4c-9eb8-4a18-9b0d-4307c3970ef6",
       "name": "Starlink Group 17-38",
-      "flightNumber": 713,
+      "flightNumber": 714,
       "upcoming": true,
       "success": null,
       "details": "A batch of 24 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
@@ -316,7 +356,7 @@
     {
       "id": "36ab6924-bb36-416a-b71d-cda9e88004be",
       "name": "Starlink Group 10-19",
-      "flightNumber": 714,
+      "flightNumber": 715,
       "upcoming": true,
       "success": null,
       "details": "A batch of 29 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
@@ -356,7 +396,7 @@
     {
       "id": "6f94dbe4-1318-4ffb-a53d-351bbdcba733",
       "name": "Starlink Group 17-49",
-      "flightNumber": 715,
+      "flightNumber": 716,
       "upcoming": true,
       "success": null,
       "details": "A batch of 24 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
@@ -396,7 +436,7 @@
     {
       "id": "521f3a1c-f977-4306-9b7f-495858719adf",
       "name": "Nancy Grace Roman Space Telescope",
-      "flightNumber": 716,
+      "flightNumber": 717,
       "upcoming": true,
       "success": null,
       "details": "The Nancy Grace Roman Space Telescope is a NASA infrared space telescope with a 2.4 m (7.9 ft) wide field of view primary mirror and two scientific instruments. The Wide-Field Instrument (WFI) is a 300.8-megapixel multi-band visible and near-infrared camera, providing a sharpness of images comparable to that achieved by the Hubble Space Telescope over a 0.28 square degree field of view, 100 times larger than imaging cameras on the Hubble. The Coronagraphic Instrument (CGI) is a high-contrast, small field of view camera and spectrometer covering visible and near-infrared wavelengths using novel starlight-suppression technology. Roman objectives include a search for extra-solar planets using gravitational microlensing, and probing the expansion history of the Universe and the growth of cosmic structure, with the goal of measuring the effects of dark energy, the consistency of general relativity, and the curvature of spacetime.",
@@ -430,46 +470,6 @@
         "patchLarge": null,
         "flickrOriginal": [
           "/data/spacex/images/c62ac3115cf4d061.jpg"
-        ]
-      }
-    },
-    {
-      "id": "56a85c82-ea71-449b-828c-b583f6f4a18b",
-      "name": "BlueBird Block 2 #6-8",
-      "flightNumber": 718,
-      "upcoming": true,
-      "success": null,
-      "details": "AST SpaceMobile’s Block 2 BlueBird satellites are designed to deliver up to 10 times the bandwidth capacity of the BlueBird Block 1 satellites, required to achieve 24/7 continuous cellular broadband service coverage in the United States, with beams designed to support a capacity of up to 40 MHz, enabling peak data transmission speeds up to 120 Mbps, supporting voice, full data and video applications. The Block 2 BlueBirds, featuring as large as 2400 square foot communications arrays, will be the largest satellites ever commercially deployed in Low Earth orbit once launched.\r\n\r\nThis launch will feature 3 satellites.",
-      "dateUtc": "2026-08-31T00:00:00Z",
-      "dateUnix": 1788134400,
-      "dateLocal": "2026-08-31T00:00:00Z",
-      "datePrecision": "month",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 40",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/fcff0e91470c97ae.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Cape_Canaveral_Air_Force_Station_Space_Launch_Complex_40",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/fcff0e91470c97ae.jpg"
         ]
       }
     },
@@ -554,132 +554,12 @@
       }
     },
     {
-      "id": "ad358a4d-c541-409b-9366-9c2f2da4aeb9",
-      "name": "O3b mPower 11-13",
+      "id": "c5783e2b-d458-4b99-9936-4043c236190b",
+      "name": "SDA Tranche 1 Transport Layer F",
       "flightNumber": 726,
       "upcoming": true,
       "success": null,
-      "details": "3 high-throughput communications satellites in Medium Earth Orbit (MEO) built by Boeing and operated by SES.",
-      "dateUtc": "2026-09-30T00:00:00Z",
-      "dateUnix": 1790726400,
-      "dateLocal": "2026-09-30T00:00:00Z",
-      "datePrecision": "month",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Unknown Pad",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/SES_S.A.",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
-      "id": "18441371-8b2e-457c-afb5-1ec1b11ab630",
-      "name": "Crew-13",
-      "flightNumber": 726,
-      "upcoming": true,
-      "success": null,
-      "details": "SpaceX Crew-13 is the thirteenth crewed operational flight of a Crew Dragon spacecraft to the International Space Station as part of NASA's Commercial Crew Program.",
-      "dateUtc": "2026-09-30T00:00:00Z",
-      "dateUnix": 1790726400,
-      "dateLocal": "2026-09-30T00:00:00Z",
-      "datePrecision": "month",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 40",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/b210241b31da2900.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": "https://www.nasa.gov/exploration/commercial/crew/index.html",
-        "wikipedia": "https://en.wikipedia.org/wiki/Commercial_Crew_Program",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/b210241b31da2900.jpg"
-        ]
-      }
-    },
-    {
-      "id": "da43dc2c-00af-4cc1-8ef1-90a60b2eb9e5",
-      "name": "SDA Tranche 1 Transport Layer A",
-      "flightNumber": 726,
-      "upcoming": true,
-      "success": null,
-      "details": "Tranche 1 Transport Layer A is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.\r\n\r\nThis launch carries 21 satellites manufactured by Northrop Grumman.",
-      "dateUtc": "2026-09-30T00:00:00Z",
-      "dateUnix": 1790726400,
-      "dateLocal": "2026-09-30T00:00:00Z",
-      "datePrecision": "quarter",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 21,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
-      "id": "4541ce85-0e38-42ac-a9a0-20474bb5f2cd",
-      "name": "SDA Tranche 1 Transport Layer D",
-      "flightNumber": 726,
-      "upcoming": true,
-      "success": null,
-      "details": "Tranche 1 Transport Layer D is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.",
+      "details": "Tranche 1 Transport Layer F is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.",
       "dateUtc": "2026-09-30T00:00:00Z",
       "dateUnix": 1790726400,
       "dateLocal": "2026-09-30T00:00:00Z",
@@ -754,12 +634,92 @@
       }
     },
     {
-      "id": "c5783e2b-d458-4b99-9936-4043c236190b",
-      "name": "SDA Tranche 1 Transport Layer F",
+      "id": "da43dc2c-00af-4cc1-8ef1-90a60b2eb9e5",
+      "name": "SDA Tranche 1 Transport Layer A",
       "flightNumber": 726,
       "upcoming": true,
       "success": null,
-      "details": "Tranche 1 Transport Layer F is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.",
+      "details": "Tranche 1 Transport Layer A is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.\r\n\r\nThis launch carries 21 satellites manufactured by Northrop Grumman.",
+      "dateUtc": "2026-09-30T00:00:00Z",
+      "dateUnix": 1790726400,
+      "dateLocal": "2026-09-30T00:00:00Z",
+      "datePrecision": "quarter",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 21,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
+      "id": "18441371-8b2e-457c-afb5-1ec1b11ab630",
+      "name": "Crew-13",
+      "flightNumber": 726,
+      "upcoming": true,
+      "success": null,
+      "details": "SpaceX Crew-13 is the thirteenth crewed operational flight of a Crew Dragon spacecraft to the International Space Station as part of NASA's Commercial Crew Program.",
+      "dateUtc": "2026-09-30T00:00:00Z",
+      "dateUnix": 1790726400,
+      "dateLocal": "2026-09-30T00:00:00Z",
+      "datePrecision": "month",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 40",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/b210241b31da2900.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": "https://www.nasa.gov/exploration/commercial/crew/index.html",
+        "wikipedia": "https://en.wikipedia.org/wiki/Commercial_Crew_Program",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/b210241b31da2900.jpg"
+        ]
+      }
+    },
+    {
+      "id": "4541ce85-0e38-42ac-a9a0-20474bb5f2cd",
+      "name": "SDA Tranche 1 Transport Layer D",
+      "flightNumber": 726,
+      "upcoming": true,
+      "success": null,
+      "details": "Tranche 1 Transport Layer D is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.",
       "dateUtc": "2026-09-30T00:00:00Z",
       "dateUnix": 1790726400,
       "dateLocal": "2026-09-30T00:00:00Z",
@@ -781,6 +741,46 @@
         "webcast": null,
         "article": null,
         "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
+      "id": "ad358a4d-c541-409b-9366-9c2f2da4aeb9",
+      "name": "O3b mPower 11-13",
+      "flightNumber": 726,
+      "upcoming": true,
+      "success": null,
+      "details": "3 high-throughput communications satellites in Medium Earth Orbit (MEO) built by Boeing and operated by SES.",
+      "dateUtc": "2026-09-30T00:00:00Z",
+      "dateUnix": 1790726400,
+      "dateLocal": "2026-09-30T00:00:00Z",
+      "datePrecision": "month",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Unknown Pad",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/SES_S.A.",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -914,46 +914,6 @@
       }
     },
     {
-      "id": "dfd444f9-ddda-4b35-8f51-cda7cd801809",
-      "name": "Rivada 1",
-      "flightNumber": 763,
-      "upcoming": true,
-      "success": null,
-      "details": "24 satellites for Rivada's internet constellation.",
-      "dateUtc": "2026-12-31T00:00:00Z",
-      "dateUnix": 1798675200,
-      "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "year",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 24,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Rivada_Networks",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
       "id": "2f31a7f0-968a-448d-b447-333bf0341078",
       "name": "Rivada 4",
       "flightNumber": 763,
@@ -994,23 +954,23 @@
       }
     },
     {
-      "id": "bf2c3027-a314-403e-a416-2bfd5d165ad1",
-      "name": "Dragon CRS-2 SpX-35",
+      "id": "e61d353c-db55-4a57-8184-0fab187231e6",
+      "name": "Globalstar 2-R Mission 2 (x 8)",
       "flightNumber": 763,
       "upcoming": true,
       "success": null,
-      "details": "35th commercial resupply services mission to the International Space Station operated by SpaceX. The flight will be conducted under the second Commercial Resupply Services contract with NASA.\r\n\r\nCargo Dragon 2 brings supplies and payloads, including critical materials to directly support science and research investigations that occur onboard the orbiting laboratory.",
+      "details": "The Globalstar global mobile communications network offers global, digital real time voice, data and fax services via its Low Earth Orbit satellite constellation. The constellation operates in a 1410 km orbit inclined at 52 degrees.\r\n\r\nIn early 2022, Globalstar contracted with MDA for the construction of 17 new 2nd generation refresh satellites to replenish the existing constellation. Rocket Lab is sub-contracted to build the satellites' buses and the launch dispensers.",
       "dateUtc": "2026-12-31T00:00:00Z",
       "dateUnix": 1798675200,
       "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "quarter",
+      "datePrecision": "half",
       "tbd": true,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Unknown Pad",
+      "launchpadName": "Space Launch Complex 40",
       "launchpadLocation": "Cape Canaveral SFS, FL, USA",
       "patchImage": null,
-      "vehicleImage": "/data/spacex/images/5efabdd13dfdeda1.jpg",
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
       "crewCount": 0,
       "payloadCount": 1,
       "capsuleCount": 0,
@@ -1019,8 +979,8 @@
       "isStaleSchedule": false,
       "links": {
         "webcast": null,
-        "article": "https://www.nasa.gov/mission_pages/station/main/index.html",
-        "wikipedia": "https://en.wikipedia.org/wiki/Commercial_Resupply_Services#Commercial_Resupply_Services",
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Globalstar",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -1029,13 +989,13 @@
         "patchSmall": null,
         "patchLarge": null,
         "flickrOriginal": [
-          "/data/spacex/images/5efabdd13dfdeda1.jpg"
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
         ]
       }
     },
     {
-      "id": "ab932c60-d808-4825-ab71-b6fe0a745f15",
-      "name": "Rivada 3",
+      "id": "20fa8dc4-8cab-41cf-b452-98a2620f7e86",
+      "name": "Rivada 2",
       "flightNumber": 763,
       "upcoming": true,
       "success": null,
@@ -1074,8 +1034,48 @@
       }
     },
     {
-      "id": "20fa8dc4-8cab-41cf-b452-98a2620f7e86",
-      "name": "Rivada 2",
+      "id": "d08d8b46-353b-4eee-ab5e-e1385b329008",
+      "name": "Rivada 11",
+      "flightNumber": 763,
+      "upcoming": true,
+      "success": null,
+      "details": "24 satellites for Rivada's internet constellation.",
+      "dateUtc": "2026-12-31T00:00:00Z",
+      "dateUnix": 1798675200,
+      "dateLocal": "2026-12-31T00:00:00Z",
+      "datePrecision": "year",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 24,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Rivada_Networks",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
+      "id": "1fa3741c-3339-4954-a026-2cd9d36161c0",
+      "name": "Rivada 7",
       "flightNumber": 763,
       "upcoming": true,
       "success": null,
@@ -2084,9 +2084,9 @@
       "upcoming": true,
       "success": null,
       "details": "Classified payload for the US National Reconnaissance Office.",
-      "dateUtc": "2026-07-30T07:09:00Z",
-      "dateUnix": 1785395340,
-      "dateLocal": "2026-07-30T07:09:00Z",
+      "dateUtc": "2026-07-30T07:09:01Z",
+      "dateUnix": 1785395341,
+      "dateLocal": "2026-07-30T07:09:01Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -2094,7 +2094,7 @@
       "launchpadName": "Space Launch Complex 40",
       "launchpadLocation": "Cape Canaveral SFS, FL, USA",
       "patchImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/nrol-952520mis_mission_patch_20260723163818.png",
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "vehicleImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_at_slc_image_20260729112529.jpeg",
       "crewCount": 0,
       "payloadCount": 1,
       "capsuleCount": 0,
@@ -2113,7 +2113,7 @@
         "patchSmall": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/nrol-952520mis_mission_patch_20260723163818.png",
         "patchLarge": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/nrol-952520mis_mission_patch_20260723163818.png",
         "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
+          "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_at_slc_image_20260729112529.jpeg"
         ]
       },
       "staticFireDateUtc": null,
@@ -2138,7 +2138,8 @@
         "massKg": 549000,
         "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
         "flickrImages": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
+          "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_at_slc_image_20260729112529.jpeg"
         ]
       },
       "launchpad": {
@@ -2179,7 +2180,7 @@
     "521f3a1c-f977-4306-9b7f-495858719adf": {
       "id": "521f3a1c-f977-4306-9b7f-495858719adf",
       "name": "Nancy Grace Roman Space Telescope",
-      "flightNumber": 716,
+      "flightNumber": 717,
       "upcoming": true,
       "success": null,
       "details": "The Nancy Grace Roman Space Telescope is a NASA infrared space telescope with a 2.4 m (7.9 ft) wide field of view primary mirror and two scientific instruments. The Wide-Field Instrument (WFI) is a 300.8-megapixel multi-band visible and near-infrared camera, providing a sharpness of images comparable to that achieved by the Hubble Space Telescope over a 0.28 square degree field of view, 100 times larger than imaging cameras on the Hubble. The Coronagraphic Instrument (CGI) is a high-contrast, small field of view camera and spectrometer covering visible and near-infrared wavelengths using novel starlight-suppression technology. Roman objectives include a search for extra-solar planets using gravitational microlensing, and probing the expansion history of the Universe and the growth of cosmic structure, with the goal of measuring the effects of dark energy, the consistency of general relativity, and the curvature of spacetime.",
@@ -2831,6 +2832,6 @@
       }
     ],
     "rangeLabel": "Aug 25 – Jul 26",
-    "generatedAt": "2026-07-28T11:32:36.737Z"
+    "generatedAt": "2026-07-29T11:38:01.295Z"
   }
 }
