@@ -13,7 +13,7 @@ export const formula1Snapshot: Formula1Snapshot = {
     "constructorStandings": "https://api.openf1.org/v1/championship_teams?session_key=11342"
   },
   "season": 2026,
-  "generatedAt": "2026-07-29T10:48:27.115Z",
+  "generatedAt": "2026-07-30T03:19:35.871Z",
   "defaultMeetingKey": "1292",
   "standingsMeetingKey": "1291",
   "meetings": [
@@ -5460,6 +5460,66 @@ export const formula1Snapshot: Formula1Snapshot = {
       "resultPublished": false
     },
     {
+      "key": "1308",
+      "name": "Bahrain Grand Prix",
+      "officialName": "FORMULA 1 GULF AIR BAHRAIN GRAND PRIX IN MALAYSIA 2026",
+      "location": "Kuala Lumpur",
+      "countryName": "Bahrain",
+      "countryCode": "BRN",
+      "countryFlag": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/bahrain-flag.png",
+      "circuitKey": "12",
+      "circuitShortName": "Kuala Lumpur",
+      "circuitType": "Permanent",
+      "circuitImage": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Bahrain%20carbon.png",
+      "gmtOffset": "08:00:00",
+      "startAt": "2026-10-02T02:00:00+00:00",
+      "endAt": "2026-10-04T08:00:00+00:00",
+      "status": "upcoming",
+      "hasSprint": false,
+      "raceSessionKey": "11731",
+      "raceStartsAt": "2026-10-04T06:00:00+00:00",
+      "sessions": [
+        {
+          "key": "11727",
+          "name": "Practice 1",
+          "type": "Practice",
+          "startAt": "2026-10-02T02:00:00+00:00",
+          "endAt": "2026-10-02T03:00:00+00:00"
+        },
+        {
+          "key": "11728",
+          "name": "Practice 2",
+          "type": "Practice",
+          "startAt": "2026-10-02T06:00:00+00:00",
+          "endAt": "2026-10-02T07:00:00+00:00"
+        },
+        {
+          "key": "11729",
+          "name": "Practice 3",
+          "type": "Practice",
+          "startAt": "2026-10-03T02:00:00+00:00",
+          "endAt": "2026-10-03T03:00:00+00:00"
+        },
+        {
+          "key": "11730",
+          "name": "Qualifying",
+          "type": "Qualifying",
+          "startAt": "2026-10-03T06:00:00+00:00",
+          "endAt": "2026-10-03T07:00:00+00:00"
+        },
+        {
+          "key": "11731",
+          "name": "Race",
+          "type": "Race",
+          "startAt": "2026-10-04T06:00:00+00:00",
+          "endAt": "2026-10-04T08:00:00+00:00"
+        }
+      ],
+      "classification": [],
+      "podium": [],
+      "resultPublished": false
+    },
+    {
       "key": "1296",
       "name": "Singapore Grand Prix",
       "officialName": "FORMULA 1 SINGAPORE AIRLINES SINGAPORE GRAND PRIX 2026",
@@ -6293,9 +6353,9 @@ export const formula1Snapshot: Formula1Snapshot = {
   ],
   "seasonMetrics": {
     "season": 2026,
-    "totalRaces": 24,
+    "totalRaces": 25,
     "completedRaces": 13,
-    "upcomingRaces": 11,
+    "upcomingRaces": 12,
     "sprintWeekends": 6
   },
   "nextMeeting": {
