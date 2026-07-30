@@ -13,7 +13,7 @@ export const formula1Snapshot: Formula1Snapshot = {
     "constructorStandings": "https://api.openf1.org/v1/championship_teams?session_key=11342"
   },
   "season": 2026,
-  "generatedAt": "2026-07-30T11:18:26.178Z",
+  "generatedAt": "2026-07-30T14:27:19.500Z",
   "defaultMeetingKey": "1292",
   "standingsMeetingKey": "1291",
   "meetings": [
@@ -5472,47 +5472,47 @@ export const formula1Snapshot: Formula1Snapshot = {
       "circuitType": "Permanent",
       "circuitImage": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Bahrain%20carbon.png",
       "gmtOffset": "08:00:00",
-      "startAt": "2026-10-02T02:00:00+00:00",
-      "endAt": "2026-10-04T08:00:00+00:00",
+      "startAt": "2026-10-02T08:30:00+00:00",
+      "endAt": "2026-10-04T14:00:00+00:00",
       "status": "upcoming",
       "hasSprint": false,
       "raceSessionKey": "11731",
-      "raceStartsAt": "2026-10-04T06:00:00+00:00",
+      "raceStartsAt": "2026-10-04T12:00:00+00:00",
       "sessions": [
         {
           "key": "11727",
           "name": "Practice 1",
           "type": "Practice",
-          "startAt": "2026-10-02T02:00:00+00:00",
-          "endAt": "2026-10-02T03:00:00+00:00"
+          "startAt": "2026-10-02T08:30:00+00:00",
+          "endAt": "2026-10-02T09:30:00+00:00"
         },
         {
           "key": "11728",
           "name": "Practice 2",
           "type": "Practice",
-          "startAt": "2026-10-02T06:00:00+00:00",
-          "endAt": "2026-10-02T07:00:00+00:00"
+          "startAt": "2026-10-02T12:30:00+00:00",
+          "endAt": "2026-10-02T13:30:00+00:00"
         },
         {
           "key": "11729",
           "name": "Practice 3",
           "type": "Practice",
-          "startAt": "2026-10-03T02:00:00+00:00",
-          "endAt": "2026-10-03T03:00:00+00:00"
+          "startAt": "2026-10-03T09:00:00+00:00",
+          "endAt": "2026-10-03T10:00:00+00:00"
         },
         {
           "key": "11730",
           "name": "Qualifying",
           "type": "Qualifying",
-          "startAt": "2026-10-03T06:00:00+00:00",
-          "endAt": "2026-10-03T07:00:00+00:00"
+          "startAt": "2026-10-03T13:00:00+00:00",
+          "endAt": "2026-10-03T14:00:00+00:00"
         },
         {
           "key": "11731",
           "name": "Race",
           "type": "Race",
-          "startAt": "2026-10-04T06:00:00+00:00",
-          "endAt": "2026-10-04T08:00:00+00:00"
+          "startAt": "2026-10-04T12:00:00+00:00",
+          "endAt": "2026-10-04T14:00:00+00:00"
         }
       ],
       "classification": [],
