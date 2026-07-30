@@ -38,15 +38,15 @@ export default function ScorePoolsSettingsPage() {
           title: "Score Pools Settings",
           description:
             "Configuration for exact-score pool scoring rules, result basis, leaderboard posture, field model, rivals, and data status.",
-          url: "https://isaacavazquez.com/score-pools/settings",
+          url: "https://isaacvazquez.com/score-pools/settings",
           dateModified: getScorePoolsModifiedDate(
             scorePoolsSnapshot.generatedAt
           ),
           isPartOf: {
             "@type": "SportsApplication",
-            "@id": "https://isaacavazquez.com/score-pools#application",
+            "@id": "https://isaacvazquez.com/score-pools#application",
             name: "Score Pools",
-            url: "https://isaacavazquez.com/score-pools",
+            url: "https://isaacvazquez.com/score-pools",
           },
         }}
       />

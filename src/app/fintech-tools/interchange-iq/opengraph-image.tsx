@@ -15,6 +15,6 @@ export default function Image() {
     description:
       "Compare flat-rate and interchange-plus processor economics with live fee scenarios and breakeven logic.",
     accent: "teal",
-    footer: "isaacavazquez.com/fintech-tools/interchange-iq",
+    footer: "isaacvazquez.com/fintech-tools/interchange-iq",
   });
 }

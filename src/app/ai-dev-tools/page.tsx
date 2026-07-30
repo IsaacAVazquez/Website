@@ -45,7 +45,7 @@ export default async function AiDevToolsPage({ searchParams }: AiDevToolsPagePro
           name: "AI Dev Tool Ecosystem",
           description:
             "Filterable directory of AI coding and agent tools with pricing tiers, model support, GitHub stars, and release cadence.",
-          url: "https://isaacavazquez.com/ai-dev-tools",
+          url: "https://isaacvazquez.com/ai-dev-tools",
           applicationCategory: "DeveloperApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           author: "Isaac Vazquez",

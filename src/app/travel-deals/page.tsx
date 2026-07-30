@@ -31,7 +31,7 @@ export default function TravelDealLabPage() {
           name: "Travel Deal Lab",
           description:
             "Travel cost optimizer: booking-window timing, fare deal-scoring, cash-vs-points valuation, budget split, and a curated deal-finding playbook and toolkit.",
-          url: "https://isaacavazquez.com/travel-deals",
+          url: "https://isaacvazquez.com/travel-deals",
           applicationCategory: "TravelApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           author: "Isaac Vazquez",

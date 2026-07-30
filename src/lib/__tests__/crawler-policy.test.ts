@@ -114,9 +114,9 @@ describe("public crawler policy", () => {
   });
 
   it("publishes the canonical host and sitemap", () => {
-    expect(robots).toContain("Host: isaacavazquez.com");
+    expect(robots).toContain("Host: isaacvazquez.com");
     expect(robots).toContain(
-      "Sitemap: https://isaacavazquez.com/sitemap.xml"
+      "Sitemap: https://isaacvazquez.com/sitemap.xml"
     );
   });
 });

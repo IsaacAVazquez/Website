@@ -273,7 +273,7 @@ function SearchResultCard({ result, query }: SearchResultCardProps) {
           className="text-xs truncate"
           style={{ ...bodyStyle, opacity: 0.75 }}
         >
-          isaacavazquez.com{result.url}
+          isaacvazquez.com{result.url}
         </div>
       </Link>
     </article>

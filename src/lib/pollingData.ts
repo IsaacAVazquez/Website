@@ -101,7 +101,7 @@ function dedupeAndSort(polls: VoteHubPoll[]): VoteHubPoll[] {
 async function fetchPolls(query: URLSearchParams): Promise<VoteHubPoll[]> {
   const response = await fetch(`${API_BASE}?${query}`, {
     signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
-    headers: { Accept: "application/json", "User-Agent": "isaacavazquez.com polling dashboard" },
+    headers: { Accept: "application/json", "User-Agent": "isaacvazquez.com polling dashboard" },
   });
   if (!response.ok) throw new Error(`VoteHub returned HTTP ${response.status}.`);
   const payload = (await response.json()) as VoteHubPoll[] | { polls?: VoteHubPoll[] };

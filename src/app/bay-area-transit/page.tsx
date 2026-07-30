@@ -62,7 +62,7 @@ export default async function BayAreaTransitPage({
           name: "Bay Area Transit Pulse",
           description:
             "BART dashboard for Bay Area lines, frequently refreshed station departures, and service alerts.",
-          url: "https://isaacavazquez.com/bay-area-transit",
+          url: "https://isaacvazquez.com/bay-area-transit",
           applicationCategory: "TravelApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           featureList: [

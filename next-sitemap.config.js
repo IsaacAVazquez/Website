@@ -5,7 +5,7 @@ const {
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.SITE_URL || "https://isaacavazquez.com",
+  siteUrl: process.env.SITE_URL || "https://isaacvazquez.com",
   generateRobotsTxt: false,
   generateIndexSitemap: false,
   sitemapSize: 5000,

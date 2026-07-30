@@ -50,7 +50,7 @@ export default async function TechStartupTrackerPage({
           name: "Tech Startup Tracker",
           description:
             "Curated dashboard of notable tech startups by sector and funding stage, with valuations, total raised, latest rounds, and a momentum score from a checked-in snapshot.",
-          url: "https://isaacavazquez.com/tech-startup-tracker",
+          url: "https://isaacvazquez.com/tech-startup-tracker",
           applicationCategory: "BusinessApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           featureList: [

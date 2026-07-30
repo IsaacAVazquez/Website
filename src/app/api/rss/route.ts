@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { getAllBlogPosts } from "@/lib/blog";
 
 export async function GET() {
-  const baseUrl = (process.env.SITE_URL || "https://isaacavazquez.com").replace(/\/$/, "");
+  const baseUrl = (process.env.SITE_URL || "https://isaacvazquez.com").replace(/\/$/, "");
   const posts = (await getAllBlogPosts()).filter((post) => {
     if (!post.title?.trim()) {
       return false;

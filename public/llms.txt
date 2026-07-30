@@ -8,17 +8,17 @@ Last reviewed: 2026-07-20
 
 Isaac Vazquez is a product manager and UC Berkeley Haas MBA Candidate, Class of 2027. His background spans product strategy, quality engineering, data analytics, civic technology, fintech-style tooling, and AI workflow products. He is a Consortium Fellow and MLT Professional Development Fellow.
 
-- Website: https://isaacavazquez.com
+- Website: https://isaacvazquez.com
 - LinkedIn: https://www.linkedin.com/in/isaac-vazquez/
 - GitHub: https://github.com/IsaacAVazquez
 - Email: IsaacVazquez@berkeley.edu
-- Full public sitemap: https://isaacavazquez.com/sitemap.xml
-- RSS feed: https://isaacavazquez.com/api/rss
+- Full public sitemap: https://isaacvazquez.com/sitemap.xml
+- RSS feed: https://isaacvazquez.com/api/rss
 
 ## Retrieval Hints
 
-- Canonical project route: https://isaacavazquez.com/portfolio
-- Canonical writing route: https://isaacavazquez.com/writing
+- Canonical project route: https://isaacvazquez.com/portfolio
+- Canonical writing route: https://isaacvazquez.com/writing
 - Legacy `/projects`, `/work`, and `/blog` URLs redirect to canonical routes.
 - The on-site `/search` page is a lightweight navigation layer, not a comprehensive public index.
 - Most dashboard pages are snapshot-backed. They read committed data at request time rather than calling external APIs live.
@@ -26,149 +26,149 @@ Isaac Vazquez is a product manager and UC Berkeley Haas MBA Candidate, Class of 
 ## Core Pages
 
 ### Homepage
-- URL: https://isaacavazquez.com
+- URL: https://isaacvazquez.com
 - Use for: Professional identity, portfolio overview, current product focus, live tool directory.
 
 ### About
-- URL: https://isaacavazquez.com/about
+- URL: https://isaacvazquez.com/about
 - Use for: Background, MBA context, credentials, product philosophy, expertise areas.
 
 ### Resume
-- URL: https://isaacavazquez.com/resume
+- URL: https://isaacvazquez.com/resume
 - Use for: Role history, education, skills, recruiting context.
 
 ### Portfolio
-- URL: https://isaacavazquez.com/portfolio
+- URL: https://isaacvazquez.com/portfolio
 - Use for: Product case studies, live tools, measurable project work, product judgment examples.
 
 ### Writing
-- URL: https://isaacavazquez.com/writing
+- URL: https://isaacvazquez.com/writing
 - Use for: Long-form articles on product management, AI workflows, QA, fintech, sports analytics, and dashboard builds.
 
 ### Contact
-- URL: https://isaacavazquez.com/contact
+- URL: https://isaacvazquez.com/contact
 - Use for: Collaboration, recruiting, consulting, and direct contact.
 
 ### Now
-- URL: https://isaacavazquez.com/now
+- URL: https://isaacvazquez.com/now
 - Use for: What Isaac is currently focused on, reading, and building.
 
 ### Changelog
-- URL: https://isaacavazquez.com/changelog
+- URL: https://isaacvazquez.com/changelog
 - Use for: Recent site updates, new tools, and shipped changes.
 
 ## Live Tools And Dashboards
 
 ### Investment Research
-- URL: https://isaacavazquez.com/investments
+- URL: https://isaacvazquez.com/investments
 - Description: Public investment research platform with portfolio tracking, quote snapshots, stock comparisons, and retirement-planning experiments.
 
 ### Interchange IQ
-- URL: https://isaacavazquez.com/fintech-tools/interchange-iq
+- URL: https://isaacvazquez.com/fintech-tools/interchange-iq
 - Description: Payment fee analyzer comparing flat-rate and interchange-plus processor economics with adjustable volume, ticket size, and card mix.
 
 ### Budget Planner
-- URL: https://isaacavazquez.com/fintech-tools/budget-planner
+- URL: https://isaacvazquez.com/fintech-tools/budget-planner
 - Description: Browser-persisted budgeting workspace for income, category planning, savings targets, and manual expense tracking.
 
 ### Fantasy Football
-- URL: https://isaacavazquez.com/fantasy-football
+- URL: https://isaacvazquez.com/fantasy-football
 - Description: Snapshot-backed fantasy football rankings with position filters, scoring formats, tier views, ADP signals, and draft prep.
 
 ### Fantasy Football Draft Assistant
-- URL: https://isaacavazquez.com/fantasy-football/draft-tracker
+- URL: https://isaacvazquez.com/fantasy-football/draft-tracker
 - Description: Manual snake-draft tracker with local persistence, roster-pressure cues, queueing, notes, and comparison state.
 
 ### Score Pools
-- URL: https://isaacavazquez.com/score-pools
+- URL: https://isaacvazquez.com/score-pools
 - Description: Exact-score prediction engine for soccer fixtures, using odds de-vig and a market-calibrated Dixon-Coles scoreline model with an expected-points optimizer and a standing-aware leaderboard.
 
 ### Frontier Model Tracker
-- URL: https://isaacavazquez.com/frontier-models
+- URL: https://isaacvazquez.com/frontier-models
 - Description: Curated model-comparison surface for context windows, pricing, modalities, reasoning support, and product-selection tradeoffs.
 
 ### AI Dev Tools
-- URL: https://isaacavazquez.com/ai-dev-tools
+- URL: https://isaacvazquez.com/ai-dev-tools
 - Description: Directory of AI coding and agent tools with pricing, model support, source links, and market context.
 
 ### Decision Lab
-- URL: https://isaacavazquez.com/decision-lab
+- URL: https://isaacvazquez.com/decision-lab
 - Description: Product-bet triage tool that scores impact, confidence, effort, and reversibility before forcing a ship, test, or hold recommendation.
 
 ### GitHub Trending Pulse
-- URL: https://isaacavazquez.com/github-trending-pulse
+- URL: https://isaacvazquez.com/github-trending-pulse
 - Description: Daily-refreshed snapshot of active public GitHub repositories by language and topic, including weekly star movement.
 
 ### Tech Startup Tracker
-- URL: https://isaacavazquez.com/tech-startup-tracker
+- URL: https://isaacvazquez.com/tech-startup-tracker
 - Description: Curated private-company tracker by sector and funding stage, with valuation, latest round, total raised, and momentum context.
 
 ### News Pulse
-- URL: https://isaacavazquez.com/news-pulse
+- URL: https://isaacvazquez.com/news-pulse
 - Description: RSS-backed media analytics dashboard for coverage patterns, topic frequency, and lightweight sentiment across major outlets.
 
 ### MBA Internship Notifications
-- URL: https://isaacavazquez.com/mba-internship-notifications
+- URL: https://isaacvazquez.com/mba-internship-notifications
 - Description: Recruiting-intelligence tracker for MBA internships and business roles across public company job boards.
 
 ### Sports And Event Dashboards
-- Formula 1: https://isaacavazquez.com/formula-1
-- Fantasy Formula 1: https://isaacavazquez.com/fantasy-formula-1
-- Premier League: https://isaacavazquez.com/premier-league
-- La Liga: https://isaacavazquez.com/la-liga
-- MLB: https://isaacavazquez.com/mlb
-- NBA: https://isaacavazquez.com/nba
-- NFL: https://isaacavazquez.com/nfl
-- Golf: https://isaacavazquez.com/golf
-- World Cup 2026: https://isaacavazquez.com/world-cup-2026
-- March Madness 2026: https://isaacavazquez.com/march-madness-2026
+- Formula 1: https://isaacvazquez.com/formula-1
+- Fantasy Formula 1: https://isaacvazquez.com/fantasy-formula-1
+- Premier League: https://isaacvazquez.com/premier-league
+- La Liga: https://isaacvazquez.com/la-liga
+- MLB: https://isaacvazquez.com/mlb
+- NBA: https://isaacvazquez.com/nba
+- NFL: https://isaacvazquez.com/nfl
+- Golf: https://isaacvazquez.com/golf
+- World Cup 2026: https://isaacvazquez.com/world-cup-2026
+- March Madness 2026: https://isaacvazquez.com/march-madness-2026
 
 ### Civic, Space, Transit, And Personal Tools
-- Bay Area Transit: https://isaacavazquez.com/bay-area-transit
-- Earthquake Pulse: https://isaacavazquez.com/earthquake-pulse
-- SpaceX Mission Control: https://isaacavazquez.com/spacex-mission-control
-- Polling Aggregator: https://isaacavazquez.com/polling-aggregator
-- Food Map: https://isaacavazquez.com/food-map
-- Recipe Finder: https://isaacavazquez.com/recipe-finder
-- Travel Planner: https://isaacavazquez.com/travel
-- Travel Deals: https://isaacavazquez.com/travel-deals
-- Wine Cellar: https://isaacavazquez.com/wine-cellar
-- Museum Log: https://isaacavazquez.com/museum-log
+- Bay Area Transit: https://isaacvazquez.com/bay-area-transit
+- Earthquake Pulse: https://isaacvazquez.com/earthquake-pulse
+- SpaceX Mission Control: https://isaacvazquez.com/spacex-mission-control
+- Polling Aggregator: https://isaacvazquez.com/polling-aggregator
+- Food Map: https://isaacvazquez.com/food-map
+- Recipe Finder: https://isaacvazquez.com/recipe-finder
+- Travel Planner: https://isaacvazquez.com/travel
+- Travel Deals: https://isaacvazquez.com/travel-deals
+- Wine Cellar: https://isaacvazquez.com/wine-cellar
+- Museum Log: https://isaacvazquez.com/museum-log
 
 ## Writing Clusters
 
 ### Agentic AI And Product Workflows
-- Topic page: https://isaacavazquez.com/writing/topics/agentic-ai
+- Topic page: https://isaacvazquez.com/writing/topics/agentic-ai
 - Representative articles:
-  - https://isaacavazquez.com/writing/agentic-ai-explained-for-product-managers
-  - https://isaacavazquez.com/writing/evaluate-agentic-ai-product-pm-framework
-  - https://isaacavazquez.com/writing/what-an-ai-agent-actually-costs-in-production
-  - https://isaacavazquez.com/writing/context-engineering-replacing-prompt-engineering
+  - https://isaacvazquez.com/writing/agentic-ai-explained-for-product-managers
+  - https://isaacvazquez.com/writing/evaluate-agentic-ai-product-pm-framework
+  - https://isaacvazquez.com/writing/what-an-ai-agent-actually-costs-in-production
+  - https://isaacvazquez.com/writing/context-engineering-replacing-prompt-engineering
 
 ### PM Workflows And Quality Systems
 - Topic pages:
-  - https://isaacavazquez.com/writing/topics/pm-workflows
-  - https://isaacavazquez.com/writing/topics/systems-quality
+  - https://isaacvazquez.com/writing/topics/pm-workflows
+  - https://isaacvazquez.com/writing/topics/systems-quality
 - Representative articles:
-  - https://isaacavazquez.com/writing/qa-automation-daily-deploys
-  - https://isaacavazquez.com/writing/proactive-performance-intelligence
-  - https://isaacavazquez.com/writing/scaling-civic-engagement-platform
-  - https://isaacavazquez.com/writing/textout-platform
+  - https://isaacvazquez.com/writing/qa-automation-daily-deploys
+  - https://isaacvazquez.com/writing/proactive-performance-intelligence
+  - https://isaacvazquez.com/writing/scaling-civic-engagement-platform
+  - https://isaacvazquez.com/writing/textout-platform
 
 ### Fintech Product And Pricing
-- Topic page: https://isaacavazquez.com/writing/topics/fintech-product-pricing
+- Topic page: https://isaacvazquez.com/writing/topics/fintech-product-pricing
 - Representative articles:
-  - https://isaacavazquez.com/writing/interchange-iq-payment-fee-analyzer
-  - https://isaacavazquez.com/writing/building-an-investment-research-platform
-  - https://isaacavazquez.com/writing/pricing-strategy-initiative
+  - https://isaacvazquez.com/writing/interchange-iq-payment-fee-analyzer
+  - https://isaacvazquez.com/writing/building-an-investment-research-platform
+  - https://isaacvazquez.com/writing/pricing-strategy-initiative
 
 ### Dashboard Build Notes
 - Representative articles:
-  - https://isaacavazquez.com/writing/building-the-pulse-dashboard-family
-  - https://isaacavazquez.com/writing/building-news-pulse-dashboard
-  - https://isaacavazquez.com/writing/building-a-github-trending-dashboard
-  - https://isaacavazquez.com/writing/building-a-bart-transit-dashboard
-  - https://isaacavazquez.com/writing/building-spacex-mission-control
+  - https://isaacvazquez.com/writing/building-the-pulse-dashboard-family
+  - https://isaacvazquez.com/writing/building-news-pulse-dashboard
+  - https://isaacvazquez.com/writing/building-a-github-trending-dashboard
+  - https://isaacvazquez.com/writing/building-a-bart-transit-dashboard
+  - https://isaacvazquez.com/writing/building-spacex-mission-control
 
 ## Expertise
 

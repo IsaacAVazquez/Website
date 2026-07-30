@@ -3,7 +3,7 @@
 
 # Performance Optimization Report
 **Date:** November 2025
-**Target:** isaacavazquez.com Portfolio Website
+**Target:** isaacvazquez.com Portfolio Website
 **Goal:** Achieve 95+ Lighthouse scores, optimize Core Web Vitals
 
 ---

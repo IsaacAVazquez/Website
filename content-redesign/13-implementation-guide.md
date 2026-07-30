@@ -449,14 +449,14 @@ For each page, add:
 <meta property="og:title" content="[Page Title]" />
 <meta property="og:description" content="[Description]" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://isaacavazquez.com/[page-path]" />
-<meta property="og:image" content="https://isaacavazquez.com/og-image.jpg" />
+<meta property="og:url" content="https://isaacvazquez.com/[page-path]" />
+<meta property="og:image" content="https://isaacvazquez.com/og-image.jpg" />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="[Page Title]" />
 <meta name="twitter:description" content="[Description]" />
-<meta name="twitter:image" content="https://isaacavazquez.com/og-image.jpg" />
+<meta name="twitter:image" content="https://isaacvazquez.com/og-image.jpg" />
 ```
 
 **Create OG Image**:
@@ -534,7 +534,7 @@ Test on:
 #### Step 4.4: Deploy
 
 **Deployment Checklist**:
-- ✓ Domain configured (isaacavazquez.com)
+- ✓ Domain configured (isaacvazquez.com)
 - ✓ SSL certificate installed (HTTPS)
 - ✓ Redirects set up (if migrating from old site)
 - ✓ Sitemap.xml generated

@@ -23,7 +23,7 @@ describe("AI SEO structured-data generators", () => {
     const schema = generateArticleSchema({
       headline: "How to evaluate agentic AI products",
       description: "A PM framework for evaluating agentic AI products.",
-      url: "https://isaacavazquez.com/writing/evaluate-agentic-ai-product-pm-framework",
+      url: "https://isaacvazquez.com/writing/evaluate-agentic-ai-product-pm-framework",
     }) as Record<string, unknown>;
 
     expect(schema.datePublished).toBeUndefined();
@@ -44,13 +44,13 @@ describe("AI SEO structured-data generators", () => {
     const schema = generateProjectSchema({
       name: "TextOut Platform",
       description: "A case study about rebuilding a high-volume messaging platform.",
-      url: "https://isaacavazquez.com/portfolio/textout-platform",
+      url: "https://isaacvazquez.com/portfolio/textout-platform",
       datePublished: "2026-04-04",
       dateModified: "2026-04-04",
     }) as Record<string, unknown>;
 
     expect(schema["@id"]).toBe(
-      "https://isaacavazquez.com/portfolio/textout-platform#project"
+      "https://isaacvazquez.com/portfolio/textout-platform#project"
     );
     expect(schema.dateModified).toBe("2026-04-04");
   });
@@ -58,7 +58,7 @@ describe("AI SEO structured-data generators", () => {
   it("only emits profile freshness when the caller provides a reviewed date", () => {
     const schema = generateProfilePageSchema({
       person: { name: "Isaac Vazquez" },
-      url: "https://isaacavazquez.com/about",
+      url: "https://isaacvazquez.com/about",
     }) as Record<string, unknown>;
 
     expect(schema.dateModified).toBeUndefined();
@@ -67,13 +67,13 @@ describe("AI SEO structured-data generators", () => {
   it("uses one canonical person id even when a caller supplies the homepage URL", () => {
     const schema = generateEnhancedPersonSchema({
       name: "Isaac Vazquez",
-      url: "https://isaacavazquez.com",
+      url: "https://isaacvazquez.com",
     }) as Record<string, unknown>;
 
     expect(schema["@id"]).toBe(
-      "https://isaacavazquez.com/about#person"
+      "https://isaacvazquez.com/about#person"
     );
-    expect(schema.url).toBe("https://isaacavazquez.com/about");
+    expect(schema.url).toBe("https://isaacvazquez.com/about");
   });
 
   it("gives each breadcrumb trail a page-specific id", () => {
@@ -83,7 +83,7 @@ describe("AI SEO structured-data generators", () => {
     ]) as Record<string, unknown>;
 
     expect(schema["@id"]).toBe(
-      "https://isaacavazquez.com/writing#breadcrumb"
+      "https://isaacvazquez.com/writing#breadcrumb"
     );
   });
 
@@ -135,7 +135,7 @@ describe("generateArticleSchema (rich fields)", () => {
       headline: "Piece",
       image: ["a.png", "b.png"],
       author: [{ name: "Isaac" }, stringAuthor("Guest Writer")],
-      publisher: { name: "Self", url: "https://isaacavazquez.com" },
+      publisher: { name: "Self", url: "https://isaacvazquez.com" },
       articleSection: "Essays",
       articleBody: "Body text",
       wordCount: 1200,
@@ -155,7 +155,7 @@ describe("generateArticleSchema (rich fields)", () => {
     expect(schema.keywords).toBe("a, b");
     expect(schema.genre).toBe("Technical");
     expect((schema.publisher as Record<string, unknown>).url).toBe(
-      "https://isaacavazquez.com"
+      "https://isaacvazquez.com"
     );
   });
 
@@ -193,7 +193,7 @@ describe("generateProjectSchema (rich fields)", () => {
     }) as Record<string, unknown>;
 
     expect(schema["@id"]).toBe(
-      "https://isaacavazquez.com/portfolio/qa-platform#project"
+      "https://isaacvazquez.com/portfolio/qa-platform#project"
     );
     expect(schema.image).toEqual(["cover.png"]);
     expect((schema.teaches as Array<Record<string, unknown>>)[0].name).toBe(
@@ -232,7 +232,7 @@ describe("generateBreadcrumbSchema", () => {
     ]) as Record<string, unknown>;
 
     const items = schema.itemListElement as Array<Record<string, unknown>>;
-    expect(items[0].item).toBe("https://isaacavazquez.com/");
+    expect(items[0].item).toBe("https://isaacvazquez.com/");
     expect(items[1].item).toBe("https://example.com");
     expect(items[1].position).toBe(5);
   });
@@ -264,7 +264,7 @@ describe("generateNavigationSchema", () => {
     ]) as Record<string, unknown>;
 
     const parts = schema.hasPart as Array<Record<string, unknown>>;
-    expect(parts[0]["@id"]).toBe("https://isaacavazquez.com/about#webpage");
+    expect(parts[0]["@id"]).toBe("https://isaacvazquez.com/about#webpage");
     expect(parts[1]["@id"]).toBe("https://example.com/x#webpage");
     expect(parts[1].url).toBe("https://example.com/x");
   });

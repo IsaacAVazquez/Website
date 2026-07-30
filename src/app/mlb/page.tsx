@@ -44,7 +44,7 @@ export default async function MlbPage({ searchParams }: MlbPageProps) {
           name: "MLB Pulse",
           description:
             "Interactive MLB standings dashboard with division, league, and wild card race views backed by a curated MLB Stats API snapshot.",
-          url: "https://isaacavazquez.com/mlb",
+          url: "https://isaacvazquez.com/mlb",
           applicationCategory: "SportsApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           featureList: [

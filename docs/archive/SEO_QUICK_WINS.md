@@ -42,9 +42,9 @@ npm run postbuild  # Generates sitemap.xml
 
 ```bash
 1. Go to search.google.com/search-console
-2. Select property: isaacavazquez.com
+2. Select property: isaacvazquez.com
 3. Sitemaps > Add new sitemap
-4. Enter: https://isaacavazquez.com/sitemap.xml
+4. Enter: https://isaacvazquez.com/sitemap.xml
 5. Submit
 ```
 
@@ -93,13 +93,13 @@ Add an invisible H1 for SEO (hidden but readable by screen readers):
 ### Google Search Console Setup
 **Time:** 10 minutes
 
-- [ ] Verify ownership of isaacavazquez.com
+- [ ] Verify ownership of isaacvazquez.com
 - [ ] Submit sitemap.xml
 - [ ] Request indexing for key pages:
-  - https://isaacavazquez.com/
-  - https://isaacavazquez.com/about
-  - https://isaacavazquez.com/projects
-  - https://isaacavazquez.com/resume
+  - https://isaacvazquez.com/
+  - https://isaacvazquez.com/about
+  - https://isaacvazquez.com/projects
+  - https://isaacvazquez.com/resume
 
 ### Test OG Tags
 **Time:** 5 minutes
@@ -198,7 +198,7 @@ Technical Product Manager & QA Lead
 **Time:** 1 hour/week | **Impact:** HIGH (long-term)
 
 **Week 2:**
-- [ ] Update LinkedIn profile URL to: isaacavazquez.com
+- [ ] Update LinkedIn profile URL to: isaacvazquez.com
 - [ ] Add website to UC Berkeley Haas student directory
 - [ ] Request Civitech team page link
 

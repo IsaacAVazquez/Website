@@ -13,7 +13,7 @@ const { getPublicSitemapEntries } = require("../../../src/lib/sitemap.js") as {
 describe("public sitemap", () => {
   it("matches the canonical route inventory and freshness metadata", () => {
     const sitemap = fs.readFileSync("public/sitemap.xml", "utf8");
-    const siteUrl = "https://isaacavazquez.com";
+    const siteUrl = "https://isaacvazquez.com";
     const readTag = (block: string, tag: string) =>
       block.match(new RegExp(`<${tag}>([^<]*)</${tag}>`))?.[1];
 

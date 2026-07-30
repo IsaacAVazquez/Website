@@ -9,7 +9,7 @@ const accessibilityDescription =
 export const metadata: Metadata = constructMetadata({
   title: "Accessibility Statement | Isaac Vazquez",
   description: accessibilityDescription,
-  canonicalUrl: "https://isaacavazquez.com/accessibility",
+  canonicalUrl: "https://isaacvazquez.com/accessibility",
   dateModified: "2026-07-16",
 });
 
@@ -109,7 +109,7 @@ export default function AccessibilityPage() {
         data={{
           title: "Accessibility Statement",
           description: accessibilityDescription,
-          url: "https://isaacavazquez.com/accessibility",
+          url: "https://isaacvazquez.com/accessibility",
           dateModified: "2026-07-16",
         }}
       />

@@ -25,7 +25,7 @@ describe("GET /api/spacex/launches/[id]", () => {
   it("rejects invalid launch ids", async () => {
     mockIsValidMissionLaunchId.mockReturnValue(false);
 
-    const response = await GET(new Request("https://isaacavazquez.com"), {
+    const response = await GET(new Request("https://isaacvazquez.com"), {
       params: Promise.resolve({ id: "bad-id" }),
     });
     const body = await response.json();
@@ -40,7 +40,7 @@ describe("GET /api/spacex/launches/[id]", () => {
       Object.assign(new Error("Launch not found"), { status: 404 })
     );
 
-    const response = await GET(new Request("https://isaacavazquez.com"), {
+    const response = await GET(new Request("https://isaacvazquez.com"), {
       params: Promise.resolve({ id: "5eb87d46ffd86e000604b388" }),
     });
     const body = await response.json();
@@ -117,7 +117,7 @@ describe("GET /api/spacex/launches/[id]", () => {
       cores: [],
     });
 
-    const response = await GET(new Request("https://isaacavazquez.com"), {
+    const response = await GET(new Request("https://isaacvazquez.com"), {
       params: Promise.resolve({ id: "5eb87d46ffd86e000604b388" }),
     });
     const body = await response.json();
@@ -136,7 +136,7 @@ describe("GET /api/spacex/launches/[id]", () => {
       Object.assign(new Error("Launch Library temporarily rate limited"), { status: 429 })
     );
 
-    const response = await GET(new Request("https://isaacavazquez.com"), {
+    const response = await GET(new Request("https://isaacvazquez.com"), {
       params: Promise.resolve({ id: "5eb87d46ffd86e000604b388" }),
     });
     const body = await response.json();

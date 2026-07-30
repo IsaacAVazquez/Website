@@ -15,6 +15,6 @@ export default function Image() {
     description:
       "A 2026 FIFA World Cup hub: group standings, the new 32-team knockout bracket, the full match schedule, and host venues across three nations.",
     accent: "teal",
-    footer: "isaacavazquez.com/world-cup-2026",
+    footer: "isaacvazquez.com/world-cup-2026",
   });
 }

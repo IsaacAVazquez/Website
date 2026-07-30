@@ -66,7 +66,7 @@ export const authOptions: NextAuthOptions = {
           return {
             id: "1",
             name: "Admin",
-            email: "admin@isaacavazquez.com",
+            email: "admin@isaacvazquez.com",
           };
         }
         return null;

@@ -235,7 +235,7 @@ export default {
 export const siteMetadata = {
   title: "Isaac Vazquez - Technical Product Manager & UC Berkeley MBA",
   description: "Bay Area-based product manager pursuing MBA at UC Berkeley Haas...",
-  siteUrl: "https://isaacavazquez.com",
+  siteUrl: "https://isaacvazquez.com",
   author: {
     name: "Isaac Vazquez",
     email: "isaacavazquez95@gmail.com",
@@ -262,7 +262,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "About Isaac Vazquez",
     description: "Product manager with QA and analytics foundation...",
-    url: "https://isaacavazquez.com/about",
+    url: "https://isaacvazquez.com/about",
     type: "profile",
   },
   twitter: {
@@ -292,7 +292,7 @@ export const metadata: Metadata = {
     "@type": "EducationalOrganization",
     "name": "Florida State University"
   },
-  "url": "https://isaacavazquez.com",
+  "url": "https://isaacvazquez.com",
   "sameAs": [
     "https://linkedin.com/in/isaac-vazquez",
     "https://github.com/isaacavazquez"
@@ -309,7 +309,7 @@ export const metadata: Metadata = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Isaac Vazquez Portfolio",
-  "url": "https://isaacavazquez.com",
+  "url": "https://isaacvazquez.com",
   "description": "Technical Product Manager & UC Berkeley MBA Candidate",
   "author": {
     "@type": "Person",
@@ -324,7 +324,7 @@ export const metadata: Metadata = {
 ```javascript
 // next-sitemap.config.js
 module.exports = {
-  siteUrl: 'https://isaacavazquez.com',
+  siteUrl: 'https://isaacvazquez.com',
   generateRobotsTxt: true,
   priority: {
     '/': 1.0,
@@ -351,11 +351,11 @@ module.exports = {
 openGraph: {
   title: "Page Title",
   description: "Page description",
-  url: "https://isaacavazquez.com/page",
+  url: "https://isaacvazquez.com/page",
   siteName: "Isaac Vazquez Portfolio",
   images: [
     {
-      url: "https://isaacavazquez.com/og-image.jpg",
+      url: "https://isaacvazquez.com/og-image.jpg",
       width: 1200,
       height: 630,
       alt: "Isaac Vazquez Portfolio",
@@ -376,7 +376,7 @@ Allow: /
 Disallow: /api/
 Disallow: /admin/
 
-Sitemap: https://isaacavazquez.com/sitemap.xml
+Sitemap: https://isaacvazquez.com/sitemap.xml
 ```
 
 #### Meta Tags
@@ -386,7 +386,7 @@ Sitemap: https://isaacavazquez.com/sitemap.xml
 <meta name="theme-color" content="#FF6B35" />
 <meta name="description" content="..." />
 <meta name="keywords" content="..." />
-<link rel="canonical" href="https://isaacavazquez.com/page" />
+<link rel="canonical" href="https://isaacvazquez.com/page" />
 ```
 
 ---
@@ -464,7 +464,7 @@ export function reportWebVitals(metric: NextWebVitalsMetric) {
 ```bash
 # Run Lighthouse audit
 npm install -g lighthouse
-lighthouse https://isaacavazquez.com --output=html --output-path=./audit.html
+lighthouse https://isaacvazquez.com --output=html --output-path=./audit.html
 
 # Metrics tracked:
 # - Performance

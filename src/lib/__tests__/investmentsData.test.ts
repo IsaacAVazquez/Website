@@ -65,7 +65,7 @@ describe("investmentsData curated snapshot resolution", () => {
       jest.requireActual("../investmentsData") as typeof import("../investmentsData");
 
     const context = await getInvestmentContext("AAPL", {
-      assetOrigin: "https://isaacavazquez.com",
+      assetOrigin: "https://isaacvazquez.com",
     });
 
     expect(context.source).toBe("prefetched");
@@ -79,12 +79,12 @@ describe("investmentsData curated snapshot resolution", () => {
     });
     expect(mockFetch).toHaveBeenNthCalledWith(
       1,
-      "https://isaacavazquez.com/data/investments/index.json",
+      "https://isaacvazquez.com/data/investments/index.json",
       { cache: "force-cache" }
     );
     expect(mockFetch).toHaveBeenNthCalledWith(
       2,
-      "https://isaacavazquez.com/data/investments/AAPL/snapshot.json",
+      "https://isaacvazquez.com/data/investments/AAPL/snapshot.json",
       { cache: "force-cache" }
     );
   });
@@ -100,7 +100,7 @@ describe("investmentsData curated snapshot resolution", () => {
       jest.requireActual("../investmentsData") as typeof import("../investmentsData");
 
     await expect(
-      getInvestmentContext("AAPL", { assetOrigin: "https://isaacavazquez.com" })
+      getInvestmentContext("AAPL", { assetOrigin: "https://isaacvazquez.com" })
     ).rejects.toMatchObject({
       status: 503,
       source: "prefetched",
@@ -123,7 +123,7 @@ describe("investmentsData curated snapshot resolution", () => {
       jest.requireActual("../investmentsData") as typeof import("../investmentsData");
 
     await expect(
-      getInvestmentContext("SHOP", { assetOrigin: "https://isaacavazquez.com" })
+      getInvestmentContext("SHOP", { assetOrigin: "https://isaacvazquez.com" })
     ).rejects.toMatchObject({
       status: 404,
       source: "prefetched",

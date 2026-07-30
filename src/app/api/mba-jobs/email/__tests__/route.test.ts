@@ -47,7 +47,7 @@ function makeRequest(
   client = Math.random().toString(36).slice(2),
   headers: Record<string, string> = {}
 ) {
-  return new NextRequest("https://isaacavazquez.com/api/mba-jobs/email", {
+  return new NextRequest("https://isaacvazquez.com/api/mba-jobs/email", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

@@ -575,7 +575,7 @@ Product & Tech Builder • Civic Tech Background
 **Contact:**
 - Email: isaacavazquez95@gmail.com
 - LinkedIn: www.linkedin.com/in/isaac-vazquez/
-- Website: isaacavazquez.com
+- Website: isaacvazquez.com
 
 ---
 

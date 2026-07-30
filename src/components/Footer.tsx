@@ -97,17 +97,17 @@ export const Footer = ({ variant = "full" }: FooterProps) => {
                 </Link>
               ))}
               <a
-                href="https://isaacavazquez.com"
+                href="https://isaacvazquez.com"
                 className="is-strong"
                 onClick={() =>
                   trackNavigationClick({
-                    link_text: "isaacavazquez.com",
-                    link_url: "https://isaacavazquez.com",
+                    link_text: "isaacvazquez.com",
+                    link_url: "https://isaacvazquez.com",
                     nav_location: "footer_links",
                   })
                 }
               >
-                isaacavazquez.com
+                isaacvazquez.com
               </a>
             </nav>
           </div>

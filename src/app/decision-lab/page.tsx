@@ -43,7 +43,7 @@ export default async function DecisionLabPage({ searchParams }: DecisionLabPageP
           name: "Decision Lab",
           description:
             "Interactive product-bet triage workspace that scores impact, confidence, effort, and reversibility before recommending ship, test, or hold.",
-          url: "https://isaacavazquez.com/decision-lab",
+          url: "https://isaacvazquez.com/decision-lab",
           applicationCategory: "BusinessApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           author: "Isaac Vazquez",

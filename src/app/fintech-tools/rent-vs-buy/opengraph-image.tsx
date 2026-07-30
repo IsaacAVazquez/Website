@@ -15,6 +15,6 @@ export default function Image() {
     description:
       "A month-by-month net-worth model that credits the renter's opportunity cost and finds the exact year buying pulls ahead.",
     accent: "cobalt",
-    footer: "isaacavazquez.com/fintech-tools/rent-vs-buy",
+    footer: "isaacvazquez.com/fintech-tools/rent-vs-buy",
   });
 }

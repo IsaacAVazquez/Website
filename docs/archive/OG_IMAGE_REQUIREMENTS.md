@@ -27,7 +27,7 @@
 - Professional sans-serif font (Inter)
 - Sufficient contrast for text readability
 - Branded with warm color palette
-- Include website URL: isaacavazquez.com
+- Include website URL: isaacvazquez.com
 
 ### Tools to Create:
 1. **Canva** - Free, easy templates for OG images

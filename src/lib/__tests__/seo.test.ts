@@ -198,7 +198,7 @@ describe("generateArticleStructuredData", () => {
       title: "Post",
       description: "About the post",
       datePublished: "2026-02-01",
-      url: "https://isaacavazquez.com/writing/post",
+      url: "https://isaacvazquez.com/writing/post",
     }) as Record<string, unknown>;
 
     expect(data["@type"]).toBe("Article");
@@ -217,7 +217,7 @@ describe("generateArticleStructuredData", () => {
       dateModified: "2026-03-01",
       image: "https://cdn.example/cover.png",
       keywords: ["seo", "next"],
-      url: "https://isaacavazquez.com/writing/post",
+      url: "https://isaacvazquez.com/writing/post",
     }) as Record<string, unknown>;
 
     expect((data.author as Record<string, unknown>).name).toBe("Guest");

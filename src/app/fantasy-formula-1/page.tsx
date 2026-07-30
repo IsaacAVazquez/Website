@@ -46,7 +46,7 @@ export default async function FantasyFormula1Page({
           name: "Fantasy Formula 1 Optimizer",
           description:
             "Fantasy Formula 1 lineup optimizer with official-style roster constraints, model prices, and OpenF1 snapshot inputs.",
-          url: "https://isaacavazquez.com/fantasy-formula-1",
+          url: "https://isaacvazquez.com/fantasy-formula-1",
           applicationCategory: "SportsApplication",
           operatingSystem: "Web browser",
           programmingLanguage: ["TypeScript", "Next.js"],

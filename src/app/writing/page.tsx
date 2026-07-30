@@ -77,14 +77,14 @@ export default function WritingPage() {
             name: "Isaac Vazquez Writing",
             description:
               "Writing on product management, agentic AI, fintech, systems, quality, and the tools Isaac Vazquez builds.",
-            url: "https://isaacavazquez.com/writing",
+            url: "https://isaacvazquez.com/writing",
             items: posts.map((post) => ({
               name: post.title,
               description: post.excerpt,
-              url: `https://isaacavazquez.com/writing/${post.slug}`,
+              url: `https://isaacvazquez.com/writing/${post.slug}`,
               image: post.coverImage.startsWith("http")
                 ? post.coverImage
-                : `https://isaacavazquez.com${post.coverImage}`,
+                : `https://isaacvazquez.com${post.coverImage}`,
             })),
           },
         }}

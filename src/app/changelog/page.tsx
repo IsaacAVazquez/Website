@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Changelog",
     description:
       "A running log of what I've shipped on this site, including new features, fixes, essays, data updates, and the experiments I kept or retired.",
-    canonicalUrl: "https://isaacavazquez.com/changelog",
+    canonicalUrl: "https://isaacvazquez.com/changelog",
     dateModified:
       latest && latest > interfaceUpdatedAt ? latest : interfaceUpdatedAt,
   });

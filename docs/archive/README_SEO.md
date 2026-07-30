@@ -121,7 +121,7 @@ git push origin main
 ### **After Deployment:**
 
 **1. Site Functionality**
-- [ ] Visit https://isaacavazquez.com
+- [ ] Visit https://isaacvazquez.com
 - [ ] Check homepage loads correctly
 - [ ] Test mobile responsiveness
 - [ ] Verify navigation works
@@ -130,7 +130,7 @@ git push origin main
 - [ ] View page source (Ctrl+U)
 - [ ] Find `<meta property="og:image" content="...og-image.png">`
 - [ ] Verify structured data (JSON-LD scripts)
-- [ ] Check sitemap: https://isaacavazquez.com/sitemap.xml
+- [ ] Check sitemap: https://isaacvazquez.com/sitemap.xml
 
 **3. Social Sharing**
 - [ ] **LinkedIn:** https://www.linkedin.com/post-inspector/
@@ -232,7 +232,7 @@ npm update
 npm run build
 
 # Check performance
-npx lighthouse https://isaacavazquez.com
+npx lighthouse https://isaacvazquez.com
 ```
 
 **Every Quarter:**

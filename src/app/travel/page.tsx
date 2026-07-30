@@ -31,7 +31,7 @@ export default function TravelPlannerPage() {
           name: "Travel Planner",
           description:
             "Browser-persisted travel planner for trip dates, day-by-day itineraries, and trip journaling.",
-          url: "https://isaacavazquez.com/travel",
+          url: "https://isaacvazquez.com/travel",
           applicationCategory: "TravelApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           author: "Isaac Vazquez",

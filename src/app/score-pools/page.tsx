@@ -42,11 +42,11 @@ export default async function ScorePoolsPage({ searchParams }: ScorePoolsPagePro
       <StructuredData
         type="SportsApplication"
         data={{
-          "@id": "https://isaacavazquez.com/score-pools#application",
+          "@id": "https://isaacvazquez.com/score-pools#application",
           name: "Score Pools",
           description:
             "Exact-score prediction engine for pool play: de-vigged odds, a market-calibrated scoreline distribution, and expected-points pick rankings under configurable scoring rules.",
-          url: "https://isaacavazquez.com/score-pools",
+          url: "https://isaacvazquez.com/score-pools",
           dateModified: getScorePoolsModifiedDate(
             scorePoolsSnapshot.generatedAt
           ),

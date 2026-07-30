@@ -4,7 +4,7 @@ export interface AssetOriginOptions {
 }
 
 /** The site's canonical production origin (matches seo.ts). */
-const CANONICAL_PRODUCTION_ORIGIN = "https://isaacavazquez.com";
+const CANONICAL_PRODUCTION_ORIGIN = "https://isaacvazquez.com";
 
 /**
  * Resolve the origin to fetch committed `/public/data/investments` assets from

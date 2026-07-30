@@ -45,7 +45,7 @@ export default async function MuseumLogPage({ searchParams }: MuseumLogPageProps
           name: "Museum Log",
           description:
             "A Letterboxd-style museum tracker with a curated catalog, curator reviews, themed lists, and a personal visit log and watchlist.",
-          url: "https://isaacavazquez.com/museum-log",
+          url: "https://isaacvazquez.com/museum-log",
           applicationCategory: "LifestyleApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           featureList: [

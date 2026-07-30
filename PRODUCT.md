@@ -38,7 +38,7 @@ Some product facts are deliberately left open here, including how prominently ea
 
 ## Brand Commitments
 
-The name is Isaac Vazquez and the site lives at isaacavazquez.com.
+The name is Isaac Vazquez and the site lives at isaacvazquez.com.
 
 Two constraints are locked as binding by the user. First, all prose on the site follows the first-person, direct, opinion-forward writing voice, and `WRITING_VOICE.md` is its canonical and binding specification for any copy, article, UI text, bio, or readout. Second, no "Claude," "AI," or authorship tag appears anywhere Isaac creates a name, meaning files, commits, pull requests, branches, pages, or workspaces, and git commits carry no Claude co-author or generated-by trailer.
 

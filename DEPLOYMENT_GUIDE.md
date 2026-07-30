@@ -47,7 +47,7 @@ npm run build
 netlify deploy --prod
 
 # 5. Confirm deployment
-# Site will be live at: https://isaacavazquez.com
+# Site will be live at: https://isaacvazquez.com
 ```
 
 ---
@@ -118,7 +118,7 @@ Expected output:
 
 ### 2. **Test Site Functionality**
 
-Visit: https://isaacavazquez.com
+Visit: https://isaacvazquez.com
 
 **Homepage:**
 - [ ] ModernHero loads correctly
@@ -144,10 +144,10 @@ Visit: https://isaacavazquez.com
 
 ```bash
 # Check sitemap is accessible
-curl https://isaacavazquez.com/sitemap.xml
+curl https://isaacvazquez.com/sitemap.xml
 
 # Or visit in browser:
-# https://isaacavazquez.com/sitemap.xml
+# https://isaacvazquez.com/sitemap.xml
 ```
 
 **Verify:**
@@ -160,7 +160,7 @@ curl https://isaacavazquez.com/sitemap.xml
 
 ### 4. **Test Robots.txt**
 
-Visit: https://isaacavazquez.com/robots.txt
+Visit: https://isaacvazquez.com/robots.txt
 
 **Verify:**
 - [ ] Allows all user agents
@@ -175,7 +175,7 @@ Visit: https://isaacavazquez.com/robots.txt
 ### **1. OpenGraph Preview (Generic)**
 
 **Tool:** https://www.opengraph.xyz/url/
-**URL:** `https://isaacavazquez.com`
+**URL:** `https://isaacvazquez.com`
 
 **Check:**
 - [ ] OG image loads (1200x630)
@@ -188,7 +188,7 @@ Visit: https://isaacavazquez.com/robots.txt
 ### **2. LinkedIn Post Inspector**
 
 **Tool:** https://www.linkedin.com/post-inspector/
-**URL:** `https://isaacavazquez.com`
+**URL:** `https://isaacvazquez.com`
 
 **Steps:**
 1. Enter your URL
@@ -214,7 +214,7 @@ Visit: https://isaacavazquez.com/robots.txt
 ### **3. Twitter Card Validator**
 
 **Tool:** https://cards-dev.twitter.com/validator
-**URL:** `https://isaacavazquez.com`
+**URL:** `https://isaacvazquez.com`
 
 **Expected Card Type:** Summary Large Image
 
@@ -229,7 +229,7 @@ Visit: https://isaacavazquez.com/robots.txt
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Isaac Vazquez – Technical Product Manager...">
 <meta name="twitter:description" content="...">
-<meta name="twitter:image" content="https://isaacavazquez.com/og-image.png">
+<meta name="twitter:image" content="https://isaacvazquez.com/og-image.png">
 <meta name="twitter:creator" content="@isaacvazquez">
 ```
 
@@ -238,7 +238,7 @@ Visit: https://isaacavazquez.com/robots.txt
 ### **4. Facebook Sharing Debugger**
 
 **Tool:** https://developers.facebook.com/tools/debug/
-**URL:** `https://isaacavazquez.com`
+**URL:** `https://isaacvazquez.com`
 
 **Steps:**
 1. Enter URL
@@ -269,7 +269,7 @@ Visit: https://isaacavazquez.com/robots.txt
 1. **Go to:** https://search.google.com/search-console
 2. **Click:** "Add Property"
 3. **Choose:** "URL prefix"
-4. **Enter:** `https://isaacavazquez.com`
+4. **Enter:** `https://isaacvazquez.com`
 5. **Click:** "Continue"
 
 ---
@@ -333,10 +333,10 @@ Visit: https://isaacavazquez.com/robots.txt
 
 **Priority pages to index first:**
 
-1. Homepage: `https://isaacavazquez.com`
-2. About: `https://isaacavazquez.com/about`
-3. Projects: `https://isaacavazquez.com/projects`
-4. Resume: `https://isaacavazquez.com/resume`
+1. Homepage: `https://isaacvazquez.com`
+2. About: `https://isaacvazquez.com/about`
+3. Projects: `https://isaacvazquez.com/projects`
+4. Resume: `https://isaacvazquez.com/resume`
 5. Top blog post: `/writing/qa-engineering-silicon-valley-uc-berkeley-mba-perspective`
 
 **How to request indexing:**
@@ -352,7 +352,7 @@ Visit: https://isaacavazquez.com/robots.txt
 ### **1. PageSpeed Insights**
 
 **Tool:** https://pagespeed.web.dev/
-**URL:** `https://isaacavazquez.com`
+**URL:** `https://isaacvazquez.com`
 
 **Target Scores:**
 - [ ] Performance: 90+ (mobile)
@@ -380,7 +380,7 @@ Visit: https://isaacavazquez.com/robots.txt
 
 ```bash
 # Run local Lighthouse
-npx lighthouse https://isaacavazquez.com --view
+npx lighthouse https://isaacvazquez.com --view
 
 # Or use Chrome DevTools:
 # 1. Open Chrome DevTools (F12)
@@ -399,7 +399,7 @@ npx lighthouse https://isaacavazquez.com --view
 ### **3. Mobile-Friendly Test**
 
 **Tool:** https://search.google.com/test/mobile-friendly
-**URL:** `https://isaacavazquez.com`
+**URL:** `https://isaacvazquez.com`
 
 **Expected:**
 - [ ] "Page is mobile-friendly" message
@@ -482,7 +482,7 @@ if (typeof window !== 'undefined') {
 
 2. **Check file accessibility:**
    ```bash
-   curl -I https://isaacavazquez.com/og-image.png
+   curl -I https://isaacvazquez.com/og-image.png
    # Should return: HTTP/2 200
    ```
 
@@ -493,8 +493,8 @@ if (typeof window !== 'undefined') {
 
 4. **Verify meta tags in source:**
    ```bash
-   curl -s https://isaacavazquez.com | grep "og:image"
-   # Should show: <meta property="og:image" content="https://isaacavazquez.com/og-image.png" />
+   curl -s https://isaacvazquez.com | grep "og:image"
+   # Should show: <meta property="og:image" content="https://isaacvazquez.com/og-image.png" />
    ```
 
 ---
@@ -576,7 +576,7 @@ The `/admin` route appears in sitemap.xml BUT has `noindex` metadata.
 **Verification:**
 ```bash
 # Check admin page source:
-curl -s https://isaacavazquez.com/admin | grep robots
+curl -s https://isaacvazquez.com/admin | grep robots
 
 # Should show:
 # <meta name="robots" content="noindex, nofollow">

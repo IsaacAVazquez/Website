@@ -206,7 +206,7 @@ describe("useMBAJobs", () => {
 
     const requestedUrl = new URL(
       String(fetchSpy.mock.calls[0][0]),
-      "https://isaacavazquez.com"
+      "https://isaacvazquez.com"
     );
     expect(requestedUrl.searchParams.get("companies")).toBe("stripe");
     expect(result.current.watchedCompanyIds.has("stripe")).toBe(true);

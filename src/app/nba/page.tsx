@@ -47,7 +47,7 @@ export default async function NbaPage({ searchParams }: NbaPageProps) {
           name: "NBA Pulse",
           description:
             "Interactive NBA standings dashboard with conference, playoff seeding, and play-in views backed by a curated snapshot.",
-          url: "https://isaacavazquez.com/nba",
+          url: "https://isaacvazquez.com/nba",
           applicationCategory: "SportsApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           featureList: [

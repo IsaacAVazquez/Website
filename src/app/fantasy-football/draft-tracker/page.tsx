@@ -31,7 +31,7 @@ export default function DraftTrackerPage() {
         data={{
           name: "Fantasy Football Draft Assistant",
           description: "Manual fantasy football draft tracker with sourced best-available rankings and snake-order awareness",
-          url: "https://isaacavazquez.com/fantasy-football/draft-tracker",
+          url: "https://isaacvazquez.com/fantasy-football/draft-tracker",
           applicationCategory: "Sports",
           operatingSystem: "Web Browser",
         }}

@@ -65,7 +65,7 @@ jobs:
             echo "::error::NETLIFY_BUILD_HOOK is required for data publication."
             exit 1
           fi
-          revision_url="${PRODUCTION_DATA_REVISION_URL:-https://isaacavazquez.com/api/data-revisions}"
+          revision_url="${PRODUCTION_DATA_REVISION_URL:-https://isaacvazquez.com/api/data-revisions}"
           node scripts/ci/ensure-production-data-ledger.mjs \
             "$EXPECTED_REVISION" "$revision_url" "$NETLIFY_BUILD_HOOK"
 

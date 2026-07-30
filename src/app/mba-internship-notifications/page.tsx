@@ -60,7 +60,7 @@ export default async function MBAJobsPage({ searchParams }: MBAJobsPageProps) {
           name: "Job Search",
           description:
             "Career page and public job board monitor for MBA internships and full-time business roles across 32 tech companies, with optional external job leads.",
-          url: "https://isaacavazquez.com/mba-internship-notifications",
+          url: "https://isaacvazquez.com/mba-internship-notifications",
           dateModified: "2026-07-23",
           applicationCategory: "BusinessApplication",
           programmingLanguage: ["TypeScript", "Next.js"],

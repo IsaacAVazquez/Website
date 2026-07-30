@@ -15,6 +15,6 @@ export default function Image() {
     description:
       "BART dashboard for Bay Area lines, station departure boards, and service alerts from a checked-in transit snapshot.",
     accent: "teal",
-    footer: "isaacavazquez.com/bay-area-transit",
+    footer: "isaacvazquez.com/bay-area-transit",
   });
 }

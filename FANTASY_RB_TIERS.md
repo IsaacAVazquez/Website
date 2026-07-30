@@ -534,4 +534,4 @@ For issues or questions:
 
 **Last Updated**: November 2025
 **Created By**: Isaac Vazquez
-**Website**: [isaacavazquez.com](https://isaacavazquez.com)
+**Website**: [isaacvazquez.com](https://isaacvazquez.com)

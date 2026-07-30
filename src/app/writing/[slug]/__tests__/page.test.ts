@@ -44,7 +44,7 @@ describe("Writing article metadata", () => {
     const openGraph = metadata.openGraph as { images: Array<{ url: string }> };
     const twitter = metadata.twitter as { images: string[] };
 
-    expect(openGraph.images[0].url).toBe("https://isaacavazquez.com/writing/test-post/opengraph-image");
-    expect(twitter.images[0]).toBe("https://isaacavazquez.com/writing/test-post/opengraph-image");
+    expect(openGraph.images[0].url).toBe("https://isaacvazquez.com/writing/test-post/opengraph-image");
+    expect(twitter.images[0]).toBe("https://isaacvazquez.com/writing/test-post/opengraph-image");
   });
 });

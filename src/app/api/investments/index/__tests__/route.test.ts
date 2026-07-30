@@ -27,7 +27,7 @@ describe("GET /api/investments/index", () => {
     });
 
     const response = await GET(
-      new NextRequest("https://isaacavazquez.com/api/investments/index")
+      new NextRequest("https://isaacvazquez.com/api/investments/index")
     );
     const body = await response.json();
 
@@ -35,7 +35,7 @@ describe("GET /api/investments/index", () => {
     expect(response.headers.get("X-Data-Revision")).toMatch(/^[a-f0-9]{64}$/);
     expect(body.symbols).toEqual(["AAPL", "MSFT"]);
     expect(mockGetInvestmentsIndex).toHaveBeenCalledWith({
-      assetOrigin: "https://isaacavazquez.com",
+      assetOrigin: "https://isaacvazquez.com",
     });
   });
 
@@ -52,7 +52,7 @@ describe("GET /api/investments/index", () => {
     });
 
     const response = await GET(
-      new NextRequest("https://isaacavazquez.com/api/investments/index")
+      new NextRequest("https://isaacvazquez.com/api/investments/index")
     );
 
     expect(response.status).toBe(200);
@@ -67,7 +67,7 @@ describe("GET /api/investments/index", () => {
     );
 
     const response = await GET(
-      new NextRequest("https://isaacavazquez.com/api/investments/index")
+      new NextRequest("https://isaacvazquez.com/api/investments/index")
     );
     const body = await response.json();
 

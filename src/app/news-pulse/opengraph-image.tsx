@@ -15,6 +15,6 @@ export default function Image() {
     description:
       "A dashboard for comparing how major outlets frame the same story across feeds, topics, and tone.",
     accent: "cobalt",
-    footer: "isaacavazquez.com/news-pulse",
+    footer: "isaacvazquez.com/news-pulse",
   });
 }

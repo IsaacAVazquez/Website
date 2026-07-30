@@ -32,8 +32,8 @@ export default function RentVsBuyPage() {
           name: "Rent vs. Buy Calculator",
           description:
             "Month-by-month rent-vs-buy net-worth model with opportunity-cost accounting and a break-even year, kept entirely in the browser.",
-          url: "https://isaacavazquez.com/fintech-tools/rent-vs-buy",
-          image: "https://isaacavazquez.com/fintech-tools/rent-vs-buy/opengraph-image",
+          url: "https://isaacvazquez.com/fintech-tools/rent-vs-buy",
+          image: "https://isaacvazquez.com/fintech-tools/rent-vs-buy/opengraph-image",
           applicationCategory: "FinanceApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           author: "Isaac Vazquez",

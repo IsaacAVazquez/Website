@@ -256,6 +256,8 @@ export function HomeInstrument({
                       alt=""
                       fill
                       unoptimized
+                      loading={index === 0 ? "eager" : "lazy"}
+                      fetchPriority={index === 0 ? "high" : "auto"}
                       sizes="(max-width: 1000px) 92vw, 30vw"
                     />
                     {gridRef ? (

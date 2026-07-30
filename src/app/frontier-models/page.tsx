@@ -51,7 +51,7 @@ export default async function FrontierModelsPage({
           name: "Frontier Model Tracker",
           description:
             "Curated, editorially maintained dashboard comparing frontier large language models across price, context window, modality coverage, and reasoning support.",
-          url: "https://isaacavazquez.com/frontier-models",
+          url: "https://isaacvazquez.com/frontier-models",
           applicationCategory: "DeveloperApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           featureList: [

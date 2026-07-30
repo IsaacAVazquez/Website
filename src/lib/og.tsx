@@ -56,7 +56,7 @@ export function createEditorialOgImage({
   title,
   description,
   accent = "cobalt",
-  footer = "isaacavazquez.com",
+  footer = "isaacvazquez.com",
 }: EditorialOgImageOptions) {
   const theme = accentThemes[accent];
 

@@ -15,6 +15,6 @@ export default function Image() {
     description:
       "Mission-control launch board with next-launch visibility, upcoming and past missions, and relationship-aware detail panels from a checked-in launch snapshot.",
     accent: "cobalt",
-    footer: "isaacavazquez.com/spacex-mission-control",
+    footer: "isaacvazquez.com/spacex-mission-control",
   });
 }

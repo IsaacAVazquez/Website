@@ -49,7 +49,7 @@ export default async function EarthquakePulsePage({
           name: "Earthquake Pulse",
           description:
             "Frequently refreshed global earthquake monitor for the past 24 hours of seismic activity, significant quakes worldwide, and regional breakdowns.",
-          url: "https://isaacavazquez.com/earthquake-pulse",
+          url: "https://isaacvazquez.com/earthquake-pulse",
           applicationCategory: "ReferenceApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           featureList: [

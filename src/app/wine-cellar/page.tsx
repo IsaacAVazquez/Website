@@ -31,7 +31,7 @@ export default function WineCellarPage() {
           name: "Wine Cellar",
           description:
             "Personal wine reviewing app for logging tastings, rating bottles, and tracking your cellar. Saved locally in your browser.",
-          url: "https://isaacavazquez.com/wine-cellar",
+          url: "https://isaacvazquez.com/wine-cellar",
           applicationCategory: "LifestyleApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           author: "Isaac Vazquez",

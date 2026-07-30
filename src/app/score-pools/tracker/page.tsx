@@ -38,15 +38,15 @@ export default function ScorePoolsTrackerPage() {
           title: "Score Pools Tracker",
           description:
             "Running score tracker for exact-score prediction pools with submitted picks, configurable scoring, cumulative totals, and rival comparisons.",
-          url: "https://isaacavazquez.com/score-pools/tracker",
+          url: "https://isaacvazquez.com/score-pools/tracker",
           dateModified: getScorePoolsModifiedDate(
             scorePoolsSnapshot.generatedAt
           ),
           isPartOf: {
             "@type": "SportsApplication",
-            "@id": "https://isaacavazquez.com/score-pools#application",
+            "@id": "https://isaacvazquez.com/score-pools#application",
             name: "Score Pools",
-            url: "https://isaacavazquez.com/score-pools",
+            url: "https://isaacvazquez.com/score-pools",
           },
         }}
       />

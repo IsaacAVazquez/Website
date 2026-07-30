@@ -11,7 +11,7 @@
 
 ## Executive Summary
 
-The isaacavazquez.com portfolio demonstrates **strong accessibility foundations** with WCAG AA+ compliance already achieved. The monochrome design system using pure black (#000000) on white (#FFFFFF) provides exceptional 21:1 contrast ratios, significantly exceeding WCAG AAA requirements.
+The isaacvazquez.com portfolio demonstrates **strong accessibility foundations** with WCAG AA+ compliance already achieved. The monochrome design system using pure black (#000000) on white (#FFFFFF) provides exceptional 21:1 contrast ratios, significantly exceeding WCAG AAA requirements.
 
 **Current Compliance:**
 - ✅ **WCAG AA:** Fully compliant (4.5:1 contrast)
@@ -426,7 +426,7 @@ h1: Page title (once per page)
 
 ### For Website:
 ```markdown
-# Accessibility Statement for isaacavazquez.com
+# Accessibility Statement for isaacvazquez.com
 
 Last updated: November 2025
 
@@ -438,7 +438,7 @@ Isaac Vazquez is committed to ensuring digital accessibility for people with dis
 
 The Web Content Accessibility Guidelines (WCAG) defines requirements for designers and developers to improve accessibility for people with disabilities. It defines three levels of conformance: Level A, Level AA, and Level AAA.
 
-**isaacavazquez.com is fully conformant with WCAG 2.1 level AA** and strives for AAA conformance.
+**isaacvazquez.com is fully conformant with WCAG 2.1 level AA** and strives for AAA conformance.
 
 Fully conformant means that the content fully conforms to the accessibility standard without any exceptions.
 
@@ -462,7 +462,7 @@ Fully conformant means that the content fully conforms to the accessibility stan
 
 ## Feedback
 
-We welcome your feedback on the accessibility of isaacavazquez.com. Please let us know if you encounter accessibility barriers:
+We welcome your feedback on the accessibility of isaacvazquez.com. Please let us know if you encounter accessibility barriers:
 
 - **Email:** isaacavazquez95@gmail.com
 - **Website:** /contact
@@ -471,7 +471,7 @@ We aim to respond to feedback within 2 business days.
 
 ## Technical Specifications
 
-Accessibility of isaacavazquez.com relies on the following technologies:
+Accessibility of isaacvazquez.com relies on the following technologies:
 - HTML5
 - CSS3
 - JavaScript (React/Next.js)
@@ -488,7 +488,7 @@ Despite our best efforts, some content may not be fully accessible. We are worki
 
 ## Assessment Approach
 
-Isaac Vazquez assessed the accessibility of isaacavazquez.com by the following approaches:
+Isaac Vazquez assessed the accessibility of isaacvazquez.com by the following approaches:
 - Self-evaluation
 - Automated testing tools (planned)
 - Manual keyboard navigation testing
@@ -595,7 +595,7 @@ This statement was created on November 2025 using accessibility audit report.
 
 ## Conclusion
 
-**isaacavazquez.com demonstrates exceptional accessibility foundations with WCAG AA+ compliance achieved.** The monochrome design system with 21:1 contrast ratios significantly exceeds WCAG AAA requirements. Comprehensive keyboard navigation, reduced motion support, and semantic HTML structure provide an excellent accessible experience.
+**isaacvazquez.com demonstrates exceptional accessibility foundations with WCAG AA+ compliance achieved.** The monochrome design system with 21:1 contrast ratios significantly exceeds WCAG AAA requirements. Comprehensive keyboard navigation, reduced motion support, and semantic HTML structure provide an excellent accessible experience.
 
 ### Strengths:
 - ✅ Exceptional color contrast (21:1 for primary text)

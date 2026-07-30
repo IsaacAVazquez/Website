@@ -1,7 +1,7 @@
 > [!IMPORTANT]
 > Historical reference only. This file captures an older UI/UX implementation plan and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `PAGES.md`, `COMPONENTS.md`, `STYLING.md`, and `docs/README.md` for current documentation.
 
-# UI/UX Implementation Plan for isaacavazquez.com
+# UI/UX Implementation Plan for isaacvazquez.com
 
 **Based on:** UI_UX_RESEARCH.md research findings
 **Date Created:** November 2025
