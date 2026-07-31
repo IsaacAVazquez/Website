@@ -57,6 +57,7 @@ Current route inventory and page ownership for the live app.
 | `/fintech-tools/interchange-iq` | `src/app/fintech-tools/interchange-iq/page.tsx` | Interchange fee analyzer |
 | `/mba-internship-notifications` | `src/app/mba-internship-notifications/page.tsx` | Live MBA role tracker polling ~28 of 39 tracked companies for internships and full-time business roles |
 | `/decision-lab` | `src/app/decision-lab/page.tsx` | Decision-modeling sandbox |
+| `/enablement-assistant` | `src/app/enablement-assistant/page.tsx` | Automation platform enablement assistant and program dashboard |
 | `/food-map` | `src/app/food-map/page.tsx` | Food map |
 | `/recipe-finder` | `src/app/recipe-finder/page.tsx` | Recipe finder |
 | `/wine-cellar` | `src/app/wine-cellar/page.tsx` | Wine cellar |
@@ -114,6 +115,7 @@ These routes manage more of their own spacing and width:
 - `/changelog`
 - `/contact`
 - `/decision-lab`
+- `/enablement-assistant`
 - `/earthquake-pulse`
 - `/fantasy-formula-1`
 - `/fantasy-football`
@@ -162,7 +164,7 @@ These routes manage more of their own spacing and width:
 - `/fantasy-formula-1` is a live off-nav Fantasy Formula 1 optimizer with a self-managed shell
 - `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`, `/golf`, and `/world-cup-2026` are live off-nav sports data dashboards
 - `/bay-area-transit` is the live off-nav Bay Area civic transit dashboard, `/earthquake-pulse` is the live USGS earthquake monitor, and `/tech-startup-tracker` is a live curated startup funding tracker
-- `/ai-dev-tools`, `/frontier-models`, `/decision-lab`, `/news-pulse`, `/github-trending-pulse`, `/spacex-mission-control`, `/polling-aggregator`, `/mba-internship-notifications`, and `/fintech-tools/*` are live standalone tool surfaces even though they are not promoted in the global header
+- `/ai-dev-tools`, `/frontier-models`, `/decision-lab`, `/enablement-assistant`, `/news-pulse`, `/github-trending-pulse`, `/spacex-mission-control`, `/polling-aggregator`, `/mba-internship-notifications`, and `/fintech-tools/*` are live standalone tool surfaces even though they are not promoted in the global header
 - `/food-map`, `/recipe-finder`, `/wine-cellar`, `/museum-log`, `/travel`, `/now`, and `/changelog` are live personal or utility surfaces
 - `/search` exists, but its data quality is limited by the current hardcoded search API
 - there is no live `/admin/analytics` page in the current app tree

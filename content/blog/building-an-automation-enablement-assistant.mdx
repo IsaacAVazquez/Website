@@ -1,0 +1,61 @@
+---
+title: "Building an Automation Enablement Assistant Around the Questions It Cannot Answer"
+excerpt: "I built an onboarding and support tool for central automation teams, but the part I care about most is the failure log because it shows where the standard still cannot travel on its own."
+publishedAt: "2026-07-30"
+category: "Quality Engineering"
+tags: ["Quality Engineering", "Test Automation", "Platform Enablement", "Developer Tooling", "CI/CD", "Product Design", "Next.js"]
+featured: false
+archiveBucket: "Space & Experiments"
+author: "Isaac Vazquez"
+coverImage: "/writing/building-an-automation-enablement-assistant/opengraph-image"
+cta:
+  eyebrow: "Related tool"
+  title: "Open the Automation Enablement Assistant"
+  description: "The live tool is the fastest way to see the intake, scored recommendation, onboarding plan, troubleshooting boundary, handoff, and program dashboard working together."
+  href: "/enablement-assistant"
+  actionLabel: "Open the assistant"
+seo:
+  title: "Building an Automation Enablement Assistant for Platform Teams"
+  description: "How I built a deterministic platform enablement tool that recommends test automation stacks, writes onboarding plans, answers setup questions, and ranks the documentation gaps it cannot resolve."
+  keywords: ["automation enablement assistant", "platform enablement", "test automation standards", "quality engineering platform", "developer tooling onboarding", "test automation adoption"]
+---
+
+# Building an Automation Enablement Assistant Around the Questions It Cannot Answer
+
+If you want to use the product before reading the build note, open the [Automation Enablement Assistant](/enablement-assistant).
+
+Most conversations about central tooling teams focus on whether the team picked the right framework or wrote the standard clearly enough. I think the harder problem comes after the recommendation is finished. A small central team still has to deliver it to every product team, explain how it fits a different codebase, and debug the integration that behaves differently in one repository. The recommendation may be sound, but the cost of transferring it one team at a time keeps adoption inconsistent.
+
+I built the Automation Enablement Assistant around that delivery problem. A product team describes its surface, language, CI system, needed test layers, current maturity, team size, and quality ownership. The tool scores a committed catalog against those answers, writes an onboarding plan, retrieves common setup answers, and prepares a handoff when its confidence is too low. The central team gets fewer repeated conversations and a ranked record of the questions the assistant could not answer. I would argue that the second output is more valuable.
+
+## The bottleneck is delivering the standard
+
+A central automation team can publish one recommendation and still support twelve different implementations. One web team chooses Playwright but keeps its report format, another copies service fixtures from an older repository, and a mobile team stays with a separate device runner because the shared guide never explained its CI environment. The organization can look aligned at the framework level while preserving the differences that made shared support difficult.
+
+I saw the human version of this while building a QA function from scratch at Civitech. The guide had to be specific enough that another person could pick it up, make a reasonable decision, and keep moving when I was not in the room. Documentation that only works with its author standing beside it has moved the first explanation into a document and left every difficult edge case in the same support queue.
+
+That is why the tool models the adoption conversation. A team with no automation gets a first setup plan that starts with one critical workflow, while a team with a mature suite gets a parallel migration plan that preserves coverage until the new reports are stable. The framework matters, but what that choice asks the team to do next determines whether adoption happens.
+
+## The recommendation has to show its work
+
+I wanted the matching logic to be inspectable because a confident recommendation without visible reasoning would reproduce the same trust problem. The demo scores seven committed toolchains across surface, language, test layers, CI support, migration shape, team size, and quality ownership. Each factor adds or removes points, and the interface shows the full ledger. Changing the language or adding accessibility coverage moves the recommendation for a reason the user can see.
+
+If the best catalog option stays below 56%, the assistant says that the setup needs human review and stops before generating a plan. An unsupported language with a custom CI system may have a good answer in a real organization, but this catalog cannot support it. I think internal tools lose trust quickly when they treat missing knowledge as permission to improvise.
+
+The same rule applies to troubleshooting. A question about missing Playwright browser binaries maps to a seeded answer and configuration snippet, while a private device farm VPN handshake does not. The low-confidence path carries the exact question, intake, recommendation, and prior attempts into a support request so the central team can start with the failure.
+
+## The failure log is the product
+
+The program dashboard is the part I would keep if I had to cut the rest down. The demo shows twelve invented teams with different surfaces, stacks, support histories, and degrees of drift. Resolution and adoption rates tell the platform team whether the support layer is working, but the ranked unanswered questions tell it what to build next.
+
+If five teams ask how to authenticate against a shared test environment, the next piece of work is probably an environment setup guide or an approved fixture. If three mobile teams keep asking about device farms, the mobile standard is incomplete at the point where CI becomes real. If teams can run the standard but cannot preserve historical report trends during migration, reporting documentation is blocking adoption. Each unanswered question is both an individual support need and evidence about the system that produced the need. The failure log is a byproduct of helping teams, and it also improves the material that helps the next team.
+
+The resolved questions save time, but the unresolved questions concentrate information that would otherwise be scattered across tickets, messages, and meetings. Ranked by frequency and spread across teams, they give the central group a documentation roadmap based on observed demand. The assistant earns its place by making the platform team better at supporting everyone, including the cases it cannot resolve.
+
+## What this demo can prove
+
+The demo runs in the browser with committed TypeScript data. The matching is a scored heuristic rather than a language model, and every team, question count, adoption status, and documentation gap is invented. The product cannot prove what resolution rate a real organization would achieve or whether the weights would hold across a larger portfolio.
+
+I actually like the heuristic for this version because it makes the recommendation easy to challenge. A real implementation could retrieve from approved standards, support tickets, and integration guides, but I would keep the visible factors, confidence cutoff, and structured handoff. A more capable matching system still has to show why an answer fits and say when the available material is insufficient.
+
+The pattern I would pull out of this is that a central platform team scales when its knowledge can travel without its authors, and the clearest test of that system is where the knowledge stops. The recommendation starts the adoption, the onboarding plan makes it concrete, and the failure log shows where the platform still depends on a person. You can see the full loop in the [Automation Enablement Assistant](/enablement-assistant). For the adjacent quality engineering context, [Unlocking Daily Deploys by Treating QA as a Reusable System](/writing/qa-automation-daily-deploys) covers the same instinct from the test infrastructure side.

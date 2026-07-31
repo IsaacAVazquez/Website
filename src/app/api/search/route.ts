@@ -542,6 +542,18 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       tags: ['Decision Support', 'Analysis', 'Frameworks', 'Tool'],
     },
     {
+      id: 'page-automation-enablement-assistant',
+      title: 'Automation Enablement Assistant',
+      excerpt:
+        'Interactive platform enablement tool for test stack recommendations, onboarding plans, troubleshooting, escalation handoffs, and documentation-gap reporting.',
+      content:
+        'automation enablement assistant quality engineering test automation platform team tooling standards onboarding troubleshooting CI reporting documentation gaps',
+      url: '/enablement-assistant',
+      type: 'project',
+      category: 'Decision Tools',
+      tags: ['Platform Enablement', 'Quality Engineering', 'Test Automation', 'Tool'],
+    },
+    {
       id: 'page-now',
       title: 'Now',
       excerpt:

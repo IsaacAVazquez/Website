@@ -46,6 +46,7 @@ Primary live routes:
 - `/ai-dev-tools`
 - `/frontier-models`
 - `/decision-lab`
+- `/enablement-assistant`
 - `/food-map`
 - `/recipe-finder`
 - `/travel`
@@ -102,6 +103,7 @@ Self-shell routes currently include:
 - `/changelog`
 - `/contact`
 - `/decision-lab`
+- `/enablement-assistant`
 - `/earthquake-pulse`
 - `/fantasy-formula-1`
 - `/fantasy-football`

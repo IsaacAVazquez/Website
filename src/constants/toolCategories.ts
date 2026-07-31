@@ -32,6 +32,7 @@ const AI = new Set([
 ]);
 const DECISION = new Set([
   "decision-lab",
+  "automation-enablement-assistant",
   "mba-role-tracker",
 ]);
 const PULSE = new Set([

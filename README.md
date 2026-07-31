@@ -78,6 +78,7 @@ The site is portfolio-first. `Writing` is live and promoted in the global header
 | `/fintech-tools/interchange-iq` | Interchange fee analyzer |
 | `/polling-aggregator` | Political polling aggregator |
 | `/decision-lab` | Decision-modeling sandbox |
+| `/enablement-assistant` | Automation platform enablement assistant |
 | `/mba-internship-notifications` | MBA role tracker across tech company job boards |
 | `/museum-log` | Museum visit log |
 | `/travel` | Browser-persisted travel planner |

@@ -185,6 +185,7 @@ export const ARTICLE_COVER_IMAGES: ArticleCoverImageSpec[] = [
   // Systems & Quality cluster
   { slug: "ai-in-software-testing-future-of-qa", strategy: "editorial-card", reason: ABSTRACT_QA },
   { slug: "building-ai-powered-analytics-fantasy-football-to-enterprise", strategy: "editorial-card", reason: ABSTRACT_QA },
+  { slug: "building-an-automation-enablement-assistant", strategy: "editorial-card", reason: ABSTRACT_QA },
   { slug: "building-reliable-software-systems", strategy: "editorial-card", reason: ABSTRACT_QA },
   { slug: "complete-guide-qa-engineering", strategy: "editorial-card", reason: ABSTRACT_QA },
   { slug: "cybersecurity-in-age-of-ai-software-engineer-perspective", strategy: "editorial-card", reason: ABSTRACT_QA },

@@ -288,6 +288,39 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     retrospective: "",
   },
 
+  "automation-enablement-assistant": {
+    slug: "automation-enablement-assistant",
+    title: "Automation Enablement Assistant",
+    description:
+      "Internal platform enablement tool that recommends a standard test stack, builds an onboarding plan, answers setup questions, and turns unresolved questions into a documentation backlog.",
+    role: "Product Builder & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "Quality Engineering", "Decision Support UX"],
+    metrics: "12 seeded teams · 7 scored toolchains · 5 ranked documentation gaps",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/enablement-assistant",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built a first line of support for central tooling teams that have more adoption demand than they can handle one team at a time.",
+      impact:
+        "Turns repeated onboarding work into a consistent recommendation, a concrete team plan, and a ranked record of where the shared documentation still fails.",
+    },
+    problem: {
+      context:
+        "Independent product teams often choose separate automation stacks because the central tooling team can publish standards but cannot personally guide every adoption.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
   "food-map": {
     slug: "food-map",
     title: "Food Map",
@@ -1126,6 +1159,7 @@ const PORTFOLIO_PROJECT_ORDER = [
   "github-trending-pulse",
   "tech-startup-tracker",
   "decision-lab",
+  "automation-enablement-assistant",
   "food-map",
   "museum-log",
   "wine-cellar",

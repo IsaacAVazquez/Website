@@ -5,6 +5,7 @@ export const projectBuildNoteLinks: Record<string, string> = {
   "/ai-dev-tools": "/writing/mapping-the-ai-dev-tool-ecosystem",
   "/bay-area-transit": "/writing/building-a-bart-transit-dashboard",
   "/decision-lab": "/writing/building-decision-lab",
+  "/enablement-assistant": "/writing/building-an-automation-enablement-assistant",
   "/earthquake-pulse": "/writing/building-an-earthquake-dashboard",
   "/fantasy-formula-1": "/writing/building-a-fantasy-formula-1-optimizer",
   "/fantasy-football": "/writing/building-a-fantasy-football-rankings-platform",

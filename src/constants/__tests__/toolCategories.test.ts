@@ -14,6 +14,7 @@ describe("classifyToolSlug", () => {
     expect(classifyToolSlug("frontier-model-tracker")).toBe("ai");
     expect(classifyToolSlug("github-trending-pulse")).toBe("ai");
     expect(classifyToolSlug("decision-lab")).toBe("decision");
+    expect(classifyToolSlug("automation-enablement-assistant")).toBe("decision");
     expect(classifyToolSlug("polling-aggregator")).toBe("civic");
     expect(classifyToolSlug("wine-cellar")).toBe("lifestyle");
     // Science & space owns the physical-world feeds — SpaceX is not a sport.

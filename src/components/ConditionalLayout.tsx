@@ -30,6 +30,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
     "/changelog",
     "/contact",
     "/decision-lab",
+    "/enablement-assistant",
     "/earthquake-pulse",
     "/fantasy-formula-1",
     "/fantasy-football",

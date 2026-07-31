@@ -23,6 +23,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/golf": "2026-04-16",
   "/earthquake-pulse": readEarthquakeLastmod(),
   "/decision-lab": "2026-04-04",
+  "/enablement-assistant": "2026-07-30",
   "/formula-1": "2026-04-04",
   "/fantasy-formula-1": readFormula1Lastmod(),
   "/frontier-models": "2026-04-04",
@@ -103,6 +104,7 @@ const CHANGEFREQ_BY_ROUTE = {
   // Knowledge / editorial surfaces — hand-maintained, refreshed occasionally
   "/ai-dev-tools": "monthly",
   "/decision-lab": "monthly",
+  "/enablement-assistant": "monthly",
   "/frontier-models": "monthly",
   "/tech-startup-tracker": "monthly",
   // Seasonal
