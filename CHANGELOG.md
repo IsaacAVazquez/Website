@@ -7,6 +7,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 ## 2026-07-31
 
 - Fix canonical domain and SEO crawl signals ([#361](https://github.com/IsaacAVazquez/Website/pull/361)).
+- Fix investment tooltip lint errors ([#362](https://github.com/IsaacAVazquez/Website/pull/362)).
 
 ---
 
