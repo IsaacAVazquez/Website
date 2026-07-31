@@ -1,5 +1,9 @@
 import { getPortfolioProjects } from "@/constants/caseStudies";
-import { constructMetadata } from "@/lib/seo";
+import {
+  constructMetadata,
+  generateBreadcrumbStructuredData,
+} from "@/lib/seo";
+import { StructuredData } from "@/components/StructuredData";
 import { PortfolioInstrument } from "@/components/portfolio/PortfolioInstrument";
 import { AIStructuredData } from "@/components/AIStructuredData";
 
@@ -13,9 +17,23 @@ export const metadata = constructMetadata({
 
 export default function PortfolioPage() {
   const portfolioProjects = getPortfolioProjects();
+  const breadcrumbs = [
+    { name: "Home", url: "/" },
+    { name: "Projects", url: "/portfolio" },
+  ];
 
   return (
     <>
+      <StructuredData
+        type="BreadcrumbList"
+        data={{
+          items: (
+            generateBreadcrumbStructuredData(breadcrumbs) as {
+              itemListElement: object[];
+            }
+          ).itemListElement,
+        }}
+      />
       <AIStructuredData
         schema={{
           type: "ItemList",
