@@ -85,17 +85,15 @@ interface BubblePosition {
 export function MetricTooltip({ term, definition }: Props) {
   const text = definition ?? METRIC_DEFINITIONS[term];
 
-  const triggerRef = React.useRef<HTMLSpanElement>(null);
+  const triggerRef = React.useRef<HTMLButtonElement>(null);
   const bubbleRef = React.useRef<HTMLSpanElement>(null);
   const [hovered, setHovered] = React.useState(false);
   const [focused, setFocused] = React.useState(false);
-  const [mounted, setMounted] = React.useState(false);
   const [pos, setPos] = React.useState<BubblePosition | null>(null);
   const reactId = React.useId();
   const bubbleId = `metric-tip-${reactId}`;
   const open = hovered || focused;
-
-  React.useEffect(() => setMounted(true), []);
+  const portalTarget = typeof document === "undefined" ? null : document.body;
 
   const reposition = React.useCallback(() => {
     const trigger = triggerRef.current;
@@ -127,10 +125,8 @@ export function MetricTooltip({ term, definition }: Props) {
   // any nested container). useEffect (not useLayoutEffect) keeps this SSR-safe;
   // the bubble stays invisible until `pos` is set, so there's no flash.
   React.useEffect(() => {
-    if (!open) {
-      setPos(null);
-      return;
-    }
+    if (!open) return;
+
     reposition();
     const handle = () => reposition();
     window.addEventListener("scroll", handle, true);
@@ -148,32 +144,36 @@ export function MetricTooltip({ term, definition }: Props) {
   const swallow = (event: { stopPropagation: () => void }) => event.stopPropagation();
 
   return (
-    <span className="relative ml-0.5 inline-flex items-center align-middle">
-      <span
+    <span className="relative ml-0.5 inline-flex h-4 w-4 items-center align-middle">
+      <button
         ref={triggerRef}
-        role="button"
-        tabIndex={0}
+        type="button"
         aria-label={`What is ${term}?`}
         aria-describedby={open ? bubbleId : undefined}
         onClick={swallow}
         onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
+        onMouseLeave={() => {
+          setHovered(false);
+          if (!focused) setPos(null);
+        }}
         onFocus={() => setFocused(true)}
-        onBlur={() => setFocused(false)}
+        onBlur={() => {
+          setFocused(false);
+          if (!hovered) setPos(null);
+        }}
         onKeyDown={(event) => {
-          if (event.key === "Enter" || event.key === " ") {
-            event.preventDefault();
-            swallow(event);
-          } else if (event.key === "Escape") {
+          swallow(event);
+          if (event.key === "Escape") {
             triggerRef.current?.blur();
-            setFocused(false);
           }
         }}
-        className="flex h-4 w-4 cursor-help items-center justify-center rounded-full bg-[var(--home-paper-alt)] text-3xs font-bold leading-none text-[var(--home-ink-muted)] ring-1 ring-[var(--home-rule)] outline-none transition-shadow focus-visible:ring-2 focus-visible:ring-[var(--home-ink)]"
+        className="absolute left-1/2 top-1/2 flex min-h-touch min-w-touch -translate-x-1/2 -translate-y-1/2 cursor-help items-center justify-center rounded-full outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-ink)]"
       >
-        ?
-      </span>
-      {mounted &&
+        <span className="flex h-4 w-4 items-center justify-center rounded-full bg-[var(--home-paper-alt)] text-3xs font-bold leading-none text-[var(--home-ink-muted)] ring-1 ring-[var(--home-rule)]">
+          ?
+        </span>
+      </button>
+      {portalTarget &&
         open &&
         createPortal(
           <span
@@ -207,7 +207,7 @@ export function MetricTooltip({ term, definition }: Props) {
               />
             )}
           </span>,
-          document.body
+          portalTarget
         )}
     </span>
   );
