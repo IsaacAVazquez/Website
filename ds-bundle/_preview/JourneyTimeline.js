@@ -89,7 +89,8 @@ var __dsPreview = (() => {
   // .design-sync/previews/JourneyTimeline.tsx
   var JourneyTimeline_exports = {};
   __export(JourneyTimeline_exports, {
-    CareerJourney: () => CareerJourney
+    CareerJourney: () => CareerJourney,
+    IconFallback: () => IconFallback
   });
   init_define_import_meta_env();
 
@@ -105,6 +106,52 @@ var __dsPreview = (() => {
 
   // .design-sync/previews/JourneyTimeline.tsx
   var import_jsx_runtime = __toESM(require_react_shim());
-  var CareerJourney = () => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "max-w-2xl", children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ds_exports.JourneyTimeline, {}) });
+  var logo = (initials, bg) => "data:image/svg+xml;utf8," + encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><rect width="36" height="36" fill="${bg}"/><text x="18" y="23" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">${initials}</text></svg>`
+  );
+  var CareerJourney = () => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "max-w-2xl", children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+    ds_exports.JourneyTimeline,
+    {
+      items: [
+        {
+          year: 2020,
+          role: "Digital and Data Associate",
+          company: "Open Progress",
+          logo: logo("OP", "#2f5d50"),
+          description: "Moved client analytics from manual reporting to automated pipelines with interactive dashboards.",
+          techStack: ["SQL", "Tableau", "ETL Pipelines"]
+        },
+        {
+          year: 2023,
+          role: "QA Engineer",
+          company: "Civitech",
+          logo: logo("CT", "#1f3d7a"),
+          description: "Built the test infrastructure behind voter contact tools used across national campaigns.",
+          techStack: ["Playwright", "TypeScript", "CI/CD"]
+        }
+      ]
+    }
+  ) });
+  var IconFallback = () => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "max-w-2xl", children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+    ds_exports.JourneyTimeline,
+    {
+      items: [
+        {
+          year: 2018,
+          role: "Bachelor of Arts Graduate",
+          company: "Florida State University",
+          description: "Political Science and International Affairs, where the research habits started.",
+          techStack: ["Research", "Policy Analysis"]
+        },
+        {
+          year: 2026,
+          role: "MBA Candidate",
+          company: "Berkeley Haas",
+          description: "Product management and analytics, with a focus on how data changes team decisions.",
+          techStack: ["Strategy", "Product", "Analytics"]
+        }
+      ]
+    }
+  ) });
   return __toCommonJS(JourneyTimeline_exports);
 })();

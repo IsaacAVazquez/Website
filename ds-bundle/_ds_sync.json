@@ -1,6 +1,6 @@
 {
   "shape": "package",
-  "styleSha": "a19946a1e940dc9e18ef8b2865c449013204da1f3932db5de8252702d02078cc",
+  "styleSha": "1cdc4b18f8f8457215f4e814ef4ed97b63d2f042653849d1637027a0e5504694",
   "renderHashes": {
     "AuthorBio": "d5990775011af1b4",
     "Badge": "4a13bed13f6a1022",
@@ -19,7 +19,7 @@
     "InfoChip": "e6af1a9c2d00a07c",
     "InlineSectionLead": "df29eb764b5b105b",
     "InstrumentTape": "90f7b927aaaba122",
-    "JourneyTimeline": "87111edfbd04c26d",
+    "JourneyTimeline": "589a5ccc2ac1cb3d",
     "Kicker": "4a0789dc4b8b5907",
     "LeaderLedger": "74a94c79143304f9",
     "LeaderList": "e57dda6973b731b3",
@@ -60,7 +60,7 @@
     "InfoChip": "ffeb74299c8a48ec",
     "InlineSectionLead": "f9bf5f718cd8d724",
     "InstrumentTape": "b46f69ee825e2f83",
-    "JourneyTimeline": "d020e85ac61d9094",
+    "JourneyTimeline": "2b4cf40e81aac29d",
     "Kicker": "bb2ec5248e921fd0",
     "LeaderLedger": "984b1715e8183ef8",
     "LeaderList": "2dd0dd1eb228de65",
@@ -138,8 +138,8 @@
     "components/editorial/InstrumentTape/InstrumentTape.d.ts": "e0a68529ba19",
     "components/editorial/InstrumentTape/InstrumentTape.prompt.md": "b0498e0b3900",
     "components/general/JourneyTimeline/JourneyTimeline.jsx": "72d837b5b983",
-    "components/general/JourneyTimeline/JourneyTimeline.d.ts": "b54044236975",
-    "components/general/JourneyTimeline/JourneyTimeline.prompt.md": "7a2867f2983b",
+    "components/general/JourneyTimeline/JourneyTimeline.d.ts": "ec0e2f7e98e5",
+    "components/general/JourneyTimeline/JourneyTimeline.prompt.md": "0d004ab58a78",
     "components/general/Kicker/Kicker.jsx": "a225b9aa5d0d",
     "components/general/Kicker/Kicker.d.ts": "32bd44035d38",
     "components/general/Kicker/Kicker.prompt.md": "05bed6e8fc3e",
@@ -204,6 +204,6 @@
     "components/general/WarmCard/WarmCard.d.ts": "ebef6cc62f81",
     "components/general/WarmCard/WarmCard.prompt.md": "9e8a28e0a193"
   },
-  "auxSha": "295f7b2dac75b27b",
-  "bundleSha12": "aaf38407525f"
+  "auxSha": "f170d89af6db77c5",
+  "bundleSha12": "9c3d01202b40"
 }

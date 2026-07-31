@@ -9,8 +9,23 @@ import {
   IconRocket,
 } from "@tabler/icons-react";
 
+export interface JourneyTimelineItem {
+  year: number;
+  role: string;
+  company: string;
+  /** Logo URL. Omit to fall back to a company-derived icon. */
+  logo?: string;
+  description: string;
+  techStack: string[];
+}
+
+export interface JourneyTimelineProps {
+  /** Timeline entries, oldest first. Defaults to the site's own career timeline. */
+  items?: JourneyTimelineItem[];
+}
+
 interface TimelineItemProps {
-  item: typeof careerTimeline[0];
+  item: JourneyTimelineItem;
   isLast: boolean;
 }
 
@@ -104,7 +119,7 @@ const TimelineItem = ({ item, isLast }: TimelineItemProps) => {
   );
 };
 
-export function JourneyTimeline() {
+export function JourneyTimeline({ items = careerTimeline }: JourneyTimelineProps = {}) {
   return (
     <div className="max-w-5xl mx-auto">
       <div className="home-card home-project-card space-y-5">
@@ -114,11 +129,11 @@ export function JourneyTimeline() {
         </p>
 
         <div className="pt-2">
-          {careerTimeline.map((item, index) => (
+          {items.map((item, index) => (
             <TimelineItem
               key={`${item.year}-${item.role}`}
               item={item}
-              isLast={index === careerTimeline.length - 1}
+              isLast={index === items.length - 1}
             />
           ))}
         </div>
