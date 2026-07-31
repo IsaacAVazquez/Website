@@ -14,6 +14,7 @@ import { buildPersonEntity, siteConfig } from "./seo";
 
 export interface PersonSchemaData {
   name?: string;
+  alternateName?: string | string[];
   jobTitle?: string;
   description?: string;
   url?: string;
@@ -206,7 +207,9 @@ export function generateEnhancedPersonSchema(data: PersonSchemaData) {
 
   if (data.name) {
     schema.name = data.name;
-    schema.alternateName = data.name;
+  }
+  if (data.alternateName) {
+    schema.alternateName = data.alternateName;
   }
   if (data.description) {
     schema.description = data.description;
@@ -270,8 +273,6 @@ export function generateEnhancedPersonSchema(data: PersonSchemaData) {
       description: edu.description,
       ...(edu.address && { address: edu.address }),
       ...(edu.url && { url: edu.url }),
-      ...(edu.startDate && { startDate: edu.startDate }),
-      ...(edu.endDate && { endDate: edu.endDate }),
     }));
   }
 

@@ -1,9 +1,14 @@
 export const profile = {
   name: "Isaac Vazquez",
+  givenName: "Isaac",
+  familyName: "Vazquez",
+  alternateNames: ["@isaacvazquez", "IsaacAVazquez"],
   shortTitle: "Product Manager",
   fullTitle: "Product Manager & UC Berkeley Haas MBA Candidate",
   description:
     "Product manager with a QA-to-product background and 6+ years across SaaS, analytics, and civic tech. Builds AI workflow, fintech, and decision-support products.",
+  disambiguatingDescription:
+    "Product manager and UC Berkeley Haas MBA candidate based in Berkeley, California, with six years across civic technology, QA, analytics, and SaaS.",
   shortDescription:
     "UC Berkeley Haas MBA candidate with a background in QA, analytics, and product work across SaaS, civic tech, and fintech-style tools.",
   location: {
@@ -56,6 +61,7 @@ export const profile = {
       "@type": "CollegeOrUniversity" as const,
       name: "UC Berkeley Haas School of Business",
       description: "MBA Candidate (Class of 2027)",
+      url: "https://haas.berkeley.edu/",
       degree: "Master of Business Administration",
       startDate: "2025-08",
       endDate: "2027-05",
@@ -64,6 +70,7 @@ export const profile = {
       "@type": "CollegeOrUniversity" as const,
       name: "Florida State University",
       description: "Bachelor of Arts - Political Science and International Affairs",
+      url: "https://www.fsu.edu/",
       degree: "Bachelor of Arts",
       endDate: "2018",
     },

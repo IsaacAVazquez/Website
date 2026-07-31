@@ -74,6 +74,35 @@ describe("AI SEO structured-data generators", () => {
       "https://isaacvazquez.com/about#person"
     );
     expect(schema.url).toBe("https://isaacvazquez.com/about");
+    expect(schema.givenName).toBe("Isaac");
+    expect(schema.familyName).toBe("Vazquez");
+    expect(schema.alternateName).toEqual([
+      "@isaacvazquez",
+      "IsaacAVazquez",
+    ]);
+  });
+
+  it("keeps education organizations free of role timing fields", () => {
+    const schema = generateEnhancedPersonSchema({
+      alumniOf: [
+        {
+          "@type": "CollegeOrUniversity",
+          name: "Florida State University",
+          startDate: "2014",
+          endDate: "2018",
+        },
+      ],
+    }) as Record<string, unknown>;
+
+    expect(schema.alumniOf).toEqual([
+      {
+        "@type": "CollegeOrUniversity",
+        name: "Florida State University",
+        description: undefined,
+      },
+    ]);
+    expect(JSON.stringify(schema)).not.toContain('"startDate"');
+    expect(JSON.stringify(schema)).not.toContain('"endDate"');
   });
 
   it("gives each breadcrumb trail a page-specific id", () => {

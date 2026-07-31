@@ -49,6 +49,7 @@ export default function AboutPage() {
                   "@type": "CollegeOrUniversity",
                   name: profile.education[0].name,
                   description: profile.education[0].description,
+                  url: profile.education[0].url,
                 },
               ],
               alumniOf: [profile.education[1]],

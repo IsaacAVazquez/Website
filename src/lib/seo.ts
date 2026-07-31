@@ -351,10 +351,14 @@ export function buildPersonEntity(): Record<string, unknown> {
     "@type": "Person",
     "@id": personSchemaId,
     name: siteConfig.name,
+    givenName: profile.givenName,
+    familyName: profile.familyName,
+    alternateName: profile.alternateNames,
     jobTitle: profile.fullTitle,
     description: siteConfig.description,
+    disambiguatingDescription: profile.disambiguatingDescription,
     url: personCanonicalUrl,
-    image: absoluteUrl(siteConfig.ogImage),
+    image: absoluteUrl("/images/headshot-home.webp"),
     sameAs: profileSameAs,
     address: {
       "@type": "PostalAddress",
@@ -366,12 +370,14 @@ export function buildPersonEntity(): Record<string, unknown> {
       "@type": "CollegeOrUniversity",
       name: currentEducation.name,
       description: currentEducation.description,
+      url: currentEducation.url,
     },
     alumniOf: [
       {
         "@type": "CollegeOrUniversity",
         name: completedEducation.name,
         description: completedEducation.description,
+        url: completedEducation.url,
       },
     ],
     worksFor: {
