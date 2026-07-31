@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-30T22:32:15.225Z",
+  "generatedAt": "2026-07-31T11:37:29.870Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-07-30T22:32:08.984Z"
+    "generatedAt": "2026-07-31T11:37:26.333Z"
   },
   "upcomingLaunches": [
     {
@@ -474,12 +474,52 @@
       }
     },
     {
-      "id": "4541ce85-0e38-42ac-a9a0-20474bb5f2cd",
-      "name": "SDA Tranche 1 Transport Layer D",
-      "flightNumber": 726,
+      "id": "dca8749f-1552-485a-8061-f1ad79055b8d",
+      "name": "SDA Tranche 1 Tracking Layer C",
+      "flightNumber": 727,
       "upcoming": true,
       "success": null,
-      "details": "Tranche 1 Transport Layer D is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.",
+      "details": "Tranche 1 Tracking Layer C is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
+      "dateUtc": "2026-09-30T00:00:00Z",
+      "dateUnix": 1790726400,
+      "dateLocal": "2026-09-30T00:00:00Z",
+      "datePrecision": "quarter",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
+      "id": "fcbc4550-e69e-4458-a9e6-4a5b6b6b15a5",
+      "name": "SDA Tranche 1 Tracking Layer E",
+      "flightNumber": 727,
+      "upcoming": true,
+      "success": null,
+      "details": "Tranche 1 Tracking Layer E is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
       "dateUtc": "2026-09-30T00:00:00Z",
       "dateUnix": 1790726400,
       "dateLocal": "2026-09-30T00:00:00Z",
@@ -516,7 +556,7 @@
     {
       "id": "c5783e2b-d458-4b99-9936-4043c236190b",
       "name": "SDA Tranche 1 Transport Layer F",
-      "flightNumber": 726,
+      "flightNumber": 727,
       "upcoming": true,
       "success": null,
       "details": "Tranche 1 Transport Layer F is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.",
@@ -556,7 +596,7 @@
     {
       "id": "18441371-8b2e-457c-afb5-1ec1b11ab630",
       "name": "Crew-13",
-      "flightNumber": 726,
+      "flightNumber": 727,
       "upcoming": true,
       "success": null,
       "details": "SpaceX Crew-13 is the thirteenth crewed operational flight of a Crew Dragon spacecraft to the International Space Station as part of NASA's Commercial Crew Program.",
@@ -594,86 +634,6 @@
       }
     },
     {
-      "id": "2d0472b9-463d-49c8-afb1-7925e49a3368",
-      "name": "SDA Tranche 1 Tracking Layer A",
-      "flightNumber": 726,
-      "upcoming": true,
-      "success": null,
-      "details": "Tranche 1 Tracking Layer A is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
-      "dateUtc": "2026-09-30T00:00:00Z",
-      "dateUnix": 1790726400,
-      "dateLocal": "2026-09-30T00:00:00Z",
-      "datePrecision": "quarter",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
-      "id": "fcbc4550-e69e-4458-a9e6-4a5b6b6b15a5",
-      "name": "SDA Tranche 1 Tracking Layer E",
-      "flightNumber": 726,
-      "upcoming": true,
-      "success": null,
-      "details": "Tranche 1 Tracking Layer E is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
-      "dateUtc": "2026-09-30T00:00:00Z",
-      "dateUnix": 1790726400,
-      "dateLocal": "2026-09-30T00:00:00Z",
-      "datePrecision": "quarter",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
       "id": "7d1afb26-6f9c-429b-9ccf-29012fd1e519",
       "name": "Flight 14",
       "flightNumber": 727,
@@ -690,7 +650,7 @@
       "launchpadName": "Orbital Launch Pad 2",
       "launchpadLocation": "SpaceX Starbase, TX, USA",
       "patchImage": null,
-      "vehicleImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/starship_on_the_image_20260724044615.jpg",
+      "vehicleImage": "/data/spacex/images/4bf502ff63e8fce9.jpg",
       "crewCount": 0,
       "payloadCount": 1,
       "capsuleCount": 0,
@@ -709,94 +669,14 @@
         "patchSmall": null,
         "patchLarge": null,
         "flickrOriginal": [
-          "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/starship_on_the_image_20260724044615.jpg"
-        ]
-      }
-    },
-    {
-      "id": "dca8749f-1552-485a-8061-f1ad79055b8d",
-      "name": "SDA Tranche 1 Tracking Layer C",
-      "flightNumber": 726,
-      "upcoming": true,
-      "success": null,
-      "details": "Tranche 1 Tracking Layer C is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
-      "dateUtc": "2026-09-30T00:00:00Z",
-      "dateUnix": 1790726400,
-      "dateLocal": "2026-09-30T00:00:00Z",
-      "datePrecision": "quarter",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
-      "id": "da43dc2c-00af-4cc1-8ef1-90a60b2eb9e5",
-      "name": "SDA Tranche 1 Transport Layer A",
-      "flightNumber": 726,
-      "upcoming": true,
-      "success": null,
-      "details": "Tranche 1 Transport Layer A is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.\r\n\r\nThis launch carries 21 satellites manufactured by Northrop Grumman.",
-      "dateUtc": "2026-09-30T00:00:00Z",
-      "dateUnix": 1790726400,
-      "dateLocal": "2026-09-30T00:00:00Z",
-      "datePrecision": "quarter",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 21,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
+          "/data/spacex/images/4bf502ff63e8fce9.jpg"
         ]
       }
     },
     {
       "id": "ad358a4d-c541-409b-9366-9c2f2da4aeb9",
       "name": "O3b mPower 11-13",
-      "flightNumber": 726,
+      "flightNumber": 727,
       "upcoming": true,
       "success": null,
       "details": "3 high-throughput communications satellites in Medium Earth Orbit (MEO) built by Boeing and operated by SES.",
@@ -834,9 +714,129 @@
       }
     },
     {
+      "id": "2d0472b9-463d-49c8-afb1-7925e49a3368",
+      "name": "SDA Tranche 1 Tracking Layer A",
+      "flightNumber": 727,
+      "upcoming": true,
+      "success": null,
+      "details": "Tranche 1 Tracking Layer A is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
+      "dateUtc": "2026-09-30T00:00:00Z",
+      "dateUnix": 1790726400,
+      "dateLocal": "2026-09-30T00:00:00Z",
+      "datePrecision": "quarter",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
+      "id": "4541ce85-0e38-42ac-a9a0-20474bb5f2cd",
+      "name": "SDA Tranche 1 Transport Layer D",
+      "flightNumber": 727,
+      "upcoming": true,
+      "success": null,
+      "details": "Tranche 1 Transport Layer D is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.",
+      "dateUtc": "2026-09-30T00:00:00Z",
+      "dateUnix": 1790726400,
+      "dateLocal": "2026-09-30T00:00:00Z",
+      "datePrecision": "quarter",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
+      "id": "da43dc2c-00af-4cc1-8ef1-90a60b2eb9e5",
+      "name": "SDA Tranche 1 Transport Layer A",
+      "flightNumber": 727,
+      "upcoming": true,
+      "success": null,
+      "details": "Tranche 1 Transport Layer A is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.\r\n\r\nThis launch carries 21 satellites manufactured by Northrop Grumman.",
+      "dateUtc": "2026-09-30T00:00:00Z",
+      "dateUnix": 1790726400,
+      "dateLocal": "2026-09-30T00:00:00Z",
+      "datePrecision": "quarter",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 21,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
       "id": "67213393-7983-4c06-8b44-b8c785a5ed79",
       "name": "Transporter 18 (Dedicated SSO Rideshare)",
-      "flightNumber": 727,
+      "flightNumber": 728,
       "upcoming": true,
       "success": null,
       "details": "Dedicated rideshare flight to a sun-synchronous orbit with dozens of small microsatellites and nanosatellites for commercial and government customers.",
@@ -876,7 +876,7 @@
     {
       "id": "d3bd7fb2-fac6-49fc-ae52-cee07d2fde67",
       "name": "Griffin Mission One",
-      "flightNumber": 728,
+      "flightNumber": 729,
       "upcoming": true,
       "success": null,
       "details": "Demonstration flight of the Astrobotic Griffin lander and its engines, initially contracted for the cancelled NASA VIPER (Volatiles Investigating Polar Exploration Rover) mission. The vacated payload spot will now host the FLIP (FLEX Lunar Innovation Platform) lunar rover from Astrolab.",
@@ -914,129 +914,9 @@
       }
     },
     {
-      "id": "2f31a7f0-968a-448d-b447-333bf0341078",
-      "name": "Rivada 4",
-      "flightNumber": 763,
-      "upcoming": true,
-      "success": null,
-      "details": "24 satellites for Rivada's internet constellation.",
-      "dateUtc": "2026-12-31T00:00:00Z",
-      "dateUnix": 1798675200,
-      "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "year",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 24,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Rivada_Networks",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
-      "id": "bf2c3027-a314-403e-a416-2bfd5d165ad1",
-      "name": "Dragon CRS-2 SpX-35",
-      "flightNumber": 763,
-      "upcoming": true,
-      "success": null,
-      "details": "35th commercial resupply services mission to the International Space Station operated by SpaceX. The flight will be conducted under the second Commercial Resupply Services contract with NASA.\r\n\r\nCargo Dragon 2 brings supplies and payloads, including critical materials to directly support science and research investigations that occur onboard the orbiting laboratory.",
-      "dateUtc": "2026-12-31T00:00:00Z",
-      "dateUnix": 1798675200,
-      "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "quarter",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Unknown Pad",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/5efabdd13dfdeda1.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": "https://www.nasa.gov/mission_pages/station/main/index.html",
-        "wikipedia": "https://en.wikipedia.org/wiki/Commercial_Resupply_Services#Commercial_Resupply_Services",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/5efabdd13dfdeda1.jpg"
-        ]
-      }
-    },
-    {
-      "id": "d74afbc7-0de5-491c-be05-4e9c31f736ac",
-      "name": "Cygnus CRS-2 NG-25",
-      "flightNumber": 763,
-      "upcoming": true,
-      "success": null,
-      "details": "This is the 25th flight of the Orbital ATK's uncrewed resupply spacecraft Cygnus and its 24th flight to the International Space Station under the Commercial Resupply Services contract with NASA.",
-      "dateUtc": "2026-12-31T00:00:00Z",
-      "dateUnix": 1798675200,
-      "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "quarter",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 40",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": "https://www.nasa.gov/mission_pages/station/main/index.html",
-        "wikipedia": "https://en.wikipedia.org/wiki/Commercial_Resupply_Services#Commercial_Resupply_Services",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
       "id": "fc1bd321-e502-4d0f-81f4-1926dece81c6",
       "name": "VICTUS SURGO",
-      "flightNumber": 763,
+      "flightNumber": 764,
       "upcoming": true,
       "success": null,
       "details": "A new Tactically Responsive Space (TacRS) mission by the United States Space Force Space Systems Command to deliver responsive space delivery. The mission consists of an Impulse Space Mira orbital transfer vehicle that will operate in Geosynchronous Transfer Orbit (GTO), which would be transferred from Low Earth Orbit (LEO) on an Impulse Space Helios kick stage. A Helios rideshare payload will also be delivered to GEO.",
@@ -1074,9 +954,9 @@
       }
     },
     {
-      "id": "dfd444f9-ddda-4b35-8f51-cda7cd801809",
-      "name": "Rivada 1",
-      "flightNumber": 763,
+      "id": "d08d8b46-353b-4eee-ab5e-e1385b329008",
+      "name": "Rivada 11",
+      "flightNumber": 764,
       "upcoming": true,
       "success": null,
       "details": "24 satellites for Rivada's internet constellation.",
@@ -1110,6 +990,126 @@
         "patchLarge": null,
         "flickrOriginal": [
           "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
+      "id": "ce1317de-ec94-4479-9b28-38ebf11f13ae",
+      "name": "Telesat Lightspeed 1",
+      "flightNumber": 764,
+      "upcoming": true,
+      "success": null,
+      "details": "Up to 18 satellites manufactured by MDA for Canadian satellite operator Telesat's Lightspeed constellation.",
+      "dateUtc": "2026-12-31T00:00:00Z",
+      "dateUnix": 1798675200,
+      "dateLocal": "2026-12-31T00:00:00Z",
+      "datePrecision": "month",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Unknown Pad",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 18,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Telesat",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
+      "id": "d74afbc7-0de5-491c-be05-4e9c31f736ac",
+      "name": "Cygnus CRS-2 NG-25",
+      "flightNumber": 764,
+      "upcoming": true,
+      "success": null,
+      "details": "This is the 25th flight of the Orbital ATK's uncrewed resupply spacecraft Cygnus and its 24th flight to the International Space Station under the Commercial Resupply Services contract with NASA.",
+      "dateUtc": "2026-12-31T00:00:00Z",
+      "dateUnix": 1798675200,
+      "dateLocal": "2026-12-31T00:00:00Z",
+      "datePrecision": "quarter",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 40",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": "https://www.nasa.gov/mission_pages/station/main/index.html",
+        "wikipedia": "https://en.wikipedia.org/wiki/Commercial_Resupply_Services#Commercial_Resupply_Services",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
+      "id": "bf2c3027-a314-403e-a416-2bfd5d165ad1",
+      "name": "Dragon CRS-2 SpX-35",
+      "flightNumber": 764,
+      "upcoming": true,
+      "success": null,
+      "details": "35th commercial resupply services mission to the International Space Station operated by SpaceX. The flight will be conducted under the second Commercial Resupply Services contract with NASA.\r\n\r\nCargo Dragon 2 brings supplies and payloads, including critical materials to directly support science and research investigations that occur onboard the orbiting laboratory.",
+      "dateUtc": "2026-12-31T00:00:00Z",
+      "dateUnix": 1798675200,
+      "dateLocal": "2026-12-31T00:00:00Z",
+      "datePrecision": "quarter",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Unknown Pad",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/5efabdd13dfdeda1.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": "https://www.nasa.gov/mission_pages/station/main/index.html",
+        "wikipedia": "https://en.wikipedia.org/wiki/Commercial_Resupply_Services#Commercial_Resupply_Services",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/5efabdd13dfdeda1.jpg"
         ]
       }
     }
@@ -1212,7 +1212,7 @@
       "launchpadName": "Orbital Launch Pad 2",
       "launchpadLocation": "SpaceX Starbase, TX, USA",
       "patchImage": null,
-      "vehicleImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/starship_on_the_image_20260724044615.jpg",
+      "vehicleImage": "/data/spacex/images/4bf502ff63e8fce9.jpg",
       "crewCount": 0,
       "payloadCount": 1,
       "capsuleCount": 0,
@@ -1231,7 +1231,7 @@
         "patchSmall": null,
         "patchLarge": null,
         "flickrOriginal": [
-          "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/starship_on_the_image_20260724044615.jpg"
+          "/data/spacex/images/4bf502ff63e8fce9.jpg"
         ]
       }
     },
@@ -2289,7 +2289,7 @@
       "launchpadName": "Orbital Launch Pad 2",
       "launchpadLocation": "SpaceX Starbase, TX, USA",
       "patchImage": "/data/spacex/images/c044d36407569003.png",
-      "vehicleImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/starship_on_the_image_20260724044615.jpg",
+      "vehicleImage": "/data/spacex/images/4bf502ff63e8fce9.jpg",
       "crewCount": 0,
       "payloadCount": 1,
       "capsuleCount": 0,
@@ -2308,7 +2308,7 @@
         "patchSmall": "/data/spacex/images/c044d36407569003.png",
         "patchLarge": "/data/spacex/images/c044d36407569003.png",
         "flickrOriginal": [
-          "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/starship_on_the_image_20260724044615.jpg"
+          "/data/spacex/images/4bf502ff63e8fce9.jpg"
         ]
       },
       "staticFireDateUtc": null,
@@ -2333,7 +2333,7 @@
         "massKg": 5250000,
         "image": null,
         "flickrImages": [
-          "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/starship_on_the_image_20260724044615.jpg"
+          "/data/spacex/images/4bf502ff63e8fce9.jpg"
         ]
       },
       "launchpad": {
@@ -2780,7 +2780,7 @@
       "launchpadName": "Orbital Launch Pad 2",
       "launchpadLocation": "SpaceX Starbase, TX, USA",
       "patchImage": "/data/spacex/images/c044d36407569003.png",
-      "vehicleImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/starship_on_the_image_20260724044615.jpg",
+      "vehicleImage": "/data/spacex/images/4bf502ff63e8fce9.jpg",
       "crewCount": 0,
       "payloadCount": 1,
       "capsuleCount": 0,
@@ -2799,7 +2799,7 @@
         "patchSmall": "/data/spacex/images/c044d36407569003.png",
         "patchLarge": "/data/spacex/images/c044d36407569003.png",
         "flickrOriginal": [
-          "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/starship_on_the_image_20260724044615.jpg"
+          "/data/spacex/images/4bf502ff63e8fce9.jpg"
         ]
       },
       "staticFireDateUtc": null,
@@ -2824,7 +2824,7 @@
         "massKg": 5250000,
         "image": null,
         "flickrImages": [
-          "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/starship_on_the_image_20260724044615.jpg"
+          "/data/spacex/images/4bf502ff63e8fce9.jpg"
         ]
       },
       "launchpad": {
@@ -2927,6 +2927,6 @@
       }
     ],
     "rangeLabel": "Aug 25 – Jul 26",
-    "generatedAt": "2026-07-30T22:32:15.224Z"
+    "generatedAt": "2026-07-31T11:37:29.870Z"
   }
 }
