@@ -1,5 +1,5 @@
 # https://www.robotstxt.org/robotstxt.html
-# Public crawl policy for isaacavazquez.com
+# Public crawl policy for isaacvazquez.com
 
 User-agent: *
 Disallow: /api/
@@ -55,5 +55,5 @@ User-agent: Amazonbot
 User-agent: cohere-ai
 Disallow: /
 
-Host: isaacavazquez.com
-Sitemap: https://isaacavazquez.com/sitemap.xml
+Host: isaacvazquez.com
+Sitemap: https://isaacvazquez.com/sitemap.xml

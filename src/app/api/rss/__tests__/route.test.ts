@@ -47,7 +47,7 @@ describe("GET /api/rss", () => {
     expect(body).toContain("<rss version=\"2.0\"");
     expect(body).toContain("<title>Alpha &amp; Beta</title>");
     expect(body).toContain("<description>Alpha &amp; Beta description</description>");
-    expect(body).toContain("<link>https://isaacavazquez.com/writing/alpha-post</link>");
+    expect(body).toContain("<link>https://isaacvazquez.com/writing/alpha-post</link>");
     expect(body).toContain(
       "<atom:updated>2026-04-02T00:00:00.000Z</atom:updated>"
     );
@@ -111,7 +111,7 @@ describe("GET /api/rss", () => {
   });
 
   it("uses the most recent updatedAt value for lastBuildDate and trims custom SITE_URL values", async () => {
-    process.env.SITE_URL = "https://preview.isaacavazquez.com/";
+    process.env.SITE_URL = "https://preview.isaacvazquez.com/";
     mockGetAllBlogPosts.mockResolvedValue([
       {
         slug: "newer-published",
@@ -135,12 +135,12 @@ describe("GET /api/rss", () => {
 
     expect(response.status).toBe(200);
     expect(body).toContain("<lastBuildDate>Fri, 03 Apr 2026 12:34:56 GMT</lastBuildDate>");
-    expect(body).toContain("<link>https://preview.isaacavazquez.com</link>");
+    expect(body).toContain("<link>https://preview.isaacvazquez.com</link>");
     expect(body).toContain(
-      "<atom:link href=\"https://preview.isaacavazquez.com/api/rss\" rel=\"self\" type=\"application/rss+xml\"/>"
+      "<atom:link href=\"https://preview.isaacvazquez.com/api/rss\" rel=\"self\" type=\"application/rss+xml\"/>"
     );
     expect(body).toContain(
-      "<guid isPermaLink=\"true\">https://preview.isaacavazquez.com/writing/older-but-updated</guid>"
+      "<guid isPermaLink=\"true\">https://preview.isaacvazquez.com/writing/older-but-updated</guid>"
     );
     expect(body).toContain(
       "<atom:updated>2026-04-03T12:34:56.000Z</atom:updated>"

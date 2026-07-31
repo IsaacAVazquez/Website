@@ -56,7 +56,7 @@ export default async function WorldCupPage({ searchParams }: WorldCupPageProps) 
           name: "World Cup Pulse",
           description:
             "Interactive 2026 FIFA World Cup dashboard with group standings, the 32-team knockout bracket, the match schedule, and host venues, backed by a curated ESPN snapshot.",
-          url: "https://isaacavazquez.com/world-cup-2026",
+          url: "https://isaacvazquez.com/world-cup-2026",
           applicationCategory: "SportsApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           featureList: [

@@ -15,6 +15,6 @@ export default function Image() {
     description:
       "Snapshot-backed company analysis, valuation review, and browser-saved portfolio tracking in one research workspace.",
     accent: "teal",
-    footer: "isaacavazquez.com/investments",
+    footer: "isaacvazquez.com/investments",
   });
 }

@@ -48,7 +48,7 @@ export default async function SpaceXMissionControlPage({
           name: "SpaceX Mission Control",
           description:
             "Mission-control-style SpaceX launch board with a next-launch hero, deep-linked mission detail panels, and local API-backed data normalization.",
-          url: "https://isaacavazquez.com/spacex-mission-control",
+          url: "https://isaacvazquez.com/spacex-mission-control",
           applicationCategory: "WebApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           featureList: [

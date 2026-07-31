@@ -34,15 +34,17 @@ export interface AIOptimizedMetadata {
 
 /**
  * Resolve the canonical site origin. Production reads from
- * NEXT_PUBLIC_SITE_URL when set (Netlify/Vercel-friendly); falls back to
- * the production host so static metadata still resolves during local dev.
+ * NEXT_PUBLIC_SITE_URL or SITE_URL when set (Netlify/Vercel-friendly); falls
+ * back to the production host so static metadata still resolves during local
+ * development.
  */
 function resolveSiteUrl(): string {
-  const envUrl = process.env.NEXT_PUBLIC_SITE_URL;
+  const envUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ?? process.env.SITE_URL;
   if (envUrl && /^https?:\/\//.test(envUrl)) {
     return envUrl.endsWith("/") ? envUrl.slice(0, -1) : envUrl;
   }
-  return "https://isaacavazquez.com";
+  return "https://isaacvazquez.com";
 }
 
 export const siteConfig = {

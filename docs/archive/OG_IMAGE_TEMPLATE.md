@@ -214,7 +214,7 @@ npm run dev
 
 # Visit http://localhost:3000
 # View page source
-# Look for: <meta property="og:image" content="https://isaacavazquez.com/og-image.png" />
+# Look for: <meta property="og:image" content="https://isaacvazquez.com/og-image.png" />
 ```
 
 ### After Deployment:
@@ -223,21 +223,21 @@ npm run dev
 
 1. **LinkedIn Post Inspector**
    - URL: https://www.linkedin.com/post-inspector/
-   - Enter: https://isaacavazquez.com
+   - Enter: https://isaacvazquez.com
    - Verify image appears correctly
 
 2. **Twitter Card Validator**
    - URL: https://cards-dev.twitter.com/validator
-   - Enter: https://isaacavazquez.com
+   - Enter: https://isaacvazquez.com
    - Check "Card preview"
 
 3. **Facebook Sharing Debugger**
    - URL: https://developers.facebook.com/tools/debug/
-   - Enter: https://isaacavazquez.com
+   - Enter: https://isaacvazquez.com
    - Click "Scrape Again" to refresh
 
 4. **Generic OG Validator**
-   - URL: https://www.opengraph.xyz/url/https://isaacavazquez.com
+   - URL: https://www.opengraph.xyz/url/https://isaacvazquez.com
    - Instant preview
 
 ---

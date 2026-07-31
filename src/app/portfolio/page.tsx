@@ -23,13 +23,13 @@ export default function PortfolioPage() {
             name: "Isaac Vazquez Projects",
             description:
               "Product, analytics, fintech, sports, and decision-support tools built by Isaac Vazquez.",
-            url: "https://isaacavazquez.com/portfolio",
+            url: "https://isaacvazquez.com/portfolio",
             items: portfolioProjects.map((project) => ({
               name: project.title,
               description: project.overview.summary,
               url: project.link?.startsWith("http")
                 ? project.link
-                : `https://isaacavazquez.com${
+                : `https://isaacvazquez.com${
                     project.link || `/portfolio/${project.slug}`
                   }`,
             })),

@@ -40,7 +40,7 @@ const THUMB_WIDTH = 1600;
 const MIN_IMAGE_WIDTH = 800;
 // A polite, identifying UA is required by the Wikimedia API etiquette policy.
 const USER_AGENT =
-  "isaacavazquez.com article-cover-image builder (https://isaacavazquez.com)";
+  "isaacvazquez.com article-cover-image builder (https://isaacvazquez.com)";
 
 const ALLOWED_MIME: Record<string, string> = {
   "image/jpeg": ".jpg",

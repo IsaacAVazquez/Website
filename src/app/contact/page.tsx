@@ -38,7 +38,7 @@ export default function Contact() {
             "@type": "Person",
             "name": "Isaac Vazquez",
             "email": "IsaacVazquez@berkeley.edu",
-            "url": "https://isaacavazquez.com/about"
+            "url": "https://isaacvazquez.com/about"
           }
         }}
       />

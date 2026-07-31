@@ -8,7 +8,7 @@ const { PUBLIC_SITEMAP_ENTRIES } = sitemapModule;
 const projectRoot = process.cwd();
 const outputPath = path.join(projectRoot, "public", "sitemap.xml");
 const temporaryPath = `${outputPath}.tmp`;
-const siteUrl = (process.env.SITE_URL || "https://isaacavazquez.com").replace(
+const siteUrl = (process.env.SITE_URL || "https://isaacvazquez.com").replace(
   /\/$/,
   ""
 );

@@ -48,7 +48,7 @@ export default async function LaLigaPage({ searchParams }: LaLigaPageProps) {
           name: "La Liga Pulse",
           description:
             "Interactive La Liga standings dashboard with title-race, European qualification, and relegation views backed by a curated official snapshot.",
-          url: "https://isaacavazquez.com/la-liga",
+          url: "https://isaacvazquez.com/la-liga",
           applicationCategory: "SportsApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           featureList: [

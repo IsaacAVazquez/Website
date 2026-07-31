@@ -62,7 +62,7 @@ describe("finnhub allowlist resolution", () => {
     mockReadFileSync.mockImplementation(() => {
       throw enoent();
     });
-    process.env.URL = "https://isaacavazquez.com";
+    process.env.URL = "https://isaacvazquez.com";
     mockPublicAsset(["AAPL", "MSFT"]);
 
     const allowlist = await getAllowedSymbols();
@@ -71,7 +71,7 @@ describe("finnhub allowlist resolution", () => {
     expect(await isAllowedSymbol("MSFT")).toBe(true);
     expect(await isAllowedSymbol("ZZZZZ")).toBe(false);
     expect(global.fetch).toHaveBeenCalledWith(
-      "https://isaacavazquez.com/data/investments/index.json",
+      "https://isaacvazquez.com/data/investments/index.json",
       expect.objectContaining({ cache: "force-cache" })
     );
   });
@@ -97,7 +97,7 @@ describe("finnhub allowlist resolution", () => {
 
     // A later request (asset now reachable) must recover rather than stay
     // wedged on a cached empty set for the life of the process.
-    process.env.URL = "https://isaacavazquez.com";
+    process.env.URL = "https://isaacvazquez.com";
     mockPublicAsset(["AAPL"]);
     const secondAttempt = await getAllowedSymbols();
     expect(secondAttempt.has("AAPL")).toBe(true);
@@ -107,7 +107,7 @@ describe("finnhub allowlist resolution", () => {
     mockReadFileSync.mockImplementation(() => {
       throw enoent();
     });
-    process.env.URL = "https://isaacavazquez.com";
+    process.env.URL = "https://isaacvazquez.com";
     mockPublicAsset(["AAPL", "MSFT"]);
 
     await getAllowedSymbols();
@@ -120,7 +120,7 @@ describe("finnhub allowlist resolution", () => {
     mockReadFileSync.mockImplementation(() => {
       throw enoent();
     });
-    process.env.URL = "https://isaacavazquez.com";
+    process.env.URL = "https://isaacvazquez.com";
     jest.useFakeTimers();
     global.fetch = jest.fn().mockImplementation(
       (_input: RequestInfo | URL, init?: RequestInit) =>

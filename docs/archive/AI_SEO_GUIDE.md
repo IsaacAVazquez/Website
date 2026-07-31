@@ -185,7 +185,7 @@ import { AIStructuredData } from "@/components/AIStructuredData";
   schema={{
     type: "ProfilePage",
     data: {
-      url: "https://isaacavazquez.com/about",
+      url: "https://isaacvazquez.com/about",
       description: "Professional profile description",
       person: {
         // Person schema data

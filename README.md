@@ -2,7 +2,7 @@
 
 Portfolio, writing, fantasy football analytics, investment research, and standalone data tools built on Next.js 16.
 
-**Live:** [isaacavazquez.com](https://isaacavazquez.com)
+**Live:** [isaacvazquez.com](https://isaacvazquez.com)
 **Last updated:** 2026-07-07
 
 ---
@@ -149,7 +149,7 @@ Copy `.env.example` to `.env.local` and fill in values. Never commit `.env.local
 
 ```env
 # Site
-SITE_URL=https://isaacavazquez.com
+SITE_URL=https://isaacvazquez.com
 GOOGLE_SITE_VERIFICATION=...
 
 # Auth (NextAuth + admin gate on /admin)
@@ -218,4 +218,4 @@ Found a vulnerability? Please **do not open a public issue**. See [`SECURITY.md`
 
 ## License and Use
 
-This repository is published primarily as a personal portfolio. Source code is provided for reference and evaluation; it is not licensed for redistribution or commercial reuse. Written content under `content/`, project copy, brand assets, and resume material are © Isaac Vazquez and reserved. Reach out via [/contact](https://isaacavazquez.com/contact) before reusing anything beyond small, attributed code excerpts.
+This repository is published primarily as a personal portfolio. Source code is provided for reference and evaluation; it is not licensed for redistribution or commercial reuse. Written content under `content/`, project copy, brand assets, and resume material are © Isaac Vazquez and reserved. Reach out via [/contact](https://isaacvazquez.com/contact) before reusing anything beyond small, attributed code excerpts.

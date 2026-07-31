@@ -292,7 +292,7 @@ const lastmod = stats.mtime.toISOString();
 **Current:** Basic metadata
 **Recommended:** Full Article schema with:
 - Author: Isaac Vazquez
-- Publisher: isaacavazquez.com
+- Publisher: isaacvazquez.com
 - Date published/modified
 - Article body
 - Image

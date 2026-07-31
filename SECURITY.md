@@ -1,6 +1,6 @@
 # Security Policy
 
-Thanks for taking the time to look at the security of this site. This repository powers [isaacavazquez.com](https://isaacavazquez.com) — a personal portfolio, writing surface, and a few standalone analytics tools. It is not a multi-tenant product, but the live site is publicly indexed and I take responsible disclosure seriously.
+Thanks for taking the time to look at the security of this site. This repository powers [isaacvazquez.com](https://isaacvazquez.com) — a personal portfolio, writing surface, and a few standalone analytics tools. It is not a multi-tenant product, but the live site is publicly indexed and I take responsible disclosure seriously.
 
 For day-to-day operational notes (secrets, admin gate, deployment hygiene), see [`docs/SECURITY.md`](docs/SECURITY.md).
 
@@ -12,7 +12,7 @@ Only the `main` branch and the currently deployed Netlify production site are su
 
 | Branch / surface | Supported |
 |---|---|
-| `main` (deployed to isaacavazquez.com) | Yes |
+| `main` (deployed to isaacvazquez.com) | Yes |
 | Other branches, forks, archived docs | No |
 
 ---
@@ -49,7 +49,7 @@ I cannot offer monetary bounties.
 
 In scope:
 
-- the live deployment at `isaacavazquez.com` and `*.isaacavazquez.com`
+- the live deployment at `isaacvazquez.com` and `*.isaacvazquez.com`
 - code in this repository's `main` branch
 - API routes under `/api/*` and the Netlify functions in `netlify/functions/`
 - the `/admin` authentication surface

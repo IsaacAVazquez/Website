@@ -43,8 +43,8 @@ export default async function NewsPulsePage({ searchParams }: NewsPulsePageProps
           name: "News Pulse Dashboard",
           description:
             "Live news media analytics dashboard aggregating RSS feeds from major outlets with coverage pattern visualization, topic extraction, and sentiment analysis.",
-          url: "https://isaacavazquez.com/news-pulse",
-          image: "https://isaacavazquez.com/news-pulse/opengraph-image",
+          url: "https://isaacvazquez.com/news-pulse",
+          image: "https://isaacvazquez.com/news-pulse/opengraph-image",
           dateModified: "2026-07-23",
           applicationCategory: "NewsApplication",
           programmingLanguage: ["TypeScript", "Next.js"],

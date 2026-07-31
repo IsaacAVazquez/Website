@@ -31,7 +31,7 @@ export default function RecipeFinderPage() {
           name: "Recipe Finder",
           description:
             "Ingredient-based recipe search. Add what's in your pantry; the tool ranks recipes by how many ingredients you already have.",
-          url: "https://isaacavazquez.com/recipe-finder",
+          url: "https://isaacvazquez.com/recipe-finder",
           applicationCategory: "LifestyleApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           author: "Isaac Vazquez",

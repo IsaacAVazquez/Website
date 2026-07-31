@@ -14,7 +14,7 @@ const mockGetAllBlogPostPreviews =
 
 function makeRequest(queryString: string): NextRequest {
   return new NextRequest(
-    `https://isaacavazquez.com/api/search${queryString}`
+    `https://isaacvazquez.com/api/search${queryString}`
   );
 }
 

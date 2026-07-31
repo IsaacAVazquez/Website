@@ -257,7 +257,7 @@ function buildEmailHtml(jobs: EmailDigestJob[], to: string): string {
           </tr>
           <tr>
             <td style="padding:16px 32px 28px;border-top:1px solid #f3f4f6;">
-              <p style="margin:0;font-size:12px;color:#9ca3af;">Sent to ${escapeHtml(to)} · <a href="https://isaacavazquez.com/mba-internship-notifications" style="color:#5672F8;">Open tracker</a></p>
+              <p style="margin:0;font-size:12px;color:#9ca3af;">Sent to ${escapeHtml(to)} · <a href="https://isaacvazquez.com/mba-internship-notifications" style="color:#5672F8;">Open tracker</a></p>
             </td>
           </tr>
         </table>
@@ -370,7 +370,7 @@ export async function POST(request: NextRequest) {
 
   try {
     const result = await resend.emails.send({
-      from: "MBA Tracker <no-reply@isaacavazquez.com>",
+      from: "MBA Tracker <no-reply@isaacvazquez.com>",
       to: recipients,
       subject,
       html: buildEmailHtml(jobs, to),

@@ -32,8 +32,8 @@ export default function BudgetPlannerPage() {
           name: "Budget Planner",
           description:
             "Monthly budgeting tool for planning income, savings, category budgets, and manual expense tracking with browser-local persistence.",
-          url: "https://isaacavazquez.com/fintech-tools/budget-planner",
-          image: "https://isaacavazquez.com/fintech-tools/budget-planner/opengraph-image",
+          url: "https://isaacvazquez.com/fintech-tools/budget-planner",
+          image: "https://isaacvazquez.com/fintech-tools/budget-planner/opengraph-image",
           applicationCategory: "FinanceApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           author: "Isaac Vazquez",

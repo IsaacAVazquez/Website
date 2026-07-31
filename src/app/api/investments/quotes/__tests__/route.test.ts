@@ -54,7 +54,7 @@ describe("GET /api/investments/quotes", () => {
     );
 
     const response = await GET(
-      new NextRequest("https://isaacavazquez.com/api/investments/quotes?symbols=AAPL")
+      new NextRequest("https://isaacvazquez.com/api/investments/quotes?symbols=AAPL")
     );
     const body = await response.json();
 
@@ -72,7 +72,7 @@ describe("GET /api/investments/quotes", () => {
     );
 
     const response = await GET(
-      new NextRequest("https://isaacavazquez.com/api/investments/quotes?symbols=AAPL")
+      new NextRequest("https://isaacvazquez.com/api/investments/quotes?symbols=AAPL")
     );
     const body = await response.json();
 
@@ -103,7 +103,7 @@ describe("GET /api/investments/quotes", () => {
       );
 
     const response = await GET(
-      new NextRequest("https://isaacavazquez.com/api/investments/quotes?symbols=AAPL,MSFT")
+      new NextRequest("https://isaacvazquez.com/api/investments/quotes?symbols=AAPL,MSFT")
     );
     const body = await response.json();
 
@@ -134,7 +134,7 @@ describe("GET /api/investments/quotes", () => {
     });
 
     const response = await GET(
-      new NextRequest("https://isaacavazquez.com/api/investments/quotes?symbols=AAPL")
+      new NextRequest("https://isaacvazquez.com/api/investments/quotes?symbols=AAPL")
     );
 
     expect(response.status).toBe(200);
@@ -147,7 +147,7 @@ describe("GET /api/investments/quotes", () => {
     async (symbols) => {
       const response = await GET(
         new NextRequest(
-          `https://isaacavazquez.com/api/investments/quotes?symbols=${encodeURIComponent(symbols)}`
+          `https://isaacvazquez.com/api/investments/quotes?symbols=${encodeURIComponent(symbols)}`
         )
       );
 
@@ -159,7 +159,7 @@ describe("GET /api/investments/quotes", () => {
 
   it("rejects non-curated symbols without caching the response", async () => {
     const response = await GET(
-      new NextRequest("https://isaacavazquez.com/api/investments/quotes?symbols=ZZZZZ")
+      new NextRequest("https://isaacvazquez.com/api/investments/quotes?symbols=ZZZZZ")
     );
 
     expect(response.status).toBe(400);
@@ -184,7 +184,7 @@ describe("GET /api/investments/quotes", () => {
 
     const response = await GET(
       new NextRequest(
-        "https://isaacavazquez.com/api/investments/quotes?symbols=AAPL,ZZZZZ"
+        "https://isaacvazquez.com/api/investments/quotes?symbols=AAPL,ZZZZZ"
       )
     );
     const body = await response.json();
@@ -206,7 +206,7 @@ describe("GET /api/investments/quotes", () => {
     );
 
     const response = await GET(
-      new NextRequest("https://isaacavazquez.com/api/investments/quotes?symbols=AAPL")
+      new NextRequest("https://isaacvazquez.com/api/investments/quotes?symbols=AAPL")
     );
     const body = await response.json();
 

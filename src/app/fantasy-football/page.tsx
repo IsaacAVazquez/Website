@@ -1,5 +1,6 @@
 import { StructuredData } from "@/components/StructuredData";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { FANTASY_FOOTBALL_FAQ } from "./fantasy-faq";
 import { FantasyFootballClient } from "./fantasy-football-client";
 import { normalizeFantasyState } from "./fantasy-state";
 
@@ -53,32 +54,14 @@ export default async function FantasyFootballPage({ searchParams }: FantasyFootb
       <StructuredData
         type="FAQPage"
         data={{
-          questions: [
-            {
-              "@type": "Question",
-              name: "How often are the fantasy rankings updated?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "The public rankings show both when FantasyPros last updated the consensus board and when this repo rebuilt the published snapshot.",
-              },
+          questions: FANTASY_FOOTBALL_FAQ.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: item.answer,
             },
-            {
-              "@type": "Question",
-              name: "Can I view overall and position-only rankings?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Yes. The board supports overall plus published position-specific views, and any unsupported scoring-position combinations are labeled as unavailable instead of showing derived fallback data.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "Does the draft tracker use the same rankings data?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Yes. The draft tracker reads the same published snapshot data as the public rankings board so the two surfaces stay aligned.",
-              },
-            },
-          ],
+          })),
         }}
       />
       <FantasyFootballClient initialState={initialState} />

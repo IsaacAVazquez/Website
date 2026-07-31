@@ -361,8 +361,8 @@ I'm actively looking for Product Management opportunities in cloud, AI/ML, and d
 <meta property="og:title" content="Isaac Vazquez | Product Manager" />
 <meta property="og:description" content="Building cloud AI tools that solve real problems for real people." />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://isaacavazquez.com" />
-<meta property="og:image" content="https://isaacavazquez.com/og-image.jpg" />
+<meta property="og:url" content="https://isaacvazquez.com" />
+<meta property="og:image" content="https://isaacvazquez.com/og-image.jpg" />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />

@@ -43,7 +43,7 @@ export default async function PollingAggregatorPage({ searchParams }: PollingPag
           name: "Polling Aggregator",
           description:
             "Interactive polling dashboard for presidential approval and the 2026 generic ballot using VoteHub data.",
-          url: "https://isaacavazquez.com/polling-aggregator",
+          url: "https://isaacvazquez.com/polling-aggregator",
           applicationCategory: "NewsApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           featureList: [

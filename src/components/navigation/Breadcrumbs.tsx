@@ -103,7 +103,7 @@ export function Breadcrumbs({
       "@type": "ListItem",
       "position": index + 1,
       "name": item.label,
-      "item": `https://isaacavazquez.com${item.href}`
+      "item": `https://isaacvazquez.com${item.href}`
     }));
 
     return {

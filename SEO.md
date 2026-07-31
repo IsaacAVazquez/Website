@@ -30,7 +30,7 @@ export const siteConfig = {
   name: "Isaac Vazquez",
   title: "Product Manager | UC Berkeley Haas MBA | Portfolio & Case Studies",
   description: "...",
-  url: "https://isaacavazquez.com",
+  url: "https://isaacvazquez.com",
   ogImage: "/opengraph-image",        // 1200x630
   ogImageAlt: "Isaac Vazquez - ...",
   links: {
@@ -64,7 +64,7 @@ export const metadata = constructMetadata({
 
   // Article pages only (blog posts, case studies)
   ogType: "article",                 // default: "website"
-  articleAuthor: "https://isaacavazquez.com/about",
+  articleAuthor: "https://isaacvazquez.com/about",
   articleSection: "Product Management",
   articleTags: ["Product Strategy", "SaaS"],
 
@@ -122,7 +122,7 @@ export const metadata = generateAIOptimizedMetadata({
     title: "UC Berkeley Haas MBA Candidate",
     credentials: ["MBA Candidate '27", "Consortium Fellow"],
   },
-  canonicalUrl: "https://isaacavazquez.com/about",
+  canonicalUrl: "https://isaacvazquez.com/about",
   dateModified: "2025-02-05",
 });
 ```
@@ -253,10 +253,10 @@ export async function generateMetadata({ params }) {
     ogType: "article",
     datePublished: post.publishedAt,
     dateModified: post.updatedAt || post.publishedAt,
-    articleAuthor: "https://isaacavazquez.com/about",
+    articleAuthor: "https://isaacvazquez.com/about",
     articleSection: post.tags?.[0] ?? "Product Management",
     articleTags: post.seo?.keywords || post.tags,
-    canonicalUrl: `https://isaacavazquez.com/writing/${slug}`,
+    canonicalUrl: `https://isaacvazquez.com/writing/${slug}`,
     aiMetadata: { contentType: "Article", ... },
   });
 }
@@ -275,7 +275,7 @@ export async function generateMetadata({ params }) {
     title: caseStudy.title,
     description: caseStudy.description,
     ogType: "article",
-    articleAuthor: "https://isaacavazquez.com/about",
+    articleAuthor: "https://isaacvazquez.com/about",
     articleSection: "Product Management",
     articleTags: ["Product Management", caseStudy.role, ...caseStudy.tools.slice(0, 3)],
     canonicalUrl: `/portfolio/${params.slug}`,
@@ -417,7 +417,7 @@ Current status of metadata and structured data across all pages. Use this to ide
 - [ ] `noIndex: true` — applies to `/admin`, utility routes, draft pages
 
 ### Never do
-- Hardcode `https://isaacavazquez.com` in page files — use `siteConfig.url` or pass relative paths to `canonicalUrl`
+- Hardcode `https://isaacvazquez.com` in page files — use `siteConfig.url` or pass relative paths to `canonicalUrl`
 - Set `og:type: "website"` on blog posts or case studies
 - Skip `canonicalUrl` on dynamic routes (duplicate content risk)
 - Add `next-seo` imports for meta tags — use `constructMetadata` instead
@@ -449,8 +449,8 @@ export default function NewPage() {
         type="BreadcrumbList"
         data={{
           items: [
-            { name: "Home", url: "https://isaacavazquez.com" },
-            { name: "New Page", url: "https://isaacavazquez.com/new-page" },
+            { name: "Home", url: "https://isaacvazquez.com" },
+            { name: "New Page", url: "https://isaacvazquez.com/new-page" },
           ],
         }}
       />
@@ -479,7 +479,7 @@ export async function generateMetadata({ params }) {
     ogType: "article",
     datePublished: item.createdAt,
     dateModified: item.updatedAt,
-    articleAuthor: "https://isaacavazquez.com/about",
+    articleAuthor: "https://isaacvazquez.com/about",
     articleSection: item.category,
     articleTags: item.tags,
     canonicalUrl: `/items/${slug}`,
@@ -510,10 +510,10 @@ export default async function ItemPage({ params }) {
           data: {
             headline: item.title,
             description: item.description,
-            author: { name: "Isaac Vazquez", url: "https://isaacavazquez.com" },
+            author: { name: "Isaac Vazquez", url: "https://isaacvazquez.com" },
             datePublished: item.createdAt,
             dateModified: item.updatedAt,
-            url: `https://isaacavazquez.com/items/${slug}`,
+            url: `https://isaacvazquez.com/items/${slug}`,
             keywords: item.tags?.join(", ") || "",
           },
         }}

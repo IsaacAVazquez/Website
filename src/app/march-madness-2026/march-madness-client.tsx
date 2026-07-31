@@ -11,6 +11,7 @@ import {
   HERO_TAGS,
   INJURIES,
   MARCH_MADNESS_ARTICLE_SLUG,
+  MARCH_MADNESS_FAQ,
   MARCH_MADNESS_THESIS,
   MARCH_MADNESS_UPDATED_AT,
   MARCH_MADNESS_UPDATED_LABEL,
@@ -84,10 +85,12 @@ function SectionIntro({
   eyebrow,
   title,
   description,
+  titleId,
 }: {
   eyebrow: string;
   title: string;
   description: string;
+  titleId?: string;
 }) {
   return (
     <div className="space-y-3">
@@ -95,7 +98,12 @@ function SectionIntro({
         {eyebrow}
       </p>
       <div className="space-y-2">
-        <h2 className="text-2xl font-semibold tracking-tight text-[var(--home-ink)] sm:text-3xl">{title}</h2>
+        <h2
+          id={titleId}
+          className="text-2xl font-semibold tracking-tight text-[var(--home-ink)] sm:text-3xl"
+        >
+          {title}
+        </h2>
         <p className="max-w-[72ch] text-sm leading-7 text-[var(--home-ink-muted)] sm:text-base">{description}</p>
       </div>
     </div>
@@ -1166,6 +1174,27 @@ export function MarchMadnessClient({
                 <TZSection />
               </SurfaceCard>
             ) : null}
+          </div>
+
+          <div aria-labelledby="march-madness-questions">
+            <SectionIntro
+              eyebrow="Method questions"
+              title="March Madness bracket questions"
+              description="The short version of how the model reaches its picks and where it differs from a seed-only bracket."
+              titleId="march-madness-questions"
+            />
+            <div className="mt-5 grid gap-4 md:grid-cols-2">
+              {MARCH_MADNESS_FAQ.map((item) => (
+                <SurfaceCard key={item.question} className="p-5 sm:p-6">
+                  <h3 className="text-lg font-semibold text-[var(--home-ink)]">
+                    {item.question}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-[var(--home-ink-muted)]">
+                    {item.answer}
+                  </p>
+                </SurfaceCard>
+              ))}
+            </div>
           </div>
 
           <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[var(--home-rule)] pt-6 text-xs text-[var(--home-ink-soft)]">

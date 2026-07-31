@@ -53,7 +53,7 @@ export default async function PremierLeaguePage({ searchParams }: PremierLeagueP
           name: "Premier League Pulse",
           description:
             "Premier League dashboard with standings, fixture tracking, and club-level form drilldowns backed by a checked-in snapshot.",
-          url: "https://isaacavazquez.com/premier-league",
+          url: "https://isaacvazquez.com/premier-league",
           applicationCategory: "SportsApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           featureList: [

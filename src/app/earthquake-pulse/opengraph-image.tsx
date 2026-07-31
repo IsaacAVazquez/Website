@@ -15,6 +15,6 @@ export default function Image() {
     description:
       "Global seismic monitor for the past 24 hours, the most significant quakes worldwide, and the busiest regions from a checked-in USGS snapshot.",
     accent: "amber",
-    footer: "isaacavazquez.com/earthquake-pulse",
+    footer: "isaacvazquez.com/earthquake-pulse",
   });
 }

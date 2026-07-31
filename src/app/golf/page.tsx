@@ -52,7 +52,7 @@ export default async function GolfPage({ searchParams }: GolfPageProps) {
           name: "PGA Tour Pulse",
           description:
             "Snapshot-backed PGA Tour tournament dashboard for leaderboard scanning, player drilldowns, and round-by-round movement.",
-          url: "https://isaacavazquez.com/golf",
+          url: "https://isaacvazquez.com/golf",
           applicationCategory: "SportsApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           featureList: [

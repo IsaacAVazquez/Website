@@ -21,7 +21,7 @@ describe("GET /api/spacex/launches", () => {
 
   it("validates status values before reaching the data layer", async () => {
     const response = await GET(
-      new NextRequest("https://isaacavazquez.com/api/spacex/launches?status=invalid")
+      new NextRequest("https://isaacvazquez.com/api/spacex/launches?status=invalid")
     );
     const body = await response.json();
 
@@ -36,7 +36,7 @@ describe("GET /api/spacex/launches", () => {
     async (limit) => {
       const response = await GET(
         new NextRequest(
-          `https://isaacavazquez.com/api/spacex/launches?status=upcoming&limit=${limit}`
+          `https://isaacvazquez.com/api/spacex/launches?status=upcoming&limit=${limit}`
         )
       );
 
@@ -89,7 +89,7 @@ describe("GET /api/spacex/launches", () => {
     ]);
 
     const response = await GET(
-      new NextRequest("https://isaacavazquez.com/api/spacex/launches?status=past&limit=6")
+      new NextRequest("https://isaacvazquez.com/api/spacex/launches?status=past&limit=6")
     );
     const body = await response.json();
 
@@ -106,7 +106,7 @@ describe("GET /api/spacex/launches", () => {
     );
 
     const response = await GET(
-      new NextRequest("https://isaacavazquez.com/api/spacex/launches?status=upcoming")
+      new NextRequest("https://isaacvazquez.com/api/spacex/launches?status=upcoming")
     );
     const body = await response.json();
 

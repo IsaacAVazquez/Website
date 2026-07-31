@@ -221,7 +221,7 @@ describe("GET /api/mba-jobs", () => {
     });
 
     const response = await GET(
-      new NextRequest("https://isaacavazquez.com/api/mba-jobs?companies=stripe")
+      new NextRequest("https://isaacvazquez.com/api/mba-jobs?companies=stripe")
     );
     const body = await response.json();
 
@@ -288,7 +288,7 @@ describe("GET /api/mba-jobs", () => {
     });
 
     const response = await GET(
-      new NextRequest("https://isaacavazquez.com/api/mba-jobs?companies=stripe")
+      new NextRequest("https://isaacvazquez.com/api/mba-jobs?companies=stripe")
     );
     const body = await response.json();
 
@@ -342,7 +342,7 @@ describe("GET /api/mba-jobs", () => {
     });
 
     const response = await GET(
-      new NextRequest("https://isaacavazquez.com/api/mba-jobs?companies=notion")
+      new NextRequest("https://isaacvazquez.com/api/mba-jobs?companies=notion")
     );
     const body = await response.json();
 
@@ -412,7 +412,7 @@ describe("GET /api/mba-jobs", () => {
 
     const response = await GET(
       new NextRequest(
-        "https://isaacavazquez.com/api/mba-jobs?companies=reddit,openai,microsoft"
+        "https://isaacvazquez.com/api/mba-jobs?companies=reddit,openai,microsoft"
       )
     );
     const body = await response.json();
@@ -563,7 +563,7 @@ describe("GET /api/mba-jobs", () => {
 
     const response = await GET(
       new NextRequest(
-        "https://isaacavazquez.com/api/mba-jobs?companies=chime,ramp,miro,canva"
+        "https://isaacvazquez.com/api/mba-jobs?companies=chime,ramp,miro,canva"
       )
     );
     const body = await response.json();
@@ -664,7 +664,7 @@ describe("GET /api/mba-jobs", () => {
 
     const response = await GET(
       new NextRequest(
-        "https://isaacavazquez.com/api/mba-jobs?companies=plaid,coinbase,google"
+        "https://isaacvazquez.com/api/mba-jobs?companies=plaid,coinbase,google"
       )
     );
     const body = await response.json();
@@ -721,7 +721,7 @@ describe("GET /api/mba-jobs", () => {
     });
 
     const response = await GET(
-      new NextRequest("https://isaacavazquez.com/api/mba-jobs?companies=stripe,brex")
+      new NextRequest("https://isaacvazquez.com/api/mba-jobs?companies=stripe,brex")
     );
     const body = await response.json();
 
@@ -783,7 +783,7 @@ describe("GET /api/mba-jobs", () => {
 
       const first = await GET(
         new NextRequest(
-          "https://isaacavazquez.com/api/mba-jobs?companies=stripe,brex"
+          "https://isaacvazquez.com/api/mba-jobs?companies=stripe,brex"
         )
       );
       const firstBody = await first.json();
@@ -802,7 +802,7 @@ describe("GET /api/mba-jobs", () => {
 
       const second = await GET(
         new NextRequest(
-          "https://isaacavazquez.com/api/mba-jobs?companies=stripe,brex"
+          "https://isaacvazquez.com/api/mba-jobs?companies=stripe,brex"
         )
       );
       const secondBody = await second.json();
@@ -824,7 +824,7 @@ describe("GET /api/mba-jobs", () => {
     });
 
     const response = await GET(
-      new NextRequest("https://isaacavazquez.com/api/mba-jobs?companies=stripe")
+      new NextRequest("https://isaacvazquez.com/api/mba-jobs?companies=stripe")
     );
     const body = await response.json();
 
@@ -859,7 +859,7 @@ describe("GET /api/mba-jobs", () => {
 
     const response = await GET(
       new NextRequest(
-        "https://isaacavazquez.com/api/mba-jobs?companies=&external=on"
+        "https://isaacvazquez.com/api/mba-jobs?companies=&external=on"
       )
     );
     const body = await response.json();
@@ -907,7 +907,7 @@ describe("GET /api/mba-jobs", () => {
       });
 
       const first = await GET(
-        new NextRequest("https://isaacavazquez.com/api/mba-jobs?companies=stripe")
+        new NextRequest("https://isaacvazquez.com/api/mba-jobs?companies=stripe")
       );
       const firstBody = await first.json();
       expect(first.status).toBe(200);
@@ -921,7 +921,7 @@ describe("GET /api/mba-jobs", () => {
       });
 
       const second = await GET(
-        new NextRequest("https://isaacavazquez.com/api/mba-jobs?companies=stripe")
+        new NextRequest("https://isaacvazquez.com/api/mba-jobs?companies=stripe")
       );
       const secondBody = await second.json();
 
@@ -951,13 +951,13 @@ describe("GET /api/mba-jobs", () => {
     // caps abuse at 30 requests per minute per IP.
     for (let i = 0; i < 30; i++) {
       const response = await GET(
-        new NextRequest("https://isaacavazquez.com/api/mba-jobs?companies=")
+        new NextRequest("https://isaacvazquez.com/api/mba-jobs?companies=")
       );
       expect(response.status).toBe(200);
     }
 
     const overLimit = await GET(
-      new NextRequest("https://isaacavazquez.com/api/mba-jobs?companies=")
+      new NextRequest("https://isaacvazquez.com/api/mba-jobs?companies=")
     );
     expect(overLimit.status).toBe(429);
   });
@@ -1010,7 +1010,7 @@ describe("GET /api/mba-jobs", () => {
 
       const first = await GET(
         new NextRequest(
-          "https://isaacavazquez.com/api/mba-jobs?companies=stripe,brex"
+          "https://isaacvazquez.com/api/mba-jobs?companies=stripe,brex"
         )
       );
       const firstBody = await first.json();
@@ -1029,7 +1029,7 @@ describe("GET /api/mba-jobs", () => {
 
       const second = await GET(
         new NextRequest(
-          "https://isaacavazquez.com/api/mba-jobs?companies=stripe,brex"
+          "https://isaacvazquez.com/api/mba-jobs?companies=stripe,brex"
         )
       );
       const secondBody = await second.json();
@@ -1065,7 +1065,7 @@ describe("GET /api/mba-jobs", () => {
     installFetchMock({});
 
     const response = await GET(
-      new NextRequest("https://isaacavazquez.com/api/mba-jobs?companies=")
+      new NextRequest("https://isaacvazquez.com/api/mba-jobs?companies=")
     );
     const body = await response.json();
 
@@ -1104,7 +1104,7 @@ describe("GET /api/mba-jobs", () => {
 
     const response = await GET(
       new NextRequest(
-        "https://isaacavazquez.com/api/mba-jobs?companies=STRIPE,stripe,microsoft"
+        "https://isaacvazquez.com/api/mba-jobs?companies=STRIPE,stripe,microsoft"
       )
     );
     const body = await response.json();
@@ -1132,7 +1132,7 @@ describe("GET /api/mba-jobs", () => {
 
     const response = await GET(
       new NextRequest(
-        "https://isaacavazquez.com/api/mba-jobs?companies=stripe,unknown"
+        "https://isaacvazquez.com/api/mba-jobs?companies=stripe,unknown"
       )
     );
     const body = await response.json();
@@ -1148,7 +1148,7 @@ describe("GET /api/mba-jobs", () => {
 
     const response = await GET(
       new NextRequest(
-        "https://isaacavazquez.com/api/mba-jobs?companies=&external=yes"
+        "https://isaacvazquez.com/api/mba-jobs?companies=&external=yes"
       )
     );
 
@@ -1161,7 +1161,7 @@ describe("GET /api/mba-jobs", () => {
     installFetchMock({});
 
     const response = await GET(
-      new NextRequest("https://isaacavazquez.com/api/mba-jobs?companies=&external=on")
+      new NextRequest("https://isaacvazquez.com/api/mba-jobs?companies=&external=on")
     );
     const body = await response.json();
 
@@ -1239,7 +1239,7 @@ describe("GET /api/mba-jobs", () => {
     });
 
     const response = await GET(
-      new NextRequest("https://isaacavazquez.com/api/mba-jobs?companies=stripe&external=on")
+      new NextRequest("https://isaacvazquez.com/api/mba-jobs?companies=stripe&external=on")
     );
     const body = await response.json();
 

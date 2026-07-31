@@ -49,7 +49,7 @@ export default async function Formula1Page({ searchParams }: Formula1PageProps) 
           name: "Formula 1 Pulse",
           description:
             "Formula 1 dashboard with season standings, the next Grand Prix, and race-by-race context from a checked-in historical snapshot.",
-          url: "https://isaacavazquez.com/formula-1",
+          url: "https://isaacvazquez.com/formula-1",
           applicationCategory: "SportsApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           featureList: [

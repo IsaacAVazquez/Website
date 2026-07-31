@@ -35,9 +35,9 @@ export default function InterchangeIQPage() {
           name: "Interchange IQ",
           description:
             "Payment fee analyzer comparing flat-rate and interchange-plus processor economics with adjustable volume, ticket size, and card mix.",
-          url: "https://isaacavazquez.com/fintech-tools/interchange-iq",
+          url: "https://isaacvazquez.com/fintech-tools/interchange-iq",
           image:
-            "https://isaacavazquez.com/fintech-tools/interchange-iq/opengraph-image",
+            "https://isaacvazquez.com/fintech-tools/interchange-iq/opengraph-image",
           dateModified: "2026-04-02",
           applicationCategory: "FinanceApplication",
           programmingLanguage: ["TypeScript", "Next.js"],

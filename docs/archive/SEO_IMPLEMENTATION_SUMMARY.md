@@ -129,7 +129,7 @@
 
 **When Ready:**
 1. Go to [Google Search Console](https://search.google.com/search-console)
-2. Add property: `isaacavazquez.com`
+2. Add property: `isaacvazquez.com`
 3. Choose "HTML tag" verification method
 4. Copy the `content` value from the meta tag
 5. Edit `src/lib/seo.ts` line 258:

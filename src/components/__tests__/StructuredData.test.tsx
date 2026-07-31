@@ -30,9 +30,9 @@ describe("StructuredData", () => {
     expect(schema.dateModified).toBeUndefined();
     expect(schema.author).toEqual({
       "@type": "Person",
-      "@id": "https://isaacavazquez.com/about#person",
+      "@id": "https://isaacvazquez.com/about#person",
       name: "Isaac Vazquez",
-      url: "https://isaacavazquez.com/about",
+      url: "https://isaacvazquez.com/about",
     });
   });
 
@@ -47,7 +47,7 @@ describe("StructuredData", () => {
             dateModified: "2026-06-22",
             author: {
               name: "Isaac Vazquez",
-              url: "https://isaacavazquez.com/about",
+              url: "https://isaacvazquez.com/about",
             },
           }}
         />
@@ -57,9 +57,9 @@ describe("StructuredData", () => {
     expect(schema.dateModified).toBe("2026-06-22");
     expect(schema.author).toEqual({
       "@type": "Person",
-      "@id": "https://isaacavazquez.com/about#person",
+      "@id": "https://isaacvazquez.com/about#person",
       name: "Isaac Vazquez",
-      url: "https://isaacavazquez.com/about",
+      url: "https://isaacvazquez.com/about",
     });
   });
 
@@ -69,7 +69,7 @@ describe("StructuredData", () => {
     );
 
     expect(schema["@id"]).toBe(
-      "https://isaacavazquez.com/about#person"
+      "https://isaacvazquez.com/about#person"
     );
     expect(schema.worksFor).toEqual(
       expect.objectContaining({ name: "Haas@Work" })
@@ -118,7 +118,7 @@ describe("StructuredData", () => {
       renderToStaticMarkup(
         <StructuredData
           type="WebPage"
-          data={{ title: "Accessibility Statement", url: "https://isaacavazquez.com/accessibility" }}
+          data={{ title: "Accessibility Statement", url: "https://isaacvazquez.com/accessibility" }}
         />
       )
     );

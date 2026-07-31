@@ -29,6 +29,6 @@ export default async function Image({
     title,
     description,
     accent: getBlogClusterTheme(post?.cluster),
-    footer: "isaacavazquez.com/writing",
+    footer: "isaacvazquez.com/writing",
   });
 }

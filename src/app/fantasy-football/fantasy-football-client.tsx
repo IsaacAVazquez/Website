@@ -57,6 +57,7 @@ import {
 } from "@/components/fantasy";
 import { MetricTooltip } from "@/components/investments/MetricTooltip";
 import { Player } from "@/types";
+import { FANTASY_FOOTBALL_FAQ } from "./fantasy-faq";
 import { buildFantasyHref, FantasySearchState, normalizeFantasyState } from "./fantasy-state";
 import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
 
@@ -1082,6 +1083,25 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
             </article>
           </aside>
         </div>
+
+        <section className="mt-10" aria-labelledby="fantasy-rankings-questions">
+          <div className="max-w-3xl">
+            <p className="home-kicker mb-2">How the board works</p>
+            <h2 id="fantasy-rankings-questions" className="text-2xl font-semibold sm:text-3xl">
+              Fantasy rankings questions
+            </h2>
+          </div>
+          <div className="mt-5 grid gap-4 lg:grid-cols-3">
+            {FANTASY_FOOTBALL_FAQ.map((item) => (
+              <article key={item.question} className="home-card p-5 sm:p-6">
+                <h3 className="text-lg font-semibold">{item.question}</h3>
+                <p className="mt-3 text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
+                  {item.answer}
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
       </div>
 
       <PlayerDetailDrawer

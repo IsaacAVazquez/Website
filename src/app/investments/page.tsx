@@ -55,8 +55,8 @@ export default async function InvestmentsPage({ searchParams }: InvestmentsPageP
           name: "Investment Research Platform",
           description:
             "Investment research workspace for valuation review, financial statements, curated company snapshots, and browser-saved portfolio tracking.",
-          url: "https://isaacavazquez.com/investments",
-          image: "https://isaacavazquez.com/investments/opengraph-image",
+          url: "https://isaacvazquez.com/investments",
+          image: "https://isaacvazquez.com/investments/opengraph-image",
           ...(index?.lastUpdated
             ? { dateModified: index.lastUpdated }
             : {}),

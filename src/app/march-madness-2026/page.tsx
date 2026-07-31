@@ -58,8 +58,8 @@ export default async function MarchMadnessPage({ searchParams }: MarchMadnessPag
         data={{
           headline: MARCH_MADNESS_TITLE,
           description: MARCH_MADNESS_DESCRIPTION,
-          url: "https://isaacavazquez.com/march-madness-2026",
-          image: "https://isaacavazquez.com/march-madness-2026/opengraph-image",
+          url: "https://isaacvazquez.com/march-madness-2026",
+          image: "https://isaacvazquez.com/march-madness-2026/opengraph-image",
           datePublished: MARCH_MADNESS_UPDATED_AT,
           dateModified: MARCH_MADNESS_UPDATED_AT,
           authorName: "Isaac Vazquez",
@@ -86,7 +86,7 @@ export default async function MarchMadnessPage({ searchParams }: MarchMadnessPag
         data={{
           name: "March Madness 2026 Bracket Analysis",
           description: MARCH_MADNESS_DESCRIPTION,
-          url: "https://isaacavazquez.com/march-madness-2026",
+          url: "https://isaacvazquez.com/march-madness-2026",
           featureList: [
             "Interactive bracket by region",
             "Best upset picks and Final Four predictions",
@@ -94,7 +94,7 @@ export default async function MarchMadnessPage({ searchParams }: MarchMadnessPag
             "S-curve seed error review",
             "Injury context and time-zone penalty modeling",
           ],
-          screenshot: "https://isaacavazquez.com/march-madness-2026/opengraph-image",
+          screenshot: "https://isaacvazquez.com/march-madness-2026/opengraph-image",
           about: {
             "@type": "Thing",
             name: "March Madness bracket analysis",

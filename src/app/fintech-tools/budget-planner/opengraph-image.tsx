@@ -15,6 +15,6 @@ export default function Image() {
     description:
       "A monthly budgeting workspace for income planning, category budgets, savings targets, and manual expense tracking.",
     accent: "teal",
-    footer: "isaacavazquez.com/fintech-tools/budget-planner",
+    footer: "isaacvazquez.com/fintech-tools/budget-planner",
   });
 }

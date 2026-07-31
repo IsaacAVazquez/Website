@@ -213,7 +213,7 @@ export function StaticHeader() {
         inert={!isMobileMenuOpen}
         aria-hidden={!isMobileMenuOpen}
         className={cn(
-          "overflow-hidden transition-[max-height,opacity] duration-300 ease-out lg:hidden",
+          "absolute inset-x-0 top-full overflow-hidden transition-[max-height,opacity] duration-300 ease-out lg:hidden",
           isMobileMenuOpen ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"
         )}
       >

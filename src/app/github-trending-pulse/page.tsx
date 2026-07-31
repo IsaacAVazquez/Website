@@ -52,7 +52,7 @@ export default async function GitHubTrendingPulsePage({
           name: "GitHub Trending Pulse",
           description:
             "Daily-refreshed dashboard tracking active public GitHub repositories by language and topic, with weekly star movement from checked-in snapshots.",
-          url: "https://isaacavazquez.com/github-trending-pulse",
+          url: "https://isaacvazquez.com/github-trending-pulse",
           applicationCategory: "DeveloperApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           featureList: [

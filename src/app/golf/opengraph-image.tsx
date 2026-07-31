@@ -15,6 +15,6 @@ export default function Image() {
     description:
       "Tournament dashboard for leaderboard scanning, player drilldowns, and round-by-round movement from a checked-in golf snapshot.",
     accent: "amber",
-    footer: "isaacavazquez.com/golf",
+    footer: "isaacvazquez.com/golf",
   });
 }
