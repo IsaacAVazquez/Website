@@ -1,14 +1,18 @@
 # AEO and SEO audit
 
-Audited and reconciled July 23, 2026.
+Audited and reconciled July 23, 2026. Re-audited July 30, 2026.
 
 ## Summary
 
 I checked the finished implementation against every item in the original audit brief, then rebuilt and crawled the production application rather than relying on source inspection alone. The final crawl covered all 249 sitemap URLs, 18 control and legacy URLs, 8,504 rendered internal links, 209 distinct social images, and all 196 published writing pages. Every indexable URL returned 200 with a unique title and description, a self-referencing canonical, complete social metadata, one `h1`, one page-level `main`, valid JSON-LD, and no broken internal links.
 
+The July 30 re-audit rebuilt the application and independently crawled all 249 sitemap URLs, 107 additional internal route targets, 209 social images, and all 196 writing pages. It found zero errors or warnings after adding BreadcrumbList schema to `/arcade` and `/portfolio`. Google Search Console ownership is now verified for both `isaacvazquez.com` and the retired `isaacavazquez.com` domain through Cloudflare DNS. The new sitemap is submitted, Google's live URL test says the homepage is available and indexable, the rendered test output carries the `isaacvazquez.com` canonical and complete Person and WebSite schema, and the homepage is in Google's priority crawl queue.
+
+The formal Change of Address request is the one pending external signal. Its separate validator could not fetch `http://isaacavazquez.com/`, even though Google's live URL test and independent HTTP checks both receive the permanent redirect to `https://isaacvazquez.com/`. The redirect implementation is correct, so this should be retried after Google's property and redirect caches refresh.
+
 The original baseline had two high-severity findings, four medium-severity findings, and three low-severity findings. All nine are fixed. The reconciliation also caught six omissions from the first implementation, including the exact `/admin` robots rule, redirect chains on retired project URLs, the promised article-date validation guard, stale modification dates on changed tools, inaccurate social-image dimensions, and two heading-level skips. Those are fixed too.
 
-No required repository-local corrective work remains from the original brief. Search Console data, production crawl logs, backlinks, third-party mentions, and external entity profiles remain outside this repository.
+No required repository-local corrective work remains from the original brief. Historical Search Console performance data is still processing, while production crawl logs, backlinks, third-party mentions, and external entity profiles remain outside this repository.
 
 ## Stack and rendering model
 
@@ -37,7 +41,7 @@ No required repository-local corrective work remains from the original brief. Se
 | Language and icons | Every page rendered `lang="en"` with favicon, touch icon, and manifest links |
 | Headings and landmarks | Every indexable page rendered one `h1`, one page-level `main`, and no heading-level skips |
 | Images and links | No image lacked an `alt` attribute and no vague anchor remained; empty alternatives were limited to decorative hidden graphics |
-| JSON-LD | Every block parsed, every writing page had one complete Article object, and every nested indexable page had BreadcrumbList schema |
+| JSON-LD | Every block parsed, every writing page had one complete Article object, and all 249 sitemap pages had BreadcrumbList schema |
 | Freshness | No future sitemap dates, all writing pages displayed a date, and all 37 migrated articles carried the July 20 modification signal |
 | Error handling | The test URL returned 404 with an independent title, `noindex`, and no canonical |
 | Redirects | Canonical route families and all ten retired project paths redirected directly to their final destination |
@@ -75,9 +79,9 @@ The admin metadata now has its own title, description, canonical, and `noindex, 
 
 The site has Person and WebSite identity schema with a consistent `Isaac Vazquez` entity and `/about` identifier at `src/components/StructuredData.tsx:41`. All 196 writing pages render one Article object with headline, author, `datePublished`, `dateModified`, image, canonical entity URL, language, keywords, and word count through `src/app/writing/[slug]/page.tsx:112`.
 
-Every nested indexable page renders BreadcrumbList schema. The score-pools tracker and settings gaps from the baseline are resolved with BreadcrumbList and WebPage objects at `src/app/score-pools/tracker/page.tsx:26` and `src/app/score-pools/settings/page.tsx:26`. FAQ schema remains limited to pages with visible question-and-answer content. I did not add broad FAQPage or HowTo markup where the page does not genuinely fit those types.
+Every indexable page renders BreadcrumbList schema. The score-pools tracker and settings gaps from the baseline are resolved with BreadcrumbList and WebPage objects at `src/app/score-pools/tracker/page.tsx:26` and `src/app/score-pools/settings/page.tsx:26`. The July 30 pass completed the same coverage on `/arcade` and `/portfolio`. FAQ schema remains limited to pages with visible question-and-answer content. I did not add broad FAQPage or HowTo markup where the page does not genuinely fit those types.
 
-The production parser found no invalid JSON-LD, no missing required Article field, and no nested sitemap page without breadcrumbs.
+The production parser found no invalid JSON-LD, no missing required Article field, and no sitemap page without breadcrumbs.
 
 ## Content for answer engines
 
@@ -102,6 +106,8 @@ Interface revisions for News Pulse, Job Search, Score Pools, Resume, Changelog, 
 `public/llms.txt` exists and points to the canonical sitemap and RSS feed. I would keep treating it as optional agent-readiness documentation, not a citation or ranking control. The higher-value signals are the initial HTML, evidence links, schema, canonicals, consistent identity, and trustworthy dates.
 
 RSS discovery is wired in the root layout at `src/app/layout.tsx:75`. The feed uses canonical item URLs and emits an Atom update value from `updatedAt` or `publishedAt` at `src/app/api/rss/route.ts:41`.
+
+IndexNow verification is published at the root through `public/9f7d1a8c2fca455871c1520aaeb5753c.txt`. The bounded submission command at `scripts/submitIndexNow.mjs` reads the generated sitemap, rejects noncanonical hosts and non-HTTPS URLs, enforces the protocol's 10,000-URL ceiling, and submits the canonical set to participating search engines after deployment through `npm run submit:indexnow`.
 
 ## Baseline findings and resolution
 
@@ -129,6 +135,6 @@ RSS discovery is wired in the root layout at `src/app/layout.tsx:75`. The feed u
 
 ## Outside repository scope
 
-Backlinks, third-party mentions, publisher authority, social distribution, external profile consistency, live Google Search Console and Bing Webmaster Tools data, production crawl logs, and answer-engine citation tracking cannot be verified from this repository. The repository makes that work easier through clean canonical URLs, consistent `Isaac Vazquez` identity, descriptive bylines, shareable 1200 by 630 images, RSS, and direct legacy redirects, but it cannot create or measure those off-page signals by itself.
+Backlinks, third-party mentions, publisher authority, social distribution, external profile consistency, Bing Webmaster Tools data, production crawl logs, and answer-engine citation tracking cannot be verified from this repository. The repository makes that work easier through clean canonical URLs, consistent `Isaac Vazquez` identity, descriptive bylines, shareable 1200 by 630 images, RSS, and direct legacy redirects, but it cannot create or measure those off-page signals by itself.
 
-The metadata helper supports Google site verification through `GOOGLE_SITE_VERIFICATION` in `src/lib/seo.ts`. Whether that environment value is configured in production is also outside source control.
+The metadata helper supports Google site verification through `GOOGLE_SITE_VERIFICATION` in `src/lib/seo.ts`. The current domain property is verified through Cloudflare DNS, so that HTML verification value is not required for ownership to remain active.

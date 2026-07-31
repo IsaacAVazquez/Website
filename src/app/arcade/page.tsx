@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { Press_Start_2P, VT323 } from "next/font/google";
 import { StructuredData } from "@/components/StructuredData";
-import { constructMetadata } from "@/lib/seo";
+import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import ArcadeClient from "./ArcadeClient";
 
 // Characterful display/terminal faces, scoped to this route only. They are
@@ -32,8 +32,23 @@ export const metadata: Metadata = constructMetadata({
 });
 
 export default function ArcadePage() {
+  const breadcrumbs = [
+    { name: "Home", url: "/" },
+    { name: "Reactor Arcade", url: "/arcade" },
+  ];
+
   return (
     <>
+      <StructuredData
+        type="BreadcrumbList"
+        data={{
+          items: (
+            generateBreadcrumbStructuredData(breadcrumbs) as {
+              itemListElement: object[];
+            }
+          ).itemListElement,
+        }}
+      />
       <StructuredData
         type="WebPage"
         data={{
