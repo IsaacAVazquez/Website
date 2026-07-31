@@ -71,6 +71,18 @@ describe("StructuredData", () => {
     expect(schema["@id"]).toBe(
       "https://isaacvazquez.com/about#person"
     );
+    expect(schema).toEqual(
+      expect.objectContaining({
+        name: "Isaac Vazquez",
+        givenName: "Isaac",
+        familyName: "Vazquez",
+        alternateName: ["@isaacvazquez", "IsaacAVazquez"],
+        image: "https://isaacvazquez.com/images/headshot-home.webp",
+      })
+    );
+    expect(schema.disambiguatingDescription).toContain(
+      "UC Berkeley Haas MBA candidate"
+    );
     expect(schema.worksFor).toEqual(
       expect.objectContaining({ name: "Haas@Work" })
     );
@@ -109,6 +121,7 @@ describe("StructuredData", () => {
         name: "Florida State University",
         description:
           "Bachelor of Arts - Political Science and International Affairs",
+        url: "https://www.fsu.edu/",
       },
     ]);
   });
