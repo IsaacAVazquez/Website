@@ -4,6 +4,12 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-07-31
+
+- Fix canonical domain and SEO crawl signals ([#361](https://github.com/IsaacAVazquez/Website/pull/361)).
+
+---
+
 ## 2026-07-25
 
 - Harden admin login, email allowlist, and CSV export ([#352](https://github.com/IsaacAVazquez/Website/pull/352)).
