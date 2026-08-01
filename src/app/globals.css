@@ -84,14 +84,17 @@
    * and JetBrains Mono are retired — the aliases below keep any stale
    * references resolving to the new stack until phase two migrates them.
    */
-  --font-body: var(--font-instrument-sans);
-  --font-heading: var(--font-instrument-sans);
-  --font-mono: var(--font-fragment-mono);
-  --font-display: var(--font-instrument-sans);
-  --font-inter: var(--font-instrument-sans);
-  --font-jetbrains-mono: var(--font-fragment-mono);
-  --font-home-sans: var(--font-instrument-sans);
-  --font-home-serif: var(--font-instrument-serif);
+  /* next/font defines --font-instrument-* on <html> at runtime. The fallbacks
+   * name the families directly so the stack still resolves outside the app
+   * shell (design-sync bundles ship the @font-face rules but not the vars). */
+  --font-body: var(--font-instrument-sans, "Instrument Sans", ui-sans-serif, system-ui, sans-serif);
+  --font-heading: var(--font-instrument-sans, "Instrument Sans", ui-sans-serif, system-ui, sans-serif);
+  --font-mono: var(--font-fragment-mono, "Fragment Mono", ui-monospace, SFMono-Regular, monospace);
+  --font-display: var(--font-instrument-sans, "Instrument Sans", ui-sans-serif, system-ui, sans-serif);
+  --font-inter: var(--font-instrument-sans, "Instrument Sans", ui-sans-serif, system-ui, sans-serif);
+  --font-jetbrains-mono: var(--font-fragment-mono, "Fragment Mono", ui-monospace, SFMono-Regular, monospace);
+  --font-home-sans: var(--font-instrument-sans, "Instrument Sans", ui-sans-serif, system-ui, sans-serif);
+  --font-home-serif: var(--font-instrument-serif, "Instrument Serif", Georgia, serif);
 
   --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
   --text-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);

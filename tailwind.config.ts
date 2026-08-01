@@ -6,9 +6,11 @@ const config: Config = {
   darkMode: "class",
   theme: {
     extend: {
+      // Fallbacks inside the var() keep .font-sans/.font-mono resolving where
+      // next/font is absent (design-sync bundles ship @font-face, not the vars).
       fontFamily: {
-        sans: ["var(--font-instrument-sans)", "system-ui", "sans-serif"],
-        mono: ["var(--font-fragment-mono)", "ui-monospace", "monospace"],
+        sans: ['var(--font-instrument-sans, "Instrument Sans")', "system-ui", "sans-serif"],
+        mono: ['var(--font-fragment-mono, "Fragment Mono")', "ui-monospace", "monospace"],
       },
       fontSize: {
         'xs': 'var(--text-xs)',

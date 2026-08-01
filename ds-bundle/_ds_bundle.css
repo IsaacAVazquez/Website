@@ -199,7 +199,7 @@
     line-height: 1.5;
     -webkit-text-size-adjust: 100%;
     tab-size: 4;
-    font-family: var(--font-instrument-sans, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"), system-ui, sans-serif;
+    font-family: var(--font-instrument-sans, "Instrument Sans"), system-ui, sans-serif;
     font-feature-settings: normal;
     font-variation-settings: normal;
     -webkit-tap-highlight-color: transparent;
@@ -226,7 +226,7 @@
     font-weight: bolder;
   }
   code, kbd, samp, pre {
-    font-family: var(--font-fragment-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace), ui-monospace, monospace;
+    font-family: var(--font-fragment-mono, "Fragment Mono"), ui-monospace, monospace;
     font-feature-settings: normal;
     font-variation-settings: normal;
     font-size: 1em;
@@ -3676,10 +3676,10 @@
     vertical-align: top;
   }
   .font-mono {
-    font-family: var(--font-fragment-mono), ui-monospace, monospace;
+    font-family: var(--font-fragment-mono, "Fragment Mono"), ui-monospace, monospace;
   }
   .font-sans {
-    font-family: var(--font-instrument-sans), system-ui, sans-serif;
+    font-family: var(--font-instrument-sans, "Instrument Sans"), system-ui, sans-serif;
   }
   .text-2xl {
     font-size: var(--text-2xl);
@@ -6128,14 +6128,14 @@
   }
 }
 :root {
-  --font-body: var(--font-instrument-sans);
-  --font-heading: var(--font-instrument-sans);
-  --font-mono: var(--font-fragment-mono);
-  --font-display: var(--font-instrument-sans);
-  --font-inter: var(--font-instrument-sans);
-  --font-jetbrains-mono: var(--font-fragment-mono);
-  --font-home-sans: var(--font-instrument-sans);
-  --font-home-serif: var(--font-instrument-serif);
+  --font-body: var(--font-instrument-sans, "Instrument Sans", ui-sans-serif, system-ui, sans-serif);
+  --font-heading: var(--font-instrument-sans, "Instrument Sans", ui-sans-serif, system-ui, sans-serif);
+  --font-mono: var(--font-fragment-mono, "Fragment Mono", ui-monospace, SFMono-Regular, monospace);
+  --font-display: var(--font-instrument-sans, "Instrument Sans", ui-sans-serif, system-ui, sans-serif);
+  --font-inter: var(--font-instrument-sans, "Instrument Sans", ui-sans-serif, system-ui, sans-serif);
+  --font-jetbrains-mono: var(--font-fragment-mono, "Fragment Mono", ui-monospace, SFMono-Regular, monospace);
+  --font-home-sans: var(--font-instrument-sans, "Instrument Sans", ui-sans-serif, system-ui, sans-serif);
+  --font-home-serif: var(--font-instrument-serif, "Instrument Serif", Georgia, serif);
   --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
   --text-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
   --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);

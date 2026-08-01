@@ -38,7 +38,11 @@
   src: url("./fragment-mono-latin.woff2") format("woff2");
 }
 
-/* next/font defines these on <html> in the app; previews get them here. */
+/* DEAD IN THE BUNDLE, KEPT AS DOCUMENTATION. extractFonts()
+ * (.ds-sync/lib/css.mjs:30) lifts @font-face rules out of this file and
+ * discards everything else, so this :root block never reaches ds-bundle.
+ * Consumers must carry their own in-var() fallback naming the family
+ * (see globals.css ~L87-97 and tailwind.config.ts fontFamily). */
 :root {
   --font-instrument-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
   --font-instrument-serif: "Instrument Serif", Georgia, serif;
