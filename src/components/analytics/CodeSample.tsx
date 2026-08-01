@@ -70,7 +70,7 @@ export function CodeSample({
           type="button"
           onClick={handleCopy}
           aria-label="Copy code to clipboard"
-          className="inline-flex min-h-[32px] items-center rounded-md px-2.5 py-1 text-xs font-semibold transition-colors"
+          className="inline-flex min-h-touch items-center rounded-md px-2.5 py-1 text-xs font-semibold transition-colors"
           style={{
             fontFamily: "var(--font-home-sans)",
             background: "color-mix(in srgb, var(--home-paper) 14%, transparent)",

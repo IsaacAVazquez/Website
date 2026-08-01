@@ -188,7 +188,7 @@ export function ResearchSection({
                   tabIndex={resolvedActiveTab === key ? 0 : -1}
                   onKeyDown={(e) => handleVisibleTabKeyDown(e, index)}
                   onClick={() => onTabChange(key)}
-                  className={`min-h-[40px] whitespace-nowrap rounded-[var(--radius-sm)] px-4 py-2 text-sm font-semibold transition ${
+                  className={`min-h-touch whitespace-nowrap rounded-[var(--radius-sm)] px-4 py-2 text-sm font-semibold transition ${
                     resolvedActiveTab === key
                       ? "bg-[var(--home-ink)] text-[var(--home-paper)]"
                       : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"

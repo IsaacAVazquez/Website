@@ -214,7 +214,7 @@ function QuickActions({
 }: QuickActionsProps) {
   const isVisited = Boolean(visit);
   const dim = size === "sm" ? 16 : 18;
-  const padClass = size === "sm" ? "min-h-[36px] px-2.5 py-1.5 text-xs" : "min-h-[44px] px-3 py-2 text-sm";
+  const padClass = size === "sm" ? "min-h-touch px-2.5 py-1.5 text-xs" : "min-h-touch px-3 py-2 text-sm";
 
   function pillStyle(active: boolean, accent: string) {
     if (active) {
@@ -1114,7 +1114,7 @@ function MuseumDetailView({
                   <button
                     type="button"
                     onClick={onClearVisit}
-                    className="inline-flex min-h-[36px] items-center gap-1.5 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-1.5 text-xs font-semibold text-[var(--home-ink-muted)]"
+                    className="inline-flex min-h-touch items-center gap-1.5 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-1.5 text-xs font-semibold text-[var(--home-ink-muted)]"
                   >
                     <Trash2 size={12} /> Remove visit
                   </button>

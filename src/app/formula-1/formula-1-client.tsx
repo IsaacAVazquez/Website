@@ -426,7 +426,7 @@ function CountdownCell({ value, label }: { value: string; label: string }) {
       <p className="mb-0 text-[1.6rem] font-semibold leading-none tracking-[-0.04em] tabular-nums text-[var(--home-ink)]">
         {value}
       </p>
-      <p className="mb-0 mt-1.5 text-[0.6rem] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+      <p className="mb-0 mt-1.5 text-3xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
         {label}
       </p>
     </div>
@@ -588,7 +588,7 @@ function LeaderboardRow({
           <p className="mb-0 text-base font-semibold tabular-nums text-[var(--home-ink)]">
             {formatPoints(row.points)}
           </p>
-          <p className="mb-0 text-[0.6rem] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+          <p className="mb-0 text-3xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
             pts
           </p>
         </div>

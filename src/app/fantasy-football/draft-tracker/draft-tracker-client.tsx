@@ -269,7 +269,7 @@ export function DraftTrackerClient() {
               onClick={() => setShowStats((open) => !open)}
               aria-expanded={showStats}
               aria-controls="draft-tracker-stats"
-              className="inline-flex min-h-[40px] items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-semibold"
+              className="inline-flex min-h-touch items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-semibold"
               style={ACTION_STYLE}
             >
               Draft at a glance
@@ -516,7 +516,7 @@ export function DraftTrackerClient() {
                         onChange={(event) => setTeamName(team.teamNumber, event.target.value)}
                         maxLength={40}
                         placeholder={`Team ${team.teamNumber}`}
-                        className="min-h-[40px] rounded-[var(--radius-2xl)] border px-3 text-sm"
+                        className="min-h-touch rounded-[var(--radius-2xl)] border px-3 text-sm"
                         style={ACTION_STYLE}
                       />
                     </label>

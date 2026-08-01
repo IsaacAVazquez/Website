@@ -86,7 +86,7 @@ export function DataFreshnessIndicator({
         {onRefresh && (
           <button
             onClick={onRefresh}
-            className="inline-flex min-h-[36px] min-w-[36px] items-center justify-center rounded-full text-[var(--home-ink-soft)] transition hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
+            className="inline-flex min-h-touch min-w-touch items-center justify-center rounded-full text-[var(--home-ink-soft)] transition hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
             aria-label="Refresh data"
           >
             <IconRefresh
@@ -123,7 +123,7 @@ export function DataFreshnessIndicator({
       {onRefresh && (
         <button
           onClick={onRefresh}
-          className="inline-flex min-h-[36px] min-w-[36px] items-center justify-center rounded-full text-[var(--home-ink-soft)] transition hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
+          className="inline-flex min-h-touch min-w-touch items-center justify-center rounded-full text-[var(--home-ink-soft)] transition hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
           aria-label="Refresh data"
         >
           <IconRefresh

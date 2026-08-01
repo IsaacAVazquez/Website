@@ -191,7 +191,7 @@ function Matchup({
   tags?: string[];
 }) {
   return (
-    <div className="mb-3 overflow-hidden rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-black/20">
+    <div className="mb-3 overflow-hidden rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-overlay)]">
       <TeamRow seed={s1} name={t1} win={w === 1} tags={w === 1 ? tags : []} />
       <div className="h-px bg-[var(--home-overlay)]" />
       <TeamRow seed={s2} name={t2} win={w === 2} tags={w === 2 ? tags : []} />
@@ -211,7 +211,7 @@ function Matchup2({
   tags?: string[];
 }) {
   return (
-    <div className="mb-3 overflow-hidden rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-black/20">
+    <div className="mb-3 overflow-hidden rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-overlay)]">
       <TeamRow name={t1} win={w === 1} tags={w === 1 ? tags : []} />
       <div className="h-px bg-[var(--home-overlay)]" />
       <TeamRow name={t2} win={w === 2} tags={w === 2 ? tags : []} />
@@ -455,7 +455,7 @@ function SCurveSection() {
             {data.map((item) => (
               <div
                 key={item.team}
-                className="flex flex-wrap items-center gap-3 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-black/10 px-3 py-3"
+                className="flex flex-wrap items-center gap-3 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-overlay)] px-3 py-3"
               >
                 <span className="min-w-[110px] text-sm font-semibold text-[var(--home-ink)]">{item.team}</span>
                 <span className="flex-1 text-xs text-[var(--home-ink-muted)]">
@@ -808,7 +808,7 @@ function PicksSection() {
           ].map((legendItem) => (
             <div
               key={legendItem.label}
-              className="flex items-center gap-2 rounded-full border border-[var(--home-rule)] bg-black/10 px-3 py-2"
+              className="flex items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[var(--home-overlay)] px-3 py-2"
             >
               <span
                 className={`inline-flex rounded-full border px-2 py-1 text-3xs font-semibold uppercase tracking-[0.14em] ${legendItem.className}`}

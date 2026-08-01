@@ -290,7 +290,7 @@ export function InterchangeIQClient() {
                 color: "var(--home-ink)",
                 borderColor: "var(--home-rule)",
                 background: "var(--home-paper-raised)",
-                minHeight: 32,
+                minHeight: 44,
               }}
               aria-label="Reset all inputs to defaults"
             >

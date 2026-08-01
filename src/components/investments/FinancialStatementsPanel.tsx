@@ -160,7 +160,7 @@ export function FinancialStatementsPanel({ symbol }: Props) {
               role="tab"
               aria-selected={activeTab === key}
               onClick={() => setActiveTab(key)}
-              className={`px-3 py-1.5 text-xs font-medium rounded-md transition whitespace-nowrap min-h-[36px] ${
+              className={`px-3 py-1.5 text-xs font-medium rounded-md transition whitespace-nowrap min-h-touch ${
                 activeTab === key
                   ? "bg-[var(--home-signal)] text-white"
                   : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)]"
@@ -177,7 +177,7 @@ export function FinancialStatementsPanel({ symbol }: Props) {
             <button
               key={p}
               onClick={() => setPeriod(p)}
-              className={`px-3 py-1.5 text-xs font-medium rounded-md transition capitalize min-h-[36px] ${
+              className={`px-3 py-1.5 text-xs font-medium rounded-md transition capitalize min-h-touch ${
                 period === p
                   ? "bg-[var(--home-stone)] text-[var(--home-ink)]"
                   : "text-[var(--home-ink-soft)] hover:bg-[var(--home-paper-alt)]"
