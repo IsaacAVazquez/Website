@@ -1772,7 +1772,7 @@
     gap: 10px;
     font-family: var(--font-mono);
     font-size: 0.72rem;
-    font-weight: 600;
+    font-weight: 400;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--home-ink);
@@ -1800,6 +1800,11 @@
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--home-ink-muted);
+    /* 44px minimum touch target. These are block links in a nav with no
+       sibling text, so the WCAG 2.5.8 inline-link exemption does not apply. */
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     padding: 4px 12px;
     border-left: 1px solid var(--home-rule);
     transition: color 160ms ease;
@@ -1817,8 +1822,10 @@
   }
 
   .footer-home-links a.is-strong {
+    /* Fragment Mono ships weight 400 only, so 600 here rendered as a
+       browser-synthesized fake bold. Emphasis comes from the ink color. */
     color: var(--home-ink);
-    font-weight: 600;
+    font-weight: 400;
   }
 
   .footer-home-icon {

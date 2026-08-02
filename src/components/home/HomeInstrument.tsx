@@ -108,6 +108,13 @@ export function HomeInstrument({
     (sum, group) => sum + group.tools.length,
     0
   );
+  // Tools beyond the three featured cards. The featured sites are themselves
+  // live tools, so the raw total double-counts them in any "past the featured
+  // sites" claim and makes the hero index report the same number twice.
+  const featuredLiveCount = heroProjects.filter((project) =>
+    Boolean(project.link?.trim()),
+  ).length;
+  const otherToolTotal = Math.max(toolTotal - featuredLiveCount, 0);
   const toolCategories = liveToolGroups.map((group) => group.label);
 
   return (
@@ -123,7 +130,7 @@ export function HomeInstrument({
           <div className={styles.plate}>
             <CornerTicks />
             <div className={styles.plateBar}>
-              <span className={styles.plateNo}>Plate 00</span>
+              <span className={styles.plateNo} aria-hidden="true">Plate 00</span>
               <span className={styles.plateName}>The overview</span>
               <span className={styles.plateCoord}>37.8715°N · 122.2730°W</span>
             </div>
@@ -139,10 +146,9 @@ export function HomeInstrument({
                 </h1>
                 <p className={styles.dek}>
                   Product manager and builder, Berkeley Haas MBA &rsquo;27. What
-                  you&rsquo;re looking at is a survey of the work, and{" "}
-                  {heroIndex.liveToolCount} of these tools are live in
-                  production right now, running on real data that refreshes
-                  itself.
+                  you&rsquo;re looking at is a survey of the work, and all{" "}
+                  {heroIndex.liveToolCount} tools in it are live in production
+                  right now, running on real data that refreshes itself.
                 </p>
                 <div className={styles.ctas}>
                   <Link
@@ -167,8 +173,8 @@ export function HomeInstrument({
                     <dd>{pad2(heroIndex.projectCount)}</dd>
                   </div>
                   <div className={styles.indexCell}>
-                    <dt>Live tools</dt>
-                    <dd>{pad2(heroIndex.liveToolCount)}</dd>
+                    <dt>Other tools</dt>
+                    <dd>{pad2(otherToolTotal)}</dd>
                   </div>
                   <div className={styles.indexCell}>
                     <dt>Essays</dt>
@@ -205,7 +211,9 @@ export function HomeInstrument({
                   })}
                   <span className={styles.legend}>
                     <span className={styles.legendDot} />
-                    <span className={styles.legendText}>Surveyed site</span>
+                    <span className={styles.legendText}>
+                      Surveyed site · labelled regions are domains
+                    </span>
                   </span>
                 </div>
                 <HomeLiveFeed data={liveFeed} />
@@ -224,7 +232,7 @@ export function HomeInstrument({
         <div className={styles.shell}>
           <div className={styles.sectionHead}>
             <div className={styles.sectionTitleWrap}>
-              <span className={styles.sectionPlate}>Plate 01</span>
+              <span className={styles.sectionPlate} aria-hidden="true">Plate 01</span>
               <h2 id="home-projects-heading" className={styles.sectionTitle}>
                 Selected work
               </h2>
@@ -235,8 +243,8 @@ export function HomeInstrument({
             </Link>
           </div>
           <p className={styles.sectionDek}>
-            The three sites plotted on the map above, each with what it actually
-            moved.
+            These are the three sites plotted on the map above, and what each
+            one is for.
           </p>
 
           <div className={styles.workGrid} data-testid="home-projects">
@@ -276,7 +284,7 @@ export function HomeInstrument({
                   <div className={styles.cardFoot}>
                     <span>{project.timeline}</span>
                     <span className={styles.cardGo} aria-hidden="true">
-                      Survey
+                      Open
                       <ArrowRight size={12} />
                     </span>
                   </div>
@@ -304,6 +312,7 @@ export function HomeInstrument({
                   rel="noreferrer"
                 >
                   {inner}
+                  <span className="sr-only"> (opens in a new tab)</span>
                 </a>
               );
             })}
@@ -321,7 +330,7 @@ export function HomeInstrument({
           <div className={styles.plate}>
             <CornerTicks />
             <div className={styles.plateBar}>
-              <span className={styles.plateNo}>Plate 02</span>
+              <span className={styles.plateNo} aria-hidden="true">Plate 02</span>
               <span className={styles.plateName}>The surveyor</span>
             </div>
             <div className={styles.aboutGrid}>
@@ -395,20 +404,20 @@ export function HomeInstrument({
         <div className={styles.shell}>
           <div className={styles.territory} data-testid="home-tools">
             <div className={styles.territoryHead}>
-              <span className={styles.sectionPlate}>Plate 03</span>
+              <span className={styles.sectionPlate} aria-hidden="true">Plate 03</span>
               <h2 id="home-tools-heading" className={styles.territoryTitle}>
                 The wider territory
               </h2>
             </div>
             <p className={styles.territoryCopy}>
-              Past the featured sites, {toolTotal} smaller tools run across{" "}
+              Past the featured sites, {otherToolTotal} tools run across{" "}
               {toolCategories.slice(0, -1).join(", ")}
               {toolCategories.length > 1 ? ", and " : ""}
               {toolCategories[toolCategories.length - 1]}. Mostly things I built
               because I wanted them to exist, all live on real data.
             </p>
             <Link className={styles.territoryLink} href="/portfolio">
-              Open the full map
+              Open the portfolio
               <ArrowRight />
             </Link>
           </div>
@@ -424,7 +433,7 @@ export function HomeInstrument({
         <div className={styles.shell}>
           <div className={styles.sectionHead}>
             <div className={styles.sectionTitleWrap}>
-              <span className={styles.sectionPlate}>Plate 04</span>
+              <span className={styles.sectionPlate} aria-hidden="true">Plate 04</span>
               <h2 id="home-writing-heading" className={styles.sectionTitle}>
                 Recent writing
               </h2>
@@ -435,7 +444,9 @@ export function HomeInstrument({
             </Link>
           </div>
           <p className={styles.sectionDek}>
-            Field log. What I&rsquo;ve been thinking through lately.
+            These are the three most recent pieces I&rsquo;ve written, and
+            they&rsquo;re a fair picture of what I&rsquo;ve been thinking
+            through lately.
           </p>
 
           <div className={styles.writeList} data-testid="home-writing">

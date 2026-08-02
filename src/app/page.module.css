@@ -349,7 +349,7 @@
   content: "";
   position: absolute;
   left: 50%;
-  top: 100%;
+  bottom: 100%;
   width: 1px;
   height: 10px;
   background-color: var(--atlas-signal);
@@ -364,7 +364,7 @@
   font-size: var(--text-3xs);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--home-ink) 34%, var(--home-paper));
+  color: var(--atlas-micro);
   white-space: nowrap;
   pointer-events: none;
 }
@@ -503,8 +503,8 @@
 }
 
 .panelClockZone {
-  font-size: 0.84em;
-  color: color-mix(in srgb, var(--home-ink-muted) 75%, transparent);
+  font-size: var(--text-3xs);
+  color: var(--atlas-micro);
 }
 
 .feedRd {
@@ -538,7 +538,10 @@
 }
 
 .feedDown {
-  color: var(--home-negative);
+  /* The raw negative token lands at 4.46:1 on limestone paper, just under AA.
+     Mixing toward ink darkens it in light and lightens it in dark, so it
+     clears 4.5:1 in both themes. */
+  color: color-mix(in srgb, var(--home-negative) 88%, var(--home-ink));
 }
 
 .feedRdFigure {
@@ -1050,7 +1053,7 @@
 
 .writeRow {
   display: grid;
-  grid-template-columns: auto auto 1fr auto;
+  grid-template-columns: auto auto 1fr auto auto;
   align-items: center;
   gap: 0.75rem 1.1rem;
   min-height: 44px;

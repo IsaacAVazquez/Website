@@ -73,7 +73,7 @@ export function ContactCta() {
           <div>
             <span className={styles.kicker}>Contact &middot; Currently open</span>
             <h2 id="home-cta-heading" className={styles.heading}>
-              Building something that needs <em>judgment</em> and follow-through?
+              Building something that needs judgment and follow-through?
             </h2>
             <p className={styles.copy}>
               Especially interested in product, analytics, fintech, and workflow tools where
@@ -100,6 +100,7 @@ export function ContactCta() {
             >
               LinkedIn
               <LinkedInIcon />
+              <span className="sr-only"> (opens in a new tab)</span>
             </a>
           </div>
         </div>

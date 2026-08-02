@@ -11,12 +11,12 @@ import { trackNavigationClick } from "@/lib/analytics";
 const socialLinks = [
   {
     href: "https://www.linkedin.com/in/isaac-vazquez/",
-    label: "Visit Isaac Vazquez's LinkedIn profile",
+    label: "Visit Isaac Vazquez's LinkedIn profile (opens in a new tab)",
     icon: BrandLinkedin,
   },
   {
     href: "https://github.com/IsaacAVazquez",
-    label: "Visit Isaac Vazquez's GitHub profile",
+    label: "Visit Isaac Vazquez's GitHub profile (opens in a new tab)",
     icon: BrandGithub,
   },
 ];

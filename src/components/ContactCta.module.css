@@ -52,8 +52,8 @@
 
 .heading {
   font-family: var(--font-home-sans);
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 640;
+  font-size: clamp(1.9rem, 3.2vw, 2.75rem);
+  font-weight: 600;
   line-height: 1.04;
   letter-spacing: -0.03em;
   color: var(--home-ink);

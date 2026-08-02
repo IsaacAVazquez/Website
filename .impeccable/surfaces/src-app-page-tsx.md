@@ -21,4 +21,6 @@ related_targets: []
 
 **Memorable moment.** The first viewport is a chart plate, not a hero sentence: a graticule field carrying the title cartouche (name, claim, real Berkeley coordinates) and live "field readings," so a peer sees the work instrumented as surveyed territory immediately.
 
+**Settled 2026-08-02 (critique).** The map plots from real data rather than shedding its marks. `TERRITORY` and `PROJECT_PLOTS` stop being hand-authored constant arrays and derive position from each project's real category and ship date, so grid refs decode, the two Fintech projects cluster, the missing "News & data" region appears, and the remaining tools can render as faint dots behind the featured three. Do not re-open this as "cut the cartography" on a later pass. The schematic-layout comment in `HomeInstrument.tsx` is the thing being replaced, not a standing decision.
+
 **Unresolved.** Whether the Atlas propagates site-wide (promote into DESIGN.md then) or stays home-only (keep it recorded here). Exact cartographic tokens settle on first build.
