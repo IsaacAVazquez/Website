@@ -40,6 +40,7 @@ interface FantasyProsPublicConsensusPayload {
 
 export interface FantasyProsPublicBoard {
   scoringFormat: ScoringFormat;
+  sourceScoring: string;
   requestedPosition: FantasyPublicPosition;
   sourcePosition: string;
   sourceUrl: string;
@@ -263,6 +264,7 @@ export function parseFantasyProsPublicConsensusPage(
 
   return {
     scoringFormat: options.scoringFormat,
+    sourceScoring: payload.scoring.trim().toUpperCase(),
     requestedPosition: options.requestedPosition,
     sourcePosition: payload.position_id,
     sourceUrl: options.sourceUrl,

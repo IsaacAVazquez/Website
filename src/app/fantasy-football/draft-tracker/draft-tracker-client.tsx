@@ -11,13 +11,19 @@ import { useDraftTimer } from "./hooks/useDraftTimer";
 import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
 import { usePlayerNotes } from "@/hooks/usePlayerNotes";
 import { computeDraftAnalytics } from "@/lib/draftAnalytics";
+import { calculateRedraftDraftValues } from "@/lib/fantasyTeamValue";
 import {
   FANTASY_SCORING_LABELS,
   getFantasyWeekLabel,
   scoringFormatToRouteScoring,
 } from "@/lib/fantasy";
 import { formatRankValue, formatUpdatedAt } from "@/lib/fantasyUtils";
-import { CompareTray, PlayerDetailDrawer } from "@/components/fantasy";
+import {
+  CompareTray,
+  DraftValuePanel,
+  PlayerDetailDrawer,
+  type ExpectedReturnFormState,
+} from "@/components/fantasy";
 import type { Player } from "@/types";
 import { Breadcrumbs } from "@/components/navigation/Breadcrumbs";
 import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
@@ -88,6 +94,11 @@ export function DraftTrackerClient() {
   const [showTeamEditor, setShowTeamEditor] = useState(false);
   const [exportToast, setExportToast] = useState<string | null>(null);
   const [resetArmed, setResetArmed] = useState(false);
+  const [returnAssumptions, setReturnAssumptions] = useState<ExpectedReturnFormState>({
+    entryCost: "",
+    payoutProbability: "",
+    averagePayout: "",
+  });
 
   const draftedPlayerIds = useMemo(
     () => new Set(draftState.picks.map((pick) => pick.player.id)),
@@ -99,6 +110,12 @@ export function DraftTrackerClient() {
     () => computeDraftAnalytics(draftState.picks, draftState.teams),
     [draftState.picks, draftState.teams]
   );
+  const draftValueReports = useMemo(
+    () => calculateRedraftDraftValues(draftState.picks, draftState.settings),
+    [draftState.picks, draftState.settings]
+  );
+  const userDraftValue =
+    draftValueReports.find((report) => report.teamNumber === draftState.settings.userTeam) ?? null;
   const adpAvailable = Boolean(snapshot?.adpSource);
   const totalPicks = draftState.settings.totalTeams * draftState.settings.rounds;
   const completionPercentage = Math.round((draftState.picks.length / totalPicks) * 100);
@@ -225,7 +242,8 @@ export function DraftTrackerClient() {
             <p className="max-w-[60ch] text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
               Log every pick on the same published snapshot as the rankings, with your shared
               watchlist, an advisory pick clock, multi-step undo, and steal/reach/run signals against
-              attributed mock-draft ADP.
+              attributed mock-draft ADP. The Draft Outlook compares your roster against the room,
+              and the expected return calculator keeps your payout assumptions explicit.
             </p>
           </div>
 
@@ -340,6 +358,14 @@ export function DraftTrackerClient() {
                     getTeamName={getTeamName}
                   />
                 )}
+                <article className="home-card p-5 sm:p-6 lg:hidden">
+                  <DraftValuePanel
+                    report={userDraftValue}
+                    headingId="redraft-mobile-draft-outlook-heading"
+                    calculatorValue={returnAssumptions}
+                    onCalculatorChange={setReturnAssumptions}
+                  />
+                </article>
                 <DraftBoard
                   players={snapshot?.overall ?? []}
                   snapshot={snapshot}
@@ -358,6 +384,16 @@ export function DraftTrackerClient() {
           </div>
 
           <aside className="grid gap-5 lg:sticky lg:top-24 lg:self-start">
+            {!showSetup && !rankingsUnavailable ? (
+              <article className="home-card hidden p-5 sm:p-6 lg:block">
+                <DraftValuePanel
+                  report={userDraftValue}
+                  headingId="redraft-desktop-draft-outlook-heading"
+                  calculatorValue={returnAssumptions}
+                  onCalculatorChange={setReturnAssumptions}
+                />
+              </article>
+            ) : null}
             {!showSetup && !isDraftComplete && !rankingsUnavailable && (
               <DraftAnalyticsPanel
                 analytics={analytics}

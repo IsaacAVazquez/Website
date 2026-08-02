@@ -60,6 +60,8 @@ src/app/layout.tsx
 - generated static snapshots in `public/data/fantasy/`
 - `/api/fantasy-data` server fallback over the same snapshot files
 - weekly GitHub Actions refresh through `npm run update:fantasy`
+- a separate committed best ball snapshot at `public/data/fantasy/best-ball.json` combines FantasyPros best ball consensus, current Underdog ADP, bye weeks, and the Week 17 schedule; `src/lib/bestBall.ts` applies the selected contest rules without changing the redraft engine
+- `src/lib/fantasyTeamValue.ts` derives the shared room-relative Draft Outlook and exact expected return math used by both trackers. The structural model stays separate from payout probability because current snapshots do not contain populated weekly player projections or an outcome distribution
 - the rankings board (`/fantasy-football`) and draft assistant (`/fantasy-football/draft-tracker`) share three browser-local stores layered over `src/hooks/useLocalStorageString.ts`, with pure parse/serialize and key constants in `src/lib/fantasyLocal.ts`: a player watchlist (`usePlayerQueue`), per-player notes (`usePlayerNotes`), and the compare selection (`useCompareTray`); list density also persists locally. Shared presentation components live in `src/components/fantasy/`
 
 ### Investments

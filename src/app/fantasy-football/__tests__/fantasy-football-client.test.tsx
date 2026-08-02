@@ -154,6 +154,10 @@ describe("FantasyFootballClient", () => {
     expect(screen.getByRole("radio", { name: /RB/i })).not.toBeDisabled();
     expect(screen.getByText("Christian McCaffrey")).toBeVisible();
     expect(screen.getAllByText(/Source updated/i).length).toBeGreaterThan(0);
+    expect(screen.getByRole("link", { name: /Open best ball tools/i })).toHaveAttribute(
+      "href",
+      "/fantasy-football/best-ball"
+    );
     expect(screen.queryByText(/^Proj\. Pts$/)).not.toBeInTheDocument();
     expect(container.querySelector("aside")).toHaveClass("lg:sticky", "lg:top-24", "lg:self-start");
   });

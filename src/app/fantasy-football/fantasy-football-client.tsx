@@ -611,7 +611,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
             </h1>
             <p className="max-w-[60ch] text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
               A snapshot-backed FantasyPros consensus board with explicit freshness, a shared watchlist, and a
-              side-by-side compare — feeding the same data into the draft assistant.
+              side-by-side compare, with the same data feeding a room-relative Draft Outlook in the draft assistant.
             </p>
             <div className="flex flex-wrap items-center gap-3 pt-1">
               <Link
@@ -621,6 +621,18 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
               >
                 Launch draft assistant
                 <ArrowUpRight className="h-4 w-4" />
+              </Link>
+              <Link
+                href="/fantasy-football/best-ball"
+                className="inline-flex min-h-[48px] items-center gap-2 rounded-full border px-5 py-3 text-sm font-semibold transition-[background-color,border-color,color] duration-200"
+                style={{
+                  borderColor: "var(--home-rule)",
+                  background: "var(--home-paper)",
+                  color: "var(--home-ink)",
+                }}
+              >
+                Open best ball tools
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
               </Link>
               <button
                 type="button"
@@ -1070,7 +1082,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
               <h3 className="text-xl font-semibold">Track the room without leaving the board.</h3>
               <p className="mt-3 text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
                 Use the same snapshot inside the draft assistant, log picks manually, and let it flag steals,
-                reaches, and position runs against the same attributed ADP shown here.
+                reaches, and position runs, then compare your roster against the room and run your own expected return assumptions.
               </p>
               <Link
                 href="/fantasy-football/draft-tracker"

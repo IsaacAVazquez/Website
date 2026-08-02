@@ -51,6 +51,8 @@ const STATIC_ROUTE_LASTMOD = {
   "/world-cup-2026": latestIso(readWorldCupLastmod(), "2026-07-23"),
   "/march-madness-2026": "2026-03-17",
   "/fantasy-football": readFantasyLastmod(),
+  "/fantasy-football/best-ball": readBestBallLastmod(),
+  "/fantasy-football/best-ball/draft-tracker": readBestBallLastmod(),
   "/fantasy-football/draft-tracker": readFantasyLastmod(),
   "/fintech-tools/budget-planner": "2026-04-03",
   "/fintech-tools/interchange-iq": "2026-04-02",
@@ -98,6 +100,8 @@ const CHANGEFREQ_BY_ROUTE = {
   "/arcade": "monthly",
   // Fantasy football — weekly FantasyPros + ADP refresh
   "/fantasy-football": "weekly",
+  "/fantasy-football/best-ball": "weekly",
+  "/fantasy-football/best-ball/draft-tracker": "weekly",
   "/fantasy-football/draft-tracker": "weekly",
   // Investments — committed snapshots refresh twice weekly
   "/investments": "weekly",
@@ -246,6 +250,11 @@ function readEarthquakeLastmod() {
 
 function readFantasyLastmod() {
   const source = JSON.parse(readFile("public/data/fantasy/ppr.json"));
+  return toIsoString(source.generatedAt);
+}
+
+function readBestBallLastmod() {
+  const source = JSON.parse(readFile("public/data/fantasy/best-ball.json"));
   return toIsoString(source.generatedAt);
 }
 

@@ -16,6 +16,11 @@ describe("fantasy workflow", () => {
     expect(workflow).toContain("public/data/fantasy/ppr.json");
     expect(workflow).toContain("public/data/fantasy/half_ppr.json");
     expect(workflow).toContain("public/data/fantasy/standard.json");
+    expect(workflow).toContain("public/data/fantasy/best-ball.json");
+    expect(workflow).toContain("adpMatches < 150");
+    expect(workflow).toContain("superflexMatches < 150");
+    expect(workflow).toContain("scheduleTeams < 30");
+    expect(workflow).toContain("generatedAgeDays > 10");
     expect(workflow).not.toContain("public/fantasy/rb_current.json");
   });
 });

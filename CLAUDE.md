@@ -147,6 +147,11 @@ localStorage via dedicated hooks. Reference: `PERSONAL_INTEREST_TOOLS.md`.
 - **Draft analytics** (`src/lib/draftAnalytics.ts`) — pure, unit-tested engine
   (reaches/steals vs. an ADP-or-consensus baseline, position-run detection, per-team
   grades) rendered in the draft tracker.
+- **Fantasy Draft Outlook** (`src/lib/fantasyTeamValue.ts`) — pure, unit-tested
+  room comparison shared by redraft and best ball. It combines market price,
+  roster shape, format fit, and bye coverage, then keeps the user-entered expected
+  return calculation separate. Treat the room rank as draft-process guidance, not
+  projected points, win probability, or roster-specific payout EV.
 - **Score pools** (`src/lib/scorePools/*`) — pure, unit-tested exact-score prediction
   engine: odds de-vig, market-calibrated Dixon-Coles scoreline distribution with a
   90-minute vs final-result scoring basis, expected-points optimizer, and a
@@ -163,6 +168,8 @@ localStorage via dedicated hooks. Reference: `PERSONAL_INTEREST_TOOLS.md`.
 - ADP is build-time only (`src/lib/fantasyAdpMatcher.ts`, tiered exact matching, never
   fuzzy); when the `adpSource` is `null` the UI hides every ADP surface.
 - `useFantasySnapshot` is the single client entry point.
+- Best ball ships separately at `public/data/fantasy/best-ball.json`, with consensus rankings, Underdog ADP, bye weeks, and Week 17 opponents. `useBestBallSnapshot` is its client entry point, and `src/lib/bestBall.ts` owns contest presets and draft recommendations. Keep best ball state and roster logic separate from the redraft tracker.
+- `src/components/fantasy/DraftValuePanel.tsx` is the shared UI for Draft Outlook and expected return math. Best Ball Mania VII field economics are published inputs from the dated contest preset. Weekly Winners, Sit and Go, and other variable lobby cards must not receive invented static economics.
 
 ---
 

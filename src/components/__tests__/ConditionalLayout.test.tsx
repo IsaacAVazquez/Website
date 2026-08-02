@@ -102,6 +102,21 @@ describe("ConditionalLayout", () => {
     expect(container.querySelector('[data-testid="route-content"]')).toBeTruthy();
   });
 
+  it("treats nested fantasy football routes as self-shell routes", () => {
+    mockUsePathname.mockReturnValue("/fantasy-football/best-ball/draft-tracker");
+
+    act(() => {
+      root.render(
+        <ConditionalLayout>
+          <div data-testid="route-content">Page content</div>
+        </ConditionalLayout>
+      );
+    });
+
+    expect(container.querySelector("main > .max-w-4xl")).toBeNull();
+    expect(container.querySelector('[data-testid="route-content"]')).toBeTruthy();
+  });
+
   it("treats /golf as a self-shell route", () => {
     mockUsePathname.mockReturnValue("/golf");
 

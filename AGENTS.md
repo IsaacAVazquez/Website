@@ -107,6 +107,8 @@ Self-shell routes currently include:
 - `/earthquake-pulse`
 - `/fantasy-formula-1`
 - `/fantasy-football`
+- `/fantasy-football/best-ball`
+- `/fantasy-football/best-ball/draft-tracker`
 - `/fantasy-football/draft-tracker`
 - `/fintech-tools/budget-planner`
 - `/fintech-tools/interchange-iq`
@@ -229,7 +231,11 @@ npm run dev
 
 ### Fantasy surface
 
-The fantasy-football surface pairs a FantasyPros consensus rankings board at `/fantasy-football` (client `fantasy-football-client.tsx`) with a manual draft assistant at `/fantasy-football/draft-tracker`, both reading one snapshot through `useFantasySnapshot`. The rankings board offers a deep-linkable position pill bar and PPR/Half-PPR/Standard scoring selector (`?position=`, `?scoring=`), per-board search, a List/Tiers view toggle (`?view=tiers`), a Comfortable/Compact density control, and ADP Value/Reach chips. Shared presentation components live in `src/components/fantasy/` (barrel `index.ts`); three cross-surface browser-local stores live in `src/hooks/use{PlayerQueue,PlayerNotes,CompareTray}.ts` over `useLocalStorageString.ts`, with parse/serialize helpers and key constants in `src/lib/fantasyLocal.ts`. Board math/formatting/legend copy is in `src/lib/fantasyUtils.ts`; the pure draft signal engine is `src/lib/draftAnalytics.ts`. New localStorage keys: `fantasy-player-queue-v1`, `fantasy-player-notes-v1`, `fantasy-compare-v1`, `fantasy-board-density`; per-season draft state persists under `fantasy-draft-tracker-v2-<season>`.
+The fantasy-football surface keeps redraft and best ball separate. `/fantasy-football` and `/fantasy-football/draft-tracker` use the scoring-specific redraft snapshots through `useFantasySnapshot`. `/fantasy-football/best-ball` and `/fantasy-football/best-ball/draft-tracker` use `public/data/fantasy/best-ball.json` through `useBestBallSnapshot`, with contest rules and recommendations from `src/lib/bestBall.ts`. The best ball snapshot combines best ball consensus rankings, current Underdog ADP, bye weeks, and Week 17 opponents. Best ball draft state uses its own season-and-contest storage keys and does not read or overwrite the redraft draft state.
+
+The redraft rankings board offers a deep-linkable position pill bar and PPR/Half-PPR/Standard scoring selector (`?position=`, `?scoring=`), per-board search, a List/Tiers view toggle (`?view=tiers`), a Comfortable/Compact density control, and ADP Value/Reach chips. Shared presentation components live in `src/components/fantasy/` (barrel `index.ts`); three cross-surface browser-local stores live in `src/hooks/use{PlayerQueue,PlayerNotes,CompareTray}.ts` over `useLocalStorageString.ts`, with parse/serialize helpers and key constants in `src/lib/fantasyLocal.ts`. Board math/formatting/legend copy is in `src/lib/fantasyUtils.ts`; the pure redraft signal engine is `src/lib/draftAnalytics.ts`. LocalStorage keys include `fantasy-player-queue-v1`, `fantasy-player-notes-v1`, `fantasy-compare-v1`, and `fantasy-board-density`; per-season redraft state persists under `fantasy-draft-tracker-v2-<season>`.
+
+Both draft trackers derive a room-relative Draft Outlook from `src/lib/fantasyTeamValue.ts`. The model uses actual pick number against ADP or format rank, roster shape, lineup or stack fit, and same-position bye overlap, with explicit component weights and input coverage. `src/components/fantasy/DraftValuePanel.tsx` renders the shared room rank, draft-slot turn context, published Best Ball Mania VII field economics, and a user-entered expected return calculator. The Draft Outlook is an ordinal draft-process model. Do not describe it as projected points, win probability, or roster-specific payout EV. Those outputs require weekly player distributions and a calibrated field simulation that the current snapshots do not contain.
 
 ### Fantasy data workflow
 
@@ -237,11 +243,12 @@ Primary npm entry point:
 
 - `npm run update:fantasy`
 
-The command currently runs this three-step pipeline:
+The command currently runs this four-step pipeline:
 
 1. `tsx scripts/buildFantasyPositionData.ts`
 2. `tsx scripts/buildFantasyAdpData.ts`
 3. `tsx scripts/buildFantasySnapshots.ts`
+4. `tsx scripts/buildBestBallSnapshot.ts`
 
 Current generated outputs:
 
@@ -250,6 +257,7 @@ Current generated outputs:
 - `public/data/fantasy/ppr.json`
 - `public/data/fantasy/half_ppr.json`
 - `public/data/fantasy/standard.json`
+- `public/data/fantasy/best-ball.json`
 
 Legacy RB tiers artifact still exists, and the old RB tier route redirects to the canonical fantasy board:
 

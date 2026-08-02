@@ -92,6 +92,32 @@ jobs:
             }
           }
 
+          try {
+            const bestBall = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'best-ball.json'), 'utf8'));
+            const playerCount = Array.isArray(bestBall.players) ? bestBall.players.length : 0;
+            const adpMatches = Number(bestBall.adpSource?.matchedCount || 0);
+            const superflexMatches = Number(bestBall.superflexSource?.matchedCount || 0);
+            const scheduleTeams = Object.keys(bestBall.week17Opponents || {}).length;
+            const now = Date.now();
+            const generatedAgeDays = (now - Date.parse(bestBall.generatedAt || '')) / 86400000;
+            const sourceAgeLimit = [6, 7, 8].includes(new Date().getUTCMonth()) ? 14 : 45;
+            const rankingAgeDays = (now - Date.parse(bestBall.rankingSource?.asOf || '')) / 86400000;
+            const adpAgeDays = (now - Date.parse(bestBall.adpSource?.asOf || '')) / 86400000;
+            const superflexAgeDays = (now - Date.parse(bestBall.superflexSource?.asOf || '')) / 86400000;
+            console.log('best-ball: players=' + playerCount + ' superflex=' + superflexMatches + ' adp=' + adpMatches + ' week17=' + scheduleTeams + ' built=' + generatedAgeDays.toFixed(1) + 'd');
+            if (playerCount < 150) failures.push('best-ball has ' + playerCount + ' players (need >= 150)');
+            if (superflexMatches < 150) failures.push('best-ball has ' + superflexMatches + ' Superflex matches (need >= 150)');
+            if (adpMatches < 150) failures.push('best-ball has ' + adpMatches + ' ADP matches (need >= 150)');
+            if (scheduleTeams < 30) failures.push('best-ball has ' + scheduleTeams + ' Week 17 team mappings (need >= 30)');
+            if (!Number.isFinite(generatedAgeDays) || generatedAgeDays > 10) failures.push('best-ball snapshot is older than 10 days');
+            if (!Number.isFinite(rankingAgeDays) || rankingAgeDays > sourceAgeLimit) failures.push('best-ball rankings source is older than ' + sourceAgeLimit + ' days');
+            if (!Number.isFinite(adpAgeDays) || adpAgeDays > sourceAgeLimit) failures.push('best-ball ADP source is older than ' + sourceAgeLimit + ' days');
+            if (!Number.isFinite(superflexAgeDays) || superflexAgeDays > sourceAgeLimit) failures.push('best-ball Superflex source is older than ' + sourceAgeLimit + ' days');
+            if (!String(bestBall.scheduleSource?.url || '').includes('dates=' + bestBall.season)) failures.push('best-ball Week 17 schedule does not match snapshot season');
+          } catch (err) {
+            failures.push('best-ball failed to parse: ' + err.message);
+          }
+
           if (failures.length > 0) {
             console.error('::error::Fantasy snapshot quality gate failed:');
             for (const failure of failures) {
@@ -144,7 +170,8 @@ jobs:
             src/data/fantasySnapshotRevision.generated.ts \
             public/data/fantasy/ppr.json \
             public/data/fantasy/half_ppr.json \
-            public/data/fantasy/standard.json; then
+            public/data/fantasy/standard.json \
+            public/data/fantasy/best-ball.json; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No fantasy snapshot changes detected."
           else
@@ -162,7 +189,8 @@ jobs:
             src/data/fantasySnapshotRevision.generated.ts \
             public/data/fantasy/ppr.json \
             public/data/fantasy/half_ppr.json \
-            public/data/fantasy/standard.json
+            public/data/fantasy/standard.json \
+            public/data/fantasy/best-ball.json
 
       - name: Create job summary
         if: always()
@@ -185,6 +213,7 @@ jobs:
           echo "- public/data/fantasy/ppr.json" >> "$GITHUB_STEP_SUMMARY"
           echo "- public/data/fantasy/half_ppr.json" >> "$GITHUB_STEP_SUMMARY"
           echo "- public/data/fantasy/standard.json" >> "$GITHUB_STEP_SUMMARY"
+          echo "- public/data/fantasy/best-ball.json" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Notify on failure via GitHub issue
         if: failure()

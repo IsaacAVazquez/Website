@@ -54,6 +54,9 @@ as coverage improves, so read the config rather than trusting a restated number 
 - `src/hooks/**/__tests__`
 - `src/lib/__tests__/` — pure-logic unit tests (fantasy snapshot/ADP/consensus builders, the investments live-quote allowlist in `finnhub.allowlist.test.ts`, and more)
 - `src/app/fantasy-football/__tests__/` — route state integration tests, including fantasy football client and fantasy state tests
+- `src/app/fantasy-football/best-ball/**/__tests__/` covers contest route state, draft persistence, and the live best ball room
+- `src/lib/__tests__/bestBall*.test.ts` covers source parsing, snapshot validation, contest presets, roster construction, and recommendation signals
+- `src/lib/__tests__/fantasyTeamValue.test.ts` pins Draft Outlook baselines, slot context, room midranks, format-specific signals, and exact return math; `src/components/fantasy/DraftValuePanel.test.tsx` covers the shared disclosure and calculator UI
 - `src/app/premier-league/__tests__/` and `src/app/la-liga/__tests__/` — dashboard client and route-state regression tests
 - `src/app/news-pulse/__tests__/`, `src/app/spacex-mission-control/__tests__/`, and `src/app/fintech-tools/budget-planner/__tests__/` — standalone tool coverage
 - `src/app/api/news-pulse/__tests__/`, `src/app/api/spacex/**/__tests__/`, and `src/app/api/premier-league/**/__tests__/` — API route coverage for data tools

@@ -7,9 +7,9 @@ import { normalizeFantasyState } from "./fantasy-state";
 export const metadata = constructMetadata({
   title: "Fantasy Football Rankings",
   description:
-    "Snapshot-backed fantasy football rankings sourced from FantasyPros public consensus pages, with freshness metadata, scoring toggles, and a linked draft assistant.",
+    "Snapshot-backed fantasy football rankings with scoring toggles, a linked draft assistant, room-relative Draft Outlook, and an expected return calculator.",
   canonicalUrl: "/fantasy-football",
-  dateModified: "2026-04-21",
+  dateModified: "2026-08-02",
 });
 
 interface FantasyFootballPageProps {
@@ -48,6 +48,7 @@ export default async function FantasyFootballPage({ searchParams }: FantasyFootb
             "PPR, Half PPR, and Standard scoring",
             "Published snapshot timestamps",
             "Manual draft tracker with local persistence",
+            "Room-relative draft value and expected return calculator",
           ],
         }}
       />

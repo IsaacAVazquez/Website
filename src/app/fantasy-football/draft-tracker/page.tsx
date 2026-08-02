@@ -6,9 +6,9 @@ import { DraftTrackerClient } from "./draft-tracker-client";
 export const metadata: Metadata = constructMetadata({
   title: "Fantasy Football Draft Assistant",
   description:
-    "Manual fantasy football draft assistant with snake-order tracking, local persistence, roster-pressure cues, and the same published snapshot board used on the public rankings page.",
+    "Manual fantasy football draft assistant with snake-order tracking, roster pressure, a room-relative Draft Outlook, and an expected return calculator.",
   canonicalUrl: "/fantasy-football/draft-tracker",
-  dateModified: "2026-04-21",
+  dateModified: "2026-08-02",
 });
 
 const breadcrumbs = [
@@ -30,7 +30,7 @@ export default function DraftTrackerPage() {
         type="SoftwareApplication"
         data={{
           name: "Fantasy Football Draft Assistant",
-          description: "Manual fantasy football draft tracker with sourced best-available rankings and snake-order awareness",
+          description: "Manual fantasy football draft tracker with sourced rankings, snake-order awareness, room-relative draft value, and expected return math",
           url: "https://isaacvazquez.com/fantasy-football/draft-tracker",
           applicationCategory: "Sports",
           operatingSystem: "Web Browser",

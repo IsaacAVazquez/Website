@@ -34,7 +34,6 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
     "/earthquake-pulse",
     "/fantasy-formula-1",
     "/fantasy-football",
-    "/fantasy-football/draft-tracker",
     "/fintech-tools/budget-planner",
     "/fintech-tools/interchange-iq",
     "/fintech-tools/rent-vs-buy",
@@ -70,6 +69,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
   ]);
   const isSelfShellRoute =
     selfShellRoutes.has(pathname) ||
+    pathname.startsWith("/fantasy-football/") ||
     pathname.startsWith("/portfolio/") ||
     pathname.startsWith("/score-pools/") ||
     pathname.startsWith("/writing/");

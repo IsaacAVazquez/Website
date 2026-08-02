@@ -161,13 +161,25 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       id: 'page-fantasy-football',
       title: 'Fantasy Football Analytics Platform',
       excerpt:
-        'Snapshot-backed fantasy football rankings with consensus tiers, scoring toggles, and a manual draft assistant.',
+        'Snapshot-backed fantasy football rankings with consensus tiers, a room-relative Draft Outlook, and expected return math.',
       content:
-        'Fantasy football rankings FantasyPros consensus tiers PPR half PPR standard scoring overall position QB RB WR TE draft assistant snake draft waiver',
+        'Fantasy football rankings FantasyPros consensus tiers PPR half PPR standard scoring overall position QB RB WR TE draft assistant snake draft draft value expected return EV roster composition pick position waiver',
       url: '/fantasy-football',
       type: 'project',
       category: 'Fantasy Football Analytics',
       tags: ['Fantasy Football', 'Rankings', 'Draft Tools', 'Next.js', 'TypeScript'],
+    },
+    {
+      id: 'page-fantasy-football-best-ball',
+      title: 'Best Ball Rankings and Draft Assistant',
+      excerpt:
+        'Best ball rankings, room-relative draft value, contest economics, and draft help for Best Ball Mania and other Underdog-style formats.',
+      content:
+        'Best ball rankings draft assistant draft tracker Underdog Best Ball Mania BBM Puppy Eliminator Weekly Winners Superflex roster construction stacking correlation advance rate tournament strategy draft value expected return EV pick position NFL fantasy football',
+      url: '/fantasy-football/best-ball',
+      type: 'project',
+      category: 'Fantasy Football Analytics',
+      tags: ['Best Ball', 'Underdog', 'Rankings', 'Draft Tools', 'Fantasy Football'],
     },
     {
       id: 'page-news-pulse',

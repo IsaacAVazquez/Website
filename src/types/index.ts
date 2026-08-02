@@ -18,6 +18,7 @@ export interface Player {
   ownership?: number;
   rankAverage?: number;
   rankEcr?: number;
+  superflexRank?: number; // Separate sourced Superflex consensus rank when available
 
   // Enhanced NFLverse metadata
   headshotUrl?: string; // Player headshot from ESPN/NFLverse

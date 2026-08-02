@@ -13,6 +13,7 @@ describe("fantasyProsPublicSource", () => {
     });
 
     expect(board.requestedPosition).toBe("RB");
+    expect(board.sourceScoring).toBe("PPR");
     expect(board.upstreamUpdatedAt).toBe("2026-04-15T15:29:20.000Z");
     expect(board.players).toHaveLength(2);
     expect(board.players[0]).toMatchObject({

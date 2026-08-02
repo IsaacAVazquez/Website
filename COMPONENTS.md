@@ -55,6 +55,8 @@ server shell that passes data in.
 Representative live components:
 
 - `src/app/fantasy-football/fantasy-football-client.tsx`
+- `src/app/fantasy-football/best-ball/best-ball-client.tsx`
+- `src/app/fantasy-football/best-ball/draft-tracker/draft-tracker-client.tsx`
 - `src/app/fantasy-football/draft-tracker/draft-tracker-client.tsx`
 - `src/app/fantasy-football/draft-tracker/components/DraftBoard.tsx`
 - `src/app/fantasy-football/draft-tracker/components/DraftSetup.tsx`
@@ -76,6 +78,7 @@ draft assistant:
 | `RankDistributionBar` | `src/components/fantasy/RankDistributionBar.tsx` | Visualizes expert best→worst rank spread with the average marked and tight/mixed/volatile color coding |
 | `CompareTray` | `src/components/fantasy/CompareTray.tsx` | Docked bottom bar surfacing the compare selection (up to 3 players) that opens the `CompareModal` |
 | `CompareModal` | `src/components/fantasy/CompareModal.tsx` | Side-by-side comparison dialog with per-row winner highlighting and shared-scale range bars |
+| `DraftValuePanel` | `src/components/fantasy/DraftValuePanel.tsx` | Shared room-relative Draft Outlook, draft-slot context, published BBM field math, and user-entered expected return calculator for redraft and best ball trackers |
 
 ### Investments
 

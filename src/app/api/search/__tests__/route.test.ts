@@ -193,6 +193,24 @@ describe("GET /api/search", () => {
     expect(matches[0].id).toBe("page-fantasy-football");
   });
 
+  it("indexes the best ball rankings and draft assistant as a distinct page", async () => {
+    const response = await GET(makeRequest("?q=best%20ball&type=project"));
+    const body = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(body.results).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          id: "page-fantasy-football-best-ball",
+          title: "Best Ball Rankings and Draft Assistant",
+          url: "/fantasy-football/best-ball",
+          type: "project",
+          category: "Fantasy Football Analytics",
+        }),
+      ])
+    );
+  });
+
   it("degrades gracefully when the blog corpus loader throws", async () => {
     mockGetAllBlogPostPreviews.mockImplementation(() => {
       throw new Error("boom");
