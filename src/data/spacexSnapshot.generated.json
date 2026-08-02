@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-02T10:55:12.295Z",
+  "generatedAt": "2026-08-02T22:15:28.900Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-08-02T10:55:00.096Z"
+    "generatedAt": "2026-08-02T22:15:24.343Z"
   },
   "upcomingLaunches": [
     {
@@ -970,7 +970,7 @@
       "launchpadName": "Unknown Pad",
       "launchpadLocation": "Cape Canaveral SFS, FL, USA",
       "patchImage": null,
-      "vehicleImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon2520925_image_20210520085648.jpeg",
+      "vehicleImage": "/data/spacex/images/5efabdd13dfdeda1.jpg",
       "crewCount": 0,
       "payloadCount": 1,
       "capsuleCount": 0,
@@ -989,7 +989,7 @@
         "patchSmall": null,
         "patchLarge": null,
         "flickrOriginal": [
-          "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon2520925_image_20210520085648.jpeg"
+          "/data/spacex/images/5efabdd13dfdeda1.jpg"
         ]
       }
     },
@@ -2928,6 +2928,6 @@
       }
     ],
     "rangeLabel": "Sep 25 – Aug 26",
-    "generatedAt": "2026-08-02T10:55:12.295Z"
+    "generatedAt": "2026-08-02T22:15:28.900Z"
   }
 }
