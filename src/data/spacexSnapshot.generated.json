@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-03T12:40:25.063Z",
+  "generatedAt": "2026-08-03T22:31:28.654Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -128,7 +128,7 @@
       {
         "id": "upcoming",
         "label": "Upcoming queue",
-        "value": "128",
+        "value": "127",
         "description": "currently published future SpaceX missions from Launch Library 2"
       },
       {
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-08-03T12:40:11.307Z"
+    "generatedAt": "2026-08-03T22:31:23.580Z"
   },
   "upcomingLaunches": [
     {
@@ -354,6 +354,46 @@
       }
     },
     {
+      "id": "be8b4b0d-1989-48a5-a96d-e8e4d59ed8b3",
+      "name": "Globalstar 2-R Mission 1 (x 9)",
+      "flightNumber": 717,
+      "upcoming": true,
+      "success": null,
+      "details": "The Globalstar global mobile communications network offers global, digital real time voice, data and fax services via its Low Earth Orbit satellite constellation. The constellation operates in a 1410 km orbit inclined at 52 degrees.\r\n\r\nIn early 2022, Globalstar contracted with MDA for the construction of 17 new 2nd generation refresh satellites to replenish the existing constellation. Rocket Lab is sub-contracted to build the satellites' buses and the launch dispensers.",
+      "dateUtc": "2026-08-16T01:12:00Z",
+      "dateUnix": 1786842720,
+      "dateLocal": "2026-08-16T01:12:00Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 40",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Globalstar",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
       "id": "521f3a1c-f977-4306-9b7f-495858719adf",
       "name": "Nancy Grace Roman Space Telescope",
       "flightNumber": 717,
@@ -394,33 +434,33 @@
       }
     },
     {
-      "id": "be8b4b0d-1989-48a5-a96d-e8e4d59ed8b3",
-      "name": "Globalstar 2-R Mission 1 (x 9)",
-      "flightNumber": 718,
+      "id": "18441371-8b2e-457c-afb5-1ec1b11ab630",
+      "name": "Crew-13",
+      "flightNumber": 719,
       "upcoming": true,
       "success": null,
-      "details": "The Globalstar global mobile communications network offers global, digital real time voice, data and fax services via its Low Earth Orbit satellite constellation. The constellation operates in a 1410 km orbit inclined at 52 degrees.\r\n\r\nIn early 2022, Globalstar contracted with MDA for the construction of 17 new 2nd generation refresh satellites to replenish the existing constellation. Rocket Lab is sub-contracted to build the satellites' buses and the launch dispensers.",
-      "dateUtc": "2026-08-31T00:00:00Z",
-      "dateUnix": 1788134400,
-      "dateLocal": "2026-08-31T00:00:00Z",
-      "datePrecision": "month",
-      "tbd": true,
+      "details": "SpaceX Crew-13 is the thirteenth crewed operational flight of a Crew Dragon spacecraft to the International Space Station as part of NASA's Commercial Crew Program.",
+      "dateUtc": "2026-09-12T22:34:00Z",
+      "dateUnix": 1789252440,
+      "dateLocal": "2026-09-12T22:34:00Z",
+      "datePrecision": "hour",
+      "tbd": false,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
       "launchpadName": "Space Launch Complex 40",
       "launchpadLocation": "Cape Canaveral SFS, FL, USA",
       "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "vehicleImage": "/data/spacex/images/b210241b31da2900.jpg",
       "crewCount": 0,
       "payloadCount": 1,
       "capsuleCount": 0,
       "coreCount": 1,
-      "hasExactTime": false,
+      "hasExactTime": true,
       "isStaleSchedule": false,
       "links": {
         "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Globalstar",
+        "article": "https://www.nasa.gov/exploration/commercial/crew/index.html",
+        "wikipedia": "https://en.wikipedia.org/wiki/Commercial_Crew_Program",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -429,7 +469,7 @@
         "patchSmall": null,
         "patchLarge": null,
         "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
+          "/data/spacex/images/b210241b31da2900.jpg"
         ]
       }
     },
@@ -710,46 +750,6 @@
         "patchLarge": null,
         "flickrOriginal": [
           "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
-      "id": "18441371-8b2e-457c-afb5-1ec1b11ab630",
-      "name": "Crew-13",
-      "flightNumber": 727,
-      "upcoming": true,
-      "success": null,
-      "details": "SpaceX Crew-13 is the thirteenth crewed operational flight of a Crew Dragon spacecraft to the International Space Station as part of NASA's Commercial Crew Program.",
-      "dateUtc": "2026-09-30T00:00:00Z",
-      "dateUnix": 1790726400,
-      "dateLocal": "2026-09-30T00:00:00Z",
-      "datePrecision": "month",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 40",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/b210241b31da2900.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": "https://www.nasa.gov/exploration/commercial/crew/index.html",
-        "wikipedia": "https://en.wikipedia.org/wiki/Commercial_Crew_Program",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/b210241b31da2900.jpg"
         ]
       }
     },
@@ -2928,6 +2928,6 @@
       }
     ],
     "rangeLabel": "Sep 25 – Aug 26",
-    "generatedAt": "2026-08-03T12:40:25.062Z"
+    "generatedAt": "2026-08-03T22:31:28.654Z"
   }
 }
