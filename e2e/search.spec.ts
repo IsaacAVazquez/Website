@@ -12,7 +12,7 @@ test.describe("Search", () => {
 
     await expect(input).toHaveValue("fantasy");
     await expect(
-      page.getByRole("heading", { name: /result found for .fantasy/i })
+      page.getByRole("heading", { name: /results? found for .fantasy/i })
     ).toBeVisible();
     await expect(page.getByText("Fantasy Football Analytics Platform")).toBeVisible();
     await expect(page.getByText("Type: project")).toBeVisible();
