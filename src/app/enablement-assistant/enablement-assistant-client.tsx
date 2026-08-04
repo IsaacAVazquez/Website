@@ -228,7 +228,11 @@ function ProgramDashboard({ onStart }: { onStart: () => void }) {
               <div className="sm:col-start-2 sm:col-end-4">
                 <div
                   className="h-1.5 overflow-hidden rounded-full bg-[color-mix(in_srgb,var(--home-paper)_16%,transparent)]"
-                  aria-label={`${gap.count} unanswered questions`}
+                  role="progressbar"
+                  aria-valuenow={gap.count}
+                  aria-valuemin={0}
+                  aria-valuemax={maxGapCount}
+                  aria-label={`${gap.question}: ${gap.count} unanswered questions`}
                 >
                   <div
                     className="h-full rounded-full bg-[var(--home-signal)]"
@@ -331,7 +335,7 @@ function ProgramDashboard({ onStart }: { onStart: () => void }) {
                       ? "bg-[var(--home-negative)]"
                       : "bg-[var(--home-warning)]"
                   }`}
-                  aria-label={`${team.standardStatus} status`}
+                  aria-hidden="true"
                 />
               </div>
               <p className="mt-5 text-sm leading-6 text-[var(--home-ink-muted)]">
@@ -625,6 +629,7 @@ function RecommendationCard({
                 ? "border-[var(--home-warning)] text-[var(--home-warning)]"
                 : "border-[var(--home-negative)] text-[var(--home-negative)]"
           }`}
+          role="img"
           aria-label={`${result.score} percent confidence`}
         >
           {result.score}%
