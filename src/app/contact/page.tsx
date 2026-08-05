@@ -1,4 +1,4 @@
-import { ContactInstrument } from "@/components/contact/ContactInstrument";
+import { Catalog97Contact } from "@/components/catalog97/Catalog97Contact";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
 
@@ -43,7 +43,7 @@ export default function Contact() {
         }}
       />
 
-      <ContactInstrument />
+      <Catalog97Contact />
     </>
   );
 }

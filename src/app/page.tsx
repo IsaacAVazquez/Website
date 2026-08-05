@@ -1,7 +1,7 @@
 import { readFile } from "fs/promises";
 import path from "path";
 import { StructuredData } from "@/components/StructuredData";
-import { HomeInstrument } from "@/components/home/HomeInstrument";
+import { Catalog97Home } from "@/components/catalog97/Catalog97Home";
 import type {
   HomeLiveFeedData,
   HomeLiveFeedLaunch,
@@ -146,7 +146,7 @@ export default async function Home() {
 
   return (
     <>
-      <HomeInstrument
+      <Catalog97Home
         featuredProjects={featuredProjects}
         recentPosts={recentPosts}
         heroIndex={heroIndex}

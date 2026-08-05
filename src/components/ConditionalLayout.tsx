@@ -7,6 +7,7 @@ import {
   type FooterVariant,
 } from "@/components/Footer";
 import { projectBuildNoteLinks } from "@/components/projectBuildNoteLinks";
+import { isCatalog97Route } from "@/constants/catalog97Nav";
 
 const ProjectBuildNote = dynamic(() =>
   import("@/components/ProjectBuildNote").then((mod) => mod.ProjectBuildNote),
@@ -73,11 +74,24 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
     pathname.startsWith("/portfolio/") ||
     pathname.startsWith("/score-pools/") ||
     pathname.startsWith("/writing/");
-  const compactFooterRoutes = new Set(["/", "/contact"]);
-  const footerVariant: FooterVariant = compactFooterRoutes.has(pathname)
-    ? "compact"
-    : "full";
+  /*
+   * The compact footer existed to stop `/` and `/contact` stacking a second
+   * closing CTA under their own. Both now render the Catalog 97 footer instead
+   * and never reach this layout, so every route that does get here wants the
+   * full one. `Footer` still accepts `variant="compact"` if a route needs it
+   * again.
+   */
+  const footerVariant: FooterVariant = "full";
   const buildNoteHref = projectBuildNoteLinks[pathname];
+
+  // Catalog97Shell owns the <main> landmark, the header, and the footer on its
+  // seven routes, so this layout gets out of the way entirely rather than
+  // wrapping a second <main> around them or appending a Working Instrument
+  // footer under the Catalog 97 one.
+  if (isCatalog97Route(pathname)) {
+    return <>{children}</>;
+  }
+
   return (
     <>
       <div className="min-h-screen">

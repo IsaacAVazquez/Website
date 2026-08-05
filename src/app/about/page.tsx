@@ -1,7 +1,7 @@
 import { AIStructuredData } from "@/components/AIStructuredData";
 import { generateAIOptimizedMetadata } from "@/lib/seo";
 import { profile, profileSameAs } from "@/lib/profile";
-import { AboutInstrument } from "@/components/about/AboutInstrument";
+import { Catalog97About } from "@/components/catalog97/Catalog97About";
 
 export const metadata = generateAIOptimizedMetadata({
   title: "About Isaac Vazquez | Product Manager and Berkeley Haas MBA",
@@ -69,7 +69,7 @@ export default function AboutPage() {
         }}
       />
 
-      <AboutInstrument />
+      <Catalog97About />
     </>
   );
 }

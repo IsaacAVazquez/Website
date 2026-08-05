@@ -30,7 +30,7 @@
   --home-paper-alt: #1C1B18;
   --home-ink: #ECEAE2;
   --home-ink-muted: #9B9585;
-  --home-signal: #FF6B3B;
+  --home-signal: #FF6B3B; /* @kind color */
   --home-signal-soft: #462214;
   --home-acid: #A8B846;
   --home-acid-soft: #596134;
@@ -55,15 +55,15 @@
   --home-paper-raised: color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix));
 
   /* Legacy aliases some shared components still read — keep resolving dark. */
-  --color-primary: var(--home-signal);
-  --color-success: var(--home-positive);
-  --color-warning: var(--home-warning);
-  --color-error: var(--home-negative);
-  --surface-primary: var(--home-paper);
-  --surface-secondary: var(--home-paper-alt);
+  --color-primary: var(--home-signal); /* @kind color */
+  --color-success: var(--home-positive); /* @kind color */
+  --color-warning: var(--home-warning); /* @kind color */
+  --color-error: var(--home-negative); /* @kind color */
+  --surface-primary: var(--home-paper); /* @kind color */
+  --surface-secondary: var(--home-paper-alt); /* @kind color */
   --text-primary: var(--home-ink);
   --text-secondary: var(--home-ink-muted);
-  --border-primary: var(--home-rule);
+  --border-primary: var(--home-rule); /* @kind color */
   --shadow-sm: none;
   --shadow-md: none;
   --shadow-lg: none;
@@ -1371,8 +1371,8 @@
   flex-wrap: wrap;
 }
 .terminalScope :global(.invest-retire-gauge) {
-  --gauge: 0;
-  --gauge-tone: var(--home-ink);
+  --gauge: 0; /* @kind other */
+  --gauge-tone: var(--home-ink); /* @kind color */
   width: 104px;
   height: 104px;
   border-radius: 50%;

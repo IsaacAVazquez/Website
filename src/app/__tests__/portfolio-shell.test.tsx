@@ -15,14 +15,33 @@ jest.mock("@/constants/caseStudies", () => {
 
   return {
     ...actual,
-    getHomepageFeaturedCaseStudies: () => [{ slug: "project-a" }],
+    // Catalog97Home reads title/timeline/overview.summary off each featured
+    // project, so the stub has to carry those fields.
+    getHomepageFeaturedCaseStudies: () => [
+      {
+        slug: "project-a",
+        title: "Project A",
+        description: "Project A description",
+        timeline: "2026",
+        overview: { summary: "What project A does.", impact: "" },
+      },
+    ],
   };
 });
 
+const stubPost = {
+  slug: "post-a",
+  title: "Post A",
+  excerpt: "What post A is about.",
+  readingTime: "5 min read",
+  category: "Product",
+  publishedAt: "2026-06-01",
+};
+
 jest.mock("@/lib/blog", () => ({
-  getAllBlogPostPreviews: () => [{ slug: "post-a" }],
-  getLatestBlogPostPreviews: () => [{ slug: "post-a" }],
-  getHomepageProofOfWorkBlogPostPreviews: () => [{ slug: "post-a" }],
+  getAllBlogPostPreviews: () => [stubPost],
+  getLatestBlogPostPreviews: () => [stubPost],
+  getHomepageProofOfWorkBlogPostPreviews: () => [stubPost],
 }));
 
 // Keep Jest away from the committed earthquake snapshot (it is large) — the
@@ -40,59 +59,36 @@ jest.mock("@/lib/earthquakeSnapshot", () => ({
   }),
 }));
 
-jest.mock("@/components/home/HomeInstrument", () => ({
-  HomeInstrument: () => (
-    <div data-testid="home-page-content">
-      <section data-testid="hero">
-        <h1>I build tools that make hard problems easier to act on.</h1>
-      </section>
-      <section>
-        <h2>Selected work</h2>
-      </section>
-      <section>
-        <h2>About</h2>
-      </section>
-      <section>
-        <h2>Live tools</h2>
-      </section>
-      <section>
-        <h2>Recent writing</h2>
-      </section>
-      <section>
-        <h2>Contact</h2>
-      </section>
-    </div>
-  ),
-}));
-
-jest.mock("@/components/portfolio/PortfolioInstrument", () => ({
-  PortfolioInstrument: () => (
-    <div data-testid="portfolio-page-content">
-      <h1>All projects across product, analytics, and tooling.</h1>
-    </div>
-  ),
-}));
-
 describe("Portfolio shell page semantics", () => {
-  it("keeps the homepage page component free of nested main landmarks", async () => {
+  /*
+   * These two routes moved to Catalog 97, where Catalog97Shell owns the page's
+   * single <main> and ConditionalLayout stands down. The invariant being
+   * guarded is unchanged — exactly one main landmark and exactly one h1 — but
+   * the main now lives inside the page component rather than around it.
+   */
+  it("gives the homepage exactly one main landmark and one h1", async () => {
     const { container } = render(await Home());
 
-    expect(container.querySelectorAll("main")).toHaveLength(0);
-    expect(screen.getByTestId("hero")).toBeVisible();
+    expect(container.querySelectorAll("main")).toHaveLength(1);
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
-    expect(screen.getAllByRole("heading", { level: 2 })).toHaveLength(5);
-  });
-
-  it("keeps the portfolio index page free of nested main landmarks", () => {
-    const { container } = render(<PortfolioPage />);
-
-    expect(container.querySelectorAll("main")).toHaveLength(0);
     expect(
       screen.getByRole("heading", {
         level: 1,
-        name: /all projects across product, analytics, and tooling/i,
+        name: /i build tools that make hard problems easier to act on/i,
       })
     ).toBeVisible();
+  });
+
+  it("gives the portfolio index exactly one main landmark and one h1", () => {
+    const { container } = render(<PortfolioPage />);
+
+    expect(container.querySelectorAll("main")).toHaveLength(1);
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
+    expect(
+      screen.getByRole("heading", {
+        level: 1,
+        name: /everything i.{0,3}ve shipped, and the decisions behind it/i,
+      })
+    ).toBeVisible();
   });
 });

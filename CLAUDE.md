@@ -66,11 +66,18 @@ The full route map, header links, self-shell route list, and footer variants liv
 - `src/app/layout.tsx` renders fonts, providers, skip link, `StaticHeader`, then
   `ConditionalLayout`.
 - `src/components/ConditionalLayout.tsx` decides each route's wrapper (default
-  constrained, self-managed shell, or `full`/`compact` footer) and owns the only
-  page-level `main` landmark for self-shell routes. Leaf sections use `div`/`section`,
-  never a nested `main`. Portfolio-shell routes expose exactly one page-level `h1`.
-- `src/components/Footer.tsx`: `compact` on `/` and `/contact`, `full` elsewhere —
-  intentional, to avoid stacked closing CTAs.
+  constrained or self-managed shell) and owns the only page-level `main` landmark
+  for self-shell routes. Leaf sections use `div`/`section`, never a nested `main`.
+  Every route exposes exactly one page-level `h1`.
+- The seven **Catalog 97** routes (`/`, `/portfolio`, `/writing`, `/dashboards`,
+  `/about`, `/resume`, `/contact`) are the exception to all of it. `StaticHeader`
+  and `ConditionalLayout` both return early for them (`isCatalog97Route` in
+  `src/constants/catalog97Nav.ts`), and `Catalog97Shell` supplies the header,
+  the only `main`, and the footer. Their tokens live in `src/app/catalog97.css`,
+  scoped under `.c97-page`, and never touch `--home-*`.
+- `src/components/Footer.tsx` is always `full` now, since the only two routes
+  that took `compact` are Catalog 97 routes and no longer reach it. The prop
+  still works if a route needs it again.
 - Header links come from `src/constants/navlinks.tsx` (8 links; Fantasy →
   `/fantasy-football`).
 

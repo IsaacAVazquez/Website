@@ -12,7 +12,7 @@ import {
   BLOG_CLUSTER_ORDER,
 } from "@/lib/blog-config";
 import { generateBreadcrumbStructuredData, constructMetadata } from "@/lib/seo";
-import { WritingInstrument } from "@/components/writing/WritingInstrument";
+import { Catalog97Writing } from "@/components/catalog97/Catalog97Writing";
 
 export const metadata = constructMetadata({
   title: "Isaac Vazquez Writing | Product, AI and Fintech",
@@ -90,7 +90,7 @@ export default function WritingPage() {
         }}
       />
 
-      <WritingInstrument
+      <Catalog97Writing
         posts={posts}
         clusters={clusters}
         buckets={buckets}

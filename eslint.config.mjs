@@ -3,6 +3,7 @@ import globals from 'globals';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import tseslint from 'typescript-eslint';
+import { dsAdherenceConfig, dsFontConfig } from './eslint.ds-adherence.mjs';
 
 export default tseslint.config(
   { ignores: ['dist', '.next', 'node_modules', 'src/data/backup'] },
@@ -37,6 +38,8 @@ export default tseslint.config(
       'react-hooks/exhaustive-deps': 'warn',
     },
   },
+  dsAdherenceConfig,
+  dsFontConfig,
   {
     // Next.js App Router pages must export metadata/generateStaticParams
     // alongside the component, and test utilities re-export helpers — the

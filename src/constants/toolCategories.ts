@@ -1,7 +1,8 @@
 // Single source of truth for how portfolio projects are bucketed into
-// product categories. Both the /portfolio grid (PortfolioInstrument) and the homepage
-// "Live tools" directory (HomeInstrument) read from here so the two surfaces never
-// drift on which tool lives in which category.
+// product categories. The /portfolio filter (Catalog97Portfolio), the
+// /dashboards mosaic (Catalog97Dashboards), and the homepage dashboards table
+// (Catalog97Home) all read from here, so no two surfaces drift on which tool
+// lives in which category.
 
 export type ToolCategoryId =
   | "fintech"

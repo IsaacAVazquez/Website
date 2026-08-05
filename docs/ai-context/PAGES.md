@@ -12,7 +12,7 @@ Fast route reference for the current app.
 |------|------|----------------|
 | `/` | `src/app/page.tsx` | Server page composing client sections |
 | `/about` | `src/app/about/page.tsx` | Server page -> `About` client component |
-| `/portfolio` | `src/app/portfolio/page.tsx` | Server page -> `PortfolioInstrument` client (searchable, filtered project index) |
+| `/portfolio` | `src/app/portfolio/page.tsx` | Server page -> `Catalog97Portfolio` client (category-filtered project index) |
 | `/portfolio/[slug]` | `src/app/portfolio/[slug]/page.tsx` | Server detail page |
 | `/resume` | `src/app/resume/page.tsx` | Server page -> client resume UI |
 | `/contact` | `src/app/contact/page.tsx` | Server page -> `ContactContent` |
@@ -111,8 +111,8 @@ Semantics:
 
 Footer behavior:
 
-- compact footer on `/` and `/contact`
-- full footer on most other pages
+- the seven Catalog 97 routes render their own espresso footer inside `Catalog97Shell` and return before `ConditionalLayout` adds one
+- every other route gets the full footer
 
 ---
 
@@ -120,9 +120,10 @@ Footer behavior:
 
 ### `/portfolio`
 
-- server page calls `getPortfolioProjects()` and hands the full non-`comingSoon` project index to the `PortfolioInstrument` client (`src/components/portfolio/PortfolioInstrument.tsx`)
-- `PortfolioInstrument` adds a client-side project search, category filter tablist, a featured project, sortable + paginated grid, and a marquee band that sits between the project grid and the pager
-- cards should make role, problem space, and impact scannable before click-through
+- server page calls `getPortfolioProjects()` and hands the project index to the `Catalog97Portfolio` client (`src/components/catalog97/Catalog97Portfolio.tsx`)
+- `Catalog97Portfolio` adds a category filter tablist built from `TOOL_CATEGORY_DEFS`, leads with four full-weight entries on the camel band, and drops the remainder into the pine ledger below
+- every slug in `caseStudies.ts` is bucketed by `classifyToolSlug`, so no project disappears when a filter is on
+- entries should make role, problem space, and impact scannable before click-through
 - do not document `ProjectsContent.tsx` as the primary live implementation
 
 ### `/writing`

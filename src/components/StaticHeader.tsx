@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navLinks } from "@/constants/navlinks";
+import { isCatalog97Route } from "@/constants/catalog97Nav";
 import { Menu2, Search, X } from "@/components/ui/ServerIcons";
 import { DeferredThemeToggle } from "@/components/ui/DeferredThemeToggle";
 import { HeaderSearchPanel } from "@/components/search/HeaderSearchPanel";
@@ -82,6 +83,11 @@ export function StaticHeader() {
   }, []);
 
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
+
+  // The seven Catalog 97 routes render their own header inside Catalog97Shell,
+  // so this one stands down rather than stacking a second nav on top of it.
+  // Placed after every hook so the hook order stays stable across routes.
+  if (isCatalog97Route(pathname)) return null;
 
   return (
     <>

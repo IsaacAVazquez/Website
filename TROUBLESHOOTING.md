@@ -89,10 +89,10 @@ Check `src/components/ConditionalLayout.tsx` first. Some routes manage their own
 
 ### Footer CTA feels duplicated
 
-The footer is route-aware:
+There are two footers on this site, so check which one the route gets:
 
-- compact footer on `/` and `/contact`
-- full footer on most other routes
+- the seven Catalog 97 routes (`/`, `/portfolio`, `/writing`, `/dashboards`, `/about`, `/resume`, `/contact`) render `Catalog97Shell`'s espresso footer and never reach `ConditionalLayout`
+- every other route gets the full `Footer` from `ConditionalLayout`
 
 If a page ends with its own strong CTA, verify it is not stacking against the full footer.
 

@@ -160,6 +160,13 @@ describe("FantasyFootballClient", () => {
     );
     expect(screen.queryByText(/^Proj\. Pts$/)).not.toBeInTheDocument();
     expect(container.querySelector("aside")).toHaveClass("lg:sticky", "lg:top-24", "lg:self-start");
+    expect(container.querySelector("button button")).not.toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("button", { name: "What is Average rank?" }));
+    expect(screen.queryByRole("dialog", { name: "Christian McCaffrey detail" })).not.toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("button", { name: /Open Christian McCaffrey detail/i }));
+    expect(screen.getByRole("dialog", { name: "Christian McCaffrey detail" })).toBeVisible();
   });
 
   it("renders tier summaries and sourced-only board columns", () => {

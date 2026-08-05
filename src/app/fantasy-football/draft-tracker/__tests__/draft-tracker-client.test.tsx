@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { DraftTrackerClient } from "../draft-tracker-client";
 
 const mockUseDraftState = jest.fn();
@@ -134,5 +134,12 @@ describe("DraftTrackerClient", () => {
     expect(screen.getByRole("heading", { name: /Pick #2 on the clock/i })).toBeVisible();
     expect(screen.queryByText(/^ADP$/)).not.toBeInTheDocument();
     expect(screen.queryByText(/^Proj\. Pts$/)).not.toBeInTheDocument();
+    expect(container.querySelector("button button")).not.toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("button", { name: "What is Average rank?" }));
+    expect(screen.queryByRole("dialog", { name: "Bijan Robinson detail" })).not.toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("button", { name: "Open Bijan Robinson detail" }));
+    expect(screen.getByRole("dialog", { name: "Bijan Robinson detail" })).toBeVisible();
   });
 });

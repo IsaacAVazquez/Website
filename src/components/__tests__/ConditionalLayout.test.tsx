@@ -35,10 +35,10 @@ describe("ConditionalLayout", () => {
     container.remove();
   });
 
+  // The seven Catalog 97 routes are deliberately absent here — they render no
+  // Working Instrument footer at all. See the Catalog 97 case below.
   it.each([
-    { pathname: "/", expectedVariant: "compact" },
-    { pathname: "/contact", expectedVariant: "compact" },
-    { pathname: "/portfolio", expectedVariant: "full" },
+    { pathname: "/investments", expectedVariant: "full" },
     { pathname: "/fintech-tools/budget-planner", expectedVariant: "full" },
     { pathname: "/writing/2026-march-madness-bracket-analysis", expectedVariant: "full" },
   ])("uses the correct footer variant for $pathname", ({ pathname, expectedVariant }) => {
@@ -56,6 +56,28 @@ describe("ConditionalLayout", () => {
       expectedVariant
     );
   });
+
+  // Catalog97Shell supplies the <main> landmark, the header, and the footer on
+  // its seven routes, so ConditionalLayout must add none of them. Two <main>
+  // elements or a stacked second footer would both be accessibility bugs.
+  it.each(["/", "/portfolio", "/writing", "/dashboards", "/about", "/resume", "/contact"])(
+    "renders %s bare, leaving the shell to Catalog97Shell",
+    (pathname) => {
+      mockUsePathname.mockReturnValue(pathname);
+
+      act(() => {
+        root.render(
+          <ConditionalLayout>
+            <div>Page content</div>
+          </ConditionalLayout>
+        );
+      });
+
+      expect(container.querySelector('[data-testid="footer"]')).toBeNull();
+      expect(container.querySelector("main")).toBeNull();
+      expect(container.textContent).toContain("Page content");
+    }
+  );
 
   it("treats /mba-internship-notifications as a self-shell route", () => {
     mockUsePathname.mockReturnValue("/mba-internship-notifications");

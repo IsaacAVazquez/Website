@@ -10,6 +10,13 @@
 @config "../../tailwind.config.ts";
 
 /*
+ * Catalog 97: the design language for the seven portfolio-shell routes.
+ * Fully scoped under `.c97-page` — it defines no `--home-*` token and does
+ * not affect the ~40 routes still on Working Instrument.
+ */
+@import "./catalog97.css";
+
+/*
  * Register micro-type sizes as first-class utilities. Tailwind v4 only emits a
  * `text-*` utility for sizes declared in `@theme`, so these belong here (not in
  * the `:root` block or tailwind.config.ts, neither of which registers utilities
@@ -96,16 +103,39 @@
   --font-home-sans: var(--font-instrument-sans, "Instrument Sans", ui-sans-serif, system-ui, sans-serif);
   --font-home-serif: var(--font-instrument-serif, "Instrument Serif", Georgia, serif);
 
-  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-  --text-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
-  --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
-  --text-lg: clamp(1.125rem, 1rem + 0.625vw, 1.375rem);
-  --text-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.625rem);
-  --text-2xl: clamp(1.5rem, 1.25rem + 1.25vw, 2.125rem);
-  --text-3xl: clamp(1.875rem, 1.5rem + 1.875vw, 2.75rem);
-  --text-4xl: clamp(2.25rem, 1.75rem + 2.5vw, 3.5rem);
-  --text-5xl: clamp(3rem, 2rem + 5vw, 5rem);
-  --text-6xl: clamp(3.75rem, 2.5rem + 6.25vw, 6.5rem);
+  /*
+   * Fluid type. The growth term of each step is hoisted into its own property
+   * so that no comma-separated segment of a --text-* value carries a top-level
+   * operator. Tools that split a token value on commas to read a font stack
+   * were seeing `0.7rem + 0.25vw` as a segment and reporting `+ 0.25vw` as a
+   * missing font family. Keeping the sum behind a single var() leaves each
+   * clamp() as three clean segments.
+   *
+   * These are the preferred (middle) terms only. Every computed value is
+   * unchanged: clamp still bounds them with the same min and max below, and
+   * the sums are identical to the inline versions they replace.
+   */
+  --text-xs-fluid: calc(0.7rem + 0.25vw);
+  --text-sm-fluid: calc(0.8rem + 0.375vw);
+  --text-base-fluid: calc(0.9rem + 0.5vw);
+  --text-lg-fluid: calc(1rem + 0.625vw);
+  --text-xl-fluid: calc(1.1rem + 0.75vw);
+  --text-2xl-fluid: calc(1.25rem + 1.25vw);
+  --text-3xl-fluid: calc(1.5rem + 1.875vw);
+  --text-4xl-fluid: calc(1.75rem + 2.5vw);
+  --text-5xl-fluid: calc(2rem + 5vw);
+  --text-6xl-fluid: calc(2.5rem + 6.25vw);
+
+  --text-xs: clamp(0.75rem, var(--text-xs-fluid), 0.875rem);
+  --text-sm: clamp(0.875rem, var(--text-sm-fluid), 1rem);
+  --text-base: clamp(1rem, var(--text-base-fluid), 1.125rem);
+  --text-lg: clamp(1.125rem, var(--text-lg-fluid), 1.375rem);
+  --text-xl: clamp(1.25rem, var(--text-xl-fluid), 1.625rem);
+  --text-2xl: clamp(1.5rem, var(--text-2xl-fluid), 2.125rem);
+  --text-3xl: clamp(1.875rem, var(--text-3xl-fluid), 2.75rem);
+  --text-4xl: clamp(2.25rem, var(--text-4xl-fluid), 3.5rem);
+  --text-5xl: clamp(3rem, var(--text-5xl-fluid), 5rem);
+  --text-6xl: clamp(3.75rem, var(--text-6xl-fluid), 6.5rem);
 
   --font-normal: 400;
   --font-medium: 500;
@@ -133,12 +163,12 @@
    * usages. When you touch a file that still uses them, migrate inline as
    * part of the change.
    * ────────────────────────────────────────────────────────────────────── */
-  --color-primary: var(--home-signal);
-  --color-secondary: var(--home-haze);
-  --color-accent: var(--home-signal);
-  --color-success: var(--home-positive);
-  --color-warning: var(--home-warning);
-  --color-error: var(--home-negative);
+  --color-primary: var(--home-signal); /* @kind color */
+  --color-secondary: var(--home-haze); /* @kind color */
+  --color-accent: var(--home-signal); /* @kind color */
+  --color-success: var(--home-positive); /* @kind color */
+  --color-warning: var(--home-warning); /* @kind color */
+  --color-error: var(--home-negative); /* @kind color */
 
   --neutral-50: #F8FAFC;
   --neutral-100: #F1F5F9;
@@ -152,9 +182,9 @@
   --neutral-900: #0F172A;
   --neutral-950: #020617;
 
-  --surface-primary: var(--home-paper);
-  --surface-secondary: var(--home-paper-alt);
-  --surface-elevated: color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix));
+  --surface-primary: var(--home-paper); /* @kind color */
+  --surface-secondary: var(--home-paper-alt); /* @kind color */
+  --surface-elevated: color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)); /* @kind color */
   --surface-overlay: rgba(25, 24, 19, 0.5);
 
   --text-primary: var(--home-ink);
@@ -163,9 +193,9 @@
   --text-tertiary: color-mix(in srgb, var(--home-ink) 58%, var(--home-paper));
   --text-inverse: var(--home-paper);
 
-  --border-primary: var(--home-rule);
-  --border-secondary: color-mix(in srgb, var(--home-rule) 60%, transparent);
-  --border-accent: color-mix(in srgb, var(--home-signal) 30%, transparent);
+  --border-primary: var(--home-rule); /* @kind color */
+  --border-secondary: color-mix(in srgb, var(--home-rule) 60%, transparent); /* @kind color */
+  --border-accent: color-mix(in srgb, var(--home-signal) 30%, transparent); /* @kind color */
 
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
@@ -195,11 +225,11 @@
   --radius-3xl: 8px;
   --radius-pill: 999px;
 
-  --transition-fast: 150ms ease;
-  --transition-base: 250ms ease;
-  --transition-slow: 400ms ease;
-  --easing-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --easing-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-fast: 150ms ease; /* @kind other */
+  --transition-base: 250ms ease; /* @kind other */
+  --transition-slow: 400ms ease; /* @kind other */
+  --easing-spring: cubic-bezier(0.34, 1.56, 0.64, 1); /* @kind other */
+  --easing-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94); /* @kind other */
 
   /*
    * Working Instrument palette (2026-07 redesign): cool limestone paper,
@@ -213,7 +243,7 @@
   --home-paper-alt: #EFEDE6;
   --home-ink: #191813;
   --home-ink-muted: #6F6B60;
-  --home-signal: #C93F19;
+  --home-signal: #C93F19; /* @kind color */
   --home-signal-soft: #F6E0D7;
   --home-acid: #D7E74F;
   --home-acid-soft: #EEF49D;
@@ -303,7 +333,7 @@
   --home-paper-alt: #1C1B18;
   --home-ink: #ECEAE2;
   --home-ink-muted: #9B9585;
-  --home-signal: #FF6B3B;
+  --home-signal: #FF6B3B; /* @kind color */
   --home-signal-soft: #462214;
   --home-acid: #A8B846;
   --home-acid-soft: #596134;
@@ -846,9 +876,9 @@
 
   /*
    * Shared Chip primitive — mono uppercase metadata tag (résumé skills,
-   * article tags). `.resume-chip` above and `.tag` in writing.module.css
-   * are earlier ad hoc versions of this same idiom; new call sites should
-   * use the <Chip> component instead of duplicating either one.
+   * article tags). `.resume-chip` above is an earlier ad hoc version of this
+   * same idiom; new call sites should use the <Chip> component rather than
+   * duplicating either one.
    */
   .home-chip {
     display: inline-flex;
@@ -2798,8 +2828,8 @@ textarea:valid:not(:placeholder-shown) {
 
 @media (prefers-contrast: high) {
   :root {
-    --color-primary: #1D4ED8;
-    --border-primary: #94A3B8;
+    --color-primary: #1D4ED8; /* @kind color */
+    --border-primary: #94A3B8; /* @kind color */
   }
 
   .card {

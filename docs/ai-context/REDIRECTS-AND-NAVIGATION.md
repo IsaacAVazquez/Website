@@ -51,10 +51,12 @@ Active route logic is straightforward:
 
 Current route logic in `ConditionalLayout`:
 
-- compact footer on `/` and `/contact`
-- full footer on most other routes
+- every route that reaches `ConditionalLayout` gets the full footer
+- the seven Catalog 97 routes return early before that and supply their own espresso footer through `Catalog97Shell`
 
-This is part of the one-primary-CTA-per-page cleanup.
+The compact variant was the one-primary-CTA-per-page cleanup, and it applied to
+`/` and `/contact`. Both are Catalog 97 routes now, so nothing consumes it,
+though `Footer` still accepts it.
 
 ---
 

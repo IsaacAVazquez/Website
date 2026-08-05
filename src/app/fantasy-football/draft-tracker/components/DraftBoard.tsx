@@ -407,13 +407,14 @@ export function DraftBoard({
                             >
                               {formatRankValue(player.rankEcr ?? player.averageRank)}
                             </span>
-                            <button
-                              type="button"
-                              onClick={() => onOpenDetail(player)}
-                              className="min-w-0 flex-1 text-left"
-                              aria-label={`Open ${player.name} detail`}
-                            >
-                              <span className="flex min-w-0 flex-wrap items-center gap-2">
+                            <div className="relative min-w-0 flex-1 text-left">
+                              <button
+                                type="button"
+                                onClick={() => onOpenDetail(player)}
+                                className="absolute inset-0 z-0 rounded-[var(--radius-2xl)] outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--home-ink)]"
+                                aria-label={`Open ${player.name} detail`}
+                              />
+                              <span className="pointer-events-none relative z-10 flex min-w-0 flex-wrap items-center gap-2">
                                 <span className="min-w-0 truncate text-base font-semibold">{player.name}</span>
                                 <span className={FANTASY_CHIP_CLASS} style={getPositionTone(player.position)}>
                                   {player.position}
@@ -444,7 +445,7 @@ export function DraftBoard({
                                   </span>
                                 )}
                               </span>
-                              <span className="mt-1 block text-sm" style={{ color: "var(--home-ink-muted)" }}>
+                              <span className="pointer-events-none relative z-10 mt-1 block text-sm" style={{ color: "var(--home-ink-muted)" }}>
                                 {player.team}
                                 {Number.isFinite(player.rankAverage) ? (
                                   <span className="inline-flex items-center">
@@ -458,7 +459,7 @@ export function DraftBoard({
                                 {Number.isFinite(player.adp) ? ` • ADP ${formatAdp(player.adp)}` : ""}
                                 {` • Range ${formatRange(player)}`}
                               </span>
-                            </button>
+                            </div>
                           </div>
 
                           <div className="flex items-center gap-1.5">

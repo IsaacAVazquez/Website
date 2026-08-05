@@ -5,22 +5,20 @@ primary_target: "src/app/page.tsx"
 related_targets: []
 ---
 
-# Home surface brief
+# Home surface brief (superseded pointer)
 
-**Scope.** The `/` home page only. Site header and footer stay Working Instrument; the new world lives between them and is built to be able to propagate site-wide later.
+**Read `.impeccable/surfaces/route.md` instead.** That brief is the live one for this surface. This file exists because `src/app/page.tsx` is still a valid target name and would otherwise resolve to the stale Atlas brief that this replaces.
 
-**Visitor mode.** Persuade. A professional peer (VC, PM, MBA, Haas) who already has a reason to look Isaac up, deciding in 20-60 seconds whether he is a credible builder worth remembering and reconnecting with.
+**What changed.** `/` moved from The Working Instrument to Catalog 97 and now renders `Catalog97Home`. `HomeInstrument.tsx` is deleted. The Atlas direction, `TERRITORY`, `PROJECT_PLOTS`, and the 2026-08-02 cartography ruling all went with it. The route carries no map. Do not apply any of that to the current page; the prior record is kept in git history rather than here.
 
-**Job / action.** Read the scale of what he has built at a glance, believe he is a serious builder who also thinks clearly, and take a next step (open the work, read the writing, reach out). Building-first: shipped work leads, the writing gives it depth.
+**Visual world: Catalog 97, not Working Instrument.** `DESIGN.md` describes The Working Instrument and governs the other ~40 routes, not this one. `context.mjs` loads it anyway, so a pass that treats it as the spec here will read every deliberate Catalog 97 decision as a violation and manufacture false findings. Tokens live in `src/app/catalog97.css`.
 
-**Proof / content on hand.** Real featured projects (`src/constants/caseStudies.ts`) with real metrics; real long-form writing (`content/blog/`); the live production data feed already wired into the hero (earthquake, SpaceX, markets); the real career record and Berkeley coordinates.
+**Do not re-litigate.** Tobacco is large-text-only (`--c97-fs-h2` floor, 4.36:1 paper ink). Anton draws numerals at `--c97-fs-plate` only. The type, spacing, line-height and measure scales are frozen. Every `--c97-*` is declared under `[data-c97]` or `[data-c97-surface]`, never a class. Image slots are flat Stone or Tobacco fields by design, not missing assets. The h1 wording is a test anchor.
 
-**Constraints.** Keep the H1 claim "I build tools that make hard problems easier to act on" and the "See the work" / "Read the writing" CTAs (test + voice anchors). Keep `home-projects` and `home-writing` at exactly three links. Keep `home-tools` present but demoted (tools are personal work, not the pitch). Preserve light and dark, 44px targets, reduced-motion, one h1/main. Copy stays in Isaac's plain first-person voice; no salesy or templated energy.
+**Verified state.** 0 contrast failures across 2774 text nodes in both themes. Zero shadows, zero radii above 2px, zero off-palette hex in components. One `aria-current` per route.
 
-**Chosen direction: The Atlas.** Home is a surveyed chart of Isaac's body of built work. It evolves Working Instrument (limestone paper, graphite ink, hairlines, one signal accent, mono readouts) into the survey-chart tradition: graticule linework, plate numbers, coordinate readouts, a legend, a scale bar. Every map element carries real information; regions are real domains and stations are real projects. Nothing cartographic is decorative.
+**Commands worth running.** `critique` and `audit` to find, then only what the findings name, then `polish`. Never `document` here.
 
-**Memorable moment.** The first viewport is a chart plate, not a hero sentence: a graticule field carrying the title cartouche (name, claim, real Berkeley coordinates) and live "field readings," so a peer sees the work instrumented as surveyed territory immediately.
+**Settled 2026-08-02 (critique, degraded single-context).** The anchor reset is `:where(.c97-page) a`, not `.c97-page a`. At `.c97-page a` it scored (0,1,1) and outranked every single-class component rule, so each `.c97-btn` rendered as a `<Link>` discarded its own `color: var(--c97-surface)` and inherited the band ink instead. Measured live: "See the work" was espresso on chocolate at 1.4:1, and `.c97-btn-invert`, whose background is `--c97-ink`, was heading for 1:1 invisible text on six routes. All 13 buttons on the site are anchors, so all 13 were affected. Static token-math audits miss this because they read the declared rule rather than the winning cascade. Do not raise the `:where()` back to a plain class, and re-measure buttons in a browser after any change to the anchor reset.
 
-**Settled 2026-08-02 (critique).** The map plots from real data rather than shedding its marks. `TERRITORY` and `PROJECT_PLOTS` stop being hand-authored constant arrays and derive position from each project's real category and ship date, so grid refs decode, the two Fintech projects cluster, the missing "News & data" region appears, and the remaining tools can render as faint dots behind the featured three. Do not re-open this as "cut the cartography" on a later pass. The schematic-layout comment in `HomeInstrument.tsx` is the thing being replaced, not a standing decision.
-
-**Unresolved.** Whether the Atlas propagates site-wide (promote into DESIGN.md then) or stays home-only (keep it recorded here). Exact cartographic tokens settle on first build.
+**Settled 2026-08-02 (mobile pass).** The header wordmark carries `.c97-brand`, which applies the same padding-plus-negative-margin hit target as `.c97-microlink`. At 390px it measured a 23px tap target before this, under the 44px floor the rest of the site holds; it is 55px now. Dark mode is verified live rather than by token math: all eight surfaces render their derived dark values and both themes measure zero contrast failures. When re-measuring after a theme toggle, wait a tick before reading computed styles — reading in the same synchronous block returns the pre-toggle paint and looks like dark mode is broken when it is not.

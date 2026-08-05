@@ -167,7 +167,7 @@ export function MetricTooltip({ term, definition }: Props) {
             triggerRef.current?.blur();
           }
         }}
-        className="absolute left-1/2 top-1/2 flex min-h-touch min-w-touch -translate-x-1/2 -translate-y-1/2 cursor-help items-center justify-center rounded-full outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-ink)]"
+        className="pointer-events-auto absolute left-1/2 top-1/2 flex min-h-touch min-w-touch -translate-x-1/2 -translate-y-1/2 cursor-help items-center justify-center rounded-full outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-ink)]"
       >
         <span className="flex h-4 w-4 items-center justify-center rounded-full bg-[var(--home-paper-alt)] text-3xs font-bold leading-none text-[var(--home-ink-muted)] ring-1 ring-[var(--home-rule)]">
           ?

@@ -80,15 +80,18 @@ export function RankingsListRow({
         }`}
       />
       <div className="flex items-stretch">
-        <button
-          type="button"
-          onClick={onOpenDetail}
-          aria-label={`Open ${player.name} detail — ${player.position}, rank ${publishedRank}`}
-          className={`flex min-w-0 flex-1 flex-col gap-2 text-left md:flex-row md:items-center md:gap-4 ${
+        <div
+          className={`relative flex min-w-0 flex-1 flex-col gap-2 text-left md:flex-row md:items-center md:gap-4 ${
             compact ? "px-4 py-2.5" : "px-4 py-3.5"
           }`}
         >
-          <div className="flex min-w-0 items-center gap-3 md:flex-1">
+          <button
+            type="button"
+            onClick={onOpenDetail}
+            aria-label={`Open ${player.name} detail — ${player.position}, rank ${publishedRank}`}
+            className="absolute inset-0 z-0 rounded-[var(--radius-3xl)] outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--home-ink)]"
+          />
+          <div className="pointer-events-none relative z-10 flex min-w-0 items-center gap-3 md:flex-1">
             <span
               className={`inline-flex shrink-0 items-center justify-center tabular-nums ${
                 compact ? "text-xl" : "text-2xl"
@@ -121,7 +124,7 @@ export function RankingsListRow({
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-1 md:shrink-0 md:justify-end">
+          <div className="pointer-events-none relative z-10 flex flex-wrap items-center gap-x-5 gap-y-1 md:shrink-0 md:justify-end">
             <Metric label="Expert range">{formatRange(player)}</Metric>
             {adpAvailable && (
               <Metric label="ADP">{formatAdp(player.adp)}</Metric>
@@ -133,7 +136,7 @@ export function RankingsListRow({
               </span>
             </Metric>
           </div>
-        </button>
+        </div>
 
         <div className="flex shrink-0 items-center gap-1 pr-2">
           <button

@@ -4,12 +4,12 @@ Current component map for the live application.
 
 **Last updated:** 2026-07-12
 
-> The homepage, about, portfolio, contact, and writing-archive surfaces each render
-> a single dedicated `*Instrument` composition root (the Working Instrument redesign).
-> The older single-purpose homepage components (`ModernHero`, `ThinkingPreview`,
-> `ContactSection`) and the `FeaturedWorkSection`/`ContactContent` names this doc
-> previously listed are no longer wired into any route — see *Legacy Or Unwired
-> Components*.
+> Seven routes (`/`, `/portfolio`, `/writing`, `/dashboards`, `/about`, `/resume`,
+> `/contact`) render Catalog 97 composition roots from `src/components/catalog97/`.
+> Every other route still runs on Working Instrument. The `*Instrument` composition
+> roots that used to own those seven were deleted when Catalog 97 replaced them, as
+> were the older single-purpose homepage components this doc once listed. Anything
+> still on disk but unrouted is under *Legacy Or Unwired Components*.
 
 ---
 
@@ -27,19 +27,28 @@ Current component map for the live application.
 | `RouteErrorBoundary` | `src/components/RouteErrorBoundary.tsx` | Shared editorial-styled error fallback re-exported by per-route `error.tsx` files |
 | `ContactCta` | `src/components/ContactCta.tsx` | Shared closing contact CTA used by the full footer |
 
-### Homepage, about, portfolio, contact, writing
+### Homepage, work, writing, dashboards, about, résumé, contact
 
-Each of these editorial surfaces renders a single dedicated `*Instrument`
-composition root (the Working Instrument redesign). The route page is a thin
-server shell that passes data in.
+These seven routes run on Catalog 97 rather than on Working Instrument. Each
+renders one composition root from `src/components/catalog97/`, wrapped in
+`Catalog97Shell`, and the route page is a thin server shell that passes data in.
+The tokens live in `src/app/catalog97.css`, scoped entirely under `.c97-page`.
+`StaticHeader` and `ConditionalLayout` both stand down on these routes (see
+`isCatalog97Route` in `src/constants/catalog97Nav.ts`), so the shell owns the
+page's only `<main>`, header, and footer.
 
 | Component | File | Role |
 |----------|------|------|
-| `HomeInstrument` | `src/components/home/HomeInstrument.tsx` | Homepage composition root (hero, featured work, writing, contact). Props: `featuredProjects`, `recentPosts`, `heroIndex`, `liveToolGroups`, `liveFeed` |
-| `AboutInstrument` | `src/components/about/AboutInstrument.tsx` | `/about` content |
-| `PortfolioInstrument` | `src/components/portfolio/PortfolioInstrument.tsx` | `/portfolio` project grid and surfacing |
-| `ContactInstrument` | `src/components/contact/ContactInstrument.tsx` | `/contact` content |
-| `WritingInstrument` | `src/components/writing/WritingInstrument.tsx` | `/writing` archive index |
+| `Catalog97Shell` | `src/components/catalog97/Catalog97Shell.tsx` | Page wrapper: header, `<main>`, pine wordmark band, espresso footer |
+| `Catalog97Header` | `src/components/catalog97/Catalog97Header.tsx` | Client header, seven micro-links, oxblood rule under the active route |
+| `Catalog97Primitives` | `src/components/catalog97/Catalog97Primitives.tsx` | `Catalog97Plate` (Anton numeral) and `Catalog97Slot` (flat image field) |
+| `Catalog97Home` | `src/components/catalog97/Catalog97Home.tsx` | `/` composition root. Props: `featuredProjects`, `recentPosts`, `heroIndex`, `liveToolGroups`, `liveFeed` |
+| `Catalog97Portfolio` | `src/components/catalog97/Catalog97Portfolio.tsx` | `/portfolio` index, client-side category filter over `classifyToolSlug` |
+| `Catalog97Writing` | `src/components/catalog97/Catalog97Writing.tsx` | `/writing` index, client-side cluster/length/bucket filter |
+| `Catalog97Dashboards` | `src/components/catalog97/Catalog97Dashboards.tsx` | `/dashboards` mosaic. Props: `groups`, `summaries` |
+| `Catalog97About` | `src/components/catalog97/Catalog97About.tsx` | `/about` content, reads `careerTimeline` |
+| `Catalog97Resume` | `src/components/catalog97/Catalog97Resume.tsx` | `/resume` content |
+| `Catalog97Contact` | `src/components/catalog97/Catalog97Contact.tsx` | `/contact` content, with no form because there is no form backend |
 | `ProjectDetailModal` | `src/components/ProjectDetailModal.tsx` | Legacy project modal, imported only by `ProjectsContent.tsx` (non-primary flow) |
 
 ### Writing and structured data
@@ -173,11 +182,14 @@ Styling guidance for these lives in `STYLING.md`.
 
 ### Homepage
 
-`src/app/page.tsx` renders `HomeInstrument` (plus the `StructuredData` /
-`AIStructuredData` JSON-LD injectors). `HomeInstrument` is a self-contained
-composition; the older `ModernHero` / `ThinkingPreview` / `ContactSection` files
-and `WritingPreview.tsx` still exist in the repo but are no longer wired into the
-homepage.
+`src/app/page.tsx` renders `Catalog97Home` (plus the `StructuredData` /
+`AIStructuredData` JSON-LD injectors). `Catalog97Home` is a self-contained
+composition that supplies its own header and footer through `Catalog97Shell`. It
+still reads the live quake, market, and launch feed through `HomeLiveFeed`, each
+of which fails soft to null so a missing snapshot drops its column rather than
+rendering an empty one. The older `ModernHero` / `ThinkingPreview` /
+`ContactSection` files and `WritingPreview.tsx` still exist in the repo but are
+no longer wired into the homepage.
 
 ### `/investments`
 
@@ -215,7 +227,13 @@ These files still exist, but should not be described as the primary live path wi
 - `src/components/ProjectDetailModal.tsx` (imported only by `ProjectsContent.tsx`)
 
 They remain useful as historical or alternate implementation context. The
-`*Instrument` composition roots replaced them on the live routes.
+`*Instrument` composition roots replaced them on the live routes, and the
+Catalog 97 roots in turn replaced the `*Instrument` files, which are gone.
+
+Two files under `src/components/home/` have no importer and predate Catalog 97:
+`InstrumentCounter.tsx` and `NowLine.tsx`. `HomeLiveFeed.tsx`, `PanelClock.tsx`,
+and `HomeStatsPanel.tsx` are all still wired up, the last into 27 dashboard
+clients.
 
 ---
 

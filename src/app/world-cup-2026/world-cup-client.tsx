@@ -1022,122 +1022,133 @@ function TeamDetailCard({
   const upcoming = (snapshot?.upcomingFixtures ?? []).slice(0, 3);
 
   return (
-    <SurfaceCard className="p-5" aria-live="polite">
-      <div className="flex items-start gap-3">
-        <CrestAvatar crest={option.crest} name={option.name} size="lg" />
-        <div className="min-w-0 flex-1">
-          <h2 className="truncate text-lg font-bold text-[var(--home-ink)]">
-            {option.name}
-          </h2>
-          <div className="mt-1.5 flex flex-wrap gap-1.5">
-            {option.group && <InfoChip label={`Group ${option.group}`} />}
-            {option.code && <InfoChip label={option.code} />}
-          </div>
-        </div>
-        <button
-          type="button"
-          onClick={onClear}
-          aria-label="Clear selected team"
-          className="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink-muted)] transition hover:text-[var(--home-signal)]"
-        >
-          <X className="h-4 w-4" />
-        </button>
-      </div>
-
-      {standing && (
-        <dl className="mt-4 grid grid-cols-3 gap-x-3 gap-y-2 border-t border-[var(--home-rule)] pt-4">
-          {(
-            [
-              ["Pos", `${standing.rank}`],
-              ["Pld", `${standing.played}`],
-              ["Pts", `${standing.points}`],
-              ["W-D-L", `${standing.wins}-${standing.draws}-${standing.losses}`],
-              ["GF", `${standing.goalsFor}`],
-              ["GA", `${standing.goalsAgainst}`],
-              [
-                "GD",
-                standing.goalDifference > 0
-                  ? `+${standing.goalDifference}`
-                  : `${standing.goalDifference}`,
-              ],
-            ] as const
-          ).map(([label, value]) => (
-            <div key={label}>
-              <dt className="text-3xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
-                {label}
-              </dt>
-              <dd className="text-sm font-bold text-[var(--home-ink)]">{value}</dd>
+    <SurfaceCard className="p-5">
+      {/*
+        The live region is this wrapper rather than the card itself.
+        SurfaceCard takes only children and className and spreads no rest
+        props, so an aria-live set on it was silently dropped and the panel
+        announced nothing when the selected team changed. TypeScript could
+        not catch it: hyphenated JSX attribute names skip excess-property
+        checking, so `aria-live` type-checked against a props type that has
+        no such prop.
+      */}
+      <div aria-live="polite">
+        <div className="flex items-start gap-3">
+          <CrestAvatar crest={option.crest} name={option.name} size="lg" />
+          <div className="min-w-0 flex-1">
+            <h2 className="truncate text-lg font-bold text-[var(--home-ink)]">
+              {option.name}
+            </h2>
+            <div className="mt-1.5 flex flex-wrap gap-1.5">
+              {option.group && <InfoChip label={`Group ${option.group}`} />}
+              {option.code && <InfoChip label={option.code} />}
             </div>
-          ))}
-        </dl>
-      )}
-
-      {form.length > 0 && (
-        <div className="mt-4 border-t border-[var(--home-rule)] pt-4">
-          <p className="text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
-            Form (last 5)
-          </p>
-          <div className="mt-2 flex gap-1.5">
-            {form.map((result, index) => (
-              <TeamResultPill key={index} result={result} />
-            ))}
           </div>
+          <button
+            type="button"
+            onClick={onClear}
+            aria-label="Clear selected team"
+            className="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink-muted)] transition hover:text-[var(--home-signal)]"
+          >
+            <X className="h-4 w-4" />
+          </button>
         </div>
-      )}
 
-      {recent.length > 0 && (
-        <div className="mt-4 border-t border-[var(--home-rule)] pt-4">
-          <p className="mb-2 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
-            Recent results
-          </p>
-          <div className="space-y-2">
-            {recent.map((fixture) => (
-              <FixtureCard
-                key={fixture.id}
-                fixture={fixture}
-                contextTeamId={option.id}
-                onOpenTeam={onOpenTeam}
-                compact
-              />
+        {standing && (
+          <dl className="mt-4 grid grid-cols-3 gap-x-3 gap-y-2 border-t border-[var(--home-rule)] pt-4">
+            {(
+              [
+                ["Pos", `${standing.rank}`],
+                ["Pld", `${standing.played}`],
+                ["Pts", `${standing.points}`],
+                ["W-D-L", `${standing.wins}-${standing.draws}-${standing.losses}`],
+                ["GF", `${standing.goalsFor}`],
+                ["GA", `${standing.goalsAgainst}`],
+                [
+                  "GD",
+                  standing.goalDifference > 0
+                    ? `+${standing.goalDifference}`
+                    : `${standing.goalDifference}`,
+                ],
+              ] as const
+            ).map(([label, value]) => (
+              <div key={label}>
+                <dt className="text-3xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
+                  {label}
+                </dt>
+                <dd className="text-sm font-bold text-[var(--home-ink)]">{value}</dd>
+              </div>
             ))}
-          </div>
-        </div>
-      )}
+          </dl>
+        )}
 
-      {upcoming.length > 0 && (
-        <div className="mt-4 border-t border-[var(--home-rule)] pt-4">
-          <p className="mb-2 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
-            Upcoming
+        {form.length > 0 && (
+          <div className="mt-4 border-t border-[var(--home-rule)] pt-4">
+            <p className="text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
+              Form (last 5)
+            </p>
+            <div className="mt-2 flex gap-1.5">
+              {form.map((result, index) => (
+                <TeamResultPill key={index} result={result} />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {recent.length > 0 && (
+          <div className="mt-4 border-t border-[var(--home-rule)] pt-4">
+            <p className="mb-2 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
+              Recent results
+            </p>
+            <div className="space-y-2">
+              {recent.map((fixture) => (
+                <FixtureCard
+                  key={fixture.id}
+                  fixture={fixture}
+                  contextTeamId={option.id}
+                  onOpenTeam={onOpenTeam}
+                  compact
+                />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {upcoming.length > 0 && (
+          <div className="mt-4 border-t border-[var(--home-rule)] pt-4">
+            <p className="mb-2 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
+              Upcoming
+            </p>
+            <div className="space-y-2">
+              {upcoming.map((fixture) => (
+                <FixtureCard
+                  key={fixture.id}
+                  fixture={fixture}
+                  contextTeamId={option.id}
+                  onOpenTeam={onOpenTeam}
+                  compact
+                />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {!snapshot && (isLoading || error) && (
+          <p
+            className="mt-4 border-t border-[var(--home-rule)] pt-4 text-sm text-[var(--home-ink-muted)]"
+            role={error ? "alert" : "status"}
+          >
+            {isLoading ? "Loading team snapshot…" : error}
           </p>
-          <div className="space-y-2">
-            {upcoming.map((fixture) => (
-              <FixtureCard
-                key={fixture.id}
-                fixture={fixture}
-                contextTeamId={option.id}
-                onOpenTeam={onOpenTeam}
-                compact
-              />
-            ))}
-          </div>
-        </div>
-      )}
+        )}
 
-      {!snapshot && (isLoading || error) && (
-        <p
-          className="mt-4 border-t border-[var(--home-rule)] pt-4 text-sm text-[var(--home-ink-muted)]"
-          role={error ? "alert" : "status"}
-        >
-          {isLoading ? "Loading team snapshot…" : error}
-        </p>
-      )}
-
-      {snapshot && !standing && recent.length === 0 && upcoming.length === 0 && (
-        <p className="mt-4 border-t border-[var(--home-rule)] pt-4 text-sm text-[var(--home-ink-muted)]">
-          Standings and fixtures for {option.name} appear here once the
-          tournament is underway.
-        </p>
-      )}
+        {snapshot && !standing && recent.length === 0 && upcoming.length === 0 && (
+          <p className="mt-4 border-t border-[var(--home-rule)] pt-4 text-sm text-[var(--home-ink-muted)]">
+            Standings and fixtures for {option.name} appear here once the
+            tournament is underway.
+          </p>
+        )}
+      </div>
     </SurfaceCard>
   );
 }

@@ -29,9 +29,9 @@ Legacy semantic tokens (`--surface-*`, `--text-*`, `--border-*`, `--color-primar
 ## Source Files
 
 - `src/app/globals.css`
+- `src/app/catalog97.css` (the seven Catalog 97 routes, scoped under `.c97-page`)
 - `tailwind.config.ts`
 - `src/components/ui/*`
-- `src/components/home/HomeInstrument.tsx`
 
 ---
 
@@ -344,8 +344,7 @@ Base: `.home-button` — 48px min-height, pill shape (radius 999px), Instrument 
 
 ### Writing Archive Cards (`/writing`)
 
-The archive cards on `/writing` are owned by `src/app/writing/page.tsx`, not `src/components/home/HomeInstrument.tsx`.
-Do not use the home writing-preview card as the visual source of truth for the archive page.
+`/writing` is a Catalog 97 route. Its index is owned by `Catalog97Writing`, and every color, size, and space on it comes from the `--c97-*` tokens in `src/app/catalog97.css`, not from the `--home-*` palette. Do not use the homepage writing block as the visual source of truth for the archive page.
 
 The footer metadata row on both `CuratedWritingCard` and `ArchiveWritingCard` is a locked pattern and should stay visually stable:
 

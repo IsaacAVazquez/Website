@@ -1,6 +1,6 @@
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
-import ResumeClient from "./resume-client";
+import { Catalog97Resume } from "@/components/catalog97/Catalog97Resume";
 
 export const metadata = constructMetadata({
   title: "Isaac Vazquez Resume | Product and Analytics",
@@ -26,7 +26,7 @@ export default function ResumePage() {
       
       <StructuredData type="Person" />
 
-      <ResumeClient />
+      <Catalog97Resume />
     </>
   );
 }

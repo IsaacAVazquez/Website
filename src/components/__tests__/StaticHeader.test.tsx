@@ -29,7 +29,9 @@ describe("StaticHeader", () => {
     container = document.createElement("div");
     document.body.appendChild(container);
     root = createRoot(container);
-    mockUsePathname.mockReturnValue("/portfolio");
+    // Must be a route outside the Catalog 97 set — StaticHeader deliberately
+    // renders nothing on those seven, where Catalog97Shell owns the header.
+    mockUsePathname.mockReturnValue("/investments");
   });
 
   afterEach(() => {
@@ -52,14 +54,14 @@ describe("StaticHeader", () => {
     expect(primaryNav?.textContent).toContain("Investments");
     expect(primaryNav?.textContent).toContain("Resume");
     expect(primaryNav?.textContent).toContain("Contact");
-    expect(primaryNav?.querySelector('a[aria-current="page"]')?.textContent).toBe("Projects");
+    expect(primaryNav?.querySelector('a[aria-current="page"]')?.textContent).toBe("Investments");
 
     expect(brandLink?.textContent).toContain("Isaac Vazquez");
     expect(brandLink?.getAttribute("href")).toBe("/");
   });
 
   it("shows an explicit Home link in the mobile menu", async () => {
-    mockUsePathname.mockReturnValue("/contact");
+    mockUsePathname.mockReturnValue("/fantasy-football");
 
     await act(async () => {
       root.render(<StaticHeader />);
@@ -80,11 +82,11 @@ describe("StaticHeader", () => {
     expect(mobileNav?.textContent).toContain("Home");
     expect(mobileNav?.textContent).toContain("Projects");
     expect(mobileNav?.textContent).toContain("Writing");
-    expect(mobileNav?.querySelector('a[aria-current="page"]')?.textContent).toBe("Contact");
+    expect(mobileNav?.querySelector('a[aria-current="page"]')?.textContent).toBe("Fantasy");
   });
 
-  it("keeps navigation and theme controls available on the homepage variant", async () => {
-    mockUsePathname.mockReturnValue("/");
+  it("keeps navigation and theme controls available on a Working Instrument route", async () => {
+    mockUsePathname.mockReturnValue("/investments");
 
     await act(async () => {
       root.render(<StaticHeader />);

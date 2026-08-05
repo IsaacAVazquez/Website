@@ -1,0 +1,995 @@
+/*
+ * ============================================================================
+ * Catalog 97
+ * ============================================================================
+ *
+ * The design language for the seven portfolio-shell routes: /, /portfolio,
+ * /writing, /dashboards, /about, /resume, /contact. Imported by globals.css.
+ *
+ * Everything here is scoped to the page root, which carries both `data-c97`
+ * (the token scope) and `.c97-page` (the styling hook). The Working Instrument
+ * `--home-*` palette is untouched and still owns the other ~40 routes, so a
+ * dashboard rendering `var(--home-signal)` is unaffected by this file.
+ *
+ * TOKEN SCOPE
+ * Every `--c97-*` value is declared under `[data-c97]` or under a
+ * `[data-c97-surface]` scope, never under a class. A design-token consumer can
+ * therefore treat `:root` plus `[data-*]` as the token scopes and skip class
+ * rules wholesale, which is what keeps app-internal variables out of the
+ * exported system.
+ *
+ * SURFACE CONTRACT
+ * Never set a Catalog 97 color directly on a component. Set
+ * `data-c97-surface` on the section and read `var(--c97-ink)`,
+ * `var(--c97-ink-2)`, `var(--c97-label)`, `var(--c97-action)`,
+ * `var(--c97-accent)`, `var(--c97-rule)` inside it. That is what makes the
+ * dark palette a single override here rather than a per-component edit.
+ *
+ * DARK MODE
+ * The source design ships one palette and no dark mode, so the dark half of
+ * this file is derived rather than specified. The rule followed: keep the hue
+ * relationships and the band *rhythm* (a page still alternates light-ink and
+ * dark-ink bands), but invert the tonal ladder. Paper becomes the darkest
+ * surface, and camel/tobacco/chocolate — which are light-to-mid bands
+ * carrying dark ink in light mode — deepen and flip to light ink. Oxblood and
+ * camel lift so they still read as accents against a dark ground.
+ */
+
+/*
+ * Token scope.
+ *
+ * These are real design tokens, so they are declared on a [data-*] scope
+ * rather than on the .c97-page class. A token consumer walking the build can
+ * take :root and [data-*] as token scopes and skip class rules entirely,
+ * which it cannot do if the tokens hang off a component class. The attribute
+ * and the class sit on the same element; .c97-page keeps the presentation
+ * below, and this rule keeps the values.
+ */
+[data-c97] {
+  /*
+   * Body face. The design specifies Helvetica Neue, which only exists on
+   * macOS; Archivo is loaded as the cross-platform stand-in so the layout
+   * measures the same on Windows and Linux.
+   */
+  --c97-font-body: "Helvetica Neue", Helvetica, var(--font-c97-archivo), Arial,
+    sans-serif;
+  --c97-font-display: var(--font-c97-newsreader), Georgia, "Times New Roman",
+    serif;
+  --c97-font-numeral: var(--font-c97-anton), "Helvetica Neue", Impact, sans-serif;
+  /*
+   * Snell Roundhand is macOS-only and is what the design was drawn against.
+   * Great Vibes is loaded as the fallback so the wordmark renders everywhere.
+   */
+  --c97-font-script: "Snell Roundhand", var(--font-c97-great-vibes),
+    "Petit Formal Script", cursive;
+
+  --c97-container: 1080px;
+  --c97-gutter: clamp(28px, 6vw, 96px);
+  --c97-band-y: var(--c97-sp-5); /* @kind spacing */
+  --c97-paper-base: #f1ebdf;
+
+  /*
+   * Spacing. Seven steps, and nothing in a Catalog 97 route may use a gap,
+   * margin, or band padding that is not one of them. The design derives its
+   * whole vertical rhythm from this ladder.
+   */
+  --c97-sp-1: clamp(8px, 0.9vw, 10px);
+  --c97-sp-2: clamp(12px, 1.3vw, 17px);
+  --c97-sp-3: clamp(22px, 2.6vw, 32px);
+  --c97-sp-4: clamp(28px, 3.4vw, 44px);
+  --c97-sp-5: clamp(40px, 5vw, 68px);
+  --c97-sp-6: clamp(60px, 7.5vw, 116px);
+  --c97-sp-7: clamp(76px, 9vw, 132px);
+
+  /*
+   * Type. Nine steps. `label` is the only fixed size in the system — it is the
+   * 11px tracked uppercase that carries every kicker, meta row, and status.
+   * `display` and `plate` are the two Anton numeral sizes and are never used
+   * for words.
+   */
+  --c97-fs-label: 11px;
+  --c97-fs-small: clamp(13px, 1.3vw, 15px);
+  --c97-fs-body: clamp(15px, 1.4vw, 16px);
+  --c97-fs-lead: clamp(19px, 2vw, 22px);
+  --c97-fs-h3: clamp(20px, 2.2vw, 26px);
+  --c97-fs-h2: clamp(24px, 2.7vw, 32px);
+  --c97-fs-h1: clamp(32px, 4.2vw, 52px);
+  --c97-fs-display: clamp(46px, 5.6vw, 74px);
+  --c97-fs-plate: clamp(64px, 8vw, 112px);
+
+  --c97-lh-display: 0.95;
+  --c97-lh-tight: 1.2;
+  --c97-lh-body: 1.65;
+  --c97-lh-loose: 1.8;
+
+  /* Three measures. Headings take tight, standfirsts body, running prose wide. */
+  --c97-measure-tight: 22ch;
+  --c97-measure-body: 34ch;
+  --c97-measure-wide: 54ch;
+
+  /*
+   * Touch-target constants, deliberately outside the spacing ladder. They are
+   * solved backwards from the 44px minimum against an 11px label, so they are
+   * a function of the accessibility floor rather than a rhythm choice, and
+   * they must not drift onto the --c97-sp scale. Only .c97-microlink uses them.
+   */
+  --c97-touch-y: 16px;
+  --c97-touch-x: 8px;
+
+  /*
+   * The lockup's intrinsic frame width, tied to its 560-unit viewBox. It lives
+   * here with the other constants rather than on .c97-wordmark so that no
+   * --c97-* value is declared under a class selector.
+   */
+  --c97-wordmark-w: 560px;
+}
+
+.dark [data-c97] {
+  --c97-paper-base: #14100c;
+}
+
+/* Presentation. No token declarations below this line. */
+.c97-page {
+  font-family: var(--c97-font-body);
+  letter-spacing: -0.005em;
+  background: var(--c97-paper-base);
+}
+
+/*
+ * Paint the overscroll gutter to match, so rubber-band scrolling on iOS and
+ * macOS does not reveal the Working Instrument limestone behind the page.
+ */
+body:has(.c97-page) {
+  background: #f1ebdf;
+}
+
+.dark body:has(.c97-page) {
+  background: #14100c;
+}
+
+/* --------------------------------------------------------------------------
+ * Surfaces — light
+ * ------------------------------------------------------------------------ */
+
+.c97-page [data-c97-surface] {
+  background: var(--c97-surface);
+  color: var(--c97-ink);
+}
+
+.c97-page [data-c97-surface="paper"] {
+  --c97-surface: #f1ebdf;
+  --c97-ink: #2b211a;
+  --c97-ink-2: #4a3728;
+  --c97-label: #645e55;
+  /*
+   * The source sets ink-action to camel on paper, but camel on paper is
+   * roughly 2:1 and the token is only ever consumed by hover states. Chocolate
+   * keeps the same warm family and passes contrast.
+   */
+  --c97-action: #4a3728;
+  --c97-accent: #6e2b36;
+  --c97-rule: rgba(43, 33, 26, 0.18);
+  --c97-field: #e4dbc9;
+}
+
+.c97-page [data-c97-surface="bone"] {
+  --c97-surface: #e4dbc9;
+  --c97-ink: #2b211a;
+  --c97-ink-2: #4a3728;
+  --c97-label: #645e55;
+  --c97-action: #4a3728;
+  --c97-accent: #6e2b36;
+  --c97-rule: rgba(43, 33, 26, 0.2);
+  --c97-field: #f1ebdf;
+}
+
+.c97-page [data-c97-surface="camel"] {
+  --c97-surface: #c09461;
+  --c97-ink: #2b211a;
+  --c97-ink-2: #2b211a;
+  --c97-label: #2b211a;
+  /* Chocolate on camel is 4.1:1; espresso keeps the hover legible at 5.7:1. */
+  --c97-action: #2b211a;
+  --c97-accent: #2b211a;
+  --c97-rule: rgba(43, 33, 26, 0.3);
+  --c97-field: #f1ebdf;
+}
+
+/*
+ * Tobacco is a LARGE-TEXT-ONLY surface. Paper ink on it measures 4.36:1 and
+ * bone ink 3.76:1, so both clear the 3:1 bar for large text and neither clears
+ * the 4.5:1 bar for body copy. The design handles this by size rather than by
+ * darkening the color, and so does this: a tobacco band carries `--c97-fs-h2`
+ * (24px floor) and up, or it carries no text at all and is an image field.
+ * Do not put a kicker, a meta row, or body prose on tobacco.
+ */
+.c97-page [data-c97-surface="tobacco"] {
+  --c97-surface: #8a6642;
+  --c97-ink: #f1ebdf;
+  --c97-ink-2: #e4dbc9;
+  --c97-label: #f1ebdf;
+  --c97-action: #f1ebdf;
+  --c97-accent: #f1ebdf;
+  --c97-rule: rgba(241, 235, 223, 0.3);
+  --c97-field: #f1ebdf;
+}
+
+.c97-page [data-c97-surface="chocolate"] {
+  --c97-surface: #4a3728;
+  --c97-ink: #f1ebdf;
+  --c97-ink-2: #e4dbc9;
+  --c97-label: #e4dbc9;
+  /* Camel on chocolate is 4.1:1; a lighter camel clears it at 5.8:1. */
+  --c97-action: #d9b487;
+  --c97-accent: #d9b487;
+  --c97-rule: rgba(241, 235, 223, 0.24);
+  --c97-field: #f1ebdf;
+}
+
+.c97-page [data-c97-surface="pine"] {
+  --c97-surface: #0d3531;
+  --c97-ink: #f1ebdf;
+  --c97-ink-2: #e4dbc9;
+  --c97-label: #99a88b;
+  --c97-action: #c09461;
+  --c97-accent: #c09461;
+  --c97-rule: rgba(241, 235, 223, 0.2);
+  --c97-field: #e4dbc9;
+}
+
+.c97-page [data-c97-surface="espresso"] {
+  --c97-surface: #2b211a;
+  --c97-ink: #f1ebdf;
+  --c97-ink-2: #e4dbc9;
+  --c97-label: #c09461;
+  --c97-action: #c09461;
+  --c97-accent: #c09461;
+  --c97-rule: rgba(241, 235, 223, 0.18);
+  --c97-field: #e4dbc9;
+}
+
+/* Neutral block used for image slots that have no photograph yet. */
+.c97-page [data-c97-surface="stone"] {
+  --c97-surface: #a79e8f;
+  --c97-ink: #2b211a;
+  --c97-ink-2: #2b211a;
+  --c97-label: #2b211a;
+  --c97-action: #2b211a;
+  --c97-accent: #2b211a;
+  --c97-rule: rgba(43, 33, 26, 0.28);
+  --c97-field: #f1ebdf;
+}
+
+/*
+ * The Anton plate numeral, per surface. Only ever rendered at
+ * --c97-fs-plate, which is why the warm mid-tones are
+ * allowed: every pair below clears the 3:1 large-text bar, and tobacco-on-bone
+ * (3.76:1) and camel-on-chocolate (4.09:1) would not clear 4.5:1 at body size.
+ * Nothing but a numeral may take this color.
+ */
+.c97-page [data-c97-surface="paper"],
+.c97-page [data-c97-surface="bone"] {
+  --c97-plate: #8a6642;
+}
+
+.c97-page [data-c97-surface="camel"],
+.c97-page [data-c97-surface="stone"] {
+  --c97-plate: #2b211a;
+}
+
+.c97-page [data-c97-surface="tobacco"] {
+  --c97-plate: #f1ebdf;
+}
+
+.c97-page [data-c97-surface="chocolate"],
+.c97-page [data-c97-surface="pine"],
+.c97-page [data-c97-surface="espresso"] {
+  --c97-plate: #c09461;
+}
+
+/* --------------------------------------------------------------------------
+ * Surfaces — dark (derived, see header note)
+ * ------------------------------------------------------------------------ */
+
+.dark .c97-page [data-c97-surface="paper"] {
+  --c97-surface: #14100c;
+  --c97-ink: #f1ebdf;
+  --c97-ink-2: #dcd2bf;
+  --c97-label: #a99f91;
+  --c97-action: #d9b487;
+  --c97-accent: #c2707c;
+  --c97-rule: rgba(241, 235, 223, 0.16);
+  --c97-field: #241d16;
+}
+
+.dark .c97-page [data-c97-surface="bone"] {
+  --c97-surface: #1e1811;
+  --c97-ink: #f1ebdf;
+  --c97-ink-2: #dcd2bf;
+  --c97-label: #a99f91;
+  --c97-action: #d9b487;
+  --c97-accent: #c2707c;
+  --c97-rule: rgba(241, 235, 223, 0.18);
+  --c97-field: #14100c;
+}
+
+.dark .c97-page [data-c97-surface="camel"] {
+  --c97-surface: #6e4e2e;
+  --c97-ink: #f7f2e8;
+  --c97-ink-2: #e8decb;
+  --c97-label: #e6d3b4;
+  --c97-action: #f0d9b6;
+  --c97-accent: #f0d9b6;
+  --c97-rule: rgba(247, 242, 232, 0.26);
+  --c97-field: #1e1811;
+}
+
+.dark .c97-page [data-c97-surface="tobacco"] {
+  --c97-surface: #573d26;
+  --c97-ink: #f7f2e8;
+  --c97-ink-2: #e8decb;
+  --c97-label: #e6d3b4;
+  --c97-action: #f0d9b6;
+  --c97-accent: #f0d9b6;
+  --c97-rule: rgba(247, 242, 232, 0.24);
+  --c97-field: #1e1811;
+}
+
+.dark .c97-page [data-c97-surface="chocolate"] {
+  --c97-surface: #3a2b1f;
+  --c97-ink: #f1ebdf;
+  --c97-ink-2: #dcd2bf;
+  --c97-label: #cbbca4;
+  --c97-action: #d9b487;
+  --c97-accent: #d9b487;
+  --c97-rule: rgba(241, 235, 223, 0.2);
+  --c97-field: #1e1811;
+}
+
+.dark .c97-page [data-c97-surface="pine"] {
+  --c97-surface: #0e3833;
+  --c97-ink: #f1ebdf;
+  --c97-ink-2: #dcd2bf;
+  --c97-label: #9fb08f;
+  --c97-action: #d9b487;
+  --c97-accent: #d9b487;
+  --c97-rule: rgba(241, 235, 223, 0.2);
+  --c97-field: #14100c;
+}
+
+.dark .c97-page [data-c97-surface="espresso"] {
+  --c97-surface: #0c0907;
+  --c97-ink: #f1ebdf;
+  --c97-ink-2: #dcd2bf;
+  --c97-label: #d9b487;
+  --c97-action: #d9b487;
+  --c97-accent: #d9b487;
+  --c97-rule: rgba(241, 235, 223, 0.16);
+  --c97-field: #1e1811;
+}
+
+.dark .c97-page [data-c97-surface="stone"] {
+  --c97-surface: #6e655a;
+  --c97-ink: #f7f2e8;
+  --c97-ink-2: #f7f2e8;
+  --c97-label: #f7f2e8;
+  --c97-action: #f7e6cd;
+  --c97-accent: #f7e6cd;
+  --c97-rule: rgba(247, 242, 232, 0.26);
+  --c97-field: #1e1811;
+}
+
+.dark .c97-page [data-c97-surface="paper"],
+.dark .c97-page [data-c97-surface="bone"] {
+  --c97-plate: #c08a5a;
+}
+
+.dark .c97-page [data-c97-surface="camel"],
+.dark .c97-page [data-c97-surface="tobacco"] {
+  --c97-plate: #f0d9b6;
+}
+
+.dark .c97-page [data-c97-surface="chocolate"],
+.dark .c97-page [data-c97-surface="pine"],
+.dark .c97-page [data-c97-surface="espresso"] {
+  --c97-plate: #d9b487;
+}
+
+.dark .c97-page [data-c97-surface="stone"] {
+  --c97-plate: #f7e6cd;
+}
+
+/* --------------------------------------------------------------------------
+ * Layout primitives
+ * ------------------------------------------------------------------------ */
+
+/* Centered measure. Every band's content sits inside one of these. */
+.c97-shell {
+  max-width: var(--c97-container);
+  margin-inline: auto;
+}
+
+/*
+ * A full-bleed horizontal band. Vertical rhythm comes off the spacing ladder
+ * via --c97-band-y, which defaults to step 5.
+ */
+.c97-band {
+  padding: var(--c97-band-y) var(--c97-gutter);
+}
+
+/*
+ * Band-height variants set padding-block directly rather than re-pointing
+ * --c97-band-y. Re-pointing would put a --c97-* declaration under a class
+ * selector, which is indistinguishable, to a token consumer walking the build,
+ * from a design token declared in the wrong scope. Computed padding is the
+ * same either way: these come later in the file and beat the .c97-band
+ * shorthand on the block axis, and an inline padding still beats both.
+ */
+
+.c97-band-tight {
+  padding-block: var(--c97-sp-4);
+}
+
+.c97-band-tall {
+  padding-block: var(--c97-sp-6);
+}
+
+/*
+ * Step 7, the tallest band in the system. The design spends it on Pine
+ * sections only, which is where it wants the extra air.
+ */
+.c97-band-taller {
+  padding-block: var(--c97-sp-7);
+}
+
+/*
+ * A band that continues the one above it rather than opening a new field. Used
+ * where a hero and the block under it share a single paper surface and should
+ * not read as two sections.
+ */
+.c97-band-continues {
+  padding-block: 0 var(--c97-sp-5);
+}
+
+/* --------------------------------------------------------------------------
+ * Type primitives
+ * ------------------------------------------------------------------------ */
+
+/* 11px uppercase tracked label. The workhorse of the whole system. */
+.c97-kicker {
+  font-size: var(--c97-fs-label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c97-label);
+  margin: 0;
+}
+
+/*
+ * A row of kickers sitting under a heading — reading time, category, status.
+ * Its own class because the design uses this exact cluster on every index.
+ */
+.c97-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-2);
+  font-size: var(--c97-fs-label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c97-label);
+  margin: 0;
+}
+
+/* Newsreader, always weight 400. The design never bolds the serif. */
+.c97-display {
+  font-family: var(--c97-font-display);
+  font-weight: 400;
+  font-size: var(--c97-fs-h1);
+  line-height: var(--c97-lh-tight);
+  letter-spacing: -0.015em;
+  color: var(--c97-ink-2);
+  max-width: var(--c97-measure-tight);
+  text-wrap: pretty;
+  margin: 0;
+}
+
+.c97-serif {
+  font-family: var(--c97-font-display);
+  font-weight: 400;
+  line-height: var(--c97-lh-tight);
+  color: var(--c97-ink);
+  margin: 0;
+}
+
+/* The three serif heading steps, so a page never hand-rolls a font size. */
+.c97-h2 {
+  font-size: var(--c97-fs-h2);
+  letter-spacing: -0.01em;
+}
+
+.c97-h3 {
+  font-size: var(--c97-fs-h3);
+}
+
+.c97-lead {
+  font-size: var(--c97-fs-lead);
+}
+
+/*
+ * Anton. Numerals at --c97-fs-plate, and nothing else — no smaller numeral
+ * step, and no running text or headings ever. Keeping it to one size at the
+ * top of the scale is what stops it reading as a display face instead of as a
+ * page number, and it is why a route may carry several plates without the
+ * face taking over.
+ */
+.c97-numeral {
+  font-family: var(--c97-font-numeral);
+  font-weight: 400;
+  font-size: var(--c97-fs-plate);
+  line-height: var(--c97-lh-display);
+  letter-spacing: 0.01em;
+  font-feature-settings: "tnum" 1;
+}
+
+.c97-prose {
+  font-size: var(--c97-fs-body);
+  line-height: var(--c97-lh-body);
+  color: var(--c97-ink);
+  max-width: var(--c97-measure-wide);
+  margin: 0;
+}
+
+/*
+ * A hairline in ink rather than in the rule token. The home hero and the
+ * closing band set a pair of these above and below a statement, where they are
+ * part of the composition rather than a separator between two things.
+ */
+.c97-hairline {
+  width: min(100%, 396px);
+  height: clamp(2px, 0.28vw, 3px);
+  background: var(--c97-ink-2);
+}
+
+/*
+ * An image field. The design specifies warm 35mm photography here; until a
+ * real photograph exists, the slot renders as the flat Stone or Tobacco field
+ * the design's own layout rules call for, with its caption underneath. That
+ * reads as a deliberate color block rather than as a missing asset.
+ */
+.c97-slot {
+  width: 100%;
+  display: block;
+  /* Containing block for a `fill` photograph, and the clip for its overflow. */
+  position: relative;
+  overflow: hidden;
+}
+
+/*
+ * The 35mm treatment, taken from the design source verbatim. Warm, slightly
+ * desaturated, a touch flat. It is what makes a photograph sit inside the
+ * Catalog 97 palette instead of on top of it, so a picture dropped into a slot
+ * without it will read as a foreign object in the band.
+ *
+ * The flat Stone or Tobacco field stays painted underneath: while the image is
+ * decoding, or if it fails, the band keeps its color rather than showing a gap.
+ */
+.c97-slot-img {
+  object-fit: cover;
+  filter: saturate(0.82) sepia(0.14) contrast(0.96) brightness(1.02);
+}
+
+/* Tabular figures for every readout, per the design's data rules. */
+.c97-tabular {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* --------------------------------------------------------------------------
+ * Links, buttons, fields
+ * ------------------------------------------------------------------------ */
+
+/*
+ * Plain anchors inherit their band's ink. Wrapped in :where() so this scores
+ * (0,0,1) instead of (0,1,1): at (0,1,1) it outranked every single-class
+ * component rule, so `.c97-btn { color: var(--c97-surface) }` lost the cascade
+ * and every button rendered as a <Link> inherited the band ink instead. That
+ * put espresso ink on a chocolate button at 1.4:1, and made .c97-btn-invert —
+ * whose background is --c97-ink — paint invisible text on itself at 1:1.
+ * Any .c97-* class must outrank this reset.
+ */
+:where(.c97-page) a {
+  color: inherit;
+}
+
+.c97-page a:focus-visible,
+.c97-page button:focus-visible,
+.c97-page input:focus-visible,
+.c97-page textarea:focus-visible,
+.c97-page select:focus-visible,
+.c97-page summary:focus-visible {
+  outline: 2px solid var(--c97-accent);
+  outline-offset: 3px;
+}
+
+/* Underlined inline link, used inside prose. */
+.c97-link {
+  color: var(--c97-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color 160ms ease;
+}
+
+.c97-link:hover {
+  color: var(--c97-accent);
+}
+
+/*
+ * Uppercase micro-link. Padding + negative margin gives it a 44px hit target
+ * without changing where it sits on the baseline.
+ */
+.c97-microlink {
+  font-size: var(--c97-fs-label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c97-label);
+  text-decoration: none;
+  /*
+   * Hit target, not spacing. An 11px label needs 16.5px of padding a side to
+   * reach the 44px minimum, and the negative margin cancels it so the link
+   * still sits where the baseline says it does. These two are derived from the
+   * 44px floor rather than chosen off the spacing ladder, which is why they
+   * are their own constants — the same reason --c97-gutter is not an --c97-sp
+   * step. Nothing else may use them.
+   */
+  padding: var(--c97-touch-y) var(--c97-touch-x);
+  margin: calc(-1 * var(--c97-touch-y)) calc(-1 * var(--c97-touch-x));
+  display: inline-block;
+  transition: color 160ms ease;
+}
+
+/*
+ * The header wordmark. Same hit-target treatment as .c97-microlink: padding to
+ * clear 44px, cancelled by an equal negative margin so the mark stays on the
+ * baseline it shares with the nav. Measured at 390px it was a 23px target
+ * before this, under the 44px floor the rest of the site holds.
+ */
+.c97-brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-block: var(--c97-touch-y);
+  margin-block: calc(-1 * var(--c97-touch-y));
+  text-decoration: none;
+}
+
+/*
+ * The underlined uppercase "all projects" style link that closes a section.
+ * Same 44px hit target, but it carries its underline rather than earning one
+ * on hover, because it is the section's exit rather than an inline reference.
+ */
+.c97-sectionlink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: var(--c97-fs-label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c97-ink-2);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  transition: color 160ms ease;
+}
+
+.c97-sectionlink:hover {
+  color: var(--c97-action);
+}
+
+.c97-microlink:hover {
+  color: var(--c97-action);
+}
+
+.c97-microlink[aria-current="page"] {
+  color: var(--c97-accent);
+}
+
+/* Solid rectangular button. No radius anywhere in this system. */
+.c97-btn {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 var(--c97-sp-3);
+  border: 0;
+  border-radius: 0;
+  background: var(--c97-ink-2);
+  color: var(--c97-surface);
+  font-family: inherit;
+  font-size: var(--c97-fs-small);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+.c97-btn:hover {
+  background: var(--c97-ink);
+}
+
+/* Inverted button, for use on the mid-tone camel and tobacco bands. */
+.c97-btn-invert {
+  background: var(--c97-ink);
+  color: var(--c97-surface);
+}
+
+.c97-btn-invert:hover {
+  background: var(--c97-ink-2);
+}
+
+/* Text-only action, underlined rather than boxed. */
+.c97-btn-ghost {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 var(--c97-sp-1);
+  background: none;
+  border: 0;
+  color: var(--c97-label);
+  font-family: inherit;
+  font-size: var(--c97-fs-small);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 160ms ease;
+}
+
+.c97-btn-ghost:hover {
+  color: var(--c97-ink);
+}
+
+/*
+ * The outlined display button, used once, on the home page's closing tobacco
+ * band. It sits at --c97-fs-h2 because that is the floor for text on tobacco.
+ */
+.c97-btn-outline {
+  min-height: 64px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 var(--c97-sp-3);
+  border: 2px solid var(--c97-ink);
+  background: none;
+  color: var(--c97-ink);
+  font-family: inherit;
+  font-size: var(--c97-fs-h2);
+  line-height: var(--c97-lh-tight);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+.c97-btn-outline:hover {
+  background: var(--c97-ink);
+  color: var(--c97-surface);
+}
+
+.c97-field {
+  min-height: 48px;
+  border: 0;
+  border-radius: 0;
+  padding: 0 var(--c97-sp-2);
+  background: var(--c97-field);
+  color: var(--c97-ink);
+  font-family: inherit;
+  font-size: var(--c97-fs-body);
+  width: 100%;
+}
+
+textarea.c97-field {
+  padding: var(--c97-sp-2);
+  line-height: var(--c97-lh-body);
+  resize: vertical;
+}
+
+/* --------------------------------------------------------------------------
+ * Composition primitives
+ * ------------------------------------------------------------------------ */
+
+/*
+ * A ledger row: content on the left, a status or date on the right, aligned on
+ * a shared baseline. Every index on the site is built out of these.
+ */
+.c97-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--c97-sp-3);
+  align-items: baseline;
+}
+
+/*
+ * Stack the row on a phone. Opt in, because most rows do not need it.
+ *
+ * `.c97-row` is `1fr auto`, and `auto` takes its max-content width before `1fr`
+ * gets anything, so a row whose second cell is wide starves its own content. In
+ * the writing archive at 390 the meta cell, "5 MIN READ · SPORTS ANALYTICS",
+ * measured 199px and left the title and excerpt 98px, which wrapped one row to
+ * 817px and made the median archive row 620px tall. The archive was 83% of a
+ * 22,309px page because of it.
+ *
+ * Rows whose second cell is a bare year are fine as they are, which is why the
+ * portfolio ledger does not take this class. Stacking there would only add a
+ * line to each of 29 rows that already fit.
+ */
+@media (max-width: 639px) {
+  .c97-row-stack-sm {
+    grid-template-columns: 1fr;
+    gap: var(--c97-sp-2);
+  }
+}
+
+/* The numbered variant, where an index sits ahead of the content. */
+.c97-row-numbered {
+  grid-template-columns: auto 1fr auto;
+}
+
+/*
+ * A grid of full-bleed color panels with a hairline of paper showing between
+ * them. Each panel declares its own surface, so the mosaic reads as inlaid
+ * fields rather than as cards — there is no border, radius, or shadow in it.
+ */
+.c97-mosaic {
+  display: grid;
+  /* min() so the floor can never exceed the container. See `.c97-columns`. */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: var(--c97-sp-1);
+}
+
+.c97-tile {
+  padding: var(--c97-sp-4);
+  min-height: clamp(200px, 22vw, 260px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--c97-sp-3);
+  text-decoration: none;
+  transition: background-color 160ms ease;
+}
+
+/*
+ * The tile is the primary interactive element of the dashboard index and was
+ * the only interactive primitive in this stylesheet with no hover rule, so the
+ * transition above had nothing to animate and 33 links gave no pointer
+ * feedback at all.
+ *
+ * The shift is toward the tile's own ink rather than toward white or a fixed
+ * hex, which is what makes one rule correct on all four fields and in both
+ * themes: it darkens the three light fields and lifts Pine, because Pine's ink
+ * is the light one. Specificity ties `.c97-page [data-c97-surface]` at (0,2,0)
+ * and wins on order, since that block sits far above this one in the file.
+ */
+.c97-tile:hover {
+  background-color: color-mix(in srgb, var(--c97-surface) 92%, var(--c97-ink));
+}
+
+/*
+ * An evenly distributed column set, the design's standard three-or-four-up.
+ *
+ * The track minimum is 200px rather than 230px because at 230px the four-up
+ * half of that sentence was unreachable. The shell caps at --c97-container,
+ * 1080px, and the gap is --c97-sp-5, 68px at that width, so four 230px tracks
+ * need 1124px and never fit. Home's live readout row is the case that exposed
+ * it: it renders one to four children depending on which snapshots resolve, and
+ * with all three feeds up the fourth dropped onto a row of its own. At 200px,
+ * four tracks need 1004px and fit.
+ *
+ * Nothing with three or fewer children moves. auto-fit collapses the tracks it
+ * cannot fill, so three children still resolve to three equal columns spanning
+ * the full shell exactly as they did at 230px.
+ */
+.c97-columns {
+  display: grid;
+  /*
+   * The floor is wrapped in min() so it can never exceed the container. A bare
+   * `minmax(Npx, 1fr)` keeps its floor even when the shell is narrower than N,
+   * and the track then overflows the page rather than collapsing. Measured on
+   * /writing at a 320px viewport, where a 300px floor in a 249px shell pushed
+   * the document to 328px and produced real horizontal scroll. Every auto-fit
+   * floor in this system carries the guard for that reason.
+   */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  gap: var(--c97-sp-5);
+}
+
+/*
+ * The footer's own grid, which is deliberately not `.c97-columns`.
+ *
+ * The footer holds one colophon paragraph and three short link lists, and those
+ * are not equivalent content, so equal tracks were a framework default rather
+ * than a decision. On four equal 219px tracks the colophon set at 27 characters
+ * a line, which is well under the 34ch that its own --c97-measure-body already
+ * allows, so the track and not the token was the binding constraint.
+ *
+ * At 2fr the colophon track is 350px in the full 1080px shell and about 299px
+ * at the 1080px breakpoint itself, where --c97-gutter has grown to 6vw and the
+ * shell is only 950px. Either way it clears the 280px the paragraph needs to
+ * reach its cap. Each nav keeps at least 149px, which holds ACCESSIBILITY, the
+ * widest label, at roughly 124px.
+ *
+ * The breakpoint is 1080px rather than something smaller because the gutter is
+ * fluid. Below it the three lists go side by side and the colophon takes the
+ * whole row above them, which is the only arrangement that does not squeeze the
+ * prose again.
+ */
+.c97-footer-grid {
+  /*
+   * Two columns on a phone, not one. Stacked single-file the three link lists
+   * ran 552px of the footer's 989px at 390, which is more than a whole screen
+   * of chrome. The floor is wrapped in min() so it collapses back to one column
+   * rather than overflowing: two 130px tracks plus the 40px gap need 300px and
+   * the shell is 319px at 390, but only 264px at 320, where a second column
+   * would leave 112px and ACCESSIBILITY needs about 115px.
+   */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 130px), 1fr));
+  gap: var(--c97-sp-5);
+}
+
+.c97-footer-colophon {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 640px) {
+  .c97-footer-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1080px) {
+  .c97-footer-grid {
+    grid-template-columns: minmax(0, 2fr) repeat(3, minmax(0, 1fr));
+  }
+
+  .c97-footer-colophon {
+    grid-column: auto;
+  }
+}
+
+/* --------------------------------------------------------------------------
+ * The wordmark
+ * ------------------------------------------------------------------------ */
+
+/*
+ * One script lockup per page, on the pine band above the footer. Everything
+ * about the mark's proportions lives in the SVG viewBox (see
+ * `Catalog97Wordmark`), so the only thing set here is how wide the frame is
+ * allowed to get and what ink it draws in.
+ */
+.c97-wordmark {
+  display: block;
+  width: min(100%, var(--c97-wordmark-w));
+  color: var(--c97-ink);
+}
+
+/* --------------------------------------------------------------------------
+ * Motion
+ * ------------------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  .c97-page *,
+  .c97-page *::before,
+  .c97-page *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

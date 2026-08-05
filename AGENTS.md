@@ -145,10 +145,16 @@ Shell semantics:
 - self-shell route files and leaf sections should use `div` or `section` wrappers, not nested `main`
 - portfolio-shell routes should expose exactly one page-level `h1`
 
+Catalog 97 routes:
+
+- `/`, `/portfolio`, `/writing`, `/dashboards`, `/about`, `/resume`, `/contact` run on the Catalog 97 language, and every other route stays on Working Instrument
+- `StaticHeader` and `ConditionalLayout` both return early for them (`isCatalog97Route` in `src/constants/catalog97Nav.ts`), so `Catalog97Shell` owns the header, the only `main`, and the footer
+- their tokens live in `src/app/catalog97.css`, scoped under `.c97-page`, and never touch `--home-*`
+
 Footer variants:
 
-- `compact` on `/` and `/contact`
-- `full` on most other routes
+- `full` on every route that reaches `ConditionalLayout`
+- the Catalog 97 routes render their own espresso footer instead. `Footer` still accepts `variant="compact"`, but nothing currently passes it
 
 ---
 

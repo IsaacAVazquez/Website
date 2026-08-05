@@ -4,7 +4,7 @@ import {
   generateBreadcrumbStructuredData,
 } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
-import { PortfolioInstrument } from "@/components/portfolio/PortfolioInstrument";
+import { Catalog97Portfolio } from "@/components/catalog97/Catalog97Portfolio";
 import { AIStructuredData } from "@/components/AIStructuredData";
 
 export const metadata = constructMetadata({
@@ -54,7 +54,7 @@ export default function PortfolioPage() {
           },
         }}
       />
-      <PortfolioInstrument projects={portfolioProjects} />
+      <Catalog97Portfolio projects={portfolioProjects} />
     </>
   );
 }

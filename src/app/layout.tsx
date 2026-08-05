@@ -1,8 +1,12 @@
 import "./globals.css";
 import {
+  Anton,
+  Archivo,
   Fragment_Mono,
+  Great_Vibes,
   Instrument_Sans,
   Instrument_Serif,
+  Newsreader,
 } from "next/font/google";
 import { twMerge } from "tailwind-merge";
 import { constructMetadata } from "@/lib/seo";
@@ -38,6 +42,49 @@ const fragmentMono = Fragment_Mono({
   weight: "400",
   variable: "--font-fragment-mono",
   display: "swap",
+  preload: false,
+});
+
+/*
+ * Catalog 97 type stack. These four load for the seven portfolio-shell routes
+ * (see catalog97.css). All are preload: false — the Working Instrument stack
+ * above still owns the other ~40 routes and should keep the preload budget.
+ */
+
+// Newsreader carries every heading and serif lead in Catalog 97.
+const c97Newsreader = Newsreader({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+  variable: "--font-c97-newsreader",
+  display: "swap",
+  preload: false,
+});
+
+// Cross-platform stand-in for Helvetica Neue, which is macOS-only.
+const c97Archivo = Archivo({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-c97-archivo",
+  display: "swap",
+  preload: false,
+});
+
+// One oversized count per page, and nothing else.
+const c97Anton = Anton({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-c97-anton",
+  display: "optional",
+  preload: false,
+});
+
+// Footer wordmark only. Fallback for Snell Roundhand, which is macOS-only.
+const c97GreatVibes = Great_Vibes({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-c97-great-vibes",
+  display: "optional",
   preload: false,
 });
 
@@ -79,6 +126,10 @@ export default function RootLayout({
           instrumentSans.variable,
           instrumentSerif.variable,
           fragmentMono.variable,
+          c97Newsreader.variable,
+          c97Archivo.variable,
+          c97Anton.variable,
+          c97GreatVibes.variable,
           "font-sans min-h-screen antialiased"
         )}
       >

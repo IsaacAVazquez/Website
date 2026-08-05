@@ -645,22 +645,6 @@
   white-space: nowrap;
 }
 
-/* Legacy NowLine (unused) — kept so its class refs resolve. */
-.nowLine {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  font-family: var(--font-mono);
-  font-size: var(--text-3xs);
-  color: var(--atlas-muted);
-}
-.nowLead {
-  color: var(--atlas-ink);
-}
-.nowText {
-  color: var(--atlas-muted);
-}
-
 /* ---- Sections -------------------------------------------------------- */
 
 .section {

@@ -15,7 +15,7 @@ Current route inventory and page ownership for the live app.
 |------|------|-------|
 | `/` | `src/app/page.tsx` | Composes hero, featured projects, product-thinking preview, and homepage contact section |
 | `/about` | `src/app/about/page.tsx` | Renders `About` tabbed client UI |
-| `/portfolio` | `src/app/portfolio/page.tsx` | Renders project cards directly from route code; `PortfolioInstrument.tsx` adds a client-side project search/filter, with the marquee band sitting between the project grid and the pager |
+| `/portfolio` | `src/app/portfolio/page.tsx` | Server shell passing the project index to `Catalog97Portfolio`, which adds a client-side category filter over `classifyToolSlug` |
 | `/portfolio/[slug]` | `src/app/portfolio/[slug]/page.tsx` | Project detail page |
 | `/resume` | `src/app/resume/page.tsx` | Resume route with client-rendered resume shell |
 | `/contact` | `src/app/contact/page.tsx` | Contact page using `ContactContent` |
@@ -154,8 +154,8 @@ These routes manage more of their own spacing and width:
 
 ### Footer variants
 
-- `/` and `/contact` use the compact footer
-- most other routes use the full footer, which closes with the shared contact CTA (`ContactCta`, headline `Building something that needs judgment and follow-through?`) — the same updated CTA used at the bottom of the home page
+- every route that reaches `ConditionalLayout` now uses the full footer, which closes with the shared contact CTA (`ContactCta`, headline `Building something that needs judgment and follow-through?`)
+- the compact variant existed to keep `/` and `/contact` from stacking a second closing CTA under their own. Both are Catalog 97 routes now and render `Catalog97Shell`'s espresso footer instead, so nothing reaches `ConditionalLayout` wanting the compact one. `Footer` still accepts `variant="compact"` if a route needs it again
 
 ---
 

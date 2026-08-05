@@ -1,6 +1,6 @@
 {
   "shape": "package",
-  "styleSha": "a09855f5f52a0dfe6dee7b792a5823210820b7975e0da2f3a3add28559778b64",
+  "styleSha": "63455649efdddabd644e26add77b612cf89461dc1cae2a5944a0af77caf647dd",
   "renderHashes": {
     "AuthorBio": "d5990775011af1b4",
     "Badge": "4a13bed13f6a1022",
@@ -204,6 +204,6 @@
     "components/general/WarmCard/WarmCard.d.ts": "ebef6cc62f81",
     "components/general/WarmCard/WarmCard.prompt.md": "9e8a28e0a193"
   },
-  "auxSha": "f170d89af6db77c5",
+  "auxSha": "c31ecd446c462a09",
   "bundleSha12": "9c3d01202b40"
 }
