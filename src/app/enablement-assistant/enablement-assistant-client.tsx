@@ -85,7 +85,7 @@ function MetricCard({
   detail: string;
 }) {
   return (
-    <div className="home-card relative overflow-hidden p-5">
+    <div className="home-card relative flex h-full flex-col overflow-hidden p-5">
       <span
         className="absolute inset-y-0 left-0 w-1 bg-[var(--home-signal)]"
         aria-hidden="true"
@@ -93,10 +93,10 @@ function MetricCard({
       <p className="font-mono text-3xs uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
         {label}
       </p>
-      <p className="mt-3 text-4xl font-semibold tracking-[-0.05em] text-[var(--home-ink)]">
+      <p className="mt-4 text-5xl font-semibold tracking-[-0.055em] text-[var(--home-ink)]">
         {value}
       </p>
-      <p className="mt-2 text-xs leading-5 text-[var(--home-ink-muted)]">{detail}</p>
+      <p className="mt-auto pt-4 text-xs leading-5 text-[var(--home-ink-muted)]">{detail}</p>
     </div>
   );
 }
@@ -193,14 +193,14 @@ function ProgramDashboard({ onStart }: { onStart: () => void }) {
         aria-labelledby="feedback-loop-heading"
         className="grid overflow-hidden rounded-3xl border border-[var(--home-ink)] bg-[var(--home-ink)] text-[var(--home-paper)] lg:grid-cols-[0.82fr_1.18fr]"
       >
-        <div className="flex flex-col justify-between gap-10 border-b border-[color-mix(in_srgb,var(--home-paper)_24%,transparent)] p-6 sm:p-8 lg:border-b-0 lg:border-r">
+        <div className="flex flex-col justify-center gap-6 border-b border-[color-mix(in_srgb,var(--home-paper)_24%,transparent)] p-6 sm:p-8 lg:border-b-0 lg:border-r">
           <div className="space-y-4">
             <p className="font-mono text-3xs uppercase tracking-[0.18em] text-[color-mix(in_srgb,var(--home-paper)_70%,transparent)]">
               Feedback loop
             </p>
             <h2
               id="feedback-loop-heading"
-              className="text-balance text-3xl font-semibold tracking-[-0.04em] sm:text-4xl"
+              className="text-balance text-3xl font-semibold tracking-[-0.04em] text-[var(--home-paper)] sm:text-4xl"
             >
               The failure log becomes the documentation roadmap.
             </h2>
@@ -215,7 +215,7 @@ function ProgramDashboard({ onStart }: { onStart: () => void }) {
         <ol className="divide-y divide-[color-mix(in_srgb,var(--home-paper)_20%,transparent)]">
           {DOCUMENTATION_GAPS.map((gap, index) => (
             <li key={gap.question} className="grid gap-3 p-5 sm:grid-cols-[2.5rem_1fr_auto] sm:p-6">
-              <span className="font-mono text-sm text-[var(--home-signal)]">
+              <span className="font-mono text-sm text-[var(--home-paper)]">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <div>
@@ -228,7 +228,11 @@ function ProgramDashboard({ onStart }: { onStart: () => void }) {
               <div className="sm:col-start-2 sm:col-end-4">
                 <div
                   className="h-1.5 overflow-hidden rounded-full bg-[color-mix(in_srgb,var(--home-paper)_16%,transparent)]"
-                  aria-label={`${gap.count} unanswered questions`}
+                  role="progressbar"
+                  aria-valuenow={gap.count}
+                  aria-valuemin={0}
+                  aria-valuemax={maxGapCount}
+                  aria-label={`${gap.question}: ${gap.count} unanswered questions`}
                 >
                   <div
                     className="h-full rounded-full bg-[var(--home-signal)]"
@@ -331,7 +335,7 @@ function ProgramDashboard({ onStart }: { onStart: () => void }) {
                       ? "bg-[var(--home-negative)]"
                       : "bg-[var(--home-warning)]"
                   }`}
-                  aria-label={`${team.standardStatus} status`}
+                  aria-hidden="true"
                 />
               </div>
               <p className="mt-5 text-sm leading-6 text-[var(--home-ink-muted)]">
@@ -559,9 +563,15 @@ function IntakeForm({
   );
 }
 
-function ScoreLedger({ result }: { result: ScoredToolchain }) {
+function ScoreLedger({
+  result,
+  defaultOpen = false,
+}: {
+  result: ScoredToolchain;
+  defaultOpen?: boolean;
+}) {
   return (
-    <details className="mt-5 border-t border-[var(--home-rule)] pt-4">
+    <details open={defaultOpen} className="mt-5 border-t border-[var(--home-rule)] pt-4">
       <summary className="flex min-h-touch cursor-pointer items-center text-sm font-semibold text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)]">
         Show the score ledger
       </summary>
@@ -625,6 +635,7 @@ function RecommendationCard({
                 ? "border-[var(--home-warning)] text-[var(--home-warning)]"
                 : "border-[var(--home-negative)] text-[var(--home-negative)]"
           }`}
+          role="img"
           aria-label={`${result.score} percent confidence`}
         >
           {result.score}%
@@ -657,7 +668,7 @@ function RecommendationCard({
         <span className="font-semibold">The tradeoff I would keep visible.</span>{" "}
         {result.toolchain.tradeoff}
       </p>
-      <ScoreLedger result={result} />
+      <ScoreLedger result={result} defaultOpen={primary} />
     </article>
   );
 }
@@ -706,7 +717,7 @@ function RecommendationSection({
 
   return (
     <div className="space-y-16">
-      <section id="recommendation" aria-labelledby="recommendation-heading" className="space-y-6">
+      <section id="recommendation" aria-labelledby="recommendation-heading" className="scroll-mt-28 space-y-6">
         <SectionHeading kicker="Scored recommendation" title="A recommendation you can inspect">
           <p id="recommendation-heading">
             The score is a committed set of readable rules. Change one answer in the intake and
@@ -749,7 +760,7 @@ function RecommendationSection({
       </section>
 
       {!recommendation.shouldEscalate ? (
-        <section id="plan" aria-labelledby="plan-heading" className="space-y-6">
+        <section id="plan" aria-labelledby="plan-heading" className="scroll-mt-28 space-y-6">
           <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <SectionHeading
               kicker="Onboarding plan"
@@ -781,7 +792,7 @@ function RecommendationSection({
             {plan.map((step) => (
               <li
                 key={step.id}
-                className="relative grid gap-4 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] p-5 pl-16 sm:grid-cols-[1fr_11rem] sm:p-6 sm:pl-20"
+                className="relative grid gap-4 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] p-5 pl-16 sm:grid-cols-[1fr_12.5rem] sm:p-6 sm:pl-20"
               >
                 <span className="absolute left-3 top-5 z-10 grid h-12 w-12 place-items-center rounded-full border border-[var(--home-ink)] bg-[var(--home-paper)] font-mono text-sm text-[var(--home-ink)] sm:left-4 sm:top-6">
                   {String(step.order).padStart(2, "0")}
@@ -823,7 +834,7 @@ function RecommendationSection({
         </section>
       ) : null}
 
-      <section id="troubleshooting" aria-labelledby="troubleshooting-heading" className="space-y-6">
+      <section id="troubleshooting" aria-labelledby="troubleshooting-heading" className="scroll-mt-28 space-y-6">
         <SectionHeading kicker="Troubleshooting desk" title="Ask a setup or integration question">
           <p id="troubleshooting-heading">
             This search retrieves from a small committed knowledge base. It reports its
@@ -858,18 +869,24 @@ function RecommendationSection({
               <p className="font-mono text-3xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                 Seeded demo questions
               </p>
-              <div className="mt-3 flex flex-wrap gap-2">
+              <ul className="mt-3 grid gap-2">
                 {TROUBLESHOOTING_PROMPTS.map((prompt) => (
-                  <button
-                    key={prompt.question}
-                    type="button"
-                    onClick={() => setQuestion(prompt.question)}
-                    className="min-h-touch rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-left text-xs leading-5 text-[var(--home-ink)] transition-colors hover:border-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)]"
-                  >
-                    {prompt.question}
-                  </button>
+                  <li key={prompt.question}>
+                    <button
+                      type="button"
+                      onClick={() => setQuestion(prompt.question)}
+                      className="flex min-h-touch w-full items-center justify-between gap-3 rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-left text-xs leading-5 text-[var(--home-ink)] transition-colors hover:border-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)]"
+                    >
+                      <span>{prompt.question}</span>
+                      {!prompt.answerable ? (
+                        <span className="shrink-0 font-mono text-3xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                          Outside scope
+                        </span>
+                      ) : null}
+                    </button>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           </div>
 
@@ -924,7 +941,7 @@ function RecommendationSection({
             ) : (
               <div className="grid min-h-[320px] place-items-center text-center">
                 <div className="max-w-sm">
-                  <p className="font-mono text-5xl text-[var(--home-rule)]">?</p>
+                  <p className="font-mono text-5xl text-[color-mix(in_srgb,var(--home-ink)_22%,transparent)]">?</p>
                   <h3 className="mt-5 text-xl font-semibold text-[var(--home-ink)]">
                     No question searched yet
                   </h3>
@@ -943,15 +960,15 @@ function RecommendationSection({
         <section
           id="handoff"
           aria-labelledby="handoff-heading"
-          className="overflow-hidden rounded-3xl border border-[var(--home-ink)]"
+          className="scroll-mt-28 overflow-hidden rounded-3xl border border-[var(--home-ink)]"
         >
           <div className="bg-[var(--home-ink)] p-6 text-[var(--home-paper)] sm:p-8">
-            <p className="font-mono text-3xs uppercase tracking-[0.14em] text-[var(--home-signal)]">
+            <p className="font-mono text-3xs uppercase tracking-[0.14em] text-[color-mix(in_srgb,var(--home-paper)_70%,transparent)]">
               Escalation handoff
             </p>
             <h2
               id="handoff-heading"
-              className="mt-3 text-balance text-3xl font-semibold tracking-[-0.04em]"
+              className="mt-3 text-balance text-3xl font-semibold tracking-[-0.04em] text-[var(--home-paper)]"
             >
               Give the central team the context up front.
             </h2>
@@ -1140,7 +1157,7 @@ export function EnablementAssistantClient() {
               </p>
             </div>
             <div className="rounded-2xl border border-[var(--home-ink)] bg-[var(--home-ink)] p-5 text-[var(--home-paper)]">
-              <p className="font-mono text-3xs uppercase tracking-[0.16em] text-[var(--home-signal)]">
+              <p className="font-mono text-3xs uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-paper)_70%,transparent)]">
                 Model boundary
               </p>
               <p className="mt-3 text-sm leading-6 text-[color-mix(in_srgb,var(--home-paper)_78%,transparent)]">
@@ -1152,7 +1169,7 @@ export function EnablementAssistantClient() {
         </div>
       </section>
 
-      <div id="workspace" className="home-shell home-section">
+      <div id="workspace" className="home-shell home-section scroll-mt-28">
         <div className="mb-10 flex flex-col justify-between gap-4 border-b border-[var(--home-rule)] pb-6 sm:flex-row sm:items-center">
           <WorkspaceTabs view={view} onChange={changeView} />
           <p className="font-mono text-3xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
