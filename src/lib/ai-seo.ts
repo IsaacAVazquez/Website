@@ -640,6 +640,13 @@ export function generateBreadcrumbSchema(items: BreadcrumbItem[]) {
 /**
  * Generates ProfilePage schema for about/resume pages
  */
+
+// Google's ProfilePage rich result validates dateModified as a DateTime, so a
+// bare YYYY-MM-DD gets expanded to midnight UTC rather than passed through.
+function toProfileDateTime(value: string): string {
+  return /^\d{4}-\d{2}-\d{2}$/.test(value) ? `${value}T00:00:00Z` : value;
+}
+
 export function generateProfilePageSchema(data: {
   person: PersonSchemaData;
   url?: string;
@@ -655,7 +662,9 @@ export function generateProfilePageSchema(data: {
     description:
       data.description ||
       `Professional profile of ${data.person.name || siteConfig.name}`,
-    ...(data.lastReviewed && { dateModified: data.lastReviewed }),
+    ...(data.lastReviewed && {
+      dateModified: toProfileDateTime(data.lastReviewed),
+    }),
     mainEntity: generateEnhancedPersonSchema(data.person),
   };
 }
