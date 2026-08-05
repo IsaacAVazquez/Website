@@ -122,10 +122,19 @@ describe("AI SEO structured-data generators", () => {
       lastReviewed: "2026-05-01",
     }) as Record<string, unknown>;
 
-    expect(schema.dateModified).toBe("2026-05-01");
+    expect(schema.dateModified).toBe("2026-05-01T00:00:00Z");
     expect((schema.mainEntity as Record<string, unknown>)["@type"]).toBe(
       "Person"
     );
+  });
+
+  it("passes a full ISO datetime reviewed date through unchanged", () => {
+    const schema = generateProfilePageSchema({
+      person: { name: "Isaac Vazquez" },
+      lastReviewed: "2026-05-01T14:30:00-07:00",
+    }) as Record<string, unknown>;
+
+    expect(schema.dateModified).toBe("2026-05-01T14:30:00-07:00");
   });
 });
 
