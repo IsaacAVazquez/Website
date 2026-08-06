@@ -122,8 +122,13 @@ export function PortfolioStatsGrid({
   const stats = computeStats(holdings);
 
   return (
+    // A section with no accessible name is not exposed as a landmark at all,
+    // and this one is a sidebar jump target, so anyone arriving by navigation
+    // landed in an unnamed region. Literal label rather than aria-labelledby,
+    // because the visible cap text is a span rather than a heading.
     <section
       id="portfolio-stats"
+      aria-label="Portfolio stats"
       className={styles.statsPanel + " scroll-mt-28"}
     >
       <div className={styles.statsCap}>

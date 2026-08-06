@@ -54,6 +54,21 @@
   --home-ink-soft: color-mix(in srgb, var(--home-ink) 45%, var(--home-paper));
   --home-paper-raised: color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix));
 
+
+  /* Terminal type ramp. The module previously declared 30 distinct font sizes,
+     including four inside a 1.5px band (10 / 10.5 / 11 / 11.5) that no reader
+     could tell apart, and a parallel rem ladder restating the same steps at
+     fractional pixels (0.62rem = 9.92px, 0.84rem = 13.44px, and so on). These
+     six roles absorb all of it. Display clamps, the retirement gauge numeral,
+     and the em-relative cents/currency marks stay as they are, since those are
+     proportional to their own parent rather than steps on this ramp. */
+  --invest-fs-micro: 10px;   /* dense cell and tick labels */
+  --invest-fs-label: 11px;   /* mono kickers and micro-labels */
+  --invest-fs-small: 12px;   /* dense secondary body */
+  --invest-fs-body: 13px;    /* standard terminal body */
+  --invest-fs-lead: 14px;    /* emphasis and section leads */
+  --invest-fs-value: 17px;   /* prominent data readouts */
+
   /* Legacy aliases some shared components still read — keep resolving dark. */
   --color-primary: var(--home-signal); /* @kind color */
   --color-success: var(--home-positive); /* @kind color */
@@ -137,7 +152,7 @@
   position: relative;
   display: grid; place-items: center;
   color: var(--home-ink);
-  font-weight: 400; font-size: 14px; letter-spacing: -0.02em;
+  font-weight: 400; font-size: var(--invest-fs-lead); letter-spacing: -0.02em;
   font-family: var(--font-mono);
   flex: 0 0 auto;
 }
@@ -150,19 +165,19 @@
   background: var(--home-signal);
 }
 .terminalScope :global(.invest-brand-name) {
-  font-size: 13.5px; font-weight: 640; letter-spacing: -0.01em;
+  font-size: var(--invest-fs-body); font-weight: 640; letter-spacing: -0.01em;
   color: var(--home-ink); line-height: 1.1;
   min-width: 0;
 }
 .terminalScope :global(.invest-brand-name) small {
   display: block;
   font-family: var(--font-mono);
-  font-size: 10px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase;
+  font-size: var(--invest-fs-micro); font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase;
   color: var(--home-signal); margin-top: 3px;
 }
 .terminalScope :global(.invest-nav-label) {
   font-family: var(--font-mono);
-  font-size: 10.5px; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase;
+  font-size: var(--invest-fs-micro); font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--home-ink-muted);
   padding: 16px 16px 8px;
 }
@@ -172,7 +187,7 @@
   min-height: 44px;
   color: var(--home-ink-muted);
   text-decoration: none;
-  font-size: 13.5px; font-weight: 500;
+  font-size: var(--invest-fs-body); font-weight: 500;
   border-left: 3px solid transparent;
   transition: background-color 140ms ease, color 140ms ease, border-color 140ms ease;
   background: transparent;
@@ -194,7 +209,7 @@
 .terminalScope :global(.invest-nav-pill) {
   margin-left: auto;
   font-family: var(--font-mono);
-  font-size: 11px; font-weight: 400; letter-spacing: 0.02em;
+  font-size: var(--invest-fs-label); font-weight: 400; letter-spacing: 0.02em;
   border: 1px solid var(--home-rule);
   color: var(--home-ink-muted);
   padding: 1px 6px; border-radius: var(--radius-sm);
@@ -210,7 +225,7 @@
   border-top: 1px solid var(--home-rule);
   display: flex; align-items: center; gap: 8px;
   font-family: var(--font-mono);
-  font-size: 11.5px; letter-spacing: 0.02em;
+  font-size: var(--invest-fs-label); letter-spacing: 0.02em;
   color: var(--home-ink-muted);
 }
 
@@ -228,7 +243,7 @@
 }
 .terminalScope :global(.invest-crumbs) {
   font-family: var(--font-mono);
-  font-size: 11px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase;
+  font-size: var(--invest-fs-label); font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--home-ink-muted);
   margin: 0;
 }
@@ -247,19 +262,19 @@
   border-radius: var(--radius-sm);
   padding: 0 10px;
   min-height: 38px;
-  font-size: 13px; color: var(--home-ink-muted);
+  font-size: var(--invest-fs-body); color: var(--home-ink-muted);
 }
 .terminalScope :global(.invest-search) input {
   all: unset;
   flex: 1;
   color: var(--home-ink);
   font-family: var(--font-mono);
-  font-size: 12.5px;
+  font-size: var(--invest-fs-small);
 }
 .terminalScope :global(.invest-search) input::placeholder { color: var(--home-ink-muted); }
 .terminalScope :global(.invest-search-kbd) {
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: var(--invest-fs-micro);
   color: var(--home-ink-muted);
   letter-spacing: 0.04em;
   border: 1px solid var(--home-rule);
@@ -270,7 +285,7 @@
   width: 38px; height: 38px; border-radius: var(--radius-sm);
   border: 1px solid var(--home-rule);
   background: transparent; color: var(--home-ink);
-  display: grid; place-items: center; font-weight: 400; font-size: 12px;
+  display: grid; place-items: center; font-weight: 400; font-size: var(--invest-fs-small);
   font-family: var(--font-mono);
   letter-spacing: 0.02em;
   flex: 0 0 auto;
@@ -301,7 +316,7 @@
 .quoteEmpty {
   padding: 9px 18px;
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: var(--invest-fs-label);
   color: var(--home-ink-muted);
   border-bottom: 1px solid var(--home-rule);
 }
@@ -328,7 +343,7 @@
 }
 .terminalScope :global(.invest-hero-eyebrow) {
   font-family: var(--font-mono);
-  font-size: 10.5px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase;
+  font-size: var(--invest-fs-micro); font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--home-ink-muted);
   display: inline-flex; align-items: center; gap: 8px;
 }
@@ -357,11 +372,11 @@
   display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap;
   margin-top: 13px;
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: var(--invest-fs-small);
   font-variant-numeric: tabular-nums;
 }
 .terminalScope :global(.invest-hero-delta .chip) {
-  padding: 3px 8px; border-radius: var(--radius-sm); font-size: 12px;
+  padding: 3px 8px; border-radius: var(--radius-sm); font-size: var(--invest-fs-small);
   border: 1px solid transparent;
 }
 .terminalScope :global(.invest-hero-delta .chip.pos) {
@@ -387,6 +402,12 @@
 .terminalScope :global(.invest-chart-wrap) {
   position: relative;
   align-self: stretch;
+  /* Grid/flex children default to min-width:auto, which floors the track at the
+     child's min-content width. Once the D3 svg had drawn wide it held this cell
+     open, so the cell never shrank, its ResizeObserver never fired, and the svg
+     never re-measured, leaving the hero clipped behind `overflow:hidden` after
+     any shrink (phone rotation, window resize). */
+  min-width: 0;
   background: var(--home-paper);
   border-left: 1px solid var(--home-rule);
   padding: 10px 8px 6px 10px;
@@ -408,7 +429,7 @@
   display: inline-flex; align-items: center; justify-content: center;
   padding: 0 12px;
   font-family: var(--font-mono);
-  font-size: 11px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase;
+  font-size: var(--invest-fs-label); font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase;
   color: var(--home-ink-muted);
   cursor: pointer;
   min-height: 34px;
@@ -426,7 +447,7 @@
   border-radius: var(--radius-sm);
   padding: 0 13px;
   font-family: var(--font-mono);
-  font-size: 11.5px; font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase;
+  font-size: var(--invest-fs-label); font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase;
   color: var(--home-ink); cursor: pointer;
   transition: border-color 140ms ease, background-color 140ms ease, color 140ms ease;
   display: inline-flex; align-items: center; gap: 8px;
@@ -454,7 +475,7 @@
   gap: 10px; padding: 9px 20px;
   border-bottom: 1px solid var(--home-rule);
   font-family: var(--font-mono);
-  font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
+  font-size: var(--invest-fs-micro); letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--home-ink-muted);
 }
 .statsLive {
@@ -485,7 +506,7 @@
 }
 .statLabel {
   font-family: var(--font-mono);
-  font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase;
+  font-size: var(--invest-fs-micro); letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--home-ink-muted);
   cursor: help;
   width: fit-content;
@@ -495,7 +516,7 @@
 .statValue {
   margin-top: 6px;
   font-family: var(--font-mono);
-  font-size: 1.02rem;
+  font-size: var(--invest-fs-value);
   font-variant-numeric: tabular-nums;
   color: var(--home-ink);
   white-space: nowrap;
@@ -504,7 +525,7 @@
 }
 .statSub {
   margin-top: 4px;
-  font-size: 0.7rem;
+  font-size: var(--invest-fs-label);
   color: var(--home-ink-muted);
   font-variant-numeric: tabular-nums;
   min-height: 1.2em;
@@ -538,12 +559,12 @@
 .terminalScope :global(.invest-panel-head h2) {
   margin: 0;
   font-family: var(--font-mono);
-  font-size: 0.62rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase;
+  font-size: var(--invest-fs-micro); font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--home-ink-muted);
 }
 .terminalScope :global(.invest-panel-head-meta) {
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: var(--invest-fs-micro);
   color: var(--home-ink-muted);
   margin-top: 2px;
   letter-spacing: 0.02em;
@@ -559,7 +580,7 @@
   border: 0; background: var(--home-paper);
   padding: 0 14px; min-height: 32px;
   font-family: var(--font-mono);
-  font-size: 11px; font-weight: 400;
+  font-size: var(--invest-fs-label); font-weight: 400;
   color: var(--home-ink-muted); cursor: pointer;
 }
 .terminalScope :global(.invest-panel-tabs) button.is-on {
@@ -576,7 +597,7 @@
   text-align: left;
   padding: 8px 14px;
   font-family: var(--font-mono);
-  font-size: 0.58rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase;
+  font-size: var(--invest-fs-micro); font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--home-ink-muted);
   border-bottom: 1px solid var(--home-rule);
   background: color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-paper));
@@ -589,7 +610,7 @@
   padding: 10px 14px;
   border-bottom: 1px solid color-mix(in srgb, var(--home-rule) 55%, transparent);
   vertical-align: middle;
-  font-size: 0.84rem; color: var(--home-ink);
+  font-size: var(--invest-fs-body); color: var(--home-ink);
 }
 .terminalScope :global(.invest-holdings) tbody td:first-child { padding-left: 20px; }
 .terminalScope :global(.invest-holdings) tbody td:last-child { padding-right: 20px; }
@@ -604,7 +625,7 @@
 .terminalScope :global(.invest-holdings) td.num {
   text-align: right;
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: var(--invest-fs-small);
 }
 
 .tick {
@@ -615,11 +636,11 @@
 }
 .tickSym {
   font-family: var(--font-mono);
-  font-size: 0.82rem; letter-spacing: 0.02em;
+  font-size: var(--invest-fs-body); letter-spacing: 0.02em;
   color: var(--home-ink);
 }
 .tickName {
-  font-size: 0.7rem; color: var(--home-ink-muted);
+  font-size: var(--invest-fs-label); color: var(--home-ink-muted);
   max-width: 16ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 .terminalScope :global(.invest-alloc-bar) {
@@ -634,7 +655,7 @@
 .terminalScope :global(.invest-alloc-fill) { height: 100%; }
 .terminalScope :global(.invest-alloc-pct) {
   font-family: var(--font-mono);
-  font-size: 0.68rem; color: var(--home-ink-muted);
+  font-size: var(--invest-fs-label); color: var(--home-ink-muted);
   width: 40px; text-align: right;
   font-variant-numeric: tabular-nums;
 }
@@ -671,7 +692,7 @@
   border-bottom: 1px solid var(--home-rule);
   background: var(--home-paper);
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--invest-fs-label);
   color: var(--home-ink-muted);
 }
 .terminalScope :global(.invest-dataset-chip strong) {
@@ -711,7 +732,7 @@
 .terminalScope :global(.invest-section-kicker) {
   margin: 0;
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: var(--invest-fs-micro);
   font-weight: 400;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -719,7 +740,12 @@
 }
 .terminalScope :global(.invest-section-title) {
   margin: 4px 0 0;
-  font-size: clamp(1.2rem, 1.2vw + 0.8rem, 1.5rem);
+  /* Was clamp(1.2rem, 1.2vw + 0.8rem, 1.5rem), which shared the h1's floor and
+     cap and so rendered these h2s at exactly the h1's size. The outline said
+     one thing and the page said another. Stepping the h2 down rather than the
+     h1 up keeps the topbar on its 57px fascia line, where it aligns with the
+     sidebar brand block. */
+  font-size: clamp(1.05rem, 0.9vw + 0.72rem, 1.25rem);
   font-weight: 640;
   letter-spacing: -0.02em;
   color: var(--home-ink);
@@ -765,7 +791,7 @@
 }
 .terminalScope :global(.research-ticker-pill) {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: var(--invest-fs-small);
   background: var(--home-paper-alt);
   border: 1px solid var(--home-rule);
   color: var(--home-ink);
@@ -776,7 +802,7 @@
 .terminalScope :global(.research-badge-pill) {
   display: inline-flex; align-items: center; gap: 6px;
   font-family: var(--font-mono);
-  font-size: 10px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase;
+  font-size: var(--invest-fs-micro); font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase;
   padding: 3px 9px; border-radius: var(--radius-sm);
   border: 1px solid var(--home-rule);
 }
@@ -791,7 +817,7 @@
 }
 .terminalScope :global(.research-asset-bio) {
   margin: 0;
-  font-size: 13px;
+  font-size: var(--invest-fs-body);
   line-height: 1.55;
   color: var(--home-ink-muted);
   max-width: 60ch;
@@ -819,7 +845,7 @@
 }
 .terminalScope :global(.research-key-metric-label) {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: var(--invest-fs-micro);
   font-weight: 400;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -829,7 +855,7 @@
 }
 .terminalScope :global(.research-key-metric-value) {
   font-family: var(--font-mono);
-  font-size: 15px;
+  font-size: var(--invest-fs-lead);
   font-weight: 400;
   letter-spacing: -0.01em;
   font-variant-numeric: tabular-nums;
@@ -845,7 +871,7 @@
 }
 .terminalScope :global(.research-asset-price-eyebrow) {
   font-family: var(--font-mono);
-  font-size: 10px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase;
+  font-size: var(--invest-fs-micro); font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase;
   color: var(--home-ink-muted);
   display: inline-flex; align-items: center; gap: 8px;
 }
@@ -865,10 +891,10 @@
 .terminalScope :global(.research-asset-delta) {
   display: inline-flex; gap: 8px; align-items: center;
   font-family: var(--font-mono);
-  font-size: 12px; font-weight: 400;
+  font-size: var(--invest-fs-small); font-weight: 400;
 }
 .terminalScope :global(.research-asset-delta .chip) {
-  padding: 3px 8px; border-radius: var(--radius-sm); font-size: 11px;
+  padding: 3px 8px; border-radius: var(--radius-sm); font-size: var(--invest-fs-label);
   border: 1px solid transparent;
 }
 .terminalScope :global(.research-asset-delta .chip.pos) {
@@ -896,7 +922,7 @@
 .terminalScope :global(.research-asset-actions-clock) {
   margin-left: auto;
   cursor: default;
-  font-size: 11px;
+  font-size: var(--invest-fs-label);
   background: transparent !important;
   border-color: transparent !important;
   color: var(--home-ink-muted) !important;
@@ -928,7 +954,7 @@
 .weekRangeCaption {
   display: flex; justify-content: space-between; gap: 10px;
   font-family: var(--font-mono);
-  font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase;
+  font-size: var(--invest-fs-micro); letter-spacing: 0.06em; text-transform: uppercase;
   color: var(--home-ink-muted);
   font-variant-numeric: tabular-nums;
 }
@@ -947,11 +973,11 @@
 .terminalScope :global(.research-panel-head h2) {
   margin: 0;
   font-family: var(--font-mono);
-  font-size: 13px; font-weight: 400; letter-spacing: 0.02em; line-height: 1.2;
+  font-size: var(--invest-fs-body); font-weight: 400; letter-spacing: 0.02em; line-height: 1.2;
   color: var(--home-ink);
 }
 .terminalScope :global(.research-panel-head .meta) {
-  font-size: 11px; color: var(--home-ink-muted); margin-top: 2px;
+  font-size: var(--invest-fs-label); color: var(--home-ink-muted); margin-top: 2px;
 }
 
 /* ---- Right rail ----------------------------------------------------------- */
@@ -979,7 +1005,7 @@
 }
 .terminalScope :global(.invest-rail-section-label) {
   font-family: var(--font-mono);
-  font-size: 10.5px; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase;
+  font-size: var(--invest-fs-micro); font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--home-ink-muted);
   margin: 0 0 10px;
 }
@@ -1011,16 +1037,16 @@
 }
 .terminalScope :global(.invest-rail-mover-sym) {
   font-family: var(--font-mono);
-  font-weight: 400; font-size: 13px; letter-spacing: -0.01em;
+  font-weight: 400; font-size: var(--invest-fs-body); letter-spacing: -0.01em;
 }
 .terminalScope :global(.invest-rail-mover-name) {
-  font-size: 11.5px; color: var(--home-ink-muted);
+  font-size: var(--invest-fs-label); color: var(--home-ink-muted);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   max-width: 12ch;
 }
 .terminalScope :global(.invest-rail-mover-delta) {
   font-family: var(--font-mono);
-  font-size: 11.5px; font-weight: 400;
+  font-size: var(--invest-fs-label); font-weight: 400;
   font-variant-numeric: tabular-nums;
 }
 .terminalScope :global(.invest-rail-mover-delta.pos) { color: var(--home-positive); }
@@ -1047,7 +1073,7 @@
   align-items: center;
   gap: 6px;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--invest-fs-label);
   font-weight: 400;
   color: var(--home-ink-muted);
   background: transparent;
@@ -1062,7 +1088,7 @@
 .terminalScope :global(.invest-retire-intro) {
   margin: 0;
   max-width: 62ch;
-  font-size: 13.5px;
+  font-size: var(--invest-fs-body);
   line-height: 1.55;
   color: var(--home-ink-muted);
 }
@@ -1116,7 +1142,7 @@
   border-radius: var(--radius-sm);
   padding: 5px 11px;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--invest-fs-label);
   font-weight: 400;
   cursor: pointer;
   min-height: 32px;
@@ -1154,14 +1180,14 @@
 }
 .terminalScope :global(.invest-retire-field-label) {
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: var(--invest-fs-micro);
   font-weight: 400;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--home-ink-muted);
 }
 .terminalScope :global(.invest-retire-field-hint) {
-  font-size: 10.5px;
+  font-size: var(--invest-fs-micro);
   color: var(--home-ink-muted);
   line-height: 1.3;
 }
@@ -1186,7 +1212,7 @@
   background: transparent;
   color: var(--home-ink);
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: var(--invest-fs-body);
   padding: 9px 10px;
   min-height: 44px;
 }
@@ -1196,7 +1222,7 @@
 }
 .terminalScope :global(.invest-retire-affix) {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: var(--invest-fs-small);
   color: var(--home-ink-muted);
   padding: 0 2px 0 10px;
 }
@@ -1224,12 +1250,12 @@
   display: none;
 }
 .terminalScope :global(.invest-retire-disclose-title) {
-  font-size: 12.5px;
+  font-size: var(--invest-fs-small);
   font-weight: 600;
   color: var(--home-ink);
 }
 .terminalScope :global(.invest-retire-disclose-summary) {
-  font-size: 11px;
+  font-size: var(--invest-fs-label);
   color: var(--home-ink-muted);
 }
 .terminalScope :global(.invest-retire-disclose-chevron) {
@@ -1258,7 +1284,7 @@
   border-radius: var(--radius-sm);
   padding: 8px 13px;
   font-family: var(--font-mono);
-  font-size: 11.5px;
+  font-size: var(--invest-fs-label);
   font-weight: 400;
   cursor: pointer;
   min-height: 44px;
@@ -1317,7 +1343,7 @@
   border-radius: var(--radius-sm);
   padding: 8px 12px;
   font-family: var(--font-mono);
-  font-size: 11.5px;
+  font-size: var(--invest-fs-label);
   font-weight: 400;
   cursor: pointer;
   min-height: 44px;
@@ -1342,13 +1368,13 @@
   background: var(--home-paper);
   color: var(--home-ink);
   font: inherit;
-  font-size: 13px;
+  font-size: var(--invest-fs-body);
   padding: 9px 10px;
   min-height: 44px;
 }
 .terminalScope :global(.invest-retire-alloc-note) {
   margin: 0;
-  font-size: 11px;
+  font-size: var(--invest-fs-label);
   color: var(--home-ink-muted);
 }
 .terminalScope :global(.invest-retire-alloc-note.warn) {
@@ -1402,7 +1428,7 @@
 }
 .terminalScope :global(.invest-retire-gauge-unit) {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: var(--invest-fs-micro);
   color: var(--home-ink-muted);
   margin-top: 2px;
 }
@@ -1415,7 +1441,7 @@
   align-items: center;
   gap: 6px;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--invest-fs-label);
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -1427,13 +1453,13 @@
 }
 .terminalScope :global(.invest-retire-verdict-line) {
   margin: 8px 0 0;
-  font-size: 14.5px;
+  font-size: var(--invest-fs-lead);
   line-height: 1.45;
   color: var(--home-ink);
 }
 .terminalScope :global(.invest-retire-verdict-sub) {
   margin: 6px 0 0;
-  font-size: 12px;
+  font-size: var(--invest-fs-small);
   line-height: 1.45;
   color: var(--home-ink-muted);
 }
@@ -1456,7 +1482,7 @@
 }
 .terminalScope :global(.invest-retire-stats) dt {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: var(--invest-fs-micro);
   font-weight: 400;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -1466,7 +1492,7 @@
 .terminalScope :global(.invest-retire-stats) dd {
   margin: 0;
   font-family: var(--font-mono);
-  font-size: 17px;
+  font-size: var(--invest-fs-value);
   font-weight: 400;
   letter-spacing: -0.01em;
   color: var(--home-ink);
@@ -1475,12 +1501,12 @@
 .terminalScope :global(.invest-retire-stat-meta) {
   display: block;
   margin-top: 3px;
-  font-size: 10px;
+  font-size: var(--invest-fs-micro);
   color: var(--home-ink-muted);
 }
 .terminalScope :global(.invest-retire-verdict-note) {
   margin: 0;
-  font-size: 11.5px;
+  font-size: var(--invest-fs-label);
   line-height: 1.45;
   color: var(--home-ink-muted);
   border-top: 1px solid var(--home-rule);
@@ -1501,7 +1527,7 @@
   gap: 12px;
   flex-wrap: wrap;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--invest-fs-label);
   font-weight: 400;
   color: var(--home-ink);
   margin-bottom: 6px;
@@ -1512,7 +1538,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 10.5px;
+  font-size: var(--invest-fs-micro);
   font-weight: 400;
   color: var(--home-ink-muted);
   text-transform: none;
@@ -1542,13 +1568,13 @@
 }
 .terminalScope :global(.invest-retire-levers-head) h3 {
   margin: 0;
-  font-size: 15px;
+  font-size: var(--invest-fs-lead);
   font-weight: 700;
   color: var(--home-ink);
 }
 .terminalScope :global(.invest-retire-levers-head) p {
   margin: 3px 0 14px;
-  font-size: 12px;
+  font-size: var(--invest-fs-small);
   color: var(--home-ink-muted);
 }
 .terminalScope :global(.invest-retire-lever-list) {
@@ -1578,13 +1604,13 @@
 }
 .terminalScope :global(.invest-retire-lever-label) {
   display: block;
-  font-size: 13px;
+  font-size: var(--invest-fs-body);
   font-weight: 600;
   color: var(--home-ink);
 }
 .terminalScope :global(.invest-retire-lever-change) {
   display: block;
-  font-size: 11px;
+  font-size: var(--invest-fs-label);
   color: var(--home-ink-muted);
   margin-top: 1px;
 }
@@ -1593,13 +1619,13 @@
   align-items: center;
   gap: 2px;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: var(--invest-fs-small);
   font-weight: 400;
   white-space: nowrap;
 }
 .terminalScope :global(.invest-retire-lever-desc) {
   margin: 8px 0 10px;
-  font-size: 11px;
+  font-size: var(--invest-fs-label);
   line-height: 1.4;
   color: var(--home-ink-muted);
 }
@@ -1627,7 +1653,7 @@
   justify-content: space-between;
   gap: 8px;
   margin-top: 8px;
-  font-size: 11px;
+  font-size: var(--invest-fs-label);
   color: var(--home-ink-muted);
 }
 .terminalScope :global(.invest-retire-lever-target) {
@@ -1643,13 +1669,13 @@
 }
 .terminalScope :global(.invest-retire-assumptions) header h3 {
   margin: 0;
-  font-size: 14px;
+  font-size: var(--invest-fs-lead);
   font-weight: 700;
   color: var(--home-ink);
 }
 .terminalScope :global(.invest-retire-assumptions) header p {
   margin: 3px 0 14px;
-  font-size: 11.5px;
+  font-size: var(--invest-fs-label);
   color: var(--home-ink-muted);
 }
 .terminalScope :global(.invest-retire-assumption-grid) {
@@ -1666,13 +1692,13 @@
   padding-bottom: 6px;
 }
 .terminalScope :global(.invest-retire-assumption-grid) dt {
-  font-size: 11.5px;
+  font-size: var(--invest-fs-label);
   color: var(--home-ink-muted);
 }
 .terminalScope :global(.invest-retire-assumption-grid) dd {
   margin: 0;
   font-family: var(--font-mono);
-  font-size: 11.5px;
+  font-size: var(--invest-fs-label);
   font-weight: 400;
   color: var(--home-ink);
   text-align: right;
@@ -1683,7 +1709,7 @@
 }
 .terminalScope :global(.invest-retire-cma) > summary {
   cursor: pointer;
-  font-size: 11.5px;
+  font-size: var(--invest-fs-label);
   font-weight: 600;
   color: var(--home-ink);
   padding: 6px 0;
@@ -1696,7 +1722,7 @@
 .terminalScope :global(.invest-retire-cma) th,
 .terminalScope :global(.invest-retire-cma) td {
   text-align: left;
-  font-size: 11.5px;
+  font-size: var(--invest-fs-label);
   padding: 6px 8px;
   border-bottom: 1px solid var(--home-rule);
   color: var(--home-ink);
@@ -1714,7 +1740,7 @@
 }
 .terminalScope :global(.invest-retire-cma-source) {
   margin: 12px 0 0;
-  font-size: 10.5px;
+  font-size: var(--invest-fs-micro);
   line-height: 1.5;
   color: var(--home-ink-muted);
 }
@@ -1732,7 +1758,7 @@
 }
 .terminalScope :global(.invest-retire-disclaimer) p {
   margin: 0;
-  font-size: 11.5px;
+  font-size: var(--invest-fs-label);
   line-height: 1.55;
 }
 .terminalScope :global(.invest-retire-loading) {
@@ -1741,7 +1767,7 @@
   min-height: 280px;
   border: 1px dashed var(--home-rule);
   color: var(--home-ink-muted);
-  font-size: 13px;
+  font-size: var(--invest-fs-body);
 }
 .terminalScope :global(.invest-retire-lever-skeleton) {
   min-height: 118px;
@@ -1765,5 +1791,74 @@
   .terminalScope :global(.invest-page-stack) :global(.animate-pulse),
   .terminalScope :global(.invest-page-stack) :global(.animate-spin) {
     animation: none !important;
+  }
+}
+
+/* ---- Touch sizing --------------------------------------------------------- */
+/* The terminal is deliberately dense, and 34-40px controls read correctly under
+   a mouse on an Operate surface like this one. Density is not worth a missed tap
+   though, so every control that sits below the repo's 44px floor is raised for
+   coarse pointers only. Gated on pointer rather than width because input method
+   is what actually decides this, since a touch laptop needs the larger target
+   at 1440 and a mouse at 800 does not. */
+@media (pointer: coarse) {
+  .terminalScope :global(.invest-timeframe) button { min-height: 44px; }
+  .terminalScope :global(.invest-search) { min-height: 44px; }
+  .statsFoot :global(.invest-ghost) { min-height: 44px; }
+  .terminalScope :global(.invest-retire-reset) { min-height: 44px; padding-block: 0; }
+}
+
+/* ---- Mobile section rail -------------------------------------------------- */
+/* Below 900px the sidebar is hidden, and that also removed the only way to move
+   between the seven sections of a route that runs about nine phone screens. This
+   is that navigation rebuilt for the narrow context rather than the sidebar
+   scaled down: one horizontally scrollable row of the same targets, pinned under
+   the site header so it stays reachable deep into the page. Hidden above 900px,
+   so the sidebar stays the single navigation in the accessibility tree on
+   desktop and the two never both appear. `--invest-rail-top` tracks the sticky
+   site header's 72px min-height; it is the one place to change if that moves. */
+.sectionRail { display: none; }
+
+@media (max-width: 900px) {
+  .sectionRail {
+    /* 72px header min-height + its 1px bottom border. Measured at 73px. */
+    --invest-rail-top: 73px;
+    display: flex;
+    position: sticky;
+    top: var(--invest-rail-top);
+    z-index: 4;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    background: var(--home-paper);
+    border-bottom: 1px solid var(--home-rule);
+  }
+  .sectionRail::-webkit-scrollbar { display: none; }
+  .sectionRail a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    white-space: nowrap;
+    padding: 0 14px;
+    min-height: 44px;
+    border-right: 1px solid var(--home-rule);
+    color: var(--home-ink-muted);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: var(--invest-fs-label);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 140ms ease, background-color 140ms ease;
+  }
+  .sectionRail a:hover { color: var(--home-ink); background: var(--home-paper-alt); }
+  .sectionRail a svg { width: 15px; height: 15px; flex: 0 0 auto; }
+  .sectionRailPill {
+    font-family: var(--font-mono);
+    font-size: var(--invest-fs-micro);
+    letter-spacing: 0.02em;
+    border: 1px solid var(--home-rule);
+    border-radius: var(--radius-sm);
+    padding: 0 5px;
+    color: var(--home-ink-muted);
   }
 }
