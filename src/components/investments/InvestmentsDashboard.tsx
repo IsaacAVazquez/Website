@@ -105,11 +105,19 @@ export function InvestmentsDashboard({
         target !== filterInputRef.current;
       if (isEditable) return;
       e.preventDefault();
+      // StaticHeader binds Cmd/Ctrl+K on window as well, for the site-wide
+      // search overlay. Both listeners sat on window in the bubble phase, so
+      // registration order decided the winner and the header won: pressing the
+      // shortcut printed inside this filter opened site search on top of the
+      // dashboard instead. A capture listener on window runs before every
+      // bubble listener on window, so claiming the event here makes the badge
+      // beside the input tell the truth.
+      e.stopPropagation();
       filterInputRef.current?.focus();
       filterInputRef.current?.select();
     }
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    window.addEventListener("keydown", onKeyDown, true);
+    return () => window.removeEventListener("keydown", onKeyDown, true);
   }, []);
 
   const filteredHoldings = useMemo(() => {

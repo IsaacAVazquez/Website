@@ -1463,6 +1463,19 @@
   line-height: 1.45;
   color: var(--home-ink-muted);
 }
+/* Sits above the gauge so it is read before the score, not after it. Warning
+   tone rather than the accent, because it qualifies the reading rather than
+   offering an action. */
+.terminalScope :global(.invest-retire-sample-note) {
+  margin: 0 0 12px;
+  padding: 8px 12px;
+  border: 1px solid color-mix(in srgb, var(--home-warning) 34%, var(--home-rule));
+  background: color-mix(in srgb, var(--home-warning) 8%, var(--home-paper));
+  border-radius: var(--radius-sm);
+  font-size: var(--invest-fs-small);
+  line-height: 1.45;
+  color: var(--home-ink);
+}
 .terminalScope :global(.invest-retire-stats) {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1806,6 +1819,38 @@
   .terminalScope :global(.invest-search) { min-height: 44px; }
   .statsFoot :global(.invest-ghost) { min-height: 44px; }
   .terminalScope :global(.invest-retire-reset) { min-height: 44px; padding-block: 0; }
+
+  /* Research, edit and remove were opacity:0, revealed only by :hover and
+     :focus-within, neither of which a touch device has. They also sat in the
+     last column of a table wider than the phone viewport, so they were behind
+     a nested horizontal scroll as well as invisible. On a phone that made all
+     three actions unreachable, while the Research empty state was telling the
+     visitor to "Click Research on any holding above". Show them, and pin the
+     column to the right edge so reaching them costs no sideways scrolling. */
+  .terminalScope :global(.invest-row-actions) { opacity: 1; }
+
+  .terminalScope :global(.invest-holdings) thead th:last-child,
+  .terminalScope :global(.invest-holdings) tbody td:last-child {
+    position: sticky;
+    right: 0;
+    border-left: 1px solid var(--home-rule);
+  }
+  /* A sticky cell needs its own opaque fill or the columns it overlaps show
+     through it. These match the row underneath in each state. */
+  .terminalScope :global(.invest-holdings) tbody td:last-child {
+    background: var(--home-paper);
+  }
+  .terminalScope :global(.invest-holdings) tbody tr:hover td:last-child {
+    background: var(--home-paper-alt);
+  }
+  .terminalScope :global(.invest-holdings) thead th:last-child {
+    background: color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-paper));
+  }
+
+  /* 32px squares read fine under a mouse and sit under the touch floor. */
+  .terminalScope :global(.invest-holdings .invest-row-actions .invest-ghost) {
+    width: 44px; height: 44px; min-height: 44px;
+  }
 }
 
 /* ---- Mobile section rail -------------------------------------------------- */

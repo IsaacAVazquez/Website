@@ -85,6 +85,14 @@ export interface UseRetirementPlanReturn {
   /** True when the engine failed on the current inputs (not just still computing). */
   hasError: boolean;
   persistenceStatus: PersistenceStatus;
+  /**
+   * True while the plan is still the seeded example rather than anything the
+   * visitor entered. The engine computes a full verdict on the default plan,
+   * so without this the planner told a first-time visitor their money runs out
+   * at 79 under a panel captioned "Your numbers", about figures they had never
+   * seen. Goes false on the first edit and when a stored plan is hydrated.
+   */
+  isSampleScenario: boolean;
   updatePlan: (updates: Partial<RetirementPlanInput>) => void;
   updateAssumptions: (updates: Partial<RetirementAssumptions>) => void;
   updateAllocation: (updates: Partial<AllocationInput>) => void;
@@ -104,6 +112,7 @@ export function useRetirementPlan(seed?: RetirementSeed): UseRetirementPlanRetur
   const [plan, setPlan] = useState<RetirementPlanInput>(() => createDefaultPlan());
   const [debouncedPlan, setDebouncedPlan] = useState<RetirementPlanInput>(plan);
   const [ready, setReady] = useState(false);
+  const [isSampleScenario, setIsSampleScenario] = useState(true);
   const seedRef = useRef(seed);
 
   // Keep the latest seed in a ref for reset(), updated after render.
@@ -117,16 +126,35 @@ export function useRetirementPlan(seed?: RetirementSeed): UseRetirementPlanRetur
     const initial = stored ?? seedFreshPlan(seedRef.current);
     setPlan(initial);
     setDebouncedPlan(initial);
+    // A stored plan means this visitor has used the planner before, so the
+    // figures are theirs even though no edit has happened in this session.
+    if (stored) setIsSampleScenario(false);
     setReady(true);
   }, []);
+
+  // Every visitor-driven mutation goes through this rather than setPlan, so the
+  // sample flag flips on the first real edit. Hydrate and reset call setPlan
+  // directly, so neither is mistaken for the visitor entering something.
+  const editPlan = useCallback(
+    (updater: React.SetStateAction<RetirementPlanInput>) => {
+      setIsSampleScenario(false);
+      setPlan(updater);
+    },
+    [],
+  );
 
   // Persist + debounce the projection so typing stays responsive.
   useEffect(() => {
     if (!ready) return;
-    safeWrite(plan);
+    // Never write the untouched example to storage. Writing it meant the next
+    // visit hydrated a stored plan, concluded the visitor had entered these
+    // figures, and went back to calling seeded defaults "Your numbers" — so
+    // the sample framing would have shown on the first page view and never
+    // again. The debounce below still runs, so the example still computes.
+    if (!isSampleScenario) safeWrite(plan);
     const handle = setTimeout(() => setDebouncedPlan(plan), RECOMPUTE_DEBOUNCE_MS);
     return () => clearTimeout(handle);
-  }, [plan, ready]);
+  }, [plan, ready, isSampleScenario]);
 
   // Fast path — verdict, chart, and assumptions paint immediately. An engine
   // failure must be distinguishable from "still computing", or the UI shows a
@@ -175,65 +203,65 @@ export function useRetirementPlan(seed?: RetirementSeed): UseRetirementPlanRetur
   // ─── Mutators ──────────────────────────────────────────────────────────────
 
   const updatePlan = useCallback((updates: Partial<RetirementPlanInput>) => {
-    setPlan((prev) => ({ ...prev, ...updates }));
-  }, []);
+    editPlan((prev) => ({ ...prev, ...updates }));
+  }, [editPlan]);
 
   const updateAssumptions = useCallback((updates: Partial<RetirementAssumptions>) => {
-    setPlan((prev) => ({ ...prev, assumptions: { ...prev.assumptions, ...updates } }));
-  }, []);
+    editPlan((prev) => ({ ...prev, assumptions: { ...prev.assumptions, ...updates } }));
+  }, [editPlan]);
 
   const updateAllocation = useCallback((updates: Partial<AllocationInput>) => {
-    setPlan((prev) => ({ ...prev, allocation: { ...prev.allocation, ...updates } }));
-  }, []);
+    editPlan((prev) => ({ ...prev, allocation: { ...prev.allocation, ...updates } }));
+  }, [editPlan]);
 
   const updateOtherIncome = useCallback((updates: Partial<OtherIncomeInput>) => {
-    setPlan((prev) => ({ ...prev, otherIncome: { ...prev.otherIncome, ...updates } }));
-  }, []);
+    editPlan((prev) => ({ ...prev, otherIncome: { ...prev.otherIncome, ...updates } }));
+  }, [editPlan]);
 
   const addAccount = useCallback(() => {
-    setPlan((prev) => ({
+    editPlan((prev) => ({
       ...prev,
       accounts: [
         ...prev.accounts,
         { id: nextAccountId(), type: "taxable", balance: 0, annualContribution: 0, employerMatch: 0 },
       ],
     }));
-  }, []);
+  }, [editPlan]);
 
   const updateAccount = useCallback((id: string, updates: Partial<RetirementAccountInput>) => {
-    setPlan((prev) => ({
+    editPlan((prev) => ({
       ...prev,
       accounts: prev.accounts.map((a) => (a.id === id ? { ...a, ...updates } : a)),
     }));
-  }, []);
+  }, [editPlan]);
 
   const removeAccount = useCallback((id: string) => {
-    setPlan((prev) => ({ ...prev, accounts: prev.accounts.filter((a) => a.id !== id) }));
-  }, []);
+    editPlan((prev) => ({ ...prev, accounts: prev.accounts.filter((a) => a.id !== id) }));
+  }, [editPlan]);
 
   const addLumpyExpense = useCallback(() => {
-    setPlan((prev) => ({
+    editPlan((prev) => ({
       ...prev,
       lumpyExpenses: [
         ...prev.lumpyExpenses,
         { id: nextAccountId(), label: "One-time expense", amount: 10000, age: prev.retirementAge + 5 },
       ],
     }));
-  }, []);
+  }, [editPlan]);
 
   const updateLumpyExpense = useCallback((id: string, updates: Partial<LumpyExpense>) => {
-    setPlan((prev) => ({
+    editPlan((prev) => ({
       ...prev,
       lumpyExpenses: prev.lumpyExpenses.map((e) => (e.id === id ? { ...e, ...updates } : e)),
     }));
-  }, []);
+  }, [editPlan]);
 
   const removeLumpyExpense = useCallback((id: string) => {
-    setPlan((prev) => ({ ...prev, lumpyExpenses: prev.lumpyExpenses.filter((e) => e.id !== id) }));
-  }, []);
+    editPlan((prev) => ({ ...prev, lumpyExpenses: prev.lumpyExpenses.filter((e) => e.id !== id) }));
+  }, [editPlan]);
 
   const applyPortfolioBalance = useCallback((value: number) => {
-    setPlan((prev) => {
+    editPlan((prev) => {
       if (prev.accounts.length === 0) {
         return {
           ...prev,
@@ -247,12 +275,14 @@ export function useRetirementPlan(seed?: RetirementSeed): UseRetirementPlanRetur
         accounts: prev.accounts.map((a, i) => (i === 0 ? { ...a, balance: Math.round(value) } : a)),
       };
     });
-  }, []);
+  }, [editPlan]);
 
   const reset = useCallback(() => {
     const fresh = seedFreshPlan(seedRef.current);
     setPlan(fresh);
     setDebouncedPlan(fresh);
+    // Reset puts the seeded example back, so the verdict stops being theirs.
+    setIsSampleScenario(true);
   }, []);
 
   return {
@@ -262,6 +292,7 @@ export function useRetirementPlan(seed?: RetirementSeed): UseRetirementPlanRetur
     isComputing,
     hasError,
     persistenceStatus,
+    isSampleScenario,
     updatePlan,
     updateAssumptions,
     updateAllocation,

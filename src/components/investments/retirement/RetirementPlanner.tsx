@@ -20,7 +20,7 @@ interface Props {
 export function RetirementPlanner({ portfolioValue, seedAllocation }: Props) {
   const seed: RetirementSeed = { portfolioValue, allocation: seedAllocation };
   const controller = useRetirementPlan(seed);
-  const { result, ready, isComputing, hasError, persistenceStatus } = controller;
+  const { result, ready, isComputing, hasError, persistenceStatus, isSampleScenario } = controller;
 
   return (
     <section
@@ -61,7 +61,7 @@ export function RetirementPlanner({ portfolioValue, seedAllocation }: Props) {
         <div className="invest-retire-col-results">
           {ready && result ? (
             <>
-              <RetirementVerdict result={result} />
+              <RetirementVerdict result={result} isSampleScenario={isSampleScenario} />
               <RetirementProjectionChart result={result} />
               <RetirementLevers result={result} />
             </>
