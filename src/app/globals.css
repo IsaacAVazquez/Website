@@ -281,9 +281,17 @@
    * names for new code; --color-success/warning/error alias to them as part
    * of the legacy safety net above.
    */
-  --home-positive: #059669;
-  --home-warning: #D97706;
-  --home-negative: #DC2626;
+  /*
+   * Darkened 2026-08-07 so each clears 4.5:1 as text on every light surface it
+   * lands on. The originals (#059669, #D97706, #DC2626) measured 3.45, 2.92,
+   * and 4.43 against --home-paper and were failing wherever they carried text,
+   * most visibly on the best ball ADP deltas. Worst-case ratios now, across
+   * --home-paper, --home-paper-alt, and the signal-tinted panel: 4.95, 4.92,
+   * 4.98. Dark-mode values are untouched and already pass comfortably.
+   */
+  --home-positive: #047451;
+  --home-warning: #9A5404;
+  --home-negative: #C42222;
 
   /* Travel planner category tints (decorative icon chips only). */
   --travel-transit: #3B6EA5;
@@ -700,36 +708,31 @@
   justify-content: center;
 }
 
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 6px;
-  background: var(--neutral-900);
-  color: var(--neutral-50);
-  padding: 8px 16px;
-  text-decoration: none;
-  border-radius: 8px;
-  z-index: 1000;
-  font-weight: 600;
-  transition: top 0.3s ease;
-}
-
-.skip-link:focus {
-  top: 6px;
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+/*
+ * This MUST stay inside @layer utilities. Unlayered CSS outranks every cascade
+ * layer, so an unlayered .sr-only beats Tailwind's `focus:not-sr-only` (which
+ * lives in @layer utilities) regardless of specificity, and the skip link in
+ * layout.tsx then stays 1x1 and clipped even while focused. Inside the layer,
+ * `.focus\:not-sr-only:focus` wins on specificity the way it is supposed to.
+ */
+@layer utilities {
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    /*
+     * clip-path, not the legacy `clip`. Tailwind v4's `not-sr-only` resets
+     * clip-path and does not touch `clip`, so a rule using `clip` here would
+     * keep the focused skip link clipped to nothing even after every other
+     * property had been correctly overridden.
+     */
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
 }
 
 @layer components {
