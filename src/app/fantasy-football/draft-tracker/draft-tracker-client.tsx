@@ -141,6 +141,15 @@ export function DraftTrackerClient() {
     isActive: draftState.isActive,
   });
 
+  // The clock earns the signal accent from 15 seconds out. Waiting for expiry
+  // to change anything means the warning arrives after the pick is already late.
+  const clockUrgent = timerEnabled && !timer.isExpired && timer.secondsLeft <= 15;
+
+  // Undo measured 9,549px down the page on a phone, which is eleven screens to
+  // fix a mis-tap against a clock. It gets a fixed bar instead. Desktop keeps
+  // the Actions card, where the sticky rail already puts it within reach.
+  const showMobileActionBar = !showSetup && !rankingsUnavailable && !isDraftComplete;
+
   const userTeamName = userTeam?.teamName ?? `Team ${draftState.settings.userTeam}`;
   const bestAvailableCount = (snapshot?.overall ?? []).filter(
     (player) => !draftState.picks.some((pick) => pick.player.id === player.id)
@@ -209,7 +218,12 @@ export function DraftTrackerClient() {
       data-testid="fantasy-draft-tracker-shell"
       data-hydrated={isHydrated ? "true" : "false"}
     >
-      <div className="home-shell home-shell-wide home-section space-y-4 sm:space-y-5">
+      {/* Bottom padding clears the fixed mobile action bar below, so the last
+          rail card is not stranded underneath it. */}
+      <div
+        className="home-shell home-shell-wide home-section space-y-4 sm:space-y-5"
+        style={showMobileActionBar ? { paddingBottom: "calc(5.5rem + env(safe-area-inset-bottom))" } : undefined}
+      >
         <Breadcrumbs customItems={DRAFT_TRACKER_BREADCRUMBS} className="pt-2" />
         {persistenceError ? (
           <div
@@ -224,79 +238,159 @@ export function DraftTrackerClient() {
             <p className="mt-1" style={{ color: "var(--home-ink-muted)" }}>{persistenceError}</p>
           </div>
         ) : null}
+        {/*
+          Two headers, chosen by whether a draft is actually running. Before the
+          first pick the visitor is still deciding whether to use this, so the
+          headline and the pitch earn their space. Once picks are being logged
+          the visitor is on a clock, and the display headline plus a four-line
+          paragraph pushed the first "Log pick" 2.7 screens down on a phone. The
+          running header collapses to one line of live state so the board starts
+          in the first viewport.
+        */}
         <div className="space-y-4">
-          <div className="space-y-3">
-            <p className="home-kicker mb-0">Draft Assistant</p>
-            <h1
-              style={{
-                fontFamily: "var(--font-home-sans)",
-                fontSize: "clamp(2.15rem, 1.6rem + 2.75vw, 4.2rem)", // DESIGN.md headline step
-                fontWeight: 600,
-                letterSpacing: "-0.04em",
-                lineHeight: 0.98,
-                maxWidth: "18ch",
-              }}
-            >
-              Manual draft tracking that actually stays usable.
-            </h1>
-            <p className="max-w-[60ch] text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
-              Log every pick on the same published snapshot as the rankings, with your shared
-              watchlist, an advisory pick clock, multi-step undo, and steal/reach/run signals against
-              attributed mock-draft ADP. The Draft Outlook compares your roster against the room,
-              and the expected return calculator keeps your payout assumptions explicit.
-            </p>
-          </div>
+          {showSetup ? (
+            <>
+              <div className="space-y-3">
+                <h1
+                  style={{
+                    fontFamily: "var(--font-home-sans)",
+                    fontSize: "clamp(2.15rem, 1.6rem + 2.75vw, 4.2rem)", // DESIGN.md headline step
+                    fontWeight: 600,
+                    letterSpacing: "-0.04em",
+                    lineHeight: 0.98,
+                    maxWidth: "18ch",
+                  }}
+                >
+                  Manual draft tracking that actually stays usable.
+                </h1>
+                <p className="max-w-[60ch] text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
+                  Log every pick on the same published snapshot as the rankings, with your shared
+                  watchlist, an advisory pick clock, multi-step undo, and steal/reach/run signals against
+                  attributed mock-draft ADP. The Draft Outlook compares your roster against the room,
+                  and the expected return calculator keeps your payout assumptions explicit.
+                </p>
+              </div>
 
-          <div className="flex flex-wrap items-center gap-2 text-sm">
-            {[
-              metadata ? `${metadata.season} ${getFantasyWeekLabel(metadata.week)}` : "Loading snapshot",
-              `Source updated ${formatUpdatedAt(overallSliceMetadata?.updatedAt ?? metadata?.upstreamUpdatedAt)}`,
-              `Built ${formatUpdatedAt(metadata?.generatedAt)}`,
-              `${FANTASY_SCORING_LABELS[scoringKey]} scoring`,
-            ].map((label) => (
-              <span
-                key={label}
-                className="inline-flex items-center rounded-full border px-3 py-1.5 text-sm font-medium"
-                style={{
-                  borderColor: "var(--home-rule)",
-                  background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
-                }}
-              >
-                {label}
-              </span>
-            ))}
-            {timerEnabled && (
-              <span
-                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-semibold tabular-nums"
-                style={{
-                  borderColor: timer.isExpired
-                    ? "color-mix(in srgb, var(--home-warning) 40%, var(--home-rule))"
-                    : "var(--home-rule)",
-                  background: timer.isExpired
-                    ? "color-mix(in srgb, var(--home-warning) 16%, var(--home-paper))"
-                    : "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
-                }}
-                aria-live="off"
-              >
-                <Timer className="h-4 w-4" aria-hidden="true" />
-                {timer.isExpired ? "Time's up" : `${timer.secondsLeft}s on the clock`}
-              </span>
-            )}
-            <button
-              type="button"
-              onClick={() => setShowStats((open) => !open)}
-              aria-expanded={showStats}
-              aria-controls="draft-tracker-stats"
-              className="inline-flex min-h-touch items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-semibold"
-              style={ACTION_STYLE}
-            >
-              Draft at a glance
-              <ChevronDown
-                className="h-4 w-4 transition-transform"
-                style={{ transform: showStats ? "rotate(180deg)" : "none" }}
-              />
-            </button>
-          </div>
+              <div className="flex flex-wrap items-center gap-2 text-sm">
+                {[
+                  metadata ? `${metadata.season} ${getFantasyWeekLabel(metadata.week)}` : "Loading snapshot",
+                  `Source updated ${formatUpdatedAt(overallSliceMetadata?.updatedAt ?? metadata?.upstreamUpdatedAt)}`,
+                  `Built ${formatUpdatedAt(metadata?.generatedAt)}`,
+                  `${FANTASY_SCORING_LABELS[scoringKey]} scoring`,
+                ].map((label) => (
+                  <span
+                    key={label}
+                    className="inline-flex items-center rounded-full border px-3 py-1.5 text-sm font-medium"
+                    style={{
+                      borderColor: "var(--home-rule)",
+                      background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
+                    }}
+                  >
+                    {label}
+                  </span>
+                ))}
+                <button
+                  type="button"
+                  onClick={() => setShowStats((open) => !open)}
+                  aria-expanded={showStats}
+                  aria-controls="draft-tracker-stats"
+                  className="inline-flex min-h-touch items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-semibold"
+                  style={ACTION_STYLE}
+                >
+                  Draft at a glance
+                  <ChevronDown
+                    className="h-4 w-4 transition-transform"
+                    style={{ transform: showStats ? "rotate(180deg)" : "none" }}
+                  />
+                </button>
+              </div>
+            </>
+          ) : (
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div className="min-w-0">
+                <h1 className="truncate text-xl font-semibold sm:text-2xl" style={{ letterSpacing: "-0.02em" }}>
+                  {draftState.settings.leagueName?.trim() || "Draft assistant"}
+                </h1>
+                <p className="mt-1 text-sm" style={{ color: "var(--home-ink-muted)" }}>
+                  {isDraftComplete
+                    ? "Draft complete"
+                    : `Round ${draftState.currentRound} · Pick ${draftState.currentPick} of ${totalPicks} · ${currentTeamName} on the clock`}
+                </p>
+                {/* Freshness stays visible mid-draft. Knowing which snapshot the
+                    board came from is the credibility of the whole tool, so it
+                    survives the collapse as one muted line rather than four
+                    pills. */}
+                <p className="mt-0.5 text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+                  {FANTASY_SCORING_LABELS[scoringKey]} scoring · Source updated{" "}
+                  {formatUpdatedAt(overallSliceMetadata?.updatedAt ?? metadata?.upstreamUpdatedAt)}
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2">
+                {timerEnabled && (
+                  /*
+                    The clock used to be the fifth grey pill in a row of grey
+                    pills, and it only changed appearance once it had already
+                    expired, which is too late to act on. It takes the signal
+                    accent from 15 seconds out, which is the one place on this
+                    surface where the accent budget is genuinely earned.
+                  */
+                  <div
+                    role="timer"
+                    aria-live="off"
+                    aria-label={
+                      timer.isExpired
+                        ? "Pick clock expired"
+                        : `${timer.secondsLeft} seconds left on the pick clock`
+                    }
+                    className="inline-flex items-baseline gap-2 rounded-[var(--radius-lg)] border px-3 py-1.5"
+                    style={{
+                      borderColor: clockUrgent
+                        ? "color-mix(in srgb, var(--home-signal) 55%, var(--home-rule))"
+                        : "var(--home-rule)",
+                      background: clockUrgent
+                        ? "color-mix(in srgb, var(--home-signal) 12%, var(--home-paper))"
+                        : "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
+                    }}
+                  >
+                    <Timer
+                      className="h-3.5 w-3.5 self-center"
+                      aria-hidden="true"
+                      style={{ color: clockUrgent ? "var(--home-signal)" : "var(--home-ink-muted)" }}
+                    />
+                    <span
+                      className="text-3xl tabular-nums"
+                      style={{
+                        // Fragment Mono is weight 400 only, per the Honest Mono Rule.
+                        fontFamily: "var(--font-mono)",
+                        fontWeight: 400,
+                        color: clockUrgent ? "var(--home-signal)" : "var(--home-ink)",
+                      }}
+                    >
+                      {timer.isExpired ? 0 : timer.secondsLeft}
+                    </span>
+                    <span className="text-sm" style={{ color: "var(--home-ink-muted)" }}>
+                      s
+                    </span>
+                  </div>
+                )}
+                <button
+                  type="button"
+                  onClick={() => setShowStats((open) => !open)}
+                  aria-expanded={showStats}
+                  aria-controls="draft-tracker-stats"
+                  className="inline-flex min-h-touch items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-semibold"
+                  style={ACTION_STYLE}
+                >
+                  Draft at a glance
+                  <ChevronDown
+                    className="h-4 w-4 transition-transform"
+                    style={{ transform: showStats ? "rotate(180deg)" : "none" }}
+                  />
+                </button>
+              </div>
+            </div>
+          )}
         </div>
 
         {showStats && (
@@ -358,14 +452,6 @@ export function DraftTrackerClient() {
                     getTeamName={getTeamName}
                   />
                 )}
-                <article className="home-card p-5 sm:p-6 lg:hidden">
-                  <DraftValuePanel
-                    report={userDraftValue}
-                    headingId="redraft-mobile-draft-outlook-heading"
-                    calculatorValue={returnAssumptions}
-                    onCalculatorChange={setReturnAssumptions}
-                  />
-                </article>
                 <DraftBoard
                   players={snapshot?.overall ?? []}
                   snapshot={snapshot}
@@ -379,6 +465,21 @@ export function DraftTrackerClient() {
                   isDraftComplete={isDraftComplete}
                   userTeam={userTeam}
                 />
+                {/*
+                  Below the board on purpose. On a phone this panel used to sit
+                  above it, so the board opened almost a full screen down and
+                  the Outlook read as a verdict before there was anything to
+                  judge. On desktop the rail carries its own copy of this and
+                  this one is hidden, so ordering here only affects mobile.
+                */}
+                <article className="home-card p-5 sm:p-6 lg:hidden">
+                  <DraftValuePanel
+                    report={userDraftValue}
+                    headingId="redraft-mobile-draft-outlook-heading"
+                    calculatorValue={returnAssumptions}
+                    onCalculatorChange={setReturnAssumptions}
+                  />
+                </article>
               </>
             )}
           </div>
@@ -412,7 +513,10 @@ export function DraftTrackerClient() {
             )}
             <article className="home-card p-5 sm:p-6">
               <p className="home-kicker mb-1">Progress</p>
-              <h3 className="text-2xl font-semibold">
+              {/* text-lg, not text-2xl. The board's h2 is text-2xl, so an h3 at
+                  the same size announced a level change that was invisible on
+                  the page. */}
+              <h3 className="text-lg font-semibold">
                 {draftState.picks.length} of {totalPicks} picks logged
               </h3>
 
@@ -690,7 +794,49 @@ export function DraftTrackerClient() {
         boardTierCount={boardTierCount > 0 ? boardTierCount : undefined}
         onClose={() => setDetailPlayer(null)}
       />
-      <CompareTray resolvePlayer={(id) => playerLookup.get(id)} publishedRank={publishedDraftRank} />
+      {/* Hidden below sm, where the compare toggles that populate it are hidden
+          too, so the tray stopped charging phones a fixed 100px band for a
+          feature they cannot reach. That also leaves the bottom edge free for
+          the action bar below, so the two never overlap. */}
+      <div className="hidden sm:block">
+        <CompareTray resolvePlayer={(id) => playerLookup.get(id)} publishedRank={publishedDraftRank} />
+      </div>
+
+      {showMobileActionBar && (
+        <div
+          className="fixed inset-x-0 bottom-0 z-40 border-t px-4 pt-2.5 sm:hidden"
+          style={{
+            borderColor: "var(--home-rule)",
+            background: "color-mix(in srgb, var(--home-paper) 94%, var(--home-elev-mix))",
+            paddingBottom: "calc(0.625rem + env(safe-area-inset-bottom))",
+          }}
+        >
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={undoLastPick}
+              disabled={draftState.picks.length === 0}
+              aria-label={draftState.picks.length === 0 ? "Undo last pick (no picks yet)" : "Undo last pick"}
+              className="flex min-h-[48px] flex-1 items-center justify-center gap-2 rounded-full border px-4 text-sm font-semibold transition-[background-color,border-color,color,opacity] duration-200 disabled:cursor-not-allowed disabled:opacity-50"
+              style={ACTION_STYLE}
+            >
+              <Undo2 className="h-4 w-4" aria-hidden="true" />
+              Undo
+            </button>
+            <button
+              type="button"
+              onClick={redoLastPick}
+              disabled={!canRedo}
+              aria-label={canRedo ? "Redo the last undone pick" : "Redo (nothing to redo)"}
+              className="flex min-h-[48px] flex-1 items-center justify-center gap-2 rounded-full border px-4 text-sm font-semibold transition-[background-color,border-color,color,opacity] duration-200 disabled:cursor-not-allowed disabled:opacity-50"
+              style={ACTION_STYLE}
+            >
+              <Redo2 className="h-4 w-4" aria-hidden="true" />
+              Redo
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

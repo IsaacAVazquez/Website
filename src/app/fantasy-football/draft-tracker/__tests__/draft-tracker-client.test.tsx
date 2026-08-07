@@ -129,7 +129,14 @@ describe("DraftTrackerClient", () => {
     const { container } = render(<DraftTrackerClient />);
 
     expect(container.firstChild).toHaveClass("home-page");
-    expect(screen.getByRole("heading", { name: /Manual draft tracking that actually stays usable\./i })).toBeVisible();
+    // This fixture is a running draft (one pick logged, isActive), so the header
+    // is the compact live-state one. The pitch headline belongs to the setup
+    // state only, and must not be pushing the board down while a clock is going.
+    expect(screen.getByRole("heading", { level: 1, name: /Draft assistant/i })).toBeVisible();
+    expect(
+      screen.queryByRole("heading", { name: /Manual draft tracking that actually stays usable\./i })
+    ).not.toBeInTheDocument();
+    expect(screen.getByText(/Pick 2 of 150/i)).toBeVisible();
     expect(screen.getAllByText(/Source updated/i).length).toBeGreaterThan(0);
     expect(screen.getByRole("heading", { name: /Pick #2 on the clock/i })).toBeVisible();
     expect(screen.queryByText(/^ADP$/)).not.toBeInTheDocument();

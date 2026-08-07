@@ -245,11 +245,25 @@ export function DraftBoard({
                 );
               })}
             </div>
+            {/*
+              Announced, and no longer pill-shaped. This is a status line, but
+              it sat in a rounded-full border with the same paper tint as the
+              segmented toggle beside it, so it read as a button that did
+              nothing. It is also the one thing on a timed surface a screen
+              reader has to hear, and it had no live region at all.
+            */}
             <div
-              className="min-h-[40px] rounded-full border px-3 py-2 text-sm font-medium"
+              role="status"
+              aria-live="polite"
+              className="min-h-[40px] rounded-[var(--radius-md)] border px-3 py-2 text-sm font-medium"
               style={{
-                borderColor: "var(--home-rule)",
-                background: "color-mix(in srgb, var(--home-paper-alt) 52%, var(--home-elev-mix))",
+                borderColor: isUserPick
+                  ? "color-mix(in srgb, var(--home-signal) 55%, var(--home-rule))"
+                  : "var(--home-rule)",
+                background: isUserPick
+                  ? "color-mix(in srgb, var(--home-signal) 12%, var(--home-paper))"
+                  : "color-mix(in srgb, var(--home-paper-alt) 52%, var(--home-elev-mix))",
+                color: isUserPick ? "var(--home-signal)" : "var(--home-ink)",
               }}
             >
               {isUserPick ? "Your pick is live" : "Log the room's next selection"}
@@ -468,7 +482,7 @@ export function DraftBoard({
                               onClick={() => queue.toggle(player.id)}
                               aria-pressed={isQueued}
                               aria-label={isQueued ? `Remove ${player.name} from queue` : `Add ${player.name} to queue`}
-                              className="inline-flex h-9 w-9 items-center justify-center rounded-full border"
+                              className="inline-flex h-11 w-11 items-center justify-center rounded-full border"
                               style={
                                 isQueued
                                   ? {
@@ -487,7 +501,7 @@ export function DraftBoard({
                               aria-pressed={inCompare}
                               disabled={!inCompare && compare.isFull}
                               aria-label={inCompare ? `Remove ${player.name} from compare` : `Add ${player.name} to compare`}
-                              className="hidden h-9 w-9 items-center justify-center rounded-full border disabled:cursor-not-allowed disabled:opacity-45 sm:inline-flex"
+                              className="hidden h-11 w-11 items-center justify-center rounded-full border disabled:cursor-not-allowed disabled:opacity-45 sm:inline-flex"
                               style={
                                 inCompare
                                   ? { borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }
@@ -500,7 +514,7 @@ export function DraftBoard({
                               type="button"
                               onClick={() => onOpenDetail(player)}
                               aria-label={`Details for ${player.name}`}
-                              className="inline-flex h-9 w-9 items-center justify-center rounded-full border sm:hidden"
+                              className="inline-flex h-11 w-11 items-center justify-center rounded-full border sm:hidden"
                               style={{ borderColor: "var(--home-rule)", color: "var(--home-ink-muted)" }}
                             >
                               <Info size={15} aria-hidden="true" />
