@@ -135,10 +135,14 @@ function isFiniteNumber(value: unknown): value is number {
 /**
  * Deepest consensus rank that still stands in for a pick number. ADP is a pick and
  * consensus rank is a board position, and the two only agree near the top. Measured
- * against the current PPR snapshot they track within about five spots through rank
- * 150, then separate sharply: across ranks 151-250 the mean consensus rank is 195
- * while the mean ADP is 154. Past this cutoff a rank is not a pick, so treating it
- * as one turned every deep player into a large phantom reach.
+ * against the 2026-08-06 PPR snapshot, the mean absolute gap is about 12 spots
+ * through rank 150, then ADP compresses hard: across ranks 151-250 the mean
+ * consensus rank is 195 while the mean ADP is 154. Past this cutoff a rank is not a
+ * pick, so treating it as one turned every deep player into a large phantom reach.
+ *
+ * This is calibration against one snapshot, not a constant of nature. ADP compresses
+ * further as more real drafts land, so the honest cutoff moves through the preseason
+ * and nothing here detects that drift.
  */
 export const ECR_BASELINE_MAX_RANK = 150;
 
