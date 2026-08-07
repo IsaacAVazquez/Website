@@ -71,8 +71,25 @@ export interface BestBallStrategyProfile {
   rosterNeedWeight: number;
   adpValueWeight: number;
   concentrationPenalty: number;
+  /**
+   * Same-team players allowed before the concentration penalty starts. Underdog advance
+   * rates hold up through four or five players from one offense and fall off after that,
+   * so a tournament profile should not penalize the third player that forms a stack.
+   */
+  concentrationFloor: number;
   spikeWeekWeight: number;
-  week17Treatment: "tiebreaker" | "none";
+  /**
+   * Week 17 is the finals week and carries a larger share of entry value than the whole
+   * regular season, so tournament profiles score game stacks instead of only breaking ties.
+   */
+  gameStackWeight: number;
+  /**
+   * Weight on the positional tier cliff, meaning how much a thin tier with a real board gap
+   * behind it should pull a needed position forward. Superflex leans on this hardest because
+   * quarterback is the scarce position once the flex can start one.
+   */
+  scarcityWeight: number;
+  week17Treatment: "scored" | "tiebreaker" | "none";
 }
 
 /** Existing DraftPick values are structurally compatible with this smaller shape. */
@@ -150,6 +167,8 @@ export type BestBallRecommendationComponent =
   | "adpValue"
   | "rosterNeed"
   | "stackSchedule"
+  | "gameStack"
+  | "tierScarcity"
   | "byeRisk"
   | "concentrationRisk"
   | "spikeWeek";
@@ -165,6 +184,8 @@ export interface BestBallRecommendationComponents {
   adpValue: number;
   rosterNeed: number;
   stackSchedule: number;
+  gameStack: number;
+  tierScarcity: number;
   byeRisk: number;
   concentrationRisk: number;
   spikeWeek: number;

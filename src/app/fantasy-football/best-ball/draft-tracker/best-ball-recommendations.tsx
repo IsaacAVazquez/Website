@@ -6,6 +6,8 @@ const COMPONENT_LABELS: Record<keyof BestBallRecommendation["components"], strin
   adpValue: "Underdog ADP",
   rosterNeed: "Roster fit",
   stackSchedule: "Stack",
+  gameStack: "Week 17 game stack",
+  tierScarcity: "Tier cliff",
   byeRisk: "Bye overlap",
   concentrationRisk: "Team concentration",
   spikeWeek: "Weekly variance proxy",

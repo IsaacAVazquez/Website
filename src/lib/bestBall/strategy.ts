@@ -89,9 +89,11 @@ export function getAdaptiveRosterTargets(
   const currentRound = Number.isInteger(upcomingRound) && Number(upcomingRound) > 0
     ? Number(upcomingRound)
     : latestCompletedRound;
+  // Three-QB builds have beaten two-QB builds in four of the six Best Ball Mania years, and
+  // five or six RBs carry the best advance rates, so the standard target leans that way.
   const desired: Record<BestBallPosition, number> = isSuperflex
     ? { QB: 3.5, RB: 5, WR: 7, TE: 2.5 }
-    : { QB: 2.5, RB: 5.5, WR: 7.5, TE: 2.5 };
+    : { QB: 3, RB: 5, WR: 7.5, TE: 2.5 };
   const preferenceWeight: Record<BestBallPosition, number> = { QB: 1, RB: 1, WR: 1, TE: 1 };
   const positionReasons: Record<BestBallPosition, string> = {
     QB: "The range keeps enough weekly QB coverage without assuming a third QB is always required.",
@@ -102,7 +104,9 @@ export function getAdaptiveRosterTargets(
   const reasons: string[] = [];
 
   const earlyQb = picksThroughRound(picks, "QB", 6) >= 1;
-  const delayedQb = currentRound >= 9 && counts.QB === 0;
+  // Waiting on QB is the winning pattern rather than a problem to correct, so this only
+  // nudges once the useful QB window is genuinely closing rather than in the middle rounds.
+  const delayedQb = currentRound >= 13 && counts.QB === 0;
   if (earlyQb) {
     desired.QB = isSuperflex ? 3 : 2;
     preferenceWeight.QB = 25;
@@ -111,7 +115,8 @@ export function getAdaptiveRosterTargets(
   } else if (delayedQb) {
     desired.QB = searchSpace.QB.maximum;
     preferenceWeight.QB = 25;
-    positionReasons.QB = "No QB through Round 8 raises the preferred QB count for weekly coverage.";
+    positionReasons.QB =
+      "No QB through Round 12 raises the preferred QB count while startable QBs are still available.";
     reasons.push(positionReasons.QB);
   }
 

@@ -30,6 +30,11 @@ export function sortBestBallRankings(
   contest: BestBallContestId | BestBallContestPreset = DEFAULT_BEST_BALL_CONTEST_ID
 ): RankedBestBallPlayer[] {
   const preset = typeof contest === "string" ? getContestPreset(contest) : contest;
+  // Underdog ADP piles up at the last pick of the draft for everyone who goes undrafted, so an
+  // ADP at that floor carries no real market signal. Roughly a third of the snapshot sits there
+  // with consensus ranks as deep as 400, and trusting the floor ADP over ECR used to lift those
+  // players hundreds of spots up the board.
+  const undraftedAdpFloor = preset.rounds * preset.teams - 2;
   const eligible = players
     .map((player, sourceIndex) => ({ player, sourceIndex, ecr: getBestBallEcr(player) }))
     .filter(({ player, ecr }) => isBestBallPosition(player.position) && Number.isFinite(ecr));
@@ -38,7 +43,8 @@ export function sortBestBallRankings(
     .map(({ player, sourceIndex, ecr }) => {
       const isSuperflex = preset.format === "superflex";
       const hasSuperflexRank = isSuperflex && isFiniteNumber(player.superflexRank);
-      const hasUnderdogAdp = !isSuperflex && isFiniteNumber(player.adp);
+      const atUndraftedFloor = isFiniteNumber(player.adp) && Number(player.adp) >= undraftedAdpFloor;
+      const hasUnderdogAdp = !isSuperflex && isFiniteNumber(player.adp) && !atUndraftedFloor;
       const adjustedRank = hasSuperflexRank
         ? Number(player.superflexRank)
         : hasUnderdogAdp
@@ -59,7 +65,9 @@ export function sortBestBallRankings(
               ? "No separate Superflex consensus match is available, so the best ball rank is unchanged."
               : hasUnderdogAdp
                 ? `The current standard Underdog ADP is ${Number(player.adp).toFixed(1)}. The PPR best ball ECR is ${ecr}.`
-                : "No Underdog ADP match is available, so the board uses the PPR best ball ECR.",
+                : atUndraftedFloor
+                  ? `The Underdog ADP of ${Number(player.adp).toFixed(1)} sits at the undrafted floor, so the board uses the PPR best ball ECR of ${ecr} instead.`
+                  : "No Underdog ADP match is available, so the board uses the PPR best ball ECR.",
         sourceIndex,
       };
     })

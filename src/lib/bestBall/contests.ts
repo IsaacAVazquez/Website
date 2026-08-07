@@ -49,7 +49,7 @@ export const BEST_BALL_CONTESTS: Readonly<Record<BestBallContestId, BestBallCont
       name: "Best Ball Mania VII",
       shortName: "BBM VII",
       description:
-        "A playoff tournament profile that keeps the current room price first and uses Week 17 opponent correlation only to break close calls.",
+        "A playoff tournament profile that keeps the current room price first, scores completed Week 17 game stacks, and allows same team concentration up to four players before penalizing it.",
       aliases: ["bbm", "bbm7", "bbm-vii", "best-ball-mania", "best-ball-mania-7", "best-ball-mania-vii"],
       format: "tournament",
       strategyProfileId: "standard-tournament",
@@ -122,7 +122,7 @@ export const BEST_BALL_CONTESTS: Readonly<Record<BestBallContestId, BestBallCont
       name: "Superflex",
       shortName: "Superflex",
       description:
-        "A Superflex model for 12 teams and 18 rounds with a flex slot that can use a quarterback and an explicit quarterback scarcity adjustment.",
+        "A Superflex model for 12 teams and 18 rounds with a flex slot that can use a quarterback. The board order comes from a sourced Superflex consensus rather than a locally computed adjustment, and the heaviest positional tier cliff weight of any profile pulls thin quarterback tiers forward.",
       aliases: ["superflex", "super-flex", "sf", "sflex", "superflex-tournament"],
       format: "superflex",
       strategyProfileId: "superflex",
@@ -146,13 +146,16 @@ export const BEST_BALL_STRATEGY_PROFILES: Readonly<
 > = Object.freeze({
   "standard-tournament": {
     id: "standard-tournament",
-    correlationWeight: 3,
+    correlationWeight: 4,
     byeCoverageWeight: 2,
     rosterNeedWeight: 8,
     adpValueWeight: 1,
     concentrationPenalty: 2,
+    concentrationFloor: 4,
     spikeWeekWeight: 0,
-    week17Treatment: "tiebreaker",
+    gameStackWeight: 6,
+    scarcityWeight: 4,
+    week17Treatment: "scored",
   },
   eliminator: {
     id: "eliminator",
@@ -161,7 +164,10 @@ export const BEST_BALL_STRATEGY_PROFILES: Readonly<
     rosterNeedWeight: 10,
     adpValueWeight: 1,
     concentrationPenalty: 3,
+    concentrationFloor: 2,
     spikeWeekWeight: 0,
+    gameStackWeight: 0,
+    scarcityWeight: 4,
     week17Treatment: "none",
   },
   "weekly-winners": {
@@ -171,7 +177,10 @@ export const BEST_BALL_STRATEGY_PROFILES: Readonly<
     rosterNeedWeight: 8,
     adpValueWeight: 0.9,
     concentrationPenalty: 1.5,
+    concentrationFloor: 4,
     spikeWeekWeight: 5,
+    gameStackWeight: 0,
+    scarcityWeight: 3,
     week17Treatment: "none",
   },
   cumulative: {
@@ -181,7 +190,10 @@ export const BEST_BALL_STRATEGY_PROFILES: Readonly<
     rosterNeedWeight: 9,
     adpValueWeight: 1.1,
     concentrationPenalty: 2.5,
+    concentrationFloor: 3,
     spikeWeekWeight: 0,
+    gameStackWeight: 0,
+    scarcityWeight: 4,
     week17Treatment: "none",
   },
   superflex: {
@@ -191,7 +203,10 @@ export const BEST_BALL_STRATEGY_PROFILES: Readonly<
     rosterNeedWeight: 9,
     adpValueWeight: 1,
     concentrationPenalty: 2,
+    concentrationFloor: 3,
     spikeWeekWeight: 0,
+    gameStackWeight: 0,
+    scarcityWeight: 6,
     week17Treatment: "none",
   },
 });

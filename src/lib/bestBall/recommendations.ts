@@ -8,6 +8,7 @@ import { sortBestBallRankings } from "./rankings";
 import { getAdaptiveRosterTargets } from "./strategy";
 import type {
   BestBallPosition,
+  RankedBestBallPlayer,
   BestBallRecommendation,
   BestBallRecommendationComponents,
   BestBallRecommendationReason,
@@ -29,6 +30,72 @@ function isFiniteNumber(value: unknown): value is number {
 
 function isPassCatcher(player: Player): boolean {
   return player.position === "WR" || player.position === "TE";
+}
+
+function teamOf(player: Player): string {
+  return player.team.trim().toUpperCase();
+}
+
+/**
+ * Counts completed Week 17 game stacks, meaning one side of a Week 17 game supplies a QB
+ * and at least one of his pass catchers while the other side supplies any skill player.
+ * Both directions of a game can count, which is how a double stack scores twice.
+ */
+function countWeek17GameStacks(
+  players: readonly Player[],
+  week17Opponents: Readonly<Record<string, string>>
+): number {
+  const byTeam = new Map<string, Player[]>();
+  for (const player of players) {
+    const team = teamOf(player);
+    if (!team || team === "FA") continue;
+    byTeam.set(team, [...(byTeam.get(team) ?? []), player]);
+  }
+
+  let stacks = 0;
+  for (const [team, teamPlayers] of byTeam) {
+    const opponent = (week17Opponents[team] ?? "").trim().toUpperCase();
+    const opponentPlayers = opponent ? byTeam.get(opponent) : undefined;
+    if (!opponentPlayers || opponentPlayers.length === 0) continue;
+    const hasQb = teamPlayers.some((player) => player.position === "QB");
+    const hasPassCatcher = teamPlayers.some(isPassCatcher);
+    if (hasQb && hasPassCatcher) stacks += 1;
+  }
+  return stacks;
+}
+
+/**
+ * Scores how close a position is to a tier cliff. Urgency comes from how few players are left
+ * in the candidate's own tier, and magnitude comes from the board gap between the last player
+ * in that tier and the first player of the next one, so a thin tier that sits right next to the
+ * following tier does not read as scarce. Returns 0 when the snapshot has no tier for a player.
+ */
+function tierCliffSignal(
+  candidate: RankedBestBallPlayer,
+  available: readonly RankedBestBallPlayer[]
+): { value: number; remainingInTier: number; gap: number } {
+  const empty = { value: 0, remainingInTier: 0, gap: 0 };
+  const tier = candidate.tier;
+  if (!isFiniteNumber(tier) || tier <= 0) return empty;
+
+  const sameTier = available.filter((player) => player.tier === tier);
+  if (sameTier.length === 0) return empty;
+
+  const nextTier = available.find(
+    (player) => isFiniteNumber(player.tier) && Number(player.tier) > tier
+  );
+  // No next tier means this is the bottom tier on the board, which is an artifact of where the
+  // rankings stop rather than real scarcity, so it earns nothing.
+  if (!nextTier) return empty;
+
+  const lastInTier = sameTier[sameTier.length - 1];
+  const gap = nextTier.adjustedRank - lastInTier.adjustedRank;
+
+  // A tier with one player left is fully urgent; four or more left is not scarce at all.
+  const urgency = clamp((4 - sameTier.length) / 3, 0, 1);
+  const magnitude = clamp(gap / 12, 0, 1);
+
+  return { value: urgency * magnitude, remainingInTier: sameTier.length, gap };
 }
 
 function formsQbPassCatcherStack(candidate: Player, roster: readonly Player[]): number {
@@ -95,13 +162,23 @@ export function recommendBestBallPlayers({
   const earlyAdpMultiplier = 1.35 - draftProgress * 0.85;
   const hasContestAdp = preset.format !== "superflex";
 
+  // rankedPlayers is already board-sorted, so each position list stays in board order.
+  const availableByPosition = new Map<BestBallPosition, RankedBestBallPlayer[]>();
+  for (const ranked of rankedPlayers) {
+    if (draftedIds.has(ranked.id)) continue;
+    const position = ranked.position as BestBallPosition;
+    availableByPosition.set(position, [...(availableByPosition.get(position) ?? []), ranked]);
+  }
+
   const recommendations = rankedPlayers
     .filter((player) => !draftedIds.has(player.id))
     .map((player): BestBallRecommendation => {
       const ranking = rankById.get(player.id) ?? player;
       const position = player.position as BestBallPosition;
       const target = targets.targets[position];
-      const baseRank = roundScore(Math.max(0, (220 - ranking.adjustedRank) / 10));
+      // Not floored at zero. A hard floor collapsed every player past board rank 220 into the
+      // same score, which let roster need alone push deep bench players over far better ones.
+      const baseRank = roundScore(clamp((220 - ranking.adjustedRank) / 10, -8, 22));
 
       const adpDelta = hasContestAdp && isFiniteNumber(player.adp)
         ? currentPickNumber - player.adp
@@ -137,30 +214,44 @@ export function recommendBestBallPlayers({
       );
 
       const sameTeamCount = roster.filter(
-        (rosterPlayer) =>
-          rosterPlayer.team.trim().toUpperCase() === player.team.trim().toUpperCase()
+        (rosterPlayer) => teamOf(rosterPlayer) === teamOf(player)
       ).length;
       const concentrationRisk = roundScore(
-        -Math.max(0, sameTeamCount + 1 - 2) * profile.concentrationPenalty
+        -Math.max(0, sameTeamCount + 1 - profile.concentrationFloor) * profile.concentrationPenalty
       );
 
       const spikeSignal = spikeWeekSignal(player);
       const spikeWeek = roundScore(spikeSignal.value * profile.spikeWeekWeight);
 
-      const candidateTeam = player.team.trim().toUpperCase();
+      const candidateTeam = teamOf(player);
       const candidateOpponent = (week17Opponents[candidateTeam] ?? "").trim().toUpperCase();
       const week17Opponent =
-        profile.week17Treatment === "tiebreaker" && candidateOpponent
-          ? roster.filter(
-              (rosterPlayer) => rosterPlayer.team.trim().toUpperCase() === candidateOpponent
-            ).length
+        profile.week17Treatment !== "none" && candidateOpponent
+          ? roster.filter((rosterPlayer) => teamOf(rosterPlayer) === candidateOpponent).length
           : 0;
+
+      const gameStackDelta =
+        profile.week17Treatment === "scored" && profile.gameStackWeight > 0
+          ? countWeek17GameStacks([...roster, player], week17Opponents) -
+            countWeek17GameStacks(roster, week17Opponents)
+          : 0;
+      const gameStack = roundScore(gameStackDelta * profile.gameStackWeight);
+
+      // Scarcity only applies to a position the roster still needs, so a thin tier never
+      // argues for a fourth QB the build has no room to start.
+      const needsPosition = target.recommended > target.drafted;
+      const cliff = tierCliffSignal(ranking, availableByPosition.get(position) ?? []);
+      const tierScarcity = roundScore(
+        needsPosition ? cliff.value * profile.scarcityWeight : 0
+      );
 
       const components: BestBallRecommendationComponents = {
         baseRank,
         adpValue,
         rosterNeed,
         stackSchedule,
+        gameStack,
+        tierScarcity,
         byeRisk,
         concentrationRisk,
         spikeWeek,
@@ -198,6 +289,29 @@ export function recommendBestBallPlayers({
             stackMatches > 0
               ? `This pick forms ${stackMatches} same team QB and pass catcher connection${stackMatches === 1 ? "" : "s"}.`
               : "This pick does not add a same team QB and pass catcher connection.",
+        },
+        {
+          component: "gameStack",
+          score: gameStack,
+          detail:
+            profile.week17Treatment !== "scored"
+              ? "This contest profile does not score Week 17 game stacks."
+              : gameStackDelta > 0
+                ? `This pick completes a Week 17 game stack against ${candidateOpponent}, the finals week that carries the largest share of tournament value.`
+                : candidateOpponent
+                  ? `This pick does not complete a Week 17 game stack. The Week 17 opponent is ${candidateOpponent}.`
+                  : "No Week 17 opponent is known for this team, so no game stack score applies.",
+        },
+        {
+          component: "tierScarcity",
+          score: tierScarcity,
+          detail: !needsPosition
+            ? `The roster already has its target ${position} count, so no tier cliff applies.`
+            : cliff.remainingInTier === 0
+              ? "This snapshot has no tier for this player, so no tier cliff applies."
+              : cliff.value > 0
+                ? `${cliff.remainingInTier} player${cliff.remainingInTier === 1 ? " remains" : "s remain"} in this ${position} tier, and the next tier starts ${cliff.gap.toFixed(0)} board spots later.`
+                : `${cliff.remainingInTier} players remain in this ${position} tier, which is deep enough that no cliff applies.`,
         },
         {
           component: "byeRisk",

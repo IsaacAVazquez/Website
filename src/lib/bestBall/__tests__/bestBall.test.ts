@@ -97,7 +97,9 @@ describe("best ball contest catalog", () => {
     expect(eliminator.correlationWeight).toBeLessThan(tournament.correlationWeight);
     expect(eliminator.byeCoverageWeight).toBeGreaterThan(tournament.byeCoverageWeight);
     expect(weekly.spikeWeekWeight).toBeGreaterThan(0);
-    expect(tournament.week17Treatment).toBe("tiebreaker");
+    expect(tournament.week17Treatment).toBe("scored");
+    expect(tournament.gameStackWeight).toBeGreaterThan(0);
+    expect(tournament.concentrationFloor).toBeGreaterThan(eliminator.concentrationFloor);
     expect(cumulative.week17Treatment).toBe("none");
   });
 
@@ -198,7 +200,7 @@ describe("adaptive roster targets", () => {
       pick(player("early-te", "TE", 12), 4),
     ]);
     const delayed = getAdaptiveRosterTargets([
-      pick(player("late-wr", "WR", 80), 9),
+      pick(player("late-wr", "WR", 80), 13),
     ]);
 
     expect(early.recommended.QB).toBe(2);
@@ -206,7 +208,15 @@ describe("adaptive roster targets", () => {
     expect(delayed.recommended.QB).toBe(3);
     expect(delayed.recommended.TE).toBe(3);
     expect(early.reasons.join(" ")).toContain("early QB");
-    expect(delayed.reasons.join(" ")).toContain("No QB through Round 8");
+    expect(delayed.reasons.join(" ")).toContain("No QB through Round 12");
+  });
+
+  it("defaults to a three-QB standard build and does not panic on QB in the middle rounds", () => {
+    expect(getAdaptiveRosterTargets([]).recommended.QB).toBe(3);
+
+    // Zero QBs through Round 9 is the winning pattern, so no forced-QB reason should fire yet.
+    const middle = getAdaptiveRosterTargets([pick(player("r9-wr", "WR", 80), 9)], "bbm-vii", 9);
+    expect(middle.targets.QB.reason).not.toContain("raises the preferred QB count");
   });
 
   it("sets a higher Superflex QB floor", () => {
@@ -215,16 +225,16 @@ describe("adaptive roster targets", () => {
     expect(targets.recommended.QB).toBeGreaterThanOrEqual(3);
   });
 
-  it("uses the upcoming user round before a Round 9 pick", () => {
+  it("uses the upcoming user round before a Round 13 pick", () => {
     const targets = getAdaptiveRosterTargets(
-      [pick(player("round-eight-wr", "WR", 80), 8)],
+      [pick(player("round-twelve-wr", "WR", 80), 12)],
       "bbm-vii",
-      9
+      13
     );
 
-    expect(targets.currentRound).toBe(9);
+    expect(targets.currentRound).toBe(13);
     expect(targets.recommended.QB).toBe(3);
-    expect(targets.targets.QB.reason).toContain("No QB through Round 8");
+    expect(targets.targets.QB.reason).toContain("No QB through Round 12");
   });
 
   it("keeps completed picks and returns a feasible target after exceeding a normal maximum", () => {
@@ -327,6 +337,8 @@ describe("recommendation scorer", () => {
       "adpValue",
       "rosterNeed",
       "stackSchedule",
+      "gameStack",
+      "tierScarcity",
       "byeRisk",
       "concentrationRisk",
       "spikeWeek",
@@ -398,7 +410,107 @@ describe("recommendation scorer", () => {
     );
   });
 
-  it("uses Week 17 only as a tournament tiebreaker and omits it from cumulative scoring", () => {
+  it("keeps ranking deep players below shallow ones instead of flooring them at zero", () => {
+    const deep = player("deep-wr", "WR", 24, { team: "SEA", rankEcr: 340 });
+    const shallow = player("shallow-wr", "WR", 24, { team: "SEA", rankEcr: 230 });
+    const [best] = recommendBestBallPlayers({
+      players: [deep, shallow],
+      picks: [],
+      userTeamNumber: 1,
+      currentPickNumber: 150,
+    });
+
+    expect(best.player.id).toBe("shallow-wr");
+    // A hard zero floor made every player past rank 220 score identically.
+    const deepOnly = recommendBestBallPlayers({
+      players: [deep],
+      picks: [],
+      userTeamNumber: 1,
+      currentPickNumber: 150,
+    })[0];
+    expect(deepOnly.components.baseRank).toBeLessThan(0);
+  });
+
+  it("ignores an Underdog ADP sitting at the undrafted floor", () => {
+    // 18 rounds x 12 teams means an undrafted player lands at an ADP of about 216.
+    const floored = player("floor-wr", "WR", 24, { team: "SEA", rankEcr: 400, adp: 216 });
+    const genuine = player("real-wr", "WR", 24, { team: "SEA", rankEcr: 240, adp: 200 });
+    const [best] = recommendBestBallPlayers({
+      players: [floored, genuine],
+      picks: [],
+      userTeamNumber: 1,
+      currentPickNumber: 200,
+    });
+
+    expect(best.player.id).toBe("real-wr");
+  });
+
+  it("scores a tier cliff only when the next tier is a real board gap away", () => {
+    const roster = [pick(player("wr-filler", "WR", 5, { team: "SEA" }), 1)];
+    // One TE left in tier 2, with tier 3 starting far down the board.
+    const cliffTe = player("cliff-te", "TE", 40, { team: "GB", adp: 40, tier: 2 });
+    const farNextTier = player("next-te", "TE", 70, { team: "NYJ", adp: 70, tier: 3 });
+    // One TE left in tier 2, but tier 3 starts immediately after.
+    const flatTe = player("flat-te", "TE", 40, { team: "GB", adp: 40, tier: 2 });
+    const nearNextTier = player("near-te", "TE", 41, { team: "NYJ", adp: 41, tier: 3 });
+
+    const withCliff = recommendBestBallPlayers({
+      players: [cliffTe, farNextTier],
+      picks: roster,
+      userTeamNumber: 1,
+      currentPickNumber: 24,
+    }).find((r) => r.player.id === "cliff-te");
+    const withoutCliff = recommendBestBallPlayers({
+      players: [flatTe, nearNextTier],
+      picks: roster,
+      userTeamNumber: 1,
+      currentPickNumber: 24,
+    }).find((r) => r.player.id === "flat-te");
+
+    // The gap scales the score rather than gating it, so a one-spot gap stays small.
+    expect(withCliff?.components.tierScarcity).toBeGreaterThan(0);
+    expect(withoutCliff?.components.tierScarcity).toBeLessThan(
+      (withCliff?.components.tierScarcity ?? 0) / 4
+    );
+  });
+
+  it("scores a completed Week 17 game stack and ignores a bare bring-back", () => {
+    const stackedRoster = [rosterPick, pick(stackCandidate, 3, 1, 13)];
+    const opponents = { KC: "BUF", BUF: "KC" };
+
+    // Roster already holds the KC QB and a KC pass catcher, so the BUF pick completes the game.
+    const completesGame = recommendBestBallPlayers({
+      players: [week17Candidate],
+      picks: stackedRoster,
+      userTeamNumber: 1,
+      currentPickNumber: 36,
+      contestId: "bbm-vii",
+      week17Opponents: opponents,
+    })[0];
+    // Same pick with only a KC QB on the roster is a bring-back with no stack behind it.
+    const bareBringBack = recommendBestBallPlayers({
+      players: [week17Candidate],
+      picks: [rosterPick],
+      userTeamNumber: 1,
+      currentPickNumber: 36,
+      contestId: "bbm-vii",
+      week17Opponents: opponents,
+    })[0];
+    const eliminator = recommendBestBallPlayers({
+      players: [week17Candidate],
+      picks: stackedRoster,
+      userTeamNumber: 1,
+      currentPickNumber: 36,
+      contestId: "eliminator",
+      week17Opponents: opponents,
+    })[0];
+
+    expect(completesGame.components.gameStack).toBeGreaterThan(0);
+    expect(bareBringBack.components.gameStack).toBe(0);
+    expect(eliminator.components.gameStack).toBe(0);
+  });
+
+  it("does not score Week 17 without a stack and omits it from cumulative scoring", () => {
     const tournamentWithSchedule = recommendBestBallPlayers({
       players: [week17Candidate],
       picks: [rosterPick],
