@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "season": 2026,
-  "generatedAt": "2026-08-05T18:23:02.797Z",
+  "generatedAt": "2026-08-07T00:19:36.988Z",
   "players": [
     {
       "id": "fp-23133",
@@ -18,7 +18,7 @@
       "maxRank": 2,
       "byeWeek": 11,
       "ownership": 99.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 2,
       "superflexRank": 8
     },
@@ -37,7 +37,7 @@
       "maxRank": 3,
       "byeWeek": 6,
       "ownership": 99.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 1.1,
       "superflexRank": 7
     },
@@ -55,8 +55,8 @@
       "minRank": 2,
       "maxRank": 4,
       "byeWeek": 6,
-      "ownership": 99.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 99.3,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 3.1,
       "superflexRank": 9
     },
@@ -75,7 +75,7 @@
       "maxRank": 5,
       "byeWeek": 11,
       "ownership": 99.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 4,
       "superflexRank": 12
     },
@@ -94,7 +94,7 @@
       "maxRank": 7,
       "byeWeek": 11,
       "ownership": 99.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 5.5,
       "superflexRank": 13
     },
@@ -112,8 +112,8 @@
       "minRank": 6,
       "maxRank": 8,
       "byeWeek": 6,
-      "ownership": 99.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 99.3,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 7.1,
       "superflexRank": 15
     },
@@ -132,7 +132,7 @@
       "maxRank": 20,
       "byeWeek": 8,
       "ownership": 99.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 6.1,
       "superflexRank": 17
     },
@@ -151,8 +151,8 @@
       "maxRank": 14,
       "byeWeek": 13,
       "ownership": 99.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 8.1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 8,
       "superflexRank": 18
     },
     {
@@ -170,8 +170,8 @@
       "maxRank": 15,
       "byeWeek": 7,
       "ownership": 99.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 11.5,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 11.1,
       "superflexRank": 23
     },
     {
@@ -189,7 +189,7 @@
       "maxRank": 17,
       "byeWeek": 14,
       "ownership": 99.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 9.6,
       "superflexRank": 19
     },
@@ -208,8 +208,8 @@
       "maxRank": 16,
       "byeWeek": 6,
       "ownership": 98.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 16.1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 15.6,
       "superflexRank": 31
     },
     {
@@ -227,8 +227,8 @@
       "maxRank": 30,
       "byeWeek": 6,
       "ownership": 99.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 10.1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 10.4,
       "superflexRank": 21
     },
     {
@@ -245,10 +245,10 @@
       "minRank": 13,
       "maxRank": 18,
       "byeWeek": 7,
-      "ownership": 98.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 98.7,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 14.6,
-      "superflexRank": 34
+      "superflexRank": 35
     },
     {
       "id": "fp-23136",
@@ -265,8 +265,8 @@
       "maxRank": 18,
       "byeWeek": 6,
       "ownership": 99.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 18,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 18.3,
       "superflexRank": 33
     },
     {
@@ -283,10 +283,10 @@
       "minRank": 9,
       "maxRank": 31,
       "byeWeek": 13,
-      "ownership": 99.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 11.4,
-      "superflexRank": 26
+      "ownership": 99.2,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 11.8,
+      "superflexRank": 25
     },
     {
       "id": "fp-23163",
@@ -303,8 +303,8 @@
       "maxRank": 27,
       "byeWeek": 11,
       "ownership": 99.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 20.8,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 21.1,
       "superflexRank": 27
     },
     {
@@ -322,8 +322,8 @@
       "maxRank": 23,
       "byeWeek": 13,
       "ownership": 99.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 19.9,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 19.6,
       "superflexRank": 32
     },
     {
@@ -340,10 +340,10 @@
       "minRank": 13,
       "maxRank": 25,
       "byeWeek": 8,
-      "ownership": 99.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 99.2,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 22.7,
-      "superflexRank": 35
+      "superflexRank": 36
     },
     {
       "id": "fp-17240",
@@ -360,9 +360,9 @@
       "maxRank": 37,
       "byeWeek": 10,
       "ownership": 99.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 13.5,
-      "superflexRank": 29
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 13.6,
+      "superflexRank": 30
     },
     {
       "id": "fp-18218",
@@ -379,9 +379,9 @@
       "maxRank": 38,
       "byeWeek": 11,
       "ownership": 99.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 18.6,
-      "superflexRank": 30
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 18.7,
+      "superflexRank": 29
     },
     {
       "id": "fp-22963",
@@ -398,8 +398,8 @@
       "maxRank": 27,
       "byeWeek": 14,
       "ownership": 99.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 23.6,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 23.5,
       "superflexRank": 38
     },
     {
@@ -417,9 +417,9 @@
       "maxRank": 44,
       "byeWeek": 5,
       "ownership": 99.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 15.2,
-      "superflexRank": 40
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 15.1,
+      "superflexRank": 39
     },
     {
       "id": "fp-15514",
@@ -428,16 +428,16 @@
       "position": "RB",
       "averageRank": 23,
       "rankEcr": 23,
-      "rankAverage": 25.33,
-      "standardDeviation": 10.66,
+      "rankAverage": 25.83,
+      "standardDeviation": 10.7,
       "tier": 4,
       "positionRank": 12,
       "minRank": 16,
       "maxRank": 48,
       "byeWeek": 13,
       "ownership": 99.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 17.4,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 17.3,
       "superflexRank": 37
     },
     {
@@ -454,18 +454,37 @@
       "minRank": 16,
       "maxRank": 35,
       "byeWeek": 10,
-      "ownership": 97.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 27.3,
+      "ownership": 97.8,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 27.5,
       "superflexRank": 45
+    },
+    {
+      "id": "fp-22982",
+      "name": "Breece Hall",
+      "team": "NYJ",
+      "position": "RB",
+      "averageRank": 25,
+      "rankEcr": 25,
+      "rankAverage": 27.17,
+      "standardDeviation": 4.18,
+      "tier": 4,
+      "positionRank": 13,
+      "minRank": 24,
+      "maxRank": 36,
+      "byeWeek": 13,
+      "ownership": 97.6,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 29.6,
+      "superflexRank": 57
     },
     {
       "id": "fp-22936",
       "name": "Trey McBride",
       "team": "ARI",
       "position": "TE",
-      "averageRank": 25,
-      "rankEcr": 25,
+      "averageRank": 26,
+      "rankEcr": 26,
       "rankAverage": 27.5,
       "standardDeviation": 3.64,
       "tier": 4,
@@ -474,28 +493,9 @@
       "maxRank": 34,
       "byeWeek": 14,
       "ownership": 99.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 28.9,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 29.1,
       "superflexRank": 41
-    },
-    {
-      "id": "fp-22982",
-      "name": "Breece Hall",
-      "team": "NYJ",
-      "position": "RB",
-      "averageRank": 26,
-      "rankEcr": 26,
-      "rankAverage": 27.83,
-      "standardDeviation": 3.93,
-      "tier": 4,
-      "positionRank": 13,
-      "minRank": 24,
-      "maxRank": 36,
-      "byeWeek": 13,
-      "ownership": 97.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 29.3,
-      "superflexRank": 55
     },
     {
       "id": "fp-22739",
@@ -504,16 +504,16 @@
       "position": "RB",
       "averageRank": 27,
       "rankEcr": 27,
-      "rankAverage": 28,
-      "standardDeviation": 6.68,
+      "rankAverage": 28.17,
+      "standardDeviation": 6.59,
       "tier": 4,
       "positionRank": 14,
       "minRank": 19,
       "maxRank": 39,
       "byeWeek": 14,
-      "ownership": 96.8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 36.3,
+      "ownership": 96.7,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 36.2,
       "superflexRank": 61
     },
     {
@@ -530,8 +530,8 @@
       "minRank": 8,
       "maxRank": 49,
       "byeWeek": 5,
-      "ownership": 98.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 98.1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 25.1,
       "superflexRank": 42
     },
@@ -549,9 +549,9 @@
       "minRank": 18,
       "maxRank": 39,
       "byeWeek": 13,
-      "ownership": 97,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 30.9,
+      "ownership": 97.1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 30.1,
       "superflexRank": 48
     },
     {
@@ -561,16 +561,16 @@
       "position": "WR",
       "averageRank": 30,
       "rankEcr": 30,
-      "rankAverage": 32.5,
-      "standardDeviation": 9.36,
+      "rankAverage": 32.33,
+      "standardDeviation": 9.41,
       "tier": 5,
       "positionRank": 14,
       "minRank": 21,
       "maxRank": 49,
       "byeWeek": 8,
       "ownership": 98.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 29.9,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 30.3,
       "superflexRank": 44
     },
     {
@@ -588,9 +588,9 @@
       "maxRank": 45,
       "byeWeek": 11,
       "ownership": 98.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 32,
-      "superflexRank": 50
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 32.6,
+      "superflexRank": 49
     },
     {
       "id": "fp-17298",
@@ -607,8 +607,8 @@
       "maxRank": 38,
       "byeWeek": 7,
       "ownership": 99.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 35.4,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 36,
       "superflexRank": 1
     },
     {
@@ -618,17 +618,17 @@
       "position": "WR",
       "averageRank": 33,
       "rankEcr": 33,
-      "rankAverage": 34.5,
-      "standardDeviation": 10.34,
+      "rankAverage": 34.67,
+      "standardDeviation": 10.26,
       "tier": 5,
       "positionRank": 15,
       "minRank": 21,
       "maxRank": 54,
       "byeWeek": 5,
-      "ownership": 98,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 38.8,
-      "superflexRank": 52
+      "ownership": 97.8,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 39,
+      "superflexRank": 53
     },
     {
       "id": "fp-23062",
@@ -644,9 +644,9 @@
       "minRank": 24,
       "maxRank": 48,
       "byeWeek": 10,
-      "ownership": 96.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 32,
+      "ownership": 96.5,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 31.5,
       "superflexRank": 56
     },
     {
@@ -664,8 +664,8 @@
       "maxRank": 57,
       "byeWeek": 14,
       "ownership": 98.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 26.4,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 26.9,
       "superflexRank": 51
     },
     {
@@ -682,10 +682,10 @@
       "minRank": 22,
       "maxRank": 50,
       "byeWeek": 8,
-      "ownership": 98.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 28.7,
-      "superflexRank": 53
+      "ownership": 98.1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 25.9,
+      "superflexRank": 52
     },
     {
       "id": "fp-19211",
@@ -702,9 +702,9 @@
       "maxRank": 47,
       "byeWeek": 6,
       "ownership": 97.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 33.9,
-      "superflexRank": 49
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 34.2,
+      "superflexRank": 50
     },
     {
       "id": "fp-19790",
@@ -721,8 +721,8 @@
       "maxRank": 45,
       "byeWeek": 10,
       "ownership": 95.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 40.3,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 39,
       "superflexRank": 62
     },
     {
@@ -740,9 +740,9 @@
       "maxRank": 51,
       "byeWeek": 13,
       "ownership": 97.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 39.9,
-      "superflexRank": 57
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 40.1,
+      "superflexRank": 58
     },
     {
       "id": "fp-26122",
@@ -758,9 +758,9 @@
       "minRank": 30,
       "maxRank": 61,
       "byeWeek": 7,
-      "ownership": 95.8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 34.8,
+      "ownership": 95.7,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 34.7,
       "superflexRank": 60
     },
     {
@@ -778,8 +778,8 @@
       "maxRank": 56,
       "byeWeek": 11,
       "ownership": 98.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 40.8,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 41.1,
       "superflexRank": 54
     },
     {
@@ -797,8 +797,8 @@
       "maxRank": 52,
       "byeWeek": 7,
       "ownership": 95.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 44.1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 44.9,
       "superflexRank": 64
     },
     {
@@ -815,9 +815,9 @@
       "minRank": 33,
       "maxRank": 64,
       "byeWeek": 8,
-      "ownership": 95.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 39.6,
+      "ownership": 95.7,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 41.4,
       "superflexRank": 65
     },
     {
@@ -834,10 +834,10 @@
       "minRank": 38,
       "maxRank": 52,
       "byeWeek": 10,
-      "ownership": 93.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 44.3,
-      "superflexRank": 68
+      "ownership": 93.4,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 43.2,
+      "superflexRank": 67
     },
     {
       "id": "fp-17265",
@@ -853,9 +853,9 @@
       "minRank": 40,
       "maxRank": 59,
       "byeWeek": 7,
-      "ownership": 92.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 56.4,
+      "ownership": 92.8,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 55.8,
       "superflexRank": 79
     },
     {
@@ -873,9 +873,9 @@
       "maxRank": 57,
       "byeWeek": 8,
       "ownership": 92.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 46.3,
-      "superflexRank": 70
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 48.2,
+      "superflexRank": 71
     },
     {
       "id": "fp-17233",
@@ -892,8 +892,8 @@
       "maxRank": 74,
       "byeWeek": 13,
       "ownership": 99.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 55.1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 55.4,
       "superflexRank": 2
     },
     {
@@ -911,8 +911,8 @@
       "maxRank": 102,
       "byeWeek": 10,
       "ownership": 98.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 46.3,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 45.8,
       "superflexRank": 59
     },
     {
@@ -930,8 +930,8 @@
       "maxRank": 74,
       "byeWeek": 6,
       "ownership": 94.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 51.6,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 52.1,
       "superflexRank": 72
     },
     {
@@ -949,8 +949,8 @@
       "maxRank": 67,
       "byeWeek": 6,
       "ownership": 98,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 68.2,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 68.6,
       "superflexRank": 4
     },
     {
@@ -967,10 +967,10 @@
       "minRank": 37,
       "maxRank": 86,
       "byeWeek": 11,
-      "ownership": 93.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 53.2,
-      "superflexRank": 80
+      "ownership": 93.4,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 53.9,
+      "superflexRank": 81
     },
     {
       "id": "fp-23046",
@@ -986,9 +986,9 @@
       "minRank": 29,
       "maxRank": 76,
       "byeWeek": 11,
-      "ownership": 98.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 66.5,
+      "ownership": 98.6,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 66.9,
       "superflexRank": 3
     },
     {
@@ -1005,8 +1005,8 @@
       "minRank": 45,
       "maxRank": 65,
       "byeWeek": 8,
-      "ownership": 93.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 93.4,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 48.5,
       "superflexRank": 78
     },
@@ -1025,8 +1025,8 @@
       "maxRank": 79,
       "byeWeek": 11,
       "ownership": 97.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 50.9,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 51.3,
       "superflexRank": 66
     },
     {
@@ -1044,8 +1044,8 @@
       "maxRank": 70,
       "byeWeek": 9,
       "ownership": 92.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 59.3,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 59.5,
       "superflexRank": 87
     },
     {
@@ -1062,9 +1062,9 @@
       "minRank": 49,
       "maxRank": 75,
       "byeWeek": 8,
-      "ownership": 96.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 43.9,
+      "ownership": 96.5,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 43.4,
       "superflexRank": 69
     },
     {
@@ -1081,9 +1081,9 @@
       "minRank": 29,
       "maxRank": 83,
       "byeWeek": 7,
-      "ownership": 97.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 67.6,
+      "ownership": 97.4,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 67.9,
       "superflexRank": 5
     },
     {
@@ -1101,8 +1101,8 @@
       "maxRank": 78,
       "byeWeek": 11,
       "ownership": 91.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 57.2,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 57.3,
       "superflexRank": 77
     },
     {
@@ -1119,10 +1119,10 @@
       "minRank": 49,
       "maxRank": 72,
       "byeWeek": 10,
-      "ownership": 93.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 50.1,
-      "superflexRank": 76
+      "ownership": 93.8,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 49.6,
+      "superflexRank": 75
     },
     {
       "id": "fp-25981",
@@ -1139,9 +1139,9 @@
       "maxRank": 80,
       "byeWeek": 10,
       "ownership": 95.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 55.7,
-      "superflexRank": 75
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 55.5,
+      "superflexRank": 76
     },
     {
       "id": "fp-19275",
@@ -1158,8 +1158,8 @@
       "maxRank": 74,
       "byeWeek": 10,
       "ownership": 97.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 71.5,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 71.6,
       "superflexRank": 6
     },
     {
@@ -1176,9 +1176,9 @@
       "minRank": 43,
       "maxRank": 109,
       "byeWeek": 7,
-      "ownership": 90,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 51.4,
+      "ownership": 90.1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 49.7,
       "superflexRank": 83
     },
     {
@@ -1196,9 +1196,9 @@
       "maxRank": 71,
       "byeWeek": 13,
       "ownership": 98.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 63.8,
-      "superflexRank": 74
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 64.1,
+      "superflexRank": 73
     },
     {
       "id": "fp-27329",
@@ -1214,9 +1214,9 @@
       "minRank": 35,
       "maxRank": 85,
       "byeWeek": 11,
-      "ownership": 91.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 62.6,
+      "ownership": 91,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 62.2,
       "superflexRank": 85
     },
     {
@@ -1234,9 +1234,9 @@
       "maxRank": 91,
       "byeWeek": 11,
       "ownership": 93.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 53.5,
-      "superflexRank": 73
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 53.7,
+      "superflexRank": 74
     },
     {
       "id": "fp-25298",
@@ -1252,9 +1252,9 @@
       "minRank": 42,
       "maxRank": 80,
       "byeWeek": 11,
-      "ownership": 93.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 79.9,
+      "ownership": 93.4,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 79.2,
       "superflexRank": 86
     },
     {
@@ -1271,9 +1271,9 @@
       "minRank": 62,
       "maxRank": 74,
       "byeWeek": 8,
-      "ownership": 88.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 63.7,
+      "ownership": 88.6,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 64.1,
       "superflexRank": 105
     },
     {
@@ -1291,9 +1291,9 @@
       "maxRank": 93,
       "byeWeek": 10,
       "ownership": 91.8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 59.8,
-      "superflexRank": 81
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 59.9,
+      "superflexRank": 82
     },
     {
       "id": "fp-23791",
@@ -1310,9 +1310,9 @@
       "maxRank": 99,
       "byeWeek": 13,
       "ownership": 89.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 81.7,
-      "superflexRank": 94
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 81.5,
+      "superflexRank": 96
     },
     {
       "id": "fp-23106",
@@ -1329,8 +1329,8 @@
       "maxRank": 101,
       "byeWeek": 7,
       "ownership": 88,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 64.4,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 62.5,
       "superflexRank": 97
     },
     {
@@ -1347,8 +1347,8 @@
       "minRank": 67,
       "maxRank": 87,
       "byeWeek": 7,
-      "ownership": 89.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 89.6,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 85.7,
       "superflexRank": 14
     },
@@ -1366,37 +1366,56 @@
       "minRank": 62,
       "maxRank": 97,
       "byeWeek": 10,
-      "ownership": 93.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 72.1,
-      "superflexRank": 11
+      "ownership": 93,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 72.5,
+      "superflexRank": 10
+    },
+    {
+      "id": "fp-15600",
+      "name": "Dak Prescott",
+      "team": "DAL",
+      "position": "QB",
+      "averageRank": 73,
+      "rankEcr": 73,
+      "rankAverage": 76.83,
+      "standardDeviation": 16.62,
+      "tier": 7,
+      "positionRank": 9,
+      "minRank": 58,
+      "maxRank": 108,
+      "byeWeek": 14,
+      "ownership": 93.3,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 80.4,
+      "superflexRank": 16
     },
     {
       "id": "fp-18635",
       "name": "Justin Herbert",
       "team": "LAC",
       "position": "QB",
-      "averageRank": 73,
-      "rankEcr": 73,
+      "averageRank": 74,
+      "rankEcr": 74,
       "rankAverage": 77,
       "standardDeviation": 11.66,
       "tier": 7,
-      "positionRank": 9,
+      "positionRank": 10,
       "minRank": 58,
       "maxRank": 90,
       "byeWeek": 7,
       "ownership": 93.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 82.6,
-      "superflexRank": 10
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 82.8,
+      "superflexRank": 11
     },
     {
       "id": "fp-23064",
       "name": "Marvin Harrison Jr.",
       "team": "ARI",
       "position": "WR",
-      "averageRank": 74,
-      "rankEcr": 74,
+      "averageRank": 75,
+      "rankEcr": 75,
       "rankAverage": 77.33,
       "standardDeviation": 16.73,
       "tier": 7,
@@ -1404,18 +1423,18 @@
       "minRank": 65,
       "maxRank": 114,
       "byeWeek": 14,
-      "ownership": 89.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 88.6,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 68.4,
-      "superflexRank": 89
+      "superflexRank": 90
     },
     {
       "id": "fp-18219",
       "name": "DK Metcalf",
       "team": "PIT",
       "position": "WR",
-      "averageRank": 75,
-      "rankEcr": 75,
+      "averageRank": 76,
+      "rankEcr": 76,
       "rankAverage": 77.67,
       "standardDeviation": 12.35,
       "tier": 7,
@@ -1423,29 +1442,10 @@
       "minRank": 54,
       "maxRank": 90,
       "byeWeek": 9,
-      "ownership": 91.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 76.1,
-      "superflexRank": 93
-    },
-    {
-      "id": "fp-15600",
-      "name": "Dak Prescott",
-      "team": "DAL",
-      "position": "QB",
-      "averageRank": 76,
-      "rankEcr": 76,
-      "rankAverage": 77.67,
-      "standardDeviation": 17.17,
-      "tier": 7,
-      "positionRank": 10,
-      "minRank": 58,
-      "maxRank": 108,
-      "byeWeek": 14,
-      "ownership": 93.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 80.4,
-      "superflexRank": 16
+      "ownership": 91.8,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 76.2,
+      "superflexRank": 94
     },
     {
       "id": "fp-18705",
@@ -1462,36 +1462,17 @@
       "maxRank": 105,
       "byeWeek": 9,
       "ownership": 89.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 74.7,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 75.6,
       "superflexRank": 92
-    },
-    {
-      "id": "fp-23000",
-      "name": "Brian Thomas Jr.",
-      "team": "JAX",
-      "position": "WR",
-      "averageRank": 78,
-      "rankEcr": 78,
-      "rankAverage": 78.5,
-      "standardDeviation": 20.61,
-      "tier": 7,
-      "positionRank": 36,
-      "minRank": 55,
-      "maxRank": 106,
-      "byeWeek": 7,
-      "ownership": 88.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 62.3,
-      "superflexRank": 91
     },
     {
       "id": "fp-24209",
       "name": "Jaylen Warren",
       "team": "PIT",
       "position": "RB",
-      "averageRank": 79,
-      "rankEcr": 79,
+      "averageRank": 78,
+      "rankEcr": 78,
       "rankAverage": 78.67,
       "standardDeviation": 6.39,
       "tier": 7,
@@ -1500,9 +1481,28 @@
       "maxRank": 85,
       "byeWeek": 9,
       "ownership": 90.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 72.2,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 71.5,
       "superflexRank": 88
+    },
+    {
+      "id": "fp-23000",
+      "name": "Brian Thomas Jr.",
+      "team": "JAX",
+      "position": "WR",
+      "averageRank": 79,
+      "rankEcr": 79,
+      "rankAverage": 78.83,
+      "standardDeviation": 20.92,
+      "tier": 7,
+      "positionRank": 36,
+      "minRank": 55,
+      "maxRank": 106,
+      "byeWeek": 7,
+      "ownership": 87.8,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 62.5,
+      "superflexRank": 91
     },
     {
       "id": "fp-17253",
@@ -1511,17 +1511,17 @@
       "position": "WR",
       "averageRank": 80,
       "rankEcr": 80,
-      "rankAverage": 83.5,
-      "standardDeviation": 18.69,
+      "rankAverage": 84,
+      "standardDeviation": 19,
       "tier": 8,
       "positionRank": 37,
       "minRank": 53,
       "maxRank": 110,
       "byeWeek": 10,
-      "ownership": 88.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 83.6,
-      "superflexRank": 100
+      "ownership": 88,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 84.6,
+      "superflexRank": 101
     },
     {
       "id": "fp-22978",
@@ -1538,9 +1538,9 @@
       "maxRank": 93,
       "byeWeek": 6,
       "ownership": 95.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 91.6,
-      "superflexRank": 99
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 91.7,
+      "superflexRank": 98
     },
     {
       "id": "fp-22726",
@@ -1556,10 +1556,10 @@
       "minRank": 72,
       "maxRank": 111,
       "byeWeek": 11,
-      "ownership": 86.8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 76.4,
-      "superflexRank": 96
+      "ownership": 86.4,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 75.2,
+      "superflexRank": 95
     },
     {
       "id": "fp-16406",
@@ -1568,55 +1568,55 @@
       "position": "WR",
       "averageRank": 83,
       "rankEcr": 83,
-      "rankAverage": 86.17,
-      "standardDeviation": 12.33,
+      "rankAverage": 86.83,
+      "standardDeviation": 13.45,
       "tier": 8,
       "positionRank": 38,
       "minRank": 66,
-      "maxRank": 106,
+      "maxRank": 110,
       "byeWeek": 10,
-      "ownership": 85.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 90,
-      "superflexRank": 102
-    },
-    {
-      "id": "fp-23123",
-      "name": "Quentin Johnston",
-      "team": "LAC",
-      "position": "WR",
-      "averageRank": 84,
-      "rankEcr": 84,
-      "rankAverage": 88.5,
-      "standardDeviation": 24.95,
-      "tier": 8,
-      "positionRank": 39,
-      "minRank": 45,
-      "maxRank": 125,
-      "byeWeek": 7,
-      "ownership": 82.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 75.1,
-      "superflexRank": 107
+      "ownership": 85.2,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 90.4,
+      "superflexRank": 103
     },
     {
       "id": "fp-25420",
       "name": "Makai Lemon",
       "team": "PHI",
       "position": "WR",
-      "averageRank": 85,
-      "rankEcr": 85,
+      "averageRank": 84,
+      "rankEcr": 84,
       "rankAverage": 88.5,
       "standardDeviation": 18.9,
       "tier": 8,
-      "positionRank": 40,
+      "positionRank": 39,
       "minRank": 72,
       "maxRank": 126,
       "byeWeek": 10,
-      "ownership": 87.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 73,
-      "superflexRank": 115
+      "ownership": 87.4,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 74,
+      "superflexRank": 116
+    },
+    {
+      "id": "fp-23123",
+      "name": "Quentin Johnston",
+      "team": "LAC",
+      "position": "WR",
+      "averageRank": 85,
+      "rankEcr": 85,
+      "rankAverage": 88.67,
+      "standardDeviation": 25.2,
+      "tier": 8,
+      "positionRank": 40,
+      "minRank": 45,
+      "maxRank": 126,
+      "byeWeek": 7,
+      "ownership": 81.9,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 74.7,
+      "superflexRank": 108
     },
     {
       "id": "fp-26148",
@@ -1632,28 +1632,47 @@
       "minRank": 76,
       "maxRank": 107,
       "byeWeek": 5,
-      "ownership": 74.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 92.9,
-      "superflexRank": 124
+      "ownership": 74.7,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 90.4,
+      "superflexRank": 123
+    },
+    {
+      "id": "fp-23160",
+      "name": "Jaxson Dart",
+      "team": "NYG",
+      "position": "QB",
+      "averageRank": 87,
+      "rankEcr": 87,
+      "rankAverage": 92.17,
+      "standardDeviation": 17.98,
+      "tier": 8,
+      "positionRank": 11,
+      "minRank": 62,
+      "maxRank": 111,
+      "byeWeek": 8,
+      "ownership": 94,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 101.3,
+      "superflexRank": 20
     },
     {
       "id": "fp-19797",
       "name": "Brock Purdy",
       "team": "SF",
       "position": "QB",
-      "averageRank": 87,
-      "rankEcr": 87,
-      "rankAverage": 90.67,
-      "standardDeviation": 15.89,
+      "averageRank": 88,
+      "rankEcr": 88,
+      "rankAverage": 92.67,
+      "standardDeviation": 15.93,
       "tier": 8,
-      "positionRank": 11,
+      "positionRank": 12,
       "minRank": 77,
       "maxRank": 124,
       "byeWeek": 8,
-      "ownership": 90.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 98.8,
+      "ownership": 90.3,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 100.2,
       "superflexRank": 22
     },
     {
@@ -1661,38 +1680,19 @@
       "name": "Wan'Dale Robinson",
       "team": "TEN",
       "position": "WR",
-      "averageRank": 88,
-      "rankEcr": 88,
-      "rankAverage": 91.83,
-      "standardDeviation": 12.07,
+      "averageRank": 89,
+      "rankEcr": 89,
+      "rankAverage": 93,
+      "standardDeviation": 13.01,
       "tier": 8,
       "positionRank": 41,
       "minRank": 78,
       "maxRank": 113,
       "byeWeek": 9,
-      "ownership": 76.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 111.8,
-      "superflexRank": 114
-    },
-    {
-      "id": "fp-23160",
-      "name": "Jaxson Dart",
-      "team": "NYG",
-      "position": "QB",
-      "averageRank": 89,
-      "rankEcr": 89,
-      "rankAverage": 92.17,
-      "standardDeviation": 17.98,
-      "tier": 8,
-      "positionRank": 12,
-      "minRank": 62,
-      "maxRank": 111,
-      "byeWeek": 8,
-      "ownership": 93.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 101.1,
-      "superflexRank": 20
+      "ownership": 75.9,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 111.4,
+      "superflexRank": 115
     },
     {
       "id": "fp-19647",
@@ -1708,10 +1708,10 @@
       "minRank": 73,
       "maxRank": 117,
       "byeWeek": 9,
-      "ownership": 89.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 87.5,
-      "superflexRank": 103
+      "ownership": 89.3,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 87.7,
+      "superflexRank": 102
     },
     {
       "id": "fp-24706",
@@ -1727,9 +1727,9 @@
       "minRank": 70,
       "maxRank": 127,
       "byeWeek": 13,
-      "ownership": 81.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 88.2,
+      "ownership": 81.4,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 86.3,
       "superflexRank": 112
     },
     {
@@ -1747,8 +1747,8 @@
       "maxRank": 126,
       "byeWeek": 10,
       "ownership": 86,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 86.5,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 87,
       "superflexRank": 109
     },
     {
@@ -1765,10 +1765,10 @@
       "minRank": 84,
       "maxRank": 113,
       "byeWeek": 11,
-      "ownership": 95,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 103.9,
-      "superflexRank": 101
+      "ownership": 94.9,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 103.7,
+      "superflexRank": 99
     },
     {
       "id": "fp-19792",
@@ -1784,10 +1784,10 @@
       "minRank": 66,
       "maxRank": 119,
       "byeWeek": 5,
-      "ownership": 88.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 82.3,
-      "superflexRank": 98
+      "ownership": 88.1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 84.5,
+      "superflexRank": 100
     },
     {
       "id": "fp-19278",
@@ -1804,8 +1804,8 @@
       "maxRank": 125,
       "byeWeek": 9,
       "ownership": 87,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 99.2,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 98.6,
       "superflexRank": 106
     },
     {
@@ -1822,10 +1822,10 @@
       "minRank": 78,
       "maxRank": 107,
       "byeWeek": 5,
-      "ownership": 91.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 94.7,
-      "superflexRank": 24
+      "ownership": 90.8,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 95.6,
+      "superflexRank": 26
     },
     {
       "id": "fp-25333",
@@ -1834,17 +1834,17 @@
       "position": "WR",
       "averageRank": 97,
       "rankEcr": 97,
-      "rankAverage": 96.17,
-      "standardDeviation": 22.02,
+      "rankAverage": 96.67,
+      "standardDeviation": 22.71,
       "tier": 8,
       "positionRank": 44,
       "minRank": 68,
-      "maxRank": 126,
+      "maxRank": 129,
       "byeWeek": 14,
-      "ownership": 85.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 96,
-      "superflexRank": 108
+      "ownership": 84.8,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 94,
+      "superflexRank": 107
     },
     {
       "id": "fp-27050",
@@ -1860,67 +1860,67 @@
       "minRank": 76,
       "maxRank": 114,
       "byeWeek": 11,
-      "ownership": 94,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 102.4,
-      "superflexRank": 95
-    },
-    {
-      "id": "fp-23107",
-      "name": "Jordan Addison",
-      "team": "MIN",
-      "position": "WR",
-      "averageRank": 99,
-      "rankEcr": 99,
-      "rankAverage": 98,
-      "standardDeviation": 22.41,
-      "tier": 8,
-      "positionRank": 45,
-      "minRank": 56,
-      "maxRank": 119,
-      "byeWeek": 6,
-      "ownership": 83.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 88.5,
-      "superflexRank": 118
+      "ownership": 94.1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 102.3,
+      "superflexRank": 93
     },
     {
       "id": "fp-11594",
       "name": "Travis Kelce",
       "team": "KC",
       "position": "TE",
-      "averageRank": 100,
-      "rankEcr": 100,
-      "rankAverage": 98.17,
-      "standardDeviation": 14.53,
+      "averageRank": 99,
+      "rankEcr": 99,
+      "rankAverage": 97.5,
+      "standardDeviation": 13.96,
       "tier": 8,
       "positionRank": 9,
       "minRank": 77,
       "maxRank": 121,
       "byeWeek": 5,
       "ownership": 89.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 121.1,
-      "superflexRank": 117
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 121.4,
+      "superflexRank": 113
     },
     {
       "id": "fp-22910",
       "name": "Bo Nix",
       "team": "DEN",
       "position": "QB",
-      "averageRank": 101,
-      "rankEcr": 101,
-      "rankAverage": 99,
-      "standardDeviation": 8.81,
+      "averageRank": 100,
+      "rankEcr": 100,
+      "rankAverage": 97.83,
+      "standardDeviation": 9.32,
       "tier": 8,
       "positionRank": 14,
       "minRank": 83,
       "maxRank": 112,
       "byeWeek": 10,
       "ownership": 87.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 107,
-      "superflexRank": 25
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 106.6,
+      "superflexRank": 24
+    },
+    {
+      "id": "fp-23107",
+      "name": "Jordan Addison",
+      "team": "MIN",
+      "position": "WR",
+      "averageRank": 101,
+      "rankEcr": 101,
+      "rankAverage": 98.17,
+      "standardDeviation": 22.55,
+      "tier": 8,
+      "positionRank": 45,
+      "minRank": 56,
+      "maxRank": 119,
+      "byeWeek": 6,
+      "ownership": 83.4,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 88.9,
+      "superflexRank": 117
     },
     {
       "id": "fp-16499",
@@ -1937,47 +1937,47 @@
       "maxRank": 120,
       "byeWeek": 8,
       "ownership": 92.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 113.6,
-      "superflexRank": 116
-    },
-    {
-      "id": "fp-23019",
-      "name": "Xavier Worthy",
-      "team": "KC",
-      "position": "WR",
-      "averageRank": 103,
-      "rankEcr": 103,
-      "rankAverage": 100.33,
-      "standardDeviation": 26.29,
-      "tier": 8,
-      "positionRank": 46,
-      "minRank": 61,
-      "maxRank": 149,
-      "byeWeek": 5,
-      "ownership": 72.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 98.8,
-      "superflexRank": 130
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 114.8,
+      "superflexRank": 119
     },
     {
       "id": "fp-18598",
       "name": "Jakobi Meyers",
       "team": "JAX",
       "position": "WR",
-      "averageRank": 104,
-      "rankEcr": 104,
+      "averageRank": 103,
+      "rankEcr": 103,
       "rankAverage": 103.83,
       "standardDeviation": 22.81,
       "tier": 8,
-      "positionRank": 47,
+      "positionRank": 46,
       "minRank": 71,
       "maxRank": 137,
       "byeWeek": 7,
-      "ownership": 81.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 107,
-      "superflexRank": 113
+      "ownership": 81.3,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 108.3,
+      "superflexRank": 118
+    },
+    {
+      "id": "fp-23019",
+      "name": "Xavier Worthy",
+      "team": "KC",
+      "position": "WR",
+      "averageRank": 104,
+      "rankEcr": 104,
+      "rankAverage": 105.33,
+      "standardDeviation": 30.21,
+      "tier": 8,
+      "positionRank": 47,
+      "minRank": 61,
+      "maxRank": 149,
+      "byeWeek": 5,
+      "ownership": 71.8,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 100.7,
+      "superflexRank": 130
     },
     {
       "id": "fp-27131",
@@ -1993,9 +1993,9 @@
       "minRank": 96,
       "maxRank": 116,
       "byeWeek": 10,
-      "ownership": 84.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 96.3,
+      "ownership": 84.1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 97,
       "superflexRank": 111
     },
     {
@@ -2012,10 +2012,10 @@
       "minRank": 88,
       "maxRank": 127,
       "byeWeek": 6,
-      "ownership": 77.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 109.8,
-      "superflexRank": 36
+      "ownership": 77.8,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 109.7,
+      "superflexRank": 34
     },
     {
       "id": "fp-25247",
@@ -2032,9 +2032,9 @@
       "maxRank": 142,
       "byeWeek": 7,
       "ownership": 78.8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 126.5,
-      "superflexRank": 125
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 126.4,
+      "superflexRank": 126
     },
     {
       "id": "fp-9451",
@@ -2050,9 +2050,9 @@
       "minRank": 69,
       "maxRank": 124,
       "byeWeek": 11,
-      "ownership": 91.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 106.1,
+      "ownership": 91.6,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 106,
       "superflexRank": 28
     },
     {
@@ -2069,37 +2069,18 @@
       "minRank": 92,
       "maxRank": 144,
       "byeWeek": 11,
-      "ownership": 82.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 90.6,
+      "ownership": 82,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 90.7,
       "superflexRank": 110
-    },
-    {
-      "id": "fp-27077",
-      "name": "Jayden Higgins",
-      "team": "HOU",
-      "position": "WR",
-      "averageRank": 110,
-      "rankEcr": 110,
-      "rankAverage": 111.17,
-      "standardDeviation": 18.12,
-      "tier": 9,
-      "positionRank": 48,
-      "minRank": 79,
-      "maxRank": 136,
-      "byeWeek": 8,
-      "ownership": 48,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 123.1,
-      "superflexRank": 132
     },
     {
       "id": "fp-19245",
       "name": "J.K. Dobbins",
       "team": "DEN",
       "position": "RB",
-      "averageRank": 111,
-      "rankEcr": 111,
+      "averageRank": 110,
+      "rankEcr": 110,
       "rankAverage": 112,
       "standardDeviation": 35.42,
       "tier": 9,
@@ -2107,10 +2088,29 @@
       "minRank": 72,
       "maxRank": 171,
       "byeWeek": 10,
-      "ownership": 86.8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 98,
+      "ownership": 86.7,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 96.7,
       "superflexRank": 104
+    },
+    {
+      "id": "fp-27077",
+      "name": "Jayden Higgins",
+      "team": "HOU",
+      "position": "WR",
+      "averageRank": 111,
+      "rankEcr": 111,
+      "rankAverage": 112.17,
+      "standardDeviation": 18.69,
+      "tier": 9,
+      "positionRank": 48,
+      "minRank": 79,
+      "maxRank": 136,
+      "byeWeek": 8,
+      "ownership": 47.4,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 121.9,
+      "superflexRank": 132
     },
     {
       "id": "fp-23310",
@@ -2126,8 +2126,8 @@
       "minRank": 82,
       "maxRank": 131,
       "byeWeek": 10,
-      "ownership": 82,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 81,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "superflexRank": 120
     },
     {
@@ -2137,16 +2137,16 @@
       "position": "WR",
       "averageRank": 113,
       "rankEcr": 113,
-      "rankAverage": 113,
-      "standardDeviation": 19.44,
+      "rankAverage": 113.17,
+      "standardDeviation": 19.48,
       "tier": 9,
       "positionRank": 49,
       "minRank": 81,
       "maxRank": 136,
       "byeWeek": 11,
-      "ownership": 76.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 83.3,
+      "ownership": 76,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 81.7,
       "superflexRank": 122
     },
     {
@@ -2163,9 +2163,9 @@
       "minRank": 72,
       "maxRank": 152,
       "byeWeek": 7,
-      "ownership": 79.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 108.7,
+      "ownership": 79.8,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 109.1,
       "superflexRank": 121
     },
     {
@@ -2182,37 +2182,18 @@
       "minRank": 105,
       "maxRank": 133,
       "byeWeek": 6,
-      "ownership": 72.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 112.2,
-      "superflexRank": 39
-    },
-    {
-      "id": "fp-23794",
-      "name": "Romeo Doubs",
-      "team": "NE",
-      "position": "WR",
-      "averageRank": 116,
-      "rankEcr": 116,
-      "rankAverage": 117.33,
-      "standardDeviation": 9.76,
-      "tier": 9,
-      "positionRank": 50,
-      "minRank": 101,
-      "maxRank": 134,
-      "byeWeek": 11,
-      "ownership": 66.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 116.4,
-      "superflexRank": 134
+      "ownership": 72.3,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 112.9,
+      "superflexRank": 40
     },
     {
       "id": "fp-16673",
       "name": "Aaron Jones Sr.",
       "team": "MIN",
       "position": "RB",
-      "averageRank": 117,
-      "rankEcr": 117,
+      "averageRank": 116,
+      "rankEcr": 116,
       "rankAverage": 117.5,
       "standardDeviation": 22.26,
       "tier": 9,
@@ -2220,10 +2201,29 @@
       "minRank": 87,
       "maxRank": 159,
       "byeWeek": 6,
-      "ownership": 83.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 122.7,
-      "superflexRank": 123
+      "ownership": 83.4,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 123.4,
+      "superflexRank": 124
+    },
+    {
+      "id": "fp-23794",
+      "name": "Romeo Doubs",
+      "team": "NE",
+      "position": "WR",
+      "averageRank": 117,
+      "rankEcr": 117,
+      "rankAverage": 117.5,
+      "standardDeviation": 9.78,
+      "tier": 9,
+      "positionRank": 50,
+      "minRank": 101,
+      "maxRank": 134,
+      "byeWeek": 11,
+      "ownership": 65.9,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 116.5,
+      "superflexRank": 136
     },
     {
       "id": "fp-17237",
@@ -2239,9 +2239,9 @@
       "minRank": 100,
       "maxRank": 128,
       "byeWeek": 10,
-      "ownership": 61.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 118.4,
+      "ownership": 62,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 119.2,
       "superflexRank": 43
     },
     {
@@ -2259,8 +2259,8 @@
       "maxRank": 132,
       "byeWeek": 11,
       "ownership": 58.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 113.1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 113.7,
       "superflexRank": 46
     },
     {
@@ -2270,44 +2270,25 @@
       "position": "TE",
       "averageRank": 120,
       "rankEcr": 120,
-      "rankAverage": 120,
-      "standardDeviation": 16.18,
+      "rankAverage": 119.67,
+      "standardDeviation": 15.99,
       "tier": 9,
       "positionRank": 12,
       "minRank": 91,
       "maxRank": 134,
       "byeWeek": 10,
-      "ownership": 86.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 134.3,
+      "ownership": 86.4,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 134.7,
       "superflexRank": 129
-    },
-    {
-      "id": "fp-26403",
-      "name": "Jalen Coker",
-      "team": "CAR",
-      "position": "WR",
-      "averageRank": 121,
-      "rankEcr": 121,
-      "rankAverage": 123.83,
-      "standardDeviation": 12.32,
-      "tier": 9,
-      "positionRank": 51,
-      "minRank": 98,
-      "maxRank": 135,
-      "byeWeek": 5,
-      "ownership": 46.8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 128,
-      "superflexRank": 138
     },
     {
       "id": "fp-23096",
       "name": "Tyler Shough",
       "team": "NO",
       "position": "QB",
-      "averageRank": 122,
-      "rankEcr": 122,
+      "averageRank": 121,
+      "rankEcr": 121,
       "rankAverage": 123.83,
       "standardDeviation": 15.61,
       "tier": 9,
@@ -2315,10 +2296,29 @@
       "minRank": 103,
       "maxRank": 146,
       "byeWeek": 8,
-      "ownership": 51.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 123.1,
+      "ownership": 51.2,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 123.7,
       "superflexRank": 47
+    },
+    {
+      "id": "fp-26403",
+      "name": "Jalen Coker",
+      "team": "CAR",
+      "position": "WR",
+      "averageRank": 122,
+      "rankEcr": 122,
+      "rankAverage": 124,
+      "standardDeviation": 12.46,
+      "tier": 9,
+      "positionRank": 51,
+      "minRank": 98,
+      "maxRank": 135,
+      "byeWeek": 5,
+      "ownership": 46.7,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 127.5,
+      "superflexRank": 139
     },
     {
       "id": "fp-27316",
@@ -2334,10 +2334,10 @@
       "minRank": 92,
       "maxRank": 138,
       "byeWeek": 7,
-      "ownership": 74.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 118.7,
-      "superflexRank": 126
+      "ownership": 74.6,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 116.6,
+      "superflexRank": 125
     },
     {
       "id": "fp-22718",
@@ -2353,9 +2353,9 @@
       "minRank": 98,
       "maxRank": 157,
       "byeWeek": 14,
-      "ownership": 88.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 131.1,
+      "ownership": 88.8,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 131.8,
       "superflexRank": 128
     },
     {
@@ -2372,9 +2372,9 @@
       "minRank": 103,
       "maxRank": 182,
       "byeWeek": 6,
-      "ownership": 70.8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 111.1,
+      "ownership": 70.5,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 110.1,
       "superflexRank": 127
     },
     {
@@ -2384,16 +2384,16 @@
       "position": "TE",
       "averageRank": 126,
       "rankEcr": 126,
-      "rankAverage": 128,
-      "standardDeviation": 24.63,
+      "rankAverage": 127.83,
+      "standardDeviation": 24.31,
       "tier": 9,
       "positionRank": 14,
       "minRank": 100,
-      "maxRank": 175,
+      "maxRank": 174,
       "byeWeek": 13,
       "ownership": 82.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 125.8,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 126.4,
       "superflexRank": 131
     },
     {
@@ -2410,10 +2410,10 @@
       "minRank": 104,
       "maxRank": 195,
       "byeWeek": 6,
-      "ownership": 45.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 134.7,
-      "superflexRank": 58
+      "ownership": 44.9,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 135.5,
+      "superflexRank": 55
     },
     {
       "id": "fp-23781",
@@ -2429,10 +2429,10 @@
       "minRank": 87,
       "maxRank": 210,
       "byeWeek": 8,
-      "ownership": 85.8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 128.1,
-      "superflexRank": 137
+      "ownership": 85.7,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 127.8,
+      "superflexRank": 134
     },
     {
       "id": "fp-23748",
@@ -2448,10 +2448,10 @@
       "minRank": 101,
       "maxRank": 145,
       "byeWeek": 7,
-      "ownership": 65.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 126.5,
-      "superflexRank": 135
+      "ownership": 65.4,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 127,
+      "superflexRank": 138
     },
     {
       "id": "fp-26024",
@@ -2460,17 +2460,17 @@
       "position": "WR",
       "averageRank": 130,
       "rankEcr": 130,
-      "rankAverage": 135.17,
-      "standardDeviation": 18.8,
+      "rankAverage": 135.33,
+      "standardDeviation": 18.85,
       "tier": 9,
       "positionRank": 53,
       "minRank": 112,
       "maxRank": 162,
       "byeWeek": 11,
-      "ownership": 67.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 108.3,
-      "superflexRank": 141
+      "ownership": 67.1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 107.6,
+      "superflexRank": 143
     },
     {
       "id": "fp-23071",
@@ -2487,8 +2487,8 @@
       "maxRank": 178,
       "byeWeek": 8,
       "ownership": 40,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 144.5,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 145.1,
       "superflexRank": 63
     },
     {
@@ -2505,10 +2505,10 @@
       "minRank": 91,
       "maxRank": 120,
       "byeWeek": 11,
-      "ownership": 66.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 117.4,
-      "superflexRank": 139
+      "ownership": 66,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 118.1,
+      "superflexRank": 142
     },
     {
       "id": "fp-24687",
@@ -2517,17 +2517,17 @@
       "position": "WR",
       "averageRank": 133,
       "rankEcr": 133,
-      "rankAverage": 143.33,
-      "standardDeviation": 21.55,
+      "rankAverage": 142.5,
+      "standardDeviation": 21.05,
       "tier": 9,
       "positionRank": 55,
       "minRank": 118,
       "maxRank": 183,
       "byeWeek": 11,
       "ownership": 44.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 130.4,
-      "superflexRank": 145
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 130.3,
+      "superflexRank": 146
     },
     {
       "id": "fp-27339",
@@ -2536,17 +2536,17 @@
       "position": "WR",
       "averageRank": 134,
       "rankEcr": 134,
-      "rankAverage": 145,
-      "standardDeviation": 10.97,
+      "rankAverage": 144.67,
+      "standardDeviation": 10.75,
       "tier": 10,
       "positionRank": 56,
       "minRank": 122,
       "maxRank": 153,
       "byeWeek": 11,
-      "ownership": 36,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 155.5,
-      "superflexRank": 171
+      "ownership": 36.1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 152.8,
+      "superflexRank": 166
     },
     {
       "id": "fp-19562",
@@ -2555,44 +2555,25 @@
       "position": "TE",
       "averageRank": 135,
       "rankEcr": 135,
-      "rankAverage": 146.83,
-      "standardDeviation": 20.37,
+      "rankAverage": 146.67,
+      "standardDeviation": 20.2,
       "tier": 10,
       "positionRank": 16,
       "minRank": 116,
-      "maxRank": 168,
+      "maxRank": 167,
       "byeWeek": 8,
       "ownership": 46.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 156.3,
-      "superflexRank": 147
-    },
-    {
-      "id": "fp-23982",
-      "name": "Chig Okonkwo",
-      "team": "WAS",
-      "position": "TE",
-      "averageRank": 136,
-      "rankEcr": 136,
-      "rankAverage": 148.5,
-      "standardDeviation": 34.54,
-      "tier": 10,
-      "positionRank": 17,
-      "minRank": 108,
-      "maxRank": 203,
-      "byeWeek": 7,
-      "ownership": 44.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 140,
-      "superflexRank": 150
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 156.4,
+      "superflexRank": 148
     },
     {
       "id": "fp-22980",
       "name": "Tyrone Tracy Jr.",
       "team": "NYG",
       "position": "RB",
-      "averageRank": 137,
-      "rankEcr": 137,
+      "averageRank": 136,
+      "rankEcr": 136,
       "rankAverage": 148.67,
       "standardDeviation": 19.68,
       "tier": 10,
@@ -2600,48 +2581,67 @@
       "minRank": 130,
       "maxRank": 188,
       "byeWeek": 8,
-      "ownership": 40.8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 134.1,
+      "ownership": 40,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 134.4,
       "superflexRank": 133
+    },
+    {
+      "id": "fp-27520",
+      "name": "Woody Marks",
+      "team": "HOU",
+      "position": "RB",
+      "averageRank": 137,
+      "rankEcr": 137,
+      "rankAverage": 152,
+      "standardDeviation": 22.8,
+      "tier": 10,
+      "positionRank": 43,
+      "minRank": 115,
+      "maxRank": 184,
+      "byeWeek": 8,
+      "ownership": 53.9,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 141.5,
+      "superflexRank": 140
+    },
+    {
+      "id": "fp-23982",
+      "name": "Chig Okonkwo",
+      "team": "WAS",
+      "position": "TE",
+      "averageRank": 138,
+      "rankEcr": 138,
+      "rankAverage": 152.17,
+      "standardDeviation": 31.04,
+      "tier": 10,
+      "positionRank": 17,
+      "minRank": 110,
+      "maxRank": 203,
+      "byeWeek": 7,
+      "ownership": 44.2,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 139.6,
+      "superflexRank": 150
     },
     {
       "id": "fp-24172",
       "name": "Tyler Allgeier",
       "team": "ARI",
       "position": "RB",
-      "averageRank": 138,
-      "rankEcr": 138,
+      "averageRank": 139,
+      "rankEcr": 139,
       "rankAverage": 154.5,
       "standardDeviation": 34.67,
       "tier": 10,
-      "positionRank": 43,
+      "positionRank": 44,
       "minRank": 121,
       "maxRank": 229,
       "byeWeek": 14,
-      "ownership": 46.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 157.1,
-      "superflexRank": 140
-    },
-    {
-      "id": "fp-25345",
-      "name": "Brenton Strange",
-      "team": "JAX",
-      "position": "TE",
-      "averageRank": 139,
-      "rankEcr": 139,
-      "rankAverage": 155.67,
-      "standardDeviation": 21.42,
-      "tier": 10,
-      "positionRank": 18,
-      "minRank": 128,
-      "maxRank": 194,
-      "byeWeek": 7,
-      "ownership": 49.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 150.7,
-      "superflexRank": 148
+      "ownership": 46,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 155.1,
+      "superflexRank": 141
     },
     {
       "id": "fp-23153",
@@ -2650,35 +2650,54 @@
       "position": "TE",
       "averageRank": 140,
       "rankEcr": 140,
-      "rankAverage": 157.33,
-      "standardDeviation": 24,
+      "rankAverage": 155.5,
+      "standardDeviation": 26.81,
       "tier": 10,
-      "positionRank": 19,
-      "minRank": 123,
+      "positionRank": 18,
+      "minRank": 112,
       "maxRank": 188,
       "byeWeek": 6,
       "ownership": 21,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 178.7,
-      "superflexRank": 246
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 179.1,
+      "superflexRank": 237
+    },
+    {
+      "id": "fp-25345",
+      "name": "Brenton Strange",
+      "team": "JAX",
+      "position": "TE",
+      "averageRank": 141,
+      "rankEcr": 141,
+      "rankAverage": 155.67,
+      "standardDeviation": 21.42,
+      "tier": 10,
+      "positionRank": 19,
+      "minRank": 128,
+      "maxRank": 194,
+      "byeWeek": 7,
+      "ownership": 49.9,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 149.7,
+      "superflexRank": 149
     },
     {
       "id": "fp-16421",
       "name": "Alvin Kamara",
       "team": "NO",
       "position": "RB",
-      "averageRank": 141,
-      "rankEcr": 141,
+      "averageRank": 142,
+      "rankEcr": 142,
       "rankAverage": 157.5,
       "standardDeviation": 21.46,
       "tier": 10,
-      "positionRank": 44,
+      "positionRank": 45,
       "minRank": 129,
       "maxRank": 199,
       "byeWeek": 8,
-      "ownership": 53,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 164.5,
+      "ownership": 52.4,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 163.6,
       "superflexRank": 144
     },
     {
@@ -2686,65 +2705,65 @@
       "name": "Zach Charbonnet",
       "team": "SEA",
       "position": "RB",
-      "averageRank": 142,
-      "rankEcr": 142,
+      "averageRank": 143,
+      "rankEcr": 143,
       "rankAverage": 157.67,
       "standardDeviation": 18.39,
       "tier": 10,
-      "positionRank": 45,
+      "positionRank": 46,
       "minRank": 140,
       "maxRank": 192,
       "byeWeek": 11,
-      "ownership": 70.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 161.1,
-      "superflexRank": 151
+      "ownership": 70.4,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 161.6,
+      "superflexRank": 152
     },
     {
       "id": "fp-25360",
       "name": "Keaton Mitchell",
       "team": "LAC",
       "position": "RB",
-      "averageRank": 143,
-      "rankEcr": 143,
+      "averageRank": 144,
+      "rankEcr": 144,
       "rankAverage": 159.33,
       "standardDeviation": 57.03,
       "tier": 10,
-      "positionRank": 46,
+      "positionRank": 47,
       "minRank": 122,
       "maxRank": 285,
       "byeWeek": 7,
-      "ownership": 33.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 135.8,
-      "superflexRank": 156
+      "ownership": 33.5,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 134,
+      "superflexRank": 155
     },
     {
       "id": "fp-27102",
       "name": "Dylan Sampson",
       "team": "CLE",
       "position": "RB",
-      "averageRank": 144,
-      "rankEcr": 144,
+      "averageRank": 145,
+      "rankEcr": 145,
       "rankAverage": 159.83,
       "standardDeviation": 26.02,
       "tier": 10,
-      "positionRank": 47,
+      "positionRank": 48,
       "minRank": 121,
       "maxRank": 200,
       "byeWeek": 11,
-      "ownership": 24.8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 24.1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 171.9,
-      "superflexRank": 146
+      "superflexRank": 147
     },
     {
       "id": "fp-24755",
       "name": "Cam Ward",
       "team": "TEN",
       "position": "QB",
-      "averageRank": 145,
-      "rankEcr": 145,
+      "averageRank": 146,
+      "rankEcr": 146,
       "rankAverage": 161.5,
       "standardDeviation": 33.92,
       "tier": 10,
@@ -2753,27 +2772,27 @@
       "maxRank": 236,
       "byeWeek": 9,
       "ownership": 28.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 140.9,
-      "superflexRank": 67
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 142,
+      "superflexRank": 68
     },
     {
       "id": "fp-15561",
       "name": "Hunter Henry",
       "team": "NE",
       "position": "TE",
-      "averageRank": 146,
-      "rankEcr": 146,
-      "rankAverage": 162.83,
-      "standardDeviation": 20.81,
+      "averageRank": 147,
+      "rankEcr": 147,
+      "rankAverage": 162.67,
+      "standardDeviation": 20.61,
       "tier": 10,
       "positionRank": 20,
       "minRank": 133,
-      "maxRank": 188,
+      "maxRank": 187,
       "byeWeek": 11,
-      "ownership": 65.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 152.4,
+      "ownership": 65.5,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 152.8,
       "superflexRank": 153
     },
     {
@@ -2781,57 +2800,38 @@
       "name": "Oronde Gadsden II",
       "team": "LAC",
       "position": "TE",
-      "averageRank": 147,
-      "rankEcr": 147,
-      "rankAverage": 164,
-      "standardDeviation": 27.4,
+      "averageRank": 148,
+      "rankEcr": 148,
+      "rankAverage": 163.83,
+      "standardDeviation": 27.08,
       "tier": 10,
       "positionRank": 21,
       "minRank": 123,
-      "maxRank": 216,
+      "maxRank": 215,
       "byeWeek": 7,
-      "ownership": 49.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 150.8,
-      "superflexRank": 158
+      "ownership": 49.1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 153.1,
+      "superflexRank": 159
     },
     {
       "id": "fp-27320",
       "name": "Jonah Coleman",
       "team": "DEN",
       "position": "RB",
-      "averageRank": 148,
-      "rankEcr": 148,
+      "averageRank": 149,
+      "rankEcr": 149,
       "rankAverage": 164,
       "standardDeviation": 34.63,
       "tier": 10,
-      "positionRank": 48,
+      "positionRank": 49,
       "minRank": 137,
       "maxRank": 239,
       "byeWeek": 10,
       "ownership": 33.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 159.5,
-      "superflexRank": 160
-    },
-    {
-      "id": "fp-17349",
-      "name": "Dalton Schultz",
-      "team": "HOU",
-      "position": "TE",
-      "averageRank": 149,
-      "rankEcr": 149,
-      "rankAverage": 165,
-      "standardDeviation": 22.13,
-      "tier": 10,
-      "positionRank": 22,
-      "minRank": 143,
-      "maxRank": 211,
-      "byeWeek": 8,
-      "ownership": 29.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 168.4,
-      "superflexRank": 163
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 160.2,
+      "superflexRank": 156
     },
     {
       "id": "fp-26055",
@@ -2840,82 +2840,120 @@
       "position": "TE",
       "averageRank": 150,
       "rankEcr": 150,
-      "rankAverage": 165.5,
-      "standardDeviation": 34.1,
+      "rankAverage": 164.67,
+      "standardDeviation": 35.05,
       "tier": 10,
-      "positionRank": 23,
-      "minRank": 128,
+      "positionRank": 22,
+      "minRank": 123,
       "maxRank": 216,
       "byeWeek": 13,
-      "ownership": 64.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 160.5,
-      "superflexRank": 179
+      "ownership": 63.9,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 164.1,
+      "superflexRank": 173
+    },
+    {
+      "id": "fp-17349",
+      "name": "Dalton Schultz",
+      "team": "HOU",
+      "position": "TE",
+      "averageRank": 151,
+      "rankEcr": 151,
+      "rankAverage": 164.83,
+      "standardDeviation": 21.78,
+      "tier": 10,
+      "positionRank": 23,
+      "minRank": 143,
+      "maxRank": 210,
+      "byeWeek": 8,
+      "ownership": 29.2,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 168.3,
+      "superflexRank": 164
     },
     {
       "id": "fp-24333",
       "name": "Isiah Pacheco",
       "team": "DET",
       "position": "RB",
-      "averageRank": 151,
-      "rankEcr": 151,
-      "rankAverage": 167,
-      "standardDeviation": 14.25,
+      "averageRank": 152,
+      "rankEcr": 152,
+      "rankAverage": 167.33,
+      "standardDeviation": 14.08,
       "tier": 10,
-      "positionRank": 49,
+      "positionRank": 50,
       "minRank": 149,
       "maxRank": 189,
       "byeWeek": 6,
-      "ownership": 52.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 151.2,
-      "superflexRank": 152
+      "ownership": 51.9,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 152.2,
+      "superflexRank": 151
     },
     {
-      "id": "fp-28127",
-      "name": "Omar Cooper Jr.",
-      "team": "NYJ",
+      "id": "fp-13981",
+      "name": "Stefon Diggs",
+      "team": "WAS",
       "position": "WR",
-      "averageRank": 152,
-      "rankEcr": 152,
-      "rankAverage": 136.6,
-      "standardDeviation": 10.67,
+      "averageRank": 153,
+      "rankEcr": 153,
+      "rankAverage": 133,
+      "standardDeviation": 22.24,
       "tier": 10,
       "positionRank": 57,
-      "minRank": 122,
-      "maxRank": 153,
-      "byeWeek": 13,
-      "ownership": 39.8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 145,
-      "superflexRank": 172
+      "minRank": 94,
+      "maxRank": 163,
+      "byeWeek": 7,
+      "ownership": 55.5,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 125.4,
+      "superflexRank": 181
     },
     {
       "id": "fp-19201",
       "name": "Jerry Jeudy",
       "team": "CLE",
       "position": "WR",
-      "averageRank": 153,
-      "rankEcr": 153,
-      "rankAverage": 170.83,
-      "standardDeviation": 14.78,
+      "averageRank": 154,
+      "rankEcr": 154,
+      "rankAverage": 170,
+      "standardDeviation": 15,
       "tier": 10,
       "positionRank": 58,
       "minRank": 144,
       "maxRank": 194,
       "byeWeek": 11,
-      "ownership": 34.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 178.2,
-      "superflexRank": 164
+      "ownership": 34.7,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 178.8,
+      "superflexRank": 165
+    },
+    {
+      "id": "fp-28127",
+      "name": "Omar Cooper Jr.",
+      "team": "NYJ",
+      "position": "WR",
+      "averageRank": 155,
+      "rankEcr": 155,
+      "rankAverage": 137.6,
+      "standardDeviation": 10.13,
+      "tier": 10,
+      "positionRank": 59,
+      "minRank": 122,
+      "maxRank": 153,
+      "byeWeek": 13,
+      "ownership": 39.1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 145.4,
+      "superflexRank": 167
     },
     {
       "id": "fp-17236",
       "name": "Sam Darnold",
       "team": "SEA",
       "position": "QB",
-      "averageRank": 154,
-      "rankEcr": 154,
+      "averageRank": 156,
+      "rankEcr": 156,
       "rankAverage": 139.8,
       "standardDeviation": 6.68,
       "tier": 10,
@@ -2923,28 +2961,28 @@
       "minRank": 133,
       "maxRank": 152,
       "byeWeek": 11,
-      "ownership": 42.8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 142.2,
-      "superflexRank": 71
+      "ownership": 42.9,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 142.9,
+      "superflexRank": 70
     },
     {
       "id": "fp-22908",
       "name": "Tank Bigsby",
       "team": "PHI",
       "position": "RB",
-      "averageRank": 155,
-      "rankEcr": 155,
+      "averageRank": 157,
+      "rankEcr": 157,
       "rankAverage": 174.5,
       "standardDeviation": 32.55,
       "tier": 10,
-      "positionRank": 50,
+      "positionRank": 51,
       "minRank": 131,
       "maxRank": 219,
       "byeWeek": 10,
-      "ownership": 31.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 160.7,
+      "ownership": 31.3,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 158.7,
       "superflexRank": 154
     },
     {
@@ -2952,55 +2990,37 @@
       "name": "T.J. Hockenson",
       "team": "MIN",
       "position": "TE",
-      "averageRank": 156,
-      "rankEcr": 156,
-      "rankAverage": 175,
-      "standardDeviation": 21.95,
+      "averageRank": 158,
+      "rankEcr": 158,
+      "rankAverage": 174.83,
+      "standardDeviation": 21.82,
       "tier": 10,
       "positionRank": 24,
       "minRank": 143,
       "maxRank": 202,
       "byeWeek": 6,
       "ownership": 55.8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 170.5,
-      "superflexRank": 165
-    },
-    {
-      "id": "fp-13981",
-      "name": "Stefon Diggs",
-      "team": "FA",
-      "position": "WR",
-      "averageRank": 157,
-      "rankEcr": 157,
-      "rankAverage": 142.4,
-      "standardDeviation": 10.71,
-      "tier": 10,
-      "positionRank": 59,
-      "minRank": 132,
-      "maxRank": 163,
-      "ownership": 47.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 132.9,
-      "superflexRank": 202
+      "superflexRank": 169
     },
     {
       "id": "fp-25337",
       "name": "Tre Tucker",
       "team": "LV",
       "position": "WR",
-      "averageRank": 158,
-      "rankEcr": 158,
-      "rankAverage": 176.17,
-      "standardDeviation": 61.18,
+      "averageRank": 159,
+      "rankEcr": 159,
+      "rankAverage": 175.83,
+      "standardDeviation": 61.21,
       "tier": 10,
       "positionRank": 60,
       "minRank": 110,
       "maxRank": 295,
       "byeWeek": 13,
-      "ownership": 22.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 155.5,
+      "ownership": 22.1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 156.6,
       "superflexRank": 161
     },
     {
@@ -3008,8 +3028,8 @@
       "name": "Daniel Jones",
       "team": "IND",
       "position": "QB",
-      "averageRank": 159,
-      "rankEcr": 159,
+      "averageRank": 160,
+      "rankEcr": 160,
       "rankAverage": 144,
       "standardDeviation": 4.77,
       "tier": 10,
@@ -3017,18 +3037,18 @@
       "minRank": 138,
       "maxRank": 152,
       "byeWeek": 13,
-      "ownership": 41,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 147.3,
-      "superflexRank": 82
+      "ownership": 40.7,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 147,
+      "superflexRank": 80
     },
     {
       "id": "fp-26335",
       "name": "AJ Barner",
       "team": "SEA",
       "position": "TE",
-      "averageRank": 160,
-      "rankEcr": 160,
+      "averageRank": 161,
+      "rankEcr": 161,
       "rankAverage": 179,
       "standardDeviation": 34.39,
       "tier": 10,
@@ -3036,48 +3056,29 @@
       "minRank": 146,
       "maxRank": 228,
       "byeWeek": 11,
-      "ownership": 27,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 174.9,
-      "superflexRank": 168
+      "ownership": 27.2,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 174.8,
+      "superflexRank": 171
     },
     {
       "id": "fp-25323",
       "name": "Tyjae Spears",
       "team": "TEN",
       "position": "RB",
-      "averageRank": 161,
-      "rankEcr": 161,
+      "averageRank": 162,
+      "rankEcr": 162,
       "rankAverage": 181.17,
       "standardDeviation": 29.41,
       "tier": 10,
-      "positionRank": 51,
+      "positionRank": 52,
       "minRank": 145,
       "maxRank": 224,
       "byeWeek": 9,
-      "ownership": 47.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 152.7,
-      "superflexRank": 143
-    },
-    {
-      "id": "fp-27520",
-      "name": "Woody Marks",
-      "team": "HOU",
-      "position": "RB",
-      "averageRank": 162,
-      "rankEcr": 162,
-      "rankAverage": 151.2,
-      "standardDeviation": 24.89,
-      "tier": 10,
-      "positionRank": 52,
-      "minRank": 115,
-      "maxRank": 184,
-      "byeWeek": 8,
-      "ownership": 54.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 141.4,
-      "superflexRank": 142
+      "ownership": 46.9,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 153.5,
+      "superflexRank": 145
     },
     {
       "id": "fp-22986",
@@ -3093,10 +3094,10 @@
       "minRank": 121,
       "maxRank": 211,
       "byeWeek": 7,
-      "ownership": 41.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 129.3,
-      "superflexRank": 136
+      "ownership": 40.7,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 129.6,
+      "superflexRank": 137
     },
     {
       "id": "fp-28138",
@@ -3105,55 +3106,55 @@
       "position": "WR",
       "averageRank": 164,
       "rankEcr": 164,
-      "rankAverage": 155.2,
-      "standardDeviation": 30.59,
+      "rankAverage": 155.6,
+      "standardDeviation": 30.85,
       "tier": 10,
       "positionRank": 61,
       "minRank": 108,
       "maxRank": 198,
       "byeWeek": 8,
       "ownership": 24.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 148,
-      "superflexRank": 169
-    },
-    {
-      "id": "fp-25418",
-      "name": "Antonio Williams",
-      "team": "WAS",
-      "position": "WR",
-      "averageRank": 165,
-      "rankEcr": 165,
-      "rankAverage": 157.2,
-      "standardDeviation": 17.44,
-      "tier": 10,
-      "positionRank": 62,
-      "minRank": 131,
-      "maxRank": 178,
-      "byeWeek": 7,
-      "ownership": 28.8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 173.5,
-      "superflexRank": 208
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 143,
+      "superflexRank": 168
     },
     {
       "id": "fp-24177",
       "name": "Jalen Nailor",
       "team": "LV",
       "position": "WR",
-      "averageRank": 166,
-      "rankEcr": 166,
+      "averageRank": 165,
+      "rankEcr": 165,
       "rankAverage": 160.4,
       "standardDeviation": 29.04,
-      "tier": 10,
-      "positionRank": 63,
+      "tier": 11,
+      "positionRank": 62,
       "minRank": 117,
       "maxRank": 208,
       "byeWeek": 13,
       "ownership": 31.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 149.9,
-      "superflexRank": 181
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 148.7,
+      "superflexRank": 182
+    },
+    {
+      "id": "fp-25418",
+      "name": "Antonio Williams",
+      "team": "WAS",
+      "position": "WR",
+      "averageRank": 166,
+      "rankEcr": 166,
+      "rankAverage": 163.2,
+      "standardDeviation": 16.67,
+      "tier": 11,
+      "positionRank": 63,
+      "minRank": 131,
+      "maxRank": 178,
+      "byeWeek": 7,
+      "ownership": 28.4,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 176.4,
+      "superflexRank": 210
     },
     {
       "id": "fp-23181",
@@ -3162,17 +3163,17 @@
       "position": "TE",
       "averageRank": 167,
       "rankEcr": 167,
-      "rankAverage": 193.67,
-      "standardDeviation": 26.62,
+      "rankAverage": 193.5,
+      "standardDeviation": 26.4,
       "tier": 11,
       "positionRank": 26,
       "minRank": 154,
-      "maxRank": 230,
+      "maxRank": 229,
       "byeWeek": 10,
-      "ownership": 23.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 188.9,
-      "superflexRank": 197
+      "ownership": 23,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 189.7,
+      "superflexRank": 198
     },
     {
       "id": "fp-11687",
@@ -3188,10 +3189,10 @@
       "minRank": 158,
       "maxRank": 185,
       "byeWeek": 13,
-      "ownership": 16.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 185.9,
-      "superflexRank": 119
+      "ownership": 15.6,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 186.5,
+      "superflexRank": 114
     },
     {
       "id": "fp-23118",
@@ -3208,36 +3209,17 @@
       "maxRank": 278,
       "byeWeek": 11,
       "ownership": 9.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 190.3,
-      "superflexRank": 194
-    },
-    {
-      "id": "fp-19590",
-      "name": "Jauan Jennings",
-      "team": "MIN",
-      "position": "WR",
-      "averageRank": 170,
-      "rankEcr": 170,
-      "rankAverage": 167.8,
-      "standardDeviation": 17.46,
-      "tier": 11,
-      "positionRank": 64,
-      "minRank": 147,
-      "maxRank": 199,
-      "byeWeek": 6,
-      "ownership": 35.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 155.2,
-      "superflexRank": 157
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 187.6,
+      "superflexRank": 199
     },
     {
       "id": "fp-20094",
       "name": "Brian Robinson Jr.",
       "team": "ATL",
       "position": "RB",
-      "averageRank": 171,
-      "rankEcr": 171,
+      "averageRank": 170,
+      "rankEcr": 170,
       "rankAverage": 168.8,
       "standardDeviation": 17.47,
       "tier": 11,
@@ -3246,9 +3228,28 @@
       "maxRank": 196,
       "byeWeek": 11,
       "ownership": 37.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 175.2,
-      "superflexRank": 155
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 176.7,
+      "superflexRank": 157
+    },
+    {
+      "id": "fp-19590",
+      "name": "Jauan Jennings",
+      "team": "MIN",
+      "position": "WR",
+      "averageRank": 171,
+      "rankEcr": 171,
+      "rankAverage": 169.2,
+      "standardDeviation": 20,
+      "tier": 11,
+      "positionRank": 64,
+      "minRank": 147,
+      "maxRank": 206,
+      "byeWeek": 6,
+      "ownership": 35.1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 156.4,
+      "superflexRank": 158
     },
     {
       "id": "fp-9001",
@@ -3264,10 +3265,10 @@
       "minRank": 128,
       "maxRank": 241,
       "byeWeek": 9,
-      "ownership": 19,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 176.8,
-      "superflexRank": 149
+      "ownership": 18.8,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 177.4,
+      "superflexRank": 135
     },
     {
       "id": "fp-26314",
@@ -3276,25 +3277,82 @@
       "position": "WR",
       "averageRank": 173,
       "rankEcr": 173,
-      "rankAverage": 202.33,
-      "standardDeviation": 46.31,
+      "rankAverage": 202.17,
+      "standardDeviation": 46.24,
       "tier": 11,
       "positionRank": 65,
       "minRank": 135,
       "maxRank": 285,
       "byeWeek": 6,
-      "ownership": 16.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 183.1,
+      "ownership": 16.9,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 180.1,
       "superflexRank": 185
+    },
+    {
+      "id": "fp-18244",
+      "name": "Deebo Samuel Sr.",
+      "team": "SF",
+      "position": "WR",
+      "averageRank": 174,
+      "rankEcr": 174,
+      "rankAverage": 134.25,
+      "standardDeviation": 25.85,
+      "tier": 11,
+      "positionRank": 66,
+      "minRank": 102,
+      "maxRank": 163,
+      "byeWeek": 8,
+      "ownership": 56.2,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 135.7,
+      "superflexRank": 172
+    },
+    {
+      "id": "fp-26034",
+      "name": "Travis Hunter",
+      "team": "JAX",
+      "position": "WR",
+      "averageRank": 175,
+      "rankEcr": 175,
+      "rankAverage": 176.4,
+      "standardDeviation": 39.14,
+      "tier": 11,
+      "positionRank": 67,
+      "minRank": 143,
+      "maxRank": 243,
+      "byeWeek": 7,
+      "ownership": 66.7,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 141.2,
+      "superflexRank": 174
+    },
+    {
+      "id": "fp-23091",
+      "name": "Terrance Ferguson",
+      "team": "LAR",
+      "position": "TE",
+      "averageRank": 176,
+      "rankEcr": 176,
+      "rankAverage": 204.33,
+      "standardDeviation": 35.79,
+      "tier": 11,
+      "positionRank": 27,
+      "minRank": 167,
+      "maxRank": 280,
+      "byeWeek": 11,
+      "ownership": 20.2,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 180.1,
+      "superflexRank": 184
     },
     {
       "id": "fp-22900",
       "name": "Bryce Young",
       "team": "CAR",
       "position": "QB",
-      "averageRank": 174,
-      "rankEcr": 174,
+      "averageRank": 177,
+      "rankEcr": 177,
       "rankAverage": 177.2,
       "standardDeviation": 37.7,
       "tier": 11,
@@ -3302,86 +3360,29 @@
       "minRank": 135,
       "maxRank": 231,
       "byeWeek": 5,
-      "ownership": 31.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 160.4,
+      "ownership": 32,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 160.9,
       "superflexRank": 84
-    },
-    {
-      "id": "fp-23091",
-      "name": "Terrance Ferguson",
-      "team": "LAR",
-      "position": "TE",
-      "averageRank": 175,
-      "rankEcr": 175,
-      "rankAverage": 204.5,
-      "standardDeviation": 35.76,
-      "tier": 11,
-      "positionRank": 27,
-      "minRank": 167,
-      "maxRank": 280,
-      "byeWeek": 11,
-      "ownership": 20,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 181.2,
-      "superflexRank": 184
-    },
-    {
-      "id": "fp-26034",
-      "name": "Travis Hunter",
-      "team": "JAX",
-      "position": "WR",
-      "averageRank": 176,
-      "rankEcr": 176,
-      "rankAverage": 178,
-      "standardDeviation": 37.88,
-      "tier": 11,
-      "positionRank": 66,
-      "minRank": 144,
-      "maxRank": 243,
-      "byeWeek": 7,
-      "ownership": 67,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 140.6,
-      "superflexRank": 174
     },
     {
       "id": "fp-17272",
       "name": "Mike Gesicki",
       "team": "CIN",
       "position": "TE",
-      "averageRank": 177,
-      "rankEcr": 177,
-      "rankAverage": 205.83,
-      "standardDeviation": 28.25,
+      "averageRank": 178,
+      "rankEcr": 178,
+      "rankAverage": 205.67,
+      "standardDeviation": 28.1,
       "tier": 11,
       "positionRank": 28,
       "minRank": 169,
       "maxRank": 253,
       "byeWeek": 6,
-      "ownership": 10.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 206.4,
-      "superflexRank": 268
-    },
-    {
-      "id": "fp-18244",
-      "name": "Deebo Samuel Sr.",
-      "team": "SF",
-      "position": "WR",
-      "averageRank": 178,
-      "rankEcr": 178,
-      "rankAverage": 139,
-      "standardDeviation": 23.72,
-      "tier": 11,
-      "positionRank": 67,
-      "minRank": 102,
-      "maxRank": 163,
-      "byeWeek": 8,
-      "ownership": 55.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 142.5,
-      "superflexRank": 170
+      "ownership": 10.5,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 207.7,
+      "superflexRank": 267
     },
     {
       "id": "fp-26191",
@@ -3397,18 +3398,37 @@
       "minRank": 147,
       "maxRank": 237,
       "byeWeek": 7,
-      "ownership": 15.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 188.2,
+      "ownership": 15.4,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 188,
       "superflexRank": 180
+    },
+    {
+      "id": "fp-23179",
+      "name": "Jalen McMillan",
+      "team": "TB",
+      "position": "WR",
+      "averageRank": 180,
+      "rankEcr": 180,
+      "rankAverage": 182.8,
+      "standardDeviation": 24.94,
+      "tier": 11,
+      "positionRank": 68,
+      "minRank": 141,
+      "maxRank": 207,
+      "byeWeek": 10,
+      "ownership": 30.8,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 146.7,
+      "superflexRank": 162
     },
     {
       "id": "fp-15642",
       "name": "Jacoby Brissett",
       "team": "ARI",
       "position": "QB",
-      "averageRank": 180,
-      "rankEcr": 180,
+      "averageRank": 181,
+      "rankEcr": 181,
       "rankAverage": 183,
       "standardDeviation": 55.21,
       "tier": 11,
@@ -3416,29 +3436,10 @@
       "minRank": 130,
       "maxRank": 275,
       "byeWeek": 14,
-      "ownership": 25.8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 192,
-      "superflexRank": 90
-    },
-    {
-      "id": "fp-23179",
-      "name": "Jalen McMillan",
-      "team": "TB",
-      "position": "WR",
-      "averageRank": 181,
-      "rankEcr": 181,
-      "rankAverage": 183.2,
-      "standardDeviation": 24.71,
-      "tier": 11,
-      "positionRank": 68,
-      "minRank": 141,
-      "maxRank": 207,
-      "byeWeek": 10,
-      "ownership": 31.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 145.6,
-      "superflexRank": 162
+      "ownership": 25.4,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 192.4,
+      "superflexRank": 89
     },
     {
       "id": "fp-24343",
@@ -3454,10 +3455,10 @@
       "minRank": 144,
       "maxRank": 302,
       "byeWeek": 9,
-      "ownership": 25.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 209.5,
-      "superflexRank": 201
+      "ownership": 25.3,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 209,
+      "superflexRank": 200
     },
     {
       "id": "fp-24357",
@@ -3466,17 +3467,17 @@
       "position": "WR",
       "averageRank": 183,
       "rankEcr": 183,
-      "rankAverage": 184.6,
-      "standardDeviation": 16.86,
+      "rankAverage": 184.2,
+      "standardDeviation": 17.15,
       "tier": 11,
       "positionRank": 69,
       "minRank": 170,
       "maxRank": 217,
       "byeWeek": 13,
-      "ownership": 18.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 172.5,
-      "superflexRank": 159
+      "ownership": 18.3,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 172.2,
+      "superflexRank": 160
     },
     {
       "id": "fp-19810",
@@ -3485,17 +3486,17 @@
       "position": "WR",
       "averageRank": 184,
       "rankEcr": 184,
-      "rankAverage": 184.8,
-      "standardDeviation": 23.65,
+      "rankAverage": 184.4,
+      "standardDeviation": 23.9,
       "tier": 11,
       "positionRank": 70,
       "minRank": 145,
       "maxRank": 209,
       "byeWeek": 8,
       "ownership": 17.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 200.8,
-      "superflexRank": 186
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 201.4,
+      "superflexRank": 187
     },
     {
       "id": "fp-26215",
@@ -3504,17 +3505,17 @@
       "position": "WR",
       "averageRank": 185,
       "rankEcr": 185,
-      "rankAverage": 185.4,
-      "standardDeviation": 30.37,
+      "rankAverage": 184.6,
+      "standardDeviation": 31.02,
       "tier": 11,
       "positionRank": 71,
       "minRank": 148,
       "maxRank": 230,
       "byeWeek": 7,
-      "ownership": 15.8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 165.5,
-      "superflexRank": 167
+      "ownership": 15.6,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 165,
+      "superflexRank": 170
     },
     {
       "id": "fp-26039",
@@ -3523,17 +3524,17 @@
       "position": "WR",
       "averageRank": 186,
       "rankEcr": 186,
-      "rankAverage": 186.4,
-      "standardDeviation": 21.15,
+      "rankAverage": 185.8,
+      "standardDeviation": 21.78,
       "tier": 11,
       "positionRank": 72,
-      "minRank": 165,
+      "minRank": 162,
       "maxRank": 226,
       "byeWeek": 9,
       "ownership": 20.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 192.7,
-      "superflexRank": 225
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 194.8,
+      "superflexRank": 219
     },
     {
       "id": "fp-24346",
@@ -3549,37 +3550,56 @@
       "minRank": 122,
       "maxRank": 238,
       "byeWeek": 13,
-      "ownership": 21.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 213,
-      "superflexRank": 177
+      "ownership": 20.6,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 213.2,
+      "superflexRank": 179
+    },
+    {
+      "id": "fp-17258",
+      "name": "Calvin Ridley",
+      "team": "TEN",
+      "position": "WR",
+      "averageRank": 188,
+      "rankEcr": 188,
+      "rankAverage": 190.2,
+      "standardDeviation": 18.73,
+      "tier": 11,
+      "positionRank": 73,
+      "minRank": 164,
+      "maxRank": 221,
+      "byeWeek": 9,
+      "ownership": 19.8,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 188.7,
+      "superflexRank": 183
     },
     {
       "id": "fp-20163",
       "name": "Pat Freiermuth",
       "team": "PIT",
       "position": "TE",
-      "averageRank": 188,
-      "rankEcr": 188,
-      "rankAverage": 215.5,
-      "standardDeviation": 46.83,
+      "averageRank": 189,
+      "rankEcr": 189,
+      "rankAverage": 215.33,
+      "standardDeviation": 46.79,
       "tier": 11,
       "positionRank": 29,
       "minRank": 155,
       "maxRank": 305,
       "byeWeek": 9,
       "ownership": 16.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 193.8,
-      "superflexRank": 188
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 194,
+      "superflexRank": 189
     },
     {
       "id": "fp-28107",
       "name": "Emmett Johnson",
       "team": "KC",
       "position": "RB",
-      "averageRank": 189,
-      "rankEcr": 189,
+      "averageRank": 190,
+      "rankEcr": 190,
       "rankAverage": 192,
       "standardDeviation": 45.69,
       "tier": 11,
@@ -3587,29 +3607,10 @@
       "minRank": 148,
       "maxRank": 275,
       "byeWeek": 5,
-      "ownership": 26.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 197.8,
-      "superflexRank": 200
-    },
-    {
-      "id": "fp-17258",
-      "name": "Calvin Ridley",
-      "team": "TEN",
-      "position": "WR",
-      "averageRank": 190,
-      "rankEcr": 190,
-      "rankAverage": 192.6,
-      "standardDeviation": 19.68,
-      "tier": 11,
-      "positionRank": 73,
-      "minRank": 164,
-      "maxRank": 221,
-      "byeWeek": 9,
-      "ownership": 20.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 188,
-      "superflexRank": 182
+      "ownership": 26.6,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 198.5,
+      "superflexRank": 191
     },
     {
       "id": "fp-24362",
@@ -3626,36 +3627,17 @@
       "maxRank": 282,
       "byeWeek": 7,
       "ownership": 21.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 203.4,
-      "superflexRank": 209
-    },
-    {
-      "id": "fp-27122",
-      "name": "Jaylin Noel",
-      "team": "HOU",
-      "position": "WR",
-      "averageRank": 192,
-      "rankEcr": 192,
-      "rankAverage": 195.6,
-      "standardDeviation": 12.14,
-      "tier": 11,
-      "positionRank": 74,
-      "minRank": 173,
-      "maxRank": 206,
-      "byeWeek": 8,
-      "ownership": 10.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 214.7,
-      "superflexRank": 199
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 205.5,
+      "superflexRank": 202
     },
     {
       "id": "fp-28108",
       "name": "Mike Washington Jr.",
       "team": "LV",
       "position": "RB",
-      "averageRank": 193,
-      "rankEcr": 193,
+      "averageRank": 192,
+      "rankEcr": 192,
       "rankAverage": 195.8,
       "standardDeviation": 35.61,
       "tier": 11,
@@ -3664,9 +3646,28 @@
       "maxRank": 230,
       "byeWeek": 13,
       "ownership": 25.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 199.5,
-      "superflexRank": 212
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 197.8,
+      "superflexRank": 208
+    },
+    {
+      "id": "fp-27122",
+      "name": "Jaylin Noel",
+      "team": "HOU",
+      "position": "WR",
+      "averageRank": 193,
+      "rankEcr": 193,
+      "rankAverage": 196.2,
+      "standardDeviation": 12.07,
+      "tier": 11,
+      "positionRank": 74,
+      "minRank": 173,
+      "maxRank": 206,
+      "byeWeek": 8,
+      "ownership": 10.3,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.1,
+      "superflexRank": 201
     },
     {
       "id": "fp-22989",
@@ -3675,17 +3676,17 @@
       "position": "WR",
       "averageRank": 194,
       "rankEcr": 194,
-      "rankAverage": 197,
-      "standardDeviation": 24.76,
+      "rankAverage": 196.8,
+      "standardDeviation": 24.62,
       "tier": 11,
       "positionRank": 75,
       "minRank": 150,
       "maxRank": 219,
       "byeWeek": 11,
       "ownership": 21.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 197,
-      "superflexRank": 178
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 195,
+      "superflexRank": 177
     },
     {
       "id": "fp-27446",
@@ -3694,17 +3695,17 @@
       "position": "WR",
       "averageRank": 195,
       "rankEcr": 195,
-      "rankAverage": 197.2,
-      "standardDeviation": 24.23,
+      "rankAverage": 199,
+      "standardDeviation": 22.96,
       "tier": 11,
       "positionRank": 76,
-      "minRank": 177,
+      "minRank": 182,
       "maxRank": 244,
       "byeWeek": 6,
-      "ownership": 19.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 169.2,
-      "superflexRank": 189
+      "ownership": 18.7,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 169.3,
+      "superflexRank": 190
     },
     {
       "id": "fp-26398",
@@ -3713,17 +3714,17 @@
       "position": "WR",
       "averageRank": 196,
       "rankEcr": 196,
-      "rankAverage": 203.2,
-      "standardDeviation": 67.38,
+      "rankAverage": 199.8,
+      "standardDeviation": 67.43,
       "tier": 11,
       "positionRank": 77,
       "minRank": 139,
       "maxRank": 330,
       "byeWeek": 14,
-      "ownership": 15.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 162.6,
-      "superflexRank": 173
+      "ownership": 14.8,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 163.1,
+      "superflexRank": 176
     },
     {
       "id": "fp-19794",
@@ -3739,10 +3740,10 @@
       "minRank": 148,
       "maxRank": 225,
       "byeWeek": 13,
-      "ownership": 9.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 203.1,
-      "superflexRank": 193
+      "ownership": 8.7,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 202.8,
+      "superflexRank": 195
     },
     {
       "id": "fp-27109",
@@ -3751,17 +3752,17 @@
       "position": "TE",
       "averageRank": 199,
       "rankEcr": 199,
-      "rankAverage": 205.2,
-      "standardDeviation": 25.94,
+      "rankAverage": 205,
+      "standardDeviation": 25.88,
       "tier": 11,
       "positionRank": 30,
       "minRank": 169,
       "maxRank": 235,
       "byeWeek": 9,
-      "ownership": 17,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 16.8,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 181.2,
-      "superflexRank": 191
+      "superflexRank": 192
     },
     {
       "id": "fp-16447",
@@ -3777,29 +3778,10 @@
       "minRank": 147,
       "maxRank": 306,
       "byeWeek": 14,
-      "ownership": 28.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 28.5,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 214.6,
-      "superflexRank": 183
-    },
-    {
-      "id": "fp-25885",
-      "name": "Emanuel Wilson",
-      "team": "SEA",
-      "position": "RB",
-      "averageRank": 202,
-      "rankEcr": 202,
-      "rankAverage": 231.67,
-      "standardDeviation": 51.96,
-      "tier": 11,
-      "positionRank": 63,
-      "minRank": 161,
-      "maxRank": 292,
-      "byeWeek": 11,
-      "ownership": 13.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 215.9,
-      "superflexRank": 192
+      "superflexRank": 186
     },
     {
       "id": "fp-27463",
@@ -3808,36 +3790,55 @@
       "position": "WR",
       "averageRank": 203,
       "rankEcr": 203,
-      "rankAverage": 210,
-      "standardDeviation": 26.87,
+      "rankAverage": 210.8,
+      "standardDeviation": 26.44,
       "tier": 12,
       "positionRank": 79,
       "minRank": 192,
       "maxRank": 263,
       "byeWeek": 13,
       "ownership": 16.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 209.8,
-      "superflexRank": 242
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 210.9,
+      "superflexRank": 235
     },
     {
       "id": "fp-28130",
       "name": "Ted Hurst III",
       "team": "TB",
       "position": "WR",
-      "averageRank": 205,
-      "rankEcr": 205,
-      "rankAverage": 210.2,
-      "standardDeviation": 32.79,
+      "averageRank": 204,
+      "rankEcr": 204,
+      "rankAverage": 211.6,
+      "standardDeviation": 32.34,
       "tier": 12,
       "positionRank": 80,
       "minRank": 175,
       "maxRank": 269,
       "byeWeek": 10,
       "ownership": 17.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 203.8,
-      "superflexRank": 190
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 205.6,
+      "superflexRank": 251
+    },
+    {
+      "id": "fp-27211",
+      "name": "Pat Bryant",
+      "team": "DEN",
+      "position": "WR",
+      "averageRank": 206,
+      "rankEcr": 206,
+      "rankAverage": 212.6,
+      "standardDeviation": 34.51,
+      "tier": 12,
+      "positionRank": 81,
+      "minRank": 172,
+      "maxRank": 276,
+      "byeWeek": 10,
+      "ownership": 11.4,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 202.8,
+      "superflexRank": 197
     },
     {
       "id": "fp-25419",
@@ -3846,44 +3847,25 @@
       "position": "WR",
       "averageRank": 207,
       "rankEcr": 207,
-      "rankAverage": 213.4,
-      "standardDeviation": 27.41,
+      "rankAverage": 213.2,
+      "standardDeviation": 27.37,
       "tier": 12,
-      "positionRank": 81,
+      "positionRank": 82,
       "minRank": 184,
       "maxRank": 261,
       "byeWeek": 11,
       "ownership": 23.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 181.4,
-      "superflexRank": 218
-    },
-    {
-      "id": "fp-27211",
-      "name": "Pat Bryant",
-      "team": "DEN",
-      "position": "WR",
-      "averageRank": 209,
-      "rankEcr": 209,
-      "rankAverage": 215.6,
-      "standardDeviation": 31.36,
-      "tier": 12,
-      "positionRank": 82,
-      "minRank": 187,
-      "maxRank": 276,
-      "byeWeek": 10,
-      "ownership": 11.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 205.3,
-      "superflexRank": 198
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 179.3,
+      "superflexRank": 211
     },
     {
       "id": "fp-16411",
       "name": "Evan Engram",
       "team": "DEN",
       "position": "TE",
-      "averageRank": 210,
-      "rankEcr": 210,
+      "averageRank": 209,
+      "rankEcr": 209,
       "rankAverage": 217.2,
       "standardDeviation": 29.37,
       "tier": 12,
@@ -3892,17 +3874,17 @@
       "maxRank": 255,
       "byeWeek": 10,
       "ownership": 13.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 212.1,
-      "superflexRank": 216
+      "superflexRank": 213
     },
     {
       "id": "fp-19198",
       "name": "Tua Tagovailoa",
       "team": "ATL",
       "position": "QB",
-      "averageRank": 211,
-      "rankEcr": 211,
+      "averageRank": 210,
+      "rankEcr": 210,
       "rankAverage": 218.6,
       "standardDeviation": 38.81,
       "tier": 12,
@@ -3911,17 +3893,17 @@
       "maxRank": 284,
       "byeWeek": 11,
       "ownership": 22.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 209.2,
-      "superflexRank": 175
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 208.2,
+      "superflexRank": 178
     },
     {
       "id": "fp-28013",
       "name": "Fernando Mendoza",
       "team": "LV",
       "position": "QB",
-      "averageRank": 212,
-      "rankEcr": 212,
+      "averageRank": 211,
+      "rankEcr": 211,
       "rankAverage": 219.8,
       "standardDeviation": 62.65,
       "tier": 12,
@@ -3930,55 +3912,55 @@
       "maxRank": 335,
       "byeWeek": 13,
       "ownership": 33.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 181.9,
-      "superflexRank": 166
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 184.6,
+      "superflexRank": 163
     },
     {
       "id": "fp-26038",
       "name": "Chris Bell",
       "team": "MIA",
       "position": "WR",
-      "averageRank": 213,
-      "rankEcr": 213,
-      "rankAverage": 221.8,
-      "standardDeviation": 23.34,
+      "averageRank": 212,
+      "rankEcr": 212,
+      "rankAverage": 221.6,
+      "standardDeviation": 23.42,
       "tier": 12,
       "positionRank": 83,
       "minRank": 205,
       "maxRank": 268,
       "byeWeek": 6,
-      "ownership": 20.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 214.7,
-      "superflexRank": 244
+      "ownership": 20.3,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.1,
+      "superflexRank": 242
     },
     {
       "id": "fp-23679",
       "name": "Sean Tucker",
       "team": "TB",
       "position": "RB",
-      "averageRank": 214,
-      "rankEcr": 214,
+      "averageRank": 213,
+      "rankEcr": 213,
       "rankAverage": 223.2,
       "standardDeviation": 29.15,
       "tier": 12,
-      "positionRank": 64,
+      "positionRank": 63,
       "minRank": 175,
       "maxRank": 265,
       "byeWeek": 10,
       "ownership": 19,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 189.2,
-      "superflexRank": 176
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 192.9,
+      "superflexRank": 175
     },
     {
       "id": "fp-24354",
       "name": "Dontayvion Wicks",
       "team": "PHI",
       "position": "WR",
-      "averageRank": 215,
-      "rankEcr": 215,
+      "averageRank": 214,
+      "rankEcr": 214,
       "rankAverage": 195.25,
       "standardDeviation": 15.25,
       "tier": 12,
@@ -3986,48 +3968,66 @@
       "minRank": 179,
       "maxRank": 220,
       "byeWeek": 10,
-      "ownership": 12.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 189.3,
-      "superflexRank": 195
+      "ownership": 12.4,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 186.9,
+      "superflexRank": 194
     },
     {
       "id": "fp-16399",
       "name": "David Njoku",
       "team": "LAC",
       "position": "TE",
-      "averageRank": 216,
-      "rankEcr": 216,
-      "rankAverage": 244,
-      "standardDeviation": 14.55,
+      "averageRank": 215,
+      "rankEcr": 215,
+      "rankAverage": 243.83,
+      "standardDeviation": 14.79,
       "tier": 12,
       "positionRank": 32,
-      "minRank": 223,
+      "minRank": 222,
       "maxRank": 267,
       "byeWeek": 7,
       "ownership": 24.8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 212.9,
-      "superflexRank": 204
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 212.8,
+      "superflexRank": 205
     },
     {
       "id": "fp-25987",
       "name": "Jaylen Wright",
       "team": "MIA",
       "position": "RB",
-      "averageRank": 218,
-      "rankEcr": 218,
+      "averageRank": 217,
+      "rankEcr": 217,
       "rankAverage": 226.2,
       "standardDeviation": 58.02,
       "tier": 12,
-      "positionRank": 65,
+      "positionRank": 64,
       "minRank": 159,
       "maxRank": 304,
       "byeWeek": 6,
-      "ownership": 10.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 10.2,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.5,
       "superflexRank": 207
+    },
+    {
+      "id": "fp-27994",
+      "name": "Malachi Fields",
+      "team": "NYG",
+      "position": "WR",
+      "averageRank": 222,
+      "rankEcr": 222,
+      "rankAverage": 230,
+      "standardDeviation": 15.81,
+      "tier": 12,
+      "positionRank": 85,
+      "minRank": 204,
+      "maxRank": 247,
+      "byeWeek": 8,
+      "ownership": 17.1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 232
     },
     {
       "id": "fp-27310",
@@ -4036,54 +4036,55 @@
       "position": "RB",
       "averageRank": 223,
       "rankEcr": 223,
-      "rankAverage": 230.8,
-      "standardDeviation": 66.4,
+      "rankAverage": 231.4,
+      "standardDeviation": 65.73,
       "tier": 12,
-      "positionRank": 66,
-      "minRank": 156,
+      "positionRank": 65,
+      "minRank": 159,
       "maxRank": 348,
       "byeWeek": 8,
-      "ownership": 10.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 213.5,
-      "superflexRank": 228
+      "ownership": 9.9,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 214.3,
+      "superflexRank": 226
     },
     {
       "id": "fp-16423",
       "name": "Samaje Perine",
       "team": "CIN",
       "position": "RB",
-      "averageRank": 224,
-      "rankEcr": 224,
+      "averageRank": 225,
+      "rankEcr": 225,
       "rankAverage": 230.2,
       "standardDeviation": 29.03,
       "tier": 12,
-      "positionRank": 67,
+      "positionRank": 66,
       "minRank": 178,
       "maxRank": 262,
       "byeWeek": 6,
       "ownership": 5.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 215.6,
-      "superflexRank": 236
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.5,
+      "superflexRank": 234
     },
     {
-      "id": "fp-27994",
-      "name": "Malachi Fields",
-      "team": "NYG",
-      "position": "WR",
-      "averageRank": 225,
-      "rankEcr": 225,
-      "rankAverage": 230.2,
-      "standardDeviation": 15.69,
+      "id": "fp-22967",
+      "name": "Darnell Washington",
+      "team": "PIT",
+      "position": "TE",
+      "averageRank": 228,
+      "rankEcr": 228,
+      "rankAverage": 231.4,
+      "standardDeviation": 19.27,
       "tier": 12,
-      "positionRank": 85,
-      "minRank": 204,
-      "maxRank": 247,
-      "byeWeek": 8,
-      "ownership": 17.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 241
+      "positionRank": 33,
+      "minRank": 205,
+      "maxRank": 265,
+      "byeWeek": 9,
+      "ownership": 12.6,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215,
+      "superflexRank": 279
     },
     {
       "id": "fp-26355",
@@ -4095,60 +4096,41 @@
       "rankAverage": 231.6,
       "standardDeviation": 54.16,
       "tier": 12,
-      "positionRank": 68,
+      "positionRank": 67,
       "minRank": 151,
       "maxRank": 294,
       "byeWeek": 7,
-      "ownership": 14.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 213.5,
-      "superflexRank": 187
-    },
-    {
-      "id": "fp-22967",
-      "name": "Darnell Washington",
-      "team": "PIT",
-      "position": "TE",
-      "averageRank": 230,
-      "rankEcr": 230,
-      "rankAverage": 231.6,
-      "standardDeviation": 19.27,
-      "tier": 12,
-      "positionRank": 33,
-      "minRank": 205,
-      "maxRank": 265,
-      "byeWeek": 9,
-      "ownership": 12.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 214.9,
-      "superflexRank": 283
+      "ownership": 14.2,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 212.9,
+      "superflexRank": 188
     },
     {
       "id": "fp-28084",
       "name": "Demond Claiborne",
       "team": "MIN",
       "position": "RB",
-      "averageRank": 231,
-      "rankEcr": 231,
+      "averageRank": 230,
+      "rankEcr": 230,
       "rankAverage": 233.2,
       "standardDeviation": 25.43,
       "tier": 12,
-      "positionRank": 69,
+      "positionRank": 68,
       "minRank": 201,
       "maxRank": 267,
       "byeWeek": 6,
       "ownership": 16,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 214,
-      "superflexRank": 234
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 214.3,
+      "superflexRank": 230
     },
     {
       "id": "fp-25968",
       "name": "Shedeur Sanders",
       "team": "CLE",
       "position": "QB",
-      "averageRank": 232,
-      "rankEcr": 232,
+      "averageRank": 231,
+      "rankEcr": 231,
       "rankAverage": 234,
       "standardDeviation": 16.09,
       "tier": 12,
@@ -4156,18 +4138,18 @@
       "minRank": 207,
       "maxRank": 254,
       "byeWeek": 11,
-      "ownership": 15.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 212.2,
-      "superflexRank": 232
+      "ownership": 14.5,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 211.9,
+      "superflexRank": 239
     },
     {
       "id": "fp-16433",
       "name": "Cooper Kupp",
       "team": "SEA",
       "position": "WR",
-      "averageRank": 235,
-      "rankEcr": 235,
+      "averageRank": 234,
+      "rankEcr": 234,
       "rankAverage": 209.5,
       "standardDeviation": 9.71,
       "tier": 12,
@@ -4176,8 +4158,8 @@
       "maxRank": 226,
       "byeWeek": 11,
       "ownership": 17.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 208.9,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 209.1,
       "superflexRank": 206
     },
     {
@@ -4185,8 +4167,8 @@
       "name": "Michael Penix Jr.",
       "team": "ATL",
       "position": "QB",
-      "averageRank": 236,
-      "rankEcr": 236,
+      "averageRank": 235,
+      "rankEcr": 235,
       "rankAverage": 211.75,
       "standardDeviation": 22.39,
       "tier": 12,
@@ -4195,28 +4177,28 @@
       "maxRank": 241,
       "byeWeek": 11,
       "ownership": 12.8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 215.2,
-      "superflexRank": 211
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.4,
+      "superflexRank": 216
     },
     {
       "id": "fp-28401",
       "name": "Kaelon Black",
       "team": "SF",
       "position": "RB",
-      "averageRank": 238,
-      "rankEcr": 238,
+      "averageRank": 237,
+      "rankEcr": 237,
       "rankAverage": 212.75,
       "standardDeviation": 36.58,
       "tier": 12,
-      "positionRank": 70,
+      "positionRank": 69,
       "minRank": 155,
       "maxRank": 255,
       "byeWeek": 8,
-      "ownership": 13.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 200.7,
-      "superflexRank": 253
+      "ownership": 12.9,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 203.5,
+      "superflexRank": 245
     },
     {
       "id": "fp-25984",
@@ -4228,22 +4210,22 @@
       "rankAverage": 238.4,
       "standardDeviation": 42.31,
       "tier": 12,
-      "positionRank": 71,
+      "positionRank": 70,
       "minRank": 168,
       "maxRank": 301,
       "byeWeek": 6,
-      "ownership": 3.8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 215.8,
-      "superflexRank": 213
+      "ownership": 4.2,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.5,
+      "superflexRank": 212
     },
     {
       "id": "fp-16398",
       "name": "Deshaun Watson",
       "team": "CLE",
       "position": "QB",
-      "averageRank": 241,
-      "rankEcr": 241,
+      "averageRank": 240,
+      "rankEcr": 240,
       "rankAverage": 239.2,
       "standardDeviation": 59.69,
       "tier": 12,
@@ -4252,47 +4234,47 @@
       "maxRank": 339,
       "byeWeek": 11,
       "ownership": 16.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 215.3,
-      "superflexRank": 226
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.5,
+      "superflexRank": 224
     },
     {
       "id": "fp-19252",
       "name": "Brandon Aiyuk",
       "team": "SF",
       "position": "WR",
-      "averageRank": 244,
-      "rankEcr": 244,
-      "rankAverage": 244,
-      "standardDeviation": 36.35,
+      "averageRank": 243,
+      "rankEcr": 243,
+      "rankAverage": 243.8,
+      "standardDeviation": 36.52,
       "tier": 12,
       "positionRank": 87,
       "minRank": 196,
       "maxRank": 298,
       "byeWeek": 8,
-      "ownership": 25.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 25.3,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.6,
-      "superflexRank": 254
+      "superflexRank": 257
     },
     {
       "id": "fp-24778",
       "name": "Jake Tonges",
       "team": "SF",
       "position": "TE",
-      "averageRank": 245,
-      "rankEcr": 245,
-      "rankAverage": 260.17,
-      "standardDeviation": 30.48,
+      "averageRank": 244,
+      "rankEcr": 244,
+      "rankAverage": 260,
+      "standardDeviation": 30.65,
       "tier": 12,
       "positionRank": 34,
-      "minRank": 228,
+      "minRank": 227,
       "maxRank": 308,
       "byeWeek": 8,
-      "ownership": 14.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 214.6,
-      "superflexRank": 279
+      "ownership": 14.5,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 214.4,
+      "superflexRank": 277
     },
     {
       "id": "fp-24344",
@@ -4304,22 +4286,22 @@
       "rankAverage": 220.25,
       "standardDeviation": 52.4,
       "tier": 12,
-      "positionRank": 72,
+      "positionRank": 71,
       "minRank": 165,
       "maxRank": 305,
       "byeWeek": 14,
-      "ownership": 11.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 185.4,
-      "superflexRank": 205
+      "ownership": 11.1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 179.4,
+      "superflexRank": 203
     },
     {
       "id": "fp-23092",
       "name": "Troy Franklin",
       "team": "DEN",
       "position": "WR",
-      "averageRank": 249,
-      "rankEcr": 249,
+      "averageRank": 248,
+      "rankEcr": 248,
       "rankAverage": 221.75,
       "standardDeviation": 18.97,
       "tier": 12,
@@ -4327,10 +4309,29 @@
       "minRank": 195,
       "maxRank": 247,
       "byeWeek": 10,
-      "ownership": 13.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 213.7,
+      "ownership": 12.9,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 213.8,
       "superflexRank": 196
+    },
+    {
+      "id": "fp-25885",
+      "name": "Emanuel Wilson",
+      "team": "SEA",
+      "position": "RB",
+      "averageRank": 249,
+      "rankEcr": 249,
+      "rankAverage": 245.8,
+      "standardDeviation": 45.18,
+      "tier": 12,
+      "positionRank": 72,
+      "minRank": 169,
+      "maxRank": 292,
+      "byeWeek": 11,
+      "ownership": 13,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.9,
+      "superflexRank": 193
     },
     {
       "id": "fp-25361",
@@ -4346,10 +4347,10 @@
       "minRank": 180,
       "maxRank": 189,
       "byeWeek": 8,
-      "ownership": 24.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 184.9,
-      "superflexRank": 203
+      "ownership": 24.2,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 183.7,
+      "superflexRank": 204
     },
     {
       "id": "fp-27337",
@@ -4365,10 +4366,10 @@
       "minRank": 208,
       "maxRank": 264,
       "byeWeek": 13,
-      "ownership": 19.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 214.6,
-      "superflexRank": 274
+      "ownership": 19.8,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 209.1,
+      "superflexRank": 269
     },
     {
       "id": "fp-22913",
@@ -4379,15 +4380,15 @@
       "rankEcr": 253,
       "rankAverage": 228.75,
       "standardDeviation": 60,
-      "tier": 13,
+      "tier": 12,
       "positionRank": 91,
       "minRank": 142,
       "maxRank": 311,
       "byeWeek": 5,
       "ownership": 6.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 210.4,
-      "superflexRank": 230
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 210.8,
+      "superflexRank": 231
     },
     {
       "id": "fp-18706",
@@ -4403,18 +4404,18 @@
       "minRank": 170,
       "maxRank": 271,
       "byeWeek": 8,
-      "ownership": 4.8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 4.4,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.6,
-      "superflexRank": 240
+      "superflexRank": 241
     },
     {
       "id": "fp-23770",
       "name": "Jalen Tolbert",
       "team": "MIA",
       "position": "WR",
-      "averageRank": 260,
-      "rankEcr": 260,
+      "averageRank": 261,
+      "rankEcr": 261,
       "rankAverage": 237.5,
       "standardDeviation": 48.28,
       "tier": 13,
@@ -4423,8 +4424,8 @@
       "maxRank": 278,
       "byeWeek": 6,
       "ownership": 4.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 215.5,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.6,
       "superflexRank": 294
     },
     {
@@ -4442,9 +4443,9 @@
       "maxRank": 307,
       "byeWeek": 11,
       "ownership": 20.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 210.9,
-      "superflexRank": 215
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 210.8,
+      "superflexRank": 214
     },
     {
       "id": "fp-26022",
@@ -4460,10 +4461,10 @@
       "minRank": 216,
       "maxRank": 297,
       "byeWeek": 11,
-      "ownership": 11.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 212.8,
-      "superflexRank": 224
+      "ownership": 10.7,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 212.5,
+      "superflexRank": 225
     },
     {
       "id": "fp-23144",
@@ -4480,9 +4481,9 @@
       "maxRank": 296,
       "byeWeek": 10,
       "ownership": 23.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 210.2,
-      "superflexRank": 231
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 211,
+      "superflexRank": 228
     },
     {
       "id": "fp-28126",
@@ -4499,7 +4500,7 @@
       "maxRank": 277,
       "byeWeek": 7,
       "ownership": 13.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.5,
       "superflexRank": 276
     },
@@ -4518,9 +4519,9 @@
       "maxRank": 274,
       "byeWeek": 8,
       "ownership": 5.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 315
+      "superflexRank": 307
     },
     {
       "id": "fp-26019",
@@ -4536,10 +4537,10 @@
       "minRank": 208,
       "maxRank": 298,
       "byeWeek": 7,
-      "ownership": 10,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 211.2,
-      "superflexRank": 214
+      "ownership": 9.3,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 211,
+      "superflexRank": 218
     },
     {
       "id": "fp-27315",
@@ -4555,10 +4556,10 @@
       "minRank": 223,
       "maxRank": 271,
       "byeWeek": 9,
-      "ownership": 11.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 11.3,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.8,
-      "superflexRank": 217
+      "superflexRank": 215
     },
     {
       "id": "fp-11177",
@@ -4574,10 +4575,10 @@
       "minRank": 176,
       "maxRank": 307,
       "byeWeek": 13,
-      "ownership": 11.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 214.8,
-      "superflexRank": 235
+      "ownership": 10.9,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 214.9,
+      "superflexRank": 229
     },
     {
       "id": "fp-18256",
@@ -4594,9 +4595,9 @@
       "maxRank": 278,
       "byeWeek": 13,
       "ownership": 9.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 214.1,
-      "superflexRank": 220
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 213.9,
+      "superflexRank": 222
     },
     {
       "id": "fp-28424",
@@ -4605,16 +4606,16 @@
       "position": "WR",
       "averageRank": 274,
       "rankEcr": 274,
-      "rankAverage": 221,
-      "standardDeviation": 22.63,
+      "rankAverage": 220.67,
+      "standardDeviation": 23.1,
       "tier": 13,
       "positionRank": 99,
-      "minRank": 189,
+      "minRank": 188,
       "maxRank": 237,
       "byeWeek": 5,
       "ownership": 4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 303
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 291
     },
     {
       "id": "fp-22915",
@@ -4630,10 +4631,10 @@
       "minRank": 211,
       "maxRank": 319,
       "byeWeek": 11,
-      "ownership": 8.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 212.5,
-      "superflexRank": 219
+      "ownership": 7.8,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 212.6,
+      "superflexRank": 217
     },
     {
       "id": "fp-27224",
@@ -4649,10 +4650,10 @@
       "minRank": 240,
       "maxRank": 273,
       "byeWeek": 13,
-      "ownership": 9.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 215.5,
-      "superflexRank": 222
+      "ownership": 8.7,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.4,
+      "superflexRank": 221
     },
     {
       "id": "fp-17268",
@@ -4669,9 +4670,9 @@
       "maxRank": 246,
       "byeWeek": 8,
       "ownership": 13,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 214.8,
-      "superflexRank": 229
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.1,
+      "superflexRank": 233
     },
     {
       "id": "fp-23101",
@@ -4688,9 +4689,9 @@
       "maxRank": 290,
       "byeWeek": 11,
       "ownership": 4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 215.7,
-      "superflexRank": 291
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.6,
+      "superflexRank": 292
     },
     {
       "id": "fp-28047",
@@ -4707,9 +4708,9 @@
       "maxRank": 198,
       "byeWeek": 5,
       "ownership": 14,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 215.9,
-      "superflexRank": 278
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 216,
+      "superflexRank": 280
     },
     {
       "id": "fp-15802",
@@ -4724,10 +4725,10 @@
       "positionRank": 104,
       "minRank": 181,
       "maxRank": 299,
-      "ownership": 29.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 215.5,
-      "superflexRank": 269
+      "ownership": 28.8,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.4,
+      "superflexRank": 273
     },
     {
       "id": "fp-18280",
@@ -4743,8 +4744,9 @@
       "minRank": 212,
       "maxRank": 293,
       "byeWeek": 8,
-      "ownership": 1.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 1.3,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 216,
       "superflexRank": 258
     },
     {
@@ -4762,8 +4764,8 @@
       "maxRank": 344,
       "byeWeek": 13,
       "ownership": 2.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 214.8,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215,
       "superflexRank": 227
     },
     {
@@ -4781,8 +4783,8 @@
       "maxRank": 266,
       "byeWeek": 7,
       "ownership": 3.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 321
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 317
     },
     {
       "id": "fp-18406",
@@ -4798,10 +4800,10 @@
       "minRank": 236,
       "maxRank": 258,
       "byeWeek": 7,
-      "ownership": 3.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 3.2,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.7,
-      "superflexRank": 238
+      "superflexRank": 243
     },
     {
       "id": "fp-27059",
@@ -4817,8 +4819,8 @@
       "minRank": 234,
       "maxRank": 272,
       "byeWeek": 9,
-      "ownership": 9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 9.3,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.7,
       "superflexRank": 223
     },
@@ -4837,9 +4839,9 @@
       "maxRank": 286,
       "byeWeek": 10,
       "ownership": 10.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 215.9,
-      "superflexRank": 250
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.8,
+      "superflexRank": 249
     },
     {
       "id": "fp-26409",
@@ -4856,9 +4858,9 @@
       "maxRank": 324,
       "byeWeek": 8,
       "ownership": 9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 214.9,
-      "superflexRank": 248
+      "superflexRank": 247
     },
     {
       "id": "fp-23056",
@@ -4875,17 +4877,17 @@
       "maxRank": 324,
       "byeWeek": 13,
       "ownership": 11.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 215,
-      "superflexRank": 302
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.1,
+      "superflexRank": 300
     },
     {
       "id": "fp-22953",
       "name": "Carson Beck",
       "team": "ARI",
       "position": "QB",
-      "averageRank": 292,
-      "rankEcr": 292,
+      "averageRank": 293,
+      "rankEcr": 293,
       "rankAverage": 274.5,
       "standardDeviation": 38.07,
       "tier": 13,
@@ -4894,8 +4896,8 @@
       "maxRank": 338,
       "byeWeek": 14,
       "ownership": 12.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 354
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 356
     },
     {
       "id": "fp-23104",
@@ -4912,8 +4914,8 @@
       "maxRank": 294,
       "byeWeek": 8,
       "ownership": 11.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 215.6,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.7,
       "superflexRank": 252
     },
     {
@@ -4930,10 +4932,10 @@
       "minRank": 187,
       "maxRank": 353,
       "byeWeek": 14,
-      "ownership": 12.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 12.1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 243
+      "superflexRank": 246
     },
     {
       "id": "fp-25335",
@@ -4949,8 +4951,8 @@
       "minRank": 197,
       "maxRank": 304,
       "byeWeek": 6,
-      "ownership": 4.8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 4.4,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.2,
       "superflexRank": 284
     },
@@ -4968,10 +4970,10 @@
       "minRank": 236,
       "maxRank": 299,
       "byeWeek": 14,
-      "ownership": 3.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 3,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
-      "superflexRank": 239
+      "superflexRank": 240
     },
     {
       "id": "fp-19747",
@@ -4987,10 +4989,10 @@
       "minRank": 186,
       "maxRank": 255,
       "byeWeek": 13,
-      "ownership": 1.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 334
+      "superflexRank": 332
     },
     {
       "id": "fp-22845",
@@ -5006,9 +5008,9 @@
       "minRank": 222,
       "maxRank": 223,
       "byeWeek": 7,
-      "ownership": 0.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 305
+      "ownership": 1.1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 309
     },
     {
       "id": "fp-28135",
@@ -5025,7 +5027,8 @@
       "maxRank": 292,
       "byeWeek": 6,
       "ownership": 4.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 214,
       "superflexRank": 286
     },
     {
@@ -5043,8 +5046,8 @@
       "maxRank": 349,
       "byeWeek": 9,
       "ownership": 2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 307
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 304
     },
     {
       "id": "fp-27165",
@@ -5060,10 +5063,10 @@
       "minRank": 226,
       "maxRank": 354,
       "byeWeek": 9,
-      "ownership": 8.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 8.2,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 251
+      "superflexRank": 253
     },
     {
       "id": "fp-18864",
@@ -5079,10 +5082,10 @@
       "minRank": 224,
       "maxRank": 332,
       "byeWeek": 11,
-      "ownership": 3.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 2.9,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 299
+      "superflexRank": 305
     },
     {
       "id": "fp-24367",
@@ -5099,9 +5102,9 @@
       "maxRank": 291,
       "byeWeek": 13,
       "ownership": 5.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.8,
-      "superflexRank": 265
+      "superflexRank": 262
     },
     {
       "id": "fp-28132",
@@ -5118,8 +5121,8 @@
       "maxRank": 306,
       "byeWeek": 10,
       "ownership": 5.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 352
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 351
     },
     {
       "id": "fp-20126",
@@ -5136,9 +5139,9 @@
       "maxRank": 147,
       "byeWeek": 6,
       "ownership": 1.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 215.9,
-      "superflexRank": 340
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.8,
+      "superflexRank": 341
     },
     {
       "id": "fp-23682",
@@ -5154,10 +5157,10 @@
       "minRank": 217,
       "maxRank": 365,
       "byeWeek": 8,
-      "ownership": 6.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 6.3,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 247
+      "superflexRank": 250
     },
     {
       "id": "fp-11616",
@@ -5173,10 +5176,10 @@
       "minRank": 217,
       "maxRank": 286,
       "byeWeek": 7,
-      "ownership": 8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 204.7,
-      "superflexRank": 259
+      "ownership": 7.1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 201.3,
+      "superflexRank": 256
     },
     {
       "id": "fp-26392",
@@ -5193,9 +5196,9 @@
       "maxRank": 340,
       "byeWeek": 8,
       "ownership": 2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 272
+      "superflexRank": 274
     },
     {
       "id": "fp-16489",
@@ -5212,9 +5215,9 @@
       "maxRank": 314,
       "byeWeek": 11,
       "ownership": 2.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 216,
-      "superflexRank": 262
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.9,
+      "superflexRank": 260
     },
     {
       "id": "fp-26136",
@@ -5230,10 +5233,10 @@
       "minRank": 193,
       "maxRank": 318,
       "byeWeek": 5,
-      "ownership": 3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 214.7,
-      "superflexRank": 245
+      "ownership": 3.1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 214.9,
+      "superflexRank": 244
     },
     {
       "id": "fp-17066",
@@ -5250,9 +5253,9 @@
       "maxRank": 301,
       "byeWeek": 14,
       "ownership": 3.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
-      "superflexRank": 319
+      "superflexRank": 322
     },
     {
       "id": "fp-24334",
@@ -5268,9 +5271,9 @@
       "minRank": 241,
       "maxRank": 275,
       "byeWeek": 5,
-      "ownership": 3.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 215.8,
+      "ownership": 3.4,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.9,
       "superflexRank": 308
     },
     {
@@ -5288,9 +5291,9 @@
       "maxRank": 260,
       "byeWeek": 10,
       "ownership": 5.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 215.8,
-      "superflexRank": 255
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.9,
+      "superflexRank": 254
     },
     {
       "id": "fp-26005",
@@ -5306,18 +5309,18 @@
       "minRank": 273,
       "maxRank": 298,
       "byeWeek": 13,
-      "ownership": 11.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 215.9,
-      "superflexRank": 249
+      "ownership": 11.5,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.7,
+      "superflexRank": 248
     },
     {
       "id": "fp-19781",
       "name": "Justin Fields",
       "team": "KC",
       "position": "QB",
-      "averageRank": 319,
-      "rankEcr": 319,
+      "averageRank": 320,
+      "rankEcr": 320,
       "rankAverage": 288.67,
       "standardDeviation": 29.01,
       "tier": 14,
@@ -5326,9 +5329,9 @@
       "maxRank": 329,
       "byeWeek": 5,
       "ownership": 8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 215.9,
-      "superflexRank": 398
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 216,
+      "superflexRank": 404
     },
     {
       "id": "fp-27285",
@@ -5344,10 +5347,10 @@
       "minRank": 249,
       "maxRank": 313,
       "byeWeek": 7,
-      "ownership": 5.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 215.7,
-      "superflexRank": 237
+      "ownership": 5,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.8,
+      "superflexRank": 238
     },
     {
       "id": "fp-18520",
@@ -5363,10 +5366,10 @@
       "minRank": 190,
       "maxRank": 190,
       "byeWeek": 14,
-      "ownership": 3.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 3.5,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
-      "superflexRank": 330
+      "superflexRank": 333
     },
     {
       "id": "fp-23079",
@@ -5383,9 +5386,9 @@
       "maxRank": 303,
       "byeWeek": 13,
       "ownership": 4.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 216,
-      "superflexRank": 275
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.9,
+      "superflexRank": 271
     },
     {
       "id": "fp-23004",
@@ -5401,10 +5404,10 @@
       "minRank": 289,
       "maxRank": 295,
       "byeWeek": 11,
-      "ownership": 5.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 215.9,
-      "superflexRank": 296
+      "ownership": 4.9,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.8,
+      "superflexRank": 295
     },
     {
       "id": "fp-16081",
@@ -5420,10 +5423,10 @@
       "minRank": 200,
       "maxRank": 200,
       "byeWeek": 10,
-      "ownership": 0.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 0.8,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
-      "superflexRank": 331
+      "superflexRank": 334
     },
     {
       "id": "fp-28067",
@@ -5440,8 +5443,8 @@
       "maxRank": 201,
       "byeWeek": 6,
       "ownership": 2.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 351
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 343
     },
     {
       "id": "fp-25654",
@@ -5457,10 +5460,10 @@
       "minRank": 238,
       "maxRank": 329,
       "byeWeek": 5,
-      "ownership": 2.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 215.8,
-      "superflexRank": 256
+      "ownership": 2.4,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.9,
+      "superflexRank": 255
     },
     {
       "id": "fp-25823",
@@ -5476,10 +5479,10 @@
       "minRank": 277,
       "maxRank": 315,
       "byeWeek": 11,
-      "ownership": 6.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 6.3,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 233
+      "superflexRank": 236
     },
     {
       "id": "fp-19229",
@@ -5496,9 +5499,9 @@
       "maxRank": 300,
       "byeWeek": 10,
       "ownership": 7.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 215.9,
-      "superflexRank": 298
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.8,
+      "superflexRank": 299
     },
     {
       "id": "fp-13890",
@@ -5514,10 +5517,10 @@
       "minRank": 227,
       "maxRank": 328,
       "byeWeek": 7,
-      "ownership": 3.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 3.5,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 429
+      "superflexRank": 433
     },
     {
       "id": "fp-22905",
@@ -5534,9 +5537,9 @@
       "maxRank": 216,
       "byeWeek": 7,
       "ownership": 3.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
-      "superflexRank": 311
+      "superflexRank": 310
     },
     {
       "id": "fp-24370",
@@ -5553,8 +5556,8 @@
       "maxRank": 218,
       "byeWeek": 6,
       "ownership": 0.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 374
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 371
     },
     {
       "id": "fp-26212",
@@ -5570,10 +5573,10 @@
       "minRank": 263,
       "maxRank": 350,
       "byeWeek": 6,
-      "ownership": 1.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 1.5,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 266
+      "superflexRank": 265
     },
     {
       "id": "fp-19302",
@@ -5589,10 +5592,10 @@
       "minRank": 247,
       "maxRank": 317,
       "byeWeek": 7,
-      "ownership": 7.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 6.8,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
-      "superflexRank": 267
+      "superflexRank": 268
     },
     {
       "id": "fp-23837",
@@ -5608,10 +5611,10 @@
       "minRank": 251,
       "maxRank": 314,
       "byeWeek": 6,
-      "ownership": 1.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 215.4,
-      "superflexRank": 309
+      "ownership": 1.3,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.5,
+      "superflexRank": 301
     },
     {
       "id": "fp-25977",
@@ -5627,10 +5630,10 @@
       "minRank": 250,
       "maxRank": 317,
       "byeWeek": 13,
-      "ownership": 3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 3.3,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.8,
-      "superflexRank": 221
+      "superflexRank": 220
     },
     {
       "id": "fp-15665",
@@ -5647,9 +5650,9 @@
       "maxRank": 231,
       "byeWeek": 8,
       "ownership": 0.8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 396
+      "superflexRank": 405
     },
     {
       "id": "fp-22895",
@@ -5666,9 +5669,9 @@
       "maxRank": 233,
       "byeWeek": 5,
       "ownership": 1.8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 216,
-      "superflexRank": 320
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.9,
+      "superflexRank": 323
     },
     {
       "id": "fp-25430",
@@ -5685,8 +5688,8 @@
       "maxRank": 234,
       "byeWeek": 8,
       "ownership": 6.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 210
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 209
     },
     {
       "id": "fp-26328",
@@ -5702,8 +5705,8 @@
       "minRank": 235,
       "maxRank": 235,
       "byeWeek": 7,
-      "ownership": 1.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 1.2,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
       "superflexRank": 290
     },
@@ -5721,10 +5724,10 @@
       "minRank": 242,
       "maxRank": 334,
       "byeWeek": 8,
-      "ownership": 1.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 0.9,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 323
+      "superflexRank": 326
     },
     {
       "id": "fp-24371",
@@ -5740,10 +5743,10 @@
       "minRank": 261,
       "maxRank": 315,
       "byeWeek": 11,
-      "ownership": 2.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 2.6,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
-      "superflexRank": 271
+      "superflexRank": 272
     },
     {
       "id": "fp-28154",
@@ -5760,8 +5763,8 @@
       "maxRank": 333,
       "byeWeek": 11,
       "ownership": 5.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 325
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 313
     },
     {
       "id": "fp-28079",
@@ -5778,8 +5781,8 @@
       "maxRank": 318,
       "byeWeek": 10,
       "ownership": 11,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 326
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 319
     },
     {
       "id": "fp-27259",
@@ -5796,9 +5799,9 @@
       "maxRank": 311,
       "byeWeek": 5,
       "ownership": 4.8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 261
+      "superflexRank": 263
     },
     {
       "id": "fp-13891",
@@ -5814,10 +5817,10 @@
       "minRank": 240,
       "maxRank": 240,
       "byeWeek": 8,
-      "ownership": 4.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 5.1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 440
+      "superflexRank": 443
     },
     {
       "id": "fp-27487",
@@ -5833,8 +5836,8 @@
       "minRank": 281,
       "maxRank": 302,
       "byeWeek": 11,
-      "ownership": 6.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 5.6,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
       "superflexRank": 264
     },
@@ -5852,10 +5855,10 @@
       "minRank": 257,
       "maxRank": 327,
       "byeWeek": 10,
-      "ownership": 1.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 215.9,
-      "superflexRank": 287
+      "ownership": 1.8,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.8,
+      "superflexRank": 288
     },
     {
       "id": "fp-27288",
@@ -5871,10 +5874,10 @@
       "minRank": 254,
       "maxRank": 331,
       "byeWeek": 13,
-      "ownership": 1.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 1.5,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 312
+      "superflexRank": 311
     },
     {
       "id": "fp-27144",
@@ -5890,8 +5893,8 @@
       "minRank": 245,
       "maxRank": 245,
       "byeWeek": 11,
-      "ownership": 1.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 1.1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
       "superflexRank": 327
     },
@@ -5910,9 +5913,9 @@
       "maxRank": 310,
       "byeWeek": 7,
       "ownership": 7.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.8,
-      "superflexRank": 306
+      "superflexRank": 303
     },
     {
       "id": "fp-28125",
@@ -5929,8 +5932,8 @@
       "maxRank": 321,
       "byeWeek": 11,
       "ownership": 1.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 376
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 355
     },
     {
       "id": "fp-28896",
@@ -5946,10 +5949,10 @@
       "minRank": 248,
       "maxRank": 248,
       "byeWeek": 9,
-      "ownership": 1.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 1.5,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.8,
-      "superflexRank": 400
+      "superflexRank": 407
     },
     {
       "id": "fp-19539",
@@ -5965,8 +5968,8 @@
       "minRank": 270,
       "maxRank": 319,
       "byeWeek": 5,
-      "ownership": 3.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 4,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
       "superflexRank": 297
     },
@@ -5985,9 +5988,9 @@
       "maxRank": 332,
       "byeWeek": 11,
       "ownership": 3.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 301
+      "superflexRank": 302
     },
     {
       "id": "fp-27993",
@@ -6004,9 +6007,9 @@
       "maxRank": 309,
       "byeWeek": 11,
       "ownership": 11.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 295
+      "superflexRank": 293
     },
     {
       "id": "fp-22756",
@@ -6023,9 +6026,9 @@
       "maxRank": 252,
       "byeWeek": 7,
       "ownership": 2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 215.3,
-      "superflexRank": 370
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 214.6,
+      "superflexRank": 348
     },
     {
       "id": "fp-25304",
@@ -6042,9 +6045,9 @@
       "maxRank": 253,
       "byeWeek": 11,
       "ownership": 5.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 214.3,
-      "superflexRank": 300
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.9,
+      "superflexRank": 306
     },
     {
       "id": "fp-23018",
@@ -6060,10 +6063,10 @@
       "minRank": 273,
       "maxRank": 322,
       "byeWeek": 6,
-      "ownership": 11.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 215.7,
-      "superflexRank": 310
+      "ownership": 10.9,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.8,
+      "superflexRank": 320
     },
     {
       "id": "fp-20113",
@@ -6080,9 +6083,9 @@
       "maxRank": 256,
       "byeWeek": 7,
       "ownership": 0.8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 364
+      "superflexRank": 366
     },
     {
       "id": "fp-24335",
@@ -6098,8 +6101,8 @@
       "minRank": 256,
       "maxRank": 256,
       "byeWeek": 11,
-      "ownership": 3.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 3.5,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "superflexRank": 270
     },
     {
@@ -6117,9 +6120,9 @@
       "maxRank": 258,
       "byeWeek": 13,
       "ownership": 0.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 215.8,
-      "superflexRank": 349
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.9,
+      "superflexRank": 347
     },
     {
       "id": "fp-23135",
@@ -6136,9 +6139,9 @@
       "maxRank": 259,
       "byeWeek": 11,
       "ownership": 0.8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 343
+      "superflexRank": 349
     },
     {
       "id": "fp-16460",
@@ -6154,8 +6157,8 @@
       "minRank": 263,
       "maxRank": 263,
       "ownership": 3.8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 366
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 364
     },
     {
       "id": "fp-25287",
@@ -6172,7 +6175,8 @@
       "maxRank": 325,
       "byeWeek": 11,
       "ownership": 1.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 216,
       "superflexRank": 285
     },
     {
@@ -6190,7 +6194,7 @@
       "maxRank": 269,
       "byeWeek": 8,
       "ownership": 2.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
       "superflexRank": 289
     },
@@ -6209,8 +6213,8 @@
       "maxRank": 272,
       "byeWeek": 14,
       "ownership": 0.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 421
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 425
     },
     {
       "id": "fp-27093",
@@ -6227,8 +6231,8 @@
       "maxRank": 333,
       "byeWeek": 13,
       "ownership": 2.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 338
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 330
     },
     {
       "id": "fp-26012",
@@ -6245,8 +6249,8 @@
       "maxRank": 274,
       "byeWeek": 13,
       "ownership": 1.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 395
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 399
     },
     {
       "id": "fp-26037",
@@ -6263,8 +6267,8 @@
       "maxRank": 276,
       "byeWeek": 6,
       "ownership": 1.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 399
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 374
     },
     {
       "id": "fp-18585",
@@ -6281,9 +6285,9 @@
       "maxRank": 281,
       "byeWeek": 6,
       "ownership": 1.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 216,
-      "superflexRank": 357
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.9,
+      "superflexRank": 359
     },
     {
       "id": "fp-24360",
@@ -6300,9 +6304,8 @@
       "maxRank": 364,
       "byeWeek": 8,
       "ownership": 5.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 216,
-      "superflexRank": 257
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 259
     },
     {
       "id": "fp-22930",
@@ -6318,10 +6321,9 @@
       "minRank": 283,
       "maxRank": 351,
       "byeWeek": 10,
-      "ownership": 1.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 216,
-      "superflexRank": 280
+      "ownership": 1.3,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 281
     },
     {
       "id": "fp-26329",
@@ -6337,9 +6339,10 @@
       "minRank": 287,
       "maxRank": 345,
       "byeWeek": 8,
-      "ownership": 0.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 316
+      "ownership": 0.7,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 216,
+      "superflexRank": 321
     },
     {
       "id": "fp-14104",
@@ -6354,10 +6357,10 @@
       "positionRank": 53,
       "minRank": 288,
       "maxRank": 288,
-      "ownership": 1.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 1.8,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 355
+      "superflexRank": 357
     },
     {
       "id": "fp-27449",
@@ -6373,10 +6376,10 @@
       "minRank": 288,
       "maxRank": 288,
       "byeWeek": 11,
-      "ownership": 0.8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 1.1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 288
+      "superflexRank": 287
     },
     {
       "id": "fp-11689",
@@ -6391,9 +6394,10 @@
       "positionRank": 54,
       "minRank": 290,
       "maxRank": 290,
-      "ownership": 1.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 367
+      "ownership": 1.3,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 216,
+      "superflexRank": 365
     },
     {
       "id": "fp-24347",
@@ -6410,9 +6414,9 @@
       "maxRank": 295,
       "byeWeek": 13,
       "ownership": 11.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 350
+      "superflexRank": 369
     },
     {
       "id": "fp-15581",
@@ -6429,8 +6433,9 @@
       "maxRank": 297,
       "byeWeek": 11,
       "ownership": 1.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 344
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 216,
+      "superflexRank": 345
     },
     {
       "id": "fp-25393",
@@ -6447,9 +6452,9 @@
       "maxRank": 337,
       "byeWeek": 5,
       "ownership": 1.5,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 263
+      "superflexRank": 266
     },
     {
       "id": "fp-20114",
@@ -6466,9 +6471,9 @@
       "maxRank": 308,
       "byeWeek": 10,
       "ownership": 0.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 473
+      "superflexRank": 478
     },
     {
       "id": "fp-22921",
@@ -6485,8 +6490,8 @@
       "maxRank": 338,
       "byeWeek": 7,
       "ownership": 3.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 260
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 261
     },
     {
       "id": "fp-24238",
@@ -6503,8 +6508,9 @@
       "maxRank": 312,
       "byeWeek": 9,
       "ownership": 3.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 345
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 216,
+      "superflexRank": 346
     },
     {
       "id": "fp-27469",
@@ -6521,8 +6527,9 @@
       "maxRank": 316,
       "byeWeek": 7,
       "ownership": 0.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 450
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 216,
+      "superflexRank": 390
     },
     {
       "id": "fp-26310",
@@ -6538,10 +6545,10 @@
       "minRank": 323,
       "maxRank": 334,
       "byeWeek": 7,
-      "ownership": 1.1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 1.7,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 333
+      "superflexRank": 328
     },
     {
       "id": "fp-20156",
@@ -6557,10 +6564,10 @@
       "minRank": 320,
       "maxRank": 320,
       "byeWeek": 8,
-      "ownership": 8.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 8.1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 339
+      "superflexRank": 370
     },
     {
       "id": "fp-23119",
@@ -6576,10 +6583,10 @@
       "minRank": 320,
       "maxRank": 320,
       "byeWeek": 14,
-      "ownership": 0.8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 0.9,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 358
+      "superflexRank": 361
     },
     {
       "id": "fp-25267",
@@ -6596,9 +6603,9 @@
       "maxRank": 321,
       "byeWeek": 14,
       "ownership": 0.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 382
+      "superflexRank": 385
     },
     {
       "id": "fp-16420",
@@ -6614,9 +6621,9 @@
       "minRank": 322,
       "maxRank": 322,
       "ownership": 10.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
-      "superflexRank": 282
+      "superflexRank": 283
     },
     {
       "id": "fp-24351",
@@ -6633,9 +6640,9 @@
       "maxRank": 323,
       "byeWeek": 11,
       "ownership": 0.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 313
+      "superflexRank": 316
     },
     {
       "id": "fp-22795",
@@ -6651,10 +6658,10 @@
       "minRank": 325,
       "maxRank": 325,
       "byeWeek": 5,
-      "ownership": 0.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 0.8,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 332
+      "superflexRank": 335
     },
     {
       "id": "fp-17508",
@@ -6671,8 +6678,8 @@
       "maxRank": 326,
       "byeWeek": 13,
       "ownership": 0.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 410
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 416
     },
     {
       "id": "fp-17246",
@@ -6687,10 +6694,9 @@
       "positionRank": 101,
       "minRank": 327,
       "maxRank": 327,
-      "ownership": 1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 216,
-      "superflexRank": 318
+      "ownership": 0.9,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 325
     },
     {
       "id": "fp-25282",
@@ -6707,7 +6713,7 @@
       "maxRank": 328,
       "byeWeek": 11,
       "ownership": 7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
       "superflexRank": 324
     },
@@ -6725,9 +6731,10 @@
       "minRank": 330,
       "maxRank": 330,
       "byeWeek": 8,
-      "ownership": 2.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 322
+      "ownership": 2.2,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 216,
+      "superflexRank": 315
     },
     {
       "id": "fp-25983",
@@ -6743,10 +6750,10 @@
       "minRank": 331,
       "maxRank": 331,
       "byeWeek": 13,
-      "ownership": 1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 1.1,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 341
+      "superflexRank": 336
     },
     {
       "id": "fp-27138",
@@ -6763,9 +6770,9 @@
       "maxRank": 335,
       "byeWeek": 5,
       "ownership": 0.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "adp": 216,
-      "superflexRank": 336
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 215.9,
+      "superflexRank": 329
     },
     {
       "id": "fp-25322",
@@ -6782,8 +6789,9 @@
       "maxRank": 336,
       "byeWeek": 10,
       "ownership": 0.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 337
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "adp": 216,
+      "superflexRank": 338
     },
     {
       "id": "fp-9300",
@@ -6799,10 +6807,10 @@
       "minRank": 337,
       "maxRank": 337,
       "byeWeek": 6,
-      "ownership": 4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "ownership": 3.5,
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 437
+      "superflexRank": 441
     },
     {
       "id": "fp-27326",
@@ -6819,8 +6827,8 @@
       "maxRank": 339,
       "byeWeek": 11,
       "ownership": 1.3,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 335
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 339
     },
     {
       "id": "fp-25368",
@@ -6837,9 +6845,9 @@
       "maxRank": 340,
       "byeWeek": 11,
       "ownership": 14.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 356
+      "superflexRank": 358
     },
     {
       "id": "fp-22728",
@@ -6856,8 +6864,8 @@
       "maxRank": 341,
       "byeWeek": 9,
       "ownership": 0.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 304
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 312
     },
     {
       "id": "fp-28157",
@@ -6874,8 +6882,8 @@
       "maxRank": 342,
       "byeWeek": 8,
       "ownership": 1.2,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 407
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 376
     },
     {
       "id": "fp-17598",
@@ -6892,7 +6900,7 @@
       "maxRank": 343,
       "byeWeek": 6,
       "ownership": 0.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
       "superflexRank": 452
     },
@@ -6911,8 +6919,8 @@
       "maxRank": 346,
       "byeWeek": 6,
       "ownership": 0.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 361
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 352
     },
     {
       "id": "fp-27312",
@@ -6929,8 +6937,8 @@
       "maxRank": 347,
       "byeWeek": 11,
       "ownership": 1.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 572
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 568
     },
     {
       "id": "fp-25876",
@@ -6947,8 +6955,8 @@
       "maxRank": 352,
       "byeWeek": 10,
       "ownership": 0.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 273
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 275
     },
     {
       "id": "fp-11798",
@@ -6965,8 +6973,8 @@
       "maxRank": 355,
       "byeWeek": 8,
       "ownership": 1,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 348
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 340
     },
     {
       "id": "fp-18487",
@@ -6983,9 +6991,9 @@
       "maxRank": 356,
       "byeWeek": 6,
       "ownership": 0.7,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 372
+      "superflexRank": 367
     },
     {
       "id": "fp-28168",
@@ -7002,8 +7010,8 @@
       "maxRank": 357,
       "byeWeek": 13,
       "ownership": 2.6,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 454
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 455
     },
     {
       "id": "fp-28427",
@@ -7020,8 +7028,8 @@
       "maxRank": 358,
       "byeWeek": 7,
       "ownership": 0.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 414
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 389
     },
     {
       "id": "fp-28163",
@@ -7038,8 +7046,8 @@
       "maxRank": 359,
       "byeWeek": 6,
       "ownership": 0,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 573
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 569
     },
     {
       "id": "fp-27499",
@@ -7056,8 +7064,8 @@
       "maxRank": 360,
       "byeWeek": 7,
       "ownership": 1.9,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 569
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 401
     },
     {
       "id": "fp-28403",
@@ -7074,8 +7082,8 @@
       "maxRank": 361,
       "byeWeek": 6,
       "ownership": 5.4,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 451
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 413
     },
     {
       "id": "fp-27501",
@@ -7092,8 +7100,8 @@
       "maxRank": 362,
       "byeWeek": 6,
       "ownership": 5.8,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 570
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 461
     },
     {
       "id": "fp-28165",
@@ -7110,27 +7118,27 @@
       "maxRank": 363,
       "byeWeek": 10,
       "ownership": 0,
-      "lastUpdated": "2026-08-03T23:00:42.000Z",
-      "superflexRank": 578
+      "lastUpdated": "2026-08-05T21:01:29.000Z",
+      "superflexRank": 571
     }
   ],
   "rankingSource": {
     "provider": "FantasyPros PPR best ball consensus",
     "url": "https://www.fantasypros.com/nfl/rankings/best-ball-overall.php",
-    "asOf": "2026-08-03T23:00:42.000Z",
+    "asOf": "2026-08-05T21:01:29.000Z",
     "matchedCount": 377
   },
   "superflexSource": {
     "provider": "FantasyPros half PPR Superflex consensus",
     "url": "https://www.fantasypros.com/nfl/rankings/half-point-ppr-superflex-cheatsheets.php",
-    "asOf": "2026-08-05T18:14:22.000Z",
+    "asOf": "2026-08-07T00:03:54.000Z",
     "matchedCount": 377
   },
   "adpSource": {
     "provider": "Underdog ADP via Hayden Winks",
     "url": "https://pprrankings.com/rankings",
-    "asOf": "2026-08-05T11:05:24.083Z",
-    "matchedCount": 331
+    "asOf": "2026-08-06T22:01:48.661Z",
+    "matchedCount": 338
   },
   "scheduleSource": {
     "provider": "ESPN NFL schedule",
