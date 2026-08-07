@@ -26,8 +26,13 @@ interface PositionFilterBarProps<T extends string> {
 /**
  * The position pill row shared by the rankings board and the draft board. It was
  * duplicated (with near-identical styling) in both surfaces; consolidating keeps
- * the tones, touch targets, and a11y semantics from forking. On narrow screens
- * the row scroll-snaps horizontally instead of wrapping to three stacked rows.
+ * the tones, touch targets, and a11y semantics from forking.
+ *
+ * The row wraps at every width. It used to scroll horizontally below `sm` with
+ * its scrollbar suppressed, which put Flex, K, and DST off screen at 390px with
+ * no fade and no chevron, so three of eight boards were undiscoverable. Eight
+ * 44px pills wrap into two rows at 390px, which removes the discovery problem
+ * outright and needs no scroll state.
  */
 export function PositionFilterBar<T extends string>({
   options,
@@ -40,7 +45,7 @@ export function PositionFilterBar<T extends string>({
     <div
       role="radiogroup"
       aria-label={ariaLabel}
-      className="-mx-1 flex snap-x snap-mandatory gap-2 overflow-x-auto px-1 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0"
+      className="-mx-1 flex flex-wrap gap-2 px-1 pb-1 sm:mx-0 sm:px-0 sm:pb-0"
     >
       {options.map((option) => {
         const isActive = option.value === value;
@@ -86,7 +91,7 @@ export function PositionFilterBar<T extends string>({
             title={isUnavailable ? option.unavailableLabel : undefined}
             disabled={isDisabled}
             onClick={() => !isDisabled && onChange(option.value)}
-            className="inline-flex min-h-touch min-w-touch shrink-0 snap-start items-center justify-center gap-1.5 rounded-full border px-3.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed"
+            className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center gap-1.5 rounded-full border px-3.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed"
             style={style}
           >
             <span>{option.label}</span>

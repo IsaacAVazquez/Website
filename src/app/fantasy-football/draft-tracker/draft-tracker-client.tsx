@@ -607,7 +607,7 @@ export function DraftTrackerClient() {
                       <button
                         type="button"
                         onClick={() => setDetailPlayer(pick.player)}
-                        className="min-w-0 flex-1 text-left"
+                        className="flex min-h-touch min-w-0 flex-1 flex-col justify-center text-left"
                       >
                         <p className="truncate text-sm font-semibold">{pick.player.name}</p>
                         <p className="mt-1 text-xs" style={{ color: "var(--home-ink-muted)" }}>
@@ -640,7 +640,7 @@ export function DraftTrackerClient() {
                 type="button"
                 onClick={() => setShowTeamEditor((open) => !open)}
                 aria-expanded={showTeamEditor}
-                className="flex w-full items-center justify-between gap-2"
+                className="flex min-h-touch w-full items-center justify-between gap-2"
               >
                 <span className="home-kicker mb-0">Name the teams</span>
                 <ChevronDown

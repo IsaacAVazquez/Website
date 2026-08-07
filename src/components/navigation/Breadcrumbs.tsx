@@ -151,7 +151,7 @@ export function Breadcrumbs({
               ) : (
                 <Link
                   href={item.href}
-                  className="text-[var(--home-ink-muted)] hover:text-[var(--home-signal)] transition-[color,background-color] duration-200 text-sm px-2 py-1 rounded-lg hover:bg-[var(--home-paper-alt)] font-medium"
+                  className="inline-flex min-h-touch items-center text-[var(--home-ink-muted)] hover:text-[var(--home-signal)] transition-[color,background-color] duration-200 text-sm px-2 py-1 rounded-lg hover:bg-[var(--home-paper-alt)] font-medium"
                 >
                   {item.label === "Home" && showHome ? (
                     <span className="flex items-center gap-1.5">

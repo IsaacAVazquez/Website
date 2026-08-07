@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { GitCompareArrows, X } from "lucide-react";
+import { ChevronDown, GitCompareArrows, X } from "lucide-react";
 import { useState } from "react";
 
 import { useCompareTray } from "@/hooks/useCompareTray";
@@ -21,11 +21,18 @@ interface CompareTrayProps {
  * A docked bottom bar that surfaces the compare selection from anywhere on the
  * page and opens the side-by-side modal. Renders nothing until at least one
  * player is pinned, so it never steals space during normal browsing.
+ *
+ * Once populated it is a fixed band across the bottom of the viewport, which
+ * costs a phone about 100px of thumb zone, so it can be collapsed to a single
+ * pill. Collapsing is component state rather than stored state on purpose: it
+ * hides the bar without touching the pinned ids, so minimizing the tray and
+ * clearing it stay separate actions.
  */
 export function CompareTray({ resolvePlayer, publishedRank, valueSignalAvailable = true }: CompareTrayProps) {
   const reduceMotion = useReducedMotion();
   const compare = useCompareTray();
   const [open, setOpen] = useState(false);
+  const [collapsed, setCollapsed] = useState(false);
 
   const players = compare.compareIds
     .map((id) => resolvePlayer(id))
@@ -44,6 +51,24 @@ export function CompareTray({ resolvePlayer, publishedRank, valueSignalAvailable
             transition={{ duration: reduceMotion ? 0 : 0.2 }}
             className="fixed inset-x-0 bottom-0 z-50 flex justify-center px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]"
           >
+            {collapsed ? (
+              <button
+                type="button"
+                onClick={() => setCollapsed(false)}
+                aria-expanded={false}
+                aria-label={`Compare ${players.length}, show the tray`}
+                className="inline-flex min-h-touch items-center gap-2 rounded-full border px-4 text-sm font-semibold"
+                style={{
+                  borderColor: "var(--home-rule)",
+                  background: "color-mix(in srgb, var(--home-paper) 94%, var(--home-elev-mix))",
+                  boxShadow: "var(--shadow-lg)",
+                  backdropFilter: "blur(8px)",
+                }}
+              >
+                <GitCompareArrows size={16} aria-hidden="true" />
+                Compare {players.length}
+              </button>
+            ) : (
             <div
               className="flex w-full max-w-3xl flex-wrap items-center gap-2 rounded-[var(--radius-3xl)] border px-3 py-2.5"
               style={{
@@ -93,7 +118,18 @@ export function CompareTray({ resolvePlayer, publishedRank, valueSignalAvailable
                 <GitCompareArrows size={16} aria-hidden="true" />
                 Compare {players.length}
               </button>
+              <button
+                type="button"
+                onClick={() => setCollapsed(true)}
+                aria-expanded
+                aria-label="Minimize the compare tray"
+                className="inline-flex min-h-touch min-w-touch items-center justify-center rounded-full border"
+                style={{ borderColor: "var(--home-rule)", color: "var(--home-ink-muted)" }}
+              >
+                <ChevronDown size={16} aria-hidden="true" />
+              </button>
             </div>
+            )}
           </motion.div>
         )}
       </AnimatePresence>

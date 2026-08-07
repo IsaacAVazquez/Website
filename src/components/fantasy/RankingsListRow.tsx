@@ -44,6 +44,12 @@ function Metric({ label, children }: { label: string; children: ReactNode }) {
  * muted secondary line, a reflowing metric strip, and an always-visible action
  * cluster (queue, compare, open detail). Hover lifts the row; a queued row
  * carries a signal left accent so the watchlist reads inline.
+ *
+ * Compare shows at every width. It used to be `hidden sm:inline-flex`, which
+ * left 62 compare toggles in the DOM at 390px and none of them visible, so the
+ * only way into compare on a phone was to open the drawer, tap Compare, close
+ * it, find the second player, and repeat. The metric strip reflows above the
+ * action cluster at that width, so the second 44px button fits.
  */
 export function RankingsListRow({
   player,
@@ -163,7 +169,7 @@ export function RankingsListRow({
             aria-pressed={inCompare}
             disabled={compareDisabled}
             aria-label={inCompare ? `Remove ${player.name} from compare` : `Add ${player.name} to compare`}
-            className="hidden min-h-touch min-w-touch items-center justify-center rounded-full border transition-colors disabled:cursor-not-allowed disabled:opacity-45 sm:inline-flex"
+            className="inline-flex min-h-touch min-w-touch items-center justify-center rounded-full border transition-colors disabled:cursor-not-allowed disabled:opacity-45"
             style={
               inCompare
                 ? { borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }
