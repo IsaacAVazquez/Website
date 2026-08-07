@@ -921,7 +921,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
             </div>
           </article>
 
-          <aside className="grid gap-5 lg:sticky lg:top-24 lg:self-start">
+          <aside aria-label="Board details" className="grid gap-5 lg:sticky lg:top-24 lg:self-start">
             <article className="home-card p-5 sm:p-6">
               <div className="flex items-center gap-3">
                 <Shield className="h-5 w-5" style={{ color: "var(--home-signal)" }} aria-hidden="true" />

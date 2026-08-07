@@ -383,7 +383,7 @@ export function DraftTrackerClient() {
             )}
           </div>
 
-          <aside className="grid gap-5 lg:sticky lg:top-24 lg:self-start">
+          <aside aria-label="Draft outlook" className="grid gap-5 lg:sticky lg:top-24 lg:self-start">
             {!showSetup && !rankingsUnavailable ? (
               <article className="home-card hidden p-5 sm:p-6 lg:block">
                 <DraftValuePanel

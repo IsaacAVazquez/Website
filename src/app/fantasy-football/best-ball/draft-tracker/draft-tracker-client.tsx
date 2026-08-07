@@ -394,7 +394,7 @@ function BestBallDraftRoom({
           </button>
         </section>
 
-        <aside className="home-card p-5 sm:p-6">
+        <aside aria-label="Contest details" className="home-card p-5 sm:p-6">
           <p className="home-kicker mb-1">{preset.shortName}</p>
           <h2 className="text-2xl font-semibold">{preset.name}</h2>
           <p className="mt-3 text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
@@ -536,7 +536,7 @@ function BestBallDraftRoom({
           />
         </div>
 
-        <aside className="hidden self-start lg:sticky lg:top-24 lg:grid lg:gap-5">
+        <aside aria-label="Roster build" className="hidden self-start lg:sticky lg:top-24 lg:grid lg:gap-5">
           <section className="home-card p-5">
             <BestBallBuildPanel
               analysis={analysis}
