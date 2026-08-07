@@ -371,7 +371,10 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
     };
 
     startTransition(() => {
-      router.push(buildFantasyHref(nextRouteState, searchParams), { scroll: false });
+      // Filter state replaces rather than pushes. Pushing stacked one history
+      // entry per position or scoring tap, so Back walked the filter history
+      // instead of leaving the page.
+      router.replace(buildFantasyHref(nextRouteState, searchParams), { scroll: false });
     });
   }
 

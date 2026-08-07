@@ -589,7 +589,11 @@ describe("FantasyFootballClient", () => {
     const halfPpr = screen.getByRole("button", { name: "Half PPR" });
     expect(halfPpr).not.toBeDisabled();
     fireEvent.click(halfPpr);
-    expect(mockPush).toHaveBeenCalledWith(expect.stringContaining("scoring=half_ppr"), { scroll: false });
+    // Filter state replaces rather than pushes, so Back leaves the page instead
+    // of walking back through every position and scoring tap. Changed with the
+    // fix; the assertion here is the navigation call, not the history growth.
+    expect(mockReplace).toHaveBeenCalledWith(expect.stringContaining("scoring=half_ppr"), { scroll: false });
+    expect(mockPush).not.toHaveBeenCalled();
   });
 
   it("offers an in-place retry when rankings fail to load", () => {

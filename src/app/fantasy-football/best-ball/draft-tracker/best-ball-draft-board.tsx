@@ -14,12 +14,15 @@ const ROW_STYLE = {
   background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
 } as const;
 
-function positionColor(position: Player["position"]): string {
-  if (position === "QB") return "var(--home-signal)";
-  if (position === "RB") return "var(--home-positive)";
-  if (position === "WR") return "var(--home-warning)";
-  return "var(--home-moss)";
-}
+// The chip already prints the position, so hue was carrying nothing the label
+// wasn't. DESIGN.md sends categorical needs to ink and stone and keeps signal,
+// positive, and warning for status, so a green RB and an amber TE no longer
+// read as "good" and "caution" to anyone who learned those colors elsewhere on
+// the site. This also retires the last --home-moss in the fantasy tree.
+const POSITION_CHIP_STYLE = {
+  borderColor: "color-mix(in srgb, var(--home-ink) 24%, var(--home-rule))",
+  color: "var(--home-ink)",
+} as const;
 
 export function BestBallDraftBoard({
   players,
@@ -152,7 +155,7 @@ export function BestBallDraftBoard({
             </span>
             <span
               className="inline-flex min-h-[28px] min-w-[38px] items-center justify-center rounded-full border px-2 text-xs font-semibold sm:min-h-0 sm:justify-start sm:border-0 sm:px-0"
-              style={{ borderColor: positionColor(player.position), color: positionColor(player.position) }}
+              style={POSITION_CHIP_STYLE}
             >
               {player.position}
             </span>

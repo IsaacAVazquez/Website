@@ -125,6 +125,7 @@ export function BestBallDraftTrackerClient({
   return (
     <section
       className="home-page home-dash min-h-screen overflow-x-clip pb-24 lg:pb-0"
+      aria-label="Best ball draft assistant"
       data-testid="best-ball-draft-tracker-shell"
     >
       <div className="home-shell home-shell-wide home-section space-y-5">
@@ -542,7 +543,7 @@ function BestBallDraftRoom({
           aria-label="Roster build"
           className="hidden self-start lg:sticky lg:top-24 lg:grid lg:max-h-[calc(100vh-7rem)] lg:gap-5 lg:overflow-y-auto lg:overscroll-contain"
         >
-          <section className="home-card p-5">
+          <section className="home-card p-5" aria-labelledby="best-ball-desktop-build-heading">
             <BestBallBuildPanel
               analysis={analysis}
               preset={preset}

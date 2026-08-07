@@ -215,6 +215,9 @@ export function DraftTrackerClient() {
   return (
     <section
       className="home-page home-dash min-h-screen"
+      // A literal name rather than aria-labelledby, because the heading this
+      // would point at only renders in one of the two header states.
+      aria-label="Fantasy football draft assistant"
       data-testid="fantasy-draft-tracker-shell"
       data-hydrated={isHydrated ? "true" : "false"}
     >
@@ -792,6 +795,7 @@ export function DraftTrackerClient() {
         player={detailPlayer}
         publishedRank={detailPlayer ? publishedDraftRank(detailPlayer) : undefined}
         boardTierCount={boardTierCount > 0 ? boardTierCount : undefined}
+        compareAvailableBelowSm={false}
         onClose={() => setDetailPlayer(null)}
       />
       {/* Hidden below sm, where the compare toggles that populate it are hidden

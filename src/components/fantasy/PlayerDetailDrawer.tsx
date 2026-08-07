@@ -37,6 +37,13 @@ interface PlayerDetailDrawerProps {
    * rankEcr is the position rank and isn't comparable to an overall ADP.
    */
   valueSignalAvailable?: boolean;
+  /**
+   * Whether the calling surface can actually show the compare tray below `sm`.
+   * The draft tracker cannot, because the mobile Undo/Redo bar owns the bottom
+   * edge there, so it passes false and the Compare button hides below `sm`
+   * instead of pinning players into a tray that never appears.
+   */
+  compareAvailableBelowSm?: boolean;
   onClose: () => void;
 }
 
@@ -67,6 +74,7 @@ function StatCell({ label, children }: { label: string; children: React.ReactNod
 export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onClose,
   adpAvailable = true,
   valueSignalAvailable = true,
+  compareAvailableBelowSm = true,
 }: PlayerDetailDrawerProps) {
   const reduceMotion = useReducedMotion();
   const panelRef = useRef<HTMLDivElement>(null);
@@ -229,7 +237,9 @@ export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onCl
                 aria-pressed={inCompare}
                 disabled={compareDisabled}
                 title={compareDisabled ? `Compare holds ${compare.limit} players` : undefined}
-                className="inline-flex min-h-touch flex-1 items-center justify-center gap-2 rounded-full border px-4 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-55"
+                className={`min-h-touch flex-1 items-center justify-center gap-2 rounded-full border px-4 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-55 ${
+                  compareAvailableBelowSm ? "inline-flex" : "hidden sm:inline-flex"
+                }`}
                 style={
                   inCompare
                     ? { borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }

@@ -86,7 +86,13 @@ export function CompareTray({ resolvePlayer, publishedRank, valueSignalAvailable
                     className="inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-semibold"
                     style={{ borderColor: "var(--home-rule)", ...getPositionTone(player.position) }}
                   >
-                    <span className="max-w-[8rem] truncate">{player.name}</span>
+                    {/* 8rem cut "Jaxon Smith-Njigba" and "Marvin Harrison Jr."
+                        down to stubs that read almost the same. 12rem clears
+                        the longest names on the board, and the title carries
+                        the full name for whatever still overflows. */}
+                    <span className="max-w-[12rem] truncate" title={player.name}>
+                      {player.name}
+                    </span>
                     <button
                       type="button"
                       onClick={() => compare.remove(player.id)}
