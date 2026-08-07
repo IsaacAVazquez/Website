@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-07T01:03:38.289Z",
+  "generatedAt": "2026-08-07T10:23:33.281Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-08-07T01:03:30.761Z"
+    "generatedAt": "2026-08-07T10:23:28.627Z"
   },
   "upcomingLaunches": [
     {
@@ -356,7 +356,7 @@
     {
       "id": "f6958a77-37bb-4559-a108-40ba0ff9e34a",
       "name": "Starlink Group 17-50",
-      "flightNumber": 718,
+      "flightNumber": 719,
       "upcoming": true,
       "success": null,
       "details": "A batch of 24 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
@@ -516,7 +516,7 @@
     {
       "id": "fcbc4550-e69e-4458-a9e6-4a5b6b6b15a5",
       "name": "SDA Tranche 1 Tracking Layer E",
-      "flightNumber": 727,
+      "flightNumber": 729,
       "upcoming": true,
       "success": null,
       "details": "Tranche 1 Tracking Layer E is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
@@ -596,7 +596,7 @@
     {
       "id": "da43dc2c-00af-4cc1-8ef1-90a60b2eb9e5",
       "name": "SDA Tranche 1 Transport Layer A",
-      "flightNumber": 727,
+      "flightNumber": 729,
       "upcoming": true,
       "success": null,
       "details": "Tranche 1 Transport Layer A is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.\r\n\r\nThis launch carries 21 satellites manufactured by Northrop Grumman.",
@@ -676,7 +676,7 @@
     {
       "id": "c5783e2b-d458-4b99-9936-4043c236190b",
       "name": "SDA Tranche 1 Transport Layer F",
-      "flightNumber": 727,
+      "flightNumber": 729,
       "upcoming": true,
       "success": null,
       "details": "Tranche 1 Transport Layer F is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.",
@@ -756,7 +756,7 @@
     {
       "id": "dca8749f-1552-485a-8061-f1ad79055b8d",
       "name": "SDA Tranche 1 Tracking Layer C",
-      "flightNumber": 727,
+      "flightNumber": 729,
       "upcoming": true,
       "success": null,
       "details": "Tranche 1 Tracking Layer C is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
@@ -836,7 +836,7 @@
     {
       "id": "d3bd7fb2-fac6-49fc-ae52-cee07d2fde67",
       "name": "Griffin Mission One",
-      "flightNumber": 729,
+      "flightNumber": 731,
       "upcoming": true,
       "success": null,
       "details": "Demonstration flight of the Astrobotic Griffin lander and its engines, initially contracted for the cancelled NASA VIPER (Volatiles Investigating Polar Exploration Rover) mission. The vacated payload spot will now host the FLIP (FLEX Lunar Innovation Platform) lunar rover from Astrolab.",
@@ -1036,7 +1036,7 @@
     {
       "id": "fa895702-687b-4ba3-95fb-9462a2c9844b",
       "name": "Rivada 5",
-      "flightNumber": 764,
+      "flightNumber": 766,
       "upcoming": true,
       "success": null,
       "details": "24 satellites for Rivada's internet constellation.",
@@ -2928,6 +2928,6 @@
       }
     ],
     "rangeLabel": "Sep 25 – Aug 26",
-    "generatedAt": "2026-08-07T01:03:38.288Z"
+    "generatedAt": "2026-08-07T10:23:33.281Z"
   }
 }
