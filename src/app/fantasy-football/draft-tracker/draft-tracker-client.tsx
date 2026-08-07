@@ -17,7 +17,14 @@ import {
   getFantasyWeekLabel,
   scoringFormatToRouteScoring,
 } from "@/lib/fantasy";
-import { formatRankValue, formatUpdatedAt } from "@/lib/fantasyUtils";
+import {
+  formatRankValue,
+  formatUpdatedAt,
+  getFantasyAdpFreshness,
+  getSnapshotStaleness,
+  resolveDraftPicksForModel,
+  withoutPlayerAdp,
+} from "@/lib/fantasyUtils";
 import {
   CompareTray,
   DraftValuePanel,
@@ -37,6 +44,10 @@ const TILE_STYLE = {
   borderColor: "var(--home-rule)",
   background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
 } as const;
+
+// StaticHeader is sticky at top 0 and measures 73px, so the live bar parks
+// directly beneath it instead of sliding underneath and hiding the pick number.
+const LIVE_BAR_TOP = "73px";
 
 const ACTION_STYLE = {
   borderColor: "var(--home-rule)",
@@ -87,6 +98,8 @@ export function DraftTrackerClient() {
   });
   const overallSliceMetadata = snapshot?.sliceMetadata?.overall ?? null;
   const rankingsUnavailable = Boolean(overallSliceMetadata && !overallSliceMetadata.available);
+  const rankingsUpdatedAt = overallSliceMetadata?.updatedAt ?? metadata?.upstreamUpdatedAt;
+  const rankingsStale = Boolean(rankingsUpdatedAt) && getSnapshotStaleness(rankingsUpdatedAt) === "stale";
   const showSetup = draftState.picks.length === 0 && !draftState.isActive;
 
   const [detailPlayer, setDetailPlayer] = useState<Player | null>(null);
@@ -104,33 +117,48 @@ export function DraftTrackerClient() {
     () => new Set(draftState.picks.map((pick) => pick.player.id)),
     [draftState.picks]
   );
-
-  const recentPicks = useMemo(() => draftState.picks.slice(-12).reverse(), [draftState.picks]);
-  const analytics = useMemo(
-    () => computeDraftAnalytics(draftState.picks, draftState.teams),
-    [draftState.picks, draftState.teams]
-  );
-  const draftValueReports = useMemo(
-    () => calculateRedraftDraftValues(draftState.picks, draftState.settings),
-    [draftState.picks, draftState.settings]
-  );
-  const userDraftValue =
-    draftValueReports.find((report) => report.teamNumber === draftState.settings.userTeam) ?? null;
-  const adpAvailable = Boolean(snapshot?.adpSource);
+  const adpFreshness = getFantasyAdpFreshness(metadata?.adpSource?.asOf, metadata?.season);
+  const adpAvailable = Boolean(metadata?.adpSource) && adpFreshness !== "stale";
   const totalPicks = draftState.settings.totalTeams * draftState.settings.rounds;
   const completionPercentage = Math.round((draftState.picks.length / totalPicks) * 100);
 
-  const playerLookup = useMemo(
-    () => new Map((snapshot?.overall ?? []).map((player) => [player.id, player])),
-    [snapshot]
+  const draftBoardPlayers = useMemo(
+    () =>
+      (snapshot?.overall ?? []).map((player) =>
+        adpAvailable ? player : withoutPlayerAdp(player)
+      ),
+    [adpAvailable, snapshot]
   );
+  const playerLookup = useMemo(
+    () => new Map(draftBoardPlayers.map((player) => [player.id, player])),
+    [draftBoardPlayers]
+  );
+  const modelPicks = useMemo(
+    () => resolveDraftPicksForModel(draftState.picks, draftBoardPlayers, adpAvailable),
+    [adpAvailable, draftBoardPlayers, draftState.picks]
+  );
+  const recentPicks = useMemo(() => modelPicks.slice(-12).reverse(), [modelPicks]);
+  const analytics = useMemo(
+    () =>
+      computeDraftAnalytics(modelPicks, draftState.teams, {
+        lineup: draftState.settings.lineup,
+        rounds: draftState.settings.rounds,
+      }),
+    [draftState.settings.lineup, draftState.settings.rounds, draftState.teams, modelPicks]
+  );
+  const draftValueReports = useMemo(
+    () => calculateRedraftDraftValues(modelPicks, draftState.settings),
+    [draftState.settings, modelPicks]
+  );
+  const userDraftValue =
+    draftValueReports.find((report) => report.teamNumber === draftState.settings.userTeam) ?? null;
   const boardTierCount = useMemo(() => {
     let max = 0;
-    for (const player of snapshot?.overall ?? []) {
+    for (const player of draftBoardPlayers) {
       if (player.tier && player.tier > max) max = player.tier;
     }
     return max;
-  }, [snapshot]);
+  }, [draftBoardPlayers]);
 
   const timerEnabled =
     (draftState.settings.timerSeconds ?? 0) > 0 && !showSetup && !isDraftComplete && !rankingsUnavailable;
@@ -151,7 +179,7 @@ export function DraftTrackerClient() {
   const showMobileActionBar = !showSetup && !rankingsUnavailable && !isDraftComplete;
 
   const userTeamName = userTeam?.teamName ?? `Team ${draftState.settings.userTeam}`;
-  const bestAvailableCount = (snapshot?.overall ?? []).filter(
+  const bestAvailableCount = draftBoardPlayers.filter(
     (player) => !draftState.picks.some((pick) => pick.player.id === player.id)
   ).length;
 
@@ -205,7 +233,7 @@ export function DraftTrackerClient() {
   ];
 
   function handleExport(format: "csv" | "recap-csv" | "json") {
-    exportDraftResults(format, { notes: notes.notes });
+    exportDraftResults(format, { notes: notes.notes, picks: modelPicks });
     const label =
       format === "recap-csv" ? "team recap CSV" : format === "json" ? "JSON" : "picks CSV";
     setExportToast(`Exported ${label}.`);
@@ -241,6 +269,19 @@ export function DraftTrackerClient() {
             <p className="mt-1" style={{ color: "var(--home-ink-muted)" }}>{persistenceError}</p>
           </div>
         ) : null}
+        {rankingsStale ? (
+          <div
+            role="alert"
+            className="rounded-[var(--radius-3xl)] border px-4 py-3 text-sm leading-6"
+            style={{
+              borderColor: "color-mix(in srgb, var(--home-warning) 55%, var(--home-rule))",
+              background: "color-mix(in srgb, var(--home-warning) 10%, var(--home-paper))",
+            }}
+          >
+            The ranking source is more than four days old during draft season. Check current player
+            news and your room&apos;s market before using this board for a live pick.
+          </div>
+        ) : null}
         {/*
           Two headers, chosen by whether a draft is actually running. Before the
           first pick the visitor is still deciding whether to use this, so the
@@ -270,7 +311,9 @@ export function DraftTrackerClient() {
                   Log every pick on the same published snapshot as the rankings, with your shared
                   watchlist, an advisory pick clock, multi-step undo, and steal/reach/run signals against
                   attributed mock-draft ADP. The Draft Outlook compares your roster against the room,
-                  and the expected return calculator keeps your payout assumptions explicit.
+                  and the expected return calculator keeps your payout assumptions explicit. This
+                  snapshot has no separate live injury or player-news feed, so I would verify those
+                  changes in the draft room before every pick.
                 </p>
               </div>
 
@@ -309,27 +352,57 @@ export function DraftTrackerClient() {
               </div>
             </>
           ) : (
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <>
               <div className="min-w-0">
                 <h1 className="truncate text-xl font-semibold sm:text-2xl" style={{ letterSpacing: "-0.02em" }}>
                   {draftState.settings.leagueName?.trim() || "Draft assistant"}
                 </h1>
-                <p className="mt-1 text-sm" style={{ color: "var(--home-ink-muted)" }}>
-                  {isDraftComplete
-                    ? "Draft complete"
-                    : `Round ${draftState.currentRound} · Pick ${draftState.currentPick} of ${totalPicks} · ${currentTeamName} on the clock`}
-                </p>
                 {/* Freshness stays visible mid-draft. Knowing which snapshot the
                     board came from is the credibility of the whole tool, so it
                     survives the collapse as one muted line rather than four
                     pills. */}
-                <p className="mt-0.5 text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+                <p className="mt-1 text-2xs" style={{ color: "var(--home-ink-muted)" }}>
                   {FANTASY_SCORING_LABELS[scoringKey]} scoring · Source updated{" "}
                   {formatUpdatedAt(overallSliceMetadata?.updatedAt ?? metadata?.upstreamUpdatedAt)}
                 </p>
               </div>
+            </>
+          )}
+        </div>
 
-              <div className="flex flex-wrap items-center gap-2">
+        {/*
+          The live bar sticks, and it is a direct child of the shell on purpose.
+          A sticky element only travels inside its own parent's box, so while
+          this lived in the short header wrapper it scrolled away the moment
+          that wrapper did. Scrolling the board used to carry the pick number,
+          the team on the clock, and the timer off screen, so answering "whose
+          pick is it?" meant scrolling back to the top mid-draft. It parks
+          directly under the site header, which is itself sticky at top 0.
+        */}
+        {!showSetup && !rankingsUnavailable && (
+          <div
+            className="sticky z-30 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 rounded-[var(--radius-md)] border px-3 py-2"
+                style={{
+                  top: LIVE_BAR_TOP,
+                  borderColor: "var(--home-rule)",
+                  background: "var(--home-paper)",
+                }}
+              >
+                <p className="min-w-0 text-sm" style={{ color: "var(--home-ink-muted)" }}>
+                  {isDraftComplete ? (
+                    "Draft complete"
+                  ) : (
+                    <>
+                      Round {draftState.currentRound} ·{" "}
+                      <span className="font-semibold tabular-nums" style={{ color: "var(--home-ink)" }}>
+                        Pick {draftState.currentPick} of {totalPicks}
+                      </span>{" "}
+                      · {currentTeamName} on the clock
+                    </>
+                  )}
+                </p>
+
+                <div className="flex flex-wrap items-center gap-2">
                 {timerEnabled && (
                   /*
                     The clock used to be the fifth grey pill in a row of grey
@@ -391,10 +464,9 @@ export function DraftTrackerClient() {
                     style={{ transform: showStats ? "rotate(180deg)" : "none" }}
                   />
                 </button>
-              </div>
             </div>
-          )}
-        </div>
+          </div>
+        )}
 
         {showStats && (
           <HomeStatsPanel
@@ -447,7 +519,7 @@ export function DraftTrackerClient() {
                 {isDraftComplete && (
                   <DraftAnalyticsPanel
                     analytics={analytics}
-                    picks={draftState.picks}
+                    picks={modelPicks}
                     currentPick={draftState.currentPick}
                     isDraftComplete
                     userTeamNumber={draftState.settings.userTeam}
@@ -456,7 +528,7 @@ export function DraftTrackerClient() {
                   />
                 )}
                 <DraftBoard
-                  players={snapshot?.overall ?? []}
+                  players={draftBoardPlayers}
                   snapshot={snapshot}
                   draftedPlayerIds={draftedPlayerIds}
                   onDraftPlayer={draftPlayer}
@@ -467,6 +539,8 @@ export function DraftTrackerClient() {
                   isUserPick={isUserPick}
                   isDraftComplete={isDraftComplete}
                   userTeam={userTeam}
+                  lineup={draftState.settings.lineup}
+                  rounds={draftState.settings.rounds}
                 />
                 {/*
                   Below the board on purpose. On a phone this panel used to sit
@@ -491,7 +565,11 @@ export function DraftTrackerClient() {
               its last card below the fold. */}
           <aside
             aria-label="Draft outlook"
-            className="grid gap-5 lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:self-start lg:overflow-y-auto lg:overscroll-contain"
+            /* top-[10.5rem], not top-24. The sticky live bar occupies 73px to
+               158px once stuck, so a rail pinned at 96px slid underneath it and
+               lost its first card behind an opaque strip. The max-height drops
+               by the same amount so the rail still ends above the fold. */
+            className="grid gap-5 lg:sticky lg:top-[10.5rem] lg:max-h-[calc(100vh-11.5rem)] lg:self-start lg:overflow-y-auto lg:overscroll-contain"
           >
             {!showSetup && !rankingsUnavailable ? (
               <article className="home-card hidden p-5 sm:p-6 lg:block">
@@ -506,7 +584,7 @@ export function DraftTrackerClient() {
             {!showSetup && !isDraftComplete && !rankingsUnavailable && (
               <DraftAnalyticsPanel
                 analytics={analytics}
-                picks={draftState.picks}
+                picks={modelPicks}
                 currentPick={draftState.currentPick}
                 isDraftComplete={false}
                 userTeamNumber={draftState.settings.userTeam}
@@ -803,7 +881,11 @@ export function DraftTrackerClient() {
           feature they cannot reach. That also leaves the bottom edge free for
           the action bar below, so the two never overlap. */}
       <div className="hidden sm:block">
-        <CompareTray resolvePlayer={(id) => playerLookup.get(id)} publishedRank={publishedDraftRank} />
+        <CompareTray
+          resolvePlayer={(id) => playerLookup.get(id)}
+          publishedRank={publishedDraftRank}
+          adpAvailable={adpAvailable}
+        />
       </div>
 
       {showMobileActionBar && (
