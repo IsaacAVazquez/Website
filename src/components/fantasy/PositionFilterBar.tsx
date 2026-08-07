@@ -85,7 +85,7 @@ export function PositionFilterBar<T extends string>({
             aria-checked={isActive}
             aria-label={
               isUnavailable
-                ? `${option.label} — ${option.unavailableLabel ?? "not available"}`
+                ? `${option.label}, ${option.unavailableLabel ?? "not available"}`
                 : option.label
             }
             title={isUnavailable ? option.unavailableLabel : undefined}

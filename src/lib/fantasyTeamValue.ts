@@ -219,7 +219,7 @@ function marketComponent(
     consensusRankPicks > 0 ? `${consensusRankPicks} consensus` : null,
   ].filter(Boolean);
   const detail = judgedPicks > 0
-    ? `${averageDelta !== null && averageDelta >= 0 ? "+" : ""}${averageDelta?.toFixed(1)} slots per judged pick · ${sourceParts.join(" · ")}`
+    ? `${averageDelta !== null && averageDelta >= 0 ? "+" : ""}${averageDelta?.toFixed(1)} draft slots of value per pick we could price · ${sourceParts.join(" · ")}`
     : "No picks have a usable ADP or format rank yet.";
 
   return {
@@ -438,9 +438,17 @@ export function getDraftSlotContext({
   };
 }
 
+/**
+ * Fewest picks a team needs before its room rank is worth showing. Below this,
+ * the composite score is one or two picks of noise and the rank it produces
+ * ("3 of 3" after three picks) reads as a verdict it has not earned. Four is the
+ * same boundary `confidenceFor` already uses to stop calling a read "early".
+ */
+export const ROOM_RANK_MIN_PICKS = 4;
+
 function confidenceFor(picksDrafted: number, rosterSize: number, judgedPicks: number): DraftValueConfidence {
   const coverage = picksDrafted > 0 ? judgedPicks / picksDrafted : 0;
-  if (picksDrafted < 4 || coverage < 0.5) return "early";
+  if (picksDrafted < ROOM_RANK_MIN_PICKS || coverage < 0.5) return "early";
   if (picksDrafted < rosterSize * 0.7) return "developing";
   return "settled";
 }

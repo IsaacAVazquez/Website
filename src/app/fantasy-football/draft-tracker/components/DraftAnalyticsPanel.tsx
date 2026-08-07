@@ -138,7 +138,7 @@ export function DraftAnalyticsPanel({
                 >
                   <p className="text-sm font-semibold">{emergingRun.position}s starting to go</p>
                   <p className="mt-1 text-xs" style={{ color: "var(--home-ink-muted)" }}>
-                    {emergingRun.count} off the board in the last few picks — a run may be forming.
+                    {emergingRun.count} off the board in the last few picks, so a run may be forming.
                   </p>
                 </div>
               )}

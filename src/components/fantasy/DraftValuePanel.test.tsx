@@ -88,6 +88,19 @@ describe("DraftValuePanel", () => {
     expect(screen.getByText(/Slot 12 has 1 to 23 pick gaps/i)).toBeInTheDocument();
   });
 
+  it("holds the room rank until the sample is big enough to mean anything", () => {
+    render(
+      <DraftValuePanel
+        report={{ ...REPORT, picksDrafted: 3, roomRank: 3, roomSize: 3, roomPercentile: 0 }}
+        headingId="early-room-rank-heading"
+      />
+    );
+
+    expect(screen.queryByText("3 of 3")).not.toBeInTheDocument();
+    expect(screen.getByText("Waiting")).toBeInTheDocument();
+    expect(screen.getByText(/Held until you have 4 picks/i)).toBeInTheDocument();
+  });
+
   it("calculates expected return only from the entered payout assumptions", () => {
     render(<DraftValuePanel report={REPORT} headingId="draft-return-heading" />);
 

@@ -5,6 +5,7 @@ import { Calculator, ChevronDown } from "lucide-react";
 import {
   calculateContestFieldEconomics,
   calculateExpectedReturn,
+  ROOM_RANK_MIN_PICKS,
   type ContestFieldEconomicsInput,
   type DraftValueReport,
 } from "@/lib/fantasyTeamValue";
@@ -381,10 +382,20 @@ export function DraftValuePanel({
   onCalculatorChange?: (value: ExpectedReturnFormState) => void;
 }) {
   const roomRank = report?.roomRank;
+  // Hold the rank until the sample is big enough to mean anything, and say so
+  // rather than rendering a number the user will read as a verdict.
+  const roomRankReady = (report?.picksDrafted ?? 0) >= ROOM_RANK_MIN_PICKS;
   const rankLabel =
-    report && roomRank !== null
+    report && roomRankReady && roomRank !== null && roomRank !== undefined
       ? `${report.roomTieCount > 1 ? "T" : ""}${roomRank} of ${report.roomSize}`
       : "Waiting";
+  const rankCaption = !roomRankReady
+    ? `Held until you have ${ROOM_RANK_MIN_PICKS} picks, because fewer than that says nothing about the room.`
+    : report && report.roomSize < 2
+      ? "Waiting for another team at the same pick count"
+      : report?.roomPercentile === null || report?.roomPercentile === undefined
+        ? "No comparison yet"
+        : `Ahead of ${report.roomPercentile}% of same-progress teams`;
   const averageDelta = report?.market.averageDelta ?? null;
   const turnGap = report?.slotContext;
 
@@ -406,7 +417,7 @@ export function DraftValuePanel({
           {report?.picksDrafted ? "How this room reads right now" : "Waiting for your first pick"}
         </h3>
         <p className="mt-2 text-xs leading-5" style={{ color: "var(--home-ink-muted)" }}>
-          This room-relative draft process model scores market value, roster shape, and fit. Projected points, win probability, and roster-specific dollar EV require a separate simulation.
+          This scores your picks against the other teams in this same draft, on the price the market put on each player, the shape of your roster, and how well it fits the format. It reads draft process. Projected points, win probability, and roster-specific dollar EV require a separate simulation.
         </p>
       </div>
 
@@ -415,15 +426,11 @@ export function DraftValuePanel({
           <div className="grid grid-cols-2 gap-2">
             <div className="rounded-[var(--radius-2xl)] border p-3" style={TILE_STYLE}>
               <p className="text-2xs font-semibold" style={{ color: "var(--home-ink-muted)" }}>
-                Modeled room rank
+                Your rank in this room, modeled
               </p>
               <p className="mt-1 text-2xl font-semibold tabular-nums">{rankLabel}</p>
               <p className="mt-1 text-2xs" style={{ color: "var(--home-ink-muted)" }}>
-                {report.roomSize < 2
-                  ? "Waiting for another team at the same pick count"
-                  : report.roomPercentile === null
-                  ? "No comparison yet"
-                  : `Ahead of ${report.roomPercentile}% of same-progress teams`}
+                {rankCaption}
               </p>
             </div>
             <div className="rounded-[var(--radius-2xl)] border p-3" style={TILE_STYLE}>
@@ -434,7 +441,7 @@ export function DraftValuePanel({
                 {averageDelta === null ? "Not set" : signedNumber(averageDelta)}
               </p>
               <p className="mt-1 text-2xs" style={{ color: "var(--home-ink-muted)" }}>
-                Slots per judged pick
+                Draft slots of value per pick, averaged over the picks that had a market price to compare against
               </p>
             </div>
           </div>

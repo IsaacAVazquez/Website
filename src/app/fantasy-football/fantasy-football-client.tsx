@@ -817,6 +817,8 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                     className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2"
                     style={{ color: "var(--home-ink-muted)" }}
                   />
+                  {/* Position labels are acronyms (QB, TE, DST), so the placeholder
+                      keeps their case. Lowercasing rendered "Search te board…". */}
                   <input
                     id="fantasy-search"
                     name="fantasy-search"
@@ -824,7 +826,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                     onChange={(event) => setSearchQuery(event.target.value)}
                     disabled={currentSliceUnavailable}
                     autoComplete="off"
-                    placeholder={`Search ${FANTASY_POSITION_LABELS[routeState.position].toLowerCase()} board…`}
+                    placeholder={`Search ${FANTASY_POSITION_LABELS[routeState.position]} board…`}
                     className="min-h-[48px] w-full rounded-[var(--radius-3xl)] border px-11 pr-10 text-sm transition-[background-color,border-color,box-shadow] duration-200 placeholder:text-[var(--home-ink-muted)] disabled:cursor-not-allowed disabled:opacity-60"
                     style={{
                       borderColor: "var(--home-rule)",

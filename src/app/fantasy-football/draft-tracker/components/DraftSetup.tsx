@@ -216,7 +216,7 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
           <legend className="home-kicker mb-0">Per-pick timer</legend>
           <div className="grid auto-rows-fr gap-2 sm:grid-cols-2">
             {[
-              { value: 0, label: "Off", description: "No clock — log at your own pace." },
+              { value: 0, label: "Off", description: "No clock, log at your own pace." },
               { value: 90, label: "On", description: "Advisory countdown each pick." },
             ].map((option) => {
               const active = (option.value > 0) === ((formState.timerSeconds ?? 0) > 0);

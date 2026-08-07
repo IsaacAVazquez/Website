@@ -143,7 +143,7 @@ export function BestBallDraftTrackerClient({
                 maxWidth: "18ch",
               }}
             >
-              Build for the contest you are actually drafting.
+              Track every pick and see what your build still needs.
             </h1>
             <p className="max-w-[66ch] text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
               I built this for manual rooms on Underdog and similar platforms. It follows every pick, keeps the snake order straight, changes the recommendation weights by contest, and compares your build against the room. Expected return stays in a separate calculator because the Draft Outlook cannot promise an outcome.

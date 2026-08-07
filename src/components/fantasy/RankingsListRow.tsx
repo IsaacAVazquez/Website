@@ -94,7 +94,7 @@ export function RankingsListRow({
           <button
             type="button"
             onClick={onOpenDetail}
-            aria-label={`Open ${player.name} detail — ${player.position}, rank ${publishedRank}`}
+            aria-label={`Open ${player.name} detail, ${player.position}, rank ${publishedRank}`}
             className="absolute inset-0 z-0 rounded-[var(--radius-3xl)] outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--home-ink)]"
           />
           <div className="pointer-events-none relative z-10 flex min-w-0 items-center gap-3 md:flex-1">
