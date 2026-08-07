@@ -14,6 +14,7 @@ import {
 } from "@/lib/fantasyUtils";
 import type { Player } from "@/types";
 
+import { bestIndex } from "./compareMetrics";
 import { RankDistributionBar } from "./RankDistributionBar";
 
 interface CompareModalProps {
@@ -25,86 +26,21 @@ interface CompareModalProps {
    * is position-scoped and not comparable to an overall ADP (see getValueVsAdp).
    */
   valueSignalAvailable?: boolean;
+  adpAvailable?: boolean;
   onClose: () => void;
   onRemove: (id: string) => void;
 }
 
 type Direction = "lower" | "higher" | "none";
 
-function metricValue(player: Player, key: string): number | null {
-  switch (key) {
-    case "posRank":
-      return Number.isFinite(player.positionRank) ? (player.positionRank as number) : null;
-    case "rank":
-      return Number.isFinite(player.rankEcr)
-        ? (player.rankEcr as number)
-        : Number.isFinite(player.averageRank)
-          ? player.averageRank
-          : null;
-    case "tier":
-      return Number.isFinite(player.tier) ? (player.tier as number) : null;
-    case "adp":
-      return Number.isFinite(player.adp) ? (player.adp as number) : null;
-    case "own":
-      return Number.isFinite(player.ownership) ? (player.ownership as number) : null;
-    default:
-      return null;
-  }
-}
-
-/**
- * How far apart two players have to be on a row before the better value is
- * called a win. Anything under these is left unmarked and the players read as
- * even on that row.
- *
- * This exists because marking every distinct value gave "Rostered 99.3% vs
- * 99.2%" the same full-width band as "Consensus rank 1 vs 2", which spends the
- * accent budget on noise and manufactures a verdict out of a tenth of a point.
- *
- * These are rounded judgment calls rather than measured coefficients, and they
- * are deliberately coarse so they are easy to argue with:
- *  - rank and posRank at 1 full ranking position, since rankEcr is an average
- *    and can differ by a fraction without either player actually ranking ahead.
- *  - tier at 1, because the board's whole premise is that players inside a tier
- *    are interchangeable, so a tier boundary is the meaningful unit.
- *  - adp at 6 picks, roughly half a round in a twelve-team draft, which is
- *    inside the spread you get from mock-draft sampling anyway.
- *  - own at 5 percentage points, well clear of the week-to-week drift that
- *    moves rostered percentages on their own.
- */
-export const MIN_MEANINGFUL_DELTA: Record<string, number> = {
-  rank: 1,
-  posRank: 1,
-  tier: 1,
-  adp: 6,
-  own: 5,
-};
-
-/**
- * Index of the player who "wins" a metric row, or -1 when it's a wash. A win
- * means beating the next-best player by at least MIN_MEANINGFUL_DELTA, so a
- * three-way row still has to clear the bar against its closest rival.
- */
-export function bestIndex(players: Player[], key: string, direction: Direction): number {
-  if (direction === "none") return -1;
-
-  const scored = players
-    .map((player, index) => ({ index, value: metricValue(player, key) }))
-    .filter((entry): entry is { index: number; value: number } => entry.value !== null);
-  if (scored.length < 2) return -1;
-
-  const ranked = [...scored].sort((a, b) =>
-    direction === "lower" ? a.value - b.value : b.value - a.value,
-  );
-  const [best, runnerUp] = ranked;
-  const gap = Math.abs(best.value - runnerUp.value);
-  const threshold = MIN_MEANINGFUL_DELTA[key] ?? 0;
-
-  // gap > 0 keeps an exact tie a wash even if a row ever lands a 0 threshold.
-  return gap > 0 && gap >= threshold ? best.index : -1;
-}
-
-export function CompareModal({ players, publishedRank, valueSignalAvailable = true, onClose, onRemove }: CompareModalProps) {
+export function CompareModal({
+  players,
+  publishedRank,
+  valueSignalAvailable = true,
+  adpAvailable = true,
+  onClose,
+  onRemove,
+}: CompareModalProps) {
   const reduceMotion = useReducedMotion();
   const panelRef = useRef<HTMLDivElement>(null);
   const restoreFocusRef = useRef<HTMLElement | null>(null);
@@ -168,12 +104,12 @@ export function CompareModal({ players, publishedRank, valueSignalAvailable = tr
     {
       key: "adp",
       label: "Market ADP",
-      direction: "lower",
+      direction: adpAvailable ? "lower" : "none",
       render: (p) => {
-        const signal = valueSignalAvailable ? getValueVsAdp(p) : null;
+        const signal = adpAvailable && valueSignalAvailable ? getValueVsAdp(p) : null;
         return (
           <span className="inline-flex items-center gap-1.5">
-            {formatAdp(p.adp)}
+            {adpAvailable ? formatAdp(p.adp) : "Unavailable"}
             {signal?.signal && (
               <span
                 className="rounded-full px-1.5 py-0.5 text-3xs font-semibold uppercase"
@@ -251,7 +187,21 @@ export function CompareModal({ players, publishedRank, valueSignalAvailable = tr
               reader a flat run of label, value, value with no way to tell which
               column belonged to which player. */}
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[34rem] border-collapse text-left">
+            {/*
+              table-fixed with an explicit colgroup, because the default auto
+              layout sized each column to its own content. Three players came
+              out 200px, 170px, and 135px wide, so whoever had the shortest name
+              got the narrowest column and their card ended up jammed against
+              the table's right edge. Equal player columns keep the comparison
+              readable as a comparison.
+            */}
+            <table className="w-full min-w-[34rem] table-fixed border-collapse text-left">
+              <colgroup>
+                <col style={{ width: "7.5rem" }} />
+                {players.map((player) => (
+                  <col key={player.id} style={{ width: `calc((100% - 7.5rem) / ${players.length})` }} />
+                ))}
+              </colgroup>
               <caption className="sr-only">
                 Side by side comparison of the pinned players. The stronger value on a row is marked Best.
               </caption>
@@ -268,10 +218,15 @@ export function CompareModal({ players, publishedRank, valueSignalAvailable = tr
                       key={player.id}
                       scope="col"
                       aria-label={`${player.name}, ${player.position}, ${player.team}`}
-                      className="p-0 pl-2 align-bottom font-normal"
+                      /* align-top plus h-full on the card, so a one-line name
+                         and a name that wraps to two produce cards of the same
+                         height sitting on the same baseline. Aligned bottom,
+                         "Trey McBride" rendered 20px lower and 20px shorter
+                         than "Washington Commanders" beside it. */
+                      className="h-full p-0 pl-2 align-top font-normal"
                     >
                       <div
-                        className="flex flex-col items-start gap-1 rounded-[var(--radius-3xl)] border p-2.5"
+                        className="flex h-full flex-col items-start gap-1 rounded-[var(--radius-3xl)] border p-2.5"
                         style={{ borderColor: "var(--home-rule)", background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))" }}
                       >
                         <div className="flex w-full items-start justify-between gap-1">
@@ -291,7 +246,13 @@ export function CompareModal({ players, publishedRank, valueSignalAvailable = tr
                             <X size={12} aria-hidden="true" />
                           </button>
                         </div>
-                        <span className="text-sm font-semibold leading-tight">{player.name}</span>
+                        {/* Two lines' worth of room whether the name needs it
+                            or not. h-full cannot equalize these, because a
+                            percentage height inside a table cell has no
+                            definite row height to resolve against, so a
+                            one-line name left its card 20px shorter than the
+                            one beside it and the bottom edge came out ragged. */}
+                        <span className="min-h-[2lh] text-sm font-semibold leading-tight">{player.name}</span>
                         <span className="text-2xs" style={{ color: "var(--home-ink-muted)" }}>
                           {player.team}
                         </span>
