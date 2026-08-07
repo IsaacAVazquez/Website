@@ -133,21 +133,34 @@ function isFiniteNumber(value: unknown): value is number {
 }
 
 /**
- * Where the player was expected to go. Market ADP when we have it, otherwise
- * the expert consensus rank. Null means the pick can't be judged at all and is
+ * Deepest consensus rank that still stands in for a pick number. ADP is a pick and
+ * consensus rank is a board position, and the two only agree near the top. Measured
+ * against the current PPR snapshot they track within about five spots through rank
+ * 150, then separate sharply: across ranks 151-250 the mean consensus rank is 195
+ * while the mean ADP is 154. Past this cutoff a rank is not a pick, so treating it
+ * as one turned every deep player into a large phantom reach.
+ */
+export const ECR_BASELINE_MAX_RANK = 150;
+
+/**
+ * Where the player was expected to go, as a pick number. Market ADP when we have it,
+ * otherwise the expert consensus rank while it is still close enough to the pick
+ * scale to mean something. Null means the pick can't be judged at all and is
  * excluded from every signal.
  */
 export function getPickBaseline(player: Player): number | null {
   if (isFiniteNumber(player.adp)) {
     return player.adp;
   }
-  if (isFiniteNumber(player.rankEcr)) {
-    return player.rankEcr;
+  const consensus = isFiniteNumber(player.rankEcr)
+    ? player.rankEcr
+    : isFiniteNumber(player.averageRank)
+      ? player.averageRank
+      : null;
+  if (consensus === null || consensus > ECR_BASELINE_MAX_RANK) {
+    return null;
   }
-  if (isFiniteNumber(player.averageRank)) {
-    return player.averageRank;
-  }
-  return null;
+  return consensus;
 }
 
 /**

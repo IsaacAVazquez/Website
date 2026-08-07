@@ -1,4 +1,5 @@
 import {
+  ECR_BASELINE_MAX_RANK,
   ROSTER_STARTER_TARGETS,
   getReachStealThreshold,
 } from "@/lib/draftAnalytics";
@@ -155,11 +156,16 @@ function baselineForPlayer(player: Player, useSuperflexRank: boolean): PickBasel
   if (!useSuperflexRank && isFiniteNumber(player.adp)) {
     return { value: player.adp, source: "adp", confidence: 1 };
   }
-  if (isFiniteNumber(player.rankEcr)) {
-    return { value: player.rankEcr, source: "consensus-rank", confidence: 0.75 };
-  }
-  if (isFiniteNumber(player.averageRank)) {
-    return { value: player.averageRank, source: "consensus-rank", confidence: 0.75 };
+  // A consensus rank is a board position, not a pick number, and the two only agree near
+  // the top of the board. Past the cutoff the gap is large enough that the tanh below
+  // saturates, which read every deep pick as a maximally bad one.
+  const consensus = isFiniteNumber(player.rankEcr)
+    ? player.rankEcr
+    : isFiniteNumber(player.averageRank)
+      ? player.averageRank
+      : null;
+  if (consensus !== null && consensus <= ECR_BASELINE_MAX_RANK) {
+    return { value: consensus, source: "consensus-rank", confidence: 0.75 };
   }
   return null;
 }

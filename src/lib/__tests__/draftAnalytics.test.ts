@@ -6,6 +6,7 @@ import {
   computeDraftAnalytics,
   detectPositionRuns,
   getLiveDraftSignals,
+  ECR_BASELINE_MAX_RANK,
   getPickBaseline,
   getPickDelta,
   getReachStealThreshold,
@@ -61,6 +62,18 @@ describe("getPickBaseline", () => {
     expect(getPickBaseline(player({ rankEcr: 20, averageRank: 22 }))).toBe(20);
     expect(getPickBaseline(player({ averageRank: 22 }))).toBe(22);
     expect(getPickBaseline(player({ averageRank: Number.NaN }))).toBeNull();
+  });
+
+  it("refuses a consensus rank too deep to stand in for a pick number", () => {
+    // ADP is a pick and consensus rank is a board position. Deep ranks run far past the
+    // last pick of a draft, so using one as a baseline invented enormous phantom reaches.
+    expect(getPickBaseline(player({ rankEcr: ECR_BASELINE_MAX_RANK }))).toBe(
+      ECR_BASELINE_MAX_RANK
+    );
+    expect(getPickBaseline(player({ rankEcr: ECR_BASELINE_MAX_RANK + 1 }))).toBeNull();
+    expect(getPickBaseline(player({ rankEcr: 400 }))).toBeNull();
+    // A real ADP still wins no matter how deep the consensus rank is.
+    expect(getPickBaseline(player({ adp: 180, rankEcr: 400 }))).toBe(180);
   });
 });
 
