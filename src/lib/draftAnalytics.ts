@@ -147,6 +147,18 @@ function isFiniteNumber(value: unknown): value is number {
 export const ECR_BASELINE_MAX_RANK = 150;
 
 /**
+ * Underdog-style ADP piles up at the last pick of the draft for everyone who goes
+ * undrafted, so an ADP sitting at that floor is a placeholder rather than a market
+ * price. In the 2026-08-06 best ball snapshot 116 of 338 priced players sit there
+ * with consensus ranks as deep as 417. Feeds sourced from real draft results only,
+ * such as the redraft Fantasy Football Calculator feed, never reach the floor, so
+ * this is a no-op for them rather than a special case they have to opt out of.
+ */
+export function isUndraftedFloorAdp(adp: number, rounds: number, teams: number): boolean {
+  return adp >= rounds * teams - 2;
+}
+
+/**
  * Where the player was expected to go, as a pick number. Market ADP when we have it,
  * otherwise the expert consensus rank while it is still close enough to the pick
  * scale to mean something. Null means the pick can't be judged at all and is

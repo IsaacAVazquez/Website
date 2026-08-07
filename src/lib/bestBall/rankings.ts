@@ -1,3 +1,4 @@
+import { isUndraftedFloorAdp } from "@/lib/draftAnalytics";
 import type { Player } from "@/types";
 import { DEFAULT_BEST_BALL_CONTEST_ID, getContestPreset } from "./contests";
 import { BEST_BALL_POSITIONS } from "./types";
@@ -30,11 +31,6 @@ export function sortBestBallRankings(
   contest: BestBallContestId | BestBallContestPreset = DEFAULT_BEST_BALL_CONTEST_ID
 ): RankedBestBallPlayer[] {
   const preset = typeof contest === "string" ? getContestPreset(contest) : contest;
-  // Underdog ADP piles up at the last pick of the draft for everyone who goes undrafted, so an
-  // ADP at that floor carries no real market signal. Roughly a third of the snapshot sits there
-  // with consensus ranks as deep as 400, and trusting the floor ADP over ECR used to lift those
-  // players hundreds of spots up the board.
-  const undraftedAdpFloor = preset.rounds * preset.teams - 2;
   const eligible = players
     .map((player, sourceIndex) => ({ player, sourceIndex, ecr: getBestBallEcr(player) }))
     .filter(({ player, ecr }) => isBestBallPosition(player.position) && Number.isFinite(ecr));
@@ -43,7 +39,9 @@ export function sortBestBallRankings(
     .map(({ player, sourceIndex, ecr }) => {
       const isSuperflex = preset.format === "superflex";
       const hasSuperflexRank = isSuperflex && isFiniteNumber(player.superflexRank);
-      const atUndraftedFloor = isFiniteNumber(player.adp) && Number(player.adp) >= undraftedAdpFloor;
+      const atUndraftedFloor =
+        isFiniteNumber(player.adp) &&
+        isUndraftedFloorAdp(Number(player.adp), preset.rounds, preset.teams);
       const hasUnderdogAdp = !isSuperflex && isFiniteNumber(player.adp) && !atUndraftedFloor;
       const adjustedRank = hasSuperflexRank
         ? Number(player.superflexRank)

@@ -1,6 +1,7 @@
 import {
   ECR_BASELINE_MAX_RANK,
   ROSTER_STARTER_TARGETS,
+  isUndraftedFloorAdp,
   getReachStealThreshold,
 } from "@/lib/draftAnalytics";
 import {
@@ -149,11 +150,22 @@ function roundedScore(value: number): number {
   return Math.round(clamp(value, 0, 100));
 }
 
-function baselineForPlayer(player: Player, useSuperflexRank: boolean): PickBaseline | null {
+function baselineForPlayer(
+  player: Player,
+  useSuperflexRank: boolean,
+  draft: { rounds: number; teams: number }
+): PickBaseline | null {
   if (useSuperflexRank && isFiniteNumber(player.superflexRank)) {
     return { value: player.superflexRank, source: "format-rank", confidence: 0.9 };
   }
-  if (!useSuperflexRank && isFiniteNumber(player.adp)) {
+  // An ADP at the undrafted floor is a placeholder, not a price. The board already
+  // ignores it, so grading a pick against it would leave the two disagreeing about
+  // the same player.
+  if (
+    !useSuperflexRank &&
+    isFiniteNumber(player.adp) &&
+    !isUndraftedFloorAdp(player.adp, draft.rounds, draft.teams)
+  ) {
     return { value: player.adp, source: "adp", confidence: 1 };
   }
   // A consensus rank is a board position, not a pick number, and the two only agree near
@@ -173,7 +185,8 @@ function baselineForPlayer(player: Player, useSuperflexRank: boolean): PickBasel
 function marketComponent(
   picks: readonly OutlookPick[],
   useSuperflexRank: boolean,
-  weight: number
+  weight: number,
+  draft: { rounds: number; teams: number }
 ): { component: DraftValueComponent; summary: DraftValueMarketSummary } {
   let weightedSignal = 0;
   let totalConfidence = 0;
@@ -184,7 +197,7 @@ function marketComponent(
   let consensusRankPicks = 0;
 
   for (const pick of picks) {
-    const baseline = baselineForPlayer(pick.player, useSuperflexRank);
+    const baseline = baselineForPlayer(pick.player, useSuperflexRank, draft);
     if (!baseline) continue;
     const delta = pick.pickNumber - baseline.value;
     const noise = getReachStealThreshold(pick.round);
@@ -472,7 +485,10 @@ export function calculateRedraftDraftValues(
       const teamNumber = index + 1;
       const teamPicks = picks.filter((pick) => pick.teamNumber === teamNumber);
       const counts = countPositions(teamPicks);
-      const market = marketComponent(teamPicks, false, REDRAFT_COMPONENT_WEIGHTS.market);
+      const market = marketComponent(teamPicks, false, REDRAFT_COMPONENT_WEIGHTS.market, {
+        rounds: settings.rounds,
+        teams: settings.totalTeams,
+      });
       const rosterScore = rosterShapeScore({
         counts,
         target,
@@ -547,7 +563,10 @@ export function calculateBestBallDraftValues({
         },
       ])
     ) as PositionRange;
-    const market = marketComponent(teamPicks, useSuperflexRank, weights.market);
+    const market = marketComponent(teamPicks, useSuperflexRank, weights.market, {
+      rounds: preset.rounds,
+      teams: preset.teams,
+    });
     const rosterScore = rosterShapeScore({
       counts,
       target: analysis.targets.recommended,
