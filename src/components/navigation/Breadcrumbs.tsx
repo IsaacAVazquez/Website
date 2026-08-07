@@ -133,12 +133,19 @@ export function Breadcrumbs({
         <ol className="flex flex-wrap items-center gap-2 p-3 bg-[var(--home-paper)]/60 rounded-[var(--radius-xl)] border border-[var(--home-rule)] backdrop-blur-sm shadow-[var(--shadow-sm)]">
           {breadcrumbs.map((item, index) => (
             <li key={item.href} className="flex items-center">
+              {/* Separator is ink-muted, not warning. A separator is not a
+                  status, and spending a status token on decoration is what
+                  makes a real warning stop reading as one. */}
               {index > 0 && (
-                <IconChevronRight className="w-4 h-4 text-[var(--home-warning)] mx-1.5" aria-hidden="true" />
+                <IconChevronRight className="w-4 h-4 text-[var(--home-ink-muted)] mx-1.5" aria-hidden="true" />
               )}
 
+              {/* Active item is ink on the signal wash, not signal on it.
+                  Signal text over a 10% signal tint measured 3.96:1, under the
+                  4.5:1 this size needs. The tint and the weight already mark
+                  the current page, so the accent keeps its job at 14.18:1. */}
               {item.isActive ? (
-                <span className="text-[var(--home-signal)] font-semibold text-sm px-2 py-1 rounded-lg bg-[var(--home-signal)]/10">
+                <span className="text-[var(--home-ink)] font-semibold text-sm px-2 py-1 rounded-lg bg-[var(--home-signal)]/10">
                   {item.label === "Home" && showHome ? (
                     <span className="flex items-center gap-1.5">
                       <IconHome className="w-4 h-4" />

@@ -242,7 +242,16 @@
   --home-paper: #F6F5F1;
   --home-paper-alt: #EFEDE6;
   --home-ink: #191813;
-  --home-ink-muted: #6F6B60;
+  /*
+   * Darkened 2026-08-07 from #6F6B60, which measured 4.88:1 on plain paper and
+   * therefore dropped under 4.5:1 the moment it landed on any tinted plate. It
+   * was failing at 4.25:1 on the signal-tinted run card and 4.43:1 on the
+   * positive-tinted board row. Fixing the token buys headroom on all seven
+   * light beds it actually lands on (paper, paper-alt, the signal and positive
+   * tints, the two paper-alt mixes, and paper-raised), worst case now 4.67:1,
+   * rather than patching each plate. Dark mode is untouched and already passes.
+   */
+  --home-ink-muted: #68655A;
   --home-signal: #C93F19; /* @kind color */
   --home-signal-soft: #F6E0D7;
   --home-acid: #D7E74F;

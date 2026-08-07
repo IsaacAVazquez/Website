@@ -3,14 +3,14 @@
 import { useEffect, useMemo, useState } from "react";
 import type { CSSProperties } from "react";
 import { GitCompareArrows, Info, Star } from "lucide-react";
-import { Player, TeamRoster } from "@/types";
+import type { Player, RedraftLineupSettings, TeamRoster } from "@/types";
 import type { FantasySnapshot } from "@/lib/fantasy";
 import { useDebounce } from "@/hooks/useDebounce";
 import { usePlayerQueue } from "@/hooks/usePlayerQueue";
 import { useCompareTray } from "@/hooks/useCompareTray";
 import {
-  getReachStealThreshold,
   getRosterNeeds,
+  isPlayerValueAtPick,
   type RosterNeed,
   type RosterNeedLevel,
 } from "@/lib/draftAnalytics";
@@ -38,6 +38,8 @@ interface DraftBoardProps {
   isUserPick: boolean;
   isDraftComplete: boolean;
   userTeam: TeamRoster | undefined;
+  lineup: RedraftLineupSettings;
+  rounds: number;
 }
 
 type BoardFilter = "ALL" | "QB" | "RB" | "WR" | "TE" | "K" | "DST" | "FLEX";
@@ -120,6 +122,8 @@ export function DraftBoard({
   isUserPick,
   isDraftComplete,
   userTeam,
+  lineup,
+  rounds,
 }: DraftBoardProps) {
   const [boardView, setBoardView] = useState<BoardView>("list");
   const [selectedPosition, setSelectedPosition] = useState<BoardFilter>("ALL");
@@ -162,8 +166,13 @@ export function DraftBoard({
   const hasMore = visibleCount < filteredPlayers.length;
 
   const rosterNeeds = useMemo(
-    () => getRosterNeeds({ positionCounts: userTeam?.positionCounts ?? EMPTY_POSITION_COUNTS }),
-    [userTeam]
+    () =>
+      getRosterNeeds({
+        positionCounts: userTeam?.positionCounts ?? EMPTY_POSITION_COUNTS,
+        lineup,
+        rounds,
+      }),
+    [lineup, rounds, userTeam]
   );
 
   // Resolve each open need to the single best available player at that slot, so
@@ -175,7 +184,10 @@ export function DraftBoard({
     const claimed = new Set<string>();
     for (const need of rosterNeeds) {
       const best = availablePlayers.find(
-        (candidate) => candidate.position === need.slot && !claimed.has(candidate.id)
+        (candidate) =>
+          need.eligiblePositions.includes(
+            candidate.position as (typeof need.eligiblePositions)[number]
+          ) && !claimed.has(candidate.id)
       );
       if (best) {
         claimed.add(best.id);
@@ -190,7 +202,11 @@ export function DraftBoard({
   const columnNeedPositions = useMemo(
     () =>
       Array.from(
-        new Set(rosterNeeds.filter((need) => need.level !== "depth").map((need) => need.slot))
+        new Set(
+          rosterNeeds
+            .filter((need) => need.level !== "depth")
+            .flatMap((need) => need.eligiblePositions)
+        )
       ),
     [rosterNeeds]
   );
@@ -263,7 +279,11 @@ export function DraftBoard({
                 background: isUserPick
                   ? "color-mix(in srgb, var(--home-signal) 12%, var(--home-paper))"
                   : "color-mix(in srgb, var(--home-paper-alt) 52%, var(--home-elev-mix))",
-                color: isUserPick ? "var(--home-signal)" : "var(--home-ink)",
+                // Ink, not signal. Signal text on a signal wash measured 3.87:1
+                // at 14.26px, under the 4.5:1 that size needs. The border and the
+                // tint already carry the state, so the accent keeps its job and
+                // the words stay readable, now at 13.78:1.
+                color: "var(--home-ink)",
               }}
             >
               {isUserPick ? "Your pick is live" : "Log the room's next selection"}
@@ -391,9 +411,11 @@ export function DraftBoard({
                   {bestAvailable.map((player) => {
                     const priorityNeed = priorityByPlayerId.get(player.id);
                     const isStartingPriority = Boolean(priorityNeed) && priorityNeed!.level !== "depth";
-                    const isValueAtCurrentPick =
-                      Number.isFinite(player.adp) &&
-                      currentPick - (player.adp as number) >= getReachStealThreshold(currentRound);
+                    const isValueAtCurrentPick = isPlayerValueAtPick(
+                      player,
+                      currentPick,
+                      currentRound
+                    );
                     const isQueued = queue.isQueued(player.id);
                     const inCompare = compare.inCompare(player.id);
 
