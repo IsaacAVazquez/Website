@@ -722,8 +722,10 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
               }}
             >
               <div>
-                <p className="home-kicker mb-1">Rankings Board</p>
-                <h2 id="rankings-board-heading" className="text-2xl font-semibold">
+                {/* The board is the primary element on an Operate surface, so its heading
+                    outranks the marketing sections further down rather than sitting a step
+                    below them. The old "Rankings Board" kicker only restated the heading. */}
+                <h2 id="rankings-board-heading" className="text-2xl font-semibold sm:text-3xl">
                   {FANTASY_POSITION_LABELS[routeState.position]} rankings
                 </h2>
               </div>
@@ -921,7 +923,13 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
             </div>
           </article>
 
-          <aside aria-label="Board details" className="grid gap-5 lg:sticky lg:top-24 lg:self-start">
+          {/* The rail runs taller than the space a sticky element actually gets, which is the
+              viewport minus the 6rem offset. Without a bounded height the last card sits below
+              the fold for the whole scroll and its action is unreachable while pinned. */}
+          <aside
+            aria-label="Board details"
+            className="grid gap-5 lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:self-start lg:overflow-y-auto lg:overscroll-contain"
+          >
             <article className="home-card p-5 sm:p-6">
               <div className="flex items-center gap-3">
                 <Shield className="h-5 w-5" style={{ color: "var(--home-signal)" }} aria-hidden="true" />
@@ -1099,7 +1107,9 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
         <section className="mt-10" aria-labelledby="fantasy-rankings-questions">
           <div className="max-w-3xl">
             <p className="home-kicker mb-2">How the board works</p>
-            <h2 id="fantasy-rankings-questions" className="text-2xl font-semibold sm:text-3xl">
+            {/* Sits a step below the board heading. A support section on an Operate surface
+                should not read louder than the board it supports. */}
+            <h2 id="fantasy-rankings-questions" className="text-2xl font-semibold">
               Fantasy rankings questions
             </h2>
           </div>

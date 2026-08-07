@@ -536,7 +536,12 @@ function BestBallDraftRoom({
           />
         </div>
 
-        <aside aria-label="Roster build" className="hidden self-start lg:sticky lg:top-24 lg:grid lg:gap-5">
+        {/* Bounded so the rail cannot outgrow the space a sticky element gets and strand
+            its last card below the fold. */}
+        <aside
+          aria-label="Roster build"
+          className="hidden self-start lg:sticky lg:top-24 lg:grid lg:max-h-[calc(100vh-7rem)] lg:gap-5 lg:overflow-y-auto lg:overscroll-contain"
+        >
           <section className="home-card p-5">
             <BestBallBuildPanel
               analysis={analysis}

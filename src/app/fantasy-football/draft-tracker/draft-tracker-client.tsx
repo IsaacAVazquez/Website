@@ -383,7 +383,12 @@ export function DraftTrackerClient() {
             )}
           </div>
 
-          <aside aria-label="Draft outlook" className="grid gap-5 lg:sticky lg:top-24 lg:self-start">
+          {/* Bounded so the rail cannot outgrow the space a sticky element gets and strand
+              its last card below the fold. */}
+          <aside
+            aria-label="Draft outlook"
+            className="grid gap-5 lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:self-start lg:overflow-y-auto lg:overscroll-contain"
+          >
             {!showSetup && !rankingsUnavailable ? (
               <article className="home-card hidden p-5 sm:p-6 lg:block">
                 <DraftValuePanel
