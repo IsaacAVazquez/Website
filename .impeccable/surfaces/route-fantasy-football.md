@@ -41,6 +41,27 @@ Theming is genuinely clean. Across 44 files there are zero hardcoded hex values,
 
 Do not re-raise these. Inputs look unlabeled to a same-line regex, but every one carries `id` on the following line with exactly one matching `htmlFor`. The `h1` looks missing to a `<h1[\s>]` pattern, because the tag sits alone on its line with the attributes below it. The two tiers routes look like data routes missing their boundaries, but they are redirect stubs.
 
+## Audit re-run, 2026-08-06 (18/20)
+
+Contrast, touch targets, and the type ramp are now verified in a browser rather
+than provisional. Zero contrast failures, zero detector findings, no horizontal
+overflow at 390px, and the heading scale descends correctly at both widths.
+
+Two known items are deliberately out of fantasy scope because they live in
+site-wide components. The footer "Now" link measures 35x44, and `ContactCta`
+renders its heading at 44px, matching the board heading. A "FANTASY FOOTBALL"
+kicker still sits above the page heading, which the craft floor bans outright,
+and it also comes from shared page furniture rather than this route.
+
+### A contrast-sweep trap worth knowing
+
+Chrome returns `color(srgb 0.968 0.965 0.951)` for `color-mix()` results, and the
+Working Instrument palette uses `color-mix` heavily. A luminance parser that only
+handles `rgb()` reads those 0-1 values as 0-255, computes the limestone paper as
+near-black, and manufactures a page of 1.17:1 failures on text that is actually
+around 16:1. Sanity-check any sweep by asserting ink on paper lands near 16.5:1
+before believing a single finding.
+
 ## Commands worth running
 
 `adapt` would settle the responsive and performance scores, which are provisional because the 2026-08-06 audit was static only and never booted a browser.

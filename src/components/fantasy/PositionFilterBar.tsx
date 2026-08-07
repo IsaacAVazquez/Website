@@ -86,7 +86,7 @@ export function PositionFilterBar<T extends string>({
             title={isUnavailable ? option.unavailableLabel : undefined}
             disabled={isDisabled}
             onClick={() => !isDisabled && onChange(option.value)}
-            className="inline-flex min-h-touch shrink-0 snap-start items-center gap-1.5 rounded-full border px-3.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed"
+            className="inline-flex min-h-touch min-w-touch shrink-0 snap-start items-center justify-center gap-1.5 rounded-full border px-3.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed"
             style={style}
           >
             <span>{option.label}</span>

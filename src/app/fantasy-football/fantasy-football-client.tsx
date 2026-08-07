@@ -148,14 +148,18 @@ function ValueReachBadge({ player }: { player: Player }) {
       <span
         className={FANTASY_CHIP_CLASS}
         style={
+          // The label is tinted from the chip's own hue rather than left as muted gray.
+          // Muted ink on the tinted background measured 4.35:1 at this size, just under AA.
           isValue
             ? {
                 borderColor: "color-mix(in srgb, var(--home-positive) 28%, var(--home-rule))",
                 background: "color-mix(in srgb, var(--home-positive) 10%, var(--home-paper))",
+                color: "color-mix(in srgb, var(--home-positive) 45%, var(--home-ink))",
               }
             : {
                 borderColor: "color-mix(in srgb, var(--home-warning) 30%, var(--home-rule))",
                 background: "color-mix(in srgb, var(--home-warning) 12%, var(--home-paper))",
+                color: "color-mix(in srgb, var(--home-warning) 40%, var(--home-ink))",
               }
         }
       >
@@ -600,7 +604,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
             <h1
               style={{
                 fontFamily: "var(--font-home-sans)",
-                fontSize: "clamp(2rem, 4.4vw, 3.3rem)",
+                fontSize: "clamp(2.15rem, 1.6rem + 2.75vw, 4.2rem)", // DESIGN.md headline step
                 fontWeight: 600,
                 letterSpacing: "-0.04em",
                 lineHeight: 0.98,

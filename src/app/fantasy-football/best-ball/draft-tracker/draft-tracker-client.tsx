@@ -136,7 +136,7 @@ export function BestBallDraftTrackerClient({
             <h1
               style={{
                 fontFamily: "var(--font-home-sans)",
-                fontSize: "clamp(2rem, 4.5vw, 3.4rem)",
+                fontSize: "clamp(2.15rem, 1.6rem + 2.75vw, 4.2rem)", // DESIGN.md headline step
                 fontWeight: 600,
                 letterSpacing: "-0.04em",
                 lineHeight: 0.98,
