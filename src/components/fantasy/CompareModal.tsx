@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { X } from "lucide-react";
+import { Check, X } from "lucide-react";
 import { useEffect, useRef } from "react";
 
 import {
@@ -52,26 +52,56 @@ function metricValue(player: Player, key: string): number | null {
   }
 }
 
-/** Index of the player who "wins" a metric row, or -1 when it's a wash. */
-function bestIndex(players: Player[], key: string, direction: Direction): number {
+/**
+ * How far apart two players have to be on a row before the better value is
+ * called a win. Anything under these is left unmarked and the players read as
+ * even on that row.
+ *
+ * This exists because marking every distinct value gave "Rostered 99.3% vs
+ * 99.2%" the same full-width band as "Consensus rank 1 vs 2", which spends the
+ * accent budget on noise and manufactures a verdict out of a tenth of a point.
+ *
+ * These are rounded judgment calls rather than measured coefficients, and they
+ * are deliberately coarse so they are easy to argue with:
+ *  - rank and posRank at 1 full ranking position, since rankEcr is an average
+ *    and can differ by a fraction without either player actually ranking ahead.
+ *  - tier at 1, because the board's whole premise is that players inside a tier
+ *    are interchangeable, so a tier boundary is the meaningful unit.
+ *  - adp at 6 picks, roughly half a round in a twelve-team draft, which is
+ *    inside the spread you get from mock-draft sampling anyway.
+ *  - own at 5 percentage points, well clear of the week-to-week drift that
+ *    moves rostered percentages on their own.
+ */
+export const MIN_MEANINGFUL_DELTA: Record<string, number> = {
+  rank: 1,
+  posRank: 1,
+  tier: 1,
+  adp: 6,
+  own: 5,
+};
+
+/**
+ * Index of the player who "wins" a metric row, or -1 when it's a wash. A win
+ * means beating the next-best player by at least MIN_MEANINGFUL_DELTA, so a
+ * three-way row still has to clear the bar against its closest rival.
+ */
+export function bestIndex(players: Player[], key: string, direction: Direction): number {
   if (direction === "none") return -1;
-  let best = -1;
-  let bestVal: number | null = null;
-  players.forEach((player, index) => {
-    const value = metricValue(player, key);
-    if (value === null) return;
-    if (
-      bestVal === null ||
-      (direction === "lower" && value < bestVal) ||
-      (direction === "higher" && value > bestVal)
-    ) {
-      bestVal = value;
-      best = index;
-    }
-  });
-  // A tie (every value equal) isn't a meaningful "win".
-  const distinct = new Set(players.map((p) => metricValue(p, key)).filter((v) => v !== null));
-  return distinct.size > 1 ? best : -1;
+
+  const scored = players
+    .map((player, index) => ({ index, value: metricValue(player, key) }))
+    .filter((entry): entry is { index: number; value: number } => entry.value !== null);
+  if (scored.length < 2) return -1;
+
+  const ranked = [...scored].sort((a, b) =>
+    direction === "lower" ? a.value - b.value : b.value - a.value,
+  );
+  const [best, runnerUp] = ranked;
+  const gap = Math.abs(best.value - runnerUp.value);
+  const threshold = MIN_MEANINGFUL_DELTA[key] ?? 0;
+
+  // gap > 0 keeps an exact tie a wash even if a row ever lands a 0 threshold.
+  return gap > 0 && gap >= threshold ? best.index : -1;
 }
 
 export function CompareModal({ players, publishedRank, valueSignalAvailable = true, onClose, onRemove }: CompareModalProps) {
@@ -217,90 +247,126 @@ export function CompareModal({ players, publishedRank, valueSignalAvailable = tr
             </button>
           </div>
 
+          {/* A real table, not a grid of divs. The grid version handed a screen
+              reader a flat run of label, value, value with no way to tell which
+              column belonged to which player. */}
           <div className="overflow-x-auto">
-            <div
-              className="grid min-w-[34rem] gap-x-2"
-              style={{ gridTemplateColumns: `auto repeat(${players.length}, minmax(0, 1fr))` }}
-            >
-              {/* Header row: player identities */}
-              <div />
-              {players.map((player) => (
-                <div
-                  key={player.id}
-                  className="flex flex-col items-start gap-1 rounded-[var(--radius-3xl)] border p-2.5"
-                  style={{ borderColor: "var(--home-rule)", background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))" }}
-                >
-                  <div className="flex w-full items-start justify-between gap-1">
-                    <span
-                      className="inline-flex items-center rounded-full border px-2 py-0.5 text-3xs font-semibold uppercase tracking-[0.1em]"
-                      style={getPositionTone(player.position)}
-                    >
-                      {player.position}
-                    </span>
-                    <button
-                      type="button"
-                      onClick={() => onRemove(player.id)}
-                      aria-label={`Remove ${player.name} from compare`}
-                      className="inline-flex min-h-touch min-w-touch items-center justify-center rounded-full border"
-                      style={{ borderColor: "var(--home-rule)" }}
-                    >
-                      <X size={12} aria-hidden="true" />
-                    </button>
-                  </div>
-                  <span className="text-sm font-semibold leading-tight">{player.name}</span>
-                  <span className="text-2xs" style={{ color: "var(--home-ink-muted)" }}>
-                    {player.team}
-                  </span>
-                </div>
-              ))}
-
-              {/* Metric rows */}
-              {rows.map((row) => {
-                const winner = bestIndex(players, row.key, row.direction);
-                return (
-                  <div key={row.key} className="contents">
-                    <div className="flex items-center py-2 pr-2 text-2xs font-semibold uppercase tracking-[0.1em]" style={{ color: "var(--home-ink-muted)" }}>
-                      {row.label}
-                    </div>
-                    {players.map((player, index) => (
-                      <div
-                        key={player.id}
-                        className="flex items-center border-t py-2 text-sm font-semibold tabular-nums"
-                        style={{
-                          borderColor: "var(--home-rule)",
-                          color: winner === index ? "var(--home-ink)" : "var(--home-ink)",
-                          background:
-                            winner === index
-                              ? "color-mix(in srgb, var(--home-signal) 18%, transparent)"
-                              : "transparent",
-                        }}
-                      >
-                        {row.render(player)}
-                      </div>
-                    ))}
-                  </div>
-                );
-              })}
-
-              {/* Expert range bars (shared scale) */}
-              {hasScale && (
-                <div className="contents">
-                  <div className="flex items-start py-3 pr-2 text-2xs font-semibold uppercase tracking-[0.1em]" style={{ color: "var(--home-ink-muted)" }}>
-                    Range
-                  </div>
+            <table className="w-full min-w-[34rem] border-collapse text-left">
+              <caption className="sr-only">
+                Side by side comparison of the pinned players. The stronger value on a row is marked Best.
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <span className="sr-only">Metric</span>
+                  </th>
                   {players.map((player) => (
-                    <div key={player.id} className="border-t py-3" style={{ borderColor: "var(--home-rule)" }}>
-                      <RankDistributionBar player={player} scaleMin={scaleMin} scaleMax={scaleMax} compact />
-                    </div>
+                    // Named explicitly so the column announces as the player.
+                    // Without this the header's name absorbs the remove
+                    // button's label and every cell is prefixed with it.
+                    <th
+                      key={player.id}
+                      scope="col"
+                      aria-label={`${player.name}, ${player.position}, ${player.team}`}
+                      className="p-0 pl-2 align-bottom font-normal"
+                    >
+                      <div
+                        className="flex flex-col items-start gap-1 rounded-[var(--radius-3xl)] border p-2.5"
+                        style={{ borderColor: "var(--home-rule)", background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))" }}
+                      >
+                        <div className="flex w-full items-start justify-between gap-1">
+                          <span
+                            className="inline-flex items-center rounded-full border px-2 py-0.5 text-3xs font-semibold uppercase tracking-[0.1em]"
+                            style={getPositionTone(player.position)}
+                          >
+                            {player.position}
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => onRemove(player.id)}
+                            aria-label={`Remove ${player.name} from compare`}
+                            className="inline-flex min-h-touch min-w-touch items-center justify-center rounded-full border"
+                            style={{ borderColor: "var(--home-rule)" }}
+                          >
+                            <X size={12} aria-hidden="true" />
+                          </button>
+                        </div>
+                        <span className="text-sm font-semibold leading-tight">{player.name}</span>
+                        <span className="text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+                          {player.team}
+                        </span>
+                      </div>
+                    </th>
                   ))}
-                </div>
-              )}
-            </div>
+                </tr>
+              </thead>
+              <tbody>
+                {rows.map((row) => {
+                  const winner = bestIndex(players, row.key, row.direction);
+                  return (
+                    <tr key={row.key}>
+                      <th
+                        scope="row"
+                        className="py-2 pr-2 text-2xs font-semibold uppercase tracking-[0.1em]"
+                        style={{ color: "var(--home-ink-muted)" }}
+                      >
+                        {row.label}
+                      </th>
+                      {players.map((player, index) => (
+                        <td
+                          key={player.id}
+                          className="border-t py-2 pl-2 text-sm font-semibold tabular-nums"
+                          style={{
+                            borderColor: "var(--home-rule)",
+                            background:
+                              winner === index
+                                ? "color-mix(in srgb, var(--home-signal) 18%, transparent)"
+                                : "transparent",
+                          }}
+                        >
+                          <span className="inline-flex flex-wrap items-center gap-x-2 gap-y-1">
+                            {row.render(player)}
+                            {/* The tint alone carried the whole meaning before,
+                                so the win is a labeled token now and the wash
+                                only reinforces it. */}
+                            {winner === index && (
+                              <span className="inline-flex items-center gap-1 text-3xs font-semibold uppercase tracking-[0.1em]">
+                                <Check size={12} aria-hidden="true" />
+                                Best
+                              </span>
+                            )}
+                          </span>
+                        </td>
+                      ))}
+                    </tr>
+                  );
+                })}
+
+                {/* Expert range bars (shared scale) */}
+                {hasScale && (
+                  <tr>
+                    <th
+                      scope="row"
+                      className="py-3 pr-2 align-top text-2xs font-semibold uppercase tracking-[0.1em]"
+                      style={{ color: "var(--home-ink-muted)" }}
+                    >
+                      Range
+                    </th>
+                    {players.map((player) => (
+                      <td key={player.id} className="border-t py-3 pl-2" style={{ borderColor: "var(--home-rule)" }}>
+                        <RankDistributionBar player={player} scaleMin={scaleMin} scaleMax={scaleMax} compact />
+                      </td>
+                    ))}
+                  </tr>
+                )}
+              </tbody>
+            </table>
           </div>
 
           <p className="mt-4 text-2xs" style={{ color: "var(--home-ink-muted)" }}>
-            Highlight marks the stronger value per row (lower rank/ADP, higher rostered %). Range bars share one
-            scale so a wider fill means more expert disagreement.
+            Best marks the stronger value on a row, meaning a lower rank or ADP and a higher rostered percentage.
+            Differences too small to act on stay unmarked, so a tier apart counts and a tenth of a point of rostered
+            does not. Range bars share one scale, so a wider fill means more expert disagreement.
           </p>
         </motion.div>
       </motion.div>
