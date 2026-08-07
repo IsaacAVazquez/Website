@@ -1,25 +1,19 @@
 name: Publish Refreshed Data
 
+# Publication is batched rather than fired once per snapshot refresh. Sixteen refresh
+# workflows on schedules as tight as every three hours were each triggering their own
+# Netlify build, which reached roughly 80 builds a week against 20 real pushes and
+# exhausted the account's build minutes. Every deploy from 2026-08-06 onward was
+# skipped as a result, so committed data stopped reaching production entirely.
+#
+# The scheduled runs below publish whatever has landed since the last one, which the
+# ledger check already handles because it compares production against the committed
+# revision rather than against any single refresh. The tradeoff is that data can now
+# sit committed for up to six hours before it is live. Use workflow_dispatch to
+# publish immediately when something needs to ship now.
 on:
-  workflow_run:
-    workflows:
-      - Refresh Earthquake Snapshot
-      - Refresh Bay Area Transit Snapshot
-      - Refresh World Cup Snapshot
-      - Refresh MLB Snapshot
-      - Refresh NBA Snapshot
-      - Refresh NFL Snapshot
-      - Refresh Golf Snapshot
-      - Refresh Formula 1 Snapshot
-      - Refresh GitHub Trending Snapshot
-      - Refresh SpaceX Snapshots
-      - Refresh Premier League Snapshot
-      - Refresh La Liga Snapshot
-      - Update Fantasy Football Snapshots
-      - Refresh Investments Snapshots
-      - Refresh Polling Snapshot
-      - Refresh Score Pools Snapshot
-    types: [completed]
+  schedule:
+    - cron: "15 1,7,13,19 * * *"
   workflow_dispatch:
 
 concurrency:
@@ -28,7 +22,6 @@ concurrency:
 
 jobs:
   publish:
-    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:

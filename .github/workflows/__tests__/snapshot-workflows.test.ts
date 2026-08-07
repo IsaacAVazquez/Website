@@ -96,7 +96,14 @@ describe("snapshot refresh workflow infrastructure", () => {
       "utf8"
     );
 
-    expect(publicationWorkflow).toContain("workflow_run:");
+    // Publication is batched on a schedule rather than fired once per refresh. Sixteen
+    // refresh workflows each triggering their own build exhausted the Netlify account's
+    // build minutes, which silently stopped every deploy. The ledger check makes batching
+    // safe because it compares production against the committed revision rather than
+    // against whichever refresh happened to trigger the run.
+    expect(publicationWorkflow).toContain("schedule:");
+    expect(publicationWorkflow).toContain("workflow_dispatch:");
+    expect(publicationWorkflow).not.toContain("workflow_run:");
     expect(publicationWorkflow).toContain("group: publish-refreshed-data");
     expect(publicationWorkflow).toContain("cancel-in-progress: true");
     expect(publicationWorkflow).toContain("printDataLedgerRevision.ts");

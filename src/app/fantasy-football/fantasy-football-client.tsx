@@ -725,7 +725,9 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                 {/* The board is the primary element on an Operate surface, so its heading
                     outranks the marketing sections further down rather than sitting a step
                     below them. The old "Rankings Board" kicker only restated the heading. */}
-                <h2 id="rankings-board-heading" className="text-2xl font-semibold sm:text-3xl">
+                {/* Steps up at every width, not only from the sm breakpoint, so the board
+                    still leads the support sections on a phone. */}
+                <h2 id="rankings-board-heading" className="text-[1.75rem] font-semibold sm:text-3xl">
                   {FANTASY_POSITION_LABELS[routeState.position]} rankings
                 </h2>
               </div>
