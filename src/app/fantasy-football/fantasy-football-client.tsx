@@ -725,9 +725,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                 {/* The board is the primary element on an Operate surface, so its heading
                     outranks the marketing sections further down rather than sitting a step
                     below them. The old "Rankings Board" kicker only restated the heading. */}
-                {/* Steps up at every width, not only from the sm breakpoint, so the board
-                    still leads the support sections on a phone. */}
-                <h2 id="rankings-board-heading" className="text-[1.75rem] font-semibold sm:text-3xl">
+                <h2 id="rankings-board-heading" className="text-2xl font-semibold sm:text-3xl">
                   {FANTASY_POSITION_LABELS[routeState.position]} rankings
                 </h2>
               </div>
@@ -1109,9 +1107,10 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
         <section className="mt-10" aria-labelledby="fantasy-rankings-questions">
           <div className="max-w-3xl">
             <p className="home-kicker mb-2">How the board works</p>
-            {/* Sits a step below the board heading. A support section on an Operate surface
-                should not read louder than the board it supports. */}
-            <h2 id="fantasy-rankings-questions" className="text-2xl font-semibold">
+            {/* Sits a step below the board heading at every width, so a support section on
+                an Operate surface never reads louder than the board it supports. Uses ramp
+                steps rather than an arbitrary size to keep the board leading on a phone. */}
+            <h2 id="fantasy-rankings-questions" className="text-xl font-semibold sm:text-2xl">
               Fantasy rankings questions
             </h2>
           </div>
