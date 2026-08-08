@@ -77,8 +77,18 @@ export function RankingsListRow({
   onToggleCompare,
 }: RankingsListRowProps) {
   return (
+    // The row measures its own width rather than the viewport's, because the
+    // width it gets is not monotonic in viewport width. The board card runs the
+    // full page at 768px and the list is 670px wide, then the rail appears at
+    // 1024px and the same list drops to 538px. On viewport breakpoints the row
+    // took its wide inline shape at 768 and kept it through 1024, where it does
+    // not fit: names truncated to "Christian McCaff...", the position chip and
+    // the descriptor each fell to their own line, and 54 of 60 rows rendered
+    // 232px tall against 82px on a desktop. @2xl is 42rem, which is what the
+    // inline shape actually costs: 44px of rank, a name column worth reading,
+    // 288px of metric strip, 96px of actions, and the gaps between them.
     <li
-      className="group relative overflow-hidden rounded-[var(--radius-3xl)] border border-[color:var(--home-rule)] transition-[border-color,box-shadow,transform] hover:border-[color:var(--home-ink)] hover:shadow-[var(--shadow-md)] motion-safe:hover:-translate-y-0.5"
+      className="group @container relative overflow-hidden rounded-[var(--radius-3xl)] border border-[color:var(--home-rule)] transition-[border-color,box-shadow,transform] hover:border-[color:var(--home-ink)] hover:shadow-[var(--shadow-md)] motion-safe:hover:-translate-y-0.5"
       style={{ background: "color-mix(in srgb, var(--home-paper-alt) 42%, var(--home-elev-mix))" }}
     >
       {/* Graded tier rail: intensity fades with tier depth so the board reads
@@ -111,7 +121,7 @@ export function RankingsListRow({
         order, at every width. Grid placement is inert once the container
         switches to flex at md, so the desktop row keeps its old shape.
       */}
-      <div className="relative grid grid-cols-[minmax(0,1fr)_auto] items-start md:flex md:items-stretch md:gap-4">
+      <div className="relative grid grid-cols-[minmax(0,1fr)_auto] items-start @2xl:flex @2xl:items-stretch @2xl:gap-4">
         <button
           type="button"
           onClick={onOpenDetail}
@@ -120,10 +130,10 @@ export function RankingsListRow({
         />
         <div
           className={`col-start-1 row-start-1 flex min-w-0 flex-1 text-left ${
-            compact ? "px-4 pt-2.5 md:py-2.5" : "px-4 pt-3.5 md:py-3.5"
+            compact ? "px-4 pt-2.5 @2xl:py-2.5" : "px-4 pt-3.5 @2xl:py-3.5"
           }`}
         >
-          <div className="pointer-events-none relative z-10 flex min-w-0 items-center gap-3 md:flex-1">
+          <div className="pointer-events-none relative z-10 flex min-w-0 items-center gap-3 @2xl:flex-1">
             <span
               className={`inline-flex shrink-0 items-center justify-center tabular-nums ${
                 compact ? "text-xl" : "text-2xl"
@@ -137,11 +147,11 @@ export function RankingsListRow({
               {/* Only this line clears the action pair, which now floats at the
                   row's top right rather than holding a grid column. The
                   descriptor below it gets the row's full width. */}
-              <div className="flex min-w-0 flex-wrap items-center gap-2 pr-20 md:pr-0">
+              <div className="flex min-w-0 flex-wrap items-center gap-2 pr-20 @2xl:pr-0">
                 {/* Wraps below md and truncates from md up. On a phone the name
                     had 105px and "Colston Loveland" came out "Colston Lovela...",
                     which is a worse answer than a second line. */}
-                <span className="min-w-0 text-base font-semibold md:truncate">{player.name}</span>
+                <span className="min-w-0 text-base font-semibold @2xl:truncate">{player.name}</span>
                 <span className={FANTASY_CHIP_CLASS} style={getPositionTone(player.position)}>
                   {player.position}
                 </span>
@@ -165,8 +175,8 @@ export function RankingsListRow({
 
         {/* Both columns of row two below md, an inline strip from md up. */}
         <div
-          className={`pointer-events-none relative z-10 col-span-2 col-start-1 row-start-2 flex items-start gap-x-4 px-4 md:col-auto md:row-auto md:shrink-0 md:items-center md:justify-end md:px-0 ${
-            compact ? "pb-2.5 md:pb-0" : "pb-3.5 md:pb-0"
+          className={`pointer-events-none relative z-10 col-span-2 col-start-1 row-start-2 flex items-start gap-x-4 px-4 @2xl:col-auto @2xl:row-auto @2xl:shrink-0 @2xl:items-center @2xl:justify-end @2xl:px-0 ${
+            compact ? "pb-2.5 @2xl:pb-0" : "pb-3.5 @2xl:pb-0"
           }`}
         >
           <Metric label="Expert range" width="6.5rem">
@@ -193,7 +203,7 @@ export function RankingsListRow({
             Out of flow, the descriptor gets the full width on one line and only
             the name line pays for the buttons. z-10 keeps the pair above the
             row's absolute overlay button, which spans the whole row. */}
-        <div className="absolute right-1 top-3 z-10 flex shrink-0 items-center gap-1 md:static md:col-auto md:row-auto md:pr-2 md:pt-0">
+        <div className="absolute right-1 top-3 z-10 flex shrink-0 items-center gap-1 @2xl:static @2xl:col-auto @2xl:row-auto @2xl:pr-2 @2xl:pt-0">
           <button
             type="button"
             onClick={onToggleQueue}
