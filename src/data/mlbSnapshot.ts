@@ -326,12 +326,12 @@ export const mlbSnapshot: MlbSnapshot = {
       "gamesBack": 0,
       "wildCardGamesBack": 0,
       "wins": 59,
-      "losses": 55,
-      "pct": 0.518,
-      "runsScored": 544,
-      "runsAllowed": 506,
-      "runDifferential": 38,
-      "streak": "L3",
+      "losses": 56,
+      "pct": 0.513,
+      "runsScored": 546,
+      "runsAllowed": 514,
+      "runDifferential": 32,
+      "streak": "L4",
       "last10": "4-6"
     },
     {
@@ -344,15 +344,15 @@ export const mlbSnapshot: MlbSnapshot = {
       "divisionRank": 2,
       "leagueRank": 7,
       "wildCardRank": 4,
-      "gamesBack": 3,
+      "gamesBack": 2,
       "wildCardGamesBack": 0.5,
-      "wins": 57,
+      "wins": 58,
       "losses": 59,
-      "pct": 0.491,
-      "runsScored": 539,
-      "runsAllowed": 574,
-      "runDifferential": -35,
-      "streak": "W1",
+      "pct": 0.496,
+      "runsScored": 547,
+      "runsAllowed": 580,
+      "runDifferential": -33,
+      "streak": "W2",
       "last10": "5-5"
     },
     {
@@ -365,16 +365,16 @@ export const mlbSnapshot: MlbSnapshot = {
       "divisionRank": 3,
       "leagueRank": 8,
       "wildCardRank": 5,
-      "gamesBack": 3,
+      "gamesBack": 2,
       "wildCardGamesBack": 0.5,
-      "wins": 57,
+      "wins": 58,
       "losses": 59,
-      "pct": 0.491,
-      "runsScored": 459,
-      "runsAllowed": 487,
-      "runDifferential": -28,
-      "streak": "L3",
-      "last10": "3-7"
+      "pct": 0.496,
+      "runsScored": 467,
+      "runsAllowed": 489,
+      "runDifferential": -22,
+      "streak": "W1",
+      "last10": "4-6"
     },
     {
       "id": "116",
@@ -387,14 +387,14 @@ export const mlbSnapshot: MlbSnapshot = {
       "leagueRank": 10,
       "wildCardRank": 7,
       "gamesBack": 3.5,
-      "wildCardGamesBack": 1,
+      "wildCardGamesBack": 2,
       "wins": 56,
-      "losses": 59,
-      "pct": 0.487,
-      "runsScored": 526,
-      "runsAllowed": 446,
-      "runDifferential": 80,
-      "streak": "W1",
+      "losses": 60,
+      "pct": 0.483,
+      "runsScored": 528,
+      "runsAllowed": 451,
+      "runDifferential": 77,
+      "streak": "L1",
       "last10": "6-4"
     },
     {
@@ -408,15 +408,15 @@ export const mlbSnapshot: MlbSnapshot = {
       "leagueRank": 13,
       "wildCardRank": 10,
       "gamesBack": 12,
-      "wildCardGamesBack": 9.5,
+      "wildCardGamesBack": 10.5,
       "wins": 48,
-      "losses": 68,
-      "pct": 0.414,
-      "runsScored": 480,
-      "runsAllowed": 583,
-      "runDifferential": -103,
-      "streak": "L1",
-      "last10": "4-6"
+      "losses": 69,
+      "pct": 0.41,
+      "runsScored": 484,
+      "runsAllowed": 589,
+      "runDifferential": -105,
+      "streak": "L2",
+      "last10": "3-7"
     },
     {
       "id": "139",
@@ -430,13 +430,13 @@ export const mlbSnapshot: MlbSnapshot = {
       "wildCardRank": null,
       "gamesBack": 0,
       "wildCardGamesBack": 0,
-      "wins": 68,
+      "wins": 69,
       "losses": 46,
-      "pct": 0.596,
-      "runsScored": 510,
-      "runsAllowed": 469,
-      "runDifferential": 41,
-      "streak": "W3",
+      "pct": 0.6,
+      "runsScored": 512,
+      "runsAllowed": 470,
+      "runDifferential": 42,
+      "streak": "W4",
       "last10": "7-3"
     },
     {
@@ -451,13 +451,13 @@ export const mlbSnapshot: MlbSnapshot = {
       "wildCardRank": 1,
       "gamesBack": 4.5,
       "wildCardGamesBack": 7,
-      "wins": 64,
+      "wins": 65,
       "losses": 51,
-      "pct": 0.557,
-      "runsScored": 522,
-      "runsAllowed": 441,
-      "runDifferential": 81,
-      "streak": "L1",
+      "pct": 0.56,
+      "runsScored": 525,
+      "runsAllowed": 443,
+      "runDifferential": 82,
+      "streak": "W1",
       "last10": "5-5"
     },
     {
@@ -472,13 +472,13 @@ export const mlbSnapshot: MlbSnapshot = {
       "wildCardRank": 2,
       "gamesBack": 5,
       "wildCardGamesBack": 6.5,
-      "wins": 63,
+      "wins": 64,
       "losses": 51,
-      "pct": 0.553,
-      "runsScored": 504,
-      "runsAllowed": 427,
-      "runDifferential": 77,
-      "streak": "W8",
+      "pct": 0.557,
+      "runsScored": 517,
+      "runsAllowed": 428,
+      "runDifferential": 89,
+      "streak": "W9",
       "last10": "9-1"
     },
     {
@@ -491,15 +491,15 @@ export const mlbSnapshot: MlbSnapshot = {
       "divisionRank": 4,
       "leagueRank": 9,
       "wildCardRank": 6,
-      "gamesBack": 12.5,
-      "wildCardGamesBack": 1,
+      "gamesBack": 13.5,
+      "wildCardGamesBack": 2,
       "wins": 56,
-      "losses": 59,
-      "pct": 0.487,
-      "runsScored": 516,
-      "runsAllowed": 549,
-      "runDifferential": -33,
-      "streak": "L1",
+      "losses": 60,
+      "pct": 0.483,
+      "runsScored": 517,
+      "runsAllowed": 551,
+      "runDifferential": -34,
+      "streak": "L2",
       "last10": "5-5"
     },
     {
@@ -514,13 +514,13 @@ export const mlbSnapshot: MlbSnapshot = {
       "wildCardRank": 9,
       "gamesBack": 15,
       "wildCardGamesBack": 3.5,
-      "wins": 54,
+      "wins": 55,
       "losses": 62,
-      "pct": 0.466,
-      "runsScored": 451,
-      "runsAllowed": 512,
-      "runDifferential": -61,
-      "streak": "L1",
+      "pct": 0.47,
+      "runsScored": 456,
+      "runsAllowed": 516,
+      "runDifferential": -60,
+      "streak": "W1",
       "last10": "6-4"
     },
     {
@@ -535,14 +535,14 @@ export const mlbSnapshot: MlbSnapshot = {
       "wildCardRank": null,
       "gamesBack": 0,
       "wildCardGamesBack": 0,
-      "wins": 59,
+      "wins": 60,
       "losses": 57,
-      "pct": 0.509,
-      "runsScored": 540,
-      "runsAllowed": 565,
-      "runDifferential": -25,
-      "streak": "L1",
-      "last10": "7-3"
+      "pct": 0.513,
+      "runsScored": 546,
+      "runsAllowed": 568,
+      "runDifferential": -22,
+      "streak": "W1",
+      "last10": "8-2"
     },
     {
       "id": "140",
@@ -556,13 +556,13 @@ export const mlbSnapshot: MlbSnapshot = {
       "wildCardRank": 3,
       "gamesBack": 1.5,
       "wildCardGamesBack": 0,
-      "wins": 57,
+      "wins": 58,
       "losses": 58,
-      "pct": 0.496,
-      "runsScored": 477,
-      "runsAllowed": 510,
-      "runDifferential": -33,
-      "streak": "W2",
+      "pct": 0.5,
+      "runsScored": 479,
+      "runsAllowed": 511,
+      "runDifferential": -32,
+      "streak": "W3",
       "last10": "4-6"
     },
     {
@@ -575,15 +575,15 @@ export const mlbSnapshot: MlbSnapshot = {
       "divisionRank": 3,
       "leagueRank": 11,
       "wildCardRank": 8,
-      "gamesBack": 3,
-      "wildCardGamesBack": 1.5,
+      "gamesBack": 4,
+      "wildCardGamesBack": 2.5,
       "wins": 56,
-      "losses": 60,
-      "pct": 0.483,
-      "runsScored": 458,
-      "runsAllowed": 472,
-      "runDifferential": -14,
-      "streak": "L1",
+      "losses": 61,
+      "pct": 0.479,
+      "runsScored": 459,
+      "runsAllowed": 474,
+      "runDifferential": -15,
+      "streak": "L2",
       "last10": "4-6"
     },
     {
@@ -596,15 +596,15 @@ export const mlbSnapshot: MlbSnapshot = {
       "divisionRank": 4,
       "leagueRank": 14,
       "wildCardRank": 11,
-      "gamesBack": 13.5,
-      "wildCardGamesBack": 12,
+      "gamesBack": 14.5,
+      "wildCardGamesBack": 13,
       "wins": 45,
-      "losses": 70,
-      "pct": 0.391,
-      "runsScored": 498,
-      "runsAllowed": 655,
-      "runDifferential": -157,
-      "streak": "L8",
+      "losses": 71,
+      "pct": 0.388,
+      "runsScored": 499,
+      "runsAllowed": 668,
+      "runDifferential": -169,
+      "streak": "L9",
       "last10": "1-9"
     },
     {
@@ -619,13 +619,13 @@ export const mlbSnapshot: MlbSnapshot = {
       "wildCardRank": 12,
       "gamesBack": 14.5,
       "wildCardGamesBack": 13,
-      "wins": 44,
+      "wins": 45,
       "losses": 71,
-      "pct": 0.383,
-      "runsScored": 477,
-      "runsAllowed": 553,
-      "runDifferential": -76,
-      "streak": "W1",
+      "pct": 0.388,
+      "runsScored": 481,
+      "runsAllowed": 556,
+      "runDifferential": -75,
+      "streak": "W2",
       "last10": "3-7"
     },
     {
@@ -641,12 +641,12 @@ export const mlbSnapshot: MlbSnapshot = {
       "gamesBack": 0,
       "wildCardGamesBack": 0,
       "wins": 72,
-      "losses": 43,
-      "pct": 0.626,
-      "runsScored": 571,
-      "runsAllowed": 430,
-      "runDifferential": 141,
-      "streak": "W3",
+      "losses": 44,
+      "pct": 0.621,
+      "runsScored": 577,
+      "runsAllowed": 438,
+      "runDifferential": 139,
+      "streak": "L1",
       "last10": "6-4"
     },
     {
@@ -659,15 +659,15 @@ export const mlbSnapshot: MlbSnapshot = {
       "divisionRank": 2,
       "leagueRank": 4,
       "wildCardRank": 1,
-      "gamesBack": 5.5,
+      "gamesBack": 4.5,
       "wildCardGamesBack": 6,
-      "wins": 67,
+      "wins": 68,
       "losses": 49,
-      "pct": 0.578,
-      "runsScored": 595,
-      "runsAllowed": 495,
-      "runDifferential": 100,
-      "streak": "W4",
+      "pct": 0.581,
+      "runsScored": 601,
+      "runsAllowed": 499,
+      "runDifferential": 102,
+      "streak": "W5",
       "last10": "7-3"
     },
     {
@@ -678,18 +678,18 @@ export const mlbSnapshot: MlbSnapshot = {
       "league": "NL",
       "division": "NL Central",
       "divisionRank": 3,
-      "leagueRank": 9,
-      "wildCardRank": 6,
-      "gamesBack": 15,
+      "leagueRank": 8,
+      "wildCardRank": 5,
+      "gamesBack": 14,
       "wildCardGamesBack": 3.5,
-      "wins": 57,
+      "wins": 58,
       "losses": 58,
-      "pct": 0.496,
-      "runsScored": 499,
-      "runsAllowed": 509,
-      "runDifferential": -10,
-      "streak": "W1",
-      "last10": "4-6"
+      "pct": 0.5,
+      "runsScored": 502,
+      "runsAllowed": 511,
+      "runDifferential": -9,
+      "streak": "W2",
+      "last10": "5-5"
     },
     {
       "id": "113",
@@ -702,14 +702,14 @@ export const mlbSnapshot: MlbSnapshot = {
       "leagueRank": 10,
       "wildCardRank": 7,
       "gamesBack": 15.5,
-      "wildCardGamesBack": 4,
+      "wildCardGamesBack": 5,
       "wins": 56,
-      "losses": 58,
-      "pct": 0.491,
-      "runsScored": 476,
-      "runsAllowed": 536,
-      "runDifferential": -60,
-      "streak": "W4",
+      "losses": 59,
+      "pct": 0.487,
+      "runsScored": 479,
+      "runsAllowed": 541,
+      "runDifferential": -62,
+      "streak": "L1",
       "last10": "7-3"
     },
     {
@@ -723,14 +723,14 @@ export const mlbSnapshot: MlbSnapshot = {
       "leagueRank": 11,
       "wildCardRank": 8,
       "gamesBack": 16,
-      "wildCardGamesBack": 4.5,
+      "wildCardGamesBack": 5.5,
       "wins": 57,
-      "losses": 60,
-      "pct": 0.487,
-      "runsScored": 588,
-      "runsAllowed": 564,
-      "runDifferential": 24,
-      "streak": "L3",
+      "losses": 61,
+      "pct": 0.483,
+      "runsScored": 592,
+      "runsAllowed": 570,
+      "runDifferential": 22,
+      "streak": "L4",
       "last10": "2-8"
     },
     {
@@ -746,12 +746,12 @@ export const mlbSnapshot: MlbSnapshot = {
       "gamesBack": 0,
       "wildCardGamesBack": 0,
       "wins": 70,
-      "losses": 45,
-      "pct": 0.609,
-      "runsScored": 568,
-      "runsAllowed": 447,
-      "runDifferential": 121,
-      "streak": "W8",
+      "losses": 46,
+      "pct": 0.603,
+      "runsScored": 570,
+      "runsAllowed": 450,
+      "runDifferential": 120,
+      "streak": "L1",
       "last10": "8-2"
     },
     {
@@ -762,17 +762,17 @@ export const mlbSnapshot: MlbSnapshot = {
       "league": "NL",
       "division": "NL East",
       "divisionRank": 2,
-      "leagueRank": 5,
-      "wildCardRank": 2,
+      "leagueRank": 6,
+      "wildCardRank": 3,
       "gamesBack": 8.5,
-      "wildCardGamesBack": 1,
+      "wildCardGamesBack": 0,
       "wins": 62,
-      "losses": 54,
-      "pct": 0.534,
-      "runsScored": 512,
-      "runsAllowed": 510,
-      "runDifferential": 2,
-      "streak": "W1",
+      "losses": 55,
+      "pct": 0.53,
+      "runsScored": 516,
+      "runsAllowed": 515,
+      "runDifferential": 1,
+      "streak": "L1",
       "last10": "5-5"
     },
     {
@@ -783,18 +783,18 @@ export const mlbSnapshot: MlbSnapshot = {
       "league": "NL",
       "division": "NL East",
       "divisionRank": 3,
-      "leagueRank": 8,
-      "wildCardRank": 5,
+      "leagueRank": 9,
+      "wildCardRank": 6,
       "gamesBack": 12.5,
-      "wildCardGamesBack": 3,
+      "wildCardGamesBack": 4,
       "wins": 58,
-      "losses": 58,
-      "pct": 0.5,
-      "runsScored": 502,
-      "runsAllowed": 502,
-      "runDifferential": 0,
-      "streak": "L3",
-      "last10": "6-4"
+      "losses": 59,
+      "pct": 0.496,
+      "runsScored": 505,
+      "runsAllowed": 506,
+      "runDifferential": -1,
+      "streak": "L4",
+      "last10": "5-5"
     },
     {
       "id": "120",
@@ -806,15 +806,15 @@ export const mlbSnapshot: MlbSnapshot = {
       "divisionRank": 4,
       "leagueRank": 12,
       "wildCardRank": 9,
-      "gamesBack": 15,
+      "gamesBack": 14,
       "wildCardGamesBack": 5.5,
-      "wins": 56,
+      "wins": 57,
       "losses": 61,
-      "pct": 0.479,
-      "runsScored": 623,
-      "runsAllowed": 613,
-      "runDifferential": 10,
-      "streak": "L1",
+      "pct": 0.483,
+      "runsScored": 628,
+      "runsAllowed": 616,
+      "runDifferential": 12,
+      "streak": "W1",
       "last10": "2-8"
     },
     {
@@ -827,15 +827,15 @@ export const mlbSnapshot: MlbSnapshot = {
       "divisionRank": 5,
       "leagueRank": 13,
       "wildCardRank": 10,
-      "gamesBack": 20.5,
+      "gamesBack": 19.5,
       "wildCardGamesBack": 11,
-      "wins": 50,
+      "wins": 51,
       "losses": 66,
-      "pct": 0.431,
-      "runsScored": 482,
-      "runsAllowed": 528,
-      "runDifferential": -46,
-      "streak": "W3",
+      "pct": 0.436,
+      "runsScored": 488,
+      "runsAllowed": 532,
+      "runDifferential": -44,
+      "streak": "W4",
       "last10": "6-4"
     },
     {
@@ -851,12 +851,12 @@ export const mlbSnapshot: MlbSnapshot = {
       "gamesBack": 0,
       "wildCardGamesBack": 0,
       "wins": 69,
-      "losses": 46,
-      "pct": 0.6,
-      "runsScored": 584,
-      "runsAllowed": 444,
-      "runDifferential": 140,
-      "streak": "L6",
+      "losses": 47,
+      "pct": 0.595,
+      "runsScored": 587,
+      "runsAllowed": 448,
+      "runDifferential": 139,
+      "streak": "L7",
       "last10": "2-8"
     },
     {
@@ -867,18 +867,18 @@ export const mlbSnapshot: MlbSnapshot = {
       "league": "NL",
       "division": "NL West",
       "divisionRank": 2,
-      "leagueRank": 6,
-      "wildCardRank": 3,
-      "gamesBack": 8.5,
+      "leagueRank": 5,
+      "wildCardRank": 2,
+      "gamesBack": 7.5,
       "wildCardGamesBack": 0,
-      "wins": 61,
+      "wins": 62,
       "losses": 55,
-      "pct": 0.526,
-      "runsScored": 528,
-      "runsAllowed": 525,
-      "runDifferential": 3,
-      "streak": "L1",
-      "last10": "6-4"
+      "pct": 0.53,
+      "runsScored": 532,
+      "runsAllowed": 528,
+      "runDifferential": 4,
+      "streak": "W1",
+      "last10": "7-3"
     },
     {
       "id": "135",
@@ -891,15 +891,15 @@ export const mlbSnapshot: MlbSnapshot = {
       "leagueRank": 7,
       "wildCardRank": 4,
       "gamesBack": 9.5,
-      "wildCardGamesBack": 1,
+      "wildCardGamesBack": 2,
       "wins": 60,
-      "losses": 56,
-      "pct": 0.517,
-      "runsScored": 491,
-      "runsAllowed": 504,
-      "runDifferential": -13,
-      "streak": "W1",
-      "last10": "7-3"
+      "losses": 57,
+      "pct": 0.513,
+      "runsScored": 494,
+      "runsAllowed": 510,
+      "runDifferential": -16,
+      "streak": "L1",
+      "last10": "6-4"
     },
     {
       "id": "137",
@@ -911,15 +911,15 @@ export const mlbSnapshot: MlbSnapshot = {
       "divisionRank": 4,
       "leagueRank": 14,
       "wildCardRank": 11,
-      "gamesBack": 21,
+      "gamesBack": 20,
       "wildCardGamesBack": 12.5,
-      "wins": 48,
+      "wins": 49,
       "losses": 67,
-      "pct": 0.417,
-      "runsScored": 479,
-      "runsAllowed": 535,
-      "runDifferential": -56,
-      "streak": "L2",
+      "pct": 0.422,
+      "runsScored": 484,
+      "runsAllowed": 537,
+      "runDifferential": -53,
+      "streak": "W1",
       "last10": "4-6"
     },
     {
@@ -933,151 +933,47 @@ export const mlbSnapshot: MlbSnapshot = {
       "leagueRank": 15,
       "wildCardRank": 12,
       "gamesBack": 24,
-      "wildCardGamesBack": 15.5,
+      "wildCardGamesBack": 16.5,
       "wins": 45,
-      "losses": 70,
-      "pct": 0.391,
-      "runsScored": 554,
-      "runsAllowed": 662,
-      "runDifferential": -108,
-      "streak": "L3",
+      "losses": 71,
+      "pct": 0.388,
+      "runsScored": 556,
+      "runsAllowed": 665,
+      "runDifferential": -109,
+      "streak": "L4",
       "last10": "3-7"
     }
   ],
   "recentGames": [
     {
-      "id": "825053",
-      "utcDate": "2026-08-07T01:40:00Z",
+      "id": "823191",
+      "utcDate": "2026-08-08T02:15:00Z",
       "status": "FINISHED",
       "matchday": null,
       "stage": "R",
       "homeTeam": {
-        "id": "109",
-        "name": "Arizona Diamondbacks",
-        "shortName": "D-backs",
-        "abbreviation": "AZ",
-        "crest": "https://www.mlbstatic.com/team-logos/109.svg"
+        "id": "137",
+        "name": "San Francisco Giants",
+        "shortName": "Giants",
+        "abbreviation": "SF",
+        "crest": "https://www.mlbstatic.com/team-logos/137.svg"
       },
       "awayTeam": {
-        "id": "135",
-        "name": "San Diego Padres",
-        "shortName": "Padres",
-        "abbreviation": "SD",
-        "crest": "https://www.mlbstatic.com/team-logos/135.svg"
-      },
-      "score": {
-        "winner": "AWAY_TEAM",
-        "home": 1,
-        "away": 5
-      }
-    },
-    {
-      "id": "824080",
-      "utcDate": "2026-08-06T23:40:00Z",
-      "status": "FINISHED",
-      "matchday": null,
-      "stage": "R",
-      "homeTeam": {
-        "id": "118",
-        "name": "Kansas City Royals",
-        "shortName": "Royals",
-        "abbreviation": "KC",
-        "crest": "https://www.mlbstatic.com/team-logos/118.svg"
-      },
-      "awayTeam": {
-        "id": "142",
-        "name": "Minnesota Twins",
-        "shortName": "Twins",
-        "abbreviation": "MIN",
-        "crest": "https://www.mlbstatic.com/team-logos/142.svg"
-      },
-      "score": {
-        "winner": "AWAY_TEAM",
-        "home": 3,
-        "away": 4
-      }
-    },
-    {
-      "id": "824885",
-      "utcDate": "2026-08-06T23:15:00Z",
-      "status": "FINISHED",
-      "matchday": null,
-      "stage": "R",
-      "homeTeam": {
-        "id": "144",
-        "name": "Atlanta Braves",
-        "shortName": "Braves",
-        "abbreviation": "ATL",
-        "crest": "https://www.mlbstatic.com/team-logos/144.svg"
-      },
-      "awayTeam": {
-        "id": "146",
-        "name": "Miami Marlins",
-        "shortName": "Marlins",
-        "abbreviation": "MIA",
-        "crest": "https://www.mlbstatic.com/team-logos/146.svg"
+        "id": "116",
+        "name": "Detroit Tigers",
+        "shortName": "Tigers",
+        "abbreviation": "DET",
+        "crest": "https://www.mlbstatic.com/team-logos/116.svg"
       },
       "score": {
         "winner": "HOME_TEAM",
-        "home": 11,
-        "away": 3
+        "home": 5,
+        "away": 2
       }
     },
     {
-      "id": "824729",
-      "utcDate": "2026-08-06T23:10:00Z",
-      "status": "FINISHED",
-      "matchday": null,
-      "stage": "R",
-      "homeTeam": {
-        "id": "111",
-        "name": "Boston Red Sox",
-        "shortName": "Red Sox",
-        "abbreviation": "BOS",
-        "crest": "https://www.mlbstatic.com/team-logos/111.svg"
-      },
-      "awayTeam": {
-        "id": "145",
-        "name": "Chicago White Sox",
-        "shortName": "White Sox",
-        "abbreviation": "CWS",
-        "crest": "https://www.mlbstatic.com/team-logos/145.svg"
-      },
-      "score": {
-        "winner": "HOME_TEAM",
-        "home": 12,
-        "away": 11
-      }
-    },
-    {
-      "id": "823430",
-      "utcDate": "2026-08-06T22:05:00Z",
-      "status": "FINISHED",
-      "matchday": null,
-      "stage": "R",
-      "homeTeam": {
-        "id": "143",
-        "name": "Philadelphia Phillies",
-        "shortName": "Phillies",
-        "abbreviation": "PHI",
-        "crest": "https://www.mlbstatic.com/team-logos/143.svg"
-      },
-      "awayTeam": {
-        "id": "120",
-        "name": "Washington Nationals",
-        "shortName": "Nationals",
-        "abbreviation": "WSH",
-        "crest": "https://www.mlbstatic.com/team-logos/120.svg"
-      },
-      "score": {
-        "winner": "HOME_TEAM",
-        "home": 7,
-        "away": 3
-      }
-    },
-    {
-      "id": "823105",
-      "utcDate": "2026-08-06T20:10:00Z",
+      "id": "823103",
+      "utcDate": "2026-08-08T01:45:00Z",
       "status": "FINISHED",
       "matchday": null,
       "stage": "R",
@@ -1089,37 +985,89 @@ export const mlbSnapshot: MlbSnapshot = {
         "crest": "https://www.mlbstatic.com/team-logos/136.svg"
       },
       "awayTeam": {
-        "id": "116",
-        "name": "Detroit Tigers",
-        "shortName": "Tigers",
-        "abbreviation": "DET",
-        "crest": "https://www.mlbstatic.com/team-logos/116.svg"
+        "id": "139",
+        "name": "Tampa Bay Rays",
+        "shortName": "Rays",
+        "abbreviation": "TB",
+        "crest": "https://www.mlbstatic.com/team-logos/139.svg"
       },
       "score": {
         "winner": "AWAY_TEAM",
-        "home": 0,
-        "away": 11
+        "home": 1,
+        "away": 2
       }
     },
     {
-      "id": "824664",
-      "utcDate": "2026-08-06T18:20:00Z",
+      "id": "825051",
+      "utcDate": "2026-08-08T01:40:00Z",
       "status": "FINISHED",
       "matchday": null,
       "stage": "R",
       "homeTeam": {
-        "id": "112",
-        "name": "Chicago Cubs",
-        "shortName": "Cubs",
-        "abbreviation": "CHC",
-        "crest": "https://www.mlbstatic.com/team-logos/112.svg"
+        "id": "109",
+        "name": "Arizona Diamondbacks",
+        "shortName": "D-backs",
+        "abbreviation": "AZ",
+        "crest": "https://www.mlbstatic.com/team-logos/109.svg"
       },
       "awayTeam": {
-        "id": "141",
-        "name": "Toronto Blue Jays",
-        "shortName": "Blue Jays",
-        "abbreviation": "TOR",
-        "crest": "https://www.mlbstatic.com/team-logos/141.svg"
+        "id": "119",
+        "name": "Los Angeles Dodgers",
+        "shortName": "Dodgers",
+        "abbreviation": "LAD",
+        "crest": "https://www.mlbstatic.com/team-logos/119.svg"
+      },
+      "score": {
+        "winner": "HOME_TEAM",
+        "home": 4,
+        "away": 3
+      }
+    },
+    {
+      "id": "823266",
+      "utcDate": "2026-08-08T01:40:00Z",
+      "status": "FINISHED",
+      "matchday": null,
+      "stage": "R",
+      "homeTeam": {
+        "id": "135",
+        "name": "San Diego Padres",
+        "shortName": "Padres",
+        "abbreviation": "SD",
+        "crest": "https://www.mlbstatic.com/team-logos/135.svg"
+      },
+      "awayTeam": {
+        "id": "117",
+        "name": "Houston Astros",
+        "shortName": "Astros",
+        "abbreviation": "HOU",
+        "crest": "https://www.mlbstatic.com/team-logos/117.svg"
+      },
+      "score": {
+        "winner": "AWAY_TEAM",
+        "home": 3,
+        "away": 6
+      }
+    },
+    {
+      "id": "823024",
+      "utcDate": "2026-08-08T00:15:00Z",
+      "status": "FINISHED",
+      "matchday": null,
+      "stage": "R",
+      "homeTeam": {
+        "id": "138",
+        "name": "St. Louis Cardinals",
+        "shortName": "Cardinals",
+        "abbreviation": "STL",
+        "crest": "https://www.mlbstatic.com/team-logos/138.svg"
+      },
+      "awayTeam": {
+        "id": "115",
+        "name": "Colorado Rockies",
+        "shortName": "Rockies",
+        "abbreviation": "COL",
+        "crest": "https://www.mlbstatic.com/team-logos/115.svg"
       },
       "score": {
         "winner": "HOME_TEAM",
@@ -1128,8 +1076,86 @@ export const mlbSnapshot: MlbSnapshot = {
       }
     },
     {
-      "id": "823754",
-      "utcDate": "2026-08-06T18:10:00Z",
+      "id": "822863",
+      "utcDate": "2026-08-08T00:15:00Z",
+      "status": "FINISHED",
+      "matchday": null,
+      "stage": "R",
+      "homeTeam": {
+        "id": "140",
+        "name": "Texas Rangers",
+        "shortName": "Rangers",
+        "abbreviation": "TEX",
+        "crest": "https://www.mlbstatic.com/team-logos/140.svg"
+      },
+      "awayTeam": {
+        "id": "110",
+        "name": "Baltimore Orioles",
+        "shortName": "Orioles",
+        "abbreviation": "BAL",
+        "crest": "https://www.mlbstatic.com/team-logos/110.svg"
+      },
+      "score": {
+        "winner": "HOME_TEAM",
+        "home": 2,
+        "away": 1
+      }
+    },
+    {
+      "id": "824081",
+      "utcDate": "2026-08-08T00:10:00Z",
+      "status": "FINISHED",
+      "matchday": null,
+      "stage": "R",
+      "homeTeam": {
+        "id": "118",
+        "name": "Kansas City Royals",
+        "shortName": "Royals",
+        "abbreviation": "KC",
+        "crest": "https://www.mlbstatic.com/team-logos/118.svg"
+      },
+      "awayTeam": {
+        "id": "112",
+        "name": "Chicago Cubs",
+        "shortName": "Cubs",
+        "abbreviation": "CHC",
+        "crest": "https://www.mlbstatic.com/team-logos/112.svg"
+      },
+      "score": {
+        "winner": "AWAY_TEAM",
+        "home": 4,
+        "away": 6
+      }
+    },
+    {
+      "id": "824566",
+      "utcDate": "2026-08-07T23:40:00Z",
+      "status": "FINISHED",
+      "matchday": null,
+      "stage": "R",
+      "homeTeam": {
+        "id": "145",
+        "name": "Chicago White Sox",
+        "shortName": "White Sox",
+        "abbreviation": "CWS",
+        "crest": "https://www.mlbstatic.com/team-logos/145.svg"
+      },
+      "awayTeam": {
+        "id": "114",
+        "name": "Cleveland Guardians",
+        "shortName": "Guardians",
+        "abbreviation": "CLE",
+        "crest": "https://www.mlbstatic.com/team-logos/114.svg"
+      },
+      "score": {
+        "winner": "AWAY_TEAM",
+        "home": 2,
+        "away": 8
+      }
+    },
+    {
+      "id": "823750",
+      "utcDate": "2026-08-07T23:40:00Z",
       "status": "FINISHED",
       "matchday": null,
       "stage": "R",
@@ -1141,56 +1167,30 @@ export const mlbSnapshot: MlbSnapshot = {
         "crest": "https://www.mlbstatic.com/team-logos/158.svg"
       },
       "awayTeam": {
-        "id": "134",
-        "name": "Pittsburgh Pirates",
-        "shortName": "Pirates",
-        "abbreviation": "PIT",
-        "crest": "https://www.mlbstatic.com/team-logos/134.svg"
-      },
-      "score": {
-        "winner": "HOME_TEAM",
-        "home": 5,
-        "away": 2
-      }
-    },
-    {
-      "id": "824401",
-      "utcDate": "2026-08-06T17:10:00Z",
-      "status": "FINISHED",
-      "matchday": null,
-      "stage": "R",
-      "homeTeam": {
-        "id": "114",
-        "name": "Cleveland Guardians",
-        "shortName": "Guardians",
-        "abbreviation": "CLE",
-        "crest": "https://www.mlbstatic.com/team-logos/114.svg"
-      },
-      "awayTeam": {
-        "id": "121",
-        "name": "New York Mets",
-        "shortName": "Mets",
-        "abbreviation": "NYM",
-        "crest": "https://www.mlbstatic.com/team-logos/121.svg"
+        "id": "142",
+        "name": "Minnesota Twins",
+        "shortName": "Twins",
+        "abbreviation": "MIN",
+        "crest": "https://www.mlbstatic.com/team-logos/142.svg"
       },
       "score": {
         "winner": "AWAY_TEAM",
         "home": 6,
-        "away": 13
+        "away": 8
       }
     },
     {
-      "id": "824481",
-      "utcDate": "2026-08-06T16:40:00Z",
+      "id": "824727",
+      "utcDate": "2026-08-07T23:10:00Z",
       "status": "FINISHED",
       "matchday": null,
       "stage": "R",
       "homeTeam": {
-        "id": "113",
-        "name": "Cincinnati Reds",
-        "shortName": "Reds",
-        "abbreviation": "CIN",
-        "crest": "https://www.mlbstatic.com/team-logos/113.svg"
+        "id": "111",
+        "name": "Boston Red Sox",
+        "shortName": "Red Sox",
+        "abbreviation": "BOS",
+        "crest": "https://www.mlbstatic.com/team-logos/111.svg"
       },
       "awayTeam": {
         "id": "133",
@@ -1201,8 +1201,8 @@ export const mlbSnapshot: MlbSnapshot = {
       },
       "score": {
         "winner": "HOME_TEAM",
-        "home": 6,
-        "away": 5
+        "home": 13,
+        "away": 1
       }
     }
   ],
@@ -1499,19 +1499,19 @@ export const mlbSnapshot: MlbSnapshot = {
       },
       {
         "rank": 2,
-        "name": "Kyle Schwarber",
-        "teamId": "143",
-        "teamCode": "PHI",
+        "name": "Matt Olson",
+        "teamId": "144",
+        "teamCode": "ATL",
         "total": 33,
         "games": 0,
         "perGame": 0
       },
       {
-        "rank": 5,
-        "name": "Matt Olson",
-        "teamId": "144",
-        "teamCode": "ATL",
-        "total": 32,
+        "rank": 2,
+        "name": "Kyle Schwarber",
+        "teamId": "143",
+        "teamCode": "PHI",
+        "total": 33,
         "games": 0,
         "perGame": 0
       },
@@ -1585,7 +1585,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "name": "Yordan Alvarez",
         "teamId": "117",
         "teamCode": "HOU",
-        "total": 85,
+        "total": 86,
         "games": 0,
         "perGame": 0
       },
@@ -1603,12 +1603,12 @@ export const mlbSnapshot: MlbSnapshot = {
         "name": "Dillon Dingler",
         "teamId": "116",
         "teamCode": "DET",
-        "total": 78,
+        "total": 79,
         "games": 0,
         "perGame": 0
       },
       {
-        "rank": 5,
+        "rank": 6,
         "name": "Luis García Jr.",
         "teamId": "147",
         "teamCode": "NYY",
@@ -1630,7 +1630,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "name": "Andy Pages",
         "teamId": "119",
         "teamCode": "LAD",
-        "total": 74,
+        "total": 75,
         "games": 0,
         "perGame": 0
       },
@@ -1639,15 +1639,15 @@ export const mlbSnapshot: MlbSnapshot = {
         "name": "Ben Rice",
         "teamId": "147",
         "teamCode": "NYY",
-        "total": 73,
+        "total": 74,
         "games": 0,
         "perGame": 0
       },
       {
-        "rank": 9,
-        "name": "James Wood",
-        "teamId": "120",
-        "teamCode": "WSH",
+        "rank": 10,
+        "name": "Brandon Lowe",
+        "teamId": "134",
+        "teamCode": "PIT",
         "total": 73,
         "games": 0,
         "perGame": 0
@@ -1668,7 +1668,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "name": "Luis Arraez",
         "teamId": "143",
         "teamCode": "PHI",
-        "total": 0.324,
+        "total": 0.323,
         "games": 0,
         "perGame": 0
       },
@@ -1677,7 +1677,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "name": "Otto Lopez",
         "teamId": "146",
         "teamCode": "MIA",
-        "total": 0.316,
+        "total": 0.315,
         "games": 0,
         "perGame": 0
       },
@@ -1695,7 +1695,7 @@ export const mlbSnapshot: MlbSnapshot = {
         "name": "Freddie Freeman",
         "teamId": "119",
         "teamCode": "LAD",
-        "total": 0.31,
+        "total": 0.307,
         "games": 0,
         "perGame": 0
       },
@@ -1710,10 +1710,10 @@ export const mlbSnapshot: MlbSnapshot = {
       },
       {
         "rank": 7,
-        "name": "Yandy Díaz",
-        "teamId": "139",
-        "teamCode": "TB",
-        "total": 0.3,
+        "name": "Gabriel Moreno",
+        "teamId": "109",
+        "teamCode": "AZ",
+        "total": 0.301,
         "games": 0,
         "perGame": 0
       },
@@ -1722,24 +1722,24 @@ export const mlbSnapshot: MlbSnapshot = {
         "name": "Jake McCarthy",
         "teamId": "115",
         "teamCode": "COL",
-        "total": 0.299,
+        "total": 0.298,
         "games": 0,
         "perGame": 0
       },
       {
         "rank": 9,
-        "name": "Chandler Simpson",
+        "name": "Yandy Díaz",
         "teamId": "139",
         "teamCode": "TB",
-        "total": 0.299,
+        "total": 0.296,
         "games": 0,
         "perGame": 0
       },
       {
         "rank": 10,
-        "name": "Shohei Ohtani",
-        "teamId": "119",
-        "teamCode": "LAD",
+        "name": "TJ Rumfield",
+        "teamId": "115",
+        "teamCode": "COL",
         "total": 0.296,
         "games": 0,
         "perGame": 0
@@ -1831,10 +1831,10 @@ export const mlbSnapshot: MlbSnapshot = {
       },
       {
         "rank": 10,
-        "name": "Yoshinobu Yamamoto",
-        "teamId": "119",
-        "teamCode": "LAD",
-        "total": 2.76,
+        "name": "Drew Rasmussen",
+        "teamId": "139",
+        "teamCode": "TB",
+        "total": 2.75,
         "games": 0,
         "perGame": 0
       }
@@ -2040,6 +2040,32 @@ export const mlbSnapshot: MlbSnapshot = {
       },
       "recentGames": [
         {
+          "id": "823836",
+          "utcDate": "2026-08-07T23:10:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "146",
+            "name": "Miami Marlins",
+            "shortName": "Marlins",
+            "abbreviation": "MIA",
+            "crest": "https://www.mlbstatic.com/team-logos/146.svg"
+          },
+          "awayTeam": {
+            "id": "108",
+            "name": "Los Angeles Angels",
+            "shortName": "Angels",
+            "abbreviation": "LAA",
+            "crest": "https://www.mlbstatic.com/team-logos/108.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 3,
+            "away": 4
+          }
+        },
+        {
           "id": "824804",
           "utcDate": "2026-08-06T16:35:00Z",
           "status": "FINISHED",
@@ -2141,32 +2167,6 @@ export const mlbSnapshot: MlbSnapshot = {
             "winner": "HOME_TEAM",
             "home": 3,
             "away": 0
-          }
-        },
-        {
-          "id": "824000",
-          "utcDate": "2026-08-02T01:38:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "108",
-            "name": "Los Angeles Angels",
-            "shortName": "Angels",
-            "abbreviation": "LAA",
-            "crest": "https://www.mlbstatic.com/team-logos/108.svg"
-          },
-          "awayTeam": {
-            "id": "158",
-            "name": "Milwaukee Brewers",
-            "shortName": "Brewers",
-            "abbreviation": "MIL",
-            "crest": "https://www.mlbstatic.com/team-logos/158.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 1,
-            "away": 3
           }
         }
       ],
@@ -2305,17 +2305,17 @@ export const mlbSnapshot: MlbSnapshot = {
       "form": {
         "sequence": [
           "W",
-          "L",
-          "L",
           "W",
-          "L"
+          "L",
+          "L",
+          "W"
         ],
-        "wins": 2,
-        "losses": 3,
-        "runsFor": 11,
+        "wins": 3,
+        "losses": 2,
+        "runsFor": 14,
         "runsAgainst": 12
       },
-      "generatedAt": "2026-08-08T01:43:16.521Z"
+      "generatedAt": "2026-08-08T04:58:19.367Z"
     },
     "109": {
       "team": {
@@ -2331,6 +2331,32 @@ export const mlbSnapshot: MlbSnapshot = {
         "primaryColor": null
       },
       "recentGames": [
+        {
+          "id": "825051",
+          "utcDate": "2026-08-08T01:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "109",
+            "name": "Arizona Diamondbacks",
+            "shortName": "D-backs",
+            "abbreviation": "AZ",
+            "crest": "https://www.mlbstatic.com/team-logos/109.svg"
+          },
+          "awayTeam": {
+            "id": "119",
+            "name": "Los Angeles Dodgers",
+            "shortName": "Dodgers",
+            "abbreviation": "LAD",
+            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 4,
+            "away": 3
+          }
+        },
         {
           "id": "825053",
           "utcDate": "2026-08-07T01:40:00Z",
@@ -2433,32 +2459,6 @@ export const mlbSnapshot: MlbSnapshot = {
             "winner": "HOME_TEAM",
             "home": 5,
             "away": 1
-          }
-        },
-        {
-          "id": "824404",
-          "utcDate": "2026-08-02T17:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "114",
-            "name": "Cleveland Guardians",
-            "shortName": "Guardians",
-            "abbreviation": "CLE",
-            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
-          },
-          "awayTeam": {
-            "id": "109",
-            "name": "Arizona Diamondbacks",
-            "shortName": "D-backs",
-            "abbreviation": "AZ",
-            "crest": "https://www.mlbstatic.com/team-logos/109.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 5,
-            "away": 0
           }
         }
       ],
@@ -2596,18 +2596,18 @@ export const mlbSnapshot: MlbSnapshot = {
       ],
       "form": {
         "sequence": [
-          "L",
           "W",
           "L",
           "W",
-          "L"
+          "L",
+          "W"
         ],
-        "wins": 2,
-        "losses": 3,
-        "runsFor": 20,
-        "runsAgainst": 24
+        "wins": 3,
+        "losses": 2,
+        "runsFor": 24,
+        "runsAgainst": 22
       },
-      "generatedAt": "2026-08-08T01:43:16.521Z"
+      "generatedAt": "2026-08-08T04:58:19.367Z"
     },
     "110": {
       "team": {
@@ -2623,6 +2623,32 @@ export const mlbSnapshot: MlbSnapshot = {
         "primaryColor": null
       },
       "recentGames": [
+        {
+          "id": "822863",
+          "utcDate": "2026-08-08T00:15:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "140",
+            "name": "Texas Rangers",
+            "shortName": "Rangers",
+            "abbreviation": "TEX",
+            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
+          },
+          "awayTeam": {
+            "id": "110",
+            "name": "Baltimore Orioles",
+            "shortName": "Orioles",
+            "abbreviation": "BAL",
+            "crest": "https://www.mlbstatic.com/team-logos/110.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 2,
+            "away": 1
+          }
+        },
         {
           "id": "824804",
           "utcDate": "2026-08-06T16:35:00Z",
@@ -2725,32 +2751,6 @@ export const mlbSnapshot: MlbSnapshot = {
             "winner": "AWAY_TEAM",
             "home": 0,
             "away": 8
-          }
-        },
-        {
-          "id": "824808",
-          "utcDate": "2026-08-01T23:05:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "110",
-            "name": "Baltimore Orioles",
-            "shortName": "Orioles",
-            "abbreviation": "BAL",
-            "crest": "https://www.mlbstatic.com/team-logos/110.svg"
-          },
-          "awayTeam": {
-            "id": "143",
-            "name": "Philadelphia Phillies",
-            "shortName": "Phillies",
-            "abbreviation": "PHI",
-            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 0,
-            "away": 5
           }
         }
       ],
@@ -2889,17 +2889,17 @@ export const mlbSnapshot: MlbSnapshot = {
       "form": {
         "sequence": [
           "L",
-          "W",
-          "W",
           "L",
+          "W",
+          "W",
           "L"
         ],
         "wins": 2,
         "losses": 3,
-        "runsFor": 9,
-        "runsAgainst": 20
+        "runsFor": 10,
+        "runsAgainst": 17
       },
-      "generatedAt": "2026-08-08T01:43:16.521Z"
+      "generatedAt": "2026-08-08T04:58:19.367Z"
     },
     "111": {
       "team": {
@@ -2915,6 +2915,32 @@ export const mlbSnapshot: MlbSnapshot = {
         "primaryColor": null
       },
       "recentGames": [
+        {
+          "id": "824727",
+          "utcDate": "2026-08-07T23:10:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "111",
+            "name": "Boston Red Sox",
+            "shortName": "Red Sox",
+            "abbreviation": "BOS",
+            "crest": "https://www.mlbstatic.com/team-logos/111.svg"
+          },
+          "awayTeam": {
+            "id": "133",
+            "name": "Athletics",
+            "shortName": "Athletics",
+            "abbreviation": "ATH",
+            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 13,
+            "away": 1
+          }
+        },
         {
           "id": "824729",
           "utcDate": "2026-08-06T23:10:00Z",
@@ -3017,32 +3043,6 @@ export const mlbSnapshot: MlbSnapshot = {
             "winner": "AWAY_TEAM",
             "home": 4,
             "away": 8
-          }
-        },
-        {
-          "id": "823920",
-          "utcDate": "2026-08-02T01:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "119",
-            "name": "Los Angeles Dodgers",
-            "shortName": "Dodgers",
-            "abbreviation": "LAD",
-            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
-          },
-          "awayTeam": {
-            "id": "111",
-            "name": "Boston Red Sox",
-            "shortName": "Red Sox",
-            "abbreviation": "BOS",
-            "crest": "https://www.mlbstatic.com/team-logos/111.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 2,
-            "away": 3
           }
         }
       ],
@@ -3188,10 +3188,10 @@ export const mlbSnapshot: MlbSnapshot = {
         ],
         "wins": 5,
         "losses": 0,
-        "runsFor": 41,
-        "runsAgainst": 19
+        "runsFor": 51,
+        "runsAgainst": 18
       },
-      "generatedAt": "2026-08-08T01:43:16.521Z"
+      "generatedAt": "2026-08-08T04:58:19.367Z"
     },
     "112": {
       "team": {
@@ -3208,6 +3208,32 @@ export const mlbSnapshot: MlbSnapshot = {
       },
       "recentGames": [
         {
+          "id": "824081",
+          "utcDate": "2026-08-08T00:10:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "118",
+            "name": "Kansas City Royals",
+            "shortName": "Royals",
+            "abbreviation": "KC",
+            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
+          },
+          "awayTeam": {
+            "id": "112",
+            "name": "Chicago Cubs",
+            "shortName": "Cubs",
+            "abbreviation": "CHC",
+            "crest": "https://www.mlbstatic.com/team-logos/112.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 4,
+            "away": 6
+          }
+        },
+        {
           "id": "824664",
           "utcDate": "2026-08-06T18:20:00Z",
           "status": "FINISHED",
@@ -3309,32 +3335,6 @@ export const mlbSnapshot: MlbSnapshot = {
             "winner": "HOME_TEAM",
             "home": 10,
             "away": 5
-          }
-        },
-        {
-          "id": "824648",
-          "utcDate": "2026-08-02T18:20:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "112",
-            "name": "Chicago Cubs",
-            "shortName": "Cubs",
-            "abbreviation": "CHC",
-            "crest": "https://www.mlbstatic.com/team-logos/112.svg"
-          },
-          "awayTeam": {
-            "id": "147",
-            "name": "New York Yankees",
-            "shortName": "Yankees",
-            "abbreviation": "NYY",
-            "crest": "https://www.mlbstatic.com/team-logos/147.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 1,
-            "away": 2
           }
         }
       ],
@@ -3462,6138 +3462,6 @@ export const mlbSnapshot: MlbSnapshot = {
             "shortName": "Cubs",
             "abbreviation": "CHC",
             "crest": "https://www.mlbstatic.com/team-logos/112.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        }
-      ],
-      "form": {
-        "sequence": [
-          "W",
-          "W",
-          "W",
-          "W",
-          "L"
-        ],
-        "wins": 4,
-        "losses": 1,
-        "runsFor": 26,
-        "runsAgainst": 16
-      },
-      "generatedAt": "2026-08-08T01:43:16.521Z"
-    },
-    "113": {
-      "team": {
-        "id": "113",
-        "name": "Cincinnati Reds",
-        "shortName": "Reds",
-        "abbreviation": "CIN",
-        "league": "NL",
-        "division": "NL Central",
-        "venue": "Great American Ball Park",
-        "logo": "https://www.mlbstatic.com/team-logos/113.svg",
-        "founded": 1882,
-        "primaryColor": null
-      },
-      "recentGames": [
-        {
-          "id": "824481",
-          "utcDate": "2026-08-06T16:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "113",
-            "name": "Cincinnati Reds",
-            "shortName": "Reds",
-            "abbreviation": "CIN",
-            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
-          },
-          "awayTeam": {
-            "id": "133",
-            "name": "Athletics",
-            "shortName": "Athletics",
-            "abbreviation": "ATH",
-            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 6,
-            "away": 5
-          }
-        },
-        {
-          "id": "824482",
-          "utcDate": "2026-08-05T22:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "113",
-            "name": "Cincinnati Reds",
-            "shortName": "Reds",
-            "abbreviation": "CIN",
-            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
-          },
-          "awayTeam": {
-            "id": "133",
-            "name": "Athletics",
-            "shortName": "Athletics",
-            "abbreviation": "ATH",
-            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 3,
-            "away": 2
-          }
-        },
-        {
-          "id": "824484",
-          "utcDate": "2026-08-04T22:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "113",
-            "name": "Cincinnati Reds",
-            "shortName": "Reds",
-            "abbreviation": "CIN",
-            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
-          },
-          "awayTeam": {
-            "id": "133",
-            "name": "Athletics",
-            "shortName": "Athletics",
-            "abbreviation": "ATH",
-            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 5,
-            "away": 4
-          }
-        },
-        {
-          "id": "824483",
-          "utcDate": "2026-08-02T17:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "113",
-            "name": "Cincinnati Reds",
-            "shortName": "Reds",
-            "abbreviation": "CIN",
-            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
-          },
-          "awayTeam": {
-            "id": "134",
-            "name": "Pittsburgh Pirates",
-            "shortName": "Pirates",
-            "abbreviation": "PIT",
-            "crest": "https://www.mlbstatic.com/team-logos/134.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 10,
-            "away": 2
-          }
-        },
-        {
-          "id": "824485",
-          "utcDate": "2026-08-01T22:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "113",
-            "name": "Cincinnati Reds",
-            "shortName": "Reds",
-            "abbreviation": "CIN",
-            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
-          },
-          "awayTeam": {
-            "id": "134",
-            "name": "Pittsburgh Pirates",
-            "shortName": "Pirates",
-            "abbreviation": "PIT",
-            "crest": "https://www.mlbstatic.com/team-logos/134.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 1,
-            "away": 4
-          }
-        }
-      ],
-      "upcomingGames": [
-        {
-          "id": "822701",
-          "utcDate": "2026-08-08T22:45:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "120",
-            "name": "Washington Nationals",
-            "shortName": "Nationals",
-            "abbreviation": "WSH",
-            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
-          },
-          "awayTeam": {
-            "id": "113",
-            "name": "Cincinnati Reds",
-            "shortName": "Reds",
-            "abbreviation": "CIN",
-            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "822700",
-          "utcDate": "2026-08-09T16:15:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "120",
-            "name": "Washington Nationals",
-            "shortName": "Nationals",
-            "abbreviation": "WSH",
-            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
-          },
-          "awayTeam": {
-            "id": "113",
-            "name": "Cincinnati Reds",
-            "shortName": "Reds",
-            "abbreviation": "CIN",
-            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "824563",
-          "utcDate": "2026-08-11T23:40:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "145",
-            "name": "Chicago White Sox",
-            "shortName": "White Sox",
-            "abbreviation": "CWS",
-            "crest": "https://www.mlbstatic.com/team-logos/145.svg"
-          },
-          "awayTeam": {
-            "id": "113",
-            "name": "Cincinnati Reds",
-            "shortName": "Reds",
-            "abbreviation": "CIN",
-            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "824562",
-          "utcDate": "2026-08-12T23:40:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "145",
-            "name": "Chicago White Sox",
-            "shortName": "White Sox",
-            "abbreviation": "CWS",
-            "crest": "https://www.mlbstatic.com/team-logos/145.svg"
-          },
-          "awayTeam": {
-            "id": "113",
-            "name": "Cincinnati Reds",
-            "shortName": "Reds",
-            "abbreviation": "CIN",
-            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "824561",
-          "utcDate": "2026-08-13T18:10:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "145",
-            "name": "Chicago White Sox",
-            "shortName": "White Sox",
-            "abbreviation": "CWS",
-            "crest": "https://www.mlbstatic.com/team-logos/145.svg"
-          },
-          "awayTeam": {
-            "id": "113",
-            "name": "Cincinnati Reds",
-            "shortName": "Reds",
-            "abbreviation": "CIN",
-            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        }
-      ],
-      "form": {
-        "sequence": [
-          "W",
-          "W",
-          "W",
-          "W",
-          "L"
-        ],
-        "wins": 4,
-        "losses": 1,
-        "runsFor": 25,
-        "runsAgainst": 17
-      },
-      "generatedAt": "2026-08-08T01:43:16.521Z"
-    },
-    "114": {
-      "team": {
-        "id": "114",
-        "name": "Cleveland Guardians",
-        "shortName": "Guardians",
-        "abbreviation": "CLE",
-        "league": "AL",
-        "division": "AL Central",
-        "venue": "Progressive Field",
-        "logo": "https://www.mlbstatic.com/team-logos/114.svg",
-        "founded": 1901,
-        "primaryColor": null
-      },
-      "recentGames": [
-        {
-          "id": "824401",
-          "utcDate": "2026-08-06T17:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "114",
-            "name": "Cleveland Guardians",
-            "shortName": "Guardians",
-            "abbreviation": "CLE",
-            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
-          },
-          "awayTeam": {
-            "id": "121",
-            "name": "New York Mets",
-            "shortName": "Mets",
-            "abbreviation": "NYM",
-            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 6,
-            "away": 13
-          }
-        },
-        {
-          "id": "824402",
-          "utcDate": "2026-08-05T22:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "114",
-            "name": "Cleveland Guardians",
-            "shortName": "Guardians",
-            "abbreviation": "CLE",
-            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
-          },
-          "awayTeam": {
-            "id": "121",
-            "name": "New York Mets",
-            "shortName": "Mets",
-            "abbreviation": "NYM",
-            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 5,
-            "away": 6
-          }
-        },
-        {
-          "id": "824403",
-          "utcDate": "2026-08-04T22:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "114",
-            "name": "Cleveland Guardians",
-            "shortName": "Guardians",
-            "abbreviation": "CLE",
-            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
-          },
-          "awayTeam": {
-            "id": "121",
-            "name": "New York Mets",
-            "shortName": "Mets",
-            "abbreviation": "NYM",
-            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 2,
-            "away": 6
-          }
-        },
-        {
-          "id": "824404",
-          "utcDate": "2026-08-02T17:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "114",
-            "name": "Cleveland Guardians",
-            "shortName": "Guardians",
-            "abbreviation": "CLE",
-            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
-          },
-          "awayTeam": {
-            "id": "109",
-            "name": "Arizona Diamondbacks",
-            "shortName": "D-backs",
-            "abbreviation": "AZ",
-            "crest": "https://www.mlbstatic.com/team-logos/109.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 5,
-            "away": 0
-          }
-        },
-        {
-          "id": "824405",
-          "utcDate": "2026-08-01T23:15:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "114",
-            "name": "Cleveland Guardians",
-            "shortName": "Guardians",
-            "abbreviation": "CLE",
-            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
-          },
-          "awayTeam": {
-            "id": "109",
-            "name": "Arizona Diamondbacks",
-            "shortName": "D-backs",
-            "abbreviation": "AZ",
-            "crest": "https://www.mlbstatic.com/team-logos/109.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 8,
-            "away": 12
-          }
-        }
-      ],
-      "upcomingGames": [
-        {
-          "id": "824565",
-          "utcDate": "2026-08-08T23:15:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "145",
-            "name": "Chicago White Sox",
-            "shortName": "White Sox",
-            "abbreviation": "CWS",
-            "crest": "https://www.mlbstatic.com/team-logos/145.svg"
-          },
-          "awayTeam": {
-            "id": "114",
-            "name": "Cleveland Guardians",
-            "shortName": "Guardians",
-            "abbreviation": "CLE",
-            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "824564",
-          "utcDate": "2026-08-09T18:10:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "145",
-            "name": "Chicago White Sox",
-            "shortName": "White Sox",
-            "abbreviation": "CWS",
-            "crest": "https://www.mlbstatic.com/team-logos/145.svg"
-          },
-          "awayTeam": {
-            "id": "114",
-            "name": "Cleveland Guardians",
-            "shortName": "Guardians",
-            "abbreviation": "CLE",
-            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "824240",
-          "utcDate": "2026-08-11T22:40:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "116",
-            "name": "Detroit Tigers",
-            "shortName": "Tigers",
-            "abbreviation": "DET",
-            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
-          },
-          "awayTeam": {
-            "id": "114",
-            "name": "Cleveland Guardians",
-            "shortName": "Guardians",
-            "abbreviation": "CLE",
-            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "824241",
-          "utcDate": "2026-08-12T22:40:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "116",
-            "name": "Detroit Tigers",
-            "shortName": "Tigers",
-            "abbreviation": "DET",
-            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
-          },
-          "awayTeam": {
-            "id": "114",
-            "name": "Cleveland Guardians",
-            "shortName": "Guardians",
-            "abbreviation": "CLE",
-            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "824238",
-          "utcDate": "2026-08-13T17:10:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "116",
-            "name": "Detroit Tigers",
-            "shortName": "Tigers",
-            "abbreviation": "DET",
-            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
-          },
-          "awayTeam": {
-            "id": "114",
-            "name": "Cleveland Guardians",
-            "shortName": "Guardians",
-            "abbreviation": "CLE",
-            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        }
-      ],
-      "form": {
-        "sequence": [
-          "L",
-          "L",
-          "L",
-          "W",
-          "L"
-        ],
-        "wins": 1,
-        "losses": 4,
-        "runsFor": 26,
-        "runsAgainst": 37
-      },
-      "generatedAt": "2026-08-08T01:43:16.521Z"
-    },
-    "115": {
-      "team": {
-        "id": "115",
-        "name": "Colorado Rockies",
-        "shortName": "Rockies",
-        "abbreviation": "COL",
-        "league": "NL",
-        "division": "NL West",
-        "venue": "Coors Field",
-        "logo": "https://www.mlbstatic.com/team-logos/115.svg",
-        "founded": 1992,
-        "primaryColor": null
-      },
-      "recentGames": [
-        {
-          "id": "824322",
-          "utcDate": "2026-08-05T19:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "115",
-            "name": "Colorado Rockies",
-            "shortName": "Rockies",
-            "abbreviation": "COL",
-            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
-          },
-          "awayTeam": {
-            "id": "139",
-            "name": "Tampa Bay Rays",
-            "shortName": "Rays",
-            "abbreviation": "TB",
-            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 0,
-            "away": 4
-          }
-        },
-        {
-          "id": "824321",
-          "utcDate": "2026-08-05T00:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "115",
-            "name": "Colorado Rockies",
-            "shortName": "Rockies",
-            "abbreviation": "COL",
-            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
-          },
-          "awayTeam": {
-            "id": "139",
-            "name": "Tampa Bay Rays",
-            "shortName": "Rays",
-            "abbreviation": "TB",
-            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 7,
-            "away": 9
-          }
-        },
-        {
-          "id": "824324",
-          "utcDate": "2026-08-04T00:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "115",
-            "name": "Colorado Rockies",
-            "shortName": "Rockies",
-            "abbreviation": "COL",
-            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
-          },
-          "awayTeam": {
-            "id": "139",
-            "name": "Tampa Bay Rays",
-            "shortName": "Rays",
-            "abbreviation": "TB",
-            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 9,
-            "away": 13
-          }
-        },
-        {
-          "id": "824323",
-          "utcDate": "2026-08-02T19:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "115",
-            "name": "Colorado Rockies",
-            "shortName": "Rockies",
-            "abbreviation": "COL",
-            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
-          },
-          "awayTeam": {
-            "id": "118",
-            "name": "Kansas City Royals",
-            "shortName": "Royals",
-            "abbreviation": "KC",
-            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 8,
-            "away": 1
-          }
-        },
-        {
-          "id": "824326",
-          "utcDate": "2026-08-02T00:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "115",
-            "name": "Colorado Rockies",
-            "shortName": "Rockies",
-            "abbreviation": "COL",
-            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
-          },
-          "awayTeam": {
-            "id": "118",
-            "name": "Kansas City Royals",
-            "shortName": "Royals",
-            "abbreviation": "KC",
-            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 12,
-            "away": 6
-          }
-        }
-      ],
-      "upcomingGames": [
-        {
-          "id": "823021",
-          "utcDate": "2026-08-08T23:15:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "138",
-            "name": "St. Louis Cardinals",
-            "shortName": "Cardinals",
-            "abbreviation": "STL",
-            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
-          },
-          "awayTeam": {
-            "id": "115",
-            "name": "Colorado Rockies",
-            "shortName": "Rockies",
-            "abbreviation": "COL",
-            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823020",
-          "utcDate": "2026-08-09T18:15:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "138",
-            "name": "St. Louis Cardinals",
-            "shortName": "Cardinals",
-            "abbreviation": "STL",
-            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
-          },
-          "awayTeam": {
-            "id": "115",
-            "name": "Colorado Rockies",
-            "shortName": "Rockies",
-            "abbreviation": "COL",
-            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "825048",
-          "utcDate": "2026-08-11T01:40:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "109",
-            "name": "Arizona Diamondbacks",
-            "shortName": "D-backs",
-            "abbreviation": "AZ",
-            "crest": "https://www.mlbstatic.com/team-logos/109.svg"
-          },
-          "awayTeam": {
-            "id": "115",
-            "name": "Colorado Rockies",
-            "shortName": "Rockies",
-            "abbreviation": "COL",
-            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "825046",
-          "utcDate": "2026-08-12T01:40:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "109",
-            "name": "Arizona Diamondbacks",
-            "shortName": "D-backs",
-            "abbreviation": "AZ",
-            "crest": "https://www.mlbstatic.com/team-logos/109.svg"
-          },
-          "awayTeam": {
-            "id": "115",
-            "name": "Colorado Rockies",
-            "shortName": "Rockies",
-            "abbreviation": "COL",
-            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "825047",
-          "utcDate": "2026-08-12T19:40:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "109",
-            "name": "Arizona Diamondbacks",
-            "shortName": "D-backs",
-            "abbreviation": "AZ",
-            "crest": "https://www.mlbstatic.com/team-logos/109.svg"
-          },
-          "awayTeam": {
-            "id": "115",
-            "name": "Colorado Rockies",
-            "shortName": "Rockies",
-            "abbreviation": "COL",
-            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        }
-      ],
-      "form": {
-        "sequence": [
-          "L",
-          "L",
-          "L",
-          "W",
-          "W"
-        ],
-        "wins": 2,
-        "losses": 3,
-        "runsFor": 36,
-        "runsAgainst": 33
-      },
-      "generatedAt": "2026-08-08T01:43:16.521Z"
-    },
-    "116": {
-      "team": {
-        "id": "116",
-        "name": "Detroit Tigers",
-        "shortName": "Tigers",
-        "abbreviation": "DET",
-        "league": "AL",
-        "division": "AL Central",
-        "venue": "Comerica Park",
-        "logo": "https://www.mlbstatic.com/team-logos/116.svg",
-        "founded": 1901,
-        "primaryColor": null
-      },
-      "recentGames": [
-        {
-          "id": "823105",
-          "utcDate": "2026-08-06T20:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "136",
-            "name": "Seattle Mariners",
-            "shortName": "Mariners",
-            "abbreviation": "SEA",
-            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
-          },
-          "awayTeam": {
-            "id": "116",
-            "name": "Detroit Tigers",
-            "shortName": "Tigers",
-            "abbreviation": "DET",
-            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 0,
-            "away": 11
-          }
-        },
-        {
-          "id": "823106",
-          "utcDate": "2026-08-06T01:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "136",
-            "name": "Seattle Mariners",
-            "shortName": "Mariners",
-            "abbreviation": "SEA",
-            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
-          },
-          "awayTeam": {
-            "id": "116",
-            "name": "Detroit Tigers",
-            "shortName": "Tigers",
-            "abbreviation": "DET",
-            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 4,
-            "away": 2
-          }
-        },
-        {
-          "id": "823108",
-          "utcDate": "2026-08-05T01:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "136",
-            "name": "Seattle Mariners",
-            "shortName": "Mariners",
-            "abbreviation": "SEA",
-            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
-          },
-          "awayTeam": {
-            "id": "116",
-            "name": "Detroit Tigers",
-            "shortName": "Tigers",
-            "abbreviation": "DET",
-            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 0,
-            "away": 8
-          }
-        },
-        {
-          "id": "824971",
-          "utcDate": "2026-08-02T20:05:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "133",
-            "name": "Athletics",
-            "shortName": "Athletics",
-            "abbreviation": "ATH",
-            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
-          },
-          "awayTeam": {
-            "id": "116",
-            "name": "Detroit Tigers",
-            "shortName": "Tigers",
-            "abbreviation": "DET",
-            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 0,
-            "away": 11
-          }
-        },
-        {
-          "id": "824972",
-          "utcDate": "2026-08-02T01:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "133",
-            "name": "Athletics",
-            "shortName": "Athletics",
-            "abbreviation": "ATH",
-            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
-          },
-          "awayTeam": {
-            "id": "116",
-            "name": "Detroit Tigers",
-            "shortName": "Tigers",
-            "abbreviation": "DET",
-            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 6,
-            "away": 8
-          }
-        }
-      ],
-      "upcomingGames": [
-        {
-          "id": "823188",
-          "utcDate": "2026-08-08T23:15:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "137",
-            "name": "San Francisco Giants",
-            "shortName": "Giants",
-            "abbreviation": "SF",
-            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
-          },
-          "awayTeam": {
-            "id": "116",
-            "name": "Detroit Tigers",
-            "shortName": "Tigers",
-            "abbreviation": "DET",
-            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823190",
-          "utcDate": "2026-08-09T20:05:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "137",
-            "name": "San Francisco Giants",
-            "shortName": "Giants",
-            "abbreviation": "SF",
-            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
-          },
-          "awayTeam": {
-            "id": "116",
-            "name": "Detroit Tigers",
-            "shortName": "Tigers",
-            "abbreviation": "DET",
-            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "824240",
-          "utcDate": "2026-08-11T22:40:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "116",
-            "name": "Detroit Tigers",
-            "shortName": "Tigers",
-            "abbreviation": "DET",
-            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
-          },
-          "awayTeam": {
-            "id": "114",
-            "name": "Cleveland Guardians",
-            "shortName": "Guardians",
-            "abbreviation": "CLE",
-            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "824241",
-          "utcDate": "2026-08-12T22:40:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "116",
-            "name": "Detroit Tigers",
-            "shortName": "Tigers",
-            "abbreviation": "DET",
-            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
-          },
-          "awayTeam": {
-            "id": "114",
-            "name": "Cleveland Guardians",
-            "shortName": "Guardians",
-            "abbreviation": "CLE",
-            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "824238",
-          "utcDate": "2026-08-13T17:10:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "116",
-            "name": "Detroit Tigers",
-            "shortName": "Tigers",
-            "abbreviation": "DET",
-            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
-          },
-          "awayTeam": {
-            "id": "114",
-            "name": "Cleveland Guardians",
-            "shortName": "Guardians",
-            "abbreviation": "CLE",
-            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        }
-      ],
-      "form": {
-        "sequence": [
-          "W",
-          "L",
-          "W",
-          "W",
-          "W"
-        ],
-        "wins": 4,
-        "losses": 1,
-        "runsFor": 40,
-        "runsAgainst": 10
-      },
-      "generatedAt": "2026-08-08T01:43:16.521Z"
-    },
-    "117": {
-      "team": {
-        "id": "117",
-        "name": "Houston Astros",
-        "shortName": "Astros",
-        "abbreviation": "HOU",
-        "league": "AL",
-        "division": "AL West",
-        "venue": "Daikin Park",
-        "logo": "https://www.mlbstatic.com/team-logos/117.svg",
-        "founded": 1962,
-        "primaryColor": null
-      },
-      "recentGames": [
-        {
-          "id": "824158",
-          "utcDate": "2026-08-05T18:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "117",
-            "name": "Houston Astros",
-            "shortName": "Astros",
-            "abbreviation": "HOU",
-            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
-          },
-          "awayTeam": {
-            "id": "141",
-            "name": "Toronto Blue Jays",
-            "shortName": "Blue Jays",
-            "abbreviation": "TOR",
-            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 4,
-            "away": 5
-          }
-        },
-        {
-          "id": "824161",
-          "utcDate": "2026-08-05T00:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "117",
-            "name": "Houston Astros",
-            "shortName": "Astros",
-            "abbreviation": "HOU",
-            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
-          },
-          "awayTeam": {
-            "id": "141",
-            "name": "Toronto Blue Jays",
-            "shortName": "Blue Jays",
-            "abbreviation": "TOR",
-            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 7,
-            "away": 2
-          }
-        },
-        {
-          "id": "824160",
-          "utcDate": "2026-08-04T00:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "117",
-            "name": "Houston Astros",
-            "shortName": "Astros",
-            "abbreviation": "HOU",
-            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
-          },
-          "awayTeam": {
-            "id": "141",
-            "name": "Toronto Blue Jays",
-            "shortName": "Blue Jays",
-            "abbreviation": "TOR",
-            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 1,
-            "away": 3
-          }
-        },
-        {
-          "id": "824163",
-          "utcDate": "2026-08-02T18:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "117",
-            "name": "Houston Astros",
-            "shortName": "Astros",
-            "abbreviation": "HOU",
-            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
-          },
-          "awayTeam": {
-            "id": "140",
-            "name": "Texas Rangers",
-            "shortName": "Rangers",
-            "abbreviation": "TEX",
-            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 7,
-            "away": 3
-          }
-        },
-        {
-          "id": "824162",
-          "utcDate": "2026-08-01T23:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "117",
-            "name": "Houston Astros",
-            "shortName": "Astros",
-            "abbreviation": "HOU",
-            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
-          },
-          "awayTeam": {
-            "id": "140",
-            "name": "Texas Rangers",
-            "shortName": "Rangers",
-            "abbreviation": "TEX",
-            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 5,
-            "away": 4
-          }
-        }
-      ],
-      "upcomingGames": [
-        {
-          "id": "823267",
-          "utcDate": "2026-08-08T23:15:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "135",
-            "name": "San Diego Padres",
-            "shortName": "Padres",
-            "abbreviation": "SD",
-            "crest": "https://www.mlbstatic.com/team-logos/135.svg"
-          },
-          "awayTeam": {
-            "id": "117",
-            "name": "Houston Astros",
-            "shortName": "Astros",
-            "abbreviation": "HOU",
-            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823268",
-          "utcDate": "2026-08-10T00:20:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "135",
-            "name": "San Diego Padres",
-            "shortName": "Padres",
-            "abbreviation": "SD",
-            "crest": "https://www.mlbstatic.com/team-logos/135.svg"
-          },
-          "awayTeam": {
-            "id": "117",
-            "name": "Houston Astros",
-            "shortName": "Astros",
-            "abbreviation": "HOU",
-            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823189",
-          "utcDate": "2026-08-11T01:45:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "137",
-            "name": "San Francisco Giants",
-            "shortName": "Giants",
-            "abbreviation": "SF",
-            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
-          },
-          "awayTeam": {
-            "id": "117",
-            "name": "Houston Astros",
-            "shortName": "Astros",
-            "abbreviation": "HOU",
-            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823186",
-          "utcDate": "2026-08-12T01:45:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "137",
-            "name": "San Francisco Giants",
-            "shortName": "Giants",
-            "abbreviation": "SF",
-            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
-          },
-          "awayTeam": {
-            "id": "117",
-            "name": "Houston Astros",
-            "shortName": "Astros",
-            "abbreviation": "HOU",
-            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823187",
-          "utcDate": "2026-08-12T19:45:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "137",
-            "name": "San Francisco Giants",
-            "shortName": "Giants",
-            "abbreviation": "SF",
-            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
-          },
-          "awayTeam": {
-            "id": "117",
-            "name": "Houston Astros",
-            "shortName": "Astros",
-            "abbreviation": "HOU",
-            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        }
-      ],
-      "form": {
-        "sequence": [
-          "L",
-          "W",
-          "L",
-          "W",
-          "W"
-        ],
-        "wins": 3,
-        "losses": 2,
-        "runsFor": 24,
-        "runsAgainst": 17
-      },
-      "generatedAt": "2026-08-08T01:43:16.521Z"
-    },
-    "118": {
-      "team": {
-        "id": "118",
-        "name": "Kansas City Royals",
-        "shortName": "Royals",
-        "abbreviation": "KC",
-        "league": "AL",
-        "division": "AL Central",
-        "venue": "Kauffman Stadium",
-        "logo": "https://www.mlbstatic.com/team-logos/118.svg",
-        "founded": 1968,
-        "primaryColor": null
-      },
-      "recentGames": [
-        {
-          "id": "824080",
-          "utcDate": "2026-08-06T23:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "118",
-            "name": "Kansas City Royals",
-            "shortName": "Royals",
-            "abbreviation": "KC",
-            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
-          },
-          "awayTeam": {
-            "id": "142",
-            "name": "Minnesota Twins",
-            "shortName": "Twins",
-            "abbreviation": "MIN",
-            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 3,
-            "away": 4
-          }
-        },
-        {
-          "id": "824082",
-          "utcDate": "2026-08-05T23:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "118",
-            "name": "Kansas City Royals",
-            "shortName": "Royals",
-            "abbreviation": "KC",
-            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
-          },
-          "awayTeam": {
-            "id": "142",
-            "name": "Minnesota Twins",
-            "shortName": "Twins",
-            "abbreviation": "MIN",
-            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 2,
-            "away": 1
-          }
-        },
-        {
-          "id": "824084",
-          "utcDate": "2026-08-04T23:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "118",
-            "name": "Kansas City Royals",
-            "shortName": "Royals",
-            "abbreviation": "KC",
-            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
-          },
-          "awayTeam": {
-            "id": "142",
-            "name": "Minnesota Twins",
-            "shortName": "Twins",
-            "abbreviation": "MIN",
-            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 8,
-            "away": 2
-          }
-        },
-        {
-          "id": "824323",
-          "utcDate": "2026-08-02T19:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "115",
-            "name": "Colorado Rockies",
-            "shortName": "Rockies",
-            "abbreviation": "COL",
-            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
-          },
-          "awayTeam": {
-            "id": "118",
-            "name": "Kansas City Royals",
-            "shortName": "Royals",
-            "abbreviation": "KC",
-            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 8,
-            "away": 1
-          }
-        },
-        {
-          "id": "824326",
-          "utcDate": "2026-08-02T00:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "115",
-            "name": "Colorado Rockies",
-            "shortName": "Rockies",
-            "abbreviation": "COL",
-            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
-          },
-          "awayTeam": {
-            "id": "118",
-            "name": "Kansas City Royals",
-            "shortName": "Royals",
-            "abbreviation": "KC",
-            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 12,
-            "away": 6
-          }
-        }
-      ],
-      "upcomingGames": [
-        {
-          "id": "824079",
-          "utcDate": "2026-08-08T23:10:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "118",
-            "name": "Kansas City Royals",
-            "shortName": "Royals",
-            "abbreviation": "KC",
-            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
-          },
-          "awayTeam": {
-            "id": "112",
-            "name": "Chicago Cubs",
-            "shortName": "Cubs",
-            "abbreviation": "CHC",
-            "crest": "https://www.mlbstatic.com/team-logos/112.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "824078",
-          "utcDate": "2026-08-09T18:10:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "118",
-            "name": "Kansas City Royals",
-            "shortName": "Royals",
-            "abbreviation": "KC",
-            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
-          },
-          "awayTeam": {
-            "id": "112",
-            "name": "Chicago Cubs",
-            "shortName": "Cubs",
-            "abbreviation": "CHC",
-            "crest": "https://www.mlbstatic.com/team-logos/112.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823918",
-          "utcDate": "2026-08-11T02:10:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "119",
-            "name": "Los Angeles Dodgers",
-            "shortName": "Dodgers",
-            "abbreviation": "LAD",
-            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
-          },
-          "awayTeam": {
-            "id": "118",
-            "name": "Kansas City Royals",
-            "shortName": "Royals",
-            "abbreviation": "KC",
-            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823917",
-          "utcDate": "2026-08-12T02:10:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "119",
-            "name": "Los Angeles Dodgers",
-            "shortName": "Dodgers",
-            "abbreviation": "LAD",
-            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
-          },
-          "awayTeam": {
-            "id": "118",
-            "name": "Kansas City Royals",
-            "shortName": "Royals",
-            "abbreviation": "KC",
-            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823916",
-          "utcDate": "2026-08-13T02:10:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "119",
-            "name": "Los Angeles Dodgers",
-            "shortName": "Dodgers",
-            "abbreviation": "LAD",
-            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
-          },
-          "awayTeam": {
-            "id": "118",
-            "name": "Kansas City Royals",
-            "shortName": "Royals",
-            "abbreviation": "KC",
-            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        }
-      ],
-      "form": {
-        "sequence": [
-          "L",
-          "W",
-          "W",
-          "L",
-          "L"
-        ],
-        "wins": 2,
-        "losses": 3,
-        "runsFor": 20,
-        "runsAgainst": 27
-      },
-      "generatedAt": "2026-08-08T01:43:16.521Z"
-    },
-    "119": {
-      "team": {
-        "id": "119",
-        "name": "Los Angeles Dodgers",
-        "shortName": "Dodgers",
-        "abbreviation": "LAD",
-        "league": "NL",
-        "division": "NL West",
-        "venue": "UNIQLO Field at Dodger Stadium",
-        "logo": "https://www.mlbstatic.com/team-logos/119.svg",
-        "founded": 1884,
-        "primaryColor": null
-      },
-      "recentGames": [
-        {
-          "id": "824646",
-          "utcDate": "2026-08-05T18:20:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "112",
-            "name": "Chicago Cubs",
-            "shortName": "Cubs",
-            "abbreviation": "CHC",
-            "crest": "https://www.mlbstatic.com/team-logos/112.svg"
-          },
-          "awayTeam": {
-            "id": "119",
-            "name": "Los Angeles Dodgers",
-            "shortName": "Dodgers",
-            "abbreviation": "LAD",
-            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 7,
-            "away": 6
-          }
-        },
-        {
-          "id": "824645",
-          "utcDate": "2026-08-05T00:05:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "112",
-            "name": "Chicago Cubs",
-            "shortName": "Cubs",
-            "abbreviation": "CHC",
-            "crest": "https://www.mlbstatic.com/team-logos/112.svg"
-          },
-          "awayTeam": {
-            "id": "119",
-            "name": "Los Angeles Dodgers",
-            "shortName": "Dodgers",
-            "abbreviation": "LAD",
-            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 5,
-            "away": 1
-          }
-        },
-        {
-          "id": "824647",
-          "utcDate": "2026-08-04T00:05:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "112",
-            "name": "Chicago Cubs",
-            "shortName": "Cubs",
-            "abbreviation": "CHC",
-            "crest": "https://www.mlbstatic.com/team-logos/112.svg"
-          },
-          "awayTeam": {
-            "id": "119",
-            "name": "Los Angeles Dodgers",
-            "shortName": "Dodgers",
-            "abbreviation": "LAD",
-            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 10,
-            "away": 5
-          }
-        },
-        {
-          "id": "823919",
-          "utcDate": "2026-08-02T23:20:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "119",
-            "name": "Los Angeles Dodgers",
-            "shortName": "Dodgers",
-            "abbreviation": "LAD",
-            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
-          },
-          "awayTeam": {
-            "id": "111",
-            "name": "Boston Red Sox",
-            "shortName": "Red Sox",
-            "abbreviation": "BOS",
-            "crest": "https://www.mlbstatic.com/team-logos/111.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 4,
-            "away": 8
-          }
-        },
-        {
-          "id": "823920",
-          "utcDate": "2026-08-02T01:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "119",
-            "name": "Los Angeles Dodgers",
-            "shortName": "Dodgers",
-            "abbreviation": "LAD",
-            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
-          },
-          "awayTeam": {
-            "id": "111",
-            "name": "Boston Red Sox",
-            "shortName": "Red Sox",
-            "abbreviation": "BOS",
-            "crest": "https://www.mlbstatic.com/team-logos/111.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 2,
-            "away": 3
-          }
-        }
-      ],
-      "upcomingGames": [
-        {
-          "id": "825049",
-          "utcDate": "2026-08-09T00:10:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "109",
-            "name": "Arizona Diamondbacks",
-            "shortName": "D-backs",
-            "abbreviation": "AZ",
-            "crest": "https://www.mlbstatic.com/team-logos/109.svg"
-          },
-          "awayTeam": {
-            "id": "119",
-            "name": "Los Angeles Dodgers",
-            "shortName": "Dodgers",
-            "abbreviation": "LAD",
-            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "825050",
-          "utcDate": "2026-08-09T20:10:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "109",
-            "name": "Arizona Diamondbacks",
-            "shortName": "D-backs",
-            "abbreviation": "AZ",
-            "crest": "https://www.mlbstatic.com/team-logos/109.svg"
-          },
-          "awayTeam": {
-            "id": "119",
-            "name": "Los Angeles Dodgers",
-            "shortName": "Dodgers",
-            "abbreviation": "LAD",
-            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823918",
-          "utcDate": "2026-08-11T02:10:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "119",
-            "name": "Los Angeles Dodgers",
-            "shortName": "Dodgers",
-            "abbreviation": "LAD",
-            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
-          },
-          "awayTeam": {
-            "id": "118",
-            "name": "Kansas City Royals",
-            "shortName": "Royals",
-            "abbreviation": "KC",
-            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823917",
-          "utcDate": "2026-08-12T02:10:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "119",
-            "name": "Los Angeles Dodgers",
-            "shortName": "Dodgers",
-            "abbreviation": "LAD",
-            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
-          },
-          "awayTeam": {
-            "id": "118",
-            "name": "Kansas City Royals",
-            "shortName": "Royals",
-            "abbreviation": "KC",
-            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823916",
-          "utcDate": "2026-08-13T02:10:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "119",
-            "name": "Los Angeles Dodgers",
-            "shortName": "Dodgers",
-            "abbreviation": "LAD",
-            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
-          },
-          "awayTeam": {
-            "id": "118",
-            "name": "Kansas City Royals",
-            "shortName": "Royals",
-            "abbreviation": "KC",
-            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        }
-      ],
-      "form": {
-        "sequence": [
-          "L",
-          "L",
-          "L",
-          "L",
-          "L"
-        ],
-        "wins": 0,
-        "losses": 5,
-        "runsFor": 18,
-        "runsAgainst": 33
-      },
-      "generatedAt": "2026-08-08T01:43:16.521Z"
-    },
-    "120": {
-      "team": {
-        "id": "120",
-        "name": "Washington Nationals",
-        "shortName": "Nationals",
-        "abbreviation": "WSH",
-        "league": "NL",
-        "division": "NL East",
-        "venue": "Nationals Park",
-        "logo": "https://www.mlbstatic.com/team-logos/120.svg",
-        "founded": 1968,
-        "primaryColor": null
-      },
-      "recentGames": [
-        {
-          "id": "823430",
-          "utcDate": "2026-08-06T22:05:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "143",
-            "name": "Philadelphia Phillies",
-            "shortName": "Phillies",
-            "abbreviation": "PHI",
-            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
-          },
-          "awayTeam": {
-            "id": "120",
-            "name": "Washington Nationals",
-            "shortName": "Nationals",
-            "abbreviation": "WSH",
-            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 7,
-            "away": 3
-          }
-        },
-        {
-          "id": "823429",
-          "utcDate": "2026-08-05T22:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "143",
-            "name": "Philadelphia Phillies",
-            "shortName": "Phillies",
-            "abbreviation": "PHI",
-            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
-          },
-          "awayTeam": {
-            "id": "120",
-            "name": "Washington Nationals",
-            "shortName": "Nationals",
-            "abbreviation": "WSH",
-            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 4,
-            "away": 10
-          }
-        },
-        {
-          "id": "823432",
-          "utcDate": "2026-08-04T22:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "143",
-            "name": "Philadelphia Phillies",
-            "shortName": "Phillies",
-            "abbreviation": "PHI",
-            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
-          },
-          "awayTeam": {
-            "id": "120",
-            "name": "Washington Nationals",
-            "shortName": "Nationals",
-            "abbreviation": "WSH",
-            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 5,
-            "away": 0
-          }
-        },
-        {
-          "id": "823431",
-          "utcDate": "2026-08-03T22:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "143",
-            "name": "Philadelphia Phillies",
-            "shortName": "Phillies",
-            "abbreviation": "PHI",
-            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
-          },
-          "awayTeam": {
-            "id": "120",
-            "name": "Washington Nationals",
-            "shortName": "Nationals",
-            "abbreviation": "WSH",
-            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 6,
-            "away": 3
-          }
-        },
-        {
-          "id": "824891",
-          "utcDate": "2026-08-02T17:35:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "144",
-            "name": "Atlanta Braves",
-            "shortName": "Braves",
-            "abbreviation": "ATL",
-            "crest": "https://www.mlbstatic.com/team-logos/144.svg"
-          },
-          "awayTeam": {
-            "id": "120",
-            "name": "Washington Nationals",
-            "shortName": "Nationals",
-            "abbreviation": "WSH",
-            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 4,
-            "away": 2
-          }
-        }
-      ],
-      "upcomingGames": [
-        {
-          "id": "822701",
-          "utcDate": "2026-08-08T22:45:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "120",
-            "name": "Washington Nationals",
-            "shortName": "Nationals",
-            "abbreviation": "WSH",
-            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
-          },
-          "awayTeam": {
-            "id": "113",
-            "name": "Cincinnati Reds",
-            "shortName": "Reds",
-            "abbreviation": "CIN",
-            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "822700",
-          "utcDate": "2026-08-09T16:15:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "120",
-            "name": "Washington Nationals",
-            "shortName": "Nationals",
-            "abbreviation": "WSH",
-            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
-          },
-          "awayTeam": {
-            "id": "113",
-            "name": "Cincinnati Reds",
-            "shortName": "Reds",
-            "abbreviation": "CIN",
-            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "822697",
-          "utcDate": "2026-08-11T22:45:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "120",
-            "name": "Washington Nationals",
-            "shortName": "Nationals",
-            "abbreviation": "WSH",
-            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
-          },
-          "awayTeam": {
-            "id": "112",
-            "name": "Chicago Cubs",
-            "shortName": "Cubs",
-            "abbreviation": "CHC",
-            "crest": "https://www.mlbstatic.com/team-logos/112.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "822698",
-          "utcDate": "2026-08-12T22:45:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "120",
-            "name": "Washington Nationals",
-            "shortName": "Nationals",
-            "abbreviation": "WSH",
-            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
-          },
-          "awayTeam": {
-            "id": "112",
-            "name": "Chicago Cubs",
-            "shortName": "Cubs",
-            "abbreviation": "CHC",
-            "crest": "https://www.mlbstatic.com/team-logos/112.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "822696",
-          "utcDate": "2026-08-13T20:05:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "120",
-            "name": "Washington Nationals",
-            "shortName": "Nationals",
-            "abbreviation": "WSH",
-            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
-          },
-          "awayTeam": {
-            "id": "112",
-            "name": "Chicago Cubs",
-            "shortName": "Cubs",
-            "abbreviation": "CHC",
-            "crest": "https://www.mlbstatic.com/team-logos/112.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        }
-      ],
-      "form": {
-        "sequence": [
-          "L",
-          "W",
-          "L",
-          "L",
-          "L"
-        ],
-        "wins": 1,
-        "losses": 4,
-        "runsFor": 18,
-        "runsAgainst": 26
-      },
-      "generatedAt": "2026-08-08T01:43:16.521Z"
-    },
-    "121": {
-      "team": {
-        "id": "121",
-        "name": "New York Mets",
-        "shortName": "Mets",
-        "abbreviation": "NYM",
-        "league": "NL",
-        "division": "NL East",
-        "venue": "Citi Field",
-        "logo": "https://www.mlbstatic.com/team-logos/121.svg",
-        "founded": 1962,
-        "primaryColor": null
-      },
-      "recentGames": [
-        {
-          "id": "824401",
-          "utcDate": "2026-08-06T17:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "114",
-            "name": "Cleveland Guardians",
-            "shortName": "Guardians",
-            "abbreviation": "CLE",
-            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
-          },
-          "awayTeam": {
-            "id": "121",
-            "name": "New York Mets",
-            "shortName": "Mets",
-            "abbreviation": "NYM",
-            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 6,
-            "away": 13
-          }
-        },
-        {
-          "id": "824402",
-          "utcDate": "2026-08-05T22:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "114",
-            "name": "Cleveland Guardians",
-            "shortName": "Guardians",
-            "abbreviation": "CLE",
-            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
-          },
-          "awayTeam": {
-            "id": "121",
-            "name": "New York Mets",
-            "shortName": "Mets",
-            "abbreviation": "NYM",
-            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 5,
-            "away": 6
-          }
-        },
-        {
-          "id": "824403",
-          "utcDate": "2026-08-04T22:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "114",
-            "name": "Cleveland Guardians",
-            "shortName": "Guardians",
-            "abbreviation": "CLE",
-            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
-          },
-          "awayTeam": {
-            "id": "121",
-            "name": "New York Mets",
-            "shortName": "Mets",
-            "abbreviation": "NYM",
-            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 2,
-            "away": 6
-          }
-        },
-        {
-          "id": "823592",
-          "utcDate": "2026-08-02T17:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "121",
-            "name": "New York Mets",
-            "shortName": "Mets",
-            "abbreviation": "NYM",
-            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
-          },
-          "awayTeam": {
-            "id": "146",
-            "name": "Miami Marlins",
-            "shortName": "Marlins",
-            "abbreviation": "MIA",
-            "crest": "https://www.mlbstatic.com/team-logos/146.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 0,
-            "away": 2
-          }
-        },
-        {
-          "id": "823594",
-          "utcDate": "2026-08-01T20:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "121",
-            "name": "New York Mets",
-            "shortName": "Mets",
-            "abbreviation": "NYM",
-            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
-          },
-          "awayTeam": {
-            "id": "146",
-            "name": "Miami Marlins",
-            "shortName": "Marlins",
-            "abbreviation": "MIA",
-            "crest": "https://www.mlbstatic.com/team-logos/146.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 2,
-            "away": 6
-          }
-        }
-      ],
-      "upcomingGames": [
-        {
-          "id": "823348",
-          "utcDate": "2026-08-08T22:40:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "134",
-            "name": "Pittsburgh Pirates",
-            "shortName": "Pirates",
-            "abbreviation": "PIT",
-            "crest": "https://www.mlbstatic.com/team-logos/134.svg"
-          },
-          "awayTeam": {
-            "id": "121",
-            "name": "New York Mets",
-            "shortName": "Mets",
-            "abbreviation": "NYM",
-            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823345",
-          "utcDate": "2026-08-09T17:35:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "134",
-            "name": "Pittsburgh Pirates",
-            "shortName": "Pirates",
-            "abbreviation": "PIT",
-            "crest": "https://www.mlbstatic.com/team-logos/134.svg"
-          },
-          "awayTeam": {
-            "id": "121",
-            "name": "New York Mets",
-            "shortName": "Mets",
-            "abbreviation": "NYM",
-            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "824887",
-          "utcDate": "2026-08-10T23:15:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "144",
-            "name": "Atlanta Braves",
-            "shortName": "Braves",
-            "abbreviation": "ATL",
-            "crest": "https://www.mlbstatic.com/team-logos/144.svg"
-          },
-          "awayTeam": {
-            "id": "121",
-            "name": "New York Mets",
-            "shortName": "Mets",
-            "abbreviation": "NYM",
-            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "824886",
-          "utcDate": "2026-08-11T23:15:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "144",
-            "name": "Atlanta Braves",
-            "shortName": "Braves",
-            "abbreviation": "ATL",
-            "crest": "https://www.mlbstatic.com/team-logos/144.svg"
-          },
-          "awayTeam": {
-            "id": "121",
-            "name": "New York Mets",
-            "shortName": "Mets",
-            "abbreviation": "NYM",
-            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "824883",
-          "utcDate": "2026-08-12T23:15:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "144",
-            "name": "Atlanta Braves",
-            "shortName": "Braves",
-            "abbreviation": "ATL",
-            "crest": "https://www.mlbstatic.com/team-logos/144.svg"
-          },
-          "awayTeam": {
-            "id": "121",
-            "name": "New York Mets",
-            "shortName": "Mets",
-            "abbreviation": "NYM",
-            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        }
-      ],
-      "form": {
-        "sequence": [
-          "W",
-          "W",
-          "W",
-          "L",
-          "L"
-        ],
-        "wins": 3,
-        "losses": 2,
-        "runsFor": 27,
-        "runsAgainst": 21
-      },
-      "generatedAt": "2026-08-08T01:43:16.521Z"
-    },
-    "133": {
-      "team": {
-        "id": "133",
-        "name": "Athletics",
-        "shortName": "Athletics",
-        "abbreviation": "ATH",
-        "league": "AL",
-        "division": "AL West",
-        "venue": "Sutter Health Park",
-        "logo": "https://www.mlbstatic.com/team-logos/133.svg",
-        "founded": 1901,
-        "primaryColor": null
-      },
-      "recentGames": [
-        {
-          "id": "824481",
-          "utcDate": "2026-08-06T16:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "113",
-            "name": "Cincinnati Reds",
-            "shortName": "Reds",
-            "abbreviation": "CIN",
-            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
-          },
-          "awayTeam": {
-            "id": "133",
-            "name": "Athletics",
-            "shortName": "Athletics",
-            "abbreviation": "ATH",
-            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 6,
-            "away": 5
-          }
-        },
-        {
-          "id": "824482",
-          "utcDate": "2026-08-05T22:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "113",
-            "name": "Cincinnati Reds",
-            "shortName": "Reds",
-            "abbreviation": "CIN",
-            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
-          },
-          "awayTeam": {
-            "id": "133",
-            "name": "Athletics",
-            "shortName": "Athletics",
-            "abbreviation": "ATH",
-            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 3,
-            "away": 2
-          }
-        },
-        {
-          "id": "824484",
-          "utcDate": "2026-08-04T22:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "113",
-            "name": "Cincinnati Reds",
-            "shortName": "Reds",
-            "abbreviation": "CIN",
-            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
-          },
-          "awayTeam": {
-            "id": "133",
-            "name": "Athletics",
-            "shortName": "Athletics",
-            "abbreviation": "ATH",
-            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 5,
-            "away": 4
-          }
-        },
-        {
-          "id": "824971",
-          "utcDate": "2026-08-02T20:05:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "133",
-            "name": "Athletics",
-            "shortName": "Athletics",
-            "abbreviation": "ATH",
-            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
-          },
-          "awayTeam": {
-            "id": "116",
-            "name": "Detroit Tigers",
-            "shortName": "Tigers",
-            "abbreviation": "DET",
-            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 0,
-            "away": 11
-          }
-        },
-        {
-          "id": "824972",
-          "utcDate": "2026-08-02T01:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "133",
-            "name": "Athletics",
-            "shortName": "Athletics",
-            "abbreviation": "ATH",
-            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
-          },
-          "awayTeam": {
-            "id": "116",
-            "name": "Detroit Tigers",
-            "shortName": "Tigers",
-            "abbreviation": "DET",
-            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 6,
-            "away": 8
-          }
-        }
-      ],
-      "upcomingGames": [
-        {
-          "id": "824726",
-          "utcDate": "2026-08-08T20:10:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "111",
-            "name": "Boston Red Sox",
-            "shortName": "Red Sox",
-            "abbreviation": "BOS",
-            "crest": "https://www.mlbstatic.com/team-logos/111.svg"
-          },
-          "awayTeam": {
-            "id": "133",
-            "name": "Athletics",
-            "shortName": "Athletics",
-            "abbreviation": "ATH",
-            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "824724",
-          "utcDate": "2026-08-09T17:35:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "111",
-            "name": "Boston Red Sox",
-            "shortName": "Red Sox",
-            "abbreviation": "BOS",
-            "crest": "https://www.mlbstatic.com/team-logos/111.svg"
-          },
-          "awayTeam": {
-            "id": "133",
-            "name": "Athletics",
-            "shortName": "Athletics",
-            "abbreviation": "ATH",
-            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "824969",
-          "utcDate": "2026-08-11T01:40:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "133",
-            "name": "Athletics",
-            "shortName": "Athletics",
-            "abbreviation": "ATH",
-            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
-          },
-          "awayTeam": {
-            "id": "139",
-            "name": "Tampa Bay Rays",
-            "shortName": "Rays",
-            "abbreviation": "TB",
-            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "824970",
-          "utcDate": "2026-08-12T01:40:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "133",
-            "name": "Athletics",
-            "shortName": "Athletics",
-            "abbreviation": "ATH",
-            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
-          },
-          "awayTeam": {
-            "id": "139",
-            "name": "Tampa Bay Rays",
-            "shortName": "Rays",
-            "abbreviation": "TB",
-            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "824967",
-          "utcDate": "2026-08-12T19:05:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "133",
-            "name": "Athletics",
-            "shortName": "Athletics",
-            "abbreviation": "ATH",
-            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
-          },
-          "awayTeam": {
-            "id": "139",
-            "name": "Tampa Bay Rays",
-            "shortName": "Rays",
-            "abbreviation": "TB",
-            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        }
-      ],
-      "form": {
-        "sequence": [
-          "L",
-          "L",
-          "L",
-          "L",
-          "L"
-        ],
-        "wins": 0,
-        "losses": 5,
-        "runsFor": 17,
-        "runsAgainst": 33
-      },
-      "generatedAt": "2026-08-08T01:43:16.521Z"
-    },
-    "134": {
-      "team": {
-        "id": "134",
-        "name": "Pittsburgh Pirates",
-        "shortName": "Pirates",
-        "abbreviation": "PIT",
-        "league": "NL",
-        "division": "NL Central",
-        "venue": "PNC Park",
-        "logo": "https://www.mlbstatic.com/team-logos/134.svg",
-        "founded": 1882,
-        "primaryColor": null
-      },
-      "recentGames": [
-        {
-          "id": "823754",
-          "utcDate": "2026-08-06T18:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "158",
-            "name": "Milwaukee Brewers",
-            "shortName": "Brewers",
-            "abbreviation": "MIL",
-            "crest": "https://www.mlbstatic.com/team-logos/158.svg"
-          },
-          "awayTeam": {
-            "id": "134",
-            "name": "Pittsburgh Pirates",
-            "shortName": "Pirates",
-            "abbreviation": "PIT",
-            "crest": "https://www.mlbstatic.com/team-logos/134.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 5,
-            "away": 2
-          }
-        },
-        {
-          "id": "823753",
-          "utcDate": "2026-08-05T23:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "158",
-            "name": "Milwaukee Brewers",
-            "shortName": "Brewers",
-            "abbreviation": "MIL",
-            "crest": "https://www.mlbstatic.com/team-logos/158.svg"
-          },
-          "awayTeam": {
-            "id": "134",
-            "name": "Pittsburgh Pirates",
-            "shortName": "Pirates",
-            "abbreviation": "PIT",
-            "crest": "https://www.mlbstatic.com/team-logos/134.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 4,
-            "away": 2
-          }
-        },
-        {
-          "id": "823756",
-          "utcDate": "2026-08-04T23:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "158",
-            "name": "Milwaukee Brewers",
-            "shortName": "Brewers",
-            "abbreviation": "MIL",
-            "crest": "https://www.mlbstatic.com/team-logos/158.svg"
-          },
-          "awayTeam": {
-            "id": "134",
-            "name": "Pittsburgh Pirates",
-            "shortName": "Pirates",
-            "abbreviation": "PIT",
-            "crest": "https://www.mlbstatic.com/team-logos/134.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 4,
-            "away": 2
-          }
-        },
-        {
-          "id": "823757",
-          "utcDate": "2026-08-03T23:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "158",
-            "name": "Milwaukee Brewers",
-            "shortName": "Brewers",
-            "abbreviation": "MIL",
-            "crest": "https://www.mlbstatic.com/team-logos/158.svg"
-          },
-          "awayTeam": {
-            "id": "134",
-            "name": "Pittsburgh Pirates",
-            "shortName": "Pirates",
-            "abbreviation": "PIT",
-            "crest": "https://www.mlbstatic.com/team-logos/134.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 3,
-            "away": 4
-          }
-        },
-        {
-          "id": "824483",
-          "utcDate": "2026-08-02T17:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "113",
-            "name": "Cincinnati Reds",
-            "shortName": "Reds",
-            "abbreviation": "CIN",
-            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
-          },
-          "awayTeam": {
-            "id": "134",
-            "name": "Pittsburgh Pirates",
-            "shortName": "Pirates",
-            "abbreviation": "PIT",
-            "crest": "https://www.mlbstatic.com/team-logos/134.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 10,
-            "away": 2
-          }
-        }
-      ],
-      "upcomingGames": [
-        {
-          "id": "823348",
-          "utcDate": "2026-08-08T22:40:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "134",
-            "name": "Pittsburgh Pirates",
-            "shortName": "Pirates",
-            "abbreviation": "PIT",
-            "crest": "https://www.mlbstatic.com/team-logos/134.svg"
-          },
-          "awayTeam": {
-            "id": "121",
-            "name": "New York Mets",
-            "shortName": "Mets",
-            "abbreviation": "NYM",
-            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823345",
-          "utcDate": "2026-08-09T17:35:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "134",
-            "name": "Pittsburgh Pirates",
-            "shortName": "Pirates",
-            "abbreviation": "PIT",
-            "crest": "https://www.mlbstatic.com/team-logos/134.svg"
-          },
-          "awayTeam": {
-            "id": "121",
-            "name": "New York Mets",
-            "shortName": "Mets",
-            "abbreviation": "NYM",
-            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823832",
-          "utcDate": "2026-08-11T22:40:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "146",
-            "name": "Miami Marlins",
-            "shortName": "Marlins",
-            "abbreviation": "MIA",
-            "crest": "https://www.mlbstatic.com/team-logos/146.svg"
-          },
-          "awayTeam": {
-            "id": "134",
-            "name": "Pittsburgh Pirates",
-            "shortName": "Pirates",
-            "abbreviation": "PIT",
-            "crest": "https://www.mlbstatic.com/team-logos/134.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823833",
-          "utcDate": "2026-08-12T22:40:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "146",
-            "name": "Miami Marlins",
-            "shortName": "Marlins",
-            "abbreviation": "MIA",
-            "crest": "https://www.mlbstatic.com/team-logos/146.svg"
-          },
-          "awayTeam": {
-            "id": "134",
-            "name": "Pittsburgh Pirates",
-            "shortName": "Pirates",
-            "abbreviation": "PIT",
-            "crest": "https://www.mlbstatic.com/team-logos/134.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823829",
-          "utcDate": "2026-08-13T17:10:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "146",
-            "name": "Miami Marlins",
-            "shortName": "Marlins",
-            "abbreviation": "MIA",
-            "crest": "https://www.mlbstatic.com/team-logos/146.svg"
-          },
-          "awayTeam": {
-            "id": "134",
-            "name": "Pittsburgh Pirates",
-            "shortName": "Pirates",
-            "abbreviation": "PIT",
-            "crest": "https://www.mlbstatic.com/team-logos/134.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        }
-      ],
-      "form": {
-        "sequence": [
-          "L",
-          "L",
-          "L",
-          "W",
-          "L"
-        ],
-        "wins": 1,
-        "losses": 4,
-        "runsFor": 12,
-        "runsAgainst": 26
-      },
-      "generatedAt": "2026-08-08T01:43:16.521Z"
-    },
-    "135": {
-      "team": {
-        "id": "135",
-        "name": "San Diego Padres",
-        "shortName": "Padres",
-        "abbreviation": "SD",
-        "league": "NL",
-        "division": "NL West",
-        "venue": "Petco Park",
-        "logo": "https://www.mlbstatic.com/team-logos/135.svg",
-        "founded": 1968,
-        "primaryColor": null
-      },
-      "recentGames": [
-        {
-          "id": "825053",
-          "utcDate": "2026-08-07T01:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "109",
-            "name": "Arizona Diamondbacks",
-            "shortName": "D-backs",
-            "abbreviation": "AZ",
-            "crest": "https://www.mlbstatic.com/team-logos/109.svg"
-          },
-          "awayTeam": {
-            "id": "135",
-            "name": "San Diego Padres",
-            "shortName": "Padres",
-            "abbreviation": "SD",
-            "crest": "https://www.mlbstatic.com/team-logos/135.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 1,
-            "away": 5
-          }
-        },
-        {
-          "id": "825052",
-          "utcDate": "2026-08-06T01:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "109",
-            "name": "Arizona Diamondbacks",
-            "shortName": "D-backs",
-            "abbreviation": "AZ",
-            "crest": "https://www.mlbstatic.com/team-logos/109.svg"
-          },
-          "awayTeam": {
-            "id": "135",
-            "name": "San Diego Padres",
-            "shortName": "Padres",
-            "abbreviation": "SD",
-            "crest": "https://www.mlbstatic.com/team-logos/135.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 10,
-            "away": 4
-          }
-        },
-        {
-          "id": "825054",
-          "utcDate": "2026-08-05T01:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "109",
-            "name": "Arizona Diamondbacks",
-            "shortName": "D-backs",
-            "abbreviation": "AZ",
-            "crest": "https://www.mlbstatic.com/team-logos/109.svg"
-          },
-          "awayTeam": {
-            "id": "135",
-            "name": "San Diego Padres",
-            "shortName": "Padres",
-            "abbreviation": "SD",
-            "crest": "https://www.mlbstatic.com/team-logos/135.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 4,
-            "away": 9
-          }
-        },
-        {
-          "id": "825095",
-          "utcDate": "2026-08-04T01:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "109",
-            "name": "Arizona Diamondbacks",
-            "shortName": "D-backs",
-            "abbreviation": "AZ",
-            "crest": "https://www.mlbstatic.com/team-logos/109.svg"
-          },
-          "awayTeam": {
-            "id": "135",
-            "name": "San Diego Padres",
-            "shortName": "Padres",
-            "abbreviation": "SD",
-            "crest": "https://www.mlbstatic.com/team-logos/135.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 5,
-            "away": 1
-          }
-        },
-        {
-          "id": "823270",
-          "utcDate": "2026-08-02T20:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "135",
-            "name": "San Diego Padres",
-            "shortName": "Padres",
-            "abbreviation": "SD",
-            "crest": "https://www.mlbstatic.com/team-logos/135.svg"
-          },
-          "awayTeam": {
-            "id": "137",
-            "name": "San Francisco Giants",
-            "shortName": "Giants",
-            "abbreviation": "SF",
-            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 5,
-            "away": 4
-          }
-        }
-      ],
-      "upcomingGames": [
-        {
-          "id": "823267",
-          "utcDate": "2026-08-08T23:15:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "135",
-            "name": "San Diego Padres",
-            "shortName": "Padres",
-            "abbreviation": "SD",
-            "crest": "https://www.mlbstatic.com/team-logos/135.svg"
-          },
-          "awayTeam": {
-            "id": "117",
-            "name": "Houston Astros",
-            "shortName": "Astros",
-            "abbreviation": "HOU",
-            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823268",
-          "utcDate": "2026-08-10T00:20:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "135",
-            "name": "San Diego Padres",
-            "shortName": "Padres",
-            "abbreviation": "SD",
-            "crest": "https://www.mlbstatic.com/team-logos/135.svg"
-          },
-          "awayTeam": {
-            "id": "117",
-            "name": "Houston Astros",
-            "shortName": "Astros",
-            "abbreviation": "HOU",
-            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823265",
-          "utcDate": "2026-08-11T01:40:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "135",
-            "name": "San Diego Padres",
-            "shortName": "Padres",
-            "abbreviation": "SD",
-            "crest": "https://www.mlbstatic.com/team-logos/135.svg"
-          },
-          "awayTeam": {
-            "id": "158",
-            "name": "Milwaukee Brewers",
-            "shortName": "Brewers",
-            "abbreviation": "MIL",
-            "crest": "https://www.mlbstatic.com/team-logos/158.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823264",
-          "utcDate": "2026-08-12T01:40:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "135",
-            "name": "San Diego Padres",
-            "shortName": "Padres",
-            "abbreviation": "SD",
-            "crest": "https://www.mlbstatic.com/team-logos/135.svg"
-          },
-          "awayTeam": {
-            "id": "158",
-            "name": "Milwaukee Brewers",
-            "shortName": "Brewers",
-            "abbreviation": "MIL",
-            "crest": "https://www.mlbstatic.com/team-logos/158.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823263",
-          "utcDate": "2026-08-12T20:10:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "135",
-            "name": "San Diego Padres",
-            "shortName": "Padres",
-            "abbreviation": "SD",
-            "crest": "https://www.mlbstatic.com/team-logos/135.svg"
-          },
-          "awayTeam": {
-            "id": "158",
-            "name": "Milwaukee Brewers",
-            "shortName": "Brewers",
-            "abbreviation": "MIL",
-            "crest": "https://www.mlbstatic.com/team-logos/158.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        }
-      ],
-      "form": {
-        "sequence": [
-          "W",
-          "L",
-          "W",
-          "L",
-          "W"
-        ],
-        "wins": 3,
-        "losses": 2,
-        "runsFor": 24,
-        "runsAgainst": 24
-      },
-      "generatedAt": "2026-08-08T01:43:16.521Z"
-    },
-    "136": {
-      "team": {
-        "id": "136",
-        "name": "Seattle Mariners",
-        "shortName": "Mariners",
-        "abbreviation": "SEA",
-        "league": "AL",
-        "division": "AL West",
-        "venue": "T-Mobile Park",
-        "logo": "https://www.mlbstatic.com/team-logos/136.svg",
-        "founded": 1977,
-        "primaryColor": null
-      },
-      "recentGames": [
-        {
-          "id": "823105",
-          "utcDate": "2026-08-06T20:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "136",
-            "name": "Seattle Mariners",
-            "shortName": "Mariners",
-            "abbreviation": "SEA",
-            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
-          },
-          "awayTeam": {
-            "id": "116",
-            "name": "Detroit Tigers",
-            "shortName": "Tigers",
-            "abbreviation": "DET",
-            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 0,
-            "away": 11
-          }
-        },
-        {
-          "id": "823106",
-          "utcDate": "2026-08-06T01:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "136",
-            "name": "Seattle Mariners",
-            "shortName": "Mariners",
-            "abbreviation": "SEA",
-            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
-          },
-          "awayTeam": {
-            "id": "116",
-            "name": "Detroit Tigers",
-            "shortName": "Tigers",
-            "abbreviation": "DET",
-            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 4,
-            "away": 2
-          }
-        },
-        {
-          "id": "823108",
-          "utcDate": "2026-08-05T01:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "136",
-            "name": "Seattle Mariners",
-            "shortName": "Mariners",
-            "abbreviation": "SEA",
-            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
-          },
-          "awayTeam": {
-            "id": "116",
-            "name": "Detroit Tigers",
-            "shortName": "Tigers",
-            "abbreviation": "DET",
-            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 0,
-            "away": 8
-          }
-        },
-        {
-          "id": "823107",
-          "utcDate": "2026-08-02T20:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "136",
-            "name": "Seattle Mariners",
-            "shortName": "Mariners",
-            "abbreviation": "SEA",
-            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
-          },
-          "awayTeam": {
-            "id": "142",
-            "name": "Minnesota Twins",
-            "shortName": "Twins",
-            "abbreviation": "MIN",
-            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 7,
-            "away": 6
-          }
-        },
-        {
-          "id": "823109",
-          "utcDate": "2026-08-01T20:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "136",
-            "name": "Seattle Mariners",
-            "shortName": "Mariners",
-            "abbreviation": "SEA",
-            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
-          },
-          "awayTeam": {
-            "id": "142",
-            "name": "Minnesota Twins",
-            "shortName": "Twins",
-            "abbreviation": "MIN",
-            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 4,
-            "away": 3
-          }
-        }
-      ],
-      "upcomingGames": [
-        {
-          "id": "823102",
-          "utcDate": "2026-08-09T01:50:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "136",
-            "name": "Seattle Mariners",
-            "shortName": "Mariners",
-            "abbreviation": "SEA",
-            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
-          },
-          "awayTeam": {
-            "id": "139",
-            "name": "Tampa Bay Rays",
-            "shortName": "Rays",
-            "abbreviation": "TB",
-            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823104",
-          "utcDate": "2026-08-09T20:10:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "136",
-            "name": "Seattle Mariners",
-            "shortName": "Mariners",
-            "abbreviation": "SEA",
-            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
-          },
-          "awayTeam": {
-            "id": "139",
-            "name": "Tampa Bay Rays",
-            "shortName": "Rays",
-            "abbreviation": "TB",
-            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823512",
-          "utcDate": "2026-08-11T23:05:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "147",
-            "name": "New York Yankees",
-            "shortName": "Yankees",
-            "abbreviation": "NYY",
-            "crest": "https://www.mlbstatic.com/team-logos/147.svg"
-          },
-          "awayTeam": {
-            "id": "136",
-            "name": "Seattle Mariners",
-            "shortName": "Mariners",
-            "abbreviation": "SEA",
-            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823511",
-          "utcDate": "2026-08-12T23:05:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "147",
-            "name": "New York Yankees",
-            "shortName": "Yankees",
-            "abbreviation": "NYY",
-            "crest": "https://www.mlbstatic.com/team-logos/147.svg"
-          },
-          "awayTeam": {
-            "id": "136",
-            "name": "Seattle Mariners",
-            "shortName": "Mariners",
-            "abbreviation": "SEA",
-            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823508",
-          "utcDate": "2026-08-13T17:35:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "147",
-            "name": "New York Yankees",
-            "shortName": "Yankees",
-            "abbreviation": "NYY",
-            "crest": "https://www.mlbstatic.com/team-logos/147.svg"
-          },
-          "awayTeam": {
-            "id": "136",
-            "name": "Seattle Mariners",
-            "shortName": "Mariners",
-            "abbreviation": "SEA",
-            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        }
-      ],
-      "form": {
-        "sequence": [
-          "L",
-          "W",
-          "L",
-          "W",
-          "W"
-        ],
-        "wins": 3,
-        "losses": 2,
-        "runsFor": 15,
-        "runsAgainst": 30
-      },
-      "generatedAt": "2026-08-08T01:43:16.521Z"
-    },
-    "137": {
-      "team": {
-        "id": "137",
-        "name": "San Francisco Giants",
-        "shortName": "Giants",
-        "abbreviation": "SF",
-        "league": "NL",
-        "division": "NL West",
-        "venue": "Oracle Park",
-        "logo": "https://www.mlbstatic.com/team-logos/137.svg",
-        "founded": 1883,
-        "primaryColor": null
-      },
-      "recentGames": [
-        {
-          "id": "822866",
-          "utcDate": "2026-08-05T18:35:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "140",
-            "name": "Texas Rangers",
-            "shortName": "Rangers",
-            "abbreviation": "TEX",
-            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
-          },
-          "awayTeam": {
-            "id": "137",
-            "name": "San Francisco Giants",
-            "shortName": "Giants",
-            "abbreviation": "SF",
-            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 6,
-            "away": 0
-          }
-        },
-        {
-          "id": "822865",
-          "utcDate": "2026-08-05T00:05:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "140",
-            "name": "Texas Rangers",
-            "shortName": "Rangers",
-            "abbreviation": "TEX",
-            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
-          },
-          "awayTeam": {
-            "id": "137",
-            "name": "San Francisco Giants",
-            "shortName": "Giants",
-            "abbreviation": "SF",
-            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 5,
-            "away": 4
-          }
-        },
-        {
-          "id": "822867",
-          "utcDate": "2026-08-04T00:05:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "140",
-            "name": "Texas Rangers",
-            "shortName": "Rangers",
-            "abbreviation": "TEX",
-            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
-          },
-          "awayTeam": {
-            "id": "137",
-            "name": "San Francisco Giants",
-            "shortName": "Giants",
-            "abbreviation": "SF",
-            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 1,
-            "away": 5
-          }
-        },
-        {
-          "id": "823270",
-          "utcDate": "2026-08-02T20:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "135",
-            "name": "San Diego Padres",
-            "shortName": "Padres",
-            "abbreviation": "SD",
-            "crest": "https://www.mlbstatic.com/team-logos/135.svg"
-          },
-          "awayTeam": {
-            "id": "137",
-            "name": "San Francisco Giants",
-            "shortName": "Giants",
-            "abbreviation": "SF",
-            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 5,
-            "away": 4
-          }
-        },
-        {
-          "id": "823269",
-          "utcDate": "2026-08-02T00:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "135",
-            "name": "San Diego Padres",
-            "shortName": "Padres",
-            "abbreviation": "SD",
-            "crest": "https://www.mlbstatic.com/team-logos/135.svg"
-          },
-          "awayTeam": {
-            "id": "137",
-            "name": "San Francisco Giants",
-            "shortName": "Giants",
-            "abbreviation": "SF",
-            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 6,
-            "away": 5
-          }
-        }
-      ],
-      "upcomingGames": [
-        {
-          "id": "823188",
-          "utcDate": "2026-08-08T23:15:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "137",
-            "name": "San Francisco Giants",
-            "shortName": "Giants",
-            "abbreviation": "SF",
-            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
-          },
-          "awayTeam": {
-            "id": "116",
-            "name": "Detroit Tigers",
-            "shortName": "Tigers",
-            "abbreviation": "DET",
-            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823190",
-          "utcDate": "2026-08-09T20:05:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "137",
-            "name": "San Francisco Giants",
-            "shortName": "Giants",
-            "abbreviation": "SF",
-            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
-          },
-          "awayTeam": {
-            "id": "116",
-            "name": "Detroit Tigers",
-            "shortName": "Tigers",
-            "abbreviation": "DET",
-            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823189",
-          "utcDate": "2026-08-11T01:45:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "137",
-            "name": "San Francisco Giants",
-            "shortName": "Giants",
-            "abbreviation": "SF",
-            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
-          },
-          "awayTeam": {
-            "id": "117",
-            "name": "Houston Astros",
-            "shortName": "Astros",
-            "abbreviation": "HOU",
-            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823186",
-          "utcDate": "2026-08-12T01:45:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "137",
-            "name": "San Francisco Giants",
-            "shortName": "Giants",
-            "abbreviation": "SF",
-            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
-          },
-          "awayTeam": {
-            "id": "117",
-            "name": "Houston Astros",
-            "shortName": "Astros",
-            "abbreviation": "HOU",
-            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823187",
-          "utcDate": "2026-08-12T19:45:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "137",
-            "name": "San Francisco Giants",
-            "shortName": "Giants",
-            "abbreviation": "SF",
-            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
-          },
-          "awayTeam": {
-            "id": "117",
-            "name": "Houston Astros",
-            "shortName": "Astros",
-            "abbreviation": "HOU",
-            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        }
-      ],
-      "form": {
-        "sequence": [
-          "L",
-          "L",
-          "W",
-          "L",
-          "L"
-        ],
-        "wins": 1,
-        "losses": 4,
-        "runsFor": 18,
-        "runsAgainst": 23
-      },
-      "generatedAt": "2026-08-08T01:43:16.521Z"
-    },
-    "138": {
-      "team": {
-        "id": "138",
-        "name": "St. Louis Cardinals",
-        "shortName": "Cardinals",
-        "abbreviation": "STL",
-        "league": "NL",
-        "division": "NL Central",
-        "venue": "Busch Stadium",
-        "logo": "https://www.mlbstatic.com/team-logos/138.svg",
-        "founded": 1892,
-        "primaryColor": null
-      },
-      "recentGames": [
-        {
-          "id": "823516",
-          "utcDate": "2026-08-05T23:05:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "147",
-            "name": "New York Yankees",
-            "shortName": "Yankees",
-            "abbreviation": "NYY",
-            "crest": "https://www.mlbstatic.com/team-logos/147.svg"
-          },
-          "awayTeam": {
-            "id": "138",
-            "name": "St. Louis Cardinals",
-            "shortName": "Cardinals",
-            "abbreviation": "STL",
-            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 1,
-            "away": 3
-          }
-        },
-        {
-          "id": "823517",
-          "utcDate": "2026-08-04T23:05:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "147",
-            "name": "New York Yankees",
-            "shortName": "Yankees",
-            "abbreviation": "NYY",
-            "crest": "https://www.mlbstatic.com/team-logos/147.svg"
-          },
-          "awayTeam": {
-            "id": "138",
-            "name": "St. Louis Cardinals",
-            "shortName": "Cardinals",
-            "abbreviation": "STL",
-            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 2,
-            "away": 0
-          }
-        },
-        {
-          "id": "823520",
-          "utcDate": "2026-08-03T23:05:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "147",
-            "name": "New York Yankees",
-            "shortName": "Yankees",
-            "abbreviation": "NYY",
-            "crest": "https://www.mlbstatic.com/team-logos/147.svg"
-          },
-          "awayTeam": {
-            "id": "138",
-            "name": "St. Louis Cardinals",
-            "shortName": "Cardinals",
-            "abbreviation": "STL",
-            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 7,
-            "away": 13
-          }
-        },
-        {
-          "id": "822783",
-          "utcDate": "2026-08-02T17:37:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "141",
-            "name": "Toronto Blue Jays",
-            "shortName": "Blue Jays",
-            "abbreviation": "TOR",
-            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
-          },
-          "awayTeam": {
-            "id": "138",
-            "name": "St. Louis Cardinals",
-            "shortName": "Cardinals",
-            "abbreviation": "STL",
-            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 1,
-            "away": 5
-          }
-        },
-        {
-          "id": "822781",
-          "utcDate": "2026-08-01T19:07:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "141",
-            "name": "Toronto Blue Jays",
-            "shortName": "Blue Jays",
-            "abbreviation": "TOR",
-            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
-          },
-          "awayTeam": {
-            "id": "138",
-            "name": "St. Louis Cardinals",
-            "shortName": "Cardinals",
-            "abbreviation": "STL",
-            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 5,
-            "away": 1
-          }
-        }
-      ],
-      "upcomingGames": [
-        {
-          "id": "823021",
-          "utcDate": "2026-08-08T23:15:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "138",
-            "name": "St. Louis Cardinals",
-            "shortName": "Cardinals",
-            "abbreviation": "STL",
-            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
-          },
-          "awayTeam": {
-            "id": "115",
-            "name": "Colorado Rockies",
-            "shortName": "Rockies",
-            "abbreviation": "COL",
-            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823020",
-          "utcDate": "2026-08-09T18:15:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "138",
-            "name": "St. Louis Cardinals",
-            "shortName": "Cardinals",
-            "abbreviation": "STL",
-            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
-          },
-          "awayTeam": {
-            "id": "115",
-            "name": "Colorado Rockies",
-            "shortName": "Rockies",
-            "abbreviation": "COL",
-            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823018",
-          "utcDate": "2026-08-10T23:45:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "138",
-            "name": "St. Louis Cardinals",
-            "shortName": "Cardinals",
-            "abbreviation": "STL",
-            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
-          },
-          "awayTeam": {
-            "id": "143",
-            "name": "Philadelphia Phillies",
-            "shortName": "Phillies",
-            "abbreviation": "PHI",
-            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823019",
-          "utcDate": "2026-08-11T23:45:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "138",
-            "name": "St. Louis Cardinals",
-            "shortName": "Cardinals",
-            "abbreviation": "STL",
-            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
-          },
-          "awayTeam": {
-            "id": "143",
-            "name": "Philadelphia Phillies",
-            "shortName": "Phillies",
-            "abbreviation": "PHI",
-            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823017",
-          "utcDate": "2026-08-12T18:15:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "138",
-            "name": "St. Louis Cardinals",
-            "shortName": "Cardinals",
-            "abbreviation": "STL",
-            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
-          },
-          "awayTeam": {
-            "id": "143",
-            "name": "Philadelphia Phillies",
-            "shortName": "Phillies",
-            "abbreviation": "PHI",
-            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        }
-      ],
-      "form": {
-        "sequence": [
-          "W",
-          "L",
-          "W",
-          "W",
-          "L"
-        ],
-        "wins": 3,
-        "losses": 2,
-        "runsFor": 22,
-        "runsAgainst": 16
-      },
-      "generatedAt": "2026-08-08T01:43:16.521Z"
-    },
-    "139": {
-      "team": {
-        "id": "139",
-        "name": "Tampa Bay Rays",
-        "shortName": "Rays",
-        "abbreviation": "TB",
-        "league": "AL",
-        "division": "AL East",
-        "venue": "Tropicana Field",
-        "logo": "https://www.mlbstatic.com/team-logos/139.svg",
-        "founded": 1996,
-        "primaryColor": null
-      },
-      "recentGames": [
-        {
-          "id": "824322",
-          "utcDate": "2026-08-05T19:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "115",
-            "name": "Colorado Rockies",
-            "shortName": "Rockies",
-            "abbreviation": "COL",
-            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
-          },
-          "awayTeam": {
-            "id": "139",
-            "name": "Tampa Bay Rays",
-            "shortName": "Rays",
-            "abbreviation": "TB",
-            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 0,
-            "away": 4
-          }
-        },
-        {
-          "id": "824321",
-          "utcDate": "2026-08-05T00:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "115",
-            "name": "Colorado Rockies",
-            "shortName": "Rockies",
-            "abbreviation": "COL",
-            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
-          },
-          "awayTeam": {
-            "id": "139",
-            "name": "Tampa Bay Rays",
-            "shortName": "Rays",
-            "abbreviation": "TB",
-            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 7,
-            "away": 9
-          }
-        },
-        {
-          "id": "824324",
-          "utcDate": "2026-08-04T00:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "115",
-            "name": "Colorado Rockies",
-            "shortName": "Rockies",
-            "abbreviation": "COL",
-            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
-          },
-          "awayTeam": {
-            "id": "139",
-            "name": "Tampa Bay Rays",
-            "shortName": "Rays",
-            "abbreviation": "TB",
-            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 9,
-            "away": 13
-          }
-        },
-        {
-          "id": "822943",
-          "utcDate": "2026-08-02T17:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "139",
-            "name": "Tampa Bay Rays",
-            "shortName": "Rays",
-            "abbreviation": "TB",
-            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
-          },
-          "awayTeam": {
-            "id": "145",
-            "name": "Chicago White Sox",
-            "shortName": "White Sox",
-            "abbreviation": "CWS",
-            "crest": "https://www.mlbstatic.com/team-logos/145.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 1,
-            "away": 9
-          }
-        },
-        {
-          "id": "822944",
-          "utcDate": "2026-08-01T20:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "139",
-            "name": "Tampa Bay Rays",
-            "shortName": "Rays",
-            "abbreviation": "TB",
-            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
-          },
-          "awayTeam": {
-            "id": "145",
-            "name": "Chicago White Sox",
-            "shortName": "White Sox",
-            "abbreviation": "CWS",
-            "crest": "https://www.mlbstatic.com/team-logos/145.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 1,
-            "away": 0
-          }
-        }
-      ],
-      "upcomingGames": [
-        {
-          "id": "823102",
-          "utcDate": "2026-08-09T01:50:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "136",
-            "name": "Seattle Mariners",
-            "shortName": "Mariners",
-            "abbreviation": "SEA",
-            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
-          },
-          "awayTeam": {
-            "id": "139",
-            "name": "Tampa Bay Rays",
-            "shortName": "Rays",
-            "abbreviation": "TB",
-            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823104",
-          "utcDate": "2026-08-09T20:10:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "136",
-            "name": "Seattle Mariners",
-            "shortName": "Mariners",
-            "abbreviation": "SEA",
-            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
-          },
-          "awayTeam": {
-            "id": "139",
-            "name": "Tampa Bay Rays",
-            "shortName": "Rays",
-            "abbreviation": "TB",
-            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "824969",
-          "utcDate": "2026-08-11T01:40:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "133",
-            "name": "Athletics",
-            "shortName": "Athletics",
-            "abbreviation": "ATH",
-            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
-          },
-          "awayTeam": {
-            "id": "139",
-            "name": "Tampa Bay Rays",
-            "shortName": "Rays",
-            "abbreviation": "TB",
-            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "824970",
-          "utcDate": "2026-08-12T01:40:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "133",
-            "name": "Athletics",
-            "shortName": "Athletics",
-            "abbreviation": "ATH",
-            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
-          },
-          "awayTeam": {
-            "id": "139",
-            "name": "Tampa Bay Rays",
-            "shortName": "Rays",
-            "abbreviation": "TB",
-            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "824967",
-          "utcDate": "2026-08-12T19:05:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "133",
-            "name": "Athletics",
-            "shortName": "Athletics",
-            "abbreviation": "ATH",
-            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
-          },
-          "awayTeam": {
-            "id": "139",
-            "name": "Tampa Bay Rays",
-            "shortName": "Rays",
-            "abbreviation": "TB",
-            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        }
-      ],
-      "form": {
-        "sequence": [
-          "W",
-          "W",
-          "W",
-          "L",
-          "W"
-        ],
-        "wins": 4,
-        "losses": 1,
-        "runsFor": 28,
-        "runsAgainst": 25
-      },
-      "generatedAt": "2026-08-08T01:43:16.521Z"
-    },
-    "140": {
-      "team": {
-        "id": "140",
-        "name": "Texas Rangers",
-        "shortName": "Rangers",
-        "abbreviation": "TEX",
-        "league": "AL",
-        "division": "AL West",
-        "venue": "Globe Life Field",
-        "logo": "https://www.mlbstatic.com/team-logos/140.svg",
-        "founded": 1961,
-        "primaryColor": null
-      },
-      "recentGames": [
-        {
-          "id": "822866",
-          "utcDate": "2026-08-05T18:35:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "140",
-            "name": "Texas Rangers",
-            "shortName": "Rangers",
-            "abbreviation": "TEX",
-            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
-          },
-          "awayTeam": {
-            "id": "137",
-            "name": "San Francisco Giants",
-            "shortName": "Giants",
-            "abbreviation": "SF",
-            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 6,
-            "away": 0
-          }
-        },
-        {
-          "id": "822865",
-          "utcDate": "2026-08-05T00:05:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "140",
-            "name": "Texas Rangers",
-            "shortName": "Rangers",
-            "abbreviation": "TEX",
-            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
-          },
-          "awayTeam": {
-            "id": "137",
-            "name": "San Francisco Giants",
-            "shortName": "Giants",
-            "abbreviation": "SF",
-            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 5,
-            "away": 4
-          }
-        },
-        {
-          "id": "822867",
-          "utcDate": "2026-08-04T00:05:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "140",
-            "name": "Texas Rangers",
-            "shortName": "Rangers",
-            "abbreviation": "TEX",
-            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
-          },
-          "awayTeam": {
-            "id": "137",
-            "name": "San Francisco Giants",
-            "shortName": "Giants",
-            "abbreviation": "SF",
-            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 1,
-            "away": 5
-          }
-        },
-        {
-          "id": "824163",
-          "utcDate": "2026-08-02T18:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "117",
-            "name": "Houston Astros",
-            "shortName": "Astros",
-            "abbreviation": "HOU",
-            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
-          },
-          "awayTeam": {
-            "id": "140",
-            "name": "Texas Rangers",
-            "shortName": "Rangers",
-            "abbreviation": "TEX",
-            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 7,
-            "away": 3
-          }
-        },
-        {
-          "id": "824162",
-          "utcDate": "2026-08-01T23:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "117",
-            "name": "Houston Astros",
-            "shortName": "Astros",
-            "abbreviation": "HOU",
-            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
-          },
-          "awayTeam": {
-            "id": "140",
-            "name": "Texas Rangers",
-            "shortName": "Rangers",
-            "abbreviation": "TEX",
-            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 5,
-            "away": 4
-          }
-        }
-      ],
-      "upcomingGames": [
-        {
-          "id": "822864",
-          "utcDate": "2026-08-08T23:15:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "140",
-            "name": "Texas Rangers",
-            "shortName": "Rangers",
-            "abbreviation": "TEX",
-            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
-          },
-          "awayTeam": {
-            "id": "110",
-            "name": "Baltimore Orioles",
-            "shortName": "Orioles",
-            "abbreviation": "BAL",
-            "crest": "https://www.mlbstatic.com/team-logos/110.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "822862",
-          "utcDate": "2026-08-09T18:35:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "140",
-            "name": "Texas Rangers",
-            "shortName": "Rangers",
-            "abbreviation": "TEX",
-            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
-          },
-          "awayTeam": {
-            "id": "110",
-            "name": "Baltimore Orioles",
-            "shortName": "Orioles",
-            "abbreviation": "BAL",
-            "crest": "https://www.mlbstatic.com/team-logos/110.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823998",
-          "utcDate": "2026-08-11T01:38:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "108",
-            "name": "Los Angeles Angels",
-            "shortName": "Angels",
-            "abbreviation": "LAA",
-            "crest": "https://www.mlbstatic.com/team-logos/108.svg"
-          },
-          "awayTeam": {
-            "id": "140",
-            "name": "Texas Rangers",
-            "shortName": "Rangers",
-            "abbreviation": "TEX",
-            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823997",
-          "utcDate": "2026-08-12T01:38:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "108",
-            "name": "Los Angeles Angels",
-            "shortName": "Angels",
-            "abbreviation": "LAA",
-            "crest": "https://www.mlbstatic.com/team-logos/108.svg"
-          },
-          "awayTeam": {
-            "id": "140",
-            "name": "Texas Rangers",
-            "shortName": "Rangers",
-            "abbreviation": "TEX",
-            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823994",
-          "utcDate": "2026-08-13T02:10:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "108",
-            "name": "Los Angeles Angels",
-            "shortName": "Angels",
-            "abbreviation": "LAA",
-            "crest": "https://www.mlbstatic.com/team-logos/108.svg"
-          },
-          "awayTeam": {
-            "id": "140",
-            "name": "Texas Rangers",
-            "shortName": "Rangers",
-            "abbreviation": "TEX",
-            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        }
-      ],
-      "form": {
-        "sequence": [
-          "W",
-          "W",
-          "L",
-          "L",
-          "L"
-        ],
-        "wins": 2,
-        "losses": 3,
-        "runsFor": 19,
-        "runsAgainst": 21
-      },
-      "generatedAt": "2026-08-08T01:43:16.521Z"
-    },
-    "141": {
-      "team": {
-        "id": "141",
-        "name": "Toronto Blue Jays",
-        "shortName": "Blue Jays",
-        "abbreviation": "TOR",
-        "league": "AL",
-        "division": "AL East",
-        "venue": "Rogers Centre",
-        "logo": "https://www.mlbstatic.com/team-logos/141.svg",
-        "founded": 1977,
-        "primaryColor": null
-      },
-      "recentGames": [
-        {
-          "id": "824664",
-          "utcDate": "2026-08-06T18:20:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "112",
-            "name": "Chicago Cubs",
-            "shortName": "Cubs",
-            "abbreviation": "CHC",
-            "crest": "https://www.mlbstatic.com/team-logos/112.svg"
-          },
-          "awayTeam": {
-            "id": "141",
-            "name": "Toronto Blue Jays",
-            "shortName": "Blue Jays",
-            "abbreviation": "TOR",
-            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 3,
-            "away": 2
-          }
-        },
-        {
-          "id": "824158",
-          "utcDate": "2026-08-05T18:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "117",
-            "name": "Houston Astros",
-            "shortName": "Astros",
-            "abbreviation": "HOU",
-            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
-          },
-          "awayTeam": {
-            "id": "141",
-            "name": "Toronto Blue Jays",
-            "shortName": "Blue Jays",
-            "abbreviation": "TOR",
-            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 4,
-            "away": 5
-          }
-        },
-        {
-          "id": "824161",
-          "utcDate": "2026-08-05T00:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "117",
-            "name": "Houston Astros",
-            "shortName": "Astros",
-            "abbreviation": "HOU",
-            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
-          },
-          "awayTeam": {
-            "id": "141",
-            "name": "Toronto Blue Jays",
-            "shortName": "Blue Jays",
-            "abbreviation": "TOR",
-            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 7,
-            "away": 2
-          }
-        },
-        {
-          "id": "824160",
-          "utcDate": "2026-08-04T00:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "117",
-            "name": "Houston Astros",
-            "shortName": "Astros",
-            "abbreviation": "HOU",
-            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
-          },
-          "awayTeam": {
-            "id": "141",
-            "name": "Toronto Blue Jays",
-            "shortName": "Blue Jays",
-            "abbreviation": "TOR",
-            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 1,
-            "away": 3
-          }
-        },
-        {
-          "id": "822783",
-          "utcDate": "2026-08-02T17:37:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "141",
-            "name": "Toronto Blue Jays",
-            "shortName": "Blue Jays",
-            "abbreviation": "TOR",
-            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
-          },
-          "awayTeam": {
-            "id": "138",
-            "name": "St. Louis Cardinals",
-            "shortName": "Cardinals",
-            "abbreviation": "STL",
-            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 1,
-            "away": 5
-          }
-        }
-      ],
-      "upcomingGames": [
-        {
-          "id": "823426",
-          "utcDate": "2026-08-08T22:05:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "143",
-            "name": "Philadelphia Phillies",
-            "shortName": "Phillies",
-            "abbreviation": "PHI",
-            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
-          },
-          "awayTeam": {
-            "id": "141",
-            "name": "Toronto Blue Jays",
-            "shortName": "Blue Jays",
-            "abbreviation": "TOR",
-            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823425",
-          "utcDate": "2026-08-09T17:35:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "143",
-            "name": "Philadelphia Phillies",
-            "shortName": "Phillies",
-            "abbreviation": "PHI",
-            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
-          },
-          "awayTeam": {
-            "id": "141",
-            "name": "Toronto Blue Jays",
-            "shortName": "Blue Jays",
-            "abbreviation": "TOR",
-            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "822780",
-          "utcDate": "2026-08-10T23:07:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "141",
-            "name": "Toronto Blue Jays",
-            "shortName": "Blue Jays",
-            "abbreviation": "TOR",
-            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
-          },
-          "awayTeam": {
-            "id": "111",
-            "name": "Boston Red Sox",
-            "shortName": "Red Sox",
-            "abbreviation": "BOS",
-            "crest": "https://www.mlbstatic.com/team-logos/111.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "822778",
-          "utcDate": "2026-08-11T23:07:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "141",
-            "name": "Toronto Blue Jays",
-            "shortName": "Blue Jays",
-            "abbreviation": "TOR",
-            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
-          },
-          "awayTeam": {
-            "id": "111",
-            "name": "Boston Red Sox",
-            "shortName": "Red Sox",
-            "abbreviation": "BOS",
-            "crest": "https://www.mlbstatic.com/team-logos/111.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "822779",
-          "utcDate": "2026-08-12T23:07:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "141",
-            "name": "Toronto Blue Jays",
-            "shortName": "Blue Jays",
-            "abbreviation": "TOR",
-            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
-          },
-          "awayTeam": {
-            "id": "111",
-            "name": "Boston Red Sox",
-            "shortName": "Red Sox",
-            "abbreviation": "BOS",
-            "crest": "https://www.mlbstatic.com/team-logos/111.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        }
-      ],
-      "form": {
-        "sequence": [
-          "L",
-          "W",
-          "L",
-          "W",
-          "L"
-        ],
-        "wins": 2,
-        "losses": 3,
-        "runsFor": 13,
-        "runsAgainst": 20
-      },
-      "generatedAt": "2026-08-08T01:43:16.521Z"
-    },
-    "142": {
-      "team": {
-        "id": "142",
-        "name": "Minnesota Twins",
-        "shortName": "Twins",
-        "abbreviation": "MIN",
-        "league": "AL",
-        "division": "AL Central",
-        "venue": "Target Field",
-        "logo": "https://www.mlbstatic.com/team-logos/142.svg",
-        "founded": 1901,
-        "primaryColor": null
-      },
-      "recentGames": [
-        {
-          "id": "824080",
-          "utcDate": "2026-08-06T23:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "118",
-            "name": "Kansas City Royals",
-            "shortName": "Royals",
-            "abbreviation": "KC",
-            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
-          },
-          "awayTeam": {
-            "id": "142",
-            "name": "Minnesota Twins",
-            "shortName": "Twins",
-            "abbreviation": "MIN",
-            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 3,
-            "away": 4
-          }
-        },
-        {
-          "id": "824082",
-          "utcDate": "2026-08-05T23:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "118",
-            "name": "Kansas City Royals",
-            "shortName": "Royals",
-            "abbreviation": "KC",
-            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
-          },
-          "awayTeam": {
-            "id": "142",
-            "name": "Minnesota Twins",
-            "shortName": "Twins",
-            "abbreviation": "MIN",
-            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 2,
-            "away": 1
-          }
-        },
-        {
-          "id": "824084",
-          "utcDate": "2026-08-04T23:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "118",
-            "name": "Kansas City Royals",
-            "shortName": "Royals",
-            "abbreviation": "KC",
-            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
-          },
-          "awayTeam": {
-            "id": "142",
-            "name": "Minnesota Twins",
-            "shortName": "Twins",
-            "abbreviation": "MIN",
-            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 8,
-            "away": 2
-          }
-        },
-        {
-          "id": "823107",
-          "utcDate": "2026-08-02T20:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "136",
-            "name": "Seattle Mariners",
-            "shortName": "Mariners",
-            "abbreviation": "SEA",
-            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
-          },
-          "awayTeam": {
-            "id": "142",
-            "name": "Minnesota Twins",
-            "shortName": "Twins",
-            "abbreviation": "MIN",
-            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 7,
-            "away": 6
-          }
-        },
-        {
-          "id": "823109",
-          "utcDate": "2026-08-01T20:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "136",
-            "name": "Seattle Mariners",
-            "shortName": "Mariners",
-            "abbreviation": "SEA",
-            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
-          },
-          "awayTeam": {
-            "id": "142",
-            "name": "Minnesota Twins",
-            "shortName": "Twins",
-            "abbreviation": "MIN",
-            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 4,
-            "away": 3
-          }
-        }
-      ],
-      "upcomingGames": [
-        {
-          "id": "823752",
-          "utcDate": "2026-08-08T23:10:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "158",
-            "name": "Milwaukee Brewers",
-            "shortName": "Brewers",
-            "abbreviation": "MIL",
-            "crest": "https://www.mlbstatic.com/team-logos/158.svg"
-          },
-          "awayTeam": {
-            "id": "142",
-            "name": "Minnesota Twins",
-            "shortName": "Twins",
-            "abbreviation": "MIN",
-            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823751",
-          "utcDate": "2026-08-09T18:10:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "158",
-            "name": "Milwaukee Brewers",
-            "shortName": "Brewers",
-            "abbreviation": "MIL",
-            "crest": "https://www.mlbstatic.com/team-logos/158.svg"
-          },
-          "awayTeam": {
-            "id": "142",
-            "name": "Minnesota Twins",
-            "shortName": "Twins",
-            "abbreviation": "MIN",
-            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823675",
-          "utcDate": "2026-08-10T23:40:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "142",
-            "name": "Minnesota Twins",
-            "shortName": "Twins",
-            "abbreviation": "MIN",
-            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
-          },
-          "awayTeam": {
-            "id": "110",
-            "name": "Baltimore Orioles",
-            "shortName": "Orioles",
-            "abbreviation": "BAL",
-            "crest": "https://www.mlbstatic.com/team-logos/110.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823673",
-          "utcDate": "2026-08-11T23:40:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "142",
-            "name": "Minnesota Twins",
-            "shortName": "Twins",
-            "abbreviation": "MIN",
-            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
-          },
-          "awayTeam": {
-            "id": "110",
-            "name": "Baltimore Orioles",
-            "shortName": "Orioles",
-            "abbreviation": "BAL",
-            "crest": "https://www.mlbstatic.com/team-logos/110.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823672",
-          "utcDate": "2026-08-12T17:40:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "142",
-            "name": "Minnesota Twins",
-            "shortName": "Twins",
-            "abbreviation": "MIN",
-            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
-          },
-          "awayTeam": {
-            "id": "110",
-            "name": "Baltimore Orioles",
-            "shortName": "Orioles",
-            "abbreviation": "BAL",
-            "crest": "https://www.mlbstatic.com/team-logos/110.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        }
-      ],
-      "form": {
-        "sequence": [
-          "W",
-          "L",
-          "L",
-          "L",
-          "L"
-        ],
-        "wins": 1,
-        "losses": 4,
-        "runsFor": 16,
-        "runsAgainst": 24
-      },
-      "generatedAt": "2026-08-08T01:43:16.521Z"
-    },
-    "143": {
-      "team": {
-        "id": "143",
-        "name": "Philadelphia Phillies",
-        "shortName": "Phillies",
-        "abbreviation": "PHI",
-        "league": "NL",
-        "division": "NL East",
-        "venue": "Citizens Bank Park",
-        "logo": "https://www.mlbstatic.com/team-logos/143.svg",
-        "founded": 1883,
-        "primaryColor": null
-      },
-      "recentGames": [
-        {
-          "id": "823430",
-          "utcDate": "2026-08-06T22:05:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "143",
-            "name": "Philadelphia Phillies",
-            "shortName": "Phillies",
-            "abbreviation": "PHI",
-            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
-          },
-          "awayTeam": {
-            "id": "120",
-            "name": "Washington Nationals",
-            "shortName": "Nationals",
-            "abbreviation": "WSH",
-            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 7,
-            "away": 3
-          }
-        },
-        {
-          "id": "823429",
-          "utcDate": "2026-08-05T22:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "143",
-            "name": "Philadelphia Phillies",
-            "shortName": "Phillies",
-            "abbreviation": "PHI",
-            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
-          },
-          "awayTeam": {
-            "id": "120",
-            "name": "Washington Nationals",
-            "shortName": "Nationals",
-            "abbreviation": "WSH",
-            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 4,
-            "away": 10
-          }
-        },
-        {
-          "id": "823432",
-          "utcDate": "2026-08-04T22:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "143",
-            "name": "Philadelphia Phillies",
-            "shortName": "Phillies",
-            "abbreviation": "PHI",
-            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
-          },
-          "awayTeam": {
-            "id": "120",
-            "name": "Washington Nationals",
-            "shortName": "Nationals",
-            "abbreviation": "WSH",
-            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 5,
-            "away": 0
-          }
-        },
-        {
-          "id": "823431",
-          "utcDate": "2026-08-03T22:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "143",
-            "name": "Philadelphia Phillies",
-            "shortName": "Phillies",
-            "abbreviation": "PHI",
-            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
-          },
-          "awayTeam": {
-            "id": "120",
-            "name": "Washington Nationals",
-            "shortName": "Nationals",
-            "abbreviation": "WSH",
-            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 6,
-            "away": 3
-          }
-        },
-        {
-          "id": "824807",
-          "utcDate": "2026-08-02T17:35:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "110",
-            "name": "Baltimore Orioles",
-            "shortName": "Orioles",
-            "abbreviation": "BAL",
-            "crest": "https://www.mlbstatic.com/team-logos/110.svg"
-          },
-          "awayTeam": {
-            "id": "143",
-            "name": "Philadelphia Phillies",
-            "shortName": "Phillies",
-            "abbreviation": "PHI",
-            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 0,
-            "away": 8
-          }
-        }
-      ],
-      "upcomingGames": [
-        {
-          "id": "823426",
-          "utcDate": "2026-08-08T22:05:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "143",
-            "name": "Philadelphia Phillies",
-            "shortName": "Phillies",
-            "abbreviation": "PHI",
-            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
-          },
-          "awayTeam": {
-            "id": "141",
-            "name": "Toronto Blue Jays",
-            "shortName": "Blue Jays",
-            "abbreviation": "TOR",
-            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823425",
-          "utcDate": "2026-08-09T17:35:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "143",
-            "name": "Philadelphia Phillies",
-            "shortName": "Phillies",
-            "abbreviation": "PHI",
-            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
-          },
-          "awayTeam": {
-            "id": "141",
-            "name": "Toronto Blue Jays",
-            "shortName": "Blue Jays",
-            "abbreviation": "TOR",
-            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823018",
-          "utcDate": "2026-08-10T23:45:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "138",
-            "name": "St. Louis Cardinals",
-            "shortName": "Cardinals",
-            "abbreviation": "STL",
-            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
-          },
-          "awayTeam": {
-            "id": "143",
-            "name": "Philadelphia Phillies",
-            "shortName": "Phillies",
-            "abbreviation": "PHI",
-            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823019",
-          "utcDate": "2026-08-11T23:45:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "138",
-            "name": "St. Louis Cardinals",
-            "shortName": "Cardinals",
-            "abbreviation": "STL",
-            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
-          },
-          "awayTeam": {
-            "id": "143",
-            "name": "Philadelphia Phillies",
-            "shortName": "Phillies",
-            "abbreviation": "PHI",
-            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823017",
-          "utcDate": "2026-08-12T18:15:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "138",
-            "name": "St. Louis Cardinals",
-            "shortName": "Cardinals",
-            "abbreviation": "STL",
-            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
-          },
-          "awayTeam": {
-            "id": "143",
-            "name": "Philadelphia Phillies",
-            "shortName": "Phillies",
-            "abbreviation": "PHI",
-            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        }
-      ],
-      "form": {
-        "sequence": [
-          "W",
-          "L",
-          "W",
-          "W",
-          "W"
-        ],
-        "wins": 4,
-        "losses": 1,
-        "runsFor": 30,
-        "runsAgainst": 16
-      },
-      "generatedAt": "2026-08-08T01:43:16.521Z"
-    },
-    "144": {
-      "team": {
-        "id": "144",
-        "name": "Atlanta Braves",
-        "shortName": "Braves",
-        "abbreviation": "ATL",
-        "league": "NL",
-        "division": "NL East",
-        "venue": "Truist Park",
-        "logo": "https://www.mlbstatic.com/team-logos/144.svg",
-        "founded": 1871,
-        "primaryColor": null
-      },
-      "recentGames": [
-        {
-          "id": "824885",
-          "utcDate": "2026-08-06T23:15:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "144",
-            "name": "Atlanta Braves",
-            "shortName": "Braves",
-            "abbreviation": "ATL",
-            "crest": "https://www.mlbstatic.com/team-logos/144.svg"
-          },
-          "awayTeam": {
-            "id": "146",
-            "name": "Miami Marlins",
-            "shortName": "Marlins",
-            "abbreviation": "MIA",
-            "crest": "https://www.mlbstatic.com/team-logos/146.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 11,
-            "away": 3
-          }
-        },
-        {
-          "id": "824889",
-          "utcDate": "2026-08-05T23:15:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "144",
-            "name": "Atlanta Braves",
-            "shortName": "Braves",
-            "abbreviation": "ATL",
-            "crest": "https://www.mlbstatic.com/team-logos/144.svg"
-          },
-          "awayTeam": {
-            "id": "146",
-            "name": "Miami Marlins",
-            "shortName": "Marlins",
-            "abbreviation": "MIA",
-            "crest": "https://www.mlbstatic.com/team-logos/146.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 4,
-            "away": 1
-          }
-        },
-        {
-          "id": "824888",
-          "utcDate": "2026-08-04T23:15:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "144",
-            "name": "Atlanta Braves",
-            "shortName": "Braves",
-            "abbreviation": "ATL",
-            "crest": "https://www.mlbstatic.com/team-logos/144.svg"
-          },
-          "awayTeam": {
-            "id": "146",
-            "name": "Miami Marlins",
-            "shortName": "Marlins",
-            "abbreviation": "MIA",
-            "crest": "https://www.mlbstatic.com/team-logos/146.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 4,
-            "away": 2
-          }
-        },
-        {
-          "id": "824891",
-          "utcDate": "2026-08-02T17:35:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "144",
-            "name": "Atlanta Braves",
-            "shortName": "Braves",
-            "abbreviation": "ATL",
-            "crest": "https://www.mlbstatic.com/team-logos/144.svg"
-          },
-          "awayTeam": {
-            "id": "120",
-            "name": "Washington Nationals",
-            "shortName": "Nationals",
-            "abbreviation": "WSH",
-            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 4,
-            "away": 2
-          }
-        },
-        {
-          "id": "824890",
-          "utcDate": "2026-08-01T23:15:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "144",
-            "name": "Atlanta Braves",
-            "shortName": "Braves",
-            "abbreviation": "ATL",
-            "crest": "https://www.mlbstatic.com/team-logos/144.svg"
-          },
-          "awayTeam": {
-            "id": "120",
-            "name": "Washington Nationals",
-            "shortName": "Nationals",
-            "abbreviation": "WSH",
-            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 8,
-            "away": 3
-          }
-        }
-      ],
-      "upcomingGames": [
-        {
-          "id": "823514",
-          "utcDate": "2026-08-08T19:05:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "147",
-            "name": "New York Yankees",
-            "shortName": "Yankees",
-            "abbreviation": "NYY",
-            "crest": "https://www.mlbstatic.com/team-logos/147.svg"
-          },
-          "awayTeam": {
-            "id": "144",
-            "name": "Atlanta Braves",
-            "shortName": "Braves",
-            "abbreviation": "ATL",
-            "crest": "https://www.mlbstatic.com/team-logos/144.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "823513",
-          "utcDate": "2026-08-09T17:35:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "147",
-            "name": "New York Yankees",
-            "shortName": "Yankees",
-            "abbreviation": "NYY",
-            "crest": "https://www.mlbstatic.com/team-logos/147.svg"
-          },
-          "awayTeam": {
-            "id": "144",
-            "name": "Atlanta Braves",
-            "shortName": "Braves",
-            "abbreviation": "ATL",
-            "crest": "https://www.mlbstatic.com/team-logos/144.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "824887",
-          "utcDate": "2026-08-10T23:15:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "144",
-            "name": "Atlanta Braves",
-            "shortName": "Braves",
-            "abbreviation": "ATL",
-            "crest": "https://www.mlbstatic.com/team-logos/144.svg"
-          },
-          "awayTeam": {
-            "id": "121",
-            "name": "New York Mets",
-            "shortName": "Mets",
-            "abbreviation": "NYM",
-            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "824886",
-          "utcDate": "2026-08-11T23:15:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "144",
-            "name": "Atlanta Braves",
-            "shortName": "Braves",
-            "abbreviation": "ATL",
-            "crest": "https://www.mlbstatic.com/team-logos/144.svg"
-          },
-          "awayTeam": {
-            "id": "121",
-            "name": "New York Mets",
-            "shortName": "Mets",
-            "abbreviation": "NYM",
-            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "824883",
-          "utcDate": "2026-08-12T23:15:00Z",
-          "status": "Scheduled",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "144",
-            "name": "Atlanta Braves",
-            "shortName": "Braves",
-            "abbreviation": "ATL",
-            "crest": "https://www.mlbstatic.com/team-logos/144.svg"
-          },
-          "awayTeam": {
-            "id": "121",
-            "name": "New York Mets",
-            "shortName": "Mets",
-            "abbreviation": "NYM",
-            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
           },
           "score": {
             "winner": null,
@@ -9613,9 +3481,6141 @@ export const mlbSnapshot: MlbSnapshot = {
         "wins": 5,
         "losses": 0,
         "runsFor": 31,
+        "runsAgainst": 18
+      },
+      "generatedAt": "2026-08-08T04:58:19.367Z"
+    },
+    "113": {
+      "team": {
+        "id": "113",
+        "name": "Cincinnati Reds",
+        "shortName": "Reds",
+        "abbreviation": "CIN",
+        "league": "NL",
+        "division": "NL Central",
+        "venue": "Great American Ball Park",
+        "logo": "https://www.mlbstatic.com/team-logos/113.svg",
+        "founded": 1882,
+        "primaryColor": null
+      },
+      "recentGames": [
+        {
+          "id": "822699",
+          "utcDate": "2026-08-07T22:45:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "120",
+            "name": "Washington Nationals",
+            "shortName": "Nationals",
+            "abbreviation": "WSH",
+            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
+          },
+          "awayTeam": {
+            "id": "113",
+            "name": "Cincinnati Reds",
+            "shortName": "Reds",
+            "abbreviation": "CIN",
+            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 5,
+            "away": 3
+          }
+        },
+        {
+          "id": "824481",
+          "utcDate": "2026-08-06T16:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "113",
+            "name": "Cincinnati Reds",
+            "shortName": "Reds",
+            "abbreviation": "CIN",
+            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
+          },
+          "awayTeam": {
+            "id": "133",
+            "name": "Athletics",
+            "shortName": "Athletics",
+            "abbreviation": "ATH",
+            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 6,
+            "away": 5
+          }
+        },
+        {
+          "id": "824482",
+          "utcDate": "2026-08-05T22:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "113",
+            "name": "Cincinnati Reds",
+            "shortName": "Reds",
+            "abbreviation": "CIN",
+            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
+          },
+          "awayTeam": {
+            "id": "133",
+            "name": "Athletics",
+            "shortName": "Athletics",
+            "abbreviation": "ATH",
+            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 3,
+            "away": 2
+          }
+        },
+        {
+          "id": "824484",
+          "utcDate": "2026-08-04T22:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "113",
+            "name": "Cincinnati Reds",
+            "shortName": "Reds",
+            "abbreviation": "CIN",
+            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
+          },
+          "awayTeam": {
+            "id": "133",
+            "name": "Athletics",
+            "shortName": "Athletics",
+            "abbreviation": "ATH",
+            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 5,
+            "away": 4
+          }
+        },
+        {
+          "id": "824483",
+          "utcDate": "2026-08-02T17:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "113",
+            "name": "Cincinnati Reds",
+            "shortName": "Reds",
+            "abbreviation": "CIN",
+            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
+          },
+          "awayTeam": {
+            "id": "134",
+            "name": "Pittsburgh Pirates",
+            "shortName": "Pirates",
+            "abbreviation": "PIT",
+            "crest": "https://www.mlbstatic.com/team-logos/134.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 10,
+            "away": 2
+          }
+        }
+      ],
+      "upcomingGames": [
+        {
+          "id": "822701",
+          "utcDate": "2026-08-08T22:45:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "120",
+            "name": "Washington Nationals",
+            "shortName": "Nationals",
+            "abbreviation": "WSH",
+            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
+          },
+          "awayTeam": {
+            "id": "113",
+            "name": "Cincinnati Reds",
+            "shortName": "Reds",
+            "abbreviation": "CIN",
+            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "822700",
+          "utcDate": "2026-08-09T16:15:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "120",
+            "name": "Washington Nationals",
+            "shortName": "Nationals",
+            "abbreviation": "WSH",
+            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
+          },
+          "awayTeam": {
+            "id": "113",
+            "name": "Cincinnati Reds",
+            "shortName": "Reds",
+            "abbreviation": "CIN",
+            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "824563",
+          "utcDate": "2026-08-11T23:40:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "145",
+            "name": "Chicago White Sox",
+            "shortName": "White Sox",
+            "abbreviation": "CWS",
+            "crest": "https://www.mlbstatic.com/team-logos/145.svg"
+          },
+          "awayTeam": {
+            "id": "113",
+            "name": "Cincinnati Reds",
+            "shortName": "Reds",
+            "abbreviation": "CIN",
+            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "824562",
+          "utcDate": "2026-08-12T23:40:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "145",
+            "name": "Chicago White Sox",
+            "shortName": "White Sox",
+            "abbreviation": "CWS",
+            "crest": "https://www.mlbstatic.com/team-logos/145.svg"
+          },
+          "awayTeam": {
+            "id": "113",
+            "name": "Cincinnati Reds",
+            "shortName": "Reds",
+            "abbreviation": "CIN",
+            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "824561",
+          "utcDate": "2026-08-13T18:10:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "145",
+            "name": "Chicago White Sox",
+            "shortName": "White Sox",
+            "abbreviation": "CWS",
+            "crest": "https://www.mlbstatic.com/team-logos/145.svg"
+          },
+          "awayTeam": {
+            "id": "113",
+            "name": "Cincinnati Reds",
+            "shortName": "Reds",
+            "abbreviation": "CIN",
+            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        }
+      ],
+      "form": {
+        "sequence": [
+          "L",
+          "W",
+          "W",
+          "W",
+          "W"
+        ],
+        "wins": 4,
+        "losses": 1,
+        "runsFor": 27,
+        "runsAgainst": 18
+      },
+      "generatedAt": "2026-08-08T04:58:19.367Z"
+    },
+    "114": {
+      "team": {
+        "id": "114",
+        "name": "Cleveland Guardians",
+        "shortName": "Guardians",
+        "abbreviation": "CLE",
+        "league": "AL",
+        "division": "AL Central",
+        "venue": "Progressive Field",
+        "logo": "https://www.mlbstatic.com/team-logos/114.svg",
+        "founded": 1901,
+        "primaryColor": null
+      },
+      "recentGames": [
+        {
+          "id": "824566",
+          "utcDate": "2026-08-07T23:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "145",
+            "name": "Chicago White Sox",
+            "shortName": "White Sox",
+            "abbreviation": "CWS",
+            "crest": "https://www.mlbstatic.com/team-logos/145.svg"
+          },
+          "awayTeam": {
+            "id": "114",
+            "name": "Cleveland Guardians",
+            "shortName": "Guardians",
+            "abbreviation": "CLE",
+            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 2,
+            "away": 8
+          }
+        },
+        {
+          "id": "824401",
+          "utcDate": "2026-08-06T17:10:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "114",
+            "name": "Cleveland Guardians",
+            "shortName": "Guardians",
+            "abbreviation": "CLE",
+            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
+          },
+          "awayTeam": {
+            "id": "121",
+            "name": "New York Mets",
+            "shortName": "Mets",
+            "abbreviation": "NYM",
+            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 6,
+            "away": 13
+          }
+        },
+        {
+          "id": "824402",
+          "utcDate": "2026-08-05T22:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "114",
+            "name": "Cleveland Guardians",
+            "shortName": "Guardians",
+            "abbreviation": "CLE",
+            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
+          },
+          "awayTeam": {
+            "id": "121",
+            "name": "New York Mets",
+            "shortName": "Mets",
+            "abbreviation": "NYM",
+            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 5,
+            "away": 6
+          }
+        },
+        {
+          "id": "824403",
+          "utcDate": "2026-08-04T22:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "114",
+            "name": "Cleveland Guardians",
+            "shortName": "Guardians",
+            "abbreviation": "CLE",
+            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
+          },
+          "awayTeam": {
+            "id": "121",
+            "name": "New York Mets",
+            "shortName": "Mets",
+            "abbreviation": "NYM",
+            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 2,
+            "away": 6
+          }
+        },
+        {
+          "id": "824404",
+          "utcDate": "2026-08-02T17:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "114",
+            "name": "Cleveland Guardians",
+            "shortName": "Guardians",
+            "abbreviation": "CLE",
+            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
+          },
+          "awayTeam": {
+            "id": "109",
+            "name": "Arizona Diamondbacks",
+            "shortName": "D-backs",
+            "abbreviation": "AZ",
+            "crest": "https://www.mlbstatic.com/team-logos/109.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 5,
+            "away": 0
+          }
+        }
+      ],
+      "upcomingGames": [
+        {
+          "id": "824565",
+          "utcDate": "2026-08-08T23:15:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "145",
+            "name": "Chicago White Sox",
+            "shortName": "White Sox",
+            "abbreviation": "CWS",
+            "crest": "https://www.mlbstatic.com/team-logos/145.svg"
+          },
+          "awayTeam": {
+            "id": "114",
+            "name": "Cleveland Guardians",
+            "shortName": "Guardians",
+            "abbreviation": "CLE",
+            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "824564",
+          "utcDate": "2026-08-09T18:10:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "145",
+            "name": "Chicago White Sox",
+            "shortName": "White Sox",
+            "abbreviation": "CWS",
+            "crest": "https://www.mlbstatic.com/team-logos/145.svg"
+          },
+          "awayTeam": {
+            "id": "114",
+            "name": "Cleveland Guardians",
+            "shortName": "Guardians",
+            "abbreviation": "CLE",
+            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "824240",
+          "utcDate": "2026-08-11T22:40:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "116",
+            "name": "Detroit Tigers",
+            "shortName": "Tigers",
+            "abbreviation": "DET",
+            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
+          },
+          "awayTeam": {
+            "id": "114",
+            "name": "Cleveland Guardians",
+            "shortName": "Guardians",
+            "abbreviation": "CLE",
+            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "824241",
+          "utcDate": "2026-08-12T22:40:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "116",
+            "name": "Detroit Tigers",
+            "shortName": "Tigers",
+            "abbreviation": "DET",
+            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
+          },
+          "awayTeam": {
+            "id": "114",
+            "name": "Cleveland Guardians",
+            "shortName": "Guardians",
+            "abbreviation": "CLE",
+            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "824238",
+          "utcDate": "2026-08-13T17:10:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "116",
+            "name": "Detroit Tigers",
+            "shortName": "Tigers",
+            "abbreviation": "DET",
+            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
+          },
+          "awayTeam": {
+            "id": "114",
+            "name": "Cleveland Guardians",
+            "shortName": "Guardians",
+            "abbreviation": "CLE",
+            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        }
+      ],
+      "form": {
+        "sequence": [
+          "W",
+          "L",
+          "L",
+          "L",
+          "W"
+        ],
+        "wins": 2,
+        "losses": 3,
+        "runsFor": 26,
+        "runsAgainst": 27
+      },
+      "generatedAt": "2026-08-08T04:58:19.367Z"
+    },
+    "115": {
+      "team": {
+        "id": "115",
+        "name": "Colorado Rockies",
+        "shortName": "Rockies",
+        "abbreviation": "COL",
+        "league": "NL",
+        "division": "NL West",
+        "venue": "Coors Field",
+        "logo": "https://www.mlbstatic.com/team-logos/115.svg",
+        "founded": 1992,
+        "primaryColor": null
+      },
+      "recentGames": [
+        {
+          "id": "823024",
+          "utcDate": "2026-08-08T00:15:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "138",
+            "name": "St. Louis Cardinals",
+            "shortName": "Cardinals",
+            "abbreviation": "STL",
+            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
+          },
+          "awayTeam": {
+            "id": "115",
+            "name": "Colorado Rockies",
+            "shortName": "Rockies",
+            "abbreviation": "COL",
+            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 3,
+            "away": 2
+          }
+        },
+        {
+          "id": "824322",
+          "utcDate": "2026-08-05T19:10:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "115",
+            "name": "Colorado Rockies",
+            "shortName": "Rockies",
+            "abbreviation": "COL",
+            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
+          },
+          "awayTeam": {
+            "id": "139",
+            "name": "Tampa Bay Rays",
+            "shortName": "Rays",
+            "abbreviation": "TB",
+            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 0,
+            "away": 4
+          }
+        },
+        {
+          "id": "824321",
+          "utcDate": "2026-08-05T00:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "115",
+            "name": "Colorado Rockies",
+            "shortName": "Rockies",
+            "abbreviation": "COL",
+            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
+          },
+          "awayTeam": {
+            "id": "139",
+            "name": "Tampa Bay Rays",
+            "shortName": "Rays",
+            "abbreviation": "TB",
+            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 7,
+            "away": 9
+          }
+        },
+        {
+          "id": "824324",
+          "utcDate": "2026-08-04T00:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "115",
+            "name": "Colorado Rockies",
+            "shortName": "Rockies",
+            "abbreviation": "COL",
+            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
+          },
+          "awayTeam": {
+            "id": "139",
+            "name": "Tampa Bay Rays",
+            "shortName": "Rays",
+            "abbreviation": "TB",
+            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 9,
+            "away": 13
+          }
+        },
+        {
+          "id": "824323",
+          "utcDate": "2026-08-02T19:10:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "115",
+            "name": "Colorado Rockies",
+            "shortName": "Rockies",
+            "abbreviation": "COL",
+            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
+          },
+          "awayTeam": {
+            "id": "118",
+            "name": "Kansas City Royals",
+            "shortName": "Royals",
+            "abbreviation": "KC",
+            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 8,
+            "away": 1
+          }
+        }
+      ],
+      "upcomingGames": [
+        {
+          "id": "823021",
+          "utcDate": "2026-08-08T23:15:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "138",
+            "name": "St. Louis Cardinals",
+            "shortName": "Cardinals",
+            "abbreviation": "STL",
+            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
+          },
+          "awayTeam": {
+            "id": "115",
+            "name": "Colorado Rockies",
+            "shortName": "Rockies",
+            "abbreviation": "COL",
+            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823020",
+          "utcDate": "2026-08-09T18:15:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "138",
+            "name": "St. Louis Cardinals",
+            "shortName": "Cardinals",
+            "abbreviation": "STL",
+            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
+          },
+          "awayTeam": {
+            "id": "115",
+            "name": "Colorado Rockies",
+            "shortName": "Rockies",
+            "abbreviation": "COL",
+            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "825048",
+          "utcDate": "2026-08-11T01:40:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "109",
+            "name": "Arizona Diamondbacks",
+            "shortName": "D-backs",
+            "abbreviation": "AZ",
+            "crest": "https://www.mlbstatic.com/team-logos/109.svg"
+          },
+          "awayTeam": {
+            "id": "115",
+            "name": "Colorado Rockies",
+            "shortName": "Rockies",
+            "abbreviation": "COL",
+            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "825046",
+          "utcDate": "2026-08-12T01:40:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "109",
+            "name": "Arizona Diamondbacks",
+            "shortName": "D-backs",
+            "abbreviation": "AZ",
+            "crest": "https://www.mlbstatic.com/team-logos/109.svg"
+          },
+          "awayTeam": {
+            "id": "115",
+            "name": "Colorado Rockies",
+            "shortName": "Rockies",
+            "abbreviation": "COL",
+            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "825047",
+          "utcDate": "2026-08-12T19:40:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "109",
+            "name": "Arizona Diamondbacks",
+            "shortName": "D-backs",
+            "abbreviation": "AZ",
+            "crest": "https://www.mlbstatic.com/team-logos/109.svg"
+          },
+          "awayTeam": {
+            "id": "115",
+            "name": "Colorado Rockies",
+            "shortName": "Rockies",
+            "abbreviation": "COL",
+            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        }
+      ],
+      "form": {
+        "sequence": [
+          "L",
+          "L",
+          "L",
+          "L",
+          "W"
+        ],
+        "wins": 1,
+        "losses": 4,
+        "runsFor": 26,
+        "runsAgainst": 30
+      },
+      "generatedAt": "2026-08-08T04:58:19.367Z"
+    },
+    "116": {
+      "team": {
+        "id": "116",
+        "name": "Detroit Tigers",
+        "shortName": "Tigers",
+        "abbreviation": "DET",
+        "league": "AL",
+        "division": "AL Central",
+        "venue": "Comerica Park",
+        "logo": "https://www.mlbstatic.com/team-logos/116.svg",
+        "founded": 1901,
+        "primaryColor": null
+      },
+      "recentGames": [
+        {
+          "id": "823191",
+          "utcDate": "2026-08-08T02:15:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "137",
+            "name": "San Francisco Giants",
+            "shortName": "Giants",
+            "abbreviation": "SF",
+            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
+          },
+          "awayTeam": {
+            "id": "116",
+            "name": "Detroit Tigers",
+            "shortName": "Tigers",
+            "abbreviation": "DET",
+            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 5,
+            "away": 2
+          }
+        },
+        {
+          "id": "823105",
+          "utcDate": "2026-08-06T20:10:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "136",
+            "name": "Seattle Mariners",
+            "shortName": "Mariners",
+            "abbreviation": "SEA",
+            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
+          },
+          "awayTeam": {
+            "id": "116",
+            "name": "Detroit Tigers",
+            "shortName": "Tigers",
+            "abbreviation": "DET",
+            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 0,
+            "away": 11
+          }
+        },
+        {
+          "id": "823106",
+          "utcDate": "2026-08-06T01:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "136",
+            "name": "Seattle Mariners",
+            "shortName": "Mariners",
+            "abbreviation": "SEA",
+            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
+          },
+          "awayTeam": {
+            "id": "116",
+            "name": "Detroit Tigers",
+            "shortName": "Tigers",
+            "abbreviation": "DET",
+            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 4,
+            "away": 2
+          }
+        },
+        {
+          "id": "823108",
+          "utcDate": "2026-08-05T01:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "136",
+            "name": "Seattle Mariners",
+            "shortName": "Mariners",
+            "abbreviation": "SEA",
+            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
+          },
+          "awayTeam": {
+            "id": "116",
+            "name": "Detroit Tigers",
+            "shortName": "Tigers",
+            "abbreviation": "DET",
+            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 0,
+            "away": 8
+          }
+        },
+        {
+          "id": "824971",
+          "utcDate": "2026-08-02T20:05:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "133",
+            "name": "Athletics",
+            "shortName": "Athletics",
+            "abbreviation": "ATH",
+            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
+          },
+          "awayTeam": {
+            "id": "116",
+            "name": "Detroit Tigers",
+            "shortName": "Tigers",
+            "abbreviation": "DET",
+            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 0,
+            "away": 11
+          }
+        }
+      ],
+      "upcomingGames": [
+        {
+          "id": "823188",
+          "utcDate": "2026-08-08T23:15:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "137",
+            "name": "San Francisco Giants",
+            "shortName": "Giants",
+            "abbreviation": "SF",
+            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
+          },
+          "awayTeam": {
+            "id": "116",
+            "name": "Detroit Tigers",
+            "shortName": "Tigers",
+            "abbreviation": "DET",
+            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823190",
+          "utcDate": "2026-08-09T20:05:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "137",
+            "name": "San Francisco Giants",
+            "shortName": "Giants",
+            "abbreviation": "SF",
+            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
+          },
+          "awayTeam": {
+            "id": "116",
+            "name": "Detroit Tigers",
+            "shortName": "Tigers",
+            "abbreviation": "DET",
+            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "824240",
+          "utcDate": "2026-08-11T22:40:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "116",
+            "name": "Detroit Tigers",
+            "shortName": "Tigers",
+            "abbreviation": "DET",
+            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
+          },
+          "awayTeam": {
+            "id": "114",
+            "name": "Cleveland Guardians",
+            "shortName": "Guardians",
+            "abbreviation": "CLE",
+            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "824241",
+          "utcDate": "2026-08-12T22:40:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "116",
+            "name": "Detroit Tigers",
+            "shortName": "Tigers",
+            "abbreviation": "DET",
+            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
+          },
+          "awayTeam": {
+            "id": "114",
+            "name": "Cleveland Guardians",
+            "shortName": "Guardians",
+            "abbreviation": "CLE",
+            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "824238",
+          "utcDate": "2026-08-13T17:10:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "116",
+            "name": "Detroit Tigers",
+            "shortName": "Tigers",
+            "abbreviation": "DET",
+            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
+          },
+          "awayTeam": {
+            "id": "114",
+            "name": "Cleveland Guardians",
+            "shortName": "Guardians",
+            "abbreviation": "CLE",
+            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        }
+      ],
+      "form": {
+        "sequence": [
+          "L",
+          "W",
+          "L",
+          "W",
+          "W"
+        ],
+        "wins": 3,
+        "losses": 2,
+        "runsFor": 34,
+        "runsAgainst": 9
+      },
+      "generatedAt": "2026-08-08T04:58:19.367Z"
+    },
+    "117": {
+      "team": {
+        "id": "117",
+        "name": "Houston Astros",
+        "shortName": "Astros",
+        "abbreviation": "HOU",
+        "league": "AL",
+        "division": "AL West",
+        "venue": "Daikin Park",
+        "logo": "https://www.mlbstatic.com/team-logos/117.svg",
+        "founded": 1962,
+        "primaryColor": null
+      },
+      "recentGames": [
+        {
+          "id": "823266",
+          "utcDate": "2026-08-08T01:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "135",
+            "name": "San Diego Padres",
+            "shortName": "Padres",
+            "abbreviation": "SD",
+            "crest": "https://www.mlbstatic.com/team-logos/135.svg"
+          },
+          "awayTeam": {
+            "id": "117",
+            "name": "Houston Astros",
+            "shortName": "Astros",
+            "abbreviation": "HOU",
+            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 3,
+            "away": 6
+          }
+        },
+        {
+          "id": "824158",
+          "utcDate": "2026-08-05T18:10:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "117",
+            "name": "Houston Astros",
+            "shortName": "Astros",
+            "abbreviation": "HOU",
+            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
+          },
+          "awayTeam": {
+            "id": "141",
+            "name": "Toronto Blue Jays",
+            "shortName": "Blue Jays",
+            "abbreviation": "TOR",
+            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 4,
+            "away": 5
+          }
+        },
+        {
+          "id": "824161",
+          "utcDate": "2026-08-05T00:10:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "117",
+            "name": "Houston Astros",
+            "shortName": "Astros",
+            "abbreviation": "HOU",
+            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
+          },
+          "awayTeam": {
+            "id": "141",
+            "name": "Toronto Blue Jays",
+            "shortName": "Blue Jays",
+            "abbreviation": "TOR",
+            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 7,
+            "away": 2
+          }
+        },
+        {
+          "id": "824160",
+          "utcDate": "2026-08-04T00:10:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "117",
+            "name": "Houston Astros",
+            "shortName": "Astros",
+            "abbreviation": "HOU",
+            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
+          },
+          "awayTeam": {
+            "id": "141",
+            "name": "Toronto Blue Jays",
+            "shortName": "Blue Jays",
+            "abbreviation": "TOR",
+            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 1,
+            "away": 3
+          }
+        },
+        {
+          "id": "824163",
+          "utcDate": "2026-08-02T18:10:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "117",
+            "name": "Houston Astros",
+            "shortName": "Astros",
+            "abbreviation": "HOU",
+            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
+          },
+          "awayTeam": {
+            "id": "140",
+            "name": "Texas Rangers",
+            "shortName": "Rangers",
+            "abbreviation": "TEX",
+            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 7,
+            "away": 3
+          }
+        }
+      ],
+      "upcomingGames": [
+        {
+          "id": "823267",
+          "utcDate": "2026-08-08T23:15:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "135",
+            "name": "San Diego Padres",
+            "shortName": "Padres",
+            "abbreviation": "SD",
+            "crest": "https://www.mlbstatic.com/team-logos/135.svg"
+          },
+          "awayTeam": {
+            "id": "117",
+            "name": "Houston Astros",
+            "shortName": "Astros",
+            "abbreviation": "HOU",
+            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823268",
+          "utcDate": "2026-08-10T00:20:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "135",
+            "name": "San Diego Padres",
+            "shortName": "Padres",
+            "abbreviation": "SD",
+            "crest": "https://www.mlbstatic.com/team-logos/135.svg"
+          },
+          "awayTeam": {
+            "id": "117",
+            "name": "Houston Astros",
+            "shortName": "Astros",
+            "abbreviation": "HOU",
+            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823189",
+          "utcDate": "2026-08-11T01:45:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "137",
+            "name": "San Francisco Giants",
+            "shortName": "Giants",
+            "abbreviation": "SF",
+            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
+          },
+          "awayTeam": {
+            "id": "117",
+            "name": "Houston Astros",
+            "shortName": "Astros",
+            "abbreviation": "HOU",
+            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823186",
+          "utcDate": "2026-08-12T01:45:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "137",
+            "name": "San Francisco Giants",
+            "shortName": "Giants",
+            "abbreviation": "SF",
+            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
+          },
+          "awayTeam": {
+            "id": "117",
+            "name": "Houston Astros",
+            "shortName": "Astros",
+            "abbreviation": "HOU",
+            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823187",
+          "utcDate": "2026-08-12T19:45:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "137",
+            "name": "San Francisco Giants",
+            "shortName": "Giants",
+            "abbreviation": "SF",
+            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
+          },
+          "awayTeam": {
+            "id": "117",
+            "name": "Houston Astros",
+            "shortName": "Astros",
+            "abbreviation": "HOU",
+            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        }
+      ],
+      "form": {
+        "sequence": [
+          "W",
+          "L",
+          "W",
+          "L",
+          "W"
+        ],
+        "wins": 3,
+        "losses": 2,
+        "runsFor": 25,
+        "runsAgainst": 16
+      },
+      "generatedAt": "2026-08-08T04:58:19.367Z"
+    },
+    "118": {
+      "team": {
+        "id": "118",
+        "name": "Kansas City Royals",
+        "shortName": "Royals",
+        "abbreviation": "KC",
+        "league": "AL",
+        "division": "AL Central",
+        "venue": "Kauffman Stadium",
+        "logo": "https://www.mlbstatic.com/team-logos/118.svg",
+        "founded": 1968,
+        "primaryColor": null
+      },
+      "recentGames": [
+        {
+          "id": "824081",
+          "utcDate": "2026-08-08T00:10:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "118",
+            "name": "Kansas City Royals",
+            "shortName": "Royals",
+            "abbreviation": "KC",
+            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
+          },
+          "awayTeam": {
+            "id": "112",
+            "name": "Chicago Cubs",
+            "shortName": "Cubs",
+            "abbreviation": "CHC",
+            "crest": "https://www.mlbstatic.com/team-logos/112.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 4,
+            "away": 6
+          }
+        },
+        {
+          "id": "824080",
+          "utcDate": "2026-08-06T23:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "118",
+            "name": "Kansas City Royals",
+            "shortName": "Royals",
+            "abbreviation": "KC",
+            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
+          },
+          "awayTeam": {
+            "id": "142",
+            "name": "Minnesota Twins",
+            "shortName": "Twins",
+            "abbreviation": "MIN",
+            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 3,
+            "away": 4
+          }
+        },
+        {
+          "id": "824082",
+          "utcDate": "2026-08-05T23:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "118",
+            "name": "Kansas City Royals",
+            "shortName": "Royals",
+            "abbreviation": "KC",
+            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
+          },
+          "awayTeam": {
+            "id": "142",
+            "name": "Minnesota Twins",
+            "shortName": "Twins",
+            "abbreviation": "MIN",
+            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "id": "824084",
+          "utcDate": "2026-08-04T23:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "118",
+            "name": "Kansas City Royals",
+            "shortName": "Royals",
+            "abbreviation": "KC",
+            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
+          },
+          "awayTeam": {
+            "id": "142",
+            "name": "Minnesota Twins",
+            "shortName": "Twins",
+            "abbreviation": "MIN",
+            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 8,
+            "away": 2
+          }
+        },
+        {
+          "id": "824323",
+          "utcDate": "2026-08-02T19:10:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "115",
+            "name": "Colorado Rockies",
+            "shortName": "Rockies",
+            "abbreviation": "COL",
+            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
+          },
+          "awayTeam": {
+            "id": "118",
+            "name": "Kansas City Royals",
+            "shortName": "Royals",
+            "abbreviation": "KC",
+            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 8,
+            "away": 1
+          }
+        }
+      ],
+      "upcomingGames": [
+        {
+          "id": "824079",
+          "utcDate": "2026-08-08T23:10:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "118",
+            "name": "Kansas City Royals",
+            "shortName": "Royals",
+            "abbreviation": "KC",
+            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
+          },
+          "awayTeam": {
+            "id": "112",
+            "name": "Chicago Cubs",
+            "shortName": "Cubs",
+            "abbreviation": "CHC",
+            "crest": "https://www.mlbstatic.com/team-logos/112.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "824078",
+          "utcDate": "2026-08-09T18:10:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "118",
+            "name": "Kansas City Royals",
+            "shortName": "Royals",
+            "abbreviation": "KC",
+            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
+          },
+          "awayTeam": {
+            "id": "112",
+            "name": "Chicago Cubs",
+            "shortName": "Cubs",
+            "abbreviation": "CHC",
+            "crest": "https://www.mlbstatic.com/team-logos/112.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823918",
+          "utcDate": "2026-08-11T02:10:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "119",
+            "name": "Los Angeles Dodgers",
+            "shortName": "Dodgers",
+            "abbreviation": "LAD",
+            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
+          },
+          "awayTeam": {
+            "id": "118",
+            "name": "Kansas City Royals",
+            "shortName": "Royals",
+            "abbreviation": "KC",
+            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823917",
+          "utcDate": "2026-08-12T02:10:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "119",
+            "name": "Los Angeles Dodgers",
+            "shortName": "Dodgers",
+            "abbreviation": "LAD",
+            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
+          },
+          "awayTeam": {
+            "id": "118",
+            "name": "Kansas City Royals",
+            "shortName": "Royals",
+            "abbreviation": "KC",
+            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823916",
+          "utcDate": "2026-08-13T02:10:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "119",
+            "name": "Los Angeles Dodgers",
+            "shortName": "Dodgers",
+            "abbreviation": "LAD",
+            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
+          },
+          "awayTeam": {
+            "id": "118",
+            "name": "Kansas City Royals",
+            "shortName": "Royals",
+            "abbreviation": "KC",
+            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        }
+      ],
+      "form": {
+        "sequence": [
+          "L",
+          "L",
+          "W",
+          "W",
+          "L"
+        ],
+        "wins": 2,
+        "losses": 3,
+        "runsFor": 18,
+        "runsAgainst": 21
+      },
+      "generatedAt": "2026-08-08T04:58:19.367Z"
+    },
+    "119": {
+      "team": {
+        "id": "119",
+        "name": "Los Angeles Dodgers",
+        "shortName": "Dodgers",
+        "abbreviation": "LAD",
+        "league": "NL",
+        "division": "NL West",
+        "venue": "UNIQLO Field at Dodger Stadium",
+        "logo": "https://www.mlbstatic.com/team-logos/119.svg",
+        "founded": 1884,
+        "primaryColor": null
+      },
+      "recentGames": [
+        {
+          "id": "825051",
+          "utcDate": "2026-08-08T01:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "109",
+            "name": "Arizona Diamondbacks",
+            "shortName": "D-backs",
+            "abbreviation": "AZ",
+            "crest": "https://www.mlbstatic.com/team-logos/109.svg"
+          },
+          "awayTeam": {
+            "id": "119",
+            "name": "Los Angeles Dodgers",
+            "shortName": "Dodgers",
+            "abbreviation": "LAD",
+            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 4,
+            "away": 3
+          }
+        },
+        {
+          "id": "824646",
+          "utcDate": "2026-08-05T18:20:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "112",
+            "name": "Chicago Cubs",
+            "shortName": "Cubs",
+            "abbreviation": "CHC",
+            "crest": "https://www.mlbstatic.com/team-logos/112.svg"
+          },
+          "awayTeam": {
+            "id": "119",
+            "name": "Los Angeles Dodgers",
+            "shortName": "Dodgers",
+            "abbreviation": "LAD",
+            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 7,
+            "away": 6
+          }
+        },
+        {
+          "id": "824645",
+          "utcDate": "2026-08-05T00:05:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "112",
+            "name": "Chicago Cubs",
+            "shortName": "Cubs",
+            "abbreviation": "CHC",
+            "crest": "https://www.mlbstatic.com/team-logos/112.svg"
+          },
+          "awayTeam": {
+            "id": "119",
+            "name": "Los Angeles Dodgers",
+            "shortName": "Dodgers",
+            "abbreviation": "LAD",
+            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 5,
+            "away": 1
+          }
+        },
+        {
+          "id": "824647",
+          "utcDate": "2026-08-04T00:05:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "112",
+            "name": "Chicago Cubs",
+            "shortName": "Cubs",
+            "abbreviation": "CHC",
+            "crest": "https://www.mlbstatic.com/team-logos/112.svg"
+          },
+          "awayTeam": {
+            "id": "119",
+            "name": "Los Angeles Dodgers",
+            "shortName": "Dodgers",
+            "abbreviation": "LAD",
+            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 10,
+            "away": 5
+          }
+        },
+        {
+          "id": "823919",
+          "utcDate": "2026-08-02T23:20:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "119",
+            "name": "Los Angeles Dodgers",
+            "shortName": "Dodgers",
+            "abbreviation": "LAD",
+            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
+          },
+          "awayTeam": {
+            "id": "111",
+            "name": "Boston Red Sox",
+            "shortName": "Red Sox",
+            "abbreviation": "BOS",
+            "crest": "https://www.mlbstatic.com/team-logos/111.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 4,
+            "away": 8
+          }
+        }
+      ],
+      "upcomingGames": [
+        {
+          "id": "825049",
+          "utcDate": "2026-08-09T00:10:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "109",
+            "name": "Arizona Diamondbacks",
+            "shortName": "D-backs",
+            "abbreviation": "AZ",
+            "crest": "https://www.mlbstatic.com/team-logos/109.svg"
+          },
+          "awayTeam": {
+            "id": "119",
+            "name": "Los Angeles Dodgers",
+            "shortName": "Dodgers",
+            "abbreviation": "LAD",
+            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "825050",
+          "utcDate": "2026-08-09T20:10:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "109",
+            "name": "Arizona Diamondbacks",
+            "shortName": "D-backs",
+            "abbreviation": "AZ",
+            "crest": "https://www.mlbstatic.com/team-logos/109.svg"
+          },
+          "awayTeam": {
+            "id": "119",
+            "name": "Los Angeles Dodgers",
+            "shortName": "Dodgers",
+            "abbreviation": "LAD",
+            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823918",
+          "utcDate": "2026-08-11T02:10:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "119",
+            "name": "Los Angeles Dodgers",
+            "shortName": "Dodgers",
+            "abbreviation": "LAD",
+            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
+          },
+          "awayTeam": {
+            "id": "118",
+            "name": "Kansas City Royals",
+            "shortName": "Royals",
+            "abbreviation": "KC",
+            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823917",
+          "utcDate": "2026-08-12T02:10:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "119",
+            "name": "Los Angeles Dodgers",
+            "shortName": "Dodgers",
+            "abbreviation": "LAD",
+            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
+          },
+          "awayTeam": {
+            "id": "118",
+            "name": "Kansas City Royals",
+            "shortName": "Royals",
+            "abbreviation": "KC",
+            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823916",
+          "utcDate": "2026-08-13T02:10:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "119",
+            "name": "Los Angeles Dodgers",
+            "shortName": "Dodgers",
+            "abbreviation": "LAD",
+            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
+          },
+          "awayTeam": {
+            "id": "118",
+            "name": "Kansas City Royals",
+            "shortName": "Royals",
+            "abbreviation": "KC",
+            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        }
+      ],
+      "form": {
+        "sequence": [
+          "L",
+          "L",
+          "L",
+          "L",
+          "L"
+        ],
+        "wins": 0,
+        "losses": 5,
+        "runsFor": 19,
+        "runsAgainst": 34
+      },
+      "generatedAt": "2026-08-08T04:58:19.367Z"
+    },
+    "120": {
+      "team": {
+        "id": "120",
+        "name": "Washington Nationals",
+        "shortName": "Nationals",
+        "abbreviation": "WSH",
+        "league": "NL",
+        "division": "NL East",
+        "venue": "Nationals Park",
+        "logo": "https://www.mlbstatic.com/team-logos/120.svg",
+        "founded": 1968,
+        "primaryColor": null
+      },
+      "recentGames": [
+        {
+          "id": "822699",
+          "utcDate": "2026-08-07T22:45:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "120",
+            "name": "Washington Nationals",
+            "shortName": "Nationals",
+            "abbreviation": "WSH",
+            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
+          },
+          "awayTeam": {
+            "id": "113",
+            "name": "Cincinnati Reds",
+            "shortName": "Reds",
+            "abbreviation": "CIN",
+            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 5,
+            "away": 3
+          }
+        },
+        {
+          "id": "823430",
+          "utcDate": "2026-08-06T22:05:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "143",
+            "name": "Philadelphia Phillies",
+            "shortName": "Phillies",
+            "abbreviation": "PHI",
+            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
+          },
+          "awayTeam": {
+            "id": "120",
+            "name": "Washington Nationals",
+            "shortName": "Nationals",
+            "abbreviation": "WSH",
+            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 7,
+            "away": 3
+          }
+        },
+        {
+          "id": "823429",
+          "utcDate": "2026-08-05T22:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "143",
+            "name": "Philadelphia Phillies",
+            "shortName": "Phillies",
+            "abbreviation": "PHI",
+            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
+          },
+          "awayTeam": {
+            "id": "120",
+            "name": "Washington Nationals",
+            "shortName": "Nationals",
+            "abbreviation": "WSH",
+            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 4,
+            "away": 10
+          }
+        },
+        {
+          "id": "823432",
+          "utcDate": "2026-08-04T22:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "143",
+            "name": "Philadelphia Phillies",
+            "shortName": "Phillies",
+            "abbreviation": "PHI",
+            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
+          },
+          "awayTeam": {
+            "id": "120",
+            "name": "Washington Nationals",
+            "shortName": "Nationals",
+            "abbreviation": "WSH",
+            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 5,
+            "away": 0
+          }
+        },
+        {
+          "id": "823431",
+          "utcDate": "2026-08-03T22:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "143",
+            "name": "Philadelphia Phillies",
+            "shortName": "Phillies",
+            "abbreviation": "PHI",
+            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
+          },
+          "awayTeam": {
+            "id": "120",
+            "name": "Washington Nationals",
+            "shortName": "Nationals",
+            "abbreviation": "WSH",
+            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 6,
+            "away": 3
+          }
+        }
+      ],
+      "upcomingGames": [
+        {
+          "id": "822701",
+          "utcDate": "2026-08-08T22:45:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "120",
+            "name": "Washington Nationals",
+            "shortName": "Nationals",
+            "abbreviation": "WSH",
+            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
+          },
+          "awayTeam": {
+            "id": "113",
+            "name": "Cincinnati Reds",
+            "shortName": "Reds",
+            "abbreviation": "CIN",
+            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "822700",
+          "utcDate": "2026-08-09T16:15:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "120",
+            "name": "Washington Nationals",
+            "shortName": "Nationals",
+            "abbreviation": "WSH",
+            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
+          },
+          "awayTeam": {
+            "id": "113",
+            "name": "Cincinnati Reds",
+            "shortName": "Reds",
+            "abbreviation": "CIN",
+            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "822697",
+          "utcDate": "2026-08-11T22:45:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "120",
+            "name": "Washington Nationals",
+            "shortName": "Nationals",
+            "abbreviation": "WSH",
+            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
+          },
+          "awayTeam": {
+            "id": "112",
+            "name": "Chicago Cubs",
+            "shortName": "Cubs",
+            "abbreviation": "CHC",
+            "crest": "https://www.mlbstatic.com/team-logos/112.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "822698",
+          "utcDate": "2026-08-12T22:45:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "120",
+            "name": "Washington Nationals",
+            "shortName": "Nationals",
+            "abbreviation": "WSH",
+            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
+          },
+          "awayTeam": {
+            "id": "112",
+            "name": "Chicago Cubs",
+            "shortName": "Cubs",
+            "abbreviation": "CHC",
+            "crest": "https://www.mlbstatic.com/team-logos/112.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "822696",
+          "utcDate": "2026-08-13T20:05:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "120",
+            "name": "Washington Nationals",
+            "shortName": "Nationals",
+            "abbreviation": "WSH",
+            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
+          },
+          "awayTeam": {
+            "id": "112",
+            "name": "Chicago Cubs",
+            "shortName": "Cubs",
+            "abbreviation": "CHC",
+            "crest": "https://www.mlbstatic.com/team-logos/112.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        }
+      ],
+      "form": {
+        "sequence": [
+          "W",
+          "L",
+          "W",
+          "L",
+          "L"
+        ],
+        "wins": 2,
+        "losses": 3,
+        "runsFor": 21,
+        "runsAgainst": 25
+      },
+      "generatedAt": "2026-08-08T04:58:19.367Z"
+    },
+    "121": {
+      "team": {
+        "id": "121",
+        "name": "New York Mets",
+        "shortName": "Mets",
+        "abbreviation": "NYM",
+        "league": "NL",
+        "division": "NL East",
+        "venue": "Citi Field",
+        "logo": "https://www.mlbstatic.com/team-logos/121.svg",
+        "founded": 1962,
+        "primaryColor": null
+      },
+      "recentGames": [
+        {
+          "id": "823349",
+          "utcDate": "2026-08-07T22:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "134",
+            "name": "Pittsburgh Pirates",
+            "shortName": "Pirates",
+            "abbreviation": "PIT",
+            "crest": "https://www.mlbstatic.com/team-logos/134.svg"
+          },
+          "awayTeam": {
+            "id": "121",
+            "name": "New York Mets",
+            "shortName": "Mets",
+            "abbreviation": "NYM",
+            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 4,
+            "away": 6
+          }
+        },
+        {
+          "id": "824401",
+          "utcDate": "2026-08-06T17:10:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "114",
+            "name": "Cleveland Guardians",
+            "shortName": "Guardians",
+            "abbreviation": "CLE",
+            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
+          },
+          "awayTeam": {
+            "id": "121",
+            "name": "New York Mets",
+            "shortName": "Mets",
+            "abbreviation": "NYM",
+            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 6,
+            "away": 13
+          }
+        },
+        {
+          "id": "824402",
+          "utcDate": "2026-08-05T22:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "114",
+            "name": "Cleveland Guardians",
+            "shortName": "Guardians",
+            "abbreviation": "CLE",
+            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
+          },
+          "awayTeam": {
+            "id": "121",
+            "name": "New York Mets",
+            "shortName": "Mets",
+            "abbreviation": "NYM",
+            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 5,
+            "away": 6
+          }
+        },
+        {
+          "id": "824403",
+          "utcDate": "2026-08-04T22:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "114",
+            "name": "Cleveland Guardians",
+            "shortName": "Guardians",
+            "abbreviation": "CLE",
+            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
+          },
+          "awayTeam": {
+            "id": "121",
+            "name": "New York Mets",
+            "shortName": "Mets",
+            "abbreviation": "NYM",
+            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 2,
+            "away": 6
+          }
+        },
+        {
+          "id": "823592",
+          "utcDate": "2026-08-02T17:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "121",
+            "name": "New York Mets",
+            "shortName": "Mets",
+            "abbreviation": "NYM",
+            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
+          },
+          "awayTeam": {
+            "id": "146",
+            "name": "Miami Marlins",
+            "shortName": "Marlins",
+            "abbreviation": "MIA",
+            "crest": "https://www.mlbstatic.com/team-logos/146.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 0,
+            "away": 2
+          }
+        }
+      ],
+      "upcomingGames": [
+        {
+          "id": "823348",
+          "utcDate": "2026-08-08T22:40:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "134",
+            "name": "Pittsburgh Pirates",
+            "shortName": "Pirates",
+            "abbreviation": "PIT",
+            "crest": "https://www.mlbstatic.com/team-logos/134.svg"
+          },
+          "awayTeam": {
+            "id": "121",
+            "name": "New York Mets",
+            "shortName": "Mets",
+            "abbreviation": "NYM",
+            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823345",
+          "utcDate": "2026-08-09T17:35:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "134",
+            "name": "Pittsburgh Pirates",
+            "shortName": "Pirates",
+            "abbreviation": "PIT",
+            "crest": "https://www.mlbstatic.com/team-logos/134.svg"
+          },
+          "awayTeam": {
+            "id": "121",
+            "name": "New York Mets",
+            "shortName": "Mets",
+            "abbreviation": "NYM",
+            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "824887",
+          "utcDate": "2026-08-10T23:15:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "144",
+            "name": "Atlanta Braves",
+            "shortName": "Braves",
+            "abbreviation": "ATL",
+            "crest": "https://www.mlbstatic.com/team-logos/144.svg"
+          },
+          "awayTeam": {
+            "id": "121",
+            "name": "New York Mets",
+            "shortName": "Mets",
+            "abbreviation": "NYM",
+            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "824886",
+          "utcDate": "2026-08-11T23:15:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "144",
+            "name": "Atlanta Braves",
+            "shortName": "Braves",
+            "abbreviation": "ATL",
+            "crest": "https://www.mlbstatic.com/team-logos/144.svg"
+          },
+          "awayTeam": {
+            "id": "121",
+            "name": "New York Mets",
+            "shortName": "Mets",
+            "abbreviation": "NYM",
+            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "824883",
+          "utcDate": "2026-08-12T23:15:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "144",
+            "name": "Atlanta Braves",
+            "shortName": "Braves",
+            "abbreviation": "ATL",
+            "crest": "https://www.mlbstatic.com/team-logos/144.svg"
+          },
+          "awayTeam": {
+            "id": "121",
+            "name": "New York Mets",
+            "shortName": "Mets",
+            "abbreviation": "NYM",
+            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        }
+      ],
+      "form": {
+        "sequence": [
+          "W",
+          "W",
+          "W",
+          "W",
+          "L"
+        ],
+        "wins": 4,
+        "losses": 1,
+        "runsFor": 31,
+        "runsAgainst": 19
+      },
+      "generatedAt": "2026-08-08T04:58:19.367Z"
+    },
+    "133": {
+      "team": {
+        "id": "133",
+        "name": "Athletics",
+        "shortName": "Athletics",
+        "abbreviation": "ATH",
+        "league": "AL",
+        "division": "AL West",
+        "venue": "Sutter Health Park",
+        "logo": "https://www.mlbstatic.com/team-logos/133.svg",
+        "founded": 1901,
+        "primaryColor": null
+      },
+      "recentGames": [
+        {
+          "id": "824727",
+          "utcDate": "2026-08-07T23:10:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "111",
+            "name": "Boston Red Sox",
+            "shortName": "Red Sox",
+            "abbreviation": "BOS",
+            "crest": "https://www.mlbstatic.com/team-logos/111.svg"
+          },
+          "awayTeam": {
+            "id": "133",
+            "name": "Athletics",
+            "shortName": "Athletics",
+            "abbreviation": "ATH",
+            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 13,
+            "away": 1
+          }
+        },
+        {
+          "id": "824481",
+          "utcDate": "2026-08-06T16:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "113",
+            "name": "Cincinnati Reds",
+            "shortName": "Reds",
+            "abbreviation": "CIN",
+            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
+          },
+          "awayTeam": {
+            "id": "133",
+            "name": "Athletics",
+            "shortName": "Athletics",
+            "abbreviation": "ATH",
+            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 6,
+            "away": 5
+          }
+        },
+        {
+          "id": "824482",
+          "utcDate": "2026-08-05T22:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "113",
+            "name": "Cincinnati Reds",
+            "shortName": "Reds",
+            "abbreviation": "CIN",
+            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
+          },
+          "awayTeam": {
+            "id": "133",
+            "name": "Athletics",
+            "shortName": "Athletics",
+            "abbreviation": "ATH",
+            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 3,
+            "away": 2
+          }
+        },
+        {
+          "id": "824484",
+          "utcDate": "2026-08-04T22:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "113",
+            "name": "Cincinnati Reds",
+            "shortName": "Reds",
+            "abbreviation": "CIN",
+            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
+          },
+          "awayTeam": {
+            "id": "133",
+            "name": "Athletics",
+            "shortName": "Athletics",
+            "abbreviation": "ATH",
+            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 5,
+            "away": 4
+          }
+        },
+        {
+          "id": "824971",
+          "utcDate": "2026-08-02T20:05:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "133",
+            "name": "Athletics",
+            "shortName": "Athletics",
+            "abbreviation": "ATH",
+            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
+          },
+          "awayTeam": {
+            "id": "116",
+            "name": "Detroit Tigers",
+            "shortName": "Tigers",
+            "abbreviation": "DET",
+            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 0,
+            "away": 11
+          }
+        }
+      ],
+      "upcomingGames": [
+        {
+          "id": "824726",
+          "utcDate": "2026-08-08T20:10:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "111",
+            "name": "Boston Red Sox",
+            "shortName": "Red Sox",
+            "abbreviation": "BOS",
+            "crest": "https://www.mlbstatic.com/team-logos/111.svg"
+          },
+          "awayTeam": {
+            "id": "133",
+            "name": "Athletics",
+            "shortName": "Athletics",
+            "abbreviation": "ATH",
+            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "824724",
+          "utcDate": "2026-08-09T17:35:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "111",
+            "name": "Boston Red Sox",
+            "shortName": "Red Sox",
+            "abbreviation": "BOS",
+            "crest": "https://www.mlbstatic.com/team-logos/111.svg"
+          },
+          "awayTeam": {
+            "id": "133",
+            "name": "Athletics",
+            "shortName": "Athletics",
+            "abbreviation": "ATH",
+            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "824969",
+          "utcDate": "2026-08-11T01:40:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "133",
+            "name": "Athletics",
+            "shortName": "Athletics",
+            "abbreviation": "ATH",
+            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
+          },
+          "awayTeam": {
+            "id": "139",
+            "name": "Tampa Bay Rays",
+            "shortName": "Rays",
+            "abbreviation": "TB",
+            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "824970",
+          "utcDate": "2026-08-12T01:40:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "133",
+            "name": "Athletics",
+            "shortName": "Athletics",
+            "abbreviation": "ATH",
+            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
+          },
+          "awayTeam": {
+            "id": "139",
+            "name": "Tampa Bay Rays",
+            "shortName": "Rays",
+            "abbreviation": "TB",
+            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "824967",
+          "utcDate": "2026-08-12T19:05:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "133",
+            "name": "Athletics",
+            "shortName": "Athletics",
+            "abbreviation": "ATH",
+            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
+          },
+          "awayTeam": {
+            "id": "139",
+            "name": "Tampa Bay Rays",
+            "shortName": "Rays",
+            "abbreviation": "TB",
+            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        }
+      ],
+      "form": {
+        "sequence": [
+          "L",
+          "L",
+          "L",
+          "L",
+          "L"
+        ],
+        "wins": 0,
+        "losses": 5,
+        "runsFor": 12,
+        "runsAgainst": 38
+      },
+      "generatedAt": "2026-08-08T04:58:19.367Z"
+    },
+    "134": {
+      "team": {
+        "id": "134",
+        "name": "Pittsburgh Pirates",
+        "shortName": "Pirates",
+        "abbreviation": "PIT",
+        "league": "NL",
+        "division": "NL Central",
+        "venue": "PNC Park",
+        "logo": "https://www.mlbstatic.com/team-logos/134.svg",
+        "founded": 1882,
+        "primaryColor": null
+      },
+      "recentGames": [
+        {
+          "id": "823349",
+          "utcDate": "2026-08-07T22:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "134",
+            "name": "Pittsburgh Pirates",
+            "shortName": "Pirates",
+            "abbreviation": "PIT",
+            "crest": "https://www.mlbstatic.com/team-logos/134.svg"
+          },
+          "awayTeam": {
+            "id": "121",
+            "name": "New York Mets",
+            "shortName": "Mets",
+            "abbreviation": "NYM",
+            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 4,
+            "away": 6
+          }
+        },
+        {
+          "id": "823754",
+          "utcDate": "2026-08-06T18:10:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "158",
+            "name": "Milwaukee Brewers",
+            "shortName": "Brewers",
+            "abbreviation": "MIL",
+            "crest": "https://www.mlbstatic.com/team-logos/158.svg"
+          },
+          "awayTeam": {
+            "id": "134",
+            "name": "Pittsburgh Pirates",
+            "shortName": "Pirates",
+            "abbreviation": "PIT",
+            "crest": "https://www.mlbstatic.com/team-logos/134.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 5,
+            "away": 2
+          }
+        },
+        {
+          "id": "823753",
+          "utcDate": "2026-08-05T23:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "158",
+            "name": "Milwaukee Brewers",
+            "shortName": "Brewers",
+            "abbreviation": "MIL",
+            "crest": "https://www.mlbstatic.com/team-logos/158.svg"
+          },
+          "awayTeam": {
+            "id": "134",
+            "name": "Pittsburgh Pirates",
+            "shortName": "Pirates",
+            "abbreviation": "PIT",
+            "crest": "https://www.mlbstatic.com/team-logos/134.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 4,
+            "away": 2
+          }
+        },
+        {
+          "id": "823756",
+          "utcDate": "2026-08-04T23:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "158",
+            "name": "Milwaukee Brewers",
+            "shortName": "Brewers",
+            "abbreviation": "MIL",
+            "crest": "https://www.mlbstatic.com/team-logos/158.svg"
+          },
+          "awayTeam": {
+            "id": "134",
+            "name": "Pittsburgh Pirates",
+            "shortName": "Pirates",
+            "abbreviation": "PIT",
+            "crest": "https://www.mlbstatic.com/team-logos/134.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 4,
+            "away": 2
+          }
+        },
+        {
+          "id": "823757",
+          "utcDate": "2026-08-03T23:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "158",
+            "name": "Milwaukee Brewers",
+            "shortName": "Brewers",
+            "abbreviation": "MIL",
+            "crest": "https://www.mlbstatic.com/team-logos/158.svg"
+          },
+          "awayTeam": {
+            "id": "134",
+            "name": "Pittsburgh Pirates",
+            "shortName": "Pirates",
+            "abbreviation": "PIT",
+            "crest": "https://www.mlbstatic.com/team-logos/134.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 3,
+            "away": 4
+          }
+        }
+      ],
+      "upcomingGames": [
+        {
+          "id": "823348",
+          "utcDate": "2026-08-08T22:40:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "134",
+            "name": "Pittsburgh Pirates",
+            "shortName": "Pirates",
+            "abbreviation": "PIT",
+            "crest": "https://www.mlbstatic.com/team-logos/134.svg"
+          },
+          "awayTeam": {
+            "id": "121",
+            "name": "New York Mets",
+            "shortName": "Mets",
+            "abbreviation": "NYM",
+            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823345",
+          "utcDate": "2026-08-09T17:35:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "134",
+            "name": "Pittsburgh Pirates",
+            "shortName": "Pirates",
+            "abbreviation": "PIT",
+            "crest": "https://www.mlbstatic.com/team-logos/134.svg"
+          },
+          "awayTeam": {
+            "id": "121",
+            "name": "New York Mets",
+            "shortName": "Mets",
+            "abbreviation": "NYM",
+            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823832",
+          "utcDate": "2026-08-11T22:40:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "146",
+            "name": "Miami Marlins",
+            "shortName": "Marlins",
+            "abbreviation": "MIA",
+            "crest": "https://www.mlbstatic.com/team-logos/146.svg"
+          },
+          "awayTeam": {
+            "id": "134",
+            "name": "Pittsburgh Pirates",
+            "shortName": "Pirates",
+            "abbreviation": "PIT",
+            "crest": "https://www.mlbstatic.com/team-logos/134.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823833",
+          "utcDate": "2026-08-12T22:40:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "146",
+            "name": "Miami Marlins",
+            "shortName": "Marlins",
+            "abbreviation": "MIA",
+            "crest": "https://www.mlbstatic.com/team-logos/146.svg"
+          },
+          "awayTeam": {
+            "id": "134",
+            "name": "Pittsburgh Pirates",
+            "shortName": "Pirates",
+            "abbreviation": "PIT",
+            "crest": "https://www.mlbstatic.com/team-logos/134.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823829",
+          "utcDate": "2026-08-13T17:10:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "146",
+            "name": "Miami Marlins",
+            "shortName": "Marlins",
+            "abbreviation": "MIA",
+            "crest": "https://www.mlbstatic.com/team-logos/146.svg"
+          },
+          "awayTeam": {
+            "id": "134",
+            "name": "Pittsburgh Pirates",
+            "shortName": "Pirates",
+            "abbreviation": "PIT",
+            "crest": "https://www.mlbstatic.com/team-logos/134.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        }
+      ],
+      "form": {
+        "sequence": [
+          "L",
+          "L",
+          "L",
+          "L",
+          "W"
+        ],
+        "wins": 1,
+        "losses": 4,
+        "runsFor": 14,
+        "runsAgainst": 22
+      },
+      "generatedAt": "2026-08-08T04:58:19.367Z"
+    },
+    "135": {
+      "team": {
+        "id": "135",
+        "name": "San Diego Padres",
+        "shortName": "Padres",
+        "abbreviation": "SD",
+        "league": "NL",
+        "division": "NL West",
+        "venue": "Petco Park",
+        "logo": "https://www.mlbstatic.com/team-logos/135.svg",
+        "founded": 1968,
+        "primaryColor": null
+      },
+      "recentGames": [
+        {
+          "id": "823266",
+          "utcDate": "2026-08-08T01:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "135",
+            "name": "San Diego Padres",
+            "shortName": "Padres",
+            "abbreviation": "SD",
+            "crest": "https://www.mlbstatic.com/team-logos/135.svg"
+          },
+          "awayTeam": {
+            "id": "117",
+            "name": "Houston Astros",
+            "shortName": "Astros",
+            "abbreviation": "HOU",
+            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 3,
+            "away": 6
+          }
+        },
+        {
+          "id": "825053",
+          "utcDate": "2026-08-07T01:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "109",
+            "name": "Arizona Diamondbacks",
+            "shortName": "D-backs",
+            "abbreviation": "AZ",
+            "crest": "https://www.mlbstatic.com/team-logos/109.svg"
+          },
+          "awayTeam": {
+            "id": "135",
+            "name": "San Diego Padres",
+            "shortName": "Padres",
+            "abbreviation": "SD",
+            "crest": "https://www.mlbstatic.com/team-logos/135.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 1,
+            "away": 5
+          }
+        },
+        {
+          "id": "825052",
+          "utcDate": "2026-08-06T01:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "109",
+            "name": "Arizona Diamondbacks",
+            "shortName": "D-backs",
+            "abbreviation": "AZ",
+            "crest": "https://www.mlbstatic.com/team-logos/109.svg"
+          },
+          "awayTeam": {
+            "id": "135",
+            "name": "San Diego Padres",
+            "shortName": "Padres",
+            "abbreviation": "SD",
+            "crest": "https://www.mlbstatic.com/team-logos/135.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 10,
+            "away": 4
+          }
+        },
+        {
+          "id": "825054",
+          "utcDate": "2026-08-05T01:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "109",
+            "name": "Arizona Diamondbacks",
+            "shortName": "D-backs",
+            "abbreviation": "AZ",
+            "crest": "https://www.mlbstatic.com/team-logos/109.svg"
+          },
+          "awayTeam": {
+            "id": "135",
+            "name": "San Diego Padres",
+            "shortName": "Padres",
+            "abbreviation": "SD",
+            "crest": "https://www.mlbstatic.com/team-logos/135.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 4,
+            "away": 9
+          }
+        },
+        {
+          "id": "825095",
+          "utcDate": "2026-08-04T01:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "109",
+            "name": "Arizona Diamondbacks",
+            "shortName": "D-backs",
+            "abbreviation": "AZ",
+            "crest": "https://www.mlbstatic.com/team-logos/109.svg"
+          },
+          "awayTeam": {
+            "id": "135",
+            "name": "San Diego Padres",
+            "shortName": "Padres",
+            "abbreviation": "SD",
+            "crest": "https://www.mlbstatic.com/team-logos/135.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 5,
+            "away": 1
+          }
+        }
+      ],
+      "upcomingGames": [
+        {
+          "id": "823267",
+          "utcDate": "2026-08-08T23:15:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "135",
+            "name": "San Diego Padres",
+            "shortName": "Padres",
+            "abbreviation": "SD",
+            "crest": "https://www.mlbstatic.com/team-logos/135.svg"
+          },
+          "awayTeam": {
+            "id": "117",
+            "name": "Houston Astros",
+            "shortName": "Astros",
+            "abbreviation": "HOU",
+            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823268",
+          "utcDate": "2026-08-10T00:20:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "135",
+            "name": "San Diego Padres",
+            "shortName": "Padres",
+            "abbreviation": "SD",
+            "crest": "https://www.mlbstatic.com/team-logos/135.svg"
+          },
+          "awayTeam": {
+            "id": "117",
+            "name": "Houston Astros",
+            "shortName": "Astros",
+            "abbreviation": "HOU",
+            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823265",
+          "utcDate": "2026-08-11T01:40:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "135",
+            "name": "San Diego Padres",
+            "shortName": "Padres",
+            "abbreviation": "SD",
+            "crest": "https://www.mlbstatic.com/team-logos/135.svg"
+          },
+          "awayTeam": {
+            "id": "158",
+            "name": "Milwaukee Brewers",
+            "shortName": "Brewers",
+            "abbreviation": "MIL",
+            "crest": "https://www.mlbstatic.com/team-logos/158.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823264",
+          "utcDate": "2026-08-12T01:40:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "135",
+            "name": "San Diego Padres",
+            "shortName": "Padres",
+            "abbreviation": "SD",
+            "crest": "https://www.mlbstatic.com/team-logos/135.svg"
+          },
+          "awayTeam": {
+            "id": "158",
+            "name": "Milwaukee Brewers",
+            "shortName": "Brewers",
+            "abbreviation": "MIL",
+            "crest": "https://www.mlbstatic.com/team-logos/158.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823263",
+          "utcDate": "2026-08-12T20:10:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "135",
+            "name": "San Diego Padres",
+            "shortName": "Padres",
+            "abbreviation": "SD",
+            "crest": "https://www.mlbstatic.com/team-logos/135.svg"
+          },
+          "awayTeam": {
+            "id": "158",
+            "name": "Milwaukee Brewers",
+            "shortName": "Brewers",
+            "abbreviation": "MIL",
+            "crest": "https://www.mlbstatic.com/team-logos/158.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        }
+      ],
+      "form": {
+        "sequence": [
+          "L",
+          "W",
+          "L",
+          "W",
+          "L"
+        ],
+        "wins": 2,
+        "losses": 3,
+        "runsFor": 22,
+        "runsAgainst": 26
+      },
+      "generatedAt": "2026-08-08T04:58:19.367Z"
+    },
+    "136": {
+      "team": {
+        "id": "136",
+        "name": "Seattle Mariners",
+        "shortName": "Mariners",
+        "abbreviation": "SEA",
+        "league": "AL",
+        "division": "AL West",
+        "venue": "T-Mobile Park",
+        "logo": "https://www.mlbstatic.com/team-logos/136.svg",
+        "founded": 1977,
+        "primaryColor": null
+      },
+      "recentGames": [
+        {
+          "id": "823103",
+          "utcDate": "2026-08-08T01:45:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "136",
+            "name": "Seattle Mariners",
+            "shortName": "Mariners",
+            "abbreviation": "SEA",
+            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
+          },
+          "awayTeam": {
+            "id": "139",
+            "name": "Tampa Bay Rays",
+            "shortName": "Rays",
+            "abbreviation": "TB",
+            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 1,
+            "away": 2
+          }
+        },
+        {
+          "id": "823105",
+          "utcDate": "2026-08-06T20:10:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "136",
+            "name": "Seattle Mariners",
+            "shortName": "Mariners",
+            "abbreviation": "SEA",
+            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
+          },
+          "awayTeam": {
+            "id": "116",
+            "name": "Detroit Tigers",
+            "shortName": "Tigers",
+            "abbreviation": "DET",
+            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 0,
+            "away": 11
+          }
+        },
+        {
+          "id": "823106",
+          "utcDate": "2026-08-06T01:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "136",
+            "name": "Seattle Mariners",
+            "shortName": "Mariners",
+            "abbreviation": "SEA",
+            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
+          },
+          "awayTeam": {
+            "id": "116",
+            "name": "Detroit Tigers",
+            "shortName": "Tigers",
+            "abbreviation": "DET",
+            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 4,
+            "away": 2
+          }
+        },
+        {
+          "id": "823108",
+          "utcDate": "2026-08-05T01:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "136",
+            "name": "Seattle Mariners",
+            "shortName": "Mariners",
+            "abbreviation": "SEA",
+            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
+          },
+          "awayTeam": {
+            "id": "116",
+            "name": "Detroit Tigers",
+            "shortName": "Tigers",
+            "abbreviation": "DET",
+            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 0,
+            "away": 8
+          }
+        },
+        {
+          "id": "823107",
+          "utcDate": "2026-08-02T20:10:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "136",
+            "name": "Seattle Mariners",
+            "shortName": "Mariners",
+            "abbreviation": "SEA",
+            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
+          },
+          "awayTeam": {
+            "id": "142",
+            "name": "Minnesota Twins",
+            "shortName": "Twins",
+            "abbreviation": "MIN",
+            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 7,
+            "away": 6
+          }
+        }
+      ],
+      "upcomingGames": [
+        {
+          "id": "823102",
+          "utcDate": "2026-08-09T01:50:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "136",
+            "name": "Seattle Mariners",
+            "shortName": "Mariners",
+            "abbreviation": "SEA",
+            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
+          },
+          "awayTeam": {
+            "id": "139",
+            "name": "Tampa Bay Rays",
+            "shortName": "Rays",
+            "abbreviation": "TB",
+            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823104",
+          "utcDate": "2026-08-09T20:10:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "136",
+            "name": "Seattle Mariners",
+            "shortName": "Mariners",
+            "abbreviation": "SEA",
+            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
+          },
+          "awayTeam": {
+            "id": "139",
+            "name": "Tampa Bay Rays",
+            "shortName": "Rays",
+            "abbreviation": "TB",
+            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823512",
+          "utcDate": "2026-08-11T23:05:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "147",
+            "name": "New York Yankees",
+            "shortName": "Yankees",
+            "abbreviation": "NYY",
+            "crest": "https://www.mlbstatic.com/team-logos/147.svg"
+          },
+          "awayTeam": {
+            "id": "136",
+            "name": "Seattle Mariners",
+            "shortName": "Mariners",
+            "abbreviation": "SEA",
+            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823511",
+          "utcDate": "2026-08-12T23:05:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "147",
+            "name": "New York Yankees",
+            "shortName": "Yankees",
+            "abbreviation": "NYY",
+            "crest": "https://www.mlbstatic.com/team-logos/147.svg"
+          },
+          "awayTeam": {
+            "id": "136",
+            "name": "Seattle Mariners",
+            "shortName": "Mariners",
+            "abbreviation": "SEA",
+            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823508",
+          "utcDate": "2026-08-13T17:35:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "147",
+            "name": "New York Yankees",
+            "shortName": "Yankees",
+            "abbreviation": "NYY",
+            "crest": "https://www.mlbstatic.com/team-logos/147.svg"
+          },
+          "awayTeam": {
+            "id": "136",
+            "name": "Seattle Mariners",
+            "shortName": "Mariners",
+            "abbreviation": "SEA",
+            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        }
+      ],
+      "form": {
+        "sequence": [
+          "L",
+          "L",
+          "W",
+          "L",
+          "W"
+        ],
+        "wins": 2,
+        "losses": 3,
+        "runsFor": 12,
+        "runsAgainst": 29
+      },
+      "generatedAt": "2026-08-08T04:58:19.367Z"
+    },
+    "137": {
+      "team": {
+        "id": "137",
+        "name": "San Francisco Giants",
+        "shortName": "Giants",
+        "abbreviation": "SF",
+        "league": "NL",
+        "division": "NL West",
+        "venue": "Oracle Park",
+        "logo": "https://www.mlbstatic.com/team-logos/137.svg",
+        "founded": 1883,
+        "primaryColor": null
+      },
+      "recentGames": [
+        {
+          "id": "823191",
+          "utcDate": "2026-08-08T02:15:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "137",
+            "name": "San Francisco Giants",
+            "shortName": "Giants",
+            "abbreviation": "SF",
+            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
+          },
+          "awayTeam": {
+            "id": "116",
+            "name": "Detroit Tigers",
+            "shortName": "Tigers",
+            "abbreviation": "DET",
+            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 5,
+            "away": 2
+          }
+        },
+        {
+          "id": "822866",
+          "utcDate": "2026-08-05T18:35:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "140",
+            "name": "Texas Rangers",
+            "shortName": "Rangers",
+            "abbreviation": "TEX",
+            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
+          },
+          "awayTeam": {
+            "id": "137",
+            "name": "San Francisco Giants",
+            "shortName": "Giants",
+            "abbreviation": "SF",
+            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 6,
+            "away": 0
+          }
+        },
+        {
+          "id": "822865",
+          "utcDate": "2026-08-05T00:05:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "140",
+            "name": "Texas Rangers",
+            "shortName": "Rangers",
+            "abbreviation": "TEX",
+            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
+          },
+          "awayTeam": {
+            "id": "137",
+            "name": "San Francisco Giants",
+            "shortName": "Giants",
+            "abbreviation": "SF",
+            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 5,
+            "away": 4
+          }
+        },
+        {
+          "id": "822867",
+          "utcDate": "2026-08-04T00:05:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "140",
+            "name": "Texas Rangers",
+            "shortName": "Rangers",
+            "abbreviation": "TEX",
+            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
+          },
+          "awayTeam": {
+            "id": "137",
+            "name": "San Francisco Giants",
+            "shortName": "Giants",
+            "abbreviation": "SF",
+            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 1,
+            "away": 5
+          }
+        },
+        {
+          "id": "823270",
+          "utcDate": "2026-08-02T20:10:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "135",
+            "name": "San Diego Padres",
+            "shortName": "Padres",
+            "abbreviation": "SD",
+            "crest": "https://www.mlbstatic.com/team-logos/135.svg"
+          },
+          "awayTeam": {
+            "id": "137",
+            "name": "San Francisco Giants",
+            "shortName": "Giants",
+            "abbreviation": "SF",
+            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 5,
+            "away": 4
+          }
+        }
+      ],
+      "upcomingGames": [
+        {
+          "id": "823188",
+          "utcDate": "2026-08-08T23:15:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "137",
+            "name": "San Francisco Giants",
+            "shortName": "Giants",
+            "abbreviation": "SF",
+            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
+          },
+          "awayTeam": {
+            "id": "116",
+            "name": "Detroit Tigers",
+            "shortName": "Tigers",
+            "abbreviation": "DET",
+            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823190",
+          "utcDate": "2026-08-09T20:05:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "137",
+            "name": "San Francisco Giants",
+            "shortName": "Giants",
+            "abbreviation": "SF",
+            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
+          },
+          "awayTeam": {
+            "id": "116",
+            "name": "Detroit Tigers",
+            "shortName": "Tigers",
+            "abbreviation": "DET",
+            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823189",
+          "utcDate": "2026-08-11T01:45:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "137",
+            "name": "San Francisco Giants",
+            "shortName": "Giants",
+            "abbreviation": "SF",
+            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
+          },
+          "awayTeam": {
+            "id": "117",
+            "name": "Houston Astros",
+            "shortName": "Astros",
+            "abbreviation": "HOU",
+            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823186",
+          "utcDate": "2026-08-12T01:45:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "137",
+            "name": "San Francisco Giants",
+            "shortName": "Giants",
+            "abbreviation": "SF",
+            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
+          },
+          "awayTeam": {
+            "id": "117",
+            "name": "Houston Astros",
+            "shortName": "Astros",
+            "abbreviation": "HOU",
+            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823187",
+          "utcDate": "2026-08-12T19:45:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "137",
+            "name": "San Francisco Giants",
+            "shortName": "Giants",
+            "abbreviation": "SF",
+            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
+          },
+          "awayTeam": {
+            "id": "117",
+            "name": "Houston Astros",
+            "shortName": "Astros",
+            "abbreviation": "HOU",
+            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        }
+      ],
+      "form": {
+        "sequence": [
+          "W",
+          "L",
+          "L",
+          "W",
+          "L"
+        ],
+        "wins": 2,
+        "losses": 3,
+        "runsFor": 18,
+        "runsAgainst": 19
+      },
+      "generatedAt": "2026-08-08T04:58:19.367Z"
+    },
+    "138": {
+      "team": {
+        "id": "138",
+        "name": "St. Louis Cardinals",
+        "shortName": "Cardinals",
+        "abbreviation": "STL",
+        "league": "NL",
+        "division": "NL Central",
+        "venue": "Busch Stadium",
+        "logo": "https://www.mlbstatic.com/team-logos/138.svg",
+        "founded": 1892,
+        "primaryColor": null
+      },
+      "recentGames": [
+        {
+          "id": "823024",
+          "utcDate": "2026-08-08T00:15:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "138",
+            "name": "St. Louis Cardinals",
+            "shortName": "Cardinals",
+            "abbreviation": "STL",
+            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
+          },
+          "awayTeam": {
+            "id": "115",
+            "name": "Colorado Rockies",
+            "shortName": "Rockies",
+            "abbreviation": "COL",
+            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 3,
+            "away": 2
+          }
+        },
+        {
+          "id": "823516",
+          "utcDate": "2026-08-05T23:05:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "147",
+            "name": "New York Yankees",
+            "shortName": "Yankees",
+            "abbreviation": "NYY",
+            "crest": "https://www.mlbstatic.com/team-logos/147.svg"
+          },
+          "awayTeam": {
+            "id": "138",
+            "name": "St. Louis Cardinals",
+            "shortName": "Cardinals",
+            "abbreviation": "STL",
+            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 1,
+            "away": 3
+          }
+        },
+        {
+          "id": "823517",
+          "utcDate": "2026-08-04T23:05:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "147",
+            "name": "New York Yankees",
+            "shortName": "Yankees",
+            "abbreviation": "NYY",
+            "crest": "https://www.mlbstatic.com/team-logos/147.svg"
+          },
+          "awayTeam": {
+            "id": "138",
+            "name": "St. Louis Cardinals",
+            "shortName": "Cardinals",
+            "abbreviation": "STL",
+            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "id": "823520",
+          "utcDate": "2026-08-03T23:05:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "147",
+            "name": "New York Yankees",
+            "shortName": "Yankees",
+            "abbreviation": "NYY",
+            "crest": "https://www.mlbstatic.com/team-logos/147.svg"
+          },
+          "awayTeam": {
+            "id": "138",
+            "name": "St. Louis Cardinals",
+            "shortName": "Cardinals",
+            "abbreviation": "STL",
+            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 7,
+            "away": 13
+          }
+        },
+        {
+          "id": "822783",
+          "utcDate": "2026-08-02T17:37:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "141",
+            "name": "Toronto Blue Jays",
+            "shortName": "Blue Jays",
+            "abbreviation": "TOR",
+            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
+          },
+          "awayTeam": {
+            "id": "138",
+            "name": "St. Louis Cardinals",
+            "shortName": "Cardinals",
+            "abbreviation": "STL",
+            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 1,
+            "away": 5
+          }
+        }
+      ],
+      "upcomingGames": [
+        {
+          "id": "823021",
+          "utcDate": "2026-08-08T23:15:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "138",
+            "name": "St. Louis Cardinals",
+            "shortName": "Cardinals",
+            "abbreviation": "STL",
+            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
+          },
+          "awayTeam": {
+            "id": "115",
+            "name": "Colorado Rockies",
+            "shortName": "Rockies",
+            "abbreviation": "COL",
+            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823020",
+          "utcDate": "2026-08-09T18:15:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "138",
+            "name": "St. Louis Cardinals",
+            "shortName": "Cardinals",
+            "abbreviation": "STL",
+            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
+          },
+          "awayTeam": {
+            "id": "115",
+            "name": "Colorado Rockies",
+            "shortName": "Rockies",
+            "abbreviation": "COL",
+            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823018",
+          "utcDate": "2026-08-10T23:45:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "138",
+            "name": "St. Louis Cardinals",
+            "shortName": "Cardinals",
+            "abbreviation": "STL",
+            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
+          },
+          "awayTeam": {
+            "id": "143",
+            "name": "Philadelphia Phillies",
+            "shortName": "Phillies",
+            "abbreviation": "PHI",
+            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823019",
+          "utcDate": "2026-08-11T23:45:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "138",
+            "name": "St. Louis Cardinals",
+            "shortName": "Cardinals",
+            "abbreviation": "STL",
+            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
+          },
+          "awayTeam": {
+            "id": "143",
+            "name": "Philadelphia Phillies",
+            "shortName": "Phillies",
+            "abbreviation": "PHI",
+            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823017",
+          "utcDate": "2026-08-12T18:15:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "138",
+            "name": "St. Louis Cardinals",
+            "shortName": "Cardinals",
+            "abbreviation": "STL",
+            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
+          },
+          "awayTeam": {
+            "id": "143",
+            "name": "Philadelphia Phillies",
+            "shortName": "Phillies",
+            "abbreviation": "PHI",
+            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        }
+      ],
+      "form": {
+        "sequence": [
+          "W",
+          "W",
+          "L",
+          "W",
+          "W"
+        ],
+        "wins": 4,
+        "losses": 1,
+        "runsFor": 24,
+        "runsAgainst": 13
+      },
+      "generatedAt": "2026-08-08T04:58:19.367Z"
+    },
+    "139": {
+      "team": {
+        "id": "139",
+        "name": "Tampa Bay Rays",
+        "shortName": "Rays",
+        "abbreviation": "TB",
+        "league": "AL",
+        "division": "AL East",
+        "venue": "Tropicana Field",
+        "logo": "https://www.mlbstatic.com/team-logos/139.svg",
+        "founded": 1996,
+        "primaryColor": null
+      },
+      "recentGames": [
+        {
+          "id": "823103",
+          "utcDate": "2026-08-08T01:45:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "136",
+            "name": "Seattle Mariners",
+            "shortName": "Mariners",
+            "abbreviation": "SEA",
+            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
+          },
+          "awayTeam": {
+            "id": "139",
+            "name": "Tampa Bay Rays",
+            "shortName": "Rays",
+            "abbreviation": "TB",
+            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 1,
+            "away": 2
+          }
+        },
+        {
+          "id": "824322",
+          "utcDate": "2026-08-05T19:10:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "115",
+            "name": "Colorado Rockies",
+            "shortName": "Rockies",
+            "abbreviation": "COL",
+            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
+          },
+          "awayTeam": {
+            "id": "139",
+            "name": "Tampa Bay Rays",
+            "shortName": "Rays",
+            "abbreviation": "TB",
+            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 0,
+            "away": 4
+          }
+        },
+        {
+          "id": "824321",
+          "utcDate": "2026-08-05T00:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "115",
+            "name": "Colorado Rockies",
+            "shortName": "Rockies",
+            "abbreviation": "COL",
+            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
+          },
+          "awayTeam": {
+            "id": "139",
+            "name": "Tampa Bay Rays",
+            "shortName": "Rays",
+            "abbreviation": "TB",
+            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 7,
+            "away": 9
+          }
+        },
+        {
+          "id": "824324",
+          "utcDate": "2026-08-04T00:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "115",
+            "name": "Colorado Rockies",
+            "shortName": "Rockies",
+            "abbreviation": "COL",
+            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
+          },
+          "awayTeam": {
+            "id": "139",
+            "name": "Tampa Bay Rays",
+            "shortName": "Rays",
+            "abbreviation": "TB",
+            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 9,
+            "away": 13
+          }
+        },
+        {
+          "id": "822943",
+          "utcDate": "2026-08-02T17:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "139",
+            "name": "Tampa Bay Rays",
+            "shortName": "Rays",
+            "abbreviation": "TB",
+            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
+          },
+          "awayTeam": {
+            "id": "145",
+            "name": "Chicago White Sox",
+            "shortName": "White Sox",
+            "abbreviation": "CWS",
+            "crest": "https://www.mlbstatic.com/team-logos/145.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 1,
+            "away": 9
+          }
+        }
+      ],
+      "upcomingGames": [
+        {
+          "id": "823102",
+          "utcDate": "2026-08-09T01:50:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "136",
+            "name": "Seattle Mariners",
+            "shortName": "Mariners",
+            "abbreviation": "SEA",
+            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
+          },
+          "awayTeam": {
+            "id": "139",
+            "name": "Tampa Bay Rays",
+            "shortName": "Rays",
+            "abbreviation": "TB",
+            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823104",
+          "utcDate": "2026-08-09T20:10:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "136",
+            "name": "Seattle Mariners",
+            "shortName": "Mariners",
+            "abbreviation": "SEA",
+            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
+          },
+          "awayTeam": {
+            "id": "139",
+            "name": "Tampa Bay Rays",
+            "shortName": "Rays",
+            "abbreviation": "TB",
+            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "824969",
+          "utcDate": "2026-08-11T01:40:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "133",
+            "name": "Athletics",
+            "shortName": "Athletics",
+            "abbreviation": "ATH",
+            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
+          },
+          "awayTeam": {
+            "id": "139",
+            "name": "Tampa Bay Rays",
+            "shortName": "Rays",
+            "abbreviation": "TB",
+            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "824970",
+          "utcDate": "2026-08-12T01:40:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "133",
+            "name": "Athletics",
+            "shortName": "Athletics",
+            "abbreviation": "ATH",
+            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
+          },
+          "awayTeam": {
+            "id": "139",
+            "name": "Tampa Bay Rays",
+            "shortName": "Rays",
+            "abbreviation": "TB",
+            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "824967",
+          "utcDate": "2026-08-12T19:05:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "133",
+            "name": "Athletics",
+            "shortName": "Athletics",
+            "abbreviation": "ATH",
+            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
+          },
+          "awayTeam": {
+            "id": "139",
+            "name": "Tampa Bay Rays",
+            "shortName": "Rays",
+            "abbreviation": "TB",
+            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        }
+      ],
+      "form": {
+        "sequence": [
+          "W",
+          "W",
+          "W",
+          "W",
+          "L"
+        ],
+        "wins": 4,
+        "losses": 1,
+        "runsFor": 29,
+        "runsAgainst": 26
+      },
+      "generatedAt": "2026-08-08T04:58:19.367Z"
+    },
+    "140": {
+      "team": {
+        "id": "140",
+        "name": "Texas Rangers",
+        "shortName": "Rangers",
+        "abbreviation": "TEX",
+        "league": "AL",
+        "division": "AL West",
+        "venue": "Globe Life Field",
+        "logo": "https://www.mlbstatic.com/team-logos/140.svg",
+        "founded": 1961,
+        "primaryColor": null
+      },
+      "recentGames": [
+        {
+          "id": "822863",
+          "utcDate": "2026-08-08T00:15:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "140",
+            "name": "Texas Rangers",
+            "shortName": "Rangers",
+            "abbreviation": "TEX",
+            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
+          },
+          "awayTeam": {
+            "id": "110",
+            "name": "Baltimore Orioles",
+            "shortName": "Orioles",
+            "abbreviation": "BAL",
+            "crest": "https://www.mlbstatic.com/team-logos/110.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "id": "822866",
+          "utcDate": "2026-08-05T18:35:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "140",
+            "name": "Texas Rangers",
+            "shortName": "Rangers",
+            "abbreviation": "TEX",
+            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
+          },
+          "awayTeam": {
+            "id": "137",
+            "name": "San Francisco Giants",
+            "shortName": "Giants",
+            "abbreviation": "SF",
+            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 6,
+            "away": 0
+          }
+        },
+        {
+          "id": "822865",
+          "utcDate": "2026-08-05T00:05:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "140",
+            "name": "Texas Rangers",
+            "shortName": "Rangers",
+            "abbreviation": "TEX",
+            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
+          },
+          "awayTeam": {
+            "id": "137",
+            "name": "San Francisco Giants",
+            "shortName": "Giants",
+            "abbreviation": "SF",
+            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 5,
+            "away": 4
+          }
+        },
+        {
+          "id": "822867",
+          "utcDate": "2026-08-04T00:05:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "140",
+            "name": "Texas Rangers",
+            "shortName": "Rangers",
+            "abbreviation": "TEX",
+            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
+          },
+          "awayTeam": {
+            "id": "137",
+            "name": "San Francisco Giants",
+            "shortName": "Giants",
+            "abbreviation": "SF",
+            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 1,
+            "away": 5
+          }
+        },
+        {
+          "id": "824163",
+          "utcDate": "2026-08-02T18:10:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "117",
+            "name": "Houston Astros",
+            "shortName": "Astros",
+            "abbreviation": "HOU",
+            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
+          },
+          "awayTeam": {
+            "id": "140",
+            "name": "Texas Rangers",
+            "shortName": "Rangers",
+            "abbreviation": "TEX",
+            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 7,
+            "away": 3
+          }
+        }
+      ],
+      "upcomingGames": [
+        {
+          "id": "822864",
+          "utcDate": "2026-08-08T23:15:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "140",
+            "name": "Texas Rangers",
+            "shortName": "Rangers",
+            "abbreviation": "TEX",
+            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
+          },
+          "awayTeam": {
+            "id": "110",
+            "name": "Baltimore Orioles",
+            "shortName": "Orioles",
+            "abbreviation": "BAL",
+            "crest": "https://www.mlbstatic.com/team-logos/110.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "822862",
+          "utcDate": "2026-08-09T18:35:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "140",
+            "name": "Texas Rangers",
+            "shortName": "Rangers",
+            "abbreviation": "TEX",
+            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
+          },
+          "awayTeam": {
+            "id": "110",
+            "name": "Baltimore Orioles",
+            "shortName": "Orioles",
+            "abbreviation": "BAL",
+            "crest": "https://www.mlbstatic.com/team-logos/110.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823998",
+          "utcDate": "2026-08-11T01:38:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "108",
+            "name": "Los Angeles Angels",
+            "shortName": "Angels",
+            "abbreviation": "LAA",
+            "crest": "https://www.mlbstatic.com/team-logos/108.svg"
+          },
+          "awayTeam": {
+            "id": "140",
+            "name": "Texas Rangers",
+            "shortName": "Rangers",
+            "abbreviation": "TEX",
+            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823997",
+          "utcDate": "2026-08-12T01:38:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "108",
+            "name": "Los Angeles Angels",
+            "shortName": "Angels",
+            "abbreviation": "LAA",
+            "crest": "https://www.mlbstatic.com/team-logos/108.svg"
+          },
+          "awayTeam": {
+            "id": "140",
+            "name": "Texas Rangers",
+            "shortName": "Rangers",
+            "abbreviation": "TEX",
+            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823994",
+          "utcDate": "2026-08-13T02:10:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "108",
+            "name": "Los Angeles Angels",
+            "shortName": "Angels",
+            "abbreviation": "LAA",
+            "crest": "https://www.mlbstatic.com/team-logos/108.svg"
+          },
+          "awayTeam": {
+            "id": "140",
+            "name": "Texas Rangers",
+            "shortName": "Rangers",
+            "abbreviation": "TEX",
+            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        }
+      ],
+      "form": {
+        "sequence": [
+          "W",
+          "W",
+          "W",
+          "L",
+          "L"
+        ],
+        "wins": 3,
+        "losses": 2,
+        "runsFor": 17,
+        "runsAgainst": 17
+      },
+      "generatedAt": "2026-08-08T04:58:19.367Z"
+    },
+    "141": {
+      "team": {
+        "id": "141",
+        "name": "Toronto Blue Jays",
+        "shortName": "Blue Jays",
+        "abbreviation": "TOR",
+        "league": "AL",
+        "division": "AL East",
+        "venue": "Rogers Centre",
+        "logo": "https://www.mlbstatic.com/team-logos/141.svg",
+        "founded": 1977,
+        "primaryColor": null
+      },
+      "recentGames": [
+        {
+          "id": "823428",
+          "utcDate": "2026-08-07T22:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "143",
+            "name": "Philadelphia Phillies",
+            "shortName": "Phillies",
+            "abbreviation": "PHI",
+            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
+          },
+          "awayTeam": {
+            "id": "141",
+            "name": "Toronto Blue Jays",
+            "shortName": "Blue Jays",
+            "abbreviation": "TOR",
+            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 4,
+            "away": 5
+          }
+        },
+        {
+          "id": "824664",
+          "utcDate": "2026-08-06T18:20:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "112",
+            "name": "Chicago Cubs",
+            "shortName": "Cubs",
+            "abbreviation": "CHC",
+            "crest": "https://www.mlbstatic.com/team-logos/112.svg"
+          },
+          "awayTeam": {
+            "id": "141",
+            "name": "Toronto Blue Jays",
+            "shortName": "Blue Jays",
+            "abbreviation": "TOR",
+            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 3,
+            "away": 2
+          }
+        },
+        {
+          "id": "824158",
+          "utcDate": "2026-08-05T18:10:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "117",
+            "name": "Houston Astros",
+            "shortName": "Astros",
+            "abbreviation": "HOU",
+            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
+          },
+          "awayTeam": {
+            "id": "141",
+            "name": "Toronto Blue Jays",
+            "shortName": "Blue Jays",
+            "abbreviation": "TOR",
+            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 4,
+            "away": 5
+          }
+        },
+        {
+          "id": "824161",
+          "utcDate": "2026-08-05T00:10:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "117",
+            "name": "Houston Astros",
+            "shortName": "Astros",
+            "abbreviation": "HOU",
+            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
+          },
+          "awayTeam": {
+            "id": "141",
+            "name": "Toronto Blue Jays",
+            "shortName": "Blue Jays",
+            "abbreviation": "TOR",
+            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 7,
+            "away": 2
+          }
+        },
+        {
+          "id": "824160",
+          "utcDate": "2026-08-04T00:10:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "117",
+            "name": "Houston Astros",
+            "shortName": "Astros",
+            "abbreviation": "HOU",
+            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
+          },
+          "awayTeam": {
+            "id": "141",
+            "name": "Toronto Blue Jays",
+            "shortName": "Blue Jays",
+            "abbreviation": "TOR",
+            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 1,
+            "away": 3
+          }
+        }
+      ],
+      "upcomingGames": [
+        {
+          "id": "823426",
+          "utcDate": "2026-08-08T22:05:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "143",
+            "name": "Philadelphia Phillies",
+            "shortName": "Phillies",
+            "abbreviation": "PHI",
+            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
+          },
+          "awayTeam": {
+            "id": "141",
+            "name": "Toronto Blue Jays",
+            "shortName": "Blue Jays",
+            "abbreviation": "TOR",
+            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823425",
+          "utcDate": "2026-08-09T17:35:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "143",
+            "name": "Philadelphia Phillies",
+            "shortName": "Phillies",
+            "abbreviation": "PHI",
+            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
+          },
+          "awayTeam": {
+            "id": "141",
+            "name": "Toronto Blue Jays",
+            "shortName": "Blue Jays",
+            "abbreviation": "TOR",
+            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "822780",
+          "utcDate": "2026-08-10T23:07:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "141",
+            "name": "Toronto Blue Jays",
+            "shortName": "Blue Jays",
+            "abbreviation": "TOR",
+            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
+          },
+          "awayTeam": {
+            "id": "111",
+            "name": "Boston Red Sox",
+            "shortName": "Red Sox",
+            "abbreviation": "BOS",
+            "crest": "https://www.mlbstatic.com/team-logos/111.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "822778",
+          "utcDate": "2026-08-11T23:07:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "141",
+            "name": "Toronto Blue Jays",
+            "shortName": "Blue Jays",
+            "abbreviation": "TOR",
+            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
+          },
+          "awayTeam": {
+            "id": "111",
+            "name": "Boston Red Sox",
+            "shortName": "Red Sox",
+            "abbreviation": "BOS",
+            "crest": "https://www.mlbstatic.com/team-logos/111.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "822779",
+          "utcDate": "2026-08-12T23:07:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "141",
+            "name": "Toronto Blue Jays",
+            "shortName": "Blue Jays",
+            "abbreviation": "TOR",
+            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
+          },
+          "awayTeam": {
+            "id": "111",
+            "name": "Boston Red Sox",
+            "shortName": "Red Sox",
+            "abbreviation": "BOS",
+            "crest": "https://www.mlbstatic.com/team-logos/111.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        }
+      ],
+      "form": {
+        "sequence": [
+          "W",
+          "L",
+          "W",
+          "L",
+          "W"
+        ],
+        "wins": 3,
+        "losses": 2,
+        "runsFor": 17,
+        "runsAgainst": 19
+      },
+      "generatedAt": "2026-08-08T04:58:19.367Z"
+    },
+    "142": {
+      "team": {
+        "id": "142",
+        "name": "Minnesota Twins",
+        "shortName": "Twins",
+        "abbreviation": "MIN",
+        "league": "AL",
+        "division": "AL Central",
+        "venue": "Target Field",
+        "logo": "https://www.mlbstatic.com/team-logos/142.svg",
+        "founded": 1901,
+        "primaryColor": null
+      },
+      "recentGames": [
+        {
+          "id": "823750",
+          "utcDate": "2026-08-07T23:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "158",
+            "name": "Milwaukee Brewers",
+            "shortName": "Brewers",
+            "abbreviation": "MIL",
+            "crest": "https://www.mlbstatic.com/team-logos/158.svg"
+          },
+          "awayTeam": {
+            "id": "142",
+            "name": "Minnesota Twins",
+            "shortName": "Twins",
+            "abbreviation": "MIN",
+            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 6,
+            "away": 8
+          }
+        },
+        {
+          "id": "824080",
+          "utcDate": "2026-08-06T23:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "118",
+            "name": "Kansas City Royals",
+            "shortName": "Royals",
+            "abbreviation": "KC",
+            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
+          },
+          "awayTeam": {
+            "id": "142",
+            "name": "Minnesota Twins",
+            "shortName": "Twins",
+            "abbreviation": "MIN",
+            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 3,
+            "away": 4
+          }
+        },
+        {
+          "id": "824082",
+          "utcDate": "2026-08-05T23:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "118",
+            "name": "Kansas City Royals",
+            "shortName": "Royals",
+            "abbreviation": "KC",
+            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
+          },
+          "awayTeam": {
+            "id": "142",
+            "name": "Minnesota Twins",
+            "shortName": "Twins",
+            "abbreviation": "MIN",
+            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "id": "824084",
+          "utcDate": "2026-08-04T23:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "118",
+            "name": "Kansas City Royals",
+            "shortName": "Royals",
+            "abbreviation": "KC",
+            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
+          },
+          "awayTeam": {
+            "id": "142",
+            "name": "Minnesota Twins",
+            "shortName": "Twins",
+            "abbreviation": "MIN",
+            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 8,
+            "away": 2
+          }
+        },
+        {
+          "id": "823107",
+          "utcDate": "2026-08-02T20:10:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "136",
+            "name": "Seattle Mariners",
+            "shortName": "Mariners",
+            "abbreviation": "SEA",
+            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
+          },
+          "awayTeam": {
+            "id": "142",
+            "name": "Minnesota Twins",
+            "shortName": "Twins",
+            "abbreviation": "MIN",
+            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 7,
+            "away": 6
+          }
+        }
+      ],
+      "upcomingGames": [
+        {
+          "id": "823752",
+          "utcDate": "2026-08-08T23:10:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "158",
+            "name": "Milwaukee Brewers",
+            "shortName": "Brewers",
+            "abbreviation": "MIL",
+            "crest": "https://www.mlbstatic.com/team-logos/158.svg"
+          },
+          "awayTeam": {
+            "id": "142",
+            "name": "Minnesota Twins",
+            "shortName": "Twins",
+            "abbreviation": "MIN",
+            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823751",
+          "utcDate": "2026-08-09T18:10:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "158",
+            "name": "Milwaukee Brewers",
+            "shortName": "Brewers",
+            "abbreviation": "MIL",
+            "crest": "https://www.mlbstatic.com/team-logos/158.svg"
+          },
+          "awayTeam": {
+            "id": "142",
+            "name": "Minnesota Twins",
+            "shortName": "Twins",
+            "abbreviation": "MIN",
+            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823675",
+          "utcDate": "2026-08-10T23:40:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "142",
+            "name": "Minnesota Twins",
+            "shortName": "Twins",
+            "abbreviation": "MIN",
+            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
+          },
+          "awayTeam": {
+            "id": "110",
+            "name": "Baltimore Orioles",
+            "shortName": "Orioles",
+            "abbreviation": "BAL",
+            "crest": "https://www.mlbstatic.com/team-logos/110.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823673",
+          "utcDate": "2026-08-11T23:40:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "142",
+            "name": "Minnesota Twins",
+            "shortName": "Twins",
+            "abbreviation": "MIN",
+            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
+          },
+          "awayTeam": {
+            "id": "110",
+            "name": "Baltimore Orioles",
+            "shortName": "Orioles",
+            "abbreviation": "BAL",
+            "crest": "https://www.mlbstatic.com/team-logos/110.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823672",
+          "utcDate": "2026-08-12T17:40:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "142",
+            "name": "Minnesota Twins",
+            "shortName": "Twins",
+            "abbreviation": "MIN",
+            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
+          },
+          "awayTeam": {
+            "id": "110",
+            "name": "Baltimore Orioles",
+            "shortName": "Orioles",
+            "abbreviation": "BAL",
+            "crest": "https://www.mlbstatic.com/team-logos/110.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        }
+      ],
+      "form": {
+        "sequence": [
+          "W",
+          "W",
+          "L",
+          "L",
+          "L"
+        ],
+        "wins": 2,
+        "losses": 3,
+        "runsFor": 21,
+        "runsAgainst": 26
+      },
+      "generatedAt": "2026-08-08T04:58:19.367Z"
+    },
+    "143": {
+      "team": {
+        "id": "143",
+        "name": "Philadelphia Phillies",
+        "shortName": "Phillies",
+        "abbreviation": "PHI",
+        "league": "NL",
+        "division": "NL East",
+        "venue": "Citizens Bank Park",
+        "logo": "https://www.mlbstatic.com/team-logos/143.svg",
+        "founded": 1883,
+        "primaryColor": null
+      },
+      "recentGames": [
+        {
+          "id": "823428",
+          "utcDate": "2026-08-07T22:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "143",
+            "name": "Philadelphia Phillies",
+            "shortName": "Phillies",
+            "abbreviation": "PHI",
+            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
+          },
+          "awayTeam": {
+            "id": "141",
+            "name": "Toronto Blue Jays",
+            "shortName": "Blue Jays",
+            "abbreviation": "TOR",
+            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 4,
+            "away": 5
+          }
+        },
+        {
+          "id": "823430",
+          "utcDate": "2026-08-06T22:05:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "143",
+            "name": "Philadelphia Phillies",
+            "shortName": "Phillies",
+            "abbreviation": "PHI",
+            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
+          },
+          "awayTeam": {
+            "id": "120",
+            "name": "Washington Nationals",
+            "shortName": "Nationals",
+            "abbreviation": "WSH",
+            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 7,
+            "away": 3
+          }
+        },
+        {
+          "id": "823429",
+          "utcDate": "2026-08-05T22:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "143",
+            "name": "Philadelphia Phillies",
+            "shortName": "Phillies",
+            "abbreviation": "PHI",
+            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
+          },
+          "awayTeam": {
+            "id": "120",
+            "name": "Washington Nationals",
+            "shortName": "Nationals",
+            "abbreviation": "WSH",
+            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 4,
+            "away": 10
+          }
+        },
+        {
+          "id": "823432",
+          "utcDate": "2026-08-04T22:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "143",
+            "name": "Philadelphia Phillies",
+            "shortName": "Phillies",
+            "abbreviation": "PHI",
+            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
+          },
+          "awayTeam": {
+            "id": "120",
+            "name": "Washington Nationals",
+            "shortName": "Nationals",
+            "abbreviation": "WSH",
+            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 5,
+            "away": 0
+          }
+        },
+        {
+          "id": "823431",
+          "utcDate": "2026-08-03T22:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "143",
+            "name": "Philadelphia Phillies",
+            "shortName": "Phillies",
+            "abbreviation": "PHI",
+            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
+          },
+          "awayTeam": {
+            "id": "120",
+            "name": "Washington Nationals",
+            "shortName": "Nationals",
+            "abbreviation": "WSH",
+            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 6,
+            "away": 3
+          }
+        }
+      ],
+      "upcomingGames": [
+        {
+          "id": "823426",
+          "utcDate": "2026-08-08T22:05:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "143",
+            "name": "Philadelphia Phillies",
+            "shortName": "Phillies",
+            "abbreviation": "PHI",
+            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
+          },
+          "awayTeam": {
+            "id": "141",
+            "name": "Toronto Blue Jays",
+            "shortName": "Blue Jays",
+            "abbreviation": "TOR",
+            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823425",
+          "utcDate": "2026-08-09T17:35:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "143",
+            "name": "Philadelphia Phillies",
+            "shortName": "Phillies",
+            "abbreviation": "PHI",
+            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
+          },
+          "awayTeam": {
+            "id": "141",
+            "name": "Toronto Blue Jays",
+            "shortName": "Blue Jays",
+            "abbreviation": "TOR",
+            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823018",
+          "utcDate": "2026-08-10T23:45:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "138",
+            "name": "St. Louis Cardinals",
+            "shortName": "Cardinals",
+            "abbreviation": "STL",
+            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
+          },
+          "awayTeam": {
+            "id": "143",
+            "name": "Philadelphia Phillies",
+            "shortName": "Phillies",
+            "abbreviation": "PHI",
+            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823019",
+          "utcDate": "2026-08-11T23:45:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "138",
+            "name": "St. Louis Cardinals",
+            "shortName": "Cardinals",
+            "abbreviation": "STL",
+            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
+          },
+          "awayTeam": {
+            "id": "143",
+            "name": "Philadelphia Phillies",
+            "shortName": "Phillies",
+            "abbreviation": "PHI",
+            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823017",
+          "utcDate": "2026-08-12T18:15:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "138",
+            "name": "St. Louis Cardinals",
+            "shortName": "Cardinals",
+            "abbreviation": "STL",
+            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
+          },
+          "awayTeam": {
+            "id": "143",
+            "name": "Philadelphia Phillies",
+            "shortName": "Phillies",
+            "abbreviation": "PHI",
+            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        }
+      ],
+      "form": {
+        "sequence": [
+          "L",
+          "W",
+          "L",
+          "W",
+          "W"
+        ],
+        "wins": 3,
+        "losses": 2,
+        "runsFor": 26,
+        "runsAgainst": 21
+      },
+      "generatedAt": "2026-08-08T04:58:19.367Z"
+    },
+    "144": {
+      "team": {
+        "id": "144",
+        "name": "Atlanta Braves",
+        "shortName": "Braves",
+        "abbreviation": "ATL",
+        "league": "NL",
+        "division": "NL East",
+        "venue": "Truist Park",
+        "logo": "https://www.mlbstatic.com/team-logos/144.svg",
+        "founded": 1871,
+        "primaryColor": null
+      },
+      "recentGames": [
+        {
+          "id": "823515",
+          "utcDate": "2026-08-07T23:05:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "147",
+            "name": "New York Yankees",
+            "shortName": "Yankees",
+            "abbreviation": "NYY",
+            "crest": "https://www.mlbstatic.com/team-logos/147.svg"
+          },
+          "awayTeam": {
+            "id": "144",
+            "name": "Atlanta Braves",
+            "shortName": "Braves",
+            "abbreviation": "ATL",
+            "crest": "https://www.mlbstatic.com/team-logos/144.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 3,
+            "away": 2
+          }
+        },
+        {
+          "id": "824885",
+          "utcDate": "2026-08-06T23:15:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "144",
+            "name": "Atlanta Braves",
+            "shortName": "Braves",
+            "abbreviation": "ATL",
+            "crest": "https://www.mlbstatic.com/team-logos/144.svg"
+          },
+          "awayTeam": {
+            "id": "146",
+            "name": "Miami Marlins",
+            "shortName": "Marlins",
+            "abbreviation": "MIA",
+            "crest": "https://www.mlbstatic.com/team-logos/146.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 11,
+            "away": 3
+          }
+        },
+        {
+          "id": "824889",
+          "utcDate": "2026-08-05T23:15:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "144",
+            "name": "Atlanta Braves",
+            "shortName": "Braves",
+            "abbreviation": "ATL",
+            "crest": "https://www.mlbstatic.com/team-logos/144.svg"
+          },
+          "awayTeam": {
+            "id": "146",
+            "name": "Miami Marlins",
+            "shortName": "Marlins",
+            "abbreviation": "MIA",
+            "crest": "https://www.mlbstatic.com/team-logos/146.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 4,
+            "away": 1
+          }
+        },
+        {
+          "id": "824888",
+          "utcDate": "2026-08-04T23:15:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "144",
+            "name": "Atlanta Braves",
+            "shortName": "Braves",
+            "abbreviation": "ATL",
+            "crest": "https://www.mlbstatic.com/team-logos/144.svg"
+          },
+          "awayTeam": {
+            "id": "146",
+            "name": "Miami Marlins",
+            "shortName": "Marlins",
+            "abbreviation": "MIA",
+            "crest": "https://www.mlbstatic.com/team-logos/146.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 4,
+            "away": 2
+          }
+        },
+        {
+          "id": "824891",
+          "utcDate": "2026-08-02T17:35:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "144",
+            "name": "Atlanta Braves",
+            "shortName": "Braves",
+            "abbreviation": "ATL",
+            "crest": "https://www.mlbstatic.com/team-logos/144.svg"
+          },
+          "awayTeam": {
+            "id": "120",
+            "name": "Washington Nationals",
+            "shortName": "Nationals",
+            "abbreviation": "WSH",
+            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 4,
+            "away": 2
+          }
+        }
+      ],
+      "upcomingGames": [
+        {
+          "id": "823514",
+          "utcDate": "2026-08-08T19:05:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "147",
+            "name": "New York Yankees",
+            "shortName": "Yankees",
+            "abbreviation": "NYY",
+            "crest": "https://www.mlbstatic.com/team-logos/147.svg"
+          },
+          "awayTeam": {
+            "id": "144",
+            "name": "Atlanta Braves",
+            "shortName": "Braves",
+            "abbreviation": "ATL",
+            "crest": "https://www.mlbstatic.com/team-logos/144.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "823513",
+          "utcDate": "2026-08-09T17:35:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "147",
+            "name": "New York Yankees",
+            "shortName": "Yankees",
+            "abbreviation": "NYY",
+            "crest": "https://www.mlbstatic.com/team-logos/147.svg"
+          },
+          "awayTeam": {
+            "id": "144",
+            "name": "Atlanta Braves",
+            "shortName": "Braves",
+            "abbreviation": "ATL",
+            "crest": "https://www.mlbstatic.com/team-logos/144.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "824887",
+          "utcDate": "2026-08-10T23:15:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "144",
+            "name": "Atlanta Braves",
+            "shortName": "Braves",
+            "abbreviation": "ATL",
+            "crest": "https://www.mlbstatic.com/team-logos/144.svg"
+          },
+          "awayTeam": {
+            "id": "121",
+            "name": "New York Mets",
+            "shortName": "Mets",
+            "abbreviation": "NYM",
+            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "824886",
+          "utcDate": "2026-08-11T23:15:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "144",
+            "name": "Atlanta Braves",
+            "shortName": "Braves",
+            "abbreviation": "ATL",
+            "crest": "https://www.mlbstatic.com/team-logos/144.svg"
+          },
+          "awayTeam": {
+            "id": "121",
+            "name": "New York Mets",
+            "shortName": "Mets",
+            "abbreviation": "NYM",
+            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "824883",
+          "utcDate": "2026-08-12T23:15:00Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "144",
+            "name": "Atlanta Braves",
+            "shortName": "Braves",
+            "abbreviation": "ATL",
+            "crest": "https://www.mlbstatic.com/team-logos/144.svg"
+          },
+          "awayTeam": {
+            "id": "121",
+            "name": "New York Mets",
+            "shortName": "Mets",
+            "abbreviation": "NYM",
+            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        }
+      ],
+      "form": {
+        "sequence": [
+          "L",
+          "W",
+          "W",
+          "W",
+          "W"
+        ],
+        "wins": 4,
+        "losses": 1,
+        "runsFor": 25,
         "runsAgainst": 11
       },
-      "generatedAt": "2026-08-08T01:43:16.521Z"
+      "generatedAt": "2026-08-08T04:58:19.367Z"
     },
     "145": {
       "team": {
@@ -9631,6 +9631,32 @@ export const mlbSnapshot: MlbSnapshot = {
         "primaryColor": null
       },
       "recentGames": [
+        {
+          "id": "824566",
+          "utcDate": "2026-08-07T23:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "145",
+            "name": "Chicago White Sox",
+            "shortName": "White Sox",
+            "abbreviation": "CWS",
+            "crest": "https://www.mlbstatic.com/team-logos/145.svg"
+          },
+          "awayTeam": {
+            "id": "114",
+            "name": "Cleveland Guardians",
+            "shortName": "Guardians",
+            "abbreviation": "CLE",
+            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 2,
+            "away": 8
+          }
+        },
         {
           "id": "824729",
           "utcDate": "2026-08-06T23:10:00Z",
@@ -9733,32 +9759,6 @@ export const mlbSnapshot: MlbSnapshot = {
             "winner": "AWAY_TEAM",
             "home": 1,
             "away": 9
-          }
-        },
-        {
-          "id": "822944",
-          "utcDate": "2026-08-01T20:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "139",
-            "name": "Tampa Bay Rays",
-            "shortName": "Rays",
-            "abbreviation": "TB",
-            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
-          },
-          "awayTeam": {
-            "id": "145",
-            "name": "Chicago White Sox",
-            "shortName": "White Sox",
-            "abbreviation": "CWS",
-            "crest": "https://www.mlbstatic.com/team-logos/145.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 1,
-            "away": 0
           }
         }
       ],
@@ -9899,15 +9899,15 @@ export const mlbSnapshot: MlbSnapshot = {
           "L",
           "L",
           "L",
-          "W",
-          "L"
+          "L",
+          "W"
         ],
         "wins": 1,
         "losses": 4,
-        "runsFor": 22,
-        "runsAgainst": 32
+        "runsFor": 24,
+        "runsAgainst": 39
       },
-      "generatedAt": "2026-08-08T01:43:16.521Z"
+      "generatedAt": "2026-08-08T04:58:19.367Z"
     },
     "146": {
       "team": {
@@ -9923,6 +9923,32 @@ export const mlbSnapshot: MlbSnapshot = {
         "primaryColor": null
       },
       "recentGames": [
+        {
+          "id": "823836",
+          "utcDate": "2026-08-07T23:10:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "146",
+            "name": "Miami Marlins",
+            "shortName": "Marlins",
+            "abbreviation": "MIA",
+            "crest": "https://www.mlbstatic.com/team-logos/146.svg"
+          },
+          "awayTeam": {
+            "id": "108",
+            "name": "Los Angeles Angels",
+            "shortName": "Angels",
+            "abbreviation": "LAA",
+            "crest": "https://www.mlbstatic.com/team-logos/108.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 3,
+            "away": 4
+          }
+        },
         {
           "id": "824885",
           "utcDate": "2026-08-06T23:15:00Z",
@@ -10025,32 +10051,6 @@ export const mlbSnapshot: MlbSnapshot = {
             "winner": "AWAY_TEAM",
             "home": 0,
             "away": 2
-          }
-        },
-        {
-          "id": "823594",
-          "utcDate": "2026-08-01T20:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "121",
-            "name": "New York Mets",
-            "shortName": "Mets",
-            "abbreviation": "NYM",
-            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
-          },
-          "awayTeam": {
-            "id": "146",
-            "name": "Miami Marlins",
-            "shortName": "Marlins",
-            "abbreviation": "MIA",
-            "crest": "https://www.mlbstatic.com/team-logos/146.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 2,
-            "away": 6
           }
         }
       ],
@@ -10191,15 +10191,15 @@ export const mlbSnapshot: MlbSnapshot = {
           "L",
           "L",
           "L",
-          "W",
+          "L",
           "W"
         ],
-        "wins": 2,
-        "losses": 3,
-        "runsFor": 14,
-        "runsAgainst": 21
+        "wins": 1,
+        "losses": 4,
+        "runsFor": 11,
+        "runsAgainst": 23
       },
-      "generatedAt": "2026-08-08T01:43:16.521Z"
+      "generatedAt": "2026-08-08T04:58:19.367Z"
     },
     "147": {
       "team": {
@@ -10215,6 +10215,32 @@ export const mlbSnapshot: MlbSnapshot = {
         "primaryColor": null
       },
       "recentGames": [
+        {
+          "id": "823515",
+          "utcDate": "2026-08-07T23:05:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "147",
+            "name": "New York Yankees",
+            "shortName": "Yankees",
+            "abbreviation": "NYY",
+            "crest": "https://www.mlbstatic.com/team-logos/147.svg"
+          },
+          "awayTeam": {
+            "id": "144",
+            "name": "Atlanta Braves",
+            "shortName": "Braves",
+            "abbreviation": "ATL",
+            "crest": "https://www.mlbstatic.com/team-logos/144.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 3,
+            "away": 2
+          }
+        },
         {
           "id": "823516",
           "utcDate": "2026-08-05T23:05:00Z",
@@ -10316,32 +10342,6 @@ export const mlbSnapshot: MlbSnapshot = {
           "score": {
             "winner": "AWAY_TEAM",
             "home": 1,
-            "away": 2
-          }
-        },
-        {
-          "id": "824649",
-          "utcDate": "2026-08-01T23:15:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "112",
-            "name": "Chicago Cubs",
-            "shortName": "Cubs",
-            "abbreviation": "CHC",
-            "crest": "https://www.mlbstatic.com/team-logos/112.svg"
-          },
-          "awayTeam": {
-            "id": "147",
-            "name": "New York Yankees",
-            "shortName": "Yankees",
-            "abbreviation": "NYY",
-            "crest": "https://www.mlbstatic.com/team-logos/147.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 5,
             "away": 2
           }
         }
@@ -10480,18 +10480,18 @@ export const mlbSnapshot: MlbSnapshot = {
       ],
       "form": {
         "sequence": [
-          "L",
           "W",
           "L",
           "W",
-          "L"
+          "L",
+          "W"
         ],
-        "wins": 2,
-        "losses": 3,
-        "runsFor": 14,
-        "runsAgainst": 22
+        "wins": 3,
+        "losses": 2,
+        "runsFor": 15,
+        "runsAgainst": 19
       },
-      "generatedAt": "2026-08-08T01:43:16.521Z"
+      "generatedAt": "2026-08-08T04:58:19.367Z"
     },
     "158": {
       "team": {
@@ -10507,6 +10507,32 @@ export const mlbSnapshot: MlbSnapshot = {
         "primaryColor": null
       },
       "recentGames": [
+        {
+          "id": "823750",
+          "utcDate": "2026-08-07T23:40:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "R",
+          "homeTeam": {
+            "id": "158",
+            "name": "Milwaukee Brewers",
+            "shortName": "Brewers",
+            "abbreviation": "MIL",
+            "crest": "https://www.mlbstatic.com/team-logos/158.svg"
+          },
+          "awayTeam": {
+            "id": "142",
+            "name": "Minnesota Twins",
+            "shortName": "Twins",
+            "abbreviation": "MIN",
+            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 6,
+            "away": 8
+          }
+        },
         {
           "id": "823754",
           "utcDate": "2026-08-06T18:10:00Z",
@@ -10609,32 +10635,6 @@ export const mlbSnapshot: MlbSnapshot = {
             "winner": "AWAY_TEAM",
             "home": 3,
             "away": 4
-          }
-        },
-        {
-          "id": "823996",
-          "utcDate": "2026-08-02T19:15:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "homeTeam": {
-            "id": "108",
-            "name": "Los Angeles Angels",
-            "shortName": "Angels",
-            "abbreviation": "LAA",
-            "crest": "https://www.mlbstatic.com/team-logos/108.svg"
-          },
-          "awayTeam": {
-            "id": "158",
-            "name": "Milwaukee Brewers",
-            "shortName": "Brewers",
-            "abbreviation": "MIL",
-            "crest": "https://www.mlbstatic.com/team-logos/158.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 3,
-            "away": 0
           }
         }
       ],
@@ -10772,18 +10772,18 @@ export const mlbSnapshot: MlbSnapshot = {
       ],
       "form": {
         "sequence": [
-          "W",
-          "W",
-          "W",
           "L",
+          "W",
+          "W",
+          "W",
           "L"
         ],
         "wins": 3,
         "losses": 2,
-        "runsFor": 16,
-        "runsAgainst": 13
+        "runsFor": 22,
+        "runsAgainst": 18
       },
-      "generatedAt": "2026-08-08T01:43:16.521Z"
+      "generatedAt": "2026-08-08T04:58:19.367Z"
     }
   }
 };
