@@ -28,9 +28,20 @@ interface RankingsListRowProps {
   onToggleCompare: () => void;
 }
 
-function Metric({ label, children }: { label: string; children: ReactNode }) {
+/**
+ * One stat in the row's metric strip.
+ *
+ * The width is fixed rather than content-sized on purpose. These numbers exist
+ * to be read down the page against other players, and a plain flex box sized
+ * each one to its own value, so "1 to 4" and "2 to 31" put their labels at
+ * different x and the three columns wandered 11.2px, 11.2px, and 6.4px across
+ * 60 rows. Nothing overflowed and nothing truncated, so no threshold caught it.
+ * Each width clears its own label, which is the wider of the two lines in every
+ * case, so the values sit under their headings and the columns hold.
+ */
+function Metric({ label, width, children }: { label: string; width: string; children: ReactNode }) {
   return (
-    <div className="min-w-0">
+    <div className="shrink-0" style={{ width }}>
       <p className="text-2xs font-semibold uppercase tracking-[0.12em]" style={{ color: "var(--home-ink-muted)" }}>
         {label}
       </p>
@@ -85,18 +96,33 @@ export function RankingsListRow({
           isQueued ? "opacity-100" : "opacity-0 group-hover:opacity-100"
         }`}
       />
-      <div className="flex items-stretch">
+      {/*
+        A two-column grid below md and a single flex row from md up. The action
+        pair used to be a full-height sibling column at every width, which at
+        390px reserved 100px of a 316px row for two icon buttons and left the
+        metric strip 184px to work in. The strip wrapped to two lines, the row
+        grew to 223px, and the name was capped at 105px, so "Colston Loveland"
+        rendered as an ellipsis. Placing the actions at top right and giving the
+        strip both columns on row two hands the metrics the full width and the
+        name most of one line back.
+
+        DOM order is unchanged, so nothing moves for keyboard or assistive
+        technology: the row overlay button, then queue, then compare, in that
+        order, at every width. Grid placement is inert once the container
+        switches to flex at md, so the desktop row keeps its old shape.
+      */}
+      <div className="relative grid grid-cols-[minmax(0,1fr)_auto] items-start md:flex md:items-stretch md:gap-4">
+        <button
+          type="button"
+          onClick={onOpenDetail}
+          aria-label={`Open ${player.name} detail, ${player.position}, rank ${publishedRank}`}
+          className="absolute inset-0 z-0 rounded-[var(--radius-3xl)] outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--home-ink)]"
+        />
         <div
-          className={`relative flex min-w-0 flex-1 flex-col gap-2 text-left md:flex-row md:items-center md:gap-4 ${
-            compact ? "px-4 py-2.5" : "px-4 py-3.5"
+          className={`col-start-1 row-start-1 flex min-w-0 flex-1 text-left ${
+            compact ? "px-4 pt-2.5 md:py-2.5" : "px-4 pt-3.5 md:py-3.5"
           }`}
         >
-          <button
-            type="button"
-            onClick={onOpenDetail}
-            aria-label={`Open ${player.name} detail, ${player.position}, rank ${publishedRank}`}
-            className="absolute inset-0 z-0 rounded-[var(--radius-3xl)] outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--home-ink)]"
-          />
           <div className="pointer-events-none relative z-10 flex min-w-0 items-center gap-3 md:flex-1">
             <span
               className={`inline-flex shrink-0 items-center justify-center tabular-nums ${
@@ -108,8 +134,14 @@ export function RankingsListRow({
               {publishedRank}
             </span>
             <div className="min-w-0">
-              <div className="flex min-w-0 flex-wrap items-center gap-2">
-                <span className="min-w-0 truncate text-base font-semibold">{player.name}</span>
+              {/* Only this line clears the action pair, which now floats at the
+                  row's top right rather than holding a grid column. The
+                  descriptor below it gets the row's full width. */}
+              <div className="flex min-w-0 flex-wrap items-center gap-2 pr-20 md:pr-0">
+                {/* Wraps below md and truncates from md up. On a phone the name
+                    had 105px and "Colston Loveland" came out "Colston Lovela...",
+                    which is a worse answer than a second line. */}
+                <span className="min-w-0 text-base font-semibold md:truncate">{player.name}</span>
                 <span className={FANTASY_CHIP_CLASS} style={getPositionTone(player.position)}>
                   {player.position}
                 </span>
@@ -129,22 +161,39 @@ export function RankingsListRow({
               </p>
             </div>
           </div>
-
-          <div className="pointer-events-none relative z-10 flex flex-wrap items-center gap-x-5 gap-y-1 md:shrink-0 md:justify-end">
-            <Metric label="Expert range">{formatRange(player)}</Metric>
-            {adpAvailable && (
-              <Metric label="ADP">{formatAdp(player.adp)}</Metric>
-            )}
-            <Metric label="Rostered">
-              <span>{formatOwnership(player.ownership)}</span>
-              <span className="ml-2 text-2xs font-medium" style={{ color: "var(--home-ink-muted)" }}>
-                {player.byeWeek ? `Bye ${player.byeWeek}` : ""}
-              </span>
-            </Metric>
-          </div>
         </div>
 
-        <div className="flex shrink-0 items-center gap-1 pr-2">
+        {/* Both columns of row two below md, an inline strip from md up. */}
+        <div
+          className={`pointer-events-none relative z-10 col-span-2 col-start-1 row-start-2 flex items-start gap-x-4 px-4 md:col-auto md:row-auto md:shrink-0 md:items-center md:justify-end md:px-0 ${
+            compact ? "pb-2.5 md:pb-0" : "pb-3.5 md:pb-0"
+          }`}
+        >
+          <Metric label="Expert range" width="6.5rem">
+            {formatRange(player)}
+          </Metric>
+          {adpAvailable && (
+            <Metric label="ADP" width="3.25rem">
+              {formatAdp(player.adp)}
+            </Metric>
+          )}
+          <Metric label="Rostered" width="6.25rem">
+            <span>{formatOwnership(player.ownership)}</span>
+            <span className="ml-2 text-2xs font-medium" style={{ color: "var(--home-ink-muted)" }}>
+              {player.byeWeek ? `Bye ${player.byeWeek}` : ""}
+            </span>
+          </Metric>
+        </div>
+
+        {/* Floated to the top right below md rather than holding a grid column.
+            As a column it cost 100px of a 316px row, which left the name 126px
+            and the descriptor the same 126px, so every one of the 60 rows spent
+            a second line on "CIN · WR1 · Avg 1.81" and rows came out at 172,
+            193, 196 and 218px for content that is the same shape every time.
+            Out of flow, the descriptor gets the full width on one line and only
+            the name line pays for the buttons. z-10 keeps the pair above the
+            row's absolute overlay button, which spans the whole row. */}
+        <div className="absolute right-1 top-3 z-10 flex shrink-0 items-center gap-1 md:static md:col-auto md:row-auto md:pr-2 md:pt-0">
           <button
             type="button"
             onClick={onToggleQueue}

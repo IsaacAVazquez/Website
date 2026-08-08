@@ -207,7 +207,16 @@ export function CompareModal({
               </caption>
               <thead>
                 <tr>
-                  <th scope="col">
+                  {/*
+                    The metric column is pinned to the left edge of the
+                    scroller. The table has a 34rem floor, so at 390px it runs
+                    544px inside a 316px box and 228px of it is off screen with
+                    the third player entirely out of view. Scrolling to reach
+                    him used to take the row labels with him, which leaves a
+                    column of bare numbers. The labels are the last thing
+                    allowed to leave.
+                  */}
+                  <th scope="col" className="sticky left-0 z-10" style={{ background: "var(--home-paper)" }}>
                     <span className="sr-only">Metric</span>
                   </th>
                   {players.map((player) => (
@@ -268,8 +277,8 @@ export function CompareModal({
                     <tr key={row.key}>
                       <th
                         scope="row"
-                        className="py-2 pr-2 text-2xs font-semibold uppercase tracking-[0.1em]"
-                        style={{ color: "var(--home-ink-muted)" }}
+                        className="sticky left-0 z-10 py-2 pr-2 text-2xs font-semibold uppercase tracking-[0.1em]"
+                        style={{ color: "var(--home-ink-muted)", background: "var(--home-paper)" }}
                       >
                         {row.label}
                       </th>
@@ -308,8 +317,8 @@ export function CompareModal({
                   <tr>
                     <th
                       scope="row"
-                      className="py-3 pr-2 align-top text-2xs font-semibold uppercase tracking-[0.1em]"
-                      style={{ color: "var(--home-ink-muted)" }}
+                      className="sticky left-0 z-10 py-3 pr-2 align-top text-2xs font-semibold uppercase tracking-[0.1em]"
+                      style={{ color: "var(--home-ink-muted)", background: "var(--home-paper)" }}
                     >
                       Range
                     </th>
