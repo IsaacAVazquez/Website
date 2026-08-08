@@ -20,7 +20,7 @@ const SPREAD_FILL: Record<string, string> = {
 
 /**
  * Visualizes how widely the experts disagree about a player by plotting his
- * best→worst rank span as a filled track with the consensus average marked.
+ * best-to-worst rank span as a filled track with the expert mean marked.
  * A wide fill = lots of disagreement; the fill color encodes the same
  * `standardDeviation`-derived consensus-spread bucket shown elsewhere. This is
  * the headline use of the otherwise-unsurfaced `standardDeviation` field.
@@ -29,11 +29,13 @@ export function RankDistributionBar({ player, scaleMin, scaleMax, compact = fals
   const min = player.minRank;
   const max = player.maxRank;
   const avg =
-    typeof player.averageRank === "number" && Number.isFinite(player.averageRank)
-      ? player.averageRank
+    typeof player.rankAverage === "number" && Number.isFinite(player.rankAverage)
+      ? player.rankAverage
       : typeof player.rankEcr === "number" && Number.isFinite(player.rankEcr)
         ? player.rankEcr
-        : undefined;
+        : typeof player.averageRank === "number" && Number.isFinite(player.averageRank)
+          ? player.averageRank
+          : undefined;
 
   if (!Number.isFinite(min) || !Number.isFinite(max)) {
     return (

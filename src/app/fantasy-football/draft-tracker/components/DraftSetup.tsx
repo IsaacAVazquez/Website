@@ -1,7 +1,13 @@
 "use client";
 
 import { useEffect, useState, type CSSProperties } from "react";
-import { DraftSettings, ScoringFormat } from "@/types";
+import type { DraftSettings, RedraftLineupSettings, ScoringFormat } from "@/types";
+import {
+  REDRAFT_LINEUP_PRESETS,
+  countRedraftStartingSlots,
+  normalizeRedraftLineup,
+  redraftLineupSummary,
+} from "@/lib/redraftLineup";
 
 interface DraftSetupProps {
   settings: DraftSettings;
@@ -14,6 +20,25 @@ const SCORING_OPTIONS: { value: ScoringFormat; label: string; description: strin
   { value: "HALF_PPR", label: "Half PPR", description: "Balanced default for most home leagues." },
   { value: "STANDARD", label: "Standard", description: "Use when receptions do not score." },
 ];
+
+const LINEUP_FIELDS: ReadonlyArray<{
+  key: Exclude<keyof RedraftLineupSettings, "QB">;
+  label: string;
+  values: readonly number[];
+}> = [
+  { key: "RB", label: "Running backs", values: [1, 2, 3] },
+  { key: "WR", label: "Wide receivers", values: [1, 2, 3, 4] },
+  { key: "TE", label: "Tight ends", values: [1, 2] },
+  { key: "FLEX", label: "Flex spots", values: [0, 1, 2, 3] },
+  { key: "K", label: "Kickers", values: [0, 1] },
+  { key: "DST", label: "Defenses", values: [0, 1] },
+];
+
+function sameLineup(left: RedraftLineupSettings, right: RedraftLineupSettings): boolean {
+  return (Object.keys(left) as (keyof RedraftLineupSettings)[]).every(
+    (position) => left[position] === right[position]
+  );
+}
 
 function getOptionStyle(active: boolean): CSSProperties {
   if (active) {
@@ -42,6 +67,8 @@ function getFieldStyle(): CSSProperties {
 export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetupProps) {
   const [formState, setFormState] = useState<DraftSettings>(settings);
   const [isStarting, setIsStarting] = useState(false);
+  const startingSlots = countRedraftStartingSlots(formState.lineup);
+  const lineupTooLarge = startingSlots > formState.rounds;
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- Sync local form state when external draft settings change (controlled-to-local mirror)
@@ -59,8 +86,18 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
     });
   }
 
+  function updateLineupField(
+    field: Exclude<keyof RedraftLineupSettings, "QB">,
+    value: number
+  ) {
+    setFormState((current) => ({
+      ...current,
+      lineup: normalizeRedraftLineup({ ...current.lineup, [field]: value }),
+    }));
+  }
+
   function handleStartDraft() {
-    if (isStarting) return;
+    if (isStarting || lineupTooLarge) return;
     setIsStarting(true);
     try {
       onSaveSettings(formState);
@@ -153,6 +190,68 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
           </select>
         </label>
       </div>
+
+      <fieldset className="mt-5 grid gap-3 text-sm">
+        <legend className="home-kicker mb-0">Starting lineup</legend>
+        <p className="text-sm leading-6" style={{ color: "var(--home-ink-muted)" }}>
+          Match the league you will actually draft. Flex accepts RB, WR, or TE. This assistant uses
+          one-QB rankings, so Superflex and two-QB leagues are not scored here.
+        </p>
+        <div className="grid auto-rows-fr gap-2 md:grid-cols-3">
+          {REDRAFT_LINEUP_PRESETS.map((preset) => {
+            const active = sameLineup(formState.lineup, preset.lineup);
+            return (
+              <button
+                key={preset.id}
+                type="button"
+                onClick={() => updateField("lineup", { ...preset.lineup })}
+                className="min-h-[84px] rounded-[var(--radius-3xl)] border px-4 py-3 text-left transition-[background-color,border-color,color,box-shadow] duration-200"
+                style={getOptionStyle(active)}
+              >
+                <span className="block text-sm font-semibold">{preset.label}</span>
+                <span
+                  className="mt-1 block text-xs leading-5"
+                  style={{
+                    color: active
+                      ? "color-mix(in srgb, var(--home-paper) 78%, transparent)"
+                      : "var(--home-ink-muted)",
+                  }}
+                >
+                  {preset.description}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div
+            className="grid min-h-[72px] gap-1 rounded-[var(--radius-3xl)] border px-4 py-3"
+            style={getFieldStyle()}
+          >
+            <span className="home-kicker mb-0">Quarterbacks</span>
+            <span className="text-sm font-semibold">1</span>
+          </div>
+          {LINEUP_FIELDS.map((field) => (
+            <label key={field.key} className="grid gap-1 text-sm" htmlFor={`lineup-${field.key.toLowerCase()}`}>
+              <span className="home-kicker mb-0">{field.label}</span>
+              <select
+                id={`lineup-${field.key.toLowerCase()}`}
+                value={formState.lineup[field.key]}
+                onChange={(event) => updateLineupField(field.key, Number(event.target.value))}
+                className="min-h-[48px] w-full rounded-[var(--radius-3xl)] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
+                style={getFieldStyle()}
+              >
+                {field.values.map((value) => (
+                  <option key={value} value={value}>
+                    {value}
+                  </option>
+                ))}
+              </select>
+            </label>
+          ))}
+        </div>
+      </fieldset>
 
       <div className="mt-5 grid gap-4 md:grid-cols-2">
         <fieldset className="grid gap-2 text-sm">
@@ -269,13 +368,14 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
         }}
       >
         <p className="text-sm" style={{ color: "var(--home-ink-muted)" }}>
-          The board will track {formState.totalTeams} teams, {formState.rounds} rounds, and
-          highlight your turns from slot {formState.userTeam}.
+          {lineupTooLarge
+            ? `This lineup needs ${startingSlots} starters, which does not fit in ${formState.rounds} rounds. Reduce the lineup or add rounds before starting.`
+            : `The board will track ${formState.totalTeams} teams, ${formState.rounds} rounds, and highlight your turns from slot ${formState.userTeam}. Your lineup is ${redraftLineupSummary(formState.lineup)}.`}
         </p>
         <button
           type="button"
           onClick={handleStartDraft}
-          disabled={isStarting}
+          disabled={isStarting || lineupTooLarge}
           aria-busy={isStarting}
           className="inline-flex min-h-[48px] w-full items-center justify-center rounded-full border px-4 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow,opacity] duration-200 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
           style={{

@@ -51,9 +51,9 @@ jobs:
       # positions) can produce a snapshot with mostly empty boards and slip
       # past `git diff` because the file does change. Refuse to commit unless
       # every scoring format has a healthy overall board AND every individual
-      # position board (QB/RB/WR/TE/K/DST) clears a conservative floor. The
-      # floors sit well below normal counts so they only trip on a genuinely
-      # degraded or empty board, not on routine week-to-week churn.
+      # position board (QB/RB/WR/TE/K/DST) clears the same room-completeness
+      # floor as the source parser. This rejects a coherent partial response
+      # before it can replace a draft-ready snapshot.
       - name: Verify fantasy snapshot quality
         id: verify_quality
         run: |
@@ -61,8 +61,8 @@ jobs:
           const fs = require('fs');
           const path = require('path');
 
-          const MIN_OVERALL = 100;
-          const MIN_POSITION = { QB: 20, RB: 40, WR: 40, TE: 20, K: 10, DST: 10 };
+          const MIN_OVERALL = 300;
+          const MIN_POSITION = { QB: 48, RB: 100, WR: 120, TE: 48, K: 32, DST: 32 };
           const DATA_DIR = path.join('public', 'data', 'fantasy');
           const formats = ['ppr', 'half_ppr', 'standard'];
           const failures = [];
@@ -105,7 +105,7 @@ jobs:
             const adpAgeDays = (now - Date.parse(bestBall.adpSource?.asOf || '')) / 86400000;
             const superflexAgeDays = (now - Date.parse(bestBall.superflexSource?.asOf || '')) / 86400000;
             console.log('best-ball: players=' + playerCount + ' superflex=' + superflexMatches + ' adp=' + adpMatches + ' week17=' + scheduleTeams + ' built=' + generatedAgeDays.toFixed(1) + 'd');
-            if (playerCount < 150) failures.push('best-ball has ' + playerCount + ' players (need >= 150)');
+            if (playerCount < 250) failures.push('best-ball has ' + playerCount + ' players (need >= 250)');
             if (superflexMatches < 150) failures.push('best-ball has ' + superflexMatches + ' Superflex matches (need >= 150)');
             if (adpMatches < 150) failures.push('best-ball has ' + adpMatches + ' ADP matches (need >= 150)');
             if (scheduleTeams < 30) failures.push('best-ball has ' + scheduleTeams + ' Week 17 team mappings (need >= 30)');

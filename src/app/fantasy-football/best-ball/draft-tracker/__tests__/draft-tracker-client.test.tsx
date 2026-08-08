@@ -3,6 +3,7 @@ import { BestBallDraftTrackerClient } from "../draft-tracker-client";
 import type { Player } from "@/types";
 
 const mockReplace = jest.fn();
+const currentSourceDate = new Date().toISOString();
 
 jest.mock("next/navigation", () => ({
   useRouter: () => ({ replace: mockReplace }),
@@ -34,27 +35,27 @@ jest.mock("@/hooks/useBestBallSnapshot", () => ({
     snapshot: {
       schemaVersion: 2,
       season: 2026,
-      generatedAt: "2026-08-02T12:00:00.000Z",
+      generatedAt: currentSourceDate,
       players: mockPlayers,
       rankingSource: {
         provider: "FantasyPros",
         url: "https://example.com/rankings",
-        asOf: "2026-08-01T12:00:00.000Z",
+        asOf: currentSourceDate,
       },
       adpSource: {
         provider: "Underdog ADP",
         url: "https://example.com/adp",
-        asOf: "2026-08-02T12:00:00.000Z",
+        asOf: currentSourceDate,
       },
       superflexSource: {
         provider: "FantasyPros",
         url: "https://example.com/superflex",
-        asOf: "2026-08-02T12:00:00.000Z",
+        asOf: currentSourceDate,
       },
       scheduleSource: {
         provider: "ESPN",
         url: "https://example.com/schedule",
-        asOf: "2026-08-02T12:00:00.000Z",
+        asOf: currentSourceDate,
       },
       week17Opponents: { CIN: "BAL", BAL: "CIN", LAR: "TB", TB: "LAR" },
     },
@@ -95,15 +96,16 @@ describe("BestBallDraftTrackerClient", () => {
     ).toBeVisible();
   });
 
-  it("shows the weekly variance proxy for Weekly Winners", async () => {
+  it("keeps weekly variation neutral without weekly projections", async () => {
     render(<BestBallDraftTrackerClient initialContest="weekly-winners" />);
 
     fireEvent.click(
       await screen.findByRole("button", { name: "Open draft room from slot 1" })
     );
 
-    expect(screen.getAllByText(/Weekly variance proxy/).length).toBeGreaterThan(0);
-    expect(screen.getByText(/These scores compare the players available now/)).toBeVisible();
+    expect(screen.getAllByText(/Weekly projection spread 0/).length).toBeGreaterThan(0);
+    expect(screen.queryByText(/Weekly variance proxy/)).not.toBeInTheDocument();
+    expect(screen.getByText(/This is not a projected win rate/)).toBeVisible();
   });
 
   it("does not present standard-lineup ADP as a Superflex room price", async () => {
@@ -112,8 +114,8 @@ describe("BestBallDraftTrackerClient", () => {
       await screen.findByRole("button", { name: "Open draft room from slot 1" })
     );
 
-    expect(screen.getAllByText(/no separate Superflex ADP/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText("Not sourced").length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/no matching market ADP/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Matching ADP not sourced/).length).toBeGreaterThan(0);
   });
 
   it("opens the mobile build dialog and returns focus when it closes", async () => {

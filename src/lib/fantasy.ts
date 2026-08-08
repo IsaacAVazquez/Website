@@ -12,7 +12,7 @@ export const FANTASY_ROUTE_POSITIONS = [
 ] as const;
 
 export const FANTASY_ROUTE_SCORING = ["ppr", "half_ppr", "standard"] as const;
-export const FANTASY_SNAPSHOT_SCHEMA_VERSION = 6;
+export const FANTASY_SNAPSHOT_SCHEMA_VERSION = 7;
 export const DEFAULT_FANTASY_SNAPSHOT_SOURCE =
   "Published fantasy rankings snapshot generated from FantasyPros public consensus pages. Overall boards come from the public overall consensus page for each scoring format, while flex is derived locally from the published overall board.";
 
@@ -323,6 +323,22 @@ export function publishFantasyPlayer(player: Player): Player {
 
   if (isFiniteNumber(player.adp)) {
     publishedPlayer.adp = player.adp;
+  }
+
+  if (isFiniteNumber(player.adpHigh)) {
+    publishedPlayer.adpHigh = player.adpHigh;
+  }
+
+  if (isFiniteNumber(player.adpLow)) {
+    publishedPlayer.adpLow = player.adpLow;
+  }
+
+  if (isFiniteNumber(player.adpStandardDeviation)) {
+    publishedPlayer.adpStandardDeviation = player.adpStandardDeviation;
+  }
+
+  if (isFiniteNumber(player.adpTimesDrafted)) {
+    publishedPlayer.adpTimesDrafted = player.adpTimesDrafted;
   }
 
   const updatedAt = normalizeOptionalTimestamp(player.lastUpdated);

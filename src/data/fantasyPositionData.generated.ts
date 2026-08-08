@@ -11,12 +11,14 @@ export const fantasyPositionDataSource = "FantasyPros public consensus cheatshee
 export const fantasyPositionData: Record<
   ScoringFormat,
   {
+    season?: number;
     overall: Player[];
     positions: Record<"QB" | "RB" | "WR" | "TE" | "K" | "DST", Player[]>;
     upstreamUpdatedAt: string | null;
   }
 > = {
   "PPR": {
+    "season": 2026,
     "overall": [
       {
         "id": "fp-19788",
@@ -21356,6 +21358,7 @@ export const fantasyPositionData: Record<
     "upstreamUpdatedAt": "2026-08-07T16:48:32.000Z"
   },
   "HALF_PPR": {
+    "season": 2026,
     "overall": [
       {
         "id": "fp-22968",
@@ -51366,6 +51369,7 @@ export const fantasyPositionData: Record<
     "upstreamUpdatedAt": "2026-08-07T16:48:33.000Z"
   },
   "STANDARD": {
+    "season": 2026,
     "overall": [
       {
         "id": "fp-22968",

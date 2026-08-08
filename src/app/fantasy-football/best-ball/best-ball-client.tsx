@@ -7,8 +7,17 @@ import { startTransition, useMemo, useOptimistic, useState } from "react";
 
 import { PositionFilterBar, type PositionFilterOption } from "@/components/fantasy";
 import { useBestBallSnapshot } from "@/hooks/useBestBallSnapshot";
-import { sortBestBallRankings, type BestBallContestId } from "@/lib/bestBall";
-import { FANTASY_CHIP_CLASS, getPositionTone } from "@/lib/fantasyUtils";
+import {
+  hasSupportedBestBallAdp,
+  sortBestBallRankings,
+  type BestBallContestId,
+  type RankedBestBallPlayer,
+} from "@/lib/bestBall";
+import {
+  FANTASY_CHIP_CLASS,
+  getPositionTone,
+  getSnapshotStaleness,
+} from "@/lib/fantasyUtils";
 import type { BestBallSnapshot } from "@/lib/bestBallSnapshot";
 import type { Player } from "@/types";
 
@@ -76,7 +85,7 @@ const CONTESTS: ContestCopy[] = [
     structure: "Each weekly score competes against the full contest field as a separate result. Underdog says group size, player pool, and slate can vary, so the linked tracker applies only when the contest card matches this model.",
     brief:
       "I am building for at least one exceptional weekly combination rather than a steady season long total.",
-    build: "Create one or two clear quarterback stack paths and use the board's position level weekly variance proxy as a small tiebreaker. The current snapshot does not have player level weekly projections.",
+    build: "Create one or two clear quarterback stack paths. The current snapshot has no player level weekly projections, so weekly variation stays neutral instead of being estimated from position alone.",
     risk: "Large team stacks are rare in top weekly lineups. Concentration should have a reason tied to one or two scoring paths.",
   },
   {
@@ -172,7 +181,7 @@ const RECOMMENDATIONS = [
   {
     number: "03",
     title: "Change the build with the contest",
-    body: "I lower final week correlation in Sit and Go, spread weekly risk in Eliminator, use a disclosed position level variance proxy in Weekly Winners, and use a separate sourced order in Superflex.",
+    body: "I lower final week correlation in Sit and Go, focus on weekly position coverage in Eliminator, leave Weekly Winners variation neutral without player-level weekly projections, and use a separate sourced order in Superflex.",
   },
   {
     number: "04",
@@ -198,19 +207,14 @@ function getFreshnessWarning(
   contest: BestBallContestId
 ): string | null {
   if (!snapshot) return null;
-  const month = new Date().getUTCMonth();
-  const sourceAgeLimit = month >= 6 && month <= 8 ? 14 : 45;
   const rankingAsOf =
     contest === "superflex" ? snapshot.superflexSource?.asOf : snapshot.rankingSource.asOf;
   const checks = [
-    { value: snapshot.generatedAt, days: 10 },
-    { value: rankingAsOf, days: sourceAgeLimit },
-    { value: snapshot.adpSource?.asOf, days: sourceAgeLimit },
+    snapshot.generatedAt,
+    rankingAsOf,
+    ...(hasSupportedBestBallAdp(contest) ? [snapshot.adpSource?.asOf] : []),
   ];
-  const stale = checks.some(({ value, days }) => {
-    const timestamp = value ? Date.parse(value) : Number.NaN;
-    return !Number.isFinite(timestamp) || Date.now() - timestamp > days * 86_400_000;
-  });
+  const stale = checks.some((value) => getSnapshotStaleness(value) === "stale");
   return stale
     ? "One or more best ball sources are older than the normal refresh window. Check the dates before using this board in a live room."
     : null;
@@ -270,7 +274,7 @@ function BestBallPlayerRow({
   opponent,
   adpAvailable,
 }: {
-  player: Player;
+  player: RankedBestBallPlayer;
   lensRank: number;
   opponent?: string;
   adpAvailable: boolean;
@@ -305,9 +309,11 @@ function BestBallPlayerRow({
         </div>
         <div className="ml-auto shrink-0 text-right md:ml-0">
           <p className="text-2xs font-semibold uppercase tracking-[0.12em] md:hidden" style={{ color: "var(--home-ink-muted)" }}>
-            {adpAvailable ? "UD ADP" : "SF ADP"}
+            {adpAvailable ? "UD ADP" : "Source rank"}
           </p>
-          <p className="font-semibold tabular-nums">{adpAvailable ? formatRank(player.adp) : "NA"}</p>
+          <p className="font-semibold tabular-nums">
+            {formatRank(adpAvailable ? player.adp : player.adjustedRank)}
+          </p>
         </div>
         <p className="hidden text-center font-semibold tabular-nums md:block">{formatRank(getConsensusRank(player))}</p>
         <p
@@ -377,10 +383,23 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
   const activeContest =
     CONTESTS.find((contest) => contest.id === routeState.contest) ?? CONTESTS[0];
 
+  const adpAvailable =
+    hasSupportedBestBallAdp(routeState.contest) &&
+    snapshot?.adpSource !== null &&
+    getSnapshotStaleness(snapshot?.adpSource?.asOf) !== "stale";
+
+  const modelPlayers = useMemo(
+    () =>
+      (snapshot?.players ?? []).map((player) =>
+        adpAvailable ? player : { ...player, adp: undefined }
+      ),
+    [adpAvailable, snapshot?.players]
+  );
+
   const orderedPlayers = useMemo(() => {
     if (!snapshot) return [];
-    return sortBestBallRankings(snapshot.players, routeState.contest);
-  }, [routeState.contest, snapshot]);
+    return sortBestBallRankings(modelPlayers, routeState.contest);
+  }, [modelPlayers, routeState.contest, snapshot]);
 
   const filteredPlayers = useMemo(() => {
     const query = routeState.query.toLowerCase();
@@ -435,7 +454,11 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
               Build for the contest you are actually drafting.
             </h1>
             <p className="max-w-[65ch] text-sm leading-7 sm:text-base" style={{ color: "var(--home-ink-muted)" }}>
-              I built the 2026 standard lineup board around Underdog average draft position (ADP). The notes and draft assistant change the build for each format, compare your roster against the room, and keep expected return math separate from the team model. Superflex uses a separate consensus order, and its ADP and value fields stay blank because this snapshot does not have a Superflex room price.
+              I use standard-season Underdog average draft position for Mania and Puppy. Eliminator,
+              Weekly Winners, and Sit and Go fall back to the standard PPR best ball consensus because
+              this snapshot has no matching slate price, while Superflex has a separate sourced
+              consensus. The draft assistant changes the build by contest and keeps expected return
+              math separate from the roster model.
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
@@ -572,7 +595,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             <div className="mt-4 hidden grid-cols-[3.25rem_minmax(0,1fr)_4.5rem_4.5rem_4.5rem_4.5rem_5.5rem] gap-3 px-4 text-2xs font-semibold uppercase tracking-[0.1em] md:grid" style={{ color: "var(--home-ink-muted)" }}>
               <span className="text-center">Board</span>
               <span>Player</span>
-              <span className="text-center">{routeState.contest === "superflex" ? "SF ADP" : "UD ADP"}</span>
+              <span className="text-center">{adpAvailable ? "UD ADP" : "Source rank"}</span>
               <span className="text-center">{routeState.contest === "superflex" ? "PPR best ball" : "PPR ECR"}</span>
               <span className="text-center">Value</span>
               <span className="text-center">Bye</span>
@@ -616,7 +639,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                       player={player}
                       lensRank={player.bestBallRank}
                       opponent={snapshot?.week17Opponents[player.team]}
-                      adpAvailable={routeState.contest !== "superflex"}
+                      adpAvailable={adpAvailable}
                     />
                   ))}
                 </ol>
@@ -649,7 +672,9 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
               <p>
                 {routeState.contest === "superflex"
                   ? "Board order follows the published half PPR Superflex consensus. PPR best ball shows the separate standard lineup reference for context. This snapshot has no Superflex room ADP, so ADP and value stay blank instead of reusing the standard lineup market."
-                  : "Board order follows current standard Underdog ADP when a player is matched. PPR best ball ECR is a second opinion because FantasyPros does not publish a separate half PPR best ball consensus on this page. Value is ADP minus that PPR reference, so a positive number means the room usually lets the player go later."}
+                  : adpAvailable
+                    ? "Board order follows current standard-season Underdog ADP when a player is matched. PPR best ball ECR is a separate reference. Value is ADP minus that PPR reference, so a positive number means the market usually lets the player go later."
+                    : "This contest has no matching current ADP source in the snapshot. Board order follows PPR best ball ECR, and market value stays blank instead of reusing another slate's price."}
               </p>
               {snapshot && (
                 <>
@@ -672,7 +697,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        ADP from {snapshot.adpSource.provider}
+                        {adpAvailable ? "ADP" : "Standard ADP reference"} from {snapshot.adpSource.provider}
                       </a>
                     )}
                     {routeState.contest === "superflex" && snapshot.superflexSource && (

@@ -46,6 +46,7 @@ Subsystem references (current):
 - `../SNAPSHOT_DRIVEN_DASHBOARDS.md` — shared snapshot-driven dashboard architecture
 - `../PERSONAL_INTEREST_TOOLS.md` — browser-persisted localStorage tools
 - `../RETIREMENT_PLANNER_ENGINE.md` — pure retirement projection engine (`src/lib/retirement/`)
+- `FANTASY_DRAFT_MODEL.md` - fantasy draft metrics, formulas, data limits, and validation contract
 
 ---
 

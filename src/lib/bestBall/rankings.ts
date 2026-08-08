@@ -1,6 +1,10 @@
 import { isUndraftedFloorAdp } from "@/lib/draftAnalytics";
 import type { Player } from "@/types";
-import { DEFAULT_BEST_BALL_CONTEST_ID, getContestPreset } from "./contests";
+import {
+  DEFAULT_BEST_BALL_CONTEST_ID,
+  getContestPreset,
+  hasSupportedBestBallAdp,
+} from "./contests";
 import { BEST_BALL_POSITIONS } from "./types";
 import type {
   BestBallContestId,
@@ -38,11 +42,12 @@ export function sortBestBallRankings(
   return eligible
     .map(({ player, sourceIndex, ecr }) => {
       const isSuperflex = preset.format === "superflex";
+      const supportsAdp = hasSupportedBestBallAdp(preset);
       const hasSuperflexRank = isSuperflex && isFiniteNumber(player.superflexRank);
       const atUndraftedFloor =
         isFiniteNumber(player.adp) &&
         isUndraftedFloorAdp(Number(player.adp), preset.rounds, preset.teams);
-      const hasUnderdogAdp = !isSuperflex && isFiniteNumber(player.adp) && !atUndraftedFloor;
+      const hasUnderdogAdp = supportsAdp && isFiniteNumber(player.adp) && !atUndraftedFloor;
       const adjustedRank = hasSuperflexRank
         ? Number(player.superflexRank)
         : hasUnderdogAdp
@@ -63,6 +68,8 @@ export function sortBestBallRankings(
               ? "No separate Superflex consensus match is available, so the best ball rank is unchanged."
               : hasUnderdogAdp
                 ? `The current standard Underdog ADP is ${Number(player.adp).toFixed(1)}. The PPR best ball ECR is ${ecr}.`
+                : !supportsAdp
+                  ? "This contest has no matching ADP source, so the board uses PPR best ball ECR and does not score market value."
                 : atUndraftedFloor
                   ? `The Underdog ADP of ${Number(player.adp).toFixed(1)} sits at the undrafted floor, so the board uses the PPR best ball ECR of ${ecr} instead.`
                   : "No Underdog ADP match is available, so the board uses the PPR best ball ECR.",

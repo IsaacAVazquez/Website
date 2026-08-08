@@ -122,18 +122,18 @@ describe("best ball rankings", () => {
     player("dst", "DST", 2),
   ];
 
-  it("uses current Underdog ADP in every standard-lineup format", () => {
-    for (const contestId of [
-      "bbm-vii",
-      "puppy",
-      "eliminator",
-      "weekly-winners",
-      "sit-and-go",
-    ] as const) {
+  it("uses standard-season Underdog ADP only for the supported tournament rooms", () => {
+    for (const contestId of ["bbm-vii", "puppy"] as const) {
       const ranked = sortBestBallRankings(pool, contestId);
       expect(ranked.map((entry) => entry.id)).toEqual(["qb", "rb", "wr", "te"]);
       expect(ranked[0].rankReason).toContain("current standard Underdog ADP");
       expect(ranked[0].bestBallEcr).toBe(30);
+    }
+
+    for (const contestId of ["eliminator", "weekly-winners", "sit-and-go"] as const) {
+      const ranked = sortBestBallRankings(pool, contestId);
+      expect(ranked.map((entry) => entry.id)).toEqual(["wr", "rb", "qb", "te"]);
+      expect(ranked[0].rankReason).toContain("no matching ADP source");
     }
   });
 
@@ -327,10 +327,12 @@ describe("recommendation scorer", () => {
       currentPickNumber: 24,
     });
 
-    expect(recommendation.components.baseRank).toBeGreaterThan(0);
+    expect(recommendation.components.baseRank).toBe(0);
     expect(recommendation.components.adpValue).toBeGreaterThan(0);
     expect(recommendation.components.rosterNeed).toBeGreaterThan(0);
+    expect(recommendation.components.rosterNeed).toBeLessThanOrEqual(2);
     expect(recommendation.components.stackSchedule).toBeGreaterThan(0);
+    expect(recommendation.components.stackSchedule).toBeLessThanOrEqual(2);
     expect(recommendation.components.byeRisk).toBe(0);
     expect(recommendation.reasons.map((reason) => reason.component)).toEqual([
       "baseRank",
@@ -345,22 +347,25 @@ describe("recommendation scorer", () => {
     ]);
   });
 
-  it("weights ADP value more heavily early in a draft", () => {
-    const earlyCandidate = player("early", "WR", 30, { team: "SEA", adp: 12 });
-    const lateCandidate = player("late", "WR", 30, { team: "SEA", adp: 172 });
-    const early = recommendBestBallPlayers({
-      players: [earlyCandidate],
+  it("prices one ADP slot as one point without counting ADP twice", () => {
+    const earlierMarket = player("earlier-market", "WR", 30, { team: "SEA", adp: 31 });
+    const laterMarket = player("later-market", "WR", 30, { team: "LAR", adp: 32 });
+    const recommendations = recommendBestBallPlayers({
+      players: [earlierMarket, laterMarket],
       picks: [],
       userTeamNumber: 1,
-      currentPickNumber: 20,
-    })[0];
-    const late = recommendBestBallPlayers({
-      players: [lateCandidate],
-      picks: [],
-      userTeamNumber: 1,
-      currentPickNumber: 180,
-    })[0];
-    expect(early.components.adpValue).toBeGreaterThan(late.components.adpValue);
+      currentPickNumber: 40,
+    });
+    const earlier = recommendations.find((entry) => entry.player.id === "earlier-market");
+    const later = recommendations.find((entry) => entry.player.id === "later-market");
+    const earlierMarketScore =
+      (earlier?.components.baseRank ?? 0) + (earlier?.components.adpValue ?? 0);
+    const laterMarketScore =
+      (later?.components.baseRank ?? 0) + (later?.components.adpValue ?? 0);
+
+    expect(earlierMarketScore).toBe(9);
+    expect(laterMarketScore).toBe(8);
+    expect(earlierMarketScore - laterMarketScore).toBe(1);
   });
 
   it("does not use standard-lineup ADP in Superflex recommendations", () => {
@@ -382,17 +387,24 @@ describe("recommendation scorer", () => {
       .toContain("no separate Superflex ADP source");
   });
 
-  it("downweights correlation and penalizes bye overlap more in Eliminator", () => {
+  it("downweights correlation and only penalizes a bye that can break position coverage", () => {
+    const secondQb = player("qb-buf", "QB", 17, { team: "BUF", byeWeek: 10 });
+    const byeQbCandidate = player("qb-mia", "QB", 25, {
+      team: "MIA",
+      byeWeek: 10,
+      adp: 19,
+    });
+    const byeRoster = [rosterPick, pick(secondQb, 3, 1, 13)];
     const tournament = recommendBestBallPlayers({
-      players: [stackCandidate, byeCandidate],
-      picks: [rosterPick],
+      players: [stackCandidate, byeCandidate, byeQbCandidate],
+      picks: byeRoster,
       userTeamNumber: 1,
       currentPickNumber: 24,
       contestId: "bbm-vii",
     });
     const eliminator = recommendBestBallPlayers({
-      players: [stackCandidate, byeCandidate],
-      picks: [rosterPick],
+      players: [stackCandidate, byeCandidate, byeQbCandidate],
+      picks: byeRoster,
       userTeamNumber: 1,
       currentPickNumber: 24,
       contestId: "eliminator",
@@ -400,14 +412,49 @@ describe("recommendation scorer", () => {
 
     const tournamentStack = tournament.find((entry) => entry.player.id === "wr-kc");
     const eliminatorStack = eliminator.find((entry) => entry.player.id === "wr-kc");
-    const tournamentBye = tournament.find((entry) => entry.player.id === "wr-mia");
-    const eliminatorBye = eliminator.find((entry) => entry.player.id === "wr-mia");
+    const tournamentBye = tournament.find((entry) => entry.player.id === "qb-mia");
+    const eliminatorBye = eliminator.find((entry) => entry.player.id === "qb-mia");
+    const ordinaryOverlap = tournament.find((entry) => entry.player.id === "wr-mia");
     expect(eliminatorStack?.components.stackSchedule).toBeLessThan(
       tournamentStack?.components.stackSchedule ?? 0
     );
     expect(eliminatorBye?.components.byeRisk).toBeLessThan(
       tournamentBye?.components.byeRisk ?? 0
     );
+    expect(ordinaryOverlap?.components.byeRisk).toBe(0);
+  });
+
+  it("penalizes a pick that consumes the only feasible bye-week repair slot", () => {
+    const roster = [
+      ...Array.from({ length: 4 }, (_, index) =>
+        pick(player(`repair-rb-${index}`, "RB", 20 + index), index + 1)
+      ),
+      ...Array.from({ length: 9 }, (_, index) =>
+        pick(player(`repair-wr-${index}`, "WR", 40 + index), index + 5)
+      ),
+      ...Array.from({ length: 2 }, (_, index) =>
+        pick(
+          player(`repair-te-${index}`, "TE", 70 + index, { byeWeek: 9 }),
+          index + 14
+        )
+      ),
+    ];
+    const candidate = player("repair-slot-rb", "RB", 180, {
+      adp: 180,
+      byeWeek: 9,
+    });
+    const recommendation = recommendBestBallPlayers({
+      players: [candidate],
+      picks: roster,
+      userTeamNumber: 1,
+      currentPickNumber: 180,
+      contestId: "bbm-vii",
+    })[0];
+
+    expect(recommendation.components.byeRisk).toBeLessThan(0);
+    expect(
+      recommendation.reasons.find((reason) => reason.component === "byeRisk")?.detail
+    ).toContain("best single final composition across every published bye");
   });
 
   it("keeps ranking deep players below shallow ones instead of flooring them at zero", () => {
@@ -418,6 +465,7 @@ describe("recommendation scorer", () => {
       picks: [],
       userTeamNumber: 1,
       currentPickNumber: 150,
+      contestId: "sit-and-go",
     });
 
     expect(best.player.id).toBe("shallow-wr");
@@ -427,22 +475,46 @@ describe("recommendation scorer", () => {
       picks: [],
       userTeamNumber: 1,
       currentPickNumber: 150,
+      contestId: "sit-and-go",
     })[0];
     expect(deepOnly.components.baseRank).toBeLessThan(0);
   });
 
-  it("ignores an Underdog ADP sitting at the undrafted floor", () => {
+  it("omits exact supported-slate recommendations without a usable ADP", () => {
     // 18 rounds x 12 teams means an undrafted player lands at an ADP of about 216.
     const floored = player("floor-wr", "WR", 24, { team: "SEA", rankEcr: 400, adp: 216 });
+    const invalid = player("invalid-wr", "WR", 24, { team: "ARI", rankEcr: 300, adp: 0 });
     const genuine = player("real-wr", "WR", 24, { team: "SEA", rankEcr: 240, adp: 200 });
-    const [best] = recommendBestBallPlayers({
-      players: [floored, genuine],
+    const recommendations = recommendBestBallPlayers({
+      players: [floored, invalid, genuine],
       picks: [],
       userTeamNumber: 1,
       currentPickNumber: 200,
     });
-
+    const [best] = recommendations;
     expect(best.player.id).toBe("real-wr");
+    expect(recommendations.map((entry) => entry.player.id)).toEqual(["real-wr"]);
+  });
+
+  it("does not turn missing market timing into an urgent exact recommendation", () => {
+    const unknownFloor = player("unknown-floor", "WR", 400, {
+      team: "SEA",
+      adp: 216,
+    });
+    const likelyToLast = player("likely-to-last", "WR", 200, {
+      team: "ARI",
+      adp: 200,
+    });
+    const recommendations = recommendBestBallPlayers({
+      players: [unknownFloor, likelyToLast],
+      picks: [],
+      userTeamNumber: 1,
+      currentPickNumber: 170,
+    });
+    const waiting = recommendations.find((entry) => entry.player.id === likelyToLast.id);
+
+    expect(waiting?.tiebreakers.waitUntilNextTurn).toBe(true);
+    expect(recommendations.map((entry) => entry.player.id)).toEqual([likelyToLast.id]);
   });
 
   it("scores a tier cliff only when the next tier is a real board gap away", () => {
@@ -472,6 +544,110 @@ describe("recommendation scorer", () => {
     expect(withoutCliff?.components.tierScarcity).toBeLessThan(
       (withCliff?.components.tierScarcity ?? 0) / 4
     );
+  });
+
+  it("measures a standard tier cliff on ECR even when ADP order is inverted", () => {
+    const roster = [pick(player("wr-filler", "WR", 5, { team: "SEA" }), 1)];
+    const finalCurrentTier = player("ecr-cliff", "TE", 40, {
+      team: "GB",
+      adp: 100,
+      tier: 2,
+    });
+    const firstNextTier = player("ecr-next", "TE", 70, {
+      team: "NYJ",
+      adp: 41,
+      tier: 3,
+    });
+
+    const recommendation = recommendBestBallPlayers({
+      players: [firstNextTier, finalCurrentTier],
+      picks: roster,
+      userTeamNumber: 1,
+      currentPickNumber: 24,
+    }).find((entry) => entry.player.id === finalCurrentTier.id);
+
+    expect(recommendation?.components.tierScarcity).toBeGreaterThan(0);
+  });
+
+  it("uses the stronger Superflex tier-cliff weight without exceeding the shared cap", () => {
+    const roster = [pick(player("wr-filler", "WR", 5, { team: "SEA" }), 1)];
+    const cliffTe = player("weighted-cliff", "TE", 40, {
+      team: "GB",
+      adp: 40,
+      superflexRank: 40,
+      tier: 2,
+      superflexTier: 2,
+    });
+    const nextTe = player("weighted-next", "TE", 46, {
+      team: "NYJ",
+      adp: 46,
+      superflexRank: 46,
+      tier: 3,
+      superflexTier: 3,
+    });
+
+    const standard = recommendBestBallPlayers({
+      players: [cliffTe, nextTe],
+      picks: roster,
+      userTeamNumber: 1,
+      currentPickNumber: 24,
+      contestId: "bbm-vii",
+    }).find((entry) => entry.player.id === cliffTe.id);
+    const superflex = recommendBestBallPlayers({
+      players: [cliffTe, nextTe],
+      picks: roster,
+      userTeamNumber: 1,
+      currentPickNumber: 24,
+      contestId: "superflex",
+    }).find((entry) => entry.player.id === cliffTe.id);
+
+    expect(superflex?.components.tierScarcity).toBeGreaterThan(
+      standard?.components.tierScarcity ?? 0
+    );
+    expect(superflex?.components.tierScarcity).toBeLessThanOrEqual(2);
+  });
+
+  it("does not reuse a standard tier cliff when the Superflex tier is missing", () => {
+    const roster = [pick(player("wr-filler", "WR", 5, { team: "SEA" }), 1)];
+    const standardCliff = player("standard-only-cliff", "TE", 40, {
+      superflexRank: 40,
+      tier: 2,
+    });
+    const standardNextTier = player("standard-only-next", "TE", 70, {
+      superflexRank: 70,
+      tier: 3,
+    });
+
+    const recommendation = recommendBestBallPlayers({
+      players: [standardCliff, standardNextTier],
+      picks: roster,
+      userTeamNumber: 1,
+      currentPickNumber: 24,
+      contestId: "superflex",
+    }).find((entry) => entry.player.id === standardCliff.id);
+
+    expect(recommendation?.components.tierScarcity).toBe(0);
+  });
+
+  it("omits an exact Superflex recommendation when the format rank is missing", () => {
+    const missingFormatRank = player("missing-sf-rank", "QB", 12, {
+      tier: 1,
+      adp: 12,
+    });
+    const rankedQuarterback = player("ranked-sf-qb", "QB", 80, {
+      superflexRank: 8,
+      superflexTier: 1,
+      adp: 80,
+    });
+    const recommendations = recommendBestBallPlayers({
+      players: [missingFormatRank, rankedQuarterback],
+      picks: [],
+      userTeamNumber: 1,
+      currentPickNumber: 1,
+      contestId: "superflex",
+    });
+
+    expect(recommendations.map((entry) => entry.player.id)).toEqual([rankedQuarterback.id]);
   });
 
   it("scores a completed Week 17 game stack and ignores a bare bring-back", () => {
@@ -506,6 +682,7 @@ describe("recommendation scorer", () => {
     })[0];
 
     expect(completesGame.components.gameStack).toBeGreaterThan(0);
+    expect(completesGame.components.gameStack).toBeLessThanOrEqual(1);
     expect(bareBringBack.components.gameStack).toBe(0);
     expect(eliminator.components.gameStack).toBe(0);
   });
@@ -540,6 +717,64 @@ describe("recommendation scorer", () => {
     expect(cumulative.tiebreakers.week17Opponent).toBe(0);
   });
 
+  it("does not let a Week 17 stack pull a player more than twenty ADP spots forward", () => {
+    const stackedRoster = [rosterPick, pick(stackCandidate, 3, 1, 13)];
+    const nearMarket = player("near-market", "WR", 100, {
+      team: "DAL",
+      adp: 100,
+      byeWeek: 10,
+    });
+    const farGameStack = player("far-game-stack", "WR", 125, {
+      team: "BUF",
+      adp: 125,
+      byeWeek: 11,
+    });
+    const recommendations = recommendBestBallPlayers({
+      players: [nearMarket, farGameStack],
+      picks: stackedRoster,
+      userTeamNumber: 1,
+      currentPickNumber: 97,
+      contestId: "bbm-vii",
+      week17Opponents: { KC: "BUF", BUF: "KC" },
+    });
+    const far = recommendations.find((entry) => entry.player.id === "far-game-stack");
+
+    expect(recommendations[0].player.id).toBe("near-market");
+    expect(far?.components.gameStack).toBe(1);
+    expect(far?.tiebreakers.waitUntilNextTurn).toBe(true);
+  });
+
+  it("only recommends the required position when one final roster spot remains", () => {
+    const finalRoster = [
+      pick(player("final-roster-qb", "QB", 10), 1),
+      ...Array.from({ length: 4 }, (_, index) =>
+        pick(player(`final-roster-rb-${index}`, "RB", 20 + index), index + 2)
+      ),
+      ...Array.from({ length: 9 }, (_, index) =>
+        pick(player(`final-roster-wr-${index}`, "WR", 40 + index), index + 6)
+      ),
+      ...Array.from({ length: 3 }, (_, index) =>
+        pick(player(`final-roster-te-${index}`, "TE", 70 + index), index + 15)
+      ),
+    ];
+    const requiredQb = player("required-final-qb", "QB", 210, {
+      team: "SEA",
+      adp: 210,
+    });
+    const optionalWr = player("optional-final-wr", "WR", 190, {
+      team: "LAR",
+      adp: 190,
+    });
+    const recommendations = recommendBestBallPlayers({
+      players: [optionalWr, requiredQb],
+      picks: finalRoster,
+      userTeamNumber: 1,
+      currentPickNumber: 216,
+    });
+
+    expect(recommendations.map((entry) => entry.player.id)).toEqual(["required-final-qb"]);
+  });
+
   it("adds a visible spike-week component only for Weekly Winners", () => {
     const weeklyCandidate = player("weekly-wr", "WR", 20, {
       team: "SEA",
@@ -565,6 +800,22 @@ describe("recommendation scorer", () => {
     })[0];
 
     expect(weekly.components.spikeWeek).toBeGreaterThan(0);
+    expect(weekly.components.spikeWeek).toBeLessThanOrEqual(1);
     expect(cumulative.components.spikeWeek).toBe(0);
+  });
+
+  it("adds no Weekly Winners spike score without weekly projections", () => {
+    const [recommendation] = recommendBestBallPlayers({
+      players: [player("weekly-without-projections", "WR", 20, { adp: 20 })],
+      picks: [],
+      userTeamNumber: 1,
+      currentPickNumber: 20,
+      contestId: "weekly-winners",
+    });
+
+    expect(recommendation.components.spikeWeek).toBe(0);
+    expect(
+      recommendation.reasons.find((reason) => reason.component === "spikeWeek")?.detail
+    ).toContain("adds no score");
   });
 });

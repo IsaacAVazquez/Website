@@ -5,7 +5,7 @@ import type { ExpectedReturnFormState } from "./DraftValuePanel";
 import type { DraftValueReport } from "@/lib/fantasyTeamValue";
 
 const REPORT: DraftValueReport = {
-  modelVersion: "draft-outlook-v1",
+  modelVersion: "draft-outlook-v2",
   mode: "best-ball",
   teamNumber: 12,
   picksDrafted: 6,
@@ -80,12 +80,13 @@ describe("DraftValuePanel", () => {
     render(<DraftValuePanel report={REPORT} headingId="draft-value-heading" />);
 
     expect(screen.getByText("3 of 12")).toBeInTheDocument();
-    expect(screen.getByText("Ahead of 82% of same-progress teams")).toBeInTheDocument();
+    expect(screen.getByText("82nd percentile among same-progress teams")).toBeInTheDocument();
     expect(screen.getByText("+3.0")).toBeInTheDocument();
     expect(
       screen.getByText(/Projected points, win probability, and roster-specific dollar EV require a separate simulation/i)
     ).toBeInTheDocument();
     expect(screen.getByText(/Slot 12 has 1 to 23 pick gaps/i)).toBeInTheDocument();
+    expect(screen.getByText("Model v2")).toBeInTheDocument();
   });
 
   it("holds the room rank until the sample is big enough to mean anything", () => {
@@ -99,6 +100,30 @@ describe("DraftValuePanel", () => {
     expect(screen.queryByText("3 of 3")).not.toBeInTheDocument();
     expect(screen.getByText("Waiting")).toBeInTheDocument();
     expect(screen.getByText(/Held until you have 4 picks/i)).toBeInTheDocument();
+  });
+
+  it("does not turn a one-team comparison into a first-place claim", () => {
+    render(
+      <DraftValuePanel
+        report={{ ...REPORT, roomRank: 1, roomSize: 1, roomPercentile: 50 }}
+        headingId="one-team-room-heading"
+      />
+    );
+
+    expect(screen.queryByText("1 of 1")).not.toBeInTheDocument();
+    expect(screen.getByText("Waiting for another team at the same pick count")).toBeInTheDocument();
+  });
+
+  it("describes an exact room tie as a midpoint percentile", () => {
+    render(
+      <DraftValuePanel
+        report={{ ...REPORT, roomRank: 1.5, roomSize: 2, roomPercentile: 50, roomTieCount: 2 }}
+        headingId="tied-room-heading"
+      />
+    );
+
+    expect(screen.getByText("T1.5 of 2")).toBeInTheDocument();
+    expect(screen.getByText("50th percentile among same-progress teams")).toBeInTheDocument();
   });
 
   it("calculates expected return only from the entered payout assumptions", () => {

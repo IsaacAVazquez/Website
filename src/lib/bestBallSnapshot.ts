@@ -2,6 +2,122 @@ import type { Player } from "@/types";
 import { normalizeAdpTeam } from "@/lib/fantasyAdpMatcher";
 
 export const BEST_BALL_SNAPSHOT_SCHEMA_VERSION = 2;
+export const BEST_BALL_MIN_RANKING_PLAYERS = 250;
+export const BEST_BALL_RANKING_TOP_BOARD_SIZE = 150;
+export const BEST_BALL_MIN_RANKING_RELATIVE_COVERAGE = 0.8;
+export const BEST_BALL_MIN_SUPERFLEX_MATCHES = 150;
+export const BEST_BALL_MIN_SUPERFLEX_COVERAGE = 0.9;
+export const BEST_BALL_SUPERFLEX_TOP_BOARD_SIZE = 150;
+export const BEST_BALL_MIN_SUPERFLEX_TOP_BOARD_COVERAGE = 0.95;
+export const BEST_BALL_MIN_SUPERFLEX_QB_COVERAGE = 1;
+export const BEST_BALL_MIN_ADP_MATCHES = 150;
+export const BEST_BALL_MIN_ADP_RELATIVE_COVERAGE = 0.8;
+
+export function assertBestBallRankingCoverage({
+  players,
+  previousPlayers,
+  previousTopPlayers,
+  retainedTopPlayers,
+}: {
+  players: number;
+  previousPlayers: number;
+  previousTopPlayers: number;
+  retainedTopPlayers: number;
+}): void {
+  const requiredPlayers = Math.max(
+    BEST_BALL_MIN_RANKING_PLAYERS,
+    Math.ceil(previousPlayers * BEST_BALL_MIN_RANKING_RELATIVE_COVERAGE)
+  );
+  const requiredTopPlayers = Math.ceil(
+    previousTopPlayers * BEST_BALL_MIN_RANKING_RELATIVE_COVERAGE
+  );
+  if (players < requiredPlayers || retainedTopPlayers < requiredTopPlayers) {
+    throw new Error(
+      `Best ball rankings returned ${players} players versus ${previousPlayers} previously, and retained ${retainedTopPlayers} of ${previousTopPlayers} prior top-board players.`
+    );
+  }
+}
+
+export function assertBestBallAdpCoverage({
+  freshSourceReceived,
+  matches,
+  previousMatches,
+  previousTopPlayers,
+  retainedTopPlayers,
+}: {
+  freshSourceReceived: boolean;
+  matches: number;
+  previousMatches: number;
+  previousTopPlayers: number;
+  retainedTopPlayers: number;
+}): void {
+  if (!freshSourceReceived) return;
+  const requiredMatches = Math.max(
+    BEST_BALL_MIN_ADP_MATCHES,
+    Math.ceil(previousMatches * BEST_BALL_MIN_ADP_RELATIVE_COVERAGE)
+  );
+  const requiredTopPlayers = Math.ceil(
+    previousTopPlayers * BEST_BALL_MIN_ADP_RELATIVE_COVERAGE
+  );
+  if (matches < requiredMatches || retainedTopPlayers < requiredTopPlayers) {
+    throw new Error(
+      `Best ball snapshot matched ADP for ${matches} players versus ${previousMatches} previously, and retained ${retainedTopPlayers} of ${previousTopPlayers} prior top-board prices.`
+    );
+  }
+}
+
+export function assertBestBallSuperflexCoverage({
+  freshSourceReceived,
+  totalPlayers,
+  rankMatches,
+  tierMatches,
+  topBoardPlayers,
+  topBoardRankMatches,
+  topBoardTierMatches,
+  quarterbackPlayers,
+  quarterbackRankMatches,
+  quarterbackTierMatches,
+  hasPreviousSource,
+}: {
+  freshSourceReceived: boolean;
+  totalPlayers: number;
+  rankMatches: number;
+  tierMatches: number;
+  topBoardPlayers: number;
+  topBoardRankMatches: number;
+  topBoardTierMatches: number;
+  quarterbackPlayers: number;
+  quarterbackRankMatches: number;
+  quarterbackTierMatches: number;
+  hasPreviousSource: boolean;
+}): void {
+  const requiredOverallMatches = Math.max(
+    BEST_BALL_MIN_SUPERFLEX_MATCHES,
+    Math.ceil(totalPlayers * BEST_BALL_MIN_SUPERFLEX_COVERAGE)
+  );
+  const requiredTopBoardMatches = Math.ceil(
+    topBoardPlayers * BEST_BALL_MIN_SUPERFLEX_TOP_BOARD_COVERAGE
+  );
+  const requiredQuarterbackMatches = Math.ceil(
+    quarterbackPlayers * BEST_BALL_MIN_SUPERFLEX_QB_COVERAGE
+  );
+  if (
+    freshSourceReceived &&
+    (rankMatches < requiredOverallMatches ||
+      tierMatches < requiredOverallMatches ||
+      topBoardRankMatches < requiredTopBoardMatches ||
+      topBoardTierMatches < requiredTopBoardMatches ||
+      quarterbackRankMatches < requiredQuarterbackMatches ||
+      quarterbackTierMatches < requiredQuarterbackMatches)
+  ) {
+    throw new Error(
+      `Best ball snapshot matched Superflex ranks for ${rankMatches} of ${totalPlayers} players and tiers for ${tierMatches}. The top ${topBoardPlayers} matched ${topBoardRankMatches} ranks and ${topBoardTierMatches} tiers. Quarterbacks matched ${quarterbackRankMatches} ranks and ${quarterbackTierMatches} tiers out of ${quarterbackPlayers}.`
+    );
+  }
+  if (!freshSourceReceived && !hasPreviousSource) {
+    throw new Error("Best ball snapshot has no usable Superflex rankings source.");
+  }
+}
 
 export interface BestBallSourceMetadata {
   provider: string;

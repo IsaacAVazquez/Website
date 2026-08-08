@@ -12,6 +12,8 @@ import {
   getReachStealThreshold,
   getRosterNeeds,
   getTeamValueTotal,
+  isPlayerValueAtPick,
+  reconcileTeamRosters,
   REACH_STEAL_MIN_THRESHOLD,
 } from "@/lib/draftAnalytics";
 import type { DraftPick, Player, TeamRoster } from "@/types";
@@ -75,6 +77,10 @@ describe("getPickBaseline", () => {
     // A real ADP still wins no matter how deep the consensus rank is.
     expect(getPickBaseline(player({ adp: 180, rankEcr: 400 }))).toBe(180);
   });
+
+  it("does not judge a player from an ADP sample below twenty selections", () => {
+    expect(getPickBaseline(player({ adp: 40, adpTimesDrafted: 19, rankEcr: 35 }))).toBeNull();
+  });
 });
 
 describe("getReachStealThreshold", () => {
@@ -84,6 +90,15 @@ describe("getReachStealThreshold", () => {
     expect(getReachStealThreshold(3)).toBe(9);
     expect(getReachStealThreshold(5)).toBe(15);
     expect(getReachStealThreshold(12)).toBe(36);
+  });
+
+  it("uses published player uncertainty instead of a fixed late-round multiplier", () => {
+    expect(
+      getReachStealThreshold(
+        12,
+        player({ adp: 140, adpStandardDeviation: 4, adpTimesDrafted: 100 })
+      )
+    ).toBe(6);
   });
 });
 
@@ -108,6 +123,33 @@ describe("classifyPickValue", () => {
 
     expect(classifyPickValue(earlyGap)).toBe("steal");
     expect(classifyPickValue(lateGap)).toBeNull();
+  });
+
+  it("uses ADP variation when published and suppresses a thin player sample", () => {
+    const stableLate = pick({
+      pickNumber: 150,
+      round: 12,
+      player: player({
+        adp: 140,
+        adpStandardDeviation: 4,
+        adpTimesDrafted: 100,
+      }),
+    });
+    const thin = pick({
+      pickNumber: 150,
+      round: 12,
+      player: player({
+        adp: 140,
+        adpStandardDeviation: 4,
+        adpTimesDrafted: 10,
+      }),
+    });
+
+    expect(classifyPickValue(stableLate)).toBe("steal");
+    expect(classifyPickValue(thin)).toBeNull();
+    expect(isPlayerValueAtPick(stableLate.player, 150, 12)).toBe(true);
+    expect(isPlayerValueAtPick(thin.player, 150, 12)).toBe(false);
+    expect(isPlayerValueAtPick(player({ rankEcr: 100 }), 150, 12)).toBe(false);
   });
 });
 
@@ -170,11 +212,12 @@ describe("computeDraftAnalytics", () => {
     expect(analytics.bestValue[0].player.id).toBe("s1");
   });
 
-  it("grades teams by net value and reads strengths from the starter targets", () => {
+  it("reports market totals, configured starter gaps, and positions that meet depth targets", () => {
     const valueTeamPicks = [
       pick({ pickNumber: 20, round: 2, teamNumber: 1, player: player({ id: "v1", position: "RB", adp: 5 }) }),
       pick({ pickNumber: 32, round: 3, teamNumber: 1, player: player({ id: "v2", position: "RB", adp: 12 }) }),
       pick({ pickNumber: 44, round: 4, teamNumber: 1, player: player({ id: "v3", position: "RB", adp: 30 }) }),
+      pick({ pickNumber: 50, round: 5, teamNumber: 1, player: player({ id: "v4", position: "RB", adp: 40 }) }),
     ];
     const reachTeamPicks = [
       pick({ pickNumber: 8, round: 1, teamNumber: 2, player: player({ id: "w1", position: "WR", adp: 40 }) }),
@@ -190,12 +233,31 @@ describe("computeDraftAnalytics", () => {
     const valueTeam = analytics.teamStrengths.find((team) => team.teamNumber === 1);
     const reachTeam = analytics.teamStrengths.find((team) => team.teamNumber === 2);
 
-    expect(valueTeam?.valueTotal).toBe(49);
+    expect(valueTeam?.valueTotal).toBe(59);
     expect(reachTeam?.valueTotal).toBe(-32);
-    expect(valueTeam?.overallGrade).toBe("A+");
-    expect(reachTeam?.overallGrade).toBe("D");
     expect(valueTeam?.strengths).toContain("RB");
-    expect(valueTeam?.weaknesses).toEqual(expect.arrayContaining(["QB", "WR", "TE", "K", "DST"]));
+    expect(valueTeam?.weaknesses).toEqual(expect.arrayContaining(["QB", "WR", "TE"]));
+    expect(valueTeam?.weaknesses).not.toEqual(expect.arrayContaining(["K", "DST"]));
+  });
+
+  it("uses the sanitized pick list instead of stale player copies inside team rosters", () => {
+    const staleStoredPick = pick({
+      pickNumber: 20,
+      round: 2,
+      teamNumber: 1,
+      player: player({ id: "saved", adp: 1, rankEcr: 10 }),
+    });
+    const currentModelPick = {
+      ...staleStoredPick,
+      player: player({ id: "saved", adp: undefined, rankEcr: 10 }),
+    };
+
+    const analytics = computeDraftAnalytics(
+      [currentModelPick],
+      [roster(1, [staleStoredPick])]
+    );
+
+    expect(analytics.teamStrengths[0].valueTotal).toBe(10);
   });
 });
 
@@ -227,6 +289,30 @@ describe("getLiveDraftSignals", () => {
   });
 });
 
+describe("reconcileTeamRosters", () => {
+  it("rebuilds position counts and totals from the exact model picks", () => {
+    const savedPick = pick({
+      teamNumber: 1,
+      player: player({ id: "position-change", position: "RB", auctionValue: 1 }),
+    });
+    const currentPick = {
+      ...savedPick,
+      player: player({
+        id: "position-change",
+        position: "WR",
+        auctionValue: 7,
+        projectedPoints: 123,
+      }),
+    };
+    const reconciled = reconcileTeamRosters([roster(1, [savedPick])], [currentPick]);
+
+    expect(reconciled[0].positionCounts).toMatchObject({ RB: 0, WR: 1 });
+    expect(reconciled[0].totalValue).toBe(7);
+    expect(reconciled[0].projectedPoints).toBe(123);
+    expect(reconciled[0].picks[0].player.position).toBe("WR");
+  });
+});
+
 describe("getRosterNeeds", () => {
   const counts = (overrides: Partial<TeamRoster["positionCounts"]> = {}) => ({
     QB: 0,
@@ -241,29 +327,33 @@ describe("getRosterNeeds", () => {
     getRosterNeeds({ positionCounts: counts(overrides) });
   const slots = (needs: ReturnType<typeof getRosterNeeds>) => needs.map((need) => need.slot);
 
-  it("opens on skill starters before kicker/defense, never inventing a flex slot", () => {
+  it("opens on configured skill starters and flex while deferring kicker and defense", () => {
     const needs = needsFor();
 
     expect(needs.every((need) => need.level === "starter")).toBe(true);
-    expect(needs.map((need) => need.slot).sort()).toEqual(["DST", "K", "QB", "RB", "TE", "WR"]);
-    expect(needs.some((need) => (need.slot as string) === "FLEX")).toBe(false);
+    expect(needs.map((need) => need.slot).sort()).toEqual([
+      "FLEX",
+      "QB",
+      "RB",
+      "TE",
+      "WR",
+    ]);
 
-    // RB and WR (gap 2) lead; K and DST never sit above a skill starter.
+    // RB and WR have the largest starting gaps. K and DST stay hidden until
+    // the remaining picks equal the remaining specialist slots.
     expect(slots(needs).slice(0, 2).sort()).toEqual(["RB", "WR"]);
-    expect(slots(needs).indexOf("K")).toBeGreaterThan(slots(needs).indexOf("QB"));
 
     // No depth while any starting slot is still open.
     expect(needs.some((need) => need.level === "depth")).toBe(false);
   });
 
-  it("surfaces RB/WR/TE depth once the base starters are set, which is what fills a flex", () => {
-    const needs = needsFor({ RB: 2, WR: 2, TE: 1, QB: 1, K: 1, DST: 1 });
+  it("surfaces depth after the configured starters and flex are filled", () => {
+    const needs = needsFor({ RB: 3, WR: 2, TE: 1, QB: 1, K: 1, DST: 1 });
 
     expect(needs.some((need) => need.level === "starter")).toBe(false);
     const depth = needs.filter((need) => need.level === "depth").map((need) => need.slot);
     expect(depth).toEqual(expect.arrayContaining(["RB", "WR", "QB", "TE"]));
-    // RB and WR (gap 2) rank ahead of QB and TE (gap 1) within depth.
-    expect(depth.indexOf("RB")).toBeLessThan(depth.indexOf("QB"));
+    // WR has the largest remaining gap and stays ahead of backup QB and TE.
     expect(depth.indexOf("WR")).toBeLessThan(depth.indexOf("TE"));
   });
 
@@ -274,14 +364,28 @@ describe("getRosterNeeds", () => {
     );
 
     // ...but open K/DST (drafted last) do not block depth.
-    const withKicker = needsFor({ RB: 2, WR: 2, TE: 1, QB: 1, K: 0, DST: 0 });
+    const withKicker = needsFor({ RB: 3, WR: 2, TE: 1, QB: 1, K: 0, DST: 0 });
     expect(withKicker.some((need) => need.level === "depth")).toBe(true);
     expect(
       withKicker
         .filter((need) => need.level === "starter")
         .map((need) => need.slot)
         .sort()
-    ).toEqual(["DST", "K"]);
+    ).toEqual([]);
+  });
+
+  it("makes kicker and defense due only in the final roster spots", () => {
+    const beforeFinalTwo = getRosterNeeds({
+      positionCounts: counts({ QB: 2, RB: 4, WR: 5, TE: 2, K: 0, DST: 0 }),
+      rounds: 15,
+    });
+    expect(slots(beforeFinalTwo).sort()).toEqual(["DST", "K"]);
+
+    const finalPick = getRosterNeeds({
+      positionCounts: counts({ QB: 2, RB: 4, WR: 5, TE: 2, K: 1, DST: 0 }),
+      rounds: 15,
+    });
+    expect(slots(finalPick)).toEqual(["DST"]);
   });
 
   it("never lists a position as both a starter and a depth need", () => {
@@ -293,6 +397,19 @@ describe("getRosterNeeds", () => {
   });
 
   it("returns nothing once starter and depth targets are all met", () => {
-    expect(needsFor({ RB: 4, WR: 4, TE: 2, QB: 2, K: 1, DST: 1 })).toHaveLength(0);
+    expect(needsFor({ RB: 4, WR: 5, TE: 2, QB: 2, K: 1, DST: 1 })).toHaveLength(0);
+  });
+
+  it("uses a three-receiver lineup and two flex spots when configured", () => {
+    const needs = getRosterNeeds({
+      positionCounts: counts({ QB: 1, RB: 2, WR: 2, TE: 1, K: 0, DST: 0 }),
+      lineup: { QB: 1, RB: 2, WR: 3, TE: 1, FLEX: 2, K: 0, DST: 0 },
+      rounds: 15,
+    });
+
+    expect(needs.filter((need) => need.level === "starter").map((need) => need.slot)).toEqual([
+      "WR",
+      "FLEX",
+    ]);
   });
 });

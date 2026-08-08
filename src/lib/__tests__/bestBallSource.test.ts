@@ -1,10 +1,16 @@
 import {
   assertBestBallSourceScoring,
+  getExpectedBestBallSeason,
   parseBestBallAdpPayload,
   parseBestBallSchedulePayload,
 } from "@/lib/bestBallSource";
 
 describe("best ball public sources", () => {
+  it("keeps January and February attached to the season that began the prior year", () => {
+    expect(getExpectedBestBallSeason(new Date("2027-02-15T00:00:00.000Z"))).toBe(2026);
+    expect(getExpectedBestBallSeason(new Date("2027-03-01T00:00:00.000Z"))).toBe(2027);
+  });
+
   it("rejects a rankings feed with the wrong scoring label", () => {
     expect(() => assertBestBallSourceScoring("PPR", "HALF")).toThrow(
       "instead of HALF"

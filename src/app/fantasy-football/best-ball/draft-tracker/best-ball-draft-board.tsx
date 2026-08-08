@@ -123,7 +123,7 @@ export function BestBallDraftBoard({
         <span>Player</span>
         <span>Pos</span>
         <span>Team</span>
-        <span>{adpAvailable ? "Underdog ADP" : "SF ADP"}</span>
+        <span>{adpAvailable ? "Underdog ADP" : "Source rank"}</span>
         <span>Bye</span>
       </div>
 
@@ -144,7 +144,11 @@ export function BestBallDraftBoard({
             <span className="min-w-0">
               <span className="block truncate text-sm font-semibold">{player.name}</span>
               <span className="mt-1 block truncate text-xs sm:hidden" style={{ color: "var(--home-ink-muted)" }}>
-                {player.team} · {adpAvailable ? "ADP" : "SF ADP"} {adpAvailable ? player.adp?.toFixed(1) ?? "not available" : "not sourced"} · Bye{" "}
+                {player.team} · {adpAvailable ? "ADP" : "Source rank"}{" "}
+                {adpAvailable
+                  ? player.adp?.toFixed(1) ?? "not available"
+                  : player.adjustedRank.toFixed(0)}{" "}
+                · Bye{" "}
                 {player.byeWeek ?? "not available"}
               </span>
               {player.rankAdjustment !== 0 ? (
@@ -161,7 +165,9 @@ export function BestBallDraftBoard({
             </span>
             <span className="hidden text-xs font-medium sm:block">{player.team}</span>
             <span className="hidden text-xs tabular-nums sm:block">
-              {adpAvailable ? player.adp?.toFixed(1) ?? "Not matched" : "Not sourced"}
+              {adpAvailable
+                ? player.adp?.toFixed(1) ?? "Not matched"
+                : player.adjustedRank.toFixed(0)}
             </span>
             <span className="hidden text-xs tabular-nums sm:block">
               {player.byeWeek ?? "Unknown"}

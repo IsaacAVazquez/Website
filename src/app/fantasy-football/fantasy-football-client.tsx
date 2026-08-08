@@ -403,8 +403,8 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
     notes.persistenceStatus === "memory-only" ||
     compare.persistenceStatus === "memory-only";
   const adpSource = metadata?.adpSource ?? null;
-  const adpAvailable = Boolean(adpSource);
   const adpFreshness = getFantasyAdpFreshness(adpSource?.asOf, metadata?.season);
+  const adpAvailable = Boolean(adpSource) && adpFreshness !== "stale";
   const selectedScoringLabel = FANTASY_SCORING_LABELS[routeState.scoring];
   const currentSourceUpdatedAt = sliceMetadata?.updatedAt ?? metadata?.upstreamUpdatedAt ?? null;
   const currentSourceKindLabel = getSourceKindLabel(sliceMetadata?.sourceKind);
@@ -989,6 +989,11 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                           Prior season
                         </span>
                       )}
+                      {adpFreshness === "stale" && (
+                        <span className={FANTASY_CHIP_CLASS} style={STALENESS_TONE.stale}>
+                          Stale
+                        </span>
+                      )}
                     </div>
                     <p className="text-sm font-semibold">{adpSource.provider}</p>
                     <p className="mt-1 text-xs" style={{ color: "var(--home-ink-muted)" }}>
@@ -1000,6 +1005,12 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                     {adpFreshness === "prior-season" && (
                       <p className="mt-2 text-xs" style={{ color: "var(--home-ink-muted)" }}>
                         {`${metadata?.season ?? ""} mock drafts have not started yet, so this carries last season's final ADP. It refreshes automatically once new drafts post.`}
+                      </p>
+                    )}
+                    {adpFreshness === "stale" && (
+                      <p className="mt-2 text-xs" style={{ color: "var(--home-negative)" }}>
+                        This mock-draft sample is more than four days old during draft season. Treat
+                        value and reach labels as unavailable until the next refresh.
                       </p>
                     )}
                   </div>
@@ -1148,6 +1159,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
         resolvePlayer={(id) => playerLookup.get(id)}
         publishedRank={(player) => getPublishedBoardRank(player, routeState.position)}
         valueSignalAvailable={routeState.position === "overall" || routeState.position === "flex"}
+        adpAvailable={adpAvailable}
       />
     </section>
   );

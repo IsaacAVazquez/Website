@@ -15,9 +15,11 @@ export const fantasyAdpData: Record<
     asOf: string | null;
     sampleSize: number | null;
     sourceUrl: string;
+    season?: number | null;
   }
 > = {
   "PPR": {
+    "season": 2026,
     "entries": [
       {
         "name": "Jahmyr Gibbs",
@@ -2585,6 +2587,7 @@ export const fantasyAdpData: Record<
     "sourceUrl": "https://fantasyfootballcalculator.com/api/v1/adp/ppr?teams=12&year=2026&position=all"
   },
   "HALF_PPR": {
+    "season": 2026,
     "entries": [
       {
         "name": "Jahmyr Gibbs",
@@ -4682,6 +4685,7 @@ export const fantasyAdpData: Record<
     "sourceUrl": "https://fantasyfootballcalculator.com/api/v1/adp/half-ppr?teams=12&year=2026&position=all"
   },
   "STANDARD": {
+    "season": 2026,
     "entries": [
       {
         "name": "Jahmyr Gibbs",

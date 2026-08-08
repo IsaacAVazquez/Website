@@ -89,8 +89,9 @@ export function getAdaptiveRosterTargets(
   const currentRound = Number.isInteger(upcomingRound) && Number(upcomingRound) > 0
     ? Number(upcomingRound)
     : latestCompletedRound;
-  // Three-QB builds have beaten two-QB builds in four of the six Best Ball Mania years, and
-  // five or six RBs carry the best advance rates, so the standard target leans that way.
+  // A 2026 review found three-QB builds beat two-QB builds in four of six Best Ball Mania
+  // seasons. Five-year Underdog data also keeps five RBs as the stable center of the range.
+  // These set a broad target; early draft capital still changes the preferred finish below.
   const desired: Record<BestBallPosition, number> = isSuperflex
     ? { QB: 3.5, RB: 5, WR: 7, TE: 2.5 }
     : { QB: 3, RB: 5, WR: 7.5, TE: 2.5 };

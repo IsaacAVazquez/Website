@@ -1,13 +1,19 @@
 import type { Player } from "@/types";
+import { isUndraftedFloorAdp } from "@/lib/draftAnalytics";
 import {
   DEFAULT_BEST_BALL_CONTEST_ID,
   getContestPreset,
   getStrategyProfile,
+  hasSupportedBestBallAdp,
 } from "./contests";
 import { sortBestBallRankings } from "./rankings";
+import { getNextUserPick } from "./draft";
 import { getAdaptiveRosterTargets } from "./strategy";
 import type {
+  AdaptiveRosterTargets,
+  BestBallContestPreset,
   BestBallPosition,
+  BestBallRosterComposition,
   RankedBestBallPlayer,
   BestBallRecommendation,
   BestBallRecommendationComponents,
@@ -34,6 +40,14 @@ function isPassCatcher(player: Player): boolean {
 
 function teamOf(player: Player): string {
   return player.team.trim().toUpperCase();
+}
+
+function hasUsableAdp(player: Player, rounds: number, teams: number): boolean {
+  return (
+    isFiniteNumber(player.adp) &&
+    player.adp > 0 &&
+    !isUndraftedFloorAdp(player.adp, rounds, teams)
+  );
 }
 
 /**
@@ -72,24 +86,39 @@ function countWeek17GameStacks(
  */
 function tierCliffSignal(
   candidate: RankedBestBallPlayer,
-  available: readonly RankedBestBallPlayer[]
+  available: readonly RankedBestBallPlayer[],
+  useSuperflexTier: boolean
 ): { value: number; remainingInTier: number; gap: number } {
   const empty = { value: 0, remainingInTier: 0, gap: 0 };
-  const tier = candidate.tier;
+  const tierOf = (player: RankedBestBallPlayer): number | undefined =>
+    useSuperflexTier ? player.superflexTier : player.tier;
+  const rankOf = (player: RankedBestBallPlayer): number | undefined =>
+    useSuperflexTier ? player.superflexRank : player.bestBallEcr;
+  const tier = tierOf(candidate);
   if (!isFiniteNumber(tier) || tier <= 0) return empty;
 
-  const sameTier = available.filter((player) => player.tier === tier);
+  const sameTier = available.filter((player) => tierOf(player) === tier);
   if (sameTier.length === 0) return empty;
 
-  const nextTier = available.find(
-    (player) => isFiniteNumber(player.tier) && Number(player.tier) > tier
-  );
+  const laterTierNumbers = available
+    .map(tierOf)
+    .filter((candidateTier): candidateTier is number =>
+      isFiniteNumber(candidateTier) && candidateTier > tier
+    );
+  const nextTierNumber = laterTierNumbers.length > 0
+    ? Math.min(...laterTierNumbers)
+    : null;
   // No next tier means this is the bottom tier on the board, which is an artifact of where the
   // rankings stop rather than real scarcity, so it earns nothing.
-  if (!nextTier) return empty;
+  if (nextTierNumber === null) return empty;
 
-  const lastInTier = sameTier[sameTier.length - 1];
-  const gap = nextTier.adjustedRank - lastInTier.adjustedRank;
+  const sameTierRanks = sameTier.map(rankOf).filter(isFiniteNumber);
+  const nextTierRanks = available
+    .filter((player) => tierOf(player) === nextTierNumber)
+    .map(rankOf)
+    .filter(isFiniteNumber);
+  if (sameTierRanks.length === 0 || nextTierRanks.length === 0) return empty;
+  const gap = Math.max(0, Math.min(...nextTierRanks) - Math.max(...sameTierRanks));
 
   // A tier with one player left is fully urgent; four or more left is not scarce at all.
   const urgency = clamp((4 - sameTier.length) / 3, 0, 1);
@@ -128,16 +157,109 @@ function spikeWeekSignal(player: Player): { value: number; detail: string } {
     };
   }
 
-  const positionProxy: Partial<Record<Player["position"], number>> = {
-    WR: 1,
-    TE: 0.7,
-    QB: 0.5,
-    RB: 0.35,
-  };
   return {
-    value: positionProxy[player.position] ?? 0,
-    detail: `No weekly projection spread is available, so the model uses a visible ${player.position} position proxy.`,
+    value: 0,
+    detail: "No weekly projection spread is available, so weekly variation adds no score.",
   };
+}
+
+function isRosterFeasibleAfterPick(
+  position: BestBallPosition,
+  targets: AdaptiveRosterTargets
+): boolean {
+  if (targets.draftedCount >= targets.rosterSize) return false;
+
+  const countsAfterPick = { ...targets.counts };
+  countsAfterPick[position] += 1;
+
+  if (targets.validCompositions.length > 0) {
+    return targets.validCompositions.some((composition) =>
+      (Object.keys(countsAfterPick) as BestBallPosition[]).every(
+        (candidatePosition) => countsAfterPick[candidatePosition] <= composition[candidatePosition]
+      )
+    );
+  }
+
+  const remainingSpots = targets.rosterSize - targets.draftedCount - 1;
+  const minimumStillNeeded = (Object.keys(countsAfterPick) as BestBallPosition[]).reduce(
+    (sum, candidatePosition) =>
+      sum +
+      Math.max(0, targets.targets[candidatePosition].minimum - countsAfterPick[candidatePosition]),
+    0
+  );
+  const maximumRemainingCapacity = (Object.keys(countsAfterPick) as BestBallPosition[]).reduce(
+    (sum, candidatePosition) =>
+      sum +
+      Math.max(0, targets.targets[candidatePosition].maximum - countsAfterPick[candidatePosition]),
+    0
+  );
+
+  return minimumStillNeeded <= remainingSpots && maximumRemainingCapacity >= remainingSpots;
+}
+
+function minimumWorstByeLineupGap(
+  players: readonly Player[],
+  lineup: BestBallContestPreset["lineup"],
+  compositions: readonly BestBallRosterComposition[]
+): number | null {
+  if (compositions.length === 0) return null;
+  const byeWeeks = [
+    ...new Set(
+      players
+        .map((player) => player.byeWeek)
+        .filter((byeWeek): byeWeek is number =>
+          Number.isInteger(byeWeek) && Number(byeWeek) > 0
+        )
+    ),
+  ];
+  if (byeWeeks.length === 0) return 0;
+
+  const byeCountsByWeek = new Map<number, BestBallRosterComposition>();
+  for (const player of players) {
+    if (!Number.isInteger(player.byeWeek) || Number(player.byeWeek) < 1) continue;
+    if (!["QB", "RB", "WR", "TE"].includes(player.position)) continue;
+    const week = Number(player.byeWeek);
+    const counts = byeCountsByWeek.get(week) ?? { QB: 0, RB: 0, WR: 0, TE: 0 };
+    counts[player.position as BestBallPosition] += 1;
+    byeCountsByWeek.set(week, counts);
+  }
+
+  return Math.min(
+    ...compositions.map((composition) => {
+      let worstGap = 0;
+      for (const byeWeek of byeWeeks) {
+        const byeCounts = byeCountsByWeek.get(byeWeek) ?? { QB: 0, RB: 0, WR: 0, TE: 0 };
+        const active = {
+          QB: Math.max(0, composition.QB - byeCounts.QB),
+          RB: Math.max(0, composition.RB - byeCounts.RB),
+          WR: Math.max(0, composition.WR - byeCounts.WR),
+          TE: Math.max(0, composition.TE - byeCounts.TE),
+        };
+        const baseGap = (Object.keys(active) as BestBallPosition[]).reduce(
+          (sum, candidatePosition) =>
+            sum + Math.max(0, lineup[candidatePosition] - active[candidatePosition]),
+          0
+        );
+        const skillSurplus = (["RB", "WR", "TE"] as const).reduce(
+          (sum, candidatePosition) =>
+            sum + Math.max(0, active[candidatePosition] - lineup[candidatePosition]),
+          0
+        );
+        const flexFilled = Math.min(lineup.FLEX, skillSurplus);
+        const skillAfterFlex = Math.max(0, skillSurplus - flexFilled);
+        const quarterbackSurplus = Math.max(0, active.QB - lineup.QB);
+        const superflexGap = Math.max(
+          0,
+          (lineup.SUPERFLEX ?? 0) - skillAfterFlex - quarterbackSurplus
+        );
+        worstGap = Math.max(
+          worstGap,
+          baseGap + (lineup.FLEX - flexFilled) + superflexGap
+        );
+      }
+      return worstGap;
+    })
+  );
 }
 
 export function recommendBestBallPlayers({
@@ -154,13 +276,37 @@ export function recommendBestBallPlayers({
   const userPicks = picks.filter((pick) => pick.teamNumber === userTeamNumber);
   const roster = userPicks.map((pick) => pick.player);
   const draftedIds = new Set(picks.map((pick) => pick.player.id));
-  const rankedPlayers = sortBestBallRankings(players, preset);
+  const hasContestAdp = hasSupportedBestBallAdp(preset);
+  const rankedPlayers = sortBestBallRankings(players, preset)
+    .map((player) =>
+      hasContestAdp && !hasUsableAdp(player, preset.rounds, preset.teams)
+        ? {
+            ...player,
+            adjustedRank: player.bestBallEcr,
+            rankAdjustment: 0,
+            rankReason: `No usable Underdog ADP is available, so the board uses the PPR best ball ECR of ${player.bestBallEcr}.`,
+          }
+        : player
+    )
+    .sort(
+      (left, right) =>
+        left.adjustedRank - right.adjustedRank ||
+        left.bestBallEcr - right.bestBallEcr ||
+        left.bestBallRank - right.bestBallRank
+    )
+    .map((player, index) => ({ ...player, bestBallRank: index + 1 }));
   const rankById = new Map(rankedPlayers.map((player) => [player.id, player]));
   const round = Math.floor((Math.max(1, currentPickNumber) - 1) / preset.teams) + 1;
   const targets = getAdaptiveRosterTargets(userPicks, contestId, round);
-  const draftProgress = clamp((round - 1) / Math.max(1, preset.rounds - 1), 0, 1);
-  const earlyAdpMultiplier = 1.35 - draftProgress * 0.85;
-  const hasContestAdp = preset.format !== "superflex";
+  const nextUserPick = getNextUserPick(
+    currentPickNumber,
+    userTeamNumber,
+    preset.teams,
+    preset.rounds
+  );
+  const followingUserPick = nextUserPick === currentPickNumber
+    ? getNextUserPick(currentPickNumber + 1, userTeamNumber, preset.teams, preset.rounds)
+    : nextUserPick;
 
   // rankedPlayers is already board-sorted, so each position list stays in board order.
   const availableByPosition = new Map<BestBallPosition, RankedBestBallPlayer[]>();
@@ -172,56 +318,100 @@ export function recommendBestBallPlayers({
 
   const recommendations = rankedPlayers
     .filter((player) => !draftedIds.has(player.id))
+    .filter(
+      (player) =>
+        !hasContestAdp || hasUsableAdp(player, preset.rounds, preset.teams)
+    )
+    .filter(
+      (player) => preset.format !== "superflex" || isFiniteNumber(player.superflexRank)
+    )
+    .filter((player) =>
+      isRosterFeasibleAfterPick(player.position as BestBallPosition, targets)
+    )
     .map((player): BestBallRecommendation => {
       const ranking = rankById.get(player.id) ?? player;
       const position = player.position as BestBallPosition;
       const target = targets.targets[position];
-      // Not floored at zero. A hard floor collapsed every player past board rank 220 into the
-      // same score, which let roster need alone push deep bench players over far better ones.
-      const baseRank = roundScore(clamp((220 - ranking.adjustedRank) / 10, -8, 22));
-
-      const adpDelta = hasContestAdp && isFiniteNumber(player.adp)
-        ? currentPickNumber - player.adp
+      const hasUsableContestAdp =
+        hasContestAdp &&
+        hasUsableAdp(player, preset.rounds, preset.teams);
+      const sourceRank = preset.format === "superflex"
+        ? ranking.adjustedRank
+        : ranking.bestBallEcr;
+      // In standard rooms, base rank plus ADP value resolves to current pick minus ADP.
+      // That keeps one ADP slot worth about one score point without counting ADP twice.
+      const baseRank = roundScore(currentPickNumber - sourceRank);
+      const adpValue = hasUsableContestAdp
+        ? roundScore(sourceRank - Number(player.adp))
+        : 0;
+      const adpDelta = hasUsableContestAdp
+        ? currentPickNumber - Number(player.adp)
         : null;
-      const adpValue =
-        adpDelta === null
-          ? 0
-          : roundScore(
-              clamp(adpDelta / 8, -4, 4) * profile.adpValueWeight * earlyAdpMultiplier
-            );
 
       const gap = Math.max(0, target.recommended - target.drafted);
       const rosterNeed = roundScore(
         gap > 0
-          ? profile.rosterNeedWeight * (gap / Math.max(1, target.recommended))
-          : -profile.rosterNeedWeight * 0.35 * (target.drafted - target.recommended + 1)
+          ? clamp(
+              (profile.rosterNeedWeight / 4) * (gap / Math.max(1, target.recommended)),
+              0,
+              2
+            )
+          : clamp(-0.5 * (target.drafted - target.recommended + 1), -2, 0)
       );
 
       const stackMatches = formsQbPassCatcherStack(player, roster);
-      const stackSchedule = roundScore(stackMatches * profile.correlationWeight);
+      const stackSchedule = roundScore(
+        clamp(stackMatches * (profile.correlationWeight / 2), 0, 2)
+      );
 
-      const byeMatches = isFiniteNumber(player.byeWeek)
-        ? roster.filter((rosterPlayer) => rosterPlayer.byeWeek === player.byeWeek).length
-        : 0;
       const samePositionByeMatches = isFiniteNumber(player.byeWeek)
         ? roster.filter(
             (rosterPlayer) =>
               rosterPlayer.byeWeek === player.byeWeek && rosterPlayer.position === player.position
           ).length
         : 0;
+      const countsAfterPick = { ...targets.counts };
+      countsAfterPick[position] += 1;
+      const feasibleCompositionsAfterPick = targets.validCompositions.filter((composition) =>
+        (Object.keys(countsAfterPick) as BestBallPosition[]).every(
+          (candidatePosition) =>
+            countsAfterPick[candidatePosition] <= composition[candidatePosition]
+        )
+      );
+      const byeGapBefore = minimumWorstByeLineupGap(
+        roster,
+        preset.lineup,
+        targets.validCompositions
+      );
+      const byeGapAfter = minimumWorstByeLineupGap(
+        [...roster, player],
+        preset.lineup,
+        feasibleCompositionsAfterPick
+      );
+      const byeCoverageFailure =
+        byeGapBefore !== null && byeGapAfter !== null
+          ? Math.max(0, byeGapAfter - byeGapBefore)
+          : 0;
       const byeRisk = roundScore(
-        -profile.byeCoverageWeight * (byeMatches + samePositionByeMatches * 0.5)
+        -clamp(byeCoverageFailure * (profile.byeCoverageWeight / 3), 0, 2)
       );
 
       const sameTeamCount = roster.filter(
         (rosterPlayer) => teamOf(rosterPlayer) === teamOf(player)
       ).length;
       const concentrationRisk = roundScore(
-        -Math.max(0, sameTeamCount + 1 - profile.concentrationFloor) * profile.concentrationPenalty
+        -clamp(
+          Math.max(0, sameTeamCount + 1 - profile.concentrationFloor) *
+            profile.concentrationPenalty,
+          0,
+          2
+        )
       );
 
       const spikeSignal = spikeWeekSignal(player);
-      const spikeWeek = roundScore(spikeSignal.value * profile.spikeWeekWeight);
+      const spikeWeek = roundScore(
+        clamp(spikeSignal.value * (profile.spikeWeekWeight / 5), 0, 1)
+      );
 
       const candidateTeam = teamOf(player);
       const candidateOpponent = (week17Opponents[candidateTeam] ?? "").trim().toUpperCase();
@@ -235,15 +425,25 @@ export function recommendBestBallPlayers({
           ? countWeek17GameStacks([...roster, player], week17Opponents) -
             countWeek17GameStacks(roster, week17Opponents)
           : 0;
-      const gameStack = roundScore(gameStackDelta * profile.gameStackWeight);
+      const gameStack = roundScore(clamp(gameStackDelta, 0, 1));
 
       // Scarcity only applies to a position the roster still needs, so a thin tier never
       // argues for a fourth QB the build has no room to start.
       const needsPosition = target.recommended > target.drafted;
-      const cliff = tierCliffSignal(ranking, availableByPosition.get(position) ?? []);
-      const tierScarcity = roundScore(
-        needsPosition ? cliff.value * profile.scarcityWeight : 0
+      const cliff = tierCliffSignal(
+        ranking,
+        availableByPosition.get(position) ?? [],
+        preset.format === "superflex"
       );
+      const tierScarcity = roundScore(
+        needsPosition
+          ? clamp(cliff.value * (profile.scarcityWeight / 2), 0, 2)
+          : 0
+      );
+      const waitUntilNextTurn =
+        hasUsableContestAdp &&
+        followingUserPick !== null &&
+        Number(player.adp) >= followingUserPick + 4;
 
       const components: BestBallRecommendationComponents = {
         baseRank,
@@ -263,19 +463,21 @@ export function recommendBestBallPlayers({
           detail:
             preset.format === "superflex"
               ? `The sourced Superflex consensus rank is ${ranking.adjustedRank}.`
-              : isFiniteNumber(player.adp)
-                ? `The current standard Underdog ADP is ${player.adp.toFixed(1)}. The PPR best ball ECR is ${ranking.bestBallEcr}.`
-                : `No Underdog ADP match is available, so the PPR best ball ECR of ${ranking.bestBallEcr} sets the base rank.`,
+              : hasUsableContestAdp
+                ? `The current standard Underdog ADP is ${Number(player.adp).toFixed(1)}. The PPR best ball ECR is ${ranking.bestBallEcr}.`
+                : `No matching contest ADP is available, so the PPR best ball ECR of ${ranking.bestBallEcr} sets the base rank.`,
         },
         {
           component: "adpValue",
           score: adpValue,
           detail:
             !hasContestAdp
-              ? "This snapshot has no separate Superflex ADP source, so standard lineup ADP adds no score."
+              ? preset.format === "superflex"
+                ? "This snapshot has no separate Superflex ADP source, so standard lineup ADP adds no score."
+                : "This snapshot has no matching ADP source for this contest slate, so market value adds no score."
               : adpDelta === null
               ? "No separate ADP match is available, so ADP adds no score."
-              : `ADP is ${player.adp?.toFixed(1)} at pick ${currentPickNumber}, with a larger ADP weight in earlier rounds.`,
+              : `ADP is ${player.adp?.toFixed(1)} at pick ${currentPickNumber}. Each pick of market price difference changes the score by one point.`,
         },
         {
           component: "rosterNeed",
@@ -317,9 +519,11 @@ export function recommendBestBallPlayers({
           component: "byeRisk",
           score: byeRisk,
           detail:
-            byeMatches > 0
-              ? `${byeMatches} drafted player${byeMatches === 1 ? "" : "s"} already share${byeMatches === 1 ? "s" : ""} this bye week.`
-              : "This pick does not add a known bye week conflict.",
+            byeCoverageFailure > 0
+              ? `This pick creates ${byeCoverageFailure} additional uncovered starting slot${byeCoverageFailure === 1 ? "" : "s"} in the best single final composition across every published bye.`
+              : samePositionByeMatches > 0
+                ? `This adds another ${position} on the same bye, but at least one feasible final composition still covers the weekly lineup.`
+                : "This pick does not create a lineup coverage failure in a feasible final roster.",
         },
         {
           component: "concentrationRisk",
@@ -344,12 +548,14 @@ export function recommendBestBallPlayers({
         score: roundScore(Object.values(components).reduce((sum, value) => sum + value, 0)),
         components,
         reasons,
-        tiebreakers: { week17Opponent },
+        tiebreakers: { week17Opponent, waitUntilNextTurn },
       };
     })
     .sort(
       (left, right) =>
         right.score - left.score ||
+        Number(left.tiebreakers.waitUntilNextTurn) -
+          Number(right.tiebreakers.waitUntilNextTurn) ||
         right.tiebreakers.week17Opponent - left.tiebreakers.week17Opponent ||
         (rankById.get(left.player.id)?.bestBallRank ?? Number.POSITIVE_INFINITY) -
           (rankById.get(right.player.id)?.bestBallRank ?? Number.POSITIVE_INFINITY)

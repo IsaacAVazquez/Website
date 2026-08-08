@@ -43,8 +43,8 @@ function formatDelta(delta: number): string {
 
 function describeBaseline(adpAvailable: boolean): string {
   return adpAvailable
-    ? "Deltas compare each pick's slot to mock-draft ADP, falling back to the consensus rank when a player has no ADP reading."
-    : "Deltas compare each pick's slot to the published consensus rank. The current snapshot has no ADP data.";
+    ? "Deltas compare each pick's slot with usable mock-draft ADP. An early consensus rank can substitute when ADP is missing, while thin ADP samples and deep consensus ranks stay unscored."
+    : "Deltas compare each pick's slot with an early published consensus rank. Deep ranks stay unscored because a board rank is not a reliable pick price there. The current snapshot has no ADP data.";
 }
 
 function PickValueRow({
@@ -124,7 +124,8 @@ export function DraftAnalyticsPanel({
                   </p>
                   <p className="mt-1 text-xs" style={{ color: "var(--home-ink-muted)" }}>
                     {activeRun.playersSelected} {activeRun.position}s gone since pick{" "}
-                    {activeRun.startPick}. If you want one, the shelf is emptying.
+                    {activeRun.startPick}. The run changes likely availability, but it does not make
+                    a reach worthwhile on its own.
                   </p>
                 </div>
               )}
@@ -138,7 +139,8 @@ export function DraftAnalyticsPanel({
                 >
                   <p className="text-sm font-semibold">{emergingRun.position}s starting to go</p>
                   <p className="mt-1 text-xs" style={{ color: "var(--home-ink-muted)" }}>
-                    {emergingRun.count} off the board in the last few picks, so a run may be forming.
+                    {emergingRun.count} went in the last few picks. Compare the next options inside
+                    their current tier before changing your plan.
                   </p>
                 </div>
               )}
@@ -166,8 +168,9 @@ export function DraftAnalyticsPanel({
       <h2 className="text-2xl font-semibold">How the room drafted</h2>
       <p className="mt-2 max-w-[68ch] text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
         {describeBaseline(adpAvailable)} A positive total means a team kept landing players past
-        where the market expected them to go. None of it predicts the season. It only grades
-        draft-day discipline.
+        where the market expected them to go. None of it predicts the season. It only summarizes
+        market-price discipline. Draft Outlook is the separate room ranking because it also includes
+        roster and lineup structure.
       </p>
 
       <div className="mt-5 grid gap-4 lg:grid-cols-2">
@@ -216,7 +219,7 @@ export function DraftAnalyticsPanel({
         </div>
 
         <div className="grid gap-3 content-start">
-          <p className="home-kicker mb-0">Value by team</p>
+          <p className="home-kicker mb-0">Market value by team</p>
           <div className="grid gap-2">
             {rankedTeams.map((team) => (
               <div
@@ -231,7 +234,7 @@ export function DraftAnalyticsPanel({
                   </p>
                   {team.weaknesses.length > 0 && (
                     <p className="mt-1 truncate text-xs" style={{ color: "var(--home-ink-muted)" }}>
-                      Still thin at {team.weaknesses.join(", ")}
+                      Open starting slots at {team.weaknesses.join(", ")}
                     </p>
                   )}
                 </div>
@@ -241,16 +244,6 @@ export function DraftAnalyticsPanel({
                     style={(team.valueTotal ?? 0) >= 0 ? STEAL_CHIP_STYLE : REACH_CHIP_STYLE}
                   >
                     {formatDelta(team.valueTotal ?? 0)}
-                  </span>
-                  <span
-                    className={FANTASY_CHIP_CLASS}
-                    title="Grade ranks this team's net draft value against the rest of the room"
-                    style={{
-                      borderColor: "var(--home-rule)",
-                      background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
-                    }}
-                  >
-                    {team.overallGrade}
                   </span>
                 </div>
               </div>

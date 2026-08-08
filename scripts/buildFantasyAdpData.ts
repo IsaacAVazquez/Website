@@ -23,6 +23,7 @@ interface FantasyAdpDatasetRecord {
   asOf: string | null;
   sampleSize: number | null;
   sourceUrl: string;
+  season: number | null;
 }
 
 type FantasyAdpDataRecord = Record<ScoringFormat, FantasyAdpDatasetRecord>;
@@ -34,11 +35,36 @@ const SCORING_FORMATS: ScoringFormat[] = ["PPR", "HALF_PPR", "STANDARD"];
 // 1-4 players; healthy boards run ~130-200. A board below this floor is treated
 // as unusable so it can't overwrite a fuller previous board.
 export const MIN_ADP_ENTRIES = 50;
+export const MIN_ADP_RELATIVE_COVERAGE = 0.8;
+export const ADP_REFRESH_TOP_BOARD_SIZE = 150;
 
 export type AdpFormatResolution = {
   record: FantasyAdpDatasetRecord | null;
-  source: "fresh" | "previous" | "thin-fresh" | "empty";
+  source: "fresh" | "previous" | "degraded-fresh" | "thin-fresh" | "empty";
 };
+
+function adpEntryKey(entry: FantasyAdpEntry): string {
+  return `${entry.name.trim().toLowerCase()}|${entry.position}`;
+}
+
+function hasHealthyRelativeAdpCoverage(
+  fresh: FantasyAdpDatasetRecord,
+  previous: FantasyAdpDatasetRecord
+): boolean {
+  if (
+    Number.isInteger(fresh.season) &&
+    Number.isInteger(previous.season) &&
+    fresh.season !== previous.season
+  ) {
+    return true;
+  }
+  const requiredEntries = Math.ceil(previous.entries.length * MIN_ADP_RELATIVE_COVERAGE);
+  const previousTop = previous.entries.slice(0, ADP_REFRESH_TOP_BOARD_SIZE);
+  const freshKeys = new Set(fresh.entries.map(adpEntryKey));
+  const retainedTop = previousTop.filter((entry) => freshKeys.has(adpEntryKey(entry))).length;
+  const requiredTop = Math.ceil(previousTop.length * MIN_ADP_RELATIVE_COVERAGE);
+  return fresh.entries.length >= requiredEntries && retainedTop >= requiredTop;
+}
 
 /**
  * Chooses the ADP record to keep for one scoring format. A fresh board is used
@@ -52,11 +78,18 @@ export function resolveAdpFormat(
   previous: FantasyAdpDatasetRecord | null,
   floor: number = MIN_ADP_ENTRIES
 ): AdpFormatResolution {
-  if (fresh && fresh.entries.length >= floor) {
+  if (
+    fresh &&
+    fresh.entries.length >= floor &&
+    (!previous || hasHealthyRelativeAdpCoverage(fresh, previous))
+  ) {
     return { record: fresh, source: "fresh" };
   }
   if (previous && previous.entries.length > 0) {
-    return { record: previous, source: "previous" };
+    return {
+      record: previous,
+      source: fresh && fresh.entries.length >= floor ? "degraded-fresh" : "previous",
+    };
   }
   if (fresh) {
     return { record: fresh, source: "thin-fresh" };
@@ -94,6 +127,7 @@ export const fantasyAdpData: Record<
     asOf: string | null;
     sampleSize: number | null;
     sourceUrl: string;
+    season?: number | null;
   }
 > = ${serialized};
 `;
@@ -120,6 +154,7 @@ async function main() {
         asOf: board.asOf,
         sampleSize: board.sampleSize,
         sourceUrl: board.sourceUrl,
+        season,
       };
     } catch (error) {
       console.warn(
@@ -134,6 +169,7 @@ async function main() {
       asOf: null,
       sampleSize: null,
       sourceUrl: previousRecord?.sourceUrl ?? fresh?.sourceUrl ?? "",
+      season: previousRecord?.season ?? fresh?.season ?? null,
     };
     notes.push(
       `${scoringFormat}: ${dataset[scoringFormat].entries.length} entries (${resolution.source}, asOf ${

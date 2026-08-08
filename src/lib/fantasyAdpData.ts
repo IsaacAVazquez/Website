@@ -7,6 +7,7 @@ export interface FantasyAdpDataset {
   asOf: string | null;
   sampleSize: number | null;
   sourceUrl: string;
+  season: number | null;
 }
 
 const EMPTY_DATASET: FantasyAdpDataset = {
@@ -14,6 +15,7 @@ const EMPTY_DATASET: FantasyAdpDataset = {
   asOf: null,
   sampleSize: null,
   sourceUrl: "",
+  season: null,
 };
 
 /**
@@ -38,6 +40,10 @@ export function getFantasyAdpDataset(scoringFormat: ScoringFormat): FantasyAdpDa
         ? candidate.sampleSize
         : null,
     sourceUrl: typeof candidate.sourceUrl === "string" ? candidate.sourceUrl : "",
+    season:
+      typeof candidate.season === "number" && Number.isInteger(candidate.season)
+        ? candidate.season
+        : null,
   };
 }
 

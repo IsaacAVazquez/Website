@@ -94,7 +94,7 @@ export const BEST_BALL_CONTESTS: Readonly<Record<BestBallContestId, BestBallCont
       name: "Weekly Winners",
       shortName: "Weekly Winners",
       description:
-        "A Weekly Winners model for 12 teams and 18 rounds that adds a visible position level weekly variance proxy and values correlated scoring more heavily.",
+        "A Weekly Winners model for 12 teams and 18 rounds that scores player-level weekly variation only when weekly projections are present. The current snapshot has no weekly projections, so that component stays neutral.",
       aliases: ["weekly", "weekly-winner", "weekly-winners", "weeklywinners"],
       format: "weekly",
       strategyProfileId: "weekly-winners",
@@ -247,6 +247,18 @@ export function getContestPreset(
   contest: BestBallContestId | string | null | undefined
 ): BestBallContestPreset {
   return BEST_BALL_CONTESTS[normalizeContestId(contest)];
+}
+
+/**
+ * The snapshot carries one standard-season Underdog ADP board. It is a usable
+ * market for the two standard tournament rooms, but it is not a contest-specific
+ * price for separate Eliminator, Weekly Winners, Sit & Go, or Superflex slates.
+ */
+export function hasSupportedBestBallAdp(
+  contest: BestBallContestId | BestBallContestPreset
+): boolean {
+  const preset = typeof contest === "string" ? getContestPreset(contest) : contest;
+  return preset.id === "bbm-vii" || preset.id === "puppy";
 }
 
 export function getStrategyProfile(

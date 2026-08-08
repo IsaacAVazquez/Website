@@ -339,4 +339,33 @@ describe("publishFantasyPlayer", () => {
     expect("adp" in publishFantasyPlayer({ ...basePlayer, adp: Number.NaN })).toBe(false);
     expect("adp" in publishFantasyPlayer(basePlayer)).toBe(false);
   });
+
+  it("publishes finite ADP uncertainty and sample fields", () => {
+    expect(
+      publishFantasyPlayer({
+        ...basePlayer,
+        adpHigh: 8,
+        adpLow: 22,
+        adpStandardDeviation: 3.4,
+        adpTimesDrafted: 91,
+      })
+    ).toMatchObject({
+      adpHigh: 8,
+      adpLow: 22,
+      adpStandardDeviation: 3.4,
+      adpTimesDrafted: 91,
+    });
+
+    const invalid = publishFantasyPlayer({
+      ...basePlayer,
+      adpHigh: Number.NaN,
+      adpLow: Number.POSITIVE_INFINITY,
+      adpStandardDeviation: Number.NaN,
+      adpTimesDrafted: Number.NaN,
+    });
+    expect("adpHigh" in invalid).toBe(false);
+    expect("adpLow" in invalid).toBe(false);
+    expect("adpStandardDeviation" in invalid).toBe(false);
+    expect("adpTimesDrafted" in invalid).toBe(false);
+  });
 });

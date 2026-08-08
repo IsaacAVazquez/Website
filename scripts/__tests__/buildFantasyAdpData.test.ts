@@ -4,14 +4,14 @@
 import { resolveAdpFormat, MIN_ADP_ENTRIES } from "../buildFantasyAdpData";
 import type { FantasyAdpEntry } from "@/lib/fantasyAdpSource";
 
-function record(entryCount: number, asOf: string, sampleSize: number) {
+function record(entryCount: number, asOf: string, sampleSize: number, season = 2026) {
   const entries: FantasyAdpEntry[] = Array.from({ length: entryCount }, (_, i) => ({
     name: `Player ${i}`,
     team: "FA",
     position: "RB",
     adp: i + 1,
   })) as unknown as FantasyAdpEntry[];
-  return { entries, asOf, sampleSize, sourceUrl: "https://example/adp" };
+  return { entries, asOf, sampleSize, sourceUrl: "https://example/adp", season };
 }
 
 describe("resolveAdpFormat", () => {
@@ -31,6 +31,36 @@ describe("resolveAdpFormat", () => {
     const result = resolveAdpFormat(thin, previous);
     expect(result.source).toBe("previous");
     expect(result.record).toBe(previous);
+  });
+
+  it("keeps the previous board when a fresh same-season board drops too many rows", () => {
+    const partial = record(80, "2026-07-05", 394);
+    const result = resolveAdpFormat(partial, previous);
+
+    expect(result.source).toBe("degraded-fresh");
+    expect(result.record).toBe(previous);
+  });
+
+  it("keeps the previous board when top-player identity coverage collapses", () => {
+    const wrongPlayers = record(140, "2026-07-05", 394);
+    wrongPlayers.entries = wrongPlayers.entries.map((entry, index) => ({
+      ...entry,
+      name: `Different Player ${index}`,
+    }));
+    const result = resolveAdpFormat(wrongPlayers, previous);
+
+    expect(result.source).toBe("degraded-fresh");
+    expect(result.record).toBe(previous);
+  });
+
+  it("allows a new NFL season to replace the prior board without using timestamp years", () => {
+    const priorSeason = record(150, "2027-02-15", 800, 2026);
+    const newSeason = record(80, "2027-03-05", 394, 2027);
+
+    const result = resolveAdpFormat(newSeason, priorSeason);
+
+    expect(result.source).toBe("fresh");
+    expect(result.record).toBe(newSeason);
   });
 
   it("keeps the previous board when the fetch failed (null fresh)", () => {

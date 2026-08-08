@@ -77,7 +77,7 @@ describe("DraftAnalyticsPanel", () => {
     expect(screen.getByText(/RB run in progress/)).toBeVisible();
   });
 
-  it("renders the full recap with team grades when the draft completes", () => {
+  it("renders the full recap without turning market deltas into letter grades", () => {
     const teamOnePicks = [
       makePick({ pickNumber: 20, round: 2, teamNumber: 1, player: makePlayer({ id: "v1", name: "Steal One", position: "RB", adp: 5 }) }),
     ];
@@ -104,8 +104,9 @@ describe("DraftAnalyticsPanel", () => {
     expect(screen.getByText("Biggest reach")).toBeVisible();
     expect(screen.getByText("Reach One")).toBeVisible();
     expect(screen.getByText("Team 1 (you)")).toBeVisible();
-    expect(screen.getByText("A+")).toBeVisible();
-    expect(screen.getByText("D")).toBeVisible();
+    expect(screen.getByText("+15")).toBeVisible();
+    expect(screen.getByText("-37")).toBeVisible();
+    expect(screen.queryByText("A+")).not.toBeInTheDocument();
   });
 
   it("discloses the consensus-only baseline when the snapshot has no ADP", () => {

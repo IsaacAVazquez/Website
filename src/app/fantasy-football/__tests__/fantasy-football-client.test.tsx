@@ -88,6 +88,10 @@ describe("FantasyFootballClient", () => {
     mockUseFantasySnapshot.mockReset();
   });
 
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
   it("renders an available PPR board in the editorial shell and keeps the desktop rail sticky", () => {
     mockUseFantasySnapshot.mockReturnValue({
       players: [
@@ -285,10 +289,11 @@ describe("FantasyFootballClient", () => {
 
   it("renders the ADP column, value signals, and source disclosure when the snapshot carries ADP", () => {
     currentSearchParams = new URLSearchParams("position=rb&scoring=ppr");
+    const currentSourceDate = new Date().toISOString();
     const adpSource = {
       provider: "Fantasy Football Calculator",
       url: "https://example.test/adp/ppr",
-      asOf: "2026-06-07T00:00:00.000Z",
+      asOf: currentSourceDate,
       sampleSize: 421,
       matchedCount: 180,
     };
@@ -346,8 +351,8 @@ describe("FantasyFootballClient", () => {
       metadata: {
         season: 2026,
         week: 0,
-        generatedAt: "2026-06-08T16:00:00.000Z",
-        upstreamUpdatedAt: "2026-06-08T15:29:20.000Z",
+        generatedAt: currentSourceDate,
+        upstreamUpdatedAt: currentSourceDate,
         scoringFormat: "PPR",
         source: "snapshot",
         position: "rb",
@@ -357,7 +362,7 @@ describe("FantasyFootballClient", () => {
           sourceKind: "position_consensus",
           rangeKind: "position",
           playerCount: 3,
-          updatedAt: "2026-06-08T15:29:20.000Z",
+          updatedAt: currentSourceDate,
         },
         slices: buildSliceMetadataMap(),
         adpSource,
@@ -367,7 +372,7 @@ describe("FantasyFootballClient", () => {
         sourceKind: "position_consensus",
         rangeKind: "position",
         playerCount: 3,
-        updatedAt: "2026-06-08T15:29:20.000Z",
+        updatedAt: currentSourceDate,
       },
       sliceMetadataMap: buildSliceMetadataMap(),
       isLoading: false,
@@ -399,7 +404,9 @@ describe("FantasyFootballClient", () => {
     expect(screen.getByText(/from 421 mock drafts/)).toBeVisible();
   });
 
-  it("flags ADP carried over from a prior season so it does not read as a broken refresh", () => {
+  it("marks prior-season ADP stale once draft season begins", () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date("2026-08-07T12:00:00.000Z"));
     currentSearchParams = new URLSearchParams("position=rb&scoring=ppr");
     mockUseFantasySnapshot.mockReturnValue({
       players: [
@@ -467,8 +474,8 @@ describe("FantasyFootballClient", () => {
       />
     );
 
-    expect(screen.getByText("Prior season")).toBeVisible();
-    expect(screen.getByText(/mock drafts have not started yet/)).toBeVisible();
+    expect(screen.getAllByText("Stale").length).toBeGreaterThan(0);
+    expect(screen.getByText(/Treat value and reach labels as unavailable/)).toBeVisible();
   });
 
   it("preserves the published rank when search filters the board down to one player", () => {

@@ -1,4 +1,20 @@
-import type { DraftAnalytics, DraftPick, Player, Position, TeamRoster } from "@/types";
+import {
+  getAdpSignalThreshold,
+  hasReliableAdpSample,
+} from "@/lib/fantasyUtils";
+import {
+  DEFAULT_REDRAFT_LINEUP,
+  getRedraftRosterTarget,
+  normalizeRedraftLineup,
+} from "@/lib/redraftLineup";
+import type {
+  DraftAnalytics,
+  DraftPick,
+  Player,
+  Position,
+  RedraftLineupSettings,
+  TeamRoster,
+} from "@/types";
 
 /**
  * Pure draft analytics computed from logged picks. Framework-free so the
@@ -25,30 +41,66 @@ const BEST_VALUE_LIMIT = 5;
  * ordering, so "need" and "weakness" never disagree.
  */
 export const ROSTER_STARTER_TARGETS = {
-  QB: 1,
-  RB: 2,
-  WR: 2,
-  TE: 1,
-  K: 1,
-  DST: 1,
+  QB: DEFAULT_REDRAFT_LINEUP.QB,
+  RB: DEFAULT_REDRAFT_LINEUP.RB,
+  WR: DEFAULT_REDRAFT_LINEUP.WR,
+  TE: DEFAULT_REDRAFT_LINEUP.TE,
+  K: DEFAULT_REDRAFT_LINEUP.K,
+  DST: DEFAULT_REDRAFT_LINEUP.DST,
 } as const;
 
 export type RosterTargetPosition = keyof typeof ROSTER_STARTER_TARGETS;
 
 /**
- * Total roster count worth carrying at each position. The extra RB/WR beyond the
- * two base starters cover both the weekly flex slot and bench depth, so the flex
- * is never modeled as its own position; a second TE and a backup QB round it out,
- * and K/DST stay one-deep. Standard-league defaults, hardcoded like the starter
- * targets since the tracker has no per-league roster settings.
+ * Legacy default depth counts kept for callers that need the traditional 15-round
+ * preset. Live guidance derives its targets from the configured lineup and rounds.
  */
-export const ROSTER_DEPTH_TARGETS = { RB: 4, WR: 4, QB: 2, TE: 2 } as const;
+export const ROSTER_DEPTH_TARGETS = { RB: 4, WR: 5, QB: 2, TE: 2 } as const;
 
 export type RosterNeedLevel = "starter" | "depth";
 
 export interface RosterNeed {
-  slot: RosterTargetPosition;
+  slot: RosterTargetPosition | "FLEX";
   level: RosterNeedLevel;
+  eligiblePositions: readonly RosterTargetPosition[];
+}
+
+/**
+ * Rebuilds every derived team field from the exact pick objects a caller will
+ * analyze or export. This keeps restored drafts consistent when the current
+ * snapshot corrects a player's position or replaces a stale player record.
+ */
+export function reconcileTeamRosters(
+  teams: readonly TeamRoster[],
+  picks: readonly DraftPick[]
+): TeamRoster[] {
+  return teams.map((team) => {
+    const teamPicks = picks.filter((pick) => pick.teamNumber === team.teamNumber);
+    const positionCounts: TeamRoster["positionCounts"] = {
+      QB: 0,
+      RB: 0,
+      WR: 0,
+      TE: 0,
+      K: 0,
+      DST: 0,
+    };
+    let totalValue = 0;
+    let projectedPoints = 0;
+    for (const pick of teamPicks) {
+      if (pick.player.position in positionCounts) {
+        positionCounts[pick.player.position as keyof typeof positionCounts] += 1;
+      }
+      totalValue += pick.player.auctionValue ?? 0;
+      projectedPoints += pick.player.projectedPoints ?? 0;
+    }
+    return {
+      ...team,
+      picks: teamPicks,
+      positionCounts,
+      totalValue,
+      projectedPoints,
+    };
+  });
 }
 
 /**
@@ -64,69 +116,107 @@ const NEED_POSITION_PRIORITY: Record<RosterTargetPosition, number> = {
   DST: 5,
 };
 
+const FLEX_ELIGIBLE_POSITIONS = ["RB", "WR", "TE"] as const satisfies readonly RosterTargetPosition[];
+
 /**
- * What the user's roster still wants, most urgent first, across two levels: an
- * open starting slot (below the base target) and bench depth (a set starting
- * core but below the depth target). The weekly flex is not a position of its
- * own — the RB/WR/TE depth targets already keep those positions wanted after the
- * base starters, which is exactly what fills a flex. Depth is suppressed while
- * any skill starter is still open, so a slot never shows twice. Shared with the
- * board's priority tags and roster-pressure panel so they never disagree.
+ * What the user's roster still wants, most urgent first, across two levels. FLEX
+ * is an explicit starting slot filled by surplus RB, WR, or TE picks. Depth is
+ * suppressed while any skill starter is open. Shared with the board's priority
+ * tags and roster-pressure panel so they never disagree.
  */
 export function getRosterNeeds(team: {
   positionCounts: TeamRoster["positionCounts"];
+  lineup?: RedraftLineupSettings;
+  rounds?: number;
 }): RosterNeed[] {
   const counts = team.positionCounts;
+  const lineup = normalizeRedraftLineup(team.lineup);
+  const rounds = Math.max(1, Math.round(team.rounds ?? 15));
   const countOf = (position: RosterTargetPosition): number => counts[position] ?? 0;
 
   const needs: RosterNeed[] = [];
 
   // 1. Starting slots still open, biggest shortfall first.
-  const starterHoles = (Object.keys(ROSTER_STARTER_TARGETS) as RosterTargetPosition[])
-    .map((position) => ({ position, gap: ROSTER_STARTER_TARGETS[position] - countOf(position) }))
-    .filter((entry) => entry.gap > 0)
+  const starterTargets: Record<RosterTargetPosition, number> = {
+    QB: lineup.QB,
+    RB: lineup.RB,
+    WR: lineup.WR,
+    TE: lineup.TE,
+    K: lineup.K,
+    DST: lineup.DST,
+  };
+  const draftedCount = (Object.keys(starterTargets) as RosterTargetPosition[]).reduce(
+    (sum, position) => sum + countOf(position),
+    0
+  );
+  const remainingPicks = Math.max(0, rounds - draftedCount);
+  const missingDeferredSlots =
+    Math.max(0, starterTargets.K - countOf("K")) +
+    Math.max(0, starterTargets.DST - countOf("DST"));
+  const deferredStartersAreDue = remainingPicks <= missingDeferredSlots;
+  const starterHoles = (Object.keys(starterTargets) as RosterTargetPosition[])
+    .map((position) => ({ position, gap: starterTargets[position] - countOf(position) }))
+    .filter(
+      (entry) =>
+        entry.gap > 0 &&
+        (entry.position !== "K" && entry.position !== "DST" || deferredStartersAreDue)
+    )
     .sort(
       (left, right) =>
         right.gap - left.gap ||
         NEED_POSITION_PRIORITY[left.position] - NEED_POSITION_PRIORITY[right.position]
-    );
+  );
   for (const hole of starterHoles) {
-    needs.push({ slot: hole.position, level: "starter" });
+    needs.push({
+      slot: hole.position,
+      level: "starter",
+      eligiblePositions: [hole.position],
+    });
+  }
+
+  const flexFilled = Math.min(
+    lineup.FLEX,
+    FLEX_ELIGIBLE_POSITIONS.reduce(
+      (total, position) => total + Math.max(0, countOf(position) - starterTargets[position]),
+      0
+    )
+  );
+  if (flexFilled < lineup.FLEX) {
+    needs.push({
+      slot: "FLEX",
+      level: "starter",
+      eligiblePositions: FLEX_ELIGIBLE_POSITIONS,
+    });
   }
 
   // 2. Bench depth, once the skill starters (QB/RB/WR/TE) are set. K and DST are
   // required starters people fill last, so their open slots don't hold back depth
   // guidance the way a missing RB or WR would.
-  const skillStarterHoleRemaining = starterHoles.some(
+  const skillStarterHoleRemaining = flexFilled < lineup.FLEX || starterHoles.some(
     (hole) => hole.position !== "K" && hole.position !== "DST"
   );
   if (!skillStarterHoleRemaining) {
-    const depthHoles = (Object.keys(ROSTER_DEPTH_TARGETS) as (keyof typeof ROSTER_DEPTH_TARGETS)[])
-      .map((position) => ({ position, gap: ROSTER_DEPTH_TARGETS[position] - countOf(position) }))
+    const depthTargets = getRedraftRosterTarget(lineup, rounds);
+    const depthHoles = (["QB", "RB", "WR", "TE"] as const)
+      .map((position) => ({ position, gap: depthTargets[position] - countOf(position) }))
       .filter((entry) => entry.gap > 0)
       .sort(
         (left, right) =>
           right.gap - left.gap ||
           NEED_POSITION_PRIORITY[left.position] - NEED_POSITION_PRIORITY[right.position]
-      );
+    );
     for (const hole of depthHoles) {
-      needs.push({ slot: hole.position, level: "depth" });
+      if (needs.some((need) => need.slot === hole.position)) continue;
+      needs.push({
+        slot: hole.position,
+        level: "depth",
+        eligiblePositions: [hole.position],
+      });
     }
   }
 
   return needs;
 }
-
-const GRADE_SCALE: readonly { maxPercentile: number; grade: string }[] = [
-  { maxPercentile: 0.125, grade: "A+" },
-  { maxPercentile: 0.25, grade: "A" },
-  { maxPercentile: 0.375, grade: "B+" },
-  { maxPercentile: 0.5, grade: "B" },
-  { maxPercentile: 0.625, grade: "C+" },
-  { maxPercentile: 0.75, grade: "C" },
-  { maxPercentile: 0.875, grade: "D+" },
-  { maxPercentile: 1, grade: "D" },
-];
 
 function isFiniteNumber(value: unknown): value is number {
   return typeof value === "number" && Number.isFinite(value);
@@ -150,9 +240,9 @@ export const ECR_BASELINE_MAX_RANK = 150;
  * Underdog-style ADP piles up at the last pick of the draft for everyone who goes
  * undrafted, so an ADP sitting at that floor is a placeholder rather than a market
  * price. In the 2026-08-06 best ball snapshot 116 of 338 priced players sit there
- * with consensus ranks as deep as 417. Feeds sourced from real draft results only,
- * such as the redraft Fantasy Football Calculator feed, never reach the floor, so
- * this is a no-op for them rather than a special case they have to opt out of.
+ * with consensus ranks as deep as 417. This predicate only recognizes the numeric
+ * pile-up and cannot identify the source. Callers must apply it only to feeds that
+ * use the placeholder, since a late redraft ADP can be a valid observed price.
  */
 export function isUndraftedFloorAdp(adp: number, rounds: number, teams: number): boolean {
   return adp >= rounds * teams - 2;
@@ -166,7 +256,7 @@ export function isUndraftedFloorAdp(adp: number, rounds: number, teams: number):
  */
 export function getPickBaseline(player: Player): number | null {
   if (isFiniteNumber(player.adp)) {
-    return player.adp;
+    return hasReliableAdpSample(player) ? player.adp : null;
   }
   const consensus = isFiniteNumber(player.rankEcr)
     ? player.rankEcr
@@ -188,7 +278,15 @@ export function getPickDelta(pick: DraftPick): number | null {
   return baseline === null ? null : Math.round(pick.pickNumber - baseline);
 }
 
-export function getReachStealThreshold(round: number): number {
+export function getReachStealThreshold(round: number, player?: Player): number {
+  if (
+    player &&
+    isFiniteNumber(player.adp) &&
+    (isFiniteNumber(player.adpStandardDeviation) ||
+      (isFiniteNumber(player.adpHigh) && isFiniteNumber(player.adpLow)))
+  ) {
+    return getAdpSignalThreshold(player);
+  }
   return Math.max(REACH_STEAL_MIN_THRESHOLD, round * REACH_STEAL_ROUND_FACTOR);
 }
 
@@ -198,7 +296,7 @@ export function classifyPickValue(pick: DraftPick): "steal" | "reach" | null {
     return null;
   }
 
-  const threshold = getReachStealThreshold(pick.round);
+  const threshold = getReachStealThreshold(pick.round, pick.player);
   if (delta >= threshold) {
     return "steal";
   }
@@ -206,6 +304,20 @@ export function classifyPickValue(pick: DraftPick): "steal" | "reach" | null {
     return "reach";
   }
   return null;
+}
+
+/** Whether a still-available player has fallen far enough to earn the live value badge. */
+export function isPlayerValueAtPick(
+  player: Player,
+  pickNumber: number,
+  round: number
+): boolean {
+  return (
+    isFiniteNumber(player.adp) &&
+    hasReliableAdpSample(player) &&
+    Number.isFinite(pickNumber) &&
+    pickNumber - player.adp >= getReachStealThreshold(round, player)
+  );
 }
 
 export interface PositionRun {
@@ -279,36 +391,37 @@ export function getTeamValueTotal(team: TeamRoster): number {
   return team.picks.reduce((total, pick) => total + (getPickDelta(pick) ?? 0), 0);
 }
 
-function getTeamStrengthsAndWeaknesses(team: TeamRoster): {
+function getTeamStrengthsAndWeaknesses(
+  team: TeamRoster,
+  lineup: RedraftLineupSettings,
+  rounds: number
+): {
   strengths: Position[];
   weaknesses: Position[];
 } {
   const strengths: Position[] = [];
-  const weaknesses: Position[] = [];
+  const needs = getRosterNeeds({ positionCounts: team.positionCounts, lineup, rounds });
+  const weaknesses = Array.from(
+    new Set(needs.filter((need) => need.level === "starter").map((need) => need.slot))
+  );
+  const rosterTarget = getRedraftRosterTarget(lineup, rounds);
 
-  for (const position of Object.keys(ROSTER_STARTER_TARGETS) as RosterTargetPosition[]) {
-    const count = team.positionCounts[position] ?? 0;
-    const target = ROSTER_STARTER_TARGETS[position];
-    if (count > target) {
+  for (const position of ["QB", "RB", "WR", "TE"] as const) {
+    if ((team.positionCounts[position] ?? 0) >= rosterTarget[position]) {
       strengths.push(position);
-    } else if (count < target) {
-      weaknesses.push(position);
     }
   }
 
   return { strengths, weaknesses };
 }
 
-function gradeFromPercentile(percentile: number): string {
-  for (const band of GRADE_SCALE) {
-    if (percentile <= band.maxPercentile) {
-      return band.grade;
-    }
-  }
-  return "D";
-}
-
-export function computeDraftAnalytics(picks: DraftPick[], teams: TeamRoster[]): DraftAnalytics {
+export function computeDraftAnalytics(
+  picks: DraftPick[],
+  teams: TeamRoster[],
+  options: { lineup?: RedraftLineupSettings; rounds?: number } = {}
+): DraftAnalytics {
+  const lineup = normalizeRedraftLineup(options.lineup);
+  const rounds = Math.max(1, Math.round(options.rounds ?? 15));
   const judgedPicks = picks
     .map((pick) => ({ pick, delta: getPickDelta(pick) }))
     .filter((entry): entry is { pick: DraftPick; delta: number } => entry.delta !== null);
@@ -328,24 +441,26 @@ export function computeDraftAnalytics(picks: DraftPick[], teams: TeamRoster[]): 
     .map(({ pick }) => pick);
 
   const draftedTeams = teams.filter((team) => team.picks.length > 0);
-  const valueTotals = new Map(draftedTeams.map((team) => [team.teamNumber, getTeamValueTotal(team)]));
-  const rankedTotals = [...valueTotals.values()].sort((left, right) => right - left);
+  // Use the explicit pick list because callers sanitize it against the current
+  // snapshot before analysis. TeamRoster can still contain browser-persisted
+  // player copies with old or slate-mismatched ADP.
+  const valueTotals = new Map(
+    draftedTeams.map((team) => [
+      team.teamNumber,
+      picks
+        .filter((pick) => pick.teamNumber === team.teamNumber)
+        .reduce((total, pick) => total + (getPickDelta(pick) ?? 0), 0),
+    ])
+  );
 
   const teamStrengths = draftedTeams.map((team) => {
-    const { strengths, weaknesses } = getTeamStrengthsAndWeaknesses(team);
+    const { strengths, weaknesses } = getTeamStrengthsAndWeaknesses(team, lineup, rounds);
     const valueTotal = valueTotals.get(team.teamNumber) ?? 0;
-    // Rank by counting strictly-better teams rather than indexOf, which returns
-    // the first matching index and would hand every tied team the single best
-    // slot (over-grading ties — common early in a draft when many teams sit at
-    // a 0 value total).
-    const rank = rankedTotals.filter((total) => total > valueTotal).length;
-    const percentile = rankedTotals.length > 1 ? rank / (rankedTotals.length - 1) : 0;
 
     return {
       teamNumber: team.teamNumber,
       strengths,
       weaknesses,
-      overallGrade: gradeFromPercentile(percentile),
       valueTotal,
     };
   });

@@ -4,7 +4,7 @@ export const FANTASY_ADP_PROVIDER = "Fantasy Football Calculator";
 export const FANTASY_ADP_PROVIDER_URL = "https://fantasyfootballcalculator.com/adp";
 
 export const FANTASY_ADP_SOURCE =
-  "Average draft position comes from Fantasy Football Calculator's free mock-draft API. It reflects where players actually go in recent 12-team mock drafts for the matching scoring format, so it is a market signal rather than an expert opinion.";
+  "Average draft position comes from Fantasy Football Calculator's free mock-draft API. The pipeline requests its 12-team board for the matching scoring format. The provider returned the same player prices when tested across its 8-, 10-, 12-, and 14-team parameters on August 7, 2026, so league-size differences are not modeled.";
 
 /**
  * A single player's ADP reading from the upstream mock-draft sample. Kept
@@ -45,7 +45,11 @@ interface RawAdpPlayer {
 interface RawAdpPayload {
   status?: unknown;
   meta?: {
+    type?: unknown;
+    teams?: unknown;
+    rounds?: unknown;
     total_drafts?: unknown;
+    start_date?: unknown;
     end_date?: unknown;
   };
   players?: unknown;
@@ -106,13 +110,45 @@ export function getFantasyAdpUrl(scoringFormat: ScoringFormat, season: number): 
  */
 export function parseFantasyAdpPayload(
   payload: unknown,
-  options: { scoringFormat: ScoringFormat; sourceUrl: string }
+  options: {
+    scoringFormat: ScoringFormat;
+    sourceUrl: string;
+    strict?: boolean;
+    expectedTeams?: number;
+  }
 ): FantasyAdpBoard {
   const raw =
     payload && typeof payload === "object" ? (payload as RawAdpPayload) : ({} as RawAdpPayload);
 
   if (!Array.isArray(raw.players)) {
     throw new Error('Fantasy ADP source did not return a "players" array.');
+  }
+
+  if (options.strict) {
+    if (raw.status !== "Success") {
+      throw new Error(`Fantasy ADP source returned status "${String(raw.status)}".`);
+    }
+    const expectedType = ADP_FORMAT_SLUGS[options.scoringFormat].replace("half-ppr", "half");
+    const sourceType = String(raw.meta?.type ?? "").trim().toLowerCase().replace(/[_\s-]/g, "");
+    if (!sourceType || !sourceType.includes(expectedType.replace(/[_\s-]/g, ""))) {
+      throw new Error(
+        `Fantasy ADP source returned format "${String(raw.meta?.type)}" for ${options.scoringFormat}.`
+      );
+    }
+    const teams = asOptionalFiniteNumber(raw.meta?.teams);
+    if (options.expectedTeams !== undefined && teams !== options.expectedTeams) {
+      throw new Error(
+        `Fantasy ADP source returned ${String(raw.meta?.teams)} teams, expected ${options.expectedTeams}.`
+      );
+    }
+    const totalDrafts = asOptionalFiniteNumber(raw.meta?.total_drafts);
+    const rounds = asOptionalFiniteNumber(raw.meta?.rounds);
+    if (!totalDrafts || totalDrafts < 1 || !rounds || rounds < 1) {
+      throw new Error("Fantasy ADP source returned invalid sample or round metadata.");
+    }
+    if (!normalizeAsOfDate(raw.meta?.start_date) || !normalizeAsOfDate(raw.meta?.end_date)) {
+      throw new Error("Fantasy ADP source returned an invalid sample window.");
+    }
   }
 
   const entries: FantasyAdpEntry[] = [];
@@ -131,6 +167,13 @@ export function parseFantasyAdpPayload(
       continue;
     }
 
+    if (adp < 1) {
+      if (options.strict) {
+        throw new Error(`Fantasy ADP source returned an invalid ADP for "${name}".`);
+      }
+      continue;
+    }
+
     entries.push({
       name,
       team: typeof rawPlayer.team === "string" ? rawPlayer.team.trim().toUpperCase() : "",
@@ -145,6 +188,31 @@ export function parseFantasyAdpPayload(
 
   if (entries.length === 0) {
     throw new Error("Fantasy ADP source returned no usable players.");
+  }
+
+
+  if (options.strict) {
+    const seen = new Set<string>();
+    for (const entry of entries) {
+      const key = `${entry.name.trim().toLowerCase()}|${entry.position}`;
+      if (seen.has(key)) {
+        throw new Error(`Fantasy ADP source returned duplicate player "${entry.name}".`);
+      }
+      seen.add(key);
+      if (
+        entry.high !== undefined &&
+        entry.low !== undefined &&
+        (entry.high < 1 || entry.low < entry.high)
+      ) {
+        throw new Error(`Fantasy ADP source returned an invalid range for "${entry.name}".`);
+      }
+      if (entry.stdev !== undefined && entry.stdev < 0) {
+        throw new Error(`Fantasy ADP source returned an invalid deviation for "${entry.name}".`);
+      }
+      if (entry.timesDrafted !== undefined && entry.timesDrafted < 0) {
+        throw new Error(`Fantasy ADP source returned an invalid sample count for "${entry.name}".`);
+      }
+    }
   }
 
   return {
@@ -194,5 +262,10 @@ export async function fetchFantasyAdpBoard(
   }
 
   const payload = await response.json();
-  return parseFantasyAdpPayload(payload, { scoringFormat, sourceUrl });
+  return parseFantasyAdpPayload(payload, {
+    scoringFormat,
+    sourceUrl,
+    strict: true,
+    expectedTeams: 12,
+  });
 }

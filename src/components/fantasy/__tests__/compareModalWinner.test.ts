@@ -1,4 +1,4 @@
-import { MIN_MEANINGFUL_DELTA, bestIndex } from "../CompareModal";
+import { MIN_MEANINGFUL_DELTA, bestIndex } from "../compareMetrics";
 import type { Player } from "@/types";
 
 /**
@@ -28,11 +28,30 @@ describe("bestIndex", () => {
   });
 
   it("needs the best to clear the next best, not just the worst", () => {
-    // 20 vs 21 is inside the 6-pick ADP threshold even though 60 is far away.
+    // 20 vs 21 is inside the fallback 10-pick ADP threshold even though 60 is far away.
     const players = [
       player({ id: "a", adp: 20 }),
       player({ id: "b", adp: 21 }),
       player({ id: "c", adp: 60 }),
+    ];
+    expect(bestIndex(players, "adp", "lower")).toBe(-1);
+  });
+
+  it("uses player-level ADP variation instead of a fixed gap", () => {
+    const players = [
+      player({ id: "a", adp: 20, adpStandardDeviation: 15, adpTimesDrafted: 100 }),
+      player({ id: "b", adp: 32, adpStandardDeviation: 12, adpTimesDrafted: 100 }),
+    ];
+    expect(bestIndex(players, "adp", "lower")).toBe(-1);
+
+    players[1].adp = 36;
+    expect(bestIndex(players, "adp", "lower")).toBe(0);
+  });
+
+  it("does not declare an ADP winner from an early player sample", () => {
+    const players = [
+      player({ id: "a", adp: 20, adpStandardDeviation: 3, adpTimesDrafted: 8 }),
+      player({ id: "b", adp: 50, adpStandardDeviation: 3, adpTimesDrafted: 100 }),
     ];
     expect(bestIndex(players, "adp", "lower")).toBe(-1);
   });

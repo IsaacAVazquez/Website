@@ -80,7 +80,17 @@ describe("fantasySnapshotBuilder", () => {
     // The QB/K/DST consensus boards are scoring-agnostic, but ADP is matched
     // per scoring format, so a player's adp reading can differ between formats.
     // Compare the slices with adp stripped to assert the consensus data is shared.
-    const withoutAdp = (players: Player[]) => players.map(({ adp: _adp, ...rest }) => rest);
+    const withoutAdp = (players: Player[]) =>
+      players.map(
+        ({
+          adp: _adp,
+          adpHigh: _adpHigh,
+          adpLow: _adpLow,
+          adpStandardDeviation: _adpStandardDeviation,
+          adpTimesDrafted: _adpTimesDrafted,
+          ...rest
+        }) => rest
+      );
 
     expect(withoutAdp(pprSnapshot.positions.QB)).toEqual(withoutAdp(halfPprSnapshot.positions.QB));
     expect(withoutAdp(pprSnapshot.positions.QB)).toEqual(withoutAdp(standardSnapshot.positions.QB));
@@ -156,12 +166,54 @@ describe("fantasySnapshotBuilder", () => {
     }
   });
 
+  it("rejects a large ADP dataset when the player join is mostly broken", () => {
+    jest.resetModules();
+    jest.doMock("@/lib/fantasyAdpData", () => ({
+      getFantasyAdpDataset: () => ({
+        entries: Array.from({ length: 60 }, (_, index) => ({
+          name: `Missing Player ${index}`,
+          team: "FA",
+          position: "WR",
+          adp: index + 1,
+        })),
+        asOf: "2026-08-07T00:00:00.000Z",
+        sampleSize: 1000,
+        sourceUrl: "https://example.test/adp/ppr",
+      }),
+    }));
+
+    try {
+      jest.isolateModules(() => {
+        const {
+          buildFantasySnapshot: buildBrokenAdpSnapshot,
+          // eslint-disable-next-line @typescript-eslint/no-require-imports -- jest.isolateModules requires a synchronous callback; dynamic import() would not work here
+        } = require("../fantasySnapshotBuilder") as typeof import("../fantasySnapshotBuilder");
+
+        expect(() => buildBrokenAdpSnapshot("ppr")).toThrow(
+          "below the 60% minimum"
+        );
+      });
+    } finally {
+      jest.dontMock("@/lib/fantasyAdpData");
+      jest.resetModules();
+    }
+  });
+
   it("attaches matched adp readings and discloses the adp source when a dataset is present", () => {
     jest.resetModules();
     jest.doMock("@/lib/fantasyAdpData", () => ({
       getFantasyAdpDataset: () => ({
         entries: [
-          { name: "Josh Allen", team: "BUF", position: "QB", adp: 22.4 },
+          {
+            name: "Josh Allen",
+            team: "BUF",
+            position: "QB",
+            adp: 22.4,
+            high: 14,
+            low: 36,
+            stdev: 4.8,
+            timesDrafted: 219,
+          },
           { name: "Nobody Matched", team: "FA", position: "WR", adp: 199.9 },
         ],
         asOf: "2026-06-07T00:00:00.000Z",
@@ -179,7 +231,13 @@ describe("fantasySnapshotBuilder", () => {
         const snapshot = buildAdpFantasySnapshot("ppr");
 
         const joshAllen = snapshot.positions.QB.find((player) => player.name === "Josh Allen");
-        expect(joshAllen?.adp).toBe(22.4);
+        expect(joshAllen).toMatchObject({
+          adp: 22.4,
+          adpHigh: 14,
+          adpLow: 36,
+          adpStandardDeviation: 4.8,
+          adpTimesDrafted: 219,
+        });
 
         // Players without a matched reading carry no adp field at all.
         const unmatched = snapshot.positions.QB.find((player) => player.name !== "Josh Allen");
@@ -263,6 +321,14 @@ describe("fantasySnapshotBuilder", () => {
         upstreamUpdatedAt: "2026-04-15T15:29:20.000Z",
       }),
     }));
+    jest.doMock("@/lib/fantasyAdpData", () => ({
+      getFantasyAdpDataset: () => ({
+        asOf: "2026-04-15",
+        entries: [],
+        sampleSize: 0,
+        sourceUrl: "https://example.com/synthetic-adp",
+      }),
+    }));
 
     try {
       jest.isolateModules(() => {
@@ -279,6 +345,7 @@ describe("fantasySnapshotBuilder", () => {
       });
     } finally {
       jest.dontMock("@/lib/fantasyPositionData");
+      jest.dontMock("@/lib/fantasyAdpData");
       jest.resetModules();
     }
   });

@@ -1,26 +1,43 @@
 import {
   ECR_BASELINE_MAX_RANK,
-  ROSTER_STARTER_TARGETS,
   isUndraftedFloorAdp,
   getReachStealThreshold,
 } from "@/lib/draftAnalytics";
 import {
   analyzeBestBallRoster,
   getContestPreset,
+  getStrategyProfile,
+  hasSupportedBestBallAdp,
   type BestBallContestId,
   type BestBallContestPreset,
   type BestBallDraftPick,
   type BestBallPosition,
   type BestBallRosterAnalysis,
 } from "@/lib/bestBall";
-import type { DraftPick, DraftSettings, Player, Position } from "@/types";
+import {
+  ADP_SIGNAL_THRESHOLD,
+  getAdpSignalThreshold,
+  hasReliableAdpSample,
+} from "@/lib/fantasyUtils";
+import {
+  getRedraftRosterTarget,
+  normalizeRedraftLineup,
+  redraftLineupSummary,
+} from "@/lib/redraftLineup";
+import type {
+  DraftPick,
+  DraftSettings,
+  Player,
+  Position,
+  RedraftLineupSettings,
+} from "@/types";
 
 /**
- * Draft Outlook v1 is an ordinal draft-process model. It compares teams inside
+ * Draft Outlook v2 is an ordinal draft-process model. It compares teams inside
  * the current room from information available at draft time. It is not a
  * projected-points model, a win probability, or a roster-specific payout EV.
  */
-export const DRAFT_OUTLOOK_MODEL_VERSION = "draft-outlook-v1";
+export const DRAFT_OUTLOOK_MODEL_VERSION = "draft-outlook-v2";
 
 export type DraftValueMode = "redraft" | "best-ball";
 export type DraftValueConfidence = "early" | "developing" | "settled";
@@ -110,11 +127,13 @@ type OutlookPick = Pick<DraftPick, "pickNumber" | "round" | "teamNumber" | "play
 type PositionCounts = Partial<Record<Position, number>>;
 type TargetCounts = Partial<Record<Position, number>>;
 type PositionRange = Partial<Record<Position, { minimum: number; maximum: number }>>;
+type RedraftRosterPosition = "QB" | "RB" | "WR" | "TE" | "K" | "DST";
 
 interface PickBaseline {
   value: number;
   source: DraftValueBaselineSource;
   confidence: number;
+  uncertainty: number | null;
 }
 
 interface MutableDraftValueReport extends DraftValueReport {
@@ -150,23 +169,50 @@ function roundedScore(value: number): number {
   return Math.round(clamp(value, 0, 100));
 }
 
+function adpQuality(player: Player): Pick<PickBaseline, "confidence" | "uncertainty"> {
+  const hasPublishedUncertainty =
+    isFiniteNumber(player.adpStandardDeviation) ||
+    (isFiniteNumber(player.adpHigh) && isFiniteNumber(player.adpLow));
+  const uncertainty = hasPublishedUncertainty ? getAdpSignalThreshold(player) : null;
+  const sampleConfidence = hasReliableAdpSample(player) ? 1 : 0.25;
+  const uncertaintyConfidence = uncertainty === null
+    ? 1
+    : clamp(ADP_SIGNAL_THRESHOLD / uncertainty, 0.25, 1);
+
+  return {
+    confidence: sampleConfidence * uncertaintyConfidence,
+    uncertainty,
+  };
+}
+
 function baselineForPlayer(
   player: Player,
+  mode: DraftValueMode,
   useSuperflexRank: boolean,
+  useAdp: boolean,
   draft: { rounds: number; teams: number }
 ): PickBaseline | null {
-  if (useSuperflexRank && isFiniteNumber(player.superflexRank)) {
-    return { value: player.superflexRank, source: "format-rank", confidence: 0.9 };
+  if (useSuperflexRank) {
+    return isFiniteNumber(player.superflexRank)
+      ? {
+          value: player.superflexRank,
+          source: "format-rank",
+          confidence: 0.9,
+          uncertainty: null,
+        }
+      : null;
   }
-  // An ADP at the undrafted floor is a placeholder, not a price. The board already
-  // ignores it, so grading a pick against it would leave the two disagreeing about
-  // the same player.
+  // Underdog best-ball ADP uses the final draft slot as a placeholder for players
+  // who went undrafted. Fantasy Football Calculator redraft ADP comes from completed
+  // mocks, where a late value is still a real observed price. Keep the floor rule
+  // scoped to best ball so a valid late redraft ADP is never replaced by ECR.
   if (
     !useSuperflexRank &&
+    useAdp &&
     isFiniteNumber(player.adp) &&
-    !isUndraftedFloorAdp(player.adp, draft.rounds, draft.teams)
+    (mode === "redraft" || !isUndraftedFloorAdp(player.adp, draft.rounds, draft.teams))
   ) {
-    return { value: player.adp, source: "adp", confidence: 1 };
+    return { value: player.adp, source: "adp", ...adpQuality(player) };
   }
   // A consensus rank is a board position, not a pick number, and the two only agree near
   // the top of the board. Past the cutoff the gap is large enough that the tanh below
@@ -177,17 +223,28 @@ function baselineForPlayer(
       ? player.averageRank
       : null;
   if (consensus !== null && consensus <= ECR_BASELINE_MAX_RANK) {
-    return { value: consensus, source: "consensus-rank", confidence: 0.75 };
+    return {
+      value: consensus,
+      source: "consensus-rank",
+      confidence: 0.75,
+      uncertainty: null,
+    };
   }
   return null;
 }
 
 function marketComponent(
   picks: readonly OutlookPick[],
+  mode: DraftValueMode,
   useSuperflexRank: boolean,
+  useAdp: boolean,
   weight: number,
   draft: { rounds: number; teams: number }
-): { component: DraftValueComponent; summary: DraftValueMarketSummary } {
+): {
+  component: DraftValueComponent;
+  summary: DraftValueMarketSummary;
+  evidence: number;
+} {
   let weightedSignal = 0;
   let totalConfidence = 0;
   let totalDelta = 0;
@@ -197,10 +254,13 @@ function marketComponent(
   let consensusRankPicks = 0;
 
   for (const pick of picks) {
-    const baseline = baselineForPlayer(pick.player, useSuperflexRank, draft);
+    const baseline = baselineForPlayer(pick.player, mode, useSuperflexRank, useAdp, draft);
     if (!baseline) continue;
     const delta = pick.pickNumber - baseline.value;
-    const noise = getReachStealThreshold(pick.round);
+    const noise = Math.max(
+      getReachStealThreshold(pick.round, pick.player),
+      baseline.uncertainty ?? 0
+    );
     weightedSignal += Math.tanh(delta / noise) * baseline.confidence;
     totalConfidence += baseline.confidence;
     totalDelta += delta;
@@ -211,7 +271,10 @@ function marketComponent(
   }
 
   const averageSignal = totalConfidence > 0 ? weightedSignal / totalConfidence : 0;
-  const score = totalConfidence > 0 ? roundedScore(50 + averageSignal * 50) : 50;
+  const evidenceReliability = judgedPicks > 0 ? totalConfidence / judgedPicks : 0;
+  const score = totalConfidence > 0
+    ? roundedScore(50 + averageSignal * 50 * evidenceReliability)
+    : 50;
   const averageDelta = judgedPicks > 0 ? totalDelta / judgedPicks : null;
   const sourceParts = [
     adpPicks > 0 ? `${adpPicks} ADP` : null,
@@ -224,6 +287,7 @@ function marketComponent(
 
   return {
     component: { id: "market", label: "Market price", score, weight, detail },
+    evidence: totalConfidence,
     summary: {
       judgedPicks,
       adpPicks,
@@ -245,27 +309,108 @@ function countPositions(picks: readonly OutlookPick[]): PositionCounts {
   return counts;
 }
 
+const REDRAFT_ROSTER_POSITIONS: readonly RedraftRosterPosition[] = [
+  "QB",
+  "RB",
+  "WR",
+  "TE",
+  "K",
+  "DST",
+];
+
+function enumerateRedraftFinalCompositions(
+  counts: PositionCounts,
+  lineup: RedraftLineupSettings,
+  rounds: number
+): TargetCounts[] {
+  const rosterSize = Math.max(0, Math.floor(rounds));
+  const drafted = REDRAFT_ROSTER_POSITIONS.reduce(
+    (total, position) => total + (counts[position] ?? 0),
+    0
+  );
+  const remaining = rosterSize - drafted;
+  if (remaining < 0) return [];
+
+  const composition = Object.fromEntries(
+    REDRAFT_ROSTER_POSITIONS.map((position) => [position, counts[position] ?? 0])
+  ) as Record<RedraftRosterPosition, number>;
+  const validCompositions: TargetCounts[] = [];
+
+  const coversConfiguredLineup = (): boolean => {
+    if (
+      composition.QB < lineup.QB ||
+      composition.RB < lineup.RB ||
+      composition.WR < lineup.WR ||
+      composition.TE < lineup.TE ||
+      composition.K < lineup.K ||
+      composition.DST < lineup.DST
+    ) {
+      return false;
+    }
+    const flexEligibleDepth =
+      composition.RB - lineup.RB +
+      composition.WR - lineup.WR +
+      composition.TE - lineup.TE;
+    return flexEligibleDepth >= lineup.FLEX;
+  };
+
+  const assignRemaining = (positionIndex: number, spotsLeft: number) => {
+    const position = REDRAFT_ROSTER_POSITIONS[positionIndex];
+    const draftedAtPosition = counts[position] ?? 0;
+    if (positionIndex === REDRAFT_ROSTER_POSITIONS.length - 1) {
+      composition[position] = draftedAtPosition + spotsLeft;
+      if (coversConfiguredLineup()) validCompositions.push({ ...composition });
+      composition[position] = draftedAtPosition;
+      return;
+    }
+
+    for (let additions = 0; additions <= spotsLeft; additions += 1) {
+      composition[position] = draftedAtPosition + additions;
+      assignRemaining(positionIndex + 1, spotsLeft - additions);
+    }
+    composition[position] = draftedAtPosition;
+  };
+
+  assignRemaining(0, remaining);
+  return validCompositions;
+}
+
 function rosterShapeScore({
   counts,
   target,
   ranges,
+  deferredPositions = [],
   picksDrafted,
   rosterSize,
 }: {
   counts: PositionCounts;
   target: TargetCounts;
   ranges?: PositionRange;
+  deferredPositions?: readonly Position[];
   picksDrafted: number;
   rosterSize: number;
 }): number {
   if (picksDrafted === 0 || rosterSize <= 0) return 50;
 
   const positions = Object.keys(target) as Position[];
-  const progress = clamp(picksDrafted / rosterSize, 0, 1);
-  const totalDeviation = positions.reduce((sum, position) => {
-    const expected = (target[position] ?? 0) * progress;
+  const deferred = new Set(deferredPositions);
+  const deferredTarget = positions.reduce(
+    (sum, position) => sum + (deferred.has(position) ? target[position] ?? 0 : 0),
+    0
+  );
+  const earlyRosterSize = Math.max(1, rosterSize - deferredTarget);
+  const earlyProgress = clamp(picksDrafted / earlyRosterSize, 0, 1);
+  const regularDeviation = positions.reduce((sum, position) => {
+    if (deferred.has(position)) return sum;
+    const expected = (target[position] ?? 0) * earlyProgress;
     return sum + Math.abs((counts[position] ?? 0) - expected);
   }, 0);
+  const expectedDeferred = clamp(picksDrafted - earlyRosterSize, 0, deferredTarget);
+  const draftedDeferred = positions.reduce(
+    (sum, position) => sum + (deferred.has(position) ? counts[position] ?? 0 : 0),
+    0
+  );
+  const totalDeviation = regularDeviation + Math.abs(draftedDeferred - expectedDeferred);
   const rawFit = 1 - clamp(totalDeviation / (2 * picksDrafted), 0, 1);
   const stageReliability = clamp(picksDrafted / 8, 0, 1);
   let score = 50 + (rawFit * 100 - 50) * stageReliability;
@@ -284,77 +429,147 @@ function rosterShapeScore({
   return roundedScore(score);
 }
 
-function samePositionByeComponent(
+interface WeeklyLineupRequirements {
+  QB: number;
+  RB: number;
+  WR: number;
+  TE: number;
+  FLEX: number;
+  SUPERFLEX?: number;
+}
+
+function byeLineupCoverageComponent(
   picks: readonly OutlookPick[],
+  lineup: WeeklyLineupRequirements,
+  finalTargets: TargetCounts,
   weight: number,
-  rosterSize: number
+  finalCompositions: readonly TargetCounts[] = [finalTargets]
 ): DraftValueComponent {
-  const groups = new Map<string, number>();
+  const positions = ["QB", "RB", "WR", "TE"] as const;
+  const groups = new Map<number, Partial<Record<(typeof positions)[number], number>>>();
   let knownByePicks = 0;
   for (const pick of picks) {
     const bye = pick.player.byeWeek;
-    if (!Number.isInteger(bye) || Number(bye) < 1) continue;
+    if (
+      !positions.includes(pick.player.position as (typeof positions)[number]) ||
+      !Number.isInteger(bye) ||
+      Number(bye) < 1
+    ) {
+      continue;
+    }
     knownByePicks += 1;
-    const key = `${pick.player.position}-${bye}`;
-    groups.set(key, (groups.get(key) ?? 0) + 1);
+    const week = Number(bye);
+    const group = groups.get(week) ?? {};
+    const position = pick.player.position as (typeof positions)[number];
+    group[position] = (group[position] ?? 0) + 1;
+    groups.set(week, group);
   }
-  const conflicts = [...groups.values()].reduce((sum, count) => sum + Math.max(0, count - 1), 0);
-  const coverage = picks.length > 0 ? knownByePicks / picks.length : 0;
-  const stageReliability = picks.length > 1
-    ? clamp((picks.length - 1) / Math.max(1, rosterSize - 1), 0, 1)
-    : 0;
-  const score = roundedScore(
-    50 + 50 * coverage * stageReliability - Math.min(50, conflicts * 15)
-  );
+
+  const maximumWeeklyGap = groups.size === 0
+    ? 0
+    : Math.min(
+        ...finalCompositions.map((composition) => {
+          let worstGapForComposition = 0;
+          for (const byeCounts of groups.values()) {
+            const activeAtTarget = Object.fromEntries(
+              positions.map((position) => [
+                position,
+                Math.max(
+                  0,
+                  (composition[position] ?? finalTargets[position] ?? lineup[position]) -
+                    (byeCounts[position] ?? 0)
+                ),
+              ])
+            ) as Record<(typeof positions)[number], number>;
+            const baseGap = positions.reduce(
+              (sum, position) =>
+                sum + Math.max(0, lineup[position] - activeAtTarget[position]),
+              0
+            );
+            const skillSurplus = (["RB", "WR", "TE"] as const).reduce(
+              (sum, position) =>
+                sum + Math.max(0, activeAtTarget[position] - lineup[position]),
+              0
+            );
+            const flexFilled = Math.min(lineup.FLEX, skillSurplus);
+            const flexGap = lineup.FLEX - flexFilled;
+            const skillAfterFlex = Math.max(0, skillSurplus - flexFilled);
+            const quarterbackSurplus = Math.max(0, activeAtTarget.QB - lineup.QB);
+            const superflexGap = Math.max(
+              0,
+              (lineup.SUPERFLEX ?? 0) - skillAfterFlex - quarterbackSurplus
+            );
+            worstGapForComposition = Math.max(
+              worstGapForComposition,
+              baseGap + flexGap + superflexGap
+            );
+          }
+          return worstGapForComposition;
+        })
+      );
+
+  const score = roundedScore(50 - Math.min(50, maximumWeeklyGap * 25));
   const detail = knownByePicks === 0
     ? "No drafted player has published bye data yet."
-    : `${conflicts} same-position overlap${conflicts === 1 ? "" : "s"} · bye data on ${knownByePicks} of ${picks.length} picks`;
-  return { id: "byes", label: "Bye coverage", score, weight, detail };
+    : maximumWeeklyGap > 0
+      ? `${maximumWeeklyGap} starting slot${maximumWeeklyGap === 1 ? "" : "s"} could be uncovered in the best single final composition across every published bye. Bye data is known for ${knownByePicks} of ${picks.length} picks.`
+      : `At least one final composition covers every published bye. Bye data is known for ${knownByePicks} of ${picks.length} picks.`;
+  return { id: "byes", label: "Bye-week lineup", score, weight, detail };
 }
 
-function redraftRosterTarget(rounds: number): TargetCounts {
-  const target: Record<"QB" | "RB" | "WR" | "TE" | "K" | "DST", number> = {
-    QB: ROSTER_STARTER_TARGETS.QB,
-    RB: ROSTER_STARTER_TARGETS.RB,
-    WR: ROSTER_STARTER_TARGETS.WR,
-    TE: ROSTER_STARTER_TARGETS.TE,
-    K: ROSTER_STARTER_TARGETS.K,
-    DST: ROSTER_STARTER_TARGETS.DST,
+function unattainableRedraftByeCoverageComponent(
+  picksDrafted: number,
+  rosterSize: number,
+  weight: number
+): DraftValueComponent {
+  return {
+    id: "byes",
+    label: "Bye-week lineup",
+    score: 0,
+    weight,
+    detail: `No attainable ${rosterSize}-player finish can cover the configured starting lineup after these ${picksDrafted} picks, so bye-week coverage cannot be made safe.`,
   };
-  const depthOrder: readonly (keyof typeof target)[] = ["RB", "WR", "RB", "WR", "QB", "TE", "WR", "RB", "WR", "RB"];
-  let remaining = Math.max(0, rounds - Object.values(target).reduce((sum, count) => sum + count, 0));
-  let index = 0;
-  while (remaining > 0) {
-    const position = depthOrder[index % depthOrder.length];
-    target[position] += 1;
-    remaining -= 1;
-    index += 1;
-  }
-  return target;
 }
 
 function redraftLineupComponent(
   counts: PositionCounts,
   picksDrafted: number,
-  weight: number
+  rosterSize: number,
+  weight: number,
+  lineup: RedraftLineupSettings
 ): DraftValueComponent {
-  const qb = Math.min(counts.QB ?? 0, 1);
-  const rb = Math.min(counts.RB ?? 0, 2);
-  const wr = Math.min(counts.WR ?? 0, 2);
-  const te = Math.min(counts.TE ?? 0, 1);
+  const qb = Math.min(counts.QB ?? 0, lineup.QB);
+  const rb = Math.min(counts.RB ?? 0, lineup.RB);
+  const wr = Math.min(counts.WR ?? 0, lineup.WR);
+  const te = Math.min(counts.TE ?? 0, lineup.TE);
   const flexPool =
-    Math.max(0, (counts.RB ?? 0) - 2) +
-    Math.max(0, (counts.WR ?? 0) - 2) +
-    Math.max(0, (counts.TE ?? 0) - 1);
-  const filled = qb + rb + wr + te + Math.min(1, flexPool);
-  const expected = Math.min(7, picksDrafted);
+    Math.max(0, (counts.RB ?? 0) - lineup.RB) +
+    Math.max(0, (counts.WR ?? 0) - lineup.WR) +
+    Math.max(0, (counts.TE ?? 0) - lineup.TE);
+  const skillFilled = qb + rb + wr + te + Math.min(lineup.FLEX, flexPool);
+  const deferredSlots = lineup.K + lineup.DST;
+  const deferredDue = clamp(
+    picksDrafted - Math.max(0, rosterSize - deferredSlots),
+    0,
+    deferredSlots
+  );
+  const deferredFilled = Math.min(
+    deferredDue,
+    Math.min(counts.K ?? 0, lineup.K) + Math.min(counts.DST ?? 0, lineup.DST)
+  );
+  const filled = skillFilled + deferredFilled;
+  const starterSlots = Object.values(lineup).reduce((sum, slots) => sum + slots, 0);
+  const skillStarterSlots = starterSlots - deferredSlots;
+  const expected = Math.min(skillStarterSlots, picksDrafted) + deferredDue;
   const score = expected > 0 ? roundedScore((filled / expected) * 100) : 50;
   return {
     id: "lineup",
-    label: "Starting base",
+    label: "Lineup coverage",
     score,
     weight,
-    detail: `${filled} of 7 QB, RB, WR, TE, and flex slots covered. Kicker and defense stay in roster shape.`,
+    detail: deferredSlots > 0
+      ? `${filled} of ${expected} starting slots currently due are covered. Kicker and defense phase into the final ${deferredSlots} pick${deferredSlots === 1 ? "" : "s"}.`
+      : `${filled} of ${starterSlots} configured starting slots covered.`,
   };
 }
 
@@ -364,6 +579,7 @@ function bestBallCorrelationComponent(
   preset: BestBallContestPreset,
   weight: number,
 ): DraftValueComponent {
+  const profile = getStrategyProfile(preset);
   const quarterbacks = picks.filter((pick) => pick.player.position === "QB");
   const stackedQuarterbackIds = new Set(
     analysis.stacks.flatMap((stack) => stack.quarterbacks.map((player) => player.id))
@@ -376,13 +592,26 @@ function bestBallCorrelationComponent(
     0
   );
   const concentrationPenalty = analysis.concentrations.reduce(
-    (sum, concentration) => sum + Math.max(0, concentration.count - 3) * 5,
+    (sum, concentration) =>
+      sum + Math.max(0, concentration.count - profile.concentrationFloor) * 5,
     0
   );
+  const completedWeek17GameStacks = analysis.week17Pairs.filter((pair) =>
+    pair.teams.some((team) => {
+      const teamPlayers = pair.playersByTeam[team] ?? [];
+      const opponent = pair.teams.find((candidate) => candidate !== team);
+      const opponentPlayers = opponent ? pair.playersByTeam[opponent] ?? [] : [];
+      return (
+        teamPlayers.some((player) => player.position === "QB") &&
+        teamPlayers.some((player) => player.position === "WR" || player.position === "TE") &&
+        opponentPlayers.some((player) => ["RB", "WR", "TE"].includes(player.position))
+      );
+    })
+  ).length;
   let rawScore = stackedShare === null ? 50 : 30 + stackedShare * 60;
   rawScore += Math.min(10, extraPassCatchers * 5);
   if (preset.strategyProfileId === "standard-tournament") {
-    rawScore += Math.min(4, analysis.week17Pairs.length * 2);
+    rawScore += Math.min(4, completedWeek17GameStacks * 2);
   }
   rawScore -= concentrationPenalty;
   const reliability = Math.min(1, picks.length / 10);
@@ -391,7 +620,7 @@ function bestBallCorrelationComponent(
   const detail = quarterbacks.length === 0
     ? "Correlation stays neutral until the roster has a quarterback."
     : usesWeek17Pairs
-      ? `${analysis.stacks.length} QB stack${analysis.stacks.length === 1 ? "" : "s"} · ${analysis.week17Pairs.length} Week 17 opponent pair${analysis.week17Pairs.length === 1 ? "" : "s"}`
+      ? `${analysis.stacks.length} QB stack${analysis.stacks.length === 1 ? "" : "s"} · ${completedWeek17GameStacks} completed Week 17 game stack${completedWeek17GameStacks === 1 ? "" : "s"}`
       : `${analysis.stacks.length} QB stack${analysis.stacks.length === 1 ? "" : "s"} · Week 17 pairs are not scored for this contest`;
   return { id: "correlation", label: "Correlation", score, weight, detail };
 }
@@ -472,7 +701,7 @@ function addRoomRanks(reports: MutableDraftValueReport[]): DraftValueReport[] {
       (entry) => Math.abs(entry.compositeScore - score) <= epsilon
     ).length;
     const midRank = better + (tied - 1) / 2;
-    report.roomRank = better + 1;
+    report.roomRank = midRank + 1;
     report.roomSize = sameProgress.length;
     report.roomTieCount = tied;
     report.roomPercentile = sameProgress.length > 1
@@ -484,25 +713,42 @@ function addRoomRanks(reports: MutableDraftValueReport[]): DraftValueReport[] {
 
 export function calculateRedraftDraftValues(
   picks: readonly DraftPick[],
-  settings: Pick<DraftSettings, "totalTeams" | "userTeam" | "rounds" | "draftType">
+  settings: Pick<
+    DraftSettings,
+    "totalTeams" | "userTeam" | "rounds" | "draftType" | "lineup"
+  >
 ): DraftValueReport[] {
-  const target = redraftRosterTarget(settings.rounds);
+  const lineup = normalizeRedraftLineup(settings.lineup);
+  const target = getRedraftRosterTarget(lineup, settings.rounds);
   const reports: MutableDraftValueReport[] = Array.from(
     { length: settings.totalTeams },
     (_, index) => {
       const teamNumber = index + 1;
       const teamPicks = picks.filter((pick) => pick.teamNumber === teamNumber);
       const counts = countPositions(teamPicks);
-      const market = marketComponent(teamPicks, false, REDRAFT_COMPONENT_WEIGHTS.market, {
-        rounds: settings.rounds,
-        teams: settings.totalTeams,
-      });
+      const market = marketComponent(
+        teamPicks,
+        "redraft",
+        false,
+        true,
+        REDRAFT_COMPONENT_WEIGHTS.market,
+        {
+          rounds: settings.rounds,
+          teams: settings.totalTeams,
+        }
+      );
       const rosterScore = rosterShapeScore({
         counts,
         target,
+        deferredPositions: ["K", "DST"],
         picksDrafted: teamPicks.length,
         rosterSize: settings.rounds,
       });
+      const finalCompositions = enumerateRedraftFinalCompositions(
+        counts,
+        lineup,
+        settings.rounds
+      );
       const components: DraftValueComponent[] = [
         market.component,
         {
@@ -510,14 +756,28 @@ export function calculateRedraftDraftValues(
           label: "Roster shape",
           score: rosterScore,
           weight: REDRAFT_COMPONENT_WEIGHTS.roster,
-          detail: `Assumes ${target.QB} QB, ${target.RB} RB, ${target.WR} WR, ${target.TE} TE, ${target.K} K, and ${target.DST} DST across ${settings.rounds} rounds.`,
+          detail: `Targets ${target.QB} QB, ${target.RB} RB, ${target.WR} WR, ${target.TE} TE, ${target.K} K, and ${target.DST} DST from a ${redraftLineupSummary(lineup)} starting lineup across ${settings.rounds} rounds.`,
         },
-        redraftLineupComponent(counts, teamPicks.length, REDRAFT_COMPONENT_WEIGHTS.lineup),
-        samePositionByeComponent(
-          teamPicks,
-          REDRAFT_COMPONENT_WEIGHTS.byes,
-          settings.rounds
+        redraftLineupComponent(
+          counts,
+          teamPicks.length,
+          settings.rounds,
+          REDRAFT_COMPONENT_WEIGHTS.lineup,
+          lineup
         ),
+        finalCompositions.length > 0
+          ? byeLineupCoverageComponent(
+              teamPicks,
+              lineup,
+              target,
+              REDRAFT_COMPONENT_WEIGHTS.byes,
+              finalCompositions
+            )
+          : unattainableRedraftByeCoverageComponent(
+              teamPicks.length,
+              settings.rounds,
+              REDRAFT_COMPONENT_WEIGHTS.byes
+            ),
       ];
       return {
         modelVersion: DRAFT_OUTLOOK_MODEL_VERSION,
@@ -530,7 +790,7 @@ export function calculateRedraftDraftValues(
         roomSize: 0,
         roomPercentile: null,
         roomTieCount: 0,
-        confidence: confidenceFor(teamPicks.length, settings.rounds, market.summary.judgedPicks),
+        confidence: confidenceFor(teamPicks.length, settings.rounds, market.evidence),
         slotContext: getDraftSlotContext({
           slot: teamNumber,
           teams: settings.totalTeams,
@@ -571,10 +831,17 @@ export function calculateBestBallDraftValues({
         },
       ])
     ) as PositionRange;
-    const market = marketComponent(teamPicks, useSuperflexRank, weights.market, {
-      rounds: preset.rounds,
-      teams: preset.teams,
-    });
+    const market = marketComponent(
+      teamPicks,
+      "best-ball",
+      useSuperflexRank,
+      hasSupportedBestBallAdp(preset),
+      weights.market,
+      {
+        rounds: preset.rounds,
+        teams: preset.teams,
+      }
+    );
     const rosterScore = rosterShapeScore({
       counts,
       target: analysis.targets.recommended,
@@ -592,7 +859,15 @@ export function calculateBestBallDraftValues({
         detail: `Current target ${analysis.targets.recommended.QB} QB · ${analysis.targets.recommended.RB} RB · ${analysis.targets.recommended.WR} WR · ${analysis.targets.recommended.TE} TE`,
       },
       bestBallCorrelationComponent(teamPicks, analysis, preset, weights.correlation),
-      samePositionByeComponent(teamPicks, weights.byes, preset.rosterSize),
+      byeLineupCoverageComponent(
+        teamPicks,
+        preset.lineup,
+        analysis.targets.recommended,
+        weights.byes,
+        analysis.targets.validCompositions.length > 0
+          ? analysis.targets.validCompositions
+          : [analysis.targets.recommended]
+      ),
     ];
     return {
       modelVersion: DRAFT_OUTLOOK_MODEL_VERSION,
@@ -605,7 +880,7 @@ export function calculateBestBallDraftValues({
       roomSize: 0,
       roomPercentile: null,
       roomTieCount: 0,
-      confidence: confidenceFor(teamPicks.length, preset.rosterSize, market.summary.judgedPicks),
+      confidence: confidenceFor(teamPicks.length, preset.rosterSize, market.evidence),
       slotContext: getDraftSlotContext({
         slot: teamNumber,
         teams: preset.teams,

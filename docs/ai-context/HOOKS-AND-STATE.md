@@ -91,7 +91,7 @@ The rankings client also keeps a List-view Comfortable/Compact density preferenc
 
 ### Draft tracker state
 
-`useDraftState` (`src/app/fantasy-football/draft-tracker/hooks/useDraftState.ts`) owns the draft assistant state machine (room settings, picks, teams, undo/redo, team names, export). It persists per-season under `fantasy-draft-tracker-v2-<season>` (e.g. `fantasy-draft-tracker-v2-2026`); the legacy unversioned key `fantasy-draft-tracker` is deleted (not migrated) on load.
+`useDraftState` (`src/app/fantasy-football/draft-tracker/hooks/useDraftState.ts`) owns the draft assistant state machine (room settings, exact starting lineup, picks, teams, undo/redo, team names, export). It persists per-season under `fantasy-draft-tracker-v3-<season>` (e.g. `fantasy-draft-tracker-v3-2026`). A current-season v2 draft is migrated with the default one-QB lineup, while the legacy unversioned key `fantasy-draft-tracker` is deleted on load.
 
 ---
 

@@ -10,8 +10,22 @@ export const FANTASY_PUBLIC_POSITIONS = ["OVERALL", "QB", "RB", "WR", "TE", "K",
 
 export type FantasyPublicPosition = (typeof FANTASY_PUBLIC_POSITIONS)[number];
 
+export const FANTASY_PROS_MIN_EXPERTS = 10;
+export const FANTASY_PROS_MIN_REFRESH_COVERAGE = 0.8;
+export const FANTASY_PROS_REFRESH_TOP_BOARD_SIZE = 150;
+export const FANTASY_PROS_MIN_BOARD_PLAYERS: Readonly<Record<FantasyPublicPosition, number>> =
+  Object.freeze({
+    OVERALL: 300,
+    QB: 48,
+    RB: 100,
+    WR: 120,
+    TE: 48,
+    K: 32,
+    DST: 32,
+  });
+
 interface FantasyProsPublicPlayerPayload {
-  player_id: number;
+  player_id: number | string;
   player_name: string;
   player_team_id?: string | null;
   player_position_id: string;
@@ -28,10 +42,16 @@ interface FantasyProsPublicPlayerPayload {
 }
 
 interface FantasyProsPublicConsensusPayload {
+  sport: string;
+  type: string;
+  ranking_type_name: string;
   year: string | number;
   week: string | number;
   position_id: string;
   scoring: string;
+  count: string | number;
+  total_experts: string | number;
+  filters: unknown;
   last_updated: string;
   last_updated_ts: number | string;
   accessed?: string;
@@ -50,6 +70,7 @@ export interface FantasyProsPublicBoard {
   upstreamUpdatedAt: string;
   season: number;
   week: number;
+  totalExperts: number;
   players: Player[];
 }
 
@@ -83,7 +104,21 @@ const PUBLIC_POSITION_URLS: Record<ScoringFormat, Record<FantasyPublicPosition, 
   },
 };
 
-const REQUIRED_PAGE_KEYS = ["year", "week", "position_id", "scoring", "last_updated", "last_updated_ts", "players"] as const;
+const REQUIRED_PAGE_KEYS = [
+  "sport",
+  "type",
+  "ranking_type_name",
+  "year",
+  "week",
+  "position_id",
+  "scoring",
+  "count",
+  "total_experts",
+  "filters",
+  "last_updated",
+  "last_updated_ts",
+  "players",
+] as const;
 const REQUIRED_PLAYER_KEYS = [
   "player_id",
   "player_name",
@@ -209,6 +244,149 @@ function normalizeAccessedAt(value: string | undefined): string | null {
   return Number.isNaN(date.getTime()) ? null : date.toISOString();
 }
 
+function normalizeSourcePosition(position: string): string {
+  const normalized = position.trim().toUpperCase();
+  if (["DEF", "D/ST"].includes(normalized)) return "DST";
+  if (["ALL", "OVERALL", "OP"].includes(normalized)) return "OVERALL";
+  return normalized;
+}
+
+function expectedSourceScoring(scoringFormat: ScoringFormat): readonly string[] {
+  switch (scoringFormat) {
+    case "PPR":
+      return ["PPR"];
+    case "HALF_PPR":
+      return ["HALF", "HALF_PPR", "HALF-PPR", "0.5 PPR"];
+    case "STANDARD":
+      return ["STD", "STANDARD"];
+  }
+}
+
+function validateConsensusPayload(
+  payload: FantasyProsPublicConsensusPayload,
+  options: {
+    scoringFormat: ScoringFormat;
+    requestedPosition: FantasyPublicPosition;
+    expectedSeason?: number;
+    expectedRankingType?: "draft" | "best";
+  }
+) {
+  if (payload.sport.trim().toUpperCase() !== "NFL") {
+    throw new Error(`FantasyPros public source returned sport "${payload.sport}" instead of NFL.`);
+  }
+  const expectedRankingType = options.expectedRankingType ?? "draft";
+  if (payload.ranking_type_name.trim().toLowerCase() !== expectedRankingType) {
+    throw new Error(
+      `FantasyPros public source returned ranking type "${payload.ranking_type_name}" instead of ${expectedRankingType}.`
+    );
+  }
+  if (!payload.type.toLowerCase().includes(expectedRankingType)) {
+    throw new Error(`FantasyPros public source returned unexpected board type "${payload.type}".`);
+  }
+
+  const season = asFiniteNumber(payload.year, "year");
+  const week = asFiniteNumber(payload.week, "week");
+  const count = asFiniteNumber(payload.count, "count");
+  const totalExperts = asFiniteNumber(payload.total_experts, "total_experts");
+  if (!Number.isInteger(season) || !Number.isInteger(week) || week < 0 || week > 18) {
+    throw new Error("FantasyPros public source returned an invalid season or week.");
+  }
+  if (options.expectedSeason !== undefined && season !== options.expectedSeason) {
+    throw new Error(
+      `FantasyPros public source returned season ${season}, expected ${options.expectedSeason}.`
+    );
+  }
+  if (count !== payload.players.length) {
+    throw new Error(
+      `FantasyPros public source declared ${count} players but returned ${payload.players.length}.`
+    );
+  }
+  if (totalExperts < FANTASY_PROS_MIN_EXPERTS) {
+    throw new Error(
+      `FantasyPros public source returned only ${totalExperts} contributing experts.`
+    );
+  }
+  if (
+    !Array.isArray(payload.filters) &&
+    !(typeof payload.filters === "string" && payload.filters.trim().length > 0)
+  ) {
+    throw new Error('FantasyPros public source is missing a valid "filters" value.');
+  }
+
+  const requestedPosition = normalizeSourcePosition(options.requestedPosition);
+  const sourcePosition = normalizeSourcePosition(payload.position_id);
+  if (sourcePosition !== requestedPosition) {
+    throw new Error(
+      `FantasyPros public source returned ${sourcePosition} for a ${requestedPosition} request.`
+    );
+  }
+
+  // QB, K, and DST pages are shared across scoring formats. The other pages
+  // must match the requested scoring format or the snapshot would silently mix
+  // boards that answer different league rules.
+  if (!["QB", "K", "DST"].includes(requestedPosition)) {
+    const sourceScoring = payload.scoring.trim().toUpperCase();
+    if (!expectedSourceScoring(options.scoringFormat).includes(sourceScoring)) {
+      throw new Error(
+        `FantasyPros public source returned scoring "${payload.scoring}" for ${options.scoringFormat}.`
+      );
+    }
+  }
+
+  for (const [index, player] of payload.players.entries()) {
+    const playerId = Number(player.player_id);
+    if (!Number.isInteger(playerId) || playerId <= 0) {
+      throw new Error(
+        `FantasyPros public source player[${index}] has invalid player_id "${player.player_id}".`
+      );
+    }
+    if (typeof player.player_name !== "string" || player.player_name.trim().length === 0) {
+      throw new Error(`FantasyPros public source player[${index}] has an empty player_name.`);
+    }
+
+    const consensusRank = asFiniteNumber(player.rank_ecr, `player[${index}].rank_ecr`);
+    const averageRank = asFiniteNumber(player.rank_ave, `player[${index}].rank_ave`);
+    const minimumRank = asFiniteNumber(player.rank_min, `player[${index}].rank_min`);
+    const maximumRank = asFiniteNumber(player.rank_max, `player[${index}].rank_max`);
+    const rankDeviation = asFiniteNumber(player.rank_std, `player[${index}].rank_std`);
+    if (
+      consensusRank <= 0 ||
+      averageRank <= 0 ||
+      minimumRank <= 0 ||
+      maximumRank < minimumRank ||
+      averageRank < minimumRank ||
+      averageRank > maximumRank ||
+      rankDeviation < 0
+    ) {
+      throw new Error(
+        `FantasyPros public source player[${index}] has an invalid expert rank distribution.`
+      );
+    }
+    const positionRank = parsePositionRank(player.pos_rank);
+    if (positionRank !== undefined && positionRank <= 0) {
+      throw new Error(
+        `FantasyPros public source player[${index}] has an invalid position rank.`
+      );
+    }
+    const tier = asOptionalFiniteNumber(player.tier);
+    if (tier !== undefined && (!Number.isInteger(tier) || tier <= 0)) {
+      throw new Error(`FantasyPros public source player[${index}] has an invalid tier.`);
+    }
+
+    const mappedPosition = mapFantasyProsPosition(player.player_position_id);
+    if (requestedPosition !== "OVERALL" && mappedPosition !== requestedPosition) {
+      throw new Error(
+        `FantasyPros public source player[${index}] is ${mappedPosition} on a ${requestedPosition} board.`
+      );
+    }
+  }
+
+  const playerIds = payload.players.map((player) => Number(player.player_id));
+  if (new Set(playerIds).size !== playerIds.length) {
+    throw new Error("FantasyPros public source returned duplicate player_id values.");
+  }
+}
+
 function toPublishedFantasyPlayer(
   rawPlayer: FantasyProsPublicPlayerPayload,
   upstreamUpdatedAt: string
@@ -254,9 +432,12 @@ export function parseFantasyProsPublicConsensusPage(
     scoringFormat: ScoringFormat;
     requestedPosition: FantasyPublicPosition;
     sourceUrl: string;
+    expectedSeason?: number;
+    expectedRankingType?: "draft" | "best";
   }
 ): FantasyProsPublicBoard {
   const payload = extractConsensusPayload(html);
+  validateConsensusPayload(payload, options);
   const upstreamUpdatedAt = buildUpstreamUpdatedAt(payload);
   const players = payload.players
     .map((player) => toPublishedFantasyPlayer(player, upstreamUpdatedAt))
@@ -274,8 +455,41 @@ export function parseFantasyProsPublicConsensusPage(
     upstreamUpdatedAt,
     season: Number.parseInt(String(payload.year), 10),
     week: Number.parseInt(String(payload.week), 10),
+    totalExperts: Number.parseInt(String(payload.total_experts), 10),
     players,
   };
+}
+
+/**
+ * Rejects a fresh board that is materially smaller than the same-season board
+ * already committed. The top-board overlap check also catches a coherent but
+ * wrong or truncated response whose raw row count still looks plausible.
+ */
+export function assertFantasyProsRefreshCoverage(
+  board: FantasyProsPublicBoard,
+  previousPlayers: readonly Player[],
+  previousSeason: number | null | undefined
+): void {
+  const absoluteFloor = FANTASY_PROS_MIN_BOARD_PLAYERS[board.requestedPosition];
+  if (board.players.length < absoluteFloor) {
+    throw new Error(
+      `FantasyPros ${board.scoringFormat} ${board.requestedPosition} refresh has ${board.players.length} players, below the ${absoluteFloor}-player draft-room floor.`
+    );
+  }
+  if (previousPlayers.length === 0 || previousSeason !== board.season) return;
+
+  const requiredPlayers = Math.ceil(
+    previousPlayers.length * FANTASY_PROS_MIN_REFRESH_COVERAGE
+  );
+  const previousTop = previousPlayers.slice(0, FANTASY_PROS_REFRESH_TOP_BOARD_SIZE);
+  const freshIds = new Set(board.players.map((player) => player.id));
+  const retainedTop = previousTop.filter((player) => freshIds.has(player.id)).length;
+  const requiredTop = Math.ceil(previousTop.length * FANTASY_PROS_MIN_REFRESH_COVERAGE);
+  if (board.players.length < requiredPlayers || retainedTop < requiredTop) {
+    throw new Error(
+      `FantasyPros ${board.scoringFormat} ${board.requestedPosition} refresh kept ${board.players.length} of ${previousPlayers.length} rows and ${retainedTop} of ${previousTop.length} prior top-board players.`
+    );
+  }
 }
 
 /**
@@ -300,7 +514,8 @@ export class FantasyProsPublicFetchError extends Error {
 
 export async function fetchFantasyProsPublicConsensusBoard(
   scoringFormat: ScoringFormat,
-  position: FantasyPublicPosition
+  position: FantasyPublicPosition,
+  expectedSeason: number
 ): Promise<FantasyProsPublicBoard> {
   const sourceUrl = getFantasyProsPublicConsensusUrl(scoringFormat, position);
   const response = await fetch(sourceUrl, {
@@ -326,5 +541,6 @@ export async function fetchFantasyProsPublicConsensusBoard(
     scoringFormat,
     requestedPosition: position,
     sourceUrl,
+    expectedSeason,
   });
 }

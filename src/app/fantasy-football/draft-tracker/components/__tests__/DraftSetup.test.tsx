@@ -11,6 +11,7 @@ function makeSettings(partial: Partial<DraftSettings> = {}): DraftSettings {
     scoringFormat: "PPR",
     draftType: "snake",
     rounds: 15,
+    lineup: { QB: 1, RB: 2, WR: 2, TE: 1, FLEX: 1, K: 1, DST: 1 },
     timerSeconds: 90,
     leagueName: "Home league",
     ...partial,
@@ -69,5 +70,26 @@ describe("DraftSetup", () => {
     expect(onStartDraft).toHaveBeenCalledTimes(1);
     expect(onSaveSettings).toHaveBeenCalledTimes(1);
     expect(onSaveSettings).toHaveBeenCalledWith(expect.objectContaining({ totalTeams: 12 }));
+  });
+
+  it("saves the league's actual starting lineup", () => {
+    const onSaveSettings = jest.fn();
+    render(
+      <DraftSetup
+        settings={makeSettings()}
+        onSaveSettings={onSaveSettings}
+        onStartDraft={jest.fn()}
+      />
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: /3 WR, no K\/DST/i }));
+    fireEvent.change(screen.getByLabelText("Tight ends"), { target: { value: "2" } });
+    fireEvent.click(screen.getByRole("button", { name: /Start draft assistant/i }));
+
+    expect(onSaveSettings).toHaveBeenCalledWith(
+      expect.objectContaining({
+        lineup: { QB: 1, RB: 2, WR: 3, TE: 2, FLEX: 2, K: 0, DST: 0 },
+      })
+    );
   });
 });

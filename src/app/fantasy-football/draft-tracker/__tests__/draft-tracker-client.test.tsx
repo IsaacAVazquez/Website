@@ -4,6 +4,7 @@ import { DraftTrackerClient } from "../draft-tracker-client";
 
 const mockUseDraftState = jest.fn();
 const mockUseFantasySnapshot = jest.fn();
+const mockExportDraftResults = jest.fn();
 
 jest.mock("framer-motion", () => ({
   motion: {
@@ -39,6 +40,7 @@ jest.mock("../components/DraftSetup", () => ({
 
 describe("DraftTrackerClient", () => {
   beforeEach(() => {
+    mockExportDraftResults.mockReset();
     mockUseDraftState.mockReturnValue({
       draftState: {
         settings: {
@@ -47,8 +49,9 @@ describe("DraftTrackerClient", () => {
           scoringFormat: "PPR",
           draftType: "snake",
           rounds: 15,
+          lineup: { QB: 1, RB: 2, WR: 2, TE: 1, FLEX: 1, K: 1, DST: 1 },
         },
-        picks: [{ pickNumber: 1, teamNumber: 1, round: 1, player: { id: "picked-1" } }],
+        picks: [{ pickNumber: 1, teamNumber: 1, round: 1, player: { id: "picked-1", adp: 1 } }],
         currentPick: 2,
         currentRound: 1,
         isActive: true,
@@ -73,7 +76,7 @@ describe("DraftTrackerClient", () => {
       getTeamName: (teamNumber: number) => `Team ${teamNumber}`,
       canRedo: false,
       resetDraft: jest.fn(),
-      exportDraftResults: jest.fn(),
+      exportDraftResults: mockExportDraftResults,
       isUserPick: true,
       isDraftComplete: false,
       currentTeamName: "Your Turn",
@@ -148,5 +151,13 @@ describe("DraftTrackerClient", () => {
 
     fireEvent.click(screen.getByRole("button", { name: "Open Bijan Robinson detail" }));
     expect(screen.getByRole("dialog", { name: "Bijan Robinson detail" })).toBeVisible();
+
+    fireEvent.click(screen.getByRole("button", { name: "JSON" }));
+    expect(mockExportDraftResults).toHaveBeenCalledWith(
+      "json",
+      expect.objectContaining({
+        picks: [expect.objectContaining({ player: expect.objectContaining({ adp: undefined }) })],
+      })
+    );
   });
 });

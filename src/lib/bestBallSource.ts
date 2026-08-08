@@ -2,6 +2,7 @@ import {
   FANTASY_PROS_PUBLIC_USER_AGENT,
   parseFantasyProsPublicConsensusPage,
 } from "@/lib/fantasyProsPublicSource";
+import { BEST_BALL_MIN_RANKING_PLAYERS } from "@/lib/bestBallSnapshot";
 import type { FantasyAdpEntry } from "@/lib/fantasyAdpSource";
 import type { Player, Position, ScoringFormat } from "@/types";
 
@@ -13,6 +14,10 @@ export const BEST_BALL_ADP_API_URL = "https://pprrankings.com/api/rankings";
 export const BEST_BALL_ADP_SOURCE_URL = "https://pprrankings.com/rankings";
 export const BEST_BALL_SCHEDULE_SOURCE_URL =
   "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard";
+
+export function getExpectedBestBallSeason(now: Date = new Date()): number {
+  return now.getUTCMonth() < 2 ? now.getUTCFullYear() - 1 : now.getUTCFullYear();
+}
 
 export interface BestBallRankingsBoard {
   players: Player[];
@@ -178,19 +183,22 @@ async function fetchJson(url: string): Promise<unknown> {
 }
 
 export async function fetchBestBallRankingsBoard(): Promise<BestBallRankingsBoard> {
-  return fetchEligibleRankingsBoard(BEST_BALL_RANKINGS_URL, "PPR", "PPR");
+  return fetchEligibleRankingsBoard(BEST_BALL_RANKINGS_URL, "PPR", "PPR", "best");
 }
 
 async function fetchEligibleRankingsBoard(
   sourceUrl: string,
   scoringFormat: ScoringFormat,
-  expectedSourceScoring: string
+  expectedSourceScoring: string,
+  expectedRankingType: "draft" | "best" = "draft"
 ): Promise<BestBallRankingsBoard> {
   const html = await fetchText(sourceUrl);
   const board = parseFantasyProsPublicConsensusPage(html, {
     scoringFormat,
     requestedPosition: "OVERALL",
     sourceUrl,
+    expectedRankingType,
+    expectedSeason: getExpectedBestBallSeason(),
   });
 
   assertBestBallSourceScoring(board.sourceScoring, expectedSourceScoring);
@@ -198,7 +206,7 @@ async function fetchEligibleRankingsBoard(
   const players = board.players.filter((player) =>
     ["QB", "RB", "WR", "TE"].includes(player.position)
   );
-  if (players.length < 150) {
+  if (players.length < BEST_BALL_MIN_RANKING_PLAYERS) {
     throw new Error(`Best ball rankings source returned only ${players.length} eligible players.`);
   }
 

@@ -198,6 +198,7 @@ export interface BestBallRecommendation {
   reasons: readonly BestBallRecommendationReason[];
   tiebreakers: {
     week17Opponent: number;
+    waitUntilNextTurn: boolean;
   };
 }
 

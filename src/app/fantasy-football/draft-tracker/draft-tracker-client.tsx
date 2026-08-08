@@ -10,7 +10,7 @@ import { useDraftState } from "./hooks/useDraftState";
 import { useDraftTimer } from "./hooks/useDraftTimer";
 import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
 import { usePlayerNotes } from "@/hooks/usePlayerNotes";
-import { computeDraftAnalytics } from "@/lib/draftAnalytics";
+import { computeDraftAnalytics, reconcileTeamRosters } from "@/lib/draftAnalytics";
 import { calculateRedraftDraftValues } from "@/lib/fantasyTeamValue";
 import {
   FANTASY_SCORING_LABELS,
@@ -85,7 +85,6 @@ export function DraftTrackerClient() {
     isUserPick,
     isDraftComplete,
     currentTeamName,
-    userTeam,
     persistenceError,
   } = useDraftState();
 
@@ -99,7 +98,7 @@ export function DraftTrackerClient() {
   const overallSliceMetadata = snapshot?.sliceMetadata?.overall ?? null;
   const rankingsUnavailable = Boolean(overallSliceMetadata && !overallSliceMetadata.available);
   const rankingsUpdatedAt = overallSliceMetadata?.updatedAt ?? metadata?.upstreamUpdatedAt;
-  const rankingsStale = Boolean(rankingsUpdatedAt) && getSnapshotStaleness(rankingsUpdatedAt) === "stale";
+  const rankingsStale = Boolean(snapshot) && getSnapshotStaleness(rankingsUpdatedAt) === "stale";
   const showSetup = draftState.picks.length === 0 && !draftState.isActive;
 
   const [detailPlayer, setDetailPlayer] = useState<Player | null>(null);
@@ -137,14 +136,22 @@ export function DraftTrackerClient() {
     () => resolveDraftPicksForModel(draftState.picks, draftBoardPlayers, adpAvailable),
     [adpAvailable, draftBoardPlayers, draftState.picks]
   );
+  const modelTeams = useMemo(
+    () => reconcileTeamRosters(draftState.teams, modelPicks),
+    [draftState.teams, modelPicks]
+  );
+  const userTeam = useMemo(
+    () => modelTeams.find((team) => team.teamNumber === draftState.settings.userTeam),
+    [draftState.settings.userTeam, modelTeams]
+  );
   const recentPicks = useMemo(() => modelPicks.slice(-12).reverse(), [modelPicks]);
   const analytics = useMemo(
     () =>
-      computeDraftAnalytics(modelPicks, draftState.teams, {
+      computeDraftAnalytics(modelPicks, modelTeams, {
         lineup: draftState.settings.lineup,
         rounds: draftState.settings.rounds,
       }),
-    [draftState.settings.lineup, draftState.settings.rounds, draftState.teams, modelPicks]
+    [draftState.settings.lineup, draftState.settings.rounds, modelPicks, modelTeams]
   );
   const draftValueReports = useMemo(
     () => calculateRedraftDraftValues(modelPicks, draftState.settings),

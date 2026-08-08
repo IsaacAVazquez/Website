@@ -28,6 +28,8 @@ import { Player } from "@/types";
 
 const MS_PER_DAY = 86_400_000;
 const NFL_REGULAR_SEASON_WEEKS = 18;
+const ADP_MATCH_GATE_MIN_ROWS = 50;
+const ADP_MATCH_GATE_MIN_RATE = 0.6;
 
 /**
  * The NFL season a snapshot belongs to. The season is named for the year it
@@ -156,6 +158,10 @@ function normalizeSourcedPlayers(
         ...player,
         position,
         adp: adpEntry?.adp,
+        adpHigh: adpEntry?.high,
+        adpLow: adpEntry?.low,
+        adpStandardDeviation: adpEntry?.stdev,
+        adpTimesDrafted: adpEntry?.timesDrafted,
         averageRank: numericRank(player.rankEcr ?? player.averageRank),
         rankEcr: numericOptionalValue(player.rankEcr ?? player.averageRank),
         rankAverage: numericOptionalValue(player.rankAverage),
@@ -332,6 +338,15 @@ export function buildFantasySnapshot(scoring: FantasyRouteScoring): FantasySnaps
   for (const player of [overallPlayers, ...Object.values(positions)].flat()) {
     if (typeof player.adp === "number" && Number.isFinite(player.adp)) {
       matchedPlayerIds.add(player.id);
+    }
+  }
+
+  if (adpDataset.entries.length >= ADP_MATCH_GATE_MIN_ROWS) {
+    const matchRate = matchedPlayerIds.size / adpDataset.entries.length;
+    if (matchRate < ADP_MATCH_GATE_MIN_RATE) {
+      throw new Error(
+        `Fantasy ADP join matched ${matchedPlayerIds.size} of ${adpDataset.entries.length} source players, below the ${Math.round(ADP_MATCH_GATE_MIN_RATE * 100)}% minimum.`
+      );
     }
   }
 

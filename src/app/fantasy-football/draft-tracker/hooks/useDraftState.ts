@@ -2,9 +2,15 @@
 
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { DraftState, DraftSettings, DraftPick, Player, TeamRoster, ScoringFormat } from '@/types';
-import { classifyPickValue, computeDraftAnalytics, getPickDelta } from '@/lib/draftAnalytics';
+import {
+  classifyPickValue,
+  computeDraftAnalytics,
+  getPickDelta,
+  reconcileTeamRosters,
+} from '@/lib/draftAnalytics';
+import { DEFAULT_REDRAFT_LINEUP, normalizeRedraftLineup } from '@/lib/redraftLineup';
 
-export const DRAFT_STORAGE_VERSION = 2;
+export const DRAFT_STORAGE_VERSION = 3;
 const LEGACY_FANTASY_DRAFT_STORAGE_KEY = 'fantasy-draft-tracker';
 
 /**
@@ -28,6 +34,7 @@ export function getFantasyDraftStorageKey(season: number = getCurrentDraftSeason
 // has shifted across versions and a one-time forced reset is cleaner than
 // guessing how to coerce a legacy payload. We just delete it.
 export const FANTASY_DRAFT_STORAGE_KEY = getFantasyDraftStorageKey();
+const PREVIOUS_FANTASY_DRAFT_STORAGE_KEY = `fantasy-draft-tracker-v2-${getCurrentDraftSeason()}`;
 
 interface PersistedDraftState extends Omit<DraftState, 'settings' | 'picks' | 'startTime' | 'endTime'> {
   settings?: DraftSettings & {
@@ -40,11 +47,12 @@ interface PersistedDraftState extends Omit<DraftState, 'settings' | 'picks' | 's
 
 // Default draft settings
 export const getDefaultSettings = (): DraftSettings => ({
-  totalTeams: 10,
+  totalTeams: 12,
   userTeam: 1,
   scoringFormat: 'PPR' as ScoringFormat,
   draftType: 'snake',
   rounds: 15,
+  lineup: { ...DEFAULT_REDRAFT_LINEUP },
   timerSeconds: 90,
   leagueName: 'My Fantasy League',
   draftDate: new Date(),
@@ -160,8 +168,13 @@ export const useDraftState = () => {
       }
 
       let saved: string | null = null;
+      let loadedPreviousVersion = false;
       try {
         saved = localStorage.getItem(FANTASY_DRAFT_STORAGE_KEY);
+        if (!saved) {
+          saved = localStorage.getItem(PREVIOUS_FANTASY_DRAFT_STORAGE_KEY);
+          loadedPreviousVersion = saved !== null;
+        }
       } catch {
         // The tracker remains fully usable in memory when browser storage is
         // blocked. Surface that limitation instead of letting the page crash.
@@ -196,6 +209,7 @@ export const useDraftState = () => {
           const mergedSettings: DraftSettings = {
             ...getDefaultSettings(),
             ...(parsedState.settings ?? {}),
+            lineup: normalizeRedraftLineup(parsedState.settings?.lineup),
           } as DraftSettings;
           const mergedPicks = (parsedState.picks ?? []) as DraftPick[];
           const defaults: DraftState = {
@@ -227,6 +241,14 @@ export const useDraftState = () => {
                 : defaults.draftId,
           };
           setDraftState(merged);
+          if (loadedPreviousVersion) {
+            try {
+              localStorage.setItem(FANTASY_DRAFT_STORAGE_KEY, JSON.stringify(merged));
+              localStorage.removeItem(PREVIOUS_FANTASY_DRAFT_STORAGE_KEY);
+            } catch {
+              // The migrated state still runs in memory if the write is blocked.
+            }
+          }
         } catch (error) {
           console.error('Error loading draft state from localStorage:', error);
           // Persisted blob is corrupt — drop it so we start clean on next save
@@ -266,6 +288,7 @@ export const useDraftState = () => {
         settings: {
           ...mergedSettings,
           userTeam: normalizedUserTeam,
+          lineup: normalizeRedraftLineup(mergedSettings.lineup),
         },
         teams: newSettings.totalTeams ? initializeTeams(mergedSettings.totalTeams) : prev.teams,
       };
@@ -513,19 +536,29 @@ export const useDraftState = () => {
 
   // Export draft results. CSV is the per-pick log (now with value deltas,
   // steal/reach flags, team names, and your private notes); recap-csv is one row
-  // per team with grades; json is the full structured blob including analytics.
+  // per team with market deltas and roster coverage; json is the full structured blob.
   const exportDraftResults = useCallback(
-    (format: 'csv' | 'json' | 'recap-csv', options: { notes?: Record<string, string> } = {}) => {
+    (
+      format: 'csv' | 'json' | 'recap-csv',
+      options: { notes?: Record<string, string>; picks?: DraftPick[] } = {}
+    ) => {
       const notes = options.notes ?? {};
+      const exportPicks = options.picks ?? draftState.picks;
+      const exportTeams = reconcileTeamRosters(draftState.teams, exportPicks);
 
       if (format === 'csv') {
         const headers = [
           'Pick', 'Round', 'Team', 'Player', 'Position', 'NFL Team', 'Consensus Rank',
           'Tier', 'Expert Range', 'ADP', 'Value Delta', 'Signal', 'Note',
         ];
-        const rows: (string | number)[][] = draftState.picks.map((pick) => {
+        const rows: (string | number)[][] = exportPicks.map((pick) => {
           const delta = getPickDelta(pick);
           const signal = classifyPickValue(pick);
+          const consensusRank = Number.isFinite(pick.player.rankEcr)
+            ? Number(pick.player.rankEcr)
+            : Number.isFinite(pick.player.averageRank)
+              ? pick.player.averageRank
+              : '';
           return [
             pick.pickNumber,
             pick.round,
@@ -533,7 +566,7 @@ export const useDraftState = () => {
             pick.player.name,
             pick.player.position,
             pick.player.team,
-            pick.player.rankEcr || pick.player.averageRank,
+            consensusRank,
             pick.player.tier ? `Tier ${pick.player.tier}` : '',
             pick.player.minRank !== undefined && pick.player.maxRank !== undefined
               ? `${pick.player.minRank}-${pick.player.maxRank}`
@@ -557,18 +590,20 @@ export const useDraftState = () => {
       }
 
       if (format === 'recap-csv') {
-        const analytics = computeDraftAnalytics(draftState.picks, draftState.teams);
+        const analytics = computeDraftAnalytics(exportPicks, exportTeams, {
+          lineup: draftState.settings.lineup,
+          rounds: draftState.settings.rounds,
+        });
         const headers = [
-          'Team', 'Grade', 'Net Value', 'Strengths', 'Weaknesses', 'QB', 'RB', 'WR', 'TE', 'K', 'DST',
+          'Team', 'Net Market Value', 'Depth Targets Met', 'Open Starting Slots', 'QB', 'RB', 'WR', 'TE', 'K', 'DST',
         ];
         const rows: (string | number)[][] = [...analytics.teamStrengths]
           .sort((left, right) => (right.valueTotal ?? 0) - (left.valueTotal ?? 0))
           .map((team) => {
             const counts =
-              draftState.teams.find((entry) => entry.teamNumber === team.teamNumber)?.positionCounts;
+              exportTeams.find((entry) => entry.teamNumber === team.teamNumber)?.positionCounts;
             return [
               resolveTeamName(team.teamNumber),
-              team.overallGrade,
               team.valueTotal ?? 0,
               team.strengths.join(' '),
               team.weaknesses.join(' '),
@@ -591,9 +626,12 @@ export const useDraftState = () => {
 
       const exportData = {
         settings: draftState.settings,
-        picks: draftState.picks,
-        teams: draftState.teams,
-        analytics: computeDraftAnalytics(draftState.picks, draftState.teams),
+        picks: exportPicks,
+        teams: exportTeams,
+        analytics: computeDraftAnalytics(exportPicks, exportTeams, {
+          lineup: draftState.settings.lineup,
+          rounds: draftState.settings.rounds,
+        }),
         draftId: draftState.draftId,
         exportDate: new Date().toISOString(),
       };

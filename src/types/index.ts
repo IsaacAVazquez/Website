@@ -14,11 +14,16 @@ export interface Player {
   maxRank?: number;
   byeWeek?: number;
   adp?: number; // Average Draft Position
+  adpHigh?: number; // Earliest observed draft slot in the ADP sample
+  adpLow?: number; // Latest observed draft slot in the ADP sample
+  adpStandardDeviation?: number; // Variation in observed draft slots
+  adpTimesDrafted?: number; // Player-level number of observed selections
   lastUpdated?: string;
   ownership?: number;
   rankAverage?: number;
   rankEcr?: number;
   superflexRank?: number; // Separate sourced Superflex consensus rank when available
+  superflexTier?: number; // Tier from the same sourced Superflex consensus board
 
   // Enhanced NFLverse metadata
   headshotUrl?: string; // Player headshot from ESPN/NFLverse
@@ -78,6 +83,21 @@ export interface Player {
 export type Position = 'QB' | 'RB' | 'WR' | 'TE' | 'K' | 'DST' | 'FLEX' | 'OVERALL' | 'ALL';
 export type ScoringFormat = 'STANDARD' | 'PPR' | 'HALF_PPR';
 
+/**
+ * Starting lineup for the redraft assistant. FLEX accepts RB, WR, or TE.
+ * The published redraft rankings are one-QB boards, so QB stays fixed at one
+ * and Superflex is intentionally handled outside this model.
+ */
+export interface RedraftLineupSettings {
+  QB: 1;
+  RB: number;
+  WR: number;
+  TE: number;
+  FLEX: number;
+  K: number;
+  DST: number;
+}
+
 export interface TierGroup {
   tier: number;
   players: Player[];
@@ -112,6 +132,7 @@ export interface DraftSettings {
   scoringFormat: ScoringFormat;
   draftType: 'snake' | 'linear';
   rounds: number;
+  lineup: RedraftLineupSettings;
   timerSeconds?: number; // Optional pick timer
   leagueName?: string;
   draftDate?: Date;
@@ -141,7 +162,6 @@ export interface TeamRoster {
   };
   totalValue: number; // Sum of auction values
   projectedPoints: number;
-  draftGrade?: 'A+' | 'A' | 'B+' | 'B' | 'C+' | 'C' | 'D+' | 'D' | 'F';
 }
 
 export interface DraftState {
@@ -173,7 +193,6 @@ export interface DraftAnalytics {
     teamNumber: number;
     strengths: Position[];
     weaknesses: Position[];
-    overallGrade: string;
     valueTotal?: number; // Net pick-number-vs-baseline value across the team's picks
   }[];
 }

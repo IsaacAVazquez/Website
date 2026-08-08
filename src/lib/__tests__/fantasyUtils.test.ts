@@ -2,6 +2,8 @@ import {
   FANTASY_BOARD_LEGEND,
   FANTASY_REACH_TOOLTIP,
   FANTASY_VALUE_TOOLTIP,
+  ADP_SIGNAL_MIN_TIMES_DRAFTED,
+  getAdpSignalThreshold,
   getFantasyAdpFreshness,
   getSnapshotStaleness,
   getSnapshotStalenessLabel,
@@ -9,6 +11,7 @@ import {
   getTierRailIntensity,
   getTierRailTone,
   getValueVsAdp,
+  resolveDraftPicksForModel,
 } from "@/lib/fantasyUtils";
 import type { Player } from "@/types";
 
@@ -18,19 +21,26 @@ const MS_PER_DAY = 86_400_000;
 const playerWith = (fields: Partial<Player>): Player => fields as Player;
 
 describe("getSnapshotStaleness", () => {
+  const draftSeasonNow = new Date("2026-08-07T12:00:00.000Z");
+
   it("buckets a recent date as fresh", () => {
-    const recent = new Date(Date.now() - 1 * MS_PER_DAY).toISOString();
-    expect(getSnapshotStaleness(recent)).toBe("fresh");
+    const recent = new Date(draftSeasonNow.getTime() - 1 * MS_PER_DAY).toISOString();
+    expect(getSnapshotStaleness(recent, draftSeasonNow)).toBe("fresh");
   });
 
-  it("buckets an 8-14 day old date as aging", () => {
-    const aging = new Date(Date.now() - 10 * MS_PER_DAY).toISOString();
-    expect(getSnapshotStaleness(aging)).toBe("aging");
+  it("uses the daily refresh schedule during draft season", () => {
+    const aging = new Date(draftSeasonNow.getTime() - 3 * MS_PER_DAY).toISOString();
+    const stale = new Date(draftSeasonNow.getTime() - 5 * MS_PER_DAY).toISOString();
+    expect(getSnapshotStaleness(aging, draftSeasonNow)).toBe("aging");
+    expect(getSnapshotStaleness(stale, draftSeasonNow)).toBe("stale");
   });
 
-  it("buckets a date older than two weeks as stale", () => {
-    const stale = new Date(Date.now() - 30 * MS_PER_DAY).toISOString();
-    expect(getSnapshotStaleness(stale)).toBe("stale");
+  it("keeps the weekly thresholds outside draft season", () => {
+    const offseasonNow = new Date("2026-01-20T12:00:00.000Z");
+    const aging = new Date(offseasonNow.getTime() - 10 * MS_PER_DAY).toISOString();
+    const stale = new Date(offseasonNow.getTime() - 30 * MS_PER_DAY).toISOString();
+    expect(getSnapshotStaleness(aging, offseasonNow)).toBe("aging");
+    expect(getSnapshotStaleness(stale, offseasonNow)).toBe("stale");
   });
 
   it("treats a missing or invalid date as stale rather than fresh", () => {
@@ -50,22 +60,106 @@ describe("getSnapshotStalenessLabel", () => {
 
 describe("getFantasyAdpFreshness", () => {
   it("flags ADP from a calendar year before the snapshot season as prior-season", () => {
-    expect(getFantasyAdpFreshness("2025-09-10T00:00:00.000Z", 2026)).toBe("prior-season");
+    expect(
+      getFantasyAdpFreshness(
+        "2025-09-10T00:00:00.000Z",
+        2026,
+        new Date("2026-05-01T00:00:00.000Z")
+      )
+    ).toBe("prior-season");
+  });
+
+  it("treats prior-season ADP as stale once draft season begins", () => {
+    expect(
+      getFantasyAdpFreshness(
+        "2025-09-10T00:00:00.000Z",
+        2026,
+        new Date("2026-08-07T00:00:00.000Z")
+      )
+    ).toBe("stale");
   });
 
   it("treats same-season ADP as current", () => {
-    expect(getFantasyAdpFreshness("2026-07-01T00:00:00.000Z", 2026)).toBe("current");
+    expect(
+      getFantasyAdpFreshness(
+        "2026-08-06T00:00:00.000Z",
+        2026,
+        new Date("2026-08-07T00:00:00.000Z")
+      )
+    ).toBe("current");
+  });
+
+  it("flags an old same-season ADP sample during draft season", () => {
+    expect(
+      getFantasyAdpFreshness(
+        "2026-08-01T00:00:00.000Z",
+        2026,
+        new Date("2026-08-07T00:00:00.000Z")
+      )
+    ).toBe("stale");
   });
 
   it("does not flag ADP dated after the season starts", () => {
-    expect(getFantasyAdpFreshness("2027-01-02T00:00:00.000Z", 2026)).toBe("current");
+    expect(
+      getFantasyAdpFreshness(
+        "2027-01-02T00:00:00.000Z",
+        2026,
+        new Date("2027-01-03T00:00:00.000Z")
+      )
+    ).toBe("current");
   });
 
-  it("returns current when there is nothing to compare against", () => {
-    expect(getFantasyAdpFreshness(null, 2026)).toBe("current");
-    expect(getFantasyAdpFreshness("2025-09-10T00:00:00.000Z", null)).toBe("current");
-    expect(getFantasyAdpFreshness("2025-09-10T00:00:00.000Z", undefined)).toBe("current");
-    expect(getFantasyAdpFreshness("not-a-date", 2026)).toBe("current");
+  it("fails closed when the source date or season is missing or invalid", () => {
+    expect(getFantasyAdpFreshness(null, 2026)).toBe("stale");
+    expect(getFantasyAdpFreshness("2025-09-10T00:00:00.000Z", null)).toBe("stale");
+    expect(getFantasyAdpFreshness("2025-09-10T00:00:00.000Z", undefined)).toBe("stale");
+    expect(getFantasyAdpFreshness("not-a-date", 2026)).toBe("stale");
+  });
+});
+
+describe("resolveDraftPicksForModel", () => {
+  it("uses the current player record and removes unsupported ADP", () => {
+    const savedPlayer = playerWith({ id: "wr-1", name: "Saved", position: "WR", adp: 25 });
+    const currentPlayer = playerWith({
+      id: "wr-1",
+      name: "Current",
+      position: "WR",
+      rankEcr: 30,
+      adp: 35,
+      adpTimesDrafted: 100,
+    });
+
+    const [pick] = resolveDraftPicksForModel(
+      [{ pickNumber: 40, player: savedPlayer }],
+      [currentPlayer],
+      false
+    );
+
+    expect(pick.player).toMatchObject({ name: "Current", rankEcr: 30 });
+    expect(pick.player.adp).toBeUndefined();
+    expect(pick.player.adpTimesDrafted).toBeUndefined();
+  });
+
+  it("never trusts market or expert baselines from an orphaned saved player", () => {
+    const savedPlayer = playerWith({
+      id: "wr-old",
+      name: "Old",
+      position: "WR",
+      averageRank: 20,
+      rankEcr: 18,
+      adp: 25,
+      superflexRank: 12,
+    });
+    const [pick] = resolveDraftPicksForModel(
+      [{ pickNumber: 40, player: savedPlayer }],
+      [],
+      true
+    );
+
+    expect(pick.player.adp).toBeUndefined();
+    expect(pick.player.rankEcr).toBeUndefined();
+    expect(pick.player.superflexRank).toBeUndefined();
+    expect(Number.isNaN(pick.player.averageRank)).toBe(true);
   });
 });
 
@@ -85,6 +179,58 @@ describe("getValueVsAdp", () => {
   it("includes the boundary gap in the signal (>= and <= the threshold)", () => {
     expect(getValueVsAdp(playerWith({ rankEcr: 20, adp: 30 }))?.signal).toBe("value");
     expect(getValueVsAdp(playerWith({ rankEcr: 20, adp: 10 }))?.signal).toBe("reach");
+  });
+
+  it("uses combined ADP and expert uncertainty when the source publishes it", () => {
+    const player = playerWith({
+      rankEcr: 20,
+      adp: 28,
+      adpStandardDeviation: 6,
+      standardDeviation: 8,
+      adpTimesDrafted: 100,
+    });
+
+    expect(getAdpSignalThreshold(player)).toBe(10);
+    expect(getValueVsAdp(player)).toEqual({ delta: 8, signal: null });
+    expect(getValueVsAdp({ ...player, adp: 30 })).toEqual({ delta: 10, signal: "value" });
+  });
+
+  it("keeps a six-pick noise floor for stable ADP and expert readings", () => {
+    const player = playerWith({
+      rankEcr: 20,
+      adp: 26,
+      adpStandardDeviation: 1,
+      standardDeviation: 2,
+      adpTimesDrafted: 100,
+    });
+
+    expect(getAdpSignalThreshold(player)).toBe(6);
+    expect(getValueVsAdp(player)?.signal).toBe("value");
+  });
+
+  it("uses the observed ADP range when its standard deviation is unavailable", () => {
+    const player = playerWith({
+      adpHigh: 10,
+      adpLow: 50,
+      standardDeviation: 0,
+    });
+
+    expect(getAdpSignalThreshold(player)).toBe(10);
+  });
+
+  it("suppresses a label when fewer than twenty mock drafts selected the player", () => {
+    const player = playerWith({
+      rankEcr: 20,
+      adp: 50,
+      adpStandardDeviation: 2,
+      standardDeviation: 2,
+      adpTimesDrafted: ADP_SIGNAL_MIN_TIMES_DRAFTED - 1,
+    });
+
+    expect(getValueVsAdp(player)).toEqual({ delta: 30, signal: null });
+    expect(getValueVsAdp({ ...player, adpTimesDrafted: ADP_SIGNAL_MIN_TIMES_DRAFTED })?.signal).toBe(
+      "value"
+    );
   });
 
   it("falls back to averageRank when rankEcr is missing", () => {

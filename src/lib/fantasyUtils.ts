@@ -11,7 +11,7 @@ import type { Player } from "@/types";
  * headline.
  */
 export const FANTASY_AVG_RANK_TOOLTIP =
-  "The average of every expert's rank for this player. FantasyPros polls dozens of analysts, and this is the mean of their individual rankings. Lower is better, so 1.00 would mean every expert ranked the player first.";
+  "The average of the contributing experts' ranks for this player. It is the arithmetic mean of their individual rankings, which is separate from FantasyPros' consensus rank. Lower is better, so 1.00 would mean every contributing expert ranked the player first.";
 
 export function formatUpdatedAt(timestamp: string | null | undefined): string {
   if (!timestamp) {
@@ -26,20 +26,25 @@ export function formatUpdatedAt(timestamp: string | null | undefined): string {
 
 export type FantasySnapshotStaleness = "fresh" | "aging" | "stale";
 
-const FANTASY_STALENESS_AGING_DAYS = 8;
-const FANTASY_STALENESS_STALE_DAYS = 14;
+const FANTASY_OFFSEASON_AGING_DAYS = 8;
+const FANTASY_OFFSEASON_STALE_DAYS = 14;
+const FANTASY_DRAFT_SEASON_AGING_DAYS = 2;
+const FANTASY_DRAFT_SEASON_STALE_DAYS = 4;
 const MS_PER_DAY = 86_400_000;
 
 /**
  * Buckets a snapshot timestamp into a freshness band that downstream UI can
- * use to surface a soft warning. The thresholds match the weekly Wednesday
- * refresh cadence: anything <8 days is on schedule, 8–14 days is suspicious,
- * and >14 days means the automated refresh has missed at least two cycles.
+ * use to surface a warning. July through September follows the daily refresh
+ * schedule, so a source ages after two days and is stale after four. The rest
+ * of the year follows the weekly schedule at eight and fourteen days.
  *
  * Returns "stale" for any invalid or missing date so callers default to the
  * conservative warning rather than silently treating it as fresh.
  */
-export function getSnapshotStaleness(date: Date | string | null | undefined): FantasySnapshotStaleness {
+export function getSnapshotStaleness(
+  date: Date | string | null | undefined,
+  now: Date = new Date()
+): FantasySnapshotStaleness {
   if (date === null || date === undefined) {
     return "stale";
   }
@@ -49,11 +54,18 @@ export function getSnapshotStaleness(date: Date | string | null | undefined): Fa
     return "stale";
   }
 
-  const ageDays = (Date.now() - parsed.getTime()) / MS_PER_DAY;
-  if (ageDays < FANTASY_STALENESS_AGING_DAYS) {
+  const draftSeason = now.getUTCMonth() >= 6 && now.getUTCMonth() <= 8;
+  const agingDays = draftSeason
+    ? FANTASY_DRAFT_SEASON_AGING_DAYS
+    : FANTASY_OFFSEASON_AGING_DAYS;
+  const staleDays = draftSeason
+    ? FANTASY_DRAFT_SEASON_STALE_DAYS
+    : FANTASY_OFFSEASON_STALE_DAYS;
+  const ageDays = (now.getTime() - parsed.getTime()) / MS_PER_DAY;
+  if (ageDays < agingDays) {
     return "fresh";
   }
-  if (ageDays <= FANTASY_STALENESS_STALE_DAYS) {
+  if (ageDays <= staleDays) {
     return "aging";
   }
   return "stale";
@@ -109,7 +121,7 @@ export function formatOwnership(ownership: number | undefined): string {
  * names the distinction: experts versus actual drafters.
  */
 export const FANTASY_ADP_TOOLTIP =
-  "Average draft position from recent 12-team mock drafts on Fantasy Football Calculator. It shows where real drafters take this player, while the consensus rank shows where experts say he should go. A big gap between the two is a value or reach signal.";
+  "Average draft position from Fantasy Football Calculator's current mock-draft board, requested with 12-team settings. The provider returned the same prices across tested team sizes on August 7, 2026, so use it as a general market price rather than a league-size forecast.";
 
 export function formatAdp(adp: number | undefined): string {
   if (!Number.isFinite(adp)) {
@@ -121,10 +133,108 @@ export function formatAdp(adp: number | undefined): string {
 
 /**
  * How far consensus rank and market ADP must disagree before the board flags
- * it. Ten spots is roughly a full round in a 10-team league — enough that the
- * gap is a real signal rather than ordinary week-to-week noise.
+ * it. Ten spots is the legacy fallback when the snapshot has no player-level
+ * sample variation. New snapshots use the published ADP and expert spread.
  */
 export const ADP_SIGNAL_THRESHOLD = 10;
+/** Player-level mock selections required before an ADP gap can carry a signal. */
+export const ADP_SIGNAL_MIN_TIMES_DRAFTED = 20;
+/** Even stable sources move several picks between rooms, so smaller gaps remain noise. */
+export const ADP_SIGNAL_MIN_UNCERTAINTY_THRESHOLD = 6;
+
+function finiteNonNegative(value: unknown): number | null {
+  return typeof value === "number" && Number.isFinite(value) && value >= 0 ? value : null;
+}
+
+/**
+ * Whether the player's ADP sample is large enough to support a value or reach
+ * label. A missing count means the snapshot predates player-level sample
+ * metadata, so callers preserve the legacy behavior instead of hiding every
+ * signal during a rolling deploy.
+ */
+export function hasReliableAdpSample(player: Player): boolean {
+  const timesDrafted = finiteNonNegative(player.adpTimesDrafted);
+  return timesDrafted === null || timesDrafted >= ADP_SIGNAL_MIN_TIMES_DRAFTED;
+}
+
+/** Removes every market field so stale or slate-mismatched ADP cannot re-enter a model. */
+export function withoutPlayerAdp(player: Player): Player {
+  return {
+    ...player,
+    adp: undefined,
+    adpHigh: undefined,
+    adpLow: undefined,
+    adpStandardDeviation: undefined,
+    adpTimesDrafted: undefined,
+  };
+}
+
+function withoutPlayerDraftBaselines(player: Player): Player {
+  return {
+    ...withoutPlayerAdp(player),
+    averageRank: Number.NaN,
+    standardDeviation: Number.NaN,
+    rankEcr: undefined,
+    rankAverage: undefined,
+    positionRank: undefined,
+    minRank: undefined,
+    maxRank: undefined,
+    tier: undefined,
+    superflexRank: undefined,
+    superflexTier: undefined,
+  };
+}
+
+/**
+ * Rebinds saved draft picks to the current snapshot before model scoring.
+ * Orphaned saved players keep their identity and roster position, but no old
+ * market or expert baseline can influence a model score.
+ */
+export function resolveDraftPicksForModel<T extends { player: Player }>(
+  picks: readonly T[],
+  currentPlayers: readonly Player[],
+  allowAdp: boolean
+): T[] {
+  const currentById = new Map(currentPlayers.map((player) => [player.id, player]));
+
+  return picks.map((pick) => {
+    const currentPlayer = currentById.get(pick.player.id);
+    const modelPlayer = currentPlayer
+      ? allowAdp
+        ? currentPlayer
+        : withoutPlayerAdp(currentPlayer)
+      : withoutPlayerDraftBaselines(pick.player);
+    return { ...pick, player: modelPlayer };
+  });
+}
+
+/**
+ * The minimum rank gap that counts as a market signal for this player.
+ *
+ * When the upstream publishes ADP variation, combine it with expert-rank
+ * variation as independent sources of uncertainty. The root-sum-square keeps
+ * a noisy reading from looking precise without adding both spreads in full.
+ * Six picks is the floor for stable readings. Legacy snapshots without ADP
+ * variation keep the prior ten-pick threshold.
+ */
+export function getAdpSignalThreshold(player: Player): number {
+  const publishedAdpSpread = finiteNonNegative(player.adpStandardDeviation);
+  const observedRangeSpread =
+    publishedAdpSpread === null &&
+    finiteNonNegative(player.adpHigh) !== null &&
+    finiteNonNegative(player.adpLow) !== null
+      ? Math.abs((player.adpLow as number) - (player.adpHigh as number)) / 4
+      : null;
+  const adpSpread = publishedAdpSpread ?? observedRangeSpread;
+
+  if (adpSpread === null) {
+    return ADP_SIGNAL_THRESHOLD;
+  }
+
+  const expertSpread = finiteNonNegative(player.standardDeviation) ?? 0;
+  const combinedSpread = Math.hypot(adpSpread, expertSpread);
+  return Math.max(ADP_SIGNAL_MIN_UNCERTAINTY_THRESHOLD, Math.ceil(combinedSpread));
+}
 
 /**
  * Compares a player's consensus rank to where drafters actually take him.
@@ -153,7 +263,12 @@ export function getValueVsAdp(
   }
 
   const delta = Math.round((player.adp as number) - rank);
-  const signal = delta >= ADP_SIGNAL_THRESHOLD ? "value" : delta <= -ADP_SIGNAL_THRESHOLD ? "reach" : null;
+  if (!hasReliableAdpSample(player)) {
+    return { delta, signal: null };
+  }
+
+  const threshold = getAdpSignalThreshold(player);
+  const signal = delta >= threshold ? "value" : delta <= -threshold ? "reach" : null;
 
   return { delta, signal };
 }
@@ -164,11 +279,11 @@ export function getValueVsAdp(
  * in sync with the "Value" entry in FANTASY_BOARD_LEGEND below.
  */
 export const FANTASY_VALUE_TOOLTIP =
-  "Value is his ADP minus his consensus rank, the number on the left of the row. A positive figure means drafters take him that many slots later than the experts rank him, so you can usually get him at a discount. It compares his ADP against that rank, not the Avg shown beside it.";
+  "Value is his ADP minus his consensus rank, the number on the left of the row. A positive figure means drafters take him that many slots later than the experts rank him. The label appears only after at least 20 mock selections and when the gap clears the published ADP and expert spread. It compares ADP with consensus rank, not the Avg shown beside it.";
 
 /** Hover copy for the amber "Reach" chip, the mirror of FANTASY_VALUE_TOOLTIP. */
 export const FANTASY_REACH_TOOLTIP =
-  "Reach is his ADP minus his consensus rank, the number on the left of the row, and here it comes out negative. Drafters take him that many slots earlier than the experts rank him, so picking him here usually passes up better value. It compares his ADP against that rank, not the Avg shown beside it.";
+  "Reach is his ADP minus his consensus rank, the number on the left of the row, and here it comes out negative. Drafters take him that many slots earlier than the experts rank him. The label appears only after at least 20 mock selections and when the gap clears the published ADP and expert spread. It compares ADP with consensus rank, not the Avg shown beside it.";
 
 export interface FantasyLegendEntry {
   /** Short label, matching the wording that appears on the board itself. */
@@ -216,7 +331,7 @@ export const FANTASY_BOARD_LEGEND: FantasyLegendEntry[] = [
   {
     term: "Tiers",
     definition:
-      "FantasyPros groups players of roughly interchangeable value into tiers. The drop between one tier and the next is where waiting gets expensive, so it is often smarter to draft across a tier break than to reach within one.",
+      "FantasyPros groups players it considers roughly interchangeable into tiers. A tier break marks a larger consensus gap, but it does not by itself justify reaching past the market.",
   },
   {
     term: "Rostered",
@@ -230,7 +345,7 @@ export const FANTASY_BOARD_LEGEND: FantasyLegendEntry[] = [
   },
 ];
 
-export type FantasyAdpFreshness = "current" | "prior-season";
+export type FantasyAdpFreshness = "current" | "prior-season" | "stale";
 
 /**
  * Mock-draft ADP for the upcoming season does not populate until late summer,
@@ -239,23 +354,34 @@ export type FantasyAdpFreshness = "current" | "prior-season";
  * before the snapshot season, which the board should label as preseason
  * carryover rather than letting an honest gap look like a broken refresh.
  *
- * Returns "current" whenever there is nothing to flag (no as-of date, no
- * season, or an unparseable date) so callers never show a false warning.
+ * Returns "stale" when the date or season is missing or invalid. Callers
+ * separately know whether a source exists, so incomplete metadata should fail
+ * closed instead of enabling a draft signal with no verifiable date.
  */
 export function getFantasyAdpFreshness(
   asOf: string | null | undefined,
   season: number | null | undefined,
+  now: Date = new Date()
 ): FantasyAdpFreshness {
   if (!asOf || typeof season !== "number" || !Number.isFinite(season)) {
-    return "current";
+    return "stale";
   }
 
   const parsed = new Date(asOf);
   if (Number.isNaN(parsed.getTime())) {
-    return "current";
+    return "stale";
   }
 
-  return parsed.getUTCFullYear() < season ? "prior-season" : "current";
+  const draftSeason = now.getUTCMonth() >= 6 && now.getUTCMonth() <= 8;
+  if (draftSeason && now.getTime() - parsed.getTime() > 4 * MS_PER_DAY) {
+    return "stale";
+  }
+
+  if (parsed.getUTCFullYear() < season) {
+    return "prior-season";
+  }
+
+  return "current";
 }
 
 /**

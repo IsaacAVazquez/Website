@@ -145,7 +145,7 @@ Cross-surface browser-local stores (shared by both clients) in `src/hooks/`:
 - `useCompareTray` — compare selection, max 3 (`fantasy-compare-v1`)
 - `useLocalStorageString` — low-level reactive single-key localStorage reader the three stores build on
 - list density preference lives inline in `fantasy-football-client.tsx` via `useSyncExternalStore` (`fantasy-board-density`)
-- draft state persists per-season under `fantasy-draft-tracker-v2-<season>`
+- draft state persists per-season under `fantasy-draft-tracker-v3-<season>`
 
 Supporting libs:
 

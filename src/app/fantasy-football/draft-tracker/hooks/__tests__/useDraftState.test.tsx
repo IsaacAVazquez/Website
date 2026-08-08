@@ -9,7 +9,7 @@ describe("useDraftState persisted-state loading", () => {
     localStorage.clear();
   });
 
-  it("loads an older v2 blob missing undoHistory/teams/draftId without crashing", async () => {
+  it("loads a smaller v3 blob missing lineup, undo history, teams, and draft id", async () => {
     // A draft saved by a build that predates the undo/redo and teams fields —
     // same storage version, smaller shape. The tracker must hydrate it with
     // defaults instead of white-screening on undefined fields.
@@ -60,10 +60,46 @@ describe("useDraftState persisted-state loading", () => {
     expect(result.current.canRedo).toBe(false);
     expect(result.current.draftState.teams).toHaveLength(8);
     expect(typeof result.current.draftState.draftId).toBe("string");
+    expect(result.current.draftState.settings.lineup).toEqual({
+      QB: 1,
+      RB: 2,
+      WR: 2,
+      TE: 1,
+      FLEX: 1,
+      K: 1,
+      DST: 1,
+    });
 
     // Teams rebuilt from picks keep roster consistency.
     expect(result.current.draftState.teams[0].picks).toHaveLength(1);
     expect(result.current.draftState.teams[0].positionCounts.RB).toBe(1);
+  });
+
+  it("migrates an active v2 draft into the lineup-aware state", async () => {
+    const previousKey = FANTASY_DRAFT_STORAGE_KEY.replace("-v3-", "-v2-");
+    localStorage.setItem(
+      previousKey,
+      JSON.stringify({
+        settings: {
+          totalTeams: 12,
+          userTeam: 4,
+          scoringFormat: "HALF_PPR",
+          draftType: "snake",
+          rounds: 15,
+        },
+        picks: [],
+        currentPick: 1,
+        currentRound: 1,
+        isActive: true,
+      })
+    );
+
+    const { result } = renderHook(() => useDraftState());
+    await waitFor(() => expect(result.current.isLoaded).toBe(true));
+
+    expect(result.current.draftState.settings.userTeam).toBe(4);
+    expect(result.current.draftState.settings.lineup.FLEX).toBe(1);
+    expect(localStorage.getItem(previousKey)).toBeNull();
   });
 
   it("still drops a corrupt blob and starts clean", async () => {

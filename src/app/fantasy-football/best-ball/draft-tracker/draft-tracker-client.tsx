@@ -12,6 +12,7 @@ import {
   analyzeBestBallRoster,
   getContestPreset,
   getNextUserPick,
+  hasSupportedBestBallAdp,
   normalizeContestId,
   recommendBestBallPlayers,
   sortBestBallRankings,
@@ -19,6 +20,11 @@ import {
   type BestBallContestPreset,
 } from "@/lib/bestBall";
 import type { BestBallSnapshot } from "@/lib/bestBallSnapshot";
+import {
+  getSnapshotStaleness,
+  resolveDraftPicksForModel,
+  withoutPlayerAdp,
+} from "@/lib/fantasyUtils";
 import { calculateBestBallDraftValues } from "@/lib/fantasyTeamValue";
 import { BestBallBuildPanel } from "./best-ball-build-panel";
 import { BestBallBuildSheet } from "./best-ball-build-sheet";
@@ -150,6 +156,10 @@ export function BestBallDraftTrackerClient({
               I built this for manual rooms on Underdog and similar platforms. It follows every pick, keeps the snake order straight, changes the recommendation weights by contest, and compares your build against the room. Expected return stays in a separate calculator because the Draft Outlook cannot promise an outcome.
             </p>
             <p className="max-w-[66ch] text-xs leading-6" style={{ color: "var(--home-ink-muted)" }}>
+              The snapshot has no separate live injury or player-news feed. Check the draft room and
+              current team reports before logging each pick.
+            </p>
+            <p className="max-w-[66ch] text-xs leading-6" style={{ color: "var(--home-ink-muted)" }}>
               This tracker models a 12 team, 18 round, 18 player, half PPR room. Weekly Winners, Sit &amp; Go, and Superflex contest cards can use different settings, so check the lobby before you start.
             </p>
           </div>
@@ -251,9 +261,40 @@ function BestBallDraftRoom({
     () => new Set(draft.state.picks.map((pick) => pick.player.id)),
     [draft.state.picks]
   );
+  const rankingSource = preset.format === "superflex"
+    ? snapshot.superflexSource
+    : snapshot.rankingSource;
+  const recommendationsAvailable =
+    rankingSource !== null && getSnapshotStaleness(rankingSource.asOf) !== "stale";
+  const adpAvailable =
+    hasSupportedBestBallAdp(preset) &&
+    snapshot.adpSource !== null &&
+    getSnapshotStaleness(snapshot.adpSource.asOf) !== "stale";
+  const scheduleAvailable =
+    snapshot.scheduleSource !== null &&
+    Object.keys(snapshot.week17Opponents).length >= 30;
+  const modelPlayers = useMemo(
+    () =>
+      snapshot.players.map((player) =>
+        adpAvailable ? player : withoutPlayerAdp(player)
+      ),
+    [adpAvailable, snapshot.players]
+  );
+  const modelPicks = useMemo(
+    () => resolveDraftPicksForModel(draft.state.picks, modelPlayers, adpAvailable),
+    [adpAvailable, draft.state.picks, modelPlayers]
+  );
+  const modelUserPicks = useMemo(
+    () => modelPicks.filter((pick) => pick.teamNumber === draft.state.userSlot),
+    [draft.state.userSlot, modelPicks]
+  );
+  const modelWeek17Opponents = useMemo(
+    () => (scheduleAvailable ? snapshot.week17Opponents : {}),
+    [scheduleAvailable, snapshot.week17Opponents]
+  );
   const rankedAvailablePlayers = useMemo(
-    () => sortBestBallRankings(snapshot.players, preset).filter((player) => !draftedIds.has(player.id)),
-    [draftedIds, preset, snapshot.players]
+    () => sortBestBallRankings(modelPlayers, preset).filter((player) => !draftedIds.has(player.id)),
+    [draftedIds, modelPlayers, preset]
   );
   const nextUserPick = useMemo(
     () =>
@@ -273,46 +314,47 @@ function BestBallDraftRoom({
   const analysis = useMemo(
     () =>
       analyzeBestBallRoster(
-        draft.userPicks,
-        snapshot.week17Opponents,
+        modelUserPicks,
+        modelWeek17Opponents,
         preset.id,
         upcomingUserRound
       ),
-    [draft.userPicks, preset.id, snapshot.week17Opponents, upcomingUserRound]
+    [modelUserPicks, modelWeek17Opponents, preset.id, upcomingUserRound]
   );
   const draftValueReports = useMemo(
     () =>
       calculateBestBallDraftValues({
-        picks: draft.state.picks,
+        picks: modelPicks,
         contestId: preset.id,
-        week17Opponents: snapshot.week17Opponents,
+        week17Opponents: modelWeek17Opponents,
       }),
-    [draft.state.picks, preset.id, snapshot.week17Opponents]
+    [modelPicks, modelWeek17Opponents, preset.id]
   );
   const userDraftValue =
     draftValueReports.find((report) => report.teamNumber === draft.state.userSlot) ?? null;
   const recommendations = useMemo(
     () =>
-      draft.isComplete
+      draft.isComplete || !recommendationsAvailable
         ? []
         : recommendBestBallPlayers({
-            players: snapshot.players,
-            picks: draft.state.picks,
+            players: modelPlayers,
+            picks: modelPicks,
             userTeamNumber: draft.state.userSlot,
             currentPickNumber: nextUserPick ?? draft.currentPick,
             contestId: preset.id,
-            week17Opponents: snapshot.week17Opponents,
+            week17Opponents: modelWeek17Opponents,
             limit: 3,
           }),
     [
       draft.currentPick,
       draft.isComplete,
-      draft.state.picks,
       draft.state.userSlot,
+      modelPicks,
       nextUserPick,
       preset.id,
-      snapshot.players,
-      snapshot.week17Opponents,
+      modelPlayers,
+      modelWeek17Opponents,
+      recommendationsAvailable,
     ]
   );
 
@@ -524,7 +566,8 @@ function BestBallDraftRoom({
           <BestBallRecommendations
             recommendations={recommendations}
             isUserPick={draft.isUserPick}
-            adpAvailable={preset.format !== "superflex"}
+            adpAvailable={adpAvailable}
+            sourceAvailable={recommendationsAvailable}
             onDraftPlayer={draft.draftPlayer}
           />
           <BestBallDraftBoard
@@ -532,7 +575,7 @@ function BestBallDraftRoom({
             currentPick={draft.currentPick}
             currentTeamNumber={draft.currentTeamNumber}
             isComplete={draft.isComplete}
-            adpAvailable={preset.format !== "superflex"}
+            adpAvailable={adpAvailable}
             onDraftPlayer={draft.draftPlayer}
           />
         </div>

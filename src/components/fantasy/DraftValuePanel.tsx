@@ -67,6 +67,21 @@ function confidenceLabel(value: DraftValueReport["confidence"]): string {
   return "Early read";
 }
 
+function ordinal(value: number): string {
+  const whole = Math.round(value);
+  const mod100 = whole % 100;
+  const suffix = mod100 >= 11 && mod100 <= 13
+    ? "th"
+    : whole % 10 === 1
+      ? "st"
+      : whole % 10 === 2
+        ? "nd"
+        : whole % 10 === 3
+          ? "rd"
+          : "th";
+  return `${whole}${suffix}`;
+}
+
 function parseInput(value: string): number | null {
   if (value.trim() === "") return null;
   const parsed = Number(value);
@@ -348,7 +363,7 @@ function ContestMath({
       </div>
       <p className="mt-3 text-2xs leading-5" style={{ color: "var(--home-ink-muted)" }}>
         At a full field, {WHOLE_CURRENCY.format(result.prizePool)} across {NUMBER.format(result.fieldEntries)} entries
-        gives an equal-entry return before taxes. This field math stays separate from the roster grade.
+        gives an equal-entry return before taxes. This field math stays separate from Draft Outlook.
       </p>
       {sourceUrl ? (
         <a
@@ -384,18 +399,19 @@ export function DraftValuePanel({
   const roomRank = report?.roomRank;
   // Hold the rank until the sample is big enough to mean anything, and say so
   // rather than rendering a number the user will read as a verdict.
-  const roomRankReady = (report?.picksDrafted ?? 0) >= ROOM_RANK_MIN_PICKS;
+  const progressReady = (report?.picksDrafted ?? 0) >= ROOM_RANK_MIN_PICKS;
+  const roomRankReady = progressReady && (report?.roomSize ?? 0) >= 2;
   const rankLabel =
     report && roomRankReady && roomRank !== null && roomRank !== undefined
       ? `${report.roomTieCount > 1 ? "T" : ""}${roomRank} of ${report.roomSize}`
       : "Waiting";
-  const rankCaption = !roomRankReady
-    ? `Held until you have ${ROOM_RANK_MIN_PICKS} picks, because fewer than that says nothing about the room.`
+  const rankCaption = !progressReady
+    ? `Held until you have ${ROOM_RANK_MIN_PICKS} picks, because a smaller sample is too unstable for a room comparison.`
     : report && report.roomSize < 2
       ? "Waiting for another team at the same pick count"
       : report?.roomPercentile === null || report?.roomPercentile === undefined
         ? "No comparison yet"
-        : `Ahead of ${report.roomPercentile}% of same-progress teams`;
+        : `${ordinal(report.roomPercentile)} percentile among same-progress teams`;
   const averageDelta = report?.market.averageDelta ?? null;
   const turnGap = report?.slotContext;
 
@@ -441,7 +457,7 @@ export function DraftValuePanel({
                 {averageDelta === null ? "Not set" : signedNumber(averageDelta)}
               </p>
               <p className="mt-1 text-2xs" style={{ color: "var(--home-ink-muted)" }}>
-                Draft slots of value per pick, averaged over the picks that had a market price to compare against
+                Raw draft slots per priced pick. The market component discounts thin or volatile ADP evidence.
               </p>
             </div>
           </div>
@@ -489,7 +505,7 @@ export function DraftValuePanel({
           </div>
 
           <div className="flex flex-wrap gap-1.5 text-2xs">
-            {["Published ranks", "Calculated signals", "Modeled room rank", "Model v1"].map((label) => (
+            {["Published ranks", "Calculated signals", "Modeled room rank", report.modelVersion.replace("draft-outlook-", "Model ")].map((label) => (
               <span
                 key={label}
                 className="rounded-full border px-2.5 py-1"

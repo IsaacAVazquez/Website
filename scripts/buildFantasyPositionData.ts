@@ -4,9 +4,12 @@ import { withRetry } from "./fetchRetry";
 import {
   FANTASY_PROS_PUBLIC_SOURCE,
   FANTASY_PUBLIC_POSITIONS,
+  assertFantasyProsRefreshCoverage,
   fetchFantasyProsPublicConsensusBoard,
   type FantasyPublicPosition,
 } from "@/lib/fantasyProsPublicSource";
+import { fantasyPositionData } from "@/data/fantasyPositionData.generated";
+import { getSnapshotSeason } from "@/lib/fantasySnapshotBuilder";
 import { Player, ScoringFormat } from "@/types";
 
 async function atomicWriteFile(targetPath: string, contents: string) {
@@ -28,6 +31,7 @@ const SHARED_POSITIONS = new Set<FantasyPublicPosition>(["QB", "K", "DST"]);
 type FantasyPositionDataPosition = (typeof FANTASY_POSITION_DATA_POSITIONS)[number];
 
 interface FantasyPositionDataset {
+  season: number;
   overall: Player[];
   positions: Record<FantasyPositionDataPosition, Player[]>;
   upstreamUpdatedAt: string | null;
@@ -56,6 +60,7 @@ export const fantasyPositionDataSource = ${JSON.stringify(FANTASY_PROS_PUBLIC_SO
 export const fantasyPositionData: Record<
   ScoringFormat,
   {
+    season?: number;
     overall: Player[];
     positions: Record<"QB" | "RB" | "WR" | "TE" | "K" | "DST", Player[]>;
     upstreamUpdatedAt: string | null;
@@ -66,6 +71,7 @@ export const fantasyPositionData: Record<
 
 async function main() {
   const generatedAt = new Date().toISOString();
+  const expectedSeason = getSnapshotSeason();
   const sharedData = {} as Record<FantasyPositionDataPosition, Player[]>;
 
   for (const position of FANTASY_PUBLIC_POSITIONS) {
@@ -74,7 +80,12 @@ async function main() {
     }
 
     const board = await withRetry(`STANDARD ${position}`, () =>
-      fetchFantasyProsPublicConsensusBoard("STANDARD", position)
+      fetchFantasyProsPublicConsensusBoard("STANDARD", position, expectedSeason)
+    );
+    assertFantasyProsRefreshCoverage(
+      board,
+      fantasyPositionData.STANDARD.positions[position],
+      fantasyPositionData.STANDARD.season
     );
     sharedData[position] = board.players;
     await pause(250);
@@ -85,7 +96,12 @@ async function main() {
 
   for (const scoringFormat of scoringFormats) {
     const overallBoard = await withRetry(`${scoringFormat} OVERALL`, () =>
-      fetchFantasyProsPublicConsensusBoard(scoringFormat, "OVERALL")
+      fetchFantasyProsPublicConsensusBoard(scoringFormat, "OVERALL", expectedSeason)
+    );
+    assertFantasyProsRefreshCoverage(
+      overallBoard,
+      fantasyPositionData[scoringFormat].overall,
+      fantasyPositionData[scoringFormat].season
     );
     await pause(250);
 
@@ -98,13 +114,19 @@ async function main() {
       }
 
       const board = await withRetry(`${scoringFormat} ${position}`, () =>
-        fetchFantasyProsPublicConsensusBoard(scoringFormat, position)
+        fetchFantasyProsPublicConsensusBoard(scoringFormat, position, expectedSeason)
+      );
+      assertFantasyProsRefreshCoverage(
+        board,
+        fantasyPositionData[scoringFormat].positions[position],
+        fantasyPositionData[scoringFormat].season
       );
       positions[position] = board.players;
       await pause(250);
     }
 
     dataset[scoringFormat] = {
+      season: overallBoard.season,
       overall: overallBoard.players,
       positions,
       upstreamUpdatedAt: overallBoard.upstreamUpdatedAt,

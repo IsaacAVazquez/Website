@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "season": 2026,
-  "generatedAt": "2026-08-07T17:50:51.115Z",
+  "generatedAt": "2026-08-07T22:56:45.694Z",
   "players": [
     {
       "id": "fp-23133",
@@ -20,7 +20,8 @@
       "ownership": 99.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 2,
-      "superflexRank": 8
+      "superflexRank": 8,
+      "superflexTier": 2
     },
     {
       "id": "fp-22968",
@@ -39,7 +40,8 @@
       "ownership": 99.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 1.1,
-      "superflexRank": 7
+      "superflexRank": 7,
+      "superflexTier": 2
     },
     {
       "id": "fp-19788",
@@ -58,7 +60,8 @@
       "ownership": 99.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 3.1,
-      "superflexRank": 9
+      "superflexRank": 9,
+      "superflexTier": 2
     },
     {
       "id": "fp-23180",
@@ -77,7 +80,8 @@
       "ownership": 99.5,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 4,
-      "superflexRank": 11
+      "superflexRank": 10,
+      "superflexTier": 2
     },
     {
       "id": "fp-23070",
@@ -96,7 +100,8 @@
       "ownership": 99.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 5.5,
-      "superflexRank": 13
+      "superflexRank": 13,
+      "superflexTier": 2
     },
     {
       "id": "fp-19799",
@@ -115,7 +120,8 @@
       "ownership": 99.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 7.1,
-      "superflexRank": 15
+      "superflexRank": 15,
+      "superflexTier": 2
     },
     {
       "id": "fp-16393",
@@ -134,7 +140,8 @@
       "ownership": 99.5,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 6.1,
-      "superflexRank": 17
+      "superflexRank": 17,
+      "superflexTier": 2
     },
     {
       "id": "fp-19217",
@@ -153,7 +160,8 @@
       "ownership": 99.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 7.9,
-      "superflexRank": 18
+      "superflexRank": 18,
+      "superflexTier": 3
     },
     {
       "id": "fp-22958",
@@ -172,7 +180,8 @@
       "ownership": 99.5,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 10.9,
-      "superflexRank": 23
+      "superflexRank": 22,
+      "superflexTier": 3
     },
     {
       "id": "fp-19202",
@@ -191,7 +200,8 @@
       "ownership": 99.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 9.6,
-      "superflexRank": 19
+      "superflexRank": 19,
+      "superflexTier": 3
     },
     {
       "id": "fp-25324",
@@ -210,7 +220,8 @@
       "ownership": 98.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 15.4,
-      "superflexRank": 30
+      "superflexRank": 29,
+      "superflexTier": 3
     },
     {
       "id": "fp-19236",
@@ -229,7 +240,8 @@
       "ownership": 99.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 10.4,
-      "superflexRank": 21
+      "superflexRank": 21,
+      "superflexTier": 3
     },
     {
       "id": "fp-25395",
@@ -248,7 +260,8 @@
       "ownership": 98.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 14.7,
-      "superflexRank": 35
+      "superflexRank": 36,
+      "superflexTier": 4
     },
     {
       "id": "fp-23136",
@@ -267,7 +280,8 @@
       "ownership": 99.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 18.3,
-      "superflexRank": 33
+      "superflexRank": 33,
+      "superflexTier": 4
     },
     {
       "id": "fp-25989",
@@ -286,7 +300,8 @@
       "ownership": 99,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 12,
-      "superflexRank": 25
+      "superflexRank": 25,
+      "superflexTier": 3
     },
     {
       "id": "fp-23163",
@@ -305,7 +320,8 @@
       "ownership": 99.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 21.2,
-      "superflexRank": 27
+      "superflexRank": 27,
+      "superflexTier": 3
     },
     {
       "id": "fp-22955",
@@ -324,7 +340,8 @@
       "ownership": 99.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 19.6,
-      "superflexRank": 32
+      "superflexRank": 32,
+      "superflexTier": 3
     },
     {
       "id": "fp-20130",
@@ -343,7 +360,8 @@
       "ownership": 99,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 22.8,
-      "superflexRank": 34
+      "superflexRank": 34,
+      "superflexTier": 4
     },
     {
       "id": "fp-17240",
@@ -362,7 +380,8 @@
       "ownership": 99.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 13.6,
-      "superflexRank": 31
+      "superflexRank": 31,
+      "superflexTier": 3
     },
     {
       "id": "fp-18218",
@@ -381,7 +400,8 @@
       "ownership": 99.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 18.7,
-      "superflexRank": 29
+      "superflexRank": 30,
+      "superflexTier": 3
     },
     {
       "id": "fp-22963",
@@ -400,7 +420,8 @@
       "ownership": 99.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 23.5,
-      "superflexRank": 38
+      "superflexRank": 38,
+      "superflexTier": 4
     },
     {
       "id": "fp-23021",
@@ -419,7 +440,8 @@
       "ownership": 99.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 15.1,
-      "superflexRank": 40
+      "superflexRank": 39,
+      "superflexTier": 4
     },
     {
       "id": "fp-15514",
@@ -438,7 +460,8 @@
       "ownership": 99.1,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 17.3,
-      "superflexRank": 37
+      "superflexRank": 37,
+      "superflexTier": 4
     },
     {
       "id": "fp-19222",
@@ -457,7 +480,8 @@
       "ownership": 97.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 27.5,
-      "superflexRank": 45
+      "superflexRank": 45,
+      "superflexTier": 4
     },
     {
       "id": "fp-22982",
@@ -476,7 +500,8 @@
       "ownership": 97.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 29.7,
-      "superflexRank": 57
+      "superflexRank": 57,
+      "superflexTier": 5
     },
     {
       "id": "fp-22936",
@@ -495,7 +520,8 @@
       "ownership": 99.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 29.1,
-      "superflexRank": 41
+      "superflexRank": 40,
+      "superflexTier": 4
     },
     {
       "id": "fp-22739",
@@ -514,7 +540,8 @@
       "ownership": 96.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 36.2,
-      "superflexRank": 61
+      "superflexRank": 61,
+      "superflexTier": 5
     },
     {
       "id": "fp-23113",
@@ -533,7 +560,8 @@
       "ownership": 97.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 25.2,
-      "superflexRank": 42
+      "superflexRank": 42,
+      "superflexTier": 4
     },
     {
       "id": "fp-22916",
@@ -552,7 +580,8 @@
       "ownership": 97,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 30.1,
-      "superflexRank": 48
+      "superflexRank": 48,
+      "superflexTier": 4
     },
     {
       "id": "fp-20111",
@@ -571,7 +600,8 @@
       "ownership": 98,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 30.6,
-      "superflexRank": 44
+      "superflexRank": 43,
+      "superflexTier": 4
     },
     {
       "id": "fp-23059",
@@ -590,7 +620,8 @@
       "ownership": 98,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 32.7,
-      "superflexRank": 49
+      "superflexRank": 49,
+      "superflexTier": 5
     },
     {
       "id": "fp-17298",
@@ -609,7 +640,8 @@
       "ownership": 99.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 35.9,
-      "superflexRank": 1
+      "superflexRank": 1,
+      "superflexTier": 1
     },
     {
       "id": "fp-25417",
@@ -628,7 +660,8 @@
       "ownership": 97.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 38.9,
-      "superflexRank": 53
+      "superflexRank": 53,
+      "superflexTier": 5
     },
     {
       "id": "fp-23062",
@@ -647,7 +680,8 @@
       "ownership": 96.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 31.3,
-      "superflexRank": 56
+      "superflexRank": 54,
+      "superflexTier": 5
     },
     {
       "id": "fp-25403",
@@ -666,7 +700,8 @@
       "ownership": 98.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 27,
-      "superflexRank": 52
+      "superflexRank": 52,
+      "superflexTier": 5
     },
     {
       "id": "fp-25409",
@@ -685,7 +720,8 @@
       "ownership": 98,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 25.5,
-      "superflexRank": 51
+      "superflexRank": 51,
+      "superflexTier": 5
     },
     {
       "id": "fp-19211",
@@ -704,7 +740,8 @@
       "ownership": 97.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 34.2,
-      "superflexRank": 50
+      "superflexRank": 50,
+      "superflexTier": 5
     },
     {
       "id": "fp-19790",
@@ -723,7 +760,8 @@
       "ownership": 95.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 38.8,
-      "superflexRank": 62
+      "superflexRank": 62,
+      "superflexTier": 5
     },
     {
       "id": "fp-23072",
@@ -742,7 +780,8 @@
       "ownership": 97.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 40.1,
-      "superflexRank": 58
+      "superflexRank": 58,
+      "superflexTier": 5
     },
     {
       "id": "fp-26122",
@@ -761,7 +800,8 @@
       "ownership": 95.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 34.6,
-      "superflexRank": 60
+      "superflexRank": 59,
+      "superflexTier": 5
     },
     {
       "id": "fp-18269",
@@ -780,7 +820,8 @@
       "ownership": 98.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 41,
-      "superflexRank": 54
+      "superflexRank": 55,
+      "superflexTier": 5
     },
     {
       "id": "fp-18466",
@@ -799,7 +840,8 @@
       "ownership": 95,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 45.6,
-      "superflexRank": 64
+      "superflexRank": 63,
+      "superflexTier": 5
     },
     {
       "id": "fp-19231",
@@ -818,7 +860,8 @@
       "ownership": 95.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 42,
-      "superflexRank": 65
+      "superflexRank": 64,
+      "superflexTier": 5
     },
     {
       "id": "fp-27016",
@@ -837,7 +880,8 @@
       "ownership": 93.1,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 42.5,
-      "superflexRank": 67
+      "superflexRank": 66,
+      "superflexTier": 5
     },
     {
       "id": "fp-17265",
@@ -856,7 +900,8 @@
       "ownership": 92.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 55.7,
-      "superflexRank": 79
+      "superflexRank": 77,
+      "superflexTier": 6
     },
     {
       "id": "fp-12119",
@@ -875,7 +920,8 @@
       "ownership": 92.5,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 48.4,
-      "superflexRank": 71
+      "superflexRank": 70,
+      "superflexTier": 5
     },
     {
       "id": "fp-17233",
@@ -894,7 +940,8 @@
       "ownership": 99.1,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 55.4,
-      "superflexRank": 2
+      "superflexRank": 2,
+      "superflexTier": 1
     },
     {
       "id": "fp-26006",
@@ -913,7 +960,8 @@
       "ownership": 98.5,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 45.7,
-      "superflexRank": 59
+      "superflexRank": 60,
+      "superflexTier": 5
     },
     {
       "id": "fp-23677",
@@ -932,7 +980,8 @@
       "ownership": 94.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 51.9,
-      "superflexRank": 72
+      "superflexRank": 69,
+      "superflexTier": 5
     },
     {
       "id": "fp-19196",
@@ -951,7 +1000,8 @@
       "ownership": 98,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 68.7,
-      "superflexRank": 4
+      "superflexRank": 4,
+      "superflexTier": 1
     },
     {
       "id": "fp-23065",
@@ -970,7 +1020,8 @@
       "ownership": 92.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 54.3,
-      "superflexRank": 81
+      "superflexRank": 79,
+      "superflexTier": 6
     },
     {
       "id": "fp-23046",
@@ -989,7 +1040,8 @@
       "ownership": 98.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 67,
-      "superflexRank": 3
+      "superflexRank": 3,
+      "superflexTier": 1
     },
     {
       "id": "fp-18239",
@@ -1008,7 +1060,8 @@
       "ownership": 93.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 48.6,
-      "superflexRank": 78
+      "superflexRank": 76,
+      "superflexTier": 6
     },
     {
       "id": "fp-12123",
@@ -1027,7 +1080,8 @@
       "ownership": 97.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 51.5,
-      "superflexRank": 66
+      "superflexRank": 65,
+      "superflexTier": 5
     },
     {
       "id": "fp-26009",
@@ -1046,7 +1100,8 @@
       "ownership": 92.8,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 59.6,
-      "superflexRank": 87
+      "superflexRank": 86,
+      "superflexTier": 6
     },
     {
       "id": "fp-27166",
@@ -1065,7 +1120,8 @@
       "ownership": 96.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 43.5,
-      "superflexRank": 69
+      "superflexRank": 67,
+      "superflexTier": 5
     },
     {
       "id": "fp-22902",
@@ -1084,7 +1140,8 @@
       "ownership": 97.1,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 67.7,
-      "superflexRank": 5
+      "superflexRank": 5,
+      "superflexTier": 1
     },
     {
       "id": "fp-23886",
@@ -1103,7 +1160,8 @@
       "ownership": 91,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 57.3,
-      "superflexRank": 77
+      "superflexRank": 75,
+      "superflexTier": 5
     },
     {
       "id": "fp-19210",
@@ -1122,7 +1180,8 @@
       "ownership": 93.8,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 49.5,
-      "superflexRank": 75
+      "superflexRank": 73,
+      "superflexTier": 5
     },
     {
       "id": "fp-25981",
@@ -1141,7 +1200,8 @@
       "ownership": 94.8,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 55.4,
-      "superflexRank": 76
+      "superflexRank": 74,
+      "superflexTier": 5
     },
     {
       "id": "fp-19275",
@@ -1160,7 +1220,8 @@
       "ownership": 97.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 71.8,
-      "superflexRank": 6
+      "superflexRank": 6,
+      "superflexTier": 1
     },
     {
       "id": "fp-27297",
@@ -1179,7 +1240,8 @@
       "ownership": 89.8,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 49.5,
-      "superflexRank": 83
+      "superflexRank": 82,
+      "superflexTier": 6
     },
     {
       "id": "fp-26434",
@@ -1198,7 +1260,8 @@
       "ownership": 98.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 64.1,
-      "superflexRank": 73
+      "superflexRank": 72,
+      "superflexTier": 5
     },
     {
       "id": "fp-27329",
@@ -1217,7 +1280,8 @@
       "ownership": 91,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 61.7,
-      "superflexRank": 85
+      "superflexRank": 84,
+      "superflexTier": 6
     },
     {
       "id": "fp-25391",
@@ -1236,7 +1300,8 @@
       "ownership": 93.5,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 53.4,
-      "superflexRank": 74
+      "superflexRank": 71,
+      "superflexTier": 5
     },
     {
       "id": "fp-25298",
@@ -1255,7 +1320,8 @@
       "ownership": 93.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 79.1,
-      "superflexRank": 86
+      "superflexRank": 85,
+      "superflexTier": 6
     },
     {
       "id": "fp-26035",
@@ -1274,7 +1340,8 @@
       "ownership": 88.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 64.4,
-      "superflexRank": 105
+      "superflexRank": 105,
+      "superflexTier": 7
     },
     {
       "id": "fp-25411",
@@ -1293,7 +1360,8 @@
       "ownership": 91.5,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 59.9,
-      "superflexRank": 82
+      "superflexRank": 80,
+      "superflexTier": 6
     },
     {
       "id": "fp-23791",
@@ -1312,7 +1380,8 @@
       "ownership": 89.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 81.5,
-      "superflexRank": 96
+      "superflexRank": 95,
+      "superflexTier": 6
     },
     {
       "id": "fp-23106",
@@ -1331,7 +1400,8 @@
       "ownership": 87.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 62,
-      "superflexRank": 97
+      "superflexRank": 96,
+      "superflexTier": 6
     },
     {
       "id": "fp-19780",
@@ -1350,7 +1420,8 @@
       "ownership": 88.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 85.7,
-      "superflexRank": 14
+      "superflexRank": 14,
+      "superflexTier": 2
     },
     {
       "id": "fp-23084",
@@ -1369,7 +1440,8 @@
       "ownership": 93,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 72.9,
-      "superflexRank": 10
+      "superflexRank": 11,
+      "superflexTier": 2
     },
     {
       "id": "fp-15600",
@@ -1388,7 +1460,8 @@
       "ownership": 93.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 80.4,
-      "superflexRank": 16
+      "superflexRank": 16,
+      "superflexTier": 2
     },
     {
       "id": "fp-18635",
@@ -1407,7 +1480,8 @@
       "ownership": 93.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 82.7,
-      "superflexRank": 12
+      "superflexRank": 12,
+      "superflexTier": 2
     },
     {
       "id": "fp-23064",
@@ -1426,7 +1500,8 @@
       "ownership": 88.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 68.5,
-      "superflexRank": 90
+      "superflexRank": 89,
+      "superflexTier": 6
     },
     {
       "id": "fp-18219",
@@ -1445,7 +1520,8 @@
       "ownership": 91.8,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 76.4,
-      "superflexRank": 94
+      "superflexRank": 93,
+      "superflexTier": 6
     },
     {
       "id": "fp-18705",
@@ -1464,7 +1540,8 @@
       "ownership": 89.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 76.1,
-      "superflexRank": 92
+      "superflexRank": 91,
+      "superflexTier": 6
     },
     {
       "id": "fp-24209",
@@ -1483,7 +1560,8 @@
       "ownership": 90.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 71.1,
-      "superflexRank": 88
+      "superflexRank": 88,
+      "superflexTier": 6
     },
     {
       "id": "fp-23000",
@@ -1502,7 +1580,8 @@
       "ownership": 87.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 62.8,
-      "superflexRank": 91
+      "superflexRank": 90,
+      "superflexTier": 6
     },
     {
       "id": "fp-17253",
@@ -1521,7 +1600,8 @@
       "ownership": 87.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 84.9,
-      "superflexRank": 101
+      "superflexRank": 101,
+      "superflexTier": 6
     },
     {
       "id": "fp-22978",
@@ -1540,7 +1620,8 @@
       "ownership": 95.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 91.7,
-      "superflexRank": 98
+      "superflexRank": 98,
+      "superflexTier": 6
     },
     {
       "id": "fp-22726",
@@ -1559,7 +1640,8 @@
       "ownership": 85.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 74.7,
-      "superflexRank": 95
+      "superflexRank": 94,
+      "superflexTier": 6
     },
     {
       "id": "fp-16406",
@@ -1578,7 +1660,8 @@
       "ownership": 85,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 90.4,
-      "superflexRank": 103
+      "superflexRank": 103,
+      "superflexTier": 6
     },
     {
       "id": "fp-25420",
@@ -1597,7 +1680,8 @@
       "ownership": 87.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 74.3,
-      "superflexRank": 116
+      "superflexRank": 115,
+      "superflexTier": 7
     },
     {
       "id": "fp-23123",
@@ -1616,7 +1700,8 @@
       "ownership": 81.8,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 74.5,
-      "superflexRank": 109
+      "superflexRank": 108,
+      "superflexTier": 7
     },
     {
       "id": "fp-26148",
@@ -1635,7 +1720,8 @@
       "ownership": 74.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 89.5,
-      "superflexRank": 123
+      "superflexRank": 123,
+      "superflexTier": 7
     },
     {
       "id": "fp-23160",
@@ -1654,7 +1740,8 @@
       "ownership": 93.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 101.4,
-      "superflexRank": 20
+      "superflexRank": 20,
+      "superflexTier": 3
     },
     {
       "id": "fp-19797",
@@ -1673,7 +1760,8 @@
       "ownership": 90.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 100.7,
-      "superflexRank": 22
+      "superflexRank": 23,
+      "superflexTier": 3
     },
     {
       "id": "fp-22985",
@@ -1692,7 +1780,8 @@
       "ownership": 75.8,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 111.7,
-      "superflexRank": 115
+      "superflexRank": 113,
+      "superflexTier": 7
     },
     {
       "id": "fp-19647",
@@ -1711,7 +1800,8 @@
       "ownership": 89.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 87.9,
-      "superflexRank": 102
+      "superflexRank": 102,
+      "superflexTier": 6
     },
     {
       "id": "fp-24706",
@@ -1730,7 +1820,8 @@
       "ownership": 81.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 85.6,
-      "superflexRank": 112
+      "superflexRank": 112,
+      "superflexTier": 7
     },
     {
       "id": "fp-27142",
@@ -1749,7 +1840,8 @@
       "ownership": 85.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 87.3,
-      "superflexRank": 108
+      "superflexRank": 109,
+      "superflexTier": 7
     },
     {
       "id": "fp-20164",
@@ -1768,7 +1860,8 @@
       "ownership": 94.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 103.7,
-      "superflexRank": 99
+      "superflexRank": 100,
+      "superflexTier": 6
     },
     {
       "id": "fp-19792",
@@ -1787,7 +1880,8 @@
       "ownership": 87.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 85.2,
-      "superflexRank": 100
+      "superflexRank": 99,
+      "superflexTier": 6
     },
     {
       "id": "fp-19278",
@@ -1806,7 +1900,8 @@
       "ownership": 86.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 98.3,
-      "superflexRank": 106
+      "superflexRank": 106,
+      "superflexTier": 7
     },
     {
       "id": "fp-16413",
@@ -1825,7 +1920,8 @@
       "ownership": 90.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 95.8,
-      "superflexRank": 26
+      "superflexRank": 26,
+      "superflexTier": 3
     },
     {
       "id": "fp-25333",
@@ -1844,7 +1940,8 @@
       "ownership": 84.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 93.5,
-      "superflexRank": 107
+      "superflexRank": 107,
+      "superflexTier": 7
     },
     {
       "id": "fp-27050",
@@ -1863,7 +1960,8 @@
       "ownership": 93.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 102.6,
-      "superflexRank": 93
+      "superflexRank": 92,
+      "superflexTier": 6
     },
     {
       "id": "fp-11594",
@@ -1882,7 +1980,8 @@
       "ownership": 88.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 121.6,
-      "superflexRank": 114
+      "superflexRank": 114,
+      "superflexTier": 7
     },
     {
       "id": "fp-22910",
@@ -1901,7 +2000,8 @@
       "ownership": 86.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 106.8,
-      "superflexRank": 24
+      "superflexRank": 24,
+      "superflexTier": 3
     },
     {
       "id": "fp-23107",
@@ -1920,7 +2020,8 @@
       "ownership": 83.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 89.5,
-      "superflexRank": 117
+      "superflexRank": 116,
+      "superflexTier": 7
     },
     {
       "id": "fp-16499",
@@ -1939,7 +2040,8 @@
       "ownership": 92.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 115.3,
-      "superflexRank": 119
+      "superflexRank": 117,
+      "superflexTier": 7
     },
     {
       "id": "fp-18598",
@@ -1958,7 +2060,8 @@
       "ownership": 80.8,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 109.3,
-      "superflexRank": 118
+      "superflexRank": 119,
+      "superflexTier": 7
     },
     {
       "id": "fp-23019",
@@ -1977,7 +2080,8 @@
       "ownership": 70.5,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 101.5,
-      "superflexRank": 130
+      "superflexRank": 130,
+      "superflexTier": 7
     },
     {
       "id": "fp-27131",
@@ -1996,7 +2100,8 @@
       "ownership": 83.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 97.3,
-      "superflexRank": 111
+      "superflexRank": 111,
+      "superflexTier": 7
     },
     {
       "id": "fp-15501",
@@ -2015,7 +2120,8 @@
       "ownership": 77.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 109.9,
-      "superflexRank": 36
+      "superflexRank": 35,
+      "superflexTier": 4
     },
     {
       "id": "fp-25247",
@@ -2034,7 +2140,8 @@
       "ownership": 78.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 126.4,
-      "superflexRank": 126
+      "superflexRank": 126,
+      "superflexTier": 7
     },
     {
       "id": "fp-9451",
@@ -2053,7 +2160,8 @@
       "ownership": 91,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 106.1,
-      "superflexRank": 28
+      "superflexRank": 28,
+      "superflexTier": 3
     },
     {
       "id": "fp-23013",
@@ -2072,7 +2180,8 @@
       "ownership": 81.5,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 91,
-      "superflexRank": 110
+      "superflexRank": 110,
+      "superflexTier": 7
     },
     {
       "id": "fp-19245",
@@ -2091,7 +2200,8 @@
       "ownership": 86.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 96.2,
-      "superflexRank": 104
+      "superflexRank": 104,
+      "superflexTier": 7
     },
     {
       "id": "fp-27077",
@@ -2110,7 +2220,8 @@
       "ownership": 46.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 121.7,
-      "superflexRank": 132
+      "superflexRank": 132,
+      "superflexTier": 7
     },
     {
       "id": "fp-23310",
@@ -2128,7 +2239,8 @@
       "byeWeek": 10,
       "ownership": 80.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 120
+      "superflexRank": 118,
+      "superflexTier": 7
     },
     {
       "id": "fp-23020",
@@ -2147,7 +2259,8 @@
       "ownership": 75.5,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 81.2,
-      "superflexRank": 122
+      "superflexRank": 121,
+      "superflexTier": 7
     },
     {
       "id": "fp-23891",
@@ -2166,7 +2279,8 @@
       "ownership": 79.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 109.5,
-      "superflexRank": 121
+      "superflexRank": 120,
+      "superflexTier": 7
     },
     {
       "id": "fp-18600",
@@ -2185,7 +2299,8 @@
       "ownership": 72.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 113.3,
-      "superflexRank": 39
+      "superflexRank": 41,
+      "superflexTier": 4
     },
     {
       "id": "fp-16673",
@@ -2204,7 +2319,8 @@
       "ownership": 83,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 123.9,
-      "superflexRank": 124
+      "superflexRank": 124,
+      "superflexTier": 7
     },
     {
       "id": "fp-23794",
@@ -2223,7 +2339,8 @@
       "ownership": 65.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 117.2,
-      "superflexRank": 136
+      "superflexRank": 135,
+      "superflexTier": 7
     },
     {
       "id": "fp-17237",
@@ -2242,7 +2359,8 @@
       "ownership": 62.1,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 119.7,
-      "superflexRank": 43
+      "superflexRank": 44,
+      "superflexTier": 4
     },
     {
       "id": "fp-19246",
@@ -2261,7 +2379,8 @@
       "ownership": 58.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 114.1,
-      "superflexRank": 46
+      "superflexRank": 46,
+      "superflexTier": 4
     },
     {
       "id": "fp-17270",
@@ -2280,7 +2399,8 @@
       "ownership": 86.1,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 134.9,
-      "superflexRank": 129
+      "superflexRank": 129,
+      "superflexTier": 7
     },
     {
       "id": "fp-23096",
@@ -2299,7 +2419,8 @@
       "ownership": 50.8,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 124,
-      "superflexRank": 47
+      "superflexRank": 47,
+      "superflexTier": 4
     },
     {
       "id": "fp-26403",
@@ -2318,7 +2439,8 @@
       "ownership": 46.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 127.9,
-      "superflexRank": 139
+      "superflexRank": 138,
+      "superflexTier": 7
     },
     {
       "id": "fp-27316",
@@ -2337,7 +2459,8 @@
       "ownership": 74.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 114.8,
-      "superflexRank": 125
+      "superflexRank": 125,
+      "superflexTier": 7
     },
     {
       "id": "fp-22718",
@@ -2356,7 +2479,8 @@
       "ownership": 88.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 132.1,
-      "superflexRank": 128
+      "superflexRank": 128,
+      "superflexTier": 7
     },
     {
       "id": "fp-22969",
@@ -2375,7 +2499,8 @@
       "ownership": 70.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 110.2,
-      "superflexRank": 127
+      "superflexRank": 127,
+      "superflexTier": 7
     },
     {
       "id": "fp-17269",
@@ -2394,7 +2519,8 @@
       "ownership": 81.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 126.6,
-      "superflexRank": 131
+      "superflexRank": 131,
+      "superflexTier": 7
     },
     {
       "id": "fp-23499",
@@ -2413,7 +2539,8 @@
       "ownership": 44.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 135.9,
-      "superflexRank": 55
+      "superflexRank": 56,
+      "superflexTier": 5
     },
     {
       "id": "fp-23781",
@@ -2432,7 +2559,8 @@
       "ownership": 85.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 128,
-      "superflexRank": 133
+      "superflexRank": 134,
+      "superflexTier": 7
     },
     {
       "id": "fp-23748",
@@ -2451,7 +2579,8 @@
       "ownership": 65,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 127.6,
-      "superflexRank": 138
+      "superflexRank": 137,
+      "superflexTier": 7
     },
     {
       "id": "fp-26024",
@@ -2470,7 +2599,8 @@
       "ownership": 67.5,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 107,
-      "superflexRank": 143
+      "superflexRank": 142,
+      "superflexTier": 7
     },
     {
       "id": "fp-23071",
@@ -2489,7 +2619,8 @@
       "ownership": 39.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 145.2,
-      "superflexRank": 63
+      "superflexRank": 68,
+      "superflexTier": 5
     },
     {
       "id": "fp-27331",
@@ -2508,7 +2639,8 @@
       "ownership": 65.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 118.5,
-      "superflexRank": 142
+      "superflexRank": 141,
+      "superflexTier": 7
     },
     {
       "id": "fp-24687",
@@ -2527,7 +2659,8 @@
       "ownership": 44.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 130.7,
-      "superflexRank": 146
+      "superflexRank": 146,
+      "superflexTier": 8
     },
     {
       "id": "fp-27339",
@@ -2546,7 +2679,8 @@
       "ownership": 36.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 150.8,
-      "superflexRank": 166
+      "superflexRank": 168,
+      "superflexTier": 8
     },
     {
       "id": "fp-19562",
@@ -2565,7 +2699,8 @@
       "ownership": 45.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 156.4,
-      "superflexRank": 148
+      "superflexRank": 147,
+      "superflexTier": 8
     },
     {
       "id": "fp-22980",
@@ -2584,7 +2719,8 @@
       "ownership": 39.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 135,
-      "superflexRank": 134
+      "superflexRank": 133,
+      "superflexTier": 7
     },
     {
       "id": "fp-27520",
@@ -2603,7 +2739,8 @@
       "ownership": 52.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 141.6,
-      "superflexRank": 140
+      "superflexRank": 139,
+      "superflexTier": 7
     },
     {
       "id": "fp-23982",
@@ -2622,7 +2759,8 @@
       "ownership": 44.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 140.5,
-      "superflexRank": 150
+      "superflexRank": 151,
+      "superflexTier": 8
     },
     {
       "id": "fp-24172",
@@ -2641,7 +2779,8 @@
       "ownership": 45.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 154.6,
-      "superflexRank": 141
+      "superflexRank": 140,
+      "superflexTier": 7
     },
     {
       "id": "fp-23153",
@@ -2660,7 +2799,8 @@
       "ownership": 21,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 179.3,
-      "superflexRank": 237
+      "superflexRank": 237,
+      "superflexTier": 9
     },
     {
       "id": "fp-25345",
@@ -2679,7 +2819,8 @@
       "ownership": 49.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 149.4,
-      "superflexRank": 149
+      "superflexRank": 149,
+      "superflexTier": 8
     },
     {
       "id": "fp-16421",
@@ -2698,7 +2839,8 @@
       "ownership": 52.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 163.4,
-      "superflexRank": 145
+      "superflexRank": 145,
+      "superflexTier": 8
     },
     {
       "id": "fp-23152",
@@ -2717,7 +2859,8 @@
       "ownership": 70,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 161.5,
-      "superflexRank": 151
+      "superflexRank": 150,
+      "superflexTier": 8
     },
     {
       "id": "fp-25360",
@@ -2736,7 +2879,8 @@
       "ownership": 33.5,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 133.5,
-      "superflexRank": 155
+      "superflexRank": 155,
+      "superflexTier": 8
     },
     {
       "id": "fp-27102",
@@ -2755,7 +2899,8 @@
       "ownership": 23.1,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 171.9,
-      "superflexRank": 147
+      "superflexRank": 148,
+      "superflexTier": 8
     },
     {
       "id": "fp-24755",
@@ -2774,7 +2919,8 @@
       "ownership": 27.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 142.7,
-      "superflexRank": 68
+      "superflexRank": 78,
+      "superflexTier": 6
     },
     {
       "id": "fp-15561",
@@ -2793,7 +2939,8 @@
       "ownership": 65.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 152.6,
-      "superflexRank": 153
+      "superflexRank": 153,
+      "superflexTier": 8
     },
     {
       "id": "fp-25997",
@@ -2812,7 +2959,8 @@
       "ownership": 47.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 154.5,
-      "superflexRank": 159
+      "superflexRank": 158,
+      "superflexTier": 8
     },
     {
       "id": "fp-27320",
@@ -2831,7 +2979,8 @@
       "ownership": 33.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 160,
-      "superflexRank": 156
+      "superflexRank": 159,
+      "superflexTier": 8
     },
     {
       "id": "fp-26055",
@@ -2850,7 +2999,8 @@
       "ownership": 63.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 165.8,
-      "superflexRank": 173
+      "superflexRank": 177,
+      "superflexTier": 8
     },
     {
       "id": "fp-17349",
@@ -2869,7 +3019,8 @@
       "ownership": 28.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 168.1,
-      "superflexRank": 164
+      "superflexRank": 162,
+      "superflexTier": 8
     },
     {
       "id": "fp-24333",
@@ -2888,7 +3039,8 @@
       "ownership": 51.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 152.3,
-      "superflexRank": 152
+      "superflexRank": 152,
+      "superflexTier": 8
     },
     {
       "id": "fp-13981",
@@ -2907,7 +3059,8 @@
       "ownership": 59.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 117.3,
-      "superflexRank": 181
+      "superflexRank": 182,
+      "superflexTier": 8
     },
     {
       "id": "fp-19201",
@@ -2926,7 +3079,8 @@
       "ownership": 34.8,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 179.2,
-      "superflexRank": 165
+      "superflexRank": 163,
+      "superflexTier": 8
     },
     {
       "id": "fp-28127",
@@ -2945,7 +3099,8 @@
       "ownership": 38.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 145.8,
-      "superflexRank": 167
+      "superflexRank": 170,
+      "superflexTier": 8
     },
     {
       "id": "fp-17236",
@@ -2964,7 +3119,8 @@
       "ownership": 42.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 143,
-      "superflexRank": 70
+      "superflexRank": 81,
+      "superflexTier": 6
     },
     {
       "id": "fp-22908",
@@ -2983,7 +3139,8 @@
       "ownership": 31.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 157.8,
-      "superflexRank": 154
+      "superflexRank": 154,
+      "superflexTier": 8
     },
     {
       "id": "fp-18290",
@@ -3002,7 +3159,8 @@
       "ownership": 55.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 170.6,
-      "superflexRank": 168
+      "superflexRank": 166,
+      "superflexTier": 8
     },
     {
       "id": "fp-25337",
@@ -3021,7 +3179,8 @@
       "ownership": 21.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 157,
-      "superflexRank": 161
+      "superflexRank": 161,
+      "superflexTier": 8
     },
     {
       "id": "fp-18232",
@@ -3040,7 +3199,8 @@
       "ownership": 40.8,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 147.1,
-      "superflexRank": 80
+      "superflexRank": 83,
+      "superflexTier": 6
     },
     {
       "id": "fp-26335",
@@ -3059,7 +3219,8 @@
       "ownership": 25.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 174.4,
-      "superflexRank": 171
+      "superflexRank": 169,
+      "superflexTier": 8
     },
     {
       "id": "fp-25323",
@@ -3078,7 +3239,8 @@
       "ownership": 46.5,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 153.9,
-      "superflexRank": 144
+      "superflexRank": 143,
+      "superflexTier": 8
     },
     {
       "id": "fp-22986",
@@ -3097,7 +3259,8 @@
       "ownership": 39.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 129.6,
-      "superflexRank": 137
+      "superflexRank": 136,
+      "superflexTier": 7
     },
     {
       "id": "fp-28138",
@@ -3116,7 +3279,8 @@
       "ownership": 24.1,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 141.4,
-      "superflexRank": 169
+      "superflexRank": 165,
+      "superflexTier": 8
     },
     {
       "id": "fp-24177",
@@ -3135,7 +3299,8 @@
       "ownership": 31.8,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 148.4,
-      "superflexRank": 182
+      "superflexRank": 180,
+      "superflexTier": 8
     },
     {
       "id": "fp-25418",
@@ -3154,7 +3319,8 @@
       "ownership": 28.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 180.2,
-      "superflexRank": 210
+      "superflexRank": 206,
+      "superflexTier": 9
     },
     {
       "id": "fp-23181",
@@ -3173,7 +3339,8 @@
       "ownership": 23.1,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 190,
-      "superflexRank": 198
+      "superflexRank": 196,
+      "superflexTier": 9
     },
     {
       "id": "fp-11687",
@@ -3192,7 +3359,8 @@
       "ownership": 14.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 186.1,
-      "superflexRank": 113
+      "superflexRank": 122,
+      "superflexTier": 7
     },
     {
       "id": "fp-23118",
@@ -3211,7 +3379,8 @@
       "ownership": 8.5,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 185.2,
-      "superflexRank": 199
+      "superflexRank": 197,
+      "superflexTier": 9
     },
     {
       "id": "fp-20094",
@@ -3230,7 +3399,8 @@
       "ownership": 37.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 177.4,
-      "superflexRank": 157
+      "superflexRank": 156,
+      "superflexTier": 8
     },
     {
       "id": "fp-19590",
@@ -3249,7 +3419,8 @@
       "ownership": 34.8,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 157,
-      "superflexRank": 158
+      "superflexRank": 157,
+      "superflexTier": 8
     },
     {
       "id": "fp-9001",
@@ -3268,7 +3439,8 @@
       "ownership": 17.5,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 177.3,
-      "superflexRank": 135
+      "superflexRank": 144,
+      "superflexTier": 8
     },
     {
       "id": "fp-26314",
@@ -3287,7 +3459,8 @@
       "ownership": 15.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 179.5,
-      "superflexRank": 185
+      "superflexRank": 186,
+      "superflexTier": 9
     },
     {
       "id": "fp-18244",
@@ -3306,7 +3479,8 @@
       "ownership": 56.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 133.6,
-      "superflexRank": 172
+      "superflexRank": 171,
+      "superflexTier": 8
     },
     {
       "id": "fp-26034",
@@ -3325,7 +3499,8 @@
       "ownership": 66.8,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 141.7,
-      "superflexRank": 174
+      "superflexRank": 178,
+      "superflexTier": 8
     },
     {
       "id": "fp-23091",
@@ -3344,7 +3519,8 @@
       "ownership": 19,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 180,
-      "superflexRank": 184
+      "superflexRank": 184,
+      "superflexTier": 9
     },
     {
       "id": "fp-22900",
@@ -3363,7 +3539,8 @@
       "ownership": 32,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 161,
-      "superflexRank": 84
+      "superflexRank": 87,
+      "superflexTier": 6
     },
     {
       "id": "fp-17272",
@@ -3382,7 +3559,8 @@
       "ownership": 9.5,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 208.1,
-      "superflexRank": 267
+      "superflexRank": 264,
+      "superflexTier": 10
     },
     {
       "id": "fp-26191",
@@ -3401,7 +3579,8 @@
       "ownership": 14.5,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 188.4,
-      "superflexRank": 180
+      "superflexRank": 179,
+      "superflexTier": 8
     },
     {
       "id": "fp-23179",
@@ -3420,7 +3599,8 @@
       "ownership": 29.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 148.3,
-      "superflexRank": 163
+      "superflexRank": 164,
+      "superflexTier": 8
     },
     {
       "id": "fp-15642",
@@ -3439,7 +3619,8 @@
       "ownership": 25.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 192.8,
-      "superflexRank": 89
+      "superflexRank": 97,
+      "superflexTier": 6
     },
     {
       "id": "fp-24343",
@@ -3458,7 +3639,8 @@
       "ownership": 25.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 209.1,
-      "superflexRank": 200
+      "superflexRank": 200,
+      "superflexTier": 9
     },
     {
       "id": "fp-24357",
@@ -3477,7 +3659,8 @@
       "ownership": 17.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 172.1,
-      "superflexRank": 160
+      "superflexRank": 160,
+      "superflexTier": 8
     },
     {
       "id": "fp-19810",
@@ -3496,7 +3679,8 @@
       "ownership": 17.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 202.1,
-      "superflexRank": 188
+      "superflexRank": 190,
+      "superflexTier": 9
     },
     {
       "id": "fp-26215",
@@ -3515,7 +3699,8 @@
       "ownership": 14.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 164.7,
-      "superflexRank": 170
+      "superflexRank": 167,
+      "superflexTier": 8
     },
     {
       "id": "fp-26039",
@@ -3534,7 +3719,8 @@
       "ownership": 20.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 195.7,
-      "superflexRank": 219
+      "superflexRank": 222,
+      "superflexTier": 9
     },
     {
       "id": "fp-24346",
@@ -3553,7 +3739,8 @@
       "ownership": 19.5,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 213.4,
-      "superflexRank": 179
+      "superflexRank": 176,
+      "superflexTier": 8
     },
     {
       "id": "fp-17258",
@@ -3572,7 +3759,8 @@
       "ownership": 18.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 189.4,
-      "superflexRank": 183
+      "superflexRank": 185,
+      "superflexTier": 9
     },
     {
       "id": "fp-20163",
@@ -3591,7 +3779,8 @@
       "ownership": 15.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 194.1,
-      "superflexRank": 190
+      "superflexRank": 188,
+      "superflexTier": 9
     },
     {
       "id": "fp-28107",
@@ -3610,7 +3799,8 @@
       "ownership": 26.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 199.1,
-      "superflexRank": 191
+      "superflexRank": 194,
+      "superflexTier": 9
     },
     {
       "id": "fp-24362",
@@ -3629,7 +3819,8 @@
       "ownership": 21.1,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 206.7,
-      "superflexRank": 202
+      "superflexRank": 203,
+      "superflexTier": 9
     },
     {
       "id": "fp-28108",
@@ -3648,7 +3839,8 @@
       "ownership": 25.5,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 197.5,
-      "superflexRank": 208
+      "superflexRank": 207,
+      "superflexTier": 9
     },
     {
       "id": "fp-27122",
@@ -3667,7 +3859,8 @@
       "ownership": 9.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.2,
-      "superflexRank": 201
+      "superflexRank": 199,
+      "superflexTier": 9
     },
     {
       "id": "fp-22989",
@@ -3686,7 +3879,8 @@
       "ownership": 21.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 195,
-      "superflexRank": 177
+      "superflexRank": 175,
+      "superflexTier": 8
     },
     {
       "id": "fp-27446",
@@ -3705,7 +3899,8 @@
       "ownership": 18.1,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 169.5,
-      "superflexRank": 189
+      "superflexRank": 193,
+      "superflexTier": 9
     },
     {
       "id": "fp-26398",
@@ -3724,7 +3919,8 @@
       "ownership": 13.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 163,
-      "superflexRank": 176
+      "superflexRank": 174,
+      "superflexTier": 8
     },
     {
       "id": "fp-19794",
@@ -3743,7 +3939,8 @@
       "ownership": 8,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 203.2,
-      "superflexRank": 195
+      "superflexRank": 201,
+      "superflexTier": 9
     },
     {
       "id": "fp-27109",
@@ -3762,7 +3959,8 @@
       "ownership": 15.5,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 182.1,
-      "superflexRank": 192
+      "superflexRank": 191,
+      "superflexTier": 9
     },
     {
       "id": "fp-16447",
@@ -3781,7 +3979,8 @@
       "ownership": 28.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 214.7,
-      "superflexRank": 186
+      "superflexRank": 187,
+      "superflexTier": 9
     },
     {
       "id": "fp-27463",
@@ -3800,7 +3999,8 @@
       "ownership": 16.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 211.7,
-      "superflexRank": 235
+      "superflexRank": 241,
+      "superflexTier": 9
     },
     {
       "id": "fp-28130",
@@ -3819,7 +4019,8 @@
       "ownership": 17.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 205.1,
-      "superflexRank": 251
+      "superflexRank": 250,
+      "superflexTier": 10
     },
     {
       "id": "fp-27211",
@@ -3838,7 +4039,8 @@
       "ownership": 10.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 200.4,
-      "superflexRank": 197
+      "superflexRank": 195,
+      "superflexTier": 9
     },
     {
       "id": "fp-25419",
@@ -3857,7 +4059,8 @@
       "ownership": 23.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 178.9,
-      "superflexRank": 211
+      "superflexRank": 214,
+      "superflexTier": 9
     },
     {
       "id": "fp-16411",
@@ -3876,7 +4079,8 @@
       "ownership": 13.1,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 212,
-      "superflexRank": 213
+      "superflexRank": 212,
+      "superflexTier": 9
     },
     {
       "id": "fp-19198",
@@ -3895,7 +4099,8 @@
       "ownership": 22.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 207.9,
-      "superflexRank": 178
+      "superflexRank": 181,
+      "superflexTier": 8
     },
     {
       "id": "fp-28013",
@@ -3914,7 +4119,8 @@
       "ownership": 33.5,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 185.3,
-      "superflexRank": 162
+      "superflexRank": 172,
+      "superflexTier": 8
     },
     {
       "id": "fp-26038",
@@ -3933,7 +4139,8 @@
       "ownership": 20.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.2,
-      "superflexRank": 241
+      "superflexRank": 243,
+      "superflexTier": 10
     },
     {
       "id": "fp-23679",
@@ -3952,7 +4159,8 @@
       "ownership": 19,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 194,
-      "superflexRank": 175
+      "superflexRank": 173,
+      "superflexTier": 8
     },
     {
       "id": "fp-24354",
@@ -3971,7 +4179,8 @@
       "ownership": 12.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 184.4,
-      "superflexRank": 194
+      "superflexRank": 192,
+      "superflexTier": 9
     },
     {
       "id": "fp-16399",
@@ -3990,7 +4199,8 @@
       "ownership": 24.8,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 212.4,
-      "superflexRank": 205
+      "superflexRank": 202,
+      "superflexTier": 9
     },
     {
       "id": "fp-25987",
@@ -4009,7 +4219,8 @@
       "ownership": 9.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.6,
-      "superflexRank": 207
+      "superflexRank": 209,
+      "superflexTier": 9
     },
     {
       "id": "fp-27994",
@@ -4027,7 +4238,8 @@
       "byeWeek": 8,
       "ownership": 17.1,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 232
+      "superflexRank": 235,
+      "superflexTier": 9
     },
     {
       "id": "fp-27310",
@@ -4046,7 +4258,8 @@
       "ownership": 9.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 214.3,
-      "superflexRank": 226
+      "superflexRank": 220,
+      "superflexTier": 9
     },
     {
       "id": "fp-16423",
@@ -4065,7 +4278,8 @@
       "ownership": 5.1,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.5,
-      "superflexRank": 234
+      "superflexRank": 234,
+      "superflexTier": 9
     },
     {
       "id": "fp-22967",
@@ -4084,7 +4298,8 @@
       "ownership": 12.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215,
-      "superflexRank": 279
+      "superflexRank": 279,
+      "superflexTier": 10
     },
     {
       "id": "fp-26355",
@@ -4103,7 +4318,8 @@
       "ownership": 13.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 212.6,
-      "superflexRank": 187
+      "superflexRank": 183,
+      "superflexTier": 9
     },
     {
       "id": "fp-28084",
@@ -4122,7 +4338,8 @@
       "ownership": 16,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 214.4,
-      "superflexRank": 230
+      "superflexRank": 231,
+      "superflexTier": 9
     },
     {
       "id": "fp-25968",
@@ -4141,7 +4358,8 @@
       "ownership": 12.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 211.9,
-      "superflexRank": 239
+      "superflexRank": 239,
+      "superflexTier": 9
     },
     {
       "id": "fp-16433",
@@ -4160,7 +4378,8 @@
       "ownership": 17.1,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 209.3,
-      "superflexRank": 206
+      "superflexRank": 208,
+      "superflexTier": 9
     },
     {
       "id": "fp-22973",
@@ -4179,7 +4398,8 @@
       "ownership": 11.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.3,
-      "superflexRank": 216
+      "superflexRank": 215,
+      "superflexTier": 9
     },
     {
       "id": "fp-28401",
@@ -4198,7 +4418,8 @@
       "ownership": 12.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 204.9,
-      "superflexRank": 244
+      "superflexRank": 244,
+      "superflexTier": 10
     },
     {
       "id": "fp-25984",
@@ -4217,7 +4438,8 @@
       "ownership": 3.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.5,
-      "superflexRank": 212
+      "superflexRank": 211,
+      "superflexTier": 9
     },
     {
       "id": "fp-16398",
@@ -4236,7 +4458,8 @@
       "ownership": 16.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.4,
-      "superflexRank": 223
+      "superflexRank": 224,
+      "superflexTier": 9
     },
     {
       "id": "fp-19252",
@@ -4255,7 +4478,8 @@
       "ownership": 25.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.7,
-      "superflexRank": 257
+      "superflexRank": 259,
+      "superflexTier": 10
     },
     {
       "id": "fp-24778",
@@ -4274,7 +4498,8 @@
       "ownership": 12.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 214.4,
-      "superflexRank": 277
+      "superflexRank": 276,
+      "superflexTier": 10
     },
     {
       "id": "fp-24344",
@@ -4293,7 +4518,8 @@
       "ownership": 10.5,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 177.5,
-      "superflexRank": 203
+      "superflexRank": 204,
+      "superflexTier": 9
     },
     {
       "id": "fp-23092",
@@ -4312,7 +4538,8 @@
       "ownership": 11.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 213.8,
-      "superflexRank": 196
+      "superflexRank": 198,
+      "superflexTier": 9
     },
     {
       "id": "fp-25885",
@@ -4331,7 +4558,8 @@
       "ownership": 12,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
-      "superflexRank": 193
+      "superflexRank": 189,
+      "superflexTier": 9
     },
     {
       "id": "fp-25361",
@@ -4350,7 +4578,8 @@
       "ownership": 24.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 183.1,
-      "superflexRank": 204
+      "superflexRank": 205,
+      "superflexTier": 9
     },
     {
       "id": "fp-27337",
@@ -4369,7 +4598,8 @@
       "ownership": 19.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 205.3,
-      "superflexRank": 269
+      "superflexRank": 269,
+      "superflexTier": 10
     },
     {
       "id": "fp-22913",
@@ -4388,7 +4618,8 @@
       "ownership": 6.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 211,
-      "superflexRank": 231
+      "superflexRank": 229,
+      "superflexTier": 9
     },
     {
       "id": "fp-18706",
@@ -4407,7 +4638,8 @@
       "ownership": 4.1,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.6,
-      "superflexRank": 242
+      "superflexRank": 240,
+      "superflexTier": 9
     },
     {
       "id": "fp-23770",
@@ -4426,7 +4658,8 @@
       "ownership": 4.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.6,
-      "superflexRank": 294
+      "superflexRank": 292,
+      "superflexTier": 11
     },
     {
       "id": "fp-19372",
@@ -4445,7 +4678,8 @@
       "ownership": 20.1,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 210.6,
-      "superflexRank": 214
+      "superflexRank": 213,
+      "superflexTier": 9
     },
     {
       "id": "fp-26022",
@@ -4464,7 +4698,8 @@
       "ownership": 9.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 212.5,
-      "superflexRank": 225
+      "superflexRank": 226,
+      "superflexTier": 9
     },
     {
       "id": "fp-23144",
@@ -4483,7 +4718,8 @@
       "ownership": 23.5,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 211.8,
-      "superflexRank": 228
+      "superflexRank": 230,
+      "superflexTier": 9
     },
     {
       "id": "fp-28126",
@@ -4502,7 +4738,8 @@
       "ownership": 13.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.5,
-      "superflexRank": 276
+      "superflexRank": 277,
+      "superflexTier": 10
     },
     {
       "id": "fp-28129",
@@ -4521,7 +4758,8 @@
       "ownership": 5.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
-      "superflexRank": 307
+      "superflexRank": 309,
+      "superflexTier": 11
     },
     {
       "id": "fp-26019",
@@ -4540,7 +4778,8 @@
       "ownership": 8.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 210.8,
-      "superflexRank": 218
+      "superflexRank": 218,
+      "superflexTier": 9
     },
     {
       "id": "fp-27315",
@@ -4559,7 +4798,8 @@
       "ownership": 10.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.8,
-      "superflexRank": 215
+      "superflexRank": 216,
+      "superflexTier": 9
     },
     {
       "id": "fp-11177",
@@ -4578,7 +4818,8 @@
       "ownership": 10.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 214.9,
-      "superflexRank": 229
+      "superflexRank": 228,
+      "superflexTier": 9
     },
     {
       "id": "fp-18256",
@@ -4597,7 +4838,8 @@
       "ownership": 9.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 213.7,
-      "superflexRank": 222
+      "superflexRank": 219,
+      "superflexTier": 9
     },
     {
       "id": "fp-28424",
@@ -4615,7 +4857,8 @@
       "byeWeek": 5,
       "ownership": 4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 291
+      "superflexRank": 290,
+      "superflexTier": 11
     },
     {
       "id": "fp-22915",
@@ -4634,7 +4877,8 @@
       "ownership": 7.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 212.8,
-      "superflexRank": 217
+      "superflexRank": 217,
+      "superflexTier": 9
     },
     {
       "id": "fp-27224",
@@ -4653,7 +4897,8 @@
       "ownership": 8,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.4,
-      "superflexRank": 221
+      "superflexRank": 225,
+      "superflexTier": 9
     },
     {
       "id": "fp-17268",
@@ -4672,7 +4917,8 @@
       "ownership": 13,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.1,
-      "superflexRank": 233
+      "superflexRank": 232,
+      "superflexTier": 9
     },
     {
       "id": "fp-23101",
@@ -4691,7 +4937,8 @@
       "ownership": 4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.7,
-      "superflexRank": 292
+      "superflexRank": 291,
+      "superflexTier": 11
     },
     {
       "id": "fp-28047",
@@ -4710,7 +4957,8 @@
       "ownership": 14,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 280
+      "superflexRank": 280,
+      "superflexTier": 10
     },
     {
       "id": "fp-15802",
@@ -4728,7 +4976,8 @@
       "ownership": 28.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.4,
-      "superflexRank": 273
+      "superflexRank": 274,
+      "superflexTier": 10
     },
     {
       "id": "fp-18280",
@@ -4747,7 +4996,8 @@
       "ownership": 1.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 258
+      "superflexRank": 256,
+      "superflexTier": 10
     },
     {
       "id": "fp-27097",
@@ -4766,7 +5016,8 @@
       "ownership": 2.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.3,
-      "superflexRank": 227
+      "superflexRank": 227,
+      "superflexTier": 9
     },
     {
       "id": "fp-28133",
@@ -4784,7 +5035,8 @@
       "byeWeek": 7,
       "ownership": 3.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 314
+      "superflexRank": 314,
+      "superflexTier": 11
     },
     {
       "id": "fp-18406",
@@ -4803,7 +5055,8 @@
       "ownership": 2.8,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.7,
-      "superflexRank": 243
+      "superflexRank": 236,
+      "superflexTier": 9
     },
     {
       "id": "fp-27059",
@@ -4822,7 +5075,8 @@
       "ownership": 7.8,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.7,
-      "superflexRank": 224
+      "superflexRank": 221,
+      "superflexTier": 9
     },
     {
       "id": "fp-23080",
@@ -4841,7 +5095,8 @@
       "ownership": 10.5,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.8,
-      "superflexRank": 249
+      "superflexRank": 249,
+      "superflexTier": 10
     },
     {
       "id": "fp-26409",
@@ -4860,7 +5115,8 @@
       "ownership": 9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 214.9,
-      "superflexRank": 247
+      "superflexRank": 246,
+      "superflexTier": 10
     },
     {
       "id": "fp-23056",
@@ -4879,7 +5135,8 @@
       "ownership": 11.5,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.1,
-      "superflexRank": 300
+      "superflexRank": 301,
+      "superflexTier": 11
     },
     {
       "id": "fp-22953",
@@ -4897,7 +5154,8 @@
       "byeWeek": 14,
       "ownership": 12.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 356
+      "superflexRank": 360,
+      "superflexTier": 12
     },
     {
       "id": "fp-23104",
@@ -4916,7 +5174,8 @@
       "ownership": 10.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.7,
-      "superflexRank": 252
+      "superflexRank": 251,
+      "superflexTier": 10
     },
     {
       "id": "fp-25388",
@@ -4935,7 +5194,8 @@
       "ownership": 10.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 245
+      "superflexRank": 247,
+      "superflexTier": 10
     },
     {
       "id": "fp-25335",
@@ -4954,7 +5214,8 @@
       "ownership": 4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.2,
-      "superflexRank": 283
+      "superflexRank": 282,
+      "superflexTier": 10
     },
     {
       "id": "fp-24205",
@@ -4973,7 +5234,8 @@
       "ownership": 2.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
-      "superflexRank": 240
+      "superflexRank": 238,
+      "superflexTier": 9
     },
     {
       "id": "fp-19747",
@@ -4992,7 +5254,8 @@
       "ownership": 0.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 331
+      "superflexRank": 329,
+      "superflexTier": 11
     },
     {
       "id": "fp-22845",
@@ -5010,7 +5273,8 @@
       "byeWeek": 7,
       "ownership": 0.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 310
+      "superflexRank": 306,
+      "superflexTier": 11
     },
     {
       "id": "fp-28135",
@@ -5029,7 +5293,8 @@
       "ownership": 4.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 214,
-      "superflexRank": 286
+      "superflexRank": 285,
+      "superflexTier": 11
     },
     {
       "id": "fp-28297",
@@ -5047,7 +5312,8 @@
       "byeWeek": 9,
       "ownership": 2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 308
+      "superflexRank": 308,
+      "superflexTier": 11
     },
     {
       "id": "fp-27165",
@@ -5066,7 +5332,8 @@
       "ownership": 7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 253
+      "superflexRank": 253,
+      "superflexTier": 10
     },
     {
       "id": "fp-18864",
@@ -5085,7 +5352,8 @@
       "ownership": 2.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 302
+      "superflexRank": 302,
+      "superflexTier": 11
     },
     {
       "id": "fp-24367",
@@ -5104,7 +5372,8 @@
       "ownership": 5.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.8,
-      "superflexRank": 262
+      "superflexRank": 263,
+      "superflexTier": 10
     },
     {
       "id": "fp-28132",
@@ -5122,7 +5391,8 @@
       "byeWeek": 10,
       "ownership": 5.1,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 352
+      "superflexRank": 345,
+      "superflexTier": 12
     },
     {
       "id": "fp-20126",
@@ -5141,7 +5411,8 @@
       "ownership": 1.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.8,
-      "superflexRank": 339
+      "superflexRank": 335,
+      "superflexTier": 11
     },
     {
       "id": "fp-23682",
@@ -5160,7 +5431,8 @@
       "ownership": 5.5,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 250
+      "superflexRank": 252,
+      "superflexTier": 10
     },
     {
       "id": "fp-11616",
@@ -5179,7 +5451,8 @@
       "ownership": 6.8,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 199.3,
-      "superflexRank": 256
+      "superflexRank": 257,
+      "superflexTier": 10
     },
     {
       "id": "fp-26392",
@@ -5198,7 +5471,8 @@
       "ownership": 1.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 274
+      "superflexRank": 273,
+      "superflexTier": 10
     },
     {
       "id": "fp-16489",
@@ -5217,7 +5491,8 @@
       "ownership": 2.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 260
+      "superflexRank": 260,
+      "superflexTier": 10
     },
     {
       "id": "fp-26136",
@@ -5236,7 +5511,8 @@
       "ownership": 2.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215,
-      "superflexRank": 246
+      "superflexRank": 245,
+      "superflexTier": 10
     },
     {
       "id": "fp-17066",
@@ -5255,7 +5531,8 @@
       "ownership": 3.1,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
-      "superflexRank": 320
+      "superflexRank": 313,
+      "superflexTier": 11
     },
     {
       "id": "fp-24334",
@@ -5274,7 +5551,8 @@
       "ownership": 3.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
-      "superflexRank": 306
+      "superflexRank": 305,
+      "superflexTier": 11
     },
     {
       "id": "fp-18226",
@@ -5293,7 +5571,8 @@
       "ownership": 5.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
-      "superflexRank": 254
+      "superflexRank": 255,
+      "superflexTier": 10
     },
     {
       "id": "fp-26005",
@@ -5312,7 +5591,8 @@
       "ownership": 10.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.7,
-      "superflexRank": 248
+      "superflexRank": 248,
+      "superflexTier": 10
     },
     {
       "id": "fp-19781",
@@ -5331,7 +5611,8 @@
       "ownership": 6.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 403
+      "superflexRank": 406,
+      "superflexTier": 12
     },
     {
       "id": "fp-27285",
@@ -5350,7 +5631,8 @@
       "ownership": 4.1,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.8,
-      "superflexRank": 238
+      "superflexRank": 242,
+      "superflexTier": 9
     },
     {
       "id": "fp-18520",
@@ -5369,7 +5651,8 @@
       "ownership": 3.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
-      "superflexRank": 334
+      "superflexRank": 328,
+      "superflexTier": 11
     },
     {
       "id": "fp-23079",
@@ -5388,7 +5671,8 @@
       "ownership": 3.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
-      "superflexRank": 271
+      "superflexRank": 272,
+      "superflexTier": 10
     },
     {
       "id": "fp-23004",
@@ -5407,7 +5691,8 @@
       "ownership": 4.8,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
-      "superflexRank": 296
+      "superflexRank": 296,
+      "superflexTier": 11
     },
     {
       "id": "fp-16081",
@@ -5426,7 +5711,8 @@
       "ownership": 0.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
-      "superflexRank": 330
+      "superflexRank": 330,
+      "superflexTier": 11
     },
     {
       "id": "fp-28067",
@@ -5444,7 +5730,8 @@
       "byeWeek": 6,
       "ownership": 2.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 341
+      "superflexRank": 337,
+      "superflexTier": 11
     },
     {
       "id": "fp-25654",
@@ -5463,7 +5750,8 @@
       "ownership": 2.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
-      "superflexRank": 255
+      "superflexRank": 254,
+      "superflexTier": 10
     },
     {
       "id": "fp-25823",
@@ -5482,7 +5770,8 @@
       "ownership": 5.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 236
+      "superflexRank": 233,
+      "superflexTier": 9
     },
     {
       "id": "fp-19229",
@@ -5501,7 +5790,8 @@
       "ownership": 7.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.8,
-      "superflexRank": 299
+      "superflexRank": 297,
+      "superflexTier": 11
     },
     {
       "id": "fp-13890",
@@ -5520,7 +5810,8 @@
       "ownership": 3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 426
+      "superflexRank": 427,
+      "superflexTier": 13
     },
     {
       "id": "fp-22905",
@@ -5539,7 +5830,8 @@
       "ownership": 3.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
-      "superflexRank": 309
+      "superflexRank": 310,
+      "superflexTier": 11
     },
     {
       "id": "fp-24370",
@@ -5557,7 +5849,8 @@
       "byeWeek": 6,
       "ownership": 0.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 373
+      "superflexRank": 378,
+      "superflexTier": 12
     },
     {
       "id": "fp-26212",
@@ -5576,7 +5869,8 @@
       "ownership": 1.1,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 265
+      "superflexRank": 266,
+      "superflexTier": 10
     },
     {
       "id": "fp-19302",
@@ -5595,7 +5889,8 @@
       "ownership": 6.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
-      "superflexRank": 268
+      "superflexRank": 268,
+      "superflexTier": 10
     },
     {
       "id": "fp-23837",
@@ -5614,7 +5909,8 @@
       "ownership": 1.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.5,
-      "superflexRank": 303
+      "superflexRank": 307,
+      "superflexTier": 11
     },
     {
       "id": "fp-25977",
@@ -5633,7 +5929,8 @@
       "ownership": 2.8,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
-      "superflexRank": 220
+      "superflexRank": 223,
+      "superflexTier": 9
     },
     {
       "id": "fp-15665",
@@ -5652,7 +5949,8 @@
       "ownership": 0.8,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 407
+      "superflexRank": 381,
+      "superflexTier": 12
     },
     {
       "id": "fp-22895",
@@ -5671,7 +5969,8 @@
       "ownership": 1.8,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
-      "superflexRank": 321
+      "superflexRank": 323,
+      "superflexTier": 11
     },
     {
       "id": "fp-25430",
@@ -5689,7 +5988,8 @@
       "byeWeek": 8,
       "ownership": 6.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 209
+      "superflexRank": 210,
+      "superflexTier": 9
     },
     {
       "id": "fp-26328",
@@ -5708,7 +6008,8 @@
       "ownership": 1.1,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
-      "superflexRank": 290
+      "superflexRank": 287,
+      "superflexTier": 11
     },
     {
       "id": "fp-25332",
@@ -5727,7 +6028,8 @@
       "ownership": 0.8,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 325
+      "superflexRank": 322,
+      "superflexTier": 11
     },
     {
       "id": "fp-24371",
@@ -5746,7 +6048,8 @@
       "ownership": 2.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
-      "superflexRank": 272
+      "superflexRank": 271,
+      "superflexTier": 10
     },
     {
       "id": "fp-28154",
@@ -5764,7 +6067,8 @@
       "byeWeek": 11,
       "ownership": 5.1,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 316
+      "superflexRank": 316,
+      "superflexTier": 11
     },
     {
       "id": "fp-28079",
@@ -5782,7 +6086,8 @@
       "byeWeek": 10,
       "ownership": 11,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 319
+      "superflexRank": 317,
+      "superflexTier": 11
     },
     {
       "id": "fp-27259",
@@ -5801,7 +6106,8 @@
       "ownership": 3.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 263
+      "superflexRank": 262,
+      "superflexTier": 10
     },
     {
       "id": "fp-13891",
@@ -5820,7 +6126,8 @@
       "ownership": 3.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 436
+      "superflexRank": 438,
+      "superflexTier": 13
     },
     {
       "id": "fp-27487",
@@ -5839,7 +6146,8 @@
       "ownership": 5.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 264
+      "superflexRank": 265,
+      "superflexTier": 10
     },
     {
       "id": "fp-27147",
@@ -5858,7 +6166,8 @@
       "ownership": 1.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.8,
-      "superflexRank": 288
+      "superflexRank": 288,
+      "superflexTier": 11
     },
     {
       "id": "fp-27288",
@@ -5877,7 +6186,8 @@
       "ownership": 1.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 312
+      "superflexRank": 312,
+      "superflexTier": 11
     },
     {
       "id": "fp-27144",
@@ -5896,7 +6206,8 @@
       "ownership": 1,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
-      "superflexRank": 326
+      "superflexRank": 327,
+      "superflexTier": 11
     },
     {
       "id": "fp-18631",
@@ -5915,7 +6226,8 @@
       "ownership": 7.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.8,
-      "superflexRank": 305
+      "superflexRank": 303,
+      "superflexTier": 11
     },
     {
       "id": "fp-28125",
@@ -5933,7 +6245,8 @@
       "byeWeek": 11,
       "ownership": 1.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 348
+      "superflexRank": 347,
+      "superflexTier": 12
     },
     {
       "id": "fp-28896",
@@ -5952,7 +6265,8 @@
       "ownership": 1.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.8,
-      "superflexRank": 375
+      "superflexRank": 367,
+      "superflexTier": 12
     },
     {
       "id": "fp-19539",
@@ -5971,7 +6285,8 @@
       "ownership": 3.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
-      "superflexRank": 297
+      "superflexRank": 298,
+      "superflexTier": 11
     },
     {
       "id": "fp-15623",
@@ -5990,7 +6305,8 @@
       "ownership": 2.8,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 301
+      "superflexRank": 304,
+      "superflexTier": 11
     },
     {
       "id": "fp-27993",
@@ -6009,7 +6325,8 @@
       "ownership": 11.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 293
+      "superflexRank": 294,
+      "superflexTier": 11
     },
     {
       "id": "fp-22756",
@@ -6028,7 +6345,8 @@
       "ownership": 2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 214.5,
-      "superflexRank": 349
+      "superflexRank": 348,
+      "superflexTier": 12
     },
     {
       "id": "fp-25304",
@@ -6047,7 +6365,8 @@
       "ownership": 5.5,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.8,
-      "superflexRank": 304
+      "superflexRank": 299,
+      "superflexTier": 11
     },
     {
       "id": "fp-23018",
@@ -6066,7 +6385,8 @@
       "ownership": 9.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.8,
-      "superflexRank": 322
+      "superflexRank": 321,
+      "superflexTier": 11
     },
     {
       "id": "fp-20113",
@@ -6085,7 +6405,8 @@
       "ownership": 0.8,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 365
+      "superflexRank": 363,
+      "superflexTier": 12
     },
     {
       "id": "fp-24335",
@@ -6103,7 +6424,8 @@
       "byeWeek": 11,
       "ownership": 2.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 270
+      "superflexRank": 270,
+      "superflexTier": 10
     },
     {
       "id": "fp-26011",
@@ -6122,7 +6444,8 @@
       "ownership": 0.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
-      "superflexRank": 343
+      "superflexRank": 344,
+      "superflexTier": 12
     },
     {
       "id": "fp-23135",
@@ -6141,7 +6464,8 @@
       "ownership": 0.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 350
+      "superflexRank": 349,
+      "superflexTier": 12
     },
     {
       "id": "fp-16460",
@@ -6158,7 +6482,8 @@
       "maxRank": 263,
       "ownership": 3.8,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 363
+      "superflexRank": 370,
+      "superflexTier": 12
     },
     {
       "id": "fp-25287",
@@ -6177,7 +6502,8 @@
       "ownership": 1.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 285
+      "superflexRank": 284,
+      "superflexTier": 11
     },
     {
       "id": "fp-23739",
@@ -6196,7 +6522,8 @@
       "ownership": 2.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 289
+      "superflexRank": 289,
+      "superflexTier": 11
     },
     {
       "id": "fp-28141",
@@ -6214,7 +6541,8 @@
       "byeWeek": 14,
       "ownership": 0.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 422
+      "superflexRank": 423,
+      "superflexTier": 13
     },
     {
       "id": "fp-27093",
@@ -6232,7 +6560,8 @@
       "byeWeek": 13,
       "ownership": 2.1,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 333
+      "superflexRank": 333,
+      "superflexTier": 11
     },
     {
       "id": "fp-26012",
@@ -6250,7 +6579,8 @@
       "byeWeek": 13,
       "ownership": 1.5,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 398
+      "superflexRank": 376,
+      "superflexTier": 12
     },
     {
       "id": "fp-26037",
@@ -6268,7 +6598,8 @@
       "byeWeek": 6,
       "ownership": 1.5,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 377
+      "superflexRank": 369,
+      "superflexTier": 12
     },
     {
       "id": "fp-18585",
@@ -6287,7 +6618,8 @@
       "ownership": 1.5,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
-      "superflexRank": 360
+      "superflexRank": 350,
+      "superflexTier": 12
     },
     {
       "id": "fp-24360",
@@ -6306,7 +6638,8 @@
       "ownership": 5.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 259
+      "superflexRank": 258,
+      "superflexTier": 10
     },
     {
       "id": "fp-22930",
@@ -6324,7 +6657,8 @@
       "byeWeek": 10,
       "ownership": 1.1,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 281
+      "superflexRank": 281,
+      "superflexTier": 10
     },
     {
       "id": "fp-26329",
@@ -6343,7 +6677,8 @@
       "ownership": 0.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 324
+      "superflexRank": 325,
+      "superflexTier": 11
     },
     {
       "id": "fp-14104",
@@ -6361,7 +6696,8 @@
       "ownership": 1.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 358
+      "superflexRank": 361,
+      "superflexTier": 12
     },
     {
       "id": "fp-27449",
@@ -6380,7 +6716,8 @@
       "ownership": 0.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 287
+      "superflexRank": 293,
+      "superflexTier": 11
     },
     {
       "id": "fp-11689",
@@ -6398,7 +6735,8 @@
       "ownership": 1.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 357
+      "superflexRank": 355,
+      "superflexTier": 12
     },
     {
       "id": "fp-24347",
@@ -6417,7 +6755,8 @@
       "ownership": 11.1,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 370
+      "superflexRank": 362,
+      "superflexTier": 12
     },
     {
       "id": "fp-15581",
@@ -6436,7 +6775,8 @@
       "ownership": 1.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 345
+      "superflexRank": 351,
+      "superflexTier": 12
     },
     {
       "id": "fp-25393",
@@ -6455,7 +6795,8 @@
       "ownership": 1.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 266
+      "superflexRank": 267,
+      "superflexTier": 10
     },
     {
       "id": "fp-20114",
@@ -6474,7 +6815,8 @@
       "ownership": 0.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 474
+      "superflexRank": 478,
+      "superflexTier": 13
     },
     {
       "id": "fp-22921",
@@ -6492,7 +6834,8 @@
       "byeWeek": 7,
       "ownership": 3.4,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 261
+      "superflexRank": 261,
+      "superflexTier": 10
     },
     {
       "id": "fp-24238",
@@ -6511,7 +6854,8 @@
       "ownership": 3.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 346
+      "superflexRank": 340,
+      "superflexTier": 12
     },
     {
       "id": "fp-27469",
@@ -6530,7 +6874,8 @@
       "ownership": 0.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 391
+      "superflexRank": 395,
+      "superflexTier": 12
     },
     {
       "id": "fp-26310",
@@ -6549,7 +6894,8 @@
       "ownership": 1.5,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 328
+      "superflexRank": 331,
+      "superflexTier": 11
     },
     {
       "id": "fp-20156",
@@ -6568,7 +6914,8 @@
       "ownership": 7.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 371
+      "superflexRank": 364,
+      "superflexTier": 12
     },
     {
       "id": "fp-23119",
@@ -6587,7 +6934,8 @@
       "ownership": 0.8,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 361
+      "superflexRank": 366,
+      "superflexTier": 12
     },
     {
       "id": "fp-25267",
@@ -6606,7 +6954,8 @@
       "ownership": 0.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 385
+      "superflexRank": 389,
+      "superflexTier": 12
     },
     {
       "id": "fp-16420",
@@ -6624,7 +6973,8 @@
       "ownership": 10.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 284
+      "superflexRank": 286,
+      "superflexTier": 11
     },
     {
       "id": "fp-24351",
@@ -6643,7 +6993,8 @@
       "ownership": 0.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 313
+      "superflexRank": 318,
+      "superflexTier": 11
     },
     {
       "id": "fp-22795",
@@ -6662,7 +7013,8 @@
       "ownership": 0.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 335
+      "superflexRank": 336,
+      "superflexTier": 11
     },
     {
       "id": "fp-17508",
@@ -6680,7 +7032,8 @@
       "byeWeek": 13,
       "ownership": 0.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 414
+      "superflexRank": 416,
+      "superflexTier": 12
     },
     {
       "id": "fp-17246",
@@ -6697,7 +7050,8 @@
       "maxRank": 327,
       "ownership": 0.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 327
+      "superflexRank": 326,
+      "superflexTier": 11
     },
     {
       "id": "fp-25282",
@@ -6716,7 +7070,8 @@
       "ownership": 7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 323
+      "superflexRank": 324,
+      "superflexTier": 11
     },
     {
       "id": "fp-17527",
@@ -6735,7 +7090,8 @@
       "ownership": 2.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 318
+      "superflexRank": 319,
+      "superflexTier": 11
     },
     {
       "id": "fp-25983",
@@ -6754,7 +7110,8 @@
       "ownership": 0.8,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 336
+      "superflexRank": 339,
+      "superflexTier": 12
     },
     {
       "id": "fp-27138",
@@ -6773,7 +7130,8 @@
       "ownership": 0.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 215.9,
-      "superflexRank": 329
+      "superflexRank": 334,
+      "superflexTier": 11
     },
     {
       "id": "fp-25322",
@@ -6792,7 +7150,8 @@
       "ownership": 0.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 337
+      "superflexRank": 341,
+      "superflexTier": 12
     },
     {
       "id": "fp-9300",
@@ -6811,7 +7170,8 @@
       "ownership": 3.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 434
+      "superflexRank": 436,
+      "superflexTier": 13
     },
     {
       "id": "fp-27326",
@@ -6829,7 +7189,8 @@
       "byeWeek": 11,
       "ownership": 1.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 340
+      "superflexRank": 338,
+      "superflexTier": 12
     },
     {
       "id": "fp-25368",
@@ -6848,7 +7209,8 @@
       "ownership": 14.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 359
+      "superflexRank": 365,
+      "superflexTier": 12
     },
     {
       "id": "fp-22728",
@@ -6866,7 +7228,8 @@
       "byeWeek": 9,
       "ownership": 0.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 311
+      "superflexRank": 311,
+      "superflexTier": 11
     },
     {
       "id": "fp-28157",
@@ -6884,7 +7247,8 @@
       "byeWeek": 8,
       "ownership": 1.2,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 379
+      "superflexRank": 382,
+      "superflexTier": 12
     },
     {
       "id": "fp-17598",
@@ -6903,7 +7267,8 @@
       "ownership": 0.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 445
+      "superflexRank": 448,
+      "superflexTier": 13
     },
     {
       "id": "fp-25748",
@@ -6921,7 +7286,8 @@
       "byeWeek": 6,
       "ownership": 0.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 354
+      "superflexRank": 357,
+      "superflexTier": 12
     },
     {
       "id": "fp-27312",
@@ -6939,7 +7305,8 @@
       "byeWeek": 11,
       "ownership": 1.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 554
+      "superflexRank": 555,
+      "superflexTier": 14
     },
     {
       "id": "fp-25876",
@@ -6957,7 +7324,8 @@
       "byeWeek": 10,
       "ownership": 0.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 275
+      "superflexRank": 275,
+      "superflexTier": 10
     },
     {
       "id": "fp-11798",
@@ -6975,7 +7343,8 @@
       "byeWeek": 8,
       "ownership": 0.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 347
+      "superflexRank": 354,
+      "superflexTier": 12
     },
     {
       "id": "fp-18487",
@@ -6994,7 +7363,8 @@
       "ownership": 0.7,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
       "adp": 216,
-      "superflexRank": 368
+      "superflexRank": 374,
+      "superflexTier": 12
     },
     {
       "id": "fp-28168",
@@ -7012,7 +7382,8 @@
       "byeWeek": 13,
       "ownership": 2.6,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 448
+      "superflexRank": 451,
+      "superflexTier": 13
     },
     {
       "id": "fp-28427",
@@ -7030,7 +7401,8 @@
       "byeWeek": 7,
       "ownership": 0.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 390
+      "superflexRank": 394,
+      "superflexTier": 12
     },
     {
       "id": "fp-28163",
@@ -7048,7 +7420,8 @@
       "byeWeek": 6,
       "ownership": 0,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 555
+      "superflexRank": 459,
+      "superflexTier": 13
     },
     {
       "id": "fp-27499",
@@ -7066,7 +7439,8 @@
       "byeWeek": 7,
       "ownership": 1.9,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 399
+      "superflexRank": 403,
+      "superflexTier": 12
     },
     {
       "id": "fp-28403",
@@ -7084,7 +7458,8 @@
       "byeWeek": 6,
       "ownership": 5.3,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 411
+      "superflexRank": 386,
+      "superflexTier": 12
     },
     {
       "id": "fp-27501",
@@ -7102,7 +7477,8 @@
       "byeWeek": 6,
       "ownership": 5.8,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 454
+      "superflexRank": 457,
+      "superflexTier": 13
     },
     {
       "id": "fp-28165",
@@ -7120,7 +7496,8 @@
       "byeWeek": 10,
       "ownership": 0,
       "lastUpdated": "2026-08-05T21:01:29.000Z",
-      "superflexRank": 557
+      "superflexRank": 557,
+      "superflexTier": 14
     }
   ],
   "rankingSource": {
@@ -7132,19 +7509,19 @@
   "superflexSource": {
     "provider": "FantasyPros half PPR Superflex consensus",
     "url": "https://www.fantasypros.com/nfl/rankings/half-point-ppr-superflex-cheatsheets.php",
-    "asOf": "2026-08-07T16:48:33.000Z",
+    "asOf": "2026-08-07T22:43:46.000Z",
     "matchedCount": 377
   },
   "adpSource": {
     "provider": "Underdog ADP via Hayden Winks",
     "url": "https://pprrankings.com/rankings",
-    "asOf": "2026-08-07T16:42:14.897Z",
+    "asOf": "2026-08-07T19:01:35.027Z",
     "matchedCount": 339
   },
   "scheduleSource": {
     "provider": "ESPN NFL schedule",
     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?dates=2026&seasontype=2&week=17&limit=100",
-    "asOf": null,
+    "asOf": "2026-08-07T22:56:45.694Z",
     "matchedCount": 32
   },
   "week17Opponents": {

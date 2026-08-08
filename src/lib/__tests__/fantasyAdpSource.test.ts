@@ -69,4 +69,29 @@ describe("parseFantasyAdpPayload", () => {
     expect(board.asOf).toBeNull();
     expect(board.sampleSize).toBeNull();
   });
+
+  it("validates provider status, scoring, team count, and sample metadata in strict mode", () => {
+    const board = parseFantasyAdpPayload(ADP_SOURCE_PAYLOAD_FIXTURE, {
+      ...PARSE_OPTIONS,
+      strict: true,
+      expectedTeams: 12,
+    });
+
+    expect(board.entries).toHaveLength(6);
+    expect(() =>
+      parseFantasyAdpPayload(
+        { ...ADP_SOURCE_PAYLOAD_FIXTURE, status: "Error" },
+        { ...PARSE_OPTIONS, strict: true, expectedTeams: 12 }
+      )
+    ).toThrow(/status/i);
+    expect(() =>
+      parseFantasyAdpPayload(
+        {
+          ...ADP_SOURCE_PAYLOAD_FIXTURE,
+          meta: { ...ADP_SOURCE_PAYLOAD_FIXTURE.meta, teams: 10 },
+        },
+        { ...PARSE_OPTIONS, strict: true, expectedTeams: 12 }
+      )
+    ).toThrow(/10 teams, expected 12/);
+  });
 });

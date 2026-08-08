@@ -10,7 +10,7 @@ const COMPONENT_LABELS: Record<keyof BestBallRecommendation["components"], strin
   tierScarcity: "Tier cliff",
   byeRisk: "Bye overlap",
   concentrationRisk: "Team concentration",
-  spikeWeek: "Weekly variance proxy",
+  spikeWeek: "Weekly projection spread",
 };
 
 function formatScore(value: number): string {
@@ -22,13 +22,19 @@ export function BestBallRecommendations({
   recommendations,
   isUserPick,
   adpAvailable,
+  sourceAvailable,
   onDraftPlayer,
 }: {
   recommendations: readonly BestBallRecommendation[];
   isUserPick: boolean;
   adpAvailable: boolean;
+  sourceAvailable: boolean;
   onDraftPlayer: (player: Player) => void;
 }) {
+  const description = adpAvailable
+    ? "The score starts with current standard Underdog ADP, where one point equals one market pick, then applies at most seven points of roster and correlation adjustments in this contest. PPR best ball ECR is a separate reference. This is not a projected win rate."
+    : "This contest has no matching market ADP in the snapshot, so the source consensus rank sets the order and market value adds no score. This is not a projected win rate.";
+
   return (
     <section className="home-card p-5 sm:p-6" aria-labelledby="best-ball-recommendations-heading">
       <div className="flex flex-wrap items-end justify-between gap-3">
@@ -39,13 +45,23 @@ export function BestBallRecommendations({
           </h2>
         </div>
         <p className="max-w-[34ch] text-xs leading-5" style={{ color: "var(--home-ink-muted)" }}>
-          {adpAvailable
-            ? "The board starts with current standard Underdog ADP. The PPR best ball expert consensus ranking, or ECR, is shown as a separate reference. These scores compare the players available now and are not projected win rates."
-            : "The source rank is the Superflex consensus order. This snapshot has no separate Superflex ADP, so ADP contributes no score. These scores compare the players available now and are not projected win rates."}
+          {description}
         </p>
       </div>
 
-      {recommendations.length > 0 ? (
+      {!sourceAvailable ? (
+        <p className="mt-4 text-sm leading-6" style={{ color: "var(--home-negative)" }}>
+          Exact player cards are unavailable because the ranking source is more than four days old
+          during draft season. The room can still log picks, but it will not present an old board as
+          a current recommendation.
+        </p>
+      ) : !isUserPick ? (
+        <p className="mt-4 text-sm leading-6" style={{ color: "var(--home-ink-muted)" }}>
+          Exact player cards stay hidden until your turn because this model does not estimate the
+          chance that each player survives the intervening picks. Use the board and roster targets
+          to plan the position or tier you want next.
+        </p>
+      ) : recommendations.length > 0 ? (
         <div className="mt-4 grid gap-3 xl:grid-cols-3">
           {recommendations.map((recommendation, index) => {
             const componentScores = Object.entries(recommendation.components) as Array<
@@ -74,7 +90,7 @@ export function BestBallRecommendations({
                       {recommendation.player.position} · {recommendation.player.team}
                       {adpAvailable
                         ? ` · ADP ${recommendation.player.adp?.toFixed(1) ?? "not available"}`
-                        : " · Superflex ADP not sourced"}
+                        : " · Matching ADP not sourced"}
                     </p>
                   </div>
                   <span
@@ -96,7 +112,7 @@ export function BestBallRecommendations({
                       }}
                     >
                       {component === "adpValue" && !adpAvailable
-                        ? "Superflex ADP"
+                        ? "Market ADP"
                         : COMPONENT_LABELS[component]}{" "}
                       {formatScore(score)}
                     </span>

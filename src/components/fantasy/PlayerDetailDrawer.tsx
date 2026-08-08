@@ -14,6 +14,7 @@ import {
   getConsensusSpread,
   getPositionTone,
   getValueVsAdp,
+  hasReliableAdpSample,
 } from "@/lib/fantasyUtils";
 import type { Player } from "@/types";
 
@@ -280,6 +281,18 @@ export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onCl
                     Market ADP
                   </p>
                   <p className="text-base font-semibold tabular-nums">{formatAdp(player.adp)}</p>
+                  {(Number.isFinite(player.adpTimesDrafted) ||
+                    Number.isFinite(player.adpStandardDeviation)) && (
+                    <p className="mt-0.5 text-2xs leading-4" style={{ color: "var(--home-ink-muted)" }}>
+                      {Number.isFinite(player.adpTimesDrafted)
+                        ? `${Math.round(player.adpTimesDrafted as number)} mock selections`
+                        : "Sample count unavailable"}
+                      {Number.isFinite(player.adpStandardDeviation)
+                        ? ` · ${Number(player.adpStandardDeviation).toFixed(1)} pick standard deviation`
+                        : ""}
+                      {!hasReliableAdpSample(player) ? " · Early sample, so no value or reach label" : ""}
+                    </p>
+                  )}
                 </div>
                 {valueSignal?.signal && (
                   <span
