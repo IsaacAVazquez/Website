@@ -32,10 +32,16 @@ const snapshot = {
 
 describe("refresh-polling scheduled function", () => {
   beforeEach(() => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date("2026-07-20T12:45:00.000Z"));
     jest.clearAllMocks();
     mockBuild.mockResolvedValue(snapshot);
     mockWrite.mockResolvedValue(undefined);
     mockPurge.mockResolvedValue(undefined);
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
   });
 
   it("runs every six hours", () => {
@@ -55,6 +61,18 @@ describe("refresh-polling scheduled function", () => {
     mockBuild.mockRejectedValue(new Error("too little usable data"));
 
     await expect(handler()).rejects.toThrow("too little usable data");
+    expect(mockWrite).not.toHaveBeenCalled();
+    expect(mockPurge).not.toHaveBeenCalled();
+  });
+
+  it("does not refresh savedAt when VoteHub returns a full but stale table", async () => {
+    mockBuild.mockResolvedValue({
+      ...snapshot,
+      generatedAt: "2026-07-20T12:45:00.000Z",
+      sourceAsOf: "2026-06-01",
+    });
+
+    await expect(handler()).rejects.toThrow(/source is stale or invalid/i);
     expect(mockWrite).not.toHaveBeenCalled();
     expect(mockPurge).not.toHaveBeenCalled();
   });

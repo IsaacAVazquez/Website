@@ -1,5 +1,6 @@
 import { pollingSnapshot } from "@/data/pollingSnapshot";
 import { POLLING_BLOB_KEY } from "@/lib/pollingData";
+import { isPollingSnapshotSourceFresh } from "@/lib/pollingFreshness";
 import { readSnapshotBlob } from "@/lib/snapshotBlobStore";
 import type { PollingSnapshot } from "@/types/polling";
 
@@ -28,10 +29,12 @@ export async function getPollingSnapshot(): Promise<PollingSnapshot> {
     BLOB_MAX_AGE_MS
   )
     .then((blob) => {
-      // A malformed or empty blob must never blank the dashboard.
+      // A recently written blob can still contain frozen upstream data. Require
+      // both structural integrity and source freshness before serving it.
       const snapshot =
         blob?.value?.approvalPolls?.length &&
-        blob.value.genericBallotPolls?.length
+        blob.value.genericBallotPolls?.length &&
+        isPollingSnapshotSourceFresh(blob.value)
           ? blob.value
           : pollingSnapshot;
       cache = { snapshot, expiresAt: Date.now() + CACHE_TTL_MS };

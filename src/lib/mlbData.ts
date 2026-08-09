@@ -410,9 +410,11 @@ export function isValidMlbTeamId(teamId: string): boolean {
 }
 
 export function createEmptyMlbSnapshot(): MlbSnapshot {
+  const generatedAt = new Date().toISOString();
   return {
     season: getCurrentSeason(),
-    updatedAt: new Date().toISOString().slice(0, 10),
+    generatedAt,
+    updatedAt: generatedAt.slice(0, 10),
     sourceLabel: "MLB Stats API",
     sourceUrls: {
       standings: `${MLB_STATS_BASE_URL}/standings`,
@@ -669,9 +671,11 @@ export async function buildMlbLiveSummaryData(
       .slice(0, RECENT_GAME_LIMIT);
   }
 
+  const generatedAt = new Date().toISOString();
   return {
     ...fallback,
-    updatedAt: new Date().toISOString().slice(0, 10),
+    generatedAt,
+    updatedAt: generatedAt.slice(0, 10),
     recentGames,
     upcomingGames,
   };
@@ -778,6 +782,7 @@ export async function buildMlbSnapshot(options?: { skipTeamSnapshots?: boolean }
 
   return {
     season: summary.season,
+    generatedAt,
     updatedAt: generatedAt.slice(0, 10),
     sourceLabel: "MLB Stats API",
     sourceUrls: {

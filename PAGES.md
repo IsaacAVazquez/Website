@@ -15,7 +15,7 @@ Current route inventory and page ownership for the live app.
 |------|------|-------|
 | `/` | `src/app/page.tsx` | Composes hero, featured projects, product-thinking preview, and homepage contact section |
 | `/about` | `src/app/about/page.tsx` | Renders `About` tabbed client UI |
-| `/portfolio` | `src/app/portfolio/page.tsx` | Server shell passing the project index to `Catalog97Portfolio`, which adds a client-side category filter over `classifyToolSlug` |
+| `/portfolio` | `src/app/portfolio/page.tsx` | Server shell passing the project index to `Catalog97Portfolio`, which adds client-side search, sorting, and category filters over `classifyToolSlug` |
 | `/portfolio/[slug]` | `src/app/portfolio/[slug]/page.tsx` | Project detail page |
 | `/resume` | `src/app/resume/page.tsx` | Resume route with client-rendered resume shell |
 | `/contact` | `src/app/contact/page.tsx` | Contact page using `ContactContent` |
@@ -25,7 +25,7 @@ Current route inventory and page ownership for the live app.
 
 | Route | File | Notes |
 |------|------|-------|
-| `/writing` | `src/app/writing/page.tsx` | Lists posts from `content/blog/` |
+| `/writing` | `src/app/writing/page.tsx` | Lists posts from `content/blog/` with search, sorting, curated filters, and canonical topic links |
 | `/writing/[slug]` | `src/app/writing/[slug]/page.tsx` | Server-rendered article page |
 
 ### Investments, sports, and standalone data tools

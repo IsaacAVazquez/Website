@@ -47,6 +47,7 @@ export function createEmptyLaLigaSummarySnapshot(): LaLigaSummarySnapshot {
   return {
     season: laLigaSnapshot.season,
     matchday: 0,
+    generatedAt: laLigaSnapshot.generatedAt,
     updatedAt: laLigaSnapshot.updatedAt,
     sourceLabel: laLigaSnapshot.sourceLabel,
     sourceUrls: laLigaSnapshot.sourceUrls,

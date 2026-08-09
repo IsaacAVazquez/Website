@@ -42,6 +42,18 @@ export function useCompareTray() {
   );
 
   const clear = useCallback(() => commit(() => []), [commit]);
+  const replace = useCallback((ids: string[]) => commit(() => ids), [commit]);
 
-  return { compareIds, compareSet, inCompare, isFull, limit: FANTASY_COMPARE_LIMIT, toggle, remove, clear, persistenceStatus };
+  return {
+    compareIds,
+    compareSet,
+    inCompare,
+    isFull,
+    limit: FANTASY_COMPARE_LIMIT,
+    toggle,
+    remove,
+    clear,
+    replace,
+    persistenceStatus,
+  };
 }

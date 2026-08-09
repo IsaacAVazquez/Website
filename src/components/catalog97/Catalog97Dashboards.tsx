@@ -153,7 +153,7 @@ export function Catalog97Dashboards({
       >
         <div
           className="c97-shell"
-          role="tablist"
+          role="group"
           aria-label="Filter instruments by category"
           /*
            * Column gap sp-3, row gap sp-5, and the row wraps. All three are
@@ -193,8 +193,7 @@ export function Catalog97Dashboards({
               <button
                 key={tab.id}
                 type="button"
-                role="tab"
-                aria-selected={selected}
+                aria-pressed={selected}
                 onClick={() => setActive(tab.id)}
                 className="c97-microlink"
                 style={{

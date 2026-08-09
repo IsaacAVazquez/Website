@@ -139,6 +139,49 @@ describe("StaticHeader", () => {
     expect(primaryNav?.querySelector("button")).toBeNull();
   });
 
+  it("does not run hidden Working Instrument shortcuts on Catalog 97 routes", async () => {
+    mockUsePathname.mockReturnValue("/");
+
+    await act(async () => {
+      root.render(<StaticHeader />);
+    });
+
+    const slash = new KeyboardEvent("keydown", {
+      key: "/",
+      bubbles: true,
+      cancelable: true,
+    });
+    window.dispatchEvent(slash);
+
+    expect(container.querySelector("header")).toBeNull();
+    expect(slash.defaultPrevented).toBe(false);
+  });
+
+  it("releases the mobile scroll lock when navigation enters Catalog 97", async () => {
+    mockUsePathname.mockReturnValue("/investments");
+
+    await act(async () => {
+      root.render(<StaticHeader />);
+    });
+
+    const toggleButton = container.querySelector(
+      'button[aria-controls="mobile-menu"]'
+    ) as HTMLButtonElement | null;
+
+    await act(async () => {
+      toggleButton?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    });
+    expect(document.body.style.overflow).toBe("hidden");
+
+    mockUsePathname.mockReturnValue("/");
+    await act(async () => {
+      root.render(<StaticHeader />);
+    });
+
+    expect(document.body.style.overflow).toBe("");
+    expect(container.querySelector("header")).toBeNull();
+  });
+
   it("opens the search dropdown from the header search button", async () => {
     await act(async () => {
       root.render(<StaticHeader />);

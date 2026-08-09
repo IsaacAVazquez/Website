@@ -4,6 +4,7 @@
 jest.mock("@/data/mlbSnapshot", () => ({
   mlbSnapshot: {
     season: "2026",
+    generatedAt: "2026-07-19T12:00:00.000Z",
     updatedAt: "2026-07-19",
     sourceLabel: "MLB Stats API",
     sourceUrls: { standings: "standings", schedule: "schedule", leaders: "leaders" },
@@ -32,6 +33,7 @@ const mockBuildLive = buildMlbLiveSummaryData as jest.MockedFunction<
 function liveSummaryFixture(): MlbSummarySnapshot {
   return {
     season: "2026",
+    generatedAt: "2026-07-20T12:00:00.000Z",
     updatedAt: "2026-07-20",
     sourceLabel: "MLB Stats API",
     sourceUrls: { standings: "standings", schedule: "schedule", leaders: "leaders" },

@@ -4,6 +4,7 @@ import {
   buildPollingSnapshotData,
   POLLING_BLOB_KEY,
 } from "../../src/lib/pollingData";
+import { assertPollingSnapshotSourceFresh } from "../../src/lib/pollingFreshness";
 import { writeSnapshotBlob } from "../../src/lib/snapshotBlobStore";
 
 // Six-hour VoteHub refresh through the blob lane (see the lane description in
@@ -13,6 +14,9 @@ import { writeSnapshotBlob } from "../../src/lib/snapshotBlobStore";
 // (or the committed seed) keeps serving.
 export default async () => {
   const snapshot = await buildPollingSnapshotData();
+  // Blob recency cannot substitute for source recency. VoteHub can return a
+  // full but frozen table, so reject it before a new savedAt masks the outage.
+  assertPollingSnapshotSourceFresh(snapshot);
   await writeSnapshotBlob(POLLING_BLOB_KEY, snapshot);
 
   try {

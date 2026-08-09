@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Catalog97Shell } from "./Catalog97Shell";
 import { Catalog97Slot } from "./Catalog97Primitives";
 import type { BlogPostPreview } from "@/lib/blog";
+import { BLOG_TOPIC_PAGES } from "@/lib/blog-config";
 
 interface SectionSummary {
   id: string;
@@ -28,6 +29,7 @@ const ALL = "all";
 // using the same five-minute cut the page uses for its totals.
 const NOTES = "notes";
 const ESSAYS = "essays";
+type SortMode = "newest" | "shortest" | "longest";
 
 /** The two flat fields the design alternates across the featured pair. */
 const FEATURED_FIELDS = ["tobacco", "stone"] as const;
@@ -100,6 +102,8 @@ export function Catalog97Writing({
   const archivePageSize = 30;
   const [active, setActive] = useState<string>(ALL);
   const [archiveLimit, setArchiveLimit] = useState(archivePageSize);
+  const [query, setQuery] = useState("");
+  const [sort, setSort] = useState<SortMode>("newest");
 
   const tabs = useMemo(
     () => [
@@ -113,17 +117,46 @@ export function Catalog97Writing({
   );
 
   const filtered = useMemo(() => {
-    if (active === ALL) return posts;
-    if (active === NOTES) {
-      return posts.filter((post) => readingMinutes(post.readingTime) <= 5);
+    let matches: BlogPostPreview[];
+    if (active === ALL) {
+      matches = posts;
+    } else if (active === NOTES) {
+      matches = posts.filter((post) => readingMinutes(post.readingTime) <= 5);
+    } else if (active === ESSAYS) {
+      matches = posts.filter((post) => readingMinutes(post.readingTime) > 5);
+    } else {
+      matches = posts.filter(
+        (post) => post.cluster === active || post.archiveBucket === active,
+      );
     }
-    if (active === ESSAYS) {
-      return posts.filter((post) => readingMinutes(post.readingTime) > 5);
+
+    const tokens = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    if (tokens.length > 0) {
+      matches = matches.filter((post) => {
+        const searchable = [
+          post.title,
+          post.excerpt,
+          post.category,
+          post.cluster ?? "",
+          post.archiveBucket ?? "",
+          ...post.tags,
+        ]
+          .join(" ")
+          .toLowerCase();
+        return tokens.every((token) => searchable.includes(token));
+      });
     }
-    return posts.filter(
-      (post) => post.cluster === active || post.archiveBucket === active,
-    );
-  }, [posts, active]);
+
+    return [...matches].sort((left, right) => {
+      if (sort === "shortest") {
+        return readingMinutes(left.readingTime) - readingMinutes(right.readingTime);
+      }
+      if (sort === "longest") {
+        return readingMinutes(right.readingTime) - readingMinutes(left.readingTime);
+      }
+      return right.publishedAt.localeCompare(left.publishedAt);
+    });
+  }, [posts, active, query, sort]);
 
   const featured = filtered.slice(0, 2);
   const archive = filtered.slice(2);
@@ -157,52 +190,107 @@ export function Catalog97Writing({
         data-c97-surface="paper"
         style={{ paddingBottom: "var(--c97-sp-4)" }}
       >
-        <div
-          className="c97-shell"
-          role="tablist"
-          aria-label="Filter articles"
-          /*
-            Row gap sp-5, not sp-3. `.c97-microlink` hit boxes are 50px tall,
-            and sp-3 clamps to 22px on a phone, which puts wrapped rows 39px
-            apart and overlaps them. This list is the longest of the three
-            filter rows, so it wraps at every width. Keep the two axes separate.
-          */
-          style={{
-            display: "flex",
-            columnGap: "var(--c97-sp-3)",
-            rowGap: "var(--c97-sp-5)",
-            flexWrap: "wrap",
-          }}
-        >
-          {tabs.map((tab) => {
-            const selected = tab.id === active;
-            return (
-              <button
-                key={tab.id}
-                type="button"
-                role="tab"
-                aria-selected={selected}
-                onClick={() => {
-                  setActive(tab.id);
-                  // A new filter is a new list, so it starts at the first page.
+        <div className="c97-shell" style={{ display: "grid", gap: "var(--c97-sp-3)" }}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,240px),1fr))",
+              gap: "var(--c97-sp-2)",
+              alignItems: "end",
+            }}
+          >
+            <label style={{ display: "grid", gap: "var(--c97-sp-1)" }}>
+              <span className="c97-kicker">Search writing</span>
+              <input
+                type="search"
+                value={query}
+                onChange={(event) => {
+                  setQuery(event.target.value);
                   setArchiveLimit(archivePageSize);
                 }}
-                className="c97-microlink"
+                placeholder="Search writing"
                 style={{
-                  background: "none",
-                  border: 0,
-                  cursor: "pointer",
-                  display: "inline-flex",
-                  alignItems: "baseline",
-                  gap: "var(--c97-sp-1)",
-                  color: selected ? "var(--c97-ink)" : "var(--c97-label)",
+                  minHeight: 48,
+                  width: "100%",
+                  border: "1px solid var(--c97-rule)",
+                  borderRadius: 0,
+                  background: "var(--c97-surface)",
+                  color: "var(--c97-ink)",
+                  padding: "0 var(--c97-sp-2)",
+                  font: "inherit",
+                }}
+              />
+            </label>
+            <label style={{ display: "grid", gap: "var(--c97-sp-1)" }}>
+              <span className="c97-kicker">Sort writing</span>
+              <select
+                value={sort}
+                onChange={(event) => {
+                  setSort(event.target.value as SortMode);
+                  setArchiveLimit(archivePageSize);
+                }}
+                style={{
+                  minHeight: 48,
+                  width: "100%",
+                  border: "1px solid var(--c97-rule)",
+                  borderRadius: 0,
+                  background: "var(--c97-surface)",
+                  color: "var(--c97-ink)",
+                  padding: "0 var(--c97-sp-2)",
+                  font: "inherit",
                 }}
               >
-                <span>{tab.label}</span>
-                <span className="c97-tabular">{tab.count}</span>
-              </button>
-            );
-          })}
+                <option value="newest">Newest first</option>
+                <option value="shortest">Shortest first</option>
+                <option value="longest">Longest first</option>
+              </select>
+            </label>
+          </div>
+          <div
+            role="group"
+            aria-label="Filter articles"
+            /*
+              Row gap sp-5, not sp-3. `.c97-microlink` hit boxes are 50px tall,
+              and sp-3 clamps to 22px on a phone, which puts wrapped rows 39px
+              apart and overlaps them. This list is the longest of the three
+              filter rows, so it wraps at every width. Keep the two axes separate.
+            */
+            style={{
+              display: "flex",
+              columnGap: "var(--c97-sp-3)",
+              rowGap: "var(--c97-sp-5)",
+              flexWrap: "wrap",
+            }}
+          >
+            {tabs.map((tab) => {
+              const selected = tab.id === active;
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  aria-pressed={selected}
+                  onClick={() => {
+                    setActive(tab.id);
+                    // A new filter is a new list, so it starts at the first page.
+                    setArchiveLimit(archivePageSize);
+                  }}
+                  className="c97-microlink"
+                  style={{
+                    background: "none",
+                    border: 0,
+                    cursor: "pointer",
+                    display: "inline-flex",
+                    alignItems: "baseline",
+                    gap: "var(--c97-sp-1)",
+                    color: selected ? "var(--c97-ink)" : "var(--c97-label)",
+                  }}
+                >
+                  <span>{tab.label}</span>
+                  <span className="c97-tabular">{tab.count}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
       </section>
 
@@ -368,7 +456,9 @@ export function Catalog97Writing({
                 maxWidth: "var(--c97-measure-body)",
               }}
             >
-              Everything under this filter is already above.
+              {filtered.length === 0
+                ? "No writing matches that search."
+                : "Everything under this filter is already above."}
             </p>
           )}
 
@@ -399,6 +489,36 @@ export function Catalog97Writing({
               <span className="c97-tabular">{remainingArchive}</span>
             </button>
           ) : null}
+        </div>
+      </section>
+
+      <section className="c97-band" data-c97-surface="bone">
+        <div className="c97-shell">
+          <p className="c97-kicker">Browse by topic</p>
+          <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>
+            Follow one thread through the archive.
+          </h2>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,240px),1fr))",
+              columnGap: "var(--c97-sp-5)",
+              rowGap: "var(--c97-sp-2)",
+              marginTop: "var(--c97-sp-4)",
+            }}
+          >
+            {BLOG_TOPIC_PAGES.map((topic) => (
+              <Link
+                key={topic.slug}
+                href={`/writing/topics/${topic.slug}`}
+                className="c97-row c97-microlink"
+                style={{ color: "var(--c97-ink)" }}
+              >
+                <span>{topic.label}</span>
+                <span aria-hidden="true">↗</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 

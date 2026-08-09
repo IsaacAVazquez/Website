@@ -111,6 +111,9 @@ export interface MlbSnapshotSourceUrls {
 
 export interface MlbSnapshot {
   season: string;
+  /** Full ISO timestamp for freshness checks and publication metadata. */
+  generatedAt: string;
+  /** Calendar date retained for user-facing date labels. */
   updatedAt: string;
   sourceLabel: string;
   sourceUrls: MlbSnapshotSourceUrls;

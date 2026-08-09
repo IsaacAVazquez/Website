@@ -1,6 +1,8 @@
 import React from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { FantasyFootballClient } from "../fantasy-football-client";
+import { resetBrowserStorageMemory } from "@/lib/browserStorage";
+import { FANTASY_COMPARE_STORAGE_KEY } from "@/lib/fantasyLocal";
 
 const mockPush = jest.fn();
 const mockReplace = jest.fn();
@@ -82,6 +84,8 @@ function buildSliceMetadataMap() {
 
 describe("FantasyFootballClient", () => {
   beforeEach(() => {
+    window.localStorage.clear();
+    resetBrowserStorageMemory();
     currentSearchParams = new URLSearchParams("position=rb&scoring=ppr");
     mockPush.mockReset();
     mockReplace.mockReset();
@@ -285,6 +289,207 @@ describe("FantasyFootballClient", () => {
     // No adpSource in the snapshot means the ADP column stays hidden.
     expect(screen.queryByText(/^ADP$/)).not.toBeInTheDocument();
     expect(screen.queryByText(/^Proj\. Pts$/)).not.toBeInTheDocument();
+  });
+
+  it("uses the active position slice when persisted players open in compare", () => {
+    currentSearchParams = new URLSearchParams("position=qb&scoring=ppr");
+    const currentSourceDate = new Date().toISOString();
+    const overallPlayers = [
+      {
+        id: "qb-1",
+        name: "Josh Allen",
+        team: "BUF",
+        position: "QB" as const,
+        averageRank: 26,
+        rankEcr: 26,
+        rankAverage: 26,
+        standardDeviation: 1,
+        tier: 4,
+        positionRank: 1,
+        minRank: 24,
+        maxRank: 29,
+      },
+      {
+        id: "qb-2",
+        name: "Lamar Jackson",
+        team: "BAL",
+        position: "QB" as const,
+        averageRank: 31,
+        rankEcr: 31,
+        rankAverage: 31,
+        standardDeviation: 1,
+        tier: 5,
+        positionRank: 2,
+        minRank: 29,
+        maxRank: 34,
+      },
+    ];
+    const qbPlayers = [
+      { ...overallPlayers[0], averageRank: 1, rankEcr: 1, rankAverage: 1.2, tier: 1, minRank: 1, maxRank: 3 },
+      { ...overallPlayers[1], averageRank: 2, rankEcr: 2, rankAverage: 1.8, tier: 2, minRank: 1, maxRank: 4 },
+    ];
+    const positions = {
+      QB: qbPlayers,
+      RB: [],
+      WR: [],
+      TE: [],
+      K: [],
+      DST: [],
+      FLEX: [],
+    };
+    const sliceMetadata = {
+      ...buildSliceMetadataMap(),
+      qb: {
+        available: true,
+        sourceKind: "shared_position_consensus" as const,
+        rangeKind: "position" as const,
+        playerCount: 2,
+        updatedAt: currentSourceDate,
+      },
+    };
+
+    window.localStorage.setItem(
+      FANTASY_COMPARE_STORAGE_KEY,
+      JSON.stringify(["qb-1", "qb-2"])
+    );
+    mockUseFantasySnapshot.mockReturnValue({
+      players: qbPlayers,
+      snapshot: {
+        schemaVersion: 7,
+        season: 2026,
+        week: 0,
+        generatedAt: currentSourceDate,
+        upstreamUpdatedAt: currentSourceDate,
+        scoringFormat: "PPR",
+        source: "snapshot",
+        adpSource: null,
+        positions,
+        overall: overallPlayers,
+        sliceMetadata,
+      },
+      metadata: {
+        season: 2026,
+        week: 0,
+        generatedAt: currentSourceDate,
+        upstreamUpdatedAt: currentSourceDate,
+        scoringFormat: "PPR",
+        source: "snapshot",
+        position: "qb",
+        playerCount: 2,
+        slice: sliceMetadata.qb,
+        slices: sliceMetadata,
+        adpSource: null,
+      },
+      sliceMetadata: sliceMetadata.qb,
+      sliceMetadataMap: sliceMetadata,
+      isLoading: false,
+      error: null,
+    });
+
+    render(
+      <FantasyFootballClient
+        initialState={{ position: "qb", scoring: "ppr", view: "list" }}
+      />
+    );
+    fireEvent.click(screen.getByRole("button", { name: "Compare 2" }));
+
+    const tierRow = screen.getByRole("rowheader", { name: "Tier" }).closest("tr");
+    expect(tierRow).not.toBeNull();
+    const tierCells = within(tierRow as HTMLTableRowElement).getAllByRole("cell");
+    expect(tierCells[0]).toHaveTextContent("1");
+    expect(tierCells[0]).not.toHaveTextContent("4");
+    expect(tierCells[1]).toHaveTextContent("2");
+    expect(tierCells[1]).not.toHaveTextContent("5");
+  });
+
+  it("retains unresolved compare IDs while any snapshot slice is unavailable", () => {
+    currentSearchParams = new URLSearchParams("position=qb&scoring=ppr");
+    const currentSourceDate = new Date().toISOString();
+    const quarterback = {
+      id: "qb-current",
+      name: "Current Quarterback",
+      team: "BUF",
+      position: "QB" as const,
+      averageRank: 1,
+      rankEcr: 1,
+      standardDeviation: 1,
+      tier: 1,
+      positionRank: 1,
+      minRank: 1,
+      maxRank: 2,
+    };
+    const sliceMetadata = {
+      ...buildSliceMetadataMap(),
+      qb: {
+        available: true,
+        sourceKind: "shared_position_consensus" as const,
+        rangeKind: "position" as const,
+        playerCount: 1,
+        updatedAt: currentSourceDate,
+      },
+      rb: {
+        available: false,
+        sourceKind: "unavailable" as const,
+        rangeKind: "none" as const,
+        playerCount: 0,
+        reason: "The RB source did not load.",
+      },
+    };
+    const unresolvedIds = ["rb-from-unavailable-slice"];
+    window.localStorage.setItem(
+      FANTASY_COMPARE_STORAGE_KEY,
+      JSON.stringify(unresolvedIds)
+    );
+    mockUseFantasySnapshot.mockReturnValue({
+      players: [quarterback],
+      snapshot: {
+        schemaVersion: 7,
+        season: 2026,
+        week: 0,
+        generatedAt: currentSourceDate,
+        upstreamUpdatedAt: currentSourceDate,
+        scoringFormat: "PPR",
+        source: "snapshot",
+        adpSource: null,
+        positions: {
+          QB: [quarterback],
+          RB: [],
+          WR: [],
+          TE: [],
+          K: [],
+          DST: [],
+          FLEX: [],
+        },
+        overall: [quarterback],
+        sliceMetadata,
+      },
+      metadata: {
+        season: 2026,
+        week: 0,
+        generatedAt: currentSourceDate,
+        upstreamUpdatedAt: currentSourceDate,
+        scoringFormat: "PPR",
+        source: "snapshot",
+        position: "qb",
+        playerCount: 1,
+        slice: sliceMetadata.qb,
+        slices: sliceMetadata,
+        adpSource: null,
+      },
+      sliceMetadata: sliceMetadata.qb,
+      sliceMetadataMap: sliceMetadata,
+      isLoading: false,
+      error: null,
+    });
+
+    render(
+      <FantasyFootballClient
+        initialState={{ position: "qb", scoring: "ppr", view: "list" }}
+      />
+    );
+
+    expect(JSON.parse(window.localStorage.getItem(FANTASY_COMPARE_STORAGE_KEY) ?? "[]"))
+      .toEqual(unresolvedIds);
   });
 
   it("renders the ADP column, value signals, and source disclosure when the snapshot carries ADP", () => {

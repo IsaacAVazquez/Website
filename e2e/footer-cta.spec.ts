@@ -1,53 +1,41 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("Footer CTA cleanup", () => {
-  test("uses the compact footer on the homepage", async ({ page }) => {
+  test("uses the Catalog 97 footer after the homepage closing statement", async ({ page }) => {
     await page.goto("/");
 
     await expect(
-      page.getByRole("heading", {
-        name: /building something that needs judgment and follow-through/i,
-      })
+      page.getByText(/if you have a thing that needs proving/i)
     ).toBeVisible();
 
-    const footer = page.getByRole("contentinfo");
-    await expect(footer).toHaveAttribute("data-footer-variant", "compact");
-    await expect(
-      footer.getByRole("heading", { name: /building something that needs judgment and follow-through/i })
-    ).toHaveCount(0);
+    const footer = page.getByRole("contentinfo", { name: "Site footer" });
+    await expect(footer).toHaveCount(1);
+    await expect(footer.getByRole("navigation", { name: "Pages" })).toBeVisible();
+    await expect(footer).not.toHaveAttribute("data-footer-variant");
   });
 
-  test("uses the compact footer on the contact page", async ({ page }) => {
+  test("uses the Catalog 97 footer on the contact page", async ({ page }) => {
     await page.goto("/contact");
 
     await expect(
-      page.getByRole("heading", { name: /get in touch\./i })
+      page.getByRole("heading", { name: /if you have something worth building/i })
     ).toBeVisible();
 
-    const footer = page.getByRole("contentinfo");
-    await expect(footer).toHaveAttribute("data-footer-variant", "compact");
-    await expect(
-      footer.getByRole("heading", { name: /building something that needs judgment and follow-through/i })
-    ).toHaveCount(0);
+    const footer = page.getByRole("contentinfo", { name: "Site footer" });
+    await expect(footer).toHaveCount(1);
+    await expect(footer.getByRole("navigation", { name: "Elsewhere" })).toBeVisible();
+    await expect(footer).not.toHaveAttribute("data-footer-variant");
   });
 
-  test("relies on the footer as the single closing CTA on the portfolio page", async ({ page }) => {
+  test("keeps the portfolio CTA separate from the Catalog 97 footer", async ({ page }) => {
     await page.goto("/portfolio");
 
-    await expect(page.getByText(/continue the conversation/i)).toHaveCount(0);
-    await expect(page.getByText(/start a conversation/i)).toHaveCount(0);
-    // The page must not stack its own CTA band above the footer's.
-    await expect(
-      page.getByRole("heading", { name: /looking for product work/i })
-    ).toHaveCount(0);
+    await expect(page.getByRole("link", { name: /ask about one/i })).toBeVisible();
 
-    const footer = page.getByRole("contentinfo");
-    await expect(footer).toHaveAttribute("data-footer-variant", "full");
-    await expect(
-      footer.getByRole("heading", { name: /building something that needs judgment and follow-through/i })
-    ).toBeVisible();
-    // Exactly one contact CTA panel on the page — the footer's.
-    await expect(page.locator("#contact")).toHaveCount(1);
+    const footer = page.getByRole("contentinfo", { name: "Site footer" });
+    await expect(footer).toHaveCount(1);
+    await expect(footer.getByRole("link", { name: /work/i })).toBeVisible();
+    await expect(page.locator("#contact")).toHaveCount(0);
   });
 
   test("uses the footer sign-off on writing detail pages", async ({ page }) => {

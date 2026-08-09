@@ -4,15 +4,16 @@ const path = require("path");
 const matter = require("gray-matter");
 
 const STATIC_ROUTE_LASTMOD = {
-  "/": "2026-07-16",
-  "/about": "2026-07-16",
+  "/": "2026-08-05",
+  "/about": "2026-08-05",
   "/accessibility": "2026-07-16",
   "/ai-dev-tools": "2026-04-28",
   "/arcade": "2026-07-16",
-  "/contact": "2026-03-16",
-  "/resume": "2026-07-23",
-  "/portfolio": "2026-07-16",
-  "/writing": "2026-07-16",
+  "/contact": "2026-08-05",
+  "/dashboards": "2026-08-03",
+  "/resume": "2026-08-05",
+  "/portfolio": "2026-08-09",
+  "/writing": "2026-08-09",
   "/writing/topics/agentic-ai": "2026-06-22",
   "/writing/topics/fintech-product-pricing": "2026-06-22",
   "/writing/topics/pm-workflows": "2026-06-22",
@@ -20,17 +21,17 @@ const STATIC_ROUTE_LASTMOD = {
   "/writing/topics/space-experiments": "2026-06-22",
   "/writing/topics/sports-fantasy": "2026-06-22",
   "/writing/topics/systems-quality": "2026-06-22",
-  "/golf": "2026-04-16",
+  "/golf": readGolfLastmod(),
   "/earthquake-pulse": readEarthquakeLastmod(),
   "/decision-lab": "2026-04-04",
   "/enablement-assistant": "2026-07-30",
-  "/formula-1": "2026-04-04",
+  "/formula-1": readFormula1Lastmod(),
   "/fantasy-formula-1": readFormula1Lastmod(),
   "/frontier-models": "2026-04-04",
   "/mba-internship-notifications": "2026-07-23",
-  "/mlb": "2026-04-04",
+  "/mlb": readMlbLastmod(),
   "/museum-log": "2026-04-04",
-  "/nba": "2026-04-04",
+  "/nba": readNbaLastmod(),
   "/now": "2026-04-13",
   "/recipe-finder": "2026-04-04",
   "/wine-cellar": "2026-04-04",
@@ -40,7 +41,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/tech-startup-tracker": readTechStartupLastmod(),
   "/investments": readInvestmentsLastmod(),
   "/news-pulse": "2026-07-23",
-  "/spacex-mission-control": "2026-04-01",
+  "/spacex-mission-control": readSpaceXLastmod(),
   "/polling-aggregator": readPollingLastmod(),
   "/premier-league": readPremierLeagueLastmod(),
   "/score-pools": latestIso(readScorePoolsLastmod(), "2026-07-23"),
@@ -78,6 +79,7 @@ const STATIC_ROUTE_LASTMOD = {
 const PRIMARY_ROUTES = new Set(["/", "/about", "/resume", "/contact"]);
 
 const SECTION_HUB_ROUTES = new Set([
+  "/dashboards",
   "/portfolio",
   "/writing",
   "/fantasy-football",
@@ -91,6 +93,7 @@ const CHANGEFREQ_BY_ROUTE = {
   "/about": "monthly",
   "/resume": "monthly",
   "/contact": "yearly",
+  "/dashboards": "weekly",
   "/accessibility": "yearly",
   "/portfolio": "weekly",
   "/writing": "weekly",
@@ -218,7 +221,7 @@ function readPremierLeagueLastmod() {
 
 function readLaLigaLastmod() {
   return toIsoString(
-    readFirstMatch("src/data/laLigaSnapshot.ts", /"updatedAt":\s*"([^"]+)"/)
+    readFirstMatch("src/data/laLigaSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 
@@ -240,6 +243,29 @@ function readFormula1Lastmod() {
   return toIsoString(
     readFirstMatch("src/data/formula1Snapshot.ts", /"generatedAt":\s*"([^"]+)"/)
   );
+}
+
+function readGolfLastmod() {
+  return toIsoString(
+    readFirstMatch("src/data/golfSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+  );
+}
+
+function readMlbLastmod() {
+  return toIsoString(
+    readFirstMatch("src/data/mlbSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+  );
+}
+
+function readNbaLastmod() {
+  return toIsoString(
+    readFirstMatch("src/data/nbaSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+  );
+}
+
+function readSpaceXLastmod() {
+  const source = JSON.parse(readFile("src/data/spacexSnapshot.generated.json"));
+  return toIsoString(source.generatedAt);
 }
 
 function readEarthquakeLastmod() {

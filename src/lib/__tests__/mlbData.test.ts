@@ -708,6 +708,7 @@ describe("createEmptyMlbSnapshot", () => {
     const snap = createEmptyMlbSnapshot();
 
     expect(typeof snap.season).toBe("string");
+    expect(snap.generatedAt).toMatch(/^\d{4}-\d{2}-\d{2}T/);
     expect(snap.updatedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     expect(snap.sourceLabel).toBe("MLB Stats API");
     expect(snap.sourceUrls.standings).toContain("statsapi.mlb.com/api/v1/standings");
@@ -913,6 +914,7 @@ function committedGame(
 function liveFallbackSummary(): MlbSummarySnapshot {
   return {
     season: "2026",
+    generatedAt: isoDateTime(-1),
     updatedAt: isoDate(-1),
     sourceLabel: "MLB Stats API",
     sourceUrls: { standings: "standings", schedule: "schedule", leaders: "leaders" },
@@ -1055,6 +1057,7 @@ describe("buildMlbLiveSummaryData", () => {
     expect(summary.standings).toBe(fallback.standings);
     expect(summary.hittingLeaders).toBe(fallback.hittingLeaders);
     expect(summary.teams).toBe(fallback.teams);
+    expect(summary.generatedAt).toMatch(/^\d{4}-\d{2}-\d{2}T/);
     expect(summary.updatedAt).toBe(isoDate(0));
   });
 

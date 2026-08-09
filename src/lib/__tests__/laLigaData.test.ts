@@ -680,7 +680,8 @@ describe("createEmptyLaLigaSnapshot", () => {
       teams: [],
       teamSnapshots: {},
     });
-    // updatedAt is today's date, YYYY-MM-DD.
+    expect(snap.generatedAt).toMatch(/^\d{4}-\d{2}-\d{2}T/);
+    // updatedAt remains a display-friendly calendar date.
     expect(snap.updatedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
   });
 });

@@ -413,10 +413,12 @@ export function isValidLaLigaTeamId(teamId: string): boolean {
 }
 
 export function createEmptyLaLigaSnapshot(): LaLigaSnapshot {
+  const generatedAt = new Date().toISOString();
   return {
     season: "2025/26",
     matchday: 0,
-    updatedAt: new Date().toISOString().slice(0, 10),
+    generatedAt,
+    updatedAt: generatedAt.slice(0, 10),
     sourceLabel: "football-data.org",
     sourceUrls: { standings: "", scorers: "", assists: "" },
     clubs: [],
@@ -633,7 +635,12 @@ export async function buildLaLigaLiveSummary(
     throw createLaLigaDataError("La Liga live refresh produced no usable sections.", 503);
   }
 
-  return { ...summary, updatedAt: new Date().toISOString().slice(0, 10) };
+  const generatedAt = new Date().toISOString();
+  return {
+    ...summary,
+    generatedAt,
+    updatedAt: generatedAt.slice(0, 10),
+  };
 }
 
 export async function getLaLigaTeamSnapshot(teamId: string): Promise<LaLigaTeamSnapshot> {
@@ -725,6 +732,7 @@ export async function buildLaLigaSnapshot(options?: { skipTeamSnapshots?: boolea
   return {
     season: summary.season,
     matchday: summary.matchday,
+    generatedAt,
     updatedAt: generatedAt.slice(0, 10),
     sourceLabel: "football-data.org",
     sourceUrls: {

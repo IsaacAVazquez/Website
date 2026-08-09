@@ -31,17 +31,23 @@ interface RankingsListRowProps {
 /**
  * One stat in the row's metric strip.
  *
- * The width is fixed rather than content-sized on purpose. These numbers exist
- * to be read down the page against other players, and a plain flex box sized
- * each one to its own value, so "1 to 4" and "2 to 31" put their labels at
- * different x and the three columns wandered 11.2px, 11.2px, and 6.4px across
- * 60 rows. Nothing overflowed and nothing truncated, so no threshold caught it.
- * Each width clears its own label, which is the wider of the two lines in every
- * case, so the values sit under their headings and the columns hold.
+ * The desktop width is fixed rather than content-sized on purpose. These
+ * numbers exist to be read down the page against other players, and a plain
+ * flex box sized each one to its own value, so the columns wandered across 60
+ * rows. Narrow rows use an auto-fitting grid instead, because the full fixed
+ * strip costs 320px before the row has that much room.
  */
-function Metric({ label, width, children }: { label: string; width: string; children: ReactNode }) {
+function Metric({
+  label,
+  desktopWidthClass,
+  children,
+}: {
+  label: string;
+  desktopWidthClass: string;
+  children: ReactNode;
+}) {
   return (
-    <div className="shrink-0" style={{ width }}>
+    <div className={`min-w-0 ${desktopWidthClass}`}>
       <p className="text-2xs font-semibold uppercase tracking-[0.12em]" style={{ color: "var(--home-ink-muted)" }}>
         {label}
       </p>
@@ -173,21 +179,21 @@ export function RankingsListRow({
           </div>
         </div>
 
-        {/* Both columns of row two below md, an inline strip from md up. */}
+        {/* Both columns of row two, auto-fitting until the full desktop strip fits. */}
         <div
-          className={`pointer-events-none relative z-10 col-span-2 col-start-1 row-start-2 flex items-start gap-x-4 px-4 @2xl:col-auto @2xl:row-auto @2xl:shrink-0 @2xl:items-center @2xl:justify-end @2xl:px-0 ${
+          className={`pointer-events-none relative z-10 col-span-2 col-start-1 row-start-2 grid w-full grid-cols-[repeat(auto-fit,minmax(6.25rem,1fr))] items-start gap-x-4 gap-y-2 px-4 @2xl:col-auto @2xl:row-auto @2xl:flex @2xl:w-auto @2xl:shrink-0 @2xl:items-center @2xl:justify-end @2xl:px-0 ${
             compact ? "pb-2.5 @2xl:pb-0" : "pb-3.5 @2xl:pb-0"
           }`}
         >
-          <Metric label="Expert range" width="6.5rem">
+          <Metric label="Expert range" desktopWidthClass="@2xl:w-[6.5rem] @2xl:shrink-0">
             {formatRange(player)}
           </Metric>
           {adpAvailable && (
-            <Metric label="ADP" width="3.25rem">
+            <Metric label="ADP" desktopWidthClass="@2xl:w-[3.25rem] @2xl:shrink-0">
               {formatAdp(player.adp)}
             </Metric>
           )}
-          <Metric label="Rostered" width="6.25rem">
+          <Metric label="Rostered" desktopWidthClass="@2xl:w-[6.25rem] @2xl:shrink-0">
             <span>{formatOwnership(player.ownership)}</span>
             <span className="ml-2 text-2xs font-medium" style={{ color: "var(--home-ink-muted)" }}>
               {player.byeWeek ? `Bye ${player.byeWeek}` : ""}

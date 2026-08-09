@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ChevronDown, GitCompareArrows, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { useCompareTray } from "@/hooks/useCompareTray";
 import { getPositionTone } from "@/lib/fantasyUtils";
@@ -12,6 +12,8 @@ import { CompareModal } from "./CompareModal";
 
 interface CompareTrayProps {
   resolvePlayer: (id: string) => Player | undefined;
+  /** True only after the complete player snapshot can resolve persisted IDs. */
+  playerDataReady?: boolean;
   publishedRank?: (player: Player) => string;
   /** Passed through to CompareModal — see PlayerDetailDrawer for the rationale. */
   valueSignalAvailable?: boolean;
@@ -32,18 +34,30 @@ interface CompareTrayProps {
  */
 export function CompareTray({
   resolvePlayer,
+  playerDataReady = false,
   publishedRank,
   valueSignalAvailable = true,
   adpAvailable = true,
 }: CompareTrayProps) {
   const reduceMotion = useReducedMotion();
   const compare = useCompareTray();
+  const compareIds = compare.compareIds;
+  const replaceCompare = compare.replace;
   const [open, setOpen] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
 
-  const players = compare.compareIds
-    .map((id) => resolvePlayer(id))
-    .filter((player): player is Player => Boolean(player));
+  const players = useMemo(
+    () =>
+      compareIds
+        .map((id) => resolvePlayer(id))
+        .filter((player): player is Player => Boolean(player)),
+    [compareIds, resolvePlayer]
+  );
+
+  useEffect(() => {
+    if (!playerDataReady || players.length === compareIds.length) return;
+    replaceCompare(players.map((player) => player.id));
+  }, [compareIds.length, playerDataReady, players, replaceCompare]);
 
   const canCompare = players.length >= 2;
 

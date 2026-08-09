@@ -4,6 +4,7 @@
 jest.mock("@/lib/mlbSnapshot", () => ({
   createEmptyMlbSummarySnapshot: jest.fn(() => ({
     season: "2026",
+    generatedAt: "2026-04-03T00:00:00.000Z",
     updatedAt: "2026-04-03T00:00:00.000Z",
     sourceLabel: "MLB Stats API",
     sourceUrls: { standings: "", schedule: "", leaders: "" },
@@ -37,6 +38,7 @@ describe("GET /api/mlb/summary", () => {
   it("returns the normalized MLB summary with cache headers", async () => {
     mockGetMlbSummarySnapshot.mockResolvedValue({
       season: "2026",
+      generatedAt: "2026-04-03T00:00:00.000Z",
       updatedAt: "2026-04-03T00:00:00.000Z",
       sourceLabel: "MLB Stats API",
       sourceUrls: { standings: "standings", schedule: "schedule", leaders: "leaders" },

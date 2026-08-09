@@ -5,7 +5,11 @@ import { GET } from "../route";
 import { GET as getTransitSummary } from "@/app/api/bay-area-transit/summary/route";
 import { bayAreaTransitSnapshot } from "@/data/bayAreaTransitSnapshot";
 import { earthquakeSnapshot } from "@/data/earthquakeSnapshot";
-import { createDataRevision, type DataRevisionEntry } from "@/lib/dataRevision";
+import {
+  createDataLedgerRevision,
+  createDataRevision,
+  type DataRevisionEntry,
+} from "@/lib/dataRevision";
 import { DATA_SURFACE_IDS } from "@/lib/dataFreshnessPolicy";
 
 async function getLedgerEntry(surface: string): Promise<DataRevisionEntry> {
@@ -25,6 +29,37 @@ describe("GET /api/data-revisions", () => {
     expect(body.entries.map((entry) => entry.surface).sort()).toEqual(
       [...DATA_SURFACE_IDS].sort()
     );
+  });
+
+  it("separates committed publication state from live runtime heartbeats", async () => {
+    const response = await GET();
+    const body = (await response.json()) as {
+      revision: string;
+      publicationRevision: string;
+      entries: DataRevisionEntry[];
+    };
+    const committedEntries = body.entries.filter(
+      (entry) => entry.source !== "runtime-fetch"
+    );
+
+    expect(body.publicationRevision).toBe(
+      createDataLedgerRevision(committedEntries)
+    );
+    expect(body.revision).toBe(createDataLedgerRevision(body.entries));
+    expect(body.publicationRevision).not.toBe(body.revision);
+  });
+
+  it("exposes the immutable deployment commit when the host provides it", async () => {
+    const previousCommit = process.env.COMMIT_REF;
+    process.env.COMMIT_REF = "a".repeat(40);
+    try {
+      const response = await GET();
+      const body = (await response.json()) as { deploymentCommit: string | null };
+      expect(body.deploymentCommit).toBe("a".repeat(40));
+    } finally {
+      if (previousCommit === undefined) delete process.env.COMMIT_REF;
+      else process.env.COMMIT_REF = previousCommit;
+    }
   });
   it("tracks the committed transit summary while the live route identifies its delivered payload", async () => {
     const entry = await getLedgerEntry("bay-area-transit");

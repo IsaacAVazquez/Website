@@ -92,6 +92,9 @@ export interface NbaLeader {
 
 export interface NbaSnapshot {
   season: string;
+  /** Full ISO timestamp for freshness checks and publication metadata. */
+  generatedAt: string;
+  /** Calendar date retained for user-facing date labels. */
   updatedAt: string;
   sourceLabel: string;
   sourceUrls: {

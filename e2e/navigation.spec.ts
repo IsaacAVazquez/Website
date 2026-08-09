@@ -8,80 +8,67 @@ async function clickAndWaitForURL(page: Page, link: Locator, url: RegExp) {
 }
 
 test.describe('Navigation', () => {
-  test('should navigate through the header destinations', async ({ page }, testInfo) => {
+  test('should navigate through the Catalog 97 header destinations', async ({ page }) => {
     await page.goto('/')
 
-    if (testInfo.project.name.includes('Mobile')) {
-      await page.getByRole('button', { name: /open navigation menu/i }).click()
-      const mobileNav = page.getByLabel('Mobile navigation')
-      await expect(mobileNav.getByRole('link', { name: /^Home$/i })).toBeVisible()
-      await expect(mobileNav.getByRole('link', { name: /^Projects$/i })).toBeVisible()
-      await expect(mobileNav.getByRole('link', { name: /^Writing$/i })).toBeVisible()
-      await expect(mobileNav.getByRole('link', { name: /^Investments$/i })).toBeVisible()
-      await expect(mobileNav.getByRole('link', { name: /^Resume$/i })).toBeVisible()
-      await expect(mobileNav.getByRole('link', { name: /^Contact$/i })).toBeVisible()
-      return
-    }
-
-    const desktopNav = page.getByLabel('Primary navigation')
-    await expect(desktopNav.getByRole('link', { name: /^Home$/i })).toBeVisible()
-    await expect(desktopNav.getByRole('link', { name: /^About$/i })).toBeVisible()
-    await expect(desktopNav.getByRole('link', { name: /^Projects$/i })).toBeVisible()
-    await expect(desktopNav.getByRole('link', { name: /^Writing$/i })).toBeVisible()
-    await expect(desktopNav.getByRole('link', { name: /^Investments$/i })).toBeVisible()
-    await expect(desktopNav.getByRole('link', { name: /^Resume$/i })).toBeVisible()
-    await expect(desktopNav.getByRole('link', { name: /^Contact$/i })).toBeVisible()
+    const mainNav = page.getByRole('navigation', { name: 'Main' })
+    await expect(mainNav.getByRole('link', { name: /^Home$/i })).toBeVisible()
+    await expect(mainNav.getByRole('link', { name: /^Work$/i })).toBeVisible()
+    await expect(mainNav.getByRole('link', { name: /^Writing$/i })).toBeVisible()
+    await expect(mainNav.getByRole('link', { name: /^Dashboards$/i })).toBeVisible()
+    await expect(mainNav.getByRole('link', { name: /^About$/i })).toBeVisible()
+    await expect(mainNav.getByRole('link', { name: /^Résumé$/i })).toBeVisible()
+    await expect(mainNav.getByRole('link', { name: /^Contact$/i })).toBeVisible()
 
     await clickAndWaitForURL(
       page,
-      desktopNav.getByRole('link', { name: /^Projects$/i }),
+      mainNav.getByRole('link', { name: /^Work$/i }),
       /.*portfolio/
     )
 
     await page.goto('/')
     await clickAndWaitForURL(
       page,
-      page.getByLabel('Primary navigation').getByRole('link', { name: /^About$/i }),
+      page.getByRole('navigation', { name: 'Main' }).getByRole('link', { name: /^About$/i }),
       /.*about/
     )
 
     await page.goto('/')
     await clickAndWaitForURL(
       page,
-      page.getByLabel('Primary navigation').getByRole('link', { name: /^Investments$/i }),
-      /.*investments/
+      page.getByRole('navigation', { name: 'Main' }).getByRole('link', { name: /^Dashboards$/i }),
+      /.*dashboards/
     )
 
     await page.goto('/')
     await clickAndWaitForURL(
       page,
-      page.getByLabel('Primary navigation').getByRole('link', { name: /^Resume$/i }),
+      page.getByRole('navigation', { name: 'Main' }).getByRole('link', { name: /^Résumé$/i }),
       /.*resume/
     )
 
     await page.goto('/')
     await clickAndWaitForURL(
       page,
-      page.getByLabel('Primary navigation').getByRole('link', { name: /^Contact$/i }),
+      page.getByRole('navigation', { name: 'Main' }).getByRole('link', { name: /^Contact$/i }),
       /.*contact/
     )
   })
 
-  test('should keep the active destination marked in desktop navigation', async ({ page }, testInfo) => {
-    test.skip(testInfo.project.name.includes('Mobile'), 'Desktop-only navigation assertion')
-
+  test('should keep the active destination marked in navigation', async ({ page }) => {
     await page.goto('/portfolio')
 
-    await expect(page.getByLabel('Primary navigation').getByRole('link', { name: 'Projects' })).toHaveAttribute('aria-current', 'page')
+    await expect(
+      page.getByRole('navigation', { name: 'Main' }).getByRole('link', { name: 'Work' })
+    ).toHaveAttribute('aria-current', 'page')
   })
 
-  test('should navigate using browser back button', async ({ page }, testInfo) => {
-    test.skip(testInfo.project.name.includes('Mobile'), 'Desktop header coverage only')
+  test('should navigate using browser back button', async ({ page }) => {
     await page.goto('/')
 
     await clickAndWaitForURL(
       page,
-      page.getByLabel('Primary navigation').getByRole('link', { name: /^About$/i }),
+      page.getByRole('navigation', { name: 'Main' }).getByRole('link', { name: /^About$/i }),
       /.*about/
     )
 
@@ -89,18 +76,16 @@ test.describe('Navigation', () => {
     await expect(page).toHaveURL('/')
   })
 
-  test('should expose Home in the mobile menu and avoid horizontal overflow', async ({ page }) => {
+  test('should keep wrapped mobile navigation tappable and avoid horizontal overflow', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 })
     await page.goto('/')
 
-    await page.getByRole('button', { name: /open navigation menu/i }).click()
-
-    const mobileNav = page.getByLabel('Mobile navigation')
+    const mobileNav = page.getByRole('navigation', { name: 'Main' })
     await expect(mobileNav.getByRole('link', { name: 'Home' })).toBeVisible()
     await expect(mobileNav.getByRole('link', { name: 'Writing' })).toBeVisible()
     await clickAndWaitForURL(
       page,
-      mobileNav.getByRole('link', { name: 'Projects' }),
+      mobileNav.getByRole('link', { name: 'Work' }),
       /.*portfolio/
     )
 

@@ -40,11 +40,11 @@ page's only `<main>`, header, and footer.
 | Component | File | Role |
 |----------|------|------|
 | `Catalog97Shell` | `src/components/catalog97/Catalog97Shell.tsx` | Page wrapper: header, `<main>`, pine wordmark band, espresso footer |
-| `Catalog97Header` | `src/components/catalog97/Catalog97Header.tsx` | Client header, seven micro-links, oxblood rule under the active route |
+| `Catalog97Header` | `src/components/catalog97/Catalog97Header.tsx` | Client header with seven route links, site search, theme control, and an oxblood rule under the active route |
 | `Catalog97Primitives` | `src/components/catalog97/Catalog97Primitives.tsx` | `Catalog97Plate` (Anton numeral) and `Catalog97Slot` (flat image field) |
 | `Catalog97Home` | `src/components/catalog97/Catalog97Home.tsx` | `/` composition root. Props: `featuredProjects`, `recentPosts`, `heroIndex`, `liveToolGroups`, `liveFeed` |
-| `Catalog97Portfolio` | `src/components/catalog97/Catalog97Portfolio.tsx` | `/portfolio` index, client-side category filter over `classifyToolSlug` |
-| `Catalog97Writing` | `src/components/catalog97/Catalog97Writing.tsx` | `/writing` index, client-side cluster/length/bucket filter |
+| `Catalog97Portfolio` | `src/components/catalog97/Catalog97Portfolio.tsx` | `/portfolio` index with client-side search, sorting, and category filters over `classifyToolSlug` |
+| `Catalog97Writing` | `src/components/catalog97/Catalog97Writing.tsx` | `/writing` index with client-side search, sorting, cluster/length/bucket filters, and topic links |
 | `Catalog97Dashboards` | `src/components/catalog97/Catalog97Dashboards.tsx` | `/dashboards` mosaic. Props: `groups`, `summaries` |
 | `Catalog97About` | `src/components/catalog97/Catalog97About.tsx` | `/about` content, reads `careerTimeline` |
 | `Catalog97Resume` | `src/components/catalog97/Catalog97Resume.tsx` | `/resume` content |

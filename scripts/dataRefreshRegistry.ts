@@ -79,13 +79,13 @@ export const DATA_REFRESH_ARTIFACTS: Partial<
   "la-liga": definition(
     "la-liga",
     "src/data/laLigaSnapshot.ts",
-    ["updatedAt"],
+    ["generatedAt"],
     { exportName: "laLigaSnapshot" }
   ),
-  mlb: definition("mlb", "src/data/mlbSnapshot.ts", ["updatedAt"], {
+  mlb: definition("mlb", "src/data/mlbSnapshot.ts", ["generatedAt"], {
     exportName: "mlbSnapshot",
   }),
-  nba: definition("nba", "src/data/nbaSnapshot.ts", ["updatedAt"], {
+  nba: definition("nba", "src/data/nbaSnapshot.ts", ["generatedAt"], {
     exportName: "nbaSnapshot",
   }),
   nfl: definition("nfl", "src/data/nflSnapshot.ts", ["updatedAt"], {

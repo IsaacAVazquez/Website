@@ -163,11 +163,15 @@ describe("WritingPage", () => {
   it("renders the archive controls with curated filters before archive buckets", () => {
     render(<WritingPage />);
 
-    const filterTabs = within(
-      screen.getByRole("tablist", { name: "Filter articles" })
-    ).getAllByRole("tab");
+    const filterButtons = within(
+      screen.getByRole("group", { name: "Filter articles" })
+    ).getAllByRole("button");
 
-    expect(filterTabs.map((tab) => tab.textContent?.replace(/\s+/g, " ").trim())).toEqual([
+    expect(
+      filterButtons.map((button) =>
+        button.textContent?.replace(/\s+/g, " ").trim(),
+      ),
+    ).toEqual([
       "All7",
       "PM Workflows1",
       "Agentic AI1",
@@ -179,6 +183,10 @@ describe("WritingPage", () => {
       "Signals & Commentary1",
       "Space & Experiments1",
     ]);
+    expect(filterButtons[0]).toHaveAttribute("aria-pressed", "true");
+    expect(
+      filterButtons.slice(1).map((button) => button.getAttribute("aria-pressed")),
+    ).toEqual(Array(filterButtons.length - 1).fill("false"));
   });
 
   it("keeps curated and archive-only posts separated by the active filter", () => {
@@ -188,7 +196,11 @@ describe("WritingPage", () => {
     // featured card (first match) and the archive grid (the rest). Either
     // location counts as "visible after this filter" from the user's
     // perspective, so the assertion is page-scoped, not grid-scoped.
-    fireEvent.click(screen.getByRole("tab", { name: /PM Workflows/i }));
+    const filterControls = within(
+      screen.getByRole("group", { name: "Filter articles" }),
+    );
+
+    fireEvent.click(filterControls.getByRole("button", { name: /PM Workflows/i }));
 
     expect(
       screen.getByRole("heading", { level: 2, name: "Lead Workflow Essay" }),
@@ -200,7 +212,9 @@ describe("WritingPage", () => {
       screen.queryByRole("heading", { level: 3, name: "Weekly Tech Note" }),
     ).not.toBeInTheDocument();
 
-    fireEvent.click(screen.getByRole("tab", { name: /Signals & Commentary/i }));
+    fireEvent.click(
+      filterControls.getByRole("button", { name: /Signals & Commentary/i }),
+    );
 
     expect(
       screen.getByRole("heading", { level: 2, name: "Weekly Tech Note" }),
@@ -211,5 +225,34 @@ describe("WritingPage", () => {
     expect(
       screen.queryByRole("heading", { level: 3, name: "Lead Workflow Essay" }),
     ).not.toBeInTheDocument();
+  });
+
+  it("searches and sorts the archive while keeping canonical topic links", () => {
+    render(<WritingPage />);
+
+    const search = screen.getByRole("searchbox", { name: "Search writing" });
+    fireEvent.change(search, { target: { value: "weekly commentary" } });
+
+    expect(
+      screen.getByRole("heading", { level: 2, name: "Weekly Tech Note" }),
+    ).toBeVisible();
+    expect(
+      screen.queryByRole("heading", { name: "Lead Workflow Essay" }),
+    ).not.toBeInTheDocument();
+
+    fireEvent.change(search, { target: { value: "" } });
+    fireEvent.change(screen.getByRole("combobox", { name: "Sort writing" }), {
+      target: { value: "longest" },
+    });
+
+    expect(
+      screen.getByRole("heading", { level: 2, name: "Lead Systems Essay" }),
+    ).toBeVisible();
+    expect(
+      screen.getByRole("link", { name: "PM Workflows" }),
+    ).toHaveAttribute("href", "/writing/topics/pm-workflows");
+    expect(
+      screen.getByRole("link", { name: "Sports & Fantasy" }),
+    ).toHaveAttribute("href", "/writing/topics/sports-fantasy");
   });
 });

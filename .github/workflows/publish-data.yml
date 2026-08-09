@@ -23,7 +23,7 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 18
     permissions:
       contents: read
       issues: write
@@ -33,7 +33,9 @@ jobs:
         uses: actions/checkout@v7
         with:
           ref: main
-          fetch-depth: 1
+          # Enough history for the verifier to recognize a newer snapshot commit
+          # that lands while Netlify is starting the branch build.
+          fetch-depth: 100
 
       - name: Set up Node.js
         uses: actions/setup-node@v6
@@ -44,13 +46,16 @@ jobs:
       - name: Install dependencies
         run: npm ci --prefer-offline --no-audit --fund=false
 
-      - name: Compute expected data ledger revision
+      - name: Compute expected committed data revision
         id: ledger
-        run: echo "revision=$(npx tsx scripts/printDataLedgerRevision.ts)" >> "$GITHUB_OUTPUT"
+        run: |
+          echo "revision=$(npx tsx scripts/printDataLedgerRevision.ts)" >> "$GITHUB_OUTPUT"
+          echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       - name: Publish and verify the complete ledger
         env:
           EXPECTED_REVISION: ${{ steps.ledger.outputs.revision }}
+          EXPECTED_COMMIT: ${{ steps.ledger.outputs.commit }}
           NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
           PRODUCTION_DATA_REVISION_URL: ${{ secrets.PRODUCTION_DATA_REVISION_URL }}
         run: |
@@ -60,7 +65,8 @@ jobs:
           fi
           revision_url="${PRODUCTION_DATA_REVISION_URL:-https://isaacvazquez.com/api/data-revisions}"
           node scripts/ci/ensure-production-data-ledger.mjs \
-            "$EXPECTED_REVISION" "$revision_url" "$NETLIFY_BUILD_HOOK"
+            "$EXPECTED_REVISION" "$revision_url" "$NETLIFY_BUILD_HOOK" \
+            "$EXPECTED_COMMIT"
 
       - name: Open or update publication incident
         if: failure()

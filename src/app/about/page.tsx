@@ -8,7 +8,7 @@ export const metadata = generateAIOptimizedMetadata({
   description:
     "I'm Isaac Vazquez, a Berkeley Haas MBA candidate and product manager with six years across QA, analytics, SaaS, and civic tech.",
   canonicalUrl: "https://isaacvazquez.com/about",
-  dateModified: "2026-07-16",
+  dateModified: "2026-08-05",
 });
 
 export default function AboutPage() {
@@ -33,7 +33,7 @@ export default function AboutPage() {
           type: "ProfilePage",
           data: {
             url: "https://isaacvazquez.com/about",
-            lastReviewed: "2026-07-16",
+            lastReviewed: "2026-08-05",
             description:
               "Isaac Vazquez is a product manager and Berkeley Haas MBA candidate with six years across QA, analytics, SaaS, and civic tech.",
             person: {

@@ -20,7 +20,7 @@ export async function GET() {
       headers: createSnapshotResponseHeaders({
         surface: "nba",
         payload: summary,
-        sourceAsOf: summary.updatedAt,
+        sourceAsOf: summary.generatedAt,
         cacheControl: SUCCESS_CACHE_CONTROL,
       }),
     });

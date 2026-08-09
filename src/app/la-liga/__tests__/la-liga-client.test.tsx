@@ -34,6 +34,7 @@ describe("LaLigaClient", () => {
         summary={{
           season: laLigaSnapshot.season,
           matchday: laLigaSnapshot.matchday,
+          generatedAt: laLigaSnapshot.generatedAt,
           updatedAt: laLigaSnapshot.updatedAt,
           sourceLabel: laLigaSnapshot.sourceLabel,
           sourceUrls: laLigaSnapshot.sourceUrls,
@@ -82,6 +83,7 @@ describe("LaLigaClient", () => {
         summary={{
           season: laLigaSnapshot.season,
           matchday: laLigaSnapshot.matchday,
+          generatedAt: laLigaSnapshot.generatedAt,
           updatedAt: laLigaSnapshot.updatedAt,
           sourceLabel: laLigaSnapshot.sourceLabel,
           sourceUrls: laLigaSnapshot.sourceUrls,
@@ -118,6 +120,7 @@ describe("LaLigaClient", () => {
         summary={{
           season: laLigaSnapshot.season,
           matchday: laLigaSnapshot.matchday,
+          generatedAt: laLigaSnapshot.generatedAt,
           updatedAt: laLigaSnapshot.updatedAt,
           sourceLabel: laLigaSnapshot.sourceLabel,
           sourceUrls: laLigaSnapshot.sourceUrls,

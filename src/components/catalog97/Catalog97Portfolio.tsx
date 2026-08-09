@@ -22,6 +22,34 @@ const ALL = "all";
 
 /** How many entries lead the index at full weight before the ledger takes over. */
 const LEAD_COUNT = 4;
+type SortMode = "curated" | "newest" | "alpha" | "live";
+
+function timelineYear(timeline: string) {
+  const years = timeline.match(/\d{4}/g);
+  return years ? Math.max(...years.map(Number)) : 0;
+}
+
+function matchesQuery(project: CaseStudyData, tokens: string[]) {
+  if (tokens.length === 0) return true;
+
+  const categoryLabel =
+    TOOL_CATEGORY_DEFS.find((definition) => definition.id === classifyToolSlug(project.slug))
+      ?.label ?? "";
+  const searchable = [
+    project.title,
+    project.description,
+    project.role,
+    project.timeline,
+    project.metrics,
+    project.overview?.summary ?? "",
+    categoryLabel,
+    ...project.tools,
+  ]
+    .join(" ")
+    .toLowerCase();
+
+  return tokens.every((token) => searchable.includes(token));
+}
 
 /**
  * The work index, in the Catalog 97 language.
@@ -39,6 +67,8 @@ const LEAD_COUNT = 4;
  */
 export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
   const [active, setActive] = useState<string>(ALL);
+  const [query, setQuery] = useState("");
+  const [sort, setSort] = useState<SortMode>("curated");
 
   const tabs = useMemo(() => {
     const counts = new Map<ToolCategoryId, number>();
@@ -56,13 +86,28 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
     ];
   }, [projects]);
 
-  const filtered = useMemo(
-    () =>
+  const filtered = useMemo(() => {
+    const categoryMatches =
       active === ALL
         ? projects
-        : projects.filter((project) => classifyToolSlug(project.slug) === active),
-    [projects, active],
-  );
+        : projects.filter((project) => classifyToolSlug(project.slug) === active);
+    const tokens = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
+
+    const queryMatches = categoryMatches.filter((project) => matchesQuery(project, tokens));
+
+    return [...queryMatches].sort((left, right) => {
+      if (sort === "newest") {
+        return timelineYear(right.timeline) - timelineYear(left.timeline);
+      }
+      if (sort === "alpha") {
+        return left.title.localeCompare(right.title);
+      }
+      if (sort === "live") {
+        return Number(Boolean(right.link)) - Number(Boolean(left.link));
+      }
+      return 0;
+    });
+  }, [projects, active, query, sort]);
 
   const lead = filtered.slice(0, LEAD_COUNT);
   const ledger = filtered.slice(LEAD_COUNT);
@@ -100,49 +145,99 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
         data-c97-surface="paper"
         style={{ paddingBottom: "var(--c97-sp-3)" }}
       >
-        <div
-          className="c97-shell"
-          role="tablist"
-          aria-label="Filter projects by category"
-          /*
-            Row gap sp-5, not sp-3. `.c97-microlink` hit boxes are 50px tall,
-            and sp-3 clamps to 22px on a phone, which puts wrapped rows 39px
-            apart and overlaps them. Measured on the identical control on
-            /dashboards, that was eight overlapping pairs at 320. Keep the two
-            axes separate.
-          */
-          style={{
-            display: "flex",
-            columnGap: "var(--c97-sp-3)",
-            rowGap: "var(--c97-sp-5)",
-            flexWrap: "wrap",
-          }}
-        >
-          {tabs.map((tab) => {
-            const selected = tab.id === active;
-            return (
-              <button
-                key={tab.id}
-                type="button"
-                role="tab"
-                aria-selected={selected}
-                onClick={() => setActive(tab.id)}
-                className="c97-microlink"
+        <div className="c97-shell" style={{ display: "grid", gap: "var(--c97-sp-3)" }}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,240px),1fr))",
+              gap: "var(--c97-sp-2)",
+              alignItems: "end",
+            }}
+          >
+            <label style={{ display: "grid", gap: "var(--c97-sp-1)" }}>
+              <span className="c97-kicker">Search projects</span>
+              <input
+                type="search"
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="Search projects"
                 style={{
-                  background: "none",
-                  border: 0,
-                  cursor: "pointer",
-                  display: "inline-flex",
-                  alignItems: "baseline",
-                  gap: "var(--c97-sp-1)",
-                  color: selected ? "var(--c97-ink)" : "var(--c97-label)",
+                  minHeight: 48,
+                  width: "100%",
+                  border: "1px solid var(--c97-rule)",
+                  borderRadius: 0,
+                  background: "var(--c97-surface)",
+                  color: "var(--c97-ink)",
+                  padding: "0 var(--c97-sp-2)",
+                  font: "inherit",
+                }}
+              />
+            </label>
+            <label style={{ display: "grid", gap: "var(--c97-sp-1)" }}>
+              <span className="c97-kicker">Sort projects</span>
+              <select
+                value={sort}
+                onChange={(event) => setSort(event.target.value as SortMode)}
+                style={{
+                  minHeight: 48,
+                  width: "100%",
+                  border: "1px solid var(--c97-rule)",
+                  borderRadius: 0,
+                  background: "var(--c97-surface)",
+                  color: "var(--c97-ink)",
+                  padding: "0 var(--c97-sp-2)",
+                  font: "inherit",
                 }}
               >
-                <span>{tab.label}</span>
-                <span className="c97-tabular">{tab.count}</span>
-              </button>
-            );
-          })}
+                <option value="curated">Featured first</option>
+                <option value="newest">Newest first</option>
+                <option value="alpha">Alphabetical</option>
+                <option value="live">Live first</option>
+              </select>
+            </label>
+          </div>
+          <div
+            role="group"
+            aria-label="Filter projects by category"
+            /*
+              Row gap sp-5, not sp-3. `.c97-microlink` hit boxes are 50px tall,
+              and sp-3 clamps to 22px on a phone, which puts wrapped rows 39px
+              apart and overlaps them. Measured on the identical control on
+              /dashboards, that was eight overlapping pairs at 320. Keep the two
+              axes separate.
+            */
+            style={{
+              display: "flex",
+              columnGap: "var(--c97-sp-3)",
+              rowGap: "var(--c97-sp-5)",
+              flexWrap: "wrap",
+            }}
+          >
+            {tabs.map((tab) => {
+              const selected = tab.id === active;
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  aria-pressed={selected}
+                  onClick={() => setActive(tab.id)}
+                  className="c97-microlink"
+                  style={{
+                    background: "none",
+                    border: 0,
+                    cursor: "pointer",
+                    display: "inline-flex",
+                    alignItems: "baseline",
+                    gap: "var(--c97-sp-1)",
+                    color: selected ? "var(--c97-ink)" : "var(--c97-label)",
+                  }}
+                >
+                  <span>{tab.label}</span>
+                  <span className="c97-tabular">{tab.count}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
       </section>
 
@@ -272,7 +367,9 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
                 maxWidth: "var(--c97-measure-body)",
               }}
             >
-              Everything under this filter is already above.
+              {filtered.length === 0
+                ? "No projects match that search."
+                : "Everything under this filter is already above."}
             </p>
           )}
         </div>

@@ -219,9 +219,9 @@ async function routeInvestmentsFixtures(
 }
 
 test.describe("Investments", () => {
-  test("is discoverable from main navigation", async ({ page }, testInfo) => {
+  test("is discoverable from the Working Instrument navigation", async ({ page }, testInfo) => {
     await routeInvestmentsFixtures(page);
-    await page.goto("/");
+    await page.goto("/accessibility");
 
     if (testInfo.project.name.includes("Mobile")) {
       await page.getByRole("button", { name: /open navigation menu/i }).click();
@@ -239,7 +239,10 @@ test.describe("Investments", () => {
       ).toHaveAttribute("href", "/investments");
     }
 
-    await page.goto("/investments");
+    const navigation = testInfo.project.name.includes("Mobile")
+      ? page.getByLabel("Mobile navigation")
+      : page.getByLabel("Primary navigation");
+    await navigation.getByRole("link", { name: /investments/i }).click();
     await expectInvestmentsShell(page);
     await expect(page).toHaveURL(/.*investments/);
   });
@@ -407,7 +410,9 @@ test.describe("Investments", () => {
 
   test("homepage prioritizes the fintech project in projects", async ({ page }) => {
     await page.goto("/");
-    const section = page.getByTestId("home-projects");
+    const section = page.locator("section").filter({
+      has: page.getByRole("heading", { name: /selected work/i }),
+    });
 
     await expect(section).toBeVisible();
     await expect(page.getByRole("heading", { name: /selected work/i })).toBeVisible();

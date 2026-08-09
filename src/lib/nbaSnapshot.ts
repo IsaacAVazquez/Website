@@ -36,6 +36,7 @@ function clampNbaTeamSnapshot(snapshot: NbaTeamSnapshot): NbaTeamSnapshot {
 export function createEmptyNbaSummarySnapshot(): NbaSummarySnapshot {
   return {
     season: nbaSnapshot.season,
+    generatedAt: nbaSnapshot.generatedAt,
     updatedAt: nbaSnapshot.updatedAt,
     sourceLabel: nbaSnapshot.sourceLabel,
     sourceUrls: nbaSnapshot.sourceUrls,

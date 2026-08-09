@@ -36,15 +36,6 @@ export function getFantasyDraftStorageKey(season: number = getCurrentDraftSeason
 export const FANTASY_DRAFT_STORAGE_KEY = getFantasyDraftStorageKey();
 const PREVIOUS_FANTASY_DRAFT_STORAGE_KEY = `fantasy-draft-tracker-v2-${getCurrentDraftSeason()}`;
 
-interface PersistedDraftState extends Omit<DraftState, 'settings' | 'picks' | 'startTime' | 'endTime'> {
-  settings?: DraftSettings & {
-    draftDate?: string | Date;
-  };
-  startTime?: string | Date;
-  endTime?: string | Date;
-  picks?: Array<Omit<DraftPick, 'timestamp'> & { timestamp: string | Date }>;
-}
-
 // Default draft settings
 export const getDefaultSettings = (): DraftSettings => ({
   totalTeams: 12,
@@ -119,6 +110,326 @@ export const calculateCurrentRound = (pick: number, totalTeams: number): number 
   return Math.ceil(pick / totalTeams);
 };
 
+type UnknownRecord = Record<string, unknown>;
+
+const SUPPORTED_TEAM_COUNTS = [8, 10, 12, 14, 16] as const;
+const SUPPORTED_ROUND_COUNTS = [13, 14, 15, 16, 17, 18] as const;
+const SUPPORTED_TIMER_SECONDS = [0, 45, 60, 90, 120, 180] as const;
+const DRAFT_ROSTER_POSITIONS = ['QB', 'RB', 'WR', 'TE', 'K', 'DST'] as const;
+type DraftRosterPosition = (typeof DRAFT_ROSTER_POSITIONS)[number];
+
+function isRecord(value: unknown): value is UnknownRecord {
+  return Boolean(value) && typeof value === 'object' && !Array.isArray(value);
+}
+
+function isFiniteNumber(value: unknown): value is number {
+  return typeof value === 'number' && Number.isFinite(value);
+}
+
+function isDraftRosterPosition(value: unknown): value is DraftRosterPosition {
+  return DRAFT_ROSTER_POSITIONS.includes(value as DraftRosterPosition);
+}
+
+function nearestSupportedInteger(
+  value: unknown,
+  supported: readonly number[],
+  fallback: number
+): number {
+  if (!isFiniteNumber(value)) return fallback;
+  const rounded = Math.round(value);
+  return supported.reduce((nearest, candidate) =>
+    Math.abs(candidate - rounded) < Math.abs(nearest - rounded) ? candidate : nearest
+  );
+}
+
+function clampInteger(value: unknown, minimum: number, maximum: number, fallback: number): number {
+  if (!isFiniteNumber(value)) return fallback;
+  return Math.min(maximum, Math.max(minimum, Math.round(value)));
+}
+
+function decodeDate(value: unknown): Date | undefined {
+  if (!(typeof value === 'string' || typeof value === 'number' || value instanceof Date)) {
+    return undefined;
+  }
+  const date = new Date(value);
+  return Number.isFinite(date.getTime()) ? date : undefined;
+}
+
+function decodeDraftSettings(value: unknown): DraftSettings {
+  const defaults = getDefaultSettings();
+  const record = isRecord(value) ? value : {};
+  const totalTeams = nearestSupportedInteger(
+    record.totalTeams,
+    SUPPORTED_TEAM_COUNTS,
+    defaults.totalTeams
+  );
+  const rounds = nearestSupportedInteger(
+    record.rounds,
+    SUPPORTED_ROUND_COUNTS,
+    defaults.rounds
+  );
+  const scoringFormat =
+    record.scoringFormat === 'STANDARD' ||
+    record.scoringFormat === 'PPR' ||
+    record.scoringFormat === 'HALF_PPR'
+      ? record.scoringFormat
+      : defaults.scoringFormat;
+  const draftType =
+    record.draftType === 'snake' || record.draftType === 'linear'
+      ? record.draftType
+      : defaults.draftType;
+  const timerSeconds = nearestSupportedInteger(
+    record.timerSeconds,
+    SUPPORTED_TIMER_SECONDS,
+    defaults.timerSeconds ?? 90
+  );
+  const draftDate = decodeDate(record.draftDate) ?? defaults.draftDate;
+
+  return {
+    totalTeams,
+    userTeam: clampInteger(record.userTeam, 1, totalTeams, defaults.userTeam),
+    scoringFormat,
+    draftType,
+    rounds,
+    lineup: normalizeRedraftLineup(
+      isRecord(record.lineup) ? record.lineup as Partial<DraftSettings['lineup']> : undefined
+    ),
+    timerSeconds,
+    leagueName:
+      typeof record.leagueName === 'string'
+        ? record.leagueName.slice(0, 60)
+        : defaults.leagueName,
+    draftDate,
+  };
+}
+
+function decodePlayer(value: unknown): Player | null {
+  if (!isRecord(value)) return null;
+
+  const id = typeof value.id === 'string' ? value.id.trim() : '';
+  const name = typeof value.name === 'string' ? value.name.trim() : '';
+  const team = typeof value.team === 'string' ? value.team.trim() : null;
+  const averageRank = [value.averageRank, value.rankEcr, value.rank, value.positionRank]
+    .find((rank): rank is number => isFiniteNumber(rank) && rank > 0);
+  if (!id || !name || team === null || !isDraftRosterPosition(value.position) || !averageRank) {
+    return null;
+  }
+
+  const player: Player = {
+    id: id.slice(0, 200),
+    name: name.slice(0, 200),
+    team: team.slice(0, 20),
+    position: value.position,
+    averageRank,
+    standardDeviation:
+      isFiniteNumber(value.standardDeviation) && value.standardDeviation >= 0
+        ? value.standardDeviation
+        : 0,
+  };
+
+  const numericFields = [
+    'projectedPoints',
+    'tier',
+    'positionRank',
+    'minRank',
+    'maxRank',
+    'byeWeek',
+    'adp',
+    'adpHigh',
+    'adpLow',
+    'adpStandardDeviation',
+    'adpTimesDrafted',
+    'ownership',
+    'rankAverage',
+    'rankEcr',
+    'superflexRank',
+    'superflexTier',
+    'overallValue',
+    'auctionValue',
+    'expertCount',
+  ] as const satisfies ReadonlyArray<keyof Player>;
+  for (const field of numericFields) {
+    const fieldValue = value[field];
+    if (isFiniteNumber(fieldValue)) {
+      (player as unknown as UnknownRecord)[field] = fieldValue;
+    }
+  }
+
+  if (Array.isArray(value.expertRanks)) {
+    const expertRanks = value.expertRanks.filter(isFiniteNumber);
+    if (expertRanks.length > 0) player.expertRanks = expertRanks;
+  }
+  if (typeof value.lastUpdated === 'string') player.lastUpdated = value.lastUpdated;
+  if (typeof value.headshotUrl === 'string') player.headshotUrl = value.headshotUrl;
+  if (typeof value.teamLogoUrl === 'string') player.teamLogoUrl = value.teamLogoUrl;
+  if (typeof value.upside === 'string') player.upside = value.upside;
+  if (typeof value.downside === 'string') player.downside = value.downside;
+  if (typeof value.bottomLine === 'string') player.bottomLine = value.bottomLine;
+  if (
+    value.consensusLevel === 'high' ||
+    value.consensusLevel === 'medium' ||
+    value.consensusLevel === 'low'
+  ) {
+    player.consensusLevel = value.consensusLevel;
+  }
+
+  return player;
+}
+
+function decodePick(value: unknown): DraftPick | null {
+  if (!isRecord(value)) return null;
+  const player = decodePlayer(value.player);
+  const timestamp = decodeDate(value.timestamp);
+  if (
+    !player ||
+    !timestamp ||
+    !Number.isInteger(value.pickNumber) ||
+    !Number.isInteger(value.round) ||
+    !Number.isInteger(value.teamNumber)
+  ) {
+    return null;
+  }
+
+  return {
+    pickNumber: Number(value.pickNumber),
+    round: Number(value.round),
+    teamNumber: Number(value.teamNumber),
+    player,
+    timestamp,
+    pickTimeSeconds: clampInteger(value.pickTimeSeconds, 0, 3600, 0),
+    isKeeper: value.isKeeper === true,
+  };
+}
+
+function pickMatchesDraftOrder(pick: DraftPick, settings: DraftSettings): boolean {
+  return (
+    pick.round === calculateCurrentRound(pick.pickNumber, settings.totalTeams) &&
+    pick.teamNumber ===
+      calculateDraftOrder(pick.pickNumber, settings.totalTeams, settings.draftType)
+  );
+}
+
+function decodePicks(value: unknown, settings: DraftSettings): DraftPick[] {
+  if (!Array.isArray(value)) return [];
+  const candidates = value
+    .map(decodePick)
+    .filter((pick): pick is DraftPick => pick !== null)
+    .sort((left, right) => left.pickNumber - right.pickNumber);
+  const totalPicks = settings.totalTeams * settings.rounds;
+  const kept: DraftPick[] = [];
+  const playerIds = new Set<string>();
+
+  for (const pick of candidates) {
+    const expectedPickNumber = kept.length + 1;
+    if (
+      pick.pickNumber !== expectedPickNumber ||
+      pick.pickNumber > totalPicks ||
+      !pickMatchesDraftOrder(pick, settings) ||
+      playerIds.has(pick.player.id)
+    ) {
+      break;
+    }
+    kept.push(pick);
+    playerIds.add(pick.player.id);
+  }
+
+  return kept;
+}
+
+function decodeUndoHistory(
+  value: unknown,
+  settings: DraftSettings,
+  picks: readonly DraftPick[]
+): DraftPick[] {
+  if (!Array.isArray(value)) return [];
+  const decoded = value.map(decodePick);
+  if (decoded.some((pick) => pick === null)) return [];
+
+  const history = decoded as DraftPick[];
+  const totalPicks = settings.totalTeams * settings.rounds;
+  const usedPickNumbers = new Set(picks.map((pick) => pick.pickNumber));
+  const usedPlayerIds = new Set(picks.map((pick) => pick.player.id));
+  let expectedPickNumber = picks.length + history.length;
+
+  for (const pick of history) {
+    if (
+      pick.pickNumber !== expectedPickNumber ||
+      pick.pickNumber > totalPicks ||
+      !pickMatchesDraftOrder(pick, settings) ||
+      usedPickNumbers.has(pick.pickNumber) ||
+      usedPlayerIds.has(pick.player.id)
+    ) {
+      return [];
+    }
+    usedPickNumbers.add(pick.pickNumber);
+    usedPlayerIds.add(pick.player.id);
+    expectedPickNumber -= 1;
+  }
+
+  return history;
+}
+
+function decodeTeamNames(value: unknown, totalTeams: number): Map<number, string> {
+  const names = new Map<number, string>();
+  if (!Array.isArray(value)) return names;
+
+  for (const team of value) {
+    if (
+      !isRecord(team) ||
+      !Number.isInteger(team.teamNumber) ||
+      Number(team.teamNumber) < 1 ||
+      Number(team.teamNumber) > totalTeams ||
+      typeof team.teamName !== 'string' ||
+      names.has(Number(team.teamNumber))
+    ) {
+      continue;
+    }
+    const name = team.teamName.trim().slice(0, 40);
+    if (name) names.set(Number(team.teamNumber), name);
+  }
+
+  return names;
+}
+
+function decodePersistedDraftState(value: unknown): DraftState {
+  const record = isRecord(value) ? value : {};
+  const settings = decodeDraftSettings(record.settings);
+  const picks = decodePicks(record.picks, settings);
+  const undoHistory = decodeUndoHistory(record.undoHistory, settings, picks);
+  const teams = rebuildTeams(settings.totalTeams, picks);
+  const teamNames = decodeTeamNames(record.teams, settings.totalTeams);
+  for (const team of teams) {
+    const teamName = teamNames.get(team.teamNumber);
+    if (teamName) team.teamName = teamName;
+  }
+
+  const totalPicks = settings.totalTeams * settings.rounds;
+  const currentPick = picks.length + 1;
+  const isComplete = picks.length >= totalPicks;
+  const hadPersistedPicks = Array.isArray(record.picks) && record.picks.length > 0;
+  const startTime = decodeDate(record.startTime);
+  const endTime = isComplete ? decodeDate(record.endTime) : undefined;
+  const draftId =
+    typeof record.draftId === 'string' && record.draftId.trim()
+      ? record.draftId.trim().slice(0, 100)
+      : generateDraftId();
+
+  return {
+    settings,
+    picks,
+    currentPick,
+    currentRound: calculateCurrentRound(currentPick, settings.totalTeams),
+    isActive:
+      !isComplete &&
+      (picks.length > 0 || (!hadPersistedPicks && record.isActive === true)),
+    undoHistory,
+    teams,
+    draftId,
+    ...(startTime ? { startTime } : {}),
+    ...(endTime ? { endTime } : {}),
+  };
+}
+
 // Generate unique draft ID
 const generateDraftId = (): string => {
   return `draft_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`;
@@ -183,67 +494,11 @@ export const useDraftState = () => {
       }
       if (saved) {
         try {
-          const parsedState = JSON.parse(saved) as PersistedDraftState;
-          // Ensure dates are properly parsed
-          if (parsedState.settings?.draftDate) {
-            parsedState.settings.draftDate = new Date(parsedState.settings.draftDate);
-          }
-          if (parsedState.startTime) {
-            parsedState.startTime = new Date(parsedState.startTime);
-          }
-          if (parsedState.endTime) {
-            parsedState.endTime = new Date(parsedState.endTime);
-          }
-          // Parse pick timestamps
-          if (parsedState.picks) {
-            parsedState.picks = parsedState.picks.map((pick) => ({
-              ...pick,
-              timestamp: new Date(pick.timestamp),
-            }));
-          }
-          // Hydrate over full defaults so a blob written by an older build
-          // (same storage version, smaller shape — e.g. before undoHistory,
-          // teams, or draftId existed) can't strand the tracker with
-          // undefined fields. Guarded fields fall back individually; teams
-          // are rebuilt from the kept picks so rosters stay consistent.
-          const mergedSettings: DraftSettings = {
-            ...getDefaultSettings(),
-            ...(parsedState.settings ?? {}),
-            lineup: normalizeRedraftLineup(parsedState.settings?.lineup),
-          } as DraftSettings;
-          const mergedPicks = (parsedState.picks ?? []) as DraftPick[];
-          const defaults: DraftState = {
-            settings: mergedSettings,
-            picks: [],
-            currentPick: 1,
-            currentRound: 1,
-            isActive: false,
-            undoHistory: [],
-            teams: [],
-            draftId: generateDraftId(),
-          };
-          const merged: DraftState = {
-            ...defaults,
-            ...(parsedState as Partial<DraftState>),
-            settings: mergedSettings,
-            picks: mergedPicks,
-            undoHistory: Array.isArray(parsedState.undoHistory)
-              ? parsedState.undoHistory
-              : [],
-            teams:
-              Array.isArray(parsedState.teams) &&
-              parsedState.teams.length === mergedSettings.totalTeams
-                ? parsedState.teams
-                : rebuildTeams(mergedSettings.totalTeams, mergedPicks),
-            draftId:
-              typeof parsedState.draftId === "string" && parsedState.draftId
-                ? parsedState.draftId
-                : defaults.draftId,
-          };
-          setDraftState(merged);
+          const decodedState = decodePersistedDraftState(JSON.parse(saved));
+          setDraftState(decodedState);
           if (loadedPreviousVersion) {
             try {
-              localStorage.setItem(FANTASY_DRAFT_STORAGE_KEY, JSON.stringify(merged));
+              localStorage.setItem(FANTASY_DRAFT_STORAGE_KEY, JSON.stringify(decodedState));
               localStorage.removeItem(PREVIOUS_FANTASY_DRAFT_STORAGE_KEY);
             } catch {
               // The migrated state still runs in memory if the write is blocked.
@@ -255,6 +510,9 @@ export const useDraftState = () => {
           // instead of looping through this catch on every mount.
           try {
             localStorage.removeItem(FANTASY_DRAFT_STORAGE_KEY);
+            if (loadedPreviousVersion) {
+              localStorage.removeItem(PREVIOUS_FANTASY_DRAFT_STORAGE_KEY);
+            }
           } catch {
             // Same as above — best-effort.
           }

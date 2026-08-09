@@ -23,4 +23,26 @@ describe("data refresh manifests", () => {
 
     expect(manifest.outcome).toBe("stale-fallback");
   });
+
+  it.each(["mlb", "nba", "la-liga"] as const)(
+    "uses a full-precision generation timestamp for %s",
+    async (surface) => {
+      const probe = await buildRefreshManifest(surface);
+      expect(probe.sourceAsOf).toMatch(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}/);
+
+      const sourceTime = Date.parse(probe.sourceAsOf as string);
+      const fresh = await buildRefreshManifest(
+        surface,
+        new Date(sourceTime + 7 * 60 * 60 * 1000)
+      );
+      const stale = await buildRefreshManifest(
+        surface,
+        new Date(sourceTime + 400 * 24 * 60 * 60 * 1000)
+      );
+
+      expect(fresh.outcome).toBe("fresh");
+      expect(fresh.ageSeconds).toBe(7 * 60 * 60);
+      expect(stale.outcome).toBe("stale-fallback");
+    }
+  );
 });

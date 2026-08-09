@@ -101,8 +101,9 @@ export function Catalog97LayoutsCanvas({
     );
 
   return (
-    <div className="c97-page" data-c97-surface="paper">
+    <div className="c97-page" data-c97 data-c97-surface="paper">
       <section
+        data-c97-surface="paper"
         style={{ padding: "var(--c97-sp-5) var(--c97-gutter) var(--c97-sp-4)" }}
       >
         <div style={{ maxWidth: "var(--c97-container)", margin: "0 auto" }}>

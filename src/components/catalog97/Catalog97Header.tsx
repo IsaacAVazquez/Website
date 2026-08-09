@@ -1,7 +1,10 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { HeaderSearchPanel } from "@/components/search/HeaderSearchPanel";
+import { DeferredThemeToggle } from "@/components/ui/DeferredThemeToggle";
 import { catalog97NavLinks } from "@/constants/catalog97Nav";
 import { trackNavigationClick } from "@/lib/analytics";
 
@@ -15,11 +18,52 @@ import { trackNavigationClick } from "@/lib/analytics";
  */
 export function Catalog97Header() {
   const pathname = usePathname();
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Close search after navigation
+    setIsSearchOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    const handleKeydown = (event: KeyboardEvent) => {
+      const target = event.target as HTMLElement | null;
+      const isTypingTarget =
+        !!target &&
+        (target.tagName === "INPUT" ||
+          target.tagName === "TEXTAREA" ||
+          target.tagName === "SELECT" ||
+          target.isContentEditable);
+
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        setIsSearchOpen(true);
+        return;
+      }
+
+      if (
+        event.key === "/" &&
+        !isTypingTarget &&
+        !event.metaKey &&
+        !event.ctrlKey &&
+        !event.altKey
+      ) {
+        event.preventDefault();
+        setIsSearchOpen(true);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeydown);
+    return () => window.removeEventListener("keydown", handleKeydown);
+  }, []);
 
   return (
     <header
       data-c97-surface="paper"
-      style={{ padding: "var(--c97-sp-3) var(--c97-gutter)" }}
+      style={{
+        position: "relative",
+        padding: "var(--c97-sp-3) var(--c97-gutter)",
+      }}
     >
       <div
         className="c97-shell"
@@ -115,8 +159,28 @@ export function Catalog97Header() {
               </Link>
             );
           })}
+          <button
+            type="button"
+            aria-label="Search the site (press / or Ctrl+K)"
+            aria-haspopup="dialog"
+            aria-expanded={isSearchOpen}
+            className="c97-microlink"
+            onClick={() => setIsSearchOpen((current) => !current)}
+            style={{
+              border: 0,
+              background: "none",
+              cursor: "pointer",
+              color: "var(--c97-label)",
+            }}
+          >
+            Search
+          </button>
+          <DeferredThemeToggle className="!rounded-none !text-[var(--c97-label)] hover:!text-[var(--c97-ink)]" />
         </nav>
       </div>
+      {isSearchOpen ? (
+        <HeaderSearchPanel onClose={() => setIsSearchOpen(false)} />
+      ) : null}
     </header>
   );
 }

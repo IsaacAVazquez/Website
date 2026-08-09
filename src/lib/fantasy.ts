@@ -218,6 +218,22 @@ export function getAllFantasySnapshotPlayers(snapshot: FantasySnapshot): Player[
   return Array.from(playersById.values());
 }
 
+/**
+ * Persisted player IDs can only be classified as stale when every published
+ * slice loaded successfully. An unavailable position is an incomplete player
+ * universe, not evidence that its previously pinned players no longer exist.
+ */
+export function hasCompleteFantasyPlayerUniverse(
+  snapshot: FantasySnapshot | null | undefined
+): snapshot is FantasySnapshot {
+  return Boolean(
+    snapshot &&
+      FANTASY_ROUTE_POSITIONS.every(
+        (position) => snapshot.sliceMetadata[position]?.available === true
+      )
+  );
+}
+
 function snapshotPositionToRoutePosition(position: FantasySnapshotPosition): FantasyRoutePosition {
   switch (position) {
     case "QB":

@@ -19,7 +19,7 @@ export const metadata = constructMetadata({
   description:
     "My essays and notes on product management, AI workflows, fintech, quality systems, and the tools I'm building.",
   canonicalUrl: "/writing",
-  dateModified: "2026-07-16",
+  dateModified: "2026-08-09",
 });
 
 function readingMinutes(rt: string): number {

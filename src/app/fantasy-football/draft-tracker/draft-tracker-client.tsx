@@ -14,7 +14,9 @@ import { computeDraftAnalytics, reconcileTeamRosters } from "@/lib/draftAnalytic
 import { calculateRedraftDraftValues } from "@/lib/fantasyTeamValue";
 import {
   FANTASY_SCORING_LABELS,
+  getAllFantasySnapshotPlayers,
   getFantasyWeekLabel,
+  hasCompleteFantasyPlayerUniverse,
   scoringFormatToRouteScoring,
 } from "@/lib/fantasy";
 import {
@@ -129,8 +131,14 @@ export function DraftTrackerClient() {
     [adpAvailable, snapshot]
   );
   const playerLookup = useMemo(
-    () => new Map(draftBoardPlayers.map((player) => [player.id, player])),
-    [draftBoardPlayers]
+    () =>
+      new Map(
+        (snapshot ? getAllFantasySnapshotPlayers(snapshot) : []).map((player) => [
+          player.id,
+          adpAvailable ? player : withoutPlayerAdp(player),
+        ])
+      ),
+    [adpAvailable, snapshot]
   );
   const modelPicks = useMemo(
     () => resolveDraftPicksForModel(draftState.picks, draftBoardPlayers, adpAvailable),
@@ -890,6 +898,7 @@ export function DraftTrackerClient() {
       <div className="hidden sm:block">
         <CompareTray
           resolvePlayer={(id) => playerLookup.get(id)}
+          playerDataReady={!isLoading && hasCompleteFantasyPlayerUniverse(snapshot)}
           publishedRank={publishedDraftRank}
           adpAvailable={adpAvailable}
         />

@@ -1,8 +1,52 @@
 import { act, renderHook, waitFor } from "@testing-library/react";
 import {
+  calculateDraftOrder,
   FANTASY_DRAFT_STORAGE_KEY,
   useDraftState,
 } from "../useDraftState";
+
+const VALID_SETTINGS = {
+  totalTeams: 8,
+  userTeam: 3,
+  scoringFormat: "PPR",
+  draftType: "snake",
+  rounds: 13,
+  timerSeconds: 90,
+  leagueName: "Saved League",
+  draftDate: "2026-06-01T12:00:00.000Z",
+} as const;
+
+function persistedPlayer(id: string, position: "QB" | "RB" | "WR" | "TE" | "K" | "DST" = "RB") {
+  return {
+    id,
+    name: `Player ${id}`,
+    team: "SF",
+    position,
+    averageRank: 1,
+    standardDeviation: 1,
+    projectedPoints: 250,
+    auctionValue: 22,
+  };
+}
+
+function persistedPick(
+  pickNumber: number,
+  playerId = `player-${pickNumber}`,
+  overrides: Record<string, unknown> = {}
+) {
+  return {
+    pickNumber,
+    round: Math.ceil(pickNumber / VALID_SETTINGS.totalTeams),
+    teamNumber: calculateDraftOrder(
+      pickNumber,
+      VALID_SETTINGS.totalTeams,
+      VALID_SETTINGS.draftType
+    ),
+    timestamp: `2026-06-01T12:${String(pickNumber).padStart(2, "0")}:00.000Z`,
+    player: persistedPlayer(playerId),
+    ...overrides,
+  };
+}
 
 describe("useDraftState persisted-state loading", () => {
   beforeEach(() => {
@@ -100,6 +144,201 @@ describe("useDraftState persisted-state loading", () => {
     expect(result.current.draftState.settings.userTeam).toBe(4);
     expect(result.current.draftState.settings.lineup.FLEX).toBe(1);
     expect(localStorage.getItem(previousKey)).toBeNull();
+  });
+
+  it("rebuilds null or malformed team entries and preserves only valid names", async () => {
+    localStorage.setItem(
+      FANTASY_DRAFT_STORAGE_KEY,
+      JSON.stringify({
+        settings: VALID_SETTINGS,
+        picks: [persistedPick(1)],
+        teams: [
+          null,
+          {
+            teamNumber: 2,
+            teamName: "  The Commish  ",
+            picks: "not an array",
+            positionCounts: null,
+            totalValue: "wrong",
+          },
+          { teamNumber: 3, teamName: 42 },
+          { teamNumber: 99, teamName: "Out of range" },
+          null,
+          null,
+          null,
+          null,
+        ],
+      })
+    );
+
+    const { result } = renderHook(() => useDraftState());
+    await waitFor(() => expect(result.current.isLoaded).toBe(true));
+
+    expect(result.current.draftState.teams).toHaveLength(8);
+    expect(result.current.draftState.teams.every(Boolean)).toBe(true);
+    expect(result.current.draftState.teams[0]).toMatchObject({
+      teamNumber: 1,
+      teamName: "Team 1",
+      totalValue: 22,
+      projectedPoints: 250,
+      positionCounts: { RB: 1 },
+    });
+    expect(result.current.draftState.teams[0].picks).toHaveLength(1);
+    expect(result.current.draftState.teams[1].teamName).toBe("The Commish");
+    expect(result.current.draftState.teams[2].teamName).toBe("Team 3");
+  });
+
+  it("stops at a pick whose player is missing instead of bridging the gap", async () => {
+    localStorage.setItem(
+      FANTASY_DRAFT_STORAGE_KEY,
+      JSON.stringify({
+        settings: VALID_SETTINGS,
+        picks: [
+          persistedPick(1),
+          {
+            pickNumber: 2,
+            round: 1,
+            teamNumber: 2,
+            timestamp: "2026-06-01T12:02:00.000Z",
+          },
+          persistedPick(3),
+        ],
+        currentPick: 4,
+      })
+    );
+
+    const { result } = renderHook(() => useDraftState());
+    await waitFor(() => expect(result.current.isLoaded).toBe(true));
+
+    expect(result.current.draftState.picks.map((pick) => pick.pickNumber)).toEqual([1]);
+    expect(result.current.draftState.currentPick).toBe(2);
+    expect(result.current.draftState.teams[1].picks).toEqual([]);
+  });
+
+  it("keeps only the valid prefix when persisted pick numbers are duplicated", async () => {
+    localStorage.setItem(
+      FANTASY_DRAFT_STORAGE_KEY,
+      JSON.stringify({
+        settings: VALID_SETTINGS,
+        picks: [
+          persistedPick(1, "first"),
+          persistedPick(1, "duplicate-number"),
+          persistedPick(2, "after-duplicate"),
+        ],
+      })
+    );
+
+    const { result } = renderHook(() => useDraftState());
+    await waitFor(() => expect(result.current.isLoaded).toBe(true));
+
+    expect(result.current.draftState.picks.map((pick) => pick.player.id)).toEqual(["first"]);
+    expect(result.current.draftState.currentPick).toBe(2);
+  });
+
+  it("stops before a second pick for the same player", async () => {
+    localStorage.setItem(
+      FANTASY_DRAFT_STORAGE_KEY,
+      JSON.stringify({
+        settings: VALID_SETTINGS,
+        picks: [persistedPick(1, "same-player"), persistedPick(2, "same-player")],
+      })
+    );
+
+    const { result } = renderHook(() => useDraftState());
+    await waitFor(() => expect(result.current.isLoaded).toBe(true));
+
+    expect(result.current.draftState.picks.map((pick) => pick.pickNumber)).toEqual([1]);
+    expect(result.current.draftState.currentPick).toBe(2);
+  });
+
+  it("keeps only the valid prefix when persisted picks are noncontiguous", async () => {
+    localStorage.setItem(
+      FANTASY_DRAFT_STORAGE_KEY,
+      JSON.stringify({
+        settings: VALID_SETTINGS,
+        picks: [persistedPick(1), persistedPick(3)],
+      })
+    );
+
+    const { result } = renderHook(() => useDraftState());
+    await waitFor(() => expect(result.current.isLoaded).toBe(true));
+
+    expect(result.current.draftState.picks.map((pick) => pick.pickNumber)).toEqual([1]);
+    expect(result.current.draftState.currentPick).toBe(2);
+  });
+
+  it("rejects a persisted pick whose team or round does not match the snake slot", async () => {
+    localStorage.setItem(
+      FANTASY_DRAFT_STORAGE_KEY,
+      JSON.stringify({
+        settings: VALID_SETTINGS,
+        picks: [persistedPick(1), persistedPick(2, "wrong-slot", { teamNumber: 8, round: 2 })],
+      })
+    );
+
+    const { result } = renderHook(() => useDraftState());
+    await waitFor(() => expect(result.current.isLoaded).toBe(true));
+
+    expect(result.current.draftState.picks.map((pick) => pick.pickNumber)).toEqual([1]);
+    expect(result.current.draftState.currentPick).toBe(2);
+  });
+
+  it("clamps zero and out-of-range settings to supported room controls", async () => {
+    localStorage.setItem(
+      FANTASY_DRAFT_STORAGE_KEY,
+      JSON.stringify({
+        settings: {
+          totalTeams: 0,
+          userTeam: 999,
+          scoringFormat: "POINTS_PER_FIRST_DOWN",
+          draftType: "auction",
+          rounds: 99,
+          lineup: { QB: 99, RB: -5, WR: 99, TE: 0, FLEX: 99, K: 99, DST: -2 },
+          timerSeconds: 999,
+          leagueName: 42,
+          draftDate: "not a date",
+        },
+        teams: [null],
+      })
+    );
+
+    const { result } = renderHook(() => useDraftState());
+    await waitFor(() => expect(result.current.isLoaded).toBe(true));
+
+    expect(result.current.draftState.settings).toMatchObject({
+      totalTeams: 8,
+      userTeam: 8,
+      scoringFormat: "PPR",
+      draftType: "snake",
+      rounds: 18,
+      timerSeconds: 180,
+      leagueName: "My Fantasy League",
+      lineup: { QB: 1, RB: 1, WR: 4, TE: 1, FLEX: 3, K: 1, DST: 0 },
+    });
+    expect(result.current.draftState.settings.draftDate).toBeInstanceOf(Date);
+    expect(result.current.draftState.teams).toHaveLength(8);
+  });
+
+  it("derives counters and active state from the repaired pick history", async () => {
+    localStorage.setItem(
+      FANTASY_DRAFT_STORAGE_KEY,
+      JSON.stringify({
+        settings: VALID_SETTINGS,
+        picks: [persistedPick(1), persistedPick(2)],
+        currentPick: 77,
+        currentRound: 11,
+        isActive: false,
+        endTime: "2026-06-01T14:00:00.000Z",
+      })
+    );
+
+    const { result } = renderHook(() => useDraftState());
+    await waitFor(() => expect(result.current.isLoaded).toBe(true));
+
+    expect(result.current.draftState.currentPick).toBe(3);
+    expect(result.current.draftState.currentRound).toBe(1);
+    expect(result.current.draftState.isActive).toBe(true);
+    expect(result.current.draftState.endTime).toBeUndefined();
   });
 
   it("still drops a corrupt blob and starts clean", async () => {

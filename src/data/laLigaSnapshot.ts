@@ -4,6 +4,7 @@ import type { LaLigaSnapshot } from "@/types/la-liga";
 export const laLigaSnapshot: LaLigaSnapshot = {
   "season": "2025/26",
   "matchday": 38,
+  "generatedAt": "2026-07-05T20:27:14.246Z",
   "updatedAt": "2026-07-06",
   "sourceLabel": "football-data.org",
   "sourceUrls": {

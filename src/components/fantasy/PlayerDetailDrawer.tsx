@@ -118,11 +118,19 @@ export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onCl
       if (focusable.length === 0) return;
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
+      const activeElement = document.activeElement;
+      const focusIsInside = Boolean(activeElement && panel.contains(activeElement));
 
-      if (event.shiftKey && document.activeElement === first) {
+      if (
+        event.shiftKey &&
+        (activeElement === panel || activeElement === first || !focusIsInside)
+      ) {
         event.preventDefault();
         last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
+      } else if (
+        !event.shiftKey &&
+        (activeElement === panel || activeElement === last || !focusIsInside)
+      ) {
         event.preventDefault();
         first.focus();
       }

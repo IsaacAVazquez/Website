@@ -17,15 +17,27 @@ function isRouteActive(pathname: string, href: string) {
 }
 
 export function StaticHeader() {
+  const pathname = usePathname();
+
+  // Catalog 97 routes own their header. Keeping the Working Instrument header
+  // unmounted also keeps its scroll lock, scroll listener, and search keyboard
+  // shortcuts from running behind an invisible component.
+  if (isCatalog97Route(pathname)) return null;
+
+  return <WorkingInstrumentHeader pathname={pathname} />;
+}
+
+function WorkingInstrumentHeader({ pathname }: { pathname: string }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const pathname = usePathname();
 
-  // Close the search dropdown on navigation so a result click never leaves it open.
+  // Close transient header UI on navigation, including browser-driven route
+  // changes that do not go through one of the header's own click handlers.
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- Dismiss the search dropdown when the route changes
     setIsSearchOpen(false);
+    setIsMobileMenuOpen(false);
   }, [pathname]);
 
   useEffect(() => {
@@ -83,11 +95,6 @@ export function StaticHeader() {
   }, []);
 
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
-
-  // The seven Catalog 97 routes render their own header inside Catalog97Shell,
-  // so this one stands down rather than stacking a second nav on top of it.
-  // Placed after every hook so the hook order stays stable across routes.
-  if (isCatalog97Route(pathname)) return null;
 
   return (
     <>

@@ -92,4 +92,44 @@ describe("DraftSetup", () => {
       })
     );
   });
+
+  it("exposes the selected state for every button option group", () => {
+    render(
+      <DraftSetup
+        settings={makeSettings()}
+        onSaveSettings={jest.fn()}
+        onStartDraft={jest.fn()}
+      />
+    );
+
+    expect(screen.getByRole("button", { name: /2 WR \+ flex/i })).toHaveAttribute(
+      "aria-pressed",
+      "true"
+    );
+    expect(screen.getByRole("button", { name: /3 WR, no K\/DST/i })).toHaveAttribute(
+      "aria-pressed",
+      "false"
+    );
+
+    const snake = screen.getByRole("button", { name: /Snake/i });
+    const linear = screen.getByRole("button", { name: /Linear/i });
+    expect(snake).toHaveAttribute("aria-pressed", "true");
+    fireEvent.click(linear);
+    expect(linear).toHaveAttribute("aria-pressed", "true");
+    expect(snake).toHaveAttribute("aria-pressed", "false");
+
+    const ppr = screen.getByRole("button", { name: /^PPR/i });
+    const standard = screen.getByRole("button", { name: /^Standard/i });
+    expect(ppr).toHaveAttribute("aria-pressed", "true");
+    fireEvent.click(standard);
+    expect(standard).toHaveAttribute("aria-pressed", "true");
+    expect(ppr).toHaveAttribute("aria-pressed", "false");
+
+    const timerOn = screen.getByRole("button", { name: /^On/i });
+    const timerOff = screen.getByRole("button", { name: /^Off/i });
+    expect(timerOn).toHaveAttribute("aria-pressed", "true");
+    fireEvent.click(timerOff);
+    expect(timerOff).toHaveAttribute("aria-pressed", "true");
+    expect(timerOn).toHaveAttribute("aria-pressed", "false");
+  });
 });

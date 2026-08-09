@@ -133,12 +133,32 @@ describe("SEO page sitemap freshness", () => {
   it.each([
     "/",
     "/about",
-    "/accessibility",
-    "/arcade",
-    "/portfolio",
-    "/writing",
+    "/contact",
+    "/resume",
   ])(
-    "records the SEO update for %s",
+    "records the Catalog 97 update for %s",
+    (pathname) => {
+      const entry = getPublicSitemapEntries().find(
+        ({ loc }: { loc: string }) => loc === pathname
+      );
+
+      expect(entry?.lastmod).toBe("2026-08-05T00:00:00.000Z");
+    }
+  );
+
+  it.each(["/portfolio", "/writing"])(
+    "records the restored archive controls for %s",
+    (pathname) => {
+      const entry = getPublicSitemapEntries().find(
+        ({ loc }: { loc: string }) => loc === pathname
+      );
+
+      expect(entry?.lastmod).toBe("2026-08-09T00:00:00.000Z");
+    }
+  );
+
+  it.each(["/accessibility", "/arcade"])(
+    "keeps the prior SEO update for %s",
     (pathname) => {
       const entry = getPublicSitemapEntries().find(
         ({ loc }: { loc: string }) => loc === pathname
@@ -147,6 +167,18 @@ describe("SEO page sitemap freshness", () => {
       expect(entry?.lastmod).toBe("2026-07-16T00:00:00.000Z");
     }
   );
+
+  it("publishes the dashboards section hub with its launch date", () => {
+    const entry = getPublicSitemapEntries().find(
+      ({ loc }: { loc: string }) => loc === "/dashboards"
+    );
+
+    expect(entry).toMatchObject({
+      lastmod: "2026-08-03T00:00:00.000Z",
+      changefreq: "weekly",
+      priority: 0.8,
+    });
+  });
 
   it.each([
     "/mba-internship-notifications",

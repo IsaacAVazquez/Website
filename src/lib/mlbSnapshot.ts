@@ -37,6 +37,7 @@ function clampMlbTeamSnapshot(snapshot: MlbTeamSnapshot): MlbTeamSnapshot {
 export function createEmptyMlbSummarySnapshot(): MlbSummarySnapshot {
   return {
     season: mlbSnapshot.season,
+    generatedAt: mlbSnapshot.generatedAt,
     updatedAt: mlbSnapshot.updatedAt,
     sourceLabel: mlbSnapshot.sourceLabel,
     sourceUrls: mlbSnapshot.sourceUrls,

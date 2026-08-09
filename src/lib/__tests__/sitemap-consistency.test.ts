@@ -1,4 +1,9 @@
 import fs from "fs";
+import { formula1Snapshot } from "@/data/formula1Snapshot";
+import { golfSnapshot } from "@/data/golfSnapshot";
+import { laLigaSnapshot } from "@/data/laLigaSnapshot";
+import { mlbSnapshot } from "@/data/mlbSnapshot";
+import { nbaSnapshot } from "@/data/nbaSnapshot";
 
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const { getPublicSitemapEntries } = require("../../../src/lib/sitemap.js") as {
@@ -38,5 +43,21 @@ describe("public sitemap", () => {
       .sort((a, b) => a.loc.localeCompare(b.loc));
 
     expect(actual).toEqual(expected);
+  });
+
+  it.each([
+    ["/formula-1", formula1Snapshot.generatedAt],
+    ["/golf", golfSnapshot.summary.tournament?.generatedAt],
+    ["/la-liga", laLigaSnapshot.generatedAt],
+    ["/mlb", mlbSnapshot.generatedAt],
+    ["/nba", nbaSnapshot.generatedAt],
+    [
+      "/spacex-mission-control",
+      JSON.parse(fs.readFileSync("src/data/spacexSnapshot.generated.json", "utf8"))
+        .generatedAt,
+    ],
+  ])("tracks the current snapshot timestamp for %s", (pathname, generatedAt) => {
+    const entry = getPublicSitemapEntries().find(({ loc }) => loc === pathname);
+    expect(entry?.lastmod).toBe(new Date(generatedAt as string).toISOString());
   });
 });

@@ -27,6 +27,7 @@ import {
   getAllFantasySnapshotPlayers,
   getFantasyPlayerSearchText,
   getFantasyWeekLabel,
+  hasCompleteFantasyPlayerUniverse,
 } from "@/lib/fantasy";
 import {
   FANTASY_AVG_RANK_TOOLTIP,
@@ -393,7 +394,10 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
   const playerLookup = useMemo(() => {
     const map = new Map<string, Player>();
     for (const player of allBoardPlayers) map.set(player.id, player);
-    for (const player of players) if (!map.has(player.id)) map.set(player.id, player);
+    // Position slices carry board-specific ranks, tiers, and expert ranges.
+    // Prefer that active record over the overall union so detail and compare
+    // surfaces describe the board the user is currently viewing.
+    for (const player of players) map.set(player.id, player);
     return map;
   }, [allBoardPlayers, players]);
 
@@ -1157,6 +1161,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
       />
       <CompareTray
         resolvePlayer={(id) => playerLookup.get(id)}
+        playerDataReady={!isLoading && hasCompleteFantasyPlayerUniverse(snapshot)}
         publishedRank={(player) => getPublishedBoardRank(player, routeState.position)}
         valueSignalAvailable={routeState.position === "overall" || routeState.position === "flex"}
         adpAvailable={adpAvailable}

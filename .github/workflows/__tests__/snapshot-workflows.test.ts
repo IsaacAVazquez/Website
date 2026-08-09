@@ -108,8 +108,13 @@ describe("snapshot refresh workflow infrastructure", () => {
     expect(publicationWorkflow).toContain("cancel-in-progress: true");
     expect(publicationWorkflow).toContain("printDataLedgerRevision.ts");
     expect(publicationWorkflow).toContain("ensure-production-data-ledger.mjs");
+    expect(publicationWorkflow).toContain("EXPECTED_COMMIT");
+    expect(publicationWorkflow).toContain("fetch-depth: 100");
     expect(publicationWorkflow).toContain("NETLIFY_BUILD_HOOK is required");
     expect(verifier).toContain("cacheBust");
+    expect(verifier).toContain("publicationRevision");
+    expect(verifier).toContain("merge-base");
+    expect(verifier).toContain("AbortSignal.timeout");
     expect(verifier).toContain("Production health endpoint rejected");
     expect(verifier).toContain("Production did not serve data ledger");
 

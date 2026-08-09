@@ -12,12 +12,12 @@ Fast route reference for the current app.
 |------|------|----------------|
 | `/` | `src/app/page.tsx` | Server page composing client sections |
 | `/about` | `src/app/about/page.tsx` | Server page -> `About` client component |
-| `/portfolio` | `src/app/portfolio/page.tsx` | Server page -> `Catalog97Portfolio` client (category-filtered project index) |
+| `/portfolio` | `src/app/portfolio/page.tsx` | Server page -> `Catalog97Portfolio` client with project search, sorting, and category filters |
 | `/portfolio/[slug]` | `src/app/portfolio/[slug]/page.tsx` | Server detail page |
 | `/resume` | `src/app/resume/page.tsx` | Server page -> client resume UI |
 | `/contact` | `src/app/contact/page.tsx` | Server page -> `ContactContent` |
 | `/accessibility` | `src/app/accessibility/page.tsx` | Server page |
-| `/writing` | `src/app/writing/page.tsx` | Async server page |
+| `/writing` | `src/app/writing/page.tsx` | Async server page -> `Catalog97Writing` client with search, sorting, filters, and topic links |
 | `/writing/[slug]` | `src/app/writing/[slug]/page.tsx` | Async server page |
 | `/investments` | `src/app/investments/page.tsx` | Server page -> `InvestmentsClient` |
 | `/formula-1` | `src/app/formula-1/page.tsx` | Server page -> `Formula1Client` |
@@ -121,7 +121,7 @@ Footer behavior:
 ### `/portfolio`
 
 - server page calls `getPortfolioProjects()` and hands the project index to the `Catalog97Portfolio` client (`src/components/catalog97/Catalog97Portfolio.tsx`)
-- `Catalog97Portfolio` adds a category filter tablist built from `TOOL_CATEGORY_DEFS`, leads with four full-weight entries on the camel band, and drops the remainder into the pine ledger below
+- `Catalog97Portfolio` adds project search, sorting, and a button group built from `TOOL_CATEGORY_DEFS`, leads with four full-weight entries on the camel band, and drops the remainder into the pine ledger below
 - every slug in `caseStudies.ts` is bucketed by `classifyToolSlug`, so no project disappears when a filter is on
 - entries should make role, problem space, and impact scannable before click-through
 - do not document `ProjectsContent.tsx` as the primary live implementation

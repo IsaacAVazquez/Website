@@ -110,6 +110,9 @@ export interface LaLigaMatchdayGoals {
 export interface LaLigaSnapshot {
   season: string;
   matchday: number;
+  /** Full ISO timestamp for freshness checks and publication metadata. */
+  generatedAt: string;
+  /** Calendar date retained for user-facing date labels. */
   updatedAt: string;
   sourceLabel: string;
   sourceUrls: {

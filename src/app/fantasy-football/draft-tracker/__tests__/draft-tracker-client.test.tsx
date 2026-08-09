@@ -107,6 +107,15 @@ describe("DraftTrackerClient", () => {
             maxRank: 2,
           },
         ],
+        positions: {
+          QB: [],
+          RB: [],
+          WR: [],
+          TE: [],
+          K: [],
+          DST: [],
+          FLEX: [],
+        },
         sliceMetadata: {
           overall: {
             available: true,

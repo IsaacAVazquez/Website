@@ -5,6 +5,7 @@ jest.mock("@/lib/laLigaSnapshot", () => ({
   createEmptyLaLigaSummarySnapshot: jest.fn(() => ({
     season: "2025/26",
     matchday: 0,
+    generatedAt: "2026-04-03T00:00:00.000Z",
     updatedAt: "2026-04-03T00:00:00.000Z",
     sourceLabel: "Football-Data.org",
     sourceUrls: { standings: "", scorers: "", assists: "" },
@@ -39,6 +40,7 @@ describe("GET /api/la-liga/summary", () => {
     mockGetLaLigaSummarySnapshot.mockResolvedValue({
       season: "2025/26",
       matchday: 30,
+      generatedAt: "2026-04-03T00:00:00.000Z",
       updatedAt: "2026-04-03T00:00:00.000Z",
       sourceLabel: "Football-Data.org",
       sourceUrls: { standings: "standings", scorers: "scorers", assists: "assists" },

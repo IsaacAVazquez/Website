@@ -28,18 +28,39 @@ test.describe("Portfolio shell", () => {
     });
   }
 
-  test("/portfolio renders the masthead, the pinned featured project, and the card index", async ({ page }) => {
+  test("/portfolio renders the masthead, lead projects, filter, and index", async ({ page }) => {
     await page.goto("/portfolio");
 
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
-    // Investment Analytics Platform is pinned as the featured spotlight.
     await expect(
       page.getByRole("heading", { name: /investment analytics platform/i })
     ).toBeVisible();
-    // The (paginated) archive renders project cards. The full ordered index is
-    // verified at the data layer in src/constants/__tests__/caseStudies.test.ts;
-    // here we just confirm the index populates with real cards.
-    const cardTitles = await page.getByTestId("portfolio-card-title").allTextContents();
-    expect(cardTitles.length).toBeGreaterThan(0);
+
+    const filters = page.getByRole("group", {
+      name: "Filter projects by category",
+    });
+    await expect(filters).toBeVisible();
+    await expect(filters.getByRole("button", { name: /^All / })).toHaveAttribute(
+      "aria-pressed",
+      "true"
+    );
+
+    const search = page.getByRole("searchbox", { name: "Search projects" });
+    await search.fill("investment analytics");
+    await expect(
+      page.getByRole("heading", { name: /investment analytics platform/i })
+    ).toBeVisible();
+
+    await search.fill("no matching project title");
+    await expect(page.getByText("No projects match that search.")).toBeVisible();
+
+    await search.fill("");
+    await page.getByRole("combobox", { name: "Sort projects" }).selectOption("alpha");
+    const leadTitles = await page
+      .locator('section[data-c97-surface="camel"] h2')
+      .allTextContents();
+    expect(leadTitles).toEqual([...leadTitles].sort((left, right) => left.localeCompare(right)));
+
+    expect(await page.locator('main a[href^="/portfolio/"]').count()).toBeGreaterThan(0);
   });
 });

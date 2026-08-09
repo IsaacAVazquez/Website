@@ -27,6 +27,8 @@ function blobSnapshot(): PollingSnapshot {
 
 describe("getPollingSnapshot", () => {
   beforeEach(() => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date("2026-07-20T12:45:00.000Z"));
     jest.clearAllMocks();
     resetPollingCacheForTests();
   });
@@ -63,6 +65,20 @@ describe("getPollingSnapshot", () => {
     await expect(getPollingSnapshot()).resolves.toBe(pollingSnapshot);
   });
 
+  it("refuses a newly saved blob whose underlying polling source is stale", async () => {
+    const staleBlob = {
+      ...blobSnapshot(),
+      generatedAt: "2026-07-20T12:45:00.000Z",
+      sourceAsOf: "2026-06-01",
+    };
+    mockRead.mockResolvedValue({
+      value: staleBlob,
+      savedAt: "2026-07-20T12:45:00.000Z",
+    });
+
+    await expect(getPollingSnapshot()).resolves.toBe(pollingSnapshot);
+  });
+
   it("falls back to the committed seed when the blob read rejects", async () => {
     mockRead.mockRejectedValue(new Error("store down"));
 
@@ -70,7 +86,6 @@ describe("getPollingSnapshot", () => {
   });
 
   it("caches the result for the TTL, then re-reads", async () => {
-    jest.useFakeTimers();
     mockRead.mockResolvedValue(null);
 
     await getPollingSnapshot();

@@ -20,7 +20,7 @@ export async function GET() {
       headers: createSnapshotResponseHeaders({
         surface: "mlb",
         payload: summary,
-        sourceAsOf: summary.updatedAt,
+        sourceAsOf: summary.generatedAt,
         cacheControl: SUCCESS_CACHE_CONTROL,
         source: "statsapi-runtime-with-snapshot-fallback",
       }),

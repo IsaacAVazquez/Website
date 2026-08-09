@@ -8,10 +8,9 @@ test.describe("Resume", () => {
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
     await expect(page.locator("h1")).toHaveCount(1);
 
-    // The Download PDF action is the single highest-value control on this page.
-    const download = page.getByRole("button", { name: /download pdf/i });
+    const download = page.getByRole("link", { name: /download pdf/i }).first();
     await expect(download).toBeVisible();
-    await expect(download).toBeEnabled();
+    await expect(download).toHaveAttribute("href", "/Isaac_Vazquez_Resume.pdf");
 
     // The handler points an anchor at this asset; verify it actually resolves
     // rather than 404s, which is the realistic regression (handler/href/rename).

@@ -204,6 +204,7 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
               <button
                 key={preset.id}
                 type="button"
+                aria-pressed={active}
                 onClick={() => updateField("lineup", { ...preset.lineup })}
                 className="min-h-[84px] rounded-[var(--radius-3xl)] border px-4 py-3 text-left transition-[background-color,border-color,color,box-shadow] duration-200"
                 style={getOptionStyle(active)}
@@ -266,6 +267,7 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
                 <button
                   key={option.value}
                   type="button"
+                  aria-pressed={active}
                   onClick={() => updateField("draftType", option.value)}
                   className="min-h-[76px] rounded-[var(--radius-3xl)] border px-4 py-3 text-left transition-[background-color,border-color,color,box-shadow] duration-200"
                   style={getOptionStyle(active)}
@@ -292,6 +294,7 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
                 <button
                   key={option.value}
                   type="button"
+                  aria-pressed={active}
                   onClick={() => updateField("scoringFormat", option.value)}
                   className="min-h-[72px] rounded-[var(--radius-3xl)] border px-4 py-3 text-left transition-[background-color,border-color,color,box-shadow] duration-200"
                   style={getOptionStyle(active)}
@@ -323,6 +326,7 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
                 <button
                   key={option.label}
                   type="button"
+                  aria-pressed={active}
                   onClick={() => updateField("timerSeconds", option.value === 0 ? 0 : formState.timerSeconds || 90)}
                   className="min-h-[72px] rounded-[var(--radius-3xl)] border px-4 py-3 text-left transition-[background-color,border-color,color,box-shadow] duration-200"
                   style={getOptionStyle(active)}

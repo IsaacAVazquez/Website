@@ -61,6 +61,7 @@ export function sortBestBallRankings(
         bestBallEcr: ecr,
         adjustedRank,
         rankAdjustment,
+        isUndraftedAtContestFloor: supportsAdp && atUndraftedFloor,
         rankReason:
           hasSuperflexRank
             ? `The sourced Superflex consensus rank is ${Number(player.superflexRank).toFixed(0)}.`

@@ -24,6 +24,11 @@ const POSITION_CHIP_STYLE = {
   color: "var(--home-ink)",
 } as const;
 
+function formatBoardAdp(player: RankedBestBallPlayer, missingLabel: string): string {
+  if (player.isUndraftedAtContestFloor) return "Undrafted";
+  return player.adp?.toFixed(1) ?? missingLabel;
+}
+
 export function BestBallDraftBoard({
   players,
   currentPick,
@@ -146,12 +151,12 @@ export function BestBallDraftBoard({
               <span className="mt-1 block truncate text-xs sm:hidden" style={{ color: "var(--home-ink-muted)" }}>
                 {player.team} · {adpAvailable ? "ADP" : "Source rank"}{" "}
                 {adpAvailable
-                  ? player.adp?.toFixed(1) ?? "not available"
+                  ? formatBoardAdp(player, "not available")
                   : player.adjustedRank.toFixed(0)}{" "}
                 · Bye{" "}
                 {player.byeWeek ?? "not available"}
               </span>
-              {player.rankAdjustment !== 0 ? (
+              {player.rankAdjustment !== 0 || player.isUndraftedAtContestFloor ? (
                 <span className="mt-1 hidden truncate text-2xs lg:block" style={{ color: "var(--home-signal)" }}>
                   {player.rankReason}
                 </span>
@@ -166,7 +171,7 @@ export function BestBallDraftBoard({
             <span className="hidden text-xs font-medium sm:block">{player.team}</span>
             <span className="hidden text-xs tabular-nums sm:block">
               {adpAvailable
-                ? player.adp?.toFixed(1) ?? "Not matched"
+                ? formatBoardAdp(player, "Not matched")
                 : player.adjustedRank.toFixed(0)}
             </span>
             <span className="hidden text-xs tabular-nums sm:block">

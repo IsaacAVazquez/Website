@@ -1,7 +1,10 @@
 /** @jest-environment node */
 
+import fs from "fs";
 import { NextRequest } from "next/server";
 import { buildContentSecurityPolicy, proxy, config } from "@/proxy";
+
+const nextConfig = fs.readFileSync("next.config.mjs", "utf8");
 
 describe("proxy security headers", () => {
   it("keeps CSP enabled for HTML routes without analytics vendor domains", () => {
@@ -12,6 +15,8 @@ describe("proxy security headers", () => {
 
     expect(contentSecurityPolicy).toBeTruthy();
     expect(contentSecurityPolicy).toContain("default-src 'self'");
+    expect(contentSecurityPolicy).toContain("frame-ancestors 'self'");
+    expect(response.headers.get("X-Frame-Options")).toBe("SAMEORIGIN");
     expect(contentSecurityPolicy).toContain("script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com");
     expect(contentSecurityPolicy).not.toContain("googletagmanager");
     expect(contentSecurityPolicy).not.toContain("google-analytics.com");
@@ -42,7 +47,17 @@ describe("proxy security headers", () => {
     expect(response.status).toBe(307);
     expect(response.headers.get("location")).toBe("https://example.com/writing/example-post");
     expect(response.headers.get("Content-Security-Policy")).toContain("default-src 'self'");
-    expect(response.headers.get("X-Frame-Options")).toBe("DENY");
+    expect(response.headers.get("X-Frame-Options")).toBe("SAMEORIGIN");
+  });
+
+  it("keeps the deployment-level framing policy aligned with the proxy", () => {
+    expect(nextConfig).toContain('"frame-ancestors \'self\'"');
+    expect(nextConfig).toMatch(
+      /key:\s*["']X-Frame-Options["'][\s\S]*?value:\s*["']SAMEORIGIN["']/,
+    );
+    expect(nextConfig).not.toMatch(
+      /frame-ancestors 'none'|key:\s*["']X-Frame-Options["'][\s\S]*?value:\s*["']DENY["']/,
+    );
   });
 
   it("only upgrades subresources for browser-facing HTTPS requests", () => {

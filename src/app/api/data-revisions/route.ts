@@ -52,6 +52,20 @@ import investmentsIndex from "../../../../public/data/investments/index.json";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
+function getDeploymentCommit(): string | null {
+  const candidates = [
+    process.env.COMMIT_REF,
+    process.env.VERCEL_GIT_COMMIT_SHA,
+    process.env.GITHUB_SHA,
+  ];
+  return (
+    candidates.find(
+      (candidate): candidate is string =>
+        typeof candidate === "string" && /^[a-f0-9]{40}$/i.test(candidate)
+    ) ?? null
+  );
+}
+
 export async function GET() {
   const now = Date.now();
   const nowDate = new Date(now);
@@ -101,7 +115,7 @@ export async function GET() {
           : undefined,
     });
   };
-  const entries = [
+  const publicationEntries = [
     entry("earthquake", earthquakeSnapshot.summary, earthquakeSnapshot.summary.generatedAt),
     entry(
       "bay-area-transit",
@@ -128,9 +142,9 @@ export async function GET() {
       premierLeagueSnapshot.summary,
       premierLeagueSnapshot.summary.generatedAt
     ),
-    entry("la-liga", laLigaSnapshot, laLigaSnapshot.updatedAt),
-    entry("mlb", mlbSnapshot, mlbSnapshot.updatedAt),
-    entry("nba", nbaSnapshot, nbaSnapshot.updatedAt),
+    entry("la-liga", laLigaSnapshot, laLigaSnapshot.generatedAt),
+    entry("mlb", mlbSnapshot, mlbSnapshot.generatedAt),
+    entry("nba", nbaSnapshot, nbaSnapshot.generatedAt),
     entry("nfl", nflSnapshot, nflSnapshot.updatedAt),
     entry("fantasy-football", fantasySnapshot, fantasySnapshot.generatedAt),
     entry(
@@ -180,6 +194,9 @@ export async function GET() {
       pollingSnapshot,
       pollingSnapshot.sourceAsOf ?? pollingSnapshot.generatedAt
     ),
+  ];
+  const entries = [
+    ...publicationEntries,
     runtimeEntry("news-pulse", newsPulseHeartbeat),
     runtimeEntry("mba-jobs", mbaJobsHeartbeat),
   ];
@@ -188,6 +205,8 @@ export async function GET() {
     {
       checkedAt: new Date(now).toISOString(),
       revision: createDataLedgerRevision(entries),
+      publicationRevision: createDataLedgerRevision(publicationEntries),
+      deploymentCommit: getDeploymentCommit(),
       entries,
     },
     {

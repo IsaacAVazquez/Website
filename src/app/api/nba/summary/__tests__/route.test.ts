@@ -4,6 +4,7 @@
 jest.mock("@/lib/nbaSnapshot", () => ({
   createEmptyNbaSummarySnapshot: jest.fn(() => ({
     season: "2025/26",
+    generatedAt: "2026-04-03T00:00:00.000Z",
     updatedAt: "2026-04-03T00:00:00.000Z",
     sourceLabel: "ESPN",
     sourceUrls: { standings: "", leaders: "", scoreboard: "" },
@@ -38,6 +39,7 @@ describe("GET /api/nba/summary", () => {
   it("returns the normalized NBA summary with cache headers", async () => {
     mockGetNbaSummarySnapshot.mockResolvedValue({
       season: "2025/26",
+      generatedAt: "2026-04-03T00:00:00.000Z",
       updatedAt: "2026-04-03T00:00:00.000Z",
       sourceLabel: "ESPN",
       sourceUrls: { standings: "standings", leaders: "leaders", scoreboard: "scoreboard" },

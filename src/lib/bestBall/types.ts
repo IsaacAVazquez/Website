@@ -106,6 +106,7 @@ export interface RankedBestBallPlayer extends Player {
   adjustedRank: number;
   rankAdjustment: number;
   rankReason: string;
+  isUndraftedAtContestFloor: boolean;
 }
 
 export type BestBallRosterComposition = Record<BestBallPosition, number>;

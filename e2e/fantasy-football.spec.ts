@@ -293,7 +293,7 @@ test.describe("Fantasy football draft tracker", () => {
       await page.getByRole("button", { name: new RegExp(`^${scoring.label}`) }).click();
       await page.getByRole("button", { name: /Start draft assistant/i }).click();
 
-      await expect(page.getByText(`${scoring.label} scoring`, { exact: true })).toBeVisible();
+      await expect(page.getByText(new RegExp(`^${scoring.label} scoring`))).toBeVisible();
       await expect(page.getByText("Draft assistant unavailable for this scoring format")).toHaveCount(0);
       const firstPick = page.getByRole("button", { name: "Log pick" }).first().locator("..");
       await expect(firstPick).toContainText(scoring.topPlayer);

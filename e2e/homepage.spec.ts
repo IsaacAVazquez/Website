@@ -1,15 +1,14 @@
 import { test, expect } from '@playwright/test'
 
-// The header renders every entry in src/constants/navlinks.tsx (8 links) in both
-// the desktop and mobile menus. Keep this in sync with that file.
+// Catalog97Header renders the seven destinations in catalog97Nav.ts on every
+// viewport. The links wrap on phones instead of moving behind a menu.
 const NAV_LABELS = [
   'Home',
-  'About',
-  'Projects',
+  'Work',
   'Writing',
-  'Investments',
-  'Fantasy',
-  'Resume',
+  'Dashboards',
+  'About',
+  'Résumé',
   'Contact',
 ]
 
@@ -22,37 +21,33 @@ test.describe('Homepage', () => {
   test('should display hero section', async ({ page }) => {
     await page.goto('/')
 
-    await expect(page.getByTestId('hero')).toBeVisible()
+    await expect(page.locator('.c97-page')).toBeVisible()
+    await expect(
+      page.getByRole('heading', {
+        level: 1,
+        name: /i build tools that make hard problems easier to act on/i,
+      })
+    ).toBeVisible()
   })
 
   test('should have functional desktop navigation', async ({ page }) => {
-    // The desktop primary nav is hidden below the md breakpoint, where the
-    // hamburger menu takes over (covered by the mobile navigation test below).
-    const viewport = page.viewportSize()
-    test.skip(
-      !!viewport && viewport.width < 768,
-      'Desktop-only nav; the mobile menu is covered by the mobile navigation test'
-    )
-
     await page.goto('/')
 
-    await expect(
-      page.getByLabel('Primary navigation').getByRole('link')
-    ).toHaveText(NAV_LABELS)
+    await expect(page.getByRole('navigation', { name: 'Main' }).getByRole('link')).toHaveText(
+      NAV_LABELS
+    )
   })
 
   test('should have functional mobile navigation', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 })
     await page.goto('/')
 
-    await page.getByRole('button', { name: /open navigation menu/i }).click()
-
-    await expect(
-      page.getByLabel('Mobile navigation').getByRole('link')
-    ).toHaveText(NAV_LABELS)
+    const navigation = page.getByRole('navigation', { name: 'Main' })
+    await expect(navigation.getByRole('link')).toHaveText(NAV_LABELS)
+    await expect(navigation.getByRole('link', { name: 'Work' })).toBeVisible()
   })
 
-  test('shows the instrument hero and primary CTAs', async ({ page }) => {
+  test('shows the Catalog 97 hero and primary CTAs', async ({ page }) => {
     await page.goto('/')
 
     await expect(
@@ -63,10 +58,11 @@ test.describe('Homepage', () => {
     ).toBeVisible()
     // The primary CTAs sit directly under the hero claim.
     await expect(page.getByRole('link', { name: /see the work/i }).first()).toBeVisible()
-    await expect(page.getByRole('link', { name: /read the writing/i }).first()).toBeVisible()
-    await expect(page.getByTestId('home-projects')).toBeVisible()
-    await expect(page.getByTestId('home-writing')).toBeVisible()
-    await expect(page.getByRole('button', { name: /theme:/i }).first()).toBeVisible()
+    await expect(page.getByRole('link', { name: /start a conversation/i }).first()).toBeVisible()
+    await expect(page.getByRole('heading', { name: /selected work/i })).toBeVisible()
+    await expect(page.getByRole('heading', { name: /recent writing/i })).toBeVisible()
+    await expect(page.getByRole('button', { name: /search the site/i })).toBeVisible()
+    await expect(page.getByRole('button', { name: /theme:/i })).toBeVisible()
   })
 
   test('should be responsive on mobile', async ({ page }) => {
@@ -82,10 +78,8 @@ test.describe('Homepage', () => {
     // Tab to focus on skip link (if present)
     await page.keyboard.press('Tab')
 
-    const skipLink = page.getByRole('link', { name: /skip to content/i })
-    if ((await skipLink.count()) > 0) {
-      await expect(skipLink).toBeVisible()
-    }
+    const skipLink = page.getByRole('link', { name: /skip to main content/i })
+    await expect(skipLink).toBeVisible()
   })
 
   test('keeps the hero heading in the initial mobile viewport', async ({ page }) => {
@@ -109,24 +103,69 @@ test.describe('Homepage', () => {
     await expect(page.getByRole('link', { name: /see the work/i }).first()).toBeVisible()
   })
 
-  test('shows the instrument sections and card links', async ({ page }) => {
+  test('keeps the header utilities and primary action usable at 320px', async ({ page }) => {
+    await page.setViewportSize({ width: 320, height: 844 })
     await page.goto('/')
 
-    await expect(
-      page.getByRole('heading', { name: /selected work/i })
-    ).toBeVisible()
-    await expect(
-      page.getByRole('heading', { name: /recent writing/i })
-    ).toBeVisible()
-    await expect(
-      page.getByRole('heading', {
-        name: /building something that needs judgment and follow-through/i,
-      })
-    ).toBeVisible()
+    const navigation = page.getByRole('navigation', { name: 'Main' })
+    await expect(navigation.getByRole('button', { name: /search the site/i })).toBeVisible()
+    await expect(navigation.getByRole('button', { name: /theme:/i })).toBeVisible()
 
-    await expect(page.getByTestId('home-projects').getByRole('link')).toHaveCount(3)
-    await expect(page.getByTestId('home-writing').getByRole('link')).toHaveCount(3)
-    await expect(page.getByTestId('home-tools')).toBeVisible()
+    const controls = navigation.locator('a, button')
+    const boxes = await controls.evaluateAll((elements) =>
+      elements.map((element) => {
+        const rect = element.getBoundingClientRect()
+        return {
+          label: element.getAttribute('aria-label') ?? element.textContent?.trim() ?? '',
+          left: rect.left,
+          right: rect.right,
+          top: rect.top,
+          bottom: rect.bottom,
+        }
+      })
+    )
+
+    for (let leftIndex = 0; leftIndex < boxes.length; leftIndex += 1) {
+      for (let rightIndex = leftIndex + 1; rightIndex < boxes.length; rightIndex += 1) {
+        const left = boxes[leftIndex]
+        const right = boxes[rightIndex]
+        const overlaps =
+          Math.min(left.right, right.right) > Math.max(left.left, right.left) &&
+          Math.min(left.bottom, right.bottom) > Math.max(left.top, right.top)
+        expect(overlaps, `${left.label} overlaps ${right.label}`).toBe(false)
+      }
+    }
+
+    const layout = await page.evaluate(() => {
+      const action = document.querySelector<HTMLAnchorElement>('main a[href="/portfolio"]')
+      const actionRect = action?.getBoundingClientRect()
+      return {
+        hasHorizontalOverflow: document.documentElement.scrollWidth > window.innerWidth + 1,
+        actionBottom: actionRect ? actionRect.bottom : null,
+        viewportHeight: window.innerHeight,
+      }
+    })
+
+    expect(layout.hasHorizontalOverflow).toBe(false)
+    expect(layout.actionBottom).not.toBeNull()
+    expect(layout.actionBottom as number).toBeLessThanOrEqual(layout.viewportHeight)
+  })
+
+  test('shows the Catalog 97 sections and their links', async ({ page }) => {
+    await page.goto('/')
+
+    const selectedWork = page.locator('section').filter({
+      has: page.getByRole('heading', { name: /selected work/i }),
+    })
+    const recentWriting = page.locator('section').filter({
+      has: page.getByRole('heading', { name: /recent writing/i }),
+    })
+
+    await expect(selectedWork).toBeVisible()
+    await expect(recentWriting).toBeVisible()
+    await expect(page.getByRole('heading', { name: /live dashboards/i })).toBeVisible()
+    expect(await selectedWork.locator('a[href^="/portfolio/"]').count()).toBeGreaterThan(0)
+    expect(await recentWriting.locator('a[href^="/writing/"]').count()).toBeGreaterThan(0)
   })
 
   test('supports dark theme on the homepage', async ({ page }) => {
@@ -137,8 +176,8 @@ test.describe('Homepage', () => {
     await page.goto('/')
 
     await expect(page.locator('html')).toHaveClass(/dark/)
-    await expect(page.getByTestId('hero')).toBeVisible()
-    await expect(page.getByTestId('home-writing')).toBeVisible()
+    await expect(page.locator('.c97-page')).toBeVisible()
+    await expect(page.getByRole('heading', { name: /recent writing/i })).toBeVisible()
   })
 
   test('keeps homepage content visible when reduced motion is requested', async ({ page }) => {
@@ -147,7 +186,7 @@ test.describe('Homepage', () => {
 
     // Count-ups and the sparkline draw-in are decorative; with reduced motion
     // the hero must still render finished content (not stay hidden or at zero).
-    await expect(page.getByTestId('hero')).toBeVisible()
+    await expect(page.locator('.c97-page')).toBeVisible()
     await expect(
       page.getByRole('heading', { name: /selected work/i })
     ).toBeVisible()

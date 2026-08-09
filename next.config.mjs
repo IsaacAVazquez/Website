@@ -255,7 +255,9 @@ const nextConfig = {
       "default-src 'self'",
       "base-uri 'self'",
       "object-src 'none'",
-      "frame-ancestors 'none'",
+      // Keep cross-origin embedding blocked while allowing the same-origin
+      // Catalog layouts canvas to review the seven real routes in iframes.
+      "frame-ancestors 'self'",
       "form-action 'self'",
       "script-src 'self' 'unsafe-inline' https://unpkg.com",
       "style-src 'self' 'unsafe-inline' https://unpkg.com",
@@ -280,7 +282,7 @@ const nextConfig = {
       },
       {
         key: "X-Frame-Options",
-        value: "DENY",
+        value: "SAMEORIGIN",
       },
       {
         key: "Referrer-Policy",

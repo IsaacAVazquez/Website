@@ -169,7 +169,7 @@ Footer variants:
 - Shared portfolio-shell primitives must not use `transition-all`. Transition specific properties instead.
 - Portfolio-shell routes must keep the primary message and main CTA visible in the initial mobile viewport whenever the route has a hero.
 - Portfolio and writing cards should surface role, problem space, and impact in the default scan state.
-- The `/portfolio` index is rendered by `src/components/portfolio/PortfolioV3.tsx`, which carries a client-side project search (tokenized AND match over title, description, role, timeline, metrics, summary, category, and tools) and a marquee band that sits between the project grid and the pager.
+- The `/portfolio` index is rendered by `src/components/catalog97/Catalog97Portfolio.tsx`, which carries a client-side project search with tokenized AND matching over title, description, role, timeline, metrics, summary, category, and tools, plus curated, newest, alphabetical, and live-first sorting.
 - `/api/search` is still limited and mostly hardcoded. Do not describe it as comprehensive site search.
 - `ProjectsContent.tsx` and `WritingPreview.tsx` still exist, but they are not the primary live path for the current shell.
 

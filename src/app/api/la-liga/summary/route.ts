@@ -23,7 +23,7 @@ export async function GET() {
       headers: createSnapshotResponseHeaders({
         surface: "la-liga",
         payload: summary,
-        sourceAsOf: summary.updatedAt,
+        sourceAsOf: summary.generatedAt,
         cacheControl: SUCCESS_CACHE_CONTROL,
       }),
     });

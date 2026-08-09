@@ -581,9 +581,11 @@ export function preservePriorFixtures(
 }
 
 export function createEmptyNbaSnapshot(): NbaSnapshot {
+  const generatedAt = new Date().toISOString();
   return {
     season: "Current season",
-    updatedAt: new Date().toISOString().slice(0, 10),
+    generatedAt,
+    updatedAt: generatedAt.slice(0, 10),
     sourceLabel: "ESPN",
     sourceUrls: {
       standings: "https://www.espn.com/nba/standings",
@@ -819,6 +821,7 @@ export async function buildNbaSnapshot(options?: { skipTeamSnapshots?: boolean }
 
   return {
     season: summary.season,
+    generatedAt,
     updatedAt: generatedAt.slice(0, 10),
     sourceLabel: "ESPN",
     sourceUrls: {

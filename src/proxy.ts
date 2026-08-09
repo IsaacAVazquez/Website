@@ -62,7 +62,9 @@ export function buildContentSecurityPolicy(
     "img-src 'self' data: https: blob:",
     "font-src 'self'",
     `connect-src ${connectSrc.join(" ")}`,
-    "frame-ancestors 'none'",
+    // Keep cross-origin embedding blocked while allowing the same-origin
+    // Catalog layouts canvas to review the seven real routes in iframes.
+    "frame-ancestors 'self'",
     "base-uri 'self'",
     "form-action 'self'",
     // WebKit applies this directive to localhost subresources too. Only emit it
@@ -79,7 +81,7 @@ function withSecurityHeaders(response: NextResponse, request: NextRequest) {
     "Content-Security-Policy",
     buildContentSecurityPolicy(request),
   );
-  response.headers.set("X-Frame-Options", "DENY");
+  response.headers.set("X-Frame-Options", "SAMEORIGIN");
   response.headers.set("X-Content-Type-Options", "nosniff");
   response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
   response.headers.set("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
