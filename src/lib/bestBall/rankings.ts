@@ -17,7 +17,7 @@ function isFiniteNumber(value: unknown): value is number {
   return typeof value === "number" && Number.isFinite(value);
 }
 
-export function getBestBallEcr(player: Player): number {
+function getBestBallEcr(player: Player): number {
   if (isFiniteNumber(player.rankEcr)) return player.rankEcr;
   if (isFiniteNumber(player.averageRank)) return player.averageRank;
   return Number.POSITIVE_INFINITY;
@@ -41,7 +41,7 @@ export function sortBestBallRankings(
 
   return eligible
     .map(({ player, sourceIndex, ecr }) => {
-      const isSuperflex = preset.format === "superflex";
+      const isSuperflex = preset.lineupVariant === "superflex";
       const supportsAdp = hasSupportedBestBallAdp(preset);
       const hasSuperflexRank = isSuperflex && isFiniteNumber(player.superflexRank);
       const atUndraftedFloor =

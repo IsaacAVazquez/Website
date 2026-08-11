@@ -28,9 +28,9 @@ import type {
 } from "./types";
 
 export const SCORE_POOLS_STORAGE_KEY = "score_pools_store_v1";
-export const SCORE_POOLS_STORAGE_VERSION = 1;
+const SCORE_POOLS_STORAGE_VERSION = 1;
 
-export interface StoredSubmission {
+interface StoredSubmission {
   score: Scoreline;
   submittedAt: string;
 }
@@ -41,7 +41,7 @@ export interface StoredManualResult {
   penaltyWinner: "home" | "away" | null;
 }
 
-export interface StoredRival {
+interface StoredRival {
   id: string;
   name: string;
   /** Points earned before pick tracking started (or manual corrections). */

@@ -1,10 +1,10 @@
-export const INTERCHANGE_RATES = {
+const INTERCHANGE_RATES = {
   visaMcCredit: { rate: 0.0165, fixed: 0.1 },
   visaMcDebit: { rate: 0.0025, fixed: 0.22 },
   amex: { rate: 0.023, fixed: 0 },
 };
 
-export interface FlatProcessor {
+interface FlatProcessor {
   id: string;
   name: string;
   model: "Flat Rate";
@@ -13,7 +13,7 @@ export interface FlatProcessor {
   note: string;
 }
 
-export interface InterchangePlusProcessor {
+interface InterchangePlusProcessor {
   id: string;
   name: string;
   model: "Interchange+";
@@ -24,7 +24,7 @@ export interface InterchangePlusProcessor {
 
 export type Processor = FlatProcessor | InterchangePlusProcessor;
 
-export const PROCESSORS: Processor[] = [
+const PROCESSORS: Processor[] = [
   { id: "stripe", name: "Stripe", model: "Flat Rate", pctRate: 0.029, fixedFee: 0.3, note: "Standard online card rate" },
   { id: "square", name: "Square", model: "Flat Rate", pctRate: 0.026, fixedFee: 0.1, note: "Card-present; online is 2.9%+$0.30" },
   { id: "shopify", name: "Shopify", model: "Flat Rate", pctRate: 0.029, fixedFee: 0.3, note: "Shopify Payments basic plan" },
@@ -39,13 +39,13 @@ export const DEFAULT_INTERCHANGE_TICKET = 85;
 export const DEFAULT_INTERCHANGE_CREDIT_PCT = 65;
 export const DEFAULT_INTERCHANGE_AMEX_OF_CREDIT = 18;
 
-export interface CardMix {
+interface CardMix {
   creditFraction: number;
   debitFraction: number;
   amexFraction: number;
 }
 
-export interface ProcessorResult {
+interface ProcessorResult {
   id: string;
   name: string;
   model: "Flat Rate" | "Interchange+";

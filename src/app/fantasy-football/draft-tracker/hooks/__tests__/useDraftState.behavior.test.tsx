@@ -3,7 +3,7 @@ import {
   calculateDraftOrder,
   FANTASY_DRAFT_STORAGE_KEY,
   useDraftState,
-} from "./useDraftState";
+} from "../useDraftState";
 
 const SAMPLE_PLAYER = {
   id: "player-1",
@@ -15,6 +15,12 @@ const SAMPLE_PLAYER = {
   standardDeviation: 1.2,
   expertRanks: [1],
 };
+
+const playerAt = (index: number) => ({
+  ...SAMPLE_PLAYER,
+  id: `player-${index}`,
+  name: `Player ${index}`,
+});
 
 describe("useDraftState", () => {
   beforeEach(() => {
@@ -48,6 +54,24 @@ describe("useDraftState", () => {
     expect(result.current.draftState.picks[0].teamNumber).toBe(1);
     expect(result.current.draftState.currentPick).toBe(2);
     expect(result.current.currentTeamNumber).toBe(2);
+  });
+
+  it("keeps the final pick in the configured final round", () => {
+    const { result } = renderHook(() => useDraftState());
+
+    act(() => {
+      result.current.updateSettings({ totalTeams: 4, rounds: 1 });
+    });
+    act(() => {
+      for (let index = 1; index <= 4; index += 1) {
+        result.current.draftPlayer(playerAt(index));
+      }
+    });
+
+    expect(result.current.draftState.picks).toHaveLength(4);
+    expect(result.current.draftState.currentPick).toBe(5);
+    expect(result.current.draftState.currentRound).toBe(1);
+    expect(result.current.draftState.isActive).toBe(false);
   });
 
   it("quotes CSV fields that contain commas", async () => {
@@ -127,6 +151,30 @@ describe("useDraftState", () => {
     expect(result.current.draftState.picks).toHaveLength(1);
     expect(result.current.draftState.picks[0].player.name).toBe("Bijan Robinson");
     expect(result.current.canRedo).toBe(false);
+  });
+
+  it("keeps a redone final pick in the configured final round", () => {
+    const { result } = renderHook(() => useDraftState());
+
+    act(() => {
+      result.current.updateSettings({ totalTeams: 4, rounds: 1 });
+    });
+    act(() => {
+      for (let index = 1; index <= 4; index += 1) {
+        result.current.draftPlayer(playerAt(index));
+      }
+    });
+    act(() => {
+      result.current.undoLastPick();
+    });
+    act(() => {
+      result.current.redoLastPick();
+    });
+
+    expect(result.current.draftState.picks).toHaveLength(4);
+    expect(result.current.draftState.currentPick).toBe(5);
+    expect(result.current.draftState.currentRound).toBe(1);
+    expect(result.current.draftState.isActive).toBe(false);
   });
 
   it("clears the redo stack when a fresh pick branches the timeline", () => {

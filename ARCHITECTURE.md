@@ -175,10 +175,10 @@ Important groups:
 
 - auth: `/api/auth/[...nextauth]`
 - fantasy football: `/api/fantasy-data`
-- investments: `/api/investments/index`, `/api/investments/quotes`, `/api/investments/data/[symbol]`, `/api/stocks`
-- football: `/api/premier-league/summary`, `/api/premier-league/teams/[teamId]`, `/api/la-liga/summary`, `/api/la-liga/teams/[teamId]`
-- US sports and golf: `/api/mlb/summary`, `/api/mlb/teams/[teamId]`, `/api/nba/summary`, `/api/nba/teams/[teamId]`, `/api/nfl/summary`, `/api/nfl/teams/[teamId]`, `/api/golf/summary`, `/api/golf/players/[playerId]`
-- World Cup: `/api/world-cup/summary`, `/api/world-cup/teams/[teamId]`
+- investments: `/api/investments/quotes`, `/api/investments/data/[symbol]`, `/api/stocks`
+- football: `/api/premier-league/teams/[teamId]`, `/api/la-liga/teams/[teamId]`
+- US sports and golf: `/api/mlb/teams/[teamId]`, `/api/nba/teams/[teamId]`, `/api/nfl/teams/[teamId]`, `/api/golf/players/[playerId]`
+- World Cup: `/api/world-cup/teams/[teamId]`
 - transit and geo: `/api/bay-area-transit/summary`, `/api/bay-area-transit/stations/[stationId]`, `/api/earthquake-pulse/summary`
 - jobs/email: `/api/mba-jobs`, `/api/mba-jobs/email`
 - content/utilities: `/api/news-pulse`, `/api/spacex/summary`, `/api/spacex/launches`, `/api/spacex/launches/[id]`, `/api/rss`, `/api/search`
@@ -221,7 +221,7 @@ The system is token-driven:
 - deployed on Netlify
 - build command comes from `netlify.toml`
 - production builds consume committed snapshots without running data refreshes
-- `next-sitemap` runs after build
+- `scripts/generatePublicSitemap.mjs` runs after build
 - `next.config.mjs` handles redirects, tracing exclusions, image config, and bundle splitting
 
 Notable build constraints:

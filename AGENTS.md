@@ -171,7 +171,6 @@ Footer variants:
 - Portfolio and writing cards should surface role, problem space, and impact in the default scan state.
 - The `/portfolio` index is rendered by `src/components/catalog97/Catalog97Portfolio.tsx`, which carries a client-side project search with tokenized AND matching over title, description, role, timeline, metrics, summary, category, and tools, plus curated, newest, alphabetical, and live-first sorting.
 - `/api/search` is still limited and mostly hardcoded. Do not describe it as comprehensive site search.
-- `ProjectsContent.tsx` and `WritingPreview.tsx` still exist, but they are not the primary live path for the current shell.
 
 ---
 
@@ -184,25 +183,25 @@ Confirm live API routes from `src/app/api/**/route.ts`. Current routes:
 - `/api/bay-area-transit/summary` and `/api/bay-area-transit/stations/[stationId]`
 - `/api/earthquake-pulse/summary`
 - `/api/fantasy-data`
-- `/api/formula-1/summary` and `/api/formula-1/meetings/[meetingId]`
-- `/api/frontier-models/summary`
-- `/api/golf/summary` and `/api/golf/players/[playerId]`
-- `/api/investments/index`, `/api/investments/quotes`, `/api/investments/data/[symbol]`
-- `/api/la-liga/summary` and `/api/la-liga/teams/[teamId]`
+- `/api/formula-1/meetings/[meetingId]`
+- `/api/golf/players/[playerId]`
+- `/api/investments/quotes` and `/api/investments/data/[symbol]`
+- `/api/la-liga/teams/[teamId]`
 - `/api/mba-jobs` and `/api/mba-jobs/email`
-- `/api/mlb/summary` and `/api/mlb/teams/[teamId]`
-- `/api/nba/summary` and `/api/nba/teams/[teamId]`
+- `/api/mlb/teams/[teamId]`
+- `/api/nba/teams/[teamId]`
 - `/api/news-pulse`
-- `/api/nfl/summary` and `/api/nfl/teams/[teamId]`
-- `/api/premier-league/summary` and `/api/premier-league/teams/[teamId]`
-- `/api/score-pools/summary` and `/api/score-pools/leagues/[key]`
+- `/api/nfl/teams/[teamId]`
+- `/api/premier-league/teams/[teamId]`
 - `/api/rss`
 - `/api/search`
 - `/api/spacex/summary`, `/api/spacex/launches`, `/api/spacex/launches/[id]`
 - `/api/stocks`
-- `/api/world-cup/summary` and `/api/world-cup/teams/[teamId]`
+- `/api/world-cup/teams/[teamId]`
 
-Most dashboard APIs read committed snapshot files at request time. The exceptions that call external services at request time are the earthquake-pulse, bay-area-transit, news-pulse, mba-jobs, investments quotes, and MLB summary routes; each keeps the committed snapshot (or cached data) as its fallback.
+Most dashboard APIs read committed snapshot files at request time. The exceptions that call external services at request time are the earthquake-pulse, bay-area-transit, news-pulse, mba-jobs, and investments quotes routes; each keeps the committed snapshot (or cached data) as its fallback.
+
+Dashboard pages call their `src/lib/*` accessor directly in the server component, so most surfaces have no `/summary` endpoint. The per-entity detail routes above exist because the client fetches them on selection.
 
 ---
 
@@ -355,7 +354,7 @@ The MLB, NBA, and NFL dashboards read committed TypeScript snapshots at runtime.
 - `npm run update:tech-startups` writes `src/data/techStartupSnapshot.ts` from the hand-maintained seed in `scripts/buildTechStartupSnapshot.ts`. The dataset is editorially curated with an `asOf` date and `verified: false` flag; refresh it by editing the seed, not by polling an API.
 - `npm run update:frontier-models` writes `src/data/frontierModelsSnapshot.ts` from the curated source file in `scripts/data/`.
 - `npm run update:score-pools` writes `src/data/scorePoolsSnapshot.ts` from The Odds API (`THE_ODDS_API_KEY`) and API-Football (`API_FOOTBALL_KEY`), merged with manual entries in `scripts/data/scorePools.manual.ts` and CSV drops in `scripts/data/score-pools/`. Local manual runs can omit the tokens, but the scheduled workflow requires both and rejects sample-only output. Odds history is append-only and capped per fixture so line movement stays queryable. See `SCORE_POOLS_ENGINE.md`.
-- `npm run update:spacex` and its alias `npm run update:spacex-data` write `src/data/spacexSnapshot.generated.json`.
+- `npm run update:spacex` writes `src/data/spacexSnapshot.generated.json`.
 - `npm run update:spacex-images` writes `src/data/spacexImageManifest.generated.json`, `public/data/spacex/image-reference-index.json`, and cached image files under `public/data/spacex/images/`.
 
 ### Article cover image workflow
@@ -412,7 +411,6 @@ The MLB, NBA, and NFL dashboards read committed TypeScript snapshots at runtime.
 | `npm run update:github-trending` | Rebuild the checked-in GitHub Trending Pulse snapshot |
 | `npm run update:tech-startups` | Rebuild the checked-in tech startup tracker snapshot from its curated seed |
 | `npm run update:spacex` | Rebuild the checked-in SpaceX Mission Control data snapshot |
-| `npm run update:spacex-data` | Alias of `npm run update:spacex` |
 | `npm run update:spacex-images` | Rebuild cached SpaceX image snapshots and manifests |
 | `npm run update:article-images` | Fetch license-safe blog cover photos per `scripts/data/articleCoverImages.ts` |
 | `npm run generate:icons` | Regenerate PWA icons |

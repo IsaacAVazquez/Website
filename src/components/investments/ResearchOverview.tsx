@@ -1,9 +1,9 @@
 "use client";
 
+import { ExternalLink } from "lucide-react";
 import React from "react";
 import { TerminalPanel } from "./TerminalPanel";
 import { useStockData } from "@/hooks/useStockData";
-import { IconExternalLink } from "@tabler/icons-react";
 import type {
   CompanyInfo,
   GrowthData,
@@ -53,7 +53,7 @@ function NewsCard({ item }: { item: NewsItem }) {
             className="inline-flex items-start gap-1 text-sm font-medium text-[var(--home-ink)] hover:text-[var(--home-signal)] transition line-clamp-2"
           >
             <span>{item.title}</span>
-            <IconExternalLink size={12} className="mt-1 shrink-0 text-[var(--home-ink-soft)]" />
+            <ExternalLink size={12} className="mt-1 shrink-0 text-[var(--home-ink-soft)]" />
           </a>
         ) : (
           <p className="text-sm font-medium leading-6 text-[var(--home-ink)] line-clamp-2">{item.title}</p>

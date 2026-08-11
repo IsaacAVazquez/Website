@@ -36,11 +36,6 @@ async function loadBestBallSnapshot(): Promise<BestBallSnapshot> {
   return inflightRequest;
 }
 
-export function resetBestBallSnapshotCacheForTests() {
-  cachedSnapshot = null;
-  inflightRequest = null;
-}
-
 export function useBestBallSnapshot() {
   const [snapshot, setSnapshot] = useState<BestBallSnapshot | null>(cachedSnapshot);
   const [isLoading, setIsLoading] = useState(cachedSnapshot === null);

@@ -3,17 +3,7 @@
  * Respects NODE_ENV to reduce noise in production
  */
 
-type LogLevel = 'info' | 'warn' | 'error' | 'debug';
-
-interface LogEntry {
-  level: LogLevel;
-  message: string;
-  data?: unknown;
-  timestamp: string;
-}
-
 class Logger {
-  private isProduction = process.env.NODE_ENV === 'production';
   private isDevelopment = process.env.NODE_ENV !== 'production';
 
   /**
@@ -50,30 +40,7 @@ class Logger {
     }
   }
 
-  /**
-   * Log performance metrics (development only)
-   */
-  performance(label: string, duration: number): void {
-    if (this.isDevelopment) {
-      console.log(`[PERF] ${label}: ${duration}ms`);
-    }
-  }
-
-  /**
-   * Create a structured log entry
-   */
-  createLogEntry(level: LogLevel, message: string, data?: unknown): LogEntry {
-    return {
-      level,
-      message,
-      data,
-      timestamp: new Date().toISOString()
-    };
-  }
 }
 
 // Export singleton instance
 export const logger = new Logger();
-
-// Export individual methods for easier imports
-export const { info, warn, error, debug, performance } = logger;

@@ -549,7 +549,7 @@ export function buildSummary(enhanced: EnhancedHolding[]): PortfolioSummary {
 
 // ─── Hook ─────────────────────────────────────────────────────────────────────
 
-export interface UseInvestmentsReturn {
+interface UseInvestmentsReturn {
   holdings: PortfolioHolding[];
   enhancedHoldings: EnhancedHolding[];
   summary: PortfolioSummary;

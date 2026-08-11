@@ -23,7 +23,7 @@ export const STANDARD_ROSTER_SEARCH_SPACE: Readonly<
   TE: { minimum: 2, maximum: 3 },
 });
 
-export const SUPERFLEX_ROSTER_SEARCH_SPACE: typeof STANDARD_ROSTER_SEARCH_SPACE = Object.freeze({
+const SUPERFLEX_ROSTER_SEARCH_SPACE: typeof STANDARD_ROSTER_SEARCH_SPACE = Object.freeze({
   QB: { minimum: 3, maximum: 4 },
   RB: { minimum: 4, maximum: 7 },
   WR: { minimum: 5, maximum: 8 },
@@ -40,7 +40,7 @@ function rosterPlayers(picks: readonly BestBallDraftPick[]): Player[] {
   return picks.map((pick) => pick.player).filter((player) => isBestBallPosition(player.position));
 }
 
-export function countBestBallPositions(
+function countBestBallPositions(
   picks: readonly BestBallDraftPick[]
 ): BestBallRosterComposition {
   const counts = { ...EMPTY_COUNTS };
@@ -82,7 +82,7 @@ export function getAdaptiveRosterTargets(
   upcomingRound?: number
 ): AdaptiveRosterTargets {
   const preset = getContestPreset(contestId);
-  const isSuperflex = preset.format === "superflex";
+  const isSuperflex = preset.lineupVariant === "superflex";
   const searchSpace = isSuperflex ? SUPERFLEX_ROSTER_SEARCH_SPACE : STANDARD_ROSTER_SEARCH_SPACE;
   const counts = countBestBallPositions(picks);
   const latestCompletedRound = picks.reduce((latest, pick) => Math.max(latest, pick.round), 0);

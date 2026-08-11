@@ -3,9 +3,6 @@ import { Position, ScoringFormat } from "@/types";
 export const FANTASY_ADP_PROVIDER = "Fantasy Football Calculator";
 export const FANTASY_ADP_PROVIDER_URL = "https://fantasyfootballcalculator.com/adp";
 
-export const FANTASY_ADP_SOURCE =
-  "Average draft position comes from Fantasy Football Calculator's free mock-draft API. The pipeline requests its 12-team board for the matching scoring format. The provider returned the same player prices when tested across its 8-, 10-, 12-, and 14-team parameters on August 7, 2026, so league-size differences are not modeled.";
-
 /**
  * A single player's ADP reading from the upstream mock-draft sample. Kept
  * deliberately small — only what the matcher and the published snapshot need.
@@ -21,7 +18,7 @@ export interface FantasyAdpEntry {
   timesDrafted?: number;
 }
 
-export interface FantasyAdpBoard {
+interface FantasyAdpBoard {
   scoringFormat: ScoringFormat;
   entries: FantasyAdpEntry[];
   /** End date of the upstream mock-draft sample window. */
@@ -60,6 +57,22 @@ const ADP_FORMAT_SLUGS: Record<ScoringFormat, string> = {
   HALF_PPR: "half-ppr",
   STANDARD: "standard",
 };
+
+const ADP_PROVIDER_FORMAT_LABELS: Record<ScoringFormat, readonly string[]> = {
+  PPR: ["ppr"],
+  HALF_PPR: ["halfppr", "half"],
+  // Fantasy Football Calculator calls its Standard endpoint "Non-PPR" in
+  // response metadata. Keep that provider vocabulary at this boundary while
+  // exposing the site's canonical STANDARD value everywhere else.
+  STANDARD: ["nonppr", "standard"],
+};
+
+function normalizeProviderFormat(value: unknown): string {
+  return String(value ?? "")
+    .trim()
+    .toLowerCase()
+    .replace(/[_\s-]/g, "");
+}
 
 function mapAdpPosition(position: string): Position | null {
   switch (position.trim().toUpperCase()) {
@@ -128,9 +141,8 @@ export function parseFantasyAdpPayload(
     if (raw.status !== "Success") {
       throw new Error(`Fantasy ADP source returned status "${String(raw.status)}".`);
     }
-    const expectedType = ADP_FORMAT_SLUGS[options.scoringFormat].replace("half-ppr", "half");
-    const sourceType = String(raw.meta?.type ?? "").trim().toLowerCase().replace(/[_\s-]/g, "");
-    if (!sourceType || !sourceType.includes(expectedType.replace(/[_\s-]/g, ""))) {
+    const sourceType = normalizeProviderFormat(raw.meta?.type);
+    if (!ADP_PROVIDER_FORMAT_LABELS[options.scoringFormat].includes(sourceType)) {
       throw new Error(
         `Fantasy ADP source returned format "${String(raw.meta?.type)}" for ${options.scoringFormat}.`
       );
@@ -189,7 +201,6 @@ export function parseFantasyAdpPayload(
   if (entries.length === 0) {
     throw new Error("Fantasy ADP source returned no usable players.");
   }
-
 
   if (options.strict) {
     const seen = new Set<string>();

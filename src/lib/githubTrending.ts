@@ -37,7 +37,7 @@ export interface GitHubTrendingSourceSegment {
   repositories: GitHubTrendingSourceRepository[];
 }
 
-export interface BuildGitHubTrendingSnapshotInput {
+interface BuildGitHubTrendingSnapshotInput {
   generatedAt: string;
   windowDays: number;
   activityWindowDays: number;
@@ -49,7 +49,7 @@ export interface BuildGitHubTrendingSnapshotInput {
 
 const MAX_HISTORY_DAYS = 21;
 
-export function toUtcDateKey(iso: string): string {
+function toUtcDateKey(iso: string): string {
   const date = new Date(iso);
   if (Number.isNaN(date.getTime())) {
     return new Date().toISOString().slice(0, 10);

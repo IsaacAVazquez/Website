@@ -29,7 +29,7 @@ const BUCKET_DECOMPOSITION: Record<keyof AllocationInput, Partial<Record<AssetCl
   other: { realAssets: 1 },
 };
 
-export interface PortfolioAssumptions {
+interface PortfolioAssumptions {
   expectedReturn: number;
   volatility: number;
   /** Normalized weight per CMA asset class (sums to 1, or all-zero if empty). */

@@ -49,7 +49,6 @@ page's only `<main>`, header, and footer.
 | `Catalog97About` | `src/components/catalog97/Catalog97About.tsx` | `/about` content, reads `careerTimeline` |
 | `Catalog97Resume` | `src/components/catalog97/Catalog97Resume.tsx` | `/resume` content |
 | `Catalog97Contact` | `src/components/catalog97/Catalog97Contact.tsx` | `/contact` content, with no form because there is no form backend |
-| `ProjectDetailModal` | `src/components/ProjectDetailModal.tsx` | Legacy project modal, imported only by `ProjectsContent.tsx` (non-primary flow) |
 
 ### Writing and structured data
 
@@ -96,11 +95,11 @@ the main shell rendered by `src/app/investments/investments-client.tsx`. It
 composes the portfolio and research surfaces (all under
 `src/components/investments/`):
 
-- Portfolio: `PortfolioSummary`, `PortfolioHeroCard`, `PortfolioStatsGrid`, `HoldingsTable`, `AddStockForm`, `AllocationChart`, `PortfolioPerformanceChart`, `Sparkline`
+- Portfolio: `PortfolioSummary`, `PortfolioHeroCard`, `PortfolioStatsGrid`, `HoldingsTable`, `AddStockForm`, `AllocationChart`, `PortfolioPerformanceChart`
 - Research: `StockResearch`, `StockSearch`, `ResearchOverview`, `ResearchSidebar`, `ResearchSection`, `ResearchAssetHeader`, `ResearchPosition`
 - Research panels: `PriceChartPanel`, `FinancialStatementsPanel`, `GrowthPanel`, `ValuationRatiosPanel`, `ProfitabilityPanel`, `IndustryPanel`
 - Comparison: `ComparisonTab`, `ComparisonMetricTable`, `ComparisonRadarChart`
-- Freshness / chrome: `DataFreshnessIndicator`, `InvestmentsFreshnessBanner`, `MetricTooltip`, `ErrorState`
+- Freshness / chrome: `DataFreshnessIndicator`, `MetricTooltip`, `ErrorState`
 
 Retirement planner components live in `src/components/investments/retirement/`
 (`RetirementPlanner` shell, `RetirementInputs`/`RetirementFields`,
@@ -161,7 +160,6 @@ Most reused primitives:
 - `Heading`
 - `Paragraph`
 - `Badge`
-- `JourneyTimeline`
 - `ThemeToggle`
 - `SectionIntro`
 - `ServerIcons`
@@ -178,7 +176,6 @@ Styling guidance for these lives in `STYLING.md`.
 ### `/portfolio`
 
 `src/app/portfolio/page.tsx` renders the project grid directly.
-`ProjectsContent.tsx` is not the primary live implementation for this route.
 
 ### Homepage
 
@@ -187,9 +184,7 @@ Styling guidance for these lives in `STYLING.md`.
 composition that supplies its own header and footer through `Catalog97Shell`. It
 still reads the live quake, market, and launch feed through `HomeLiveFeed`, each
 of which fails soft to null so a missing snapshot drops its column rather than
-rendering an empty one. The older `ModernHero` / `ThinkingPreview` /
-`ContactSection` files and `WritingPreview.tsx` still exist in the repo but are
-no longer wired into the homepage.
+rendering an empty one.
 
 ### `/investments`
 
@@ -217,21 +212,12 @@ Route state helpers live next to each client and have unit coverage for invalid 
 
 ## Legacy Or Unwired Components
 
-These files still exist, but should not be described as the primary live path without confirming current usage:
+The pre-Catalog 97 homepage and portfolio components were deleted in August 2026,
+so read them from git history if you need that context. The `*Instrument`
+composition roots replaced them on the live routes, and the Catalog 97 roots in
+turn replaced the `*Instrument` files, which are gone.
 
-- `src/components/ProjectsContent.tsx`
-- `src/components/WritingPreview.tsx`
-- `src/components/ModernHero.tsx`
-- `src/components/ThinkingPreview.tsx`
-- `src/components/ContactSection.tsx`
-- `src/components/ProjectDetailModal.tsx` (imported only by `ProjectsContent.tsx`)
-
-They remain useful as historical or alternate implementation context. The
-`*Instrument` composition roots replaced them on the live routes, and the
-Catalog 97 roots in turn replaced the `*Instrument` files, which are gone.
-
-Two files under `src/components/home/` have no importer and predate Catalog 97:
-`InstrumentCounter.tsx` and `NowLine.tsx`. `HomeLiveFeed.tsx`, `PanelClock.tsx`,
+Under `src/components/home/`, `HomeLiveFeed.tsx`, `PanelClock.tsx`,
 and `HomeStatsPanel.tsx` are all still wired up, the last into 27 dashboard
 clients.
 

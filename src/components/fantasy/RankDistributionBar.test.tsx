@@ -29,12 +29,13 @@ describe("RankDistributionBar", () => {
     expect(screen.getByText("Avg 13.4")).toBeInTheDocument();
   });
 
-  it("falls back to ECR when the source does not publish an expert mean", () => {
+  it("does not label ECR as the expert mean when the source omits it", () => {
     render(<RankDistributionBar player={player({ rankAverage: undefined })} />);
 
     expect(screen.getByRole("img")).toHaveAttribute(
       "aria-label",
-      "Expert rank range 7 to 20, average 10"
+      "Expert rank range 7 to 20"
     );
+    expect(screen.queryByText(/^Avg /)).not.toBeInTheDocument();
   });
 });

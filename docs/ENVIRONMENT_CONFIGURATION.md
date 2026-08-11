@@ -2,7 +2,7 @@
 
 Current environment variable reference for local development and Netlify deployment.
 
-**Last updated:** 2026-06-08
+**Last updated:** 2026-08-11
 
 ---
 
@@ -33,7 +33,13 @@ The admin surface uses credential auth, not a multi-user identity provider.
 
 ## Fantasy Operations
 
-The current public fantasy workflow is snapshot-backed and does not require local secrets. `npm run update:fantasy` reads public sources and regenerates checked-in artifacts.
+The fantasy surface reads checked-in snapshots at runtime. `npm run update:fantasy` regenerates those artifacts and uses the official FantasyPros JSON API when `FANTASYPROS_API_KEY` is set. If the variable is absent, the builder uses the public FantasyPros page parser. If a configured key is rejected or the API response is invalid, the refresh fails so a credential problem cannot silently publish data from a different path.
+
+| Variable | Required | Purpose |
+| --- | --- | --- |
+| `FANTASYPROS_API_KEY` | recommended for local refreshes, required for scheduled refreshes | Build-only key sent in the `x-api-key` header while rebuilding redraft and best ball rankings snapshots |
+
+The scheduled refresh runs in GitHub Actions and stops before the build if this secret is missing. Add `FANTASYPROS_API_KEY` to the repository's Actions secrets. A copy stored in Netlify is separate and does not reach that job. The deployed application does not need the key because it serves the generated JSON files.
 
 There are no live `/api/fantasy-pros-*`, `/api/data-manager`, or `/api/scheduled-update` routes in the current app tree.
 
@@ -94,19 +100,19 @@ CRON_SECRET=replace-me
 MBA_DIGEST_ALLOWED_RECIPIENTS=you@example.com,@example.edu
 ```
 
-Add `RESEND_API_KEY` only if you are testing email delivery. Add `FOOTBALL_DATA_API_TOKEN` only if you are testing `npm run update:football`, `npm run update:premier-league`, or `npm run update:la-liga`.
+Add `RESEND_API_KEY` only if you are testing email delivery. Add `FANTASYPROS_API_KEY` for an authenticated `npm run update:fantasy` refresh. Add `FOOTBALL_DATA_API_TOKEN` only if you are testing `npm run update:football`, `npm run update:premier-league`, or `npm run update:la-liga`.
 
 ---
 
 ## Netlify
 
-Set production values in the Netlify dashboard. Keep them aligned with:
+Set runtime production values in the Netlify dashboard. Keep them aligned with:
 
 - `netlify.toml`
 - the active custom domain
 - the build and cron workflows
 
-If auth, email delivery, cache purge, or data refresh workflows break only in production, verify the deployed env vars before debugging the application code.
+GitHub Actions has a separate secret store for snapshot refresh jobs. If a data refresh fails, check the repository's Actions secrets and workflow logs. If auth, email delivery, or cache purge breaks only in production, check the deployed Netlify variables.
 
 ---
 

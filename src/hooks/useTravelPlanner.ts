@@ -18,7 +18,7 @@ import {
 } from "@/lib/travelPlanner";
 import type { JournalEntry, Trip, TripActivity } from "@/types/travel";
 
-export interface NewTripInput {
+interface NewTripInput {
   name: string;
   destination: string;
   startDate: string;

@@ -60,7 +60,7 @@ export interface BlogPostPreview {
   cta?: BlogPostCTA;
 }
 
-export interface BlogPostMetadata {
+interface BlogPostMetadata {
   title: string;
   excerpt: string;
   publishedAt: string;

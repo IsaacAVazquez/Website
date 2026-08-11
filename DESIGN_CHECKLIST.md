@@ -76,7 +76,7 @@ across `STYLING.md`, `CLAUDE.md`, `DARK_MODE_USAGE_GUIDE.md`, and `SNAPSHOT_DRIV
 
 - [ ] **Framer Motion entrances call `useReducedMotion()`** (or wrap in `<MotionConfig reducedMotion="user">`).
       The global CSS `prefers-reduced-motion` guard does **not** stop JS/rAF-driven Framer animation.
-      Shared primitives especially (e.g. `PageSummary`) — fixing once covers many routes.
+      Shared primitives especially, since fixing one covers many routes.
 - [ ] CSS animations/transitions have a `prefers-reduced-motion` fallback (or use `motion-safe:`).
 - [ ] **No `transition-all`** in shared primitives — transition only the properties that change
       (`transition-[background-color,transform]`).

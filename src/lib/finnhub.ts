@@ -33,10 +33,6 @@ let rateLimitedUntil = 0;
 const quoteCache = new Map<string, { quote: StockQuote; expiresAt: number }>();
 const quoteInflight = new Map<string, Promise<StockQuote>>();
 
-export function isRateLimited(): boolean {
-  return Date.now() < rateLimitedUntil;
-}
-
 /**
  * Strict symbol shape. Forbids leading dots/dashes and consecutive
  * separators; requires at least one alphanumeric and capped at 10 chars.
@@ -183,7 +179,7 @@ export function __resetAllowlistCacheForTests(): void {
   allowlistInflight = null;
 }
 
-export function __resetQuoteStateForTests(): void {
+function __resetQuoteStateForTests(): void {
   rateLimitedUntil = 0;
   quoteCache.clear();
   quoteInflight.clear();

@@ -161,7 +161,6 @@ These routes manage more of their own spacing and width:
 
 ## Important Page Notes
 
-- `/portfolio` no longer relies on `ProjectsContent.tsx`; that component is legacy/unwired for the main route
 - `Writing` is a live route and a top-level nav item
 - `/march-madness-2026` is a first-class route and should be documented anywhere route inventories or SEO coverage are described
 - `/formula-1` is a live off-nav Formula 1 dashboard with a self-managed shell

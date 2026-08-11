@@ -26,7 +26,7 @@ interface UseStockDataState<T> {
   capabilities: InvestmentCapabilities;
 }
 
-export interface UseStockDataReturn<T> extends UseStockDataState<T> {
+interface UseStockDataReturn<T> extends UseStockDataState<T> {
   refetch: () => void;
 }
 

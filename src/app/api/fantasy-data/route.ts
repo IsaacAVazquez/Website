@@ -101,7 +101,7 @@ export async function GET(request: NextRequest) {
           ...createSnapshotResponseHeaders({
             surface: "fantasy-football",
             payload: response,
-            sourceAsOf: snapshot.generatedAt,
+            sourceAsOf: snapshot.upstreamUpdatedAt ?? snapshot.generatedAt,
             cacheControl: SUCCESS_CACHE_CONTROL,
           }),
         },
@@ -132,7 +132,7 @@ export async function GET(request: NextRequest) {
         ...createSnapshotResponseHeaders({
           surface: "fantasy-football",
           payload: response,
-          sourceAsOf: snapshot.generatedAt,
+          sourceAsOf: snapshot.upstreamUpdatedAt ?? snapshot.generatedAt,
           cacheControl: SUCCESS_CACHE_CONTROL,
         }),
       },

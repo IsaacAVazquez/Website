@@ -39,7 +39,7 @@ export const UPDATED_AT_FORMATTER = new Intl.DateTimeFormat("en-US", {
 });
 
 /** Full calendar date: "Apr 25, 2026" */
-export const FULL_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
+const FULL_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
   year: "numeric",

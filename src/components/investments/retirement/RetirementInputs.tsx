@@ -1,7 +1,7 @@
 "use client";
 
+import { Plus, RefreshCw, Trash2, Wallet } from "lucide-react";
 import React, { useState } from "react";
-import { IconTrash, IconPlus, IconRefresh, IconWallet } from "@tabler/icons-react";
 import type { UseRetirementPlanReturn } from "@/hooks/useRetirementPlan";
 import type { AccountType, RetirementResult, WithdrawalStrategy } from "@/lib/retirement";
 import { formatCompactCurrency, formatPercent } from "@/lib/retirement";
@@ -68,7 +68,7 @@ export function RetirementInputs({ controller, result, portfolioValue }: Props) 
     <div className="invest-retire-inputs">
       <div className="invest-retire-inputs-head">
         <p className="invest-rail-section-label">
-          <IconWallet size={12} aria-hidden="true" className="mr-1.5 inline align-middle" />
+          <Wallet size={12} aria-hidden="true" className="mr-1.5 inline align-middle" />
           Your numbers
         </p>
         {confirmReset ? (
@@ -81,7 +81,7 @@ export function RetirementInputs({ controller, result, portfolioValue }: Props) 
                 setConfirmReset(false);
               }}
             >
-              <IconRefresh size={13} aria-hidden="true" /> Reset plan?
+              <RefreshCw size={13} aria-hidden="true" /> Reset plan?
             </button>
             <button
               type="button"
@@ -97,7 +97,7 @@ export function RetirementInputs({ controller, result, portfolioValue }: Props) 
             className="invest-retire-reset"
             onClick={() => setConfirmReset(true)}
           >
-            <IconRefresh size={13} aria-hidden="true" /> Reset
+            <RefreshCw size={13} aria-hidden="true" /> Reset
           </button>
         )}
       </div>
@@ -136,7 +136,7 @@ export function RetirementInputs({ controller, result, portfolioValue }: Props) 
                   onChange={(v) => updateAccount(account.id, { type: v })} />
                 <button type="button" className="invest-retire-icon-btn" aria-label="Remove account"
                   onClick={() => removeAccount(account.id)}>
-                  <IconTrash size={15} aria-hidden="true" />
+                  <Trash2 size={15} aria-hidden="true" />
                 </button>
               </div>
               <div className="invest-retire-grid-2">
@@ -153,7 +153,7 @@ export function RetirementInputs({ controller, result, portfolioValue }: Props) 
             </div>
           ))}
           <button type="button" className="invest-retire-add" onClick={addAccount}>
-            <IconPlus size={14} aria-hidden="true" /> Add account
+            <Plus size={14} aria-hidden="true" /> Add account
           </button>
         </div>
       </Collapsible>
@@ -214,12 +214,12 @@ export function RetirementInputs({ controller, result, portfolioValue }: Props) 
                 onChange={(v) => updateLumpyExpense(expense.id, { age: Math.round(v) })} />
               <button type="button" className="invest-retire-icon-btn" aria-label="Remove expense"
                 onClick={() => removeLumpyExpense(expense.id)}>
-                <IconTrash size={15} aria-hidden="true" />
+                <Trash2 size={15} aria-hidden="true" />
               </button>
             </div>
           ))}
           <button type="button" className="invest-retire-add" onClick={addLumpyExpense}>
-            <IconPlus size={14} aria-hidden="true" /> Add expense
+            <Plus size={14} aria-hidden="true" /> Add expense
           </button>
         </div>
       </Collapsible>

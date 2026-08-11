@@ -17,7 +17,7 @@ export interface BlogPostCTA {
   actionLabel?: string;
 }
 
-export interface BlogTopicPage {
+interface BlogTopicPage {
   slug: string;
   label: BlogCluster | BlogArchiveBucket;
   description: string;

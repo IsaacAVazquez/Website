@@ -223,6 +223,7 @@ const FANTASY_DENSITY_STORAGE_KEY = "fantasy-board-density";
 // the server and first client paint agree on the default, then the real value
 // resolves on the client without a hydration mismatch.
 const densityListeners = new Set<() => void>();
+let inMemoryDensity: FantasyBoardDensity = "comfortable";
 
 function subscribeDensityChange(listener: () => void) {
   densityListeners.add(listener);
@@ -247,12 +248,20 @@ function subscribeDensityChange(listener: () => void) {
 
 function getDensitySnapshot(): FantasyBoardDensity {
   if (typeof window === "undefined") return "comfortable";
-  return window.localStorage.getItem(FANTASY_DENSITY_STORAGE_KEY) === "compact"
-    ? "compact"
-    : "comfortable";
+  try {
+    inMemoryDensity =
+      window.localStorage.getItem(FANTASY_DENSITY_STORAGE_KEY) === "compact"
+        ? "compact"
+        : "comfortable";
+  } catch {
+    // Storage can be blocked by browser privacy settings. Keep this tab usable
+    // with an in-memory preference instead of failing the whole rankings route.
+  }
+  return inMemoryDensity;
 }
 
 function persistDensity(next: FantasyBoardDensity) {
+  inMemoryDensity = next;
   try {
     window.localStorage.setItem(FANTASY_DENSITY_STORAGE_KEY, next);
   } catch {

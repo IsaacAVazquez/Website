@@ -1,4 +1,6 @@
 import { buildRefreshManifest } from "../verifyDataRefresh";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 
 describe("data refresh manifests", () => {
   it("describes a registered artifact with revision and freshness metadata", async () => {
@@ -45,4 +47,17 @@ describe("data refresh manifests", () => {
       expect(stale.outcome).toBe("stale-fallback");
     }
   );
+
+  it("measures fantasy freshness from the upstream rankings timestamp", async () => {
+    const snapshot = JSON.parse(
+      readFileSync(
+        join(process.cwd(), "public", "data", "fantasy", "ppr.json"),
+        "utf8"
+      )
+    ) as { generatedAt: string; upstreamUpdatedAt: string };
+    const manifest = await buildRefreshManifest("fantasy-football");
+
+    expect(snapshot.upstreamUpdatedAt).not.toBe(snapshot.generatedAt);
+    expect(manifest.sourceAsOf).toBe(snapshot.upstreamUpdatedAt);
+  });
 });

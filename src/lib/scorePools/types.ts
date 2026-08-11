@@ -29,7 +29,7 @@ export interface MoneylineOdds {
 }
 
 /** Totals (over/under) in decimal odds. Prices optional — a bare line works. */
-export interface TotalsOdds {
+interface TotalsOdds {
   line: number;
   over?: number;
   under?: number;
@@ -127,7 +127,7 @@ export interface ComparisonDistribution {
 
 // ─── Calibration targets ─────────────────────────────────────────────────────
 
-export interface TotalsTarget {
+interface TotalsTarget {
   line: number;
   /** De-vigged over probability. Omitted means assume a fair 50/50 line. */
   pOver?: number;
@@ -168,7 +168,7 @@ export interface ScoringRules {
   penaltiesCountAsWin: boolean;
 }
 
-export type PointsComponent = "exact" | "difference" | "outcome" | "none";
+type PointsComponent = "exact" | "difference" | "outcome" | "none";
 
 export interface PickScore {
   points: number;
@@ -276,7 +276,7 @@ export interface RiskProfile {
 
 // ─── Recommendation ──────────────────────────────────────────────────────────
 
-export interface RelativeToField {
+interface RelativeToField {
   /** E[my points − reference rival points] on this game. The reference is
    * the known rival picks when provided, else the field's modal chalk pick —
    * the single opponent a protect or chase race actually runs against. */

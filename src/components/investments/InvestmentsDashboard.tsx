@@ -1,19 +1,7 @@
 "use client";
 
+import { Bookmark, ChartLine, ChartPie, CircleQuestionMark, Contrast, House, List, PiggyBank, ReceiptText, Search, Wallet } from "lucide-react";
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import {
-  IconBookmark,
-  IconChartArcs3,
-  IconChartLine,
-  IconCircleHalf,
-  IconHelp,
-  IconHome,
-  IconList,
-  IconPigMoney,
-  IconReportMoney,
-  IconSearch,
-  IconWallet,
-} from "@tabler/icons-react";
 import { PortfolioSummary } from "./PortfolioSummary";
 import { AddStockForm } from "./AddStockForm";
 import { AllocationChart } from "./AllocationChart";
@@ -164,19 +152,19 @@ export function InvestmentsDashboard({
 
   const navItems: NavItem[] = useMemo(
     () => [
-      { id: "home", label: "Overview", href: "#hero", icon: IconHome },
-      { id: "performance", label: "Performance", href: "#performance", icon: IconChartLine },
-      { id: "stats", label: "Portfolio stats", href: "#portfolio-stats", icon: IconCircleHalf },
+      { id: "home", label: "Overview", href: "#hero", icon: House },
+      { id: "performance", label: "Performance", href: "#performance", icon: ChartLine },
+      { id: "stats", label: "Portfolio stats", href: "#portfolio-stats", icon: Contrast },
       {
         id: "holdings",
         label: "Holdings",
         href: "#holdings-list",
-        icon: IconList,
+        icon: List,
         pill: enhancedHoldings.length > 0 ? String(enhancedHoldings.length) : undefined,
       },
-      { id: "allocation", label: "Allocation", href: "#allocation", icon: IconChartArcs3 },
-      { id: "research", label: "Research", href: "#research-section", icon: IconReportMoney },
-      { id: "retirement", label: "Retirement", href: "#retirement", icon: IconPigMoney },
+      { id: "allocation", label: "Allocation", href: "#allocation", icon: ChartPie },
+      { id: "research", label: "Research", href: "#research-section", icon: ReceiptText },
+      { id: "retirement", label: "Retirement", href: "#retirement", icon: PiggyBank },
     ],
     [enhancedHoldings.length],
   );
@@ -231,7 +219,7 @@ export function InvestmentsDashboard({
         </nav>
 
         <div className="invest-sidebar-footer">
-          <IconBookmark size={16} aria-hidden="true" />
+          <Bookmark size={16} aria-hidden="true" />
           <span>Local browser storage</span>
         </div>
       </aside>
@@ -244,7 +232,7 @@ export function InvestmentsDashboard({
           </div>
 
           <label className="invest-search" aria-label="Filter holdings">
-            <IconSearch size={14} aria-hidden="true" />
+            <Search size={14} aria-hidden="true" />
             <input
               ref={filterInputRef}
               type="search"
@@ -379,7 +367,7 @@ export function InvestmentsDashboard({
       <aside className="invest-rail" aria-label="Portfolio side panel">
         <section ref={addHoldingRef} id="add-holding" className="scroll-mt-28">
           <p className="invest-rail-section-label">
-            <IconWallet size={12} aria-hidden="true" className="mr-1.5 inline align-middle" />
+            <Wallet size={12} aria-hidden="true" className="mr-1.5 inline align-middle" />
             Add a holding
           </p>
           <AddStockForm onAdd={addHolding} />
@@ -437,7 +425,7 @@ export function InvestmentsDashboard({
         ) : null}
 
         <p className="mt-auto flex items-center gap-2 text-2xs text-[var(--home-ink-muted)]">
-          <IconHelp size={14} aria-hidden="true" />
+          <CircleQuestionMark size={14} aria-hidden="true" />
           Holdings live only in your browser. No logins, no cloud sync.
         </p>
       </aside>
@@ -474,7 +462,7 @@ export function InvestmentsDashboard({
       role="note"
       className="mx-auto mt-2 flex max-w-3xl items-start gap-2 text-2xs leading-6 text-[var(--home-ink-muted)]"
     >
-      <IconHelp size={14} className="mt-0.5 shrink-0" aria-hidden="true" />
+      <CircleQuestionMark size={14} className="mt-0.5 shrink-0" aria-hidden="true" />
       Research, valuations, and portfolio figures here are for general information
       and education only and are not investment, tax, or financial advice.
     </p>

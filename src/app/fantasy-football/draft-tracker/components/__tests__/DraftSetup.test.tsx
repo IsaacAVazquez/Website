@@ -25,6 +25,9 @@ describe("DraftSetup", () => {
         settings={makeSettings({ totalTeams: 12, userTeam: 10 })}
         onSaveSettings={jest.fn()}
         onStartDraft={jest.fn()}
+        rankingsStatus="ready"
+        rankingsError={null}
+        onRetryRankings={jest.fn()}
       />
     );
 
@@ -43,6 +46,9 @@ describe("DraftSetup", () => {
         settings={makeSettings({ totalTeams: 12, userTeam: 6 })}
         onSaveSettings={jest.fn()}
         onStartDraft={jest.fn()}
+        rankingsStatus="ready"
+        rankingsError={null}
+        onRetryRankings={jest.fn()}
       />
     );
 
@@ -60,10 +66,14 @@ describe("DraftSetup", () => {
         settings={makeSettings()}
         onSaveSettings={onSaveSettings}
         onStartDraft={onStartDraft}
+        rankingsStatus="ready"
+        rankingsError={null}
+        onRetryRankings={jest.fn()}
       />
     );
 
     const startButton = screen.getByRole("button", { name: /Start draft assistant/i });
+    expect(startButton).toBeEnabled();
     fireEvent.click(startButton);
     fireEvent.click(startButton);
 
@@ -79,6 +89,9 @@ describe("DraftSetup", () => {
         settings={makeSettings()}
         onSaveSettings={onSaveSettings}
         onStartDraft={jest.fn()}
+        rankingsStatus="ready"
+        rankingsError={null}
+        onRetryRankings={jest.fn()}
       />
     );
 
@@ -99,6 +112,9 @@ describe("DraftSetup", () => {
         settings={makeSettings()}
         onSaveSettings={jest.fn()}
         onStartDraft={jest.fn()}
+        rankingsStatus="ready"
+        rankingsError={null}
+        onRetryRankings={jest.fn()}
       />
     );
 
@@ -131,5 +147,49 @@ describe("DraftSetup", () => {
     fireEvent.click(timerOff);
     expect(timerOff).toHaveAttribute("aria-pressed", "true");
     expect(timerOn).toHaveAttribute("aria-pressed", "false");
+  });
+
+  it("keeps Start disabled while rankings load", () => {
+    const onStartDraft = jest.fn();
+    render(
+      <DraftSetup
+        settings={makeSettings()}
+        onSaveSettings={jest.fn()}
+        onStartDraft={onStartDraft}
+        rankingsStatus="loading"
+        rankingsError={null}
+        onRetryRankings={jest.fn()}
+      />
+    );
+
+    expect(screen.getByRole("status")).toHaveTextContent(/Loading the published rankings/i);
+    const startButton = screen.getByRole("button", { name: /Loading rankings/i });
+    expect(startButton).toBeDisabled();
+    fireEvent.click(startButton);
+    expect(onStartDraft).not.toHaveBeenCalled();
+  });
+
+  it("keeps Start disabled and retries after a rankings error", () => {
+    const onStartDraft = jest.fn();
+    const onRetryRankings = jest.fn();
+    render(
+      <DraftSetup
+        settings={makeSettings()}
+        onSaveSettings={jest.fn()}
+        onStartDraft={onStartDraft}
+        rankingsStatus="error"
+        rankingsError="Fantasy rankings are unavailable right now."
+        onRetryRankings={onRetryRankings}
+      />
+    );
+
+    expect(screen.getByRole("alert")).toHaveTextContent(
+      "Fantasy rankings are unavailable right now."
+    );
+    const startButton = screen.getByRole("button", { name: /Rankings unavailable/i });
+    expect(startButton).toBeDisabled();
+    fireEvent.click(screen.getByRole("button", { name: "Retry rankings" }));
+    expect(onRetryRankings).toHaveBeenCalledTimes(1);
+    expect(onStartDraft).not.toHaveBeenCalled();
   });
 });

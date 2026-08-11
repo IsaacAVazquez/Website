@@ -50,7 +50,7 @@ function manualOddsToMarkets(odds: StoredManualOdds): MarketInputs {
  * Build the engine input for a fixture under a pool: hand-entered odds win,
  * else the snapshot's latest. Null when neither exists.
  */
-export function buildPoolFixtureInput(
+function buildPoolFixtureInput(
   fixture: SnapshotFixture,
   pool: StoredPool,
 ): FixtureInput | null {
@@ -77,7 +77,7 @@ export interface PoolFixtureAnalysis {
   analysis: FixtureAnalysis;
 }
 
-export interface PoolRoundAnalysis {
+interface PoolRoundAnalysis {
   analyzed: PoolFixtureAnalysis[];
   /** Fixtures the engine can't price because no odds exist anywhere. */
   missingOdds: SnapshotFixture[];
@@ -142,7 +142,7 @@ export function effectiveResult(
   return null;
 }
 
-export interface ScoredPick {
+interface ScoredPick {
   fixture: SnapshotFixture;
   pick: Scoreline;
   result: MatchResultInput | null;

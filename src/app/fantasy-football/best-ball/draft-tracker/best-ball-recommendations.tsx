@@ -1,4 +1,7 @@
-import type { BestBallRecommendation } from "@/lib/bestBall/types";
+import type {
+  BestBallRecommendation,
+  BestBallRecommendationMode,
+} from "@/lib/bestBall/types";
 import type { Player } from "@/types";
 
 const COMPONENT_LABELS: Record<keyof BestBallRecommendation["components"], string> = {
@@ -22,18 +25,22 @@ export function BestBallRecommendations({
   recommendations,
   isUserPick,
   adpAvailable,
-  sourceAvailable,
+  recommendationMode,
+  recommendationReason,
+  sourceIssue,
   onDraftPlayer,
 }: {
   recommendations: readonly BestBallRecommendation[];
   isUserPick: boolean;
   adpAvailable: boolean;
-  sourceAvailable: boolean;
+  recommendationMode: BestBallRecommendationMode;
+  recommendationReason: string;
+  sourceIssue: string | null;
   onDraftPlayer: (player: Player) => void;
 }) {
-  const description = adpAvailable
-    ? "The score starts with current standard Underdog ADP, where one point equals one market pick, then applies at most seven points of roster and correlation adjustments in this contest. PPR best ball ECR is a separate reference. This is not a projected win rate."
-    : "This contest has no matching market ADP in the snapshot, so the source consensus rank sets the order and market value adds no score. This is not a projected win rate.";
+  const description = recommendationMode === "exact"
+    ? "The score starts with current standard Underdog ADP, where one point equals one market pick, then applies at most seven points of roster and correlation adjustments. PPR best ball ECR is a separate reference. This is not a projected win rate."
+    : "The sourced board and roster targets remain available, but this preset does not produce exact player cards.";
 
   return (
     <section className="home-card p-5 sm:p-6" aria-labelledby="best-ball-recommendations-heading">
@@ -41,7 +48,9 @@ export function BestBallRecommendations({
         <div>
           <p className="home-kicker mb-1">Your next pick</p>
           <h2 id="best-ball-recommendations-heading" className="text-2xl font-semibold">
-            Best fits for your next pick
+            {recommendationMode === "exact"
+              ? "Best fits for your next pick"
+              : "Board and roster guidance"}
           </h2>
         </div>
         <p className="max-w-[34ch] text-xs leading-5" style={{ color: "var(--home-ink-muted)" }}>
@@ -49,11 +58,29 @@ export function BestBallRecommendations({
         </p>
       </div>
 
-      {!sourceAvailable ? (
-        <p className="mt-4 text-sm leading-6" style={{ color: "var(--home-negative)" }}>
-          Exact player cards are unavailable because the ranking source is more than four days old
-          during draft season. The room can still log picks, but it will not present an old board as
-          a current recommendation.
+      {recommendationMode === "reference" ? (
+        <div
+          role="note"
+          className="mt-4 rounded-[var(--radius-2xl)] border px-4 py-3 text-sm leading-6"
+          style={{
+            borderColor: "var(--home-rule)",
+            background: "color-mix(in srgb, var(--home-paper-alt) 58%, var(--home-paper))",
+          }}
+        >
+          <p className="font-semibold">Reference guidance only</p>
+          <p className="mt-1" style={{ color: "var(--home-ink-muted)" }}>
+            {recommendationReason} Use the board and roster targets to plan the position or tier you
+            want next.
+          </p>
+        </div>
+      ) : sourceIssue ? (
+        <p
+          role="alert"
+          className="mt-4 text-sm leading-6"
+          style={{ color: "var(--home-negative)" }}
+        >
+          Exact player cards are unavailable because {sourceIssue}. The room can still log picks,
+          but it will not present an unsupported board as a current recommendation.
         </p>
       ) : !isUserPick ? (
         <p className="mt-4 text-sm leading-6" style={{ color: "var(--home-ink-muted)" }}>

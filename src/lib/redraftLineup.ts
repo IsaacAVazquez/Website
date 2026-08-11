@@ -81,7 +81,7 @@ export function redraftLineupSummary(lineup: RedraftLineupSettings): string {
   return `${lineup.QB} QB, ${lineup.RB} RB, ${lineup.WR} WR, ${lineup.TE} TE, ${lineup.FLEX} FLEX, ${lineup.K} K, and ${lineup.DST} DST`;
 }
 
-export interface RedraftRosterTarget {
+interface RedraftRosterTarget {
   QB: number;
   RB: number;
   WR: number;

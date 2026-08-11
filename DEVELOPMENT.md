@@ -187,7 +187,7 @@ There is no live `/admin/analytics` page in the current route tree.
 
 - deployment target is Netlify
 - builds consume committed snapshots and do not mutate data or call external providers
-- `next-sitemap` runs during postbuild
+- `scripts/generatePublicSitemap.mjs` runs during postbuild
 - `npm run typecheck` is enforced before the production build in CI
 - build-time tracing excludes large optional assets and packages
 - the snapshot-refresh GitHub Actions workflows (all `.github/workflows/update-*.yml`) commit and push their refreshed snapshots through the shared `scripts/ci/commit-and-push-snapshot.sh` helper, which sets the `github-actions[bot]` identity, no-ops cleanly when nothing changed, and retries the push with rebase + backoff so concurrent snapshot bots do not collide on `main`

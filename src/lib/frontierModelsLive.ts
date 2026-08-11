@@ -38,7 +38,7 @@ const FETCH_TIMEOUT_MS = 15_000;
 const MIN_MODELS_DEV_PROVIDERS = 5;
 const MIN_OPENROUTER_MODELS = 50;
 
-export interface LiveModelFacts {
+interface LiveModelFacts {
   contextWindow?: number;
   maxOutputTokens?: number;
   inputPricePerMTokens?: number;

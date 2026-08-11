@@ -147,7 +147,7 @@ export interface DeterministicResult {
   depletionAge: number | null;
 }
 
-export interface MoneyPair {
+interface MoneyPair {
   nominal: number;
   real: number;
 }
@@ -200,7 +200,7 @@ export interface LeverEffect {
 
 export type Verdict = "on-track" | "good" | "fair" | "at-risk";
 
-export interface AssumptionsMeta {
+interface AssumptionsMeta {
   cmaSource: string;
   cmaAsOf: string;
   /** Whether the shipped CMA figures have been re-pinned to a primary source. */

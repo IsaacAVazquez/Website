@@ -6,6 +6,7 @@ export interface RefreshArtifactDefinition {
   artifactPath: string;
   exportName?: string;
   sourceAsOfPath: readonly string[];
+  sourceAsOfFallbackPath?: readonly string[];
   revisionPayloadPath?: readonly string[];
 }
 
@@ -13,7 +14,10 @@ const definition = (
   surface: DataSurfaceId,
   artifactPath: string,
   sourceAsOfPath: readonly string[],
-  options: Pick<RefreshArtifactDefinition, "exportName" | "revisionPayloadPath"> = {}
+  options: Pick<
+    RefreshArtifactDefinition,
+    "exportName" | "revisionPayloadPath" | "sourceAsOfFallbackPath"
+  > = {}
 ): RefreshArtifactDefinition => ({
   surface,
   artifactPath: path.join(process.cwd(), artifactPath),
@@ -94,7 +98,8 @@ export const DATA_REFRESH_ARTIFACTS: Partial<
   "fantasy-football": definition(
     "fantasy-football",
     "public/data/fantasy/ppr.json",
-    ["generatedAt"]
+    ["upstreamUpdatedAt"],
+    { sourceAsOfFallbackPath: ["generatedAt"] }
   ),
   "score-pools": definition(
     "score-pools",

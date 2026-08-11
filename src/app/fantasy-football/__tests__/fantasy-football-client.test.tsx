@@ -829,4 +829,42 @@ describe("FantasyFootballClient", () => {
     expect(retry).toHaveBeenCalledTimes(1);
     expect(mockUseFantasySnapshot).toHaveBeenCalledTimes(1);
   });
+
+  it("keeps density controls usable when browser storage is blocked", () => {
+    mockUseFantasySnapshot.mockReturnValue({
+      players: [],
+      snapshot: null,
+      metadata: null,
+      sliceMetadata: null,
+      sliceMetadataMap: null,
+      isLoading: false,
+      error: "Fantasy rankings are unavailable right now.",
+      retry: jest.fn(),
+    });
+    const getItem = jest
+      .spyOn(Storage.prototype, "getItem")
+      .mockImplementation(() => {
+        throw new DOMException("Blocked", "SecurityError");
+      });
+    const setItem = jest
+      .spyOn(Storage.prototype, "setItem")
+      .mockImplementation(() => {
+        throw new DOMException("Blocked", "SecurityError");
+      });
+
+    try {
+      render(
+        <FantasyFootballClient
+          initialState={{ position: "rb", scoring: "ppr", view: "list" }}
+        />
+      );
+
+      const compact = screen.getByRole("radio", { name: "Compact" });
+      fireEvent.click(compact);
+      expect(compact).toHaveAttribute("aria-checked", "true");
+    } finally {
+      getItem.mockRestore();
+      setItem.mockRestore();
+    }
+  });
 });

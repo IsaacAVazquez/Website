@@ -110,6 +110,12 @@ export const calculateCurrentRound = (pick: number, totalTeams: number): number 
   return Math.ceil(pick / totalTeams);
 };
 
+const calculateCappedCurrentRound = (
+  pick: number,
+  totalTeams: number,
+  rounds: number
+): number => Math.min(rounds, calculateCurrentRound(pick, totalTeams));
+
 type UnknownRecord = Record<string, unknown>;
 
 const SUPPORTED_TEAM_COUNTS = [8, 10, 12, 14, 16] as const;
@@ -221,11 +227,11 @@ function decodePlayer(value: unknown): Player | null {
     team: team.slice(0, 20),
     position: value.position,
     averageRank,
-    standardDeviation:
-      isFiniteNumber(value.standardDeviation) && value.standardDeviation >= 0
-        ? value.standardDeviation
-        : 0,
   };
+
+  if (isFiniteNumber(value.standardDeviation) && value.standardDeviation >= 0) {
+    player.standardDeviation = value.standardDeviation;
+  }
 
   const numericFields = [
     'projectedPoints',
@@ -418,7 +424,7 @@ function decodePersistedDraftState(value: unknown): DraftState {
     settings,
     picks,
     currentPick,
-    currentRound: calculateCurrentRound(currentPick, settings.totalTeams),
+    currentRound: calculateCappedCurrentRound(currentPick, settings.totalTeams, settings.rounds),
     isActive:
       !isComplete &&
       (picks.length > 0 || (!hadPersistedPicks && record.isActive === true)),
@@ -610,7 +616,11 @@ export const useDraftState = () => {
         ...prev,
         picks: [...prev.picks, pick],
         currentPick: prev.currentPick + 1,
-        currentRound: calculateCurrentRound(prev.currentPick + 1, prev.settings.totalTeams),
+        currentRound: calculateCappedCurrentRound(
+          prev.currentPick + 1,
+          prev.settings.totalTeams,
+          prev.settings.rounds
+        ),
         teams: updatedTeams,
         isActive: !isComplete,
         endTime: isComplete ? new Date() : prev.endTime,
@@ -708,7 +718,11 @@ export const useDraftState = () => {
         ...prev,
         picks: [...prev.picks, pick],
         currentPick: prev.currentPick + 1,
-        currentRound: calculateCurrentRound(prev.currentPick + 1, prev.settings.totalTeams),
+        currentRound: calculateCappedCurrentRound(
+          prev.currentPick + 1,
+          prev.settings.totalTeams,
+          prev.settings.rounds
+        ),
         teams: updatedTeams,
         isActive: !isComplete,
         endTime: isComplete ? new Date() : prev.endTime,

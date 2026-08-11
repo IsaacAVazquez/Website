@@ -4,8 +4,6 @@ import {
   fantasyPositionDataSource,
 } from "@/data/fantasyPositionData.generated";
 import { Player, Position, ScoringFormat } from "@/types";
-
-export const FANTASY_SHARED_SCORING_POSITIONS = ["QB", "K", "DST"] as const;
 export const FANTASY_POSITION_DATA_POSITIONS = ["QB", "RB", "WR", "TE", "K", "DST"] as const;
 
 export type FantasyPositionDataPosition = Extract<
@@ -86,12 +84,6 @@ export function getFantasyPositionData(
 
 export function getFantasyOverallData(scoringFormat: ScoringFormat): Player[] {
   return normalizeFantasyPositionDataset(scoringFormat).overall;
-}
-
-export function getFantasyPositionDataForScoring(
-  scoringFormat: ScoringFormat
-): Record<FantasyPositionDataPosition, Player[]> {
-  return normalizeFantasyPositionDataset(scoringFormat).positions;
 }
 
 export function getFantasyPositionDataMetadata(scoringFormat?: ScoringFormat) {

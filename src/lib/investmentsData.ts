@@ -24,7 +24,7 @@ interface PrefetchedReadResult<T> {
   };
 }
 
-export interface InvestmentsDataOptions {
+interface InvestmentsDataOptions {
   assetOrigin?: string | null;
 }
 

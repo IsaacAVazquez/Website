@@ -1,12 +1,17 @@
+import type {
+  BestBallCompetitionFormat,
+  BestBallLineupVariant,
+} from "@/lib/bestBall";
 import type { Player } from "@/types";
 
 export const BEST_BALL_DRAFT_STORAGE_VERSION = 1;
-export const BEST_BALL_ROOM_RULES_SCHEMA_VERSION = 1;
+export const BEST_BALL_ROOM_RULES_SCHEMA_VERSION = 2;
 
 export interface BestBallRoomRules {
   contestId: string;
   rulesSchemaVersion: number;
-  format: string;
+  competitionFormat: BestBallCompetitionFormat;
+  lineupVariant: BestBallLineupVariant;
   scoring: "HALF_PPR";
   teams: number;
   rounds: number;
@@ -52,7 +57,8 @@ function rulesMatch(left: BestBallRoomRules, right: BestBallRoomRules): boolean 
   return (
     left.contestId === right.contestId &&
     left.rulesSchemaVersion === right.rulesSchemaVersion &&
-    left.format === right.format &&
+    left.competitionFormat === right.competitionFormat &&
+    left.lineupVariant === right.lineupVariant &&
     left.scoring === right.scoring &&
     left.teams === right.teams &&
     left.rounds === right.rounds &&
@@ -78,8 +84,10 @@ function isDraftablePlayer(value: unknown): value is Player {
     ["QB", "RB", "WR", "TE"].includes(String(player.position)) &&
     typeof player.averageRank === "number" &&
     Number.isFinite(player.averageRank) &&
-    typeof player.standardDeviation === "number" &&
-    Number.isFinite(player.standardDeviation)
+    (player.standardDeviation === undefined ||
+      (typeof player.standardDeviation === "number" &&
+        Number.isFinite(player.standardDeviation) &&
+        player.standardDeviation >= 0))
   );
 }
 

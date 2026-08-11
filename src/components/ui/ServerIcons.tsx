@@ -1,6 +1,7 @@
 /**
  * Lightweight inline SVG icons for server components.
- * Avoids importing @tabler/icons-react (116MB) in server bundles.
+ * Keeps an icon dependency out of server bundles, and supplies the brand marks
+ * (GitHub, LinkedIn) that lucide-react does not ship.
  * SVG paths sourced from Tabler Icons (MIT license).
  */
 

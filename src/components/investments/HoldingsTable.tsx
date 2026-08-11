@@ -1,7 +1,7 @@
 "use client";
 
+import { Check, Pencil, Search, Trash2, X } from "lucide-react";
 import React, { useState } from "react";
-import { IconCheck, IconPencil, IconSearch, IconTrash, IconX } from "@tabler/icons-react";
 import { useStockData } from "@/hooks/useStockData";
 import {
   formatCurrency,
@@ -128,7 +128,7 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
                 className="invest-ghost is-primary"
                 onClick={handleSave}
               >
-                <IconCheck size={14} aria-hidden="true" />
+                <Check size={14} aria-hidden="true" />
                 Save
               </button>
               <button
@@ -136,7 +136,7 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
                 className="invest-ghost"
                 onClick={handleCancelEdit}
               >
-                <IconX size={14} aria-hidden="true" />
+                <X size={14} aria-hidden="true" />
                 Cancel
               </button>
             </div>
@@ -233,7 +233,7 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
                   setConfirmDelete(false);
                 }}
               >
-                <IconCheck size={14} aria-hidden="true" />
+                <Check size={14} aria-hidden="true" />
               </button>
               <button
                 type="button"
@@ -241,7 +241,7 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
                 aria-label="Cancel remove"
                 onClick={() => setConfirmDelete(false)}
               >
-                <IconX size={14} aria-hidden="true" />
+                <X size={14} aria-hidden="true" />
               </button>
             </>
           ) : (
@@ -253,7 +253,7 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
                 aria-label={`Research ${holding.symbol}`}
                 title={`Research ${holding.symbol}`}
               >
-                <IconSearch size={14} aria-hidden="true" />
+                <Search size={14} aria-hidden="true" />
               </button>
               <button
                 type="button"
@@ -262,7 +262,7 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
                 aria-label={`Edit ${holding.symbol}`}
                 title={`Edit ${holding.symbol}`}
               >
-                <IconPencil size={14} aria-hidden="true" />
+                <Pencil size={14} aria-hidden="true" />
               </button>
               <button
                 type="button"
@@ -271,7 +271,7 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
                 aria-label={`Remove ${holding.symbol}`}
                 title={`Remove ${holding.symbol}`}
               >
-                <IconTrash size={14} aria-hidden="true" />
+                <Trash2 size={14} aria-hidden="true" />
               </button>
             </>
           )}

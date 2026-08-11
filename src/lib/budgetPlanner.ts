@@ -10,7 +10,7 @@ import type {
 
 export const BUDGET_PLANNER_STORAGE_KEY = "budget_planner_months_v1";
 
-export const DEFAULT_BUDGET_CATEGORY_NAMES = [
+const DEFAULT_BUDGET_CATEGORY_NAMES = [
   "Housing",
   "Utilities",
   "Groceries",
@@ -102,7 +102,7 @@ export function createBudgetExpense(input: Omit<BudgetExpense, "id">): BudgetExp
   };
 }
 
-export function getDefaultBudgetCategories() {
+function getDefaultBudgetCategories() {
   return DEFAULT_BUDGET_CATEGORY_NAMES.map((name) => createBudgetCategory(name));
 }
 

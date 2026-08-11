@@ -27,13 +27,13 @@ const MANAGED_KEY_PREFIXES = [
   "fantasy-formula-1-lineup-v1-",
 ];
 
-export interface LocalDataBackup {
+interface LocalDataBackup {
   schemaVersion: 1;
   exportedAt: string;
   entries: Record<string, string>;
 }
 
-export function isManagedLocalDataKey(key: string): boolean {
+function isManagedLocalDataKey(key: string): boolean {
   return (
     MANAGED_EXACT_KEYS.has(key) ||
     MANAGED_KEY_PREFIXES.some((prefix) => key.startsWith(prefix))

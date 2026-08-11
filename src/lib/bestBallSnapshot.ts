@@ -4,14 +4,14 @@ import { normalizeAdpTeam } from "@/lib/fantasyAdpMatcher";
 export const BEST_BALL_SNAPSHOT_SCHEMA_VERSION = 2;
 export const BEST_BALL_MIN_RANKING_PLAYERS = 250;
 export const BEST_BALL_RANKING_TOP_BOARD_SIZE = 150;
-export const BEST_BALL_MIN_RANKING_RELATIVE_COVERAGE = 0.8;
-export const BEST_BALL_MIN_SUPERFLEX_MATCHES = 150;
-export const BEST_BALL_MIN_SUPERFLEX_COVERAGE = 0.9;
+const BEST_BALL_MIN_RANKING_RELATIVE_COVERAGE = 0.8;
+const BEST_BALL_MIN_SUPERFLEX_MATCHES = 150;
+const BEST_BALL_MIN_SUPERFLEX_COVERAGE = 0.9;
 export const BEST_BALL_SUPERFLEX_TOP_BOARD_SIZE = 150;
-export const BEST_BALL_MIN_SUPERFLEX_TOP_BOARD_COVERAGE = 0.95;
-export const BEST_BALL_MIN_SUPERFLEX_QB_COVERAGE = 1;
-export const BEST_BALL_MIN_ADP_MATCHES = 150;
-export const BEST_BALL_MIN_ADP_RELATIVE_COVERAGE = 0.8;
+const BEST_BALL_MIN_SUPERFLEX_TOP_BOARD_COVERAGE = 0.95;
+const BEST_BALL_MIN_SUPERFLEX_QB_COVERAGE = 1;
+const BEST_BALL_MIN_ADP_MATCHES = 150;
+const BEST_BALL_MIN_ADP_RELATIVE_COVERAGE = 0.8;
 
 export function assertBestBallRankingCoverage({
   players,
@@ -124,6 +124,7 @@ export interface BestBallSourceMetadata {
   url: string;
   asOf: string | null;
   matchedCount?: number;
+  expertCount?: number;
 }
 
 export interface BestBallSnapshot {
@@ -157,6 +158,9 @@ function normalizeSource(value: unknown): BestBallSourceMetadata | null {
     ...(isFiniteNumber(source.matchedCount)
       ? { matchedCount: Math.max(0, Math.floor(source.matchedCount)) }
       : {}),
+    ...(isFiniteNumber(source.expertCount)
+      ? { expertCount: Math.max(0, Math.floor(source.expertCount)) }
+      : {}),
   };
 }
 
@@ -169,7 +173,8 @@ function normalizePlayer(value: unknown): Player | null {
     typeof player.team !== "string" ||
     !["QB", "RB", "WR", "TE"].includes(String(player.position)) ||
     !isFiniteNumber(player.averageRank) ||
-    !isFiniteNumber(player.standardDeviation)
+    (player.standardDeviation !== undefined &&
+      (!isFiniteNumber(player.standardDeviation) || player.standardDeviation < 0))
   ) {
     return null;
   }
@@ -181,7 +186,9 @@ function normalizePlayer(value: unknown): Player | null {
     team: normalizeAdpTeam(player.team) || "FA",
     position: player.position as Player["position"],
     averageRank: player.averageRank,
-    standardDeviation: player.standardDeviation,
+    ...(isFiniteNumber(player.standardDeviation)
+      ? { standardDeviation: player.standardDeviation }
+      : {}),
   } as Player;
 }
 

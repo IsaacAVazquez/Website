@@ -146,6 +146,43 @@ describe("useDraftState persisted-state loading", () => {
     expect(localStorage.getItem(previousKey)).toBeNull();
   });
 
+  it("round-trips a drafted player without expert spread", async () => {
+    const {
+      standardDeviation: _spread,
+      ...playerWithoutSpread
+    } = persistedPlayer("no-expert-spread");
+    const firstRender = renderHook(() => useDraftState());
+    await waitFor(() => expect(firstRender.result.current.isLoaded).toBe(true));
+
+    act(() => {
+      firstRender.result.current.startDraft();
+      firstRender.result.current.draftPlayer(playerWithoutSpread);
+    });
+
+    await waitFor(() => {
+      const saved = JSON.parse(
+        localStorage.getItem(FANTASY_DRAFT_STORAGE_KEY) ?? "{}"
+      ) as { picks?: Array<{ player?: Record<string, unknown> }> };
+      expect(saved.picks).toHaveLength(1);
+      expect(saved.picks?.[0].player).not.toHaveProperty("standardDeviation");
+    });
+    firstRender.unmount();
+
+    const restoredRender = renderHook(() => useDraftState());
+    await waitFor(() => expect(restoredRender.result.current.isLoaded).toBe(true));
+
+    expect(restoredRender.result.current.draftState.picks).toHaveLength(1);
+    expect(restoredRender.result.current.draftState.picks[0].player).toMatchObject({
+      id: "no-expert-spread",
+      position: "RB",
+      averageRank: 1,
+    });
+    expect(
+      restoredRender.result.current.draftState.picks[0].player
+    ).not.toHaveProperty("standardDeviation");
+    expect(restoredRender.result.current.draftState.teams[0].positionCounts.RB).toBe(1);
+  });
+
   it("rebuilds null or malformed team entries and preserves only valid names", async () => {
     localStorage.setItem(
       FANTASY_DRAFT_STORAGE_KEY,
@@ -339,6 +376,33 @@ describe("useDraftState persisted-state loading", () => {
     expect(result.current.draftState.currentRound).toBe(1);
     expect(result.current.draftState.isActive).toBe(true);
     expect(result.current.draftState.endTime).toBeUndefined();
+  });
+
+  it("restores a completed draft in the configured final round", async () => {
+    const totalPicks = VALID_SETTINGS.totalTeams * VALID_SETTINGS.rounds;
+    localStorage.setItem(
+      FANTASY_DRAFT_STORAGE_KEY,
+      JSON.stringify({
+        settings: VALID_SETTINGS,
+        picks: Array.from({ length: totalPicks }, (_, index) =>
+          persistedPick(index + 1, `complete-player-${index + 1}`, {
+            timestamp: "2026-06-01T12:00:00.000Z",
+          })
+        ),
+        currentPick: totalPicks + 1,
+        currentRound: VALID_SETTINGS.rounds + 1,
+        isActive: true,
+        endTime: "2026-06-01T14:00:00.000Z",
+      })
+    );
+
+    const { result } = renderHook(() => useDraftState());
+    await waitFor(() => expect(result.current.isLoaded).toBe(true));
+
+    expect(result.current.draftState.picks).toHaveLength(totalPicks);
+    expect(result.current.draftState.currentPick).toBe(totalPicks + 1);
+    expect(result.current.draftState.currentRound).toBe(VALID_SETTINGS.rounds);
+    expect(result.current.draftState.isActive).toBe(false);
   });
 
   it("still drops a corrupt blob and starts clean", async () => {

@@ -12,7 +12,7 @@ interface MBAJobMatchInput {
   employmentType?: string | null;
 }
 
-export interface MBAJobMatch {
+interface MBAJobMatch {
   roleFamilies: MBAJobRoleFamily[];
   roleType: MBAJobRoleType;
 }

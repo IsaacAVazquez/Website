@@ -2,7 +2,7 @@
 
 Day-to-day operational and hygiene notes for the live site. For the public vulnerability-disclosure policy, see the root [`SECURITY.md`](../SECURITY.md).
 
-**Last updated:** 2026-04-27
+**Last updated:** 2026-08-11
 
 ---
 
@@ -12,7 +12,7 @@ This is a personal portfolio site, not a multi-tenant product:
 
 - there is no user registration, no PII storage, no payments, and no per-user data
 - the only authenticated surface is `/admin`, gated by a single shared credential pair through NextAuth
-- most data is static — committed JSON or TypeScript snapshots — so the runtime attack surface is small
+- most data is static and uses committed JSON or TypeScript snapshots, so the runtime attack surface is small
 - public API routes are read-only proxies over those snapshots and a handful of third-party services (Finnhub, football-data.org, Resend)
 
 That said, the site is publicly indexed and Isaac is professionally identifiable. Treat anything that could enable phishing, impersonation, or content tampering as in-scope.
@@ -21,7 +21,7 @@ That said, the site is publicly indexed and Isaac is professionally identifiable
 
 ## Secrets And Environment Variables
 
-Keep secrets in `.env.local` for local development and in the Netlify dashboard for production. Never commit them, paste them into markdown examples, or fixture them into tests.
+Keep secrets in `.env.local` for local development, in the Netlify dashboard for deployed runtime functions, and in GitHub Actions for scheduled snapshot jobs. Never commit them, paste them into markdown examples, or fixture them into tests.
 
 Active secrets used by the running app and update scripts:
 
@@ -30,6 +30,7 @@ Active secrets used by the running app and update scripts:
 | `NEXTAUTH_SECRET` | NextAuth JWT signing key. Generate fresh per environment with `openssl rand -base64 32`. |
 | `NEXTAUTH_URL` | Must match the live deployment hostname (or `http://localhost:3000` in dev). |
 | `ADMIN_USERNAME` / `ADMIN_PASSWORD` | Single credential pair for `/admin`. |
+| `FANTASYPROS_API_KEY` | Build-only key for authenticated redraft and best ball snapshot refreshes. The scheduled job reads it from GitHub Actions, not Netlify. |
 | `FOOTBALL_DATA_API_TOKEN` | football-data.org token used by football snapshot scripts. |
 | `FINNHUB_API_KEY` | Quote endpoint behind `/api/investments/quotes`. |
 | `RESEND_API_KEY` | Transactional email for the MBA internship digest (`/api/mba-jobs/email`). |
@@ -41,8 +42,8 @@ Active secrets used by the running app and update scripts:
 Rotation guidance:
 
 - rotate `NEXTAUTH_SECRET`, `ADMIN_PASSWORD`, and `CRON_SECRET` after any suspected exposure or hand-off
-- rotate third-party API keys (`FOOTBALL_DATA_API_TOKEN`, `FINNHUB_API_KEY`, `RESEND_API_KEY`) immediately if a key appears in logs, screenshots, or a public commit
-- after rotation, verify Netlify env vars and trigger a fresh deploy so the new value is in effect
+- rotate third-party API keys (`FANTASYPROS_API_KEY`, `FOOTBALL_DATA_API_TOKEN`, `FINNHUB_API_KEY`, `RESEND_API_KEY`) immediately if a key appears in logs, screenshots, or a public commit
+- after rotation, verify the relevant secret store. Redeploy for runtime keys and rerun the affected GitHub Actions job for snapshot credentials
 
 ---
 
@@ -65,8 +66,8 @@ Hardening expectations:
 
 ### Operationally protected
 
-- `/api/auth/[...nextauth]` — NextAuth handler for `/admin` sign-in
-- `netlify/functions/purge-cache` — requires `Authorization: Bearer <CRON_SECRET>` or `x-cron-secret: <CRON_SECRET>`; query-string secrets are intentionally rejected
+- `/api/auth/[...nextauth]` is the NextAuth handler for `/admin` sign-in
+- `netlify/functions/purge-cache` requires `Authorization: Bearer <CRON_SECRET>` or `x-cron-secret: <CRON_SECRET>`; query-string secrets are intentionally rejected
 
 ### Public, read-only endpoints
 
@@ -93,9 +94,9 @@ These power the live UI. They are cached, rate-limited where appropriate, and mu
 
 ### Public, side-effect endpoints
 
-- `/api/mba-jobs/email` — sends a Resend-backed digest. It validates and escapes request content, caps digest size, rate-limits by client, and only sends to `MBA_DIGEST_ALLOWED_RECIPIENTS`.
+- `/api/mba-jobs/email` sends a Resend-backed digest. It validates and escapes request content, caps digest size, rate-limits by client, and only sends to `MBA_DIGEST_ALLOWED_RECIPIENTS`.
 
-`/api/search` is still a limited, mostly hardcoded index — do not treat it as comprehensive site search.
+`/api/search` is still a limited, mostly hardcoded index. Do not treat it as complete site search.
 
 There is no `/api/scheduled-update`, `/api/data-manager`, `/api/fantasy-pros-session`, `/api/fantasy-pros-free`, or `/api/scrape` route in the live app. Older docs that reference these are historical.
 
@@ -122,8 +123,8 @@ There is no `/api/scheduled-update`, `/api/data-manager`, `/api/fantasy-pros-ses
 ## Deployment Hygiene
 
 - run `npm run lint`, `npm test`, and `npm run build` before merging anything that touches auth, API routes, or `netlify.toml`
-- review `netlify.toml` whenever changing headers, caching, redirects, or build behavior — a misconfigured cache header is the most likely way to leak stale or sensitive data
-- verify environment parity between local and Netlify when auth, cron, or third-party keys change
+- review `netlify.toml` whenever changing headers, caching, redirects, or build behavior because a misconfigured cache header is the most likely way to leak stale or sensitive data
+- verify the correct secret store when auth, cron, or third-party keys change. Runtime keys belong in Netlify, while scheduled snapshot credentials belong in GitHub Actions
 - never add a secret to `netlify.toml` directly; use the Netlify env-var dashboard so values are masked in build logs
 
 ---
@@ -141,7 +142,7 @@ If you suspect a leaked secret, defacement, or unauthorized admin access:
 
 ## Related References
 
-- `SECURITY.md` (repo root) — public vulnerability disclosure policy
+- `SECURITY.md` in the repo root contains the public vulnerability disclosure policy
 - `docs/ENVIRONMENT_CONFIGURATION.md`
 - `docs/CRON_SETUP.md`
 - `DEPLOYMENT.md`

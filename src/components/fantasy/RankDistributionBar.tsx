@@ -17,6 +17,8 @@ const SPREAD_FILL: Record<string, string> = {
   mixed: "color-mix(in srgb, var(--home-signal) 46%, var(--home-paper))",
   volatile: "color-mix(in srgb, var(--home-warning) 38%, var(--home-paper))",
 };
+const UNKNOWN_SPREAD_FILL =
+  "color-mix(in srgb, var(--home-ink) 22%, var(--home-paper))";
 
 /**
  * Visualizes how widely the experts disagree about a player by plotting his
@@ -31,11 +33,7 @@ export function RankDistributionBar({ player, scaleMin, scaleMax, compact = fals
   const avg =
     typeof player.rankAverage === "number" && Number.isFinite(player.rankAverage)
       ? player.rankAverage
-      : typeof player.rankEcr === "number" && Number.isFinite(player.rankEcr)
-        ? player.rankEcr
-        : typeof player.averageRank === "number" && Number.isFinite(player.averageRank)
-          ? player.averageRank
-          : undefined;
+      : undefined;
 
   if (!Number.isFinite(min) || !Number.isFinite(max)) {
     return (
@@ -53,7 +51,7 @@ export function RankDistributionBar({ player, scaleMin, scaleMax, compact = fals
   const left = pct(min as number);
   const right = pct(max as number);
   const spread = getConsensusSpread(player);
-  const fill = SPREAD_FILL[spread?.level ?? "mixed"] ?? SPREAD_FILL.mixed;
+  const fill = spread ? SPREAD_FILL[spread.level] : UNKNOWN_SPREAD_FILL;
 
   return (
     <div className="w-full">

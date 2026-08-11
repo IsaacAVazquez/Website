@@ -20,7 +20,7 @@ export interface NewsPulseFeedResponse {
   message?: string;
 }
 
-export interface NewsPulseDataResult {
+interface NewsPulseDataResult {
   body: NewsPulseFeedResponse;
   status: number;
   isError: boolean;

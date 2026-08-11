@@ -24,6 +24,7 @@ import {
   normalizeRedraftLineup,
   redraftLineupSummary,
 } from "@/lib/redraftLineup";
+import { clamp } from "@/lib/utils";
 import type {
   DraftPick,
   DraftSettings,
@@ -37,19 +38,19 @@ import type {
  * the current room from information available at draft time. It is not a
  * projected-points model, a win probability, or a roster-specific payout EV.
  */
-export const DRAFT_OUTLOOK_MODEL_VERSION = "draft-outlook-v2";
+const DRAFT_OUTLOOK_MODEL_VERSION = "draft-outlook-v2";
 
-export type DraftValueMode = "redraft" | "best-ball";
-export type DraftValueConfidence = "early" | "developing" | "settled";
-export type DraftValueBaselineSource = "adp" | "format-rank" | "consensus-rank";
-export type DraftValueComponentId =
+type DraftValueMode = "redraft" | "best-ball";
+type DraftValueConfidence = "early" | "developing" | "settled";
+type DraftValueBaselineSource = "adp" | "format-rank" | "consensus-rank";
+type DraftValueComponentId =
   | "market"
   | "roster"
   | "lineup"
   | "correlation"
   | "byes";
 
-export interface DraftValueComponent {
+interface DraftValueComponent {
   id: DraftValueComponentId;
   label: string;
   score: number;
@@ -57,7 +58,7 @@ export interface DraftValueComponent {
   detail: string;
 }
 
-export interface DraftSlotContext {
+interface DraftSlotContext {
   slot: number;
   teams: number;
   rounds: number;
@@ -67,7 +68,7 @@ export interface DraftSlotContext {
   maximumTurnGap: number;
 }
 
-export interface DraftValueMarketSummary {
+interface DraftValueMarketSummary {
   judgedPicks: number;
   adpPicks: number;
   formatRankPicks: number;
@@ -93,13 +94,13 @@ export interface DraftValueReport {
   components: readonly DraftValueComponent[];
 }
 
-export interface ExpectedReturnInput {
+interface ExpectedReturnInput {
   entryCost: number;
   payoutProbability: number;
   averagePayout: number;
 }
 
-export interface ExpectedReturnResult {
+interface ExpectedReturnResult {
   grossExpectedReturn: number;
   netExpectedValue: number;
   roi: number | null;
@@ -112,7 +113,7 @@ export interface ContestFieldEconomicsInput {
   prizePool: number;
 }
 
-export interface ContestFieldEconomics {
+interface ContestFieldEconomics {
   entryFee: number;
   fieldEntries: number;
   prizePool: number;
@@ -159,10 +160,6 @@ const BEST_BALL_COMPONENT_WEIGHTS: Readonly<
 
 function isFiniteNumber(value: unknown): value is number {
   return typeof value === "number" && Number.isFinite(value);
-}
-
-function clamp(value: number, minimum: number, maximum: number): number {
-  return Math.min(maximum, Math.max(minimum, value));
 }
 
 function roundedScore(value: number): number {
@@ -816,7 +813,7 @@ export function calculateBestBallDraftValues({
 }): DraftValueReport[] {
   const preset = getContestPreset(contestId);
   const weights = BEST_BALL_COMPONENT_WEIGHTS[preset.strategyProfileId];
-  const useSuperflexRank = preset.format === "superflex";
+  const useSuperflexRank = preset.lineupVariant === "superflex";
   const reports: MutableDraftValueReport[] = Array.from({ length: preset.teams }, (_, index) => {
     const teamNumber = index + 1;
     const teamPicks = picks.filter((pick) => pick.teamNumber === teamNumber);

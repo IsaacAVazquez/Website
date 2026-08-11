@@ -4,7 +4,7 @@
   
 [build.environment]
   SECRETS_SCAN_OMIT_PATHS = ".netlify/deploy/v1/blobs/**,.netlify/edge-functions/**,.netlify/functions-internal/**,.next/**"
-  SECRETS_SCAN_OMIT_KEYS = "ADMIN_USERNAME,ADMIN_PASSWORD,NEXTAUTH_SECRET,CRON_SECRET,FANTASYPROS_USERNAME,FANTASYPROS_PASSWORD"
+  SECRETS_SCAN_OMIT_KEYS = "ADMIN_USERNAME,ADMIN_PASSWORD,NEXTAUTH_SECRET,CRON_SECRET"
 
 [functions]
   directory = "netlify/functions"
@@ -21,8 +21,8 @@
 # NEXTAUTH_SECRET = "your-nextauth-secret-here"
 # ADMIN_USERNAME = "your-admin-username"
 # ADMIN_PASSWORD = "your-admin-password"
-# FANTASYPROS_USERNAME = "your-fantasypros-username"
-# FANTASYPROS_PASSWORD = "your-fantasypros-password"
+# Fantasy snapshot refreshes run in GitHub Actions. Set FANTASYPROS_API_KEY in
+# GitHub Actions secrets; the deployed Netlify runtime does not need this key.
 # CRON_SECRET = "your-cron-secret-here"
 
 # CSS files — explicit MIME type prevents text/plain serving on Netlify

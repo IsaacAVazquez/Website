@@ -1,6 +1,6 @@
 "use client";
 
-import { IconRefresh } from "@tabler/icons-react";
+import { RefreshCw } from "lucide-react";
 
 interface DataFreshnessIndicatorProps {
   lastUpdated: Date | string | null;
@@ -89,7 +89,7 @@ export function DataFreshnessIndicator({
             className="inline-flex min-h-touch min-w-touch items-center justify-center rounded-full text-[var(--home-ink-soft)] transition hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
             aria-label="Refresh data"
           >
-            <IconRefresh
+            <RefreshCw
               size={14}
               className={`text-[var(--home-ink-soft)] ${isRefreshing ? "animate-spin" : ""}`}
             />
@@ -126,7 +126,7 @@ export function DataFreshnessIndicator({
           className="inline-flex min-h-touch min-w-touch items-center justify-center rounded-full text-[var(--home-ink-soft)] transition hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
           aria-label="Refresh data"
         >
-          <IconRefresh
+          <RefreshCw
             size={14}
             className={`text-[var(--home-ink-soft)] ${isRefreshing ? "animate-spin" : ""}`}
           />

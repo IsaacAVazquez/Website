@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-export interface ChangelogEntryMetadata {
+interface ChangelogEntryMetadata {
   title: string;
   publishedAt: string;
   summary: string;
@@ -10,7 +10,7 @@ export interface ChangelogEntryMetadata {
   tags?: string[];
 }
 
-export interface ChangelogEntry {
+interface ChangelogEntry {
   slug: string;
   title: string;
   publishedAt: string;
@@ -64,7 +64,7 @@ async function renderMarkdown(content: string): Promise<string> {
   return processed.toString();
 }
 
-export function getChangelogSlugs(): string[] {
+function getChangelogSlugs(): string[] {
   ensureChangelogDirectory();
   try {
     return fs

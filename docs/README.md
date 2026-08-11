@@ -97,9 +97,7 @@ These remain in the repo for context, but they should not be treated as live sou
 - `FEATURE_ROADMAP.md`
 - `PROJECTS.md`
 - `UNDERUTILIZED_FEATURES.md`
-- `archive/*` (includes `archive/plans/*` — implementation plans that have shipped)
 - `superpowers/specs/*`
-- `../content-redesign/*`
 - `../content/*`
 - `../public/project-screenshots/README.md`
 

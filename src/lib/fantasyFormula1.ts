@@ -10,11 +10,12 @@ import type {
   FantasyFormula1LineupSummary,
   FantasyFormula1OptimizationCandidate,
 } from "@/types/fantasyFormula1";
+import { clamp } from "@/lib/utils";
 
 export const FANTASY_FORMULA1_BUDGET = 100;
 export const FANTASY_FORMULA1_DRIVER_SLOTS = 5;
 export const FANTASY_FORMULA1_CONSTRUCTOR_SLOTS = 2;
-export const FANTASY_FORMULA1_STORAGE_VERSION = 1;
+const FANTASY_FORMULA1_STORAGE_VERSION = 1;
 
 const MIN_DRIVER_PRICE = 5.5;
 const MAX_DRIVER_PRICE = 30;
@@ -33,7 +34,7 @@ export const EMPTY_FANTASY_FORMULA1_LINEUP: FantasyFormula1Lineup = {
  * fantasy page can pass the slim payload without serializing every meeting's
  * classification.
  */
-export type FantasyFormula1SnapshotInput = Pick<
+type FantasyFormula1SnapshotInput = Pick<
   Formula1Summary,
   | "seasonMetrics"
   | "nextMeeting"
@@ -44,10 +45,6 @@ export type FantasyFormula1SnapshotInput = Pick<
 
 function roundToTenths(value: number): number {
   return Math.round(value * 10) / 10;
-}
-
-function clamp(value: number, min: number, max: number): number {
-  return Math.max(min, Math.min(max, value));
 }
 
 function getCompletedRaceCount(snapshot: FantasyFormula1SnapshotInput): number {
@@ -276,7 +273,7 @@ export function getFantasyFormula1StorageKey(season: number): string {
   return `fantasy-formula-1-lineup-v${FANTASY_FORMULA1_STORAGE_VERSION}-${season}`;
 }
 
-export function getFantasyFormula1AssetMap(
+function getFantasyFormula1AssetMap(
   assets: FantasyFormula1Asset[]
 ): Map<string, FantasyFormula1Asset> {
   return new Map(assets.map((asset) => [asset.id, asset]));

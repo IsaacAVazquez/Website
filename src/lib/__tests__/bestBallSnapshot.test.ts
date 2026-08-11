@@ -201,6 +201,7 @@ describe("normalizeBestBallSnapshot", () => {
         provider: "FantasyPros",
         url: "https://example.com/ranks",
         asOf: "2026-08-01T12:00:00Z",
+        expertCount: 6,
       },
       superflexSource: null,
       adpSource: null,
@@ -215,6 +216,7 @@ describe("normalizeBestBallSnapshot", () => {
     });
 
     expect(snapshot.players[0]).toMatchObject({ team: "BUF", position: "WR" });
+    expect(snapshot.rankingSource.expertCount).toBe(6);
     expect(snapshot.players[1]).toMatchObject({ team: "JAX", position: "WR" });
     expect(snapshot.week17Opponents).toEqual({
       BUF: "MIA",
@@ -222,6 +224,27 @@ describe("normalizeBestBallSnapshot", () => {
       JAX: "WAS",
       WAS: "JAX",
     });
+  });
+
+  it("keeps a player when the source does not publish expert spread", () => {
+    const { standardDeviation: _spread, ...playerWithoutSpread } = PLAYER;
+    const snapshot = normalizeBestBallSnapshot({
+      schemaVersion: BEST_BALL_SNAPSHOT_SCHEMA_VERSION,
+      season: 2026,
+      generatedAt: "2026-08-02T12:00:00Z",
+      players: [playerWithoutSpread],
+      rankingSource: {
+        provider: "FantasyPros official API",
+        url: "https://example.com/ranks",
+        asOf: "2026-08-01T12:00:00Z",
+      },
+      superflexSource: null,
+      adpSource: null,
+      scheduleSource: null,
+      week17Opponents: {},
+    });
+
+    expect(snapshot.players[0]).not.toHaveProperty("standardDeviation");
   });
 
   it("rejects an incomplete snapshot", () => {

@@ -1,4 +1,5 @@
 import { worldCupSnapshot } from "@/data/worldCupSnapshot";
+import { slugify } from "@/lib/utils";
 import type {
   WorldCupFixture,
   WorldCupFixtureTeam,
@@ -115,17 +116,6 @@ interface EspnScoreboardResponse {
 }
 
 // --- Parsing helpers ---------------------------------------------------------
-
-function slugify(value: string): string {
-  return value
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[̀-ͯ]/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-    .slice(0, 64)
-    .replace(/-+$/g, "");
-}
 
 function toNumber(value: number | string | null | undefined): number {
   if (value == null) return 0;

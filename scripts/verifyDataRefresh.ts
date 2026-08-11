@@ -49,7 +49,13 @@ export async function buildRefreshManifest(
   }
 
   const payload = await readArtifact(artifact.artifactPath, artifact.exportName);
-  const sourceAsOfValue = readPath(payload, artifact.sourceAsOfPath);
+  const primarySourceAsOfValue = readPath(payload, artifact.sourceAsOfPath);
+  const sourceAsOfValue =
+    typeof primarySourceAsOfValue === "string" && primarySourceAsOfValue.trim()
+      ? primarySourceAsOfValue
+      : artifact.sourceAsOfFallbackPath
+        ? readPath(payload, artifact.sourceAsOfFallbackPath)
+        : primarySourceAsOfValue;
   const sourceAsOf =
     typeof sourceAsOfValue === "string" && sourceAsOfValue.trim()
       ? sourceAsOfValue

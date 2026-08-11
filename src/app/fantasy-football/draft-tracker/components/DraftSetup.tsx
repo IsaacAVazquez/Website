@@ -13,6 +13,9 @@ interface DraftSetupProps {
   settings: DraftSettings;
   onSaveSettings: (settings: Partial<DraftSettings>) => void;
   onStartDraft: () => void;
+  rankingsStatus: "loading" | "error" | "ready";
+  rankingsError: string | null;
+  onRetryRankings: () => void;
 }
 
 const SCORING_OPTIONS: { value: ScoringFormat; label: string; description: string }[] = [
@@ -64,11 +67,19 @@ function getFieldStyle(): CSSProperties {
   };
 }
 
-export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetupProps) {
+export function DraftSetup({
+  settings,
+  onSaveSettings,
+  onStartDraft,
+  rankingsStatus,
+  rankingsError,
+  onRetryRankings,
+}: DraftSetupProps) {
   const [formState, setFormState] = useState<DraftSettings>(settings);
   const [isStarting, setIsStarting] = useState(false);
   const startingSlots = countRedraftStartingSlots(formState.lineup);
   const lineupTooLarge = startingSlots > formState.rounds;
+  const rankingsReady = rankingsStatus === "ready";
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- Sync local form state when external draft settings change (controlled-to-local mirror)
@@ -96,8 +107,18 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
     }));
   }
 
+  function updateScoringFormat(scoringFormat: ScoringFormat) {
+    const nextState = { ...formState, scoringFormat };
+    setFormState(nextState);
+
+    // Scoring selects the snapshot itself, so publish this setting before the
+    // user starts. The parent can load and verify the selected board while the
+    // setup screen is still visible instead of opening an empty draft room.
+    onSaveSettings(nextState);
+  }
+
   function handleStartDraft() {
-    if (isStarting || lineupTooLarge) return;
+    if (isStarting || lineupTooLarge || !rankingsReady) return;
     setIsStarting(true);
     try {
       onSaveSettings(formState);
@@ -295,7 +316,7 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
                   key={option.value}
                   type="button"
                   aria-pressed={active}
-                  onClick={() => updateField("scoringFormat", option.value)}
+                  onClick={() => updateScoringFormat(option.value)}
                   className="min-h-[72px] rounded-[var(--radius-3xl)] border px-4 py-3 text-left transition-[background-color,border-color,color,box-shadow] duration-200"
                   style={getOptionStyle(active)}
                 >
@@ -371,15 +392,44 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
           background: "color-mix(in srgb, var(--home-paper-alt) 52%, var(--home-elev-mix))",
         }}
       >
-        <p className="text-sm" style={{ color: "var(--home-ink-muted)" }}>
-          {lineupTooLarge
-            ? `This lineup needs ${startingSlots} starters, which does not fit in ${formState.rounds} rounds. Reduce the lineup or add rounds before starting.`
-            : `The board will track ${formState.totalTeams} teams, ${formState.rounds} rounds, and highlight your turns from slot ${formState.userTeam}. Your lineup is ${redraftLineupSummary(formState.lineup)}.`}
-        </p>
+        <div className="grid gap-2">
+          <p className="text-sm" style={{ color: "var(--home-ink-muted)" }}>
+            {lineupTooLarge
+              ? `This lineup needs ${startingSlots} starters, which does not fit in ${formState.rounds} rounds. Reduce the lineup or add rounds before starting.`
+              : `The board will track ${formState.totalTeams} teams, ${formState.rounds} rounds, and highlight your turns from slot ${formState.userTeam}. Your lineup is ${redraftLineupSummary(formState.lineup)}.`}
+          </p>
+          {rankingsStatus === "loading" ? (
+            <p role="status" className="text-sm font-semibold">
+              Loading the published rankings. Start will unlock when the board is ready.
+            </p>
+          ) : rankingsStatus === "error" ? (
+            <div role="alert" className="flex flex-wrap items-center gap-2 text-sm">
+              <p className="font-semibold" style={{ color: "var(--home-negative)" }}>
+                {rankingsError ?? "Fantasy rankings are unavailable right now."}
+              </p>
+              <button
+                type="button"
+                onClick={onRetryRankings}
+                className="inline-flex min-h-touch items-center justify-center rounded-full border px-3 py-2 text-sm font-semibold"
+                style={{
+                  borderColor: "var(--home-rule)",
+                  background: "var(--home-paper)",
+                  color: "var(--home-ink)",
+                }}
+              >
+                Retry rankings
+              </button>
+            </div>
+          ) : (
+            <p role="status" className="text-sm font-semibold">
+              Published rankings are ready.
+            </p>
+          )}
+        </div>
         <button
           type="button"
           onClick={handleStartDraft}
-          disabled={isStarting || lineupTooLarge}
+          disabled={isStarting || lineupTooLarge || !rankingsReady}
           aria-busy={isStarting}
           className="inline-flex min-h-[48px] w-full items-center justify-center rounded-full border px-4 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow,opacity] duration-200 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
           style={{
@@ -388,7 +438,13 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
             color: "var(--home-paper)",
           }}
         >
-          {isStarting ? "Starting…" : "Start draft assistant"}
+          {isStarting
+            ? "Starting…"
+            : rankingsStatus === "loading"
+              ? "Loading rankings…"
+              : rankingsStatus === "error"
+                ? "Rankings unavailable"
+                : "Start draft assistant"}
         </button>
       </div>
     </div>

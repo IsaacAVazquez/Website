@@ -5,14 +5,16 @@ import { resetFantasySnapshotCacheForTests, useFantasySnapshot } from "../useFan
 
 const originalFetch = global.fetch;
 
-function buildSnapshotPayload() {
+function buildSnapshotPayload(
+  scoringFormat: "STANDARD" | "PPR" | "HALF_PPR" = "STANDARD"
+) {
   return {
       schemaVersion: FANTASY_SNAPSHOT_SCHEMA_VERSION,
       season: 2025,
       week: 0,
       generatedAt: "2026-03-18T00:00:00.000Z",
       upstreamUpdatedAt: "2026-04-15T15:29:20.000Z",
-      scoringFormat: "STANDARD",
+      scoringFormat,
       source: "snapshot",
       sliceMetadata: {
         overall: {
@@ -361,6 +363,32 @@ describe("useFantasySnapshot", () => {
     expect(result.current.snapshot?.sliceMetadata.qb.available).toBe(true);
   });
 
+  it("falls back to a valid API snapshot when the static snapshot fails normalization", async () => {
+    (global.fetch as jest.Mock)
+      .mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({ ...buildSnapshotPayload(), scoringFormat: "PPR" }),
+      })
+      .mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({ success: true, data: buildSnapshotPayload() }),
+      });
+
+    const { result } = renderHook(() =>
+      useFantasySnapshot({ position: "qb", scoring: "standard" })
+    );
+
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+
+    expect(global.fetch).toHaveBeenCalledTimes(2);
+    expect(String((global.fetch as jest.Mock).mock.calls[1]?.[0])).toContain(
+      "/api/fantasy-data"
+    );
+    expect(result.current.players).toHaveLength(1);
+    expect(result.current.metadata?.scoringFormat).toBe("STANDARD");
+    expect(result.current.error).toBeNull();
+  });
+
   it("surfaces api failures as a friendly error", async () => {
     (global.fetch as jest.Mock).mockResolvedValue({
       ok: false,
@@ -412,7 +440,7 @@ describe("useFantasySnapshot", () => {
         }
         return Promise.resolve({
           ok: true,
-          json: async () => ({ success: true, data: buildSnapshotPayload() }),
+          json: async () => ({ success: true, data: buildSnapshotPayload("PPR") }),
         });
       });
 

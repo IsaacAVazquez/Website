@@ -15,7 +15,80 @@ async function waitForDraftTrackerHydration(page: Page) {
 }
 
 async function activateControl(control: Locator) {
-  await control.evaluate((element: HTMLElement) => element.click());
+  await control.click();
+}
+
+const BEST_BALL_PRESETS = [
+  {
+    id: "bbm-vii",
+    rankingControl: "Mania",
+    rankingView: "Mania view",
+    rankingHeading: "Best Ball Mania VII",
+    trackerControl: "BBM VII",
+    trackerHeading: "Best Ball Mania VII",
+  },
+  {
+    id: "puppy",
+    rankingControl: "Puppy",
+    rankingView: "Puppy view",
+    rankingHeading: "The Puppy",
+    trackerControl: "Puppy",
+    trackerHeading: "The Puppy",
+  },
+  {
+    id: "eliminator",
+    rankingControl: "Eliminator",
+    rankingView: "Eliminator view",
+    rankingHeading: "The Eliminator",
+    trackerControl: "Eliminator",
+    trackerHeading: "Eliminator",
+  },
+  {
+    id: "weekly-winners",
+    rankingControl: "Weekly",
+    rankingView: "Weekly view",
+    rankingHeading: "Weekly Winners",
+    trackerControl: "Weekly Winners",
+    trackerHeading: "Weekly Winners",
+  },
+  {
+    id: "sit-and-go",
+    rankingControl: "Sit and Go",
+    rankingView: "Sit and Go view",
+    rankingHeading: "Sit and Go",
+    trackerControl: "Sit & Go",
+    trackerHeading: "Sit & Go",
+  },
+  {
+    id: "superflex",
+    rankingControl: "Superflex",
+    rankingView: "Superflex view",
+    rankingHeading: "Superflex",
+    trackerControl: "Superflex",
+    trackerHeading: "Superflex",
+  },
+] as const;
+
+async function getPersistedBestBallPickCount(page: Page, contestId: string) {
+  return page.evaluate((targetContestId) => {
+    const key = Array.from({ length: window.localStorage.length }, (_, index) =>
+      window.localStorage.key(index)
+    ).find(
+      (candidate) =>
+        candidate?.startsWith("fantasy-best-ball-draft-v1-") &&
+        candidate.endsWith(`-${targetContestId}`)
+    );
+    if (!key) return null;
+
+    try {
+      const saved = JSON.parse(window.localStorage.getItem(key) ?? "null") as {
+        picks?: unknown[];
+      } | null;
+      return Array.isArray(saved?.picks) ? saved.picks.length : null;
+    } catch {
+      return null;
+    }
+  }, contestId);
 }
 
 async function selectPosition(
@@ -329,6 +402,136 @@ test.describe("Fantasy football draft tracker", () => {
     await expect(page.getByRole("button", { name: "Confirm reset" })).toBeVisible();
     await page.getByRole("button", { name: "Keep draft" }).click();
     await expect(page.getByText(/2 of \d+ picks logged/i)).toBeVisible();
+  });
+});
+
+test.describe("Fantasy football best ball", () => {
+  test("publishes all six ranking presets", async ({ page }) => {
+    await page.goto("/fantasy-football/best-ball?contest=bbm-vii");
+
+    const shell = page.locator('[data-testid="best-ball-shell"]');
+    const contestGroup = shell.getByRole("group", { name: "Best ball contest" });
+    await expect(
+      shell.getByRole("button", { name: /^Open .+ details$/ }).first()
+    ).toBeVisible();
+
+    for (const preset of BEST_BALL_PRESETS) {
+      const control = contestGroup.getByRole("button", {
+        name: preset.rankingControl,
+        exact: true,
+      });
+      await control.click();
+
+      await expect(control).toHaveAttribute("aria-pressed", "true");
+      await expect(page).toHaveURL(new RegExp(`contest=${preset.id}`));
+      await expect(
+        shell.getByRole("heading", { name: preset.rankingView, exact: true })
+      ).toBeVisible();
+      await expect(
+        shell.getByRole("heading", { name: preset.rankingHeading, exact: true })
+      ).toBeVisible();
+      await expect(
+        shell.getByRole("button", { name: /^Open .+ details$/ }).first()
+      ).toBeVisible();
+      await expect(shell.getByText("No players match this view.")).toHaveCount(0);
+    }
+  });
+
+  test("opens setup for all six tracker presets", async ({ page }) => {
+    await page.goto("/fantasy-football/best-ball/draft-tracker?contest=bbm-vii");
+
+    const shell = page.locator('[data-testid="best-ball-draft-tracker-shell"]');
+    const contestNav = shell.getByRole("navigation", { name: "Best ball contest" });
+    await expect(shell.getByRole("heading", { name: "Choose your draft slot" })).toBeVisible();
+
+    for (const preset of BEST_BALL_PRESETS) {
+      const control = contestNav.getByRole("button", {
+        name: preset.trackerControl,
+        exact: true,
+      });
+      await control.click();
+
+      await expect(control).toHaveAttribute("aria-pressed", "true");
+      await expect(page).toHaveURL(new RegExp(`contest=${preset.id}`));
+      await expect(shell.getByRole("heading", { name: "Choose your draft slot" })).toBeVisible();
+
+      const details = shell.locator('aside[aria-label="Contest details"]');
+      await expect(
+        details.getByRole("heading", { name: preset.trackerHeading, exact: true })
+      ).toBeVisible();
+      await expect(details.getByText("12 teams · 18 rounds · 18 players", { exact: true })).toBeVisible();
+    }
+  });
+
+  test("persists a BBM room and persists an undo after reload", async ({ page }) => {
+    await page.goto("/fantasy-football/best-ball/draft-tracker?contest=bbm-vii");
+
+    const shell = page.locator('[data-testid="best-ball-draft-tracker-shell"]');
+    await expect(shell.getByRole("heading", { name: "Choose your draft slot" })).toBeVisible();
+    await shell.getByRole("button", { name: "Open draft room from slot 1" }).click();
+    await expect(shell.getByRole("heading", { name: "You are on the clock at pick 1" })).toBeVisible();
+
+    const firstPlayer = shell.getByRole("button", { name: /^Log .+ at pick 1$/ }).first();
+    const firstPlayerLabel = await firstPlayer.getAttribute("aria-label");
+    const firstPlayerName = firstPlayerLabel?.match(/^Log (.+) at pick 1$/)?.[1];
+    expect(firstPlayerName, "the refreshed BBM board exposes a first player").toBeTruthy();
+
+    await firstPlayer.click();
+    await expect(shell.getByText("2 of 216", { exact: true })).toBeVisible();
+    await expect.poll(() => getPersistedBestBallPickCount(page, "bbm-vii")).toBe(1);
+
+    await page.reload();
+    await expect(shell.getByText("2 of 216", { exact: true })).toBeVisible();
+    await expect(shell.getByText(firstPlayerName!, { exact: true }).first()).toBeVisible();
+
+    await shell.getByRole("button", { name: "Undo last pick" }).click();
+    await expect(shell.getByText("1 of 216", { exact: true })).toBeVisible();
+    await expect(
+      shell.getByRole("button", { name: `Log ${firstPlayerName} at pick 1` })
+    ).toBeVisible();
+    await expect.poll(() => getPersistedBestBallPickCount(page, "bbm-vii")).toBe(0);
+
+    await page.reload();
+    await expect(shell.getByRole("heading", { name: "Choose your draft slot" })).toBeVisible();
+  });
+
+  test("keeps later tracker contests reachable without page overflow at 360px", async ({ page }) => {
+    await page.setViewportSize({ width: 360, height: 800 });
+    await page.goto("/fantasy-football/best-ball/draft-tracker?contest=bbm-vii");
+
+    const shell = page.locator('[data-testid="best-ball-draft-tracker-shell"]');
+    const contestNav = shell.getByRole("navigation", { name: "Best ball contest" });
+    await expect(shell.getByRole("heading", { name: "Choose your draft slot" })).toBeVisible();
+
+    const scrollerSize = await contestNav.evaluate((element) => ({
+      clientWidth: element.clientWidth,
+      scrollWidth: element.scrollWidth,
+    }));
+    expect(scrollerSize.scrollWidth).toBeGreaterThan(scrollerSize.clientWidth);
+
+    for (const preset of BEST_BALL_PRESETS.slice(3)) {
+      const control = contestNav.getByRole("button", {
+        name: preset.trackerControl,
+        exact: true,
+      });
+      await control.scrollIntoViewIfNeeded();
+      await expect(control).toBeInViewport();
+
+      const bounds = await control.boundingBox();
+      expect(bounds, `${preset.trackerControl} has visible bounds`).not.toBeNull();
+      expect(bounds!.x).toBeGreaterThanOrEqual(-1);
+      expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(361);
+
+      await control.click();
+      await expect(control).toHaveAttribute("aria-pressed", "true");
+      await expect(page).toHaveURL(new RegExp(`contest=${preset.id}`));
+      await expect(shell.getByRole("heading", { name: "Choose your draft slot" })).toBeVisible();
+    }
+
+    const horizontalOverflow = await page.evaluate(
+      () => document.documentElement.scrollWidth - document.documentElement.clientWidth
+    );
+    expect(horizontalOverflow).toBeLessThanOrEqual(1);
   });
 });
 

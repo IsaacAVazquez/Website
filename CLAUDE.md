@@ -124,7 +124,7 @@ Shared conventions worth internalizing:
 ### Portfolio / writing
 
 - Project data: `src/constants/caseStudies.ts`. `/portfolio` renders cards directly
-  from the route page — `ProjectsContent.tsx` still exists but is **not** the live path.
+  from the route page.
 - Writing posts live in `content/blog/`; `src/lib/blog.ts` reads frontmatter and
   converts MD/MDX to HTML via `remark`. Live routes: `/writing`, `/writing/[slug]`.
 - **Cover images are part of publishing, not an afterthought.** Every post has a
@@ -209,7 +209,7 @@ Reference: `STYLING.md`. **Before merging any UI, run the single pre-merge `DESI
   for animated components. Shared portfolio-shell primitives must not use
   `transition-all` — transition specific properties.
 - Framer Motion entrances must honor `useReducedMotion()` — the global CSS guard does
-  **not** stop JS/rAF-driven Framer animation (shared primitives especially, e.g. `PageSummary`).
+  **not** stop JS/rAF-driven Framer animation, and shared primitives are the usual offenders.
 
 ---
 
@@ -262,10 +262,11 @@ Subsystem references:
 - `docs/DATA_UPDATE_OPERATIONS.md` — command → artifact → schedule runbook for every refresh
 - `docs/ARTICLE_IMAGE_WORKFLOW.md` — blog cover-image plan, the fetch builder, and the writing-time step
 
-**Legacy / historical** (keep for traceability; do not quote as current without checking
-code): `docs/archive/*` (incl. `docs/archive/plans/*`), `content-redesign/*`, root-level
-SEO/UX summary docs, non-live references under `content/`. `SEO.md` is the current SEO
-reference; older root-level SEO audits are historical.
+**Legacy / historical** (do not quote as current without checking code): root-level
+SEO/UX summary docs and non-live references under `content/`. `SEO.md` is the current SEO
+reference; older root-level SEO audits are historical. The former `docs/archive/*` and
+`content-redesign/*` trees were deleted in August 2026; read them from git history if
+you need them.
 
 ---
 
@@ -274,7 +275,7 @@ reference; older root-level SEO audits are historical.
 - Confirm routes from `src/app/**/page.tsx`, not old docs.
 - Confirm API routes from `src/app/api/**/route.ts`.
 - Confirm nav/footer from `StaticHeader.tsx`, `ConditionalLayout.tsx`, `Footer.tsx`.
-- Confirm portfolio behavior from `src/app/portfolio/page.tsx`, not `ProjectsContent.tsx`.
+- Confirm portfolio behavior from `src/app/portfolio/page.tsx`.
 - Confirm writing behavior from `src/app/writing/*` and `src/lib/blog.ts`.
 - Confirm investments behavior from `src/app/investments/*`, `src/components/investments/*`,
   and the investments API routes.

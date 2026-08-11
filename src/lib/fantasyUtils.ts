@@ -120,7 +120,7 @@ export function formatOwnership(ownership: number | undefined): string {
  * ADP comes from a different upstream than the consensus ranks, so the copy
  * names the distinction: experts versus actual drafters.
  */
-export const FANTASY_ADP_TOOLTIP =
+const FANTASY_ADP_TOOLTIP =
   "Average draft position from Fantasy Football Calculator's current mock-draft board, requested with 12-team settings. The provider returned the same prices across tested team sizes on August 7, 2026, so use it as a general market price rather than a league-size forecast.";
 
 export function formatAdp(adp: number | undefined): string {
@@ -140,7 +140,7 @@ export const ADP_SIGNAL_THRESHOLD = 10;
 /** Player-level mock selections required before an ADP gap can carry a signal. */
 export const ADP_SIGNAL_MIN_TIMES_DRAFTED = 20;
 /** Even stable sources move several picks between rooms, so smaller gaps remain noise. */
-export const ADP_SIGNAL_MIN_UNCERTAINTY_THRESHOLD = 6;
+const ADP_SIGNAL_MIN_UNCERTAINTY_THRESHOLD = 6;
 
 function finiteNonNegative(value: unknown): number | null {
   return typeof value === "number" && Number.isFinite(value) && value >= 0 ? value : null;
@@ -192,17 +192,26 @@ function withoutPlayerDraftBaselines(player: Player): Player {
  */
 export function resolveDraftPicksForModel<T extends { player: Player }>(
   picks: readonly T[],
-  currentPlayers: readonly Player[],
-  allowAdp: boolean
+  currentBaselinePlayers: readonly Player[],
+  allowAdp: boolean,
+  currentIdentityPlayers: readonly Player[] = currentBaselinePlayers
 ): T[] {
-  const currentById = new Map(currentPlayers.map((player) => [player.id, player]));
+  const currentBaselineById = new Map(
+    currentBaselinePlayers.map((player) => [player.id, player])
+  );
+  const currentIdentityById = new Map(
+    currentIdentityPlayers.map((player) => [player.id, player])
+  );
 
   return picks.map((pick) => {
-    const currentPlayer = currentById.get(pick.player.id);
-    const modelPlayer = currentPlayer
+    const currentBaselinePlayer = currentBaselineById.get(pick.player.id);
+    const currentIdentityPlayer = currentIdentityById.get(pick.player.id);
+    const modelPlayer = currentBaselinePlayer
       ? allowAdp
-        ? currentPlayer
-        : withoutPlayerAdp(currentPlayer)
+        ? currentBaselinePlayer
+        : withoutPlayerAdp(currentBaselinePlayer)
+      : currentIdentityPlayer
+        ? withoutPlayerDraftBaselines(currentIdentityPlayer)
       : withoutPlayerDraftBaselines(pick.player);
     return { ...pick, player: modelPlayer };
   });
@@ -214,8 +223,8 @@ export function resolveDraftPicksForModel<T extends { player: Player }>(
  * When the upstream publishes ADP variation, combine it with expert-rank
  * variation as independent sources of uncertainty. The root-sum-square keeps
  * a noisy reading from looking precise without adding both spreads in full.
- * Six picks is the floor for stable readings. Legacy snapshots without ADP
- * variation keep the prior ten-pick threshold.
+ * Six picks is the floor when both readings exist. A board without either
+ * spread keeps the prior ten-pick threshold.
  */
 export function getAdpSignalThreshold(player: Player): number {
   const publishedAdpSpread = finiteNonNegative(player.adpStandardDeviation);
@@ -231,7 +240,10 @@ export function getAdpSignalThreshold(player: Player): number {
     return ADP_SIGNAL_THRESHOLD;
   }
 
-  const expertSpread = finiteNonNegative(player.standardDeviation) ?? 0;
+  const expertSpread = finiteNonNegative(player.standardDeviation);
+  if (expertSpread === null) {
+    return Math.max(ADP_SIGNAL_THRESHOLD, Math.ceil(adpSpread));
+  }
   const combinedSpread = Math.hypot(adpSpread, expertSpread);
   return Math.max(ADP_SIGNAL_MIN_UNCERTAINTY_THRESHOLD, Math.ceil(combinedSpread));
 }
@@ -345,7 +357,7 @@ export const FANTASY_BOARD_LEGEND: FantasyLegendEntry[] = [
   },
 ];
 
-export type FantasyAdpFreshness = "current" | "prior-season" | "stale";
+type FantasyAdpFreshness = "current" | "prior-season" | "stale";
 
 /**
  * Mock-draft ADP for the upcoming season does not populate until late summer,
@@ -448,7 +460,7 @@ export function getSourceKindLabel(
   }
 }
 
-export type FantasyConsensusSpread = "tight" | "mixed" | "volatile";
+type FantasyConsensusSpread = "tight" | "mixed" | "volatile";
 
 /**
  * Expert disagreement (`standardDeviation`) naturally grows with rank — the
@@ -474,11 +486,12 @@ export function getConsensusSpread(
         ? player.averageRank
         : null;
 
-  if (rank === null || !Number.isFinite(player.standardDeviation)) {
+  const standardDeviation = finiteNonNegative(player.standardDeviation);
+  if (rank === null || standardDeviation === null) {
     return null;
   }
 
-  const ratio = player.standardDeviation / (rank + CONSENSUS_SPREAD_FLOOR);
+  const ratio = standardDeviation / (rank + CONSENSUS_SPREAD_FLOOR);
   if (ratio < CONSENSUS_SPREAD_MIXED) {
     return { level: "tight", label: "Tight consensus", ratio };
   }
@@ -494,7 +507,7 @@ export function getConsensusSpread(
  * caller decides whether to suppress the very first one). Players without a
  * tier never start a break, so an untiered tail flows together.
  */
-export interface FantasyTierRow {
+interface FantasyTierRow {
   player: Player;
   tier: number | null;
   startsTier: boolean;

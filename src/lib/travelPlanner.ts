@@ -139,7 +139,7 @@ export function formatDayHeading(dateKey: string): string {
   return DATE_FORMATTER_SHORT.format(date);
 }
 
-export function formatActivityTime(time: string): string {
+function formatActivityTime(time: string): string {
   if (!isHourMinute(time)) return "";
   const [hours, minutes] = time.split(":").map(Number);
   const date = new Date();
@@ -160,7 +160,7 @@ function timeToMinutes(value: string): number | null {
   return hours * 60 + minutes;
 }
 
-export interface ActivityOverlaps {
+interface ActivityOverlaps {
   ids: Set<string>;
   pairCount: number;
 }
@@ -211,11 +211,7 @@ export function findActivityOverlaps(activities: TripActivity[]): ActivityOverla
   return { ids: conflicts, pairCount };
 }
 
-export function findOverlappingActivityIds(activities: TripActivity[]): Set<string> {
-  return findActivityOverlaps(activities).ids;
-}
-
-export function getTripStatus(trip: Pick<Trip, "startDate" | "endDate">, today = getTodayKey()): TripStatus {
+function getTripStatus(trip: Pick<Trip, "startDate" | "endDate">, today = getTodayKey()): TripStatus {
   if (today < trip.startDate) return "planned";
   if (today > trip.endDate) return "completed";
   return "active";

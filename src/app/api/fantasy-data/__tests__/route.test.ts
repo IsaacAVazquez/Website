@@ -101,6 +101,9 @@ describe("GET /api/fantasy-data", () => {
     expect(body.metadata.slice.available).toBe(true);
     expect(body.metadata.slice.rangeKind).toBe("position");
     expect(body.metadata.upstreamUpdatedAt).toMatch(/^20\d{2}-/);
+    expect(response.headers.get("X-Data-Source-As-Of")).toBe(
+      body.metadata.upstreamUpdatedAt
+    );
     expect(response.headers.get("Netlify-Vary")).toBe("query");
   });
 
@@ -171,6 +174,9 @@ describe("GET /api/fantasy-data", () => {
     expect(body.metadata.position).toBe("all");
     expect(body.metadata.scoringFormat).toBe("STANDARD");
     expect(body.metadata.upstreamUpdatedAt).toMatch(/^20\d{2}-/);
+    expect(response.headers.get("X-Data-Source-As-Of")).toBe(
+      body.metadata.upstreamUpdatedAt
+    );
     expect(body.metadata.slice).toBeNull();
     expect(body.metadata.slices.overall.sourceKind).toBe("overall_consensus");
     expect(body.metadata.slices.dst.available).toBe(true);

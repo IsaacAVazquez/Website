@@ -1,9 +1,9 @@
 "use client";
 
+import { Plus, X } from "lucide-react";
 import React, { useEffect, useMemo, useState } from "react";
 import { ModernButton } from "@/components/ui/ModernButton";
 import { TerminalPanel } from "./TerminalPanel";
-import { IconPlus, IconX } from "@tabler/icons-react";
 import { getClientInvestmentsIndex } from "@/lib/investmentsClientData";
 import type { InvestmentIndexEntry, PortfolioHolding } from "@/types/investment";
 
@@ -124,7 +124,7 @@ export function AddStockForm({ onAdd }: Props) {
   if (!open) {
     return (
       <ModernButton variant="accent" size="md" onClick={() => setOpen(true)} ariaLabel="Add holding">
-        <IconPlus size={16} /> Add Holding
+        <Plus size={16} /> Add Holding
       </ModernButton>
     );
   }
@@ -143,7 +143,7 @@ export function AddStockForm({ onAdd }: Props) {
           className="text-[var(--home-ink-soft)] hover:text-[var(--home-ink)] transition min-h-[44px] min-w-[44px] flex items-center justify-center"
           aria-label="Close add stock form"
         >
-          <IconX size={18} />
+          <X size={18} />
         </button>
       </div>
 
@@ -211,7 +211,7 @@ export function AddStockForm({ onAdd }: Props) {
 
         <div className="flex flex-wrap gap-2">
           <ModernButton type="submit" variant="accent" size="sm" ariaLabel="Add position">
-            <IconPlus size={14} /> Add Position
+            <Plus size={14} /> Add Position
           </ModernButton>
           <ModernButton
             type="button"

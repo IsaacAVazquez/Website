@@ -93,7 +93,7 @@ export function DraftTrackerClient() {
   const notes = usePlayerNotes();
 
   const scoringKey = scoringFormatToRouteScoring(draftState.settings.scoringFormat);
-  const { snapshot, metadata, isLoading, error } = useFantasySnapshot({
+  const { snapshot, metadata, isLoading, error, retry } = useFantasySnapshot({
     scoring: scoringKey,
     all: true,
   });
@@ -102,6 +102,19 @@ export function DraftTrackerClient() {
   const rankingsUpdatedAt = overallSliceMetadata?.updatedAt ?? metadata?.upstreamUpdatedAt;
   const rankingsStale = Boolean(snapshot) && getSnapshotStaleness(rankingsUpdatedAt) === "stale";
   const showSetup = draftState.picks.length === 0 && !draftState.isActive;
+  const snapshotMatchesScoring = snapshot?.scoringFormat === draftState.settings.scoringFormat;
+  const hasUsableDraftBoard = snapshotMatchesScoring && (snapshot?.overall.length ?? 0) > 0;
+  const setupRankingsStatus =
+    isLoading || (Boolean(snapshot) && !snapshotMatchesScoring)
+      ? "loading"
+      : error || !hasUsableDraftBoard
+        ? "error"
+        : "ready";
+  const setupRankingsError =
+    error ??
+    (setupRankingsStatus === "error"
+      ? "The published draft snapshot did not include any players."
+      : null);
 
   const [detailPlayer, setDetailPlayer] = useState<Player | null>(null);
   const [showStats, setShowStats] = useState(false);
@@ -130,19 +143,29 @@ export function DraftTrackerClient() {
       ),
     [adpAvailable, snapshot]
   );
-  const playerLookup = useMemo(
+  const currentPlayerUniverse = useMemo(
     () =>
-      new Map(
-        (snapshot ? getAllFantasySnapshotPlayers(snapshot) : []).map((player) => [
-          player.id,
-          adpAvailable ? player : withoutPlayerAdp(player),
-        ])
+      (snapshot ? getAllFantasySnapshotPlayers(snapshot) : []).map((player) =>
+        adpAvailable ? player : withoutPlayerAdp(player)
       ),
     [adpAvailable, snapshot]
   );
+  const playerLookup = useMemo(
+    () =>
+      new Map(
+        currentPlayerUniverse.map((player) => [player.id, player])
+      ),
+    [currentPlayerUniverse]
+  );
   const modelPicks = useMemo(
-    () => resolveDraftPicksForModel(draftState.picks, draftBoardPlayers, adpAvailable),
-    [adpAvailable, draftBoardPlayers, draftState.picks]
+    () =>
+      resolveDraftPicksForModel(
+        draftState.picks,
+        draftBoardPlayers,
+        adpAvailable,
+        currentPlayerUniverse
+      ),
+    [adpAvailable, currentPlayerUniverse, draftBoardPlayers, draftState.picks]
   );
   const modelTeams = useMemo(
     () => reconcileTeamRosters(draftState.teams, modelPicks),
@@ -496,7 +519,7 @@ export function DraftTrackerClient() {
           />
         )}
 
-        {error && (
+        {error && !showSetup && (
           <article className="home-card p-5 sm:p-6" style={{ borderColor: "var(--home-negative)" }}>
             <p className="font-semibold" style={{ color: "var(--home-negative)" }}>
               {error}
@@ -528,6 +551,9 @@ export function DraftTrackerClient() {
                 settings={draftState.settings}
                 onSaveSettings={updateSettings}
                 onStartDraft={startDraft}
+                rankingsStatus={setupRankingsStatus}
+                rankingsError={setupRankingsError}
+                onRetryRankings={retry}
               />
             ) : (
               <>
@@ -862,7 +888,7 @@ export function DraftTrackerClient() {
           </aside>
         </div>
 
-        {isLoading && !snapshot && (
+        {isLoading && !snapshot && !showSetup && (
           <article className="home-card px-4 py-3 text-sm" style={{ color: "var(--home-ink-muted)" }}>
             Loading the published draft snapshot...
           </article>

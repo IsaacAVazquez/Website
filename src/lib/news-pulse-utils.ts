@@ -15,7 +15,7 @@ export interface NewsArticle {
   sourceColor: string;
 }
 
-export interface SentimentResult {
+interface SentimentResult {
   score: number;
   label: "positive" | "negative" | "neutral";
   positiveCount: number;
@@ -28,12 +28,12 @@ export interface TopicCluster {
   sources: Partial<Record<NewsFeedId, number>>;
 }
 
-export interface ReadabilityResult {
+interface ReadabilityResult {
   score: number;
   label: string;
 }
 
-export interface StoryCluster {
+interface StoryCluster {
   id: string;
   label: string;
   totalCount: number;

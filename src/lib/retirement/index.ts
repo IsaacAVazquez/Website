@@ -46,7 +46,7 @@ function computeTargetNestEgg(input: RetirementPlanInput, swr: number): number {
 }
 
 /** Everything except the (heavier) lever sensitivity analysis. */
-export type RetirementCore = Omit<RetirementResult, "levers">;
+type RetirementCore = Omit<RetirementResult, "levers">;
 
 /**
  * Fast path: deterministic projection + headline Monte Carlo + target/verdict.

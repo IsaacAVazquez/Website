@@ -96,7 +96,7 @@ interface Formula1DataError extends Error {
   status: number;
 }
 
-export interface BuildFormula1SnapshotDataOptions {
+interface BuildFormula1SnapshotDataOptions {
   fetchImpl?: typeof fetch;
   now?: Date;
   seasonYear?: number;

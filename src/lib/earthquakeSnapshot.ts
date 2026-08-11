@@ -1,17 +1,6 @@
 import { earthquakeSnapshot } from "@/data/earthquakeSnapshot";
 import { buildEarthquakeSnapshotData } from "@/lib/earthquakeData";
-import type { EarthquakeSummary, QuakeEvent } from "@/types/earthquake";
-
-interface EarthquakeSnapshotError extends Error {
-  status: number;
-}
-
-function createEarthquakeSnapshotError(
-  message: string,
-  status: number
-): EarthquakeSnapshotError {
-  return Object.assign(new Error(message), { status });
-}
+import type { EarthquakeSummary } from "@/types/earthquake";
 
 export function createEmptyEarthquakeSummary(): EarthquakeSummary {
   return {
@@ -34,25 +23,6 @@ export function createEmptyEarthquakeSummary(): EarthquakeSummary {
     regions: [],
     quakeDetails: {},
   };
-}
-
-// USGS event ids are short alphanumeric network+code strings like "us7000n7yz"
-// or "ci40123456". The shape check runs before membership so route handlers can
-// return 400 (bad input) vs 404 (unknown id).
-const QUAKE_ID_PATTERN = /^[a-z0-9]{6,24}$/i;
-
-export function isQuakeIdShape(quakeId: string): boolean {
-  return QUAKE_ID_PATTERN.test(quakeId);
-}
-
-export function isValidQuakeId(quakeId: string): boolean {
-  // Use hasOwn (not `in`) so prototype keys like "constructor"/"toString" — which
-  // pass the case-insensitive shape regex — don't resolve through the prototype
-  // chain and turn a 404 into a cacheable 200 serializing a built-in.
-  return (
-    QUAKE_ID_PATTERN.test(quakeId) &&
-    Object.hasOwn(earthquakeSnapshot.summary.quakeDetails, quakeId)
-  );
 }
 
 interface EarthquakeSummaryOptions {
@@ -102,16 +72,4 @@ export async function getEarthquakeSummary(
     });
 
   return liveSummaryInflight;
-}
-
-export async function getQuakeEvent(quakeId: string): Promise<QuakeEvent> {
-  const event = Object.hasOwn(earthquakeSnapshot.summary.quakeDetails, quakeId)
-    ? earthquakeSnapshot.summary.quakeDetails[quakeId]
-    : undefined;
-
-  if (!event) {
-    throw createEarthquakeSnapshotError("Earthquake event was not found.", 404);
-  }
-
-  return event;
 }

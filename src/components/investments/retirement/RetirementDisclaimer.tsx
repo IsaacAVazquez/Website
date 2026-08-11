@@ -1,7 +1,7 @@
 "use client";
 
+import { Info } from "lucide-react";
 import React from "react";
-import { IconInfoCircle } from "@tabler/icons-react";
 
 /**
  * Educational / general-information disclaimer (spec §9). Keeps the tool out of
@@ -11,7 +11,7 @@ import { IconInfoCircle } from "@tabler/icons-react";
 export function RetirementDisclaimer() {
   return (
     <div className="invest-retire-disclaimer" role="note" aria-label="Important disclaimer">
-      <IconInfoCircle size={16} aria-hidden="true" className="shrink-0 mt-0.5" />
+      <Info size={16} aria-hidden="true" className="shrink-0 mt-0.5" />
       <p>
         For illustrative and educational purposes only. Not investment, tax, or financial advice.
         Projections are hypothetical, rely on the assumptions shown above, and do not guarantee

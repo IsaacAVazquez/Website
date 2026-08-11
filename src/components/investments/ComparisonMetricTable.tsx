@@ -1,8 +1,8 @@
 "use client";
 
+import { TrendingUp } from "lucide-react";
 import React from "react";
 import { TerminalPanel } from "./TerminalPanel";
-import { IconTrendingUp } from "@tabler/icons-react";
 
 export interface MetricRow {
   label: string;
@@ -67,7 +67,7 @@ export function ComparisonMetricTable({ title, rows, symbolA, symbolB }: Props) 
                     {winner === "a" ? (
                       <span className="inline-flex items-center justify-end gap-1 font-semibold text-[var(--home-positive)]">
                         {formatValue(row.valueA)}
-                        <IconTrendingUp size={13} aria-hidden="true" />
+                        <TrendingUp size={13} aria-hidden="true" />
                         <span className="sr-only">(better)</span>
                       </span>
                     ) : (
@@ -78,7 +78,7 @@ export function ComparisonMetricTable({ title, rows, symbolA, symbolB }: Props) 
                     {winner === "b" ? (
                       <span className="inline-flex items-center justify-end gap-1 font-semibold text-[var(--home-positive)]">
                         {formatValue(row.valueB)}
-                        <IconTrendingUp size={13} aria-hidden="true" />
+                        <TrendingUp size={13} aria-hidden="true" />
                         <span className="sr-only">(better)</span>
                       </span>
                     ) : (

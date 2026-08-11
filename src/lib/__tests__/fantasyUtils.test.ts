@@ -4,6 +4,7 @@ import {
   FANTASY_VALUE_TOOLTIP,
   ADP_SIGNAL_MIN_TIMES_DRAFTED,
   getAdpSignalThreshold,
+  getConsensusSpread,
   getFantasyAdpFreshness,
   getSnapshotStaleness,
   getSnapshotStalenessLabel,
@@ -19,6 +20,12 @@ const MS_PER_DAY = 86_400_000;
 
 /** Minimal Player factory — only the fields getValueVsAdp reads matter here. */
 const playerWith = (fields: Partial<Player>): Player => fields as Player;
+
+describe("getConsensusSpread", () => {
+  it("returns no label when the source does not publish expert spread", () => {
+    expect(getConsensusSpread(playerWith({ rankEcr: 12 }))).toBeNull();
+  });
+});
 
 describe("getSnapshotStaleness", () => {
   const draftSeasonNow = new Date("2026-08-07T12:00:00.000Z");
@@ -161,6 +168,45 @@ describe("resolveDraftPicksForModel", () => {
     expect(pick.player.superflexRank).toBeUndefined();
     expect(Number.isNaN(pick.player.averageRank)).toBe(true);
   });
+
+  it("refreshes identity for a position-only player without using its position rank as an overall baseline", () => {
+    const savedPlayer = playerWith({
+      id: "k-position-only",
+      name: "Old Kicker",
+      team: "OLD",
+      position: "K",
+      averageRank: 9,
+      rankEcr: 9,
+      byeWeek: 4,
+    });
+    const currentPositionPlayer = playerWith({
+      id: "k-position-only",
+      name: "Current Kicker",
+      team: "DAL",
+      position: "K",
+      averageRank: 2,
+      rankEcr: 2,
+      byeWeek: 10,
+      adp: 170,
+    });
+
+    const [pick] = resolveDraftPicksForModel(
+      [{ pickNumber: 160, player: savedPlayer }],
+      [],
+      true,
+      [currentPositionPlayer]
+    );
+
+    expect(pick.player).toMatchObject({
+      name: "Current Kicker",
+      team: "DAL",
+      position: "K",
+      byeWeek: 10,
+    });
+    expect(pick.player.adp).toBeUndefined();
+    expect(pick.player.rankEcr).toBeUndefined();
+    expect(Number.isNaN(pick.player.averageRank)).toBe(true);
+  });
 });
 
 describe("getValueVsAdp", () => {
@@ -206,6 +252,18 @@ describe("getValueVsAdp", () => {
 
     expect(getAdpSignalThreshold(player)).toBe(6);
     expect(getValueVsAdp(player)?.signal).toBe("value");
+  });
+
+  it("keeps the legacy ten-pick floor when expert spread is unavailable", () => {
+    const player = playerWith({
+      rankEcr: 20,
+      adp: 29,
+      adpStandardDeviation: 1,
+      adpTimesDrafted: 100,
+    });
+
+    expect(getAdpSignalThreshold(player)).toBe(10);
+    expect(getValueVsAdp(player)?.signal).toBeNull();
   });
 
   it("uses the observed ADP range when its standard deviation is unavailable", () => {

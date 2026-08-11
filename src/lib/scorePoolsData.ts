@@ -48,7 +48,7 @@ export interface ScorePoolLeagueSource {
   teamAliases: Record<string, string>;
 }
 
-export interface ScorePoolsBuildInputs {
+interface ScorePoolsBuildInputs {
   leagues: ScorePoolLeagueSource[];
   manualLeagues: ManualLeagueInput[];
   /** CSV-sourced fixtures keyed by league key, parsed by the builder. */

@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { profile, profileSameAs } from "./profile";
 
-export interface ProjectStructuredData {
+interface ProjectStructuredData {
   name: string;
   description: string;
   image?: string;
@@ -13,7 +13,7 @@ export interface ProjectStructuredData {
   applicationCategory?: string;
 }
 
-export interface AIOptimizedMetadata {
+interface AIOptimizedMetadata {
   title: string;
   description: string;
   summary?: string; // Concise TL;DR for AI systems
@@ -280,7 +280,7 @@ export function generateProjectStructuredData(project: ProjectStructuredData): o
   };
 }
 
-export interface BreadcrumbStructuredData {
+interface BreadcrumbStructuredData {
   "@context": string;
   "@type": "BreadcrumbList";
   itemListElement: Array<{

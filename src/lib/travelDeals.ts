@@ -56,7 +56,7 @@ export type BookingStatus =
   | "closing"
   | "last-call";
 
-export interface BookingWindow {
+interface BookingWindow {
   status: BookingStatus;
   daysUntilDeparture: number | null;
   sweetSpotMinDays: number;
@@ -169,7 +169,7 @@ export function getBookingWindow(
 
 export type FareRating = "steal" | "good" | "fair" | "high";
 
-export interface FareScore {
+interface FareScore {
   /** Typical benchmark fare for the whole party, in USD. */
   benchmark: number;
   benchmarkLow: number;
@@ -237,7 +237,7 @@ export function scoreFare(
 
 export type PointsRating = "excellent" | "good" | "fair" | "poor";
 
-export interface PointsValue {
+interface PointsValue {
   centsPerPoint: number;
   baseline: number;
   rating: PointsRating;
@@ -289,7 +289,7 @@ export function valuePoints(
 
 // --- Budget split -----------------------------------------------------------
 
-export interface BudgetPlan {
+interface BudgetPlan {
   total: number;
   nights: number;
   days: number;

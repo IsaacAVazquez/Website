@@ -17,6 +17,7 @@ import {
   getAdaptiveRosterTargets,
   getNextUserPick,
   getSnakeTeamNumber,
+  hasSupportedBestBallAdp,
   normalizeContestId,
   recommendBestBallPlayers,
   sortBestBallRankings,
@@ -72,6 +73,8 @@ describe("best ball contest catalog", () => {
       expect(contest.rulesAsOf).toBe(BEST_BALL_RULES_AS_OF);
       expect(contest.officialRulesUrl).toMatch(/^https:\/\//);
       expect(contest.officialTermsUrl).toMatch(/^https:\/\//);
+      expect(contest.recommendationReason.length).toBeGreaterThan(20);
+      expect(hasSupportedBestBallAdp(contest)).toBe(contest.recommendationMode === "exact");
     }
 
     expect(STANDARD_BEST_BALL_LINEUP).toEqual({ QB: 1, RB: 2, WR: 3, TE: 1, FLEX: 1 });
@@ -86,6 +89,27 @@ describe("best ball contest catalog", () => {
     expect(BEST_BALL_CONTESTS.puppy.strategyProfileId).toBe(
       BEST_BALL_CONTESTS["bbm-vii"].strategyProfileId
     );
+    expect(BEST_BALL_CONTESTS["bbm-vii"]).toMatchObject({
+      competitionFormat: "tournament",
+      lineupVariant: "standard",
+    });
+    expect(BEST_BALL_CONTESTS.superflex).toMatchObject({
+      competitionFormat: "tournament",
+      lineupVariant: "superflex",
+    });
+    expect(BEST_BALL_CONTESTS.eliminator.competitionFormat).toBe("elimination");
+    expect(BEST_BALL_CONTESTS["weekly-winners"].competitionFormat).toBe("weekly");
+    expect(BEST_BALL_CONTESTS["sit-and-go"].competitionFormat).toBe("cumulative");
+    expect(BEST_BALL_CONTESTS["bbm-vii"].recommendationMode).toBe("exact");
+    expect(BEST_BALL_CONTESTS.puppy.recommendationMode).toBe("exact");
+    for (const contestId of [
+      "eliminator",
+      "weekly-winners",
+      "sit-and-go",
+      "superflex",
+    ] as const) {
+      expect(BEST_BALL_CONTESTS[contestId].recommendationMode).toBe("reference");
+    }
   });
 
   it("keeps the format profiles materially different", () => {
@@ -98,7 +122,6 @@ describe("best ball contest catalog", () => {
     expect(eliminator.byeCoverageWeight).toBeGreaterThan(tournament.byeCoverageWeight);
     expect(weekly.spikeWeekWeight).toBeGreaterThan(0);
     expect(tournament.week17Treatment).toBe("scored");
-    expect(tournament.gameStackWeight).toBeGreaterThan(0);
     expect(tournament.concentrationFloor).toBeGreaterThan(eliminator.concentrationFloor);
     expect(cumulative.week17Treatment).toBe("none");
   });

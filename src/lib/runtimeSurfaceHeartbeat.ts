@@ -10,7 +10,7 @@ import { readDurableJson, writeDurableJson } from "@/lib/durableJsonCache";
 // ledger reads those heartbeats to place these surfaces alongside the committed
 // snapshots without reaching into each route's private keying.
 
-export type RuntimeSurfaceId = "news-pulse" | "mba-jobs";
+type RuntimeSurfaceId = "news-pulse" | "mba-jobs";
 
 export interface RuntimeSurfaceHeartbeat {
   // ISO timestamp of the last refresh that served usable data. For a

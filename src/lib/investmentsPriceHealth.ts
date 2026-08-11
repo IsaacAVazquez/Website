@@ -1,6 +1,6 @@
 import type { InvestmentsPriceHealth } from "@/types/investment";
 
-export const DEFAULT_MAX_PRICE_AGE_DAYS = 7;
+const DEFAULT_MAX_PRICE_AGE_DAYS = 7;
 
 export function isStrictIsoCalendarDate(value: string): boolean {
   const dateOnly = value.slice(0, 10);

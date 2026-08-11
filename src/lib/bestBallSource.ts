@@ -1,44 +1,59 @@
 import {
-  FANTASY_PROS_PUBLIC_USER_AGENT,
-  parseFantasyProsPublicConsensusPage,
+  fetchFantasyProsConsensusBoard,
+  type FantasyProsOfficialApiPosition,
 } from "@/lib/fantasyProsPublicSource";
 import { BEST_BALL_MIN_RANKING_PLAYERS } from "@/lib/bestBallSnapshot";
+import { normalizeAdpTeam } from "@/lib/fantasyAdpMatcher";
 import type { FantasyAdpEntry } from "@/lib/fantasyAdpSource";
 import type { Player, Position, ScoringFormat } from "@/types";
 
-export const BEST_BALL_RANKINGS_URL =
+const BEST_BALL_RANKINGS_URL =
   "https://www.fantasypros.com/nfl/rankings/best-ball-overall.php";
-export const BEST_BALL_SUPERFLEX_RANKINGS_URL =
+const BEST_BALL_SUPERFLEX_RANKINGS_URL =
   "https://www.fantasypros.com/nfl/rankings/half-point-ppr-superflex-cheatsheets.php";
-export const BEST_BALL_ADP_API_URL = "https://pprrankings.com/api/rankings";
-export const BEST_BALL_ADP_SOURCE_URL = "https://pprrankings.com/rankings";
-export const BEST_BALL_SCHEDULE_SOURCE_URL =
+const BEST_BALL_ADP_API_URL = "https://pprrankings.com/api/rankings";
+const BEST_BALL_ADP_SOURCE_URL = "https://pprrankings.com/rankings";
+const BEST_BALL_ADP_RANKER = "hayden";
+const BEST_BALL_ADP_FORMAT = "PPR";
+const BEST_BALL_ADP_WEEK = 0;
+const BEST_BALL_MIN_CONSENSUS_EXPERTS = 5;
+const BEST_BALL_SCHEDULE_SOURCE_URL =
   "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard";
 
 export function getExpectedBestBallSeason(now: Date = new Date()): number {
   return now.getUTCMonth() < 2 ? now.getUTCFullYear() - 1 : now.getUTCFullYear();
 }
 
-export interface BestBallRankingsBoard {
+interface BestBallRankingsBoard {
   players: Player[];
   season: number;
   updatedAt: string;
   sourceUrl: string;
+  sourceLabel: string;
+  expertCount: number;
 }
 
-export interface BestBallAdpBoard {
+interface BestBallAdpBoard {
   entries: FantasyAdpEntry[];
   updatedAt: string | null;
   sourceUrl: string;
+  season: number;
+  format: string;
+  ranker: string;
 }
 
 interface RawBestBallAdpPlayer {
   rank?: unknown;
   adp?: unknown;
   updatedAt?: unknown;
+  season?: unknown;
+  week?: unknown;
+  format?: unknown;
+  rankerSlug?: unknown;
   player?: {
     name?: unknown;
     position?: unknown;
+    nflTeamAbbr?: unknown;
   };
 }
 
@@ -54,7 +69,7 @@ interface EspnSchedulePayload {
   }>;
 }
 
-export interface BestBallScheduleBoard {
+interface BestBallScheduleBoard {
   season: number;
   week: number;
   opponents: Record<string, string>;
@@ -94,7 +109,10 @@ export function assertBestBallSourceScoring(
   }
 }
 
-export function parseBestBallAdpPayload(payload: unknown): BestBallAdpBoard {
+export function parseBestBallAdpPayload(
+  payload: unknown,
+  expected: { season: number; format: string; ranker: string; week: number }
+): BestBallAdpBoard {
   if (!Array.isArray(payload)) {
     throw new Error("Best ball ADP source did not return a player array.");
   }
@@ -103,8 +121,24 @@ export function parseBestBallAdpPayload(payload: unknown): BestBallAdpBoard {
   const timestamps: Array<string | null> = [];
 
   for (const raw of payload as RawBestBallAdpPlayer[]) {
+    if (
+      finiteNumber(raw?.season) !== expected.season ||
+      finiteNumber(raw?.week) !== expected.week ||
+      raw?.format !== expected.format ||
+      raw?.rankerSlug !== expected.ranker
+    ) {
+      throw new Error(
+        "Best ball ADP source returned a row outside the requested season, week, format, or ranker."
+      );
+    }
+
     const name = typeof raw?.player?.name === "string" ? raw.player.name.trim() : "";
     const position = normalizePosition(raw?.player?.position);
+    const team = normalizeAdpTeam(
+      typeof raw?.player?.nflTeamAbbr === "string"
+        ? raw.player.nflTeamAbbr
+        : ""
+    );
     const adp = finiteNumber(raw?.adp);
     const updatedAt =
       typeof raw?.updatedAt === "string" && !Number.isNaN(Date.parse(raw.updatedAt))
@@ -112,7 +146,7 @@ export function parseBestBallAdpPayload(payload: unknown): BestBallAdpBoard {
         : null;
 
     if (!name || !position || adp === null || adp <= 0) continue;
-    entries.push({ name, team: "", position, adp });
+    entries.push({ name, team, position, adp });
     timestamps.push(updatedAt);
   }
 
@@ -124,6 +158,9 @@ export function parseBestBallAdpPayload(payload: unknown): BestBallAdpBoard {
     entries,
     updatedAt: latestTimestamp(timestamps),
     sourceUrl: BEST_BALL_ADP_SOURCE_URL,
+    season: expected.season,
+    format: expected.format,
+    ranker: expected.ranker,
   };
 }
 
@@ -165,17 +202,6 @@ export function parseBestBallSchedulePayload(
   };
 }
 
-async function fetchText(url: string): Promise<string> {
-  const response = await fetch(url, {
-    headers: {
-      "User-Agent": FANTASY_PROS_PUBLIC_USER_AGENT,
-      Accept: "text/html,application/xhtml+xml",
-    },
-  });
-  if (!response.ok) throw new Error(`Best ball source request failed (${response.status}) for ${url}`);
-  return response.text();
-}
-
 async function fetchJson(url: string): Promise<unknown> {
   const response = await fetch(url, { headers: { Accept: "application/json" } });
   if (!response.ok) throw new Error(`Best ball source request failed (${response.status}) for ${url}`);
@@ -183,25 +209,35 @@ async function fetchJson(url: string): Promise<unknown> {
 }
 
 export async function fetchBestBallRankingsBoard(): Promise<BestBallRankingsBoard> {
-  return fetchEligibleRankingsBoard(BEST_BALL_RANKINGS_URL, "PPR", "PPR", "best");
+  return fetchEligibleRankingsBoard({
+    publicSourceUrl: BEST_BALL_RANKINGS_URL,
+    officialApiPosition: "ALL",
+    scoringFormat: "PPR",
+    expectedSourceScoring: "PPR",
+    expectedRankingType: "best",
+    minimumExperts: BEST_BALL_MIN_CONSENSUS_EXPERTS,
+  });
 }
 
-async function fetchEligibleRankingsBoard(
-  sourceUrl: string,
-  scoringFormat: ScoringFormat,
-  expectedSourceScoring: string,
-  expectedRankingType: "draft" | "best" = "draft"
-): Promise<BestBallRankingsBoard> {
-  const html = await fetchText(sourceUrl);
-  const board = parseFantasyProsPublicConsensusPage(html, {
-    scoringFormat,
+async function fetchEligibleRankingsBoard(options: {
+  publicSourceUrl: string;
+  officialApiPosition: FantasyProsOfficialApiPosition;
+  scoringFormat: ScoringFormat;
+  expectedSourceScoring: string;
+  expectedRankingType?: "draft" | "best";
+  minimumExperts?: number;
+}): Promise<BestBallRankingsBoard> {
+  const board = await fetchFantasyProsConsensusBoard({
+    scoringFormat: options.scoringFormat,
     requestedPosition: "OVERALL",
-    sourceUrl,
-    expectedRankingType,
+    publicSourceUrl: options.publicSourceUrl,
+    officialApiPosition: options.officialApiPosition,
+    expectedRankingType: options.expectedRankingType,
     expectedSeason: getExpectedBestBallSeason(),
+    minimumExperts: options.minimumExperts,
   });
 
-  assertBestBallSourceScoring(board.sourceScoring, expectedSourceScoring);
+  assertBestBallSourceScoring(board.sourceScoring, options.expectedSourceScoring);
 
   const players = board.players.filter((player) =>
     ["QB", "RB", "WR", "TE"].includes(player.position)
@@ -215,20 +251,29 @@ async function fetchEligibleRankingsBoard(
     season: board.season,
     updatedAt: board.upstreamUpdatedAt,
     sourceUrl: board.sourceUrl,
+    sourceLabel: board.sourceLabel,
+    expertCount: board.totalExperts,
   };
 }
 
 export async function fetchBestBallSuperflexRankingsBoard(): Promise<BestBallRankingsBoard> {
-  return fetchEligibleRankingsBoard(
-    BEST_BALL_SUPERFLEX_RANKINGS_URL,
-    "HALF_PPR",
-    "HALF"
-  );
+  return fetchEligibleRankingsBoard({
+    publicSourceUrl: BEST_BALL_SUPERFLEX_RANKINGS_URL,
+    officialApiPosition: "OP",
+    scoringFormat: "HALF_PPR",
+    expectedSourceScoring: "HALF",
+    expectedRankingType: "draft",
+  });
 }
 
 export async function fetchBestBallAdpBoard(season = new Date().getUTCFullYear()): Promise<BestBallAdpBoard> {
-  const url = `${BEST_BALL_ADP_API_URL}?ranker=hayden&week=0&season=${season}`;
-  return parseBestBallAdpPayload(await fetchJson(url));
+  const url = `${BEST_BALL_ADP_API_URL}?ranker=${BEST_BALL_ADP_RANKER}&week=${BEST_BALL_ADP_WEEK}&season=${season}`;
+  return parseBestBallAdpPayload(await fetchJson(url), {
+    season,
+    format: BEST_BALL_ADP_FORMAT,
+    ranker: BEST_BALL_ADP_RANKER,
+    week: BEST_BALL_ADP_WEEK,
+  });
 }
 
 export async function fetchBestBallScheduleBoard(

@@ -34,22 +34,6 @@ function clampMlbTeamSnapshot(snapshot: MlbTeamSnapshot): MlbTeamSnapshot {
   };
 }
 
-export function createEmptyMlbSummarySnapshot(): MlbSummarySnapshot {
-  return {
-    season: mlbSnapshot.season,
-    generatedAt: mlbSnapshot.generatedAt,
-    updatedAt: mlbSnapshot.updatedAt,
-    sourceLabel: mlbSnapshot.sourceLabel,
-    sourceUrls: mlbSnapshot.sourceUrls,
-    teams: [],
-    standings: [],
-    recentGames: [],
-    upcomingGames: [],
-    hittingLeaders: { homeRuns: [], runsBattedIn: [], battingAverage: [] },
-    pitchingLeaders: { earnedRunAverage: [], wins: [], strikeouts: [] },
-  };
-}
-
 export function createEmptyMlbTeamSnapshot(): MlbTeamSnapshot {
   return {
     team: null,

@@ -509,7 +509,7 @@ if (typeof window !== 'undefined') {
 1. **Rebuild site:**
    ```bash
    npm run build
-   # Should run postbuild script (next-sitemap)
+   # Should run postbuild script (scripts/generatePublicSitemap.mjs)
    ```
 
 2. **Verify sitemap generated:**

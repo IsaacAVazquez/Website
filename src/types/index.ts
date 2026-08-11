@@ -5,7 +5,7 @@ export interface Player {
   position: Position;
   averageRank: number;
   projectedPoints?: number;
-  standardDeviation: number;
+  standardDeviation?: number;
   tier?: number;
   expertRanks?: number[];
   // Additional FantasyPros fields

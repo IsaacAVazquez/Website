@@ -30,7 +30,7 @@ The site is portfolio-first. `Writing` is live and promoted in the global header
 | UI | React 19, Tailwind CSS v4, Framer Motion |
 | Charts | D3 |
 | Theme | `next-themes` |
-| Content | `gray-matter`, `remark`, `remark-gfm`, `remark-html` |
+| Content | `gray-matter`, `remark`, `remark-gfm`, `remark-rehype`, `rehype-sanitize`, `rehype-stringify` |
 | Data | Version-controlled snapshots for repeatable builds, request-time USGS and BART overlays, and Netlify Blobs for runtime last-good caches. |
 | Email | Resend (MBA internship digest) |
 | Auth | NextAuth v4 (credentials provider) |
@@ -178,9 +178,8 @@ CRON_SECRET=...               # protects the Netlify purge-cache function
 - Global nav is `Home / About / Projects / Writing / Investments / Fantasy / Resume / Contact`
 - `Writing` is live and intentionally promoted in the header
 - `/portfolio` renders directly from `src/app/portfolio/page.tsx`
-- `ProjectsContent.tsx` and `WritingPreview.tsx` still exist, but they are not the primary live path for the current shell
 - `/api/search` is limited and mostly hardcoded; do not treat it as comprehensive site search
-- `/investments` uses `InvestmentsClient` plus targeted routes under `/api/investments/index`, `/api/investments/quotes`, and `/api/investments/data/[symbol]`
+- `/investments` uses `InvestmentsClient` plus targeted routes under `/api/investments/quotes` and `/api/investments/data/[symbol]`
 - Sports dashboards read committed snapshots. Earthquake and BART add request-time upstream refreshes with their committed snapshots kept as fallbacks.
 
 ---

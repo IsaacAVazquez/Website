@@ -78,7 +78,8 @@ function roomRulesFromPreset(preset: BestBallContestPreset): BestBallRoomRules {
   return {
     contestId: preset.id,
     rulesSchemaVersion: BEST_BALL_ROOM_RULES_SCHEMA_VERSION,
-    format: preset.format,
+    competitionFormat: preset.competitionFormat,
+    lineupVariant: preset.lineupVariant,
     scoring: preset.scoring,
     teams: preset.teams,
     rounds: preset.rounds,
@@ -153,7 +154,7 @@ export function BestBallDraftTrackerClient({
               Track every pick and see what your build still needs.
             </h1>
             <p className="max-w-[66ch] text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
-              I built this for manual rooms on Underdog and similar platforms. It follows every pick, keeps the snake order straight, changes the recommendation weights by contest, and compares your build against the room. Expected return stays in a separate calculator because the Draft Outlook cannot promise an outcome.
+              I built this for manual rooms on Underdog and similar platforms. It follows every pick, keeps the snake order straight, adjusts roster guidance by contest, and compares your build against the room. Exact player cards appear only for presets with a matching room-price source. Expected return stays in a separate calculator because the Draft Outlook cannot promise an outcome.
             </p>
             <p className="max-w-[66ch] text-xs leading-6" style={{ color: "var(--home-ink-muted)" }}>
               The snapshot has no separate live injury or player-news feed. Check the draft room and
@@ -164,7 +165,7 @@ export function BestBallDraftTrackerClient({
             </p>
           </div>
 
-          <nav aria-label="Best ball contest" className="flex max-w-full gap-2 overflow-x-auto pb-1">
+          <nav aria-label="Best ball contest" className="scroll-shadow-x scrollbar-thin flex max-w-full gap-2 overflow-x-auto pb-1">
             {CONTESTS.map((contest) => {
               const active = contest.id === contestId;
               return (
@@ -261,15 +262,29 @@ function BestBallDraftRoom({
     () => new Set(draft.state.picks.map((pick) => pick.player.id)),
     [draft.state.picks]
   );
-  const rankingSource = preset.format === "superflex"
+  const rankingSource = preset.lineupVariant === "superflex"
     ? snapshot.superflexSource
     : snapshot.rankingSource;
-  const recommendationsAvailable =
-    rankingSource !== null && getSnapshotStaleness(rankingSource.asOf) !== "stale";
   const adpAvailable =
     hasSupportedBestBallAdp(preset) &&
     snapshot.adpSource !== null &&
     getSnapshotStaleness(snapshot.adpSource.asOf) !== "stale";
+  const recommendationSourceIssue = (() => {
+    if (preset.recommendationMode === "reference") return null;
+    if (rankingSource === null) return "the required ranking source is unavailable";
+    if (getSnapshotStaleness(rankingSource.asOf) === "stale") {
+      return "the required ranking source is stale";
+    }
+    if (snapshot.adpSource === null) {
+      return "the matching standard-season Underdog ADP source is unavailable";
+    }
+    if (getSnapshotStaleness(snapshot.adpSource.asOf) === "stale") {
+      return "the matching standard-season Underdog ADP source is stale";
+    }
+    return null;
+  })();
+  const recommendationsAvailable =
+    preset.recommendationMode === "exact" && recommendationSourceIssue === null;
   const scheduleAvailable =
     snapshot.scheduleSource !== null &&
     Object.keys(snapshot.week17Opponents).length >= 30;
@@ -567,7 +582,9 @@ function BestBallDraftRoom({
             recommendations={recommendations}
             isUserPick={draft.isUserPick}
             adpAvailable={adpAvailable}
-            sourceAvailable={recommendationsAvailable}
+            recommendationMode={preset.recommendationMode}
+            recommendationReason={preset.recommendationReason}
+            sourceIssue={recommendationSourceIssue}
             onDraftPlayer={draft.draftPlayer}
           />
           <BestBallDraftBoard

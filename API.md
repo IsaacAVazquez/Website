@@ -25,7 +25,6 @@ Current API route inventory for the app.
 
 | Route | Methods | Notes |
 |------|---------|-------|
-| `/api/investments/index` | GET | Curated research index / availability info |
 | `/api/investments/quotes` | GET | Quote proxy for investments UI |
 | `/api/investments/data/[symbol]` | GET | Section-based curated research payloads |
 | `/api/stocks` | GET | Quote source used by investments flows |
@@ -34,22 +33,13 @@ Current API route inventory for the app.
 
 | Route | Methods | Notes |
 |------|---------|-------|
-| `/api/golf/summary` | GET | Golf dashboard summary payload from the committed golf snapshot |
 | `/api/golf/players/[playerId]` | GET | Golf player detail payload from the committed golf snapshot |
-| `/api/premier-league/summary` | GET | Snapshot-backed league table, fixtures, and club options for the Premier League tool |
 | `/api/premier-league/teams/[teamId]` | GET | Snapshot-backed Premier League club drilldown payload |
-| `/api/la-liga/summary` | GET | Snapshot-backed league table, fixtures, and club options for the La Liga tool |
 | `/api/la-liga/teams/[teamId]` | GET | Snapshot-backed La Liga club drilldown payload |
-| `/api/mlb/summary` | GET | Snapshot-backed MLB standings, fixtures, and leaders payload |
 | `/api/mlb/teams/[teamId]` | GET | Snapshot-backed MLB team drilldown payload |
-| `/api/nba/summary` | GET | Snapshot-backed NBA standings, scoreboard, and leaders payload |
 | `/api/nba/teams/[teamId]` | GET | Snapshot-backed NBA team drilldown payload |
-| `/api/nfl/summary` | GET | Snapshot-backed NFL standings, schedule, and leaders payload |
 | `/api/nfl/teams/[teamId]` | GET | Snapshot-backed NFL team drilldown payload |
-| `/api/world-cup/summary` | GET | Snapshot-backed 2026 FIFA World Cup groups, knockout rounds, fixtures, and scorers |
 | `/api/world-cup/teams/[teamId]` | GET | Snapshot-backed World Cup team drilldown payload, keyed by lowercased team slug |
-| `/api/score-pools/summary` | GET | Snapshot-backed score-pools league summaries (fixture counts, sources, freshness) |
-| `/api/score-pools/leagues/[key]` | GET | Snapshot-backed league payload with fixtures, results, standings, and capped odds history |
 
 ### Civic / transit / geo
 
@@ -95,25 +85,17 @@ The current investments implementation is **not** a single generic `/api/investm
 
 The live pattern is:
 
-- `/api/investments/index`
 - `/api/investments/quotes`
 - `/api/investments/data/[symbol]`
 
 Sports dashboard routes are separate from the investments surface:
 
-- `/api/premier-league/summary`
 - `/api/premier-league/teams/[teamId]`
-- `/api/la-liga/summary`
 - `/api/la-liga/teams/[teamId]`
-- `/api/mlb/summary`
 - `/api/mlb/teams/[teamId]`
-- `/api/nba/summary`
 - `/api/nba/teams/[teamId]`
-- `/api/nfl/summary`
 - `/api/nfl/teams/[teamId]`
-- `/api/golf/summary`
 - `/api/golf/players/[playerId]`
-- `/api/world-cup/summary`
 - `/api/world-cup/teams/[teamId]`
 - `/api/bay-area-transit/summary`
 - `/api/bay-area-transit/stations/[stationId]`
@@ -159,22 +141,14 @@ Use these as the actual source of truth:
 
 - `src/app/api/auth/[...nextauth]/route.ts`
 - `src/app/api/fantasy-data/route.ts`
-- `src/app/api/investments/index/route.ts`
 - `src/app/api/investments/quotes/route.ts`
 - `src/app/api/investments/data/[symbol]/route.ts`
-- `src/app/api/golf/summary/route.ts`
 - `src/app/api/golf/players/[playerId]/route.ts`
-- `src/app/api/premier-league/summary/route.ts`
 - `src/app/api/premier-league/teams/[teamId]/route.ts`
-- `src/app/api/la-liga/summary/route.ts`
 - `src/app/api/la-liga/teams/[teamId]/route.ts`
-- `src/app/api/mlb/summary/route.ts`
 - `src/app/api/mlb/teams/[teamId]/route.ts`
-- `src/app/api/nba/summary/route.ts`
 - `src/app/api/nba/teams/[teamId]/route.ts`
-- `src/app/api/nfl/summary/route.ts`
 - `src/app/api/nfl/teams/[teamId]/route.ts`
-- `src/app/api/world-cup/summary/route.ts`
 - `src/app/api/world-cup/teams/[teamId]/route.ts`
 - `src/app/api/bay-area-transit/summary/route.ts`
 - `src/app/api/bay-area-transit/stations/[stationId]/route.ts`

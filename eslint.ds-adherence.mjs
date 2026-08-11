@@ -84,28 +84,10 @@ const COMPONENT_CONTRACTS = {
     props: ["children", "dir", "open", "defaultOpen", "onOpenChange", "modal"],
     enums: { dir: ["ltr", "rtl"] },
   },
-  ExpertSignal: {
-    props: ["type", "label", "value", "icon", "verified", "variant", "className"],
-    enums: {
-      type: ["credential", "achievement", "expertise", "education", "experience", "award"],
-      variant: ["default", "inline", "compact", "badge"],
-    },
-  },
   Heading: { props: ["className", "children", "as", "level"], enums: {} },
-  JourneyTimeline: { props: ["items"], enums: {} },
   Kicker: {
     props: ["variant", "children", "className", "id", "style"],
     enums: { variant: ["dot", "plain"] },
-  },
-  MetricCallout: {
-    props: [
-      "value", "label", "improvement", "icon", "variant", "size",
-      "animateValue", "className",
-    ],
-    enums: {
-      variant: ["default", "success", "warning", "primary"],
-      size: ["sm", "md", "lg"],
-    },
   },
   ModernButton: {
     props: [
@@ -117,26 +99,7 @@ const COMPONENT_CONTRACTS = {
       size: ["sm", "md", "lg"],
     },
   },
-  OptimizedImage: {
-    props: [
-      "src", "alt", "width", "height", "className", "priority", "lazy",
-      "placeholder", "blurDataURL", "quality", "sizes", "fill", "objectFit",
-      "objectPosition", "onLoad", "onError",
-    ],
-    enums: {
-      placeholder: ["blur", "empty"],
-      objectFit: ["none", "contain", "cover", "fill", "scale-down"],
-    },
-  },
-  PageSummary: {
-    props: ["title", "summary", "tldr", "context", "variant", "showIcon", "className"],
-    enums: { variant: ["default", "compact", "featured"] },
-  },
   Paragraph: { props: ["className", "children"], enums: {} },
-  ReadoutPanel: {
-    props: ["label", "stamp", "rows", "children", "footer", "className", "style"],
-    enums: {},
-  },
   SectionIntro: {
     props: [
       "eyebrow", "title", "description", "actions", "headingLevel", "align",
