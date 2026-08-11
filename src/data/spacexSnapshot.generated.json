@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-08T21:52:07.859Z",
+  "generatedAt": "2026-08-11T10:16:46.547Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -9,9 +9,9 @@
       "upcoming": true,
       "success": null,
       "details": "A batch of 29 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-08-10T14:49:00Z",
-      "dateUnix": 1786373340,
-      "dateLocal": "2026-08-10T14:49:00Z",
+      "dateUtc": "2026-08-11T14:54:41Z",
+      "dateUnix": 1786460081,
+      "dateLocal": "2026-08-11T14:54:41Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -49,9 +49,9 @@
       "upcoming": true,
       "success": null,
       "details": "A batch of 29 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-08-10T14:49:00Z",
-      "dateUnix": 1786373340,
-      "dateLocal": "2026-08-10T14:49:00Z",
+      "dateUtc": "2026-08-11T14:54:41Z",
+      "dateUnix": 1786460081,
+      "dateLocal": "2026-08-11T14:54:41Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -128,7 +128,7 @@
       {
         "id": "upcoming",
         "label": "Upcoming queue",
-        "value": "126",
+        "value": "128",
         "description": "currently published future SpaceX missions from Launch Library 2"
       },
       {
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-08-08T21:52:02.647Z"
+    "generatedAt": "2026-08-11T10:16:42.021Z"
   },
   "upcomingLaunches": [
     {
@@ -160,9 +160,9 @@
       "upcoming": true,
       "success": null,
       "details": "A batch of 29 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-08-10T14:49:00Z",
-      "dateUnix": 1786373340,
-      "dateLocal": "2026-08-10T14:49:00Z",
+      "dateUtc": "2026-08-11T14:54:41Z",
+      "dateUnix": 1786460081,
+      "dateLocal": "2026-08-11T14:54:41Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -200,9 +200,9 @@
       "upcoming": true,
       "success": null,
       "details": "A batch of 24 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-08-12T02:00:00Z",
-      "dateUnix": 1786500000,
-      "dateLocal": "2026-08-12T02:00:00Z",
+      "dateUtc": "2026-08-12T04:46:00Z",
+      "dateUnix": 1786509960,
+      "dateLocal": "2026-08-12T04:46:00Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -235,11 +235,11 @@
     },
     {
       "id": "55b79515-ddbf-4198-8a59-29a12ed21330",
-      "name": "R-1",
+      "name": "USSF-366",
       "flightNumber": 717,
       "upcoming": true,
       "success": null,
-      "details": "Possibly a batch of classified LEO satellites for a US government entity based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches. Details TBD.",
+      "details": "USSF-366 is a classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites for a US government entity based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches.",
       "dateUtc": "2026-08-15T21:52:00Z",
       "dateUnix": 1786830720,
       "dateLocal": "2026-08-15T21:52:00Z",
@@ -260,7 +260,7 @@
       "links": {
         "webcast": null,
         "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Vandenberg_Space_Launch_Complex_4#SLC-4E",
+        "wikipedia": "https://en.wikipedia.org/wiki/United_States_Space_Force",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -354,15 +354,55 @@
       }
     },
     {
-      "id": "521f3a1c-f977-4306-9b7f-495858719adf",
-      "name": "Nancy Grace Roman Space Telescope",
+      "id": "bbdc4d47-1de3-428e-9fe1-bbf45d9b1e04",
+      "name": "Starlink Group 10-39",
       "flightNumber": 720,
       "upcoming": true,
       "success": null,
+      "details": "A batch of 29 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
+      "dateUtc": "2026-08-20T15:19:00Z",
+      "dateUnix": 1787239140,
+      "dateLocal": "2026-08-20T15:19:00Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 40",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "patchImage": "/data/spacex/images/1927035cad14a77c.png",
+      "vehicleImage": "/data/spacex/images/b317ff9ea04bd623.png",
+      "crewCount": 0,
+      "payloadCount": 29,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": "https://starlink.com",
+        "wikipedia": "https://en.wikipedia.org/wiki/Starlink",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": "/data/spacex/images/1927035cad14a77c.png",
+        "patchLarge": "/data/spacex/images/1927035cad14a77c.png",
+        "flickrOriginal": [
+          "/data/spacex/images/b317ff9ea04bd623.png"
+        ]
+      }
+    },
+    {
+      "id": "521f3a1c-f977-4306-9b7f-495858719adf",
+      "name": "Nancy Grace Roman Space Telescope",
+      "flightNumber": 721,
+      "upcoming": true,
+      "success": null,
       "details": "The Nancy Grace Roman Space Telescope is a NASA infrared space telescope with a 2.4 m (7.9 ft) wide field of view primary mirror and two scientific instruments. The Wide-Field Instrument (WFI) is a 300.8-megapixel multi-band visible and near-infrared camera, providing a sharpness of images comparable to that achieved by the Hubble Space Telescope over a 0.28 square degree field of view, 100 times larger than imaging cameras on the Hubble. The Coronagraphic Instrument (CGI) is a high-contrast, small field of view camera and spectrometer covering visible and near-infrared wavelengths using novel starlight-suppression technology. Roman objectives include a search for extra-solar planets using gravitational microlensing, and probing the expansion history of the Universe and the growth of cosmic structure, with the goal of measuring the effects of dark energy, the consistency of general relativity, and the curvature of spacetime.",
-      "dateUtc": "2026-08-30T11:25:00Z",
-      "dateUnix": 1788089100,
-      "dateLocal": "2026-08-30T11:25:00Z",
+      "dateUtc": "2026-08-30T11:26:00Z",
+      "dateUnix": 1788089160,
+      "dateLocal": "2026-08-30T11:26:00Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -396,7 +436,7 @@
     {
       "id": "18441371-8b2e-457c-afb5-1ec1b11ab630",
       "name": "Crew-13",
-      "flightNumber": 721,
+      "flightNumber": 722,
       "upcoming": true,
       "success": null,
       "details": "SpaceX Crew-13 is the thirteenth crewed operational flight of a Crew Dragon spacecraft to the International Space Station as part of NASA's Commercial Crew Program.",
@@ -436,7 +476,7 @@
     {
       "id": "7d1afb26-6f9c-429b-9ccf-29012fd1e519",
       "name": "Flight 14",
-      "flightNumber": 729,
+      "flightNumber": 730,
       "upcoming": true,
       "success": null,
       "details": "14th test flight of the two-stage Starship launch vehicle. 3rd flight of Starship V3.",
@@ -476,7 +516,7 @@
     {
       "id": "da43dc2c-00af-4cc1-8ef1-90a60b2eb9e5",
       "name": "SDA Tranche 1 Transport Layer A",
-      "flightNumber": 729,
+      "flightNumber": 730,
       "upcoming": true,
       "success": null,
       "details": "Tranche 1 Transport Layer A is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.\r\n\r\nThis launch carries 21 satellites manufactured by Northrop Grumman.",
@@ -516,7 +556,7 @@
     {
       "id": "4541ce85-0e38-42ac-a9a0-20474bb5f2cd",
       "name": "SDA Tranche 1 Transport Layer D",
-      "flightNumber": 729,
+      "flightNumber": 730,
       "upcoming": true,
       "success": null,
       "details": "Tranche 1 Transport Layer D is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.",
@@ -556,7 +596,7 @@
     {
       "id": "dca8749f-1552-485a-8061-f1ad79055b8d",
       "name": "SDA Tranche 1 Tracking Layer C",
-      "flightNumber": 729,
+      "flightNumber": 730,
       "upcoming": true,
       "success": null,
       "details": "Tranche 1 Tracking Layer C is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
@@ -596,7 +636,7 @@
     {
       "id": "c5783e2b-d458-4b99-9936-4043c236190b",
       "name": "SDA Tranche 1 Transport Layer F",
-      "flightNumber": 729,
+      "flightNumber": 730,
       "upcoming": true,
       "success": null,
       "details": "Tranche 1 Transport Layer F is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.",
@@ -634,49 +674,9 @@
       }
     },
     {
-      "id": "fcbc4550-e69e-4458-a9e6-4a5b6b6b15a5",
-      "name": "SDA Tranche 1 Tracking Layer E",
-      "flightNumber": 729,
-      "upcoming": true,
-      "success": null,
-      "details": "Tranche 1 Tracking Layer E is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
-      "dateUtc": "2026-09-30T00:00:00Z",
-      "dateUnix": 1790726400,
-      "dateLocal": "2026-09-30T00:00:00Z",
-      "datePrecision": "quarter",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
       "id": "2d0472b9-463d-49c8-afb1-7925e49a3368",
       "name": "SDA Tranche 1 Tracking Layer A",
-      "flightNumber": 729,
+      "flightNumber": 730,
       "upcoming": true,
       "success": null,
       "details": "Tranche 1 Tracking Layer A is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
@@ -716,7 +716,7 @@
     {
       "id": "ad358a4d-c541-409b-9366-9c2f2da4aeb9",
       "name": "O3b mPower 11-13",
-      "flightNumber": 729,
+      "flightNumber": 730,
       "upcoming": true,
       "success": null,
       "details": "3 high-throughput communications satellites in Medium Earth Orbit (MEO) built by Boeing and operated by SES.",
@@ -754,9 +754,49 @@
       }
     },
     {
+      "id": "fcbc4550-e69e-4458-a9e6-4a5b6b6b15a5",
+      "name": "SDA Tranche 1 Tracking Layer E",
+      "flightNumber": 730,
+      "upcoming": true,
+      "success": null,
+      "details": "Tranche 1 Tracking Layer E is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
+      "dateUtc": "2026-09-30T00:00:00Z",
+      "dateUnix": 1790726400,
+      "dateLocal": "2026-09-30T00:00:00Z",
+      "datePrecision": "quarter",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
       "id": "67213393-7983-4c06-8b44-b8c785a5ed79",
       "name": "Transporter 18 (Dedicated SSO Rideshare)",
-      "flightNumber": 730,
+      "flightNumber": 731,
       "upcoming": true,
       "success": null,
       "details": "Dedicated rideshare flight to a sun-synchronous orbit with dozens of small microsatellites and nanosatellites for commercial and government customers.",
@@ -796,7 +836,7 @@
     {
       "id": "d3bd7fb2-fac6-49fc-ae52-cee07d2fde67",
       "name": "Griffin Mission One",
-      "flightNumber": 731,
+      "flightNumber": 732,
       "upcoming": true,
       "success": null,
       "details": "Demonstration flight of the Astrobotic Griffin lander and its engines, initially contracted for the cancelled NASA VIPER (Volatiles Investigating Polar Exploration Rover) mission. The vacated payload spot will now host the FLIP (FLEX Lunar Innovation Platform) lunar rover from Astrolab.",
@@ -834,49 +874,9 @@
       }
     },
     {
-      "id": "cb1762f0-90f4-4902-a5f6-655a7ade25bf",
-      "name": "SDA Tranche 2 Tracking Layer B",
-      "flightNumber": 766,
-      "upcoming": true,
-      "success": null,
-      "details": "Classified mission launched by the Space Development Agency (SDA) for Tranche 2 Tracking Layer.",
-      "dateUtc": "2026-12-31T00:00:00Z",
-      "dateUnix": 1798675200,
-      "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "year",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Unknown Pad",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
-      "id": "20fa8dc4-8cab-41cf-b452-98a2620f7e86",
-      "name": "Rivada 2",
-      "flightNumber": 766,
+      "id": "511a3ef8-799e-4723-9293-b954d9d2eb83",
+      "name": "Rivada 10",
+      "flightNumber": 767,
       "upcoming": true,
       "success": null,
       "details": "24 satellites for Rivada's internet constellation.",
@@ -914,16 +914,16 @@
       }
     },
     {
-      "id": "ce1317de-ec94-4479-9b28-38ebf11f13ae",
-      "name": "Telesat Lightspeed 1",
-      "flightNumber": 766,
+      "id": "fc1bd321-e502-4d0f-81f4-1926dece81c6",
+      "name": "VICTUS SURGO",
+      "flightNumber": 767,
       "upcoming": true,
       "success": null,
-      "details": "Up to 18 satellites manufactured by MDA for Canadian satellite operator Telesat's Lightspeed constellation.",
+      "details": "A new Tactically Responsive Space (TacRS) mission by the United States Space Force Space Systems Command to deliver responsive space delivery. The mission consists of an Impulse Space Mira orbital transfer vehicle that will operate in Geosynchronous Transfer Orbit (GTO), which would be transferred from Low Earth Orbit (LEO) on an Impulse Space Helios kick stage. A Helios rideshare payload will also be delivered to GEO.",
       "dateUtc": "2026-12-31T00:00:00Z",
       "dateUnix": 1798675200,
       "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "month",
+      "datePrecision": "year",
       "tbd": true,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
@@ -932,7 +932,7 @@
       "patchImage": null,
       "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
       "crewCount": 0,
-      "payloadCount": 18,
+      "payloadCount": 1,
       "capsuleCount": 0,
       "coreCount": 1,
       "hasExactTime": false,
@@ -940,7 +940,7 @@
       "links": {
         "webcast": null,
         "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Telesat",
+        "wikipedia": "",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -954,9 +954,9 @@
       }
     },
     {
-      "id": "46d6822b-82aa-452c-aa34-80b6f052de84",
-      "name": "Rivada 6",
-      "flightNumber": 766,
+      "id": "2f31a7f0-968a-448d-b447-333bf0341078",
+      "name": "Rivada 4",
+      "flightNumber": 767,
       "upcoming": true,
       "success": null,
       "details": "24 satellites for Rivada's internet constellation.",
@@ -996,7 +996,7 @@
     {
       "id": "adfc829a-6704-4d9e-b2ca-1068c38b2b83",
       "name": "Telesat Lightspeed 4",
-      "flightNumber": 766,
+      "flightNumber": 767,
       "upcoming": true,
       "success": null,
       "details": "Up to 18 satellites manufactured by MDA for Canadian satellite operator Telesat's Lightspeed constellation.",
@@ -1034,9 +1034,9 @@
       }
     },
     {
-      "id": "2f31a7f0-968a-448d-b447-333bf0341078",
-      "name": "Rivada 4",
-      "flightNumber": 766,
+      "id": "d08d8b46-353b-4eee-ab5e-e1385b329008",
+      "name": "Rivada 11",
+      "flightNumber": 767,
       "upcoming": true,
       "success": null,
       "details": "24 satellites for Rivada's internet constellation.",
@@ -1074,33 +1074,33 @@
       }
     },
     {
-      "id": "d08d8b46-353b-4eee-ab5e-e1385b329008",
-      "name": "Rivada 11",
-      "flightNumber": 766,
+      "id": "c1bd775a-2fff-45bb-9726-765b69817c19",
+      "name": "USSF-75",
+      "flightNumber": 767,
       "upcoming": true,
       "success": null,
-      "details": "24 satellites for Rivada's internet constellation.",
+      "details": "Classified payload for the United States Space Force",
       "dateUtc": "2026-12-31T00:00:00Z",
       "dateUnix": 1798675200,
       "dateLocal": "2026-12-31T00:00:00Z",
       "datePrecision": "year",
       "tbd": true,
       "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "rocketName": "Falcon Heavy",
+      "launchpadName": "Launch Complex 39A",
+      "launchpadLocation": "Kennedy Space Center, FL, USA",
       "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "vehicleImage": "/data/spacex/images/c62ac3115cf4d061.jpg",
       "crewCount": 0,
-      "payloadCount": 24,
+      "payloadCount": 1,
       "capsuleCount": 0,
-      "coreCount": 1,
+      "coreCount": 3,
       "hasExactTime": false,
       "isStaleSchedule": false,
       "links": {
         "webcast": null,
         "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Rivada_Networks",
+        "wikipedia": "https://en.wikipedia.org/wiki/United_States_Space_Force",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -1109,7 +1109,7 @@
         "patchSmall": null,
         "patchLarge": null,
         "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
+          "/data/spacex/images/c62ac3115cf4d061.jpg"
         ]
       }
     }
@@ -2084,9 +2084,9 @@
       "upcoming": true,
       "success": null,
       "details": "A batch of 29 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-08-10T14:49:00Z",
-      "dateUnix": 1786373340,
-      "dateLocal": "2026-08-10T14:49:00Z",
+      "dateUtc": "2026-08-11T14:54:41Z",
+      "dateUnix": 1786460081,
+      "dateLocal": "2026-08-11T14:54:41Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -2180,13 +2180,13 @@
     "521f3a1c-f977-4306-9b7f-495858719adf": {
       "id": "521f3a1c-f977-4306-9b7f-495858719adf",
       "name": "Nancy Grace Roman Space Telescope",
-      "flightNumber": 720,
+      "flightNumber": 721,
       "upcoming": true,
       "success": null,
       "details": "The Nancy Grace Roman Space Telescope is a NASA infrared space telescope with a 2.4 m (7.9 ft) wide field of view primary mirror and two scientific instruments. The Wide-Field Instrument (WFI) is a 300.8-megapixel multi-band visible and near-infrared camera, providing a sharpness of images comparable to that achieved by the Hubble Space Telescope over a 0.28 square degree field of view, 100 times larger than imaging cameras on the Hubble. The Coronagraphic Instrument (CGI) is a high-contrast, small field of view camera and spectrometer covering visible and near-infrared wavelengths using novel starlight-suppression technology. Roman objectives include a search for extra-solar planets using gravitational microlensing, and probing the expansion history of the Universe and the growth of cosmic structure, with the goal of measuring the effects of dark energy, the consistency of general relativity, and the curvature of spacetime.",
-      "dateUtc": "2026-08-30T11:25:00Z",
-      "dateUnix": 1788089100,
-      "dateLocal": "2026-08-30T11:25:00Z",
+      "dateUtc": "2026-08-30T11:26:00Z",
+      "dateUnix": 1788089160,
+      "dateLocal": "2026-08-30T11:26:00Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -2275,7 +2275,7 @@
     "7d1afb26-6f9c-429b-9ccf-29012fd1e519": {
       "id": "7d1afb26-6f9c-429b-9ccf-29012fd1e519",
       "name": "Flight 14",
-      "flightNumber": 729,
+      "flightNumber": 730,
       "upcoming": true,
       "success": null,
       "details": "14th test flight of the two-stage Starship launch vehicle. 3rd flight of Starship V3.",
@@ -2474,9 +2474,9 @@
       "upcoming": true,
       "success": null,
       "details": "A batch of 24 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-08-12T02:00:00Z",
-      "dateUnix": 1786500000,
-      "dateLocal": "2026-08-12T02:00:00Z",
+      "dateUtc": "2026-08-12T04:46:00Z",
+      "dateUnix": 1786509960,
+      "dateLocal": "2026-08-12T04:46:00Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -2569,11 +2569,11 @@
     },
     "55b79515-ddbf-4198-8a59-29a12ed21330": {
       "id": "55b79515-ddbf-4198-8a59-29a12ed21330",
-      "name": "R-1",
+      "name": "USSF-366",
       "flightNumber": 717,
       "upcoming": true,
       "success": null,
-      "details": "Possibly a batch of classified LEO satellites for a US government entity based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches. Details TBD.",
+      "details": "USSF-366 is a classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites for a US government entity based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches.",
       "dateUtc": "2026-08-15T21:52:00Z",
       "dateUnix": 1786830720,
       "dateLocal": "2026-08-15T21:52:00Z",
@@ -2592,9 +2592,9 @@
       "hasExactTime": true,
       "isStaleSchedule": false,
       "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/SpaceX",
+        "webcast": "https://x.com/i/broadcasts/1DxleVErQBdKL",
+        "article": "https://www.spacex.com/launches/ussf366",
+        "wikipedia": "https://en.wikipedia.org/wiki/United_States_Space_Force",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -2607,7 +2607,7 @@
         ]
       },
       "staticFireDateUtc": null,
-      "window": 16980,
+      "window": 14400,
       "failures": [],
       "rocket": {
         "id": "164",
@@ -2646,13 +2646,17 @@
       "payloads": [
         {
           "id": "7704",
-          "name": "R-1",
-          "type": "Unknown",
-          "customers": [],
+          "name": "USSF-366",
+          "type": "Government/Top Secret",
+          "customers": [
+            "United States Space Force"
+          ],
           "manufacturers": [
             "SpaceX"
           ],
-          "nationalities": [],
+          "nationalities": [
+            "USA"
+          ],
           "orbit": "Low Earth Orbit",
           "regime": "LEO",
           "massKg": null,
@@ -2923,6 +2927,6 @@
       }
     ],
     "rangeLabel": "Sep 25 – Aug 26",
-    "generatedAt": "2026-08-08T21:52:07.859Z"
+    "generatedAt": "2026-08-11T10:16:46.547Z"
   }
 }
