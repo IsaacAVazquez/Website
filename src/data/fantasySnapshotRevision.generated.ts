@@ -3,4 +3,4 @@
  * Do not edit manually. Regenerate with `npm run update:fantasy`.
  */
 
-export const fantasySnapshotRevision = "2026-08-10T17:53:38.744Z";
+export const fantasySnapshotRevision = "2026-08-11T14:30:45.279Z";
