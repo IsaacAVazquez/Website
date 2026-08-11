@@ -4,6 +4,12 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-08-11
+
+- Remove dead code, prune dependencies, consolidate icon libraries ([#387](https://github.com/IsaacAVazquez/Website/pull/387)).
+
+---
+
 ## 2026-08-05
 
 - Bump autoprefixer from 10.4.27 to 10.5.4 ([#343](https://github.com/IsaacAVazquez/Website/pull/343)).
