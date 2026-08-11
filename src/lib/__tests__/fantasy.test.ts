@@ -26,7 +26,139 @@ function readPublishedSnapshot(scoring: (typeof PUBLISHED_SCORING_SNAPSHOTS)[num
   ) as unknown;
 }
 
+const VALID_RUNTIME_PLAYER = {
+  id: "runtime-rb",
+  name: "Runtime Running Back",
+  team: "ATL",
+  position: "RB",
+  averageRank: 1,
+  standardDeviation: 0,
+};
+
+function buildRuntimeSnapshot() {
+  return {
+    schemaVersion: FANTASY_SNAPSHOT_SCHEMA_VERSION,
+    season: 2026,
+    week: 0,
+    generatedAt: "2026-08-09T00:00:00.000Z",
+    scoringFormat: "PPR",
+    source: "runtime test",
+    positions: {},
+    overall: [{ ...VALID_RUNTIME_PLAYER }],
+  };
+}
+
 describe("fantasy snapshot normalization", () => {
+  it("rejects a snapshot labeled for a different scoring route", () => {
+    expect(() =>
+      normalizeFantasySnapshot(
+        { ...buildRuntimeSnapshot(), scoringFormat: "STANDARD" },
+        "ppr"
+      )
+    ).toThrow(/scoringFormat.*does not match/i);
+  });
+
+  it("rejects an empty payload instead of relabeling it as a usable board", () => {
+    expect(() => normalizeFantasySnapshot({}, "ppr")).toThrow(/contains no players/i);
+  });
+
+  it.each([
+    FANTASY_SNAPSHOT_SCHEMA_VERSION + 1,
+    0,
+    -1,
+    1.5,
+    "7",
+  ])("rejects unsupported schemaVersion %p", (schemaVersion) => {
+    expect(() =>
+      normalizeFantasySnapshot({ ...buildRuntimeSnapshot(), schemaVersion }, "ppr")
+    ).toThrow(/schemaVersion.*not supported/i);
+  });
+
+  it("continues to normalize missing and older schema versions", () => {
+    const { schemaVersion: _missingSchemaVersion, ...missingSchema } = buildRuntimeSnapshot();
+    expect(normalizeFantasySnapshot(missingSchema, "ppr").overall).toHaveLength(1);
+    expect(
+      normalizeFantasySnapshot({ ...buildRuntimeSnapshot(), schemaVersion: 1 }, "ppr").overall
+    ).toHaveLength(1);
+  });
+
+  it.each([undefined, "", "   "])(
+    "rejects current-schema provenance %p",
+    (source) => {
+      expect(() =>
+        normalizeFantasySnapshot({ ...buildRuntimeSnapshot(), source }, "ppr")
+      ).toThrow(/source is required/i);
+    }
+  );
+
+  it("keeps the public source default only for a legacy snapshot", () => {
+    const legacy = buildRuntimeSnapshot();
+    const normalized = normalizeFantasySnapshot(
+      { ...legacy, schemaVersion: 1, source: undefined },
+      "ppr"
+    );
+
+    expect(normalized.source).toMatch(/FantasyPros public consensus pages/);
+  });
+
+  it.each([
+    ["id", "   "],
+    ["name", ""],
+    ["team", "   "],
+    ["position", "FLEX"],
+    ["averageRank", 0],
+    ["averageRank", Number.NaN],
+    ["standardDeviation", -1],
+    ["standardDeviation", Number.POSITIVE_INFINITY],
+  ])("rejects a player with invalid %s", (field, value) => {
+    const snapshot = buildRuntimeSnapshot();
+    snapshot.overall = [{ ...VALID_RUNTIME_PLAYER, [field]: value }];
+
+    expect(() => normalizeFantasySnapshot(snapshot, "ppr")).toThrow(
+      new RegExp(String(field), "i")
+    );
+  });
+
+  it("preserves an unavailable expert spread without inventing a value", () => {
+    const snapshot = buildRuntimeSnapshot();
+    delete (snapshot.overall[0] as Partial<Player>).standardDeviation;
+
+    const normalized = normalizeFantasySnapshot(snapshot, "ppr");
+
+    expect(normalized.overall[0].standardDeviation).toBeUndefined();
+    expect(normalized.overall[0]).not.toHaveProperty("standardDeviation");
+  });
+
+  it("rejects duplicate ids within a slice and players in the wrong position slice", () => {
+    const duplicateIds = buildRuntimeSnapshot();
+    duplicateIds.overall = [
+      { ...VALID_RUNTIME_PLAYER },
+      { ...VALID_RUNTIME_PLAYER, name: "Duplicate Player" },
+    ];
+    expect(() => normalizeFantasySnapshot(duplicateIds, "ppr")).toThrow(/duplicate player id/i);
+
+    const wrongSlice = buildRuntimeSnapshot();
+    wrongSlice.positions = {
+      RB: [{ ...VALID_RUNTIME_PLAYER, position: "WR" }],
+    };
+    expect(() => normalizeFantasySnapshot(wrongSlice, "ppr")).toThrow(/RB.*position WR/i);
+  });
+
+  it("allows actual RB, WR, and TE positions in the FLEX slice", () => {
+    const snapshot = buildRuntimeSnapshot();
+    snapshot.positions = {
+      FLEX: (["RB", "WR", "TE"] as const).map((position, index) => ({
+        ...VALID_RUNTIME_PLAYER,
+        id: `flex-${position}`,
+        name: `Flex Player ${index + 1}`,
+        position,
+        averageRank: index + 1,
+      })),
+    };
+
+    expect(normalizeFantasySnapshot(snapshot, "ppr").positions.FLEX).toHaveLength(3);
+  });
+
   it("normalizes a legacy PPR snapshot and keeps real position slices available", () => {
     const snapshot = normalizeFantasySnapshot(
       {
@@ -338,6 +470,13 @@ describe("publishFantasyPlayer", () => {
     expect(publishFantasyPlayer({ ...basePlayer, adp: 12.4 }).adp).toBe(12.4);
     expect("adp" in publishFantasyPlayer({ ...basePlayer, adp: Number.NaN })).toBe(false);
     expect("adp" in publishFantasyPlayer(basePlayer)).toBe(false);
+  });
+
+  it("omits an unavailable expert spread", () => {
+    const { standardDeviation: _spread, ...playerWithoutSpread } = basePlayer;
+    expect(publishFantasyPlayer(playerWithoutSpread as Player)).not.toHaveProperty(
+      "standardDeviation"
+    );
   });
 
   it("publishes finite ADP uncertainty and sample fields", () => {

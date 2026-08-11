@@ -36,21 +36,21 @@ export interface PersonSchemaData {
   seeks?: string;
 }
 
-export interface ExpertiseArea {
+interface ExpertiseArea {
   name: string;
   proficiencyLevel?: "Beginner" | "Intermediate" | "Advanced" | "Expert";
   yearsExperience?: number;
   description?: string;
 }
 
-export interface Award {
+interface Award {
   name: string;
   description?: string;
   dateAwarded?: string;
   awarder?: string | Organization;
 }
 
-export interface EducationalOrganization {
+interface EducationalOrganization {
   "@type": "CollegeOrUniversity" | "EducationalOrganization";
   name: string;
   description?: string;
@@ -77,7 +77,7 @@ export interface Organization {
   industry?: string;
 }
 
-export interface OccupationData {
+interface OccupationData {
   "@type": "Occupation" | "Role";
   name: string;
   description?: string;
@@ -107,7 +107,7 @@ export interface Place {
   containedInPlace?: Place;
 }
 
-export interface MonetaryAmount {
+interface MonetaryAmount {
   "@type": "MonetaryAmount";
   currency: string;
   value: number | { minValue: number; maxValue: number };

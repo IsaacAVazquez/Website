@@ -19,7 +19,7 @@ import type {
   SnapshotStandingsGroup,
 } from "@/types/scorePools";
 
-export interface ManualOddsInput {
+interface ManualOddsInput {
   moneyline: { home: number | string; draw?: number | string; away: number | string };
   totals?: { line: number; over?: number | string; under?: number | string };
   /** Format of the prices as entered. Defaults to decimal. */
@@ -28,7 +28,7 @@ export interface ManualOddsInput {
   fetchedAt?: string;
 }
 
-export interface ManualResultInput {
+interface ManualResultInput {
   ninetyMinutes: SnapshotScore;
   afterExtraTime?: SnapshotScore;
   penaltyWinner?: "home" | "away";

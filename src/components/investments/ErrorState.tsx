@@ -1,6 +1,6 @@
 "use client";
 
-import { IconAlertTriangle, IconInfoCircle, IconRefresh } from "@tabler/icons-react";
+import { Info, RefreshCw, TriangleAlert } from "lucide-react";
 import { ModernButton } from "@/components/ui/ModernButton";
 
 interface ErrorStateProps {
@@ -13,13 +13,13 @@ export function ErrorState({ message, isNotFetched, onRetry }: ErrorStateProps) 
   return (
     <div className="flex flex-col items-center justify-center gap-3 py-8 text-center">
       {isNotFetched ? (
-        <IconInfoCircle
+        <Info
           size={32}
           style={{ color: "var(--home-ink-soft)" }}
           aria-hidden="true"
         />
       ) : (
-        <IconAlertTriangle
+        <TriangleAlert
           size={32}
           style={{ color: "var(--home-negative)" }}
           aria-hidden="true"
@@ -39,7 +39,7 @@ export function ErrorState({ message, isNotFetched, onRetry }: ErrorStateProps) 
           size="sm"
           onClick={onRetry}
         >
-          <IconRefresh size={16} aria-hidden="true" />
+          <RefreshCw size={16} aria-hidden="true" />
           Retry
         </ModernButton>
       )}

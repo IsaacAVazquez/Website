@@ -129,7 +129,7 @@ function getSeenSnapshot(): string {
 // Hook
 // ---------------------------------------------------------------------------
 
-export interface UseMBAJobsResult {
+interface UseMBAJobsResult {
   jobs: MBAJob[];
   isLoading: boolean;
   error: string | null;
@@ -152,7 +152,7 @@ export interface UseMBAJobsResult {
   clearEmailResult: () => void;
 }
 
-export interface UseMBAJobsOptions {
+interface UseMBAJobsOptions {
   externalLeads?: boolean;
   initialData?: MBAJobsApiResponse;
 }

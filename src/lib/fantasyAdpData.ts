@@ -1,8 +1,8 @@
-import { fantasyAdpData, fantasyAdpDataGeneratedAt } from "@/data/fantasyAdpData.generated";
+import { fantasyAdpData } from "@/data/fantasyAdpData.generated";
 import type { FantasyAdpEntry } from "@/lib/fantasyAdpSource";
 import type { ScoringFormat } from "@/types";
 
-export interface FantasyAdpDataset {
+interface FantasyAdpDataset {
   entries: FantasyAdpEntry[];
   asOf: string | null;
   sampleSize: number | null;
@@ -45,10 +45,4 @@ export function getFantasyAdpDataset(scoringFormat: ScoringFormat): FantasyAdpDa
         ? candidate.season
         : null,
   };
-}
-
-export function getFantasyAdpDataGeneratedAt(): string | null {
-  return typeof fantasyAdpDataGeneratedAt === "string" && fantasyAdpDataGeneratedAt
-    ? fantasyAdpDataGeneratedAt
-    : null;
 }

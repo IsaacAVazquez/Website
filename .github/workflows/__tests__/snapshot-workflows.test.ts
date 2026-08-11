@@ -155,6 +155,42 @@ describe("snapshot refresh workflow infrastructure", () => {
     }
   });
 
+  it("holds fantasy source freshness and top-board ADP coverage to the UI contract", () => {
+    const workflow = fs.readFileSync(
+      path.join(workflowsDir, "update-fantasy.yml"),
+      "utf8"
+    );
+
+    expect(workflow).toContain("? 4 : 14");
+    expect(workflow).toContain("const TOP_BOARD_SIZE = 150");
+    expect(workflow).toContain("const MIN_COVERAGE = 0.9");
+    expect(workflow).toContain("top-board ADP coverage");
+    expect(workflow).toContain("rankingExperts < 5");
+  });
+
+  it("requires and passes the FantasyPros API key into the fantasy snapshot build", () => {
+    const workflow = fs.readFileSync(
+      path.join(workflowsDir, "update-fantasy.yml"),
+      "utf8"
+    );
+    const buildStep = workflow.match(
+      /- name: Build fantasy snapshots[\s\S]*?(?=\n\s+- name:)/
+    )?.[0];
+
+    expect(buildStep).toBeDefined();
+    expect(buildStep).toContain(
+      'if [[ -z "${FANTASYPROS_API_KEY//[[:space:]]/}" ]]'
+    );
+    expect(buildStep).toContain("FANTASYPROS_API_KEY is required");
+    expect(buildStep).toContain("npm run update:fantasy");
+    expect(buildStep).toContain(
+      "FANTASYPROS_API_KEY: ${{ secrets.FANTASYPROS_API_KEY }}"
+    );
+    expect(
+      workflow.match(/^\s+FANTASYPROS_API_KEY:\s+\$\{\{/gm)
+    ).toHaveLength(1);
+  });
+
   it("uses modern action majors across workflows", () => {
     const bannedPins = [
       "actions/checkout@v4",

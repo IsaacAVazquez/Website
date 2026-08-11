@@ -16,7 +16,7 @@ export type RecipeCategory =
   | "side"
   | "drink";
 
-export type RecipeDifficulty = "easy" | "medium" | "hard";
+type RecipeDifficulty = "easy" | "medium" | "hard";
 
 export type DietTag =
   | "vegetarian"
@@ -26,7 +26,7 @@ export type DietTag =
   | "high-protein"
   | "low-carb";
 
-export interface RecipeIngredient {
+interface RecipeIngredient {
   /** Canonical ingredient key, lowercase singular noun (e.g. "olive oil"). */
   name: string;
   /** Human-readable line as it appears in the recipe (e.g. "2 tbsp olive oil"). */
@@ -133,7 +133,7 @@ export function ingredientsMatch(a: string, b: string): boolean {
   return shorter.every((word) => longerSet.has(word));
 }
 
-export interface ScoreOptions {
+interface ScoreOptions {
   /** Optional case-insensitive title/tag/cuisine filter. */
   query?: string;
   /** Restrict to a category, or "all". */

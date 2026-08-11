@@ -94,4 +94,28 @@ describe("parseFantasyAdpPayload", () => {
       )
     ).toThrow(/10 teams, expected 12/);
   });
+
+  it("maps the provider's Non-PPR metadata onto Standard scoring", () => {
+    const standardPayload = {
+      ...ADP_SOURCE_PAYLOAD_FIXTURE,
+      meta: { ...ADP_SOURCE_PAYLOAD_FIXTURE.meta, type: "Non-PPR" },
+    };
+
+    expect(
+      parseFantasyAdpPayload(standardPayload, {
+        scoringFormat: "STANDARD",
+        sourceUrl: "https://example.test/adp/standard",
+        strict: true,
+        expectedTeams: 12,
+      }).scoringFormat
+    ).toBe("STANDARD");
+
+    expect(() =>
+      parseFantasyAdpPayload(standardPayload, {
+        ...PARSE_OPTIONS,
+        strict: true,
+        expectedTeams: 12,
+      })
+    ).toThrow(/returned format "Non-PPR" for PPR/);
+  });
 });

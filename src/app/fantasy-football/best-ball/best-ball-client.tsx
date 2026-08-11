@@ -3,11 +3,17 @@
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ArrowUpRight, Search, X } from "lucide-react";
-import { startTransition, useMemo, useOptimistic, useState } from "react";
+import { startTransition, useCallback, useMemo, useOptimistic, useState } from "react";
 
-import { PositionFilterBar, type PositionFilterOption } from "@/components/fantasy";
+import {
+  CompareTray,
+  PlayerDetailDrawer,
+  PositionFilterBar,
+  type PositionFilterOption,
+} from "@/components/fantasy";
 import { useBestBallSnapshot } from "@/hooks/useBestBallSnapshot";
 import {
+  getContestPreset,
   hasSupportedBestBallAdp,
   sortBestBallRankings,
   type BestBallContestId,
@@ -121,12 +127,6 @@ const POSITION_OPTIONS: PositionFilterOption<BestBallPositionFilter>[] = [
 ];
 
 const RULES_URL = "https://help.underdogsports.com/en/articles/11159786-daily-vs-best-ball-scoring";
-const MANIA_URL = "https://help.underdogsports.com/en/articles/14785343-best-ball-mania-vii";
-const PUPPY_URL = "https://help.underdogsports.com/en/articles/14787820-the-puppy";
-const ELIMINATOR_URL = "https://help.underdogsports.com/en/articles/14786129-the-eliminator";
-const WEEKLY_URL = "https://help.underdogsports.com/en/articles/14787567-best-ball-weekly-winners";
-const SIT_AND_GO_URL = "https://help.underdogsports.com/en/articles/10716487-best-ball-sit-n-go";
-const SUPERFLEX_URL = "https://help.underdogsports.com/en/articles/11102881-what-is-a-superflex";
 
 const OBSERVED_FINDINGS = [
   {
@@ -193,12 +193,15 @@ const RECOMMENDATIONS = [
 
 const PAGE_SIZE = 80;
 
+// Pinned to UTC so a date-only value like "2026-08-09" is not parsed as UTC
+// midnight and then rendered a day earlier for viewers west of UTC.
 function formatDate(value: string | null | undefined): string {
   if (!value || Number.isNaN(Date.parse(value))) return "Not published";
   return new Intl.DateTimeFormat("en-US", {
     month: "short",
     day: "numeric",
     year: "numeric",
+    timeZone: "UTC",
   }).format(new Date(value));
 }
 
@@ -241,18 +244,7 @@ function formatAdpDelta(value: number | null): string {
 }
 
 function ContestRuleLink({ contest }: { contest: BestBallContestId }) {
-  const href =
-    contest === "bbm-vii"
-      ? MANIA_URL
-      : contest === "puppy"
-        ? PUPPY_URL
-        : contest === "eliminator"
-          ? ELIMINATOR_URL
-          : contest === "weekly-winners"
-            ? WEEKLY_URL
-            : contest === "sit-and-go"
-              ? SIT_AND_GO_URL
-              : SUPERFLEX_URL;
+  const href = getContestPreset(contest).officialRulesUrl;
 
   return (
     <a
@@ -273,13 +265,18 @@ function BestBallPlayerRow({
   lensRank,
   opponent,
   adpAvailable,
+  onOpenDetail,
 }: {
   player: RankedBestBallPlayer;
   lensRank: number;
   opponent?: string;
   adpAvailable: boolean;
+  onOpenDetail: (player: RankedBestBallPlayer) => void;
 }) {
-  const delta = adpAvailable ? getAdpDelta(player) : null;
+  const atUndraftedFloor = adpAvailable && player.isUndraftedAtContestFloor;
+  const playerAdpAvailable =
+    adpAvailable && !atUndraftedFloor && Number.isFinite(player.adp);
+  const delta = playerAdpAvailable ? getAdpDelta(player) : null;
   const positive = delta !== null && delta >= 3;
   const negative = delta !== null && delta <= -3;
 
@@ -297,7 +294,14 @@ function BestBallPlayerRow({
         </span>
         <div className="min-w-0">
           <div className="flex min-w-0 items-center gap-2">
-            <span className="truncate font-semibold">{player.name}</span>
+            <button
+              type="button"
+              onClick={() => onOpenDetail(player)}
+              aria-label={`Open ${player.name} details`}
+              className="inline-flex min-h-[44px] min-w-0 items-center rounded-lg text-left font-semibold underline decoration-transparent underline-offset-4 transition-[text-decoration-color,box-shadow] hover:decoration-[var(--home-rule)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)]"
+            >
+              <span className="truncate">{player.name}</span>
+            </button>
             <span className={FANTASY_CHIP_CLASS} style={getPositionTone(player.position)}>
               {player.position}
             </span>
@@ -312,7 +316,9 @@ function BestBallPlayerRow({
             {adpAvailable ? "UD ADP" : "Source rank"}
           </p>
           <p className="font-semibold tabular-nums">
-            {formatRank(adpAvailable ? player.adp : player.adjustedRank)}
+            {atUndraftedFloor
+              ? "Undrafted"
+              : formatRank(adpAvailable ? player.adp : player.adjustedRank)}
           </p>
         </div>
         <p className="hidden text-center font-semibold tabular-nums md:block">{formatRank(getConsensusRank(player))}</p>
@@ -371,6 +377,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
   const searchParams = useSearchParams();
   const { snapshot, isLoading, error, retry } = useBestBallSnapshot();
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const [detailPlayer, setDetailPlayer] = useState<RankedBestBallPlayer | null>(null);
   const canonicalState = useMemo(() => {
     const fromUrl = normalizeBestBallState(searchParams);
     return searchParams.size > 0 ? fromUrl : initialState;
@@ -382,6 +389,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
 
   const activeContest =
     CONTESTS.find((contest) => contest.id === routeState.contest) ?? CONTESTS[0];
+  const activePreset = getContestPreset(routeState.contest);
 
   const adpAvailable =
     hasSupportedBestBallAdp(routeState.contest) &&
@@ -400,6 +408,22 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
     if (!snapshot) return [];
     return sortBestBallRankings(modelPlayers, routeState.contest);
   }, [modelPlayers, routeState.contest, snapshot]);
+  const comparablePlayerLookup = useMemo(
+    () =>
+      new Map(
+        orderedPlayers.map((player) => [
+          player.id,
+          player.isUndraftedAtContestFloor
+            ? { ...player, adp: undefined }
+            : player,
+        ])
+      ),
+    [orderedPlayers]
+  );
+  const resolveComparablePlayer = useCallback(
+    (id: string) => comparablePlayerLookup.get(id),
+    [comparablePlayerLookup]
+  );
 
   const filteredPlayers = useMemo(() => {
     const query = routeState.query.toLowerCase();
@@ -489,7 +513,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
               </h2>
             </div>
             <p className="text-sm" style={{ color: "var(--home-ink-muted)" }}>
-              Rules checked Aug 2, 2026
+              Rules checked {formatDate(activePreset.rulesAsOf)}
             </p>
           </div>
           <div role="group" aria-label="Best ball contest" className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3 xl:grid-cols-6">
@@ -640,6 +664,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                       lensRank={player.bestBallRank}
                       opponent={snapshot?.week17Opponents[player.team]}
                       adpAvailable={adpAvailable}
+                      onOpenDetail={setDetailPlayer}
                     />
                   ))}
                 </ol>
@@ -673,7 +698,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                 {routeState.contest === "superflex"
                   ? "Board order follows the published half PPR Superflex consensus. PPR best ball shows the separate standard lineup reference for context. This snapshot has no Superflex room ADP, so ADP and value stay blank instead of reusing the standard lineup market."
                   : adpAvailable
-                    ? "Board order follows current standard-season Underdog ADP when a player is matched. PPR best ball ECR is a separate reference. Value is ADP minus that PPR reference, so a positive number means the market usually lets the player go later."
+                    ? "Board order follows current standard-season Underdog ADP when a player is matched. PPR best ball ECR is a separate reference. Value is ADP minus that PPR reference, so a positive number means the market usually lets the player go later. Players labeled Undrafted are at the contest-floor placeholder, not a literal price, so their board order falls back to PPR best ball ECR and value stays blank."
                     : "This contest has no matching current ADP source in the snapshot. Board order follows PPR best ball ECR, and market value stays blank instead of reusing another slate's price."}
               </p>
               {snapshot && (
@@ -688,6 +713,9 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                       rel="noopener noreferrer"
                     >
                       Rankings from {snapshot.rankingSource.provider}
+                      {snapshot.rankingSource.expertCount
+                        ? ` · ${snapshot.rankingSource.expertCount} experts`
+                        : ""}
                     </a>
                     {snapshot.adpSource && (
                       <a
@@ -862,6 +890,23 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
           </div>
         </section>
       </div>
+      <PlayerDetailDrawer
+        player={detailPlayer}
+        publishedRank={detailPlayer ? String(detailPlayer.bestBallRank) : undefined}
+        adpAvailable={
+          adpAvailable && !detailPlayer?.isUndraftedAtContestFloor
+        }
+        valueSignalAvailable={adpAvailable}
+        onClose={() => setDetailPlayer(null)}
+      />
+      <CompareTray
+        resolvePlayer={resolveComparablePlayer}
+        publishedRank={(player) =>
+          String(comparablePlayerLookup.get(player.id)?.bestBallRank ?? "")
+        }
+        valueSignalAvailable={adpAvailable}
+        adpAvailable={adpAvailable}
+      />
     </section>
   );
 }

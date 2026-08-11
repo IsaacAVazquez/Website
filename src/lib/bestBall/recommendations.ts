@@ -9,6 +9,7 @@ import {
 import { sortBestBallRankings } from "./rankings";
 import { getNextUserPick } from "./draft";
 import { getAdaptiveRosterTargets } from "./strategy";
+import { clamp } from "@/lib/utils";
 import type {
   AdaptiveRosterTargets,
   BestBallContestPreset,
@@ -24,10 +25,6 @@ import type {
 function roundScore(value: number): number {
   const rounded = Math.round(value * 100) / 100;
   return Object.is(rounded, -0) ? 0 : rounded;
-}
-
-function clamp(value: number, minimum: number, maximum: number): number {
-  return Math.min(maximum, Math.max(minimum, value));
 }
 
 function isFiniteNumber(value: unknown): value is number {
@@ -323,7 +320,7 @@ export function recommendBestBallPlayers({
         !hasContestAdp || hasUsableAdp(player, preset.rounds, preset.teams)
     )
     .filter(
-      (player) => preset.format !== "superflex" || isFiniteNumber(player.superflexRank)
+      (player) => preset.lineupVariant !== "superflex" || isFiniteNumber(player.superflexRank)
     )
     .filter((player) =>
       isRosterFeasibleAfterPick(player.position as BestBallPosition, targets)
@@ -335,7 +332,7 @@ export function recommendBestBallPlayers({
       const hasUsableContestAdp =
         hasContestAdp &&
         hasUsableAdp(player, preset.rounds, preset.teams);
-      const sourceRank = preset.format === "superflex"
+      const sourceRank = preset.lineupVariant === "superflex"
         ? ranking.adjustedRank
         : ranking.bestBallEcr;
       // In standard rooms, base rank plus ADP value resolves to current pick minus ADP.
@@ -421,7 +418,7 @@ export function recommendBestBallPlayers({
           : 0;
 
       const gameStackDelta =
-        profile.week17Treatment === "scored" && profile.gameStackWeight > 0
+        profile.week17Treatment === "scored"
           ? countWeek17GameStacks([...roster, player], week17Opponents) -
             countWeek17GameStacks(roster, week17Opponents)
           : 0;
@@ -433,7 +430,7 @@ export function recommendBestBallPlayers({
       const cliff = tierCliffSignal(
         ranking,
         availableByPosition.get(position) ?? [],
-        preset.format === "superflex"
+        preset.lineupVariant === "superflex"
       );
       const tierScarcity = roundScore(
         needsPosition
@@ -461,7 +458,7 @@ export function recommendBestBallPlayers({
           component: "baseRank",
           score: baseRank,
           detail:
-            preset.format === "superflex"
+            preset.lineupVariant === "superflex"
               ? `The sourced Superflex consensus rank is ${ranking.adjustedRank}.`
               : hasUsableContestAdp
                 ? `The current standard Underdog ADP is ${Number(player.adp).toFixed(1)}. The PPR best ball ECR is ${ranking.bestBallEcr}.`
@@ -472,7 +469,7 @@ export function recommendBestBallPlayers({
           score: adpValue,
           detail:
             !hasContestAdp
-              ? preset.format === "superflex"
+              ? preset.lineupVariant === "superflex"
                 ? "This snapshot has no separate Superflex ADP source, so standard lineup ADP adds no score."
                 : "This snapshot has no matching ADP source for this contest slate, so market value adds no score."
               : adpDelta === null

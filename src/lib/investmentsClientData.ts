@@ -22,7 +22,7 @@ const snapshotCache = new Map<string, CachedEntry<InvestmentSnapshot>>();
 const indexInflight = new Map<string, Promise<InvestmentsIndex>>();
 const snapshotInflight = new Map<string, Promise<InvestmentSnapshot>>();
 
-export interface ClientInvestmentDataError extends Error {
+interface ClientInvestmentDataError extends Error {
   status: number;
   source: InvestmentDataSource | null;
   capabilities: InvestmentCapabilities;

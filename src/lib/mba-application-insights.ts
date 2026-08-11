@@ -24,7 +24,7 @@ const DAY_MS = 86_400_000;
 
 // How far ahead a follow-up or deadline counts as "upcoming" rather than a
 // distant future date the user does not need to act on yet.
-export const MBA_ATTENTION_WINDOW_DAYS = 7;
+const MBA_ATTENTION_WINDOW_DAYS = 7;
 
 // ── Date-key helpers ───────────────────────────────────────────────────────
 
@@ -82,7 +82,7 @@ export function sortApplicationsForColumn(
 
 // ── Pipeline summary ───────────────────────────────────────────────────────
 
-export interface MBAApplicationFunnel {
+interface MBAApplicationFunnel {
   saved: number;
   applied: number;
   interviewing: number;
@@ -90,7 +90,7 @@ export interface MBAApplicationFunnel {
   rejected: number;
 }
 
-export interface MBAApplicationBucketCounts {
+interface MBAApplicationBucketCounts {
   // For deadlines, `overdue` means the deadline has already passed.
   overdue: number;
   dueToday: number;
@@ -228,13 +228,6 @@ const ATTENTION_RANK: Record<MBAAttentionKind, number> = {
   "deadline-passed": 1,
   "follow-up-today": 2,
   "deadline-soon": 3,
-};
-
-export const MBA_ATTENTION_KIND_LABELS: Record<MBAAttentionKind, string> = {
-  "follow-up-overdue": "Follow-up overdue",
-  "follow-up-today": "Follow-up today",
-  "deadline-passed": "Deadline passed",
-  "deadline-soon": "Deadline soon",
 };
 
 function getAttentionForApplication(

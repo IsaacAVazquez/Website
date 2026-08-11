@@ -1,12 +1,7 @@
 import { githubTrendingSnapshot } from "@/data/githubTrendingSnapshot";
 import type {
   GitHubTrendingClientSnapshot,
-  GitHubTrendingSnapshot,
 } from "@/types/githubTrending";
-
-export async function getGitHubTrendingSnapshot(): Promise<GitHubTrendingSnapshot> {
-  return githubTrendingSnapshot;
-}
 
 /**
  * Snapshot view safe to pass to the client component. Strips per-repository

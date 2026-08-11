@@ -80,12 +80,20 @@ export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onCl
   const reduceMotion = useReducedMotion();
   const panelRef = useRef<HTMLDivElement>(null);
   const restoreFocusRef = useRef<HTMLElement | null>(null);
+  const onCloseRef = useRef(onClose);
+  const isOpen = Boolean(player);
 
   const queue = usePlayerQueue();
   const compare = useCompareTray();
   const notes = usePlayerNotes();
 
   const [draftNote, setDraftNote] = useState("");
+
+  // Keep Escape wired to the latest callback without restarting the focus
+  // trap when a parent creates a new callback during a store-driven render.
+  useEffect(() => {
+    onCloseRef.current = onClose;
+  }, [onClose]);
 
   // Reset the note draft whenever a different player opens the drawer.
   useEffect(() => {
@@ -98,7 +106,7 @@ export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onCl
 
   // Capture focus on open, trap Tab within the panel, and restore on close.
   useEffect(() => {
-    if (!player) return;
+    if (!isOpen) return;
     restoreFocusRef.current = document.activeElement as HTMLElement | null;
 
     const panel = panelRef.current;
@@ -107,7 +115,7 @@ export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onCl
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
         event.preventDefault();
-        onClose();
+        onCloseRef.current();
         return;
       }
       if (event.key !== "Tab" || !panel) return;
@@ -141,9 +149,8 @@ export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onCl
       document.removeEventListener("keydown", handleKeyDown);
       restoreFocusRef.current?.focus?.();
     };
-  }, [player, onClose]);
+  }, [isOpen]);
 
-  const isOpen = Boolean(player);
   const valueSignal =
     player && adpAvailable && valueSignalAvailable ? getValueVsAdp(player) : null;
   const spread = player ? getConsensusSpread(player) : null;

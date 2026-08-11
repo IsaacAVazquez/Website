@@ -1,5 +1,6 @@
 "use client";
 
+import { CircleAlert, Search } from "lucide-react";
 import React, {
   useState,
   useEffect,
@@ -10,7 +11,6 @@ import React, {
   useSyncExternalStore,
 } from "react";
 import { createPortal } from "react-dom";
-import { IconSearch, IconAlertCircle } from "@tabler/icons-react";
 import { useDebounce } from "@/hooks/useDebounce";
 import { getClientInvestmentsIndex } from "@/lib/investmentsClientData";
 import type { InvestmentIndexEntry, InvestmentsIndex } from "@/types/investment";
@@ -236,7 +236,7 @@ export function StockSearch({ value, onChange }: Props) {
       </label>
 
       <div className="relative">
-        <IconSearch
+        <Search
           size={16}
           className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[var(--home-ink-soft)]"
         />
@@ -309,7 +309,7 @@ className="m-0 list-none p-0 box-border overflow-hidden rounded-[var(--radius-sm
 
       {shouldShowCuratedOnlyHint && (
         <p className="mt-1.5 flex items-center gap-1.5 text-xs text-[var(--home-warning)]">
-          <IconAlertCircle size={13} />
+          <CircleAlert size={13} />
           <span>
             This workspace currently supports the curated research set only. Pick a ticker from the suggestions.
           </span>

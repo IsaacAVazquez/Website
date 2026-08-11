@@ -1,5 +1,6 @@
 "use client";
 
+import { Search } from "lucide-react";
 import {
   startTransition,
   useEffect,
@@ -9,7 +10,6 @@ import {
 import { motion, useReducedMotion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useTheme } from "next-themes";
-import { IconSearch } from "@tabler/icons-react";
 import {
   FOOD_MAP_AS_OF,
   FOOD_MAP_CITIES,
@@ -543,7 +543,7 @@ function FoodMapWorkbench({
               <div className="fm-index-head">
                 <h2 className="fm-index-title">The stops</h2>
                 <label className="fm-search" aria-label="Filter by name or cuisine">
-                  <IconSearch size={15} aria-hidden="true" />
+                  <Search size={15} aria-hidden="true" />
                   <input
                     type="search"
                     placeholder="Filter by name or cuisine…"

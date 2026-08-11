@@ -1,7 +1,7 @@
 "use client";
 
+import { Briefcase, Clock, FileText, House, Search } from "lucide-react";
 import Link from "next/link";
-import { IconClock, IconSearch, IconFileText, IconBriefcase, IconHome } from "@tabler/icons-react";
 import type { SearchResult } from "./SearchInterface";
 
 interface SearchResultsProps {
@@ -74,7 +74,7 @@ export function SearchResults({
     return (
       <article className="home-card p-6 sm:p-10 text-center">
         <div className="mx-auto max-w-md space-y-4">
-          <IconSearch
+          <Search
             className="mx-auto h-12 w-12"
             style={{ color: "var(--home-ink-muted)" }}
             aria-hidden="true"
@@ -150,12 +150,12 @@ function SearchResultCard({ result, query }: SearchResultCardProps) {
   const getTypeIcon = (type: SearchResult["type"]) => {
     switch (type) {
       case 'post':
-        return <IconFileText className="w-3.5 h-3.5" aria-hidden="true" />;
+        return <FileText className="w-3.5 h-3.5" aria-hidden="true" />;
       case 'project':
-        return <IconBriefcase className="w-3.5 h-3.5" aria-hidden="true" />;
+        return <Briefcase className="w-3.5 h-3.5" aria-hidden="true" />;
       case 'page':
       default:
-        return <IconHome className="w-3.5 h-3.5" aria-hidden="true" />;
+        return <House className="w-3.5 h-3.5" aria-hidden="true" />;
     }
   };
 
@@ -233,7 +233,7 @@ function SearchResultCard({ result, query }: SearchResultCardProps) {
               className="flex items-center gap-1 text-xs flex-shrink-0"
               style={bodyStyle}
             >
-              <IconClock className="w-3 h-3" aria-hidden="true" />
+              <Clock className="w-3 h-3" aria-hidden="true" />
               {new Date(result.publishedAt).toLocaleDateString()}
             </div>
           )}

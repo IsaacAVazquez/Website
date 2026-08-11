@@ -118,7 +118,7 @@ export function buildFrontierModelsSnapshot(
   };
 }
 
-export interface FrontierFilterInput {
+interface FrontierFilterInput {
   provider: FrontierProviderFilter;
   modality: FrontierModalityFilter;
   priceTier: FrontierTierFilter;

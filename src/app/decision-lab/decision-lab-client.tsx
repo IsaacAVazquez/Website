@@ -1,16 +1,9 @@
 "use client";
 
+import { ChartScatter, Link, RefreshCw, SlidersHorizontal, Target, Zap } from "lucide-react";
 import { startTransition, useEffect, useState, type CSSProperties } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
-import {
-  IconAdjustmentsHorizontal,
-  IconBolt,
-  IconChartScatter,
-  IconLink,
-  IconRefresh,
-  IconTarget,
-} from "@tabler/icons-react";
 import {
   DECISION_PRESETS,
   evaluateDecision,
@@ -483,7 +476,7 @@ function DecisionLabWorkbench({
                     color: "var(--home-ink)",
                   }}
                 >
-                  <IconRefresh size={14} aria-hidden="true" />
+                  <RefreshCw size={14} aria-hidden="true" />
                   Reset to defaults
                 </button>
               </div>
@@ -593,7 +586,7 @@ function DecisionLabWorkbench({
                   <div className="tool-section-header mb-4">
                     <div>
                       <p className="tool-section-kicker">
-                        <IconAdjustmentsHorizontal size={12} aria-hidden="true" className="mr-1.5 inline align-middle" />
+                        <SlidersHorizontal size={12} aria-hidden="true" className="mr-1.5 inline align-middle" />
                         Inputs
                       </p>
                       <h2 className="tool-section-title">Score the tradeoff</h2>
@@ -622,7 +615,7 @@ function DecisionLabWorkbench({
                   <div className="tool-section-header mb-3">
                     <div>
                       <p className="tool-section-kicker">
-                        <IconChartScatter size={12} aria-hidden="true" className="mr-1.5 inline align-middle" />
+                        <ChartScatter size={12} aria-hidden="true" className="mr-1.5 inline align-middle" />
                         Matrix
                       </p>
                       <h2 className="tool-section-title">Confidence vs. impact</h2>
@@ -642,7 +635,7 @@ function DecisionLabWorkbench({
             >
               <section>
                 <p className="tool-rail-label">
-                  <IconBolt size={12} aria-hidden="true" />
+                  <Zap size={12} aria-hidden="true" />
                   Why this verdict
                 </p>
                 <ul className="m-0 flex list-none flex-col gap-1.5 p-0">
@@ -686,7 +679,7 @@ function DecisionLabWorkbench({
 
               <section>
                 <p className="tool-rail-label">
-                  <IconTarget size={12} aria-hidden="true" />
+                  <Target size={12} aria-hidden="true" />
                   Presets
                 </p>
                 <div className="grid gap-1.5">
@@ -728,7 +721,7 @@ function DecisionLabWorkbench({
                     className="m-0 flex items-center gap-1.5 text-2xs font-bold uppercase tracking-[0.14em]"
                     style={{ color: "var(--home-ink-muted)" }}
                   >
-                    <IconLink size={11} aria-hidden="true" />
+                    <Link size={11} aria-hidden="true" />
                     URL state
                   </p>
                   <button

@@ -13,8 +13,8 @@ import type {
 import { MBA_ROLE_FAMILIES } from "@/constants/mba-role-taxonomy";
 
 export const MBA_APPLICATIONS_STORAGE_KEY = "mba_applications_v1";
-export const MBA_APPLICATION_EXPORT_SCHEMA = "mba-applications-export";
-export const MBA_APPLICATION_EXPORT_VERSION = 1;
+const MBA_APPLICATION_EXPORT_SCHEMA = "mba-applications-export";
+const MBA_APPLICATION_EXPORT_VERSION = 1;
 
 export const MBA_APPLICATION_STATUSES = [
   "saved",
@@ -173,14 +173,14 @@ function normalizeApplyUrlForKey(value: string): string {
   return value.trim().replace(/\/+$/, "").toLowerCase();
 }
 
-export function buildMBAApplicationMatchKey(application: MBATrackedApplication): string {
+function buildMBAApplicationMatchKey(application: MBATrackedApplication): string {
   if (application.jobId) return `job:${application.jobId}`;
   const applyUrl = normalizeApplyUrlForKey(application.jobSnapshot.applyUrl);
   if (applyUrl) return `url:${applyUrl}`;
   return `id:${application.id}`;
 }
 
-export function buildMBAApplicationJobSnapshot(
+function buildMBAApplicationJobSnapshot(
   job: MBAJob,
   now = new Date()
 ): MBAApplicationJobSnapshot {
@@ -360,15 +360,6 @@ export function saveMBAApplications(
   } catch {
     return false;
   }
-}
-
-export function clearMBAApplications(storage?: Pick<Storage, "removeItem">): void {
-  if (storage) {
-    storage.removeItem(MBA_APPLICATIONS_STORAGE_KEY);
-    return;
-  }
-  if (typeof window === "undefined") return;
-  window.localStorage.removeItem(MBA_APPLICATIONS_STORAGE_KEY);
 }
 
 function pickNewerApplication(

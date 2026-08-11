@@ -1,15 +1,7 @@
 "use client";
 
+import { Calculator, CirclePercent, CreditCard, Info, LayoutGrid, RefreshCw, Scale } from "lucide-react";
 import { useId, useState, useMemo } from "react";
-import {
-  IconCreditCard,
-  IconInfoCircle,
-  IconLayoutGrid,
-  IconScale,
-  IconCalculator,
-  IconRefresh,
-  IconCirclePercentage,
-} from "@tabler/icons-react";
 import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
 import {
   buildCardMix,
@@ -246,10 +238,10 @@ export function InterchangeIQClient() {
             {navItems.map((item) => {
               const isActive = item.id === activeView;
               const Icon =
-                item.id === "all-processors"   ? IconLayoutGrid :
-                item.id === "flat-rate"        ? IconCirclePercentage :
-                item.id === "interchange-plus" ? IconCalculator :
-                                                 IconScale;
+                item.id === "all-processors"   ? LayoutGrid :
+                item.id === "flat-rate"        ? CirclePercent :
+                item.id === "interchange-plus" ? Calculator :
+                                                 Scale;
               return (
                 <a
                   key={item.id}
@@ -294,7 +286,7 @@ export function InterchangeIQClient() {
               }}
               aria-label="Reset all inputs to defaults"
             >
-              <IconRefresh size={14} aria-hidden="true" />
+              <RefreshCw size={14} aria-hidden="true" />
               Reset
             </button>
           </div>
@@ -571,7 +563,7 @@ export function InterchangeIQClient() {
         >
           <section>
             <p className="tool-rail-label">
-              <IconCreditCard size={12} aria-hidden="true" />
+              <CreditCard size={12} aria-hidden="true" />
               Inputs
             </p>
             <div className="space-y-4">
@@ -623,7 +615,7 @@ export function InterchangeIQClient() {
 
           <section>
             <p className="tool-rail-label">
-              <IconLayoutGrid size={12} aria-hidden="true" />
+              <LayoutGrid size={12} aria-hidden="true" />
               Card mix preview
               <button
                 type="button"
@@ -634,7 +626,7 @@ export function InterchangeIQClient() {
                 className="ml-auto rounded-md p-0.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                 style={{ color: "var(--home-ink-muted)" }}
               >
-                <IconInfoCircle className="h-3.5 w-3.5" />
+                <Info className="h-3.5 w-3.5" />
               </button>
             </p>
 
@@ -705,7 +697,7 @@ export function InterchangeIQClient() {
           </section>
 
           <p className="tool-rail-foot">
-            <IconInfoCircle size={14} aria-hidden="true" />
+            <Info size={14} aria-hidden="true" />
             Based on published 2024 interchange rates
           </p>
         </aside>

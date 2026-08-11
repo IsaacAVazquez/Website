@@ -12,18 +12,12 @@ export * from "../src/components/ui/Badge";
 export * from "../src/components/ui/Chip";
 export * from "../src/components/ui/Heading";
 export * from "../src/components/ui/Kicker";
-export * from "../src/components/ui/MetricCallout";
 export * from "../src/components/ui/ModernButton";
-export * from "../src/components/ui/PageSummary";
 export * from "../src/components/ui/Paragraph";
-export * from "../src/components/ui/ReadoutPanel";
 export * from "../src/components/ui/SectionIntro";
 export * from "../src/components/ui/ThemeToggle";
 export * from "../src/components/ui/WarmCard";
 export * from "../src/components/ui/AuthorBio";
-export * from "../src/components/ui/ExpertSignal";
-export * from "../src/components/ui/JourneyTimeline";
-export * from "../src/components/ui/OptimizedImage";
 export * from "../src/components/ui/dropdown-menu";
 
 // editorial/ kit

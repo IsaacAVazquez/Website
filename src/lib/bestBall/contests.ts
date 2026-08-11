@@ -6,11 +6,21 @@ import type {
   BestBallStrategyProfileId,
 } from "./types";
 
-export const BEST_BALL_RULES_AS_OF = "2026-08-02";
-export const UNDERDOG_OFFICIAL_RULES_URL = "https://app.underdogsports.com/rules";
-export const UNDERDOG_OFFICIAL_TERMS_URL = "https://legal.underdogsports.com/";
-export const BBM_VII_OFFICIAL_RULES_URL =
+export const BEST_BALL_RULES_AS_OF = "2026-08-09";
+const UNDERDOG_OFFICIAL_RULES_URL = "https://app.underdogsports.com/rules";
+const UNDERDOG_OFFICIAL_TERMS_URL = "https://legal.underdogsports.com/";
+const BBM_VII_OFFICIAL_RULES_URL =
   "https://help.underdogsports.com/en/articles/14785343-best-ball-mania-vii";
+const PUPPY_OFFICIAL_RULES_URL =
+  "https://help.underdogsports.com/en/articles/14787820-the-puppy";
+const ELIMINATOR_OFFICIAL_RULES_URL =
+  "https://help.underdogsports.com/en/articles/14786129-the-eliminator";
+const WEEKLY_WINNERS_OFFICIAL_RULES_URL =
+  "https://help.underdogsports.com/en/articles/14787567-best-ball-weekly-winners";
+const SIT_AND_GO_OFFICIAL_RULES_URL =
+  "https://help.underdogsports.com/en/articles/10716487-best-ball-sit-n-go";
+const SUPERFLEX_OFFICIAL_RULES_URL =
+  "https://help.underdogsports.com/en/articles/11102881-what-is-a-superflex";
 export const DEFAULT_BEST_BALL_CONTEST_ID: BestBallContestId = "bbm-vii";
 
 export const STANDARD_BEST_BALL_LINEUP: Readonly<BestBallLineup> = Object.freeze({
@@ -51,7 +61,11 @@ export const BEST_BALL_CONTESTS: Readonly<Record<BestBallContestId, BestBallCont
       description:
         "A playoff tournament profile that keeps the current room price first, scores completed Week 17 game stacks, and allows same team concentration up to four players before penalizing it.",
       aliases: ["bbm", "bbm7", "bbm-vii", "best-ball-mania", "best-ball-mania-7", "best-ball-mania-vii"],
-      format: "tournament",
+      competitionFormat: "tournament",
+      lineupVariant: "standard",
+      recommendationMode: "exact",
+      recommendationReason:
+        "The current standard-season Underdog ADP matches this room's player pool and draft shape.",
       strategyProfileId: "standard-tournament",
       lineup: STANDARD_BEST_BALL_LINEUP,
       officialRulesUrl: BBM_VII_OFFICIAL_RULES_URL,
@@ -72,9 +86,14 @@ export const BEST_BALL_CONTESTS: Readonly<Record<BestBallContestId, BestBallCont
       description:
         "A smaller tournament offering that uses the same draft profile as Best Ball Mania.",
       aliases: ["puppy", "the-puppy", "puppy-tournament"],
-      format: "tournament",
+      competitionFormat: "tournament",
+      lineupVariant: "standard",
+      recommendationMode: "exact",
+      recommendationReason:
+        "The current standard-season Underdog ADP matches this room's player pool and draft shape.",
       strategyProfileId: "standard-tournament",
       lineup: STANDARD_BEST_BALL_LINEUP,
+      officialRulesUrl: PUPPY_OFFICIAL_RULES_URL,
     },
     eliminator: {
       ...sharedPreset,
@@ -84,9 +103,14 @@ export const BEST_BALL_CONTESTS: Readonly<Record<BestBallContestId, BestBallCont
       description:
         "A survival profile that puts more weight on weekly bye coverage and less weight on team correlation.",
       aliases: ["eliminator", "elimination", "survivor", "survival"],
-      format: "elimination",
+      competitionFormat: "elimination",
+      lineupVariant: "standard",
+      recommendationMode: "reference",
+      recommendationReason:
+        "The snapshot does not include Eliminator-specific ADP for this player pool and slate.",
       strategyProfileId: "eliminator",
       lineup: STANDARD_BEST_BALL_LINEUP,
+      officialRulesUrl: ELIMINATOR_OFFICIAL_RULES_URL,
     },
     "weekly-winners": {
       ...sharedPreset,
@@ -94,11 +118,16 @@ export const BEST_BALL_CONTESTS: Readonly<Record<BestBallContestId, BestBallCont
       name: "Weekly Winners",
       shortName: "Weekly Winners",
       description:
-        "A Weekly Winners model for 12 teams and 18 rounds that scores player-level weekly variation only when weekly projections are present. The current snapshot has no weekly projections, so that component stays neutral.",
+        "A Weekly Winners reference model for 12 teams and 18 rounds with a sourced board and roster construction guidance.",
       aliases: ["weekly", "weekly-winner", "weekly-winners", "weeklywinners"],
-      format: "weekly",
+      competitionFormat: "weekly",
+      lineupVariant: "standard",
+      recommendationMode: "reference",
+      recommendationReason:
+        "Weekly Winners player pools and slates vary, and the snapshot has no matching room ADP.",
       strategyProfileId: "weekly-winners",
       lineup: STANDARD_BEST_BALL_LINEUP,
+      officialRulesUrl: WEEKLY_WINNERS_OFFICIAL_RULES_URL,
       rulesNote:
         "Weekly Winners group size, player pool, and slate can vary. Use this tracker only when the contest card shows 12 teams, 18 rounds, an 18 player roster, and half PPR scoring.",
     },
@@ -110,9 +139,14 @@ export const BEST_BALL_CONTESTS: Readonly<Record<BestBallContestId, BestBallCont
       description:
         "A cumulative scoring model for 12 teams and 18 rounds with no separate Week 17 opponent adjustment.",
       aliases: ["sit-and-go", "sit-and-go-cumulative", "sitngo", "sit-n-go", "cumulative", "cash"],
-      format: "cumulative",
+      competitionFormat: "cumulative",
+      lineupVariant: "standard",
+      recommendationMode: "reference",
+      recommendationReason:
+        "Sit & Go room settings and player pools vary, and the snapshot has no matching room ADP.",
       strategyProfileId: "cumulative",
       lineup: STANDARD_BEST_BALL_LINEUP,
+      officialRulesUrl: SIT_AND_GO_OFFICIAL_RULES_URL,
       rulesNote:
         "Sit & Go group size, roster size, and scoring can vary. Use this tracker only when the contest card shows 12 teams, 18 rounds, an 18 player roster, and half PPR scoring.",
     },
@@ -122,11 +156,16 @@ export const BEST_BALL_CONTESTS: Readonly<Record<BestBallContestId, BestBallCont
       name: "Superflex",
       shortName: "Superflex",
       description:
-        "A Superflex model for 12 teams and 18 rounds with a flex slot that can use a quarterback. The board order comes from a sourced Superflex consensus rather than a locally computed adjustment, and the heaviest positional tier cliff weight of any profile pulls thin quarterback tiers forward.",
+        "A Superflex reference model for 12 teams and 18 rounds with a flex slot that can use a quarterback and a separate sourced Superflex consensus board.",
       aliases: ["superflex", "super-flex", "sf", "sflex", "superflex-tournament"],
-      format: "superflex",
+      competitionFormat: "tournament",
+      lineupVariant: "superflex",
+      recommendationMode: "reference",
+      recommendationReason:
+        "The snapshot has a Superflex consensus board but no matching Superflex room ADP.",
       strategyProfileId: "superflex",
       lineup: SUPERFLEX_BEST_BALL_LINEUP,
+      officialRulesUrl: SUPERFLEX_OFFICIAL_RULES_URL,
       rulesNote:
         "Superflex is an eligibility label, and the rest of the contest rules can vary. Use this tracker only when the contest card shows 12 teams, 18 rounds, an 18 player roster, and half PPR scoring.",
     },
@@ -149,11 +188,9 @@ export const BEST_BALL_STRATEGY_PROFILES: Readonly<
     correlationWeight: 4,
     byeCoverageWeight: 2,
     rosterNeedWeight: 8,
-    adpValueWeight: 1,
     concentrationPenalty: 2,
     concentrationFloor: 4,
     spikeWeekWeight: 0,
-    gameStackWeight: 6,
     scarcityWeight: 4,
     week17Treatment: "scored",
   },
@@ -162,11 +199,9 @@ export const BEST_BALL_STRATEGY_PROFILES: Readonly<
     correlationWeight: 1,
     byeCoverageWeight: 7,
     rosterNeedWeight: 10,
-    adpValueWeight: 1,
     concentrationPenalty: 3,
     concentrationFloor: 2,
     spikeWeekWeight: 0,
-    gameStackWeight: 0,
     scarcityWeight: 4,
     week17Treatment: "none",
   },
@@ -175,11 +210,9 @@ export const BEST_BALL_STRATEGY_PROFILES: Readonly<
     correlationWeight: 5,
     byeCoverageWeight: 2,
     rosterNeedWeight: 8,
-    adpValueWeight: 0.9,
     concentrationPenalty: 1.5,
     concentrationFloor: 4,
     spikeWeekWeight: 5,
-    gameStackWeight: 0,
     scarcityWeight: 3,
     week17Treatment: "none",
   },
@@ -188,11 +221,9 @@ export const BEST_BALL_STRATEGY_PROFILES: Readonly<
     correlationWeight: 2,
     byeCoverageWeight: 3,
     rosterNeedWeight: 9,
-    adpValueWeight: 1.1,
     concentrationPenalty: 2.5,
     concentrationFloor: 3,
     spikeWeekWeight: 0,
-    gameStackWeight: 0,
     scarcityWeight: 4,
     week17Treatment: "none",
   },
@@ -201,11 +232,9 @@ export const BEST_BALL_STRATEGY_PROFILES: Readonly<
     correlationWeight: 2,
     byeCoverageWeight: 2,
     rosterNeedWeight: 9,
-    adpValueWeight: 1,
     concentrationPenalty: 2,
     concentrationFloor: 3,
     spikeWeekWeight: 0,
-    gameStackWeight: 0,
     scarcityWeight: 6,
     week17Treatment: "none",
   },
@@ -231,10 +260,6 @@ const CONTEST_ALIASES: Readonly<Record<string, BestBallContestId>> = (() => {
   return aliases;
 })();
 
-export function isBestBallContestId(value: unknown): value is BestBallContestId {
-  return typeof value === "string" && value in BEST_BALL_CONTESTS;
-}
-
 export function normalizeContestId(
   value: string | null | undefined,
   fallback: BestBallContestId = DEFAULT_BEST_BALL_CONTEST_ID
@@ -258,7 +283,7 @@ export function hasSupportedBestBallAdp(
   contest: BestBallContestId | BestBallContestPreset
 ): boolean {
   const preset = typeof contest === "string" ? getContestPreset(contest) : contest;
-  return preset.id === "bbm-vii" || preset.id === "puppy";
+  return preset.recommendationMode === "exact";
 }
 
 export function getStrategyProfile(

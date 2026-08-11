@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useSession, signOut, signIn } from 'next-auth/react';
-import { IconLogout, IconLock } from '@tabler/icons-react';
+import { Lock, LogOut } from "lucide-react";
 import { ModernButton } from '@/components/ui/ModernButton';
 import { WarmCard } from '@/components/ui/WarmCard';
 import { LocalDataBackupCard } from '@/components/admin/LocalDataBackupCard';
@@ -75,7 +75,7 @@ export default function AdminPage() {
           <WarmCard hover={false} padding="xl">
             <div className="text-center mb-8">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[color-mix(in_srgb,var(--home-signal)_14%,transparent)] mb-4">
-                <IconLock className="w-8 h-8 text-[var(--home-signal)]" />
+                <Lock className="w-8 h-8 text-[var(--home-signal)]" />
               </div>
               <h1 className="text-2xl font-bold text-[var(--home-signal)] mb-2">
                 Admin Access
@@ -149,7 +149,7 @@ export default function AdminPage() {
             </p>
           </div>
           <ModernButton onClick={() => signOut({ callbackUrl: '/' })} variant="secondary" size="sm">
-            <IconLogout className="w-4 h-4" />
+            <LogOut className="w-4 h-4" />
             Sign Out
           </ModernButton>
         </motion.div>

@@ -12,12 +12,15 @@ export type BestBallContestId =
   | "sit-and-go"
   | "superflex";
 
-export type BestBallContestFormat =
+export type BestBallCompetitionFormat =
   | "tournament"
   | "elimination"
   | "weekly"
-  | "cumulative"
-  | "superflex";
+  | "cumulative";
+
+export type BestBallLineupVariant = "standard" | "superflex";
+
+export type BestBallRecommendationMode = "exact" | "reference";
 
 export type BestBallStrategyProfileId =
   | "standard-tournament"
@@ -35,7 +38,7 @@ export interface BestBallLineup {
   SUPERFLEX?: number;
 }
 
-export interface BestBallContestEconomics {
+interface BestBallContestEconomics {
   entryFee: number;
   fieldEntries: number;
   prizePool: number;
@@ -50,7 +53,10 @@ export interface BestBallContestPreset {
   shortName: string;
   description: string;
   aliases: readonly string[];
-  format: BestBallContestFormat;
+  competitionFormat: BestBallCompetitionFormat;
+  lineupVariant: BestBallLineupVariant;
+  recommendationMode: BestBallRecommendationMode;
+  recommendationReason: string;
   strategyProfileId: BestBallStrategyProfileId;
   teams: number;
   rounds: number;
@@ -69,7 +75,6 @@ export interface BestBallStrategyProfile {
   correlationWeight: number;
   byeCoverageWeight: number;
   rosterNeedWeight: number;
-  adpValueWeight: number;
   concentrationPenalty: number;
   /**
    * Same-team players allowed before the concentration penalty starts. Underdog advance
@@ -78,11 +83,6 @@ export interface BestBallStrategyProfile {
    */
   concentrationFloor: number;
   spikeWeekWeight: number;
-  /**
-   * Week 17 is the finals week and carries a larger share of entry value than the whole
-   * regular season, so tournament profiles score game stacks instead of only breaking ties.
-   */
-  gameStackWeight: number;
   /**
    * Weight on the positional tier cliff, meaning how much a thin tier with a real board gap
    * behind it should pull a needed position forward. Superflex leans on this hardest because
@@ -111,7 +111,7 @@ export interface RankedBestBallPlayer extends Player {
 
 export type BestBallRosterComposition = Record<BestBallPosition, number>;
 
-export interface BestBallRosterTarget {
+interface BestBallRosterTarget {
   minimum: number;
   recommended: number;
   maximum: number;
@@ -163,7 +163,7 @@ export interface BestBallRosterAnalysis {
   week17Pairs: readonly BestBallWeek17Pair[];
 }
 
-export type BestBallRecommendationComponent =
+type BestBallRecommendationComponent =
   | "baseRank"
   | "adpValue"
   | "rosterNeed"

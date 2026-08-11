@@ -1,9 +1,9 @@
 "use client";
 /* eslint-disable react-refresh/only-export-components -- co-located helper is intentional */
 
+import { ChevronRight, House } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { IconChevronRight, IconHome } from "@tabler/icons-react";
 import { safeJsonLd } from "@/lib/seo";
 
 interface BreadcrumbItem {
@@ -137,7 +137,7 @@ export function Breadcrumbs({
                   status, and spending a status token on decoration is what
                   makes a real warning stop reading as one. */}
               {index > 0 && (
-                <IconChevronRight className="w-4 h-4 text-[var(--home-ink-muted)] mx-1.5" aria-hidden="true" />
+                <ChevronRight className="w-4 h-4 text-[var(--home-ink-muted)] mx-1.5" aria-hidden="true" />
               )}
 
               {/* Active item is ink on the signal wash, not signal on it.
@@ -148,7 +148,7 @@ export function Breadcrumbs({
                 <span className="text-[var(--home-ink)] font-semibold text-sm px-2 py-1 rounded-lg bg-[var(--home-signal)]/10">
                   {item.label === "Home" && showHome ? (
                     <span className="flex items-center gap-1.5">
-                      <IconHome className="w-4 h-4" />
+                      <House className="w-4 h-4" />
                       <span>Home</span>
                     </span>
                   ) : (
@@ -162,7 +162,7 @@ export function Breadcrumbs({
                 >
                   {item.label === "Home" && showHome ? (
                     <span className="flex items-center gap-1.5">
-                      <IconHome className="w-4 h-4" />
+                      <House className="w-4 h-4" />
                       <span>Home</span>
                     </span>
                   ) : (

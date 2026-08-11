@@ -53,7 +53,7 @@ export interface AccountBalances {
   hsa: number;
 }
 
-export interface WithdrawalResult {
+interface WithdrawalResult {
   /** Gross amount pulled from the portfolio (reduces balances). */
   gross: number;
   /** Taxes paid on the withdrawals. */

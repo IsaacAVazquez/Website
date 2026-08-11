@@ -106,48 +106,4 @@ describe('Logger', () => {
     });
   });
 
-  // ─── performance ───────────────────────────────────────────────────────────
-
-  describe('performance', () => {
-    it('calls console.log with [PERF] prefix and duration in development', () => {
-      logger.performance('data-fetch', 150);
-      expect(consoleSpy.log).toHaveBeenCalledWith(
-        expect.stringContaining('[PERF]')
-      );
-      expect(consoleSpy.log).toHaveBeenCalledWith(
-        expect.stringContaining('150ms')
-      );
-    });
-  });
-
-  // ─── createLogEntry ────────────────────────────────────────────────────────
-
-  describe('createLogEntry', () => {
-    it('returns a structured log entry with required fields', () => {
-      const entry = logger.createLogEntry('info', 'test message', { key: 'val' });
-      expect(entry.level).toBe('info');
-      expect(entry.message).toBe('test message');
-      expect(entry.data).toEqual({ key: 'val' });
-      expect(typeof entry.timestamp).toBe('string');
-    });
-
-    it('timestamp is a valid ISO date string', () => {
-      const entry = logger.createLogEntry('error', 'oops');
-      expect(() => new Date(entry.timestamp)).not.toThrow();
-      expect(new Date(entry.timestamp).toISOString()).toBe(entry.timestamp);
-    });
-
-    it('works for all log levels', () => {
-      const levels = ['info', 'warn', 'error', 'debug'] as const;
-      levels.forEach(level => {
-        const entry = logger.createLogEntry(level, `${level} message`);
-        expect(entry.level).toBe(level);
-      });
-    });
-
-    it('data field is optional (undefined when not provided)', () => {
-      const entry = logger.createLogEntry('warn', 'no data');
-      expect(entry.data).toBeUndefined();
-    });
-  });
 });

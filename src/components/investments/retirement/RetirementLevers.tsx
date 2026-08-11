@@ -1,7 +1,7 @@
 "use client";
 
+import { ArrowDownRight, ArrowUpRight, Minus } from "lucide-react";
 import React from "react";
-import { IconArrowDownRight, IconArrowUpRight, IconMinus } from "@tabler/icons-react";
 import type { LeverEffect, RetirementResult } from "@/lib/retirement";
 import { formatPercent } from "@/lib/retirement";
 
@@ -16,9 +16,9 @@ function deltaTone(delta: number): string {
 }
 
 function DeltaIcon({ delta }: { delta: number }) {
-  if (delta > 0.005) return <IconArrowUpRight size={15} aria-hidden="true" />;
-  if (delta < -0.005) return <IconArrowDownRight size={15} aria-hidden="true" />;
-  return <IconMinus size={15} aria-hidden="true" />;
+  if (delta > 0.005) return <ArrowUpRight size={15} aria-hidden="true" />;
+  if (delta < -0.005) return <ArrowDownRight size={15} aria-hidden="true" />;
+  return <Minus size={15} aria-hidden="true" />;
 }
 
 function LeverRow({ lever, threshold }: { lever: LeverEffect; threshold: number }) {

@@ -28,7 +28,7 @@ function percentile(sorted: number[], p: number): number {
   return sorted[low] + (sorted[high] - sorted[low]) * (rank - low);
 }
 
-export interface MonteCarloOptions {
+interface MonteCarloOptions {
   expectedReturn: number;
   volatility: number;
   referenceYear?: number;

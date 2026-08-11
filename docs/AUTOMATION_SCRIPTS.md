@@ -51,7 +51,6 @@ Current operational files under `scripts/`:
 | `npm run update:frontier-models` | Frontier model snapshot rebuild |
 | `npm run update:github-trending` | GitHub Trending Pulse snapshot refresh |
 | `npm run update:spacex` | SpaceX data snapshot refresh |
-| `npm run update:spacex-data` | Alias of `npm run update:spacex` |
 | `npm run update:spacex-images` | SpaceX image cache and manifest refresh |
 | `npm run update:investments` | Python fetch plus TypeScript snapshot build |
 | `npm run update:fantasy` | Fantasy position data plus published snapshot JSON |

@@ -33,23 +33,6 @@ function clampNbaTeamSnapshot(snapshot: NbaTeamSnapshot): NbaTeamSnapshot {
   };
 }
 
-export function createEmptyNbaSummarySnapshot(): NbaSummarySnapshot {
-  return {
-    season: nbaSnapshot.season,
-    generatedAt: nbaSnapshot.generatedAt,
-    updatedAt: nbaSnapshot.updatedAt,
-    sourceLabel: nbaSnapshot.sourceLabel,
-    sourceUrls: nbaSnapshot.sourceUrls,
-    teamsByConference: { east: [], west: [] },
-    scorers: [],
-    rebounders: [],
-    assistLeaders: [],
-    recentFixtures: [],
-    upcomingFixtures: [],
-    teams: [],
-  };
-}
-
 export function createEmptyNbaTeamSnapshot(): NbaTeamSnapshot {
   return {
     team: null,

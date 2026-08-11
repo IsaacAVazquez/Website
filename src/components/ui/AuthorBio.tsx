@@ -1,8 +1,9 @@
 "use client";
 
+import { Mail } from "lucide-react";
+import { BrandGithub, BrandLinkedin } from "@/components/ui/ServerIcons";
 import Image from "next/image";
 import Link from "next/link";
-import { IconBrandLinkedin, IconBrandGithub, IconMail } from "@tabler/icons-react";
 
 export interface AuthorBioProps {
   name?: string;
@@ -136,7 +137,7 @@ export function AuthorBio({
                   onMouseEnter={(e) => (e.currentTarget.style.color = "var(--home-ink)")}
                   onMouseLeave={(e) => (e.currentTarget.style.color = "var(--home-ink-muted)")}
                 >
-                  <IconBrandLinkedin className="h-4 w-4" />
+                  <BrandLinkedin className="h-4 w-4" />
                 </Link>
               )}
               {social.github && (
@@ -151,7 +152,7 @@ export function AuthorBio({
                   onMouseEnter={(e) => (e.currentTarget.style.color = "var(--home-ink)")}
                   onMouseLeave={(e) => (e.currentTarget.style.color = "var(--home-ink-muted)")}
                 >
-                  <IconBrandGithub className="h-4 w-4" />
+                  <BrandGithub className="h-4 w-4" />
                 </Link>
               )}
               {social.email && (
@@ -164,7 +165,7 @@ export function AuthorBio({
                   onMouseEnter={(e) => (e.currentTarget.style.color = "var(--home-ink)")}
                   onMouseLeave={(e) => (e.currentTarget.style.color = "var(--home-ink-muted)")}
                 >
-                  <IconMail className="h-4 w-4" />
+                  <Mail className="h-4 w-4" />
                 </Link>
               )}
             </div>
@@ -230,7 +231,7 @@ export function AuthorBio({
                 onMouseEnter={(e) => (e.currentTarget.style.color = "var(--home-ink)")}
                 onMouseLeave={(e) => (e.currentTarget.style.color = "var(--home-ink-muted)")}
               >
-                <IconBrandLinkedin className="w-5 h-5" />
+                <BrandLinkedin className="w-5 h-5" />
               </Link>
             )}
             {social.github && (
@@ -240,7 +241,7 @@ export function AuthorBio({
                 onMouseEnter={(e) => (e.currentTarget.style.color = "var(--home-ink)")}
                 onMouseLeave={(e) => (e.currentTarget.style.color = "var(--home-ink-muted)")}
               >
-                <IconBrandGithub className="w-5 h-5" />
+                <BrandGithub className="w-5 h-5" />
               </Link>
             )}
             {social.email && (
@@ -250,7 +251,7 @@ export function AuthorBio({
                 onMouseEnter={(e) => (e.currentTarget.style.color = "var(--home-ink)")}
                 onMouseLeave={(e) => (e.currentTarget.style.color = "var(--home-ink-muted)")}
               >
-                <IconMail className="w-5 h-5" />
+                <Mail className="w-5 h-5" />
               </Link>
             )}
           </div>
@@ -335,7 +336,7 @@ export function AuthorBio({
                   onMouseEnter={(e) => (e.currentTarget.style.color = "var(--home-ink)")}
                   onMouseLeave={(e) => (e.currentTarget.style.color = "var(--home-ink-muted)")}
                 >
-                  <IconBrandLinkedin className="w-4 h-4" />
+                  <BrandLinkedin className="w-4 h-4" />
                   LinkedIn
                 </Link>
               )}
@@ -347,7 +348,7 @@ export function AuthorBio({
                   onMouseEnter={(e) => (e.currentTarget.style.color = "var(--home-ink)")}
                   onMouseLeave={(e) => (e.currentTarget.style.color = "var(--home-ink-muted)")}
                 >
-                  <IconBrandGithub className="w-4 h-4" />
+                  <BrandGithub className="w-4 h-4" />
                   GitHub
                 </Link>
               )}
@@ -359,7 +360,7 @@ export function AuthorBio({
                   onMouseEnter={(e) => (e.currentTarget.style.color = "var(--home-ink)")}
                   onMouseLeave={(e) => (e.currentTarget.style.color = "var(--home-ink-muted)")}
                 >
-                  <IconMail className="w-4 h-4" />
+                  <Mail className="w-4 h-4" />
                   Email
                 </Link>
               )}

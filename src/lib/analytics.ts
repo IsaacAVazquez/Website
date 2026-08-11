@@ -71,7 +71,7 @@ export const GA_EVENT = {
   scrollDepth: "scroll_depth",
 } as const;
 
-export type NavLocation =
+type NavLocation =
   | "header_primary"
   | "header_brand"
   | "header_mobile"
@@ -130,7 +130,7 @@ export function trackScrollDepth(params: {
 // Reference catalogue — drives /analytics-reference
 // ---------------------------------------------------------------------------
 
-export interface AnalyticsEventDoc {
+interface AnalyticsEventDoc {
   name: string;
   category: "Navigation" | "Code samples" | "Listings" | "Engagement";
   description: string;

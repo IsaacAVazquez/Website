@@ -127,16 +127,17 @@ async function loadFantasySnapshot(scoring: FantasyRouteScoring): Promise<Fantas
   // route, which reads the same files server-side and so should agree on shape.
   // Only surface a user-visible error when both paths fail.
   const request = fetchStaticFantasySnapshot(scoring)
+    .then((rawSnapshot) => cacheNormalizedFantasySnapshot(scoring, rawSnapshot))
     .catch(async (staticError) => {
       try {
-        return await fetchApiFantasySnapshot(scoring);
+        const apiSnapshot = await fetchApiFantasySnapshot(scoring);
+        return cacheNormalizedFantasySnapshot(scoring, apiSnapshot);
       } catch (apiError) {
-        logger.warn("Fantasy snapshot static fetch failed", staticError);
+        logger.warn("Fantasy snapshot static load failed", staticError);
         logger.warn("Fantasy snapshot API fallback failed", apiError);
         throw new Error("Fantasy rankings are unavailable right now.", { cause: apiError });
       }
     })
-    .then((rawSnapshot) => cacheNormalizedFantasySnapshot(scoring, rawSnapshot))
     .finally(() => {
       inflightSnapshotRequests.delete(cacheKey);
     });

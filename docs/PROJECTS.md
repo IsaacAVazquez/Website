@@ -20,11 +20,8 @@ These items surface existing content that is currently invisible to visitors.
 - **Files:** `src/constants/navlinks.tsx` (add entry), possibly footer component
 - **Effort:** Tiny
 
-### 2. Fix `WritingPreview` on homepage
-- **Why:** The homepage `WritingPreview` component calls the search API which returns 0 blog results. It renders nothing.
-- **Fix:** Either fix the search API to index blog posts (see P2 #14), or have `WritingPreview` call `blog.ts` directly to get recent posts instead of going through the search API.
-- **Files:** `WritingPreview` component, possibly `/api/search` route
-- **Effort:** Small
+### 2. Fix `WritingPreview` on homepage — obsolete
+- **Why:** `WritingPreview` was deleted in August 2026 after Catalog 97 replaced the homepage, so the component this item described no longer exists.
 
 ### 3. Link draft tracker from FF landing page
 - **Why:** `/fantasy-football/draft-tracker` is built but not linked from the fantasy football landing page.
@@ -37,10 +34,8 @@ These items surface existing content that is currently invisible to visitors.
 - **Files:** `src/constants/caseStudies.ts`, `src/app/portfolio/` page component
 - **Effort:** Tiny–Small
 
-### 5. Add "Read My Writing" CTA to `ThinkingPreview` section
-- **Why:** The homepage has a `ThinkingPreview` section that could link to `/writing` to drive traffic to the blog.
-- **Files:** `ThinkingPreview` component
-- **Effort:** Tiny
+### 5. Add "Read My Writing" CTA to `ThinkingPreview` section — obsolete
+- **Why:** `ThinkingPreview` was deleted in August 2026 after Catalog 97 replaced the homepage, so the section this item described no longer exists.
 
 ---
 
@@ -145,10 +140,10 @@ These require a product decision before any work begins.
 | # | Item | Status |
 |---|---|---|
 | 1 | Add `/writing` to navigation | Not started |
-| 2 | Fix `WritingPreview` on homepage | Not started |
+| 2 | Fix `WritingPreview` on homepage | Obsolete, component deleted |
 | 3 | Link draft tracker from FF landing | Not started |
 | 4 | Show all 5 case studies on `/portfolio` | Not started |
-| 5 | Add writing CTA to `ThinkingPreview` | Not started |
+| 5 | Add writing CTA to `ThinkingPreview` | Obsolete, component deleted |
 | 6 | Delete dead components | Done |
 | 7 | Delete blog slug stub | Done |
 | 8 | Delete `content/writing/` duplicate | Done |

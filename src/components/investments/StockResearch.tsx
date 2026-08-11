@@ -1,15 +1,8 @@
 "use client";
 
+import { ChartLine, ChartPie, Contrast, House, List, ReceiptText } from "lucide-react";
 import React, { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import {
-  IconChartArcs3,
-  IconChartLine,
-  IconCircleHalf,
-  IconHome,
-  IconList,
-  IconReportMoney,
-} from "@tabler/icons-react";
 import { ResearchAssetHeader } from "./ResearchAssetHeader";
 import { ResearchOverview } from "./ResearchOverview";
 import { FinancialStatementsPanel } from "./FinancialStatementsPanel";
@@ -53,11 +46,11 @@ const TABS: { key: ResearchTab; label: string }[] = [
 ];
 
 const NAV_ITEMS = [
-  { id: "overview", label: "Overview", icon: IconHome },
-  { id: "performance", label: "Performance", icon: IconChartLine, href: "?view=portfolio#performance" },
-  { id: "stats", label: "Portfolio stats", icon: IconCircleHalf, href: "?view=portfolio#portfolio-stats" },
-  { id: "holdings", label: "My holdings", icon: IconList, href: "?view=portfolio#holdings-list" },
-  { id: "allocation", label: "Allocation", icon: IconChartArcs3, href: "?view=portfolio#allocation" },
+  { id: "overview", label: "Overview", icon: House },
+  { id: "performance", label: "Performance", icon: ChartLine, href: "?view=portfolio#performance" },
+  { id: "stats", label: "Portfolio stats", icon: Contrast, href: "?view=portfolio#portfolio-stats" },
+  { id: "holdings", label: "My holdings", icon: List, href: "?view=portfolio#holdings-list" },
+  { id: "allocation", label: "Allocation", icon: ChartPie, href: "?view=portfolio#allocation" },
 ] as const;
 
 function getCuratedOnlyMessage(symbol: string) {
@@ -323,14 +316,14 @@ function ResearchSidebar({ activeNavId }: { activeNavId: string }) {
 
       <nav className="flex flex-col gap-1.5" aria-label="Section navigation">
         <a href="?view=portfolio#hero" className="invest-nav-link">
-          <IconHome size={18} aria-hidden="true" />
+          <House size={18} aria-hidden="true" />
           Portfolio home
         </a>
         <span
           className="invest-nav-link is-active"
           aria-current="true"
         >
-          <IconReportMoney size={18} aria-hidden="true" />
+          <ReceiptText size={18} aria-hidden="true" />
           Research
         </span>
         {NAV_ITEMS.filter((it) => it.id !== "overview").map((item) => {

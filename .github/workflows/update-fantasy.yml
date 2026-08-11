@@ -40,8 +40,14 @@ jobs:
         run: npm ci --prefer-offline --no-audit --fund=false
 
       - name: Build fantasy snapshots
-        run: npm run update:fantasy
+        run: |
+          if [[ -z "${FANTASYPROS_API_KEY//[[:space:]]/}" ]]; then
+            echo "::error::FANTASYPROS_API_KEY is required for the scheduled fantasy refresh."
+            exit 1
+          fi
+          npm run update:fantasy
         env:
+          FANTASYPROS_API_KEY: ${{ secrets.FANTASYPROS_API_KEY }}
           NODE_ENV: production
 
       - name: Verify refresh freshness
@@ -95,17 +101,19 @@ jobs:
           try {
             const bestBall = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'best-ball.json'), 'utf8'));
             const playerCount = Array.isArray(bestBall.players) ? bestBall.players.length : 0;
+            const rankingExperts = Number(bestBall.rankingSource?.expertCount || 0);
             const adpMatches = Number(bestBall.adpSource?.matchedCount || 0);
             const superflexMatches = Number(bestBall.superflexSource?.matchedCount || 0);
             const scheduleTeams = Object.keys(bestBall.week17Opponents || {}).length;
             const now = Date.now();
             const generatedAgeDays = (now - Date.parse(bestBall.generatedAt || '')) / 86400000;
-            const sourceAgeLimit = [6, 7, 8].includes(new Date().getUTCMonth()) ? 14 : 45;
+            const sourceAgeLimit = [6, 7, 8].includes(new Date().getUTCMonth()) ? 4 : 14;
             const rankingAgeDays = (now - Date.parse(bestBall.rankingSource?.asOf || '')) / 86400000;
             const adpAgeDays = (now - Date.parse(bestBall.adpSource?.asOf || '')) / 86400000;
             const superflexAgeDays = (now - Date.parse(bestBall.superflexSource?.asOf || '')) / 86400000;
-            console.log('best-ball: players=' + playerCount + ' superflex=' + superflexMatches + ' adp=' + adpMatches + ' week17=' + scheduleTeams + ' built=' + generatedAgeDays.toFixed(1) + 'd');
+            console.log('best-ball: players=' + playerCount + ' experts=' + rankingExperts + ' superflex=' + superflexMatches + ' adp=' + adpMatches + ' week17=' + scheduleTeams + ' built=' + generatedAgeDays.toFixed(1) + 'd');
             if (playerCount < 250) failures.push('best-ball has ' + playerCount + ' players (need >= 250)');
+            if (rankingExperts < 5) failures.push('best-ball has ' + rankingExperts + ' ranking experts (need >= 5)');
             if (superflexMatches < 150) failures.push('best-ball has ' + superflexMatches + ' Superflex matches (need >= 150)');
             if (adpMatches < 150) failures.push('best-ball has ' + adpMatches + ' ADP matches (need >= 150)');
             if (scheduleTeams < 30) failures.push('best-ball has ' + scheduleTeams + ' Week 17 team mappings (need >= 30)');
@@ -137,23 +145,27 @@ jobs:
           const fs = require('fs');
           const path = require('path');
 
-          const MIN_COVERAGE = 0.6;
+          const TOP_BOARD_SIZE = 150;
+          const MIN_COVERAGE = 0.9;
           const DATA_DIR = path.join('public', 'data', 'fantasy');
           const formats = ['ppr', 'half_ppr', 'standard'];
 
           for (const format of formats) {
             try {
               const snapshot = JSON.parse(fs.readFileSync(path.join(DATA_DIR, format + '.json'), 'utf8'));
-              const overallCount = Array.isArray(snapshot.overall) ? snapshot.overall.length : 0;
+              const topBoard = Array.isArray(snapshot.overall)
+                ? snapshot.overall.slice(0, TOP_BOARD_SIZE)
+                : [];
               if (!snapshot.adpSource) {
                 console.log('::warning::' + format + ' snapshot has no ADP data (adpSource is null). The boards still work; ADP surfaces are hidden.');
                 continue;
               }
-              const coverage = overallCount > 0 ? snapshot.adpSource.matchedCount / overallCount : 0;
+              const topBoardMatches = topBoard.filter((player) => Number.isFinite(player.adp)).length;
+              const coverage = topBoard.length > 0 ? topBoardMatches / topBoard.length : 0;
               const pct = Math.round(coverage * 100);
-              console.log(format + ': ADP matched ' + snapshot.adpSource.matchedCount + ' players (' + pct + '% of overall), asOf ' + snapshot.adpSource.asOf);
+              console.log(format + ': ADP covered ' + topBoardMatches + ' of the top ' + topBoard.length + ' players (' + pct + '%), asOf ' + snapshot.adpSource.asOf);
               if (coverage < MIN_COVERAGE) {
-                console.log('::warning::' + format + ' ADP coverage is ' + pct + '%, below the ' + (MIN_COVERAGE * 100) + '% comfort floor. Check the matcher or the upstream feed.');
+                console.log('::warning::' + format + ' top-board ADP coverage is ' + pct + '%, below the ' + (MIN_COVERAGE * 100) + '% floor. Check the matcher or the upstream feed.');
               }
             } catch (err) {
               console.log('::warning::' + format + ' ADP coverage check failed to parse the snapshot: ' + err.message);

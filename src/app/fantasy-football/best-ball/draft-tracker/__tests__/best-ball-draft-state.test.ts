@@ -12,8 +12,9 @@ import {
 
 const rules: BestBallRoomRules = {
   contestId: "best-ball-mania",
-  rulesSchemaVersion: 1,
-  format: "tournament",
+  rulesSchemaVersion: 2,
+  competitionFormat: "tournament",
+  lineupVariant: "standard",
   scoring: "HALF_PPR",
   teams: 12,
   rounds: 18,
@@ -73,9 +74,49 @@ describe("best ball draft state", () => {
 
     expect(parseBestBallDraftState(raw, 2026, rules)?.picks).toHaveLength(1);
     expect(
-      parseBestBallDraftState(raw, 2026, { ...rules, rulesSchemaVersion: 2 })
+      parseBestBallDraftState(raw, 2026, { ...rules, rulesSchemaVersion: 3 })
     ).toBeNull();
     expect(parseBestBallDraftState(raw, 2027, rules)).toBeNull();
+  });
+
+  it("round-trips a drafted player without expert spread", () => {
+    const { standardDeviation: _spread, ...playerWithoutSpread } = player;
+    const drafted = addBestBallDraftPick(
+      createBestBallDraftState(2026, rules, 3, new Date("2026-08-02T12:00:00Z")),
+      playerWithoutSpread,
+      new Date("2026-08-02T12:01:00Z")
+    );
+    const raw = JSON.stringify(drafted);
+    const saved = JSON.parse(raw) as {
+      picks: Array<{ player: Record<string, unknown> }>;
+    };
+
+    expect(saved.picks[0].player).not.toHaveProperty("standardDeviation");
+
+    const restored = parseBestBallDraftState(raw, 2026, rules);
+    expect(restored?.picks[0].player).toMatchObject({
+      id: "fp-1",
+      position: "WR",
+      averageRank: 1,
+    });
+    expect(restored?.picks[0].player).not.toHaveProperty("standardDeviation");
+    expect(undoBestBallDraftPick(restored!)).toMatchObject({ picks: [] });
+  });
+
+  it("rejects the legacy overloaded format fingerprint for backup", () => {
+    const initial = createBestBallDraftState(2026, rules, 3);
+    const legacy = {
+      ...initial,
+      rules: {
+        ...initial.rules,
+        rulesSchemaVersion: 1,
+        format: "tournament",
+      },
+    };
+    delete (legacy.rules as Partial<BestBallRoomRules>).competitionFormat;
+    delete (legacy.rules as Partial<BestBallRoomRules>).lineupVariant;
+
+    expect(parseBestBallDraftState(JSON.stringify(legacy), 2026, rules)).toBeNull();
   });
 
   it("rejects a draft whose saved picks do not match snake order", () => {

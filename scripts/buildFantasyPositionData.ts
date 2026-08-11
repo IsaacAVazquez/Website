@@ -2,10 +2,10 @@ import { rename, writeFile } from "fs/promises";
 import path from "path";
 import { withRetry } from "./fetchRetry";
 import {
-  FANTASY_PROS_PUBLIC_SOURCE,
   FANTASY_PUBLIC_POSITIONS,
   assertFantasyProsRefreshCoverage,
   fetchFantasyProsPublicConsensusBoard,
+  type FantasyProsPublicBoard,
   type FantasyPublicPosition,
 } from "@/lib/fantasyProsPublicSource";
 import { fantasyPositionData } from "@/data/fantasyPositionData.generated";
@@ -41,9 +41,10 @@ function pause(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-function renderGeneratedModule(
+export function renderGeneratedModule(
   data: Record<ScoringFormat, FantasyPositionDataset>,
-  generatedAt: string
+  generatedAt: string,
+  sourceLabel: string
 ): string {
   const serialized = JSON.stringify(data, null, 2);
 
@@ -55,7 +56,7 @@ function renderGeneratedModule(
 import { Player, ScoringFormat } from "@/types";
 
 export const fantasyPositionDataGeneratedAt = ${JSON.stringify(generatedAt)};
-export const fantasyPositionDataSource = ${JSON.stringify(FANTASY_PROS_PUBLIC_SOURCE)};
+export const fantasyPositionDataSource = ${JSON.stringify(sourceLabel)};
 
 export const fantasyPositionData: Record<
   ScoringFormat,
@@ -69,10 +70,24 @@ export const fantasyPositionData: Record<
 `;
 }
 
+function recordSourceLabel(
+  selectedSourceLabel: string | null,
+  board: FantasyProsPublicBoard
+): string {
+  if (selectedSourceLabel && selectedSourceLabel !== board.sourceLabel) {
+    throw new Error(
+      `FantasyPros refresh mixed source paths: ${selectedSourceLabel} and ${board.sourceLabel}.`
+    );
+  }
+
+  return selectedSourceLabel ?? board.sourceLabel;
+}
+
 async function main() {
   const generatedAt = new Date().toISOString();
   const expectedSeason = getSnapshotSeason();
   const sharedData = {} as Record<FantasyPositionDataPosition, Player[]>;
+  let selectedSourceLabel: string | null = null;
 
   for (const position of FANTASY_PUBLIC_POSITIONS) {
     if (position === "OVERALL" || !SHARED_POSITIONS.has(position)) {
@@ -82,6 +97,7 @@ async function main() {
     const board = await withRetry(`STANDARD ${position}`, () =>
       fetchFantasyProsPublicConsensusBoard("STANDARD", position, expectedSeason)
     );
+    selectedSourceLabel = recordSourceLabel(selectedSourceLabel, board);
     assertFantasyProsRefreshCoverage(
       board,
       fantasyPositionData.STANDARD.positions[position],
@@ -98,6 +114,7 @@ async function main() {
     const overallBoard = await withRetry(`${scoringFormat} OVERALL`, () =>
       fetchFantasyProsPublicConsensusBoard(scoringFormat, "OVERALL", expectedSeason)
     );
+    selectedSourceLabel = recordSourceLabel(selectedSourceLabel, overallBoard);
     assertFantasyProsRefreshCoverage(
       overallBoard,
       fantasyPositionData[scoringFormat].overall,
@@ -116,6 +133,7 @@ async function main() {
       const board = await withRetry(`${scoringFormat} ${position}`, () =>
         fetchFantasyProsPublicConsensusBoard(scoringFormat, position, expectedSeason)
       );
+      selectedSourceLabel = recordSourceLabel(selectedSourceLabel, board);
       assertFantasyProsRefreshCoverage(
         board,
         fantasyPositionData[scoringFormat].positions[position],
@@ -133,7 +151,14 @@ async function main() {
     };
   }
 
-  await atomicWriteFile(OUTPUT_PATH, renderGeneratedModule(dataset, generatedAt));
+  if (!selectedSourceLabel) {
+    throw new Error("FantasyPros refresh completed without a source label.");
+  }
+
+  await atomicWriteFile(
+    OUTPUT_PATH,
+    renderGeneratedModule(dataset, generatedAt, selectedSourceLabel)
+  );
 
   for (const scoringFormat of scoringFormats) {
     const counts = Object.fromEntries(
@@ -152,7 +177,9 @@ async function main() {
   console.log(`Wrote fantasy position data: ${OUTPUT_PATH}`);
 }
 
-main().catch((error) => {
-  console.error(error);
-  process.exit(1);
-});
+if (process.env.NODE_ENV !== "test") {
+  main().catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+}

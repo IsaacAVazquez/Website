@@ -8,6 +8,7 @@ import type {
   GolfSummary,
   GolfTournament,
 } from "@/types/golf";
+import { slugify } from "@/lib/utils";
 
 /**
  * Builds the golf snapshot from ESPN's public golf leaderboard endpoint. ESPN's
@@ -152,17 +153,6 @@ interface EspnLeaderboardResponse {
 }
 
 // --- Parsing helpers ---------------------------------------------------------
-
-function slugify(value: string): string {
-  return value
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-    .slice(0, 64)
-    .replace(/-+$/g, "");
-}
 
 /** Parses a golf "to par" value (number, "E", "+3", "-8", or score object). */
 function parseToPar(

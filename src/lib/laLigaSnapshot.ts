@@ -43,24 +43,6 @@ function clampLaLigaTeamSnapshot(snapshot: LaLigaTeamSnapshot): LaLigaTeamSnapsh
   };
 }
 
-export function createEmptyLaLigaSummarySnapshot(): LaLigaSummarySnapshot {
-  return {
-    season: laLigaSnapshot.season,
-    matchday: 0,
-    generatedAt: laLigaSnapshot.generatedAt,
-    updatedAt: laLigaSnapshot.updatedAt,
-    sourceLabel: laLigaSnapshot.sourceLabel,
-    sourceUrls: laLigaSnapshot.sourceUrls,
-    clubs: [],
-    scorers: [],
-    assists: [],
-    goalsPerMatchday: [],
-    recentFixtures: [],
-    upcomingFixtures: [],
-    teams: [],
-  };
-}
-
 export function createEmptyLaLigaTeamSnapshot(): LaLigaTeamSnapshot {
   return {
     team: null,

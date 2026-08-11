@@ -44,18 +44,6 @@ function clampTeamSnapshot(snapshot: WorldCupTeamSnapshot): WorldCupTeamSnapshot
   };
 }
 
-export function createEmptyWorldCupSummarySnapshot(): WorldCupSummarySnapshot {
-  return {
-    tournament: worldCupSnapshot.tournament,
-    groups: [],
-    knockout: [],
-    recentFixtures: [],
-    upcomingFixtures: [],
-    scorers: [],
-    teamOptions: [],
-  };
-}
-
 export function createEmptyWorldCupTeamSnapshot(): WorldCupTeamSnapshot {
   return {
     team: null,

@@ -31,7 +31,7 @@ function totalBalance(b: AccountBalances): number {
   return b.taxable + b.traditional + b.roth + b.hsa;
 }
 
-export function aggregateBalances(input: RetirementPlanInput): AccountBalances {
+function aggregateBalances(input: RetirementPlanInput): AccountBalances {
   const balances = emptyBalances();
   for (const account of input.accounts) {
     balances[account.type] += Math.max(0, account.balance || 0);
@@ -39,7 +39,7 @@ export function aggregateBalances(input: RetirementPlanInput): AccountBalances {
   return balances;
 }
 
-export interface PathResult {
+interface PathResult {
   years: YearProjection[];
   balanceAtRetirementNominal: number;
   endingBalanceNominal: number;

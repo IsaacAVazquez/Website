@@ -28,11 +28,11 @@ import type {
 /** Floor for how far a pick must beat or trail its baseline to be flagged. */
 export const REACH_STEAL_MIN_THRESHOLD = 8;
 /** Threshold widens by this many spots per round — late-round gaps are noise. */
-export const REACH_STEAL_ROUND_FACTOR = 3;
+const REACH_STEAL_ROUND_FACTOR = 3;
 /** Picks of one position count as a run when each lands within this many picks of the last. */
-export const POSITION_RUN_WINDOW = 5;
+const POSITION_RUN_WINDOW = 5;
 /** Minimum same-position picks before a cluster is called a run. */
-export const POSITION_RUN_MIN_COUNT = 3;
+const POSITION_RUN_MIN_COUNT = 3;
 /** How many top steals make the best-value list. */
 const BEST_VALUE_LIMIT = 5;
 
@@ -40,7 +40,7 @@ const BEST_VALUE_LIMIT = 5;
  * Starting-lineup targets shared with the draft board's roster-pressure
  * ordering, so "need" and "weakness" never disagree.
  */
-export const ROSTER_STARTER_TARGETS = {
+const _ROSTER_STARTER_TARGETS = {
   QB: DEFAULT_REDRAFT_LINEUP.QB,
   RB: DEFAULT_REDRAFT_LINEUP.RB,
   WR: DEFAULT_REDRAFT_LINEUP.WR,
@@ -49,13 +49,7 @@ export const ROSTER_STARTER_TARGETS = {
   DST: DEFAULT_REDRAFT_LINEUP.DST,
 } as const;
 
-export type RosterTargetPosition = keyof typeof ROSTER_STARTER_TARGETS;
-
-/**
- * Legacy default depth counts kept for callers that need the traditional 15-round
- * preset. Live guidance derives its targets from the configured lineup and rounds.
- */
-export const ROSTER_DEPTH_TARGETS = { RB: 4, WR: 5, QB: 2, TE: 2 } as const;
+type RosterTargetPosition = keyof typeof _ROSTER_STARTER_TARGETS;
 
 export type RosterNeedLevel = "starter" | "depth";
 
@@ -320,7 +314,7 @@ export function isPlayerValueAtPick(
   );
 }
 
-export interface PositionRun {
+interface PositionRun {
   position: Position;
   startRound: number;
   endRound: number;
@@ -477,7 +471,7 @@ export function computeDraftAnalytics(
 /** Same-position picks inside the window needed to flag an *emerging* run. */
 export const EMERGING_RUN_MIN_COUNT = 2;
 
-export interface EmergingRun {
+interface EmergingRun {
   position: Position;
   count: number;
   endPick: number;

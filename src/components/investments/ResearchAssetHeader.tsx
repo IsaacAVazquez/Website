@@ -1,12 +1,7 @@
 "use client";
 
+import { ExternalLink, FileText, Plus, RefreshCw } from "lucide-react";
 import React from "react";
-import {
-  IconExternalLink,
-  IconFileText,
-  IconPlus,
-  IconRefresh,
-} from "@tabler/icons-react";
 import { useLiveQuote } from "@/hooks/useLiveQuote";
 import { useStockData } from "@/hooks/useStockData";
 import { DataFreshnessIndicator } from "./DataFreshnessIndicator";
@@ -409,7 +404,7 @@ export function ResearchAssetHeader({
             className="invest-ghost is-primary"
             onClick={onAddToPortfolio}
           >
-            <IconPlus size={14} aria-hidden="true" />
+            <Plus size={14} aria-hidden="true" />
             Add to portfolio
           </button>
         ) : null}
@@ -420,7 +415,7 @@ export function ResearchAssetHeader({
             rel="noopener noreferrer"
             className="invest-ghost"
           >
-            <IconExternalLink size={14} aria-hidden="true" />
+            <ExternalLink size={14} aria-hidden="true" />
             Investor relations
           </a>
         ) : null}
@@ -430,11 +425,11 @@ export function ResearchAssetHeader({
           rel="noopener noreferrer"
           className="invest-ghost"
         >
-          <IconFileText size={14} aria-hidden="true" />
+          <FileText size={14} aria-hidden="true" />
           SEC filings
         </a>
         <span className="invest-ghost research-asset-actions-clock" aria-hidden="true">
-          <IconRefresh size={14} aria-hidden="true" />
+          <RefreshCw size={14} aria-hidden="true" />
           {formatRefreshLabel(lastUpdated)}
         </span>
       </div>

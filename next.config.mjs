@@ -311,7 +311,7 @@ const nextConfig = {
   },
   // Enable experimental features for better performance
   experimental: {
-    optimizePackageImports: ['@tabler/icons-react', 'lucide-react', 'framer-motion'],
+    optimizePackageImports: ['lucide-react', 'framer-motion'],
     scrollRestoration: true,
   },
   // Enhanced webpack configuration for performance

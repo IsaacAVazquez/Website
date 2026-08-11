@@ -15,7 +15,7 @@ This site uses two complementary layers:
 | Meta tags + OG + Twitter | `src/lib/seo.ts` → Next.js `Metadata` API | Title, description, Open Graph, Twitter cards, robots, canonicals |
 | Structured data (JSON-LD) | `src/lib/ai-seo.ts` + two components | Schema.org markup for search engines and AI systems |
 
-**Why not `next-seo`?** The `next-seo` library (v7.2.0, installed) explicitly recommends using Next.js `generateMetadata` for App Router. Its remaining value is JSON-LD components, which this project covers with custom AI-optimized generators. The dependency can be safely removed.
+**Why not `next-seo`?** The `next-seo` library itself recommends Next.js `generateMetadata` for the App Router. Its remaining value is JSON-LD components, which this project covers with custom AI-optimized generators, so the dependency was removed in August 2026.
 
 ---
 
@@ -317,15 +317,15 @@ The root layout provides the baseline for every page:
 
 ---
 
-## Sitemap — `next-sitemap.config.js` + `src/lib/sitemap.js`
+## Sitemap — `scripts/generatePublicSitemap.mjs` + `src/lib/sitemap.js`
 
-Runs automatically via the `postbuild` script (`next-sitemap && node scripts/patch-nft-sharp.mjs`). Generates `public/sitemap.xml`.
+Runs automatically via the `postbuild` script (`npm run generate:sitemap && node scripts/patch-nft-sharp.mjs`). Generates `public/sitemap.xml`.
 
-The sitemap is **allowlist-driven**. `next-sitemap.config.js` is a thin wrapper that delegates to `src/lib/sitemap.js`, which builds the canonical entry list (`PUBLIC_SITEMAP_ENTRIES`) and the matching path set (`PUBLIC_SITEMAP_PATHS`). The config's `transform` returns `null` for any URL not in `PUBLIC_SITEMAP_PATHS`, and `additionalPaths` re-emits the curated list, so only explicitly-listed routes ship.
+The sitemap is **allowlist-driven**. `scripts/generatePublicSitemap.mjs` imports `PUBLIC_SITEMAP_ENTRIES` from `src/lib/sitemap.js`, which builds the canonical entry list and the matching path set (`PUBLIC_SITEMAP_PATHS`), and writes only those entries. Nothing crawls the route tree, so a route ships only when it is on the list.
 
 ### Output fields
 
-Each entry emits `loc`, `lastmod`, `changefreq`, and `priority`. The config sets `autoLastmod: false`; `src/lib/sitemap.js` supplies explicit freshness and classification metadata per route. The Jest sitemap consistency test compares all four fields against `public/sitemap.xml`.
+Each entry emits `loc`, `lastmod`, `changefreq`, and `priority`. `src/lib/sitemap.js` supplies explicit freshness and classification metadata per route. The Jest sitemap consistency test compares all four fields against `public/sitemap.xml`.
 
 ### How `src/lib/sitemap.js` builds the list
 
@@ -337,7 +337,7 @@ Each entry emits `loc`, `lastmod`, `changefreq`, and `priority`. The config sets
 
 ### Excluded paths
 
-`exclude` in `next-sitemap.config.js`: `/api/*`, `/_next/*`, `/404`, `/admin`, `/admin/*`, `/search`. Combined with the allowlist, anything not in `PUBLIC_SITEMAP_PATHS` is dropped regardless.
+`/api/*`, `/_next/*`, `/404`, `/admin`, `/admin/*`, and `/search` never appear, since the generator emits only `PUBLIC_SITEMAP_ENTRIES` and anything not in `PUBLIC_SITEMAP_PATHS` is dropped regardless.
 
 ---
 
@@ -420,7 +420,7 @@ Current status of metadata and structured data across all pages. Use this to ide
 - Hardcode `https://isaacvazquez.com` in page files — use `siteConfig.url` or pass relative paths to `canonicalUrl`
 - Set `og:type: "website"` on blog posts or case studies
 - Skip `canonicalUrl` on dynamic routes (duplicate content risk)
-- Add `next-seo` imports for meta tags — use `constructMetadata` instead
+- Reintroduce `next-seo` for meta tags, since `constructMetadata` covers it
 - Write meta descriptions in third person or corporate voice — see Writing Voice section above
 - Use "Comprehensive Guide" or "Complete Guide" in titles or descriptions
 
@@ -551,7 +551,7 @@ const minutes = calculateReadingTime(post.content); // e.g. 4
 | `src/app/metadata.ts` | Homepage metadata config |
 | `src/app/writing/[slug]/page.tsx` | Article pattern reference |
 | `src/app/portfolio/[slug]/page.tsx` | Case study pattern reference |
-| `next-sitemap.config.js` | Sitemap config wrapper — delegates to `src/lib/sitemap.js` |
+| `scripts/generatePublicSitemap.mjs` | Writes `public/sitemap.xml` from `src/lib/sitemap.js` |
 | `src/lib/sitemap.js` | Builds the allowlisted sitemap entries (`loc` + `lastmod`) |
 | `public/robots.txt` | Crawl directives (manually maintained) |
 | `WRITING_VOICE.md` | Voice and tone rules for all user-facing text including meta content |

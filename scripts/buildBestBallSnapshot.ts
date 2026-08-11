@@ -22,6 +22,10 @@ import {
   matchPlayerAdp,
   normalizeAdpTeam,
 } from "@/lib/fantasyAdpMatcher";
+import {
+  FANTASY_PROS_OFFICIAL_API_SOURCE,
+  FANTASY_PROS_PUBLIC_SOURCE,
+} from "@/lib/fantasyProsPublicSource";
 import type { FantasySnapshot } from "@/lib/fantasy";
 import type { Player } from "@/types";
 
@@ -69,6 +73,17 @@ function normalizeScheduleTeams(opponents: Record<string, string>): Record<strin
       normalizeAdpTeam(opponent),
     ])
   );
+}
+
+function describeFantasyProsProvider(sourceLabel: string, boardLabel: string): string {
+  if (sourceLabel === FANTASY_PROS_OFFICIAL_API_SOURCE) {
+    return `FantasyPros official API ${boardLabel}`;
+  }
+  if (sourceLabel === FANTASY_PROS_PUBLIC_SOURCE) {
+    return `FantasyPros public ${boardLabel}`;
+  }
+
+  throw new Error(`Best ball rankings returned an unknown source label: ${sourceLabel}`);
 }
 
 async function atomicWriteSnapshot(snapshot: BestBallSnapshot) {
@@ -204,14 +219,21 @@ async function main() {
     generatedAt: new Date().toISOString(),
     players,
     rankingSource: {
-      provider: "FantasyPros PPR best ball consensus",
+      provider: describeFantasyProsProvider(
+        rankings.sourceLabel,
+        "PPR best ball consensus"
+      ),
       url: rankings.sourceUrl,
       asOf: rankings.updatedAt,
       matchedCount: players.length,
+      expertCount: rankings.expertCount,
     },
     superflexSource: superflexResult
       ? {
-          provider: "FantasyPros half PPR Superflex consensus",
+          provider: describeFantasyProsProvider(
+            superflexResult.sourceLabel,
+            "half PPR Superflex consensus"
+          ),
           url: superflexResult.sourceUrl,
           asOf: superflexResult.updatedAt,
           matchedCount: superflexMatchedCount,

@@ -19,26 +19,27 @@ jest.mock("@/hooks/useBestBallSnapshot", () => ({
 const snapshot = {
   schemaVersion: 2,
   season: 2026,
-  generatedAt: "2026-08-02T19:07:24.646Z",
+  generatedAt: "2026-08-09T08:00:00.000Z",
   rankingSource: {
     provider: "FantasyPros",
     url: "https://www.fantasypros.com/nfl/rankings/best-ball-overall.php",
-    asOf: "2026-07-31T22:20:10.000Z",
+    asOf: "2026-08-08T22:20:10.000Z",
+    expertCount: 6,
   },
   adpSource: {
     provider: "PPR Rankings",
     url: "https://pprrankings.com/rankings",
-    asOf: "2026-08-02T12:00:00.000Z",
+    asOf: "2026-08-08T12:00:00.000Z",
   },
   superflexSource: {
     provider: "FantasyPros",
     url: "https://www.fantasypros.com/nfl/rankings/half-point-ppr-superflex-cheatsheets.php",
-    asOf: "2026-08-02T12:00:00.000Z",
+    asOf: "2026-08-08T12:00:00.000Z",
   },
   scheduleSource: {
     provider: "ESPN",
     url: "https://www.espn.com/nfl/schedule/_/week/17/year/2026/seasontype/2",
-    asOf: "2026-08-02T12:00:00.000Z",
+    asOf: "2026-08-08T12:00:00.000Z",
   },
   week17Opponents: { BUF: "MIA", ATL: "NO" },
   players: [
@@ -73,6 +74,7 @@ const snapshot = {
 
 describe("BestBallClient", () => {
   beforeEach(() => {
+    window.localStorage.clear();
     currentSearchParams = new URLSearchParams("contest=superflex");
     mockReplace.mockReset();
     mockRetry.mockReset();
@@ -100,6 +102,9 @@ describe("BestBallClient", () => {
     expect(within(rows![0] as HTMLElement).getByText("Josh Allen")).toBeVisible();
     expect(within(rows![0] as HTMLElement).getAllByText("NA").length).toBeGreaterThan(0);
     expect(board).toHaveTextContent(/no Superflex room ADP/i);
+    expect(
+      screen.getByRole("link", { name: /Rankings from FantasyPros · 6 experts/ })
+    ).toBeVisible();
 
     expect(
       screen.getByRole("link", { name: /Open Superflex draft assistant/i }),
@@ -123,6 +128,56 @@ describe("BestBallClient", () => {
       expect.stringContaining("position=wr"),
       { scroll: false },
     );
+  });
+
+  it("opens the shared queue, note, and compare tools from a best ball row", () => {
+    render(<BestBallClient initialState={{ contest: "superflex", position: "all", query: "" }} />);
+
+    fireEvent.click(screen.getByRole("button", { name: "Open Josh Allen details" }));
+
+    const dialog = screen.getByRole("dialog", { name: "Josh Allen detail" });
+    expect(within(dialog).getByRole("button", { name: "Add to queue" })).toBeInTheDocument();
+    expect(within(dialog).getByRole("button", { name: "Compare" })).toBeInTheDocument();
+    expect(within(dialog).getByRole("textbox", { name: "Private note" })).toBeInTheDocument();
+  });
+
+  it("labels the Underdog final-pick placeholder as undrafted and hides fake value", () => {
+    currentSearchParams = new URLSearchParams("contest=bbm-vii");
+    mockUseBestBallSnapshot.mockReturnValue({
+      snapshot: {
+        ...snapshot,
+        players: [
+          ...snapshot.players,
+          {
+            id: "wr-floor",
+            name: "Unpriced Receiver",
+            team: "SEA",
+            position: "WR",
+            averageRank: 180,
+            rankEcr: 180,
+            positionRank: 70,
+            standardDeviation: 4,
+            byeWeek: 8,
+            adp: 215.2,
+          },
+        ],
+      },
+      isLoading: false,
+      error: null,
+      retry: mockRetry,
+    });
+
+    render(<BestBallClient initialState={{ contest: "bbm-vii", position: "all", query: "" }} />);
+
+    const row = screen
+      .getByRole("button", { name: "Open Unpriced Receiver details" })
+      .closest("li");
+    expect(row).toHaveTextContent("Undrafted");
+    expect(row).not.toHaveTextContent("215.2");
+    expect(row).not.toHaveTextContent("+35.2");
+    expect(
+      screen.getByText(/Players labeled Undrafted are at the contest-floor placeholder/),
+    ).toHaveTextContent(/board order falls back to PPR best ball ECR and value stays blank/);
   });
 
   it("keeps the strategy visible when the rankings request fails", () => {

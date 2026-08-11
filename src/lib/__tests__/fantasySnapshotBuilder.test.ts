@@ -8,6 +8,7 @@ import {
   getSnapshotSeason,
 } from "@/lib/fantasySnapshotBuilder";
 import type { Player } from "@/types";
+import { getFantasyOverallData } from "@/lib/fantasyPositionData";
 
 const NFL_WEEKS = 18;
 
@@ -199,6 +200,41 @@ describe("fantasySnapshotBuilder", () => {
     }
   });
 
+  it("rejects ADP that misses the players people are most likely to draft", () => {
+    const deepOverallPlayers = getFantasyOverallData("PPR").slice(-60);
+
+    jest.resetModules();
+    jest.doMock("@/lib/fantasyAdpData", () => ({
+      getFantasyAdpDataset: () => ({
+        entries: deepOverallPlayers.map((player, index) => ({
+          name: player.name,
+          team: player.team,
+          position: player.position,
+          adp: 250 + index,
+        })),
+        asOf: "2026-08-07T00:00:00.000Z",
+        sampleSize: 1000,
+        sourceUrl: "https://example.test/adp/ppr",
+      }),
+    }));
+
+    try {
+      jest.isolateModules(() => {
+        const {
+          buildFantasySnapshot: buildDeepOnlyAdpSnapshot,
+          // eslint-disable-next-line @typescript-eslint/no-require-imports -- jest.isolateModules requires a synchronous callback; dynamic import() would not work here
+        } = require("../fantasySnapshotBuilder") as typeof import("../fantasySnapshotBuilder");
+
+        expect(() => buildDeepOnlyAdpSnapshot("ppr")).toThrow(
+          /top 150 overall players, below the 90% minimum/
+        );
+      });
+    } finally {
+      jest.dontMock("@/lib/fantasyAdpData");
+      jest.resetModules();
+    }
+  });
+
   it("attaches matched adp readings and discloses the adp source when a dataset is present", () => {
     jest.resetModules();
     jest.doMock("@/lib/fantasyAdpData", () => ({
@@ -338,6 +374,7 @@ describe("fantasySnapshotBuilder", () => {
         } = require("../fantasySnapshotBuilder") as typeof import("../fantasySnapshotBuilder");
         const snapshot = buildSyntheticFantasySnapshot("ppr");
 
+        expect(snapshot.source).toBe("mock");
         expect(snapshot.sliceMetadata.overall.sourceKind).toBe("overall_consensus");
         expect(snapshot.overall[0].id).toBe("RB-1");
         expect(snapshot.positions.FLEX[0].averageRank).toBe(1);

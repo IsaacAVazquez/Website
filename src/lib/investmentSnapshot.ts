@@ -144,7 +144,7 @@ function normalizeSection(
   return hasErrorShape(transformed) ? undefined : transformed;
 }
 
-export interface RawInvestmentSnapshotInputs {
+interface RawInvestmentSnapshotInputs {
   info?: unknown;
   fundamentals?: unknown;
   profitability?: unknown;

@@ -8,6 +8,7 @@ import type {
   TransitStationBoard,
   TransitSummary,
 } from "@/types/bayAreaTransit";
+import { slugify } from "@/lib/utils";
 
 /**
  * Builds the Bay Area Transit snapshot from BART's public legacy API. The key
@@ -98,17 +99,6 @@ interface BartEtdStation {
 }
 
 // --- Helpers -----------------------------------------------------------------
-
-function slugify(value: string): string {
-  return value
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[̀-ͯ]/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-    .slice(0, 64)
-    .replace(/-+$/g, "");
-}
 
 /** "YELLOW" / "yellow" → "Yellow" (the casing the seed and UI color map use). */
 function titleCaseColor(value: string): string {

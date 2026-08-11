@@ -1,6 +1,8 @@
-import React from "react";
+import userEvent from "@testing-library/user-event";
+import React, { useState } from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 
+import { usePlayerNotes } from "@/hooks/usePlayerNotes";
 import { resetBrowserStorageMemory } from "@/lib/browserStorage";
 import type { Player } from "@/types";
 
@@ -64,6 +66,23 @@ function expectImmediateBackwardWrap(dialog: HTMLElement) {
   expect(last).toHaveFocus();
 }
 
+function PlayerDetailHarness() {
+  const [player, setPlayer] = useState<Player | null>(null);
+  const notes = usePlayerNotes();
+
+  return (
+    <>
+      <button type="button" onClick={() => setPlayer(players[0])}>
+        {notes.hasNote(players[0].id) ? "Edit player detail" : "Open player detail"}
+      </button>
+      <PlayerDetailDrawer
+        player={player}
+        onClose={() => setPlayer(null)}
+      />
+    </>
+  );
+}
+
 describe("fantasy dialog focus traps", () => {
   beforeEach(() => {
     window.localStorage.clear();
@@ -96,5 +115,24 @@ describe("fantasy dialog focus traps", () => {
     );
 
     expectImmediateBackwardWrap(screen.getByRole("dialog", { name: "First Back detail" }));
+  });
+
+  it("keeps note focus through store-driven parent renders and restores the opener on close", async () => {
+    const user = userEvent.setup();
+    render(<PlayerDetailHarness />);
+
+    const opener = screen.getByRole("button", { name: "Open player detail" });
+    await user.click(opener);
+
+    const note = screen.getByRole("textbox", { name: "Private note" });
+    await user.type(note, "Target round 6");
+
+    expect(note).toHaveValue("Target round 6");
+    expect(note).toHaveFocus();
+
+    await user.keyboard("{Escape}");
+
+    expect(screen.queryByRole("dialog", { name: "First Back detail" })).not.toBeInTheDocument();
+    expect(opener).toHaveFocus();
   });
 });

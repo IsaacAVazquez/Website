@@ -782,7 +782,7 @@ const SUCCESS_TTL_MS = 30 * 60 * 1000; // 30 minutes
 const ERROR_TTL_MS = 2 * 60 * 1000; // 2 minutes
 const KNOWN_COMPANY_IDS = new Set(MBA_COMPANIES.map((company) => company.id));
 
-export interface MBAJobsDataResult {
+interface MBAJobsDataResult {
   body: MBAJobsApiResponse;
   isError: boolean;
   isDegraded: boolean;

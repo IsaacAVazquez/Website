@@ -118,8 +118,8 @@ Recheck:
 
 ### Sitemap or metadata output looks wrong
 
-- `npm run build` triggers `next-sitemap` in `postbuild`
-- check `next-sitemap.config.js`
+- `npm run build` triggers `npm run generate:sitemap` in `postbuild`
+- check `scripts/generatePublicSitemap.mjs` and the allowlist in `src/lib/sitemap.js`
 - check `src/app/metadata.ts` and route-specific metadata exports
 
 ---

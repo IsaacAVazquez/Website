@@ -31,9 +31,9 @@ export const WINE_TYPE_LABELS: Record<WineType, string> = {
   orange: "Orange",
 };
 
-export const MIN_RATING = 0.5;
-export const MAX_RATING = 5;
-export const RATING_STEP = 0.5;
+const MIN_RATING = 0.5;
+const MAX_RATING = 5;
+const RATING_STEP = 0.5;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return !!value && typeof value === "object" && !Array.isArray(value);

@@ -33,21 +33,6 @@ function clampNflTeamSnapshot(snapshot: NFLTeamSnapshot): NFLTeamSnapshot {
   };
 }
 
-export function createEmptyNflSummarySnapshot(): NFLSummarySnapshot {
-  return {
-    season: nflSnapshot.season,
-    week: 0,
-    updatedAt: nflSnapshot.updatedAt,
-    sourceLabel: nflSnapshot.sourceLabel,
-    sourceUrls: nflSnapshot.sourceUrls,
-    teams: [],
-    leaders: { passing: [], rushing: [], receiving: [], sacks: [] },
-    recentFixtures: [],
-    upcomingFixtures: [],
-    teamOptions: [],
-  };
-}
-
 export function createEmptyNflTeamSnapshot(): NFLTeamSnapshot {
   return {
     team: null,

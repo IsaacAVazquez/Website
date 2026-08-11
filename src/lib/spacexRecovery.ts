@@ -1,18 +1,18 @@
 import type { MissionCore, MissionLaunchDetail } from "@/types/spacex";
 
-export interface RecoverySplitBucket {
+interface RecoverySplitBucket {
   label: "Droneship" | "Return to pad" | "Expended";
   count: number;
   tone: "signal" | "ink" | "stone";
 }
 
-export interface MissionFleetLeader {
+interface MissionFleetLeader {
   serial: string;
   flights: number;
   lastMissionName: string;
 }
 
-export interface MissionRecoverySummary {
+interface MissionRecoverySummary {
   split: RecoverySplitBucket[];
   total: number;
   fleetLeaders: MissionFleetLeader[];

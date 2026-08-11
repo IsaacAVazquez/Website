@@ -12,23 +12,6 @@ function createGolfSnapshotError(message: string, status: number): GolfSnapshotE
   return Object.assign(new Error(message), { status });
 }
 
-export function createEmptyGolfSummary(): GolfSummary {
-  return {
-    tournament: null,
-    heroStats: {
-      leaderName: null,
-      leaderScore: null,
-      playersUnderPar: 0,
-      cutLine: null,
-      cutState: "unknown",
-      cutCount: null,
-      fieldSize: 0,
-    },
-    leaderboard: [],
-    players: [],
-  };
-}
-
 export function createEmptyGolfPlayerSnapshot(): GolfPlayerSnapshot {
   return {
     player: null,

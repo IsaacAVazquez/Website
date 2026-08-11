@@ -22,7 +22,7 @@ interface UseLiveQuoteState {
   lastUpdated: string | null;
 }
 
-export interface UseLiveQuoteReturn extends UseLiveQuoteState {
+interface UseLiveQuoteReturn extends UseLiveQuoteState {
   refetch: () => void;
 }
 

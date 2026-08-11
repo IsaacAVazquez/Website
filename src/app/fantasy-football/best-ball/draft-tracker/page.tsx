@@ -8,7 +8,7 @@ export const metadata: Metadata = constructMetadata({
   description:
     "A manual best ball draft tracker with contest specific roster targets, a room-relative Draft Outlook, Best Ball Mania field economics, and expected return math.",
   canonicalUrl: "/fantasy-football/best-ball/draft-tracker",
-  dateModified: "2026-08-02",
+  dateModified: "2026-08-09",
 });
 
 const breadcrumbs = [
@@ -40,7 +40,7 @@ export default async function BestBallDraftTrackerPage({
         data={{
           name: "Best Ball Draft Assistant",
           description:
-            "Manual best ball room tracker with contest specific recommendations, roster construction signals, draft value, and expected return math",
+            "Manual best ball room tracker with exact player cards for supported rooms, reference boards for other presets, roster construction signals, draft value, and expected return math",
           url: "https://isaacvazquez.com/fantasy-football/best-ball/draft-tracker",
           applicationCategory: "Sports",
           operatingSystem: "Web Browser",

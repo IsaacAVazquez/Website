@@ -8,12 +8,12 @@
 
 export type PersistenceStatus = "persistent" | "memory-only";
 
-export interface BrowserStorageRead {
+interface BrowserStorageRead {
   value: string | null;
   persistenceStatus: PersistenceStatus;
 }
 
-export interface ValidatedBrowserStorageRead<T> {
+interface ValidatedBrowserStorageRead<T> {
   value: T;
   persistenceStatus: PersistenceStatus;
   source: "empty" | "valid" | "invalid";

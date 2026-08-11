@@ -28,7 +28,7 @@ export type AssetClassId =
   | "cash"
   | "realAssets";
 
-export interface CapitalMarketAssumption {
+interface CapitalMarketAssumption {
   id: AssetClassId;
   label: string;
   /** Expected nominal annual return (decimal). */

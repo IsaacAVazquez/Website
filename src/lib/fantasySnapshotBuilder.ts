@@ -1,5 +1,4 @@
 import {
-  DEFAULT_FANTASY_SNAPSHOT_SOURCE,
   FANTASY_SNAPSHOT_SCHEMA_VERSION,
   FANTASY_POSITION_LABELS,
   FANTASY_SCORING_LABELS,
@@ -30,6 +29,8 @@ const MS_PER_DAY = 86_400_000;
 const NFL_REGULAR_SEASON_WEEKS = 18;
 const ADP_MATCH_GATE_MIN_ROWS = 50;
 const ADP_MATCH_GATE_MIN_RATE = 0.6;
+const ADP_TOP_BOARD_SIZE = 150;
+const ADP_TOP_BOARD_MIN_RATE = 0.9;
 
 /**
  * The NFL season a snapshot belongs to. The season is named for the year it
@@ -43,7 +44,7 @@ export function getSnapshotSeason(now: Date = new Date()): number {
   return now.getUTCMonth() >= 2 ? year : year - 1;
 }
 
-export const SNAPSHOT_SEASON = getSnapshotSeason();
+const SNAPSHOT_SEASON = getSnapshotSeason();
 
 /**
  * Derives the NFL regular-season week for a season from the calendar so a
@@ -72,9 +73,8 @@ export function getNflRegularSeasonWeek(season: number, now: Date = new Date()):
   return Math.min(NFL_REGULAR_SEASON_WEEKS, weeksElapsed + 1);
 }
 
-export const SNAPSHOT_WEEK = getNflRegularSeasonWeek(SNAPSHOT_SEASON);
-export const SNAPSHOT_SOURCE = DEFAULT_FANTASY_SNAPSHOT_SOURCE;
-export const FANTASY_SNAPSHOT_POSITION_ORDER = ["QB", "RB", "WR", "TE", "K", "DST"] as const;
+const SNAPSHOT_WEEK = getNflRegularSeasonWeek(SNAPSHOT_SEASON);
+const FANTASY_SNAPSHOT_POSITION_ORDER = ["QB", "RB", "WR", "TE", "K", "DST"] as const;
 
 const FLEX_ELIGIBLE_POSITIONS = ["RB", "WR", "TE"] as const;
 
@@ -165,7 +165,7 @@ function normalizeSourcedPlayers(
         averageRank: numericRank(player.rankEcr ?? player.averageRank),
         rankEcr: numericOptionalValue(player.rankEcr ?? player.averageRank),
         rankAverage: numericOptionalValue(player.rankAverage),
-        standardDeviation: numericRank(player.standardDeviation),
+        standardDeviation: numericOptionalValue(player.standardDeviation),
         minRank:
           player.minRank === undefined ? undefined : numericRank(player.minRank),
         maxRank:
@@ -348,6 +348,18 @@ export function buildFantasySnapshot(scoring: FantasyRouteScoring): FantasySnaps
         `Fantasy ADP join matched ${matchedPlayerIds.size} of ${adpDataset.entries.length} source players, below the ${Math.round(ADP_MATCH_GATE_MIN_RATE * 100)}% minimum.`
       );
     }
+
+    const topBoard = overallPlayers.slice(0, ADP_TOP_BOARD_SIZE);
+    const topBoardMatches = topBoard.filter(
+      (player) => typeof player.adp === "number" && Number.isFinite(player.adp)
+    ).length;
+    const topBoardMatchRate = topBoard.length > 0 ? topBoardMatches / topBoard.length : 0;
+
+    if (topBoardMatchRate < ADP_TOP_BOARD_MIN_RATE) {
+      throw new Error(
+        `Fantasy ADP join covered ${topBoardMatches} of the top ${topBoard.length} overall players, below the ${Math.round(ADP_TOP_BOARD_MIN_RATE * 100)}% minimum.`
+      );
+    }
   }
 
   const adpSource: FantasyAdpSourceMetadata | null =
@@ -368,7 +380,7 @@ export function buildFantasySnapshot(scoring: FantasyRouteScoring): FantasySnaps
     generatedAt,
     upstreamUpdatedAt: overallUpdatedAt,
     scoringFormat,
-    source: SNAPSHOT_SOURCE,
+    source: sourceMetadata.source,
     adpSource,
     positions,
     overall: overallPlayers,

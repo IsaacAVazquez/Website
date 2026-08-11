@@ -1,7 +1,7 @@
 "use client";
 
+import { MapPin } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { IconMapPin } from "@tabler/icons-react";
 import {
   loadLeaflet,
   cartoTiles,
@@ -200,7 +200,7 @@ export function FoodMapLeaflet({
   if (status === "error") {
     return (
       <div className="fm-map-fallback" role="img" aria-label="Map unavailable">
-        <IconMapPin size={28} aria-hidden="true" />
+        <MapPin size={28} aria-hidden="true" />
         <p style={{ maxWidth: "22rem", margin: 0, fontSize: 13.5 }}>
           The interactive map couldn&apos;t load right now. The full list of stops is
           still below.

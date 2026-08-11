@@ -1,7 +1,7 @@
 "use client";
 
+import { ChartColumn } from "lucide-react";
 import React from "react";
-import { IconChartHistogram } from "@tabler/icons-react";
 import { useRetirementPlan, type RetirementSeed } from "@/hooks/useRetirementPlan";
 import { RetirementInputs } from "./RetirementInputs";
 import { RetirementVerdict } from "./RetirementVerdict";
@@ -34,7 +34,7 @@ export function RetirementPlanner({ portfolioValue, seedAllocation }: Props) {
           <h2 className="invest-section-title">Retirement planner</h2>
         </div>
         <span className="invest-retire-band-tag">
-          <IconChartHistogram size={14} aria-hidden="true" />
+          <ChartColumn size={14} aria-hidden="true" />
           {result ? `${result.monteCarlo.simulations.toLocaleString()} Monte Carlo scenarios` : "Monte Carlo"}
           {isComputing ? <span className="invest-retire-computing" aria-live="polite"> · updating…</span> : null}
         </span>

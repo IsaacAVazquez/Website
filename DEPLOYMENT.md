@@ -2,7 +2,7 @@
 
 Current deployment reference for the live site.
 
-**Last updated:** 2026-04-10
+**Last updated:** 2026-08-11
 
 ---
 
@@ -13,7 +13,7 @@ The site is deployed on Netlify with the Next.js plugin enabled.
 Key config lives in:
 
 - `netlify.toml`
-- `next-sitemap.config.js`
+- `src/lib/sitemap.js`
 - `src/app/metadata.ts`
 
 ---
@@ -32,7 +32,7 @@ Notes:
 
 - `prebuild` runs `scripts/updateFootballSnapshots.ts --league-only` before the main Next build
 - `npm run build` runs `next build --webpack`
-- `postbuild` runs `next-sitemap` and `scripts/patch-nft-sharp.mjs`
+- `postbuild` runs `scripts/generatePublicSitemap.mjs` and `scripts/patch-nft-sharp.mjs`
 - Netlify then serves the `.next` output through `@netlify/plugin-nextjs`
 
 ---
@@ -57,7 +57,7 @@ npm run update:investments
 If your change touches published fantasy snapshots, verify:
 
 ```bash
-npm run update:fantasy-rb
+npm run update:fantasy
 ```
 
 If your change touches football dashboard snapshots, verify the relevant command:
@@ -84,10 +84,9 @@ Core production variables:
 Operational variables:
 
 - `CRON_SECRET`
-- `FANTASYPROS_USERNAME`
-- `FANTASYPROS_PASSWORD`
-- `FANTASYPROS_API_KEY`
 - `FOOTBALL_DATA_API_TOKEN`
+
+The fantasy snapshot builder uses `FANTASYPROS_API_KEY` as a build-only credential. Scheduled refreshes run in GitHub Actions, so the key belongs in the repository's Actions secrets. A Netlify variable with the same name does not flow into that job and is not needed by the deployed runtime.
 
 Platform-provided variables like `URL`, `DEPLOY_URL`, `DEPLOY_PRIME_URL`, and `VERCEL_URL` are consumed when available and do not need to be set manually unless you are reproducing a deploy context.
 
@@ -104,8 +103,9 @@ See `docs/ENVIRONMENT_CONFIGURATION.md` for details.
 
 ### Fantasy football
 
-- Some routes use checked-in assets, some use runtime APIs, and some use SQLite-backed helpers
-- Validate the exact workflow you changed before deploying seasonal data updates
+- All four fantasy routes read checked-in JSON snapshots at runtime
+- GitHub Actions runs `npm run update:fantasy` and commits refreshed artifacts
+- The GitHub workflow requires `FANTASYPROS_API_KEY`; a local builder run can use the public page parser when the key is absent
 
 ### Football dashboards
 

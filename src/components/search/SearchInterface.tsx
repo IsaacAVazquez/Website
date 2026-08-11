@@ -1,10 +1,10 @@
 "use client";
 
+import { Funnel, Search, X } from "lucide-react";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { SearchResults } from "./SearchResults";
 import { SearchFilters } from "./SearchFilters";
-import { IconSearch, IconX, IconFilter } from "@tabler/icons-react";
 import { useDebounce } from "@/hooks/useDebounce";
 import { useTrackedListingSearch } from "@/hooks/useTrackedListingSearch";
 import { trackListingFilter } from "@/lib/analytics";
@@ -288,7 +288,7 @@ export function SearchInterface({
         <div className="relative">
           <div className="flex items-center gap-3">
             <div className="relative flex-1">
-              <IconSearch
+              <Search
                 className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5"
                 style={{ color: "var(--home-ink-muted)" }}
                 aria-hidden="true"
@@ -317,7 +317,7 @@ export function SearchInterface({
                   className="absolute right-2 top-1/2 -translate-y-1/2 flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md transition-colors"
                   style={{ color: "var(--home-ink-muted)" }}
                 >
-                  <IconX className="w-5 h-5" />
+                  <X className="w-5 h-5" />
                 </button>
               )}
             </div>
@@ -343,7 +343,7 @@ export function SearchInterface({
                     }
               }
             >
-              <IconFilter className="w-5 h-5" />
+              <Funnel className="w-5 h-5" />
             </button>
           </div>
         </div>
