@@ -60,8 +60,9 @@ export async function buildFantasySnapshots(
   };
 
   // Finish every build and serialization before creating directories or staging
-  // files. A failure in any format therefore leaves the complete published set
-  // and its shared revision untouched.
+  // files, so a failure in any format leaves the published set and its shared
+  // revision untouched. This covers the build and serialization phase only —
+  // see the rename loop below for what the publish phase actually guarantees.
   const serializedSnapshots = SCORING_FORMATS.map((scoring) => ({
     scoring,
     contents: `${JSON.stringify(buildSnapshot(scoring), null, 2)}\n`,
@@ -92,8 +93,12 @@ export async function buildFantasySnapshots(
       await writeFile(output.tempPath, output.contents, "utf8");
     }
 
-    // The revision is the publication marker consumed by clients and deploy
-    // checks, so it moves only after all three scoring files are in place.
+    // These renames are sequential, so a failure partway through can leave one
+    // scoring file new and the others stale. There is no cross-file atomic
+    // rename, so the revision marker is the guard instead: it moves only after
+    // all three succeed, and consumers key on it, so a partial set is never
+    // announced as published. The catch below removes leftover temp files; it
+    // cannot un-rename, and it does not need to.
     for (const output of snapshotOutputs) {
       await rename(output.tempPath, output.targetPath);
     }

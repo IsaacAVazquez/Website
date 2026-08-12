@@ -144,6 +144,21 @@ describe("fantasy snapshot normalization", () => {
     expect(() => normalizeFantasySnapshot(wrongSlice, "ppr")).toThrow(/RB.*position WR/i);
   });
 
+  it("drops only the unusable rows in lenient mode instead of blanking the board", () => {
+    const snapshot = buildRuntimeSnapshot();
+    snapshot.overall = [
+      { ...VALID_RUNTIME_PLAYER, id: "keep-1", name: "Keeper One" },
+      { ...VALID_RUNTIME_PLAYER, id: "drop-1", name: "Bad Rank", averageRank: 0 },
+      { ...VALID_RUNTIME_PLAYER, id: "keep-2", name: "Keeper Two" },
+    ];
+
+    // Strict is the default and still refuses the whole snapshot.
+    expect(() => normalizeFantasySnapshot(snapshot, "ppr")).toThrow(/averageRank/i);
+
+    const lenient = normalizeFantasySnapshot(snapshot, "ppr", { lenient: true });
+    expect(lenient.overall.map((player) => player.id)).toEqual(["keep-1", "keep-2"]);
+  });
+
   it("allows actual RB, WR, and TE positions in the FLEX slice", () => {
     const snapshot = buildRuntimeSnapshot();
     snapshot.positions = {

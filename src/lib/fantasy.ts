@@ -1,4 +1,5 @@
 import { Player, Position, ScoringFormat } from "@/types";
+import { logger } from "@/lib/logger";
 
 export const FANTASY_ROUTE_POSITIONS = [
   "overall",
@@ -404,67 +405,86 @@ export function publishFantasyPlayer(player: Player): Player {
   return publishedPlayer as Player;
 }
 
+/**
+ * Strict mode throws on the first unusable row, which is what the builder and
+ * the snapshot tests want, since bad data should never get published. Lenient
+ * mode drops the row and keeps the rest, which is what the running site wants,
+ * since one malformed player must not blank a whole scoring format's board.
+ */
 function toPlayerArray(
   raw: unknown,
-  slice: FantasySnapshotPosition | "OVERALL"
+  slice: FantasySnapshotPosition | "OVERALL",
+  lenient: boolean,
+  dropped: string[]
 ): Player[] {
   if (!Array.isArray(raw)) {
     return [];
   }
 
   const seenPlayerIds = new Set<string>();
-  return raw.map((rawPlayer, index) => {
+  const players: Player[] = [];
+
+  const reject = (message: string): void => {
+    if (!lenient) throw new Error(message);
+    dropped.push(message);
+  };
+
+  for (const [index, rawPlayer] of raw.entries()) {
     if (!rawPlayer || typeof rawPlayer !== "object" || Array.isArray(rawPlayer)) {
-      throw new Error(`Fantasy snapshot ${slice} player ${index + 1} is not an object.`);
+      reject(`Fantasy snapshot ${slice} player ${index + 1} is not an object.`);
+      continue;
     }
 
     const player = rawPlayer as Record<string, unknown>;
-    for (const field of ["id", "name", "team"] as const) {
-      if (typeof player[field] !== "string" || player[field].trim().length === 0) {
-        throw new Error(
-          `Fantasy snapshot ${slice} player ${index + 1} has an invalid ${field}.`
-        );
-      }
+    const badField = (["id", "name", "team"] as const).find(
+      (field) => typeof player[field] !== "string" || player[field].trim().length === 0
+    );
+    if (badField) {
+      reject(`Fantasy snapshot ${slice} player ${index + 1} has an invalid ${badField}.`);
+      continue;
     }
 
     const position = player.position;
     if (!FANTASY_ACTUAL_POSITIONS.includes(position as FantasyActualPosition)) {
-      throw new Error(
-        `Fantasy snapshot ${slice} player ${String(player.id)} has an invalid position.`
-      );
+      reject(`Fantasy snapshot ${slice} player ${String(player.id)} has an invalid position.`);
+      continue;
     }
     if (
       (slice === "FLEX" &&
         !FANTASY_FLEX_POSITIONS.includes(position as (typeof FANTASY_FLEX_POSITIONS)[number])) ||
       (slice !== "OVERALL" && slice !== "FLEX" && position !== slice)
     ) {
-      throw new Error(
+      reject(
         `Fantasy snapshot ${slice} player ${String(player.id)} has position ${String(position)}.`
       );
+      continue;
     }
 
     if (!isFiniteNumber(player.averageRank) || player.averageRank <= 0) {
-      throw new Error(
-        `Fantasy snapshot ${slice} player ${String(player.id)} has an invalid averageRank.`
-      );
+      reject(`Fantasy snapshot ${slice} player ${String(player.id)} has an invalid averageRank.`);
+      continue;
     }
     if (
       player.standardDeviation !== undefined &&
       (!isFiniteNumber(player.standardDeviation) || player.standardDeviation < 0)
     ) {
-      throw new Error(
+      reject(
         `Fantasy snapshot ${slice} player ${String(player.id)} has an invalid standardDeviation.`
       );
+      continue;
     }
 
     const playerId = player.id as string;
     if (seenPlayerIds.has(playerId)) {
-      throw new Error(`Fantasy snapshot ${slice} contains duplicate player id ${playerId}.`);
+      reject(`Fantasy snapshot ${slice} contains duplicate player id ${playerId}.`);
+      continue;
     }
     seenPlayerIds.add(playerId);
 
-    return publishFantasyPlayer(player as unknown as Player);
-  });
+    players.push(publishFantasyPlayer(player as unknown as Player));
+  }
+
+  return players;
 }
 
 function getFantasySliceSupport(
@@ -610,10 +630,19 @@ function normalizeRawSliceMetadata(
   };
 }
 
+/**
+ * `lenient` drops unusable player rows instead of throwing. Runtime readers
+ * pass it so a single bad row degrades one player rather than the whole board;
+ * the builder and the snapshot tests leave it off so bad data fails loudly
+ * before it is ever published.
+ */
 export function normalizeFantasySnapshot(
   rawSnapshot: unknown,
-  scoring: FantasyRouteScoring
+  scoring: FantasyRouteScoring,
+  options: { lenient?: boolean } = {}
 ): FantasySnapshot {
+  const lenient = options.lenient === true;
+  const dropped: string[] = [];
   const input =
     rawSnapshot && typeof rawSnapshot === "object"
       ? (rawSnapshot as RawFantasySnapshot)
@@ -628,16 +657,23 @@ export function normalizeFantasySnapshot(
       ? (input.sliceMetadata as Partial<Record<FantasyRoutePosition, RawFantasySnapshotSliceMetadata>>)
       : {};
 
-  const overallPlayers = toPlayerArray(input.overall, "OVERALL");
+  const overallPlayers = toPlayerArray(input.overall, "OVERALL", lenient, dropped);
   const positions: Record<FantasySnapshotPosition, Player[]> = {
-    QB: toPlayerArray(rawPositions.QB, "QB"),
-    RB: toPlayerArray(rawPositions.RB, "RB"),
-    WR: toPlayerArray(rawPositions.WR, "WR"),
-    TE: toPlayerArray(rawPositions.TE, "TE"),
-    FLEX: toPlayerArray(rawPositions.FLEX, "FLEX"),
-    K: toPlayerArray(rawPositions.K, "K"),
-    DST: toPlayerArray(rawPositions.DST, "DST"),
+    QB: toPlayerArray(rawPositions.QB, "QB", lenient, dropped),
+    RB: toPlayerArray(rawPositions.RB, "RB", lenient, dropped),
+    WR: toPlayerArray(rawPositions.WR, "WR", lenient, dropped),
+    TE: toPlayerArray(rawPositions.TE, "TE", lenient, dropped),
+    FLEX: toPlayerArray(rawPositions.FLEX, "FLEX", lenient, dropped),
+    K: toPlayerArray(rawPositions.K, "K", lenient, dropped),
+    DST: toPlayerArray(rawPositions.DST, "DST", lenient, dropped),
   };
+
+  if (dropped.length > 0) {
+    logger.warn(
+      `Fantasy snapshot ${scoring} dropped ${dropped.length} unusable player row(s)`,
+      dropped.slice(0, 10)
+    );
+  }
 
   const publishedPlayerCount =
     overallPlayers.length +

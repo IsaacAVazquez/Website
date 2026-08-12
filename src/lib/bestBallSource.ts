@@ -120,6 +120,13 @@ export function parseBestBallAdpPayload(
   const entries: FantasyAdpEntry[] = [];
   const timestamps: Array<string | null> = [];
 
+  // The request pins ranker, week, and season but not format, so the expected
+  // format is an assumption about the provider's default. Skip an off-contract
+  // row the same way an unusable one is skipped rather than aborting the whole
+  // refresh over it; if nothing matches, the contract really did change and the
+  // empty-result check below fails loudly.
+  let offContractRows = 0;
+
   for (const raw of payload as RawBestBallAdpPlayer[]) {
     if (
       finiteNumber(raw?.season) !== expected.season ||
@@ -127,9 +134,8 @@ export function parseBestBallAdpPayload(
       raw?.format !== expected.format ||
       raw?.rankerSlug !== expected.ranker
     ) {
-      throw new Error(
-        "Best ball ADP source returned a row outside the requested season, week, format, or ranker."
-      );
+      offContractRows += 1;
+      continue;
     }
 
     const name = typeof raw?.player?.name === "string" ? raw.player.name.trim() : "";
@@ -151,7 +157,11 @@ export function parseBestBallAdpPayload(
   }
 
   if (entries.length === 0) {
-    throw new Error("Best ball ADP source returned no usable players.");
+    throw new Error(
+      offContractRows > 0
+        ? `Best ball ADP source returned ${offContractRows} row(s), all outside the requested season, week, format, or ranker.`
+        : "Best ball ADP source returned no usable players."
+    );
   }
 
   return {

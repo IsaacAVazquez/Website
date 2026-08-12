@@ -26,7 +26,11 @@ export async function loadFantasySnapshot(scoring: FantasyRouteScoring): Promise
 
   const snapshotPath = getFantasySnapshotPath(scoring);
   const fileContents = await readFile(snapshotPath, "utf8");
-  const data = normalizeFantasySnapshot(JSON.parse(fileContents), scoring);
+  // Lenient at runtime: a bad row should cost one player, not the whole board.
+  // The builder and the snapshot tests validate strictly before publishing.
+  const data = normalizeFantasySnapshot(JSON.parse(fileContents), scoring, {
+    lenient: true,
+  });
   snapshotCache.set(scoring, { data, expiresAt: Date.now() + SNAPSHOT_TTL_MS });
   return data;
 }

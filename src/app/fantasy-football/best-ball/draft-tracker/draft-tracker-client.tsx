@@ -373,7 +373,10 @@ function BestBallDraftRoom({
     ]
   );
 
-  const showSetup = draft.state.picks.length === 0 && !roomStarted;
+  // `restoredWithPicks` keeps a reloaded room open after the user undoes back
+  // to zero picks, instead of dropping them onto the slot picker.
+  const showSetup =
+    draft.state.picks.length === 0 && !roomStarted && !draft.restoredWithPicks;
 
   if (!draft.isLoaded) {
     return (
