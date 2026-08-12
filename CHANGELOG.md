@@ -4,6 +4,12 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-08-12
+
+- Keep best ball room open after undo and make snapshot reads fail soft ([#389](https://github.com/IsaacAVazquez/Website/pull/389)).
+
+---
+
 ## 2026-08-11
 
 - Remove dead code, prune dependencies, consolidate icon libraries ([#387](https://github.com/IsaacAVazquez/Website/pull/387)).
