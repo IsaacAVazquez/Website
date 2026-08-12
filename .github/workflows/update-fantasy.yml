@@ -107,7 +107,19 @@ jobs:
             const scheduleTeams = Object.keys(bestBall.week17Opponents || {}).length;
             const now = Date.now();
             const generatedAgeDays = (now - Date.parse(bestBall.generatedAt || '')) / 86400000;
-            const sourceAgeLimit = [6, 7, 8].includes(new Date().getUTCMonth()) ? 4 : 14;
+            // The builder fail-softs each source to the previous snapshot's asOf,
+            // so a single upstream outage must not fail the whole job. Warn at the
+            // tight in-season bound, and only fail once a source looks abandoned.
+            const inDraftSeason = [6, 7, 8].includes(new Date().getUTCMonth());
+            const sourceWarnLimit = inDraftSeason ? 4 : 14;
+            const sourceFailLimit = inDraftSeason ? 14 : 45;
+            const checkSourceAge = (label, ageDays) => {
+              if (!Number.isFinite(ageDays) || ageDays > sourceFailLimit) {
+                failures.push('best-ball ' + label + ' source is older than ' + sourceFailLimit + ' days');
+              } else if (ageDays > sourceWarnLimit) {
+                console.log('::warning::best-ball ' + label + ' source is ' + ageDays.toFixed(1) + ' days old (warn above ' + sourceWarnLimit + ', fail above ' + sourceFailLimit + ')');
+              }
+            };
             const rankingAgeDays = (now - Date.parse(bestBall.rankingSource?.asOf || '')) / 86400000;
             const adpAgeDays = (now - Date.parse(bestBall.adpSource?.asOf || '')) / 86400000;
             const superflexAgeDays = (now - Date.parse(bestBall.superflexSource?.asOf || '')) / 86400000;
@@ -118,9 +130,9 @@ jobs:
             if (adpMatches < 150) failures.push('best-ball has ' + adpMatches + ' ADP matches (need >= 150)');
             if (scheduleTeams < 30) failures.push('best-ball has ' + scheduleTeams + ' Week 17 team mappings (need >= 30)');
             if (!Number.isFinite(generatedAgeDays) || generatedAgeDays > 10) failures.push('best-ball snapshot is older than 10 days');
-            if (!Number.isFinite(rankingAgeDays) || rankingAgeDays > sourceAgeLimit) failures.push('best-ball rankings source is older than ' + sourceAgeLimit + ' days');
-            if (!Number.isFinite(adpAgeDays) || adpAgeDays > sourceAgeLimit) failures.push('best-ball ADP source is older than ' + sourceAgeLimit + ' days');
-            if (!Number.isFinite(superflexAgeDays) || superflexAgeDays > sourceAgeLimit) failures.push('best-ball Superflex source is older than ' + sourceAgeLimit + ' days');
+            checkSourceAge('rankings', rankingAgeDays);
+            checkSourceAge('ADP', adpAgeDays);
+            checkSourceAge('Superflex', superflexAgeDays);
             if (!String(bestBall.scheduleSource?.url || '').includes('dates=' + bestBall.season)) failures.push('best-ball Week 17 schedule does not match snapshot season');
           } catch (err) {
             failures.push('best-ball failed to parse: ' + err.message);

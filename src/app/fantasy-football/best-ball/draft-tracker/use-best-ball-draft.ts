@@ -31,6 +31,10 @@ export function useBestBallDraft({
     createBestBallDraftState(season, rules, initialSlot)
   );
   const [loadedKey, setLoadedKey] = useState<string | null>(null);
+  // A restored draft puts the user in the room without them clicking through
+  // setup. The room must stay open even if they then undo back to zero picks,
+  // otherwise undoing the last pick ejects them to the slot picker.
+  const [restoredWithPicks, setRestoredWithPicks] = useState(false);
   const [persistenceError, setPersistenceError] = useState<string | null>(null);
   const [restoreNotice, setRestoreNotice] = useState<string | null>(null);
 
@@ -60,6 +64,7 @@ export function useBestBallDraft({
     }
     // The key identifies a different contest-specific room and should replace the prior room in memory.
     setState(nextState);
+    setRestoredWithPicks(nextState.picks.length > 0);
     setLoadedKey(storageKey);
   }, [initialSlot, rules, season, storageKey]);
 
@@ -111,6 +116,7 @@ export function useBestBallDraft({
   return {
     state,
     isLoaded: loadedKey === storageKey,
+    restoredWithPicks,
     persistenceError,
     restoreNotice,
     currentPick,

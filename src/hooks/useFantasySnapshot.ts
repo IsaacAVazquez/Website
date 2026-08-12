@@ -49,7 +49,9 @@ function cacheNormalizedFantasySnapshot(
   scoring: FantasyRouteScoring,
   snapshot: FantasySnapshot | unknown
 ): FantasySnapshot {
-  const normalizedSnapshot = normalizeFantasySnapshot(snapshot, scoring);
+  const normalizedSnapshot = normalizeFantasySnapshot(snapshot, scoring, {
+    lenient: true,
+  });
   snapshotCache.set(getFantasySnapshotCacheKey(scoring), normalizedSnapshot);
   return normalizedSnapshot;
 }
@@ -126,6 +128,10 @@ async function loadFantasySnapshot(scoring: FantasyRouteScoring): Promise<Fantas
   // a missing snapshot file during a botched deploy — fall back to the API
   // route, which reads the same files server-side and so should agree on shape.
   // Only surface a user-visible error when both paths fail.
+  // The API fallback is worth attempting even when normalization fails: the
+  // static file may be a stale copy of a different scoring format while the
+  // API returns the correct one. Row-level defects no longer reach here at
+  // all, since the normalizer runs lenient and drops those rows instead.
   const request = fetchStaticFantasySnapshot(scoring)
     .then((rawSnapshot) => cacheNormalizedFantasySnapshot(scoring, rawSnapshot))
     .catch(async (staticError) => {
