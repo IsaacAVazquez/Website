@@ -123,7 +123,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
     const homeSignal =
       computedStyle.getPropertyValue("--home-signal").trim() || "#C93F19";
     const homeInkMuted =
-      computedStyle.getPropertyValue("--home-ink-muted").trim() || "#615B52";
+      computedStyle.getPropertyValue("--home-ink-muted").trim() || "#68655A";
     const homeRule =
       computedStyle.getPropertyValue("--home-rule").trim() || "rgba(18,17,15,0.12)";
 

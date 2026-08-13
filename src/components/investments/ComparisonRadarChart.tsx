@@ -41,7 +41,7 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
     const colorB =
       computedStyle.getPropertyValue("--home-ink").trim() || "#191813";
     const inkMuted =
-      computedStyle.getPropertyValue("--home-ink-muted").trim() || "#6F6B60";
+      computedStyle.getPropertyValue("--home-ink-muted").trim() || "#68655A";
     const rule =
       computedStyle.getPropertyValue("--home-rule").trim() ||
       "rgba(25,24,19,0.14)";
