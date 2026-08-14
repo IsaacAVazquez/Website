@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-14T10:29:53.130Z",
+  "generatedAt": "2026-08-14T21:45:54.287Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -128,7 +128,7 @@
       {
         "id": "upcoming",
         "label": "Upcoming queue",
-        "value": "127",
+        "value": "128",
         "description": "currently published future SpaceX missions from Launch Library 2"
       },
       {
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-08-14T10:29:48.831Z"
+    "generatedAt": "2026-08-14T21:45:48.764Z"
   },
   "upcomingLaunches": [
     {
@@ -603,7 +603,7 @@
       "dateUtc": "2026-09-30T00:00:00Z",
       "dateUnix": 1790726400,
       "dateLocal": "2026-09-30T00:00:00Z",
-      "datePrecision": "quarter",
+      "datePrecision": "month",
       "tbd": true,
       "net": true,
       "rocketName": "Starship V3",
@@ -2281,7 +2281,7 @@
       "dateUtc": "2026-09-30T00:00:00Z",
       "dateUnix": 1790726400,
       "dateLocal": "2026-09-30T00:00:00Z",
-      "datePrecision": "quarter",
+      "datePrecision": "month",
       "tbd": true,
       "net": true,
       "rocketName": "Starship V3",
@@ -2930,6 +2930,6 @@
       }
     ],
     "rangeLabel": "Sep 25 – Aug 26",
-    "generatedAt": "2026-08-14T10:29:53.130Z"
+    "generatedAt": "2026-08-14T21:45:54.286Z"
   }
 }
