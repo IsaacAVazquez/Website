@@ -1,23 +1,23 @@
 {
-  "generatedAt": "2026-08-15T09:46:03.122Z",
+  "generatedAt": "2026-08-15T21:41:05.204Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
-      "id": "55b79515-ddbf-4198-8a59-29a12ed21330",
-      "name": "USSF-366",
+      "id": "be8b4b0d-1989-48a5-a96d-e8e4d59ed8b3",
+      "name": "Globalstar 2-R Mission 1 (x 9)",
       "flightNumber": 717,
       "upcoming": true,
       "success": null,
-      "details": "USSF-366 is a classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites for a US government entity based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches.",
-      "dateUtc": "2026-08-15T21:54:02Z",
-      "dateUnix": 1786830842,
-      "dateLocal": "2026-08-15T21:54:02Z",
+      "details": "The Globalstar global mobile communications network offers global, digital real time voice, data and fax services via its Low Earth Orbit satellite constellation. The constellation operates in a 1410 km orbit inclined at 52 degrees.\r\n\r\nIn early 2022, Globalstar contracted with MDA for the construction of 17 new 2nd generation refresh satellites to replenish the existing constellation. Rocket Lab is sub-contracted to build the satellites' buses and the launch dispensers.",
+      "dateUtc": "2026-08-16T01:12:00Z",
+      "dateUnix": 1786842720,
+      "dateLocal": "2026-08-16T01:12:00Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "launchpadName": "Space Launch Complex 40",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
       "patchImage": null,
       "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
       "crewCount": 0,
@@ -29,7 +29,7 @@
       "links": {
         "webcast": null,
         "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/United_States_Space_Force",
+        "wikipedia": "https://en.wikipedia.org/wiki/Globalstar",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -43,21 +43,21 @@
       }
     },
     "nextLaunch": {
-      "id": "55b79515-ddbf-4198-8a59-29a12ed21330",
-      "name": "USSF-366",
+      "id": "be8b4b0d-1989-48a5-a96d-e8e4d59ed8b3",
+      "name": "Globalstar 2-R Mission 1 (x 9)",
       "flightNumber": 717,
       "upcoming": true,
       "success": null,
-      "details": "USSF-366 is a classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites for a US government entity based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches.",
-      "dateUtc": "2026-08-15T21:54:02Z",
-      "dateUnix": 1786830842,
-      "dateLocal": "2026-08-15T21:54:02Z",
+      "details": "The Globalstar global mobile communications network offers global, digital real time voice, data and fax services via its Low Earth Orbit satellite constellation. The constellation operates in a 1410 km orbit inclined at 52 degrees.\r\n\r\nIn early 2022, Globalstar contracted with MDA for the construction of 17 new 2nd generation refresh satellites to replenish the existing constellation. Rocket Lab is sub-contracted to build the satellites' buses and the launch dispensers.",
+      "dateUtc": "2026-08-16T01:12:00Z",
+      "dateUnix": 1786842720,
+      "dateLocal": "2026-08-16T01:12:00Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "launchpadName": "Space Launch Complex 40",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
       "patchImage": null,
       "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
       "crewCount": 0,
@@ -69,7 +69,7 @@
       "links": {
         "webcast": null,
         "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/United_States_Space_Force",
+        "wikipedia": "https://en.wikipedia.org/wiki/Globalstar",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -128,7 +128,7 @@
       {
         "id": "upcoming",
         "label": "Upcoming queue",
-        "value": "128",
+        "value": "129",
         "description": "currently published future SpaceX missions from Launch Library 2"
       },
       {
@@ -150,53 +150,13 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-08-15T09:45:56.619Z"
+    "generatedAt": "2026-08-15T21:41:00.984Z"
   },
   "upcomingLaunches": [
     {
-      "id": "55b79515-ddbf-4198-8a59-29a12ed21330",
-      "name": "USSF-366",
-      "flightNumber": 717,
-      "upcoming": true,
-      "success": null,
-      "details": "USSF-366 is a classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites for a US government entity based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches.",
-      "dateUtc": "2026-08-15T21:54:02Z",
-      "dateUnix": 1786830842,
-      "dateLocal": "2026-08-15T21:54:02Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/United_States_Space_Force",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
       "id": "be8b4b0d-1989-48a5-a96d-e8e4d59ed8b3",
       "name": "Globalstar 2-R Mission 1 (x 9)",
-      "flightNumber": 718,
+      "flightNumber": 717,
       "upcoming": true,
       "success": null,
       "details": "The Globalstar global mobile communications network offers global, digital real time voice, data and fax services via its Low Earth Orbit satellite constellation. The constellation operates in a 1410 km orbit inclined at 52 degrees.\r\n\r\nIn early 2022, Globalstar contracted with MDA for the construction of 17 new 2nd generation refresh satellites to replenish the existing constellation. Rocket Lab is sub-contracted to build the satellites' buses and the launch dispensers.",
@@ -221,6 +181,46 @@
         "webcast": null,
         "article": null,
         "wikipedia": "https://en.wikipedia.org/wiki/Globalstar",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
+      "id": "55b79515-ddbf-4198-8a59-29a12ed21330",
+      "name": "USSF-366",
+      "flightNumber": 718,
+      "upcoming": true,
+      "success": null,
+      "details": "USSF-366 is a classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites for a US government entity based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches.",
+      "dateUtc": "2026-08-16T01:50:45Z",
+      "dateUnix": 1786845045,
+      "dateLocal": "2026-08-16T01:50:45Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/United_States_Space_Force",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -554,33 +554,33 @@
       }
     },
     {
-      "id": "dca8749f-1552-485a-8061-f1ad79055b8d",
-      "name": "SDA Tranche 1 Tracking Layer C",
+      "id": "7d1afb26-6f9c-429b-9ccf-29012fd1e519",
+      "name": "Flight 14",
       "flightNumber": 733,
       "upcoming": true,
       "success": null,
-      "details": "Tranche 1 Tracking Layer C is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
+      "details": "14th test flight of the two-stage Starship launch vehicle. 3rd flight of Starship V3.",
       "dateUtc": "2026-09-30T00:00:00Z",
       "dateUnix": 1790726400,
       "dateLocal": "2026-09-30T00:00:00Z",
-      "datePrecision": "quarter",
+      "datePrecision": "month",
       "tbd": true,
       "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "rocketName": "Starship V3",
+      "launchpadName": "Orbital Launch Pad 2",
+      "launchpadLocation": "SpaceX Starbase, TX, USA",
       "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "vehicleImage": "/data/spacex/images/4bf502ff63e8fce9.jpg",
       "crewCount": 0,
       "payloadCount": 1,
       "capsuleCount": 0,
-      "coreCount": 1,
+      "coreCount": 2,
       "hasExactTime": false,
       "isStaleSchedule": false,
       "links": {
         "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
+        "article": "https://www.spacex.com/vehicles/starship/",
+        "wikipedia": "https://en.wikipedia.org/wiki/SpaceX_Starship",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -589,7 +589,7 @@
         "patchSmall": null,
         "patchLarge": null,
         "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
+          "/data/spacex/images/4bf502ff63e8fce9.jpg"
         ]
       }
     },
@@ -634,33 +634,33 @@
       }
     },
     {
-      "id": "7d1afb26-6f9c-429b-9ccf-29012fd1e519",
-      "name": "Flight 14",
+      "id": "dca8749f-1552-485a-8061-f1ad79055b8d",
+      "name": "SDA Tranche 1 Tracking Layer C",
       "flightNumber": 733,
       "upcoming": true,
       "success": null,
-      "details": "14th test flight of the two-stage Starship launch vehicle. 3rd flight of Starship V3.",
+      "details": "Tranche 1 Tracking Layer C is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
       "dateUtc": "2026-09-30T00:00:00Z",
       "dateUnix": 1790726400,
       "dateLocal": "2026-09-30T00:00:00Z",
-      "datePrecision": "month",
+      "datePrecision": "quarter",
       "tbd": true,
       "net": true,
-      "rocketName": "Starship V3",
-      "launchpadName": "Orbital Launch Pad 2",
-      "launchpadLocation": "SpaceX Starbase, TX, USA",
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
       "patchImage": null,
-      "vehicleImage": "/data/spacex/images/4bf502ff63e8fce9.jpg",
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
       "crewCount": 0,
       "payloadCount": 1,
       "capsuleCount": 0,
-      "coreCount": 2,
+      "coreCount": 1,
       "hasExactTime": false,
       "isStaleSchedule": false,
       "links": {
         "webcast": null,
-        "article": "https://www.spacex.com/vehicles/starship/",
-        "wikipedia": "https://en.wikipedia.org/wiki/SpaceX_Starship",
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -669,7 +669,7 @@
         "patchSmall": null,
         "patchLarge": null,
         "flickrOriginal": [
-          "/data/spacex/images/4bf502ff63e8fce9.jpg"
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
         ]
       }
     },
@@ -2077,22 +2077,22 @@
     }
   ],
   "launchDetails": {
-    "55b79515-ddbf-4198-8a59-29a12ed21330": {
-      "id": "55b79515-ddbf-4198-8a59-29a12ed21330",
-      "name": "USSF-366",
+    "be8b4b0d-1989-48a5-a96d-e8e4d59ed8b3": {
+      "id": "be8b4b0d-1989-48a5-a96d-e8e4d59ed8b3",
+      "name": "Globalstar 2-R Mission 1 (x 9)",
       "flightNumber": 717,
       "upcoming": true,
       "success": null,
-      "details": "USSF-366 is a classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites for a US government entity based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches.",
-      "dateUtc": "2026-08-15T21:54:02Z",
-      "dateUnix": 1786830842,
-      "dateLocal": "2026-08-15T21:54:02Z",
+      "details": "The Globalstar global mobile communications network offers global, digital real time voice, data and fax services via its Low Earth Orbit satellite constellation. The constellation operates in a 1410 km orbit inclined at 52 degrees.\r\n\r\nIn early 2022, Globalstar contracted with MDA for the construction of 17 new 2nd generation refresh satellites to replenish the existing constellation. Rocket Lab is sub-contracted to build the satellites' buses and the launch dispensers.",
+      "dateUtc": "2026-08-16T01:12:00Z",
+      "dateUnix": 1786842720,
+      "dateLocal": "2026-08-16T01:12:00Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "launchpadName": "Space Launch Complex 40",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
       "patchImage": null,
       "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
       "crewCount": 0,
@@ -2102,9 +2102,9 @@
       "hasExactTime": true,
       "isStaleSchedule": false,
       "links": {
-        "webcast": "https://x.com/i/broadcasts/1DxleVErQBdKL",
-        "article": "https://www.spacex.com/launches/ussf366",
-        "wikipedia": "https://en.wikipedia.org/wiki/United_States_Space_Force",
+        "webcast": "https://x.com/i/broadcasts/1pJkOOkmyQyJj",
+        "article": "https://www.spacex.com/launches/globalstar2-rlaunch1",
+        "wikipedia": "https://en.wikipedia.org/wiki/Globalstar",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -2117,7 +2117,7 @@
         ]
       },
       "staticFireDateUtc": null,
-      "window": 14400,
+      "window": 900,
       "failures": [],
       "rocket": {
         "id": "164",
@@ -2142,24 +2142,24 @@
         ]
       },
       "launchpad": {
-        "id": "16",
-        "name": "Space Launch Complex 4E",
-        "fullName": "Space Launch Complex 4E",
-        "locality": "Vandenberg SFB, CA, USA",
+        "id": "80",
+        "name": "Space Launch Complex 40",
+        "fullName": "Space Launch Complex 40",
+        "locality": "Cape Canaveral SFS, FL, USA",
         "region": null,
-        "timezone": "America/Los_Angeles",
+        "timezone": "America/New_York",
         "status": null,
-        "details": "Space Launch Complex 4 East (SLC-4E) is a launch site at Vandenberg Space Force Base, California, U.S.\r\n\r\nThe pad was previously used by Atlas and Titan rockets between 1963 and 2005. The pad was built for use by Atlas-Agena rockets, but was later rebuilt to handle Titan rockets.",
-        "image": "/data/spacex/images/b752567507d74cae.jpg"
+        "details": "",
+        "image": "/data/spacex/images/9b1f5cf5035d37b9.jpg"
       },
       "crew": [],
       "payloads": [
         {
-          "id": "7704",
-          "name": "USSF-366",
-          "type": "Government/Top Secret",
+          "id": "7246",
+          "name": "Globalstar 2-R Mission 1 (x 9)",
+          "type": "Communications",
           "customers": [
-            "United States Space Force"
+            "Globalstar"
           ],
           "manufacturers": [
             "SpaceX"
@@ -2466,22 +2466,22 @@
       "capsules": [],
       "cores": []
     },
-    "be8b4b0d-1989-48a5-a96d-e8e4d59ed8b3": {
-      "id": "be8b4b0d-1989-48a5-a96d-e8e4d59ed8b3",
-      "name": "Globalstar 2-R Mission 1 (x 9)",
+    "55b79515-ddbf-4198-8a59-29a12ed21330": {
+      "id": "55b79515-ddbf-4198-8a59-29a12ed21330",
+      "name": "USSF-366",
       "flightNumber": 718,
       "upcoming": true,
       "success": null,
-      "details": "The Globalstar global mobile communications network offers global, digital real time voice, data and fax services via its Low Earth Orbit satellite constellation. The constellation operates in a 1410 km orbit inclined at 52 degrees.\r\n\r\nIn early 2022, Globalstar contracted with MDA for the construction of 17 new 2nd generation refresh satellites to replenish the existing constellation. Rocket Lab is sub-contracted to build the satellites' buses and the launch dispensers.",
-      "dateUtc": "2026-08-16T01:12:00Z",
-      "dateUnix": 1786842720,
-      "dateLocal": "2026-08-16T01:12:00Z",
+      "details": "USSF-366 is a classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites for a US government entity based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches.",
+      "dateUtc": "2026-08-16T01:50:45Z",
+      "dateUnix": 1786845045,
+      "dateLocal": "2026-08-16T01:50:45Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 40",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
       "patchImage": null,
       "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
       "crewCount": 0,
@@ -2491,9 +2491,9 @@
       "hasExactTime": true,
       "isStaleSchedule": false,
       "links": {
-        "webcast": "https://x.com/i/broadcasts/1pJkOOkmyQyJj",
-        "article": "https://www.spacex.com/launches/globalstar2-rlaunch1",
-        "wikipedia": "https://en.wikipedia.org/wiki/Globalstar",
+        "webcast": "https://x.com/i/broadcasts/1DxleVErQBdKL",
+        "article": "https://www.spacex.com/launches/ussf366",
+        "wikipedia": "https://en.wikipedia.org/wiki/United_States_Space_Force",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -2506,7 +2506,7 @@
         ]
       },
       "staticFireDateUtc": null,
-      "window": 900,
+      "window": 14400,
       "failures": [],
       "rocket": {
         "id": "164",
@@ -2531,24 +2531,24 @@
         ]
       },
       "launchpad": {
-        "id": "80",
-        "name": "Space Launch Complex 40",
-        "fullName": "Space Launch Complex 40",
-        "locality": "Cape Canaveral SFS, FL, USA",
+        "id": "16",
+        "name": "Space Launch Complex 4E",
+        "fullName": "Space Launch Complex 4E",
+        "locality": "Vandenberg SFB, CA, USA",
         "region": null,
-        "timezone": "America/New_York",
+        "timezone": "America/Los_Angeles",
         "status": null,
-        "details": "",
-        "image": "/data/spacex/images/9b1f5cf5035d37b9.jpg"
+        "details": "Space Launch Complex 4 East (SLC-4E) is a launch site at Vandenberg Space Force Base, California, U.S.\r\n\r\nThe pad was previously used by Atlas and Titan rockets between 1963 and 2005. The pad was built for use by Atlas-Agena rockets, but was later rebuilt to handle Titan rockets.",
+        "image": "/data/spacex/images/b752567507d74cae.jpg"
       },
       "crew": [],
       "payloads": [
         {
-          "id": "7246",
-          "name": "Globalstar 2-R Mission 1 (x 9)",
-          "type": "Communications",
+          "id": "7704",
+          "name": "USSF-366",
+          "type": "Government/Top Secret",
           "customers": [
-            "Globalstar"
+            "United States Space Force"
           ],
           "manufacturers": [
             "SpaceX"
@@ -2930,6 +2930,6 @@
       }
     ],
     "rangeLabel": "Sep 25 – Aug 26",
-    "generatedAt": "2026-08-15T09:46:03.121Z"
+    "generatedAt": "2026-08-15T21:41:05.204Z"
   }
 }
