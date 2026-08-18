@@ -4,6 +4,12 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-08-18
+
+- Add the fantasy trade calculator, mock draft simulator, and tier-first rankings board ([#394](https://github.com/IsaacAVazquez/Website/pull/394)).
+
+---
+
 ## 2026-08-12
 
 - Keep best ball room open after undo and make snapshot reads fail soft ([#389](https://github.com/IsaacAVazquez/Website/pull/389)).
