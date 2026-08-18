@@ -240,16 +240,28 @@ export async function loadCompanionSnapshot(
   try {
     const record = await requestSnapshot(liveUrl, filename);
     assertSnapshotSeason(record, room.season);
-    await writeLocalValue(getCacheKey(filename), record);
+    // The cache write is best-effort: a quota or storage failure must not
+    // discard a validated live fetch and downgrade the panel to older data.
+    try {
+      await writeLocalValue(getCacheKey(filename), record);
+    } catch {
+      // Serve the live snapshot uncached.
+    }
     return { snapshot: withSource(record, "published"), liveError: null };
   } catch (error) {
     liveError = error instanceof Error ? error.message : "Published rankings could not be reached.";
   }
 
-  const saved = parseSavedSnapshot(
-    await readLocalValue<SnapshotCacheRecord>(getCacheKey(filename)),
-    filename
-  );
+  // A storage read rejection (corrupt profile, transient IO) counts as "no
+  // saved copy" — it must not abort the load while a bundled snapshot ships
+  // with the extension.
+  let savedValue: SnapshotCacheRecord | null;
+  try {
+    savedValue = await readLocalValue<SnapshotCacheRecord>(getCacheKey(filename));
+  } catch {
+    savedValue = null;
+  }
+  const saved = parseSavedSnapshot(savedValue, filename);
   if (saved?.season === room.season) {
     return { snapshot: withSource(saved, "saved"), liveError };
   }
@@ -257,6 +269,10 @@ export async function loadCompanionSnapshot(
   const bundledUrl = getExtensionAssetUrl(`data/fantasy/${filename}`);
   const bundled = await requestSnapshot(bundledUrl, filename);
   assertSnapshotSeason(bundled, room.season);
-  await writeLocalValue(getCacheKey(filename), bundled);
+  try {
+    await writeLocalValue(getCacheKey(filename), bundled);
+  } catch {
+    // Serve the bundled snapshot uncached.
+  }
   return { snapshot: withSource(bundled, "bundled"), liveError };
 }

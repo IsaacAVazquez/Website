@@ -13,8 +13,17 @@ import {
   type FantasyTradeEvaluation,
   type FantasyTradeLeagueSettings,
 } from "@/lib/fantasyTrade";
-import { FANTASY_TRADE_MAX_PLAYERS_PER_SIDE } from "@/lib/fantasyTradePersistence";
-import { formatUpdatedAt, getSnapshotStaleness } from "@/lib/fantasyUtils";
+import {
+  FANTASY_TRADE_MAX_PLAYERS_PER_SIDE,
+  isValidFantasyTradeSeason,
+} from "@/lib/fantasyTradePersistence";
+import {
+  formatUpdatedAt,
+  getFantasyAdpFreshness,
+  getSnapshotStaleness,
+  type FantasySnapshotStaleness,
+} from "@/lib/fantasyUtils";
+import { getCurrentDraftSeason } from "@/app/fantasy-football/draft-tracker/hooks/useDraftState";
 import { REDRAFT_LINEUP_PRESETS } from "@/lib/redraftLineup";
 import { TradePackageFieldset } from "./trade-package-fieldset";
 import { TradeResultRail } from "./trade-result-rail";
@@ -197,7 +206,13 @@ export function TradeCalculatorClient() {
     scoring: routeState.scoring,
     all: true,
   });
-  const season = snapshot?.season ?? new Date().getUTCFullYear();
+  // The lenient snapshot normalizer emits season 0 for malformed input, and
+  // getFantasyTradeStorageKey throws on it. Validate rather than nullish-check,
+  // and fall back to the draft season (not the calendar year) so a January
+  // visit reads the same storage scope the draft tracker uses.
+  const season = isValidFantasyTradeSeason(snapshot?.season)
+    ? snapshot!.season
+    : getCurrentDraftSeason();
   const trade = useFantasyTradeCalculator(season, routeState.scoring);
   const [resetArmed, setResetArmed] = useState(false);
 
@@ -231,9 +246,25 @@ export function TradeCalculatorClient() {
       sideB: { playerIds: trade.getPlayerIds },
     });
   }, [hasBothSides, league, snapshot, trade.getPlayerIds, trade.givePlayerIds]);
-  const sourceFreshness = snapshot
+  // The chip covers BOTH inputs. Reading only the expert board let it say
+  // "fresh sources" while the verdict was withheld for a stale draft market.
+  const expertFreshness: FantasySnapshotStaleness = snapshot
     ? getSnapshotStaleness(snapshot.upstreamUpdatedAt)
     : "stale";
+  const marketFreshness: FantasySnapshotStaleness = !snapshot?.adpSource
+    ? "stale"
+    : getFantasyAdpFreshness(snapshot.adpSource.asOf, snapshot.season) === "current"
+      ? getSnapshotStaleness(snapshot.adpSource.asOf)
+      : "stale";
+  const FRESHNESS_SEVERITY: Record<FantasySnapshotStaleness, number> = {
+    fresh: 0,
+    aging: 1,
+    stale: 2,
+  };
+  const sourceFreshness =
+    FRESHNESS_SEVERITY[expertFreshness] >= FRESHNESS_SEVERITY[marketFreshness]
+      ? expertFreshness
+      : marketFreshness;
   const valuesAvailable = Boolean(result && result.coverage !== "insufficient");
   const allSelected = useMemo(
     () => new Set([...trade.givePlayerIds, ...trade.getPlayerIds]),
@@ -281,7 +312,7 @@ export function TradeCalculatorClient() {
             <span>Draft market {formatUpdatedAt(snapshot?.adpSource?.asOf)}</span>
             <span aria-hidden="true">·</span>
             <span style={{ color: sourceFreshness === "stale" ? "var(--home-negative)" : undefined }}>
-              {sourceFreshness} source
+              {sourceFreshness} sources
             </span>
           </div>
         </header>

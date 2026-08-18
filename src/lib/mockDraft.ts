@@ -42,22 +42,27 @@ const POSITION_CAPS: Record<CountedPosition, number> = {
 const K_DST_CLOSING_ROUNDS = 3;
 
 /**
- * Where the engine ranks a player: reliable market ADP, else consensus rank
- * while it still maps onto the pick scale (getPickBaseline), else the raw
- * consensus rank pushed past every real baseline so the deep board keeps a
- * stable order once market signal runs out.
+ * Where the engine ranks a player: reliable market ADP, else the raw
+ * consensus rank (both live on the pick scale), else pushed past every real
+ * baseline so a rankless tail keeps a stable order. getPickBaseline alone is
+ * not enough here: it deliberately returns null for a thin-sample ADP so the
+ * analytics engine makes no reach/steal call, but a draft room still has to
+ * price that player, and without the consensus fallback every thin-sample
+ * player sank behind the whole board and the sim teams never drafted him.
  */
 const NO_BASELINE_OFFSET = 1000;
 
 function boardValue(player: Player): number {
   const baseline = getPickBaseline(player);
   if (baseline !== null) return baseline;
-  const rank = Number.isFinite(player.rankEcr)
-    ? (player.rankEcr as number)
-    : Number.isFinite(player.averageRank)
-      ? player.averageRank
-      : Number.MAX_SAFE_INTEGER - NO_BASELINE_OFFSET;
-  return NO_BASELINE_OFFSET + rank;
+  if (Number.isFinite(player.rankEcr)) return player.rankEcr as number;
+  if (Number.isFinite(player.averageRank)) return player.averageRank;
+  return Number.MAX_SAFE_INTEGER;
+}
+
+/** Exposed for tests: the pick-scale value the engine sorts the board by. */
+export function getMockDraftBoardValue(player: Player): number {
+  return boardValue(player);
 }
 
 /**

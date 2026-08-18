@@ -265,6 +265,19 @@ describe("TradeCalculatorClient", () => {
     ).toBeInTheDocument();
   });
 
+  it("renders instead of crashing when the lenient normalizer emits season 0", () => {
+    // A snapshot missing its season field normalizes to season 0, which the
+    // storage-key guard rejects. The route must fall back to the current
+    // draft season rather than throw inside useSyncExternalStore.
+    useSnapshot({ ...buildSnapshot(), season: 0 });
+
+    render(<TradeCalculatorClient />);
+
+    expect(
+      screen.getByRole("complementary", { name: "Trade evaluation" })
+    ).toBeInTheDocument();
+  });
+
   it("warns when browser storage is unavailable while keeping the calculator usable", async () => {
     useSnapshot(buildSnapshot());
     const getItem = jest.spyOn(Storage.prototype, "getItem").mockImplementation(() => {

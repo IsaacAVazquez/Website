@@ -190,6 +190,28 @@ jobs:
           const partialRatio = partialCount / successCount;
           console.log('Symbols carrying one or more retained sections:', partialCount, '(' + (partialRatio * 100).toFixed(1) + '%)');
 
+          // Fundamentals-outage gate on a per-run signal. Removing the old
+          // 25%/50% partial gates was right (the sticky flag ratchets toward
+          // the full universe on healthy runs and blocked commits for 26
+          // days), but it left a systemic non-price outage — every ticker's
+          // fundamentals coming back empty while prices keep working —
+          // committing green forever. entries[].retainedSections is written
+          // per run, so the share of symbols that had to carry fundamentals
+          // forward THIS run is a real gauge: 44% on the healthy 2026-08-18
+          // baseline, so warn past 75% and refuse to commit past 90%.
+          const retainedFundamentals = Array.isArray(index.entries)
+            ? index.entries.filter((entry) => Array.isArray(entry.retainedSections) && entry.retainedSections.includes('fundamentals')).length
+            : 0;
+          const retainedFundamentalsRatio = successCount > 0 ? retainedFundamentals / successCount : 0;
+          console.log('Symbols reusing earlier fundamentals this run:', retainedFundamentals, '(' + (retainedFundamentalsRatio * 100).toFixed(1) + '%)');
+          if (retainedFundamentalsRatio > 0.75) {
+            console.warn('::warning::' + (retainedFundamentalsRatio * 100).toFixed(1) + '% of symbols are reusing earlier fundamentals; the non-price sections may be degrading.');
+          }
+          if (retainedFundamentalsRatio > 0.9) {
+            console.error('::error::More than 90% of the research universe is reusing earlier fundamentals. Likely a systemic non-price outage; refusing to commit a degraded snapshot.');
+            process.exit(1);
+          }
+
           // Quality check: when defeatbeta-api silently returns empty data
           // for every ticker (the documented failure mode after a hang or
           // upstream outage), every symbol still ends up in index.symbols

@@ -322,12 +322,19 @@ describe("evaluateFantasyTrade", () => {
     expect(result.winner).toBe("side-a");
   });
 
-  it("gives disabled kicker and defense slots zero value", () => {
+  it("withholds the verdict when a side includes a position the league does not roster", () => {
     const result = evaluateFantasyTrade(input(["K-1"], ["DST-1"]));
 
-    expect(result.sideA.players[0].blendedValue).toBe(0);
-    expect(result.sideB.players[0].blendedValue).toBe(0);
-    expect(result.verdict).toBe("balanced");
+    // An unrosterable player has no market in this league, so the evaluation
+    // mirrors the dropped-player case instead of pricing him at zero and
+    // issuing a "balanced" verdict.
+    expect(result.sideA.players[0].blendedValue).toBeNull();
+    expect(result.sideA.players[0].coverage).toBe("insufficient");
+    expect(result.sideA.players[0].warnings).toContain(
+      "K is not used in this league's roster settings."
+    );
+    expect(result.coverage).toBe("insufficient");
+    expect(result.verdict).toBe("insufficient");
   });
 
   it("rejects duplicate assets and scoring-mismatched snapshots", () => {

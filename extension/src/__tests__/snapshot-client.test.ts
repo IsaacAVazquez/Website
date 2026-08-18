@@ -97,4 +97,61 @@ describe("fantasy companion snapshot client", () => {
     );
     expect(Object.keys(result.snapshot.week17Opponents).length).toBeGreaterThanOrEqual(30);
   });
+
+  it("falls back to the packaged board when the storage read rejects", async () => {
+    const published = readSnapshot("ppr.json");
+    const fetchMock = jest.mocked(globalThis.fetch);
+    fetchMock
+      .mockRejectedValueOnce(new Error("offline"))
+      .mockResolvedValueOnce(response(published) as Response);
+    Object.defineProperty(globalThis, "chrome", {
+      configurable: true,
+      value: {
+        storage: {
+          local: {
+            get: jest.fn().mockRejectedValue(new Error("storage IO failure")),
+            set: jest.fn().mockRejectedValue(new Error("storage IO failure")),
+          },
+        },
+      },
+    });
+
+    try {
+      const result = await loadCompanionSnapshot(
+        createRedraftRoomConfig({ season: 2026, scoring: "PPR" })
+      );
+
+      expect(result.snapshot.source).toBe("bundled");
+      expect(result.liveError).toContain("offline");
+    } finally {
+      Reflect.deleteProperty(globalThis, "chrome");
+    }
+  });
+
+  it("still serves a validated live fetch when the cache write fails", async () => {
+    const published = readSnapshot("ppr.json");
+    jest.mocked(globalThis.fetch).mockResolvedValue(response(published) as Response);
+    Object.defineProperty(globalThis, "chrome", {
+      configurable: true,
+      value: {
+        storage: {
+          local: {
+            get: jest.fn().mockResolvedValue({}),
+            set: jest.fn().mockRejectedValue(new Error("quota exceeded")),
+          },
+        },
+      },
+    });
+
+    try {
+      const result = await loadCompanionSnapshot(
+        createRedraftRoomConfig({ season: 2026, scoring: "PPR" })
+      );
+
+      expect(result.snapshot.source).toBe("published");
+      expect(result.liveError).toBeNull();
+    } finally {
+      Reflect.deleteProperty(globalThis, "chrome");
+    }
+  });
 });

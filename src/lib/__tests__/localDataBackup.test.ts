@@ -2,9 +2,34 @@ import {
   createLocalDataBackup,
   restoreLocalDataBackup,
 } from "@/lib/localDataBackup";
+import { getFantasyDraftStorageKey } from "@/app/fantasy-football/draft-tracker/hooks/useDraftState";
+import { getMockDraftStorageKey } from "@/app/fantasy-football/mock-draft/hooks/useMockDraftState";
+import { getFantasyTradeStorageKey } from "@/lib/fantasyTradePersistence";
 
 describe("localDataBackup", () => {
   beforeEach(() => localStorage.clear());
+
+  // Regression net for the managed-key list drifting behind the live key
+  // builders: the v2 tracker prefix silently dropped every draft room from
+  // backups after the v3 migration, and mock draft rooms were never added.
+  it("covers every live fantasy draft storage key builder", () => {
+    localStorage.setItem(getFantasyDraftStorageKey(2026), '{"version":3}');
+    localStorage.setItem(getMockDraftStorageKey(2026), '{"version":1}');
+    localStorage.setItem(
+      getFantasyTradeStorageKey({ season: 2026, scoring: "ppr" }),
+      '{"version":1}'
+    );
+
+    const backup = createLocalDataBackup(localStorage);
+
+    expect(Object.keys(backup.entries)).toEqual(
+      expect.arrayContaining([
+        getFantasyDraftStorageKey(2026),
+        getMockDraftStorageKey(2026),
+        getFantasyTradeStorageKey({ season: 2026, scoring: "ppr" }),
+      ])
+    );
+  });
 
   it("exports app data without unrelated browser keys", () => {
     localStorage.setItem("fantasy-player-notes-v1", '{"1":"target"}');

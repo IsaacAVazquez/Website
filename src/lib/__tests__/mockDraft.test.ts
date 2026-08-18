@@ -1,7 +1,7 @@
 import type { Player, TeamRoster } from "@/types";
 import { mulberry32 } from "@/lib/retirement/random";
 import { calculateDraftOrder } from "@/app/fantasy-football/draft-tracker/hooks/useDraftState";
-import { pickForTeam, type MockDraftEngineConfig } from "@/lib/mockDraft";
+import { getMockDraftBoardValue, pickForTeam, type MockDraftEngineConfig } from "@/lib/mockDraft";
 
 let nextId = 0;
 
@@ -163,15 +163,34 @@ describe("pickForTeam", () => {
     }
   });
 
-  it("still returns the best-ranked player when nobody on the board has a baseline", () => {
+  it("goes strictly best-available once the board is down to rankless players", () => {
     const deep = [
-      makePlayer({ position: "WR", rankEcr: 220, averageRank: 220 }),
-      makePlayer({ position: "RB", rankEcr: 205, averageRank: 205 }),
-      makePlayer({ position: "WR", rankEcr: 260, averageRank: 260 }),
+      makePlayer({ position: "WR", rankEcr: undefined, averageRank: Number.NaN }),
+      makePlayer({ position: "RB", rankEcr: undefined, averageRank: Number.NaN }),
+      makePlayer({ position: "WR", rankEcr: undefined, averageRank: Number.NaN }),
     ];
     const player = pickForTeam(deep, makeRoster(), 149, CONFIG, mulberry32(5));
-    expect(player).not.toBeNull();
-    expect((player as Player).rankEcr).toBe(205);
+    expect(player).toBe(deep[0]);
+  });
+
+  describe("getMockDraftBoardValue", () => {
+    it("prices a thin-sample ADP player by consensus instead of sinking him behind the board", () => {
+      // Goedert-shaped case: real ADP with under 20 recorded selections. The
+      // analytics baseline abstains, but the draft room must still price him
+      // on the pick scale or simulated teams never draft him.
+      const thin = makePlayer({ rankEcr: 111, averageRank: 111, adp: 110.7, adpTimesDrafted: 14 });
+      expect(getMockDraftBoardValue(thin)).toBe(111);
+    });
+
+    it("keeps reliable market ADP ahead of consensus", () => {
+      const reliable = makePlayer({ rankEcr: 30, averageRank: 30, adp: 24.5, adpTimesDrafted: 400 });
+      expect(getMockDraftBoardValue(reliable)).toBe(24.5);
+    });
+
+    it("sends only rankless players past every real baseline", () => {
+      const rankless = makePlayer({ rankEcr: undefined, averageRank: Number.NaN });
+      expect(getMockDraftBoardValue(rankless)).toBe(Number.MAX_SAFE_INTEGER);
+    });
   });
 
   it("returns null on an empty board", () => {

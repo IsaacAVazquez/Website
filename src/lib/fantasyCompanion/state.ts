@@ -25,6 +25,21 @@ function toIsoString(now: Date): string {
   return now.toISOString();
 }
 
+/**
+ * The persistence schema requires non-decreasing timestamps (decode rejects a
+ * pick stamped before its predecessor), but a wall clock can step backwards —
+ * an NTP correction after the laptop sleeps mid-draft. Every state mutation
+ * floors its stamp by the state's updatedAt, which in a valid state is >=
+ * startedAt and every recorded pick, so serialization stays round-trippable.
+ */
+function monotonicIsoString(now: Date, previousIso: string): string {
+  const previousMs = Date.parse(previousIso);
+  if (Number.isFinite(previousMs) && now.getTime() < previousMs) {
+    return previousIso;
+  }
+  return toIsoString(now);
+}
+
 export function isFantasyCompanionPlayer(value: unknown): value is Player {
   if (!value || typeof value !== "object" || Array.isArray(value)) return false;
   const player = value as Partial<Player>;
@@ -142,7 +157,7 @@ export function addFantasyCompanionPick(
     return { ok: false, state, reason: "duplicate-player" };
   }
 
-  const draftedAt = toIsoString(now);
+  const draftedAt = monotonicIsoString(now, state.updatedAt);
   const pickNumber = getCurrentPickNumber(state);
   const pick: FantasyCompanionPick = {
     pickNumber,
@@ -174,7 +189,7 @@ export function undoFantasyCompanionPick(
     ...state,
     picks,
     startedAt: picks.length === 0 ? null : state.startedAt,
-    updatedAt: toIsoString(now),
+    updatedAt: monotonicIsoString(now, state.updatedAt),
   };
 }
 
@@ -186,6 +201,6 @@ export function resetFantasyCompanionDraft(
     ...state,
     picks: [],
     startedAt: null,
-    updatedAt: toIsoString(now),
+    updatedAt: monotonicIsoString(now, state.updatedAt),
   };
 }

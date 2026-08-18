@@ -811,7 +811,15 @@ export function App() {
 
   useEffect(() => {
     if (!hydrated || !draftState) return;
-    void writeLocalValue(DRAFT_STORAGE_KEY, serializeFantasyCompanionState(draftState));
+    // serializeFantasyCompanionState throws when the state fails its
+    // round-trip schema check. A persistence failure must degrade to "this
+    // pick is not saved yet", never crash the live panel mid-draft.
+    try {
+      const serialized = serializeFantasyCompanionState(draftState);
+      void writeLocalValue(DRAFT_STORAGE_KEY, serialized);
+    } catch {
+      // Skip this write; the next valid state change persists again.
+    }
   }, [draftState, hydrated]);
 
   const startDraft = () => {

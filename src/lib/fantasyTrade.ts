@@ -417,6 +417,12 @@ function evaluatePlayer({
   const cutoffs = replacementCutoffSummary(position, expertCutoffs, marketCutoffs);
   const rosterTarget = getRedraftRosterTarget(league.lineup, league.rosterSize);
   if (rosterTarget[position] === 0) {
+    // A position the league does not roster has no market in that league, so
+    // this mirrors the dropped-player case: null values and insufficient
+    // coverage, which the top-level gate turns into a withheld verdict. The
+    // earlier zero-value/"supported" shape slipped through
+    // marketCoversEverySelectedPlayer and produced a verdict for a player the
+    // model documents as unpriceable.
     return {
       id: player.id,
       name: player.name,
@@ -424,18 +430,18 @@ function evaluatePlayer({
       position,
       expertRank: getExpertRank(player),
       marketAdp: isFinitePositive(player.adp) ? player.adp : null,
-      expertValue: 0,
-      marketValue: 0,
-      blendedValue: 0,
-      range: { low: 0, high: 0 },
-      coverage: "supported",
+      expertValue: null,
+      marketValue: null,
+      blendedValue: null,
+      range: null,
+      coverage: "insufficient",
       marketReliability: null,
       replacementCutoffs: cutoffs,
       warnings: [`${position} is not used in this league's roster settings.`],
-      rawExpertValue: 0,
-      rawMarketValue: 0,
-      rawBlendedValue: 0,
-      rawRange: { low: 0, high: 0 },
+      rawExpertValue: null,
+      rawMarketValue: null,
+      rawBlendedValue: null,
+      rawRange: null,
     };
   }
 
@@ -708,10 +714,9 @@ export function evaluateFantasyTrade(
       getFantasyAdpFreshness(marketAsOf, input.snapshot.season, now) === "current" &&
       marketFreshness !== "stale"
   );
-  const warnings = [
-    ...validateLeague(input.snapshot, input.league),
-    ...validateSides(input.sideA, input.sideB),
-  ];
+  const leagueIssues = validateLeague(input.snapshot, input.league);
+  const sideIssues = validateSides(input.sideA, input.sideB);
+  const warnings = [...leagueIssues, ...sideIssues];
 
   if (expertFreshness === "stale") {
     warnings.push("The expert board is stale, so the calculator cannot issue a trade verdict.");
@@ -771,8 +776,8 @@ export function evaluateFantasyTrade(
     coverage = worseCoverage(coverage, "limited");
   }
   if (
-    validateLeague(input.snapshot, input.league).length > 0 ||
-    validateSides(input.sideA, input.sideB).length > 0 ||
+    leagueIssues.length > 0 ||
+    sideIssues.length > 0 ||
     expertFreshness === "stale" ||
     !marketCoversEverySelectedPlayer
   ) {

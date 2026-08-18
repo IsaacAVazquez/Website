@@ -133,15 +133,38 @@ interface PersistedPick {
 }
 
 /**
- * Decode a persisted room. localStorage is a trust boundary: every field is
- * validated and any drafted player missing from the current board discards
- * the whole save, since a refreshed snapshot cannot honestly resume a room
- * built on players it no longer publishes.
+ * Bounds for a persisted room's settings. localStorage is a trust boundary,
+ * and `typeof x === "number"` alone let an edited save reach
+ * `initializeTeams(1e8)` and freeze the tab, so every numeric setting must be
+ * an integer inside a sane room shape (wider than the setup UI's options so
+ * old saves survive an options change, but nowhere near allocation size).
+ */
+const SETTINGS_BOUNDS = {
+  totalTeams: { min: 2, max: 20 },
+  rounds: { min: 1, max: 30 },
+} as const;
+
+function isBoundedInteger(value: unknown, min: number, max: number): value is number {
+  return typeof value === "number" && Number.isInteger(value) && value >= min && value <= max;
+}
+
+/**
+ * Decode a persisted room. Every field is validated and any drafted player
+ * missing from the current board discards the whole save, since a refreshed
+ * snapshot cannot honestly resume a room built on players it no longer
+ * publishes. `status` is persisted because it cannot be derived from the pick
+ * count alone: a room whose board ran out ends "complete" with fewer than
+ * totalTeams*rounds picks, and deriving would resume it soft-locked on-clock.
  */
 function decodePersistedRoom(
   raw: string,
   board: readonly Player[]
-): { settings: MockDraftSettings; seed: number; picks: DraftPick[] } | null {
+): {
+  settings: MockDraftSettings;
+  seed: number;
+  picks: DraftPick[];
+  status: "on-clock" | "complete" | null;
+} | null {
   let parsed: unknown;
   try {
     parsed = JSON.parse(raw);
@@ -155,9 +178,13 @@ function decodePersistedRoom(
   const settings = record.settings as Record<string, unknown> | undefined;
   if (
     !settings ||
-    typeof settings.totalTeams !== "number" ||
-    typeof settings.rounds !== "number" ||
-    typeof settings.userTeam !== "number" ||
+    !isBoundedInteger(
+      settings.totalTeams,
+      SETTINGS_BOUNDS.totalTeams.min,
+      SETTINGS_BOUNDS.totalTeams.max
+    ) ||
+    !isBoundedInteger(settings.rounds, SETTINGS_BOUNDS.rounds.min, SETTINGS_BOUNDS.rounds.max) ||
+    !isBoundedInteger(settings.userTeam, 1, settings.totalTeams as number) ||
     (settings.scoringFormat !== "PPR" &&
       settings.scoringFormat !== "HALF_PPR" &&
       settings.scoringFormat !== "STANDARD")
@@ -170,7 +197,11 @@ function decodePersistedRoom(
     userTeam: settings.userTeam,
     scoringFormat: settings.scoringFormat,
   };
-  if (typeof record.seed !== "number" || !Array.isArray(record.picks)) return null;
+  if (typeof record.seed !== "number" || !Number.isFinite(record.seed)) return null;
+  if (!Array.isArray(record.picks)) return null;
+  if (record.picks.length > decodedSettings.totalTeams * decodedSettings.rounds) return null;
+  const status =
+    record.status === "on-clock" || record.status === "complete" ? record.status : null;
 
   const byId = new Map(board.map((player) => [player.id, player]));
   const picks: DraftPick[] = [];
@@ -195,7 +226,7 @@ function decodePersistedRoom(
       timestamp: new Date(0),
     });
   }
-  return { settings: decodedSettings, seed: record.seed, picks };
+  return { settings: decodedSettings, seed: record.seed, picks, status };
 }
 
 const SETUP_STATE: MockDraftRoomState = {
@@ -243,7 +274,26 @@ export function useMockDraftState(
     if (savedScoringIsValid && savedScoring !== boardScoring) return;
     hydratedRef.current = true;
     const decoded = decodePersistedRoom(raw, board);
-    if (!decoded || decoded.picks.length === 0) {
+    // A zero-pick save is legitimate: drafting from slot 1 persists an
+    // on-clock room before the user has made a pick, so only a save that
+    // fails decoding or the integrity checks below gets discarded.
+    const totalPicks = decoded
+      ? decoded.settings.totalTeams * decoded.settings.rounds
+      : 0;
+    const status =
+      decoded === null
+        ? null
+        : decoded.status ?? (decoded.picks.length >= totalPicks ? "complete" : "on-clock");
+    const onClockBelongsToUser =
+      decoded !== null &&
+      (status !== "on-clock" ||
+        (decoded.picks.length < totalPicks &&
+          calculateDraftOrder(
+            decoded.picks.length + 1,
+            decoded.settings.totalTeams,
+            "snake"
+          ) === decoded.settings.userTeam));
+    if (!decoded || status === null || !onClockBelongsToUser) {
       try {
         window.localStorage.removeItem(getMockDraftStorageKey());
       } catch {
@@ -251,10 +301,9 @@ export function useMockDraftState(
       }
       return;
     }
-    const totalPicks = decoded.settings.totalTeams * decoded.settings.rounds;
     // eslint-disable-next-line react-hooks/set-state-in-effect -- one-shot resume of a persisted room after the board loads
     setState({
-      status: decoded.picks.length >= totalPicks ? "complete" : "on-clock",
+      status,
       settings: decoded.settings,
       seed: decoded.seed,
       picks: decoded.picks,
@@ -267,6 +316,7 @@ export function useMockDraftState(
     if (state.status === "setup") return;
     const payload = JSON.stringify({
       version: STORAGE_VERSION,
+      status: state.status,
       settings: state.settings,
       seed: state.seed,
       picks: state.picks.map((pick) => ({

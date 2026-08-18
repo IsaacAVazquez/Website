@@ -63,7 +63,15 @@ jobs:
           FANTASYPROS_SOURCE: public-html
           NODE_ENV: production
 
+      # Freshness verifies the redraft artifact (ppr.json) only, so it gates
+      # the redraft commit lane rather than the whole job: as a hard step it
+      # sat between the builds and both commit lanes and a redraft staleness
+      # failure aborted the run before a healthy best ball snapshot could
+      # commit — the exact coupling the soft-lane design exists to prevent.
+      # The terminal report step still turns the run red.
       - name: Verify refresh freshness
+        id: verify_freshness
+        continue-on-error: true
         run: npx tsx scripts/verifyDataRefresh.ts fantasy-football
 
       # Quality gate: a partial scrape (e.g. FantasyPros throttling some
@@ -75,6 +83,10 @@ jobs:
       # before it can replace a draft-ready snapshot.
       - name: Verify fantasy snapshot quality
         id: verify_quality
+        # Soft for the same reason as the freshness step above: this gate
+        # covers the redraft snapshots only and must not stop the best ball
+        # lane. The redraft commit below requires both gates to have passed.
+        continue-on-error: true
         run: |
           node -e "
           const fs = require('fs');
@@ -257,6 +269,7 @@ jobs:
 
       - name: Check for snapshot changes
         id: check_changes
+        if: steps.verify_freshness.outcome == 'success' && steps.verify_quality.outcome == 'success'
         run: |
           if git diff --quiet -- \
             src/data/fantasyPositionData.generated.ts \
@@ -311,14 +324,18 @@ jobs:
       # skipping the other's commit above.
       - name: Report soft-lane failures
         if: >-
+          steps.verify_freshness.outcome == 'failure' ||
+          steps.verify_quality.outcome == 'failure' ||
           steps.build_best_ball.outcome == 'failure' ||
           steps.verify_best_ball.outcome == 'failure' ||
           steps.adp_health.outputs.adp_dark == 'true'
         run: |
+          echo "redraft freshness: ${{ steps.verify_freshness.outcome }}"
+          echo "redraft quality:   ${{ steps.verify_quality.outcome }}"
           echo "best ball build:   ${{ steps.build_best_ball.outcome }}"
           echo "best ball gate:    ${{ steps.verify_best_ball.outcome }}"
           echo "redraft ADP dark:  ${{ steps.adp_health.outputs.adp_dark }}"
-          echo "::error::A fantasy soft lane failed. Redraft rankings were committed independently if they changed; see the step outcomes above."
+          echo "::error::A fantasy refresh gate failed. Each lane committed independently when its own gates passed; see the step outcomes above."
           exit 1
 
       - name: Create job summary
@@ -335,6 +352,7 @@ jobs:
           else
             echo "ℹ️ **Redraft:** the published rankings artifacts were already current." >> "$GITHUB_STEP_SUMMARY"
           fi
+          echo "**Redraft gates:** freshness ${{ steps.verify_freshness.outcome }} · quality ${{ steps.verify_quality.outcome }}" >> "$GITHUB_STEP_SUMMARY"
           echo "**Best ball build:** ${{ steps.build_best_ball.outcome }} · **gate:** ${{ steps.verify_best_ball.outcome }} · **committed:** ${{ steps.check_best_ball_changes.outputs.changed }}" >> "$GITHUB_STEP_SUMMARY"
           echo "**Redraft ADP past its age limit:** ${{ steps.adp_health.outputs.adp_dark }}" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"

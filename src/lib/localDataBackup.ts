@@ -22,8 +22,13 @@ const MANAGED_EXACT_KEYS = new Set([
   "score_pools_store_v1",
 ]);
 
+// Keep these aligned with the live key builders: getFantasyDraftStorageKey
+// (draft tracker, currently v3), getMockDraftStorageKey (mock draft), and
+// getFantasyTradeStorageKey. The retired v2 tracker prefix silently dropped
+// every active draft room from backups after the v3 migration.
 const MANAGED_KEY_PREFIXES = [
-  "fantasy-draft-tracker-v2-",
+  "fantasy-draft-tracker-v3-",
+  "fantasy-mock-draft-v1-",
   "fantasy-trade-calculator-v1-",
   "fantasy-formula-1-lineup-v1-",
 ];

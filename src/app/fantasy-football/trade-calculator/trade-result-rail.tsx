@@ -242,7 +242,14 @@ export function TradeResultRail({
           <details>
             <summary className="flex min-h-touch cursor-pointer list-none items-center gap-2 text-sm font-semibold text-[var(--home-ink)] marker:content-none">
               <AlertTriangle className="h-4 w-4 shrink-0 text-[var(--home-warning)]" aria-hidden="true" />
-              Why coverage is limited
+              {/* The panel mixes top-level and per-player notes, so its title
+                  must match the coverage chip above it instead of asserting
+                  "limited" beside a supported or insufficient result. */}
+              {coverage === "insufficient"
+                ? "Why there is no verdict"
+                : coverage === "limited"
+                  ? "Why coverage is limited"
+                  : "Notes on this result"}
             </summary>
             <ul className="grid gap-2 pb-3 pl-1 text-xs leading-5 text-[var(--home-ink-muted)]">
               {warnings.slice(0, 6).map((warning) => (

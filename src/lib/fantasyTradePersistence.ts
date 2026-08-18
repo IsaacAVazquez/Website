@@ -45,7 +45,14 @@ function isRecord(value: unknown): value is UnknownRecord {
   return Boolean(value) && typeof value === "object" && !Array.isArray(value);
 }
 
-function isValidSeason(value: unknown): value is number {
+/**
+ * Whether a value can scope a trade-calculator storage key. Exported so the
+ * route can validate a snapshot's season BEFORE building the key: the lenient
+ * snapshot normalizer emits season 0 for malformed input, and an invalid
+ * season must fall back to the current draft season instead of throwing
+ * inside a render.
+ */
+export function isValidFantasyTradeSeason(value: unknown): value is number {
   return Number.isSafeInteger(value) && Number(value) >= 2000 && Number(value) <= 3000;
 }
 
@@ -66,7 +73,7 @@ function normalizePlayerId(value: unknown): string | null {
 }
 
 function assertStorageScope(scope: FantasyTradeStorageScope): void {
-  if (!isValidSeason(scope.season) || !isFantasyTradeScoring(scope.scoring)) {
+  if (!isValidFantasyTradeSeason(scope.season) || !isFantasyTradeScoring(scope.scoring)) {
     throw new TypeError("season and scoring must identify a supported fantasy trade calculator scope.");
   }
 }
@@ -116,7 +123,7 @@ export function repairFantasyTradePersistenceState(
   if (!isRecord(value) || value.version !== FANTASY_TRADE_PERSISTENCE_VERSION) {
     return null;
   }
-  if (!isValidSeason(value.season) || !isFantasyTradeScoring(value.scoring)) {
+  if (!isValidFantasyTradeSeason(value.season) || !isFantasyTradeScoring(value.scoring)) {
     return null;
   }
   if (

@@ -11,6 +11,7 @@ import {
   isFantasyCompanionDraftComplete,
   resetFantasyCompanionDraft,
   undoFantasyCompanionPick,
+  serializeFantasyCompanionState,
 } from "@/lib/fantasyCompanion";
 import type { Player, Position } from "@/types";
 
@@ -148,7 +149,9 @@ describe("fantasy companion draft state", () => {
 
   it("undoes the last pick and resets the room without changing config", () => {
     const room = createRedraftRoomConfig({ season: 2026 });
-    const empty = createFantasyCompanionState(room);
+    // Created at a fixture time so the later fixture stamps stay monotonic
+    // (a stamp earlier than the state's updatedAt is deliberately clamped).
+    const empty = createFantasyCompanionState(room, new Date("2026-08-12T10:00:00.000Z"));
     expect(undoFantasyCompanionPick(empty)).toBe(empty);
 
     const added = addFantasyCompanionPick(
@@ -174,5 +177,27 @@ describe("fantasy companion draft state", () => {
       startedAt: null,
       updatedAt: "2026-08-12T10:03:00.000Z",
     });
+  });
+
+  it("keeps timestamps monotonic when the wall clock steps backwards", () => {
+    // An NTP correction after the laptop sleeps can rewind the clock between
+    // picks. The persistence schema rejects out-of-order stamps, so a rewound
+    // pick clamps to the state's updatedAt instead of poisoning the save.
+    const room = createRedraftRoomConfig({ season: 2026 });
+    const start = createFantasyCompanionState(room, new Date("2026-08-12T10:05:00.000Z"));
+    const first = addFantasyCompanionPick(start, player("1"), new Date("2026-08-12T10:06:00.000Z"));
+    if (!first.ok) throw new Error("test setup failed");
+
+    const rewound = addFantasyCompanionPick(
+      first.state,
+      player("2"),
+      new Date("2026-08-12T10:05:30.000Z")
+    );
+    if (!rewound.ok) throw new Error("test setup failed");
+    expect(rewound.state.picks[1].draftedAt).toBe("2026-08-12T10:06:00.000Z");
+    expect(serializeFantasyCompanionState(rewound.state)).toEqual(expect.any(String));
+
+    const undone = undoFantasyCompanionPick(rewound.state, new Date("2026-08-12T10:04:00.000Z"));
+    expect(undone.updatedAt).toBe("2026-08-12T10:06:00.000Z");
   });
 });

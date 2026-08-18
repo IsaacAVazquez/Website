@@ -191,6 +191,66 @@ describe("useMockDraftState", () => {
     expect(result.current.state.picks).toHaveLength(0);
   });
 
+  it("resumes a zero-pick slot-one room instead of deleting it", async () => {
+    const board = makeBoard();
+    const first = renderHook(() => useMockDraftState(board, "PPR"));
+    act(() => first.result.current.startDraft({ ...SETTINGS, userTeam: 1 }, SEED));
+    expect(first.result.current.state.status).toBe("on-clock");
+    expect(first.result.current.state.picks).toHaveLength(0);
+    first.unmount();
+
+    const second = renderHook(() => useMockDraftState(board, "PPR"));
+    await flush();
+
+    expect(second.result.current.state.status).toBe("on-clock");
+    expect(second.result.current.state.seed).toBe(SEED);
+    expect(second.result.current.state.picks).toHaveLength(0);
+    expect(localStorage.getItem(getMockDraftStorageKey())).not.toBeNull();
+  });
+
+  it("resumes a board-exhausted room as complete instead of soft-locking it on-clock", async () => {
+    const board = makeBoard();
+    localStorage.setItem(
+      getMockDraftStorageKey(),
+      JSON.stringify({
+        version: 1,
+        status: "complete",
+        settings: SETTINGS,
+        seed: SEED,
+        picks: board.slice(0, 5).map((player, index) => ({
+          pickNumber: index + 1,
+          teamNumber: (index % SETTINGS.totalTeams) + 1,
+          playerId: player.id,
+        })),
+      })
+    );
+
+    const { result } = renderHook(() => useMockDraftState(board, "PPR"));
+    await flush();
+
+    expect(result.current.state.status).toBe("complete");
+    expect(result.current.state.picks).toHaveLength(5);
+  });
+
+  it("discards a tampered save with absurd settings before allocating teams", async () => {
+    const board = makeBoard();
+    localStorage.setItem(
+      getMockDraftStorageKey(),
+      JSON.stringify({
+        version: 1,
+        settings: { ...SETTINGS, totalTeams: 1e8 },
+        seed: SEED,
+        picks: [],
+      })
+    );
+
+    const { result } = renderHook(() => useMockDraftState(board, "PPR"));
+    await flush();
+
+    expect(result.current.state.status).toBe("setup");
+    expect(localStorage.getItem(getMockDraftStorageKey())).toBeNull();
+  });
+
   it("returns the user to their previous pick on undo", async () => {
     const board = makeBoard();
     const { result } = renderHook(() => useMockDraftState(board, "PPR"));
