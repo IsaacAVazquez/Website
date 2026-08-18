@@ -77,12 +77,8 @@ draft assistant:
 
 | Component | File | Role |
 |----------|------|------|
-| `TierBreakdown` | `src/components/fantasy/TierBreakdown.tsx` | Tiers view: FantasyPros tier-grouped sections with player counts, rank ranges, and rank-cliff hints |
-| `FantasyBoardLegend` | `src/components/fantasy/FantasyBoardLegend.tsx` | Collapsible "How to read this board" key, sourced from `FANTASY_BOARD_LEGEND` |
 | `PositionFilterBar` | `src/components/fantasy/PositionFilterBar.tsx` | Generic position pill radiogroup with per-slice availability/NA states, shared by rankings and draft boards |
-| `RankingsListRow` | `src/components/fantasy/RankingsListRow.tsx` | Single List-view row: published rank, position chip, note indicator, metric strip, and star/compare toggles |
-| `TierBreakSeparator` | `src/components/fantasy/TierBreakSeparator.tsx` | Labeled rule injected into the List view at tier boundaries with rank-cliff hints |
-| `PlayerDetailDrawer` | `src/components/fantasy/PlayerDetailDrawer.tsx` | Shared focus-trapped player detail drawer/bottom-sheet with tier context, ADP, distribution bar, queue/compare toggles, and editable note |
+| `PlayerDetailDrawer` | `src/components/fantasy/PlayerDetailDrawer.tsx` | Focus-trapped player detail drawer/bottom-sheet with tier context, ADP, distribution bar, queue/compare toggles, and editable note; used by the draft assistant and best ball, while the rankings board renders its own tier-plate drawer inside `fantasy-football-client.tsx` |
 | `RankDistributionBar` | `src/components/fantasy/RankDistributionBar.tsx` | Visualizes expert best→worst rank spread with the average marked and tight/mixed/volatile color coding |
 | `CompareTray` | `src/components/fantasy/CompareTray.tsx` | Docked bottom bar surfacing the compare selection (up to 3 players) that opens the `CompareModal` |
 | `CompareModal` | `src/components/fantasy/CompareModal.tsx` | Side-by-side comparison dialog with per-row winner highlighting and shared-scale range bars |

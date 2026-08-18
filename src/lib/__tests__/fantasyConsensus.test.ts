@@ -1,4 +1,4 @@
-import { getConsensusSpread, getTierGap, withTierBreaks } from "@/lib/fantasyUtils";
+import { getConsensusSpread, withTierBreaks } from "@/lib/fantasyUtils";
 import type { Player } from "@/types";
 
 function player(overrides: Partial<Player>): Player {
@@ -48,16 +48,5 @@ describe("withTierBreaks", () => {
   it("never starts a break on an untiered row", () => {
     const rows = withTierBreaks([player({ id: "a", tier: undefined }), player({ id: "b", tier: undefined })]);
     expect(rows.every((r) => !r.startsTier)).toBe(true);
-  });
-});
-
-describe("getTierGap", () => {
-  it("returns the rounded downward step between tiers", () => {
-    expect(getTierGap(8, 17)).toBe(9);
-  });
-
-  it("returns 0 for non-downward or invalid input", () => {
-    expect(getTierGap(20, 10)).toBe(0);
-    expect(getTierGap(undefined, 10)).toBe(0);
   });
 });

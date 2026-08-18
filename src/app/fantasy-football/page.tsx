@@ -7,9 +7,9 @@ import { normalizeFantasyState } from "./fantasy-state";
 export const metadata = constructMetadata({
   title: "Fantasy Football Rankings",
   description:
-    "Snapshot-backed fantasy football rankings with scoring toggles, a linked draft assistant, room-relative Draft Outlook, and an expected return calculator.",
+    "Tier-first fantasy football rankings from a published FantasyPros snapshot, with expert spread bars, avg-rank cliffs, scoring toggles, and a linked draft assistant.",
   canonicalUrl: "/fantasy-football",
-  dateModified: "2026-08-02",
+  dateModified: "2026-08-18",
 });
 
 interface FantasyFootballPageProps {

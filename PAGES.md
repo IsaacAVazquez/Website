@@ -68,7 +68,7 @@ Current route inventory and page ownership for the live app.
 
 | Route | File | Notes |
 |------|------|-------|
-| `/fantasy-football` | `src/app/fantasy-football/page.tsx` | FantasyPros consensus rankings board (`fantasy-football-client.tsx`): deep-linkable position pill bar, PPR/Half-PPR/Standard scoring selector, per-board search, List/Tiers view toggle (`?view=tiers`), Comfortable/Compact density, infinite-scroll windowing, shared player detail drawer, compare tray, watchlist queue, private notes, and a freshness/ADP-source sidebar |
+| `/fantasy-football` | `src/app/fantasy-football/page.tsx` | Tier-first FantasyPros consensus board (`fantasy-football-client.tsx`, from the `draft-rankings` design template): numbered tier plates with avg-rank cliff separators, per-row expert-spread bars, a sticky position/scoring/search bar, windowed rendering, freshness and ADP-source chips, and the board's own player drawer with board neighborhood, watchlist queue, and private notes (`?view=` still parses for old links but has no UI) |
 | `/fantasy-football/best-ball` | `src/app/fantasy-football/best-ball/page.tsx` | Contest-aware best ball rankings, strategy notes, Underdog ADP, and Week 17 opponent context |
 | `/fantasy-football/best-ball/draft-tracker` | `src/app/fantasy-football/best-ball/draft-tracker/page.tsx` | Best ball room tracker with contest-specific recommendations, roster construction, room-relative Draft Outlook, published BBM field economics, and user-entered expected return math |
 | `/fantasy-football/tiers/[position]` | `src/app/fantasy-football/tiers/[position]/page.tsx` | Redirects to the canonical fantasy board with query parameters |
