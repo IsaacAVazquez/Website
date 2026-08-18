@@ -1,0 +1,19 @@
+"use client";
+
+import { RouteErrorBoundary } from "@/components/RouteErrorBoundary";
+
+export default function MockDraftError({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) {
+  return (
+    <RouteErrorBoundary
+      error={error}
+      reset={reset}
+      surfaceName="the fantasy football mock draft simulator"
+    />
+  );
+}

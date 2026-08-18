@@ -182,6 +182,18 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       tags: ['Fantasy Football', 'Trade Calculator', 'Redraft', 'Rankings'],
     },
     {
+      id: 'page-fantasy-football-mock-draft',
+      title: 'Fantasy Football Mock Draft Simulator',
+      excerpt:
+        'A practice draft room against simulated opponents built on the published consensus board and mock-draft ADP.',
+      content:
+        'Fantasy football mock draft simulator practice draft room simulated opponents snake draft one QB redraft consensus board ADP PPR half PPR standard draft slot strategy rehearsal',
+      url: '/fantasy-football/mock-draft',
+      type: 'project',
+      category: 'Fantasy Football Analytics',
+      tags: ['Fantasy Football', 'Mock Draft', 'Draft Tools', 'Rankings'],
+    },
+    {
       id: 'page-fantasy-football-best-ball',
       title: 'Best Ball Rankings and Draft Assistant',
       excerpt:

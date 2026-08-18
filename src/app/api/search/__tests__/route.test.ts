@@ -211,6 +211,26 @@ describe("GET /api/search", () => {
     );
   });
 
+  it("indexes the mock draft simulator as a distinct page", async () => {
+    const response = await GET(
+      makeRequest("?q=mock%20draft%20simulator&type=project")
+    );
+    const body = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(body.results).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          id: "page-fantasy-football-mock-draft",
+          title: "Fantasy Football Mock Draft Simulator",
+          url: "/fantasy-football/mock-draft",
+          type: "project",
+          category: "Fantasy Football Analytics",
+        }),
+      ])
+    );
+  });
+
   it("indexes the preseason trade calculator as a distinct page", async () => {
     const response = await GET(
       makeRequest("?q=fantasy%20trade%20calculator&type=project")

@@ -718,6 +718,18 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                 Open trade calculator
                 <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
               </Link>
+              <Link
+                href="/fantasy-football/mock-draft"
+                className="inline-flex min-h-[48px] items-center gap-2 rounded-full border px-5 py-3 text-sm font-semibold transition-[background-color,border-color,color] duration-200"
+                style={{
+                  borderColor: "var(--home-rule)",
+                  background: "var(--home-paper)",
+                  color: "var(--home-ink)",
+                }}
+              >
+                Practice a mock draft
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
               <button
                 type="button"
                 onClick={() => setShowStats((open) => !open)}

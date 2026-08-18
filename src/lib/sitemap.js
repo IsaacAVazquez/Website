@@ -55,6 +55,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/fantasy-football/best-ball": readBestBallLastmod(),
   "/fantasy-football/best-ball/draft-tracker": readBestBallLastmod(),
   "/fantasy-football/draft-tracker": readFantasyLastmod(),
+  "/fantasy-football/mock-draft": readFantasyLastmod(),
   "/fantasy-football/trade-calculator": readFantasyLastmod(),
   "/fintech-tools/budget-planner": "2026-04-03",
   "/fintech-tools/interchange-iq": "2026-04-02",
@@ -107,6 +108,7 @@ const CHANGEFREQ_BY_ROUTE = {
   "/fantasy-football/best-ball": "weekly",
   "/fantasy-football/best-ball/draft-tracker": "weekly",
   "/fantasy-football/draft-tracker": "weekly",
+  "/fantasy-football/mock-draft": "weekly",
   "/fantasy-football/trade-calculator": "weekly",
   // Investments — committed snapshots refresh twice weekly
   "/investments": "weekly",
