@@ -37,16 +37,37 @@ const wait = (milliseconds) =>
 async function readProductionLedger() {
   const url = new URL(revisionEndpoint);
   url.searchParams.set("cacheBust", `${Date.now()}`);
-  const response = await fetch(url, {
-    cache: "no-store",
-    signal: AbortSignal.timeout(requestTimeoutMs),
-    headers: {
-      Accept: "application/json",
-      "User-Agent": "WebsiteDataPublicationHealth/1.0",
-    },
-    redirect: "follow",
-  });
 
+  // HTTP-level failure is already tolerated below by returning a soft result, but
+  // transport-level failure was not, and neither call site wraps this function.
+  // An AbortSignal.timeout, a DNS failure, or a TLS reset therefore rejected out
+  // of the first call in main() and exited the run before the build hook ever
+  // fired, so committed snapshots stayed unpublished for up to six hours while
+  // the opened incident pointed on-call at the hook and the access policy. From
+  // the poll loop the same rejection discarded the remaining attempts and filed a
+  // false alarm about a deploy that was succeeding. The sibling
+  // ensure-production-data-revision.sh deliberately swallows this same class of
+  // failure and states the policy; the .mjs rewrite dropped it for the read path.
+  let response;
+  try {
+    response = await fetch(url, {
+      cache: "no-store",
+      signal: AbortSignal.timeout(requestTimeoutMs),
+      headers: {
+        Accept: "application/json",
+        "User-Agent": "WebsiteDataPublicationHealth/1.0",
+      },
+      redirect: "follow",
+    });
+  } catch (error) {
+    console.log(
+      `Production health endpoint unreachable: ${error instanceof Error ? error.message : String(error)}`
+    );
+    return { status: 0, revision: null };
+  }
+
+  // Deliberate: an access rule blocking the publisher is a real misconfiguration
+  // and must fail loudly rather than read as an undeployed revision.
   if (response.status === 401 || response.status === 403) {
     throw new Error(
       `Production health endpoint rejected the publication check with HTTP ${response.status}. Check the Cloudflare or Netlify access rule for ${url.pathname}.`
@@ -57,7 +78,16 @@ async function readProductionLedger() {
     return { status: response.status, revision: null };
   }
 
-  const payload = await response.json();
+  let payload;
+  try {
+    payload = await response.json();
+  } catch (error) {
+    console.log(
+      `Production health endpoint returned unparseable JSON: ${error instanceof Error ? error.message : String(error)}`
+    );
+    return { status: response.status, revision: null };
+  }
+
   return {
     status: response.status,
     revision: typeof payload.revision === "string" ? payload.revision : null,

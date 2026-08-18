@@ -60,4 +60,18 @@ describe("public sitemap", () => {
     const entry = getPublicSitemapEntries().find(({ loc }) => loc === pathname);
     expect(entry?.lastmod).toBe(new Date(generatedAt as string).toISOString());
   });
+
+  it("publishes the trade calculator as a weekly fantasy leaf", () => {
+    const entries = getPublicSitemapEntries();
+    const fantasyHub = entries.find(({ loc }) => loc === "/fantasy-football");
+    const tradeCalculator = entries.find(
+      ({ loc }) => loc === "/fantasy-football/trade-calculator"
+    );
+
+    expect(tradeCalculator).toMatchObject({
+      changefreq: "weekly",
+      priority: 0.6,
+      lastmod: fantasyHub?.lastmod,
+    });
+  });
 });

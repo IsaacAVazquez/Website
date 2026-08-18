@@ -170,6 +170,18 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       tags: ['Fantasy Football', 'Rankings', 'Draft Tools', 'Next.js', 'TypeScript'],
     },
     {
+      id: 'page-fantasy-football-trade-calculator',
+      title: 'Fantasy Football Trade Calculator',
+      excerpt:
+        'A preseason one-QB redraft estimate using expert consensus, mock-draft ADP, and league settings.',
+      content:
+        'Fantasy football trade calculator preseason one QB redraft trade estimate expert consensus ECR mock draft ADP PPR half PPR standard league settings roster size lineup player value',
+      url: '/fantasy-football/trade-calculator',
+      type: 'project',
+      category: 'Fantasy Football Analytics',
+      tags: ['Fantasy Football', 'Trade Calculator', 'Redraft', 'Rankings'],
+    },
+    {
       id: 'page-fantasy-football-best-ball',
       title: 'Best Ball Rankings and Draft Assistant',
       excerpt:

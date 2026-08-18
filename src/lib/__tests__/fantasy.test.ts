@@ -5,11 +5,13 @@ import {
   FANTASY_ROUTE_POSITIONS,
   FANTASY_SNAPSHOT_SCHEMA_VERSION,
   getAllFantasySnapshotPlayers,
+  getCrossBoardFantasyPlayers,
   getFantasyPlayersForPosition,
   getFantasySliceMetadata,
   normalizeFantasySnapshot,
   publishFantasyPlayer,
 } from "@/lib/fantasy";
+import { getValueVsAdp } from "@/lib/fantasyUtils";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import type { Player } from "@/types";
@@ -321,6 +323,68 @@ describe("fantasy snapshot normalization", () => {
       "rb-1",
       "k-1",
     ]);
+  });
+
+  it("strips position-scale rank fields from position-only players in the cross-board union", () => {
+    const snapshot = normalizeFantasySnapshot(
+      {
+        season: 2026,
+        week: 0,
+        generatedAt: "2026-07-01T00:00:00.000Z",
+        scoringFormat: "PPR",
+        source: "snapshot",
+        positions: {
+          RB: [
+            {
+              id: "rb-deep",
+              name: "Deep Back",
+              team: "GB",
+              position: "RB",
+              // Position-board scale: RB139, not overall pick 139.
+              averageRank: 139,
+              standardDeviation: 9,
+              rankEcr: 139,
+              rankAverage: 139.4,
+              positionRank: 139,
+              minRank: 120,
+              maxRank: 160,
+              tier: 12,
+              adp: 163.5,
+              adpTimesDrafted: 40,
+            },
+          ],
+        },
+        overall: [
+          {
+            id: "rb-1",
+            name: "Ranked Back",
+            team: "ATL",
+            position: "RB",
+            averageRank: 1,
+            standardDeviation: 1,
+            rankEcr: 1,
+            tier: 1,
+          },
+        ],
+      },
+      "ppr"
+    );
+
+    const [overallPlayer, positionOnlyPlayer] = getCrossBoardFantasyPlayers(snapshot);
+    expect(overallPlayer).toMatchObject({ id: "rb-1", rankEcr: 1, tier: 1, averageRank: 1 });
+    expect(positionOnlyPlayer.id).toBe("rb-deep");
+    expect(positionOnlyPlayer.rankEcr).toBeUndefined();
+    expect(positionOnlyPlayer.rankAverage).toBeUndefined();
+    expect(positionOnlyPlayer.minRank).toBeUndefined();
+    expect(positionOnlyPlayer.maxRank).toBeUndefined();
+    expect(positionOnlyPlayer.tier).toBeUndefined();
+    expect(positionOnlyPlayer.standardDeviation).toBeUndefined();
+    expect(positionOnlyPlayer.averageRank).toBeNaN();
+    // The overall-scale market price and the honestly labeled position rank survive.
+    expect(positionOnlyPlayer).toMatchObject({ positionRank: 139, adp: 163.5, adpTimesDrafted: 40 });
+    // With the expert rank gone, getValueVsAdp can no longer manufacture a
+    // cross-scale Value chip for this player (the original compare-tray bug).
+    expect(getValueVsAdp(positionOnlyPlayer)).toBeNull();
   });
 
   it("still refuses to synthesize a position board from overall-only legacy data", () => {

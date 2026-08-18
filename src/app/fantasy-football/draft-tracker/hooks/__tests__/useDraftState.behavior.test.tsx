@@ -233,6 +233,45 @@ describe("useDraftState", () => {
     expect(result.current.getTeamName(3)).toBe("Team 3");
   });
 
+  it("preserves custom team names through multi-pick undo and reset", () => {
+    const { result } = renderHook(() => useDraftState());
+
+    act(() => {
+      result.current.setTeamName(1, "First and Long");
+      result.current.setTeamName(2, "The Commish");
+    });
+    act(() => {
+      result.current.draftPlayer({ ...SAMPLE_PLAYER, id: "a", name: "A" });
+      result.current.draftPlayer({ ...SAMPLE_PLAYER, id: "b", name: "B" });
+      result.current.draftPlayer({ ...SAMPLE_PLAYER, id: "c", name: "C" });
+    });
+
+    act(() => {
+      result.current.undoToPick(2);
+    });
+
+    expect(result.current.getTeamName(1)).toBe("First and Long");
+    expect(result.current.getTeamName(2)).toBe("The Commish");
+
+    act(() => {
+      result.current.resetDraft();
+    });
+
+    expect(result.current.draftState.picks).toHaveLength(0);
+    expect(result.current.getTeamName(1)).toBe("First and Long");
+    expect(result.current.getTeamName(2)).toBe("The Commish");
+
+    act(() => {
+      // DraftSetup saves the complete settings object again before it starts.
+      result.current.updateSettings({ ...result.current.draftState.settings });
+      result.current.startDraft();
+    });
+
+    expect(result.current.draftState.isActive).toBe(true);
+    expect(result.current.getTeamName(1)).toBe("First and Long");
+    expect(result.current.getTeamName(2)).toBe("The Commish");
+  });
+
   it("persists the draft to localStorage", async () => {
     const { result, unmount } = renderHook(() => useDraftState());
 

@@ -82,11 +82,55 @@ describe("DraftValuePanel", () => {
     expect(screen.getByText("3 of 12")).toBeInTheDocument();
     expect(screen.getByText("82nd percentile among same-progress teams")).toBeInTheDocument();
     expect(screen.getByText("+3.0")).toBeInTheDocument();
+    expect(screen.getByText("Calculated market value")).toBeInTheDocument();
+    expect(screen.getByText("Market price")).toBeInTheDocument();
     expect(
       screen.getByText(/Projected points, win probability, and roster-specific dollar EV require a separate simulation/i)
     ).toBeInTheDocument();
     expect(screen.getByText(/Slot 12 has 1 to 23 pick gaps/i)).toBeInTheDocument();
     expect(screen.getByText("Model v2")).toBeInTheDocument();
+  });
+
+  it("keeps the market labels for an ADP-backed read", () => {
+    render(
+      <DraftValuePanel
+        report={{
+          ...REPORT,
+          market: {
+            ...REPORT.market,
+            adpPicks: REPORT.market.judgedPicks,
+            consensusRankPicks: 0,
+          },
+        }}
+        headingId="adp-only-heading"
+      />
+    );
+
+    expect(screen.getByText("Calculated market value")).toBeInTheDocument();
+    expect(screen.getByText("Market price")).toBeInTheDocument();
+    expect(screen.getByText(/the price the market put on each player/i)).toBeInTheDocument();
+  });
+
+  it("does not describe a consensus-only read as market price", () => {
+    render(
+      <DraftValuePanel
+        report={{
+          ...REPORT,
+          market: {
+            ...REPORT.market,
+            adpPicks: 0,
+            consensusRankPicks: REPORT.market.judgedPicks,
+          },
+        }}
+        headingId="consensus-only-heading"
+      />
+    );
+
+    expect(screen.getByText("Calculated consensus value")).toBeInTheDocument();
+    expect(screen.getByText("Consensus rank")).toBeInTheDocument();
+    expect(screen.queryByText("Market price")).not.toBeInTheDocument();
+    expect(screen.getByText(/Market price requires usable ADP/i)).toBeInTheDocument();
+    expect(screen.getByText(/no usable ADP evidence for these picks/i)).toBeInTheDocument();
   });
 
   it("holds the room rank until the sample is big enough to mean anything", () => {

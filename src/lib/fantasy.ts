@@ -223,6 +223,33 @@ export function getAllFantasySnapshotPlayers(snapshot: FantasySnapshot): Player[
 }
 
 /**
+ * The cross-board union for queue, compare, and drawer lookups. A player absent
+ * from the overall board exists only on a position slice, where rankEcr, tier,
+ * standardDeviation, and the expert range are position-scale numbers. Comparing
+ * those against overall-scale ranks (or an overall ADP via getValueVsAdp) marks
+ * the wrong player "Best", so this variant strips the expert-rank fields from
+ * position-only players. Identity, position rank, bye, ownership, and ADP are
+ * scale-safe and survive.
+ */
+export function getCrossBoardFantasyPlayers(snapshot: FantasySnapshot): Player[] {
+  const overallIds = new Set(snapshot.overall.map((player) => player.id));
+  return getAllFantasySnapshotPlayers(snapshot).map((player) =>
+    overallIds.has(player.id)
+      ? player
+      : {
+          ...player,
+          averageRank: Number.NaN,
+          standardDeviation: undefined,
+          rankEcr: undefined,
+          rankAverage: undefined,
+          minRank: undefined,
+          maxRank: undefined,
+          tier: undefined,
+        }
+  );
+}
+
+/**
  * Persisted player IDs can only be classified as stale when every published
  * slice loaded successfully. An unavailable position is an incomplete player
  * universe, not evidence that its previously pinned players no longer exist.

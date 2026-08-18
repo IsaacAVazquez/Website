@@ -211,6 +211,28 @@ describe("GET /api/search", () => {
     );
   });
 
+  it("indexes the preseason trade calculator as a distinct page", async () => {
+    const response = await GET(
+      makeRequest("?q=fantasy%20trade%20calculator&type=project")
+    );
+    const body = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(body.results).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          id: "page-fantasy-football-trade-calculator",
+          title: "Fantasy Football Trade Calculator",
+          url: "/fantasy-football/trade-calculator",
+          type: "project",
+          category: "Fantasy Football Analytics",
+          excerpt:
+            "A preseason one-QB redraft estimate using expert consensus, mock-draft ADP, and league settings.",
+        }),
+      ])
+    );
+  });
+
   it("degrades gracefully when the blog corpus loader throws", async () => {
     mockGetAllBlogPostPreviews.mockImplementation(() => {
       throw new Error("boom");

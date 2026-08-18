@@ -234,6 +234,10 @@ function restorePreviousSegment(
     query: previousSegment.query,
     sourceUrl: previousSegment.sourceUrl,
     repositories,
+    // These star counts are the previous run's. Marking the segment keeps
+    // mergeStarHistory from stamping them into the append-only star history
+    // under today's date as if they had been measured today.
+    reused: true,
   };
 }
 

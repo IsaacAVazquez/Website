@@ -3,7 +3,7 @@
 Current route inventory and page ownership for the live app.
 
 **Framework:** Next.js 16 App Router
-**Last updated:** 2026-06-19
+**Last updated:** 2026-08-16
 
 ---
 
@@ -74,6 +74,7 @@ Current route inventory and page ownership for the live app.
 | `/fantasy-football/tiers/[position]` | `src/app/fantasy-football/tiers/[position]/page.tsx` | Redirects to the canonical fantasy board with query parameters |
 | `/fantasy-football/rb-tiers` | `src/app/fantasy-football/rb-tiers/page.tsx` | Redirects to the canonical RB board with query parameters |
 | `/fantasy-football/draft-tracker` | `src/app/fantasy-football/draft-tracker/page.tsx` | Redraft room tracker with roster pressure, room-relative Draft Outlook, draft-slot context, and user-entered expected return math |
+| `/fantasy-football/trade-calculator` | `src/app/fantasy-football/trade-calculator/page.tsx` | Preseason one-QB redraft trade estimate using overall expert consensus, reliable mock-draft ADP, league-size replacement lines, and browser-local player selections |
 
 ### Utility/admin
 
@@ -124,6 +125,7 @@ These routes manage more of their own spacing and width:
 - `/fantasy-football/best-ball`
 - `/fantasy-football/best-ball/draft-tracker`
 - `/fantasy-football/draft-tracker`
+- `/fantasy-football/trade-calculator`
 - `/fintech-tools/budget-planner`
 - `/fintech-tools/interchange-iq`
 - `/food-map`

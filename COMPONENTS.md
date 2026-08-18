@@ -2,7 +2,7 @@
 
 Current component map for the live application.
 
-**Last updated:** 2026-07-12
+**Last updated:** 2026-08-11
 
 > Seven routes (`/`, `/portfolio`, `/writing`, `/dashboards`, `/about`, `/resume`,
 > `/contact`) render Catalog 97 composition roots from `src/components/catalog97/`.

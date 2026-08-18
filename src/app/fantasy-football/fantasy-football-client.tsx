@@ -9,6 +9,7 @@ import {
   useState,
   useSyncExternalStore,
   type CSSProperties,
+  type KeyboardEvent,
   type ReactNode,
 } from "react";
 import Link from "next/link";
@@ -24,7 +25,7 @@ import {
   FANTASY_SCORING_LABELS,
   FantasyRoutePosition,
   FantasyRouteScoring,
-  getAllFantasySnapshotPlayers,
+  getCrossBoardFantasyPlayers,
   getFantasyPlayerSearchText,
   getFantasyWeekLabel,
   hasCompleteFantasyPlayerUniverse,
@@ -69,8 +70,8 @@ const SCORING_OPTIONS: { key: FantasyRouteScoring; label: string }[] = [
   { key: "standard", label: "Standard" },
 ];
 
-/** How many list rows render before the "Load more" sentinel kicks in. */
-const RANKINGS_PAGE_SIZE = 60;
+/** Keep each mounted rankings window below the large-list threshold. */
+const RANKINGS_PAGE_SIZE = 40;
 
 const subscribeToHydration = () => () => undefined;
 const getHydratedSnapshot = () => true;
@@ -285,6 +286,30 @@ function SegmentedToggle<T extends string>({
   onChange: (value: T) => void;
   disabled?: boolean;
 }) {
+  const buttonRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const selectedIndex = options.findIndex((option) => option.value === value);
+  const tabStopIndex = disabled ? -1 : Math.max(selectedIndex, 0);
+
+  function handleRadioKeyDown(event: KeyboardEvent<HTMLButtonElement>, currentIndex: number) {
+    if (!["ArrowRight", "ArrowDown", "ArrowLeft", "ArrowUp", "Home", "End"].includes(event.key)) {
+      return;
+    }
+    if (disabled || options.length === 0) return;
+
+    event.preventDefault();
+    let nextIndex: number;
+    if (event.key === "Home") nextIndex = 0;
+    else if (event.key === "End") nextIndex = options.length - 1;
+    else if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+      nextIndex = (currentIndex + 1) % options.length;
+    } else {
+      nextIndex = (currentIndex - 1 + options.length) % options.length;
+    }
+
+    buttonRefs.current[nextIndex]?.focus();
+    onChange(options[nextIndex].value);
+  }
+
   return (
     <div
       role="radiogroup"
@@ -295,7 +320,7 @@ function SegmentedToggle<T extends string>({
         background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
       }}
     >
-      {options.map((option) => {
+      {options.map((option, index) => {
         const active = option.value === value;
         return (
           <button
@@ -304,7 +329,12 @@ function SegmentedToggle<T extends string>({
             role="radio"
             aria-checked={active}
             disabled={disabled}
+            tabIndex={index === tabStopIndex ? 0 : -1}
+            ref={(node) => {
+              buttonRefs.current[index] = node;
+            }}
             onClick={() => onChange(option.value)}
+            onKeyDown={(event) => handleRadioKeyDown(event, index)}
             className="inline-flex min-h-[44px] items-center rounded-full px-3.5 py-1.5 text-sm transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60"
             style={active ? { background: "var(--home-ink)", color: "var(--home-paper)" } : { color: "var(--home-ink-muted)" }}
           >
@@ -321,7 +351,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
   const searchParams = useSearchParams();
   const shouldReduceMotion = useReducedMotion();
   const variants = shouldReduceMotion ? noMotion : fadeIn;
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(initialState.query);
   const [detailPlayer, setDetailPlayer] = useState<Player | null>(null);
   const [showStats, setShowStats] = useState(false);
   const [showLegend, setShowLegend] = useState(false);
@@ -350,7 +380,9 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
     return () => window.clearTimeout(timeout);
   }, [queueClearArmed]);
 
-  const hasManagedParams = searchParams.get("position") !== null || searchParams.get("scoring") !== null;
+  const hasManagedParams = ["position", "scoring", "view", "q"].some(
+    (param) => searchParams.get(param) !== null
+  );
   const routeState = useMemo<FantasySearchState>(
     () => (hasManagedParams ? normalizeFantasyState(searchParams) : initialState),
     [hasManagedParams, initialState, searchParams]
@@ -360,11 +392,15 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
     const urlViewMatches =
       (searchParams.get("view") === "tiers" && routeState.view === "tiers") ||
       (searchParams.get("view") !== "tiers" && routeState.view === "list");
+    const urlQueryMatches =
+      (searchParams.get("q") ?? "") === routeState.query &&
+      (routeState.query.length > 0 || searchParams.get("q") === null);
 
     if (
       searchParams.get("position") === routeState.position &&
       searchParams.get("scoring") === routeState.scoring &&
-      urlViewMatches
+      urlViewMatches &&
+      urlQueryMatches
     ) {
       return;
     }
@@ -374,9 +410,15 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
     });
   }, [routeState, router, searchParams]);
 
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- browser Back/Forward can replace the URL-backed query
+    setSearchQuery(routeState.query);
+  }, [routeState.query]);
+
   function updateRouteState(nextState: Partial<FantasySearchState>) {
     const nextRouteState = {
       ...routeState,
+      query: searchQuery,
       ...nextState,
     };
 
@@ -396,7 +438,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
   // cross-board queue and compare lookups instead of creating a second data
   // subscription for the same scoring file.
   const allBoardPlayers = useMemo(
-    () => (snapshot ? getAllFantasySnapshotPlayers(snapshot) : players),
+    () => (snapshot ? getCrossBoardFantasyPlayers(snapshot) : players),
     [players, snapshot]
   );
 
@@ -409,6 +451,17 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
     for (const player of players) map.set(player.id, player);
     return map;
   }, [allBoardPlayers, players]);
+  const crossBoardPlayerLookup = useMemo(
+    () => new Map(allBoardPlayers.map((player) => [player.id, player])),
+    [allBoardPlayers]
+  );
+  const activePlayerIds = useMemo(
+    () => new Set(players.map((player) => player.id)),
+    [players]
+  );
+  const compareUsesActiveBoard = compare.compareIds.every((id) => activePlayerIds.has(id));
+  const comparePlayerLookup = compareUsesActiveBoard ? playerLookup : crossBoardPlayerLookup;
+  const compareRankPosition = compareUsesActiveBoard ? routeState.position : "overall";
 
   const currentSliceUnavailable = Boolean(sliceMetadata && !sliceMetadata.available);
   const localToolsMemoryOnly =
@@ -452,12 +505,11 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
     setVisibleCount(RANKINGS_PAGE_SIZE);
   }, [routeState.position, routeState.scoring, routeState.view, searchQuery]);
 
-  const windowedPlayers =
-    routeState.view === "list" ? filteredPlayers.slice(0, visibleCount) : filteredPlayers;
-  const hasMore = routeState.view === "list" && visibleCount < filteredPlayers.length;
+  const windowedPlayers = filteredPlayers.slice(0, visibleCount);
+  const hasMore = visibleCount < filteredPlayers.length;
 
   useEffect(() => {
-    if (!hasMore || typeof IntersectionObserver === "undefined") return;
+    if (routeState.view !== "list" || !hasMore || typeof IntersectionObserver === "undefined") return;
     // On narrow screens the supporting rail sits below the rankings card.
     // Auto-extending the list while someone scrolls toward that rail can keep
     // moving the queue and freshness sections away from them, so mobile uses
@@ -476,7 +528,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [hasMore, filteredPlayers.length]);
+  }, [hasMore, filteredPlayers.length, routeState.view]);
 
   const queuedPlayers = useMemo(
     () =>
@@ -654,6 +706,18 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                 Open best ball tools
                 <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
               </Link>
+              <Link
+                href="/fantasy-football/trade-calculator"
+                className="inline-flex min-h-[48px] items-center gap-2 rounded-full border px-5 py-3 text-sm font-semibold transition-[background-color,border-color,color] duration-200"
+                style={{
+                  borderColor: "var(--home-rule)",
+                  background: "var(--home-paper)",
+                  color: "var(--home-ink)",
+                }}
+              >
+                Open trade calculator
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
               <button
                 type="button"
                 onClick={() => setShowStats((open) => !open)}
@@ -713,79 +777,54 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
           </div>
         ) : null}
 
-        {error && (
-          <article className="home-card p-5 sm:p-6" style={{ borderColor: "var(--home-negative)" }}>
-            <p className="font-semibold" style={{ color: "var(--home-negative)" }}>
-              {error}
-            </p>
-            <p className="mt-2 text-sm" style={{ color: "var(--home-ink-muted)" }}>
-              Check your connection and try loading the published snapshot again.
-            </p>
-            <button
-              type="button"
-              onClick={retry}
-              className="mt-4 inline-flex min-h-[44px] items-center rounded-full border px-4 text-sm font-semibold"
-              style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
-            >
-              Retry rankings
-            </button>
-          </article>
-        )}
+        <nav aria-label="Quick board details" className="grid grid-cols-2 gap-2 lg:hidden">
+          <a
+            href="#fantasy-freshness"
+            className="flex min-h-[72px] min-w-0 items-center gap-2 rounded-[var(--radius-3xl)] border px-3 py-2.5"
+            style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)" }}
+          >
+            <Shield className="h-4 w-4 shrink-0" style={{ color: "var(--home-signal)" }} aria-hidden="true" />
+            <span className="min-w-0">
+              <span className="block text-2xs font-semibold uppercase tracking-[0.12em]" style={{ color: "var(--home-ink-muted)" }}>
+                Freshness
+              </span>
+              <span className="block truncate text-sm font-semibold">
+                {getSnapshotStalenessLabel(getSnapshotStaleness(currentSourceUpdatedAt))}
+              </span>
+            </span>
+          </a>
+          <a
+            href="#fantasy-queue"
+            className="flex min-h-[72px] min-w-0 items-center gap-2 rounded-[var(--radius-3xl)] border px-3 py-2.5"
+            style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)" }}
+          >
+            <Star className="h-4 w-4 shrink-0" style={{ color: "var(--home-signal)" }} fill="currentColor" aria-hidden="true" />
+            <span className="min-w-0">
+              <span className="block text-2xs font-semibold uppercase tracking-[0.12em]" style={{ color: "var(--home-ink-muted)" }}>
+                My queue
+              </span>
+              <span className="block truncate text-sm font-semibold">
+                {queue.queue.length} {queue.queue.length === 1 ? "player" : "players"} queued
+              </span>
+            </span>
+          </a>
+        </nav>
 
         <div className="grid gap-5 lg:grid-cols-[minmax(0,1.18fr)_minmax(18rem,22rem)] min-[1440px]:grid-cols-[minmax(0,1.2fr)_minmax(20rem,26rem)]">
           <article className="home-card scroll-mt-28 p-5 sm:p-6" aria-labelledby="rankings-board-heading">
             <div
-              className="z-20 -mx-5 flex flex-col gap-3 border-b px-5 pb-4 pt-1 sm:sticky sm:top-20 sm:-mx-6 sm:flex-row sm:items-end sm:justify-between sm:px-6"
+              className="z-20 -mx-5 border-b px-5 pb-4 pt-1 sm:sticky sm:top-20 sm:-mx-6 sm:px-6"
               style={{
                 borderColor: "var(--home-rule)",
                 background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
               }}
             >
-              <div>
-                {/* The board is the primary element on an Operate surface, so its heading
-                    outranks the marketing sections further down rather than sitting a step
-                    below them. The old "Rankings Board" kicker only restated the heading. */}
-                <h2 id="rankings-board-heading" className="text-2xl font-semibold sm:text-3xl">
-                  {FANTASY_POSITION_LABELS[routeState.position]} rankings
-                </h2>
-              </div>
-              <div className="grid gap-2 sm:flex sm:flex-wrap sm:items-center sm:justify-end sm:gap-3">
-                {routeState.view === "list" && (
-                  <SegmentedToggle
-                    ariaLabel="List density"
-                    options={[
-                      { value: "comfortable", label: "Comfortable" },
-                      { value: "compact", label: "Compact" },
-                    ]}
-                    value={density}
-                    onChange={(value) => persistDensity(value)}
-                    disabled={currentSliceUnavailable}
-                  />
-                )}
-                <SegmentedToggle
-                  ariaLabel="Rankings view"
-                  options={[
-                    { value: "list", label: "List" },
-                    { value: "tiers", label: "Tiers" },
-                  ]}
-                  value={routeState.view}
-                  onChange={(value) => updateRouteState({ view: value })}
-                  disabled={currentSliceUnavailable}
-                />
-                <p
-                  aria-live="polite"
-                  className="text-sm sm:min-w-[9.5rem] sm:text-right"
-                  style={{ color: "var(--home-ink-muted)" }}
-                >
-                  {isLoading
-                    ? "Loading players…"
-                    : currentSliceUnavailable
-                      ? "Board unavailable"
-                      : routeState.view === "list" && hasMore
-                        ? `${windowedPlayers.length} of ${filteredPlayers.length} shown`
-                        : `${filteredPlayers.length} players shown`}
-                </p>
-              </div>
+              {/* The board is the primary element on an Operate surface, so its heading
+                  outranks the marketing sections further down rather than sitting a step
+                  below them. The old "Rankings Board" kicker only restated the heading. */}
+              <h2 id="rankings-board-heading" className="text-2xl font-semibold sm:text-3xl">
+                {FANTASY_POSITION_LABELS[routeState.position]} rankings
+              </h2>
             </div>
 
             {/* Controls: position, scoring, search */}
@@ -839,7 +878,11 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                     id="fantasy-search"
                     name="fantasy-search"
                     value={searchQuery}
-                    onChange={(event) => setSearchQuery(event.target.value)}
+                    maxLength={80}
+                    onChange={(event) => {
+                      setSearchQuery(event.target.value);
+                      updateRouteState({ query: event.target.value });
+                    }}
                     disabled={currentSliceUnavailable}
                     autoComplete="off"
                     placeholder={`Search ${FANTASY_POSITION_LABELS[routeState.position]} board…`}
@@ -853,7 +896,10 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                   {searchQuery && (
                     <button
                       type="button"
-                      onClick={() => setSearchQuery("")}
+                      onClick={() => {
+                        setSearchQuery("");
+                        updateRouteState({ query: "" });
+                      }}
                       aria-label="Clear search"
                       className="absolute right-0 top-1/2 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center"
                     >
@@ -866,6 +912,55 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                     </button>
                   )}
                 </div>
+              </div>
+
+              {/*
+                Display preferences sit last, directly above the list they
+                configure: on a phone the per-draft controls (position, scoring,
+                search) come first, and the result count reads adjacent to the
+                rows it describes instead of 400px away in the heading bar. DOM
+                order matches visual order at every width.
+              */}
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                  {routeState.view === "list" && (
+                    <SegmentedToggle
+                      ariaLabel="List density"
+                      options={[
+                        { value: "comfortable", label: "Comfortable" },
+                        { value: "compact", label: "Compact" },
+                      ]}
+                      value={density}
+                      onChange={(value) => persistDensity(value)}
+                      disabled={currentSliceUnavailable}
+                    />
+                  )}
+                  <SegmentedToggle
+                    ariaLabel="Rankings view"
+                    options={[
+                      { value: "list", label: "List" },
+                      { value: "tiers", label: "Tiers" },
+                    ]}
+                    value={routeState.view}
+                    onChange={(value) => updateRouteState({ view: value })}
+                    disabled={currentSliceUnavailable}
+                  />
+                </div>
+                <p
+                  aria-live={error ? undefined : "polite"}
+                  className="text-sm sm:text-right"
+                  style={{ color: "var(--home-ink-muted)" }}
+                >
+                  {isLoading
+                    ? "Loading players…"
+                    : error
+                      ? "Rankings unavailable"
+                      : currentSliceUnavailable
+                      ? "Board unavailable"
+                      : hasMore
+                        ? `${windowedPlayers.length} of ${filteredPlayers.length} shown`
+                        : `${filteredPlayers.length} players shown`}
+                </p>
               </div>
             </div>
 
@@ -882,6 +977,30 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                       }}
                     />
                   ))}
+                </div>
+              ) : error ? (
+                <div
+                  role="alert"
+                  className="rounded-[var(--radius-3xl)] border px-5 py-8"
+                  style={{
+                    borderColor: "var(--home-negative)",
+                    background: "color-mix(in srgb, var(--home-negative) 8%, var(--home-paper))",
+                  }}
+                >
+                  <p className="font-semibold" style={{ color: "var(--home-negative)" }}>
+                    {error}
+                  </p>
+                  <p className="mt-2 text-sm" style={{ color: "var(--home-ink-muted)" }}>
+                    Check your connection and try loading the published snapshot again.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={retry}
+                    className="mt-4 inline-flex min-h-[44px] items-center rounded-full border px-4 text-sm font-semibold"
+                    style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
+                  >
+                    Retry rankings
+                  </button>
                 </div>
               ) : currentSliceUnavailable ? (
                 <div
@@ -914,33 +1033,32 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                 </div>
               ) : routeState.view === "tiers" ? (
                 <TierBreakdown
-                  players={filteredPlayers}
+                  players={windowedPlayers}
                   position={routeState.position}
+                  adpAvailable={adpAvailable}
                   getPublishedRank={(player) => getPublishedBoardRank(player, routeState.position)}
                   onSelectPlayer={setDetailPlayer}
                   isQueued={(id) => queue.isQueued(id)}
                   onToggleQueue={(id) => queue.toggle(id)}
                 />
               ) : (
-                <>
-                  <ul role="list" className="grid gap-2.5">
-                    {renderListRows()}
-                  </ul>
-                  {hasMore && (
-                    <div ref={sentinelRef} className="mt-4 flex justify-center">
-                      <button
-                        type="button"
-                        onClick={() =>
-                          setVisibleCount((count) => Math.min(count + RANKINGS_PAGE_SIZE, filteredPlayers.length))
-                        }
-                        className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-5 text-sm font-semibold"
-                        style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)" }}
-                      >
-                        Load more ({filteredPlayers.length - windowedPlayers.length} left)
-                      </button>
-                    </div>
-                  )}
-                </>
+                <ul role="list" className="grid gap-2.5">
+                  {renderListRows()}
+                </ul>
+              )}
+              {!isLoading && !error && !currentSliceUnavailable && filteredPlayers.length > 0 && hasMore && (
+                <div ref={sentinelRef} className="mt-4 flex justify-center">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setVisibleCount((count) => Math.min(count + RANKINGS_PAGE_SIZE, filteredPlayers.length))
+                    }
+                    className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-5 text-sm font-semibold"
+                    style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)" }}
+                  >
+                    Load more ({filteredPlayers.length - windowedPlayers.length} left)
+                  </button>
+                </div>
               )}
             </div>
           </article>
@@ -952,7 +1070,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
             aria-label="Board details"
             className="grid gap-5 lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:self-start lg:overflow-y-auto lg:overscroll-contain"
           >
-            <article className="home-card p-5 sm:p-6">
+            <article id="fantasy-freshness" className="home-card scroll-mt-24 p-5 sm:p-6">
               <div className="flex items-center gap-3">
                 <Shield className="h-5 w-5" style={{ color: "var(--home-signal)" }} aria-hidden="true" />
                 <div>
@@ -1032,7 +1150,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
             </article>
 
             {/* Watchlist — shared with the draft assistant via the browser. */}
-            <article className="home-card p-5 sm:p-6">
+            <article id="fantasy-queue" className="home-card scroll-mt-24 p-5 sm:p-6">
               <div className="flex items-center justify-between gap-3">
                 <div className="flex items-center gap-3">
                   <Star className="h-5 w-5" style={{ color: "var(--home-signal)" }} fill="currentColor" aria-hidden="true" />
@@ -1134,6 +1252,23 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                 <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </article>
+
+            <article className="home-card p-5 sm:p-6">
+              <p className="home-kicker mb-1">Trade Calculator</p>
+              <h3 className="text-xl font-semibold">Estimate a preseason redraft trade.</h3>
+              <p className="mt-3 text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
+                Compare a one-QB redraft offer using expert consensus, mock-draft ADP, and your league settings.
+                The result is a preseason estimate, not an in-season projection.
+              </p>
+              <Link
+                href="/fantasy-football/trade-calculator"
+                className="mt-5 inline-flex min-h-[48px] items-center gap-2 rounded-full border px-4 py-3 text-sm font-semibold transition-[background-color,border-color,color] duration-200"
+                style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)", color: "var(--home-ink)" }}
+              >
+                Open trade calculator
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </article>
           </aside>
         </div>
 
@@ -1169,10 +1304,10 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
         onClose={() => setDetailPlayer(null)}
       />
       <CompareTray
-        resolvePlayer={(id) => playerLookup.get(id)}
+        resolvePlayer={(id) => comparePlayerLookup.get(id)}
         playerDataReady={!isLoading && hasCompleteFantasyPlayerUniverse(snapshot)}
-        publishedRank={(player) => getPublishedBoardRank(player, routeState.position)}
-        valueSignalAvailable={routeState.position === "overall" || routeState.position === "flex"}
+        publishedRank={(player) => getPublishedBoardRank(player, compareRankPosition)}
+        valueSignalAvailable={compareRankPosition === "overall" || compareRankPosition === "flex"}
         adpAvailable={adpAvailable}
       />
     </section>

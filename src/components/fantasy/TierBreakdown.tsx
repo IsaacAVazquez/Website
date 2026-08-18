@@ -16,6 +16,7 @@ import type { Player } from "@/types";
 interface TierBreakdownProps {
   players: Player[];
   position: FantasyRoutePosition;
+  adpAvailable?: boolean;
   getPublishedRank: (player: Player) => string;
   onSelectPlayer?: (player: Player) => void;
   isQueued?: (id: string) => boolean;
@@ -60,6 +61,7 @@ function groupByTier(players: Player[]): TierGroup[] {
 export function TierBreakdown({
   players,
   position,
+  adpAvailable = false,
   getPublishedRank,
   onSelectPlayer,
   isQueued,
@@ -211,7 +213,7 @@ export function TierBreakdown({
                           </span>
                         )}
                       </Pill>
-                      {Number.isFinite(player.adp) && (
+                      {adpAvailable && Number.isFinite(player.adp) && (
                         <span
                           className="shrink-0 text-2xs"
                           title="Average draft position from recent mock drafts"

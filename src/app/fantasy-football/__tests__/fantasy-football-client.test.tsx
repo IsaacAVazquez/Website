@@ -153,12 +153,24 @@ describe("FantasyFootballClient", () => {
           position: "rb",
           scoring: "ppr",
           view: "list",
+          query: "",
         }}
       />
     );
 
     expect(container.firstChild).toHaveClass("home-page");
     expect(screen.getByRole("heading", { name: /RB rankings/i })).toBeVisible();
+    const rankingsHeading = screen.getByRole("heading", { name: /RB rankings/i });
+    const freshnessShortcut = screen.getByRole("link", { name: /Freshness/i });
+    const queueShortcut = screen.getByRole("link", { name: /My queue/i });
+    expect(freshnessShortcut).toHaveAttribute("href", "#fantasy-freshness");
+    expect(queueShortcut).toHaveAttribute("href", "#fantasy-queue");
+    expect(
+      freshnessShortcut.compareDocumentPosition(rankingsHeading) & Node.DOCUMENT_POSITION_FOLLOWING
+    ).toBeTruthy();
+    expect(
+      queueShortcut.compareDocumentPosition(rankingsHeading) & Node.DOCUMENT_POSITION_FOLLOWING
+    ).toBeTruthy();
     expect(screen.getByRole("radio", { name: /RB/i })).not.toBeDisabled();
     expect(screen.getByText("Christian McCaffrey")).toBeVisible();
     expect(screen.getAllByText(/Source updated/i).length).toBeGreaterThan(0);
@@ -279,6 +291,7 @@ describe("FantasyFootballClient", () => {
           position: "qb",
           scoring: "standard",
           view: "list",
+          query: "",
         }}
       />
     );
@@ -388,7 +401,7 @@ describe("FantasyFootballClient", () => {
 
     render(
       <FantasyFootballClient
-        initialState={{ position: "qb", scoring: "ppr", view: "list" }}
+        initialState={{ position: "qb", scoring: "ppr", view: "list", query: "" }}
       />
     );
     fireEvent.click(screen.getByRole("button", { name: "Compare 2" }));
@@ -400,6 +413,140 @@ describe("FantasyFootballClient", () => {
     expect(tierCells[0]).not.toHaveTextContent("4");
     expect(tierCells[1]).toHaveTextContent("2");
     expect(tierCells[1]).not.toHaveTextContent("5");
+  });
+
+  it("uses one overall scale for a cross-position comparison", () => {
+    currentSearchParams = new URLSearchParams("position=rb&scoring=ppr");
+    const currentSourceDate = new Date().toISOString();
+    const overallTaylor = {
+      id: "rb-taylor",
+      name: "Jonathan Taylor",
+      team: "IND",
+      position: "RB" as const,
+      averageRank: 6,
+      rankEcr: 6,
+      rankAverage: 6,
+      standardDeviation: 1,
+      tier: 1,
+      positionRank: 4,
+      minRank: 5,
+      maxRank: 8,
+    };
+    const overallJaxon = {
+      id: "wr-jaxon",
+      name: "Jaxon Smith-Njigba",
+      team: "SEA",
+      position: "WR" as const,
+      averageRank: 5,
+      rankEcr: 5,
+      rankAverage: 5,
+      standardDeviation: 1,
+      tier: 1,
+      positionRank: 3,
+      minRank: 4,
+      maxRank: 7,
+    };
+    const rbTaylor = {
+      ...overallTaylor,
+      averageRank: 4,
+      rankEcr: 4,
+      rankAverage: 4,
+      positionRank: 4,
+      minRank: 3,
+      maxRank: 5,
+    };
+    const wrJaxon = {
+      ...overallJaxon,
+      averageRank: 3,
+      rankEcr: 3,
+      rankAverage: 3,
+      positionRank: 3,
+      minRank: 2,
+      maxRank: 4,
+    };
+    const sliceMetadata = {
+      ...buildSliceMetadataMap(),
+      rb: {
+        available: true,
+        sourceKind: "position_consensus" as const,
+        rangeKind: "position" as const,
+        playerCount: 1,
+        updatedAt: currentSourceDate,
+      },
+      wr: {
+        available: true,
+        sourceKind: "position_consensus" as const,
+        rangeKind: "position" as const,
+        playerCount: 1,
+        updatedAt: currentSourceDate,
+      },
+    };
+
+    window.localStorage.setItem(
+      FANTASY_COMPARE_STORAGE_KEY,
+      JSON.stringify([overallTaylor.id, overallJaxon.id])
+    );
+    mockUseFantasySnapshot.mockReturnValue({
+      players: [rbTaylor],
+      snapshot: {
+        schemaVersion: 7,
+        season: 2026,
+        week: 0,
+        generatedAt: currentSourceDate,
+        upstreamUpdatedAt: currentSourceDate,
+        scoringFormat: "PPR",
+        source: "snapshot",
+        adpSource: null,
+        positions: {
+          QB: [],
+          RB: [rbTaylor],
+          WR: [wrJaxon],
+          TE: [],
+          K: [],
+          DST: [],
+          FLEX: [],
+        },
+        overall: [overallTaylor, overallJaxon],
+        sliceMetadata,
+      },
+      metadata: {
+        season: 2026,
+        week: 0,
+        generatedAt: currentSourceDate,
+        upstreamUpdatedAt: currentSourceDate,
+        scoringFormat: "PPR",
+        source: "snapshot",
+        position: "rb",
+        playerCount: 1,
+        slice: sliceMetadata.rb,
+        slices: sliceMetadata,
+        adpSource: null,
+      },
+      sliceMetadata: sliceMetadata.rb,
+      sliceMetadataMap: sliceMetadata,
+      isLoading: false,
+      error: null,
+    });
+
+    render(
+      <FantasyFootballClient
+        initialState={{ position: "rb", scoring: "ppr", view: "list", query: "" }}
+      />
+    );
+    fireEvent.click(screen.getByRole("button", { name: "Compare 2" }));
+
+    const rankRow = screen.getByRole("rowheader", { name: "Consensus rank" }).closest("tr");
+    expect(rankRow).not.toBeNull();
+    const rankCells = within(rankRow as HTMLTableRowElement).getAllByRole("cell");
+    expect(rankCells[0]).toHaveTextContent(/^6$/);
+    expect(rankCells[1]).toHaveTextContent("5Best");
+
+    const positionRow = screen.getByRole("rowheader", { name: "Position rank" }).closest("tr");
+    expect(positionRow).not.toBeNull();
+    const positionCells = within(positionRow as HTMLTableRowElement).getAllByRole("cell");
+    expect(positionCells[0]).toHaveTextContent("RB 4");
+    expect(positionCells[1]).toHaveTextContent("WR 3");
+    expect(within(positionRow as HTMLTableRowElement).queryByText("Best")).not.toBeInTheDocument();
   });
 
   it("retains unresolved compare IDs while any snapshot slice is unavailable", () => {
@@ -484,7 +631,7 @@ describe("FantasyFootballClient", () => {
 
     render(
       <FantasyFootballClient
-        initialState={{ position: "qb", scoring: "ppr", view: "list" }}
+        initialState={{ position: "qb", scoring: "ppr", view: "list", query: "" }}
       />
     );
 
@@ -590,6 +737,7 @@ describe("FantasyFootballClient", () => {
           position: "rb",
           scoring: "ppr",
           view: "list",
+          query: "",
         }}
       />
     );
@@ -612,7 +760,7 @@ describe("FantasyFootballClient", () => {
   it("marks prior-season ADP stale once draft season begins", () => {
     jest.useFakeTimers();
     jest.setSystemTime(new Date("2026-08-07T12:00:00.000Z"));
-    currentSearchParams = new URLSearchParams("position=rb&scoring=ppr");
+    currentSearchParams = new URLSearchParams("position=rb&scoring=ppr&view=tiers");
     mockUseFantasySnapshot.mockReturnValue({
       players: [
         {
@@ -674,13 +822,15 @@ describe("FantasyFootballClient", () => {
         initialState={{
           position: "rb",
           scoring: "ppr",
-          view: "list",
+          view: "tiers",
+          query: "",
         }}
       />
     );
 
     expect(screen.getAllByText("Stale").length).toBeGreaterThan(0);
     expect(screen.getByText(/Treat value and reach labels as unavailable/)).toBeVisible();
+    expect(screen.queryByText("2.2")).not.toBeInTheDocument();
   });
 
   it("preserves the published rank when search filters the board down to one player", () => {
@@ -753,6 +903,7 @@ describe("FantasyFootballClient", () => {
           position: "rb",
           scoring: "standard",
           view: "list",
+          query: "",
         }}
       />
     );
@@ -761,9 +912,72 @@ describe("FantasyFootballClient", () => {
       target: { value: "Mixon" },
     });
 
+    expect(mockReplace).toHaveBeenCalledWith(
+      expect.stringContaining("q=Mixon"),
+      { scroll: false }
+    );
     expect(screen.getByText("Joe Mixon")).toBeVisible();
     expect(screen.queryByText("Saquon Barkley")).not.toBeInTheDocument();
     expect(screen.getByText("47")).toBeVisible();
+  });
+
+  it("bounds the initial rankings render and reveals the next window on demand", () => {
+    const currentSourceDate = new Date().toISOString();
+    const players = Array.from({ length: 45 }, (_, index) => ({
+      id: `rb-${index + 1}`,
+      name: `Player ${index + 1}`,
+      team: "FA",
+      position: "RB" as const,
+      averageRank: index + 1,
+      rankEcr: index + 1,
+      rankAverage: index + 1,
+      standardDeviation: 1,
+      tier: Math.floor(index / 10) + 1,
+      positionRank: index + 1,
+      minRank: index + 1,
+      maxRank: index + 1,
+    }));
+    const sliceMetadataMap = {
+      ...buildSliceMetadataMap(),
+      rb: {
+        available: true,
+        sourceKind: "position_consensus" as const,
+        rangeKind: "position" as const,
+        playerCount: players.length,
+        updatedAt: currentSourceDate,
+      },
+    };
+    mockUseFantasySnapshot.mockReturnValue({
+      players,
+      snapshot: null,
+      metadata: {
+        season: 2026,
+        week: 0,
+        generatedAt: currentSourceDate,
+        upstreamUpdatedAt: currentSourceDate,
+        scoringFormat: "PPR",
+        source: "snapshot",
+        position: "rb",
+        playerCount: players.length,
+        slice: sliceMetadataMap.rb,
+        slices: sliceMetadataMap,
+      },
+      sliceMetadata: sliceMetadataMap.rb,
+      sliceMetadataMap,
+      isLoading: false,
+      error: null,
+    });
+
+    render(
+      <FantasyFootballClient
+        initialState={{ position: "rb", scoring: "ppr", view: "list", query: "" }}
+      />
+    );
+
+    expect(screen.getByText("Player 40")).toBeVisible();
+    expect(screen.queryByText("Player 41")).not.toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "Load more (5 left)" }));
+    expect(screen.getByText("Player 45")).toBeVisible();
   });
 
   it("keeps scoring controls available when the selected position slice is unavailable", () => {
@@ -795,7 +1009,7 @@ describe("FantasyFootballClient", () => {
     });
 
     render(
-      <FantasyFootballClient initialState={{ position: "rb", scoring: "ppr", view: "list" }} />
+      <FantasyFootballClient initialState={{ position: "rb", scoring: "ppr", view: "list", query: "" }} />
     );
 
     const halfPpr = screen.getByRole("button", { name: "Half PPR" });
@@ -822,9 +1036,14 @@ describe("FantasyFootballClient", () => {
     });
 
     render(
-      <FantasyFootballClient initialState={{ position: "rb", scoring: "ppr", view: "list" }} />
+      <FantasyFootballClient initialState={{ position: "rb", scoring: "ppr", view: "list", query: "" }} />
     );
 
+    expect(screen.getByRole("alert")).toHaveTextContent(
+      "Fantasy rankings are unavailable right now."
+    );
+    expect(screen.queryByText("No matching players")).not.toBeInTheDocument();
+    expect(screen.getByText("Rankings unavailable")).toBeVisible();
     fireEvent.click(screen.getByRole("button", { name: "Retry rankings" }));
     expect(retry).toHaveBeenCalledTimes(1);
     expect(mockUseFantasySnapshot).toHaveBeenCalledTimes(1);
@@ -855,13 +1074,18 @@ describe("FantasyFootballClient", () => {
     try {
       render(
         <FantasyFootballClient
-          initialState={{ position: "rb", scoring: "ppr", view: "list" }}
+          initialState={{ position: "rb", scoring: "ppr", view: "list", query: "" }}
         />
       );
 
       const compact = screen.getByRole("radio", { name: "Compact" });
-      fireEvent.click(compact);
+      const comfortable = screen.getByRole("radio", { name: "Comfortable" });
+      expect(comfortable).toHaveAttribute("tabindex", "0");
+      expect(compact).toHaveAttribute("tabindex", "-1");
+      comfortable.focus();
+      fireEvent.keyDown(comfortable, { key: "ArrowRight" });
       expect(compact).toHaveAttribute("aria-checked", "true");
+      expect(compact).toHaveFocus();
     } finally {
       getItem.mockRestore();
       setItem.mockRestore();

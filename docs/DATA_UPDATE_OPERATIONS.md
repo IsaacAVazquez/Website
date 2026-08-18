@@ -9,7 +9,7 @@ architecture or the per-workflow prose:
 - Per-script and per-workflow detail: `AUTOMATION_SCRIPTS.md`, `CRON_SETUP.md`,
   and the **Automation Surfaces** section of `../AGENTS.md`
 
-**Last updated:** 2026-07-20
+**Last updated:** 2026-08-11
 
 The `update:*` commands write committed TypeScript or JSON artifacts. A failed
 or empty fetch keeps the previous snapshot, and every scheduled job now checks

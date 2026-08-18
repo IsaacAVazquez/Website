@@ -5,7 +5,7 @@ Technical reference for the retirement projection engine in
 DOM, no fetch) so it is unit-testable and could run server-side. The UI never
 does math — it calls `project()` and renders the result.
 
-**Last updated:** 2026-06-19
+**Last updated:** 2026-06-24
 
 Surfaced as the `#retirement` band inside the investments dashboard
 (`InvestmentsDashboard.tsx`), backed by browser-local state. Output is

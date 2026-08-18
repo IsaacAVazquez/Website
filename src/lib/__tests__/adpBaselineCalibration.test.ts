@@ -16,6 +16,7 @@ import { ECR_BASELINE_MAX_RANK, isUndraftedFloorAdp } from "@/lib/draftAnalytics
 
 interface SnapshotPlayer {
   adp?: number;
+  adpTimesDrafted?: number;
   rankEcr?: number;
   averageRank?: number;
 }
@@ -62,13 +63,20 @@ describe("ADP baseline calibration", () => {
     expect(meanEcr - meanAdp).toBeGreaterThan(15);
   });
 
-  it("does not treat any redraft ADP as an undrafted-floor placeholder", () => {
-    // The redraft feed comes from real draft results and never reaches the floor, so
-    // the shared rule must stay a no-op here. If this fails the feed changed shape.
+  it("keeps every deep redraft ADP an observed price rather than a placeholder", () => {
+    // The redraft feed reports real draft results, so a late ADP can drift past the
+    // numeric floor as preseason drafts deepen — that is a valid price the floor rule
+    // deliberately ignores in redraft mode. The placeholder signature is different:
+    // a pile-up of floor values with no sampling evidence (117 of 340 priced best
+    // ball players on 2026-08-16, none with a draft count). Fail on that shape only.
     const flagged = redraft.filter(
       (p) => typeof p.adp === "number" && isUndraftedFloorAdp(p.adp, 16, 12)
     );
-    expect(flagged).toHaveLength(0);
+    for (const player of flagged) {
+      expect(player.adpTimesDrafted ?? 0).toBeGreaterThan(0);
+    }
+    const priced = redraft.filter((p) => typeof p.adp === "number");
+    expect(flagged.length).toBeLessThan(Math.max(1, priced.length * 0.05));
   });
 
   it("still finds the undrafted-ADP pile-up in the best ball snapshot", () => {

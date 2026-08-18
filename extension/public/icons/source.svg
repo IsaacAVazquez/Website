@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Fantasy Draft Companion">
+  <rect width="64" height="128" fill="#191813"/>
+  <rect x="64" width="64" height="128" fill="#c93f19"/>
+  <path d="M25 30v68M25 34h29M25 61h23" fill="none" stroke="#f6f5f1" stroke-linecap="square" stroke-width="9"/>
+  <path d="M78 30v68M78 34h12c17 0 25 11 25 30s-8 30-25 30H78" fill="none" stroke="#f6f5f1" stroke-linecap="square" stroke-width="9"/>
+</svg>

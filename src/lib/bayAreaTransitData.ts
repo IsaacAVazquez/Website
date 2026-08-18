@@ -3,6 +3,7 @@ import type {
   TransitDeparture,
   TransitElevatorStatus,
   TransitLine,
+  TransitSectionStatus,
   TransitSnapshot,
   TransitStation,
   TransitStationBoard,
@@ -178,7 +179,17 @@ function delay(ms: number): Promise<void> {
 
 // --- Builder -----------------------------------------------------------------
 
-export async function buildBayAreaTransitSnapshotData(): Promise<TransitSnapshot> {
+export interface BuildBayAreaTransitSnapshotOptions {
+  /**
+   * Station boards from the committed snapshot. Used to keep a good board map
+   * when BART's departures feed comes back all but empty; see the guard below.
+   */
+  previousBoards?: Record<string, TransitStationBoard>;
+}
+
+export async function buildBayAreaTransitSnapshotData(
+  options: BuildBayAreaTransitSnapshotOptions = {}
+): Promise<TransitSnapshot> {
   const generatedAt = new Date().toISOString();
 
   // 1. Stations.
@@ -341,8 +352,7 @@ export async function buildBayAreaTransitSnapshotData(): Promise<TransitSnapshot
     .filter(Boolean)
     .join(" ");
 
-  const stationBoards: Record<string, TransitStationBoard> = {};
-  let trainsTracked = 0;
+  const freshBoards: Record<string, TransitStationBoard> = {};
 
   for (const etdStation of asArray(etdResponse.root?.station)) {
     if (!etdStation.abbr) continue;
@@ -374,8 +384,7 @@ export async function buildBayAreaTransitSnapshotData(): Promise<TransitSnapshot
       return aMin - bMin;
     });
 
-    trainsTracked += departures.length;
-    stationBoards[id] = {
+    freshBoards[id] = {
       id,
       abbr,
       name: (etdStation.name ?? "").trim(),
@@ -383,6 +392,31 @@ export async function buildBayAreaTransitSnapshotData(): Promise<TransitSnapshot
       generatedAt,
     };
   }
+
+  // etd.aspx?cmd=etd&orig=ALL only returns stations that have a departure inside
+  // BART's lookahead window, so a successful call during the pre-service hours
+  // legitimately comes back with one or two stations instead of the usual forty
+  // plus. Committing that collapses stationBoards, and because
+  // isValidTransitStationId gates on the committed map, every other station
+  // route then 404s until the next good refresh. Keep the previous boards when
+  // the fetch returns less than half of them, and disclose it through
+  // sectionStatus instead of presenting the remnant as fresh. A proportional
+  // floor rather than "fewer than before" so a genuinely closed station cannot
+  // ratchet the guard permanently shut. This mirrors the guard that
+  // buildBayAreaTransitLiveSnapshotData already applies below.
+  const previousBoards = options.previousBoards ?? {};
+  const previousBoardCount = Object.keys(previousBoards).length;
+  const freshBoardCount = Object.keys(freshBoards).length;
+  const departuresDegraded =
+    previousBoardCount > 0 && freshBoardCount * 2 < previousBoardCount;
+  const stationBoards = departuresDegraded ? previousBoards : freshBoards;
+  const departuresStatus: TransitSectionStatus = departuresDegraded
+    ? "stale-fallback"
+    : "fresh";
+  const trainsTracked = Object.values(stationBoards).reduce(
+    (total, board) => total + board.departures.length,
+    0
+  );
 
   // Default to a busy core station that has live departures, else the first
   // station that does.
@@ -416,7 +450,7 @@ export async function buildBayAreaTransitSnapshotData(): Promise<TransitSnapshot
     sectionStatus: {
       advisories: "fresh",
       elevator: elevatorStatus,
-      departures: "fresh",
+      departures: departuresStatus,
     },
     defaultStation,
   };

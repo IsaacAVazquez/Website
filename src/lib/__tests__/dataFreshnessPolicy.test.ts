@@ -19,6 +19,28 @@ describe("data freshness policies", () => {
     );
   });
 
+  it("keeps the NBA in-season window aligned to the refresh schedule", () => {
+    const HOUR_MS = 60 * 60 * 1000;
+    const maxAge = (iso: string) =>
+      getDataFreshnessPolicy("nba", new Date(iso)).maxAgeMs;
+
+    // The cron is "20 */4 15-31 10 *", so nothing refreshes NBA before October
+    // 15. A whole-month range declared an 8-hour target from October 1 and left
+    // the surface reporting stale-fallback for two weeks with no job able to
+    // clear it and no failure issue, because no run fired.
+    expect(maxAge("2026-10-01T12:00:00Z")).toBeGreaterThan(24 * HOUR_MS);
+    expect(maxAge("2026-10-14T23:59:59Z")).toBeGreaterThan(24 * HOUR_MS);
+    expect(maxAge("2026-10-15T00:00:00Z")).toBe(8 * HOUR_MS);
+    expect(maxAge("2026-10-31T12:00:00Z")).toBe(8 * HOUR_MS);
+
+    // The rest of the season is unchanged: November through June is in-season,
+    // July through September is not.
+    expect(maxAge("2026-11-15T12:00:00Z")).toBe(8 * HOUR_MS);
+    expect(maxAge("2026-01-15T12:00:00Z")).toBe(8 * HOUR_MS);
+    expect(maxAge("2026-06-15T12:00:00Z")).toBe(8 * HOUR_MS);
+    expect(maxAge("2026-08-15T12:00:00Z")).toBeGreaterThan(24 * HOUR_MS);
+  });
+
   it("uses tighter seasonal windows when a competition is active", () => {
     const active = getDataFreshnessPolicy(
       "premier-league",

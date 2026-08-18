@@ -21,8 +21,8 @@
 # NEXTAUTH_SECRET = "your-nextauth-secret-here"
 # ADMIN_USERNAME = "your-admin-username"
 # ADMIN_PASSWORD = "your-admin-password"
-# Fantasy snapshot refreshes run in GitHub Actions. Set FANTASYPROS_API_KEY in
-# GitHub Actions secrets; the deployed Netlify runtime does not need this key.
+# Fantasy snapshot refreshes run in GitHub Actions from public rankings pages.
+# The deployed Netlify runtime does not need FANTASYPROS_API_KEY.
 # CRON_SECRET = "your-cron-secret-here"
 
 # CSS files — explicit MIME type prevents text/plain serving on Netlify

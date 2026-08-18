@@ -4,7 +4,7 @@ The single pre-merge checklist for any new or edited page, component, or surface
 this repo, run through this before opening a PR. It distills the rules that were previously scattered
 across `STYLING.md`, `CLAUDE.md`, `DARK_MODE_USAGE_GUIDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
 
-**Last updated:** 2026-06-24 · Derived from the 2026-06 site-wide design audit (`docs/DESIGN_AUDIT_2026-06.md`).
+**Last updated:** 2026-08-11 · Derived from the 2026-06 site-wide design audit (`docs/DESIGN_AUDIT_2026-06.md`).
 
 > When in doubt, copy a reference implementation instead of inventing: `PortfolioPerformanceChart`
 > (themeable D3), `github-trending-pulse` (touch targets + scoped transitions + token micro-type),
@@ -76,7 +76,7 @@ across `STYLING.md`, `CLAUDE.md`, `DARK_MODE_USAGE_GUIDE.md`, and `SNAPSHOT_DRIV
 
 - [ ] **Framer Motion entrances call `useReducedMotion()`** (or wrap in `<MotionConfig reducedMotion="user">`).
       The global CSS `prefers-reduced-motion` guard does **not** stop JS/rAF-driven Framer animation.
-      Shared primitives especially (e.g. `PageSummary`) — fixing once covers many routes.
+      Shared primitives especially, since fixing one covers many routes.
 - [ ] CSS animations/transitions have a `prefers-reduced-motion` fallback (or use `motion-safe:`).
 - [ ] **No `transition-all`** in shared primitives — transition only the properties that change
       (`transition-[background-color,transform]`).

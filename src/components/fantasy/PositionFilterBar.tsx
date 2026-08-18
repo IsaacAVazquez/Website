@@ -1,6 +1,6 @@
 "use client";
 
-import type { CSSProperties } from "react";
+import { useRef, type CSSProperties, type KeyboardEvent } from "react";
 
 import { getPositionTone } from "@/lib/fantasyUtils";
 
@@ -41,13 +41,45 @@ export function PositionFilterBar<T extends string>({
   ariaLabel,
   disabled = false,
 }: PositionFilterBarProps<T>) {
+  const buttonRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const enabledIndexes = options
+    .map((option, index) => (!disabled && option.available !== false ? index : -1))
+    .filter((index) => index >= 0);
+  const selectedIndex = options.findIndex((option) => option.value === value);
+  const tabStopIndex = enabledIndexes.includes(selectedIndex) ? selectedIndex : enabledIndexes[0];
+
+  function handleRadioKeyDown(event: KeyboardEvent<HTMLButtonElement>, currentIndex: number) {
+    if (!["ArrowRight", "ArrowDown", "ArrowLeft", "ArrowUp", "Home", "End"].includes(event.key)) {
+      return;
+    }
+    if (enabledIndexes.length === 0) return;
+
+    event.preventDefault();
+    const currentEnabledIndex = enabledIndexes.indexOf(currentIndex);
+    const fallbackIndex = currentEnabledIndex >= 0 ? currentEnabledIndex : 0;
+    let nextEnabledIndex: number;
+
+    if (event.key === "Home") nextEnabledIndex = 0;
+    else if (event.key === "End") nextEnabledIndex = enabledIndexes.length - 1;
+    else if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+      nextEnabledIndex = (fallbackIndex + 1) % enabledIndexes.length;
+    } else {
+      nextEnabledIndex = (fallbackIndex - 1 + enabledIndexes.length) % enabledIndexes.length;
+    }
+
+    const nextIndex = enabledIndexes[nextEnabledIndex];
+    const nextOption = options[nextIndex];
+    buttonRefs.current[nextIndex]?.focus();
+    onChange(nextOption.value);
+  }
+
   return (
     <div
       role="radiogroup"
       aria-label={ariaLabel}
       className="-mx-1 flex flex-wrap gap-2 px-1 pb-1 sm:mx-0 sm:px-0 sm:pb-0"
     >
-      {options.map((option) => {
+      {options.map((option, index) => {
         const isActive = option.value === value;
         const isUnavailable = option.available === false;
         const isDisabled = disabled || isUnavailable;
@@ -90,7 +122,12 @@ export function PositionFilterBar<T extends string>({
             }
             title={isUnavailable ? option.unavailableLabel : undefined}
             disabled={isDisabled}
+            tabIndex={index === tabStopIndex ? 0 : -1}
+            ref={(node) => {
+              buttonRefs.current[index] = node;
+            }}
             onClick={() => !isDisabled && onChange(option.value)}
+            onKeyDown={(event) => handleRadioKeyDown(event, index)}
             className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center gap-1.5 rounded-full border px-3.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed"
             style={style}
           >

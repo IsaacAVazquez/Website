@@ -177,14 +177,18 @@ jobs:
             console.error('::error::More than 90% of the research universe is using earlier snapshots.');
             process.exit(1);
           }
+          // partialCount is reported, not gated. The fetch is a budget-limited
+          // rotation, so every freshly fetched symbol lands partial (mergeMissingValues
+          // flags a whole section on a single absent field) and the flag is then
+          // carried forward on the symbols this run did not fetch. partialCount
+          // therefore ratchets toward the full universe regardless of provider
+          // health: 37/151 on 2026-07-20, 67/151 on 2026-07-21, and it crossed the
+          // old 0.5 threshold on 2026-07-22 and then blocked every scheduled commit
+          // for 26 days while the fetches themselves were healthy. A real systemic
+          // outage is caught by the price-history check below, which measures the
+          // snapshots directly instead of a sticky flag.
           const partialRatio = partialCount / successCount;
-          if (partialRatio > 0.25) {
-            console.warn('::warning::' + (partialRatio * 100).toFixed(1) + '% of symbols retained one or more earlier sections.');
-          }
-          if (partialRatio > 0.5) {
-            console.error('::error::More than 50% of the research universe retained earlier sections; likely a systemic provider outage.');
-            process.exit(1);
-          }
+          console.log('Symbols carrying one or more retained sections:', partialCount, '(' + (partialRatio * 100).toFixed(1) + '%)');
 
           // Quality check: when defeatbeta-api silently returns empty data
           // for every ticker (the documented failure mode after a hang or

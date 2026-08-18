@@ -94,6 +94,13 @@ export function CompareModal({
   const scaleMin = Math.min(...players.map((p) => (Number.isFinite(p.minRank) ? (p.minRank as number) : Infinity)));
   const scaleMax = Math.max(...players.map((p) => (Number.isFinite(p.maxRank) ? (p.maxRank as number) : -Infinity)));
   const hasScale = Number.isFinite(scaleMin) && Number.isFinite(scaleMax);
+  const samePosition = players.every((player) => player.position === players[0]?.position);
+  const publishedRankValue = (player: Player): number | null => {
+    const value = Number.parseFloat(
+      publishedRank ? publishedRank(player) : formatRankValue(player.rankEcr ?? player.averageRank)
+    );
+    return Number.isFinite(value) ? value : null;
+  };
 
   const rows: Array<{ key: string; label: string; direction: Direction; render: (p: Player) => React.ReactNode }> = [
     {
@@ -105,7 +112,7 @@ export function CompareModal({
     {
       key: "posRank",
       label: "Position rank",
-      direction: "lower",
+      direction: samePosition ? "lower" : "none",
       render: (p) => `${p.position} ${Number.isFinite(p.positionRank) ? p.positionRank : "—"}`,
     },
     { key: "tier", label: "Tier", direction: "lower", render: (p) => (Number.isFinite(p.tier) ? p.tier : "—") },
@@ -280,7 +287,12 @@ export function CompareModal({
               </thead>
               <tbody>
                 {rows.map((row) => {
-                  const winner = bestIndex(players, row.key, row.direction);
+                  const winner = bestIndex(
+                    players,
+                    row.key,
+                    row.direction,
+                    row.key === "rank" ? publishedRankValue : undefined
+                  );
                   return (
                     <tr key={row.key}>
                       <th

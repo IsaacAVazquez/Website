@@ -63,7 +63,8 @@ function startServer(
 function runVerifier(
   server: TestServer,
   expectedRevision: string,
-  expectedCommit: string
+  expectedCommit: string,
+  ledgerUrlOverride?: string
 ): Promise<{ stdout: string; stderr: string }> {
   const script = path.join(
     process.cwd(),
@@ -77,7 +78,7 @@ function runVerifier(
       [
         script,
         expectedRevision,
-        `${server.baseUrl}/ledger`,
+        ledgerUrlOverride ?? `${server.baseUrl}/ledger`,
         `${server.baseUrl}/hook`,
         expectedCommit,
       ],
@@ -166,6 +167,37 @@ describe("production data publication verifier", () => {
       const result = await runVerifier(server, expectedRevision, headCommit);
       expect(result.stdout).toContain("Build hook accepted");
       expect(result.stdout).toContain("expected committed data revision");
+      expect(server.hookCalls()).toBe(1);
+    } finally {
+      await server.close();
+    }
+  });
+
+  it("still fires the build hook when the pre-hook ledger read is unreachable", async () => {
+    // A transport-level failure (request timeout, DNS failure, TLS reset) used to
+    // reject out of readProductionLedger and exit the run through main().catch
+    // before the hook POST, so committed snapshots stayed unpublished for up to
+    // six hours while the opened incident pointed on-call at the build hook. HTTP
+    // failure was already tolerated; transport failure was not.
+    const server = await startServer({
+      revision: "b".repeat(64),
+      publicationRevision: "c".repeat(64),
+      deploymentCommit: null,
+    });
+    try {
+      // Port 1 is reserved and refuses immediately, so the ledger read throws
+      // while the hook endpoint on the stub server stays reachable.
+      await expect(
+        runVerifier(
+          server,
+          expectedRevision,
+          headCommit,
+          "http://127.0.0.1:1/ledger"
+        )
+      ).rejects.toThrow();
+
+      // The run still fails, because production never confirmed the revision.
+      // What matters is that the publish was attempted rather than skipped.
       expect(server.hookCalls()).toBe(1);
     } finally {
       await server.close();

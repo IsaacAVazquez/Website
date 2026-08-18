@@ -24,6 +24,7 @@ const MANAGED_EXACT_KEYS = new Set([
 
 const MANAGED_KEY_PREFIXES = [
   "fantasy-draft-tracker-v2-",
+  "fantasy-trade-calculator-v1-",
   "fantasy-formula-1-lineup-v1-",
 ];
 

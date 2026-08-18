@@ -2,7 +2,7 @@
 
 Current API route inventory for the app.
 
-**Last updated:** 2026-06-19
+**Last updated:** 2026-08-11
 
 ---
 

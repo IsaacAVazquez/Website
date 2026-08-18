@@ -17,6 +17,7 @@ interface FantasyFootballPageProps {
     position?: string;
     scoring?: string;
     view?: string;
+    q?: string;
   }>;
 }
 

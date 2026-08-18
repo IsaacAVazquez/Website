@@ -24,9 +24,21 @@ describe("update-investments workflow contract", () => {
     expect(workflow).toContain("freshCount === 0");
     expect(workflow).toContain("freshCount + staleCount !== successCount");
     expect(workflow).toContain("staleRatio > 0.8");
-    expect(workflow).toContain("partialRatio > 0.5");
     expect(workflow).toContain('MAX_PRICE_AGE_DAYS: "7"');
     expect(workflow).toContain("delayedFreshSymbols.length > 0");
+  });
+
+  it("reports partial retention without gating on it", () => {
+    // partialCount is sticky across the budget-limited rotation: every freshly
+    // fetched symbol lands partial, and the flag carries forward on the symbols
+    // a run did not fetch, so the count ratchets toward the full universe no
+    // matter how healthy the provider is. A ratio gate on it went from 37/151 to
+    // 67/151 over two runs in July 2026, crossed 0.5, and then blocked every
+    // scheduled commit for 26 days. Provider outages are caught by the
+    // price-history checks instead.
+    expect(workflow).toContain("Symbols carrying one or more retained sections");
+    expect(workflow).not.toContain("partialRatio > 0.5");
+    expect(workflow).not.toContain("likely a systemic provider outage");
   });
 
   it("commits only deployable snapshots, not raw provider responses", () => {
