@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-18T09:55:16.240Z",
+  "generatedAt": "2026-08-18T21:43:40.600Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -9,9 +9,9 @@
       "upcoming": true,
       "success": null,
       "details": "A batch of 24 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-08-19T03:45:08Z",
-      "dateUnix": 1787111108,
-      "dateLocal": "2026-08-19T03:45:08Z",
+      "dateUtc": "2026-08-19T03:46:10Z",
+      "dateUnix": 1787111170,
+      "dateLocal": "2026-08-19T03:46:10Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -49,9 +49,9 @@
       "upcoming": true,
       "success": null,
       "details": "A batch of 24 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-08-19T03:45:08Z",
-      "dateUnix": 1787111108,
-      "dateLocal": "2026-08-19T03:45:08Z",
+      "dateUtc": "2026-08-19T03:46:10Z",
+      "dateUnix": 1787111170,
+      "dateLocal": "2026-08-19T03:46:10Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-08-18T09:55:05.163Z"
+    "generatedAt": "2026-08-18T21:43:35.422Z"
   },
   "upcomingLaunches": [
     {
@@ -160,9 +160,9 @@
       "upcoming": true,
       "success": null,
       "details": "A batch of 24 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-08-19T03:45:08Z",
-      "dateUnix": 1787111108,
-      "dateLocal": "2026-08-19T03:45:08Z",
+      "dateUtc": "2026-08-19T03:46:10Z",
+      "dateUnix": 1787111170,
+      "dateLocal": "2026-08-19T03:46:10Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -2084,9 +2084,9 @@
       "upcoming": true,
       "success": null,
       "details": "A batch of 24 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-08-19T03:45:08Z",
-      "dateUnix": 1787111108,
-      "dateLocal": "2026-08-19T03:45:08Z",
+      "dateUtc": "2026-08-19T03:46:10Z",
+      "dateUnix": 1787111170,
+      "dateLocal": "2026-08-19T03:46:10Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -2931,6 +2931,6 @@
       }
     ],
     "rangeLabel": "Sep 25 – Aug 26",
-    "generatedAt": "2026-08-18T09:55:16.240Z"
+    "generatedAt": "2026-08-18T21:43:40.599Z"
   }
 }
