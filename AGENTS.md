@@ -251,16 +251,22 @@ Primary npm entry point:
 
 - `npm run update:fantasy`
 
-The command currently runs this four-step pipeline:
+The command currently runs this five-step pipeline:
 
 1. `tsx scripts/buildFantasyPositionData.ts`
 2. `tsx scripts/buildFantasyAdpData.ts`
-3. `tsx scripts/buildFantasySnapshots.ts`
-4. `tsx scripts/buildBestBallSnapshot.ts`
+3. `tsx scripts/buildFantasyGameLogData.ts`
+4. `tsx scripts/buildFantasySnapshots.ts`
+5. `tsx scripts/buildBestBallSnapshot.ts`
+
+Steps 2 and 3 are both fail-soft overlays on the consensus board. Each keeps its
+previous generated data on a failed or thin fetch and never stops the chain.
 
 Current generated outputs:
 
 - `src/data/fantasyPositionData.generated.ts`
+- `src/data/fantasyAdpData.generated.ts`
+- `src/data/fantasyGameLogData.generated.ts`
 - `src/data/fantasySnapshotRevision.generated.ts`
 - `public/data/fantasy/ppr.json`
 - `public/data/fantasy/half_ppr.json`
@@ -398,7 +404,7 @@ The MLB, NBA, and NFL dashboards read committed TypeScript snapshots at runtime.
 | `npm run analyze` | Analyzer-enabled build that still runs npm `postbuild` |
 | `npm run build:analyze` | Analyzer-enabled `next build` without npm `postbuild` |
 | `npm run build:fantasy-companion` | Build the private fantasy draft companion extension into `extension/dist` with packaged snapshot copies; not part of the site build. See `docs/FANTASY_DRAFT_COMPANION.md` |
-| `npm run update:fantasy` | Generate fantasy position data and snapshot JSON |
+| `npm run update:fantasy` | Generate fantasy position data, ADP, prior-season per-game scoring, and snapshot JSON |
 | `npm run update:investments` | Fetch investment data and build compact snapshots |
 | `npm run update:football` | Rebuild both Premier League and La Liga snapshots |
 | `npm run update:premier-league` | Rebuild the checked-in Premier League snapshot |

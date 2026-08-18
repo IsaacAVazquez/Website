@@ -24,7 +24,7 @@ fallback.
 
 | Surface | `npm run` | Script(s) | Upstream source | Committed artifact | Workflow | Cadence |
 |---|---|---|---|---|---|---|
-| Fantasy football | `update:fantasy` | `buildFantasyPositionData.ts` → `buildFantasyAdpData.ts` → `buildFantasySnapshots.ts` | FantasyPros cheatsheets + FF Calculator ADP | `public/data/fantasy/{ppr,half_ppr,standard}.json`, `src/data/fantasy*.generated.ts` | `update-fantasy.yml` | daily July through September; weekly otherwise |
+| Fantasy football | `update:fantasy` | `buildFantasyPositionData.ts` → `buildFantasyAdpData.ts` → `buildFantasyGameLogData.ts` → `buildFantasySnapshots.ts` | FantasyPros cheatsheets + FF Calculator ADP + nflverse weekly player stats | `public/data/fantasy/{ppr,half_ppr,standard}.json`, `src/data/fantasy*.generated.ts` | `update-fantasy.yml` | daily July through September; weekly otherwise |
 | Investments | `update:investments` | `fetch_investments_data.py` (needs `.venv`) → `buildInvestmentsSnapshots.ts` | `defeatbeta-api` (Python) | `public/data/investments/index.json` + `{SYMBOL}/snapshot.json` | `update-investments.yml` | weekdays 22:15 UTC |
 | Football (both) | `update:football` | `updateFootballSnapshots.ts` | football-data.org *(token)* | `src/data/premierLeagueSnapshot.ts` + `laLigaSnapshot.ts` | none *(full run is manual ~weekly)* | manual |
 | Premier League | `update:premier-league` | `buildPremierLeagueSnapshot.ts` | football-data.org *(token; the summary API also refreshes standings/fixtures at request time when the token is set)* | `src/data/premierLeagueSnapshot.ts` | `update-premier-league.yml` | every 4h, August through May |

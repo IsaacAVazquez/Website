@@ -70,6 +70,20 @@ The API request asks for a 12-team room, but tests on August 7 returned the same
 
 The source dates remain visible during a draft. From July through September, a ranking or ADP source ages after two days and is stale after four days. Outside that window, the boundaries are eight and fourteen days. A prior-season ADP feed is also stale during draft season. The operations ledger reads the upstream source date, so a newly wrapped old board stays old. Saved picks are matched back to the full current player universe before scoring, including corrected team, position, and bye data for players found only on a position board. Exports rebuild their team counts from those same picks. An orphaned saved player keeps the name, team, and roster position but loses old ADP and expert baselines, while every restored room drops stale or slate-mismatched ADP. Best ball hides exact recommendation cards when either the required ranking source or matching ADP is stale. Reference presets never show exact player cards, even when their consensus board is current. The snapshot has no separate live injury or player-news feed, and the draft pages say so.
 
+## Prior-season points per game
+
+The player drawer on the rankings board shows a fourth reading alongside the consensus rank, the expert range, and the market price, which is how many fantasy points the player actually scored per game in the last completed regular season. It comes from [nflverse's weekly `stats_player` release](https://github.com/nflverse/nflverse-data/releases/tag/stats_player), the same open dataset that already backs the NFL dashboard, and `scripts/buildFantasyGameLogData.ts` reduces each player's game log to four figures, the lowest game, the median, the average, and the highest game.
+
+nflverse publishes a standard column and a full PPR column. Half PPR is their exact midpoint, because the two formats differ only by one point per reception, so all three boards report a figure computed the way that board scores. That does mean a quarterback who caught a pass shows a slightly different per-game line across formats even though his consensus rank is identical in all three, and the difference is points he actually scored.
+
+A player needs at least four regular-season games before the panel will draw anything. Below that, the low and the high are two readings of a nearly empty sample, and the meter would draw a range wide enough to look meaningful across what is mostly noise. Matching onto the consensus board runs through the same tiered exact matcher ADP uses, name and team and position with an ambiguity guard, never fuzzy distance, so an unmatched player carries no per-game data and the panel simply does not render. That is deliberate, since the alternative failure is showing someone else's season on his card.
+
+Coverage on the August 18, 2026 build of the PPR board is 341 of 511 overall players, which is 76.5% of the 446 players at quarterback, running back, wide receiver, and tight end, and 90.5% of the top 200 of those same skill players by board rank. The gap is mostly rookies, who have no prior NFL season at all, plus anyone who missed most of the year. I would read the top 200 figure as the one that matters during a draft, since that is roughly the population a 12-team room actually selects from.
+
+The builder tries the current season first and falls back to the prior one, so during the offseason it reports the completed season and it rolls forward on its own once the new season has enough games behind it. The panel always names the season and the number of games it is describing, so a four-game line and a seventeen-game line are never presented as the same strength of evidence.
+
+What this does not establish is any claim about the season ahead. It is history, and a strong prior year is not a projection, a floor, or a ceiling for the coming one. There is no adjustment for opponent, for snap share, for role change, for a new team, or for the games a player missed, so a player who was hurt for half a season and a player who was healthy and merely inconsistent can produce a similar looking spread for entirely different reasons. I would use it the way I would use any other piece of context in the room, as a check on whether the consensus rank matches what the player has actually done, and not as a forecast.
+
 ## ADP uncertainty
 
 The rankings board uses `ADP - ECR`. A positive number means the market usually drafts the player later than the expert consensus. A label requires at least 20 observed player selections. When the source publishes player variation, the minimum gap is:
@@ -276,6 +290,7 @@ npx playwright test e2e/fantasy-football.spec.ts
 | P1 | No historical calibration of Draft Outlook coefficients | The score remains ordinal draft process guidance. A held-out multi-season backtest is the next model task. |
 | P2 | Redraft ADP does not vary across tested team-size parameters | The UI calls it a general market price and the model uses actual pick number plus exact lineup settings. |
 | P2 | Separate best ball slates lack matching ADP | The tool removes market value rather than reusing the standard-season price. |
+| P2 | Prior-season points per game carry no role or opponent adjustment | The panel names its season and its games-played count, and this spec says plainly that the figures describe what already happened and forecast nothing. A rookie or a player under the four-game floor gets no panel at all. |
 
 ## Draft-day operating rule
 

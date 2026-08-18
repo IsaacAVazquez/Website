@@ -273,6 +273,8 @@ interface DraftPlayerDrawerProps {
   /** Up to five board neighbors (the player plus two either side). */
   neighbors: Player[];
   activePosition: FantasyRoutePosition;
+  /** Scoring label for the board, so the per-game panel names its own basis. */
+  scoringLabel: string;
   onSelectNeighbor: (id: string) => void;
   onClose: () => void;
 }
@@ -291,6 +293,7 @@ function DraftPlayerDrawer({
   vsAdpMeaningful,
   neighbors,
   activePosition,
+  scoringLabel,
   onSelectNeighbor,
   onClose,
 }: DraftPlayerDrawerProps) {
@@ -400,6 +403,14 @@ function DraftPlayerDrawer({
       ? Math.min(100, Math.max(0, ((avg - lo) / Math.max(1, hi - lo)) * 100))
       : null;
 
+  // Prior-season scoring, present only when this player was matched to a game
+  // log that cleared the games-played floor. The span guards a flat line (a
+  // player whose low and high coincide) from dividing by zero.
+  const gameLog = player.gameLog;
+  const gameLogSpan = gameLog ? Math.max(0.1, gameLog.high - gameLog.low) : 0;
+  const gameLogTickLeft = (value: number): number =>
+    gameLog ? Math.min(100, Math.max(0, ((value - gameLog.low) / gameLogSpan) * 100)) : 0;
+
   const boardLabel = activePosition === "overall" || activePosition === "flex" ? "overall" : "on this board";
 
   return (
@@ -504,6 +515,87 @@ function DraftPlayerDrawer({
           </div>
         )}
 
+        {gameLog && (
+          <div>
+            <div className="flex items-baseline justify-between gap-2.5">
+              <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+                Points per game
+              </span>
+              <span
+                className="font-mono text-3xs uppercase tracking-[0.1em]"
+                style={{ color: "var(--home-ink-muted)" }}
+              >
+                {gameLog.season} season · {scoringLabel} · {gameLog.games}{" "}
+                {gameLog.games === 1 ? "game" : "games"}
+              </span>
+            </div>
+            <div
+              className="relative mt-2 h-2.5 overflow-hidden rounded-full"
+              style={{ background: "color-mix(in srgb, var(--home-stone) 70%, var(--home-paper))" }}
+            >
+              <span
+                className="absolute bottom-0 top-0 w-0.5"
+                title="Median"
+                style={{
+                  left: `calc(${gameLogTickLeft(gameLog.median)}% - 1px)`,
+                  background: "var(--home-ink)",
+                }}
+              />
+              <span
+                className="absolute bottom-0 top-0 w-0.5"
+                title="Average"
+                style={{
+                  left: `calc(${gameLogTickLeft(gameLog.average)}% - 1px)`,
+                  background: "var(--home-signal)",
+                }}
+              />
+            </div>
+            <dl className="mt-2 grid grid-cols-4 gap-2">
+              <div>
+                <dt className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+                  Low
+                </dt>
+                <dd
+                  className="mt-0.5 font-mono text-2xs tabular-nums"
+                  style={{ color: "var(--home-ink-muted)" }}
+                >
+                  {gameLog.low.toFixed(1)}
+                </dd>
+              </div>
+              <div>
+                <dt className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+                  Median
+                </dt>
+                <dd className="mt-0.5 font-mono text-2xs tabular-nums" style={{ color: "var(--home-ink)" }}>
+                  {gameLog.median.toFixed(1)}
+                </dd>
+              </div>
+              <div>
+                <dt className={MONO_LABEL_CLASS} style={{ color: "var(--home-signal)" }}>
+                  Avg
+                </dt>
+                <dd
+                  className="mt-0.5 font-mono text-2xs font-medium tabular-nums"
+                  style={{ color: "var(--home-ink)" }}
+                >
+                  {gameLog.average.toFixed(1)}
+                </dd>
+              </div>
+              <div>
+                <dt className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+                  High
+                </dt>
+                <dd
+                  className="mt-0.5 font-mono text-2xs tabular-nums"
+                  style={{ color: "var(--home-ink-muted)" }}
+                >
+                  {gameLog.high.toFixed(1)}
+                </dd>
+              </div>
+            </dl>
+          </div>
+        )}
+
         {neighbors.length > 1 && (
           <div>
             <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
@@ -601,7 +693,8 @@ function DraftPlayerDrawer({
         </div>
 
         <p className="font-mono text-3xs leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
-          Ranks, tiers, and expert ranges come from the published snapshot. Queue and notes stay on this device.
+          Ranks, tiers, and expert ranges come from the published snapshot, and per-game scoring is the prior
+          regular season from nflverse. Queue and notes stay on this device.
         </p>
       </aside>
     </div>
@@ -1303,6 +1396,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
           vsAdpMeaningful={vsAdpMeaningful}
           neighbors={neighborhood}
           activePosition={routeState.position}
+          scoringLabel={selectedScoringLabel}
           onSelectNeighbor={(id) => setDetailPlayerId(id)}
           onClose={() => setDetailPlayerId(null)}
         />

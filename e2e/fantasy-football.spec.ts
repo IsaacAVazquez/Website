@@ -282,6 +282,32 @@ test.describe("Fantasy football rankings", () => {
     ).toHaveAttribute("aria-pressed", "true");
   });
 
+  test("shows prior-season points per game in the drawer, with its season and sample", async ({ page }) => {
+    // Pick the target from the published snapshot rather than probing rows.
+    // Rookies and anyone under the games-played floor legitimately carry no
+    // game log, so scanning the board would be both slower and less certain.
+    const snapshot = await (await page.request.get("/data/fantasy/ppr.json")).json();
+    const scored = snapshot.overall.find((player: { gameLog?: unknown }) => player.gameLog);
+    expect(scored, "the published PPR board carries prior-season scoring").toBeTruthy();
+
+    await page.goto("/fantasy-football?position=overall&scoring=ppr");
+    const shell = await getReadyFantasyShell(page);
+
+    await shell.getByRole("button", { name: `Open ${scored.name} detail` }).click();
+    const dialog = page.getByRole("dialog", { name: `${scored.name} detail` });
+    await expect(dialog.getByText("Points per game", { exact: true })).toBeVisible();
+
+    // The basis travels with the number: which season, which scoring, and how
+    // many games sit behind the spread.
+    await expect(
+      dialog.getByText(`${scored.gameLog.season} season · PPR · ${scored.gameLog.games} games`)
+    ).toBeVisible();
+    await expect(dialog.getByText(scored.gameLog.average.toFixed(1), { exact: true })).toBeVisible();
+
+    await page.keyboard.press("Escape");
+    await expect(dialog).toBeHidden();
+  });
+
   test("persists a private note from the drawer", async ({ page }) => {
     await page.goto("/fantasy-football?position=overall&scoring=ppr");
     const shell = await getReadyFantasyShell(page);
