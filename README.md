@@ -3,7 +3,7 @@
 Portfolio, writing, fantasy football analytics, investment research, and standalone data tools built on Next.js 16.
 
 **Live:** [isaacvazquez.com](https://isaacvazquez.com)
-**Last updated:** 2026-07-07
+**Last updated:** 2026-08-11
 
 ---
 

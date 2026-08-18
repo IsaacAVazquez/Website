@@ -2,7 +2,7 @@
 
 Operational context for agents working in this repo. Start here, then read `CLAUDE.md` for deeper implementation context.
 
-**Last updated:** 2026-06-25
+**Last updated:** 2026-08-16
 
 ---
 
@@ -110,6 +110,7 @@ Self-shell routes currently include:
 - `/fantasy-football/best-ball`
 - `/fantasy-football/best-ball/draft-tracker`
 - `/fantasy-football/draft-tracker`
+- `/fantasy-football/trade-calculator`
 - `/fintech-tools/budget-planner`
 - `/fintech-tools/interchange-iq`
 - `/food-map`
@@ -238,7 +239,9 @@ npm run dev
 
 The fantasy-football surface keeps redraft and best ball separate. `/fantasy-football` and `/fantasy-football/draft-tracker` use the scoring-specific redraft snapshots through `useFantasySnapshot`. `/fantasy-football/best-ball` and `/fantasy-football/best-ball/draft-tracker` use `public/data/fantasy/best-ball.json` through `useBestBallSnapshot`, with contest rules and recommendations from `src/lib/bestBall.ts`. The best ball snapshot combines best ball consensus rankings, current Underdog ADP, bye weeks, and Week 17 opponents. Best ball draft state uses its own season-and-contest storage keys and does not read or overwrite the redraft draft state.
 
-The redraft rankings board offers a deep-linkable position pill bar and PPR/Half-PPR/Standard scoring selector (`?position=`, `?scoring=`), per-board search, a List/Tiers view toggle (`?view=tiers`), a Comfortable/Compact density control, and ADP Value/Reach chips. Shared presentation components live in `src/components/fantasy/` (barrel `index.ts`); three cross-surface browser-local stores live in `src/hooks/use{PlayerQueue,PlayerNotes,CompareTray}.ts` over `useLocalStorageString.ts`, with parse/serialize helpers and key constants in `src/lib/fantasyLocal.ts`. Board math/formatting/legend copy is in `src/lib/fantasyUtils.ts`; the pure redraft signal engine is `src/lib/draftAnalytics.ts`. LocalStorage keys include `fantasy-player-queue-v1`, `fantasy-player-notes-v1`, `fantasy-compare-v1`, and `fantasy-board-density`; per-season redraft state persists under `fantasy-draft-tracker-v3-<season>`.
+The redraft rankings board is tier-first (from the `draft-rankings` Claude Design template): numbered tier plates, avg-rank cliff separators, per-row expert-spread bars, a sticky bar with the deep-linkable position pill row and PPR/Half-PPR/Standard scoring selector (`?position=`, `?scoring=`), per-board search, and, when the ADP source is fresh, ADP and vs-ADP columns plus a market verdict in the board's own player drawer (`?view=` is still parsed for old links but has no UI). Shared presentation components live in `src/components/fantasy/` (barrel `index.ts`); three cross-surface browser-local stores live in `src/hooks/use{PlayerQueue,PlayerNotes,CompareTray}.ts` over `useLocalStorageString.ts`, with parse/serialize helpers and key constants in `src/lib/fantasyLocal.ts`. Board math/formatting/legend copy is in `src/lib/fantasyUtils.ts`; the pure redraft signal engine is `src/lib/draftAnalytics.ts`. LocalStorage keys include `fantasy-player-queue-v1`, `fantasy-player-notes-v1`, and `fantasy-compare-v1`; per-season redraft state persists under `fantasy-draft-tracker-v3-<season>`.
+
+`/fantasy-football/trade-calculator` is a preseason one-QB redraft estimate built from the same overall consensus and mock-draft ADP snapshot. `src/lib/fantasyTrade.ts` converts each source to a league-specific replacement-relative index, keeps expert and market readings separate, and reports sensitivity and input coverage. It is not an in-season, dynasty, creator-specific, projected-points, or win-probability model. Selected player IDs persist under `fantasy-trade-calculator-v1-<season>-<scoring>`, while scoring, team count, roster size, and lineup preset stay in the URL.
 
 Both draft trackers derive a room-relative Draft Outlook from `src/lib/fantasyTeamValue.ts`. The model uses actual pick number against ADP or format rank, roster shape, lineup or stack fit, and weekly bye lineup coverage, with explicit component weights and input coverage. `src/components/fantasy/DraftValuePanel.tsx` renders the shared room rank, draft-slot turn context, published Best Ball Mania VII field economics, and a user-entered expected return calculator. The Draft Outlook is an ordinal draft-process model. Do not describe it as projected points, win probability, or roster-specific payout EV. Those outputs require weekly player distributions and a calibrated field simulation that the current snapshots do not contain. The current contract and limits are in `docs/FANTASY_DRAFT_MODEL.md`.
 
@@ -248,16 +251,22 @@ Primary npm entry point:
 
 - `npm run update:fantasy`
 
-The command currently runs this four-step pipeline:
+The command currently runs this five-step pipeline:
 
 1. `tsx scripts/buildFantasyPositionData.ts`
 2. `tsx scripts/buildFantasyAdpData.ts`
-3. `tsx scripts/buildFantasySnapshots.ts`
-4. `tsx scripts/buildBestBallSnapshot.ts`
+3. `tsx scripts/buildFantasyGameLogData.ts`
+4. `tsx scripts/buildFantasySnapshots.ts`
+5. `tsx scripts/buildBestBallSnapshot.ts`
+
+Steps 2 and 3 are both fail-soft overlays on the consensus board. Each keeps its
+previous generated data on a failed or thin fetch and never stops the chain.
 
 Current generated outputs:
 
 - `src/data/fantasyPositionData.generated.ts`
+- `src/data/fantasyAdpData.generated.ts`
+- `src/data/fantasyGameLogData.generated.ts`
 - `src/data/fantasySnapshotRevision.generated.ts`
 - `public/data/fantasy/ppr.json`
 - `public/data/fantasy/half_ppr.json`
@@ -394,7 +403,8 @@ The MLB, NBA, and NFL dashboards read committed TypeScript snapshots at runtime.
 | `npm run test:all` | Run coverage plus E2E tests |
 | `npm run analyze` | Analyzer-enabled build that still runs npm `postbuild` |
 | `npm run build:analyze` | Analyzer-enabled `next build` without npm `postbuild` |
-| `npm run update:fantasy` | Generate fantasy position data and snapshot JSON |
+| `npm run build:fantasy-companion` | Build the private fantasy draft companion extension into `extension/dist` with packaged snapshot copies; not part of the site build. See `docs/FANTASY_DRAFT_COMPANION.md` |
+| `npm run update:fantasy` | Generate fantasy position data, ADP, prior-season per-game scoring, and snapshot JSON |
 | `npm run update:investments` | Fetch investment data and build compact snapshots |
 | `npm run update:football` | Rebuild both Premier League and La Liga snapshots |
 | `npm run update:premier-league` | Rebuild the checked-in Premier League snapshot |

@@ -86,7 +86,7 @@ Operational variables:
 - `CRON_SECRET`
 - `FOOTBALL_DATA_API_TOKEN`
 
-The fantasy snapshot builder uses `FANTASYPROS_API_KEY` as a build-only credential. Scheduled refreshes run in GitHub Actions, so the key belongs in the repository's Actions secrets. A Netlify variable with the same name does not flow into that job and is not needed by the deployed runtime.
+The fantasy snapshot builder can use `FANTASYPROS_API_KEY` as an optional build-only credential for local authenticated refreshes. The scheduled GitHub workflow uses the public rankings pages and does not receive this secret. The deployed runtime does not need it.
 
 Platform-provided variables like `URL`, `DEPLOY_URL`, `DEPLOY_PRIME_URL`, and `VERCEL_URL` are consumed when available and do not need to be set manually unless you are reproducing a deploy context.
 
@@ -105,7 +105,7 @@ See `docs/ENVIRONMENT_CONFIGURATION.md` for details.
 
 - All four fantasy routes read checked-in JSON snapshots at runtime
 - GitHub Actions runs `npm run update:fantasy` and commits refreshed artifacts
-- The GitHub workflow requires `FANTASYPROS_API_KEY`; a local builder run can use the public page parser when the key is absent
+- The GitHub workflow uses the public page parser without `FANTASYPROS_API_KEY`; a local builder run can use the official API when a suitable key is present
 
 ### Football dashboards
 

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { RotateCcw, Undo2 } from "lucide-react";
 import { Breadcrumbs } from "@/components/navigation/Breadcrumbs";
 import type { ExpectedReturnFormState } from "@/components/fantasy";
@@ -118,6 +118,10 @@ export function BestBallDraftTrackerClient({
   const [contestId, setContestId] = useState<BestBallContestId>(() =>
     normalizeContestId(initialContest)
   );
+  // Same split the redraft tracker made on 2026-08-07: setup keeps the display
+  // headline and the pitch, because that visitor is still deciding whether to
+  // use the tool; an open room gets a compact title so the live state leads.
+  const [roomOpen, setRoomOpen] = useState(false);
   const { snapshot, isLoading, error, retry } = useBestBallSnapshot();
   const preset = getContestPreset(contestId);
 
@@ -139,31 +143,52 @@ export function BestBallDraftTrackerClient({
         <Breadcrumbs customItems={BREADCRUMBS} className="pt-2" />
 
         <header className="space-y-4">
-          <div className="space-y-3">
-            <p className="home-kicker mb-0">Best ball draft assistant</p>
-            <h1
-              style={{
-                fontFamily: "var(--font-home-sans)",
-                fontSize: "clamp(2.15rem, 1.6rem + 2.75vw, 4.2rem)", // DESIGN.md headline step
-                fontWeight: 600,
-                letterSpacing: "-0.04em",
-                lineHeight: 0.98,
-                maxWidth: "18ch",
-              }}
-            >
-              Track every pick and see what your build still needs.
-            </h1>
-            <p className="max-w-[66ch] text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
-              I built this for manual rooms on Underdog and similar platforms. It follows every pick, keeps the snake order straight, adjusts roster guidance by contest, and compares your build against the room. Exact player cards appear only for presets with a matching room-price source. Expected return stays in a separate calculator because the Draft Outlook cannot promise an outcome.
-            </p>
-            <p className="max-w-[66ch] text-xs leading-6" style={{ color: "var(--home-ink-muted)" }}>
-              The snapshot has no separate live injury or player-news feed. Check the draft room and
-              current team reports before logging each pick.
-            </p>
-            <p className="max-w-[66ch] text-xs leading-6" style={{ color: "var(--home-ink-muted)" }}>
-              This tracker models a 12 team, 18 round, 18 player, half PPR room. Weekly Winners, Sit &amp; Go, and Superflex contest cards can use different settings, so check the lobby before you start.
-            </p>
-          </div>
+          {roomOpen ? (
+            <div className="space-y-2">
+              <p className="home-kicker mb-0">Best ball draft assistant</p>
+              {/* An open room demotes the pitch: the h1 stays for the outline,
+                  compact, and the live state below leads. Freshness survives the
+                  collapse on purpose; it is a credibility feature. */}
+              <h1 className="text-2xl font-semibold tracking-tight">
+                Track every pick and see what your build still needs.
+              </h1>
+              <p className="text-xs" style={{ color: "var(--home-ink-muted)" }}>
+                {preset.teams} teams · {preset.rounds} rounds · Half PPR · Rankings updated{" "}
+                {formatSnapshotDate(
+                  contestId === "superflex"
+                    ? snapshot?.superflexSource?.asOf
+                    : snapshot?.rankingSource.asOf
+                )}{" "}
+                · No live injury or news feed, so check the draft room before each pick.
+              </p>
+            </div>
+          ) : (
+            <div className="space-y-3">
+              <p className="home-kicker mb-0">Best ball draft assistant</p>
+              <h1
+                style={{
+                  fontFamily: "var(--font-home-sans)",
+                  fontSize: "clamp(2.15rem, 1.6rem + 2.75vw, 4.2rem)", // DESIGN.md headline step
+                  fontWeight: 600,
+                  letterSpacing: "-0.04em",
+                  lineHeight: 0.98,
+                  maxWidth: "18ch",
+                }}
+              >
+                Track every pick and see what your build still needs.
+              </h1>
+              <p className="max-w-[66ch] text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
+                I built this for manual rooms on Underdog and similar platforms. It follows every pick, keeps the snake order straight, adjusts roster guidance by contest, and compares your build against the room. Exact player cards appear only for presets with a matching room-price source. Expected return stays in a separate calculator because the Draft Outlook cannot promise an outcome.
+              </p>
+              <p className="max-w-[66ch] text-xs leading-6" style={{ color: "var(--home-ink-muted)" }}>
+                The snapshot has no separate live injury or player-news feed. Check the draft room and
+                current team reports before logging each pick.
+              </p>
+              <p className="max-w-[66ch] text-xs leading-6" style={{ color: "var(--home-ink-muted)" }}>
+                This tracker models a 12 team, 18 round, 18 player, half PPR room. Weekly Winners, Sit &amp; Go, and Superflex contest cards can use different settings, so check the lobby before you start.
+              </p>
+            </div>
+          )}
 
           <nav aria-label="Best ball contest" className="scroll-shadow-x scrollbar-thin flex max-w-full gap-2 overflow-x-auto pb-1">
             {CONTESTS.map((contest) => {
@@ -187,21 +212,23 @@ export function BestBallDraftTrackerClient({
             })}
           </nav>
 
-          <div className="flex flex-wrap gap-2 text-xs">
-            <span className="rounded-full border px-3 py-2 font-semibold" style={OUTLINE_ACTION_STYLE}>
-              {preset.teams} teams · {preset.rounds} rounds
-            </span>
-            <span className="rounded-full border px-3 py-2 font-semibold" style={OUTLINE_ACTION_STYLE}>
-              Half PPR · best ball scoring
-            </span>
-            <span className="rounded-full border px-3 py-2 font-semibold" style={OUTLINE_ACTION_STYLE}>
-              Rankings updated {formatSnapshotDate(
-                contestId === "superflex"
-                  ? snapshot?.superflexSource?.asOf
-                  : snapshot?.rankingSource.asOf
-              )}
-            </span>
-          </div>
+          {!roomOpen ? (
+            <div className="flex flex-wrap gap-2 text-xs">
+              <span className="rounded-full border px-3 py-2 font-semibold" style={OUTLINE_ACTION_STYLE}>
+                {preset.teams} teams · {preset.rounds} rounds
+              </span>
+              <span className="rounded-full border px-3 py-2 font-semibold" style={OUTLINE_ACTION_STYLE}>
+                Half PPR · best ball scoring
+              </span>
+              <span className="rounded-full border px-3 py-2 font-semibold" style={OUTLINE_ACTION_STYLE}>
+                Rankings updated {formatSnapshotDate(
+                  contestId === "superflex"
+                    ? snapshot?.superflexSource?.asOf
+                    : snapshot?.rankingSource.asOf
+                )}
+              </span>
+            </div>
+          ) : null}
         </header>
 
         {error ? (
@@ -231,6 +258,7 @@ export function BestBallDraftTrackerClient({
             key={`${snapshot.season}-${contestId}`}
             snapshot={snapshot}
             preset={preset}
+            onRoomOpenChange={setRoomOpen}
           />
         ) : null}
       </div>
@@ -241,9 +269,11 @@ export function BestBallDraftTrackerClient({
 function BestBallDraftRoom({
   snapshot,
   preset,
+  onRoomOpenChange,
 }: {
   snapshot: BestBallSnapshot;
   preset: BestBallContestPreset;
+  onRoomOpenChange?: (open: boolean) => void;
 }) {
   const rules = useMemo(() => roomRulesFromPreset(preset), [preset]);
   const draft = useBestBallDraft({ season: snapshot.season, rules });
@@ -377,6 +407,14 @@ function BestBallDraftRoom({
   // to zero picks, instead of dropping them onto the slot picker.
   const showSetup =
     draft.state.picks.length === 0 && !roomStarted && !draft.restoredWithPicks;
+
+  // Tells the page shell whether a room is open so it can collapse the pitch
+  // header, mirroring the redraft tracker's setup-versus-running split.
+  const roomOpen = draft.isLoaded && !showSetup;
+  useEffect(() => {
+    onRoomOpenChange?.(roomOpen);
+    return () => onRoomOpenChange?.(false);
+  }, [onRoomOpenChange, roomOpen]);
 
   if (!draft.isLoaded) {
     return (
@@ -526,6 +564,33 @@ function BestBallDraftRoom({
           {draft.persistenceError ?? draft.restoreNotice}
         </div>
       ) : null}
+
+      {/*
+        The live line sticks directly under the site header (sticky at top 0,
+        73px tall), the same contract as the redraft tracker's bar, so "whose
+        pick is it" never leaves the screen while the board scrolls.
+      */}
+      <div
+        className="sticky z-30 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 rounded-[var(--radius-md)] border px-3 py-2"
+        style={{ top: "73px", borderColor: "var(--home-rule)", background: "var(--home-paper)" }}
+      >
+        <p className="min-w-0 text-sm" style={{ color: "var(--home-ink-muted)" }}>
+          {draft.isComplete ? (
+            "Draft complete"
+          ) : (
+            <>
+              Round {draft.currentRound} ·{" "}
+              <span className="font-semibold tabular-nums" style={{ color: "var(--home-ink)" }}>
+                Pick {Math.min(draft.currentPick, draft.totalPicks)} of {draft.totalPicks}
+              </span>{" "}
+              · {draft.isUserPick ? "your pick" : `slot ${draft.currentTeamNumber} on the clock`}
+            </>
+          )}
+        </p>
+        <p className="text-xs tabular-nums" style={{ color: "var(--home-ink-muted)" }}>
+          Your next pick: {nextUserPick ?? "complete"}
+        </p>
+      </div>
 
       <section className="home-card p-5 sm:p-6" aria-labelledby="best-ball-room-status-heading">
         <div className="flex flex-wrap items-start justify-between gap-4">
@@ -696,24 +761,46 @@ function BestBallDraftRoom({
         </aside>
       </div>
 
-      <button
-        ref={buildTriggerRef}
-        type="button"
-        onClick={() => setBuildOpen(true)}
-        aria-expanded={buildOpen}
-        aria-controls="best-ball-build-sheet"
-        className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-1/2 z-[70] inline-flex min-h-[52px] w-[min(calc(100%_-_2rem),24rem)] -translate-x-1/2 items-center justify-between rounded-full border px-5 text-sm font-semibold shadow-[var(--shadow-xl)] lg:hidden"
-        style={{
-          borderColor: "var(--home-ink)",
-          background: "var(--home-ink)",
-          color: "var(--home-paper)",
-        }}
-      >
-        <span>My build</span>
-        <span className="tabular-nums">
-          {draft.userPicks.length} / {preset.rosterSize}
-        </span>
-      </button>
+      {/*
+        Undo shares the phone's fixed bottom bar with the build trigger, the
+        same thumb-reach contract as the redraft tracker's action bar. Its
+        accessible name is "Undo", distinct from the card and sheet buttons,
+        so none of the three shadows the others.
+      */}
+      <div className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-1/2 z-[70] flex w-[min(calc(100%_-_2rem),26rem)] -translate-x-1/2 gap-2 lg:hidden">
+        <button
+          type="button"
+          onClick={draft.undoLastPick}
+          disabled={draft.state.picks.length === 0}
+          className="inline-flex min-h-[52px] shrink-0 items-center gap-2 rounded-full border px-4 text-sm font-semibold shadow-[var(--shadow-xl)] disabled:cursor-not-allowed disabled:opacity-50"
+          style={{
+            borderColor: "var(--home-rule)",
+            background: "var(--home-paper)",
+            color: "var(--home-ink)",
+          }}
+        >
+          <Undo2 className="h-4 w-4" aria-hidden="true" />
+          Undo
+        </button>
+        <button
+          ref={buildTriggerRef}
+          type="button"
+          onClick={() => setBuildOpen(true)}
+          aria-expanded={buildOpen}
+          aria-controls="best-ball-build-sheet"
+          className="inline-flex min-h-[52px] min-w-0 flex-1 items-center justify-between rounded-full border px-5 text-sm font-semibold shadow-[var(--shadow-xl)]"
+          style={{
+            borderColor: "var(--home-ink)",
+            background: "var(--home-ink)",
+            color: "var(--home-paper)",
+          }}
+        >
+          <span>My build</span>
+          <span className="tabular-nums">
+            {draft.userPicks.length} / {preset.rosterSize}
+          </span>
+        </button>
+      </div>
 
       <BestBallBuildSheet
         open={buildOpen}

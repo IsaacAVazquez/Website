@@ -168,7 +168,7 @@ describe("snapshot refresh workflow infrastructure", () => {
     expect(workflow).toContain("rankingExperts < 5");
   });
 
-  it("requires and passes the FantasyPros API key into the fantasy snapshot build", () => {
+  it("pins the scheduled fantasy build to public HTML without passing an API key", () => {
     const workflow = fs.readFileSync(
       path.join(workflowsDir, "update-fantasy.yml"),
       "utf8"
@@ -178,17 +178,25 @@ describe("snapshot refresh workflow infrastructure", () => {
     )?.[0];
 
     expect(buildStep).toBeDefined();
-    expect(buildStep).toContain(
-      'if [[ -z "${FANTASYPROS_API_KEY//[[:space:]]/}" ]]'
+    expect(buildStep).toContain("run: npm run update:fantasy");
+    expect(buildStep).toContain("FANTASYPROS_SOURCE: public-html");
+    expect(buildStep).not.toContain("FANTASYPROS_API_KEY");
+    expect(workflow).not.toContain("secrets.FANTASYPROS_API_KEY");
+  });
+
+  it("does not close World Cup incidents on a dormant run", () => {
+    const workflow = fs.readFileSync(
+      path.join(workflowsDir, "update-world-cup.yml"),
+      "utf8"
     );
-    expect(buildStep).toContain("FANTASYPROS_API_KEY is required");
-    expect(buildStep).toContain("npm run update:fantasy");
-    expect(buildStep).toContain(
-      "FANTASYPROS_API_KEY: ${{ secrets.FANTASYPROS_API_KEY }}"
+
+    // Every substantive step is gated on the tournament window, but skipped
+    // steps do not set job status, so a dormant run still reports success().
+    // Gated only on success(), the close step erased real refresh-failure
+    // incidents on runs that refreshed nothing.
+    expect(workflow).toContain(
+      "if: success() && steps.window.outputs.active == 'true'"
     );
-    expect(
-      workflow.match(/^\s+FANTASYPROS_API_KEY:\s+\$\{\{/gm)
-    ).toHaveLength(1);
   });
 
   it("uses modern action majors across workflows", () => {

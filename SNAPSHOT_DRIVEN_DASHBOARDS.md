@@ -4,7 +4,7 @@ How the site's data dashboards work. This is the single most-repeated
 architecture in the repo — 15+ public surfaces share it — so it gets one
 reference instead of being re-explained per route.
 
-**Last updated:** 2026-06-19
+**Last updated:** 2026-07-20
 
 The short version: **no dashboard calls an external API at request time.** A
 local script fetches data, transforms it, and writes a committed snapshot file. A

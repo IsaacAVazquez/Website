@@ -157,8 +157,25 @@ export function BestBallDraftBoard({
                 {player.byeWeek ?? "not available"}
               </span>
               {player.rankAdjustment !== 0 || player.isUndraftedAtContestFloor ? (
-                <span className="mt-1 hidden truncate text-2xs lg:block" style={{ color: "var(--home-signal)" }}>
-                  {player.rankReason}
+                /*
+                  Provenance, not an alert. Roughly a third of the snapshot sits
+                  at the undrafted floor, so painting these sentences in the
+                  signal accent turned the whole list into a page of warnings.
+                  The sentence reads in muted ink; a single signal dot marks
+                  "this rank was adjusted", which is the actual state. The title
+                  carries the full sentence past the truncation.
+                */
+                <span
+                  className="mt-1 hidden min-w-0 items-center gap-1.5 text-2xs lg:flex"
+                  style={{ color: "var(--home-ink-muted)" }}
+                  title={player.rankReason}
+                >
+                  <span
+                    aria-hidden="true"
+                    className="h-1.5 w-1.5 shrink-0 rounded-full"
+                    style={{ background: "var(--home-signal)" }}
+                  />
+                  <span className="truncate">{player.rankReason}</span>
                 </span>
               ) : null}
             </span>

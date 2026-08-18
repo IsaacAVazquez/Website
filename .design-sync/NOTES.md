@@ -25,6 +25,16 @@
 - ThemeToggle renders only its light face (provider pins light theme); dark face deliberately unpreviewable.
 - JourneyTimeline: RESOLVED 2026-07-30. Was unpreviewable (no props, content from `src/constants/personal.ts`, hardcoded `/images/logos/*` that 404 in cards, ~2500px render). Isaac approved a source refactor: it now takes an optional `items?: JourneyTimelineItem[]` defaulting to `careerTimeline`, so `About.tsx`'s zero-prop call is unchanged while previews inject portable data. Preview passes 2 entries per cell with SVG data-URI logos; both cells grade good. `logo` is optional on the item type, so the `IconFallback` cell exercises `renderTimelineIcon` (Florida State → IconSchool, Berkeley/Haas → IconRocket).
 
+## Known render warns (triaged as legitimate — re-syncs treat unrecorded warns as new)
+
+- `[TOKENS_MISSING] --font-c97-archivo, --font-c97-newsreader, --font-c97-anton, --font-c97-great-vibes` and `[FONT_MISSING] "Impact", "Snell Roundhand", "Petit Formal Script"` — Catalog 97 shell residue, first seen 2026-08-18. Tailwind v4 compiles the whole app's CSS into `compiled-globals.css`, so the page-scoped Catalog 97 fonts (`.c97-*` classes only) ride along. No DS component references them, all 33 renders are clean, and the repo ships no font files for them (they load via next/font/system faces on the site). Accepted as substitutes pending Isaac's call; wire via `extraFonts` if he wants them shipped.
+
+## Re-sync record 2026-08-18
+
+- Six components removed from the project to mirror commit 2dc8ff7c (dead-code removal): ExpertSignal, JourneyTimeline, MetricCallout, OptimizedImage, PageSummary, ReadoutPanel. Their `_preview/<Name>.css` files were already absent remotely (delete reported 30 of 36; the six misses were exactly those css files — the allowed not-found case). 33 components remain, all carried forward verified; zero regrades needed.
+- `gen-contracts.mjs` rewrote `dtsPropsFor` down to the 33 surviving contracts in the same pass.
+- The project root also holds app/user content this sync does not own (`templates/`, `uploads/`, `public/images/`, `Catalog 97*.html`, `github.md`, `_ds_manifest.json`, `_adherence.oxlintrc.json`) — never derive deletes from a bare remote listing; the anchor diff's deletePaths are the only safe delete source here.
+
 ## Component nits observed during preview authoring (for a DS-owner design pass, not sync blockers)
 
 - StatFascia truncates longer eyebrows at ClubDrawer's 27rem width ("GOALS AGAI…").

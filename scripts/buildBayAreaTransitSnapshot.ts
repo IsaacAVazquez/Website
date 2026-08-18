@@ -43,15 +43,23 @@ async function main() {
     "../src/data/bayAreaTransitSnapshot.ts"
   );
 
+  // Read the committed snapshot up front, not only in the catch. A successful
+  // BART call can still return an all but empty departures feed during the
+  // pre-service hours, and the builder needs the previous boards to fall back
+  // on so that case cannot collapse the station map.
+  const committed = readGeneratedSnapshot<TransitSnapshot>(
+    outPath,
+    "bayAreaTransitSnapshot"
+  );
+
   let snapshot: TransitSnapshot;
   try {
     console.log("🚆 Building Bay Area transit snapshot from BART…");
-    snapshot = await buildBayAreaTransitSnapshotData();
+    snapshot = await buildBayAreaTransitSnapshotData({
+      previousBoards: committed?.stationBoards,
+    });
   } catch (error) {
-    const existing = readGeneratedSnapshot<TransitSnapshot>(
-      outPath,
-      "bayAreaTransitSnapshot"
-    );
+    const existing = committed;
     if (hasContents(existing)) {
       console.warn(
         "🚆 Transit snapshot refresh failed; keeping the existing snapshot.",

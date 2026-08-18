@@ -1,8 +1,10 @@
 # Fantasy draft model contract
 
-Status as of August 11, 2026.
+Status as of August 16, 2026.
 
-I would use this tool as a draft process assistant. It now gives a defensible answer to four questions during a room. It shows the current market price, whether a gap is large relative to the published uncertainty, whether the roster can still reach a sensible final shape, and how the draft compares with teams that have made the same number of picks.
+This document covers two surfaces, which are the draft tools at `/fantasy-football` and the preseason trade calculator described near the end. Everything before the trade calculator section is about the draft tools.
+
+I would use the draft tools as a process assistant. They now give a defensible answer to four questions during a room. They show the current market price, whether a gap is large relative to the published uncertainty, whether the roster can still reach a sensible final shape, and how the draft compares with teams that have made the same number of picks.
 
 I would not use Draft Outlook as a player projection, a win probability, or a claim that one construction is proven to win. The snapshots do not contain weekly player distributions, current injury probabilities, waiver behavior, or a simulated field. Those missing inputs matter more than another round of hand tuning the current coefficients.
 
@@ -44,9 +46,9 @@ Exact means the tracker may show player-specific next-pick cards when the requir
 
 ## Data and source checks
 
-The redraft board combines scoring-specific FantasyPros consensus with [Fantasy Football Calculator's ADP API](https://help.fantasyfootballcalculator.com/article/42/adp-rest-api). The best ball board combines PPR best ball consensus, current standard-season Underdog ADP, a separate half PPR Superflex consensus, bye weeks, and the Week 17 schedule. When `FANTASYPROS_API_KEY` is configured for the refresh, the consensus boards come from the official FantasyPros JSON API. A local run without the key can use the public consensus HTML. A configured-key request that fails its HTTP, JSON, or board validation checks fails the refresh and never changes sources automatically.
+The redraft board combines scoring-specific FantasyPros consensus with [Fantasy Football Calculator's ADP API](https://help.fantasyfootballcalculator.com/article/42/adp-rest-api). The best ball board combines PPR best ball consensus, current standard-season Underdog ADP, a separate half PPR Superflex consensus, bye weeks, and the Week 17 schedule. `FANTASYPROS_SOURCE=public-html` selects the public consensus pages even when an API key exists. `FANTASYPROS_SOURCE=official-api` requires `FANTASYPROS_API_KEY` and selects the official JSON API. A selected source that fails its HTTP, parsing, or board checks stops the refresh and never changes sources automatically.
 
-The scheduled refresh requires `FANTASYPROS_API_KEY` from GitHub Actions secrets and stops before the build when it is missing. A Netlify environment variable with the same name stays inside Netlify and does not reach the GitHub job. The deployed app does not need the key because it reads committed snapshots and makes no live FantasyPros request.
+The scheduled refresh pins `FANTASYPROS_SOURCE=public-html` and does not receive `FANTASYPROS_API_KEY`. This avoids the official endpoint that declared 98 quarterback rows but returned 10 in the August 15 scheduled run, while keeping the same declared-count, board-size, identity-retention, expert-count, and downstream snapshot gates. A local refresh can select the official API explicitly. The deployed app does not need either variable because it reads committed snapshots and makes no live FantasyPros request.
 
 The source adapters normalize the official API and public HTML responses into the same player contract, and the refresh gates validate the requested sport, NFL season, scoring, position, declared player count, expert count, ADP format, team count, sample window, unique positive player IDs, names, published rank distributions, ADP ranges, and minimum row counts before replacing a snapshot. The public HTML board includes expert minimum, maximum, average, and spread fields. The official API contract does not promise those four fields, so the snapshot leaves them absent and the UI reports that the expert range is unavailable. Official API access still needs a FantasyPros account and licensing tier that permits storing and publicly redistributing the published snapshot data. The public HTML fallback does not resolve that licensing requirement.
 
@@ -54,7 +56,7 @@ Redraft and Superflex FantasyPros boards need at least ten contributing experts.
 
 The redraft runtime rejects a scoring label that conflicts with the requested route, a future or invalid schema version, an empty snapshot, invalid player identity or rank fields, duplicate IDs inside a slice, and a player placed on the wrong position board. It accepts missing schema versions and positive legacy versions through the current schema. FLEX may contain actual RB, WR, and TE players. The browser normalizes the static file before caching it, and an invalid static file falls back to the server route before the page reports an error. The server reads and normalizes the same committed files.
 
-The redraft publisher builds and serializes PPR, Half PPR, and Standard before it writes anything. It stages all three snapshots and their shared revision, moves the snapshot files first, and moves the revision last. A failure while building the second format therefore leaves every published format and the revision unchanged. Best ball has separate gates for at least 90% full-board Superflex coverage, 95% top 150 coverage, every quarterback rank and tier, and at least 30 Week 17 team mappings.
+The redraft publisher builds and serializes PPR, Half PPR, and Standard before it writes anything. It stages all three snapshots and their shared revision, moves the snapshot files first, and moves the revision last. A failure while building the second format therefore leaves every published format and the revision unchanged. Best ball has separate gates for at least 90% full-board Superflex coverage, 95% top 150 coverage, 90% coverage across all quarterbacks on the standard board, complete rank and tier coverage for the first 42 quarterbacks, and at least 30 Week 17 team mappings. The 42-player core matches the midpoint of three to four quarterbacks across the supported 12-team room, while the broader 90% gate still catches a source that drops a material share of fringe quarterbacks.
 
 The current redraft ADP evidence is uneven, which is why one fixed ten-pick rule was not enough.
 
@@ -67,6 +69,20 @@ The current redraft ADP evidence is uneven, which is why one fixed ten-pick rule
 The API request asks for a 12-team room, but tests on August 7 returned the same 256 players, 4,929 drafts, and player prices for the 8, 10, 12, and 14 team parameters. The UI now describes this as a general market price and makes no selected-league-size claim.
 
 The source dates remain visible during a draft. From July through September, a ranking or ADP source ages after two days and is stale after four days. Outside that window, the boundaries are eight and fourteen days. A prior-season ADP feed is also stale during draft season. The operations ledger reads the upstream source date, so a newly wrapped old board stays old. Saved picks are matched back to the full current player universe before scoring, including corrected team, position, and bye data for players found only on a position board. Exports rebuild their team counts from those same picks. An orphaned saved player keeps the name, team, and roster position but loses old ADP and expert baselines, while every restored room drops stale or slate-mismatched ADP. Best ball hides exact recommendation cards when either the required ranking source or matching ADP is stale. Reference presets never show exact player cards, even when their consensus board is current. The snapshot has no separate live injury or player-news feed, and the draft pages say so.
+
+## Prior-season points per game
+
+The player drawer on the rankings board shows a fourth reading alongside the consensus rank, the expert range, and the market price, which is how many fantasy points the player actually scored per game in the last completed regular season. It comes from [nflverse's weekly `stats_player` release](https://github.com/nflverse/nflverse-data/releases/tag/stats_player), the same open dataset that already backs the NFL dashboard, and `scripts/buildFantasyGameLogData.ts` reduces each player's game log to four figures, the lowest game, the median, the average, and the highest game.
+
+nflverse publishes a standard column and a full PPR column. Half PPR is their exact midpoint, because the two formats differ only by one point per reception, so all three boards report a figure computed the way that board scores. That does mean a quarterback who caught a pass shows a slightly different per-game line across formats even though his consensus rank is identical in all three, and the difference is points he actually scored.
+
+A player needs at least four regular-season games before the panel will draw anything. Below that, the low and the high are two readings of a nearly empty sample, and the meter would draw a range wide enough to look meaningful across what is mostly noise. Matching onto the consensus board runs through the same tiered exact matcher ADP uses, name and team and position with an ambiguity guard, never fuzzy distance, so an unmatched player carries no per-game data and the panel simply does not render. That is deliberate, since the alternative failure is showing someone else's season on his card.
+
+Coverage on the August 18, 2026 build of the PPR board is 341 of 511 overall players, which is 76.5% of the 446 players at quarterback, running back, wide receiver, and tight end, and 90.5% of the top 200 of those same skill players by board rank. The gap is mostly rookies, who have no prior NFL season at all, plus anyone who missed most of the year. I would read the top 200 figure as the one that matters during a draft, since that is roughly the population a 12-team room actually selects from.
+
+The builder tries the current season first and falls back to the prior one, so during the offseason it reports the completed season and it rolls forward on its own once the new season has enough games behind it. The panel always names the season and the number of games it is describing, so a four-game line and a seventeen-game line are never presented as the same strength of evidence.
+
+What this does not establish is any claim about the season ahead. It is history, and a strong prior year is not a projection, a floor, or a ceiling for the coming one. There is no adjustment for opponent, for snap share, for role change, for a new team, or for the games a player missed, so a player who was hurt for half a season and a player who was healthy and merely inconsistent can produce a similar looking spread for entirely different reasons. I would use it the way I would use any other piece of context in the room, as a check on whether the consensus rank matches what the player has actually done, and not as a forecast.
 
 ## ADP uncertainty
 
@@ -157,6 +173,66 @@ The default lean toward three quarterbacks comes from a [2026 review of Best Bal
 
 The [official Best Ball Mania VII rules](https://help.underdogsports.com/en/articles/14785343-best-ball-mania-vii) remain the authority for the current 12-team, 18-round, half PPR contest, its lineup, advancement, entry fee, field, and prize pool. The draft page links the current rules because lobby cards can change. Published field economics are kept separate from the roster score.
 
+## Trade calculator
+
+`/fantasy-football/trade-calculator` answers a narrower question than the draft tools. It estimates whether two preseason redraft packages are close in value, using the same overall consensus board and mock-draft ADP that the rankings page already publishes. The model version is `preseason-redraft-v1` and its declared scope is `preseason-one-qb-redraft`.
+
+I would use it as a balance check before I think about roster fit. I would not use it in season, in a dynasty or keeper league, in superflex or two-QB, or as a points projection. It has no weekly scoring, no injury feed, no schedule, and no knowledge of either roster beyond the players named in the two packages.
+
+It supports the same league shapes as the redraft tracker, which is PPR, Half PPR, or Standard scoring, 8, 10, 12, 14, or 16 teams, and a roster size of 13 through 18. Each side holds one to six players, and a player can appear only once across the two sides.
+
+### How a player becomes a number
+
+The expert reading and the market reading are built separately and stay separate until the last step. That is deliberate, because published rank and market price disagree in useful ways, and averaging them early hides the disagreement.
+
+For each position the model finds two league-specific cutoffs. The starter cutoff is the worst rank still needed to fill every league starting slot at that position, counting FLEX after the dedicated slots are filled. The roster cutoff is the rank at the league's total rostered count for that position, taken from the same final roster target the draft tracker uses. A player at or past a cutoff scores zero against it, and above it the value grows on a log curve.
+
+```text
+value = clamp(100 * ln(cutoff / rank) / ln(cutoff), 0, 100)
+```
+
+The log shape gives an elite player a premium over a replacement starter without claiming that adjacent ranks are equal units of football production, which is the same reason the rest of this document treats a rank as ordinal. Starter value is weighted 75% and depth value 25%. The market cutoffs are built only from players with at least 20 observed selections, so a thin ADP sample cannot set a league's replacement line.
+
+The two readings then blend by how reliable the player's ADP looks.
+
+```text
+reliability = clamp(10 / adp_signal_threshold, 0.25, 1)
+blended = (expert + market * reliability) / (1 + reliability)
+```
+
+`adp_signal_threshold` is the shared threshold described under ADP uncertainty, so a widely disputed player pulls the market reading toward a quarter weight while a tightly drafted player can reach parity with the expert reading. A player with no usable market reading keeps the expert value alone.
+
+The published range recomputes both readings one uncertainty step above and below the player's rank. Expert spread comes from the published standard deviation, or from `(max - min) / 4`, or from the distance between ECR and the mean rank. Market spread comes from the ADP standard deviation or from `(low - high) / 4`.
+
+### Coverage and verdict
+
+| Coverage | When it applies |
+| --- | --- |
+| Supported | Both sources cover every replacement cutoff for the player's position and both publish a usable spread |
+| Limited | Any of that is missing, or the result carries a warning, or either source is aging, or the two packages hold a different number of players |
+| Insufficient | The league settings or the two sides fail validation, the expert board is stale, or any selected player lacks a reliable current-market reading |
+
+The verdict compares side totals through a relative gap.
+
+```text
+relative_gap = |value_A - value_B| / max(value_A, value_B)
+```
+
+| Verdict | Rule |
+| --- | --- |
+| Balanced | Relative gap at or under 5% |
+| Leans to a side | Gap above 5% while the clear-edge test fails |
+| Clear edge | Gap at or above 15%, supported coverage, and two published ranges that do not overlap |
+| Insufficient | Coverage is insufficient, and no winner or gap is reported |
+
+Requiring the ranges not to overlap is the part I would keep if I trimmed this model down. A 16% gap between two packages whose uncertainty bands still overlap is not a finding, and treating it as one is how a trade calculator starts sounding more certain than the boards underneath it.
+
+Unequal packages run in quick mode. Every extra player is assumed to displace a replacement-level asset worth zero, which flatters the side receiving more bodies. The model warns and drops to limited coverage instead of hiding that assumption. A roster-aware version would need each manager's full roster and the cuts they would actually make.
+
+### What the trade values do not establish
+
+These values have not been fit against historical trade outcomes or measured against realized points. The 75/25 starter split, the 5% and 15% thresholds, and the 0.25 reliability floor are judgment settings. I think they are reasonable for a balance check, since the log curve and the range test both keep the tool conservative, but they should be confirmed against held-out seasons before anyone treats the output as a valuation.
+
 ## Winning lineups and season simulation
 
 The tool does not currently calculate a winning lineup. Retrospective lists of champions or final-round players are useful descriptions, but they contain survivor bias, injury luck, and waiver outcomes. They should not directly set draft weights without a comparison group. The stronger design is to train and test on every entry or league, preserve the information available at the time of each draft, and hold out complete seasons.
@@ -181,7 +257,7 @@ The right validation target is prospective performance. For best ball, I would m
 
 ## Current test coverage and verification
 
-The code now pins the main failure cases that could change a live draft decision. Tests cover official API selection, the key-absent public HTML fallback, configured-key failures, workflow secret wiring, scoring and season source mismatches, future and invalid snapshot schemas, corrupt player rows, static-file fallback, incomplete or duplicate ranking payloads, invalid expert rank distributions, absolute and relative board coverage, all-format publication failure, ADP duplicates and invalid ranges, sample-based signal suppression, uncertainty thresholds, late redraft ADP, the Underdog floor, ECR versus mean rank display, exact FLEX coverage, tie midpoint ranks, one-team room comparisons, attainable final roster and bye feasibility, completed-draft round boundaries, position-only player restoration, slate-mismatched or missing ADP, exact versus reference contest rules, no weekly proxy, price-first Week 17 behavior, and persistence migration.
+The code now pins the main failure cases that could change a live draft decision. Tests cover explicit public HTML and official API selection, key requirements, configured-source failures without source switching, the scheduled public-source pin, scoring and season source mismatches, future and invalid snapshot schemas, corrupt player rows, static-file fallback, incomplete or duplicate ranking payloads, invalid expert rank distributions, absolute and relative board coverage, mixed-source publication rejection, all-format publication failure, ADP duplicates and invalid ranges, sample-based signal suppression, uncertainty thresholds, late redraft ADP, the Underdog floor, ECR versus mean rank display, exact FLEX coverage, tie midpoint ranks, one-team room comparisons, attainable final roster and bye feasibility, completed-draft round boundaries, position-only player restoration, slate-mismatched or missing ADP, exact versus reference contest rules, no weekly proxy, price-first Week 17 behavior, and persistence migration.
 
 Unit tests prove that the code follows this contract. They do not prove that Draft Outlook predicts wins. Historical pick-by-pick data such as [Underdog's public Best Ball Mania VI file](https://underdognetwork.com/football/best-ball-research/best-ball-mania-vi-downloadable-pick-by-pick-data) can support the first retrospective backtest, but a payout model also needs weekly scores, advancement groups, and the full contest structure.
 
@@ -208,12 +284,13 @@ npx playwright test e2e/fantasy-football.spec.ts
 
 | Priority | Risk | Current position |
 | --- | --- | --- |
-| P0 | FantasyPros licensing and source continuity | The official API is the configured source, with public HTML available only when the key is absent. API access alone does not establish public redistribution rights, so the account tier or written agreement still needs to permit storing and serving the committed snapshots. [FantasyPros' legal terms address copying and redistribution](https://www.fantasypros.com/about/legal/), and its [API program](https://www.fantasypros.com/api-data/) is the place to confirm that permission. |
+| P0 | FantasyPros licensing and source continuity | The scheduled job pins public HTML, while the official API remains an explicit local option. Neither access path by itself establishes public redistribution rights, so the applicable terms, account tier, or written agreement still need to permit storing and serving the committed snapshots. [FantasyPros' legal terms address copying and redistribution](https://www.fantasypros.com/about/legal/), and its [API program](https://www.fantasypros.com/api-data/) is the place to confirm that permission. |
 | P1 | No weekly projection or field simulation | The UI explicitly withholds win probability, winning lineup, and roster-specific payout claims. |
 | P1 | No separate live injury or player-news source | The draft pages tell the user to verify current room and team news before every pick. |
 | P1 | No historical calibration of Draft Outlook coefficients | The score remains ordinal draft process guidance. A held-out multi-season backtest is the next model task. |
 | P2 | Redraft ADP does not vary across tested team-size parameters | The UI calls it a general market price and the model uses actual pick number plus exact lineup settings. |
 | P2 | Separate best ball slates lack matching ADP | The tool removes market value rather than reusing the standard-season price. |
+| P2 | Prior-season points per game carry no role or opponent adjustment | The panel names its season and its games-played count, and this spec says plainly that the figures describe what already happened and forecast nothing. A rookie or a player under the four-game floor gets no panel at all. |
 
 ## Draft-day operating rule
 

@@ -93,6 +93,10 @@ The rankings client also keeps a List-view Comfortable/Compact density preferenc
 
 `useDraftState` (`src/app/fantasy-football/draft-tracker/hooks/useDraftState.ts`) owns the draft assistant state machine (room settings, exact starting lineup, picks, teams, undo/redo, team names, export). It persists per-season under `fantasy-draft-tracker-v3-<season>` (e.g. `fantasy-draft-tracker-v3-2026`). A current-season v2 draft is migrated with the default one-QB lineup, while the legacy unversioned key `fantasy-draft-tracker` is deleted on load.
 
+### Trade calculator state
+
+`useFantasyTradeCalculator` (`src/hooks/useFantasyTradeCalculator.ts`) owns the two ordered player-ID lists for `/fantasy-football/trade-calculator`. It persists per season and scoring format under `fantasy-trade-calculator-v1-<season>-<scoring>`, caps each side at six players, prevents a player from appearing twice, and reacts to same-tab and cross-tab changes through the shared browser-storage helpers. Scoring, team count, roster size, and lineup preset live in the URL, so changing scoring selects a separate saved trade without copying a calculated result across models.
+
 ---
 
 ## MBA Role Tracker State

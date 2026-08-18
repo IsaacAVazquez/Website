@@ -2,7 +2,7 @@
 
 Reference for the SEO architecture in this Next.js 16 App Router project.
 
-**Last updated:** 2026-07-08
+**Last updated:** 2026-08-11
 
 ---
 

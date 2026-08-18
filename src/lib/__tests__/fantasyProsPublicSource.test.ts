@@ -17,6 +17,7 @@ import {
 } from "./fixtures/fantasyProsPublicSource.fixture";
 
 const originalFantasyProsApiKey = process.env.FANTASYPROS_API_KEY;
+const originalFantasyProsSource = process.env.FANTASYPROS_SOURCE;
 
 function responseStub(options: {
   body?: unknown;
@@ -57,12 +58,22 @@ function expandBoard(board: FantasyProsPublicBoard, count: number): FantasyProsP
 }
 
 describe("fantasyProsPublicSource", () => {
+  beforeEach(() => {
+    delete process.env.FANTASYPROS_API_KEY;
+    delete process.env.FANTASYPROS_SOURCE;
+  });
+
   afterEach(() => {
     jest.restoreAllMocks();
     if (originalFantasyProsApiKey === undefined) {
       delete process.env.FANTASYPROS_API_KEY;
     } else {
       process.env.FANTASYPROS_API_KEY = originalFantasyProsApiKey;
+    }
+    if (originalFantasyProsSource === undefined) {
+      delete process.env.FANTASYPROS_SOURCE;
+    } else {
+      process.env.FANTASYPROS_SOURCE = originalFantasyProsSource;
     }
   });
 
@@ -122,6 +133,7 @@ describe("fantasyProsPublicSource", () => {
   });
 
   it("uses exact redraft ALL/DRAFT parameters when a key is configured", async () => {
+    process.env.FANTASYPROS_SOURCE = "official-api";
     process.env.FANTASYPROS_API_KEY = "test-fantasypros-key";
     const payload = {
       ...fantasyProsOfficialConsensusFixture,
@@ -165,6 +177,7 @@ describe("fantasyProsPublicSource", () => {
   ] as const)(
     "maps redraft %s scoring to the official API %s value",
     async (scoringFormat, sourceScoring) => {
+      process.env.FANTASYPROS_SOURCE = "official-api";
       process.env.FANTASYPROS_API_KEY = "test-fantasypros-key";
       const fetchMock = jest.spyOn(global, "fetch").mockResolvedValue(
         responseStub({
@@ -359,7 +372,6 @@ describe("fantasyProsPublicSource", () => {
   });
 
   it("uses public HTML only when the API key is absent", async () => {
-    delete process.env.FANTASYPROS_API_KEY;
     const fetchMock = jest
       .spyOn(global, "fetch")
       .mockResolvedValue(responseStub({ html: fantasyProsPublicConsensusFixture }));
@@ -374,7 +386,58 @@ describe("fantasyProsPublicSource", () => {
     expect(board.sourceLabel).toBe(FANTASY_PROS_PUBLIC_SOURCE);
   });
 
+  it("keeps a scheduled public-HTML selection off the partial official endpoint", async () => {
+    process.env.FANTASYPROS_SOURCE = "public-html";
+    process.env.FANTASYPROS_API_KEY = "configured-but-not-selected";
+    const fetchMock = jest
+      .spyOn(global, "fetch")
+      .mockImplementation(async (input) => {
+        if (String(input).includes("api.fantasypros.com")) {
+          return responseStub({
+            body: {
+              ...fantasyProsOfficialConsensusFixture,
+              count: 98,
+              players: fantasyProsOfficialConsensusFixture.players.slice(0, 1),
+            },
+          });
+        }
+        return responseStub({ html: fantasyProsPublicConsensusFixture });
+      });
+
+    const board = await fetchFantasyProsPublicConsensusBoard("PPR", "RB", 2026);
+
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(String(fetchMock.mock.calls[0][0])).toBe(
+      "https://www.fantasypros.com/nfl/rankings/ppr-rb-cheatsheets.php"
+    );
+    expect(fetchMock.mock.calls[0][1]?.headers).not.toHaveProperty("x-api-key");
+    expect(board.sourceLabel).toBe(FANTASY_PROS_PUBLIC_SOURCE);
+  });
+
+  it("requires a key when the official API is selected explicitly", async () => {
+    process.env.FANTASYPROS_SOURCE = "official-api";
+    const fetchMock = jest.spyOn(global, "fetch");
+
+    await expect(
+      fetchFantasyProsPublicConsensusBoard("PPR", "RB", 2026)
+    ).rejects.toThrow(
+      "FANTASYPROS_API_KEY is required when FANTASYPROS_SOURCE=official-api."
+    );
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("rejects an unknown source mode before fetching", async () => {
+    process.env.FANTASYPROS_SOURCE = "fallback";
+    const fetchMock = jest.spyOn(global, "fetch");
+
+    await expect(
+      fetchFantasyProsPublicConsensusBoard("PPR", "RB", 2026)
+    ).rejects.toThrow(/FANTASYPROS_SOURCE must be one of auto, public-html, official-api/);
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
   it("does not fall back to public HTML when a configured API request fails", async () => {
+    process.env.FANTASYPROS_SOURCE = "official-api";
     process.env.FANTASYPROS_API_KEY = "configured-secret";
     const fetchMock = jest
       .spyOn(global, "fetch")

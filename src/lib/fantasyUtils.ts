@@ -116,11 +116,12 @@ export function formatOwnership(ownership: number | undefined): string {
 }
 
 /**
- * Plain-language explanation of the ADP value shown on the rankings board.
- * ADP comes from a different upstream than the consensus ranks, so the copy
- * names the distinction: experts versus actual drafters.
+ * Plain-language explanation of the ADP value shown on fantasy surfaces.
+ * ADP comes from a different upstream than the consensus ranks, and the
+ * number is a 12-team-request price the provider served identically across
+ * tested room sizes, so the copy keeps that disclosure with the value.
  */
-const FANTASY_ADP_TOOLTIP =
+export const FANTASY_ADP_TOOLTIP =
   "Average draft position from Fantasy Football Calculator's current mock-draft board, requested with 12-team settings. The provider returned the same prices across tested team sizes on August 7, 2026, so use it as a general market price rather than a league-size forecast.";
 
 export function formatAdp(adp: number | undefined): string {
@@ -287,8 +288,7 @@ export function getValueVsAdp(
 
 /**
  * Hover copy for the green "Value" chip. Explains the ADP-vs-consensus gap in
- * plain language so a drafter does not have to infer what the chip means. Kept
- * in sync with the "Value" entry in FANTASY_BOARD_LEGEND below.
+ * plain language so a drafter does not have to infer what the chip means.
  */
 export const FANTASY_VALUE_TOOLTIP =
   "Value is his ADP minus his consensus rank, the number on the left of the row. A positive figure means drafters take him that many slots later than the experts rank him. The label appears only after at least 20 mock selections and when the gap clears the published ADP and expert spread. It compares ADP with consensus rank, not the Avg shown beside it.";
@@ -296,66 +296,6 @@ export const FANTASY_VALUE_TOOLTIP =
 /** Hover copy for the amber "Reach" chip, the mirror of FANTASY_VALUE_TOOLTIP. */
 export const FANTASY_REACH_TOOLTIP =
   "Reach is his ADP minus his consensus rank, the number on the left of the row, and here it comes out negative. Drafters take him that many slots earlier than the experts rank him. The label appears only after at least 20 mock selections and when the gap clears the published ADP and expert spread. It compares ADP with consensus rank, not the Avg shown beside it.";
-
-export interface FantasyLegendEntry {
-  /** Short label, matching the wording that appears on the board itself. */
-  term: string;
-  /** Plain-language definition. One or two flowing sentences, never a listicle. */
-  definition: string;
-  /** When set, the legend renders the matching colored board chip beside the term. */
-  tone?: "value" | "reach";
-}
-
-/**
- * The full key for reading the rankings board, surfaced through the collapsible
- * "How to read this board" panel. Reuses the same tooltip strings the inline
- * hovers use so the panel and the per-row hovers never drift apart.
- */
-export const FANTASY_BOARD_LEGEND: FantasyLegendEntry[] = [
-  {
-    term: "Published rank",
-    definition:
-      "The number on the left of each row. It is the FantasyPros expert consensus rank for the board you are viewing, whether that is overall, a single position, or flex.",
-  },
-  {
-    term: "Expert range",
-    definition:
-      "The highest and lowest rank the experts gave this player. A wide range means the analysts disagree about where he belongs.",
-  },
-  {
-    term: "Avg",
-    definition: FANTASY_AVG_RANK_TOOLTIP,
-  },
-  {
-    term: "ADP",
-    definition: FANTASY_ADP_TOOLTIP,
-  },
-  {
-    term: "Value",
-    tone: "value",
-    definition: FANTASY_VALUE_TOOLTIP,
-  },
-  {
-    term: "Reach",
-    tone: "reach",
-    definition: FANTASY_REACH_TOOLTIP,
-  },
-  {
-    term: "Tiers",
-    definition:
-      "FantasyPros groups players it considers roughly interchangeable into tiers. A tier break marks a larger consensus gap, but it does not by itself justify reaching past the market.",
-  },
-  {
-    term: "Rostered",
-    definition:
-      "The share of leagues where this player is already on a roster. A low number on a well-ranked player can flag a sleeper others have not grabbed yet.",
-  },
-  {
-    term: "Freshness",
-    definition:
-      "The Current, Aging, and Stale chips show how recently the source consensus and this site's snapshot were refreshed, so you can judge how current the board is.",
-  },
-];
 
 type FantasyAdpFreshness = "current" | "prior-season" | "stale";
 
@@ -549,38 +489,3 @@ export function getTierRailTone(tier: number | null | undefined): string {
   return `${getTierRailIntensity(tier)}%`;
 }
 
-/**
- * Background accent for a tier plate in the tiers-view breakdown. Unlike
- * `getTierRailIntensity` (keyed off the absolute tier number, so tier 1 is
- * always the hottest), this is keyed off the plate's position among the
- * tiers actually on screen, so a position-filtered board that only shows
- * tiers 4-9 still ranges from the top weight down to the bottom weight
- * rather than reading uniformly faint.
- */
-export function getTierPlateAccent(index: number, total: number): string {
-  if (total <= 1) {
-    return "24%";
-  }
-  const topWeight = 26;
-  const bottomWeight = 8;
-  const progress = index / (total - 1);
-  const mixed = topWeight - (topWeight - bottomWeight) * progress;
-  return `${mixed.toFixed(0)}%`;
-}
-
-/**
- * The "cliff" between two tiers: how many ranks drop between the last player of
- * one tier and the first of the next. A large gap is the classic signal to
- * reach for the tail of the current tier before it empties. Returns 0 when the
- * inputs don't describe a real downward step.
- */
-export function getTierGap(
-  lastRankInTier: number | undefined,
-  firstRankInNextTier: number | undefined,
-): number {
-  if (!Number.isFinite(lastRankInTier) || !Number.isFinite(firstRankInNextTier)) {
-    return 0;
-  }
-  const gap = Math.round((firstRankInNextTier as number) - (lastRankInTier as number));
-  return gap > 0 ? gap : 0;
-}

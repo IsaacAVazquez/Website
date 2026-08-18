@@ -20,6 +20,7 @@ describe("fantasy-state", () => {
       position: "rb",
       scoring: "half_ppr",
       view: "list",
+      query: "",
     });
   });
 
@@ -34,6 +35,7 @@ describe("fantasy-state", () => {
       position: "qb",
       scoring: "ppr",
       view: "tiers",
+      query: "",
     });
   });
 
@@ -54,6 +56,7 @@ describe("fantasy-state", () => {
           position: "qb",
           scoring: "standard",
           view: "list",
+          query: "",
         },
         new URLSearchParams("ref=test")
       )
@@ -66,7 +69,26 @@ describe("fantasy-state", () => {
         position: "rb",
         scoring: "ppr",
         view: "tiers",
+        query: "",
       })
     ).toBe("/fantasy-football?position=rb&scoring=ppr&view=tiers");
+  });
+
+  it("normalizes and serializes the board search query", () => {
+    const state = normalizeFantasyState({
+      position: "WR",
+      scoring: "PPR",
+      q: "  Ja'Marr   Chase  ",
+    });
+
+    expect(state).toEqual({
+      position: "wr",
+      scoring: "ppr",
+      view: "list",
+      query: "Ja'Marr Chase",
+    });
+    expect(buildFantasyHref(state)).toBe(
+      "/fantasy-football?position=wr&scoring=ppr&q=Ja%27Marr+Chase"
+    );
   });
 });

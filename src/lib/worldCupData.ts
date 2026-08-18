@@ -649,13 +649,26 @@ export async function buildWorldCupSnapshotData(): Promise<WorldCupSnapshot> {
     return a.name.localeCompare(b.name);
   });
 
-  // Either section coming back empty while the other has data means a partial
-  // ESPN outage — keep the existing snapshot rather than committing a
-  // half-wiped one. (Before ESPN publishes anything, both are empty and the
-  // seed is preserved the same way.)
-  if (teamOptions.length === 0 || fixtures.length === 0) {
+  // A section coming back empty while the others have data means a partial ESPN
+  // outage — keep the existing snapshot rather than committing a half-wiped one.
+  // (Before ESPN publishes anything, all of these are empty and the seed is
+  // preserved the same way.)
+  //
+  // groups is compared against the committed seed rather than checked on its
+  // own, because the teamOptions arm cannot catch a standings outage: when
+  // standings are unavailable, teamOptionById is repopulated from group-stage
+  // fixtures further up and teamSlug never yields an empty id, so teamOptions is
+  // non-empty whenever any group-stage fixture exists. A standings response of
+  // HTTP 200 with children: [] therefore used to pass this guard and commit
+  // groups: [] with standing: null on all 48 teams, wiping all 12 group tables.
+  const seedHadGroups = worldCupSnapshot.groups.length > 0;
+  if (
+    teamOptions.length === 0 ||
+    fixtures.length === 0 ||
+    (groups.length === 0 && seedHadGroups)
+  ) {
     throw new Error(
-      "ESPN World Cup feed returned no teams or no fixtures; keeping the existing snapshot."
+      "ESPN World Cup feed returned no teams, no fixtures, or no group standings; keeping the existing snapshot."
     );
   }
 

@@ -12,6 +12,7 @@ import {
 import { FANTASY_PROS_OFFICIAL_API_SOURCE } from "@/lib/fantasyProsPublicSource";
 
 const originalFantasyProsApiKey = process.env.FANTASYPROS_API_KEY;
+const originalFantasyProsSource = process.env.FANTASYPROS_SOURCE;
 
 function officialRankingsPayload(options: {
   position: "ALL" | "OP";
@@ -73,6 +74,11 @@ function jsonResponse(body: unknown): Response {
 }
 
 describe("best ball public sources", () => {
+  beforeEach(() => {
+    delete process.env.FANTASYPROS_API_KEY;
+    delete process.env.FANTASYPROS_SOURCE;
+  });
+
   afterEach(() => {
     jest.restoreAllMocks();
     jest.useRealTimers();
@@ -80,6 +86,11 @@ describe("best ball public sources", () => {
       delete process.env.FANTASYPROS_API_KEY;
     } else {
       process.env.FANTASYPROS_API_KEY = originalFantasyProsApiKey;
+    }
+    if (originalFantasyProsSource === undefined) {
+      delete process.env.FANTASYPROS_SOURCE;
+    } else {
+      process.env.FANTASYPROS_SOURCE = originalFantasyProsSource;
     }
   });
 
@@ -98,6 +109,7 @@ describe("best ball public sources", () => {
   it("maps standard best ball to BEST/ALL and Superflex to DRAFT/OP on the official API", async () => {
     jest.useFakeTimers();
     jest.setSystemTime(new Date("2026-08-11T12:00:00.000Z"));
+    process.env.FANTASYPROS_SOURCE = "official-api";
     process.env.FANTASYPROS_API_KEY = "best-ball-test-key";
     const fetchMock = jest
       .spyOn(global, "fetch")

@@ -27,6 +27,18 @@ describe("bestIndex", () => {
     expect(bestIndex(players, "rank", "lower")).toBe(1);
   });
 
+  it("scores the same published rank values that the compare table renders", () => {
+    const players = [player({ id: "a", rankEcr: 4 }), player({ id: "b", rankEcr: 5 })];
+    const publishedRanks = new Map([
+      ["a", 6],
+      ["b", 3],
+    ]);
+
+    expect(
+      bestIndex(players, "rank", "lower", (candidate) => publishedRanks.get(candidate.id) ?? null)
+    ).toBe(1);
+  });
+
   it("needs the best to clear the next best, not just the worst", () => {
     // 20 vs 21 is inside the fallback 10-pick ADP threshold even though 60 is far away.
     const players = [

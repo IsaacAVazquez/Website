@@ -1,5 +1,4 @@
 import {
-  FANTASY_BOARD_LEGEND,
   FANTASY_REACH_TOOLTIP,
   FANTASY_VALUE_TOOLTIP,
   ADP_SIGNAL_MIN_TIMES_DRAFTED,
@@ -8,7 +7,6 @@ import {
   getFantasyAdpFreshness,
   getSnapshotStaleness,
   getSnapshotStalenessLabel,
-  getTierPlateAccent,
   getTierRailIntensity,
   getTierRailTone,
   getValueVsAdp,
@@ -331,43 +329,10 @@ describe("getTierRailTone", () => {
   });
 });
 
-describe("getTierPlateAccent", () => {
-  it("gives the top plate the top weight and the bottom plate the bottom weight", () => {
-    expect(getTierPlateAccent(0, 4)).toBe("26%");
-    expect(getTierPlateAccent(3, 4)).toBe("8%");
-  });
-
-  it("returns a fixed accent when there is only one tier on screen", () => {
-    expect(getTierPlateAccent(0, 1)).toBe("24%");
-  });
-});
-
-describe("FANTASY_BOARD_LEGEND", () => {
-  it("covers every term a reader meets on the board", () => {
-    const terms = FANTASY_BOARD_LEGEND.map((entry) => entry.term);
-    expect(terms).toEqual(
-      expect.arrayContaining(["Published rank", "Expert range", "Avg", "ADP", "Value", "Reach", "Tiers", "Freshness"])
-    );
-  });
-
-  it("gives every entry a non-empty term and definition", () => {
-    for (const entry of FANTASY_BOARD_LEGEND) {
-      expect(entry.term.trim().length).toBeGreaterThan(0);
-      expect(entry.definition.trim().length).toBeGreaterThan(0);
-    }
-  });
-
-  it("keeps the Value and Reach entries in sync with the inline hover copy", () => {
-    const value = FANTASY_BOARD_LEGEND.find((entry) => entry.term === "Value");
-    const reach = FANTASY_BOARD_LEGEND.find((entry) => entry.term === "Reach");
-    expect(value).toMatchObject({ tone: "value", definition: FANTASY_VALUE_TOOLTIP });
-    expect(reach).toMatchObject({ tone: "reach", definition: FANTASY_REACH_TOOLTIP });
-  });
-
+describe("tooltip copy", () => {
   it("honors the writing voice (no em dashes, no colon-as-connector labels)", () => {
-    for (const entry of FANTASY_BOARD_LEGEND) {
-      expect(entry.definition).not.toContain("—");
-    }
+    expect(FANTASY_VALUE_TOOLTIP).not.toContain("—");
+    expect(FANTASY_REACH_TOOLTIP).not.toContain("—");
     // "Value:" / "Reach:" would be a colon connector; the copy uses "... means ...".
     expect(FANTASY_VALUE_TOOLTIP).not.toMatch(/^Value:/);
     expect(FANTASY_REACH_TOOLTIP).not.toMatch(/^Reach:/);

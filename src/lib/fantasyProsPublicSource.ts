@@ -9,6 +9,55 @@ export const FANTASY_PROS_PUBLIC_SOURCE =
 export const FANTASY_PROS_OFFICIAL_API_SOURCE =
   "FantasyPros official API consensus rankings.";
 
+export const FANTASY_PROS_SOURCE_MODES = [
+  "auto",
+  "public-html",
+  "official-api",
+] as const;
+
+export type FantasyProsSourceMode = (typeof FANTASY_PROS_SOURCE_MODES)[number];
+
+interface FantasyProsSourceEnvironment {
+  FANTASYPROS_SOURCE?: string;
+  FANTASYPROS_API_KEY?: string;
+}
+
+export type FantasyProsSourceSelection =
+  | { kind: "public-html" }
+  | { kind: "official-api"; apiKey: string };
+
+export function resolveFantasyProsSourceSelection(
+  environment: FantasyProsSourceEnvironment = {
+    FANTASYPROS_SOURCE: process.env.FANTASYPROS_SOURCE,
+    FANTASYPROS_API_KEY: process.env.FANTASYPROS_API_KEY,
+  }
+): FantasyProsSourceSelection {
+  const configuredMode = environment.FANTASYPROS_SOURCE?.trim().toLowerCase();
+  const mode = configuredMode || "auto";
+  if (!FANTASY_PROS_SOURCE_MODES.includes(mode as FantasyProsSourceMode)) {
+    throw new Error(
+      `FANTASYPROS_SOURCE must be one of ${FANTASY_PROS_SOURCE_MODES.join(", ")}; received ${JSON.stringify(configuredMode)}.`
+    );
+  }
+
+  const apiKey = environment.FANTASYPROS_API_KEY?.trim();
+  if (mode === "public-html") {
+    return { kind: "public-html" };
+  }
+  if (mode === "official-api") {
+    if (!apiKey) {
+      throw new Error(
+        "FANTASYPROS_API_KEY is required when FANTASYPROS_SOURCE=official-api."
+      );
+    }
+    return { kind: "official-api", apiKey };
+  }
+
+  return apiKey
+    ? { kind: "official-api", apiKey }
+    : { kind: "public-html" };
+}
+
 export const FANTASY_PUBLIC_POSITIONS = ["OVERALL", "QB", "RB", "WR", "TE", "K", "DST"] as const;
 
 export type FantasyPublicPosition = (typeof FANTASY_PUBLIC_POSITIONS)[number];
@@ -867,12 +916,12 @@ async function fetchFantasyProsPublicHtmlConsensusBoard(
 export async function fetchFantasyProsConsensusBoard(
   options: FetchFantasyProsConsensusBoardOptions
 ): Promise<FantasyProsPublicBoard> {
-  const apiKey = process.env.FANTASYPROS_API_KEY?.trim();
-  if (apiKey) {
-    // A configured key is an explicit source choice. Authentication, transport,
+  const source = resolveFantasyProsSourceSelection();
+  if (source.kind === "official-api") {
+    // An official selection is a source contract. Authentication, transport,
     // JSON, and validation failures must reach the caller instead of changing
     // the source to public HTML without disclosure.
-    return fetchFantasyProsOfficialApiConsensusBoard(apiKey, options);
+    return fetchFantasyProsOfficialApiConsensusBoard(source.apiKey, options);
   }
 
   return fetchFantasyProsPublicHtmlConsensusBoard(options);

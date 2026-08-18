@@ -70,7 +70,7 @@ export const fantasyPositionData: Record<
 `;
 }
 
-function recordSourceLabel(
+export function recordSourceLabel(
   selectedSourceLabel: string | null,
   board: FantasyProsPublicBoard
 ): string {

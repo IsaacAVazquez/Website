@@ -11,7 +11,7 @@ interface AuthorBioProps {
   credentials?: Array<string>;
   expertise?: Array<string>;
   social?: { linkedin?: string; github?: string; email?: string; website?: string };
-  variant?: "inline" | "compact" | "full" | "light";
+  variant?: "inline" | "full" | "compact" | "light";
   showImage?: boolean;
   showSocial?: boolean;
   className?: string;

@@ -39,18 +39,39 @@ jobs:
       - name: Install dependencies
         run: npm ci --prefer-offline --no-audit --fund=false
 
+      # The redraft and best ball boards come from different upstream sources and
+      # are now committed independently. They were one `npm run update:fantasy`
+      # step behind one commit list, so a best-ball-only outage skipped the commit
+      # for fully validated redraft rankings, which are the primary fantasy
+      # surface. Redraft builds first and hard-fails the job; best ball runs as a
+      # soft lane and is reported by the terminal check near the end of this job.
       - name: Build fantasy snapshots
-        run: |
-          if [[ -z "${FANTASYPROS_API_KEY//[[:space:]]/}" ]]; then
-            echo "::error::FANTASYPROS_API_KEY is required for the scheduled fantasy refresh."
-            exit 1
-          fi
-          npm run update:fantasy
+        run: npm run update:fantasy:redraft
         env:
-          FANTASYPROS_API_KEY: ${{ secrets.FANTASYPROS_API_KEY }}
+          # The official endpoint began returning a declared full board with
+          # only the first ten rows. Pin the scheduled job to the separately
+          # labeled public-page adapter instead of changing sources after a
+          # validation failure. Local runs can still opt into official-api.
+          FANTASYPROS_SOURCE: public-html
           NODE_ENV: production
 
+      - name: Build best ball snapshot
+        id: build_best_ball
+        continue-on-error: true
+        run: npm run update:fantasy:best-ball
+        env:
+          FANTASYPROS_SOURCE: public-html
+          NODE_ENV: production
+
+      # Freshness verifies the redraft artifact (ppr.json) only, so it gates
+      # the redraft commit lane rather than the whole job: as a hard step it
+      # sat between the builds and both commit lanes and a redraft staleness
+      # failure aborted the run before a healthy best ball snapshot could
+      # commit — the exact coupling the soft-lane design exists to prevent.
+      # The terminal report step still turns the run red.
       - name: Verify refresh freshness
+        id: verify_freshness
+        continue-on-error: true
         run: npx tsx scripts/verifyDataRefresh.ts fantasy-football
 
       # Quality gate: a partial scrape (e.g. FantasyPros throttling some
@@ -62,6 +83,10 @@ jobs:
       # before it can replace a draft-ready snapshot.
       - name: Verify fantasy snapshot quality
         id: verify_quality
+        # Soft for the same reason as the freshness step above: this gate
+        # covers the redraft snapshots only and must not stop the best ball
+        # lane. The redraft commit below requires both gates to have passed.
+        continue-on-error: true
         run: |
           node -e "
           const fs = require('fs');
@@ -97,6 +122,31 @@ jobs:
               failures.push(format + ' failed to parse: ' + err.message);
             }
           }
+
+          if (failures.length > 0) {
+            console.error('::error::Fantasy snapshot quality gate failed:');
+            for (const failure of failures) {
+              console.error('::error::  - ' + failure);
+            }
+            process.exit(1);
+          }
+          console.log('All scoring formats cleared the overall and per-position floors. Quality gate passed.');
+          "
+
+      # Best ball is a soft lane: it has its own upstream sources, so its failures
+      # must not skip the redraft commit. This step records the outcome and the
+      # terminal check at the end of the job turns it into a red run.
+      - name: Verify best ball snapshot quality
+        id: verify_best_ball
+        if: steps.build_best_ball.outcome == 'success'
+        continue-on-error: true
+        run: |
+          node -e "
+          const fs = require('fs');
+          const path = require('path');
+
+          const DATA_DIR = path.join('public', 'data', 'fantasy');
+          const failures = [];
 
           try {
             const bestBall = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'best-ball.json'), 'utf8'));
@@ -139,19 +189,29 @@ jobs:
           }
 
           if (failures.length > 0) {
-            console.error('::error::Fantasy snapshot quality gate failed:');
+            console.error('::error::Best ball snapshot quality gate failed:');
             for (const failure of failures) {
               console.error('::error::  - ' + failure);
             }
             process.exit(1);
           }
-          console.log('All scoring formats cleared the overall and per-position floors. Quality gate passed.');
+          console.log('Best ball snapshot cleared its floors. Quality gate passed.');
           "
 
       # ADP is a soft signal layered on top of the consensus boards. Its fetch
-      # script never fails the run by design, so check coverage here and warn
-      # (never fail) when ADP is missing or matched thinly.
-      - name: Check ADP coverage (soft warning)
+      # script never fails the run by design, so coverage stays a warning here.
+      #
+      # Age is different and used to be checked nowhere. resolveAdpFormat retains
+      # the previous board with no maximum age, and the retained asOf flows
+      # straight into adpSource.asOf, so a multi-day upstream outage produced a
+      # fully green run while getFantasyAdpFreshness marked the board stale past
+      # four days in draft season and the site hid every ADP surface, including
+      # the trade calculator's market anchor. Best ball has checked exactly this
+      # for its own sources all along. Age is recorded rather than thrown here so
+      # a stale ADP board cannot skip the redraft rankings commit; the terminal
+      # check at the end of this job turns it into a red run.
+      - name: Check ADP coverage and age
+        id: adp_health
         run: |
           node -e "
           const fs = require('fs');
@@ -162,6 +222,12 @@ jobs:
           const DATA_DIR = path.join('public', 'data', 'fantasy');
           const formats = ['ppr', 'half_ppr', 'standard'];
 
+          const now = Date.now();
+          const inDraftSeason = [6, 7, 8].includes(new Date().getUTCMonth());
+          const ageWarnLimit = inDraftSeason ? 4 : 14;
+          const ageFailLimit = inDraftSeason ? 14 : 45;
+          const darkFormats = [];
+
           for (const format of formats) {
             try {
               const snapshot = JSON.parse(fs.readFileSync(path.join(DATA_DIR, format + '.json'), 'utf8'));
@@ -170,37 +236,54 @@ jobs:
                 : [];
               if (!snapshot.adpSource) {
                 console.log('::warning::' + format + ' snapshot has no ADP data (adpSource is null). The boards still work; ADP surfaces are hidden.');
+                darkFormats.push(format + ' (no adpSource)');
                 continue;
               }
               const topBoardMatches = topBoard.filter((player) => Number.isFinite(player.adp)).length;
               const coverage = topBoard.length > 0 ? topBoardMatches / topBoard.length : 0;
               const pct = Math.round(coverage * 100);
-              console.log(format + ': ADP covered ' + topBoardMatches + ' of the top ' + topBoard.length + ' players (' + pct + '%), asOf ' + snapshot.adpSource.asOf);
+              const adpAgeDays = (now - Date.parse(snapshot.adpSource.asOf || '')) / 86400000;
+              const ageLabel = Number.isFinite(adpAgeDays) ? adpAgeDays.toFixed(1) + 'd' : 'unparseable asOf';
+              console.log(format + ': ADP covered ' + topBoardMatches + ' of the top ' + topBoard.length + ' players (' + pct + '%), asOf ' + snapshot.adpSource.asOf + ' (' + ageLabel + ')');
               if (coverage < MIN_COVERAGE) {
                 console.log('::warning::' + format + ' top-board ADP coverage is ' + pct + '%, below the ' + (MIN_COVERAGE * 100) + '% floor. Check the matcher or the upstream feed.');
+              }
+              if (!Number.isFinite(adpAgeDays) || adpAgeDays > ageFailLimit) {
+                darkFormats.push(format + ' (' + ageLabel + ')');
+              } else if (adpAgeDays > ageWarnLimit) {
+                console.log('::warning::' + format + ' ADP source is ' + ageLabel + ' old (warn above ' + ageWarnLimit + ', fail above ' + ageFailLimit + '). The site treats it as stale and hides ADP surfaces.');
               }
             } catch (err) {
               console.log('::warning::' + format + ' ADP coverage check failed to parse the snapshot: ' + err.message);
             }
           }
+
+          if (darkFormats.length > 0) {
+            console.error('::error::Redraft ADP is unusable past the ' + ageFailLimit + '-day limit for: ' + darkFormats.join(', '));
+          }
+          // Guarded: this step must never be the thing that skips the redraft commit.
+          if (process.env.GITHUB_OUTPUT) {
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, 'adp_dark=' + (darkFormats.length > 0 ? 'true' : 'false') + '\n');
+          }
           "
 
       - name: Check for snapshot changes
         id: check_changes
+        if: steps.verify_freshness.outcome == 'success' && steps.verify_quality.outcome == 'success'
         run: |
           if git diff --quiet -- \
             src/data/fantasyPositionData.generated.ts \
             src/data/fantasyAdpData.generated.ts \
+            src/data/fantasyGameLogData.generated.ts \
             src/data/fantasySnapshotRevision.generated.ts \
             public/data/fantasy/ppr.json \
             public/data/fantasy/half_ppr.json \
-            public/data/fantasy/standard.json \
-            public/data/fantasy/best-ball.json; then
+            public/data/fantasy/standard.json; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "No fantasy snapshot changes detected."
+            echo "No redraft fantasy snapshot changes detected."
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
-            echo "Fantasy snapshot changes detected."
+            echo "Redraft fantasy snapshot changes detected."
           fi
 
       - name: Commit and push snapshot updates
@@ -210,11 +293,52 @@ jobs:
             "chore: update fantasy football snapshots [automated] [skip ci]" \
             src/data/fantasyPositionData.generated.ts \
             src/data/fantasyAdpData.generated.ts \
+            src/data/fantasyGameLogData.generated.ts \
             src/data/fantasySnapshotRevision.generated.ts \
             public/data/fantasy/ppr.json \
             public/data/fantasy/half_ppr.json \
-            public/data/fantasy/standard.json \
+            public/data/fantasy/standard.json
+
+      # Best ball commits on its own so neither lane can withhold the other's
+      # validated data. It only reaches here when its build and its gate both
+      # passed; otherwise the report step below turns the run red.
+      - name: Check for best ball snapshot changes
+        id: check_best_ball_changes
+        if: steps.verify_best_ball.outcome == 'success'
+        run: |
+          if git diff --quiet -- public/data/fantasy/best-ball.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No best ball snapshot changes detected."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Best ball snapshot changes detected."
+          fi
+
+      - name: Commit and push best ball snapshot
+        if: steps.check_best_ball_changes.outputs.changed == 'true'
+        run: |
+          bash scripts/ci/commit-and-push-snapshot.sh \
+            "chore: update best ball snapshot [automated] [skip ci]" \
             public/data/fantasy/best-ball.json
+
+      # Both soft lanes report here rather than at the point of failure, so the
+      # run still goes red and the failure issue still opens without either lane
+      # skipping the other's commit above.
+      - name: Report soft-lane failures
+        if: >-
+          steps.verify_freshness.outcome == 'failure' ||
+          steps.verify_quality.outcome == 'failure' ||
+          steps.build_best_ball.outcome == 'failure' ||
+          steps.verify_best_ball.outcome == 'failure' ||
+          steps.adp_health.outputs.adp_dark == 'true'
+        run: |
+          echo "redraft freshness: ${{ steps.verify_freshness.outcome }}"
+          echo "redraft quality:   ${{ steps.verify_quality.outcome }}"
+          echo "best ball build:   ${{ steps.build_best_ball.outcome }}"
+          echo "best ball gate:    ${{ steps.verify_best_ball.outcome }}"
+          echo "redraft ADP dark:  ${{ steps.adp_health.outputs.adp_dark }}"
+          echo "::error::A fantasy refresh gate failed. Each lane committed independently when its own gates passed; see the step outcomes above."
+          exit 1
 
       - name: Create job summary
         if: always()
@@ -223,16 +347,21 @@ jobs:
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "**Status:** ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
           echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
+          echo "FantasyPros source: public consensus HTML" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
           if [ "${{ steps.check_changes.outputs.changed }}" == "true" ]; then
-            echo "✅ **Changes Detected:** public fantasy snapshot artifacts were refreshed and committed." >> "$GITHUB_STEP_SUMMARY"
+            echo "✅ **Redraft:** rankings and ADP artifacts were refreshed and committed." >> "$GITHUB_STEP_SUMMARY"
           else
-            echo "ℹ️ **No Changes:** the published fantasy snapshot artifacts were already current." >> "$GITHUB_STEP_SUMMARY"
+            echo "ℹ️ **Redraft:** the published rankings artifacts were already current." >> "$GITHUB_STEP_SUMMARY"
           fi
+          echo "**Redraft gates:** freshness ${{ steps.verify_freshness.outcome }} · quality ${{ steps.verify_quality.outcome }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Best ball build:** ${{ steps.build_best_ball.outcome }} · **gate:** ${{ steps.verify_best_ball.outcome }} · **committed:** ${{ steps.check_best_ball_changes.outputs.changed }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Redraft ADP past its age limit:** ${{ steps.adp_health.outputs.adp_dark }}" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "### Public artifacts" >> "$GITHUB_STEP_SUMMARY"
           echo "- src/data/fantasyPositionData.generated.ts" >> "$GITHUB_STEP_SUMMARY"
           echo "- src/data/fantasyAdpData.generated.ts" >> "$GITHUB_STEP_SUMMARY"
+          echo "- src/data/fantasyGameLogData.generated.ts" >> "$GITHUB_STEP_SUMMARY"
           echo "- src/data/fantasySnapshotRevision.generated.ts" >> "$GITHUB_STEP_SUMMARY"
           echo "- public/data/fantasy/ppr.json" >> "$GITHUB_STEP_SUMMARY"
           echo "- public/data/fantasy/half_ppr.json" >> "$GITHUB_STEP_SUMMARY"
@@ -256,6 +385,7 @@ jobs:
               ``,
               `Check the run logs to diagnose. Common causes:`,
               `- FantasyPros HTML structure changed (\`var ecrData\` extraction failed)`,
+              `- A public rankings page returned a partial board that failed the declared-count or coverage gate`,
               `- Sustained 429s exceeded retry budget`,
               `- Quality gate caught a degraded snapshot (thin overall board or an empty/short position board)`,
               ``,

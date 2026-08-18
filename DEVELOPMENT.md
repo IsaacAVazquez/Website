@@ -2,7 +2,7 @@
 
 Current development setup and workflow notes.
 
-**Last updated:** 2026-06-19
+**Last updated:** 2026-08-11
 
 ---
 

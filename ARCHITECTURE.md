@@ -2,7 +2,7 @@
 
 High-level system architecture for the current live application.
 
-**Last updated:** 2026-06-19
+**Last updated:** 2026-08-11
 
 ---
 

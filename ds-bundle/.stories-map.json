@@ -1,7 +1,7 @@
 {
   "global": "WorkingInstrument",
   "pkg": "isaac-vazquez-portfolio",
-  "pkgDir": "/Users/isaacvazquez/Website",
+  "pkgDir": "/Users/isaacvazquez/Website/.claude/worktrees/fantasy-mock-draft",
   "extraEntries": [],
   "exported": [
     "AuthorBio",
@@ -12,7 +12,6 @@
     "DropdownMenu",
     "EditorialPillButton",
     "EmptyPanel",
-    "ExpertSignal",
     "FixtureCard",
     "FixtureGroupSection",
     "FixtureLedgerSection",
@@ -21,17 +20,12 @@
     "InfoChip",
     "InlineSectionLead",
     "InstrumentTape",
-    "JourneyTimeline",
     "Kicker",
     "LeaderLedger",
     "LeaderList",
-    "MetricCallout",
     "MetricCard",
     "ModernButton",
-    "OptimizedImage",
-    "PageSummary",
     "Paragraph",
-    "ReadoutPanel",
     "ResultsTape",
     "SectionIntro",
     "SegmentedTabs",
@@ -113,14 +107,6 @@
       "stories": []
     },
     {
-      "name": "ExpertSignal",
-      "group": "general",
-      "srcSha": null,
-      "sourceKey": "7c8593effb79f5f2",
-      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
-      "stories": []
-    },
-    {
       "name": "FixtureCard",
       "group": "football",
       "srcSha": null,
@@ -185,14 +171,6 @@
       "stories": []
     },
     {
-      "name": "JourneyTimeline",
-      "group": "general",
-      "srcSha": null,
-      "sourceKey": "2b4cf40e81aac29d",
-      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
-      "stories": []
-    },
-    {
       "name": "Kicker",
       "group": "general",
       "srcSha": null,
@@ -217,14 +195,6 @@
       "stories": []
     },
     {
-      "name": "MetricCallout",
-      "group": "general",
-      "srcSha": null,
-      "sourceKey": "f572d96baf4a141d",
-      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
-      "stories": []
-    },
-    {
       "name": "MetricCard",
       "group": "football",
       "srcSha": null,
@@ -241,34 +211,10 @@
       "stories": []
     },
     {
-      "name": "OptimizedImage",
-      "group": "general",
-      "srcSha": null,
-      "sourceKey": "23b17492a4866e82",
-      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
-      "stories": []
-    },
-    {
-      "name": "PageSummary",
-      "group": "general",
-      "srcSha": null,
-      "sourceKey": "4eae5c4ee2db32ef",
-      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
-      "stories": []
-    },
-    {
       "name": "Paragraph",
       "group": "general",
       "srcSha": null,
       "sourceKey": "0554c0d98be4fa17",
-      "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
-      "stories": []
-    },
-    {
-      "name": "ReadoutPanel",
-      "group": "general",
-      "srcSha": null,
-      "sourceKey": "41b609285668cc06",
       "cfgSlice": "5ff899b099eb6923833804cda955efdd69101524bec86f67dac5537cd81802e8",
       "stories": []
     },

@@ -78,10 +78,12 @@ describe("fantasySnapshotBuilder", () => {
     expect(pprSnapshot.sliceMetadata.k.sourceKind).toBe("shared_position_consensus");
     expect(pprSnapshot.sliceMetadata.dst.sourceKind).toBe("shared_position_consensus");
 
-    // The QB/K/DST consensus boards are scoring-agnostic, but ADP is matched
-    // per scoring format, so a player's adp reading can differ between formats.
-    // Compare the slices with adp stripped to assert the consensus data is shared.
-    const withoutAdp = (players: Player[]) =>
+    // The QB/K/DST consensus boards are scoring-agnostic, but two overlays are
+    // matched per scoring format and legitimately differ between them: ADP, and
+    // the prior season's points per game (a quarterback who caught a pass really
+    // did score differently in PPR than in standard). Strip both to assert that
+    // the consensus data underneath is shared.
+    const withoutPerFormatOverlays = (players: Player[]) =>
       players.map(
         ({
           adp: _adp,
@@ -89,16 +91,17 @@ describe("fantasySnapshotBuilder", () => {
           adpLow: _adpLow,
           adpStandardDeviation: _adpStandardDeviation,
           adpTimesDrafted: _adpTimesDrafted,
+          gameLog: _gameLog,
           ...rest
         }) => rest
       );
 
-    expect(withoutAdp(pprSnapshot.positions.QB)).toEqual(withoutAdp(halfPprSnapshot.positions.QB));
-    expect(withoutAdp(pprSnapshot.positions.QB)).toEqual(withoutAdp(standardSnapshot.positions.QB));
-    expect(withoutAdp(pprSnapshot.positions.K)).toEqual(withoutAdp(halfPprSnapshot.positions.K));
-    expect(withoutAdp(pprSnapshot.positions.K)).toEqual(withoutAdp(standardSnapshot.positions.K));
-    expect(withoutAdp(pprSnapshot.positions.DST)).toEqual(withoutAdp(halfPprSnapshot.positions.DST));
-    expect(withoutAdp(pprSnapshot.positions.DST)).toEqual(withoutAdp(standardSnapshot.positions.DST));
+    expect(withoutPerFormatOverlays(pprSnapshot.positions.QB)).toEqual(withoutPerFormatOverlays(halfPprSnapshot.positions.QB));
+    expect(withoutPerFormatOverlays(pprSnapshot.positions.QB)).toEqual(withoutPerFormatOverlays(standardSnapshot.positions.QB));
+    expect(withoutPerFormatOverlays(pprSnapshot.positions.K)).toEqual(withoutPerFormatOverlays(halfPprSnapshot.positions.K));
+    expect(withoutPerFormatOverlays(pprSnapshot.positions.K)).toEqual(withoutPerFormatOverlays(standardSnapshot.positions.K));
+    expect(withoutPerFormatOverlays(pprSnapshot.positions.DST)).toEqual(withoutPerFormatOverlays(halfPprSnapshot.positions.DST));
+    expect(withoutPerFormatOverlays(pprSnapshot.positions.DST)).toEqual(withoutPerFormatOverlays(standardSnapshot.positions.DST));
   });
 
   it("keeps sourced position ranges and freshness metadata", () => {

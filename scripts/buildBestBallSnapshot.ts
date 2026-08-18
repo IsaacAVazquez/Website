@@ -14,6 +14,7 @@ import {
   BEST_BALL_RANKING_TOP_BOARD_SIZE,
   BEST_BALL_SNAPSHOT_SCHEMA_VERSION,
   BEST_BALL_SUPERFLEX_TOP_BOARD_SIZE,
+  getBestBallSuperflexCoreQuarterbackIds,
   normalizeBestBallSnapshot,
   type BestBallSnapshot,
 } from "@/lib/bestBallSnapshot";
@@ -161,6 +162,9 @@ async function main() {
   const previousById = new Map(
     (sameSeasonPrevious?.players ?? []).map((player) => [player.id, player])
   );
+  const coreSuperflexQuarterbackIds = getBestBallSuperflexCoreQuarterbackIds(
+    rankings.players
+  );
   let matchedCount = 0;
   const freshAdpMatchedIds = new Set<string>();
   let superflexMatchedCount = 0;
@@ -170,6 +174,9 @@ async function main() {
   let superflexQuarterbackCount = 0;
   let superflexQuarterbackMatchedCount = 0;
   let superflexQuarterbackTierMatchedCount = 0;
+  let coreSuperflexQuarterbackMatchedCount = 0;
+  let coreSuperflexQuarterbackTierMatchedCount = 0;
+  const unmatchedSuperflexPlayers: Player[] = [];
 
   const players: Player[] = rankings.players.map((player, index) => {
     const matchedAdp = adpIndex ? matchPlayerAdp(player, adpIndex) : null;
@@ -188,16 +195,25 @@ async function main() {
     const superflexTier = superflexResult
       ? superflexMatch?.tier
       : priorPlayer?.superflexTier;
-    if (Number.isFinite(superflexMatch?.rank)) superflexMatchedCount += 1;
-    if (Number.isFinite(superflexMatch?.tier)) superflexTierMatchedCount += 1;
+    const hasSuperflexRank = Number.isFinite(superflexMatch?.rank);
+    const hasSuperflexTier = Number.isFinite(superflexMatch?.tier);
+    if (hasSuperflexRank) superflexMatchedCount += 1;
+    if (hasSuperflexTier) superflexTierMatchedCount += 1;
+    if (superflexResult && (!hasSuperflexRank || !hasSuperflexTier)) {
+      unmatchedSuperflexPlayers.push(player);
+    }
     if (index < BEST_BALL_SUPERFLEX_TOP_BOARD_SIZE) {
-      if (Number.isFinite(superflexMatch?.rank)) topBoardSuperflexMatchedCount += 1;
-      if (Number.isFinite(superflexMatch?.tier)) topBoardSuperflexTierMatchedCount += 1;
+      if (hasSuperflexRank) topBoardSuperflexMatchedCount += 1;
+      if (hasSuperflexTier) topBoardSuperflexTierMatchedCount += 1;
     }
     if (player.position === "QB") {
       superflexQuarterbackCount += 1;
-      if (Number.isFinite(superflexMatch?.rank)) superflexQuarterbackMatchedCount += 1;
-      if (Number.isFinite(superflexMatch?.tier)) superflexQuarterbackTierMatchedCount += 1;
+      if (hasSuperflexRank) superflexQuarterbackMatchedCount += 1;
+      if (hasSuperflexTier) superflexQuarterbackTierMatchedCount += 1;
+    }
+    if (coreSuperflexQuarterbackIds.has(player.id)) {
+      if (hasSuperflexRank) coreSuperflexQuarterbackMatchedCount += 1;
+      if (hasSuperflexTier) coreSuperflexQuarterbackTierMatchedCount += 1;
     }
 
     return {
@@ -213,6 +229,18 @@ async function main() {
   const normalizedSchedule = scheduleResult
     ? normalizeScheduleTeams(scheduleResult.opponents)
     : sameSeasonPrevious?.week17Opponents ?? {};
+  if (superflexResult && unmatchedSuperflexPlayers.length > 0) {
+    const examples = unmatchedSuperflexPlayers
+      .slice(0, 12)
+      .map((player) =>
+        `${player.name} (${player.position}${player.positionRank ?? "?"}, overall ${player.rankEcr ?? player.averageRank})`
+      )
+      .join(", ");
+    const remaining = unmatchedSuperflexPlayers.length - 12;
+    console.warn(
+      `Superflex source omitted ${unmatchedSuperflexPlayers.length} standard-board player(s). ${examples}${remaining > 0 ? `, and ${remaining} more` : ""}.`
+    );
+  }
   const snapshot: BestBallSnapshot = {
     schemaVersion: BEST_BALL_SNAPSHOT_SCHEMA_VERSION,
     season: rankings.season,
@@ -287,6 +315,9 @@ async function main() {
     quarterbackPlayers: superflexQuarterbackCount,
     quarterbackRankMatches: superflexQuarterbackMatchedCount,
     quarterbackTierMatches: superflexQuarterbackTierMatchedCount,
+    coreQuarterbackPlayers: coreSuperflexQuarterbackIds.size,
+    coreQuarterbackRankMatches: coreSuperflexQuarterbackMatchedCount,
+    coreQuarterbackTierMatches: coreSuperflexQuarterbackTierMatchedCount,
     hasPreviousSource: Boolean(sameSeasonPrevious?.superflexSource),
   });
 

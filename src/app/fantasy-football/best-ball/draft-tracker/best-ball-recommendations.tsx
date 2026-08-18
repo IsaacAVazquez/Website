@@ -1,3 +1,4 @@
+import { ChevronDown } from "lucide-react";
 import type {
   BestBallRecommendation,
   BestBallRecommendationMode,
@@ -146,9 +147,16 @@ export function BestBallRecommendations({
                   ))}
                 </div>
 
-                <details className="mt-3 text-xs leading-5">
-                  <summary className="flex min-h-[44px] cursor-pointer items-center font-semibold">
+                <details className="group mt-3 text-xs leading-5">
+                  {/* display:flex strips the native disclosure marker, so the
+                      chevron is the explicit sign this label opens. */}
+                  <summary className="flex min-h-[44px] cursor-pointer items-center gap-1.5 font-semibold">
                     Why this player
+                    <ChevronDown
+                      className="h-3.5 w-3.5 transition-transform group-open:rotate-180"
+                      aria-hidden="true"
+                      style={{ color: "var(--home-ink-muted)" }}
+                    />
                   </summary>
                   <ul className="grid gap-1.5 pb-1" style={{ color: "var(--home-ink-muted)" }}>
                     {recommendation.reasons.map((reason) => (

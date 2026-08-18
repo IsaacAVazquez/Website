@@ -12,6 +12,8 @@ import {
   routeScoringToScoringFormat,
 } from "@/lib/fantasy";
 import { getFantasyAdpDataset } from "@/lib/fantasyAdpData";
+import { getFantasyGameLogDataset } from "@/lib/fantasyGameLogData";
+import type { FantasyGameLogEntry } from "@/lib/fantasyGameLogSource";
 import {
   buildFantasyAdpIndex,
   matchPlayerAdp,
@@ -145,7 +147,9 @@ function getSliceUpdatedAt(players: Player[]): string | null {
 function normalizeSourcedPlayers(
   players: Player[],
   positionOverride?: Player["position"],
-  adpIndex?: FantasyAdpIndex | null
+  adpIndex?: FantasyAdpIndex | null,
+  gameLogIndex?: FantasyAdpIndex<FantasyGameLogEntry> | null,
+  gameLogSeason?: number | null
 ): Player[] {
   return dedupePlayers(players)
     .map((player) => {
@@ -153,10 +157,24 @@ function normalizeSourcedPlayers(
       const adpEntry = adpIndex
         ? matchPlayerAdp({ name: player.name, team: player.team, position }, adpIndex)
         : null;
+      const gameLogEntry = gameLogIndex
+        ? matchPlayerAdp({ name: player.name, team: player.team, position }, gameLogIndex)
+        : null;
 
       return publishFantasyPlayer({
         ...player,
         position,
+        gameLog:
+          gameLogEntry && typeof gameLogSeason === "number"
+            ? {
+                season: gameLogSeason,
+                games: gameLogEntry.games,
+                low: gameLogEntry.low,
+                median: gameLogEntry.median,
+                average: gameLogEntry.average,
+                high: gameLogEntry.high,
+              }
+            : undefined,
         adp: adpEntry?.adp,
         adpHigh: adpEntry?.high,
         adpLow: adpEntry?.low,
@@ -191,13 +209,20 @@ function normalizeSourcedPlayers(
 function buildPositionSlice(
   players: Player[],
   position: Player["position"],
-  adpIndex?: FantasyAdpIndex | null
+  adpIndex?: FantasyAdpIndex | null,
+  gameLogIndex?: FantasyAdpIndex<FantasyGameLogEntry> | null,
+  gameLogSeason?: number | null
 ): Player[] {
-  return normalizeSourcedPlayers(players, position, adpIndex);
+  return normalizeSourcedPlayers(players, position, adpIndex, gameLogIndex, gameLogSeason);
 }
 
-function buildOverallSlice(players: Player[], adpIndex?: FantasyAdpIndex | null): Player[] {
-  return normalizeSourcedPlayers(players, undefined, adpIndex);
+function buildOverallSlice(
+  players: Player[],
+  adpIndex?: FantasyAdpIndex | null,
+  gameLogIndex?: FantasyAdpIndex<FantasyGameLogEntry> | null,
+  gameLogSeason?: number | null
+): Player[] {
+  return normalizeSourcedPlayers(players, undefined, adpIndex, gameLogIndex, gameLogSeason);
 }
 
 function buildFlexSlice(overallPlayers: Player[]): Player[] {
@@ -271,6 +296,10 @@ export function buildFantasySnapshot(scoring: FantasyRouteScoring): FantasySnaps
   const sourceMetadata = getFantasyPositionDataMetadata(scoringFormat);
   const adpDataset = getFantasyAdpDataset(scoringFormat);
   const adpIndex = adpDataset.entries.length > 0 ? buildFantasyAdpIndex(adpDataset.entries) : null;
+  const gameLogDataset = getFantasyGameLogDataset(scoringFormat);
+  const gameLogIndex =
+    gameLogDataset.entries.length > 0 ? buildFantasyAdpIndex(gameLogDataset.entries) : null;
+  const gameLogSeason = gameLogDataset.season;
 
   const sliceMetadata = {
     overall: buildUnavailableSlice(buildUnavailableReason(scoring, "overall")).metadata,
@@ -294,7 +323,7 @@ export function buildFantasySnapshot(scoring: FantasyRouteScoring): FantasySnaps
   } satisfies FantasySnapshot["positions"];
 
   const overallSourcePlayers = getFantasyOverallData(scoringFormat);
-  const overallPlayers = buildOverallSlice(overallSourcePlayers, adpIndex);
+  const overallPlayers = buildOverallSlice(overallSourcePlayers, adpIndex, gameLogIndex, gameLogSeason);
   const overallUpdatedAt = getSliceUpdatedAt(overallPlayers) ?? sourceMetadata.upstreamUpdatedAt;
 
   sliceMetadata.overall =
@@ -310,7 +339,7 @@ export function buildFantasySnapshot(scoring: FantasyRouteScoring): FantasySnaps
       continue;
     }
 
-    const builtPlayers = buildPositionSlice(sourcePlayers, position, adpIndex);
+    const builtPlayers = buildPositionSlice(sourcePlayers, position, adpIndex, gameLogIndex, gameLogSeason);
     const updatedAt = getSliceUpdatedAt(builtPlayers);
     positions[position] = builtPlayers;
     sliceMetadata[routePosition] = buildAvailableSlice(

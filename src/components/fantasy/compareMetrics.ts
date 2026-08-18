@@ -5,6 +5,7 @@ import {
 import type { Player } from "@/types";
 
 type Direction = "lower" | "higher" | "none";
+type MetricValueResolver = (player: Player) => number | null;
 
 function metricValue(player: Player, key: string): number | null {
   switch (key) {
@@ -43,11 +44,19 @@ export const MIN_MEANINGFUL_DELTA: Record<string, number> = {
 /**
  * Index of the player who wins a metric row, or -1 when the result is a wash.
  */
-export function bestIndex(players: Player[], key: string, direction: Direction): number {
+export function bestIndex(
+  players: Player[],
+  key: string,
+  direction: Direction,
+  resolveValue?: MetricValueResolver
+): number {
   if (direction === "none") return -1;
 
   const scored = players
-    .map((player, index) => ({ index, value: metricValue(player, key) }))
+    .map((player, index) => ({
+      index,
+      value: resolveValue ? resolveValue(player) : metricValue(player, key),
+    }))
     .filter((entry): entry is { index: number; value: number } => entry.value !== null);
   if (scored.length < 2) return -1;
 

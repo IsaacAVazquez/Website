@@ -25,6 +25,20 @@ export interface Player {
   superflexRank?: number; // Separate sourced Superflex consensus rank when available
   superflexTier?: number; // Tier from the same sourced Superflex consensus board
 
+  /**
+   * Prior-season fantasy points per game for this scoring format, from
+   * nflverse. Absent when the player has no matched scoring history, which is
+   * normal for rookies and for anyone under the games-played floor.
+   */
+  gameLog?: {
+    season: number;
+    games: number;
+    low: number;
+    median: number;
+    average: number;
+    high: number;
+  };
+
   // Enhanced NFLverse metadata
   headshotUrl?: string; // Player headshot from ESPN/NFLverse
   teamLogoUrl?: string; // Team logo URL

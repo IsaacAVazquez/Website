@@ -47,7 +47,7 @@ const { SurfaceCard, Kicker, StatCard } = window.WorkingInstrument;
 # WorkingInstrument (isaac-vazquez-portfolio@0.1.0)
 
 This design system is the published isaac-vazquez-portfolio React library, bundled as a single
-browser global. All 39 components are the real upstream code.
+browser global. All 33 components are the real upstream code.
 
 ## Where things are
 
@@ -84,15 +84,15 @@ Wrap the tree in the provider — most components read theme/i18n from context:
 
 ## Tokens
 
-357 CSS custom properties from isaac-vazquez-portfolio. Names are
+335 CSS custom properties from isaac-vazquez-portfolio. Names are
 preserved verbatim from upstream. They are declared inside `_ds_bundle.css` (this DS ships one compiled stylesheet rather than separate token files).
 
-- **color** (87): `--color-red-300`, `--color-red-500`, `--color-red-700`, …
+- **color** (75): `--color-red-300`, `--color-red-500`, `--color-red-700`, …
 - **spacing** (13): `--tw-space-y-reverse`, `--tw-ring-inset`, `--space-xs`, …
-- **typography** (28): `--font-weight-normal`, `--font-weight-medium`, `--font-weight-semibold`, …
+- **typography** (27): `--font-weight-normal`, `--font-weight-medium`, `--font-weight-semibold`, …
 - **radius** (7): `--radius-sm`, `--radius-md`, `--radius-lg`, …
-- **shadow** (14): `--shadow-xs`, `--tw-prose-kbd-shadows`, `--tw-prose-invert-kbd-shadows`, …
-- **other** (208): `--spacing`, `--breakpoint-sm`, `--breakpoint-md`, …
+- **shadow** (13): `--tw-prose-kbd-shadows`, `--tw-prose-invert-kbd-shadows`, `--tw-shadow`, …
+- **other** (200): `--spacing`, `--container-xs`, `--container-sm`, …
 
 ## Components
 
@@ -101,16 +101,10 @@ preserved verbatim from upstream. They are declared inside `_ds_bundle.css` (thi
 - `Badge`
 - `Chip` — Chip  small mono, uppercase, squared metadata tag (rsum skills,
 - `DropdownMenu`
-- `ExpertSignal`
 - `Heading`
-- `JourneyTimeline`
 - `Kicker` — Kicker  the small label that sits above a heading. dot is the
-- `MetricCallout` — MetricCallout - Highlighted metric display with count-up animation
 - `ModernButton`
-- `OptimizedImage`
-- `PageSummary`
 - `Paragraph`
-- `ReadoutPanel` — ReadoutPanel  the signature live index instrument: a paper panel capped
 - `SectionIntro`
 - `ThemeToggle`
 - `WarmCard`
