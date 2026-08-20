@@ -45,7 +45,7 @@ Snapshots that do **not** have a dedicated workflow, such as the manually mainta
 ## Publication (`publish-data.yml`)
 
 - Runs at 01:15, 07:15, 13:15, and 19:15 UTC, on every push to `main` that is not marked `[skip ci]`, and on `workflow_dispatch`. Refresh commits carry `[skip ci]`, so they accumulate until the next scheduled run rather than each triggering a deploy.
-- It builds the site with `netlify build` inside GitHub Actions and uploads the result with `netlify deploy --prod --no-build`. The build itself does not call football-data.org.
+- It builds and uploads the site in one `netlify deploy --prod --context production` inside GitHub Actions. The build itself does not call football-data.org.
 - The build runs in Actions rather than on Netlify because the account is on the free tier with 300 build minutes a month. It ran out on 2026-08-06 with the limit enforced, every git-triggered build after that returned "Skipped due to account builds usage exceeded", and committed data stopped reaching production for close to two weeks. A prebuilt upload does not consume build minutes, and Actions minutes are free on a public repository.
 - `scripts/ci/netlify-ignore.sh` is wired in as the `ignore` command in `netlify.toml`. It cancels Netlify's own builds of `main`, which would otherwise duplicate every deploy, and of dependabot branches, whose previews are what exhausted the quota. Human pull requests still get a deploy preview.
 - Publication needs the `NETLIFY_AUTH_TOKEN` repository secret. The site ID is set in the workflow and is an identifier rather than a credential.

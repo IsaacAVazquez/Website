@@ -101,7 +101,7 @@ the fallback and the editorial source of truth. See the lane description in
 - `update:football` (the ~16-min full refresh, including per-team fixtures and
   form) remains an explicit local task, not a build step.
 - `publish-data.yml` coalesces successful refresh workflows, builds the site in
-  GitHub Actions, uploads it with `netlify deploy --no-build`, and verifies the
+  GitHub Actions, uploads it with `netlify deploy --prod --context production`, and verifies the
   complete `/api/data-revisions` ledger before it closes a publication incident.
   Building in Actions is deliberate. The Netlify account is on the free tier with
   300 build minutes a month, it ran out on 2026-08-06, and every git-triggered

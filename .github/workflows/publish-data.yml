@@ -5,10 +5,10 @@ name: Publish Refreshed Data
 # enforced, so every git-triggered build after that returned "Skipped due to
 # account builds usage exceeded" and committed snapshots stopped reaching
 # production entirely. This repository is public, so GitHub Actions minutes are
-# free and unmetered, and a deploy uploaded with `netlify deploy --no-build` does
-# not consume build minutes because the build never ran on Netlify's
-# infrastructure. Moving the build here makes the 300-minute cap irrelevant
-# instead of something to ration. `scripts/ci/netlify-ignore.sh` stops Netlify
+# free and unmetered, and a deploy run from this runner does not consume build
+# minutes because the build never ran on Netlify's infrastructure. Moving the
+# build here makes the 300-minute cap irrelevant instead of something to
+# ration. `scripts/ci/netlify-ignore.sh` stops Netlify
 # from also building main, which would duplicate every deploy and race this
 # upload.
 #
@@ -68,7 +68,7 @@ jobs:
           echo "revision=$(npx tsx scripts/printDataLedgerRevision.ts)" >> "$GITHUB_OUTPUT"
           echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
-      - name: Build the production bundle
+      - name: Build and deploy the production bundle
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         run: |
@@ -76,20 +76,27 @@ jobs:
             echo "::error::NETLIFY_AUTH_TOKEN is required to build and publish production."
             exit 1
           fi
-          # `netlify build` rather than `npm run build` so this runs the same
-          # command, plugins, and site environment variables a Netlify build
-          # would, including NEXT_PUBLIC_GA_MEASUREMENT_ID, which exists only in
-          # the site's own environment.
-          npx --yes netlify-cli@26 build --context production
-
-      - name: Deploy the prebuilt bundle
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-        run: |
-          # --no-build is what keeps this off the metered build system.
+          # One command, rather than `netlify build` followed by a separate
+          # `deploy --no-build`. @netlify/plugin-nextjs publishes the site by
+          # swapping .netlify/static into the publish directory in its
+          # onPostBuild hook and swapping it back out again in onEnd. A
+          # standalone `netlify build` runs that entire lifecycle, so .next holds
+          # the raw Next.js output again by the time a separate deploy step reads
+          # it, and the deploy uploads build artifacts at the site root while
+          # every /_next/static URL 404s. That shipped on 2026-08-20 and served
+          # an unstyled site until it was rolled forward. `deploy` builds by
+          # default, which keeps the upload inside the lifecycle where the swap
+          # still holds.
+          #
+          # Building here rather than running `npm run build` also picks up the
+          # site's own environment variables, including
+          # NEXT_PUBLIC_GA_MEASUREMENT_ID, which exists only in that environment.
+          # None of this reaches the metered build system: what keeps the deploy
+          # off Netlify's build minutes is running on this runner at all, not any
+          # particular flag.
           npx --yes netlify-cli@26 deploy \
             --prod \
-            --no-build \
+            --context production \
             --message "Publish data ledger ${{ steps.ledger.outputs.commit }}"
 
       - name: Verify the complete ledger
@@ -104,6 +111,29 @@ jobs:
           # left to trigger.
           node scripts/ci/ensure-production-data-ledger.mjs \
             "$EXPECTED_REVISION" "$revision_url" "" "$EXPECTED_COMMIT"
+
+      - name: Verify the homepage stylesheet resolves
+        env:
+          PRODUCTION_URL: ${{ secrets.PRODUCTION_URL }}
+        run: |
+          # The ledger check above passes on a broken publish, because
+          # /api/data-revisions is served by the Next.js function whether or not
+          # the static assets ever uploaded. That is how the 2026-08-20 deploy
+          # reported success while serving an unstyled site. The ledger step has
+          # already waited for production to serve this deploy, so the homepage
+          # fetched here is the one that just shipped.
+          site="${PRODUCTION_URL:-https://isaacvazquez.com}"
+          css=$(curl -sS --fail "$site/" | grep -oE '/_next/static/css/[^"]+\.css' | head -1)
+          if [ -z "$css" ]; then
+            echo "::error::No stylesheet link found in the production homepage."
+            exit 1
+          fi
+          code=$(curl -sS -o /dev/null -w '%{http_code}' "$site$css")
+          if [ "$code" != "200" ]; then
+            echo "::error::Production stylesheet $css returned HTTP $code. The deploy most likely published the raw .next directory instead of the plugin's static output."
+            exit 1
+          fi
+          echo "Stylesheet $css served with HTTP $code."
 
       - name: Open or update publication incident
         if: failure()
