@@ -13,6 +13,7 @@ import {
   type BestBallDraftPick,
   type BestBallPosition,
   type BestBallRosterAnalysis,
+  getRosterSearchSpace,
 } from "@/lib/bestBall";
 import {
   ADP_SIGNAL_THRESHOLD,
@@ -190,7 +191,14 @@ function baselineForPlayer(
   draft: { rounds: number; teams: number }
 ): PickBaseline | null {
   if (useSuperflexRank) {
-    return isFiniteNumber(player.superflexRank)
+    // A format rank is a board position, the same way a consensus rank is, so it
+    // only stands in for a pick number while the board still overlaps the draft.
+    // The superflex board runs past 800 while a 12-team 18-round room ends at 216,
+    // and pricing those deep ranks read ordinary late upside picks as maximally
+    // bad ones. The cutoff is the draft's own size rather than the redraft ECR
+    // constant, which would leave every round 13+ pick unscored.
+    const deepestPick = draft.rounds * draft.teams;
+    return isFiniteNumber(player.superflexRank) && player.superflexRank <= deepestPick
       ? {
           value: player.superflexRank,
           source: "format-rank",
@@ -819,12 +827,16 @@ export function calculateBestBallDraftValues({
     const teamPicks = picks.filter((pick) => pick.teamNumber === teamNumber);
     const analysis = analyzeBestBallRoster(teamPicks, week17Opponents, contestId);
     const counts = analysis.targets.counts;
+    // The adaptive targets widen their own bounds to whatever is already drafted,
+    // so using them here meant the out-of-range penalty could never fire; a six-QB
+    // build still scored 67. The contest's fixed search space is the real bound.
+    const searchSpace = getRosterSearchSpace(contestId);
     const ranges = Object.fromEntries(
       (Object.keys(analysis.targets.targets) as BestBallPosition[]).map((position) => [
         position,
         {
-          minimum: analysis.targets.targets[position].minimum,
-          maximum: analysis.targets.targets[position].maximum,
+          minimum: searchSpace[position].minimum,
+          maximum: searchSpace[position].maximum,
         },
       ])
     ) as PositionRange;

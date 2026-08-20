@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { fantasySnapshotRevision } from "@/data/fantasySnapshotRevision.generated";
 import { StructuredData } from "@/components/StructuredData";
 import { DraftTrackerClient } from "./draft-tracker-client";
 
@@ -8,7 +9,8 @@ export const metadata: Metadata = constructMetadata({
   description:
     "Manual fantasy football draft assistant with snake-order tracking, roster pressure, a room-relative Draft Outlook, and an expected return calculator.",
   canonicalUrl: "/fantasy-football/draft-tracker",
-  dateModified: "2026-08-02",
+  image: "/fantasy-football/draft-tracker/opengraph-image",
+  dateModified: fantasySnapshotRevision.slice(0, 10),
 });
 
 const breadcrumbs = [

@@ -117,6 +117,38 @@ describe("fantasy dialog focus traps", () => {
     expectImmediateBackwardWrap(screen.getByRole("dialog", { name: "First Back detail" }));
   });
 
+  it("keeps compare focus through a parent re-render that hands it a new onClose", () => {
+    // CompareTray passes an inline arrow and subscribes to the compare store, so
+    // every store write gave the modal a fresh onClose. Depending on it restarted
+    // the trap and threw focus back to the panel mid-interaction.
+    function CompareHarness() {
+      const [, forceRender] = useState(0);
+      return (
+        <>
+          <button type="button" onClick={() => forceRender((n) => n + 1)}>
+            Force parent render
+          </button>
+          <CompareModal
+            players={players}
+            onClose={() => undefined}
+            onRemove={() => undefined}
+          />
+        </>
+      );
+    }
+
+    render(<CompareHarness />);
+
+    const removeButtons = screen.getAllByRole("button", { name: /remove .* from compare/i });
+    const target = removeButtons[removeButtons.length - 1];
+    target.focus();
+    expect(target).toHaveFocus();
+
+    fireEvent.click(screen.getByRole("button", { name: "Force parent render" }));
+
+    expect(target).toHaveFocus();
+  });
+
   it("keeps note focus through store-driven parent renders and restores the opener on close", async () => {
     const user = userEvent.setup();
     render(<PlayerDetailHarness />);

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { StructuredData } from "@/components/StructuredData";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { fantasySnapshotRevision } from "@/data/fantasySnapshotRevision.generated";
 import { MockDraftClient } from "./mock-draft-client";
 
 export const metadata: Metadata = constructMetadata({
@@ -8,7 +9,8 @@ export const metadata: Metadata = constructMetadata({
   description:
     "Practice one-QB snake drafts against simulated opponents who pick from the published consensus board and market ADP, with visible source dates.",
   canonicalUrl: "/fantasy-football/mock-draft",
-  dateModified: "2026-08-18",
+  image: "/fantasy-football/mock-draft/opengraph-image",
+  dateModified: fantasySnapshotRevision.slice(0, 10),
 });
 
 const breadcrumbs = [

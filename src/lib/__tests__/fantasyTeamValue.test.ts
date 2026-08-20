@@ -430,6 +430,46 @@ describe("redraft Draft Outlook", () => {
 });
 
 describe("best ball Draft Outlook", () => {
+  it("penalizes a build that blows past the contest's position ceiling", () => {
+    // The search space caps QB at 3 for a standard contest. The adaptive targets
+    // used to widen their own bounds to whatever was drafted, so the out-of-range
+    // penalty never fired and a six-quarterback roster still scored in the 60s.
+    const sixQuarterbacks = Array.from({ length: 6 }, (_, index) => ({
+      pickNumber: index * 12 + 1,
+      round: index + 1,
+      teamNumber: 1,
+      player: player({ id: `qb-${index}`, position: "QB" as Position, rankEcr: index + 1 }),
+    }));
+    const balanced = [
+      { position: "RB" as Position },
+      { position: "RB" as Position },
+      { position: "WR" as Position },
+      { position: "WR" as Position },
+      { position: "WR" as Position },
+      { position: "TE" as Position },
+    ].map((entry, index) => ({
+      pickNumber: index * 12 + 1,
+      round: index + 1,
+      teamNumber: 2,
+      player: player({ id: `bal-${index}`, position: entry.position, rankEcr: index + 1 }),
+    }));
+
+    const reports = calculateBestBallDraftValues({
+      picks: [...sixQuarterbacks, ...balanced],
+      contestId: "bbm-vii",
+    });
+
+    const stacked = reports.find((report) => report.teamNumber === 1);
+    const sensible = reports.find((report) => report.teamNumber === 2);
+    const rosterScore = (report: typeof stacked) =>
+      report?.components.find((component) => component.id === "roster")?.score ?? 0;
+
+    // With the adaptive bounds the penalty never fired and this scored 38. The
+    // fixed ceiling drives it to the floor, well clear of the balanced build's 75.
+    expect(rosterScore(stacked)).toBeLessThanOrEqual(10);
+    expect(rosterScore(sensible)).toBeGreaterThan(50);
+  });
+
   it("keeps treating best-ball floor ADP as an undrafted placeholder", () => {
     const reports = calculateBestBallDraftValues({
       picks: [

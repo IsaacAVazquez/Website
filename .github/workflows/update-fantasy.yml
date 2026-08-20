@@ -46,6 +46,13 @@ jobs:
       # surface. Redraft builds first and hard-fails the job; best ball runs as a
       # soft lane and is reported by the terminal check near the end of this job.
       - name: Build fantasy snapshots
+        id: build_redraft
+        # Soft like every other lane gate. Left hard, a redraft build failure made
+        # the best ball step's implicit success() condition false and skipped it,
+        # which is the coupling the comment above says cannot happen. The redraft
+        # commit still requires verify_freshness and verify_quality to pass, and
+        # the terminal report step below turns the run red.
+        continue-on-error: true
         run: npm run update:fantasy:redraft
         env:
           # The official endpoint began returning a declared full board with
@@ -326,12 +333,14 @@ jobs:
       # skipping the other's commit above.
       - name: Report soft-lane failures
         if: >-
+          steps.build_redraft.outcome == 'failure' ||
           steps.verify_freshness.outcome == 'failure' ||
           steps.verify_quality.outcome == 'failure' ||
           steps.build_best_ball.outcome == 'failure' ||
           steps.verify_best_ball.outcome == 'failure' ||
           steps.adp_health.outputs.adp_dark == 'true'
         run: |
+          echo "redraft build:     ${{ steps.build_redraft.outcome }}"
           echo "redraft freshness: ${{ steps.verify_freshness.outcome }}"
           echo "redraft quality:   ${{ steps.verify_quality.outcome }}"
           echo "best ball build:   ${{ steps.build_best_ball.outcome }}"
@@ -389,7 +398,7 @@ jobs:
               `- Sustained 429s exceeded retry budget`,
               `- Quality gate caught a degraded snapshot (thin overall board or an empty/short position board)`,
               ``,
-              `Note: ADP fetch failures are non-fatal by design — they only surface as warnings, never as a failed run.`,
+              `Note: a failed ADP fetch is non-fatal and keeps the prior prices. A board that is stale past the age limit is different: it still commits the rankings, but it sets \`adp_dark\` and turns the run red.`,
               ``,
               `This issue will be updated if the next run also fails, and auto-closed on the first successful run.`
             ].join('\n');

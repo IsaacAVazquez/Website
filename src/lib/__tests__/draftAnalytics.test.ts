@@ -287,6 +287,21 @@ describe("getLiveDraftSignals", () => {
     // Far past the run window, the run is no longer "active".
     expect(getLiveDraftSignals(picks, 60).activeRun).toBeNull();
   });
+
+  it("reports the run still on the clock, not the earliest one that qualifies", () => {
+    // Two runs sit inside the window at pick 24: RB ended at 19, WR ended at 22.
+    // Sorted by startPick the RB run comes first, but the receiver run is live.
+    const picks = [
+      pick({ pickNumber: 15, round: 2, player: player({ id: "rb1", position: "RB" }) }),
+      pick({ pickNumber: 17, round: 2, player: player({ id: "rb2", position: "RB" }) }),
+      pick({ pickNumber: 19, round: 2, player: player({ id: "rb3", position: "RB" }) }),
+      pick({ pickNumber: 20, round: 2, player: player({ id: "wr1", position: "WR" }) }),
+      pick({ pickNumber: 21, round: 2, player: player({ id: "wr2", position: "WR" }) }),
+      pick({ pickNumber: 22, round: 2, player: player({ id: "wr3", position: "WR" }) }),
+    ];
+
+    expect(getLiveDraftSignals(picks, 24).activeRun?.position).toBe("WR");
+  });
 });
 
 describe("reconcileTeamRosters", () => {

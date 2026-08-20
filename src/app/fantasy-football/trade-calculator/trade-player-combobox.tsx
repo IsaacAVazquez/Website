@@ -171,6 +171,8 @@ export function TradePlayerCombobox({
                     <button
                       id={`${listboxId}-option-${index}`}
                       type="button"
+                      tabIndex={-1}
+
                       role="option"
                       aria-selected={active}
                       aria-disabled={excluded}

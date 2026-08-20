@@ -1,5 +1,6 @@
 import { StructuredData } from "@/components/StructuredData";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { fantasySnapshotRevision } from "@/data/fantasySnapshotRevision.generated";
 
 import { BestBallClient } from "./best-ball-client";
 import { normalizeBestBallState } from "./best-ball-state";
@@ -9,7 +10,8 @@ export const metadata = constructMetadata({
   description:
     "2026 best ball rankings, Underdog ADP, contest specific strategy, room-relative Draft Outlook, and expected return math for Best Ball Mania and related formats.",
   canonicalUrl: "/fantasy-football/best-ball",
-  dateModified: "2026-08-02",
+  image: "/fantasy-football/best-ball/opengraph-image",
+  dateModified: fantasySnapshotRevision.slice(0, 10),
 });
 
 interface BestBallPageProps {
@@ -44,7 +46,7 @@ export default async function BestBallPage({ searchParams }: BestBallPageProps) 
           description:
             "A sourced 2026 best ball rankings board with contest specific draft guidance and a manual draft tracker.",
           url: "/fantasy-football/best-ball",
-          dateModified: "2026-08-02",
+          dateModified: fantasySnapshotRevision.slice(0, 10),
           applicationCategory: "SportsApplication",
           operatingSystem: "Web browser",
           featureList: [
