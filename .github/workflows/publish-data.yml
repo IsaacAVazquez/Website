@@ -114,7 +114,12 @@ jobs:
 
       - name: Verify the homepage stylesheet resolves
         env:
-          PRODUCTION_URL: ${{ secrets.PRODUCTION_URL }}
+          # The Netlify origin rather than isaacvazquez.com. Cloudflare fronts
+          # the custom domain and answers 403 to requests from Actions runner
+          # IPs, so checking the public hostname here only ever measures the
+          # WAF. This subdomain serves the same production deploy straight from
+          # Netlify, which is the thing actually under test.
+          ORIGIN_URL: ${{ secrets.NETLIFY_ORIGIN_URL || 'https://isaacvazquez.netlify.app' }}
         run: |
           # The ledger check above passes on a broken publish, because
           # /api/data-revisions is served by the Next.js function whether or not
@@ -122,15 +127,20 @@ jobs:
           # reported success while serving an unstyled site. The ledger step has
           # already waited for production to serve this deploy, so the homepage
           # fetched here is the one that just shipped.
-          site="${PRODUCTION_URL:-https://isaacvazquez.com}"
-          css=$(curl -sS --fail "$site/" | grep -oE '/_next/static/css/[^"]+\.css' | head -1)
-          if [ -z "$css" ]; then
-            echo "::error::No stylesheet link found in the production homepage."
+          home=$(curl -sS -w '\n%{http_code}' "$ORIGIN_URL/")
+          code=$(printf '%s' "$home" | tail -1)
+          if [ "$code" != "200" ]; then
+            echo "::error::$ORIGIN_URL/ returned HTTP $code, so the deploy could not be checked."
             exit 1
           fi
-          code=$(curl -sS -o /dev/null -w '%{http_code}' "$site$css")
+          css=$(printf '%s' "$home" | grep -oE '/_next/static/css/[^"]+\.css' | head -1)
+          if [ -z "$css" ]; then
+            echo "::error::No stylesheet link found in the homepage served by $ORIGIN_URL."
+            exit 1
+          fi
+          code=$(curl -sS -o /dev/null -w '%{http_code}' "$ORIGIN_URL$css")
           if [ "$code" != "200" ]; then
-            echo "::error::Production stylesheet $css returned HTTP $code. The deploy most likely published the raw .next directory instead of the plugin's static output."
+            echo "::error::Stylesheet $css returned HTTP $code. The deploy most likely published the raw .next directory instead of the plugin's static output."
             exit 1
           fi
           echo "Stylesheet $css served with HTTP $code."
