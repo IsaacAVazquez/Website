@@ -143,6 +143,26 @@ export const ADP_SIGNAL_MIN_TIMES_DRAFTED = 20;
 /** Even stable sources move several picks between rooms, so smaller gaps remain noise. */
 const ADP_SIGNAL_MIN_UNCERTAINTY_THRESHOLD = 6;
 
+/**
+ * The deepest consensus rank an ADP reading can still be compared against. ADP
+ * is a pick number in a 12-team mock draft, so it stops around 190, while the
+ * consensus board ranks 500+ players. Past this line `adp - rank` measures how
+ * long the draft is rather than what the market thinks: in the 2026-08-16 PPR
+ * snapshot the median gap sits near zero through rank 150, then falls to -21
+ * across 151-200 and -147 past 250, purely because the market has no later pick
+ * to spend. Matches ECR_BASELINE_MAX_RANK in draftAnalytics, which draws the
+ * same line for the same reason.
+ */
+export const ADP_COMPARABLE_MAX_RANK = 150;
+
+/**
+ * Positions the consensus board and the draft market do not put on one scale.
+ * FantasyPros ranks every kicker and defense below the last bench flex while
+ * real rooms spend their final two rounds on them, so the gap runs -30 to -77
+ * across the whole group and says nothing about any single player.
+ */
+const ADP_INCOMPARABLE_POSITIONS: ReadonlySet<string> = new Set(["K", "DST"]);
+
 function finiteNonNegative(value: unknown): number | null {
   return typeof value === "number" && Number.isFinite(value) && value >= 0 ? value : null;
 }
@@ -260,6 +280,10 @@ export function getAdpSignalThreshold(player: Player): number {
  * the overall or flex boards; on a position board `rankEcr` is the position rank
  * (e.g. QB9) and the result is meaningless. Callers gate on the board scale (see
  * the `valueSignalAvailable` prop threaded to the board, drawer, and compare).
+ *
+ * The two scales only overlap through ADP_COMPARABLE_MAX_RANK, and kickers and
+ * defenses never share a scale with the market at all, so both cases return
+ * null rather than a censored gap.
  */
 export function getValueVsAdp(
   player: Player
@@ -275,7 +299,13 @@ export function getValueVsAdp(
     return null;
   }
 
-  const delta = Math.round((player.adp as number) - rank);
+  // Both readings have to sit inside the range where the two boards overlap,
+  // or the gap is an artifact of the draft's length instead of a market read.
+  if (rank > ADP_COMPARABLE_MAX_RANK || ADP_INCOMPARABLE_POSITIONS.has(player.position)) {
+    return null;
+  }
+
+  const delta = (player.adp as number) - rank;
   if (!hasReliableAdpSample(player)) {
     return { delta, signal: null };
   }
@@ -287,15 +317,58 @@ export function getValueVsAdp(
 }
 
 /**
+ * Signed pick gap at the one-decimal precision the ADP column already uses.
+ * ADP is a fractional pick number while the consensus rank is a whole slot, so
+ * rounding the difference to an integer turns a half-pick gap into a full pick:
+ * Jahmyr Gibbs at ADP 1.5 and ECR 1 read "+1" on the 2026-08-16 half PPR board.
+ */
+export function formatPickDelta(delta: number): string {
+  const magnitude = Math.round(Math.abs(delta) * 10) / 10;
+  if (magnitude === 0) {
+    return "0";
+  }
+  return `${delta > 0 ? "+" : "\u2212"}${magnitude}`;
+}
+
+/**
  * Hover copy for the green "Value" chip. Explains the ADP-vs-consensus gap in
  * plain language so a drafter does not have to infer what the chip means.
  */
 export const FANTASY_VALUE_TOOLTIP =
-  "Value is his ADP minus his consensus rank, the number on the left of the row. A positive figure means drafters take him that many slots later than the experts rank him. The label appears only after at least 20 mock selections and when the gap clears the published ADP and expert spread. It compares ADP with consensus rank, not the Avg shown beside it.";
+  "Value is his ADP minus his consensus rank, the number on the left of the row. A positive figure means drafters take him that many slots later than the experts rank him. The label appears only after at least 20 mock selections, only for players ranked inside the top 150 where a 12-team draft board and the consensus board still cover the same players, and only when the gap clears the published ADP and expert spread. It compares ADP with consensus rank, not the Avg shown beside it.";
 
 /** Hover copy for the amber "Reach" chip, the mirror of FANTASY_VALUE_TOOLTIP. */
 export const FANTASY_REACH_TOOLTIP =
-  "Reach is his ADP minus his consensus rank, the number on the left of the row, and here it comes out negative. Drafters take him that many slots earlier than the experts rank him. The label appears only after at least 20 mock selections and when the gap clears the published ADP and expert spread. It compares ADP with consensus rank, not the Avg shown beside it.";
+  "Reach is his ADP minus his consensus rank, the number on the left of the row, and here it comes out negative. Drafters take him that many slots earlier than the experts rank him. The label appears only after at least 20 mock selections, only for players ranked inside the top 150 where a 12-team draft board and the consensus board still cover the same players, and only when the gap clears the published ADP and expert spread. It compares ADP with consensus rank, not the Avg shown beside it.";
+
+/**
+ * Hover copy for the expert low-to-high band. Shared by the rankings board and
+ * the player drawer so the width of the bar means the same thing on both.
+ */
+export const FANTASY_EXPERT_SPREAD_TOOLTIP =
+  "The best and worst rank any contributing expert gave this player. A wider band means the experts disagree more about him, so the consensus rank is a weaker guide on its own.";
+
+/**
+ * Hover copy for the "vs ADP" cell. The board also has narrower variants for
+ * the unjudged and position-board cases; this is the general reading.
+ */
+export const FANTASY_VS_ADP_TOOLTIP =
+  "Market ADP minus the consensus rank. A positive number means drafters let him fall past where the experts rank him, and a negative number means they take him earlier. It only appears through the top 150, because a 12-team draft runs out of picks around 190 while the consensus board ranks 500+ players, and kickers and defenses are left out because the consensus board ranks them well below where any room takes them. It is colored only when the gap clears the noise threshold for his ADP sample.";
+
+/**
+ * Hover copy for the "Player" column header on the rankings board. The cell
+ * carries more than a name, so the header says what else is in it.
+ */
+export const FANTASY_PLAYER_COLUMN_TOOLTIP =
+  "The player, his team, and his rank within his own position, plus a Value or Reach label when the market and the experts disagree by enough to be worth a look. Click any row for the full detail panel.";
+
+/**
+ * Hover copy for the points-per-game panel. The panel is prior-season history
+ * rather than a projection, and the copy has to say so, because a scoring
+ * average sitting next to draft ranks reads as a forecast otherwise.
+ */
+export const FANTASY_POINTS_PER_GAME_TOOLTIP =
+  "Fantasy points per game from the prior completed regular season, scored in the format you have selected. It is what he did, not a projection of what he will do, and it appears only for players with at least four games that season.";
 
 type FantasyAdpFreshness = "current" | "prior-season" | "stale";
 

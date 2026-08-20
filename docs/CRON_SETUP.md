@@ -2,7 +2,7 @@
 
 Current reference for how scheduled data refreshes work across the site.
 
-**Last updated:** 2026-07-10
+**Last updated:** 2026-08-19
 
 ---
 
@@ -11,9 +11,11 @@ Current reference for how scheduled data refreshes work across the site.
 There are two complementary mechanisms keeping live data current:
 
 1. **GitHub Actions workflows** — refresh per-domain snapshots on a cron, then commit the regenerated files back to `main`. Each workflow is scoped to one data surface and re-runs the matching `npm run update:*` script.
-2. **Netlify build hook + cron-job.org** — a daily HTTP ping triggers a production deploy of the latest committed snapshots. Builds do not fetch or mutate data.
+2. `publish-data.yml` — batches publication four times a day, builds the site in GitHub Actions, and uploads it to Netlify. Builds do not fetch or mutate data.
 
-The retired `netlify/functions/scheduled-fantasy-update.ts` Netlify scheduled function has been deleted. All scheduled refreshes now flow through GitHub Actions or the build hook.
+The retired `netlify/functions/scheduled-fantasy-update.ts` Netlify scheduled function has been deleted. All scheduled refreshes now flow through GitHub Actions.
+
+The per-workflow cron table below predates the seasonal schedules several refreshes now use. `.github/workflows/update-*.yml` is the authority when the two disagree.
 
 ---
 
@@ -40,11 +42,14 @@ Snapshots that do **not** have a dedicated workflow, such as the manually mainta
 
 ---
 
-## Netlify build hook (daily publication)
+## Publication (`publish-data.yml`)
 
-- Build hook URL is configured in **Netlify → Site configuration → Build hooks**.
-- A scheduled job on **cron-job.org** sends a `POST` to that URL daily.
-- Each ping triggers a Netlify deploy of the latest committed snapshots. The build itself does not call football-data.org.
+- Runs at 01:15, 07:15, 13:15, and 19:15 UTC, on every push to `main` that is not marked `[skip ci]`, and on `workflow_dispatch`. Refresh commits carry `[skip ci]`, so they accumulate until the next scheduled run rather than each triggering a deploy.
+- It builds the site with `netlify build` inside GitHub Actions and uploads the result with `netlify deploy --prod --no-build`. The build itself does not call football-data.org.
+- The build runs in Actions rather than on Netlify because the account is on the free tier with 300 build minutes a month. It ran out on 2026-08-06 with the limit enforced, every git-triggered build after that returned "Skipped due to account builds usage exceeded", and committed data stopped reaching production for close to two weeks. A prebuilt upload does not consume build minutes, and Actions minutes are free on a public repository.
+- `scripts/ci/netlify-ignore.sh` is wired in as the `ignore` command in `netlify.toml`. It cancels Netlify's own builds of `main`, which would otherwise duplicate every deploy, and of dependabot branches, whose previews are what exhausted the quota. Human pull requests still get a deploy preview.
+- Publication needs the `NETLIFY_AUTH_TOKEN` repository secret. The site ID is set in the workflow and is an identifier rather than a credential.
+- The older lane pinged a Netlify build hook from cron-job.org. Nothing in the repository depends on it any more, so that job and the `NETLIFY_BUILD_HOOK` secret can be retired once the Actions lane has run cleanly.
 - Premier League and La Liga data refresh through their dedicated GitHub Actions workflows or explicit local update commands.
 - Per-team snapshots (sidebar fixtures, form strip) refresh when a full league update runs and the resulting snapshots are committed.
 

@@ -1,6 +1,9 @@
 [build]
   command = "npm run build && rm -rf .next/standalone/*/public/data node_modules/@img node_modules/sharp"
   publish = ".next"
+  # Decides which git-triggered builds Netlify runs at all. Production and
+  # dependabot previews are skipped; see the script for why.
+  ignore = "sh scripts/ci/netlify-ignore.sh"
   
 [build.environment]
   SECRETS_SCAN_OMIT_PATHS = ".netlify/deploy/v1/blobs/**,.netlify/edge-functions/**,.netlify/functions-internal/**,.next/**"

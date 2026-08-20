@@ -14,9 +14,9 @@ const requestTimeoutMs = Number.parseInt(
 );
 const commitPattern = /^[a-f0-9]{40}$/;
 
-if (!expectedRevision || !revisionEndpoint || !buildHook) {
+if (!expectedRevision || !revisionEndpoint) {
   console.error(
-    "Usage: ensure-production-data-ledger.mjs <expected-revision> <revision-endpoint> <build-hook> [expected-commit]"
+    "Usage: ensure-production-data-ledger.mjs <expected-revision> <revision-endpoint> [build-hook] [expected-commit]"
   );
   process.exit(2);
 }
@@ -154,17 +154,27 @@ async function main() {
     return;
   }
 
-  const hookResponse = await fetch(buildHook, {
-    method: "POST",
-    signal: AbortSignal.timeout(requestTimeoutMs),
-    headers: { "Content-Type": "application/json" },
-    body: "{}",
-  });
-  if (!hookResponse.ok) {
-    throw new Error(`Netlify build hook failed with HTTP ${hookResponse.status}.`);
+  // The hook is optional because the caller may have published the deploy
+  // itself, which is what publish-data.yml now does: it builds in GitHub Actions
+  // and uploads with `netlify deploy --no-build`, so publication never draws on
+  // Netlify's 300 monthly build minutes. With no hook there is nothing left to
+  // trigger, only to confirm.
+  if (buildHook) {
+    const hookResponse = await fetch(buildHook, {
+      method: "POST",
+      signal: AbortSignal.timeout(requestTimeoutMs),
+      headers: { "Content-Type": "application/json" },
+      body: "{}",
+    });
+    if (!hookResponse.ok) {
+      throw new Error(
+        `Netlify build hook failed with HTTP ${hookResponse.status}.`
+      );
+    }
+    console.log(`Build hook accepted. Waiting for ledger ${expectedRevision}.`);
+  } else {
+    console.log(`Deploy already published. Confirming ledger ${expectedRevision}.`);
   }
-
-  console.log(`Build hook accepted. Waiting for ledger ${expectedRevision}.`);
   for (let attempt = 1; attempt <= pollAttempts; attempt += 1) {
     await wait(pollIntervalMs);
     const current = await readProductionLedger();

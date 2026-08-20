@@ -23,8 +23,16 @@ import {
   FantasyRouteScoring,
   getFantasyPlayerSearchText,
 } from "@/lib/fantasy";
+import { MetricTooltip } from "@/components/investments/MetricTooltip";
 import {
   FANTASY_ADP_TOOLTIP,
+  FANTASY_AVG_RANK_TOOLTIP,
+  FANTASY_EXPERT_SPREAD_TOOLTIP,
+  FANTASY_POINTS_PER_GAME_TOOLTIP,
+  FANTASY_REACH_TOOLTIP,
+  FANTASY_VALUE_TOOLTIP,
+  FANTASY_VS_ADP_TOOLTIP,
+  FANTASY_PLAYER_COLUMN_TOOLTIP,
   formatAdp,
   formatRankValue,
   getConsensusSpread,
@@ -34,6 +42,7 @@ import {
   getSnapshotStalenessLabel,
   getTierRailIntensity,
   getValueVsAdp,
+  formatPickDelta,
   hasReliableAdpSample,
   withTierBreaks,
   type FantasySnapshotStaleness,
@@ -61,6 +70,14 @@ const MONO_LABEL_CLASS = "font-mono text-3xs uppercase tracking-[0.12em]";
 /** Square-cornered mono chip from the template header (distinct from the shared pill chip). */
 const HEADER_CHIP_CLASS =
   "inline-flex items-center whitespace-nowrap rounded-[2px] border px-2 py-1 font-mono text-3xs uppercase tracking-[0.08em]";
+
+/** The other fantasy surfaces; the tiers routes only redirect back here, so they are not listed. */
+const FANTASY_TOOLS = [
+  { href: "/fantasy-football/draft-tracker", label: "Draft tracker" },
+  { href: "/fantasy-football/mock-draft", label: "Mock draft" },
+  { href: "/fantasy-football/best-ball", label: "Best ball" },
+  { href: "/fantasy-football/trade-calculator", label: "Trade calculator" },
+];
 
 const subscribeToHydration = () => () => undefined;
 const getHydratedSnapshot = () => true;
@@ -141,7 +158,7 @@ function formatExpertRange(player: Player): string {
 function describeVsAdp(player: Player): { text: string; color: string; judged: boolean } | null {
   const value = getValueVsAdp(player);
   if (!value) return null;
-  const text = `${value.delta >= 0 ? "+" : "−"}${Math.abs(value.delta)}`;
+  const text = formatPickDelta(value.delta);
   const color =
     value.signal === "value"
       ? "var(--home-positive)"
@@ -149,6 +166,41 @@ function describeVsAdp(player: Player): { text: string; color: string; judged: b
         ? "var(--home-negative)"
         : "var(--home-ink-muted)";
   return { text, color, judged: hasReliableAdpSample(player) };
+}
+
+/**
+ * The named Value/Reach label. The "vs ADP" column carries the same gap as a
+ * signed number, but the word is what a drafter scans for, so the chip renders
+ * beside the player name whenever the gate actually fires. Callers gate on the
+ * overall or flex board, because `rankEcr` is a position rank anywhere else and
+ * the comparison with an overall ADP would be meaningless.
+ */
+function ValueReachChip({ player }: { player: Player }) {
+  const value = getValueVsAdp(player);
+  if (!value?.signal) return null;
+
+  const isValue = value.signal === "value";
+  return (
+    <span
+      className="inline-flex shrink-0 items-center rounded-[2px] border px-1.5 py-0.5 font-mono text-3xs uppercase tracking-[0.06em]"
+      title={isValue ? FANTASY_VALUE_TOOLTIP : FANTASY_REACH_TOOLTIP}
+      style={
+        isValue
+          ? {
+              borderColor: "color-mix(in srgb, var(--home-positive) 32%, var(--home-rule))",
+              background: "color-mix(in srgb, var(--home-positive) 12%, var(--home-paper))",
+              color: "var(--home-ink)",
+            }
+          : {
+              borderColor: "color-mix(in srgb, var(--home-warning) 34%, var(--home-rule))",
+              background: "color-mix(in srgb, var(--home-warning) 14%, var(--home-paper))",
+              color: "var(--home-ink)",
+            }
+      }
+    >
+      {isValue ? "Value" : "Reach"} {formatPickDelta(value.delta)}
+    </span>
+  );
 }
 
 /** The template's scoring switch: a fused button box rather than separate pills. */
@@ -371,13 +423,13 @@ function DraftPlayerDrawer({
         }
       : value.signal === "value"
         ? {
-            text: `Rooms take him about ${Math.abs(value.delta)} picks after the consensus rank. Value if he lasts to your pick.`,
+            text: `Rooms take him about ${Math.round(Math.abs(value.delta))} picks after the consensus rank. Value if he lasts to your pick.`,
             color: "var(--home-positive)",
             background: "color-mix(in srgb, var(--home-positive) 7%, transparent)",
           }
         : value.signal === "reach"
           ? {
-              text: `Rooms take him about ${Math.abs(value.delta)} picks before the consensus rank. Plan the reach or let him go.`,
+              text: `Rooms take him about ${Math.round(Math.abs(value.delta))} picks before the consensus rank. Plan the reach or let him go.`,
               color: "var(--home-negative)",
               background: "color-mix(in srgb, var(--home-negative) 6%, transparent)",
             }
@@ -463,12 +515,27 @@ function DraftPlayerDrawer({
         </div>
 
         <div className="grid grid-cols-2 gap-2">
-          <DrawerStat label="Consensus avg" value={formatAvg(player)} />
-          <DrawerStat label="Expert range" value={formatExpertRange(player)} />
+          <DrawerStat label="Consensus avg" value={formatAvg(player)} title={FANTASY_AVG_RANK_TOOLTIP} />
+          <DrawerStat
+            label="Expert range"
+            value={formatExpertRange(player)}
+            title={FANTASY_EXPERT_SPREAD_TOOLTIP}
+          />
           {adpAvailable && Number.isFinite(player.adp) && (
             <DrawerStat label="Market ADP" value={formatAdp(player.adp)} title={FANTASY_ADP_TOOLTIP} />
           )}
-          {vsAdp && <DrawerStat label="vs ADP" value={vsAdp.text} valueColor={vsAdp.color} />}
+          {vsAdp && (
+            <DrawerStat
+              label="vs ADP"
+              value={vsAdp.text}
+              valueColor={vsAdp.color}
+              title={
+                vsAdp.judged
+                  ? FANTASY_VS_ADP_TOOLTIP
+                  : "Early mock-draft sample, so the gap carries no value or reach read yet"
+              }
+            />
+          )}
         </div>
 
         {verdict && (
@@ -483,8 +550,12 @@ function DraftPlayerDrawer({
         {lo !== null && hi !== null && (
           <div>
             <div className="flex items-baseline justify-between gap-2.5">
-              <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+              <span
+                className={`${MONO_LABEL_CLASS} inline-flex items-center`}
+                style={{ color: "var(--home-ink-muted)" }}
+              >
                 Expert spread
+                <MetricTooltip term="Expert spread" definition={FANTASY_EXPERT_SPREAD_TOOLTIP} />
               </span>
               {spread && (
                 <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
@@ -518,8 +589,15 @@ function DraftPlayerDrawer({
         {gameLog && (
           <div>
             <div className="flex items-baseline justify-between gap-2.5">
-              <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+              <span
+                className={`${MONO_LABEL_CLASS} inline-flex items-center`}
+                style={{ color: "var(--home-ink-muted)" }}
+              >
                 Points per game
+                <MetricTooltip
+                  term="Points per game"
+                  definition={FANTASY_POINTS_PER_GAME_TOOLTIP}
+                />
               </span>
               <span
                 className="font-mono text-3xs uppercase tracking-[0.1em]"
@@ -934,13 +1012,13 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
           : `${filteredPlayers.length} of ${players.length} shown`;
 
   const metricColumns: { label: string; className: string; title?: string }[] = [
-    { label: "Expert spread", className: "w-[120px]" },
-    { label: "Range", className: "w-16 text-right" },
-    { label: "Avg", className: "w-12 text-right" },
+    { label: "Expert spread", className: "w-[120px]", title: FANTASY_EXPERT_SPREAD_TOOLTIP },
+    { label: "Range", className: "w-16 text-right", title: FANTASY_EXPERT_SPREAD_TOOLTIP },
+    { label: "Avg", className: "w-12 text-right", title: FANTASY_AVG_RANK_TOOLTIP },
     ...(adpAvailable
       ? [
           { label: "ADP", className: "w-12 text-right", title: FANTASY_ADP_TOOLTIP },
-          { label: "vs ADP", className: "w-16 text-right" },
+          { label: "vs ADP", className: "w-16 text-right", title: FANTASY_VS_ADP_TOOLTIP },
         ]
       : []),
   ];
@@ -1054,19 +1132,20 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                         {player.team}
                         {player.byeWeek ? ` · Bye ${player.byeWeek}` : ""}
                       </span>
+                      {adpAvailable && vsAdpMeaningful && <ValueReachChip player={player} />}
                     </span>
                     <span className="flex max-w-full flex-wrap items-center gap-x-4 gap-y-1">
                       <ExpertSpreadBar player={player} scale={boardScale} />
                       <span className="sr-only">Expert range</span>
                       <span
                         className="w-16 text-right font-mono text-xs"
-                        title="Expert low–high range"
+                        title={FANTASY_EXPERT_SPREAD_TOOLTIP}
                         style={{ color: "var(--home-ink-muted)" }}
                       >
                         {formatExpertRange(player)}
                       </span>
                       <span className="sr-only">Consensus average</span>
-                      <span className="w-12 text-right font-mono text-xs font-medium" title="Consensus average rank">
+                      <span className="w-12 text-right font-mono text-xs font-medium" title={FANTASY_AVG_RANK_TOOLTIP}>
                         {formatAvg(player)}
                       </span>
                       {adpAvailable && (
@@ -1087,7 +1166,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                                 ? "ADP deltas compare to overall rank, so position boards do not get one"
                                 : vsAdp && !vsAdp.judged
                                   ? "Early mock-draft sample, so the gap carries no value or reach read yet"
-                                  : "ADP minus consensus rank; colored when the gap clears the noise threshold"
+                                  : FANTASY_VS_ADP_TOOLTIP
                             }
                             style={{ color: vsAdp ? vsAdp.color : "var(--home-ink-muted)" }}
                           >
@@ -1148,6 +1227,27 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
           ))}
         </div>
       </header>
+
+      <nav
+        aria-label="Fantasy tools"
+        className={`${SHELL_CLASS} flex flex-wrap items-center gap-1.5 pb-4`}
+      >
+        {FANTASY_TOOLS.map((tool) => (
+          <Link
+            key={tool.href}
+            href={tool.href}
+            className={`${HEADER_CHIP_CLASS} min-h-touch no-underline`}
+            style={{
+              borderColor: "var(--home-rule)",
+              background: "var(--home-paper-alt)",
+              color: "var(--home-ink)",
+            }}
+          >
+            {tool.label}
+            <span aria-hidden="true">&nbsp;↗</span>
+          </Link>
+        ))}
+      </nav>
 
       <div
         data-testid="fantasy-board-controls"
@@ -1306,11 +1406,21 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
               style={{ color: "var(--home-ink-muted)" }}
             >
               <span className="w-[34px] shrink-0" />
-              <span className="min-w-0 flex-[1_1_200px]">Player</span>
+              <span className="min-w-0 flex-[1_1_200px]">
+                <MetricTooltip term="Player" definition={FANTASY_PLAYER_COLUMN_TOOLTIP}>
+                  Player
+                </MetricTooltip>
+              </span>
               <span className="flex shrink-0 items-center gap-4">
                 {metricColumns.map((column) => (
-                  <span key={column.label} className={column.className} title={column.title}>
-                    {column.label}
+                  <span key={column.label} className={column.className}>
+                    {column.title ? (
+                      <MetricTooltip term={column.label} definition={column.title}>
+                        {column.label}
+                      </MetricTooltip>
+                    ) : (
+                      column.label
+                    )}
                   </span>
                 ))}
               </span>
@@ -1347,13 +1457,8 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
               ? `Refreshes daily through draft season, weekly after${snapshotStamp ? ` · snapshot ${snapshotStamp}` : ""}`
               : `${getSnapshotStalenessLabel(sourceStaleness)} board · source updated ${sourceStamp ?? "date unknown"}`}
           </span>
-          <nav aria-label="Fantasy tools" className="flex flex-wrap gap-x-5 gap-y-2">
-            {[
-              { href: "/fantasy-football/draft-tracker", label: "Open the draft tracker" },
-              { href: "/fantasy-football/mock-draft", label: "Practice a mock draft" },
-              { href: "/fantasy-football/best-ball", label: "Best ball tools" },
-              { href: "/fantasy-football/trade-calculator", label: "Trade calculator" },
-            ].map((tool) => (
+          <nav aria-label="More fantasy tools" className="flex flex-wrap gap-x-5 gap-y-2">
+            {FANTASY_TOOLS.map((tool) => (
               <Link
                 key={tool.href}
                 href={tool.href}

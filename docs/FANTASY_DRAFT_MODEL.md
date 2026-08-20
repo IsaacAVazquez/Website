@@ -34,7 +34,7 @@ Exact means the tracker may show player-specific next-pick cards when the requir
 | Published rank | FantasyPros expert consensus rank, or ECR | A sourced ordinal board, not equal units of player value |
 | Avg | Arithmetic mean of the contributing expert ranks | The center of the expert rank distribution, separate from ECR |
 | ADP | Average overall pick from the attributed draft source | A market price for the source format and slate |
-| Value or Reach | ADP minus ECR after sample and variation checks | A prompt to inspect a market disagreement, not an automatic pick |
+| Value or Reach | ADP minus ECR inside the top 150, after sample and variation checks | A prompt to inspect a market disagreement, not an automatic pick |
 | Pick delta | Actual pick minus the usable pick baseline | Positive means the player lasted later than the baseline |
 | Roster strength | Configured starting slots and planned depth that are covered | Structure only, with no claim about player quality beyond the market component |
 | Draft Outlook | Weighted, room-relative draft process score | An ordinal comparison inside this room at equal draft progress |
@@ -43,6 +43,18 @@ Exact means the tracker may show player-specific next-pick cards when the requir
 [FantasyPros describes its rank-point ECR calculation](https://support.fantasypros.com/hc/en-us/articles/115001219327-What-is-ECR-Expert-Consensus-Rankings-and-how-do-you-calculate-it). That distinction is why `rankEcr` and `rankAverage` remain separate fields. The rank range chart now marks `rankAverage`; the prior chart marked ECR while labeling it Avg. In the August 9 PPR snapshot, 513 of 515 players have different ECR and mean ranks. The median absolute difference is 1.4 spots through ECR 150, but it grows in the sparse tail, where fewer experts rank every player.
 
 [FantasyPros' draft accuracy method maps rank slots to historical fantasy point values](https://www.fantasypros.com/about/faq/football-draft-accuracy-methodology/). A rank is therefore ordinal, and the distance from rank 1 to 2 does not carry the same football value as the distance from rank 101 to 102.
+
+### What the gap cannot say at the very top of the board
+
+ADP is a fractional pick number and the consensus rank is a whole slot, so the column reports the gap to one decimal, the same precision the ADP column already uses. Rounding it to a whole pick made a half-pick difference look like a full one, which is how Jahmyr Gibbs at ECR 1 and ADP 1.5 came out as "+1" on the 2026-08-16 half PPR board when the real gap is half a pick.
+
+The top few rows also have a floor the rest of the board does not. No pick is earlier than 1.0, so the player at ECR 1 can only ever show a gap of zero or better, the player at ECR 2 can never show worse than -1, and so on. Any small positive gap in the first handful of rows is partly that boundary rather than a market read, which is one more reason the value and reach labels need a gap of at least six picks before they appear.
+
+### Why the ADP gap stops at rank 150
+
+ADP is a pick number in a 12-team draft, so it runs out around pick 190, while the consensus board ranks more than 500 players. Past the top 150 the gap between the two stops measuring the market and starts measuring the length of the draft. In the 2026-08-16 PPR snapshot the median gap sits within about a pick of zero through rank 150, then falls to roughly -13 across ranks 151 to 200 and to -108 past rank 250, and the same shape holds in half PPR and standard. Part of that is the draft simply ending, and part of it is a selection effect, because a deep player only appears in the ADP feed at all if somebody drafted him, so the deep players who have a reading are exactly the ones taken earlier than their rank. Both effects push the number negative for reasons that have nothing to do with the player, so the board leaves the cell blank rather than publishing a reach that is really an artifact. It is the same line the pick baseline already draws for the draft tracker.
+
+Kickers and defenses are left out for a separate reason. FantasyPros ranks the best defense around 158 and the best kicker around 182 on the overall board, below the last bench flex, while real rooms spend their final two rounds on them, so every one of them showed a 30 to 77 pick reach that said nothing about any individual player. Their position boards still rank them against each other, which is the comparison that actually holds.
 
 ## Data and source checks
 

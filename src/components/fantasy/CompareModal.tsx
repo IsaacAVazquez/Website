@@ -5,6 +5,8 @@ import { Check, X } from "lucide-react";
 import { useEffect, useRef } from "react";
 
 import {
+  FANTASY_REACH_TOOLTIP,
+  FANTASY_VALUE_TOOLTIP,
   formatAdp,
   formatOwnership,
   formatRankValue,
@@ -128,6 +130,7 @@ export function CompareModal({
             {signal?.signal && (
               <span
                 className="rounded-full px-1.5 py-0.5 text-3xs font-semibold uppercase"
+                title={signal.signal === "value" ? FANTASY_VALUE_TOOLTIP : FANTASY_REACH_TOOLTIP}
                 style={{
                   background:
                     signal.signal === "value"

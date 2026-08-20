@@ -52,6 +52,13 @@ interface Props {
   term: string;
   definition?: string;
   /**
+   * Renders this as the hover trigger instead of the "?" chip, for headers and
+   * labels where an icon would crowd the row. A text trigger is hover-only and
+   * not focusable, so it stays valid inside a decorative `aria-hidden` header
+   * whose per-row cells already carry the same wording for screen readers.
+   */
+  children?: React.ReactNode;
+  /**
    * @deprecated Positioning is now automatic and viewport-aware — the bubble
    * renders in a body-level portal, centers on the trigger, clamps to the
    * viewport, and flips above/below based on available room. Kept only so
@@ -82,10 +89,10 @@ interface BubblePosition {
  * where the trigger sits — near a screen edge, deep in a scroll container, or
  * inside a transformed row.
  */
-export function MetricTooltip({ term, definition }: Props) {
+export function MetricTooltip({ term, definition, children }: Props) {
   const text = definition ?? METRIC_DEFINITIONS[term];
 
-  const triggerRef = React.useRef<HTMLButtonElement>(null);
+  const triggerRef = React.useRef<HTMLElement | null>(null);
   const bubbleRef = React.useRef<HTMLSpanElement>(null);
   const [hovered, setHovered] = React.useState(false);
   const [focused, setFocused] = React.useState(false);
@@ -143,39 +150,9 @@ export function MetricTooltip({ term, definition }: Props) {
   // stopped from bubbling to that parent.
   const swallow = (event: { stopPropagation: () => void }) => event.stopPropagation();
 
-  return (
-    <span className="relative ml-0.5 inline-flex h-4 w-4 items-center align-middle">
-      <button
-        ref={triggerRef}
-        type="button"
-        aria-label={`What is ${term}?`}
-        aria-describedby={open ? bubbleId : undefined}
-        onClick={swallow}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => {
-          setHovered(false);
-          if (!focused) setPos(null);
-        }}
-        onFocus={() => setFocused(true)}
-        onBlur={() => {
-          setFocused(false);
-          if (!hovered) setPos(null);
-        }}
-        onKeyDown={(event) => {
-          swallow(event);
-          if (event.key === "Escape") {
-            triggerRef.current?.blur();
-          }
-        }}
-        className="pointer-events-auto absolute left-1/2 top-1/2 flex min-h-touch min-w-touch -translate-x-1/2 -translate-y-1/2 cursor-help items-center justify-center rounded-full outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-ink)]"
-      >
-        <span className="flex h-4 w-4 items-center justify-center rounded-full bg-[var(--home-paper-alt)] text-3xs font-bold leading-none text-[var(--home-ink-muted)] ring-1 ring-[var(--home-rule)]">
-          ?
-        </span>
-      </button>
-      {portalTarget &&
-        open &&
-        createPortal(
+  const bubble =
+    portalTarget && open
+      ? createPortal(
           <span
             ref={bubbleRef}
             role="tooltip"
@@ -208,7 +185,63 @@ export function MetricTooltip({ term, definition }: Props) {
             )}
           </span>,
           portalTarget
-        )}
+        )
+      : null;
+
+  if (children !== undefined) {
+    return (
+      <>
+        <span
+          ref={(element) => {
+            triggerRef.current = element;
+          }}
+          className="cursor-help underline decoration-dotted decoration-from-font underline-offset-[3px]"
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => {
+            setHovered(false);
+            setPos(null);
+          }}
+        >
+          {children}
+        </span>
+        {bubble}
+      </>
+    );
+  }
+
+  return (
+    <span className="relative ml-0.5 inline-flex h-4 w-4 items-center align-middle">
+      <button
+        ref={(element) => {
+          triggerRef.current = element;
+        }}
+        type="button"
+        aria-label={`What is ${term}?`}
+        aria-describedby={open ? bubbleId : undefined}
+        onClick={swallow}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => {
+          setHovered(false);
+          if (!focused) setPos(null);
+        }}
+        onFocus={() => setFocused(true)}
+        onBlur={() => {
+          setFocused(false);
+          if (!hovered) setPos(null);
+        }}
+        onKeyDown={(event) => {
+          swallow(event);
+          if (event.key === "Escape") {
+            triggerRef.current?.blur();
+          }
+        }}
+        className="pointer-events-auto absolute left-1/2 top-1/2 flex min-h-touch min-w-touch -translate-x-1/2 -translate-y-1/2 cursor-help items-center justify-center rounded-full outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-ink)]"
+      >
+        <span className="flex h-4 w-4 items-center justify-center rounded-full bg-[var(--home-paper-alt)] text-3xs font-bold leading-none text-[var(--home-ink-muted)] ring-1 ring-[var(--home-rule)]">
+          ?
+        </span>
+      </button>
+      {bubble}
     </span>
   );
 }

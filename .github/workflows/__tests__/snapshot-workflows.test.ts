@@ -100,17 +100,26 @@ describe("snapshot refresh workflow infrastructure", () => {
     // refresh workflows each triggering their own build exhausted the Netlify account's
     // build minutes, which silently stopped every deploy. The ledger check makes batching
     // safe because it compares production against the committed revision rather than
-    // against whichever refresh happened to trigger the run.
+    // against whichever refresh happened to trigger the run. Batching survived the move
+    // to building in Actions because the refresh commits carry [skip ci], so they never
+    // fire the push trigger and instead accumulate until the next scheduled run.
     expect(publicationWorkflow).toContain("schedule:");
     expect(publicationWorkflow).toContain("workflow_dispatch:");
     expect(publicationWorkflow).not.toContain("workflow_run:");
     expect(publicationWorkflow).toContain("group: publish-refreshed-data");
-    expect(publicationWorkflow).toContain("cancel-in-progress: true");
+    // Publication used to fire a build hook, which was harmless to kill mid-flight.
+    // It now builds and uploads the deploy itself, and cancelling that part way
+    // through its upload is not harmless.
+    expect(publicationWorkflow).toContain("cancel-in-progress: false");
     expect(publicationWorkflow).toContain("printDataLedgerRevision.ts");
     expect(publicationWorkflow).toContain("ensure-production-data-ledger.mjs");
     expect(publicationWorkflow).toContain("EXPECTED_COMMIT");
     expect(publicationWorkflow).toContain("fetch-depth: 100");
-    expect(publicationWorkflow).toContain("NETLIFY_BUILD_HOOK is required");
+    // The build moved into Actions, where a public repository gets free minutes,
+    // and uploads with `netlify deploy --no-build` so it never draws on the
+    // account's 300 monthly build minutes. That needs an auth token, not a hook.
+    expect(publicationWorkflow).toContain("NETLIFY_AUTH_TOKEN is required");
+    expect(publicationWorkflow).toContain("--no-build");
     expect(verifier).toContain("cacheBust");
     expect(verifier).toContain("publicationRevision");
     expect(verifier).toContain("merge-base");

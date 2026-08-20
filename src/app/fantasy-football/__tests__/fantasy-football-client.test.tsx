@@ -211,10 +211,15 @@ describe("FantasyFootballClient", () => {
     expect(screen.queryByText("ADP")).not.toBeInTheDocument();
     expect(screen.queryByText("vs ADP")).not.toBeInTheDocument();
 
-    expect(screen.getByRole("link", { name: /Open the draft tracker/i })).toHaveAttribute(
-      "href",
-      "/fantasy-football/draft-tracker"
-    );
+    // The tool links render twice: once under the header, once below the board.
+    const draftTrackerLinks = screen.getAllByRole("link", { name: /Draft tracker/i });
+    expect(draftTrackerLinks).toHaveLength(2);
+    for (const link of draftTrackerLinks) {
+      expect(link).toHaveAttribute("href", "/fantasy-football/draft-tracker");
+    }
+    expect(
+      within(screen.getByRole("navigation", { name: "Fantasy tools" })).getAllByRole("link")
+    ).toHaveLength(4);
 
     fireEvent.click(screen.getByRole("button", { name: "Open Christian McCaffrey detail" }));
     const dialog = screen.getByRole("dialog", { name: "Christian McCaffrey detail" });
@@ -282,16 +287,58 @@ describe("FantasyFootballClient", () => {
     const chaseRow = chaseButton.closest("li") as HTMLElement;
     // Chase: ADP 30 vs rank 12 clears the noise threshold, so the delta is toned.
     expect(within(chaseRow).getByText("+18")).toHaveStyle({ color: "var(--home-positive)" });
+    // The named chip rides beside the player, since the signed delta alone is
+    // what a drafter has to translate.
+    expect(within(chaseRow).getByText("Value +18")).toBeVisible();
     // Higgins: one pick of separation stays inside the noise band, muted.
     const higginsRow = screen
       .getByRole("button", { name: "Open Tee Higgins detail" })
       .closest("li") as HTMLElement;
     expect(within(higginsRow).getByText("+1")).toHaveStyle({ color: "var(--home-ink-muted)" });
+    expect(within(higginsRow).queryByText(/^(Value|Reach) /)).not.toBeInTheDocument();
 
     fireEvent.click(chaseButton);
     const dialog = screen.getByRole("dialog", { name: "Ja'Marr Chase detail" });
     expect(within(dialog).getByText("Market ADP")).toBeVisible();
     expect(within(dialog).getByText(/picks after the consensus rank/)).toBeVisible();
+  });
+
+  it("suppresses the value chip on a position board, where the rank is not overall scale", () => {
+    currentSearchParams = new URLSearchParams("position=wr&scoring=ppr");
+    mockSnapshot({
+      position: "wr",
+      adpSource: FRESH_ADP_SOURCE,
+      players: [
+        makePlayer({
+          id: "wr-1",
+          name: "Ja'Marr Chase",
+          team: "CIN",
+          position: "WR",
+          // On a position board rankEcr is the position rank, so comparing it
+          // with an overall ADP would manufacture a huge fake value gap.
+          rankEcr: 1,
+          averageRank: 1,
+          rankAverage: 1.4,
+          positionRank: 1,
+          minRank: 1,
+          maxRank: 3,
+          adp: 30,
+          adpStandardDeviation: 5,
+          adpTimesDrafted: 120,
+          standardDeviation: 3,
+        }),
+      ],
+    });
+
+    renderClient({ position: "wr" });
+
+    const row = screen
+      .getByRole("button", { name: "Open Ja'Marr Chase detail" })
+      .closest("li") as HTMLElement;
+    expect(within(row).queryByText(/^(Value|Reach) /)).not.toBeInTheDocument();
+    // The column still stands, but the cell holds an em dash rather than a gap
+    // computed off two different scales.
+    expect(within(row).getByText("—")).toBeVisible();
   });
 
   it("never calls a thin ADP sample market agreement", () => {
@@ -320,11 +367,11 @@ describe("FantasyFootballClient", () => {
 
     renderClient({ position: "overall" });
 
-    // The +26 delta renders muted because the sample cannot be judged.
+    // The +26.3 delta renders muted because the sample cannot be judged.
     const row = screen
       .getByRole("button", { name: "Open Tyler Allgeier detail" })
       .closest("li") as HTMLElement;
-    expect(within(row).getByText("+26")).toHaveStyle({ color: "var(--home-ink-muted)" });
+    expect(within(row).getByText("+26.3")).toHaveStyle({ color: "var(--home-ink-muted)" });
 
     fireEvent.click(screen.getByRole("button", { name: "Open Tyler Allgeier detail" }));
     const dialog = screen.getByRole("dialog", { name: "Tyler Allgeier detail" });

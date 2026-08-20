@@ -1,32 +1,48 @@
 name: Publish Refreshed Data
 
-# Publication is batched rather than fired once per snapshot refresh. Sixteen refresh
-# workflows on schedules as tight as every three hours were each triggering their own
-# Netlify build, which reached roughly 80 builds a week against 20 real pushes and
-# exhausted the account's build minutes. Every deploy from 2026-08-06 onward was
-# skipped as a result, so committed data stopped reaching production entirely.
+# Production is built here rather than on Netlify. The account is on the free tier
+# with 300 build minutes a month, and it ran out on 2026-08-06 with the limit
+# enforced, so every git-triggered build after that returned "Skipped due to
+# account builds usage exceeded" and committed snapshots stopped reaching
+# production entirely. This repository is public, so GitHub Actions minutes are
+# free and unmetered, and a deploy uploaded with `netlify deploy --no-build` does
+# not consume build minutes because the build never ran on Netlify's
+# infrastructure. Moving the build here makes the 300-minute cap irrelevant
+# instead of something to ration. `scripts/ci/netlify-ignore.sh` stops Netlify
+# from also building main, which would duplicate every deploy and race this
+# upload.
 #
-# The scheduled runs below publish whatever has landed since the last one, which the
-# ledger check already handles because it compares production against the committed
-# revision rather than against any single refresh. The tradeoff is that data can now
-# sit committed for up to six hours before it is live. Use workflow_dispatch to
-# publish immediately when something needs to ship now.
+# Publication is still batched rather than fired once per snapshot refresh.
+# Sixteen refresh workflows on schedules as tight as every three hours were each
+# triggering their own build, which reached roughly 80 builds a week against 20
+# real pushes. The refresh commits carry [skip ci], so they do not trigger the
+# push event below and instead accumulate until the next scheduled run. Data can
+# sit committed for up to six hours before it is live, so use workflow_dispatch
+# to publish immediately when something needs to ship now.
 on:
+  push:
+    branches: [main]
   schedule:
     - cron: "15 1,7,13,19 * * *"
   workflow_dispatch:
 
 concurrency:
   group: publish-refreshed-data
-  cancel-in-progress: true
+  # Not cancel-in-progress. Killing a build hook mid-flight was harmless, but
+  # killing a deploy part way through its upload is not.
+  cancel-in-progress: false
 
 jobs:
   publish:
     runs-on: ubuntu-latest
-    timeout-minutes: 18
+    timeout-minutes: 30
     permissions:
       contents: read
       issues: write
+    env:
+      # An identifier rather than a credential, and useless without
+      # NETLIFY_AUTH_TOKEN. Netlify documents it as public configuration.
+      NETLIFY_SITE_ID: 212e9ee7-84c6-4db8-96f0-68780170c289
 
     steps:
       - name: Checkout current main
@@ -34,7 +50,7 @@ jobs:
         with:
           ref: main
           # Enough history for the verifier to recognize a newer snapshot commit
-          # that lands while Netlify is starting the branch build.
+          # that lands while the deploy is being published.
           fetch-depth: 100
 
       - name: Set up Node.js
@@ -52,21 +68,42 @@ jobs:
           echo "revision=$(npx tsx scripts/printDataLedgerRevision.ts)" >> "$GITHUB_OUTPUT"
           echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
-      - name: Publish and verify the complete ledger
+      - name: Build the production bundle
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        run: |
+          if [ -z "$NETLIFY_AUTH_TOKEN" ]; then
+            echo "::error::NETLIFY_AUTH_TOKEN is required to build and publish production."
+            exit 1
+          fi
+          # `netlify build` rather than `npm run build` so this runs the same
+          # command, plugins, and site environment variables a Netlify build
+          # would, including NEXT_PUBLIC_GA_MEASUREMENT_ID, which exists only in
+          # the site's own environment.
+          npx --yes netlify-cli@26 build --context production
+
+      - name: Deploy the prebuilt bundle
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        run: |
+          # --no-build is what keeps this off the metered build system.
+          npx --yes netlify-cli@26 deploy \
+            --prod \
+            --no-build \
+            --message "Publish data ledger ${{ steps.ledger.outputs.commit }}"
+
+      - name: Verify the complete ledger
         env:
           EXPECTED_REVISION: ${{ steps.ledger.outputs.revision }}
           EXPECTED_COMMIT: ${{ steps.ledger.outputs.commit }}
-          NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
           PRODUCTION_DATA_REVISION_URL: ${{ secrets.PRODUCTION_DATA_REVISION_URL }}
         run: |
-          if [ -z "$NETLIFY_BUILD_HOOK" ]; then
-            echo "::error::NETLIFY_BUILD_HOOK is required for data publication."
-            exit 1
-          fi
           revision_url="${PRODUCTION_DATA_REVISION_URL:-https://isaacvazquez.com/api/data-revisions}"
+          # The third argument is the build hook, and it is deliberately empty
+          # because the deploy above is already published and there is nothing
+          # left to trigger.
           node scripts/ci/ensure-production-data-ledger.mjs \
-            "$EXPECTED_REVISION" "$revision_url" "$NETLIFY_BUILD_HOOK" \
-            "$EXPECTED_COMMIT"
+            "$EXPECTED_REVISION" "$revision_url" "" "$EXPECTED_COMMIT"
 
       - name: Open or update publication incident
         if: failure()
@@ -75,7 +112,7 @@ jobs:
           script: |
             const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
             const title = "Production data publication failed";
-            const body = `The refreshed data ledger did not reach production.\n\nRun: ${runUrl}\n\nCheck the Netlify build hook, production deploy log, and access policy for /api/data-revisions.`;
+            const body = `The refreshed data ledger did not reach production.\n\nRun: ${runUrl}\n\nCheck the build and deploy steps first, then NETLIFY_AUTH_TOKEN, the Netlify deploy log, and the access policy for /api/data-revisions.`;
             const open = await github.rest.issues.listForRepo({
               owner: context.repo.owner,
               repo: context.repo.repo,
