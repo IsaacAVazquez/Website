@@ -6,7 +6,7 @@
 import type { FantasyGameLogEntry } from "@/lib/fantasyGameLogSource";
 import type { ScoringFormat } from "@/types";
 
-export const fantasyGameLogDataGeneratedAt: string | null = "2026-08-19T17:26:06.129Z";
+export const fantasyGameLogDataGeneratedAt: string | null = "2026-08-20T17:29:33.556Z";
 
 export const fantasyGameLogData: Record<
   ScoringFormat,
