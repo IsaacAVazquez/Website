@@ -4,6 +4,12 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-08-21
+
+- Bump actions/setup-node from 6 to 7 ([#338](https://github.com/IsaacAVazquez/Website/pull/338)).
+
+---
+
 ## 2026-08-18
 
 - Add the fantasy trade calculator, mock draft simulator, and tier-first rankings board ([#394](https://github.com/IsaacAVazquez/Website/pull/394)).
