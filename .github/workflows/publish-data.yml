@@ -112,46 +112,25 @@ jobs:
           node scripts/ci/ensure-production-data-ledger.mjs \
             "$EXPECTED_REVISION" "$revision_url" "" "$EXPECTED_COMMIT"
 
-      - name: Verify the homepage stylesheet resolves
+      - name: Verify the deploy published its static assets
         env:
-          SITE_URL: ${{ secrets.PRODUCTION_URL || 'https://isaacvazquez.com' }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          EXPECTED_COMMIT: ${{ steps.ledger.outputs.commit }}
         run: |
           # The ledger check above passes on a broken publish, because
           # /api/data-revisions is served by the Next.js function whether or not
           # the static assets ever uploaded. That is how the 2026-08-20 deploy
-          # reported success while serving an unstyled site, and this step exists
-          # to catch that shape of failure.
+          # reported success while serving an unstyled site.
           #
-          # It reports rather than fails when it cannot see the site. Only a
-          # homepage that loads and names a stylesheet that then 404s is treated
-          # as broken, because that is unambiguous.
-          #
-          # The agent string matters. An earlier version of this step spoofed
-          # Chrome, and Cloudflare answered 403 to a datacenter IP claiming to be
-          # a browser, which made the step warn and skip on every run. The ledger
-          # step above reaches the same host from the same runner with its own
-          # plain agent string, so this one matches it.
-          ua="WebsiteDeployAssetCheck/1.0"
-          home=$(curl -sS -m 30 -A "$ua" -w '\n%{http_code}' "$SITE_URL/" || true)
-          code=$(printf '%s' "$home" | tail -1)
-          if [ "$code" != "200" ]; then
-            echo "::warning::$SITE_URL/ returned '$code' from this runner, so the published assets were not checked."
-            exit 0
-          fi
-          css=$(printf '%s' "$home" | grep -oE '/_next/static/css/[^"]+\.css' | head -1)
-          if [ -z "$css" ]; then
-            echo "::warning::No stylesheet link found in the homepage, so the published assets were not checked."
-            exit 0
-          fi
-          code=$(curl -sS -m 30 -A "$ua" -o /dev/null -w '%{http_code}' "$SITE_URL$css" || true)
-          if [ "$code" = "200" ]; then
-            echo "Stylesheet $css served with HTTP $code."
-          elif [ "$code" = "404" ]; then
-            echo "::error::Stylesheet $css is missing from the deploy (HTTP 404). The deploy most likely published the raw .next directory instead of the plugin's static output."
-            exit 1
-          else
-            echo "::warning::Stylesheet $css returned '$code', which does not clearly indicate a bad deploy."
-          fi
+          # Two earlier versions of this step fetched the site from the runner
+          # and both were inert, warning and skipping on every run. Cloudflare
+          # answers 403 to runner IPs on the custom domain's HTML paths, with or
+          # without a browser user agent, and isaacvazquez.netlify.app does not
+          # resolve from runners at all. The script asks Netlify which files the
+          # deploy stored instead, so it needs no egress to the site and can fail
+          # honestly.
+          node scripts/ci/verify-deploy-assets.mjs
+
 
       - name: Open or update publication incident
         if: failure()
