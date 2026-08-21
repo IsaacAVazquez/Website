@@ -4,7 +4,7 @@
 #
 # main is skipped because production no longer builds on Netlify. publish-data.yml
 # builds in GitHub Actions, where a public repository gets free minutes, and
-# uploads the result with `netlify deploy --no-build`, which does not draw on the
+# uploads it in the same `netlify deploy` command, which does not draw on the
 # account's 300 monthly build minutes. Letting Netlify also build main would
 # duplicate every deploy and race the upload from Actions.
 #

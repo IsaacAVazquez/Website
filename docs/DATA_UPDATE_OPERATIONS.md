@@ -106,7 +106,7 @@ the fallback and the editorial source of truth. See the lane description in
   Building in Actions is deliberate. The Netlify account is on the free tier with
   300 build minutes a month, it ran out on 2026-08-06, and every git-triggered
   build after that was skipped, so committed data stopped reaching production.
-  A prebuilt upload does not consume build minutes, and this repository is public
+  A build that never runs on Netlify's infrastructure does not consume build minutes, and this repository is public
   so Actions minutes are free. `scripts/ci/netlify-ignore.sh` keeps Netlify from
   building `main` or dependabot branches on its own. Publication needs the
   `NETLIFY_AUTH_TOKEN` repository secret.

@@ -156,7 +156,7 @@ async function main() {
 
   // The hook is optional because the caller may have published the deploy
   // itself, which is what publish-data.yml now does: it builds in GitHub Actions
-  // and uploads with `netlify deploy --no-build`, so publication never draws on
+  // and uploads in the same `netlify deploy` command, so publication never draws on
   // Netlify's 300 monthly build minutes. With no hook there is nothing left to
   // trigger, only to confirm.
   if (buildHook) {

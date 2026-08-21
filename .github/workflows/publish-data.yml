@@ -94,7 +94,7 @@ jobs:
           # None of this reaches the metered build system: what keeps the deploy
           # off Netlify's build minutes is running on this runner at all, not any
           # particular flag.
-          npx --yes netlify-cli@26 deploy \
+          npx --yes netlify-cli@26.1.0 deploy \
             --prod \
             --context production \
             --message "Publish data ledger ${{ steps.ledger.outputs.commit }}"
@@ -122,14 +122,16 @@ jobs:
           # reported success while serving an unstyled site, and this step exists
           # to catch that shape of failure.
           #
-          # It reports rather than fails when it cannot see the site. Cloudflare
-          # fronts the custom domain and has answered 403 to runner IPs, and
-          # isaacvazquez.netlify.app is not reachable from runners at all
-          # (connect timeout), so a hard failure here blocks publication on the
-          # network path rather than on the deploy. Only a homepage that loads
-          # and names a stylesheet that then 404s is treated as broken, because
-          # that is unambiguous.
-          ua="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+          # It reports rather than fails when it cannot see the site. Only a
+          # homepage that loads and names a stylesheet that then 404s is treated
+          # as broken, because that is unambiguous.
+          #
+          # The agent string matters. An earlier version of this step spoofed
+          # Chrome, and Cloudflare answered 403 to a datacenter IP claiming to be
+          # a browser, which made the step warn and skip on every run. The ledger
+          # step above reaches the same host from the same runner with its own
+          # plain agent string, so this one matches it.
+          ua="WebsiteDeployAssetCheck/1.0"
           home=$(curl -sS -m 30 -A "$ua" -w '\n%{http_code}' "$SITE_URL/" || true)
           code=$(printf '%s' "$home" | tail -1)
           if [ "$code" != "200" ]; then

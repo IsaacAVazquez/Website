@@ -116,10 +116,24 @@ describe("snapshot refresh workflow infrastructure", () => {
     expect(publicationWorkflow).toContain("EXPECTED_COMMIT");
     expect(publicationWorkflow).toContain("fetch-depth: 100");
     // The build moved into Actions, where a public repository gets free minutes,
-    // and uploads with `netlify deploy --no-build` so it never draws on the
-    // account's 300 monthly build minutes. That needs an auth token, not a hook.
+    // so it never draws on the account's 300 monthly build minutes. That needs an
+    // auth token, not a hook.
     expect(publicationWorkflow).toContain("NETLIFY_AUTH_TOKEN is required");
-    expect(publicationWorkflow).toContain("--no-build");
+    // Build and deploy have to stay one command. Splitting them lets
+    // @netlify/plugin-nextjs run its onEnd hook, which swaps .netlify/static back
+    // out of the publish directory, so the upload ships the raw .next tree and
+    // every /_next/static URL 404s. That took production down on 2026-08-20.
+    // Assert against the commands only. The comment above them names the broken
+    // form on purpose, so a raw string search would match the explanation.
+    const publicationCommands = publicationWorkflow
+      .split("\n")
+      .filter((line) => !line.trim().startsWith("#"))
+      .join("\n");
+    expect(publicationCommands).toMatch(
+      /netlify-cli@[\d.]+ deploy \\\n\s+--prod \\\n\s+--context production/
+    );
+    expect(publicationCommands).not.toMatch(/--no-build/);
+    expect(publicationCommands).not.toMatch(/netlify-cli@[\d.]+ build/);
     expect(verifier).toContain("cacheBust");
     expect(verifier).toContain("publicationRevision");
     expect(verifier).toContain("merge-base");
