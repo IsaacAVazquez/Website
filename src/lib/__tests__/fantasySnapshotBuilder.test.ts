@@ -40,6 +40,27 @@ describe("getNflRegularSeasonWeek", () => {
     expect(lateNovember).toBeLessThanOrEqual(NFL_WEEKS);
   });
 
+  it("names the right week on every real 2026 week opener", () => {
+    // Verified against nflverse games.csv, the same file src/lib/nflData.ts
+    // downloads. 2026 opens Wednesday September 9 rather than the usual
+    // Thursday, and week 12 opens Wednesday November 25, so a Thursday anchor
+    // reported week 0 on opening day and week 11 on Thanksgiving week.
+    const openers: Array<[string, number]> = [
+      ["2026-09-09", 1],
+      ["2026-09-17", 2],
+      ["2026-09-24", 3],
+      ["2026-10-01", 4],
+      ["2026-11-19", 11],
+      ["2026-11-25", 12],
+      ["2026-12-03", 13],
+      ["2026-12-31", 17],
+    ];
+
+    for (const [gameday, week] of openers) {
+      expect(getNflRegularSeasonWeek(2026, new Date(`${gameday}T18:00:00.000Z`))).toBe(week);
+    }
+  });
+
   it("caps at the final regular-season week through the playoffs and offseason rollover", () => {
     expect(getNflRegularSeasonWeek(2026, new Date(Date.UTC(2026, 11, 25)))).toBeGreaterThanOrEqual(15); // late December
     expect(getNflRegularSeasonWeek(2026, new Date(Date.UTC(2027, 1, 1)))).toBe(NFL_WEEKS); // following February

@@ -28,13 +28,60 @@ export type FantasySnapshotStaleness = "fresh" | "aging" | "stale";
 
 const FANTASY_OFFSEASON_AGING_DAYS = 8;
 const FANTASY_OFFSEASON_STALE_DAYS = 14;
-const FANTASY_DRAFT_SEASON_AGING_DAYS = 2;
-const FANTASY_DRAFT_SEASON_STALE_DAYS = 4;
+const FANTASY_DAILY_REFRESH_AGING_DAYS = 2;
+const FANTASY_DAILY_REFRESH_STALE_DAYS = 4;
 const MS_PER_DAY = 86_400_000;
+const NFL_REGULAR_SEASON_WEEKS = 18;
+
+/**
+ * Derives the NFL regular-season week for a season from the calendar so a
+ * snapshot built mid-season isn't perpetually stamped "Preseason" (week 0).
+ *
+ * The fantasy week turns over on Wednesday, once the prior week's Monday game
+ * is final and waivers have run, so week 1 opens the Wednesday after Labor Day
+ * (the first Monday of September). Before that we're in the offseason and
+ * report week 0; after that we count regular-season weeks and hold at the
+ * final week through the playoffs until the next season opens. This is
+ * calendar-derived rather than schedule-aware, and self-contained.
+ *
+ * The anchor was the Thursday opener until 2026, when the NFL moved week 1 to
+ * Wednesday September 9 and the Thursday rule reported week 0 on opening day.
+ * Anchoring to Wednesday matches all 18 weeks of the real 2026 schedule, and
+ * in an ordinary Thursday-opener season it only moves the turnover one day
+ * earlier, onto a day the prior week is already over.
+ */
+export function getNflRegularSeasonWeek(season: number, now: Date = new Date()): number {
+  // First Monday of September (Labor Day), evaluated in UTC.
+  const septFirst = new Date(Date.UTC(season, 8, 1));
+  const offsetToMonday = (8 - septFirst.getUTCDay()) % 7;
+  const laborDay = new Date(Date.UTC(season, 8, 1 + offsetToMonday));
+  const week1Kickoff = laborDay.getTime() + 2 * MS_PER_DAY;
+
+  if (now.getTime() < week1Kickoff) {
+    return 0;
+  }
+
+  const weeksElapsed = Math.floor((now.getTime() - week1Kickoff) / (7 * MS_PER_DAY));
+  return Math.min(NFL_REGULAR_SEASON_WEEKS, weeksElapsed + 1);
+}
+
+/**
+ * True while the refresh cron runs daily rather than weekly, which is July
+ * through December: drafts through early September, then the season itself
+ * through the Week 17 championships. February through June is the weekly lane.
+ *
+ * Keep this aligned with the schedule in .github/workflows/update-fantasy.yml,
+ * because a freshness band only means something if it matches the cadence that
+ * actually runs. The window used to end September 30, which judged a live
+ * in-season board against offseason thresholds for three months.
+ */
+function isDailyRefreshWindow(now: Date): boolean {
+  return now.getUTCMonth() >= 6;
+}
 
 /**
  * Buckets a snapshot timestamp into a freshness band that downstream UI can
- * use to surface a warning. July through September follows the daily refresh
+ * use to surface a warning. July through December follows the daily refresh
  * schedule, so a source ages after two days and is stale after four. The rest
  * of the year follows the weekly schedule at eight and fourteen days.
  *
@@ -54,12 +101,12 @@ export function getSnapshotStaleness(
     return "stale";
   }
 
-  const draftSeason = now.getUTCMonth() >= 6 && now.getUTCMonth() <= 8;
-  const agingDays = draftSeason
-    ? FANTASY_DRAFT_SEASON_AGING_DAYS
+  const daily = isDailyRefreshWindow(now);
+  const agingDays = daily
+    ? FANTASY_DAILY_REFRESH_AGING_DAYS
     : FANTASY_OFFSEASON_AGING_DAYS;
-  const staleDays = draftSeason
-    ? FANTASY_DRAFT_SEASON_STALE_DAYS
+  const staleDays = daily
+    ? FANTASY_DAILY_REFRESH_STALE_DAYS
     : FANTASY_OFFSEASON_STALE_DAYS;
   const ageDays = (now.getTime() - parsed.getTime()) / MS_PER_DAY;
   if (ageDays < agingDays) {
@@ -378,6 +425,15 @@ type FantasyAdpFreshness = "current" | "prior-season" | "stale";
  * final board. That carryover lands with an as-of date in a calendar year
  * before the snapshot season, which the board should label as preseason
  * carryover rather than letting an honest gap look like a broken refresh.
+ * Once the daily window opens the same shape is a broken refresh instead, so
+ * the age check below judges it rather than the carryover label.
+ *
+ * The age check applies year round. It used to run only from July through
+ * September, and everything else fell through to a bare year comparison, so
+ * any ADP stamped with the season's own year read as current. Mock-draft ADP
+ * stops moving once real drafts end, which meant a frozen September market
+ * read as live from October through December, on the board, on every value
+ * and reach chip, and in the trade calculator's market leg.
  *
  * Returns "stale" when the date or season is missing or invalid. Callers
  * separately know whether a source exists, so incomplete metadata should fail
@@ -397,13 +453,17 @@ export function getFantasyAdpFreshness(
     return "stale";
   }
 
-  const draftSeason = now.getUTCMonth() >= 6 && now.getUTCMonth() <= 8;
-  if (draftSeason && now.getTime() - parsed.getTime() > 4 * MS_PER_DAY) {
-    return "stale";
+  const daily = isDailyRefreshWindow(now);
+
+  if (parsed.getUTCFullYear() < season && !daily) {
+    return "prior-season";
   }
 
-  if (parsed.getUTCFullYear() < season) {
-    return "prior-season";
+  const staleDays = daily
+    ? FANTASY_DAILY_REFRESH_STALE_DAYS
+    : FANTASY_OFFSEASON_STALE_DAYS;
+  if (now.getTime() - parsed.getTime() > staleDays * MS_PER_DAY) {
+    return "stale";
   }
 
   return "current";

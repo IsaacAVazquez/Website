@@ -4,6 +4,7 @@ import { ArrowLeftRight, RotateCcw, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useMemo, useState, useSyncExternalStore } from "react";
+import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import { Breadcrumbs, createBreadcrumbItems } from "@/components/navigation/Breadcrumbs";
 import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
 import { useFantasyTradeCalculator } from "@/hooks/useFantasyTradeCalculator";
@@ -20,6 +21,7 @@ import {
 import {
   formatUpdatedAt,
   getFantasyAdpFreshness,
+  getNflRegularSeasonWeek,
   getSnapshotStaleness,
   type FantasySnapshotStaleness,
 } from "@/lib/fantasyUtils";
@@ -265,6 +267,11 @@ export function TradeCalculatorClient() {
     FRESHNESS_SEVERITY[expertFreshness] >= FRESHNESS_SEVERITY[marketFreshness]
       ? expertFreshness
       : marketFreshness;
+  // The declared scope is a preseason one-QB redraft model and its market leg
+  // is mock-draft ADP, which stops moving when real drafts end. Rather than
+  // repoint it at in-season data mid-season, say so on the page, so a withheld
+  // verdict from Week 1 on reads as the model's boundary and not a breakage.
+  const seasonWeek = snapshot ? getNflRegularSeasonWeek(snapshot.season) : 0;
   const valuesAvailable = Boolean(result && result.coverage !== "insufficient");
   const allSelected = useMemo(
     () => new Set([...trade.givePlayerIds, ...trade.getPlayerIds]),
@@ -316,6 +323,14 @@ export function TradeCalculatorClient() {
             </span>
           </div>
         </header>
+
+        {seasonWeek >= 1 && snapshot ? (
+          <SeasonalScopeNote season={snapshot.season} week={seasonWeek}>
+            This calculator prices a preseason draft market, and that market stopped moving once
+            real drafts ended, so from here on it declines a verdict rather than reading a frozen
+            board as a live one. I would rather it say nothing than say something I cannot support.
+          </SeasonalScopeNote>
+        ) : null}
 
         {trade.persistenceStatus === "memory-only" ? (
           <div

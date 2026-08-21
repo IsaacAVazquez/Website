@@ -104,8 +104,12 @@ const POLICIES: Record<DataSurfaceId, DataFreshnessPolicy> = {
     maxAgeMs: (now) => (inMonthRange(now, 9, 12) || inMonthRange(now, 1, 2) ? 8 * DAY_MS : 240 * DAY_MS),
   },
   "fantasy-football": {
+    // The daily refresh lane runs July through December, covering drafts and
+    // then the season itself. The window used to end September 30, so from
+    // October a board refreshing every day was measured against a 10-day
+    // target and could rot for a week without anything reporting it.
     source: "git-snapshot",
-    maxAgeMs: (now) => (inMonthRange(now, 7, 9) ? 30 * HOUR_MS : 10 * DAY_MS),
+    maxAgeMs: (now) => (inMonthRange(now, 7, 12) ? 30 * HOUR_MS : 10 * DAY_MS),
   },
   "score-pools": { source: "git-snapshot", maxAgeMs: () => 8 * HOUR_MS },
   "frontier-models": { source: "curated-snapshot", maxAgeMs: () => 45 * DAY_MS },

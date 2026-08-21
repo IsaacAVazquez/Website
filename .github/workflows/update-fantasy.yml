@@ -1,11 +1,14 @@
 name: Update Fantasy Football Snapshots
 
 on:
-  # Rankings move daily through draft season. Outside July through September,
-  # a weekly pass is enough to catch provider corrections and rollover work.
+  # Rankings move daily from July through December: drafts through early
+  # September, then the season itself through the Week 17 championships. The
+  # daily lane used to stop September 30, which left a live in-season board on
+  # a weekly refresh. February through June a weekly pass is enough to catch
+  # provider corrections and rollover work.
   schedule:
-    - cron: "0 17 * 7-9 *"
-    - cron: "0 17 * 1-6,10-12 3"
+    - cron: "0 17 * 7-12 *"
+    - cron: "0 17 * 1-6 3"
   workflow_dispatch:
 
 # Don't stack a manual dispatch on top of a scheduled run.
