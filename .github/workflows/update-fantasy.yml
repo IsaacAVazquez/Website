@@ -73,6 +73,17 @@ jobs:
           FANTASYPROS_SOURCE: public-html
           NODE_ENV: production
 
+      # The weekly board is its own soft lane. It is the only in-season
+      # artifact, it no-ops before Week 1, and a failure here must not stop the
+      # draft boards from committing.
+      - name: Build weekly board
+        id: build_weekly
+        continue-on-error: true
+        run: npm run update:fantasy:weekly
+        env:
+          FANTASYPROS_SOURCE: public-html
+          NODE_ENV: production
+
       # Freshness verifies the redraft artifact (ppr.json) only, so it gates
       # the redraft commit lane rather than the whole job: as a hard step it
       # sat between the builds and both commit lanes and a redraft staleness
@@ -331,6 +342,25 @@ jobs:
             "chore: update best ball snapshot [automated] [skip ci]" \
             public/data/fantasy/best-ball.json
 
+      - name: Check for weekly board changes
+        id: check_weekly_changes
+        if: steps.build_weekly.outcome == 'success'
+        run: |
+          if git diff --quiet -- public/data/fantasy/weekly.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No weekly board changes detected."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Weekly board changes detected."
+          fi
+
+      - name: Commit and push weekly board
+        if: steps.check_weekly_changes.outputs.changed == 'true'
+        run: |
+          bash scripts/ci/commit-and-push-snapshot.sh \
+            "chore: update fantasy weekly board [automated] [skip ci]" \
+            public/data/fantasy/weekly.json
+
       # Both soft lanes report here rather than at the point of failure, so the
       # run still goes red and the failure issue still opens without either lane
       # skipping the other's commit above.
@@ -340,6 +370,7 @@ jobs:
           steps.verify_freshness.outcome == 'failure' ||
           steps.verify_quality.outcome == 'failure' ||
           steps.build_best_ball.outcome == 'failure' ||
+          steps.build_weekly.outcome == 'failure' ||
           steps.verify_best_ball.outcome == 'failure' ||
           steps.adp_health.outputs.adp_dark == 'true'
         run: |
@@ -347,6 +378,7 @@ jobs:
           echo "redraft freshness: ${{ steps.verify_freshness.outcome }}"
           echo "redraft quality:   ${{ steps.verify_quality.outcome }}"
           echo "best ball build:   ${{ steps.build_best_ball.outcome }}"
+          echo "weekly build:      ${{ steps.build_weekly.outcome }}"
           echo "best ball gate:    ${{ steps.verify_best_ball.outcome }}"
           echo "redraft ADP dark:  ${{ steps.adp_health.outputs.adp_dark }}"
           echo "::error::A fantasy refresh gate failed. Each lane committed independently when its own gates passed; see the step outcomes above."

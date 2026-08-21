@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState, useSyncExternalStore } from "react";
+import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import Link from "next/link";
 import { ChevronDown, Download, Redo2, RotateCcw, Timer, Undo2 } from "lucide-react";
 import { DraftAnalyticsPanel } from "./components/DraftAnalyticsPanel";
@@ -20,6 +21,7 @@ import {
   scoringFormatToRouteScoring,
 } from "@/lib/fantasy";
 import {
+  getNflRegularSeasonWeek,
   formatRankValue,
   formatUpdatedAt,
   getFantasyAdpFreshness,
@@ -315,6 +317,11 @@ export function DraftTrackerClient() {
     window.setTimeout(() => setExportToast(null), 3500);
   }
 
+  // Every board in this room is a draft board. Once the season starts it stops
+  // describing a live market, so say which season it covers rather than letting it
+  // look like a surface that quietly stopped working.
+  const seasonalWeek = getNflRegularSeasonWeek(draftMetadata?.season ?? 0);
+
   return (
     <section
       className="home-page home-dash min-h-screen"
@@ -331,6 +338,11 @@ export function DraftTrackerClient() {
         style={showMobileActionBar ? { paddingBottom: "calc(5.5rem + env(safe-area-inset-bottom))" } : undefined}
       >
         <Breadcrumbs customItems={DRAFT_TRACKER_BREADCRUMBS} className="pt-2" />
+        {seasonalWeek >= 1 ? (
+          <SeasonalScopeNote season={draftMetadata?.season ?? 0} week={seasonalWeek}>
+            This room tracks a draft against the preseason consensus board, and that board stops refreshing once the season is under way, so it is here for next summer rather than for this week. Ranks that still move are on the <Link href="/fantasy-football/weekly" className="underline decoration-[var(--home-signal)] underline-offset-4">weekly board</Link>.
+          </SeasonalScopeNote>
+        ) : null}
         {persistenceError ? (
           <div
             role="status"

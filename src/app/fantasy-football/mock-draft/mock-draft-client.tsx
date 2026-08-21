@@ -1,10 +1,14 @@
 "use client";
 
+import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
+import Link from "next/link";
+
 import { useEffect, useMemo, useState } from "react";
 import type { DraftPick, ScoringFormat } from "@/types";
 import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
 import { scoringFormatToRouteScoring } from "@/lib/fantasy";
 import {
+  getNflRegularSeasonWeek,
   formatAdp,
   getFantasyAdpFreshness,
   getSnapshotStaleness,
@@ -221,6 +225,11 @@ export function MockDraftClient() {
         ? "The published snapshot did not include any players."
         : null;
 
+  // The simulator drafts off the preseason board, so once the season starts it is
+  // rehearsing a market that no longer exists. Name the season rather than letting
+  // it read as current.
+  const seasonalWeek = getNflRegularSeasonWeek(metadata?.season ?? 0);
+
   return (
     <section className="home-section" aria-labelledby="mock-draft-heading">
       <div className="home-shell">
@@ -235,6 +244,17 @@ export function MockDraftClient() {
           a real draft. It is a practice tool, and nothing here is a projection
           of season outcomes.
         </p>
+
+        {seasonalWeek >= 1 ? (
+          <div className="mt-6">
+            <SeasonalScopeNote season={metadata?.season ?? 0} week={seasonalWeek}>
+              The room drafts off the preseason consensus board, which stops refreshing once real
+              games start, so rehearsing a draft here in November rehearses August. I have left it
+              running rather than hiding it, because the practice is still practice. Ranks that
+              still move are on the <Link href="/fantasy-football/weekly" className="underline decoration-[var(--home-signal)] underline-offset-4">weekly board</Link>.
+            </SeasonalScopeNote>
+          </div>
+        ) : null}
 
         {state.status === "setup" && (
           <div className="home-card mt-6 max-w-2xl p-5 sm:p-6">

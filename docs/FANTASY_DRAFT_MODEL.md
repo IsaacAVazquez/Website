@@ -245,6 +245,28 @@ Unequal packages run in quick mode. Every extra player is assumed to displace a 
 
 These values have not been fit against historical trade outcomes or measured against realized points. The 75/25 starter split, the 5% and 15% thresholds, and the 0.25 reliability floor are judgment settings. I think they are reasonable for a balance check, since the log curve and the range test both keep the tool conservative, but they should be confirmed against held-out seasons before anyone treats the output as a valuation.
 
+### What happens to the trade calculator in season
+
+The model is a preseason one-QB redraft estimator and its market leg is mock-draft ADP, which stops moving once real drafts end. That means from Week 1 the coverage rule drops to insufficient and the tool declines verdicts for the rest of the season. That is correct behavior and I am leaving it. Repointing the market leg at rest-of-season consensus mid-season would quietly change what the number means, and I would rather it go quiet than go wrong.
+
+What I did change is that the silence is now labeled. From Week 1 the page carries a dated note saying the market it prices closed when drafts ended, so a withheld verdict reads as the model's boundary instead of a broken tool. Rebuilding the market leg on rest-of-season consensus stays open as the real fix, and it is blocked on the same rest-of-season board the weekly surface is waiting for.
+
+## The weekly board
+
+`/fantasy-football/weekly` is the only in-season surface. It reads two FantasyPros boards per scoring format, the weekly FLEX board and the weekly quarterback board, and keeps them apart. Their ranks are not comparable, because FantasyPros publishes no single in-season overall board and merging the two would manufacture a cross-position ordering the source never made.
+
+The in-season boards need their own thresholds rather than the draft ones. They rank only players worth starting, so they are shorter than a draft board, 95 running backs against the 100 the draft pipeline requires. Fewer experts contribute too, six on kickers against the ten the draft gates demand. Both gates were already parameterized, so the weekly source sets its own floors and the draft floors are untouched.
+
+The board is absent before Week 1 by design. The builder refuses to publish a preseason board and the client treats a missing file as a state rather than a failure, because rostered percentages before leagues have drafted describe the preseason and would make the waiver list say something I cannot support.
+
+### The waiver metric
+
+A waiver candidate is a player whose board percentile runs ahead of how widely he is rostered. The gap is the percentile minus the rostered percentage, both published numbers, and both are printed next to it so any row can be reproduced by hand. There is no bid figure, no projection, and no points total, because FantasyPros carries none of those on these boards and I am not inventing them.
+
+Two filters make the gap mean something. A candidate has to sit inside the top 120 of the flex board or the top 24 quarterbacks, which is roughly what a 12-team league can start, and be rostered in under 60 percent of leagues. Without the depth filter the widest gaps are all deep bench players. The first board built from live data put a receiver ranked 142nd of 284 at the top of the list on a 2.9 percent rostered rate, which is a real discrepancy and not a start.
+
+The rest-of-season board would be the better backbone for this and for the trade calculator's market leg, and it is wired but not reachable. As of 2026-08-21 all three rest-of-season pages still serve year 2025 with a last_updated of 12/25, so the season check rejects them, which is the gate working. The builder treats it as optional and logs the reason, so it starts populating on its own once FantasyPros rolls those pages over. It has not been validated against live current-season data and should be checked in the season's first week.
+
 ## Winning lineups and season simulation
 
 The tool does not currently calculate a winning lineup. Retrospective lists of champions or final-round players are useful descriptions, but they contain survivor bias, injury luck, and waiver outcomes. They should not directly set draft weights without a comparison group. The stronger design is to train and test on every entry or league, preserve the information available at the time of each draft, and hold out complete seasons.

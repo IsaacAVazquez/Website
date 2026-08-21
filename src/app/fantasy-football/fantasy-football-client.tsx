@@ -78,6 +78,7 @@ const FANTASY_TOOLS = [
   { href: "/fantasy-football/mock-draft", label: "Mock draft" },
   { href: "/fantasy-football/best-ball", label: "Best ball" },
   { href: "/fantasy-football/trade-calculator", label: "Trade calculator" },
+  { href: "/fantasy-football/weekly", label: "Weekly board" },
 ];
 
 const subscribeToHydration = () => () => undefined;

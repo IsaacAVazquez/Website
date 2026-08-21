@@ -67,11 +67,24 @@ export type FantasyProsOfficialApiPosition =
   | "ALL"
   | "OP";
 
-type FantasyProsRankingType = "draft" | "best";
+/**
+ * FantasyPros publishes each board under a ranking_type_name. "draft" and
+ * "best" are the preseason boards; "weekly" and "ros" are the in-season ones,
+ * which the draft surfaces never request but the weekly board does.
+ */
+type FantasyProsRankingType = "draft" | "best" | "weekly" | "ros";
+
+/**
+ * The board vocabulary the consensus fetcher can request. It is wider than
+ * FANTASY_PUBLIC_POSITIONS, which is the preseason cheat-sheet URL table:
+ * in-season FantasyPros publishes no single overall board, so FLEX stands in
+ * for the Overall tab and has to keep its own identity through validation.
+ */
+export type FantasyProsBoardPosition = FantasyPublicPosition | "FLEX";
 
 interface FantasyProsConsensusOptions {
   scoringFormat: ScoringFormat;
-  requestedPosition: FantasyPublicPosition;
+  requestedPosition: FantasyProsBoardPosition;
   expectedSeason?: number;
   expectedRankingType?: FantasyProsRankingType;
   minimumExperts?: number;
@@ -103,9 +116,15 @@ const FANTASY_PROS_REFRESH_TOP_BOARD_SIZE = 150;
 const FANTASY_PROS_OFFICIAL_API_BASE_URL =
   "https://api.fantasypros.com/public/v2/json/nfl";
 const FANTASY_PROS_OFFICIAL_API_MAX_CLOCK_SKEW_MS = 5 * 60 * 1000;
-const FANTASY_PROS_MIN_BOARD_PLAYERS: Readonly<Record<FantasyPublicPosition, number>> =
+const FLEX_ELIGIBLE_BOARD_POSITIONS: readonly Position[] = ["RB", "WR", "TE"];
+
+const FANTASY_PROS_MIN_BOARD_PLAYERS: Readonly<Record<FantasyProsBoardPosition, number>> =
   Object.freeze({
     OVERALL: 300,
+    // The weekly FLEX board is RB/WR/TE only and runs a few hundred deep
+    // (284 rows when this was written), so it cannot reuse the 300-player
+    // overall floor without rejecting a healthy response.
+    FLEX: 200,
     QB: 48,
     RB: 100,
     WR: 120,
@@ -122,6 +141,9 @@ interface FantasyProsPublicPlayerPayload {
   player_positions?: string | null;
   player_bye_week?: number | string | null;
   player_owned_avg?: number | string | null;
+  // Weekly boards only. Draft and best-ball boards omit it, so it stays
+  // optional and never becomes a required key.
+  player_opponent?: string | null;
   rank_ecr: number | string;
   rank_min?: number | string | null;
   rank_max?: number | string | null;
@@ -151,7 +173,7 @@ interface FantasyProsPublicConsensusPayload {
 export interface FantasyProsPublicBoard {
   scoringFormat: ScoringFormat;
   sourceScoring: string;
-  requestedPosition: FantasyPublicPosition;
+  requestedPosition: FantasyProsBoardPosition;
   sourcePosition: string;
   sourceUrl: string;
   sourceLabel: string;
@@ -377,6 +399,10 @@ function normalizeSourcePosition(position: string): string {
   const normalized = position.trim().toUpperCase();
   if (["DEF", "D/ST"].includes(normalized)) return "DST";
   if (["ALL", "OVERALL", "OP"].includes(normalized)) return "OVERALL";
+  // FLX is the in-season stand-in for the Overall tab. It is mapped to its own
+  // name rather than onto OVERALL so a draft-season overall request can still
+  // never be satisfied by a flex board.
+  if (["FLX", "FLEX"].includes(normalized)) return "FLEX";
   return normalized;
 }
 
@@ -611,7 +637,17 @@ function validateConsensusPayload(
     }
 
     const mappedPosition = mapFantasyProsPosition(player.player_position_id);
-    if (requestedPosition !== "OVERALL" && mappedPosition !== requestedPosition) {
+    // A FLEX board is the in-season stand-in for Overall, so it is not a
+    // single-position board: it holds exactly the flex-eligible skill
+    // positions and nothing else. Checking the set is the same guard as the
+    // single-position case, not a relaxation of it.
+    if (requestedPosition === "FLEX") {
+      if (!FLEX_ELIGIBLE_BOARD_POSITIONS.includes(mappedPosition)) {
+        throw new Error(
+          `FantasyPros public source player[${index}] is ${mappedPosition} on a FLEX board.`
+        );
+      }
+    } else if (requestedPosition !== "OVERALL" && mappedPosition !== requestedPosition) {
       throw new Error(
         `FantasyPros public source player[${index}] is ${mappedPosition} on a ${requestedPosition} board.`
       );
@@ -655,6 +691,9 @@ function toPublishedFantasyPlayer(
     ...(maxRank !== undefined ? { maxRank } : {}),
     byeWeek: asOptionalFiniteNumber(rawPlayer.player_bye_week),
     ownership: asOptionalFiniteNumber(rawPlayer.player_owned_avg),
+    ...(typeof rawPlayer.player_opponent === "string" && rawPlayer.player_opponent.trim()
+      ? { opponent: rawPlayer.player_opponent.trim() }
+      : {}),
     lastUpdated: upstreamUpdatedAt,
   } as Player;
 }
@@ -881,7 +920,13 @@ async function fetchFantasyProsOfficialApiConsensusBoard(
   });
 }
 
-async function fetchFantasyProsPublicHtmlConsensusBoard(
+/**
+ * Exported so a caller can pin itself to the public HTML contract. The weekly
+ * board does, because the official API's in-season position vocabulary is
+ * unverified here and a silent official-API request for a board shape nobody
+ * has checked is worse than declaring the source.
+ */
+export async function fetchFantasyProsPublicHtmlConsensusBoard(
   options: FetchFantasyProsConsensusBoardOptions
 ): Promise<FantasyProsPublicBoard> {
   const sourceUrl = options.publicSourceUrl;
