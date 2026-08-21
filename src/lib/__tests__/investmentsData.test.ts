@@ -26,7 +26,6 @@ describe("investmentsData curated snapshot resolution", () => {
     delete process.env.DEPLOY_URL;
     delete process.env.SITE_URL;
     delete process.env.NEXT_PUBLIC_SITE_URL;
-    delete process.env.VERCEL_URL;
   });
 
   it("loads curated symbols from public assets when the filesystem copy is unavailable", async () => {

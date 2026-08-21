@@ -126,7 +126,6 @@ Recheck:
 
 ## References
 
-- `GETTING-STARTED.md`
 - `DEVELOPMENT.md`
 - `API.md`
 - `docs/ENVIRONMENT_CONFIGURATION.md`

@@ -4,7 +4,7 @@
 **Scope:** Code-level audit of `src/` (components + App Router routes)
 **Method:** Manual code review of the shell, navigation, modals, forms, images, and global styles. No automated scanner (axe/Lighthouse) is wired into the repo yet — see "Recommended follow-ups."
 
-This is the current accessibility reference. The root-level `ACCESSIBILITY_AUDIT.md` is a November 2025 snapshot kept for history only; it describes components that have since been removed (`FloatingNav`, `ModernButton`) and the old monochrome palette, so do not treat it as current.
+This is the current accessibility reference. A November 2025 snapshot used to sit at the repository root as `ACCESSIBILITY_AUDIT.md`; it was deleted in August 2026 because it described components that had since been removed (`FloatingNav`, `ModernButton`) and the old monochrome palette. Read it from git history if you need it.
 
 ---
 

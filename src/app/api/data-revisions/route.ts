@@ -55,7 +55,6 @@ export const runtime = "nodejs";
 function getDeploymentCommit(): string | null {
   const candidates = [
     process.env.COMMIT_REF,
-    process.env.VERCEL_GIT_COMMIT_SHA,
     process.env.GITHUB_SHA,
   ];
   return (

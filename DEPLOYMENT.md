@@ -151,7 +151,7 @@ Also verify:
 ## Related Docs
 
 - `README.md`
-- `GETTING-STARTED.md`
+- `DEVELOPMENT.md`
 - `TROUBLESHOOTING.md`
 - `docs/SECURITY.md`
 - `docs/ENVIRONMENT_CONFIGURATION.md`

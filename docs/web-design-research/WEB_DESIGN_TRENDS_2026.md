@@ -69,7 +69,7 @@ than an inverted afterthought.
 visible focus states, readable type, and semantic structure are now baseline expectations.
 
 **Verdict: ADOPT — it's table stakes.** Detail and targets live in
-`PERFORMANCE_ACCESSIBILITY.md` and `ACCESSIBILITY_AUDIT.md`. Use the semantic status tokens
+`PERFORMANCE_ACCESSIBILITY.md` and `../accessibility-audit-2026-06.md`. Use the semantic status tokens
 (`--home-positive/-negative/-warning`), never the legacy `--color-success/-error/-warning`
 aliases.
 

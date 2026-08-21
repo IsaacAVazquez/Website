@@ -10,7 +10,7 @@ Next.js site with secondary authority-building content.
 > These docs are *advisory research*, not normative spec. When they conflict with the
 > implemented system, the implemented system wins. The site-wide visual rules live in
 > `STYLING.md`; the single pre-merge gate is `DESIGN_CHECKLIST.md`; accessibility status
-> lives in `ACCESSIBILITY_AUDIT.md`. Use these research notes to decide *what* to build;
+> lives in `../accessibility-audit-2026-06.md`. Use these research notes to decide *what* to build;
 > use those docs to decide *how* it must look and pass review.
 
 ## The four documents
@@ -27,7 +27,7 @@ Next.js site with secondary authority-building content.
 - **Visual tokens & shell helpers** → `STYLING.md` (source of truth for color, type scale,
   editorial shell). Research here never overrides a token rule.
 - **Pre-merge gate** → `DESIGN_CHECKLIST.md`. Every UI change still runs that checklist.
-- **Accessibility ground truth** → `ACCESSIBILITY_AUDIT.md`.
+- **Accessibility ground truth** → `../accessibility-audit-2026-06.md`.
 - **SEO** → `SEO.md` (current reference; older root-level audits are historical).
 - **Copy/voice** → `WRITING_VOICE.md`. Any hero/about/case-study copy these docs suggest
   must conform to the voice guide.

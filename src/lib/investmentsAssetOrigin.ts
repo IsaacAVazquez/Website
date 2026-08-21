@@ -29,7 +29,6 @@ export function getInvestmentsAssetOrigin(
     process.env.DEPLOY_URL ??
     process.env.SITE_URL ??
     process.env.NEXT_PUBLIC_SITE_URL ??
-    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) ??
     // Canonical production origin as a last resort. Inside the deployed Netlify
     // function none of the env vars above are present at runtime, so the origin
     // resolved to null and the curated-investments loaders failed closed: the
@@ -57,7 +56,6 @@ export function getInvestmentsAssetOrigin(
       process.env.DEPLOY_URL,
       process.env.SITE_URL,
       process.env.NEXT_PUBLIC_SITE_URL,
-      process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null,
       ...(process.env.NODE_ENV !== "production"
         ? ["http://localhost:3000", "http://127.0.0.1:3000"]
         : []),

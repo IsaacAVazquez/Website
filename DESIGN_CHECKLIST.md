@@ -2,7 +2,7 @@
 
 The single pre-merge checklist for any new or edited page, component, or surface. If you build UI in
 this repo, run through this before opening a PR. It distills the rules that were previously scattered
-across `STYLING.md`, `CLAUDE.md`, `DARK_MODE_USAGE_GUIDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
+across `STYLING.md`, `CLAUDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
 
 **Last updated:** 2026-08-11 · Derived from the 2026-06 site-wide design audit (`docs/DESIGN_AUDIT_2026-06.md`).
 

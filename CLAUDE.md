@@ -271,7 +271,7 @@ npx playwright test e2e/homepage.spec.ts # single spec
 
 Current source-of-truth docs:
 
-- `AGENTS.md` (start-here) · `AGENT.md` (compat stub) · `README.md`
+- `AGENTS.md` (start-here) · `README.md`
 - `PAGES.md` · `COMPONENTS.md` · `ARCHITECTURE.md` · `API.md` · `DEVELOPMENT.md`
 - `TESTING.md` · `STYLING.md` · `DESIGN_CHECKLIST.md` · `SEO.md` · `WRITING_VOICE.md`
 - `docs/README.md` · `docs/ai-context/*` · `docs/DESIGN_AUDIT_2026-06.md` (point-in-time audit + fix backlog)

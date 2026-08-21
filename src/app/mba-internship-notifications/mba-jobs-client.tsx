@@ -44,13 +44,6 @@ import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsP
 import { Chip } from "@/components/ui/Chip";
 import { Kicker } from "@/components/ui/Kicker";
 import { Briefcase, ChartBar, Article, FileText, Mail as MailIcon } from "@/components/ui/ServerIcons";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
 import {
   MBA_APPLICATION_PRIORITIES,
@@ -1029,46 +1022,35 @@ function SortDropdown({
   value: MBASortOrder;
   onValueChange: (v: MBASortOrder) => void;
 }) {
+  // Native <select>: this is a single-choice sort picker, so the platform
+  // control gives keyboard support, type-ahead, and the OS picker on mobile
+  // for free. The wrapping <label> supplies the accessible name ("Sort") and
+  // keeps the surrounding pill treatment shared with the filter chips.
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <button
-          type="button"
-          className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200 ease"
-          style={getPillStyle(false)}
-          aria-label={`Sort: ${SORT_LABELS[value]}`}
-        >
-          <span
-            className="text-2xs font-semibold uppercase tracking-[0.12em]"
-            style={{ fontFamily: "var(--font-home-sans)" }}
-          >
-            Sort
-          </span>
-          <span>{SORT_LABELS[value]}</span>
-          <ChevronDown className="h-4 w-4" aria-hidden="true" />
-        </button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent
-        align="end"
-        className="min-w-[12rem] rounded-[var(--radius-3xl)] border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] p-1.5 text-[var(--home-ink)] shadow-[var(--shadow-lg)]"
+    <label
+      className="inline-flex min-h-[44px] cursor-pointer items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200 ease focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[var(--home-signal)]"
+      style={getPillStyle(false)}
+    >
+      <span
+        className="text-2xs font-semibold uppercase tracking-[0.12em]"
+        style={{ fontFamily: "var(--font-home-sans)" }}
       >
-        <DropdownMenuRadioGroup
-          value={value}
-          onValueChange={(v) => onValueChange(v as MBASortOrder)}
-        >
-          {SORT_OPTIONS.map((opt) => (
-            <DropdownMenuRadioItem
-              key={opt}
-              value={opt}
-              className="rounded-[var(--radius-2xl)] py-2 pl-8 pr-3 text-sm font-medium focus:bg-[color-mix(in_srgb,var(--home-paper-alt)_90%,var(--home-elev-mix))]"
-              style={{ fontFamily: "var(--font-home-sans)" }}
-            >
-              {SORT_LABELS[opt]}
-            </DropdownMenuRadioItem>
-          ))}
-        </DropdownMenuRadioGroup>
-      </DropdownMenuContent>
-    </DropdownMenu>
+        Sort
+      </span>
+      <select
+        value={value}
+        onChange={(event) => onValueChange(event.target.value as MBASortOrder)}
+        className="cursor-pointer appearance-none border-none bg-transparent text-sm font-semibold text-inherit outline-none"
+        style={{ fontFamily: "var(--font-home-sans)" }}
+      >
+        {SORT_OPTIONS.map((opt) => (
+          <option key={opt} value={opt}>
+            {SORT_LABELS[opt]}
+          </option>
+        ))}
+      </select>
+      <ChevronDown className="h-4 w-4" aria-hidden="true" />
+    </label>
   );
 }
 

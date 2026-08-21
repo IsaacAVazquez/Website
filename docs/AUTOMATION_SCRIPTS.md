@@ -122,5 +122,4 @@ Current schedules:
 
 - `docs/FANTASY_PLATFORM_SETUP.md`
 - `docs/CRON_SETUP.md`
-- `GETTING-STARTED.md`
 - `DEVELOPMENT.md`

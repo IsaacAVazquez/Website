@@ -123,7 +123,7 @@ describe("NewsPulseClient", () => {
     expect(screen.getByText(/I built News Pulse to get a fast read/i)).toBeVisible();
     expect(screen.getByText("6 outlets tracked")).toBeVisible();
     expect(
-      screen.getByRole("button", { name: /Source selector: All Sources/i }),
+      screen.getByRole("combobox", { name: /Source/i }),
     ).toBeVisible();
     expect(screen.queryByText(/Story clusters across outlets/i)).not.toBeInTheDocument();
   });
@@ -188,7 +188,7 @@ describe("NewsPulseClient", () => {
     );
 
     expect(
-      screen.queryByRole("button", { name: /Source selector:/i }),
+      screen.queryByRole("combobox", { name: /Source/i }),
     ).not.toBeInTheDocument();
   });
 
@@ -225,8 +225,10 @@ describe("NewsPulseClient", () => {
       ).toBeVisible(),
     );
 
-    await user.click(screen.getByRole("button", { name: /Source selector: All Sources/i }));
-    await user.click(screen.getByRole("menuitemradio", { name: "The Guardian" }));
+    await user.selectOptions(
+      screen.getByRole("combobox", { name: /Source/i }),
+      "guardian",
+    );
 
     expect(mockPush).toHaveBeenCalledWith("/news-pulse?source=guardian", {
       scroll: false,

@@ -20,13 +20,6 @@ import {
 } from "@/components/editorial";
 import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
 import { ChartBar, Article, FileText } from "@/components/ui/ServerIcons";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { SOURCE_META } from "@/lib/news-pulse-sources";
 import type { NewsPulseFeedResponse } from "@/lib/newsPulseServer";
 import type { NewsArticle, TopicCluster } from "@/lib/news-pulse-utils";
@@ -122,10 +115,10 @@ function buildFeedErrorMessage(status: number, payload: FeedResponse | null): st
 }
 
 /**
- * Radix DropdownMenu handles Esc-to-close, click-outside dismiss, focus trap
- * while open, and focus return to the trigger on close — verified against the
- * @radix-ui/react-dropdown-menu source. Trigger ARIA attrs (aria-haspopup,
- * aria-expanded, aria-controls) are forwarded automatically via `asChild`.
+ * Native <select>: a single-choice source picker, so the platform control
+ * supplies Esc-to-close, click-outside dismiss, focus return, keyboard
+ * type-ahead, and the OS picker on mobile. The wrapping <label> gives it the
+ * accessible name ("Source") and keeps the shared pill treatment.
  */
 function SourceDropdown({
   value,
@@ -135,48 +128,30 @@ function SourceDropdown({
   onValueChange: (value: NewsSource) => void;
 }) {
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <button
-          type="button"
-          className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
-          style={getPillStyle(false)}
-          aria-label={`Source selector: ${SOURCE_LABELS[value]}`}
-        >
-          <span
-            className="text-2xs font-semibold uppercase tracking-[0.12em]"
-            style={{ fontFamily: "var(--font-home-sans)" }}
-          >
-            Source
-          </span>
-          <span>{SOURCE_LABELS[value]}</span>
-          <ChevronDown
-            className="h-4 w-4 transition-transform duration-200 data-[state=open]:rotate-180"
-            aria-hidden="true"
-          />
-        </button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent
-        align="end"
-        className="min-w-[14rem] rounded-[var(--radius-2xl)] border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-1.5 text-[var(--home-ink)] shadow-[var(--shadow-lg)]"
+    <label
+      className="inline-flex min-h-[44px] cursor-pointer items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200 ease focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[var(--home-signal)]"
+      style={getPillStyle(false)}
+    >
+      <span
+        className="text-2xs font-semibold uppercase tracking-[0.12em]"
+        style={{ fontFamily: "var(--font-home-sans)" }}
       >
-        <DropdownMenuRadioGroup
-          value={value}
-          onValueChange={(nextValue) => onValueChange(nextValue as NewsSource)}
-        >
-          {SOURCE_OPTIONS.map((source) => (
-            <DropdownMenuRadioItem
-              key={source}
-              value={source}
-              className="rounded-[var(--radius-2xl)] py-2 pl-8 pr-3 text-sm font-medium focus:bg-[color-mix(in_srgb,var(--home-paper-alt)_90%,var(--home-elev-mix))]"
-              style={{ fontFamily: "var(--font-home-sans)" }}
-            >
-              {SOURCE_LABELS[source]}
-            </DropdownMenuRadioItem>
-          ))}
-        </DropdownMenuRadioGroup>
-      </DropdownMenuContent>
-    </DropdownMenu>
+        Source
+      </span>
+      <select
+        value={value}
+        onChange={(event) => onValueChange(event.target.value as NewsSource)}
+        className="cursor-pointer appearance-none border-none bg-transparent text-sm font-semibold text-inherit outline-none"
+        style={{ fontFamily: "var(--font-home-sans)" }}
+      >
+        {SOURCE_OPTIONS.map((source) => (
+          <option key={source} value={source}>
+            {SOURCE_LABELS[source]}
+          </option>
+        ))}
+      </select>
+      <ChevronDown className="h-4 w-4" aria-hidden="true" />
+    </label>
   );
 }
 

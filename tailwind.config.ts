@@ -1,6 +1,5 @@
 import type { Config } from "tailwindcss" with { "resolution-mode": "import" };
 import typography from "@tailwindcss/typography";
-import animate from "tailwindcss-animate";
 
 const config: Config = {
   darkMode: "class",
@@ -108,7 +107,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [typography, animate],
+  plugins: [typography],
 } satisfies Config;
 
 export default config;
