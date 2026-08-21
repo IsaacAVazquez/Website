@@ -134,6 +134,10 @@ describe("snapshot refresh workflow infrastructure", () => {
     );
     expect(publicationCommands).not.toMatch(/--no-build/);
     expect(publicationCommands).not.toMatch(/netlify-cli@[\d.]+ build/);
+    // The ledger check alone passes on a deploy that published no static assets,
+    // which is exactly what shipped on 2026-08-20, so the file-manifest check has
+    // to stay wired up.
+    expect(publicationCommands).toContain("verify-deploy-assets.mjs");
     expect(verifier).toContain("cacheBust");
     expect(verifier).toContain("publicationRevision");
     expect(verifier).toContain("merge-base");
