@@ -10,6 +10,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Impeccable rollout: harden ink-soft contrast, sharpen tool shells ([#391](https://github.com/IsaacAVazquez/Website/pull/391)).
 - Bump resend from 6.12.2 to 6.20.0 ([#393](https://github.com/IsaacAVazquez/Website/pull/393)).
 - Bump the next group across 1 directory with 2 updates ([#383](https://github.com/IsaacAVazquez/Website/pull/383)).
+- Untrack the generated bundles and drop the dead documentation tier ([#399](https://github.com/IsaacAVazquez/Website/pull/399)).
 
 ---
 
