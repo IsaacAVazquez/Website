@@ -119,7 +119,7 @@ export function FrontierCostContextChart({
     // resolve the tokens at render time (re-resolved when the theme flips).
     const computedStyle = getComputedStyle(document.documentElement);
     const axisColor =
-      computedStyle.getPropertyValue("--home-ink-muted").trim() || "#6F6B60";
+      computedStyle.getPropertyValue("--home-ink-muted").trim() || "#68655A";
     const gridColor =
       computedStyle.getPropertyValue("--home-rule").trim() ||
       "rgba(25,24,19,0.14)";

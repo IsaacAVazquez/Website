@@ -281,8 +281,18 @@
    * single declaration tracks both light and dark automatically.
    *   --home-ink-soft     → muted eyebrow / label text
    *   --home-paper-raised → lifted card surface, one step above --home-paper
+   *
+   * ink-soft carries functional label/eyebrow/table-header text across the
+   * dashboards, so it has to clear WCAG AA as body text, not just read as a
+   * lighter tint. At 45% ink it measured 2.88:1 on paper in light and 3.95:1
+   * in dark — failing in both themes. Raised to 66% it clears 4.5:1 on paper,
+   * paper-alt, and paper-raised (5.1–5.6) and on the signal-10%/signal-soft
+   * tinted plates the system builds (~4.75–4.81), in both themes. The cost is
+   * that the softest text tier now sits at roughly the same weight as
+   * --home-ink-muted; the eyebrow tier cannot be lighter than that and still
+   * carry readable text.
    */
-  --home-ink-soft: color-mix(in srgb, var(--home-ink) 45%, var(--home-paper));
+  --home-ink-soft: color-mix(in srgb, var(--home-ink) 66%, var(--home-paper));
   --home-paper-raised: color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix));
 
   /*
@@ -774,7 +784,7 @@
   .section-panel {
     background: var(--home-paper-raised);
     border: 1px solid var(--home-rule);
-    border-radius: 1.5rem;
+    border-radius: var(--radius-3xl);
     box-shadow: var(--shadow-sm);
     padding: 2rem;
   }
@@ -2519,7 +2529,7 @@ img {
     radial-gradient(circle at 6% -2%, color-mix(in srgb, var(--home-signal-soft) 18%, transparent), transparent 28%),
     radial-gradient(circle at 96% 4%, color-mix(in srgb, var(--home-signal) 18%, transparent), transparent 26%),
     var(--home-paper);
-  border-radius: 28px;
+  border-radius: var(--radius-3xl);
   border: 1px solid var(--home-rule);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
@@ -2533,13 +2543,13 @@ img {
   }
 }
 @media (max-width: 900px) {
-  .tool-shell { grid-template-columns: 1fr; border-radius: 20px; }
+  .tool-shell { grid-template-columns: 1fr; border-radius: var(--radius-3xl); }
   .tool-sidebar { display: none !important; }
   .tool-rail { grid-column: 1; }
 }
 
 .tool-band {
-  border-radius: 28px;
+  border-radius: var(--radius-3xl);
   border: 1px solid var(--home-rule);
   background:
     radial-gradient(circle at 6% -4%, color-mix(in srgb, var(--home-signal) 12%, transparent), transparent 32%),
@@ -2567,7 +2577,7 @@ img {
   margin-bottom: 14px;
 }
 .tool-brand-mark {
-  width: 34px; height: 34px; border-radius: 12px;
+  width: 34px; height: 34px; border-radius: var(--radius-3xl);
   background:
     radial-gradient(circle at 32% 36%, var(--home-signal-soft) 0%, transparent 58%),
     radial-gradient(circle at 70% 64%, var(--home-signal) 0%, transparent 60%),
@@ -2591,7 +2601,7 @@ img {
 .tool-nav-link {
   display: flex; align-items: center; gap: 12px;
   padding: 9px 12px;
-  border-radius: 14px;
+  border-radius: var(--radius-2xl);
   color: var(--home-ink-muted);
   text-decoration: none;
   font-size: 13.5px; font-weight: 500;
@@ -2741,13 +2751,13 @@ img {
 
 .tool-card {
   border: 1px solid var(--home-rule);
-  border-radius: 22px;
+  border-radius: var(--radius-3xl);
   background: color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix));
   box-shadow: var(--shadow-sm);
   padding: 22px;
 }
 .tool-card-hero {
-  border-radius: 28px;
+  border-radius: var(--radius-3xl);
   padding: 26px 28px;
   box-shadow: var(--shadow-md);
 }
@@ -2805,7 +2815,7 @@ img {
 
 .tool-empty {
   border: 1px dashed var(--home-rule);
-  border-radius: 22px;
+  border-radius: var(--radius-3xl);
   background: color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix));
   padding: 24px;
   text-align: center;

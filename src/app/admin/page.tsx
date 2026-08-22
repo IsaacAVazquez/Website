@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useSession, signOut, signIn } from 'next-auth/react';
 import { Lock, LogOut } from "lucide-react";
 import { ModernButton } from '@/components/ui/ModernButton';
@@ -15,6 +15,7 @@ const FOOTBALL_WORKFLOW_URL =
 
 export default function AdminPage() {
   const { data: session, status } = useSession();
+  const reduceMotion = useReducedMotion();
   const [loginForm, setLoginForm] = useState({ username: '', password: '', error: '', isLoading: false });
 
   useEffect(() => {
@@ -134,9 +135,9 @@ export default function AdminPage() {
     <div className="home-page min-h-screen">
       <div className="home-shell home-shell-tight py-16">
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
+          initial={reduceMotion ? false : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
+          transition={reduceMotion ? { duration: 0 } : { duration: 0.4 }}
           className="flex items-start justify-between gap-6 mb-10"
         >
           <div>
