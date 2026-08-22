@@ -147,7 +147,7 @@ export function BestBallDraftBoard({
               {player.bestBallRank}
             </span>
             <span className="min-w-0">
-              <span className="block truncate text-sm font-semibold">{player.name}</span>
+              <span data-testid="best-ball-board-player-name" className="block truncate text-sm font-semibold">{player.name}</span>
               <span className="mt-1 block truncate text-xs sm:hidden" style={{ color: "var(--home-ink-muted)" }}>
                 {player.team} · {adpAvailable ? "ADP" : "Source rank"}{" "}
                 {adpAvailable
