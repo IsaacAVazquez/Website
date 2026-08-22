@@ -53,11 +53,14 @@ interface Props {
   definition?: string;
   /**
    * Renders this as the hover trigger instead of the "?" chip, for headers and
-   * labels where an icon would crowd the row. A text trigger is hover-only and
-   * not focusable, so it stays valid inside a decorative `aria-hidden` header
-   * whose per-row cells already carry the same wording for screen readers.
+   * labels where an icon would crowd the row. By default a text trigger is
+   * hover-only and not focusable, which is only valid inside a decorative
+   * `aria-hidden` header whose per-row cells already carry the same wording
+   * for screen readers. Pass `focusable` to render it as a real button that
+   * opens on keyboard focus and announces via `aria-describedby`.
    */
   children?: React.ReactNode;
+  focusable?: boolean;
   /**
    * @deprecated Positioning is now automatic and viewport-aware — the bubble
    * renders in a body-level portal, centers on the trigger, clamps to the
@@ -89,7 +92,7 @@ interface BubblePosition {
  * where the trigger sits — near a screen edge, deep in a scroll container, or
  * inside a transformed row.
  */
-export function MetricTooltip({ term, definition, children }: Props) {
+export function MetricTooltip({ term, definition, children, focusable }: Props) {
   const text = definition ?? METRIC_DEFINITIONS[term];
 
   const triggerRef = React.useRef<HTMLElement | null>(null);
@@ -189,6 +192,41 @@ export function MetricTooltip({ term, definition, children }: Props) {
       : null;
 
   if (children !== undefined) {
+    if (focusable) {
+      return (
+        <>
+          <button
+            ref={(element) => {
+              triggerRef.current = element;
+            }}
+            type="button"
+            aria-label={`What is ${term}?`}
+            aria-describedby={open ? bubbleId : undefined}
+            onClick={swallow}
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => {
+              setHovered(false);
+              if (!focused) setPos(null);
+            }}
+            onFocus={() => setFocused(true)}
+            onBlur={() => {
+              setFocused(false);
+              if (!hovered) setPos(null);
+            }}
+            onKeyDown={(event) => {
+              swallow(event);
+              if (event.key === "Escape") {
+                triggerRef.current?.blur();
+              }
+            }}
+            className="relative m-0 cursor-help border-0 bg-transparent p-0 text-inherit underline decoration-dotted decoration-from-font underline-offset-[3px] outline-none focus-visible:rounded-[2px] focus-visible:ring-2 focus-visible:ring-[var(--home-ink)] after:absolute after:-inset-x-1 after:-inset-y-3 after:content-['']"
+          >
+            {children}
+          </button>
+          {bubble}
+        </>
+      );
+    }
     return (
       <>
         <span

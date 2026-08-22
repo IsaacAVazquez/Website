@@ -1111,7 +1111,10 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                 >
                   {/* The open control overlays the row instead of wrapping it: an
                       aria-label on a wrapping button would override every cell,
-                      leaving screen readers nothing but "Open X detail" rows. */}
+                      leaving screen readers nothing but "Open X detail" rows.
+                      The content div sits above it so hover explanations fire
+                      and names stay selectable; its own click still opens the
+                      drawer unless the user is selecting text. */}
                   <button
                     type="button"
                     aria-label={`Open ${player.name} detail`}
@@ -1119,8 +1122,12 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                     className="absolute inset-0 z-[1] cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[var(--home-signal)]"
                   />
                   <div
-                    className="flex min-h-11 w-full flex-wrap items-center gap-x-4 gap-y-1 px-3.5 py-1.5 text-left"
+                    className="relative z-[2] flex min-h-11 w-full cursor-pointer flex-wrap items-center gap-x-4 gap-y-1 px-3.5 py-1.5 text-left"
                     style={{ color: "var(--home-ink)" }}
+                    onClick={() => {
+                      if (window.getSelection()?.toString()) return;
+                      setDetailPlayerId(player.id);
+                    }}
                   >
                     <span
                       className="w-[34px] shrink-0 text-right font-mono text-sm"
@@ -1420,13 +1427,12 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
         ) : (
           <>
             <div
-              aria-hidden="true"
               className="hidden items-center gap-x-4 px-3.5 pb-2 font-mono text-3xs uppercase tracking-[0.12em] md:flex"
               style={{ color: "var(--home-ink-muted)" }}
             >
               <span className="w-[34px] shrink-0" />
               <span className="min-w-0 flex-[1_1_200px]">
-                <MetricTooltip term="Player" definition={FANTASY_PLAYER_COLUMN_TOOLTIP}>
+                <MetricTooltip term="Player" definition={FANTASY_PLAYER_COLUMN_TOOLTIP} focusable>
                   Player
                 </MetricTooltip>
               </span>
@@ -1434,7 +1440,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                 {metricColumns.map((column) => (
                   <span key={column.label} className={column.className}>
                     {column.title ? (
-                      <MetricTooltip term={column.label} definition={column.title}>
+                      <MetricTooltip term={column.label} definition={column.title} focusable>
                         {column.label}
                       </MetricTooltip>
                     ) : (
