@@ -157,15 +157,16 @@ jobs:
             const scheduleTeams = Object.keys(bestBall.week17Opponents || {}).length;
             const now = Date.now();
             const generatedAgeDays = (now - Date.parse(bestBall.generatedAt || '')) / 86400000;
-            // The builder fail-softs each source to the previous snapshot's asOf,
-            // so a single upstream outage must not fail the whole job. Warn at the
-            // tight in-season bound, and only fail once a source looks abandoned.
+            // The builder fail-softs each source to the previous snapshot's asOf.
+            // Record the failure here without skipping the other lane's commit,
+            // using the same age boundaries the deployed tools enforce.
             const inDraftSeason = [6, 7, 8].includes(new Date().getUTCMonth());
-            const sourceWarnLimit = inDraftSeason ? 4 : 14;
-            const sourceFailLimit = inDraftSeason ? 14 : 45;
+            const sourceWarnLimit = inDraftSeason ? 2 : 8;
+            const sourceFailLimit = inDraftSeason ? 4 : 14;
+            const futureSkewToleranceDays = 5 / 1440;
             const checkSourceAge = (label, ageDays) => {
-              if (!Number.isFinite(ageDays) || ageDays > sourceFailLimit) {
-                failures.push('best-ball ' + label + ' source is older than ' + sourceFailLimit + ' days');
+              if (!Number.isFinite(ageDays) || ageDays < -futureSkewToleranceDays || ageDays > sourceFailLimit) {
+                failures.push('best-ball ' + label + ' source is invalid, future-dated, or older than ' + sourceFailLimit + ' days');
               } else if (ageDays > sourceWarnLimit) {
                 console.log('::warning::best-ball ' + label + ' source is ' + ageDays.toFixed(1) + ' days old (warn above ' + sourceWarnLimit + ', fail above ' + sourceFailLimit + ')');
               }
@@ -173,6 +174,7 @@ jobs:
             const rankingAgeDays = (now - Date.parse(bestBall.rankingSource?.asOf || '')) / 86400000;
             const adpAgeDays = (now - Date.parse(bestBall.adpSource?.asOf || '')) / 86400000;
             const superflexAgeDays = (now - Date.parse(bestBall.superflexSource?.asOf || '')) / 86400000;
+            const scheduleAgeDays = (now - Date.parse(bestBall.scheduleSource?.asOf || '')) / 86400000;
             console.log('best-ball: players=' + playerCount + ' experts=' + rankingExperts + ' superflex=' + superflexMatches + ' adp=' + adpMatches + ' week17=' + scheduleTeams + ' built=' + generatedAgeDays.toFixed(1) + 'd');
             if (playerCount < 250) failures.push('best-ball has ' + playerCount + ' players (need >= 250)');
             if (rankingExperts < 5) failures.push('best-ball has ' + rankingExperts + ' ranking experts (need >= 5)');
@@ -183,6 +185,7 @@ jobs:
             checkSourceAge('rankings', rankingAgeDays);
             checkSourceAge('ADP', adpAgeDays);
             checkSourceAge('Superflex', superflexAgeDays);
+            checkSourceAge('schedule', scheduleAgeDays);
             if (!String(bestBall.scheduleSource?.url || '').includes('dates=' + bestBall.season)) failures.push('best-ball Week 17 schedule does not match snapshot season');
           } catch (err) {
             failures.push('best-ball failed to parse: ' + err.message);
@@ -224,8 +227,9 @@ jobs:
 
           const now = Date.now();
           const inDraftSeason = [6, 7, 8].includes(new Date().getUTCMonth());
-          const ageWarnLimit = inDraftSeason ? 4 : 14;
-          const ageFailLimit = inDraftSeason ? 14 : 45;
+          const ageWarnLimit = inDraftSeason ? 2 : 8;
+          const ageFailLimit = inDraftSeason ? 4 : 14;
+          const futureSkewToleranceDays = 5 / 1440;
           const darkFormats = [];
 
           for (const format of formats) {
@@ -248,7 +252,7 @@ jobs:
               if (coverage < MIN_COVERAGE) {
                 console.log('::warning::' + format + ' top-board ADP coverage is ' + pct + '%, below the ' + (MIN_COVERAGE * 100) + '% floor. Check the matcher or the upstream feed.');
               }
-              if (!Number.isFinite(adpAgeDays) || adpAgeDays > ageFailLimit) {
+              if (!Number.isFinite(adpAgeDays) || adpAgeDays < -futureSkewToleranceDays || adpAgeDays > ageFailLimit) {
                 darkFormats.push(format + ' (' + ageLabel + ')');
               } else if (adpAgeDays > ageWarnLimit) {
                 console.log('::warning::' + format + ' ADP source is ' + ageLabel + ' old (warn above ' + ageWarnLimit + ', fail above ' + ageFailLimit + '). The site treats it as stale and hides ADP surfaces.');

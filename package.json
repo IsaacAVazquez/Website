@@ -47,7 +47,9 @@
     "check:blog-dates": "tsx scripts/checkBlogDateReview.ts",
     "generate:icons": "node scripts/generate-pwa-icons.mjs",
     "generate:sitemap": "node scripts/generatePublicSitemap.mjs",
-    "submit:indexnow": "node scripts/submitIndexNow.mjs"
+    "submit:indexnow": "node scripts/submitIndexNow.mjs",
+    "docs:automation": "node scripts/generateAutomationInventory.mjs",
+    "check:sitemap": "node scripts/checkSitemapCoverage.mjs"
   },
   "dependencies": {
     "@netlify/blobs": "^10.7.9",

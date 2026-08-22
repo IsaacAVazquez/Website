@@ -189,6 +189,12 @@ describe("snapshot refresh workflow infrastructure", () => {
     );
 
     expect(workflow).toContain("? 4 : 14");
+    expect(workflow).toContain("? 2 : 8");
+    expect(workflow).not.toContain("? 14 : 45");
+    expect(workflow).toContain("const futureSkewToleranceDays = 5 / 1440");
+    expect(workflow).toContain("ageDays < -futureSkewToleranceDays");
+    expect(workflow).toContain("adpAgeDays < -futureSkewToleranceDays");
+    expect(workflow).toContain("checkSourceAge('schedule', scheduleAgeDays)");
     expect(workflow).toContain("const TOP_BOARD_SIZE = 150");
     expect(workflow).toContain("const MIN_COVERAGE = 0.9");
     expect(workflow).toContain("top-board ADP coverage");
