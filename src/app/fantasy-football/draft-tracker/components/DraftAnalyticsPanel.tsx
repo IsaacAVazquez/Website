@@ -15,6 +15,7 @@ interface DraftAnalyticsPanelProps {
   isDraftComplete: boolean;
   userTeamNumber: number;
   adpAvailable: boolean;
+  adpUnavailableReason?: "stale" | "reference" | "missing";
   getTeamName?: (teamNumber: number) => string;
 }
 
@@ -41,10 +42,20 @@ function formatDelta(delta: number): string {
   return delta > 0 ? `+${delta}` : `${delta}`;
 }
 
-function describeBaseline(adpAvailable: boolean): string {
-  return adpAvailable
-    ? "Deltas compare each pick's slot with usable mock-draft ADP. An early consensus rank can substitute when ADP is missing, while thin ADP samples and deep consensus ranks stay unscored."
-    : "Deltas compare each pick's slot with an early published consensus rank. Deep ranks stay unscored because a board rank is not a reliable pick price there. The current snapshot has no ADP data.";
+function describeBaseline(
+  adpAvailable: boolean,
+  adpUnavailableReason: "stale" | "reference" | "missing"
+): string {
+  if (adpAvailable) {
+    return "Deltas compare each pick's slot with usable mock-draft ADP. An early consensus rank can substitute when ADP is missing, while thin ADP samples and deep consensus ranks stay unscored.";
+  }
+
+  const sourceSentence = adpUnavailableReason === "stale"
+    ? "The mock-draft ADP source is stale, so it is excluded."
+    : adpUnavailableReason === "reference"
+      ? "The prior-season ADP is shown as a dated reference elsewhere, but it is excluded from these calculations."
+      : "The current snapshot has no usable ADP source.";
+  return `Deltas compare each pick's slot with an early published consensus rank. Deep ranks stay unscored because a board rank is not a reliable pick price there. ${sourceSentence}`;
 }
 
 function PickValueRow({
@@ -91,6 +102,7 @@ export function DraftAnalyticsPanel({
   isDraftComplete,
   userTeamNumber,
   adpAvailable,
+  adpUnavailableReason = "missing",
   getTeamName = defaultTeamName,
 }: DraftAnalyticsPanelProps) {
   if (!isDraftComplete) {
@@ -148,7 +160,7 @@ export function DraftAnalyticsPanel({
           )}
         </div>
         <p className="mt-3 text-xs leading-5" style={{ color: "var(--home-ink-muted)" }}>
-          {describeBaseline(adpAvailable)}
+          {describeBaseline(adpAvailable, adpUnavailableReason)}
         </p>
       </article>
     );
@@ -167,7 +179,7 @@ export function DraftAnalyticsPanel({
       <p className="home-kicker mb-1">Draft recap</p>
       <h2 className="text-2xl font-semibold">How the room drafted</h2>
       <p className="mt-2 max-w-[68ch] text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
-        {describeBaseline(adpAvailable)} A positive total means a team kept landing players past
+        {describeBaseline(adpAvailable, adpUnavailableReason)} A positive total means a team kept landing players past
         where the market expected them to go. None of it predicts the season. It only summarizes
         market-price discipline. Draft Outlook is the separate room ranking because it also includes
         roster and lineup structure.

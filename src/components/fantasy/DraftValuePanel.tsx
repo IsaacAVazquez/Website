@@ -394,6 +394,7 @@ export function DraftValuePanel({
   defaultEntryCost,
   calculatorValue,
   onCalculatorChange,
+  unavailableReason,
 }: {
   report: DraftValueReport | null;
   headingId: string;
@@ -402,6 +403,7 @@ export function DraftValuePanel({
   defaultEntryCost?: number;
   calculatorValue?: ExpectedReturnFormState;
   onCalculatorChange?: (value: ExpectedReturnFormState) => void;
+  unavailableReason?: string | null;
 }) {
   const roomRank = report?.roomRank;
   // Hold the rank until the sample is big enough to mean anything, and say so
@@ -435,7 +437,7 @@ export function DraftValuePanel({
       <div>
         <div className="flex flex-wrap items-center justify-between gap-2">
           <p className="home-kicker mb-0">Draft outlook</p>
-          {report ? (
+          {report && !unavailableReason ? (
             <span
               className="rounded-full border px-2.5 py-1 text-2xs font-semibold"
               style={{ borderColor: "var(--home-rule)", color: "var(--home-ink-muted)" }}
@@ -445,14 +447,32 @@ export function DraftValuePanel({
           ) : null}
         </div>
         <h3 id={headingId} className="mt-1 text-xl font-semibold">
-          {report?.picksDrafted ? "How this room reads right now" : "Waiting for your first pick"}
+          {unavailableReason
+            ? "Draft Outlook paused"
+            : report?.picksDrafted
+              ? "How this room reads right now"
+              : "Waiting for your first pick"}
         </h3>
-        <p className="mt-2 text-xs leading-5" style={{ color: "var(--home-ink-muted)" }}>
-          {evidenceIntro}
-        </p>
+        {!unavailableReason ? (
+          <p className="mt-2 text-xs leading-5" style={{ color: "var(--home-ink-muted)" }}>
+            {evidenceIntro}
+          </p>
+        ) : null}
       </div>
 
-      {report?.picksDrafted ? (
+      {unavailableReason ? (
+        <p
+          role="status"
+          className="rounded-[var(--radius-2xl)] border px-4 py-3 text-xs leading-5"
+          style={{
+            borderColor: "color-mix(in srgb, var(--home-warning) 48%, var(--home-rule))",
+            background: "color-mix(in srgb, var(--home-warning) 10%, var(--home-paper))",
+            color: "var(--home-ink-muted)",
+          }}
+        >
+          {unavailableReason}
+        </p>
+      ) : report?.picksDrafted ? (
         <>
           <div className="grid grid-cols-2 gap-2">
             <div className="rounded-[var(--radius-2xl)] border p-3" style={TILE_STYLE}>

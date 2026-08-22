@@ -3,6 +3,10 @@ import {
   restoreLocalDataBackup,
 } from "@/lib/localDataBackup";
 import { getFantasyDraftStorageKey } from "@/app/fantasy-football/draft-tracker/hooks/useDraftState";
+import {
+  getBestBallDraftBackupKey,
+  getBestBallDraftStorageKey,
+} from "@/app/fantasy-football/best-ball/draft-tracker/best-ball-draft-state";
 import { getMockDraftStorageKey } from "@/app/fantasy-football/mock-draft/hooks/useMockDraftState";
 import { getFantasyTradeStorageKey } from "@/lib/fantasyTradePersistence";
 
@@ -14,6 +18,14 @@ describe("localDataBackup", () => {
   // backups after the v3 migration, and mock draft rooms were never added.
   it("covers every live fantasy draft storage key builder", () => {
     localStorage.setItem(getFantasyDraftStorageKey(2026), '{"version":3}');
+    localStorage.setItem(
+      getBestBallDraftStorageKey(2026, "bbm-vii"),
+      '{"schemaVersion":1}'
+    );
+    localStorage.setItem(
+      getBestBallDraftBackupKey(2026, "bbm-vii"),
+      '{"schemaVersion":1,"previous":true}'
+    );
     localStorage.setItem(getMockDraftStorageKey(2026), '{"version":1}');
     localStorage.setItem(
       getFantasyTradeStorageKey({ season: 2026, scoring: "ppr" }),
@@ -25,6 +37,8 @@ describe("localDataBackup", () => {
     expect(Object.keys(backup.entries)).toEqual(
       expect.arrayContaining([
         getFantasyDraftStorageKey(2026),
+        getBestBallDraftStorageKey(2026, "bbm-vii"),
+        getBestBallDraftBackupKey(2026, "bbm-vii"),
         getMockDraftStorageKey(2026),
         getFantasyTradeStorageKey({ season: 2026, scoring: "ppr" }),
       ])

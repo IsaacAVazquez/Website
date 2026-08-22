@@ -306,6 +306,44 @@ describe("useFantasySnapshot", () => {
     expect(result.current.players[0]?.position).toBe("RB");
   });
 
+  it("never exposes the prior scoring board while the next board loads", async () => {
+    let resolvePpr: ((response: unknown) => void) | undefined;
+    (global.fetch as jest.Mock).mockImplementation((url: unknown) => {
+      if (String(url).includes("/standard.json")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => buildSnapshotPayload("STANDARD"),
+        });
+      }
+      return new Promise((resolve) => {
+        resolvePpr = resolve;
+      });
+    });
+
+    const { result, rerender } = renderHook(
+      ({ scoring }: { scoring: "standard" | "ppr" }) =>
+        useFantasySnapshot({ position: "overall", scoring }),
+      { initialProps: { scoring: "standard" as "standard" | "ppr" } }
+    );
+
+    await waitFor(() => expect(result.current.snapshot?.scoringFormat).toBe("STANDARD"));
+
+    rerender({ scoring: "ppr" });
+
+    expect(result.current.snapshot).toBeNull();
+    expect(result.current.players).toEqual([]);
+    expect(result.current.isLoading).toBe(true);
+
+    await act(async () => {
+      resolvePpr?.({
+        ok: true,
+        json: async () => buildSnapshotPayload("PPR"),
+      });
+    });
+
+    await waitFor(() => expect(result.current.snapshot?.scoringFormat).toBe("PPR"));
+  });
+
   it("normalizes a legacy snapshot without slice metadata", async () => {
     (global.fetch as jest.Mock).mockResolvedValue({
       ok: true,

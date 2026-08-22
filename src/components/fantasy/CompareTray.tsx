@@ -14,6 +14,8 @@ interface CompareTrayProps {
   resolvePlayer: (id: string) => Player | undefined;
   /** True only after the complete player snapshot can resolve persisted IDs. */
   playerDataReady?: boolean;
+  /** Remove unresolved IDs only when this surface has the complete shared player universe. */
+  pruneUnresolvedIds?: boolean;
   publishedRank?: (player: Player) => string;
   /** Passed through to CompareModal — see PlayerDetailDrawer for the rationale. */
   valueSignalAvailable?: boolean;
@@ -35,6 +37,7 @@ interface CompareTrayProps {
 export function CompareTray({
   resolvePlayer,
   playerDataReady = false,
+  pruneUnresolvedIds = true,
   publishedRank,
   valueSignalAvailable = true,
   adpAvailable = true,
@@ -55,16 +58,19 @@ export function CompareTray({
   );
 
   useEffect(() => {
-    if (!playerDataReady || players.length === compareIds.length) return;
+    if (!playerDataReady || !pruneUnresolvedIds || players.length === compareIds.length) return;
     replaceCompare(players.map((player) => player.id));
-  }, [compareIds.length, playerDataReady, players, replaceCompare]);
+  }, [compareIds.length, playerDataReady, players, pruneUnresolvedIds, replaceCompare]);
 
   const canCompare = players.length >= 2;
+  const hiddenCount = compareIds.length - players.length;
+  const showHiddenSelections = playerDataReady && players.length === 0 && hiddenCount > 0;
+  const trayVisible = players.length > 0 || showHiddenSelections;
 
   return (
     <>
       <AnimatePresence>
-        {players.length > 0 && (
+        {trayVisible && (
           <motion.div
             initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -82,7 +88,29 @@ export function CompareTray({
               card's edges at every width.
             */}
             <div className="home-shell home-shell-wide flex justify-center">
-            {collapsed ? (
+            {showHiddenSelections ? (
+              <div
+                className="flex w-full items-center gap-3 rounded-[var(--radius-3xl)] border px-4 py-3"
+                style={{
+                  borderColor: "var(--home-rule)",
+                  background: "color-mix(in srgb, var(--home-paper) 94%, var(--home-elev-mix))",
+                  boxShadow: "var(--shadow-lg)",
+                  backdropFilter: "blur(8px)",
+                }}
+              >
+                <p role="status" className="flex-1 text-sm font-semibold">
+                  {hiddenCount} {hiddenCount === 1 ? "player is" : "players are"} pinned on another fantasy board.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => compare.clear()}
+                  className="inline-flex min-h-touch items-center rounded-full border px-4 text-sm font-semibold"
+                  style={{ borderColor: "var(--home-rule)", color: "var(--home-ink)" }}
+                >
+                  Clear compare
+                </button>
+              </div>
+            ) : collapsed ? (
               <button
                 type="button"
                 onClick={() => setCollapsed(false)}
@@ -121,7 +149,9 @@ export function CompareTray({
                 compare toggle still removes a player.
               */}
               <p className="flex-1 text-sm font-semibold tabular-nums sm:hidden">
-                {players.length} pinned
+                {hiddenCount > 0
+                  ? `${players.length} here, ${hiddenCount} elsewhere`
+                  : `${players.length} pinned`}
               </p>
               {/*
                 No min-w-0 here. With it, this flex item was allowed to shrink
@@ -166,6 +196,11 @@ export function CompareTray({
                     </button>
                   </span>
                 ))}
+                {hiddenCount > 0 ? (
+                  <span className="px-2 text-xs font-semibold" style={{ color: "var(--home-ink-muted)" }}>
+                    {hiddenCount} pinned elsewhere
+                  </span>
+                ) : null}
               </div>
               <button
                 type="button"
@@ -212,7 +247,7 @@ export function CompareTray({
         widths; measure the bar and set the value from it if it ever grows a
         second row at those widths.
       */}
-      {players.length > 0 && <div aria-hidden="true" className="h-20" />}
+      {trayVisible && <div aria-hidden="true" className="h-20" />}
 
       {open && canCompare && (
         <CompareModal

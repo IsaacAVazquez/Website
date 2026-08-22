@@ -29,6 +29,7 @@ import {
   FANTASY_AVG_RANK_TOOLTIP,
   FANTASY_EXPERT_SPREAD_TOOLTIP,
   FANTASY_POINTS_PER_GAME_TOOLTIP,
+  FANTASY_PRIOR_SEASON_ADP_TOOLTIP,
   FANTASY_REACH_TOOLTIP,
   FANTASY_VALUE_TOOLTIP,
   FANTASY_VS_ADP_TOOLTIP,
@@ -320,6 +321,10 @@ interface DraftPlayerDrawerProps {
   boardTierCount: number | null;
   /** Whether the snapshot carries a fresh, attributed ADP source. */
   adpAvailable: boolean;
+  /** Whether that ADP is current enough to drive value and reach calculations. */
+  adpSignalsAvailable: boolean;
+  /** Visible date for a prior-season reference, or null for a current source. */
+  adpReferenceAsOf: string | null;
   /** Whether this board ranks on the overall scale, so ADP deltas mean something. */
   vsAdpMeaningful: boolean;
   /** Up to five board neighbors (the player plus two either side). */
@@ -342,6 +347,8 @@ function DraftPlayerDrawer({
   publishedRank,
   boardTierCount,
   adpAvailable,
+  adpSignalsAvailable,
+  adpReferenceAsOf,
   vsAdpMeaningful,
   neighbors,
   activePosition,
@@ -407,10 +414,10 @@ function DraftPlayerDrawer({
   }, []);
 
   const isQueued = queue.isQueued(player.id);
-  const value = adpAvailable && vsAdpMeaningful ? getValueVsAdp(player) : null;
+  const value = adpSignalsAvailable && vsAdpMeaningful ? getValueVsAdp(player) : null;
   const spread = getConsensusSpread(player);
   const avg = getConsensusAvg(player);
-  const vsAdp = adpAvailable && vsAdpMeaningful ? describeVsAdp(player) : null;
+  const vsAdp = adpSignalsAvailable && vsAdpMeaningful ? describeVsAdp(player) : null;
 
   const verdict = value
     ? !hasReliableAdpSample(player)
@@ -522,7 +529,11 @@ function DraftPlayerDrawer({
             title={FANTASY_EXPERT_SPREAD_TOOLTIP}
           />
           {adpAvailable && Number.isFinite(player.adp) && (
-            <DrawerStat label="Market ADP" value={formatAdp(player.adp)} title={FANTASY_ADP_TOOLTIP} />
+            <DrawerStat
+              label={adpReferenceAsOf ? `Prior-season ADP · ${adpReferenceAsOf}` : "Market ADP"}
+              value={formatAdp(player.adp)}
+              title={adpReferenceAsOf ? FANTASY_PRIOR_SEASON_ADP_TOOLTIP : FANTASY_ADP_TOOLTIP}
+            />
           )}
           {vsAdp && (
             <DrawerStat
@@ -861,6 +872,10 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
   const adpSource = metadata?.adpSource ?? null;
   const adpFreshness = getFantasyAdpFreshness(adpSource?.asOf, metadata?.season);
   const adpAvailable = Boolean(adpSource) && adpFreshness !== "stale";
+  const adpSignalsAvailable = Boolean(adpSource) && adpFreshness === "current";
+  const adpTooltip = adpFreshness === "prior-season"
+    ? FANTASY_PRIOR_SEASON_ADP_TOOLTIP
+    : FANTASY_ADP_TOOLTIP;
   const vsAdpMeaningful = routeState.position === "overall" || routeState.position === "flex";
   const selectedScoringLabel = FANTASY_SCORING_LABELS[routeState.scoring];
   const currentSourceUpdatedAt = sliceMetadata?.updatedAt ?? metadata?.upstreamUpdatedAt ?? null;
@@ -1016,10 +1031,10 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
     { label: "Range", className: "w-16 text-right", title: FANTASY_EXPERT_SPREAD_TOOLTIP },
     { label: "Avg", className: "w-12 text-right", title: FANTASY_AVG_RANK_TOOLTIP },
     ...(adpAvailable
-      ? [
-          { label: "ADP", className: "w-12 text-right", title: FANTASY_ADP_TOOLTIP },
-          { label: "vs ADP", className: "w-16 text-right", title: FANTASY_VS_ADP_TOOLTIP },
-        ]
+      ? [{ label: "ADP", className: "w-12 text-right", title: adpTooltip }]
+      : []),
+    ...(adpSignalsAvailable
+      ? [{ label: "vs ADP", className: "w-16 text-right", title: FANTASY_VS_ADP_TOOLTIP }]
       : []),
   ];
 
@@ -1086,7 +1101,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
           </div>
           <ul className="m-0 list-none p-0">
             {group.rows.map((player) => {
-              const vsAdp = adpAvailable && vsAdpMeaningful ? describeVsAdp(player) : null;
+              const vsAdp = adpSignalsAvailable && vsAdpMeaningful ? describeVsAdp(player) : null;
               const tone = getPositionTone(player.position);
               return (
                 <li
@@ -1132,7 +1147,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                         {player.team}
                         {player.byeWeek ? ` · Bye ${player.byeWeek}` : ""}
                       </span>
-                      {adpAvailable && vsAdpMeaningful && <ValueReachChip player={player} />}
+                      {adpSignalsAvailable && vsAdpMeaningful && <ValueReachChip player={player} />}
                     </span>
                     <span className="flex max-w-full flex-wrap items-center gap-x-4 gap-y-1">
                       <ExpertSpreadBar player={player} scale={boardScale} />
@@ -1153,25 +1168,29 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                           <span className="sr-only">ADP</span>
                           <span
                             className="w-12 text-right font-mono text-xs"
-                            title={FANTASY_ADP_TOOLTIP}
+                            title={adpTooltip}
                             style={{ color: "var(--home-ink-muted)" }}
                           >
                             {formatAdp(player.adp)}
                           </span>
-                          <span className="sr-only">versus ADP</span>
-                          <span
-                            className="w-16 text-right font-mono text-xs"
-                            title={
-                              !vsAdpMeaningful
-                                ? "ADP deltas compare to overall rank, so position boards do not get one"
-                                : vsAdp && !vsAdp.judged
-                                  ? "Early mock-draft sample, so the gap carries no value or reach read yet"
-                                  : FANTASY_VS_ADP_TOOLTIP
-                            }
-                            style={{ color: vsAdp ? vsAdp.color : "var(--home-ink-muted)" }}
-                          >
-                            {vsAdp ? vsAdp.text : "—"}
-                          </span>
+                          {adpSignalsAvailable ? (
+                            <>
+                              <span className="sr-only">versus ADP</span>
+                              <span
+                                className="w-16 text-right font-mono text-xs"
+                                title={
+                                  !vsAdpMeaningful
+                                    ? "ADP deltas compare to overall rank, so position boards do not get one"
+                                    : vsAdp && !vsAdp.judged
+                                      ? "Early mock-draft sample, so the gap carries no value or reach read yet"
+                                      : FANTASY_VS_ADP_TOOLTIP
+                                }
+                                style={{ color: vsAdp ? vsAdp.color : "var(--home-ink-muted)" }}
+                              >
+                                {vsAdp ? vsAdp.text : "—"}
+                              </span>
+                            </>
+                          ) : null}
                         </>
                       )}
                     </span>
@@ -1498,6 +1517,8 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
           publishedRank={getPublishedBoardRank(detailPlayer, routeState.position)}
           boardTierCount={maxTier > 0 ? maxTier : null}
           adpAvailable={adpAvailable}
+          adpSignalsAvailable={adpSignalsAvailable}
+          adpReferenceAsOf={adpFreshness === "prior-season" ? adpStamp : null}
           vsAdpMeaningful={vsAdpMeaningful}
           neighbors={neighborhood}
           activePosition={routeState.position}

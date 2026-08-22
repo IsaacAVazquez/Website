@@ -12,6 +12,7 @@ import {
   analyzeBestBallRoster,
   getContestPreset,
   getNextUserPick,
+  getStrategyProfile,
   hasSupportedBestBallAdp,
   normalizeContestId,
   recommendBestBallPlayers,
@@ -21,7 +22,7 @@ import {
 } from "@/lib/bestBall";
 import type { BestBallSnapshot } from "@/lib/bestBallSnapshot";
 import {
-  getSnapshotStaleness,
+  getFantasySourceCapabilities,
   resolveDraftPicksForModel,
   withoutPlayerAdp,
 } from "@/lib/fantasyUtils";
@@ -109,6 +110,47 @@ function lineupLabel(preset: BestBallContestPreset): string {
   return slots.join(" · ");
 }
 
+function getBestBallModelSourceIssue(
+  snapshot: BestBallSnapshot,
+  preset: BestBallContestPreset
+): string | null {
+  const rankingSource = preset.lineupVariant === "superflex"
+    ? snapshot.superflexSource
+    : snapshot.rankingSource;
+  if (rankingSource === null) return "the required ranking source is unavailable";
+
+  const capabilities = getFantasySourceCapabilities({
+    rankingAsOf: rankingSource.asOf,
+    marketAsOf: snapshot.adpSource?.asOf,
+    scheduleAsOf: snapshot.scheduleSource?.asOf,
+    season: snapshot.season,
+  });
+  if (!capabilities.ranking.usable) return "the required ranking source is stale";
+
+  if (hasSupportedBestBallAdp(preset)) {
+    if (snapshot.adpSource === null) {
+      return "the matching standard-season Underdog ADP source is unavailable";
+    }
+    if (!capabilities.market.current) {
+      return "the matching standard-season Underdog ADP source is stale";
+    }
+  }
+
+  if (getStrategyProfile(preset).week17Treatment !== "none") {
+    if (snapshot.scheduleSource === null) {
+      return "the Week 17 schedule source is unavailable";
+    }
+    if (!capabilities.schedule.usable) {
+      return "the Week 17 schedule source is stale";
+    }
+    if (Object.keys(snapshot.week17Opponents).length < 30) {
+      return "the Week 17 schedule source is incomplete";
+    }
+  }
+
+  return null;
+}
+
 export function BestBallDraftTrackerClient({
   initialContest,
 }: {
@@ -124,6 +166,7 @@ export function BestBallDraftTrackerClient({
   const [roomOpen, setRoomOpen] = useState(false);
   const { snapshot, isLoading, error, retry } = useBestBallSnapshot();
   const preset = getContestPreset(contestId);
+  const sourceIssue = snapshot ? getBestBallModelSourceIssue(snapshot, preset) : null;
 
   function changeContest(nextContest: BestBallContestId) {
     setContestId(nextContest);
@@ -231,6 +274,21 @@ export function BestBallDraftTrackerClient({
           ) : null}
         </header>
 
+        {sourceIssue ? (
+          <div
+            role="alert"
+            className="rounded-[var(--radius-3xl)] border px-4 py-3 text-sm leading-6"
+            style={{
+              borderColor: "color-mix(in srgb, var(--home-warning) 52%, var(--home-rule))",
+              background: "color-mix(in srgb, var(--home-warning) 10%, var(--home-paper))",
+            }}
+          >
+            Draft Outlook is paused because {sourceIssue}.
+            {preset.recommendationMode === "exact" ? " Exact player cards are paused too." : ""}
+            {" "}The dated board, roster targets, and manual pick log remain available.
+          </div>
+        ) : null}
+
         {error ? (
           <article className="home-card p-5 sm:p-6" style={{ borderColor: "var(--home-negative)" }}>
             <p className="font-semibold" style={{ color: "var(--home-negative)" }}>
@@ -295,28 +353,24 @@ function BestBallDraftRoom({
   const rankingSource = preset.lineupVariant === "superflex"
     ? snapshot.superflexSource
     : snapshot.rankingSource;
+  const sourceCapabilities = getFantasySourceCapabilities({
+    rankingAsOf: rankingSource?.asOf,
+    marketAsOf: snapshot.adpSource?.asOf,
+    scheduleAsOf: snapshot.scheduleSource?.asOf,
+    season: snapshot.season,
+  });
   const adpAvailable =
     hasSupportedBestBallAdp(preset) &&
     snapshot.adpSource !== null &&
-    getSnapshotStaleness(snapshot.adpSource.asOf) !== "stale";
-  const recommendationSourceIssue = (() => {
-    if (preset.recommendationMode === "reference") return null;
-    if (rankingSource === null) return "the required ranking source is unavailable";
-    if (getSnapshotStaleness(rankingSource.asOf) === "stale") {
-      return "the required ranking source is stale";
-    }
-    if (snapshot.adpSource === null) {
-      return "the matching standard-season Underdog ADP source is unavailable";
-    }
-    if (getSnapshotStaleness(snapshot.adpSource.asOf) === "stale") {
-      return "the matching standard-season Underdog ADP source is stale";
-    }
-    return null;
-  })();
+    sourceCapabilities.market.current;
+  const modelSourceIssue = getBestBallModelSourceIssue(snapshot, preset);
+  const recommendationSourceIssue =
+    preset.recommendationMode === "exact" ? modelSourceIssue : null;
   const recommendationsAvailable =
     preset.recommendationMode === "exact" && recommendationSourceIssue === null;
   const scheduleAvailable =
     snapshot.scheduleSource !== null &&
+    sourceCapabilities.schedule.usable &&
     Object.keys(snapshot.week17Opponents).length >= 30;
   const modelPlayers = useMemo(
     () =>
@@ -368,12 +422,14 @@ function BestBallDraftRoom({
   );
   const draftValueReports = useMemo(
     () =>
-      calculateBestBallDraftValues({
-        picks: modelPicks,
-        contestId: preset.id,
-        week17Opponents: modelWeek17Opponents,
-      }),
-    [modelPicks, modelWeek17Opponents, preset.id]
+      modelSourceIssue === null
+        ? calculateBestBallDraftValues({
+            picks: modelPicks,
+            contestId: preset.id,
+            week17Opponents: modelWeek17Opponents,
+          })
+        : [],
+    [modelPicks, modelSourceIssue, modelWeek17Opponents, preset.id]
   );
   const userDraftValue =
     draftValueReports.find((report) => report.teamNumber === draft.state.userSlot) ?? null;
@@ -680,6 +736,12 @@ function BestBallDraftRoom({
               nextUserPick={nextUserPick}
               totalPicks={draft.totalPicks}
               draftValue={userDraftValue}
+              week17Available={scheduleAvailable}
+              draftValueUnavailableReason={
+                modelSourceIssue
+                  ? `Draft Outlook is paused because ${modelSourceIssue}. It will return after the published sources refresh.`
+                  : null
+              }
               calculatorValue={returnAssumptions}
               onCalculatorChange={setReturnAssumptions}
               headingId="best-ball-desktop-build-heading"
@@ -815,6 +877,12 @@ function BestBallDraftRoom({
           nextUserPick={nextUserPick}
           totalPicks={draft.totalPicks}
           draftValue={userDraftValue}
+          week17Available={scheduleAvailable}
+          draftValueUnavailableReason={
+            modelSourceIssue
+              ? `Draft Outlook is paused because ${modelSourceIssue}. It will return after the published sources refresh.`
+              : null
+          }
           calculatorValue={returnAssumptions}
           onCalculatorChange={setReturnAssumptions}
           headingId="best-ball-mobile-build-heading"

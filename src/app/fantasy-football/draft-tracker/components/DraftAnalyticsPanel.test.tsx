@@ -121,6 +121,38 @@ describe("DraftAnalyticsPanel", () => {
       />
     );
 
-    expect(screen.getByText(/The current snapshot has no ADP data/)).toBeVisible();
+    expect(screen.getByText(/The current snapshot has no usable ADP source/)).toBeVisible();
+  });
+
+  it("distinguishes a stale ADP source from a missing one", () => {
+    render(
+      <DraftAnalyticsPanel
+        analytics={computeDraftAnalytics([], [])}
+        picks={[]}
+        currentPick={1}
+        isDraftComplete={false}
+        userTeamNumber={1}
+        adpAvailable={false}
+        adpUnavailableReason="stale"
+      />
+    );
+
+    expect(screen.getByText(/The mock-draft ADP source is stale/)).toBeVisible();
+  });
+
+  it("excludes prior-season ADP from calculated draft signals", () => {
+    render(
+      <DraftAnalyticsPanel
+        analytics={computeDraftAnalytics([], [])}
+        picks={[]}
+        currentPick={1}
+        isDraftComplete={false}
+        userTeamNumber={1}
+        adpAvailable={false}
+        adpUnavailableReason="reference"
+      />
+    );
+
+    expect(screen.getByText(/prior-season ADP.*excluded from these calculations/i)).toBeVisible();
   });
 });

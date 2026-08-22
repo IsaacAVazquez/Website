@@ -33,6 +33,13 @@ interface UseFantasySnapshotResult {
   retry: () => void;
 }
 
+interface FantasySnapshotRequestState {
+  cacheKey: string;
+  snapshot: FantasySnapshot | null;
+  isLoading: boolean;
+  error: string | null;
+}
+
 const snapshotCache = new Map<string, FantasySnapshot>();
 const inflightSnapshotRequests = new Map<string, Promise<FantasySnapshot>>();
 
@@ -158,16 +165,36 @@ export function useFantasySnapshot({
   all = false,
 }: UseFantasySnapshotOptions): UseFantasySnapshotResult {
   const cacheKey = getFantasySnapshotCacheKey(scoring);
-  const [snapshot, setSnapshot] = useState<FantasySnapshot | null>(() => {
-    return snapshotCache.get(cacheKey) ?? null;
+  const [requestState, setRequestState] = useState<FantasySnapshotRequestState>(() => {
+    const cachedSnapshot = snapshotCache.get(cacheKey) ?? null;
+    return {
+      cacheKey,
+      snapshot: cachedSnapshot,
+      isLoading: cachedSnapshot === null,
+      error: null,
+    };
   });
-  const [isLoading, setIsLoading] = useState(snapshotCache.get(cacheKey) === undefined);
-  const [error, setError] = useState<string | null>(null);
   const [requestVersion, setRequestVersion] = useState(0);
+
+  // A scoring change renders before its loading effect runs. Keep request
+  // state keyed so the old scoring board is never exposed during that render.
+  const stateForCurrentKey = requestState.cacheKey === cacheKey
+    ? requestState
+    : (() => {
+        const cachedSnapshot = snapshotCache.get(cacheKey) ?? null;
+        return {
+          cacheKey,
+          snapshot: cachedSnapshot,
+          isLoading: cachedSnapshot === null,
+          error: null,
+        };
+      })();
+  const { snapshot, isLoading, error } = stateForCurrentKey;
 
   const retry = useCallback(() => {
     snapshotCache.delete(cacheKey);
     inflightSnapshotRequests.delete(cacheKey);
+    setRequestState({ cacheKey, snapshot: null, isLoading: true, error: null });
     setRequestVersion((version) => version + 1);
   }, [cacheKey]);
 
@@ -177,30 +204,37 @@ export function useFantasySnapshot({
     async function loadSnapshot() {
       const cachedSnapshot = snapshotCache.get(cacheKey);
       if (cachedSnapshot) {
-        setSnapshot(cachedSnapshot);
-        setIsLoading(false);
-        setError(null);
+        setRequestState({
+          cacheKey,
+          snapshot: cachedSnapshot,
+          isLoading: false,
+          error: null,
+        });
         return;
       }
 
-      setSnapshot(null);
-      setError(null);
-      setIsLoading(true);
+      setRequestState({ cacheKey, snapshot: null, isLoading: true, error: null });
 
       try {
         const nextSnapshot = await loadFantasySnapshot(scoring);
         if (!cancelled) {
-          setSnapshot(nextSnapshot);
-          setError(null);
+          setRequestState({
+            cacheKey,
+            snapshot: nextSnapshot,
+            isLoading: false,
+            error: null,
+          });
         }
       } catch (caughtError) {
         if (!cancelled) {
-          setSnapshot(null);
-          setError(caughtError instanceof Error ? caughtError.message : "Fantasy rankings are unavailable right now.");
-        }
-      } finally {
-        if (!cancelled) {
-          setIsLoading(false);
+          setRequestState({
+            cacheKey,
+            snapshot: null,
+            isLoading: false,
+            error: caughtError instanceof Error
+              ? caughtError.message
+              : "Fantasy rankings are unavailable right now.",
+          });
         }
       }
     }

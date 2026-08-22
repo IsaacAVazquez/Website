@@ -4,6 +4,16 @@ import type { Player } from "@/types";
 
 const mockReplace = jest.fn();
 let mockSourceDate = new Date().toISOString();
+let mockScheduleDate = mockSourceDate;
+
+const mockWeek17Opponents = {
+  ARI: "SEA", ATL: "NO", BAL: "CIN", BUF: "MIA", CAR: "TB", CHI: "GB",
+  CIN: "BAL", CLE: "PIT", DAL: "PHI", DEN: "KC", DET: "MIN", GB: "CHI",
+  HOU: "IND", IND: "HOU", JAX: "TEN", KC: "DEN", LAC: "LV", LAR: "SF",
+  LV: "LAC", MIA: "BUF", MIN: "DET", NE: "NYJ", NO: "ATL", NYG: "WAS",
+  NYJ: "NE", PHI: "DAL", PIT: "CLE", SEA: "ARI", SF: "LAR", TB: "CAR",
+  TEN: "JAX", WAS: "NYG",
+};
 
 jest.mock("next/navigation", () => ({
   useRouter: () => ({ replace: mockReplace }),
@@ -55,9 +65,9 @@ jest.mock("@/hooks/useBestBallSnapshot", () => ({
       scheduleSource: {
         provider: "ESPN",
         url: "https://example.com/schedule",
-        asOf: mockSourceDate,
+        asOf: mockScheduleDate,
       },
-      week17Opponents: { CIN: "BAL", BAL: "CIN", LAR: "TB", TB: "LAR" },
+      week17Opponents: mockWeek17Opponents,
     },
     isLoading: false,
     error: null,
@@ -70,6 +80,7 @@ describe("BestBallDraftTrackerClient", () => {
     window.localStorage.clear();
     mockReplace.mockClear();
     mockSourceDate = new Date().toISOString();
+    mockScheduleDate = mockSourceDate;
   });
 
   it("opens a room, logs the snake pick, and undoes it", async () => {
@@ -130,12 +141,41 @@ describe("BestBallDraftTrackerClient", () => {
   it("states a stale exact source separately from catalog reference reasons", async () => {
     mockSourceDate = "2020-01-01T00:00:00.000Z";
     render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
+
+    expect(
+      await screen.findByText(/Draft Outlook is paused.*Exact player cards are paused too/i)
+    ).toBeVisible();
     fireEvent.click(
       await screen.findByRole("button", { name: "Open draft room from slot 1" })
     );
 
-    expect(screen.getByRole("alert")).toHaveTextContent(/ranking source is stale/i);
+    expect(
+      screen.getAllByRole("alert").some((alert) =>
+        /ranking source is stale/i.test(alert.textContent ?? "")
+      )
+    ).toBe(true);
+    expect(screen.getByRole("heading", { name: "Draft Outlook paused" })).toBeVisible();
+    expect(screen.queryByText("Calculated market value")).not.toBeInTheDocument();
     expect(screen.queryByText("Reference guidance only")).not.toBeInTheDocument();
+  });
+
+  it("pauses exact guidance when the Week 17 schedule is stale", async () => {
+    mockScheduleDate = "2020-01-01T00:00:00.000Z";
+    render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
+
+    expect(
+      await screen.findByText(/Draft Outlook is paused because the Week 17 schedule source is stale/i)
+    ).toBeVisible();
+    fireEvent.click(
+      await screen.findByRole("button", { name: "Open draft room from slot 1" })
+    );
+
+    expect(screen.getByRole("heading", { name: "Draft Outlook paused" })).toBeVisible();
+    expect(screen.getByText(/Exact player cards are unavailable because the Week 17 schedule source is stale/i))
+      .toBeVisible();
+    expect(screen.queryByRole("button", { name: "Log for my team" }))
+      .not.toBeInTheDocument();
+    expect(screen.getByText(/Week 17 guidance is paused/i)).toBeVisible();
   });
 
   it("opens the mobile build dialog and returns focus when it closes", async () => {

@@ -5,6 +5,7 @@ import {
   getAdpSignalThreshold,
   getConsensusSpread,
   getFantasyAdpFreshness,
+  getFantasySourceCapabilities,
   getSnapshotStaleness,
   getSnapshotStalenessLabel,
   getTierRailIntensity,
@@ -54,6 +55,24 @@ describe("getSnapshotStaleness", () => {
     expect(getSnapshotStaleness(null)).toBe("stale");
     expect(getSnapshotStaleness(undefined)).toBe("stale");
     expect(getSnapshotStaleness("not-a-date")).toBe("stale");
+  });
+
+  it("rejects a future source date", () => {
+    expect(
+      getSnapshotStaleness(
+        "2099-01-01T00:00:00.000Z",
+        new Date("2026-08-07T12:00:00.000Z")
+      )
+    ).toBe("stale");
+  });
+
+  it("allows five minutes of publisher and device clock skew", () => {
+    expect(
+      getSnapshotStaleness(
+        "2026-08-07T12:04:59.000Z",
+        new Date("2026-08-07T12:00:00.000Z")
+      )
+    ).toBe("fresh");
   });
 });
 
@@ -106,6 +125,36 @@ describe("getFantasyAdpFreshness", () => {
     ).toBe("stale");
   });
 
+  it("uses the fourteen-day boundary outside draft season", () => {
+    expect(
+      getFantasyAdpFreshness(
+        "2026-08-01T00:00:00.000Z",
+        2026,
+        new Date("2026-10-01T00:00:00.000Z")
+      )
+    ).toBe("stale");
+  });
+
+  it("rejects a future ADP source date", () => {
+    expect(
+      getFantasyAdpFreshness(
+        "2099-01-01T00:00:00.000Z",
+        2026,
+        new Date("2026-08-07T00:00:00.000Z")
+      )
+    ).toBe("stale");
+  });
+
+  it("allows five minutes of ADP publisher and device clock skew", () => {
+    expect(
+      getFantasyAdpFreshness(
+        "2026-08-07T00:04:59.000Z",
+        2026,
+        new Date("2026-08-07T00:00:00.000Z")
+      )
+    ).toBe("current");
+  });
+
   it("does not flag ADP dated after the season starts", () => {
     expect(
       getFantasyAdpFreshness(
@@ -121,6 +170,41 @@ describe("getFantasyAdpFreshness", () => {
     expect(getFantasyAdpFreshness("2025-09-10T00:00:00.000Z", null)).toBe("stale");
     expect(getFantasyAdpFreshness("2025-09-10T00:00:00.000Z", undefined)).toBe("stale");
     expect(getFantasyAdpFreshness("not-a-date", 2026)).toBe("stale");
+  });
+});
+
+describe("getFantasySourceCapabilities", () => {
+  it("separates current model inputs from a stale schedule", () => {
+    const capabilities = getFantasySourceCapabilities({
+      rankingAsOf: "2026-08-21T00:00:00.000Z",
+      marketAsOf: "2026-08-21T00:00:00.000Z",
+      scheduleAsOf: "2026-08-01T00:00:00.000Z",
+      season: 2026,
+      now: new Date("2026-08-22T00:00:00.000Z"),
+    });
+
+    expect(capabilities.ranking).toEqual({ freshness: "fresh", usable: true });
+    expect(capabilities.market).toEqual({
+      freshness: "current",
+      usable: true,
+      current: true,
+    });
+    expect(capabilities.schedule).toEqual({ freshness: "stale", usable: false });
+  });
+
+  it("keeps prior-season ADP as a labeled reference outside draft season", () => {
+    const capabilities = getFantasySourceCapabilities({
+      rankingAsOf: "2026-04-30T00:00:00.000Z",
+      marketAsOf: "2025-09-10T00:00:00.000Z",
+      season: 2026,
+      now: new Date("2026-05-01T00:00:00.000Z"),
+    });
+
+    expect(capabilities.market).toEqual({
+      freshness: "prior-season",
+      usable: true,
+      current: false,
+    });
   });
 });
 

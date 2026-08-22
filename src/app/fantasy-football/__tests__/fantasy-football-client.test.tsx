@@ -83,6 +83,7 @@ function makePlayer(overrides: Partial<Player> & { id: string; name: string }): 
 interface SnapshotOverrides {
   players: Player[];
   position?: string;
+  season?: number;
   adpSource?: object | null;
   sliceAvailable?: boolean;
   sliceReason?: string;
@@ -94,6 +95,7 @@ interface SnapshotOverrides {
 function mockSnapshot({
   players,
   position = "rb",
+  season = 2026,
   adpSource = null,
   sliceAvailable = true,
   sliceReason,
@@ -113,7 +115,7 @@ function mockSnapshot({
     players: sliceAvailable ? players : [],
     snapshot: null,
     metadata: {
-      season: 2026,
+      season,
       week: 0,
       generatedAt: "2026-08-16T16:00:00.000Z",
       upstreamUpdatedAt: "2026-08-16T15:29:20.000Z",
@@ -389,6 +391,47 @@ describe("FantasyFootballClient", () => {
 
     expect(screen.getByText("ADP stale · signals hidden")).toBeVisible();
     expect(screen.queryByText("vs ADP")).not.toBeInTheDocument();
+  });
+
+  it("shows prior-season ADP only as a dated reference", () => {
+    jest.setSystemTime(new Date("2027-05-01T10:00:00.000Z"));
+    currentSearchParams = new URLSearchParams("position=overall&scoring=ppr");
+    mockSnapshot({
+      position: "overall",
+      season: 2027,
+      adpSource: { ...FRESH_ADP_SOURCE, asOf: "2026-09-01T00:00:00.000Z" },
+      players: [
+        makePlayer({
+          id: "wr-reference",
+          name: "Reference Receiver",
+          team: "CIN",
+          position: "WR",
+          rankEcr: 12,
+          averageRank: 12,
+          adp: 30,
+          adpStandardDeviation: 5,
+          adpTimesDrafted: 120,
+        }),
+      ],
+    });
+
+    renderClient({ position: "overall" });
+
+    expect(screen.getByText("ADP prior season")).toBeVisible();
+    expect(screen.getAllByText("ADP").length).toBeGreaterThan(0);
+    expect(screen.queryByText("vs ADP")).not.toBeInTheDocument();
+    const row = screen
+      .getByRole("button", { name: "Open Reference Receiver detail" })
+      .closest("li") as HTMLElement;
+    expect(within(row).queryByText(/^(Value|Reach) /)).not.toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("button", { name: "Open Reference Receiver detail" }));
+    const dialog = screen.getByRole("dialog", { name: "Reference Receiver detail" });
+    expect(within(dialog).getByText("Prior-season ADP · Sep 1, 2026")).toBeVisible();
+    expect(
+      within(dialog).getByTitle(/final mock-draft average from the prior season/i)
+    ).toBeVisible();
+    expect(within(dialog).queryByText(/picks after the consensus rank/)).not.toBeInTheDocument();
   });
 
   it("keeps scoring controls available when the selected position slice is unavailable", () => {

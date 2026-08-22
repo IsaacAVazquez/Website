@@ -72,7 +72,7 @@ describe("DraftSetup", () => {
       />
     );
 
-    const startButton = screen.getByRole("button", { name: /Start draft assistant/i });
+    const startButton = screen.getByRole("button", { name: "Start draft" });
     expect(startButton).toBeEnabled();
     fireEvent.click(startButton);
     fireEvent.click(startButton);
@@ -97,7 +97,7 @@ describe("DraftSetup", () => {
 
     fireEvent.click(screen.getByRole("button", { name: /3 WR, no K\/DST/i }));
     fireEvent.change(screen.getByLabelText("Tight ends"), { target: { value: "2" } });
-    fireEvent.click(screen.getByRole("button", { name: /Start draft assistant/i }));
+    fireEvent.click(screen.getByRole("button", { name: "Start draft" }));
 
     expect(onSaveSettings).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -134,19 +134,19 @@ describe("DraftSetup", () => {
     expect(linear).toHaveAttribute("aria-pressed", "true");
     expect(snake).toHaveAttribute("aria-pressed", "false");
 
-    const ppr = screen.getByRole("button", { name: /^PPR/i });
-    const standard = screen.getByRole("button", { name: /^Standard/i });
+    const ppr = screen.getByRole("button", { name: "PPR" });
+    const standard = screen.getByRole("button", { name: "Std" });
     expect(ppr).toHaveAttribute("aria-pressed", "true");
     fireEvent.click(standard);
     expect(standard).toHaveAttribute("aria-pressed", "true");
     expect(ppr).toHaveAttribute("aria-pressed", "false");
 
-    const timerOn = screen.getByRole("button", { name: /^On/i });
-    const timerOff = screen.getByRole("button", { name: /^Off/i });
-    expect(timerOn).toHaveAttribute("aria-pressed", "true");
+    const timerNinety = screen.getByRole("button", { name: "90s" });
+    const timerOff = screen.getByRole("button", { name: "Off" });
+    expect(timerNinety).toHaveAttribute("aria-pressed", "true");
     fireEvent.click(timerOff);
     expect(timerOff).toHaveAttribute("aria-pressed", "true");
-    expect(timerOn).toHaveAttribute("aria-pressed", "false");
+    expect(timerNinety).toHaveAttribute("aria-pressed", "false");
   });
 
   it("keeps Start disabled while rankings load", () => {

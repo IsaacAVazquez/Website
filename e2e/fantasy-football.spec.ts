@@ -22,7 +22,7 @@ const BEST_BALL_PRESETS = [
   {
     id: "bbm-vii",
     rankingControl: "Mania",
-    rankingView: "Mania view",
+    rankingView: "Mania board",
     rankingHeading: "Best Ball Mania VII",
     trackerControl: "BBM VII",
     trackerHeading: "Best Ball Mania VII",
@@ -30,7 +30,7 @@ const BEST_BALL_PRESETS = [
   {
     id: "puppy",
     rankingControl: "Puppy",
-    rankingView: "Puppy view",
+    rankingView: "Puppy board",
     rankingHeading: "The Puppy",
     trackerControl: "Puppy",
     trackerHeading: "The Puppy",
@@ -38,7 +38,7 @@ const BEST_BALL_PRESETS = [
   {
     id: "eliminator",
     rankingControl: "Eliminator",
-    rankingView: "Eliminator view",
+    rankingView: "Eliminator board",
     rankingHeading: "The Eliminator",
     trackerControl: "Eliminator",
     trackerHeading: "Eliminator",
@@ -46,7 +46,7 @@ const BEST_BALL_PRESETS = [
   {
     id: "weekly-winners",
     rankingControl: "Weekly",
-    rankingView: "Weekly view",
+    rankingView: "Weekly board",
     rankingHeading: "Weekly Winners",
     trackerControl: "Weekly Winners",
     trackerHeading: "Weekly Winners",
@@ -54,7 +54,7 @@ const BEST_BALL_PRESETS = [
   {
     id: "sit-and-go",
     rankingControl: "Sit and Go",
-    rankingView: "Sit and Go view",
+    rankingView: "Sit and Go board",
     rankingHeading: "Sit and Go",
     trackerControl: "Sit & Go",
     trackerHeading: "Sit & Go",
@@ -62,7 +62,7 @@ const BEST_BALL_PRESETS = [
   {
     id: "superflex",
     rankingControl: "Superflex",
-    rankingView: "Superflex view",
+    rankingView: "Superflex board",
     rankingHeading: "Superflex",
     trackerControl: "Superflex",
     trackerHeading: "Superflex",
@@ -454,7 +454,7 @@ test.describe("Fantasy football best ball", () => {
       await expect(
         shell.getByRole("button", { name: /^Open .+ details$/ }).first()
       ).toBeVisible();
-      await expect(shell.getByText("No players match this view.")).toHaveCount(0);
+      await expect(shell.getByText("No players match on this board.")).toHaveCount(0);
     }
   });
 
