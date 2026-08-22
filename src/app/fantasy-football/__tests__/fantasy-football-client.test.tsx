@@ -445,9 +445,9 @@ describe("FantasyFootballClient", () => {
 
     expect(screen.getByText(/PPR RB rankings are unavailable/)).toBeVisible();
     expect(screen.getByText("FantasyPros does not publish this board.")).toBeVisible();
-    expect(screen.getByLabelText("Search the current rankings board")).toBeDisabled();
+    expect(screen.getByRole("textbox", { name: "Search the current rankings board" })).toBeDisabled();
 
-    fireEvent.click(screen.getByRole("button", { name: "Half PPR" }));
+    fireEvent.click(screen.getAllByRole("button", { name: "Half PPR" })[0]);
     expect(mockReplace).toHaveBeenCalledWith(
       expect.stringContaining("scoring=half_ppr"),
       expect.anything()
@@ -477,14 +477,14 @@ describe("FantasyFootballClient", () => {
 
     renderClient({ position: "overall" });
 
-    fireEvent.change(screen.getByLabelText("Search the current rankings board"), {
+    fireEvent.change(screen.getByRole("textbox", { name: "Search the current rankings board" }), {
       target: { value: "Mixon" },
     });
 
     expect(screen.getByText("Joe Mixon")).toBeVisible();
     expect(screen.queryByText("Christian McCaffrey")).not.toBeInTheDocument();
     expect(screen.getByText("47")).toBeVisible();
-    expect(screen.getByText("1 of 2 shown")).toBeVisible();
+    expect(screen.getAllByText("1 of 2 shown")[0]).toBeVisible();
   });
 
   it("shows the template empty state and clears the search from it", () => {
@@ -494,7 +494,7 @@ describe("FantasyFootballClient", () => {
 
     renderClient();
 
-    fireEvent.change(screen.getByLabelText("Search the current rankings board"), {
+    fireEvent.change(screen.getByRole("textbox", { name: "Search the current rankings board" }), {
       target: { value: "nobody" },
     });
     expect(screen.getByText("No players match on this board.")).toBeVisible();
@@ -526,7 +526,7 @@ describe("FantasyFootballClient", () => {
 
     expect(screen.getByText("Player 40")).toBeVisible();
     expect(screen.queryByText("Player 41")).not.toBeInTheDocument();
-    expect(screen.getByText("40 of 45 shown")).toBeVisible();
+    expect(screen.getAllByText("40 of 45 shown")[0]).toBeVisible();
 
     fireEvent.click(screen.getByRole("button", { name: "Load more (5 left)" }));
     expect(screen.getByText("Player 45")).toBeVisible();
@@ -541,7 +541,7 @@ describe("FantasyFootballClient", () => {
     renderClient();
 
     expect(screen.getByRole("alert")).toHaveTextContent("Fantasy rankings are unavailable right now.");
-    expect(screen.getByText("Rankings unavailable")).toBeVisible();
+    expect(screen.getAllByText("Rankings unavailable")[0]).toBeVisible();
     fireEvent.click(screen.getByRole("button", { name: "Retry rankings" }));
     expect(retry).toHaveBeenCalled();
   });

@@ -54,10 +54,10 @@ import { FANTASY_FOOTBALL_FAQ } from "./fantasy-faq";
 import { buildFantasyHref, FantasySearchState, normalizeFantasyState } from "./fantasy-state";
 
 const POSITION_OPTIONS: FantasyRoutePosition[] = ["overall", "qb", "rb", "wr", "te", "flex", "k", "dst"];
-const SCORING_OPTIONS: { key: FantasyRouteScoring; label: string }[] = [
-  { key: "ppr", label: "PPR" },
-  { key: "half_ppr", label: "Half PPR" },
-  { key: "standard", label: "Standard" },
+const SCORING_OPTIONS: { key: FantasyRouteScoring; label: string; shortLabel: string }[] = [
+  { key: "ppr", label: "PPR", shortLabel: "PPR" },
+  { key: "half_ppr", label: "Half PPR", shortLabel: "Half" },
+  { key: "standard", label: "Standard", shortLabel: "Std" },
 ];
 
 /** Keep each mounted rankings window below the large-list threshold. */
@@ -208,15 +208,17 @@ function ValueReachChip({ player }: { player: Player }) {
 function ScoringToggle({
   value,
   onChange,
+  compact = false,
 }: {
   value: FantasyRouteScoring;
   onChange: (value: FantasyRouteScoring) => void;
+  compact?: boolean;
 }) {
   return (
     <div
       role="group"
       aria-label="Scoring format"
-      className="inline-flex overflow-hidden rounded-[4px] border"
+      className="inline-flex shrink-0 overflow-hidden rounded-[4px] border"
       style={{ borderColor: "var(--home-rule)" }}
     >
       {SCORING_OPTIONS.map((option) => {
@@ -226,6 +228,7 @@ function ScoringToggle({
             key={option.key}
             type="button"
             aria-pressed={active}
+            aria-label={option.label}
             onClick={() => onChange(option.key)}
             className="min-h-touch cursor-pointer px-3 font-mono text-3xs uppercase tracking-[0.08em] transition-colors duration-150"
             style={
@@ -234,7 +237,7 @@ function ScoringToggle({
                 : { background: "transparent", color: "var(--home-ink)" }
             }
           >
-            {option.label}
+            {compact ? option.shortLabel : option.label}
           </button>
         );
       })}
@@ -803,6 +806,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
   const router = useRouter();
   const searchParams = useSearchParams();
   const [searchQuery, setSearchQuery] = useState(initialState.query);
+  const [mobileSearchOpen, setMobileSearchOpen] = useState(() => initialState.query.length > 0);
   const [detailPlayerId, setDetailPlayerId] = useState<string | null>(null);
   const [visibleCount, setVisibleCount] = useState(RANKINGS_PAGE_SIZE);
   const sentinelRef = useRef<HTMLDivElement | null>(null);
@@ -1138,8 +1142,10 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                     >
                       {getPublishedBoardRank(player, routeState.position)}
                     </span>
-                    <span className="flex min-w-0 flex-[1_1_200px] items-baseline gap-2">
-                      <span className="truncate text-sm font-semibold tracking-tight">{player.name}</span>
+                    <span className="flex min-w-0 flex-[1_1_200px] flex-wrap items-baseline gap-x-2 gap-y-1">
+                      {/* The name is the row's identity, so it keeps a hard floor
+                          and the decorative spread bar yields below lg instead. */}
+                      <span className="min-w-[7rem] truncate text-sm font-semibold tracking-tight">{player.name}</span>
                       <span
                         className="inline-flex shrink-0 items-center rounded-[2px] border px-1.5 py-0.5 font-mono text-3xs tracking-[0.06em]"
                         style={{ ...tone, color: "var(--home-ink)" }}
@@ -1157,7 +1163,9 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                       {adpSignalsAvailable && vsAdpMeaningful && <ValueReachChip player={player} />}
                     </span>
                     <span className="flex max-w-full flex-wrap items-center gap-x-4 gap-y-1">
-                      <ExpertSpreadBar player={player} scale={boardScale} />
+                      <span className="hidden lg:inline-flex">
+                        <ExpertSpreadBar player={player} scale={boardScale} />
+                      </span>
                       <span className="sr-only">Expert range</span>
                       <span
                         className="w-16 text-right font-mono text-xs"
@@ -1277,7 +1285,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
 
       <div
         data-testid="fantasy-board-controls"
-        className="z-30 border-y md:sticky md:top-[4.5rem]"
+        className="sticky top-[4.5rem] z-30 border-y"
         style={{
           borderColor: "var(--home-rule)",
           background: "color-mix(in srgb, var(--home-paper) 90%, transparent)",
@@ -1285,7 +1293,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
           WebkitBackdropFilter: "blur(8px)",
         }}
       >
-        <div className={`${SHELL_CLASS} flex flex-wrap items-center gap-x-3.5 gap-y-2.5 py-2.5`}>
+        <div className={`${SHELL_CLASS} hidden flex-wrap items-center gap-x-3.5 gap-y-2.5 py-2.5 md:flex`}>
           <PositionFilterBar
             ariaLabel="Position board"
             options={positionOptions}
@@ -1329,6 +1337,94 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
           >
             {countLine}
           </span>
+        </div>
+        {/* Phones keep one sticky line: position and scoring stay reachable
+            mid-scroll, and search expands in place of the count. */}
+        <div className={`${SHELL_CLASS} flex items-center gap-2 py-2 md:hidden`}>
+          {mobileSearchOpen ? (
+            <>
+              <div className="relative min-w-0 flex-1">
+                <label htmlFor="fantasy-search-compact" className="sr-only">
+                  Search the current rankings board
+                </label>
+                <Search
+                  className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2"
+                  style={{ color: "var(--home-ink-muted)" }}
+                  aria-hidden="true"
+                />
+                <input
+                  id="fantasy-search-compact"
+                  name="fantasy-search-compact"
+                  value={searchQuery}
+                  maxLength={80}
+                  autoFocus
+                  onChange={(event) => {
+                    setSearchQuery(event.target.value);
+                    updateRouteState({ query: event.target.value });
+                  }}
+                  onBlur={() => {
+                    if (!searchQuery) setMobileSearchOpen(false);
+                  }}
+                  disabled={currentSliceUnavailable}
+                  autoComplete="off"
+                  placeholder="Search player or team"
+                  className="min-h-touch w-full rounded-[4px] border pl-8 pr-2.5 font-mono text-xs placeholder:text-[var(--home-ink-muted)] disabled:cursor-not-allowed disabled:opacity-60"
+                  style={{
+                    borderColor: "var(--home-rule)",
+                    background: "var(--home-paper-raised)",
+                    color: "var(--home-ink)",
+                  }}
+                />
+              </div>
+              <button
+                type="button"
+                aria-label="Clear search"
+                onClick={() => {
+                  setSearchQuery("");
+                  updateRouteState({ query: "" });
+                  setMobileSearchOpen(false);
+                }}
+                className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center rounded-[4px] border"
+                style={{ borderColor: "var(--home-rule)", background: "var(--home-paper-raised)" }}
+              >
+                <X className="h-4 w-4" style={{ color: "var(--home-ink)" }} aria-hidden="true" />
+              </button>
+            </>
+          ) : (
+            <>
+              <label htmlFor="fantasy-position-select" className="sr-only">
+                Position board
+              </label>
+              <select
+                id="fantasy-position-select"
+                value={routeState.position}
+                onChange={(event) => updateRouteState({ position: event.target.value as FantasyRoutePosition })}
+                className="min-h-touch shrink-0 rounded-[4px] border px-2 font-mono text-2xs uppercase tracking-[0.06em]"
+                style={{
+                  borderColor: "var(--home-rule)",
+                  background: "var(--home-paper-raised)",
+                  color: "var(--home-ink)",
+                }}
+              >
+                {positionOptions.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+              <ScoringToggle compact value={routeState.scoring} onChange={(scoring) => updateRouteState({ scoring })} />
+              <button
+                type="button"
+                aria-label="Search the current rankings board"
+                onClick={() => setMobileSearchOpen(true)}
+                disabled={currentSliceUnavailable}
+                className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center rounded-[4px] border disabled:cursor-not-allowed disabled:opacity-60"
+                style={{ borderColor: "var(--home-rule)", background: "var(--home-paper-raised)" }}
+              >
+                <Search className="h-4 w-4" style={{ color: "var(--home-ink)" }} aria-hidden="true" />
+              </button>
+            </>
+          )}
         </div>
       </div>
 
