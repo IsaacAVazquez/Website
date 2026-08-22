@@ -683,10 +683,10 @@ export function MockDraftClient() {
 
   const footerLinks = (
     <span className="inline-flex gap-4">
-      <Link href="/fantasy-football" className="text-sm font-semibold no-underline">
+      <Link href="/fantasy-football" className="inline-flex min-h-touch items-center text-sm font-semibold no-underline">
         Rankings board <span aria-hidden="true">↗</span>
       </Link>
-      <Link href="/fantasy-football/draft-tracker" className="text-sm font-semibold no-underline">
+      <Link href="/fantasy-football/draft-tracker" className="inline-flex min-h-touch items-center text-sm font-semibold no-underline">
         Draft tracker <span aria-hidden="true">↗</span>
       </Link>
     </span>
@@ -713,7 +713,8 @@ export function MockDraftClient() {
       label: "On the clock",
       value: "You",
       sub: `slot ${settings.userTeam} of ${settings.totalTeams} · ${settings.draftType}`,
-      valueColor: "var(--home-signal)",
+      // Signal mixed toward ink clears 4.5:1 on the signal wash in both themes.
+      valueColor: "color-mix(in srgb, var(--home-signal) 72%, var(--home-ink))",
       background: "color-mix(in srgb, var(--home-signal) 8%, var(--home-paper))",
     },
     {
@@ -781,7 +782,7 @@ export function MockDraftClient() {
       </header>
 
       {showSetup && (
-        <main className="mx-auto w-full max-w-[780px] px-[clamp(1rem,4vw,2.5rem)] pb-12 pt-1">
+        <div className="mx-auto w-full max-w-[780px] px-[clamp(1rem,4vw,2.5rem)] pb-12 pt-1">
           <div
             className="overflow-hidden rounded-lg border"
             style={{ borderColor: "var(--home-rule)", background: "var(--home-paper-raised)" }}
@@ -1031,7 +1032,7 @@ export function MockDraftClient() {
             seeded room with the same settings, and nothing here is a projection of season
             outcomes.
           </p>
-        </main>
+        </div>
       )}
 
       {isLive && (
@@ -1218,7 +1219,7 @@ export function MockDraftClient() {
               >
                 <span
                   className="inline-flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.12em]"
-                  style={{ color: "var(--home-signal)" }}
+                  style={{ color: "color-mix(in srgb, var(--home-signal) 72%, var(--home-ink))" }}
                 >
                   <span
                     className="h-[7px] w-[7px] rounded-full"
@@ -1264,7 +1265,7 @@ export function MockDraftClient() {
             </div>
           </section>
 
-          <main className={`${SHELL_CLASS} pb-11 pt-4`}>
+          <div className={`${SHELL_CLASS} pb-11 pt-4`}>
             <h2 className="sr-only">Available players</h2>
             <div className="flex flex-wrap items-center gap-x-3.5 gap-y-2.5 pb-3">
               <PositionFilterBar
@@ -1494,12 +1495,12 @@ export function MockDraftClient() {
               </span>
               {footerLinks}
             </div>
-          </main>
+          </div>
         </>
       )}
 
       {isRecap && (
-        <main className={`${SHELL_CLASS} pb-11 pt-1`}>
+        <div className={`${SHELL_CLASS} pb-11 pt-1`}>
           <section
             aria-label="Value report"
             className="mt-2.5 flex flex-wrap overflow-hidden rounded-lg border"
@@ -1645,7 +1646,9 @@ export function MockDraftClient() {
                           background: isUser
                             ? "color-mix(in srgb, var(--home-signal) 10%, var(--home-paper))"
                             : "var(--home-paper)",
-                          color: isUser ? "var(--home-signal)" : "var(--home-ink-muted)",
+                          color: isUser
+                            ? "color-mix(in srgb, var(--home-signal) 72%, var(--home-ink))"
+                            : "var(--home-ink-muted)",
                         }}
                       >
                         {isUser ? "You" : `S${slot}`}
@@ -1775,7 +1778,7 @@ export function MockDraftClient() {
             </span>
             {footerLinks}
           </div>
-        </main>
+        </div>
       )}
     </section>
   );

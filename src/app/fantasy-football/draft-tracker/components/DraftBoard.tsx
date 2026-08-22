@@ -284,11 +284,13 @@ export function DraftBoard({
                     {formatRankValue(player.rankEcr ?? player.averageRank)}
                   </span>
                   <div className="flex min-w-0 flex-1 basis-44 items-baseline gap-2">
+                    {/* -my keeps the row dense while the button itself meets
+                        the 44px touch floor. */}
                     <button
                       type="button"
                       onClick={() => onOpenDetail(player)}
                       aria-label={`Open ${player.name} detail`}
-                      className="min-w-0 truncate text-left text-sm font-semibold tracking-[-0.01em]"
+                      className="-my-2 inline-flex min-h-touch min-w-0 items-center truncate text-left text-sm font-semibold tracking-[-0.01em]"
                     >
                       {player.name}
                     </button>
