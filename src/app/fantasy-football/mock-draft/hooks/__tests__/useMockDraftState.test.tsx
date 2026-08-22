@@ -1,5 +1,6 @@
 import { act, renderHook } from "@testing-library/react";
 import type { Player } from "@/types";
+import { DEFAULT_REDRAFT_LINEUP } from "@/lib/redraftLineup";
 import {
   useMockDraftState,
   getMockDraftStorageKey,
@@ -44,6 +45,9 @@ const SETTINGS: MockDraftSettings = {
   rounds: 15,
   userTeam: 3,
   scoringFormat: "PPR",
+  draftType: "snake",
+  temper: "normal",
+  lineup: DEFAULT_REDRAFT_LINEUP,
 };
 
 const SEED = 42;
@@ -70,6 +74,31 @@ describe("useMockDraftState", () => {
     expect(result.current.availablePlayers).toHaveLength(board.length - 2);
   });
 
+  it("refuses to start or advance while simulation inputs are unavailable", () => {
+    const board = makeBoard();
+    const { result, rerender } = renderHook(
+      ({ enabled }: { enabled: boolean }) => useMockDraftState(board, "PPR", enabled),
+      { initialProps: { enabled: false } }
+    );
+
+    act(() => result.current.startDraft(SETTINGS, SEED));
+    expect(result.current.state.status).toBe("setup");
+    expect(result.current.state.picks).toHaveLength(0);
+
+    rerender({ enabled: true });
+    act(() => result.current.startDraft(SETTINGS, SEED));
+    expect(result.current.state.status).toBe("on-clock");
+
+    const player = result.current.availablePlayers[0];
+    rerender({ enabled: false });
+    let accepted = true;
+    act(() => {
+      accepted = result.current.makeUserPick(player);
+    });
+    expect(accepted).toBe(false);
+    expect(result.current.state.picks).toHaveLength(2);
+  });
+
   it("applies the user's pick and simulates ahead to their next turn", async () => {
     const board = makeBoard();
     const { result } = renderHook(() => useMockDraftState(board, "PPR"));
@@ -86,6 +115,82 @@ describe("useMockDraftState", () => {
     expect(result.current.state.picks).toHaveLength(17);
     expect(result.current.state.status).toBe("on-clock");
     expect(result.current.state.picks[2].teamNumber).toBe(3);
+  });
+
+  it("follows linear order, returning slot 3 every ten picks", async () => {
+    const board = makeBoard();
+    const { result } = renderHook(() => useMockDraftState(board, "PPR"));
+    act(() => result.current.startDraft({ ...SETTINGS, draftType: "linear" }, SEED));
+
+    expect(result.current.currentPick).toBe(3);
+    act(() => {
+      result.current.makeUserPick(result.current.availablePlayers[0]);
+    });
+    // Linear order repeats the slot each round: picks 3, 13, 23…
+    expect(result.current.currentPick).toBe(13);
+  });
+
+  it("sims the rest of the room to a complete recap on demand", async () => {
+    const board = makeBoard();
+    const { result } = renderHook(() => useMockDraftState(board, "PPR"));
+    act(() => result.current.startDraft({ ...SETTINGS, rounds: 5 }, SEED));
+    act(() => {
+      result.current.makeUserPick(result.current.availablePlayers[0]);
+    });
+
+    act(() => result.current.simToEnd());
+
+    expect(result.current.state.status).toBe("complete");
+    expect(result.current.state.picks).toHaveLength(50);
+    // The engine drafted the user's remaining turns too.
+    const userPicks = result.current.state.picks.filter(
+      (pick) => pick.teamNumber === SETTINGS.userTeam
+    );
+    expect(userPicks).toHaveLength(5);
+  });
+
+  it("never drafts a kicker or defense into a lineup without those slots", async () => {
+    const board = makeBoard();
+    const { result } = renderHook(() => useMockDraftState(board, "PPR"));
+    act(() =>
+      result.current.startDraft(
+        { ...SETTINGS, rounds: 6, lineup: { ...DEFAULT_REDRAFT_LINEUP, K: 0, DST: 0 } },
+        SEED
+      )
+    );
+    act(() => result.current.simToEnd());
+
+    expect(result.current.state.status).toBe("complete");
+    for (const team of result.current.teams) {
+      expect(team.positionCounts.K).toBe(0);
+      expect(team.positionCounts.DST).toBe(0);
+    }
+  });
+
+  it("resumes a save from before draftType, temper, and lineup existed", async () => {
+    const board = makeBoard();
+    localStorage.setItem(
+      getMockDraftStorageKey(),
+      JSON.stringify({
+        version: 1,
+        status: "on-clock",
+        settings: { totalTeams: 10, rounds: 15, userTeam: 3, scoringFormat: "PPR" },
+        seed: SEED,
+        picks: board.slice(0, 2).map((player, index) => ({
+          pickNumber: index + 1,
+          teamNumber: index + 1,
+          playerId: player.id,
+        })),
+      })
+    );
+
+    const { result } = renderHook(() => useMockDraftState(board, "PPR"));
+    await flush();
+
+    expect(result.current.state.status).toBe("on-clock");
+    expect(result.current.state.settings.draftType).toBe("snake");
+    expect(result.current.state.settings.temper).toBe("normal");
+    expect(result.current.state.settings.lineup).toEqual(DEFAULT_REDRAFT_LINEUP);
   });
 
   it("rejects a pick of a player who is no longer available", async () => {

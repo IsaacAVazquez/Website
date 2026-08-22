@@ -31,6 +31,7 @@ const FANTASY_OFFSEASON_STALE_DAYS = 14;
 const FANTASY_DAILY_REFRESH_AGING_DAYS = 2;
 const FANTASY_DAILY_REFRESH_STALE_DAYS = 4;
 const MS_PER_DAY = 86_400_000;
+const FANTASY_FUTURE_SKEW_TOLERANCE_MS = 5 * 60 * 1000;
 const NFL_REGULAR_SEASON_WEEKS = 18;
 
 /**
@@ -98,6 +99,13 @@ export function getSnapshotStaleness(
 
   const parsed = date instanceof Date ? date : new Date(date);
   if (Number.isNaN(parsed.getTime())) {
+    return "stale";
+  }
+
+  // A materially future source date can otherwise produce a negative age and
+  // pass as fresh indefinitely. Allow five minutes for ordinary device-clock
+  // skew, matching the refresh verifier used by the snapshot pipeline.
+  if (parsed.getTime() > now.getTime() + FANTASY_FUTURE_SKEW_TOLERANCE_MS) {
     return "stale";
   }
 
@@ -170,6 +178,9 @@ export function formatOwnership(ownership: number | undefined): string {
  */
 export const FANTASY_ADP_TOOLTIP =
   "Average draft position from Fantasy Football Calculator's current mock-draft board, requested with 12-team settings. The provider returned the same prices across tested team sizes on August 7, 2026, so use it as a general market price rather than a league-size forecast.";
+
+export const FANTASY_PRIOR_SEASON_ADP_TOOLTIP =
+  "The final mock-draft average from the prior season, shown only as a dated reference. It does not drive Value, Reach, versus ADP, Draft Outlook, or simulated picks.";
 
 export function formatAdp(adp: number | undefined): string {
   if (!Number.isFinite(adp)) {
@@ -417,7 +428,7 @@ export const FANTASY_PLAYER_COLUMN_TOOLTIP =
 export const FANTASY_POINTS_PER_GAME_TOOLTIP =
   "Fantasy points per game from the prior completed regular season, scored in the format you have selected. It is what he did, not a projection of what he will do, and it appears only for players with at least four games that season.";
 
-type FantasyAdpFreshness = "current" | "prior-season" | "stale";
+export type FantasyAdpFreshness = "current" | "prior-season" | "stale";
 
 /**
  * Mock-draft ADP for the upcoming season does not populate until late summer,
@@ -453,6 +464,10 @@ export function getFantasyAdpFreshness(
     return "stale";
   }
 
+  if (parsed.getTime() > now.getTime() + FANTASY_FUTURE_SKEW_TOLERANCE_MS) {
+    return "stale";
+  }
+
   const daily = isDailyRefreshWindow(now);
 
   if (parsed.getUTCFullYear() < season && !daily) {
@@ -467,6 +482,62 @@ export function getFantasyAdpFreshness(
   }
 
   return "current";
+}
+
+export interface FantasySourceCapabilities {
+  ranking: {
+    freshness: FantasySnapshotStaleness;
+    usable: boolean;
+  };
+  market: {
+    freshness: FantasyAdpFreshness;
+    usable: boolean;
+    current: boolean;
+  };
+  schedule: {
+    freshness: FantasySnapshotStaleness;
+    usable: boolean;
+  };
+}
+
+/**
+ * One source capability contract for fantasy surfaces. A page can keep showing
+ * a dated board while using `usable` to withhold calculations that require a
+ * current source. Market carryover remains a labeled reference outside draft
+ * season, while `current` is reserved for same-season model inputs.
+ */
+export function getFantasySourceCapabilities({
+  rankingAsOf,
+  marketAsOf,
+  scheduleAsOf,
+  season,
+  now = new Date(),
+}: {
+  rankingAsOf: Date | string | null | undefined;
+  marketAsOf?: string | null;
+  scheduleAsOf?: Date | string | null;
+  season: number | null | undefined;
+  now?: Date;
+}): FantasySourceCapabilities {
+  const rankingFreshness = getSnapshotStaleness(rankingAsOf, now);
+  const marketFreshness = getFantasyAdpFreshness(marketAsOf, season, now);
+  const scheduleFreshness = getSnapshotStaleness(scheduleAsOf, now);
+
+  return {
+    ranking: {
+      freshness: rankingFreshness,
+      usable: rankingFreshness !== "stale",
+    },
+    market: {
+      freshness: marketFreshness,
+      usable: marketFreshness !== "stale",
+      current: marketFreshness === "current",
+    },
+    schedule: {
+      freshness: scheduleFreshness,
+      usable: scheduleFreshness !== "stale",
+    },
+  };
 }
 
 /**
@@ -621,4 +692,3 @@ export function getTierRailIntensity(tier: number | null | undefined): number {
 export function getTierRailTone(tier: number | null | undefined): string {
   return `${getTierRailIntensity(tier)}%`;
 }
-

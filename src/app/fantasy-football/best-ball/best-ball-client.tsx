@@ -3,7 +3,7 @@
 import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { ArrowUpRight, Search, X } from "lucide-react";
+import { Search } from "lucide-react";
 import { startTransition, useCallback, useMemo, useOptimistic, useState } from "react";
 
 import {
@@ -21,10 +21,10 @@ import {
   type RankedBestBallPlayer,
 } from "@/lib/bestBall";
 import {
-  getNflRegularSeasonWeek,
-  FANTASY_CHIP_CLASS,
   getPositionTone,
   getSnapshotStaleness,
+  getTierRailTone,
+  getNflRegularSeasonWeek,
 } from "@/lib/fantasyUtils";
 import type { BestBallSnapshot } from "@/lib/bestBallSnapshot";
 import type { Player } from "@/types";
@@ -49,6 +49,8 @@ interface ContestCopy {
   brief: string;
   build: string;
   risk: string;
+  /** Sit and Go has no playoff bracket, so its Week 17 column dims instead of reading as a lever. */
+  showsWeek17: boolean;
 }
 
 const CONTESTS: ContestCopy[] = [
@@ -62,6 +64,7 @@ const CONTESTS: ContestCopy[] = [
       "I want a roster that can advance through the regular season and still has connected upside in Week 17.",
     build: "Use two or three quarterbacks, four to six running backs, seven to nine receivers, and two or three tight ends. Let early draft capital decide which end of each range to use.",
     risk: "Week 17 pairings are a tiebreaker. Reaching past a full tier for them gives away too much regular season value.",
+    showsWeek17: true,
   },
   {
     id: "puppy",
@@ -73,6 +76,7 @@ const CONTESTS: ContestCopy[] = [
       "The roster construction is close to Mania, but each later round asks for a higher finish within a smaller group.",
     build: "Keep the same balanced ranges as Mania and favor players who complete a quarterback stack without forcing the pick.",
     risk: "A lower entry fee does not change the roster math. I would not turn this into a collection of low probability bets.",
+    showsWeek17: true,
   },
   {
     id: "eliminator",
@@ -84,6 +88,7 @@ const CONTESTS: ContestCopy[] = [
       "This format keeps asking the roster to survive one week at a time, so I care more about role security and weekly coverage.",
     build: "Spread bye weeks, avoid fragile position rooms, and add enough contingent upside to improve as the season moves.",
     risk: "A concentrated stack can create a strong ceiling, but it can also put too much of one survival week on one NFL game.",
+    showsWeek17: true,
   },
   {
     id: "weekly-winners",
@@ -95,6 +100,7 @@ const CONTESTS: ContestCopy[] = [
       "I am building for at least one exceptional weekly combination rather than a steady season long total.",
     build: "Create one or two clear quarterback stack paths. The current snapshot has no player level weekly projections, so weekly variation stays neutral instead of being estimated from position alone.",
     risk: "Large team stacks are rare in top weekly lineups. Concentration should have a reason tied to one or two scoring paths.",
+    showsWeek17: true,
   },
   {
     id: "sit-and-go",
@@ -106,6 +112,7 @@ const CONTESTS: ContestCopy[] = [
       "This is the cleanest season long best ball problem, so I put more weight on total points and less on Week 17 correlation.",
     build: "Draft for usable weekly production, cover byes, and use stacks when the underlying players are already good values.",
     risk: "Playoff correlation does not add value here, and it should not move a player up the board.",
+    showsWeek17: false,
   },
   {
     id: "superflex",
@@ -117,6 +124,7 @@ const CONTESTS: ContestCopy[] = [
       "Quarterbacks carry more weekly lineup value here because two can score for the roster at the same time.",
     build: "Move quarterbacks up, leave the draft with three or four starters, and protect against shared byes before filling the last luxury pick.",
     risk: "A fourth quarterback can be useful, but only after the roster has enough receivers and playable depth at every other position.",
+    showsWeek17: true,
   },
 ];
 
@@ -195,6 +203,21 @@ const RECOMMENDATIONS = [
 
 const PAGE_SIZE = 80;
 
+/** Every board on this page groups into 12-pick plates, one per draft round. */
+const ROUND_SIZE = 12;
+
+/** The template's 1080px column; the page manages its own shell width. */
+const SHELL_CLASS = "mx-auto w-full max-w-[1080px] px-[clamp(1rem,4vw,2.5rem)]";
+
+const MONO_LABEL_CLASS = "font-mono text-3xs uppercase tracking-[0.12em]";
+
+/** Square-cornered mono chip from the template header (distinct from the shared pill chip). */
+const HEADER_CHIP_CLASS =
+  "inline-flex items-center whitespace-nowrap rounded-[2px] border px-2 py-1 font-mono text-3xs uppercase tracking-[0.08em]";
+
+const PILL_ACTION_CLASS =
+  "inline-flex min-h-touch items-center rounded-full border px-4 font-mono text-2xs uppercase tracking-[0.06em] no-underline";
+
 // Pinned to UTC so a date-only value like "2026-08-09" is not parsed as UTC
 // midnight and then rendered a day earlier for viewers west of UTC.
 function formatDate(value: string | null | undefined): string {
@@ -245,131 +268,152 @@ function formatAdpDelta(value: number | null): string {
   return rounded > 0 ? `+${rounded.toFixed(1)}` : rounded.toFixed(1);
 }
 
-function ContestRuleLink({ contest }: { contest: BestBallContestId }) {
-  const href = getContestPreset(contest).officialRulesUrl;
+function describeAdpDelta(value: number | null): string {
+  if (value === null) return "No matching room price in this snapshot";
+  if (value >= 3) return `The market usually lets him go ${value.toFixed(1)} picks after the PPR reference`;
+  if (value <= -3) return `The market takes him ${Math.abs(value).toFixed(1)} picks before the PPR reference`;
+  return "Priced about even with the PPR reference";
+}
 
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border px-4 text-sm font-semibold transition-colors hover:border-[var(--home-ink)]"
-      style={{ borderColor: "var(--home-rule)", color: "var(--home-ink)" }}
-    >
-      Read official rules
-      <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-    </a>
-  );
+/** The one live copy of the board-order policy, shown in the contest lens footer. */
+function getBoardPolicyLine(
+  contest: ContestCopy,
+  adpAvailable: boolean,
+  adpProvider: string | undefined
+): string {
+  if (contest.id === "superflex") {
+    return "Board order follows the separate sourced Superflex consensus · PPR ECR stays as the standard lineup reference, and this snapshot has no Superflex room ADP, so ADP and value stay NA.";
+  }
+  if (hasSupportedBestBallAdp(contest.id)) {
+    return adpAvailable
+      ? `Board order follows current ${adpProvider ?? "Underdog"} ADP · value is ADP minus PPR best ball ECR, so a positive number means the market usually lets him go later.`
+      : "Current ADP is unavailable or stale in this snapshot · board order falls back to PPR best ball ECR, and ADP and value stay NA.";
+  }
+  if (!contest.showsWeek17) {
+    return "No matching ADP for this slate in the snapshot · board order follows PPR best ball ECR · the Week 17 column is dimmed because playoff correlation does not apply here.";
+  }
+  return "No matching ADP for this slate in the snapshot · board order follows PPR best ball ECR, and ADP and value stay NA instead of borrowing another slate's price.";
+}
+
+interface RoundGroup {
+  round: number;
+  rows: RankedBestBallPlayer[];
 }
 
 function BestBallPlayerRow({
   player,
-  lensRank,
   opponent,
   adpAvailable,
+  showsWeek17,
+  contestLabel,
   onOpenDetail,
 }: {
   player: RankedBestBallPlayer;
-  lensRank: number;
   opponent?: string;
   adpAvailable: boolean;
+  showsWeek17: boolean;
+  contestLabel: string;
   onOpenDetail: (player: RankedBestBallPlayer) => void;
 }) {
   const atUndraftedFloor = adpAvailable && player.isUndraftedAtContestFloor;
   const playerAdpAvailable =
     adpAvailable && !atUndraftedFloor && Number.isFinite(player.adp);
   const delta = playerAdpAvailable ? getAdpDelta(player) : null;
-  const positive = delta !== null && delta >= 3;
-  const negative = delta !== null && delta <= -3;
+  const tone = getPositionTone(player.position);
 
   return (
     <li
-      className="rounded-[var(--radius-3xl)] border px-3 py-3 transition-[border-color,box-shadow] duration-200 hover:border-[var(--home-ink)] hover:shadow-[var(--shadow-sm)] sm:px-4"
-      style={{
-        borderColor: "var(--home-rule)",
-        background: "color-mix(in srgb, var(--home-paper-alt) 48%, var(--home-elev-mix))",
-      }}
+      className="relative border-t transition-colors duration-150 hover:bg-[color-mix(in_srgb,var(--home-paper-alt)_55%,transparent)]"
+      style={{ borderColor: "color-mix(in srgb, var(--home-rule) 60%, transparent)" }}
     >
-      <div className="flex min-w-0 items-center gap-3 md:grid md:grid-cols-[3.25rem_minmax(0,1fr)_4.5rem_4.5rem_4.5rem_4.5rem_5.5rem] md:gap-3">
-        <span className="w-9 shrink-0 text-center text-xl font-semibold tabular-nums md:w-auto">
-          {lensRank}
-        </span>
-        <div className="min-w-0">
-          <div className="flex min-w-0 items-center gap-2">
-            <button
-              type="button"
-              onClick={() => onOpenDetail(player)}
-              aria-label={`Open ${player.name} details`}
-              className="inline-flex min-h-[44px] min-w-0 items-center rounded-lg text-left font-semibold underline decoration-transparent underline-offset-4 transition-[text-decoration-color,box-shadow] hover:decoration-[var(--home-rule)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)]"
-            >
-              <span className="truncate">{player.name}</span>
-            </button>
-            <span className={FANTASY_CHIP_CLASS} style={getPositionTone(player.position)}>
-              {player.position}
-            </span>
-          </div>
-          <p className="mt-0.5 text-sm" style={{ color: "var(--home-ink-muted)" }}>
-            {player.team || "FA"}
-            {player.positionRank ? ` · ${player.position}${player.positionRank}` : ""}
-          </p>
-        </div>
-        <div className="ml-auto shrink-0 text-right md:ml-0">
-          <p className="text-2xs font-semibold uppercase tracking-[0.12em] md:hidden" style={{ color: "var(--home-ink-muted)" }}>
-            {adpAvailable ? "UD ADP" : "Source rank"}
-          </p>
-          <p className="font-semibold tabular-nums">
-            {atUndraftedFloor
-              ? "Undrafted"
-              : formatRank(adpAvailable ? player.adp : player.adjustedRank)}
-          </p>
-        </div>
-        <p className="hidden text-center font-semibold tabular-nums md:block">{formatRank(getConsensusRank(player))}</p>
-        <p
-          className="hidden text-center font-semibold tabular-nums md:block"
-          style={{
-            color: positive
-              ? "var(--home-positive)"
-              : negative
-                ? "var(--home-warning)"
-                : "var(--home-ink)",
-          }}
+      {/* The open control overlays the row instead of wrapping it: an aria-label
+          on a wrapping button would override every cell for screen readers. */}
+      <button
+        type="button"
+        aria-label={`Open ${player.name} details`}
+        onClick={() => onOpenDetail(player)}
+        className="absolute inset-0 z-[1] cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[var(--home-signal)]"
+      />
+      <div className="flex min-h-11 w-full flex-wrap items-center gap-x-3.5 gap-y-1 px-3.5 py-1.5">
+        <span
+          className="w-[34px] shrink-0 text-right font-mono text-sm font-medium"
+          title="Board rank under this contest lens"
         >
-          {formatAdpDelta(delta)}
-        </p>
-        <p className="hidden text-center font-semibold tabular-nums md:block">{player.byeWeek ?? "NA"}</p>
-        <p className="hidden text-center font-semibold tabular-nums md:block">{opponent ?? "NA"}</p>
-      </div>
-      <dl className="mt-3 grid grid-cols-4 gap-2 border-t pt-3 text-center md:hidden" style={{ borderColor: "var(--home-rule)" }}>
-        <div>
-          <dt className="text-2xs font-semibold uppercase tracking-[0.1em]" style={{ color: "var(--home-ink-muted)" }}>
-            {adpAvailable ? "PPR ECR" : "PPR best ball"}
-          </dt>
-          <dd className="mt-0.5 text-sm font-semibold tabular-nums">{formatRank(getConsensusRank(player))}</dd>
-        </div>
-        <div>
-          <dt className="text-2xs font-semibold uppercase tracking-[0.1em]" style={{ color: "var(--home-ink-muted)" }}>
-            Value
-          </dt>
-          <dd
-            className="mt-0.5 text-sm font-semibold tabular-nums"
-            style={{ color: positive ? "var(--home-positive)" : negative ? "var(--home-warning)" : "var(--home-ink)" }}
+          {player.bestBallRank}
+        </span>
+        <span className="flex min-w-0 flex-[1_1_180px] items-baseline gap-2">
+          <span className="truncate text-sm font-semibold tracking-tight">{player.name}</span>
+          <span
+            className="inline-flex shrink-0 items-center rounded-[2px] border px-1.5 py-0.5 font-mono text-3xs tracking-[0.06em]"
+            style={{ ...tone, color: "var(--home-ink)" }}
+          >
+            {player.position}
+            {Number.isFinite(player.positionRank) ? player.positionRank : ""}
+          </span>
+          <span
+            className="shrink-0 font-mono text-3xs uppercase tracking-[0.06em]"
+            style={{ color: "var(--home-ink-muted)" }}
+          >
+            {player.team || "FA"}
+          </span>
+        </span>
+        <span className="flex max-w-full flex-wrap items-center gap-x-3.5 gap-y-1">
+          <span className="sr-only">Underdog ADP</span>
+          <span
+            className={`w-14 text-right font-mono ${atUndraftedFloor ? "text-3xs uppercase" : "text-xs"}`}
+            title={
+              atUndraftedFloor
+                ? "At the contest-floor placeholder, not a literal price"
+                : "Current Underdog average draft position"
+            }
+            style={{ color: "var(--home-ink-muted)" }}
+          >
+            {atUndraftedFloor ? "Undrafted" : adpAvailable ? formatRank(player.adp) : "NA"}
+          </span>
+          <span className="sr-only">PPR best ball consensus</span>
+          <span
+            className="w-14 text-right font-mono text-xs font-medium"
+            title="PPR best ball expert consensus rank"
+          >
+            {formatRank(getConsensusRank(player))}
+          </span>
+          <span className="sr-only">Value versus ADP</span>
+          <span
+            className="w-14 text-right font-mono text-xs"
+            title={describeAdpDelta(delta)}
+            style={{
+              color:
+                delta !== null && delta >= 3
+                  ? "var(--home-positive)"
+                  : delta !== null && delta <= -3
+                    ? "var(--home-warning)"
+                    : "var(--home-ink-muted)",
+            }}
           >
             {formatAdpDelta(delta)}
-          </dd>
-        </div>
-        <div>
-          <dt className="text-2xs font-semibold uppercase tracking-[0.1em]" style={{ color: "var(--home-ink-muted)" }}>
-            Bye
-          </dt>
-          <dd className="mt-0.5 text-sm font-semibold tabular-nums">{player.byeWeek ?? "NA"}</dd>
-        </div>
-        <div>
-          <dt className="text-2xs font-semibold uppercase tracking-[0.1em]" style={{ color: "var(--home-ink-muted)" }}>
-            Week 17
-          </dt>
-          <dd className="mt-0.5 text-sm font-semibold tabular-nums">{opponent ?? "NA"}</dd>
-        </div>
-      </dl>
+          </span>
+          <span className="sr-only">Bye week</span>
+          <span className="w-8 text-right font-mono text-xs" style={{ color: "var(--home-ink-muted)" }}>
+            {player.byeWeek ?? "NA"}
+          </span>
+          <span className="sr-only">Week 17 opponent</span>
+          <span
+            className="w-10 text-right font-mono text-xs"
+            title={
+              showsWeek17
+                ? `Week 17: ${player.team || "FA"} vs ${opponent ?? "TBD"}`
+                : `Week 17 correlation does not move this board in ${contestLabel}`
+            }
+            style={{
+              color: showsWeek17
+                ? "var(--home-ink-muted)"
+                : "color-mix(in srgb, var(--home-ink-muted) 40%, transparent)",
+            }}
+          >
+            {opponent ?? "NA"}
+          </span>
+        </span>
+      </div>
     </li>
   );
 }
@@ -441,6 +485,19 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
   const visiblePlayers = filteredPlayers.slice(0, visibleCount);
   const hasMore = visibleCount < filteredPlayers.length;
 
+  // Group the windowed rows into 12-pick round plates keyed off the lens rank,
+  // so a filtered board still shows each player inside his real round.
+  const roundGroups = useMemo<RoundGroup[]>(() => {
+    const groups: RoundGroup[] = [];
+    for (const player of visiblePlayers) {
+      const round = Math.ceil(player.bestBallRank / ROUND_SIZE);
+      const current = groups[groups.length - 1];
+      if (!current || current.round !== round) groups.push({ round, rows: [player] });
+      else current.rows.push(player);
+    }
+    return groups;
+  }, [visiblePlayers]);
+
   function updateRouteState(patch: Partial<BestBallSearchState>) {
     const next = { ...routeState, ...patch };
     setVisibleCount(PAGE_SIZE);
@@ -451,11 +508,25 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
   }
 
   const trackerHref = `/fantasy-football/best-ball/draft-tracker?contest=${routeState.contest}`;
-  const rankingAsOf =
-    (routeState.contest === "superflex"
-      ? snapshot?.superflexSource?.asOf
-      : snapshot?.rankingSource.asOf) ?? snapshot?.generatedAt;
   const freshnessWarning = getFreshnessWarning(snapshot, routeState.contest);
+  const policyLine = getBoardPolicyLine(activeContest, adpAvailable, snapshot?.adpSource?.provider);
+
+  // Chips carry only the brand word ("Underdog ADP via Hayden Winks" → "Underdog");
+  // the full provider names stay linked in the board footnote.
+  const adpBrand = snapshot?.adpSource?.provider.split(" ")[0];
+  const ecrBrand = snapshot?.rankingSource.provider.split(" ")[0];
+  const headerChips = [
+    `${CONTESTS.length} contest lenses`,
+    ...(snapshot?.adpSource
+      ? [`ADP ${adpBrand} · ${formatDate(snapshot.adpSource.asOf)}`]
+      : []),
+    ...(snapshot
+      ? [
+          `ECR ${ecrBrand} · ${formatDate(snapshot.rankingSource.asOf ?? snapshot.generatedAt)}`,
+          `${snapshot.players.length} ranked`,
+        ]
+      : []),
+  ];
 
   // A best ball board is a preseason artifact by construction. Once the season is
   // under way, say so instead of serving August ranks with no date on them.
@@ -467,48 +538,39 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
       aria-label="Best ball rankings and strategy"
       data-testid="best-ball-shell"
     >
-      <div className="home-shell home-shell-wide home-section space-y-5 sm:space-y-6">
-        <header className="space-y-4 pt-2">
-          <div className="space-y-3">
-            <p className="home-kicker mb-0">Fantasy Football · Best Ball</p>
-            <h1
+      <header className={`${SHELL_CLASS} flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pb-3.5 pt-7`}>
+        <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1.5">
+          <span
+            className="inline-flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.1em]"
+            style={{ color: "var(--home-ink-muted)" }}
+          >
+            <span className="h-2 w-2 rounded-full" style={{ background: "var(--home-signal)" }} aria-hidden="true" />
+            Best ball{snapshot?.season ? ` · ${snapshot.season}` : ""}
+          </span>
+          <h1
+            className="m-0 font-semibold leading-none"
+            style={{ fontSize: "clamp(1.5rem, 3vw, 2.125rem)", letterSpacing: "-0.05em" }}
+          >
+            Best{" "}
+            <em style={{ fontFamily: "var(--font-home-serif)", fontStyle: "italic", fontWeight: 500 }}>Ball</em>
+          </h1>
+        </div>
+        <div className="flex flex-wrap gap-1.5">
+          {headerChips.map((chip) => (
+            <span
+              key={chip}
+              className={HEADER_CHIP_CLASS}
               style={{
-                fontFamily: "var(--font-home-sans)",
-                fontSize: "clamp(2.15rem, 1.6rem + 2.75vw, 4.2rem)", // DESIGN.md headline step
-                fontWeight: 600,
-                letterSpacing: "-0.045em",
-                lineHeight: 0.95,
-                maxWidth: "17ch",
+                borderColor: "var(--home-rule)",
+                background: "var(--home-paper-alt)",
+                color: "var(--home-ink-muted)",
               }}
             >
-              Build for the contest you are actually drafting.
-            </h1>
-            <p className="max-w-[65ch] text-sm leading-7 sm:text-base" style={{ color: "var(--home-ink-muted)" }}>
-              I use standard-season Underdog average draft position for Mania and Puppy. Eliminator,
-              Weekly Winners, and Sit and Go fall back to the standard PPR best ball consensus because
-              this snapshot has no matching slate price, while Superflex has a separate sourced
-              consensus. The draft assistant changes the build by contest and keeps expected return
-              math separate from the roster model.
-            </p>
-          </div>
-          <div className="flex flex-wrap items-center gap-3">
-            <Link
-              href={trackerHref}
-              className="inline-flex min-h-[48px] items-center gap-2 rounded-full border px-5 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200"
-              style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
-            >
-              Open {activeContest.shortLabel} draft assistant
-              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-            <Link
-              href="/fantasy-football"
-              className="inline-flex min-h-[44px] items-center rounded-full border px-4 text-sm font-semibold transition-colors hover:border-[var(--home-ink)]"
-              style={{ borderColor: "var(--home-rule)", color: "var(--home-ink)" }}
-            >
-              Redraft rankings
-            </Link>
-          </div>
-        </header>
+              {chip}
+            </span>
+          ))}
+        </div>
+      </header>
 
         {seasonalWeek >= 1 ? (
           <SeasonalScopeNote season={snapshot?.season ?? 0} week={seasonalWeek}>
@@ -519,19 +581,20 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
           </SeasonalScopeNote>
         ) : null}
 
-        <section className="home-card-static p-4 sm:p-5" aria-labelledby="contest-lens-heading">
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="home-kicker mb-1">Contest lens</p>
-              <h2 id="contest-lens-heading" className="text-xl font-semibold sm:text-2xl">
-                Choose the room before the players
-              </h2>
-            </div>
-            <p className="text-sm" style={{ color: "var(--home-ink-muted)" }}>
-              Rules checked {formatDate(activePreset.rulesAsOf)}
-            </p>
-          </div>
-          <div role="group" aria-label="Best ball contest" className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3 xl:grid-cols-6">
+      <div
+        className="z-30 border-y md:sticky md:top-[4.5rem]"
+        style={{
+          borderColor: "var(--home-rule)",
+          background: "color-mix(in srgb, var(--home-paper) 90%, transparent)",
+          backdropFilter: "blur(8px)",
+          WebkitBackdropFilter: "blur(8px)",
+        }}
+      >
+        <div className={`${SHELL_CLASS} flex flex-wrap items-center gap-x-3 gap-y-2.5 py-2.5`}>
+          <span className={`shrink-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--home-ink-muted)" }}>
+            Contest
+          </span>
+          <div role="group" aria-label="Best ball contest" className="flex flex-wrap gap-1.5">
             {CONTESTS.map((contest) => {
               const active = contest.id === routeState.contest;
               return (
@@ -540,13 +603,13 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                   type="button"
                   aria-pressed={active}
                   onClick={() => updateRouteState({ contest: contest.id })}
-                  className="min-h-[52px] rounded-[var(--radius-3xl)] border px-3 py-2 text-left text-sm font-semibold transition-[background-color,border-color,color] duration-200"
+                  className="min-h-touch cursor-pointer rounded-full border px-3.5 font-mono text-2xs uppercase tracking-[0.05em] transition-colors duration-150"
                   style={
                     active
                       ? { borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }
                       : {
                           borderColor: "var(--home-rule)",
-                          background: "color-mix(in srgb, var(--home-paper-alt) 54%, var(--home-elev-mix))",
+                          background: "color-mix(in srgb, var(--home-paper-alt) 52%, var(--home-elev-mix))",
                           color: "var(--home-ink)",
                         }
                   }
@@ -556,12 +619,91 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
               );
             })}
           </div>
-        </section>
+          <span
+            className="ml-auto whitespace-nowrap font-mono text-2xs"
+            style={{ color: "var(--home-ink-muted)" }}
+          >
+            Rules checked {formatDate(activePreset.rulesAsOf)}
+          </span>
+        </div>
+      </div>
 
-        {freshnessWarning ? (
+      <section aria-label="Selected format" className={`${SHELL_CLASS} pt-3.5`}>
+        <div
+          className="overflow-hidden rounded-lg border"
+          style={{ borderColor: "var(--home-rule)", background: "var(--home-paper-raised)" }}
+        >
+          <div
+            className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1.5 border-b px-4 py-3"
+            style={{ borderColor: "var(--home-rule)" }}
+          >
+            <div className="flex min-w-0 flex-wrap items-baseline gap-x-3 gap-y-1">
+              <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--home-signal)" }}>
+                Contest lens
+              </p>
+              <h2 className="m-0 text-xl font-semibold leading-tight tracking-tight sm:text-2xl">
+                {activeContest.label}
+              </h2>
+            </div>
+            <span className="font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+              {activeContest.format}
+            </span>
+          </div>
+          <div
+            className="grid gap-x-4 gap-y-3.5 px-4 py-3.5"
+            style={{ gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}
+          >
+            {[
+              { label: "The room", body: activeContest.structure },
+              { label: "How I read it", body: activeContest.brief },
+              { label: "2026 build range", body: activeContest.build },
+              { label: "What I would watch", body: activeContest.risk },
+            ].map((cell) => (
+              <div key={cell.label} className="min-w-0">
+                <p className={`mb-1.5 mt-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--home-ink-muted)" }}>
+                  {cell.label}
+                </p>
+                <p className="m-0 text-sm leading-6">{cell.body}</p>
+              </div>
+            ))}
+          </div>
+          <div
+            className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2.5 border-t px-4 py-3"
+            style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)" }}
+          >
+            <p
+              className="m-0 min-w-0 flex-[1_1_260px] font-mono text-2xs leading-relaxed"
+              style={{ color: "var(--home-ink-muted)" }}
+            >
+              {policyLine}
+            </p>
+            <span className="flex shrink-0 flex-wrap gap-2">
+              <Link
+                href={trackerHref}
+                className={PILL_ACTION_CLASS}
+                style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
+              >
+                Draft with this lens&nbsp;<span aria-hidden="true">↗</span>
+              </Link>
+              <a
+                href={activePreset.officialRulesUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={PILL_ACTION_CLASS}
+                style={{ borderColor: "var(--home-rule)", color: "var(--home-ink)" }}
+              >
+                Scoring rules&nbsp;<span aria-hidden="true">↗</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </section>
+
+      {freshnessWarning ? (
+        <div className={`${SHELL_CLASS} pt-3.5`}>
           <div
             role="status"
-            className="rounded-[var(--radius-2xl)] border px-4 py-3 text-sm leading-6"
+            className="rounded-lg border px-4 py-3 text-sm leading-6"
             style={{
               borderColor: "color-mix(in srgb, var(--home-warning) 48%, var(--home-rule))",
               background: "color-mix(in srgb, var(--home-warning) 10%, var(--home-paper))",
@@ -569,342 +711,386 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
           >
             {freshnessWarning}
           </div>
-        ) : null}
+        </div>
+      ) : null}
 
-        <div className="grid min-w-0 gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,22rem)] xl:grid-cols-[minmax(0,1fr)_23rem]">
-          <article className="home-card min-w-0 p-4 sm:p-6" aria-labelledby="best-ball-board-heading">
-            <div className="flex flex-col gap-2 border-b pb-4 sm:flex-row sm:items-end sm:justify-between" style={{ borderColor: "var(--home-rule)" }}>
-              <div>
-                <p className="home-kicker mb-1">Rankings board</p>
-                <h2 id="best-ball-board-heading" className="text-2xl font-semibold">
-                  {activeContest.shortLabel} view
-                </h2>
-              </div>
-              <p aria-live="polite" className="text-sm" style={{ color: "var(--home-ink-muted)" }}>
-                {isLoading ? "Loading players" : `${filteredPlayers.length} players · As of ${formatDate(rankingAsOf)}`}
-              </p>
-            </div>
-
-            <div className="mt-4 grid gap-3">
-              <PositionFilterBar
-                ariaLabel="Best ball position"
-                options={POSITION_OPTIONS}
-                value={routeState.position}
-                onChange={(position) => updateRouteState({ position })}
-                disabled={Boolean(error)}
-              />
-              <div className="relative">
-                <label htmlFor="best-ball-search" className="sr-only">
-                  Search best ball rankings
-                </label>
-                <Search
-                  className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2"
-                  style={{ color: "var(--home-ink-muted)" }}
-                  aria-hidden="true"
-                />
-                <input
-                  id="best-ball-search"
-                  name="best-ball-search"
-                  type="search"
-                  value={routeState.query}
-                  onChange={(event) => updateRouteState({ query: event.target.value })}
-                  disabled={Boolean(error)}
-                  autoComplete="off"
-                  placeholder="Search player, team, or position"
-                  className="min-h-[48px] w-full rounded-[var(--radius-3xl)] border px-10 pr-12 text-sm transition-[background-color,border-color,box-shadow] duration-200 placeholder:text-[var(--home-ink-muted)] disabled:cursor-not-allowed disabled:opacity-60"
-                  style={{
-                    borderColor: "var(--home-rule)",
-                    background: "color-mix(in srgb, var(--home-paper-alt) 52%, var(--home-elev-mix))",
-                    color: "var(--home-ink)",
-                  }}
-                />
-                {routeState.query && (
-                  <button
-                    type="button"
-                    onClick={() => updateRouteState({ query: "" })}
-                    aria-label="Clear rankings search"
-                    className="absolute right-0 top-1/2 inline-flex min-h-[44px] min-w-[44px] -translate-y-1/2 items-center justify-center"
-                  >
-                    <X className="h-4 w-4" aria-hidden="true" />
-                  </button>
-                )}
-              </div>
-            </div>
-
-            <div className="mt-4 hidden grid-cols-[3.25rem_minmax(0,1fr)_4.5rem_4.5rem_4.5rem_4.5rem_5.5rem] gap-3 px-4 text-2xs font-semibold uppercase tracking-[0.1em] md:grid" style={{ color: "var(--home-ink-muted)" }}>
-              <span className="text-center">Board</span>
-              <span>Player</span>
-              <span className="text-center">{adpAvailable ? "UD ADP" : "Source rank"}</span>
-              <span className="text-center">{routeState.contest === "superflex" ? "PPR best ball" : "PPR ECR"}</span>
-              <span className="text-center">Value</span>
-              <span className="text-center">Bye</span>
-              <span className="text-center">Week 17</span>
-            </div>
-
-            {error ? (
-              <div className="mt-4 rounded-[var(--radius-3xl)] border p-5" role="alert" style={{ borderColor: "var(--home-negative)" }}>
-                <p className="font-semibold">{error}</p>
-                <p className="mt-1 text-sm" style={{ color: "var(--home-ink-muted)" }}>
-                  The strategy notes are still available while the published board reloads.
-                </p>
-                <button
-                  type="button"
-                  onClick={retry}
-                  className="mt-4 inline-flex min-h-[44px] items-center rounded-full border px-4 text-sm font-semibold"
-                  style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
-                >
-                  Retry rankings
-                </button>
-              </div>
-            ) : isLoading ? (
-              <div className="mt-4 grid gap-2" aria-label="Loading rankings">
-                {Array.from({ length: 10 }).map((_, index) => (
-                  <div
-                    key={index}
-                    className="h-[72px] rounded-[var(--radius-3xl)] border motion-safe:animate-pulse"
-                    style={{
-                      borderColor: "var(--home-rule)",
-                      background: "color-mix(in srgb, var(--home-paper-alt) 58%, var(--home-elev-mix))",
-                    }}
-                  />
-                ))}
-              </div>
-            ) : visiblePlayers.length > 0 ? (
-              <>
-                <ol className="mt-3 grid gap-2">
-                  {visiblePlayers.map((player) => (
-                    <BestBallPlayerRow
-                      key={player.id}
-                      player={player}
-                      lensRank={player.bestBallRank}
-                      opponent={snapshot?.week17Opponents[player.team]}
-                      adpAvailable={adpAvailable}
-                      onOpenDetail={setDetailPlayer}
-                    />
-                  ))}
-                </ol>
-                {hasMore && (
-                  <button
-                    type="button"
-                    onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}
-                    className="mt-4 inline-flex min-h-[44px] w-full items-center justify-center rounded-full border px-4 text-sm font-semibold transition-colors hover:border-[var(--home-ink)]"
-                    style={{ borderColor: "var(--home-rule)", color: "var(--home-ink)" }}
-                  >
-                    Show the next {Math.min(PAGE_SIZE, filteredPlayers.length - visibleCount)} players
-                  </button>
-                )}
-              </>
-            ) : (
-              <div className="mt-4 rounded-[var(--radius-3xl)] border p-6 text-center" style={{ borderColor: "var(--home-rule)" }}>
-                <p className="font-semibold">No players match this view.</p>
-                <button
-                  type="button"
-                  onClick={() => updateRouteState({ position: "all", query: "" })}
-                  className="mt-3 inline-flex min-h-[44px] items-center rounded-full border px-4 text-sm font-semibold"
-                  style={{ borderColor: "var(--home-rule)" }}
-                >
-                  Clear filters
-                </button>
-              </div>
-            )}
-
-            <div className="mt-5 border-t pt-4 text-sm leading-6" style={{ borderColor: "var(--home-rule)", color: "var(--home-ink-muted)" }}>
-              <p>
-                {routeState.contest === "superflex"
-                  ? "Board order follows the published half PPR Superflex consensus. PPR best ball shows the separate standard lineup reference for context. This snapshot has no Superflex room ADP, so ADP and value stay blank instead of reusing the standard lineup market."
-                  : adpAvailable
-                    ? "Board order follows current standard-season Underdog ADP when a player is matched. PPR best ball ECR is a separate reference. Value is ADP minus that PPR reference, so a positive number means the market usually lets the player go later. Players labeled Undrafted are at the contest-floor placeholder, not a literal price, so their board order falls back to PPR best ball ECR and value stays blank."
-                    : "This contest has no matching current ADP source in the snapshot. Board order follows PPR best ball ECR, and market value stays blank instead of reusing another slate's price."}
-              </p>
-              {snapshot && (
-                <>
-                  <p className="mt-2">The snapshot was built {formatDate(snapshot.generatedAt)}.</p>
-                  <div className="mt-2 flex flex-wrap gap-2">
-                    <a
-                      className="inline-flex min-h-[44px] items-center rounded-full border px-3 underline underline-offset-4"
-                      style={{ borderColor: "var(--home-rule)" }}
-                      href={snapshot.rankingSource.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Rankings from {snapshot.rankingSource.provider}
-                      {snapshot.rankingSource.expertCount
-                        ? ` · ${snapshot.rankingSource.expertCount} experts`
-                        : ""}
-                    </a>
-                    {snapshot.adpSource && (
-                      <a
-                        className="inline-flex min-h-[44px] items-center rounded-full border px-3 underline underline-offset-4"
-                        style={{ borderColor: "var(--home-rule)" }}
-                        href={snapshot.adpSource.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {adpAvailable ? "ADP" : "Standard ADP reference"} from {snapshot.adpSource.provider}
-                      </a>
-                    )}
-                    {routeState.contest === "superflex" && snapshot.superflexSource && (
-                      <a
-                        className="inline-flex min-h-[44px] items-center rounded-full border px-3 underline underline-offset-4"
-                        style={{ borderColor: "var(--home-rule)" }}
-                        href={snapshot.superflexSource.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Superflex order from {snapshot.superflexSource.provider}
-                      </a>
-                    )}
-                    {snapshot.scheduleSource && (
-                      <a
-                        className="inline-flex min-h-[44px] items-center rounded-full border px-3 underline underline-offset-4"
-                        style={{ borderColor: "var(--home-rule)" }}
-                        href={snapshot.scheduleSource.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Week 17 from {snapshot.scheduleSource.provider}
-                      </a>
-                    )}
-                  </div>
-                </>
-              )}
-            </div>
-          </article>
-
-          <aside className="home-card-static h-fit p-5 lg:sticky lg:top-24" aria-labelledby="contest-brief-heading">
-            <p className="home-kicker mb-1">Selected format</p>
-            <h2 id="contest-brief-heading" className="text-2xl font-semibold">
-              {activeContest.label}
-            </h2>
-            <p className="mt-2 text-sm font-semibold">{activeContest.format}</p>
-            <p className="mt-3 text-sm leading-6" style={{ color: "var(--home-ink-muted)" }}>
-              {activeContest.structure}
-            </p>
-            <div className="my-5 border-t" style={{ borderColor: "var(--home-rule)" }} />
-            <p className="font-semibold">How I read it</p>
-            <p className="mt-2 text-sm leading-6" style={{ color: "var(--home-ink-muted)" }}>
-              {activeContest.brief}
-            </p>
-            <p className="mt-4 font-semibold">2026 build range</p>
-            <p className="mt-2 text-sm leading-6" style={{ color: "var(--home-ink-muted)" }}>
-              {activeContest.build}
-            </p>
-            <p className="mt-4 font-semibold">What I would watch</p>
-            <p className="mt-2 text-sm leading-6" style={{ color: "var(--home-ink-muted)" }}>
-              {activeContest.risk}
-            </p>
-            <div className="mt-5 flex flex-col gap-2">
-              <Link
-                href={trackerHref}
-                className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border px-4 text-sm font-semibold"
-                style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
-              >
-                Draft with this lens
-                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-              <ContestRuleLink contest={routeState.contest} />
-            </div>
-            <p className="mt-4 text-xs leading-5" style={{ color: "var(--home-ink-muted)" }}>
-              These are working ranges, not quotas, and they do not guarantee a result.
-            </p>
-          </aside>
+      <div className={`${SHELL_CLASS} pt-4`} data-testid="best-ball-board">
+        <h2 className="sr-only">{activeContest.shortLabel} board</h2>
+        <div className="flex flex-wrap items-center gap-x-3.5 gap-y-2.5 pb-3">
+          <PositionFilterBar
+            ariaLabel="Best ball position"
+            options={POSITION_OPTIONS}
+            value={routeState.position}
+            onChange={(position) => updateRouteState({ position })}
+            disabled={Boolean(error)}
+          />
+          <div className="relative">
+            <label htmlFor="best-ball-search" className="sr-only">
+              Search best ball rankings
+            </label>
+            <Search
+              className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2"
+              style={{ color: "var(--home-ink-muted)" }}
+              aria-hidden="true"
+            />
+            <input
+              id="best-ball-search"
+              name="best-ball-search"
+              type="search"
+              value={routeState.query}
+              maxLength={80}
+              onChange={(event) => updateRouteState({ query: event.target.value })}
+              disabled={Boolean(error)}
+              autoComplete="off"
+              placeholder="Search player or team"
+              className="min-h-touch w-[200px] rounded-[4px] border pl-8 pr-2.5 font-mono text-xs placeholder:text-[var(--home-ink-muted)] disabled:cursor-not-allowed disabled:opacity-60"
+              style={{
+                borderColor: "var(--home-rule)",
+                background: "var(--home-paper-raised)",
+                color: "var(--home-ink)",
+              }}
+            />
+          </div>
+          <span
+            aria-live={error ? undefined : "polite"}
+            className="ml-auto whitespace-nowrap font-mono text-2xs"
+            style={{ color: "var(--home-ink-muted)" }}
+          >
+            {isLoading
+              ? "Loading players"
+              : `${filteredPlayers.length} of ${orderedPlayers.length} on this board`}
+          </span>
         </div>
 
-        <section className="space-y-4 pt-3" aria-labelledby="best-ball-strategy-heading">
-          <div className="max-w-[70ch]">
-            <p className="home-kicker mb-1">What has worked</p>
-            <h2 id="best-ball-strategy-heading" className="text-3xl font-semibold tracking-tight">
-              The historical patterns I would carry into 2026
-            </h2>
-            <p className="mt-3 text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
-              The findings below describe past drafts and are not proof that one construction will win the next tournament. I use them to set boundaries, then let the current room and the selected contest decide the roster.
+        {error ? (
+          <div
+            role="alert"
+            className="rounded-lg border px-5 py-8"
+            style={{
+              borderColor: "var(--home-negative)",
+              background: "color-mix(in srgb, var(--home-negative) 8%, var(--home-paper))",
+            }}
+          >
+            <p className="font-semibold" style={{ color: "var(--home-negative)" }}>
+              {error}
             </p>
+            <p className="mt-2 text-sm" style={{ color: "var(--home-ink-muted)" }}>
+              The strategy notes are still available while the published board reloads.
+            </p>
+            <button
+              type="button"
+              onClick={retry}
+              className="mt-4 inline-flex min-h-touch items-center rounded-full border px-4 text-sm font-semibold"
+              style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
+            >
+              Retry rankings
+            </button>
           </div>
-          <div className="grid gap-3 md:grid-cols-2">
+        ) : isLoading ? (
+          <div className="grid gap-2" aria-label="Loading rankings">
+            {Array.from({ length: 10 }).map((_, index) => (
+              <div
+                key={index}
+                className="h-11 rounded-lg border motion-safe:animate-pulse"
+                style={{
+                  borderColor: "var(--home-rule)",
+                  background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
+                }}
+              />
+            ))}
+          </div>
+        ) : visiblePlayers.length > 0 ? (
+          <>
+            <div
+              aria-hidden="true"
+              className="hidden items-center gap-x-3.5 px-3.5 pb-2 font-mono text-3xs uppercase tracking-[0.12em] md:flex"
+              style={{ color: "var(--home-ink-muted)" }}
+            >
+              <span className="w-[34px] shrink-0" />
+              <span className="min-w-0 flex-[1_1_180px]">Player</span>
+              <span className="flex shrink-0 items-center gap-x-3.5">
+                <span className="w-14 text-right">UD ADP</span>
+                <span className="w-14 text-right whitespace-nowrap">PPR ECR</span>
+                <span className="w-14 text-right" title="ADP minus PPR best ball ECR">
+                  Value
+                </span>
+                <span className="w-8 text-right">Bye</span>
+                <span className="w-10 text-right">W17</span>
+              </span>
+            </div>
+            {roundGroups.map((group, index) => {
+              const fullRound = group.rows.length === ROUND_SIZE;
+              return (
+                <section
+                  key={`round-${group.round}`}
+                  style={{ marginTop: index === 0 ? 0 : 14 }}
+                  aria-label={`Round ${group.round}`}
+                >
+                  <div
+                    className="overflow-hidden rounded-lg border border-l-[3px]"
+                    style={{
+                      borderColor: "var(--home-rule)",
+                      borderLeftColor: `color-mix(in srgb, var(--home-signal) ${getTierRailTone(group.round)}, var(--home-rule))`,
+                      background: "var(--home-paper-raised)",
+                    }}
+                  >
+                    <div className="flex flex-wrap items-baseline gap-x-3.5 gap-y-1 px-3.5 pb-2 pt-2.5">
+                      <span className="text-2xl font-bold leading-none tracking-tight tabular-nums">
+                        {String(group.round).padStart(2, "0")}
+                      </span>
+                      <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+                        Round
+                      </span>
+                      <span className="font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+                        {fullRound ? "full round on this board" : `${group.rows.length} shown`}
+                      </span>
+                      <span className="ml-auto font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+                        picks {group.round * ROUND_SIZE - (ROUND_SIZE - 1)}–{group.round * ROUND_SIZE}
+                      </span>
+                    </div>
+                    <ul className="m-0 list-none p-0">
+                      {group.rows.map((player) => (
+                        <BestBallPlayerRow
+                          key={player.id}
+                          player={player}
+                          opponent={snapshot?.week17Opponents[player.team]}
+                          adpAvailable={adpAvailable}
+                          showsWeek17={activeContest.showsWeek17}
+                          contestLabel={activeContest.label}
+                          onOpenDetail={setDetailPlayer}
+                        />
+                      ))}
+                    </ul>
+                  </div>
+                </section>
+              );
+            })}
+            {hasMore && (
+              <button
+                type="button"
+                onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}
+                className="mt-4 inline-flex min-h-touch w-full items-center justify-center rounded-full border px-4 text-sm font-semibold transition-colors hover:border-[var(--home-ink)]"
+                style={{ borderColor: "var(--home-rule)", color: "var(--home-ink)" }}
+              >
+                Show the next {Math.min(PAGE_SIZE, filteredPlayers.length - visibleCount)} players
+              </button>
+            )}
+          </>
+        ) : (
+          <div
+            className="rounded-lg border border-dashed px-5 py-9 text-center"
+            style={{ borderColor: "var(--home-rule)" }}
+          >
+            <p className="font-mono text-xs" style={{ color: "var(--home-ink-muted)" }}>
+              No players match on this board.
+            </p>
+            <button
+              type="button"
+              onClick={() => updateRouteState({ position: "all", query: "" })}
+              className="mt-3.5 inline-flex min-h-touch items-center rounded-full border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
+              style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
+            >
+              Clear search
+            </button>
+          </div>
+        )}
+
+        <div
+          className="mt-3 font-mono text-2xs leading-relaxed"
+          style={{ color: "var(--home-ink-muted)" }}
+        >
+          {adpAvailable && (
+            <p className="m-0">
+              Players labeled Undrafted are at the contest-floor placeholder, not a literal price, so
+              their board order falls back to PPR best ball ECR and value stays blank.
+            </p>
+          )}
+          {snapshot && (
+            <p className="m-0 mt-1.5">
+              Snapshot built {formatDate(snapshot.generatedAt)} · rankings{" "}
+              <a
+                className="underline underline-offset-2"
+                href={snapshot.rankingSource.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {snapshot.rankingSource.provider} PPR best ball
+                {snapshot.rankingSource.expertCount
+                  ? ` · ${snapshot.rankingSource.expertCount} experts`
+                  : ""}
+              </a>
+              {snapshot.adpSource && (
+                <>
+                  {" "}
+                  · ADP{" "}
+                  <a
+                    className="underline underline-offset-2"
+                    href={snapshot.adpSource.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {snapshot.adpSource.provider} standard slate
+                  </a>
+                </>
+              )}
+              {routeState.contest === "superflex" && snapshot.superflexSource && (
+                <>
+                  {" "}
+                  · Superflex order{" "}
+                  <a
+                    className="underline underline-offset-2"
+                    href={snapshot.superflexSource.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {snapshot.superflexSource.provider}
+                  </a>
+                </>
+              )}
+              {snapshot.scheduleSource && (
+                <>
+                  {" "}
+                  · Week 17{" "}
+                  <a
+                    className="underline underline-offset-2"
+                    href={snapshot.scheduleSource.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {snapshot.scheduleSource.provider}
+                  </a>
+                </>
+              )}
+            </p>
+          )}
+        </div>
+      </div>
+
+      <section aria-labelledby="field-notes-heading" className={`${SHELL_CLASS} pt-7`}>
+        <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--home-signal)" }}>
+          Field notes
+        </p>
+        <h2 id="field-notes-heading" className="mb-0 mt-1.5 text-2xl font-semibold leading-tight tracking-tight">
+          What has worked, and how I would use it
+        </h2>
+        <p className="mb-0 mt-2.5 max-w-[70ch] text-sm leading-6" style={{ color: "var(--home-ink-muted)" }}>
+          The findings below describe past drafts and are not proof that one construction will win the
+          next tournament. I use them to set boundaries, then let the current room and the selected
+          contest decide the roster.
+        </p>
+        <div
+          className="mt-4 grid gap-x-9 gap-y-2"
+          style={{ gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))" }}
+        >
+          <div className="min-w-0">
+            <p className={`mb-0.5 mt-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--home-ink-muted)" }}>
+              Observed in past drafts
+            </p>
             {OBSERVED_FINDINGS.map((finding) => (
-              <article key={finding.title} className="home-card-static p-5 sm:p-6">
-                <p className="text-2xs font-semibold uppercase tracking-[0.12em]" style={{ color: "var(--home-ink-muted)" }}>
-                  Observed in past drafts
-                </p>
-                <h3 className="mt-2 text-xl font-semibold">{finding.title}</h3>
-                <p className="mt-2 text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
+              <div key={finding.title} className="border-t py-2.5" style={{ borderColor: "var(--home-rule)" }}>
+                <p className="m-0 text-sm font-semibold tracking-tight">{finding.title}</p>
+                <p className="mb-1.5 mt-1 text-sm leading-6" style={{ color: "var(--home-ink-muted)" }}>
                   {finding.body}
                 </p>
                 <a
                   href={finding.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 inline-flex min-h-[44px] items-center gap-1.5 text-sm font-semibold underline decoration-[var(--home-rule)] underline-offset-4"
+                  className="font-mono text-2xs uppercase tracking-[0.06em] underline underline-offset-2"
                 >
-                  {finding.source}
-                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                  {finding.source}&nbsp;<span aria-hidden="true">↗</span>
                 </a>
-              </article>
+              </div>
             ))}
           </div>
-        </section>
-
-        <section className="home-card p-5 sm:p-7" aria-labelledby="recommendations-heading">
-          <div className="max-w-[68ch]">
-            <p className="home-kicker mb-1">2026 recommendation</p>
-            <h2 id="recommendations-heading" className="text-3xl font-semibold tracking-tight">
-              How I would use the evidence now
-            </h2>
-          </div>
-          <ol className="mt-5 grid gap-3 md:grid-cols-2">
+          <div className="min-w-0">
+            <p className={`mb-0.5 mt-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--home-ink-muted)" }}>
+              2026 recommendation
+            </p>
             {RECOMMENDATIONS.map((recommendation) => (
-              <li
+              <div
                 key={recommendation.number}
-                className="rounded-[var(--radius-3xl)] border p-5"
-                style={{ borderColor: "var(--home-rule)", background: "color-mix(in srgb, var(--home-paper-alt) 48%, var(--home-elev-mix))" }}
+                className="flex gap-3 border-t py-2.5"
+                style={{ borderColor: "var(--home-rule)" }}
               >
-                <span className="text-sm font-semibold tabular-nums" style={{ color: "var(--home-ink-muted)" }}>
+                <span className="w-6 shrink-0 font-mono text-xs" style={{ color: "var(--home-signal)" }}>
                   {recommendation.number}
                 </span>
-                <h3 className="mt-2 text-lg font-semibold">{recommendation.title}</h3>
-                <p className="mt-2 text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
-                  {recommendation.body}
-                </p>
-                {recommendation.href && (
-                  <a
-                    href={recommendation.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-3 inline-flex min-h-[44px] items-center gap-1.5 text-sm font-semibold underline decoration-[var(--home-rule)] underline-offset-4"
-                  >
-                    Read the draft date study
-                    <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                  </a>
-                )}
-              </li>
+                <div className="min-w-0">
+                  <p className="m-0 text-sm font-semibold tracking-tight">{recommendation.title}</p>
+                  <p className="mb-0 mt-1 text-sm leading-6" style={{ color: "var(--home-ink-muted)" }}>
+                    {recommendation.body}
+                  </p>
+                  {recommendation.href && (
+                    <a
+                      href={recommendation.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-1.5 inline-block font-mono text-2xs uppercase tracking-[0.06em] underline underline-offset-2"
+                    >
+                      4for4 draft date study&nbsp;<span aria-hidden="true">↗</span>
+                    </a>
+                  )}
+                </div>
+              </div>
             ))}
-          </ol>
-        </section>
-
-        <section className="home-card-static p-5 sm:p-6" aria-labelledby="rules-heading">
-          <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-            <div className="max-w-[68ch]">
-              <p className="home-kicker mb-1">Format reference</p>
-              <h2 id="rules-heading" className="text-2xl font-semibold">
-                The baseline Underdog roster
-              </h2>
-              <p className="mt-2 text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
-                Standard NFL best ball drafts use 12 teams and 18 rounds with one quarterback, two running backs, three receivers, one tight end, one flex, and ten bench spots. The site sets the strongest lineup each week, and there are no waivers, trades, or manual lineup decisions. Scoring is half PPR unless the contest says otherwise.
-              </p>
-            </div>
-            <a
-              href={RULES_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex min-h-[44px] shrink-0 items-center gap-1.5 rounded-full border px-4 text-sm font-semibold"
-              style={{ borderColor: "var(--home-rule)", color: "var(--home-ink)" }}
-            >
-              Official scoring and lineup rules
-              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-            </a>
           </div>
-        </section>
+        </div>
+      </section>
+
+      <section aria-label="Format reference" className={`${SHELL_CLASS} pt-5`}>
+        <div
+          className="flex flex-wrap items-start justify-between gap-x-6 gap-y-3.5 rounded-lg border px-4 py-4"
+          style={{ borderColor: "var(--home-rule)", background: "var(--home-paper-raised)" }}
+        >
+          <div className="min-w-0 max-w-[68ch] flex-[1_1_380px]">
+            <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--home-ink-muted)" }}>
+              Format reference
+            </p>
+            <h3 className="mb-0 mt-1.5 text-lg font-semibold tracking-tight">
+              The baseline Underdog roster
+            </h3>
+            <p className="mb-0 mt-2 text-sm leading-6" style={{ color: "var(--home-ink-muted)" }}>
+              Standard NFL best ball drafts use 12 teams and 18 rounds with one quarterback, two
+              running backs, three receivers, one tight end, one flex, and ten bench spots. The site
+              sets the strongest lineup each week, and there are no waivers, trades, or manual lineup
+              decisions. Scoring is half PPR unless the contest says otherwise.
+            </p>
+          </div>
+          <a
+            href={RULES_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${PILL_ACTION_CLASS} shrink-0`}
+            style={{ borderColor: "var(--home-rule)", color: "var(--home-ink)" }}
+          >
+            Official scoring and lineup rules&nbsp;<span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </section>
+
+      <div className={`${SHELL_CLASS} pb-11 pt-5`}>
+        <div
+          className="flex flex-wrap items-baseline justify-between gap-x-5 gap-y-2 border-t pt-3.5"
+          style={{ borderColor: "var(--home-rule)" }}
+        >
+          <span className="font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+            Working ranges, not quotas, and nothing here guarantees a result
+          </span>
+          <span className="flex flex-wrap gap-x-4 gap-y-1">
+            <Link href="/fantasy-football" className="text-sm font-semibold no-underline">
+              Rankings board&nbsp;<span aria-hidden="true">↗</span>
+            </Link>
+            <Link href={trackerHref} className="text-sm font-semibold no-underline">
+              Draft tracker&nbsp;<span aria-hidden="true">↗</span>
+            </Link>
+            <Link href="/fantasy-football/mock-draft" className="text-sm font-semibold no-underline">
+              Mock draft&nbsp;<span aria-hidden="true">↗</span>
+            </Link>
+          </span>
+        </div>
       </div>
+
       <PlayerDetailDrawer
         player={detailPlayer}
         publishedRank={detailPlayer ? String(detailPlayer.bestBallRank) : undefined}
@@ -916,6 +1102,8 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
       />
       <CompareTray
         resolvePlayer={resolveComparablePlayer}
+        playerDataReady={!isLoading && Boolean(snapshot)}
+        pruneUnresolvedIds={false}
         publishedRank={(player) =>
           String(comparablePlayerLookup.get(player.id)?.bestBallRank ?? "")
         }

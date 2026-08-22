@@ -1,15 +1,24 @@
-import type { Player, TeamRoster } from "@/types";
+import type { Player, RedraftLineupSettings, TeamRoster } from "@/types";
 import { getPickBaseline } from "@/lib/draftAnalytics";
 
 /**
  * Pure auto-pick engine behind the mock draft practice simulator. Given the
  * remaining board, the picking team's roster so far, and a seeded RNG, it
  * returns one realistic pick. Callers own the loop, roster bookkeeping, and
- * the seed, so a whole draft replays byte-for-byte from (board, seed).
+ * the seed, so a whole draft replays byte-for-byte from (board, seed, config).
  */
+export type MockDraftTemper = "faithful" | "normal" | "chaotic";
+
 export interface MockDraftEngineConfig {
   totalTeams: number;
   rounds: number;
+  /** How far down the board the room will reach; omitted means "normal". */
+  temper?: MockDraftTemper;
+  /**
+   * Starting lineup the required starters and K/DST caps derive from;
+   * omitted keeps the one-QB defaults below.
+   */
+  lineup?: RedraftLineupSettings;
 }
 
 type CountedPosition = keyof TeamRoster["positionCounts"];
@@ -40,6 +49,35 @@ const POSITION_CAPS: Record<CountedPosition, number> = {
 
 /** K and DST only become draftable in the final rounds, as in real rooms. */
 const K_DST_CLOSING_ROUNDS = 3;
+
+/**
+ * Sampling window sizes per draft phase (early/mid/late rounds): how many of
+ * the top remaining values a room will actually reach among. "normal" is the
+ * original tuning, so configs without a temper replay byte-for-byte.
+ */
+const TEMPER_WINDOWS: Record<MockDraftTemper, readonly [number, number, number]> = {
+  faithful: [2, 3, 4],
+  normal: [3, 5, 8],
+  chaotic: [6, 10, 14],
+};
+
+function getRequiredStarters(lineup?: RedraftLineupSettings): Record<CountedPosition, number> {
+  if (!lineup) return REQUIRED_STARTERS;
+  return {
+    QB: lineup.QB,
+    RB: lineup.RB,
+    WR: lineup.WR,
+    TE: lineup.TE,
+    K: lineup.K,
+    DST: lineup.DST,
+  };
+}
+
+function getPositionCaps(lineup?: RedraftLineupSettings): Record<CountedPosition, number> {
+  if (!lineup) return POSITION_CAPS;
+  // A lineup with no K or DST starter means the room never drafts one.
+  return { ...POSITION_CAPS, K: lineup.K, DST: lineup.DST };
+}
 
 /**
  * Where the engine ranks a player: reliable market ADP, else the raw
@@ -102,12 +140,14 @@ export function pickForTeam(
   const round = Math.ceil(pickNumber / config.totalTeams);
   const remainingPicks = config.rounds - roster.picks.length;
   const counts = roster.positionCounts;
+  const required = getRequiredStarters(config.lineup);
+  const caps = getPositionCaps(config.lineup);
 
-  const missing = (Object.keys(REQUIRED_STARTERS) as CountedPosition[]).filter(
-    (position) => (counts[position] ?? 0) < REQUIRED_STARTERS[position]
+  const missing = (Object.keys(required) as CountedPosition[]).filter(
+    (position) => (counts[position] ?? 0) < required[position]
   );
   const missingTotal = missing.reduce(
-    (sum, position) => sum + REQUIRED_STARTERS[position] - (counts[position] ?? 0),
+    (sum, position) => sum + required[position] - (counts[position] ?? 0),
     0
   );
   const mustFill = missingTotal > 0 && remainingPicks <= missingTotal;
@@ -118,7 +158,7 @@ export function pickForTeam(
     if (!hasCountedPosition(player)) return false;
     const position = player.position as CountedPosition;
     if (mustFill) return missing.includes(position);
-    if ((counts[position] ?? 0) >= POSITION_CAPS[position]) return false;
+    if ((counts[position] ?? 0) >= caps[position]) return false;
     if (
       (position === "K" || position === "DST") &&
       round <= config.rounds - K_DST_CLOSING_ROUNDS
@@ -136,6 +176,7 @@ export function pickForTeam(
   // over, so the deep board goes strictly best-available.
   if (boardValue(ordered[0]) >= NO_BASELINE_OFFSET) return ordered[0];
 
-  const windowSize = Math.min(ordered.length, round <= 2 ? 3 : round <= 8 ? 5 : 8);
+  const [early, mid, late] = TEMPER_WINDOWS[config.temper ?? "normal"];
+  const windowSize = Math.min(ordered.length, round <= 2 ? early : round <= 8 ? mid : late);
   return ordered[sampleTopOfBoard(windowSize, rng)];
 }

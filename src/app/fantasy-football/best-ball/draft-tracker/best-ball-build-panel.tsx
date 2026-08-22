@@ -27,6 +27,8 @@ export function BestBallBuildPanel({
   nextUserPick,
   totalPicks,
   draftValue,
+  week17Available,
+  draftValueUnavailableReason,
   calculatorValue,
   onCalculatorChange,
   headingId,
@@ -38,6 +40,8 @@ export function BestBallBuildPanel({
   nextUserPick: number | null;
   totalPicks: number;
   draftValue: DraftValueReport | null;
+  week17Available: boolean;
+  draftValueUnavailableReason?: string | null;
   calculatorValue: ExpectedReturnFormState;
   onCalculatorChange: (value: ExpectedReturnFormState) => void;
   headingId: string;
@@ -77,6 +81,7 @@ export function BestBallBuildPanel({
       <div className="border-t pt-4" style={{ borderColor: "var(--home-rule)" }}>
         <DraftValuePanel
           report={draftValue}
+          unavailableReason={draftValueUnavailableReason}
           headingId={`${headingId}-draft-outlook`}
           economics={preset.economics}
           economicsSourceUrl={preset.economics?.sourceUrl}
@@ -188,7 +193,11 @@ export function BestBallBuildPanel({
         <h3 id={`${headingId}-week17`} className="text-sm font-semibold">
           Week 17 correlation
         </h3>
-        {usesWeek17Correlation && analysis.week17Pairs.length > 0 ? (
+        {usesWeek17Correlation && !week17Available ? (
+          <p className="mt-2 text-xs leading-5" style={{ color: "var(--home-ink-muted)" }}>
+            Week 17 guidance is paused until the published schedule refreshes.
+          </p>
+        ) : usesWeek17Correlation && analysis.week17Pairs.length > 0 ? (
           <div className="mt-2 grid gap-2">
             {analysis.week17Pairs.slice(0, 3).map((pair) => (
               <div

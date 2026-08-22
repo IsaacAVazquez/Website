@@ -16,12 +16,41 @@ interface DraftSetupProps {
   rankingsStatus: "loading" | "error" | "ready";
   rankingsError: string | null;
   onRetryRankings: () => void;
+  /** True when a room with picks is parked behind this screen (the "New room" path). */
+  canResume?: boolean;
+  onResume?: () => void;
 }
 
-const SCORING_OPTIONS: { value: ScoringFormat; label: string; description: string }[] = [
-  { value: "PPR", label: "PPR", description: "Best for reception-heavy leagues." },
-  { value: "HALF_PPR", label: "Half PPR", description: "Balanced default for most home leagues." },
-  { value: "STANDARD", label: "Standard", description: "Use when receptions do not score." },
+const MONO_LABEL_CLASS = "font-mono text-3xs uppercase tracking-[0.12em]";
+
+const FIELD_CLASS =
+  "min-h-touch w-full rounded border px-3 font-mono text-xs transition-[background-color,border-color,box-shadow] duration-200";
+
+const FIELD_STYLE: CSSProperties = {
+  borderColor: "var(--home-rule)",
+  background: "var(--home-paper)",
+  color: "var(--home-ink)",
+};
+
+const PILL_BUTTON_CLASS =
+  "inline-flex min-h-touch items-center justify-center rounded-full border px-3.5 font-mono text-2xs uppercase tracking-[0.06em]";
+
+const SCORING_OPTIONS: { value: ScoringFormat; label: string }[] = [
+  { value: "PPR", label: "PPR" },
+  { value: "HALF_PPR", label: "Half" },
+  { value: "STANDARD", label: "Std" },
+];
+
+const ORDER_OPTIONS: { value: DraftSettings["draftType"]; label: string }[] = [
+  { value: "snake", label: "Snake" },
+  { value: "linear", label: "Linear" },
+];
+
+const CLOCK_OPTIONS: { value: number; label: string }[] = [
+  { value: 0, label: "Off" },
+  { value: 60, label: "60s" },
+  { value: 90, label: "90s" },
+  { value: 120, label: "120s" },
 ];
 
 const LINEUP_FIELDS: ReadonlyArray<{
@@ -43,28 +72,39 @@ function sameLineup(left: RedraftLineupSettings, right: RedraftLineupSettings): 
   );
 }
 
-function getOptionStyle(active: boolean): CSSProperties {
-  if (active) {
-    return {
-      borderColor: "var(--home-ink)",
-      background: "var(--home-ink)",
-      color: "var(--home-paper)",
-    };
-  }
-
-  return {
-    borderColor: "var(--home-rule)",
-    background: "color-mix(in srgb, var(--home-paper-alt) 52%, var(--home-elev-mix))",
-    color: "var(--home-ink)",
-  };
-}
-
-function getFieldStyle(): CSSProperties {
-  return {
-    borderColor: "var(--home-rule)",
-    background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
-    color: "var(--home-ink)",
-  };
+/** Fused segmented control: aria-pressed buttons inside one hairline frame. */
+function SegmentedButtons<Value extends string | number>({
+  options,
+  value,
+  onSelect,
+}: {
+  options: readonly { value: Value; label: string }[];
+  value: Value;
+  onSelect: (value: Value) => void;
+}) {
+  return (
+    <div className="inline-flex overflow-hidden rounded border" style={{ borderColor: "var(--home-rule)" }}>
+      {options.map((option) => {
+        const active = option.value === value;
+        return (
+          <button
+            key={String(option.value)}
+            type="button"
+            aria-pressed={active}
+            onClick={() => onSelect(option.value)}
+            className="min-h-touch flex-1 px-2.5 font-mono text-2xs uppercase tracking-[0.06em]"
+            style={
+              active
+                ? { background: "var(--home-ink)", color: "var(--home-paper)" }
+                : { background: "transparent", color: "var(--home-ink)" }
+            }
+          >
+            {option.label}
+          </button>
+        );
+      })}
+    </div>
+  );
 }
 
 export function DraftSetup({
@@ -74,6 +114,8 @@ export function DraftSetup({
   rankingsStatus,
   rankingsError,
   onRetryRankings,
+  canResume = false,
+  onResume,
 }: DraftSetupProps) {
   const [formState, setFormState] = useState<DraftSettings>(settings);
   const [isStarting, setIsStarting] = useState(false);
@@ -130,20 +172,48 @@ export function DraftSetup({
     }
   }
 
+  const scoringLabel =
+    SCORING_OPTIONS.find((option) => option.value === formState.scoringFormat)?.label ??
+    formState.scoringFormat;
+  const summary = lineupTooLarge
+    ? `This lineup needs ${startingSlots} starters, which does not fit in ${formState.rounds} rounds. Reduce the lineup or add rounds before starting.`
+    : `${formState.totalTeams}-team ${formState.draftType} · slot ${formState.userTeam} · ${formState.rounds} rounds · ${scoringLabel} · ${redraftLineupSummary(formState.lineup)}`;
+
   return (
-    <div className="home-card scroll-mt-28 p-5 sm:p-6">
-      <div className="border-b pb-4" style={{ borderColor: "var(--home-rule)" }}>
-        <p className="home-kicker mb-1">Draft Setup</p>
-        <h2 className="text-2xl font-semibold">Configure the room before picks start.</h2>
-        <p className="mt-2 text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
-          Save the league settings once, then use the published snapshot board to log every pick as
-          the room moves.
-        </p>
+    <div
+      className="overflow-hidden rounded-lg border"
+      style={{ borderColor: "var(--home-rule)", background: "var(--home-paper-raised)" }}
+    >
+      <div
+        className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 border-b px-4 py-3.5 sm:px-5"
+        style={{ borderColor: "var(--home-rule)" }}
+      >
+        <div className="min-w-0">
+          <p className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+            Room setup
+          </p>
+          <h2 className="mt-1 text-xl font-semibold tracking-[-0.03em]">One screen, then draft.</h2>
+        </div>
+        {canResume && onResume ? (
+          <button
+            type="button"
+            onClick={onResume}
+            className={PILL_BUTTON_CLASS}
+            style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)", color: "var(--home-ink)" }}
+          >
+            Back to room →
+          </button>
+        ) : null}
       </div>
 
-      <div className="mt-5 grid gap-4 md:grid-cols-2">
-        <label className="grid gap-2 text-sm" htmlFor="draft-league-name">
-          <span className="home-kicker mb-0">League name</span>
+      <div
+        className="grid gap-x-4 gap-y-3.5 px-4 py-4 sm:px-5"
+        style={{ gridTemplateColumns: "repeat(auto-fit, minmax(210px, 1fr))" }}
+      >
+        <label className="grid content-start gap-1.5 text-sm" htmlFor="draft-league-name">
+          <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+            League name
+          </span>
           <input
             id="draft-league-name"
             name="leagueName"
@@ -151,21 +221,23 @@ export function DraftSetup({
             onChange={(event) => updateField("leagueName", event.target.value.slice(0, 60))}
             autoComplete="organization"
             maxLength={60}
-            className="min-h-[48px] w-full rounded-[var(--radius-3xl)] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
-            style={getFieldStyle()}
             placeholder="Home league"
+            className={FIELD_CLASS}
+            style={FIELD_STYLE}
           />
         </label>
 
-        <label className="grid gap-2 text-sm" htmlFor="draft-total-teams">
-          <span className="home-kicker mb-0">Teams</span>
+        <label className="grid content-start gap-1.5 text-sm" htmlFor="draft-total-teams">
+          <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+            Teams
+          </span>
           <select
             id="draft-total-teams"
             name="totalTeams"
             value={formState.totalTeams}
             onChange={(event) => updateField("totalTeams", Number(event.target.value))}
-            className="min-h-[48px] w-full rounded-[var(--radius-3xl)] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
-            style={getFieldStyle()}
+            className={FIELD_CLASS}
+            style={FIELD_STYLE}
           >
             {[8, 10, 12, 14, 16].map((teamCount) => (
               <option key={teamCount} value={teamCount}>
@@ -175,15 +247,17 @@ export function DraftSetup({
           </select>
         </label>
 
-        <label className="grid gap-2 text-sm" htmlFor="draft-user-team">
-          <span className="home-kicker mb-0">Your draft slot</span>
+        <label className="grid content-start gap-1.5 text-sm" htmlFor="draft-user-team">
+          <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+            Your draft slot
+          </span>
           <select
             id="draft-user-team"
             name="userTeam"
             value={formState.userTeam}
             onChange={(event) => updateField("userTeam", Number(event.target.value))}
-            className="min-h-[48px] w-full rounded-[var(--radius-3xl)] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
-            style={getFieldStyle()}
+            className={FIELD_CLASS}
+            style={FIELD_STYLE}
           >
             {Array.from({ length: formState.totalTeams }, (_, index) => index + 1).map((slot) => (
               <option key={slot} value={slot}>
@@ -193,15 +267,17 @@ export function DraftSetup({
           </select>
         </label>
 
-        <label className="grid gap-2 text-sm" htmlFor="draft-rounds">
-          <span className="home-kicker mb-0">Rounds</span>
+        <label className="grid content-start gap-1.5 text-sm" htmlFor="draft-rounds">
+          <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+            Rounds
+          </span>
           <select
             id="draft-rounds"
             name="rounds"
             value={formState.rounds}
             onChange={(event) => updateField("rounds", Number(event.target.value))}
-            className="min-h-[48px] w-full rounded-[var(--radius-3xl)] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
-            style={getFieldStyle()}
+            className={FIELD_CLASS}
+            style={FIELD_STYLE}
           >
             {[13, 14, 15, 16, 17, 18].map((roundCount) => (
               <option key={roundCount} value={roundCount}>
@@ -210,15 +286,49 @@ export function DraftSetup({
             ))}
           </select>
         </label>
+
+        <div className="grid content-start gap-1.5 text-sm">
+          <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+            Scoring
+          </span>
+          <SegmentedButtons options={SCORING_OPTIONS} value={formState.scoringFormat} onSelect={updateScoringFormat} />
+        </div>
+
+        <div className="grid content-start gap-1.5 text-sm">
+          <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+            Draft order
+          </span>
+          <SegmentedButtons
+            options={ORDER_OPTIONS}
+            value={formState.draftType}
+            onSelect={(draftType) => updateField("draftType", draftType)}
+          />
+        </div>
+
+        <div className="grid content-start gap-1.5 text-sm">
+          <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+            Pick clock · advisory
+          </span>
+          <SegmentedButtons
+            options={CLOCK_OPTIONS}
+            value={
+              // A restored room can hold an off-menu duration (45s or 180s from
+              // the previous setup UI). It renders with no active segment until
+              // one is chosen, and the stored value keeps working.
+              CLOCK_OPTIONS.some((option) => option.value === (formState.timerSeconds ?? 0))
+                ? (formState.timerSeconds ?? 0)
+                : -1
+            }
+            onSelect={(timerSeconds) => updateField("timerSeconds", timerSeconds)}
+          />
+        </div>
       </div>
 
-      <fieldset className="mt-5 grid gap-3 text-sm">
-        <legend className="home-kicker mb-0">Starting lineup</legend>
-        <p className="text-sm leading-6" style={{ color: "var(--home-ink-muted)" }}>
-          Match the league you will actually draft. Flex accepts RB, WR, or TE. This assistant uses
-          one-QB rankings, so Superflex and two-QB leagues are not scored here.
-        </p>
-        <div className="grid auto-rows-fr gap-2 md:grid-cols-3">
+      <fieldset className="grid gap-2.5 px-4 pb-4 sm:px-5">
+        <legend className={`${MONO_LABEL_CLASS} mb-2`} style={{ color: "var(--home-ink-muted)" }}>
+          Starting lineup
+        </legend>
+        <div className="grid gap-2" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))" }}>
           {REDRAFT_LINEUP_PRESETS.map((preset) => {
             const active = sameLineup(formState.lineup, preset.lineup);
             return (
@@ -227,15 +337,19 @@ export function DraftSetup({
                 type="button"
                 aria-pressed={active}
                 onClick={() => updateField("lineup", { ...preset.lineup })}
-                className="min-h-[84px] rounded-[var(--radius-3xl)] border px-4 py-3 text-left transition-[background-color,border-color,color,box-shadow] duration-200"
-                style={getOptionStyle(active)}
+                className="min-h-[56px] rounded border px-3 py-2 text-left"
+                style={
+                  active
+                    ? { borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }
+                    : { borderColor: "var(--home-rule)", background: "var(--home-paper)", color: "var(--home-ink)" }
+                }
               >
-                <span className="block text-sm font-semibold">{preset.label}</span>
+                <span className="block text-sm font-semibold tracking-[-0.01em]">{preset.label}</span>
                 <span
-                  className="mt-1 block text-xs leading-5"
+                  className="mt-0.5 block font-mono text-3xs tracking-[0.04em]"
                   style={{
                     color: active
-                      ? "color-mix(in srgb, var(--home-paper) 78%, transparent)"
+                      ? "color-mix(in srgb, var(--home-paper) 75%, transparent)"
                       : "var(--home-ink-muted)",
                   }}
                 >
@@ -246,23 +360,31 @@ export function DraftSetup({
           })}
         </div>
 
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          <div
-            className="grid min-h-[72px] gap-1 rounded-[var(--radius-3xl)] border px-4 py-3"
-            style={getFieldStyle()}
-          >
-            <span className="home-kicker mb-0">Quarterbacks</span>
-            <span className="text-sm font-semibold">1</span>
+        {/* Presets cover the common rooms; these selects keep odd home-league
+            lineups reachable. Flex accepts RB, WR, or TE, and the board scores
+            one-QB rankings only, so Superflex rooms are not modeled here. */}
+        <div className="grid gap-x-4 gap-y-2.5" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))" }}>
+          <div className="grid content-start gap-1.5 text-sm">
+            <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+              Quarterbacks
+            </span>
+            <span className="py-2.5 font-mono text-xs">1</span>
           </div>
           {LINEUP_FIELDS.map((field) => (
-            <label key={field.key} className="grid gap-1 text-sm" htmlFor={`lineup-${field.key.toLowerCase()}`}>
-              <span className="home-kicker mb-0">{field.label}</span>
+            <label
+              key={field.key}
+              className="grid content-start gap-1.5 text-sm"
+              htmlFor={`lineup-${field.key.toLowerCase()}`}
+            >
+              <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+                {field.label}
+              </span>
               <select
                 id={`lineup-${field.key.toLowerCase()}`}
                 value={formState.lineup[field.key]}
                 onChange={(event) => updateLineupField(field.key, Number(event.target.value))}
-                className="min-h-[48px] w-full rounded-[var(--radius-3xl)] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
-                style={getFieldStyle()}
+                className={FIELD_CLASS}
+                style={FIELD_STYLE}
               >
                 {field.values.map((value) => (
                   <option key={value} value={value}>
@@ -275,153 +397,34 @@ export function DraftSetup({
         </div>
       </fieldset>
 
-      <div className="mt-5 grid gap-4 md:grid-cols-2">
-        <fieldset className="grid gap-2 text-sm">
-          <legend className="home-kicker mb-0">Draft order</legend>
-          <div className="grid auto-rows-fr gap-2 sm:grid-cols-2">
-            {[
-              { value: "snake" as const, label: "Snake", description: "Reverse order each round." },
-              { value: "linear" as const, label: "Linear", description: "Same order every round." },
-            ].map((option) => {
-              const active = formState.draftType === option.value;
-              return (
-                <button
-                  key={option.value}
-                  type="button"
-                  aria-pressed={active}
-                  onClick={() => updateField("draftType", option.value)}
-                  className="min-h-[76px] rounded-[var(--radius-3xl)] border px-4 py-3 text-left transition-[background-color,border-color,color,box-shadow] duration-200"
-                  style={getOptionStyle(active)}
-                >
-                  <span className="block text-sm font-semibold">{option.label}</span>
-                  <span
-                    className="mt-1 block text-xs"
-                    style={{ color: active ? "color-mix(in srgb, var(--home-paper) 78%, transparent)" : "var(--home-ink-muted)" }}
-                  >
-                    {option.description}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        </fieldset>
-
-        <fieldset className="grid gap-2 text-sm">
-          <legend className="home-kicker mb-0">Scoring</legend>
-          <div className="grid auto-rows-fr gap-2">
-            {SCORING_OPTIONS.map((option) => {
-              const active = formState.scoringFormat === option.value;
-              return (
-                <button
-                  key={option.value}
-                  type="button"
-                  aria-pressed={active}
-                  onClick={() => updateScoringFormat(option.value)}
-                  className="min-h-[72px] rounded-[var(--radius-3xl)] border px-4 py-3 text-left transition-[background-color,border-color,color,box-shadow] duration-200"
-                  style={getOptionStyle(active)}
-                >
-                  <span className="block text-sm font-semibold">{option.label}</span>
-                  <span
-                    className="mt-1 block text-xs"
-                    style={{ color: active ? "color-mix(in srgb, var(--home-paper) 78%, transparent)" : "var(--home-ink-muted)" }}
-                  >
-                    {option.description}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        </fieldset>
-      </div>
-
-      <div className="mt-5 grid gap-4 md:grid-cols-2">
-        <fieldset className="grid gap-2 text-sm">
-          <legend className="home-kicker mb-0">Per-pick timer</legend>
-          <div className="grid auto-rows-fr gap-2 sm:grid-cols-2">
-            {[
-              { value: 0, label: "Off", description: "No clock, log at your own pace." },
-              { value: 90, label: "On", description: "Advisory countdown each pick." },
-            ].map((option) => {
-              const active = (option.value > 0) === ((formState.timerSeconds ?? 0) > 0);
-              return (
-                <button
-                  key={option.label}
-                  type="button"
-                  aria-pressed={active}
-                  onClick={() => updateField("timerSeconds", option.value === 0 ? 0 : formState.timerSeconds || 90)}
-                  className="min-h-[72px] rounded-[var(--radius-3xl)] border px-4 py-3 text-left transition-[background-color,border-color,color,box-shadow] duration-200"
-                  style={getOptionStyle(active)}
-                >
-                  <span className="block text-sm font-semibold">{option.label}</span>
-                  <span
-                    className="mt-1 block text-xs"
-                    style={{ color: active ? "color-mix(in srgb, var(--home-paper) 78%, transparent)" : "var(--home-ink-muted)" }}
-                  >
-                    {option.description}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        </fieldset>
-
-        <label className="grid gap-2 text-sm" htmlFor="draft-timer-seconds">
-          <span className="home-kicker mb-0">Seconds per pick</span>
-          <select
-            id="draft-timer-seconds"
-            name="timerSeconds"
-            value={formState.timerSeconds || 90}
-            disabled={(formState.timerSeconds ?? 0) === 0}
-            onChange={(event) => updateField("timerSeconds", Number(event.target.value))}
-            className="min-h-[48px] w-full rounded-[var(--radius-3xl)] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200 disabled:cursor-not-allowed disabled:opacity-60"
-            style={getFieldStyle()}
-          >
-            {[45, 60, 90, 120, 180].map((seconds) => (
-              <option key={seconds} value={seconds}>
-                {seconds} seconds
-              </option>
-            ))}
-          </select>
-        </label>
-      </div>
-
       <div
-        className="mt-6 grid gap-3 rounded-[var(--radius-3xl)] border px-4 py-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center"
-        style={{
-          borderColor: "var(--home-rule)",
-          background: "color-mix(in srgb, var(--home-paper-alt) 52%, var(--home-elev-mix))",
-        }}
+        className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2.5 border-t px-4 py-3.5 sm:px-5"
+        style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)" }}
       >
-        <div className="grid gap-2">
-          <p className="text-sm" style={{ color: "var(--home-ink-muted)" }}>
-            {lineupTooLarge
-              ? `This lineup needs ${startingSlots} starters, which does not fit in ${formState.rounds} rounds. Reduce the lineup or add rounds before starting.`
-              : `The board will track ${formState.totalTeams} teams, ${formState.rounds} rounds, and highlight your turns from slot ${formState.userTeam}. Your lineup is ${redraftLineupSummary(formState.lineup)}.`}
+        <div className="grid min-w-0 gap-1.5">
+          <p className="m-0 font-mono text-2xs leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
+            {summary}
           </p>
           {rankingsStatus === "loading" ? (
-            <p role="status" className="text-sm font-semibold">
+            <p role="status" className="m-0 text-sm font-semibold">
               Loading the published rankings. Start will unlock when the board is ready.
             </p>
           ) : rankingsStatus === "error" ? (
             <div role="alert" className="flex flex-wrap items-center gap-2 text-sm">
-              <p className="font-semibold" style={{ color: "var(--home-negative)" }}>
+              <p className="m-0 font-semibold" style={{ color: "var(--home-negative)" }}>
                 {rankingsError ?? "Fantasy rankings are unavailable right now."}
               </p>
               <button
                 type="button"
                 onClick={onRetryRankings}
-                className="inline-flex min-h-touch items-center justify-center rounded-full border px-3 py-2 text-sm font-semibold"
-                style={{
-                  borderColor: "var(--home-rule)",
-                  background: "var(--home-paper)",
-                  color: "var(--home-ink)",
-                }}
+                className={PILL_BUTTON_CLASS}
+                style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)", color: "var(--home-ink)" }}
               >
                 Retry rankings
               </button>
             </div>
           ) : (
-            <p role="status" className="text-sm font-semibold">
+            <p role="status" className="m-0 text-sm font-semibold">
               Published rankings are ready.
             </p>
           )}
@@ -431,12 +434,8 @@ export function DraftSetup({
           onClick={handleStartDraft}
           disabled={isStarting || lineupTooLarge || !rankingsReady}
           aria-busy={isStarting}
-          className="inline-flex min-h-[48px] w-full items-center justify-center rounded-full border px-4 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow,opacity] duration-200 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
-          style={{
-            borderColor: "var(--home-ink)",
-            background: "var(--home-ink)",
-            color: "var(--home-paper)",
-          }}
+          className="inline-flex min-h-touch items-center justify-center rounded-full border px-5 font-mono text-2xs uppercase tracking-[0.08em] disabled:cursor-not-allowed disabled:opacity-70"
+          style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
         >
           {isStarting
             ? "Starting…"
@@ -444,7 +443,7 @@ export function DraftSetup({
               ? "Loading rankings…"
               : rankingsStatus === "error"
                 ? "Rankings unavailable"
-                : "Start draft assistant"}
+                : "Start draft"}
         </button>
       </div>
     </div>

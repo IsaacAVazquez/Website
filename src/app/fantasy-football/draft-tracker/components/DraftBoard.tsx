@@ -1,52 +1,41 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import type { CSSProperties } from "react";
-import { GitCompareArrows, Info, Star } from "lucide-react";
-import type { Player, RedraftLineupSettings, TeamRoster } from "@/types";
-import type { FantasySnapshot } from "@/lib/fantasy";
+import type { Player } from "@/types";
 import { useDebounce } from "@/hooks/useDebounce";
 import { usePlayerQueue } from "@/hooks/usePlayerQueue";
-import { useCompareTray } from "@/hooks/useCompareTray";
+import { isPlayerValueAtPick } from "@/lib/draftAnalytics";
 import {
-  getRosterNeeds,
-  isPlayerValueAtPick,
-  type RosterNeed,
-  type RosterNeedLevel,
-} from "@/lib/draftAnalytics";
-import {
-  FANTASY_AVG_RANK_TOOLTIP,
-  FANTASY_CHIP_CLASS,
+  FANTASY_ADP_TOOLTIP,
   formatAdp,
-  formatRange,
   formatRankValue,
   getPositionTone,
+  getTierRailIntensity,
+  withTierBreaks,
 } from "@/lib/fantasyUtils";
-import { MetricTooltip } from "@/components/investments/MetricTooltip";
 import { PositionFilterBar, type PositionFilterOption } from "@/components/fantasy";
-import { DraftTierColumns } from "./DraftTierColumns";
 
 interface DraftBoardProps {
   players: Player[];
-  snapshot: FantasySnapshot | null;
   draftedPlayerIds: Set<string>;
   onDraftPlayer: (player: Player) => void;
   onOpenDetail: (player: Player) => void;
   currentPick: number;
   currentRound: number;
-  currentTeamName: string;
-  isUserPick: boolean;
-  isDraftComplete: boolean;
-  userTeam: TeamRoster | undefined;
-  lineup: RedraftLineupSettings;
-  rounds: number;
+  adpAvailable: boolean;
+  guidanceAvailable: boolean;
 }
 
 type BoardFilter = "ALL" | "QB" | "RB" | "WR" | "TE" | "K" | "DST" | "FLEX";
-type BoardView = "list" | "columns";
 
-/** How many rows render before the "Load more" control on the board. */
-const BOARD_PAGE_SIZE = 25;
+/** Rows mounted before the scroll sentinel extends the window. */
+const BOARD_PAGE_SIZE = 40;
+
+const MONO_LABEL_CLASS = "font-mono text-3xs uppercase tracking-[0.12em]";
+
+/** Square-cornered mono position chip from the template (not the shared pill chip). */
+const POSITION_CHIP_CLASS =
+  "inline-flex flex-none items-center rounded-[2px] border px-1.5 py-0.5 font-mono text-2xs tracking-[0.06em]";
 
 const POSITION_OPTIONS: PositionFilterOption<BoardFilter>[] = [
   { value: "ALL", label: "All" },
@@ -58,45 +47,6 @@ const POSITION_OPTIONS: PositionFilterOption<BoardFilter>[] = [
   { value: "K", label: "K", position: "K" },
   { value: "DST", label: "DST", position: "DST" },
 ];
-
-const EMPTY_POSITION_COUNTS: TeamRoster["positionCounts"] = {
-  QB: 0,
-  RB: 0,
-  WR: 0,
-  TE: 0,
-  K: 0,
-  DST: 0,
-};
-
-// A need reads as green while it is an open starting slot (starter or flex) and
-// muted once it is only bench depth, so the eye lands on real lineup holes first.
-function needChipStyle(level: RosterNeedLevel): CSSProperties {
-  if (level === "depth") {
-    return {
-      borderColor: "var(--home-rule)",
-      background: "color-mix(in srgb, var(--home-paper-alt) 52%, var(--home-elev-mix))",
-      color: "var(--home-ink-muted)",
-    };
-  }
-  return {
-    borderColor: "color-mix(in srgb, var(--home-positive) 28%, var(--home-rule))",
-    background: "color-mix(in srgb, var(--home-positive) 10%, var(--home-paper))",
-  };
-}
-
-function needChipLabel(need: RosterNeed): string {
-  return need.level === "depth" ? `${need.slot} depth` : `Need ${need.slot}`;
-}
-
-function needPressureLabel(need: RosterNeed): string {
-  return need.level === "depth" ? `Add ${need.slot} depth` : `Prioritize ${need.slot}`;
-}
-
-function needTitle(need: RosterNeed): string {
-  return need.level === "starter"
-    ? "An open starting spot your roster still needs to fill"
-    : "Bench depth worth adding once your starting lineup is set";
-}
 
 function matchesFilter(player: Player, filter: BoardFilter): boolean {
   if (filter === "ALL") {
@@ -110,30 +60,35 @@ function matchesFilter(player: Player, filter: BoardFilter): boolean {
   return player.position === filter;
 }
 
+function getConsensusAvg(player: Player): number | null {
+  return typeof player.rankAverage === "number" && Number.isFinite(player.rankAverage)
+    ? player.rankAverage
+    : null;
+}
+
+interface TierGroup {
+  tier: number | null;
+  rows: Player[];
+}
+
 export function DraftBoard({
   players,
-  snapshot,
   draftedPlayerIds,
   onDraftPlayer,
   onOpenDetail,
   currentPick,
   currentRound,
-  currentTeamName,
-  isUserPick,
-  isDraftComplete,
-  userTeam,
-  lineup,
-  rounds,
+  adpAvailable,
+  guidanceAvailable,
 }: DraftBoardProps) {
-  const [boardView, setBoardView] = useState<BoardView>("list");
   const [selectedPosition, setSelectedPosition] = useState<BoardFilter>("ALL");
   const [searchQuery, setSearchQuery] = useState("");
   const [visibleCount, setVisibleCount] = useState(BOARD_PAGE_SIZE);
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const sentinelRef = useRef<HTMLDivElement>(null);
   const debouncedSearch = useDebounce(searchQuery, 200);
 
   const queue = usePlayerQueue();
-  const compare = useCompareTray();
 
   const handleDraftPlayer = useCallback(
     (player: Player) => {
@@ -175,460 +130,348 @@ export function DraftBoard({
     setVisibleCount(BOARD_PAGE_SIZE);
   }, [selectedPosition, debouncedSearch]);
 
-  const bestAvailable = filteredPlayers.slice(0, visibleCount);
+  const windowedPlayers = filteredPlayers.slice(0, visibleCount);
   const hasMore = visibleCount < filteredPlayers.length;
 
-  const rosterNeeds = useMemo(
-    () =>
-      getRosterNeeds({
-        positionCounts: userTeam?.positionCounts ?? EMPTY_POSITION_COUNTS,
-        lineup,
-        rounds,
-      }),
-    [lineup, rounds, userTeam]
-  );
+  // Auto-extend the window as the sentinel nears the viewport, matching the
+  // rankings board: the tier plates flow without a "Load more" control.
+  useEffect(() => {
+    const el = sentinelRef.current;
+    if (!el || !hasMore || typeof IntersectionObserver === "undefined") return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setVisibleCount((count) => Math.min(count + BOARD_PAGE_SIZE, filteredPlayers.length));
+        }
+      },
+      { rootMargin: "600px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [hasMore, filteredPlayers.length]);
 
-  // Resolve each open need to the single best available player at that slot, so
-  // "Priority" flags your top RB / top WR rather than every player at the
-  // position. Needs are walked most-urgent first and each player is claimed once,
-  // so the top RB fills the RB starter slot and the flex points at the next best.
-  const priorityByPlayerId = useMemo(() => {
-    const map = new Map<string, RosterNeed>();
-    const claimed = new Set<string>();
-    for (const need of rosterNeeds) {
-      const best = availablePlayers.find(
-        (candidate) =>
-          need.eligiblePositions.includes(
-            candidate.position as (typeof need.eligiblePositions)[number]
-          ) && !claimed.has(candidate.id)
-      );
-      if (best) {
-        claimed.add(best.id);
-        map.set(best.id, need);
+  const tierGroups = useMemo<TierGroup[]>(() => {
+    const groups: TierGroup[] = [];
+    for (const { player, tier, startsTier } of withTierBreaks(windowedPlayers)) {
+      const current = groups[groups.length - 1];
+      if (!current || startsTier || (tier === null) !== (current.tier === null)) {
+        groups.push({ tier, rows: [player] });
+      } else {
+        current.rows.push(player);
       }
     }
-    return map;
-  }, [availablePlayers, rosterNeeds]);
-
-  // The tier-columns view flags a position as a "Need" only for open starting and
-  // flex slots; bench depth stays a softer list-view-only signal.
-  const columnNeedPositions = useMemo(
-    () =>
-      Array.from(
-        new Set(
-          rosterNeeds
-            .filter((need) => need.level !== "depth")
-            .flatMap((need) => need.eligiblePositions)
-        )
-      ),
-    [rosterNeeds]
-  );
+    return groups;
+  }, [windowedPlayers]);
 
   // Watchlist players still on the board — the "is my guy still here?" glance.
   const queuedAvailable = useMemo(() => {
     const byId = new Map(availablePlayers.map((player) => [player.id, player]));
-    return queue.queue.map((id) => byId.get(id)).filter((player): player is Player => Boolean(player));
+    return queue.queue
+      .map((id) => byId.get(id))
+      .filter((player): player is Player => Boolean(player));
   }, [availablePlayers, queue.queue]);
 
-  return (
-    <div className="home-card scroll-mt-28 p-5 sm:p-6">
-      <div className="flex flex-col gap-3 border-b pb-4" style={{ borderColor: "var(--home-rule)" }}>
-        <div className="flex flex-col gap-3 xl:flex-row xl:items-end xl:justify-between">
-          <div className="min-w-0">
-            <p className="home-kicker mb-1">Draft Board</p>
-            <h2 className="text-2xl font-semibold">
-              Pick #{currentPick} on the clock: {currentTeamName}
-            </h2>
-          </div>
-          <div className="flex flex-wrap items-center gap-2 xl:justify-end">
-            <div
-              className="flex max-w-full rounded-full border p-1 text-sm font-semibold"
-              style={{
-                borderColor: "var(--home-rule)",
-                background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
-              }}
-              role="group"
-              aria-label="Draft board view"
-            >
-              {([
-                { value: "list", label: "Best available" },
-                { value: "columns", label: "Tier columns" },
-              ] as const).map((option) => {
-                const active = boardView === option.value;
-                return (
-                  <button
-                    key={option.value}
-                    type="button"
-                    aria-pressed={active}
-                    onClick={() => setBoardView(option.value)}
-                    className="inline-flex min-h-[44px] items-center rounded-full px-3.5 py-1.5 text-sm transition-colors duration-200"
-                    style={
-                      active
-                        ? { background: "var(--home-ink)", color: "var(--home-paper)" }
-                        : { color: "var(--home-ink-muted)" }
-                    }
-                  >
-                    {option.label}
-                  </button>
-                );
-              })}
-            </div>
-            {/*
-              Announced, and no longer pill-shaped. This is a status line, but
-              it sat in a rounded-full border with the same paper tint as the
-              segmented toggle beside it, so it read as a button that did
-              nothing. It is also the one thing on a timed surface a screen
-              reader has to hear, and it had no live region at all.
-            */}
-            <div
-              role="status"
-              aria-live="polite"
-              className="min-h-[40px] rounded-[var(--radius-md)] border px-3 py-2 text-sm font-medium"
-              style={{
-                borderColor: isUserPick
-                  ? "color-mix(in srgb, var(--home-signal) 55%, var(--home-rule))"
-                  : "var(--home-rule)",
-                background: isUserPick
-                  ? "color-mix(in srgb, var(--home-signal) 12%, var(--home-paper))"
-                  : "color-mix(in srgb, var(--home-paper-alt) 52%, var(--home-elev-mix))",
-                // Ink, not signal. Signal text on a signal wash measured 3.87:1
-                // at 14.26px, under the 4.5:1 that size needs. The border and the
-                // tint already carry the state, so the accent keeps its job and
-                // the words stay readable, now at 13.78:1.
-                color: "var(--home-ink)",
-              }}
-            >
-              {isUserPick ? "Your pick is live" : "Log the room's next selection"}
-            </div>
-          </div>
-        </div>
+  function describeDelta(player: Player): { text: string; color: string; title: string } | null {
+    if (!adpAvailable || typeof player.adp !== "number" || !Number.isFinite(player.adp)) {
+      return null;
+    }
+    const delta = Number((currentPick - player.adp).toFixed(1));
+    const magnitude = Math.abs(delta).toFixed(1);
+    const isValue = guidanceAvailable && isPlayerValueAtPick(player, currentPick, currentRound);
+    if (delta >= 2) {
+      return {
+        text: `+${magnitude}`,
+        color: isValue ? "var(--home-positive)" : "var(--home-ink-muted)",
+        title: isValue
+          ? `Lasted ${magnitude} picks past his ADP, so this reads as value at pick ${currentPick}`
+          : `Lasted ${magnitude} picks past his ADP, inside the noise band for this market sample`,
+      };
+    }
+    if (delta <= -2) {
+      return {
+        text: `−${magnitude}`,
+        color: "var(--home-ink-muted)",
+        title: `Mock rooms usually take him ${magnitude} picks after pick ${currentPick}`,
+      };
+    }
+    return {
+      text: `±${magnitude}`,
+      color: "var(--home-ink-muted)",
+      title: "Priced about right at this pick",
+    };
+  }
 
-        <div className="flex flex-wrap gap-2">
-          {rosterNeeds.slice(0, 3).map((need) => (
+  function renderTierSection(group: TierGroup, index: number) {
+    const firstRank = formatRankValue(group.rows[0].rankEcr ?? group.rows[0].averageRank);
+    const lastRank = formatRankValue(
+      group.rows[group.rows.length - 1].rankEcr ?? group.rows[group.rows.length - 1].averageRank
+    );
+    const railTone =
+      group.tier !== null
+        ? `color-mix(in srgb, var(--home-signal) ${getTierRailIntensity(group.tier)}%, var(--home-rule))`
+        : "var(--home-rule)";
+
+    let cliff = 0;
+    if (index > 0) {
+      const previous = tierGroups[index - 1];
+      const prevAvg = getConsensusAvg(previous.rows[previous.rows.length - 1]);
+      const nextAvg = getConsensusAvg(group.rows[0]);
+      if (prevAvg !== null && nextAvg !== null) {
+        cliff = Math.max(0, Number((nextAvg - prevAvg).toFixed(1)));
+      }
+    }
+    const marginTop = index === 0 ? 0 : Math.round(Math.min(48, Math.max(14, cliff * 9))) || 18;
+
+    return (
+      <section key={`tier-${group.tier ?? "untiered"}-${group.rows[0].id}`} style={{ marginTop }}>
+        {index > 0 && cliff > 0 && (
+          <div aria-hidden="true" className="flex items-center gap-3 px-0.5 pb-2.5">
             <span
-              key={`need-${need.slot}-${need.level}`}
-              className={FANTASY_CHIP_CLASS}
-              title={needTitle(need)}
-              style={needChipStyle(need.level)}
+              className="flex-1 border-t border-dashed"
+              style={{ borderColor: "color-mix(in srgb, var(--home-ink) 24%, transparent)" }}
+            />
+            <span
+              className="whitespace-nowrap font-mono text-3xs uppercase tracking-[0.12em]"
+              style={{ color: "var(--home-signal)" }}
             >
-              {needChipLabel(need)}
+              ↓ {cliff.toFixed(1)} avg-rank cliff
             </span>
-          ))}
-        </div>
-      </div>
-
-      {/* Watchlist still on the board */}
-      {!isDraftComplete && queuedAvailable.length > 0 && (
+            <span
+              className="flex-1 border-t border-dashed"
+              style={{ borderColor: "color-mix(in srgb, var(--home-ink) 24%, transparent)" }}
+            />
+          </div>
+        )}
         <div
-          className="mt-4 rounded-[var(--radius-3xl)] border px-4 py-3"
+          className="overflow-hidden rounded-lg border border-l-[3px]"
           style={{
-            borderColor: "color-mix(in srgb, var(--home-signal) 40%, var(--home-rule))",
-            background: "color-mix(in srgb, var(--home-signal) 12%, var(--home-paper))",
+            borderColor: "var(--home-rule)",
+            borderLeftColor: railTone,
+            background: "var(--home-paper-raised)",
           }}
         >
-          <div className="mb-2 flex items-center gap-1.5">
-            <Star size={14} fill="currentColor" style={{ color: "var(--home-signal)" }} aria-hidden="true" />
-            <p className="home-kicker mb-0">Your queue · still available ({queuedAvailable.length})</p>
+          <div className="flex flex-wrap items-baseline gap-x-3.5 gap-y-1 px-3.5 pb-2 pt-2.5">
+            <span className="text-2xl font-bold leading-none tracking-tight tabular-nums">
+              {group.tier !== null ? String(group.tier).padStart(2, "0") : "—"}
+            </span>
+            <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+              {group.tier !== null ? "Tier" : "No published tier"}
+            </span>
+            <span className="font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+              {group.rows.length} left
+            </span>
+            <span className="ml-auto font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+              R{firstRank}–R{lastRank}
+            </span>
           </div>
-          <div className="flex flex-wrap gap-2">
-            {queuedAvailable.slice(0, 8).map((player) => (
-              <button
-                key={`queued-${player.id}`}
-                type="button"
-                onClick={() => handleDraftPlayer(player)}
-                disabled={isDraftComplete}
-                title={`Log ${player.name}`}
-                className="inline-flex min-h-touch items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold disabled:cursor-not-allowed disabled:opacity-60"
-                style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)" }}
-              >
-                <span className="font-bold tabular-nums">{formatRankValue(player.rankEcr ?? player.averageRank)}</span>
-                <span className="max-w-[8rem] truncate">{player.name}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {boardView === "columns" ? (
-        <DraftTierColumns
-          snapshot={snapshot}
-          draftedPlayerIds={draftedPlayerIds}
-          onDraftPlayer={handleDraftPlayer}
-          isDraftComplete={isDraftComplete}
-          rosterNeeds={columnNeedPositions}
-        />
-      ) : (
-        <div className="mt-5 grid gap-4 xl:grid-cols-[minmax(0,1fr)_17rem]">
-          <div className="grid gap-4">
-            <label className="grid gap-2 text-sm" htmlFor="draft-board-search">
-              <span className="home-kicker mb-0">Search the board</span>
-              <input
-                ref={searchInputRef}
-                id="draft-board-search"
-                name="draftBoardSearch"
-                value={searchQuery}
-                onChange={(event) => setSearchQuery(event.target.value)}
-                autoComplete="off"
-                placeholder="Search player, team, or position"
-                className="min-h-[48px] rounded-[var(--radius-3xl)] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
-                style={{
-                  borderColor: "var(--home-rule)",
-                  background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
-                  color: "var(--home-ink)",
-                }}
-              />
-            </label>
-
-            <PositionFilterBar
-              ariaLabel="Position filters"
-              options={POSITION_OPTIONS}
-              value={selectedPosition}
-              onChange={setSelectedPosition}
-            />
-
-            {!isDraftComplete && bestAvailable.length > 0 && (
-              <p aria-live="polite" className="text-sm" style={{ color: "var(--home-ink-muted)" }}>
-                {filteredPlayers.length} available · showing {bestAvailable.length}
-              </p>
-            )}
-
-            <div className="grid gap-3">
-              {isDraftComplete ? (
-                <div
-                  className="rounded-[var(--radius-3xl)] border px-5 py-12 text-center"
+          <ul className="m-0 list-none p-0">
+            {group.rows.map((player) => {
+              const isQueued = queue.isQueued(player.id);
+              const delta = describeDelta(player);
+              return (
+                <li
+                  key={player.id}
+                  className="flex flex-wrap items-center gap-x-3.5 gap-y-1 border-t border-l-[3px] py-1 pl-2 pr-3 transition-colors duration-150 hover:bg-[color-mix(in_srgb,var(--home-paper-alt)_55%,transparent)]"
                   style={{
-                    borderColor: "var(--home-rule)",
-                    background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
+                    borderTopColor: "color-mix(in srgb, var(--home-rule) 60%, transparent)",
+                    borderLeftColor: isQueued ? "var(--home-signal)" : "transparent",
                   }}
                 >
-                  <p className="text-lg font-semibold">Draft complete.</p>
-                  <p className="mt-2 text-sm" style={{ color: "var(--home-ink-muted)" }}>
-                    Reset the room to start a new draft board.
-                  </p>
-                </div>
-              ) : bestAvailable.length === 0 ? (
-                <div
-                  className="rounded-[var(--radius-3xl)] border px-5 py-12 text-center"
-                  style={{
-                    borderColor: "var(--home-rule)",
-                    background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
-                  }}
-                >
-                  <p className="text-lg font-semibold">No players match that filter.</p>
-                  <p className="mt-2 text-sm" style={{ color: "var(--home-ink-muted)" }}>
-                    Clear the search or switch positions.
-                  </p>
-                </div>
-              ) : (
-                <>
-                  {bestAvailable.map((player) => {
-                    const priorityNeed = priorityByPlayerId.get(player.id);
-                    const isStartingPriority = Boolean(priorityNeed) && priorityNeed!.level !== "depth";
-                    const isValueAtCurrentPick = isPlayerValueAtPick(
-                      player,
-                      currentPick,
-                      currentRound
-                    );
-                    const isQueued = queue.isQueued(player.id);
-                    const inCompare = compare.inCompare(player.id);
-
-                    return (
-                      <div
-                        key={player.id}
-                        className="relative overflow-hidden rounded-[var(--radius-3xl)] border"
-                        style={{
-                          borderColor: isStartingPriority
-                            ? "color-mix(in srgb, var(--home-positive) 28%, var(--home-rule))"
-                            : "var(--home-rule)",
-                          background: isStartingPriority
-                            ? "color-mix(in srgb, var(--home-positive) 7%, var(--home-paper))"
-                            : "color-mix(in srgb, var(--home-paper-alt) 42%, var(--home-elev-mix))",
-                        }}
-                      >
-                        {isQueued && (
-                          <span aria-hidden="true" className="absolute inset-y-0 left-0 w-1" style={{ background: "var(--home-signal)" }} />
-                        )}
-                        <div className="flex flex-col gap-3 px-4 py-3.5 md:flex-row md:items-center md:gap-4">
-                          <div className="flex min-w-0 flex-1 items-center gap-3">
-                            <span
-                              className="shrink-0 text-2xl font-semibold tabular-nums"
-                              title="Published FantasyPros overall consensus rank"
-                            >
-                              {formatRankValue(player.rankEcr ?? player.averageRank)}
-                            </span>
-                            <div className="relative min-w-0 flex-1 text-left">
-                              <button
-                                type="button"
-                                onClick={() => onOpenDetail(player)}
-                                className="absolute inset-0 z-0 rounded-[var(--radius-2xl)] outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--home-ink)]"
-                                aria-label={`Open ${player.name} detail`}
-                              />
-                              <span className="pointer-events-none relative z-10 flex min-w-0 flex-wrap items-center gap-2">
-                                <span className="min-w-0 truncate text-base font-semibold">{player.name}</span>
-                                <span className={FANTASY_CHIP_CLASS} style={getPositionTone(player.position)}>
-                                  {player.position}
-                                </span>
-                                {priorityNeed && (
-                                  <span
-                                    className={FANTASY_CHIP_CLASS}
-                                    title={
-                                      priorityNeed.level === "depth"
-                                        ? "Best available at a position where you still want bench depth"
-                                        : "Best available player at a starting spot your roster still needs"
-                                    }
-                                    style={needChipStyle(priorityNeed.level)}
-                                  >
-                                    {priorityNeed.level === "depth" ? "Depth" : "Priority"}
-                                  </span>
-                                )}
-                                {isValueAtCurrentPick && (
-                                  <span
-                                    className={FANTASY_CHIP_CLASS}
-                                    title={`Mock drafters usually take this player around pick ${formatAdp(player.adp)}, well before pick ${currentPick}`}
-                                    style={{
-                                      borderColor: "color-mix(in srgb, var(--home-signal) 38%, var(--home-rule))",
-                                      background: "color-mix(in srgb, var(--home-signal) 18%, var(--home-paper))",
-                                    }}
-                                  >
-                                    Value at #{currentPick}
-                                  </span>
-                                )}
-                              </span>
-                              <span className="pointer-events-none relative z-10 mt-1 block text-sm" style={{ color: "var(--home-ink-muted)" }}>
-                                {player.team}
-                                {Number.isFinite(player.rankAverage) ? (
-                                  <span className="inline-flex items-center">
-                                    {" • Avg "}
-                                    {Number(player.rankAverage).toFixed(2)}
-                                    <MetricTooltip term="Average rank" definition={FANTASY_AVG_RANK_TOOLTIP} />
-                                  </span>
-                                ) : null}
-                                {player.positionRank ? ` • ${player.position}${player.positionRank}` : ""}
-                                {player.tier ? ` • Tier ${player.tier}` : ""}
-                                {Number.isFinite(player.adp) ? ` • ADP ${formatAdp(player.adp)}` : ""}
-                                {` • Range ${formatRange(player)}`}
-                              </span>
-                            </div>
-                          </div>
-
-                          <div className="flex items-center gap-1.5">
-                            <button
-                              type="button"
-                              onClick={() => queue.toggle(player.id)}
-                              aria-pressed={isQueued}
-                              aria-label={isQueued ? `Remove ${player.name} from queue` : `Add ${player.name} to queue`}
-                              className="inline-flex h-11 w-11 items-center justify-center rounded-full border"
-                              style={
-                                isQueued
-                                  ? {
-                                      borderColor: "color-mix(in srgb, var(--home-signal) 55%, var(--home-rule))",
-                                      background: "color-mix(in srgb, var(--home-signal) 28%, var(--home-paper))",
-                                      color: "var(--home-ink)",
-                                    }
-                                  : { borderColor: "var(--home-rule)", color: "var(--home-ink-muted)" }
-                              }
-                            >
-                              <Star size={15} fill={isQueued ? "currentColor" : "none"} aria-hidden="true" />
-                            </button>
-                            <button
-                              type="button"
-                              onClick={() => compare.toggle(player.id)}
-                              aria-pressed={inCompare}
-                              disabled={!inCompare && compare.isFull}
-                              aria-label={inCompare ? `Remove ${player.name} from compare` : `Add ${player.name} to compare`}
-                              className="hidden h-11 w-11 items-center justify-center rounded-full border disabled:cursor-not-allowed disabled:opacity-45 sm:inline-flex"
-                              style={
-                                inCompare
-                                  ? { borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }
-                                  : { borderColor: "var(--home-rule)", color: "var(--home-ink-muted)" }
-                              }
-                            >
-                              <GitCompareArrows size={15} aria-hidden="true" />
-                            </button>
-                            <button
-                              type="button"
-                              onClick={() => onOpenDetail(player)}
-                              aria-label={`Details for ${player.name}`}
-                              className="inline-flex h-11 w-11 items-center justify-center rounded-full border sm:hidden"
-                              style={{ borderColor: "var(--home-rule)", color: "var(--home-ink-muted)" }}
-                            >
-                              <Info size={15} aria-hidden="true" />
-                            </button>
-                          </div>
-                          {/* Log pick sits as a direct child of the row so its details
-                              (rank, tier, range) read as one labeled group. */}
-                          <button
-                            type="button"
-                            onClick={() => handleDraftPlayer(player)}
-                            disabled={isDraftComplete}
-                            className="inline-flex min-h-[44px] items-center justify-center rounded-full border px-4 text-sm font-semibold whitespace-nowrap transition-[background-color,border-color,color,box-shadow,opacity] duration-200 disabled:cursor-not-allowed disabled:opacity-60"
-                            style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
-                          >
-                            Log pick
-                          </button>
-                        </div>
-                      </div>
-                    );
-                  })}
-                  {hasMore && (
+                  <span
+                    className="w-8 flex-none text-right font-mono text-sm"
+                    title="Overall board rank"
+                  >
+                    {formatRankValue(player.rankEcr ?? player.averageRank)}
+                  </span>
+                  <div className="flex min-w-0 flex-1 basis-44 items-baseline gap-2">
+                    {/* -my keeps the row dense while the button itself meets
+                        the 44px touch floor. */}
                     <button
                       type="button"
-                      onClick={() => setVisibleCount((count) => Math.min(count + BOARD_PAGE_SIZE, filteredPlayers.length))}
-                      className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border px-5 text-sm font-semibold"
-                      style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)" }}
+                      onClick={() => onOpenDetail(player)}
+                      aria-label={`Open ${player.name} detail`}
+                      className="-my-2 inline-flex min-h-touch min-w-0 items-center truncate text-left text-sm font-semibold tracking-[-0.01em]"
                     >
-                      Load more ({filteredPlayers.length - bestAvailable.length} left)
+                      {player.name}
                     </button>
-                  )}
-                </>
-              )}
-            </div>
-          </div>
-
-          <div className="grid gap-4 xl:self-start">
-            <div
-              className="rounded-[var(--radius-3xl)] border p-4"
-              style={{
-                borderColor: "var(--home-rule)",
-                background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
-              }}
-            >
-              <p className="home-kicker mb-1">Available pool</p>
-              <p className="text-3xl font-semibold">{availablePlayers.length}</p>
-              <p className="mt-2 text-sm" style={{ color: "var(--home-ink-muted)" }}>
-                Players left on the board from the current snapshot.
-              </p>
-            </div>
-
-            <div
-              className="rounded-[var(--radius-3xl)] border p-4"
-              style={{
-                borderColor: "var(--home-rule)",
-                background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
-              }}
-            >
-              <p className="home-kicker mb-1">Roster pressure</p>
-              <div className="mt-3 grid gap-2">
-                {rosterNeeds.length === 0 ? (
-                  <p className="text-sm" style={{ color: "var(--home-ink-muted)" }}>
-                    You have your starters, flex, and core depth covered.
-                  </p>
-                ) : (
-                  rosterNeeds.map((need) => (
-                    <div
-                      key={`pressure-${need.slot}-${need.level}`}
-                      className="rounded-[var(--radius-3xl)] border px-3 py-2 text-sm font-semibold"
-                      style={needChipStyle(need.level)}
+                    <span className={POSITION_CHIP_CLASS} style={getPositionTone(player.position)}>
+                      {player.position}
+                      {player.positionRank ?? ""}
+                    </span>
+                    <span
+                      className="flex-none font-mono text-2xs uppercase tracking-[0.06em]"
+                      style={{ color: "var(--home-ink-muted)" }}
                     >
-                      {needPressureLabel(need)}
-                    </div>
-                  ))
-                )}
-              </div>
-            </div>
-          </div>
+                      {player.team}
+                      {typeof player.byeWeek === "number" && Number.isFinite(player.byeWeek)
+                        ? ` · Bye ${player.byeWeek}`
+                        : ""}
+                    </span>
+                  </div>
+                  <div className="ml-auto flex flex-none items-center gap-2.5">
+                    {adpAvailable ? (
+                      <>
+                        <span
+                          className="w-11 text-right font-mono text-xs"
+                          style={{ color: "var(--home-ink-muted)" }}
+                          title={FANTASY_ADP_TOOLTIP}
+                        >
+                          {formatAdp(player.adp)}
+                        </span>
+                        <span
+                          className="w-12 text-right font-mono text-xs"
+                          style={{ color: delta?.color ?? "var(--home-ink-muted)" }}
+                          title={delta?.title}
+                        >
+                          {delta?.text ?? "—"}
+                        </span>
+                      </>
+                    ) : null}
+                    <button
+                      type="button"
+                      onClick={() => queue.toggle(player.id)}
+                      aria-pressed={isQueued}
+                      aria-label={isQueued ? `Remove ${player.name} from queue` : `Add ${player.name} to queue`}
+                      className="inline-flex h-11 w-11 items-center justify-center rounded-full border"
+                      style={{
+                        borderColor: isQueued
+                          ? "color-mix(in srgb, var(--home-signal) 55%, var(--home-rule))"
+                          : "var(--home-rule)",
+                        color: isQueued ? "var(--home-signal)" : "var(--home-ink-muted)",
+                      }}
+                    >
+                      {isQueued ? "★" : "☆"}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleDraftPlayer(player)}
+                      aria-label={`Log ${player.name}`}
+                      className="inline-flex min-h-touch items-center justify-center rounded-full border px-3.5 font-mono text-3xs uppercase tracking-[0.06em]"
+                      style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
+                    >
+                      Log
+                    </button>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section aria-label="Draft board">
+      {queuedAvailable.length > 0 && (
+        <div
+          className="mb-3 flex flex-wrap items-center gap-1.5 rounded border px-2.5 py-1.5"
+          style={{
+            borderColor: "color-mix(in srgb, var(--home-signal) 38%, var(--home-rule))",
+            background: "color-mix(in srgb, var(--home-signal) 9%, var(--home-paper))",
+          }}
+        >
+          <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-signal)" }}>
+            ★ Queue · still on the board
+          </span>
+          {queuedAvailable.slice(0, 8).map((player) => (
+            <button
+              key={`queued-${player.id}`}
+              type="button"
+              onClick={() => handleDraftPlayer(player)}
+              title={`Log ${player.name}`}
+              className="inline-flex min-h-touch items-baseline gap-1.5 rounded-full border px-2.5 font-mono text-2xs"
+              style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)", color: "var(--home-ink)" }}
+            >
+              <span style={{ color: "var(--home-ink-muted)" }}>
+                #{formatRankValue(player.rankEcr ?? player.averageRank)}
+              </span>
+              <span className="max-w-[8rem] truncate font-sans text-xs font-semibold tracking-[-0.01em]">
+                {player.name}
+              </span>
+            </button>
+          ))}
         </div>
       )}
-    </div>
+
+      <div className="flex flex-wrap items-center gap-x-3.5 gap-y-2.5 pb-3">
+        <PositionFilterBar
+          ariaLabel="Position filter"
+          options={POSITION_OPTIONS}
+          value={selectedPosition}
+          onChange={setSelectedPosition}
+        />
+        <label htmlFor="draft-board-search" className="sr-only">
+          Search the board
+        </label>
+        <input
+          ref={searchInputRef}
+          id="draft-board-search"
+          name="draftBoardSearch"
+          value={searchQuery}
+          onChange={(event) => setSearchQuery(event.target.value)}
+          autoComplete="off"
+          placeholder="Search player or team"
+          className="min-h-touch w-48 rounded border px-3 font-mono text-xs"
+          style={{
+            borderColor: "var(--home-rule)",
+            background: "var(--home-paper-raised)",
+            color: "var(--home-ink)",
+          }}
+        />
+        <span
+          aria-live="polite"
+          className="ml-auto whitespace-nowrap font-mono text-2xs"
+          style={{ color: "var(--home-ink-muted)" }}
+        >
+          {filteredPlayers.length} of {availablePlayers.length} available
+        </span>
+      </div>
+
+      {windowedPlayers.length > 0 ? (
+        <>
+          <div
+            aria-hidden="true"
+            className="hidden items-center gap-x-3.5 px-3.5 pb-1.5 md:flex"
+            style={{ color: "var(--home-ink-muted)" }}
+          >
+            <span className="w-8" />
+            <span className={`${MONO_LABEL_CLASS} min-w-0 flex-1 basis-44`}>Player</span>
+            <span className="ml-auto flex flex-none items-center gap-2.5">
+              {adpAvailable ? (
+                <>
+                  <span className={`${MONO_LABEL_CLASS} w-11 text-right`}>ADP</span>
+                  <span className={`${MONO_LABEL_CLASS} w-12 text-right`}>At #{currentPick}</span>
+                </>
+              ) : null}
+              <span className="w-11" />
+              <span className="w-[3.6rem]" />
+            </span>
+          </div>
+          {tierGroups.map((group, index) => renderTierSection(group, index))}
+          <div ref={sentinelRef} aria-hidden="true" />
+        </>
+      ) : (
+        <div
+          className="rounded-lg border border-dashed px-6 py-9 text-center"
+          style={{ borderColor: "var(--home-rule)" }}
+        >
+          <p className="m-0 font-mono text-xs" style={{ color: "var(--home-ink-muted)" }}>
+            No available players match on this board.
+          </p>
+          <button
+            type="button"
+            onClick={() => {
+              setSearchQuery("");
+              setSelectedPosition("ALL");
+            }}
+            className="mt-3.5 inline-flex min-h-touch items-center justify-center rounded-full border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
+            style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
+          >
+            Clear search
+          </button>
+        </div>
+      )}
+    </section>
   );
 }

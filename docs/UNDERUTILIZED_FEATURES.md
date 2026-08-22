@@ -28,7 +28,7 @@ These features are complete and functional but unreachable through normal browsi
 
 ### `/fantasy-football/draft-tracker` — Built but Not Linked
 
-- **What exists:** A working draft tracker page with tier columns and draft analytics (`DraftTierColumns`, `DraftAnalyticsPanel`).
+- **What exists:** A working draft tracker page with a tiered board and draft analytics (`DraftBoard`, `DraftAnalyticsPanel`).
 - **The problem:** The fantasy football landing page (`/fantasy-football`) doesn't link to it. Users can only reach it by knowing the URL.
 
 ### `/fantasy-football/tiers/[position]` and `/rb-tiers` — Redirect-Only Shims

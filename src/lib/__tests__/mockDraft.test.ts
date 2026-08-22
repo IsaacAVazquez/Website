@@ -1,4 +1,4 @@
-import type { Player, TeamRoster } from "@/types";
+import type { Player, RedraftLineupSettings, TeamRoster } from "@/types";
 import { mulberry32 } from "@/lib/retirement/random";
 import { calculateDraftOrder } from "@/app/fantasy-football/draft-tracker/hooks/useDraftState";
 import { getMockDraftBoardValue, pickForTeam, type MockDraftEngineConfig } from "@/lib/mockDraft";
@@ -113,6 +113,54 @@ describe("pickForTeam", () => {
       const player = pickForTeam(board, makeRoster(), 1, CONFIG, mulberry32(seed));
       expect(player).not.toBeNull();
       expect(topIds).toContain((player as Player).id);
+    }
+  });
+
+  it("keeps a faithful room inside the top two early, while chaotic reaches past three", () => {
+    const board = makeBoard();
+    const topTwo = board.slice(0, 2).map((p) => p.id);
+    const seeds = Array.from({ length: 40 }, (_, i) => i + 1);
+    for (const seed of seeds) {
+      const player = pickForTeam(
+        board,
+        makeRoster(),
+        1,
+        { ...CONFIG, temper: "faithful" },
+        mulberry32(seed)
+      );
+      expect(topTwo).toContain((player as Player).id);
+    }
+    const chaoticPicks = new Set(
+      seeds.map(
+        (seed) =>
+          (
+            pickForTeam(
+              board,
+              makeRoster(),
+              1,
+              { ...CONFIG, temper: "chaotic" },
+              mulberry32(seed)
+            ) as Player
+          ).id
+      )
+    );
+    const topThree = new Set(board.slice(0, 3).map((p) => p.id));
+    expect([...chaoticPicks].some((id) => !topThree.has(id))).toBe(true);
+  });
+
+  it("derives required starters and K/DST caps from a custom lineup", () => {
+    const noKDst: RedraftLineupSettings = { QB: 1, RB: 2, WR: 3, TE: 1, FLEX: 2, K: 0, DST: 0 };
+    const kicker = makePlayer({ position: "K", rankEcr: 1, averageRank: 1 });
+    const board = [kicker, ...makeBoard()];
+    // Closing round of a no-K/DST lineup: the default config would force a
+    // kicker here, the lineup-driven caps must not.
+    const config: MockDraftEngineConfig = { ...CONFIG, lineup: noKDst };
+    const lateRoster = makeRoster(
+      Array.from({ length: 14 }, () => makePlayer({ position: "WR" }))
+    );
+    for (const seed of [1, 2, 3, 4, 5]) {
+      const player = pickForTeam(board, lateRoster, 141, config, mulberry32(seed));
+      expect(["K", "DST"]).not.toContain((player as Player).position);
     }
   });
 

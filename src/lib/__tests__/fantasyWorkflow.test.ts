@@ -73,10 +73,10 @@ describe("fantasy workflow", () => {
 
     // resolveAdpFormat retains the previous board with no maximum age, so a
     // multi-day outage used to produce a green run while the site hid every ADP
-    // surface past four days in draft season.
+    // surface. The workflow uses the same warning and fail boundaries as the UI.
     expect(workflow).toContain("id: adp_health");
-    expect(workflow).toContain("const ageWarnLimit = inDraftSeason ? 4 : 14");
-    expect(workflow).toContain("const ageFailLimit = inDraftSeason ? 14 : 45");
+    expect(workflow).toContain("const ageWarnLimit = inDraftSeason ? 2 : 8");
+    expect(workflow).toContain("const ageFailLimit = inDraftSeason ? 4 : 14");
     expect(workflow).toContain("adp_dark=");
   });
 });

@@ -76,6 +76,21 @@ function SharedCalculatorPanels() {
 }
 
 describe("DraftValuePanel", () => {
+  it("withholds modeled output when its source capability is unavailable", () => {
+    render(
+      <DraftValuePanel
+        report={REPORT}
+        headingId="paused-draft-outlook"
+        unavailableReason="The ranking source is stale. Draft Outlook will return after the board refreshes."
+      />
+    );
+
+    expect(screen.getByRole("heading", { name: "Draft Outlook paused" })).toBeVisible();
+    expect(screen.getByText(/The ranking source is stale/i)).toBeVisible();
+    expect(screen.queryByText("Calculated market value")).not.toBeInTheDocument();
+    expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
+  });
+
   it("keeps the room outlook separate from payout probability", () => {
     render(<DraftValuePanel report={REPORT} headingId="draft-value-heading" />);
 

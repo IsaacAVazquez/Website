@@ -7,7 +7,7 @@ import { MockDraftClient } from "./mock-draft-client";
 export const metadata: Metadata = constructMetadata({
   title: "Fantasy Football Mock Draft Simulator",
   description:
-    "Practice one-QB snake drafts against simulated opponents who pick from the published consensus board and market ADP, with visible source dates.",
+    "Rehearse the early rounds of a one-QB draft against a seeded room that picks from the published consensus board and market ADP, then sim to the end for the board grid and value report.",
   canonicalUrl: "/fantasy-football/mock-draft",
   image: "/fantasy-football/mock-draft/opengraph-image",
   dateModified: fantasySnapshotRevision.slice(0, 10),

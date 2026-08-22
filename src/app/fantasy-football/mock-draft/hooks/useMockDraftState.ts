@@ -1,28 +1,38 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import type { DraftPick, Player, ScoringFormat, TeamRoster } from "@/types";
+import type {
+  DraftPick,
+  Player,
+  RedraftLineupSettings,
+  ScoringFormat,
+  TeamRoster,
+} from "@/types";
 import {
   calculateCurrentRound,
   calculateDraftOrder,
   getCurrentDraftSeason,
   initializeTeams,
 } from "@/app/fantasy-football/draft-tracker/hooks/useDraftState";
+import { DEFAULT_REDRAFT_LINEUP, normalizeRedraftLineup } from "@/lib/redraftLineup";
 import { mulberry32 } from "@/lib/retirement/random";
-import { pickForTeam } from "@/lib/mockDraft";
+import { pickForTeam, type MockDraftTemper } from "@/lib/mockDraft";
 
 /**
  * Room state for the mock draft practice simulator. The user owns one slot;
  * every other team is simulated by the pure engine in src/lib/mockDraft.ts.
- * Simulated picks are a deterministic function of (board, seed, pick number),
- * so a persisted room replays identically after a reload as long as every
- * drafted player still exists in the published snapshot.
+ * Simulated picks are a deterministic function of (board, seed, pick number,
+ * settings), so a persisted room replays identically after a reload as long as
+ * every drafted player still exists in the published snapshot.
  */
 export interface MockDraftSettings {
   totalTeams: number;
   rounds: number;
   userTeam: number;
   scoringFormat: ScoringFormat;
+  draftType: "snake" | "linear";
+  temper: MockDraftTemper;
+  lineup: RedraftLineupSettings;
 }
 
 export type MockDraftStatus = "setup" | "on-clock" | "complete";
@@ -38,9 +48,12 @@ const STORAGE_VERSION = 1;
 
 export const DEFAULT_MOCK_DRAFT_SETTINGS: MockDraftSettings = {
   totalTeams: 10,
-  rounds: 15,
+  rounds: 5,
   userTeam: 5,
   scoringFormat: "PPR",
+  draftType: "snake",
+  temper: "normal",
+  lineup: DEFAULT_REDRAFT_LINEUP,
 };
 
 export function getMockDraftStorageKey(
@@ -79,14 +92,16 @@ function buildTeams(settings: MockDraftSettings, picks: readonly DraftPick[]): T
 }
 
 /**
- * Run simulated picks forward until the user is on the clock or the draft is
- * over. Returns a new pick list; never mutates the input.
+ * Run simulated picks forward until the user is on the clock (or, with
+ * stopAtUser false, until the draft is over, the engine picking the user's
+ * remaining turns too). Returns a new pick list; never mutates the input.
  */
 function advanceDraft(
   settings: MockDraftSettings,
   seed: number,
   picks: readonly DraftPick[],
-  board: readonly Player[]
+  board: readonly Player[],
+  stopAtUser: boolean
 ): { picks: DraftPick[]; status: MockDraftStatus } {
   const totalPicks = settings.totalTeams * settings.rounds;
   const nextPicks = [...picks];
@@ -95,8 +110,8 @@ function advanceDraft(
 
   while (nextPicks.length < totalPicks) {
     const pickNumber = nextPicks.length + 1;
-    const teamNumber = calculateDraftOrder(pickNumber, settings.totalTeams, "snake");
-    if (teamNumber === settings.userTeam) {
+    const teamNumber = calculateDraftOrder(pickNumber, settings.totalTeams, settings.draftType);
+    if (stopAtUser && teamNumber === settings.userTeam) {
       return { picks: nextPicks, status: "on-clock" };
     }
     const roster = teams[teamNumber - 1];
@@ -105,7 +120,14 @@ function advanceDraft(
       available,
       roster,
       pickNumber,
-      settings,
+      {
+        totalTeams: settings.totalTeams,
+        rounds: settings.rounds,
+        lineup: settings.lineup,
+        // A simmed pick on the user's own turn tracks the board tightly; the
+        // room's temper only shapes the other teams.
+        temper: teamNumber === settings.userTeam ? "faithful" : settings.temper,
+      },
       perPickRng(seed, pickNumber)
     );
     if (!player) break;
@@ -191,11 +213,22 @@ function decodePersistedRoom(
   ) {
     return null;
   }
+  // Rooms saved before the settings grew these fields resume on the values
+  // they were actually built with: snake order, normal temper, the default
+  // one-QB lineup. normalizeRedraftLineup clamps whatever the save holds.
   const decodedSettings: MockDraftSettings = {
     totalTeams: settings.totalTeams,
     rounds: settings.rounds,
     userTeam: settings.userTeam,
     scoringFormat: settings.scoringFormat,
+    draftType: settings.draftType === "linear" ? "linear" : "snake",
+    temper:
+      settings.temper === "faithful" || settings.temper === "chaotic"
+        ? settings.temper
+        : "normal",
+    lineup: normalizeRedraftLineup(
+      settings.lineup as Partial<RedraftLineupSettings> | null | undefined
+    ),
   };
   if (typeof record.seed !== "number" || !Number.isFinite(record.seed)) return null;
   if (!Array.isArray(record.picks)) return null;
@@ -238,7 +271,8 @@ const SETUP_STATE: MockDraftRoomState = {
 
 export function useMockDraftState(
   board: readonly Player[],
-  boardScoring: ScoringFormat
+  boardScoring: ScoringFormat,
+  simulationEnabled = true
 ) {
   const [state, setState] = useState<MockDraftRoomState>(SETUP_STATE);
   const hydratedRef = useRef(false);
@@ -291,7 +325,7 @@ export function useMockDraftState(
           calculateDraftOrder(
             decoded.picks.length + 1,
             decoded.settings.totalTeams,
-            "snake"
+            decoded.settings.draftType
           ) === decoded.settings.userTeam));
     if (!decoded || status === null || !onClockBelongsToUser) {
       try {
@@ -336,11 +370,11 @@ export function useMockDraftState(
     (settings: MockDraftSettings, seed?: number) => {
       // The caller is responsible for handing over a board in the room's
       // scoring format; refuse to start a room on the wrong one.
-      if (settings.scoringFormat !== boardScoring) return;
+      if (!simulationEnabled || settings.scoringFormat !== boardScoring) return;
       hydratedRef.current = true;
       const roomSeed =
         typeof seed === "number" ? seed : Math.floor(Math.random() * 2 ** 31);
-      const advanced = advanceDraft(settings, roomSeed, [], board);
+      const advanced = advanceDraft(settings, roomSeed, [], board, true);
       setState({
         status: advanced.status,
         settings,
@@ -348,17 +382,17 @@ export function useMockDraftState(
         picks: advanced.picks,
       });
     },
-    [board, boardScoring]
+    [board, boardScoring, simulationEnabled]
   );
 
   const makeUserPick = useCallback(
     (player: Player): boolean => {
-      if (state.status !== "on-clock") return false;
+      if (!simulationEnabled || state.status !== "on-clock") return false;
       const pickNumber = state.picks.length + 1;
       const teamNumber = calculateDraftOrder(
         pickNumber,
         state.settings.totalTeams,
-        "snake"
+        state.settings.draftType
       );
       if (teamNumber !== state.settings.userTeam) return false;
       const drafted = new Set(state.picks.map((pick) => pick.player.id));
@@ -376,7 +410,8 @@ export function useMockDraftState(
         state.settings,
         state.seed,
         [...state.picks, userPick],
-        board
+        board,
+        true
       );
       setState({
         status: advanced.status,
@@ -386,8 +421,24 @@ export function useMockDraftState(
       });
       return true;
     },
-    [board, state]
+    [board, simulationEnabled, state]
   );
+
+  /**
+   * Finish the room from here: the engine picks the user's remaining turns
+   * too (tracking the board tightly), so the recap is one click away after
+   * the rounds worth rehearsing.
+   */
+  const simToEnd = useCallback(() => {
+    if (!simulationEnabled || state.status !== "on-clock") return;
+    const advanced = advanceDraft(state.settings, state.seed, state.picks, board, false);
+    setState({
+      status: advanced.status,
+      settings: state.settings,
+      seed: state.seed,
+      picks: advanced.picks,
+    });
+  }, [board, simulationEnabled, state]);
 
   const undoUserPick = useCallback((): boolean => {
     let lastUserIndex = -1;
@@ -433,6 +484,7 @@ export function useMockDraftState(
     currentPick,
     startDraft,
     makeUserPick,
+    simToEnd,
     undoUserPick,
     resetDraft,
   };

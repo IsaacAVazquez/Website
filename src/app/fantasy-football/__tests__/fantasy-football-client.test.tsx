@@ -83,6 +83,7 @@ function makePlayer(overrides: Partial<Player> & { id: string; name: string }): 
 interface SnapshotOverrides {
   players: Player[];
   position?: string;
+  season?: number;
   adpSource?: object | null;
   sliceAvailable?: boolean;
   sliceReason?: string;
@@ -94,6 +95,7 @@ interface SnapshotOverrides {
 function mockSnapshot({
   players,
   position = "rb",
+  season = 2026,
   adpSource = null,
   sliceAvailable = true,
   sliceReason,
@@ -113,7 +115,7 @@ function mockSnapshot({
     players: sliceAvailable ? players : [],
     snapshot: null,
     metadata: {
-      season: 2026,
+      season,
       week: 0,
       generatedAt: "2026-08-16T16:00:00.000Z",
       upstreamUpdatedAt: "2026-08-16T15:29:20.000Z",
@@ -336,9 +338,10 @@ describe("FantasyFootballClient", () => {
       .getByRole("button", { name: "Open Ja'Marr Chase detail" })
       .closest("li") as HTMLElement;
     expect(within(row).queryByText(/^(Value|Reach) /)).not.toBeInTheDocument();
-    // The column still stands, but the cell holds an em dash rather than a gap
-    // computed off two different scales.
-    expect(within(row).getByText("—")).toBeVisible();
+    // The vs ADP cell is gone entirely on position boards, and the ADP column
+    // label says which scale the number is on.
+    expect(within(row).queryByText("versus ADP")).not.toBeInTheDocument();
+    expect(screen.getByText("ADP (overall)")).toBeInTheDocument();
   });
 
   it("never calls a thin ADP sample market agreement", () => {
@@ -391,6 +394,47 @@ describe("FantasyFootballClient", () => {
     expect(screen.queryByText("vs ADP")).not.toBeInTheDocument();
   });
 
+  it("shows prior-season ADP only as a dated reference", () => {
+    jest.setSystemTime(new Date("2027-05-01T10:00:00.000Z"));
+    currentSearchParams = new URLSearchParams("position=overall&scoring=ppr");
+    mockSnapshot({
+      position: "overall",
+      season: 2027,
+      adpSource: { ...FRESH_ADP_SOURCE, asOf: "2026-09-01T00:00:00.000Z" },
+      players: [
+        makePlayer({
+          id: "wr-reference",
+          name: "Reference Receiver",
+          team: "CIN",
+          position: "WR",
+          rankEcr: 12,
+          averageRank: 12,
+          adp: 30,
+          adpStandardDeviation: 5,
+          adpTimesDrafted: 120,
+        }),
+      ],
+    });
+
+    renderClient({ position: "overall" });
+
+    expect(screen.getByText("ADP prior season")).toBeVisible();
+    expect(screen.getAllByText("ADP").length).toBeGreaterThan(0);
+    expect(screen.queryByText("vs ADP")).not.toBeInTheDocument();
+    const row = screen
+      .getByRole("button", { name: "Open Reference Receiver detail" })
+      .closest("li") as HTMLElement;
+    expect(within(row).queryByText(/^(Value|Reach) /)).not.toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("button", { name: "Open Reference Receiver detail" }));
+    const dialog = screen.getByRole("dialog", { name: "Reference Receiver detail" });
+    expect(within(dialog).getByText("Prior-season ADP · Sep 1, 2026")).toBeVisible();
+    expect(
+      within(dialog).getByTitle(/final mock-draft average from the prior season/i)
+    ).toBeVisible();
+    expect(within(dialog).queryByText(/picks after the consensus rank/)).not.toBeInTheDocument();
+  });
+
   it("keeps scoring controls available when the selected position slice is unavailable", () => {
     mockSnapshot({
       players: [],
@@ -402,9 +446,9 @@ describe("FantasyFootballClient", () => {
 
     expect(screen.getByText(/PPR RB rankings are unavailable/)).toBeVisible();
     expect(screen.getByText("FantasyPros does not publish this board.")).toBeVisible();
-    expect(screen.getByLabelText("Search the current rankings board")).toBeDisabled();
+    expect(screen.getByRole("textbox", { name: "Search the current rankings board" })).toBeDisabled();
 
-    fireEvent.click(screen.getByRole("button", { name: "Half PPR" }));
+    fireEvent.click(screen.getAllByRole("button", { name: "Half PPR" })[0]);
     expect(mockReplace).toHaveBeenCalledWith(
       expect.stringContaining("scoring=half_ppr"),
       expect.anything()
@@ -434,14 +478,14 @@ describe("FantasyFootballClient", () => {
 
     renderClient({ position: "overall" });
 
-    fireEvent.change(screen.getByLabelText("Search the current rankings board"), {
+    fireEvent.change(screen.getByRole("textbox", { name: "Search the current rankings board" }), {
       target: { value: "Mixon" },
     });
 
     expect(screen.getByText("Joe Mixon")).toBeVisible();
     expect(screen.queryByText("Christian McCaffrey")).not.toBeInTheDocument();
     expect(screen.getByText("47")).toBeVisible();
-    expect(screen.getByText("1 of 2 shown")).toBeVisible();
+    expect(screen.getAllByText("1 of 2 shown")[0]).toBeVisible();
   });
 
   it("shows the template empty state and clears the search from it", () => {
@@ -451,14 +495,19 @@ describe("FantasyFootballClient", () => {
 
     renderClient();
 
-    fireEvent.change(screen.getByLabelText("Search the current rankings board"), {
+    fireEvent.change(screen.getByRole("textbox", { name: "Search the current rankings board" }), {
       target: { value: "nobody" },
     });
     expect(screen.getByText("No players match on this board.")).toBeVisible();
 
     fireEvent.click(screen.getByRole("button", { name: "Clear search" }));
+    // Clearing the search must not silently change the position filter too.
     expect(mockReplace).toHaveBeenLastCalledWith(
-      expect.stringContaining("position=overall"),
+      expect.not.stringContaining("q="),
+      expect.anything()
+    );
+    expect(mockReplace).toHaveBeenLastCalledWith(
+      expect.stringContaining("position=rb"),
       expect.anything()
     );
   });
@@ -483,7 +532,7 @@ describe("FantasyFootballClient", () => {
 
     expect(screen.getByText("Player 40")).toBeVisible();
     expect(screen.queryByText("Player 41")).not.toBeInTheDocument();
-    expect(screen.getByText("40 of 45 shown")).toBeVisible();
+    expect(screen.getAllByText("40 of 45 shown")[0]).toBeVisible();
 
     fireEvent.click(screen.getByRole("button", { name: "Load more (5 left)" }));
     expect(screen.getByText("Player 45")).toBeVisible();
@@ -498,9 +547,36 @@ describe("FantasyFootballClient", () => {
     renderClient();
 
     expect(screen.getByRole("alert")).toHaveTextContent("Fantasy rankings are unavailable right now.");
-    expect(screen.getByText("Rankings unavailable")).toBeVisible();
+    expect(screen.getAllByText("Rankings unavailable")[0]).toBeVisible();
     fireEvent.click(screen.getByRole("button", { name: "Retry rankings" }));
     expect(retry).toHaveBeenCalled();
+  });
+
+  it("queues from the row edge and filters the board to the queue", () => {
+    mockSnapshot({
+      players: [
+        makePlayer({ id: "p-1", name: "Bijan Robinson" }),
+        makePlayer({ id: "p-2", name: "Jahmyr Gibbs", rankEcr: 2, averageRank: 2, positionRank: 2 }),
+      ],
+    });
+
+    renderClient();
+
+    fireEvent.click(screen.getByRole("button", { name: "Queue Bijan Robinson" }));
+    const removeButton = screen.getByRole("button", { name: "Remove Bijan Robinson from queue" });
+    expect(removeButton).toHaveAttribute("aria-pressed", "true");
+    expect(
+      screen.getByRole("button", { name: "Open Bijan Robinson detail (in your queue)" })
+    ).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("button", { name: "Queued (1)" }));
+    expect(screen.queryByText("Jahmyr Gibbs")).not.toBeInTheDocument();
+    expect(screen.getByText("Bijan Robinson")).toBeVisible();
+
+    fireEvent.click(screen.getByRole("button", { name: "Remove Bijan Robinson from queue" }));
+    expect(screen.getByText("No queued players on this board.")).toBeVisible();
+    fireEvent.click(screen.getByRole("button", { name: "Show all players" }));
+    expect(screen.getByText("Jahmyr Gibbs")).toBeVisible();
   });
 
   it("queues a player and saves a note from the drawer", () => {
