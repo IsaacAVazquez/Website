@@ -1,12 +1,12 @@
 # Performance & Accessibility
 
 **Last updated:** 2026-06-25
-**Companion to:** `PERFORMANCE.md`, `ACCESSIBILITY_AUDIT.md`, `SEO.md`, `DESIGN_CHECKLIST.md`
+**Companion to:** `../accessibility-audit-2026-06.md`, `SEO.md`, `DESIGN_CHECKLIST.md`
 
 Speed and accessibility are 2026 baseline expectations, not polish. They also compound:
 faster, more stable pages rank better and convert better (sites passing all three Core Web
 Vitals see meaningfully lower bounce). This page sets the targets and the highest-leverage
-fixes; the existing `PERFORMANCE.md` and `ACCESSIBILITY_AUDIT.md` hold implementation status.
+fixes; `../accessibility-audit-2026-06.md` holds implementation status.
 
 ---
 

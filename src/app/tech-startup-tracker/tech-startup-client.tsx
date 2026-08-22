@@ -21,6 +21,7 @@ import { EmptyPanel } from "@/components/football/EmptyPanel";
 import { HomeStatsPanel } from "@/components/home/HomeStatsPanel";
 import { ChartBar, Briefcase, FileText } from "@/components/ui/ServerIcons";
 import { formatUsdCompact, sortTechStartups } from "@/lib/techStartups";
+import { relativeAge } from "@/lib/utils";
 import type {
   TechStartup,
   TechStartupRouteState,
@@ -66,17 +67,6 @@ function formatRoundDate(yearMonth: string): string {
   const date = new Date(`${yearMonth.slice(0, 7)}-01T00:00:00Z`);
   if (Number.isNaN(date.getTime())) return yearMonth;
   return ROUND_FORMATTER.format(date);
-}
-
-function relativeAge(iso: string): string {
-  const date = new Date(iso);
-  if (Number.isNaN(date.getTime())) return "Unknown";
-  const diffMs = Date.now() - date.getTime();
-  const minutes = Math.floor(diffMs / 60_000);
-  if (minutes < 60) return `${Math.max(1, minutes)}m ago`;
-  const hours = Math.floor(minutes / 60);
-  if (hours < 48) return `${hours}h ago`;
-  return `${Math.floor(hours / 24)}d ago`;
 }
 
 function getSegments(

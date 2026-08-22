@@ -76,12 +76,6 @@ class RateLimiter {
   }
 }
 
-// Create rate limiters for different endpoints
-export const apiRateLimiter = new RateLimiter({
-  interval: 60 * 1000, // 1 minute
-  uniqueTokenPerInterval: 30 // 30 requests per minute
-});
-
 // Public market-data fan-out is materially more expensive than ordinary API
 // reads. Keep this separate so unrelated endpoints do not expand the quote
 // allowance. The source migration should add a shared edge/provider quota;

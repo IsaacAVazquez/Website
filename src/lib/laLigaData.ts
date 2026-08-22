@@ -15,115 +15,28 @@ import type {
 } from "@/types/la-liga";
 import { getLaLigaClubAccentColor } from "@/data/clubColors";
 
-const FOOTBALL_DATA_BASE_URL = "https://api.football-data.org/v4";
+import {
+  FOOTBALL_DATA_BASE_URL,
+  REQUEST_TIMEOUT_MS,
+  SUMMARY_REVALIDATE_SECONDS,
+  TEAM_REVALIDATE_SECONDS,
+  RECENT_FIXTURE_LIMIT,
+  UPCOMING_FIXTURE_LIMIT,
+  TEAM_FIXTURE_LIMIT,
+  SEASON_FIXTURES_REVALIDATE_SECONDS,
+  buildSeasonLabel,
+  type FootballDataTeam,
+  type FootballDataSeason,
+  type FootballDataStandingEntry,
+  type FootballDataCompetitionStandingsResponse,
+  type FootballDataMatch,
+  type FootballDataMatchesResponse,
+  type FootballDataCompetitionTeamsResponse,
+  type FootballDataScorerEntry,
+  type FootballDataScorersResponse,
+  type FootballDataError,
+} from "@/lib/footballData";
 const LA_LIGA_CODE = "PD";
-const REQUEST_TIMEOUT_MS = 10_000;
-const SUMMARY_REVALIDATE_SECONDS = 300;
-const TEAM_REVALIDATE_SECONDS = 300;
-const RECENT_FIXTURE_LIMIT = 8;
-const UPCOMING_FIXTURE_LIMIT = 8;
-const TEAM_FIXTURE_LIMIT = 5;
-// Full-season goals-per-matchday aggregation reads every FINISHED match, not
-// just the most recent ones — this call intentionally omits `limit`.
-const SEASON_FIXTURES_REVALIDATE_SECONDS = 300;
-
-interface FootballDataTeam {
-  id?: number | null;
-  name?: string | null;
-  shortName?: string | null;
-  tla?: string | null;
-  crest?: string | null;
-  crestUrl?: string | null;
-  venue?: string | null;
-  founded?: number | null;
-  clubColors?: string | null;
-  website?: string | null;
-  address?: string | null;
-  // Only present on the single-team detail endpoint (`/teams/{id}`), not on
-  // list endpoints or the team objects embedded in matches/scorers/standings.
-  coach?: {
-    name?: string | null;
-  } | null;
-}
-
-interface FootballDataSeason {
-  startDate?: string | null;
-  endDate?: string | null;
-  currentMatchday?: number | null;
-}
-
-interface FootballDataCompetition {
-  code?: string | null;
-  name?: string | null;
-}
-
-interface FootballDataStandingEntry {
-  position?: number | null;
-  playedGames?: number | null;
-  won?: number | null;
-  draw?: number | null;
-  lost?: number | null;
-  points?: number | null;
-  goalsFor?: number | null;
-  goalsAgainst?: number | null;
-  goalDifference?: number | null;
-  team?: FootballDataTeam | null;
-}
-
-interface FootballDataStandingsGroup {
-  type?: string | null;
-  table?: FootballDataStandingEntry[] | null;
-}
-
-interface FootballDataCompetitionStandingsResponse {
-  competition?: FootballDataCompetition | null;
-  season?: FootballDataSeason | null;
-  standings?: FootballDataStandingsGroup[] | null;
-}
-
-interface FootballDataScoreTime {
-  home?: number | null;
-  away?: number | null;
-}
-
-interface FootballDataMatch {
-  id?: number | null;
-  utcDate?: string | null;
-  status?: string | null;
-  matchday?: number | null;
-  stage?: string | null;
-  homeTeam?: FootballDataTeam | null;
-  awayTeam?: FootballDataTeam | null;
-  score?: {
-    winner?: "HOME_TEAM" | "AWAY_TEAM" | "DRAW" | null;
-    fullTime?: FootballDataScoreTime | null;
-  } | null;
-}
-
-interface FootballDataMatchesResponse {
-  matches?: FootballDataMatch[] | null;
-}
-
-interface FootballDataCompetitionTeamsResponse {
-  teams?: FootballDataTeam[] | null;
-}
-
-interface FootballDataScorerEntry {
-  player?: { name?: string | null } | null;
-  team?: FootballDataTeam | null;
-  goals?: number | null;
-  assists?: number | null;
-  playedMatches?: number | null;
-}
-
-interface FootballDataScorersResponse {
-  scorers?: FootballDataScorerEntry[] | null;
-}
-
-interface FootballDataError extends Error {
-  status: number;
-}
-
 function createLaLigaDataError(message: string, status: number): FootballDataError {
   return Object.assign(new Error(message), { status });
 }
@@ -134,15 +47,6 @@ function getFootballDataToken(): string {
     throw createLaLigaDataError("La Liga data source is not configured.", 503);
   }
   return token;
-}
-
-function buildSeasonLabel(startDate?: string | null, endDate?: string | null): string {
-  const startYear = startDate ? new Date(startDate).getUTCFullYear() : NaN;
-  const endYear = endDate ? new Date(endDate).getUTCFullYear() : NaN;
-  if (Number.isFinite(startYear) && Number.isFinite(endYear)) {
-    return startYear === endYear ? `${startYear}` : `${startYear}/${String(endYear).slice(-2)}`;
-  }
-  return "Current season";
 }
 
 function seasonStartYear(startDate?: string | null): number | null {

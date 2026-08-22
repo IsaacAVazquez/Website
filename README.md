@@ -188,7 +188,6 @@ CRON_SECRET=...               # protects the Netlify purge-cache function
 
 Current source-of-truth docs:
 
-- `AGENT.md`
 - `AGENTS.md`
 - `CLAUDE.md`
 - `README.md`

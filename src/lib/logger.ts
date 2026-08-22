@@ -1,46 +1,20 @@
 /**
- * Logger utility for consistent logging across the application
- * Respects NODE_ENV to reduce noise in production
+ * Consistent logging across the app. Info/warn/debug are development-only to
+ * keep production output to real failures; error always logs.
  */
+const isDevelopment = process.env.NODE_ENV !== "production";
 
-class Logger {
-  private isDevelopment = process.env.NODE_ENV !== 'production';
-
-  /**
-   * Log info messages (development only)
-   */
+export const logger = {
   info(message: string, data?: unknown): void {
-    if (this.isDevelopment) {
-      console.log(`[INFO] ${message}`, data ? data : '');
-    }
-  }
-
-  /**
-   * Log warning messages (development only)
-   */
+    if (isDevelopment) console.log(`[INFO] ${message}`, data ? data : "");
+  },
   warn(message: string, data?: unknown): void {
-    if (this.isDevelopment) {
-      console.warn(`[WARN] ${message}`, data ? data : '');
-    }
-  }
-
-  /**
-   * Log error messages (always logged)
-   */
-  error(message: string, error?: unknown): void {
-    console.error(`[ERROR] ${message}`, error ? error : '');
-  }
-
-  /**
-   * Log debug messages (development only)
-   */
+    if (isDevelopment) console.warn(`[WARN] ${message}`, data ? data : "");
+  },
   debug(message: string, data?: unknown): void {
-    if (this.isDevelopment) {
-      console.debug(`[DEBUG] ${message}`, data ? data : '');
-    }
-  }
-
-}
-
-// Export singleton instance
-export const logger = new Logger();
+    if (isDevelopment) console.debug(`[DEBUG] ${message}`, data ? data : "");
+  },
+  error(message: string, error?: unknown): void {
+    console.error(`[ERROR] ${message}`, error ? error : "");
+  },
+};

@@ -238,7 +238,7 @@ npm run dev
 
 ### Fantasy surface
 
-The fantasy-football surface keeps redraft and best ball separate. `/fantasy-football` and `/fantasy-football/draft-tracker` use the scoring-specific redraft snapshots through `useFantasySnapshot`. `/fantasy-football/best-ball` and `/fantasy-football/best-ball/draft-tracker` use `public/data/fantasy/best-ball.json` through `useBestBallSnapshot`, with contest rules and recommendations from `src/lib/bestBall.ts`. The best ball snapshot combines best ball consensus rankings, current Underdog ADP, bye weeks, and Week 17 opponents. Best ball draft state uses its own season-and-contest storage keys and does not read or overwrite the redraft draft state.
+The fantasy-football surface keeps redraft and best ball separate. `/fantasy-football` and `/fantasy-football/draft-tracker` use the scoring-specific redraft snapshots through `useFantasySnapshot`. `/fantasy-football/best-ball` and `/fantasy-football/best-ball/draft-tracker` use `public/data/fantasy/best-ball.json` through `useBestBallSnapshot`, with contest rules and recommendations from `src/lib/bestBall/`. The best ball snapshot combines best ball consensus rankings, current Underdog ADP, bye weeks, and Week 17 opponents. Best ball draft state uses its own season-and-contest storage keys and does not read or overwrite the redraft draft state.
 
 `/fantasy-football/weekly` is the only in-season surface. It reads `public/data/fantasy/weekly.json` through `useFantasyWeeklySnapshot` and is deliberately absent until Week 1, so the hook treats a 404 as a state rather than an error. Every other fantasy route is a draft board and carries a dated note from Week 1 saying so.
 

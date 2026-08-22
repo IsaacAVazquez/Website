@@ -1,4 +1,4 @@
-import type { HTMLAttributes, ReactNode } from "react";
+import type { HTMLAttributes } from "react";
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import { MBAJobsClient } from "../mba-jobs-client";
 import { DEFAULT_MBA_JOBS_STATE } from "../mba-jobs-state";
@@ -136,19 +136,6 @@ jest.mock("framer-motion", () => ({
     ),
   },
   useReducedMotion: () => true,
-}));
-
-jest.mock("@/components/ui/dropdown-menu", () => ({
-  DropdownMenu: ({ children }: { children: ReactNode }) => <div>{children}</div>,
-  DropdownMenuTrigger: ({
-    children,
-  }: {
-    children: ReactNode;
-    asChild?: boolean;
-  }) => <>{children}</>,
-  DropdownMenuContent: ({ children }: { children: ReactNode }) => <div>{children}</div>,
-  DropdownMenuRadioGroup: ({ children }: { children: ReactNode }) => <div>{children}</div>,
-  DropdownMenuRadioItem: ({ children }: { children: ReactNode }) => <div>{children}</div>,
 }));
 
 jest.mock("@/hooks/useMBAJobs", () => ({

@@ -15,7 +15,7 @@ jest.mock("../ComparisonTab", () => ({
 }));
 
 import { StockSearch } from "../StockSearch";
-import { StockResearch } from "../StockResearch";
+import { ResearchSection } from "../ResearchSection";
 import { AddStockForm } from "../AddStockForm";
 import { __testUtils as liveQuoteTestUtils } from "@/hooks/useLiveQuote";
 import { __testUtils as stockDataTestUtils } from "@/hooks/useStockData";
@@ -206,30 +206,6 @@ describe("investments UI", () => {
     jest.useRealTimers();
   });
 
-  it("shows the search control and empty state before a symbol is selected", async () => {
-    mockFetch.mockResolvedValue({
-      ok: true,
-      json: async () => curatedIndex,
-    });
-
-    await act(async () => {
-      root.render(
-        <StockResearch
-          symbol=""
-          activeTab="overview"
-          onSymbolChange={() => {}}
-          onTabChange={() => {}}
-        />
-      );
-    });
-    await flushPromises();
-
-    expect(
-      container.querySelector('input[aria-label="Search stock symbol"]')
-    ).not.toBeNull();
-    expect(container.textContent).toContain("Start with a ticker symbol");
-  });
-
   it("matches company names and supports keyboard selection for curated symbols", async () => {
     mockFetch.mockResolvedValue({
       ok: true,
@@ -396,10 +372,9 @@ describe("investments UI", () => {
 
     await act(async () => {
       root.render(
-        <StockResearch
+        <ResearchSection
           symbol="V"
           activeTab="overview"
-          onSymbolChange={() => {}}
           onTabChange={() => {}}
         />
       );
@@ -454,10 +429,9 @@ describe("investments UI", () => {
 
     await act(async () => {
       root.render(
-        <StockResearch
+        <ResearchSection
           symbol="AAPL"
           activeTab="overview"
-          onSymbolChange={() => {}}
           onTabChange={() => {}}
         />
       );
@@ -502,10 +476,9 @@ describe("investments UI", () => {
 
     await act(async () => {
       root.render(
-        <StockResearch
+        <ResearchSection
           symbol="AAPL"
           activeTab="overview"
-          onSymbolChange={() => {}}
           onTabChange={() => {}}
         />
       );

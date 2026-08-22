@@ -15,7 +15,6 @@ The 2026-05-03 project coverage pass adds markdown snapshots for the remaining l
 Start here for live implementation and agent context:
 
 - `../AGENTS.md`
-- `../AGENT.md`
 - `../CLAUDE.md`
 - `../README.md`
 - `../PAGES.md`
@@ -59,8 +58,6 @@ Subsystem references (current):
 Use these when the task is specifically about setup, deployment, data operations, security, or troubleshooting:
 
 - `../DEPLOYMENT.md`
-- `../GETTING-STARTED.md`
-- `../PERFORMANCE.md`
 - `../TROUBLESHOOTING.md`
 - `AUTOMATION_SCRIPTS.md`
 - `CRON_SETUP.md`
@@ -103,14 +100,6 @@ Dated audits and research dossiers. Each one is a point-in-time snapshot rather 
 
 These remain in the repo for context, but they should not be treated as live source-of-truth docs:
 
-- `../ACCESSIBILITY_AUDIT.md`
-- `../DARK_MODE_USAGE_GUIDE.md`
-- `../DEPLOYMENT_GUIDE.md`
-- `../FANTASY_RB_TIERS.md`
-- `../INVESTMENT_TRACKER.md`
-- `../NFLVERSE_INTEGRATION.md`
-- `../PERFORMANCE-SEO.md`
-- `../PERFORMANCE_REPORT.md`
 - `DATABASE_SCHEMA.md` (historical SQLite fantasy layer; no live `src/lib/database.ts`)
 - `PLAYER_IMAGES_SETUP.md` (historical fantasy player-image workflow; referenced assets no longer exist)
 - `FEATURE_ROADMAP.md`
@@ -132,9 +121,7 @@ The repo tracks 104 Markdown files under `../.agents/skills/**`.
 
 These are bundled skill-library docs, not website implementation docs. They are included in the all-Markdown inventory, but they should not be rewritten during website documentation sync work unless they contain a repo-specific reference that directly contradicts `AGENTS.md`, `CLAUDE.md`, or this index.
 
-Root `../SKILL.md` is different: it is a repo-level skill entry and may be updated when the site copy or agent guidance changes.
-
-Three more root files are owned by tooling rather than by this index, and a documentation sync pass should leave them alone unless the tool that owns them is the thing being changed. `../PRODUCT.md` and `../DESIGN.md` are the per-repository context files the impeccable design skill loads automatically, and `../DESIGN.md` carries the Working Instrument token frontmatter. `../PROMPTING.md` is a general Claude prompt-engineering reference with no website-specific content.
+Two more root files are owned by tooling rather than by this index, and a documentation sync pass should leave them alone unless the tool that owns them is the thing being changed. `../PRODUCT.md` and `../DESIGN.md` are the per-repository context files the impeccable design skill loads automatically, and `../DESIGN.md` carries the Working Instrument token frontmatter.
 
 `../.impeccable/` holds that same skill's per-surface briefs and its dated critique output. Those are working artifacts, not documentation, and the critique files are written by the tool.
 

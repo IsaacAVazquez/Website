@@ -17,6 +17,7 @@ import { MetricCard } from "@/components/football/MetricCard";
 import { EmptyPanel } from "@/components/football/EmptyPanel";
 import { HomeStatsPanel } from "@/components/home/HomeStatsPanel";
 import { ChartBar, Briefcase, FileText, BrandGithub } from "@/components/ui/ServerIcons";
+import { relativeAge } from "@/lib/utils";
 import {
   formatGitHubCompactNumber,
   sortGitHubTrendingRepositories,
@@ -114,17 +115,6 @@ function getReposForSegment(
   if (!segment) return [];
   const allowed = new Set(segment.repoIds);
   return snapshot.repositories.filter((repo) => allowed.has(repo.id));
-}
-
-function relativeAge(iso: string): string {
-  const date = new Date(iso);
-  if (Number.isNaN(date.getTime())) return "Unknown";
-  const diffMs = Date.now() - date.getTime();
-  const minutes = Math.floor(diffMs / 60_000);
-  if (minutes < 60) return `${Math.max(1, minutes)}m ago`;
-  const hours = Math.floor(minutes / 60);
-  if (hours < 48) return `${hours}h ago`;
-  return `${Math.floor(hours / 24)}d ago`;
 }
 
 function handleRowKeyDown(

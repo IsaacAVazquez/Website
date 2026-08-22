@@ -2,15 +2,15 @@
  * @jest-environment node
  */
 
-import { apiRateLimiter, getClientIdentifier, rateLimitResponse } from '../rateLimit';
+import { mbaJobsRateLimiter, getClientIdentifier, rateLimitResponse } from '../rateLimit';
 import { NextRequest } from 'next/server';
 
 // Each test gets a unique client ID to avoid cross-test state contamination
-// since apiRateLimiter is a module-level singleton.
+// since mbaJobsRateLimiter is a module-level singleton.
 let counter = 0;
 const uid = () => `test-client-${++counter}-${Math.random().toString(36).slice(2)}`;
 
-describe('apiRateLimiter', () => {
+describe('mbaJobsRateLimiter', () => {
   beforeEach(() => {
     jest.useFakeTimers();
   });
@@ -20,7 +20,7 @@ describe('apiRateLimiter', () => {
   });
 
   it('first check returns success with remaining 29 and limit 30', () => {
-    const result = apiRateLimiter.check(uid());
+    const result = mbaJobsRateLimiter.check(uid());
     expect(result.success).toBe(true);
     expect(result.remaining).toBe(29);
     expect(result.limit).toBe(30);
@@ -28,9 +28,9 @@ describe('apiRateLimiter', () => {
 
   it('repeated checks decrement remaining', () => {
     const id = uid();
-    apiRateLimiter.check(id); // 1st
-    apiRateLimiter.check(id); // 2nd
-    const third = apiRateLimiter.check(id); // 3rd
+    mbaJobsRateLimiter.check(id); // 1st
+    mbaJobsRateLimiter.check(id); // 2nd
+    const third = mbaJobsRateLimiter.check(id); // 3rd
     expect(third.success).toBe(true);
     expect(third.remaining).toBe(27);
   });
@@ -38,9 +38,9 @@ describe('apiRateLimiter', () => {
   it('returns failure after 30 requests in a 60-second window', () => {
     const id = uid();
     for (let i = 0; i < 30; i++) {
-      apiRateLimiter.check(id);
+      mbaJobsRateLimiter.check(id);
     }
-    const over = apiRateLimiter.check(id);
+    const over = mbaJobsRateLimiter.check(id);
     expect(over.success).toBe(false);
     expect(over.remaining).toBe(0);
   });
@@ -49,14 +49,14 @@ describe('apiRateLimiter', () => {
     const id = uid();
     // Exhaust the limit
     for (let i = 0; i < 30; i++) {
-      apiRateLimiter.check(id);
+      mbaJobsRateLimiter.check(id);
     }
-    expect(apiRateLimiter.check(id).success).toBe(false);
+    expect(mbaJobsRateLimiter.check(id).success).toBe(false);
 
     // Move past the 60-second window
     jest.advanceTimersByTime(61_000);
 
-    const afterReset = apiRateLimiter.check(id);
+    const afterReset = mbaJobsRateLimiter.check(id);
     expect(afterReset.success).toBe(true);
     expect(afterReset.remaining).toBe(29);
   });

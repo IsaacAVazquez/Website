@@ -32,3 +32,18 @@ export function slugify(value: string): string {
     .slice(0, 64)
     .replace(/-+$/g, "");
 }
+
+/**
+ * Compact age label for a timestamp: "5m ago", "3h ago", "2d ago".
+ * Sub-minute ages round up to "1m ago"; unparseable input reads "Unknown".
+ */
+export function relativeAge(iso: string): string {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return "Unknown";
+  const diffMs = Date.now() - date.getTime();
+  const minutes = Math.floor(diffMs / 60_000);
+  if (minutes < 60) return `${Math.max(1, minutes)}m ago`;
+  const hours = Math.floor(minutes / 60);
+  if (hours < 48) return `${hours}h ago`;
+  return `${Math.floor(hours / 24)}d ago`;
+}
