@@ -7,6 +7,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 ## 2026-08-22
 
 - Keep the fantasy surface working after kickoff ([#398](https://github.com/IsaacAVazquez/Website/pull/398)).
+- Impeccable rollout: harden ink-soft contrast, sharpen tool shells ([#391](https://github.com/IsaacAVazquez/Website/pull/391)).
 
 ---
 
