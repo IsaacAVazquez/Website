@@ -136,26 +136,22 @@ test.describe("Fantasy football rankings", () => {
     for (const scoring of scoringFormats) {
       await page.goto(`/fantasy-football?position=overall&scoring=${scoring.key}`);
       const shell = await getReadyFantasyShell(page);
-      const board = shell.locator('article[aria-labelledby="rankings-board-heading"]');
 
       await expect(shell.getByRole("button", { name: new RegExp(`^${scoring.label}$`) })).toHaveAttribute(
         "aria-pressed",
         "true"
       );
+      // The overall board always spans several tiers, so the tier plates render.
+      await expect(shell.getByText("01", { exact: true })).toBeVisible();
 
       for (const position of positions) {
         if (position.key !== "overall") {
           await selectPosition(page, shell, position.label, position.key);
         }
         await expect(page.getByRole("heading", { name: new RegExp(`${position.label} rankings`, "i") })).toBeVisible();
-        await expect(board.getByText("No Data Available")).toHaveCount(0);
-        await expect(board.getByRole("button", { name: /^Open .+ detail/ }).first()).toBeVisible();
+        await expect(shell.getByText("No Data Available")).toHaveCount(0);
+        await expect(shell.getByRole("button", { name: /^Open .+ detail/ }).first()).toBeVisible();
       }
-
-      await activateControl(shell.getByRole("radio", { name: "Tiers" }));
-      await expect(page).toHaveURL(/view=tiers/);
-      await expect(shell.getByLabel("DST tier breakdown")).toBeVisible();
-      await expect(shell.getByText("Tier 1").first()).toBeVisible();
     }
   });
 
@@ -163,7 +159,7 @@ test.describe("Fantasy football rankings", () => {
     await page.goto("/fantasy-football");
     const shell = await getReadyFantasyShell(page);
 
-    await expect(page.getByRole("heading", { name: /Rankings first\. Draft utility second\./i })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /Fantasy Football Rankings/i })).toBeVisible();
     await expect(page).toHaveURL(/position=overall/);
     await expect(page).toHaveURL(/scoring=ppr/);
     await expect(page.getByText("No Data Available")).toHaveCount(0);
@@ -228,13 +224,14 @@ test.describe("Fantasy football rankings", () => {
     await expect(page.getByText(/rate limit/i)).toHaveCount(0);
   });
 
-  test("keeps the aside sticky on desktop and stacked on mobile", async ({ page, isMobile }) => {
+  test("keeps the board controls sticky on desktop and static on mobile", async ({ page, isMobile }) => {
     await page.goto("/fantasy-football?position=wr&scoring=ppr");
+    await getReadyFantasyShell(page);
 
-    const aside = page.locator('[data-testid="fantasy-football-shell"] aside');
-    await expect(aside).toBeVisible();
+    const controls = page.getByTestId("fantasy-board-controls");
+    await expect(controls).toBeVisible();
 
-    const computedPosition = await aside.evaluate((element) => getComputedStyle(element).position);
+    const computedPosition = await controls.evaluate((element) => getComputedStyle(element).position);
 
     if (isMobile) {
       expect(computedPosition).not.toBe("sticky");
@@ -243,79 +240,105 @@ test.describe("Fantasy football rankings", () => {
     }
   });
 
-  test("searches the board and switches between list and tier views", async ({ page }) => {
+  test("searches the board and clears it from the empty state", async ({ page }) => {
     await page.goto("/fantasy-football?position=overall&scoring=ppr");
     const shell = await getReadyFantasyShell(page);
-    const rankingsBoard = shell.locator('article[aria-labelledby="rankings-board-heading"]');
     const search = shell.getByLabel("Search the current rankings board");
 
     await search.fill("Ja'Marr Chase");
     await expect(search).toHaveValue("Ja'Marr Chase");
-    await expect(rankingsBoard.getByText("Ja'Marr Chase", { exact: true }).first()).toBeVisible();
-    await expect(rankingsBoard.getByText("Bijan Robinson", { exact: true })).toHaveCount(0);
+    await expect(shell.getByText("Ja'Marr Chase", { exact: true }).first()).toBeVisible();
+    await expect(shell.getByText("Bijan Robinson", { exact: true })).toHaveCount(0);
+
+    await search.fill("player who does not exist");
+    await expect(shell.getByText("No players match on this board.")).toBeVisible();
+
     await shell.getByRole("button", { name: "Clear search" }).click();
-
-    await activateControl(shell.getByRole("radio", { name: "Tiers" }));
-    await expect(page).toHaveURL(/view=tiers/);
-    await expect(shell.getByLabel("Overall tier breakdown")).toBeVisible();
-    await expect(shell.getByText("Tier 1").first()).toBeVisible();
-
-    await activateControl(shell.getByRole("radio", { name: "List" }));
-    await expect(page).not.toHaveURL(/view=tiers/);
+    await expect(search).toHaveValue("");
+    await expect(shell.getByRole("button", { name: /^Open .+ detail/ }).first()).toBeVisible();
   });
 
-  test("keeps position-only queued players visible after switching boards", async ({ page }) => {
-    await page.goto("/fantasy-football?position=k&scoring=ppr");
-    const shell = await getReadyFantasyShell(page);
-
-    await shell.getByRole("button", { name: "Add Brandon Aubrey to queue" }).click();
-    await selectPosition(page, shell, "RB", "rb");
-    await expect(shell.getByText("Brandon Aubrey", { exact: true })).toBeVisible();
-
-    const clearQueue = shell.getByRole("button", { name: "Clear queue" });
-    await expect(clearQueue).toBeVisible();
-    const clearBox = await clearQueue.boundingBox();
-    expect(clearBox?.height).toBeGreaterThanOrEqual(44);
-    await clearQueue.click();
-    await shell.getByRole("button", { name: "Confirm clear queue" }).click();
-    await expect(shell.getByText("0 starred")).toBeVisible();
-  });
-
-  test("persists a private note and compares players accessibly", async ({ page, isMobile }) => {
-    test.skip(isMobile, "Desktop list exposes inline compare controls; mobile compare is available in player detail.");
+  test("queues a player from the drawer and keeps it after a reload", async ({ page }) => {
     await page.goto("/fantasy-football?position=overall&scoring=ppr");
     const shell = await getReadyFantasyShell(page);
 
-    await shell.getByRole("button", { name: /Open Ja'Marr Chase detail/ }).click();
+    const firstRow = shell.getByRole("button", { name: /^Open .+ detail/ }).first();
+    const rowLabel = await firstRow.getAttribute("aria-label");
+    const playerName = rowLabel?.match(/^Open (.+) detail$/)?.[1];
+    expect(playerName, "the board exposes a first player").toBeTruthy();
+
+    await firstRow.click();
+    const dialog = page.getByRole("dialog", { name: `${playerName} detail` });
+    await dialog.getByRole("button", { name: /Add to queue/ }).click();
+    await expect(dialog.getByRole("button", { name: /Queued/ })).toHaveAttribute("aria-pressed", "true");
+    await page.keyboard.press("Escape");
+    await expect(dialog).toBeHidden();
+
+    await page.reload();
+    await getReadyFantasyShell(page);
+    await shell.getByRole("button", { name: `Open ${playerName} detail` }).click();
+    await expect(
+      page.getByRole("dialog", { name: `${playerName} detail` }).getByRole("button", { name: /Queued/ })
+    ).toHaveAttribute("aria-pressed", "true");
+  });
+
+  test("shows prior-season points per game in the drawer, with its season and sample", async ({ page }) => {
+    // Pick the target from the published snapshot rather than probing rows.
+    // Rookies and anyone under the games-played floor legitimately carry no
+    // game log, so scanning the board would be both slower and less certain.
+    const snapshot = await (await page.request.get("/data/fantasy/ppr.json")).json();
+    const scored = snapshot.overall.find((player: { gameLog?: unknown }) => player.gameLog);
+    expect(scored, "the published PPR board carries prior-season scoring").toBeTruthy();
+
+    await page.goto("/fantasy-football?position=overall&scoring=ppr");
+    const shell = await getReadyFantasyShell(page);
+
+    await shell.getByRole("button", { name: `Open ${scored.name} detail` }).click();
+    const dialog = page.getByRole("dialog", { name: `${scored.name} detail` });
+    // The label shares its span with the metric tooltip trigger, so an exact
+    // match no longer finds an element whose whole text is the label.
+    await expect(dialog.getByText("Points per game").first()).toBeVisible();
+
+    // The basis travels with the number: which season, which scoring, and how
+    // many games sit behind the spread.
+    await expect(
+      dialog.getByText(`${scored.gameLog.season} season · PPR · ${scored.gameLog.games} games`)
+    ).toBeVisible();
+    await expect(dialog.getByText(scored.gameLog.average.toFixed(1), { exact: true })).toBeVisible();
+
+    await page.keyboard.press("Escape");
+    await expect(dialog).toBeHidden();
+  });
+
+  test("persists a private note from the drawer", async ({ page }) => {
+    await page.goto("/fantasy-football?position=overall&scoring=ppr");
+    const shell = await getReadyFantasyShell(page);
+
+    const firstRow = shell.getByRole("button", { name: /^Open .+ detail/ }).first();
+    const rowLabel = await firstRow.getAttribute("aria-label");
+    const playerName = rowLabel?.match(/^Open (.+) detail$/)?.[1];
+    expect(playerName, "the board exposes a first player").toBeTruthy();
+
+    await firstRow.click();
     const note = page.getByRole("textbox", { name: "Private note" });
     await note.fill("Target at the first-round turn");
     await page.getByRole("button", { name: "Close", exact: true }).click();
 
-    await shell.getByRole("button", { name: /Open Ja'Marr Chase detail/ }).click();
+    await shell.getByRole("button", { name: `Open ${playerName} detail` }).click();
     await expect(page.getByRole("textbox", { name: "Private note" })).toHaveValue("Target at the first-round turn");
     await page.keyboard.press("Escape");
-
-    await shell.getByRole("button", { name: "Add Ja'Marr Chase to compare" }).click();
-    await shell.getByRole("button", { name: "Add Bijan Robinson to compare" }).click();
-    await page.getByRole("button", { name: "Compare 2" }).click();
-
-    const dialog = page.getByRole("dialog", { name: "Compare players" });
-    await expect(dialog).toBeVisible();
-    await expect(dialog.getByText("Ja'Marr Chase", { exact: true })).toBeVisible();
-    await expect(dialog.getByText("Bijan Robinson", { exact: true })).toBeVisible();
-    await page.keyboard.press("Escape");
-    await expect(dialog).toBeHidden();
   });
 
   test("renders without horizontal overflow at 360px", async ({ page }) => {
     await page.setViewportSize({ width: 360, height: 800 });
     await page.goto("/fantasy-football?position=overall&scoring=ppr");
+    await getReadyFantasyShell(page);
 
     const horizontalOverflow = await page.evaluate(
       () => document.documentElement.scrollWidth - document.documentElement.clientWidth
     );
     expect(horizontalOverflow).toBeLessThanOrEqual(1);
-    await expect(page.getByRole("link", { name: /Launch draft assistant/i }).first()).toBeVisible();
+    await expect(page.getByRole("link", { name: "Draft tracker", exact: true }).first()).toBeVisible();
   });
 
   test("supports the fantasy rankings in dark mode", async ({ page }) => {
@@ -471,9 +494,10 @@ test.describe("Fantasy football best ball", () => {
     await shell.getByRole("button", { name: "Open draft room from slot 1" }).click();
     await expect(shell.getByRole("heading", { name: "You are on the clock at pick 1" })).toBeVisible();
 
-    const firstPlayer = shell.getByRole("button", { name: /^Log .+ at pick 1$/ }).first();
-    const firstPlayerLabel = await firstPlayer.getAttribute("aria-label");
-    const firstPlayerName = firstPlayerLabel?.match(/^Log (.+) at pick 1$/)?.[1];
+    const firstPlayer = shell.getByRole("button", { name: /^Log at pick 1, board rank/ }).first();
+    const firstPlayerName = (
+      await firstPlayer.getByTestId("best-ball-board-player-name").textContent()
+    )?.trim();
     expect(firstPlayerName, "the refreshed BBM board exposes a first player").toBeTruthy();
 
     await firstPlayer.click();
@@ -487,7 +511,10 @@ test.describe("Fantasy football best ball", () => {
     await shell.getByRole("button", { name: "Undo last pick" }).click();
     await expect(shell.getByText("1 of 216", { exact: true })).toBeVisible();
     await expect(
-      shell.getByRole("button", { name: `Log ${firstPlayerName} at pick 1` })
+      shell
+        .getByRole("button", { name: /^Log at pick 1, board rank/ })
+        .filter({ hasText: firstPlayerName! })
+        .first()
     ).toBeVisible();
     await expect.poll(() => getPersistedBestBallPickCount(page, "bbm-vii")).toBe(0);
 

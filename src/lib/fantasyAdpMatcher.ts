@@ -147,10 +147,21 @@ function findTeamAbbrInName(name: string): string | null {
   return null;
 }
 
-export interface FantasyAdpIndex {
-  byNameTeamPosition: Map<string, FantasyAdpEntry>;
-  byNamePosition: Map<string, FantasyAdpEntry | typeof AMBIGUOUS>;
-  dstByTeam: Map<string, FantasyAdpEntry>;
+/**
+ * The fields matching actually reads. Kept structural so other build-time
+ * sources keyed on the same player identity — per-game scoring, for one — reuse
+ * this tiering instead of growing a second, subtly different normalizer.
+ */
+export interface MatchablePlayerEntry {
+  name: string;
+  team?: string | null;
+  position: string;
+}
+
+export interface FantasyAdpIndex<T extends MatchablePlayerEntry = FantasyAdpEntry> {
+  byNameTeamPosition: Map<string, T>;
+  byNamePosition: Map<string, T | typeof AMBIGUOUS>;
+  dstByTeam: Map<string, T>;
 }
 
 function nameTeamPositionKey(name: string, team: string, position: string): string {
@@ -161,8 +172,10 @@ function namePositionKey(name: string, position: string): string {
   return `${name}|${position}`;
 }
 
-export function buildFantasyAdpIndex(entries: FantasyAdpEntry[]): FantasyAdpIndex {
-  const index: FantasyAdpIndex = {
+export function buildFantasyAdpIndex<T extends MatchablePlayerEntry>(
+  entries: T[]
+): FantasyAdpIndex<T> {
+  const index: FantasyAdpIndex<T> = {
     byNameTeamPosition: new Map(),
     byNamePosition: new Map(),
     dstByTeam: new Map(),
@@ -201,10 +214,10 @@ export function buildFantasyAdpIndex(entries: FantasyAdpEntry[]): FantasyAdpInde
   return index;
 }
 
-export function matchPlayerAdp(
+export function matchPlayerAdp<T extends MatchablePlayerEntry>(
   player: Pick<Player, "name" | "team" | "position">,
-  index: FantasyAdpIndex
-): FantasyAdpEntry | null {
+  index: FantasyAdpIndex<T>
+): T | null {
   if (player.position === "DST") {
     const teamAbbr =
       normalizeAdpTeam(player.team) && normalizeAdpTeam(player.team) !== "FA"

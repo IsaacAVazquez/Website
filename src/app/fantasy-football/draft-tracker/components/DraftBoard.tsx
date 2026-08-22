@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import { GitCompareArrows, Info, Star } from "lucide-react";
 import type { Player, RedraftLineupSettings, TeamRoster } from "@/types";
@@ -129,10 +129,23 @@ export function DraftBoard({
   const [selectedPosition, setSelectedPosition] = useState<BoardFilter>("ALL");
   const [searchQuery, setSearchQuery] = useState("");
   const [visibleCount, setVisibleCount] = useState(BOARD_PAGE_SIZE);
+  const searchInputRef = useRef<HTMLInputElement>(null);
   const debouncedSearch = useDebounce(searchQuery, 200);
 
   const queue = usePlayerQueue();
   const compare = useCompareTray();
+
+  const handleDraftPlayer = useCallback(
+    (player: Player) => {
+      const hadActiveSearch = searchQuery.trim().length > 0;
+      onDraftPlayer(player);
+      if (hadActiveSearch) {
+        setSearchQuery("");
+        searchInputRef.current?.focus();
+      }
+    },
+    [onDraftPlayer, searchQuery]
+  );
 
   const availablePlayers = useMemo(
     () => players.filter((player) => !draftedPlayerIds.has(player.id)),
@@ -234,7 +247,7 @@ export function DraftBoard({
                 borderColor: "var(--home-rule)",
                 background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
               }}
-              role="radiogroup"
+              role="group"
               aria-label="Draft board view"
             >
               {([
@@ -246,8 +259,7 @@ export function DraftBoard({
                   <button
                     key={option.value}
                     type="button"
-                    role="radio"
-                    aria-checked={active}
+                    aria-pressed={active}
                     onClick={() => setBoardView(option.value)}
                     className="inline-flex min-h-[44px] items-center rounded-full px-3.5 py-1.5 text-sm transition-colors duration-200"
                     style={
@@ -323,7 +335,7 @@ export function DraftBoard({
               <button
                 key={`queued-${player.id}`}
                 type="button"
-                onClick={() => onDraftPlayer(player)}
+                onClick={() => handleDraftPlayer(player)}
                 disabled={isDraftComplete}
                 title={`Log ${player.name}`}
                 className="inline-flex min-h-touch items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold disabled:cursor-not-allowed disabled:opacity-60"
@@ -341,7 +353,7 @@ export function DraftBoard({
         <DraftTierColumns
           snapshot={snapshot}
           draftedPlayerIds={draftedPlayerIds}
-          onDraftPlayer={onDraftPlayer}
+          onDraftPlayer={handleDraftPlayer}
           isDraftComplete={isDraftComplete}
           rosterNeeds={columnNeedPositions}
         />
@@ -351,6 +363,7 @@ export function DraftBoard({
             <label className="grid gap-2 text-sm" htmlFor="draft-board-search">
               <span className="home-kicker mb-0">Search the board</span>
               <input
+                ref={searchInputRef}
                 id="draft-board-search"
                 name="draftBoardSearch"
                 value={searchQuery}
@@ -546,7 +559,7 @@ export function DraftBoard({
                               (rank, tier, range) read as one labeled group. */}
                           <button
                             type="button"
-                            onClick={() => onDraftPlayer(player)}
+                            onClick={() => handleDraftPlayer(player)}
                             disabled={isDraftComplete}
                             className="inline-flex min-h-[44px] items-center justify-center rounded-full border px-4 text-sm font-semibold whitespace-nowrap transition-[background-color,border-color,color,box-shadow,opacity] duration-200 disabled:cursor-not-allowed disabled:opacity-60"
                             style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}

@@ -33,7 +33,7 @@ jobs:
           fetch-depth: 1
 
       - name: Set up Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: "20"
           cache: "npm"
@@ -177,12 +177,38 @@ jobs:
             console.error('::error::More than 90% of the research universe is using earlier snapshots.');
             process.exit(1);
           }
+          // partialCount is reported, not gated. The fetch is a budget-limited
+          // rotation, so every freshly fetched symbol lands partial (mergeMissingValues
+          // flags a whole section on a single absent field) and the flag is then
+          // carried forward on the symbols this run did not fetch. partialCount
+          // therefore ratchets toward the full universe regardless of provider
+          // health: 37/151 on 2026-07-20, 67/151 on 2026-07-21, and it crossed the
+          // old 0.5 threshold on 2026-07-22 and then blocked every scheduled commit
+          // for 26 days while the fetches themselves were healthy. A real systemic
+          // outage is caught by the price-history check below, which measures the
+          // snapshots directly instead of a sticky flag.
           const partialRatio = partialCount / successCount;
-          if (partialRatio > 0.25) {
-            console.warn('::warning::' + (partialRatio * 100).toFixed(1) + '% of symbols retained one or more earlier sections.');
+          console.log('Symbols carrying one or more retained sections:', partialCount, '(' + (partialRatio * 100).toFixed(1) + '%)');
+
+          // Fundamentals-outage gate on a per-run signal. Removing the old
+          // 25%/50% partial gates was right (the sticky flag ratchets toward
+          // the full universe on healthy runs and blocked commits for 26
+          // days), but it left a systemic non-price outage — every ticker's
+          // fundamentals coming back empty while prices keep working —
+          // committing green forever. entries[].retainedSections is written
+          // per run, so the share of symbols that had to carry fundamentals
+          // forward THIS run is a real gauge: 44% on the healthy 2026-08-18
+          // baseline, so warn past 75% and refuse to commit past 90%.
+          const retainedFundamentals = Array.isArray(index.entries)
+            ? index.entries.filter((entry) => Array.isArray(entry.retainedSections) && entry.retainedSections.includes('fundamentals')).length
+            : 0;
+          const retainedFundamentalsRatio = successCount > 0 ? retainedFundamentals / successCount : 0;
+          console.log('Symbols reusing earlier fundamentals this run:', retainedFundamentals, '(' + (retainedFundamentalsRatio * 100).toFixed(1) + '%)');
+          if (retainedFundamentalsRatio > 0.75) {
+            console.warn('::warning::' + (retainedFundamentalsRatio * 100).toFixed(1) + '% of symbols are reusing earlier fundamentals; the non-price sections may be degrading.');
           }
-          if (partialRatio > 0.5) {
-            console.error('::error::More than 50% of the research universe retained earlier sections; likely a systemic provider outage.');
+          if (retainedFundamentalsRatio > 0.9) {
+            console.error('::error::More than 90% of the research universe is reusing earlier fundamentals. Likely a systemic non-price outage; refusing to commit a degraded snapshot.');
             process.exit(1);
           }
 

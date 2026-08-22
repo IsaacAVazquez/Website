@@ -2,7 +2,7 @@
 
 Current styling and design-token reference for the live app.
 
-**Last updated:** 2026-07-02 · **Working Instrument** redesign, phases one and two complete: flagship surfaces rebuilt; every dashboard, tool, and personal surface refreshed to the instrument language (sharp `--radius-*` plates, flat paper, semantic status tokens). `--home-haze`/`--home-acid`/`--home-moss` are token definitions only — zero component usages remain (the scoped F1-red override in `formula-1.module.css` and `/arcade`'s deliberate CRT aesthetic are the two sanctioned exceptions). `tailwind.config.ts` is loaded via `@config` in `globals.css`; `min-h-touch`, class-based `dark:`, and the fluid `text-*` scale are live.
+**Last updated:** 2026-08-05 · **Working Instrument** redesign, phases one and two complete: flagship surfaces rebuilt; every dashboard, tool, and personal surface refreshed to the instrument language (sharp `--radius-*` plates, flat paper, semantic status tokens). `--home-haze`/`--home-acid`/`--home-moss` are token definitions only — zero component usages remain (the scoped F1-red override in `formula-1.module.css` and `/arcade`'s deliberate CRT aesthetic are the two sanctioned exceptions). `tailwind.config.ts` is loaded via `@config` in `globals.css`; `min-h-touch`, class-based `dark:`, and the fluid `text-*` scale are live.
 
 ---
 

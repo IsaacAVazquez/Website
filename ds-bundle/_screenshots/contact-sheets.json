@@ -10,46 +10,40 @@
       "DropdownMenu",
       "EditorialPillButton",
       "EmptyPanel",
-      "ExpertSignal",
       "FixtureCard",
       "FixtureGroupSection",
       "FixtureLedgerSection",
       "GoalsPulseStrip",
       "Heading",
       "InfoChip",
-      "InlineSectionLead"
+      "InlineSectionLead",
+      "InstrumentTape"
     ]
   },
   {
     "sheet": 2,
     "components": [
-      "InstrumentTape",
-      "JourneyTimeline",
       "Kicker",
       "LeaderLedger",
       "LeaderList",
-      "MetricCallout",
       "MetricCard",
       "ModernButton",
-      "OptimizedImage",
-      "PageSummary",
       "Paragraph",
-      "ReadoutPanel",
       "ResultsTape",
       "SectionIntro",
       "SegmentedTabs",
-      "StatCard"
-    ]
-  },
-  {
-    "sheet": 3,
-    "components": [
+      "StatCard",
       "StatFascia",
       "StatusPanel",
       "SurfaceCard",
       "TeamResultPill",
       "ThemeToggle",
-      "UtilityStrip",
+      "UtilityStrip"
+    ]
+  },
+  {
+    "sheet": 3,
+    "components": [
       "WarmCard"
     ]
   }

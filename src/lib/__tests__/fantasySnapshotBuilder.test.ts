@@ -40,6 +40,27 @@ describe("getNflRegularSeasonWeek", () => {
     expect(lateNovember).toBeLessThanOrEqual(NFL_WEEKS);
   });
 
+  it("names the right week on every real 2026 week opener", () => {
+    // Verified against nflverse games.csv, the same file src/lib/nflData.ts
+    // downloads. 2026 opens Wednesday September 9 rather than the usual
+    // Thursday, and week 12 opens Wednesday November 25, so a Thursday anchor
+    // reported week 0 on opening day and week 11 on Thanksgiving week.
+    const openers: Array<[string, number]> = [
+      ["2026-09-09", 1],
+      ["2026-09-17", 2],
+      ["2026-09-24", 3],
+      ["2026-10-01", 4],
+      ["2026-11-19", 11],
+      ["2026-11-25", 12],
+      ["2026-12-03", 13],
+      ["2026-12-31", 17],
+    ];
+
+    for (const [gameday, week] of openers) {
+      expect(getNflRegularSeasonWeek(2026, new Date(`${gameday}T18:00:00.000Z`))).toBe(week);
+    }
+  });
+
   it("caps at the final regular-season week through the playoffs and offseason rollover", () => {
     expect(getNflRegularSeasonWeek(2026, new Date(Date.UTC(2026, 11, 25)))).toBeGreaterThanOrEqual(15); // late December
     expect(getNflRegularSeasonWeek(2026, new Date(Date.UTC(2027, 1, 1)))).toBe(NFL_WEEKS); // following February
@@ -78,10 +99,12 @@ describe("fantasySnapshotBuilder", () => {
     expect(pprSnapshot.sliceMetadata.k.sourceKind).toBe("shared_position_consensus");
     expect(pprSnapshot.sliceMetadata.dst.sourceKind).toBe("shared_position_consensus");
 
-    // The QB/K/DST consensus boards are scoring-agnostic, but ADP is matched
-    // per scoring format, so a player's adp reading can differ between formats.
-    // Compare the slices with adp stripped to assert the consensus data is shared.
-    const withoutAdp = (players: Player[]) =>
+    // The QB/K/DST consensus boards are scoring-agnostic, but two overlays are
+    // matched per scoring format and legitimately differ between them: ADP, and
+    // the prior season's points per game (a quarterback who caught a pass really
+    // did score differently in PPR than in standard). Strip both to assert that
+    // the consensus data underneath is shared.
+    const withoutPerFormatOverlays = (players: Player[]) =>
       players.map(
         ({
           adp: _adp,
@@ -89,16 +112,17 @@ describe("fantasySnapshotBuilder", () => {
           adpLow: _adpLow,
           adpStandardDeviation: _adpStandardDeviation,
           adpTimesDrafted: _adpTimesDrafted,
+          gameLog: _gameLog,
           ...rest
         }) => rest
       );
 
-    expect(withoutAdp(pprSnapshot.positions.QB)).toEqual(withoutAdp(halfPprSnapshot.positions.QB));
-    expect(withoutAdp(pprSnapshot.positions.QB)).toEqual(withoutAdp(standardSnapshot.positions.QB));
-    expect(withoutAdp(pprSnapshot.positions.K)).toEqual(withoutAdp(halfPprSnapshot.positions.K));
-    expect(withoutAdp(pprSnapshot.positions.K)).toEqual(withoutAdp(standardSnapshot.positions.K));
-    expect(withoutAdp(pprSnapshot.positions.DST)).toEqual(withoutAdp(halfPprSnapshot.positions.DST));
-    expect(withoutAdp(pprSnapshot.positions.DST)).toEqual(withoutAdp(standardSnapshot.positions.DST));
+    expect(withoutPerFormatOverlays(pprSnapshot.positions.QB)).toEqual(withoutPerFormatOverlays(halfPprSnapshot.positions.QB));
+    expect(withoutPerFormatOverlays(pprSnapshot.positions.QB)).toEqual(withoutPerFormatOverlays(standardSnapshot.positions.QB));
+    expect(withoutPerFormatOverlays(pprSnapshot.positions.K)).toEqual(withoutPerFormatOverlays(halfPprSnapshot.positions.K));
+    expect(withoutPerFormatOverlays(pprSnapshot.positions.K)).toEqual(withoutPerFormatOverlays(standardSnapshot.positions.K));
+    expect(withoutPerFormatOverlays(pprSnapshot.positions.DST)).toEqual(withoutPerFormatOverlays(halfPprSnapshot.positions.DST));
+    expect(withoutPerFormatOverlays(pprSnapshot.positions.DST)).toEqual(withoutPerFormatOverlays(standardSnapshot.positions.DST));
   });
 
   it("keeps sourced position ranges and freshness metadata", () => {

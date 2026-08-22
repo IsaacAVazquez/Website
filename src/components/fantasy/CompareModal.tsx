@@ -5,6 +5,8 @@ import { Check, X } from "lucide-react";
 import { useEffect, useRef } from "react";
 
 import {
+  FANTASY_REACH_TOOLTIP,
+  FANTASY_VALUE_TOOLTIP,
   formatAdp,
   formatOwnership,
   formatRankValue,
@@ -44,6 +46,10 @@ export function CompareModal({
   const reduceMotion = useReducedMotion();
   const panelRef = useRef<HTMLDivElement>(null);
   const restoreFocusRef = useRef<HTMLElement | null>(null);
+  const onCloseRef = useRef(onClose);
+  useEffect(() => {
+    onCloseRef.current = onClose;
+  }, [onClose]);
 
   // Capture focus on open, trap Tab within the panel, and restore on close.
   useEffect(() => {
@@ -55,7 +61,7 @@ export function CompareModal({
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
         event.preventDefault();
-        onClose();
+        onCloseRef.current();
         return;
       }
       if (event.key !== "Tab" || !panel) return;
@@ -89,11 +95,21 @@ export function CompareModal({
       document.removeEventListener("keydown", handleKeyDown);
       restoreFocusRef.current?.focus?.();
     };
-  }, [onClose]);
+    // Deliberately empty: CompareTray passes an inline arrow and subscribes to the
+    // compare store, so depending on onClose tore the trap down on every store
+    // write and threw focus back to the panel mid-interaction.
+  }, []);
 
   const scaleMin = Math.min(...players.map((p) => (Number.isFinite(p.minRank) ? (p.minRank as number) : Infinity)));
   const scaleMax = Math.max(...players.map((p) => (Number.isFinite(p.maxRank) ? (p.maxRank as number) : -Infinity)));
   const hasScale = Number.isFinite(scaleMin) && Number.isFinite(scaleMax);
+  const samePosition = players.every((player) => player.position === players[0]?.position);
+  const publishedRankValue = (player: Player): number | null => {
+    const value = Number.parseFloat(
+      publishedRank ? publishedRank(player) : formatRankValue(player.rankEcr ?? player.averageRank)
+    );
+    return Number.isFinite(value) ? value : null;
+  };
 
   const rows: Array<{ key: string; label: string; direction: Direction; render: (p: Player) => React.ReactNode }> = [
     {
@@ -105,7 +121,7 @@ export function CompareModal({
     {
       key: "posRank",
       label: "Position rank",
-      direction: "lower",
+      direction: samePosition ? "lower" : "none",
       render: (p) => `${p.position} ${Number.isFinite(p.positionRank) ? p.positionRank : "—"}`,
     },
     { key: "tier", label: "Tier", direction: "lower", render: (p) => (Number.isFinite(p.tier) ? p.tier : "—") },
@@ -121,6 +137,7 @@ export function CompareModal({
             {signal?.signal && (
               <span
                 className="rounded-full px-1.5 py-0.5 text-3xs font-semibold uppercase"
+                title={signal.signal === "value" ? FANTASY_VALUE_TOOLTIP : FANTASY_REACH_TOOLTIP}
                 style={{
                   background:
                     signal.signal === "value"
@@ -194,7 +211,12 @@ export function CompareModal({
           {/* A real table, not a grid of divs. The grid version handed a screen
               reader a flat run of label, value, value with no way to tell which
               column belonged to which player. */}
-          <div className="overflow-x-auto">
+          <div
+            className="overflow-x-auto"
+            role="region"
+            tabIndex={0}
+            aria-label="Player comparison table, scrolls horizontally"
+          >
             {/*
               table-fixed with an explicit colgroup, because the default auto
               layout sized each column to its own content. Three players came
@@ -280,7 +302,12 @@ export function CompareModal({
               </thead>
               <tbody>
                 {rows.map((row) => {
-                  const winner = bestIndex(players, row.key, row.direction);
+                  const winner = bestIndex(
+                    players,
+                    row.key,
+                    row.direction,
+                    row.key === "rank" ? publishedRankValue : undefined
+                  );
                   return (
                     <tr key={row.key}>
                       <th

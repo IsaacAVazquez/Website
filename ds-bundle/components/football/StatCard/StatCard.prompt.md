@@ -16,7 +16,7 @@ interface StatCardProps {
   metric: string;
   detail: string;
   icon: React.ReactNode;
-  variant?: "compact" | "full";
+  variant?: "full" | "compact";
 }
 ```
 

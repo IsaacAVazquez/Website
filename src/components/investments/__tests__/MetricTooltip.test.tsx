@@ -44,3 +44,38 @@ describe("MetricTooltip", () => {
     expect(container).toBeEmptyDOMElement();
   });
 });
+
+describe("MetricTooltip text trigger", () => {
+  it("reveals the definition on hover over the label itself, with no icon", async () => {
+    render(
+      <MetricTooltip term="vs ADP" definition="Market ADP minus the consensus rank.">
+        vs ADP
+      </MetricTooltip>
+    );
+
+    expect(screen.queryByRole("button")).not.toBeInTheDocument();
+    const trigger = screen.getByText("vs ADP");
+
+    fireEvent.mouseEnter(trigger);
+    expect(await screen.findByRole("tooltip")).toHaveTextContent(
+      "Market ADP minus the consensus rank."
+    );
+
+    fireEvent.mouseLeave(trigger);
+    await waitFor(() => {
+      expect(screen.queryByRole("tooltip")).not.toBeInTheDocument();
+    });
+  });
+
+  it("keeps the trigger out of the tab order so it stays valid inside an aria-hidden header", () => {
+    render(
+      <MetricTooltip term="Avg" definition="The mean of the contributing expert ranks.">
+        Avg
+      </MetricTooltip>
+    );
+
+    const trigger = screen.getByText("Avg");
+    expect(trigger.tagName).toBe("SPAN");
+    expect(trigger).not.toHaveAttribute("tabindex");
+  });
+});

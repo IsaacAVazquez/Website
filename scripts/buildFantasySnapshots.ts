@@ -65,7 +65,7 @@ export async function buildFantasySnapshots(
   // see the rename loop below for what the publish phase actually guarantees.
   const serializedSnapshots = SCORING_FORMATS.map((scoring) => ({
     scoring,
-    contents: `${JSON.stringify(buildSnapshot(scoring), null, 2)}\n`,
+    contents: `${JSON.stringify(buildSnapshot(scoring))}\n`,
   }));
   const revisionContents = renderRevisionModule(revision);
 

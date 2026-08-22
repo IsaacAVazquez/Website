@@ -1,5 +1,4 @@
 import {
-  FANTASY_BOARD_LEGEND,
   FANTASY_REACH_TOOLTIP,
   FANTASY_VALUE_TOOLTIP,
   ADP_SIGNAL_MIN_TIMES_DRAFTED,
@@ -8,10 +7,11 @@ import {
   getFantasyAdpFreshness,
   getSnapshotStaleness,
   getSnapshotStalenessLabel,
-  getTierPlateAccent,
   getTierRailIntensity,
   getTierRailTone,
   getValueVsAdp,
+  formatPickDelta,
+  ADP_COMPARABLE_MAX_RANK,
   resolveDraftPicksForModel,
 } from "@/lib/fantasyUtils";
 import type { Player } from "@/types";
@@ -48,6 +48,17 @@ describe("getSnapshotStaleness", () => {
     const stale = new Date(offseasonNow.getTime() - 30 * MS_PER_DAY).toISOString();
     expect(getSnapshotStaleness(aging, offseasonNow)).toBe("aging");
     expect(getSnapshotStaleness(stale, offseasonNow)).toBe("stale");
+  });
+
+  it("holds the daily thresholds through the season, not just through September", () => {
+    // The daily refresh lane runs July through December. The window used to
+    // stop September 30, so a board refreshing every day was judged against
+    // the 14-day offseason band for the whole regular season.
+    const inSeasonNow = new Date("2026-11-10T12:00:00.000Z");
+    const aging = new Date(inSeasonNow.getTime() - 3 * MS_PER_DAY).toISOString();
+    const stale = new Date(inSeasonNow.getTime() - 5 * MS_PER_DAY).toISOString();
+    expect(getSnapshotStaleness(aging, inSeasonNow)).toBe("aging");
+    expect(getSnapshotStaleness(stale, inSeasonNow)).toBe("stale");
   });
 
   it("treats a missing or invalid date as stale rather than fresh", () => {
@@ -112,6 +123,32 @@ describe("getFantasyAdpFreshness", () => {
         "2027-01-02T00:00:00.000Z",
         2026,
         new Date("2027-01-03T00:00:00.000Z")
+      )
+    ).toBe("current");
+  });
+
+  it("flags a frozen draft market as stale once the season is under way", () => {
+    // Mock-draft ADP stops moving when real drafts end. The age check used to
+    // run only from July through September, so from October a September board
+    // fell through to a bare year comparison and read as a live market.
+    expect(
+      getFantasyAdpFreshness(
+        "2026-09-09T00:00:00.000Z",
+        2026,
+        new Date("2026-11-10T00:00:00.000Z")
+      )
+    ).toBe("stale");
+  });
+
+  it("keeps a weekly spring refresh current rather than calling it stale", () => {
+    // February through June the cron runs weekly, so a six-day-old board is
+    // the pipeline working. The unconditional age check has to use the
+    // offseason band here or it would raise a false alarm every week.
+    expect(
+      getFantasyAdpFreshness(
+        "2026-04-01T00:00:00.000Z",
+        2026,
+        new Date("2026-04-07T00:00:00.000Z")
       )
     ).toBe("current");
   });
@@ -299,6 +336,32 @@ describe("getValueVsAdp", () => {
     expect(getValueVsAdp(playerWith({ rankEcr: 20 }))).toBeNull();
     expect(getValueVsAdp(playerWith({ adp: 30 }))).toBeNull();
   });
+
+  it("returns null past the rank where a 12-team draft board runs out of picks", () => {
+    // A rank-300 player cannot go later than the last pick, so the gap only
+    // measures the length of the draft.
+    expect(
+      getValueVsAdp(playerWith({ rankEcr: ADP_COMPARABLE_MAX_RANK + 1, adp: 180, adpTimesDrafted: 500 }))
+    ).toBeNull();
+    expect(
+      getValueVsAdp(playerWith({ rankEcr: ADP_COMPARABLE_MAX_RANK, adp: 180, adpTimesDrafted: 500 }))
+    ).toEqual({ delta: 30, signal: "value" });
+  });
+
+  it("keeps a sub-pick gap sub-pick instead of rounding it to a whole slot", () => {
+    // Gibbs on the 2026-08-16 half PPR board: ECR 1, ADP 1.5. Rounding read "+1".
+    const gibbs = playerWith({ rankEcr: 1, adp: 1.5, adpTimesDrafted: 358 });
+    expect(getValueVsAdp(gibbs)?.delta).toBeCloseTo(0.5);
+    expect(formatPickDelta(getValueVsAdp(gibbs)!.delta)).toBe("+0.5");
+  });
+
+  it("returns null for kickers and defenses, which consensus does not rank on the draft scale", () => {
+    for (const position of ["K", "DST"] as const) {
+      expect(
+        getValueVsAdp(playerWith({ position, rankEcr: 140, adp: 100, adpTimesDrafted: 500 }))
+      ).toBeNull();
+    }
+  });
 });
 
 describe("getTierRailIntensity", () => {
@@ -331,45 +394,26 @@ describe("getTierRailTone", () => {
   });
 });
 
-describe("getTierPlateAccent", () => {
-  it("gives the top plate the top weight and the bottom plate the bottom weight", () => {
-    expect(getTierPlateAccent(0, 4)).toBe("26%");
-    expect(getTierPlateAccent(3, 4)).toBe("8%");
-  });
-
-  it("returns a fixed accent when there is only one tier on screen", () => {
-    expect(getTierPlateAccent(0, 1)).toBe("24%");
-  });
-});
-
-describe("FANTASY_BOARD_LEGEND", () => {
-  it("covers every term a reader meets on the board", () => {
-    const terms = FANTASY_BOARD_LEGEND.map((entry) => entry.term);
-    expect(terms).toEqual(
-      expect.arrayContaining(["Published rank", "Expert range", "Avg", "ADP", "Value", "Reach", "Tiers", "Freshness"])
-    );
-  });
-
-  it("gives every entry a non-empty term and definition", () => {
-    for (const entry of FANTASY_BOARD_LEGEND) {
-      expect(entry.term.trim().length).toBeGreaterThan(0);
-      expect(entry.definition.trim().length).toBeGreaterThan(0);
-    }
-  });
-
-  it("keeps the Value and Reach entries in sync with the inline hover copy", () => {
-    const value = FANTASY_BOARD_LEGEND.find((entry) => entry.term === "Value");
-    const reach = FANTASY_BOARD_LEGEND.find((entry) => entry.term === "Reach");
-    expect(value).toMatchObject({ tone: "value", definition: FANTASY_VALUE_TOOLTIP });
-    expect(reach).toMatchObject({ tone: "reach", definition: FANTASY_REACH_TOOLTIP });
-  });
-
+describe("tooltip copy", () => {
   it("honors the writing voice (no em dashes, no colon-as-connector labels)", () => {
-    for (const entry of FANTASY_BOARD_LEGEND) {
-      expect(entry.definition).not.toContain("—");
-    }
+    expect(FANTASY_VALUE_TOOLTIP).not.toContain("—");
+    expect(FANTASY_REACH_TOOLTIP).not.toContain("—");
     // "Value:" / "Reach:" would be a colon connector; the copy uses "... means ...".
     expect(FANTASY_VALUE_TOOLTIP).not.toMatch(/^Value:/);
     expect(FANTASY_REACH_TOOLTIP).not.toMatch(/^Reach:/);
+  });
+});
+
+describe("formatPickDelta", () => {
+  it("signs the gap and drops a trailing zero", () => {
+    expect(formatPickDelta(12)).toBe("+12");
+    expect(formatPickDelta(-12)).toBe("\u221212");
+    expect(formatPickDelta(0.5)).toBe("+0.5");
+    expect(formatPickDelta(-0.5)).toBe("\u22120.5");
+  });
+
+  it("shows an unsigned zero rather than a signed rounding artifact", () => {
+    expect(formatPickDelta(0)).toBe("0");
+    expect(formatPickDelta(-0.04)).toBe("0");
   });
 });

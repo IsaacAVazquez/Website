@@ -1,5 +1,6 @@
 "use client";
 
+import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ArrowUpRight, Search, X } from "lucide-react";
@@ -20,6 +21,7 @@ import {
   type RankedBestBallPlayer,
 } from "@/lib/bestBall";
 import {
+  getNflRegularSeasonWeek,
   FANTASY_CHIP_CLASS,
   getPositionTone,
   getSnapshotStaleness,
@@ -455,6 +457,10 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
       : snapshot?.rankingSource.asOf) ?? snapshot?.generatedAt;
   const freshnessWarning = getFreshnessWarning(snapshot, routeState.contest);
 
+  // A best ball board is a preseason artifact by construction. Once the season is
+  // under way, say so instead of serving August ranks with no date on them.
+  const seasonalWeek = getNflRegularSeasonWeek(snapshot?.season ?? 0);
+
   return (
     <section
       className="home-page home-dash min-h-screen"
@@ -503,6 +509,15 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             </Link>
           </div>
         </header>
+
+        {seasonalWeek >= 1 ? (
+          <SeasonalScopeNote season={snapshot?.season ?? 0} week={seasonalWeek}>
+            Best ball is drafted before the season and scored through it, so this board describes a
+            market that closed at kickoff. Rankings and ADP here are the preseason readings your
+            drafts were made against, kept for reference rather than refreshed. Ranks that still
+            move are on the <Link href="/fantasy-football/weekly" className="underline decoration-[var(--home-signal)] underline-offset-4">weekly board</Link>.
+          </SeasonalScopeNote>
+        ) : null}
 
         <section className="home-card-static p-4 sm:p-5" aria-labelledby="contest-lens-heading">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">

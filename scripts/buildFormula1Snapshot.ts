@@ -20,6 +20,14 @@ function hasSnapshotContents(snapshot: Formula1Snapshot | null): boolean {
   return Boolean(snapshot && snapshot.meetings.length > 0);
 }
 
+function hasStandings(snapshot: Formula1Snapshot | null): boolean {
+  return Boolean(
+    snapshot &&
+      (snapshot.driverStandings.length > 0 ||
+        snapshot.constructorStandings.length > 0)
+  );
+}
+
 async function readExistingSnapshot(snapshotPath: string): Promise<Formula1Snapshot | null> {
   try {
     const rawSnapshot = await fs.readFile(snapshotPath, "utf8");
@@ -70,6 +78,28 @@ export async function buildFormula1Snapshot(
   // overwrite the good committed snapshot. Fall back to the existing data.
   if (!hasSnapshotContents(snapshot) && hasSnapshotContents(existingSnapshot)) {
     logger.log("Formula 1 snapshot build returned no meetings. Keeping the existing snapshot.");
+    return {
+      snapshotPath,
+      snapshot: existingSnapshot as Formula1Snapshot,
+    };
+  }
+
+  // Season rollover. From January 1 the build resolves the new season as soon as
+  // OpenF1 lists a single meeting for it, but no race has run, so
+  // standingsMeetingKey is null and both standings arrays come back empty. The
+  // meetings check above cannot see that, so the completed season's final tables
+  // would be overwritten by empty ones and the page would show empty standings
+  // for roughly two months. Keeping the whole previous snapshot rather than
+  // grafting the old standings onto the new calendar, because the snapshot
+  // carries `season` and a mixed artifact would report one season's number
+  // against another season's results. The new season takes over wholesale as
+  // soon as its first race produces standings.
+  if (!hasStandings(snapshot) && hasStandings(existingSnapshot)) {
+    logger.log(
+      `Formula 1 build for season ${snapshot.season} returned no standings. Keeping the existing season ${
+        (existingSnapshot as Formula1Snapshot).season
+      } snapshot until the new season produces results.`
+    );
     return {
       snapshotPath,
       snapshot: existingSnapshot as Formula1Snapshot,

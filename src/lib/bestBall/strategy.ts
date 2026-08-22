@@ -30,6 +30,20 @@ const SUPERFLEX_ROSTER_SEARCH_SPACE: typeof STANDARD_ROSTER_SEARCH_SPACE = Objec
   TE: { minimum: 2, maximum: 3 },
 });
 
+/**
+ * The fixed, contest-shaped roster bounds. The adaptive targets widen their own
+ * bounds to whatever is already drafted so the composition search always has a
+ * reachable answer, which makes them useless as a legality check. Callers that
+ * want to know whether a build is out of range need these instead.
+ */
+export function getRosterSearchSpace(
+  contestId: Parameters<typeof getContestPreset>[0]
+): typeof STANDARD_ROSTER_SEARCH_SPACE {
+  return getContestPreset(contestId).lineupVariant === "superflex"
+    ? SUPERFLEX_ROSTER_SEARCH_SPACE
+    : STANDARD_ROSTER_SEARCH_SPACE;
+}
+
 const EMPTY_COUNTS: BestBallRosterComposition = { QB: 0, RB: 0, WR: 0, TE: 0 };
 
 function isBestBallPosition(value: Player["position"]): value is BestBallPosition {
@@ -83,7 +97,7 @@ export function getAdaptiveRosterTargets(
 ): AdaptiveRosterTargets {
   const preset = getContestPreset(contestId);
   const isSuperflex = preset.lineupVariant === "superflex";
-  const searchSpace = isSuperflex ? SUPERFLEX_ROSTER_SEARCH_SPACE : STANDARD_ROSTER_SEARCH_SPACE;
+  const searchSpace = getRosterSearchSpace(contestId);
   const counts = countBestBallPositions(picks);
   const latestCompletedRound = picks.reduce((latest, pick) => Math.max(latest, pick.round), 0);
   const currentRound = Number.isInteger(upcomingRound) && Number(upcomingRound) > 0

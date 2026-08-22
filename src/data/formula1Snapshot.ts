@@ -13,8 +13,8 @@ export const formula1Snapshot: Formula1Snapshot = {
     "constructorStandings": "https://api.openf1.org/v1/championship_teams?session_key=11342"
   },
   "season": 2026,
-  "generatedAt": "2026-08-13T13:38:40.498Z",
-  "defaultMeetingKey": "1292",
+  "generatedAt": "2026-08-21T21:34:37.816Z",
+  "defaultMeetingKey": "1293",
   "standingsMeetingKey": "1291",
   "meetings": [
     {
@@ -5234,7 +5234,7 @@ export const formula1Snapshot: Formula1Snapshot = {
       "gmtOffset": "02:00:00",
       "startAt": "2026-08-21T10:30:00+00:00",
       "endAt": "2026-08-23T15:00:00+00:00",
-      "status": "upcoming",
+      "status": "live",
       "hasSprint": true,
       "raceSessionKey": "11353",
       "raceStartsAt": "2026-08-23T13:00:00+00:00",
@@ -6355,63 +6355,63 @@ export const formula1Snapshot: Formula1Snapshot = {
     "season": 2026,
     "totalRaces": 25,
     "completedRaces": 13,
-    "upcomingRaces": 12,
+    "upcomingRaces": 11,
     "sprintWeekends": 6
   },
   "nextMeeting": {
-    "key": "1292",
-    "name": "Dutch Grand Prix",
-    "officialName": "FORMULA 1 HEINEKEN DUTCH GRAND PRIX 2026",
-    "location": "Zandvoort",
-    "countryName": "Netherlands",
-    "countryCode": "NED",
-    "countryFlag": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/netherlands-flag.png",
-    "circuitKey": "55",
-    "circuitShortName": "Zandvoort",
+    "key": "1293",
+    "name": "Italian Grand Prix",
+    "officialName": "FORMULA 1 PIRELLI GRAN PREMIO D’ITALIA 2026",
+    "location": "Monza",
+    "countryName": "Italy",
+    "countryCode": "ITA",
+    "countryFlag": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/italy-flag.png",
+    "circuitKey": "39",
+    "circuitShortName": "Monza",
     "circuitType": "Permanent",
-    "circuitImage": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Netherlands%20carbon.png",
+    "circuitImage": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Italy%20carbon.png",
     "gmtOffset": "02:00:00",
-    "startAt": "2026-08-21T10:30:00+00:00",
-    "endAt": "2026-08-23T15:00:00+00:00",
+    "startAt": "2026-09-04T10:30:00+00:00",
+    "endAt": "2026-09-06T15:00:00+00:00",
     "status": "upcoming",
-    "hasSprint": true,
-    "raceSessionKey": "11353",
-    "raceStartsAt": "2026-08-23T13:00:00+00:00",
+    "hasSprint": false,
+    "raceSessionKey": "11361",
+    "raceStartsAt": "2026-09-06T13:00:00+00:00",
     "sessions": [
       {
-        "key": "11343",
+        "key": "11354",
         "name": "Practice 1",
         "type": "Practice",
-        "startAt": "2026-08-21T10:30:00+00:00",
-        "endAt": "2026-08-21T11:30:00+00:00"
+        "startAt": "2026-09-04T10:30:00+00:00",
+        "endAt": "2026-09-04T11:30:00+00:00"
       },
       {
-        "key": "11344",
-        "name": "Sprint Qualifying",
-        "type": "Qualifying",
-        "startAt": "2026-08-21T14:30:00+00:00",
-        "endAt": "2026-08-21T15:14:00+00:00"
+        "key": "11355",
+        "name": "Practice 2",
+        "type": "Practice",
+        "startAt": "2026-09-04T14:00:00+00:00",
+        "endAt": "2026-09-04T15:00:00+00:00"
       },
       {
-        "key": "11348",
-        "name": "Sprint",
-        "type": "Race",
-        "startAt": "2026-08-22T10:00:00+00:00",
-        "endAt": "2026-08-22T11:00:00+00:00"
+        "key": "11356",
+        "name": "Practice 3",
+        "type": "Practice",
+        "startAt": "2026-09-05T10:30:00+00:00",
+        "endAt": "2026-09-05T11:30:00+00:00"
       },
       {
-        "key": "11349",
+        "key": "11357",
         "name": "Qualifying",
         "type": "Qualifying",
-        "startAt": "2026-08-22T14:00:00+00:00",
-        "endAt": "2026-08-22T15:00:00+00:00"
+        "startAt": "2026-09-05T14:00:00+00:00",
+        "endAt": "2026-09-05T15:00:00+00:00"
       },
       {
-        "key": "11353",
+        "key": "11361",
         "name": "Race",
         "type": "Race",
-        "startAt": "2026-08-23T13:00:00+00:00",
-        "endAt": "2026-08-23T15:00:00+00:00"
+        "startAt": "2026-09-06T13:00:00+00:00",
+        "endAt": "2026-09-06T15:00:00+00:00"
       }
     ],
     "classification": [],

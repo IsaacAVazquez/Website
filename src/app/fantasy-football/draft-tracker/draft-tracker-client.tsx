@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState, useSyncExternalStore } from "react";
+import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import Link from "next/link";
 import { ChevronDown, Download, Redo2, RotateCcw, Timer, Undo2 } from "lucide-react";
 import { DraftAnalyticsPanel } from "./components/DraftAnalyticsPanel";
@@ -14,12 +15,13 @@ import { computeDraftAnalytics, reconcileTeamRosters } from "@/lib/draftAnalytic
 import { calculateRedraftDraftValues } from "@/lib/fantasyTeamValue";
 import {
   FANTASY_SCORING_LABELS,
-  getAllFantasySnapshotPlayers,
+  getCrossBoardFantasyPlayers,
   getFantasyWeekLabel,
   hasCompleteFantasyPlayerUniverse,
   scoringFormatToRouteScoring,
 } from "@/lib/fantasy";
 import {
+  getNflRegularSeasonWeek,
   formatRankValue,
   formatUpdatedAt,
   getFantasyAdpFreshness,
@@ -97,13 +99,28 @@ export function DraftTrackerClient() {
     scoring: scoringKey,
     all: true,
   });
-  const overallSliceMetadata = snapshot?.sliceMetadata?.overall ?? null;
-  const rankingsUnavailable = Boolean(overallSliceMetadata && !overallSliceMetadata.available);
-  const rankingsUpdatedAt = overallSliceMetadata?.updatedAt ?? metadata?.upstreamUpdatedAt;
-  const rankingsStale = Boolean(snapshot) && getSnapshotStaleness(rankingsUpdatedAt) === "stale";
-  const showSetup = draftState.picks.length === 0 && !draftState.isActive;
+  // useFantasySnapshot intentionally keeps its last value until the effect for
+  // a new scoring key runs. A restored room can therefore see the previous
+  // scoring board for one render. Nothing that can log or model a pick may use
+  // that transition value.
   const snapshotMatchesScoring = snapshot?.scoringFormat === draftState.settings.scoringFormat;
-  const hasUsableDraftBoard = snapshotMatchesScoring && (snapshot?.overall.length ?? 0) > 0;
+  const matchingSnapshot = snapshotMatchesScoring ? snapshot : null;
+  const matchingMetadata = snapshotMatchesScoring ? metadata : null;
+  const overallSliceMetadata = matchingSnapshot?.sliceMetadata?.overall ?? null;
+  const rankingsUnavailable = Boolean(overallSliceMetadata && !overallSliceMetadata.available);
+  const rankingsUpdatedAt = overallSliceMetadata?.updatedAt ?? matchingMetadata?.upstreamUpdatedAt;
+  const showSetup = draftState.picks.length === 0 && !draftState.isActive;
+  const hasUsableDraftBoard = Boolean(
+    !isLoading &&
+      !error &&
+      matchingSnapshot &&
+      overallSliceMetadata?.available === true &&
+      matchingSnapshot.overall.length > 0
+  );
+  const draftSnapshot = hasUsableDraftBoard ? matchingSnapshot : null;
+  const draftMetadata = draftSnapshot ? matchingMetadata : null;
+  const rankingsStale =
+    hasUsableDraftBoard && getSnapshotStaleness(rankingsUpdatedAt) === "stale";
   const setupRankingsStatus =
     isLoading || (Boolean(snapshot) && !snapshotMatchesScoring)
       ? "loading"
@@ -131,24 +148,27 @@ export function DraftTrackerClient() {
     () => new Set(draftState.picks.map((pick) => pick.player.id)),
     [draftState.picks]
   );
-  const adpFreshness = getFantasyAdpFreshness(metadata?.adpSource?.asOf, metadata?.season);
-  const adpAvailable = Boolean(metadata?.adpSource) && adpFreshness !== "stale";
+  const adpFreshness = getFantasyAdpFreshness(
+    draftMetadata?.adpSource?.asOf,
+    draftMetadata?.season
+  );
+  const adpAvailable = Boolean(draftMetadata?.adpSource) && adpFreshness !== "stale";
   const totalPicks = draftState.settings.totalTeams * draftState.settings.rounds;
   const completionPercentage = Math.round((draftState.picks.length / totalPicks) * 100);
 
   const draftBoardPlayers = useMemo(
     () =>
-      (snapshot?.overall ?? []).map((player) =>
+      (draftSnapshot?.overall ?? []).map((player) =>
         adpAvailable ? player : withoutPlayerAdp(player)
       ),
-    [adpAvailable, snapshot]
+    [adpAvailable, draftSnapshot]
   );
   const currentPlayerUniverse = useMemo(
     () =>
-      (snapshot ? getAllFantasySnapshotPlayers(snapshot) : []).map((player) =>
+      (draftSnapshot ? getCrossBoardFantasyPlayers(draftSnapshot) : []).map((player) =>
         adpAvailable ? player : withoutPlayerAdp(player)
       ),
-    [adpAvailable, snapshot]
+    [adpAvailable, draftSnapshot]
   );
   const playerLookup = useMemo(
     () =>
@@ -159,34 +179,46 @@ export function DraftTrackerClient() {
   );
   const modelPicks = useMemo(
     () =>
-      resolveDraftPicksForModel(
-        draftState.picks,
-        draftBoardPlayers,
-        adpAvailable,
-        currentPlayerUniverse
-      ),
-    [adpAvailable, currentPlayerUniverse, draftBoardPlayers, draftState.picks]
+      draftSnapshot
+        ? resolveDraftPicksForModel(
+            draftState.picks,
+            draftBoardPlayers,
+            adpAvailable,
+            currentPlayerUniverse
+          )
+        : [],
+    [adpAvailable, currentPlayerUniverse, draftBoardPlayers, draftSnapshot, draftState.picks]
   );
   const modelTeams = useMemo(
-    () => reconcileTeamRosters(draftState.teams, modelPicks),
-    [draftState.teams, modelPicks]
+    () =>
+      draftSnapshot
+        ? reconcileTeamRosters(draftState.teams, modelPicks)
+        : draftState.teams,
+    [draftSnapshot, draftState.teams, modelPicks]
   );
   const userTeam = useMemo(
     () => modelTeams.find((team) => team.teamNumber === draftState.settings.userTeam),
     [draftState.settings.userTeam, modelTeams]
   );
-  const recentPicks = useMemo(() => modelPicks.slice(-12).reverse(), [modelPicks]);
+  const picksForDisplay = draftSnapshot ? modelPicks : draftState.picks;
+  const recentPicks = useMemo(
+    () => picksForDisplay.slice(-12).reverse(),
+    [picksForDisplay]
+  );
   const analytics = useMemo(
     () =>
-      computeDraftAnalytics(modelPicks, modelTeams, {
-        lineup: draftState.settings.lineup,
-        rounds: draftState.settings.rounds,
-      }),
-    [draftState.settings.lineup, draftState.settings.rounds, modelPicks, modelTeams]
+      draftSnapshot
+        ? computeDraftAnalytics(modelPicks, modelTeams, {
+            lineup: draftState.settings.lineup,
+            rounds: draftState.settings.rounds,
+          })
+        : null,
+    [draftSnapshot, draftState.settings.lineup, draftState.settings.rounds, modelPicks, modelTeams]
   );
   const draftValueReports = useMemo(
-    () => calculateRedraftDraftValues(modelPicks, draftState.settings),
-    [draftState.settings, modelPicks]
+    () =>
+      draftSnapshot ? calculateRedraftDraftValues(modelPicks, draftState.settings) : [],
+    [draftSnapshot, draftState.settings, modelPicks]
   );
   const userDraftValue =
     draftValueReports.find((report) => report.teamNumber === draftState.settings.userTeam) ?? null;
@@ -199,7 +231,12 @@ export function DraftTrackerClient() {
   }, [draftBoardPlayers]);
 
   const timerEnabled =
-    (draftState.settings.timerSeconds ?? 0) > 0 && !showSetup && !isDraftComplete && !rankingsUnavailable;
+    (draftState.settings.timerSeconds ?? 0) > 0 &&
+    !showSetup &&
+    !isDraftComplete &&
+    hasUsableDraftBoard &&
+    !isLoading &&
+    !error;
   const timer = useDraftTimer({
     currentPick: draftState.currentPick,
     durationSeconds: draftState.settings.timerSeconds ?? 0,
@@ -207,14 +244,16 @@ export function DraftTrackerClient() {
     isActive: draftState.isActive,
   });
 
-  // The clock earns the signal accent from 15 seconds out. Waiting for expiry
-  // to change anything means the warning arrives after the pick is already late.
-  const clockUrgent = timerEnabled && !timer.isExpired && timer.secondsLeft <= 15;
+  // The clock is advisory and nothing fires at zero, so it stays quiet by
+  // default: muted while other teams pick, and it only earns the signal accent
+  // in the final 15 seconds of the user's own pick. Waiting for expiry to
+  // change anything means the warning arrives after the pick is already late.
+  const clockUrgent = timerEnabled && !timer.isExpired && timer.secondsLeft <= 15 && isUserPick;
 
   // Undo measured 9,549px down the page on a phone, which is eleven screens to
   // fix a mis-tap against a clock. It gets a fixed bar instead. Desktop keeps
   // the Actions card, where the sticky rail already puts it within reach.
-  const showMobileActionBar = !showSetup && !rankingsUnavailable && !isDraftComplete;
+  const showMobileActionBar = !showSetup;
 
   const userTeamName = userTeam?.teamName ?? `Team ${draftState.settings.userTeam}`;
   const bestAvailableCount = draftBoardPlayers.filter(
@@ -271,12 +310,17 @@ export function DraftTrackerClient() {
   ];
 
   function handleExport(format: "csv" | "recap-csv" | "json") {
-    exportDraftResults(format, { notes: notes.notes, picks: modelPicks });
+    exportDraftResults(format, { notes: notes.notes, picks: picksForDisplay });
     const label =
       format === "recap-csv" ? "team recap CSV" : format === "json" ? "JSON" : "picks CSV";
     setExportToast(`Exported ${label}.`);
     window.setTimeout(() => setExportToast(null), 3500);
   }
+
+  // Every board in this room is a draft board. Once the season starts it stops
+  // describing a live market, so say which season it covers rather than letting it
+  // look like a surface that quietly stopped working.
+  const seasonalWeek = getNflRegularSeasonWeek(draftMetadata?.season ?? 0);
 
   return (
     <section
@@ -294,6 +338,11 @@ export function DraftTrackerClient() {
         style={showMobileActionBar ? { paddingBottom: "calc(5.5rem + env(safe-area-inset-bottom))" } : undefined}
       >
         <Breadcrumbs customItems={DRAFT_TRACKER_BREADCRUMBS} className="pt-2" />
+        {seasonalWeek >= 1 ? (
+          <SeasonalScopeNote season={draftMetadata?.season ?? 0} week={seasonalWeek}>
+            This room tracks a draft against the preseason consensus board, and that board stops refreshing once the season is under way, so it is here for next summer rather than for this week. Ranks that still move are on the <Link href="/fantasy-football/weekly" className="underline decoration-[var(--home-signal)] underline-offset-4">weekly board</Link>.
+          </SeasonalScopeNote>
+        ) : null}
         {persistenceError ? (
           <div
             role="status"
@@ -357,9 +406,11 @@ export function DraftTrackerClient() {
 
               <div className="flex flex-wrap items-center gap-2 text-sm">
                 {[
-                  metadata ? `${metadata.season} ${getFantasyWeekLabel(metadata.week)}` : "Loading snapshot",
-                  `Source updated ${formatUpdatedAt(overallSliceMetadata?.updatedAt ?? metadata?.upstreamUpdatedAt)}`,
-                  `Built ${formatUpdatedAt(metadata?.generatedAt)}`,
+                  matchingMetadata
+                    ? `${matchingMetadata.season} ${getFantasyWeekLabel(matchingMetadata.week)}`
+                    : "Loading snapshot",
+                  `Source updated ${formatUpdatedAt(rankingsUpdatedAt)}`,
+                  `Built ${formatUpdatedAt(matchingMetadata?.generatedAt)}`,
                   `${FANTASY_SCORING_LABELS[scoringKey]} scoring`,
                 ].map((label) => (
                   <span
@@ -401,7 +452,7 @@ export function DraftTrackerClient() {
                     pills. */}
                 <p className="mt-1 text-2xs" style={{ color: "var(--home-ink-muted)" }}>
                   {FANTASY_SCORING_LABELS[scoringKey]} scoring · Source updated{" "}
-                  {formatUpdatedAt(overallSliceMetadata?.updatedAt ?? metadata?.upstreamUpdatedAt)}
+                  {formatUpdatedAt(rankingsUpdatedAt)}
                 </p>
               </div>
             </>
@@ -478,7 +529,14 @@ export function DraftTrackerClient() {
                         // Fragment Mono is weight 400 only, per the Honest Mono Rule.
                         fontFamily: "var(--font-mono)",
                         fontWeight: 400,
-                        color: clockUrgent ? "var(--home-signal)" : "var(--home-ink)",
+                        // Muted on other teams' picks: the number stays readable
+                        // but stops demanding attention for a clock that is not
+                        // the user's to beat.
+                        color: clockUrgent
+                          ? "var(--home-signal)"
+                          : isUserPick
+                            ? "var(--home-ink)"
+                            : "var(--home-ink-muted)",
                       }}
                     >
                       {timer.isExpired ? 0 : timer.secondsLeft}
@@ -555,9 +613,30 @@ export function DraftTrackerClient() {
                 rankingsError={setupRankingsError}
                 onRetryRankings={retry}
               />
+            ) : !draftSnapshot ? (
+              <div className="home-card p-6 sm:p-8 text-center" role="status">
+                <p className="text-xl font-semibold">
+                  {error ? "Draft board unavailable" : `Loading the ${FANTASY_SCORING_LABELS[scoringKey]} board`}
+                </p>
+                <p className="mt-3 text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
+                  {error
+                    ? "Your room and picks are still saved. Retry the published snapshot before logging another pick."
+                    : "Your room is ready. Picks, the timer, and Draft Outlook will resume when the matching snapshot finishes loading."}
+                </p>
+                {error ? (
+                  <button
+                    type="button"
+                    onClick={retry}
+                    className="mt-4 inline-flex min-h-touch items-center justify-center rounded-full border px-4 text-sm font-semibold"
+                    style={ACTION_STYLE}
+                  >
+                    Retry rankings
+                  </button>
+                ) : null}
+              </div>
             ) : (
               <>
-                {isDraftComplete && (
+                {isDraftComplete && analytics && (
                   <DraftAnalyticsPanel
                     analytics={analytics}
                     picks={modelPicks}
@@ -570,7 +649,7 @@ export function DraftTrackerClient() {
                 )}
                 <DraftBoard
                   players={draftBoardPlayers}
-                  snapshot={snapshot}
+                  snapshot={draftSnapshot}
                   draftedPlayerIds={draftedPlayerIds}
                   onDraftPlayer={draftPlayer}
                   onOpenDetail={setDetailPlayer}
@@ -612,7 +691,7 @@ export function DraftTrackerClient() {
                by the same amount so the rail still ends above the fold. */
             className="grid gap-5 lg:sticky lg:top-[10.5rem] lg:max-h-[calc(100vh-11.5rem)] lg:self-start lg:overflow-y-auto lg:overscroll-contain"
           >
-            {!showSetup && !rankingsUnavailable ? (
+            {!showSetup && !rankingsUnavailable && hasUsableDraftBoard ? (
               <article className="home-card hidden p-5 sm:p-6 lg:block">
                 <DraftValuePanel
                   report={userDraftValue}
@@ -622,7 +701,7 @@ export function DraftTrackerClient() {
                 />
               </article>
             ) : null}
-            {!showSetup && !isDraftComplete && !rankingsUnavailable && (
+            {!showSetup && !isDraftComplete && !rankingsUnavailable && hasUsableDraftBoard && analytics && (
               <DraftAnalyticsPanel
                 analytics={analytics}
                 picks={modelPicks}
@@ -888,12 +967,6 @@ export function DraftTrackerClient() {
           </aside>
         </div>
 
-        {isLoading && !snapshot && !showSetup && (
-          <article className="home-card px-4 py-3 text-sm" style={{ color: "var(--home-ink-muted)" }}>
-            Loading the published draft snapshot...
-          </article>
-        )}
-
         <div
           aria-live="polite"
           role="status"
@@ -924,7 +997,7 @@ export function DraftTrackerClient() {
       <div className="hidden sm:block">
         <CompareTray
           resolvePlayer={(id) => playerLookup.get(id)}
-          playerDataReady={!isLoading && hasCompleteFantasyPlayerUniverse(snapshot)}
+          playerDataReady={!isLoading && hasCompleteFantasyPlayerUniverse(draftSnapshot)}
           publishedRank={publishedDraftRank}
           adpAvailable={adpAvailable}
         />
@@ -932,6 +1005,7 @@ export function DraftTrackerClient() {
 
       {showMobileActionBar && (
         <div
+          data-testid="mobile-draft-actions"
           className="fixed inset-x-0 bottom-0 z-40 border-t px-4 pt-2.5 sm:hidden"
           style={{
             borderColor: "var(--home-rule)",

@@ -38,7 +38,7 @@ jobs:
           fetch-depth: 1
 
       - name: Set up Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: "20"
           cache: "npm"
@@ -238,8 +238,16 @@ jobs:
               });
             }
 
+      # Every substantive step is gated on the tournament window, but skipped
+      # steps do not set job status, so a dormant run still reports success().
+      # Without the window condition this step closed real refresh-failure
+      # incidents with a "Refresh succeeded" comment on a run that refreshed
+      # nothing: the last in-window run could fail on an ESPN outage and open an
+      # issue, then the next scheduled run 30 minutes later would fall outside
+      # the window and erase it. This is the only workflow with a dormancy gate,
+      # so the other close steps are correct as they stand.
       - name: Close resolved failure issues
-        if: success()
+        if: success() && steps.window.outputs.active == 'true'
         uses: actions/github-script@v9
         with:
           script: |

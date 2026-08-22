@@ -16,30 +16,35 @@ jest.mock("@/hooks/useBestBallSnapshot", () => ({
   useBestBallSnapshot: () => mockUseBestBallSnapshot(),
 }));
 
+// The client checks source freshness against the real clock (stale after four
+// days in draft season), so a pinned asOf rots the suite as time passes. Keep
+// every source inside the fresh window relative to the run.
+const FRESH_AS_OF = new Date(Date.now() - 60 * 60 * 1000).toISOString();
+
 const snapshot = {
   schemaVersion: 2,
   season: 2026,
-  generatedAt: "2026-08-09T08:00:00.000Z",
+  generatedAt: FRESH_AS_OF,
   rankingSource: {
     provider: "FantasyPros",
     url: "https://www.fantasypros.com/nfl/rankings/best-ball-overall.php",
-    asOf: "2026-08-08T22:20:10.000Z",
+    asOf: FRESH_AS_OF,
     expertCount: 6,
   },
   adpSource: {
     provider: "PPR Rankings",
     url: "https://pprrankings.com/rankings",
-    asOf: "2026-08-08T12:00:00.000Z",
+    asOf: FRESH_AS_OF,
   },
   superflexSource: {
     provider: "FantasyPros",
     url: "https://www.fantasypros.com/nfl/rankings/half-point-ppr-superflex-cheatsheets.php",
-    asOf: "2026-08-08T12:00:00.000Z",
+    asOf: FRESH_AS_OF,
   },
   scheduleSource: {
     provider: "ESPN",
     url: "https://www.espn.com/nfl/schedule/_/week/17/year/2026/seasontype/2",
-    asOf: "2026-08-08T12:00:00.000Z",
+    asOf: FRESH_AS_OF,
   },
   week17Opponents: { BUF: "MIA", ATL: "NO" },
   players: [

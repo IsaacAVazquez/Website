@@ -4,16 +4,22 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { GitCompareArrows, Star, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
+import { MetricTooltip } from "@/components/investments/MetricTooltip";
 import { useCompareTray } from "@/hooks/useCompareTray";
 import { usePlayerNotes } from "@/hooks/usePlayerNotes";
 import { usePlayerQueue } from "@/hooks/usePlayerQueue";
 import {
+  FANTASY_ADP_TOOLTIP,
   FANTASY_CHIP_CLASS,
+  FANTASY_EXPERT_SPREAD_TOOLTIP,
+  FANTASY_REACH_TOOLTIP,
+  FANTASY_VALUE_TOOLTIP,
   formatAdp,
   formatOwnership,
   getConsensusSpread,
   getPositionTone,
   getValueVsAdp,
+  formatPickDelta,
   hasReliableAdpSample,
 } from "@/lib/fantasyUtils";
 import type { Player } from "@/types";
@@ -292,8 +298,12 @@ export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onCl
                 }}
               >
                 <div>
-                  <p className="text-2xs font-semibold uppercase tracking-[0.12em]" style={{ color: "var(--home-ink-muted)" }}>
+                  <p
+                    className="inline-flex items-center text-2xs font-semibold uppercase tracking-[0.12em]"
+                    style={{ color: "var(--home-ink-muted)" }}
+                  >
                     Market ADP
+                    <MetricTooltip term="Market ADP" definition={FANTASY_ADP_TOOLTIP} />
                   </p>
                   <p className="text-base font-semibold tabular-nums">{formatAdp(player.adp)}</p>
                   {(Number.isFinite(player.adpTimesDrafted) ||
@@ -312,6 +322,9 @@ export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onCl
                 {valueSignal?.signal && (
                   <span
                     className={FANTASY_CHIP_CLASS}
+                    title={
+                      valueSignal.signal === "value" ? FANTASY_VALUE_TOOLTIP : FANTASY_REACH_TOOLTIP
+                    }
                     style={
                       valueSignal.signal === "value"
                         ? {
@@ -326,8 +339,8 @@ export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onCl
                           }
                     }
                   >
-                    {valueSignal.signal === "value" ? "Value" : "Reach"} {valueSignal.delta > 0 ? "+" : ""}
-                    {valueSignal.delta}
+                    {valueSignal.signal === "value" ? "Value" : "Reach"}{" "}
+                    {formatPickDelta(valueSignal.delta)}
                   </span>
                 )}
               </div>
@@ -336,7 +349,10 @@ export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onCl
             {/* Expert consensus spread */}
             <div>
               <div className="mb-2 flex items-center justify-between">
-                <p className="home-kicker mb-0">Expert spread</p>
+                <p className="home-kicker mb-0 inline-flex items-center">
+                  Expert spread
+                  <MetricTooltip term="Expert spread" definition={FANTASY_EXPERT_SPREAD_TOOLTIP} />
+                </p>
                 {spread && (
                   <span className="text-2xs font-semibold uppercase tracking-[0.12em]" style={{ color: "var(--home-ink-muted)" }}>
                     {spread.label}

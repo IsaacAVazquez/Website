@@ -1,8 +1,11 @@
 import {
   assertBestBallAdpCoverage,
+  evaluateBestBallAdpCoverage,
   assertBestBallRankingCoverage,
   assertBestBallSuperflexCoverage,
+  BEST_BALL_SUPERFLEX_CORE_QB_COUNT,
   BEST_BALL_SNAPSHOT_SCHEMA_VERSION,
+  getBestBallSuperflexCoreQuarterbackIds,
   normalizeBestBallSnapshot,
 } from "@/lib/bestBallSnapshot";
 
@@ -67,21 +70,61 @@ describe("assertBestBallAdpCoverage", () => {
   });
 });
 
+describe("evaluateBestBallAdpCoverage", () => {
+  it("reports a shallow ADP day rather than throwing, so the board can still publish", () => {
+    // The 2026-08-19 shape: the rankings board was healthy and only the deep ADP
+    // pull came back short. Returning a verdict lets the builder keep prior prices.
+    const verdict = evaluateBestBallAdpCoverage({
+      freshSourceReceived: true,
+      matches: 200,
+      previousMatches: 339,
+      previousTopPlayers: 140,
+      retainedTopPlayers: 100,
+    });
+
+    expect(verdict.ok).toBe(false);
+    expect(verdict.message).toMatch(/200 players versus 339 previously/);
+  });
+
+  it("passes a healthy pull", () => {
+    expect(
+      evaluateBestBallAdpCoverage({
+        freshSourceReceived: true,
+        matches: 340,
+        previousMatches: 339,
+        previousTopPlayers: 140,
+        retainedTopPlayers: 138,
+      }).ok
+    ).toBe(true);
+  });
+});
+
 describe("assertBestBallSuperflexCoverage", () => {
+  const healthyCoverage: Parameters<typeof assertBestBallSuperflexCoverage>[0] = {
+    freshSourceReceived: true,
+    totalPlayers: 377,
+    rankMatches: 377,
+    tierMatches: 377,
+    topBoardPlayers: 150,
+    topBoardRankMatches: 150,
+    topBoardTierMatches: 150,
+    quarterbackPlayers: 44,
+    quarterbackRankMatches: 44,
+    quarterbackTierMatches: 44,
+    coreQuarterbackPlayers: 42,
+    coreQuarterbackRankMatches: 42,
+    coreQuarterbackTierMatches: 42,
+    hasPreviousSource: true,
+  };
+
   it("rejects a thin fresh response even when a previous source exists", () => {
     expect(() =>
       assertBestBallSuperflexCoverage({
-        freshSourceReceived: true,
-        totalPlayers: 377,
+        ...healthyCoverage,
         rankMatches: 149,
         tierMatches: 149,
-        topBoardPlayers: 150,
         topBoardRankMatches: 149,
         topBoardTierMatches: 149,
-        quarterbackPlayers: 44,
-        quarterbackRankMatches: 44,
-        quarterbackTierMatches: 44,
-        hasPreviousSource: true,
       })
     ).toThrow(/Superflex ranks for 149 of 377 players/);
   });
@@ -89,17 +132,9 @@ describe("assertBestBallSuperflexCoverage", () => {
   it("rejects a fresh response that clears the absolute floor but misses most of the board", () => {
     expect(() =>
       assertBestBallSuperflexCoverage({
-        freshSourceReceived: true,
-        totalPlayers: 377,
+        ...healthyCoverage,
         rankMatches: 300,
         tierMatches: 300,
-        topBoardPlayers: 150,
-        topBoardRankMatches: 150,
-        topBoardTierMatches: 150,
-        quarterbackPlayers: 44,
-        quarterbackRankMatches: 44,
-        quarterbackTierMatches: 44,
-        hasPreviousSource: true,
       })
     ).toThrow(/300 of 377 players/);
   });
@@ -107,70 +142,119 @@ describe("assertBestBallSuperflexCoverage", () => {
   it("rejects a fresh response that misses too much of the top board", () => {
     expect(() =>
       assertBestBallSuperflexCoverage({
-        freshSourceReceived: true,
-        totalPlayers: 377,
-        rankMatches: 377,
-        tierMatches: 377,
-        topBoardPlayers: 150,
+        ...healthyCoverage,
         topBoardRankMatches: 142,
         topBoardTierMatches: 142,
-        quarterbackPlayers: 44,
-        quarterbackRankMatches: 44,
-        quarterbackTierMatches: 44,
-        hasPreviousSource: true,
       })
     ).toThrow(/top 150 matched 142 ranks/);
   });
 
-  it("rejects a fresh response that misses any quarterback", () => {
+  it("accepts the current public boards when only four fringe quarterbacks are absent", () => {
     expect(() =>
       assertBestBallSuperflexCoverage({
-        freshSourceReceived: true,
-        totalPlayers: 377,
-        rankMatches: 376,
-        tierMatches: 376,
+        ...healthyCoverage,
+        totalPlayers: 402,
+        rankMatches: 398,
+        tierMatches: 398,
         topBoardPlayers: 150,
         topBoardRankMatches: 150,
         topBoardTierMatches: 150,
-        quarterbackPlayers: 44,
-        quarterbackRankMatches: 43,
-        quarterbackTierMatches: 43,
-        hasPreviousSource: true,
+        quarterbackPlayers: 50,
+        quarterbackRankMatches: 46,
+        quarterbackTierMatches: 46,
       })
-    ).toThrow(/Quarterbacks matched 43 ranks/);
+    ).not.toThrow();
+  });
+
+  it("rejects a fresh response that loses more than ten percent of all quarterbacks", () => {
+    expect(() =>
+      assertBestBallSuperflexCoverage({
+        ...healthyCoverage,
+        totalPlayers: 402,
+        rankMatches: 398,
+        tierMatches: 398,
+        quarterbackPlayers: 50,
+        quarterbackRankMatches: 44,
+        quarterbackTierMatches: 44,
+      })
+    ).toThrow(/Quarterbacks matched 44 ranks/);
+  });
+
+  it("rejects a fresh response that misses a core quarterback", () => {
+    expect(() =>
+      assertBestBallSuperflexCoverage({
+        ...healthyCoverage,
+        coreQuarterbackRankMatches: 41,
+        coreQuarterbackTierMatches: 41,
+      })
+    ).toThrow(/core contains 42 of 42 required players and matched 41 ranks/);
+  });
+
+  it("rejects a standard board that does not contain the 42-player quarterback core", () => {
+    expect(() =>
+      assertBestBallSuperflexCoverage({
+        ...healthyCoverage,
+        quarterbackPlayers: 41,
+        quarterbackRankMatches: 41,
+        quarterbackTierMatches: 41,
+        coreQuarterbackPlayers: 41,
+        coreQuarterbackRankMatches: 41,
+        coreQuarterbackTierMatches: 41,
+      })
+    ).toThrow(/core contains 41 of 42 required players/);
   });
 
   it("allows a failed refresh only when the current season has a prior source", () => {
     expect(() =>
       assertBestBallSuperflexCoverage({
+        ...healthyCoverage,
         freshSourceReceived: false,
-        totalPlayers: 377,
         rankMatches: 0,
         tierMatches: 0,
-        topBoardPlayers: 150,
         topBoardRankMatches: 0,
         topBoardTierMatches: 0,
-        quarterbackPlayers: 44,
         quarterbackRankMatches: 0,
         quarterbackTierMatches: 0,
-        hasPreviousSource: true,
+        coreQuarterbackRankMatches: 0,
+        coreQuarterbackTierMatches: 0,
       })
     ).not.toThrow();
     expect(() =>
       assertBestBallSuperflexCoverage({
+        ...healthyCoverage,
         freshSourceReceived: false,
-        totalPlayers: 377,
         rankMatches: 0,
         tierMatches: 0,
-        topBoardPlayers: 150,
         topBoardRankMatches: 0,
         topBoardTierMatches: 0,
-        quarterbackPlayers: 44,
         quarterbackRankMatches: 0,
         quarterbackTierMatches: 0,
+        coreQuarterbackRankMatches: 0,
+        coreQuarterbackTierMatches: 0,
         hasPreviousSource: false,
       })
     ).toThrow(/no usable Superflex/);
+  });
+
+  it("selects the first 42 quarterback position ranks as the exact core", () => {
+    const quarterbacks = Array.from({ length: 45 }, (_, index) => {
+      const positionRank = 45 - index;
+      return {
+        id: `qb-${positionRank}`,
+        name: `Quarterback ${positionRank}`,
+        team: "FA",
+        position: "QB",
+        positionRank,
+        averageRank: index + 1,
+      } as const;
+    });
+
+    const coreIds = getBestBallSuperflexCoreQuarterbackIds(quarterbacks);
+
+    expect(coreIds.size).toBe(BEST_BALL_SUPERFLEX_CORE_QB_COUNT);
+    expect(coreIds.has("qb-1")).toBe(true);
+    expect(coreIds.has("qb-42")).toBe(true);
+    expect(coreIds.has("qb-43")).toBe(false);
   });
 });
 

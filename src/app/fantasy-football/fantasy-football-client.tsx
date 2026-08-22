@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  Fragment,
   startTransition,
   useEffect,
   useMemo,
@@ -13,54 +12,46 @@ import {
 } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight, ChevronDown, Search, Shield, Star, X } from "lucide-react";
+import { Search, Star, X } from "lucide-react";
+import { useDebounce } from "@/hooks/useDebounce";
 import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
 import { usePlayerQueue } from "@/hooks/usePlayerQueue";
 import { usePlayerNotes } from "@/hooks/usePlayerNotes";
-import { useCompareTray } from "@/hooks/useCompareTray";
 import {
   FANTASY_POSITION_LABELS,
   FANTASY_SCORING_LABELS,
   FantasyRoutePosition,
   FantasyRouteScoring,
-  getAllFantasySnapshotPlayers,
   getFantasyPlayerSearchText,
-  getFantasyWeekLabel,
-  hasCompleteFantasyPlayerUniverse,
 } from "@/lib/fantasy";
+import { MetricTooltip } from "@/components/investments/MetricTooltip";
 import {
+  FANTASY_ADP_TOOLTIP,
   FANTASY_AVG_RANK_TOOLTIP,
-  FANTASY_CHIP_CLASS,
+  FANTASY_EXPERT_SPREAD_TOOLTIP,
+  FANTASY_POINTS_PER_GAME_TOOLTIP,
   FANTASY_REACH_TOOLTIP,
   FANTASY_VALUE_TOOLTIP,
-  formatUpdatedAt,
+  FANTASY_VS_ADP_TOOLTIP,
+  FANTASY_PLAYER_COLUMN_TOOLTIP,
+  formatAdp,
   formatRankValue,
+  getConsensusSpread,
   getFantasyAdpFreshness,
   getPositionTone,
   getSnapshotStaleness,
   getSnapshotStalenessLabel,
-  getSourceKindLabel,
-  getTierGap,
+  getTierRailIntensity,
   getValueVsAdp,
+  formatPickDelta,
+  hasReliableAdpSample,
   withTierBreaks,
   type FantasySnapshotStaleness,
 } from "@/lib/fantasyUtils";
-import {
-  CompareTray,
-  FantasyBoardLegend,
-  PlayerDetailDrawer,
-  PositionFilterBar,
-  RankingsListRow,
-  TierBreakdown,
-  TierBreakSeparator,
-  type PositionFilterOption,
-} from "@/components/fantasy";
-import { MetricTooltip } from "@/components/investments/MetricTooltip";
+import { PositionFilterBar, type PositionFilterOption } from "@/components/fantasy";
 import { Player } from "@/types";
 import { FANTASY_FOOTBALL_FAQ } from "./fantasy-faq";
 import { buildFantasyHref, FantasySearchState, normalizeFantasyState } from "./fantasy-state";
-import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
 
 const POSITION_OPTIONS: FantasyRoutePosition[] = ["overall", "qb", "rb", "wr", "te", "flex", "k", "dst"];
 const SCORING_OPTIONS: { key: FantasyRouteScoring; label: string }[] = [
@@ -69,22 +60,30 @@ const SCORING_OPTIONS: { key: FantasyRouteScoring; label: string }[] = [
   { key: "standard", label: "Standard" },
 ];
 
-/** How many list rows render before the "Load more" sentinel kicks in. */
-const RANKINGS_PAGE_SIZE = 60;
+/** Keep each mounted rankings window below the large-list threshold. */
+const RANKINGS_PAGE_SIZE = 40;
+
+/** The template's 1080px column; the page manages its own shell width. */
+const SHELL_CLASS = "mx-auto w-full max-w-[1080px] px-[clamp(1rem,4vw,2.5rem)]";
+
+const MONO_LABEL_CLASS = "font-mono text-3xs uppercase tracking-[0.12em]";
+
+/** Square-cornered mono chip from the template header (distinct from the shared pill chip). */
+const HEADER_CHIP_CLASS =
+  "inline-flex items-center whitespace-nowrap rounded-[2px] border px-2 py-1 font-mono text-3xs uppercase tracking-[0.08em]";
+
+/** The other fantasy surfaces; the tiers routes only redirect back here, so they are not listed. */
+const FANTASY_TOOLS = [
+  { href: "/fantasy-football/draft-tracker", label: "Draft tracker" },
+  { href: "/fantasy-football/mock-draft", label: "Mock draft" },
+  { href: "/fantasy-football/best-ball", label: "Best ball" },
+  { href: "/fantasy-football/trade-calculator", label: "Trade calculator" },
+  { href: "/fantasy-football/weekly", label: "Weekly board" },
+];
 
 const subscribeToHydration = () => () => undefined;
 const getHydratedSnapshot = () => true;
 const getServerHydratedSnapshot = () => false;
-
-const fadeIn = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.35 } },
-};
-
-const noMotion = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0 } },
-};
 
 const STALENESS_TONE: Record<FantasySnapshotStaleness, CSSProperties> = {
   fresh: {
@@ -104,22 +103,17 @@ const STALENESS_TONE: Record<FantasySnapshotStaleness, CSSProperties> = {
   },
 };
 
-/**
- * Small chip that buckets a date into fresh/aging/stale against the weekly
- * refresh cadence. Annotates the "Source updated" and "Snapshot built" dates so
- * a missed refresh reads as an explicit warning instead of a stale-looking date.
- */
-function FreshnessChip({ date }: { date: string | null | undefined }) {
-  const staleness = getSnapshotStaleness(date);
-  return (
-    <span className={FANTASY_CHIP_CLASS} style={STALENESS_TONE[staleness]}>
-      {getSnapshotStalenessLabel(staleness)}
-    </span>
-  );
-}
-
-interface FantasyFootballClientProps {
-  initialState: FantasySearchState;
+/** Compact "Aug 16" / "Dec 3, 2025" stamp for the header chips and footer line. */
+function formatStamp(timestamp: string | null | undefined): string | null {
+  if (!timestamp) return null;
+  const date = new Date(timestamp);
+  if (Number.isNaN(date.getTime())) return null;
+  const sameYear = date.getUTCFullYear() === new Date().getUTCFullYear();
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "numeric",
+    ...(sameYear ? {} : { year: "numeric" }),
+  }).format(date);
 }
 
 function getPublishedBoardRank(player: Player, position: FantasyRoutePosition): string {
@@ -136,177 +130,110 @@ function getPublishedBoardRank(player: Player, position: FantasyRoutePosition): 
   return formatRankValue(rankValue);
 }
 
-// The ADP value/reach signal as a compact chip. Lives next to "Avg" in the
-// row descriptor (see getPlayerDescriptor) so the two ADP-relative reads sit
-// together instead of being split across the row.
-function ValueReachBadge({ player }: { player: Player }) {
+function getConsensusAvg(player: Player): number | null {
+  if (typeof player.rankAverage === "number" && Number.isFinite(player.rankAverage)) {
+    return player.rankAverage;
+  }
+  if (typeof player.averageRank === "number" && Number.isFinite(player.averageRank)) {
+    return player.averageRank;
+  }
+  return null;
+}
+
+function formatAvg(player: Player): string {
+  const avg = getConsensusAvg(player);
+  return avg === null ? "—" : avg.toFixed(1);
+}
+
+function formatExpertRange(player: Player): string {
+  return Number.isFinite(player.minRank) && Number.isFinite(player.maxRank)
+    ? `${player.minRank}–${player.maxRank}`
+    : "—";
+}
+
+/**
+ * Signed pick delta ("+12" / "−4") with the tone the value/reach gate assigns.
+ * `judged` is false when the ADP sample is too thin for the gate to evaluate
+ * the gap at all — a different situation from a gap inside the noise band,
+ * and one no surface may describe as market agreement.
+ */
+function describeVsAdp(player: Player): { text: string; color: string; judged: boolean } | null {
+  const value = getValueVsAdp(player);
+  if (!value) return null;
+  const text = formatPickDelta(value.delta);
+  const color =
+    value.signal === "value"
+      ? "var(--home-positive)"
+      : value.signal === "reach"
+        ? "var(--home-negative)"
+        : "var(--home-ink-muted)";
+  return { text, color, judged: hasReliableAdpSample(player) };
+}
+
+/**
+ * The named Value/Reach label. The "vs ADP" column carries the same gap as a
+ * signed number, but the word is what a drafter scans for, so the chip renders
+ * beside the player name whenever the gate actually fires. Callers gate on the
+ * overall or flex board, because `rankEcr` is a position rank anywhere else and
+ * the comparison with an overall ADP would be meaningless.
+ */
+function ValueReachChip({ player }: { player: Player }) {
   const value = getValueVsAdp(player);
   if (!value?.signal) return null;
 
   const isValue = value.signal === "value";
   return (
-    <span className="inline-flex items-center">
-      <span
-        className={FANTASY_CHIP_CLASS}
-        style={
-          // The label is tinted from the chip's own hue rather than left as muted gray.
-          // Muted ink on the tinted background measured 4.35:1 at this size, just under AA.
-          isValue
-            ? {
-                borderColor: "color-mix(in srgb, var(--home-positive) 28%, var(--home-rule))",
-                background: "color-mix(in srgb, var(--home-positive) 10%, var(--home-paper))",
-                color: "color-mix(in srgb, var(--home-positive) 45%, var(--home-ink))",
-              }
-            : {
-                borderColor: "color-mix(in srgb, var(--home-warning) 30%, var(--home-rule))",
-                background: "color-mix(in srgb, var(--home-warning) 12%, var(--home-paper))",
-                color: "color-mix(in srgb, var(--home-warning) 40%, var(--home-ink))",
-              }
-        }
-      >
-        {isValue ? "Value" : "Reach"} {value.delta > 0 ? `+${value.delta}` : value.delta}
-      </span>
-      <MetricTooltip
-        term={isValue ? "Value" : "Reach"}
-        definition={isValue ? FANTASY_VALUE_TOOLTIP : FANTASY_REACH_TOOLTIP}
-      />
+    <span
+      className="inline-flex shrink-0 items-center rounded-[2px] border px-1.5 py-0.5 font-mono text-3xs uppercase tracking-[0.06em]"
+      title={isValue ? FANTASY_VALUE_TOOLTIP : FANTASY_REACH_TOOLTIP}
+      style={
+        isValue
+          ? {
+              borderColor: "color-mix(in srgb, var(--home-positive) 32%, var(--home-rule))",
+              background: "color-mix(in srgb, var(--home-positive) 12%, var(--home-paper))",
+              color: "var(--home-ink)",
+            }
+          : {
+              borderColor: "color-mix(in srgb, var(--home-warning) 34%, var(--home-rule))",
+              background: "color-mix(in srgb, var(--home-warning) 14%, var(--home-paper))",
+              color: "var(--home-ink)",
+            }
+      }
+    >
+      {isValue ? "Value" : "Reach"} {formatPickDelta(value.delta)}
     </span>
   );
 }
 
-function getPlayerDescriptor(
-  player: Player,
-  position: FantasyRoutePosition,
-  adpAvailable: boolean
-): ReactNode {
-  const parts: ReactNode[] = [player.team];
-  const isOverallView = position === "overall" || position === "flex";
-
-  // Overall/flex boards lead with the player's position rank (e.g. "RB3");
-  // position boards skip it because the column already implies the position.
-  if (isOverallView) {
-    parts.push(player.positionRank ? `${player.position}${player.positionRank}` : player.position);
-  }
-
-  if (Number.isFinite(player.rankAverage)) {
-    parts.push(
-      <span className="inline-flex items-center gap-1.5">
-        <span className="inline-flex items-center">
-          Avg {Number(player.rankAverage).toFixed(2)}
-          <MetricTooltip term="Average rank" definition={FANTASY_AVG_RANK_TOOLTIP} />
-        </span>
-        {/* Value/Reach compares consensus rank to overall ADP, so it's only valid
-            where rankEcr is on the overall scale — the overall and flex boards. On
-            a position board rankEcr is the position rank (QB9), not comparable to
-            an overall ADP, so suppress the chip there. */}
-        {adpAvailable && isOverallView && <ValueReachBadge player={player} />}
-      </span>
-    );
-  }
-
-  // Render the parts inline, separated by bullets, so the "Avg" segment can
-  // carry its own explanatory tooltip instead of being flattened into a string.
-  return parts.filter(Boolean).map((part, index) => (
-    <Fragment key={index}>
-      {index > 0 ? " • " : ""}
-      {part}
-    </Fragment>
-  ));
-}
-
-type FantasyBoardDensity = "comfortable" | "compact";
-
-const FANTASY_DENSITY_STORAGE_KEY = "fantasy-board-density";
-
-// The list density is a client-only preference backed by localStorage. We read
-// it through useSyncExternalStore (matching useBudgetPlanner / useWineCellar) so
-// the server and first client paint agree on the default, then the real value
-// resolves on the client without a hydration mismatch.
-const densityListeners = new Set<() => void>();
-let inMemoryDensity: FantasyBoardDensity = "comfortable";
-
-function subscribeDensityChange(listener: () => void) {
-  densityListeners.add(listener);
-
-  function handleStorage(event: StorageEvent) {
-    if (event.key === null || event.key === FANTASY_DENSITY_STORAGE_KEY) {
-      listener();
-    }
-  }
-
-  if (typeof window !== "undefined") {
-    window.addEventListener("storage", handleStorage);
-  }
-
-  return () => {
-    densityListeners.delete(listener);
-    if (typeof window !== "undefined") {
-      window.removeEventListener("storage", handleStorage);
-    }
-  };
-}
-
-function getDensitySnapshot(): FantasyBoardDensity {
-  if (typeof window === "undefined") return "comfortable";
-  try {
-    inMemoryDensity =
-      window.localStorage.getItem(FANTASY_DENSITY_STORAGE_KEY) === "compact"
-        ? "compact"
-        : "comfortable";
-  } catch {
-    // Storage can be blocked by browser privacy settings. Keep this tab usable
-    // with an in-memory preference instead of failing the whole rankings route.
-  }
-  return inMemoryDensity;
-}
-
-function persistDensity(next: FantasyBoardDensity) {
-  inMemoryDensity = next;
-  try {
-    window.localStorage.setItem(FANTASY_DENSITY_STORAGE_KEY, next);
-  } catch {
-    // Persistence is best-effort (private mode, blocked storage); the listener
-    // notification below still updates this tab's UI even if the write fails.
-  }
-  densityListeners.forEach((listener) => listener());
-}
-
-/** A compact segmented control used for the scoring format and view toggles. */
-function SegmentedToggle<T extends string>({
-  ariaLabel,
-  options,
+/** The template's scoring switch: a fused button box rather than separate pills. */
+function ScoringToggle({
   value,
   onChange,
-  disabled = false,
 }: {
-  ariaLabel: string;
-  options: { value: T; label: string }[];
-  value: T;
-  onChange: (value: T) => void;
-  disabled?: boolean;
+  value: FantasyRouteScoring;
+  onChange: (value: FantasyRouteScoring) => void;
 }) {
   return (
     <div
-      role="radiogroup"
-      aria-label={ariaLabel}
-      className="flex rounded-full border p-1 text-sm font-semibold"
-      style={{
-        borderColor: "var(--home-rule)",
-        background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
-      }}
+      role="group"
+      aria-label="Scoring format"
+      className="inline-flex overflow-hidden rounded-[4px] border"
+      style={{ borderColor: "var(--home-rule)" }}
     >
-      {options.map((option) => {
-        const active = option.value === value;
+      {SCORING_OPTIONS.map((option) => {
+        const active = value === option.key;
         return (
           <button
-            key={option.value}
+            key={option.key}
             type="button"
-            role="radio"
-            aria-checked={active}
-            disabled={disabled}
-            onClick={() => onChange(option.value)}
-            className="inline-flex min-h-[44px] items-center rounded-full px-3.5 py-1.5 text-sm transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60"
-            style={active ? { background: "var(--home-ink)", color: "var(--home-paper)" } : { color: "var(--home-ink-muted)" }}
+            aria-pressed={active}
+            onClick={() => onChange(option.key)}
+            className="min-h-touch cursor-pointer px-3 font-mono text-3xs uppercase tracking-[0.08em] transition-colors duration-150"
+            style={
+              active
+                ? { background: "var(--home-ink)", color: "var(--home-paper)" }
+                : { background: "transparent", color: "var(--home-ink)" }
+            }
           >
             {option.label}
           </button>
@@ -316,17 +243,559 @@ function SegmentedToggle<T extends string>({
   );
 }
 
+/**
+ * The per-row expert spread: the low–high expert range as a bar positioned on
+ * the board-wide rank scale, with a tick at the consensus average. Bar heat
+ * follows the shared tier-rail intensity so depth on the board reads at a glance.
+ */
+function ExpertSpreadBar({ player, scale }: { player: Player; scale: number }) {
+  const lo = player.minRank;
+  const hi = player.maxRank;
+  if (!Number.isFinite(lo) || !Number.isFinite(hi) || scale <= 1) {
+    return <span className="relative h-3.5 w-[120px] shrink-0" aria-hidden="true" />;
+  }
+
+  const toPercent = (rank: number) => Math.min(100, Math.max(0, ((rank - 1) / scale) * 100));
+  const left = toPercent(lo as number);
+  const width = Math.max(1.5, (((hi as number) - (lo as number)) / scale) * 100);
+  const avg = getConsensusAvg(player);
+  const intensity = getTierRailIntensity(player.tier);
+
+  return (
+    <span
+      className="relative h-3.5 w-[120px] shrink-0"
+      title="Expert low–high range; tick = consensus avg"
+      aria-hidden="true"
+    >
+      <span
+        className="absolute inset-x-0 top-[5px] h-1 rounded-[2px]"
+        style={{ background: "color-mix(in srgb, var(--home-rule) 70%, transparent)" }}
+      />
+      <span
+        className="absolute top-[5px] h-1 rounded-[2px]"
+        style={{
+          left: `${left}%`,
+          width: `${Math.min(width, 100 - left)}%`,
+          background: `color-mix(in srgb, var(--home-signal) ${intensity}%, var(--home-stone))`,
+        }}
+      />
+      {avg !== null && (
+        <span
+          className="absolute top-[3px] h-2 w-0.5 rounded-[1px]"
+          style={{ left: `${toPercent(avg)}%`, background: "var(--home-ink)" }}
+        />
+      )}
+    </span>
+  );
+}
+
+function DrawerStat({
+  label,
+  value,
+  valueColor,
+  title,
+}: {
+  label: string;
+  value: string;
+  valueColor?: string;
+  title?: string;
+}) {
+  return (
+    <div
+      className="rounded-[4px] border px-2.5 py-2"
+      title={title}
+      style={{ borderColor: "var(--home-rule)", background: "var(--home-paper-raised)" }}
+    >
+      <p className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+        {label}
+      </p>
+      <p className="mt-1 font-mono text-base tabular-nums" style={{ color: valueColor ?? "var(--home-ink)" }}>
+        {value}
+      </p>
+    </div>
+  );
+}
+
+interface DraftPlayerDrawerProps {
+  player: Player;
+  publishedRank: string;
+  boardTierCount: number | null;
+  /** Whether the snapshot carries a fresh, attributed ADP source. */
+  adpAvailable: boolean;
+  /** Whether this board ranks on the overall scale, so ADP deltas mean something. */
+  vsAdpMeaningful: boolean;
+  /** Up to five board neighbors (the player plus two either side). */
+  neighbors: Player[];
+  activePosition: FantasyRoutePosition;
+  /** Scoring label for the board, so the per-game panel names its own basis. */
+  scoringLabel: string;
+  onSelectNeighbor: (id: string) => void;
+  onClose: () => void;
+}
+
+/**
+ * The template's player detail: a right-hand panel with the consensus numbers,
+ * a market verdict, the expert spread meter, the board neighborhood, and the
+ * browser-local queue and note controls. The draft tracker and best ball keep
+ * the shared PlayerDetailDrawer; this panel is the rankings board's own read.
+ */
+function DraftPlayerDrawer({
+  player,
+  publishedRank,
+  boardTierCount,
+  adpAvailable,
+  vsAdpMeaningful,
+  neighbors,
+  activePosition,
+  scoringLabel,
+  onSelectNeighbor,
+  onClose,
+}: DraftPlayerDrawerProps) {
+  const panelRef = useRef<HTMLElement>(null);
+  const restoreFocusRef = useRef<HTMLElement | null>(null);
+  const onCloseRef = useRef(onClose);
+  const queue = usePlayerQueue();
+  const notes = usePlayerNotes();
+  const [draftNote, setDraftNote] = useState(() => notes.getNote(player.id));
+
+  useEffect(() => {
+    onCloseRef.current = onClose;
+  }, [onClose]);
+
+  // Reset the note draft whenever a different player opens the drawer.
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- seed local draft from the persisted note on player change
+    setDraftNote(notes.getNote(player.id));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [player.id]);
+
+  // Capture focus on open, trap Tab within the panel, and restore on close.
+  useEffect(() => {
+    restoreFocusRef.current = document.activeElement as HTMLElement | null;
+    const panel = panelRef.current;
+    panel?.focus();
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        onCloseRef.current();
+        return;
+      }
+      if (event.key !== "Tab" || !panel) return;
+
+      const focusable = panel.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), textarea, input, [tabindex]:not([tabindex="-1"])',
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const activeElement = document.activeElement;
+      const focusIsInside = Boolean(activeElement && panel.contains(activeElement));
+
+      if (event.shiftKey && (activeElement === panel || activeElement === first || !focusIsInside)) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && (activeElement === panel || activeElement === last || !focusIsInside)) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      restoreFocusRef.current?.focus?.();
+    };
+  }, []);
+
+  const isQueued = queue.isQueued(player.id);
+  const value = adpAvailable && vsAdpMeaningful ? getValueVsAdp(player) : null;
+  const spread = getConsensusSpread(player);
+  const avg = getConsensusAvg(player);
+  const vsAdp = adpAvailable && vsAdpMeaningful ? describeVsAdp(player) : null;
+
+  const verdict = value
+    ? !hasReliableAdpSample(player)
+      ? {
+          // signal:null can also mean "sample too thin to judge" — never call
+          // that market agreement (fantasyUtils gates at 20 mock selections).
+          text: "Too few mock selections behind his ADP to judge the market gap yet, so no market read.",
+          color: "var(--home-ink-muted)",
+          background: "color-mix(in srgb, var(--home-ink) 4%, transparent)",
+        }
+      : value.signal === "value"
+        ? {
+            text: `Rooms take him about ${Math.round(Math.abs(value.delta))} picks after the consensus rank. Value if he lasts to your pick.`,
+            color: "var(--home-positive)",
+            background: "color-mix(in srgb, var(--home-positive) 7%, transparent)",
+          }
+        : value.signal === "reach"
+          ? {
+              text: `Rooms take him about ${Math.round(Math.abs(value.delta))} picks before the consensus rank. Plan the reach or let him go.`,
+              color: "var(--home-negative)",
+              background: "color-mix(in srgb, var(--home-negative) 6%, transparent)",
+            }
+          : {
+              text: "Market and consensus sit inside this player's noise band. Take him on schedule.",
+              color: "var(--home-ink-muted)",
+              background: "color-mix(in srgb, var(--home-ink) 4%, transparent)",
+            }
+    : null;
+
+  const spreadFill = spread
+    ? spread.level === "tight"
+      ? "color-mix(in srgb, var(--home-positive) 34%, var(--home-paper))"
+      : spread.level === "mixed"
+        ? "color-mix(in srgb, var(--home-signal) 46%, var(--home-paper))"
+        : "color-mix(in srgb, var(--home-warning) 38%, var(--home-paper))"
+    : "color-mix(in srgb, var(--home-stone) 70%, var(--home-paper))";
+
+  const lo = Number.isFinite(player.minRank) ? (player.minRank as number) : null;
+  const hi = Number.isFinite(player.maxRank) ? (player.maxRank as number) : null;
+  const avgTickLeft =
+    lo !== null && hi !== null && avg !== null
+      ? Math.min(100, Math.max(0, ((avg - lo) / Math.max(1, hi - lo)) * 100))
+      : null;
+
+  // Prior-season scoring, present only when this player was matched to a game
+  // log that cleared the games-played floor. The span guards a flat line (a
+  // player whose low and high coincide) from dividing by zero.
+  const gameLog = player.gameLog;
+  const gameLogSpan = gameLog ? Math.max(0.1, gameLog.high - gameLog.low) : 0;
+  const gameLogTickLeft = (value: number): number =>
+    gameLog ? Math.min(100, Math.max(0, ((value - gameLog.low) / gameLogSpan) * 100)) : 0;
+
+  const boardLabel = activePosition === "overall" || activePosition === "flex" ? "overall" : "on this board";
+
+  return (
+    <div className="fixed inset-0 z-[60] flex justify-end">
+      <button
+        type="button"
+        onClick={onClose}
+        aria-label="Close player detail"
+        tabIndex={-1}
+        className="absolute inset-0 cursor-default"
+        style={{ background: "color-mix(in srgb, var(--home-ink) 38%, transparent)" }}
+      />
+      <aside
+        ref={panelRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label={`${player.name} detail`}
+        tabIndex={-1}
+        className="relative flex h-full w-[min(400px,94vw)] flex-col gap-4 overflow-y-auto overscroll-contain border-l p-5"
+        style={{
+          borderColor: "var(--home-rule)",
+          background: "var(--home-paper)",
+          boxShadow: "-18px 0 44px color-mix(in srgb, var(--home-ink) 18%, transparent)",
+        }}
+      >
+        <div className="flex items-start justify-between gap-3">
+          <div className="min-w-0">
+            <p className={MONO_LABEL_CLASS} style={{ color: "var(--home-signal)" }}>
+              R{publishedRank} {boardLabel}
+              {Number.isFinite(player.tier)
+                ? ` · Tier ${player.tier}${boardTierCount ? ` of ${boardTierCount}` : ""}`
+                : ""}
+            </p>
+            <h2 className="mt-1.5 truncate text-2xl font-semibold leading-tight tracking-tight">{player.name}</h2>
+            <p className="mt-1 font-mono text-2xs uppercase tracking-[0.06em]" style={{ color: "var(--home-ink-muted)" }}>
+              {player.position}
+              {Number.isFinite(player.positionRank) ? player.positionRank : ""} · {player.team || "FA"}
+              {player.byeWeek ? ` · Bye ${player.byeWeek}` : ""}
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[4px] border"
+            style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)", color: "var(--home-ink)" }}
+          >
+            <X size={16} aria-hidden="true" />
+          </button>
+        </div>
+
+        <div className="grid grid-cols-2 gap-2">
+          <DrawerStat label="Consensus avg" value={formatAvg(player)} title={FANTASY_AVG_RANK_TOOLTIP} />
+          <DrawerStat
+            label="Expert range"
+            value={formatExpertRange(player)}
+            title={FANTASY_EXPERT_SPREAD_TOOLTIP}
+          />
+          {adpAvailable && Number.isFinite(player.adp) && (
+            <DrawerStat label="Market ADP" value={formatAdp(player.adp)} title={FANTASY_ADP_TOOLTIP} />
+          )}
+          {vsAdp && (
+            <DrawerStat
+              label="vs ADP"
+              value={vsAdp.text}
+              valueColor={vsAdp.color}
+              title={
+                vsAdp.judged
+                  ? FANTASY_VS_ADP_TOOLTIP
+                  : "Early mock-draft sample, so the gap carries no value or reach read yet"
+              }
+            />
+          )}
+        </div>
+
+        {verdict && (
+          <p
+            className="border-l-[3px] px-3 py-2.5 text-sm leading-6"
+            style={{ borderColor: verdict.color, background: verdict.background, color: "var(--home-ink)" }}
+          >
+            {verdict.text}
+          </p>
+        )}
+
+        {lo !== null && hi !== null && (
+          <div>
+            <div className="flex items-baseline justify-between gap-2.5">
+              <span
+                className={`${MONO_LABEL_CLASS} inline-flex items-center`}
+                style={{ color: "var(--home-ink-muted)" }}
+              >
+                Expert spread
+                <MetricTooltip term="Expert spread" definition={FANTASY_EXPERT_SPREAD_TOOLTIP} />
+              </span>
+              {spread && (
+                <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+                  {spread.label}
+                </span>
+              )}
+            </div>
+            <div
+              className="relative mt-2 h-2.5 overflow-hidden rounded-full"
+              style={{ background: "color-mix(in srgb, var(--home-ink) 8%, var(--home-paper))" }}
+            >
+              <span className="absolute inset-0" style={{ background: spreadFill }} />
+              {avgTickLeft !== null && (
+                <span
+                  className="absolute bottom-0 top-0 w-0.5"
+                  style={{ left: `calc(${avgTickLeft}% - 1px)`, background: "var(--home-ink)" }}
+                />
+              )}
+            </div>
+            <div
+              className="mt-1.5 flex justify-between font-mono text-3xs uppercase tracking-[0.08em]"
+              style={{ color: "var(--home-ink-muted)" }}
+            >
+              <span>Best {lo}</span>
+              {avg !== null && <span style={{ color: "var(--home-ink)" }}>Avg {avg.toFixed(1)}</span>}
+              <span>Worst {hi}</span>
+            </div>
+          </div>
+        )}
+
+        {gameLog && (
+          <div>
+            <div className="flex items-baseline justify-between gap-2.5">
+              <span
+                className={`${MONO_LABEL_CLASS} inline-flex items-center`}
+                style={{ color: "var(--home-ink-muted)" }}
+              >
+                Points per game
+                <MetricTooltip
+                  term="Points per game"
+                  definition={FANTASY_POINTS_PER_GAME_TOOLTIP}
+                />
+              </span>
+              <span
+                className="font-mono text-3xs uppercase tracking-[0.1em]"
+                style={{ color: "var(--home-ink-muted)" }}
+              >
+                {gameLog.season} season · {scoringLabel} · {gameLog.games}{" "}
+                {gameLog.games === 1 ? "game" : "games"}
+              </span>
+            </div>
+            <div
+              className="relative mt-2 h-2.5 overflow-hidden rounded-full"
+              style={{ background: "color-mix(in srgb, var(--home-stone) 70%, var(--home-paper))" }}
+            >
+              <span
+                className="absolute bottom-0 top-0 w-0.5"
+                title="Median"
+                style={{
+                  left: `calc(${gameLogTickLeft(gameLog.median)}% - 1px)`,
+                  background: "var(--home-ink)",
+                }}
+              />
+              <span
+                className="absolute bottom-0 top-0 w-0.5"
+                title="Average"
+                style={{
+                  left: `calc(${gameLogTickLeft(gameLog.average)}% - 1px)`,
+                  background: "var(--home-signal)",
+                }}
+              />
+            </div>
+            <dl className="mt-2 grid grid-cols-4 gap-2">
+              <div>
+                <dt className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+                  Low
+                </dt>
+                <dd
+                  className="mt-0.5 font-mono text-2xs tabular-nums"
+                  style={{ color: "var(--home-ink-muted)" }}
+                >
+                  {gameLog.low.toFixed(1)}
+                </dd>
+              </div>
+              <div>
+                <dt className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+                  Median
+                </dt>
+                <dd className="mt-0.5 font-mono text-2xs tabular-nums" style={{ color: "var(--home-ink)" }}>
+                  {gameLog.median.toFixed(1)}
+                </dd>
+              </div>
+              <div>
+                <dt className={MONO_LABEL_CLASS} style={{ color: "var(--home-signal)" }}>
+                  Avg
+                </dt>
+                <dd
+                  className="mt-0.5 font-mono text-2xs font-medium tabular-nums"
+                  style={{ color: "var(--home-ink)" }}
+                >
+                  {gameLog.average.toFixed(1)}
+                </dd>
+              </div>
+              <div>
+                <dt className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+                  High
+                </dt>
+                <dd
+                  className="mt-0.5 font-mono text-2xs tabular-nums"
+                  style={{ color: "var(--home-ink-muted)" }}
+                >
+                  {gameLog.high.toFixed(1)}
+                </dd>
+              </div>
+            </dl>
+          </div>
+        )}
+
+        {neighbors.length > 1 && (
+          <div>
+            <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+              Board neighborhood
+            </span>
+            <ul
+              className="mt-2 list-none overflow-hidden rounded-[6px] border"
+              style={{ borderColor: "var(--home-rule)" }}
+            >
+              {neighbors.map((neighbor) => {
+                const selected = neighbor.id === player.id;
+                return (
+                  <li
+                    key={neighbor.id}
+                    className="border-t first:border-t-0"
+                    style={{ borderColor: "color-mix(in srgb, var(--home-rule) 55%, transparent)" }}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => onSelectNeighbor(neighbor.id)}
+                      aria-current={selected || undefined}
+                      className="flex min-h-11 w-full items-baseline gap-2.5 border-l-[3px] px-2.5 py-1.5 text-left"
+                      style={{
+                        borderColor: selected ? "var(--home-signal)" : "transparent",
+                        background: selected
+                          ? "color-mix(in srgb, var(--home-signal) 8%, transparent)"
+                          : "transparent",
+                        color: "var(--home-ink)",
+                      }}
+                    >
+                      <span
+                        className="w-7 shrink-0 text-right font-mono text-2xs"
+                        style={{ color: "var(--home-ink-muted)" }}
+                      >
+                        {getPublishedBoardRank(neighbor, activePosition)}
+                      </span>
+                      <span className="min-w-0 flex-1 truncate text-sm font-semibold tracking-tight">
+                        {neighbor.name}
+                      </span>
+                      <span className="shrink-0 font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+                        {formatAvg(neighbor)}
+                      </span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        )}
+
+        <button
+          type="button"
+          onClick={() => queue.toggle(player.id)}
+          aria-pressed={isQueued}
+          className="inline-flex min-h-touch items-center justify-center gap-2 rounded-[4px] border font-mono text-2xs uppercase tracking-[0.08em]"
+          style={
+            isQueued
+              ? {
+                  borderColor: "color-mix(in srgb, var(--home-signal) 60%, var(--home-rule))",
+                  background: "color-mix(in srgb, var(--home-signal) 26%, var(--home-paper))",
+                  color: "var(--home-ink)",
+                }
+              : { borderColor: "var(--home-rule)", background: "var(--home-paper)", color: "var(--home-ink)" }
+          }
+        >
+          <Star size={14} fill={isQueued ? "currentColor" : "none"} aria-hidden="true" />
+          {isQueued ? "Queued" : "Add to queue"}
+        </button>
+
+        <div>
+          <label htmlFor="board-player-note" className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+            Private note
+          </label>
+          <textarea
+            id="board-player-note"
+            name="board-player-note"
+            rows={2}
+            value={draftNote}
+            maxLength={notes.maxLength}
+            onChange={(event) => {
+              setDraftNote(event.target.value);
+              notes.setNote(player.id, event.target.value);
+            }}
+            placeholder="Handcuff for Hall… target round 6… avoid."
+            className="mt-2 block w-full resize-none rounded-[4px] border px-2.5 py-2 font-mono text-xs leading-normal"
+            style={{
+              borderColor: "var(--home-rule)",
+              background: "var(--home-paper-raised)",
+              color: "var(--home-ink)",
+            }}
+          />
+          <p className="mt-1 text-right font-mono text-3xs" style={{ color: "var(--home-ink-muted)" }}>
+            {draftNote.length}/{notes.maxLength} · saved on this device
+          </p>
+        </div>
+
+        <p className="font-mono text-3xs leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
+          Ranks, tiers, and expert ranges come from the published snapshot, and per-game scoring is the prior
+          regular season from nflverse. Queue and notes stay on this device.
+        </p>
+      </aside>
+    </div>
+  );
+}
+
+interface FantasyFootballClientProps {
+  initialState: FantasySearchState;
+}
+
+interface TierGroup {
+  tier: number | null;
+  rows: Player[];
+}
+
 export function FantasyFootballClient({ initialState }: FantasyFootballClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const shouldReduceMotion = useReducedMotion();
-  const variants = shouldReduceMotion ? noMotion : fadeIn;
-  const [searchQuery, setSearchQuery] = useState("");
-  const [detailPlayer, setDetailPlayer] = useState<Player | null>(null);
-  const [showStats, setShowStats] = useState(false);
-  const [showLegend, setShowLegend] = useState(false);
+  const [searchQuery, setSearchQuery] = useState(initialState.query);
+  const [detailPlayerId, setDetailPlayerId] = useState<string | null>(null);
   const [visibleCount, setVisibleCount] = useState(RANKINGS_PAGE_SIZE);
-  const [queueClearArmed, setQueueClearArmed] = useState(false);
   const sentinelRef = useRef<HTMLDivElement | null>(null);
   const isHydrated = useSyncExternalStore(
     subscribeToHydration,
@@ -336,35 +805,24 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
 
   const queue = usePlayerQueue();
   const notes = usePlayerNotes();
-  const compare = useCompareTray();
 
-  const density = useSyncExternalStore(
-    subscribeDensityChange,
-    getDensitySnapshot,
-    () => "comfortable" as FantasyBoardDensity
+  const hasManagedParams = ["position", "scoring", "view", "q"].some(
+    (param) => searchParams.get(param) !== null
   );
-
-  useEffect(() => {
-    if (!queueClearArmed) return;
-    const timeout = window.setTimeout(() => setQueueClearArmed(false), 5_000);
-    return () => window.clearTimeout(timeout);
-  }, [queueClearArmed]);
-
-  const hasManagedParams = searchParams.get("position") !== null || searchParams.get("scoring") !== null;
   const routeState = useMemo<FantasySearchState>(
     () => (hasManagedParams ? normalizeFantasyState(searchParams) : initialState),
     [hasManagedParams, initialState, searchParams]
   );
 
   useEffect(() => {
-    const urlViewMatches =
-      (searchParams.get("view") === "tiers" && routeState.view === "tiers") ||
-      (searchParams.get("view") !== "tiers" && routeState.view === "list");
+    const urlQueryMatches =
+      (searchParams.get("q") ?? "") === routeState.query &&
+      (routeState.query.length > 0 || searchParams.get("q") === null);
 
     if (
       searchParams.get("position") === routeState.position &&
       searchParams.get("scoring") === routeState.scoring &&
-      urlViewMatches
+      urlQueryMatches
     ) {
       return;
     }
@@ -374,9 +832,31 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
     });
   }, [routeState, router, searchParams]);
 
+  useEffect(() => {
+    // Only adopt the URL's query when it genuinely differs from what is typed.
+    // normalizeFantasyQuery trims, so comparing raw values made a trailing space
+    // vanish from under the cursor once the URL write was debounced.
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- browser Back/Forward can replace the URL-backed query
+    setSearchQuery((current) =>
+      current.replace(/\s+/g, " ").trim() === routeState.query ? current : routeState.query
+    );
+  }, [routeState.query]);
+
+  // Every keystroke used to fire router.replace on a fully dynamic route, which
+  // meant one uncacheable RSC round trip per character. The board still filters
+  // on searchQuery, so only the shareable URL waits.
+  const debouncedQuery = useDebounce(searchQuery, 200);
+  useEffect(() => {
+    if (debouncedQuery.replace(/\s+/g, " ").trim() === routeState.query) return;
+    updateRouteState({ query: debouncedQuery });
+    // updateRouteState is recreated every render; the query is the real trigger.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedQuery, routeState.query]);
+
   function updateRouteState(nextState: Partial<FantasySearchState>) {
     const nextRouteState = {
       ...routeState,
+      query: searchQuery,
       ...nextState,
     };
 
@@ -388,39 +868,21 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
     });
   }
 
-  const { players, snapshot, metadata, sliceMetadata, sliceMetadataMap, isLoading, error, retry } = useFantasySnapshot({
+  const { players, metadata, sliceMetadata, sliceMetadataMap, isLoading, error, retry } = useFantasySnapshot({
     position: routeState.position,
     scoring: routeState.scoring,
   });
-  // Every position hook receives the normalized full snapshot. Reuse it for
-  // cross-board queue and compare lookups instead of creating a second data
-  // subscription for the same scoring file.
-  const allBoardPlayers = useMemo(
-    () => (snapshot ? getAllFantasySnapshotPlayers(snapshot) : players),
-    [players, snapshot]
-  );
-
-  const playerLookup = useMemo(() => {
-    const map = new Map<string, Player>();
-    for (const player of allBoardPlayers) map.set(player.id, player);
-    // Position slices carry board-specific ranks, tiers, and expert ranges.
-    // Prefer that active record over the overall union so detail and compare
-    // surfaces describe the board the user is currently viewing.
-    for (const player of players) map.set(player.id, player);
-    return map;
-  }, [allBoardPlayers, players]);
 
   const currentSliceUnavailable = Boolean(sliceMetadata && !sliceMetadata.available);
   const localToolsMemoryOnly =
-    queue.persistenceStatus === "memory-only" ||
-    notes.persistenceStatus === "memory-only" ||
-    compare.persistenceStatus === "memory-only";
+    queue.persistenceStatus === "memory-only" || notes.persistenceStatus === "memory-only";
   const adpSource = metadata?.adpSource ?? null;
   const adpFreshness = getFantasyAdpFreshness(adpSource?.asOf, metadata?.season);
   const adpAvailable = Boolean(adpSource) && adpFreshness !== "stale";
+  const vsAdpMeaningful = routeState.position === "overall" || routeState.position === "flex";
   const selectedScoringLabel = FANTASY_SCORING_LABELS[routeState.scoring];
   const currentSourceUpdatedAt = sliceMetadata?.updatedAt ?? metadata?.upstreamUpdatedAt ?? null;
-  const currentSourceKindLabel = getSourceKindLabel(sliceMetadata?.sourceKind);
+  const sourceStaleness = getSnapshotStaleness(currentSourceUpdatedAt);
 
   const filteredPlayers = useMemo(() => {
     if (currentSliceUnavailable) {
@@ -445,23 +907,36 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
     return max;
   }, [players]);
 
-  // Reset the window whenever the board, scoring, view, or search changes so a
+  // Reset the window whenever the board, scoring, or search changes so a
   // narrowed list never starts deep into a stale offset.
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional reset on filter change
     setVisibleCount(RANKINGS_PAGE_SIZE);
-  }, [routeState.position, routeState.scoring, routeState.view, searchQuery]);
+  }, [routeState.position, routeState.scoring, searchQuery]);
 
-  const windowedPlayers =
-    routeState.view === "list" ? filteredPlayers.slice(0, visibleCount) : filteredPlayers;
-  const hasMore = routeState.view === "list" && visibleCount < filteredPlayers.length;
+  const windowedPlayers = useMemo(
+    () => filteredPlayers.slice(0, visibleCount),
+    [filteredPlayers, visibleCount]
+  );
+  const hasMore = visibleCount < filteredPlayers.length;
+
+  // One rank scale for every visible spread bar. Scaling to the rendered
+  // window (not the full 500-player board) keeps the template's geometry:
+  // early-round ranges stay readable instead of compressing into slivers.
+  const boardScale = useMemo(() => {
+    let max = 0;
+    for (const player of windowedPlayers) {
+      if (Number.isFinite(player.maxRank) && (player.maxRank as number) > max) {
+        max = player.maxRank as number;
+      }
+    }
+    return Math.max(max, 10);
+  }, [windowedPlayers]);
 
   useEffect(() => {
     if (!hasMore || typeof IntersectionObserver === "undefined") return;
-    // On narrow screens the supporting rail sits below the rankings card.
-    // Auto-extending the list while someone scrolls toward that rail can keep
-    // moving the queue and freshness sections away from them, so mobile uses
-    // the explicit Load more control instead.
+    // On narrow screens auto-extending the list keeps pushing the footer away
+    // from someone scrolling toward it, so mobile uses the explicit Load more.
     if (!window.matchMedia("(min-width: 1024px)").matches) return;
     const el = sentinelRef.current;
     if (!el) return;
@@ -478,69 +953,36 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
     return () => observer.disconnect();
   }, [hasMore, filteredPlayers.length]);
 
-  const queuedPlayers = useMemo(
-    () =>
-      queue.queue
-        .map((id) => playerLookup.get(id))
-        .filter((player): player is Player => Boolean(player)),
-    [queue.queue, playerLookup]
+  // Group the windowed rows into consecutive-tier plates. The cliff between
+  // plates comes from the consensus averages either side of the boundary, so
+  // plate spacing scales with how large the drop actually is.
+  const tierGroups = useMemo<TierGroup[]>(() => {
+    const groups: TierGroup[] = [];
+    for (const { player, tier, startsTier } of withTierBreaks(windowedPlayers)) {
+      const current = groups[groups.length - 1];
+      if (!current || startsTier || (tier === null) !== (current.tier === null)) {
+        groups.push({ tier, rows: [player] });
+      } else {
+        current.rows.push(player);
+      }
+    }
+    return groups;
+  }, [windowedPlayers]);
+
+  const detailPlayer = useMemo(
+    () => (detailPlayerId ? players.find((player) => player.id === detailPlayerId) ?? null : null),
+    [detailPlayerId, players]
   );
 
-  const snapshotWeekLabel = metadata
-    ? `${metadata.season} ${getFantasyWeekLabel(metadata.week)}`
-    : "Loading…";
-
-  const fantasyStatsCells: HomeStatsCell[] = [
-    {
-      label: "Players visible",
-      tooltip: "Players on this board after the position, scoring, and search filters.",
-      value: currentSliceUnavailable ? "—" : filteredPlayers.length.toLocaleString(),
-      sub: currentSliceUnavailable ? "Board unavailable" : "After filters",
-    },
-    {
-      label: "Active position",
-      tooltip: "The position board currently in view.",
-      value: FANTASY_POSITION_LABELS[routeState.position],
-      sub: "Switch via pills",
-    },
-    {
-      label: "Scoring format",
-      tooltip: "Scoring rules behind the consensus ranks on this board.",
-      value: selectedScoringLabel,
-    },
-    {
-      label: "Tier count",
-      tooltip: "Highest tier number FantasyPros publishes for this board.",
-      value: maxTier > 0 ? maxTier : "—",
-      sub: maxTier > 0 ? "Highest tier in view" : "Not published",
-    },
-    {
-      label: "Queued",
-      tooltip: "Players you have starred to your browser-local watchlist.",
-      value: queue.queue.length,
-      sub: "On your watchlist",
-    },
-    {
-      label: "Snapshot week",
-      tooltip: "Season and week the published snapshot covers.",
-      value: snapshotWeekLabel,
-    },
-    {
-      label: "Source updated",
-      tooltip: "When FantasyPros last refreshed the source consensus.",
-      value: formatUpdatedAt(currentSourceUpdatedAt),
-      sub: currentSourceKindLabel,
-    },
-    {
-      label: "Built",
-      tooltip: "When this site last rebuilt its committed snapshot from the source.",
-      value: formatUpdatedAt(metadata?.generatedAt),
-      sub: "Snapshot generated",
-    },
-  ];
-
-  const isCompact = density === "compact";
-  const skeletonHeightClass = isCompact ? "h-[68px]" : "h-[84px]";
+  const neighborhood = useMemo(() => {
+    if (!detailPlayer) return [];
+    const list = filteredPlayers.some((player) => player.id === detailPlayer.id)
+      ? filteredPlayers
+      : players;
+    const index = list.findIndex((player) => player.id === detailPlayer.id);
+    if (index < 0) return [];
+    return list.slice(Math.max(0, index - 2), index + 3);
+  }, [detailPlayer, filteredPlayers, players]);
 
   const positionOptions: PositionFilterOption<FantasyRoutePosition>[] = POSITION_OPTIONS.map((position) => {
     const meta = sliceMetadataMap?.[position];
@@ -553,57 +995,232 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
     };
   });
 
-  // Build the list view rows with labeled tier separators wherever the published
-  // rank crosses a tier boundary. A running rank lets each break annotate the
-  // cliff to the prior tier.
-  function renderListRows(): ReactNode {
-    const tierRows = withTierBreaks(windowedPlayers);
-    const items: ReactNode[] = [];
-    let previousRank: number | null = null;
+  const snapshotStamp = formatStamp(metadata?.generatedAt);
+  const adpStamp = formatStamp(adpSource?.asOf);
+  const sourceStamp = formatStamp(currentSourceUpdatedAt);
 
-    for (const { player, tier, startsTier } of tierRows) {
-      const publishedRank = getPublishedBoardRank(player, routeState.position);
-      const numericRank = Number.parseFloat(publishedRank);
+  const headerChips: { label: string; tone?: CSSProperties }[] = [
+    { label: `${selectedScoringLabel} board` },
+    { label: "FantasyPros consensus" },
+    ...(snapshotStamp ? [{ label: `Snapshot ${snapshotStamp}` }] : []),
+    ...(adpSource && adpAvailable && adpStamp
+      ? [{ label: `ADP ${adpSource.provider} · ${adpStamp}` }]
+      : []),
+    ...(adpSource && adpFreshness === "prior-season"
+      ? [{ label: "ADP prior season", tone: STALENESS_TONE.aging }]
+      : []),
+    ...(adpSource && adpFreshness === "stale"
+      ? [{ label: "ADP stale · signals hidden", tone: STALENESS_TONE.stale }]
+      : []),
+    ...(sourceStaleness !== "fresh"
+      ? [
+          {
+            label: `${getSnapshotStalenessLabel(sourceStaleness)} · source ${sourceStamp ?? "date unknown"}`,
+            tone: STALENESS_TONE[sourceStaleness],
+          },
+        ]
+      : []),
+  ];
 
-      if (startsTier && tier !== null) {
-        items.push(
-          <TierBreakSeparator
-            key={`tier-${tier}-${player.id}`}
-            tier={tier}
-            gap={
-              previousRank !== null && Number.isFinite(numericRank)
-                ? getTierGap(previousRank, numericRank)
-                : undefined
-            }
-          />
-        );
-      }
+  const countLine = isLoading
+    ? "Loading players…"
+    : error
+      ? "Rankings unavailable"
+      : currentSliceUnavailable
+        ? "Board unavailable"
+        : hasMore
+          ? `${windowedPlayers.length} of ${filteredPlayers.length} shown`
+          : `${filteredPlayers.length} of ${players.length} shown`;
 
-      const inCompare = compare.inCompare(player.id);
-      items.push(
-        <RankingsListRow
-          key={player.id}
-          player={player}
-          publishedRank={publishedRank}
-          descriptor={getPlayerDescriptor(player, routeState.position, adpAvailable)}
-          adpAvailable={adpAvailable}
-          compact={isCompact}
-          isQueued={queue.isQueued(player.id)}
-          hasNote={notes.hasNote(player.id)}
-          inCompare={inCompare}
-          compareDisabled={!inCompare && compare.isFull}
-          onOpenDetail={() => setDetailPlayer(player)}
-          onToggleQueue={() => queue.toggle(player.id)}
-          onToggleCompare={() => compare.toggle(player.id)}
-        />
-      );
+  const metricColumns: { label: string; className: string; title?: string }[] = [
+    { label: "Expert spread", className: "w-[120px]", title: FANTASY_EXPERT_SPREAD_TOOLTIP },
+    { label: "Range", className: "w-16 text-right", title: FANTASY_EXPERT_SPREAD_TOOLTIP },
+    { label: "Avg", className: "w-12 text-right", title: FANTASY_AVG_RANK_TOOLTIP },
+    ...(adpAvailable
+      ? [
+          { label: "ADP", className: "w-12 text-right", title: FANTASY_ADP_TOOLTIP },
+          { label: "vs ADP", className: "w-16 text-right", title: FANTASY_VS_ADP_TOOLTIP },
+        ]
+      : []),
+  ];
 
-      if (Number.isFinite(numericRank)) {
-        previousRank = numericRank;
+  function renderTierSection(group: TierGroup, index: number): ReactNode {
+    const firstRank = getPublishedBoardRank(group.rows[0], routeState.position);
+    const lastRank = getPublishedBoardRank(group.rows[group.rows.length - 1], routeState.position);
+    const railTone =
+      group.tier !== null
+        ? `color-mix(in srgb, var(--home-signal) ${getTierRailIntensity(group.tier)}%, var(--home-rule))`
+        : "var(--home-rule)";
+
+    let cliff = 0;
+    if (index > 0) {
+      const previous = tierGroups[index - 1];
+      const prevAvg = getConsensusAvg(previous.rows[previous.rows.length - 1]);
+      const nextAvg = getConsensusAvg(group.rows[0]);
+      if (prevAvg !== null && nextAvg !== null) {
+        cliff = Math.max(0, Number((nextAvg - prevAvg).toFixed(1)));
       }
     }
+    const marginTop = index === 0 ? 0 : Math.round(Math.min(48, Math.max(14, cliff * 9))) || 18;
 
-    return items;
+    return (
+      <section key={`tier-${group.tier ?? "untiered"}-${group.rows[0].id}`} style={{ marginTop }}>
+        {index > 0 && cliff > 0 && (
+          <div aria-hidden="true" className="flex items-center gap-3 px-0.5 pb-2.5">
+            <span
+              className="flex-1 border-t border-dashed"
+              style={{ borderColor: "color-mix(in srgb, var(--home-ink) 24%, transparent)" }}
+            />
+            <span
+              className="whitespace-nowrap font-mono text-3xs uppercase tracking-[0.12em]"
+              style={{ color: "var(--home-signal)" }}
+            >
+              ↓ {cliff.toFixed(1)} avg-rank cliff
+            </span>
+            <span
+              className="flex-1 border-t border-dashed"
+              style={{ borderColor: "color-mix(in srgb, var(--home-ink) 24%, transparent)" }}
+            />
+          </div>
+        )}
+        <div
+          className="overflow-hidden rounded-lg border border-l-[3px]"
+          style={{
+            borderColor: "var(--home-rule)",
+            borderLeftColor: railTone,
+            background: "var(--home-paper-raised)",
+          }}
+        >
+          <div className="flex flex-wrap items-baseline gap-x-3.5 gap-y-1 px-3.5 pb-2 pt-2.5">
+            <span className="text-2xl font-bold leading-none tracking-tight tabular-nums">
+              {group.tier !== null ? String(group.tier).padStart(2, "0") : "—"}
+            </span>
+            <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+              {group.tier !== null ? "Tier" : "No published tier"}
+            </span>
+            <span className="font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+              {group.rows.length} {group.rows.length === 1 ? "player" : "players"}
+            </span>
+            <span className="ml-auto font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+              R{firstRank}–R{lastRank}
+            </span>
+          </div>
+          <ul className="m-0 list-none p-0">
+            {group.rows.map((player) => {
+              const vsAdp = adpAvailable && vsAdpMeaningful ? describeVsAdp(player) : null;
+              const tone = getPositionTone(player.position);
+              return (
+                <li
+                  key={player.id}
+                  className="relative border-t transition-colors duration-150 hover:bg-[color-mix(in_srgb,var(--home-paper-alt)_55%,transparent)]"
+                  style={{ borderColor: "color-mix(in srgb, var(--home-rule) 60%, transparent)" }}
+                >
+                  {/* The open control overlays the row instead of wrapping it: an
+                      aria-label on a wrapping button would override every cell,
+                      leaving screen readers nothing but "Open X detail" rows. */}
+                  <button
+                    type="button"
+                    aria-label={`Open ${player.name} detail`}
+                    onClick={() => setDetailPlayerId(player.id)}
+                    className="absolute inset-0 z-[1] cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[var(--home-signal)]"
+                  />
+                  {queue.isQueued(player.id) && (
+                    <span
+                      aria-hidden="true"
+                      className="absolute inset-y-0 left-0 w-1"
+                      style={{ background: "var(--home-signal)" }}
+                    />
+                  )}
+                  <div
+                    className="flex min-h-11 w-full flex-wrap items-center gap-x-4 gap-y-1 px-3.5 py-1.5 text-left"
+                    style={{ color: "var(--home-ink)" }}
+                  >
+                    <span
+                      className="w-[34px] shrink-0 text-right font-mono text-sm"
+                      style={{
+                        color: queue.isQueued(player.id) ? "var(--home-signal)" : "var(--home-ink)",
+                      }}
+                    >
+                      {queue.isQueued(player.id) && <span className="sr-only">In your queue, </span>}
+                      {getPublishedBoardRank(player, routeState.position)}
+                    </span>
+                    <span className="flex min-w-0 flex-[1_1_200px] items-baseline gap-2">
+                      <span className="truncate text-sm font-semibold tracking-tight">{player.name}</span>
+                      <span
+                        className="inline-flex shrink-0 items-center rounded-[2px] border px-1.5 py-0.5 font-mono text-3xs tracking-[0.06em]"
+                        style={{ ...tone, color: "var(--home-ink)" }}
+                      >
+                        {player.position}
+                        {Number.isFinite(player.positionRank) ? player.positionRank : ""}
+                      </span>
+                      <span
+                        className="shrink-0 font-mono text-3xs uppercase tracking-[0.06em]"
+                        style={{ color: "var(--home-ink-muted)" }}
+                      >
+                        {player.team}
+                        {player.byeWeek ? ` · Bye ${player.byeWeek}` : ""}
+                      </span>
+                      {adpAvailable && vsAdpMeaningful && <ValueReachChip player={player} />}
+                    </span>
+                    {/* Not aria-hidden: the aligned columns below are display:none
+                        at this width, which takes their sr-only labels out of the
+                        accessibility tree too, so this line is the mobile reading. */}
+                    <span
+                      className="w-full shrink-0 font-mono text-3xs tracking-[0.04em] md:hidden"
+                      style={{ color: "var(--home-ink-muted)" }}
+                    >
+                      {`Avg ${formatAvg(player)}`}
+                      {adpAvailable ? ` · ADP ${formatAdp(player.adp)}` : ""}
+                      {vsAdp ? ` · vs ADP ${vsAdp.text}` : ""}
+                      {` · Range ${formatExpertRange(player)}`}
+                    </span>
+                    <span className="hidden max-w-full flex-wrap items-center gap-x-4 gap-y-1 md:flex">
+                      <ExpertSpreadBar player={player} scale={boardScale} />
+                      <span className="sr-only">Expert range</span>
+                      <span
+                        className="w-16 text-right font-mono text-xs"
+                        style={{ color: "var(--home-ink-muted)" }}
+                      >
+                        {formatExpertRange(player)}
+                      </span>
+                      <span className="sr-only">Consensus average</span>
+                      <span className="w-12 text-right font-mono text-xs font-medium">
+                        {formatAvg(player)}
+                      </span>
+                      {adpAvailable && (
+                        <>
+                          <span className="sr-only">ADP</span>
+                          <span
+                            className="w-12 text-right font-mono text-xs"
+                            style={{ color: "var(--home-ink-muted)" }}
+                          >
+                            {formatAdp(player.adp)}
+                          </span>
+                          <span className="sr-only">versus ADP</span>
+                          <span
+                            className="w-16 text-right font-mono text-xs"
+                            title={
+                              !vsAdpMeaningful
+                                ? "ADP deltas compare to overall rank, so position boards do not get one"
+                                : vsAdp && !vsAdp.judged
+                                  ? "Early mock-draft sample, so the gap carries no value or reach read yet"
+                                  : FANTASY_VS_ADP_TOOLTIP
+                            }
+                            style={{ color: vsAdp ? vsAdp.color : "var(--home-ink-muted)" }}
+                          >
+                            {vsAdp ? vsAdp.text : "—"}
+                          </span>
+                        </>
+                      )}
+                    </span>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </section>
+    );
   }
 
   return (
@@ -613,94 +1230,124 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
       data-testid="fantasy-football-shell"
       data-hydrated={isHydrated ? "true" : "false"}
     >
-      <div className="home-shell home-shell-wide home-section space-y-4 sm:space-y-5">
-        <motion.div className="space-y-4 pt-2" variants={variants} initial="hidden" animate="visible">
-          <div className="space-y-3">
-            <p className="home-kicker mb-0">Fantasy Football</p>
-            <h1
-              style={{
-                fontFamily: "var(--font-home-sans)",
-                fontSize: "clamp(2.15rem, 1.6rem + 2.75vw, 4.2rem)", // DESIGN.md headline step
-                fontWeight: 600,
-                letterSpacing: "-0.04em",
-                lineHeight: 0.98,
-                maxWidth: "18ch",
-              }}
-            >
-              Rankings first. Draft utility second.
-            </h1>
-            <p className="max-w-[60ch] text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
-              A snapshot-backed FantasyPros consensus board with explicit freshness, a shared watchlist, and a
-              side-by-side compare, with the same data feeding a room-relative Draft Outlook in the draft assistant.
-            </p>
-            <div className="flex flex-wrap items-center gap-3 pt-1">
-              <Link
-                href="/fantasy-football/draft-tracker"
-                className="inline-flex min-h-[48px] items-center gap-2 rounded-full border px-5 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200"
-                style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
-              >
-                Launch draft assistant
-                <ArrowUpRight className="h-4 w-4" />
-              </Link>
-              <Link
-                href="/fantasy-football/best-ball"
-                className="inline-flex min-h-[48px] items-center gap-2 rounded-full border px-5 py-3 text-sm font-semibold transition-[background-color,border-color,color] duration-200"
-                style={{
+      <header className={`${SHELL_CLASS} flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pb-4 pt-7`}>
+        <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1.5">
+          <span
+            className="inline-flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.1em]"
+            style={{ color: "var(--home-ink-muted)" }}
+          >
+            <span className="h-2 w-2 rounded-full" style={{ background: "var(--home-signal)" }} aria-hidden="true" />
+            Draft rankings{metadata?.season ? ` · ${metadata.season}` : ""}
+          </span>
+          <h1
+            className="m-0 font-semibold leading-none"
+            style={{ fontSize: "clamp(1.5rem, 3vw, 2.125rem)", letterSpacing: "-0.05em" }}
+          >
+            Fantasy Football{" "}
+            <em style={{ fontFamily: "var(--font-home-serif)", fontStyle: "italic", fontWeight: 500 }}>Rankings</em>
+          </h1>
+        </div>
+        <div className="flex flex-wrap gap-1.5">
+          {headerChips.map((chip) => (
+            <span
+              key={chip.label}
+              className={HEADER_CHIP_CLASS}
+              style={
+                chip.tone ?? {
                   borderColor: "var(--home-rule)",
-                  background: "var(--home-paper)",
-                  color: "var(--home-ink)",
-                }}
-              >
-                Open best ball tools
-                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-              <button
-                type="button"
-                onClick={() => setShowStats((open) => !open)}
-                aria-expanded={showStats}
-                aria-controls="fantasy-football-stats"
-                className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border px-4 text-sm font-semibold"
-                style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)", color: "var(--home-ink)" }}
-              >
-                Board at a glance
-                <ChevronDown
-                  className="h-4 w-4 motion-safe:transition-transform"
-                  style={{ transform: showStats ? "rotate(180deg)" : "none" }}
-                />
-              </button>
-              <button
-                type="button"
-                onClick={() => setShowLegend((open) => !open)}
-                aria-expanded={showLegend}
-                aria-controls="fantasy-board-legend"
-                className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border px-4 text-sm font-semibold"
-                style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)", color: "var(--home-ink)" }}
-              >
-                How to read the board
-                <ChevronDown
-                  className="h-4 w-4 motion-safe:transition-transform"
-                  style={{ transform: showLegend ? "rotate(180deg)" : "none" }}
-                />
-              </button>
-            </div>
-          </div>
-        </motion.div>
+                  background: "var(--home-paper-alt)",
+                  color: "var(--home-ink-muted)",
+                }
+              }
+            >
+              {chip.label}
+            </span>
+          ))}
+        </div>
+      </header>
 
-        {showStats && (
-          <HomeStatsPanel
-            id="fantasy-football-stats"
-            title="Board at a glance"
-            meta={`Updated ${formatUpdatedAt(currentSourceUpdatedAt)}`}
-            cells={fantasyStatsCells}
+      <nav
+        aria-label="Fantasy tools"
+        className={`${SHELL_CLASS} flex flex-wrap items-center gap-1.5 pb-4`}
+      >
+        {FANTASY_TOOLS.map((tool) => (
+          <Link
+            key={tool.href}
+            href={tool.href}
+            className={`${HEADER_CHIP_CLASS} min-h-touch no-underline`}
+            style={{
+              borderColor: "var(--home-rule)",
+              background: "var(--home-paper-alt)",
+              color: "var(--home-ink)",
+            }}
+          >
+            {tool.label}
+            <span aria-hidden="true">&nbsp;↗</span>
+          </Link>
+        ))}
+      </nav>
+
+      <div
+        data-testid="fantasy-board-controls"
+        className="z-30 border-y md:sticky md:top-[4.5rem]"
+        style={{
+          borderColor: "var(--home-rule)",
+          background: "color-mix(in srgb, var(--home-paper) 90%, transparent)",
+          backdropFilter: "blur(8px)",
+          WebkitBackdropFilter: "blur(8px)",
+        }}
+      >
+        <div className={`${SHELL_CLASS} flex flex-wrap items-center gap-x-3.5 gap-y-2.5 py-2.5`}>
+          <PositionFilterBar
+            ariaLabel="Position board"
+            options={positionOptions}
+            value={routeState.position}
+            onChange={(position) => updateRouteState({ position })}
           />
-        )}
+          <ScoringToggle value={routeState.scoring} onChange={(scoring) => updateRouteState({ scoring })} />
+          <div className="relative">
+            <label htmlFor="fantasy-search" className="sr-only">
+              Search the current rankings board
+            </label>
+            <Search
+              className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2"
+              style={{ color: "var(--home-ink-muted)" }}
+              aria-hidden="true"
+            />
+            <input
+              id="fantasy-search"
+              name="fantasy-search"
+              value={searchQuery}
+              maxLength={80}
+              onChange={(event) => setSearchQuery(event.target.value)}
+              disabled={currentSliceUnavailable}
+              autoComplete="off"
+              placeholder="Search player or team"
+              className="min-h-touch w-[200px] rounded-[4px] border pl-8 pr-2.5 font-mono text-xs placeholder:text-[var(--home-ink-muted)] disabled:cursor-not-allowed disabled:opacity-60"
+              style={{
+                borderColor: "var(--home-rule)",
+                background: "var(--home-paper-raised)",
+                color: "var(--home-ink)",
+              }}
+            />
+          </div>
+          <span
+            aria-live={error ? undefined : "polite"}
+            className="ml-auto whitespace-nowrap font-mono text-2xs"
+            style={{ color: "var(--home-ink-muted)" }}
+          >
+            {countLine}
+          </span>
+        </div>
+      </div>
 
-        {showLegend && <FantasyBoardLegend id="fantasy-board-legend" />}
+      <div className={`${SHELL_CLASS} pb-10 pt-4`}>
+        <h2 className="sr-only">{FANTASY_POSITION_LABELS[routeState.position]} rankings</h2>
 
-        {localToolsMemoryOnly ? (
+        {localToolsMemoryOnly && (
           <div
             role="status"
-            className="rounded-[var(--radius-3xl)] border px-4 py-3 text-sm"
+            className="mb-4 rounded-lg border px-4 py-3 text-sm"
             style={{
               borderColor: "color-mix(in srgb, var(--home-warning) 55%, var(--home-rule))",
               background: "color-mix(in srgb, var(--home-warning) 10%, var(--home-paper))",
@@ -708,13 +1355,33 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
           >
             <p className="font-semibold">Browser storage is unavailable.</p>
             <p className="mt-1" style={{ color: "var(--home-ink-muted)" }}>
-              Queue, notes, and compare still work in this tab, but they will not survive a reload.
+              Queue and notes still work in this tab, but they will not survive a reload.
             </p>
           </div>
-        ) : null}
+        )}
 
-        {error && (
-          <article className="home-card p-5 sm:p-6" style={{ borderColor: "var(--home-negative)" }}>
+        {isLoading ? (
+          <div className="grid gap-2" aria-hidden="true">
+            {Array.from({ length: 12 }).map((_, index) => (
+              <div
+                key={`loading-${index}`}
+                className="h-11 rounded-lg border motion-safe:animate-pulse"
+                style={{
+                  borderColor: "var(--home-rule)",
+                  background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
+                }}
+              />
+            ))}
+          </div>
+        ) : error ? (
+          <div
+            role="alert"
+            className="rounded-lg border px-5 py-8"
+            style={{
+              borderColor: "var(--home-negative)",
+              background: "color-mix(in srgb, var(--home-negative) 8%, var(--home-paper))",
+            }}
+          >
             <p className="font-semibold" style={{ color: "var(--home-negative)" }}>
               {error}
             </p>
@@ -724,425 +1391,125 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
             <button
               type="button"
               onClick={retry}
-              className="mt-4 inline-flex min-h-[44px] items-center rounded-full border px-4 text-sm font-semibold"
+              className="mt-4 inline-flex min-h-touch items-center rounded-full border px-4 text-sm font-semibold"
               style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
             >
               Retry rankings
             </button>
-          </article>
+          </div>
+        ) : currentSliceUnavailable ? (
+          <div
+            className="rounded-lg border px-5 py-12 text-center"
+            style={{
+              borderColor: "color-mix(in srgb, var(--home-warning) 32%, var(--home-rule))",
+              background: "color-mix(in srgb, var(--home-warning) 10%, var(--home-paper))",
+            }}
+          >
+            <p className="text-lg font-semibold">
+              {selectedScoringLabel} {FANTASY_POSITION_LABELS[routeState.position]} rankings are unavailable.
+            </p>
+            <p className="mt-2 text-sm" style={{ color: "var(--home-ink-muted)" }}>
+              {sliceMetadata?.reason ??
+                "This scoring-position combination is not published in the current snapshot."}
+            </p>
+          </div>
+        ) : filteredPlayers.length === 0 ? (
+          <div
+            className="rounded-lg border border-dashed px-5 py-9 text-center"
+            style={{ borderColor: "var(--home-rule)" }}
+          >
+            <p className="font-mono text-xs" style={{ color: "var(--home-ink-muted)" }}>
+              No players match on this board.
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                setSearchQuery("");
+                updateRouteState({ query: "", position: "overall" });
+              }}
+              className="mt-3.5 inline-flex min-h-touch items-center rounded-full border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
+              style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
+            >
+              Clear search
+            </button>
+          </div>
+        ) : (
+          <>
+            <div
+              aria-hidden="true"
+              className="hidden items-center gap-x-4 px-3.5 pb-2 font-mono text-3xs uppercase tracking-[0.12em] md:flex"
+              style={{ color: "var(--home-ink-muted)" }}
+            >
+              <span className="w-[34px] shrink-0" />
+              <span className="min-w-0 flex-[1_1_200px]">
+                <MetricTooltip term="Player" definition={FANTASY_PLAYER_COLUMN_TOOLTIP}>
+                  Player
+                </MetricTooltip>
+              </span>
+              <span className="flex shrink-0 items-center gap-4">
+                {metricColumns.map((column) => (
+                  <span key={column.label} className={column.className}>
+                    {column.title ? (
+                      <MetricTooltip term={column.label} definition={column.title}>
+                        {column.label}
+                      </MetricTooltip>
+                    ) : (
+                      column.label
+                    )}
+                  </span>
+                ))}
+              </span>
+            </div>
+            <div>{tierGroups.map((group, index) => renderTierSection(group, index))}</div>
+            {hasMore && (
+              <div ref={sentinelRef} className="mt-4 flex justify-center">
+                <button
+                  type="button"
+                  onClick={() =>
+                    setVisibleCount((count) => Math.min(count + RANKINGS_PAGE_SIZE, filteredPlayers.length))
+                  }
+                  className="inline-flex min-h-touch items-center gap-2 rounded-full border px-5 text-sm font-semibold"
+                  style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)" }}
+                >
+                  Load more ({filteredPlayers.length - windowedPlayers.length} left)
+                </button>
+              </div>
+            )}
+          </>
         )}
 
-        <div className="grid gap-5 lg:grid-cols-[minmax(0,1.18fr)_minmax(18rem,22rem)] min-[1440px]:grid-cols-[minmax(0,1.2fr)_minmax(20rem,26rem)]">
-          <article className="home-card scroll-mt-28 p-5 sm:p-6" aria-labelledby="rankings-board-heading">
-            <div
-              className="z-20 -mx-5 flex flex-col gap-3 border-b px-5 pb-4 pt-1 sm:sticky sm:top-20 sm:-mx-6 sm:flex-row sm:items-end sm:justify-between sm:px-6"
-              style={{
-                borderColor: "var(--home-rule)",
-                background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
-              }}
-            >
-              <div>
-                {/* The board is the primary element on an Operate surface, so its heading
-                    outranks the marketing sections further down rather than sitting a step
-                    below them. The old "Rankings Board" kicker only restated the heading. */}
-                <h2 id="rankings-board-heading" className="text-2xl font-semibold sm:text-3xl">
-                  {FANTASY_POSITION_LABELS[routeState.position]} rankings
-                </h2>
-              </div>
-              <div className="grid gap-2 sm:flex sm:flex-wrap sm:items-center sm:justify-end sm:gap-3">
-                {routeState.view === "list" && (
-                  <SegmentedToggle
-                    ariaLabel="List density"
-                    options={[
-                      { value: "comfortable", label: "Comfortable" },
-                      { value: "compact", label: "Compact" },
-                    ]}
-                    value={density}
-                    onChange={(value) => persistDensity(value)}
-                    disabled={currentSliceUnavailable}
-                  />
-                )}
-                <SegmentedToggle
-                  ariaLabel="Rankings view"
-                  options={[
-                    { value: "list", label: "List" },
-                    { value: "tiers", label: "Tiers" },
-                  ]}
-                  value={routeState.view}
-                  onChange={(value) => updateRouteState({ view: value })}
-                  disabled={currentSliceUnavailable}
-                />
-                <p
-                  aria-live="polite"
-                  className="text-sm sm:min-w-[9.5rem] sm:text-right"
-                  style={{ color: "var(--home-ink-muted)" }}
-                >
-                  {isLoading
-                    ? "Loading players…"
-                    : currentSliceUnavailable
-                      ? "Board unavailable"
-                      : routeState.view === "list" && hasMore
-                        ? `${windowedPlayers.length} of ${filteredPlayers.length} shown`
-                        : `${filteredPlayers.length} players shown`}
-                </p>
-              </div>
-            </div>
-
-            {/* Controls: position, scoring, search */}
-            <div className="mt-4 grid gap-3">
-              <PositionFilterBar
-                ariaLabel="Position board"
-                options={positionOptions}
-                value={routeState.position}
-                onChange={(position) => updateRouteState({ position })}
-              />
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                {/* Scoring is a toggle-button group (aria-pressed), distinct from
-                    the position radiogroup, so each format reads as an independent
-                    on/off rather than a single-select. */}
-                <div role="group" aria-label="Scoring format" className="flex flex-wrap gap-2">
-                  {SCORING_OPTIONS.map((option) => {
-                    const active = routeState.scoring === option.key;
-                    return (
-                      <button
-                        key={option.key}
-                        type="button"
-                        aria-pressed={active}
-                        onClick={() => updateRouteState({ scoring: option.key })}
-                        className="inline-flex min-h-[44px] items-center rounded-full border px-4 text-sm font-semibold transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60"
-                        style={
-                          active
-                            ? { borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }
-                            : {
-                                borderColor: "var(--home-rule)",
-                                background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
-                                color: "var(--home-ink)",
-                              }
-                        }
-                      >
-                        {option.label}
-                      </button>
-                    );
-                  })}
-                </div>
-                <div className="relative sm:max-w-[18rem] sm:flex-1">
-                  <label htmlFor="fantasy-search" className="sr-only">
-                    Search the current rankings board
-                  </label>
-                  <Search
-                    className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2"
-                    style={{ color: "var(--home-ink-muted)" }}
-                  />
-                  {/* Position labels are acronyms (QB, TE, DST), so the placeholder
-                      keeps their case. Lowercasing rendered "Search te board…". */}
-                  <input
-                    id="fantasy-search"
-                    name="fantasy-search"
-                    value={searchQuery}
-                    onChange={(event) => setSearchQuery(event.target.value)}
-                    disabled={currentSliceUnavailable}
-                    autoComplete="off"
-                    placeholder={`Search ${FANTASY_POSITION_LABELS[routeState.position]} board…`}
-                    className="min-h-[48px] w-full rounded-[var(--radius-3xl)] border px-11 pr-10 text-sm transition-[background-color,border-color,box-shadow] duration-200 placeholder:text-[var(--home-ink-muted)] disabled:cursor-not-allowed disabled:opacity-60"
-                    style={{
-                      borderColor: "var(--home-rule)",
-                      background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
-                      color: "var(--home-ink)",
-                    }}
-                  />
-                  {searchQuery && (
-                    <button
-                      type="button"
-                      onClick={() => setSearchQuery("")}
-                      aria-label="Clear search"
-                      className="absolute right-0 top-1/2 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center"
-                    >
-                      <span
-                        className="inline-flex h-7 w-7 items-center justify-center rounded-full border"
-                        style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)" }}
-                      >
-                        <X size={14} aria-hidden="true" />
-                      </span>
-                    </button>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-4">
-              {isLoading ? (
-                <div className="grid gap-3">
-                  {Array.from({ length: 10 }).map((_, index) => (
-                    <div
-                      key={`loading-${index}`}
-                      className={`${skeletonHeightClass} motion-safe:animate-pulse rounded-[var(--radius-3xl)] border`}
-                      style={{
-                        borderColor: "var(--home-rule)",
-                        background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
-                      }}
-                    />
-                  ))}
-                </div>
-              ) : currentSliceUnavailable ? (
-                <div
-                  className="rounded-[var(--radius-3xl)] border px-5 py-12 text-center"
-                  style={{
-                    borderColor: "color-mix(in srgb, var(--home-warning) 32%, var(--home-rule))",
-                    background: "color-mix(in srgb, var(--home-warning) 10%, var(--home-paper))",
-                  }}
-                >
-                  <p className="text-lg font-semibold">
-                    {selectedScoringLabel} {FANTASY_POSITION_LABELS[routeState.position]} rankings are unavailable.
-                  </p>
-                  <p className="mt-2 text-sm" style={{ color: "var(--home-ink-muted)" }}>
-                    {sliceMetadata?.reason ??
-                      "This scoring-position combination is not published in the current snapshot."}
-                  </p>
-                </div>
-              ) : filteredPlayers.length === 0 ? (
-                <div
-                  className="rounded-[var(--radius-3xl)] border px-5 py-12 text-center"
-                  style={{
-                    borderColor: "var(--home-rule)",
-                    background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
-                  }}
-                >
-                  <p className="text-lg font-semibold">No matching players</p>
-                  <p className="mt-2 text-sm" style={{ color: "var(--home-ink-muted)" }}>
-                    Clear the search or switch the board to see more names.
-                  </p>
-                </div>
-              ) : routeState.view === "tiers" ? (
-                <TierBreakdown
-                  players={filteredPlayers}
-                  position={routeState.position}
-                  getPublishedRank={(player) => getPublishedBoardRank(player, routeState.position)}
-                  onSelectPlayer={setDetailPlayer}
-                  isQueued={(id) => queue.isQueued(id)}
-                  onToggleQueue={(id) => queue.toggle(id)}
-                />
-              ) : (
-                <>
-                  <ul role="list" className="grid gap-2.5">
-                    {renderListRows()}
-                  </ul>
-                  {hasMore && (
-                    <div ref={sentinelRef} className="mt-4 flex justify-center">
-                      <button
-                        type="button"
-                        onClick={() =>
-                          setVisibleCount((count) => Math.min(count + RANKINGS_PAGE_SIZE, filteredPlayers.length))
-                        }
-                        className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-5 text-sm font-semibold"
-                        style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)" }}
-                      >
-                        Load more ({filteredPlayers.length - windowedPlayers.length} left)
-                      </button>
-                    </div>
-                  )}
-                </>
-              )}
-            </div>
-          </article>
-
-          {/* The rail runs taller than the space a sticky element actually gets, which is the
-              viewport minus the 6rem offset. Without a bounded height the last card sits below
-              the fold for the whole scroll and its action is unreachable while pinned. */}
-          <aside
-            aria-label="Board details"
-            className="grid gap-5 lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:self-start lg:overflow-y-auto lg:overscroll-contain"
+        <div
+          className="mt-7 flex flex-wrap items-baseline justify-between gap-x-5 gap-y-2 border-t pt-3.5"
+          style={{ borderColor: "var(--home-rule)" }}
+        >
+          <span
+            className="font-mono text-2xs"
+            style={{
+              color: sourceStaleness === "fresh" ? "var(--home-ink-muted)" : "var(--home-warning)",
+            }}
           >
-            <article className="home-card p-5 sm:p-6">
-              <div className="flex items-center gap-3">
-                <Shield className="h-5 w-5" style={{ color: "var(--home-signal)" }} aria-hidden="true" />
-                <div>
-                  <p className="home-kicker mb-0">Freshness</p>
-                  <p className="text-sm font-semibold">{currentSourceKindLabel}</p>
-                </div>
-              </div>
-              <div className="mt-4 grid gap-3">
-                <div
-                  className="rounded-[var(--radius-3xl)] border px-4 py-3"
-                  style={{
-                    borderColor: "var(--home-rule)",
-                    background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
-                  }}
-                >
-                  <div className="mb-1 flex items-center justify-between gap-2">
-                    <p className="home-kicker mb-0">Source updated</p>
-                    <FreshnessChip date={currentSourceUpdatedAt} />
-                  </div>
-                  <p className="text-sm font-semibold">{formatUpdatedAt(currentSourceUpdatedAt)}</p>
-                </div>
-                <div
-                  className="rounded-[var(--radius-3xl)] border px-4 py-3"
-                  style={{
-                    borderColor: "var(--home-rule)",
-                    background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
-                  }}
-                >
-                  <div className="mb-1 flex items-center justify-between gap-2">
-                    <p className="home-kicker mb-0">Snapshot built</p>
-                    <FreshnessChip date={metadata?.generatedAt} />
-                  </div>
-                  <p className="text-sm font-semibold">{formatUpdatedAt(metadata?.generatedAt)}</p>
-                </div>
-                {adpSource && (
-                  <div
-                    className="rounded-[var(--radius-3xl)] border px-4 py-3"
-                    style={{
-                      borderColor: "var(--home-rule)",
-                      background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
-                    }}
-                  >
-                    <div className="mb-1 flex items-center justify-between gap-2">
-                      <p className="home-kicker mb-0">ADP source</p>
-                      {adpFreshness === "prior-season" && (
-                        <span className={FANTASY_CHIP_CLASS} style={STALENESS_TONE.aging}>
-                          Prior season
-                        </span>
-                      )}
-                      {adpFreshness === "stale" && (
-                        <span className={FANTASY_CHIP_CLASS} style={STALENESS_TONE.stale}>
-                          Stale
-                        </span>
-                      )}
-                    </div>
-                    <p className="text-sm font-semibold">{adpSource.provider}</p>
-                    <p className="mt-1 text-xs" style={{ color: "var(--home-ink-muted)" }}>
-                      {adpSource.asOf ? `As of ${formatUpdatedAt(adpSource.asOf)}` : "Sample date not published"}
-                      {adpSource.sampleSize
-                        ? ` from ${adpSource.sampleSize.toLocaleString()} mock drafts`
-                        : ""}
-                    </p>
-                    {adpFreshness === "prior-season" && (
-                      <p className="mt-2 text-xs" style={{ color: "var(--home-ink-muted)" }}>
-                        {`${metadata?.season ?? ""} mock drafts have not started yet, so this carries last season's final ADP. It refreshes automatically once new drafts post.`}
-                      </p>
-                    )}
-                    {adpFreshness === "stale" && (
-                      <p className="mt-2 text-xs" style={{ color: "var(--home-negative)" }}>
-                        This mock-draft sample is more than four days old during draft season. Treat
-                        value and reach labels as unavailable until the next refresh.
-                      </p>
-                    )}
-                  </div>
-                )}
-              </div>
-            </article>
-
-            {/* Watchlist — shared with the draft assistant via the browser. */}
-            <article className="home-card p-5 sm:p-6">
-              <div className="flex items-center justify-between gap-3">
-                <div className="flex items-center gap-3">
-                  <Star className="h-5 w-5" style={{ color: "var(--home-signal)" }} fill="currentColor" aria-hidden="true" />
-                  <div>
-                    <p className="home-kicker mb-0">My Queue</p>
-                    <p className="text-sm font-semibold">{queue.queue.length} starred</p>
-                  </div>
-                </div>
-                {queue.queue.length > 0 && (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (queueClearArmed) {
-                        queue.clear();
-                        setQueueClearArmed(false);
-                        return;
-                      }
-                      setQueueClearArmed(true);
-                    }}
-                    aria-label={queueClearArmed ? "Confirm clear queue" : "Clear queue"}
-                    className="inline-flex min-h-touch items-center rounded-full px-3 text-xs font-semibold"
-                    style={{ color: queueClearArmed ? "var(--home-negative)" : "var(--home-ink-muted)" }}
-                  >
-                    {queueClearArmed ? "Confirm clear" : "Clear queue"}
-                  </button>
-                )}
-              </div>
-              <div className="mt-4 grid gap-2">
-                {queuedPlayers.length === 0 ? (
-                  <p className="text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
-                    Star players from the board to build a watchlist. It travels with you into the draft assistant.
-                  </p>
-                ) : (
-                  queuedPlayers.slice(0, 12).map((player) => (
-                    <div
-                      key={player.id}
-                      className="flex items-center gap-2 rounded-[var(--radius-3xl)] border px-3 py-2"
-                      style={{
-                        borderColor: "var(--home-rule)",
-                        background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
-                      }}
-                    >
-                      <button
-                        type="button"
-                        onClick={() => setDetailPlayer(player)}
-                        className="flex min-w-0 flex-1 items-center gap-2 text-left"
-                      >
-                        <span className={FANTASY_CHIP_CLASS} style={getPositionTone(player.position)}>
-                          {player.position}
-                        </span>
-                        <span className="min-w-0 truncate text-sm font-semibold">{player.name}</span>
-                        <span className="ml-auto shrink-0 text-xs" style={{ color: "var(--home-ink-muted)" }}>
-                          {player.team}
-                        </span>
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => queue.remove(player.id)}
-                        aria-label={`Remove ${player.name} from queue`}
-                        className="-my-2 inline-flex h-11 w-11 shrink-0 items-center justify-center"
-                      >
-                        <span
-                          className="inline-flex h-7 w-7 items-center justify-center rounded-full border"
-                          style={{ borderColor: "var(--home-rule)" }}
-                        >
-                          <X size={13} aria-hidden="true" />
-                        </span>
-                      </button>
-                    </div>
-                  ))
-                )}
-                {queuedPlayers.length > 12 && (
-                  <p className="text-xs" style={{ color: "var(--home-ink-muted)" }}>
-                    +{queuedPlayers.length - 12} more on your watchlist
-                  </p>
-                )}
-              </div>
-            </article>
-
-            <article
-              className="home-card p-5 sm:p-6"
-              style={{
-                background:
-                  "linear-gradient(145deg, color-mix(in srgb, var(--home-signal) 12%, var(--home-paper)) 0%, color-mix(in srgb, var(--home-signal) 14%, var(--home-paper)) 100%)",
-              }}
-            >
-              <p className="home-kicker mb-1">Draft Assistant</p>
-              <h3 className="text-xl font-semibold">Track the room without leaving the board.</h3>
-              <p className="mt-3 text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
-                Use the same snapshot inside the draft assistant, log picks manually, and let it flag steals,
-                reaches, and position runs, then compare your roster against the room and run your own expected return assumptions.
-              </p>
+            {sourceStaleness === "fresh"
+              ? `Refreshes daily through draft season, weekly after${snapshotStamp ? ` · snapshot ${snapshotStamp}` : ""}`
+              : `${getSnapshotStalenessLabel(sourceStaleness)} board · source updated ${sourceStamp ?? "date unknown"}`}
+          </span>
+          <nav aria-label="More fantasy tools" className="flex flex-wrap gap-x-5 gap-y-2">
+            {FANTASY_TOOLS.map((tool) => (
               <Link
-                href="/fantasy-football/draft-tracker"
-                className="mt-5 inline-flex min-h-[48px] items-center gap-2 rounded-full border px-4 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200"
-                style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
+                key={tool.href}
+                href={tool.href}
+                className="inline-flex min-h-touch items-center text-sm font-semibold no-underline"
+                style={{ color: "var(--home-ink)" }}
               >
-                Launch draft assistant
-                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                {tool.label}
+                <span aria-hidden="true">&nbsp;↗</span>
               </Link>
-            </article>
-          </aside>
+            ))}
+          </nav>
         </div>
 
         <section className="mt-10" aria-labelledby="fantasy-rankings-questions">
           <div className="max-w-3xl">
             <p className="home-kicker mb-2">How the board works</p>
-            {/* Sits a step below the board heading at every width, so a support section on
-                an Operate surface never reads louder than the board it supports. Uses ramp
-                steps rather than an arbitrary size to keep the board leading on a phone. */}
             <h2 id="fantasy-rankings-questions" className="text-xl font-semibold sm:text-2xl">
               Fantasy rankings questions
             </h2>
@@ -1160,21 +1527,20 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
         </section>
       </div>
 
-      <PlayerDetailDrawer
-        player={detailPlayer}
-        publishedRank={detailPlayer ? getPublishedBoardRank(detailPlayer, routeState.position) : undefined}
-        boardTierCount={maxTier > 0 ? maxTier : undefined}
-        adpAvailable={adpAvailable}
-        valueSignalAvailable={routeState.position === "overall" || routeState.position === "flex"}
-        onClose={() => setDetailPlayer(null)}
-      />
-      <CompareTray
-        resolvePlayer={(id) => playerLookup.get(id)}
-        playerDataReady={!isLoading && hasCompleteFantasyPlayerUniverse(snapshot)}
-        publishedRank={(player) => getPublishedBoardRank(player, routeState.position)}
-        valueSignalAvailable={routeState.position === "overall" || routeState.position === "flex"}
-        adpAvailable={adpAvailable}
-      />
+      {detailPlayer && (
+        <DraftPlayerDrawer
+          player={detailPlayer}
+          publishedRank={getPublishedBoardRank(detailPlayer, routeState.position)}
+          boardTierCount={maxTier > 0 ? maxTier : null}
+          adpAvailable={adpAvailable}
+          vsAdpMeaningful={vsAdpMeaningful}
+          neighbors={neighborhood}
+          activePosition={routeState.position}
+          scoringLabel={selectedScoringLabel}
+          onSelectNeighbor={(id) => setDetailPlayerId(id)}
+          onClose={() => setDetailPlayerId(null)}
+        />
+      )}
     </section>
   );
 }

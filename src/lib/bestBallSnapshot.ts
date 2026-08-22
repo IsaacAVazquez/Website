@@ -9,9 +9,34 @@ const BEST_BALL_MIN_SUPERFLEX_MATCHES = 150;
 const BEST_BALL_MIN_SUPERFLEX_COVERAGE = 0.9;
 export const BEST_BALL_SUPERFLEX_TOP_BOARD_SIZE = 150;
 const BEST_BALL_MIN_SUPERFLEX_TOP_BOARD_COVERAGE = 0.95;
-const BEST_BALL_MIN_SUPERFLEX_QB_COVERAGE = 1;
+const BEST_BALL_MIN_SUPERFLEX_QB_COVERAGE = 0.9;
+export const BEST_BALL_SUPERFLEX_CORE_QB_COUNT = 42;
+const BEST_BALL_MIN_SUPERFLEX_CORE_QB_COVERAGE = 1;
 const BEST_BALL_MIN_ADP_MATCHES = 150;
 const BEST_BALL_MIN_ADP_RELATIVE_COVERAGE = 0.8;
+
+function getPlayerPositionRank(player: Player): number {
+  return Number.isFinite(player.positionRank)
+    ? Number(player.positionRank)
+    : Number(player.averageRank);
+}
+
+/**
+ * A 12-team Superflex room targets three to four quarterbacks per roster. Keep
+ * the midpoint pool exact, while the separate all-QB gate catches a broader
+ * source collapse without requiring fringe players to have a published rank.
+ */
+export function getBestBallSuperflexCoreQuarterbackIds(
+  players: readonly Player[]
+): Set<string> {
+  return new Set(
+    players
+      .filter((player) => player.position === "QB")
+      .sort((left, right) => getPlayerPositionRank(left) - getPlayerPositionRank(right))
+      .slice(0, BEST_BALL_SUPERFLEX_CORE_QB_COUNT)
+      .map((player) => player.id)
+  );
+}
 
 export function assertBestBallRankingCoverage({
   players,
@@ -38,7 +63,13 @@ export function assertBestBallRankingCoverage({
   }
 }
 
-export function assertBestBallAdpCoverage({
+/**
+ * Decides whether a fresh best ball ADP pull is deep enough to publish. Returns a
+ * verdict rather than throwing so the builder can drop back to prior prices and
+ * still ship the rankings, matching how the redraft lane's resolveAdpFormat keeps
+ * publishing when a board comes back thin.
+ */
+export function evaluateBestBallAdpCoverage({
   freshSourceReceived,
   matches,
   previousMatches,
@@ -50,8 +81,8 @@ export function assertBestBallAdpCoverage({
   previousMatches: number;
   previousTopPlayers: number;
   retainedTopPlayers: number;
-}): void {
-  if (!freshSourceReceived) return;
+}): { ok: boolean; message: string } {
+  if (!freshSourceReceived) return { ok: true, message: "" };
   const requiredMatches = Math.max(
     BEST_BALL_MIN_ADP_MATCHES,
     Math.ceil(previousMatches * BEST_BALL_MIN_ADP_RELATIVE_COVERAGE)
@@ -60,9 +91,24 @@ export function assertBestBallAdpCoverage({
     previousTopPlayers * BEST_BALL_MIN_ADP_RELATIVE_COVERAGE
   );
   if (matches < requiredMatches || retainedTopPlayers < requiredTopPlayers) {
-    throw new Error(
-      `Best ball snapshot matched ADP for ${matches} players versus ${previousMatches} previously, and retained ${retainedTopPlayers} of ${previousTopPlayers} prior top-board prices.`
-    );
+    return {
+      ok: false,
+      message: `Best ball snapshot matched ADP for ${matches} players versus ${previousMatches} previously, and retained ${retainedTopPlayers} of ${previousTopPlayers} prior top-board prices.`,
+    };
+  }
+  return { ok: true, message: "" };
+}
+
+export function assertBestBallAdpCoverage(input: {
+  freshSourceReceived: boolean;
+  matches: number;
+  previousMatches: number;
+  previousTopPlayers: number;
+  retainedTopPlayers: number;
+}): void {
+  const verdict = evaluateBestBallAdpCoverage(input);
+  if (!verdict.ok) {
+    throw new Error(verdict.message);
   }
 }
 
@@ -77,6 +123,9 @@ export function assertBestBallSuperflexCoverage({
   quarterbackPlayers,
   quarterbackRankMatches,
   quarterbackTierMatches,
+  coreQuarterbackPlayers,
+  coreQuarterbackRankMatches,
+  coreQuarterbackTierMatches,
   hasPreviousSource,
 }: {
   freshSourceReceived: boolean;
@@ -89,6 +138,9 @@ export function assertBestBallSuperflexCoverage({
   quarterbackPlayers: number;
   quarterbackRankMatches: number;
   quarterbackTierMatches: number;
+  coreQuarterbackPlayers: number;
+  coreQuarterbackRankMatches: number;
+  coreQuarterbackTierMatches: number;
   hasPreviousSource: boolean;
 }): void {
   const requiredOverallMatches = Math.max(
@@ -101,17 +153,23 @@ export function assertBestBallSuperflexCoverage({
   const requiredQuarterbackMatches = Math.ceil(
     quarterbackPlayers * BEST_BALL_MIN_SUPERFLEX_QB_COVERAGE
   );
+  const requiredCoreQuarterbackMatches = Math.ceil(
+    coreQuarterbackPlayers * BEST_BALL_MIN_SUPERFLEX_CORE_QB_COVERAGE
+  );
   if (
     freshSourceReceived &&
-    (rankMatches < requiredOverallMatches ||
+    (coreQuarterbackPlayers < BEST_BALL_SUPERFLEX_CORE_QB_COUNT ||
+      rankMatches < requiredOverallMatches ||
       tierMatches < requiredOverallMatches ||
       topBoardRankMatches < requiredTopBoardMatches ||
       topBoardTierMatches < requiredTopBoardMatches ||
       quarterbackRankMatches < requiredQuarterbackMatches ||
-      quarterbackTierMatches < requiredQuarterbackMatches)
+      quarterbackTierMatches < requiredQuarterbackMatches ||
+      coreQuarterbackRankMatches < requiredCoreQuarterbackMatches ||
+      coreQuarterbackTierMatches < requiredCoreQuarterbackMatches)
   ) {
     throw new Error(
-      `Best ball snapshot matched Superflex ranks for ${rankMatches} of ${totalPlayers} players and tiers for ${tierMatches}. The top ${topBoardPlayers} matched ${topBoardRankMatches} ranks and ${topBoardTierMatches} tiers. Quarterbacks matched ${quarterbackRankMatches} ranks and ${quarterbackTierMatches} tiers out of ${quarterbackPlayers}.`
+      `Best ball snapshot matched Superflex ranks for ${rankMatches} of ${totalPlayers} players and tiers for ${tierMatches}. The top ${topBoardPlayers} matched ${topBoardRankMatches} ranks and ${topBoardTierMatches} tiers. Quarterbacks matched ${quarterbackRankMatches} ranks and ${quarterbackTierMatches} tiers out of ${quarterbackPlayers}. The protected quarterback core contains ${coreQuarterbackPlayers} of ${BEST_BALL_SUPERFLEX_CORE_QB_COUNT} required players and matched ${coreQuarterbackRankMatches} ranks and ${coreQuarterbackTierMatches} tiers.`
     );
   }
   if (!freshSourceReceived && !hasPreviousSource) {

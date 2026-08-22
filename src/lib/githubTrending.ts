@@ -35,6 +35,12 @@ export interface GitHubTrendingSourceSegment {
   query: string;
   sourceUrl: string;
   repositories: GitHubTrendingSourceRepository[];
+  /**
+   * True when this segment was restored from the previous snapshot because its
+   * fetch failed. Its star counts are the previous run's, so they must not be
+   * stamped into the append-only star history under today's date.
+   */
+  reused?: boolean;
 }
 
 interface BuildGitHubTrendingSnapshotInput {
@@ -76,7 +82,8 @@ function sortHistory(history: GitHubTrendingStarPoint[]): GitHubTrendingStarPoin
 function mergeStarHistory(
   previousHistory: GitHubTrendingStarPoint[] | undefined,
   stars: number,
-  generatedAt: string
+  generatedAt: string,
+  reused = false
 ): GitHubTrendingStarPoint[] {
   const today = toUtcDateKey(generatedAt);
   const byDate = new Map<string, GitHubTrendingStarPoint>();
@@ -84,7 +91,17 @@ function mergeStarHistory(
   for (const point of previousHistory ?? []) {
     byDate.set(point.date, point);
   }
-  byDate.set(today, { date: today, stars });
+  // A reused segment carries the previous run's star count, so writing it under
+  // today's date records a measurement that never happened. The series only ever
+  // sets today's key, so the false point could not be corrected on a later run:
+  // it became the baseline on exactly one day, day N+7, silently widening the
+  // seven-day window to eight and overstating weeklyStars for that day while the
+  // page reported the figure as "measured". Leave the gap instead.
+  // calculateWeeklyStars already falls back to the nearest earlier point and
+  // labels the result, so an honest partial beats a fabricated measurement.
+  if (!reused) {
+    byDate.set(today, { date: today, stars });
+  }
 
   const minDate = addDays(today, -MAX_HISTORY_DAYS);
   return sortHistory(Array.from(byDate.values())).filter(
@@ -189,7 +206,17 @@ export function buildGitHubTrendingSnapshot({
   );
   const repoById = new Map<number, GitHubTrendingRepository>();
 
-  for (const segment of segments) {
+  // A repo can appear in several segments and the first one seen seeds its star
+  // history, so process live segments before reused ones. Otherwise a repo that
+  // is present in both would take the reused segment's stale count and skip
+  // today's point even though a live reading for it was fetched. `segments`
+  // itself keeps its original order, since the language and topic sections below
+  // are built from it.
+  const orderedSegments = [...segments].sort(
+    (left, right) => Number(left.reused ?? false) - Number(right.reused ?? false)
+  );
+
+  for (const segment of orderedSegments) {
     for (const sourceRepo of segment.repositories) {
       const existing = repoById.get(sourceRepo.id);
       if (existing) {
@@ -203,7 +230,8 @@ export function buildGitHubTrendingSnapshot({
       const starHistory = mergeStarHistory(
         previous?.starHistory,
         sourceRepo.stars,
-        generatedAt
+        generatedAt,
+        segment.reused ?? false
       );
       const weekly = calculateWeeklyStars(
         starHistory,

@@ -1,5 +1,7 @@
+import ReactDOM from "react-dom";
 import { StructuredData } from "@/components/StructuredData";
-import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { absoluteUrl, constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { fantasySnapshotRevision } from "@/data/fantasySnapshotRevision.generated";
 import { FANTASY_FOOTBALL_FAQ } from "./fantasy-faq";
 import { FantasyFootballClient } from "./fantasy-football-client";
 import { normalizeFantasyState } from "./fantasy-state";
@@ -7,9 +9,10 @@ import { normalizeFantasyState } from "./fantasy-state";
 export const metadata = constructMetadata({
   title: "Fantasy Football Rankings",
   description:
-    "Snapshot-backed fantasy football rankings with scoring toggles, a linked draft assistant, room-relative Draft Outlook, and an expected return calculator.",
+    "Tier-first fantasy football rankings from a published FantasyPros snapshot, with expert spread bars, rank cliffs, scoring toggles, and a linked draft assistant.",
   canonicalUrl: "/fantasy-football",
-  dateModified: "2026-08-02",
+  image: "/fantasy-football/opengraph-image",
+  dateModified: fantasySnapshotRevision.slice(0, 10),
 });
 
 interface FantasyFootballPageProps {
@@ -17,11 +20,19 @@ interface FantasyFootballPageProps {
     position?: string;
     scoring?: string;
     view?: string;
+    q?: string;
   }>;
 }
 
 export default async function FantasyFootballPage({ searchParams }: FantasyFootballPageProps) {
   const initialState = normalizeFantasyState(await searchParams);
+  // The board's fetch cannot start until the client bundle has downloaded and
+  // hydrated, so the critical path ran HTML, then JS, then JSON in series. This
+  // URL matches useFantasySnapshot's request exactly, so the in-flight preload
+  // is reused rather than duplicated.
+  ReactDOM.preload(`/data/fantasy/${initialState.scoring}.json?v=${fantasySnapshotRevision}`, {
+    as: "fetch",
+  });
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "Fantasy Football", url: "/fantasy-football" },
@@ -39,6 +50,7 @@ export default async function FantasyFootballPage({ searchParams }: FantasyFootb
         type="SportsApplication"
         data={{
           name: "Fantasy Football Rankings",
+          url: absoluteUrl("/fantasy-football"),
           description:
             "Published fantasy football rankings and draft assistant with sourced overall and position boards.",
           applicationCategory: "SportsApplication",

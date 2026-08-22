@@ -2,6 +2,7 @@
  * @jest-environment node
  */
 import { buildBayAreaTransitSnapshotData } from "../bayAreaTransitData";
+import type { TransitStationBoard } from "@/types/bayAreaTransit";
 
 function jsonResponse(payload: unknown, status = 200): Response {
   return new Response(JSON.stringify(payload), {
@@ -207,9 +208,131 @@ function mockFetch(fetcher: Fetcher) {
   });
 }
 
+/** Previously committed boards, with one departure each. */
+function makePreviousBoards(ids: string[]): Record<string, TransitStationBoard> {
+  return Object.fromEntries(
+    ids.map((id) => [
+      id,
+      {
+        id,
+        abbr: id.toUpperCase(),
+        name: id.toUpperCase(),
+        departures: [
+          {
+            destination: "Antioch",
+            destinationAbbr: "ANTC",
+            minutes: 5,
+            platform: "2",
+            direction: "North",
+            length: 10,
+            colorName: "Yellow",
+            hexColor: "#ffff33",
+            delaySeconds: 0,
+            bikesAllowed: true,
+          },
+        ],
+        generatedAt: "2026-06-22T16:15:00.000Z",
+      },
+    ])
+  );
+}
+
+/** An etd.aspx response covering only the named stations. */
+function etdWithStations(names: Array<{ name: string; abbr: string }>) {
+  return {
+    root: {
+      date: "06/22/2026",
+      time: "04:15:00 AM PDT",
+      station: names.map(({ name, abbr }) => ({
+        name,
+        abbr,
+        etd: [
+          {
+            destination: "Antioch",
+            abbreviation: "ANTC",
+            estimate: [
+              {
+                minutes: "9",
+                platform: "2",
+                direction: "North",
+                length: "10",
+                color: "YELLOW",
+                hexcolor: "#ffff33",
+                bikeflag: "1",
+                delay: "0",
+              },
+            ],
+          },
+        ],
+      })),
+    },
+  };
+}
+
+function fetcherWithEtd(etd: unknown): (url: string) => Response {
+  return (url) =>
+    url.includes("etd.aspx") ? jsonResponse(etd) : defaultFetcher(url);
+}
+
 describe("buildBayAreaTransitSnapshotData", () => {
   afterEach(() => {
     jest.restoreAllMocks();
+  });
+
+  // BART's etd.aspx?cmd=etd&orig=ALL only returns stations with a departure
+  // inside its lookahead window, so a successful pre-service call can come back
+  // with one station instead of forty-plus. Committing that collapses
+  // stationBoards and makes every other station route 404.
+  it("keeps the previous boards when the departures feed collapses", async () => {
+    mockFetch(
+      fetcherWithEtd(etdWithStations([{ name: "Embarcadero", abbr: "EMBR" }]))
+    );
+
+    const previousBoards = makePreviousBoards(["embr", "mont", "powl", "12th"]);
+    const { summary, stationBoards } = await buildBayAreaTransitSnapshotData({
+      previousBoards,
+    });
+
+    expect(Object.keys(stationBoards).sort()).toEqual([
+      "12th",
+      "embr",
+      "mont",
+      "powl",
+    ]);
+    expect(summary.sectionStatus?.departures).toBe("stale-fallback");
+    // trainsTracked is recomputed from the boards actually shipped.
+    expect(summary.heroStats.trainsTracked).toBe(4);
+  });
+
+  it("accepts a fresh feed that still covers at least half the previous boards", async () => {
+    mockFetch(
+      fetcherWithEtd(
+        etdWithStations([
+          { name: "Embarcadero", abbr: "EMBR" },
+          { name: "Montgomery St.", abbr: "MONT" },
+        ])
+      )
+    );
+
+    // Two fresh against four previous is exactly half, so it is not degraded.
+    // A proportional floor rather than "fewer than before", so a genuinely
+    // closed station cannot ratchet the guard permanently shut.
+    const { summary, stationBoards } = await buildBayAreaTransitSnapshotData({
+      previousBoards: makePreviousBoards(["embr", "mont", "powl", "12th"]),
+    });
+
+    expect(Object.keys(stationBoards).sort()).toEqual(["embr", "mont"]);
+    expect(summary.sectionStatus?.departures).toBe("fresh");
+    expect(summary.heroStats.trainsTracked).toBe(2);
+  });
+
+  it("uses the fresh boards when there is no previous snapshot", async () => {
+    mockFetch(defaultFetcher);
+
+    const { summary, stationBoards } = await buildBayAreaTransitSnapshotData();
+
+    expect(Object.keys(stationBoards).sort()).toEqual(["embr", "mont"]);
+    expect(summary.sectionStatus?.departures).toBe("fresh");
   });
 
   it("builds a snapshot with normalized stations, line mappings, advisories, elevator outages, and departures", async () => {

@@ -120,7 +120,7 @@ Page-level clients live at `src/app/premier-league/premier-league-client.tsx` an
 
 Route clients:
 
-- `src/app/fantasy-football/fantasy-football-client.tsx` — rankings board (List/Tiers, position/scoring/search filters, density toggle, infinite-scroll windowing, sidebar, stats panel, legend)
+- `src/app/fantasy-football/fantasy-football-client.tsx` — tier-plate rankings board from the `draft-rankings` design template (sticky position/scoring/search bar, avg-rank cliff separators, expert-spread bars, windowing, and its own player drawer with neighborhood, queue, and notes)
 - `src/app/fantasy-football/draft-tracker/draft-tracker-client.tsx` — draft assistant (reuses snapshot + shared drawer/compare/notes/queue)
 - `src/app/fantasy-football/draft-tracker/components/DraftBoard.tsx`
 - `src/app/fantasy-football/draft-tracker/components/DraftSetup.tsx`
@@ -128,12 +128,8 @@ Route clients:
 
 Shared presentation components in `src/components/fantasy/` (barrel-exported via `index.ts`):
 
-- `TierBreakdown` — Tiers view (tier-grouped sections, counts, rank ranges, rank-cliff hints)
-- `RankingsListRow` — single List-view row (published rank, position chip, expert range, ADP Value/Reach chip, rostered %/bye, queue + compare toggles, `compact` density)
-- `TierBreakSeparator` — labeled tier-boundary rule injected into the List view
 - `PositionFilterBar` (+ `PositionFilterOption` type) — shared position pill radiogroup with per-slice availability/NA states
-- `FantasyBoardLegend` — collapsible "How to read this board" key keyed to `FANTASY_BOARD_LEGEND`
-- `PlayerDetailDrawer` — shared focus-trapped detail drawer/bottom-sheet (position rank, tier N of M, ADP, distribution bar, editable private note, queue/compare toggles)
+- `PlayerDetailDrawer` — focus-trapped detail drawer/bottom-sheet (position rank, tier N of M, ADP, distribution bar, editable private note, queue/compare toggles); used by the draft assistant and best ball, while the rankings board renders its own template drawer in `fantasy-football-client.tsx`
 - `RankDistributionBar` — expert best→worst spread with consensus marker and tight/mixed/volatile coloring
 - `CompareTray` — docked bottom bar for the pinned compare selection (up to 3)
 - `CompareModal` — side-by-side compare dialog with per-row winner highlighting

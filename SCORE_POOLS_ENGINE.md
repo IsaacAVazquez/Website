@@ -1,5 +1,7 @@
 # Score Pools Engine
 
+**Last updated:** 2026-07-20
+
 The exact-score prediction engine behind `/score-pools`, and the reference for
 anyone changing it. The engine is the point of the surface: it formalizes the
 process I ran by hand through a full World Cup of pool play, from de-vigging the

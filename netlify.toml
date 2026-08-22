@@ -1,6 +1,9 @@
 [build]
   command = "npm run build && rm -rf .next/standalone/*/public/data node_modules/@img node_modules/sharp"
   publish = ".next"
+  # Decides which git-triggered builds Netlify runs at all. Production and
+  # dependabot previews are skipped; see the script for why.
+  ignore = "sh scripts/ci/netlify-ignore.sh"
   
 [build.environment]
   SECRETS_SCAN_OMIT_PATHS = ".netlify/deploy/v1/blobs/**,.netlify/edge-functions/**,.netlify/functions-internal/**,.next/**"
@@ -21,8 +24,8 @@
 # NEXTAUTH_SECRET = "your-nextauth-secret-here"
 # ADMIN_USERNAME = "your-admin-username"
 # ADMIN_PASSWORD = "your-admin-password"
-# Fantasy snapshot refreshes run in GitHub Actions. Set FANTASYPROS_API_KEY in
-# GitHub Actions secrets; the deployed Netlify runtime does not need this key.
+# Fantasy snapshot refreshes run in GitHub Actions from public rankings pages.
+# The deployed Netlify runtime does not need FANTASYPROS_API_KEY.
 # CRON_SECRET = "your-cron-secret-here"
 
 # CSS files — explicit MIME type prevents text/plain serving on Netlify

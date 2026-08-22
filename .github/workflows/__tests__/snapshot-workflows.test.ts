@@ -100,17 +100,44 @@ describe("snapshot refresh workflow infrastructure", () => {
     // refresh workflows each triggering their own build exhausted the Netlify account's
     // build minutes, which silently stopped every deploy. The ledger check makes batching
     // safe because it compares production against the committed revision rather than
-    // against whichever refresh happened to trigger the run.
+    // against whichever refresh happened to trigger the run. Batching survived the move
+    // to building in Actions because the refresh commits carry [skip ci], so they never
+    // fire the push trigger and instead accumulate until the next scheduled run.
     expect(publicationWorkflow).toContain("schedule:");
     expect(publicationWorkflow).toContain("workflow_dispatch:");
     expect(publicationWorkflow).not.toContain("workflow_run:");
     expect(publicationWorkflow).toContain("group: publish-refreshed-data");
-    expect(publicationWorkflow).toContain("cancel-in-progress: true");
+    // Publication used to fire a build hook, which was harmless to kill mid-flight.
+    // It now builds and uploads the deploy itself, and cancelling that part way
+    // through its upload is not harmless.
+    expect(publicationWorkflow).toContain("cancel-in-progress: false");
     expect(publicationWorkflow).toContain("printDataLedgerRevision.ts");
     expect(publicationWorkflow).toContain("ensure-production-data-ledger.mjs");
     expect(publicationWorkflow).toContain("EXPECTED_COMMIT");
     expect(publicationWorkflow).toContain("fetch-depth: 100");
-    expect(publicationWorkflow).toContain("NETLIFY_BUILD_HOOK is required");
+    // The build moved into Actions, where a public repository gets free minutes,
+    // so it never draws on the account's 300 monthly build minutes. That needs an
+    // auth token, not a hook.
+    expect(publicationWorkflow).toContain("NETLIFY_AUTH_TOKEN is required");
+    // Build and deploy have to stay one command. Splitting them lets
+    // @netlify/plugin-nextjs run its onEnd hook, which swaps .netlify/static back
+    // out of the publish directory, so the upload ships the raw .next tree and
+    // every /_next/static URL 404s. That took production down on 2026-08-20.
+    // Assert against the commands only. The comment above them names the broken
+    // form on purpose, so a raw string search would match the explanation.
+    const publicationCommands = publicationWorkflow
+      .split("\n")
+      .filter((line) => !line.trim().startsWith("#"))
+      .join("\n");
+    expect(publicationCommands).toMatch(
+      /netlify-cli@[\d.]+ deploy \\\n\s+--prod \\\n\s+--context production/
+    );
+    expect(publicationCommands).not.toMatch(/--no-build/);
+    expect(publicationCommands).not.toMatch(/netlify-cli@[\d.]+ build/);
+    // The ledger check alone passes on a deploy that published no static assets,
+    // which is exactly what shipped on 2026-08-20, so the file-manifest check has
+    // to stay wired up.
+    expect(publicationCommands).toContain("verify-deploy-assets.mjs");
     expect(verifier).toContain("cacheBust");
     expect(verifier).toContain("publicationRevision");
     expect(verifier).toContain("merge-base");
@@ -168,7 +195,7 @@ describe("snapshot refresh workflow infrastructure", () => {
     expect(workflow).toContain("rankingExperts < 5");
   });
 
-  it("requires and passes the FantasyPros API key into the fantasy snapshot build", () => {
+  it("pins the scheduled fantasy build to public HTML without passing an API key", () => {
     const workflow = fs.readFileSync(
       path.join(workflowsDir, "update-fantasy.yml"),
       "utf8"
@@ -178,17 +205,25 @@ describe("snapshot refresh workflow infrastructure", () => {
     )?.[0];
 
     expect(buildStep).toBeDefined();
-    expect(buildStep).toContain(
-      'if [[ -z "${FANTASYPROS_API_KEY//[[:space:]]/}" ]]'
+    expect(buildStep).toContain("run: npm run update:fantasy");
+    expect(buildStep).toContain("FANTASYPROS_SOURCE: public-html");
+    expect(buildStep).not.toContain("FANTASYPROS_API_KEY");
+    expect(workflow).not.toContain("secrets.FANTASYPROS_API_KEY");
+  });
+
+  it("does not close World Cup incidents on a dormant run", () => {
+    const workflow = fs.readFileSync(
+      path.join(workflowsDir, "update-world-cup.yml"),
+      "utf8"
     );
-    expect(buildStep).toContain("FANTASYPROS_API_KEY is required");
-    expect(buildStep).toContain("npm run update:fantasy");
-    expect(buildStep).toContain(
-      "FANTASYPROS_API_KEY: ${{ secrets.FANTASYPROS_API_KEY }}"
+
+    // Every substantive step is gated on the tournament window, but skipped
+    // steps do not set job status, so a dormant run still reports success().
+    // Gated only on success(), the close step erased real refresh-failure
+    // incidents on runs that refreshed nothing.
+    expect(workflow).toContain(
+      "if: success() && steps.window.outputs.active == 'true'"
     );
-    expect(
-      workflow.match(/^\s+FANTASYPROS_API_KEY:\s+\$\{\{/gm)
-    ).toHaveLength(1);
   });
 
   it("uses modern action majors across workflows", () => {

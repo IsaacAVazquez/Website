@@ -26,7 +26,12 @@ describe("LaLigaClient", () => {
   it("hydrates from the URL state and keeps focused views shareable", async () => {
     const user = userEvent.setup();
     const defaultRelegationClub = getDefaultClubForView("relegation");
-    currentSearchParams = new URLSearchParams("view=europe&club=bet");
+    // Pin a club that is actually visible in the europe view. A hardcoded id
+    // ("bet") broke when a snapshot refresh moved that club out of European
+    // contention: an explicit ?club= that the view cannot resolve falls back
+    // to the default selection and never opens the drawer.
+    const europeClubId = getDefaultClubForView("europe");
+    currentSearchParams = new URLSearchParams(`view=europe&club=${europeClubId}`);
 
     render(
       <LaLigaClient
@@ -45,20 +50,20 @@ describe("LaLigaClient", () => {
           upcomingFixtures: laLigaSnapshot.upcomingFixtures.slice(0, 8),
           teams: laLigaSnapshot.teams,
         }}
-        initialTeamSnapshot={laLigaSnapshot.teamSnapshots.bet ?? null}
+        initialTeamSnapshot={laLigaSnapshot.teamSnapshots[europeClubId] ?? null}
       />
     );
 
-    // Derive the expected club from the pinned club id ("bet") rather than a
+    // Derive the expected club from the pinned club id rather than a
     // hardcoded name, mirroring the client's selectedClub ?? clubs[0] fallback,
     // so the test survives snapshot refreshes (club renames / relegation).
     const expectedClub =
-      laLigaSnapshot.clubs.find((club) => club.id === "bet") ??
+      laLigaSnapshot.clubs.find((club) => club.id === europeClubId) ??
       laLigaSnapshot.clubs[0];
 
-    // "bet" is an explicit, resolvable ?club= selection, so it opens the club
-    // drawer (the standings-row click target) rather than only updating the
-    // inline "Club Detail" tab as before.
+    // The pinned id is an explicit, resolvable ?club= selection, so it opens
+    // the club drawer (the standings-row click target) rather than only
+    // updating the inline "Club Detail" tab as before.
     expect(
       screen.getByRole("dialog", { name: `${expectedClub.name} detail` })
     ).toBeInTheDocument();

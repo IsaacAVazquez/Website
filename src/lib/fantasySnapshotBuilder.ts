@@ -12,6 +12,8 @@ import {
   routeScoringToScoringFormat,
 } from "@/lib/fantasy";
 import { getFantasyAdpDataset } from "@/lib/fantasyAdpData";
+import { getFantasyGameLogDataset } from "@/lib/fantasyGameLogData";
+import type { FantasyGameLogEntry } from "@/lib/fantasyGameLogSource";
 import {
   buildFantasyAdpIndex,
   matchPlayerAdp,
@@ -24,9 +26,13 @@ import {
   getFantasyPositionDataMetadata,
 } from "@/lib/fantasyPositionData";
 import { Player } from "@/types";
+// The season-week helper is pure calendar math and the client surfaces need
+// it too, so it lives in fantasyUtils and is re-exported here for the build
+// scripts that already import it from this module.
+import { getNflRegularSeasonWeek } from "@/lib/fantasyUtils";
 
-const MS_PER_DAY = 86_400_000;
-const NFL_REGULAR_SEASON_WEEKS = 18;
+export { getNflRegularSeasonWeek };
+
 const ADP_MATCH_GATE_MIN_ROWS = 50;
 const ADP_MATCH_GATE_MIN_RATE = 0.6;
 const ADP_TOP_BOARD_SIZE = 150;
@@ -45,33 +51,6 @@ export function getSnapshotSeason(now: Date = new Date()): number {
 }
 
 const SNAPSHOT_SEASON = getSnapshotSeason();
-
-/**
- * Derives the NFL regular-season week for a season from the calendar so a
- * snapshot built mid-season isn't perpetually stamped "Preseason" (week 0).
- *
- * Week 1 kicks off the Thursday after Labor Day (the first Monday of
- * September). Before that we're in the offseason/preseason and report week 0;
- * after kickoff we count regular-season weeks and hold at the final week
- * through the playoffs until the next season opens. This is calendar-derived,
- * not schedule-aware, so it can be off by a day or two around week
- * boundaries — close enough for a freshness label, and self-contained.
- */
-export function getNflRegularSeasonWeek(season: number, now: Date = new Date()): number {
-  // First Monday of September (Labor Day), evaluated in UTC.
-  const septFirst = new Date(Date.UTC(season, 8, 1));
-  const offsetToMonday = (8 - septFirst.getUTCDay()) % 7;
-  const laborDay = new Date(Date.UTC(season, 8, 1 + offsetToMonday));
-  // Week 1's Thursday opener is three days after the Labor Day Monday.
-  const week1Kickoff = laborDay.getTime() + 3 * MS_PER_DAY;
-
-  if (now.getTime() < week1Kickoff) {
-    return 0;
-  }
-
-  const weeksElapsed = Math.floor((now.getTime() - week1Kickoff) / (7 * MS_PER_DAY));
-  return Math.min(NFL_REGULAR_SEASON_WEEKS, weeksElapsed + 1);
-}
 
 const SNAPSHOT_WEEK = getNflRegularSeasonWeek(SNAPSHOT_SEASON);
 const FANTASY_SNAPSHOT_POSITION_ORDER = ["QB", "RB", "WR", "TE", "K", "DST"] as const;
@@ -145,7 +124,9 @@ function getSliceUpdatedAt(players: Player[]): string | null {
 function normalizeSourcedPlayers(
   players: Player[],
   positionOverride?: Player["position"],
-  adpIndex?: FantasyAdpIndex | null
+  adpIndex?: FantasyAdpIndex | null,
+  gameLogIndex?: FantasyAdpIndex<FantasyGameLogEntry> | null,
+  gameLogSeason?: number | null
 ): Player[] {
   return dedupePlayers(players)
     .map((player) => {
@@ -153,10 +134,24 @@ function normalizeSourcedPlayers(
       const adpEntry = adpIndex
         ? matchPlayerAdp({ name: player.name, team: player.team, position }, adpIndex)
         : null;
+      const gameLogEntry = gameLogIndex
+        ? matchPlayerAdp({ name: player.name, team: player.team, position }, gameLogIndex)
+        : null;
 
       return publishFantasyPlayer({
         ...player,
         position,
+        gameLog:
+          gameLogEntry && typeof gameLogSeason === "number"
+            ? {
+                season: gameLogSeason,
+                games: gameLogEntry.games,
+                low: gameLogEntry.low,
+                median: gameLogEntry.median,
+                average: gameLogEntry.average,
+                high: gameLogEntry.high,
+              }
+            : undefined,
         adp: adpEntry?.adp,
         adpHigh: adpEntry?.high,
         adpLow: adpEntry?.low,
@@ -191,13 +186,20 @@ function normalizeSourcedPlayers(
 function buildPositionSlice(
   players: Player[],
   position: Player["position"],
-  adpIndex?: FantasyAdpIndex | null
+  adpIndex?: FantasyAdpIndex | null,
+  gameLogIndex?: FantasyAdpIndex<FantasyGameLogEntry> | null,
+  gameLogSeason?: number | null
 ): Player[] {
-  return normalizeSourcedPlayers(players, position, adpIndex);
+  return normalizeSourcedPlayers(players, position, adpIndex, gameLogIndex, gameLogSeason);
 }
 
-function buildOverallSlice(players: Player[], adpIndex?: FantasyAdpIndex | null): Player[] {
-  return normalizeSourcedPlayers(players, undefined, adpIndex);
+function buildOverallSlice(
+  players: Player[],
+  adpIndex?: FantasyAdpIndex | null,
+  gameLogIndex?: FantasyAdpIndex<FantasyGameLogEntry> | null,
+  gameLogSeason?: number | null
+): Player[] {
+  return normalizeSourcedPlayers(players, undefined, adpIndex, gameLogIndex, gameLogSeason);
 }
 
 function buildFlexSlice(overallPlayers: Player[]): Player[] {
@@ -271,6 +273,10 @@ export function buildFantasySnapshot(scoring: FantasyRouteScoring): FantasySnaps
   const sourceMetadata = getFantasyPositionDataMetadata(scoringFormat);
   const adpDataset = getFantasyAdpDataset(scoringFormat);
   const adpIndex = adpDataset.entries.length > 0 ? buildFantasyAdpIndex(adpDataset.entries) : null;
+  const gameLogDataset = getFantasyGameLogDataset(scoringFormat);
+  const gameLogIndex =
+    gameLogDataset.entries.length > 0 ? buildFantasyAdpIndex(gameLogDataset.entries) : null;
+  const gameLogSeason = gameLogDataset.season;
 
   const sliceMetadata = {
     overall: buildUnavailableSlice(buildUnavailableReason(scoring, "overall")).metadata,
@@ -294,7 +300,7 @@ export function buildFantasySnapshot(scoring: FantasyRouteScoring): FantasySnaps
   } satisfies FantasySnapshot["positions"];
 
   const overallSourcePlayers = getFantasyOverallData(scoringFormat);
-  const overallPlayers = buildOverallSlice(overallSourcePlayers, adpIndex);
+  const overallPlayers = buildOverallSlice(overallSourcePlayers, adpIndex, gameLogIndex, gameLogSeason);
   const overallUpdatedAt = getSliceUpdatedAt(overallPlayers) ?? sourceMetadata.upstreamUpdatedAt;
 
   sliceMetadata.overall =
@@ -310,7 +316,7 @@ export function buildFantasySnapshot(scoring: FantasyRouteScoring): FantasySnaps
       continue;
     }
 
-    const builtPlayers = buildPositionSlice(sourcePlayers, position, adpIndex);
+    const builtPlayers = buildPositionSlice(sourcePlayers, position, adpIndex, gameLogIndex, gameLogSeason);
     const updatedAt = getSliceUpdatedAt(builtPlayers);
     positions[position] = builtPlayers;
     sliceMetadata[routePosition] = buildAvailableSlice(

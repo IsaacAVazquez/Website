@@ -9,7 +9,7 @@ architecture or the per-workflow prose:
 - Per-script and per-workflow detail: `AUTOMATION_SCRIPTS.md`, `CRON_SETUP.md`,
   and the **Automation Surfaces** section of `../AGENTS.md`
 
-**Last updated:** 2026-07-20
+**Last updated:** 2026-08-11
 
 The `update:*` commands write committed TypeScript or JSON artifacts. A failed
 or empty fetch keeps the previous snapshot, and every scheduled job now checks
@@ -24,7 +24,8 @@ fallback.
 
 | Surface | `npm run` | Script(s) | Upstream source | Committed artifact | Workflow | Cadence |
 |---|---|---|---|---|---|---|
-| Fantasy football | `update:fantasy` | `buildFantasyPositionData.ts` → `buildFantasyAdpData.ts` → `buildFantasySnapshots.ts` | FantasyPros cheatsheets + FF Calculator ADP | `public/data/fantasy/{ppr,half_ppr,standard}.json`, `src/data/fantasy*.generated.ts` | `update-fantasy.yml` | daily July through September; weekly otherwise |
+| Fantasy football | `update:fantasy` | `buildFantasyPositionData.ts` → `buildFantasyAdpData.ts` → `buildFantasyGameLogData.ts` → `buildFantasySnapshots.ts` | FantasyPros cheatsheets + FF Calculator ADP + nflverse weekly player stats | `public/data/fantasy/{ppr,half_ppr,standard}.json`, `src/data/fantasy*.generated.ts` | `update-fantasy.yml` | daily July through December; weekly otherwise |
+| Fantasy football weekly board | `update:fantasy:weekly` | `buildFantasyWeeklySnapshot.ts` | FantasyPros weekly flex and quarterback boards | `public/data/fantasy/weekly.json` | `update-fantasy.yml` | daily July through December; no-ops before Week 1 |
 | Investments | `update:investments` | `fetch_investments_data.py` (needs `.venv`) → `buildInvestmentsSnapshots.ts` | `defeatbeta-api` (Python) | `public/data/investments/index.json` + `{SYMBOL}/snapshot.json` | `update-investments.yml` | weekdays 22:15 UTC |
 | Football (both) | `update:football` | `updateFootballSnapshots.ts` | football-data.org *(token)* | `src/data/premierLeagueSnapshot.ts` + `laLigaSnapshot.ts` | none *(full run is manual ~weekly)* | manual |
 | Premier League | `update:premier-league` | `buildPremierLeagueSnapshot.ts` | football-data.org *(token; the summary API also refreshes standings/fixtures at request time when the token is set)* | `src/data/premierLeagueSnapshot.ts` | `update-premier-league.yml` | every 4h, August through May |
@@ -100,9 +101,16 @@ the fallback and the editorial source of truth. See the lane description in
   the committed snapshots.
 - `update:football` (the ~16-min full refresh, including per-team fixtures and
   form) remains an explicit local task, not a build step.
-- `publish-data.yml` coalesces successful refresh workflows, triggers the
-  Netlify build hook only when production is behind, and verifies the complete
-  `/api/data-revisions` ledger before it closes a publication incident.
+- `publish-data.yml` coalesces successful refresh workflows, builds the site in
+  GitHub Actions, uploads it with `netlify deploy --prod --context production`, and verifies the
+  complete `/api/data-revisions` ledger before it closes a publication incident.
+  Building in Actions is deliberate. The Netlify account is on the free tier with
+  300 build minutes a month, it ran out on 2026-08-06, and every git-triggered
+  build after that was skipped, so committed data stopped reaching production.
+  A build that never runs on Netlify's infrastructure does not consume build minutes, and this repository is public
+  so Actions minutes are free. `scripts/ci/netlify-ignore.sh` keeps Netlify from
+  building `main` or dependabot branches on its own. Publication needs the
+  `NETLIFY_AUTH_TOKEN` repository secret.
 
 ---
 

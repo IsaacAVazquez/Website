@@ -103,7 +103,8 @@ function parseCsvRow(line: string): string[] {
   return out;
 }
 
-function parseCsv(text: string): Record<string, string>[] {
+/** Exported for the fantasy game-log builder, which reads the same nflverse CSVs. */
+export function parseCsv(text: string): Record<string, string>[] {
   const lines = text.split(/\r?\n/).filter((line) => line.length > 0);
   if (lines.length === 0) {
     return [];

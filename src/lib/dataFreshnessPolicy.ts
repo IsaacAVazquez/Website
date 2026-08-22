@@ -46,6 +46,16 @@ function inMonthRange(now: Date, start: number, end: number): boolean {
   return value >= start && value <= end;
 }
 
+/**
+ * NBA runs mid-October through June. October is day-aware rather than a whole
+ * month because the refresh cron starts on the 15th; see the note on the policy.
+ */
+function isNbaInSeason(now: Date): boolean {
+  const value = month(now);
+  if (value === 10) return now.getUTCDate() >= 15;
+  return inMonthRange(now, 11, 12) || inMonthRange(now, 1, 6);
+}
+
 const POLICIES: Record<DataSurfaceId, DataFreshnessPolicy> = {
   // The summary API serves live USGS data at request time; the committed
   // artifact is only the cold-start fallback, refreshed daily (06:20 UTC).
@@ -80,15 +90,26 @@ const POLICIES: Record<DataSurfaceId, DataFreshnessPolicy> = {
   },
   nba: {
     source: "git-snapshot",
-    maxAgeMs: (now) => (inMonthRange(now, 10, 12) || inMonthRange(now, 1, 6) ? 8 * HOUR_MS : 150 * DAY_MS),
+    // The refresh cron deliberately starts October 15 ("20 */4 15-31 10 *"),
+    // because ESPN has no regular-season leaders before tip-off and the
+    // workflow's leaders gate fails on an empty board. A whole-month range
+    // declared an 8-hour target from October 1 while no job was scheduled until
+    // the 15th, so the surface reported stale-fallback for two weeks with
+    // nothing able to clear it and no failure issue, because no run fired. Keep
+    // this window aligned with the schedule that actually runs.
+    maxAgeMs: (now) => (isNbaInSeason(now) ? 8 * HOUR_MS : 150 * DAY_MS),
   },
   nfl: {
     source: "git-snapshot",
     maxAgeMs: (now) => (inMonthRange(now, 9, 12) || inMonthRange(now, 1, 2) ? 8 * DAY_MS : 240 * DAY_MS),
   },
   "fantasy-football": {
+    // The daily refresh lane runs July through December, covering drafts and
+    // then the season itself. The window used to end September 30, so from
+    // October a board refreshing every day was measured against a 10-day
+    // target and could rot for a week without anything reporting it.
     source: "git-snapshot",
-    maxAgeMs: (now) => (inMonthRange(now, 7, 9) ? 30 * HOUR_MS : 10 * DAY_MS),
+    maxAgeMs: (now) => (inMonthRange(now, 7, 12) ? 30 * HOUR_MS : 10 * DAY_MS),
   },
   "score-pools": { source: "git-snapshot", maxAgeMs: () => 8 * HOUR_MS },
   "frontier-models": { source: "curated-snapshot", maxAgeMs: () => 45 * DAY_MS },

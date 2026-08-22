@@ -543,9 +543,15 @@ export function getLiveDraftSignals(
     }
   }
 
-  const activeRun =
-    detectPositionRuns(picks).find((run) => currentPick - run.endPick <= POSITION_RUN_WINDOW) ??
-    null;
+  // detectPositionRuns sorts by startPick, so .find() would return the run that
+  // began earliest rather than the one still on the clock. Keep the latest-ending
+  // qualifying run, matching how getEmergingRun tracks its endPick.
+  const activeRun = detectPositionRuns(picks)
+    .filter((run) => currentPick - run.endPick <= POSITION_RUN_WINDOW)
+    .reduce<PositionRun | null>(
+      (best, run) => (best === null || run.endPick > best.endPick ? run : best),
+      null
+    );
 
   return { latestFlaggedPick, activeRun };
 }

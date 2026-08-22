@@ -17,6 +17,7 @@ import {
 } from "./fixtures/fantasyProsPublicSource.fixture";
 
 const originalFantasyProsApiKey = process.env.FANTASYPROS_API_KEY;
+const originalFantasyProsSource = process.env.FANTASYPROS_SOURCE;
 
 function responseStub(options: {
   body?: unknown;
@@ -57,12 +58,22 @@ function expandBoard(board: FantasyProsPublicBoard, count: number): FantasyProsP
 }
 
 describe("fantasyProsPublicSource", () => {
+  beforeEach(() => {
+    delete process.env.FANTASYPROS_API_KEY;
+    delete process.env.FANTASYPROS_SOURCE;
+  });
+
   afterEach(() => {
     jest.restoreAllMocks();
     if (originalFantasyProsApiKey === undefined) {
       delete process.env.FANTASYPROS_API_KEY;
     } else {
       process.env.FANTASYPROS_API_KEY = originalFantasyProsApiKey;
+    }
+    if (originalFantasyProsSource === undefined) {
+      delete process.env.FANTASYPROS_SOURCE;
+    } else {
+      process.env.FANTASYPROS_SOURCE = originalFantasyProsSource;
     }
   });
 
@@ -122,6 +133,7 @@ describe("fantasyProsPublicSource", () => {
   });
 
   it("uses exact redraft ALL/DRAFT parameters when a key is configured", async () => {
+    process.env.FANTASYPROS_SOURCE = "official-api";
     process.env.FANTASYPROS_API_KEY = "test-fantasypros-key";
     const payload = {
       ...fantasyProsOfficialConsensusFixture,
@@ -165,6 +177,7 @@ describe("fantasyProsPublicSource", () => {
   ] as const)(
     "maps redraft %s scoring to the official API %s value",
     async (scoringFormat, sourceScoring) => {
+      process.env.FANTASYPROS_SOURCE = "official-api";
       process.env.FANTASYPROS_API_KEY = "test-fantasypros-key";
       const fetchMock = jest.spyOn(global, "fetch").mockResolvedValue(
         responseStub({
@@ -359,7 +372,6 @@ describe("fantasyProsPublicSource", () => {
   });
 
   it("uses public HTML only when the API key is absent", async () => {
-    delete process.env.FANTASYPROS_API_KEY;
     const fetchMock = jest
       .spyOn(global, "fetch")
       .mockResolvedValue(responseStub({ html: fantasyProsPublicConsensusFixture }));
@@ -374,7 +386,58 @@ describe("fantasyProsPublicSource", () => {
     expect(board.sourceLabel).toBe(FANTASY_PROS_PUBLIC_SOURCE);
   });
 
+  it("keeps a scheduled public-HTML selection off the partial official endpoint", async () => {
+    process.env.FANTASYPROS_SOURCE = "public-html";
+    process.env.FANTASYPROS_API_KEY = "configured-but-not-selected";
+    const fetchMock = jest
+      .spyOn(global, "fetch")
+      .mockImplementation(async (input) => {
+        if (String(input).includes("api.fantasypros.com")) {
+          return responseStub({
+            body: {
+              ...fantasyProsOfficialConsensusFixture,
+              count: 98,
+              players: fantasyProsOfficialConsensusFixture.players.slice(0, 1),
+            },
+          });
+        }
+        return responseStub({ html: fantasyProsPublicConsensusFixture });
+      });
+
+    const board = await fetchFantasyProsPublicConsensusBoard("PPR", "RB", 2026);
+
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(String(fetchMock.mock.calls[0][0])).toBe(
+      "https://www.fantasypros.com/nfl/rankings/ppr-rb-cheatsheets.php"
+    );
+    expect(fetchMock.mock.calls[0][1]?.headers).not.toHaveProperty("x-api-key");
+    expect(board.sourceLabel).toBe(FANTASY_PROS_PUBLIC_SOURCE);
+  });
+
+  it("requires a key when the official API is selected explicitly", async () => {
+    process.env.FANTASYPROS_SOURCE = "official-api";
+    const fetchMock = jest.spyOn(global, "fetch");
+
+    await expect(
+      fetchFantasyProsPublicConsensusBoard("PPR", "RB", 2026)
+    ).rejects.toThrow(
+      "FANTASYPROS_API_KEY is required when FANTASYPROS_SOURCE=official-api."
+    );
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("rejects an unknown source mode before fetching", async () => {
+    process.env.FANTASYPROS_SOURCE = "fallback";
+    const fetchMock = jest.spyOn(global, "fetch");
+
+    await expect(
+      fetchFantasyProsPublicConsensusBoard("PPR", "RB", 2026)
+    ).rejects.toThrow(/FANTASYPROS_SOURCE must be one of auto, public-html, official-api/);
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
   it("does not fall back to public HTML when a configured API request fails", async () => {
+    process.env.FANTASYPROS_SOURCE = "official-api";
     process.env.FANTASYPROS_API_KEY = "configured-secret";
     const fetchMock = jest
       .spyOn(global, "fetch")
@@ -661,4 +724,111 @@ describe("fantasyProsPublicSource", () => {
       })
     ).not.toThrow();
   });
+
+  describe("weekly FLEX boards", () => {
+    // Shapes taken from the live pages on 2026-08-21: ppr-flex.php serves
+    // position_id "FLX", ranking_type_name "weekly", and RB/WR/TE rows that
+    // each carry player_opponent and player_owned_avg.
+    function weeklyFlexPage(players: object[], overrides: Record<string, unknown> = {}) {
+      const payload = {
+        sport: "NFL",
+        type: "Weekly PPR",
+        ranking_type_name: "weekly",
+        year: "2026",
+        week: "1",
+        position_id: "FLX",
+        scoring: "PPR",
+        count: players.length,
+        total_experts: 8,
+        filters: "flex",
+        last_updated: "8/21",
+        last_updated_ts: 1787366591,
+        players,
+        ...overrides,
+      };
+      return `<script>var ecrData = ${JSON.stringify(payload)};</script>`;
+    }
+
+    const flexRow = (id: number, position: string) => ({
+      player_id: id,
+      player_name: `Player ${id}`,
+      player_team_id: "DET",
+      player_position_id: position,
+      player_opponent: "vs. NO",
+      player_owned_avg: 42.5,
+      rank_ecr: id,
+      rank_min: id,
+      rank_max: id,
+      rank_ave: id,
+      rank_std: 1,
+      pos_rank: `${position}${id}`,
+    });
+
+    it("accepts the flex-eligible positions and keeps the opponent", () => {
+      const board = parseFantasyProsPublicConsensusPage(
+        weeklyFlexPage([flexRow(1, "RB"), flexRow(2, "WR"), flexRow(3, "TE")]),
+        {
+          scoringFormat: "PPR",
+          requestedPosition: "FLEX",
+          sourceUrl: "https://www.fantasypros.com/nfl/rankings/ppr-flex.php",
+          expectedRankingType: "weekly",
+          minimumExperts: 5,
+        }
+      );
+
+      expect(board.requestedPosition).toBe("FLEX");
+      expect(board.week).toBe(1);
+      expect(board.players.map((entry) => entry.position)).toEqual(["RB", "WR", "TE"]);
+      expect(board.players[0]).toMatchObject({ opponent: "vs. NO", ownership: 42.5 });
+    });
+
+    it("rejects a quarterback on a flex board", () => {
+      expect(() =>
+        parseFantasyProsPublicConsensusPage(
+          weeklyFlexPage([flexRow(1, "RB"), flexRow(2, "QB")]),
+          {
+            scoringFormat: "PPR",
+            requestedPosition: "FLEX",
+            sourceUrl: "https://www.fantasypros.com/nfl/rankings/ppr-flex.php",
+            expectedRankingType: "weekly",
+            minimumExperts: 5,
+          }
+        )
+      ).toThrow(/is QB on a FLEX board/);
+    });
+
+    it("still refuses to satisfy an overall request with a flex board", () => {
+      // FLX normalizes to its own name rather than onto OVERALL precisely so
+      // widening the vocabulary for the weekly board cannot let a draft-season
+      // overall request quietly accept a flex-only board.
+      expect(() =>
+        parseFantasyProsPublicConsensusPage(
+          weeklyFlexPage([flexRow(1, "RB")]),
+          {
+            scoringFormat: "PPR",
+            requestedPosition: "OVERALL",
+            sourceUrl: "https://www.fantasypros.com/nfl/rankings/ppr-cheatsheets.php",
+            expectedRankingType: "weekly",
+            minimumExperts: 5,
+          }
+        )
+      ).toThrow(/returned FLEX for a OVERALL request/);
+    });
+
+    it("still rejects a draft board requested as weekly", () => {
+      expect(() =>
+        parseFantasyProsPublicConsensusPage(
+          weeklyFlexPage([flexRow(1, "RB")], { ranking_type_name: "draft", type: "Draft PPR" }),
+          {
+            scoringFormat: "PPR",
+            requestedPosition: "FLEX",
+            sourceUrl: "https://www.fantasypros.com/nfl/rankings/ppr-flex.php",
+            expectedRankingType: "weekly",
+            minimumExperts: 5,
+          }
+        )
+      ).toThrow(/ranking type "draft" instead of weekly/);
+    });
+  });
+
 });

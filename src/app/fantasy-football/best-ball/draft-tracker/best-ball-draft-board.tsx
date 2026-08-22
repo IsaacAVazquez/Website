@@ -139,15 +139,15 @@ export function BestBallDraftBoard({
             type="button"
             onClick={() => onDraftPlayer(player)}
             disabled={isComplete}
-            aria-label={`Log ${player.name} at pick ${currentPick}`}
             className="grid min-h-[60px] min-w-0 grid-cols-[2.5rem_minmax(0,1fr)_auto] items-center gap-3 border-b px-4 py-2 text-left transition-[background-color,color,opacity] duration-150 hover:bg-[var(--home-paper-alt)] focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--home-signal)] disabled:cursor-not-allowed disabled:opacity-50 sm:grid-cols-[3rem_minmax(0,1fr)_4rem_4rem_6.5rem_4rem]"
             style={ROW_STYLE}
           >
+            <span className="sr-only">{`Log at pick ${currentPick}, board rank`}</span>
             <span className="text-sm font-semibold tabular-nums" style={{ color: "var(--home-ink-muted)" }}>
               {player.bestBallRank}
             </span>
             <span className="min-w-0">
-              <span className="block truncate text-sm font-semibold">{player.name}</span>
+              <span data-testid="best-ball-board-player-name" className="block truncate text-sm font-semibold">{player.name}</span>
               <span className="mt-1 block truncate text-xs sm:hidden" style={{ color: "var(--home-ink-muted)" }}>
                 {player.team} · {adpAvailable ? "ADP" : "Source rank"}{" "}
                 {adpAvailable
@@ -157,8 +157,25 @@ export function BestBallDraftBoard({
                 {player.byeWeek ?? "not available"}
               </span>
               {player.rankAdjustment !== 0 || player.isUndraftedAtContestFloor ? (
-                <span className="mt-1 hidden truncate text-2xs lg:block" style={{ color: "var(--home-signal)" }}>
-                  {player.rankReason}
+                /*
+                  Provenance, not an alert. Roughly a third of the snapshot sits
+                  at the undrafted floor, so painting these sentences in the
+                  signal accent turned the whole list into a page of warnings.
+                  The sentence reads in muted ink; a single signal dot marks
+                  "this rank was adjusted", which is the actual state. The title
+                  carries the full sentence past the truncation.
+                */
+                <span
+                  className="mt-1 hidden min-w-0 items-center gap-1.5 text-2xs lg:flex"
+                  style={{ color: "var(--home-ink-muted)" }}
+                  title={player.rankReason}
+                >
+                  <span
+                    aria-hidden="true"
+                    className="h-1.5 w-1.5 shrink-0 rounded-full"
+                    style={{ background: "var(--home-signal)" }}
+                  />
+                  <span className="truncate">{player.rankReason}</span>
                 </span>
               ) : null}
             </span>

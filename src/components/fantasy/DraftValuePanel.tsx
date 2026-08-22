@@ -67,6 +67,13 @@ function confidenceLabel(value: DraftValueReport["confidence"]): string {
   return "Early read";
 }
 
+function componentLabel(
+  component: DraftValueReport["components"][number],
+  consensusOnly: boolean
+): string {
+  return component.id === "market" && consensusOnly ? "Consensus rank" : component.label;
+}
+
 function ordinal(value: number): string {
   const whole = Math.round(value);
   const mod100 = whole % 100;
@@ -414,6 +421,14 @@ export function DraftValuePanel({
         : `${ordinal(report.roomPercentile)} percentile among same-progress teams`;
   const averageDelta = report?.market.averageDelta ?? null;
   const turnGap = report?.slotContext;
+  const consensusOnly = Boolean(
+    report &&
+      report.market.judgedPicks > 0 &&
+      report.market.consensusRankPicks === report.market.judgedPicks
+  );
+  const evidenceIntro = consensusOnly
+    ? "This scores your picks against the other teams in this same draft using published consensus rank, roster shape, and format fit. Consensus rank measures expert board position. Market price requires usable ADP. It reads draft process. Projected points, win probability, and roster-specific dollar EV require a separate simulation."
+    : "This scores your picks against the other teams in this same draft, on the price the market put on each player, the shape of your roster, and how well it fits the format. It reads draft process. Projected points, win probability, and roster-specific dollar EV require a separate simulation.";
 
   return (
     <section className="grid gap-4" aria-labelledby={headingId}>
@@ -433,7 +448,7 @@ export function DraftValuePanel({
           {report?.picksDrafted ? "How this room reads right now" : "Waiting for your first pick"}
         </h3>
         <p className="mt-2 text-xs leading-5" style={{ color: "var(--home-ink-muted)" }}>
-          This scores your picks against the other teams in this same draft, on the price the market put on each player, the shape of your roster, and how well it fits the format. It reads draft process. Projected points, win probability, and roster-specific dollar EV require a separate simulation.
+          {evidenceIntro}
         </p>
       </div>
 
@@ -451,13 +466,15 @@ export function DraftValuePanel({
             </div>
             <div className="rounded-[var(--radius-2xl)] border p-3" style={TILE_STYLE}>
               <p className="text-2xs font-semibold" style={{ color: "var(--home-ink-muted)" }}>
-                Calculated market value
+                {consensusOnly ? "Calculated consensus value" : "Calculated market value"}
               </p>
               <p className="mt-1 text-2xl font-semibold tabular-nums">
                 {averageDelta === null ? "Not set" : signedNumber(averageDelta)}
               </p>
               <p className="mt-1 text-2xs" style={{ color: "var(--home-ink-muted)" }}>
-                Raw draft slots per priced pick. The market component discounts thin or volatile ADP evidence.
+                {consensusOnly
+                  ? "Raw draft slots against published consensus rank per judged pick. This snapshot has no usable ADP evidence for these picks."
+                  : "Raw draft slots per priced pick. The market component discounts thin or volatile ADP evidence."}
               </p>
             </div>
           </div>
@@ -470,7 +487,9 @@ export function DraftValuePanel({
               Slot {turnGap.slot} has {turnGap.minimumTurnGap === turnGap.maximumTurnGap
                 ? `a ${turnGap.maximumTurnGap} pick gap between turns`
                 : `${turnGap.minimumTurnGap} to ${turnGap.maximumTurnGap} pick gaps between turns`}.
-              Market value already uses every actual overall pick.
+              {consensusOnly
+                ? " Consensus value uses every actual overall pick."
+                : " Market value already uses every actual overall pick."}
             </p>
           ) : null}
 
@@ -478,7 +497,9 @@ export function DraftValuePanel({
             {report.components.map((component) => (
               <div key={component.id}>
                 <div className="flex items-center justify-between gap-3 text-xs">
-                  <span className="font-semibold">{component.label}</span>
+                  <span className="font-semibold">
+                    {componentLabel(component, consensusOnly)}
+                  </span>
                   <span className="tabular-nums" style={{ color: "var(--home-ink-muted)" }}>
                     {component.score} score · {Math.round(component.weight * 100)}% weight
                   </span>
@@ -487,7 +508,7 @@ export function DraftValuePanel({
                   className="mt-1.5 h-1.5 overflow-hidden rounded-full"
                   style={{ background: "var(--home-stone)" }}
                   role="progressbar"
-                  aria-label={`${component.label} score`}
+                  aria-label={`${componentLabel(component, consensusOnly)} score`}
                   aria-valuemin={0}
                   aria-valuemax={100}
                   aria-valuenow={component.score}

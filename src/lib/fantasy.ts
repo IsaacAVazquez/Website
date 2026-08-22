@@ -13,7 +13,7 @@ export const FANTASY_ROUTE_POSITIONS = [
 ] as const;
 
 const _FANTASY_ROUTE_SCORING = ["ppr", "half_ppr", "standard"] as const;
-export const FANTASY_SNAPSHOT_SCHEMA_VERSION = 7;
+export const FANTASY_SNAPSHOT_SCHEMA_VERSION = 8;
 export const DEFAULT_FANTASY_SNAPSHOT_SOURCE =
   "Published fantasy rankings snapshot generated from FantasyPros public consensus pages. Overall boards come from the public overall consensus page for each scoring format, while flex is derived locally from the published overall board.";
 
@@ -223,6 +223,33 @@ export function getAllFantasySnapshotPlayers(snapshot: FantasySnapshot): Player[
 }
 
 /**
+ * The cross-board union for queue, compare, and drawer lookups. A player absent
+ * from the overall board exists only on a position slice, where rankEcr, tier,
+ * standardDeviation, and the expert range are position-scale numbers. Comparing
+ * those against overall-scale ranks (or an overall ADP via getValueVsAdp) marks
+ * the wrong player "Best", so this variant strips the expert-rank fields from
+ * position-only players. Identity, position rank, bye, ownership, and ADP are
+ * scale-safe and survive.
+ */
+export function getCrossBoardFantasyPlayers(snapshot: FantasySnapshot): Player[] {
+  const overallIds = new Set(snapshot.overall.map((player) => player.id));
+  return getAllFantasySnapshotPlayers(snapshot).map((player) =>
+    overallIds.has(player.id)
+      ? player
+      : {
+          ...player,
+          averageRank: Number.NaN,
+          standardDeviation: undefined,
+          rankEcr: undefined,
+          rankAverage: undefined,
+          minRank: undefined,
+          maxRank: undefined,
+          tier: undefined,
+        }
+  );
+}
+
+/**
  * Persisted player IDs can only be classified as stale when every published
  * slice loaded successfully. An unavailable position is an incomplete player
  * universe, not evidence that its previously pinned players no longer exist.
@@ -395,6 +422,30 @@ export function publishFantasyPlayer(player: Player): Player {
 
   if (isFiniteNumber(player.adpTimesDrafted)) {
     publishedPlayer.adpTimesDrafted = player.adpTimesDrafted;
+  }
+
+  // Every figure has to be finite before the panel can draw a meter from it,
+  // and a games count below one would make the low/high pair a single reading
+  // wearing a range's clothes.
+  const gameLog = player.gameLog;
+  if (
+    gameLog &&
+    isFiniteNumber(gameLog.season) &&
+    isFiniteNumber(gameLog.games) &&
+    gameLog.games >= 1 &&
+    isFiniteNumber(gameLog.low) &&
+    isFiniteNumber(gameLog.median) &&
+    isFiniteNumber(gameLog.average) &&
+    isFiniteNumber(gameLog.high)
+  ) {
+    publishedPlayer.gameLog = {
+      season: gameLog.season,
+      games: gameLog.games,
+      low: gameLog.low,
+      median: gameLog.median,
+      average: gameLog.average,
+      high: gameLog.high,
+    };
   }
 
   const updatedAt = normalizeOptionalTimestamp(player.lastUpdated);

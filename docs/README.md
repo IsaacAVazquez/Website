@@ -2,9 +2,9 @@
 
 Current map of tracked Markdown documentation.
 
-**Last updated:** 2026-06-16
+**Last updated:** 2026-08-16
 
-Tracked Markdown audit scope: `git ls-files '*.md'` returned 216 tracked files before the 2026-04-15 content coverage sync. That sync adds 16 new markdown files under `content/projects/` and `content/sections/`.
+Tracked Markdown audit scope: `git ls-files '*.md'` returned 300 tracked files on 2026-08-16, split across `.agents/skills/` (104), `docs/` (51), `ds-bundle/` (44), `content/` outside the blog (44), the repository root (36), `.impeccable/` (15), and six elsewhere. Only the root and `docs/` files are website documentation, so the working set this index governs is about 87 files. Published articles are `.mdx` under `content/blog/` and are counted separately. Re-run the command rather than trusting these numbers.
 
 The 2026-05-03 project coverage pass adds markdown snapshots for the remaining live portfolio projects listed in `src/constants/caseStudies.ts`.
 
@@ -25,6 +25,7 @@ Start here for live implementation and agent context:
 - `../DEVELOPMENT.md`
 - `../TESTING.md`
 - `../STYLING.md`
+- `../DESIGN_CHECKLIST.md` (the single pre-merge UI checklist)
 - `../SEO.md`
 - `../WRITING_VOICE.md`
 - `README.md`
@@ -46,7 +47,10 @@ Subsystem references (current):
 - `../SNAPSHOT_DRIVEN_DASHBOARDS.md` — shared snapshot-driven dashboard architecture
 - `../PERSONAL_INTEREST_TOOLS.md` — browser-persisted localStorage tools
 - `../RETIREMENT_PLANNER_ENGINE.md` — pure retirement projection engine (`src/lib/retirement/`)
-- `FANTASY_DRAFT_MODEL.md` - fantasy draft metrics, formulas, data limits, and validation contract
+- `../SCORE_POOLS_ENGINE.md` — exact-score prediction engine behind `/score-pools` (`src/lib/scorePools/`)
+- `FANTASY_DRAFT_MODEL.md` - fantasy draft and trade metrics, formulas, data limits, and validation contract
+- `FANTASY_DRAFT_COMPANION.md` - private Chrome and Edge side panel build, installation, and operating limits
+- `ARTICLE_IMAGE_WORKFLOW.md` - blog cover-image plan, the fetch builder, and the writing-time step
 
 ---
 
@@ -77,6 +81,21 @@ Planning and strategy references:
 - `2026-seo-opportunity-ai-tech-blogs.md`
 - `content-plan-ai-mba-pm-cluster.md`
 - `SPACEX_API_CODEBASE_README.md`
+
+Dated audits and research dossiers. Each one is a point-in-time snapshot rather than a live contract, so read the date in the title first and confirm anything still open against the code. Several carry fix backlogs that are partly worked through:
+
+- `DESIGN_AUDIT_2026-06.md` (the audit `../DESIGN_CHECKLIST.md` is derived from)
+- `DESIGN_REVIEW_2026-07.md`
+- `REDESIGN_BRIEF.md`
+- `dashboard-spatial-system.md`
+- `component-reusability-audit.md`
+- `accessibility-audit-2026-06.md`
+- `DATA_SOURCE_AUDIT_2026-07.md` (data source fix backlog)
+- `seo-aeo-audit.md`
+- `SEO_CONTENT_MAP.md`
+- `website-improvement-suggestions.md`
+- `research/*` (World Cup 2026 contender dossier and rerank template)
+- `web-design-research/*` (portfolio and web design reference reading, with its own `README.md`)
 
 ---
 
@@ -114,6 +133,12 @@ The repo tracks 104 Markdown files under `../.agents/skills/**`.
 These are bundled skill-library docs, not website implementation docs. They are included in the all-Markdown inventory, but they should not be rewritten during website documentation sync work unless they contain a repo-specific reference that directly contradicts `AGENTS.md`, `CLAUDE.md`, or this index.
 
 Root `../SKILL.md` is different: it is a repo-level skill entry and may be updated when the site copy or agent guidance changes.
+
+Three more root files are owned by tooling rather than by this index, and a documentation sync pass should leave them alone unless the tool that owns them is the thing being changed. `../PRODUCT.md` and `../DESIGN.md` are the per-repository context files the impeccable design skill loads automatically, and `../DESIGN.md` carries the Working Instrument token frontmatter. `../PROMPTING.md` is a general Claude prompt-engineering reference with no website-specific content.
+
+`../.impeccable/` holds that same skill's per-surface briefs and its dated critique output. Those are working artifacts, not documentation, and the critique files are written by the tool.
+
+`../ds-bundle/` is the design-system bundle that feeds the synced design project. Its component `*.prompt.md` files are generated, but `../ds-bundle/guidelines/STYLING.md`, `DESIGN_CHECKLIST.md`, and `WRITING_VOICE.md` are plain copies of the three root files of the same name, and nothing regenerates them. The root files are canonical. When one of them changes, copy it over its bundle twin in the same pass, because a stale copy in there can hand the design project guidance the root file has already retired.
 
 ---
 

@@ -459,25 +459,54 @@ describe("buildWorldCupSnapshotData", () => {
   it("throws (keeping the existing snapshot) when no fixtures come back", async () => {
     mockFetch({ events: [] });
     await expect(buildWorldCupSnapshotData()).rejects.toThrow(
-      /no teams or no fixtures/i
+      /no teams, no fixtures, or no group standings/i
     );
   });
 
   it("throws when standings have no usable groups and there are no fixtures", async () => {
     mockFetch({ standings: { children: [] }, events: [] });
     await expect(buildWorldCupSnapshotData()).rejects.toThrow(
-      /no teams or no fixtures/i
+      /no teams, no fixtures, or no group standings/i
     );
   });
 
-  it("falls back to fixtures for team options when standings are empty", async () => {
-    // No standings groups, but group-stage fixtures carry real teams.
+  it("throws rather than wipe committed group tables when standings come back empty", async () => {
+    // HTTP 200 with children: [] is the shape an ESPN standings outage takes.
+    // Fixtures are healthy here, so the team-options arm of the guard cannot
+    // fire: teamOptionById is repopulated from group-stage fixtures. Without the
+    // groups arm this committed groups: [] over all 12 real group tables.
     mockFetch({ standings: { children: [] } });
-    const snapshot = await buildWorldCupSnapshotData();
-    expect(snapshot.groups).toEqual([]);
-    // Team options still populate from the group-stage fixtures.
-    expect(snapshot.teamOptions.length).toBeGreaterThanOrEqual(4);
-    expect(snapshot.teamOptions.some((t) => t.code === "MEX")).toBe(true);
+    await expect(buildWorldCupSnapshotData()).rejects.toThrow(
+      /no group standings/i
+    );
+  });
+
+  it("still builds with fixture-derived team options when the seed has no groups either", async () => {
+    // The legitimate pre-tournament state: ESPN has published no standings yet
+    // and the committed seed has none, so there is nothing to protect and the
+    // build must not throw.
+    jest.resetModules();
+    const { worldCupSnapshot: realSeed } = await import(
+      "@/data/worldCupSnapshot"
+    );
+    jest.doMock("@/data/worldCupSnapshot", () => ({
+      worldCupSnapshot: { ...realSeed, groups: [] },
+    }));
+
+    try {
+      mockFetch({ standings: { children: [] } });
+      const { buildWorldCupSnapshotData: build } = await import(
+        "../worldCupData"
+      );
+      const snapshot = await build();
+      expect(snapshot.groups).toEqual([]);
+      // Team options still populate from the group-stage fixtures.
+      expect(snapshot.teamOptions.length).toBeGreaterThanOrEqual(4);
+      expect(snapshot.teamOptions.some((t) => t.code === "MEX")).toBe(true);
+    } finally {
+      jest.dontMock("@/data/worldCupSnapshot");
+      jest.resetModules();
+    }
   });
 
   it("classifies a knockout fixture into its round", async () => {

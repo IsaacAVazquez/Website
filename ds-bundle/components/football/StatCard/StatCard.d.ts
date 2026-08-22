@@ -9,7 +9,7 @@ export interface StatCardProps {
   metric: string;
   detail: string;
   icon: React.ReactNode;
-  variant?: "compact" | "full";
+  variant?: "full" | "compact";
 }
 
 export declare const StatCard: React.ComponentType<StatCardProps>;

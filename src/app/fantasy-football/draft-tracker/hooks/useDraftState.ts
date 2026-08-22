@@ -71,8 +71,18 @@ export const initializeTeams = (totalTeams: number): TeamRoster[] => {
 // Rebuild every team roster from a flat list of kept picks. Used by multi-level
 // undo so position counts and value totals stay exactly consistent with the
 // remaining picks instead of being decremented one at a time.
-const rebuildTeams = (totalTeams: number, picks: DraftPick[]): TeamRoster[] => {
+const rebuildTeams = (
+  totalTeams: number,
+  picks: DraftPick[],
+  previousTeams: readonly TeamRoster[] = []
+): TeamRoster[] => {
   const teams = initializeTeams(totalTeams);
+  for (const previousTeam of previousTeams) {
+    const team = teams[previousTeam.teamNumber - 1];
+    if (team && typeof previousTeam.teamName === 'string') {
+      team.teamName = previousTeam.teamName;
+    }
+  }
   for (const pick of picks) {
     const team = teams[pick.teamNumber - 1];
     if (!team) continue;
@@ -554,7 +564,11 @@ export const useDraftState = () => {
           userTeam: normalizedUserTeam,
           lineup: normalizeRedraftLineup(mergedSettings.lineup),
         },
-        teams: newSettings.totalTeams ? initializeTeams(mergedSettings.totalTeams) : prev.teams,
+        teams:
+          newSettings.totalTeams !== undefined &&
+          newSettings.totalTeams !== prev.settings.totalTeams
+            ? rebuildTeams(mergedSettings.totalTeams, prev.picks, prev.teams)
+            : prev.teams,
       };
     });
   }, []);
@@ -744,7 +758,7 @@ export const useDraftState = () => {
       return {
         ...prev,
         picks: keptPicks,
-        teams: rebuildTeams(prev.settings.totalTeams, keptPicks),
+        teams: rebuildTeams(prev.settings.totalTeams, keptPicks, prev.teams),
         currentPick: newCurrentPick,
         currentRound: calculateCurrentRound(newCurrentPick, prev.settings.totalTeams),
         undoHistory: [
@@ -769,18 +783,17 @@ export const useDraftState = () => {
 
   // Reset draft
   const resetDraft = useCallback(() => {
-    const settings = draftState.settings;
-    setDraftState({
-      settings,
+    setDraftState(prev => ({
+      settings: prev.settings,
       picks: [],
       currentPick: 1,
       currentRound: 1,
       isActive: false,
       undoHistory: [],
-      teams: initializeTeams(settings.totalTeams),
+      teams: rebuildTeams(prev.settings.totalTeams, [], prev.teams),
       draftId: generateDraftId(),
-    });
-  }, [draftState.settings]);
+    }));
+  }, []);
 
   // Resolve a team's display name, falling back to "Team N".
   const resolveTeamName = useCallback(
