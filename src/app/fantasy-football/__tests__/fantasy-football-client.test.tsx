@@ -546,6 +546,33 @@ describe("FantasyFootballClient", () => {
     expect(retry).toHaveBeenCalled();
   });
 
+  it("queues from the row edge and filters the board to the queue", () => {
+    mockSnapshot({
+      players: [
+        makePlayer({ id: "p-1", name: "Bijan Robinson" }),
+        makePlayer({ id: "p-2", name: "Jahmyr Gibbs", rankEcr: 2, averageRank: 2, positionRank: 2 }),
+      ],
+    });
+
+    renderClient();
+
+    fireEvent.click(screen.getByRole("button", { name: "Queue Bijan Robinson" }));
+    const removeButton = screen.getByRole("button", { name: "Remove Bijan Robinson from queue" });
+    expect(removeButton).toHaveAttribute("aria-pressed", "true");
+    expect(
+      screen.getByRole("button", { name: "Open Bijan Robinson detail (in your queue)" })
+    ).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("button", { name: "Queued (1)" }));
+    expect(screen.queryByText("Jahmyr Gibbs")).not.toBeInTheDocument();
+    expect(screen.getByText("Bijan Robinson")).toBeVisible();
+
+    fireEvent.click(screen.getByRole("button", { name: "Remove Bijan Robinson from queue" }));
+    expect(screen.getByText("No queued players on this board.")).toBeVisible();
+    fireEvent.click(screen.getByRole("button", { name: "Show all players" }));
+    expect(screen.getByText("Jahmyr Gibbs")).toBeVisible();
+  });
+
   it("queues a player and saves a note from the drawer", () => {
     mockSnapshot({
       players: [makePlayer({ id: "rb-1", name: "Christian McCaffrey" })],

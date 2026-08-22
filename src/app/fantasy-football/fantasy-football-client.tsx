@@ -810,6 +810,9 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
   const searchParams = useSearchParams();
   const [searchQuery, setSearchQuery] = useState(initialState.query);
   const [mobileSearchOpen, setMobileSearchOpen] = useState(() => initialState.query.length > 0);
+  // Device-local view state, deliberately kept out of the URL: the queue only
+  // exists in this browser, so a shared link must not imply a filtered board.
+  const [queuedOnly, setQueuedOnly] = useState(false);
   const [detailPlayerId, setDetailPlayerId] = useState<string | null>(null);
   const [visibleCount, setVisibleCount] = useState(RANKINGS_PAGE_SIZE);
   const sentinelRef = useRef<HTMLDivElement | null>(null);
@@ -888,18 +891,24 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
   const currentSourceUpdatedAt = sliceMetadata?.updatedAt ?? metadata?.upstreamUpdatedAt ?? null;
   const sourceStaleness = getSnapshotStaleness(currentSourceUpdatedAt);
 
+  const queuedOnBoardCount = useMemo(
+    () => players.reduce((count, player) => count + (queue.queuedSet.has(player.id) ? 1 : 0), 0),
+    [players, queue.queuedSet]
+  );
+
   const filteredPlayers = useMemo(() => {
     if (currentSliceUnavailable) {
       return [];
     }
 
+    const base = queuedOnly ? players.filter((player) => queue.queuedSet.has(player.id)) : players;
     const query = searchQuery.trim().toLowerCase();
     if (!query) {
-      return players;
+      return base;
     }
 
-    return players.filter((player) => getFantasyPlayerSearchText(player).includes(query));
-  }, [currentSliceUnavailable, players, searchQuery]);
+    return base.filter((player) => getFantasyPlayerSearchText(player).includes(query));
+  }, [currentSliceUnavailable, players, searchQuery, queuedOnly, queue.queuedSet]);
 
   const maxTier = useMemo(() => {
     let max = 0;
@@ -916,7 +925,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional reset on filter change
     setVisibleCount(RANKINGS_PAGE_SIZE);
-  }, [routeState.position, routeState.scoring, searchQuery]);
+  }, [routeState.position, routeState.scoring, searchQuery, queuedOnly]);
 
   const windowedPlayers = filteredPlayers.slice(0, visibleCount);
   const hasMore = visibleCount < filteredPlayers.length;
@@ -1112,10 +1121,11 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
             {group.rows.map((player) => {
               const vsAdp = adpSignalsAvailable && vsAdpMeaningful ? describeVsAdp(player) : null;
               const tone = getPositionTone(player.position);
+              const isQueued = queue.isQueued(player.id);
               return (
                 <li
                   key={player.id}
-                  className="relative border-t transition-colors duration-150 hover:bg-[color-mix(in_srgb,var(--home-paper-alt)_55%,transparent)]"
+                  className="group relative border-t transition-colors duration-150 hover:bg-[color-mix(in_srgb,var(--home-paper-alt)_55%,transparent)]"
                   style={{ borderColor: "color-mix(in srgb, var(--home-rule) 60%, transparent)" }}
                 >
                   {/* The open control overlays the row instead of wrapping it: an
@@ -1126,7 +1136,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                       drawer unless the user is selecting text. */}
                   <button
                     type="button"
-                    aria-label={`Open ${player.name} detail`}
+                    aria-label={`Open ${player.name} detail${isQueued ? " (in your queue)" : ""}`}
                     onClick={() => setDetailPlayerId(player.id)}
                     className="absolute inset-0 z-[1] cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[var(--home-signal)]"
                   />
@@ -1233,6 +1243,28 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                         </>
                       )}
                     </span>
+                    {/* The row-edge queue toggle: always visible on touch,
+                        revealed on hover/focus for fine pointers, and always
+                        shown once queued so membership reads as shape, not
+                        color. -my cancels the row padding so the 44px target
+                        does not grow the row. */}
+                    <button
+                      type="button"
+                      aria-pressed={isQueued}
+                      aria-label={isQueued ? `Remove ${player.name} from queue` : `Queue ${player.name}`}
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        queue.toggle(player.id);
+                      }}
+                      className={`-my-1.5 ml-auto flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-[4px] transition-opacity duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--home-signal)] ${
+                        isQueued
+                          ? ""
+                          : "pointer-fine:opacity-0 pointer-fine:group-focus-within:opacity-100 pointer-fine:group-hover:opacity-100"
+                      }`}
+                      style={{ color: isQueued ? "var(--home-signal)" : "var(--home-ink-muted)" }}
+                    >
+                      <Star size={16} fill={isQueued ? "currentColor" : "none"} aria-hidden="true" />
+                    </button>
                   </div>
                 </li>
               );
@@ -1354,6 +1386,20 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
               }}
             />
           </div>
+          <button
+            type="button"
+            aria-pressed={queuedOnly}
+            onClick={() => setQueuedOnly((value) => !value)}
+            className="inline-flex min-h-touch cursor-pointer items-center gap-1.5 rounded-[4px] border px-3 font-mono text-3xs uppercase tracking-[0.08em]"
+            style={
+              queuedOnly
+                ? { borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }
+                : { borderColor: "var(--home-rule)", background: "transparent", color: "var(--home-ink)" }
+            }
+          >
+            <Star size={12} fill={queuedOnly ? "currentColor" : "none"} aria-hidden="true" />
+            Queued ({queuedOnBoardCount})
+          </button>
           <span
             aria-live={error ? undefined : "polite"}
             className="ml-auto whitespace-nowrap font-mono text-2xs"
@@ -1447,6 +1493,26 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
               >
                 <Search className="h-4 w-4" style={{ color: "var(--home-ink)" }} aria-hidden="true" />
               </button>
+              <button
+                type="button"
+                aria-pressed={queuedOnly}
+                aria-label={`Show only queued players (${queuedOnBoardCount} on this board)`}
+                onClick={() => setQueuedOnly((value) => !value)}
+                className="relative inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center rounded-[4px] border"
+                style={
+                  queuedOnly
+                    ? { borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }
+                    : { borderColor: "var(--home-rule)", background: "var(--home-paper-raised)", color: "var(--home-ink)" }
+                }
+              >
+                <Star className="h-4 w-4" fill={queuedOnly ? "currentColor" : "none"} aria-hidden="true" />
+                {queuedOnBoardCount > 0 && (
+                  <span aria-hidden="true" className="absolute -right-1 -top-1 rounded-full px-1 font-mono text-3xs tabular-nums"
+                    style={{ background: "var(--home-signal)", color: "var(--home-paper)" }}>
+                    {queuedOnBoardCount}
+                  </span>
+                )}
+              </button>
             </>
           )}
         </div>
@@ -1481,6 +1547,8 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                     </span>
                   ))}
                 </span>
+                {/* Mirrors the row-edge queue toggle so columns stay aligned. */}
+                <span className="ml-auto w-11 shrink-0" />
               </div>
             </div>
           </div>
@@ -1565,19 +1633,30 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
             style={{ borderColor: "var(--home-rule)" }}
           >
             <p className="font-mono text-xs" style={{ color: "var(--home-ink-muted)" }}>
-              No players match on this board.
+              {queuedOnly ? "No queued players on this board." : "No players match on this board."}
             </p>
-            <button
-              type="button"
-              onClick={() => {
-                setSearchQuery("");
-                updateRouteState({ query: "", position: "overall" });
-              }}
-              className="mt-3.5 inline-flex min-h-touch items-center rounded-full border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
-              style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
-            >
-              Clear search
-            </button>
+            {queuedOnly ? (
+              <button
+                type="button"
+                onClick={() => setQueuedOnly(false)}
+                className="mt-3.5 inline-flex min-h-touch items-center rounded-full border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
+                style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
+              >
+                Show all players
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={() => {
+                  setSearchQuery("");
+                  updateRouteState({ query: "", position: "overall" });
+                }}
+                className="mt-3.5 inline-flex min-h-touch items-center rounded-full border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
+                style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
+              >
+                Clear search
+              </button>
+            )}
           </div>
         ) : (
           <>
