@@ -1,11 +1,14 @@
 name: Update Fantasy Football Snapshots
 
 on:
-  # Rankings move daily through draft season. Outside July through September,
-  # a weekly pass is enough to catch provider corrections and rollover work.
+  # Rankings move daily from July through December: drafts through early
+  # September, then the season itself through the Week 17 championships. The
+  # daily lane used to stop September 30, which left a live in-season board on
+  # a weekly refresh. February through June a weekly pass is enough to catch
+  # provider corrections and rollover work.
   schedule:
-    - cron: "0 17 * 7-9 *"
-    - cron: "0 17 * 1-6,10-12 3"
+    - cron: "0 17 * 7-12 *"
+    - cron: "0 17 * 1-6 3"
   workflow_dispatch:
 
 # Don't stack a manual dispatch on top of a scheduled run.
@@ -46,6 +49,13 @@ jobs:
       # surface. Redraft builds first and hard-fails the job; best ball runs as a
       # soft lane and is reported by the terminal check near the end of this job.
       - name: Build fantasy snapshots
+        id: build_redraft
+        # Soft like every other lane gate. Left hard, a redraft build failure made
+        # the best ball step's implicit success() condition false and skipped it,
+        # which is the coupling the comment above says cannot happen. The redraft
+        # commit still requires verify_freshness and verify_quality to pass, and
+        # the terminal report step below turns the run red.
+        continue-on-error: true
         run: npm run update:fantasy:redraft
         env:
           # The official endpoint began returning a declared full board with
@@ -59,6 +69,17 @@ jobs:
         id: build_best_ball
         continue-on-error: true
         run: npm run update:fantasy:best-ball
+        env:
+          FANTASYPROS_SOURCE: public-html
+          NODE_ENV: production
+
+      # The weekly board is its own soft lane. It is the only in-season
+      # artifact, it no-ops before Week 1, and a failure here must not stop the
+      # draft boards from committing.
+      - name: Build weekly board
+        id: build_weekly
+        continue-on-error: true
+        run: npm run update:fantasy:weekly
         env:
           FANTASYPROS_SOURCE: public-html
           NODE_ENV: production
@@ -321,20 +342,43 @@ jobs:
             "chore: update best ball snapshot [automated] [skip ci]" \
             public/data/fantasy/best-ball.json
 
+      - name: Check for weekly board changes
+        id: check_weekly_changes
+        if: steps.build_weekly.outcome == 'success'
+        run: |
+          if git diff --quiet -- public/data/fantasy/weekly.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No weekly board changes detected."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Weekly board changes detected."
+          fi
+
+      - name: Commit and push weekly board
+        if: steps.check_weekly_changes.outputs.changed == 'true'
+        run: |
+          bash scripts/ci/commit-and-push-snapshot.sh \
+            "chore: update fantasy weekly board [automated] [skip ci]" \
+            public/data/fantasy/weekly.json
+
       # Both soft lanes report here rather than at the point of failure, so the
       # run still goes red and the failure issue still opens without either lane
       # skipping the other's commit above.
       - name: Report soft-lane failures
         if: >-
+          steps.build_redraft.outcome == 'failure' ||
           steps.verify_freshness.outcome == 'failure' ||
           steps.verify_quality.outcome == 'failure' ||
           steps.build_best_ball.outcome == 'failure' ||
+          steps.build_weekly.outcome == 'failure' ||
           steps.verify_best_ball.outcome == 'failure' ||
           steps.adp_health.outputs.adp_dark == 'true'
         run: |
+          echo "redraft build:     ${{ steps.build_redraft.outcome }}"
           echo "redraft freshness: ${{ steps.verify_freshness.outcome }}"
           echo "redraft quality:   ${{ steps.verify_quality.outcome }}"
           echo "best ball build:   ${{ steps.build_best_ball.outcome }}"
+          echo "weekly build:      ${{ steps.build_weekly.outcome }}"
           echo "best ball gate:    ${{ steps.verify_best_ball.outcome }}"
           echo "redraft ADP dark:  ${{ steps.adp_health.outputs.adp_dark }}"
           echo "::error::A fantasy refresh gate failed. Each lane committed independently when its own gates passed; see the step outcomes above."
@@ -389,7 +433,7 @@ jobs:
               `- Sustained 429s exceeded retry budget`,
               `- Quality gate caught a degraded snapshot (thin overall board or an empty/short position board)`,
               ``,
-              `Note: ADP fetch failures are non-fatal by design — they only surface as warnings, never as a failed run.`,
+              `Note: a failed ADP fetch is non-fatal and keeps the prior prices. A board that is stale past the age limit is different: it still commits the rankings, but it sets \`adp_dark\` and turns the run red.`,
               ``,
               `This issue will be updated if the next run also fails, and auto-closed on the first successful run.`
             ].join('\n');

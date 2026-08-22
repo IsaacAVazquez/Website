@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { StructuredData } from "@/components/StructuredData";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { fantasySnapshotRevision } from "@/data/fantasySnapshotRevision.generated";
 import { TradeCalculatorClient } from "./trade-calculator-client";
 
 export const metadata: Metadata = constructMetadata({
@@ -8,7 +9,8 @@ export const metadata: Metadata = constructMetadata({
   description:
     "Compare one-QB redraft trades using expert consensus, mock-draft ADP, and your league settings, with visible source dates and data limits.",
   canonicalUrl: "/fantasy-football/trade-calculator",
-  dateModified: "2026-08-13",
+  image: "/fantasy-football/trade-calculator/opengraph-image",
+  dateModified: fantasySnapshotRevision.slice(0, 10),
 });
 
 const breadcrumbs = [
@@ -17,19 +19,9 @@ const breadcrumbs = [
   { name: "Trade Calculator", url: "/fantasy-football/trade-calculator" },
 ];
 
-const directionContract = `<!--
-THESIS: A fantasy trade should read like a deal desk, with both sides, the evidence, and the limits visible at once.
-OWN-WORLD: The Working Instrument, using limestone paper, graphite ink, hairline rules, sharp plates, mono readouts, and one Signal Orange action color.
-STORY: Set the league, build the offer, read the balance and source mix, then revise the deal without leaving the workspace.
-FIRST VIEWPORT: Breadcrumb, Build a Trade Calculator, the preseason scope, league settings, both trade ledgers, and the verdict rail.
-FORM: Operational deal desk derived from concept seed 3bea6a71, with a narrow settings rail, split ledger, and pinned evaluation rail.
-FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
--->`;
-
 export default function TradeCalculatorPage() {
   return (
     <>
-      <div aria-hidden="true" className="hidden" dangerouslySetInnerHTML={{ __html: directionContract }} />
       <StructuredData
         type="BreadcrumbList"
         data={{

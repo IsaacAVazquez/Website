@@ -1,5 +1,6 @@
 "use client";
 
+import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -21,6 +22,7 @@ import {
 } from "@/lib/bestBall";
 import type { BestBallSnapshot } from "@/lib/bestBallSnapshot";
 import {
+  getNflRegularSeasonWeek,
   getSnapshotStaleness,
   resolveDraftPicksForModel,
   withoutPlayerAdp,
@@ -133,6 +135,11 @@ export function BestBallDraftTrackerClient({
     );
   }
 
+  // Every board in this room is a draft board. Once the season starts it stops
+  // describing a live market, so say which season it covers rather than letting it
+  // look like a surface that quietly stopped working.
+  const seasonalWeek = getNflRegularSeasonWeek(snapshot?.season ?? 0);
+
   return (
     <section
       className="home-page home-dash min-h-screen overflow-x-clip pb-24 lg:pb-0"
@@ -141,6 +148,11 @@ export function BestBallDraftTrackerClient({
     >
       <div className="home-shell home-shell-wide home-section space-y-5">
         <Breadcrumbs customItems={BREADCRUMBS} className="pt-2" />
+        {seasonalWeek >= 1 ? (
+          <SeasonalScopeNote season={snapshot?.season ?? 0} week={seasonalWeek}>
+            Best ball drafts are a preseason event and this board is the preseason board, so nothing here refreshes against the games being played now. Your saved rooms are untouched. In-season ranks are on the <Link href="/fantasy-football/weekly" className="underline decoration-[var(--home-signal)] underline-offset-4">weekly board</Link>.
+          </SeasonalScopeNote>
+        ) : null}
 
         <header className="space-y-4">
           {roomOpen ? (

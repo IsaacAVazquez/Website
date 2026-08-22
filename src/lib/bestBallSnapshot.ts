@@ -63,7 +63,13 @@ export function assertBestBallRankingCoverage({
   }
 }
 
-export function assertBestBallAdpCoverage({
+/**
+ * Decides whether a fresh best ball ADP pull is deep enough to publish. Returns a
+ * verdict rather than throwing so the builder can drop back to prior prices and
+ * still ship the rankings, matching how the redraft lane's resolveAdpFormat keeps
+ * publishing when a board comes back thin.
+ */
+export function evaluateBestBallAdpCoverage({
   freshSourceReceived,
   matches,
   previousMatches,
@@ -75,8 +81,8 @@ export function assertBestBallAdpCoverage({
   previousMatches: number;
   previousTopPlayers: number;
   retainedTopPlayers: number;
-}): void {
-  if (!freshSourceReceived) return;
+}): { ok: boolean; message: string } {
+  if (!freshSourceReceived) return { ok: true, message: "" };
   const requiredMatches = Math.max(
     BEST_BALL_MIN_ADP_MATCHES,
     Math.ceil(previousMatches * BEST_BALL_MIN_ADP_RELATIVE_COVERAGE)
@@ -85,9 +91,24 @@ export function assertBestBallAdpCoverage({
     previousTopPlayers * BEST_BALL_MIN_ADP_RELATIVE_COVERAGE
   );
   if (matches < requiredMatches || retainedTopPlayers < requiredTopPlayers) {
-    throw new Error(
-      `Best ball snapshot matched ADP for ${matches} players versus ${previousMatches} previously, and retained ${retainedTopPlayers} of ${previousTopPlayers} prior top-board prices.`
-    );
+    return {
+      ok: false,
+      message: `Best ball snapshot matched ADP for ${matches} players versus ${previousMatches} previously, and retained ${retainedTopPlayers} of ${previousTopPlayers} prior top-board prices.`,
+    };
+  }
+  return { ok: true, message: "" };
+}
+
+export function assertBestBallAdpCoverage(input: {
+  freshSourceReceived: boolean;
+  matches: number;
+  previousMatches: number;
+  previousTopPlayers: number;
+  retainedTopPlayers: number;
+}): void {
+  const verdict = evaluateBestBallAdpCoverage(input);
+  if (!verdict.ok) {
+    throw new Error(verdict.message);
   }
 }
 

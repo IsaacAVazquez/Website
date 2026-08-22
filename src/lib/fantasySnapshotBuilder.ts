@@ -26,9 +26,13 @@ import {
   getFantasyPositionDataMetadata,
 } from "@/lib/fantasyPositionData";
 import { Player } from "@/types";
+// The season-week helper is pure calendar math and the client surfaces need
+// it too, so it lives in fantasyUtils and is re-exported here for the build
+// scripts that already import it from this module.
+import { getNflRegularSeasonWeek } from "@/lib/fantasyUtils";
 
-const MS_PER_DAY = 86_400_000;
-const NFL_REGULAR_SEASON_WEEKS = 18;
+export { getNflRegularSeasonWeek };
+
 const ADP_MATCH_GATE_MIN_ROWS = 50;
 const ADP_MATCH_GATE_MIN_RATE = 0.6;
 const ADP_TOP_BOARD_SIZE = 150;
@@ -47,33 +51,6 @@ export function getSnapshotSeason(now: Date = new Date()): number {
 }
 
 const SNAPSHOT_SEASON = getSnapshotSeason();
-
-/**
- * Derives the NFL regular-season week for a season from the calendar so a
- * snapshot built mid-season isn't perpetually stamped "Preseason" (week 0).
- *
- * Week 1 kicks off the Thursday after Labor Day (the first Monday of
- * September). Before that we're in the offseason/preseason and report week 0;
- * after kickoff we count regular-season weeks and hold at the final week
- * through the playoffs until the next season opens. This is calendar-derived,
- * not schedule-aware, so it can be off by a day or two around week
- * boundaries — close enough for a freshness label, and self-contained.
- */
-export function getNflRegularSeasonWeek(season: number, now: Date = new Date()): number {
-  // First Monday of September (Labor Day), evaluated in UTC.
-  const septFirst = new Date(Date.UTC(season, 8, 1));
-  const offsetToMonday = (8 - septFirst.getUTCDay()) % 7;
-  const laborDay = new Date(Date.UTC(season, 8, 1 + offsetToMonday));
-  // Week 1's Thursday opener is three days after the Labor Day Monday.
-  const week1Kickoff = laborDay.getTime() + 3 * MS_PER_DAY;
-
-  if (now.getTime() < week1Kickoff) {
-    return 0;
-  }
-
-  const weeksElapsed = Math.floor((now.getTime() - week1Kickoff) / (7 * MS_PER_DAY));
-  return Math.min(NFL_REGULAR_SEASON_WEEKS, weeksElapsed + 1);
-}
 
 const SNAPSHOT_WEEK = getNflRegularSeasonWeek(SNAPSHOT_SEASON);
 const FANTASY_SNAPSHOT_POSITION_ORDER = ["QB", "RB", "WR", "TE", "K", "DST"] as const;

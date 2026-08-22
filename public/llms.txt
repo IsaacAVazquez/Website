@@ -79,6 +79,10 @@ Isaac Vazquez is a product manager and UC Berkeley Haas MBA Candidate, Class of 
 - URL: https://isaacvazquez.com/fantasy-football/draft-tracker
 - Description: Manual snake-draft tracker with local persistence, roster-pressure cues, queueing, notes, and comparison state.
 
+### Fantasy Football Weekly Board
+- URL: https://isaacvazquez.com/fantasy-football/weekly
+- Description: In-season weekly flex and quarterback consensus rankings with each player's opponent and rostered rate, plus a waiver list ranking expert rank against how widely a player is rostered.
+
 ### Score Pools
 - URL: https://isaacvazquez.com/score-pools
 - Description: Exact-score prediction engine for soccer fixtures, using odds de-vig and a market-calibrated Dixon-Coles scoreline model with an expected-points optimizer and a standing-aware leaderboard.

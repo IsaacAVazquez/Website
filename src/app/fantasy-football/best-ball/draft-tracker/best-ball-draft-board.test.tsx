@@ -31,7 +31,10 @@ describe("BestBallDraftBoard", () => {
       />
     );
 
-    const row = screen.getByRole("button", { name: "Log Jaylin Noel at pick 1" });
+    // The row's name is composed from its own content now, so match on the
+    // player rather than a label that used to replace everything in the row.
+    const row = screen.getByRole("button", { name: /Jaylin Noel/ });
+    expect(row).toHaveAccessibleName(/Log at pick 1/);
     expect(within(row).getByText("Undrafted")).toBeInTheDocument();
     expect(within(row).getByText(/ADP Undrafted/)).toBeInTheDocument();
     expect(within(row).queryByText("215.2")).not.toBeInTheDocument();

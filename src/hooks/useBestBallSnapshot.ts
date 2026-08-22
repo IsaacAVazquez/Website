@@ -20,7 +20,7 @@ async function loadBestBallSnapshot(): Promise<BestBallSnapshot> {
     try {
       const response = await fetch(
         `/data/fantasy/best-ball.json?v=${fantasySnapshotRevision}`,
-        { cache: "force-cache", signal: controller.signal }
+        { cache: "no-cache", signal: controller.signal }
       );
       if (!response.ok) {
         throw new Error(`Best ball snapshot fetch failed (${response.status}).`);

@@ -247,7 +247,7 @@ export function DraftBoard({
                 borderColor: "var(--home-rule)",
                 background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
               }}
-              role="radiogroup"
+              role="group"
               aria-label="Draft board view"
             >
               {([
@@ -259,8 +259,7 @@ export function DraftBoard({
                   <button
                     key={option.value}
                     type="button"
-                    role="radio"
-                    aria-checked={active}
+                    aria-pressed={active}
                     onClick={() => setBoardView(option.value)}
                     className="inline-flex min-h-[44px] items-center rounded-full px-3.5 py-1.5 text-sm transition-colors duration-200"
                     style={

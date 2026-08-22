@@ -219,7 +219,7 @@ describe("FantasyFootballClient", () => {
     }
     expect(
       within(screen.getByRole("navigation", { name: "Fantasy tools" })).getAllByRole("link")
-    ).toHaveLength(4);
+    ).toHaveLength(5);
 
     fireEvent.click(screen.getByRole("button", { name: "Open Christian McCaffrey detail" }));
     const dialog = screen.getByRole("dialog", { name: "Christian McCaffrey detail" });

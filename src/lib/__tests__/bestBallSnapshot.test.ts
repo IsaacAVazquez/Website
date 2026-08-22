@@ -1,5 +1,6 @@
 import {
   assertBestBallAdpCoverage,
+  evaluateBestBallAdpCoverage,
   assertBestBallRankingCoverage,
   assertBestBallSuperflexCoverage,
   BEST_BALL_SUPERFLEX_CORE_QB_COUNT,
@@ -66,6 +67,35 @@ describe("assertBestBallAdpCoverage", () => {
         retainedTopPlayers: 0,
       })
     ).not.toThrow();
+  });
+});
+
+describe("evaluateBestBallAdpCoverage", () => {
+  it("reports a shallow ADP day rather than throwing, so the board can still publish", () => {
+    // The 2026-08-19 shape: the rankings board was healthy and only the deep ADP
+    // pull came back short. Returning a verdict lets the builder keep prior prices.
+    const verdict = evaluateBestBallAdpCoverage({
+      freshSourceReceived: true,
+      matches: 200,
+      previousMatches: 339,
+      previousTopPlayers: 140,
+      retainedTopPlayers: 100,
+    });
+
+    expect(verdict.ok).toBe(false);
+    expect(verdict.message).toMatch(/200 players versus 339 previously/);
+  });
+
+  it("passes a healthy pull", () => {
+    expect(
+      evaluateBestBallAdpCoverage({
+        freshSourceReceived: true,
+        matches: 340,
+        previousMatches: 339,
+        previousTopPlayers: 140,
+        retainedTopPlayers: 138,
+      }).ok
+    ).toBe(true);
   });
 });
 

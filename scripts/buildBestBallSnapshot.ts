@@ -7,9 +7,9 @@ import {
   fetchBestBallSuperflexRankingsBoard,
 } from "@/lib/bestBallSource";
 import {
-  assertBestBallAdpCoverage,
   assertBestBallRankingCoverage,
   assertBestBallSuperflexCoverage,
+  evaluateBestBallAdpCoverage,
   BEST_BALL_MIN_RANKING_PLAYERS,
   BEST_BALL_RANKING_TOP_BOARD_SIZE,
   BEST_BALL_SNAPSHOT_SCHEMA_VERSION,
@@ -90,7 +90,7 @@ function describeFantasyProsProvider(sourceLabel: string, boardLabel: string): s
 async function atomicWriteSnapshot(snapshot: BestBallSnapshot) {
   await mkdir(path.dirname(OUTPUT_PATH), { recursive: true });
   const tempPath = `${OUTPUT_PATH}.tmp`;
-  await writeFile(tempPath, `${JSON.stringify(snapshot, null, 2)}\n`, "utf8");
+  await writeFile(tempPath, `${JSON.stringify(snapshot)}\n`, "utf8");
   await rename(tempPath, OUTPUT_PATH);
 }
 
@@ -130,7 +130,7 @@ async function main() {
     ).length,
   });
 
-  const [superflexResult, adpResult, scheduleResult, byeWeeks] = await Promise.all([
+  const [superflexResult, freshAdpResult, scheduleResult, byeWeeks] = await Promise.all([
     fetchBestBallSuperflexRankingsBoard().catch((error) => {
       console.warn(
         "Superflex rankings refresh failed. Keeping prior Superflex ranks when available.",
@@ -149,6 +149,42 @@ async function main() {
     readByeWeeks(rankings.season),
   ]);
 
+  // Coverage is judged before the board is assembled. A thin ADP day drops back to
+  // prior prices through the same path a failed fetch already takes, so a healthy
+  // rankings board is never discarded over its ADP layer. Costs one extra matching
+  // pass over the board, which is nothing next to the fetches above.
+  const freshAdpIndex = freshAdpResult ? buildFantasyAdpIndex(freshAdpResult.entries) : null;
+  const previousById = new Map(
+    (sameSeasonPrevious?.players ?? []).map((player) => [player.id, player])
+  );
+  const freshMatchedIds = new Set<string>();
+  if (freshAdpIndex) {
+    for (const player of rankings.players) {
+      if (matchPlayerAdp(player, freshAdpIndex)) freshMatchedIds.add(player.id);
+    }
+  }
+  const priorAdpMatches =
+    sameSeasonPrevious?.adpSource?.matchedCount ??
+    (sameSeasonPrevious?.players ?? []).filter((player) => Number.isFinite(player.adp)).length;
+  const priorTopAdpPlayers = rankings.players
+    .slice(0, 150)
+    .filter((player) => Number.isFinite(previousById.get(player.id)?.adp));
+  const adpCoverage = evaluateBestBallAdpCoverage({
+    freshSourceReceived: freshAdpResult !== null,
+    matches: freshMatchedIds.size,
+    previousMatches: priorAdpMatches,
+    previousTopPlayers: priorTopAdpPlayers.length,
+    retainedTopPlayers: priorTopAdpPlayers.filter((player) => freshMatchedIds.has(player.id))
+      .length,
+  });
+  if (!adpCoverage.ok && priorAdpMatches === 0) {
+    throw new Error(`${adpCoverage.message} No prior ADP to fall back on.`);
+  }
+  const adpResult = adpCoverage.ok ? freshAdpResult : null;
+  if (!adpCoverage.ok) {
+    console.warn(`${adpCoverage.message} Keeping prior ADP and publishing the rankings.`);
+  }
+
   const adpIndex = adpResult ? buildFantasyAdpIndex(adpResult.entries) : null;
   const superflexById = new Map(
     (superflexResult?.players ?? []).map((player) => [
@@ -159,14 +195,10 @@ async function main() {
       },
     ])
   );
-  const previousById = new Map(
-    (sameSeasonPrevious?.players ?? []).map((player) => [player.id, player])
-  );
   const coreSuperflexQuarterbackIds = getBestBallSuperflexCoreQuarterbackIds(
     rankings.players
   );
   let matchedCount = 0;
-  const freshAdpMatchedIds = new Set<string>();
   let superflexMatchedCount = 0;
   let superflexTierMatchedCount = 0;
   let topBoardSuperflexMatchedCount = 0;
@@ -182,7 +214,6 @@ async function main() {
     const matchedAdp = adpIndex ? matchPlayerAdp(player, adpIndex) : null;
     if (matchedAdp) {
       matchedCount += 1;
-      freshAdpMatchedIds.add(player.id);
     }
 
     const priorPlayer = previousById.get(player.id);
@@ -289,21 +320,6 @@ async function main() {
   if (players.length < BEST_BALL_MIN_RANKING_PLAYERS) {
     throw new Error(`Best ball snapshot has only ${players.length} players.`);
   }
-  const previousAdpMatches = sameSeasonPrevious?.adpSource?.matchedCount ??
-    (sameSeasonPrevious?.players ?? []).filter((player) => Number.isFinite(player.adp)).length;
-  const previousTopAdpPlayers = rankings.players
-    .slice(0, 150)
-    .filter((player) => Number.isFinite(previousById.get(player.id)?.adp));
-  const retainedTopAdpPlayers = previousTopAdpPlayers.filter((player) =>
-    freshAdpMatchedIds.has(player.id)
-  ).length;
-  assertBestBallAdpCoverage({
-    freshSourceReceived: adpResult !== null,
-    matches: matchedCount,
-    previousMatches: previousAdpMatches,
-    previousTopPlayers: previousTopAdpPlayers.length,
-    retainedTopPlayers: retainedTopAdpPlayers,
-  });
   assertBestBallSuperflexCoverage({
     freshSourceReceived: superflexResult !== null,
     totalPlayers: players.length,

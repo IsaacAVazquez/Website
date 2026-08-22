@@ -295,7 +295,9 @@ test.describe("Fantasy football rankings", () => {
 
     await shell.getByRole("button", { name: `Open ${scored.name} detail` }).click();
     const dialog = page.getByRole("dialog", { name: `${scored.name} detail` });
-    await expect(dialog.getByText("Points per game", { exact: true })).toBeVisible();
+    // The label shares its span with the metric tooltip trigger, so an exact
+    // match no longer finds an element whose whole text is the label.
+    await expect(dialog.getByText("Points per game").first()).toBeVisible();
 
     // The basis travels with the number: which season, which scoring, and how
     // many games sit behind the spread.
@@ -336,7 +338,7 @@ test.describe("Fantasy football rankings", () => {
       () => document.documentElement.scrollWidth - document.documentElement.clientWidth
     );
     expect(horizontalOverflow).toBeLessThanOrEqual(1);
-    await expect(page.getByRole("link", { name: /Open the draft tracker/i }).first()).toBeVisible();
+    await expect(page.getByRole("link", { name: "Draft tracker", exact: true }).first()).toBeVisible();
   });
 
   test("supports the fantasy rankings in dark mode", async ({ page }) => {
@@ -492,9 +494,10 @@ test.describe("Fantasy football best ball", () => {
     await shell.getByRole("button", { name: "Open draft room from slot 1" }).click();
     await expect(shell.getByRole("heading", { name: "You are on the clock at pick 1" })).toBeVisible();
 
-    const firstPlayer = shell.getByRole("button", { name: /^Log .+ at pick 1$/ }).first();
-    const firstPlayerLabel = await firstPlayer.getAttribute("aria-label");
-    const firstPlayerName = firstPlayerLabel?.match(/^Log (.+) at pick 1$/)?.[1];
+    const firstPlayer = shell.getByRole("button", { name: /^Log at pick 1, board rank/ }).first();
+    const firstPlayerName = (
+      await firstPlayer.getByTestId("best-ball-board-player-name").textContent()
+    )?.trim();
     expect(firstPlayerName, "the refreshed BBM board exposes a first player").toBeTruthy();
 
     await firstPlayer.click();
@@ -508,7 +511,10 @@ test.describe("Fantasy football best ball", () => {
     await shell.getByRole("button", { name: "Undo last pick" }).click();
     await expect(shell.getByText("1 of 216", { exact: true })).toBeVisible();
     await expect(
-      shell.getByRole("button", { name: `Log ${firstPlayerName} at pick 1` })
+      shell
+        .getByRole("button", { name: /^Log at pick 1, board rank/ })
+        .filter({ hasText: firstPlayerName! })
+        .first()
     ).toBeVisible();
     await expect.poll(() => getPersistedBestBallPickCount(page, "bbm-vii")).toBe(0);
 

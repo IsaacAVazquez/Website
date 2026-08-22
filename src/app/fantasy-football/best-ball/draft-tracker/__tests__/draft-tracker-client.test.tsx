@@ -83,7 +83,7 @@ describe("BestBallDraftTrackerClient", () => {
     ).toBeVisible();
     expect(screen.getByRole("heading", { name: "Best fits for your next pick" })).toBeVisible();
     expect(screen.getAllByRole("button", { name: "Log for my team" }).length).toBeGreaterThan(0);
-    fireEvent.click(screen.getByRole("button", { name: "Log Ja'Marr Chase at pick 1" }));
+    fireEvent.click(screen.getByRole("button", { name: /Log at pick 1.*Ja'Marr Chase/ }));
 
     expect(screen.getByRole("heading", { name: "Slot 2 is on the clock" })).toBeVisible();
     await waitFor(() =>
@@ -158,7 +158,7 @@ describe("BestBallDraftTrackerClient", () => {
     fireEvent.click(
       await screen.findByRole("button", { name: "Open draft room from slot 1" })
     );
-    fireEvent.click(screen.getByRole("button", { name: "Log Ja'Marr Chase at pick 1" }));
+    fireEvent.click(screen.getByRole("button", { name: /Log at pick 1.*Ja'Marr Chase/ }));
     fireEvent.click(screen.getByRole("button", { name: /My build/ }));
 
     const dialog = screen.getByRole("dialog");

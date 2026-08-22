@@ -50,6 +50,17 @@ describe("getSnapshotStaleness", () => {
     expect(getSnapshotStaleness(stale, offseasonNow)).toBe("stale");
   });
 
+  it("holds the daily thresholds through the season, not just through September", () => {
+    // The daily refresh lane runs July through December. The window used to
+    // stop September 30, so a board refreshing every day was judged against
+    // the 14-day offseason band for the whole regular season.
+    const inSeasonNow = new Date("2026-11-10T12:00:00.000Z");
+    const aging = new Date(inSeasonNow.getTime() - 3 * MS_PER_DAY).toISOString();
+    const stale = new Date(inSeasonNow.getTime() - 5 * MS_PER_DAY).toISOString();
+    expect(getSnapshotStaleness(aging, inSeasonNow)).toBe("aging");
+    expect(getSnapshotStaleness(stale, inSeasonNow)).toBe("stale");
+  });
+
   it("treats a missing or invalid date as stale rather than fresh", () => {
     expect(getSnapshotStaleness(null)).toBe("stale");
     expect(getSnapshotStaleness(undefined)).toBe("stale");
@@ -112,6 +123,32 @@ describe("getFantasyAdpFreshness", () => {
         "2027-01-02T00:00:00.000Z",
         2026,
         new Date("2027-01-03T00:00:00.000Z")
+      )
+    ).toBe("current");
+  });
+
+  it("flags a frozen draft market as stale once the season is under way", () => {
+    // Mock-draft ADP stops moving when real drafts end. The age check used to
+    // run only from July through September, so from October a September board
+    // fell through to a bare year comparison and read as a live market.
+    expect(
+      getFantasyAdpFreshness(
+        "2026-09-09T00:00:00.000Z",
+        2026,
+        new Date("2026-11-10T00:00:00.000Z")
+      )
+    ).toBe("stale");
+  });
+
+  it("keeps a weekly spring refresh current rather than calling it stale", () => {
+    // February through June the cron runs weekly, so a six-day-old board is
+    // the pipeline working. The unconditional age check has to use the
+    // offseason band here or it would raise a false alarm every week.
+    expect(
+      getFantasyAdpFreshness(
+        "2026-04-01T00:00:00.000Z",
+        2026,
+        new Date("2026-04-07T00:00:00.000Z")
       )
     ).toBe("current");
   });

@@ -13,6 +13,7 @@ import {
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Search, Star, X } from "lucide-react";
+import { useDebounce } from "@/hooks/useDebounce";
 import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
 import { usePlayerQueue } from "@/hooks/usePlayerQueue";
 import { usePlayerNotes } from "@/hooks/usePlayerNotes";
@@ -77,6 +78,7 @@ const FANTASY_TOOLS = [
   { href: "/fantasy-football/mock-draft", label: "Mock draft" },
   { href: "/fantasy-football/best-ball", label: "Best ball" },
   { href: "/fantasy-football/trade-calculator", label: "Trade calculator" },
+  { href: "/fantasy-football/weekly", label: "Weekly board" },
 ];
 
 const subscribeToHydration = () => () => undefined;
@@ -831,9 +833,25 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
   }, [routeState, router, searchParams]);
 
   useEffect(() => {
+    // Only adopt the URL's query when it genuinely differs from what is typed.
+    // normalizeFantasyQuery trims, so comparing raw values made a trailing space
+    // vanish from under the cursor once the URL write was debounced.
     // eslint-disable-next-line react-hooks/set-state-in-effect -- browser Back/Forward can replace the URL-backed query
-    setSearchQuery(routeState.query);
+    setSearchQuery((current) =>
+      current.replace(/\s+/g, " ").trim() === routeState.query ? current : routeState.query
+    );
   }, [routeState.query]);
+
+  // Every keystroke used to fire router.replace on a fully dynamic route, which
+  // meant one uncacheable RSC round trip per character. The board still filters
+  // on searchQuery, so only the shareable URL waits.
+  const debouncedQuery = useDebounce(searchQuery, 200);
+  useEffect(() => {
+    if (debouncedQuery.replace(/\s+/g, " ").trim() === routeState.query) return;
+    updateRouteState({ query: debouncedQuery });
+    // updateRouteState is recreated every render; the query is the real trigger.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedQuery, routeState.query]);
 
   function updateRouteState(nextState: Partial<FantasySearchState>) {
     const nextRouteState = {
@@ -896,7 +914,10 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
     setVisibleCount(RANKINGS_PAGE_SIZE);
   }, [routeState.position, routeState.scoring, searchQuery]);
 
-  const windowedPlayers = filteredPlayers.slice(0, visibleCount);
+  const windowedPlayers = useMemo(
+    () => filteredPlayers.slice(0, visibleCount),
+    [filteredPlayers, visibleCount]
+  );
   const hasMore = visibleCount < filteredPlayers.length;
 
   // One rank scale for every visible spread bar. Scaling to the rendered
@@ -1103,17 +1124,24 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                     onClick={() => setDetailPlayerId(player.id)}
                     className="absolute inset-0 z-[1] cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[var(--home-signal)]"
                   />
+                  {queue.isQueued(player.id) && (
+                    <span
+                      aria-hidden="true"
+                      className="absolute inset-y-0 left-0 w-1"
+                      style={{ background: "var(--home-signal)" }}
+                    />
+                  )}
                   <div
                     className="flex min-h-11 w-full flex-wrap items-center gap-x-4 gap-y-1 px-3.5 py-1.5 text-left"
                     style={{ color: "var(--home-ink)" }}
                   >
                     <span
                       className="w-[34px] shrink-0 text-right font-mono text-sm"
-                      title={queue.isQueued(player.id) ? "Board rank · in your queue" : "Board rank"}
                       style={{
                         color: queue.isQueued(player.id) ? "var(--home-signal)" : "var(--home-ink)",
                       }}
                     >
+                      {queue.isQueued(player.id) && <span className="sr-only">In your queue, </span>}
                       {getPublishedBoardRank(player, routeState.position)}
                     </span>
                     <span className="flex min-w-0 flex-[1_1_200px] items-baseline gap-2">
@@ -1134,18 +1162,29 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                       </span>
                       {adpAvailable && vsAdpMeaningful && <ValueReachChip player={player} />}
                     </span>
-                    <span className="flex max-w-full flex-wrap items-center gap-x-4 gap-y-1">
+                    {/* Not aria-hidden: the aligned columns below are display:none
+                        at this width, which takes their sr-only labels out of the
+                        accessibility tree too, so this line is the mobile reading. */}
+                    <span
+                      className="w-full shrink-0 font-mono text-3xs tracking-[0.04em] md:hidden"
+                      style={{ color: "var(--home-ink-muted)" }}
+                    >
+                      {`Avg ${formatAvg(player)}`}
+                      {adpAvailable ? ` · ADP ${formatAdp(player.adp)}` : ""}
+                      {vsAdp ? ` · vs ADP ${vsAdp.text}` : ""}
+                      {` · Range ${formatExpertRange(player)}`}
+                    </span>
+                    <span className="hidden max-w-full flex-wrap items-center gap-x-4 gap-y-1 md:flex">
                       <ExpertSpreadBar player={player} scale={boardScale} />
                       <span className="sr-only">Expert range</span>
                       <span
                         className="w-16 text-right font-mono text-xs"
-                        title={FANTASY_EXPERT_SPREAD_TOOLTIP}
                         style={{ color: "var(--home-ink-muted)" }}
                       >
                         {formatExpertRange(player)}
                       </span>
                       <span className="sr-only">Consensus average</span>
-                      <span className="w-12 text-right font-mono text-xs font-medium" title={FANTASY_AVG_RANK_TOOLTIP}>
+                      <span className="w-12 text-right font-mono text-xs font-medium">
                         {formatAvg(player)}
                       </span>
                       {adpAvailable && (
@@ -1153,7 +1192,6 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                           <span className="sr-only">ADP</span>
                           <span
                             className="w-12 text-right font-mono text-xs"
-                            title={FANTASY_ADP_TOOLTIP}
                             style={{ color: "var(--home-ink-muted)" }}
                           >
                             {formatAdp(player.adp)}
@@ -1281,10 +1319,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
               name="fantasy-search"
               value={searchQuery}
               maxLength={80}
-              onChange={(event) => {
-                setSearchQuery(event.target.value);
-                updateRouteState({ query: event.target.value });
-              }}
+              onChange={(event) => setSearchQuery(event.target.value)}
               disabled={currentSliceUnavailable}
               autoComplete="off"
               placeholder="Search player or team"

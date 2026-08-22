@@ -20,6 +20,11 @@ export interface Player {
   adpTimesDrafted?: number; // Player-level number of observed selections
   lastUpdated?: string;
   ownership?: number;
+  /**
+   * Weekly opponent as FantasyPros labels it, for example "@ SEA" or "vs KC".
+   * Weekly boards only; the preseason boards carry no opponent.
+   */
+  opponent?: string;
   rankAverage?: number;
   rankEcr?: number;
   superflexRank?: number; // Separate sourced Superflex consensus rank when available
