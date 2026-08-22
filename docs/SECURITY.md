@@ -33,7 +33,8 @@ Active secrets used by the running app and update scripts:
 | `FANTASYPROS_API_KEY` | Optional build-only key for authenticated local redraft and best ball snapshot refreshes. The scheduled job and deployed runtime do not use it. |
 | `FOOTBALL_DATA_API_TOKEN` | football-data.org token used by football snapshot scripts. |
 | `FINNHUB_API_KEY` | Quote endpoint behind `/api/investments/quotes`. |
-| `RESEND_API_KEY` | Transactional email for the MBA internship digest (`/api/mba-jobs/email`). |
+| `RESEND_API_KEY` | Transactional email for the MBA internship digest and contact creation for the public newsletter signup. |
+| `RESEND_NEWSLETTER_SEGMENT_ID` | Optional Resend segment used to keep public newsletter signups grouped separately. |
 | `MBA_DIGEST_ALLOWED_RECIPIENTS` | Comma-separated email/domain allowlist for `/api/mba-jobs/email`, for example `name@example.com,@example.edu`; use `*` only if the public relay risk is intentional. |
 | `CRON_SECRET` | Bearer token required by the Netlify `purge-cache` function. |
 | `GOOGLE_SITE_VERIFICATION` | Optional; surfaced in metadata for Search Console verification. |

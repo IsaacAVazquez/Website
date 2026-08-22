@@ -5,6 +5,7 @@ import {
   getAdpSignalThreshold,
   getConsensusSpread,
   getFantasyAdpFreshness,
+  getFantasyDraftMarketSignals,
   getFantasySourceCapabilities,
   getSnapshotStaleness,
   getSnapshotStalenessLabel,
@@ -445,6 +446,44 @@ describe("getValueVsAdp", () => {
         getValueVsAdp(playerWith({ position, rankEcr: 140, adp: 100, adpTimesDrafted: 500 }))
       ).toBeNull();
     }
+  });
+});
+
+describe("getFantasyDraftMarketSignals", () => {
+  it("returns the largest value and reach gaps in market order", () => {
+    const signals = getFantasyDraftMarketSignals(
+      [
+        playerWith({ id: "value-1", name: "Value One", rankEcr: 10, adp: 35 }),
+        playerWith({ id: "value-2", name: "Value Two", rankEcr: 20, adp: 35 }),
+        playerWith({ id: "reach-1", name: "Reach One", rankEcr: 40, adp: 12 }),
+        playerWith({ id: "reach-2", name: "Reach Two", rankEcr: 30, adp: 18 }),
+        playerWith({ id: "neutral", name: "Neutral", rankEcr: 5, adp: 8 }),
+      ],
+      2
+    );
+
+    expect(signals.values.map(({ player, delta }) => [player.id, delta])).toEqual([
+      ["value-1", 25],
+      ["value-2", 15],
+    ]);
+    expect(signals.reaches.map(({ player, delta }) => [player.id, delta])).toEqual([
+      ["reach-1", -28],
+      ["reach-2", -12],
+    ]);
+  });
+
+  it("uses the requested per-side limit and omits players without a signal", () => {
+    const signals = getFantasyDraftMarketSignals(
+      [
+        playerWith({ id: "value-1", name: "Value One", rankEcr: 10, adp: 35 }),
+        playerWith({ id: "value-2", name: "Value Two", rankEcr: 20, adp: 35 }),
+        playerWith({ id: "missing", name: "Missing", rankEcr: 30 }),
+      ],
+      1
+    );
+
+    expect(signals.values).toHaveLength(1);
+    expect(signals.reaches).toEqual([]);
   });
 });
 

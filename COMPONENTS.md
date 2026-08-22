@@ -71,6 +71,8 @@ Representative live components:
 
 These are used across `/fantasy-football/*` routes.
 
+`src/components/newsletter/NewsletterSignup.tsx` is the shared public email opt-in used by the writing archive, fantasy rankings, and Agent Build Index. It posts to `/api/newsletter/subscribe` and records a conversion only after the contact API succeeds.
+
 Shared fantasy presentation components live in `src/components/fantasy/`
 (exported via `index.ts`) and are reused by both the rankings board and the
 draft assistant:
