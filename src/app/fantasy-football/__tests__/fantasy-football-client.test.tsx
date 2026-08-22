@@ -338,9 +338,10 @@ describe("FantasyFootballClient", () => {
       .getByRole("button", { name: "Open Ja'Marr Chase detail" })
       .closest("li") as HTMLElement;
     expect(within(row).queryByText(/^(Value|Reach) /)).not.toBeInTheDocument();
-    // The column still stands, but the cell holds an em dash rather than a gap
-    // computed off two different scales.
-    expect(within(row).getByText("—")).toBeVisible();
+    // The vs ADP cell is gone entirely on position boards, and the ADP column
+    // label says which scale the number is on.
+    expect(within(row).queryByText("versus ADP")).not.toBeInTheDocument();
+    expect(screen.getByText("ADP (overall)")).toBeInTheDocument();
   });
 
   it("never calls a thin ADP sample market agreement", () => {
@@ -500,8 +501,13 @@ describe("FantasyFootballClient", () => {
     expect(screen.getByText("No players match on this board.")).toBeVisible();
 
     fireEvent.click(screen.getByRole("button", { name: "Clear search" }));
+    // Clearing the search must not silently change the position filter too.
     expect(mockReplace).toHaveBeenLastCalledWith(
-      expect.stringContaining("position=overall"),
+      expect.not.stringContaining("q="),
+      expect.anything()
+    );
+    expect(mockReplace).toHaveBeenLastCalledWith(
+      expect.stringContaining("position=rb"),
       expect.anything()
     );
   });

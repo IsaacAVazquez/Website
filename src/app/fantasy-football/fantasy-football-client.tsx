@@ -419,6 +419,15 @@ function DraftPlayerDrawer({
     };
   }, []);
 
+  // Lock the page behind the dialog so closing lands where the user left off.
+  useEffect(() => {
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, []);
+
   const isQueued = queue.isQueued(player.id);
   const value = adpSignalsAvailable && vsAdpMeaningful ? getValueVsAdp(player) : null;
   const spread = getConsensusSpread(player);
@@ -541,7 +550,7 @@ function DraftPlayerDrawer({
               title={adpReferenceAsOf ? FANTASY_PRIOR_SEASON_ADP_TOOLTIP : FANTASY_ADP_TOOLTIP}
             />
           )}
-          {vsAdp && (
+          {vsAdp ? (
             <DrawerStat
               label="vs ADP"
               value={vsAdp.text}
@@ -552,6 +561,15 @@ function DraftPlayerDrawer({
                   : "Early mock-draft sample, so the gap carries no value or reach read yet"
               }
             />
+          ) : (
+            adpAvailable &&
+            Number.isFinite(player.adp) && (
+              <DrawerStat
+                label="vs ADP"
+                value="—"
+                title="No reliable market gap for this player on this board"
+              />
+            )
           )}
         </div>
 
@@ -1048,9 +1066,17 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
     { label: "Range", className: "w-16 text-right", title: FANTASY_EXPERT_SPREAD_TOOLTIP },
     { label: "Avg", className: "w-12 text-right", title: FANTASY_AVG_RANK_TOOLTIP },
     ...(adpAvailable
-      ? [{ label: "ADP", className: "w-12 text-right", title: adpTooltip }]
+      ? [
+          {
+            // Position boards rank within the position while ADP stays an
+            // overall pick number, so the label says which scale it is on.
+            label: vsAdpMeaningful ? "ADP" : "ADP (overall)",
+            className: "w-16 text-right",
+            title: adpTooltip,
+          },
+        ]
       : []),
-    ...(adpSignalsAvailable
+    ...(adpSignalsAvailable && vsAdpMeaningful
       ? [{ label: "vs ADP", className: "w-16 text-right", title: FANTASY_VS_ADP_TOOLTIP }]
       : []),
   ];
@@ -1215,17 +1241,15 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                             </span>
                             {formatAdp(player.adp)}
                           </span>
-                          {adpSignalsAvailable ? (
+                          {adpSignalsAvailable && vsAdpMeaningful ? (
                             <>
                               <span className="sr-only">versus ADP</span>
                               <span
                                 className="w-auto font-mono text-xs md:w-16 md:text-right"
                                 title={
-                                  !vsAdpMeaningful
-                                    ? "ADP deltas compare to overall rank, so position boards do not get one"
-                                    : vsAdp && !vsAdp.judged
-                                      ? "Early mock-draft sample, so the gap carries no value or reach read yet"
-                                      : FANTASY_VS_ADP_TOOLTIP
+                                  vsAdp && !vsAdp.judged
+                                    ? "Early mock-draft sample, so the gap carries no value or reach read yet"
+                                    : FANTASY_VS_ADP_TOOLTIP
                                 }
                                 style={{ color: vsAdp ? vsAdp.color : "var(--home-ink-muted)" }}
                               >
@@ -1293,11 +1317,15 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
           </span>
           <h1
             className="m-0 font-semibold leading-none"
-            style={{ fontSize: "clamp(1.5rem, 3vw, 2.125rem)", letterSpacing: "-0.05em" }}
+            style={{ fontSize: "clamp(1.55rem, 1.3rem + 1.25vw, 2.1rem)", letterSpacing: "-0.05em" }}
           >
             Fantasy Football{" "}
             <em style={{ fontFamily: "var(--font-home-serif)", fontStyle: "italic", fontWeight: 500 }}>Rankings</em>
           </h1>
+          <p className="m-0 w-full max-w-[62ch] text-sm" style={{ color: "var(--home-ink-muted)" }}>
+            The board pairs the expert consensus with market ADP, and the tier plates and cliff lines mark
+            where the board actually drops off.
+          </p>
         </div>
         <div className="flex flex-wrap gap-1.5">
           {headerChips.map((chip) => (
@@ -1649,7 +1677,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                 type="button"
                 onClick={() => {
                   setSearchQuery("");
-                  updateRouteState({ query: "", position: "overall" });
+                  updateRouteState({ query: "" });
                 }}
                 className="mt-3.5 inline-flex min-h-touch items-center rounded-full border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
                 style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
