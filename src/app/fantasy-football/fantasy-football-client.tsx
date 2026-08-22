@@ -66,6 +66,9 @@ const RANKINGS_PAGE_SIZE = 40;
 /** The template's 1080px column; the page manages its own shell width. */
 const SHELL_CLASS = "mx-auto w-full max-w-[1080px] px-[clamp(1rem,4vw,2.5rem)]";
 
+/** Phone rows carry their own value labels, since the column-label row is md-and-up. */
+const ROW_MICRO_LABEL_CLASS = "text-3xs uppercase tracking-[0.06em] text-[var(--home-ink-muted)] md:hidden";
+
 const MONO_LABEL_CLASS = "font-mono text-3xs uppercase tracking-[0.12em]";
 
 /** Square-cornered mono chip from the template header (distinct from the shared pill chip). */
@@ -1031,7 +1034,8 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
           : `${filteredPlayers.length} of ${players.length} shown`;
 
   const metricColumns: { label: string; className: string; title?: string }[] = [
-    { label: "Expert spread", className: "w-[120px]", title: FANTASY_EXPERT_SPREAD_TOOLTIP },
+    // The spread bar itself yields below lg, so its label does too.
+    { label: "Expert spread", className: "hidden w-[120px] lg:block", title: FANTASY_EXPERT_SPREAD_TOOLTIP },
     { label: "Range", className: "w-16 text-right", title: FANTASY_EXPERT_SPREAD_TOOLTIP },
     { label: "Avg", className: "w-12 text-right", title: FANTASY_AVG_RANK_TOOLTIP },
     ...(adpAvailable
@@ -1041,6 +1045,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
       ? [{ label: "vs ADP", className: "w-16 text-right", title: FANTASY_VS_ADP_TOOLTIP }]
       : []),
   ];
+  const boardReady = !isLoading && !error && !currentSliceUnavailable && filteredPlayers.length > 0;
 
   function renderTierSection(group: TierGroup, index: number): ReactNode {
     const firstRank = getPublishedBoardRank(group.rows[0], routeState.position);
@@ -1168,31 +1173,43 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                       </span>
                       <span className="sr-only">Expert range</span>
                       <span
-                        className="w-16 text-right font-mono text-xs"
+                        className="w-auto font-mono text-xs md:w-16 md:text-right"
                         title={FANTASY_EXPERT_SPREAD_TOOLTIP}
                         style={{ color: "var(--home-ink-muted)" }}
                       >
+                        <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
+                          Rng{" "}
+                        </span>
                         {formatExpertRange(player)}
                       </span>
                       <span className="sr-only">Consensus average</span>
-                      <span className="w-12 text-right font-mono text-xs font-medium" title={FANTASY_AVG_RANK_TOOLTIP}>
+                      <span
+                        className="w-auto font-mono text-xs font-medium md:w-12 md:text-right"
+                        title={FANTASY_AVG_RANK_TOOLTIP}
+                      >
+                        <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
+                          Avg{" "}
+                        </span>
                         {formatAvg(player)}
                       </span>
                       {adpAvailable && (
                         <>
                           <span className="sr-only">ADP</span>
                           <span
-                            className="w-12 text-right font-mono text-xs"
+                            className="w-auto font-mono text-xs md:w-12 md:text-right"
                             title={adpTooltip}
                             style={{ color: "var(--home-ink-muted)" }}
                           >
+                            <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
+                              ADP{" "}
+                            </span>
                             {formatAdp(player.adp)}
                           </span>
                           {adpSignalsAvailable ? (
                             <>
                               <span className="sr-only">versus ADP</span>
                               <span
-                                className="w-16 text-right font-mono text-xs"
+                                className="w-auto font-mono text-xs md:w-16 md:text-right"
                                 title={
                                   !vsAdpMeaningful
                                     ? "ADP deltas compare to overall rank, so position boards do not get one"
@@ -1202,6 +1219,13 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                                 }
                                 style={{ color: vsAdp ? vsAdp.color : "var(--home-ink-muted)" }}
                               >
+                                <span
+                                  aria-hidden="true"
+                                  className={ROW_MICRO_LABEL_CLASS}
+                                  style={{ color: "var(--home-ink-muted)" }}
+                                >
+                                  ±ADP{" "}
+                                </span>
                                 {vsAdp ? vsAdp.text : "—"}
                               </span>
                             </>
@@ -1426,6 +1450,41 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
             </>
           )}
         </div>
+        {/* Column labels ride in the sticky bar so the numbers keep their
+            names mid-scroll; phones get per-value micro-labels instead. */}
+        {boardReady && (
+          <div
+            className="hidden border-t md:block"
+            style={{ borderColor: "color-mix(in srgb, var(--home-rule) 60%, transparent)" }}
+          >
+            <div className={SHELL_CLASS}>
+              <div
+                className="flex items-center gap-x-4 px-3.5 py-1.5 font-mono text-3xs uppercase tracking-[0.12em]"
+                style={{ color: "var(--home-ink-muted)" }}
+              >
+                <span className="w-[34px] shrink-0" />
+                <span className="min-w-0 flex-[1_1_200px]">
+                  <MetricTooltip term="Player" definition={FANTASY_PLAYER_COLUMN_TOOLTIP} focusable>
+                    Player
+                  </MetricTooltip>
+                </span>
+                <span className="flex shrink-0 items-center gap-4">
+                  {metricColumns.map((column) => (
+                    <span key={column.label} className={column.className}>
+                      {column.title ? (
+                        <MetricTooltip term={column.label} definition={column.title} focusable>
+                          {column.label}
+                        </MetricTooltip>
+                      ) : (
+                        column.label
+                      )}
+                    </span>
+                  ))}
+                </span>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
       <div className={`${SHELL_CLASS} pb-10 pt-4`}>
@@ -1522,30 +1581,6 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
           </div>
         ) : (
           <>
-            <div
-              className="hidden items-center gap-x-4 px-3.5 pb-2 font-mono text-3xs uppercase tracking-[0.12em] md:flex"
-              style={{ color: "var(--home-ink-muted)" }}
-            >
-              <span className="w-[34px] shrink-0" />
-              <span className="min-w-0 flex-[1_1_200px]">
-                <MetricTooltip term="Player" definition={FANTASY_PLAYER_COLUMN_TOOLTIP} focusable>
-                  Player
-                </MetricTooltip>
-              </span>
-              <span className="flex shrink-0 items-center gap-4">
-                {metricColumns.map((column) => (
-                  <span key={column.label} className={column.className}>
-                    {column.title ? (
-                      <MetricTooltip term={column.label} definition={column.title} focusable>
-                        {column.label}
-                      </MetricTooltip>
-                    ) : (
-                      column.label
-                    )}
-                  </span>
-                ))}
-              </span>
-            </div>
             <div>{tierGroups.map((group, index) => renderTierSection(group, index))}</div>
             {hasMore && (
               <div ref={sentinelRef} className="mt-4 flex justify-center">
