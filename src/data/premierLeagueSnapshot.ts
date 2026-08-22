@@ -421,7 +421,34 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         }
       }
     ],
-    "recentFixtures": [],
+    "recentFixtures": [
+      {
+        "id": "560542",
+        "utcDate": "2026-08-21T19:00:00Z",
+        "status": "FINISHED",
+        "matchday": 1,
+        "stage": "REGULAR_SEASON",
+        "homeTeam": {
+          "id": "57",
+          "name": "Arsenal FC",
+          "shortName": "Arsenal",
+          "tla": "ARS",
+          "crest": "https://crests.football-data.org/57.png"
+        },
+        "awayTeam": {
+          "id": "1076",
+          "name": "Coventry City FC",
+          "shortName": "Coventry City",
+          "tla": "COV",
+          "crest": "https://crests.football-data.org/1076.png"
+        },
+        "score": {
+          "winner": "HOME_TEAM",
+          "home": 3,
+          "away": 0
+        }
+      }
+    ],
     "upcomingFixtures": [
       {
         "id": "560543",
@@ -843,8 +870,13 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "appearances": 1
       }
     ],
-    "goalsPerMatchday": [],
-    "generatedAt": "2026-08-21T20:43:12.347Z"
+    "goalsPerMatchday": [
+      {
+        "matchday": 1,
+        "totalGoals": 3
+      }
+    ],
+    "generatedAt": "2026-08-22T01:51:58.911Z"
   },
   "teamSnapshots": {
     "57": {
@@ -862,7 +894,34 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "address": "75 Drayton Park London N5 1BU",
         "manager": null
       },
-      "recentFixtures": [],
+      "recentFixtures": [
+        {
+          "id": "560542",
+          "utcDate": "2026-08-21T19:00:00Z",
+          "status": "FINISHED",
+          "matchday": 1,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "57",
+            "name": "Arsenal FC",
+            "shortName": "Arsenal",
+            "tla": "ARS",
+            "crest": "https://crests.football-data.org/57.png"
+          },
+          "awayTeam": {
+            "id": "1076",
+            "name": "Coventry City FC",
+            "shortName": "Coventry City",
+            "tla": "COV",
+            "crest": "https://crests.football-data.org/1076.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 3,
+            "away": 0
+          }
+        }
+      ],
       "upcomingFixtures": [
         {
           "id": "560557",
@@ -996,15 +1055,17 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         }
       ],
       "form": {
-        "sequence": [],
-        "wins": 0,
+        "sequence": [
+          "W"
+        ],
+        "wins": 1,
         "draws": 0,
         "losses": 0,
-        "points": 0,
-        "goalsFor": 0,
+        "points": 3,
+        "goalsFor": 3,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-21T20:43:12.347Z"
+      "generatedAt": "2026-08-22T01:51:58.911Z"
     },
     "58": {
       "team": {
@@ -1322,7 +1383,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-21T20:43:12.347Z"
+      "generatedAt": "2026-08-22T01:51:58.911Z"
     },
     "62": {
       "team": {
@@ -1481,7 +1542,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-21T20:43:12.347Z"
+      "generatedAt": "2026-08-22T01:51:58.911Z"
     },
     "63": {
       "team": {
@@ -1640,7 +1701,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-21T20:43:12.347Z"
+      "generatedAt": "2026-08-22T01:51:58.911Z"
     },
     "64": {
       "team": {
@@ -1958,7 +2019,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-21T20:43:12.347Z"
+      "generatedAt": "2026-08-22T01:51:58.911Z"
     },
     "66": {
       "team": {
@@ -2117,7 +2178,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-21T20:43:12.347Z"
+      "generatedAt": "2026-08-22T01:51:58.911Z"
     },
     "67": {
       "team": {
@@ -2435,7 +2496,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-21T20:43:12.347Z"
+      "generatedAt": "2026-08-22T01:51:58.911Z"
     },
     "73": {
       "team": {
@@ -2916,7 +2977,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-21T20:43:12.347Z"
+      "generatedAt": "2026-08-22T01:51:58.911Z"
     },
     "328": {
       "team": {
@@ -3397,7 +3458,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-21T20:43:12.347Z"
+      "generatedAt": "2026-08-22T01:51:58.911Z"
     },
     "351": {
       "team": {
@@ -3556,7 +3617,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-21T20:43:12.347Z"
+      "generatedAt": "2026-08-22T01:51:58.911Z"
     },
     "354": {
       "team": {
@@ -3715,7 +3776,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-21T20:43:12.347Z"
+      "generatedAt": "2026-08-22T01:51:58.911Z"
     },
     "397": {
       "team": {
@@ -3874,7 +3935,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-21T20:43:12.347Z"
+      "generatedAt": "2026-08-22T01:51:58.911Z"
     },
     "402": {
       "team": {
@@ -4033,7 +4094,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-21T20:43:12.347Z"
+      "generatedAt": "2026-08-22T01:51:58.911Z"
     },
     "563": {
       "team": {
@@ -4355,7 +4416,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-21T20:43:12.347Z"
+      "generatedAt": "2026-08-22T01:51:58.911Z"
     },
     "1076": {
       "team": {
@@ -4372,7 +4433,34 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "address": "Gallagher Retail Park, Stoney Stanton Road Coventry CV6 5QE",
         "manager": null
       },
-      "recentFixtures": [],
+      "recentFixtures": [
+        {
+          "id": "560542",
+          "utcDate": "2026-08-21T19:00:00Z",
+          "status": "FINISHED",
+          "matchday": 1,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "57",
+            "name": "Arsenal FC",
+            "shortName": "Arsenal",
+            "tla": "ARS",
+            "crest": "https://crests.football-data.org/57.png"
+          },
+          "awayTeam": {
+            "id": "1076",
+            "name": "Coventry City FC",
+            "shortName": "Coventry City",
+            "tla": "COV",
+            "crest": "https://crests.football-data.org/1076.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 3,
+            "away": 0
+          }
+        }
+      ],
       "upcomingFixtures": [
         {
           "id": "560561",
@@ -4506,15 +4594,17 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         }
       ],
       "form": {
-        "sequence": [],
+        "sequence": [
+          "L"
+        ],
         "wins": 0,
         "draws": 0,
-        "losses": 0,
+        "losses": 1,
         "points": 0,
         "goalsFor": 0,
-        "goalsAgainst": 0
+        "goalsAgainst": 3
       },
-      "generatedAt": "2026-08-21T20:43:12.347Z"
+      "generatedAt": "2026-08-22T01:51:58.911Z"
     }
   }
 };
