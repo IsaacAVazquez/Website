@@ -4,7 +4,7 @@ import type { LaLigaSnapshot } from "@/types/la-liga";
 export const laLigaSnapshot: LaLigaSnapshot = {
   "season": "2026/27",
   "matchday": 2,
-  "generatedAt": "2026-08-22T01:56:21.595Z",
+  "generatedAt": "2026-08-22T08:55:08.691Z",
   "updatedAt": "2026-08-22",
   "sourceLabel": "football-data.org",
   "sourceUrls": {
@@ -1234,7 +1234,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 2,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-22T01:56:21.595Z"
+      "generatedAt": "2026-08-22T08:55:08.691Z"
     },
     "fcb": {
       "team": {
@@ -1548,7 +1548,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-21T16:59:44.679Z"
+      "generatedAt": "2026-08-22T08:55:08.691Z"
     },
     "elc": {
       "team": {
@@ -1734,7 +1734,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 1,
         "goalsAgainst": 1
       },
-      "generatedAt": "2026-08-21T16:59:44.679Z"
+      "generatedAt": "2026-08-22T08:55:08.691Z"
     },
     "esp": {
       "team": {
@@ -1920,7 +1920,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 3,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-22T01:56:21.595Z"
+      "generatedAt": "2026-08-22T08:55:08.691Z"
     },
     "get": {
       "team": {
@@ -2106,7 +2106,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-08-22T01:56:21.595Z"
+      "generatedAt": "2026-08-22T08:55:08.691Z"
     },
     "gir": {
       "team": {
@@ -2453,7 +2453,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-08-22T01:56:21.595Z"
+      "generatedAt": "2026-08-22T08:55:08.691Z"
     },
     "mal": {
       "team": {
@@ -2639,7 +2639,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-08-22T01:56:21.595Z"
+      "generatedAt": "2026-08-22T08:55:08.691Z"
     },
     "osa": {
       "team": {
@@ -2796,7 +2796,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-22T01:56:21.595Z"
+      "generatedAt": "2026-08-22T08:55:08.691Z"
     },
     "ray": {
       "team": {
@@ -3009,7 +3009,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 2,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-08-22T01:56:21.595Z"
+      "generatedAt": "2026-08-22T08:55:08.691Z"
     },
     "bet": {
       "team": {
@@ -3195,7 +3195,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 1,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-22T01:56:21.595Z"
+      "generatedAt": "2026-08-22T08:55:08.691Z"
     },
     "rma": {
       "team": {
@@ -3352,7 +3352,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-22T01:56:21.595Z"
+      "generatedAt": "2026-08-22T08:55:08.691Z"
     },
     "ovi": {
       "team": {
@@ -3699,7 +3699,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 1
       },
-      "generatedAt": "2026-08-22T01:56:21.595Z"
+      "generatedAt": "2026-08-22T08:55:08.691Z"
     },
     "sev": {
       "team": {
@@ -3885,7 +3885,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 2,
         "goalsAgainst": 1
       },
-      "generatedAt": "2026-08-22T01:56:21.595Z"
+      "generatedAt": "2026-08-22T08:55:08.691Z"
     },
     "val": {
       "team": {
@@ -4042,7 +4042,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-22T01:56:21.595Z"
+      "generatedAt": "2026-08-22T08:55:08.691Z"
     },
     "vil": {
       "team": {
@@ -4228,7 +4228,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 2,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-08-22T01:56:21.595Z"
+      "generatedAt": "2026-08-22T08:55:08.691Z"
     },
     "ala": {
       "team": {
@@ -4459,35 +4459,9 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "recentFixtures": [],
       "upcomingFixtures": [
         {
-          "id": "564630",
-          "utcDate": "2026-08-16T15:00:00Z",
-          "status": "SCHEDULED",
-          "matchday": 1,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "81",
-            "name": "FC Barcelona",
-            "shortName": "Barça",
-            "tla": "FCB",
-            "crest": "https://crests.football-data.org/81.png"
-          },
-          "awayTeam": {
-            "id": "77",
-            "name": "Athletic Club",
-            "shortName": "Athletic",
-            "tla": "ATH",
-            "crest": "https://crests.football-data.org/77.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
           "id": "564641",
-          "utcDate": "2026-08-23T15:00:00Z",
-          "status": "SCHEDULED",
+          "utcDate": "2026-08-22T15:00:00Z",
+          "status": "TIMED",
           "matchday": 2,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -4511,9 +4485,35 @@ export const laLigaSnapshot: LaLigaSnapshot = {
           }
         },
         {
+          "id": "564630",
+          "utcDate": "2026-08-27T19:00:00Z",
+          "status": "TIMED",
+          "matchday": 1,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "81",
+            "name": "FC Barcelona",
+            "shortName": "Barça",
+            "tla": "FCB",
+            "crest": "https://crests.football-data.org/81.png"
+          },
+          "awayTeam": {
+            "id": "77",
+            "name": "Athletic Club",
+            "shortName": "Athletic",
+            "tla": "ATH",
+            "crest": "https://crests.football-data.org/77.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
           "id": "564652",
-          "utcDate": "2026-08-30T15:00:00Z",
-          "status": "SCHEDULED",
+          "utcDate": "2026-08-30T19:30:00Z",
+          "status": "TIMED",
           "matchday": 3,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -4538,8 +4538,8 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         },
         {
           "id": "564663",
-          "utcDate": "2026-09-06T15:00:00Z",
-          "status": "SCHEDULED",
+          "utcDate": "2026-09-05T14:15:00Z",
+          "status": "TIMED",
           "matchday": 4,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -4564,7 +4564,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         },
         {
           "id": "564676",
-          "utcDate": "2026-09-13T15:00:00Z",
+          "utcDate": "2026-09-13T00:00:00Z",
           "status": "SCHEDULED",
           "matchday": 5,
           "stage": "REGULAR_SEASON",
@@ -4598,7 +4598,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-07-05T20:27:14.246Z"
+      "generatedAt": "2026-08-22T08:55:08.691Z"
     },
     "dep": {
       "team": {
@@ -4784,7 +4784,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 1,
         "goalsAgainst": 1
       },
-      "generatedAt": "2026-08-22T01:56:21.595Z"
+      "generatedAt": "2026-08-22T08:55:08.691Z"
     },
     "san": {
       "team": {
@@ -4970,7 +4970,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 2,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-08-22T01:56:21.595Z"
+      "generatedAt": "2026-08-22T08:55:08.691Z"
     }
   }
 };
