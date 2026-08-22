@@ -13,9 +13,11 @@ const VERDICT_COPY: Record<Verdict, { label: string; tone: string }> = {
 
 interface Props {
   result: RetirementResult;
+  /** True while the plan is still the seeded example. See useRetirementPlan. */
+  isSampleScenario?: boolean;
 }
 
-export function RetirementVerdict({ result }: Props) {
+export function RetirementVerdict({ result, isSampleScenario = false }: Props) {
   const { monteCarlo, deterministic, targetNestEgg, input, verdict } = result;
   const successPct = Math.round(monteCarlo.successRate * 100);
   const copy = VERDICT_COPY[verdict];
@@ -30,6 +32,17 @@ export function RetirementVerdict({ result }: Props) {
 
   return (
     <section className="invest-retire-verdict" aria-label="Retirement readiness verdict">
+      {/* The engine returns a full verdict for the seeded plan, so a first-time
+          visitor met a red score and an age their money runs out before they
+          had entered anything. Say whose numbers these are before the number,
+          not after it. */}
+      {isSampleScenario ? (
+        <p className="invest-retire-sample-note">
+          These are example figures, not yours. Change any number below and this
+          verdict recalculates on what you entered.
+        </p>
+      ) : null}
+
       <div className="invest-retire-verdict-head">
         <div
           className="invest-retire-gauge"

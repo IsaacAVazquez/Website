@@ -30,6 +30,7 @@ const STRATEGIES: { value: WithdrawalStrategy; label: string }[] = [
 export function RetirementInputs({ controller, result, portfolioValue }: Props) {
   const {
     plan,
+    isSampleScenario,
     updatePlan,
     updateAssumptions,
     updateAllocation,
@@ -67,9 +68,12 @@ export function RetirementInputs({ controller, result, portfolioValue }: Props) 
   return (
     <div className="invest-retire-inputs">
       <div className="invest-retire-inputs-head">
+        {/* The engine computes a full verdict on the seeded plan, so until the
+            visitor edits something these are not their numbers and the caption
+            must not claim they are. */}
         <p className="invest-rail-section-label">
           <Wallet size={12} aria-hidden="true" className="mr-1.5 inline align-middle" />
-          Your numbers
+          {isSampleScenario ? "Example numbers" : "Your numbers"}
         </p>
         {confirmReset ? (
           <span className="invest-retire-reset-confirm">

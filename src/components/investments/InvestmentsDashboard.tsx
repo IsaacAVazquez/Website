@@ -93,11 +93,19 @@ export function InvestmentsDashboard({
         target !== filterInputRef.current;
       if (isEditable) return;
       e.preventDefault();
+      // StaticHeader binds Cmd/Ctrl+K on window as well, for the site-wide
+      // search overlay. Both listeners sat on window in the bubble phase, so
+      // registration order decided the winner and the header won: pressing the
+      // shortcut printed inside this filter opened site search on top of the
+      // dashboard instead. A capture listener on window runs before every
+      // bubble listener on window, so claiming the event here makes the badge
+      // beside the input tell the truth.
+      e.stopPropagation();
       filterInputRef.current?.focus();
       filterInputRef.current?.select();
     }
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    window.addEventListener("keydown", onKeyDown, true);
+    return () => window.removeEventListener("keydown", onKeyDown, true);
   }, []);
 
   const filteredHoldings = useMemo(() => {
@@ -155,14 +163,21 @@ export function InvestmentsDashboard({
       { id: "home", label: "Overview", href: "#hero", icon: House },
       { id: "performance", label: "Performance", href: "#performance", icon: ChartLine },
       { id: "stats", label: "Portfolio stats", href: "#portfolio-stats", icon: Contrast },
-      {
-        id: "holdings",
-        label: "Holdings",
-        href: "#holdings-list",
-        icon: List,
-        pill: enhancedHoldings.length > 0 ? String(enhancedHoldings.length) : undefined,
-      },
-      { id: "allocation", label: "Allocation", href: "#allocation", icon: ChartPie },
+      // The holdings ledger and the allocation chart only render once there is
+      // at least one position, so on an empty portfolio these two jumped to
+      // nothing. That is the exact state a first-time visitor arrives in.
+      ...(enhancedHoldings.length > 0
+        ? ([
+            {
+              id: "holdings",
+              label: "Holdings",
+              href: "#holdings-list",
+              icon: List,
+              pill: String(enhancedHoldings.length),
+            },
+            { id: "allocation", label: "Allocation", href: "#allocation", icon: ChartPie },
+          ] as NavItem[])
+        : []),
       { id: "research", label: "Research", href: "#research-section", icon: ReceiptText },
       { id: "retirement", label: "Retirement", href: "#retirement", icon: PiggyBank },
     ],
@@ -252,6 +267,26 @@ export function InvestmentsDashboard({
             <span className="invest-avatar" aria-hidden="true">IV</span>
           </div>
         </div>
+
+        {/* Section jumps for narrow viewports, where the sidebar is hidden.
+            Same targets in the same order, so `navItems` stays the one source
+            of truth and the two navigations cannot drift apart. Only one of the
+            two is ever in the accessibility tree, since each is display:none at
+            the other's widths. */}
+        <nav className={styles.sectionRail} aria-label="Section navigation">
+          {navItems.map((item) => {
+            const Icon = item.icon;
+            return (
+              <a key={item.id} href={item.href}>
+                <Icon size={15} aria-hidden="true" />
+                {item.label}
+                {item.pill ? (
+                  <span className={styles.sectionRailPill}>{item.pill}</span>
+                ) : null}
+              </a>
+            );
+          })}
+        </nav>
 
         {!isEmpty ? (
           <InstrumentTape
@@ -365,7 +400,12 @@ export function InvestmentsDashboard({
       </div>
 
       <aside className="invest-rail" aria-label="Portfolio side panel">
-        <section ref={addHoldingRef} id="add-holding" className="scroll-mt-28">
+        <section
+          ref={addHoldingRef}
+          id="add-holding"
+          aria-label="Add a holding"
+          className="scroll-mt-28"
+        >
           <p className="invest-rail-section-label">
             <Wallet size={12} aria-hidden="true" className="mr-1.5 inline align-middle" />
             Add a holding

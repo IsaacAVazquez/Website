@@ -122,8 +122,13 @@ export function PortfolioStatsGrid({
   const stats = computeStats(holdings);
 
   return (
+    // A section with no accessible name is not exposed as a landmark at all,
+    // and this one is a sidebar jump target, so anyone arriving by navigation
+    // landed in an unnamed region. Literal label rather than aria-labelledby,
+    // because the visible cap text is a span rather than a heading.
     <section
       id="portfolio-stats"
+      aria-label="Portfolio stats"
       className={styles.statsPanel + " scroll-mt-28"}
     >
       <div className={styles.statsCap}>
@@ -229,12 +234,20 @@ export function PortfolioStatsGrid({
       </div>
 
       <div className={styles.statsFoot}>
-        <a href="#allocation" className="invest-ghost">
-          Allocation breakdown
-        </a>
-        <a href="#holdings-list" className="invest-ghost">
-          Per-position detail
-        </a>
+        {/* The allocation chart and the holdings ledger only render once there
+            is a position, so on an empty portfolio these two scrolled nowhere
+            and said nothing. Same predicate the sidebar and mobile rail use;
+            this second link row was missed when those were fixed. */}
+        {holdings.length > 0 ? (
+          <>
+            <a href="#allocation" className="invest-ghost">
+              Allocation breakdown
+            </a>
+            <a href="#holdings-list" className="invest-ghost">
+              Per-position detail
+            </a>
+          </>
+        ) : null}
         <a href="#performance" className="invest-ghost">
           Performance over time
         </a>

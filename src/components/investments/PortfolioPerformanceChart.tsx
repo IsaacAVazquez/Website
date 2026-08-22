@@ -272,13 +272,13 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
 
         tooltip.style.opacity = "1";
         tooltip.innerHTML = `
-          <div style="font-size:11px;color:${homeInkMuted};margin-bottom:2px;">
+          <div style="font-size:var(--invest-fs-label);color:${homeInkMuted};margin-bottom:2px;">
             ${timeFormat("%b %d, %Y")(d.date)}
           </div>
-          <div style="font-size:13px;font-weight:600;color:var(--home-ink);">
+          <div style="font-size:var(--invest-fs-body);font-weight:600;color:var(--home-ink);">
             $${format(",.2f")(d.value)}
           </div>
-          <div style="font-size:11px;color:${gainColor};margin-top:1px;">
+          <div style="font-size:var(--invest-fs-label);color:${gainColor};margin-top:1px;">
             ${sign}$${format(",.2f")(gainLoss)} (${sign}${gainLossPct.toFixed(1)}%)
           </div>
         `;
