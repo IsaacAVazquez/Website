@@ -295,7 +295,9 @@ test.describe("Fantasy football rankings", () => {
 
     await shell.getByRole("button", { name: `Open ${scored.name} detail` }).click();
     const dialog = page.getByRole("dialog", { name: `${scored.name} detail` });
-    await expect(dialog.getByText("Points per game", { exact: true })).toBeVisible();
+    // The label shares its span with the metric tooltip trigger, so an exact
+    // match no longer finds an element whose whole text is the label.
+    await expect(dialog.getByText("Points per game").first()).toBeVisible();
 
     // The basis travels with the number: which season, which scoring, and how
     // many games sit behind the spread.
@@ -336,7 +338,7 @@ test.describe("Fantasy football rankings", () => {
       () => document.documentElement.scrollWidth - document.documentElement.clientWidth
     );
     expect(horizontalOverflow).toBeLessThanOrEqual(1);
-    await expect(page.getByRole("link", { name: /Open the draft tracker/i }).first()).toBeVisible();
+    await expect(page.getByRole("link", { name: "Draft tracker", exact: true }).first()).toBeVisible();
   });
 
   test("supports the fantasy rankings in dark mode", async ({ page }) => {
