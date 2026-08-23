@@ -27,6 +27,26 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "draw": 0,
         "lost": 0,
         "points": 3,
+        "goalsFor": 4,
+        "goalsAgainst": 0,
+        "goalDifference": 4,
+        "team": {
+          "id": "397",
+          "name": "Brighton & Hove Albion FC",
+          "shortName": "Brighton Hove",
+          "tla": "BHA",
+          "crest": "https://crests.football-data.org/397.png",
+          "venue": null,
+          "accentColor": "#0057B8"
+        }
+      },
+      {
+        "position": 2,
+        "playedGames": 1,
+        "won": 1,
+        "draw": 0,
+        "lost": 0,
+        "points": 3,
         "goalsFor": 3,
         "goalsAgainst": 0,
         "goalDifference": 3,
@@ -41,7 +61,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         }
       },
       {
-        "position": 1,
+        "position": 2,
         "playedGames": 1,
         "won": 1,
         "draw": 0,
@@ -61,7 +81,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         }
       },
       {
-        "position": 3,
+        "position": 4,
         "playedGames": 1,
         "won": 1,
         "draw": 0,
@@ -81,7 +101,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         }
       },
       {
-        "position": 3,
+        "position": 4,
         "playedGames": 1,
         "won": 1,
         "draw": 0,
@@ -101,7 +121,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         }
       },
       {
-        "position": 5,
+        "position": 6,
         "playedGames": 1,
         "won": 1,
         "draw": 0,
@@ -127,6 +147,26 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "draw": 0,
         "lost": 0,
         "points": 3,
+        "goalsFor": 2,
+        "goalsAgainst": 1,
+        "goalDifference": 1,
+        "team": {
+          "id": "65",
+          "name": "Manchester City FC",
+          "shortName": "Man City",
+          "tla": "MCI",
+          "crest": "https://crests.football-data.org/65.png",
+          "venue": null,
+          "accentColor": "#6CABDD"
+        }
+      },
+      {
+        "position": 8,
+        "playedGames": 1,
+        "won": 1,
+        "draw": 0,
+        "lost": 0,
+        "points": 3,
         "goalsFor": 1,
         "goalsAgainst": 0,
         "goalDifference": 1,
@@ -141,87 +181,27 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         }
       },
       {
-        "position": 7,
+        "position": 8,
         "playedGames": 1,
-        "won": 0,
-        "draw": 1,
+        "won": 1,
+        "draw": 0,
         "lost": 0,
-        "points": 1,
-        "goalsFor": 0,
+        "points": 3,
+        "goalsFor": 1,
         "goalsAgainst": 0,
-        "goalDifference": 0,
+        "goalDifference": 1,
         "team": {
-          "id": "1044",
-          "name": "AFC Bournemouth",
-          "shortName": "Bournemouth",
-          "tla": "BOU",
-          "crest": "https://crests.football-data.org/bournemouth.png",
+          "id": "67",
+          "name": "Newcastle United FC",
+          "shortName": "Newcastle",
+          "tla": "NEW",
+          "crest": "https://crests.football-data.org/67.png",
           "venue": null,
-          "accentColor": "#DA020E"
+          "accentColor": "#241F20"
         }
       },
       {
-        "position": 7,
-        "playedGames": 1,
-        "won": 0,
-        "draw": 1,
-        "lost": 0,
-        "points": 1,
-        "goalsFor": 0,
-        "goalsAgainst": 0,
-        "goalDifference": 0,
-        "team": {
-          "id": "58",
-          "name": "Aston Villa FC",
-          "shortName": "Aston Villa",
-          "tla": "AVL",
-          "crest": "https://crests.football-data.org/58.png",
-          "venue": null,
-          "accentColor": "#670E36"
-        }
-      },
-      {
-        "position": 7,
-        "playedGames": 1,
-        "won": 0,
-        "draw": 1,
-        "lost": 0,
-        "points": 1,
-        "goalsFor": 0,
-        "goalsAgainst": 0,
-        "goalDifference": 0,
-        "team": {
-          "id": "397",
-          "name": "Brighton & Hove Albion FC",
-          "shortName": "Brighton Hove",
-          "tla": "BHA",
-          "crest": "https://crests.football-data.org/397.png",
-          "venue": null,
-          "accentColor": "#0057B8"
-        }
-      },
-      {
-        "position": 7,
-        "playedGames": 1,
-        "won": 0,
-        "draw": 1,
-        "lost": 0,
-        "points": 1,
-        "goalsFor": 0,
-        "goalsAgainst": 0,
-        "goalDifference": 0,
-        "team": {
-          "id": "65",
-          "name": "Manchester City FC",
-          "shortName": "Man City",
-          "tla": "MCI",
-          "crest": "https://crests.football-data.org/65.png",
-          "venue": null,
-          "accentColor": "#6CABDD"
-        }
-      },
-      {
-        "position": 11,
+        "position": 10,
         "playedGames": 0,
         "won": 0,
         "draw": 0,
@@ -241,7 +221,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         }
       },
       {
-        "position": 11,
+        "position": 10,
         "playedGames": 0,
         "won": 0,
         "draw": 0,
@@ -261,47 +241,27 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         }
       },
       {
-        "position": 11,
-        "playedGames": 0,
+        "position": 12,
+        "playedGames": 1,
         "won": 0,
         "draw": 0,
-        "lost": 0,
+        "lost": 1,
         "points": 0,
-        "goalsFor": 0,
-        "goalsAgainst": 0,
-        "goalDifference": 0,
+        "goalsFor": 1,
+        "goalsAgainst": 2,
+        "goalDifference": -1,
         "team": {
-          "id": "64",
-          "name": "Liverpool FC",
-          "shortName": "Liverpool",
-          "tla": "LIV",
-          "crest": "https://crests.football-data.org/64.png",
+          "id": "1044",
+          "name": "AFC Bournemouth",
+          "shortName": "Bournemouth",
+          "tla": "BOU",
+          "crest": "https://crests.football-data.org/bournemouth.png",
           "venue": null,
-          "accentColor": "#C8102E"
+          "accentColor": "#DA020E"
         }
       },
       {
-        "position": 11,
-        "playedGames": 0,
-        "won": 0,
-        "draw": 0,
-        "lost": 0,
-        "points": 0,
-        "goalsFor": 0,
-        "goalsAgainst": 0,
-        "goalDifference": 0,
-        "team": {
-          "id": "67",
-          "name": "Newcastle United FC",
-          "shortName": "Newcastle",
-          "tla": "NEW",
-          "crest": "https://crests.football-data.org/67.png",
-          "venue": null,
-          "accentColor": "#241F20"
-        }
-      },
-      {
-        "position": 15,
+        "position": 12,
         "playedGames": 1,
         "won": 0,
         "draw": 0,
@@ -321,7 +281,27 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         }
       },
       {
-        "position": 16,
+        "position": 14,
+        "playedGames": 1,
+        "won": 0,
+        "draw": 0,
+        "lost": 1,
+        "points": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 1,
+        "goalDifference": -1,
+        "team": {
+          "id": "64",
+          "name": "Liverpool FC",
+          "shortName": "Liverpool",
+          "tla": "LIV",
+          "crest": "https://crests.football-data.org/64.png",
+          "venue": null,
+          "accentColor": "#C8102E"
+        }
+      },
+      {
+        "position": 14,
         "playedGames": 1,
         "won": 0,
         "draw": 0,
@@ -341,7 +321,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         }
       },
       {
-        "position": 17,
+        "position": 16,
         "playedGames": 1,
         "won": 0,
         "draw": 0,
@@ -361,7 +341,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         }
       },
       {
-        "position": 17,
+        "position": 16,
         "playedGames": 1,
         "won": 0,
         "draw": 0,
@@ -381,7 +361,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         }
       },
       {
-        "position": 19,
+        "position": 18,
         "playedGames": 1,
         "won": 0,
         "draw": 0,
@@ -401,7 +381,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         }
       },
       {
-        "position": 19,
+        "position": 18,
         "playedGames": 1,
         "won": 0,
         "draw": 0,
@@ -419,9 +399,81 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
           "venue": null,
           "accentColor": "#132257"
         }
+      },
+      {
+        "position": 20,
+        "playedGames": 1,
+        "won": 0,
+        "draw": 0,
+        "lost": 1,
+        "points": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 4,
+        "goalDifference": -4,
+        "team": {
+          "id": "58",
+          "name": "Aston Villa FC",
+          "shortName": "Aston Villa",
+          "tla": "AVL",
+          "crest": "https://crests.football-data.org/58.png",
+          "venue": null,
+          "accentColor": "#670E36"
+        }
       }
     ],
     "recentFixtures": [
+      {
+        "id": "560548",
+        "utcDate": "2026-08-23T13:00:00Z",
+        "status": "FINISHED",
+        "matchday": 1,
+        "stage": "REGULAR_SEASON",
+        "homeTeam": {
+          "id": "65",
+          "name": "Manchester City FC",
+          "shortName": "Man City",
+          "tla": "MCI",
+          "crest": "https://crests.football-data.org/65.png"
+        },
+        "awayTeam": {
+          "id": "1044",
+          "name": "AFC Bournemouth",
+          "shortName": "Bournemouth",
+          "tla": "BOU",
+          "crest": "https://crests.football-data.org/bournemouth.png"
+        },
+        "score": {
+          "winner": "HOME_TEAM",
+          "home": 2,
+          "away": 1
+        }
+      },
+      {
+        "id": "560549",
+        "utcDate": "2026-08-23T13:00:00Z",
+        "status": "FINISHED",
+        "matchday": 1,
+        "stage": "REGULAR_SEASON",
+        "homeTeam": {
+          "id": "397",
+          "name": "Brighton & Hove Albion FC",
+          "shortName": "Brighton Hove",
+          "tla": "BHA",
+          "crest": "https://crests.football-data.org/397.png"
+        },
+        "awayTeam": {
+          "id": "58",
+          "name": "Aston Villa FC",
+          "shortName": "Aston Villa",
+          "tla": "AVL",
+          "crest": "https://crests.football-data.org/58.png"
+        },
+        "score": {
+          "winner": "HOME_TEAM",
+          "home": 4,
+          "away": 0
+        }
+      },
       {
         "id": "560547",
         "utcDate": "2026-08-22T16:30:00Z",
@@ -581,84 +633,6 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
     ],
     "upcomingFixtures": [
       {
-        "id": "560548",
-        "utcDate": "2026-08-23T13:00:00Z",
-        "status": "TIMED",
-        "matchday": 1,
-        "stage": "REGULAR_SEASON",
-        "homeTeam": {
-          "id": "65",
-          "name": "Manchester City FC",
-          "shortName": "Man City",
-          "tla": "MCI",
-          "crest": "https://crests.football-data.org/65.png"
-        },
-        "awayTeam": {
-          "id": "1044",
-          "name": "AFC Bournemouth",
-          "shortName": "Bournemouth",
-          "tla": "BOU",
-          "crest": "https://crests.football-data.org/bournemouth.png"
-        },
-        "score": {
-          "winner": null,
-          "home": null,
-          "away": null
-        }
-      },
-      {
-        "id": "560549",
-        "utcDate": "2026-08-23T13:00:00Z",
-        "status": "TIMED",
-        "matchday": 1,
-        "stage": "REGULAR_SEASON",
-        "homeTeam": {
-          "id": "397",
-          "name": "Brighton & Hove Albion FC",
-          "shortName": "Brighton Hove",
-          "tla": "BHA",
-          "crest": "https://crests.football-data.org/397.png"
-        },
-        "awayTeam": {
-          "id": "58",
-          "name": "Aston Villa FC",
-          "shortName": "Aston Villa",
-          "tla": "AVL",
-          "crest": "https://crests.football-data.org/58.png"
-        },
-        "score": {
-          "winner": null,
-          "home": null,
-          "away": null
-        }
-      },
-      {
-        "id": "560550",
-        "utcDate": "2026-08-23T15:30:00Z",
-        "status": "TIMED",
-        "matchday": 1,
-        "stage": "REGULAR_SEASON",
-        "homeTeam": {
-          "id": "67",
-          "name": "Newcastle United FC",
-          "shortName": "Newcastle",
-          "tla": "NEW",
-          "crest": "https://crests.football-data.org/67.png"
-        },
-        "awayTeam": {
-          "id": "64",
-          "name": "Liverpool FC",
-          "shortName": "Liverpool",
-          "tla": "LIV",
-          "crest": "https://crests.football-data.org/64.png"
-        },
-        "score": {
-          "winner": null,
-          "home": null,
-          "away": null
-        }
-      },
-      {
         "id": "560551",
         "utcDate": "2026-08-24T19:00:00Z",
         "status": "TIMED",
@@ -781,6 +755,84 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
           "shortName": "Hull City",
           "tla": "HUL",
           "crest": "https://crests.football-data.org/322.png"
+        },
+        "score": {
+          "winner": null,
+          "home": null,
+          "away": null
+        }
+      },
+      {
+        "id": "560558",
+        "utcDate": "2026-08-29T16:30:00Z",
+        "status": "TIMED",
+        "matchday": 2,
+        "stage": "REGULAR_SEASON",
+        "homeTeam": {
+          "id": "73",
+          "name": "Tottenham Hotspur FC",
+          "shortName": "Tottenham",
+          "tla": "TOT",
+          "crest": "https://crests.football-data.org/73.png"
+        },
+        "awayTeam": {
+          "id": "67",
+          "name": "Newcastle United FC",
+          "shortName": "Newcastle",
+          "tla": "NEW",
+          "crest": "https://crests.football-data.org/67.png"
+        },
+        "score": {
+          "winner": null,
+          "home": null,
+          "away": null
+        }
+      },
+      {
+        "id": "560554",
+        "utcDate": "2026-08-30T13:00:00Z",
+        "status": "TIMED",
+        "matchday": 2,
+        "stage": "REGULAR_SEASON",
+        "homeTeam": {
+          "id": "71",
+          "name": "Sunderland AFC",
+          "shortName": "Sunderland",
+          "tla": "SUN",
+          "crest": "https://crests.football-data.org/71.png"
+        },
+        "awayTeam": {
+          "id": "63",
+          "name": "Fulham FC",
+          "shortName": "Fulham",
+          "tla": "FUL",
+          "crest": "https://crests.football-data.org/63.png"
+        },
+        "score": {
+          "winner": null,
+          "home": null,
+          "away": null
+        }
+      },
+      {
+        "id": "560556",
+        "utcDate": "2026-08-30T13:00:00Z",
+        "status": "TIMED",
+        "matchday": 2,
+        "stage": "REGULAR_SEASON",
+        "homeTeam": {
+          "id": "61",
+          "name": "Chelsea FC",
+          "shortName": "Chelsea",
+          "tla": "CHE",
+          "crest": "https://crests.football-data.org/61.png"
+        },
+        "awayTeam": {
+          "id": "397",
+          "name": "Brighton & Hove Albion FC",
+          "shortName": "Brighton Hove",
+          "tla": "BHA",
+          "crest": "https://crests.football-data.org/397.png"
         },
         "score": {
           "winner": null,
@@ -974,6 +1026,15 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
     "scorers": [
       {
         "rank": 1,
+        "name": "Jack Hinshelwood",
+        "teamId": "397",
+        "teamName": "Brighton Hove",
+        "goals": 2,
+        "assists": 0,
+        "appearances": 1
+      },
+      {
+        "rank": 2,
         "name": "Kai Havertz",
         "teamId": "57",
         "teamName": "Arsenal",
@@ -982,7 +1043,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "appearances": 1
       },
       {
-        "rank": 2,
+        "rank": 3,
         "name": "Bukayo Saka",
         "teamId": "57",
         "teamName": "Arsenal",
@@ -991,7 +1052,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "appearances": 1
       },
       {
-        "rank": 3,
+        "rank": 4,
         "name": "Martin Ødegaard",
         "teamId": "57",
         "teamName": "Arsenal",
@@ -1000,7 +1061,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "appearances": 1
       },
       {
-        "rank": 4,
+        "rank": 5,
         "name": "Semi Ajayi",
         "teamId": "322",
         "teamName": "Hull City",
@@ -1009,7 +1070,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "appearances": 1
       },
       {
-        "rank": 5,
+        "rank": 6,
         "name": "Nobel Mendy",
         "teamId": "322",
         "teamName": "Hull City",
@@ -1018,7 +1079,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "appearances": 1
       },
       {
-        "rank": 6,
+        "rank": 7,
         "name": "Emersonn",
         "teamId": "349",
         "teamName": "Ipswich Town",
@@ -1027,7 +1088,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "appearances": 1
       },
       {
-        "rank": 7,
+        "rank": 8,
         "name": "Nilson Angulo",
         "teamId": "71",
         "teamName": "Sunderland",
@@ -1036,7 +1097,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "appearances": 1
       },
       {
-        "rank": 8,
+        "rank": 9,
         "name": "Jack Clarke",
         "teamId": "349",
         "teamName": "Ipswich Town",
@@ -1045,19 +1106,10 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "appearances": 1
       },
       {
-        "rank": 9,
+        "rank": 10,
         "name": "Anton Stach",
         "teamId": "341",
         "teamName": "Leeds United",
-        "goals": 1,
-        "assists": 0,
-        "appearances": 1
-      },
-      {
-        "rank": 10,
-        "name": "Kiernan Dewsbury Hall",
-        "teamId": "62",
-        "teamName": "Everton",
         "goals": 1,
         "assists": 0,
         "appearances": 1
@@ -1066,10 +1118,10 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
     "goalsPerMatchday": [
       {
         "matchday": 1,
-        "totalGoals": 14
+        "totalGoals": 21
       }
     ],
-    "generatedAt": "2026-08-23T13:03:36.796Z"
+    "generatedAt": "2026-08-23T16:44:16.828Z"
   },
   "teamSnapshots": {
     "57": {
@@ -1258,7 +1310,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 3,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-23T13:03:36.796Z"
+      "generatedAt": "2026-08-23T16:44:16.828Z"
     },
     "58": {
       "team": {
@@ -1576,7 +1628,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-23T13:03:36.796Z"
+      "generatedAt": "2026-08-23T16:44:16.828Z"
     },
     "62": {
       "team": {
@@ -1764,7 +1816,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 2,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-23T13:03:36.796Z"
+      "generatedAt": "2026-08-23T16:44:16.828Z"
     },
     "63": {
       "team": {
@@ -1923,7 +1975,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-23T13:03:36.796Z"
+      "generatedAt": "2026-08-23T16:44:16.828Z"
     },
     "64": {
       "team": {
@@ -2099,7 +2151,34 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "address": "SportCity Manchester M11 3FF",
         "manager": null
       },
-      "recentFixtures": [],
+      "recentFixtures": [
+        {
+          "id": "560548",
+          "utcDate": "2026-08-23T13:00:00Z",
+          "status": "FINISHED",
+          "matchday": 1,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "65",
+            "name": "Manchester City FC",
+            "shortName": "Man City",
+            "tla": "MCI",
+            "crest": "https://crests.football-data.org/65.png"
+          },
+          "awayTeam": {
+            "id": "1044",
+            "name": "AFC Bournemouth",
+            "shortName": "Bournemouth",
+            "tla": "BOU",
+            "crest": "https://crests.football-data.org/bournemouth.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 2,
+            "away": 1
+          }
+        }
+      ],
       "upcomingFixtures": [
         {
           "id": "560555",
@@ -2233,15 +2312,17 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         }
       ],
       "form": {
-        "sequence": [],
-        "wins": 0,
+        "sequence": [
+          "W"
+        ],
+        "wins": 1,
         "draws": 0,
         "losses": 0,
-        "points": 0,
-        "goalsFor": 0,
-        "goalsAgainst": 0
+        "points": 3,
+        "goalsFor": 2,
+        "goalsAgainst": 1
       },
-      "generatedAt": "2026-08-23T13:03:36.796Z"
+      "generatedAt": "2026-08-23T16:44:16.828Z"
     },
     "66": {
       "team": {
@@ -2429,7 +2510,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-08-23T08:50:09.438Z"
+      "generatedAt": "2026-08-23T16:44:16.828Z"
     },
     "67": {
       "team": {
@@ -2448,32 +2529,6 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
       },
       "recentFixtures": [],
       "upcomingFixtures": [
-        {
-          "id": "560550",
-          "utcDate": "2026-08-23T15:30:00Z",
-          "status": "TIMED",
-          "matchday": 1,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "67",
-            "name": "Newcastle United FC",
-            "shortName": "Newcastle",
-            "tla": "NEW",
-            "crest": "https://crests.football-data.org/67.png"
-          },
-          "awayTeam": {
-            "id": "64",
-            "name": "Liverpool FC",
-            "shortName": "Liverpool",
-            "tla": "LIV",
-            "crest": "https://crests.football-data.org/64.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "560558",
           "utcDate": "2026-08-29T16:30:00Z",
@@ -2577,6 +2632,32 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "560597",
+          "utcDate": "2026-10-12T19:00:00Z",
+          "status": "TIMED",
+          "matchday": 6,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "1076",
+            "name": "Coventry City FC",
+            "shortName": "Coventry City",
+            "tla": "COV",
+            "crest": "https://crests.football-data.org/1076.png"
+          },
+          "awayTeam": {
+            "id": "67",
+            "name": "Newcastle United FC",
+            "shortName": "Newcastle",
+            "tla": "NEW",
+            "crest": "https://crests.football-data.org/67.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
@@ -2588,7 +2669,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-23T08:50:09.438Z"
+      "generatedAt": "2026-08-23T16:44:16.828Z"
     },
     "71": {
       "team": {
@@ -2776,7 +2857,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 1,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-08-23T08:50:09.438Z"
+      "generatedAt": "2026-08-23T16:44:16.828Z"
     },
     "73": {
       "team": {
@@ -2964,7 +3045,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-08-23T08:50:09.438Z"
+      "generatedAt": "2026-08-23T16:44:16.828Z"
     },
     "76": {
       "team": {
@@ -3315,7 +3396,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 2,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-23T13:03:36.796Z"
+      "generatedAt": "2026-08-23T16:44:16.828Z"
     },
     "328": {
       "team": {
@@ -3666,7 +3747,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 1,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-23T13:03:36.796Z"
+      "generatedAt": "2026-08-23T16:44:16.828Z"
     },
     "349": {
       "team": {
@@ -3854,7 +3935,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 2,
         "goalsAgainst": 1
       },
-      "generatedAt": "2026-08-23T13:03:36.796Z"
+      "generatedAt": "2026-08-23T16:44:16.828Z"
     },
     "351": {
       "team": {
@@ -4042,7 +4123,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 1
       },
-      "generatedAt": "2026-08-23T13:03:36.796Z"
+      "generatedAt": "2026-08-23T16:44:16.828Z"
     },
     "354": {
       "team": {
@@ -4230,7 +4311,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-08-23T13:03:36.796Z"
+      "generatedAt": "2026-08-23T16:44:16.828Z"
     },
     "397": {
       "team": {
@@ -4247,7 +4328,34 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "address": "44 North Road Brighton & Hove BN1 1YR",
         "manager": null
       },
-      "recentFixtures": [],
+      "recentFixtures": [
+        {
+          "id": "560549",
+          "utcDate": "2026-08-23T13:00:00Z",
+          "status": "FINISHED",
+          "matchday": 1,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "397",
+            "name": "Brighton & Hove Albion FC",
+            "shortName": "Brighton Hove",
+            "tla": "BHA",
+            "crest": "https://crests.football-data.org/397.png"
+          },
+          "awayTeam": {
+            "id": "58",
+            "name": "Aston Villa FC",
+            "shortName": "Aston Villa",
+            "tla": "AVL",
+            "crest": "https://crests.football-data.org/58.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 4,
+            "away": 0
+          }
+        }
+      ],
       "upcomingFixtures": [
         {
           "id": "560556",
@@ -4381,15 +4489,17 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         }
       ],
       "form": {
-        "sequence": [],
-        "wins": 0,
+        "sequence": [
+          "W"
+        ],
+        "wins": 1,
         "draws": 0,
         "losses": 0,
-        "points": 0,
-        "goalsFor": 0,
+        "points": 3,
+        "goalsFor": 4,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-23T13:03:36.796Z"
+      "generatedAt": "2026-08-23T16:44:16.828Z"
     },
     "402": {
       "team": {
@@ -4577,7 +4687,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 3,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-23T13:03:36.796Z"
+      "generatedAt": "2026-08-23T16:44:16.828Z"
     },
     "563": {
       "team": {
@@ -4757,7 +4867,34 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "address": "Dean Court, Kings Park Bournemouth BH7 7AF",
         "manager": null
       },
-      "recentFixtures": [],
+      "recentFixtures": [
+        {
+          "id": "560548",
+          "utcDate": "2026-08-23T13:00:00Z",
+          "status": "FINISHED",
+          "matchday": 1,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "65",
+            "name": "Manchester City FC",
+            "shortName": "Man City",
+            "tla": "MCI",
+            "crest": "https://crests.football-data.org/65.png"
+          },
+          "awayTeam": {
+            "id": "1044",
+            "name": "AFC Bournemouth",
+            "shortName": "Bournemouth",
+            "tla": "BOU",
+            "crest": "https://crests.football-data.org/bournemouth.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 2,
+            "away": 1
+          }
+        }
+      ],
       "upcomingFixtures": [
         {
           "id": "560560",
@@ -4891,15 +5028,17 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         }
       ],
       "form": {
-        "sequence": [],
+        "sequence": [
+          "L"
+        ],
         "wins": 0,
         "draws": 0,
-        "losses": 0,
+        "losses": 1,
         "points": 0,
-        "goalsFor": 0,
-        "goalsAgainst": 0
+        "goalsFor": 1,
+        "goalsAgainst": 2
       },
-      "generatedAt": "2026-08-23T13:03:36.796Z"
+      "generatedAt": "2026-08-23T16:44:16.828Z"
     },
     "1076": {
       "team": {
@@ -5087,7 +5226,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-08-23T13:03:36.796Z"
+      "generatedAt": "2026-08-23T16:44:16.828Z"
     }
   }
 };
