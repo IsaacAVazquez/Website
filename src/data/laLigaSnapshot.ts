@@ -4,7 +4,7 @@ import type { LaLigaSnapshot } from "@/types/la-liga";
 export const laLigaSnapshot: LaLigaSnapshot = {
   "season": "2026/27",
   "matchday": 2,
-  "generatedAt": "2026-08-23T04:59:27.274Z",
+  "generatedAt": "2026-08-23T13:08:50.269Z",
   "updatedAt": "2026-08-23",
   "sourceLabel": "football-data.org",
   "sourceUrls": {
@@ -1234,7 +1234,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 2,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-23T04:59:27.274Z"
+      "generatedAt": "2026-08-23T13:08:50.269Z"
     },
     "fcb": {
       "team": {
@@ -1391,7 +1391,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-23T04:59:27.274Z"
+      "generatedAt": "2026-08-23T13:08:50.269Z"
     },
     "cel": {
       "team": {
@@ -1763,7 +1763,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 1,
         "goalsAgainst": 1
       },
-      "generatedAt": "2026-08-23T04:59:27.274Z"
+      "generatedAt": "2026-08-23T13:08:50.269Z"
     },
     "esp": {
       "team": {
@@ -1976,7 +1976,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 4,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-08-23T04:59:27.274Z"
+      "generatedAt": "2026-08-23T13:08:50.269Z"
     },
     "get": {
       "team": {
@@ -2162,7 +2162,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-08-23T04:59:27.274Z"
+      "generatedAt": "2026-08-23T13:08:50.269Z"
     },
     "gir": {
       "team": {
@@ -2509,7 +2509,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-08-23T04:59:27.274Z"
+      "generatedAt": "2026-08-23T13:08:50.269Z"
     },
     "mal": {
       "team": {
@@ -2695,7 +2695,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-08-23T04:59:27.274Z"
+      "generatedAt": "2026-08-23T13:08:50.269Z"
     },
     "osa": {
       "team": {
@@ -2852,7 +2852,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-23T04:59:27.274Z"
+      "generatedAt": "2026-08-23T13:08:50.269Z"
     },
     "ray": {
       "team": {
@@ -3065,7 +3065,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 2,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-08-23T04:59:27.274Z"
+      "generatedAt": "2026-08-23T13:08:50.269Z"
     },
     "bet": {
       "team": {
@@ -3251,7 +3251,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 1,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-23T04:59:27.274Z"
+      "generatedAt": "2026-08-23T13:08:50.269Z"
     },
     "rma": {
       "team": {
@@ -3437,7 +3437,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 2,
         "goalsAgainst": 1
       },
-      "generatedAt": "2026-08-23T04:59:27.274Z"
+      "generatedAt": "2026-08-23T13:08:50.269Z"
     },
     "ovi": {
       "team": {
@@ -3784,7 +3784,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 1
       },
-      "generatedAt": "2026-08-23T04:59:27.274Z"
+      "generatedAt": "2026-08-23T13:08:50.269Z"
     },
     "sev": {
       "team": {
@@ -3997,7 +3997,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 5,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-08-23T04:59:27.274Z"
+      "generatedAt": "2026-08-23T13:08:50.269Z"
     },
     "val": {
       "team": {
@@ -4183,7 +4183,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-23T04:59:27.274Z"
+      "generatedAt": "2026-08-23T13:08:50.269Z"
     },
     "vil": {
       "team": {
@@ -4369,7 +4369,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 2,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-08-23T04:59:27.274Z"
+      "generatedAt": "2026-08-23T13:08:50.269Z"
     },
     "ala": {
       "team": {
@@ -4925,7 +4925,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 1,
         "goalsAgainst": 1
       },
-      "generatedAt": "2026-08-23T04:59:27.274Z"
+      "generatedAt": "2026-08-23T13:08:50.269Z"
     },
     "san": {
       "team": {
@@ -5111,7 +5111,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 2,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-08-23T04:59:27.274Z"
+      "generatedAt": "2026-08-23T13:08:50.269Z"
     }
   }
 };
