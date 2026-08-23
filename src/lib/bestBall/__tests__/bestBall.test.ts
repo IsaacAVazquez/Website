@@ -58,6 +58,7 @@ describe("best ball contest catalog", () => {
     expect(BEST_BALL_CONTEST_ORDER).toEqual([
       "bbm-vii",
       "puppy",
+      "little-dalmatian-2",
       "eliminator",
       "weekly-winners",
       "sit-and-go",

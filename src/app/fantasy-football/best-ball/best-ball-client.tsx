@@ -84,6 +84,18 @@ const CONTESTS: ContestCopy[] = [
     showsWeek17: true,
   },
   {
+    id: "little-dalmatian-2",
+    label: "The Little Dalmatian 2",
+    shortLabel: "Dalmatian",
+    format: "12 teams, 18 rounds, half PPR",
+    structure: "Weeks 1 through 14 advance three of twelve teams, then one team advances out of a ten team group in Week 15 and out of a six team group in Week 16, before a 470 team final in Week 17.",
+    brief:
+      "The entry is a dollar and the field is large, but the roster problem is the same one Mania asks, so I draft it the same way.",
+    build: "Keep the same balanced ranges as Mania and let draft capital set the position counts, because a wider first cut does not change what a good roster looks like.",
+    risk: "Three of twelve advancing out of the regular season is a softer first cut than Mania, so I would not give up regular season value for Week 17 pairings any earlier here than I would there.",
+    showsWeek17: true,
+  },
+  {
     id: "eliminator",
     label: "The Eliminator",
     shortLabel: "Eliminator",

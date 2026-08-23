@@ -7,6 +7,7 @@ export type BestBallPosition = (typeof BEST_BALL_POSITIONS)[number];
 export type BestBallContestId =
   | "bbm-vii"
   | "puppy"
+  | "little-dalmatian-2"
   | "eliminator"
   | "weekly-winners"
   | "sit-and-go"

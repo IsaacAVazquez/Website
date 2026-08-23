@@ -95,6 +95,29 @@ export const BEST_BALL_CONTESTS: Readonly<Record<BestBallContestId, BestBallCont
       lineup: STANDARD_BEST_BALL_LINEUP,
       officialRulesUrl: PUPPY_OFFICIAL_RULES_URL,
     },
+    "little-dalmatian-2": {
+      ...sharedPreset,
+      id: "little-dalmatian-2",
+      name: "The Little Dalmatian 2",
+      shortName: "Little Dalmatian",
+      description:
+        "A dollar entry tournament that uses the same draft profile as Best Ball Mania, with four rounds that advance three of twelve teams out of the regular season and then one team out of each playoff group.",
+      aliases: [
+        "little-dalmatian",
+        "little-dalmatian-2",
+        "the-little-dalmatian",
+        "the-little-dalmatian-2",
+        "dalmatian",
+        "ld2",
+      ],
+      competitionFormat: "tournament",
+      lineupVariant: "standard",
+      recommendationMode: "exact",
+      recommendationReason:
+        "The current standard-season Underdog ADP matches this room's player pool and draft shape.",
+      strategyProfileId: "standard-tournament",
+      lineup: STANDARD_BEST_BALL_LINEUP,
+    },
     eliminator: {
       ...sharedPreset,
       id: "eliminator",
@@ -174,6 +197,7 @@ export const BEST_BALL_CONTESTS: Readonly<Record<BestBallContestId, BestBallCont
 export const BEST_BALL_CONTEST_ORDER: readonly BestBallContestId[] = [
   "bbm-vii",
   "puppy",
+  "little-dalmatian-2",
   "eliminator",
   "weekly-winners",
   "sit-and-go",
