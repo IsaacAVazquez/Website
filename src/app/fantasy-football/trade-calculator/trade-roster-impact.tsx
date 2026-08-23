@@ -82,7 +82,7 @@ function MetricCell({
     <div
       role="cell"
       aria-label={`${label}: ${value}`}
-      className={`min-w-0 px-3 py-3 sm:px-4 md:flex md:min-h-20 md:items-center md:justify-center md:py-4 ${METRIC_CELL_BORDERS[index] ?? ""}`}
+      className={`min-w-0 border-[var(--home-rule)] px-3 py-3 sm:px-4 md:flex md:min-h-20 md:items-center md:justify-center md:py-4 ${METRIC_CELL_BORDERS[index] ?? ""}`}
     >
       <span
         aria-hidden="true"

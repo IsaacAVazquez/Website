@@ -30,6 +30,12 @@ describe("getNflRegularSeasonWeek", () => {
     expect(getNflRegularSeasonWeek(2026, new Date(Date.UTC(2026, 8, 1)))).toBe(0); // Sep 1, before kickoff
   });
 
+  it("reports week 0 for the season-0 placeholder clients pass before the snapshot loads", () => {
+    // Season 0 used to anchor to the year 1900 and report week 18, rendering
+    // "Week 18 of the 0 season" on loading and error states.
+    expect(getNflRegularSeasonWeek(0, new Date(Date.UTC(2026, 9, 1)))).toBe(0);
+  });
+
   it("counts up through the regular season", () => {
     const earlyOctober = getNflRegularSeasonWeek(2026, new Date(Date.UTC(2026, 9, 1)));
     const lateNovember = getNflRegularSeasonWeek(2026, new Date(Date.UTC(2026, 10, 25)));

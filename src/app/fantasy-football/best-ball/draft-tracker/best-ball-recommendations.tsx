@@ -17,8 +17,13 @@ const COMPONENT_LABELS: Record<keyof BestBallRecommendation["components"], strin
   spikeWeek: "Weekly projection spread",
 };
 
+// Below this a component rounds to "0" at one decimal, so it moved nothing a
+// reader could see. Shared so the chip filter and the number formatter cannot
+// drift apart and start hiding a value that would have printed.
+const SCORE_EPSILON = 0.05;
+
 function formatScore(value: number): string {
-  if (Math.abs(value) < 0.05) return "0";
+  if (Math.abs(value) < SCORE_EPSILON) return "0";
   return `${value > 0 ? "+" : ""}${value.toFixed(1)}`;
 }
 
@@ -48,7 +53,9 @@ export function BestBallRecommendations({
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <p className="home-kicker mb-1">Your next pick</p>
-          <h2 id="best-ball-recommendations-heading" className="text-2xl font-semibold">
+          {/* text-2xl tops out at 34px, exactly where an open room's h1 sits, so this
+              would render at its parent's size. text-xl is the step the rest of the room uses. */}
+          <h2 id="best-ball-recommendations-heading" className="text-xl font-semibold">
             {recommendationMode === "exact"
               ? "Best fits for your next pick"
               : "Board and roster guidance"}
@@ -92,9 +99,15 @@ export function BestBallRecommendations({
       ) : recommendations.length > 0 ? (
         <div className="mt-4 grid gap-3 xl:grid-cols-3">
           {recommendations.map((recommendation, index) => {
-            const componentScores = Object.entries(recommendation.components) as Array<
-              [keyof BestBallRecommendation["components"], number]
-            >;
+            // All nine components used to print on every card, and most of them
+            // score zero for any given player, which buried the two or three
+            // that actually moved the number. Only the contributing ones get a
+            // chip; "Why this player" below still carries the full reasoning.
+            const componentScores = (
+              Object.entries(recommendation.components) as Array<
+                [keyof BestBallRecommendation["components"], number]
+              >
+            ).filter(([, score]) => Math.abs(score) >= SCORE_EPSILON);
 
             return (
               <article
@@ -121,31 +134,39 @@ export function BestBallRecommendations({
                         : " · Matching ADP not sourced"}
                     </p>
                   </div>
+                  {/* The top card's background is a signal-soft wash, where pure signal
+                      measures 4.32:1 at 12px. The 72%-toward-ink mix used across the rest
+                      of the fantasy surfaces clears AA on both card backgrounds. */}
                   <span
                     className="shrink-0 rounded-full border px-2.5 py-1 text-xs font-semibold tabular-nums"
-                    style={{ borderColor: "var(--home-rule)", color: "var(--home-signal)" }}
+                    style={{
+                      borderColor: "var(--home-rule)",
+                      color: "color-mix(in srgb, var(--home-signal) 72%, var(--home-ink))",
+                    }}
                   >
                     {recommendation.score.toFixed(1)}
                   </span>
                 </div>
 
-                <div className="mt-3 flex flex-wrap gap-1.5">
-                  {componentScores.map(([component, score]) => (
-                    <span
-                      key={component}
-                      className="rounded-full border px-2 py-1 text-2xs font-medium"
-                      style={{
-                        borderColor: "var(--home-rule)",
-                        color: score < 0 ? "var(--home-negative)" : "var(--home-ink-muted)",
-                      }}
-                    >
-                      {component === "adpValue" && !adpAvailable
-                        ? "Market ADP"
-                        : COMPONENT_LABELS[component]}{" "}
-                      {formatScore(score)}
-                    </span>
-                  ))}
-                </div>
+                {componentScores.length > 0 ? (
+                  <div className="mt-3 flex flex-wrap gap-1.5">
+                    {componentScores.map(([component, score]) => (
+                      <span
+                        key={component}
+                        className="rounded-full border px-2 py-1 text-2xs font-medium"
+                        style={{
+                          borderColor: "var(--home-rule)",
+                          color: score < 0 ? "var(--home-negative)" : "var(--home-ink-muted)",
+                        }}
+                      >
+                        {component === "adpValue" && !adpAvailable
+                          ? "Market ADP"
+                          : COMPONENT_LABELS[component]}{" "}
+                        {formatScore(score)}
+                      </span>
+                    ))}
+                  </div>
+                ) : null}
 
                 <details className="group mt-3 text-xs leading-5">
                   {/* display:flex strips the native disclosure marker, so the

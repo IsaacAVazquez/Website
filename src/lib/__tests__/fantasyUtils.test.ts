@@ -10,7 +10,6 @@ import {
   getSnapshotStaleness,
   getSnapshotStalenessLabel,
   getTierRailIntensity,
-  getTierRailTone,
   getValueVsAdp,
   formatPickDelta,
   ADP_COMPARABLE_MAX_RANK,
@@ -506,14 +505,6 @@ describe("getTierRailIntensity", () => {
     expect(getTierRailIntensity(undefined)).toBe(0);
     expect(getTierRailIntensity(null)).toBe(0);
     expect(getTierRailIntensity(Number.NaN)).toBe(0);
-  });
-});
-
-describe("getTierRailTone", () => {
-  it("formats the intensity as a color-mix percentage", () => {
-    expect(getTierRailTone(1)).toBe("100%");
-    expect(getTierRailTone(8)).toBe("12%");
-    expect(getTierRailTone(undefined)).toBe("0%");
   });
 });
 

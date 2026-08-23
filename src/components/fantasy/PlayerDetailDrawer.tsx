@@ -45,12 +45,12 @@ interface PlayerDetailDrawerProps {
    */
   valueSignalAvailable?: boolean;
   /**
-   * Whether the calling surface can actually show the compare tray below `sm`.
-   * The draft tracker cannot, because the mobile Undo/Redo bar owns the bottom
-   * edge there, so it passes false and the Compare button hides below `sm`
-   * instead of pinning players into a tray that never appears.
+   * Whether the calling surface renders a CompareTray at all. Only the best ball
+   * board does. The redraft tracker never mounts one at any width, so its Compare
+   * button toggled to "Comparing" and pinned players into a tray that never
+   * appeared. A surface without a tray passes false and the button does not render.
    */
-  compareAvailableBelowSm?: boolean;
+  compareAvailable?: boolean;
   onClose: () => void;
 }
 
@@ -81,7 +81,7 @@ function StatCell({ label, children }: { label: string; children: React.ReactNod
 export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onClose,
   adpAvailable = true,
   valueSignalAvailable = true,
-  compareAvailableBelowSm = true,
+  compareAvailable = true,
 }: PlayerDetailDrawerProps) {
   const reduceMotion = useReducedMotion();
   const panelRef = useRef<HTMLDivElement>(null);
@@ -253,15 +253,14 @@ export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onCl
                 <Star size={16} fill={isQueued ? "currentColor" : "none"} aria-hidden="true" />
                 {isQueued ? "Queued" : "Add to queue"}
               </button>
+              {compareAvailable && (
               <button
                 type="button"
                 onClick={() => compare.toggle(player.id)}
                 aria-pressed={inCompare}
                 disabled={compareDisabled}
                 title={compareDisabled ? `Compare holds ${compare.limit} players` : undefined}
-                className={`min-h-touch flex-1 items-center justify-center gap-2 rounded-full border px-4 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-55 ${
-                  compareAvailableBelowSm ? "inline-flex" : "hidden sm:inline-flex"
-                }`}
+                className="min-h-touch inline-flex flex-1 items-center justify-center gap-2 rounded-full border px-4 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-55"
                 style={
                   inCompare
                     ? { borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }
@@ -271,6 +270,7 @@ export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onCl
                 <GitCompareArrows size={16} aria-hidden="true" />
                 {inCompare ? "Comparing" : "Compare"}
               </button>
+              )}
             </div>
 
             {/* Stats grid */}

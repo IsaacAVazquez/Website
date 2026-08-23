@@ -8,6 +8,7 @@ import {
   normalizeRedraftLineup,
   redraftLineupSummary,
 } from "@/lib/redraftLineup";
+import { MONO_LABEL_CLASS } from "@/lib/fantasyUtils";
 
 interface DraftSetupProps {
   settings: DraftSettings;
@@ -19,9 +20,17 @@ interface DraftSetupProps {
   /** True when a room with picks is parked behind this screen (the "New room" path). */
   canResume?: boolean;
   onResume?: () => void;
+  /**
+   * How many picks the parked room still holds. Starting from this screen calls
+   * resetDraft, which clears the picks and the undo history together, so a
+   * non-zero count arms the start button instead of letting one click wipe it.
+   */
+  parkedPickCount?: number;
 }
 
-const MONO_LABEL_CLASS = "font-mono text-3xs uppercase tracking-[0.12em]";
+// Left alone the armed button disarms again, so the guard cannot quietly decay
+// into a one-click wipe the next time the visitor comes back to this screen.
+const START_ARM_TIMEOUT_MS = 5000;
 
 const FIELD_CLASS =
   "min-h-touch w-full rounded border px-3 font-mono text-xs transition-[background-color,border-color,box-shadow] duration-200";
@@ -116,12 +125,21 @@ export function DraftSetup({
   onRetryRankings,
   canResume = false,
   onResume,
+  parkedPickCount = 0,
 }: DraftSetupProps) {
   const [formState, setFormState] = useState<DraftSettings>(settings);
   const [isStarting, setIsStarting] = useState(false);
+  const [startArmed, setStartArmed] = useState(false);
   const startingSlots = countRedraftStartingSlots(formState.lineup);
   const lineupTooLarge = startingSlots > formState.rounds;
   const rankingsReady = rankingsStatus === "ready";
+  const clearsParkedPicks = parkedPickCount > 0;
+
+  useEffect(() => {
+    if (!startArmed) return;
+    const timer = window.setTimeout(() => setStartArmed(false), START_ARM_TIMEOUT_MS);
+    return () => window.clearTimeout(timer);
+  }, [startArmed]);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- Sync local form state when external draft settings change (controlled-to-local mirror)
@@ -161,6 +179,13 @@ export function DraftSetup({
 
   function handleStartDraft() {
     if (isStarting || lineupTooLarge || !rankingsReady) return;
+    // Starting over a parked room is the destructive step, so the first press
+    // only arms it.
+    if (clearsParkedPicks && !startArmed) {
+      setStartArmed(true);
+      return;
+    }
+    setStartArmed(false);
     setIsStarting(true);
     try {
       onSaveSettings(formState);
@@ -428,14 +453,40 @@ export function DraftSetup({
               Published rankings are ready.
             </p>
           )}
+          {startArmed ? (
+            <p
+              role="status"
+              className="m-0 max-w-[60ch] text-sm font-semibold leading-6"
+              style={{ color: "var(--home-negative)" }}
+            >
+              Starting clears the {parkedPickCount}{" "}
+              {parkedPickCount === 1 ? "pick" : "picks"} already logged in the parked room, and undo
+              cannot bring them back. Press again to confirm, or use Back to room to keep them.
+            </p>
+          ) : null}
         </div>
         <button
           type="button"
           onClick={handleStartDraft}
           disabled={isStarting || lineupTooLarge || !rankingsReady}
           aria-busy={isStarting}
+          aria-label={
+            startArmed
+              ? "Confirm new draft and clear the parked room"
+              : clearsParkedPicks
+                ? "Start draft, which clears the parked room"
+                : undefined
+          }
           className="inline-flex min-h-touch items-center justify-center rounded-full border px-5 font-mono text-2xs uppercase tracking-[0.08em] disabled:cursor-not-allowed disabled:opacity-70"
-          style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
+          style={
+            startArmed
+              ? {
+                  borderColor: "var(--home-negative)",
+                  background: "var(--home-negative)",
+                  color: "var(--home-paper)",
+                }
+              : { borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }
+          }
         >
           {isStarting
             ? "Starting…"
@@ -443,7 +494,9 @@ export function DraftSetup({
               ? "Loading rankings…"
               : rankingsStatus === "error"
                 ? "Rankings unavailable"
-                : "Start draft"}
+                : startArmed
+                  ? "Confirm new draft"
+                  : "Start draft"}
         </button>
       </div>
     </div>

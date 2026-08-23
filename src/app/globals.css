@@ -1856,7 +1856,11 @@
        sibling text, so the WCAG 2.5.8 inline-link exemption does not apply. */
     display: inline-flex;
     align-items: center;
+    justify-content: flex-start;
     min-height: 44px;
+    /* min-width keeps short labels ("Now") at the 44px floor even when
+       first-child drops its left padding for edge alignment. */
+    min-width: 44px;
     padding: 4px 12px;
     border-left: 1px solid var(--home-rule);
     transition: color 160ms ease;

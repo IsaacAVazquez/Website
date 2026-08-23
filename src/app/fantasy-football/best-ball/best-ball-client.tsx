@@ -4,7 +4,7 @@ import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Search } from "lucide-react";
-import { startTransition, useCallback, useMemo, useOptimistic, useState } from "react";
+import { startTransition, useCallback, useEffect, useMemo, useOptimistic, useState } from "react";
 
 import {
   CompareTray,
@@ -13,6 +13,7 @@ import {
   type PositionFilterOption,
 } from "@/components/fantasy";
 import { useBestBallSnapshot } from "@/hooks/useBestBallSnapshot";
+import { useDebounce } from "@/hooks/useDebounce";
 import {
   getContestPreset,
   hasSupportedBestBallAdp,
@@ -21,16 +22,20 @@ import {
   type RankedBestBallPlayer,
 } from "@/lib/bestBall";
 import {
+  HEADER_CHIP_CLASS,
+  MONO_LABEL_CLASS,
+  SHELL_CLASS,
+  getNflRegularSeasonWeek,
   getPositionTone,
   getSnapshotStaleness,
-  getTierRailTone,
-  getNflRegularSeasonWeek,
+  getTierRailIntensity,
 } from "@/lib/fantasyUtils";
 import type { BestBallSnapshot } from "@/lib/bestBallSnapshot";
 import type { Player } from "@/types";
 
 import {
   buildBestBallHref,
+  normalizeBestBallQuery,
   normalizeBestBallState,
   type BestBallPositionFilter,
   type BestBallSearchState,
@@ -206,17 +211,11 @@ const PAGE_SIZE = 80;
 /** Every board on this page groups into 12-pick plates, one per draft round. */
 const ROUND_SIZE = 12;
 
-/** The template's 1080px column; the page manages its own shell width. */
-const SHELL_CLASS = "mx-auto w-full max-w-[1080px] px-[clamp(1rem,4vw,2.5rem)]";
-
-const MONO_LABEL_CLASS = "font-mono text-3xs uppercase tracking-[0.12em]";
-
-/** Square-cornered mono chip from the template header (distinct from the shared pill chip). */
-const HEADER_CHIP_CLASS =
-  "inline-flex items-center whitespace-nowrap rounded-[2px] border px-2 py-1 font-mono text-3xs uppercase tracking-[0.08em]";
-
 const PILL_ACTION_CLASS =
   "inline-flex min-h-touch items-center rounded-full border px-4 font-mono text-2xs uppercase tracking-[0.06em] no-underline";
+
+/** Phone rows carry their own value labels, since the column-label row is md-and-up. */
+const ROW_MICRO_LABEL_CLASS = "text-3xs uppercase tracking-[0.06em] text-[var(--home-ink-muted)] md:hidden";
 
 // Pinned to UTC so a date-only value like "2026-08-09" is not parsed as UTC
 // midnight and then rendered a day earlier for viewers west of UTC.
@@ -327,14 +326,23 @@ function BestBallPlayerRow({
       style={{ borderColor: "color-mix(in srgb, var(--home-rule) 60%, transparent)" }}
     >
       {/* The open control overlays the row instead of wrapping it: an aria-label
-          on a wrapping button would override every cell for screen readers. */}
+          on a wrapping button would override every cell for screen readers.
+          The content div sits above it so the per-cell explanations fire on
+          hover and the numbers stay selectable; its own click still opens the
+          drawer unless the user is selecting text. */}
       <button
         type="button"
         aria-label={`Open ${player.name} details`}
         onClick={() => onOpenDetail(player)}
         className="absolute inset-0 z-[1] cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[var(--home-signal)]"
       />
-      <div className="flex min-h-11 w-full flex-wrap items-center gap-x-3.5 gap-y-1 px-3.5 py-1.5">
+      <div
+        className="relative z-[2] flex min-h-11 w-full cursor-pointer flex-wrap items-center gap-x-3.5 gap-y-1 px-3.5 py-1.5 text-left"
+        onClick={() => {
+          if (window.getSelection()?.toString()) return;
+          onOpenDetail(player);
+        }}
+      >
         <span
           className="w-[34px] shrink-0 text-right font-mono text-sm font-medium"
           title="Board rank under this contest lens"
@@ -360,7 +368,7 @@ function BestBallPlayerRow({
         <span className="flex max-w-full flex-wrap items-center gap-x-3.5 gap-y-1">
           <span className="sr-only">Underdog ADP</span>
           <span
-            className={`w-14 text-right font-mono ${atUndraftedFloor ? "text-3xs uppercase" : "text-xs"}`}
+            className={`w-auto font-mono md:w-14 md:text-right ${atUndraftedFloor ? "text-3xs uppercase" : "text-xs"}`}
             title={
               atUndraftedFloor
                 ? "At the contest-floor placeholder, not a literal price"
@@ -368,18 +376,24 @@ function BestBallPlayerRow({
             }
             style={{ color: "var(--home-ink-muted)" }}
           >
+            <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
+              ADP{" "}
+            </span>
             {atUndraftedFloor ? "Undrafted" : adpAvailable ? formatRank(player.adp) : "NA"}
           </span>
           <span className="sr-only">PPR best ball consensus</span>
           <span
-            className="w-14 text-right font-mono text-xs font-medium"
+            className="w-auto font-mono text-xs font-medium md:w-14 md:text-right"
             title="PPR best ball expert consensus rank"
           >
+            <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
+              ECR{" "}
+            </span>
             {formatRank(getConsensusRank(player))}
           </span>
           <span className="sr-only">Value versus ADP</span>
           <span
-            className="w-14 text-right font-mono text-xs"
+            className="w-auto font-mono text-xs md:w-14 md:text-right"
             title={describeAdpDelta(delta)}
             style={{
               color:
@@ -390,15 +404,28 @@ function BestBallPlayerRow({
                     : "var(--home-ink-muted)",
             }}
           >
+            <span
+              aria-hidden="true"
+              className={ROW_MICRO_LABEL_CLASS}
+              style={{ color: "var(--home-ink-muted)" }}
+            >
+              Value{" "}
+            </span>
             {formatAdpDelta(delta)}
           </span>
           <span className="sr-only">Bye week</span>
-          <span className="w-8 text-right font-mono text-xs" style={{ color: "var(--home-ink-muted)" }}>
+          <span
+            className="w-auto font-mono text-xs md:w-8 md:text-right"
+            style={{ color: "var(--home-ink-muted)" }}
+          >
+            <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
+              Bye{" "}
+            </span>
             {player.byeWeek ?? "NA"}
           </span>
           <span className="sr-only">Week 17 opponent</span>
           <span
-            className="w-10 text-right font-mono text-xs"
+            className="w-auto font-mono text-xs md:w-10 md:text-right"
             title={
               showsWeek17
                 ? `Week 17: ${player.team || "FA"} vs ${opponent ?? "TBD"}`
@@ -410,6 +437,15 @@ function BestBallPlayerRow({
                 : "color-mix(in srgb, var(--home-ink-muted) 40%, transparent)",
             }}
           >
+            {/* The dimmed lens keeps its whole cell dim, label included, so the
+                label never reads louder than the value it names. */}
+            <span
+              aria-hidden="true"
+              className={ROW_MICRO_LABEL_CLASS}
+              style={showsWeek17 ? undefined : { color: "inherit" }}
+            >
+              W17{" "}
+            </span>
             {opponent ?? "NA"}
           </span>
         </span>
@@ -424,6 +460,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
   const { snapshot, isLoading, error, retry } = useBestBallSnapshot();
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [detailPlayer, setDetailPlayer] = useState<RankedBestBallPlayer | null>(null);
+  const [searchQuery, setSearchQuery] = useState(initialState.query);
   const canonicalState = useMemo(() => {
     const fromUrl = normalizeBestBallState(searchParams);
     return searchParams.size > 0 ? fromUrl : initialState;
@@ -472,7 +509,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
   );
 
   const filteredPlayers = useMemo(() => {
-    const query = routeState.query.toLowerCase();
+    const query = searchQuery.trim().toLowerCase();
     return orderedPlayers.filter((player) => {
       const matchesPosition = routeState.position === "all" || player.position === routeState.position;
       const matchesSearch =
@@ -480,7 +517,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
         `${player.name} ${player.team} ${player.position}`.toLowerCase().includes(query);
       return matchesPosition && matchesSearch;
     });
-  }, [orderedPlayers, routeState.position, routeState.query]);
+  }, [orderedPlayers, routeState.position, searchQuery]);
 
   const visiblePlayers = filteredPlayers.slice(0, visibleCount);
   const hasMore = visibleCount < filteredPlayers.length;
@@ -499,13 +536,45 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
   }, [visiblePlayers]);
 
   function updateRouteState(patch: Partial<BestBallSearchState>) {
-    const next = { ...routeState, ...patch };
-    setVisibleCount(PAGE_SIZE);
+    // The typed query is the live one, so a contest or position tap carries it
+    // along instead of reverting the field to whatever the URL last recorded.
+    const next = { ...routeState, query: normalizeBestBallQuery(searchQuery), ...patch };
     startTransition(() => {
       setOptimisticRouteState(next);
       router.replace(buildBestBallHref(next, searchParams), { scroll: false });
     });
   }
+
+  // Reset the window whenever the lens, position, or search changes so a
+  // narrowed list never starts deep into a stale offset.
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional reset on filter change
+    setVisibleCount(PAGE_SIZE);
+  }, [routeState.contest, routeState.position, searchQuery]);
+
+  // Only adopt the URL's query when it genuinely differs from what is typed.
+  // The URL form is trimmed, so comparing raw values made a trailing space
+  // vanish from under the cursor once the URL write was debounced.
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- browser Back/Forward can replace the URL-backed query
+    setSearchQuery((current) =>
+      normalizeBestBallQuery(current) === canonicalState.query ? current : canonicalState.query
+    );
+  }, [canonicalState.query]);
+
+  // Every keystroke used to fire router.replace, which meant one round trip per
+  // character and a trimmed value read straight back into the field. The board
+  // filters on searchQuery, so only the shareable URL waits.
+  const debouncedQuery = useDebounce(searchQuery, 200);
+  useEffect(() => {
+    // Push the normalized form, so the value written to the URL is the value
+    // read back out of it and the effect settles after one replace.
+    const nextQuery = normalizeBestBallQuery(debouncedQuery);
+    if (nextQuery === routeState.query) return;
+    updateRouteState({ query: nextQuery });
+    // updateRouteState is recreated every render; the query is the real trigger.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedQuery, routeState.query]);
 
   const trackerHref = `/fantasy-football/best-ball/draft-tracker?contest=${routeState.contest}`;
   const freshnessWarning = getFreshnessWarning(snapshot, routeState.contest);
@@ -549,7 +618,8 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
           </span>
           <h1
             className="m-0 font-semibold leading-none"
-            style={{ fontSize: "clamp(1.5rem, 3vw, 2.125rem)", letterSpacing: "-0.05em" }}
+            /* DESIGN.md title ramp, the same one the rankings board h1 sits on. */
+            style={{ fontSize: "clamp(1.55rem, 1.3rem + 1.25vw, 2.1rem)", letterSpacing: "-0.05em" }}
           >
             Best{" "}
             <em style={{ fontFamily: "var(--font-home-serif)", fontStyle: "italic", fontWeight: 500 }}>Ball</em>
@@ -581,13 +651,14 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
           </SeasonalScopeNote>
         ) : null}
 
+      {/* The lens is chosen once and then the board is read, so the pinned line
+          belongs to the board controls further down. Two sticky bars at the same
+          offset would paint over each other. */}
       <div
-        className="z-30 border-y md:sticky md:top-[4.5rem]"
+        className="border-y"
         style={{
           borderColor: "var(--home-rule)",
-          background: "color-mix(in srgb, var(--home-paper) 90%, transparent)",
-          backdropFilter: "blur(8px)",
-          WebkitBackdropFilter: "blur(8px)",
+          background: "var(--home-paper)",
         }}
       >
         <div className={`${SHELL_CLASS} flex flex-wrap items-center gap-x-3 gap-y-2.5 py-2.5`}>
@@ -638,10 +709,14 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             style={{ borderColor: "var(--home-rule)" }}
           >
             <div className="flex min-w-0 flex-wrap items-baseline gap-x-3 gap-y-1">
-              <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--home-signal)" }}>
+              <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--home-ink-muted)" }}>
                 Contest lens
               </p>
-              <h2 className="m-0 text-xl font-semibold leading-tight tracking-tight sm:text-2xl">
+              {/* text-2xl tops out at the same 34px as the page h1, which renders this
+                  child heading at exactly its parent's size: the nesting is announced to a
+                  screen reader and invisible on the page. text-xl holds the step the mock
+                  draft already uses. */}
+              <h2 className="m-0 text-xl font-semibold leading-tight tracking-tight">
                 {activeContest.label}
               </h2>
             </div>
@@ -716,7 +791,21 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
 
       <div className={`${SHELL_CLASS} pt-4`} data-testid="best-ball-board">
         <h2 className="sr-only">{activeContest.shortLabel} board</h2>
-        <div className="flex flex-wrap items-center gap-x-3.5 gap-y-2.5 pb-3">
+        {/* One pinned control line at every width. The board runs hundreds of
+            rows, so position, search, and the count have to stay reachable
+            mid-scroll rather than only at the top. The negative margin matches
+            the shell padding so rows pass under a full-width band. */}
+        <div
+          className="sticky top-[4.5rem] z-30 mb-3 flex flex-wrap items-center gap-x-3.5 gap-y-2.5 border-b py-2.5"
+          style={{
+            marginInline: "calc(-1 * clamp(1rem, 4vw, 2.5rem))",
+            paddingInline: "clamp(1rem, 4vw, 2.5rem)",
+            borderColor: "var(--home-rule)",
+            background: "color-mix(in srgb, var(--home-paper) 90%, transparent)",
+            backdropFilter: "blur(8px)",
+            WebkitBackdropFilter: "blur(8px)",
+          }}
+        >
           <PositionFilterBar
             ariaLabel="Best ball position"
             options={POSITION_OPTIONS}
@@ -737,9 +826,9 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
               id="best-ball-search"
               name="best-ball-search"
               type="search"
-              value={routeState.query}
+              value={searchQuery}
               maxLength={80}
-              onChange={(event) => updateRouteState({ query: event.target.value })}
+              onChange={(event) => setSearchQuery(event.target.value)}
               disabled={Boolean(error)}
               autoComplete="off"
               placeholder="Search player or team"
@@ -830,7 +919,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                     className="overflow-hidden rounded-lg border border-l-[3px]"
                     style={{
                       borderColor: "var(--home-rule)",
-                      borderLeftColor: `color-mix(in srgb, var(--home-signal) ${getTierRailTone(group.round)}, var(--home-rule))`,
+                      borderLeftColor: `color-mix(in srgb, var(--home-signal) ${getTierRailIntensity(group.round)}%, var(--home-rule))`,
                       background: "var(--home-paper-raised)",
                     }}
                   >
@@ -884,14 +973,30 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             <p className="font-mono text-xs" style={{ color: "var(--home-ink-muted)" }}>
               No players match on this board.
             </p>
-            <button
-              type="button"
-              onClick={() => updateRouteState({ position: "all", query: "" })}
-              className="mt-3.5 inline-flex min-h-touch items-center rounded-full border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
-              style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
-            >
-              Clear search
-            </button>
+            {/* Each control clears only itself, so the way out never resets a
+                filter the visitor still wants. */}
+            {searchQuery ? (
+              <button
+                type="button"
+                onClick={() => {
+                  setSearchQuery("");
+                  updateRouteState({ query: "" });
+                }}
+                className="mt-3.5 inline-flex min-h-touch items-center rounded-full border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
+                style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
+              >
+                Clear search
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={() => updateRouteState({ position: "all" })}
+                className="mt-3.5 inline-flex min-h-touch items-center rounded-full border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
+                style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
+              >
+                Show all positions
+              </button>
+            )}
           </div>
         )}
 
@@ -967,10 +1072,10 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
       </div>
 
       <section aria-labelledby="field-notes-heading" className={`${SHELL_CLASS} pt-7`}>
-        <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--home-signal)" }}>
+        <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--home-ink-muted)" }}>
           Field notes
         </p>
-        <h2 id="field-notes-heading" className="mb-0 mt-1.5 text-2xl font-semibold leading-tight tracking-tight">
+        <h2 id="field-notes-heading" className="mb-0 mt-1.5 text-xl font-semibold leading-tight tracking-tight">
           What has worked, and how I would use it
         </h2>
         <p className="mb-0 mt-2.5 max-w-[70ch] text-sm leading-6" style={{ color: "var(--home-ink-muted)" }}>
@@ -1013,7 +1118,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                 className="flex gap-3 border-t py-2.5"
                 style={{ borderColor: "var(--home-rule)" }}
               >
-                <span className="w-6 shrink-0 font-mono text-xs" style={{ color: "var(--home-signal)" }}>
+                <span className="w-6 shrink-0 font-mono text-xs" style={{ color: "var(--home-ink-muted)" }}>
                   {recommendation.number}
                 </span>
                 <div className="min-w-0">
@@ -1078,13 +1183,13 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             Working ranges, not quotas, and nothing here guarantees a result
           </span>
           <span className="flex flex-wrap gap-x-4 gap-y-1">
-            <Link href="/fantasy-football" className="text-sm font-semibold no-underline">
+            <Link href="/fantasy-football" className="inline-flex min-h-touch items-center text-sm font-semibold no-underline">
               Rankings board&nbsp;<span aria-hidden="true">↗</span>
             </Link>
-            <Link href={trackerHref} className="text-sm font-semibold no-underline">
+            <Link href={trackerHref} className="inline-flex min-h-touch items-center text-sm font-semibold no-underline">
               Draft tracker&nbsp;<span aria-hidden="true">↗</span>
             </Link>
-            <Link href="/fantasy-football/mock-draft" className="text-sm font-semibold no-underline">
+            <Link href="/fantasy-football/mock-draft" className="inline-flex min-h-touch items-center text-sm font-semibold no-underline">
               Mock draft&nbsp;<span aria-hidden="true">↗</span>
             </Link>
           </span>

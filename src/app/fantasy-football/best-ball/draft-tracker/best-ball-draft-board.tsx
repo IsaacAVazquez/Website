@@ -66,7 +66,7 @@ export function BestBallDraftBoard({
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
             <p className="home-kicker mb-1">Room board</p>
-            <h2 id="best-ball-player-board-heading" className="text-2xl font-semibold">
+            <h2 id="best-ball-player-board-heading" className="text-xl font-semibold">
               Log the player selected
             </h2>
           </div>
@@ -185,14 +185,31 @@ export function BestBallDraftBoard({
             >
               {player.position}
             </span>
-            <span className="hidden text-xs font-medium sm:block">{player.team}</span>
+            <span className="hidden text-xs font-medium sm:block">
+              <span className="sr-only">{"Team "}</span>
+              <span>{player.team}</span>
+            </span>
+            {/*
+              The column headers above are a sibling grid row, not table headers,
+              so nothing associates them with a cell. Without these labels the row
+              reads out as the player's name followed by two bare numbers. The
+              labels live inside the sm-only cell so the phone summary line, which
+              already names both values, does not say them twice. The acronym is
+              spoken in full because the row gives it no surrounding context.
+            */}
             <span className="hidden text-xs tabular-nums sm:block">
-              {adpAvailable
-                ? formatBoardAdp(player, "Not matched")
-                : player.adjustedRank.toFixed(0)}
+              <span className="sr-only">
+                {adpAvailable ? "Underdog average draft position " : "Source rank "}
+              </span>
+              <span>
+                {adpAvailable
+                  ? formatBoardAdp(player, "Not matched")
+                  : player.adjustedRank.toFixed(0)}
+              </span>
             </span>
             <span className="hidden text-xs tabular-nums sm:block">
-              {player.byeWeek ?? "Unknown"}
+              <span className="sr-only">{"Bye week "}</span>
+              <span>{player.byeWeek ?? "Unknown"}</span>
             </span>
           </button>
         ))}

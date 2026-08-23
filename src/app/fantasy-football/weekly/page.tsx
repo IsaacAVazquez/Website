@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import ReactDOM from "react-dom";
 import { StructuredData } from "@/components/StructuredData";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { normalizeFantasyRouteScoring } from "@/lib/fantasy";
 import { fantasySnapshotRevision } from "@/data/fantasySnapshotRevision.generated";
-import { WeeklyBoardClient } from "./weekly-client";
+import { WeeklyBoardClient, type WeeklyRouteState } from "./weekly-client";
 
 export const metadata: Metadata = constructMetadata({
   title: "Fantasy Football Weekly Rankings and Waiver Targets",
@@ -19,7 +21,30 @@ const breadcrumbs = [
   { name: "Weekly", url: "/fantasy-football/weekly" },
 ];
 
-export default function WeeklyBoardPage() {
+interface WeeklyBoardPageProps {
+  searchParams: Promise<{
+    scoring?: string;
+    board?: string;
+  }>;
+}
+
+export default async function WeeklyBoardPage({ searchParams }: WeeklyBoardPageProps) {
+  const params = await searchParams;
+  // Kept in step with normalizeWeeklyBoard in weekly-client.tsx. The helper
+  // cannot be shared from there because every export of a "use client" module
+  // becomes a client reference, which a server component cannot call.
+  const initialState: WeeklyRouteState = {
+    scoring: normalizeFantasyRouteScoring(params.scoring),
+    board: params.board === "quarterbacks" ? "quarterbacks" : "flex",
+  };
+  // The board's fetch cannot start until the client bundle has downloaded and
+  // hydrated, so the critical path ran HTML, then JS, then JSON in series. This
+  // URL matches useFantasyWeeklySnapshot's request exactly, so the in-flight
+  // preload is reused rather than duplicated.
+  ReactDOM.preload(`/data/fantasy/weekly.json?v=${fantasySnapshotRevision}`, {
+    as: "fetch",
+  });
+
   return (
     <>
       <StructuredData
@@ -41,7 +66,7 @@ export default function WeeklyBoardPage() {
         }}
       />
 
-      <WeeklyBoardClient />
+      <WeeklyBoardClient initialState={initialState} />
     </>
   );
 }

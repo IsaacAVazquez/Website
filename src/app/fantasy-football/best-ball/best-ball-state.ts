@@ -36,7 +36,12 @@ function normalizePosition(value: string | null): BestBallPositionFilter {
     : "all";
 }
 
-function normalizeQuery(value: string | null): string {
+/**
+ * The URL's form of a search query. The client compares the typed value against
+ * this before writing, so a trailing space stays under the cursor instead of
+ * being trimmed away and read back.
+ */
+export function normalizeBestBallQuery(value: string | null): string {
   return (value ?? "").replace(/\s+/g, " ").trim().slice(0, 80);
 }
 
@@ -44,7 +49,7 @@ export function normalizeBestBallState(input: SearchParamInput): BestBallSearchS
   return {
     contest: normalizeContestId(readParam(input, "contest")),
     position: normalizePosition(readParam(input, "position")),
-    query: normalizeQuery(readParam(input, "q")),
+    query: normalizeBestBallQuery(readParam(input, "q")),
   };
 }
 

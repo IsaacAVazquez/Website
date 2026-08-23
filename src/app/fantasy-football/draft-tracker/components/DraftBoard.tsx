@@ -7,8 +7,11 @@ import { usePlayerQueue } from "@/hooks/usePlayerQueue";
 import { isPlayerValueAtPick } from "@/lib/draftAnalytics";
 import {
   FANTASY_ADP_TOOLTIP,
+  MONO_LABEL_CLASS,
+  POSITION_CHIP_CLASS,
   formatAdp,
   formatRankValue,
+  getConsensusAvg,
   getPositionTone,
   getTierRailIntensity,
   withTierBreaks,
@@ -24,18 +27,25 @@ interface DraftBoardProps {
   currentRound: number;
   adpAvailable: boolean;
   guidanceAvailable: boolean;
+  /**
+   * CSS `top` for the sticky controls bar, measured by the tracker so the bar
+   * lands under the live fascia rather than behind it.
+   */
+  stickyTop?: string;
 }
+
+/**
+ * Below `md` the column header is hidden, so each value carries its own label.
+ * The sr-only cell label next to it keeps the value named exactly once for
+ * assistive tech at every width. Same contract as the rankings board.
+ */
+const ROW_MICRO_LABEL_CLASS =
+  "font-mono text-3xs uppercase tracking-[0.06em] text-[var(--home-ink-muted)] md:hidden";
 
 type BoardFilter = "ALL" | "QB" | "RB" | "WR" | "TE" | "K" | "DST" | "FLEX";
 
 /** Rows mounted before the scroll sentinel extends the window. */
 const BOARD_PAGE_SIZE = 40;
-
-const MONO_LABEL_CLASS = "font-mono text-3xs uppercase tracking-[0.12em]";
-
-/** Square-cornered mono position chip from the template (not the shared pill chip). */
-const POSITION_CHIP_CLASS =
-  "inline-flex flex-none items-center rounded-[2px] border px-1.5 py-0.5 font-mono text-2xs tracking-[0.06em]";
 
 const POSITION_OPTIONS: PositionFilterOption<BoardFilter>[] = [
   { value: "ALL", label: "All" },
@@ -60,12 +70,6 @@ function matchesFilter(player: Player, filter: BoardFilter): boolean {
   return player.position === filter;
 }
 
-function getConsensusAvg(player: Player): number | null {
-  return typeof player.rankAverage === "number" && Number.isFinite(player.rankAverage)
-    ? player.rankAverage
-    : null;
-}
-
 interface TierGroup {
   tier: number | null;
   rows: Player[];
@@ -80,6 +84,7 @@ export function DraftBoard({
   currentRound,
   adpAvailable,
   guidanceAvailable,
+  stickyTop,
 }: DraftBoardProps) {
   const [selectedPosition, setSelectedPosition] = useState<BoardFilter>("ALL");
   const [searchQuery, setSearchQuery] = useState("");
@@ -222,8 +227,25 @@ export function DraftBoard({
     }
     const marginTop = index === 0 ? 0 : Math.round(Math.min(48, Math.max(14, cliff * 9))) || 18;
 
+    /* Same contract as the rankings board's tier plates: an unnamed <section> is not
+       exposed as a landmark at all, so the tier structure would be invisible to assistive
+       tech. Literal label rather than aria-labelledby, because the plate header is spans
+       rather than a heading. The cliff rule above is aria-hidden, so its size rides here. */
+    const tierLabel = [
+      group.tier !== null ? `Tier ${group.tier}` : "No published tier",
+      `${group.rows.length} ${group.rows.length === 1 ? "player" : "players"}`,
+      `ranks ${firstRank} to ${lastRank}`,
+      index > 0 && cliff > 0 ? `${cliff.toFixed(1)} average-rank cliff above` : null,
+    ]
+      .filter(Boolean)
+      .join(", ");
+
     return (
-      <section key={`tier-${group.tier ?? "untiered"}-${group.rows[0].id}`} style={{ marginTop }}>
+      <section
+        key={`tier-${group.tier ?? "untiered"}-${group.rows[0].id}`}
+        aria-label={tierLabel}
+        style={{ marginTop }}
+      >
         {index > 0 && cliff > 0 && (
           <div aria-hidden="true" className="flex items-center gap-3 px-0.5 pb-2.5">
             <span
@@ -311,18 +333,26 @@ export function DraftBoard({
                   <div className="ml-auto flex flex-none items-center gap-2.5">
                     {adpAvailable ? (
                       <>
+                        <span className="sr-only">ADP</span>
                         <span
-                          className="w-11 text-right font-mono text-xs"
+                          className="w-auto font-mono text-xs md:w-11 md:text-right"
                           style={{ color: "var(--home-ink-muted)" }}
                           title={FANTASY_ADP_TOOLTIP}
                         >
+                          <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
+                            ADP{" "}
+                          </span>
                           {formatAdp(player.adp)}
                         </span>
+                        <span className="sr-only">versus ADP at pick {currentPick}</span>
                         <span
-                          className="w-12 text-right font-mono text-xs"
+                          className="w-auto font-mono text-xs md:w-12 md:text-right"
                           style={{ color: delta?.color ?? "var(--home-ink-muted)" }}
                           title={delta?.title}
                         >
+                          <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
+                            ±ADP{" "}
+                          </span>
                           {delta?.text ?? "—"}
                         </span>
                       </>
@@ -394,42 +424,50 @@ export function DraftBoard({
         </div>
       )}
 
-      <div className="flex flex-wrap items-center gap-x-3.5 gap-y-2.5 pb-3">
-        <PositionFilterBar
-          ariaLabel="Position filter"
-          options={POSITION_OPTIONS}
-          value={selectedPosition}
-          onChange={setSelectedPosition}
-        />
-        <label htmlFor="draft-board-search" className="sr-only">
-          Search the board
-        </label>
-        <input
-          ref={searchInputRef}
-          id="draft-board-search"
-          name="draftBoardSearch"
-          value={searchQuery}
-          onChange={(event) => setSearchQuery(event.target.value)}
-          autoComplete="off"
-          placeholder="Search player or team"
-          className="min-h-touch w-48 rounded border px-3 font-mono text-xs"
-          style={{
-            borderColor: "var(--home-rule)",
-            background: "var(--home-paper-raised)",
-            color: "var(--home-ink)",
-          }}
-        />
-        <span
-          aria-live="polite"
-          className="ml-auto whitespace-nowrap font-mono text-2xs"
-          style={{ color: "var(--home-ink-muted)" }}
-        >
-          {filteredPlayers.length} of {availablePlayers.length} available
-        </span>
-      </div>
+      {/* The board runs hundreds of rows against a pick clock, so the filter,
+          search, count and column labels hold their place while you scroll. It
+          only sticks from `lg`, where the fascia above it is a single row;
+          narrower than that the two stacked bars would eat the viewport the
+          rows need. */}
+      <div
+        className="lg:sticky lg:z-20"
+        style={{ top: stickyTop, background: "var(--home-paper)" }}
+      >
+        <div className="flex flex-wrap items-center gap-x-3.5 gap-y-2.5 pb-3">
+          <PositionFilterBar
+            ariaLabel="Position filter"
+            options={POSITION_OPTIONS}
+            value={selectedPosition}
+            onChange={setSelectedPosition}
+          />
+          <label htmlFor="draft-board-search" className="sr-only">
+            Search the board
+          </label>
+          <input
+            ref={searchInputRef}
+            id="draft-board-search"
+            name="draftBoardSearch"
+            value={searchQuery}
+            onChange={(event) => setSearchQuery(event.target.value)}
+            autoComplete="off"
+            placeholder="Search player or team"
+            className="min-h-touch w-48 rounded border px-3 font-mono text-xs"
+            style={{
+              borderColor: "var(--home-rule)",
+              background: "var(--home-paper-raised)",
+              color: "var(--home-ink)",
+            }}
+          />
+          <span
+            aria-live="polite"
+            className="ml-auto whitespace-nowrap font-mono text-2xs"
+            style={{ color: "var(--home-ink-muted)" }}
+          >
+            {filteredPlayers.length} of {availablePlayers.length} available
+          </span>
+        </div>
 
-      {windowedPlayers.length > 0 ? (
-        <>
+        {windowedPlayers.length > 0 ? (
           <div
             aria-hidden="true"
             className="hidden items-center gap-x-3.5 px-3.5 pb-1.5 md:flex"
@@ -448,6 +486,11 @@ export function DraftBoard({
               <span className="w-[3.6rem]" />
             </span>
           </div>
+        ) : null}
+      </div>
+
+      {windowedPlayers.length > 0 ? (
+        <>
           {tierGroups.map((group, index) => renderTierSection(group, index))}
           <div ref={sentinelRef} aria-hidden="true" />
         </>

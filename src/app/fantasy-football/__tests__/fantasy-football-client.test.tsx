@@ -429,8 +429,16 @@ describe("FantasyFootballClient", () => {
     fireEvent.click(screen.getByRole("button", { name: "Open Reference Receiver detail" }));
     const dialog = screen.getByRole("dialog", { name: "Reference Receiver detail" });
     expect(within(dialog).getByText("Prior-season ADP · Sep 1, 2026")).toBeVisible();
+    // The explanation used to ride on `title` on a non-interactive div, which never
+    // fires on touch and is unreachable by keyboard. It is now MetricTooltip's
+    // focusable trigger, so assert it is a real control naming the prior-season term
+    // and that focusing it surfaces the definition.
+    const priorSeasonHelp = within(dialog).getByRole("button", {
+      name: "What is Prior-season ADP?",
+    });
+    fireEvent.focus(priorSeasonHelp);
     expect(
-      within(dialog).getByTitle(/final mock-draft average from the prior season/i)
+      screen.getByText(/final mock-draft average from the prior season/i)
     ).toBeVisible();
     expect(within(dialog).queryByText(/picks after the consensus rank/)).not.toBeInTheDocument();
   });

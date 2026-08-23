@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 
 import type { FantasySnapshotSliceMetadata } from "@/lib/fantasy";
-import type { Player } from "@/types";
+import type { Player, RedraftLineupSettings } from "@/types";
 
 /**
  * Plain-language explanation of the "Avg" value shown next to each player.
@@ -52,6 +52,14 @@ const NFL_REGULAR_SEASON_WEEKS = 18;
  * earlier, onto a day the prior week is already over.
  */
 export function getNflRegularSeasonWeek(season: number, now: Date = new Date()): number {
+  // Route clients pass `snapshot?.season ?? 0` before the snapshot loads (or
+  // after it fails). Season 0 anchors the Labor Day math to the year 1900 and
+  // reported week 18, which rendered "Week 18 of the 0 season" banners on the
+  // loading and error states. No NFL season predates 1920, so anything
+  // implausible reads as the offseason.
+  if (season < 1920) {
+    return 0;
+  }
   // First Monday of September (Labor Day), evaluated in UTC.
   const septFirst = new Date(Date.UTC(season, 8, 1));
   const offsetToMonday = (8 - septFirst.getUTCDay()) % 7;
@@ -602,6 +610,36 @@ export function getFantasySourceCapabilities({
 export const FANTASY_CHIP_CLASS =
   "inline-flex items-center rounded-full border px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em]";
 
+/** The template's 1080px column; each page manages its own shell width. */
+export const SHELL_CLASS = "mx-auto w-full max-w-[1080px] px-[clamp(1rem,4vw,2.5rem)]";
+
+export const MONO_LABEL_CLASS = "font-mono text-3xs uppercase tracking-[0.12em]";
+
+/** Square-cornered mono chip from the template header (distinct from the shared pill chip). */
+export const HEADER_CHIP_CLASS =
+  "inline-flex items-center whitespace-nowrap rounded-[2px] border px-2 py-1 font-mono text-3xs uppercase tracking-[0.08em]";
+
+/** Square-cornered mono position chip from the template (not the shared pill chip). */
+export const POSITION_CHIP_CLASS =
+  "inline-flex flex-none items-center rounded-[2px] border px-1.5 py-0.5 font-mono text-2xs tracking-[0.06em]";
+
+export const PILL_BUTTON_CLASS =
+  "inline-flex min-h-touch items-center justify-center rounded-full border px-3 font-mono text-3xs uppercase tracking-[0.06em] disabled:cursor-not-allowed disabled:opacity-50";
+
+export const PILL_BUTTON_STYLE: CSSProperties = {
+  borderColor: "var(--home-rule)",
+  background: "var(--home-paper)",
+  color: "var(--home-ink)",
+};
+
+/** Sticky offset that clears the site header on the draft surfaces. */
+export const FASCIA_TOP_CLASS = "top-[4.5rem]";
+
+export const WARNING_CARD_STYLE: CSSProperties = {
+  borderColor: "color-mix(in srgb, var(--home-warning) 55%, var(--home-rule))",
+  background: "color-mix(in srgb, var(--home-warning) 10%, var(--home-paper))",
+};
+
 export function getPositionTone(position: string): CSSProperties {
   switch (position) {
     case "QB":
@@ -743,7 +781,92 @@ export function getTierRailIntensity(tier: number | null | undefined): number {
   return Math.max(TIER_RAIL_FLOOR, 100 - (tier - 1) * TIER_RAIL_STEP);
 }
 
-/** `getTierRailIntensity` as a ready-to-use `color-mix()` percentage. */
-export function getTierRailTone(tier: number | null | undefined): string {
-  return `${getTierRailIntensity(tier)}%`;
+/**
+ * The expert average to show beside a player. `rankAverage` is FantasyPros'
+ * published mean; `averageRank` is the snapshot's own fallback for boards that
+ * do not carry one. Returns null when neither is usable, so callers render a
+ * dash rather than a zero.
+ */
+export function getConsensusAvg(player: Player): number | null {
+  if (typeof player.rankAverage === "number" && Number.isFinite(player.rankAverage)) {
+    return player.rankAverage;
+  }
+  if (typeof player.averageRank === "number" && Number.isFinite(player.averageRank)) {
+    return player.averageRank;
+  }
+  return null;
+}
+
+/** "J. Gibbs" for the narrow draft chips. Team defenses keep their full name. */
+export function shortName(player: Player): string {
+  const name = player.name ?? "";
+  if (player.position === "DST" || !name.includes(" ")) return name;
+  const parts = name.split(" ");
+  return `${parts[0][0]}. ${parts.slice(1).join(" ")}`;
+}
+
+export interface LineupSlot {
+  slot: string;
+  eligible: string[];
+  player: Player | null;
+}
+
+export interface LineupAssignment {
+  slots: LineupSlot[];
+  bench: number;
+  /** Unfilled exact-position starting slots, keyed by position. */
+  openExact: Partial<Record<string, number>>;
+  flexOpen: boolean;
+}
+
+/**
+ * Map the user's picks into starting-lineup slots in pick order: an exact
+ * position slot first, then an eligible flex, then the bench. This mirrors how
+ * the roster chips read on a draft sheet, not an optimal lineup solver.
+ */
+export function assignLineupSlots(
+  lineup: RedraftLineupSettings,
+  players: Player[]
+): LineupAssignment {
+  const slots: LineupSlot[] = [];
+  (["QB", "RB", "WR", "TE"] as const).forEach((position) => {
+    for (let index = 0; index < (lineup[position] || 0); index++) {
+      slots.push({ slot: position, eligible: [position], player: null });
+    }
+  });
+  for (let index = 0; index < (lineup.FLEX || 0); index++) {
+    slots.push({ slot: "FLX", eligible: ["RB", "WR", "TE"], player: null });
+  }
+  (["K", "DST"] as const).forEach((position) => {
+    for (let index = 0; index < (lineup[position] || 0); index++) {
+      slots.push({ slot: position, eligible: [position], player: null });
+    }
+  });
+
+  let bench = 0;
+  for (const player of players) {
+    const open =
+      slots.find(
+        (slot) => !slot.player && slot.eligible.length === 1 && slot.eligible[0] === player.position
+      ) ?? slots.find((slot) => !slot.player && slot.eligible.includes(player.position));
+    if (open) {
+      open.player = player;
+    } else {
+      bench++;
+    }
+  }
+
+  const openExact: Partial<Record<string, number>> = {};
+  for (const slot of slots) {
+    if (!slot.player && slot.eligible.length === 1) {
+      openExact[slot.eligible[0]] = (openExact[slot.eligible[0]] ?? 0) + 1;
+    }
+  }
+
+  return {
+    slots,
+    bench,
+    openExact,
+    flexOpen: slots.some((slot) => !slot.player && slot.eligible.length > 1),
+  };
 }

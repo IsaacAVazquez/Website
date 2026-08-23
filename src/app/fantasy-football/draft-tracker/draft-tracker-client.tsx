@@ -1,6 +1,13 @@
 "use client";
 
-import { useMemo, useState, useSyncExternalStore, type CSSProperties } from "react";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  type CSSProperties,
+} from "react";
 import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import Link from "next/link";
 import { DraftAnalyticsPanel } from "./components/DraftAnalyticsPanel";
@@ -23,14 +30,24 @@ import {
   scoringFormatToRouteScoring,
 } from "@/lib/fantasy";
 import {
+  FASCIA_TOP_CLASS,
+  HEADER_CHIP_CLASS,
+  MONO_LABEL_CLASS,
+  PILL_BUTTON_CLASS,
+  PILL_BUTTON_STYLE,
+  POSITION_CHIP_CLASS,
+  SHELL_CLASS,
+  WARNING_CARD_STYLE,
+  assignLineupSlots,
   formatAdp,
   formatRankValue,
   formatUpdatedAt,
   getFantasySourceCapabilities,
+  getNflRegularSeasonWeek,
   getPositionTone,
   resolveDraftPicksForModel,
+  shortName,
   withoutPlayerAdp,
-  getNflRegularSeasonWeek,
 } from "@/lib/fantasyUtils";
 import {
   DraftValuePanel,
@@ -38,35 +55,6 @@ import {
   type ExpectedReturnFormState,
 } from "@/components/fantasy";
 import type { Player, RedraftLineupSettings } from "@/types";
-
-/** The template's 1080px column; the page manages its own shell width. */
-const SHELL_CLASS = "mx-auto w-full max-w-[1080px] px-[clamp(1rem,4vw,2.5rem)]";
-
-const MONO_LABEL_CLASS = "font-mono text-3xs uppercase tracking-[0.12em]";
-
-/** Square-cornered mono chip from the template header (distinct from the shared pill chip). */
-const HEADER_CHIP_CLASS =
-  "inline-flex items-center whitespace-nowrap rounded-[2px] border px-2 py-1 font-mono text-3xs uppercase tracking-[0.08em]";
-
-const POSITION_CHIP_CLASS =
-  "inline-flex flex-none items-center rounded-[2px] border px-1.5 py-0.5 font-mono text-2xs tracking-[0.06em]";
-
-const PILL_BUTTON_CLASS =
-  "inline-flex min-h-touch items-center justify-center rounded-full border px-3 font-mono text-3xs uppercase tracking-[0.06em] disabled:cursor-not-allowed disabled:opacity-50";
-
-const PILL_BUTTON_STYLE: CSSProperties = {
-  borderColor: "var(--home-rule)",
-  background: "var(--home-paper)",
-  color: "var(--home-ink)",
-};
-
-/** StaticHeader is sticky at top 0 and 72px tall, so the fascia parks under it. */
-const FASCIA_TOP_CLASS = "top-[4.5rem]";
-
-const WARNING_CARD_STYLE: CSSProperties = {
-  borderColor: "color-mix(in srgb, var(--home-warning) 55%, var(--home-rule))",
-  background: "color-mix(in srgb, var(--home-warning) 10%, var(--home-paper))",
-};
 
 const subscribeToHydration = () => () => undefined;
 const getHydratedSnapshot = () => true;
@@ -80,76 +68,8 @@ function publishedDraftRank(player: Player): string {
 }
 
 /** "J. Chase" for the tight fascia and tape rows; DST names stay whole. */
-function shortName(player: Player): string {
-  const name = player.name ?? "";
-  if (player.position === "DST" || !name.includes(" ")) return name;
-  const parts = name.split(" ");
-  return `${parts[0][0]}. ${parts.slice(1).join(" ")}`;
-}
-
 function formatClock(seconds: number): string {
   return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")}`;
-}
-
-interface LineupSlot {
-  slot: string;
-  eligible: string[];
-  player: Player | null;
-}
-
-interface LineupAssignment {
-  slots: LineupSlot[];
-  bench: number;
-  /** Unfilled exact-position starting slots, keyed by position. */
-  openExact: Partial<Record<string, number>>;
-  flexOpen: boolean;
-}
-
-// Map the user's picks into starting-lineup slots in pick order: an exact
-// position slot first, then an eligible flex, then the bench. This mirrors how
-// the roster chips read on a draft sheet, not an optimal lineup solver.
-function assignLineupSlots(lineup: RedraftLineupSettings, players: Player[]): LineupAssignment {
-  const slots: LineupSlot[] = [];
-  (["QB", "RB", "WR", "TE"] as const).forEach((position) => {
-    for (let index = 0; index < (lineup[position] || 0); index++) {
-      slots.push({ slot: position, eligible: [position], player: null });
-    }
-  });
-  for (let index = 0; index < (lineup.FLEX || 0); index++) {
-    slots.push({ slot: "FLX", eligible: ["RB", "WR", "TE"], player: null });
-  }
-  (["K", "DST"] as const).forEach((position) => {
-    for (let index = 0; index < (lineup[position] || 0); index++) {
-      slots.push({ slot: position, eligible: [position], player: null });
-    }
-  });
-
-  let bench = 0;
-  for (const player of players) {
-    const open =
-      slots.find(
-        (slot) => !slot.player && slot.eligible.length === 1 && slot.eligible[0] === player.position
-      ) ?? slots.find((slot) => !slot.player && slot.eligible.includes(player.position));
-    if (open) {
-      open.player = player;
-    } else {
-      bench++;
-    }
-  }
-
-  const openExact: Partial<Record<string, number>> = {};
-  for (const slot of slots) {
-    if (!slot.player && slot.eligible.length === 1) {
-      openExact[slot.eligible[0]] = (openExact[slot.eligible[0]] ?? 0) + 1;
-    }
-  }
-
-  return {
-    slots,
-    bench,
-    openExact,
-    flexOpen: slots.some((slot) => !slot.player && slot.eligible.length > 1),
-  };
 }
 
 interface DecisionRec {
@@ -598,7 +518,11 @@ export function DraftTrackerClient() {
       sub: previousPick
         ? `Prev · ${shortName(previousPick.player)} #${picksForDisplay.length}`
         : "First overall pick",
-      valueColor: isUserPick ? "var(--home-signal)" : undefined,
+      /* Signal on a signal wash measures 4.09:1 in light mode. Mixing the text 72%
+         toward ink is the same repair the mock draft fascia already carries. */
+      valueColor: isUserPick
+        ? "color-mix(in srgb, var(--home-signal) 72%, var(--home-ink))"
+        : undefined,
       background: isUserPick
         ? "color-mix(in srgb, var(--home-signal) 8%, var(--home-paper))"
         : undefined,
@@ -611,7 +535,7 @@ export function DraftTrackerClient() {
             value: isDraftComplete ? "—" : formatClock(Math.max(0, timer.secondsLeft)),
             sub: `advisory · ${draftState.settings.timerSeconds}s per pick`,
             valueColor: clockUrgent
-              ? "var(--home-signal)"
+              ? "color-mix(in srgb, var(--home-signal) 72%, var(--home-ink))"
               : isUserPick
                 ? "var(--home-ink)"
                 : "var(--home-ink-muted)",
@@ -648,6 +572,23 @@ export function DraftTrackerClient() {
       sub: draftSnapshot ? `of ${draftBoardPlayers.length} ranked` : "board loading",
     },
   ];
+
+  // The board's own controls stick underneath the live fascia rather than under
+  // the page header, and the fascia wraps to two rows once the shell is narrow,
+  // so measure it instead of assuming a height.
+  const fasciaRef = useRef<HTMLElement | null>(null);
+  const [fasciaHeight, setFasciaHeight] = useState(0);
+  const boardStickyTop = `calc(4.5rem + ${fasciaHeight}px)`;
+
+  useEffect(() => {
+    const element = fasciaRef.current;
+    if (!element || typeof ResizeObserver === "undefined") return;
+    const measure = () => setFasciaHeight(element.offsetHeight);
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [showSetup, rankingsUnavailable]);
 
   // Every board in this room is a draft board. Once the season starts it stops
   // describing a live market, so say which season it covers rather than letting it
@@ -756,6 +697,7 @@ export function DraftTrackerClient() {
             onRetryRankings={retry}
             canResume={roomSetupOpen && hasRoom}
             onResume={() => setRoomSetupOpen(false)}
+            parkedPickCount={draftState.picks.length}
           />
           <p className="mx-0.5 mt-3.5 font-mono text-2xs leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
             Settings lock when the draft starts. The board logs every pick in the room, not just
@@ -780,6 +722,7 @@ export function DraftTrackerClient() {
       ) : (
         <>
           <section
+            ref={fasciaRef}
             aria-label="Live draft status"
             className={`sticky ${FASCIA_TOP_CLASS} z-30 border-y`}
             style={{
@@ -789,6 +732,20 @@ export function DraftTrackerClient() {
               WebkitBackdropFilter: "blur(8px)",
             }}
           >
+            {/*
+              The fascia grid holds the per-second pick clock, so the section
+              itself cannot be a live region the way the best ball fascia is.
+              This line carries the announcement instead: its content changes
+              only when a pick is logged or undone, so logging a pick announces
+              the new room state once, matching the mock draft and best ball rooms.
+            */}
+            <p role="status" aria-live="polite" className="sr-only">
+              {isDraftComplete
+                ? "Draft complete."
+                : `Pick ${draftState.currentPick} of ${totalPicks}, round ${draftState.currentRound}. ${
+                    isUserPick ? "You are on the clock." : `${onClockLabel} is on the clock.`
+                  }${previousPick ? ` Last pick: ${previousPick.player.name}.` : ""}`}
+            </p>
             <div className={SHELL_CLASS}>
               <div
                 className="grid gap-px border-x"
@@ -947,9 +904,12 @@ export function DraftTrackerClient() {
                   className="flex flex-wrap items-baseline gap-x-3.5 gap-y-1.5 border-b px-3.5 py-2"
                   style={{ borderColor: "color-mix(in srgb, var(--home-signal) 28%, var(--home-rule))" }}
                 >
+                  {/* 11px signal on the card's 7% signal wash measures 4.15:1. The dot
+                      keeps the pure accent so the state still reads at a glance, and the
+                      label takes the 72%-toward-ink mix so it clears AA. */}
                   <span
                     className="inline-flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.12em]"
-                    style={{ color: "var(--home-signal)" }}
+                    style={{ color: "color-mix(in srgb, var(--home-signal) 72%, var(--home-ink))" }}
                   >
                     <span
                       className="h-[7px] w-[7px] rounded-full"
@@ -1050,6 +1010,10 @@ export function DraftTrackerClient() {
           )}
 
           <div className={`${SHELL_CLASS} pb-11 pt-4`}>
+            {/* The running page goes h1 to the Draft Outlook h3 with nothing
+                between, so name the room here the way the rankings board and the
+                mock draft both do. */}
+            <h2 className="sr-only">Your draft room</h2>
             {isDraftComplete && (
               <div
                 className="mb-4 rounded-lg border border-dashed px-6 py-7 text-center"
@@ -1107,6 +1071,7 @@ export function DraftTrackerClient() {
                 currentRound={draftState.currentRound}
                 adpAvailable={adpAvailable}
                 guidanceAvailable={draftGuidanceAvailable}
+                stickyTop={boardStickyTop}
               />
             ) : null}
 
@@ -1219,7 +1184,10 @@ export function DraftTrackerClient() {
               <span className="font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
                 Advisory clock only, nothing auto-picks at zero · picks stay on this device
               </span>
-              <Link href="/fantasy-football" className="text-sm font-semibold no-underline">
+              <Link
+                href="/fantasy-football"
+                className="inline-flex min-h-touch items-center text-sm font-semibold no-underline"
+              >
                 Open the rankings board ↗
               </Link>
             </div>
@@ -1246,7 +1214,7 @@ export function DraftTrackerClient() {
         player={detailPlayer}
         publishedRank={detailPlayer ? publishedDraftRank(detailPlayer) : undefined}
         boardTierCount={boardTierCount > 0 ? boardTierCount : undefined}
-        compareAvailableBelowSm={false}
+        compareAvailable={false}
         onClose={() => setDetailPlayer(null)}
       />
     </section>

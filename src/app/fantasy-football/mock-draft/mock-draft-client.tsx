@@ -1,25 +1,35 @@
 "use client";
 
-import { useEffect, useMemo, useState, type CSSProperties } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import Link from "next/link";
 import type { DraftPick, Player, RedraftLineupSettings, ScoringFormat } from "@/types";
 import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
 import { FANTASY_SCORING_LABELS, scoringFormatToRouteScoring } from "@/lib/fantasy";
 import {
+  FASCIA_TOP_CLASS,
+  HEADER_CHIP_CLASS,
+  MONO_LABEL_CLASS,
+  PILL_BUTTON_CLASS,
+  PILL_BUTTON_STYLE,
+  SHELL_CLASS,
+  WARNING_CARD_STYLE,
+  assignLineupSlots,
   formatAdp,
   formatPickDelta,
   formatRankValue,
   formatUpdatedAt,
+  getConsensusAvg,
   getFantasyAdpFreshness,
+  getNflRegularSeasonWeek,
   getPositionTone,
   getSnapshotStaleness,
   getSnapshotStalenessLabel,
   getTierRailIntensity,
   hasReliableAdpSample,
+  shortName,
   withTierBreaks,
   withoutPlayerAdp,
-  getNflRegularSeasonWeek,
 } from "@/lib/fantasyUtils";
 import { classifyPickValue, getPickDelta, isPlayerValueAtPick } from "@/lib/draftAnalytics";
 import { REDRAFT_LINEUP_PRESETS } from "@/lib/redraftLineup";
@@ -34,24 +44,6 @@ import {
   useMockDraftState,
 } from "./hooks/useMockDraftState";
 
-/** The template's 1080px column; the page manages its own shell width. */
-const SHELL_CLASS = "mx-auto w-full max-w-[1080px] px-[clamp(1rem,4vw,2.5rem)]";
-
-const MONO_LABEL_CLASS = "font-mono text-3xs uppercase tracking-[0.12em]";
-
-/** Square-cornered mono chip from the template header (distinct from the shared pill chip). */
-const HEADER_CHIP_CLASS =
-  "inline-flex items-center whitespace-nowrap rounded-[2px] border px-2 py-1 font-mono text-3xs uppercase tracking-[0.08em]";
-
-const PILL_BUTTON_CLASS =
-  "inline-flex min-h-touch items-center justify-center rounded-full border px-3 font-mono text-3xs uppercase tracking-[0.06em] disabled:cursor-not-allowed disabled:opacity-50";
-
-const PILL_BUTTON_STYLE: CSSProperties = {
-  borderColor: "var(--home-rule)",
-  background: "var(--home-paper)",
-  color: "var(--home-ink)",
-};
-
 /** Ink-filled action pill (the template's "Draft" / "Start mock" buttons). */
 const SOLID_BUTTON_CLASS =
   "inline-flex min-h-touch items-center justify-center rounded-full border px-4 font-mono text-2xs uppercase tracking-[0.08em] disabled:cursor-not-allowed disabled:opacity-50";
@@ -60,14 +52,6 @@ const SOLID_BUTTON_STYLE: CSSProperties = {
   borderColor: "var(--home-ink)",
   background: "var(--home-ink)",
   color: "var(--home-paper)",
-};
-
-/** StaticHeader is sticky at top 0 and 72px tall, so the fascia parks under it. */
-const FASCIA_TOP_CLASS = "top-[4.5rem]";
-
-const WARNING_CARD_STYLE: CSSProperties = {
-  borderColor: "color-mix(in srgb, var(--home-warning) 55%, var(--home-rule))",
-  background: "color-mix(in srgb, var(--home-warning) 10%, var(--home-paper))",
 };
 
 const WARNING_CHIP_TONE: CSSProperties = {
@@ -129,14 +113,6 @@ const VISIBLE_BOARD_ROWS = 40;
 /** The tape shows at most this many room picks since the user's last turn. */
 const TAPE_LENGTH = 12;
 
-/** "J. Chase" for the tight tape, roster, and grid cells; DST names stay whole. */
-function shortName(player: Player): string {
-  const name = player.name ?? "";
-  if (player.position === "DST" || !name.includes(" ")) return name;
-  const parts = name.split(" ");
-  return `${parts[0][0]}. ${parts.slice(1).join(" ")}`;
-}
-
 /** Three-digit room label off the seed; a display label, not an identifier. */
 function roomLabel(seed: number): string {
   return String(seed % 1000).padStart(3, "0");
@@ -151,75 +127,10 @@ function lineupShort(lineup: RedraftLineupSettings): string {
   return parts.join(" ");
 }
 
-function getConsensusAvg(player: Player): number | null {
-  if (typeof player.rankAverage === "number" && Number.isFinite(player.rankAverage)) {
-    return player.rankAverage;
-  }
-  if (typeof player.averageRank === "number" && Number.isFinite(player.averageRank)) {
-    return player.averageRank;
-  }
-  return null;
-}
-
 function sameLineup(left: RedraftLineupSettings, right: RedraftLineupSettings): boolean {
   return (Object.keys(left) as (keyof RedraftLineupSettings)[]).every(
     (position) => left[position] === right[position]
   );
-}
-
-interface LineupSlot {
-  slot: string;
-  eligible: string[];
-  player: Player | null;
-}
-
-/**
- * Map the user's picks into starting-lineup slots in pick order: an exact
- * position slot first, then an eligible flex, then the bench. It mirrors how
- * roster chips read on a draft sheet, not an optimal lineup solver.
- */
-function assignLineupSlots(lineup: RedraftLineupSettings, players: Player[]) {
-  const slots: LineupSlot[] = [];
-  (["QB", "RB", "WR", "TE"] as const).forEach((position) => {
-    for (let index = 0; index < (lineup[position] || 0); index++) {
-      slots.push({ slot: position, eligible: [position], player: null });
-    }
-  });
-  for (let index = 0; index < (lineup.FLEX || 0); index++) {
-    slots.push({ slot: "FLX", eligible: ["RB", "WR", "TE"], player: null });
-  }
-  (["K", "DST"] as const).forEach((position) => {
-    for (let index = 0; index < (lineup[position] || 0); index++) {
-      slots.push({ slot: position, eligible: [position], player: null });
-    }
-  });
-
-  let bench = 0;
-  for (const player of players) {
-    const open =
-      slots.find(
-        (slot) => !slot.player && slot.eligible.length === 1 && slot.eligible[0] === player.position
-      ) ?? slots.find((slot) => !slot.player && slot.eligible.includes(player.position));
-    if (open) {
-      open.player = player;
-    } else {
-      bench++;
-    }
-  }
-
-  const openExact: Partial<Record<string, number>> = {};
-  for (const slot of slots) {
-    if (!slot.player && slot.eligible.length === 1) {
-      openExact[slot.eligible[0]] = (openExact[slot.eligible[0]] ?? 0) + 1;
-    }
-  }
-
-  return {
-    slots,
-    bench,
-    openExact,
-    flexOpen: slots.some((slot) => !slot.player && slot.eligible.length > 1),
-  };
 }
 
 /**
@@ -323,6 +234,9 @@ export function MockDraftClient() {
   const [roomSetupOpen, setRoomSetupOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [positionFilter, setPositionFilter] = useState<BoardPositionFilter>("ALL");
+  // Every pick unmounts the row or quick pick that took the click, so focus has
+  // somewhere stable to land: the panel that owns the next turn.
+  const onClockRef = useRef<HTMLElement>(null);
 
   // A persisted room decides which scoring board to fetch, so a saved
   // Standard room resumes onto Standard ranks after a reload. The hook
@@ -636,9 +550,11 @@ export function MockDraftClient() {
   };
 
   const draftPlayer = (player: Player) => {
-    if (room.makeUserPick(player)) {
-      setSearchQuery("");
-    }
+    if (!room.makeUserPick(player)) return;
+    setSearchQuery("");
+    // The clicked control leaves the DOM with the pick, so move focus to the
+    // on-the-clock panel rather than letting it fall back to the document.
+    onClockRef.current?.focus();
   };
 
   const scoringLabel = FANTASY_SCORING_LABELS[routeScoring];
@@ -682,6 +598,38 @@ export function MockDraftClient() {
       : !simulationAvailable
         ? "The ranking source is stale, so simulated picks are paused until the published board refreshes."
       : null;
+
+  // Four different conditions gate simulationAvailable, so a paused room names
+  // the one that actually applies (boardStatusLine above) and then the recovery
+  // that is actually available. Refetching only helps when a request is not
+  // already in flight and the board itself is the problem.
+  const boardReloadable = !boardReady && (Boolean(error) || (!isLoading && snapshotMatches));
+  const pauseRecovery = !boardReady
+    ? boardReloadable
+      ? "Your picks stay saved, and simulated picks resume once the board loads."
+      : "Your picks stay saved, and simulated picks resume once the board arrives."
+    : "Your picks stay saved, and nothing here is lost while you wait.";
+
+  // The pick loop re-renders the board and the quick picks with no other signal
+  // that a pick landed, so a screen reader gets the outcome and the next turn.
+  const lastUserPick = userPicks.length > 0 ? userPicks[userPicks.length - 1] : null;
+  const draftAnnouncement = useMemo(() => {
+    if (showSetup) return "";
+    if (isRecap) return "The room is finished. The value report and the board are below.";
+    if (!lastUserPick) return "";
+    const roomPicks = picksSinceUserTurn.length;
+    return `You drafted ${lastUserPick.player.name} at pick #${lastUserPick.pickNumber}. ${roomPicks} room pick${
+      roomPicks === 1 ? "" : "s"
+    } since. You are on the clock at pick #${currentPick}, round ${currentRound} of ${settings.rounds}.`;
+  }, [
+    currentPick,
+    currentRound,
+    isRecap,
+    lastUserPick,
+    picksSinceUserTurn.length,
+    settings.rounds,
+    showSetup,
+  ]);
 
   const footerLinks = (
     <span className="inline-flex gap-4">
@@ -787,6 +735,10 @@ export function MockDraftClient() {
           ))}
         </div>
       </header>
+
+      <p role="status" aria-live="polite" className="sr-only">
+        {draftAnnouncement}
+      </p>
 
         {seasonalWeek >= 1 ? (
           <SeasonalScopeNote season={metadata?.season ?? 0} week={seasonalWeek}>
@@ -1109,14 +1061,21 @@ export function MockDraftClient() {
                   >
                     ↶ Take back
                   </button>
+                  {/*
+                    Take back is reversible and this is not, so it does not wear
+                    the same quiet pill: the warning tone and the accessible name
+                    both say the room ends here.
+                  */}
                   <button
                     type="button"
                     onClick={() => room.simToEnd()}
                     disabled={!simulationAvailable}
+                    aria-label="Sim to end, which finishes the room with no take back"
+                    title="The engine finishes every remaining pick, including yours, and the room goes straight to the recap. Nothing takes that back."
                     className={PILL_BUTTON_CLASS}
-                    style={PILL_BUTTON_STYLE}
+                    style={{ ...PILL_BUTTON_STYLE, ...WARNING_CARD_STYLE }}
                   >
-                    Sim to end ⇥
+                    Sim to end <span aria-hidden="true">⇥</span>
                   </button>
                   <button
                     type="button"
@@ -1138,8 +1097,16 @@ export function MockDraftClient() {
                 className="rounded border px-3.5 py-2.5 text-sm leading-6"
                 style={WARNING_CARD_STYLE}
               >
-                This saved room is paused because the ranking source is stale. Your picks remain
-                saved, and the simulator will resume after the board refreshes.
+                {boardStatusLine} {pauseRecovery}
+                {boardReloadable && (
+                  <button
+                    type="button"
+                    onClick={retry}
+                    className="ml-2 inline-flex min-h-touch items-center font-semibold underline"
+                  >
+                    Reload the board
+                  </button>
+                )}
               </div>
             </div>
           )}
@@ -1221,7 +1188,12 @@ export function MockDraftClient() {
             )}
           </section>
 
-          <section aria-label="You are on the clock" className={`${SHELL_CLASS} mt-3.5`}>
+          <section
+            ref={onClockRef}
+            tabIndex={-1}
+            aria-label="You are on the clock"
+            className={`${SHELL_CLASS} mt-3.5`}
+          >
             <div
               className="overflow-hidden rounded-lg border"
               style={{
@@ -1350,6 +1322,9 @@ export function MockDraftClient() {
               return (
                 <section
                   key={`tier-${group.tier ?? "untiered"}-${group.rows[0].id}`}
+                  aria-label={
+                    group.tier !== null ? `Tier ${group.tier}` : "Players with no published tier"
+                  }
                   style={{ marginTop }}
                 >
                   {index > 0 && cliff > 0 && (
@@ -1507,7 +1482,8 @@ export function MockDraftClient() {
               style={{ borderColor: "var(--home-rule)" }}
             >
               <span className="font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
-                Take a pick back and the same room replays · nothing leaves this device
+                Take a pick back and the same room replays · sim to end finishes the room and
+                cannot be taken back · nothing leaves this device
               </span>
               {footerLinks}
             </div>
@@ -1640,85 +1616,118 @@ export function MockDraftClient() {
                 {`room #${roomLabel(state.seed)} · ${settings.draftType} order · your column outlined`}
               </span>
             </div>
-            <div className="overflow-x-auto">
-              <div className="min-w-[640px]">
-                <div
-                  className="grid gap-px border-t"
-                  style={{
-                    gridTemplateColumns: `34px repeat(${settings.totalTeams}, minmax(88px, 1fr))`,
-                    background: "var(--home-rule)",
-                    borderColor: "var(--home-rule)",
-                  }}
-                >
-                  <div style={{ background: "var(--home-paper)" }} />
-                  {Array.from({ length: settings.totalTeams }, (_, index) => {
-                    const slot = index + 1;
-                    const isUser = slot === settings.userTeam;
-                    return (
-                      <div
-                        key={`hdr-${slot}`}
-                        className="whitespace-nowrap px-2 py-1.5 text-center font-mono text-3xs uppercase tracking-[0.1em]"
+            {/*
+              A real table, not a grid of divs. The grid version handed a screen
+              reader a flat run of "#3 · RB", "Ja'Marr Chase" with no way to
+              tell which round row or team column a pick belonged to — the same
+              anti-pattern CompareModal already fixed. table-fixed with a
+              colgroup keeps the team columns equal the way minmax(88px, 1fr)
+              did, and the table's own min-width carries the 88px floor.
+            */}
+            <div
+              className="overflow-x-auto"
+              role="region"
+              tabIndex={0}
+              aria-label="Draft board, scrolls horizontally"
+            >
+              <table
+                className="w-full table-fixed border-collapse border-t"
+                style={{
+                  borderColor: "var(--home-rule)",
+                  minWidth: `${34 + 88 * settings.totalTeams}px`,
+                }}
+              >
+                <colgroup>
+                  <col style={{ width: "34px" }} />
+                  {Array.from({ length: settings.totalTeams }, (_, index) => (
+                    <col
+                      key={`col-${index + 1}`}
+                      style={{ width: `calc((100% - 34px) / ${settings.totalTeams})` }}
+                    />
+                  ))}
+                </colgroup>
+                <caption className="sr-only">
+                  Every pick by round and draft slot. Rounds run down, draft slots run across, and
+                  your slot's column is outlined.
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col" className="border-t p-0" style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)" }}>
+                      <span className="sr-only">Round</span>
+                    </th>
+                    {Array.from({ length: settings.totalTeams }, (_, index) => {
+                      const slot = index + 1;
+                      const isUser = slot === settings.userTeam;
+                      return (
+                        <th
+                          key={`hdr-${slot}`}
+                          scope="col"
+                          aria-label={isUser ? "Your slot" : `Slot ${slot}`}
+                          className="whitespace-nowrap border-l border-t px-2 py-1.5 text-center font-mono text-3xs font-normal uppercase tracking-[0.1em]"
+                          style={{
+                            borderColor: "var(--home-rule)",
+                            background: isUser
+                              ? "color-mix(in srgb, var(--home-signal) 10%, var(--home-paper))"
+                              : "var(--home-paper)",
+                            color: isUser
+                              ? "color-mix(in srgb, var(--home-signal) 72%, var(--home-ink))"
+                              : "var(--home-ink-muted)",
+                          }}
+                        >
+                          {isUser ? "You" : `S${slot}`}
+                        </th>
+                      );
+                    })}
+                  </tr>
+                </thead>
+                <tbody>
+                  {gridRows.map((row) => (
+                    <tr key={`round-${row.round}`}>
+                      <th
+                        scope="row"
+                        aria-label={`Round ${row.round}`}
+                        className="border-t text-center align-middle font-mono text-3xs font-normal tracking-[0.08em]"
                         style={{
-                          background: isUser
-                            ? "color-mix(in srgb, var(--home-signal) 10%, var(--home-paper))"
-                            : "var(--home-paper)",
-                          color: isUser
-                            ? "color-mix(in srgb, var(--home-signal) 72%, var(--home-ink))"
-                            : "var(--home-ink-muted)",
+                          borderColor: "var(--home-rule)",
+                          background: "var(--home-paper)",
+                          color: "var(--home-ink-muted)",
                         }}
                       >
-                        {isUser ? "You" : `S${slot}`}
-                      </div>
-                    );
-                  })}
-                </div>
-                {gridRows.map((row) => (
-                  <div
-                    key={`round-${row.round}`}
-                    className="grid gap-px border-t"
-                    style={{
-                      gridTemplateColumns: `34px repeat(${settings.totalTeams}, minmax(88px, 1fr))`,
-                      background: "var(--home-rule)",
-                      borderColor: "var(--home-rule)",
-                    }}
-                  >
-                    <div
-                      className="flex items-center justify-center font-mono text-3xs tracking-[0.08em]"
-                      style={{ background: "var(--home-paper)", color: "var(--home-ink-muted)" }}
-                    >
-                      R{row.round}
-                    </div>
-                    {row.cells.map((cell) => (
-                      <div
-                        key={`cell-${cell.pickNumber}`}
-                        className="min-w-0 px-2 py-1.5"
-                        style={{
-                          background: cell.pick
-                            ? (getPositionTone(cell.pick.player.position).background as string)
-                            : "var(--home-paper)",
-                          boxShadow:
-                            cell.slot === settings.userTeam
-                              ? "inset 0 0 0 1px color-mix(in srgb, var(--home-signal) 55%, transparent)"
-                              : undefined,
-                        }}
-                      >
-                        <p
-                          className="m-0 font-mono text-3xs tracking-[0.04em]"
-                          style={{ color: "var(--home-ink-muted)" }}
+                        R{row.round}
+                      </th>
+                      {row.cells.map((cell) => (
+                        <td
+                          key={`cell-${cell.pickNumber}`}
+                          className="min-w-0 border-l border-t px-2 py-1.5 align-top"
+                          style={{
+                            borderColor: "var(--home-rule)",
+                            background: cell.pick
+                              ? (getPositionTone(cell.pick.player.position).background as string)
+                              : "var(--home-paper)",
+                            boxShadow:
+                              cell.slot === settings.userTeam
+                                ? "inset 0 0 0 1px color-mix(in srgb, var(--home-signal) 55%, transparent)"
+                                : undefined,
+                          }}
                         >
-                          #{cell.pickNumber} · {cell.pick?.player.position ?? "—"}
-                        </p>
-                        <p
-                          className="m-0 mt-0.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs font-semibold tracking-[-0.01em]"
-                          style={{ color: cell.pick ? "var(--home-ink)" : "var(--home-ink-muted)" }}
-                        >
-                          {cell.pick ? shortName(cell.pick.player) : "—"}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                ))}
-              </div>
+                          <p
+                            className="m-0 font-mono text-3xs tracking-[0.04em]"
+                            style={{ color: "var(--home-ink-muted)" }}
+                          >
+                            #{cell.pickNumber} · {cell.pick?.player.position ?? "—"}
+                          </p>
+                          <p
+                            className="m-0 mt-0.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs font-semibold tracking-[-0.01em]"
+                            style={{ color: cell.pick ? "var(--home-ink)" : "var(--home-ink-muted)" }}
+                          >
+                            {cell.pick ? shortName(cell.pick.player) : "—"}
+                          </p>
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </section>
 
@@ -1762,11 +1771,33 @@ export function MockDraftClient() {
             })}
           </div>
 
+          {!simulationAvailable && (
+            <p
+              id="mock-rerun-blocked"
+              role="status"
+              className="m-0 mt-4 rounded border px-3.5 py-2.5 text-sm leading-6"
+              style={WARNING_CARD_STYLE}
+            >
+              {boardStatusLine} Run it back turns back on once the published board is ready, and
+              this recap stays exactly as it is.
+              {boardReloadable && (
+                <button
+                  type="button"
+                  onClick={retry}
+                  className="ml-2 inline-flex min-h-touch items-center font-semibold underline"
+                >
+                  Reload the board
+                </button>
+              )}
+            </p>
+          )}
+
           <div className="mt-4 flex flex-wrap items-center gap-2.5">
             <button
               type="button"
               onClick={() => room.startDraft(settings)}
               disabled={!simulationAvailable}
+              aria-describedby={simulationAvailable ? undefined : "mock-rerun-blocked"}
               className={SOLID_BUTTON_CLASS}
               style={SOLID_BUTTON_STYLE}
             >

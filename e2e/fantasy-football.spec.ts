@@ -18,6 +18,21 @@ async function activateControl(control: Locator) {
   await control.click();
 }
 
+/**
+ * A rankings row names itself through an `absolute inset-0` overlay button, and
+ * the row content sits above it at `z-[2]` with its own click handler so the
+ * per-cell hover titles fire and player names stay selectable. A click therefore
+ * lands on the content rather than on the overlay, which is exactly what a
+ * visitor hits, so open the row through the list item while still identifying
+ * which row it is by the overlay button's accessible name.
+ */
+function rankingsRow(shell: Locator, accessibleName: string | RegExp) {
+  return shell
+    .getByRole("listitem")
+    .filter({ has: shell.page().getByRole("button", { name: accessibleName }) })
+    .first();
+}
+
 const BEST_BALL_PRESETS = [
   {
     id: "bbm-vii",
@@ -243,7 +258,12 @@ test.describe("Fantasy football rankings", () => {
   test("searches the board and clears it from the empty state", async ({ page }) => {
     await page.goto("/fantasy-football?position=overall&scoring=ppr");
     const shell = await getReadyFantasyShell(page);
-    const search = shell.getByLabel("Search the current rankings board");
+    // The desktop input and the phone search button share this label, and only
+    // one of the two is ever rendered visible, so name the textbox role and take
+    // the visible control rather than matching the hidden half of the pair.
+    const search = shell
+      .getByRole("textbox", { name: "Search the current rankings board" })
+      .filter({ visible: true });
 
     await search.fill("Ja'Marr Chase");
     await expect(search).toHaveValue("Ja'Marr Chase");
@@ -267,7 +287,7 @@ test.describe("Fantasy football rankings", () => {
     const playerName = rowLabel?.match(/^Open (.+) detail$/)?.[1];
     expect(playerName, "the board exposes a first player").toBeTruthy();
 
-    await firstRow.click();
+    await rankingsRow(shell, `Open ${playerName} detail`).click();
     const dialog = page.getByRole("dialog", { name: `${playerName} detail` });
     await dialog.getByRole("button", { name: /Add to queue/ }).click();
     await expect(dialog.getByRole("button", { name: /Queued/ })).toHaveAttribute("aria-pressed", "true");
@@ -276,7 +296,7 @@ test.describe("Fantasy football rankings", () => {
 
     await page.reload();
     await getReadyFantasyShell(page);
-    await shell.getByRole("button", { name: `Open ${playerName} detail` }).click();
+    await rankingsRow(shell, `Open ${playerName} detail`).click();
     await expect(
       page.getByRole("dialog", { name: `${playerName} detail` }).getByRole("button", { name: /Queued/ })
     ).toHaveAttribute("aria-pressed", "true");
@@ -293,7 +313,7 @@ test.describe("Fantasy football rankings", () => {
     await page.goto("/fantasy-football?position=overall&scoring=ppr");
     const shell = await getReadyFantasyShell(page);
 
-    await shell.getByRole("button", { name: `Open ${scored.name} detail` }).click();
+    await rankingsRow(shell, `Open ${scored.name} detail`).click();
     const dialog = page.getByRole("dialog", { name: `${scored.name} detail` });
     // The label shares its span with the metric tooltip trigger, so an exact
     // match no longer finds an element whose whole text is the label.
@@ -319,12 +339,12 @@ test.describe("Fantasy football rankings", () => {
     const playerName = rowLabel?.match(/^Open (.+) detail$/)?.[1];
     expect(playerName, "the board exposes a first player").toBeTruthy();
 
-    await firstRow.click();
+    await rankingsRow(shell, `Open ${playerName} detail`).click();
     const note = page.getByRole("textbox", { name: "Private note" });
     await note.fill("Target at the first-round turn");
     await page.getByRole("button", { name: "Close", exact: true }).click();
 
-    await shell.getByRole("button", { name: `Open ${playerName} detail` }).click();
+    await rankingsRow(shell, `Open ${playerName} detail`).click();
     await expect(page.getByRole("textbox", { name: "Private note" })).toHaveValue("Target at the first-round turn");
     await page.keyboard.press("Escape");
   });
@@ -366,10 +386,13 @@ test.describe("Fantasy football draft tracker", () => {
     // The expected first pick is read from the same committed snapshot the
     // board renders, not hardcoded — scheduled data refreshes reorder the
     // rankings and a name literal goes stale within days.
+    // The setup screen abbreviates the scoring segments ("Half", "Std") while
+    // the live room's header chip spells the format out, so each format carries
+    // both names.
     const scoringFormats = [
-      { label: "PPR", file: "ppr" },
-      { label: "Half PPR", file: "half_ppr" },
-      { label: "Standard", file: "standard" },
+      { control: "PPR", chip: "PPR", file: "ppr" },
+      { control: "Half", chip: "Half PPR", file: "half_ppr" },
+      { control: "Std", chip: "Standard", file: "standard" },
     ].map((scoring) => {
       const snapshot = JSON.parse(
         readFileSync(
@@ -378,27 +401,37 @@ test.describe("Fantasy football draft tracker", () => {
         )
       ) as { overall: Array<{ name: string }> };
       const topPlayer = snapshot.overall[0]?.name;
-      expect(topPlayer, `${scoring.label} snapshot has an overall board`).toBeTruthy();
-      return { label: scoring.label, topPlayer: topPlayer! };
+      expect(topPlayer, `${scoring.chip} snapshot has an overall board`).toBeTruthy();
+      return { ...scoring, topPlayer: topPlayer! };
     });
 
     await page.goto("/fantasy-football/draft-tracker");
     await waitForDraftTrackerHydration(page);
 
-    for (const scoring of scoringFormats) {
-      await page.getByRole("button", { name: new RegExp(`^${scoring.label}`) }).click();
-      await page.getByRole("button", { name: /Start draft assistant/i }).click();
+    for (const [index, scoring] of scoringFormats.entries()) {
+      await page.getByRole("button", { name: scoring.control, exact: true }).click();
+      // The first room starts on one press. Every later one starts over the room
+      // "New room" parked, and clearing those picks is the destructive step, so
+      // the first press only arms the button and a second confirms it.
+      await page.getByRole("button", { name: /^Start draft/ }).click();
+      if (index > 0) {
+        await page.getByRole("button", { name: /^Confirm new draft/ }).click();
+      }
 
-      await expect(page.getByText(new RegExp(`^${scoring.label} scoring`))).toBeVisible();
+      await expect(page.getByText(`${scoring.chip} scoring`, { exact: true })).toBeVisible();
       await expect(page.getByText("Draft assistant unavailable for this scoring format")).toHaveCount(0);
-      const firstPick = page.getByRole("button", { name: "Log pick" }).first().locator("..");
-      await expect(firstPick).toContainText(scoring.topPlayer);
-      await page.getByRole("button", { name: "Log pick" }).first().click();
-      await expect(page.getByText(/1 of \d+ picks logged/i)).toBeVisible();
+      const board = page.getByRole("region", { name: "Draft board" });
+      const firstPick = board.getByRole("button", { name: /^Log / }).first();
+      await expect(firstPick).toHaveAccessibleName(`Log ${scoring.topPlayer}`);
+      await firstPick.click();
+      // The live fascia is the room's pick counter now, so one logged pick moves
+      // it from #1 to #2 of the same total.
+      await expect(
+        page.getByRole("region", { name: "Live draft status" }).getByText(/^#2 \/ \d+$/)
+      ).toBeVisible();
 
-      await activateControl(page.getByRole("button", { name: "Reset draft" }));
-      await page.getByRole("button", { name: "Confirm reset" }).click();
-      await expect(page.getByRole("button", { name: /Start draft assistant/i })).toBeVisible();
+      await activateControl(page.getByRole("button", { name: "New room" }));
+      await expect(page.getByRole("button", { name: /^Start draft/ })).toBeVisible();
     }
   });
 
@@ -406,25 +439,38 @@ test.describe("Fantasy football draft tracker", () => {
     await page.goto("/fantasy-football/draft-tracker");
     await waitForDraftTrackerHydration(page);
 
-    await expect(page.getByRole("heading", { name: /Manual draft tracking that actually stays usable\./i })).toBeVisible();
-    await page.getByRole("button", { name: /Start draft assistant/i }).click();
+    await expect(page.getByRole("heading", { name: "One screen, then draft." })).toBeVisible();
+    await page.getByRole("button", { name: /^Start draft/ }).click();
 
-    await expect(page.getByRole("heading", { name: /Pick #1 on the clock/i })).toBeVisible();
-    await page.getByRole("button", { name: "Log pick" }).first().click();
-    await page.getByRole("button", { name: "Log pick" }).first().click();
+    // The room states its live position in the header kicker rather than in a
+    // heading, and pick #1 on the clock is the first thing it has to say.
+    await expect(page.getByText("Draft assistant · Live · Pick #1")).toBeVisible();
 
-    await expect(page.getByText(/2 of \d+ picks logged/i)).toBeVisible();
-    await expect(page.getByRole("button", { name: "Log pick" }).first().locator("..")).toContainText(/Tier/i);
+    // Every logged pick keeps an undo entry on the "Last picks" tape, so the
+    // tape is where the room says how many picks it is holding.
+    const loggedPicks = page.getByRole("button", { name: /^Undo back to pick / });
+    const board = page.getByRole("region", { name: "Draft board" });
+    await board.getByRole("button", { name: /^Log / }).first().click();
+    await expect(loggedPicks).toHaveCount(1);
+    await board.getByRole("button", { name: /^Log / }).first().click();
+    await expect(loggedPicks).toHaveCount(2);
+
+    // Board rows stay grouped under their published tier plate, which names
+    // itself for assistive tech since its header is spans rather than a heading.
+    await expect(board.getByRole("region", { name: /^Tier \d+, / }).first()).toBeVisible();
 
     await page.reload();
 
-    await expect(page.getByText(/2 of \d+ picks logged/i)).toBeVisible();
+    await expect(loggedPicks).toHaveCount(2);
     await expect(page.getByText("No Data Available")).toHaveCount(0);
 
-    await page.getByRole("button", { name: "Reset draft" }).click();
-    await expect(page.getByRole("button", { name: "Confirm reset" })).toBeVisible();
-    await page.getByRole("button", { name: "Keep draft" }).click();
-    await expect(page.getByText(/2 of \d+ picks logged/i)).toBeVisible();
+    // "New room" only parks the room. Starting over it is the destructive step,
+    // so the first press arms a confirmation and "Back to room" keeps the picks.
+    await page.getByRole("button", { name: "New room" }).click();
+    await page.getByRole("button", { name: /^Start draft/ }).click();
+    await expect(page.getByRole("button", { name: /^Confirm new draft/ })).toBeVisible();
+    await page.getByRole("button", { name: "Back to room" }).click();
+    await expect(loggedPicks).toHaveCount(2);
   });
 });
 
@@ -501,15 +547,18 @@ test.describe("Fantasy football best ball", () => {
     expect(firstPlayerName, "the refreshed BBM board exposes a first player").toBeTruthy();
 
     await firstPlayer.click();
-    await expect(shell.getByText("2 of 216", { exact: true })).toBeVisible();
+    // The room used to state the pick counter in three places at once. The distill pass
+    // left the sticky live bar as the single authority, so it now reads "Pick 2 of 216"
+    // rather than a bare "2 of 216" tile.
+    await expect(shell.getByText("Pick 2 of 216", { exact: true })).toBeVisible();
     await expect.poll(() => getPersistedBestBallPickCount(page, "bbm-vii")).toBe(1);
 
     await page.reload();
-    await expect(shell.getByText("2 of 216", { exact: true })).toBeVisible();
+    await expect(shell.getByText("Pick 2 of 216", { exact: true })).toBeVisible();
     await expect(shell.getByText(firstPlayerName!, { exact: true }).first()).toBeVisible();
 
     await shell.getByRole("button", { name: "Undo last pick" }).click();
-    await expect(shell.getByText("1 of 216", { exact: true })).toBeVisible();
+    await expect(shell.getByText("Pick 1 of 216", { exact: true })).toBeVisible();
     await expect(
       shell
         .getByRole("button", { name: /^Log at pick 1, board rank/ })

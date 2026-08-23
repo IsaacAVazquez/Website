@@ -2,7 +2,7 @@
 version: 1
 slug: "route-fantasy-football"
 primary_target: "route:/fantasy-football"
-related_targets: ["src/app/fantasy-football/fantasy-football-client.tsx","src/app/fantasy-football/draft-tracker/draft-tracker-client.tsx","src/app/fantasy-football/best-ball/draft-tracker/draft-tracker-client.tsx"]
+related_targets: ["src/app/fantasy-football/fantasy-football-client.tsx","src/app/fantasy-football/draft-tracker/draft-tracker-client.tsx","src/app/fantasy-football/best-ball/draft-tracker/draft-tracker-client.tsx","src/app/fantasy-football/best-ball/best-ball-client.tsx"]
 ---
 
 # Fantasy Football
@@ -186,3 +186,210 @@ Two routes had real findings, both fixed the same day. The redraft tracker's pla
 ## Polish pass, 2026-08-22
 
 The polish pass closed the critique's remaining named items, verified in one browser round at 1440. The restore-or-bless decision landed as one orienting sentence under the board headline ("The board pairs the expert consensus with market ADP, and the tier plates and cliff lines mark where the board actually drops off."), muted, max 62ch. The board h1 sits on the DESIGN.md title ramp now (`clamp(1.55rem, 1.3rem + 1.25vw, 2.1rem)`, measured 33.6px at 1440), retiring the detector's one finding. Position boards stopped rendering the all-dash vs ADP column: the column and row cells gate on `vsAdpMeaningful`, and the ADP column retitles to "ADP (overall)" so the cross-scale pairing is labeled (measured: one "ADP (overall)" label, zero vs-ADP cells on the WR board). Body scroll locks behind the open drawer and restores on close (measured hidden then empty). The drawer's stat grid keeps four cards when ADP shows but no market gap exists, with a dash card explaining why. The empty state's "Clear search" now clears only the query and keeps the position, pinned by test. The FAQ gained three entries covering the board's own vocabulary (tiers and cliffs, Value and Reach, the queue), which also flow into the page's FAQ schema through the shared `FANTASY_FOOTBALL_FAQ` array.
+
+## Full-group loop, 2026-08-23
+
+The first pass to treat all seven fantasy UI surfaces as one job. Four rounds ran: a
+mechanical computed-value sweep, a dual-agent critique per surface with adversarial
+verification of every P0 and P1, a per-surface remediation pass, and a verification re-sweep.
+Two surfaces were newly brought in. `/fantasy-football/weekly` had never been critiqued and
+now has its own brief at `.impeccable/surfaces/route-fantasy-football-weekly.md`.
+`/fantasy-football/trade-calculator` was critiqued as part of the group for the first time.
+
+`src/app/fantasy-football/best-ball/best-ball-client.tsx` is now a related target on this
+brief. It was missing, so a run naming that file did not resolve this brief at all.
+
+### The instrument, and the two ways it was blind
+
+Round one measured every surface in its default state only, in both themes at 390, 768, 1024
+and 1440, with the parser gate reproducing 16.29:1 light and 15.28:1 dark. That sweep came
+back almost entirely clean, and it was wrong twice, both times for the same reason, which is
+that a state it never entered cannot be measured.
+
+Driving the trackers into a running draft found two AA contrast failures on the redraft
+tracker that the default sweep could not see, at 4.09:1 on the fascia "You" and 4.15:1 on the
+"Your pick is live" label. Those are the same two numbers the mock draft measured on
+2026-08-22, so this is the signal-on-signal-wash lesson landing for the third time in this
+group, fixed on one route and missed on its sibling. The running states also held five to
+seven unnamed `section` landmarks on the redraft tracker and four on the mock draft, none of
+which exist in the setup state.
+
+Opening the best ball room found four `text-2xl` section headings rendering at exactly the
+collapsed h1's 34px. The first attempt to drive that room failed silently and reported no
+sticky bar, which would have been a false finding against a brief that correctly claims one;
+the room's slot radios are visually hidden inside card-sized labels, so the label is what a
+driver has to click. Anything measured on a surface that did not actually reach the state it
+was supposed to be in should be thrown away rather than reported.
+
+The recommendation score badge on the best ball tracker was a third instance. The mechanical
+sweep reported zero contrast failures there, and the finding was real: those cards only
+render on the user's own pick, which no driver reached. Computing it from the token values
+gives 4.32:1 for `--home-signal` on the top card's `color-mix(signal-soft 38%, paper)` wash.
+
+### What the type scale was actually doing
+
+`--text-2xl` is a fluid clamp topping out at 2.125rem, which is 34px, and the DESIGN.md title
+ramp the board h1s sit on tops out at 2.1rem, which is 33.6px. So every `text-2xl` section
+heading under a compact h1 rendered at or just above its own parent's size. This was live on
+the rankings board, the best ball board, and the best ball tracker's open room, and the
+document nesting was announced to a screen reader while being invisible on the page. The
+step that works is `text-xl`, which clamps to 1.625rem, and the mock draft already used it.
+Both boards now read 33.6 to 26 to 22.
+
+### Findings and their verdicts
+
+Twenty P0 and P1 findings went through two independent refuters each, with a finding killed
+only when both refuted it. Fifteen survived and five were refuted. The refuted five, which
+should not be raised again: "Clear search also throws away the position filter" on the
+redraft tracker, "both disclosures in the evaluation rail have no expand affordance" and
+"the freshness row reports stale sources during the initial load" on the trade calculator,
+and "the board toggle changes nothing in the panel beneath it" and "the scoring toggle is
+inert on the quarterback board" on the weekly board.
+
+### Two false positives worth not re-deriving
+
+The rankings board's six "What is…?" column-header triggers measure a 16px-tall box, which
+reads as a target-size failure to any sweep that trusts `getBoundingClientRect`. Hit-testing
+with `elementFromPoint` shows the real reachable area is 32 to 81 wide by 40 tall, because
+the padding expands it. That clears the 24px WCAG 2.5.8 minimum, and the drawer carries
+equivalent controls, so the criterion's equivalent-control exception applies. It is under the
+project's own stricter 44px floor and is worth a decision, but it is not an AA failure.
+
+The seven 4for4 and Underdog source-study links on the best ball board measure 13px tall and
+are links inside prose sentences carrying 222 to 322 characters of surrounding text, so WCAG
+2.5.8's inline exception covers them. A target sweep that keys on the parent's tag name gets
+this wrong in both directions: it wrongly exempted three block-display navigation links in
+the same page's footer that genuinely were too small, and wrongly flagged these seven.
+
+### What landed
+
+On the rankings board, tier plates took literal `aria-label`s carrying tier, player count,
+rank range and the cliff size above them, since an unnamed `section` is not exposed as a
+landmark at all and the tier structure of a tier-first board was invisible to assistive tech.
+The FAQ h2 dropped to `text-xl`. The phone search no longer traps the other controls behind a
+query, the result count and the route's only live region reach below md, the phone position
+select carries the unavailable-slice guard the desktop pills already had, the drawer stat
+cards became focusable definition triggers instead of `title` on a div, and the ADP column
+header width was matched to its row cell so the labels sit over their own columns.
+
+On the redraft tracker, the fascia and live-banner contrast took the 72%-toward-ink mix, the
+footer link took the 44px floor, `DraftBoard`'s tier plates took the same `aria-label`
+treatment as the rankings board, the running state gained the sr-only h2 that closes the
+h1-to-h3 skip, the ADP and vs-ADP columns gained labels below md, the board controls became
+sticky, and starting a draft over a parked room now asks first.
+
+On the best ball board, the h1 moved onto the DESIGN.md title ramp, two section h2s dropped
+to `text-xl`, three footer tool links took the 44px floor, the row content moved above its
+own overlay button so per-cell explanations fire and names stay selectable, search stopped
+fighting the URL on every keystroke, the numeric columns gained micro-labels below md, the
+controls became sticky at every width, and signal came off a static eyebrow and four ordinals.
+
+On the best ball tracker, the recommendation badge contrast took the 72% mix, four open-room
+h2s dropped to `text-xl`, the live bar moved onto the shared `top-[4.5rem]` idiom instead of
+a hardcoded 73px, the room stopped stating the same four numbers three times, recommendation
+cards stopped rendering the components that scored zero, board rows gained sr-only labels for
+ADP and bye, and the restore notice stopped promising a backup with no way to open it.
+
+The mock draft gained a live region and stable focus across the draft loop, a differentiated
+and explained "Sim to end", a pause alert that names its real cause, a reason on the disabled
+"Run it back", and accessible names on its four running-state `section` landmarks. The trade
+calculator's h1 stopped naming the tool as the thing being built, its table rules moved off
+`currentColor`, its idle coverage chip stopped borrowing the warning tone, its "Confirm
+clear" now disarms, its combobox announces its no-results state, and its warnings panel
+stopped silently truncating the model's own limits at six.
+
+### Verified after
+
+Both sweeps re-run. All seven surfaces in both themes at four widths: zero AA contrast
+failures, zero horizontal overflow, exactly one `main` and one `h1` each, and zero unnamed
+`section` landmarks anywhere, down from five on the rankings board. All three running states:
+zero contrast failures, zero overflow, zero sub-44px targets, zero unnamed sections, and
+descending heading ramps. Typecheck clean. Jest at 264 of 265, the one failure being the
+date-dependent "shows prior-season ADP only as a dated reference", which was confirmed to
+fail identically on clean main and is not from this loop.
+
+### A real timezone bug, found by the one failing unit test
+
+The repo's single failing Jest test, "shows prior-season ADP only as a dated reference", was
+assumed at the start of this loop to be stale and date-dependent, and stashing to clean main
+confirmed it failed there too. It was not stale. It asserts that a source dated
+2026-09-01 renders as "Sep 1, 2026", and the board rendered "Aug 31, 2026".
+
+`formatStamp` in `fantasy-football-client.tsx` built an `Intl.DateTimeFormat` with no
+`timeZone`, so a bare date derived from a UTC instant was formatted in the runtime's local
+zone. A midnight-UTC stamp therefore reads a day early for every visitor west of UTC, which
+is most of the Americas. The function already compared years in UTC on the line above, so UTC
+was the intent, and both best ball surfaces already passed `timeZone: "UTC"` for the same
+kind of date-only stamp. The rankings board was the lone outlier. These stamps are freshness
+disclosure, so a date that is silently wrong by a day is an honesty problem rather than a
+cosmetic one.
+
+With that fixed the assertion passed and the test advanced to its next line, which was a
+`getByTitle` looking for an explanation the `harden` pass had deliberately moved off a `title`
+attribute and onto MetricTooltip's focusable trigger. That assertion now proves something
+stronger, which is that the explanation is a real control named "What is Prior-season ADP?"
+and that focusing it surfaces the definition. The full Jest suite is 2134 of 2134 with that
+change, the first time it has been entirely green in this tree.
+
+### The e2e suite was already red
+
+Playwright could not run at all at first, because the installed package is a version ahead of
+the downloaded browsers and every spec failed with a missing executable, which is
+indistinguishable from a broken suite if read carelessly. After installing the matching
+build, `e2e/fantasy-football.spec.ts` came back 6 failed and 15 passed, and stashing the
+whole working tree reproduced exactly 6 failed and 15 passed on clean main, so those six
+predate this loop. One extra failure did belong to this loop: the best ball distill pass
+retired a stat tile reading exactly "2 of 216", and the surviving sticky bar reads
+"Pick 2 of 216", so three assertions were updated to match the copy that intentionally
+changed.
+
+The six pre-existing failures have three causes. Three drawer tests click the row's overlay
+button, which the 2026-08-22 harden pass deliberately placed under the row content, so
+Playwright's actionability check refuses even though a real click opens the drawer. One
+search test trips strict mode because `getByLabel("Search the current rankings board")`
+matches both the desktop input and the phone button, exactly one of which is visible at any
+width, so it is a locator problem and not an accessibility defect. Two draft tracker tests
+still name UI the 2026-08-22 rebuild removed, including "Start draft assistant", a "Manual
+draft tracking that actually stays usable." heading, and a "Reset draft" and "Keep draft"
+pair.
+
+All six were repaired in the spec only, with nothing under `src/` bent to satisfy a stale
+test, and the spec now runs 21 of 21 and holds under `--repeat-each=3`. The rows are opened
+through the list item, which is where a real click lands, while still being identified by the
+overlay button's accessible name. The search locator is disambiguated by role plus visibility
+rather than by matching the hidden half of a pair. The draft tracker tests were remapped onto
+the current UI, so "Start draft", the "One screen, then draft." setup heading, the
+`Draft assistant · Live · Pick #1` header kicker, per-row `Log <player>` buttons scoped to the
+Draft board region, the fascia counter and the undo tape in place of the retired
+"N of M picks logged" string, and the non-destructive "New room" / "Start draft" /
+"Back to room" flow in place of the old reset trio.
+
+One caution for anyone running the full matrix. Under `E2E_FULL_MATRIX=1` the search test will
+still fail on the mobile projects, because at phone widths the visible control is the search
+button and the compact input only mounts once it is pressed, and `aria-label="Clear search"`
+is carried by both the compact clear button and the empty-state button. That path was failing
+before this loop too and fixing it means branching on `isMobile` the way the sticky-controls
+test already does.
+
+### Still open, deliberately
+
+The shared Contact CTA renders an h2 at 44px at the foot of every page, which is larger than
+the compact 33.6px h1 on four of these surfaces. It is shared shell code, so it was left
+alone, but the inversion is real and someone should decide about it rather than inherit it.
+The footer "Now" link at 34.8px is the same category.
+
+Two findings on the redraft tracker could only be fixed inside `src/components/fantasy/`,
+which was held out of the parallel remediation to avoid two agents writing the same file.
+The dead Compare control is now closed. Only `best-ball-client.tsx` ever mounts a
+`CompareTray`, so on the redraft tracker the drawer's Compare button toggled to "Comparing"
+and pinned players into a tray that never appeared at any width. `PlayerDetailDrawer` had a
+`compareAvailableBelowSm` prop whose comment already named that hazard, but it only hid the
+button below `sm`, so above `sm` the control stayed dead. The prop is now `compareAvailable`,
+it defaults true, and a surface with no tray does not render the button at all. Best ball is
+unchanged. What is still open there is that the drawer dead-ends, since there is no way to
+log the pick from it, and putting a pick action into a drawer shared by two surfaces with
+different pick semantics is product work rather than remediation.
+
+Random-access undo on the best ball tracker, and search and a position filter on the weekly
+board, are product work rather than remediation and were deferred on purpose. The keyboard
+layer named in the 2026-08-12 critique is still open and still product-shaped.

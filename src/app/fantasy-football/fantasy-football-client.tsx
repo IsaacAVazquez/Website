@@ -29,14 +29,19 @@ import {
   FANTASY_ADP_TOOLTIP,
   FANTASY_AVG_RANK_TOOLTIP,
   FANTASY_EXPERT_SPREAD_TOOLTIP,
+  FANTASY_PLAYER_COLUMN_TOOLTIP,
   FANTASY_POINTS_PER_GAME_TOOLTIP,
   FANTASY_PRIOR_SEASON_ADP_TOOLTIP,
   FANTASY_REACH_TOOLTIP,
   FANTASY_VALUE_TOOLTIP,
   FANTASY_VS_ADP_TOOLTIP,
-  FANTASY_PLAYER_COLUMN_TOOLTIP,
+  HEADER_CHIP_CLASS,
+  MONO_LABEL_CLASS,
+  SHELL_CLASS,
   formatAdp,
+  formatPickDelta,
   formatRankValue,
+  getConsensusAvg,
   getConsensusSpread,
   getFantasyAdpFreshness,
   getPositionTone,
@@ -44,10 +49,9 @@ import {
   getSnapshotStalenessLabel,
   getTierRailIntensity,
   getValueVsAdp,
-  formatPickDelta,
   hasReliableAdpSample,
-  withTierBreaks,
   type FantasySnapshotStaleness,
+  withTierBreaks,
 } from "@/lib/fantasyUtils";
 import { PositionFilterBar, type PositionFilterOption } from "@/components/fantasy";
 import { Player } from "@/types";
@@ -64,17 +68,8 @@ const SCORING_OPTIONS: { key: FantasyRouteScoring; label: string; shortLabel: st
 /** Keep each mounted rankings window below the large-list threshold. */
 const RANKINGS_PAGE_SIZE = 40;
 
-/** The template's 1080px column; the page manages its own shell width. */
-const SHELL_CLASS = "mx-auto w-full max-w-[1080px] px-[clamp(1rem,4vw,2.5rem)]";
-
 /** Phone rows carry their own value labels, since the column-label row is md-and-up. */
 const ROW_MICRO_LABEL_CLASS = "text-3xs uppercase tracking-[0.06em] text-[var(--home-ink-muted)] md:hidden";
-
-const MONO_LABEL_CLASS = "font-mono text-3xs uppercase tracking-[0.12em]";
-
-/** Square-cornered mono chip from the template header (distinct from the shared pill chip). */
-const HEADER_CHIP_CLASS =
-  "inline-flex items-center whitespace-nowrap rounded-[2px] border px-2 py-1 font-mono text-3xs uppercase tracking-[0.08em]";
 
 /** The other fantasy surfaces; the tiers routes only redirect back here, so they are not listed. */
 const FANTASY_TOOLS = [
@@ -113,10 +108,16 @@ function formatStamp(timestamp: string | null | undefined): string | null {
   const date = new Date(timestamp);
   if (Number.isNaN(date.getTime())) return null;
   const sameYear = date.getUTCFullYear() === new Date().getUTCFullYear();
+  // Snapshot stamps are built at a UTC instant and rendered as a bare date, so the
+  // calendar day has to be read in UTC too. Without this a midnight-UTC stamp renders
+  // a day early for every visitor west of UTC, which is how a source dated Sep 1 was
+  // showing as Aug 31 in Los Angeles. The year comparison above was already UTC, and
+  // both best ball surfaces already pass timeZone here.
   return new Intl.DateTimeFormat("en-US", {
     month: "short",
     day: "numeric",
     ...(sameYear ? {} : { year: "numeric" }),
+    timeZone: "UTC",
   }).format(date);
 }
 
@@ -132,16 +133,6 @@ function getPublishedBoardRank(player: Player, position: FantasyRoutePosition): 
         : player.positionRank ?? player.rankEcr ?? player.averageRank;
 
   return formatRankValue(rankValue);
-}
-
-function getConsensusAvg(player: Player): number | null {
-  if (typeof player.rankAverage === "number" && Number.isFinite(player.rankAverage)) {
-    return player.rankAverage;
-  }
-  if (typeof player.averageRank === "number" && Number.isFinite(player.averageRank)) {
-    return player.averageRank;
-  }
-  return null;
 }
 
 function formatAvg(player: Player): string {
@@ -180,6 +171,11 @@ function describeVsAdp(player: Player): { text: string; color: string; judged: b
  * beside the player name whenever the gate actually fires. Callers gate on the
  * overall or flex board, because `rankEcr` is a position rank anywhere else and
  * the comparison with an overall ADP would be meaningless.
+ *
+ * The chip and the "vs ADP" number read the same `signal`, so they carry the
+ * same tone. Reach is --home-negative here because that is what the row number
+ * and the drawer verdict already use; --home-warning is spent on snapshot
+ * staleness on this surface and must not also mean "reach".
  */
 function ValueReachChip({ player }: { player: Player }) {
   const value = getValueVsAdp(player);
@@ -198,8 +194,8 @@ function ValueReachChip({ player }: { player: Player }) {
               color: "var(--home-ink)",
             }
           : {
-              borderColor: "color-mix(in srgb, var(--home-warning) 34%, var(--home-rule))",
-              background: "color-mix(in srgb, var(--home-warning) 14%, var(--home-paper))",
+              borderColor: "color-mix(in srgb, var(--home-negative) 32%, var(--home-rule))",
+              background: "color-mix(in srgb, var(--home-negative) 12%, var(--home-paper))",
               color: "var(--home-ink)",
             }
       }
@@ -296,25 +292,41 @@ function ExpertSpreadBar({ player, scale }: { player: Player; scale: number }) {
   );
 }
 
+/**
+ * A labelled readout in the player drawer. The explanation used to ride on
+ * `title` on this non-interactive div, which never fires on touch and is
+ * unreachable by keyboard, and the drawer is the only place a phone visitor
+ * can reach these definitions at all, because the focusable column-header
+ * triggers are md-and-up. The label now uses MetricTooltip's `focusable` mode,
+ * the same trigger those headers use. `term` names the tooltip subject when
+ * the visible label carries a date or a qualifier.
+ */
 function DrawerStat({
   label,
   value,
   valueColor,
   title,
+  term,
 }: {
   label: string;
   value: string;
   valueColor?: string;
   title?: string;
+  term?: string;
 }) {
   return (
     <div
       className="rounded-[4px] border px-2.5 py-2"
-      title={title}
       style={{ borderColor: "var(--home-rule)", background: "var(--home-paper-raised)" }}
     >
       <p className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
-        {label}
+        {title ? (
+          <MetricTooltip term={term ?? label} definition={title} focusable>
+            {label}
+          </MetricTooltip>
+        ) : (
+          label
+        )}
       </p>
       <p className="mt-1 font-mono text-base tabular-nums" style={{ color: valueColor ?? "var(--home-ink)" }}>
         {value}
@@ -548,6 +560,7 @@ function DraftPlayerDrawer({
           {adpAvailable && Number.isFinite(player.adp) && (
             <DrawerStat
               label={adpReferenceAsOf ? `Prior-season ADP · ${adpReferenceAsOf}` : "Market ADP"}
+              term={adpReferenceAsOf ? "Prior-season ADP" : "Market ADP"}
               value={formatAdp(player.adp)}
               title={adpReferenceAsOf ? FANTASY_PRIOR_SEASON_ADP_TOOLTIP : FANTASY_ADP_TOOLTIP}
             />
@@ -1122,8 +1135,26 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
     }
     const marginTop = index === 0 ? 0 : Math.round(Math.min(48, Math.max(14, cliff * 9))) || 18;
 
+    /* A <section> with no accessible name is not exposed as a landmark at all, so an
+       unnamed plate makes the tier structure of a tier-first board invisible to assistive
+       tech. The plate header is spans rather than a heading, so this is a literal label
+       rather than aria-labelledby, which would dangle whenever that header changes shape.
+       The cliff rule above the plate is aria-hidden, so its size rides here too. */
+    const tierLabel = [
+      group.tier !== null ? `Tier ${group.tier}` : "No published tier",
+      `${group.rows.length} ${group.rows.length === 1 ? "player" : "players"}`,
+      `ranks ${firstRank} to ${lastRank}`,
+      index > 0 && cliff > 0 ? `${cliff.toFixed(1)} average-rank cliff above` : null,
+    ]
+      .filter(Boolean)
+      .join(", ");
+
     return (
-      <section key={`tier-${group.tier ?? "untiered"}-${group.rows[0].id}`} style={{ marginTop }}>
+      <section
+        key={`tier-${group.tier ?? "untiered"}-${group.rows[0].id}`}
+        aria-label={tierLabel}
+        style={{ marginTop }}
+      >
         {index > 0 && cliff > 0 && (
           <div aria-hidden="true" className="flex items-center gap-3 px-0.5 pb-2.5">
             <span
@@ -1260,7 +1291,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                         <>
                           <span className="sr-only">ADP</span>
                           <span
-                            className="w-auto font-mono text-xs md:w-12 md:text-right"
+                            className="w-auto font-mono text-xs md:w-16 md:text-right"
                             title={adpTooltip}
                             style={{ color: "var(--home-ink-muted)" }}
                           >
@@ -1462,7 +1493,10 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
           </span>
         </div>
         {/* Phones keep one sticky line: position and scoring stay reachable
-            mid-scroll, and search expands in place of the count. */}
+            mid-scroll, and search expands over that line rather than sitting
+            beside it. "Done" collapses it back to the other controls without
+            touching what was typed, so switching board or scoring mid-search
+            no longer costs the query. */}
         <div className={`${SHELL_CLASS} flex items-center gap-2 py-2 md:hidden`}>
           {mobileSearchOpen ? (
             <>
@@ -1496,18 +1530,38 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                   }}
                 />
               </div>
+              {searchQuery && (
+                <button
+                  type="button"
+                  aria-label="Clear search"
+                  onMouseDown={(event) => event.preventDefault()}
+                  onClick={() => {
+                    setSearchQuery("");
+                    updateRouteState({ query: "" });
+                  }}
+                  className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center rounded-[4px] border"
+                  style={{
+                    borderColor: "var(--home-rule)",
+                    background: "var(--home-paper-raised)",
+                    color: "var(--home-ink)",
+                  }}
+                >
+                  <X className="h-4 w-4" aria-hidden="true" />
+                </button>
+              )}
               <button
                 type="button"
-                aria-label="Clear search"
-                onClick={() => {
-                  setSearchQuery("");
-                  updateRouteState({ query: "" });
-                  setMobileSearchOpen(false);
+                aria-label="Done searching, keep the filter"
+                onMouseDown={(event) => event.preventDefault()}
+                onClick={() => setMobileSearchOpen(false)}
+                className="inline-flex min-h-touch shrink-0 items-center rounded-[4px] border px-3 font-mono text-3xs uppercase tracking-[0.08em]"
+                style={{
+                  borderColor: "var(--home-rule)",
+                  background: "var(--home-paper-raised)",
+                  color: "var(--home-ink)",
                 }}
-                className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center rounded-[4px] border"
-                style={{ borderColor: "var(--home-rule)", background: "var(--home-paper-raised)" }}
               >
-                <X className="h-4 w-4" style={{ color: "var(--home-ink)" }} aria-hidden="true" />
+                Done
               </button>
             </>
           ) : (
@@ -1526,22 +1580,46 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                   color: "var(--home-ink)",
                 }}
               >
-                {positionOptions.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
+                {positionOptions.map((option) => {
+                  /* The desktop pill row already renders an unavailable slice
+                     disabled with its reason. Left plain and enabled here, the
+                     select let a phone visitor pick a board that does not
+                     exist. The selected value never disables itself, or the
+                     control would render blank on a board that went away. */
+                  const isUnavailable =
+                    option.available === false && option.value !== routeState.position;
+                  return (
+                    <option
+                      key={option.value}
+                      value={option.value}
+                      disabled={isUnavailable}
+                      title={isUnavailable ? option.unavailableLabel : undefined}
+                    >
+                      {isUnavailable ? `${option.label} · unavailable` : option.label}
+                    </option>
+                  );
+                })}
               </select>
               <ScoringToggle compact value={routeState.scoring} onChange={(scoring) => updateRouteState({ scoring })} />
               <button
                 type="button"
-                aria-label="Search the current rankings board"
+                aria-label={
+                  searchQuery
+                    ? `Search the current rankings board, filtering by ${searchQuery}`
+                    : "Search the current rankings board"
+                }
                 onClick={() => setMobileSearchOpen(true)}
                 disabled={currentSliceUnavailable}
                 className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center rounded-[4px] border disabled:cursor-not-allowed disabled:opacity-60"
-                style={{ borderColor: "var(--home-rule)", background: "var(--home-paper-raised)" }}
+                style={
+                  /* A collapsed search still filters the board, so the control
+                     carries the active state rather than hiding the filter. */
+                  searchQuery
+                    ? { borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }
+                    : { borderColor: "var(--home-rule)", background: "var(--home-paper-raised)", color: "var(--home-ink)" }
+                }
               >
-                <Search className="h-4 w-4" style={{ color: "var(--home-ink)" }} aria-hidden="true" />
+                <Search className="h-4 w-4" aria-hidden="true" />
               </button>
               <button
                 type="button"
@@ -1565,6 +1643,20 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
               </button>
             </>
           )}
+        </div>
+        {/* The count and the route's only aria-live region used to sit inside
+            the md-and-up bar, so below 768px a filter that landed on six rows
+            announced nothing and showed no count. Phones get their own line.
+            Only one of the two is ever rendered, since the other is display:none
+            at that width, so nothing announces twice. */}
+        <div className={`${SHELL_CLASS} pb-2 md:hidden`}>
+          <span
+            aria-live={error ? undefined : "polite"}
+            className="font-mono text-2xs"
+            style={{ color: "var(--home-ink-muted)" }}
+          >
+            {countLine}
+          </span>
         </div>
         {/* Column labels ride in the sticky bar so the numbers keep their
             names mid-scroll; phones get per-value micro-labels instead. */}
@@ -1760,7 +1852,9 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
         <section className="mt-10" aria-labelledby="fantasy-rankings-questions">
           <div className="max-w-3xl">
             <p className="home-kicker mb-2">How the board works</p>
-            <h2 id="fantasy-rankings-questions" className="text-xl font-semibold sm:text-2xl">
+            {/* sm:text-2xl tops out at 34px, the same size as the page h1 on the title
+                ramp, so the section would render at exactly its parent's size. */}
+            <h2 id="fantasy-rankings-questions" className="text-xl font-semibold">
               Fantasy rankings questions
             </h2>
           </div>

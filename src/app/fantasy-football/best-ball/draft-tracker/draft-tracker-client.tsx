@@ -23,6 +23,7 @@ import {
 } from "@/lib/bestBall";
 import type { BestBallSnapshot } from "@/lib/bestBallSnapshot";
 import {
+  FASCIA_TOP_CLASS,
   getFantasySourceCapabilities,
   resolveDraftPicksForModel,
   withoutPlayerAdp,
@@ -417,6 +418,9 @@ function BestBallDraftRoom({
       ),
     [draft.currentPick, draft.state.userSlot, preset.rounds, preset.teams]
   );
+  // Undo is last-in-first-out. Naming the pick it will remove keeps the button
+  // honest about that instead of leaving the visitor to guess.
+  const lastPick = draft.state.picks[draft.state.picks.length - 1] ?? null;
   const upcomingUserRound = useMemo(
     () =>
       Math.floor(((nextUserPick ?? draft.currentPick) - 1) / preset.teams) + 1,
@@ -634,20 +638,25 @@ function BestBallDraftRoom({
       ) : null}
 
       {/*
-        The live line sticks directly under the site header (sticky at top 0,
-        73px tall), the same contract as the redraft tracker's bar, so "whose
-        pick is it" never leaves the screen while the board scrolls.
+        The live line sticks directly under the site header on the shared
+        FASCIA_TOP_CLASS offset, the same contract as the redraft tracker and
+        the mock draft, so "whose pick is it" never leaves the screen while the
+        board scrolls. It is the single authority for round, pick, who is on
+        the clock, and the next user pick; nothing below repeats those numbers.
+        It also carries the live region, so logging a pick announces the new
+        room state once.
       */}
       <div
-        className="sticky z-30 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 rounded-[var(--radius-md)] border px-3 py-2"
-        style={{ top: "73px", borderColor: "var(--home-rule)", background: "var(--home-paper)" }}
+        aria-live="polite"
+        className={`sticky ${FASCIA_TOP_CLASS} z-30 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 rounded-[var(--radius-md)] border px-3 py-2`}
+        style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)" }}
       >
         <p className="min-w-0 text-sm" style={{ color: "var(--home-ink-muted)" }}>
           {draft.isComplete ? (
             "Draft complete"
           ) : (
             <>
-              Round {draft.currentRound} ·{" "}
+              Round {draft.currentRound} of {preset.rounds} ·{" "}
               <span className="font-semibold tabular-nums" style={{ color: "var(--home-ink)" }}>
                 Pick {Math.min(draft.currentPick, draft.totalPicks)} of {draft.totalPicks}
               </span>{" "}
@@ -660,55 +669,49 @@ function BestBallDraftRoom({
         </p>
       </div>
 
+      {/*
+        This card used to restate round, current pick, and next user pick in
+        three tiles, which repeated the sticky bar directly above it. The
+        heading names the state in words once and the card now carries the
+        room's recovery action instead.
+      */}
       <section className="home-card p-5 sm:p-6" aria-labelledby="best-ball-room-status-heading">
         <div className="flex flex-wrap items-start justify-between gap-4">
-          <div>
+          <div className="min-w-0">
             <p className="home-kicker mb-1">Live room</p>
-            <h2 id="best-ball-room-status-heading" className="text-2xl font-semibold">
+            {/* An open room collapses the h1 to 34px, which is exactly where text-2xl
+                tops out, so a text-2xl section heading renders at its parent's size.
+                text-xl is the step this file already uses for "Saved in this browser". */}
+            <h2 id="best-ball-room-status-heading" className="text-xl font-semibold">
               {draft.isComplete
                 ? "Draft complete"
                 : draft.isUserPick
                   ? `You are on the clock at pick ${draft.currentPick}`
                   : `Slot ${draft.currentTeamNumber} is on the clock`}
             </h2>
+            {lastPick ? (
+              <p
+                id="best-ball-undo-target"
+                className="mt-2 max-w-[52ch] text-xs leading-5"
+                style={{ color: "var(--home-ink-muted)" }}
+              >
+                Undo removes pick {lastPick.pickNumber}, {lastPick.player.name}. It only ever
+                takes back the most recent pick, so reaching an earlier one means undoing
+                everything logged after it.
+              </p>
+            ) : null}
           </div>
           <button
             type="button"
             onClick={draft.undoLastPick}
             disabled={draft.state.picks.length === 0}
+            aria-describedby={lastPick ? "best-ball-undo-target" : undefined}
             className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-50"
             style={OUTLINE_ACTION_STYLE}
           >
             <Undo2 className="h-4 w-4" aria-hidden="true" />
             Undo last pick
           </button>
-        </div>
-
-        <div className="mt-4 grid gap-2 sm:grid-cols-3" aria-live="polite">
-          <div className="rounded-[var(--radius-2xl)] border p-3" style={SUBTLE_CARD_STYLE}>
-            <p className="text-xs font-semibold" style={{ color: "var(--home-ink-muted)" }}>
-              Current room pick
-            </p>
-            <p className="mt-1 text-xl font-semibold tabular-nums">
-              {Math.min(draft.currentPick, draft.totalPicks)} of {draft.totalPicks}
-            </p>
-          </div>
-          <div className="rounded-[var(--radius-2xl)] border p-3" style={SUBTLE_CARD_STYLE}>
-            <p className="text-xs font-semibold" style={{ color: "var(--home-ink-muted)" }}>
-              Round
-            </p>
-            <p className="mt-1 text-xl font-semibold tabular-nums">
-              {draft.currentRound} of {preset.rounds}
-            </p>
-          </div>
-          <div className="rounded-[var(--radius-2xl)] border p-3" style={SUBTLE_CARD_STYLE}>
-            <p className="text-xs font-semibold" style={{ color: "var(--home-ink-muted)" }}>
-              Your next pick
-            </p>
-            <p className="mt-1 text-xl font-semibold tabular-nums">
-              {nextUserPick ?? "Complete"}
-            </p>
-          </div>
         </div>
       </section>
 

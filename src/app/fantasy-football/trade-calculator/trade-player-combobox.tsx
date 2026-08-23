@@ -66,6 +66,9 @@ export function TradePlayerCombobox({
     [excludedPlayerIds, results]
   );
 
+  const emptyMessage = `No players match “${query.trim()}”.`;
+  const listOpen = open && !disabled;
+
   const moveActive = (direction: 1 | -1) => {
     if (selectableIndexes.length === 0) {
       setActiveIndex(-1);
@@ -114,7 +117,7 @@ export function TradePlayerCombobox({
             type="search"
             role="combobox"
             aria-autocomplete="list"
-            aria-expanded={open && results.length > 0}
+            aria-expanded={listOpen}
             aria-controls={listboxId}
             aria-activedescendant={
               open && activeIndex >= 0 ? `${listboxId}-option-${activeIndex}` : undefined
@@ -156,57 +159,66 @@ export function TradePlayerCombobox({
       <p id={helpId} className="sr-only">
         Use the arrow keys to move through players, Enter to add one, and Escape to close the list.
       </p>
+      {/* Mounted before it has anything to say, so the empty result actually
+          reaches a screen reader instead of appearing silently. */}
+      <p aria-live="polite" aria-atomic="true" className="sr-only">
+        {listOpen && results.length === 0 ? emptyMessage : ""}
+      </p>
 
-      {open && !disabled ? (
+      {listOpen ? (
         <div
           className="absolute inset-x-0 top-[calc(100%+0.35rem)] z-30 overflow-hidden rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] shadow-[var(--shadow-lg)]"
         >
-          {results.length > 0 ? (
-            <ul id={listboxId} role="listbox" aria-label={`Players for ${sideLabel}`} className="max-h-80 overflow-y-auto py-1">
-              {results.map((player, index) => {
-                const excluded = excludedPlayerIds.has(player.id);
-                const active = index === activeIndex;
-                return (
-                  <li key={player.id} role="presentation">
-                    <button
-                      id={`${listboxId}-option-${index}`}
-                      type="button"
-                      tabIndex={-1}
-
-                      role="option"
-                      aria-selected={active}
-                      aria-disabled={excluded}
-                      disabled={excluded}
-                      onMouseEnter={() => !excluded && setActiveIndex(index)}
-                      onMouseDown={(event) => event.preventDefault()}
-                      onClick={() => addPlayer(player)}
-                      className="flex min-h-touch w-full items-center gap-2 px-3 py-2 text-left text-sm outline-none transition-colors disabled:cursor-not-allowed disabled:opacity-55"
-                      style={
-                        active
-                          ? {
-                              background:
-                                "color-mix(in srgb, var(--home-signal) 12%, var(--home-paper))",
-                            }
-                          : undefined
-                      }
-                    >
-                      <span className={FANTASY_CHIP_CLASS} style={getPositionTone(player.position)}>
-                        {player.position}
-                      </span>
-                      <span className="min-w-0 flex-1 truncate font-semibold">{player.name}</span>
-                      <span className="shrink-0 text-2xs text-[var(--home-ink-muted)]">
-                        {excluded ? "Already added" : `${player.team} · ECR ${playerRank(player)}`}
-                      </span>
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
-          ) : (
-            <p className="px-4 py-5 text-sm text-[var(--home-ink-muted)]">
-              No players match “{query.trim()}”.
-            </p>
-          )}
+          {/* The listbox stays mounted for as long as the popup is open, so
+              aria-controls always resolves and aria-expanded never reports
+              collapsed over a popup the visitor can see. */}
+          <ul
+            id={listboxId}
+            role="listbox"
+            aria-label={`Players for ${sideLabel}`}
+            className={results.length > 0 ? "max-h-80 overflow-y-auto py-1" : undefined}
+          >
+            {results.map((player, index) => {
+              const excluded = excludedPlayerIds.has(player.id);
+              const active = index === activeIndex;
+              return (
+                <li key={player.id} role="presentation">
+                  <button
+                    id={`${listboxId}-option-${index}`}
+                    type="button"
+                    tabIndex={-1}
+                    role="option"
+                    aria-selected={active}
+                    aria-disabled={excluded}
+                    disabled={excluded}
+                    onMouseEnter={() => !excluded && setActiveIndex(index)}
+                    onMouseDown={(event) => event.preventDefault()}
+                    onClick={() => addPlayer(player)}
+                    className="flex min-h-touch w-full items-center gap-2 px-3 py-2 text-left text-sm outline-none transition-colors disabled:cursor-not-allowed disabled:opacity-55"
+                    style={
+                      active
+                        ? {
+                            background:
+                              "color-mix(in srgb, var(--home-signal) 12%, var(--home-paper))",
+                          }
+                        : undefined
+                    }
+                  >
+                    <span className={FANTASY_CHIP_CLASS} style={getPositionTone(player.position)}>
+                      {player.position}
+                    </span>
+                    <span className="min-w-0 flex-1 truncate font-semibold">{player.name}</span>
+                    <span className="shrink-0 text-2xs text-[var(--home-ink-muted)]">
+                      {excluded ? "Already added" : `${player.team} · ECR ${playerRank(player)}`}
+                    </span>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+          {results.length === 0 ? (
+            <p className="px-4 py-5 text-sm text-[var(--home-ink-muted)]">{emptyMessage}</p>
+          ) : null}
         </div>
       ) : null}
     </div>

@@ -71,3 +71,30 @@ The source decision is closed. This route is a preseason one-quarterback redraft
 ## Finish review
 
 Final review passed on August 13, 2026, after all four findings were resolved. The checked states cover empty and populated deals, the methodology disclosure, light and dark themes, and desktop and mobile layouts. The composition is complete and should not be reopened without a new product or data requirement.
+
+
+## Full-group loop, 2026-08-23
+
+First time this surface was critiqued as part of the fantasy group. The whole record is in
+`.impeccable/surfaces/route-fantasy-football.md` under "Full-group loop, 2026-08-23"; only
+what is specific to the trade calculator is repeated here.
+
+It scored 29/40. Six findings landed. The `h1` had read "Build a Trade Calculator", naming
+the tool as the thing being built rather than the trade, and both verifiers upheld it. The
+package-fit table drew its interior rules in `currentColor` instead of `var(--home-rule)`, so
+the rules took the text colour. The idle coverage chip borrowed the warning tone, so an
+untouched page opened looking like it was already warning about something. An armed "Confirm
+clear" never disarmed, degrading a two-step guard on an unrecoverable action to one step. The
+player combobox announced its no-results state to nobody and reported `aria-expanded` as
+collapsed while the listbox was open. And the warnings panel silently truncated the model's
+own limits at six, which is the one thing this surface must never do, since those limits are
+the honesty framing.
+
+Two findings were refuted 2 to 0 and should not be raised again: "both disclosures in the
+evaluation rail have no expand affordance" and "the freshness row reports stale sources
+during the initial load".
+
+Measured after, in both themes at 390, 768, 1024 and 1440: zero AA contrast failures, zero
+horizontal overflow, one `main`, one `h1`, zero unnamed `section` landmarks. The three 16x16
+scoring radios flagged by a naive target sweep are visually paired with 324x44 labels, which
+are the real targets, so they are not a defect.

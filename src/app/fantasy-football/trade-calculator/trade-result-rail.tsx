@@ -66,6 +66,14 @@ function verdictCopy(
 }
 
 function coverageStyle(coverage: FantasyTradeCoverage | null) {
+  // Nothing has been evaluated yet, so the chip rests neutral. The warning tone
+  // belongs to a result that actually carries a coverage warning.
+  if (coverage === null) {
+    return {
+      borderColor: "var(--home-rule)",
+      background: "var(--home-paper)",
+    };
+  }
   if (coverage === "supported") {
     return {
       borderColor: "color-mix(in srgb, var(--home-positive) 35%, var(--home-rule))",
@@ -252,7 +260,7 @@ export function TradeResultRail({
                   : "Notes on this result"}
             </summary>
             <ul className="grid gap-2 pb-3 pl-1 text-xs leading-5 text-[var(--home-ink-muted)]">
-              {warnings.slice(0, 6).map((warning) => (
+              {warnings.map((warning) => (
                 <li key={warning} className="flex gap-2">
                   <span
                     aria-hidden="true"

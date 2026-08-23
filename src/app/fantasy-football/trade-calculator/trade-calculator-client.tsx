@@ -3,7 +3,7 @@
 import { ArrowLeftRight, RotateCcw, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useMemo, useState, useSyncExternalStore } from "react";
+import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import { Breadcrumbs, createBreadcrumbItems } from "@/components/navigation/Breadcrumbs";
 import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
@@ -43,6 +43,11 @@ const BREADCRUMBS = createBreadcrumbItems([
   { label: "Fantasy Football", href: "/fantasy-football" },
   { label: "Trade Calculator", href: "/fantasy-football/trade-calculator" },
 ]);
+
+// Clearing the deal cannot be undone, so the button arms first. Left alone it
+// disarms again, or the two-step guard quietly degrades into a one-click wipe
+// the next time the visitor comes back to the page.
+const RESET_ARM_TIMEOUT_MS = 5000;
 
 const subscribeToHydration = () => () => undefined;
 const getHydratedSnapshot = () => true;
@@ -218,6 +223,12 @@ export function TradeCalculatorClient() {
   const trade = useFantasyTradeCalculator(season, routeState.scoring);
   const [resetArmed, setResetArmed] = useState(false);
 
+  useEffect(() => {
+    if (!resetArmed) return;
+    const timer = window.setTimeout(() => setResetArmed(false), RESET_ARM_TIMEOUT_MS);
+    return () => window.clearTimeout(timer);
+  }, [resetArmed]);
+
   const updateRouteState = (next: TradeCalculatorSearchState) => {
     setResetArmed(false);
     router.replace(buildTradeCalculatorHref(next, searchParams), { scroll: false });
@@ -294,7 +305,7 @@ export function TradeCalculatorClient() {
               <h1
                 className="max-w-[15ch] text-[clamp(2.25rem,1.7rem+2.5vw,4.2rem)] font-semibold leading-[0.98] tracking-[-0.04em] text-[var(--home-ink)]"
               >
-                Build a Trade Calculator
+                Build a Trade Offer
               </h1>
               <p className="mt-4 max-w-[68ch] text-base leading-7 text-[var(--home-ink-muted)]">
                 Compare both sides of a one-QB redraft trade using expert consensus, mock-draft ADP, and your league’s scoring, size, and lineup. The result shows where the estimate is strong and where the data is thin.

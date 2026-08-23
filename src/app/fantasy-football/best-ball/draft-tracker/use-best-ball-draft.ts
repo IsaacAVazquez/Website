@@ -51,9 +51,12 @@ export function useBestBallDraft({
             getBestBallDraftBackupKey(season, rules.contestId),
             raw
           );
+          // The backup is a second localStorage key and nothing in this
+          // interface opens it, so the notice says the save still exists and
+          // stops short of implying a way to get it back.
           // eslint-disable-next-line react-hooks/set-state-in-effect -- localStorage is read only after hydration
           setRestoreNotice(
-            "I started a new room because the saved draft did not match the current contest rules. I kept the prior save as a local backup."
+            "I started a new room because the saved draft did not match the current contest rules. I kept the prior save as a local backup in this browser, and there is no way to open it from this page."
           );
         }
       }
