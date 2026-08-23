@@ -3,6 +3,9 @@ const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
 
+// Dates only. The route list itself comes from the src/app walk below, so a new
+// page.tsx reaches the sitemap whether or not anyone remembers this map; an
+// undated route just gets the build date and a warning naming it.
 const STATIC_ROUTE_LASTMOD = {
   "/": "2026-08-05",
   "/about": "2026-08-05",
@@ -15,13 +18,6 @@ const STATIC_ROUTE_LASTMOD = {
   "/resume": "2026-08-05",
   "/portfolio": "2026-08-09",
   "/writing": "2026-08-09",
-  "/writing/topics/agentic-ai": "2026-06-22",
-  "/writing/topics/fintech-product-pricing": "2026-06-22",
-  "/writing/topics/pm-workflows": "2026-06-22",
-  "/writing/topics/signals-commentary": "2026-06-22",
-  "/writing/topics/space-experiments": "2026-06-22",
-  "/writing/topics/sports-fantasy": "2026-06-22",
-  "/writing/topics/systems-quality": "2026-06-22",
   "/golf": readGolfLastmod(),
   "/earthquake-pulse": readEarthquakeLastmod(),
   "/decision-lab": "2026-04-04",
@@ -315,10 +311,101 @@ function readBayAreaTransitLastmod() {
   );
 }
 
+// Routable pages that are deliberately unlisted. A page that opts out through
+// its own metadata does not need a row here; this is only for pages whose
+// metadata cannot say it.
+const UNLISTED_ROUTES = {
+  "/admin": "NextAuth-gated admin surface",
+};
+
+/**
+ * Every `page.tsx` under `src/app`, as the URL path it serves. Route groups
+ * like `(marketing)` contribute no segment, `api/` holds handlers rather than
+ * pages, and `_`-prefixed folders never route.
+ */
+function findPageRoutes(directory, route = "") {
+  const routes = [];
+  for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+    const target = path.join(directory, entry.name);
+    if (entry.isDirectory()) {
+      if (route === "" && entry.name === "api") continue;
+      if (entry.name.startsWith("_")) continue;
+      const segment = /^\(.*\)$/.test(entry.name) ? "" : `/${entry.name}`;
+      routes.push(...findPageRoutes(target, `${route}${segment}`));
+    } else if (entry.name === "page.tsx") {
+      routes.push({ route: route || "/", file: target });
+    }
+  }
+  return routes;
+}
+
+/**
+ * A page that marks itself noindex, or renders nothing but a redirect.
+ *
+ * "Renders nothing" is the absence of any JSX return rather than a match on the
+ * default export's signature, which could not see `export default async
+ * function` and would have dropped such a page from the sitemap in silence. A
+ * page with a JSX return anywhere stays listed, so the failure direction is a
+ * redirect-only page that lingers rather than a real page that vanishes.
+ */
+function isRouteOptedOut(source) {
+  return (
+    /noIndex:\s*true|index:\s*false/.test(source) ||
+    (/from ["']next\/navigation["']/.test(source) &&
+      /\bredirect\(/.test(source) &&
+      !/return\s*[(<]/.test(source))
+  );
+}
+
 function getStaticRouteEntries() {
-  return Object.entries(STATIC_ROUTE_LASTMOD).map(([loc, lastmod]) => ({
-    loc,
-    lastmod: toIsoString(lastmod) || new Date("2026-01-01T00:00:00.000Z").toISOString(),
+  const buildDate = new Date().toISOString();
+  const undated = [];
+  const entries = [];
+
+  for (const { route, file } of findPageRoutes(path.join(process.cwd(), "src", "app"))) {
+    // Dynamic segments are enumerated by the per-collection builders below.
+    if (route.includes("[") || UNLISTED_ROUTES[route]) continue;
+    if (isRouteOptedOut(fs.readFileSync(file, "utf8"))) continue;
+
+    const lastmod = toIsoString(STATIC_ROUTE_LASTMOD[route]);
+    if (!lastmod) undated.push(route);
+    entries.push({ loc: route, lastmod: lastmod || buildDate });
+  }
+
+  if (undated.length) {
+    console.warn(
+      `sitemap: no lastmod for ${undated.join(", ")}, so they carry the build ` +
+        "date. Add a row to STATIC_ROUTE_LASTMOD in src/lib/sitemap.js."
+    );
+  }
+  return entries;
+}
+
+/**
+ * The `/writing/topics/[topic]` instances, read from the same `BLOG_TOPIC_PAGES`
+ * list the route's `generateStaticParams` uses. Regex-extracted rather than
+ * imported, because this helper is plain CommonJS and the source is TypeScript
+ * (same reason as `getPortfolioSlugEntries`).
+ */
+const WRITING_TOPIC_LASTMOD = "2026-06-22";
+
+function getWritingTopicEntries() {
+  const source = readFile("src/lib/blog-config.ts");
+  const start = source.indexOf("export const BLOG_TOPIC_PAGES");
+  if (start === -1) {
+    return [];
+  }
+
+  const end = source.indexOf("\n];", start);
+  if (end === -1) {
+    return [];
+  }
+
+  const body = source.slice(start, end);
+  const lastmod = toIsoString(WRITING_TOPIC_LASTMOD);
+  return [...body.matchAll(/^ {4}slug: "([a-z0-9][a-z0-9-]*)",$/gm)].map((match) => ({
+    loc: `/writing/topics/${match[1]}`,
+    lastmod,
   }));
 }
 
@@ -435,6 +522,7 @@ function getBlogRouteEntries() {
 function getPublicSitemapEntries() {
   const allEntries = [
     ...getStaticRouteEntries(),
+    ...getWritingTopicEntries(),
     ...getPortfolioSlugEntries(),
     ...getBlogRouteEntries(),
   ];
@@ -450,10 +538,8 @@ function getPublicSitemapEntries() {
 }
 
 const PUBLIC_SITEMAP_ENTRIES = getPublicSitemapEntries();
-const PUBLIC_SITEMAP_PATHS = new Set(PUBLIC_SITEMAP_ENTRIES.map((entry) => entry.loc));
 
 module.exports = {
   PUBLIC_SITEMAP_ENTRIES,
-  PUBLIC_SITEMAP_PATHS,
   getPublicSitemapEntries,
 };

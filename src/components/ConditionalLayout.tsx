@@ -96,12 +96,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
   return (
     <>
       <div className="min-h-screen">
-        <main
-          id="main-content"
-          role="main"
-          aria-label={isHomePage ? "Isaac Vazquez Portfolio Homepage" : "Portfolio Content"}
-          tabIndex={-1}
-        >
+        <main id="main-content" tabIndex={-1}>
           {isHomePage ? (
             children
           ) : isSelfShellRoute ? (

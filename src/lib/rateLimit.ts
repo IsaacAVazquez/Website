@@ -110,6 +110,13 @@ export const emailDigestRateLimiter = new RateLimiter({
   uniqueTokenPerInterval: 3 // 3 email sends per client per hour
 });
 
+// Signing up is a one-time action, so a handful of attempts an hour covers a
+// typo and a retry while capping automated fan-out at the form.
+export const newsletterRateLimiter = new RateLimiter({
+  interval: 60 * 60 * 1000,
+  uniqueTokenPerInterval: 5,
+});
+
 /**
  * Resolve the client IP for rate-limiting.
  *
@@ -170,12 +177,19 @@ export function getClientIdentifier(request: NextRequest): string {
   return `${ip}:${userAgent}`;
 }
 
-// Helper function to create rate limit response
-export function rateLimitResponse(result: ReturnType<RateLimiter["check"]>) {
+// Helper function to create rate limit response.
+//
+// `message` is surfaced to the reader on endpoints a person submits directly
+// (the newsletter form reads it straight out of the body), so those pass their
+// own wording rather than the machine-facing default.
+export function rateLimitResponse(
+  result: ReturnType<RateLimiter["check"]>,
+  message = "Rate limit exceeded. Please try again later."
+) {
   return new Response(
     JSON.stringify({
       error: "Too many requests",
-      message: "Rate limit exceeded. Please try again later.",
+      message,
       retryAfter: Math.ceil((result.reset - Date.now()) / 1000)
     }),
     {

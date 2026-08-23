@@ -31,6 +31,9 @@ jobs:
           BLOG_DATE_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
         run: npm run check:blog-dates -- --base="$BLOG_DATE_BASE"
 
+      - name: Check the automation inventory is current
+        run: npm run docs:automation -- --check
+
       - name: Run unit tests with coverage
         run: npm run test:ci
 

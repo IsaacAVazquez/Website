@@ -4,22 +4,15 @@ import { useState, type FormEvent } from "react";
 import { ArrowRight } from "lucide-react";
 import { trackNewsletterSubscribe } from "@/lib/analytics";
 
-type NewsletterSource =
-  | "writing"
-  | "agent_build_index"
-  | "fantasy_football";
+type NewsletterSource = "writing" | "agent_build_index";
 
 interface NewsletterSignupProps {
   source: NewsletterSource;
-  compact?: boolean;
 }
 
 type SubmitState = "idle" | "submitting" | "success" | "error";
 
-export function NewsletterSignup({
-  source,
-  compact = false,
-}: NewsletterSignupProps) {
+export function NewsletterSignup({ source }: NewsletterSignupProps) {
   const [state, setState] = useState<SubmitState>("idle");
   const [message, setMessage] = useState("");
 
@@ -83,7 +76,7 @@ export function NewsletterSignup({
   return (
     <form
       onSubmit={handleSubmit}
-      className={compact ? "space-y-2" : "space-y-3"}
+      className="space-y-3"
       aria-label="Email newsletter signup"
     >
       <div className="sr-only" aria-hidden="true">
@@ -96,13 +89,7 @@ export function NewsletterSignup({
           autoComplete="off"
         />
       </div>
-      <div
-        className={
-          compact
-            ? "grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto]"
-            : "grid gap-2"
-        }
-      >
+      <div className="grid gap-2">
         <label className="sr-only" htmlFor={`newsletter-email-${source}`}>
           Email address
         </label>
@@ -115,6 +102,8 @@ export function NewsletterSignup({
           required
           placeholder="you@example.com"
           disabled={state === "submitting"}
+          aria-invalid={state === "error" || undefined}
+          aria-describedby={state === "error" ? `newsletter-error-${source}` : undefined}
           className="min-h-[48px] w-full rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 text-base text-[var(--home-ink)] outline-none transition-[border-color,box-shadow] placeholder:text-[var(--home-ink-muted)] focus:border-[var(--home-signal)] focus:shadow-[0_0_0_3px_color-mix(in_srgb,var(--home-signal)_16%,transparent)] disabled:cursor-wait disabled:opacity-70"
         />
         <button
@@ -131,6 +120,7 @@ export function NewsletterSignup({
       </p>
       {state === "error" ? (
         <p
+          id={`newsletter-error-${source}`}
           role="alert"
           className="text-sm leading-6 text-[var(--home-negative)]"
         >

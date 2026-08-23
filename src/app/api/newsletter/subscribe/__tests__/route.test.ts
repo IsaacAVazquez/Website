@@ -3,7 +3,7 @@
  */
 import { NextRequest } from "next/server";
 import { POST } from "../route";
-import { resetNewsletterSubscriptionRateLimitForTests } from "@/lib/newsletterSubscription";
+import { newsletterRateLimiter } from "@/lib/rateLimit";
 
 const createContact = jest.fn();
 
@@ -38,7 +38,7 @@ function request(
 describe("newsletter subscribe route", () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    resetNewsletterSubscriptionRateLimitForTests();
+    newsletterRateLimiter.reset();
     process.env.RESEND_API_KEY = "re_test";
     process.env.RESEND_NEWSLETTER_SEGMENT_ID = "seg_test";
     createContact.mockResolvedValue({
@@ -132,6 +132,9 @@ describe("newsletter subscribe route", () => {
 
     expect(response.status).toBe(429);
     expect(response.headers.get("retry-after")).toBeTruthy();
+    await expect(response.json()).resolves.toMatchObject({
+      message: "Too many attempts. Please try again later.",
+    });
     expect(createContact).toHaveBeenCalledTimes(5);
   });
 

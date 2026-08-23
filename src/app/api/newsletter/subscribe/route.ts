@@ -1,17 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { logger } from "@/lib/logger";
-import { getClientIp } from "@/lib/rateLimit";
 import {
-  checkNewsletterSubscriptionRateLimit,
-  normalizeSubscriberEmail,
-} from "@/lib/newsletterSubscription";
+  getClientIp,
+  newsletterRateLimiter,
+  rateLimitResponse,
+} from "@/lib/rateLimit";
+import { normalizeSubscriberEmail } from "@/lib/newsletterSubscription";
 
-const ALLOWED_SOURCES = new Set([
-  "writing",
-  "agent_build_index",
-  "fantasy_football",
-]);
+const ALLOWED_SOURCES = new Set(["writing", "agent_build_index"]);
 
 interface SubscribePayload {
   email?: unknown;
@@ -27,21 +24,13 @@ function successResponse() {
 }
 
 export async function POST(request: NextRequest) {
-  const rateLimit = checkNewsletterSubscriptionRateLimit(
-    getClientIp(request)
+  const rateLimit = newsletterRateLimiter.check(
+    `newsletter:${getClientIp(request)}`
   );
   if (!rateLimit.success) {
-    return NextResponse.json(
-      {
-        success: false,
-        message: "Too many attempts. Please try again later.",
-      },
-      {
-        status: 429,
-        headers: {
-          "Retry-After": rateLimit.retryAfterSeconds.toString(),
-        },
-      }
+    return rateLimitResponse(
+      rateLimit,
+      "Too many attempts. Please try again later."
     );
   }
 

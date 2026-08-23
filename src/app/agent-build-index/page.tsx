@@ -7,15 +7,18 @@ import { formatGitHubCompactNumber } from "@/lib/githubTrending";
 import {
   constructMetadata,
   generateBreadcrumbStructuredData,
+  siteConfig,
 } from "@/lib/seo";
 
 const index = getAgentBuildIndex(githubTrendingSnapshot);
+const PATH = "/agent-build-index";
+const RANKED_LIMIT = 10;
 
 export const metadata = constructMetadata({
   title: "Agent Build Index",
   description:
     "A weekly read on the public AI agent repositories gaining attention on GitHub, ranked by measured star movement with source and freshness context.",
-  canonicalUrl: "/agent-build-index",
+  canonicalUrl: PATH,
   dateModified: index.generatedAt.slice(0, 10),
 });
 
@@ -36,7 +39,9 @@ function formatDateTime(value: string): string {
 }
 
 function movementLabel(value: number): string {
-  return value > 0 ? `+${formatGitHubCompactNumber(value)}` : "No gain";
+  if (value === 0) return "No change";
+  const sign = value > 0 ? "+" : "\u2212";
+  return `${sign}${formatGitHubCompactNumber(Math.abs(value))}`;
 }
 
 export default function AgentBuildIndexPage() {
@@ -46,9 +51,10 @@ export default function AgentBuildIndexPage() {
     1,
     ...index.topicSegments.map((topic) => topic.weeklyStars)
   );
+  const rankedRepositories = index.repositories.slice(0, RANKED_LIMIT);
   const breadcrumbs = [
     { name: "Home", url: "/" },
-    { name: "Agent Build Index", url: "/agent-build-index" },
+    { name: "Agent Build Index", url: PATH },
   ];
 
   return (
@@ -69,7 +75,7 @@ export default function AgentBuildIndexPage() {
           name: "Agent Build Index",
           description:
             "A weekly index of active public AI agent repositories ranked by measured GitHub star movement.",
-          url: "https://isaacavazquez.com/agent-build-index",
+          url: `${siteConfig.url}${PATH}`,
           applicationCategory: "DeveloperApplication",
           operatingSystem: "Web browser",
           featureList: [
@@ -114,7 +120,7 @@ export default function AgentBuildIndexPage() {
 
             <div className="grid grid-cols-2 border border-[var(--home-rule)] bg-[var(--home-paper-alt)]">
               <div className="border-b border-r border-[var(--home-rule)] p-4 sm:p-5">
-                <p className="home-kicker mb-2">7d movement</p>
+                <p className="home-kicker mb-2">{index.windowDays}d movement</p>
                 <p className="text-2xl font-semibold tabular-nums sm:text-3xl">
                   {movementLabel(agentSegment?.weeklyStars ?? 0)}
                 </p>
@@ -158,11 +164,17 @@ export default function AgentBuildIndexPage() {
                   single scrape. A new repository stays labeled as a partial
                   or new baseline until enough history exists.
                 </p>
+                {index.repositories.length > rankedRepositories.length ? (
+                  <p className="mt-2 text-sm leading-6 text-[var(--home-ink-muted)]">
+                    Showing the top {rankedRepositories.length} of{" "}
+                    {index.repositories.length} tracked repositories.
+                  </p>
+                ) : null}
               </div>
 
               {index.repositories.length > 0 ? (
                 <ol className="divide-y divide-[var(--home-rule)]">
-                  {index.repositories.slice(0, 10).map((repository, position) => (
+                  {rankedRepositories.map((repository, position) => (
                     <li
                       key={repository.id}
                       className="grid gap-3 px-5 py-4 sm:grid-cols-[2.25rem_minmax(0,1fr)_auto] sm:items-center sm:px-6"
@@ -178,6 +190,7 @@ export default function AgentBuildIndexPage() {
                           className="inline-flex min-h-[44px] items-center font-semibold text-[var(--home-ink)] underline decoration-[var(--home-rule)] underline-offset-4 transition-[color,decoration-color] hover:text-[var(--home-signal)] hover:decoration-[var(--home-signal)] focus-visible:text-[var(--home-signal)]"
                         >
                           {repository.fullName}
+                          <span className="sr-only"> (opens on GitHub in a new tab)</span>
                         </a>
                         <p className="line-clamp-2 text-sm leading-6 text-[var(--home-ink-muted)]">
                           {repository.description || "No description published."}
@@ -205,7 +218,7 @@ export default function AgentBuildIndexPage() {
               )}
             </div>
 
-            <aside className="space-y-5">
+            <aside className="space-y-5" aria-label="Snapshot context">
               <section
                 className="home-card p-5 sm:p-6"
                 aria-labelledby="topic-movement-heading"
@@ -253,7 +266,10 @@ export default function AgentBuildIndexPage() {
                 </p>
               </section>
 
-              <section className="home-card p-5 sm:p-6">
+              <section
+                className="home-card p-5 sm:p-6"
+                aria-label="Snapshot notes"
+              >
                 <p className="home-kicker mb-1">Snapshot notes</p>
                 <h2 className="text-xl font-semibold tracking-[-0.02em]">
                   What the number does and does not mean
@@ -289,10 +305,13 @@ export default function AgentBuildIndexPage() {
             </aside>
           </section>
 
-          <section className="grid gap-6 border-y border-[var(--home-rule)] py-8 lg:grid-cols-[minmax(0,1fr)_minmax(20rem,0.75fr)] lg:items-center">
+          <section
+            className="grid gap-6 border-y border-[var(--home-rule)] py-8 lg:grid-cols-[minmax(0,1fr)_minmax(20rem,0.75fr)] lg:items-center"
+            aria-label="Newsletter signup"
+          >
             <div>
               <p className="home-kicker mb-2">Follow the work</p>
-              <h2 className="max-w-[22ch] text-3xl font-semibold leading-[1.02] tracking-[-0.035em]">
+              <h2 className="max-w-[22ch] text-2xl font-semibold leading-[1.06] tracking-[-0.03em]">
                 I send the builds and findings that hold up after the first
                 look.
               </h2>

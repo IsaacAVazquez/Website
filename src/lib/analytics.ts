@@ -70,7 +70,6 @@ export const GA_EVENT = {
   listingSearch: "listing_search",
   scrollDepth: "scroll_depth",
   newsletterSubscribe: "newsletter_subscribe",
-  acquisitionClick: "acquisition_click",
 } as const;
 
 type NavLocation =
@@ -133,15 +132,6 @@ export function trackNewsletterSubscribe(params: {
   signup_location: string;
 }): void {
   trackEvent(GA_EVENT.newsletterSubscribe, params);
-}
-
-/** A click from a discovery surface into a deeper tool or workflow. */
-export function trackAcquisitionClick(params: {
-  surface: string;
-  action: string;
-  destination: string;
-}): void {
-  trackEvent(GA_EVENT.acquisitionClick, params);
 }
 
 // ---------------------------------------------------------------------------
@@ -238,30 +228,6 @@ export const ANALYTICS_EVENTS: AnalyticsEventDoc[] = [
         name: "signup_location",
         description: "Surface where the form was submitted.",
         example: "agent_build_index",
-      },
-    ],
-  },
-  {
-    name: GA_EVENT.acquisitionClick,
-    category: "Engagement",
-    description:
-      "Fires when a reader moves from a discovery module into a deeper tool or workflow.",
-    trigger: "Select a tracked call to action on a focused acquisition surface.",
-    parameters: [
-      {
-        name: "surface",
-        description: "Surface containing the call to action.",
-        example: "fantasy_draft_market",
-      },
-      {
-        name: "action",
-        description: "Short label for the selected action.",
-        example: "launch_draft_assistant",
-      },
-      {
-        name: "destination",
-        description: "Internal path the reader selected.",
-        example: "/fantasy-football/draft-tracker",
       },
     ],
   },
