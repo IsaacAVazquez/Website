@@ -51,9 +51,12 @@ const BREADCRUMBS = [
 ];
 
 const CONTESTS = Object.values(BEST_BALL_CONTESTS);
+// Presets whose lobby cards vary enough that the bespoke rulesNote has to render.
+// 6-Man belongs here because six-team rooms run several tournament structures.
 const VARIABLE_ROOM_CONTESTS = new Set<BestBallContestId>([
   "weekly-winners",
   "sit-and-go",
+  "six-man",
   "superflex",
 ]);
 
@@ -241,7 +244,7 @@ export function BestBallDraftTrackerClient({
                 current team reports before logging each pick.
               </p>
               <p className="max-w-[66ch] text-xs leading-6" style={{ color: "var(--home-ink-muted)" }}>
-                This tracker models a 12 team, 18 round, 18 player, half PPR room. Weekly Winners, Sit &amp; Go, and Superflex contest cards can use different settings, so check the lobby before you start.
+                This tracker models a {preset.teams} team, {preset.rounds} round, {preset.rosterSize} player, half PPR room. Weekly Winners, Sit &amp; Go, 6-Man, and Superflex contest cards can use different settings, so check the lobby before you start.
               </p>
             </div>
           )}
@@ -522,7 +525,9 @@ function BestBallDraftRoom({
           ) : null}
 
           <fieldset className="mt-6">
-            <legend className="text-sm font-semibold">Your slot in the 12 team snake</legend>
+            <legend className="text-sm font-semibold">
+              Your slot in the {preset.teams} team snake
+            </legend>
             <div className="mt-3 grid grid-cols-4 gap-2 sm:grid-cols-6">
               {Array.from({ length: preset.teams }, (_, index) => index + 1).map((slot) => {
                 const active = draft.state.userSlot === slot;

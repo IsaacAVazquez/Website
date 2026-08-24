@@ -31,11 +31,22 @@ export const STANDARD_BEST_BALL_LINEUP: Readonly<BestBallLineup> = Object.freeze
   FLEX: 1,
 });
 
+/**
+ * Underdog's active "NFL Superflex Best Ball" style, confirmed against its published
+ * contest-style catalog on 2026-08-23. It starts one fewer receiver than the standard
+ * style, keeps a separate flex, adds the superflex slot, and drafts 20 rounds rather
+ * than 18.
+ */
 export const SUPERFLEX_BEST_BALL_LINEUP: Readonly<BestBallLineup> = Object.freeze({
-  ...STANDARD_BEST_BALL_LINEUP,
-  FLEX: 0,
+  QB: 1,
+  RB: 2,
+  WR: 2,
+  TE: 1,
+  FLEX: 1,
   SUPERFLEX: 1,
 });
+
+const SUPERFLEX_ROUNDS = 20;
 
 const STANDARD_RULES_NOTE =
   "Underdog's current rules and the contest card in the draft lobby control if a contest changes.";
@@ -118,6 +129,33 @@ export const BEST_BALL_CONTESTS: Readonly<Record<BestBallContestId, BestBallCont
       strategyProfileId: "standard-tournament",
       lineup: STANDARD_BEST_BALL_LINEUP,
     },
+    "six-man": {
+      ...sharedPreset,
+      id: "six-man",
+      name: "6-Man Best Ball",
+      shortName: "6-Man",
+      description:
+        "Underdog's six team draft style, which keeps the standard 18 round roster but splits each position tier across half as many entrants, so every roster gets twice as much of it and the board runs out far later than it does in a twelve team room.",
+      aliases: [
+        "six-man",
+        "6-man",
+        "6-mans",
+        "six-mans",
+        "frenchie-sprint",
+        "the-frenchie-sprint-2",
+        "sprint",
+      ],
+      competitionFormat: "tournament",
+      lineupVariant: "standard",
+      teams: 6,
+      recommendationMode: "reference",
+      recommendationReason:
+        "The snapshot's Underdog ADP is a twelve team market, so it prices the players correctly but not the pick slots in a six team room.",
+      strategyProfileId: "standard-tournament",
+      lineup: STANDARD_BEST_BALL_LINEUP,
+      rulesNote:
+        "Six team rooms run several tournament structures, from the two round Frenchie Sprint to the four round formats. Use this tracker only when the contest card shows 6 teams, 18 rounds, an 18 player roster, and half PPR scoring.",
+    },
     eliminator: {
       ...sharedPreset,
       id: "eliminator",
@@ -179,7 +217,7 @@ export const BEST_BALL_CONTESTS: Readonly<Record<BestBallContestId, BestBallCont
       name: "Superflex",
       shortName: "Superflex",
       description:
-        "A Superflex reference model for 12 teams and 18 rounds with a flex slot that can use a quarterback and a separate sourced Superflex consensus board.",
+        "A Superflex reference model for 12 teams and 20 rounds, which starts one fewer receiver, keeps the normal flex, and adds a separate slot that may use a quarterback, against its own sourced Superflex consensus board.",
       aliases: ["superflex", "super-flex", "sf", "sflex", "superflex-tournament"],
       competitionFormat: "tournament",
       lineupVariant: "superflex",
@@ -187,10 +225,12 @@ export const BEST_BALL_CONTESTS: Readonly<Record<BestBallContestId, BestBallCont
       recommendationReason:
         "The snapshot has a Superflex consensus board but no matching Superflex room ADP.",
       strategyProfileId: "superflex",
+      rounds: SUPERFLEX_ROUNDS,
+      rosterSize: SUPERFLEX_ROUNDS,
       lineup: SUPERFLEX_BEST_BALL_LINEUP,
       officialRulesUrl: SUPERFLEX_OFFICIAL_RULES_URL,
       rulesNote:
-        "Superflex is an eligibility label, and the rest of the contest rules can vary. Use this tracker only when the contest card shows 12 teams, 18 rounds, an 18 player roster, and half PPR scoring.",
+        "Superflex is an eligibility label, and the rest of the contest rules can vary. Use this tracker only when the contest card shows 12 teams, 20 rounds, a 20 player roster, and half PPR scoring.",
     },
   });
 
@@ -198,6 +238,7 @@ export const BEST_BALL_CONTEST_ORDER: readonly BestBallContestId[] = [
   "bbm-vii",
   "puppy",
   "little-dalmatian-2",
+  "six-man",
   "eliminator",
   "weekly-winners",
   "sit-and-go",

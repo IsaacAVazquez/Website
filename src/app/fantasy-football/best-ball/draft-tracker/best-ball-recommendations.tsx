@@ -11,7 +11,7 @@ const COMPONENT_LABELS: Record<keyof BestBallRecommendation["components"], strin
   rosterNeed: "Roster fit",
   stackSchedule: "Stack",
   gameStack: "Week 17 game stack",
-  tierScarcity: "Tier cliff",
+  tierScarcity: "Positional scarcity",
   byeRisk: "Bye overlap",
   concentrationRisk: "Team concentration",
   spikeWeek: "Weekly projection spread",
@@ -45,7 +45,7 @@ export function BestBallRecommendations({
   onDraftPlayer: (player: Player) => void;
 }) {
   const description = recommendationMode === "exact"
-    ? "The score starts with current standard Underdog ADP, where one point equals one market pick, then applies at most seven points of roster and correlation adjustments. PPR best ball ECR is a separate reference. This is not a projected win rate."
+    ? "The score starts from how far the current pick sits past a player's expert consensus rank, then moves half a point for every pick the Underdog market disagrees with that rank, so consensus and market count the same. At most seven points of roster, scarcity, and correlation adjustments follow, where scarcity reads both the tier cliff and how many board spots the position gives up by waiting a turn. The consensus board is full PPR while these contests score half PPR. This is not a projected win rate."
     : "The sourced board and roster targets remain available, but this preset does not produce exact player cards.";
 
   return (

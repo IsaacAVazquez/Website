@@ -8,6 +8,7 @@ export type BestBallContestId =
   | "bbm-vii"
   | "puppy"
   | "little-dalmatian-2"
+  | "six-man"
   | "eliminator"
   | "weekly-winners"
   | "sit-and-go"

@@ -666,10 +666,14 @@ describe("best ball Draft Outlook", () => {
   });
 
   it("tests bye coverage against attainable Superflex compositions", () => {
+    // Superflex drafts 20 rounds, so this leaves two spare picks. Every RB and TE
+    // shares bye 9, which needs three replacements, and two spares cover only two of
+    // them. Sizing the fixture to the roster is the point, because a fixture with more
+    // spare picks than missing starters can always cover itself and proves nothing.
     const positions: Position[] = [
       "QB", "QB", "QB",
       "RB", "RB", "RB",
-      "WR", "WR", "WR", "WR", "WR", "WR", "WR", "WR",
+      "WR", "WR", "WR", "WR", "WR", "WR", "WR", "WR", "WR", "WR",
       "TE", "TE",
     ];
     const picks: BestBallDraftPick[] = positions.map((position, index) => ({

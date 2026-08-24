@@ -59,6 +59,7 @@ describe("best ball contest catalog", () => {
       "bbm-vii",
       "puppy",
       "little-dalmatian-2",
+      "six-man",
       "eliminator",
       "weekly-winners",
       "sit-and-go",
@@ -67,9 +68,12 @@ describe("best ball contest catalog", () => {
     expect(Object.keys(BEST_BALL_CONTESTS).sort()).toEqual([...BEST_BALL_CONTEST_ORDER].sort());
 
     for (const contest of Object.values(BEST_BALL_CONTESTS)) {
-      expect(contest.teams).toBe(12);
-      expect(contest.rounds).toBe(18);
-      expect(contest.rosterSize).toBe(18);
+      // Underdog's active NFL best ball styles are 12-team/18-round, the 6-team
+      // variant of the same roster, and 12-team/20-round Superflex. Roster size
+      // always equals the draft rounds because every pick fills a roster spot.
+      expect([6, 12]).toContain(contest.teams);
+      expect([18, 20]).toContain(contest.rounds);
+      expect(contest.rosterSize).toBe(contest.rounds);
       expect(contest.scoring).toBe("HALF_PPR");
       expect(contest.rulesAsOf).toBe(BEST_BALL_RULES_AS_OF);
       expect(contest.officialRulesUrl).toMatch(/^https:\/\//);
@@ -82,11 +86,13 @@ describe("best ball contest catalog", () => {
     expect(SUPERFLEX_BEST_BALL_LINEUP).toEqual({
       QB: 1,
       RB: 2,
-      WR: 3,
+      WR: 2,
       TE: 1,
-      FLEX: 0,
+      FLEX: 1,
       SUPERFLEX: 1,
     });
+    expect(BEST_BALL_CONTESTS.superflex.rounds).toBe(20);
+    expect(BEST_BALL_CONTESTS["six-man"].teams).toBe(6);
     expect(BEST_BALL_CONTESTS.puppy.strategyProfileId).toBe(
       BEST_BALL_CONTESTS["bbm-vii"].strategyProfileId
     );
@@ -343,6 +349,34 @@ describe("recommendation scorer", () => {
     adp: 19,
   });
 
+  it("lets the expert consensus move the score instead of cancelling out of it", () => {
+    // Until 2026-08-23 the base rank and ADP terms summed to currentPick - ADP, so ECR
+    // had exactly zero weight and a far worse consensus player beat a better one on a
+    // single slot of ADP. Both halves of that are asserted here.
+    const sameAdp = recommendBestBallPlayers({
+      players: [
+        player("wr-good-ecr", "WR", 20, { team: "SF", byeWeek: 7, adp: 30 }),
+        player("wr-bad-ecr", "WR", 60, { team: "SF", byeWeek: 7, adp: 30 }),
+      ],
+      picks: [],
+      userTeamNumber: 1,
+      currentPickNumber: 40,
+    });
+    const byId = new Map(sameAdp.map((entry) => [entry.player.id, entry.score]));
+    expect(byId.get("wr-good-ecr")).toBeGreaterThan(byId.get("wr-bad-ecr") as number);
+
+    const nearAdp = recommendBestBallPlayers({
+      players: [
+        player("wr-ecr20-adp31", "WR", 20, { team: "SF", byeWeek: 7, adp: 31 }),
+        player("wr-ecr60-adp30", "WR", 60, { team: "SF", byeWeek: 7, adp: 30 }),
+      ],
+      picks: [],
+      userTeamNumber: 1,
+      currentPickNumber: 40,
+    });
+    expect(nearAdp[0].player.id).toBe("wr-ecr20-adp31");
+  });
+
   it("returns visible component scores and reasons", () => {
     const [recommendation] = recommendBestBallPlayers({
       players: [stackCandidate],
@@ -371,7 +405,7 @@ describe("recommendation scorer", () => {
     ]);
   });
 
-  it("prices one ADP slot as one point without counting ADP twice", () => {
+  it("prices one ADP slot as half a point so the market cannot cancel the consensus", () => {
     const earlierMarket = player("earlier-market", "WR", 30, { team: "SEA", adp: 31 });
     const laterMarket = player("later-market", "WR", 30, { team: "LAR", adp: 32 });
     const recommendations = recommendBestBallPlayers({
@@ -387,9 +421,11 @@ describe("recommendation scorer", () => {
     const laterMarketScore =
       (later?.components.baseRank ?? 0) + (later?.components.adpValue ?? 0);
 
-    expect(earlierMarketScore).toBe(9);
-    expect(laterMarketScore).toBe(8);
-    expect(earlierMarketScore - laterMarketScore).toBe(1);
+    // Both players sit at ECR 30 from pick 40, so the market term is the only mover.
+    // The pair resolves to currentPick - (ECR + ADP) / 2 rather than currentPick - ADP.
+    expect(earlierMarketScore).toBe(9.5);
+    expect(laterMarketScore).toBe(9);
+    expect(earlierMarketScore - laterMarketScore).toBe(0.5);
   });
 
   it("does not use standard-lineup ADP in Superflex recommendations", () => {
@@ -568,6 +604,73 @@ describe("recommendation scorer", () => {
     expect(withoutCliff?.components.tierScarcity).toBeLessThan(
       (withCliff?.components.tierScarcity ?? 0) / 4
     );
+  });
+
+  it("scores the position it costs the most to wait a turn on, with no tier cliff in play", () => {
+    // Team 1 picks at 1 and again at 24, so the market has 23 picks to empty a position.
+    // Nobody carries a tier, which pins the whole adjustment on the wait cost.
+    const scarceNow = player("scarce-rb", "RB", 10, { team: "GB", adp: 10 });
+    const scarceSurvivor = player("scarce-rb-late", "RB", 60, { team: "NYJ", adp: 30 });
+    const deepNow = player("deep-wr", "WR", 10, { team: "SEA", adp: 10 });
+    const deepSurvivor = player("deep-wr-late", "WR", 12, { team: "MIN", adp: 30 });
+
+    const recommendations = recommendBestBallPlayers({
+      players: [scarceNow, scarceSurvivor, deepNow, deepSurvivor],
+      picks: [],
+      userTeamNumber: 1,
+      currentPickNumber: 1,
+    });
+    const scarce = recommendations.find((entry) => entry.player.id === scarceNow.id);
+    const deep = recommendations.find((entry) => entry.player.id === deepNow.id);
+
+    // Waiting on RB costs 50 board spots against 2 for WR, and both players carry the same
+    // rank and the same price, so the gap between them comes from the scarcity term alone.
+    expect(scarce?.components.tierScarcity).toBe(2);
+    expect(deep?.components.tierScarcity).toBeLessThan(0.2);
+    expect(scarce?.score).toBeGreaterThan(deep?.score ?? 0);
+  });
+
+  it("keeps a trivial wait cost small even when it is the largest one on the board", () => {
+    // RB costs 2 board spots to wait on and WR costs 1, so RB leads every other needed
+    // position. Leading the field is not the same as being scarce, and on a board this deep
+    // neither position should collect anything close to the full adjustment.
+    const rbNow = player("thin-rb", "RB", 10, { team: "GB", adp: 10 });
+    const rbLate = player("thin-rb-late", "RB", 12, { team: "NYJ", adp: 30 });
+    const wrNow = player("thin-wr", "WR", 10, { team: "SEA", adp: 10 });
+    const wrLate = player("thin-wr-late", "WR", 11, { team: "MIN", adp: 30 });
+
+    const recommendations = recommendBestBallPlayers({
+      players: [rbNow, rbLate, wrNow, wrLate],
+      picks: [],
+      userTeamNumber: 1,
+      currentPickNumber: 1,
+    });
+    const leader = recommendations.find((entry) => entry.player.id === rbNow.id);
+
+    expect(leader?.components.tierScarcity).toBeGreaterThan(0);
+    expect(leader?.components.tierScarcity).toBeLessThan(0.5);
+  });
+
+  it("treats a position with no survivor as the most scarce the reading goes", () => {
+    // Every RB is priced to be gone before pick 24, while WR keeps one. The RB pool has a
+    // readable market, so this is scarcity rather than missing data, and it has to outscore
+    // the position the market says lasts.
+    const rbNow = player("gone-rb", "RB", 10, { team: "GB", adp: 10 });
+    const rbAlsoGone = player("gone-rb-two", "RB", 14, { team: "NYJ", adp: 18 });
+    const wrNow = player("kept-wr", "WR", 10, { team: "SEA", adp: 10 });
+    const wrLate = player("kept-wr-late", "WR", 11, { team: "MIN", adp: 30 });
+
+    const recommendations = recommendBestBallPlayers({
+      players: [rbNow, rbAlsoGone, wrNow, wrLate],
+      picks: [],
+      userTeamNumber: 1,
+      currentPickNumber: 1,
+    });
+    const exhausted = recommendations.find((entry) => entry.player.id === rbNow.id);
+    const kept = recommendations.find((entry) => entry.player.id === wrNow.id);
+
+    expect(exhausted?.components.tierScarcity).toBe(2);
+    expect(kept?.components.tierScarcity ?? 0).toBeLessThan(0.5);
   });
 
   it("measures a standard tier cliff on ECR even when ADP order is inverted", () => {

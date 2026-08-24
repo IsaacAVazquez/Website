@@ -96,6 +96,18 @@ const CONTESTS: ContestCopy[] = [
     showsWeek17: true,
   },
   {
+    id: "six-man",
+    label: "6-Man Best Ball",
+    shortLabel: "6-Man",
+    format: "6 teams, 18 rounds, half PPR",
+    structure: "Underdog runs several tournament shapes on this style, from the two round Frenchie Sprint that scores Weeks 1 through 14 and then Weeks 15 through 17 together, up to the usual four round formats.",
+    brief:
+      "Six teams drafting an 18 player roster means every entrant leaves with players a twelve team room would never reach, so I stop treating scarcity as the main constraint.",
+    build: "Take the best available player later than I would in a twelve team room, because the tier behind the one I am looking at is still there on the way back.",
+    risk: "The snapshot's ADP comes from twelve team drafts, so it prices players correctly but not pick slots here, and reading it as a reach or a steal will mislead me.",
+    showsWeek17: true,
+  },
+  {
     id: "eliminator",
     label: "The Eliminator",
     shortLabel: "Eliminator",
@@ -135,8 +147,8 @@ const CONTESTS: ContestCopy[] = [
     id: "superflex",
     label: "Superflex",
     shortLabel: "Superflex",
-    format: "12 teams, 18 rounds, half PPR model",
-    structure: "The flex slot can use a quarterback. The contest label determines the rest of the rules, so the linked tracker applies only when the contest card matches this model.",
+    format: "12 teams, 20 rounds, half PPR model",
+    structure: "A separate slot beside the normal flex can use a quarterback, and the room starts one fewer receiver to pay for it. The contest label determines the rest of the rules, so the linked tracker applies only when the contest card matches this model.",
     brief:
       "Quarterbacks carry more weekly lineup value here because two can score for the roster at the same time.",
     build: "Move quarterbacks up, leave the draft with three or four starters, and protect against shared byes before filling the last luxury pick.",
@@ -220,8 +232,9 @@ const RECOMMENDATIONS = [
 
 const PAGE_SIZE = 80;
 
-/** Every board on this page groups into 12-pick plates, one per draft round. */
-const ROUND_SIZE = 12;
+// Round plates are one draft round wide, so the plate size is the selected contest's
+// team count rather than a constant. 6-Man drafts the same 18-round roster with half
+// the room, so a 12-pick plate would put its players two rounds off their real one.
 
 const PILL_ACTION_CLASS =
   "inline-flex min-h-touch items-center rounded-full border px-4 font-mono text-2xs uppercase tracking-[0.06em] no-underline";
@@ -286,8 +299,25 @@ function describeAdpDelta(value: number | null): string {
   return "Priced about even with the PPR reference";
 }
 
+/**
+ * Underdog pays 0.5 per reception, but FantasyPros publishes exactly one best ball
+ * consensus and it is full PPR. The half PPR boards it does publish are redraft boards,
+ * which would drop the best ball roster logic this tool is built on, so the mismatch
+ * is disclosed rather than traded away.
+ */
+const SCORING_BASIS_NOTE =
+  "ECR is full PPR while these contests score half PPR, so it reads pass catchers a little high and is a reference rather than a price.";
+
 /** The one live copy of the board-order policy, shown in the contest lens footer. */
 function getBoardPolicyLine(
+  contest: ContestCopy,
+  adpAvailable: boolean,
+  adpProvider: string | undefined
+): string {
+  return `${describeBoardOrder(contest, adpAvailable, adpProvider)} · ${SCORING_BASIS_NOTE}`;
+}
+
+function describeBoardOrder(
   contest: ContestCopy,
   adpAvailable: boolean,
   adpProvider: string | undefined
@@ -534,18 +564,19 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
   const visiblePlayers = filteredPlayers.slice(0, visibleCount);
   const hasMore = visibleCount < filteredPlayers.length;
 
-  // Group the windowed rows into 12-pick round plates keyed off the lens rank,
-  // so a filtered board still shows each player inside his real round.
+  // Group the windowed rows into one-round plates keyed off the lens rank, so a
+  // filtered board still shows each player inside his real round.
+  const roundSize = activePreset.teams;
   const roundGroups = useMemo<RoundGroup[]>(() => {
     const groups: RoundGroup[] = [];
     for (const player of visiblePlayers) {
-      const round = Math.ceil(player.bestBallRank / ROUND_SIZE);
+      const round = Math.ceil(player.bestBallRank / roundSize);
       const current = groups[groups.length - 1];
       if (!current || current.round !== round) groups.push({ round, rows: [player] });
       else current.rows.push(player);
     }
     return groups;
-  }, [visiblePlayers]);
+  }, [visiblePlayers, roundSize]);
 
   function updateRouteState(patch: Partial<BestBallSearchState>) {
     // The typed query is the live one, so a contest or position tap carries it
@@ -920,7 +951,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
               </span>
             </div>
             {roundGroups.map((group, index) => {
-              const fullRound = group.rows.length === ROUND_SIZE;
+              const fullRound = group.rows.length === roundSize;
               return (
                 <section
                   key={`round-${group.round}`}
@@ -946,7 +977,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                         {fullRound ? "full round on this board" : `${group.rows.length} shown`}
                       </span>
                       <span className="ml-auto font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
-                        picks {group.round * ROUND_SIZE - (ROUND_SIZE - 1)}–{group.round * ROUND_SIZE}
+                        picks {group.round * roundSize - (roundSize - 1)}–{group.round * roundSize}
                       </span>
                     </div>
                     <ul className="m-0 list-none p-0">

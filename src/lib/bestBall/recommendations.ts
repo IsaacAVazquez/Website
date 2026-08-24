@@ -124,6 +124,50 @@ function tierCliffSignal(
   return { value: urgency * magnitude, remainingInTier: sameTier.length, gap };
 }
 
+/**
+ * How many board spots a position gives up by waiting a full turn. It finds the best player
+ * at the position whose market price says he is still there at the user's next pick, and
+ * returns the board gap between him and the best one available right now.
+ *
+ * This is the scarcity a tier cliff cannot see. A position can sit in a perfectly deep tier
+ * and still be the one to take now, because the whole tier will be gone by the time the turn
+ * comes back around, and the tier cliff term reads that as no cliff at all.
+ *
+ * Three outcomes, because two of them would otherwise both read as a zero cost and mean
+ * opposite things. A `measured` cost is the board gap. `exhausted` means the position has
+ * a readable market and every player in it is priced to be gone before the turn returns,
+ * which is the most scarce a position can be. `unmeasurable` means the board cannot answer
+ * at all, because there is no next pick, no readable rank, or no readable ADP anywhere in
+ * the pool, and that has to stay distinct from a position the market says will keep.
+ */
+type PositionWaitCost =
+  | { kind: "measured"; cost: number }
+  | { kind: "exhausted" }
+  | { kind: "unmeasurable" };
+
+function positionWaitCost(
+  available: readonly RankedBestBallPlayer[],
+  followingUserPick: number | null,
+  rankOf: (player: RankedBestBallPlayer) => number | undefined,
+  hasReadableAdp: (player: RankedBestBallPlayer) => boolean
+): PositionWaitCost {
+  if (followingUserPick === null) return { kind: "unmeasurable" };
+  const ranked = available
+    .map((player) => ({ rank: rankOf(player), player }))
+    .filter((entry): entry is { rank: number; player: RankedBestBallPlayer } =>
+      isFiniteNumber(entry.rank)
+    )
+    .sort((left, right) => left.rank - right.rank);
+  if (ranked.length === 0) return { kind: "unmeasurable" };
+
+  const priced = ranked.filter((entry) => hasReadableAdp(entry.player));
+  if (priced.length === 0) return { kind: "unmeasurable" };
+
+  const survivor = priced.find((entry) => Number(entry.player.adp) >= followingUserPick);
+  if (!survivor) return { kind: "exhausted" };
+  return { kind: "measured", cost: Math.max(0, survivor.rank - ranked[0].rank) };
+}
+
 function formsQbPassCatcherStack(candidate: Player, roster: readonly Player[]): number {
   const team = candidate.team.trim().toUpperCase();
   if (!team || team === "FA") return 0;
@@ -259,6 +303,23 @@ function minimumWorstByeLineupGap(
   );
 }
 
+/**
+ * How far the market price may pull a player off his expert consensus rank.
+ *
+ * The base rank term is `currentPick - ECR` and this term is `weight * (ECR - ADP)`.
+ * At a weight of 1 the two sum to `currentPick - ADP`, the consensus rank cancels
+ * out of the arithmetic entirely, and the score becomes a pure market reading, which
+ * is what this engine did until 2026-08-23. A player 40 consensus spots worse then
+ * outscored a better one on a single slot of ADP. At 0 the market is ignored and a
+ * player who has fallen ten rounds past his price looks no better than one going on time.
+ *
+ * At 0.5 the score resolves to `currentPick - (ECR + ADP) / 2`, so a sourced expert
+ * board and a sourced market count the same amount. That split is tuned judgment and
+ * not a fitted parameter, and it is the one number to turn if the board leans too far
+ * toward either side.
+ */
+const ADP_VALUE_WEIGHT = 0.5;
+
 export function recommendBestBallPlayers({
   players,
   picks,
@@ -313,6 +374,40 @@ export function recommendBestBallPlayers({
     availableByPosition.set(position, [...(availableByPosition.get(position) ?? []), ranked]);
   }
 
+  const useSuperflexBoard = preset.lineupVariant === "superflex";
+  const boardRankOf = (player: RankedBestBallPlayer): number | undefined =>
+    useSuperflexBoard ? player.superflexRank : player.bestBallEcr;
+
+  // The cost of waiting a turn belongs to the board rather than to any one candidate, so it
+  // is measured once per position. Each position is then read against the most expensive of
+  // the positions the roster still needs, because the question a draft board has to answer
+  // is which position to take now, not what a gap is worth in the abstract. Positions the
+  // roster is already done with are left out of that comparison so a scarce QB the build has
+  // no room for cannot make every position the roster does need look cheap.
+  const waitCostByPosition = new Map<BestBallPosition, PositionWaitCost>();
+  for (const [position, pool] of availableByPosition) {
+    waitCostByPosition.set(
+      position,
+      positionWaitCost(
+        pool,
+        followingUserPick,
+        boardRankOf,
+        // Survival is a market question, so a preset whose slate the snapshot's ADP does not
+        // price gets no wait cost at all and leans on the tier cliff instead.
+        (player) => hasContestAdp && hasUsableAdp(player, preset.rounds, preset.teams)
+      )
+    );
+  }
+  const highestWaitCost = Math.max(
+    0,
+    ...[...waitCostByPosition.entries()]
+      .filter(
+        ([position]) =>
+          targets.targets[position].recommended > targets.targets[position].drafted
+      )
+      .map(([, entry]) => (entry.kind === "measured" ? entry.cost : 0))
+  );
+
   const recommendations = rankedPlayers
     .filter((player) => !draftedIds.has(player.id))
     .filter(
@@ -335,11 +430,9 @@ export function recommendBestBallPlayers({
       const sourceRank = preset.lineupVariant === "superflex"
         ? ranking.adjustedRank
         : ranking.bestBallEcr;
-      // In standard rooms, base rank plus ADP value resolves to current pick minus ADP.
-      // That keeps one ADP slot worth about one score point without counting ADP twice.
       const baseRank = roundScore(currentPickNumber - sourceRank);
       const adpValue = hasUsableContestAdp
-        ? roundScore(sourceRank - Number(player.adp))
+        ? roundScore(ADP_VALUE_WEIGHT * (sourceRank - Number(player.adp)))
         : 0;
       const adpDelta = hasUsableContestAdp
         ? currentPickNumber - Number(player.adp)
@@ -430,11 +523,25 @@ export function recommendBestBallPlayers({
       const cliff = tierCliffSignal(
         ranking,
         availableByPosition.get(position) ?? [],
-        preset.lineupVariant === "superflex"
+        useSuperflexBoard
       );
+      const waitEntry = waitCostByPosition.get(position) ?? { kind: "unmeasurable" as const };
+      const waitCost = waitEntry.kind === "measured" ? waitEntry.cost : null;
+      // Two factors, both needed. The relative one reads this position against the scarcest
+      // position the roster still needs, which is the choice a drafter actually faces. The
+      // absolute one holds the term down when the whole board is deep, because on its own the
+      // relative factor hands the full bonus to whichever position leads, even when it leads
+      // by a single board spot. A cost of one full round of picks counts as fully scarce.
+      // A position with no survivor at all is as scarce as the term can express.
+      const relativeWait =
+        waitCost !== null && highestWaitCost > 0 ? clamp(waitCost / highestWaitCost, 0, 1) : 0;
+      const absoluteWait = waitCost !== null ? clamp(waitCost / preset.teams, 0, 1) : 0;
+      const waitSignal =
+        waitEntry.kind === "exhausted" ? 1 : relativeWait * absoluteWait;
+      const scarcitySignal = Math.max(cliff.value, waitSignal);
       const tierScarcity = roundScore(
         needsPosition
-          ? clamp(cliff.value * (profile.scarcityWeight / 2), 0, 2)
+          ? clamp(scarcitySignal * (profile.scarcityWeight / 2), 0, 2)
           : 0
       );
       const waitUntilNextTurn =
@@ -474,7 +581,7 @@ export function recommendBestBallPlayers({
                 : "This snapshot has no matching ADP source for this contest slate, so market value adds no score."
               : adpDelta === null
               ? "No separate ADP match is available, so ADP adds no score."
-              : `ADP is ${player.adp?.toFixed(1)} at pick ${currentPickNumber}. Each pick of market price difference changes the score by one point.`,
+              : `ADP is ${player.adp?.toFixed(1)} and the PPR best ball ECR is ${ranking.bestBallEcr}. The market moves the score by ${ADP_VALUE_WEIGHT} points per pick of disagreement, so consensus and market carry equal weight.`,
         },
         {
           component: "rosterNeed",
@@ -505,12 +612,16 @@ export function recommendBestBallPlayers({
           component: "tierScarcity",
           score: tierScarcity,
           detail: !needsPosition
-            ? `The roster already has its target ${position} count, so no tier cliff applies.`
-            : cliff.remainingInTier === 0
-              ? "This snapshot has no tier for this player, so no tier cliff applies."
-              : cliff.value > 0
-                ? `${cliff.remainingInTier} player${cliff.remainingInTier === 1 ? " remains" : "s remain"} in this ${position} tier, and the next tier starts ${cliff.gap.toFixed(0)} board spots later.`
-                : `${cliff.remainingInTier} players remain in this ${position} tier, which is deep enough that no cliff applies.`,
+            ? `The roster already has its target ${position} count, so no scarcity adjustment applies.`
+            : waitEntry.kind === "exhausted" && waitSignal >= cliff.value
+              ? `Every ${position} left on the board is priced to be gone before your next pick at ${followingUserPick}, which is as scarce as this reading goes.`
+              : waitCost !== null && waitCost > 0 && waitSignal >= cliff.value
+                ? `Waiting a turn on ${position} costs ${waitCost.toFixed(0)} board spots, because the best one the market says lasts until pick ${followingUserPick} sits that far below the best one available now. The most expensive position this roster still needs costs ${highestWaitCost.toFixed(0)}.`
+                : cliff.value > 0
+                  ? `${cliff.remainingInTier} player${cliff.remainingInTier === 1 ? " remains" : "s remain"} in this ${position} tier, and the next tier starts ${cliff.gap.toFixed(0)} board spots later.`
+                  : waitEntry.kind === "unmeasurable"
+                    ? `No readable ADP covers the ${position} board here, so the cost of waiting a turn cannot be measured and only the tier cliff applies.`
+                    : `The market says a comparable ${position} lasts until your next pick at ${followingUserPick}, so no scarcity adjustment applies.`,
         },
         {
           component: "byeRisk",
