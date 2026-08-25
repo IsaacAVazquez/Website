@@ -302,6 +302,37 @@
       "crew": []
     }
   },
+  "2f31a7f0-968a-448d-b447-333bf0341078": {
+    "launchId": "2f31a7f0-968a-448d-b447-333bf0341078",
+    "launchName": "Falcon 9 Block 5 | Rivada 4",
+    "window": "upcoming",
+    "images": {
+      "launch": [
+        {
+          "label": "Falcon 9 Block 5 | Rivada 4",
+          "localPath": "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_image_20230807133459.jpeg"
+        }
+      ],
+      "patch": [],
+      "rocket": [
+        {
+          "label": "Falcon 9 Block 5",
+          "localPath": "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_image_20230807133459.jpeg"
+        }
+      ],
+      "spacecraft": [],
+      "pad": [
+        {
+          "label": "Space Launch Complex 4E",
+          "localPath": "/data/spacex/images/b752567507d74cae.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/map_images/pad_16_20200803143532.jpg"
+        }
+      ],
+      "crew": []
+    }
+  },
   "36ab6924-bb36-416a-b71d-cda9e88004be": {
     "launchId": "36ab6924-bb36-416a-b71d-cda9e88004be",
     "launchName": "Falcon 9 Block 5 | Starlink Group 10-19",
