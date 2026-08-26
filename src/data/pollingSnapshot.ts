@@ -1,24 +1,19 @@
 import type { PollingSnapshot } from "@/types/polling";
 
 export const pollingSnapshot: PollingSnapshot = {
-  "generatedAt": "2026-07-20T20:16:59.611Z",
-  "sourceAsOf": "2026-06-30",
+  "generatedAt": "2026-08-26T06:22:38.929Z",
+  "sourceAsOf": "2026-08-24",
   "sourceLabel": "VoteHub Polling API, CC BY 4.0",
   "approvalAvg": {
-    "approve": 40.2,
-    "disapprove": 57.6,
-    "net": -17.4
+    "approve": 40.3,
+    "disapprove": 57.8,
+    "net": -17.5
   },
   "approvalTrend": [
     {
-      "date": "2025-07-15",
-      "approve": 44.4,
-      "disapprove": 52.8
-    },
-    {
       "date": "2025-08-15",
-      "approve": 44.4,
-      "disapprove": 51.6
+      "approve": 44.2,
+      "disapprove": 50.8
     },
     {
       "date": "2025-09-15",
@@ -37,7 +32,7 @@ export const pollingSnapshot: PollingSnapshot = {
     },
     {
       "date": "2025-12-15",
-      "approve": 43.6,
+      "approve": 43.7,
       "disapprove": 53.1
     },
     {
@@ -52,26 +47,87 @@ export const pollingSnapshot: PollingSnapshot = {
     },
     {
       "date": "2026-03-15",
-      "approve": 40.9,
-      "disapprove": 55.9
+      "approve": 41,
+      "disapprove": 55.8
     },
     {
       "date": "2026-04-15",
       "approve": 39.9,
-      "disapprove": 57.2
+      "disapprove": 57.1
     },
     {
       "date": "2026-05-15",
-      "approve": 39.7,
-      "disapprove": 57.4
+      "approve": 39.8,
+      "disapprove": 57.3
     },
     {
       "date": "2026-06-15",
       "approve": 40.3,
       "disapprove": 57.5
+    },
+    {
+      "date": "2026-08-15",
+      "approve": 40.3,
+      "disapprove": 57.8
     }
   ],
   "approvalPolls": [
+    {
+      "id": "appdonips081c616d",
+      "pollster": "Ipsos",
+      "sponsor": "Reuters",
+      "startDate": "2026-08-21",
+      "endDate": "2026-08-24",
+      "sampleSize": 951,
+      "sampleType": "RV",
+      "moe": null,
+      "methodology": "unknown",
+      "approve": 37,
+      "disapprove": 63,
+      "unsure": 0
+    },
+    {
+      "id": "appdonyou5d559444",
+      "pollster": "YouGov",
+      "sponsor": "The Economist",
+      "startDate": "2026-08-21",
+      "endDate": "2026-08-24",
+      "sampleSize": 1379,
+      "sampleType": "RV",
+      "moe": null,
+      "methodology": "unknown",
+      "approve": 40,
+      "disapprove": 57,
+      "unsure": 3
+    },
+    {
+      "id": "appdonrmga41ef363",
+      "pollster": "RMG Research",
+      "sponsor": "Napolitan Institute",
+      "startDate": "2026-08-10",
+      "endDate": "2026-08-17",
+      "sampleSize": 2000,
+      "sampleType": "RV",
+      "moe": null,
+      "methodology": "unknown",
+      "approve": 42,
+      "disapprove": 55,
+      "unsure": 3
+    },
+    {
+      "id": "appdonnob90e4a532",
+      "pollster": "Noble Predictive Insights",
+      "sponsor": "The Center Square",
+      "startDate": "2026-08-12",
+      "endDate": "2026-08-16",
+      "sampleSize": 2533,
+      "sampleType": "RV",
+      "moe": null,
+      "methodology": "unknown",
+      "approve": 42,
+      "disapprove": 56,
+      "unsure": 2
+    },
     {
       "id": "appdonyou319bfe49",
       "pollster": "YouGov",
@@ -425,68 +481,69 @@ export const pollingSnapshot: PollingSnapshot = {
       "approve": 39,
       "disapprove": 59,
       "unsure": 2
-    },
-    {
-      "id": "appdonipsafe1f92e",
-      "pollster": "Ipsos",
-      "sponsor": "Reuters",
-      "startDate": "2026-06-03",
-      "endDate": "2026-06-08",
-      "sampleSize": 3578,
-      "sampleType": "RV",
-      "moe": null,
-      "methodology": "unknown",
-      "approve": 38,
-      "disapprove": 61,
-      "unsure": 1
-    },
-    {
-      "id": "appdonmor94b82fbd",
-      "pollster": "Morning Consult",
-      "startDate": "2026-06-06",
-      "endDate": "2026-06-08",
-      "sampleSize": 2200,
-      "sampleType": "RV",
-      "moe": null,
-      "methodology": "unknown",
-      "approve": 44,
-      "disapprove": 54,
-      "unsure": 2
-    },
-    {
-      "id": "appdonemeab263756",
-      "pollster": "Emerson College",
-      "startDate": "2026-06-07",
-      "endDate": "2026-06-08",
-      "sampleSize": 1200,
-      "sampleType": "LV",
-      "moe": null,
-      "methodology": "unknown",
-      "approve": 39.4,
-      "disapprove": 54.6,
-      "unsure": 6
-    },
-    {
-      "id": "appdonglo438a47fc",
-      "pollster": "Global Strategy Group",
-      "sponsor": "Navigator Research",
-      "startDate": "2026-06-04",
-      "endDate": "2026-06-08",
-      "sampleSize": 1000,
-      "sampleType": "RV",
-      "moe": null,
-      "methodology": "unknown",
-      "approve": 40,
-      "disapprove": 58,
-      "unsure": 2
     }
   ],
   "genericBallotAvg": {
-    "dem": 46.9,
-    "rep": 41.6,
-    "margin": 5.3
+    "dem": 44.7,
+    "rep": 39,
+    "margin": 5.7
   },
   "genericBallotPolls": [
+    {
+      "id": "gen202ipsc06cf7d6",
+      "pollster": "Ipsos",
+      "sponsor": "Reuters",
+      "startDate": "2026-08-21",
+      "endDate": "2026-08-24",
+      "sampleSize": 951,
+      "sampleType": "RV",
+      "moe": null,
+      "methodology": "unknown",
+      "dem": 41,
+      "rep": 35,
+      "other": 24
+    },
+    {
+      "id": "gen202you3f6356b0",
+      "pollster": "YouGov",
+      "sponsor": "The Economist",
+      "startDate": "2026-08-21",
+      "endDate": "2026-08-24",
+      "sampleSize": 1377,
+      "sampleType": "RV",
+      "moe": null,
+      "methodology": "unknown",
+      "dem": 46,
+      "rep": 40,
+      "other": 14
+    },
+    {
+      "id": "gen202nob71129946",
+      "pollster": "Noble Predictive Insights",
+      "sponsor": "The Center Square",
+      "startDate": "2026-08-12",
+      "endDate": "2026-08-16",
+      "sampleSize": 2533,
+      "sampleType": "RV",
+      "moe": null,
+      "methodology": "unknown",
+      "dem": 47,
+      "rep": 42,
+      "other": 11
+    },
+    {
+      "id": "gen202mora1cc2932",
+      "pollster": "Morning Consult",
+      "startDate": "2026-07-06",
+      "endDate": "2026-07-12",
+      "sampleSize": 24000,
+      "sampleType": "RV",
+      "moe": null,
+      "methodology": "unknown",
+      "dem": 46,
+      "rep": 43,
+      "other": 11
+    },
     {
       "id": "gen202foc8381e6bc",
       "pollster": "Focaldata",
@@ -838,59 +895,6 @@ export const pollingSnapshot: PollingSnapshot = {
       "dem": 53,
       "rep": 47,
       "other": 0
-    },
-    {
-      "id": "gen202cygbfde610f",
-      "pollster": "Cygnal",
-      "startDate": "2026-06-02",
-      "endDate": "2026-06-03",
-      "sampleSize": 1500,
-      "sampleType": "LV",
-      "moe": null,
-      "methodology": "unknown",
-      "dem": 49,
-      "rep": 44,
-      "other": 7
-    },
-    {
-      "id": "gen202qua8d4f16f1",
-      "pollster": "Quantus Insights",
-      "startDate": "2026-06-01",
-      "endDate": "2026-06-02",
-      "sampleSize": 1050,
-      "sampleType": "LV",
-      "moe": null,
-      "methodology": "unknown",
-      "dem": 47,
-      "rep": 42,
-      "other": 11
-    },
-    {
-      "id": "gen202thea1a0afb2",
-      "pollster": "The Bullfinch Group",
-      "startDate": "2026-05-29",
-      "endDate": "2026-06-02",
-      "sampleSize": 1000,
-      "sampleType": "RV",
-      "moe": null,
-      "methodology": "unknown",
-      "dem": 42,
-      "rep": 36,
-      "other": 22
-    },
-    {
-      "id": "gen202thef222ecc9",
-      "pollster": "The Winston Group",
-      "sponsor": "Winning the Issues",
-      "startDate": "2026-05-30",
-      "endDate": "2026-06-02",
-      "sampleSize": 1000,
-      "sampleType": "RV",
-      "moe": null,
-      "methodology": "unknown",
-      "dem": 48,
-      "rep": 41,
-      "other": 11
     }
   ],
   "senateRaces": [],
