@@ -4,7 +4,7 @@ import type { LaLigaSnapshot } from "@/types/la-liga";
 export const laLigaSnapshot: LaLigaSnapshot = {
   "season": "2026/27",
   "matchday": 3,
-  "generatedAt": "2026-08-29T13:54:08.550Z",
+  "generatedAt": "2026-08-29T22:42:47.172Z",
   "updatedAt": "2026-08-29",
   "sourceLabel": "football-data.org",
   "sourceUrls": {
@@ -14,11 +14,27 @@ export const laLigaSnapshot: LaLigaSnapshot = {
   },
   "clubs": [
     {
+      "id": "atl",
+      "code": "ATL",
+      "name": "Club Atlético de Madrid",
+      "shortName": "Atleti",
+      "position": 1,
+      "points": 7,
+      "played": 3,
+      "won": 2,
+      "drawn": 1,
+      "lost": 0,
+      "goalsFor": 7,
+      "goalsAgainst": 3,
+      "goalDifference": 4,
+      "accentColor": "#CB3524"
+    },
+    {
       "id": "ala",
       "code": "ALA",
       "name": "Deportivo Alavés",
       "shortName": "Alavés",
-      "position": 1,
+      "position": 2,
       "points": 7,
       "played": 3,
       "won": 2,
@@ -34,7 +50,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "code": "FCB",
       "name": "FC Barcelona",
       "shortName": "Barça",
-      "position": 2,
+      "position": 3,
       "points": 6,
       "played": 2,
       "won": 2,
@@ -50,7 +66,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "code": "RMA",
       "name": "Real Madrid CF",
       "shortName": "Real Madrid",
-      "position": 3,
+      "position": 4,
       "points": 6,
       "played": 2,
       "won": 2,
@@ -66,15 +82,15 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "code": "SEV",
       "name": "Sevilla FC",
       "shortName": "Sevilla FC",
-      "position": 4,
+      "position": 5,
       "points": 6,
-      "played": 2,
+      "played": 3,
       "won": 2,
       "drawn": 0,
-      "lost": 0,
-      "goalsFor": 5,
-      "goalsAgainst": 2,
-      "goalDifference": 3,
+      "lost": 1,
+      "goalsFor": 6,
+      "goalsAgainst": 5,
+      "goalDifference": 1,
       "accentColor": "#D2001C"
     },
     {
@@ -82,32 +98,16 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "code": "BET",
       "name": "Real Betis Balompié",
       "shortName": "Real Betis",
-      "position": 5,
+      "position": 6,
       "points": 6,
-      "played": 2,
+      "played": 3,
       "won": 2,
       "drawn": 0,
-      "lost": 0,
-      "goalsFor": 2,
-      "goalsAgainst": 0,
-      "goalDifference": 2,
-      "accentColor": "#00954C"
-    },
-    {
-      "id": "atl",
-      "code": "ATL",
-      "name": "Club Atlético de Madrid",
-      "shortName": "Atleti",
-      "position": 6,
-      "points": 4,
-      "played": 2,
-      "won": 1,
-      "drawn": 1,
-      "lost": 0,
+      "lost": 1,
       "goalsFor": 4,
-      "goalsAgainst": 2,
-      "goalDifference": 2,
-      "accentColor": "#CB3524"
+      "goalsAgainst": 5,
+      "goalDifference": -1,
+      "accentColor": "#00954C"
     },
     {
       "id": "osa",
@@ -124,6 +124,22 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "goalsAgainst": 1,
       "goalDifference": 1,
       "accentColor": "#D2001C"
+    },
+    {
+      "id": "lev",
+      "code": "LEV",
+      "name": "Levante UD",
+      "shortName": "Levante",
+      "position": 8,
+      "points": 4,
+      "played": 3,
+      "won": 1,
+      "drawn": 1,
+      "lost": 1,
+      "goalsFor": 5,
+      "goalsAgainst": 5,
+      "goalDifference": 0,
+      "accentColor": "#00285E"
     },
     {
       "id": "san",
@@ -146,15 +162,15 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "code": "ESP",
       "name": "RCD Espanyol de Barcelona",
       "shortName": "Espanyol",
-      "position": 9,
+      "position": 10,
       "points": 3,
-      "played": 2,
+      "played": 3,
       "won": 1,
       "drawn": 0,
-      "lost": 1,
-      "goalsFor": 4,
-      "goalsAgainst": 2,
-      "goalDifference": 2,
+      "lost": 2,
+      "goalsFor": 5,
+      "goalsAgainst": 4,
+      "goalDifference": 1,
       "accentColor": "#0057A8"
     },
     {
@@ -162,7 +178,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "code": "GET",
       "name": "Getafe CF",
       "shortName": "Getafe",
-      "position": 10,
+      "position": 11,
       "points": 3,
       "played": 2,
       "won": 1,
@@ -174,11 +190,27 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "accentColor": "#005CA9"
     },
     {
+      "id": "rso",
+      "code": "RSO",
+      "name": "Real Sociedad de Fútbol",
+      "shortName": "Real Sociedad",
+      "position": 12,
+      "points": 3,
+      "played": 3,
+      "won": 1,
+      "drawn": 0,
+      "lost": 2,
+      "goalsFor": 3,
+      "goalsAgainst": 6,
+      "goalDifference": -3,
+      "accentColor": "#0067B1"
+    },
+    {
       "id": "dep",
       "code": "DEP",
       "name": "RC Deportivo La Coruña",
       "shortName": "Deportivo",
-      "position": 11,
+      "position": 13,
       "points": 2,
       "played": 2,
       "won": 0,
@@ -194,7 +226,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "code": "VIL",
       "name": "Villarreal CF",
       "shortName": "Villarreal",
-      "position": 12,
+      "position": 14,
       "points": 2,
       "played": 3,
       "won": 0,
@@ -210,7 +242,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "code": "RAY",
       "name": "Rayo Vallecano de Madrid",
       "shortName": "Rayo Vallecano",
-      "position": 13,
+      "position": 15,
       "points": 1,
       "played": 2,
       "won": 0,
@@ -226,7 +258,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "code": "CEL",
       "name": "RC Celta de Vigo",
       "shortName": "Celta",
-      "position": 14,
+      "position": 16,
       "points": 1,
       "played": 2,
       "won": 0,
@@ -242,7 +274,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "code": "VAL",
       "name": "Valencia CF",
       "shortName": "Valencia",
-      "position": 15,
+      "position": 17,
       "points": 1,
       "played": 2,
       "won": 0,
@@ -258,7 +290,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "code": "MAL",
       "name": "Málaga CF",
       "shortName": "Málaga",
-      "position": 16,
+      "position": 18,
       "points": 1,
       "played": 2,
       "won": 0,
@@ -270,27 +302,11 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "accentColor": "#0A5EB3"
     },
     {
-      "id": "lev",
-      "code": "LEV",
-      "name": "Levante UD",
-      "shortName": "Levante",
-      "position": 17,
-      "points": 1,
-      "played": 2,
-      "won": 0,
-      "drawn": 1,
-      "lost": 1,
-      "goalsFor": 0,
-      "goalsAgainst": 3,
-      "goalDifference": -3,
-      "accentColor": "#00285E"
-    },
-    {
       "id": "elc",
       "code": "ELC",
       "name": "Elche CF",
       "shortName": "Elche",
-      "position": 18,
+      "position": 19,
       "points": 1,
       "played": 3,
       "won": 0,
@@ -306,7 +322,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "code": "ATH",
       "name": "Athletic Club",
       "shortName": "Athletic",
-      "position": 19,
+      "position": 20,
       "points": 0,
       "played": 2,
       "won": 0,
@@ -316,27 +332,29 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "goalsAgainst": 5,
       "goalDifference": -4,
       "accentColor": "#EE2523"
-    },
-    {
-      "id": "rso",
-      "code": "RSO",
-      "name": "Real Sociedad de Fútbol",
-      "shortName": "Real Sociedad",
-      "position": 19,
-      "points": 0,
-      "played": 2,
-      "won": 0,
-      "drawn": 0,
-      "lost": 2,
-      "goalsFor": 1,
-      "goalsAgainst": 5,
-      "goalDifference": -4,
-      "accentColor": "#0067B1"
     }
   ],
   "scorers": [
     {
       "rank": 1,
+      "name": "Roberto Fernández",
+      "clubId": "esp",
+      "clubCode": "ESP",
+      "total": 3,
+      "appearances": 3,
+      "perMatch": 1
+    },
+    {
+      "rank": 2,
+      "name": "Álex Baena",
+      "clubId": "atl",
+      "clubCode": "ATL",
+      "total": 3,
+      "appearances": 3,
+      "perMatch": 1
+    },
+    {
+      "rank": 3,
       "name": "Raphinha",
       "clubId": "fcb",
       "clubCode": "FCB",
@@ -345,7 +363,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "perMatch": 1.5
     },
     {
-      "rank": 2,
+      "rank": 4,
       "name": "Fermín López",
       "clubId": "fcb",
       "clubCode": "FCB",
@@ -354,7 +372,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "perMatch": 1.5
     },
     {
-      "rank": 3,
+      "rank": 5,
       "name": "Kylian Mbappé",
       "clubId": "rma",
       "clubCode": "RMA",
@@ -363,7 +381,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "perMatch": 1.5
     },
     {
-      "rank": 4,
+      "rank": 6,
       "name": "Yassir Zabiri",
       "clubId": "san",
       "clubCode": "SAN",
@@ -372,7 +390,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "perMatch": 1
     },
     {
-      "rank": 5,
+      "rank": 7,
       "name": "Mariano Díaz",
       "clubId": "ala",
       "clubCode": "ALA",
@@ -381,16 +399,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "perMatch": 0.6666666666666666
     },
     {
-      "rank": 6,
-      "name": "Roberto Fernández",
-      "clubId": "esp",
-      "clubCode": "ESP",
-      "total": 2,
-      "appearances": 2,
-      "perMatch": 1
-    },
-    {
-      "rank": 7,
+      "rank": 8,
       "name": "Pierre-Emerick Aubameyang",
       "clubId": "dep",
       "clubCode": "DEP",
@@ -399,31 +408,22 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "perMatch": 1
     },
     {
-      "rank": 8,
-      "name": "Nahuel Tenaglia",
-      "clubId": "ala",
-      "clubCode": "ALA",
-      "total": 1,
-      "appearances": 3,
-      "perMatch": 0.3333333333333333
-    },
-    {
       "rank": 9,
-      "name": "Mikel Rodríguez",
-      "clubId": "ala",
-      "clubCode": "ALA",
-      "total": 1,
+      "name": "Rodrigo Riquelme",
+      "clubId": "bet",
+      "clubCode": "BET",
+      "total": 2,
       "appearances": 3,
-      "perMatch": 0.3333333333333333
+      "perMatch": 0.6666666666666666
     },
     {
       "rank": 10,
-      "name": "Álvaro García",
-      "clubId": "ray",
-      "clubCode": "RAY",
-      "total": 1,
+      "name": "Brugui",
+      "clubId": "lev",
+      "clubCode": "LEV",
+      "total": 2,
       "appearances": 2,
-      "perMatch": 0.5
+      "perMatch": 1
     }
   ],
   "assists": [
@@ -435,6 +435,15 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "total": 2,
       "appearances": 3,
       "perMatch": 0.6666666666666666
+    },
+    {
+      "rank": 2,
+      "name": "Álex Baena",
+      "clubId": "atl",
+      "clubCode": "ATL",
+      "total": 1,
+      "appearances": 3,
+      "perMatch": 0.3333333333333333
     }
   ],
   "goalsPerMatchday": [
@@ -448,10 +457,88 @@ export const laLigaSnapshot: LaLigaSnapshot = {
     },
     {
       "matchday": 3,
-      "totalGoals": 6
+      "totalGoals": 20
     }
   ],
   "recentFixtures": [
+    {
+      "id": "564649",
+      "utcDate": "2026-08-29T19:30:00Z",
+      "status": "FINISHED",
+      "matchday": 3,
+      "stage": "REGULAR_SEASON",
+      "homeTeam": {
+        "id": "559",
+        "name": "Sevilla FC",
+        "shortName": "Sevilla FC",
+        "tla": "SEV",
+        "crest": "https://crests.football-data.org/559.png"
+      },
+      "awayTeam": {
+        "id": "78",
+        "name": "Club Atlético de Madrid",
+        "shortName": "Atleti",
+        "tla": "ATL",
+        "crest": "https://crests.football-data.org/78.png"
+      },
+      "score": {
+        "winner": "AWAY_TEAM",
+        "home": 1,
+        "away": 3
+      }
+    },
+    {
+      "id": "564653",
+      "utcDate": "2026-08-29T17:00:00Z",
+      "status": "FINISHED",
+      "matchday": 3,
+      "stage": "REGULAR_SEASON",
+      "homeTeam": {
+        "id": "92",
+        "name": "Real Sociedad de Fútbol",
+        "shortName": "Real Sociedad",
+        "tla": "RSO",
+        "crest": "https://crests.football-data.org/92.png"
+      },
+      "awayTeam": {
+        "id": "80",
+        "name": "RCD Espanyol de Barcelona",
+        "shortName": "Espanyol",
+        "tla": "ESP",
+        "crest": "https://crests.football-data.org/80.png"
+      },
+      "score": {
+        "winner": "HOME_TEAM",
+        "home": 2,
+        "away": 1
+      }
+    },
+    {
+      "id": "564655",
+      "utcDate": "2026-08-29T15:00:00Z",
+      "status": "FINISHED",
+      "matchday": 3,
+      "stage": "REGULAR_SEASON",
+      "homeTeam": {
+        "id": "88",
+        "name": "Levante UD",
+        "shortName": "Levante",
+        "tla": "LEV",
+        "crest": "https://crests.football-data.org/88.png"
+      },
+      "awayTeam": {
+        "id": "90",
+        "name": "Real Betis Balompié",
+        "shortName": "Real Betis",
+        "tla": "BET",
+        "crest": "https://crests.football-data.org/90.png"
+      },
+      "score": {
+        "winner": "HOME_TEAM",
+        "home": 5,
+        "away": 2
+      }
+    },
     {
       "id": "564648",
       "utcDate": "2026-08-28T19:30:00Z",
@@ -581,165 +668,9 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "home": 4,
         "away": 1
       }
-    },
-    {
-      "id": "564637",
-      "utcDate": "2026-08-25T19:00:00Z",
-      "status": "FINISHED",
-      "matchday": 1,
-      "stage": "REGULAR_SEASON",
-      "homeTeam": {
-        "id": "95",
-        "name": "Valencia CF",
-        "shortName": "Valencia",
-        "tla": "VAL",
-        "crest": "https://crests.football-data.org/95.png"
-      },
-      "awayTeam": {
-        "id": "90",
-        "name": "Real Betis Balompié",
-        "shortName": "Real Betis",
-        "tla": "BET",
-        "crest": "https://crests.football-data.org/90.png"
-      },
-      "score": {
-        "winner": "AWAY_TEAM",
-        "home": 0,
-        "away": 1
-      }
-    },
-    {
-      "id": "564640",
-      "utcDate": "2026-08-24T19:30:00Z",
-      "status": "FINISHED",
-      "matchday": 2,
-      "stage": "REGULAR_SEASON",
-      "homeTeam": {
-        "id": "84",
-        "name": "Málaga CF",
-        "shortName": "Málaga",
-        "tla": "MAL",
-        "crest": "https://crests.football-data.org/84.png"
-      },
-      "awayTeam": {
-        "id": "560",
-        "name": "RC Deportivo La Coruña",
-        "shortName": "Deportivo",
-        "tla": "DEP",
-        "crest": "https://crests.football-data.org/560.png"
-      },
-      "score": {
-        "winner": "DRAW",
-        "home": 1,
-        "away": 1
-      }
-    },
-    {
-      "id": "564639",
-      "utcDate": "2026-08-24T17:30:00Z",
-      "status": "FINISHED",
-      "matchday": 2,
-      "stage": "REGULAR_SEASON",
-      "homeTeam": {
-        "id": "79",
-        "name": "CA Osasuna",
-        "shortName": "Osasuna",
-        "tla": "OSA",
-        "crest": "https://crests.football-data.org/79.png"
-      },
-      "awayTeam": {
-        "id": "88",
-        "name": "Levante UD",
-        "shortName": "Levante",
-        "tla": "LEV",
-        "crest": "https://crests.football-data.org/88.png"
-      },
-      "score": {
-        "winner": "DRAW",
-        "home": 0,
-        "away": 0
-      }
     }
   ],
   "upcomingFixtures": [
-    {
-      "id": "564655",
-      "utcDate": "2026-08-29T15:00:00Z",
-      "status": "TIMED",
-      "matchday": 3,
-      "stage": "REGULAR_SEASON",
-      "homeTeam": {
-        "id": "88",
-        "name": "Levante UD",
-        "shortName": "Levante",
-        "tla": "LEV",
-        "crest": "https://crests.football-data.org/88.png"
-      },
-      "awayTeam": {
-        "id": "90",
-        "name": "Real Betis Balompié",
-        "shortName": "Real Betis",
-        "tla": "BET",
-        "crest": "https://crests.football-data.org/90.png"
-      },
-      "score": {
-        "winner": null,
-        "home": null,
-        "away": null
-      }
-    },
-    {
-      "id": "564653",
-      "utcDate": "2026-08-29T17:00:00Z",
-      "status": "TIMED",
-      "matchday": 3,
-      "stage": "REGULAR_SEASON",
-      "homeTeam": {
-        "id": "92",
-        "name": "Real Sociedad de Fútbol",
-        "shortName": "Real Sociedad",
-        "tla": "RSO",
-        "crest": "https://crests.football-data.org/92.png"
-      },
-      "awayTeam": {
-        "id": "80",
-        "name": "RCD Espanyol de Barcelona",
-        "shortName": "Espanyol",
-        "tla": "ESP",
-        "crest": "https://crests.football-data.org/80.png"
-      },
-      "score": {
-        "winner": null,
-        "home": null,
-        "away": null
-      }
-    },
-    {
-      "id": "564649",
-      "utcDate": "2026-08-29T19:30:00Z",
-      "status": "TIMED",
-      "matchday": 3,
-      "stage": "REGULAR_SEASON",
-      "homeTeam": {
-        "id": "559",
-        "name": "Sevilla FC",
-        "shortName": "Sevilla FC",
-        "tla": "SEV",
-        "crest": "https://crests.football-data.org/559.png"
-      },
-      "awayTeam": {
-        "id": "78",
-        "name": "Club Atlético de Madrid",
-        "shortName": "Atleti",
-        "tla": "ATL",
-        "crest": "https://crests.football-data.org/78.png"
-      },
-      "score": {
-        "winner": null,
-        "home": null,
-        "away": null
-      }
-    },
     {
       "id": "564656",
       "utcDate": "2026-08-30T15:00:00Z",
@@ -863,6 +794,84 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "shortName": "Rayo Vallecano",
         "tla": "RAY",
         "crest": "https://crests.football-data.org/87.png"
+      },
+      "score": {
+        "winner": null,
+        "home": null,
+        "away": null
+      }
+    },
+    {
+      "id": "564682",
+      "utcDate": "2026-09-03T19:00:00Z",
+      "status": "TIMED",
+      "matchday": 6,
+      "stage": "REGULAR_SEASON",
+      "homeTeam": {
+        "id": "92",
+        "name": "Real Sociedad de Fútbol",
+        "shortName": "Real Sociedad",
+        "tla": "RSO",
+        "crest": "https://crests.football-data.org/92.png"
+      },
+      "awayTeam": {
+        "id": "558",
+        "name": "RC Celta de Vigo",
+        "shortName": "Celta",
+        "tla": "CEL",
+        "crest": "https://crests.football-data.org/558.png"
+      },
+      "score": {
+        "winner": null,
+        "home": null,
+        "away": null
+      }
+    },
+    {
+      "id": "564667",
+      "utcDate": "2026-09-04T19:00:00Z",
+      "status": "TIMED",
+      "matchday": 4,
+      "stage": "REGULAR_SEASON",
+      "homeTeam": {
+        "id": "90",
+        "name": "Real Betis Balompié",
+        "shortName": "Real Betis",
+        "tla": "BET",
+        "crest": "https://crests.football-data.org/90.png"
+      },
+      "awayTeam": {
+        "id": "86",
+        "name": "Real Madrid CF",
+        "shortName": "Real Madrid",
+        "tla": "RMA",
+        "crest": "https://crests.football-data.org/86.png"
+      },
+      "score": {
+        "winner": null,
+        "home": null,
+        "away": null
+      }
+    },
+    {
+      "id": "564663",
+      "utcDate": "2026-09-05T14:15:00Z",
+      "status": "TIMED",
+      "matchday": 4,
+      "stage": "REGULAR_SEASON",
+      "homeTeam": {
+        "id": "77",
+        "name": "Athletic Club",
+        "shortName": "Athletic",
+        "tla": "ATH",
+        "crest": "https://crests.football-data.org/77.png"
+      },
+      "awayTeam": {
+        "id": "78",
+        "name": "Club Atlético de Madrid",
+        "shortName": "Atleti",
+        "tla": "ATL",
+        "crest": "https://crests.football-data.org/78.png"
       },
       "score": {
         "winner": null,
@@ -1069,6 +1078,32 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       },
       "recentFixtures": [
         {
+          "id": "564649",
+          "utcDate": "2026-08-29T19:30:00Z",
+          "status": "FINISHED",
+          "matchday": 3,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "559",
+            "name": "Sevilla FC",
+            "shortName": "Sevilla FC",
+            "tla": "SEV",
+            "crest": "https://crests.football-data.org/559.png"
+          },
+          "awayTeam": {
+            "id": "78",
+            "name": "Club Atlético de Madrid",
+            "shortName": "Atleti",
+            "tla": "ATL",
+            "crest": "https://crests.football-data.org/78.png"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 1,
+            "away": 3
+          }
+        },
+        {
           "id": "564646",
           "utcDate": "2026-08-23T15:00:00Z",
           "status": "FINISHED",
@@ -1122,32 +1157,6 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "564649",
-          "utcDate": "2026-08-29T19:30:00Z",
-          "status": "TIMED",
-          "matchday": 3,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "559",
-            "name": "Sevilla FC",
-            "shortName": "Sevilla FC",
-            "tla": "SEV",
-            "crest": "https://crests.football-data.org/559.png"
-          },
-          "awayTeam": {
-            "id": "78",
-            "name": "Club Atlético de Madrid",
-            "shortName": "Atleti",
-            "tla": "ATL",
-            "crest": "https://crests.football-data.org/78.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "564663",
           "utcDate": "2026-09-05T14:15:00Z",
@@ -1251,21 +1260,48 @@ export const laLigaSnapshot: LaLigaSnapshot = {
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "564699",
+          "utcDate": "2026-10-11T00:00:00Z",
+          "status": "SCHEDULED",
+          "matchday": 8,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "263",
+            "name": "Deportivo Alavés",
+            "shortName": "Alavés",
+            "tla": "ALA",
+            "crest": "https://crests.football-data.org/263.png"
+          },
+          "awayTeam": {
+            "id": "78",
+            "name": "Club Atlético de Madrid",
+            "shortName": "Atleti",
+            "tla": "ATL",
+            "crest": "https://crests.football-data.org/78.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
+          "W",
           "D",
           "W"
         ],
-        "wins": 1,
+        "wins": 2,
         "draws": 1,
         "losses": 0,
-        "points": 4,
-        "goalsFor": 4,
-        "goalsAgainst": 2
+        "points": 7,
+        "goalsFor": 7,
+        "goalsAgainst": 3
       },
-      "generatedAt": "2026-08-29T13:54:08.550Z"
+      "generatedAt": "2026-08-29T22:42:47.172Z"
     },
     "fcb": {
       "team": {
@@ -1478,7 +1514,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 7,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-28T22:30:19.864Z"
+      "generatedAt": "2026-08-29T22:42:47.172Z"
     },
     "cel": {
       "team": {
@@ -1931,7 +1967,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 3,
         "goalsAgainst": 9
       },
-      "generatedAt": "2026-08-28T22:30:19.864Z"
+      "generatedAt": "2026-08-29T22:42:47.172Z"
     },
     "esp": {
       "team": {
@@ -2357,7 +2393,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 1,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-08-29T13:54:08.550Z"
+      "generatedAt": "2026-08-29T22:42:47.172Z"
     },
     "gir": {
       "team": {
@@ -2535,6 +2571,32 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       },
       "recentFixtures": [
         {
+          "id": "564655",
+          "utcDate": "2026-08-29T15:00:00Z",
+          "status": "FINISHED",
+          "matchday": 3,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "88",
+            "name": "Levante UD",
+            "shortName": "Levante",
+            "tla": "LEV",
+            "crest": "https://crests.football-data.org/88.png"
+          },
+          "awayTeam": {
+            "id": "90",
+            "name": "Real Betis Balompié",
+            "shortName": "Real Betis",
+            "tla": "BET",
+            "crest": "https://crests.football-data.org/90.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 5,
+            "away": 2
+          }
+        },
+        {
           "id": "564639",
           "utcDate": "2026-08-24T17:30:00Z",
           "status": "FINISHED",
@@ -2588,32 +2650,6 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "564655",
-          "utcDate": "2026-08-29T15:00:00Z",
-          "status": "TIMED",
-          "matchday": 3,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "88",
-            "name": "Levante UD",
-            "shortName": "Levante",
-            "tla": "LEV",
-            "crest": "https://crests.football-data.org/88.png"
-          },
-          "awayTeam": {
-            "id": "90",
-            "name": "Real Betis Balompié",
-            "shortName": "Real Betis",
-            "tla": "BET",
-            "crest": "https://crests.football-data.org/90.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "564666",
           "utcDate": "2026-09-06T16:30:00Z",
@@ -2717,21 +2753,48 @@ export const laLigaSnapshot: LaLigaSnapshot = {
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "564704",
+          "utcDate": "2026-10-11T00:00:00Z",
+          "status": "SCHEDULED",
+          "matchday": 8,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "88",
+            "name": "Levante UD",
+            "shortName": "Levante",
+            "tla": "LEV",
+            "crest": "https://crests.football-data.org/88.png"
+          },
+          "awayTeam": {
+            "id": "559",
+            "name": "Sevilla FC",
+            "shortName": "Sevilla FC",
+            "tla": "SEV",
+            "crest": "https://crests.football-data.org/559.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
+          "W",
           "D",
           "L"
         ],
-        "wins": 0,
+        "wins": 1,
         "draws": 1,
         "losses": 1,
-        "points": 1,
-        "goalsFor": 0,
-        "goalsAgainst": 3
+        "points": 4,
+        "goalsFor": 5,
+        "goalsAgainst": 5
       },
-      "generatedAt": "2026-08-28T22:30:19.864Z"
+      "generatedAt": "2026-08-29T22:42:47.172Z"
     },
     "mal": {
       "team": {
@@ -3157,7 +3220,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 2,
         "goalsAgainst": 1
       },
-      "generatedAt": "2026-08-29T13:54:08.550Z"
+      "generatedAt": "2026-08-29T22:42:47.172Z"
     },
     "ray": {
       "team": {
@@ -3370,7 +3433,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 2,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-08-29T13:54:08.550Z"
+      "generatedAt": "2026-08-29T22:42:47.172Z"
     },
     "bet": {
       "team": {
@@ -3796,7 +3859,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 6,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-08-29T13:54:08.550Z"
+      "generatedAt": "2026-08-29T22:42:47.172Z"
     },
     "ovi": {
       "team": {
@@ -3974,6 +4037,32 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       },
       "recentFixtures": [
         {
+          "id": "564653",
+          "utcDate": "2026-08-29T17:00:00Z",
+          "status": "FINISHED",
+          "matchday": 3,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "92",
+            "name": "Real Sociedad de Fútbol",
+            "shortName": "Real Sociedad",
+            "tla": "RSO",
+            "crest": "https://crests.football-data.org/92.png"
+          },
+          "awayTeam": {
+            "id": "80",
+            "name": "RCD Espanyol de Barcelona",
+            "shortName": "Espanyol",
+            "tla": "ESP",
+            "crest": "https://crests.football-data.org/80.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
           "id": "564631",
           "utcDate": "2026-08-26T19:00:00Z",
           "status": "FINISHED",
@@ -4027,32 +4116,6 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "564653",
-          "utcDate": "2026-08-29T17:00:00Z",
-          "status": "TIMED",
-          "matchday": 3,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "92",
-            "name": "Real Sociedad de Fútbol",
-            "shortName": "Real Sociedad",
-            "tla": "RSO",
-            "crest": "https://crests.football-data.org/92.png"
-          },
-          "awayTeam": {
-            "id": "80",
-            "name": "RCD Espanyol de Barcelona",
-            "shortName": "Espanyol",
-            "tla": "ESP",
-            "crest": "https://crests.football-data.org/80.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "564682",
           "utcDate": "2026-09-03T19:00:00Z",
@@ -4156,21 +4219,48 @@ export const laLigaSnapshot: LaLigaSnapshot = {
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "564707",
+          "utcDate": "2026-10-11T00:00:00Z",
+          "status": "SCHEDULED",
+          "matchday": 8,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "92",
+            "name": "Real Sociedad de Fútbol",
+            "shortName": "Real Sociedad",
+            "tla": "RSO",
+            "crest": "https://crests.football-data.org/92.png"
+          },
+          "awayTeam": {
+            "id": "560",
+            "name": "RC Deportivo La Coruña",
+            "shortName": "Deportivo",
+            "tla": "DEP",
+            "crest": "https://crests.football-data.org/560.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
+          "W",
           "L",
           "L"
         ],
-        "wins": 0,
+        "wins": 1,
         "draws": 0,
         "losses": 2,
-        "points": 0,
-        "goalsFor": 1,
-        "goalsAgainst": 5
+        "points": 3,
+        "goalsFor": 3,
+        "goalsAgainst": 6
       },
-      "generatedAt": "2026-08-29T13:54:08.550Z"
+      "generatedAt": "2026-08-29T22:42:47.172Z"
     },
     "sev": {
       "team": {
@@ -4186,6 +4276,32 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "manager": null
       },
       "recentFixtures": [
+        {
+          "id": "564649",
+          "utcDate": "2026-08-29T19:30:00Z",
+          "status": "FINISHED",
+          "matchday": 3,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "559",
+            "name": "Sevilla FC",
+            "shortName": "Sevilla FC",
+            "tla": "SEV",
+            "crest": "https://crests.football-data.org/559.png"
+          },
+          "awayTeam": {
+            "id": "78",
+            "name": "Club Atlético de Madrid",
+            "shortName": "Atleti",
+            "tla": "ATL",
+            "crest": "https://crests.football-data.org/78.png"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 1,
+            "away": 3
+          }
+        },
         {
           "id": "564641",
           "utcDate": "2026-08-22T15:00:00Z",
@@ -4240,32 +4356,6 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "564649",
-          "utcDate": "2026-08-29T19:30:00Z",
-          "status": "TIMED",
-          "matchday": 3,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "559",
-            "name": "Sevilla FC",
-            "shortName": "Sevilla FC",
-            "tla": "SEV",
-            "crest": "https://crests.football-data.org/559.png"
-          },
-          "awayTeam": {
-            "id": "78",
-            "name": "Club Atlético de Madrid",
-            "shortName": "Atleti",
-            "tla": "ATL",
-            "crest": "https://crests.football-data.org/78.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "564661",
           "utcDate": "2026-09-06T19:00:00Z",
@@ -4369,21 +4459,48 @@ export const laLigaSnapshot: LaLigaSnapshot = {
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "564704",
+          "utcDate": "2026-10-11T00:00:00Z",
+          "status": "SCHEDULED",
+          "matchday": 8,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "88",
+            "name": "Levante UD",
+            "shortName": "Levante",
+            "tla": "LEV",
+            "crest": "https://crests.football-data.org/88.png"
+          },
+          "awayTeam": {
+            "id": "559",
+            "name": "Sevilla FC",
+            "shortName": "Sevilla FC",
+            "tla": "SEV",
+            "crest": "https://crests.football-data.org/559.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
+          "L",
           "W",
           "W"
         ],
         "wins": 2,
         "draws": 0,
-        "losses": 0,
+        "losses": 1,
         "points": 6,
-        "goalsFor": 5,
-        "goalsAgainst": 2
+        "goalsFor": 6,
+        "goalsAgainst": 5
       },
-      "generatedAt": "2026-08-29T13:54:08.550Z"
+      "generatedAt": "2026-08-29T22:42:47.172Z"
     },
     "val": {
       "team": {
@@ -4596,7 +4713,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 1
       },
-      "generatedAt": "2026-08-29T13:54:08.550Z"
+      "generatedAt": "2026-08-29T22:42:47.172Z"
     },
     "vil": {
       "team": {
@@ -4836,7 +4953,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 4,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-08-29T13:54:08.550Z"
+      "generatedAt": "2026-08-29T22:42:47.172Z"
     },
     "ala": {
       "team": {
@@ -5475,7 +5592,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 2,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-08-29T13:54:08.550Z"
+      "generatedAt": "2026-08-29T22:42:47.172Z"
     },
     "san": {
       "team": {
@@ -5715,7 +5832,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 5,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-08-29T13:54:08.550Z"
+      "generatedAt": "2026-08-29T22:42:47.172Z"
     }
   }
 };
