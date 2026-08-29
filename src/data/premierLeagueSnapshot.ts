@@ -1125,7 +1125,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "totalGoals": 14
       }
     ],
-    "generatedAt": "2026-08-29T19:25:16.875Z"
+    "generatedAt": "2026-08-29T22:40:41.410Z"
   },
   "teamSnapshots": {
     "57": {
@@ -1314,7 +1314,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 3,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-29T19:25:16.875Z"
+      "generatedAt": "2026-08-29T22:40:41.410Z"
     },
     "58": {
       "team": {
@@ -1661,7 +1661,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 3,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-08-29T19:25:16.875Z"
+      "generatedAt": "2026-08-29T22:40:41.410Z"
     },
     "62": {
       "team": {
@@ -1876,7 +1876,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 3,
         "goalsAgainst": 1
       },
-      "generatedAt": "2026-08-29T19:25:16.875Z"
+      "generatedAt": "2026-08-29T22:40:41.410Z"
     },
     "63": {
       "team": {
@@ -2494,7 +2494,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 6,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-08-29T19:25:16.875Z"
+      "generatedAt": "2026-08-29T22:40:41.410Z"
     },
     "66": {
       "team": {
@@ -4217,7 +4217,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 2,
         "goalsAgainst": 1
       },
-      "generatedAt": "2026-08-29T19:25:16.875Z"
+      "generatedAt": "2026-08-29T22:40:41.410Z"
     },
     "351": {
       "team": {
@@ -4432,7 +4432,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 2,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-08-29T19:25:16.875Z"
+      "generatedAt": "2026-08-29T22:40:41.410Z"
     },
     "354": {
       "team": {
@@ -4835,7 +4835,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 4,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-29T19:25:16.875Z"
+      "generatedAt": "2026-08-29T22:40:41.410Z"
     },
     "402": {
       "team": {
@@ -5023,7 +5023,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 3,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-08-29T19:25:16.875Z"
+      "generatedAt": "2026-08-29T22:40:41.410Z"
     },
     "563": {
       "team": {
@@ -5401,7 +5401,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 2,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-08-29T19:25:16.875Z"
+      "generatedAt": "2026-08-29T22:40:41.410Z"
     },
     "1076": {
       "team": {
