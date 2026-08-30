@@ -59,7 +59,7 @@ import {
   buildFantasyVorpIndex,
   type FantasyVorpTeamSize,
 } from "@/lib/fantasyVorp";
-import { PositionFilterBar, type PositionFilterOption } from "@/components/fantasy";
+import { PositionFilterBar, type PositionFilterOption } from "@/components/fantasy/PositionFilterBar";
 import { Player } from "@/types";
 import { FANTASY_FOOTBALL_FAQ } from "./fantasy-faq";
 import { buildFantasyHref, FantasySearchState, normalizeFantasyState } from "./fantasy-state";
@@ -1398,13 +1398,13 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                       className="w-[34px] shrink-0 text-right font-mono text-sm"
                       title={
                         vorpMode
-                          ? `VORP rank${queue.isQueued(player.id) ? " · in your queue" : ""}`
-                          : queue.isQueued(player.id)
+                          ? `VORP rank${isQueued ? " · in your queue" : ""}`
+                          : isQueued
                             ? "Board rank · in your queue"
                             : "Board rank"
                       }
                       style={{
-                        color: queue.isQueued(player.id) ? "var(--home-signal)" : "var(--home-ink)",
+                        color: isQueued ? "var(--home-signal)" : "var(--home-ink)",
                       }}
                     >
                       {displayRank(player)}

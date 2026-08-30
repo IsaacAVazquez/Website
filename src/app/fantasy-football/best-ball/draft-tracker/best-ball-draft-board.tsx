@@ -96,7 +96,7 @@ export function BestBallDraftBoard({
 
           <fieldset>
             <legend className="sr-only">Filter by position</legend>
-            <div className="flex flex-wrap gap-1.5" role="radiogroup" aria-label="Player position">
+            <div className="flex flex-wrap gap-1.5">
               {POSITION_FILTERS.map((filter) => (
                 <label
                   key={filter}

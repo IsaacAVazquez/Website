@@ -1,5 +1,6 @@
 "use client";
 
+import { logger } from "@/lib/logger";
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { DraftState, DraftSettings, DraftPick, Player, TeamRoster, ScoringFormat } from '@/types';
 import {
@@ -521,7 +522,7 @@ export const useDraftState = () => {
             }
           }
         } catch (error) {
-          console.error('Error loading draft state from localStorage:', error);
+          logger.error("Draft state failed to load from localStorage", error);
           // Persisted blob is corrupt — drop it so we start clean on next save
           // instead of looping through this catch on every mount.
           try {

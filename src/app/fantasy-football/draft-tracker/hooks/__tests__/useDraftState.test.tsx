@@ -1,4 +1,5 @@
 import { act, renderHook, waitFor } from "@testing-library/react";
+import { logger } from "@/lib/logger";
 import {
   calculateDraftOrder,
   FANTASY_DRAFT_STORAGE_KEY,
@@ -51,6 +52,29 @@ function persistedPick(
 describe("useDraftState persisted-state loading", () => {
   beforeEach(() => {
     localStorage.clear();
+  });
+
+  it("reports a corrupt saved draft through the shared logger and clears it", async () => {
+    localStorage.setItem(FANTASY_DRAFT_STORAGE_KEY, "{not json");
+    const loggerError = jest.spyOn(logger, "error").mockImplementation(() => {});
+    const consoleError = jest.spyOn(console, "error").mockImplementation(() => {});
+    try {
+      renderHook(() => useDraftState());
+
+      await waitFor(() =>
+        expect(loggerError).toHaveBeenCalledWith(
+          "Draft state failed to load from localStorage",
+          expect.anything()
+        )
+      );
+      // The corrupt blob is dropped and the hook saves a fresh default draft.
+      const saved = localStorage.getItem(FANTASY_DRAFT_STORAGE_KEY);
+      expect(saved).not.toBe("{not json");
+      expect(() => JSON.parse(saved ?? "")).not.toThrow();
+    } finally {
+      loggerError.mockRestore();
+      consoleError.mockRestore();
+    }
   });
 
   it("loads a smaller v3 blob missing lineup, undo history, teams, and draft id", async () => {

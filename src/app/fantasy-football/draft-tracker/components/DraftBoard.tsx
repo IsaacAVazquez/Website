@@ -21,7 +21,7 @@ import type {
   FantasyVorpRankingEntry,
   FantasyVorpTeamSize,
 } from "@/lib/fantasyVorp";
-import { PositionFilterBar, type PositionFilterOption } from "@/components/fantasy";
+import { PositionFilterBar, type PositionFilterOption } from "@/components/fantasy/PositionFilterBar";
 
 interface DraftBoardProps {
   players: Player[];
