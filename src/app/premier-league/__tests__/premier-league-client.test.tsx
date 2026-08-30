@@ -2,7 +2,7 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { premierLeagueSnapshot } from "@/data/premierLeagueSnapshot";
 import { PremierLeagueClient } from "../premier-league-client";
-import { DEFAULT_PREMIER_LEAGUE_STATE } from "../premier-league-state";
+import { DEFAULT_PREMIER_LEAGUE_STATE, filterStandingsForView } from "../premier-league-state";
 
 const mockPush = jest.fn();
 const mockReplace = jest.fn();
@@ -81,13 +81,19 @@ describe("PremierLeagueClient", () => {
 
   it("keeps a valid selected club when changing filters", async () => {
     const user = userEvent.setup();
-    currentSearchParams = new URLSearchParams("team=57");
+    // The club has to sit inside the title-race view of whatever standings the
+    // committed snapshot carries, or the client rightly swaps it for the view's
+    // leader; a hardcoded id went stale the day the table moved.
+    const titleRaceTeamId = String(
+      filterStandingsForView(premierLeagueSnapshot.summary.standings, "title-race")[0]!.team.id
+    );
+    currentSearchParams = new URLSearchParams(`team=${titleRaceTeamId}`);
 
     render(
       <PremierLeagueClient
         initialState={DEFAULT_PREMIER_LEAGUE_STATE}
         summary={premierLeagueSnapshot.summary}
-        initialTeamSnapshot={premierLeagueSnapshot.teamSnapshots["57"] ?? null}
+        initialTeamSnapshot={premierLeagueSnapshot.teamSnapshots[titleRaceTeamId] ?? null}
       />
     );
 
@@ -99,6 +105,6 @@ describe("PremierLeagueClient", () => {
 
     const nextParams = new URLSearchParams(href.split("?")[1] ?? "");
     expect(nextParams.get("view")).toBe("title-race");
-    expect(nextParams.get("team")).toBe("57");
+    expect(nextParams.get("team")).toBe(titleRaceTeamId);
   });
 });
