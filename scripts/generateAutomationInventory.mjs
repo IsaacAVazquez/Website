@@ -58,6 +58,8 @@ const DESCRIPTIONS = {
     "Rebuilds public/data/fantasy/best-ball.json from the best ball consensus board and Underdog ADP",
   "buildFantasyAdpData.ts":
     "Rebuilds src/data/fantasyAdpData.generated.ts from mock-draft ADP",
+  "buildFantasyVorpData.ts":
+    "Rebuilds src/data/fantasyVorpData.generated.ts from the FantasyPros projected VORP reports",
   "buildFantasyGameLogData.ts":
     "Rebuilds src/data/fantasyGameLogData.generated.ts from nflverse weekly player stats",
   "buildFantasyPositionData.ts":
