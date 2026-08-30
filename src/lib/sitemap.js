@@ -352,7 +352,7 @@ function isRouteOptedOut(source) {
   return (
     /noIndex:\s*true|index:\s*false/.test(source) ||
     (/from ["']next\/navigation["']/.test(source) &&
-      /\bredirect\(/.test(source) &&
+      /\b(?:redirect|permanentRedirect)\(/.test(source) &&
       !/return\s*[(<]/.test(source))
   );
 }
