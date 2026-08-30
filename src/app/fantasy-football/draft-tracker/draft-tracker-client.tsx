@@ -23,6 +23,12 @@ import {
   reconcileTeamRosters,
 } from "@/lib/draftAnalytics";
 import { calculateRedraftDraftValues } from "@/lib/fantasyTeamValue";
+import { calculateRedraftDraftDecision } from "@/lib/redraftDraftDecision";
+import {
+  buildFantasyVorpIndex,
+  isFantasyVorpTeamSize,
+  type FantasyVorpRankingEntry,
+} from "@/lib/fantasyVorp";
 import {
   FANTASY_SCORING_LABELS,
   getCrossBoardFantasyPlayers,
@@ -52,6 +58,7 @@ import {
 import {
   DraftValuePanel,
   PlayerDetailDrawer,
+  RedraftDecisionPanel,
   type ExpectedReturnFormState,
 } from "@/components/fantasy";
 import type { Player, RedraftLineupSettings } from "@/types";
@@ -136,6 +143,16 @@ export function DraftTrackerClient() {
   );
   const draftSnapshot = hasUsableDraftBoard ? matchingSnapshot : null;
   const draftMetadata = draftSnapshot ? matchingMetadata : null;
+  const vorpTeamSize = isFantasyVorpTeamSize(draftState.settings.totalTeams)
+    ? draftState.settings.totalTeams
+    : null;
+  const vorpValues = useMemo(
+    () =>
+      vorpTeamSize && draftSnapshot?.vorpSource
+        ? buildFantasyVorpIndex(draftSnapshot.vorpRankings, vorpTeamSize)
+        : new Map<string, FantasyVorpRankingEntry>(),
+    [draftSnapshot, vorpTeamSize]
+  );
   const sourceCapabilities = getFantasySourceCapabilities({
     rankingAsOf: rankingsUpdatedAt,
     marketAsOf: draftMetadata?.adpSource?.asOf,
@@ -300,6 +317,59 @@ export function DraftTrackerClient() {
     [draftState.settings.lineup, userTeam]
   );
 
+  const redraftDecision = useMemo(
+    () =>
+      calculateRedraftDraftDecision({
+        players: draftBoardPlayers,
+        positionBoards: {
+          QB: draftSnapshot?.positions.QB ?? [],
+          RB: draftSnapshot?.positions.RB ?? [],
+          WR: draftSnapshot?.positions.WR ?? [],
+          TE: draftSnapshot?.positions.TE ?? [],
+        },
+        picks: modelPicks,
+        room: {
+          teams: draftState.settings.totalTeams,
+          rounds: draftState.settings.rounds,
+          userTeam: draftState.settings.userTeam,
+          draftOrder: draftState.settings.draftType,
+          lineup: draftState.settings.lineup,
+        },
+        currentPick: draftState.currentPick,
+        rankingUsable: draftGuidanceAvailable,
+        marketCurrent: adpAvailable,
+      }),
+    [
+      adpAvailable,
+      draftBoardPlayers,
+      draftGuidanceAvailable,
+      draftSnapshot?.positions.QB,
+      draftSnapshot?.positions.RB,
+      draftSnapshot?.positions.TE,
+      draftSnapshot?.positions.WR,
+      draftState.currentPick,
+      draftState.settings,
+      modelPicks,
+    ]
+  );
+  const replacementValues = useMemo(
+    () =>
+      new Map(
+        redraftDecision.playerValues.map((reading) => [
+          reading.player.id,
+          reading.value,
+        ])
+      ),
+    [redraftDecision.playerValues]
+  );
+  const positionDecisionByPosition = useMemo(
+    () =>
+      new Map(
+        redraftDecision.positions.map((entry) => [entry.position, entry])
+      ),
+    [redraftDecision.positions]
+  );
+
   const decisionRecs = useMemo<DecisionRec[]>(() => {
     if (!draftSnapshot || !isUserPick || isDraftComplete || !draftGuidanceAvailable) return [];
     const available = availableBoardPlayers;
@@ -310,19 +380,23 @@ export function DraftTrackerClient() {
     const used = new Set<string>();
     const recs: DecisionRec[] = [];
 
-    const tierLeft = (position: string): string => {
-      const pool = available.filter((player) => player.position === position);
-      const tiers = pool.map((player) => player.tier).filter(isFiniteNumber);
-      if (tiers.length === 0) return "";
-      const top = Math.min(...tiers);
-      const left = pool.filter((player) => player.tier === top).length;
-      return `T${top} has ${left} left`;
+    const replacementPart = (player: Player): string => {
+      const value = replacementValues.get(player.id);
+      return value === undefined ? "" : `Index ${value.toFixed(1)}`;
+    };
+    const vorpPart = (player: Player): string => {
+      const reading = vorpValues.get(player.id);
+      return reading === undefined ? "" : `VORP ${Math.round(reading.value)}`;
     };
 
     const best = available[0];
     used.add(best.id);
     const bestParts = [`Board #${publishedDraftRank(best)}`];
     if (isFiniteNumber(best.tier)) bestParts.push(`Tier ${best.tier}`);
+    const bestVorp = vorpPart(best);
+    if (bestVorp) bestParts.push(bestVorp);
+    const bestReplacement = replacementPart(best);
+    if (bestReplacement) bestParts.push(bestReplacement);
     if (
       adpAvailable &&
       isFiniteNumber(best.adp) &&
@@ -331,6 +405,30 @@ export function DraftTrackerClient() {
       bestParts.push(`lasted +${(currentPick - best.adp).toFixed(1)} past ADP`);
     }
     recs.push({ tag: "Best left", player: best, why: bestParts.join(" · ") });
+
+    const mostAtRisk = redraftDecision.mostAtRisk;
+    const riskPlayer = mostAtRisk?.bestAvailable?.player;
+    if (mostAtRisk && riskPlayer && !used.has(riskPlayer.id)) {
+      used.add(riskPlayer.id);
+      const riskParts = [vorpPart(riskPlayer), replacementPart(riskPlayer)];
+      if (mostAtRisk.tier.tier !== null) {
+        riskParts.push(
+          `${mostAtRisk.position} Tier ${mostAtRisk.tier.tier} has ${mostAtRisk.tier.remaining} left`
+        );
+      }
+      if (mostAtRisk.wait.kind === "measured") {
+        riskParts.push(
+          `waiting to #${mostAtRisk.wait.nextPick} costs ${mostAtRisk.wait.survivor.rankCost.toFixed(0)} consensus spots`
+        );
+      } else if (mostAtRisk.wait.kind === "no-priced-survivor") {
+        riskParts.push(`no reliably priced option reaches #${mostAtRisk.wait.nextPick}`);
+      }
+      recs.push({
+        tag: `Most at risk · ${mostAtRisk.position}`,
+        player: riskPlayer,
+        why: riskParts.filter(Boolean).join(" · "),
+      });
+    }
 
     const needOrder = ["RB", "WR", "TE", "QB", "K", "DST"].filter(
       (position) => (openExact[position] ?? 0) > 0
@@ -358,9 +456,18 @@ export function DraftTrackerClient() {
     if (fillPlayer) {
       used.add(fillPlayer.id);
       const fillParts = [`${fillPlayer.position} board`];
-      if (isFiniteNumber(fillPlayer.tier)) fillParts.push(`Tier ${fillPlayer.tier}`);
-      const left = tierLeft(fillPlayer.position);
-      if (left) fillParts.push(left);
+      const positionDecision = positionDecisionByPosition.get(
+        fillPlayer.position as "QB" | "RB" | "WR" | "TE"
+      );
+      if (positionDecision?.tier.tier !== null && positionDecision?.tier.tier !== undefined) {
+        fillParts.push(
+          `Position Tier ${positionDecision.tier.tier} has ${positionDecision.tier.remaining} left`
+        );
+      }
+      const fillVorp = vorpPart(fillPlayer);
+      if (fillVorp) fillParts.push(fillVorp);
+      const fillReplacement = replacementPart(fillPlayer);
+      if (fillReplacement) fillParts.push(fillReplacement);
       recs.push({ tag: `Fills ${fillSlot}`, player: fillPlayer, why: fillParts.join(" · ") });
     }
 
@@ -379,10 +486,18 @@ export function DraftTrackerClient() {
         }
       }
       if (valuePlayer) {
+        const valueParts = [
+          `ADP ${formatAdp(valuePlayer.adp)}`,
+          `lasted +${valueDelta.toFixed(1)} past the market`,
+        ];
+        const valueVorp = vorpPart(valuePlayer);
+        if (valueVorp) valueParts.push(valueVorp);
+        const valueReplacement = replacementPart(valuePlayer);
+        if (valueReplacement) valueParts.push(valueReplacement);
         recs.push({
           tag: "Value",
           player: valuePlayer,
-          why: `ADP ${formatAdp(valuePlayer.adp)} · lasted +${valueDelta.toFixed(1)} past the market`,
+          why: valueParts.join(" · "),
         });
       }
     }
@@ -399,39 +514,11 @@ export function DraftTrackerClient() {
     isDraftComplete,
     isUserPick,
     lineupAssignment,
+    positionDecisionByPosition,
+    redraftDecision.mostAtRisk,
+    replacementValues,
+    vorpValues,
   ]);
-
-  const scarcity = useMemo(() => {
-    if (!draftSnapshot) return [];
-    return (["QB", "RB", "WR", "TE"] as const).map((position) => {
-      const pool = availableBoardPlayers.filter((player) => player.position === position);
-      const tiers = pool.map((player) => player.tier).filter(isFiniteNumber);
-      const topTier = tiers.length > 0 ? Math.min(...tiers) : null;
-      const left = topTier !== null ? pool.filter((player) => player.tier === topTier).length : pool.length;
-      const cliff = pool.length > 0 && topTier !== null && left <= 2;
-      const need = (lineupAssignment.openExact[position] ?? 0) > 0;
-      const flag = need && cliff ? "Need · cliff" : cliff ? "Cliff" : need ? "Need" : "";
-      return {
-        position,
-        text:
-          pool.length === 0
-            ? "board empty"
-            : topTier !== null
-              ? `T${topTier} · ${left} left`
-              : `${pool.length} left`,
-        flag,
-        flagColor: cliff ? "var(--home-warning)" : "var(--home-positive)",
-        background: need
-          ? "color-mix(in srgb, var(--home-positive) 6%, var(--home-paper))"
-          : "var(--home-paper)",
-        tip: cliff
-          ? `The current ${position} tier is nearly empty, so its value drops once it clears`
-          : need
-            ? `Your lineup still has an open ${position} starting spot`
-            : `${position} tiers are holding`,
-      };
-    });
-  }, [availableBoardPlayers, draftSnapshot, lineupAssignment.openExact]);
 
   const previousPick = picksForDisplay[picksForDisplay.length - 1] ?? null;
   const tapePicks = useMemo(() => picksForDisplay.slice(-8).reverse(), [picksForDisplay]);
@@ -974,40 +1061,14 @@ export function DraftTrackerClient() {
             </section>
           )}
 
-          {scarcity.length > 0 && !isDraftComplete && (
-            <section aria-label="Tier scarcity by position" className={`${SHELL_CLASS} pt-3.5`}>
-              <div
-                className="grid gap-px overflow-hidden rounded border"
-                style={{
-                  gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
-                  background: "var(--home-rule)",
-                  borderColor: "var(--home-rule)",
-                }}
-              >
-                {scarcity.map((entry) => (
-                  <div
-                    key={`scarcity-${entry.position}`}
-                    title={entry.tip}
-                    className="flex min-w-0 items-baseline gap-2 px-2.5 py-2"
-                    style={{ background: entry.background }}
-                  >
-                    <span className={POSITION_CHIP_CLASS} style={getPositionTone(entry.position)}>
-                      {entry.position}
-                    </span>
-                    <span className="whitespace-nowrap font-mono text-2xs">{entry.text}</span>
-                    {entry.flag && (
-                      <span
-                        className="ml-auto whitespace-nowrap font-mono text-3xs uppercase tracking-[0.1em]"
-                        style={{ color: entry.flagColor }}
-                      >
-                        {entry.flag}
-                      </span>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
+          {!isDraftComplete && redraftDecision.guidanceAvailable ? (
+            <div className={`${SHELL_CLASS} pt-3.5`}>
+              <RedraftDecisionPanel
+                report={redraftDecision}
+                onOpenPlayer={setDetailPlayer}
+              />
+            </div>
+          ) : null}
 
           <div className={`${SHELL_CLASS} pb-11 pt-4`}>
             {/* The running page goes h1 to the Draft Outlook h3 with nothing
@@ -1071,6 +1132,8 @@ export function DraftTrackerClient() {
                 currentRound={draftState.currentRound}
                 adpAvailable={adpAvailable}
                 guidanceAvailable={draftGuidanceAvailable}
+                vorpValues={vorpValues}
+                vorpTeamSize={vorpTeamSize}
                 stickyTop={boardStickyTop}
               />
             ) : null}

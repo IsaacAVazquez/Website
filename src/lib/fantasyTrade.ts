@@ -4,10 +4,8 @@ import type {
 } from "@/lib/fantasy";
 import { routeScoringToScoringFormat } from "@/lib/fantasy";
 import {
-  getAdpSignalThreshold,
   getFantasyAdpFreshness,
   getSnapshotStaleness,
-  hasReliableAdpSample,
   type FantasySnapshotStaleness,
 } from "@/lib/fantasyUtils";
 import {
@@ -15,25 +13,27 @@ import {
   getRedraftRosterTarget,
   normalizeRedraftLineup,
 } from "@/lib/redraftLineup";
-import { clamp } from "@/lib/utils";
-import type { Player, Position, RedraftLineupSettings } from "@/types";
+import {
+  blendFantasyReplacementValues as blendValues,
+  buildFantasyReplacementCutoffs as buildSourceCutoffs,
+  calculateFantasyReplacementSourceValue as calculateSourceValue,
+  calculateReplacementRelativeValue,
+  getFantasyReplacementExpertRank as getExpertRank,
+  getFantasyReplacementMarketReliability,
+  hasReliableFantasyReplacementMarket as isReliableMarketPlayer,
+  isFantasyReplacementPosition as isTradePosition,
+  isFinitePositiveReplacementValue as isFinitePositive,
+  type FantasyReplacementCutoffs as SourceCutoffs,
+  type FantasyReplacementPosition as TradePosition,
+} from "@/lib/fantasyReplacement";
+import type { Player, RedraftLineupSettings } from "@/types";
 
 export const FANTASY_TRADE_MODEL_VERSION = "preseason-redraft-v1";
 export const FANTASY_TRADE_BALANCED_THRESHOLD = 0.05;
 export const FANTASY_TRADE_CLEAR_EDGE_THRESHOLD = 0.15;
 
-const STARTER_VALUE_WEIGHT = 0.75;
-const DEPTH_VALUE_WEIGHT = 0.25;
-const MINIMUM_ADP_SELECTIONS = 20;
-const POSITIONS = ["QB", "RB", "WR", "TE", "K", "DST"] as const;
-const FLEX_POSITIONS = ["RB", "WR", "TE"] as const;
 const SUPPORTED_TEAM_COUNTS = new Set([8, 10, 12, 14, 16]);
 const SUPPORTED_ROSTER_SIZES = new Set([13, 14, 15, 16, 17, 18]);
-
-type TradePosition = Extract<
-  Position,
-  "QB" | "RB" | "WR" | "TE" | "K" | "DST"
->;
 
 export type FantasyTradeCoverage = "supported" | "limited" | "insufficient";
 export type FantasyTradeVerdict =
@@ -129,31 +129,11 @@ export interface FantasyTradeEvaluation {
   warnings: readonly string[];
 }
 
-interface PositionCutoff {
-  starter: number | null;
-  roster: number | null;
-}
-
-type SourceCutoffs = Record<TradePosition, PositionCutoff>;
-
-interface SourceValue {
-  value: number;
-  coverage: number;
-}
-
 interface InternalPlayerEvaluation extends FantasyTradePlayerEvaluation {
   rawExpertValue: number | null;
   rawMarketValue: number | null;
   rawBlendedValue: number | null;
   rawRange: FantasyTradeValueRange | null;
-}
-
-function isFinitePositive(value: unknown): value is number {
-  return typeof value === "number" && Number.isFinite(value) && value > 0;
-}
-
-function isTradePosition(position: Position): position is TradePosition {
-  return POSITIONS.includes(position as TradePosition);
 }
 
 function roundValue(value: number): number {
@@ -181,139 +161,7 @@ export function calculateReplacementRelativeTradeValue(
   rank: number,
   cutoff: number
 ): number {
-  if (!isFinitePositive(rank) || !isFinitePositive(cutoff)) return 0;
-  if (rank >= cutoff) return 0;
-  if (cutoff <= 1) return rank <= 1 ? 100 : 0;
-
-  return clamp((100 * Math.log(cutoff / rank)) / Math.log(cutoff), 0, 100);
-}
-
-function getExpertRank(player: Player): number | null {
-  if (isFinitePositive(player.rankEcr)) return player.rankEcr;
-  return isFinitePositive(player.averageRank) ? player.averageRank : null;
-}
-
-function emptyCutoffs(): SourceCutoffs {
-  return Object.fromEntries(
-    POSITIONS.map((position) => [position, { starter: null, roster: null }])
-  ) as SourceCutoffs;
-}
-
-function buildSourceCutoffs(
-  players: readonly Player[],
-  league: FantasyTradeLeagueSettings,
-  rankFor: (player: Player) => number | null
-): SourceCutoffs {
-  const cutoffs = emptyCutoffs();
-  const rankedPlayers = players
-    .map((player) => ({ player, rank: rankFor(player) }))
-    .filter(
-      (entry): entry is { player: Player; rank: number } =>
-        entry.rank !== null && isTradePosition(entry.player.position)
-    )
-    .sort((left, right) => left.rank - right.rank || left.player.id.localeCompare(right.player.id));
-
-  const selectedStarterIds = new Set<string>();
-  const starterRanks: Record<TradePosition, number[]> = {
-    QB: [],
-    RB: [],
-    WR: [],
-    TE: [],
-    K: [],
-    DST: [],
-  };
-  const mandatoryComplete: Record<TradePosition, boolean> = {
-    QB: true,
-    RB: true,
-    WR: true,
-    TE: true,
-    K: true,
-    DST: true,
-  };
-
-  for (const position of POSITIONS) {
-    const required = league.teams * league.lineup[position];
-    if (required === 0) continue;
-    const candidates = rankedPlayers.filter((entry) => entry.player.position === position);
-    if (candidates.length < required) mandatoryComplete[position] = false;
-    for (const entry of candidates.slice(0, required)) {
-      selectedStarterIds.add(entry.player.id);
-      starterRanks[position].push(entry.rank);
-    }
-  }
-
-  const flexRequired = league.teams * league.lineup.FLEX;
-  const flexCandidates = rankedPlayers.filter(
-    (entry) =>
-      FLEX_POSITIONS.includes(entry.player.position as (typeof FLEX_POSITIONS)[number]) &&
-      !selectedStarterIds.has(entry.player.id)
-  );
-  const flexComplete = flexCandidates.length >= flexRequired;
-  for (const entry of flexCandidates.slice(0, flexRequired)) {
-    const position = entry.player.position as (typeof FLEX_POSITIONS)[number];
-    selectedStarterIds.add(entry.player.id);
-    starterRanks[position].push(entry.rank);
-  }
-
-  const target = getRedraftRosterTarget(league.lineup, league.rosterSize);
-  for (const position of POSITIONS) {
-    const starterAffectedByIncompleteFlex =
-      flexRequired > 0 &&
-      FLEX_POSITIONS.includes(position as (typeof FLEX_POSITIONS)[number]) &&
-      !flexComplete;
-    if (
-      mandatoryComplete[position] &&
-      !starterAffectedByIncompleteFlex &&
-      starterRanks[position].length > 0
-    ) {
-      cutoffs[position].starter = Math.max(...starterRanks[position]);
-    }
-
-    const rostered = league.teams * target[position];
-    if (rostered === 0) continue;
-    const candidates = rankedPlayers.filter((entry) => entry.player.position === position);
-    if (candidates.length >= rostered) {
-      cutoffs[position].roster = candidates[rostered - 1].rank;
-    }
-  }
-
-  return cutoffs;
-}
-
-function calculateSourceValue(rank: number, cutoff: PositionCutoff): SourceValue | null {
-  const components: Array<{ weight: number; value: number }> = [];
-  if (isFinitePositive(cutoff.starter)) {
-    components.push({
-      weight: STARTER_VALUE_WEIGHT,
-      value: calculateReplacementRelativeTradeValue(rank, cutoff.starter),
-    });
-  }
-  if (isFinitePositive(cutoff.roster)) {
-    components.push({
-      weight: DEPTH_VALUE_WEIGHT,
-      value: calculateReplacementRelativeTradeValue(rank, cutoff.roster),
-    });
-  }
-  if (components.length === 0) return null;
-
-  const coverage = components.reduce((sum, component) => sum + component.weight, 0);
-  return {
-    value:
-      components.reduce(
-        (sum, component) => sum + component.value * component.weight,
-        0
-      ) / coverage,
-    coverage,
-  };
-}
-
-function blendValues(
-  expertValue: number,
-  marketValue: number | null,
-  marketReliability: number | null
-): number {
-  if (marketValue === null || marketReliability === null) return expertValue;
-  return (expertValue + marketValue * marketReliability) / (1 + marketReliability);
+  return calculateReplacementRelativeValue(rank, cutoff);
 }
 
 function expertSpread(player: Player, rank: number): number | null {
@@ -340,16 +188,6 @@ function marketSpread(player: Player): number | null {
     return Math.max(0, player.adpLow - player.adpHigh) / 4;
   }
   return null;
-}
-
-function isReliableMarketPlayer(player: Player): boolean {
-  return (
-    isFinitePositive(player.adp) &&
-    typeof player.adpTimesDrafted === "number" &&
-    Number.isFinite(player.adpTimesDrafted) &&
-    player.adpTimesDrafted >= MINIMUM_ADP_SELECTIONS &&
-    hasReliableAdpSample(player)
-  );
 }
 
 function replacementCutoffSummary(
@@ -476,7 +314,7 @@ function evaluatePlayer({
     : null;
   const marketUncertainty = marketEligible ? marketSpread(player) : null;
   const marketReliability = market
-    ? clamp(10 / getAdpSignalThreshold(player), 0.25, 1)
+    ? getFantasyReplacementMarketReliability(player)
     : null;
 
   if (!marketUsable) {

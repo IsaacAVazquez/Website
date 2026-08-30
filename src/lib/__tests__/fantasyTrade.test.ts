@@ -94,6 +94,8 @@ function buildSnapshot(): FantasySnapshot {
       sampleSize: 10_000,
       matchedCount: overall.length,
     },
+    vorpSource: null,
+    vorpRankings: {},
     overall,
     positions,
     sliceMetadata: {

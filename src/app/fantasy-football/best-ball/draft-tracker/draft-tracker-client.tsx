@@ -12,8 +12,8 @@ import {
   BEST_BALL_CONTESTS,
   analyzeBestBallRoster,
   getContestPreset,
+  getBestBallModelSourceIssue,
   getNextUserPick,
-  getStrategyProfile,
   hasSupportedBestBallAdp,
   normalizeContestId,
   recommendBestBallPlayers,
@@ -114,47 +114,6 @@ function lineupLabel(preset: BestBallContestPreset): string {
     .map(([count, label]) => `${count} ${label}`);
   if (preset.lineup.SUPERFLEX) slots.push(`${preset.lineup.SUPERFLEX} superflex`);
   return slots.join(" · ");
-}
-
-function getBestBallModelSourceIssue(
-  snapshot: BestBallSnapshot,
-  preset: BestBallContestPreset
-): string | null {
-  const rankingSource = preset.lineupVariant === "superflex"
-    ? snapshot.superflexSource
-    : snapshot.rankingSource;
-  if (rankingSource === null) return "the required ranking source is unavailable";
-
-  const capabilities = getFantasySourceCapabilities({
-    rankingAsOf: rankingSource.asOf,
-    marketAsOf: snapshot.adpSource?.asOf,
-    scheduleAsOf: snapshot.scheduleSource?.asOf,
-    season: snapshot.season,
-  });
-  if (!capabilities.ranking.usable) return "the required ranking source is stale";
-
-  if (hasSupportedBestBallAdp(preset)) {
-    if (snapshot.adpSource === null) {
-      return "the matching standard-season Underdog ADP source is unavailable";
-    }
-    if (!capabilities.market.current) {
-      return "the matching standard-season Underdog ADP source is stale";
-    }
-  }
-
-  if (getStrategyProfile(preset).week17Treatment !== "none") {
-    if (snapshot.scheduleSource === null) {
-      return "the Week 17 schedule source is unavailable";
-    }
-    if (!capabilities.schedule.usable) {
-      return "the Week 17 schedule source is stale";
-    }
-    if (Object.keys(snapshot.week17Opponents).length < 30) {
-      return "the Week 17 schedule source is incomplete";
-    }
-  }
-
-  return null;
 }
 
 export function BestBallDraftTrackerClient({

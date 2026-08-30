@@ -85,6 +85,8 @@ function buildSnapshot({ stale = false }: { stale?: boolean } = {}): FantasySnap
       sampleSize: 3_200,
       matchedCount: players.length,
     },
+    vorpSource: null,
+    vorpRankings: {},
     overall: players,
     positions: {
       QB: [],

@@ -7,6 +7,7 @@ import { usePlayerQueue } from "@/hooks/usePlayerQueue";
 import { isPlayerValueAtPick } from "@/lib/draftAnalytics";
 import {
   FANTASY_ADP_TOOLTIP,
+  FANTASY_VORP_TOOLTIP,
   MONO_LABEL_CLASS,
   POSITION_CHIP_CLASS,
   formatAdp,
@@ -16,6 +17,10 @@ import {
   getTierRailIntensity,
   withTierBreaks,
 } from "@/lib/fantasyUtils";
+import type {
+  FantasyVorpRankingEntry,
+  FantasyVorpTeamSize,
+} from "@/lib/fantasyVorp";
 import { PositionFilterBar, type PositionFilterOption } from "@/components/fantasy";
 
 interface DraftBoardProps {
@@ -27,6 +32,8 @@ interface DraftBoardProps {
   currentRound: number;
   adpAvailable: boolean;
   guidanceAvailable: boolean;
+  vorpValues: ReadonlyMap<string, FantasyVorpRankingEntry>;
+  vorpTeamSize: FantasyVorpTeamSize | null;
   /**
    * CSS `top` for the sticky controls bar, measured by the tracker so the bar
    * lands under the live fascia rather than behind it.
@@ -84,6 +91,8 @@ export function DraftBoard({
   currentRound,
   adpAvailable,
   guidanceAvailable,
+  vorpValues,
+  vorpTeamSize,
   stickyTop,
 }: DraftBoardProps) {
   const [selectedPosition, setSelectedPosition] = useState<BoardFilter>("ALL");
@@ -290,6 +299,7 @@ export function DraftBoard({
             {group.rows.map((player) => {
               const isQueued = queue.isQueued(player.id);
               const delta = describeDelta(player);
+              const vorp = vorpValues.get(player.id);
               return (
                 <li
                   key={player.id}
@@ -331,6 +341,26 @@ export function DraftBoard({
                     </span>
                   </div>
                   <div className="ml-auto flex flex-none items-center gap-2.5">
+                    {vorp ? (
+                      <>
+                        <span className="sr-only">Value over replacement player</span>
+                        <span
+                          className="w-auto font-mono text-xs md:w-12 md:text-right"
+                          style={{
+                            color:
+                              vorp.value > 0
+                                ? "var(--home-signal)"
+                                : "var(--home-ink-muted)",
+                          }}
+                          title={FANTASY_VORP_TOOLTIP}
+                        >
+                          <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
+                            VORP{" "}
+                          </span>
+                          {Math.round(vorp.value)}
+                        </span>
+                      </>
+                    ) : null}
                     {adpAvailable ? (
                       <>
                         <span className="sr-only">ADP</span>
@@ -424,6 +454,15 @@ export function DraftBoard({
         </div>
       )}
 
+      {vorpValues.size > 0 && vorpTeamSize ? (
+        <p
+          className="mb-3 text-xs leading-5"
+          style={{ color: "var(--home-ink-muted)" }}
+        >
+          VORP is FantasyPros&apos; projected season points above the same-position waiver replacement for a {vorpTeamSize}-team league. FantasyPros supplies the roster baseline, while your lineup settings drive the replacement index and scarcity panel below.
+        </p>
+      ) : null}
+
       {/* The board runs hundreds of rows against a pick clock, so the filter,
           search, count and column labels hold their place while you scroll. It
           only sticks from `lg`, where the fascia above it is a single row;
@@ -476,6 +515,14 @@ export function DraftBoard({
             <span className="w-8" />
             <span className={`${MONO_LABEL_CLASS} min-w-0 flex-1 basis-44`}>Player</span>
             <span className="ml-auto flex flex-none items-center gap-2.5">
+              {vorpValues.size > 0 ? (
+                <span
+                  className={`${MONO_LABEL_CLASS} w-12 text-right`}
+                  title={FANTASY_VORP_TOOLTIP}
+                >
+                  VORP
+                </span>
+              ) : null}
               {adpAvailable ? (
                 <>
                   <span className={`${MONO_LABEL_CLASS} w-11 text-right`}>ADP</span>
