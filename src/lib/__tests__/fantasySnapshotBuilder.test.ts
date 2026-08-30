@@ -93,6 +93,18 @@ describe("fantasySnapshotBuilder", () => {
       expect(snapshot.sliceMetadata.dst.available).toBe(true);
       expect(snapshot.positions.RB.length).toBeGreaterThan(50);
       expect(snapshot.positions.FLEX.length).toBeGreaterThan(100);
+      expect(snapshot.vorpSource?.provider).toBe("FantasyPros projected VORP");
+      expect(snapshot.vorpSource?.asOf).toMatch(/^20\d{2}-/);
+      for (const teamSize of ["10", "12", "14"] as const) {
+        expect(snapshot.vorpRankings[teamSize]?.length).toBeGreaterThan(300);
+        expect(snapshot.vorpSource?.matchedCounts[teamSize]).toBe(
+          snapshot.vorpRankings[teamSize]?.length
+        );
+        expect(snapshot.vorpRankings[teamSize]?.[0]).toMatchObject({
+          rank: 1,
+        });
+        expect(snapshot.vorpRankings[teamSize]?.[0].value).toBeGreaterThan(0);
+      }
     }
   });
 
@@ -144,7 +156,7 @@ describe("fantasySnapshotBuilder", () => {
     expect(Number(topQuarterback.maxRank)).toBeGreaterThanOrEqual(Number(topQuarterback.minRank));
   });
 
-  it("never publishes synthetic projections or expert rank arrays, and attaches adp from the committed dataset", () => {
+  it("never publishes synthetic player projections or expert rank arrays, and attaches sourced ADP and VORP", () => {
     // Consensus boards never expose synthetic projections or raw expert-rank
     // arrays. The committed ADP dataset is populated, so the top of the board
     // carries a matched adp reading and the snapshot discloses its ADP source.
@@ -161,6 +173,8 @@ describe("fantasySnapshotBuilder", () => {
     expect("expertRanks" in firstPositionPlayer).toBe(false);
     expect("adp" in firstOverallPlayer).toBe(true);
     expect(snapshot.adpSource).not.toBeNull();
+    expect(snapshot.vorpSource).not.toBeNull();
+    expect(snapshot.vorpRankings["12"]?.[0].value).toBeGreaterThan(0);
   });
 
   it("omits adp and discloses no source when the dataset is empty", () => {
@@ -176,7 +190,6 @@ describe("fantasySnapshotBuilder", () => {
         sourceUrl: "",
       }),
     }));
-
     try {
       jest.isolateModules(() => {
         const {
@@ -212,7 +225,6 @@ describe("fantasySnapshotBuilder", () => {
         sourceUrl: "https://example.test/adp/ppr",
       }),
     }));
-
     try {
       jest.isolateModules(() => {
         const {
@@ -395,6 +407,22 @@ describe("fantasySnapshotBuilder", () => {
         sourceUrl: "https://example.com/synthetic-adp",
       }),
     }));
+    jest.doMock("@/lib/fantasyVorpData", () => ({
+      getFantasyVorpDataset: (_scoring: string, teamSize: number) => ({
+        season: 2026,
+        sourceUrl: `https://www.fantasypros.com/mock-vorp?team_size=${teamSize}`,
+        accessedAt: "2026-04-15T16:00:00.000Z",
+        players: syntheticOverall.map((player, index) => ({
+          playerId: player.id,
+          name: player.name,
+          team: player.team,
+          position: player.position,
+          positionRank: player.positionRank,
+          rank: index + 1,
+          value: syntheticOverall.length - index,
+        })),
+      }),
+    }));
 
     try {
       jest.isolateModules(() => {
@@ -413,6 +441,7 @@ describe("fantasySnapshotBuilder", () => {
     } finally {
       jest.dontMock("@/lib/fantasyPositionData");
       jest.dontMock("@/lib/fantasyAdpData");
+      jest.dontMock("@/lib/fantasyVorpData");
       jest.resetModules();
     }
   });

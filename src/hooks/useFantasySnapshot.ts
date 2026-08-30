@@ -272,6 +272,7 @@ export function useFantasySnapshot({
       slice,
       slices: snapshot.sliceMetadata,
       adpSource: snapshot.adpSource,
+      vorpSource: snapshot.vorpSource,
     };
   }, [all, players.length, position, snapshot]);
 

@@ -1,5 +1,12 @@
 import { Player, Position, ScoringFormat } from "@/types";
 import { logger } from "@/lib/logger";
+import {
+  FANTASY_VORP_TEAM_SIZES,
+  fantasyVorpTeamSizeKey,
+  type FantasyVorpRankings,
+  type FantasyVorpRankingEntry,
+  type FantasyVorpSourceMetadata,
+} from "@/lib/fantasyVorp";
 
 export const FANTASY_ROUTE_POSITIONS = [
   "overall",
@@ -13,7 +20,7 @@ export const FANTASY_ROUTE_POSITIONS = [
 ] as const;
 
 const _FANTASY_ROUTE_SCORING = ["ppr", "half_ppr", "standard"] as const;
-export const FANTASY_SNAPSHOT_SCHEMA_VERSION = 8;
+export const FANTASY_SNAPSHOT_SCHEMA_VERSION = 9;
 export const DEFAULT_FANTASY_SNAPSHOT_SOURCE =
   "Published fantasy rankings snapshot generated from FantasyPros public consensus pages. Overall boards come from the public overall consensus page for each scoring format, while flex is derived locally from the published overall board.";
 
@@ -62,6 +69,8 @@ export interface FantasySnapshot {
   scoringFormat: ScoringFormat;
   source: string;
   adpSource: FantasyAdpSourceMetadata | null;
+  vorpSource: FantasyVorpSourceMetadata | null;
+  vorpRankings: FantasyVorpRankings;
   positions: Record<FantasySnapshotPosition, Player[]>;
   overall: Player[];
   sliceMetadata: FantasySnapshotSliceMap;
@@ -79,6 +88,7 @@ export interface FantasySnapshotMetadata {
   slice: FantasySnapshotSliceMetadata | null;
   slices?: FantasySnapshotSliceMap;
   adpSource?: FantasyAdpSourceMetadata | null;
+  vorpSource?: FantasyVorpSourceMetadata | null;
 }
 
 export interface FantasyPositionResponse {
@@ -125,11 +135,15 @@ type RawFantasySnapshotSliceMetadata = Partial<FantasySnapshotSliceMetadata> & {
   updatedAt?: unknown;
 };
 
-type RawFantasySnapshot = Partial<Omit<FantasySnapshot, "adpSource">> & {
+type RawFantasySnapshot = Partial<
+  Omit<FantasySnapshot, "adpSource" | "vorpSource" | "vorpRankings">
+> & {
   positions?: Partial<Record<FantasySnapshotPosition, unknown>>;
   sliceMetadata?: Partial<Record<FantasyRoutePosition, RawFantasySnapshotSliceMetadata>>;
   upstreamUpdatedAt?: unknown;
   adpSource?: unknown;
+  vorpSource?: unknown;
+  vorpRankings?: unknown;
 };
 
 export function normalizeFantasyRoutePosition(rawPosition: string | null | undefined): FantasyRoutePosition {
@@ -356,6 +370,102 @@ function normalizeAdpSourceMetadata(value: unknown): FantasyAdpSourceMetadata | 
     asOf: normalizeOptionalTimestamp(raw.asOf),
     sampleSize: isFiniteNumber(raw.sampleSize) ? raw.sampleSize : null,
     matchedCount,
+  };
+}
+
+function normalizeVorpRankings(value: unknown): FantasyVorpRankings {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return {};
+  const rawRankings = value as Record<string, unknown>;
+  const rankings: FantasyVorpRankings = {};
+
+  for (const teamSize of FANTASY_VORP_TEAM_SIZES) {
+    const key = fantasyVorpTeamSizeKey(teamSize);
+    const rawEntries = rawRankings[key];
+    if (!Array.isArray(rawEntries) || rawEntries.length === 0) continue;
+
+    const entries: FantasyVorpRankingEntry[] = [];
+    const playerIds = new Set<string>();
+    const ranks = new Set<number>();
+    let valid = true;
+    for (const rawEntry of rawEntries) {
+      if (!rawEntry || typeof rawEntry !== "object" || Array.isArray(rawEntry)) {
+        valid = false;
+        break;
+      }
+      const entry = rawEntry as Partial<FantasyVorpRankingEntry>;
+      if (
+        typeof entry.playerId !== "string" ||
+        entry.playerId.length === 0 ||
+        !Number.isInteger(entry.rank) ||
+        Number(entry.rank) <= 0 ||
+        !isFiniteNumber(entry.value) ||
+        Number(entry.value) < 0 ||
+        playerIds.has(entry.playerId) ||
+        ranks.has(Number(entry.rank))
+      ) {
+        valid = false;
+        break;
+      }
+      playerIds.add(entry.playerId);
+      ranks.add(Number(entry.rank));
+      entries.push({
+        playerId: entry.playerId,
+        rank: Number(entry.rank),
+        value: Number(entry.value),
+      });
+    }
+    entries.sort((left, right) => left.rank - right.rank);
+    if (
+      !valid ||
+      entries.some(
+        (entry, index) => index > 0 && entry.value > entries[index - 1].value
+      )
+    ) {
+      continue;
+    }
+    rankings[key] = entries;
+  }
+
+  return rankings;
+}
+
+function normalizeVorpSourceMetadata(
+  value: unknown,
+  rankings: FantasyVorpRankings
+): FantasyVorpSourceMetadata | null {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return null;
+  const raw = value as Partial<FantasyVorpSourceMetadata>;
+  const asOf = normalizeOptionalTimestamp(raw.asOf);
+  if (typeof raw.provider !== "string" || !raw.provider.trim() || !asOf) {
+    return null;
+  }
+
+  const urls: FantasyVorpSourceMetadata["urls"] = {};
+  const matchedCounts: FantasyVorpSourceMetadata["matchedCounts"] = {};
+  for (const teamSize of FANTASY_VORP_TEAM_SIZES) {
+    const key = fantasyVorpTeamSizeKey(teamSize);
+    const entries = rankings[key];
+    if (!entries?.length) continue;
+    const url = raw.urls?.[key];
+    const matchedCount = raw.matchedCounts?.[key];
+    if (
+      typeof url !== "string" ||
+      !url.startsWith("https://www.fantasypros.com/") ||
+      !Number.isInteger(matchedCount) ||
+      Number(matchedCount) !== entries.length
+    ) {
+      continue;
+    }
+    urls[key] = url;
+    matchedCounts[key] = Number(matchedCount);
+  }
+  if (Object.keys(matchedCounts).length === 0) return null;
+
+  return {
+    provider: raw.provider.trim(),
+    asOf,
+    urls,
+    matchedCounts,
   };
 }
 
@@ -813,6 +923,20 @@ export function normalizeFantasySnapshot(
     normalizeOptionalTimestamp(input.upstreamUpdatedAt) ??
     sliceMetadata.overall.updatedAt ??
     getSliceUpdatedAt(overallPlayers);
+  const normalizedVorpRankings = normalizeVorpRankings(input.vorpRankings);
+  const vorpSource = normalizeVorpSourceMetadata(
+    input.vorpSource,
+    normalizedVorpRankings
+  );
+  const vorpRankings: FantasyVorpRankings = {};
+  if (vorpSource) {
+    for (const teamSize of FANTASY_VORP_TEAM_SIZES) {
+      const key = fantasyVorpTeamSizeKey(teamSize);
+      if (vorpSource.matchedCounts[key] && normalizedVorpRankings[key]) {
+        vorpRankings[key] = normalizedVorpRankings[key];
+      }
+    }
+  }
 
   return {
     schemaVersion: FANTASY_SNAPSHOT_SCHEMA_VERSION,
@@ -829,6 +953,8 @@ export function normalizeFantasySnapshot(
         ? input.source.trim()
         : DEFAULT_FANTASY_SNAPSHOT_SOURCE,
     adpSource: normalizeAdpSourceMetadata(input.adpSource),
+    vorpSource,
+    vorpRankings,
     positions,
     overall: sliceMetadata.overall.available ? overallPlayers : [],
     sliceMetadata,

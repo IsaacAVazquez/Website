@@ -21,6 +21,16 @@ import {
 } from "@/lib/fantasyAdpMatcher";
 import { FANTASY_ADP_PROVIDER, FANTASY_ADP_PROVIDER_URL } from "@/lib/fantasyAdpSource";
 import {
+  FANTASY_PROS_VORP_PROVIDER,
+  FANTASY_VORP_TEAM_SIZES,
+} from "@/lib/fantasyProsVorpSource";
+import { getFantasyVorpDataset } from "@/lib/fantasyVorpData";
+import {
+  fantasyVorpTeamSizeKey,
+  type FantasyVorpRankings,
+  type FantasyVorpSourceMetadata,
+} from "@/lib/fantasyVorp";
+import {
   getFantasyOverallData,
   getFantasyPositionData,
   getFantasyPositionDataMetadata,
@@ -37,6 +47,8 @@ const ADP_MATCH_GATE_MIN_ROWS = 50;
 const ADP_MATCH_GATE_MIN_RATE = 0.6;
 const ADP_TOP_BOARD_SIZE = 150;
 const ADP_TOP_BOARD_MIN_RATE = 0.9;
+const VORP_TOP_BOARD_SIZE = 150;
+const VORP_TOP_BOARD_MIN_RATE = 0.9;
 
 /**
  * The NFL season a snapshot belongs to. The season is named for the year it
@@ -303,6 +315,56 @@ export function buildFantasySnapshot(scoring: FantasyRouteScoring): FantasySnaps
   const overallPlayers = buildOverallSlice(overallSourcePlayers, adpIndex, gameLogIndex, gameLogSeason);
   const overallUpdatedAt = getSliceUpdatedAt(overallPlayers) ?? sourceMetadata.upstreamUpdatedAt;
 
+  const snapshotPlayerIds = new Set(overallPlayers.map((player) => player.id));
+  for (const position of FANTASY_SNAPSHOT_POSITION_ORDER) {
+    for (const player of getFantasyPositionData(position, scoringFormat)) {
+      snapshotPlayerIds.add(player.id);
+    }
+  }
+  const topOverallPlayerIds = new Set(
+    overallPlayers.slice(0, VORP_TOP_BOARD_SIZE).map((player) => player.id)
+  );
+  const vorpRankings: FantasyVorpRankings = {};
+  const vorpUrls: FantasyVorpSourceMetadata["urls"] = {};
+  const vorpMatchedCounts: FantasyVorpSourceMetadata["matchedCounts"] = {};
+  const vorpAccessedAt: string[] = [];
+  for (const teamSize of FANTASY_VORP_TEAM_SIZES) {
+    const dataset = getFantasyVorpDataset(scoringFormat, teamSize);
+    if (dataset.season !== SNAPSHOT_SEASON || dataset.players.length === 0) {
+      throw new Error(
+        `Fantasy VORP ${scoringFormat} ${teamSize}-team data is missing or belongs to season ${dataset.season}.`
+      );
+    }
+    const matched = dataset.players
+      .filter((entry) => snapshotPlayerIds.has(entry.playerId))
+      .map((entry) => ({
+        playerId: entry.playerId,
+        rank: entry.rank,
+        value: entry.value,
+      }));
+    const topMatches = matched.filter((entry) =>
+      topOverallPlayerIds.has(entry.playerId)
+    ).length;
+    const topMatchRate =
+      topOverallPlayerIds.size > 0 ? topMatches / topOverallPlayerIds.size : 0;
+    if (topMatchRate < VORP_TOP_BOARD_MIN_RATE) {
+      throw new Error(
+        `Fantasy VORP ${scoringFormat} ${teamSize}-team join covered ${topMatches} of the top ${topOverallPlayerIds.size} players, below the ${Math.round(VORP_TOP_BOARD_MIN_RATE * 100)}% minimum.`
+      );
+    }
+    const key = fantasyVorpTeamSizeKey(teamSize);
+    vorpRankings[key] = matched;
+    vorpUrls[key] = dataset.sourceUrl;
+    vorpMatchedCounts[key] = matched.length;
+    vorpAccessedAt.push(dataset.accessedAt);
+  }
+  const vorpSource: FantasyVorpSourceMetadata = {
+    provider: FANTASY_PROS_VORP_PROVIDER,
+    asOf: vorpAccessedAt.sort()[0],
+    urls: vorpUrls,
+    matchedCounts: vorpMatchedCounts,
+  };
+
   sliceMetadata.overall =
     overallPlayers.length > 0
       ? buildAvailableSlice(overallPlayers, "overall_consensus", "overall", overallUpdatedAt).metadata
@@ -388,6 +450,8 @@ export function buildFantasySnapshot(scoring: FantasyRouteScoring): FantasySnaps
     scoringFormat,
     source: sourceMetadata.source,
     adpSource,
+    vorpSource,
+    vorpRankings,
     positions,
     overall: overallPlayers,
     sliceMetadata,

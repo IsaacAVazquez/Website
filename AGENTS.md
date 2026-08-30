@@ -254,13 +254,15 @@ Primary npm entry point:
 
 - `npm run update:fantasy`
 
-The command currently runs this five-step pipeline:
+The command currently runs this seven-step pipeline:
 
 1. `tsx scripts/buildFantasyPositionData.ts`
 2. `tsx scripts/buildFantasyAdpData.ts`
 3. `tsx scripts/buildFantasyGameLogData.ts`
-4. `tsx scripts/buildFantasySnapshots.ts`
-5. `tsx scripts/buildBestBallSnapshot.ts`
+4. `tsx scripts/buildFantasyVorpData.ts`
+5. `tsx scripts/buildFantasySnapshots.ts`
+6. `tsx scripts/buildBestBallSnapshot.ts`
+7. `tsx scripts/buildFantasyWeeklySnapshot.ts`
 
 Steps 2 and 3 are both fail-soft overlays on the consensus board. Each keeps its
 previous generated data on a failed or thin fetch and never stops the chain.
@@ -270,11 +272,13 @@ Current generated outputs:
 - `src/data/fantasyPositionData.generated.ts`
 - `src/data/fantasyAdpData.generated.ts`
 - `src/data/fantasyGameLogData.generated.ts`
+- `src/data/fantasyVorpData.generated.ts`
 - `src/data/fantasySnapshotRevision.generated.ts`
 - `public/data/fantasy/ppr.json`
 - `public/data/fantasy/half_ppr.json`
 - `public/data/fantasy/standard.json`
 - `public/data/fantasy/best-ball.json`
+- `public/data/fantasy/weekly.json` when the in-season board is published
 
 Legacy RB tiers artifact still exists, and the old RB tier route redirects to the canonical fantasy board:
 

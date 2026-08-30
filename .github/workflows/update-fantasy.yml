@@ -100,8 +100,9 @@ jobs:
       # past `git diff` because the file does change. Refuse to commit unless
       # every scoring format has a healthy overall board AND every individual
       # position board (QB/RB/WR/TE/K/DST) clears the same room-completeness
-      # floor as the source parser. This rejects a coherent partial response
-      # before it can replace a draft-ready snapshot.
+      # floor as the source parser. The same gate requires complete, sourced
+      # VORP boards for 10, 12, and 14-team leagues. This rejects a coherent
+      # partial response before it can replace a draft-ready snapshot.
       - name: Verify fantasy snapshot quality
         id: verify_quality
         # Soft for the same reason as the freshness step above: this gate
@@ -115,6 +116,13 @@ jobs:
 
           const MIN_OVERALL = 300;
           const MIN_POSITION = { QB: 48, RB: 100, WR: 120, TE: 48, K: 32, DST: 32 };
+          const MIN_VORP = 300;
+          const VORP_TEAM_SIZES = ['10', '12', '14'];
+          const VORP_PATHS = {
+            ppr: 'ppr-vorp.php',
+            half_ppr: 'half-ppr-vorp.php',
+            standard: 'vorp.php',
+          };
           const DATA_DIR = path.join('public', 'data', 'fantasy');
           const formats = ['ppr', 'half_ppr', 'standard'];
           const failures = [];
@@ -128,7 +136,10 @@ jobs:
               const counts = Object.keys(MIN_POSITION)
                 .map((pos) => pos + '=' + ((positions[pos] || []).length))
                 .join(' ');
-              console.log(format + ': overall=' + overallCount + ' ' + counts);
+              const vorpCounts = VORP_TEAM_SIZES
+                .map((teamSize) => teamSize + '-team=' + ((snapshot.vorpRankings?.[teamSize] || []).length))
+                .join(' ');
+              console.log(format + ': overall=' + overallCount + ' ' + counts + ' VORP ' + vorpCounts);
 
               if (overallCount < MIN_OVERALL) {
                 failures.push(format + ' overall has ' + overallCount + ' players (need >= ' + MIN_OVERALL + ')');
@@ -137,6 +148,91 @@ jobs:
                 const count = Array.isArray(positions[pos]) ? positions[pos].length : 0;
                 if (count < min) {
                   failures.push(format + ' ' + pos + ' board has ' + count + ' players (need >= ' + min + ')');
+                }
+              }
+
+              const vorpSource = snapshot.vorpSource;
+              const vorpAsOf = Date.parse(vorpSource?.asOf || '');
+              const futureSkewToleranceMs = 5 * 60 * 1000;
+              if (vorpSource?.provider !== 'FantasyPros projected VORP') {
+                failures.push(format + ' VORP source provider is missing or invalid');
+              }
+              if (!Number.isFinite(vorpAsOf) || vorpAsOf > Date.now() + futureSkewToleranceMs) {
+                failures.push(format + ' VORP source asOf is missing, invalid, or future-dated');
+              }
+
+              const snapshotPlayerIds = new Set([
+                ...(Array.isArray(snapshot.overall) ? snapshot.overall : []),
+                ...Object.values(positions).flatMap((board) => Array.isArray(board) ? board : []),
+              ].map((player) => player?.id).filter(Boolean));
+
+              for (const teamSize of VORP_TEAM_SIZES) {
+                const entries = snapshot.vorpRankings?.[teamSize];
+                const count = Array.isArray(entries) ? entries.length : 0;
+                const matchedCount = vorpSource?.matchedCounts?.[teamSize];
+                const sourceUrl = vorpSource?.urls?.[teamSize];
+
+                if (count < MIN_VORP) {
+                  failures.push(format + ' ' + teamSize + '-team VORP board has ' + count + ' players (need >= ' + MIN_VORP + ')');
+                }
+                if (!Number.isInteger(matchedCount) || matchedCount !== count) {
+                  failures.push(format + ' ' + teamSize + '-team VORP matchedCount does not equal its board length');
+                }
+
+                try {
+                  const parsedUrl = new URL(sourceUrl);
+                  if (
+                    parsedUrl.origin !== 'https://www.fantasypros.com' ||
+                    parsedUrl.pathname !== '/nfl/rankings/' + VORP_PATHS[format]
+                  ) {
+                    failures.push(format + ' ' + teamSize + '-team VORP source URL does not match its scoring format');
+                  }
+                  const urlTeamSize = parsedUrl.searchParams.get('team_size');
+                  if (
+                    (teamSize === '12' && urlTeamSize !== null && urlTeamSize !== '12') ||
+                    (teamSize !== '12' && urlTeamSize !== teamSize)
+                  ) {
+                    failures.push(format + ' ' + teamSize + '-team VORP source URL has the wrong league size');
+                  }
+                } catch {
+                  failures.push(format + ' ' + teamSize + '-team VORP source URL is missing or invalid');
+                }
+
+                if (!Array.isArray(entries)) continue;
+                const playerIds = new Set();
+                const ranks = new Set();
+                let previousRank = 0;
+                let previousValue = Infinity;
+                for (const entry of entries) {
+                  const rank = entry?.rank;
+                  const value = entry?.value;
+                  if (typeof entry?.playerId !== 'string' || entry.playerId.length === 0) {
+                    failures.push(format + ' ' + teamSize + '-team VORP board contains a missing player ID');
+                    break;
+                  }
+                  if (playerIds.has(entry.playerId)) {
+                    failures.push(format + ' ' + teamSize + '-team VORP board contains duplicate player IDs');
+                    break;
+                  }
+                  if (!snapshotPlayerIds.has(entry.playerId)) {
+                    failures.push(format + ' ' + teamSize + '-team VORP board contains a player outside the snapshot');
+                    break;
+                  }
+                  if (!Number.isInteger(rank) || rank <= 0 || ranks.has(rank) || rank <= previousRank) {
+                    failures.push(format + ' ' + teamSize + '-team VORP ranks are invalid, duplicated, or out of order');
+                    break;
+                  }
+                  if (!Number.isFinite(value) || value < 0 || value > previousValue) {
+                    failures.push(format + ' ' + teamSize + '-team VORP values are invalid, negative, or out of order');
+                    break;
+                  }
+                  playerIds.add(entry.playerId);
+                  ranks.add(rank);
+                  previousRank = rank;
+                  previousValue = value;
+                }
+                if (entries.length > 0 && entries[0]?.rank !== 1) {
+                  failures.push(format + ' ' + teamSize + '-team VORP board does not start at rank 1');
                 }
               }
             } catch (err) {
@@ -151,7 +247,7 @@ jobs:
             }
             process.exit(1);
           }
-          console.log('All scoring formats cleared the overall and per-position floors. Quality gate passed.');
+          console.log('All scoring formats cleared the overall, position, and VORP checks. Quality gate passed.');
           "
 
       # Best ball is a soft lane: it has its own upstream sources, so its failures
@@ -300,6 +396,7 @@ jobs:
             src/data/fantasyPositionData.generated.ts \
             src/data/fantasyAdpData.generated.ts \
             src/data/fantasyGameLogData.generated.ts \
+            src/data/fantasyVorpData.generated.ts \
             src/data/fantasySnapshotRevision.generated.ts \
             public/data/fantasy/ppr.json \
             public/data/fantasy/half_ppr.json \
@@ -319,6 +416,7 @@ jobs:
             src/data/fantasyPositionData.generated.ts \
             src/data/fantasyAdpData.generated.ts \
             src/data/fantasyGameLogData.generated.ts \
+            src/data/fantasyVorpData.generated.ts \
             src/data/fantasySnapshotRevision.generated.ts \
             public/data/fantasy/ppr.json \
             public/data/fantasy/half_ppr.json \
@@ -395,10 +493,10 @@ jobs:
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "**Status:** ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
           echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
-          echo "FantasyPros source: public consensus HTML" >> "$GITHUB_STEP_SUMMARY"
+          echo "FantasyPros sources: public consensus HTML and projected VORP HTML" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
           if [ "${{ steps.check_changes.outputs.changed }}" == "true" ]; then
-            echo "✅ **Redraft:** rankings and ADP artifacts were refreshed and committed." >> "$GITHUB_STEP_SUMMARY"
+            echo "✅ **Redraft:** rankings, VORP, and ADP artifacts were refreshed and committed." >> "$GITHUB_STEP_SUMMARY"
           else
             echo "ℹ️ **Redraft:** the published rankings artifacts were already current." >> "$GITHUB_STEP_SUMMARY"
           fi
@@ -410,6 +508,7 @@ jobs:
           echo "- src/data/fantasyPositionData.generated.ts" >> "$GITHUB_STEP_SUMMARY"
           echo "- src/data/fantasyAdpData.generated.ts" >> "$GITHUB_STEP_SUMMARY"
           echo "- src/data/fantasyGameLogData.generated.ts" >> "$GITHUB_STEP_SUMMARY"
+          echo "- src/data/fantasyVorpData.generated.ts" >> "$GITHUB_STEP_SUMMARY"
           echo "- src/data/fantasySnapshotRevision.generated.ts" >> "$GITHUB_STEP_SUMMARY"
           echo "- public/data/fantasy/ppr.json" >> "$GITHUB_STEP_SUMMARY"
           echo "- public/data/fantasy/half_ppr.json" >> "$GITHUB_STEP_SUMMARY"
@@ -435,7 +534,7 @@ jobs:
               `- FantasyPros HTML structure changed (\`var ecrData\` extraction failed)`,
               `- A public rankings page returned a partial board that failed the declared-count or coverage gate`,
               `- Sustained 429s exceeded retry budget`,
-              `- Quality gate caught a degraded snapshot (thin overall board or an empty/short position board)`,
+              `- Quality gate caught a degraded snapshot (thin rankings, invalid VORP data, or a source mismatch)`,
               ``,
               `Note: a failed ADP fetch is non-fatal and keeps the prior prices. A board that is stale past the age limit is different: it still commits the rankings, but it sets \`adp_dark\` and turns the run red.`,
               ``,

@@ -85,6 +85,8 @@ interface SnapshotOverrides {
   position?: string;
   season?: number;
   adpSource?: object | null;
+  vorpSource?: object | null;
+  vorpRankings?: object;
   sliceAvailable?: boolean;
   sliceReason?: string;
   isLoading?: boolean;
@@ -97,6 +99,8 @@ function mockSnapshot({
   position = "rb",
   season = 2026,
   adpSource = null,
+  vorpSource = null,
+  vorpRankings = {},
   sliceAvailable = true,
   sliceReason,
   isLoading = false,
@@ -113,7 +117,7 @@ function mockSnapshot({
   };
   mockUseFantasySnapshot.mockReturnValue({
     players: sliceAvailable ? players : [],
-    snapshot: null,
+    snapshot: vorpSource ? { vorpSource, vorpRankings } : null,
     metadata: {
       season,
       week: 0,
@@ -144,13 +148,21 @@ const FRESH_ADP_SOURCE = {
   matchedCount: 260,
 };
 
-function renderClient(initial?: Partial<{ position: string; scoring: string; query: string }>) {
+function renderClient(initial?: Partial<{
+  position: string;
+  scoring: string;
+  ranking: "consensus" | "vorp";
+  teams: 10 | 12 | 14;
+  query: string;
+}>) {
   return render(
     <FantasyFootballClient
       initialState={{
         position: (initial?.position ?? "rb") as never,
         scoring: (initial?.scoring ?? "ppr") as never,
         view: "list",
+        ranking: initial?.ranking ?? "consensus",
+        teams: initial?.teams ?? 12,
         query: initial?.query ?? "",
       }}
     />
@@ -303,6 +315,67 @@ describe("FantasyFootballClient", () => {
     const dialog = screen.getByRole("dialog", { name: "Ja'Marr Chase detail" });
     expect(within(dialog).getByText("Market ADP")).toBeVisible();
     expect(within(dialog).getByText(/picks after the consensus rank/)).toBeVisible();
+  });
+
+  it("orders the VORP view by sourced points above replacement for the selected league size", () => {
+    currentSearchParams = new URLSearchParams(
+      "position=overall&scoring=ppr&ranking=vorp&teams=12"
+    );
+    mockSnapshot({
+      position: "overall",
+      vorpSource: {
+        provider: "FantasyPros projected VORP",
+        asOf: "2026-08-17T00:00:00.000Z",
+        urls: {
+          "12": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
+        },
+        matchedCounts: { "12": 2 },
+      },
+      vorpRankings: {
+        "12": [
+          { playerId: "rb-2", rank: 1, value: 90 },
+          { playerId: "rb-1", rank: 2, value: 70 },
+        ],
+      },
+      players: [
+        makePlayer({ id: "rb-1", name: "Consensus First", rankEcr: 1 }),
+        makePlayer({
+          id: "rb-2",
+          name: "VORP First",
+          rankEcr: 2,
+          averageRank: 2,
+          positionRank: 2,
+        }),
+        makePlayer({
+          id: "rb-3",
+          name: "No Projected VORP",
+          rankEcr: 3,
+          averageRank: 3,
+          positionRank: 3,
+        }),
+      ],
+    });
+
+    renderClient({ position: "overall", ranking: "vorp", teams: 12 });
+
+    expect(screen.getByText("12-team PPR VORP")).toBeVisible();
+    expect(screen.getByText(/projected season points above the same-position waiver replacement/i)).toBeVisible();
+    const playerButtons = screen.getAllByRole("button", { name: /Open .* detail/ });
+    expect(playerButtons[0]).toHaveAccessibleName("Open VORP First detail");
+    const vorpFirstRow = playerButtons[0].closest("li") as HTMLElement;
+    expect(within(vorpFirstRow).getByText("90")).toBeVisible();
+    expect(
+      screen.queryByRole("button", { name: "Open No Projected VORP detail" })
+    ).not.toBeInTheDocument();
+    expect(screen.getAllByText(/1 without a published VORP/)[0]).toBeInTheDocument();
+
+    fireEvent.change(screen.getAllByRole("combobox", { name: "VORP league size" })[0], {
+      target: { value: "14" },
+    });
+    expect(mockReplace).toHaveBeenCalledWith(
+      expect.stringContaining("teams=14"),
+      expect.anything()
+    );
   });
 
   it("suppresses the value chip on a position board, where the rank is not overall scale", () => {

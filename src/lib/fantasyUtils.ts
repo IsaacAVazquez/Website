@@ -13,6 +13,9 @@ import type { Player, RedraftLineupSettings } from "@/types";
 export const FANTASY_AVG_RANK_TOOLTIP =
   "The average of the contributing experts' ranks for this player. It is the arithmetic mean of their individual rankings, which is separate from FantasyPros' consensus rank. Lower is better, so 1.00 would mean every contributing expert ranked the player first.";
 
+export const FANTASY_VORP_TOOLTIP =
+  "FantasyPros' projected season points above the same-position player expected to be available on waivers for the selected league size. FantasyPros supplies the roster baseline and floors players at or below replacement at zero.";
+
 export function formatUpdatedAt(timestamp: string | null | undefined): string {
   if (!timestamp) {
     return "Unavailable";

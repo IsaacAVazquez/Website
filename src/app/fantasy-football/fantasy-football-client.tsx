@@ -34,6 +34,7 @@ import {
   FANTASY_PRIOR_SEASON_ADP_TOOLTIP,
   FANTASY_REACH_TOOLTIP,
   FANTASY_VALUE_TOOLTIP,
+  FANTASY_VORP_TOOLTIP,
   FANTASY_VS_ADP_TOOLTIP,
   HEADER_CHIP_CLASS,
   MONO_LABEL_CLASS,
@@ -53,6 +54,11 @@ import {
   type FantasySnapshotStaleness,
   withTierBreaks,
 } from "@/lib/fantasyUtils";
+import {
+  FANTASY_VORP_TEAM_SIZES,
+  buildFantasyVorpIndex,
+  type FantasyVorpTeamSize,
+} from "@/lib/fantasyVorp";
 import { PositionFilterBar, type PositionFilterOption } from "@/components/fantasy";
 import { Player } from "@/types";
 import { FANTASY_FOOTBALL_FAQ } from "./fantasy-faq";
@@ -243,6 +249,78 @@ function ScoringToggle({
         );
       })}
     </div>
+  );
+}
+
+function RankingToggle({
+  value,
+  onChange,
+  vorpAvailable,
+}: {
+  value: FantasySearchState["ranking"];
+  onChange: (value: FantasySearchState["ranking"]) => void;
+  vorpAvailable: boolean;
+}) {
+  return (
+    <div
+      role="group"
+      aria-label="Ranking method"
+      className="inline-flex shrink-0 overflow-hidden rounded-[4px] border"
+      style={{ borderColor: "var(--home-rule)" }}
+    >
+      {(["consensus", "vorp"] as const).map((option) => {
+        const active = value === option;
+        const disabled = option === "vorp" && !vorpAvailable;
+        return (
+          <button
+            key={option}
+            type="button"
+            aria-pressed={active}
+            disabled={disabled}
+            onClick={() => onChange(option)}
+            className="min-h-touch cursor-pointer px-3 font-mono text-3xs uppercase tracking-[0.08em] transition-colors duration-150 disabled:cursor-not-allowed disabled:opacity-50"
+            style={
+              active
+                ? { background: "var(--home-ink)", color: "var(--home-paper)" }
+                : { background: "transparent", color: "var(--home-ink)" }
+            }
+          >
+            {option === "consensus" ? "Consensus" : "VORP"}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+function VorpTeamSizeSelect({
+  value,
+  onChange,
+}: {
+  value: FantasyVorpTeamSize;
+  onChange: (value: FantasyVorpTeamSize) => void;
+}) {
+  return (
+    <label className="inline-flex shrink-0 items-center gap-1.5">
+      <span className="sr-only">VORP league size</span>
+      <select
+        aria-label="VORP league size"
+        value={value}
+        onChange={(event) => onChange(Number(event.target.value) as FantasyVorpTeamSize)}
+        className="min-h-touch rounded-[4px] border px-2 font-mono text-3xs uppercase tracking-[0.06em]"
+        style={{
+          borderColor: "var(--home-rule)",
+          background: "var(--home-paper-raised)",
+          color: "var(--home-ink)",
+        }}
+      >
+        {FANTASY_VORP_TEAM_SIZES.map((teamSize) => (
+          <option key={teamSize} value={teamSize}>
+            {teamSize} teams
+          </option>
+        ))}
+      </select>
+    </label>
   );
 }
 
@@ -858,7 +936,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
   const queue = usePlayerQueue();
   const notes = usePlayerNotes();
 
-  const hasManagedParams = ["position", "scoring", "view", "q"].some(
+  const hasManagedParams = ["position", "scoring", "view", "ranking", "teams", "q"].some(
     (param) => searchParams.get(param) !== null
   );
   const routeState = useMemo<FantasySearchState>(
@@ -920,10 +998,17 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
     });
   }
 
-  const { players, metadata, sliceMetadata, sliceMetadataMap, isLoading, error, retry } = useFantasySnapshot({
+  const { players, snapshot, metadata, sliceMetadata, sliceMetadataMap, isLoading, error, retry } = useFantasySnapshot({
     position: routeState.position,
     scoring: routeState.scoring,
   });
+
+  const vorpIndex = useMemo(
+    () => buildFantasyVorpIndex(snapshot?.vorpRankings, routeState.teams),
+    [routeState.teams, snapshot?.vorpRankings]
+  );
+  const vorpAvailable = Boolean(snapshot?.vorpSource) && vorpIndex.size > 0;
+  const vorpMode = routeState.ranking === "vorp" && vorpAvailable;
 
   const currentSliceUnavailable = Boolean(sliceMetadata && !sliceMetadata.available);
   const localToolsMemoryOnly =
@@ -938,26 +1023,50 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
   const vsAdpMeaningful = routeState.position === "overall" || routeState.position === "flex";
   const selectedScoringLabel = FANTASY_SCORING_LABELS[routeState.scoring];
   const currentSourceUpdatedAt = sliceMetadata?.updatedAt ?? metadata?.upstreamUpdatedAt ?? null;
-  const sourceStaleness = getSnapshotStaleness(currentSourceUpdatedAt);
+  const activeSourceUpdatedAt = vorpMode
+    ? snapshot?.vorpSource?.asOf ?? null
+    : currentSourceUpdatedAt;
+  const sourceStaleness = getSnapshotStaleness(activeSourceUpdatedAt);
 
   const queuedOnBoardCount = useMemo(
     () => players.reduce((count, player) => count + (queue.queuedSet.has(player.id) ? 1 : 0), 0),
     [players, queue.queuedSet]
   );
 
-  const filteredPlayers = useMemo(() => {
+  const { list: filteredPlayers, hiddenWithoutVorp } = useMemo(() => {
     if (currentSliceUnavailable) {
-      return [];
+      return { list: [] as Player[], hiddenWithoutVorp: 0 };
     }
 
     const base = queuedOnly ? players.filter((player) => queue.queuedSet.has(player.id)) : players;
     const query = searchQuery.trim().toLowerCase();
-    if (!query) {
-      return base;
-    }
+    const searched = query
+      ? base.filter((player) => getFantasyPlayerSearchText(player).includes(query))
+      : base;
+    if (!vorpMode) return { list: searched, hiddenWithoutVorp: 0 };
 
-    return base.filter((player) => getFantasyPlayerSearchText(player).includes(query));
-  }, [currentSliceUnavailable, players, searchQuery, queuedOnly, queue.queuedSet]);
+    const ranked = searched.filter((player) => vorpIndex.has(player.id));
+    const list = ranked.sort((left, right) => {
+      const leftRank = vorpIndex.get(left.id)?.rank ?? Number.POSITIVE_INFINITY;
+      const rightRank = vorpIndex.get(right.id)?.rank ?? Number.POSITIVE_INFINITY;
+      return (
+        leftRank - rightRank ||
+        Number(left.rankEcr ?? left.averageRank) -
+          Number(right.rankEcr ?? right.averageRank) ||
+        left.id.localeCompare(right.id)
+      );
+    });
+    // VORP mode drops players without a published value, so say how many.
+    return { list, hiddenWithoutVorp: searched.length - ranked.length };
+  }, [
+    currentSliceUnavailable,
+    players,
+    searchQuery,
+    queuedOnly,
+    queue.queuedSet,
+    vorpIndex,
+    vorpMode,
+  ]);
 
   const maxTier = useMemo(() => {
     let max = 0;
@@ -974,7 +1083,14 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional reset on filter change
     setVisibleCount(RANKINGS_PAGE_SIZE);
-  }, [routeState.position, routeState.scoring, searchQuery, queuedOnly]);
+  }, [
+    routeState.position,
+    routeState.scoring,
+    routeState.ranking,
+    routeState.teams,
+    searchQuery,
+    queuedOnly,
+  ]);
 
   const windowedPlayers = useMemo(
     () => filteredPlayers.slice(0, visibleCount),
@@ -1019,6 +1135,11 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
   // plates comes from the consensus averages either side of the boundary, so
   // plate spacing scales with how large the drop actually is.
   const tierGroups = useMemo<TierGroup[]>(() => {
+    if (vorpMode) {
+      return windowedPlayers.length > 0
+        ? [{ tier: null, rows: windowedPlayers }]
+        : [];
+    }
     const groups: TierGroup[] = [];
     for (const { player, tier, startsTier } of withTierBreaks(windowedPlayers)) {
       const current = groups[groups.length - 1];
@@ -1029,7 +1150,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
       }
     }
     return groups;
-  }, [windowedPlayers]);
+  }, [vorpMode, windowedPlayers]);
 
   const detailPlayer = useMemo(
     () => (detailPlayerId ? players.find((player) => player.id === detailPlayerId) ?? null : null),
@@ -1059,11 +1180,21 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
 
   const snapshotStamp = formatStamp(metadata?.generatedAt);
   const adpStamp = formatStamp(adpSource?.asOf);
-  const sourceStamp = formatStamp(currentSourceUpdatedAt);
+  const vorpStamp = formatStamp(snapshot?.vorpSource?.asOf);
+  const sourceStamp = formatStamp(activeSourceUpdatedAt);
 
   const headerChips: { label: string; tone?: CSSProperties }[] = [
-    { label: `${selectedScoringLabel} board` },
-    { label: "FantasyPros consensus" },
+    {
+      label: vorpMode
+        ? `${routeState.teams}-team ${selectedScoringLabel} VORP`
+        : `${selectedScoringLabel} board`,
+    },
+    {
+      label: vorpMode
+        ? snapshot?.vorpSource?.provider ?? "Projected VORP"
+        : "FantasyPros consensus",
+    },
+    ...(vorpMode && vorpStamp ? [{ label: `VORP checked ${vorpStamp}` }] : []),
     ...(snapshotStamp ? [{ label: `Snapshot ${snapshotStamp}` }] : []),
     ...(adpSource && adpAvailable && adpStamp
       ? [{ label: `ADP ${adpSource.provider} · ${adpStamp}` }]
@@ -1084,6 +1215,8 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
       : []),
   ];
 
+  const vorpHiddenNote =
+    vorpMode && hiddenWithoutVorp > 0 ? ` · ${hiddenWithoutVorp} without a published VORP` : "";
   const countLine = isLoading
     ? "Loading players…"
     : error
@@ -1091,10 +1224,19 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
       : currentSliceUnavailable
         ? "Board unavailable"
         : hasMore
-          ? `${windowedPlayers.length} of ${filteredPlayers.length} shown`
-          : `${filteredPlayers.length} of ${players.length} shown`;
+          ? `${windowedPlayers.length} of ${filteredPlayers.length} shown${vorpHiddenNote}`
+          : `${filteredPlayers.length} of ${players.length} shown${vorpHiddenNote}`;
 
   const metricColumns: { label: string; className: string; title?: string }[] = [
+    ...(vorpAvailable
+      ? [
+          {
+            label: "VORP",
+            className: "w-16 text-right",
+            title: FANTASY_VORP_TOOLTIP,
+          },
+        ]
+      : []),
     // The spread bar itself yields below lg, so its label does too.
     { label: "Expert spread", className: "hidden w-[120px] lg:block", title: FANTASY_EXPERT_SPREAD_TOOLTIP },
     { label: "Range", className: "w-16 text-right", title: FANTASY_EXPERT_SPREAD_TOOLTIP },
@@ -1117,15 +1259,21 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
   const boardReady = !isLoading && !error && !currentSliceUnavailable && filteredPlayers.length > 0;
 
   function renderTierSection(group: TierGroup, index: number): ReactNode {
-    const firstRank = getPublishedBoardRank(group.rows[0], routeState.position);
-    const lastRank = getPublishedBoardRank(group.rows[group.rows.length - 1], routeState.position);
+    const displayRank = (player: Player): string =>
+      vorpMode
+        ? String(vorpIndex.get(player.id)?.rank ?? "—")
+        : getPublishedBoardRank(player, routeState.position);
+    const firstRank = displayRank(group.rows[0]);
+    const lastRank = displayRank(group.rows[group.rows.length - 1]);
     const railTone =
-      group.tier !== null
+      vorpMode
+        ? "var(--home-signal)"
+        : group.tier !== null
         ? `color-mix(in srgb, var(--home-signal) ${getTierRailIntensity(group.tier)}%, var(--home-rule))`
         : "var(--home-rule)";
 
     let cliff = 0;
-    if (index > 0) {
+    if (!vorpMode && index > 0) {
       const previous = tierGroups[index - 1];
       const prevAvg = getConsensusAvg(previous.rows[previous.rows.length - 1]);
       const nextAvg = getConsensusAvg(group.rows[0]);
@@ -1141,9 +1289,13 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
        rather than aria-labelledby, which would dangle whenever that header changes shape.
        The cliff rule above the plate is aria-hidden, so its size rides here too. */
     const tierLabel = [
-      group.tier !== null ? `Tier ${group.tier}` : "No published tier",
+      vorpMode
+        ? `${routeState.teams}-team VORP rankings`
+        : group.tier !== null
+          ? `Tier ${group.tier}`
+          : "No published tier",
       `${group.rows.length} ${group.rows.length === 1 ? "player" : "players"}`,
-      `ranks ${firstRank} to ${lastRank}`,
+      `${vorpMode ? "VORP ranks" : "ranks"} ${firstRank} to ${lastRank}`,
       index > 0 && cliff > 0 ? `${cliff.toFixed(1)} average-rank cliff above` : null,
     ]
       .filter(Boolean)
@@ -1183,21 +1335,30 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
         >
           <div className="flex flex-wrap items-baseline gap-x-3.5 gap-y-1 px-3.5 pb-2 pt-2.5">
             <span className="text-2xl font-bold leading-none tracking-tight tabular-nums">
-              {group.tier !== null ? String(group.tier).padStart(2, "0") : "—"}
+              {vorpMode
+                ? "VORP"
+                : group.tier !== null
+                  ? String(group.tier).padStart(2, "0")
+                  : "—"}
             </span>
             <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
-              {group.tier !== null ? "Tier" : "No published tier"}
+              {vorpMode
+                ? `${routeState.teams}-team rankings`
+                : group.tier !== null
+                  ? "Tier"
+                  : "No published tier"}
             </span>
             <span className="font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
               {group.rows.length} {group.rows.length === 1 ? "player" : "players"}
             </span>
             <span className="ml-auto font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
-              R{firstRank}–R{lastRank}
+              {vorpMode ? "#" : "R"}{firstRank} to {vorpMode ? "#" : "R"}{lastRank}
             </span>
           </div>
           <ul className="m-0 list-none p-0">
             {group.rows.map((player) => {
               const vsAdp = adpSignalsAvailable && vsAdpMeaningful ? describeVsAdp(player) : null;
+              const vorp = vorpIndex.get(player.id);
               const tone = getPositionTone(player.position);
               const isQueued = queue.isQueued(player.id);
               return (
@@ -1235,12 +1396,18 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                   >
                     <span
                       className="w-[34px] shrink-0 text-right font-mono text-sm"
-                      title={queue.isQueued(player.id) ? "Board rank · in your queue" : "Board rank"}
+                      title={
+                        vorpMode
+                          ? `VORP rank${queue.isQueued(player.id) ? " · in your queue" : ""}`
+                          : queue.isQueued(player.id)
+                            ? "Board rank · in your queue"
+                            : "Board rank"
+                      }
                       style={{
                         color: queue.isQueued(player.id) ? "var(--home-signal)" : "var(--home-ink)",
                       }}
                     >
-                      {getPublishedBoardRank(player, routeState.position)}
+                      {displayRank(player)}
                     </span>
                     <span className="flex min-w-0 flex-[1_1_200px] flex-wrap items-baseline gap-x-2 gap-y-1">
                       {/* The name is the row's identity, so it keeps a hard floor
@@ -1263,6 +1430,26 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                       {adpSignalsAvailable && vsAdpMeaningful && <ValueReachChip player={player} />}
                     </span>
                     <span className="flex max-w-full flex-wrap items-center gap-x-4 gap-y-1">
+                      {vorpAvailable && (
+                        <>
+                          <span className="sr-only">Value over replacement player</span>
+                          <span
+                            className="w-auto font-mono text-xs font-medium md:w-16 md:text-right"
+                            title={FANTASY_VORP_TOOLTIP}
+                            style={{
+                              color:
+                                vorp && vorp.value > 0
+                                  ? "var(--home-signal)"
+                                  : "var(--home-ink-muted)",
+                            }}
+                          >
+                            <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
+                              VORP{" "}
+                            </span>
+                            {vorp ? Math.round(vorp.value) : "—"}
+                          </span>
+                        </>
+                      )}
                       <span className="hidden lg:inline-flex">
                         <ExpertSpreadBar player={player} scale={boardScale} />
                       </span>
@@ -1382,8 +1569,9 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
             <em style={{ fontFamily: "var(--font-home-serif)", fontStyle: "italic", fontWeight: 500 }}>Rankings</em>
           </h1>
           <p className="m-0 w-full max-w-[62ch] text-sm" style={{ color: "var(--home-ink-muted)" }}>
-            The board pairs the expert consensus with market ADP, and the tier plates and cliff lines mark
-            where the board actually drops off.
+            {vorpMode
+              ? `VORP ranks FantasyPros' projected season points above the same-position waiver replacement in a ${routeState.teams}-team league. FantasyPros supplies the roster baseline for this view.`
+              : "The board pairs the expert consensus with market ADP, and the tier plates and cliff lines mark where the board actually drops off."}
           </p>
         </div>
         <div className="flex flex-wrap gap-1.5">
@@ -1444,6 +1632,17 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
             onChange={(position) => updateRouteState({ position })}
           />
           <ScoringToggle value={routeState.scoring} onChange={(scoring) => updateRouteState({ scoring })} />
+          <RankingToggle
+            value={routeState.ranking}
+            vorpAvailable={vorpAvailable}
+            onChange={(ranking) => updateRouteState({ ranking })}
+          />
+          {routeState.ranking === "vorp" ? (
+            <VorpTeamSizeSelect
+              value={routeState.teams}
+              onChange={(teams) => updateRouteState({ teams })}
+            />
+          ) : null}
           <div className="relative">
             <label htmlFor="fantasy-search" className="sr-only">
               Search the current rankings board
@@ -1658,6 +1857,21 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
             {countLine}
           </span>
         </div>
+        {!mobileSearchOpen ? (
+          <div className={`${SHELL_CLASS} flex flex-wrap items-center gap-2 pb-2 md:hidden`}>
+            <RankingToggle
+              value={routeState.ranking}
+              vorpAvailable={vorpAvailable}
+              onChange={(ranking) => updateRouteState({ ranking })}
+            />
+            {routeState.ranking === "vorp" ? (
+              <VorpTeamSizeSelect
+                value={routeState.teams}
+                onChange={(teams) => updateRouteState({ teams })}
+              />
+            ) : null}
+          </div>
+        ) : null}
         {/* Column labels ride in the sticky bar so the numbers keep their
             names mid-scroll; phones get per-value micro-labels instead. */}
         {boardReady && (
@@ -1698,7 +1912,9 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
       </div>
 
       <div className={`${SHELL_CLASS} pb-10 pt-4`}>
-        <h2 className="sr-only">{FANTASY_POSITION_LABELS[routeState.position]} rankings</h2>
+        <h2 className="sr-only">
+          {vorpMode ? `${routeState.teams}-team VORP` : FANTASY_POSITION_LABELS[routeState.position]} rankings
+        </h2>
 
         {localToolsMemoryOnly && (
           <div
@@ -1831,7 +2047,9 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
             }}
           >
             {sourceStaleness === "fresh"
-              ? `Refreshes daily through draft season, weekly after${snapshotStamp ? ` · snapshot ${snapshotStamp}` : ""}`
+              ? vorpMode
+                ? `FantasyPros VORP checked ${vorpStamp ?? "with this snapshot"} · ${routeState.teams}-team source baseline`
+                : `Refreshes daily through draft season, weekly after${snapshotStamp ? ` · snapshot ${snapshotStamp}` : ""}`
               : `${getSnapshotStalenessLabel(sourceStaleness)} board · source updated ${sourceStamp ?? "date unknown"}`}
           </span>
           <nav aria-label="More fantasy tools" className="flex flex-wrap gap-x-5 gap-y-2">

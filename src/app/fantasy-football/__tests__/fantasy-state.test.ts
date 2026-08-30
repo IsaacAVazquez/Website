@@ -20,6 +20,8 @@ describe("fantasy-state", () => {
       position: "rb",
       scoring: "half_ppr",
       view: "list",
+      ranking: "consensus",
+      teams: 12,
       query: "",
     });
   });
@@ -35,6 +37,8 @@ describe("fantasy-state", () => {
       position: "qb",
       scoring: "ppr",
       view: "tiers",
+      ranking: "consensus",
+      teams: 12,
       query: "",
     });
   });
@@ -56,6 +60,8 @@ describe("fantasy-state", () => {
           position: "qb",
           scoring: "standard",
           view: "list",
+          ranking: "consensus",
+          teams: 12,
           query: "",
         },
         new URLSearchParams("ref=test")
@@ -69,6 +75,8 @@ describe("fantasy-state", () => {
         position: "rb",
         scoring: "ppr",
         view: "tiers",
+        ranking: "consensus",
+        teams: 12,
         query: "",
       })
     ).toBe("/fantasy-football?position=rb&scoring=ppr&view=tiers");
@@ -85,10 +93,27 @@ describe("fantasy-state", () => {
       position: "wr",
       scoring: "ppr",
       view: "list",
+      ranking: "consensus",
+      teams: 12,
       query: "Ja'Marr Chase",
     });
     expect(buildFantasyHref(state)).toBe(
       "/fantasy-football?position=wr&scoring=ppr&q=Ja%27Marr+Chase"
     );
+  });
+
+  it("normalizes and serializes VORP with a supported league size", () => {
+    const state = normalizeFantasyState({
+      position: "overall",
+      scoring: "PPR",
+      ranking: "VORP",
+      teams: "14",
+    });
+
+    expect(state).toMatchObject({ ranking: "vorp", teams: 14 });
+    expect(buildFantasyHref(state)).toBe(
+      "/fantasy-football?position=overall&scoring=ppr&ranking=vorp&teams=14"
+    );
+    expect(normalizeFantasyState({ ranking: "vorp", teams: "16" }).teams).toBe(12);
   });
 });

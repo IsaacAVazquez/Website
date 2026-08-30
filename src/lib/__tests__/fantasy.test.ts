@@ -103,6 +103,42 @@ describe("fantasy snapshot normalization", () => {
     expect(normalized.source).toMatch(/FantasyPros public consensus pages/);
   });
 
+  it("keeps VORP only when the ranking and its source metadata agree", () => {
+    const snapshot = {
+      ...buildRuntimeSnapshot(),
+      vorpSource: {
+        provider: "FantasyPros projected VORP",
+        asOf: "2026-08-25T12:00:00.000Z",
+        urls: {
+          "12": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
+        },
+        matchedCounts: { "12": 1 },
+      },
+      vorpRankings: {
+        "12": [{ playerId: "runtime-rb", rank: 1, value: 100 }],
+      },
+    };
+
+    const normalized = normalizeFantasySnapshot(snapshot, "ppr");
+    expect(normalized.vorpSource).toEqual(snapshot.vorpSource);
+    expect(normalized.vorpRankings["12"]).toEqual([
+      { playerId: "runtime-rb", rank: 1, value: 100 },
+    ]);
+
+    const mismatched = normalizeFantasySnapshot(
+      {
+        ...snapshot,
+        vorpSource: {
+          ...snapshot.vorpSource,
+          matchedCounts: { "12": 2 },
+        },
+      },
+      "ppr"
+    );
+    expect(mismatched.vorpSource).toBeNull();
+    expect(mismatched.vorpRankings).toEqual({});
+  });
+
   it.each([
     ["id", "   "],
     ["name", ""],

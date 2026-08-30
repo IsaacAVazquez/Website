@@ -201,6 +201,35 @@ describe("snapshot refresh workflow infrastructure", () => {
     expect(workflow).toContain("rankingExperts < 5");
   });
 
+  it("commits the generated VORP source and validates every redraft VORP board", () => {
+    const workflow = fs.readFileSync(
+      path.join(workflowsDir, "update-fantasy.yml"),
+      "utf8"
+    );
+    const qualityStep = workflow.match(
+      /- name: Verify fantasy snapshot quality[\s\S]*?(?=\n\s+- name:)/
+    )?.[0];
+
+    expect(
+      workflow.match(/src\/data\/fantasyVorpData\.generated\.ts/g)
+    ).toHaveLength(3);
+    expect(qualityStep).toBeDefined();
+    expect(qualityStep).toContain("const MIN_VORP = 300");
+    expect(qualityStep).toContain(
+      "const VORP_TEAM_SIZES = ['10', '12', '14']"
+    );
+    expect(qualityStep).toContain(
+      "vorpSource?.provider !== 'FantasyPros projected VORP'"
+    );
+    expect(qualityStep).toContain("matchedCount !== count");
+    expect(qualityStep).toContain("parsedUrl.pathname !==");
+    expect(qualityStep).toContain("playerIds.has(entry.playerId)");
+    expect(qualityStep).toContain("ranks.has(rank)");
+    expect(qualityStep).toContain("rank <= previousRank");
+    expect(qualityStep).toContain("value < 0 || value > previousValue");
+    expect(qualityStep).toContain("entries[0]?.rank !== 1");
+  });
+
   it("pins the scheduled fantasy build to public HTML without passing an API key", () => {
     const workflow = fs.readFileSync(
       path.join(workflowsDir, "update-fantasy.yml"),

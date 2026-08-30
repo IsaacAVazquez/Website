@@ -9,7 +9,7 @@ import { normalizeFantasyState } from "./fantasy-state";
 export const metadata = constructMetadata({
   title: "Fantasy Football Rankings",
   description:
-    "Tier-first fantasy football rankings from a published FantasyPros snapshot, with expert spread bars, rank cliffs, scoring toggles, and a linked draft assistant.",
+    "Fantasy football consensus and VORP rankings from published FantasyPros snapshots, with scoring and league-size controls and a linked draft assistant.",
   canonicalUrl: "/fantasy-football",
   image: "/fantasy-football/opengraph-image",
   dateModified: fantasySnapshotRevision.slice(0, 10),
@@ -20,6 +20,8 @@ interface FantasyFootballPageProps {
     position?: string;
     scoring?: string;
     view?: string;
+    ranking?: string;
+    teams?: string;
     q?: string;
   }>;
 }

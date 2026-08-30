@@ -92,6 +92,8 @@ export async function GET(request: NextRequest) {
           playerCount: snapshot.overall.length,
           slice: null,
           slices: snapshot.sliceMetadata,
+          adpSource: snapshot.adpSource,
+          vorpSource: snapshot.vorpSource,
         },
       };
 
@@ -123,6 +125,8 @@ export async function GET(request: NextRequest) {
         playerCount: players.length,
         slice: getFantasySliceMetadata(snapshot, position),
         slices: snapshot.sliceMetadata,
+        adpSource: snapshot.adpSource,
+        vorpSource: snapshot.vorpSource,
       },
     };
 
