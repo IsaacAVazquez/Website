@@ -1,97 +1,17 @@
 {
-  "generatedAt": "2026-08-29T23:26:50.964Z",
+  "generatedAt": "2026-08-30T14:27:42.873Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
-      "id": "521f3a1c-f977-4306-9b7f-495858719adf",
-      "name": "Nancy Grace Roman Space Telescope",
-      "flightNumber": 724,
+      "id": "63181269-b125-4c36-951c-c9bd9bbc4b55",
+      "name": "Starlink Group 15-23",
+      "flightNumber": 725,
       "upcoming": true,
       "success": null,
-      "details": "The Nancy Grace Roman Space Telescope is a NASA infrared space telescope with a 2.4 m (7.9 ft) wide field of view primary mirror and two scientific instruments. The Wide-Field Instrument (WFI) is a 300.8-megapixel multi-band visible and near-infrared camera, providing a sharpness of images comparable to that achieved by the Hubble Space Telescope over a 0.28 square degree field of view, 100 times larger than imaging cameras on the Hubble. The Coronagraphic Instrument (CGI) is a high-contrast, small field of view camera and spectrometer covering visible and near-infrared wavelengths using novel starlight-suppression technology. Roman objectives include a search for extra-solar planets using gravitational microlensing, and probing the expansion history of the Universe and the growth of cosmic structure, with the goal of measuring the effects of dark energy, the consistency of general relativity, and the curvature of spacetime.",
-      "dateUtc": "2026-08-30T11:25:49Z",
-      "dateUnix": 1788089149,
-      "dateLocal": "2026-08-30T11:25:49Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon Heavy",
-      "launchpadName": "Launch Complex 39A",
-      "launchpadLocation": "Kennedy Space Center, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/c62ac3115cf4d061.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 3,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Kennedy_Space_Center_Launch_Complex_39#Launch_Pad_39A",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/c62ac3115cf4d061.jpg"
-        ]
-      }
-    },
-    "nextLaunch": {
-      "id": "521f3a1c-f977-4306-9b7f-495858719adf",
-      "name": "Nancy Grace Roman Space Telescope",
-      "flightNumber": 724,
-      "upcoming": true,
-      "success": null,
-      "details": "The Nancy Grace Roman Space Telescope is a NASA infrared space telescope with a 2.4 m (7.9 ft) wide field of view primary mirror and two scientific instruments. The Wide-Field Instrument (WFI) is a 300.8-megapixel multi-band visible and near-infrared camera, providing a sharpness of images comparable to that achieved by the Hubble Space Telescope over a 0.28 square degree field of view, 100 times larger than imaging cameras on the Hubble. The Coronagraphic Instrument (CGI) is a high-contrast, small field of view camera and spectrometer covering visible and near-infrared wavelengths using novel starlight-suppression technology. Roman objectives include a search for extra-solar planets using gravitational microlensing, and probing the expansion history of the Universe and the growth of cosmic structure, with the goal of measuring the effects of dark energy, the consistency of general relativity, and the curvature of spacetime.",
-      "dateUtc": "2026-08-30T11:25:49Z",
-      "dateUnix": 1788089149,
-      "dateLocal": "2026-08-30T11:25:49Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon Heavy",
-      "launchpadName": "Launch Complex 39A",
-      "launchpadLocation": "Kennedy Space Center, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/c62ac3115cf4d061.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 3,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Kennedy_Space_Center_Launch_Complex_39#Launch_Pad_39A",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/c62ac3115cf4d061.jpg"
-        ]
-      }
-    },
-    "fallbackLaunch": {
-      "id": "95653d52-bb77-4860-a815-dd7141778d17",
-      "name": "Starlink Group 15-22",
-      "flightNumber": 723,
-      "upcoming": false,
-      "success": true,
       "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-08-26T09:35:11Z",
-      "dateUnix": 1787736911,
-      "dateLocal": "2026-08-26T09:35:11Z",
+      "dateUtc": "2026-09-02T07:46:00Z",
+      "dateUnix": 1788335160,
+      "dateLocal": "2026-09-02T07:46:00Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -122,47 +42,56 @@
         ]
       }
     },
-    "heroMode": "next",
-    "heroMessage": null,
-    "insights": [
-      {
-        "id": "upcoming",
-        "label": "Upcoming queue",
-        "value": "127",
-        "description": "currently published future SpaceX missions from Launch Library 2"
-      },
-      {
-        "id": "past",
-        "label": "Completed archive",
-        "value": "723",
-        "description": "historical SpaceX launches available from the active provider"
-      },
-      {
-        "id": "success-rate",
-        "label": "Historical success",
-        "value": "98%",
-        "description": "successful SpaceX launches across the published completed record"
-      },
-      {
-        "id": "rocket-families",
-        "label": "Active rockets",
-        "value": "2",
-        "description": "rocket families with pending SpaceX missions in the current feed"
+    "nextLaunch": {
+      "id": "63181269-b125-4c36-951c-c9bd9bbc4b55",
+      "name": "Starlink Group 15-23",
+      "flightNumber": 725,
+      "upcoming": true,
+      "success": null,
+      "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
+      "dateUtc": "2026-09-02T07:46:00Z",
+      "dateUnix": 1788335160,
+      "dateLocal": "2026-09-02T07:46:00Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": "/data/spacex/images/1927035cad14a77c.png",
+      "vehicleImage": "/data/spacex/images/b317ff9ea04bd623.png",
+      "crewCount": 0,
+      "payloadCount": 27,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": "https://starlink.com",
+        "wikipedia": "https://en.wikipedia.org/wiki/Starlink",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": "/data/spacex/images/1927035cad14a77c.png",
+        "patchLarge": "/data/spacex/images/1927035cad14a77c.png",
+        "flickrOriginal": [
+          "/data/spacex/images/b317ff9ea04bd623.png"
+        ]
       }
-    ],
-    "generatedAt": "2026-08-29T23:26:45.945Z"
-  },
-  "upcomingLaunches": [
-    {
+    },
+    "fallbackLaunch": {
       "id": "521f3a1c-f977-4306-9b7f-495858719adf",
       "name": "Nancy Grace Roman Space Telescope",
       "flightNumber": 724,
-      "upcoming": true,
-      "success": null,
+      "upcoming": false,
+      "success": true,
       "details": "The Nancy Grace Roman Space Telescope is a NASA infrared space telescope with a 2.4 m (7.9 ft) wide field of view primary mirror and two scientific instruments. The Wide-Field Instrument (WFI) is a 300.8-megapixel multi-band visible and near-infrared camera, providing a sharpness of images comparable to that achieved by the Hubble Space Telescope over a 0.28 square degree field of view, 100 times larger than imaging cameras on the Hubble. The Coronagraphic Instrument (CGI) is a high-contrast, small field of view camera and spectrometer covering visible and near-infrared wavelengths using novel starlight-suppression technology. Roman objectives include a search for extra-solar planets using gravitational microlensing, and probing the expansion history of the Universe and the growth of cosmic structure, with the goal of measuring the effects of dark energy, the consistency of general relativity, and the curvature of spacetime.",
-      "dateUtc": "2026-08-30T11:25:49Z",
-      "dateUnix": 1788089149,
-      "dateLocal": "2026-08-30T11:25:49Z",
+      "dateUtc": "2026-08-30T11:26:04Z",
+      "dateUnix": 1788089164,
+      "dateLocal": "2026-08-30T11:26:04Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -170,7 +99,7 @@
       "launchpadName": "Launch Complex 39A",
       "launchpadLocation": "Kennedy Space Center, FL, USA",
       "patchImage": null,
-      "vehicleImage": "/data/spacex/images/c62ac3115cf4d061.jpg",
+      "vehicleImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_heavy_on_image_20260830111425.jpeg",
       "crewCount": 0,
       "payloadCount": 1,
       "capsuleCount": 0,
@@ -189,10 +118,41 @@
         "patchSmall": null,
         "patchLarge": null,
         "flickrOriginal": [
-          "/data/spacex/images/c62ac3115cf4d061.jpg"
+          "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_heavy_on_image_20260830111425.jpeg"
         ]
       }
     },
+    "heroMode": "next",
+    "heroMessage": null,
+    "insights": [
+      {
+        "id": "upcoming",
+        "label": "Upcoming queue",
+        "value": "126",
+        "description": "currently published future SpaceX missions from Launch Library 2"
+      },
+      {
+        "id": "past",
+        "label": "Completed archive",
+        "value": "724",
+        "description": "historical SpaceX launches available from the active provider"
+      },
+      {
+        "id": "success-rate",
+        "label": "Historical success",
+        "value": "98%",
+        "description": "successful SpaceX launches across the published completed record"
+      },
+      {
+        "id": "rocket-families",
+        "label": "Active rockets",
+        "value": "2",
+        "description": "rocket families with pending SpaceX missions in the current feed"
+      }
+    ],
+    "generatedAt": "2026-08-30T14:27:37.778Z"
+  },
+  "upcomingLaunches": [
     {
       "id": "63181269-b125-4c36-951c-c9bd9bbc4b55",
       "name": "Starlink Group 15-23",
@@ -270,46 +230,6 @@
         "patchLarge": "/data/spacex/images/1927035cad14a77c.png",
         "flickrOriginal": [
           "/data/spacex/images/b317ff9ea04bd623.png"
-        ]
-      }
-    },
-    {
-      "id": "18441371-8b2e-457c-afb5-1ec1b11ab630",
-      "name": "Crew-13",
-      "flightNumber": 727,
-      "upcoming": true,
-      "success": null,
-      "details": "SpaceX Crew-13 is the thirteenth crewed operational flight of a Crew Dragon spacecraft to the International Space Station as part of NASA's Commercial Crew Program.",
-      "dateUtc": "2026-09-12T22:34:00Z",
-      "dateUnix": 1789252440,
-      "dateLocal": "2026-09-12T22:34:00Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 40",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/b210241b31da2900.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": "https://www.nasa.gov/exploration/commercial/crew/index.html",
-        "wikipedia": "https://en.wikipedia.org/wiki/Commercial_Crew_Program",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/b210241b31da2900.jpg"
         ]
       }
     },
@@ -434,6 +354,46 @@
       }
     },
     {
+      "id": "18441371-8b2e-457c-afb5-1ec1b11ab630",
+      "name": "Crew-13",
+      "flightNumber": 730,
+      "upcoming": true,
+      "success": null,
+      "details": "SpaceX Crew-13 is the thirteenth crewed operational flight of a Crew Dragon spacecraft to the International Space Station as part of NASA's Commercial Crew Program.",
+      "dateUtc": "2026-09-30T00:00:00Z",
+      "dateUnix": 1790726400,
+      "dateLocal": "2026-09-30T00:00:00Z",
+      "datePrecision": "month",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 40",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/b210241b31da2900.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": "https://www.nasa.gov/exploration/commercial/crew/index.html",
+        "wikipedia": "https://en.wikipedia.org/wiki/Commercial_Crew_Program",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/b210241b31da2900.jpg"
+        ]
+      }
+    },
+    {
       "id": "bf2c3027-a314-403e-a416-2bfd5d165ad1",
       "name": "Dragon CRS-2 SpX-35",
       "flightNumber": 733,
@@ -474,46 +434,6 @@
       }
     },
     {
-      "id": "3b430f81-0ff1-4d85-8a1a-cef0de326198",
-      "name": "Bandwagon 5 (Dedicated Mid-Inclination Rideshare)",
-      "flightNumber": 733,
-      "upcoming": true,
-      "success": null,
-      "details": "Dedicated rideshare flight to a mid-inclination orbit with dozens of small microsatellites and nanosatellites for commercial and government customers.",
-      "dateUtc": "2026-10-31T00:00:00Z",
-      "dateUnix": 1793404800,
-      "dateLocal": "2026-10-31T00:00:00Z",
-      "datePrecision": "month",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 40",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/6337115b056501f2.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/SpaceX",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/6337115b056501f2.jpg"
-        ]
-      }
-    },
-    {
       "id": "67213393-7983-4c06-8b44-b8c785a5ed79",
       "name": "Transporter 18 (Dedicated SSO Rideshare)",
       "flightNumber": 733,
@@ -550,6 +470,46 @@
         "patchLarge": null,
         "flickrOriginal": [
           "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
+      "id": "3b430f81-0ff1-4d85-8a1a-cef0de326198",
+      "name": "Bandwagon 5 (Dedicated Mid-Inclination Rideshare)",
+      "flightNumber": 733,
+      "upcoming": true,
+      "success": null,
+      "details": "Dedicated rideshare flight to a mid-inclination orbit with dozens of small microsatellites and nanosatellites for commercial and government customers.",
+      "dateUtc": "2026-10-31T00:00:00Z",
+      "dateUnix": 1793404800,
+      "dateLocal": "2026-10-31T00:00:00Z",
+      "datePrecision": "month",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 40",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/6337115b056501f2.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/SpaceX",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/6337115b056501f2.jpg"
         ]
       }
     },
@@ -634,8 +594,8 @@
       }
     },
     {
-      "id": "fa895702-687b-4ba3-95fb-9462a2c9844b",
-      "name": "Rivada 5",
+      "id": "bf5c6fa2-3add-49ff-aad6-c6450148cd89",
+      "name": "Rivada 12",
       "flightNumber": 771,
       "upcoming": true,
       "success": null,
@@ -661,126 +621,6 @@
         "webcast": null,
         "article": null,
         "wikipedia": "https://en.wikipedia.org/wiki/Rivada_Networks",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
-      "id": "d08d8b46-353b-4eee-ab5e-e1385b329008",
-      "name": "Rivada 11",
-      "flightNumber": 771,
-      "upcoming": true,
-      "success": null,
-      "details": "24 satellites for Rivada's internet constellation.",
-      "dateUtc": "2026-12-31T00:00:00Z",
-      "dateUnix": 1798675200,
-      "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "year",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 24,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Rivada_Networks",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
-      "id": "c703fab3-2ce4-4cf1-861d-754da3f3ad42",
-      "name": "SDA Tranche 2 Transport Layer A",
-      "flightNumber": 771,
-      "upcoming": true,
-      "success": null,
-      "details": "Classified mission launched by the Space Development Agency (SDA) for Tranche 2 Transport Layer.",
-      "dateUtc": "2026-12-31T00:00:00Z",
-      "dateUnix": 1798675200,
-      "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "year",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
-      "id": "d74afbc7-0de5-491c-be05-4e9c31f736ac",
-      "name": "Cygnus CRS-2 NG-25",
-      "flightNumber": 771,
-      "upcoming": true,
-      "success": null,
-      "details": "This is the 25th flight of the Orbital ATK's uncrewed resupply spacecraft Cygnus and its 24th flight to the International Space Station under the Commercial Resupply Services contract with NASA.",
-      "dateUtc": "2026-12-31T00:00:00Z",
-      "dateUnix": 1798675200,
-      "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "month",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 40",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": "https://www.nasa.gov/mission_pages/station/main/index.html",
-        "wikipedia": "https://en.wikipedia.org/wiki/Commercial_Resupply_Services#Commercial_Resupply_Services",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -834,6 +674,126 @@
       }
     },
     {
+      "id": "c703fab3-2ce4-4cf1-861d-754da3f3ad42",
+      "name": "SDA Tranche 2 Transport Layer A",
+      "flightNumber": 771,
+      "upcoming": true,
+      "success": null,
+      "details": "Classified mission launched by the Space Development Agency (SDA) for Tranche 2 Transport Layer.",
+      "dateUtc": "2026-12-31T00:00:00Z",
+      "dateUnix": 1798675200,
+      "dateLocal": "2026-12-31T00:00:00Z",
+      "datePrecision": "year",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
+      "id": "511a3ef8-799e-4723-9293-b954d9d2eb83",
+      "name": "Rivada 10",
+      "flightNumber": 771,
+      "upcoming": true,
+      "success": null,
+      "details": "24 satellites for Rivada's internet constellation.",
+      "dateUtc": "2026-12-31T00:00:00Z",
+      "dateUnix": 1798675200,
+      "dateLocal": "2026-12-31T00:00:00Z",
+      "datePrecision": "year",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 24,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Rivada_Networks",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
+      "id": "ab932c60-d808-4825-ab71-b6fe0a745f15",
+      "name": "Rivada 3",
+      "flightNumber": 771,
+      "upcoming": true,
+      "success": null,
+      "details": "24 satellites for Rivada's internet constellation.",
+      "dateUtc": "2026-12-31T00:00:00Z",
+      "dateUnix": 1798675200,
+      "dateLocal": "2026-12-31T00:00:00Z",
+      "datePrecision": "year",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 24,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Rivada_Networks",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
       "id": "8bf5f61e-a7e1-41e6-aede-7b87e4beebab",
       "name": "CHORUS",
       "flightNumber": 771,
@@ -861,6 +821,86 @@
         "webcast": null,
         "article": null,
         "wikipedia": "",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
+      "id": "4d3943e9-c894-46c4-a318-84d526d0ef40",
+      "name": "Cygnus CRS-2 NG-22",
+      "flightNumber": 771,
+      "upcoming": true,
+      "success": null,
+      "details": "This is the 25th flight of the Orbital ATK's uncrewed resupply spacecraft Cygnus and its 24th flight to the International Space Station under the Commercial Resupply Services contract with NASA.\r\n\r\nThe NG-22 Cygnus spacecraft was damaged during transport to Cape Canaveral in March 2025 and was shipped back to factory for repairs.",
+      "dateUtc": "2026-12-31T00:00:00Z",
+      "dateUnix": 1798675200,
+      "dateLocal": "2026-12-31T00:00:00Z",
+      "datePrecision": "year",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Unknown Pad",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
+      "id": "fcbc4550-e69e-4458-a9e6-4a5b6b6b15a5",
+      "name": "SDA Tranche 1 Tracking Layer E",
+      "flightNumber": 771,
+      "upcoming": true,
+      "success": null,
+      "details": "Tranche 1 Tracking Layer E is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
+      "dateUtc": "2026-12-31T00:00:00Z",
+      "dateUnix": 1798675200,
+      "dateLocal": "2026-12-31T00:00:00Z",
+      "datePrecision": "quarter",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -914,16 +954,16 @@
       }
     },
     {
-      "id": "dca8749f-1552-485a-8061-f1ad79055b8d",
-      "name": "SDA Tranche 1 Tracking Layer C",
+      "id": "2f31a7f0-968a-448d-b447-333bf0341078",
+      "name": "Rivada 4",
       "flightNumber": 771,
       "upcoming": true,
       "success": null,
-      "details": "Tranche 1 Tracking Layer C is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
+      "details": "24 satellites for Rivada's internet constellation.",
       "dateUtc": "2026-12-31T00:00:00Z",
       "dateUnix": 1798675200,
       "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "quarter",
+      "datePrecision": "year",
       "tbd": true,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
@@ -932,7 +972,7 @@
       "patchImage": null,
       "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
       "crewCount": 0,
-      "payloadCount": 1,
+      "payloadCount": 24,
       "capsuleCount": 0,
       "coreCount": 1,
       "hasExactTime": false,
@@ -940,7 +980,7 @@
       "links": {
         "webcast": null,
         "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
+        "wikipedia": "https://en.wikipedia.org/wiki/Rivada_Networks",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -954,21 +994,21 @@
       }
     },
     {
-      "id": "fcbc4550-e69e-4458-a9e6-4a5b6b6b15a5",
-      "name": "SDA Tranche 1 Tracking Layer E",
+      "id": "fc1bd321-e502-4d0f-81f4-1926dece81c6",
+      "name": "VICTUS SURGO",
       "flightNumber": 771,
       "upcoming": true,
       "success": null,
-      "details": "Tranche 1 Tracking Layer E is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
+      "details": "A new Tactically Responsive Space (TacRS) mission by the United States Space Force Space Systems Command to deliver responsive space delivery. The mission consists of an Impulse Space Mira orbital transfer vehicle that will operate in Geosynchronous Transfer Orbit (GTO), which would be transferred from Low Earth Orbit (LEO) on an Impulse Space Helios kick stage. A Helios rideshare payload will also be delivered to GEO.",
       "dateUtc": "2026-12-31T00:00:00Z",
       "dateUnix": 1798675200,
       "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "quarter",
+      "datePrecision": "year",
       "tbd": true,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "launchpadName": "Unknown Pad",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
       "patchImage": null,
       "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
       "crewCount": 0,
@@ -980,7 +1020,7 @@
       "links": {
         "webcast": null,
         "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
+        "wikipedia": "",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -1072,35 +1112,37 @@
           "/data/spacex/images/83daf3ce21b64d93.jpg"
         ]
       }
-    },
+    }
+  ],
+  "pastLaunches": [
     {
-      "id": "ab932c60-d808-4825-ab71-b6fe0a745f15",
-      "name": "Rivada 3",
-      "flightNumber": 771,
-      "upcoming": true,
-      "success": null,
-      "details": "24 satellites for Rivada's internet constellation.",
-      "dateUtc": "2026-12-31T00:00:00Z",
-      "dateUnix": 1798675200,
-      "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "year",
-      "tbd": true,
+      "id": "521f3a1c-f977-4306-9b7f-495858719adf",
+      "name": "Nancy Grace Roman Space Telescope",
+      "flightNumber": 724,
+      "upcoming": false,
+      "success": true,
+      "details": "The Nancy Grace Roman Space Telescope is a NASA infrared space telescope with a 2.4 m (7.9 ft) wide field of view primary mirror and two scientific instruments. The Wide-Field Instrument (WFI) is a 300.8-megapixel multi-band visible and near-infrared camera, providing a sharpness of images comparable to that achieved by the Hubble Space Telescope over a 0.28 square degree field of view, 100 times larger than imaging cameras on the Hubble. The Coronagraphic Instrument (CGI) is a high-contrast, small field of view camera and spectrometer covering visible and near-infrared wavelengths using novel starlight-suppression technology. Roman objectives include a search for extra-solar planets using gravitational microlensing, and probing the expansion history of the Universe and the growth of cosmic structure, with the goal of measuring the effects of dark energy, the consistency of general relativity, and the curvature of spacetime.",
+      "dateUtc": "2026-08-30T11:26:04Z",
+      "dateUnix": 1788089164,
+      "dateLocal": "2026-08-30T11:26:04Z",
+      "datePrecision": "hour",
+      "tbd": false,
       "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "rocketName": "Falcon Heavy",
+      "launchpadName": "Launch Complex 39A",
+      "launchpadLocation": "Kennedy Space Center, FL, USA",
       "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "vehicleImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_heavy_on_image_20260830111425.jpeg",
       "crewCount": 0,
-      "payloadCount": 24,
+      "payloadCount": 1,
       "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
+      "coreCount": 3,
+      "hasExactTime": true,
       "isStaleSchedule": false,
       "links": {
         "webcast": null,
         "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Rivada_Networks",
+        "wikipedia": "https://en.wikipedia.org/wiki/Kennedy_Space_Center_Launch_Complex_39#Launch_Pad_39A",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -1109,12 +1151,10 @@
         "patchSmall": null,
         "patchLarge": null,
         "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
+          "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_heavy_on_image_20260830111425.jpeg"
         ]
       }
-    }
-  ],
-  "pastLaunches": [
+    },
     {
       "id": "95653d52-bb77-4860-a815-dd7141778d17",
       "name": "Starlink Group 15-22",
@@ -2034,144 +2074,9 @@
           "/data/spacex/images/b317ff9ea04bd623.png"
         ]
       }
-    },
-    {
-      "id": "a6db1e67-5860-47c9-a674-adc0f35b62e0",
-      "name": "Transporter 17 (Dedicated SSO Rideshare)",
-      "flightNumber": 700,
-      "upcoming": false,
-      "success": true,
-      "details": "Dedicated rideshare flight to a sun-synchronous orbit with dozens of small microsatellites and nanosatellites for commercial and government customers.",
-      "dateUtc": "2026-07-07T07:12:00Z",
-      "dateUnix": 1783408320,
-      "dateLocal": "2026-07-07T07:12:00Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/SpaceX",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
     }
   ],
   "launchDetails": {
-    "521f3a1c-f977-4306-9b7f-495858719adf": {
-      "id": "521f3a1c-f977-4306-9b7f-495858719adf",
-      "name": "Nancy Grace Roman Space Telescope",
-      "flightNumber": 724,
-      "upcoming": true,
-      "success": null,
-      "details": "The Nancy Grace Roman Space Telescope is a NASA infrared space telescope with a 2.4 m (7.9 ft) wide field of view primary mirror and two scientific instruments. The Wide-Field Instrument (WFI) is a 300.8-megapixel multi-band visible and near-infrared camera, providing a sharpness of images comparable to that achieved by the Hubble Space Telescope over a 0.28 square degree field of view, 100 times larger than imaging cameras on the Hubble. The Coronagraphic Instrument (CGI) is a high-contrast, small field of view camera and spectrometer covering visible and near-infrared wavelengths using novel starlight-suppression technology. Roman objectives include a search for extra-solar planets using gravitational microlensing, and probing the expansion history of the Universe and the growth of cosmic structure, with the goal of measuring the effects of dark energy, the consistency of general relativity, and the curvature of spacetime.",
-      "dateUtc": "2026-08-30T11:25:49Z",
-      "dateUnix": 1788089149,
-      "dateLocal": "2026-08-30T11:25:49Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon Heavy",
-      "launchpadName": "Launch Complex 39A",
-      "launchpadLocation": "Kennedy Space Center, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/c62ac3115cf4d061.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 3,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": "https://plus.nasa.gov/scheduled-video/nancy-grace-roman-space-telescope-launch/",
-        "article": "https://www.spacex.com/launches/roman",
-        "wikipedia": "https://en.wikipedia.org/wiki/SpaceX",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/c62ac3115cf4d061.jpg"
-        ]
-      },
-      "staticFireDateUtc": null,
-      "window": 30,
-      "failures": [],
-      "rocket": {
-        "id": "161",
-        "name": "Falcon Heavy",
-        "type": "Heavy",
-        "active": true,
-        "boosters": 2,
-        "stages": 3,
-        "costPerLaunch": 90000000,
-        "successRatePct": 100,
-        "firstFlight": "2018-02-06",
-        "company": "SpaceX",
-        "country": "USA",
-        "description": "The Falcon Heavy is a variant of the Falcon 9 full thrust launch vehicle and consists of a standard Falcon 9 rocket core, with two additional boosters derived from the Falcon 9 first stage.",
-        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_Heavy",
-        "heightMeters": 70,
-        "diameterMeters": 12.2,
-        "massKg": 1400000,
-        "image": "/data/spacex/images/c62ac3115cf4d061.jpg",
-        "flickrImages": [
-          "/data/spacex/images/c62ac3115cf4d061.jpg"
-        ]
-      },
-      "launchpad": {
-        "id": "87",
-        "name": "Launch Complex 39A",
-        "fullName": "Launch Complex 39A",
-        "locality": "Kennedy Space Center, FL, USA",
-        "region": null,
-        "timezone": "America/New_York",
-        "status": null,
-        "details": "",
-        "image": "/data/spacex/images/14b5a064429f38e9.jpg"
-      },
-      "crew": [],
-      "payloads": [
-        {
-          "id": "6105",
-          "name": "Nancy Grace Roman Space Telescope",
-          "type": "Astrophysics",
-          "customers": [],
-          "manufacturers": [
-            "SpaceX"
-          ],
-          "nationalities": [],
-          "orbit": "Sun-Earth L2",
-          "regime": "L2",
-          "massKg": null,
-          "massLbs": null
-        }
-      ],
-      "capsules": [],
-      "cores": []
-    },
     "63181269-b125-4c36-951c-c9bd9bbc4b55": {
       "id": "63181269-b125-4c36-951c-c9bd9bbc4b55",
       "name": "Starlink Group 15-23",
@@ -2367,90 +2272,89 @@
       "capsules": [],
       "cores": []
     },
-    "95653d52-bb77-4860-a815-dd7141778d17": {
-      "id": "95653d52-bb77-4860-a815-dd7141778d17",
-      "name": "Starlink Group 15-22",
-      "flightNumber": 723,
-      "upcoming": false,
-      "success": true,
-      "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-08-26T09:35:11Z",
-      "dateUnix": 1787736911,
-      "dateLocal": "2026-08-26T09:35:11Z",
-      "datePrecision": "hour",
-      "tbd": false,
+    "d3bd7fb2-fac6-49fc-ae52-cee07d2fde67": {
+      "id": "d3bd7fb2-fac6-49fc-ae52-cee07d2fde67",
+      "name": "Griffin Mission One",
+      "flightNumber": 734,
+      "upcoming": true,
+      "success": null,
+      "details": "Demonstration flight of the Astrobotic Griffin lander and its engines, initially contracted for the cancelled NASA VIPER (Volatiles Investigating Polar Exploration Rover) mission. The vacated payload spot will now host the FLIP (FLEX Lunar Innovation Platform) lunar rover from Astrolab.",
+      "dateUtc": "2026-11-30T00:00:00Z",
+      "dateUnix": 1795996800,
+      "dateLocal": "2026-11-30T00:00:00Z",
+      "datePrecision": "month",
+      "tbd": true,
       "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": "/data/spacex/images/1927035cad14a77c.png",
-      "vehicleImage": "/data/spacex/images/b317ff9ea04bd623.png",
+      "rocketName": "Falcon Heavy",
+      "launchpadName": "Launch Complex 39A",
+      "launchpadLocation": "Kennedy Space Center, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/c62ac3115cf4d061.jpg",
       "crewCount": 0,
-      "payloadCount": 27,
+      "payloadCount": 1,
       "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": true,
+      "coreCount": 3,
+      "hasExactTime": false,
       "isStaleSchedule": false,
       "links": {
-        "webcast": "https://x.com/i/broadcasts/1AKEmvvQLayKL",
-        "article": "https://www.spacex.com/launches/sl-15-22",
-        "wikipedia": "https://en.wikipedia.org/wiki/Starlink",
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Astrobotic_Technology",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
         "redditMedia": null,
         "youtubeId": null,
-        "patchSmall": "/data/spacex/images/1927035cad14a77c.png",
-        "patchLarge": "/data/spacex/images/1927035cad14a77c.png",
+        "patchSmall": null,
+        "patchLarge": null,
         "flickrOriginal": [
-          "/data/spacex/images/b317ff9ea04bd623.png"
+          "/data/spacex/images/c62ac3115cf4d061.jpg"
         ]
       },
       "staticFireDateUtc": null,
-      "window": 14400,
+      "window": 0,
       "failures": [],
       "rocket": {
-        "id": "164",
-        "name": "Falcon 9 Block 5",
-        "type": "Block 5",
+        "id": "161",
+        "name": "Falcon Heavy",
+        "type": "Heavy",
         "active": true,
-        "boosters": 0,
-        "stages": 2,
-        "costPerLaunch": 52000000,
+        "boosters": 2,
+        "stages": 3,
+        "costPerLaunch": 90000000,
         "successRatePct": 100,
-        "firstFlight": "2018-05-11",
+        "firstFlight": "2018-02-06",
         "company": "SpaceX",
         "country": "USA",
-        "description": "Falcon 9 is a two-stage rocket designed and manufactured by SpaceX for the reliable and safe transport of satellites and the Dragon spacecraft into orbit. The Block 5 variant is the fifth major interval aimed at improving upon the ability for rapid reusability.",
-        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_9",
+        "description": "The Falcon Heavy is a variant of the Falcon 9 full thrust launch vehicle and consists of a standard Falcon 9 rocket core, with two additional boosters derived from the Falcon 9 first stage.",
+        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_Heavy",
         "heightMeters": 70,
-        "diameterMeters": 3.65,
-        "massKg": 549000,
-        "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
+        "diameterMeters": 12.2,
+        "massKg": 1400000,
+        "image": "/data/spacex/images/c62ac3115cf4d061.jpg",
         "flickrImages": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg",
-          "/data/spacex/images/b317ff9ea04bd623.png"
+          "/data/spacex/images/c62ac3115cf4d061.jpg"
         ]
       },
       "launchpad": {
-        "id": "16",
-        "name": "Space Launch Complex 4E",
-        "fullName": "Space Launch Complex 4E",
-        "locality": "Vandenberg SFB, CA, USA",
+        "id": "87",
+        "name": "Launch Complex 39A",
+        "fullName": "Launch Complex 39A",
+        "locality": "Kennedy Space Center, FL, USA",
         "region": null,
-        "timezone": "America/Los_Angeles",
+        "timezone": "America/New_York",
         "status": null,
-        "details": "Space Launch Complex 4 East (SLC-4E) is a launch site at Vandenberg Space Force Base, California, U.S.\r\n\r\nThe pad was previously used by Atlas and Titan rockets between 1963 and 2005. The pad was built for use by Atlas-Agena rockets, but was later rebuilt to handle Titan rockets.",
-        "image": "/data/spacex/images/b752567507d74cae.jpg"
+        "details": "",
+        "image": "/data/spacex/images/14b5a064429f38e9.jpg"
       },
       "crew": [],
       "payloads": [
         {
-          "id": "7711",
-          "name": "Starlink Group 15-22",
-          "type": "Communications",
+          "id": "1267",
+          "name": "Griffin Mission One",
+          "type": "Lunar Exploration",
           "customers": [
-            "SpaceX"
+            "Astrobotic Technology"
           ],
           "manufacturers": [
             "SpaceX"
@@ -2458,8 +2362,104 @@
           "nationalities": [
             "USA"
           ],
-          "orbit": "Low Earth Orbit",
-          "regime": "LEO",
+          "orbit": "Lunar Orbit",
+          "regime": "LO",
+          "massKg": null,
+          "massLbs": null
+        }
+      ],
+      "capsules": [],
+      "cores": []
+    },
+    "521f3a1c-f977-4306-9b7f-495858719adf": {
+      "id": "521f3a1c-f977-4306-9b7f-495858719adf",
+      "name": "Nancy Grace Roman Space Telescope",
+      "flightNumber": 724,
+      "upcoming": false,
+      "success": true,
+      "details": "The Nancy Grace Roman Space Telescope is a NASA infrared space telescope with a 2.4 m (7.9 ft) wide field of view primary mirror and two scientific instruments. The Wide-Field Instrument (WFI) is a 300.8-megapixel multi-band visible and near-infrared camera, providing a sharpness of images comparable to that achieved by the Hubble Space Telescope over a 0.28 square degree field of view, 100 times larger than imaging cameras on the Hubble. The Coronagraphic Instrument (CGI) is a high-contrast, small field of view camera and spectrometer covering visible and near-infrared wavelengths using novel starlight-suppression technology. Roman objectives include a search for extra-solar planets using gravitational microlensing, and probing the expansion history of the Universe and the growth of cosmic structure, with the goal of measuring the effects of dark energy, the consistency of general relativity, and the curvature of spacetime.",
+      "dateUtc": "2026-08-30T11:26:04Z",
+      "dateUnix": 1788089164,
+      "dateLocal": "2026-08-30T11:26:04Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon Heavy",
+      "launchpadName": "Launch Complex 39A",
+      "launchpadLocation": "Kennedy Space Center, FL, USA",
+      "patchImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/roman_mission_patch_20260830094614.png",
+      "vehicleImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_heavy_on_image_20260830111425.jpeg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 3,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": "https://plus.nasa.gov/scheduled-video/nancy-grace-roman-space-telescope-launch/",
+        "article": "https://www.spacex.com/launches/roman",
+        "wikipedia": "https://en.wikipedia.org/wiki/SpaceX",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/roman_mission_patch_20260830094614.png",
+        "patchLarge": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/roman_mission_patch_20260830094614.png",
+        "flickrOriginal": [
+          "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_heavy_on_image_20260830111425.jpeg"
+        ]
+      },
+      "staticFireDateUtc": null,
+      "window": 30,
+      "failures": [],
+      "rocket": {
+        "id": "161",
+        "name": "Falcon Heavy",
+        "type": "Heavy",
+        "active": true,
+        "boosters": 2,
+        "stages": 3,
+        "costPerLaunch": 90000000,
+        "successRatePct": 100,
+        "firstFlight": "2018-02-06",
+        "company": "SpaceX",
+        "country": "USA",
+        "description": "The Falcon Heavy is a variant of the Falcon 9 full thrust launch vehicle and consists of a standard Falcon 9 rocket core, with two additional boosters derived from the Falcon 9 first stage.",
+        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_Heavy",
+        "heightMeters": 70,
+        "diameterMeters": 12.2,
+        "massKg": 1400000,
+        "image": "/data/spacex/images/c62ac3115cf4d061.jpg",
+        "flickrImages": [
+          "/data/spacex/images/c62ac3115cf4d061.jpg",
+          "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_heavy_on_image_20260830111425.jpeg"
+        ]
+      },
+      "launchpad": {
+        "id": "87",
+        "name": "Launch Complex 39A",
+        "fullName": "Launch Complex 39A",
+        "locality": "Kennedy Space Center, FL, USA",
+        "region": null,
+        "timezone": "America/New_York",
+        "status": null,
+        "details": "",
+        "image": "/data/spacex/images/14b5a064429f38e9.jpg"
+      },
+      "crew": [],
+      "payloads": [
+        {
+          "id": "6105",
+          "name": "Nancy Grace Roman Space Telescope",
+          "type": "Astrophysics",
+          "customers": [],
+          "manufacturers": [
+            "SpaceX"
+          ],
+          "nationalities": [],
+          "orbit": "Sun-Earth L2",
+          "regime": "L2",
           "massKg": null,
           "massLbs": null
         }
@@ -2548,6 +2548,106 @@
         {
           "id": "7716",
           "name": "Starlink Group 15-24",
+          "type": "Communications",
+          "customers": [
+            "SpaceX"
+          ],
+          "manufacturers": [
+            "SpaceX"
+          ],
+          "nationalities": [
+            "USA"
+          ],
+          "orbit": "Low Earth Orbit",
+          "regime": "LEO",
+          "massKg": null,
+          "massLbs": null
+        }
+      ],
+      "capsules": [],
+      "cores": []
+    },
+    "95653d52-bb77-4860-a815-dd7141778d17": {
+      "id": "95653d52-bb77-4860-a815-dd7141778d17",
+      "name": "Starlink Group 15-22",
+      "flightNumber": 723,
+      "upcoming": false,
+      "success": true,
+      "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
+      "dateUtc": "2026-08-26T09:35:11Z",
+      "dateUnix": 1787736911,
+      "dateLocal": "2026-08-26T09:35:11Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": "/data/spacex/images/1927035cad14a77c.png",
+      "vehicleImage": "/data/spacex/images/b317ff9ea04bd623.png",
+      "crewCount": 0,
+      "payloadCount": 27,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": "https://x.com/i/broadcasts/1AKEmvvQLayKL",
+        "article": "https://www.spacex.com/launches/sl-15-22",
+        "wikipedia": "https://en.wikipedia.org/wiki/Starlink",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": "/data/spacex/images/1927035cad14a77c.png",
+        "patchLarge": "/data/spacex/images/1927035cad14a77c.png",
+        "flickrOriginal": [
+          "/data/spacex/images/b317ff9ea04bd623.png"
+        ]
+      },
+      "staticFireDateUtc": null,
+      "window": 14400,
+      "failures": [],
+      "rocket": {
+        "id": "164",
+        "name": "Falcon 9 Block 5",
+        "type": "Block 5",
+        "active": true,
+        "boosters": 0,
+        "stages": 2,
+        "costPerLaunch": 52000000,
+        "successRatePct": 100,
+        "firstFlight": "2018-05-11",
+        "company": "SpaceX",
+        "country": "USA",
+        "description": "Falcon 9 is a two-stage rocket designed and manufactured by SpaceX for the reliable and safe transport of satellites and the Dragon spacecraft into orbit. The Block 5 variant is the fifth major interval aimed at improving upon the ability for rapid reusability.",
+        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_9",
+        "heightMeters": 70,
+        "diameterMeters": 3.65,
+        "massKg": 549000,
+        "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
+        "flickrImages": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "/data/spacex/images/b317ff9ea04bd623.png"
+        ]
+      },
+      "launchpad": {
+        "id": "16",
+        "name": "Space Launch Complex 4E",
+        "fullName": "Space Launch Complex 4E",
+        "locality": "Vandenberg SFB, CA, USA",
+        "region": null,
+        "timezone": "America/Los_Angeles",
+        "status": null,
+        "details": "Space Launch Complex 4 East (SLC-4E) is a launch site at Vandenberg Space Force Base, California, U.S.\r\n\r\nThe pad was previously used by Atlas and Titan rockets between 1963 and 2005. The pad was built for use by Atlas-Agena rockets, but was later rebuilt to handle Titan rockets.",
+        "image": "/data/spacex/images/b752567507d74cae.jpg"
+      },
+      "crew": [],
+      "payloads": [
+        {
+          "id": "7711",
+          "name": "Starlink Group 15-22",
           "type": "Communications",
           "customers": [
             "SpaceX"
@@ -2666,106 +2766,6 @@
       ],
       "capsules": [],
       "cores": []
-    },
-    "6208f972-18ec-490f-bbe5-6f5c6cfcd48c": {
-      "id": "6208f972-18ec-490f-bbe5-6f5c6cfcd48c",
-      "name": "Starlink Group 15-20",
-      "flightNumber": 721,
-      "upcoming": false,
-      "success": true,
-      "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-08-22T07:25:16Z",
-      "dateUnix": 1787383516,
-      "dateLocal": "2026-08-22T07:25:16Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": "/data/spacex/images/1927035cad14a77c.png",
-      "vehicleImage": "/data/spacex/images/b317ff9ea04bd623.png",
-      "crewCount": 0,
-      "payloadCount": 27,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": "https://x.com/i/broadcasts/1PKqrNNknkZGb",
-        "article": "https://www.spacex.com/launches/sl-15-20",
-        "wikipedia": "https://en.wikipedia.org/wiki/Starlink",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": "/data/spacex/images/1927035cad14a77c.png",
-        "patchLarge": "/data/spacex/images/1927035cad14a77c.png",
-        "flickrOriginal": [
-          "/data/spacex/images/b317ff9ea04bd623.png"
-        ]
-      },
-      "staticFireDateUtc": null,
-      "window": 14400,
-      "failures": [],
-      "rocket": {
-        "id": "164",
-        "name": "Falcon 9 Block 5",
-        "type": "Block 5",
-        "active": true,
-        "boosters": 0,
-        "stages": 2,
-        "costPerLaunch": 52000000,
-        "successRatePct": 100,
-        "firstFlight": "2018-05-11",
-        "company": "SpaceX",
-        "country": "USA",
-        "description": "Falcon 9 is a two-stage rocket designed and manufactured by SpaceX for the reliable and safe transport of satellites and the Dragon spacecraft into orbit. The Block 5 variant is the fifth major interval aimed at improving upon the ability for rapid reusability.",
-        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_9",
-        "heightMeters": 70,
-        "diameterMeters": 3.65,
-        "massKg": 549000,
-        "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
-        "flickrImages": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg",
-          "/data/spacex/images/b317ff9ea04bd623.png"
-        ]
-      },
-      "launchpad": {
-        "id": "16",
-        "name": "Space Launch Complex 4E",
-        "fullName": "Space Launch Complex 4E",
-        "locality": "Vandenberg SFB, CA, USA",
-        "region": null,
-        "timezone": "America/Los_Angeles",
-        "status": null,
-        "details": "Space Launch Complex 4 East (SLC-4E) is a launch site at Vandenberg Space Force Base, California, U.S.\r\n\r\nThe pad was previously used by Atlas and Titan rockets between 1963 and 2005. The pad was built for use by Atlas-Agena rockets, but was later rebuilt to handle Titan rockets.",
-        "image": "/data/spacex/images/b752567507d74cae.jpg"
-      },
-      "crew": [],
-      "payloads": [
-        {
-          "id": "7710",
-          "name": "Starlink Group 15-20",
-          "type": "Communications",
-          "customers": [
-            "SpaceX"
-          ],
-          "manufacturers": [
-            "SpaceX"
-          ],
-          "nationalities": [
-            "USA"
-          ],
-          "orbit": "Low Earth Orbit",
-          "regime": "LEO",
-          "massKg": null,
-          "massLbs": null
-        }
-      ],
-      "capsules": [],
-      "cores": []
     }
   },
   "cadence": {
@@ -2793,7 +2793,7 @@
       {
         "monthKey": "2026-01",
         "label": "Jan 26",
-        "count": 9
+        "count": 8
       },
       {
         "monthKey": "2026-02",
@@ -2828,10 +2828,10 @@
       {
         "monthKey": "2026-08",
         "label": "Aug 26",
-        "count": 13
+        "count": 14
       }
     ],
     "rangeLabel": "Sep 25 – Aug 26",
-    "generatedAt": "2026-08-29T23:26:50.964Z"
+    "generatedAt": "2026-08-30T14:27:42.872Z"
   }
 }
