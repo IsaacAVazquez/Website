@@ -264,8 +264,10 @@ The command currently runs this seven-step pipeline:
 6. `tsx scripts/buildBestBallSnapshot.ts`
 7. `tsx scripts/buildFantasyWeeklySnapshot.ts`
 
-Steps 2 and 3 are both fail-soft overlays on the consensus board. Each keeps its
-previous generated data on a failed or thin fetch and never stops the chain.
+Steps 2, 3, and 4 are fail-soft overlays on the consensus board. Each keeps its
+previous generated data on a failed or rejected fetch (VORP per scoring format and
+team size, same season only) and never stops the chain; a board with nothing usable
+is left out of the snapshot and the site hides the VORP toggle for that league size.
 
 Current generated outputs:
 

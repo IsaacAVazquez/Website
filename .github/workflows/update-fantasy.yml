@@ -100,9 +100,12 @@ jobs:
       # past `git diff` because the file does change. Refuse to commit unless
       # every scoring format has a healthy overall board AND every individual
       # position board (QB/RB/WR/TE/K/DST) clears the same room-completeness
-      # floor as the source parser. The same gate requires complete, sourced
-      # VORP boards for 10, 12, and 14-team leagues. This rejects a coherent
-      # partial response before it can replace a draft-ready snapshot.
+      # floor as the source parser. The same gate validates every VORP board
+      # the snapshot publishes (10, 12, and 14 teams) and only warns when one
+      # is absent: VORP is a fail-soft overlay, so a missing board sets
+      # vorp_dark for the terminal report instead of withholding validated
+      # rankings. This rejects a coherent partial response before it can
+      # replace a draft-ready snapshot.
       - name: Verify fantasy snapshot quality
         id: verify_quality
         # Soft for the same reason as the freshness step above: this gate
@@ -126,6 +129,7 @@ jobs:
           const DATA_DIR = path.join('public', 'data', 'fantasy');
           const formats = ['ppr', 'half_ppr', 'standard'];
           const failures = [];
+          const warnings = [];
 
           for (const format of formats) {
             const filePath = path.join(DATA_DIR, format + '.json');
@@ -152,13 +156,17 @@ jobs:
               }
 
               const vorpSource = snapshot.vorpSource;
-              const vorpAsOf = Date.parse(vorpSource?.asOf || '');
-              const futureSkewToleranceMs = 5 * 60 * 1000;
-              if (vorpSource?.provider !== 'FantasyPros projected VORP') {
-                failures.push(format + ' VORP source provider is missing or invalid');
-              }
-              if (!Number.isFinite(vorpAsOf) || vorpAsOf > Date.now() + futureSkewToleranceMs) {
-                failures.push(format + ' VORP source asOf is missing, invalid, or future-dated');
+              if (vorpSource === null || vorpSource === undefined) {
+                warnings.push(format + ' VORP source is absent; the snapshot publishes without VORP');
+              } else {
+                const vorpAsOf = Date.parse(vorpSource?.asOf || '');
+                const futureSkewToleranceMs = 5 * 60 * 1000;
+                if (vorpSource?.provider !== 'FantasyPros projected VORP') {
+                  failures.push(format + ' VORP source provider is missing or invalid');
+                }
+                if (!Number.isFinite(vorpAsOf) || vorpAsOf > Date.now() + futureSkewToleranceMs) {
+                  failures.push(format + ' VORP source asOf is missing, invalid, or future-dated');
+                }
               }
 
               const snapshotPlayerIds = new Set([
@@ -172,6 +180,10 @@ jobs:
                 const matchedCount = vorpSource?.matchedCounts?.[teamSize];
                 const sourceUrl = vorpSource?.urls?.[teamSize];
 
+                if (entries === undefined && matchedCount === undefined && sourceUrl === undefined) {
+                  warnings.push(format + ' ' + teamSize + '-team VORP board is absent; the snapshot publishes without it');
+                  continue;
+                }
                 if (count < MIN_VORP) {
                   failures.push(format + ' ' + teamSize + '-team VORP board has ' + count + ' players (need >= ' + MIN_VORP + ')');
                 }
@@ -238,6 +250,14 @@ jobs:
             } catch (err) {
               failures.push(format + ' failed to parse: ' + err.message);
             }
+          }
+
+          for (const warning of warnings) console.log('::warning::' + warning);
+          // Recorded rather than thrown, like adp_dark: an absent VORP board
+          // must not skip the redraft commit, but the terminal report step
+          // still turns the run red so the outage is noticed.
+          if (process.env.GITHUB_OUTPUT) {
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, 'vorp_dark=' + (warnings.length > 0 ? 'true' : 'false') + '\n');
           }
 
           if (failures.length > 0) {
@@ -474,7 +494,8 @@ jobs:
           steps.build_best_ball.outcome == 'failure' ||
           steps.build_weekly.outcome == 'failure' ||
           steps.verify_best_ball.outcome == 'failure' ||
-          steps.adp_health.outputs.adp_dark == 'true'
+          steps.adp_health.outputs.adp_dark == 'true' ||
+          steps.verify_quality.outputs.vorp_dark == 'true'
         run: |
           echo "redraft build:     ${{ steps.build_redraft.outcome }}"
           echo "redraft freshness: ${{ steps.verify_freshness.outcome }}"
@@ -483,6 +504,7 @@ jobs:
           echo "weekly build:      ${{ steps.build_weekly.outcome }}"
           echo "best ball gate:    ${{ steps.verify_best_ball.outcome }}"
           echo "redraft ADP dark:  ${{ steps.adp_health.outputs.adp_dark }}"
+          echo "redraft VORP dark: ${{ steps.verify_quality.outputs.vorp_dark }}"
           echo "::error::A fantasy refresh gate failed. Each lane committed independently when its own gates passed; see the step outcomes above."
           exit 1
 
@@ -503,6 +525,7 @@ jobs:
           echo "**Redraft gates:** freshness ${{ steps.verify_freshness.outcome }} · quality ${{ steps.verify_quality.outcome }}" >> "$GITHUB_STEP_SUMMARY"
           echo "**Best ball build:** ${{ steps.build_best_ball.outcome }} · **gate:** ${{ steps.verify_best_ball.outcome }} · **committed:** ${{ steps.check_best_ball_changes.outputs.changed }}" >> "$GITHUB_STEP_SUMMARY"
           echo "**Redraft ADP past its age limit:** ${{ steps.adp_health.outputs.adp_dark }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Redraft VORP board absent for a league size:** ${{ steps.verify_quality.outputs.vorp_dark }}" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "### Public artifacts" >> "$GITHUB_STEP_SUMMARY"
           echo "- src/data/fantasyPositionData.generated.ts" >> "$GITHUB_STEP_SUMMARY"
@@ -535,6 +558,7 @@ jobs:
               `- A public rankings page returned a partial board that failed the declared-count or coverage gate`,
               `- Sustained 429s exceeded retry budget`,
               `- Quality gate caught a degraded snapshot (thin rankings, invalid VORP data, or a source mismatch)`,
+              `- A FantasyPros VORP report was unavailable, so a league size published without VORP (\`vorp_dark\`); the rankings still committed`,
               ``,
               `Note: a failed ADP fetch is non-fatal and keeps the prior prices. A board that is stale past the age limit is different: it still commits the rankings, but it sets \`adp_dark\` and turns the run red.`,
               ``,

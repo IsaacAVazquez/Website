@@ -201,7 +201,7 @@ describe("snapshot refresh workflow infrastructure", () => {
     expect(workflow).toContain("rankingExperts < 5");
   });
 
-  it("commits the generated VORP source and validates every redraft VORP board", () => {
+  it("commits the generated VORP source, validates every published VORP board, and only warns when one is absent", () => {
     const workflow = fs.readFileSync(
       path.join(workflowsDir, "update-fantasy.yml"),
       "utf8"
@@ -228,6 +228,10 @@ describe("snapshot refresh workflow infrastructure", () => {
     expect(qualityStep).toContain("rank <= previousRank");
     expect(qualityStep).toContain("value < 0 || value > previousValue");
     expect(qualityStep).toContain("entries[0]?.rank !== 1");
+    expect(qualityStep).toContain("VORP board is absent");
+    expect(qualityStep).toContain("console.log('::warning::' + warning)");
+    expect(qualityStep).toContain("vorp_dark=");
+    expect(workflow).toContain("steps.verify_quality.outputs.vorp_dark == 'true'");
   });
 
   it("pins the scheduled fantasy build to public HTML without passing an API key", () => {

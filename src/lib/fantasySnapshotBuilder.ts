@@ -330,10 +330,13 @@ export function buildFantasySnapshot(scoring: FantasyRouteScoring): FantasySnaps
   const vorpAccessedAt: string[] = [];
   for (const teamSize of FANTASY_VORP_TEAM_SIZES) {
     const dataset = getFantasyVorpDataset(scoringFormat, teamSize);
+    // VORP is a fail-soft overlay: a size with no usable report is left out
+    // and the site hides the toggle for it, so the consensus board still ships.
     if (dataset.season !== SNAPSHOT_SEASON || dataset.players.length === 0) {
-      throw new Error(
-        `Fantasy VORP ${scoringFormat} ${teamSize}-team data is missing or belongs to season ${dataset.season}.`
+      console.warn(
+        `Fantasy VORP ${scoringFormat} ${teamSize}-team data is missing or belongs to season ${dataset.season}; publishing without it.`
       );
+      continue;
     }
     const matched = dataset.players
       .filter((entry) => snapshotPlayerIds.has(entry.playerId))
@@ -347,10 +350,14 @@ export function buildFantasySnapshot(scoring: FantasyRouteScoring): FantasySnaps
     ).length;
     const topMatchRate =
       topOverallPlayerIds.size > 0 ? topMatches / topOverallPlayerIds.size : 0;
+    // ponytail: a fresh board that parses but does not join has already
+    // replaced the previous board in the generated module by now; move the
+    // join into the builder script if that ever happens in practice.
     if (topMatchRate < VORP_TOP_BOARD_MIN_RATE) {
-      throw new Error(
-        `Fantasy VORP ${scoringFormat} ${teamSize}-team join covered ${topMatches} of the top ${topOverallPlayerIds.size} players, below the ${Math.round(VORP_TOP_BOARD_MIN_RATE * 100)}% minimum.`
+      console.warn(
+        `Fantasy VORP ${scoringFormat} ${teamSize}-team join covered ${topMatches} of the top ${topOverallPlayerIds.size} players, below the ${Math.round(VORP_TOP_BOARD_MIN_RATE * 100)}% minimum; publishing without it.`
       );
+      continue;
     }
     const key = fantasyVorpTeamSizeKey(teamSize);
     vorpRankings[key] = matched;
@@ -358,12 +365,15 @@ export function buildFantasySnapshot(scoring: FantasyRouteScoring): FantasySnaps
     vorpMatchedCounts[key] = matched.length;
     vorpAccessedAt.push(dataset.accessedAt);
   }
-  const vorpSource: FantasyVorpSourceMetadata = {
-    provider: FANTASY_PROS_VORP_PROVIDER,
-    asOf: vorpAccessedAt.sort()[0],
-    urls: vorpUrls,
-    matchedCounts: vorpMatchedCounts,
-  };
+  const vorpSource: FantasyVorpSourceMetadata | null =
+    vorpAccessedAt.length > 0
+      ? {
+          provider: FANTASY_PROS_VORP_PROVIDER,
+          asOf: vorpAccessedAt.sort()[0],
+          urls: vorpUrls,
+          matchedCounts: vorpMatchedCounts,
+        }
+      : null;
 
   sliceMetadata.overall =
     overallPlayers.length > 0

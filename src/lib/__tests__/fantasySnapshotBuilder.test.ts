@@ -93,17 +93,28 @@ describe("fantasySnapshotBuilder", () => {
       expect(snapshot.sliceMetadata.dst.available).toBe(true);
       expect(snapshot.positions.RB.length).toBeGreaterThan(50);
       expect(snapshot.positions.FLEX.length).toBeGreaterThan(100);
-      expect(snapshot.vorpSource?.provider).toBe("FantasyPros projected VORP");
-      expect(snapshot.vorpSource?.asOf).toMatch(/^20\d{2}-/);
-      for (const teamSize of ["10", "12", "14"] as const) {
-        expect(snapshot.vorpRankings[teamSize]?.length).toBeGreaterThan(300);
-        expect(snapshot.vorpSource?.matchedCounts[teamSize]).toBe(
-          snapshot.vorpRankings[teamSize]?.length
-        );
-        expect(snapshot.vorpRankings[teamSize]?.[0]).toMatchObject({
-          rank: 1,
-        });
-        expect(snapshot.vorpRankings[teamSize]?.[0].value).toBeGreaterThan(0);
+      // VORP is a fail-soft overlay: a degraded automated commit may carry
+      // fewer sizes, so assert whatever the committed module published. The
+      // steady state (all three sizes) is pinned by the synthetic test below.
+      if (snapshot.vorpSource) {
+        expect(snapshot.vorpSource.provider).toBe("FantasyPros projected VORP");
+        expect(snapshot.vorpSource.asOf).toMatch(/^20\d{2}-/);
+        const publishedSizes = Object.keys(snapshot.vorpSource.matchedCounts) as Array<
+          "10" | "12" | "14"
+        >;
+        expect(publishedSizes.length).toBeGreaterThan(0);
+        for (const teamSize of publishedSizes) {
+          expect(snapshot.vorpRankings[teamSize]?.length).toBeGreaterThan(300);
+          expect(snapshot.vorpSource.matchedCounts[teamSize]).toBe(
+            snapshot.vorpRankings[teamSize]?.length
+          );
+          expect(snapshot.vorpRankings[teamSize]?.[0]).toMatchObject({
+            rank: 1,
+          });
+          expect(snapshot.vorpRankings[teamSize]?.[0].value).toBeGreaterThan(0);
+        }
+      } else {
+        expect(snapshot.vorpRankings).toEqual({});
       }
     }
   });
@@ -173,8 +184,97 @@ describe("fantasySnapshotBuilder", () => {
     expect("expertRanks" in firstPositionPlayer).toBe(false);
     expect("adp" in firstOverallPlayer).toBe(true);
     expect(snapshot.adpSource).not.toBeNull();
-    expect(snapshot.vorpSource).not.toBeNull();
-    expect(snapshot.vorpRankings["12"]?.[0].value).toBeGreaterThan(0);
+    if (snapshot.vorpSource) {
+      expect(snapshot.vorpRankings["12"]?.[0].value).toBeGreaterThan(0);
+    }
+  });
+
+  function withVorpDataset(
+    factory: () => unknown,
+    run: (build: typeof buildFantasySnapshot) => void
+  ) {
+    jest.resetModules();
+    jest.doMock("@/lib/fantasyVorpData", factory);
+    const warn = jest.spyOn(console, "warn").mockImplementation(() => {});
+    try {
+      jest.isolateModules(() => {
+        const {
+          buildFantasySnapshot: build,
+          // eslint-disable-next-line @typescript-eslint/no-require-imports -- jest.isolateModules requires a synchronous callback; dynamic import() would not work here
+        } = require("../fantasySnapshotBuilder") as typeof import("../fantasySnapshotBuilder");
+        run(build);
+      });
+    } finally {
+      warn.mockRestore();
+      jest.dontMock("@/lib/fantasyVorpData");
+      jest.resetModules();
+    }
+  }
+
+  function actualVorpData() {
+    return jest.requireActual("@/lib/fantasyVorpData") as typeof import("@/lib/fantasyVorpData");
+  }
+
+  it("omits VORP entirely and discloses no source when no dataset is usable", () => {
+    withVorpDataset(
+      () => ({
+        getFantasyVorpDataset: () => ({
+          season: getSnapshotSeason(),
+          sourceUrl: "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
+          accessedAt: "",
+          players: [],
+        }),
+      }),
+      (build) => {
+        const snapshot = build("ppr");
+        expect(snapshot.vorpSource).toBeNull();
+        expect(snapshot.vorpRankings).toEqual({});
+        expect(snapshot.overall.length).toBeGreaterThan(300);
+      }
+    );
+  });
+
+  it("omits a VORP team size whose dataset belongs to another season", () => {
+    withVorpDataset(
+      () => ({
+        getFantasyVorpDataset: (scoring: "PPR" | "HALF_PPR" | "STANDARD", teamSize: 10 | 12 | 14) => {
+          const dataset = actualVorpData().getFantasyVorpDataset(scoring, teamSize);
+          return teamSize === 10 ? { ...dataset, season: getSnapshotSeason() - 1 } : dataset;
+        },
+      }),
+      (build) => {
+        const snapshot = build("ppr");
+        expect(snapshot.vorpRankings["10"]).toBeUndefined();
+        expect(snapshot.vorpSource?.urls["10"]).toBeUndefined();
+        expect(snapshot.vorpSource?.matchedCounts["10"]).toBeUndefined();
+        expect(snapshot.vorpRankings["12"]?.length).toBeGreaterThan(300);
+        expect(snapshot.vorpRankings["14"]?.length).toBeGreaterThan(300);
+      }
+    );
+  });
+
+  it("drops a VORP team size whose join misses the top of the board", () => {
+    withVorpDataset(
+      () => ({
+        getFantasyVorpDataset: (scoring: "PPR" | "HALF_PPR" | "STANDARD", teamSize: 10 | 12 | 14) => {
+          const dataset = actualVorpData().getFantasyVorpDataset(scoring, teamSize);
+          return teamSize === 10
+            ? {
+                ...dataset,
+                players: dataset.players.map((player, index) => ({
+                  ...player,
+                  playerId: `fp-unknown-${index}`,
+                })),
+              }
+            : dataset;
+        },
+      }),
+      (build) => {
+        const snapshot = build("ppr");
+        expect(snapshot.vorpRankings["10"]).toBeUndefined();
+        expect(snapshot.vorpRankings["12"]?.length).toBeGreaterThan(300);
+      }
+    );
   });
 
   it("omits adp and discloses no source when the dataset is empty", () => {
@@ -409,7 +509,7 @@ describe("fantasySnapshotBuilder", () => {
     }));
     jest.doMock("@/lib/fantasyVorpData", () => ({
       getFantasyVorpDataset: (_scoring: string, teamSize: number) => ({
-        season: 2026,
+        season: getSnapshotSeason(),
         sourceUrl: `https://www.fantasypros.com/mock-vorp?team_size=${teamSize}`,
         accessedAt: "2026-04-15T16:00:00.000Z",
         players: syntheticOverall.map((player, index) => ({
@@ -437,6 +537,8 @@ describe("fantasySnapshotBuilder", () => {
         expect(snapshot.overall[0].id).toBe("RB-1");
         expect(snapshot.positions.FLEX[0].averageRank).toBe(1);
         expect(snapshot.sliceMetadata.flex.updatedAt).toBe("2026-04-15T15:29:20.000Z");
+        expect(snapshot.vorpSource?.provider).toBe("FantasyPros projected VORP");
+        expect(Object.keys(snapshot.vorpRankings).sort()).toEqual(["10", "12", "14"]);
       });
     } finally {
       jest.dontMock("@/lib/fantasyPositionData");
