@@ -61,7 +61,7 @@ test.describe("Fantasy football trade calculator", () => {
     await page.goto(CALCULATOR_URL);
     const shell = await getReadyCalculator(page);
 
-    await expect(shell.getByRole("heading", { name: "Build a Trade Calculator", level: 1 })).toBeVisible();
+    await expect(shell.getByRole("heading", { name: "Build a Trade Offer", level: 1 })).toBeVisible();
     const overflow = await page.evaluate(
       () => document.documentElement.scrollWidth - document.documentElement.clientWidth
     );

@@ -118,9 +118,16 @@ async function selectPosition(
   label: string,
   position: string
 ) {
-  const option = shell.getByRole("radio", { name: label });
-  await activateControl(option);
-  await expect(option).toHaveAttribute("aria-checked", "true");
+  // Phones render the position control as a select; the desktop radio pills
+  // sit in a hidden md:flex container there, so drive whichever is visible.
+  const select = shell.getByRole("combobox", { name: "Position board" });
+  if (await select.isVisible()) {
+    await select.selectOption(position);
+  } else {
+    const option = shell.getByRole("radio", { name: label });
+    await activateControl(option);
+    await expect(option).toHaveAttribute("aria-checked", "true");
+  }
   await expect(page).toHaveURL(new RegExp(`position=${position}`));
 }
 
@@ -184,7 +191,13 @@ test.describe("Fantasy football rankings", () => {
     await expect(page).toHaveURL(/position=overall/);
     await expect(page).toHaveURL(/scoring=ppr/);
     await expect(page.getByText("No Data Available")).toHaveCount(0);
-    await expect(shell.getByRole("radio", { name: /RB/i })).toBeEnabled();
+    // Phones carry the position control as a select; assert the visible one.
+    const positionSelect = shell.getByRole("combobox", { name: "Position board" });
+    if (await positionSelect.isVisible()) {
+      await expect(positionSelect.locator('option[value="rb"]')).toBeEnabled();
+    } else {
+      await expect(shell.getByRole("radio", { name: /RB/i })).toBeEnabled();
+    }
 
     await selectPosition(page, shell, "RB", "rb");
     await expect(page.getByRole("heading", { name: /RB rankings/i })).toBeVisible();
@@ -245,7 +258,9 @@ test.describe("Fantasy football rankings", () => {
     await expect(page.getByText(/rate limit/i)).toHaveCount(0);
   });
 
-  test("keeps the board controls sticky on desktop and static on mobile", async ({ page, isMobile }) => {
+  test("keeps the board controls sticky on every viewport", async ({ page }) => {
+    // Phones used to lose the controls mid-scroll (md:sticky); the audit pass
+    // made the bar unconditionally sticky, so both viewports expect it now.
     await page.goto("/fantasy-football?position=wr&scoring=ppr");
     await getReadyFantasyShell(page);
 
@@ -254,11 +269,7 @@ test.describe("Fantasy football rankings", () => {
 
     const computedPosition = await controls.evaluate((element) => getComputedStyle(element).position);
 
-    if (isMobile) {
-      expect(computedPosition).not.toBe("sticky");
-    } else {
-      expect(computedPosition).toBe("sticky");
-    }
+    expect(computedPosition).toBe("sticky");
   });
 
   test("searches the board and clears it from the empty state", async ({ page }) => {
@@ -267,6 +278,13 @@ test.describe("Fantasy football rankings", () => {
     // The desktop input and the phone search button share this label, and only
     // one of the two is ever rendered visible, so name the textbox role and take
     // the visible control rather than matching the hidden half of the pair.
+    // Phones collapse the input behind a toggle button that shares its label.
+    const searchToggle = shell
+      .getByRole("button", { name: /^Search the current rankings board/ })
+      .filter({ visible: true });
+    if (await searchToggle.count()) {
+      await searchToggle.click();
+    }
     const search = shell
       .getByRole("textbox", { name: "Search the current rankings board" })
       .filter({ visible: true });
@@ -279,7 +297,13 @@ test.describe("Fantasy football rankings", () => {
     await search.fill("player who does not exist");
     await expect(shell.getByText("No players match on this board.")).toBeVisible();
 
-    await shell.getByRole("button", { name: "Clear search" }).click();
+    // Phones render two clear controls (input row and empty state); the test
+    // is about the empty state's, so scope the click to that block.
+    await shell
+      .getByText("No players match on this board.")
+      .locator("..")
+      .getByRole("button", { name: "Clear search" })
+      .click();
     await expect(search).toHaveValue("");
     await expect(shell.getByRole("button", { name: /^Open .+ detail/ }).first()).toBeVisible();
   });
@@ -561,7 +585,12 @@ test.describe("Fantasy football best ball", () => {
 
     await page.reload();
     await expect(shell.getByText("Pick 2 of 216", { exact: true })).toBeVisible();
-    await expect(shell.getByText(firstPlayerName!, { exact: true }).first()).toBeVisible();
+    // The rail that shows the bare player name is hidden on phones and while a
+    // stale ranking source pauses the model, so read the undo copy instead:
+    // it names the persisted pick on every viewport and in every data state.
+    await expect(
+      shell.getByText(`Undo removes pick 1, ${firstPlayerName!}.`).first()
+    ).toBeVisible();
 
     await shell.getByRole("button", { name: "Undo last pick" }).click();
     await expect(shell.getByText("Pick 1 of 216", { exact: true })).toBeVisible();
