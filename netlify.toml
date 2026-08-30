@@ -56,3 +56,12 @@
   [headers.values]
     Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
     Netlify-CDN-Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"
+
+# Fantasy boards are fetched with ?v=<snapshot revision>, so they are safe to
+# cache; the browser TTL stays at an hour because the best ball and weekly
+# lanes commit their JSON without bumping that revision.
+[[headers]]
+  for = "/data/fantasy/**"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
+    Netlify-CDN-Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"

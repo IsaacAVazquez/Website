@@ -33,7 +33,7 @@ async function loadWeeklySnapshot(): Promise<WeeklyLoadResult> {
     try {
       const response = await fetch(
         `/data/fantasy/weekly.json?v=${fantasySnapshotRevision}`,
-        { cache: "no-cache", signal: controller.signal }
+        { cache: "force-cache", signal: controller.signal }
       );
       if (response.status === 404) {
         cachedResult = { kind: "not-published" };

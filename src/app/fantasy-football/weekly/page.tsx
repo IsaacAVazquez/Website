@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { StructuredData } from "@/components/StructuredData";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { normalizeFantasyRouteScoring } from "@/lib/fantasy";
+import { getNflRegularSeasonWeek } from "@/lib/fantasyUtils";
 import { fantasySnapshotRevision } from "@/data/fantasySnapshotRevision.generated";
 import { WeeklyBoardClient, type WeeklyRouteState } from "./weekly-client";
 
@@ -41,9 +42,14 @@ export default async function WeeklyBoardPage({ searchParams }: WeeklyBoardPageP
   // hydrated, so the critical path ran HTML, then JS, then JSON in series. This
   // URL matches useFantasyWeeklySnapshot's request exactly, so the in-flight
   // preload is reused rather than duplicated.
-  ReactDOM.preload(`/data/fantasy/weekly.json?v=${fantasySnapshotRevision}`, {
-    as: "fetch",
-  });
+  // The builder publishes nothing before Week 1, so preloading earlier only
+  // adds a guaranteed 404 to every visit. Calendar year is the right season
+  // here: in January the board is finished and the preload is not worth it.
+  if (getNflRegularSeasonWeek(new Date().getUTCFullYear()) > 0) {
+    ReactDOM.preload(`/data/fantasy/weekly.json?v=${fantasySnapshotRevision}`, {
+      as: "fetch",
+    });
+  }
 
   return (
     <>
