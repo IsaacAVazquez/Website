@@ -1,4 +1,4 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 import { normalizeFantasyRoutePosition } from "@/lib/fantasy";
 
 interface PositionTierRedirectPageProps {
@@ -10,5 +10,5 @@ interface PositionTierRedirectPageProps {
 export default async function PositionTierRedirectPage({ params }: PositionTierRedirectPageProps) {
   const { position } = await params;
   const normalizedPosition = normalizeFantasyRoutePosition(position);
-  redirect(`/fantasy-football?position=${normalizedPosition}&scoring=ppr`);
+  permanentRedirect(`/fantasy-football?position=${normalizedPosition}&scoring=ppr`);
 }

@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
 export default function RBTiersRedirectPage() {
-  redirect("/fantasy-football?position=rb&scoring=ppr");
+  permanentRedirect("/fantasy-football?position=rb&scoring=ppr");
 }
