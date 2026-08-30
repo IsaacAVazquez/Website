@@ -8,6 +8,12 @@ async function getReadyFantasyShell(page: Page) {
   return shell;
 }
 
+async function waitForBestBallHydration(page: Page) {
+  await expect(
+    page.locator('[data-testid="best-ball-draft-tracker-shell"]')
+  ).toHaveAttribute("data-hydrated", "true");
+}
+
 async function waitForDraftTrackerHydration(page: Page) {
   await expect(
     page.locator('[data-testid="fantasy-draft-tracker-shell"]')
@@ -566,6 +572,7 @@ test.describe("Fantasy football best ball", () => {
     await page.goto("/fantasy-football/best-ball/draft-tracker?contest=bbm-vii");
 
     const shell = page.locator('[data-testid="best-ball-draft-tracker-shell"]');
+    await waitForBestBallHydration(page);
     await expect(shell.getByRole("heading", { name: "Choose your draft slot" })).toBeVisible();
     await shell.getByRole("button", { name: "Open draft room from slot 1" }).click();
     await expect(shell.getByRole("heading", { name: "You are on the clock at pick 1" })).toBeVisible();
@@ -584,6 +591,9 @@ test.describe("Fantasy football best ball", () => {
     await expect.poll(() => getPersistedBestBallPickCount(page, "bbm-vii")).toBe(1);
 
     await page.reload();
+    // CI webkit rehydrates the restored room slowly enough that the undo click
+    // below can land on a not-yet-interactive button, so wait it out.
+    await waitForBestBallHydration(page);
     await expect(shell.getByText("Pick 2 of 216", { exact: true })).toBeVisible();
     // The rail that shows the bare player name is hidden on phones and while a
     // stale ranking source pauses the model, so read the undo copy instead:

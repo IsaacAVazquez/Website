@@ -71,8 +71,10 @@ test.describe("Fantasy football trade calculator", () => {
     for (const control of await controls.all()) {
       const box = await control.boundingBox();
       if (!box) continue;
-      expect(box.width).toBeGreaterThanOrEqual(44);
-      expect(box.height).toBeGreaterThanOrEqual(44);
+      // Firefox reports sub-pixel boxes (43.99997 for a 44px control), so
+      // allow half a pixel of rounding under the 44px touch-target floor.
+      expect(box.width).toBeGreaterThanOrEqual(43.5);
+      expect(box.height).toBeGreaterThanOrEqual(43.5);
     }
   });
 });

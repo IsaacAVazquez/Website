@@ -3,7 +3,7 @@
 import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { RotateCcw, Undo2 } from "lucide-react";
 import { Breadcrumbs } from "@/components/navigation/Breadcrumbs";
 import type { ExpectedReturnFormState } from "@/components/fantasy";
@@ -39,6 +39,12 @@ import {
   type BestBallRoomRules,
 } from "./best-ball-draft-state";
 import { useBestBallDraft } from "./use-best-ball-draft";
+
+// Mirrors the redraft tracker: CI webkit reloads the room slowly enough that a
+// click can land before hydration, so the shell says when it is interactive.
+const subscribeToHydration = () => () => undefined;
+const getHydratedSnapshot = () => true;
+const getServerHydratedSnapshot = () => false;
 
 const BREADCRUMBS = [
   { label: "Fantasy Football", href: "/fantasy-football" },
@@ -121,6 +127,11 @@ export function BestBallDraftTrackerClient({
 }: {
   initialContest?: string;
 }) {
+  const isHydrated = useSyncExternalStore(
+    subscribeToHydration,
+    getHydratedSnapshot,
+    getServerHydratedSnapshot
+  );
   const router = useRouter();
   const [contestId, setContestId] = useState<BestBallContestId>(() =>
     normalizeContestId(initialContest)
@@ -151,6 +162,7 @@ export function BestBallDraftTrackerClient({
       className="home-page home-dash min-h-screen overflow-x-clip pb-24 lg:pb-0"
       aria-label="Best ball draft assistant"
       data-testid="best-ball-draft-tracker-shell"
+      data-hydrated={isHydrated ? "true" : "false"}
     >
       <div className="home-shell home-shell-wide home-section space-y-5">
         <Breadcrumbs customItems={BREADCRUMBS} className="pt-2" />
