@@ -6,6 +6,7 @@ import type { Player } from "@/types";
 import { getAvailablePlayers } from "./players";
 import {
   getCurrentPickNumber,
+  getCurrentTeamNumber,
   isFantasyCompanionDraftComplete,
 } from "./state";
 import type {
@@ -21,8 +22,8 @@ function positiveFiniteNumber(value: unknown): number | null {
 
 function redraftSourceRank(player: Player): number {
   return (
-    positiveFiniteNumber(player.averageRank) ??
     positiveFiniteNumber(player.rankEcr) ??
+    positiveFiniteNumber(player.averageRank) ??
     positiveFiniteNumber(player.positionRank) ??
     Number.POSITIVE_INFINITY
   );
@@ -66,7 +67,8 @@ export function rankAvailableRedraftPlayers(
         player,
         rank: index + 1,
         sourceRank,
-        valueAtCurrentPick: adp === null ? null : Math.round((currentPick - adp) * 10) / 10,
+        adpDeltaAtCurrentPick:
+          adp === null ? null : Math.round((currentPick - adp) * 10) / 10,
         reason:
           adp === null
             ? `The ${state.room.scoring} consensus rank is ${sourceRank}. No separate ADP match is available.`
@@ -110,6 +112,16 @@ export function getFantasyCompanionRecommendations({
       kind: "best-ball",
       mode: "exact",
       reason: preset.recommendationReason,
+      recommendations: [],
+    };
+  }
+
+  if (getCurrentTeamNumber(state) !== state.room.userTeam) {
+    return {
+      kind: "best-ball",
+      mode: "exact",
+      reason:
+        "Exact player scores return when your team is on the clock. The board stays in sourced rank order between turns.",
       recommendations: [],
     };
   }

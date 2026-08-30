@@ -399,6 +399,49 @@ p {
   text-transform: none;
 }
 
+.lineup-presets {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.lineup-presets button {
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  padding: 6px;
+  background: transparent;
+  color: var(--ink-muted);
+  font-family: var(--mono);
+  font-size: 8px;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.lineup-presets button.is-selected {
+  border-color: var(--signal);
+  background: var(--signal-soft);
+  color: var(--ink);
+}
+
+.lineup-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.lineup-summary {
+  margin-top: 12px;
+  color: var(--ink-muted);
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.lineup-summary.is-invalid {
+  color: var(--negative);
+}
+
 .locked-room {
   display: grid;
   grid-column: 1 / -1;
@@ -574,7 +617,7 @@ p {
 
 .room-bar {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr);
   gap: 8px;
   border-bottom: 1px solid var(--rule-strong);
   padding: 10px 12px;
@@ -620,7 +663,7 @@ p {
 }
 
 .snapshot-status > span:nth-child(2) {
-  display: none;
+  display: flex;
   flex-direction: column;
   min-width: 0;
 }
@@ -719,6 +762,123 @@ p {
   padding: 12px;
 }
 
+.decision-panel {
+  margin-bottom: 14px;
+  border: 1px solid var(--rule-strong);
+  background: var(--paper-raised);
+}
+
+.decision-panel__heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 12px 0;
+}
+
+.decision-panel__heading h2 {
+  margin-top: 4px;
+  font-size: 17px;
+  letter-spacing: -0.025em;
+}
+
+.risk-tag {
+  flex: 0 0 auto;
+  border: 1px solid var(--warning);
+  padding: 5px 6px;
+  color: var(--warning);
+  font-family: var(--mono);
+  font-size: 7px;
+  text-transform: uppercase;
+}
+
+.decision-explainer {
+  padding: 8px 12px 11px;
+  color: var(--ink-muted);
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.decision-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--rule);
+}
+
+.decision-card {
+  min-width: 0;
+  padding: 10px;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.decision-card:nth-child(even) {
+  border-right: 0;
+}
+
+.decision-card:nth-last-child(-n + 2) {
+  border-bottom: 0;
+}
+
+.decision-card.is-at-risk {
+  box-shadow: inset 3px 0 0 var(--warning);
+  background: color-mix(in srgb, var(--warning) 7%, transparent);
+}
+
+.decision-card__top,
+.decision-card__player {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.decision-card__top > span:last-child {
+  overflow: hidden;
+  color: var(--ink-muted);
+  font-family: var(--mono);
+  font-size: 7px;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.decision-card__player {
+  margin-top: 8px;
+}
+
+.decision-card__player strong {
+  overflow: hidden;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.decision-card__player b {
+  flex: 0 0 auto;
+  color: var(--signal);
+  font-family: var(--mono);
+  font-size: 8px;
+  font-weight: 400;
+}
+
+.decision-card p,
+.decision-card small {
+  display: block;
+  margin-top: 6px;
+  color: var(--ink-muted);
+  font-size: 8px;
+  line-height: 1.4;
+}
+
+.decision-card small {
+  min-height: 34px;
+  padding-top: 6px;
+  border-top: 1px solid var(--rule);
+  color: var(--ink);
+}
+
 .guidance-strip {
   display: flex;
   align-items: flex-start;
@@ -736,6 +896,44 @@ p {
   margin-top: 7px;
   color: var(--ink-muted);
   font-size: 10px;
+  line-height: 1.45;
+}
+
+.source-chips {
+  display: flex;
+  gap: 5px;
+  margin-top: 9px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.source-chips span {
+  flex: 0 0 auto;
+  border: 1px solid var(--rule);
+  padding: 5px 7px;
+  color: var(--ink-muted);
+  font-family: var(--mono);
+  font-size: 7px;
+  text-transform: uppercase;
+}
+
+.source-chips span.is-current {
+  border-color: color-mix(in srgb, var(--positive) 48%, var(--rule));
+  color: var(--positive);
+}
+
+.source-chips span.is-paused {
+  border-color: color-mix(in srgb, var(--negative) 48%, var(--rule));
+  color: var(--negative);
+}
+
+.top-read {
+  margin-top: 8px;
+  border-left: 2px solid var(--positive);
+  padding: 7px 9px;
+  background: color-mix(in srgb, var(--positive) 6%, transparent);
+  color: var(--ink-muted);
+  font-size: 9px;
   line-height: 1.45;
 }
 
@@ -994,6 +1192,136 @@ p {
   font-weight: 400;
 }
 
+.roster-plan,
+.outlook-card {
+  margin: 14px 0;
+  border: 1px solid var(--rule-strong);
+  padding: 11px;
+  background: var(--paper-raised);
+}
+
+.roster-plan .view-heading,
+.outlook-card .view-heading {
+  padding-top: 0;
+}
+
+.roster-plan .view-heading h2,
+.outlook-card .view-heading h2 {
+  font-size: 17px;
+}
+
+.roster-targets {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 10px;
+  background: var(--rule);
+}
+
+.roster-targets article {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: 32px minmax(0, 1fr);
+  align-items: center;
+  gap: 7px;
+  padding: 8px;
+  background: var(--paper);
+}
+
+.roster-targets strong {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.roster-targets small {
+  grid-column: 1 / -1;
+  color: var(--ink-muted);
+  font-size: 8px;
+}
+
+.roster-reason,
+.model-note {
+  margin-top: 9px;
+  color: var(--ink-muted);
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.outlook-score {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 2px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.outlook-score > strong {
+  color: var(--signal);
+  font-family: var(--mono);
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.outlook-score > span {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.outlook-score b {
+  font-size: 11px;
+  text-transform: capitalize;
+}
+
+.outlook-score small {
+  margin-top: 4px;
+  color: var(--ink-muted);
+  font-size: 8px;
+}
+
+.outlook-components {
+  display: grid;
+  gap: 10px;
+  margin-top: 11px;
+}
+
+.outlook-components > div > span {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 9px;
+}
+
+.outlook-components em {
+  font-family: var(--mono);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.outlook-components i {
+  display: block;
+  height: 4px;
+  margin-top: 5px;
+  overflow: hidden;
+  background: var(--stone);
+}
+
+.outlook-components i span {
+  display: block;
+  height: 100%;
+  background: var(--signal);
+}
+
+.outlook-components small {
+  display: block;
+  margin-top: 5px;
+  color: var(--ink-muted);
+  font-size: 8px;
+  line-height: 1.4;
+}
+
 .pick-row {
   display: grid;
   min-height: 58px;
@@ -1128,8 +1456,8 @@ p {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .snapshot-status > span:nth-child(2) {
-    display: flex;
+  .room-bar {
+    grid-template-columns: minmax(0, 1fr) auto;
   }
 }
 

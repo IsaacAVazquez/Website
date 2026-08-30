@@ -21,6 +21,48 @@ function assert(condition, message) {
   }
 }
 
+function isObject(value) {
+  return value !== null && typeof value === "object" && !Array.isArray(value);
+}
+
+function isValidDate(value) {
+  return typeof value === "string" && Number.isFinite(Date.parse(value));
+}
+
+function validateDatedSource(source, file, label, { required = false } = {}) {
+  if (source === null || source === undefined) {
+    assert(!required, `${file} must contain ${label} provenance`);
+    return;
+  }
+
+  assert(isObject(source), `${file} has invalid ${label} provenance`);
+  assert(
+    typeof source.provider === "string" && source.provider.trim().length > 0,
+    `${file} ${label} must name its provider`,
+  );
+  assert(
+    typeof source.url === "string" && source.url.trim().length > 0,
+    `${file} ${label} must include its source URL`,
+  );
+  assert(
+    isValidDate(source.asOf),
+    `${file} ${label} has an invalid asOf date`,
+  );
+
+  if (source.matchedCount !== undefined) {
+    assert(
+      Number.isFinite(source.matchedCount) && source.matchedCount >= 0,
+      `${file} ${label} has an invalid matchedCount`,
+    );
+  }
+  if (source.expertCount !== undefined) {
+    assert(
+      Number.isFinite(source.expertCount) && source.expertCount >= 0,
+      `${file} ${label} has an invalid expertCount`,
+    );
+  }
+}
+
 function validateCommon(snapshot, file) {
   assert(
     snapshot && typeof snapshot === "object" && !Array.isArray(snapshot),
@@ -62,6 +104,39 @@ function validateRedraft(snapshot, file, scoring) {
       `${file} must contain a non-empty ${position} board`,
     );
   }
+
+  assert(
+    typeof snapshot.source === "string" && snapshot.source.trim().length > 0,
+    `${file} must describe its ranking source`,
+  );
+  assert(
+    isValidDate(snapshot.upstreamUpdatedAt),
+    `${file} has an invalid ranking source date`,
+  );
+  assert(
+    isObject(snapshot.sliceMetadata) && isObject(snapshot.sliceMetadata.overall),
+    `${file} must contain overall ranking slice metadata`,
+  );
+  assert(
+    snapshot.sliceMetadata.overall.available === true &&
+      isValidDate(snapshot.sliceMetadata.overall.updatedAt),
+    `${file} has invalid overall ranking slice provenance`,
+  );
+
+  if (snapshot.adpSource !== null && snapshot.adpSource !== undefined) {
+    validateDatedSource(snapshot.adpSource, file, "ADP source");
+    assert(
+      Number.isFinite(snapshot.adpSource.matchedCount) &&
+        snapshot.adpSource.matchedCount > 0,
+      `${file} ADP source has an invalid matchedCount`,
+    );
+    assert(
+      snapshot.adpSource.sampleSize === null ||
+        (Number.isFinite(snapshot.adpSource.sampleSize) &&
+          snapshot.adpSource.sampleSize >= 0),
+      `${file} ADP source has an invalid sampleSize`,
+    );
+  }
 }
 
 function validateBestBall(snapshot, file) {
@@ -69,13 +144,25 @@ function validateBestBall(snapshot, file) {
     Array.isArray(snapshot.players) && snapshot.players.length > 0,
     `${file} must contain a player board`,
   );
-  assert(
-    snapshot.week17Opponents && typeof snapshot.week17Opponents === "object",
-    `${file} must contain Week 17 opponents`,
-  );
+  validateDatedSource(snapshot.rankingSource, file, "ranking source", {
+    required: true,
+  });
+  validateDatedSource(snapshot.superflexSource, file, "Superflex source");
+  validateDatedSource(snapshot.adpSource, file, "ADP source");
+  validateDatedSource(snapshot.scheduleSource, file, "schedule source");
+
+  // Week 17 is a capability, not a prerequisite for the player board. A
+  // partial or missing schedule map is packaged unchanged, then the Companion
+  // pauses only schedule-dependent guidance until the source refreshes.
+  if (snapshot.week17Opponents !== null && snapshot.week17Opponents !== undefined) {
+    assert(
+      isObject(snapshot.week17Opponents),
+      `${file} has invalid Week 17 opponent data`,
+    );
+  }
 }
 
-async function readAndCompact({ file, kind, scoring }) {
+async function readAndMinify({ file, kind, scoring }) {
   const sourcePath = path.join(snapshotSource, file);
   let snapshot;
 
@@ -111,16 +198,16 @@ async function main() {
     );
   }
 
-  const compactedSnapshots = await Promise.all(snapshots.map(readAndCompact));
+  const minifiedSnapshots = await Promise.all(snapshots.map(readAndMinify));
   await mkdir(snapshotOutput, { recursive: true });
 
   await Promise.all(
-    compactedSnapshots.map(({ file, contents }) =>
+    minifiedSnapshots.map(({ file, contents }) =>
       writeFile(path.join(snapshotOutput, file), contents, "utf8"),
     ),
   );
 
-  for (const { file, contents } of compactedSnapshots) {
+  for (const { file, contents } of minifiedSnapshots) {
     const sizeKb = (Buffer.byteLength(contents) / 1024).toFixed(1);
     console.log(`Bundled ${file} (${sizeKb} KB)`);
   }

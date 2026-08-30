@@ -35,8 +35,8 @@ describe("redraft companion recommendations", () => {
     if (!result.ok) throw new Error("test setup failed");
     state = result.state;
 
-    const lowerEcr = player("lower-ecr", "RB", 8, { adp: 30 });
-    const lowerAdp = player("lower-adp", "WR", 10, { adp: 2 });
+    const lowerEcr = player("lower-ecr", "RB", 30, { rankEcr: 8, adp: 30 });
+    const lowerAdp = player("lower-adp", "WR", 7, { rankEcr: 10, adp: 2 });
     const recommendations = rankAvailableRedraftPlayers(
       [drafted, lowerAdp, lowerEcr],
       state
@@ -49,7 +49,7 @@ describe("redraft companion recommendations", () => {
     expect(recommendations[0]).toMatchObject({
       rank: 1,
       sourceRank: 8,
-      valueAtCurrentPick: -28,
+      adpDeltaAtCurrentPick: -28,
     });
     expect(recommendations[0].reason).toContain("PPR consensus rank is 8");
     expect(getFantasyCompanionRecommendations({ state, players: [lowerAdp, lowerEcr] }))
@@ -84,6 +84,28 @@ describe("best-ball companion recommendations", () => {
     expect(result).toMatchObject({ kind: "best-ball", mode: "exact" });
     expect(result.recommendations).toHaveLength(2);
     expect(result.recommendations.every((entry) => entry.player.position !== "K")).toBe(true);
+  });
+
+  it("withholds exact scores between the user's turns and restores them on the clock", () => {
+    let state = createFantasyCompanionState(
+      createBestBallRoomConfig({ season: 2026, contestId: "bbm-vii", userTeam: 2 })
+    );
+
+    const offTurn = getFantasyCompanionRecommendations({ state, players: pool, limit: 2 });
+    expect(offTurn).toMatchObject({
+      kind: "best-ball",
+      mode: "exact",
+      recommendations: [],
+    });
+    expect(offTurn.reason).toContain("when your team is on the clock");
+
+    const firstPick = addFantasyCompanionPick(state, pool[0]);
+    if (!firstPick.ok) throw new Error("test setup failed");
+    state = firstPick.state;
+
+    const onTurn = getFantasyCompanionRecommendations({ state, players: pool, limit: 2 });
+    expect(onTurn).toMatchObject({ kind: "best-ball", mode: "exact" });
+    expect(onTurn.recommendations).toHaveLength(2);
   });
 
   it("keeps unsupported contest slates in reference mode", () => {

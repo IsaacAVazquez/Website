@@ -117,7 +117,7 @@ export interface RedraftRecommendation {
   player: Player;
   rank: number;
   sourceRank: number;
-  valueAtCurrentPick: number | null;
+  adpDeltaAtCurrentPick: number | null;
   reason: string;
 }
 

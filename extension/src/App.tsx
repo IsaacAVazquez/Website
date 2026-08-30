@@ -16,9 +16,16 @@ import {
 } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import {
+  analyzeBestBallRoster,
+  getNextUserPick,
   BEST_BALL_CONTEST_ORDER,
   BEST_BALL_CONTESTS,
+  getBestBallModelSourceIssue,
+  getBestBallRankingSource,
+  hasSupportedBestBallAdp,
+  sortBestBallRankings,
   type BestBallContestId,
+  type BestBallRosterAnalysis,
 } from "@/lib/bestBall";
 import {
   addFantasyCompanionPick,
@@ -39,8 +46,40 @@ import {
   type FantasyCompanionDraftState,
   type FantasyCompanionRoomConfig,
 } from "@/lib/fantasyCompanion";
-import { getSnapshotStaleness } from "@/lib/fantasyUtils";
-import type { Player, ScoringFormat } from "@/types";
+import {
+  getFantasySourceCapabilities,
+  resolveDraftPicksForModel,
+  withoutPlayerAdp,
+} from "@/lib/fantasyUtils";
+import {
+  countRedraftStartingSlots,
+  DEFAULT_REDRAFT_LINEUP,
+  getRedraftRosterTarget,
+  normalizeRedraftLineup,
+  REDRAFT_LINEUP_PRESETS,
+} from "@/lib/redraftLineup";
+import {
+  calculateRedraftDraftDecision,
+  type RedraftDraftDecisionReport,
+  describeRedraftNeed,
+  describeRedraftWait,
+} from "@/lib/redraftDraftDecision";
+import {
+  buildFantasyVorpIndex,
+  isFantasyVorpTeamSize,
+  type FantasyVorpRankingEntry,
+} from "@/lib/fantasyVorp";
+import {
+  calculateBestBallDraftValues,
+  calculateRedraftDraftValues,
+  type DraftValueReport,
+} from "@/lib/fantasyTeamValue";
+import type {
+  DraftPick,
+  Player,
+  RedraftLineupSettings,
+  ScoringFormat,
+} from "@/types";
 import {
   loadCompanionSnapshot,
   type CompanionSnapshot,
@@ -48,7 +87,8 @@ import {
 import { readLocalValue, removeLocalValue, writeLocalValue } from "./storage";
 
 const DRAFT_STORAGE_KEY = "fantasy-companion-draft-v1";
-const SETUP_STORAGE_KEY = "fantasy-companion-setup-v1";
+const SETUP_STORAGE_KEY = "fantasy-companion-setup-v2";
+const LEGACY_SETUP_STORAGE_KEY = "fantasy-companion-setup-v1";
 const BOARD_LIMIT = 60;
 const REDRAFT_POSITIONS = ["ALL", "QB", "RB", "WR", "TE", "K", "DST"] as const;
 const BEST_BALL_POSITIONS = ["ALL", "QB", "RB", "WR", "TE"] as const;
@@ -66,6 +106,7 @@ interface SetupValues {
   draftOrder: FantasyCompanionDraftOrder;
   scoring: ScoringFormat;
   contestId: BestBallContestId;
+  lineup: RedraftLineupSettings;
 }
 
 const currentSeason = (() => {
@@ -82,21 +123,44 @@ const DEFAULT_SETUP: SetupValues = {
   draftOrder: "snake",
   scoring: "PPR",
   contestId: "bbm-vii",
+  lineup: { ...DEFAULT_REDRAFT_LINEUP },
 };
 
-function isSetupValues(value: unknown): value is SetupValues {
-  if (!value || typeof value !== "object") return false;
+function parseSetupValues(value: unknown): SetupValues | null {
+  if (!value || typeof value !== "object") return null;
   const setup = value as Partial<SetupValues>;
-  return (
+  const contestId = setup.contestId as BestBallContestId;
+  const contest = BEST_BALL_CONTEST_ORDER.includes(contestId)
+    ? BEST_BALL_CONTESTS[contestId]
+    : null;
+  const savedRoomShapeIsValid =
+    setup.platform === "underdog" ||
+    ([8, 10, 12, 14, 16].includes(Number(setup.teams)) &&
+      [13, 14, 15, 16, 17, 18].includes(Number(setup.rounds)));
+  const valid =
     (setup.platform === "espn" || setup.platform === "underdog") &&
-    Number.isInteger(setup.season) &&
-    Number.isInteger(setup.teams) &&
-    Number.isInteger(setup.rounds) &&
+    Number.isInteger(setup.season) && Number(setup.season) >= 2020 && Number(setup.season) <= 2100 &&
+    savedRoomShapeIsValid &&
     Number.isInteger(setup.userTeam) &&
+    Number(setup.userTeam) >= 1 &&
     (setup.draftOrder === "snake" || setup.draftOrder === "linear") &&
     ["PPR", "HALF_PPR", "STANDARD"].includes(String(setup.scoring)) &&
-    BEST_BALL_CONTEST_ORDER.includes(setup.contestId as BestBallContestId)
-  );
+    contest !== null;
+  if (!valid) return null;
+  const isBestBall = setup.platform === "underdog";
+  const teams = isBestBall ? (contest as NonNullable<typeof contest>).teams : Number(setup.teams);
+  const rounds = isBestBall ? (contest as NonNullable<typeof contest>).rounds : Number(setup.rounds);
+  return {
+    platform: setup.platform as Platform,
+    season: Number(setup.season),
+    teams,
+    rounds,
+    userTeam: Math.min(Number(setup.userTeam), teams),
+    draftOrder: isBestBall ? "snake" : setup.draftOrder as FantasyCompanionDraftOrder,
+    scoring: isBestBall ? "HALF_PPR" : setup.scoring as ScoringFormat,
+    contestId,
+    lineup: normalizeRedraftLineup(setup.lineup),
+  };
 }
 
 function setupFromRoom(room: FantasyCompanionRoomConfig): SetupValues {
@@ -109,6 +173,10 @@ function setupFromRoom(room: FantasyCompanionRoomConfig): SetupValues {
     draftOrder: room.draftOrder,
     scoring: room.scoring,
     contestId: room.kind === "best-ball" ? room.contestId : "bbm-vii",
+    lineup:
+      room.kind === "redraft"
+        ? { ...room.lineup }
+        : { ...DEFAULT_REDRAFT_LINEUP },
   };
 }
 
@@ -128,6 +196,7 @@ function roomFromSetup(setup: SetupValues): FantasyCompanionRoomConfig {
     userTeam: setup.userTeam,
     draftOrder: setup.draftOrder,
     scoring: setup.scoring,
+    lineup: setup.lineup,
   });
 }
 
@@ -135,10 +204,13 @@ function sourceRank(player: Player, room: FantasyCompanionRoomConfig): number {
   if (room.kind === "best-ball" && room.contestId === "superflex") {
     return player.superflexRank ?? player.averageRank;
   }
-  return player.rankEcr ?? player.averageRank;
+  return room.kind === "best-ball"
+    ? player.averageRank
+    : player.rankEcr ?? player.averageRank;
 }
 
-function formatDate(value: string): string {
+function formatDate(value: string | null | undefined): string {
+  if (!value) return "Unavailable";
   const date = new Date(value);
   if (!Number.isFinite(date.getTime())) return "Unknown date";
   return new Intl.DateTimeFormat(undefined, {
@@ -196,6 +268,13 @@ function SetupPanel({
   const selectedContest = BEST_BALL_CONTESTS[setup.contestId];
   const teams = isBestBall ? selectedContest.teams : setup.teams;
   const clampedTeam = Math.min(setup.userTeam, teams);
+  const starterSlots = countRedraftStartingSlots(setup.lineup);
+  const lineupFitsDraft = isBestBall || starterSlots <= setup.rounds;
+  const activeLineupPreset = REDRAFT_LINEUP_PRESETS.find((preset) =>
+    (Object.keys(preset.lineup) as Array<keyof RedraftLineupSettings>).every(
+      (position) => preset.lineup[position] === setup.lineup[position]
+    )
+  );
 
   useEffect(() => {
     if (clampedTeam !== setup.userTeam) onChange({ ...setup, userTeam: clampedTeam });
@@ -341,8 +420,8 @@ function SetupPanel({
             </>
           ) : (
             <div className="locked-room" aria-label="Contest room structure">
-              <span>12 teams</span>
-              <span>18 rounds</span>
+              <span>{selectedContest.teams} teams</span>
+              <span>{selectedContest.rounds} rounds</span>
               <span>Half PPR</span>
               <span>Snake</span>
             </div>
@@ -360,7 +439,71 @@ function SetupPanel({
         </div>
       </section>
 
-      <button type="button" className="start-button" onClick={onStart}>
+      {!isBestBall ? (
+        <section className="setup-card" aria-labelledby="lineup-heading">
+          <div className="section-heading">
+            <span className="section-index">03</span>
+            <div>
+              <h2 id="lineup-heading">Starting lineup</h2>
+              <p>The replacement index and roster needs use these exact slots.</p>
+            </div>
+          </div>
+          <div className="lineup-presets" aria-label="Starting lineup presets">
+            {REDRAFT_LINEUP_PRESETS.map((preset) => (
+              <button
+                type="button"
+                key={preset.id}
+                className={activeLineupPreset?.id === preset.id ? "is-selected" : ""}
+                onClick={() => onChange({ ...setup, lineup: { ...preset.lineup } })}
+              >
+                {preset.label}
+              </button>
+            ))}
+          </div>
+          <div className="lineup-grid">
+            <Field label="QB">
+              <select value={1} disabled aria-label="Quarterback starters">
+                <option value={1}>1</option>
+              </select>
+            </Field>
+            {(
+              [
+                ["RB", [1, 2, 3]],
+                ["WR", [1, 2, 3, 4]],
+                ["TE", [1, 2]],
+                ["FLEX", [0, 1, 2, 3]],
+                ["K", [0, 1]],
+                ["DST", [0, 1]],
+              ] as const
+            ).map(([lineupPosition, choices]) => (
+              <Field key={lineupPosition} label={lineupPosition}>
+                <select
+                  value={setup.lineup[lineupPosition]}
+                  onChange={(event) =>
+                    onChange({
+                      ...setup,
+                      lineup: normalizeRedraftLineup({
+                        ...setup.lineup,
+                        [lineupPosition]: Number(event.target.value),
+                      }),
+                    })
+                  }
+                >
+                  {choices.map((value) => (
+                    <option key={value} value={value}>{value}</option>
+                  ))}
+                </select>
+              </Field>
+            ))}
+          </div>
+          <p className={`lineup-summary ${lineupFitsDraft ? "" : "is-invalid"}`}>
+            {starterSlots} starting slots across {setup.rounds} rounds
+            {lineupFitsDraft ? "." : ". Add rounds or remove starting slots before you begin."}
+          </p>
+        </section>
+      ) : null}
+
+      <button type="button" className="start-button" onClick={onStart} disabled={!lineupFitsDraft}>
         Start draft companion <ChevronRight size={19} aria-hidden="true" />
       </button>
 
@@ -376,11 +519,13 @@ function SetupPanel({
 
 function SnapshotStatus({
   snapshot,
+  room,
   loading,
   liveError,
   onRefresh,
 }: {
   snapshot: CompanionSnapshot | null;
+  room: FantasyCompanionRoomConfig;
   loading: boolean;
   liveError: string | null;
   onRefresh: () => void;
@@ -393,6 +538,15 @@ function SnapshotStatus({
         : snapshot?.source === "bundled"
           ? "Bundled copy"
           : "Waiting";
+  const rankingAsOf = snapshot?.kind === "redraft"
+    ? snapshot.data.upstreamUpdatedAt ?? snapshot.data.generatedAt
+    : snapshot?.kind === "best-ball" && room.kind === "best-ball"
+      ? getBestBallRankingSource(
+          snapshot.data,
+          BEST_BALL_CONTESTS[room.contestId]
+        )?.asOf ?? snapshot.data.generatedAt
+      : null;
+  const marketAsOf = snapshot?.data.adpSource?.asOf ?? null;
 
   return (
     <div className="snapshot-status">
@@ -400,7 +554,9 @@ function SnapshotStatus({
       <span>
         <strong>{loading ? "Refreshing rankings" : sourceLabel}</strong>
         <small>
-          {snapshot ? `${formatDate(snapshot.sourceUpdatedAt)}${liveError ? " · offline fallback" : ""}` : "No rankings loaded"}
+          {snapshot
+            ? `Rank ${formatDate(rankingAsOf)} · Market ${formatDate(marketAsOf)}${liveError ? " · offline fallback" : ""}`
+            : "No rankings loaded"}
         </small>
       </span>
       <button
@@ -423,6 +579,182 @@ function EmptyState({ children }: { children: React.ReactNode }) {
       <CircleDot size={22} aria-hidden="true" />
       <p>{children}</p>
     </div>
+  );
+}
+
+function RedraftDecisionSummary({
+  report,
+}: {
+  report: RedraftDraftDecisionReport | null;
+}) {
+  if (!report?.guidanceAvailable || report.positions.length === 0) return null;
+
+  return (
+    <section className="decision-panel" aria-labelledby="decision-heading">
+      <div className="decision-panel__heading">
+        <div>
+          <p className="eyebrow">RANK INDEX AND SCARCITY</p>
+          <h2 id="decision-heading">What changes if you wait</h2>
+        </div>
+        {report.mostAtRisk ? (
+          <span className="risk-tag">Most at risk · {report.mostAtRisk.position}</span>
+        ) : null}
+      </div>
+      <p className="decision-explainer">
+        The replacement index is a 0 to 100 ordinal reading built from overall rank and this room&apos;s lineup. VORP appears separately on the player board because it comes from projected fantasy points. Positional tiers come from each position&apos;s own board. Wait cost appears only on your turn.
+      </p>
+      <div className="decision-grid">
+        {report.positions.map((entry) => {
+          const best = entry.bestAvailable;
+          const isMostAtRisk = report.mostAtRisk?.position === entry.position;
+          return (
+            <article
+              className={`decision-card ${isMostAtRisk ? "is-at-risk" : ""}`}
+              key={entry.position}
+            >
+              <div className="decision-card__top">
+                <span className={positionClass(entry.position)}>{entry.position}</span>
+                <span>{describeRedraftNeed(entry)}</span>
+              </div>
+              {best ? (
+                <>
+                  <div className="decision-card__player">
+                    <strong>{best.player.name}</strong>
+                    <b>Index {best.value.toFixed(1)}</b>
+                  </div>
+                  <p>
+                    {entry.tier.positionRank !== null ? `${entry.position}${Math.round(entry.tier.positionRank)}` : entry.position}
+                    {entry.tier.tier !== null ? ` · Tier ${entry.tier.tier} · ${entry.tier.remaining} left` : " · Tier unavailable"}
+                    <br />
+                    Starter line {best.starterCutoff === null ? "unavailable" : `overall #${Math.round(best.starterCutoff)}`}
+                    {` · Roster line ${best.rosterCutoff === null ? "unavailable" : `overall #${Math.round(best.rosterCutoff)}`}`}
+                  </p>
+                  <small>{describeRedraftWait(entry.wait)}</small>
+                </>
+              ) : (
+                <p>No ranked player remains.</p>
+              )}
+            </article>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+function DraftOutlookSummary({
+  report,
+  pausedReason,
+}: {
+  report: DraftValueReport | null;
+  pausedReason: string | null;
+}) {
+  return (
+    <section className="outlook-card" aria-labelledby="outlook-heading">
+      <div className="view-heading">
+        <div>
+          <p className="eyebrow">DRAFT OUTLOOK</p>
+          <h2 id="outlook-heading">Room-relative draft process</h2>
+        </div>
+        <Activity size={24} aria-hidden="true" />
+      </div>
+      {pausedReason ? (
+        <p className="model-note">Draft Outlook is paused because {pausedReason}.</p>
+      ) : report?.compositeScore === null || !report ? (
+        <p className="model-note">Record your first pick to start Draft Outlook.</p>
+      ) : (
+        <>
+          <div className="outlook-score">
+            <strong>{Math.round(report.compositeScore)}</strong>
+            <span>
+              <b>{report.confidence} read</b>
+              <small>
+                {report.roomRank !== null && report.roomSize > 1
+                  ? `Room rank ${report.roomRank.toFixed(report.roomRank % 1 === 0 ? 0 : 1)} of ${report.roomSize}`
+                  : "Room rank begins after four picks"}
+              </small>
+            </span>
+          </div>
+          <div className="outlook-components">
+            {report.components.map((component) => (
+              <div key={component.id}>
+                <span><b>{component.label}</b><em>{Math.round(component.score)}</em></span>
+                <i><span style={{ width: `${component.score}%` }} /></i>
+                <small>{component.detail}</small>
+              </div>
+            ))}
+          </div>
+          <p className="model-note">
+            This ordinal score grades draft price, roster shape, lineup or correlation, and bye coverage. It does not estimate fantasy points or win probability.
+          </p>
+        </>
+      )}
+    </section>
+  );
+}
+
+function RosterPlan({
+  room,
+  userPicks,
+  bestBallAnalysis,
+}: {
+  room: FantasyCompanionRoomConfig;
+  userPicks: FantasyCompanionDraftState["picks"];
+  bestBallAnalysis: BestBallRosterAnalysis | null;
+}) {
+  const rosterPositions = room.kind === "best-ball"
+    ? (["QB", "RB", "WR", "TE"] as const)
+    : (["QB", "RB", "WR", "TE", "K", "DST"] as const);
+  const counts = Object.fromEntries(
+    rosterPositions.map((position) => [
+      position,
+      userPicks.filter((pick) => pick.player.position === position).length,
+    ])
+  ) as Record<(typeof rosterPositions)[number], number>;
+  const redraftTarget = room.kind === "redraft"
+    ? getRedraftRosterTarget(room.lineup, room.rounds)
+    : null;
+
+  return (
+    <section className="roster-plan" aria-labelledby="roster-plan-heading">
+      <div className="view-heading">
+        <div>
+          <p className="eyebrow">ROSTER PLAN</p>
+          <h2 id="roster-plan-heading">Targets and open spots</h2>
+        </div>
+        <UserRound size={24} aria-hidden="true" />
+      </div>
+      <div className="roster-targets">
+        {rosterPositions.map((position) => {
+          const drafted = counts[position] ?? 0;
+          const bestBallTarget = room.kind === "best-ball"
+            ? bestBallAnalysis?.targets.targets[
+                position as "QB" | "RB" | "WR" | "TE"
+              ]
+            : null;
+          const target = redraftTarget
+            ? redraftTarget[position]
+            : bestBallTarget?.recommended ?? 0;
+          const range = bestBallTarget;
+          return (
+            <article key={position}>
+              <span className={positionClass(position)}>{position}</span>
+              <strong>{drafted} / {target}</strong>
+              <small>
+                {range
+                  ? `${range.minimum} to ${range.maximum} viable`
+                  : drafted < target
+                    ? `${target - drafted} open`
+                    : "Target met"}
+              </small>
+            </article>
+          );
+        })}
+      </div>
+      {bestBallAnalysis?.targets.reasons.slice(0, 2).map((reason) => (
+        <p className="roster-reason" key={reason}>{reason}</p>
+      ))}
+    </section>
   );
 }
 
@@ -473,33 +805,96 @@ function DraftConsole({
     };
   }, [refreshVersion, room, roomIdentity]);
 
+  const currentPick = getCurrentPickNumber(state);
+  const currentTeam = getCurrentTeamNumber(state);
+  const currentRound = currentTeam === null
+    ? room.rounds
+    : getDraftRoundForPick(currentPick, room.teams);
+  const totalPicks = room.teams * room.rounds;
+  const userPicks = getTeamPicks(state, room.userTeam);
+  const positions = room.kind === "best-ball" ? BEST_BALL_POSITIONS : REDRAFT_POSITIONS;
+  const contest = room.kind === "best-ball" ? BEST_BALL_CONTESTS[room.contestId] : null;
+  const redraftSnapshot = snapshot?.kind === "redraft" && room.kind === "redraft"
+    ? snapshot.data
+    : null;
+  const bestBallSnapshot = snapshot?.kind === "best-ball" && room.kind === "best-ball"
+    ? snapshot.data
+    : null;
+  const rankingSourceAsOf = redraftSnapshot
+    ? redraftSnapshot.upstreamUpdatedAt
+    : bestBallSnapshot && contest
+      ? getBestBallRankingSource(bestBallSnapshot, contest)?.asOf
+      : null;
+  const sourceCapabilities = getFantasySourceCapabilities({
+    rankingAsOf: rankingSourceAsOf,
+    marketAsOf: snapshot?.data.adpSource?.asOf,
+    scheduleAsOf: bestBallSnapshot?.scheduleSource?.asOf,
+    season: snapshot?.data.season,
+  });
+  const rankingUsable = sourceCapabilities.ranking.usable;
+  const adpAvailable = room.kind === "redraft"
+    ? redraftSnapshot?.adpSource !== null && sourceCapabilities.market.current
+    : Boolean(
+        contest &&
+        bestBallSnapshot?.adpSource &&
+        hasSupportedBestBallAdp(contest) &&
+        sourceCapabilities.market.current
+      );
+  const scheduleAvailable = Boolean(
+    bestBallSnapshot?.scheduleSource &&
+    sourceCapabilities.schedule.usable &&
+    Object.keys(bestBallSnapshot.week17Opponents).length >= 30
+  );
+  const modelSourceIssue = room.kind === "redraft"
+    ? rankingUsable
+      ? null
+      : "the ranking source is stale"
+    : bestBallSnapshot && contest
+      ? getBestBallModelSourceIssue(bestBallSnapshot, contest)
+      : snapshot
+        ? "the matching rankings are unavailable"
+        : null;
+  const rawPlayers = useMemo(
+    () => redraftSnapshot?.overall ?? bestBallSnapshot?.players ?? [],
+    [bestBallSnapshot, redraftSnapshot]
+  );
+  const modelPlayers = useMemo(
+    () => rawPlayers.map((player) => (adpAvailable ? player : withoutPlayerAdp(player))),
+    [adpAvailable, rawPlayers]
+  );
+  const modelWeek17Opponents = useMemo(
+    () => scheduleAvailable ? bestBallSnapshot?.week17Opponents ?? {} : {},
+    [bestBallSnapshot?.week17Opponents, scheduleAvailable]
+  );
+  const modelPicks = useMemo(
+    () => resolveDraftPicksForModel(state.picks, modelPlayers, adpAvailable),
+    [adpAvailable, modelPlayers, state.picks]
+  );
   const available = useMemo(
-    () => (snapshot ? getAvailablePlayers(snapshot.players, state) : []),
-    [snapshot, state]
+    () => getAvailablePlayers(modelPlayers, state),
+    [modelPlayers, state]
   );
   const guidance = useMemo(() => {
-    if (!snapshot) return null;
-    const result = getFantasyCompanionRecommendations({
-      state,
-      players: snapshot.players,
-      week17Opponents: snapshot.week17Opponents,
-      limit: 40,
-    });
+    if (!snapshot || !rankingUsable) return null;
     if (
-      result.kind === "best-ball" &&
-      result.mode === "exact" &&
-      getSnapshotStaleness(snapshot.sourceUpdatedAt) === "stale"
+      room.kind === "best-ball" &&
+      contest?.recommendationMode === "exact" &&
+      modelSourceIssue
     ) {
       return {
         kind: "best-ball" as const,
-        mode: "reference" as const,
-        reason:
-          "The ranking or ADP source is stale. Refresh the board before using exact player guidance.",
+        mode: "exact" as const,
+        reason: `Exact player scoring is paused because ${modelSourceIssue}.`,
         recommendations: [],
       };
     }
-    return result;
-  }, [snapshot, state]);
+    return getFantasyCompanionRecommendations({
+      state: { ...state, picks: modelPicks },
+      players: modelPlayers,
+      week17Opponents: modelWeek17Opponents,
+      limit: 40,
+    });
+  }, [contest?.recommendationMode, modelPicks, modelPlayers, modelSourceIssue, modelWeek17Opponents, rankingUsable, room.kind, snapshot, state]);
   const guidanceRanks = useMemo(() => {
     const ranks = new Map<string, number>();
     guidance?.recommendations.forEach((recommendation, index) => {
@@ -516,6 +911,12 @@ function DraftConsole({
     }
     return scores;
   }, [guidance]);
+  const baseRanks = useMemo(() => {
+    const ordered = room.kind === "best-ball" && contest
+      ? sortBestBallRankings(modelPlayers, contest)
+      : modelPlayers;
+    return new Map(ordered.map((player, index) => [player.id, index + 1]));
+  }, [contest, modelPlayers, room.kind]);
   const filteredPlayers = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
     return available
@@ -526,17 +927,101 @@ function DraftConsole({
       .sort((left, right) => {
         const leftGuidance = guidanceRanks.get(left.id) ?? Number.POSITIVE_INFINITY;
         const rightGuidance = guidanceRanks.get(right.id) ?? Number.POSITIVE_INFINITY;
-        return leftGuidance - rightGuidance || sourceRank(left, room) - sourceRank(right, room);
+        return leftGuidance - rightGuidance ||
+          (baseRanks.get(left.id) ?? Number.POSITIVE_INFINITY) -
+            (baseRanks.get(right.id) ?? Number.POSITIVE_INFINITY) ||
+          sourceRank(left, room) - sourceRank(right, room);
       });
-  }, [available, guidanceRanks, position, query, room]);
-
-  const currentPick = getCurrentPickNumber(state);
-  const currentTeam = getCurrentTeamNumber(state);
-  const currentRound = currentTeam === null ? room.rounds : getDraftRoundForPick(currentPick, room.teams);
-  const totalPicks = room.teams * room.rounds;
-  const userPicks = getTeamPicks(state, room.userTeam);
-  const positions = room.kind === "best-ball" ? BEST_BALL_POSITIONS : REDRAFT_POSITIONS;
-  const contest = room.kind === "best-ball" ? BEST_BALL_CONTESTS[room.contestId] : null;
+  }, [available, baseRanks, guidanceRanks, position, query, room]);
+  const redraftDecision = useMemo(
+    () => redraftSnapshot && room.kind === "redraft"
+      ? calculateRedraftDraftDecision({
+          players: modelPlayers,
+          positionBoards: {
+            QB: redraftSnapshot.positions.QB,
+            RB: redraftSnapshot.positions.RB,
+            WR: redraftSnapshot.positions.WR,
+            TE: redraftSnapshot.positions.TE,
+          },
+          picks: modelPicks,
+          room: {
+            teams: room.teams,
+            rounds: room.rounds,
+            userTeam: room.userTeam,
+            draftOrder: room.draftOrder,
+            lineup: room.lineup,
+          },
+          currentPick,
+          rankingUsable,
+          marketCurrent: adpAvailable,
+        })
+      : null,
+    [adpAvailable, currentPick, modelPicks, modelPlayers, rankingUsable, redraftSnapshot, room]
+  );
+  const replacementById = useMemo(
+    () => new Map(redraftDecision?.playerValues.map((entry) => [entry.player.id, entry.value]) ?? []),
+    [redraftDecision]
+  );
+  const vorpTeamSize = room.kind === "redraft" && isFantasyVorpTeamSize(room.teams)
+    ? room.teams
+    : null;
+  const vorpById = useMemo(
+    () =>
+      redraftSnapshot?.vorpSource && vorpTeamSize
+        ? buildFantasyVorpIndex(redraftSnapshot.vorpRankings, vorpTeamSize)
+        : new Map<string, FantasyVorpRankingEntry>(),
+    [redraftSnapshot, vorpTeamSize]
+  );
+  const redraftPositionFacts = useMemo(() => {
+    const facts = new Map<string, { positionRank: number | null; tier: number | null }>();
+    if (!redraftSnapshot) return facts;
+    for (const positionName of ["QB", "RB", "WR", "TE", "K", "DST"] as const) {
+      for (const player of redraftSnapshot.positions[positionName]) {
+        facts.set(player.id, {
+          positionRank: Number.isFinite(player.rankEcr)
+            ? Number(player.rankEcr)
+            : Number.isFinite(player.averageRank)
+              ? player.averageRank
+              : null,
+          tier: Number.isFinite(player.tier) ? Number(player.tier) : null,
+        });
+      }
+    }
+    return facts;
+  }, [redraftSnapshot]);
+  const bestBallAnalysis = useMemo(() => {
+    if (room.kind !== "best-ball") return null;
+    const nextUserPick =
+      getNextUserPick(currentPick, room.userTeam, room.teams, room.rounds) ?? currentPick;
+    const upcomingRound = getDraftRoundForPick(nextUserPick, room.teams);
+    return analyzeBestBallRoster(
+      modelPicks.filter((pick) => pick.teamNumber === room.userTeam),
+      modelWeek17Opponents,
+      room.contestId,
+      upcomingRound
+    );
+  }, [currentPick, modelPicks, modelWeek17Opponents, room]);
+  const draftOutlook = useMemo(() => {
+    if (modelSourceIssue || !snapshot) return null;
+    if (room.kind === "redraft") {
+      const picks: DraftPick[] = modelPicks.map((pick) => ({
+        ...pick,
+        timestamp: new Date(pick.draftedAt),
+      }));
+      return calculateRedraftDraftValues(picks, {
+        totalTeams: room.teams,
+        userTeam: room.userTeam,
+        rounds: room.rounds,
+        draftType: room.draftOrder,
+        lineup: room.lineup,
+      }).find((report) => report.teamNumber === room.userTeam) ?? null;
+    }
+    return calculateBestBallDraftValues({
+      picks: modelPicks,
+      contestId: room.contestId,
+      week17Opponents: modelWeek17Opponents,
+    }).find((report) => report.teamNumber === room.userTeam) ?? null;
+  }, [modelPicks, modelSourceIssue, modelWeek17Opponents, room, snapshot]);
   const mode = guidance?.kind === "best-ball" ? guidance.mode : "consensus";
 
   const recordPick = useCallback((player: Player) => {
@@ -589,6 +1074,7 @@ function DraftConsole({
         </div>
         <SnapshotStatus
           snapshot={snapshot}
+          room={room}
           loading={loadingSnapshot}
           liveError={liveError}
           onRefresh={() => {
@@ -627,13 +1113,57 @@ function DraftConsole({
 
       {view === "board" ? (
         <section className="board-view">
+          <RedraftDecisionSummary report={redraftDecision} />
           <div className="guidance-strip">
             <div>
               <span className={`mode-tag mode-tag--${mode}`}>{mode === "exact" ? "Exact contest" : mode === "reference" ? "Reference only" : "Consensus board"}</span>
-              <p>{guidance?.reason ?? "Rankings are loading."}</p>
+              <p>
+                {guidance?.reason ?? (modelSourceIssue
+                  ? `Model guidance is paused because ${modelSourceIssue}. The dated board remains available.`
+                  : "Rankings are loading.")}
+              </p>
             </div>
             <span className="board-count">{available.length} available</span>
           </div>
+
+          {snapshot ? (
+            <div className="source-chips" aria-label="Model source status">
+              <span
+                className={rankingUsable ? "is-current" : "is-paused"}
+                title={`Ranking updated ${formatDate(rankingSourceAsOf)}`}
+              >
+                Rank {rankingUsable ? "usable" : "stale"}
+              </span>
+              <span
+                className={adpAvailable ? "is-current" : "is-muted"}
+                title={`Market updated ${formatDate(snapshot.data.adpSource?.asOf)}`}
+              >
+                ADP {adpAvailable ? "current" : "hidden"}
+              </span>
+              {room.kind === "redraft" && vorpById.size > 0 && vorpTeamSize ? (
+                <span
+                  className="is-current"
+                  title={`FantasyPros VORP checked ${formatDate(redraftSnapshot?.vorpSource?.asOf)}`}
+                >
+                  VORP {vorpTeamSize}-team
+                </span>
+              ) : null}
+              {room.kind === "best-ball" ? (
+                <span
+                  className={scheduleAvailable ? "is-current" : "is-muted"}
+                  title={`Week 17 schedule updated ${formatDate(bestBallSnapshot?.scheduleSource?.asOf)}`}
+                >
+                  Week 17 {scheduleAvailable ? "ready" : "unavailable"}
+                </span>
+              ) : null}
+            </div>
+          ) : null}
+
+          {guidance?.kind === "best-ball" && guidance.recommendations[0] ? (
+            <p className="top-read">
+              The top read is {guidance.recommendations[0].reasons.slice(0, 2).map((reason) => reason.detail).join(" ")}
+            </p>
+          ) : null}
 
           <div className="search-control">
             <Search size={18} aria-hidden="true" />
@@ -669,6 +1199,37 @@ function DraftConsole({
               filteredPlayers.slice(0, BOARD_LIMIT).map((player, index) => {
                 const ranked = guidanceRanks.get(player.id);
                 const score = guidanceScores.get(player.id);
+                const positionFacts = room.kind === "redraft"
+                  ? redraftPositionFacts.get(player.id)
+                  : null;
+                const positionRank = room.kind === "redraft"
+                  ? positionFacts?.positionRank ?? null
+                  : room.contestId === "superflex"
+                    ? null
+                    : Number.isFinite(player.positionRank)
+                      ? Number(player.positionRank)
+                      : null;
+                const tier = room.kind === "redraft"
+                  ? positionFacts?.tier ?? null
+                  : room.contestId === "superflex"
+                    ? Number.isFinite(player.superflexTier)
+                      ? Number(player.superflexTier)
+                      : null
+                    : Number.isFinite(player.tier)
+                      ? Number(player.tier)
+                      : null;
+                const replacement = replacementById.get(player.id);
+                const vorp = vorpById.get(player.id);
+                const facts = [
+                  player.team,
+                  room.kind === "redraft"
+                    ? `ECR ${Math.round(sourceRank(player, room))}`
+                    : `Rank ${baseRanks.get(player.id) ?? index + 1}`,
+                  positionRank !== null ? `${player.position}${Math.round(positionRank)}` : null,
+                  tier !== null ? `T${tier}` : null,
+                  Number.isFinite(player.byeWeek) ? `Bye ${player.byeWeek}` : null,
+                  adpAvailable && Number.isFinite(player.adp) ? `ADP ${Number(player.adp).toFixed(1)}` : null,
+                ].filter(Boolean).join(" · ");
                 return (
                   <button
                     type="button"
@@ -682,9 +1243,20 @@ function DraftConsole({
                     <span className={positionClass(player.position)}>{player.position}</span>
                     <span className="player-identity">
                       <strong>{player.name}</strong>
-                      <small>{player.team} · ECR {Math.round(sourceRank(player, room))}{player.adp ? ` · ADP ${player.adp.toFixed(1)}` : ""}</small>
+                      <small>{facts}</small>
                     </span>
-                    {typeof score === "number" ? <span className="player-score">{score.toFixed(1)}</span> : null}
+                    {typeof score === "number" ? (
+                      <span className="player-score" title="Exact contest recommendation score">{score.toFixed(1)}</span>
+                    ) : vorp ? (
+                      <span
+                        className="player-score"
+                        title={`Projected season points above FantasyPros' ${vorpTeamSize}-team same-position waiver replacement`}
+                      >
+                        VORP {Math.round(vorp.value)}
+                      </span>
+                    ) : typeof replacement === "number" ? (
+                      <span className="player-score" title="Rank-based replacement index">Index {replacement.toFixed(1)}</span>
+                    ) : null}
                     <span className="record-action" aria-hidden="true">+</span>
                   </button>
                 );
@@ -713,6 +1285,15 @@ function DraftConsole({
               </span>
             ))}
           </div>
+          <RosterPlan
+            room={room}
+            userPicks={userPicks}
+            bestBallAnalysis={bestBallAnalysis}
+          />
+          <DraftOutlookSummary
+            report={draftOutlook}
+            pausedReason={modelSourceIssue}
+          />
           {userPicks.length === 0 ? (
             <EmptyState>Your picks will appear here when Team {room.userTeam} comes up.</EmptyState>
           ) : (
@@ -786,16 +1367,22 @@ export function App() {
   useEffect(() => {
     let cancelled = false;
     Promise.all([
-      readLocalValue<SetupValues>(SETUP_STORAGE_KEY),
+      readLocalValue<unknown>(SETUP_STORAGE_KEY),
+      readLocalValue<unknown>(LEGACY_SETUP_STORAGE_KEY),
       readLocalValue<string>(DRAFT_STORAGE_KEY),
-    ]).then(([savedSetup, savedDraft]) => {
+    ]).then(([savedSetup, legacySetup, savedDraft]) => {
       if (cancelled) return;
       const parsedDraft = parseFantasyCompanionState(savedDraft);
+      const parsedSetup = parseSetupValues(savedSetup) ?? parseSetupValues(legacySetup);
+      if (legacySetup !== null) {
+        // The v2 key is written on hydration below, so the v1 copy is only clutter now.
+        void removeLocalValue(LEGACY_SETUP_STORAGE_KEY).catch(() => undefined);
+      }
       if (parsedDraft) {
         setDraftState(parsedDraft);
         setSetup(setupFromRoom(parsedDraft.room));
-      } else if (isSetupValues(savedSetup)) {
-        setSetup(savedSetup);
+      } else if (parsedSetup) {
+        setSetup(parsedSetup);
       }
       setHydrated(true);
     });
@@ -806,7 +1393,7 @@ export function App() {
 
   useEffect(() => {
     if (!hydrated) return;
-    void writeLocalValue(SETUP_STORAGE_KEY, setup);
+    void writeLocalValue(SETUP_STORAGE_KEY, setup).catch(() => undefined);
   }, [hydrated, setup]);
 
   useEffect(() => {
@@ -816,14 +1403,21 @@ export function App() {
     // pick is not saved yet", never crash the live panel mid-draft.
     try {
       const serialized = serializeFantasyCompanionState(draftState);
-      void writeLocalValue(DRAFT_STORAGE_KEY, serialized);
+      void writeLocalValue(DRAFT_STORAGE_KEY, serialized).catch(() => undefined);
     } catch {
       // Skip this write; the next valid state change persists again.
     }
   }, [draftState, hydrated]);
 
   const startDraft = () => {
+    if (
+      setup.platform === "espn" &&
+      countRedraftStartingSlots(setup.lineup) > setup.rounds
+    ) {
+      return;
+    }
     const room = roomFromSetup(setup);
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
     setDraftState(createFantasyCompanionState(room));
   };
 
@@ -831,7 +1425,7 @@ export function App() {
     if (draftState && draftState.picks.length > 0 && !window.confirm("Leave this draft and clear its recorded picks?")) return;
     setSetup(draftState ? setupFromRoom(draftState.room) : setup);
     setDraftState(null);
-    void removeLocalValue(DRAFT_STORAGE_KEY);
+    void removeLocalValue(DRAFT_STORAGE_KEY).catch(() => undefined);
   };
 
   if (!hydrated) {
