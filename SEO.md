@@ -375,7 +375,7 @@ Current status of metadata and structured data across all pages. Use this to ide
 | `/accessibility` | `constructMetadata` | website | full URL | 2025-02-05 | None | None | **Gap** |
 | `/search` | `constructMetadata` | website | `/search` | 2025-02-05 | None | None | OK, `noIndex` |
 | `/admin` | layout metadata | N/A | N/A | N/A | None | None | OK, `noIndex` |
-| `/fantasy-football` | `constructMetadata` | website | relative | 2026-04-21 | BreadcrumbList, SportsApp, FAQ | Yes | OK |
+| `/fantasy-football` | `constructMetadata` | website | relative | snapshot date | BreadcrumbList, SportsApp, FAQ | Yes | OK; the first page of rankings rows is server-rendered from the committed snapshot, so non-JS crawlers see real players |
 | `/fantasy-football/draft-tracker` | `constructMetadata` | website | relative | 2026-04-21 | BreadcrumbList, SoftwareApplication | Yes | OK |
 | `/fantasy-football/rb-tiers` | Redirect | — | — | — | — | — | OK |
 | `/fantasy-football/tiers/[pos]` | Redirect | — | — | — | — | — | OK |
