@@ -2,6 +2,7 @@ import ReactDOM from "react-dom";
 import { StructuredData } from "@/components/StructuredData";
 import { absoluteUrl, constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { fantasySnapshotRevision } from "@/data/fantasySnapshotRevision.generated";
+import { loadFantasySnapshotSeed } from "@/lib/fantasySnapshotServer";
 import { FANTASY_FOOTBALL_FAQ } from "./fantasy-faq";
 import { FantasyFootballClient } from "./fantasy-football-client";
 import { normalizeFantasyState } from "./fantasy-state";
@@ -35,6 +36,10 @@ export default async function FantasyFootballPage({ searchParams }: FantasyFootb
   ReactDOM.preload(`/data/fantasy/${initialState.scoring}.json?v=${fantasySnapshotRevision}`, {
     as: "fetch",
   });
+  // The first page of rows rides in the HTML so the board is readable without
+  // JavaScript (the answer engines robots.txt admits do not run it). A failed
+  // read falls back to today's client fetch.
+  const initialSnapshot = await loadFantasySnapshotSeed(initialState).catch(() => null);
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "Fantasy Football", url: "/fantasy-football" },
@@ -79,7 +84,7 @@ export default async function FantasyFootballPage({ searchParams }: FantasyFootb
           })),
         }}
       />
-      <FantasyFootballClient initialState={initialState} />
+      <FantasyFootballClient initialState={initialState} initialSnapshot={initialSnapshot} />
     </>
   );
 }

@@ -23,6 +23,8 @@ import {
   FantasyRoutePosition,
   FantasyRouteScoring,
   getFantasyPlayerSearchText,
+  FANTASY_RANKINGS_PAGE_SIZE,
+  type FantasySnapshot,
 } from "@/lib/fantasy";
 import { MetricTooltip } from "@/components/investments/MetricTooltip";
 import {
@@ -57,6 +59,7 @@ import {
 import {
   FANTASY_VORP_TEAM_SIZES,
   buildFantasyVorpIndex,
+  sortPlayersByVorpRank,
   type FantasyVorpTeamSize,
 } from "@/lib/fantasyVorp";
 import { PositionFilterBar, type PositionFilterOption } from "@/components/fantasy/PositionFilterBar";
@@ -72,7 +75,7 @@ const SCORING_OPTIONS: { key: FantasyRouteScoring; label: string; shortLabel: st
 ];
 
 /** Keep each mounted rankings window below the large-list threshold. */
-const RANKINGS_PAGE_SIZE = 40;
+const RANKINGS_PAGE_SIZE = FANTASY_RANKINGS_PAGE_SIZE;
 
 /** Phone rows carry their own value labels, since the column-label row is md-and-up. */
 const ROW_MICRO_LABEL_CLASS = "text-3xs uppercase tracking-[0.06em] text-[var(--home-ink-muted)] md:hidden";
@@ -909,6 +912,8 @@ function DraftPlayerDrawer({
 
 interface FantasyFootballClientProps {
   initialState: FantasySearchState;
+  /** Server-rendered first page of the requested slice; null when the read failed. */
+  initialSnapshot?: FantasySnapshot | null;
 }
 
 interface TierGroup {
@@ -916,7 +921,7 @@ interface TierGroup {
   rows: Player[];
 }
 
-export function FantasyFootballClient({ initialState }: FantasyFootballClientProps) {
+export function FantasyFootballClient({ initialState, initialSnapshot = null }: FantasyFootballClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [searchQuery, setSearchQuery] = useState(initialState.query);
@@ -1001,6 +1006,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
   const { players, snapshot, metadata, sliceMetadata, sliceMetadataMap, isLoading, error, retry } = useFantasySnapshot({
     position: routeState.position,
     scoring: routeState.scoring,
+    initialSnapshot,
   });
 
   const vorpIndex = useMemo(
@@ -1046,18 +1052,11 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
     if (!vorpMode) return { list: searched, hiddenWithoutVorp: 0 };
 
     const ranked = searched.filter((player) => vorpIndex.has(player.id));
-    const list = ranked.sort((left, right) => {
-      const leftRank = vorpIndex.get(left.id)?.rank ?? Number.POSITIVE_INFINITY;
-      const rightRank = vorpIndex.get(right.id)?.rank ?? Number.POSITIVE_INFINITY;
-      return (
-        leftRank - rightRank ||
-        Number(left.rankEcr ?? left.averageRank) -
-          Number(right.rankEcr ?? right.averageRank) ||
-        left.id.localeCompare(right.id)
-      );
-    });
     // VORP mode drops players without a published value, so say how many.
-    return { list, hiddenWithoutVorp: searched.length - ranked.length };
+    return {
+      list: sortPlayersByVorpRank(ranked, vorpIndex),
+      hiddenWithoutVorp: searched.length - ranked.length,
+    };
   }, [
     currentSliceUnavailable,
     players,
@@ -1225,7 +1224,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
         ? "Board unavailable"
         : hasMore
           ? `${windowedPlayers.length} of ${filteredPlayers.length} shown${vorpHiddenNote}`
-          : `${filteredPlayers.length} of ${players.length} shown${vorpHiddenNote}`;
+          : `${filteredPlayers.length} of ${sliceMetadata?.playerCount ?? players.length} shown${vorpHiddenNote}`;
 
   const metricColumns: { label: string; className: string; title?: string }[] = [
     ...(vorpAvailable

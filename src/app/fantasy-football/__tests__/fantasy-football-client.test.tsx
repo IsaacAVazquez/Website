@@ -2,6 +2,7 @@ import React from "react";
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import { FantasyFootballClient } from "../fantasy-football-client";
 import { resetBrowserStorageMemory } from "@/lib/browserStorage";
+import type { FantasySnapshot } from "@/lib/fantasy";
 import type { Player } from "@/types";
 
 const mockPush = jest.fn();
@@ -18,7 +19,7 @@ jest.mock("next/navigation", () => ({
 }));
 
 jest.mock("@/hooks/useFantasySnapshot", () => ({
-  useFantasySnapshot: () => mockUseFantasySnapshot(),
+  useFantasySnapshot: (options: unknown) => mockUseFantasySnapshot(options),
 }));
 
 function buildSliceMetadataMap() {
@@ -170,6 +171,22 @@ function renderClient(initial?: Partial<{
 }
 
 describe("FantasyFootballClient", () => {
+  it("hands the server-rendered seed to the snapshot hook", () => {
+    mockSnapshot({ players: [] });
+    const seed = { scoringFormat: "PPR" } as unknown as FantasySnapshot;
+
+    render(
+      <FantasyFootballClient
+        initialState={{ position: "rb", scoring: "ppr", view: "list", ranking: "consensus", teams: 12, query: "" }}
+        initialSnapshot={seed}
+      />
+    );
+
+    expect(mockUseFantasySnapshot).toHaveBeenCalledWith(
+      expect.objectContaining({ initialSnapshot: seed, position: "rb", scoring: "ppr" })
+    );
+  });
+
   beforeEach(() => {
     jest.useFakeTimers().setSystemTime(new Date("2026-08-18T10:00:00.000Z"));
     window.localStorage.clear();

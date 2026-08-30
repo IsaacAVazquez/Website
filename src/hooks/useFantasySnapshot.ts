@@ -13,6 +13,7 @@ import {
   getFantasySliceMetadata,
   getFantasyPlayersForPosition,
   normalizeFantasySnapshot,
+  routeScoringToScoringFormat,
 } from "@/lib/fantasy";
 import { Player } from "@/types";
 
@@ -20,6 +21,8 @@ interface UseFantasySnapshotOptions {
   position?: FantasyRoutePosition;
   scoring: FantasyRouteScoring;
   all?: boolean;
+  /** A server-rendered first page of one slice (see loadFantasySnapshotSeed). */
+  initialSnapshot?: FantasySnapshot | null;
 }
 
 interface UseFantasySnapshotResult {
@@ -163,10 +166,16 @@ export function useFantasySnapshot({
   position = "overall",
   scoring,
   all = false,
+  initialSnapshot = null,
 }: UseFantasySnapshotOptions): UseFantasySnapshotResult {
   const cacheKey = getFantasySnapshotCacheKey(scoring);
+  // The seed comes from the same deploy, the same file, and the same
+  // normalizer as the fetch, so its rows agree with the fetched board. It is
+  // partial, so it never enters snapshotCache and only counts for its scoring.
+  const seed =
+    initialSnapshot?.scoringFormat === routeScoringToScoringFormat(scoring) ? initialSnapshot : null;
   const [requestState, setRequestState] = useState<FantasySnapshotRequestState>(() => {
-    const cachedSnapshot = snapshotCache.get(cacheKey) ?? null;
+    const cachedSnapshot = snapshotCache.get(cacheKey) ?? seed;
     return {
       cacheKey,
       snapshot: cachedSnapshot,
@@ -189,7 +198,17 @@ export function useFantasySnapshot({
           error: null,
         };
       })();
-  const { snapshot, isLoading, error } = stateForCurrentKey;
+  const { snapshot: heldSnapshot, isLoading: fetching, error } = stateForCurrentKey;
+  // The seed carries one slice. Asking it for another before the full board
+  // lands has to read as loading, not as an empty board. Only a seed is ever
+  // held without being cached, so the cache check identifies it.
+  const seedMissesSlice =
+    heldSnapshot !== null &&
+    snapshotCache.get(cacheKey) !== heldSnapshot &&
+    (all ? heldSnapshot.overall : getFantasyPlayersForPosition(heldSnapshot, position)).length === 0 &&
+    getFantasySliceMetadata(heldSnapshot, position).available;
+  const snapshot = seedMissesSlice ? null : heldSnapshot;
+  const isLoading = fetching || seedMissesSlice;
 
   const retry = useCallback(() => {
     snapshotCache.delete(cacheKey);
@@ -213,7 +232,12 @@ export function useFantasySnapshot({
         return;
       }
 
-      setRequestState({ cacheKey, snapshot: null, isLoading: true, error: null });
+      // Seeded rows stay on screen while the full board loads in the background.
+      setRequestState((current) =>
+        current.cacheKey === cacheKey && current.snapshot
+          ? current
+          : { cacheKey, snapshot: null, isLoading: true, error: null }
+      );
 
       try {
         const nextSnapshot = await loadFantasySnapshot(scoring);

@@ -40,6 +40,7 @@ const BEST_BALL_PRESETS = [
     rankingView: "Mania board",
     rankingHeading: "Best Ball Mania VII",
     trackerControl: "BBM VII",
+    teamsLine: "12 teams · 18 rounds · 18 players",
     trackerHeading: "Best Ball Mania VII",
   },
   {
@@ -48,6 +49,7 @@ const BEST_BALL_PRESETS = [
     rankingView: "Puppy board",
     rankingHeading: "The Puppy",
     trackerControl: "Puppy",
+    teamsLine: "12 teams · 18 rounds · 18 players",
     trackerHeading: "The Puppy",
   },
   {
@@ -56,6 +58,7 @@ const BEST_BALL_PRESETS = [
     rankingView: "Eliminator board",
     rankingHeading: "The Eliminator",
     trackerControl: "Eliminator",
+    teamsLine: "12 teams · 18 rounds · 18 players",
     trackerHeading: "Eliminator",
   },
   {
@@ -64,6 +67,7 @@ const BEST_BALL_PRESETS = [
     rankingView: "Weekly board",
     rankingHeading: "Weekly Winners",
     trackerControl: "Weekly Winners",
+    teamsLine: "12 teams · 18 rounds · 18 players",
     trackerHeading: "Weekly Winners",
   },
   {
@@ -72,6 +76,7 @@ const BEST_BALL_PRESETS = [
     rankingView: "Sit and Go board",
     rankingHeading: "Sit and Go",
     trackerControl: "Sit & Go",
+    teamsLine: "12 teams · 18 rounds · 18 players",
     trackerHeading: "Sit & Go",
   },
   {
@@ -80,6 +85,7 @@ const BEST_BALL_PRESETS = [
     rankingView: "Superflex board",
     rankingHeading: "Superflex",
     trackerControl: "Superflex",
+    teamsLine: "12 teams · 20 rounds · 20 players",
     trackerHeading: "Superflex",
   },
 ] as const;
@@ -528,7 +534,7 @@ test.describe("Fantasy football best ball", () => {
       await expect(
         details.getByRole("heading", { name: preset.trackerHeading, exact: true })
       ).toBeVisible();
-      await expect(details.getByText("12 teams · 18 rounds · 18 players", { exact: true })).toBeVisible();
+      await expect(details.getByText(preset.teamsLine, { exact: true })).toBeVisible();
     }
   });
 
@@ -628,5 +634,21 @@ test.describe("Fantasy redirects", () => {
     await page.goto("/qb");
 
     await expect(page).toHaveURL(/\/fantasy-football\?position=qb&scoring=ppr/);
+  });
+});
+
+test.describe("server-rendered rankings", () => {
+  test("ships the first page of the board in the HTML for clients that do not run JavaScript", async ({ page }) => {
+    const snapshot = await (await page.request.get("/data/fantasy/ppr.json")).json();
+    const html = await (await page.request.get("/fantasy-football?position=wr&scoring=ppr")).text();
+
+    // One "Open <name> detail" control per seeded row; React escapes apostrophes,
+    // so the name check uses a receiver without one.
+    expect(html.match(/aria-label="Open [^"]+ detail"/g)?.length ?? 0).toBeGreaterThanOrEqual(40);
+    const plainName = snapshot.positions.WR.slice(0, 40).find(
+      (player: { name: string }) => !player.name.includes("'")
+    )?.name;
+    expect(plainName).toBeTruthy();
+    expect(html).toContain(plainName);
   });
 });

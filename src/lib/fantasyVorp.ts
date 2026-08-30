@@ -2,6 +2,8 @@ export const FANTASY_VORP_TEAM_SIZES = [10, 12, 14] as const;
 export type FantasyVorpTeamSize = (typeof FANTASY_VORP_TEAM_SIZES)[number];
 export type FantasyVorpTeamSizeKey = `${FantasyVorpTeamSize}`;
 
+import type { Player } from "@/types";
+
 export interface FantasyVorpRankingEntry {
   playerId: string;
   rank: number;
@@ -46,4 +48,23 @@ export function buildFantasyVorpIndex(
       entry,
     ])
   );
+}
+
+/**
+ * The rankings board's VORP order: VORP rank, then consensus rank, then id.
+ * Returns a sorted copy so the server seed and the client sort identically.
+ */
+export function sortPlayersByVorpRank(
+  players: readonly Player[],
+  index: ReadonlyMap<string, FantasyVorpRankingEntry>
+): Player[] {
+  return [...players].sort((left, right) => {
+    const leftRank = index.get(left.id)?.rank ?? Number.POSITIVE_INFINITY;
+    const rightRank = index.get(right.id)?.rank ?? Number.POSITIVE_INFINITY;
+    return (
+      leftRank - rightRank ||
+      Number(left.rankEcr ?? left.averageRank) - Number(right.rankEcr ?? right.averageRank) ||
+      left.id.localeCompare(right.id)
+    );
+  });
 }

@@ -1,6 +1,6 @@
 import { act, renderHook, waitFor } from "@testing-library/react";
 import { fantasySnapshotRevision } from "@/data/fantasySnapshotRevision.generated";
-import { FANTASY_SNAPSHOT_SCHEMA_VERSION } from "@/lib/fantasy";
+import { FANTASY_SNAPSHOT_SCHEMA_VERSION, normalizeFantasySnapshot } from "@/lib/fantasy";
 import { resetFantasySnapshotCacheForTests, useFantasySnapshot } from "../useFantasySnapshot";
 
 const originalFetch = global.fetch;
@@ -86,6 +86,68 @@ describe("useFantasySnapshot", () => {
   beforeEach(() => {
     resetFantasySnapshotCacheForTests();
     global.fetch = jest.fn();
+  });
+
+  describe("with a server-rendered seed", () => {
+    const seed = normalizeFantasySnapshot(buildSnapshotPayload("STANDARD"), "standard");
+
+    it("renders the seeded slice at once and swaps in the fetched board", async () => {
+      const fetched = { ...buildSnapshotPayload("STANDARD"), generatedAt: "2026-05-01T00:00:00.000Z" };
+      (global.fetch as jest.Mock).mockResolvedValue({ ok: true, json: async () => fetched });
+
+      const { result } = renderHook(() =>
+        useFantasySnapshot({ position: "qb", scoring: "standard", initialSnapshot: seed })
+      );
+
+      expect(result.current.isLoading).toBe(false);
+      expect(result.current.players[0]?.name).toBe("Josh Allen");
+      await waitFor(() =>
+        expect(result.current.snapshot?.generatedAt).toBe("2026-05-01T00:00:00.000Z")
+      );
+      expect(global.fetch).toHaveBeenCalledTimes(1);
+    });
+
+    it("ignores a seed built for another scoring format", () => {
+      (global.fetch as jest.Mock).mockReturnValue(new Promise(() => {}));
+
+      const { result } = renderHook(() =>
+        useFantasySnapshot({ position: "qb", scoring: "ppr", initialSnapshot: seed })
+      );
+
+      expect(result.current.isLoading).toBe(true);
+      expect(result.current.players).toEqual([]);
+    });
+
+    it("reads as loading when asked for a slice the seed does not carry", () => {
+      (global.fetch as jest.Mock).mockReturnValue(new Promise(() => {}));
+      // A real seed keeps the full slice metadata (RB is available with players)
+      // but carries rows for one slice only.
+      const payload = JSON.parse(JSON.stringify(buildSnapshotPayload("STANDARD")));
+      payload.positions.RB = [{ ...payload.positions.QB[0], id: "player-2", name: "Bijan Robinson", position: "RB" }];
+      payload.sliceMetadata.rb.playerCount = 1;
+      const full = normalizeFantasySnapshot(payload, "standard");
+      const rbSeed = { ...full, positions: { ...full.positions, RB: [] } };
+
+      const { result } = renderHook(() =>
+        useFantasySnapshot({ position: "rb", scoring: "standard", initialSnapshot: rbSeed })
+      );
+
+      expect(result.current.isLoading).toBe(true);
+      expect(result.current.players).toEqual([]);
+    });
+
+    it("never lets the partial seed into the shared cache", () => {
+      (global.fetch as jest.Mock).mockReturnValue(new Promise(() => {}));
+      const seeded = renderHook(() =>
+        useFantasySnapshot({ position: "qb", scoring: "standard", initialSnapshot: seed })
+      );
+      seeded.unmount();
+
+      const fresh = renderHook(() => useFantasySnapshot({ position: "qb", scoring: "standard" }));
+
+      expect(fresh.result.current.isLoading).toBe(true);
+      expect(fresh.result.current.snapshot).toBeNull();
+    });
   });
 
   afterEach(() => {
