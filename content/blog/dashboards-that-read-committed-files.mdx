@@ -1,0 +1,32 @@
+---
+title: "Every Dashboard on This Site Reads a File Committed to Git, On Purpose"
+excerpt: "Fifteen-plus dashboards here share one architecture. A script fetches data on a schedule, commits a snapshot to the repository, and the pages read that file with no external calls at request time. The pattern looks primitive and removes most of the failure modes I have spent a career watching."
+publishedAt: "2026-08-15"
+category: "Software Architecture"
+tags: ["Software Architecture", "Next.js", "Data Engineering", "Reliability", "Snapshot Driven", "Dashboards", "GitHub Actions"]
+featured: false
+cluster: "Systems & Quality"
+author: "Isaac Vazquez"
+cta:
+  eyebrow: "See the pattern live"
+  title: "Browse the dashboards"
+  description: "Every data surface on the site, from sports to space to markets, runs on the committed-snapshot pattern this article describes."
+  href: "/dashboards"
+  actionLabel: "Open the index"
+seo:
+  title: "Dashboards Built on Committed Snapshots"
+  description: "Why every dashboard on this site reads a committed snapshot instead of calling an API at request time, and what that architecture buys in reliability, cost, and auditability."
+  keywords: ["snapshot driven architecture", "committed data snapshots", "dashboard architecture", "static data Next.js", "fail-soft data pipeline", "GitHub Actions data refresh"]
+---
+
+# Every Dashboard on This Site Reads a File Committed to Git, On Purpose
+
+This site has somewhere north of fifteen data dashboards, covering Formula 1, four football codes, earthquakes, launches, polling, and markets, and every one of them works the same way. A script runs on a schedule, fetches from whatever upstream source the dashboard needs, validates what came back, and commits the result to the repository as a snapshot file. The pages and API routes read that committed file and nothing else. At the moment you load the [Premier League dashboard](/writing/building-a-premier-league-dashboard) or any of [the Pulse family](/writing/building-the-pulse-dashboard-family), the site makes zero external calls on your behalf.
+
+When I describe this to engineers, the first reaction is usually that it sounds primitive, and I want to take that reaction seriously because it is half right. The fashionable architecture for a page like this is a live fetch with a caching layer, and I built things that way for years. The snapshot pattern is what I landed on after watching where dashboards actually die, and they almost never die in the rendering. They die at the integration boundary, at three in the morning, when an upstream API changes a field name, starts rate limiting, has an outage, or invalidates a key. A live-fetching page inherits every one of those failures at request time, in front of a user, and a caching layer softens the blow without changing who is standing in the blast radius. Moving the fetch to a scheduled builder moves the failure to the only place it can be handled calmly, which is a build log I read with coffee rather than a page a visitor is looking at.
+
+The property doing the most work is what I call fail-soft refresh. When a scheduled fetch fails or comes back empty, the builder keeps the previous snapshot instead of overwriting it, so the worst case for any upstream disaster is a dashboard that is a few hours stale and says so. Stale and labeled is a much better failure than down, and it is a failure mode users barely notice. I spent enough years in QA and on-call rotations to have strong feelings about this, because the pattern I kept seeing at work, at Civitech and everywhere since, is that data surfaces earn trust slowly and lose it in one blank page. A dashboard that renders something honest under every upstream condition is more trustworthy than a fresher one that sometimes renders an error, and the snapshot architecture makes the honest behavior the default rather than something each page has to remember to implement.
+
+There are two quieter benefits I did not fully anticipate. The first is that git becomes the audit log. Every data refresh is a commit with a diff, so when a number on a page looks wrong I can see exactly what changed, when it changed, and what it was before, and I can revert a bad refresh the same way I revert bad code. Debugging a data pipeline with `git log` sounds like a joke until the first time a source silently rewrites history and the diff catches it. The second is cost and abuse resistance. The site's traffic can spike to any level and the upstream sources see the same handful of scheduled requests per day, which means no rate-limit anxiety, no API keys in any request path, and no bill that scales with readers.
+
+The honest accounting is that the pattern has real limits and I run into them regularly. Snapshots make the repository heavier, staleness is a permanent condition rather than an incident, and nothing here works for data that must be personalized or truly live, which is why the tools that hold your own state, like the draft tracker, keep it in your browser instead. The pattern fits data that changes on the cadence of hours and is the same for every visitor, and I would not stretch it past that. But within that fit, I think the trade is lopsided. I gave up freshness measured in minutes and got back predictable pages, calm failure handling, an audit trail, and a hosting bill that rounds to zero, and for a site one person maintains in the margins of everything else, that is the difference between dashboards that exist and dashboards that used to work.

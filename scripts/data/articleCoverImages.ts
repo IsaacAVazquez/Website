@@ -318,4 +318,15 @@ export const ARTICLE_COVER_IMAGES: ArticleCoverImageSpec[] = [
   // Fintech Product & Pricing
   { slug: "2026-investing-setup-rates-and-risk", strategy: "editorial-card", reason: ABSTRACT_FINTECH },
   { slug: "tariff-volatility-boring-portfolio", strategy: "editorial-card", reason: ABSTRACT_FINTECH },
+
+  // August 2026 batch
+  { slug: "2026-hungarian-grand-prix-russell-clean-weekend", strategy: "wikimedia", query: "Formula 1 Hungarian Grand Prix Hungaroring", alt: "Formula 1 cars racing at the Hungaroring" },
+  { slug: "2026-dutch-grand-prix-antonelli-zandvoort", strategy: "wikimedia", query: "Formula 1 Dutch Grand Prix Zandvoort", alt: "Formula 1 cars racing at Zandvoort" },
+  { slug: "building-a-fantasy-trade-calculator", strategy: "wikimedia", query: "American football NFL game action", alt: "American football players during a game" },
+  { slug: "building-a-best-ball-draft-room", strategy: "wikimedia", query: "American football NFL stadium game", alt: "An American football game in a stadium" },
+  { slug: "how-i-run-a-draft-with-my-own-tools", strategy: "wikimedia", query: "American football NFL quarterback", alt: "An American football player during a game" },
+  { slug: "building-a-score-pools-engine", strategy: "wikimedia", query: "soccer football match stadium goal", alt: "A soccer match in a stadium" },
+  { slug: "building-a-rent-vs-buy-calculator", strategy: "editorial-card", reason: ABSTRACT_FINTECH },
+  { slug: "dashboards-that-read-committed-files", strategy: "editorial-card", reason: ABSTRACT_PRODUCT },
+  { slug: "building-a-draft-companion-that-cannot-click", strategy: "editorial-card", reason: ABSTRACT_PRODUCT },
 ];

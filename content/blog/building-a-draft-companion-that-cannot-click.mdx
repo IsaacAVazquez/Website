@@ -1,0 +1,30 @@
+---
+title: "The Draft Companion I Built Cannot Touch the Draft Room, and That Is the Feature"
+excerpt: "I built a private browser side panel that keeps my draft board next to an ESPN or Underdog draft room. It records picks only when I type them, because the version that watches the room for me fails a legal test, a terms-of-service test, and an engineering test all at once."
+publishedAt: "2026-08-30"
+category: "Software Development"
+tags: ["Browser Extension", "Chrome Extension", "Fantasy Football", "Side Projects", "Web Scraping", "Engineering Judgment", "Product Decisions"]
+featured: false
+archiveBucket: "Space & Experiments"
+author: "Isaac Vazquez"
+cta:
+  eyebrow: "Related tool"
+  title: "Open the Fantasy Football Hub"
+  description: "The public rankings, tiers, and draft tools the companion panel reads from are all on the site."
+  href: "/fantasy-football"
+  actionLabel: "Open the hub"
+seo:
+  title: "A Draft Companion With No Room Access"
+  description: "Why my fantasy draft side panel records picks manually instead of scraping the draft room, and how its snapshot fallback chain keeps it honest when sources go stale."
+  keywords: ["fantasy draft companion", "chrome side panel extension", "draft assistant extension", "web scraping terms of service", "browser extension design", "fantasy draft tools"]
+---
+
+# The Draft Companion I Built Cannot Touch the Draft Room, and That Is the Feature
+
+The most recent tool in the fantasy stack is the one I cannot link you to, because it is a private Chrome and Edge extension rather than a page on this site. It is a side panel that sits next to an ESPN or Underdog draft room and keeps my draft board, tiers, roster targets, and Draft Outlook visible while the draft happens, sharing its logic with [the public rankings platform](/writing/building-a-fantasy-football-rankings-platform) so the two surfaces never disagree about a player. You record each pick in the panel by hand as it happens, and I want to write about that one design choice, because everyone who has seen the panel asks the same question. Why doesn't it just read the picks off the page?
+
+It could, mechanically. A content script watching the draft room's DOM could sync every pick with no typing, and for about a day that version was on my list. I killed it for three reasons that stack, and the stack is the point. The first is that neither provider offers a supported public interface for live draft data, and their terms restrict automated monitoring of their pages. A hobby project does not get an exemption from that because it is small or because syncing picks feels harmless, and I was not interested in building my drafting convenience on a violation. The second reason is engineering, and my QA years do the arguing here. A scraper of someone else's draft room markup is a dependency on the one thing the provider is free to change without notice, at the worst possible time, meaning draft night. The failure mode is a panel that never crashes, silently misses a pick, and then confidently recommends a player who is already rostered, and a tool that is wrong with confidence is worse than no tool. The third reason is what the permission would cost. A content script means asking for access to read the provider's pages, and every permission an extension holds is something its user has to trust and its author has to defend. The manual-entry version needs no access to any page, and I can say flatly that the panel reads nothing, clicks nothing, and submits nothing outside its own frame.
+
+So the sync is my thumb, which costs me a few seconds per pick and buys a tool whose failure modes I can enumerate. The panel treats that honesty budget the same way everywhere else. It loads rankings from the published site snapshot first, falls back to the last validated copy it saved, and falls back again to the copy bundled with the extension build, and it labels which one you are looking at, with separate dates for the ranking and market sources. When a source is stale or missing, the features that depend on it pause and say so, rather than backfilling a zero or a neutral guess, which is the same refusal discipline the [trade calculator](/writing/building-a-fantasy-trade-calculator) applies on the site. Draft state stays in local extension storage, with no account, no analytics, and no cloud sync, because a tool for one person's draft night has no business phoning anywhere.
+
+What I would generalize from this build is that the best feature decisions I have made lately are subtractive, and they get easier when you write down the failure story instead of the demo story. Auto-sync demos beautifully, and its failure story involves a terms violation, a silent data corruption, and a permission grab, all purchased to save me thirty seconds a round. Manual entry demos worse and fails boringly. I have started applying that test at work as much as in side projects, and the products I trust most, including the ones I build, are the ones where somebody visibly chose the boring failure.

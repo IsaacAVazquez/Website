@@ -1,0 +1,36 @@
+---
+title: "The Rent vs Buy Question Deserves a Calculator That Doesn't Pick a Side"
+excerpt: "Most rent versus buy calculators quietly favor buying by letting the down payment vanish from the renter's side of the ledger. I built one that hands the renter the same up-front cash and invests whichever side's monthly savings actually exist."
+publishedAt: "2026-08-07"
+category: "Fintech Product"
+tags: ["Fintech", "Rent vs Buy", "Personal Finance", "Housing", "Financial Modeling", "Calculators"]
+featured: false
+cluster: "Fintech Product & Pricing"
+author: "Isaac Vazquez"
+cta:
+  eyebrow: "Related tool"
+  title: "Open the Rent vs Buy Calculator"
+  description: "Compare buying and renting with the renter credited for the buyer's up-front cash and every assumption out in the open."
+  href: "/fintech-tools/rent-vs-buy"
+  actionLabel: "Open the calculator"
+seo:
+  title: "Building a Rent vs Buy Calculator"
+  description: "How I built a rent versus buy calculator that seeds the renter with the buyer's up-front cash, invests the monthly difference symmetrically, and dates its tax assumptions."
+  keywords: ["rent vs buy calculator", "rent versus buy analysis", "opportunity cost down payment", "buy or rent decision", "housing calculator", "rent vs buy math"]
+---
+
+# The Rent vs Buy Question Deserves a Calculator That Doesn't Pick a Side
+
+If you want the tool first, it lives at [rent vs buy](/fintech-tools/rent-vs-buy) under the fintech tools.
+
+The rent versus buy debate is one of those arguments where both camps have a spreadsheet and both spreadsheets are rigged, usually without their authors realizing it. The pro-buying version treats the down payment as if it costs nothing, so a couple hundred thousand dollars leaves the buyer's pocket and simply stops existing as money that could have been doing something else. The pro-renting version invests the down payment at an aggressive return and then forgets that rents rise while a fixed mortgage payment does not. I wanted a calculator I could defend to someone on either side of the argument, which meant the design constraint was symmetry rather than any particular answer.
+
+The symmetry starts with the up-front cash. In my model, whatever the buyer spends to get into the house, meaning the down payment and closing costs, gets credited to the renter as an investment portfolio on day one. That single choice changes more outcomes than any other assumption in the tool, and it is the one most calculators fudge. The renter in this comparison is a renter with the buyer's money, because that is the actual alternative a real person faces. Nobody is choosing between buying a house and setting the down payment on fire.
+
+The second symmetry is monthly. Each month, the model compares the full cost of owning, from the mortgage payment, to taxes, to insurance, to maintenance, against the full cost of renting, and invests the difference on whichever side spent less that month. Early on that is usually the renter, because rent starts below the all-in cost of a mortgage plus upkeep. Late in the comparison it often flips, because rent has been growing every year while the principal and interest payment has not moved. A calculator that only invests the renter's savings has decided the answer before you type anything, and the flip is exactly the dynamic the whole question turns on, so the model has to run it in both directions.
+
+Everything runs in nominal dollars, which was a deliberate choice I went back and forth on. Real, inflation-adjusted dollars are cleaner in theory, but nobody experiences their rent or their mortgage in real dollars, and a comparison expressed in the same units as your bank statement is one you can actually check against your life. The cost of that choice is that the growth assumptions have to carry inflation inside them, and the tool says so plainly instead of hiding it.
+
+The tax layer is where I applied a lesson from the dated capital-market assumptions in the [retirement planner](/writing/building-an-investment-research-platform), which is that any constant you hardcode about the tax code is a fact about a particular year, not a fact about the world. The SALT cap, the standard deduction, and the capital gains exclusion on a home sale all live in one defaults file with their vintage attached, because the mortgage interest deduction is worth far less than folk wisdom says whenever the standard deduction is high, and that arithmetic changes every time Congress does. Dating the assumptions does not make them permanently right. It makes them checkable, and it tells a future me exactly what to update instead of letting the tool drift quietly out of truth.
+
+What the calculator refuses to do is tell you what to do. The output is a year-by-year comparison of net worth under both paths with every assumption editable and disclosed, and a breakeven reading that shifts as you change them, and it stays educational rather than advisory on purpose. Anyone who moves the rent growth and investment return sliders a little will notice how quickly the winner flips, and I think that sensitivity is the most honest output a rent versus buy tool can produce. The decision usually gets made on the parts a model cannot hold anyway, from how long you will actually stay, to how much you value not asking a landlord's permission. What the math can do is price the financial side of the choice fairly, and fairness in this comparison turned out to be a specific engineering property, meaning the same cash, the same monthly discipline, and the same scrutiny applied to both sides of the ledger.
