@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-01T14:12:51.397Z",
+  "generatedAt": "2026-09-01T23:24:49.707Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -9,9 +9,9 @@
       "upcoming": true,
       "success": null,
       "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-09-02T07:46:00Z",
-      "dateUnix": 1788335160,
-      "dateLocal": "2026-09-02T07:46:00Z",
+      "dateUtc": "2026-09-02T08:18:09Z",
+      "dateUnix": 1788337089,
+      "dateLocal": "2026-09-02T08:18:09Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -49,9 +49,9 @@
       "upcoming": true,
       "success": null,
       "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-09-02T07:46:00Z",
-      "dateUnix": 1788335160,
-      "dateLocal": "2026-09-02T07:46:00Z",
+      "dateUtc": "2026-09-02T08:18:09Z",
+      "dateUnix": 1788337089,
+      "dateLocal": "2026-09-02T08:18:09Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-09-01T14:12:40.940Z"
+    "generatedAt": "2026-09-01T23:24:44.164Z"
   },
   "upcomingLaunches": [
     {
@@ -160,9 +160,9 @@
       "upcoming": true,
       "success": null,
       "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-09-02T07:46:00Z",
-      "dateUnix": 1788335160,
-      "dateLocal": "2026-09-02T07:46:00Z",
+      "dateUtc": "2026-09-02T08:18:09Z",
+      "dateUnix": 1788337089,
+      "dateLocal": "2026-09-02T08:18:09Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -250,7 +250,7 @@
       "launchpadName": "Space Launch Complex 4E",
       "launchpadLocation": "Vandenberg SFB, CA, USA",
       "patchImage": null,
-      "vehicleImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_liftof_image_20260816171423.jpg",
+      "vehicleImage": "/data/spacex/images/11492e0a09c1640e.jpg",
       "crewCount": 0,
       "payloadCount": 1,
       "capsuleCount": 0,
@@ -269,7 +269,7 @@
         "patchSmall": null,
         "patchLarge": null,
         "flickrOriginal": [
-          "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_liftof_image_20260816171423.jpg"
+          "/data/spacex/images/11492e0a09c1640e.jpg"
         ]
       }
     },
@@ -1372,7 +1372,7 @@
       "launchpadName": "Space Launch Complex 4E",
       "launchpadLocation": "Vandenberg SFB, CA, USA",
       "patchImage": null,
-      "vehicleImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_liftof_image_20260816171423.jpg",
+      "vehicleImage": "/data/spacex/images/11492e0a09c1640e.jpg",
       "crewCount": 0,
       "payloadCount": 1,
       "capsuleCount": 0,
@@ -1391,7 +1391,7 @@
         "patchSmall": null,
         "patchLarge": null,
         "flickrOriginal": [
-          "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_liftof_image_20260816171423.jpg"
+          "/data/spacex/images/11492e0a09c1640e.jpg"
         ]
       }
     },
@@ -2084,9 +2084,9 @@
       "upcoming": true,
       "success": null,
       "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-09-02T07:46:00Z",
-      "dateUnix": 1788335160,
-      "dateLocal": "2026-09-02T07:46:00Z",
+      "dateUtc": "2026-09-02T08:18:09Z",
+      "dateUnix": 1788337089,
+      "dateLocal": "2026-09-02T08:18:09Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -2584,7 +2584,7 @@
       "launchpadName": "Space Launch Complex 4E",
       "launchpadLocation": "Vandenberg SFB, CA, USA",
       "patchImage": null,
-      "vehicleImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_liftof_image_20260816171423.jpg",
+      "vehicleImage": "/data/spacex/images/11492e0a09c1640e.jpg",
       "crewCount": 0,
       "payloadCount": 1,
       "capsuleCount": 0,
@@ -2603,7 +2603,7 @@
         "patchSmall": null,
         "patchLarge": null,
         "flickrOriginal": [
-          "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_liftof_image_20260816171423.jpg"
+          "/data/spacex/images/11492e0a09c1640e.jpg"
         ]
       },
       "staticFireDateUtc": null,
@@ -2629,7 +2629,7 @@
         "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
         "flickrImages": [
           "/data/spacex/images/83daf3ce21b64d93.jpg",
-          "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_liftof_image_20260816171423.jpg"
+          "/data/spacex/images/11492e0a09c1640e.jpg"
         ]
       },
       "launchpad": {
@@ -2932,6 +2932,6 @@
       }
     ],
     "rangeLabel": "Oct 25 – Sep 26",
-    "generatedAt": "2026-09-01T14:12:51.396Z"
+    "generatedAt": "2026-09-01T23:24:49.706Z"
   }
 }
