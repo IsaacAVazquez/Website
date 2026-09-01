@@ -4,6 +4,12 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-09-01
+
+- Add nine articles covering late July and August 2026 ([#411](https://github.com/IsaacAVazquez/Website/pull/411)).
+
+---
+
 ## 2026-08-22
 
 - Keep the fantasy surface working after kickoff ([#398](https://github.com/IsaacAVazquez/Website/pull/398)).
