@@ -1,0 +1,34 @@
+---
+title: "Best Ball Is a Different Game, So I Built It a Different Board"
+excerpt: "Best ball looks like redraft with the lineup decisions removed, and building tools for both taught me that resemblance is a trap. The draft is the entire season, Week 17 is the only week that pays, and a board that imports redraft logic will lose politely all summer."
+publishedAt: "2026-08-19"
+category: "Fantasy Football Analytics"
+tags: ["Best Ball", "Fantasy Football", "Underdog", "Draft Strategy", "ADP", "Week 17", "Fantasy Football 2026"]
+featured: false
+archiveBucket: "Sports & Fantasy"
+author: "Isaac Vazquez"
+cta:
+  eyebrow: "Related tool"
+  title: "Open the Best Ball Room"
+  description: "The contest-aware best ball board, with Underdog ADP, bye coverage, and Week 17 opponents built into the draft view."
+  href: "/fantasy-football/best-ball"
+  actionLabel: "Open the board"
+seo:
+  title: "Building a Best Ball Draft Board"
+  description: "Why best ball needed its own snapshot, its own draft board, and contest presets with published economics instead of borrowed redraft logic and invented payout math."
+  keywords: ["best ball draft board", "best ball strategy 2026", "Underdog ADP", "Week 17 correlation best ball", "Best Ball Mania strategy", "best ball vs redraft"]
+---
+
+# Best Ball Is a Different Game, So I Built It a Different Board
+
+The tool is live at [the best ball room](/fantasy-football/best-ball) if you want to look before reading.
+
+After I built the [redraft rankings platform](/writing/building-a-fantasy-football-rankings-platform), best ball looked like a small extension. Same players, same scoring families, just no waivers and no lineup setting, so surely the same board with a toggle. I started building it that way, and the further I got the clearer it became that the resemblance is where the mistakes come from. Best ball is a format where the draft is the entire season. Every mistake you would normally fix on the waiver wire in October is instead permanent in August, your roster fills lineups by itself with your best scores each week, and in the big tournaments the season funnels into Week 17, where only the advancing teams are playing for the real money. A board that treats any of that as a footnote is a redraft board wearing a costume.
+
+So best ball got its own snapshot rather than a view over the redraft one, and the differences in what it carries are the argument for the split. It ships consensus rankings alongside Underdog ADP rather than a home-league market, because tournament price discovery happens in that lobby and nowhere else. It carries bye weeks as a first-class field, because in best ball a bye is a guaranteed zero you drafted on purpose, and stacking three receivers on the same bye quietly spends one of your season's weeks before kickoff. And it carries each team's Week 17 opponent, which no redraft tool bothers with, because playoff-week correlation, meaning drafting the quarterback and the opposing receiver who will be in the same building for the week that decides the tournament, is a real edge in large fields and simply is not legible from a generic schedule.
+
+The design decision I ended up most attached to is the contest presets. A best ball pick does not have a value in the abstract, and the same roster construction can be right in a tournament and wrong in a small sit-and-go, so the board makes you pick the contest first, and the contest fixes the scoring, the field shape, and the roster strategy the recommendations reason over. For Best Ball Mania, the preset's economics come from the published contest structure, since entry fees, field size, and advancement rates are all public inputs I can cite. For the formats where the lobby is variable and the economics are not published, the tool deliberately carries no payout math at all, because inventing a plausible-looking prize structure would be [the same sin I built the trade calculator to avoid](/writing/building-a-fantasy-trade-calculator), meaning false precision dressed as helpfulness. A preset either states published numbers or states that it has none.
+
+The same restraint applies to the Draft Outlook grade the board shares with the redraft tracker. It reads market price, roster shape, format fit, and bye coverage, and it tells you how your draft process compares to the room. What it does not do is estimate your fantasy points, your odds of advancing, or your payout, and it says so on the surface rather than in a footnote, because the gap between a process grade and a win-probability claim is exactly the gap where fantasy tools usually oversell themselves.
+
+What building the second board taught me is a lesson that generalizes past fantasy football. Two products can share ninety percent of their data and still deserve separate models, because the sharing that matters is in the decisions, and the decisions in best ball, from tolerating zeros, to buying correlation for one specific week, to pricing a roster against a published tournament structure, barely overlap with redraft at all. I keep the two rooms' state and logic separate in the codebase for that reason, and every time a shared abstraction has tempted me, writing down what the two games actually ask the user to decide has talked me out of it.

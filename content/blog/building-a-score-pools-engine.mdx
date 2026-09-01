@@ -1,0 +1,34 @@
+---
+title: "Building a Score Pool Engine That Shows Its Own Compromises"
+excerpt: "Predicting exact soccer scorelines is a losing game, but score pools don't ask you to be right. They ask you to maximize expected points under your pool's rules, and that is a problem you can actually engineer, as long as the engine admits where its calibration bends."
+publishedAt: "2026-08-11"
+category: "Sports Analytics"
+tags: ["Score Pools", "Soccer", "Football", "Prediction Models", "Dixon-Coles", "Expected Points", "Sports Analytics"]
+featured: false
+archiveBucket: "Sports & Fantasy"
+author: "Isaac Vazquez"
+cta:
+  eyebrow: "Related tool"
+  title: "Open Score Pools"
+  description: "The scoreline distributions, the expected-points picks, and the pool leaderboard live in one tool."
+  href: "/score-pools"
+  actionLabel: "Open the tool"
+seo:
+  title: "Building a Score Pool Prediction Engine"
+  description: "How I built an exact-score pool engine on de-vigged odds, a market-calibrated Dixon-Coles model, and an expected-points optimizer that plays the pool rather than the match."
+  keywords: ["score pool predictions", "exact score prediction model", "Dixon-Coles model", "de-vig betting odds", "expected points optimizer", "soccer prediction engine"]
+---
+
+# Building a Score Pool Engine That Shows Its Own Compromises
+
+The tool this article describes lives at [score pools](/score-pools).
+
+I joined a score pool, the kind where everyone predicts exact scorelines each matchweek and collects points on a sliding scale for exact hits, correct results, and near misses. About two matchweeks in, I realized I was playing it wrong in a specific, fixable way. I was trying to predict matches, and the pool was not actually asking me to predict matches. It was asking me to maximize points under a particular scoring rule against a particular field, and those are different problems. Predicting a 2-1 might feel right, but if the scoring rule pays almost as much for the correct result and 2-1 is what everyone else picks, the pick's expected value depends on math nobody at the table is doing. That gap between the question people think they are answering and the question the game is actually asking felt like something worth building against.
+
+The engine starts from betting odds rather than from my own model of team strength, and I want to be straightforward about why. The market's prices embed more information than anything I could fit from historical results on my own time budget. But raw odds overstate every probability because the bookmaker's margin is baked in, so the first stage strips the vig to recover a probability distribution over home win, draw, and away win that actually sums to one. Skipping that step quietly inflates every downstream number, and it is the kind of error that never announces itself because the outputs still look plausible.
+
+Match odds only give you three outcomes, and a score pool needs a probability for every plausible scoreline, so the second stage expands those three numbers into a full scoreline distribution using a Dixon-Coles model. The standard version of Dixon-Coles is fitted to years of historical goals. Mine is calibrated to the market instead, meaning it searches for the attack and defense rates that reproduce the de-vigged win, draw, and loss probabilities for this specific match, then reads scoreline probabilities off that surface with the model's low-score corrections intact. What that means is the model inherits the market's opinion of the teams and only adds structure about how goals distribute, which is the part markets do not directly price. One wrinkle that cost me a rewrite is that pools score some matches on the ninety-minute result and others on the final result after extra time, and those are different distributions, so the engine carries the scoring basis through explicitly instead of assuming.
+
+The third stage is the one that plays the pool instead of the match. Given the scoreline distribution and the pool's exact scoring rule, it computes the expected points of every candidate prediction and surfaces the ones that maximize it. The answers are often unintuitive in exactly the way that convinced me the tool was worth building. A 1-1 or 2-1 prediction frequently beats the scoreline the model thinks is most likely, because those picks sit near the center of probability mass and collect partial credit from many neighbors. On top of that sits a leaderboard layer that knows the standings, because the right pick when you are protecting a lead is more conservative than the right pick when you need variance to catch someone, and late in a pool that context changes the recommendation more than the match odds do.
+
+The part of the build I would defend hardest is the diagnostics surface, which exists because every stage above involves a compromise and I did not want the tool to launder them. Calibration does not always converge cleanly, odds arrive at different times and go stale at different rates, and some inputs are hand-entered when a feed is missing. All of that shows up on the page, from as-of stamps on the odds, to labels separating sampled data from manual entries, to a residual reading of how far the calibrated model landed from the market it was aimed at. My instinct from years of QA work is that the difference between a model you can trust and a model you cannot is rarely the math, since the math is usually fine. It is whether the tool tells you when its own inputs have degraded, and a prediction engine that admits its compromises out loud is the only kind I want my name on.
