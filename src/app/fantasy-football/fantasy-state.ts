@@ -10,13 +10,11 @@ import {
   type FantasyVorpTeamSize,
 } from "@/lib/fantasyVorp";
 
-export type FantasyView = "list" | "tiers";
 export type FantasyRankingMode = "consensus" | "vorp";
 
 export interface FantasySearchState {
   position: FantasyRoutePosition;
   scoring: FantasyRouteScoring;
-  view: FantasyView;
   ranking: FantasyRankingMode;
   teams: FantasyVorpTeamSize;
   query: string;
@@ -29,7 +27,6 @@ type SearchParamInput =
 type FantasySearchParamKey =
   | "position"
   | "scoring"
-  | "view"
   | "ranking"
   | "teams"
   | "q";
@@ -37,7 +34,6 @@ type FantasySearchParamKey =
 export const DEFAULT_FANTASY_STATE: FantasySearchState = {
   position: "overall",
   scoring: "ppr",
-  view: "list",
   ranking: "consensus",
   teams: 12,
   query: "",
@@ -54,10 +50,6 @@ function readParam(input: SearchParamInput, key: FantasySearchParamKey): string 
   }
 
   return rawValue ?? null;
-}
-
-function normalizeFantasyView(value: string | null): FantasyView {
-  return value === "tiers" ? "tiers" : "list";
 }
 
 function normalizeFantasyQuery(value: string | null): string {
@@ -77,7 +69,6 @@ export function normalizeFantasyState(input: SearchParamInput): FantasySearchSta
   return {
     position: normalizeFantasyRoutePosition(readParam(input, "position")),
     scoring: normalizeFantasyRouteScoring(readParam(input, "scoring")),
-    view: normalizeFantasyView(readParam(input, "view")),
     ranking: normalizeFantasyRanking(readParam(input, "ranking")),
     teams: normalizeFantasyTeams(readParam(input, "teams")),
     query: normalizeFantasyQuery(readParam(input, "q")),
@@ -91,11 +82,9 @@ export function buildFantasyHref(
   const params = new URLSearchParams(baseSearchParams ? Array.from(baseSearchParams.entries()) : []);
   params.set("position", state.position);
   params.set("scoring", state.scoring);
-  if (state.view === "tiers") {
-    params.set("view", "tiers");
-  } else {
-    params.delete("view");
-  }
+  // The board dropped its list/tiers toggle; strip the dead param from
+  // inherited links instead of carrying it forward.
+  params.delete("view");
   if (state.ranking === "vorp") {
     params.set("ranking", "vorp");
     params.set("teams", String(state.teams));

@@ -1,11 +1,10 @@
-import { getAdpSignalThreshold, hasReliableAdpSample } from "@/lib/fantasyUtils";
+import { ADP_SIGNAL_MIN_TIMES_DRAFTED, getAdpSignalThreshold } from "@/lib/fantasyUtils";
 import { getRedraftRosterTarget } from "@/lib/redraftLineup";
 import { clamp } from "@/lib/utils";
 import type { Player, Position, RedraftLineupSettings } from "@/types";
 
 export const REPLACEMENT_STARTER_VALUE_WEIGHT = 0.75;
 export const REPLACEMENT_DEPTH_VALUE_WEIGHT = 0.25;
-export const REPLACEMENT_MINIMUM_ADP_SELECTIONS = 20;
 
 export const FANTASY_REPLACEMENT_POSITIONS = [
   "QB",
@@ -64,12 +63,17 @@ export function getFantasyReplacementExpertRank(player: Player): number | null {
 }
 
 export function hasReliableFantasyReplacementMarket(player: Player): boolean {
+  // Stricter than the shared display predicate on purpose. The wait reading
+  // and the trade calculator's verdicts lean on this, and the model doc
+  // promises at least 20 observed selections behind any market they call
+  // reliable. A source that stops publishing per-player counts loses these
+  // surfaces rather than silently passing, which is the failure the display
+  // signals are allowed to tolerate and a verdict is not.
   return (
     isFinitePositiveReplacementValue(player.adp) &&
     typeof player.adpTimesDrafted === "number" &&
     Number.isFinite(player.adpTimesDrafted) &&
-    player.adpTimesDrafted >= REPLACEMENT_MINIMUM_ADP_SELECTIONS &&
-    hasReliableAdpSample(player)
+    player.adpTimesDrafted >= ADP_SIGNAL_MIN_TIMES_DRAFTED
   );
 }
 

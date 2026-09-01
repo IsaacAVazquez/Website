@@ -153,7 +153,7 @@ export function getRosterNeeds(team: {
     .filter(
       (entry) =>
         entry.gap > 0 &&
-        (entry.position !== "K" && entry.position !== "DST" || deferredStartersAreDue)
+        ((entry.position !== "K" && entry.position !== "DST") || deferredStartersAreDue)
     )
     .sort(
       (left, right) =>

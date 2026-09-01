@@ -19,14 +19,13 @@ describe("fantasy-state", () => {
     ).toEqual({
       position: "rb",
       scoring: "half_ppr",
-      view: "list",
       ranking: "consensus",
       teams: 12,
       query: "",
     });
   });
 
-  it("reads the tier view flag", () => {
+  it("ignores the retired view param when normalizing", () => {
     expect(
       normalizeFantasyState({
         position: "qb",
@@ -36,50 +35,25 @@ describe("fantasy-state", () => {
     ).toEqual({
       position: "qb",
       scoring: "ppr",
-      view: "tiers",
       ranking: "consensus",
       teams: 12,
       query: "",
     });
   });
 
-  it("ignores unknown view values", () => {
-    expect(
-      normalizeFantasyState({
-        position: "qb",
-        scoring: "ppr",
-        view: "invalid",
-      }).view
-    ).toBe("list");
-  });
-
-  it("builds canonical fantasy urls without view by default", () => {
+  it("builds canonical fantasy urls and strips the retired view param", () => {
     expect(
       buildFantasyHref(
         {
           position: "qb",
           scoring: "standard",
-          view: "list",
           ranking: "consensus",
           teams: 12,
           query: "",
         },
-        new URLSearchParams("ref=test")
+        new URLSearchParams("ref=test&view=tiers")
       )
     ).toBe("/fantasy-football?ref=test&position=qb&scoring=standard");
-  });
-
-  it("includes view=tiers when enabled", () => {
-    expect(
-      buildFantasyHref({
-        position: "rb",
-        scoring: "ppr",
-        view: "tiers",
-        ranking: "consensus",
-        teams: 12,
-        query: "",
-      })
-    ).toBe("/fantasy-football?position=rb&scoring=ppr&view=tiers");
   });
 
   it("normalizes and serializes the board search query", () => {
@@ -92,7 +66,6 @@ describe("fantasy-state", () => {
     expect(state).toEqual({
       position: "wr",
       scoring: "ppr",
-      view: "list",
       ranking: "consensus",
       teams: 12,
       query: "Ja'Marr Chase",

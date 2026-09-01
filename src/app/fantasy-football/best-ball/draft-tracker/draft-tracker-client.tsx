@@ -4,9 +4,9 @@ import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
-import { RotateCcw, Undo2 } from "lucide-react";
+import { Redo2, RotateCcw, Undo2 } from "lucide-react";
 import { Breadcrumbs } from "@/components/navigation/Breadcrumbs";
-import type { ExpectedReturnFormState } from "@/components/fantasy";
+import { PlayerDetailDrawer, type ExpectedReturnFormState } from "@/components/fantasy";
 import { useBestBallSnapshot } from "@/hooks/useBestBallSnapshot";
 import {
   BEST_BALL_CONTESTS,
@@ -20,6 +20,7 @@ import {
   sortBestBallRankings,
   type BestBallContestId,
   type BestBallContestPreset,
+  type RankedBestBallPlayer,
 } from "@/lib/bestBall";
 import type { BestBallSnapshot } from "@/lib/bestBallSnapshot";
 import {
@@ -322,9 +323,9 @@ function BestBallDraftRoom({
 }) {
   const rules = useMemo(() => roomRulesFromPreset(preset), [preset]);
   const draft = useBestBallDraft({ season: snapshot.season, rules });
-  const [roomStarted, setRoomStarted] = useState(false);
   const [resetArmed, setResetArmed] = useState(false);
   const [buildOpen, setBuildOpen] = useState(false);
+  const [detailPlayer, setDetailPlayer] = useState<RankedBestBallPlayer | null>(null);
   const [returnAssumptions, setReturnAssumptions] = useState<ExpectedReturnFormState>(() => ({
     entryCost: preset.economics ? String(preset.economics.entryFee) : "",
     payoutProbability: "",
@@ -449,10 +450,9 @@ function BestBallDraftRoom({
     ]
   );
 
-  // `restoredWithPicks` keeps a reloaded room open after the user undoes back
-  // to zero picks, instead of dropping them onto the slot picker.
-  const showSetup =
-    draft.state.picks.length === 0 && !roomStarted && !draft.restoredWithPicks;
+  // `startedAt` is persisted with the room, so an open room stays open across
+  // reloads even after every pick has been rewound. Reset clears it.
+  const showSetup = !draft.isRoomOpen;
 
   // Tells the page shell whether a room is open so it can collapse the pitch
   // header, mirroring the redraft tracker's setup-versus-running split.
@@ -529,7 +529,7 @@ function BestBallDraftRoom({
 
           <button
             type="button"
-            onClick={() => setRoomStarted(true)}
+            onClick={draft.startDraft}
             className="mt-6 inline-flex min-h-[48px] w-full items-center justify-center rounded-full border px-6 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200 sm:w-auto"
             style={{
               borderColor: "var(--home-ink)",
@@ -671,24 +671,78 @@ function BestBallDraftRoom({
                 className="mt-2 max-w-[52ch] text-xs leading-5"
                 style={{ color: "var(--home-ink-muted)" }}
               >
-                Undo removes pick {lastPick.pickNumber}, {lastPick.player.name}. It only ever
-                takes back the most recent pick, so reaching an earlier one means undoing
-                everything logged after it.
+                Undo removes pick {lastPick.pickNumber}, {lastPick.player.name}. The pick chips
+                below reach further back. Choosing one takes back that pick and everything
+                logged after it, and Redo pick restores the removed picks in order.
               </p>
             ) : null}
           </div>
-          <button
-            type="button"
-            onClick={draft.undoLastPick}
-            disabled={draft.state.picks.length === 0}
-            aria-describedby={lastPick ? "best-ball-undo-target" : undefined}
-            className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-50"
-            style={OUTLINE_ACTION_STYLE}
-          >
-            <Undo2 className="h-4 w-4" aria-hidden="true" />
-            Undo last pick
-          </button>
+          <div className="flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={draft.undoLastPick}
+              disabled={draft.state.picks.length === 0}
+              aria-describedby={lastPick ? "best-ball-undo-target" : undefined}
+              className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-50"
+              style={OUTLINE_ACTION_STYLE}
+            >
+              <Undo2 className="h-4 w-4" aria-hidden="true" />
+              Undo last pick
+            </button>
+            <button
+              type="button"
+              onClick={draft.redoLastPick}
+              disabled={!draft.canRedo}
+              aria-label={
+                draft.nextRedoPick
+                  ? `Redo pick ${draft.nextRedoPick.pickNumber} (${draft.nextRedoPick.player.name})`
+                  : "Redo pick (nothing to redo)"
+              }
+              className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-50"
+              style={OUTLINE_ACTION_STYLE}
+            >
+              <Redo2 className="h-4 w-4" aria-hidden="true" />
+              Redo pick
+            </button>
+          </div>
         </div>
+        {draft.state.picks.length > 0 ? (
+          <div className="mt-3.5 flex items-center gap-2 overflow-x-auto">
+            <span
+              className="flex-none font-mono text-2xs uppercase tracking-[0.08em]"
+              style={{ color: "var(--home-ink-muted)" }}
+            >
+              Last picks
+            </span>
+            {draft.state.picks
+              .slice(-8)
+              .reverse()
+              .map((pick) => (
+                <button
+                  key={`tape-${pick.pickNumber}`}
+                  type="button"
+                  onClick={() => draft.undoToPick(pick.pickNumber)}
+                  title="Undo back to this pick"
+                  aria-label={`Undo back to pick ${pick.pickNumber} (${pick.player.name})`}
+                  className="inline-flex min-h-[44px] flex-none items-baseline gap-1.5 rounded-[2px] border px-2 font-mono text-2xs"
+                  style={{
+                    borderColor: "var(--home-rule)",
+                    background: "var(--home-paper-raised)",
+                    color: "var(--home-ink)",
+                  }}
+                >
+                  <span style={{ color: "var(--home-ink-muted)" }}>#{pick.pickNumber}</span>
+                  <span className="font-sans text-xs font-semibold tracking-[-0.01em]">
+                    {pick.player.name}
+                  </span>
+                  <span style={{ color: "var(--home-ink-muted)" }}>
+                    {pick.player.position} ·{" "}
+                    {pick.teamNumber === draft.state.userSlot ? "You" : `S${pick.teamNumber}`}
+                  </span>
+                </button>
+              ))}
+          </div>
+        ) : null}
       </section>
 
       <div className="grid min-w-0 gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(19rem,23rem)]">
@@ -709,6 +763,7 @@ function BestBallDraftRoom({
             isComplete={draft.isComplete}
             adpAvailable={adpAvailable}
             onDraftPlayer={draft.draftPlayer}
+            onOpenDetail={setDetailPlayer}
           />
         </div>
 
@@ -778,7 +833,6 @@ function BestBallDraftRoom({
                   type="button"
                   onClick={() => {
                     draft.resetDraft();
-                    setRoomStarted(false);
                     setResetArmed(false);
                   }}
                   className="min-h-[44px] rounded-full border px-3 text-sm font-semibold"
@@ -818,8 +872,10 @@ function BestBallDraftRoom({
         Undo shares the phone's fixed bottom bar with the build trigger, the
         same thumb-reach contract as the redraft tracker's action bar. Its
         accessible name is "Undo", distinct from the card and sheet buttons,
-        so none of the three shadows the others.
+        so none of the three shadows the others. It sits above the drawer's
+        z-[60] scrim, so it steps aside while a player detail is open.
       */}
+      {detailPlayer ? null : (
       <div className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-1/2 z-[70] flex w-[min(calc(100%_-_2rem),26rem)] -translate-x-1/2 gap-2 lg:hidden">
         <button
           type="button"
@@ -854,6 +910,7 @@ function BestBallDraftRoom({
           </span>
         </button>
       </div>
+      )}
 
       <BestBallBuildSheet
         open={buildOpen}
@@ -904,7 +961,6 @@ function BestBallDraftRoom({
                 type="button"
                 onClick={() => {
                   draft.resetDraft();
-                  setRoomStarted(false);
                   setResetArmed(false);
                   setBuildOpen(false);
                 }}
@@ -938,6 +994,29 @@ function BestBallDraftRoom({
           </Link>
         </div>
       </BestBallBuildSheet>
+
+      {/*
+        Same drawer contract as the best ball board page: a contest-floor
+        placeholder hides its synthetic ADP, the room mounts no CompareTray so
+        the Compare button stays out, and logging from the drawer records the
+        current pick and closes it, mirroring the redraft tracker.
+      */}
+      <PlayerDetailDrawer
+        player={detailPlayer}
+        publishedRank={detailPlayer ? String(detailPlayer.bestBallRank) : undefined}
+        adpAvailable={adpAvailable && !detailPlayer?.isUndraftedAtContestFloor}
+        valueSignalAvailable={adpAvailable}
+        compareAvailable={false}
+        onLogPick={
+          !draft.isComplete && detailPlayer && !draftedIds.has(detailPlayer.id)
+            ? (player) => {
+                draft.draftPlayer(player);
+                setDetailPlayer(null);
+              }
+            : undefined
+        }
+        onClose={() => setDetailPlayer(null)}
+      />
     </>
   );
 }

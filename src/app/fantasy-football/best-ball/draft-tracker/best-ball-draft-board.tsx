@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
+import { useDebounce } from "@/hooks/useDebounce";
 import type { RankedBestBallPlayer } from "@/lib/bestBall/types";
 import type { Player } from "@/types";
 
@@ -36,6 +37,7 @@ export function BestBallDraftBoard({
   isComplete,
   adpAvailable,
   onDraftPlayer,
+  onOpenDetail,
 }: {
   players: readonly RankedBestBallPlayer[];
   currentPick: number;
@@ -43,20 +45,23 @@ export function BestBallDraftBoard({
   isComplete: boolean;
   adpAvailable: boolean;
   onDraftPlayer: (player: Player) => void;
+  onOpenDetail: (player: RankedBestBallPlayer) => void;
 }) {
   const [query, setQuery] = useState("");
   const [position, setPosition] = useState<PositionFilter>("ALL");
   const [visibleCount, setVisibleCount] = useState(120);
+  // Same 200ms the redraft board uses, so typing does not refilter per keystroke.
+  const debouncedQuery = useDebounce(query, 200);
 
   const filteredPlayers = useMemo(() => {
-    const tokens = query.toLowerCase().trim().split(/\s+/).filter(Boolean);
+    const tokens = debouncedQuery.toLowerCase().trim().split(/\s+/).filter(Boolean);
     return players.filter((player) => {
       if (position !== "ALL" && player.position !== position) return false;
       if (tokens.length === 0) return true;
       const searchable = `${player.name} ${player.team} ${player.position}`.toLowerCase();
       return tokens.every((token) => searchable.includes(token));
     });
-  }, [players, position, query]);
+  }, [players, position, debouncedQuery]);
 
   const shownPlayers = filteredPlayers.slice(0, visibleCount);
 
@@ -123,31 +128,41 @@ export function BestBallDraftBoard({
         </div>
       </div>
 
-      <div className="hidden grid-cols-[3rem_minmax(0,1fr)_4rem_4rem_6.5rem_4rem] gap-3 border-b px-4 py-3 text-2xs font-semibold uppercase tracking-[0.08em] sm:grid" style={{ borderColor: "var(--home-rule)", color: "var(--home-ink-muted)" }}>
+      <div className="hidden grid-cols-[3rem_minmax(0,1fr)_4rem_4rem_6.5rem_4rem_4.5rem] gap-3 border-b px-4 py-3 text-2xs font-semibold uppercase tracking-[0.08em] sm:grid" style={{ borderColor: "var(--home-rule)", color: "var(--home-ink-muted)" }}>
         <span>Board</span>
         <span>Player</span>
         <span>Pos</span>
         <span>Team</span>
         <span>{adpAvailable ? "Underdog ADP" : "Source rank"}</span>
         <span>Bye</span>
+        <span className="sr-only">Draft</span>
       </div>
 
       <div className="grid">
         {shownPlayers.map((player) => (
-          <button
+          <div
             key={player.id}
-            type="button"
-            onClick={() => onDraftPlayer(player)}
-            disabled={isComplete}
-            className="grid min-h-[60px] min-w-0 grid-cols-[2.5rem_minmax(0,1fr)_auto] items-center gap-3 border-b px-4 py-2 text-left transition-[background-color,color,opacity] duration-150 hover:bg-[var(--home-paper-alt)] focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--home-signal)] disabled:cursor-not-allowed disabled:opacity-50 sm:grid-cols-[3rem_minmax(0,1fr)_4rem_4rem_6.5rem_4rem]"
+            className="grid min-h-[60px] min-w-0 grid-cols-[2.5rem_minmax(0,1fr)_auto_auto] items-center gap-3 border-b px-4 py-2 transition-[background-color] duration-150 hover:bg-[var(--home-paper-alt)] sm:grid-cols-[3rem_minmax(0,1fr)_4rem_4rem_6.5rem_4rem_4.5rem]"
             style={ROW_STYLE}
           >
-            <span className="sr-only">{`Log at pick ${currentPick}, board rank`}</span>
             <span className="text-sm font-semibold tabular-nums" style={{ color: "var(--home-ink-muted)" }}>
+              <span className="sr-only">{"Board rank "}</span>
               {player.bestBallRank}
             </span>
             <span className="min-w-0">
-              <span data-testid="best-ball-board-player-name" className="block truncate text-sm font-semibold">{player.name}</span>
+              {/* -my keeps the row dense while the button itself meets the 44px
+                  touch floor. The name opens the detail drawer; only the Draft
+                  button at the end of the row logs the pick, so a stray tap can
+                  no longer record a player unseen. */}
+              <button
+                type="button"
+                onClick={() => onOpenDetail(player)}
+                aria-label={`Open ${player.name} detail`}
+                data-testid="best-ball-board-player-name"
+                className="-my-2 inline-flex min-h-touch w-full min-w-0 items-center truncate text-left text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--home-signal)]"
+              >
+                {player.name}
+              </button>
               <span className="mt-1 block truncate text-xs sm:hidden" style={{ color: "var(--home-ink-muted)" }}>
                 {player.team} · {adpAvailable ? "ADP" : "Source rank"}{" "}
                 {adpAvailable
@@ -211,7 +226,17 @@ export function BestBallDraftBoard({
               <span className="sr-only">{"Bye week "}</span>
               <span>{player.byeWeek ?? "Unknown"}</span>
             </span>
-          </button>
+            <button
+              type="button"
+              onClick={() => onDraftPlayer(player)}
+              disabled={isComplete}
+              aria-label={`Draft ${player.name} at pick ${currentPick}`}
+              className="inline-flex min-h-[44px] items-center justify-center rounded-full border px-3 text-xs font-semibold transition-[background-color,color,opacity] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--home-paper)] disabled:cursor-not-allowed disabled:opacity-50"
+              style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
+            >
+              Draft
+            </button>
+          </div>
         ))}
       </div>
 

@@ -14,13 +14,16 @@ export function getSnakeTeamNumber(pickNumber: number, totalTeams = 12): number 
 
 /**
  * Finds the user's next pick at or after currentPickNumber. Passing 13 means
- * pick 12 is complete and pick 13 is on the clock.
+ * pick 12 is complete and pick 13 is on the clock. With `strictlyAfter`, the
+ * search starts one pick later, which answers "when is my turn after this
+ * one" without the caller re-invoking from currentPickNumber + 1.
  */
 export function getNextUserPick(
   currentPickNumber: number,
   userTeamNumber: number,
   totalTeams = 12,
-  totalRounds = 18
+  totalRounds = 18,
+  options: { strictlyAfter?: boolean } = {}
 ): number | null {
   if (!Number.isInteger(userTeamNumber) || userTeamNumber < 1 || userTeamNumber > totalTeams) {
     throw new RangeError("userTeamNumber must be inside the draft's team range.");
@@ -29,7 +32,7 @@ export function getNextUserPick(
     throw new RangeError("totalRounds must be a positive integer.");
   }
 
-  const firstCandidate = Math.max(1, Math.ceil(currentPickNumber));
+  const firstCandidate = Math.max(1, Math.ceil(currentPickNumber) + (options.strictlyAfter ? 1 : 0));
   const finalPick = totalTeams * totalRounds;
   for (let pick = firstCandidate; pick <= finalPick; pick += 1) {
     if (getSnakeTeamNumber(pick, totalTeams) === userTeamNumber) return pick;

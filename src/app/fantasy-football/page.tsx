@@ -20,7 +20,6 @@ interface FantasyFootballPageProps {
   searchParams: Promise<{
     position?: string;
     scoring?: string;
-    view?: string;
     ranking?: string;
     teams?: string;
     q?: string;

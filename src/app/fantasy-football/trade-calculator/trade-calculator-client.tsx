@@ -32,7 +32,9 @@ import { TradeResultRail } from "./trade-result-rail";
 import { TradeRosterImpact } from "./trade-roster-impact";
 import {
   buildTradeCalculatorHref,
+  buildTradeCalculatorShareHref,
   normalizeTradeCalculatorState,
+  parseTradeCalculatorShare,
   TRADE_CALCULATOR_ROSTER_SIZES,
   TRADE_CALCULATOR_TEAM_COUNTS,
   type TradeCalculatorSearchState,
@@ -197,6 +199,19 @@ function LeagueSettings({
   );
 }
 
+function LoadingCard({ className }: { className: string }) {
+  return (
+    <div
+      aria-hidden="true"
+      className={`rounded-[var(--radius-3xl)] border motion-safe:animate-pulse ${className}`}
+      style={{
+        borderColor: "var(--home-rule)",
+        background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
+      }}
+    />
+  );
+}
+
 export function TradeCalculatorClient() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -222,12 +237,52 @@ export function TradeCalculatorClient() {
     : getCurrentDraftSeason();
   const trade = useFantasyTradeCalculator(season, routeState.scoring);
   const [resetArmed, setResetArmed] = useState(false);
+  // A shared link's give/get params win over the stored deal for the initial
+  // selection, then normal persistence resumes. Read once at mount so later
+  // URL syncs cannot re-trigger the import.
+  const [pendingShare, setPendingShare] = useState(() =>
+    parseTradeCalculatorShare(searchParams)
+  );
 
   useEffect(() => {
     if (!resetArmed) return;
     const timer = window.setTimeout(() => setResetArmed(false), RESET_ARM_TIMEOUT_MS);
     return () => window.clearTimeout(timer);
   }, [resetArmed]);
+
+  const { replaceDeal } = trade;
+  useEffect(() => {
+    if (!pendingShare || !snapshot) return;
+    // IDs missing from the current snapshot are dropped silently, matching
+    // how the calculator already treats unknown stored players.
+    const knownIds = new Set(players.map((player) => player.id));
+    const give = pendingShare.givePlayerIds.filter((id) => knownIds.has(id));
+    const get = pendingShare.getPlayerIds.filter((id) => knownIds.has(id));
+    // A link whose ids all filtered out contributed nothing, so it must not
+    // erase the visitor's saved deal.
+    if (give.length > 0 || get.length > 0) {
+      replaceDeal(give, get);
+    }
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-shot: consuming the shared deal must gate the URL mirror below
+    setPendingShare(null);
+  }, [pendingShare, players, replaceDeal, snapshot]);
+
+  // Keep the deal sendable: mirror the selected players into the give/get
+  // params once the initial import settles, touching nothing else in the query.
+  useEffect(() => {
+    if (pendingShare) return;
+    const nextHref = buildTradeCalculatorShareHref(
+      { givePlayerIds: trade.givePlayerIds, getPlayerIds: trade.getPlayerIds },
+      searchParams
+    );
+    const query = searchParams.toString();
+    const currentHref = query
+      ? `/fantasy-football/trade-calculator?${query}`
+      : "/fantasy-football/trade-calculator";
+    if (nextHref !== currentHref) {
+      router.replace(nextHref, { scroll: false });
+    }
+  }, [pendingShare, router, searchParams, trade.getPlayerIds, trade.givePlayerIds]);
 
   const updateRouteState = (next: TradeCalculatorSearchState) => {
     setResetArmed(false);
@@ -376,6 +431,22 @@ export function TradeCalculatorClient() {
               Retry rankings
             </button>
           </div>
+        ) : isLoading || pendingShare ? (
+          // Route-level loading.tsx only covers navigation. This keeps the
+          // page from rendering empty comboboxes while the snapshot loads or
+          // while a shared link's deal is still being applied.
+          <div
+            role="status"
+            aria-label="Loading the overall board"
+            className="grid items-start gap-5 lg:grid-cols-[15rem_minmax(0,1fr)_20rem]"
+          >
+            <LoadingCard className="h-[30rem]" />
+            <div className="grid min-w-0 gap-4 xl:grid-cols-2">
+              <LoadingCard className="h-[24rem]" />
+              <LoadingCard className="h-[24rem]" />
+            </div>
+            <LoadingCard className="h-[30rem]" />
+          </div>
         ) : (
           <>
             <div className="grid items-start gap-5 lg:grid-cols-[15rem_minmax(0,1fr)_20rem]">
@@ -388,9 +459,7 @@ export function TradeCalculatorClient() {
                       Trade ledger
                     </h2>
                     <p className="mt-1 text-sm text-[var(--home-ink-muted)]">
-                      {isLoading
-                        ? "Loading the overall board…"
-                        : `${players.length} players available in ${FANTASY_SCORING_LABELS[routeState.scoring]}.`}
+                      {`${players.length} players available in ${FANTASY_SCORING_LABELS[routeState.scoring]}.`}
                     </p>
                   </div>
                   <div className="flex items-center gap-1.5">

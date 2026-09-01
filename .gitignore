@@ -124,3 +124,6 @@ ds-bundle/
 # design-sync dts extraction (regenerated per sync)
 /dist/
 /index.d.ts
+
+# scratch files at the repo root (e.g. .tmp-fantasy-doublecheck.mjs)
+.tmp-*

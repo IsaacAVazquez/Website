@@ -16,7 +16,12 @@ const BEST_BALL_ADP_SOURCE_URL = "https://pprrankings.com/rankings";
 const BEST_BALL_ADP_RANKER = "hayden";
 const BEST_BALL_ADP_FORMAT = "PPR";
 const BEST_BALL_ADP_WEEK = 0;
-const BEST_BALL_MIN_CONSENSUS_EXPERTS = 5;
+// FantasyPros' best-ball board thinned from 5 contributing experts to 4 in
+// late August 2026, which left every refresh failing this floor and the
+// committed snapshot aging past its 4-day gate. A fresh 4-expert consensus
+// beats a week-old 5-expert one, so the floor follows the page down. The CI
+// gate in update-fantasy.yml enforces the same number.
+const BEST_BALL_MIN_CONSENSUS_EXPERTS = 4;
 const BEST_BALL_SCHEDULE_SOURCE_URL =
   "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard";
 

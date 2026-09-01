@@ -508,6 +508,50 @@ test.describe("Fantasy football draft tracker", () => {
     await page.getByRole("button", { name: "Back to room" }).click();
     await expect(loggedPicks).toHaveCount(2);
   });
+
+  test("applies a saved preset without changing the parked room", async ({ page }) => {
+    await page.goto("/fantasy-football/draft-tracker");
+    await waitForDraftTrackerHydration(page);
+
+    await page.getByRole("button", { name: /^Start draft/ }).click();
+    await expect(page.getByText("PPR scoring", { exact: true })).toBeVisible();
+
+    await page.getByRole("button", { name: "New room" }).click();
+    await page.getByLabel("League name").fill("Saved standard league");
+    await page.getByLabel("Teams").selectOption("10");
+    await page.getByRole("button", { name: "Std", exact: true }).click();
+    await page.getByLabel("Preset name").fill("Standard ten");
+    await page.getByRole("button", { name: "Save current settings" }).click();
+
+    await page.getByLabel("League name").fill("Changed setup");
+    await page.getByLabel("Teams").selectOption("12");
+    await page.getByRole("button", { name: "PPR", exact: true }).click();
+    await page.getByRole("button", { name: "Apply preset Standard ten" }).click();
+
+    await expect(page.getByLabel("League name")).toHaveValue("Saved standard league");
+    await expect(page.getByLabel("Teams")).toHaveValue("10");
+    await expect(page.getByRole("button", { name: "Std", exact: true })).toHaveAttribute(
+      "aria-pressed",
+      "true"
+    );
+
+    await page.getByRole("button", { name: /^Back to room/ }).click();
+    await expect(page.getByText("PPR scoring", { exact: true })).toBeVisible();
+    await expect(page.getByText("Standard scoring", { exact: true })).toHaveCount(0);
+    await expect(
+      page.getByRole("region", { name: "Live draft status" }).getByText("#1 / 180", {
+        exact: true,
+      })
+    ).toBeVisible();
+
+    await page.getByRole("button", { name: "New room" }).click();
+    await expect(page.getByLabel("League name")).toHaveValue("My Fantasy League");
+    await expect(page.getByLabel("Teams")).toHaveValue("12");
+    await expect(page.getByRole("button", { name: "PPR", exact: true })).toHaveAttribute(
+      "aria-pressed",
+      "true"
+    );
+  });
 });
 
 test.describe("Fantasy football best ball", () => {
@@ -568,7 +612,7 @@ test.describe("Fantasy football best ball", () => {
     }
   });
 
-  test("persists a BBM room and persists an undo after reload", async ({ page }) => {
+  test("persists a BBM room and undo/redo state after reload", async ({ page }) => {
     await page.goto("/fantasy-football/best-ball/draft-tracker?contest=bbm-vii");
 
     const shell = page.locator('[data-testid="best-ball-draft-tracker-shell"]');
@@ -577,13 +621,14 @@ test.describe("Fantasy football best ball", () => {
     await shell.getByRole("button", { name: "Open draft room from slot 1" }).click();
     await expect(shell.getByRole("heading", { name: "You are on the clock at pick 1" })).toBeVisible();
 
-    const firstPlayer = shell.getByRole("button", { name: /^Log at pick 1, board rank/ }).first();
     const firstPlayerName = (
-      await firstPlayer.getByTestId("best-ball-board-player-name").textContent()
+      await shell.getByTestId("best-ball-board-player-name").first().textContent()
     )?.trim();
     expect(firstPlayerName, "the refreshed BBM board exposes a first player").toBeTruthy();
 
-    await firstPlayer.click();
+    // Tapping the name opens the detail drawer now; the pick is logged from
+    // the row's explicit Draft button.
+    await shell.getByRole("button", { name: `Draft ${firstPlayerName} at pick 1` }).click();
     // The room used to state the pick counter in three places at once. The distill pass
     // left the sticky live bar as the single authority, so it now reads "Pick 2 of 216"
     // rather than a bare "2 of 216" tile.
@@ -605,15 +650,21 @@ test.describe("Fantasy football best ball", () => {
     await shell.getByRole("button", { name: "Undo last pick" }).click();
     await expect(shell.getByText("Pick 1 of 216", { exact: true })).toBeVisible();
     await expect(
-      shell
-        .getByRole("button", { name: /^Log at pick 1, board rank/ })
-        .filter({ hasText: firstPlayerName! })
-        .first()
+      shell.getByRole("button", { name: `Draft ${firstPlayerName!} at pick 1` })
     ).toBeVisible();
     await expect.poll(() => getPersistedBestBallPickCount(page, "bbm-vii")).toBe(0);
 
     await page.reload();
-    await expect(shell.getByRole("heading", { name: "Choose your draft slot" })).toBeVisible();
+    await waitForBestBallHydration(page);
+    await expect(shell.getByRole("heading", { name: "You are on the clock at pick 1" })).toBeVisible();
+    await expect(shell.getByRole("heading", { name: "Choose your draft slot" })).toHaveCount(0);
+    const redo = shell.getByRole("button", {
+      name: `Redo pick 1 (${firstPlayerName!})`,
+    });
+    await expect(redo).toBeVisible();
+    await redo.click();
+    await expect(shell.getByText("Pick 2 of 216", { exact: true })).toBeVisible();
+    await expect.poll(() => getPersistedBestBallPickCount(page, "bbm-vii")).toBe(1);
   });
 
   test("keeps later tracker contests reachable without page overflow at 360px", async ({ page }) => {

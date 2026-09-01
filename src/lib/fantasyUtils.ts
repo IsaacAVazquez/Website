@@ -63,7 +63,11 @@ export function getNflRegularSeasonWeek(season: number, now: Date = new Date()):
   if (season < 1920) {
     return 0;
   }
-  // First Monday of September (Labor Day), evaluated in UTC.
+  // First Monday of September (Labor Day), evaluated in UTC. Labor Day + 2 is
+  // a Wednesday anchor: 2026 opens Wednesday September 9 rather than the usual
+  // Thursday, and week 12 opens Wednesday November 25, both verified against
+  // nflverse games.csv in the week-opener test. A Thursday anchor reads week 0
+  // on opening day and week 11 on Thanksgiving week.
   const septFirst = new Date(Date.UTC(season, 8, 1));
   const offsetToMonday = (8 - septFirst.getUTCDay()) % 7;
   const laborDay = new Date(Date.UTC(season, 8, 1 + offsetToMonday));
@@ -307,6 +311,16 @@ export function resolveDraftPicksForModel<T extends { player: Player }>(
   });
 }
 
+/** Published ADP spread: the standard deviation, or the high-low range read as ±2σ. */
+function getPlayerAdpSpread(player: Player): number | null {
+  const publishedAdpSpread = finiteNonNegative(player.adpStandardDeviation);
+  if (publishedAdpSpread !== null) return publishedAdpSpread;
+  return finiteNonNegative(player.adpHigh) !== null &&
+    finiteNonNegative(player.adpLow) !== null
+    ? Math.abs((player.adpLow as number) - (player.adpHigh as number)) / 4
+    : null;
+}
+
 /**
  * The minimum rank gap that counts as a market signal for this player.
  *
@@ -317,14 +331,7 @@ export function resolveDraftPicksForModel<T extends { player: Player }>(
  * spread keeps the prior ten-pick threshold.
  */
 export function getAdpSignalThreshold(player: Player): number {
-  const publishedAdpSpread = finiteNonNegative(player.adpStandardDeviation);
-  const observedRangeSpread =
-    publishedAdpSpread === null &&
-    finiteNonNegative(player.adpHigh) !== null &&
-    finiteNonNegative(player.adpLow) !== null
-      ? Math.abs((player.adpLow as number) - (player.adpHigh as number)) / 4
-      : null;
-  const adpSpread = publishedAdpSpread ?? observedRangeSpread;
+  const adpSpread = getPlayerAdpSpread(player);
 
   if (adpSpread === null) {
     return ADP_SIGNAL_THRESHOLD;
@@ -336,6 +343,21 @@ export function getAdpSignalThreshold(player: Player): number {
   }
   const combinedSpread = Math.hypot(adpSpread, expertSpread);
   return Math.max(ADP_SIGNAL_MIN_UNCERTAINTY_THRESHOLD, Math.ceil(combinedSpread));
+}
+
+/**
+ * The ADP band for timing questions: how far the market plausibly moves this
+ * player's slot between rooms. Unlike getAdpSignalThreshold it carries no
+ * expert-rank spread, because expert disagreement is about how good a player
+ * is, not about when rooms draft him. Survival estimates that used the
+ * combined band overstated how long contested players last.
+ */
+export function getAdpSurvivalThreshold(player: Player): number {
+  const adpSpread = getPlayerAdpSpread(player);
+  if (adpSpread === null) {
+    return ADP_SIGNAL_THRESHOLD;
+  }
+  return Math.max(ADP_SIGNAL_MIN_UNCERTAINTY_THRESHOLD, Math.ceil(adpSpread));
 }
 
 /**
@@ -487,12 +509,35 @@ export const FANTASY_PLAYER_COLUMN_TOOLTIP =
   "The player, his team, and his rank within his own position, plus a Value or Reach label when the market and the experts disagree by enough to be worth a look. Click any row for the full detail panel.";
 
 /**
- * Hover copy for the points-per-game panel. The panel is prior-season history
+ * Hover copy for the points-per-game panel. The panel is scoring history
  * rather than a projection, and the copy has to say so, because a scoring
- * average sitting next to draft ranks reads as a forecast otherwise.
+ * average sitting next to draft ranks reads as a forecast otherwise. The
+ * builder can roll into the current season mid-year, so the copy names the
+ * season and through-week the snapshot actually carries instead of assuming
+ * the prior completed one.
  */
-export const FANTASY_POINTS_PER_GAME_TOOLTIP =
-  "Fantasy points per game from the prior completed regular season, scored in the format you have selected. It is what he did, not a projection of what he will do, and it appears only for players with at least four games that season.";
+export function getFantasyPointsPerGameTooltip(
+  gameLog?: { season?: number; throughWeek?: number } | null
+): string {
+  const season =
+    typeof gameLog?.season === "number" && Number.isFinite(gameLog.season)
+      ? gameLog.season
+      : null;
+  const throughWeek =
+    typeof gameLog?.throughWeek === "number" && Number.isFinite(gameLog.throughWeek)
+      ? gameLog.throughWeek
+      : null;
+  const scope =
+    season === null
+      ? "the prior completed regular season"
+      : throughWeek === null
+        ? `the ${season} regular season`
+        : `the ${season} regular season through week ${throughWeek}`;
+  return `Fantasy points per game from ${scope}, scored in the format you have selected. It is what he did, not a projection of what he will do, and it appears only for players with at least four games that season.`;
+}
+
+/** Season-less fallback copy; prefer getFantasyPointsPerGameTooltip with the player's gameLog. */
+export const FANTASY_POINTS_PER_GAME_TOOLTIP = getFantasyPointsPerGameTooltip();
 
 export type FantasyAdpFreshness = "current" | "prior-season" | "stale";
 
@@ -555,6 +600,10 @@ export interface FantasySourceCapabilities {
     freshness: FantasySnapshotStaleness;
     usable: boolean;
   };
+  vorp: {
+    freshness: FantasySnapshotStaleness;
+    usable: boolean;
+  };
   market: {
     freshness: FantasyAdpFreshness;
     usable: boolean;
@@ -574,18 +623,21 @@ export interface FantasySourceCapabilities {
  */
 export function getFantasySourceCapabilities({
   rankingAsOf,
+  vorpAsOf,
   marketAsOf,
   scheduleAsOf,
   season,
   now = new Date(),
 }: {
   rankingAsOf: Date | string | null | undefined;
+  vorpAsOf?: Date | string | null;
   marketAsOf?: string | null;
   scheduleAsOf?: Date | string | null;
   season: number | null | undefined;
   now?: Date;
 }): FantasySourceCapabilities {
   const rankingFreshness = getSnapshotStaleness(rankingAsOf, now);
+  const vorpFreshness = getSnapshotStaleness(vorpAsOf, now);
   const marketFreshness = getFantasyAdpFreshness(marketAsOf, season, now);
   const scheduleFreshness = getSnapshotStaleness(scheduleAsOf, now);
 
@@ -593,6 +645,10 @@ export function getFantasySourceCapabilities({
     ranking: {
       freshness: rankingFreshness,
       usable: rankingFreshness !== "stale",
+    },
+    vorp: {
+      freshness: vorpFreshness,
+      usable: vorpFreshness !== "stale",
     },
     market: {
       freshness: marketFreshness,

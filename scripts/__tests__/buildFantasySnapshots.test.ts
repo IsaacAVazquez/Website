@@ -137,4 +137,57 @@ describe("buildFantasySnapshots", () => {
       false
     );
   });
+
+  it("stamps rank movement onto the overall and flex boards and persists the history", async () => {
+    const projectRoot = await makeProjectRoot();
+    await seedPublishedArtifacts(projectRoot);
+    const today = new Date().toISOString().slice(0, 10);
+    const pastDate = new Date(Date.now() - 8 * 86_400_000).toISOString().slice(0, 10);
+    const historyPath = path.join(
+      projectRoot,
+      "src",
+      "data",
+      "fantasyRankHistory.generated.json"
+    );
+    await fs.writeFile(
+      historyPath,
+      `${JSON.stringify({
+        version: 1,
+        formats: { ppr: [{ date: pastDate, players: { p1: { ecr: 12, adp: 14 } } }] },
+      })}\n`,
+      "utf8"
+    );
+
+    // The flex slice holds its own copies of the overall players, so the stamp
+    // has to reach both arrays independently.
+    const buildSnapshot = jest.fn(
+      (scoring: FantasyRouteScoring) =>
+        ({
+          ...snapshotFor(scoring),
+          overall: [{ id: "p1", rankEcr: 5, adp: 10 }],
+          positions: { FLEX: [{ id: "p1", rankEcr: 5, adp: 10 }] },
+        }) as unknown as ReturnType<typeof buildFantasySnapshotType>
+    );
+
+    await buildFantasySnapshots({
+      projectRoot,
+      revision: "2026-08-31T12:00:00.000Z",
+      buildSnapshot,
+      logger: { log: jest.fn() },
+    });
+
+    const published = JSON.parse(
+      await fs.readFile(path.join(projectRoot, "public", "data", "fantasy", "ppr.json"), "utf8")
+    );
+    expect(published.overall[0].rankMove7d).toBe(7);
+    expect(published.overall[0].adpMove7d).toBe(4);
+    expect(published.positions.FLEX[0].rankMove7d).toBe(7);
+    expect(published.positions.FLEX[0].adpMove7d).toBe(4);
+
+    const history = JSON.parse(await fs.readFile(historyPath, "utf8"));
+    expect(history.formats.ppr.map((day: { date: string }) => day.date)).toEqual([
+      pastDate,
+      today,
+    ]);
+  });
 });

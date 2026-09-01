@@ -536,6 +536,22 @@ export function publishFantasyPlayer(player: Player): Player {
     publishedPlayer.adpTimesDrafted = player.adpTimesDrafted;
   }
 
+  if (isFiniteNumber(player.rankMove7d)) {
+    publishedPlayer.rankMove7d = player.rankMove7d;
+  }
+
+  if (isFiniteNumber(player.rankMove14d)) {
+    publishedPlayer.rankMove14d = player.rankMove14d;
+  }
+
+  if (isFiniteNumber(player.adpMove7d)) {
+    publishedPlayer.adpMove7d = player.adpMove7d;
+  }
+
+  if (isFiniteNumber(player.adpMove14d)) {
+    publishedPlayer.adpMove14d = player.adpMove14d;
+  }
+
   // Every figure has to be finite before the panel can draw a meter from it,
   // and a games count below one would make the low/high pair a single reading
   // wearing a range's clothes.
@@ -552,6 +568,7 @@ export function publishFantasyPlayer(player: Player): Player {
   ) {
     publishedPlayer.gameLog = {
       season: gameLog.season,
+      ...(isFiniteNumber(gameLog.throughWeek) ? { throughWeek: gameLog.throughWeek } : {}),
       games: gameLog.games,
       low: gameLog.low,
       median: gameLog.median,

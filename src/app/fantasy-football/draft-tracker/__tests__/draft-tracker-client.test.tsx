@@ -6,7 +6,27 @@ const mockUseDraftState = jest.fn();
 const mockUseFantasySnapshot = jest.fn();
 const mockExportDraftResults = jest.fn();
 const mockDraftPlayer = jest.fn();
+const mockUpdateSettings = jest.fn();
 const FRESH_AS_OF = new Date(Date.now() - 60 * 60 * 1000).toISOString();
+
+function mockSnapshotWithVorp(asOf: string) {
+  const snapshotResult = mockUseFantasySnapshot();
+  mockUseFantasySnapshot.mockReturnValue({
+    ...snapshotResult,
+    snapshot: {
+      ...snapshotResult.snapshot,
+      vorpSource: {
+        provider: "FantasyPros projected VORP",
+        asOf,
+        urls: { "10": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10" },
+        matchedCounts: { "10": 1 },
+      },
+      vorpRankings: {
+        "10": [{ playerId: "rb-1", rank: 1, value: 54 }],
+      },
+    },
+  });
+}
 
 jest.mock("framer-motion", () => ({
   motion: {
@@ -29,7 +49,7 @@ jest.mock("framer-motion", () => ({
 }));
 
 jest.mock("@/hooks/useFantasySnapshot", () => ({
-  useFantasySnapshot: () => mockUseFantasySnapshot(),
+  useFantasySnapshot: (options: unknown) => mockUseFantasySnapshot(options),
 }));
 
 jest.mock("../hooks/useDraftState", () => ({
@@ -40,13 +60,30 @@ jest.mock("../hooks/useDraftState", () => ({
 }));
 
 jest.mock("../components/DraftSetup", () => ({
-  DraftSetup: () => <div>Draft setup mock</div>,
+  DraftSetup: ({
+    onPreviewScoring,
+    onResume,
+  }: {
+    onPreviewScoring?: (scoring: "STANDARD") => void;
+    onResume?: () => void;
+  }) => (
+    <div>
+      Draft setup mock
+      <button type="button" onClick={() => onPreviewScoring?.("STANDARD")}>
+        Preview Standard
+      </button>
+      <button type="button" onClick={onResume}>
+        Resume room
+      </button>
+    </div>
+  ),
 }));
 
 describe("DraftTrackerClient", () => {
   beforeEach(() => {
     mockExportDraftResults.mockReset();
     mockDraftPlayer.mockReset();
+    mockUpdateSettings.mockReset();
     mockUseDraftState.mockReturnValue({
       draftState: {
         settings: {
@@ -73,7 +110,7 @@ describe("DraftTrackerClient", () => {
           },
         ],
       },
-      updateSettings: jest.fn(),
+      updateSettings: mockUpdateSettings,
       startDraft: jest.fn(),
       draftPlayer: mockDraftPlayer,
       undoLastPick: jest.fn(),
@@ -165,7 +202,14 @@ describe("DraftTrackerClient", () => {
     expect(screen.queryByText(/^Proj\. Pts$/)).not.toBeInTheDocument();
     expect(container.querySelector("button button")).not.toBeInTheDocument();
 
-    fireEvent.click(screen.getByRole("button", { name: "Open Bijan Robinson detail" }));
+    // The compact strip and the board row both offer the best available
+    // player, so the detail affordance legitimately appears twice.
+    expect(screen.getByText("Your pick is live")).toBeVisible();
+    expect(screen.getByRole("button", { name: /Why these picks/i })).toHaveAttribute(
+      "aria-expanded",
+      "false"
+    );
+    fireEvent.click(screen.getAllByRole("button", { name: "Open Bijan Robinson detail" })[0]);
     expect(screen.getByRole("dialog", { name: "Bijan Robinson detail" })).toBeVisible();
 
     fireEvent.click(screen.getByRole("button", { name: "JSON" }));
@@ -198,6 +242,22 @@ describe("DraftTrackerClient", () => {
     expect(screen.queryByRole("timer")).not.toBeInTheDocument();
     expect(screen.queryByText("How this room reads right now")).not.toBeInTheDocument();
     expect(mockDraftPlayer).not.toHaveBeenCalled();
+  });
+
+  it("previews setup scoring without changing the parked room", () => {
+    render(<DraftTrackerClient />);
+
+    fireEvent.click(screen.getByRole("button", { name: "New room" }));
+    fireEvent.click(screen.getByRole("button", { name: "Preview Standard" }));
+
+    expect(mockUseFantasySnapshot).toHaveBeenLastCalledWith({
+      scoring: "standard",
+      all: true,
+    });
+    expect(mockUpdateSettings).not.toHaveBeenCalled();
+
+    fireEvent.click(screen.getByRole("button", { name: "Resume room" }));
+    expect(mockUseFantasySnapshot).toHaveBeenLastCalledWith({ scoring: "ppr", all: true });
   });
 
   it("keeps manual picks available but pauses Draft Outlook on a stale ranking source", () => {
@@ -248,6 +308,28 @@ describe("DraftTrackerClient", () => {
     ).toBe(true);
     expect(screen.queryByRole("heading", { name: "Draft Outlook paused" })).not.toBeInTheDocument();
     expect(screen.getAllByText(/consensus rank/i).length).toBeGreaterThan(0);
+  });
+
+  it("uses fresh VORP in a supported room", () => {
+    mockSnapshotWithVorp(FRESH_AS_OF);
+
+    render(<DraftTrackerClient />);
+
+    expect(
+      screen.getByText(/VORP is FantasyPros.*projected season points/i)
+    ).toBeVisible();
+    expect(screen.getAllByText("54").length).toBeGreaterThan(0);
+  });
+
+  it("drops retained stale VORP from live decision inputs", () => {
+    mockSnapshotWithVorp("2026-08-01T00:00:00.000Z");
+
+    render(<DraftTrackerClient />);
+
+    expect(
+      screen.queryByText(/VORP is FantasyPros.*projected season points/i)
+    ).not.toBeInTheDocument();
+    expect(screen.queryByText("54")).not.toBeInTheDocument();
   });
 
   it("keeps a restored room timer stopped until its board is ready", () => {

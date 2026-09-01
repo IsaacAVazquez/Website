@@ -41,6 +41,7 @@ export interface BestBallDraftState {
   userSlot: number;
   rules: BestBallRoomRules;
   picks: BestBallDraftPick[];
+  undoHistory: BestBallDraftPick[];
   startedAt: string | null;
   updatedAt: string;
 }
@@ -123,8 +124,22 @@ export function createBestBallDraftState(
     userSlot: normalizedSlot,
     rules,
     picks: [],
+    undoHistory: [],
     startedAt: null,
     updatedAt: now.toISOString(),
+  };
+}
+
+export function startBestBallDraft(
+  state: BestBallDraftState,
+  now: Date = new Date()
+): BestBallDraftState {
+  if (state.startedAt !== null) return state;
+  const timestamp = now.toISOString();
+  return {
+    ...state,
+    startedAt: timestamp,
+    updatedAt: timestamp,
   };
 }
 
@@ -151,6 +166,7 @@ export function addBestBallDraftPick(
   return {
     ...state,
     picks: [...state.picks, pick],
+    undoHistory: [],
     startedAt: state.startedAt ?? timestamp,
     updatedAt: timestamp,
   };
@@ -164,6 +180,54 @@ export function undoBestBallDraftPick(
   return {
     ...state,
     picks: state.picks.slice(0, -1),
+    undoHistory: [...state.undoHistory, state.picks[state.picks.length - 1]],
+    updatedAt: now.toISOString(),
+  };
+}
+
+/**
+ * Rewinds the room to just before a target pick, removing it and everything
+ * logged after it. Picks are index-aligned (pick n sits at index n-1), so the
+ * roster math needs no rebuild the way the redraft tracker's does.
+ */
+export function undoBestBallDraftPickTo(
+  state: BestBallDraftState,
+  targetPickNumber: number,
+  now: Date = new Date()
+): BestBallDraftState {
+  if (
+    !Number.isInteger(targetPickNumber) ||
+    targetPickNumber < 1 ||
+    state.picks.length < targetPickNumber
+  ) {
+    return state;
+  }
+  const removed = state.picks.slice(targetPickNumber - 1);
+  return {
+    ...state,
+    picks: state.picks.slice(0, targetPickNumber - 1),
+    undoHistory: [...state.undoHistory, ...removed.reverse()],
+    updatedAt: now.toISOString(),
+  };
+}
+
+export function redoBestBallDraftPick(
+  state: BestBallDraftState,
+  now: Date = new Date()
+): BestBallDraftState {
+  if (state.undoHistory.length === 0) return state;
+  const pick = state.undoHistory[state.undoHistory.length - 1];
+  if (
+    pick.pickNumber !== state.picks.length + 1 ||
+    state.picks.some((current) => current.player.id === pick.player.id)
+  ) {
+    return state;
+  }
+  return {
+    ...state,
+    picks: [...state.picks, pick],
+    undoHistory: state.undoHistory.slice(0, -1),
+    startedAt: state.startedAt ?? pick.draftedAt,
     updatedAt: now.toISOString(),
   };
 }
@@ -225,6 +289,35 @@ export function parseBestBallDraftState(
     picks.push(pick as BestBallDraftPick);
   }
 
+  const rawUndoHistory = candidate.undoHistory ?? [];
+  if (
+    !Array.isArray(rawUndoHistory) ||
+    picks.length + rawUndoHistory.length > totalPicks
+  ) {
+    return null;
+  }
+  const undoHistory: BestBallDraftPick[] = [];
+  for (let index = rawUndoHistory.length - 1; index >= 0; index -= 1) {
+    const rawPick = rawUndoHistory[index];
+    if (!rawPick || typeof rawPick !== "object") return null;
+    const pick = rawPick as Partial<BestBallDraftPick>;
+    const replayIndex = rawUndoHistory.length - 1 - index;
+    const pickNumber = picks.length + replayIndex + 1;
+    if (
+      pick.pickNumber !== pickNumber ||
+      pick.round !== Math.ceil(pickNumber / expectedRules.teams) ||
+      pick.teamNumber !== getBestBallTeamForPick(pickNumber, expectedRules.teams) ||
+      !isDraftablePlayer(pick.player) ||
+      seenPlayers.has(pick.player.id) ||
+      typeof pick.draftedAt !== "string" ||
+      Number.isNaN(Date.parse(pick.draftedAt))
+    ) {
+      return null;
+    }
+    seenPlayers.add(pick.player.id);
+    undoHistory.unshift(pick as BestBallDraftPick);
+  }
+
   return {
     schemaVersion: BEST_BALL_DRAFT_STORAGE_VERSION,
     season: expectedSeason,
@@ -232,7 +325,8 @@ export function parseBestBallDraftState(
     userSlot: Number(candidate.userSlot),
     rules: expectedRules,
     picks,
-    startedAt: candidate.startedAt ?? null,
+    undoHistory,
+    startedAt: candidate.startedAt ?? picks[0]?.draftedAt ?? null,
     updatedAt: candidate.updatedAt,
   };
 }

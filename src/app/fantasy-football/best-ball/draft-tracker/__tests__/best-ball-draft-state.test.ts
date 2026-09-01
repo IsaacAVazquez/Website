@@ -6,7 +6,10 @@ import {
   getBestBallDraftStorageKey,
   getBestBallTeamForPick,
   parseBestBallDraftState,
+  redoBestBallDraftPick,
+  startBestBallDraft,
   undoBestBallDraftPick,
+  undoBestBallDraftPickTo,
   type BestBallRoomRules,
 } from "../best-ball-draft-state";
 
@@ -65,6 +68,24 @@ describe("best ball draft state", () => {
       player,
     });
     expect(undoBestBallDraftPick(drafted).picks).toHaveLength(0);
+  });
+
+  it("persists an open room without requiring a logged pick", () => {
+    const initial = createBestBallDraftState(
+      2026,
+      rules,
+      7,
+      new Date("2026-08-02T12:00:00Z")
+    );
+    const started = startBestBallDraft(initial, new Date("2026-08-02T12:01:00Z"));
+    const restored = parseBestBallDraftState(JSON.stringify(started), 2026, rules);
+
+    expect(initial.startedAt).toBeNull();
+    expect(restored).toMatchObject({
+      picks: [],
+      undoHistory: [],
+      startedAt: "2026-08-02T12:01:00.000Z",
+    });
   });
 
   it("restores only a valid draft written for the same catalog rules", () => {
@@ -149,5 +170,56 @@ describe("best ball draft state", () => {
         rules
       )
     ).toBeNull();
+  });
+
+  it("rewinds to a target pick, dropping it and everything after", () => {
+    const second: Player = { ...player, id: "fp-2", name: "Bijan Robinson", position: "RB" };
+    const third: Player = { ...player, id: "fp-3", name: "CeeDee Lamb" };
+    let state = createBestBallDraftState(2026, rules, 7, new Date("2026-08-02T12:00:00Z"));
+    state = addBestBallDraftPick(state, player);
+    state = addBestBallDraftPick(state, second);
+    state = addBestBallDraftPick(state, third);
+
+    const rewound = undoBestBallDraftPickTo(state, 2, new Date("2026-08-02T12:05:00Z"));
+    expect(rewound.picks.map((pick) => pick.player.id)).toEqual(["fp-1"]);
+    expect(rewound.undoHistory.map((pick) => pick.player.id)).toEqual(["fp-3", "fp-2"]);
+    expect(rewound.updatedAt).toBe("2026-08-02T12:05:00.000Z");
+
+    const redoneSecond = redoBestBallDraftPick(
+      rewound,
+      new Date("2026-08-02T12:06:00Z")
+    );
+    const redoneThird = redoBestBallDraftPick(
+      redoneSecond,
+      new Date("2026-08-02T12:07:00Z")
+    );
+    expect(redoneSecond.picks.map((pick) => pick.player.id)).toEqual(["fp-1", "fp-2"]);
+    expect(redoneThird.picks.map((pick) => pick.player.id)).toEqual([
+      "fp-1",
+      "fp-2",
+      "fp-3",
+    ]);
+    expect(redoneThird.undoHistory).toEqual([]);
+    // Out-of-range targets leave the state alone.
+    expect(undoBestBallDraftPickTo(state, 9)).toBe(state);
+    expect(undoBestBallDraftPickTo(state, 0)).toBe(state);
+  });
+
+  it("persists redo history and clears it when a fresh pick branches the room", () => {
+    const second: Player = { ...player, id: "fp-2", name: "Bijan Robinson", position: "RB" };
+    let state = startBestBallDraft(createBestBallDraftState(2026, rules, 7));
+    state = addBestBallDraftPick(state, player);
+    state = addBestBallDraftPick(state, second);
+    state = undoBestBallDraftPickTo(state, 1);
+
+    const restored = parseBestBallDraftState(JSON.stringify(state), 2026, rules);
+    expect(restored?.picks).toEqual([]);
+    expect(restored?.startedAt).not.toBeNull();
+    expect(restored?.undoHistory.map((pick) => pick.player.id)).toEqual(["fp-2", "fp-1"]);
+
+    const replacement = { ...player, id: "fp-3", name: "CeeDee Lamb" };
+    const branched = addBestBallDraftPick(restored!, replacement);
+    expect(branched.undoHistory).toEqual([]);
+    expect(branched.picks[0].player.id).toBe("fp-3");
   });
 });

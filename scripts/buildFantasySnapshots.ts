@@ -1,7 +1,13 @@
 import { randomUUID } from "node:crypto";
-import { mkdir, rename, rm, writeFile } from "node:fs/promises";
+import { mkdir, readFile, rename, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  appendFantasyRankHistory,
+  createEmptyFantasyRankHistory,
+  decodeFantasyRankHistory,
+  stampFantasyRankMovement,
+} from "@/lib/fantasyRankHistory";
 import { buildFantasySnapshot } from "@/lib/fantasySnapshotBuilder";
 import type { FantasyRouteScoring } from "@/lib/fantasy";
 
@@ -11,6 +17,11 @@ const REVISION_OUTPUT_PATH_SEGMENTS = [
   "src",
   "data",
   "fantasySnapshotRevision.generated.ts",
+] as const;
+const RANK_HISTORY_OUTPUT_PATH_SEGMENTS = [
+  "src",
+  "data",
+  "fantasyRankHistory.generated.json",
 ] as const;
 
 type FantasySnapshotBuilder = typeof buildFantasySnapshot;
@@ -59,14 +70,34 @@ export async function buildFantasySnapshots(
     standard: path.join(outputDir, "standard.json"),
   };
 
+  // The committed rank history is the builder's own memory: one dated ECR/ADP
+  // reading per player per run, trimmed to the movement window. A missing or
+  // malformed file restarts the window rather than failing the build.
+  const historyOutputPath = path.join(projectRoot, ...RANK_HISTORY_OUTPUT_PATH_SEGMENTS);
+  let rankHistory = createEmptyFantasyRankHistory();
+  try {
+    rankHistory = decodeFantasyRankHistory(JSON.parse(await readFile(historyOutputPath, "utf8")));
+  } catch {
+    // First run, or an unreadable file; movement returns as readings accumulate.
+  }
+  const historyDate = new Date().toISOString().slice(0, 10);
+
   // Finish every build and serialization before creating directories or staging
   // files, so a failure in any format leaves the published set and its shared
   // revision untouched. This covers the build and serialization phase only —
   // see the rename loop below for what the publish phase actually guarantees.
-  const serializedSnapshots = SCORING_FORMATS.map((scoring) => ({
-    scoring,
-    contents: `${JSON.stringify(buildSnapshot(scoring))}\n`,
-  }));
+  const serializedSnapshots = SCORING_FORMATS.map((scoring) => {
+    const snapshot = buildSnapshot(scoring);
+    const overallPlayers = Array.isArray(snapshot.overall) ? snapshot.overall : [];
+    rankHistory = appendFantasyRankHistory(rankHistory, scoring, historyDate, overallPlayers);
+    // The flex slice copies the overall players into new objects, so it needs
+    // its own stamp on the same overall-scale history; position boards rank on
+    // their own scale and stay out.
+    const flexPlayers = Array.isArray(snapshot.positions?.FLEX) ? snapshot.positions.FLEX : [];
+    stampFantasyRankMovement(overallPlayers, rankHistory, scoring, historyDate);
+    stampFantasyRankMovement(flexPlayers, rankHistory, scoring, historyDate);
+    return { scoring, contents: `${JSON.stringify(snapshot)}\n` };
+  });
   const revisionContents = renderRevisionModule(revision);
 
   const tempSuffix = `${process.pid}-${randomUUID()}`;
@@ -78,12 +109,17 @@ export async function buildFantasySnapshots(
       contents,
     };
   });
+  const historyOutput: StagedOutput = {
+    targetPath: historyOutputPath,
+    tempPath: `${historyOutputPath}.tmp-${tempSuffix}`,
+    contents: `${JSON.stringify(rankHistory)}\n`,
+  };
   const revisionOutput: StagedOutput = {
     targetPath: revisionOutputPath,
     tempPath: `${revisionOutputPath}.tmp-${tempSuffix}`,
     contents: revisionContents,
   };
-  const stagedOutputs = [...snapshotOutputs, revisionOutput];
+  const stagedOutputs = [...snapshotOutputs, historyOutput, revisionOutput];
 
   try {
     await mkdir(outputDir, { recursive: true });
@@ -102,6 +138,7 @@ export async function buildFantasySnapshots(
     for (const output of snapshotOutputs) {
       await rename(output.tempPath, output.targetPath);
     }
+    await rename(historyOutput.tempPath, historyOutput.targetPath);
     await rename(revisionOutput.tempPath, revisionOutput.targetPath);
   } catch (error) {
     await Promise.allSettled(
@@ -113,6 +150,7 @@ export async function buildFantasySnapshots(
   for (const scoring of SCORING_FORMATS) {
     logger.log(`Wrote fantasy snapshot: ${snapshotPaths[scoring]}`);
   }
+  logger.log(`Wrote fantasy rank history: ${historyOutputPath}`);
   logger.log(`Wrote fantasy snapshot revision: ${revisionOutputPath}`);
 
   return {

@@ -31,12 +31,25 @@ export interface Player {
   superflexTier?: number; // Tier from the same sourced Superflex consensus board
 
   /**
+   * Board movement stamped at snapshot build time from the committed rank
+   * history: past value minus current, so positive means up the board. Only
+   * the overall and flex slices carry them, and only once the history holds a
+   * reading old enough for the window.
+   */
+  rankMove7d?: number;
+  rankMove14d?: number;
+  adpMove7d?: number;
+  adpMove14d?: number;
+
+  /**
    * Prior-season fantasy points per game for this scoring format, from
    * nflverse. Absent when the player has no matched scoring history, which is
    * normal for rookies and for anyone under the games-played floor.
    */
   gameLog?: {
     season: number;
+    /** Last regular-season week the log covers; snapshots built before it shipped omit it. */
+    throughWeek?: number;
     games: number;
     low: number;
     median: number;

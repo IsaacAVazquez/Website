@@ -94,7 +94,7 @@ describe("BestBallDraftTrackerClient", () => {
     ).toBeVisible();
     expect(screen.getByRole("heading", { name: "Best fits for your next pick" })).toBeVisible();
     expect(screen.getAllByRole("button", { name: "Log for my team" }).length).toBeGreaterThan(0);
-    fireEvent.click(screen.getByRole("button", { name: /Log at pick 1.*Ja'Marr Chase/ }));
+    fireEvent.click(screen.getByRole("button", { name: "Draft Ja'Marr Chase at pick 1" }));
 
     expect(screen.getByRole("heading", { name: "Slot 2 is on the clock" })).toBeVisible();
     await waitFor(() =>
@@ -108,6 +108,66 @@ describe("BestBallDraftTrackerClient", () => {
     expect(
       screen.getByRole("heading", { name: "You are on the clock at pick 1" })
     ).toBeVisible();
+  });
+
+  it("keeps a zero-pick room open after reload and preserves its redo", async () => {
+    const firstView = render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
+    fireEvent.click(
+      await screen.findByRole("button", { name: "Open draft room from slot 1" })
+    );
+    fireEvent.click(screen.getByRole("button", { name: "Draft Ja'Marr Chase at pick 1" }));
+    fireEvent.click(screen.getByRole("button", { name: "Undo last pick" }));
+
+    const key = "fantasy-best-ball-draft-v1-2026-bbm-vii";
+    await waitFor(() =>
+      expect(JSON.parse(window.localStorage.getItem(key) ?? "{}")).toMatchObject({
+        picks: [],
+        startedAt: expect.any(String),
+        undoHistory: [
+          expect.objectContaining({
+            pickNumber: 1,
+            player: expect.objectContaining({ id: "wr-1" }),
+          }),
+        ],
+      })
+    );
+
+    firstView.unmount();
+    render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
+
+    expect(
+      await screen.findByRole("heading", { name: "You are on the clock at pick 1" })
+    ).toBeVisible();
+    expect(screen.queryByRole("heading", { name: "Choose your draft slot" }))
+      .not.toBeInTheDocument();
+    fireEvent.click(
+      screen.getByRole("button", { name: "Redo pick 1 (Ja'Marr Chase)" })
+    );
+    expect(screen.getByRole("heading", { name: "Slot 2 is on the clock" })).toBeVisible();
+  });
+
+  it("redoes every pick removed by a recent-pick rewind in order", async () => {
+    render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
+    fireEvent.click(
+      await screen.findByRole("button", { name: "Open draft room from slot 1" })
+    );
+    fireEvent.click(screen.getByRole("button", { name: "Draft Ja'Marr Chase at pick 1" }));
+    fireEvent.click(screen.getByRole("button", { name: "Draft Bijan Robinson at pick 2" }));
+    fireEvent.click(screen.getByRole("button", { name: "Draft Puka Nacua at pick 3" }));
+
+    fireEvent.click(
+      screen.getByRole("button", { name: "Undo back to pick 2 (Bijan Robinson)" })
+    );
+    expect(screen.getByRole("heading", { name: "Slot 2 is on the clock" })).toBeVisible();
+
+    fireEvent.click(
+      screen.getByRole("button", { name: "Redo pick 2 (Bijan Robinson)" })
+    );
+    expect(screen.getByRole("button", { name: "Redo pick 3 (Puka Nacua)" })).toBeEnabled();
+    fireEvent.click(screen.getByRole("button", { name: "Redo pick 3 (Puka Nacua)" }));
+
+    expect(screen.getByRole("heading", { name: "Slot 4 is on the clock" })).toBeVisible();
+    expect(screen.getByRole("button", { name: "Redo pick (nothing to redo)" })).toBeDisabled();
   });
 
   it("keeps Weekly Winners board and roster guidance without exact player cards", async () => {
@@ -198,7 +258,7 @@ describe("BestBallDraftTrackerClient", () => {
     fireEvent.click(
       await screen.findByRole("button", { name: "Open draft room from slot 1" })
     );
-    fireEvent.click(screen.getByRole("button", { name: /Log at pick 1.*Ja'Marr Chase/ }));
+    fireEvent.click(screen.getByRole("button", { name: "Draft Ja'Marr Chase at pick 1" }));
     fireEvent.click(screen.getByRole("button", { name: /My build/ }));
 
     const dialog = screen.getByRole("dialog");
@@ -208,6 +268,34 @@ describe("BestBallDraftTrackerClient", () => {
     fireEvent.click(within(dialog).getByRole("button", { name: "Confirm reset" }));
 
     expect(await screen.findByRole("heading", { name: "Choose your draft slot" })).toBeVisible();
+  });
+
+  it("returns a restored room to setup after confirmed reset", async () => {
+    const firstView = render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
+    fireEvent.click(
+      await screen.findByRole("button", { name: "Open draft room from slot 1" })
+    );
+    fireEvent.click(screen.getByRole("button", { name: "Draft Ja'Marr Chase at pick 1" }));
+
+    const key = "fantasy-best-ball-draft-v1-2026-bbm-vii";
+    await waitFor(() =>
+      expect(JSON.parse(window.localStorage.getItem(key) ?? "{}").picks).toHaveLength(1)
+    );
+    firstView.unmount();
+    render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
+
+    expect(await screen.findByRole("heading", { name: "Slot 2 is on the clock" })).toBeVisible();
+    fireEvent.click(screen.getByRole("button", { name: "Reset this room" }));
+    fireEvent.click(screen.getByRole("button", { name: "Confirm reset" }));
+
+    expect(await screen.findByRole("heading", { name: "Choose your draft slot" })).toBeVisible();
+    await waitFor(() =>
+      expect(JSON.parse(window.localStorage.getItem(key) ?? "{}")).toMatchObject({
+        picks: [],
+        undoHistory: [],
+        startedAt: null,
+      })
+    );
   });
 
   it("keeps a legacy overloaded-format room as a local backup", async () => {

@@ -12,8 +12,10 @@ import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import Link from "next/link";
 import { DraftAnalyticsPanel } from "./components/DraftAnalyticsPanel";
 import { DraftBoard } from "./components/DraftBoard";
+import { DraftRecapPanel } from "./components/DraftRecapPanel";
 import { DraftSetup } from "./components/DraftSetup";
 import { calculateDraftOrder, useDraftState } from "./hooks/useDraftState";
+import { useDraftTelemetry } from "./hooks/useDraftTelemetry";
 import { useDraftTimer } from "./hooks/useDraftTimer";
 import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
 import { usePlayerNotes } from "@/hooks/usePlayerNotes";
@@ -22,8 +24,13 @@ import {
   isPlayerValueAtPick,
   reconcileTeamRosters,
 } from "@/lib/draftAnalytics";
+import { resolveDraftTelemetry } from "@/lib/draftTelemetry";
 import { calculateRedraftDraftValues } from "@/lib/fantasyTeamValue";
-import { calculateRedraftDraftDecision } from "@/lib/redraftDraftDecision";
+import {
+  calculateRedraftDraftDecision,
+  describeRedraftWait,
+  type RedraftPositionDecision,
+} from "@/lib/redraftDraftDecision";
 import {
   buildFantasyVorpIndex,
   isFantasyVorpTeamSize,
@@ -61,7 +68,7 @@ import {
   RedraftDecisionPanel,
   type ExpectedReturnFormState,
 } from "@/components/fantasy";
-import type { Player, RedraftLineupSettings } from "@/types";
+import type { Player, RedraftLineupSettings, ScoringFormat } from "@/types";
 
 const subscribeToHydration = () => () => undefined;
 const getHydratedSnapshot = () => true;
@@ -74,6 +81,11 @@ function publishedDraftRank(player: Player): string {
   return formatRankValue(player.rankEcr ?? player.averageRank);
 }
 
+function numericDraftRank(player: Player): number | null {
+  if (isFiniteNumber(player.rankEcr)) return player.rankEcr;
+  return isFiniteNumber(player.averageRank) ? player.averageRank : null;
+}
+
 /** "J. Chase" for the tight fascia and tape rows; DST names stay whole. */
 function formatClock(seconds: number): string {
   return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")}`;
@@ -83,6 +95,50 @@ interface DecisionRec {
   tag: string;
   player: Player;
   why: string;
+}
+
+/**
+ * The wait-cost cell of the on-clock strip: projected points when VORP covers
+ * the league size, the ordinal spot cost otherwise, and an honest dash when
+ * the market cannot price the question.
+ */
+function waitCellReading(
+  decision: RedraftPositionDecision | null
+): { value: string; sub: string; title?: string } {
+  if (!decision) {
+    return { value: "—", sub: "No measurable position" };
+  }
+  const wait = decision.wait;
+  if (wait.kind === "measured") {
+    const survivorName = shortName(wait.survivor.player);
+    return {
+      value:
+        // A drop that rounds to zero must not read as "waiting is free"; the
+        // shared describe copy guards the same case.
+        wait.survivor.pointsDrop !== null
+          ? Math.round(wait.survivor.pointsDrop) >= 1
+            ? `−${Math.round(wait.survivor.pointsDrop)} pts`
+            : `−${wait.survivor.pointsDrop.toFixed(1)} pts`
+          : `−${wait.survivor.rankCost.toFixed(0)} spots`,
+      sub: `to #${wait.nextPick} · ${survivorName} likely lasts`,
+      title: describeRedraftWait(wait),
+    };
+  }
+  if (wait.kind === "no-priced-survivor") {
+    return {
+      value: "Unpriced",
+      sub: `no midpoint option reaches #${wait.nextPick}`,
+      title: describeRedraftWait(wait),
+    };
+  }
+  switch (wait.reason) {
+    case "market-unavailable":
+      return { value: "—", sub: "ADP unavailable" };
+    case "no-next-pick":
+      return { value: "—", sub: "your final turn" };
+    default:
+      return { value: "—", sub: "not measurable here" };
+  }
 }
 
 export function DraftTrackerClient() {
@@ -111,8 +167,18 @@ export function DraftTrackerClient() {
   } = useDraftState();
 
   const notes = usePlayerNotes();
+  const telemetry = useDraftTelemetry(draftState.draftId);
 
-  const scoringKey = scoringFormatToRouteScoring(draftState.settings.scoringFormat);
+  // A running room stays immutable behind New room. Setup can preview another
+  // scoring board without changing that room until the user confirms Start.
+  const [roomSetupOpen, setRoomSetupOpen] = useState(false);
+  const [setupScoringFormat, setSetupScoringFormat] = useState<ScoringFormat | null>(null);
+  const hasRoom = draftState.picks.length > 0 || draftState.isActive;
+  const showSetup = roomSetupOpen || !hasRoom;
+  const snapshotScoringFormat = showSetup
+    ? setupScoringFormat ?? draftState.settings.scoringFormat
+    : draftState.settings.scoringFormat;
+  const scoringKey = scoringFormatToRouteScoring(snapshotScoringFormat);
   const { snapshot, metadata, isLoading, error, retry } = useFantasySnapshot({
     scoring: scoringKey,
     all: true,
@@ -121,18 +187,12 @@ export function DraftTrackerClient() {
   // a new scoring key runs. A restored room can therefore see the previous
   // scoring board for one render. Nothing that can log or model a pick may use
   // that transition value.
-  const snapshotMatchesScoring = snapshot?.scoringFormat === draftState.settings.scoringFormat;
+  const snapshotMatchesScoring = snapshot?.scoringFormat === snapshotScoringFormat;
   const matchingSnapshot = snapshotMatchesScoring ? snapshot : null;
   const matchingMetadata = snapshotMatchesScoring ? metadata : null;
   const overallSliceMetadata = matchingSnapshot?.sliceMetadata?.overall ?? null;
   const rankingsUnavailable = Boolean(overallSliceMetadata && !overallSliceMetadata.available);
   const rankingsUpdatedAt = overallSliceMetadata?.updatedAt ?? matchingMetadata?.upstreamUpdatedAt;
-
-  // "New room" parks a running draft behind the setup screen without wiping it;
-  // starting from that screen is what resets the picks.
-  const [roomSetupOpen, setRoomSetupOpen] = useState(false);
-  const hasRoom = draftState.picks.length > 0 || draftState.isActive;
-  const showSetup = roomSetupOpen || !hasRoom;
 
   const hasUsableDraftBoard = Boolean(
     !isLoading &&
@@ -146,18 +206,19 @@ export function DraftTrackerClient() {
   const vorpTeamSize = isFantasyVorpTeamSize(draftState.settings.totalTeams)
     ? draftState.settings.totalTeams
     : null;
-  const vorpValues = useMemo(
-    () =>
-      vorpTeamSize && draftSnapshot?.vorpSource
-        ? buildFantasyVorpIndex(draftSnapshot.vorpRankings, vorpTeamSize)
-        : new Map<string, FantasyVorpRankingEntry>(),
-    [draftSnapshot, vorpTeamSize]
-  );
   const sourceCapabilities = getFantasySourceCapabilities({
     rankingAsOf: rankingsUpdatedAt,
+    vorpAsOf: draftSnapshot?.vorpSource?.asOf,
     marketAsOf: draftMetadata?.adpSource?.asOf,
     season: draftMetadata?.season,
   });
+  const vorpValues = useMemo(
+    () =>
+      vorpTeamSize && draftSnapshot?.vorpSource && sourceCapabilities.vorp.usable
+        ? buildFantasyVorpIndex(draftSnapshot.vorpRankings, vorpTeamSize)
+        : new Map<string, FantasyVorpRankingEntry>(),
+    [draftSnapshot, sourceCapabilities.vorp.usable, vorpTeamSize]
+  );
   const rankingsStale = hasUsableDraftBoard && !sourceCapabilities.ranking.usable;
   const draftGuidanceAvailable = hasUsableDraftBoard && sourceCapabilities.ranking.usable;
   const draftOutlookUnavailableReason = rankingsStale
@@ -177,6 +238,9 @@ export function DraftTrackerClient() {
 
   const [detailPlayer, setDetailPlayer] = useState<Player | null>(null);
   const [showTeamEditor, setShowTeamEditor] = useState(false);
+  // The compact strip answers "who now"; the four-position analysis and the
+  // full recommendation cards sit behind this toggle so the board stays high.
+  const [showDecisionDetail, setShowDecisionDetail] = useState(false);
   const [exportToast, setExportToast] = useState<string | null>(null);
   const [returnAssumptions, setReturnAssumptions] = useState<ExpectedReturnFormState>({
     entryCost: "",
@@ -338,6 +402,7 @@ export function DraftTrackerClient() {
         currentPick: draftState.currentPick,
         rankingUsable: draftGuidanceAvailable,
         marketCurrent: adpAvailable,
+        vorpValues,
       }),
     [
       adpAvailable,
@@ -350,6 +415,7 @@ export function DraftTrackerClient() {
       draftState.currentPick,
       draftState.settings,
       modelPicks,
+      vorpValues,
     ]
   );
   const replacementValues = useMemo(
@@ -523,6 +589,42 @@ export function DraftTrackerClient() {
   const previousPick = picksForDisplay[picksForDisplay.length - 1] ?? null;
   const tapePicks = useMemo(() => picksForDisplay.slice(-8).reverse(), [picksForDisplay]);
 
+  // On-clock strip inputs: best on the board, the position most at risk, and
+  // the wait cost at the best-available position (falling back to the at-risk
+  // position when the best player is a kicker or defense with no decision row).
+  const bestAvailable = availableBoardPlayers[0] ?? null;
+  const riskDecision = redraftDecision.mostAtRisk;
+  const riskPlayer = riskDecision?.bestAvailable?.player ?? null;
+  const bestDecision = bestAvailable
+    ? positionDecisionByPosition.get(
+        bestAvailable.position as "QB" | "RB" | "WR" | "TE"
+      ) ?? null
+    : null;
+  const stripWait = waitCellReading(bestDecision ?? riskDecision);
+  const stripWaitPosition = (bestDecision ?? riskDecision)?.position ?? null;
+  const stripVisible =
+    isUserPick &&
+    !isDraftComplete &&
+    Boolean(draftSnapshot) &&
+    draftGuidanceAvailable &&
+    bestAvailable !== null;
+  const bestVorpEntry = bestAvailable ? vorpValues.get(bestAvailable.id) : undefined;
+  const bestReplacement = bestAvailable ? replacementValues.get(bestAvailable.id) : undefined;
+  const bestStripSub = bestAvailable
+    ? [
+        isFiniteNumber(bestAvailable.tier) ? `Tier ${bestAvailable.tier}` : null,
+        bestVorpEntry ? `VORP ${Math.round(bestVorpEntry.value)}` : null,
+        bestReplacement !== undefined ? `Index ${bestReplacement.toFixed(1)}` : null,
+      ]
+        .filter(Boolean)
+        .join(" · ") || "Top of the published board"
+    : "";
+  const riskStripSub = riskDecision
+    ? riskDecision.tier.tier !== null
+      ? `${riskDecision.position} Tier ${riskDecision.tier.tier} has ${riskDecision.tier.remaining} left`
+      : "scarce before your next turn"
+    : "No open position is at risk before your next turn.";
+
   const kicker = showSetup
     ? "Draft assistant · Setup"
     : isDraftComplete
@@ -553,7 +655,65 @@ export function DraftTrackerClient() {
   ];
 
   function handleNewRoom() {
+    setSetupScoringFormat(null);
     setRoomSetupOpen(true);
+  }
+
+  // Every pick path routes through here so a user turn records what the strip
+  // showed at the moment of logging. Outcomes are derived later from the pick
+  // log, never stored, so undone turns cannot leave stale verdicts.
+  function logPick(player: Player) {
+    const snapshotAtPick = draftSnapshot;
+    if (stripVisible && bestAvailable && snapshotAtPick) {
+      const decision = bestDecision ?? riskDecision;
+      const wait = decision?.wait;
+      const survivor = wait && wait.kind === "measured" ? wait.survivor : null;
+      const baseline = decision?.bestAvailable ?? null;
+      telemetry.appendRecord({
+        pick: draftState.currentPick,
+        nextUserPick: redraftDecision.followingUserPick,
+        chosenPlayerId: player.id,
+        chosenPlayerName: player.name,
+        bestAvailableId: bestAvailable.id,
+        bestAvailableName: bestAvailable.name,
+        waitPosition: decision?.position ?? null,
+        waitBaselineId: baseline?.player.id ?? null,
+        waitBaselineName: baseline?.player.name ?? null,
+        waitBaselineRank: baseline?.expertRank ?? null,
+        expectedSurvivorId: survivor?.player.id ?? null,
+        expectedSurvivorName: survivor?.player.name ?? null,
+        expectedSurvivorRank: survivor?.expertRank ?? null,
+        waitCostSpots: survivor?.rankCost ?? null,
+        waitCostPoints: survivor?.pointsDrop ?? null,
+        atRiskPlayerId: riskPlayer?.id ?? null,
+        atRiskPlayerName: riskPlayer?.name ?? null,
+        atRiskPosition: riskDecision?.position ?? null,
+        recommendedIds: decisionRecs.map((rec) => rec.player.id),
+        modelVersion: redraftDecision.modelVersion,
+        snapshotRevision: snapshotAtPick.generatedAt,
+        rankingAsOf: rankingsUpdatedAt ?? null,
+        marketAsOf: draftMetadata?.adpSource?.asOf ?? null,
+        vorpAsOf: snapshotAtPick.vorpSource?.asOf ?? null,
+        waitCandidates: decision
+          ? availableBoardPlayers.flatMap((candidate) => {
+              if (candidate.position !== decision.position) return [];
+              const rank = numericDraftRank(candidate);
+              if (rank === null) return [];
+              return [
+                {
+                  playerId: candidate.id,
+                  playerName: candidate.name,
+                  rank,
+                  projectedPointsAboveReplacement:
+                    vorpValues.get(candidate.id)?.value ?? null,
+                },
+              ];
+            })
+          : [],
+        recordedAt: new Date().toISOString(),
+      });
+    }
+    draftPlayer(player);
   }
 
   function handleStartFromSetup() {
@@ -563,6 +723,7 @@ export function DraftTrackerClient() {
       resetDraft();
     }
     startDraft();
+    setSetupScoringFormat(null);
     setRoomSetupOpen(false);
   }
 
@@ -677,10 +838,64 @@ export function DraftTrackerClient() {
     return () => observer.disconnect();
   }, [showSetup, rankingsUnavailable]);
 
+  // Keyboard draft flow: U undoes the last pick from anywhere outside a form
+  // field, the setup screen, or the open drawer. Search focus ("/"), result
+  // navigation, and Enter-to-log live in DraftBoard beside the input they act on.
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.altKey) return;
+      if (event.key !== "u" && event.key !== "U") return;
+      if (showSetup || detailPlayer) return;
+      const target = event.target as HTMLElement | null;
+      if (
+        target &&
+        (target.isContentEditable ||
+          ["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName))
+      ) {
+        return;
+      }
+      if (draftState.picks.length === 0) return;
+      event.preventDefault();
+      undoLastPick();
+    }
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [detailPlayer, draftState.picks.length, showSetup, undoLastPick]);
+
   // Every board in this room is a draft board. Once the season starts it stops
   // describing a live market, so say which season it covers rather than letting it
   // look like a surface that quietly stopped working.
   const seasonalWeek = getNflRegularSeasonWeek(draftMetadata?.season ?? 0);
+
+  const userTurnTotal = useMemo(
+    () =>
+      picksForDisplay.filter(
+        (pick) => pick.teamNumber === draftState.settings.userTeam
+      ).length,
+    [draftState.settings.userTeam, picksForDisplay]
+  );
+  const draftRecap = useMemo(() => {
+    // Computed whenever the board can score it: mid-draft records feed the
+    // "recap so far" disclosure, and a completed room with zero records still
+    // needs a recap object so the explainer can say why nothing was scored.
+    if (!draftSnapshot || (telemetry.records.length === 0 && !isDraftComplete)) {
+      return null;
+    }
+    return resolveDraftTelemetry({
+      records: telemetry.records,
+      picks: modelPicks,
+      players: draftBoardPlayers,
+      rankOf: numericDraftRank,
+      vorpOf: (playerId) => vorpValues.get(playerId)?.value ?? null,
+    });
+  }, [
+    draftBoardPlayers,
+    draftSnapshot,
+    isDraftComplete,
+    modelPicks,
+    telemetry.records,
+    vorpValues,
+  ]);
 
   return (
     <section
@@ -778,12 +993,16 @@ export function DraftTrackerClient() {
           <DraftSetup
             settings={draftState.settings}
             onSaveSettings={updateSettings}
+            onPreviewScoring={setSetupScoringFormat}
             onStartDraft={handleStartFromSetup}
             rankingsStatus={setupRankingsStatus}
             rankingsError={setupRankingsError}
             onRetryRankings={retry}
             canResume={roomSetupOpen && hasRoom}
-            onResume={() => setRoomSetupOpen(false)}
+            onResume={() => {
+              setSetupScoringFormat(null);
+              setRoomSetupOpen(false);
+            }}
             parkedPickCount={draftState.picks.length}
           />
           <p className="mx-0.5 mt-3.5 font-mono text-2xs leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
@@ -978,7 +1197,7 @@ export function DraftTrackerClient() {
             )}
           </section>
 
-          {decisionRecs.length > 0 && (
+          {stripVisible && bestAvailable && (
             <section aria-label="Your pick recommendations" className={`${SHELL_CLASS} pt-3.5`}>
               <div
                 className="overflow-hidden rounded-lg border"
@@ -988,7 +1207,7 @@ export function DraftTrackerClient() {
                 }}
               >
                 <div
-                  className="flex flex-wrap items-baseline gap-x-3.5 gap-y-1.5 border-b px-3.5 py-2"
+                  className="flex flex-wrap items-center gap-x-3.5 gap-y-1 border-b px-3.5 py-1.5"
                   style={{ borderColor: "color-mix(in srgb, var(--home-signal) 28%, var(--home-rule))" }}
                 >
                   {/* 11px signal on the card's 7% signal wash measures 4.15:1. The dot
@@ -1010,12 +1229,160 @@ export function DraftTrackerClient() {
                     {timerEnabled ? ` · ${formatClock(Math.max(0, timer.secondsLeft))} advisory` : ""}
                     {nextUserPick ? ` · your next turn #${nextUserPick}` : ""}
                   </span>
+                  <button
+                    type="button"
+                    onClick={() => setShowDecisionDetail((open) => !open)}
+                    aria-expanded={showDecisionDetail}
+                    aria-controls="draft-decision-detail"
+                    className="ml-auto inline-flex min-h-touch items-center gap-1 font-mono text-2xs uppercase tracking-[0.08em]"
+                    style={{ color: "var(--home-ink)" }}
+                  >
+                    Why these picks {showDecisionDetail ? "▴" : "▾"}
+                  </button>
                 </div>
                 <div
                   className="grid gap-px"
                   style={{
-                    gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))",
+                    gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
                     background: "color-mix(in srgb, var(--home-signal) 20%, var(--home-rule))",
+                  }}
+                >
+                  <div
+                    className="flex min-w-0 flex-col gap-0.5 px-3.5 py-2"
+                    style={{ background: "var(--home-paper)" }}
+                  >
+                    <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-signal)" }}>
+                      Best available
+                    </span>
+                    <div className="flex min-w-0 items-center gap-2">
+                      <span className="flex-none font-mono text-sm" style={{ color: "var(--home-ink-muted)" }}>
+                        #{publishedDraftRank(bestAvailable)}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => setDetailPlayer(bestAvailable)}
+                        aria-label={`Open ${bestAvailable.name} detail`}
+                        className="-my-1 min-h-touch min-w-0 truncate text-left text-base font-semibold tracking-[-0.02em]"
+                      >
+                        {bestAvailable.name}
+                      </button>
+                      <span className={POSITION_CHIP_CLASS} style={getPositionTone(bestAvailable.position)}>
+                        {bestAvailable.position}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => logPick(bestAvailable)}
+                        aria-label={`Log ${bestAvailable.name} as pick ${draftState.currentPick}`}
+                        className="ml-auto inline-flex min-h-touch flex-none items-center justify-center rounded-full border px-3.5 font-mono text-3xs uppercase tracking-[0.06em]"
+                        style={{
+                          borderColor: "var(--home-ink)",
+                          background: "var(--home-ink)",
+                          color: "var(--home-paper)",
+                        }}
+                      >
+                        Log
+                      </button>
+                    </div>
+                    <p className="m-0 truncate font-mono text-3xs" style={{ color: "var(--home-ink-muted)" }}>
+                      {bestStripSub}
+                    </p>
+                  </div>
+
+                  <div
+                    className="flex min-w-0 flex-col gap-0.5 px-3.5 py-2"
+                    style={{ background: "var(--home-paper)" }}
+                  >
+                    <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-warning)" }}>
+                      Most at risk{riskDecision ? ` · ${riskDecision.position}` : ""}
+                    </span>
+                    {riskPlayer ? (
+                      <>
+                        <div className="flex min-w-0 items-center gap-2">
+                          <span className="flex-none font-mono text-sm" style={{ color: "var(--home-ink-muted)" }}>
+                            #{publishedDraftRank(riskPlayer)}
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => setDetailPlayer(riskPlayer)}
+                            aria-label={`Open ${riskPlayer.name} detail`}
+                            className="-my-1 min-h-touch min-w-0 truncate text-left text-base font-semibold tracking-[-0.02em]"
+                          >
+                            {riskPlayer.name}
+                          </button>
+                          <span className={POSITION_CHIP_CLASS} style={getPositionTone(riskPlayer.position)}>
+                            {riskPlayer.position}
+                          </span>
+                          {riskPlayer.id !== bestAvailable.id ? (
+                            <button
+                              type="button"
+                              onClick={() => logPick(riskPlayer)}
+                              aria-label={`Log ${riskPlayer.name} as pick ${draftState.currentPick}`}
+                              className="ml-auto inline-flex min-h-touch flex-none items-center justify-center rounded-full border px-3.5 font-mono text-3xs uppercase tracking-[0.06em]"
+                              style={{
+                                borderColor: "var(--home-ink)",
+                                background: "var(--home-ink)",
+                                color: "var(--home-paper)",
+                              }}
+                            >
+                              Log
+                            </button>
+                          ) : null}
+                        </div>
+                        <p className="m-0 truncate font-mono text-3xs" style={{ color: "var(--home-ink-muted)" }}>
+                          {riskStripSub}
+                        </p>
+                      </>
+                    ) : (
+                      <p className="m-0 text-sm" style={{ color: "var(--home-ink-muted)" }}>
+                        {riskStripSub}
+                      </p>
+                    )}
+                  </div>
+
+                  <div
+                    className="flex min-w-0 flex-col gap-0.5 px-3.5 py-2"
+                    style={{ background: "var(--home-paper)" }}
+                    title={stripWait.title}
+                  >
+                    <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+                      If you wait{stripWaitPosition ? ` · ${stripWaitPosition}` : ""}
+                    </span>
+                    <p className="m-0 font-mono text-lg leading-tight tabular-nums">
+                      {stripWait.value}
+                    </p>
+                    <p className="m-0 truncate font-mono text-3xs" style={{ color: "var(--home-ink-muted)" }}>
+                      {stripWait.sub}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          )}
+
+          {!isDraftComplete && redraftDecision.guidanceAvailable && !stripVisible ? (
+            <div className={`${SHELL_CLASS} flex justify-end pt-3`}>
+              <button
+                type="button"
+                onClick={() => setShowDecisionDetail((open) => !open)}
+                aria-expanded={showDecisionDetail}
+                aria-controls="draft-decision-detail"
+                className="inline-flex min-h-touch items-center gap-1 font-mono text-2xs uppercase tracking-[0.08em]"
+                style={{ color: "var(--home-ink-muted)" }}
+              >
+                What changes if you wait {showDecisionDetail ? "▴" : "▾"}
+              </button>
+            </div>
+          ) : null}
+
+          {!isDraftComplete && redraftDecision.guidanceAvailable && showDecisionDetail ? (
+            <div id="draft-decision-detail" className={`${SHELL_CLASS} grid gap-4 pt-3.5`}>
+              {decisionRecs.length > 0 && (
+                <div
+                  className="grid gap-px overflow-hidden rounded-lg border"
+                  style={{
+                    gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))",
+                    borderColor: "var(--home-rule)",
+                    background: "var(--home-rule)",
                   }}
                 >
                   {decisionRecs.map((rec) => (
@@ -1043,7 +1410,7 @@ export function DraftTrackerClient() {
                       </p>
                       <button
                         type="button"
-                        onClick={() => draftPlayer(rec.player)}
+                        onClick={() => logPick(rec.player)}
                         aria-label={`Log ${rec.player.name} as pick ${draftState.currentPick}`}
                         className="mt-0.5 inline-flex min-h-touch items-center justify-center self-start rounded-full border px-4 font-mono text-2xs uppercase tracking-[0.08em]"
                         style={{
@@ -1057,12 +1424,7 @@ export function DraftTrackerClient() {
                     </div>
                   ))}
                 </div>
-              </div>
-            </section>
-          )}
-
-          {!isDraftComplete && redraftDecision.guidanceAvailable ? (
-            <div className={`${SHELL_CLASS} pt-3.5`}>
+              )}
               <RedraftDecisionPanel
                 report={redraftDecision}
                 onOpenPlayer={setDetailPlayer}
@@ -1093,6 +1455,22 @@ export function DraftTrackerClient() {
                   New room
                 </button>
               </div>
+            )}
+
+            {isDraftComplete && draftRecap && draftRecap.totalTurns > 0 && (
+              <div className="mb-4">
+                <DraftRecapPanel recap={draftRecap} totalUserTurns={userTurnTotal} />
+              </div>
+            )}
+            {isDraftComplete && draftRecap && draftRecap.totalTurns === 0 && userTurnTotal > 0 && (
+              <p
+                className="mb-4 mt-0 font-mono text-2xs leading-5"
+                style={{ color: "var(--home-ink-muted)" }}
+              >
+                No model recap. None of your turns carried a recorded recommendation, which
+                usually means draft guidance was unavailable while you picked, for example
+                when the ADP source was stale and the decision strip stayed hidden.
+              </p>
             )}
 
             {!draftSnapshot ? (
@@ -1126,7 +1504,7 @@ export function DraftTrackerClient() {
               <DraftBoard
                 players={draftBoardPlayers}
                 draftedPlayerIds={draftedPlayerIds}
-                onDraftPlayer={draftPlayer}
+                onDraftPlayer={logPick}
                 onOpenDetail={setDetailPlayer}
                 currentPick={draftState.currentPick}
                 currentRound={draftState.currentRound}
@@ -1166,6 +1544,20 @@ export function DraftTrackerClient() {
                     }
                     getTeamName={getTeamName}
                   />
+                )}
+                {!isDraftComplete && draftRecap && draftRecap.totalTurns > 0 && (
+                  <details>
+                    <summary
+                      className="inline-flex min-h-touch cursor-pointer list-none items-center font-mono text-2xs uppercase tracking-[0.08em]"
+                      style={{ color: "var(--home-ink-muted)" }}
+                    >
+                      Model recap so far · {draftRecap.totalTurns} recorded{" "}
+                      {draftRecap.totalTurns === 1 ? "turn" : "turns"} ▾
+                    </summary>
+                    <div className="mt-3">
+                      <DraftRecapPanel recap={draftRecap} totalUserTurns={userTurnTotal} />
+                    </div>
+                  </details>
                 )}
                 <article className="home-card p-5 sm:p-6">
                   <p className="home-kicker mb-1">Room actions</p>
@@ -1277,7 +1669,19 @@ export function DraftTrackerClient() {
         player={detailPlayer}
         publishedRank={detailPlayer ? publishedDraftRank(detailPlayer) : undefined}
         boardTierCount={boardTierCount > 0 ? boardTierCount : undefined}
+        adpAvailable={adpAvailable}
         compareAvailable={false}
+        onLogPick={
+          !showSetup &&
+          !isDraftComplete &&
+          detailPlayer &&
+          !draftedPlayerIds.has(detailPlayer.id)
+            ? (player) => {
+                logPick(player);
+                setDetailPlayer(null);
+              }
+            : undefined
+        }
         onClose={() => setDetailPlayer(null)}
       />
     </section>

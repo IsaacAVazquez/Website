@@ -15,6 +15,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Search, Star, X } from "lucide-react";
 import { useDebounce } from "@/hooks/useDebounce";
 import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
+import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import { usePlayerQueue } from "@/hooks/usePlayerQueue";
 import { usePlayerNotes } from "@/hooks/usePlayerNotes";
 import {
@@ -32,7 +33,7 @@ import {
   FANTASY_AVG_RANK_TOOLTIP,
   FANTASY_EXPERT_SPREAD_TOOLTIP,
   FANTASY_PLAYER_COLUMN_TOOLTIP,
-  FANTASY_POINTS_PER_GAME_TOOLTIP,
+  getFantasyPointsPerGameTooltip,
   FANTASY_PRIOR_SEASON_ADP_TOOLTIP,
   FANTASY_REACH_TOOLTIP,
   FANTASY_VALUE_TOOLTIP,
@@ -47,6 +48,7 @@ import {
   getConsensusAvg,
   getConsensusSpread,
   getFantasyAdpFreshness,
+  getNflRegularSeasonWeek,
   getPositionTone,
   getSnapshotStaleness,
   getSnapshotStalenessLabel,
@@ -727,7 +729,7 @@ function DraftPlayerDrawer({
                 Points per game
                 <MetricTooltip
                   term="Points per game"
-                  definition={FANTASY_POINTS_PER_GAME_TOOLTIP}
+                  definition={getFantasyPointsPerGameTooltip(gameLog)}
                 />
               </span>
               <span
@@ -941,7 +943,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
   const queue = usePlayerQueue();
   const notes = usePlayerNotes();
 
-  const hasManagedParams = ["position", "scoring", "view", "ranking", "teams", "q"].some(
+  const hasManagedParams = ["position", "scoring", "ranking", "teams", "q"].some(
     (param) => searchParams.get(param) !== null
   );
   const routeState = useMemo<FantasySearchState>(
@@ -1021,6 +1023,10 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
     queue.persistenceStatus === "memory-only" || notes.persistenceStatus === "memory-only";
   const adpSource = metadata?.adpSource ?? null;
   const adpFreshness = getFantasyAdpFreshness(adpSource?.asOf, metadata?.season);
+  // From Week 1 the draft boards describe a market that has stopped moving, so
+  // say so instead of looking quietly stale. Every other fantasy surface
+  // carries the same note; the flagship board was the one exception.
+  const seasonalWeek = getNflRegularSeasonWeek(metadata?.season ?? 0);
   const adpAvailable = Boolean(adpSource) && adpFreshness !== "stale";
   const adpSignalsAvailable = Boolean(adpSource) && adpFreshness === "current";
   const adpTooltip = adpFreshness === "prior-season"
@@ -1066,6 +1072,23 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
     vorpIndex,
     vorpMode,
   ]);
+
+  // A slice-scoped search that misses says nothing about the rest of the
+  // snapshot, so check the overall board and offer the jump instead of a dead
+  // end. Overall is the one board that carries every ranked player.
+  const overallSearchHit = useMemo(() => {
+    const query = debouncedQuery.trim().toLowerCase();
+    if (!query || routeState.position === "overall" || filteredPlayers.length > 0) {
+      return false;
+    }
+    // The jump keeps the current ranking mode, so in VORP mode only offer it
+    // when the overall board would actually show the player.
+    return (snapshot?.overall ?? []).some(
+      (candidate) =>
+        getFantasyPlayerSearchText(candidate).includes(query) &&
+        (!vorpMode || vorpIndex.has(candidate.id))
+    );
+  }, [debouncedQuery, routeState.position, filteredPlayers.length, snapshot, vorpMode, vorpIndex]);
 
   const maxTier = useMemo(() => {
     let max = 0;
@@ -1592,6 +1615,23 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
         </div>
       </header>
 
+      {seasonalWeek >= 1 ? (
+        <div className={`${SHELL_CLASS} pb-4`}>
+          <SeasonalScopeNote season={metadata?.season ?? 0} week={seasonalWeek}>
+            Every board on this page is the preseason draft consensus, kept as a
+            reference once games begin rather than refreshed for weekly starts.
+            Ranks that still move are on the{" "}
+            <Link
+              href="/fantasy-football/weekly"
+              className="underline decoration-[var(--home-signal)] underline-offset-4"
+            >
+              weekly board
+            </Link>
+            .
+          </SeasonalScopeNote>
+        </div>
+      ) : null}
+
       <nav
         aria-label="Fantasy tools"
         className={`${SHELL_CLASS} flex flex-wrap items-center gap-1.5 pb-4`}
@@ -2002,17 +2042,29 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                 Show all players
               </button>
             ) : (
-              <button
-                type="button"
-                onClick={() => {
-                  setSearchQuery("");
-                  updateRouteState({ query: "" });
-                }}
-                className="mt-3.5 inline-flex min-h-touch items-center rounded-full border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
-                style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
-              >
-                Clear search
-              </button>
+              <div className="mt-3.5 flex flex-wrap items-center justify-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSearchQuery("");
+                    updateRouteState({ query: "" });
+                  }}
+                  className="inline-flex min-h-touch items-center rounded-full border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
+                  style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
+                >
+                  Clear search
+                </button>
+                {overallSearchHit && (
+                  <button
+                    type="button"
+                    onClick={() => updateRouteState({ position: "overall" })}
+                    className="inline-flex min-h-touch items-center rounded-full border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
+                    style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)", color: "var(--home-ink)" }}
+                  >
+                    Found on the overall board
+                  </button>
+                )}
+              </div>
             )}
           </div>
         ) : (

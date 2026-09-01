@@ -98,6 +98,7 @@ export function DraftBoard({
   const [selectedPosition, setSelectedPosition] = useState<BoardFilter>("ALL");
   const [searchQuery, setSearchQuery] = useState("");
   const [visibleCount, setVisibleCount] = useState(BOARD_PAGE_SIZE);
+  const [highlightIndex, setHighlightIndex] = useState(-1);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const sentinelRef = useRef<HTMLDivElement>(null);
   const debouncedSearch = useDebounce(searchQuery, 200);
@@ -142,10 +143,99 @@ export function DraftBoard({
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional reset on filter change
     setVisibleCount(BOARD_PAGE_SIZE);
+    setHighlightIndex(-1);
   }, [selectedPosition, debouncedSearch]);
+
+  // Any change to the drafted set shifts every row under the highlight, so
+  // drop it rather than let Enter log a player the user never highlighted.
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional reset when rows shift
+    setHighlightIndex(-1);
+  }, [draftedPlayerIds]);
+
+  // "/" focuses the board search from anywhere on the page: slash, type,
+  // arrows, Enter. Skipped while another field has the keystroke.
+  useEffect(() => {
+    function handleSlash(event: KeyboardEvent) {
+      if (
+        event.defaultPrevented ||
+        event.key !== "/" ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.altKey
+      ) {
+        return;
+      }
+      const target = event.target as HTMLElement | null;
+      if (
+        target &&
+        (target.isContentEditable ||
+          ["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName))
+      ) {
+        return;
+      }
+      // The player drawer is a focus-trapped dialog; pulling focus to the
+      // search field behind its scrim would let typing edit an invisible
+      // input and Enter log an unseen pick.
+      if (document.querySelector('[aria-modal="true"]')) {
+        return;
+      }
+      event.preventDefault();
+      searchInputRef.current?.focus();
+      searchInputRef.current?.select();
+    }
+    document.addEventListener("keydown", handleSlash);
+    return () => document.removeEventListener("keydown", handleSlash);
+  }, []);
 
   const windowedPlayers = filteredPlayers.slice(0, visibleCount);
   const hasMore = visibleCount < filteredPlayers.length;
+  const highlightedPlayer =
+    highlightIndex >= 0 ? windowedPlayers[highlightIndex] ?? null : null;
+
+  const scrollHighlightedRow = useCallback((element: HTMLLIElement | null) => {
+    element?.scrollIntoView({ block: "nearest" });
+  }, []);
+
+  function handleSearchKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+      event.preventDefault();
+      if (windowedPlayers.length === 0) return;
+      const step = event.key === "ArrowDown" ? 1 : -1;
+      // From the neutral state, ArrowDown enters the list at the top and
+      // ArrowUp stays neutral; the old math sent both keys to row 0.
+      setHighlightIndex((index) => {
+        if (index < 0) return step === 1 ? 0 : -1;
+        return Math.min(windowedPlayers.length - 1, Math.max(0, index + step));
+      });
+      return;
+    }
+    if (event.key === "Enter") {
+      // The visible list trails the input by the debounce, so Enter mid-window
+      // could log the previous query's player. Wait for the list to settle.
+      if (searchQuery.trim() !== debouncedSearch.trim()) return;
+      // A lone match logs on Enter without arrowing down first; with several
+      // matches the visible count makes the ambiguity plain and Enter waits.
+      const highlighted =
+        highlightedPlayer ??
+        (windowedPlayers.length === 1 ? windowedPlayers[0] : null);
+      if (highlighted) {
+        event.preventDefault();
+        setHighlightIndex(-1);
+        handleDraftPlayer(highlighted);
+      }
+      return;
+    }
+    if (event.key === "Escape") {
+      event.preventDefault();
+      if (searchQuery) {
+        setSearchQuery("");
+        setHighlightIndex(-1);
+      } else {
+        event.currentTarget.blur();
+      }
+    }
+  }
 
   // Auto-extend the window as the sentinel nears the viewport, matching the
   // rankings board: the tier plates flow without a "Load more" control.
@@ -298,15 +388,21 @@ export function DraftBoard({
           <ul className="m-0 list-none p-0">
             {group.rows.map((player) => {
               const isQueued = queue.isQueued(player.id);
+              const isHighlighted = highlightedPlayer?.id === player.id;
               const delta = describeDelta(player);
               const vorp = vorpValues.get(player.id);
               return (
                 <li
                   key={player.id}
+                  ref={isHighlighted ? scrollHighlightedRow : undefined}
                   className="flex flex-wrap items-center gap-x-3.5 gap-y-1 border-t border-l-[3px] py-1 pl-2 pr-3 transition-colors duration-150 hover:bg-[color-mix(in_srgb,var(--home-paper-alt)_55%,transparent)]"
                   style={{
                     borderTopColor: "color-mix(in srgb, var(--home-rule) 60%, transparent)",
-                    borderLeftColor: isQueued ? "var(--home-signal)" : "transparent",
+                    borderLeftColor:
+                      isHighlighted || isQueued ? "var(--home-signal)" : "transparent",
+                    background: isHighlighted
+                      ? "color-mix(in srgb, var(--home-signal) 10%, var(--home-paper-raised))"
+                      : undefined,
                   }}
                 >
                   <span
@@ -482,12 +578,25 @@ export function DraftBoard({
           <label htmlFor="draft-board-search" className="sr-only">
             Search the board
           </label>
+          <span id="draft-board-search-keys" className="sr-only">
+            Press slash to focus search from anywhere. Arrow keys highlight a
+            result, Enter logs the highlighted player, Escape clears.
+          </span>
+          <p aria-live="polite" className="sr-only">
+            {highlightedPlayer
+              ? `${highlightedPlayer.name}, ${highlightedPlayer.position}${
+                  highlightedPlayer.team ? `, ${highlightedPlayer.team}` : ""
+                }. Press Enter to log.`
+              : ""}
+          </p>
           <input
             ref={searchInputRef}
             id="draft-board-search"
             name="draftBoardSearch"
             value={searchQuery}
             onChange={(event) => setSearchQuery(event.target.value)}
+            onKeyDown={handleSearchKeyDown}
+            aria-describedby="draft-board-search-keys"
             autoComplete="off"
             placeholder="Search player or team"
             className="min-h-touch w-48 rounded border px-3 font-mono text-xs"

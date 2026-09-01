@@ -2,6 +2,7 @@ import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 
 import { DraftSetup } from "../DraftSetup";
+import { DRAFT_PRESETS_STORAGE_KEY, type DraftPreset } from "@/lib/draftPresets";
 import type { DraftSettings } from "@/types";
 
 function makeSettings(partial: Partial<DraftSettings> = {}): DraftSettings {
@@ -18,7 +19,48 @@ function makeSettings(partial: Partial<DraftSettings> = {}): DraftSettings {
   };
 }
 
+function renderControlledSetup({
+  settings = makeSettings(),
+  parkedPickCount = 0,
+}: {
+  settings?: DraftSettings;
+  parkedPickCount?: number;
+} = {}) {
+  const onSaveSettings = jest.fn();
+  const onPreviewScoring = jest.fn();
+
+  function Harness() {
+    const [activeSettings, setActiveSettings] = React.useState(settings);
+    return (
+      <DraftSetup
+        settings={activeSettings}
+        onSaveSettings={(nextSettings) => {
+          onSaveSettings(nextSettings);
+          setActiveSettings((current) => ({ ...current, ...nextSettings }));
+        }}
+        onPreviewScoring={(scoringFormat) => {
+          onPreviewScoring(scoringFormat);
+        }}
+        onStartDraft={jest.fn()}
+        rankingsStatus="ready"
+        rankingsError={null}
+        onRetryRankings={jest.fn()}
+        canResume={parkedPickCount > 0}
+        onResume={jest.fn()}
+        parkedPickCount={parkedPickCount}
+      />
+    );
+  }
+
+  render(<Harness />);
+  return { onPreviewScoring, onSaveSettings };
+}
+
 describe("DraftSetup", () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
   it("clamps the draft slot down when the team count drops below it", () => {
     render(
       <DraftSetup
@@ -147,6 +189,76 @@ describe("DraftSetup", () => {
     fireEvent.click(timerOff);
     expect(timerOff).toHaveAttribute("aria-pressed", "true");
     expect(timerNinety).toHaveAttribute("aria-pressed", "false");
+  });
+
+  it("previews scoring without changing the parked room or wiping dirty fields", () => {
+    const { onPreviewScoring, onSaveSettings } = renderControlledSetup({
+      parkedPickCount: 18,
+    });
+
+    fireEvent.change(screen.getByLabelText("League name"), {
+      target: { value: "Edited league" },
+    });
+    fireEvent.change(screen.getByLabelText("Teams"), { target: { value: "10" } });
+    fireEvent.click(screen.getByRole("button", { name: "Std" }));
+
+    expect(screen.getByLabelText("League name")).toHaveValue("Edited league");
+    expect(screen.getByLabelText("Teams")).toHaveValue("10");
+    expect(screen.getByRole("button", { name: "Std" })).toHaveAttribute(
+      "aria-pressed",
+      "true"
+    );
+    expect(onPreviewScoring).toHaveBeenCalledWith("STANDARD");
+    expect(onSaveSettings).not.toHaveBeenCalled();
+  });
+
+  it("keeps every applied preset field local until Start", () => {
+    const preset: DraftPreset = {
+      id: "preset_work",
+      name: "Work league",
+      savedAt: "2026-08-31T00:00:00.000Z",
+      settings: {
+        totalTeams: 8,
+        userTeam: 7,
+        scoringFormat: "STANDARD",
+        draftType: "linear",
+        rounds: 13,
+        lineup: { QB: 1, RB: 1, WR: 3, TE: 2, FLEX: 2, K: 0, DST: 0 },
+        timerSeconds: 60,
+        leagueName: "Work league",
+      },
+    };
+    localStorage.setItem(DRAFT_PRESETS_STORAGE_KEY, JSON.stringify([preset]));
+    const { onPreviewScoring, onSaveSettings } = renderControlledSetup({
+      parkedPickCount: 18,
+    });
+
+    fireEvent.click(screen.getByRole("button", { name: "Apply preset Work league" }));
+
+    expect(screen.getByLabelText("League name")).toHaveValue("Work league");
+    expect(screen.getByLabelText("Teams")).toHaveValue("8");
+    expect(screen.getByLabelText("Your draft slot")).toHaveValue("7");
+    expect(screen.getByLabelText("Rounds")).toHaveValue("13");
+    expect(screen.getByRole("button", { name: "Std" })).toHaveAttribute(
+      "aria-pressed",
+      "true"
+    );
+    expect(screen.getByRole("button", { name: "Linear" })).toHaveAttribute(
+      "aria-pressed",
+      "true"
+    );
+    expect(screen.getByRole("button", { name: "60s" })).toHaveAttribute(
+      "aria-pressed",
+      "true"
+    );
+    expect(screen.getByLabelText("Running backs")).toHaveValue("1");
+    expect(screen.getByLabelText("Wide receivers")).toHaveValue("3");
+    expect(screen.getByLabelText("Tight ends")).toHaveValue("2");
+    expect(screen.getByLabelText("Flex spots")).toHaveValue("2");
+    expect(screen.getByLabelText("Kickers")).toHaveValue("0");
+    expect(screen.getByLabelText("Defenses")).toHaveValue("0");
+    expect(onPreviewScoring).toHaveBeenCalledWith("STANDARD");
+    expect(onSaveSettings).not.toHaveBeenCalled();
   });
 
   it("keeps Start disabled while rankings load", () => {

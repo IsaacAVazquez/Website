@@ -161,7 +161,6 @@ function renderClient(initial?: Partial<{
       initialState={{
         position: (initial?.position ?? "rb") as never,
         scoring: (initial?.scoring ?? "ppr") as never,
-        view: "list",
         ranking: initial?.ranking ?? "consensus",
         teams: initial?.teams ?? 12,
         query: initial?.query ?? "",
@@ -177,7 +176,7 @@ describe("FantasyFootballClient", () => {
 
     render(
       <FantasyFootballClient
-        initialState={{ position: "rb", scoring: "ppr", view: "list", ranking: "consensus", teams: 12, query: "" }}
+        initialState={{ position: "rb", scoring: "ppr", ranking: "consensus", teams: 12, query: "" }}
         initialSnapshot={seed}
       />
     );

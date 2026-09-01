@@ -110,7 +110,7 @@ export function getCurrentPickNumber(state: FantasyCompanionDraftState): number 
   return state.picks.length + 1;
 }
 
-export function getTotalDraftPicks(state: FantasyCompanionDraftState): number {
+function getTotalDraftPicks(state: FantasyCompanionDraftState): number {
   return state.room.teams * state.room.rounds;
 }
 

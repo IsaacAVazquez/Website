@@ -17,6 +17,7 @@ import {
   formatAdp,
   formatOwnership,
   getConsensusSpread,
+  getFantasyPointsPerGameTooltip,
   getPositionTone,
   getValueVsAdp,
   formatPickDelta,
@@ -51,7 +52,21 @@ interface PlayerDetailDrawerProps {
    * appeared. A surface without a tray passes false and the button does not render.
    */
   compareAvailable?: boolean;
+  /**
+   * Draft-room surfaces pass this to log the open player as the current pick,
+   * so the drawer is a decision point rather than a dead end. Callers withhold
+   * it for drafted players and outside a live draft.
+   */
+  onLogPick?: (player: Player) => void;
   onClose: () => void;
+}
+
+/** "↑3" means up the board (better rank or earlier ADP); "↓3" the reverse. */
+function formatBoardMove(value: number): string {
+  if (value === 0) return "±0";
+  const magnitude =
+    Math.abs(value) % 1 === 0 ? String(Math.abs(value)) : Math.abs(value).toFixed(1);
+  return `${value > 0 ? "↑" : "↓"}${magnitude}`;
 }
 
 function StatCell({ label, children }: { label: string; children: React.ReactNode }) {
@@ -82,6 +97,7 @@ export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onCl
   adpAvailable = true,
   valueSignalAvailable = true,
   compareAvailable = true,
+  onLogPick,
 }: PlayerDetailDrawerProps) {
   const reduceMotion = useReducedMotion();
   const panelRef = useRef<HTMLDivElement>(null);
@@ -235,6 +251,20 @@ export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onCl
 
             {/* Quick actions */}
             <div className="flex flex-wrap gap-2">
+              {onLogPick && (
+                <button
+                  type="button"
+                  onClick={() => onLogPick(player)}
+                  className="inline-flex min-h-touch flex-1 items-center justify-center gap-2 rounded-full border px-4 text-sm font-semibold"
+                  style={{
+                    borderColor: "var(--home-ink)",
+                    background: "var(--home-ink)",
+                    color: "var(--home-paper)",
+                  }}
+                >
+                  Log this pick
+                </button>
+              )}
               <button
                 type="button"
                 onClick={() => queue.toggle(player.id)}
@@ -288,6 +318,92 @@ export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onCl
               <StatCell label="Rostered">{formatOwnership(player.ownership)}</StatCell>
             </div>
 
+            {/* Board movement, present only once the committed rank history is
+                old enough for the window. Positive means up the board. */}
+            {(Number.isFinite(player.rankMove7d) ||
+              Number.isFinite(player.rankMove14d) ||
+              Number.isFinite(player.adpMove7d) ||
+              Number.isFinite(player.adpMove14d)) && (
+              <p
+                className="m-0 font-mono text-2xs leading-5"
+                style={{ color: "var(--home-ink-muted)" }}
+              >
+                <MetricTooltip
+                  term="Movement"
+                  definition="Movement against the published snapshot from 7 and 14 days back. An up arrow means he moved up the board, ranked higher or drafted earlier."
+                />
+                {": "}
+                {[
+                  Number.isFinite(player.rankMove7d)
+                    ? `rank ${formatBoardMove(player.rankMove7d as number)} in 7d`
+                    : null,
+                  Number.isFinite(player.rankMove14d)
+                    ? `${formatBoardMove(player.rankMove14d as number)} in 14d`
+                    : null,
+                  Number.isFinite(player.adpMove7d)
+                    ? `ADP ${formatBoardMove(player.adpMove7d as number)} in 7d`
+                    : null,
+                  Number.isFinite(player.adpMove14d)
+                    ? `${formatBoardMove(player.adpMove14d as number)} in 14d`
+                    : null,
+                ]
+                  .filter(Boolean)
+                  .join(" · ")}
+              </p>
+            )}
+
+            {/* Prior-season points per game, history rather than a projection.
+                Compact variant of the rankings drawer's panel: the four
+                figures without the tick bar. */}
+            {player.gameLog && (
+              <div>
+                <div className="flex flex-wrap items-baseline justify-between gap-x-2.5 gap-y-0.5">
+                  <span
+                    className="inline-flex items-center text-2xs font-semibold uppercase tracking-[0.12em]"
+                    style={{ color: "var(--home-ink-muted)" }}
+                  >
+                    Points per game
+                    <MetricTooltip
+                      term="Points per game"
+                      definition={getFantasyPointsPerGameTooltip(player.gameLog)}
+                    />
+                  </span>
+                  <span
+                    className="font-mono text-3xs uppercase tracking-[0.1em]"
+                    style={{ color: "var(--home-ink-muted)" }}
+                  >
+                    {player.gameLog.season} season · {player.gameLog.games}{" "}
+                    {player.gameLog.games === 1 ? "game" : "games"}
+                  </span>
+                </div>
+                <dl className="mt-1.5 grid grid-cols-4 gap-2">
+                  {(
+                    [
+                      { label: "Low", value: player.gameLog.low, muted: true },
+                      { label: "Median", value: player.gameLog.median, muted: false },
+                      { label: "Avg", value: player.gameLog.average, muted: false },
+                      { label: "High", value: player.gameLog.high, muted: true },
+                    ] as const
+                  ).map((cell) => (
+                    <div key={cell.label}>
+                      <dt
+                        className="text-2xs font-semibold uppercase tracking-[0.12em]"
+                        style={{ color: "var(--home-ink-muted)" }}
+                      >
+                        {cell.label}
+                      </dt>
+                      <dd
+                        className="m-0 mt-0.5 font-mono text-2xs tabular-nums"
+                        style={{ color: cell.muted ? "var(--home-ink-muted)" : "var(--home-ink)" }}
+                      >
+                        {cell.value.toFixed(1)}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            )}
+
             {/* ADP + value signal */}
             {adpAvailable && Number.isFinite(player.adp) && (
               <div
@@ -307,8 +423,12 @@ export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onCl
                   </p>
                   <p className="text-base font-semibold tabular-nums">{formatAdp(player.adp)}</p>
                   {(Number.isFinite(player.adpTimesDrafted) ||
-                    Number.isFinite(player.adpStandardDeviation)) && (
+                    Number.isFinite(player.adpStandardDeviation) ||
+                    (Number.isFinite(player.adpHigh) && Number.isFinite(player.adpLow))) && (
                     <p className="mt-0.5 text-2xs leading-4" style={{ color: "var(--home-ink-muted)" }}>
+                      {Number.isFinite(player.adpHigh) && Number.isFinite(player.adpLow)
+                        ? `Drafted between picks ${formatAdp(player.adpHigh)} and ${formatAdp(player.adpLow)} · `
+                        : ""}
                       {Number.isFinite(player.adpTimesDrafted)
                         ? `${Math.round(player.adpTimesDrafted as number)} mock selections`
                         : "Sample count unavailable"}

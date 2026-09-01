@@ -166,6 +166,23 @@ jobs:
                 }
                 if (!Number.isFinite(vorpAsOf) || vorpAsOf > Date.now() + futureSkewToleranceMs) {
                   failures.push(format + ' VORP source asOf is missing, invalid, or future-dated');
+                } else {
+                  // Age check, same limits as the ADP and best-ball gates. The
+                  // VORP fetch retains the previous board on failure with no
+                  // maximum age, so without this a silently failing fetch
+                  // produces green runs forever. Recorded as vorp_dark rather
+                  // than thrown: a stale VORP overlay must not withhold fresh
+                  // validated rankings, but the terminal report step turns the
+                  // run red so the outage is noticed.
+                  const vorpAgeDays = (Date.now() - vorpAsOf) / 86400000;
+                  const inDraftSeason = new Date().getUTCMonth() >= 6; // the daily-lane months, July through December, matching isDailyRefreshWindow
+                  const vorpWarnLimit = inDraftSeason ? 2 : 8;
+                  const vorpFailLimit = inDraftSeason ? 4 : 14;
+                  if (vorpAgeDays > vorpFailLimit) {
+                    warnings.push(format + ' VORP source is ' + vorpAgeDays.toFixed(1) + ' days old, past the ' + vorpFailLimit + '-day limit; the retained board is stale');
+                  } else if (vorpAgeDays > vorpWarnLimit) {
+                    console.log('::warning::' + format + ' VORP source is ' + vorpAgeDays.toFixed(1) + ' days old (warn above ' + vorpWarnLimit + ', fail above ' + vorpFailLimit + ')');
+                  }
                 }
               }
 
@@ -297,7 +314,7 @@ jobs:
             // The builder fail-softs each source to the previous snapshot's asOf.
             // Record the failure here without skipping the other lane's commit,
             // using the same age boundaries the deployed tools enforce.
-            const inDraftSeason = [6, 7, 8].includes(new Date().getUTCMonth());
+            const inDraftSeason = new Date().getUTCMonth() >= 6; // the daily-lane months, July through December, matching isDailyRefreshWindow
             const sourceWarnLimit = inDraftSeason ? 2 : 8;
             const sourceFailLimit = inDraftSeason ? 4 : 14;
             const futureSkewToleranceDays = 5 / 1440;
@@ -314,7 +331,7 @@ jobs:
             const scheduleAgeDays = (now - Date.parse(bestBall.scheduleSource?.asOf || '')) / 86400000;
             console.log('best-ball: players=' + playerCount + ' experts=' + rankingExperts + ' superflex=' + superflexMatches + ' adp=' + adpMatches + ' week17=' + scheduleTeams + ' built=' + generatedAgeDays.toFixed(1) + 'd');
             if (playerCount < 250) failures.push('best-ball has ' + playerCount + ' players (need >= 250)');
-            if (rankingExperts < 5) failures.push('best-ball has ' + rankingExperts + ' ranking experts (need >= 5)');
+            if (rankingExperts < 4) failures.push('best-ball has ' + rankingExperts + ' ranking experts (need >= 4)');
             if (superflexMatches < 150) failures.push('best-ball has ' + superflexMatches + ' Superflex matches (need >= 150)');
             if (adpMatches < 150) failures.push('best-ball has ' + adpMatches + ' ADP matches (need >= 150)');
             if (scheduleTeams < 30) failures.push('best-ball has ' + scheduleTeams + ' Week 17 team mappings (need >= 30)');
@@ -363,7 +380,7 @@ jobs:
           const formats = ['ppr', 'half_ppr', 'standard'];
 
           const now = Date.now();
-          const inDraftSeason = [6, 7, 8].includes(new Date().getUTCMonth());
+          const inDraftSeason = new Date().getUTCMonth() >= 6; // the daily-lane months, July through December, matching isDailyRefreshWindow
           const ageWarnLimit = inDraftSeason ? 2 : 8;
           const ageFailLimit = inDraftSeason ? 4 : 14;
           const futureSkewToleranceDays = 5 / 1440;
@@ -417,6 +434,7 @@ jobs:
             src/data/fantasyAdpData.generated.ts \
             src/data/fantasyGameLogData.generated.ts \
             src/data/fantasyVorpData.generated.ts \
+            src/data/fantasyRankHistory.generated.json \
             src/data/fantasySnapshotRevision.generated.ts \
             public/data/fantasy/ppr.json \
             public/data/fantasy/half_ppr.json \
@@ -437,6 +455,7 @@ jobs:
             src/data/fantasyAdpData.generated.ts \
             src/data/fantasyGameLogData.generated.ts \
             src/data/fantasyVorpData.generated.ts \
+            src/data/fantasyRankHistory.generated.json \
             src/data/fantasySnapshotRevision.generated.ts \
             public/data/fantasy/ppr.json \
             public/data/fantasy/half_ppr.json \
@@ -525,13 +544,14 @@ jobs:
           echo "**Redraft gates:** freshness ${{ steps.verify_freshness.outcome }} · quality ${{ steps.verify_quality.outcome }}" >> "$GITHUB_STEP_SUMMARY"
           echo "**Best ball build:** ${{ steps.build_best_ball.outcome }} · **gate:** ${{ steps.verify_best_ball.outcome }} · **committed:** ${{ steps.check_best_ball_changes.outputs.changed }}" >> "$GITHUB_STEP_SUMMARY"
           echo "**Redraft ADP past its age limit:** ${{ steps.adp_health.outputs.adp_dark }}" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Redraft VORP board absent for a league size:** ${{ steps.verify_quality.outputs.vorp_dark }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Redraft VORP board absent or stale:** ${{ steps.verify_quality.outputs.vorp_dark }}" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "### Public artifacts" >> "$GITHUB_STEP_SUMMARY"
           echo "- src/data/fantasyPositionData.generated.ts" >> "$GITHUB_STEP_SUMMARY"
           echo "- src/data/fantasyAdpData.generated.ts" >> "$GITHUB_STEP_SUMMARY"
           echo "- src/data/fantasyGameLogData.generated.ts" >> "$GITHUB_STEP_SUMMARY"
           echo "- src/data/fantasyVorpData.generated.ts" >> "$GITHUB_STEP_SUMMARY"
+          echo "- src/data/fantasyRankHistory.generated.json" >> "$GITHUB_STEP_SUMMARY"
           echo "- src/data/fantasySnapshotRevision.generated.ts" >> "$GITHUB_STEP_SUMMARY"
           echo "- public/data/fantasy/ppr.json" >> "$GITHUB_STEP_SUMMARY"
           echo "- public/data/fantasy/half_ppr.json" >> "$GITHUB_STEP_SUMMARY"

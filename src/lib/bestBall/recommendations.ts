@@ -1,5 +1,6 @@
 import type { Player } from "@/types";
 import { isUndraftedFloorAdp } from "@/lib/draftAnalytics";
+import { hasReliableAdpSample } from "@/lib/fantasyUtils";
 import {
   DEFAULT_BEST_BALL_CONTEST_ID,
   getContestPreset,
@@ -40,9 +41,13 @@ function teamOf(player: Player): string {
 }
 
 function hasUsableAdp(player: Player, rounds: number, teams: number): boolean {
+  // Underdog ADP publishes no per-player sample count, so the shared sample
+  // check passes an absent count and only rejects a published one under the
+  // floor, the same semantic the redraft display signals use.
   return (
     isFiniteNumber(player.adp) &&
     player.adp > 0 &&
+    hasReliableAdpSample(player) &&
     !isUndraftedFloorAdp(player.adp, rounds, teams)
   );
 }
@@ -84,7 +89,8 @@ function countWeek17GameStacks(
 function tierCliffSignal(
   candidate: RankedBestBallPlayer,
   available: readonly RankedBestBallPlayer[],
-  useSuperflexTier: boolean
+  useSuperflexTier: boolean,
+  teams: number
 ): { value: number; remainingInTier: number; gap: number } {
   const empty = { value: 0, remainingInTier: 0, gap: 0 };
   const tierOf = (player: RankedBestBallPlayer): number | undefined =>
@@ -118,8 +124,10 @@ function tierCliffSignal(
   const gap = Math.max(0, Math.min(...nextTierRanks) - Math.max(...sameTierRanks));
 
   // A tier with one player left is fully urgent; four or more left is not scarce at all.
+  // Magnitude saturates at one full round of picks in this room, so a six-team
+  // preset reads a six-pick gap as fully scarce rather than half.
   const urgency = clamp((4 - sameTier.length) / 3, 0, 1);
-  const magnitude = clamp(gap / 12, 0, 1);
+  const magnitude = clamp(gap / teams, 0, 1);
 
   return { value: urgency * magnitude, remainingInTier: sameTier.length, gap };
 }
@@ -356,15 +364,13 @@ export function recommendBestBallPlayers({
   const rankById = new Map(rankedPlayers.map((player) => [player.id, player]));
   const round = Math.floor((Math.max(1, currentPickNumber) - 1) / preset.teams) + 1;
   const targets = getAdaptiveRosterTargets(userPicks, contestId, round);
-  const nextUserPick = getNextUserPick(
+  const followingUserPick = getNextUserPick(
     currentPickNumber,
     userTeamNumber,
     preset.teams,
-    preset.rounds
+    preset.rounds,
+    { strictlyAfter: true }
   );
-  const followingUserPick = nextUserPick === currentPickNumber
-    ? getNextUserPick(currentPickNumber + 1, userTeamNumber, preset.teams, preset.rounds)
-    : nextUserPick;
 
   // rankedPlayers is already board-sorted, so each position list stays in board order.
   const availableByPosition = new Map<BestBallPosition, RankedBestBallPlayer[]>();
@@ -523,7 +529,8 @@ export function recommendBestBallPlayers({
       const cliff = tierCliffSignal(
         ranking,
         availableByPosition.get(position) ?? [],
-        useSuperflexBoard
+        useSuperflexBoard,
+        preset.teams
       );
       const waitEntry = waitCostByPosition.get(position) ?? { kind: "unmeasurable" as const };
       const waitCost = waitEntry.kind === "measured" ? waitEntry.cost : null;

@@ -7,7 +7,7 @@ import {
   hasReliableFantasyReplacementMarket,
   type FantasyReplacementCutoff,
 } from "@/lib/fantasyReplacement";
-import { getAdpSignalThreshold } from "@/lib/fantasyUtils";
+import { getAdpSurvivalThreshold } from "@/lib/fantasyUtils";
 import { clamp } from "@/lib/utils";
 import type {
   Player,
@@ -15,7 +15,7 @@ import type {
   TeamRoster,
 } from "@/types";
 
-export const REDRAFT_DRAFT_DECISION_MODEL_VERSION = "redraft-decision-v1";
+export const REDRAFT_DRAFT_DECISION_MODEL_VERSION = "redraft-decision-v2";
 
 export const REDRAFT_DECISION_POSITIONS = ["QB", "RB", "WR", "TE"] as const;
 export type RedraftDecisionPosition = (typeof REDRAFT_DECISION_POSITIONS)[number];
@@ -46,6 +46,12 @@ export interface RedraftDraftDecisionInput {
   currentPick: number;
   rankingUsable: boolean;
   marketCurrent: boolean;
+  /**
+   * Projected season points above replacement per player id, when the source
+   * covers this league size. Lets the wait reading price a survivor drop in
+   * points instead of only ordinal rank; omit it and every reading stays ordinal.
+   */
+  vorpValues?: ReadonlyMap<string, { value: number }>;
 }
 
 export interface RedraftReplacementReading {
@@ -75,6 +81,8 @@ export interface RedraftWaitSurvivor {
   expertRank: number;
   rankCost: number;
   replacementDrop: number;
+  /** Projected season points below the best option now; null without VORP coverage for both players. */
+  pointsDrop: number | null;
 }
 
 export type RedraftWaitReading =
@@ -277,11 +285,13 @@ function tierReading({
   positionBoard,
   draftedIds,
   overallRankById,
+  teams,
 }: {
   best: Player | null;
   positionBoard: readonly Player[];
   draftedIds: ReadonlySet<string>;
   overallRankById: ReadonlyMap<string, number>;
+  teams: number;
 }): RedraftTierReading {
   if (!best) return emptyTierReading();
   const bestOnPositionBoard = positionBoard.find((player) => player.id === best.id);
@@ -320,9 +330,11 @@ function tierReading({
     .filter((rank): rank is number => rank !== null);
   const positionRank = positionBoardRank(bestOnPositionBoard);
   const urgency = clamp((4 - sameTier.length) / 3, 0, 1);
+  // One round of picks is the yardstick for a cliff, so the same gap reads
+  // steeper in an 8-team room than a 16-team room.
   const magnitude = overallBoardGap === null
     ? null
-    : clamp(overallBoardGap / 12, 0, 1);
+    : clamp(overallBoardGap / teams, 0, 1);
 
   return {
     tier,
@@ -347,15 +359,25 @@ function tierReading({
 function survivorReading(
   player: Player,
   best: RedraftReplacementReading,
-  valueById: ReadonlyMap<string, RedraftReplacementReading>
+  valueById: ReadonlyMap<string, RedraftReplacementReading>,
+  vorpValues: ReadonlyMap<string, { value: number }> | undefined
 ): RedraftWaitSurvivor | null {
   const reading = valueById.get(player.id);
   if (!reading) return null;
+  const bestVorp = vorpValues?.get(best.player.id)?.value;
+  const survivorVorp = vorpValues?.get(player.id)?.value;
   return {
     player,
     expertRank: reading.expertRank,
     rankCost: roundOne(Math.max(0, reading.expertRank - best.expertRank)),
     replacementDrop: roundOne(Math.max(0, best.value - reading.value)),
+    pointsDrop:
+      typeof bestVorp === "number" &&
+      Number.isFinite(bestVorp) &&
+      typeof survivorVorp === "number" &&
+      Number.isFinite(survivorVorp)
+        ? roundOne(Math.max(0, bestVorp - survivorVorp))
+        : null,
   };
 }
 
@@ -366,6 +388,7 @@ function waitReading({
   userOnClock,
   followingUserPick,
   marketCurrent,
+  vorpValues,
 }: {
   available: readonly Player[];
   best: RedraftReplacementReading | null;
@@ -373,6 +396,7 @@ function waitReading({
   userOnClock: boolean;
   followingUserPick: number | null;
   marketCurrent: boolean;
+  vorpValues: ReadonlyMap<string, { value: number }> | undefined;
 }): RedraftWaitReading {
   if (!userOnClock) {
     return {
@@ -430,12 +454,12 @@ function waitReading({
   );
   const plausibleEntry = priced.find(
     (entry) =>
-      Number(entry.player.adp) + getAdpSignalThreshold(entry.player) >=
+      Number(entry.player.adp) + getAdpSurvivalThreshold(entry.player) >=
       followingUserPick
   );
   const saferEntry = priced.find(
     (entry) =>
-      Number(entry.player.adp) - getAdpSignalThreshold(entry.player) >=
+      Number(entry.player.adp) - getAdpSurvivalThreshold(entry.player) >=
       followingUserPick
   );
   const firstRelevantRank = midpointEntry?.rank ?? plausibleEntry?.rank ?? Number.POSITIVE_INFINITY;
@@ -446,7 +470,7 @@ function waitReading({
   );
   const coverage = missingPriceBeforeReading ? "limited" : "supported";
   const plausibleSurvivor = plausibleEntry
-    ? survivorReading(plausibleEntry.player, best, valueById)
+    ? survivorReading(plausibleEntry.player, best, valueById, vorpValues)
     : null;
 
   if (!midpointEntry) {
@@ -458,7 +482,7 @@ function waitReading({
     };
   }
 
-  const survivor = survivorReading(midpointEntry.player, best, valueById);
+  const survivor = survivorReading(midpointEntry.player, best, valueById, vorpValues);
   if (!survivor) {
     return {
       kind: "unmeasurable",
@@ -473,7 +497,7 @@ function waitReading({
     survivor,
     plausibleSurvivor,
     saferSurvivor: saferEntry
-      ? survivorReading(saferEntry.player, best, valueById)
+      ? survivorReading(saferEntry.player, best, valueById, vorpValues)
       : null,
     coverage,
   };
@@ -573,6 +597,7 @@ export function calculateRedraftDraftDecision(
       positionBoard: input.positionBoards[position] ?? [],
       draftedIds,
       overallRankById,
+      teams: input.room.teams,
     });
     const wait = waitReading({
       available,
@@ -581,6 +606,7 @@ export function calculateRedraftDraftDecision(
       userOnClock,
       followingUserPick,
       marketCurrent: input.marketCurrent,
+      vorpValues: input.vorpValues,
     });
     return { position, need: needs[position], bestAvailable: best, tier, wait };
   });
@@ -657,13 +683,44 @@ export function describeRedraftTier(entry: RedraftPositionDecision): string {
   }
   const next = tier.nextTierPositionRank === null
     ? "No later published tier is available."
-    : `The next tier begins at ${entry.position}${Math.round(tier.nextTierPositionRank)}.`;
+    : `The next tier begins at ${entry.position}${Math.round(tier.nextTierPositionRank)}${
+        tier.overallBoardGap !== null
+          ? `, about ${Math.round(tier.overallBoardGap)} overall picks down the board`
+          : ""
+      }.`;
   return `${entry.position}${Math.round(tier.positionRank)} sits in positional Tier ${tier.tier}, with ${tier.remaining} ${tier.remaining === 1 ? "player" : "players"} left. ${next}`;
 }
 
 export function describeRedraftWait(wait: RedraftWaitReading): string {
   if (wait.kind === "measured") {
-    return `At pick #${wait.nextPick}, the market midpoint moves to ${wait.survivor.player.name}. That is ${wait.survivor.rankCost.toFixed(0)} consensus spots and ${wait.survivor.replacementDrop.toFixed(1)} replacement index points below the best option now.`;
+    const detail = `${wait.survivor.rankCost.toFixed(0)} consensus spots and ${wait.survivor.replacementDrop.toFixed(1)} replacement index points`;
+    const roundedPoints =
+      wait.survivor.pointsDrop !== null ? Math.round(wait.survivor.pointsDrop) : null;
+    const base =
+      roundedPoints !== null && roundedPoints >= 1
+        ? `At pick #${wait.nextPick}, the market midpoint moves to ${wait.survivor.player.name}. Waiting costs about ${roundedPoints} projected season points (${detail}) against the best option now.`
+        : roundedPoints !== null
+          ? // A drop that rounds to zero must not read as "waiting is free".
+            `At pick #${wait.nextPick}, the market midpoint moves to ${wait.survivor.player.name}. Waiting costs less than one projected season point (${detail}) against the best option now.`
+          : `At pick #${wait.nextPick}, the market midpoint moves to ${wait.survivor.player.name}. That is ${detail} below the best option now.`;
+    // The band survivors were computed all along and answer the two questions
+    // the midpoint cannot: who can be counted on, and what the best case is.
+    const extras: string[] = [];
+    if (wait.saferSurvivor && wait.saferSurvivor.player.id !== wait.survivor.player.id) {
+      extras.push(
+        `${wait.saferSurvivor.player.name} is the safer bet to last, with his whole published range clearing that pick.`
+      );
+    }
+    if (
+      wait.plausibleSurvivor &&
+      wait.plausibleSurvivor.player.id !== wait.survivor.player.id &&
+      wait.plausibleSurvivor.player.id !== wait.saferSurvivor?.player.id
+    ) {
+      extras.push(
+        `In the best case, ${wait.plausibleSurvivor.player.name} is still there inside the uncertainty band.`
+      );
+    }
+    return [base, ...extras].join(" ");
   }
   if (wait.kind === "no-priced-survivor") {
     return wait.plausibleSurvivor

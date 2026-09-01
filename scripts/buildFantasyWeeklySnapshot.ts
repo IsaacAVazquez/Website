@@ -10,6 +10,7 @@ import {
 } from "@/lib/fantasyWeeklySource";
 import {
   FANTASY_WEEKLY_SNAPSHOT_SCHEMA_VERSION,
+  FANTASY_WEEKLY_STARTABLE_DEPTH,
   normalizeFantasyWeeklySnapshot,
   type FantasyWeeklyBoard,
   type FantasyWeeklyBoardSource,
@@ -138,6 +139,26 @@ async function main() {
     console.log(`Rest-of-season board is available: ${ros.players.length} players for ${ros.season}.`);
   } catch (error) {
     console.log(`Rest-of-season board not usable yet: ${(error as Error).message}`);
+  }
+
+  // Absolute floors, applied to every build including the first board of a
+  // new week. The same-week regression check below only fires when a previous
+  // snapshot for the same week exists, so without these a truncated first
+  // fetch of the week would publish unchecked. The startable depth is the
+  // minimum the waiver math needs to mean anything.
+  for (const scoring of scoringKeys) {
+    const flexCount = snapshot.boards[scoring].flex.length;
+    const quarterbackCount = snapshot.boards[scoring].quarterbacks.length;
+    if (flexCount < FANTASY_WEEKLY_STARTABLE_DEPTH.flex) {
+      throw new Error(
+        `Weekly ${scoring} flex board has ${flexCount} players, below the ${FANTASY_WEEKLY_STARTABLE_DEPTH.flex} startable-depth floor. Refusing to publish.`
+      );
+    }
+    if (quarterbackCount < FANTASY_WEEKLY_STARTABLE_DEPTH.quarterback) {
+      throw new Error(
+        `Weekly ${scoring} quarterback board has ${quarterbackCount} players, below the ${FANTASY_WEEKLY_STARTABLE_DEPTH.quarterback} startable-depth floor. Refusing to publish.`
+      );
+    }
   }
 
   if (previous && previous.week === snapshot.week && previous.season === snapshot.season) {

@@ -138,7 +138,8 @@ function normalizeSourcedPlayers(
   positionOverride?: Player["position"],
   adpIndex?: FantasyAdpIndex | null,
   gameLogIndex?: FantasyAdpIndex<FantasyGameLogEntry> | null,
-  gameLogSeason?: number | null
+  gameLogSeason?: number | null,
+  gameLogThroughWeek?: number | null
 ): Player[] {
   return dedupePlayers(players)
     .map((player) => {
@@ -157,6 +158,9 @@ function normalizeSourcedPlayers(
           gameLogEntry && typeof gameLogSeason === "number"
             ? {
                 season: gameLogSeason,
+                ...(typeof gameLogThroughWeek === "number"
+                  ? { throughWeek: gameLogThroughWeek }
+                  : {}),
                 games: gameLogEntry.games,
                 low: gameLogEntry.low,
                 median: gameLogEntry.median,
@@ -200,18 +204,34 @@ function buildPositionSlice(
   position: Player["position"],
   adpIndex?: FantasyAdpIndex | null,
   gameLogIndex?: FantasyAdpIndex<FantasyGameLogEntry> | null,
-  gameLogSeason?: number | null
+  gameLogSeason?: number | null,
+  gameLogThroughWeek?: number | null
 ): Player[] {
-  return normalizeSourcedPlayers(players, position, adpIndex, gameLogIndex, gameLogSeason);
+  return normalizeSourcedPlayers(
+    players,
+    position,
+    adpIndex,
+    gameLogIndex,
+    gameLogSeason,
+    gameLogThroughWeek
+  );
 }
 
 function buildOverallSlice(
   players: Player[],
   adpIndex?: FantasyAdpIndex | null,
   gameLogIndex?: FantasyAdpIndex<FantasyGameLogEntry> | null,
-  gameLogSeason?: number | null
+  gameLogSeason?: number | null,
+  gameLogThroughWeek?: number | null
 ): Player[] {
-  return normalizeSourcedPlayers(players, undefined, adpIndex, gameLogIndex, gameLogSeason);
+  return normalizeSourcedPlayers(
+    players,
+    undefined,
+    adpIndex,
+    gameLogIndex,
+    gameLogSeason,
+    gameLogThroughWeek
+  );
 }
 
 function buildFlexSlice(overallPlayers: Player[]): Player[] {
@@ -289,6 +309,7 @@ export function buildFantasySnapshot(scoring: FantasyRouteScoring): FantasySnaps
   const gameLogIndex =
     gameLogDataset.entries.length > 0 ? buildFantasyAdpIndex(gameLogDataset.entries) : null;
   const gameLogSeason = gameLogDataset.season;
+  const gameLogThroughWeek = gameLogDataset.throughWeek;
 
   const sliceMetadata = {
     overall: buildUnavailableSlice(buildUnavailableReason(scoring, "overall")).metadata,
@@ -312,7 +333,13 @@ export function buildFantasySnapshot(scoring: FantasyRouteScoring): FantasySnaps
   } satisfies FantasySnapshot["positions"];
 
   const overallSourcePlayers = getFantasyOverallData(scoringFormat);
-  const overallPlayers = buildOverallSlice(overallSourcePlayers, adpIndex, gameLogIndex, gameLogSeason);
+  const overallPlayers = buildOverallSlice(
+    overallSourcePlayers,
+    adpIndex,
+    gameLogIndex,
+    gameLogSeason,
+    gameLogThroughWeek
+  );
   const overallUpdatedAt = getSliceUpdatedAt(overallPlayers) ?? sourceMetadata.upstreamUpdatedAt;
 
   const snapshotPlayerIds = new Set(overallPlayers.map((player) => player.id));
@@ -388,7 +415,14 @@ export function buildFantasySnapshot(scoring: FantasyRouteScoring): FantasySnaps
       continue;
     }
 
-    const builtPlayers = buildPositionSlice(sourcePlayers, position, adpIndex, gameLogIndex, gameLogSeason);
+    const builtPlayers = buildPositionSlice(
+      sourcePlayers,
+      position,
+      adpIndex,
+      gameLogIndex,
+      gameLogSeason,
+      gameLogThroughWeek
+    );
     const updatedAt = getSliceUpdatedAt(builtPlayers);
     positions[position] = builtPlayers;
     sliceMetadata[routePosition] = buildAvailableSlice(

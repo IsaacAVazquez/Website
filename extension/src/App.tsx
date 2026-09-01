@@ -62,6 +62,7 @@ import {
   calculateRedraftDraftDecision,
   type RedraftDraftDecisionReport,
   describeRedraftNeed,
+  describeRedraftTier,
   describeRedraftWait,
 } from "@/lib/redraftDraftDecision";
 import {
@@ -623,8 +624,7 @@ function RedraftDecisionSummary({
                     <b>Index {best.value.toFixed(1)}</b>
                   </div>
                   <p>
-                    {entry.tier.positionRank !== null ? `${entry.position}${Math.round(entry.tier.positionRank)}` : entry.position}
-                    {entry.tier.tier !== null ? ` · Tier ${entry.tier.tier} · ${entry.tier.remaining} left` : " · Tier unavailable"}
+                    {describeRedraftTier(entry)}
                     <br />
                     Starter line {best.starterCutoff === null ? "unavailable" : `overall #${Math.round(best.starterCutoff)}`}
                     {` · Roster line ${best.rosterCutoff === null ? "unavailable" : `overall #${Math.round(best.rosterCutoff)}`}`}
@@ -827,6 +827,7 @@ function DraftConsole({
       : null;
   const sourceCapabilities = getFantasySourceCapabilities({
     rankingAsOf: rankingSourceAsOf,
+    vorpAsOf: redraftSnapshot?.vorpSource?.asOf,
     marketAsOf: snapshot?.data.adpSource?.asOf,
     scheduleAsOf: bestBallSnapshot?.scheduleSource?.asOf,
     season: snapshot?.data.season,
@@ -933,6 +934,16 @@ function DraftConsole({
           sourceRank(left, room) - sourceRank(right, room);
       });
   }, [available, baseRanks, guidanceRanks, position, query, room]);
+  const vorpTeamSize = room.kind === "redraft" && isFantasyVorpTeamSize(room.teams)
+    ? room.teams
+    : null;
+  const vorpById = useMemo(
+    () =>
+      redraftSnapshot?.vorpSource && vorpTeamSize && sourceCapabilities.vorp.usable
+        ? buildFantasyVorpIndex(redraftSnapshot.vorpRankings, vorpTeamSize)
+        : new Map<string, FantasyVorpRankingEntry>(),
+    [redraftSnapshot, sourceCapabilities.vorp.usable, vorpTeamSize]
+  );
   const redraftDecision = useMemo(
     () => redraftSnapshot && room.kind === "redraft"
       ? calculateRedraftDraftDecision({
@@ -954,23 +965,14 @@ function DraftConsole({
           currentPick,
           rankingUsable,
           marketCurrent: adpAvailable,
+          vorpValues: vorpById,
         })
       : null,
-    [adpAvailable, currentPick, modelPicks, modelPlayers, rankingUsable, redraftSnapshot, room]
+    [adpAvailable, currentPick, modelPicks, modelPlayers, rankingUsable, redraftSnapshot, room, vorpById]
   );
   const replacementById = useMemo(
     () => new Map(redraftDecision?.playerValues.map((entry) => [entry.player.id, entry.value]) ?? []),
     [redraftDecision]
-  );
-  const vorpTeamSize = room.kind === "redraft" && isFantasyVorpTeamSize(room.teams)
-    ? room.teams
-    : null;
-  const vorpById = useMemo(
-    () =>
-      redraftSnapshot?.vorpSource && vorpTeamSize
-        ? buildFantasyVorpIndex(redraftSnapshot.vorpRankings, vorpTeamSize)
-        : new Map<string, FantasyVorpRankingEntry>(),
-    [redraftSnapshot, vorpTeamSize]
   );
   const redraftPositionFacts = useMemo(() => {
     const facts = new Map<string, { positionRank: number | null; tier: number | null }>();

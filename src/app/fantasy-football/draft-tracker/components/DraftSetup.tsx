@@ -3,16 +3,30 @@
 import { useEffect, useState, type CSSProperties } from "react";
 import type { DraftSettings, RedraftLineupSettings, ScoringFormat } from "@/types";
 import {
+  DRAFT_PRESETS_STORAGE_KEY,
+  MAX_DRAFT_PRESETS,
+  decodeDraftPresets,
+  describeDraftPreset,
+  toDraftPresetSettings,
+  type DraftPreset,
+} from "@/lib/draftPresets";
+import {
   REDRAFT_LINEUP_PRESETS,
   countRedraftStartingSlots,
   normalizeRedraftLineup,
   redraftLineupSummary,
 } from "@/lib/redraftLineup";
 import { MONO_LABEL_CLASS } from "@/lib/fantasyUtils";
+import { FANTASY_SCORING_LABELS, scoringFormatToRouteScoring } from "@/lib/fantasy";
 
 interface DraftSetupProps {
   settings: DraftSettings;
   onSaveSettings: (settings: Partial<DraftSettings>) => void;
+  /**
+   * Selects the setup screen's rankings snapshot without changing the parked
+   * room. The full form is still committed through onSaveSettings at Start.
+   */
+  onPreviewScoring?: (scoringFormat: ScoringFormat) => void;
   onStartDraft: () => void;
   rankingsStatus: "loading" | "error" | "ready";
   rankingsError: string | null;
@@ -119,6 +133,7 @@ function SegmentedButtons<Value extends string | number>({
 export function DraftSetup({
   settings,
   onSaveSettings,
+  onPreviewScoring,
   onStartDraft,
   rankingsStatus,
   rankingsError,
@@ -130,6 +145,8 @@ export function DraftSetup({
   const [formState, setFormState] = useState<DraftSettings>(settings);
   const [isStarting, setIsStarting] = useState(false);
   const [startArmed, setStartArmed] = useState(false);
+  const [presets, setPresets] = useState<DraftPreset[]>([]);
+  const [presetName, setPresetName] = useState("");
   const startingSlots = countRedraftStartingSlots(formState.lineup);
   const lineupTooLarge = startingSlots > formState.rounds;
   const rankingsReady = rankingsStatus === "ready";
@@ -145,6 +162,18 @@ export function DraftSetup({
     // eslint-disable-next-line react-hooks/set-state-in-effect -- Sync local form state when external draft settings change (controlled-to-local mirror)
     setFormState(settings);
   }, [settings]);
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(DRAFT_PRESETS_STORAGE_KEY);
+      if (raw) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- hydrate saved presets once on mount
+        setPresets(decodeDraftPresets(JSON.parse(raw)));
+      }
+    } catch {
+      // Presets are a convenience; a blocked read just leaves the list empty.
+    }
+  }, []);
 
   function updateField<Key extends keyof DraftSettings>(field: Key, value: DraftSettings[Key]) {
     setFormState((current) => {
@@ -168,13 +197,54 @@ export function DraftSetup({
   }
 
   function updateScoringFormat(scoringFormat: ScoringFormat) {
-    const nextState = { ...formState, scoringFormat };
-    setFormState(nextState);
+    setFormState((current) => ({ ...current, scoringFormat }));
+    // Snapshot selection is a preview. Publishing it through onSaveSettings
+    // mutates a parked room and sends the changed settings prop back through
+    // the mirror effect above, which also wipes every unsaved form field.
+    onPreviewScoring?.(scoringFormat);
+  }
 
-    // Scoring selects the snapshot itself, so publish this setting before the
-    // user starts. The parent can load and verify the selected board while the
-    // setup screen is still visible instead of opening an empty draft room.
-    onSaveSettings(nextState);
+  function persistPresets(next: DraftPreset[]) {
+    setPresets(next);
+    try {
+      localStorage.setItem(DRAFT_PRESETS_STORAGE_KEY, JSON.stringify(next));
+    } catch {
+      // A blocked write only skips the save; the applied form is unaffected.
+    }
+  }
+
+  function applyPreset(preset: DraftPreset) {
+    setFormState((current) => ({
+      ...current,
+      ...preset.settings,
+      lineup: { ...preset.settings.lineup },
+    }));
+    // Keep all room settings local until Start. The separate preview callback
+    // lets the parent load this scoring board without editing the parked room.
+    onPreviewScoring?.(preset.settings.scoringFormat);
+  }
+
+  function saveCurrentPreset() {
+    const fallbackName =
+      formState.leagueName?.trim() ||
+      `${formState.totalTeams}-team ${FANTASY_SCORING_LABELS[scoringFormatToRouteScoring(formState.scoringFormat)]}`;
+    const name = (presetName.trim() || fallbackName).slice(0, 40);
+    const preset: DraftPreset = {
+      id: `preset_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`,
+      name,
+      savedAt: new Date().toISOString(),
+      settings: toDraftPresetSettings(formState),
+    };
+    // Saving under an existing name replaces that preset rather than piling up
+    // near-duplicates of the same league.
+    persistPresets(
+      [preset, ...presets.filter((entry) => entry.name !== name)].slice(0, MAX_DRAFT_PRESETS)
+    );
+    setPresetName("");
+  }
+
+  function deletePreset(id: string) {
+    persistPresets(presets.filter((entry) => entry.id !== id));
   }
 
   function handleStartDraft() {
@@ -229,6 +299,74 @@ export function DraftSetup({
             Back to room →
           </button>
         ) : null}
+      </div>
+
+      <div
+        className="grid gap-2.5 border-b px-4 py-3.5 sm:px-5"
+        style={{ borderColor: "var(--home-rule)" }}
+      >
+        <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+          League presets
+        </span>
+        {presets.length > 0 ? (
+          <div className="flex flex-wrap gap-1.5">
+            {presets.map((preset) => (
+              <span
+                key={preset.id}
+                className="inline-flex items-center overflow-hidden rounded-full border"
+                style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)" }}
+              >
+                <button
+                  type="button"
+                  onClick={() => applyPreset(preset)}
+                  title={describeDraftPreset(preset)}
+                  aria-label={`Apply preset ${preset.name}`}
+                  className="inline-flex min-h-touch items-center px-3 font-mono text-2xs"
+                  style={{ color: "var(--home-ink)" }}
+                >
+                  {preset.name}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => deletePreset(preset.id)}
+                  aria-label={`Delete preset ${preset.name}`}
+                  className="inline-flex min-h-touch min-w-touch items-center justify-center border-l"
+                  style={{ borderColor: "var(--home-rule)", color: "var(--home-ink-muted)" }}
+                >
+                  ×
+                </button>
+              </span>
+            ))}
+          </div>
+        ) : null}
+        <div className="flex flex-wrap items-center gap-2">
+          <label htmlFor="draft-preset-name" className="sr-only">
+            Preset name
+          </label>
+          <input
+            id="draft-preset-name"
+            name="presetName"
+            value={presetName}
+            onChange={(event) => setPresetName(event.target.value.slice(0, 40))}
+            maxLength={40}
+            placeholder="Name these settings"
+            autoComplete="off"
+            className="min-h-touch w-56 rounded border px-3 font-mono text-xs"
+            style={FIELD_STYLE}
+          />
+          <button
+            type="button"
+            onClick={saveCurrentPreset}
+            className={PILL_BUTTON_CLASS}
+            style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)", color: "var(--home-ink)" }}
+          >
+            Save current settings
+          </button>
+        </div>
+        <p className="m-0 font-mono text-3xs leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
+          A preset stores teams, slot, rounds, scoring, order, clock, lineup, and league name on
+          this device. Applying one fills the form and starts nothing.
+        </p>
       </div>
 
       <div

@@ -31,7 +31,7 @@ export function fantasyVorpTeamSizeKey(
   return String(teamSize) as FantasyVorpTeamSizeKey;
 }
 
-export function getFantasyVorpRanking(
+function getFantasyVorpRanking(
   rankings: FantasyVorpRankings | null | undefined,
   teamSize: FantasyVorpTeamSize
 ): readonly FantasyVorpRankingEntry[] {

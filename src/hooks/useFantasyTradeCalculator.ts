@@ -21,6 +21,8 @@ interface UseFantasyTradeCalculatorResult {
   persistenceStatus: PersistenceStatus;
   addPlayer: (side: "give" | "get", playerId: string) => void;
   removePlayer: (side: "give" | "get", playerId: string) => void;
+  /** Replace both sides at once, as when a shared URL seeds the deal. */
+  replaceDeal: (givePlayerIds: string[], getPlayerIds: string[]) => void;
   swapSides: () => void;
   clear: () => void;
 }
@@ -101,6 +103,13 @@ export function useFantasyTradeCalculator(
     [commit]
   );
 
+  const replaceDeal = useCallback(
+    (givePlayerIds: string[], getPlayerIds: string[]) => {
+      commit(() => ({ givePlayerIds, getPlayerIds }));
+    },
+    [commit]
+  );
+
   const swapSides = useCallback(() => {
     commit((latest) => ({
       givePlayerIds: latest.getPlayerIds,
@@ -118,6 +127,7 @@ export function useFantasyTradeCalculator(
     persistenceStatus,
     addPlayer,
     removePlayer,
+    replaceDeal,
     swapSides,
     clear,
   };

@@ -205,7 +205,20 @@ localStorage via dedicated hooks. Reference: `PERSONAL_INTEREST_TOOLS.md`.
   forecast. Players under the four-game floor and anyone unmatched (rookies, most
   notably) carry no `gameLog` and the panel simply does not render. The builder
   tries the current season first and falls back to the prior one, so the rollover
-  needs no manual edit.
+  needs no manual edit; `gameLog.throughWeek` carries the last covered week and
+  `getFantasyPointsPerGameTooltip` names the actual season instead of assuming the
+  prior one.
+- The snapshot build also maintains `src/data/fantasyRankHistory.generated.json`, a
+  rolling 17-day history of overall ECR and ADP per player (one dated reading per
+  run, `src/lib/fantasyRankHistory.ts`), and stamps `rankMove7d/14d` and
+  `adpMove7d/14d` onto the overall and flex boards (past minus current, so positive
+  means up the board). Position boards stay unstamped because they rank on their
+  own scale.
+- The redraft tracker keeps two localStorage surfaces beyond the room itself:
+  per-turn recommendation telemetry (`fantasy-draft-telemetry-v1-<draftId>`,
+  `src/lib/draftTelemetry.ts` — outcomes derive from the final pick log, never
+  stored) behind the post-draft recap and turn replay, and named league presets
+  (`fantasy-draft-presets-v1`, `src/lib/draftPresets.ts`) on the setup screen.
 - `useFantasySnapshot` is the single client entry point.
 - Best ball ships separately at `public/data/fantasy/best-ball.json`, with consensus rankings, Underdog ADP, bye weeks, and Week 17 opponents. `useBestBallSnapshot` is its client entry point, and `src/lib/bestBall/` owns contest presets and draft recommendations (`contests.ts`, `draft.ts`, `rankings.ts`, `recommendations.ts`, `strategy.ts`). Keep best ball state and roster logic separate from the redraft tracker.
 - The in-season weekly board ships at `public/data/fantasy/weekly.json` (schema v1), built by `npm run update:fantasy:weekly` (`scripts/buildFantasyWeeklySnapshot.ts`) from the FantasyPros weekly FLEX and QB consensus pages through `src/lib/fantasyWeeklySource.ts`. FantasyPros publishes no single overall board in season, so FLEX stands in for the Overall tab, and flex and quarterback ranks stay in separate rank spaces because a flex rank of 12 and a quarterback rank of 12 are not comparable. `src/lib/fantasyWeeklySnapshot.ts` owns the schema, the reader's validator, and the waiver reading, which is a published rank percentile minus a published rostered percentage and models no bid, projection, or points total. The rest-of-season URLs in the source module are wired but still serve the prior season, so the season check correctly rejects them. `/fantasy-football/weekly` renders the snapshot (`weekly-client.tsx`, via `useFantasyWeeklySnapshot`); until the season's first weekly board publishes, the hook maps the missing file to a `notPublished` state and the route explains that the board opens with Week 1.

@@ -3,6 +3,8 @@ import {
   FANTASY_VALUE_TOOLTIP,
   ADP_SIGNAL_MIN_TIMES_DRAFTED,
   getAdpSignalThreshold,
+  getAdpSurvivalThreshold,
+  getFantasyPointsPerGameTooltip,
   getConsensusSpread,
   getFantasyAdpFreshness,
   getFantasyDraftMarketSignals,
@@ -214,6 +216,7 @@ describe("getFantasySourceCapabilities", () => {
   it("separates current model inputs from a stale schedule", () => {
     const capabilities = getFantasySourceCapabilities({
       rankingAsOf: "2026-08-21T00:00:00.000Z",
+      vorpAsOf: "2026-08-21T00:00:00.000Z",
       marketAsOf: "2026-08-21T00:00:00.000Z",
       scheduleAsOf: "2026-08-01T00:00:00.000Z",
       season: 2026,
@@ -221,12 +224,25 @@ describe("getFantasySourceCapabilities", () => {
     });
 
     expect(capabilities.ranking).toEqual({ freshness: "fresh", usable: true });
+    expect(capabilities.vorp).toEqual({ freshness: "fresh", usable: true });
     expect(capabilities.market).toEqual({
       freshness: "current",
       usable: true,
       current: true,
     });
     expect(capabilities.schedule).toEqual({ freshness: "stale", usable: false });
+  });
+
+  it("withholds a retained same-season VORP board after the daily stale boundary", () => {
+    const capabilities = getFantasySourceCapabilities({
+      rankingAsOf: "2026-08-21T00:00:00.000Z",
+      vorpAsOf: "2026-08-16T23:59:59.000Z",
+      season: 2026,
+      now: new Date("2026-08-22T00:00:00.000Z"),
+    });
+
+    expect(capabilities.ranking).toEqual({ freshness: "fresh", usable: true });
+    expect(capabilities.vorp).toEqual({ freshness: "stale", usable: false });
   });
 
   it("keeps prior-season ADP as a labeled reference outside draft season", () => {
@@ -448,6 +464,43 @@ describe("getValueVsAdp", () => {
   });
 });
 
+describe("getAdpSurvivalThreshold", () => {
+  it("ignores expert disagreement, unlike the value/reach signal threshold", () => {
+    const player = playerWith({
+      adpStandardDeviation: 4,
+      standardDeviation: 30,
+      adpTimesDrafted: 100,
+    });
+
+    expect(getAdpSurvivalThreshold(player)).toBe(6);
+    expect(getAdpSignalThreshold(player)).toBe(31);
+  });
+
+  it("tracks the published market spread above the six-pick floor", () => {
+    const player = playerWith({
+      adpStandardDeviation: 8,
+      standardDeviation: 20,
+      adpTimesDrafted: 100,
+    });
+
+    expect(getAdpSurvivalThreshold(player)).toBe(8);
+  });
+
+  it("falls back to the observed ADP range, still without expert spread", () => {
+    const player = playerWith({
+      adpHigh: 10,
+      adpLow: 50,
+      standardDeviation: 30,
+    });
+
+    expect(getAdpSurvivalThreshold(player)).toBe(10);
+  });
+
+  it("keeps the legacy ten-pick threshold when no spread is published", () => {
+    expect(getAdpSurvivalThreshold(playerWith({}))).toBe(10);
+  });
+});
+
 describe("getFantasyDraftMarketSignals", () => {
   it("returns the largest value and reach gaps in market order", () => {
     const signals = getFantasyDraftMarketSignals(
@@ -509,6 +562,18 @@ describe("getTierRailIntensity", () => {
 });
 
 describe("tooltip copy", () => {
+  it("names the season and through-week the game log actually covers", () => {
+    expect(getFantasyPointsPerGameTooltip({ season: 2025, throughWeek: 18 })).toContain(
+      "from the 2025 regular season through week 18"
+    );
+    expect(getFantasyPointsPerGameTooltip({ season: 2025 })).toContain(
+      "from the 2025 regular season,"
+    );
+    expect(getFantasyPointsPerGameTooltip()).toContain(
+      "from the prior completed regular season"
+    );
+  });
+
   it("honors the writing voice (no em dashes, no colon-as-connector labels)", () => {
     expect(FANTASY_VALUE_TOOLTIP).not.toContain("—");
     expect(FANTASY_REACH_TOOLTIP).not.toContain("—");

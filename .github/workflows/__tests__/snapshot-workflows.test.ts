@@ -198,7 +198,7 @@ describe("snapshot refresh workflow infrastructure", () => {
     expect(workflow).toContain("const TOP_BOARD_SIZE = 150");
     expect(workflow).toContain("const MIN_COVERAGE = 0.9");
     expect(workflow).toContain("top-board ADP coverage");
-    expect(workflow).toContain("rankingExperts < 5");
+    expect(workflow).toContain("rankingExperts < 4");
   });
 
   it("commits the generated VORP source, validates every published VORP board, and only warns when one is absent", () => {

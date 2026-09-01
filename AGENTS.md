@@ -413,7 +413,7 @@ The MLB, NBA, and NFL dashboards read committed TypeScript snapshots at runtime.
 | `npm run analyze` | Analyzer-enabled build that still runs npm `postbuild` |
 | `npm run build:analyze` | Analyzer-enabled `next build` without npm `postbuild` |
 | `npm run build:fantasy-companion` | Build the private fantasy draft companion extension into `extension/dist` with packaged snapshot copies; not part of the site build. See `docs/FANTASY_DRAFT_COMPANION.md` |
-| `npm run update:fantasy` | Generate fantasy position data, ADP, prior-season per-game scoring, and snapshot JSON |
+| `npm run update:fantasy` | Generate fantasy position data, ADP, prior-season per-game scoring, snapshot JSON, and the rolling rank movement history |
 | `npm run update:investments` | Fetch investment data and build compact snapshots |
 | `npm run update:football` | Rebuild both Premier League and La Liga snapshots |
 | `npm run update:premier-league` | Rebuild the checked-in Premier League snapshot |
