@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-02T13:44:47.214Z",
+  "generatedAt": "2026-09-02T23:24:07.336Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -128,7 +128,7 @@
       {
         "id": "upcoming",
         "label": "Upcoming queue",
-        "value": "125",
+        "value": "126",
         "description": "currently published future SpaceX missions from Launch Library 2"
       },
       {
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-09-02T13:44:38.845Z"
+    "generatedAt": "2026-09-02T23:24:00.515Z"
   },
   "upcomingLaunches": [
     {
@@ -195,11 +195,11 @@
     },
     {
       "id": "3e0456da-14b1-4ac3-b59e-35fefb1d1530",
-      "name": "USSF-xxx (\"R-2\")",
+      "name": "USSF-153",
       "flightNumber": 727,
       "upcoming": true,
       "success": null,
-      "details": "Note: Actual USSF launch mission number to be confirmed.\r\n\r\nClassified mission for the United States Space Force. It is possibly a batch of classified LEO satellites for a US government entity based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches.",
+      "details": "USSF-153 is a classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites for a US government entity based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches.",
       "dateUtc": "2026-09-10T15:37:00Z",
       "dateUnix": 1789054620,
       "dateLocal": "2026-09-10T15:37:00Z",
@@ -2473,11 +2473,11 @@
     },
     "3e0456da-14b1-4ac3-b59e-35fefb1d1530": {
       "id": "3e0456da-14b1-4ac3-b59e-35fefb1d1530",
-      "name": "USSF-xxx (\"R-2\")",
+      "name": "USSF-153",
       "flightNumber": 727,
       "upcoming": true,
       "success": null,
-      "details": "Note: Actual USSF launch mission number to be confirmed.\r\n\r\nClassified mission for the United States Space Force. It is possibly a batch of classified LEO satellites for a US government entity based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches.",
+      "details": "USSF-153 is a classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites for a US government entity based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches.",
       "dateUtc": "2026-09-10T15:37:00Z",
       "dateUnix": 1789054620,
       "dateLocal": "2026-09-10T15:37:00Z",
@@ -2496,8 +2496,8 @@
       "hasExactTime": true,
       "isStaleSchedule": false,
       "links": {
-        "webcast": null,
-        "article": null,
+        "webcast": "https://x.com/i/broadcasts/1nxnRBWejLOxO",
+        "article": "https://www.spacex.com/launches/ussf153",
         "wikipedia": "https://en.wikipedia.org/wiki/United_States_Space_Force",
         "presskit": null,
         "redditLaunch": null,
@@ -2511,7 +2511,7 @@
         ]
       },
       "staticFireDateUtc": null,
-      "window": 13380,
+      "window": 10800,
       "failures": [],
       "rocket": {
         "id": "164",
@@ -2551,7 +2551,7 @@
       "payloads": [
         {
           "id": "7722",
-          "name": "USSF-xxx (\"R-2\")",
+          "name": "USSF-153",
           "type": "Government/Top Secret",
           "customers": [
             "United States Space Force"
@@ -2832,6 +2832,6 @@
       }
     ],
     "rangeLabel": "Oct 25 – Sep 26",
-    "generatedAt": "2026-09-02T13:44:47.213Z"
+    "generatedAt": "2026-09-02T23:24:07.336Z"
   }
 }
