@@ -9,7 +9,7 @@ import type {
 } from "@/lib/fantasyProsVorpSource";
 import type { ScoringFormat } from "@/types";
 
-export const fantasyVorpDataGeneratedAt = "2026-09-01T19:46:00.973Z";
+export const fantasyVorpDataGeneratedAt = "2026-09-02T19:38:53.524Z";
 
 export interface FantasyVorpDataset {
   season: number;
@@ -26,7 +26,7 @@ export const fantasyVorpData: Record<
     "10": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-      "accessedAt": "2026-09-01T19:46:01.655Z",
+      "accessedAt": "2026-09-02T19:38:53.975Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -224,7 +224,7 @@ export const fantasyVorpData: Record<
           "position": "WR",
           "positionRank": 9,
           "rank": 22,
-          "value": 112
+          "value": 114
         },
         {
           "playerId": "fp-22982",
@@ -1640,12 +1640,21 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
+          "playerId": "fp-19562",
+          "name": "Juwan Johnson",
+          "team": "NO",
+          "position": "TE",
+          "positionRank": 16,
+          "rank": 180,
+          "value": 0
+        },
+        {
           "playerId": "fp-27291",
           "name": "Andy Borregales",
           "team": "NE",
           "position": "K",
           "positionRank": 21,
-          "rank": 180,
+          "rank": 181,
           "value": 0
         },
         {
@@ -1654,7 +1663,7 @@ export const fantasyVorpData: Record<
           "team": "HOU",
           "position": "RB",
           "positionRank": 44,
-          "rank": 181,
+          "rank": 182,
           "value": 0
         },
         {
@@ -1663,15 +1672,6 @@ export const fantasyVorpData: Record<
           "team": "KC",
           "position": "DST",
           "positionRank": 24,
-          "rank": 182,
-          "value": 0
-        },
-        {
-          "playerId": "fp-19562",
-          "name": "Juwan Johnson",
-          "team": "NO",
-          "position": "TE",
-          "positionRank": 16,
           "rank": 183,
           "value": 0
         },
@@ -1793,12 +1793,21 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
+          "playerId": "fp-25533",
+          "name": "Blake Grupe",
+          "team": "NYJ",
+          "position": "K",
+          "positionRank": 25,
+          "rank": 197,
+          "value": 0
+        },
+        {
           "playerId": "fp-19794",
           "name": "Rashod Bateman",
           "team": "BAL",
           "position": "WR",
           "positionRank": 63,
-          "rank": 197,
+          "rank": 198,
           "value": 0
         },
         {
@@ -1807,7 +1816,7 @@ export const fantasyVorpData: Record<
           "team": "TB",
           "position": "WR",
           "positionRank": 64,
-          "rank": 198,
+          "rank": 199,
           "value": 0
         },
         {
@@ -1816,7 +1825,7 @@ export const fantasyVorpData: Record<
           "team": "MIN",
           "position": "WR",
           "positionRank": 65,
-          "rank": 199,
+          "rank": 200,
           "value": 0
         },
         {
@@ -1825,7 +1834,7 @@ export const fantasyVorpData: Record<
           "team": "SF",
           "position": "DST",
           "positionRank": 30,
-          "rank": 200,
+          "rank": 201,
           "value": 0
         },
         {
@@ -1833,8 +1842,8 @@ export const fantasyVorpData: Record<
           "name": "Riley Patterson",
           "team": "MIA",
           "position": "K",
-          "positionRank": 25,
-          "rank": 201,
+          "positionRank": 26,
+          "rank": 202,
           "value": 0
         },
         {
@@ -1842,8 +1851,8 @@ export const fantasyVorpData: Record<
           "name": "Joey Slye",
           "team": "TEN",
           "position": "K",
-          "positionRank": 26,
-          "rank": 202,
+          "positionRank": 27,
+          "rank": 203,
           "value": 0
         },
         {
@@ -1852,7 +1861,7 @@ export const fantasyVorpData: Record<
           "team": "HOU",
           "position": "TE",
           "positionRank": 19,
-          "rank": 203,
+          "rank": 204,
           "value": 0
         },
         {
@@ -1861,7 +1870,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "DST",
           "positionRank": 31,
-          "rank": 204,
+          "rank": 205,
           "value": 0
         },
         {
@@ -1870,7 +1879,7 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "DST",
           "positionRank": 32,
-          "rank": 205,
+          "rank": 206,
           "value": 0
         },
         {
@@ -1879,7 +1888,7 @@ export const fantasyVorpData: Record<
           "team": "BAL",
           "position": "WR",
           "positionRank": 66,
-          "rank": 206,
+          "rank": 207,
           "value": 0
         },
         {
@@ -1887,8 +1896,8 @@ export const fantasyVorpData: Record<
           "name": "Chad Ryland",
           "team": "ARI",
           "position": "K",
-          "positionRank": 27,
-          "rank": 207,
+          "positionRank": 28,
+          "rank": 208,
           "value": 0
         },
         {
@@ -1897,7 +1906,7 @@ export const fantasyVorpData: Record<
           "team": "SEA",
           "position": "RB",
           "positionRank": 45,
-          "rank": 208,
+          "rank": 209,
           "value": 0
         },
         {
@@ -1906,15 +1915,6 @@ export const fantasyVorpData: Record<
           "team": "NO",
           "position": "RB",
           "positionRank": 46,
-          "rank": 209,
-          "value": 0
-        },
-        {
-          "playerId": "fp-25533",
-          "name": "Blake Grupe",
-          "team": "NYJ",
-          "position": "K",
-          "positionRank": 28,
           "rank": 210,
           "value": 0
         },
@@ -1955,20 +1955,20 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-24333",
-          "name": "Isiah Pacheco",
-          "team": "DET",
-          "position": "RB",
-          "positionRank": 48,
-          "rank": 215,
-          "value": 0
-        },
-        {
           "playerId": "fp-26409",
           "name": "Devaughn Vele",
           "team": "NO",
           "position": "WR",
           "positionRank": 68,
+          "rank": 215,
+          "value": 0
+        },
+        {
+          "playerId": "fp-24333",
+          "name": "Isiah Pacheco",
+          "team": "DET",
+          "position": "RB",
+          "positionRank": 48,
           "rank": 216,
           "value": 0
         },
@@ -2198,12 +2198,21 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
+          "playerId": "fp-24354",
+          "name": "Dontayvion Wicks",
+          "team": "PHI",
+          "position": "WR",
+          "positionRank": 75,
+          "rank": 242,
+          "value": 0
+        },
+        {
           "playerId": "fp-26038",
           "name": "Chris Bell",
           "team": "MIA",
           "position": "WR",
-          "positionRank": 75,
-          "rank": 242,
+          "positionRank": 76,
+          "rank": 243,
           "value": 0
         },
         {
@@ -2212,7 +2221,7 @@ export const fantasyVorpData: Record<
           "team": "ARI",
           "position": "RB",
           "positionRank": 55,
-          "rank": 243,
+          "rank": 244,
           "value": 0
         },
         {
@@ -2221,7 +2230,7 @@ export const fantasyVorpData: Record<
           "team": "SEA",
           "position": "TE",
           "positionRank": 26,
-          "rank": 244,
+          "rank": 245,
           "value": 0
         },
         {
@@ -2230,7 +2239,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "TE",
           "positionRank": 27,
-          "rank": 245,
+          "rank": 246,
           "value": 0
         },
         {
@@ -2239,7 +2248,7 @@ export const fantasyVorpData: Record<
           "team": "BUF",
           "position": "RB",
           "positionRank": 56,
-          "rank": 246,
+          "rank": 247,
           "value": 0
         },
         {
@@ -2247,8 +2256,8 @@ export const fantasyVorpData: Record<
           "name": "Antonio Williams",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 76,
-          "rank": 247,
+          "positionRank": 77,
+          "rank": 248,
           "value": 0
         },
         {
@@ -2256,8 +2265,8 @@ export const fantasyVorpData: Record<
           "name": "Caleb Douglas",
           "team": "MIA",
           "position": "WR",
-          "positionRank": 77,
-          "rank": 248,
+          "positionRank": 78,
+          "rank": 249,
           "value": 0
         },
         {
@@ -2265,8 +2274,8 @@ export const fantasyVorpData: Record<
           "name": "Omar Cooper Jr.",
           "team": "NYJ",
           "position": "WR",
-          "positionRank": 78,
-          "rank": 249,
+          "positionRank": 79,
+          "rank": 250,
           "value": 0
         },
         {
@@ -2274,23 +2283,14 @@ export const fantasyVorpData: Record<
           "name": "Travis Hunter",
           "team": "JAC",
           "position": "WR",
-          "positionRank": 79,
-          "rank": 250,
+          "positionRank": 80,
+          "rank": 251,
           "value": 0
         },
         {
           "playerId": "fp-25332",
           "name": "Xavier Hutchinson",
           "team": "HOU",
-          "position": "WR",
-          "positionRank": 80,
-          "rank": 251,
-          "value": 0
-        },
-        {
-          "playerId": "fp-24354",
-          "name": "Dontayvion Wicks",
-          "team": "PHI",
           "position": "WR",
           "positionRank": 81,
           "rank": 252,
@@ -2495,21 +2495,12 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-17533",
-          "name": "Jason Sanders",
-          "team": "FA",
-          "position": "K",
-          "positionRank": 33,
-          "rank": 275,
-          "value": 0
-        },
-        {
           "playerId": "fp-24205",
           "name": "Malik Davis",
           "team": "DAL",
           "position": "RB",
           "positionRank": 63,
-          "rank": 276,
+          "rank": 275,
           "value": 0
         },
         {
@@ -2518,7 +2509,7 @@ export const fantasyVorpData: Record<
           "team": "SF",
           "position": "RB",
           "positionRank": 64,
-          "rank": 277,
+          "rank": 276,
           "value": 0
         },
         {
@@ -2527,7 +2518,7 @@ export const fantasyVorpData: Record<
           "team": "LV",
           "position": "WR",
           "positionRank": 92,
-          "rank": 278,
+          "rank": 277,
           "value": 0
         },
         {
@@ -2536,7 +2527,7 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "QB",
           "positionRank": 26,
-          "rank": 279,
+          "rank": 278,
           "value": 0
         },
         {
@@ -2545,7 +2536,7 @@ export const fantasyVorpData: Record<
           "team": "NYG",
           "position": "RB",
           "positionRank": 65,
-          "rank": 280,
+          "rank": 279,
           "value": 0
         },
         {
@@ -2554,7 +2545,7 @@ export const fantasyVorpData: Record<
           "team": "NYG",
           "position": "WR",
           "positionRank": 93,
-          "rank": 281,
+          "rank": 280,
           "value": 0
         },
         {
@@ -2563,7 +2554,7 @@ export const fantasyVorpData: Record<
           "team": "DET",
           "position": "WR",
           "positionRank": 94,
-          "rank": 282,
+          "rank": 281,
           "value": 0
         },
         {
@@ -2572,7 +2563,7 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "TE",
           "positionRank": 33,
-          "rank": 283,
+          "rank": 282,
           "value": 0
         },
         {
@@ -2581,7 +2572,7 @@ export const fantasyVorpData: Record<
           "team": "CIN",
           "position": "WR",
           "positionRank": 95,
-          "rank": 284,
+          "rank": 283,
           "value": 0
         },
         {
@@ -2590,7 +2581,7 @@ export const fantasyVorpData: Record<
           "team": "TEN",
           "position": "QB",
           "positionRank": 27,
-          "rank": 285,
+          "rank": 284,
           "value": 0
         },
         {
@@ -2599,7 +2590,7 @@ export const fantasyVorpData: Record<
           "team": "TB",
           "position": "WR",
           "positionRank": 96,
-          "rank": 286,
+          "rank": 285,
           "value": 0
         },
         {
@@ -2608,7 +2599,7 @@ export const fantasyVorpData: Record<
           "team": "ARI",
           "position": "QB",
           "positionRank": 28,
-          "rank": 287,
+          "rank": 286,
           "value": 0
         },
         {
@@ -2617,7 +2608,7 @@ export const fantasyVorpData: Record<
           "team": "PHI",
           "position": "WR",
           "positionRank": 97,
-          "rank": 288,
+          "rank": 287,
           "value": 0
         },
         {
@@ -2626,7 +2617,7 @@ export const fantasyVorpData: Record<
           "team": "NE",
           "position": "WR",
           "positionRank": 98,
-          "rank": 289,
+          "rank": 288,
           "value": 0
         },
         {
@@ -2635,7 +2626,7 @@ export const fantasyVorpData: Record<
           "team": "ATL",
           "position": "WR",
           "positionRank": 99,
-          "rank": 290,
+          "rank": 289,
           "value": 0
         },
         {
@@ -2644,7 +2635,7 @@ export const fantasyVorpData: Record<
           "team": "TEN",
           "position": "WR",
           "positionRank": 100,
-          "rank": 291,
+          "rank": 290,
           "value": 0
         },
         {
@@ -2653,7 +2644,7 @@ export const fantasyVorpData: Record<
           "team": "TEN",
           "position": "WR",
           "positionRank": 101,
-          "rank": 292,
+          "rank": 291,
           "value": 0
         },
         {
@@ -2662,7 +2653,7 @@ export const fantasyVorpData: Record<
           "team": "PIT",
           "position": "QB",
           "positionRank": 29,
-          "rank": 293,
+          "rank": 292,
           "value": 0
         },
         {
@@ -2670,8 +2661,8 @@ export const fantasyVorpData: Record<
           "name": "Ben Sauls",
           "team": "FA",
           "position": "K",
-          "positionRank": 34,
-          "rank": 294,
+          "positionRank": 33,
+          "rank": 293,
           "value": 0
         },
         {
@@ -2680,7 +2671,7 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "TE",
           "positionRank": 34,
-          "rank": 295,
+          "rank": 294,
           "value": 0
         },
         {
@@ -2689,7 +2680,7 @@ export const fantasyVorpData: Record<
           "team": "BUF",
           "position": "WR",
           "positionRank": 102,
-          "rank": 296,
+          "rank": 295,
           "value": 0
         },
         {
@@ -2698,7 +2689,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "TE",
           "positionRank": 35,
-          "rank": 297,
+          "rank": 296,
           "value": 0
         },
         {
@@ -2707,7 +2698,7 @@ export const fantasyVorpData: Record<
           "team": "KC",
           "position": "RB",
           "positionRank": 66,
-          "rank": 298,
+          "rank": 297,
           "value": 0
         },
         {
@@ -2716,7 +2707,7 @@ export const fantasyVorpData: Record<
           "team": "LV",
           "position": "TE",
           "positionRank": 36,
-          "rank": 299,
+          "rank": 298,
           "value": 0
         },
         {
@@ -2725,7 +2716,7 @@ export const fantasyVorpData: Record<
           "team": "BUF",
           "position": "WR",
           "positionRank": 103,
-          "rank": 300,
+          "rank": 299,
           "value": 0
         },
         {
@@ -2734,7 +2725,7 @@ export const fantasyVorpData: Record<
           "team": "DEN",
           "position": "WR",
           "positionRank": 104,
-          "rank": 301,
+          "rank": 300,
           "value": 0
         },
         {
@@ -2743,7 +2734,7 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "RB",
           "positionRank": 67,
-          "rank": 302,
+          "rank": 301,
           "value": 0
         },
         {
@@ -2752,7 +2743,7 @@ export const fantasyVorpData: Record<
           "team": "DEN",
           "position": "WR",
           "positionRank": 105,
-          "rank": 303,
+          "rank": 302,
           "value": 0
         },
         {
@@ -2761,7 +2752,7 @@ export const fantasyVorpData: Record<
           "team": "MIA",
           "position": "WR",
           "positionRank": 106,
-          "rank": 304,
+          "rank": 303,
           "value": 0
         },
         {
@@ -2770,7 +2761,7 @@ export const fantasyVorpData: Record<
           "team": "SF",
           "position": "RB",
           "positionRank": 68,
-          "rank": 305,
+          "rank": 304,
           "value": 0
         },
         {
@@ -2779,6 +2770,15 @@ export const fantasyVorpData: Record<
           "team": "LV",
           "position": "WR",
           "positionRank": 107,
+          "rank": 305,
+          "value": 0
+        },
+        {
+          "playerId": "fp-28132",
+          "name": "Zavion Thomas",
+          "team": "CHI",
+          "position": "WR",
+          "positionRank": 108,
           "rank": 306,
           "value": 0
         },
@@ -2787,7 +2787,7 @@ export const fantasyVorpData: Record<
           "name": "Ashton Dulin",
           "team": "IND",
           "position": "WR",
-          "positionRank": 108,
+          "positionRank": 109,
           "rank": 307,
           "value": 0
         },
@@ -2805,7 +2805,7 @@ export const fantasyVorpData: Record<
           "name": "Darnell Mooney",
           "team": "NYG",
           "position": "WR",
-          "positionRank": 109,
+          "positionRank": 110,
           "rank": 309,
           "value": 0
         },
@@ -2814,7 +2814,7 @@ export const fantasyVorpData: Record<
           "name": "KaVontae Turpin",
           "team": "DAL",
           "position": "WR",
-          "positionRank": 110,
+          "positionRank": 111,
           "rank": 310,
           "value": 0
         },
@@ -2841,7 +2841,7 @@ export const fantasyVorpData: Record<
           "name": "Devontez Walker",
           "team": "BAL",
           "position": "WR",
-          "positionRank": 111,
+          "positionRank": 112,
           "rank": 313,
           "value": 0
         },
@@ -2877,7 +2877,7 @@ export const fantasyVorpData: Record<
           "name": "Demarcus Robinson",
           "team": "SF",
           "position": "WR",
-          "positionRank": 112,
+          "positionRank": 113,
           "rank": 317,
           "value": 0
         },
@@ -2904,7 +2904,7 @@ export const fantasyVorpData: Record<
           "name": "Jahdae Walker",
           "team": "CHI",
           "position": "WR",
-          "positionRank": 113,
+          "positionRank": 114,
           "rank": 320,
           "value": 0
         },
@@ -2913,7 +2913,7 @@ export const fantasyVorpData: Record<
           "name": "Mack Hollins",
           "team": "NE",
           "position": "WR",
-          "positionRank": 114,
+          "positionRank": 115,
           "rank": 321,
           "value": 0
         },
@@ -2936,12 +2936,21 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
+          "playerId": "fp-17533",
+          "name": "Jason Sanders",
+          "team": "FA",
+          "position": "K",
+          "positionRank": 34,
+          "rank": 324,
+          "value": 0
+        },
+        {
           "playerId": "fp-25361",
           "name": "Tank Dell",
           "team": "HOU",
           "position": "WR",
-          "positionRank": 115,
-          "rank": 324,
+          "positionRank": 116,
+          "rank": 325,
           "value": 0
         },
         {
@@ -2949,8 +2958,8 @@ export const fantasyVorpData: Record<
           "name": "Christian Kirk",
           "team": "SF",
           "position": "WR",
-          "positionRank": 116,
-          "rank": 325,
+          "positionRank": 117,
+          "rank": 326,
           "value": 0
         },
         {
@@ -2958,8 +2967,8 @@ export const fantasyVorpData: Record<
           "name": "Cyrus Allen",
           "team": "KC",
           "position": "WR",
-          "positionRank": 117,
-          "rank": 326,
+          "positionRank": 118,
+          "rank": 327,
           "value": 0
         },
         {
@@ -2968,7 +2977,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "TE",
           "positionRank": 41,
-          "rank": 327,
+          "rank": 328,
           "value": 0
         },
         {
@@ -2977,7 +2986,7 @@ export const fantasyVorpData: Record<
           "team": "BAL",
           "position": "RB",
           "positionRank": 75,
-          "rank": 328,
+          "rank": 329,
           "value": 0
         },
         {
@@ -2986,7 +2995,7 @@ export const fantasyVorpData: Record<
           "team": "CHI",
           "position": "TE",
           "positionRank": 42,
-          "rank": 329,
+          "rank": 330,
           "value": 0
         },
         {
@@ -2994,8 +3003,8 @@ export const fantasyVorpData: Record<
           "name": "Luke McCaffrey",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 118,
-          "rank": 330,
+          "positionRank": 119,
+          "rank": 331,
           "value": 0
         },
         {
@@ -3003,8 +3012,8 @@ export const fantasyVorpData: Record<
           "name": "Kyle Williams",
           "team": "NE",
           "position": "WR",
-          "positionRank": 119,
-          "rank": 331,
+          "positionRank": 120,
+          "rank": 332,
           "value": 0
         },
         {
@@ -3013,7 +3022,7 @@ export const fantasyVorpData: Record<
           "team": "KC",
           "position": "RB",
           "positionRank": 76,
-          "rank": 332,
+          "rank": 333,
           "value": 0
         },
         {
@@ -3021,8 +3030,8 @@ export const fantasyVorpData: Record<
           "name": "Kendrick Bourne",
           "team": "ARI",
           "position": "WR",
-          "positionRank": 120,
-          "rank": 333,
+          "positionRank": 121,
+          "rank": 334,
           "value": 0
         },
         {
@@ -3031,16 +3040,16 @@ export const fantasyVorpData: Record<
           "team": "NO",
           "position": "TE",
           "positionRank": 43,
-          "rank": 334,
+          "rank": 335,
           "value": 0
         },
         {
           "playerId": "fp-27222",
           "name": "Theo Wease Jr.",
-          "team": "FA",
+          "team": "LAC",
           "position": "WR",
-          "positionRank": 121,
-          "rank": 335,
+          "positionRank": 122,
+          "rank": 336,
           "value": 0
         },
         {
@@ -3048,8 +3057,8 @@ export const fantasyVorpData: Record<
           "name": "Dyami Brown",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 122,
-          "rank": 336,
+          "positionRank": 123,
+          "rank": 337,
           "value": 0
         },
         {
@@ -3057,8 +3066,8 @@ export const fantasyVorpData: Record<
           "name": "Kalif Raymond",
           "team": "CHI",
           "position": "WR",
-          "positionRank": 123,
-          "rank": 337,
+          "positionRank": 124,
+          "rank": 338,
           "value": 0
         },
         {
@@ -3067,7 +3076,7 @@ export const fantasyVorpData: Record<
           "team": "CHI",
           "position": "RB",
           "positionRank": 77,
-          "rank": 338,
+          "rank": 339,
           "value": 0
         },
         {
@@ -3076,7 +3085,7 @@ export const fantasyVorpData: Record<
           "team": "MIA",
           "position": "TE",
           "positionRank": 44,
-          "rank": 339,
+          "rank": 340,
           "value": 0
         },
         {
@@ -3084,8 +3093,8 @@ export const fantasyVorpData: Record<
           "name": "Treylon Burks",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 124,
-          "rank": 340,
+          "positionRank": 125,
+          "rank": 341,
           "value": 0
         },
         {
@@ -3094,7 +3103,7 @@ export const fantasyVorpData: Record<
           "team": "IND",
           "position": "RB",
           "positionRank": 78,
-          "rank": 341,
+          "rank": 342,
           "value": 0
         },
         {
@@ -3103,7 +3112,7 @@ export const fantasyVorpData: Record<
           "team": "SEA",
           "position": "RB",
           "positionRank": 79,
-          "rank": 342,
+          "rank": 343,
           "value": 0
         },
         {
@@ -3112,7 +3121,7 @@ export const fantasyVorpData: Record<
           "team": "LV",
           "position": "QB",
           "positionRank": 30,
-          "rank": 343,
+          "rank": 344,
           "value": 0
         },
         {
@@ -3121,7 +3130,16 @@ export const fantasyVorpData: Record<
           "team": "TB",
           "position": "RB",
           "positionRank": 80,
-          "rank": 344,
+          "rank": 345,
+          "value": 0
+        },
+        {
+          "playerId": "fp-25654",
+          "name": "Emari Demercado",
+          "team": "DAL",
+          "position": "RB",
+          "positionRank": 81,
+          "rank": 346,
           "value": 0
         },
         {
@@ -3129,8 +3147,8 @@ export const fantasyVorpData: Record<
           "name": "Savion Williams",
           "team": "GB",
           "position": "WR",
-          "positionRank": 125,
-          "rank": 345,
+          "positionRank": 126,
+          "rank": 347,
           "value": 0
         },
         {
@@ -3138,8 +3156,8 @@ export const fantasyVorpData: Record<
           "name": "Ray Davis",
           "team": "BUF",
           "position": "RB",
-          "positionRank": 81,
-          "rank": 346,
+          "positionRank": 82,
+          "rank": 348,
           "value": 0
         },
         {
@@ -3147,8 +3165,8 @@ export const fantasyVorpData: Record<
           "name": "Will Shipley",
           "team": "PHI",
           "position": "RB",
-          "positionRank": 82,
-          "rank": 347,
+          "positionRank": 83,
+          "rank": 349,
           "value": 0
         },
         {
@@ -3156,8 +3174,8 @@ export const fantasyVorpData: Record<
           "name": "Ameer Abdullah",
           "team": "JAC",
           "position": "RB",
-          "positionRank": 83,
-          "rank": 348,
+          "positionRank": 84,
+          "rank": 350,
           "value": 0
         },
         {
@@ -3166,7 +3184,7 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "TE",
           "positionRank": 45,
-          "rank": 349,
+          "rank": 351,
           "value": 0
         },
         {
@@ -3175,7 +3193,7 @@ export const fantasyVorpData: Record<
           "team": "GB",
           "position": "TE",
           "positionRank": 46,
-          "rank": 350,
+          "rank": 352,
           "value": 0
         },
         {
@@ -3183,8 +3201,8 @@ export const fantasyVorpData: Record<
           "name": "Corey Kiner",
           "team": "NE",
           "position": "RB",
-          "positionRank": 84,
-          "rank": 351,
+          "positionRank": 85,
+          "rank": 353,
           "value": 0
         },
         {
@@ -3192,8 +3210,8 @@ export const fantasyVorpData: Record<
           "name": "Ollie Gordon II",
           "team": "MIA",
           "position": "RB",
-          "positionRank": 85,
-          "rank": 352,
+          "positionRank": 86,
+          "rank": 354,
           "value": 0
         },
         {
@@ -3201,8 +3219,8 @@ export const fantasyVorpData: Record<
           "name": "Hunter Luepke",
           "team": "DAL",
           "position": "RB",
-          "positionRank": 86,
-          "rank": 353,
+          "positionRank": 87,
+          "rank": 355,
           "value": 0
         },
         {
@@ -3211,7 +3229,7 @@ export const fantasyVorpData: Record<
           "team": "DET",
           "position": "TE",
           "positionRank": 47,
-          "rank": 354,
+          "rank": 356,
           "value": 0
         },
         {
@@ -3220,7 +3238,7 @@ export const fantasyVorpData: Record<
           "team": "DEN",
           "position": "TE",
           "positionRank": 48,
-          "rank": 355,
+          "rank": 357,
           "value": 0
         },
         {
@@ -3228,8 +3246,8 @@ export const fantasyVorpData: Record<
           "name": "Kendre Miller",
           "team": "NO",
           "position": "RB",
-          "positionRank": 87,
-          "rank": 356,
+          "positionRank": 88,
+          "rank": 358,
           "value": 0
         },
         {
@@ -3237,8 +3255,8 @@ export const fantasyVorpData: Record<
           "name": "Audric Estime",
           "team": "NO",
           "position": "RB",
-          "positionRank": 88,
-          "rank": 357,
+          "positionRank": 89,
+          "rank": 359,
           "value": 0
         },
         {
@@ -3246,8 +3264,8 @@ export const fantasyVorpData: Record<
           "name": "Jacob Saylors",
           "team": "DET",
           "position": "RB",
-          "positionRank": 89,
-          "rank": 358,
+          "positionRank": 90,
+          "rank": 360,
           "value": 0
         },
         {
@@ -3256,7 +3274,7 @@ export const fantasyVorpData: Record<
           "team": "MIN",
           "position": "TE",
           "positionRank": 49,
-          "rank": 359,
+          "rank": 361,
           "value": 0
         },
         {
@@ -3265,7 +3283,7 @@ export const fantasyVorpData: Record<
           "team": "TEN",
           "position": "TE",
           "positionRank": 50,
-          "rank": 360,
+          "rank": 362,
           "value": 0
         },
         {
@@ -3274,7 +3292,7 @@ export const fantasyVorpData: Record<
           "team": "ATL",
           "position": "TE",
           "positionRank": 51,
-          "rank": 361,
+          "rank": 363,
           "value": 0
         },
         {
@@ -3282,17 +3300,8 @@ export const fantasyVorpData: Record<
           "name": "Isaiah Bond",
           "team": "CLE",
           "position": "WR",
-          "positionRank": 126,
-          "rank": 362,
-          "value": 0
-        },
-        {
-          "playerId": "fp-28132",
-          "name": "Zavion Thomas",
-          "team": "CHI",
-          "position": "WR",
           "positionRank": 127,
-          "rank": 363,
+          "rank": 364,
           "value": 0
         },
         {
@@ -3301,7 +3310,7 @@ export const fantasyVorpData: Record<
           "team": "NE",
           "position": "TE",
           "positionRank": 52,
-          "rank": 364,
+          "rank": 365,
           "value": 0
         },
         {
@@ -3310,7 +3319,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "TE",
           "positionRank": 53,
-          "rank": 365,
+          "rank": 366,
           "value": 0
         },
         {
@@ -3319,7 +3328,7 @@ export const fantasyVorpData: Record<
           "team": "KC",
           "position": "TE",
           "positionRank": 54,
-          "rank": 366,
+          "rank": 367,
           "value": 0
         },
         {
@@ -3328,22 +3337,13 @@ export const fantasyVorpData: Record<
           "team": "BUF",
           "position": "WR",
           "positionRank": 128,
-          "rank": 367,
+          "rank": 368,
           "value": 0
         },
         {
           "playerId": "fp-28297",
           "name": "Eli Heidenreich",
           "team": "PIT",
-          "position": "RB",
-          "positionRank": 90,
-          "rank": 368,
-          "value": 0
-        },
-        {
-          "playerId": "fp-16445",
-          "name": "Jeremy McNichols",
-          "team": "WAS",
           "position": "RB",
           "positionRank": 91,
           "rank": 369,
@@ -3692,21 +3692,12 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-25349",
-          "name": "Ben Sims",
-          "team": "MIA",
-          "position": "TE",
-          "positionRank": 66,
-          "rank": 408,
-          "value": 0
-        },
-        {
           "playerId": "fp-27165",
           "name": "Kaleb Johnson",
           "team": "GB",
           "position": "RB",
           "positionRank": 107,
-          "rank": 409,
+          "rank": 408,
           "value": 0
         },
         {
@@ -3715,7 +3706,7 @@ export const fantasyVorpData: Record<
           "team": "NE",
           "position": "RB",
           "positionRank": 108,
-          "rank": 410,
+          "rank": 409,
           "value": 0
         },
         {
@@ -3723,8 +3714,8 @@ export const fantasyVorpData: Record<
           "name": "Connor Heyward",
           "team": "LV",
           "position": "TE",
-          "positionRank": 67,
-          "rank": 411,
+          "positionRank": 66,
+          "rank": 410,
           "value": 0
         },
         {
@@ -3733,7 +3724,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "WR",
           "positionRank": 141,
-          "rank": 412,
+          "rank": 411,
           "value": 0
         },
         {
@@ -3742,7 +3733,7 @@ export const fantasyVorpData: Record<
           "team": "NO",
           "position": "WR",
           "positionRank": 142,
-          "rank": 413,
+          "rank": 412,
           "value": 0
         },
         {
@@ -3751,7 +3742,7 @@ export const fantasyVorpData: Record<
           "team": "NYG",
           "position": "RB",
           "positionRank": 109,
-          "rank": 414,
+          "rank": 413,
           "value": 0
         },
         {
@@ -3760,7 +3751,7 @@ export const fantasyVorpData: Record<
           "team": "KC",
           "position": "WR",
           "positionRank": 143,
-          "rank": 415,
+          "rank": 414,
           "value": 0
         },
         {
@@ -3769,7 +3760,7 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "WR",
           "positionRank": 144,
-          "rank": 416,
+          "rank": 415,
           "value": 0
         },
         {
@@ -3778,7 +3769,7 @@ export const fantasyVorpData: Record<
           "team": "IND",
           "position": "WR",
           "positionRank": 145,
-          "rank": 417,
+          "rank": 416,
           "value": 0
         },
         {
@@ -3786,8 +3777,8 @@ export const fantasyVorpData: Record<
           "name": "Cade Stover",
           "team": "HOU",
           "position": "TE",
-          "positionRank": 68,
-          "rank": 418,
+          "positionRank": 67,
+          "rank": 417,
           "value": 0
         },
         {
@@ -3796,7 +3787,7 @@ export const fantasyVorpData: Record<
           "team": "GB",
           "position": "WR",
           "positionRank": 146,
-          "rank": 419,
+          "rank": 418,
           "value": 0
         },
         {
@@ -3804,8 +3795,8 @@ export const fantasyVorpData: Record<
           "name": "Nate Adkins",
           "team": "DEN",
           "position": "TE",
-          "positionRank": 69,
-          "rank": 420,
+          "positionRank": 68,
+          "rank": 419,
           "value": 0
         },
         {
@@ -3813,8 +3804,8 @@ export const fantasyVorpData: Record<
           "name": "Jackson Hawes",
           "team": "BUF",
           "position": "TE",
-          "positionRank": 70,
-          "rank": 421,
+          "positionRank": 69,
+          "rank": 420,
           "value": 0
         },
         {
@@ -3822,8 +3813,8 @@ export const fantasyVorpData: Record<
           "name": "Ben Sinnott",
           "team": "WAS",
           "position": "TE",
-          "positionRank": 71,
-          "rank": 422,
+          "positionRank": 70,
+          "rank": 421,
           "value": 0
         },
         {
@@ -3831,8 +3822,8 @@ export const fantasyVorpData: Record<
           "name": "Jack Endries",
           "team": "CIN",
           "position": "TE",
-          "positionRank": 72,
-          "rank": 423,
+          "positionRank": 71,
+          "rank": 422,
           "value": 0
         },
         {
@@ -3840,8 +3831,8 @@ export const fantasyVorpData: Record<
           "name": "Luke Schoonmaker",
           "team": "DAL",
           "position": "TE",
-          "positionRank": 73,
-          "rank": 424,
+          "positionRank": 72,
+          "rank": 423,
           "value": 0
         },
         {
@@ -3849,8 +3840,8 @@ export const fantasyVorpData: Record<
           "name": "Luke Musgrave",
           "team": "GB",
           "position": "TE",
-          "positionRank": 74,
-          "rank": 425,
+          "positionRank": 73,
+          "rank": 424,
           "value": 0
         },
         {
@@ -3859,7 +3850,7 @@ export const fantasyVorpData: Record<
           "team": "HOU",
           "position": "RB",
           "positionRank": 110,
-          "rank": 426,
+          "rank": 425,
           "value": 0
         },
         {
@@ -3868,7 +3859,7 @@ export const fantasyVorpData: Record<
           "team": "DET",
           "position": "WR",
           "positionRank": 147,
-          "rank": 427,
+          "rank": 426,
           "value": 0
         },
         {
@@ -3877,7 +3868,7 @@ export const fantasyVorpData: Record<
           "team": "CLE",
           "position": "WR",
           "positionRank": 148,
-          "rank": 428,
+          "rank": 427,
           "value": 0
         },
         {
@@ -3885,8 +3876,8 @@ export const fantasyVorpData: Record<
           "name": "Foster Moreau",
           "team": "HOU",
           "position": "TE",
-          "positionRank": 75,
-          "rank": 429,
+          "positionRank": 74,
+          "rank": 428,
           "value": 0
         },
         {
@@ -3894,8 +3885,8 @@ export const fantasyVorpData: Record<
           "name": "Bauer Sharp",
           "team": "TB",
           "position": "TE",
-          "positionRank": 76,
-          "rank": 430,
+          "positionRank": 75,
+          "rank": 429,
           "value": 0
         },
         {
@@ -3903,8 +3894,8 @@ export const fantasyVorpData: Record<
           "name": "Dallen Bentley",
           "team": "DEN",
           "position": "TE",
-          "positionRank": 77,
-          "rank": 431,
+          "positionRank": 76,
+          "rank": 430,
           "value": 0
         },
         {
@@ -3912,8 +3903,8 @@ export const fantasyVorpData: Record<
           "name": "Charlie Woerner",
           "team": "ATL",
           "position": "TE",
-          "positionRank": 78,
-          "rank": 432,
+          "positionRank": 77,
+          "rank": 431,
           "value": 0
         },
         {
@@ -3921,8 +3912,8 @@ export const fantasyVorpData: Record<
           "name": "Mo Alie-Cox",
           "team": "IND",
           "position": "TE",
-          "positionRank": 79,
-          "rank": 433,
+          "positionRank": 78,
+          "rank": 432,
           "value": 0
         },
         {
@@ -3930,8 +3921,8 @@ export const fantasyVorpData: Record<
           "name": "Jared Wiley",
           "team": "KC",
           "position": "TE",
-          "positionRank": 80,
-          "rank": 434,
+          "positionRank": 79,
+          "rank": 433,
           "value": 0
         },
         {
@@ -3940,7 +3931,7 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "WR",
           "positionRank": 149,
-          "rank": 435,
+          "rank": 434,
           "value": 0
         },
         {
@@ -3949,7 +3940,7 @@ export const fantasyVorpData: Record<
           "team": "CIN",
           "position": "WR",
           "positionRank": 150,
-          "rank": 436,
+          "rank": 435,
           "value": 0
         },
         {
@@ -3958,7 +3949,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "WR",
           "positionRank": 151,
-          "rank": 437,
+          "rank": 436,
           "value": 0
         },
         {
@@ -3967,7 +3958,7 @@ export const fantasyVorpData: Record<
           "team": "NE",
           "position": "WR",
           "positionRank": 152,
-          "rank": 438,
+          "rank": 437,
           "value": 0
         },
         {
@@ -3975,8 +3966,8 @@ export const fantasyVorpData: Record<
           "name": "Thomas Fidone II",
           "team": "NYG",
           "position": "TE",
-          "positionRank": 81,
-          "rank": 439,
+          "positionRank": 80,
+          "rank": 438,
           "value": 0
         },
         {
@@ -3985,7 +3976,7 @@ export const fantasyVorpData: Record<
           "team": "SF",
           "position": "WR",
           "positionRank": 153,
-          "rank": 440,
+          "rank": 439,
           "value": 0
         },
         {
@@ -3994,7 +3985,7 @@ export const fantasyVorpData: Record<
           "team": "JAC",
           "position": "WR",
           "positionRank": 154,
-          "rank": 441,
+          "rank": 440,
           "value": 0
         },
         {
@@ -4003,7 +3994,7 @@ export const fantasyVorpData: Record<
           "team": "MIN",
           "position": "WR",
           "positionRank": 155,
-          "rank": 442,
+          "rank": 441,
           "value": 0
         },
         {
@@ -4012,7 +4003,7 @@ export const fantasyVorpData: Record<
           "team": "DAL",
           "position": "WR",
           "positionRank": 156,
-          "rank": 443,
+          "rank": 442,
           "value": 0
         },
         {
@@ -4021,7 +4012,7 @@ export const fantasyVorpData: Record<
           "team": "PHI",
           "position": "WR",
           "positionRank": 157,
-          "rank": 444,
+          "rank": 443,
           "value": 0
         },
         {
@@ -4030,7 +4021,7 @@ export const fantasyVorpData: Record<
           "team": "ARI",
           "position": "WR",
           "positionRank": 158,
-          "rank": 445,
+          "rank": 444,
           "value": 0
         },
         {
@@ -4039,7 +4030,7 @@ export const fantasyVorpData: Record<
           "team": "LV",
           "position": "WR",
           "positionRank": 159,
-          "rank": 446,
+          "rank": 445,
           "value": 0
         },
         {
@@ -4048,6 +4039,15 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "WR",
           "positionRank": 160,
+          "rank": 446,
+          "value": 0
+        },
+        {
+          "playerId": "fp-23821",
+          "name": "Will Mallory",
+          "team": "IND",
+          "position": "TE",
+          "positionRank": 81,
           "rank": 447,
           "value": 0
         },
@@ -4259,9 +4259,9 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-17826",
-          "name": "Tanner Hudson",
-          "team": "CIN",
+          "playerId": "fp-28079",
+          "name": "Justin Joly",
+          "team": "FA",
           "position": "TE",
           "positionRank": 101,
           "rank": 471,
@@ -4646,18 +4646,18 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-25967",
-          "name": "Joe Milton III",
-          "team": "DAL",
+          "playerId": "fp-23066",
+          "name": "Kyle McCord",
+          "team": "MIA",
           "position": "QB",
           "positionRank": 69,
           "rank": 514,
           "value": 0
         },
         {
-          "playerId": "fp-23066",
-          "name": "Kyle McCord",
-          "team": "MIA",
+          "playerId": "fp-25967",
+          "name": "Joe Milton III",
+          "team": "FA",
           "position": "QB",
           "positionRank": 70,
           "rank": 515,
@@ -4689,13 +4689,22 @@ export const fantasyVorpData: Record<
           "positionRank": 73,
           "rank": 518,
           "value": 0
+        },
+        {
+          "playerId": "fp-27161",
+          "name": "Brady Cook",
+          "team": "FA",
+          "position": "QB",
+          "positionRank": 74,
+          "rank": 519,
+          "value": 0
         }
       ]
     },
     "12": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-      "accessedAt": "2026-09-01T19:46:02.492Z",
+      "accessedAt": "2026-09-02T19:38:55.156Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -4938,7 +4947,7 @@ export const fantasyVorpData: Record<
           "position": "WR",
           "positionRank": 9,
           "rank": 27,
-          "value": 132
+          "value": 134
         },
         {
           "playerId": "fp-19210",
@@ -5073,7 +5082,7 @@ export const fantasyVorpData: Record<
           "position": "TE",
           "positionRank": 1,
           "rank": 42,
-          "value": 101
+          "value": 100
         },
         {
           "playerId": "fp-23065",
@@ -5145,7 +5154,7 @@ export const fantasyVorpData: Record<
           "position": "TE",
           "positionRank": 2,
           "rank": 50,
-          "value": 89
+          "value": 88
         },
         {
           "playerId": "fp-26122",
@@ -5379,7 +5388,7 @@ export const fantasyVorpData: Record<
           "position": "TE",
           "positionRank": 3,
           "rank": 76,
-          "value": 57
+          "value": 56
         },
         {
           "playerId": "fp-23106",
@@ -5490,13 +5499,22 @@ export const fantasyVorpData: Record<
           "value": 46
         },
         {
+          "playerId": "fp-25323",
+          "name": "Tyjae Spears",
+          "team": "TEN",
+          "position": "RB",
+          "positionRank": 43,
+          "rank": 89,
+          "value": 44
+        },
+        {
           "playerId": "fp-26434",
           "name": "Tyler Warren",
           "team": "IND",
           "position": "TE",
           "positionRank": 4,
-          "rank": 89,
-          "value": 44
+          "rank": 90,
+          "value": 43
         },
         {
           "playerId": "fp-27050",
@@ -5504,17 +5522,8 @@ export const fantasyVorpData: Record<
           "team": "CLE",
           "position": "TE",
           "positionRank": 5,
-          "rank": 90,
-          "value": 44
-        },
-        {
-          "playerId": "fp-25323",
-          "name": "Tyjae Spears",
-          "team": "TEN",
-          "position": "RB",
-          "positionRank": 43,
           "rank": 91,
-          "value": 44
+          "value": 43
         },
         {
           "playerId": "fp-23123",
@@ -5643,30 +5652,21 @@ export const fantasyVorpData: Record<
           "value": 33
         },
         {
-          "playerId": "fp-20164",
-          "name": "Kyle Pitts Sr.",
-          "team": "ATL",
-          "position": "TE",
-          "positionRank": 6,
-          "rank": 106,
-          "value": 33
-        },
-        {
           "playerId": "fp-19275",
           "name": "Jalen Hurts",
           "team": "PHI",
           "position": "QB",
           "positionRank": 5,
-          "rank": 107,
+          "rank": 106,
           "value": 32
         },
         {
-          "playerId": "fp-16499",
-          "name": "George Kittle",
-          "team": "SF",
+          "playerId": "fp-20164",
+          "name": "Kyle Pitts Sr.",
+          "team": "ATL",
           "position": "TE",
-          "positionRank": 7,
-          "rank": 108,
+          "positionRank": 6,
+          "rank": 107,
           "value": 32
         },
         {
@@ -5675,8 +5675,17 @@ export const fantasyVorpData: Record<
           "team": "HOU",
           "position": "RB",
           "positionRank": 44,
-          "rank": 109,
+          "rank": 108,
           "value": 32
+        },
+        {
+          "playerId": "fp-16499",
+          "name": "George Kittle",
+          "team": "SF",
+          "position": "TE",
+          "positionRank": 7,
+          "rank": 109,
+          "value": 31
         },
         {
           "playerId": "fp-22978",
@@ -5685,16 +5694,7 @@ export const fantasyVorpData: Record<
           "position": "TE",
           "positionRank": 8,
           "rank": 110,
-          "value": 29
-        },
-        {
-          "playerId": "fp-11594",
-          "name": "Travis Kelce",
-          "team": "KC",
-          "position": "TE",
-          "positionRank": 9,
-          "rank": 111,
-          "value": 27
+          "value": 28
         },
         {
           "playerId": "fp-24687",
@@ -5702,7 +5702,7 @@ export const fantasyVorpData: Record<
           "team": "SEA",
           "position": "WR",
           "positionRank": 54,
-          "rank": 112,
+          "rank": 111,
           "value": 27
         },
         {
@@ -5711,17 +5711,17 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "WR",
           "positionRank": 55,
-          "rank": 113,
+          "rank": 112,
           "value": 27
         },
         {
-          "playerId": "fp-17270",
-          "name": "Dallas Goedert",
-          "team": "PHI",
+          "playerId": "fp-11594",
+          "name": "Travis Kelce",
+          "team": "KC",
           "position": "TE",
-          "positionRank": 10,
-          "rank": 114,
-          "value": 25
+          "positionRank": 9,
+          "rank": 113,
+          "value": 26
         },
         {
           "playerId": "fp-19201",
@@ -5729,8 +5729,17 @@ export const fantasyVorpData: Record<
           "team": "CLE",
           "position": "WR",
           "positionRank": 56,
-          "rank": 115,
+          "rank": 114,
           "value": 25
+        },
+        {
+          "playerId": "fp-17270",
+          "name": "Dallas Goedert",
+          "team": "PHI",
+          "position": "TE",
+          "positionRank": 10,
+          "rank": 115,
+          "value": 24
         },
         {
           "playerId": "fp-19196",
@@ -5814,21 +5823,12 @@ export const fantasyVorpData: Record<
           "value": 19
         },
         {
-          "playerId": "fp-25298",
-          "name": "Tucker Kraft",
-          "team": "GB",
-          "position": "TE",
-          "positionRank": 11,
-          "rank": 125,
-          "value": 19
-        },
-        {
           "playerId": "fp-24333",
           "name": "Isiah Pacheco",
           "team": "DET",
           "position": "RB",
           "positionRank": 48,
-          "rank": 126,
+          "rank": 125,
           "value": 19
         },
         {
@@ -5837,7 +5837,7 @@ export const fantasyVorpData: Record<
           "team": "SF",
           "position": "QB",
           "positionRank": 9,
-          "rank": 127,
+          "rank": 126,
           "value": 18
         },
         {
@@ -5846,7 +5846,7 @@ export const fantasyVorpData: Record<
           "team": "DAL",
           "position": "QB",
           "positionRank": 10,
-          "rank": 128,
+          "rank": 127,
           "value": 18
         },
         {
@@ -5855,7 +5855,7 @@ export const fantasyVorpData: Record<
           "team": "SEA",
           "position": "K",
           "positionRank": 2,
-          "rank": 129,
+          "rank": 128,
           "value": 18
         },
         {
@@ -5864,6 +5864,15 @@ export const fantasyVorpData: Record<
           "team": "HOU",
           "position": "DST",
           "positionRank": 1,
+          "rank": 129,
+          "value": 18
+        },
+        {
+          "playerId": "fp-25298",
+          "name": "Tucker Kraft",
+          "team": "GB",
+          "position": "TE",
+          "positionRank": 11,
           "rank": 130,
           "value": 18
         },
@@ -5922,30 +5931,12 @@ export const fantasyVorpData: Record<
           "value": 13
         },
         {
-          "playerId": "fp-17269",
-          "name": "Mark Andrews",
-          "team": "BAL",
-          "position": "TE",
-          "positionRank": 12,
-          "rank": 137,
-          "value": 12
-        },
-        {
-          "playerId": "fp-22718",
-          "name": "Jake Ferguson",
-          "team": "DAL",
-          "position": "TE",
-          "positionRank": 13,
-          "rank": 138,
-          "value": 12
-        },
-        {
           "playerId": "fp-25337",
           "name": "Tre Tucker",
           "team": "LV",
           "position": "WR",
           "positionRank": 60,
-          "rank": 139,
+          "rank": 137,
           "value": 12
         },
         {
@@ -5954,7 +5945,7 @@ export const fantasyVorpData: Record<
           "team": "IND",
           "position": "WR",
           "positionRank": 61,
-          "rank": 140,
+          "rank": 138,
           "value": 12
         },
         {
@@ -5963,7 +5954,7 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "QB",
           "positionRank": 13,
-          "rank": 141,
+          "rank": 139,
           "value": 11
         },
         {
@@ -5972,7 +5963,7 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "K",
           "positionRank": 4,
-          "rank": 142,
+          "rank": 140,
           "value": 11
         },
         {
@@ -5981,16 +5972,25 @@ export const fantasyVorpData: Record<
           "team": "MIN",
           "position": "DST",
           "positionRank": 3,
-          "rank": 143,
+          "rank": 141,
           "value": 11
         },
         {
-          "playerId": "fp-23781",
-          "name": "Isaiah Likely",
-          "team": "NYG",
+          "playerId": "fp-17269",
+          "name": "Mark Andrews",
+          "team": "BAL",
           "position": "TE",
-          "positionRank": 14,
-          "rank": 144,
+          "positionRank": 12,
+          "rank": 142,
+          "value": 11
+        },
+        {
+          "playerId": "fp-22718",
+          "name": "Jake Ferguson",
+          "team": "DAL",
+          "position": "TE",
+          "positionRank": 13,
+          "rank": 143,
           "value": 11
         },
         {
@@ -5999,7 +5999,7 @@ export const fantasyVorpData: Record<
           "team": "DEN",
           "position": "QB",
           "positionRank": 14,
-          "rank": 145,
+          "rank": 144,
           "value": 10
         },
         {
@@ -6008,6 +6008,15 @@ export const fantasyVorpData: Record<
           "team": "PIT",
           "position": "DST",
           "positionRank": 4,
+          "rank": 145,
+          "value": 10
+        },
+        {
+          "playerId": "fp-23781",
+          "name": "Isaiah Likely",
+          "team": "NYG",
+          "position": "TE",
+          "positionRank": 14,
           "rank": 146,
           "value": 10
         },
@@ -6111,20 +6120,20 @@ export const fantasyVorpData: Record<
           "value": 5
         },
         {
-          "playerId": "fp-25247",
-          "name": "Dalton Kincaid",
-          "team": "BUF",
-          "position": "TE",
-          "positionRank": 15,
-          "rank": 158,
-          "value": 5
-        },
-        {
           "playerId": "fp-26075",
           "name": "Jake Bates",
           "team": "DET",
           "position": "K",
           "positionRank": 7,
+          "rank": 158,
+          "value": 4
+        },
+        {
+          "playerId": "fp-25247",
+          "name": "Dalton Kincaid",
+          "team": "BUF",
+          "position": "TE",
+          "positionRank": 15,
           "rank": 159,
           "value": 4
         },
@@ -6363,21 +6372,12 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-15561",
-          "name": "Hunter Henry",
-          "team": "NE",
-          "position": "TE",
-          "positionRank": 17,
-          "rank": 186,
-          "value": 0
-        },
-        {
           "playerId": "fp-23096",
           "name": "Tyler Shough",
           "team": "NO",
           "position": "QB",
           "positionRank": 18,
-          "rank": 187,
+          "rank": 186,
           "value": 0
         },
         {
@@ -6386,7 +6386,7 @@ export const fantasyVorpData: Record<
           "team": "CIN",
           "position": "K",
           "positionRank": 15,
-          "rank": 188,
+          "rank": 187,
           "value": 0
         },
         {
@@ -6395,7 +6395,7 @@ export const fantasyVorpData: Record<
           "team": "NE",
           "position": "DST",
           "positionRank": 17,
-          "rank": 189,
+          "rank": 188,
           "value": 0
         },
         {
@@ -6404,16 +6404,16 @@ export const fantasyVorpData: Record<
           "team": "CIN",
           "position": "DST",
           "positionRank": 18,
-          "rank": 190,
+          "rank": 189,
           "value": 0
         },
         {
-          "playerId": "fp-25345",
-          "name": "Brenton Strange",
-          "team": "JAC",
+          "playerId": "fp-15561",
+          "name": "Hunter Henry",
+          "team": "NE",
           "position": "TE",
-          "positionRank": 18,
-          "rank": 191,
+          "positionRank": 17,
+          "rank": 190,
           "value": 0
         },
         {
@@ -6422,7 +6422,7 @@ export const fantasyVorpData: Record<
           "team": "LV",
           "position": "WR",
           "positionRank": 67,
-          "rank": 192,
+          "rank": 191,
           "value": 0
         },
         {
@@ -6431,25 +6431,16 @@ export const fantasyVorpData: Record<
           "team": "DEN",
           "position": "K",
           "positionRank": 16,
+          "rank": 192,
+          "value": 0
+        },
+        {
+          "playerId": "fp-25345",
+          "name": "Brenton Strange",
+          "team": "JAC",
+          "position": "TE",
+          "positionRank": 18,
           "rank": 193,
-          "value": 0
-        },
-        {
-          "playerId": "fp-28507",
-          "name": "Trey Smack",
-          "team": "GB",
-          "position": "K",
-          "positionRank": 17,
-          "rank": 194,
-          "value": 0
-        },
-        {
-          "playerId": "fp-8290",
-          "name": "Tampa Bay Buccaneers",
-          "team": "TB",
-          "position": "DST",
-          "positionRank": 19,
-          "rank": 195,
           "value": 0
         },
         {
@@ -6458,6 +6449,24 @@ export const fantasyVorpData: Record<
           "team": "NO",
           "position": "WR",
           "positionRank": 68,
+          "rank": 194,
+          "value": 0
+        },
+        {
+          "playerId": "fp-28507",
+          "name": "Trey Smack",
+          "team": "GB",
+          "position": "K",
+          "positionRank": 17,
+          "rank": 195,
+          "value": 0
+        },
+        {
+          "playerId": "fp-8290",
+          "name": "Tampa Bay Buccaneers",
+          "team": "TB",
+          "position": "DST",
+          "positionRank": 19,
           "rank": 196,
           "value": 0
         },
@@ -6498,21 +6507,12 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-17349",
-          "name": "Dalton Schultz",
-          "team": "HOU",
-          "position": "TE",
-          "positionRank": 19,
-          "rank": 201,
-          "value": 0
-        },
-        {
           "playerId": "fp-8110",
           "name": "Green Bay Packers",
           "team": "GB",
           "position": "DST",
           "positionRank": 21,
-          "rank": 202,
+          "rank": 201,
           "value": 0
         },
         {
@@ -6521,6 +6521,15 @@ export const fantasyVorpData: Record<
           "team": "IND",
           "position": "DST",
           "positionRank": 22,
+          "rank": 202,
+          "value": 0
+        },
+        {
+          "playerId": "fp-17349",
+          "name": "Dalton Schultz",
+          "team": "HOU",
+          "position": "TE",
+          "positionRank": 19,
           "rank": 203,
           "value": 0
         },
@@ -6705,20 +6714,20 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-18290",
-          "name": "T.J. Hockenson",
-          "team": "MIN",
-          "position": "TE",
-          "positionRank": 20,
-          "rank": 224,
-          "value": 0
-        },
-        {
           "playerId": "fp-28175",
           "name": "Drew Stevens",
           "team": "WAS",
           "position": "K",
           "positionRank": 24,
+          "rank": 224,
+          "value": 0
+        },
+        {
+          "playerId": "fp-18290",
+          "name": "T.J. Hockenson",
+          "team": "MIN",
+          "position": "TE",
+          "positionRank": 20,
           "rank": 225,
           "value": 0
         },
@@ -6741,12 +6750,21 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
+          "playerId": "fp-25533",
+          "name": "Blake Grupe",
+          "team": "NYJ",
+          "position": "K",
+          "positionRank": 25,
+          "rank": 228,
+          "value": 0
+        },
+        {
           "playerId": "fp-8040",
           "name": "Carolina Panthers",
           "team": "CAR",
           "position": "DST",
           "positionRank": 31,
-          "rank": 228,
+          "rank": 229,
           "value": 0
         },
         {
@@ -6755,7 +6773,7 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "DST",
           "positionRank": 32,
-          "rank": 229,
+          "rank": 230,
           "value": 0
         },
         {
@@ -6764,7 +6782,7 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "WR",
           "positionRank": 71,
-          "rank": 230,
+          "rank": 231,
           "value": 0
         },
         {
@@ -6773,7 +6791,7 @@ export const fantasyVorpData: Record<
           "team": "GB",
           "position": "RB",
           "positionRank": 62,
-          "rank": 231,
+          "rank": 232,
           "value": 0
         },
         {
@@ -6781,8 +6799,8 @@ export const fantasyVorpData: Record<
           "name": "Riley Patterson",
           "team": "MIA",
           "position": "K",
-          "positionRank": 25,
-          "rank": 232,
+          "positionRank": 26,
+          "rank": 233,
           "value": 0
         },
         {
@@ -6790,8 +6808,8 @@ export const fantasyVorpData: Record<
           "name": "Joey Slye",
           "team": "TEN",
           "position": "K",
-          "positionRank": 26,
-          "rank": 233,
+          "positionRank": 27,
+          "rank": 234,
           "value": 0
         },
         {
@@ -6800,7 +6818,7 @@ export const fantasyVorpData: Record<
           "team": "DAL",
           "position": "RB",
           "positionRank": 63,
-          "rank": 234,
+          "rank": 235,
           "value": 0
         },
         {
@@ -6809,7 +6827,7 @@ export const fantasyVorpData: Record<
           "team": "SF",
           "position": "RB",
           "positionRank": 64,
-          "rank": 235,
+          "rank": 236,
           "value": 0
         },
         {
@@ -6818,7 +6836,7 @@ export const fantasyVorpData: Record<
           "team": "MIA",
           "position": "WR",
           "positionRank": 72,
-          "rank": 236,
+          "rank": 237,
           "value": 0
         },
         {
@@ -6827,7 +6845,7 @@ export const fantasyVorpData: Record<
           "team": "NYG",
           "position": "RB",
           "positionRank": 65,
-          "rank": 237,
+          "rank": 238,
           "value": 0
         },
         {
@@ -6835,26 +6853,8 @@ export const fantasyVorpData: Record<
           "name": "Chad Ryland",
           "team": "ARI",
           "position": "K",
-          "positionRank": 27,
-          "rank": 238,
-          "value": 0
-        },
-        {
-          "playerId": "fp-20163",
-          "name": "Pat Freiermuth",
-          "team": "PIT",
-          "position": "TE",
-          "positionRank": 21,
+          "positionRank": 28,
           "rank": 239,
-          "value": 0
-        },
-        {
-          "playerId": "fp-23153",
-          "name": "Greg Dulcich",
-          "team": "MIA",
-          "position": "TE",
-          "positionRank": 22,
-          "rank": 240,
           "value": 0
         },
         {
@@ -6863,7 +6863,7 @@ export const fantasyVorpData: Record<
           "team": "NO",
           "position": "WR",
           "positionRank": 73,
-          "rank": 241,
+          "rank": 240,
           "value": 0
         },
         {
@@ -6872,7 +6872,7 @@ export const fantasyVorpData: Record<
           "team": "PIT",
           "position": "WR",
           "positionRank": 74,
-          "rank": 242,
+          "rank": 241,
           "value": 0
         },
         {
@@ -6881,16 +6881,34 @@ export const fantasyVorpData: Record<
           "team": "SEA",
           "position": "QB",
           "positionRank": 23,
+          "rank": 242,
+          "value": 0
+        },
+        {
+          "playerId": "fp-20163",
+          "name": "Pat Freiermuth",
+          "team": "PIT",
+          "position": "TE",
+          "positionRank": 21,
           "rank": 243,
           "value": 0
         },
         {
-          "playerId": "fp-25533",
-          "name": "Blake Grupe",
-          "team": "NYJ",
-          "position": "K",
-          "positionRank": 28,
+          "playerId": "fp-23153",
+          "name": "Greg Dulcich",
+          "team": "MIA",
+          "position": "TE",
+          "positionRank": 22,
           "rank": 244,
+          "value": 0
+        },
+        {
+          "playerId": "fp-24354",
+          "name": "Dontayvion Wicks",
+          "team": "PHI",
+          "position": "WR",
+          "positionRank": 75,
+          "rank": 245,
           "value": 0
         },
         {
@@ -6898,8 +6916,8 @@ export const fantasyVorpData: Record<
           "name": "Chris Bell",
           "team": "MIA",
           "position": "WR",
-          "positionRank": 75,
-          "rank": 245,
+          "positionRank": 76,
+          "rank": 246,
           "value": 0
         },
         {
@@ -6908,7 +6926,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "K",
           "positionRank": 29,
-          "rank": 246,
+          "rank": 247,
           "value": 0
         },
         {
@@ -6917,15 +6935,6 @@ export const fantasyVorpData: Record<
           "team": "LV",
           "position": "K",
           "positionRank": 30,
-          "rank": 247,
-          "value": 0
-        },
-        {
-          "playerId": "fp-23181",
-          "name": "Cade Otton",
-          "team": "TB",
-          "position": "TE",
-          "positionRank": 23,
           "rank": 248,
           "value": 0
         },
@@ -6934,7 +6943,7 @@ export const fantasyVorpData: Record<
           "name": "Antonio Williams",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 76,
+          "positionRank": 77,
           "rank": 249,
           "value": 0
         },
@@ -6943,7 +6952,7 @@ export const fantasyVorpData: Record<
           "name": "Caleb Douglas",
           "team": "MIA",
           "position": "WR",
-          "positionRank": 77,
+          "positionRank": 78,
           "rank": 250,
           "value": 0
         },
@@ -6957,12 +6966,21 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
+          "playerId": "fp-23181",
+          "name": "Cade Otton",
+          "team": "TB",
+          "position": "TE",
+          "positionRank": 23,
+          "rank": 252,
+          "value": 0
+        },
+        {
           "playerId": "fp-28127",
           "name": "Omar Cooper Jr.",
           "team": "NYJ",
           "position": "WR",
-          "positionRank": 78,
-          "rank": 252,
+          "positionRank": 79,
+          "rank": 253,
           "value": 0
         },
         {
@@ -6970,8 +6988,8 @@ export const fantasyVorpData: Record<
           "name": "Travis Hunter",
           "team": "JAC",
           "position": "WR",
-          "positionRank": 79,
-          "rank": 253,
+          "positionRank": 80,
+          "rank": 254,
           "value": 0
         },
         {
@@ -6979,26 +6997,8 @@ export const fantasyVorpData: Record<
           "name": "Xavier Hutchinson",
           "team": "HOU",
           "position": "WR",
-          "positionRank": 80,
-          "rank": 254,
-          "value": 0
-        },
-        {
-          "playerId": "fp-24354",
-          "name": "Dontayvion Wicks",
-          "team": "PHI",
-          "position": "WR",
           "positionRank": 81,
           "rank": 255,
-          "value": 0
-        },
-        {
-          "playerId": "fp-23982",
-          "name": "Chig Okonkwo",
-          "team": "WAS",
-          "position": "TE",
-          "positionRank": 24,
-          "rank": 256,
           "value": 0
         },
         {
@@ -7007,6 +7007,15 @@ export const fantasyVorpData: Record<
           "team": "CLE",
           "position": "K",
           "positionRank": 31,
+          "rank": 256,
+          "value": 0
+        },
+        {
+          "playerId": "fp-23982",
+          "name": "Chig Okonkwo",
+          "team": "WAS",
+          "position": "TE",
+          "positionRank": 24,
           "rank": 257,
           "value": 0
         },
@@ -7020,30 +7029,21 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-26335",
-          "name": "AJ Barner",
-          "team": "SEA",
-          "position": "TE",
-          "positionRank": 26,
-          "rank": 259,
-          "value": 0
-        },
-        {
           "playerId": "fp-22900",
           "name": "Bryce Young",
           "team": "CAR",
           "position": "QB",
           "positionRank": 25,
-          "rank": 260,
+          "rank": 259,
           "value": 0
         },
         {
-          "playerId": "fp-23091",
-          "name": "Terrance Ferguson",
-          "team": "LAR",
+          "playerId": "fp-26335",
+          "name": "AJ Barner",
+          "team": "SEA",
           "position": "TE",
-          "positionRank": 27,
-          "rank": 261,
+          "positionRank": 26,
+          "rank": 260,
           "value": 0
         },
         {
@@ -7052,6 +7052,15 @@ export const fantasyVorpData: Record<
           "team": "KC",
           "position": "RB",
           "positionRank": 66,
+          "rank": 261,
+          "value": 0
+        },
+        {
+          "playerId": "fp-23091",
+          "name": "Terrance Ferguson",
+          "team": "LAR",
+          "position": "TE",
+          "positionRank": 27,
           "rank": 262,
           "value": 0
         },
@@ -7110,30 +7119,21 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-16411",
-          "name": "Evan Engram",
-          "team": "DEN",
-          "position": "TE",
-          "positionRank": 28,
-          "rank": 269,
-          "value": 0
-        },
-        {
           "playerId": "fp-23101",
           "name": "Jahan Dotson",
           "team": "ATL",
           "position": "WR",
           "positionRank": 87,
-          "rank": 270,
+          "rank": 269,
           "value": 0
         },
         {
-          "playerId": "fp-14104",
-          "name": "Darren Waller",
-          "team": "CAR",
+          "playerId": "fp-16411",
+          "name": "Evan Engram",
+          "team": "DEN",
           "position": "TE",
-          "positionRank": 29,
-          "rank": 271,
+          "positionRank": 28,
+          "rank": 270,
           "value": 0
         },
         {
@@ -7142,7 +7142,7 @@ export const fantasyVorpData: Record<
           "team": "NO",
           "position": "WR",
           "positionRank": 88,
-          "rank": 272,
+          "rank": 271,
           "value": 0
         },
         {
@@ -7151,6 +7151,15 @@ export const fantasyVorpData: Record<
           "team": "SF",
           "position": "RB",
           "positionRank": 68,
+          "rank": 272,
+          "value": 0
+        },
+        {
+          "playerId": "fp-14104",
+          "name": "Darren Waller",
+          "team": "CAR",
+          "position": "TE",
+          "positionRank": 29,
           "rank": 273,
           "value": 0
         },
@@ -7200,20 +7209,20 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-27109",
-          "name": "Gunnar Helm",
-          "team": "TEN",
-          "position": "TE",
-          "positionRank": 30,
-          "rank": 279,
-          "value": 0
-        },
-        {
           "playerId": "fp-25885",
           "name": "Emanuel Wilson",
           "team": "SEA",
           "position": "RB",
           "positionRank": 70,
+          "rank": 279,
+          "value": 0
+        },
+        {
+          "playerId": "fp-27109",
+          "name": "Gunnar Helm",
+          "team": "TEN",
+          "position": "TE",
+          "positionRank": 30,
           "rank": 280,
           "value": 0
         },
@@ -7227,21 +7236,12 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-17272",
-          "name": "Mike Gesicki",
-          "team": "CIN",
-          "position": "TE",
-          "positionRank": 31,
-          "rank": 282,
-          "value": 0
-        },
-        {
           "playerId": "fp-27446",
           "name": "Isaac TeSlaa",
           "team": "DET",
           "position": "WR",
           "positionRank": 94,
-          "rank": 283,
+          "rank": 282,
           "value": 0
         },
         {
@@ -7250,6 +7250,15 @@ export const fantasyVorpData: Record<
           "team": "DEN",
           "position": "RB",
           "positionRank": 71,
+          "rank": 283,
+          "value": 0
+        },
+        {
+          "playerId": "fp-17272",
+          "name": "Mike Gesicki",
+          "team": "CIN",
+          "position": "TE",
+          "positionRank": 31,
           "rank": 284,
           "value": 0
         },
@@ -7353,20 +7362,20 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-26005",
-          "name": "Mason Taylor",
-          "team": "NYJ",
-          "position": "TE",
-          "positionRank": 33,
-          "rank": 296,
-          "value": 0
-        },
-        {
           "playerId": "fp-11687",
           "name": "Geno Smith",
           "team": "NYJ",
           "position": "QB",
           "positionRank": 26,
+          "rank": 296,
+          "value": 0
+        },
+        {
+          "playerId": "fp-26005",
+          "name": "Mason Taylor",
+          "team": "NYJ",
+          "position": "TE",
+          "positionRank": 33,
           "rank": 297,
           "value": 0
         },
@@ -7470,21 +7479,12 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-17533",
-          "name": "Jason Sanders",
-          "team": "FA",
-          "position": "K",
-          "positionRank": 33,
-          "rank": 309,
-          "value": 0
-        },
-        {
           "playerId": "fp-23679",
           "name": "Sean Tucker",
           "team": "TB",
           "position": "RB",
           "positionRank": 80,
-          "rank": 310,
+          "rank": 309,
           "value": 0
         },
         {
@@ -7493,16 +7493,7 @@ export const fantasyVorpData: Record<
           "team": "PIT",
           "position": "QB",
           "positionRank": 29,
-          "rank": 311,
-          "value": 0
-        },
-        {
-          "playerId": "fp-25997",
-          "name": "Oronde Gadsden II",
-          "team": "LAC",
-          "position": "TE",
-          "positionRank": 34,
-          "rank": 312,
+          "rank": 310,
           "value": 0
         },
         {
@@ -7511,7 +7502,7 @@ export const fantasyVorpData: Record<
           "team": "DEN",
           "position": "WR",
           "positionRank": 105,
-          "rank": 313,
+          "rank": 311,
           "value": 0
         },
         {
@@ -7520,16 +7511,16 @@ export const fantasyVorpData: Record<
           "team": "MIA",
           "position": "WR",
           "positionRank": 106,
-          "rank": 314,
+          "rank": 312,
           "value": 0
         },
         {
-          "playerId": "fp-19372",
-          "name": "Colby Parkinson",
-          "team": "LAR",
+          "playerId": "fp-25997",
+          "name": "Oronde Gadsden II",
+          "team": "LAC",
           "position": "TE",
-          "positionRank": 35,
-          "rank": 315,
+          "positionRank": 34,
+          "rank": 313,
           "value": 0
         },
         {
@@ -7538,7 +7529,34 @@ export const fantasyVorpData: Record<
           "team": "LV",
           "position": "WR",
           "positionRank": 107,
+          "rank": 314,
+          "value": 0
+        },
+        {
+          "playerId": "fp-25654",
+          "name": "Emari Demercado",
+          "team": "DAL",
+          "position": "RB",
+          "positionRank": 81,
+          "rank": 315,
+          "value": 0
+        },
+        {
+          "playerId": "fp-19372",
+          "name": "Colby Parkinson",
+          "team": "LAR",
+          "position": "TE",
+          "positionRank": 35,
           "rank": 316,
+          "value": 0
+        },
+        {
+          "playerId": "fp-28132",
+          "name": "Zavion Thomas",
+          "team": "CHI",
+          "position": "WR",
+          "positionRank": 108,
+          "rank": 317,
           "value": 0
         },
         {
@@ -7547,7 +7565,7 @@ export const fantasyVorpData: Record<
           "team": "LV",
           "position": "TE",
           "positionRank": 36,
-          "rank": 317,
+          "rank": 318,
           "value": 0
         },
         {
@@ -7555,8 +7573,8 @@ export const fantasyVorpData: Record<
           "name": "Ashton Dulin",
           "team": "IND",
           "position": "WR",
-          "positionRank": 108,
-          "rank": 318,
+          "positionRank": 109,
+          "rank": 319,
           "value": 0
         },
         {
@@ -7564,8 +7582,8 @@ export const fantasyVorpData: Record<
           "name": "Darnell Mooney",
           "team": "NYG",
           "position": "WR",
-          "positionRank": 109,
-          "rank": 319,
+          "positionRank": 110,
+          "rank": 320,
           "value": 0
         },
         {
@@ -7573,8 +7591,8 @@ export const fantasyVorpData: Record<
           "name": "Ray Davis",
           "team": "BUF",
           "position": "RB",
-          "positionRank": 81,
-          "rank": 320,
+          "positionRank": 82,
+          "rank": 321,
           "value": 0
         },
         {
@@ -7582,8 +7600,8 @@ export const fantasyVorpData: Record<
           "name": "Will Shipley",
           "team": "PHI",
           "position": "RB",
-          "positionRank": 82,
-          "rank": 321,
+          "positionRank": 83,
+          "rank": 322,
           "value": 0
         },
         {
@@ -7591,8 +7609,8 @@ export const fantasyVorpData: Record<
           "name": "KaVontae Turpin",
           "team": "DAL",
           "position": "WR",
-          "positionRank": 110,
-          "rank": 322,
+          "positionRank": 111,
+          "rank": 323,
           "value": 0
         },
         {
@@ -7600,8 +7618,8 @@ export const fantasyVorpData: Record<
           "name": "Ameer Abdullah",
           "team": "JAC",
           "position": "RB",
-          "positionRank": 83,
-          "rank": 323,
+          "positionRank": 84,
+          "rank": 324,
           "value": 0
         },
         {
@@ -7609,8 +7627,8 @@ export const fantasyVorpData: Record<
           "name": "Devontez Walker",
           "team": "BAL",
           "position": "WR",
-          "positionRank": 111,
-          "rank": 324,
+          "positionRank": 112,
+          "rank": 325,
           "value": 0
         },
         {
@@ -7618,8 +7636,8 @@ export const fantasyVorpData: Record<
           "name": "Corey Kiner",
           "team": "NE",
           "position": "RB",
-          "positionRank": 84,
-          "rank": 325,
+          "positionRank": 85,
+          "rank": 326,
           "value": 0
         },
         {
@@ -7627,8 +7645,8 @@ export const fantasyVorpData: Record<
           "name": "Ollie Gordon II",
           "team": "MIA",
           "position": "RB",
-          "positionRank": 85,
-          "rank": 326,
+          "positionRank": 86,
+          "rank": 327,
           "value": 0
         },
         {
@@ -7636,8 +7654,8 @@ export const fantasyVorpData: Record<
           "name": "Hunter Luepke",
           "team": "DAL",
           "position": "RB",
-          "positionRank": 86,
-          "rank": 327,
+          "positionRank": 87,
+          "rank": 328,
           "value": 0
         },
         {
@@ -7645,8 +7663,8 @@ export const fantasyVorpData: Record<
           "name": "Kendre Miller",
           "team": "NO",
           "position": "RB",
-          "positionRank": 87,
-          "rank": 328,
+          "positionRank": 88,
+          "rank": 329,
           "value": 0
         },
         {
@@ -7654,8 +7672,8 @@ export const fantasyVorpData: Record<
           "name": "Audric Estime",
           "team": "NO",
           "position": "RB",
-          "positionRank": 88,
-          "rank": 329,
+          "positionRank": 89,
+          "rank": 330,
           "value": 0
         },
         {
@@ -7663,8 +7681,8 @@ export const fantasyVorpData: Record<
           "name": "Jacob Saylors",
           "team": "DET",
           "position": "RB",
-          "positionRank": 89,
-          "rank": 330,
+          "positionRank": 90,
+          "rank": 331,
           "value": 0
         },
         {
@@ -7672,23 +7690,14 @@ export const fantasyVorpData: Record<
           "name": "Demarcus Robinson",
           "team": "SF",
           "position": "WR",
-          "positionRank": 112,
-          "rank": 331,
+          "positionRank": 113,
+          "rank": 332,
           "value": 0
         },
         {
           "playerId": "fp-28297",
           "name": "Eli Heidenreich",
           "team": "PIT",
-          "position": "RB",
-          "positionRank": 90,
-          "rank": 332,
-          "value": 0
-        },
-        {
-          "playerId": "fp-16445",
-          "name": "Jeremy McNichols",
-          "team": "WAS",
           "position": "RB",
           "positionRank": 91,
           "rank": 333,
@@ -7699,7 +7708,7 @@ export const fantasyVorpData: Record<
           "name": "Ben Sauls",
           "team": "FA",
           "position": "K",
-          "positionRank": 34,
+          "positionRank": 33,
           "rank": 334,
           "value": 0
         },
@@ -7708,7 +7717,7 @@ export const fantasyVorpData: Record<
           "name": "Jahdae Walker",
           "team": "CHI",
           "position": "WR",
-          "positionRank": 113,
+          "positionRank": 114,
           "rank": 335,
           "value": 0
         },
@@ -7717,7 +7726,7 @@ export const fantasyVorpData: Record<
           "name": "Mack Hollins",
           "team": "NE",
           "position": "WR",
-          "positionRank": 114,
+          "positionRank": 115,
           "rank": 336,
           "value": 0
         },
@@ -7767,21 +7776,12 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-18631",
-          "name": "Dawson Knox",
-          "team": "BUF",
-          "position": "TE",
-          "positionRank": 37,
-          "rank": 342,
-          "value": 0
-        },
-        {
           "playerId": "fp-25361",
           "name": "Tank Dell",
           "team": "HOU",
           "position": "WR",
-          "positionRank": 115,
-          "rank": 343,
+          "positionRank": 116,
+          "rank": 342,
           "value": 0
         },
         {
@@ -7789,8 +7789,8 @@ export const fantasyVorpData: Record<
           "name": "Christian Kirk",
           "team": "SF",
           "position": "WR",
-          "positionRank": 116,
-          "rank": 344,
+          "positionRank": 117,
+          "rank": 343,
           "value": 0
         },
         {
@@ -7799,7 +7799,7 @@ export const fantasyVorpData: Record<
           "team": "CIN",
           "position": "RB",
           "positionRank": 97,
-          "rank": 345,
+          "rank": 344,
           "value": 0
         },
         {
@@ -7808,6 +7808,15 @@ export const fantasyVorpData: Record<
           "team": "IND",
           "position": "RB",
           "positionRank": 98,
+          "rank": 345,
+          "value": 0
+        },
+        {
+          "playerId": "fp-18631",
+          "name": "Dawson Knox",
+          "team": "BUF",
+          "position": "TE",
+          "positionRank": 37,
           "rank": 346,
           "value": 0
         },
@@ -7816,7 +7825,7 @@ export const fantasyVorpData: Record<
           "name": "Cyrus Allen",
           "team": "KC",
           "position": "WR",
-          "positionRank": 117,
+          "positionRank": 118,
           "rank": 347,
           "value": 0
         },
@@ -7852,7 +7861,7 @@ export const fantasyVorpData: Record<
           "name": "Luke McCaffrey",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 118,
+          "positionRank": 119,
           "rank": 351,
           "value": 0
         },
@@ -7861,7 +7870,7 @@ export const fantasyVorpData: Record<
           "name": "Kyle Williams",
           "team": "NE",
           "position": "WR",
-          "positionRank": 119,
+          "positionRank": 120,
           "rank": 352,
           "value": 0
         },
@@ -7870,7 +7879,7 @@ export const fantasyVorpData: Record<
           "name": "Kendrick Bourne",
           "team": "ARI",
           "position": "WR",
-          "positionRank": 120,
+          "positionRank": 121,
           "rank": 353,
           "value": 0
         },
@@ -7904,9 +7913,9 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27222",
           "name": "Theo Wease Jr.",
-          "team": "FA",
+          "team": "LAC",
           "position": "WR",
-          "positionRank": 121,
+          "positionRank": 122,
           "rank": 357,
           "value": 0
         },
@@ -7915,7 +7924,7 @@ export const fantasyVorpData: Record<
           "name": "Dyami Brown",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 122,
+          "positionRank": 123,
           "rank": 358,
           "value": 0
         },
@@ -7924,7 +7933,7 @@ export const fantasyVorpData: Record<
           "name": "Kalif Raymond",
           "team": "CHI",
           "position": "WR",
-          "positionRank": 123,
+          "positionRank": 124,
           "rank": 359,
           "value": 0
         },
@@ -7978,17 +7987,8 @@ export const fantasyVorpData: Record<
           "name": "Treylon Burks",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 124,
+          "positionRank": 125,
           "rank": 365,
-          "value": 0
-        },
-        {
-          "playerId": "fp-15623",
-          "name": "Tyler Higbee",
-          "team": "LAR",
-          "position": "TE",
-          "positionRank": 41,
-          "rank": 366,
           "value": 0
         },
         {
@@ -7997,7 +7997,7 @@ export const fantasyVorpData: Record<
           "team": "GB",
           "position": "RB",
           "positionRank": 107,
-          "rank": 367,
+          "rank": 366,
           "value": 0
         },
         {
@@ -8006,6 +8006,15 @@ export const fantasyVorpData: Record<
           "team": "NE",
           "position": "RB",
           "positionRank": 108,
+          "rank": 367,
+          "value": 0
+        },
+        {
+          "playerId": "fp-15623",
+          "name": "Tyler Higbee",
+          "team": "LAR",
+          "position": "TE",
+          "positionRank": 41,
           "rank": 368,
           "value": 0
         },
@@ -8032,7 +8041,7 @@ export const fantasyVorpData: Record<
           "name": "Savion Williams",
           "team": "GB",
           "position": "WR",
-          "positionRank": 125,
+          "positionRank": 126,
           "rank": 371,
           "value": 0
         },
@@ -8068,17 +8077,8 @@ export const fantasyVorpData: Record<
           "name": "Isaiah Bond",
           "team": "CLE",
           "position": "WR",
-          "positionRank": 126,
-          "rank": 375,
-          "value": 0
-        },
-        {
-          "playerId": "fp-28132",
-          "name": "Zavion Thomas",
-          "team": "CHI",
-          "position": "WR",
           "positionRank": 127,
-          "rank": 376,
+          "rank": 375,
           "value": 0
         },
         {
@@ -8087,6 +8087,15 @@ export const fantasyVorpData: Record<
           "team": "LV",
           "position": "QB",
           "positionRank": 30,
+          "rank": 376,
+          "value": 0
+        },
+        {
+          "playerId": "fp-17533",
+          "name": "Jason Sanders",
+          "team": "FA",
+          "position": "K",
+          "positionRank": 34,
           "rank": 377,
           "value": 0
         },
@@ -8154,12 +8163,21 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
+          "playerId": "fp-26379",
+          "name": "Isaiah Williams",
+          "team": "NYJ",
+          "position": "WR",
+          "positionRank": 133,
+          "rank": 385,
+          "value": 0
+        },
+        {
           "playerId": "fp-23341",
           "name": "Brock Wright",
           "team": "DET",
           "position": "TE",
           "positionRank": 47,
-          "rank": 385,
+          "rank": 386,
           "value": 0
         },
         {
@@ -8168,43 +8186,7 @@ export const fantasyVorpData: Record<
           "team": "DEN",
           "position": "TE",
           "positionRank": 48,
-          "rank": 386,
-          "value": 0
-        },
-        {
-          "playerId": "fp-26379",
-          "name": "Isaiah Williams",
-          "team": "NYJ",
-          "position": "WR",
-          "positionRank": 133,
           "rank": 387,
-          "value": 0
-        },
-        {
-          "playerId": "fp-18487",
-          "name": "Josh Oliver",
-          "team": "MIN",
-          "position": "TE",
-          "positionRank": 49,
-          "rank": 388,
-          "value": 0
-        },
-        {
-          "playerId": "fp-24238",
-          "name": "Daniel Bellinger",
-          "team": "TEN",
-          "position": "TE",
-          "positionRank": 50,
-          "rank": 389,
-          "value": 0
-        },
-        {
-          "playerId": "fp-15581",
-          "name": "Austin Hooper",
-          "team": "ATL",
-          "position": "TE",
-          "positionRank": 51,
-          "rank": 390,
           "value": 0
         },
         {
@@ -8213,34 +8195,34 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "WR",
           "positionRank": 134,
+          "rank": 388,
+          "value": 0
+        },
+        {
+          "playerId": "fp-18487",
+          "name": "Josh Oliver",
+          "team": "MIN",
+          "position": "TE",
+          "positionRank": 49,
+          "rank": 389,
+          "value": 0
+        },
+        {
+          "playerId": "fp-24238",
+          "name": "Daniel Bellinger",
+          "team": "TEN",
+          "position": "TE",
+          "positionRank": 50,
+          "rank": 390,
+          "value": 0
+        },
+        {
+          "playerId": "fp-15581",
+          "name": "Austin Hooper",
+          "team": "ATL",
+          "position": "TE",
+          "positionRank": 51,
           "rank": 391,
-          "value": 0
-        },
-        {
-          "playerId": "fp-28154",
-          "name": "Eli Raridon",
-          "team": "NE",
-          "position": "TE",
-          "positionRank": 52,
-          "rank": 392,
-          "value": 0
-        },
-        {
-          "playerId": "fp-22795",
-          "name": "Tommy Tremble",
-          "team": "CAR",
-          "position": "TE",
-          "positionRank": 53,
-          "rank": 393,
-          "value": 0
-        },
-        {
-          "playerId": "fp-19539",
-          "name": "Noah Gray",
-          "team": "KC",
-          "position": "TE",
-          "positionRank": 54,
-          "rank": 394,
           "value": 0
         },
         {
@@ -8249,16 +8231,34 @@ export const fantasyVorpData: Record<
           "team": "WAS",
           "position": "WR",
           "positionRank": 135,
-          "rank": 395,
+          "rank": 392,
           "value": 0
         },
         {
-          "playerId": "fp-23144",
-          "name": "Eli Stowers",
-          "team": "PHI",
+          "playerId": "fp-28154",
+          "name": "Eli Raridon",
+          "team": "NE",
           "position": "TE",
-          "positionRank": 55,
-          "rank": 396,
+          "positionRank": 52,
+          "rank": 393,
+          "value": 0
+        },
+        {
+          "playerId": "fp-22795",
+          "name": "Tommy Tremble",
+          "team": "CAR",
+          "position": "TE",
+          "positionRank": 53,
+          "rank": 394,
+          "value": 0
+        },
+        {
+          "playerId": "fp-19539",
+          "name": "Noah Gray",
+          "team": "KC",
+          "position": "TE",
+          "positionRank": 54,
+          "rank": 395,
           "value": 0
         },
         {
@@ -8267,6 +8267,15 @@ export const fantasyVorpData: Record<
           "team": "BAL",
           "position": "WR",
           "positionRank": 136,
+          "rank": 396,
+          "value": 0
+        },
+        {
+          "playerId": "fp-23144",
+          "name": "Eli Stowers",
+          "team": "PHI",
+          "position": "TE",
+          "positionRank": 55,
           "rank": 397,
           "value": 0
         },
@@ -8289,30 +8298,12 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-23119",
-          "name": "Elijah Higgins",
-          "team": "ARI",
-          "position": "TE",
-          "positionRank": 57,
-          "rank": 400,
-          "value": 0
-        },
-        {
-          "playerId": "fp-24334",
-          "name": "Ja'Tavion Sanders",
-          "team": "CAR",
-          "position": "TE",
-          "positionRank": 58,
-          "rank": 401,
-          "value": 0
-        },
-        {
           "playerId": "fp-27147",
           "name": "Tez Johnson",
           "team": "TB",
           "position": "WR",
           "positionRank": 138,
-          "rank": 402,
+          "rank": 400,
           "value": 0
         },
         {
@@ -8321,7 +8312,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "WR",
           "positionRank": 139,
-          "rank": 403,
+          "rank": 401,
           "value": 0
         },
         {
@@ -8330,6 +8321,24 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "WR",
           "positionRank": 140,
+          "rank": 402,
+          "value": 0
+        },
+        {
+          "playerId": "fp-23119",
+          "name": "Elijah Higgins",
+          "team": "ARI",
+          "position": "TE",
+          "positionRank": 57,
+          "rank": 403,
+          "value": 0
+        },
+        {
+          "playerId": "fp-24334",
+          "name": "Ja'Tavion Sanders",
+          "team": "CAR",
+          "position": "TE",
+          "positionRank": 58,
           "rank": 404,
           "value": 0
         },
@@ -8343,21 +8352,12 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-23761",
-          "name": "Davis Allen",
-          "team": "LAR",
-          "position": "TE",
-          "positionRank": 60,
-          "rank": 406,
-          "value": 0
-        },
-        {
           "playerId": "fp-27449",
           "name": "Konata Mumpfield",
           "team": "LAR",
           "position": "WR",
           "positionRank": 141,
-          "rank": 407,
+          "rank": 406,
           "value": 0
         },
         {
@@ -8366,6 +8366,15 @@ export const fantasyVorpData: Record<
           "team": "NO",
           "position": "WR",
           "positionRank": 142,
+          "rank": 407,
+          "value": 0
+        },
+        {
+          "playerId": "fp-23761",
+          "name": "Davis Allen",
+          "team": "LAR",
+          "position": "TE",
+          "positionRank": 60,
           "rank": 408,
           "value": 0
         },
@@ -8388,12 +8397,21 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
+          "playerId": "fp-15495",
+          "name": "Laquon Treadwell",
+          "team": "IND",
+          "position": "WR",
+          "positionRank": 145,
+          "rank": 411,
+          "value": 0
+        },
+        {
           "playerId": "fp-22833",
           "name": "John Bates",
           "team": "WAS",
           "position": "TE",
           "positionRank": 61,
-          "rank": 411,
+          "rank": 412,
           "value": 0
         },
         {
@@ -8402,15 +8420,6 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "TE",
           "positionRank": 62,
-          "rank": 412,
-          "value": 0
-        },
-        {
-          "playerId": "fp-15495",
-          "name": "Laquon Treadwell",
-          "team": "IND",
-          "position": "WR",
-          "positionRank": 145,
           "rank": 413,
           "value": 0
         },
@@ -8469,21 +8478,12 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-25349",
-          "name": "Ben Sims",
-          "team": "MIA",
-          "position": "TE",
-          "positionRank": 66,
-          "rank": 420,
-          "value": 0
-        },
-        {
           "playerId": "fp-24562",
           "name": "Connor Heyward",
           "team": "LV",
           "position": "TE",
-          "positionRank": 67,
-          "rank": 421,
+          "positionRank": 66,
+          "rank": 420,
           "value": 0
         },
         {
@@ -8492,7 +8492,7 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "WR",
           "positionRank": 149,
-          "rank": 422,
+          "rank": 421,
           "value": 0
         },
         {
@@ -8501,7 +8501,7 @@ export const fantasyVorpData: Record<
           "team": "CIN",
           "position": "WR",
           "positionRank": 150,
-          "rank": 423,
+          "rank": 422,
           "value": 0
         },
         {
@@ -8510,7 +8510,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "WR",
           "positionRank": 151,
-          "rank": 424,
+          "rank": 423,
           "value": 0
         },
         {
@@ -8519,7 +8519,7 @@ export const fantasyVorpData: Record<
           "team": "NE",
           "position": "WR",
           "positionRank": 152,
-          "rank": 425,
+          "rank": 424,
           "value": 0
         },
         {
@@ -8528,7 +8528,7 @@ export const fantasyVorpData: Record<
           "team": "SF",
           "position": "WR",
           "positionRank": 153,
-          "rank": 426,
+          "rank": 425,
           "value": 0
         },
         {
@@ -8537,7 +8537,7 @@ export const fantasyVorpData: Record<
           "team": "JAC",
           "position": "WR",
           "positionRank": 154,
-          "rank": 427,
+          "rank": 426,
           "value": 0
         },
         {
@@ -8546,16 +8546,7 @@ export const fantasyVorpData: Record<
           "team": "MIN",
           "position": "WR",
           "positionRank": 155,
-          "rank": 428,
-          "value": 0
-        },
-        {
-          "playerId": "fp-25269",
-          "name": "Cade Stover",
-          "team": "HOU",
-          "position": "TE",
-          "positionRank": 68,
-          "rank": 429,
+          "rank": 427,
           "value": 0
         },
         {
@@ -8564,7 +8555,7 @@ export const fantasyVorpData: Record<
           "team": "DAL",
           "position": "WR",
           "positionRank": 156,
-          "rank": 430,
+          "rank": 428,
           "value": 0
         },
         {
@@ -8573,7 +8564,7 @@ export const fantasyVorpData: Record<
           "team": "PHI",
           "position": "WR",
           "positionRank": 157,
-          "rank": 431,
+          "rank": 429,
           "value": 0
         },
         {
@@ -8582,7 +8573,7 @@ export const fantasyVorpData: Record<
           "team": "ARI",
           "position": "WR",
           "positionRank": 158,
-          "rank": 432,
+          "rank": 430,
           "value": 0
         },
         {
@@ -8591,7 +8582,7 @@ export const fantasyVorpData: Record<
           "team": "LV",
           "position": "WR",
           "positionRank": 159,
-          "rank": 433,
+          "rank": 431,
           "value": 0
         },
         {
@@ -8600,7 +8591,16 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "WR",
           "positionRank": 160,
-          "rank": 434,
+          "rank": 432,
+          "value": 0
+        },
+        {
+          "playerId": "fp-25269",
+          "name": "Cade Stover",
+          "team": "HOU",
+          "position": "TE",
+          "positionRank": 67,
+          "rank": 433,
           "value": 0
         },
         {
@@ -8608,8 +8608,8 @@ export const fantasyVorpData: Record<
           "name": "Nate Adkins",
           "team": "DEN",
           "position": "TE",
-          "positionRank": 69,
-          "rank": 435,
+          "positionRank": 68,
+          "rank": 434,
           "value": 0
         },
         {
@@ -8617,8 +8617,8 @@ export const fantasyVorpData: Record<
           "name": "Jackson Hawes",
           "team": "BUF",
           "position": "TE",
-          "positionRank": 70,
-          "rank": 436,
+          "positionRank": 69,
+          "rank": 435,
           "value": 0
         },
         {
@@ -8626,8 +8626,8 @@ export const fantasyVorpData: Record<
           "name": "Ben Sinnott",
           "team": "WAS",
           "position": "TE",
-          "positionRank": 71,
-          "rank": 437,
+          "positionRank": 70,
+          "rank": 436,
           "value": 0
         },
         {
@@ -8635,8 +8635,8 @@ export const fantasyVorpData: Record<
           "name": "Jack Endries",
           "team": "CIN",
           "position": "TE",
-          "positionRank": 72,
-          "rank": 438,
+          "positionRank": 71,
+          "rank": 437,
           "value": 0
         },
         {
@@ -8644,8 +8644,8 @@ export const fantasyVorpData: Record<
           "name": "Luke Schoonmaker",
           "team": "DAL",
           "position": "TE",
-          "positionRank": 73,
-          "rank": 439,
+          "positionRank": 72,
+          "rank": 438,
           "value": 0
         },
         {
@@ -8653,8 +8653,8 @@ export const fantasyVorpData: Record<
           "name": "Luke Musgrave",
           "team": "GB",
           "position": "TE",
-          "positionRank": 74,
-          "rank": 440,
+          "positionRank": 73,
+          "rank": 439,
           "value": 0
         },
         {
@@ -8663,43 +8663,7 @@ export const fantasyVorpData: Record<
           "team": "PIT",
           "position": "WR",
           "positionRank": 161,
-          "rank": 441,
-          "value": 0
-        },
-        {
-          "playerId": "fp-18397",
-          "name": "Foster Moreau",
-          "team": "HOU",
-          "position": "TE",
-          "positionRank": 75,
-          "rank": 442,
-          "value": 0
-        },
-        {
-          "playerId": "fp-28165",
-          "name": "Bauer Sharp",
-          "team": "TB",
-          "position": "TE",
-          "positionRank": 76,
-          "rank": 443,
-          "value": 0
-        },
-        {
-          "playerId": "fp-28352",
-          "name": "Dallen Bentley",
-          "team": "DEN",
-          "position": "TE",
-          "positionRank": 77,
-          "rank": 444,
-          "value": 0
-        },
-        {
-          "playerId": "fp-19665",
-          "name": "Charlie Woerner",
-          "team": "ATL",
-          "position": "TE",
-          "positionRank": 78,
-          "rank": 445,
+          "rank": 440,
           "value": 0
         },
         {
@@ -8708,25 +8672,43 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "WR",
           "positionRank": 162,
-          "rank": 446,
+          "rank": 441,
           "value": 0
         },
         {
-          "playerId": "fp-16579",
-          "name": "Mo Alie-Cox",
-          "team": "IND",
+          "playerId": "fp-18397",
+          "name": "Foster Moreau",
+          "team": "HOU",
           "position": "TE",
-          "positionRank": 79,
-          "rank": 447,
+          "positionRank": 74,
+          "rank": 442,
           "value": 0
         },
         {
-          "playerId": "fp-26343",
-          "name": "Jared Wiley",
-          "team": "KC",
+          "playerId": "fp-28165",
+          "name": "Bauer Sharp",
+          "team": "TB",
           "position": "TE",
-          "positionRank": 80,
-          "rank": 448,
+          "positionRank": 75,
+          "rank": 443,
+          "value": 0
+        },
+        {
+          "playerId": "fp-28352",
+          "name": "Dallen Bentley",
+          "team": "DEN",
+          "position": "TE",
+          "positionRank": 76,
+          "rank": 444,
+          "value": 0
+        },
+        {
+          "playerId": "fp-19665",
+          "name": "Charlie Woerner",
+          "team": "ATL",
+          "position": "TE",
+          "positionRank": 77,
+          "rank": 445,
           "value": 0
         },
         {
@@ -8735,7 +8717,7 @@ export const fantasyVorpData: Record<
           "team": "TB",
           "position": "WR",
           "positionRank": 163,
-          "rank": 449,
+          "rank": 446,
           "value": 0
         },
         {
@@ -8744,13 +8726,40 @@ export const fantasyVorpData: Record<
           "team": "PIT",
           "position": "WR",
           "positionRank": 164,
-          "rank": 450,
+          "rank": 447,
+          "value": 0
+        },
+        {
+          "playerId": "fp-16579",
+          "name": "Mo Alie-Cox",
+          "team": "IND",
+          "position": "TE",
+          "positionRank": 78,
+          "rank": 448,
+          "value": 0
+        },
+        {
+          "playerId": "fp-26343",
+          "name": "Jared Wiley",
+          "team": "KC",
+          "position": "TE",
+          "positionRank": 79,
+          "rank": 449,
           "value": 0
         },
         {
           "playerId": "fp-23039",
           "name": "Thomas Fidone II",
           "team": "NYG",
+          "position": "TE",
+          "positionRank": 80,
+          "rank": 450,
+          "value": 0
+        },
+        {
+          "playerId": "fp-23821",
+          "name": "Will Mallory",
+          "team": "IND",
           "position": "TE",
           "positionRank": 81,
           "rank": 451,
@@ -8928,30 +8937,12 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-17826",
-          "name": "Tanner Hudson",
-          "team": "CIN",
+          "playerId": "fp-28079",
+          "name": "Justin Joly",
+          "team": "FA",
           "position": "TE",
           "positionRank": 101,
           "rank": 471,
-          "value": 0
-        },
-        {
-          "playerId": "fp-16706",
-          "name": "Eric Saubert",
-          "team": "SEA",
-          "position": "TE",
-          "positionRank": 102,
-          "rank": 472,
-          "value": 0
-        },
-        {
-          "playerId": "fp-19501",
-          "name": "Luke Farrell",
-          "team": "SF",
-          "position": "TE",
-          "positionRank": 103,
-          "rank": 473,
           "value": 0
         },
         {
@@ -8960,6 +8951,24 @@ export const fantasyVorpData: Record<
           "team": "ATL",
           "position": "QB",
           "positionRank": 31,
+          "rank": 472,
+          "value": 0
+        },
+        {
+          "playerId": "fp-16706",
+          "name": "Eric Saubert",
+          "team": "SEA",
+          "position": "TE",
+          "positionRank": 102,
+          "rank": 473,
+          "value": 0
+        },
+        {
+          "playerId": "fp-19501",
+          "name": "Luke Farrell",
+          "team": "SF",
+          "position": "TE",
+          "positionRank": 103,
           "rank": 474,
           "value": 0
         },
@@ -9315,18 +9324,18 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-25967",
-          "name": "Joe Milton III",
-          "team": "DAL",
+          "playerId": "fp-23066",
+          "name": "Kyle McCord",
+          "team": "MIA",
           "position": "QB",
           "positionRank": 69,
           "rank": 514,
           "value": 0
         },
         {
-          "playerId": "fp-23066",
-          "name": "Kyle McCord",
-          "team": "MIA",
+          "playerId": "fp-25967",
+          "name": "Joe Milton III",
+          "team": "FA",
           "position": "QB",
           "positionRank": 70,
           "rank": 515,
@@ -9358,13 +9367,22 @@ export const fantasyVorpData: Record<
           "positionRank": 73,
           "rank": 518,
           "value": 0
+        },
+        {
+          "playerId": "fp-27161",
+          "name": "Brady Cook",
+          "team": "FA",
+          "position": "QB",
+          "positionRank": 74,
+          "rank": 519,
+          "value": 0
         }
       ]
     },
     "14": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-      "accessedAt": "2026-09-01T19:46:03.426Z",
+      "accessedAt": "2026-09-02T19:38:55.544Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -9655,22 +9673,22 @@ export const fantasyVorpData: Record<
           "value": 147
         },
         {
-          "playerId": "fp-23065",
-          "name": "TreVeyon Henderson",
-          "team": "NE",
-          "position": "RB",
-          "positionRank": 25,
-          "rank": 33,
-          "value": 143
-        },
-        {
           "playerId": "fp-20111",
           "name": "Chris Olave",
           "team": "NO",
           "position": "WR",
           "positionRank": 9,
+          "rank": 33,
+          "value": 144
+        },
+        {
+          "playerId": "fp-23065",
+          "name": "TreVeyon Henderson",
+          "team": "NE",
+          "position": "RB",
+          "positionRank": 25,
           "rank": 34,
-          "value": 142
+          "value": 143
         },
         {
           "playerId": "fp-22726",
@@ -10753,22 +10771,22 @@ export const fantasyVorpData: Record<
           "value": 22
         },
         {
-          "playerId": "fp-11616",
-          "name": "Keenan Allen",
-          "team": "IND",
-          "position": "WR",
-          "positionRank": 61,
-          "rank": 155,
-          "value": 22
-        },
-        {
           "playerId": "fp-19562",
           "name": "Juwan Johnson",
           "team": "NO",
           "position": "TE",
           "positionRank": 16,
+          "rank": 155,
+          "value": 22
+        },
+        {
+          "playerId": "fp-11616",
+          "name": "Keenan Allen",
+          "team": "IND",
+          "position": "WR",
+          "positionRank": 61,
           "rank": 156,
-          "value": 21
+          "value": 22
         },
         {
           "playerId": "fp-9451",
@@ -11059,12 +11077,21 @@ export const fantasyVorpData: Record<
           "value": 6
         },
         {
+          "playerId": "fp-26409",
+          "name": "Devaughn Vele",
+          "team": "NO",
+          "position": "WR",
+          "positionRank": 68,
+          "rank": 189,
+          "value": 6
+        },
+        {
           "playerId": "fp-11798",
           "name": "Kyle Juszczyk",
           "team": "SF",
           "position": "RB",
           "positionRank": 68,
-          "rank": 189,
+          "rank": 190,
           "value": 6
         },
         {
@@ -11073,15 +11100,6 @@ export const fantasyVorpData: Record<
           "team": "DET",
           "position": "K",
           "positionRank": 7,
-          "rank": 190,
-          "value": 5
-        },
-        {
-          "playerId": "fp-26409",
-          "name": "Devaughn Vele",
-          "team": "NO",
-          "position": "WR",
-          "positionRank": 68,
           "rank": 191,
           "value": 5
         },
@@ -11626,12 +11644,21 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
+          "playerId": "fp-24354",
+          "name": "Dontayvion Wicks",
+          "team": "PHI",
+          "position": "WR",
+          "positionRank": 75,
+          "rank": 252,
+          "value": 0
+        },
+        {
           "playerId": "fp-26038",
           "name": "Chris Bell",
           "team": "MIA",
           "position": "WR",
-          "positionRank": 75,
-          "rank": 252,
+          "positionRank": 76,
+          "rank": 253,
           "value": 0
         },
         {
@@ -11640,7 +11667,7 @@ export const fantasyVorpData: Record<
           "team": "HOU",
           "position": "QB",
           "positionRank": 24,
-          "rank": 253,
+          "rank": 254,
           "value": 0
         },
         {
@@ -11649,7 +11676,7 @@ export const fantasyVorpData: Record<
           "team": "PIT",
           "position": "K",
           "positionRank": 23,
-          "rank": 254,
+          "rank": 255,
           "value": 0
         },
         {
@@ -11658,7 +11685,7 @@ export const fantasyVorpData: Record<
           "team": "SF",
           "position": "DST",
           "positionRank": 30,
-          "rank": 255,
+          "rank": 256,
           "value": 0
         },
         {
@@ -11667,7 +11694,16 @@ export const fantasyVorpData: Record<
           "team": "WAS",
           "position": "K",
           "positionRank": 24,
-          "rank": 256,
+          "rank": 257,
+          "value": 0
+        },
+        {
+          "playerId": "fp-25533",
+          "name": "Blake Grupe",
+          "team": "NYJ",
+          "position": "K",
+          "positionRank": 25,
+          "rank": 258,
           "value": 0
         },
         {
@@ -11676,7 +11712,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "DST",
           "positionRank": 31,
-          "rank": 257,
+          "rank": 259,
           "value": 0
         },
         {
@@ -11685,7 +11721,7 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "DST",
           "positionRank": 32,
-          "rank": 258,
+          "rank": 260,
           "value": 0
         },
         {
@@ -11694,7 +11730,7 @@ export const fantasyVorpData: Record<
           "team": "CHI",
           "position": "RB",
           "positionRank": 77,
-          "rank": 259,
+          "rank": 261,
           "value": 0
         },
         {
@@ -11702,8 +11738,8 @@ export const fantasyVorpData: Record<
           "name": "Antonio Williams",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 76,
-          "rank": 260,
+          "positionRank": 77,
+          "rank": 262,
           "value": 0
         },
         {
@@ -11711,8 +11747,8 @@ export const fantasyVorpData: Record<
           "name": "Caleb Douglas",
           "team": "MIA",
           "position": "WR",
-          "positionRank": 77,
-          "rank": 261,
+          "positionRank": 78,
+          "rank": 263,
           "value": 0
         },
         {
@@ -11721,7 +11757,7 @@ export const fantasyVorpData: Record<
           "team": "IND",
           "position": "RB",
           "positionRank": 78,
-          "rank": 262,
+          "rank": 264,
           "value": 0
         },
         {
@@ -11730,7 +11766,7 @@ export const fantasyVorpData: Record<
           "team": "SEA",
           "position": "RB",
           "positionRank": 79,
-          "rank": 263,
+          "rank": 265,
           "value": 0
         },
         {
@@ -11738,8 +11774,8 @@ export const fantasyVorpData: Record<
           "name": "Riley Patterson",
           "team": "MIA",
           "position": "K",
-          "positionRank": 25,
-          "rank": 264,
+          "positionRank": 26,
+          "rank": 266,
           "value": 0
         },
         {
@@ -11747,8 +11783,8 @@ export const fantasyVorpData: Record<
           "name": "Joey Slye",
           "team": "TEN",
           "position": "K",
-          "positionRank": 26,
-          "rank": 265,
+          "positionRank": 27,
+          "rank": 267,
           "value": 0
         },
         {
@@ -11756,8 +11792,8 @@ export const fantasyVorpData: Record<
           "name": "Omar Cooper Jr.",
           "team": "NYJ",
           "position": "WR",
-          "positionRank": 78,
-          "rank": 266,
+          "positionRank": 79,
+          "rank": 268,
           "value": 0
         },
         {
@@ -11766,7 +11802,7 @@ export const fantasyVorpData: Record<
           "team": "DEN",
           "position": "TE",
           "positionRank": 28,
-          "rank": 267,
+          "rank": 269,
           "value": 0
         },
         {
@@ -11775,7 +11811,7 @@ export const fantasyVorpData: Record<
           "team": "TB",
           "position": "RB",
           "positionRank": 80,
-          "rank": 268,
+          "rank": 270,
           "value": 0
         },
         {
@@ -11784,7 +11820,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "QB",
           "positionRank": 25,
-          "rank": 269,
+          "rank": 271,
           "value": 0
         },
         {
@@ -11793,7 +11829,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "TE",
           "positionRank": 29,
-          "rank": 270,
+          "rank": 272,
           "value": 0
         },
         {
@@ -11801,8 +11837,8 @@ export const fantasyVorpData: Record<
           "name": "Travis Hunter",
           "team": "JAC",
           "position": "WR",
-          "positionRank": 79,
-          "rank": 271,
+          "positionRank": 80,
+          "rank": 273,
           "value": 0
         },
         {
@@ -11810,17 +11846,17 @@ export const fantasyVorpData: Record<
           "name": "Xavier Hutchinson",
           "team": "HOU",
           "position": "WR",
-          "positionRank": 80,
-          "rank": 272,
+          "positionRank": 81,
+          "rank": 274,
           "value": 0
         },
         {
-          "playerId": "fp-24354",
-          "name": "Dontayvion Wicks",
-          "team": "PHI",
-          "position": "WR",
+          "playerId": "fp-25654",
+          "name": "Emari Demercado",
+          "team": "DAL",
+          "position": "RB",
           "positionRank": 81,
-          "rank": 273,
+          "rank": 275,
           "value": 0
         },
         {
@@ -11828,17 +11864,8 @@ export const fantasyVorpData: Record<
           "name": "Chad Ryland",
           "team": "ARI",
           "position": "K",
-          "positionRank": 27,
-          "rank": 274,
-          "value": 0
-        },
-        {
-          "playerId": "fp-25533",
-          "name": "Blake Grupe",
-          "team": "NYJ",
-          "position": "K",
           "positionRank": 28,
-          "rank": 275,
+          "rank": 276,
           "value": 0
         },
         {
@@ -11846,8 +11873,8 @@ export const fantasyVorpData: Record<
           "name": "Ray Davis",
           "team": "BUF",
           "position": "RB",
-          "positionRank": 81,
-          "rank": 276,
+          "positionRank": 82,
+          "rank": 277,
           "value": 0
         },
         {
@@ -11855,8 +11882,8 @@ export const fantasyVorpData: Record<
           "name": "Will Shipley",
           "team": "PHI",
           "position": "RB",
-          "positionRank": 82,
-          "rank": 277,
+          "positionRank": 83,
+          "rank": 278,
           "value": 0
         },
         {
@@ -11865,7 +11892,7 @@ export const fantasyVorpData: Record<
           "team": "TEN",
           "position": "TE",
           "positionRank": 30,
-          "rank": 278,
+          "rank": 279,
           "value": 0
         },
         {
@@ -11873,8 +11900,8 @@ export const fantasyVorpData: Record<
           "name": "Ameer Abdullah",
           "team": "JAC",
           "position": "RB",
-          "positionRank": 83,
-          "rank": 279,
+          "positionRank": 84,
+          "rank": 280,
           "value": 0
         },
         {
@@ -11883,7 +11910,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "K",
           "positionRank": 29,
-          "rank": 280,
+          "rank": 281,
           "value": 0
         },
         {
@@ -11892,7 +11919,7 @@ export const fantasyVorpData: Record<
           "team": "NYG",
           "position": "WR",
           "positionRank": 82,
-          "rank": 281,
+          "rank": 282,
           "value": 0
         },
         {
@@ -11901,7 +11928,7 @@ export const fantasyVorpData: Record<
           "team": "DEN",
           "position": "WR",
           "positionRank": 83,
-          "rank": 282,
+          "rank": 283,
           "value": 0
         },
         {
@@ -11910,7 +11937,7 @@ export const fantasyVorpData: Record<
           "team": "CIN",
           "position": "TE",
           "positionRank": 31,
-          "rank": 283,
+          "rank": 284,
           "value": 0
         },
         {
@@ -11918,8 +11945,8 @@ export const fantasyVorpData: Record<
           "name": "Corey Kiner",
           "team": "NE",
           "position": "RB",
-          "positionRank": 84,
-          "rank": 284,
+          "positionRank": 85,
+          "rank": 285,
           "value": 0
         },
         {
@@ -11927,8 +11954,8 @@ export const fantasyVorpData: Record<
           "name": "Ollie Gordon II",
           "team": "MIA",
           "position": "RB",
-          "positionRank": 85,
-          "rank": 285,
+          "positionRank": 86,
+          "rank": 286,
           "value": 0
         },
         {
@@ -11936,8 +11963,8 @@ export const fantasyVorpData: Record<
           "name": "Hunter Luepke",
           "team": "DAL",
           "position": "RB",
-          "positionRank": 86,
-          "rank": 286,
+          "positionRank": 87,
+          "rank": 287,
           "value": 0
         },
         {
@@ -11946,7 +11973,7 @@ export const fantasyVorpData: Record<
           "team": "LV",
           "position": "K",
           "positionRank": 30,
-          "rank": 287,
+          "rank": 288,
           "value": 0
         },
         {
@@ -11954,8 +11981,8 @@ export const fantasyVorpData: Record<
           "name": "Kendre Miller",
           "team": "NO",
           "position": "RB",
-          "positionRank": 87,
-          "rank": 288,
+          "positionRank": 88,
+          "rank": 289,
           "value": 0
         },
         {
@@ -11963,8 +11990,8 @@ export const fantasyVorpData: Record<
           "name": "Audric Estime",
           "team": "NO",
           "position": "RB",
-          "positionRank": 88,
-          "rank": 289,
+          "positionRank": 89,
+          "rank": 290,
           "value": 0
         },
         {
@@ -11972,8 +11999,8 @@ export const fantasyVorpData: Record<
           "name": "Jacob Saylors",
           "team": "DET",
           "position": "RB",
-          "positionRank": 89,
-          "rank": 290,
+          "positionRank": 90,
+          "rank": 291,
           "value": 0
         },
         {
@@ -11982,7 +12009,7 @@ export const fantasyVorpData: Record<
           "team": "SEA",
           "position": "WR",
           "positionRank": 84,
-          "rank": 291,
+          "rank": 292,
           "value": 0
         },
         {
@@ -11991,7 +12018,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "WR",
           "positionRank": 85,
-          "rank": 292,
+          "rank": 293,
           "value": 0
         },
         {
@@ -12000,7 +12027,7 @@ export const fantasyVorpData: Record<
           "team": "KC",
           "position": "WR",
           "positionRank": 86,
-          "rank": 293,
+          "rank": 294,
           "value": 0
         },
         {
@@ -12009,22 +12036,13 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "TE",
           "positionRank": 32,
-          "rank": 294,
+          "rank": 295,
           "value": 0
         },
         {
           "playerId": "fp-28297",
           "name": "Eli Heidenreich",
           "team": "PIT",
-          "position": "RB",
-          "positionRank": 90,
-          "rank": 295,
-          "value": 0
-        },
-        {
-          "playerId": "fp-16445",
-          "name": "Jeremy McNichols",
-          "team": "WAS",
           "position": "RB",
           "positionRank": 91,
           "rank": 296,
@@ -12481,12 +12499,21 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
+          "playerId": "fp-28132",
+          "name": "Zavion Thomas",
+          "team": "CHI",
+          "position": "WR",
+          "positionRank": 108,
+          "rank": 347,
+          "value": 0
+        },
+        {
           "playerId": "fp-28176",
           "name": "Dominic Zvada",
           "team": "NYG",
           "position": "K",
           "positionRank": 32,
-          "rank": 347,
+          "rank": 348,
           "value": 0
         },
         {
@@ -12494,8 +12521,8 @@ export const fantasyVorpData: Record<
           "name": "Ashton Dulin",
           "team": "IND",
           "position": "WR",
-          "positionRank": 108,
-          "rank": 348,
+          "positionRank": 109,
+          "rank": 349,
           "value": 0
         },
         {
@@ -12503,8 +12530,8 @@ export const fantasyVorpData: Record<
           "name": "Darnell Mooney",
           "team": "NYG",
           "position": "WR",
-          "positionRank": 109,
-          "rank": 349,
+          "positionRank": 110,
+          "rank": 350,
           "value": 0
         },
         {
@@ -12512,8 +12539,8 @@ export const fantasyVorpData: Record<
           "name": "KaVontae Turpin",
           "team": "DAL",
           "position": "WR",
-          "positionRank": 110,
-          "rank": 350,
+          "positionRank": 111,
+          "rank": 351,
           "value": 0
         },
         {
@@ -12522,7 +12549,7 @@ export const fantasyVorpData: Record<
           "team": "NYG",
           "position": "TE",
           "positionRank": 38,
-          "rank": 351,
+          "rank": 352,
           "value": 0
         },
         {
@@ -12530,8 +12557,8 @@ export const fantasyVorpData: Record<
           "name": "Devontez Walker",
           "team": "BAL",
           "position": "WR",
-          "positionRank": 111,
-          "rank": 352,
+          "positionRank": 112,
+          "rank": 353,
           "value": 0
         },
         {
@@ -12540,7 +12567,7 @@ export const fantasyVorpData: Record<
           "team": "PIT",
           "position": "TE",
           "positionRank": 39,
-          "rank": 353,
+          "rank": 354,
           "value": 0
         },
         {
@@ -12549,15 +12576,6 @@ export const fantasyVorpData: Record<
           "team": "CIN",
           "position": "TE",
           "positionRank": 40,
-          "rank": 354,
-          "value": 0
-        },
-        {
-          "playerId": "fp-17533",
-          "name": "Jason Sanders",
-          "team": "FA",
-          "position": "K",
-          "positionRank": 33,
           "rank": 355,
           "value": 0
         },
@@ -12566,7 +12584,7 @@ export const fantasyVorpData: Record<
           "name": "Demarcus Robinson",
           "team": "SF",
           "position": "WR",
-          "positionRank": 112,
+          "positionRank": 113,
           "rank": 356,
           "value": 0
         },
@@ -12575,7 +12593,7 @@ export const fantasyVorpData: Record<
           "name": "Jahdae Walker",
           "team": "CHI",
           "position": "WR",
-          "positionRank": 113,
+          "positionRank": 114,
           "rank": 357,
           "value": 0
         },
@@ -12584,7 +12602,7 @@ export const fantasyVorpData: Record<
           "name": "Mack Hollins",
           "team": "NE",
           "position": "WR",
-          "positionRank": 114,
+          "positionRank": 115,
           "rank": 358,
           "value": 0
         },
@@ -12602,7 +12620,7 @@ export const fantasyVorpData: Record<
           "name": "Tank Dell",
           "team": "HOU",
           "position": "WR",
-          "positionRank": 115,
+          "positionRank": 116,
           "rank": 360,
           "value": 0
         },
@@ -12611,7 +12629,7 @@ export const fantasyVorpData: Record<
           "name": "Christian Kirk",
           "team": "SF",
           "position": "WR",
-          "positionRank": 116,
+          "positionRank": 117,
           "rank": 361,
           "value": 0
         },
@@ -12629,7 +12647,7 @@ export const fantasyVorpData: Record<
           "name": "Cyrus Allen",
           "team": "KC",
           "position": "WR",
-          "positionRank": 117,
+          "positionRank": 118,
           "rank": 363,
           "value": 0
         },
@@ -12638,7 +12656,7 @@ export const fantasyVorpData: Record<
           "name": "Luke McCaffrey",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 118,
+          "positionRank": 119,
           "rank": 364,
           "value": 0
         },
@@ -12656,7 +12674,7 @@ export const fantasyVorpData: Record<
           "name": "Kyle Williams",
           "team": "NE",
           "position": "WR",
-          "positionRank": 119,
+          "positionRank": 120,
           "rank": 366,
           "value": 0
         },
@@ -12665,7 +12683,7 @@ export const fantasyVorpData: Record<
           "name": "Kendrick Bourne",
           "team": "ARI",
           "position": "WR",
-          "positionRank": 120,
+          "positionRank": 121,
           "rank": 367,
           "value": 0
         },
@@ -12674,7 +12692,7 @@ export const fantasyVorpData: Record<
           "name": "Ben Sauls",
           "team": "FA",
           "position": "K",
-          "positionRank": 34,
+          "positionRank": 33,
           "rank": 368,
           "value": 0
         },
@@ -12690,9 +12708,9 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27222",
           "name": "Theo Wease Jr.",
-          "team": "FA",
+          "team": "LAC",
           "position": "WR",
-          "positionRank": 121,
+          "positionRank": 122,
           "rank": 370,
           "value": 0
         },
@@ -12701,7 +12719,7 @@ export const fantasyVorpData: Record<
           "name": "Dyami Brown",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 122,
+          "positionRank": 123,
           "rank": 371,
           "value": 0
         },
@@ -12710,7 +12728,7 @@ export const fantasyVorpData: Record<
           "name": "Kalif Raymond",
           "team": "CHI",
           "position": "WR",
-          "positionRank": 123,
+          "positionRank": 124,
           "rank": 372,
           "value": 0
         },
@@ -12719,7 +12737,7 @@ export const fantasyVorpData: Record<
           "name": "Treylon Burks",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 124,
+          "positionRank": 125,
           "rank": 373,
           "value": 0
         },
@@ -12746,7 +12764,7 @@ export const fantasyVorpData: Record<
           "name": "Savion Williams",
           "team": "GB",
           "position": "WR",
-          "positionRank": 125,
+          "positionRank": 126,
           "rank": 376,
           "value": 0
         },
@@ -12845,17 +12863,8 @@ export const fantasyVorpData: Record<
           "name": "Isaiah Bond",
           "team": "CLE",
           "position": "WR",
-          "positionRank": 126,
-          "rank": 387,
-          "value": 0
-        },
-        {
-          "playerId": "fp-28132",
-          "name": "Zavion Thomas",
-          "team": "CHI",
-          "position": "WR",
           "positionRank": 127,
-          "rank": 388,
+          "rank": 387,
           "value": 0
         },
         {
@@ -12864,7 +12873,7 @@ export const fantasyVorpData: Record<
           "team": "SEA",
           "position": "TE",
           "positionRank": 56,
-          "rank": 389,
+          "rank": 388,
           "value": 0
         },
         {
@@ -12873,7 +12882,7 @@ export const fantasyVorpData: Record<
           "team": "BUF",
           "position": "WR",
           "positionRank": 128,
-          "rank": 390,
+          "rank": 389,
           "value": 0
         },
         {
@@ -12882,7 +12891,7 @@ export const fantasyVorpData: Record<
           "team": "ARI",
           "position": "TE",
           "positionRank": 57,
-          "rank": 391,
+          "rank": 390,
           "value": 0
         },
         {
@@ -12891,7 +12900,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "TE",
           "positionRank": 58,
-          "rank": 392,
+          "rank": 391,
           "value": 0
         },
         {
@@ -12900,7 +12909,7 @@ export const fantasyVorpData: Record<
           "team": "ATL",
           "position": "WR",
           "positionRank": 129,
-          "rank": 393,
+          "rank": 392,
           "value": 0
         },
         {
@@ -12909,7 +12918,7 @@ export const fantasyVorpData: Record<
           "team": "HOU",
           "position": "TE",
           "positionRank": 59,
-          "rank": 394,
+          "rank": 393,
           "value": 0
         },
         {
@@ -12918,7 +12927,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "WR",
           "positionRank": 130,
-          "rank": 395,
+          "rank": 394,
           "value": 0
         },
         {
@@ -12927,7 +12936,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "TE",
           "positionRank": 60,
-          "rank": 396,
+          "rank": 395,
           "value": 0
         },
         {
@@ -12936,7 +12945,7 @@ export const fantasyVorpData: Record<
           "team": "CIN",
           "position": "WR",
           "positionRank": 131,
-          "rank": 397,
+          "rank": 396,
           "value": 0
         },
         {
@@ -12945,7 +12954,7 @@ export const fantasyVorpData: Record<
           "team": "PIT",
           "position": "WR",
           "positionRank": 132,
-          "rank": 398,
+          "rank": 397,
           "value": 0
         },
         {
@@ -12954,7 +12963,7 @@ export const fantasyVorpData: Record<
           "team": "WAS",
           "position": "TE",
           "positionRank": 61,
-          "rank": 399,
+          "rank": 398,
           "value": 0
         },
         {
@@ -12963,7 +12972,7 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "TE",
           "positionRank": 62,
-          "rank": 400,
+          "rank": 399,
           "value": 0
         },
         {
@@ -12972,7 +12981,7 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "WR",
           "positionRank": 133,
-          "rank": 401,
+          "rank": 400,
           "value": 0
         },
         {
@@ -12981,7 +12990,7 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "WR",
           "positionRank": 134,
-          "rank": 402,
+          "rank": 401,
           "value": 0
         },
         {
@@ -12990,6 +12999,15 @@ export const fantasyVorpData: Record<
           "team": "WAS",
           "position": "WR",
           "positionRank": 135,
+          "rank": 402,
+          "value": 0
+        },
+        {
+          "playerId": "fp-17533",
+          "name": "Jason Sanders",
+          "team": "FA",
+          "position": "K",
+          "positionRank": 34,
           "rank": 403,
           "value": 0
         },
@@ -13039,21 +13057,12 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-25349",
-          "name": "Ben Sims",
-          "team": "MIA",
-          "position": "TE",
-          "positionRank": 66,
-          "rank": 409,
-          "value": 0
-        },
-        {
           "playerId": "fp-24562",
           "name": "Connor Heyward",
           "team": "LV",
           "position": "TE",
-          "positionRank": 67,
-          "rank": 410,
+          "positionRank": 66,
+          "rank": 409,
           "value": 0
         },
         {
@@ -13062,7 +13071,7 @@ export const fantasyVorpData: Record<
           "team": "TB",
           "position": "WR",
           "positionRank": 138,
-          "rank": 411,
+          "rank": 410,
           "value": 0
         },
         {
@@ -13071,7 +13080,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "WR",
           "positionRank": 139,
-          "rank": 412,
+          "rank": 411,
           "value": 0
         },
         {
@@ -13080,7 +13089,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "WR",
           "positionRank": 140,
-          "rank": 413,
+          "rank": 412,
           "value": 0
         },
         {
@@ -13088,8 +13097,8 @@ export const fantasyVorpData: Record<
           "name": "Cade Stover",
           "team": "HOU",
           "position": "TE",
-          "positionRank": 68,
-          "rank": 414,
+          "positionRank": 67,
+          "rank": 413,
           "value": 0
         },
         {
@@ -13098,7 +13107,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "WR",
           "positionRank": 141,
-          "rank": 415,
+          "rank": 414,
           "value": 0
         },
         {
@@ -13107,7 +13116,7 @@ export const fantasyVorpData: Record<
           "team": "NO",
           "position": "WR",
           "positionRank": 142,
-          "rank": 416,
+          "rank": 415,
           "value": 0
         },
         {
@@ -13115,8 +13124,8 @@ export const fantasyVorpData: Record<
           "name": "Nate Adkins",
           "team": "DEN",
           "position": "TE",
-          "positionRank": 69,
-          "rank": 417,
+          "positionRank": 68,
+          "rank": 416,
           "value": 0
         },
         {
@@ -13125,7 +13134,7 @@ export const fantasyVorpData: Record<
           "team": "KC",
           "position": "WR",
           "positionRank": 143,
-          "rank": 418,
+          "rank": 417,
           "value": 0
         },
         {
@@ -13134,7 +13143,7 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "WR",
           "positionRank": 144,
-          "rank": 419,
+          "rank": 418,
           "value": 0
         },
         {
@@ -13142,8 +13151,8 @@ export const fantasyVorpData: Record<
           "name": "Jackson Hawes",
           "team": "BUF",
           "position": "TE",
-          "positionRank": 70,
-          "rank": 420,
+          "positionRank": 69,
+          "rank": 419,
           "value": 0
         },
         {
@@ -13151,8 +13160,8 @@ export const fantasyVorpData: Record<
           "name": "Ben Sinnott",
           "team": "WAS",
           "position": "TE",
-          "positionRank": 71,
-          "rank": 421,
+          "positionRank": 70,
+          "rank": 420,
           "value": 0
         },
         {
@@ -13160,8 +13169,8 @@ export const fantasyVorpData: Record<
           "name": "Jack Endries",
           "team": "CIN",
           "position": "TE",
-          "positionRank": 72,
-          "rank": 422,
+          "positionRank": 71,
+          "rank": 421,
           "value": 0
         },
         {
@@ -13169,8 +13178,8 @@ export const fantasyVorpData: Record<
           "name": "Luke Schoonmaker",
           "team": "DAL",
           "position": "TE",
-          "positionRank": 73,
-          "rank": 423,
+          "positionRank": 72,
+          "rank": 422,
           "value": 0
         },
         {
@@ -13178,8 +13187,8 @@ export const fantasyVorpData: Record<
           "name": "Luke Musgrave",
           "team": "GB",
           "position": "TE",
-          "positionRank": 74,
-          "rank": 424,
+          "positionRank": 73,
+          "rank": 423,
           "value": 0
         },
         {
@@ -13188,7 +13197,7 @@ export const fantasyVorpData: Record<
           "team": "IND",
           "position": "WR",
           "positionRank": 145,
-          "rank": 425,
+          "rank": 424,
           "value": 0
         },
         {
@@ -13197,7 +13206,7 @@ export const fantasyVorpData: Record<
           "team": "GB",
           "position": "WR",
           "positionRank": 146,
-          "rank": 426,
+          "rank": 425,
           "value": 0
         },
         {
@@ -13205,8 +13214,8 @@ export const fantasyVorpData: Record<
           "name": "Foster Moreau",
           "team": "HOU",
           "position": "TE",
-          "positionRank": 75,
-          "rank": 427,
+          "positionRank": 74,
+          "rank": 426,
           "value": 0
         },
         {
@@ -13214,8 +13223,8 @@ export const fantasyVorpData: Record<
           "name": "Bauer Sharp",
           "team": "TB",
           "position": "TE",
-          "positionRank": 76,
-          "rank": 428,
+          "positionRank": 75,
+          "rank": 427,
           "value": 0
         },
         {
@@ -13223,8 +13232,8 @@ export const fantasyVorpData: Record<
           "name": "Dallen Bentley",
           "team": "DEN",
           "position": "TE",
-          "positionRank": 77,
-          "rank": 429,
+          "positionRank": 76,
+          "rank": 428,
           "value": 0
         },
         {
@@ -13232,8 +13241,8 @@ export const fantasyVorpData: Record<
           "name": "Charlie Woerner",
           "team": "ATL",
           "position": "TE",
-          "positionRank": 78,
-          "rank": 430,
+          "positionRank": 77,
+          "rank": 429,
           "value": 0
         },
         {
@@ -13241,8 +13250,8 @@ export const fantasyVorpData: Record<
           "name": "Mo Alie-Cox",
           "team": "IND",
           "position": "TE",
-          "positionRank": 79,
-          "rank": 431,
+          "positionRank": 78,
+          "rank": 430,
           "value": 0
         },
         {
@@ -13250,8 +13259,8 @@ export const fantasyVorpData: Record<
           "name": "Jared Wiley",
           "team": "KC",
           "position": "TE",
-          "positionRank": 80,
-          "rank": 432,
+          "positionRank": 79,
+          "rank": 431,
           "value": 0
         },
         {
@@ -13260,7 +13269,7 @@ export const fantasyVorpData: Record<
           "team": "DET",
           "position": "WR",
           "positionRank": 147,
-          "rank": 433,
+          "rank": 432,
           "value": 0
         },
         {
@@ -13269,13 +13278,22 @@ export const fantasyVorpData: Record<
           "team": "CLE",
           "position": "WR",
           "positionRank": 148,
-          "rank": 434,
+          "rank": 433,
           "value": 0
         },
         {
           "playerId": "fp-23039",
           "name": "Thomas Fidone II",
           "team": "NYG",
+          "position": "TE",
+          "positionRank": 80,
+          "rank": 434,
+          "value": 0
+        },
+        {
+          "playerId": "fp-23821",
+          "name": "Will Mallory",
+          "team": "IND",
           "position": "TE",
           "positionRank": 81,
           "rank": 435,
@@ -13597,9 +13615,9 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-17826",
-          "name": "Tanner Hudson",
-          "team": "CIN",
+          "playerId": "fp-28079",
+          "name": "Justin Joly",
+          "team": "FA",
           "position": "TE",
           "positionRank": 101,
           "rank": 471,
@@ -13984,18 +14002,18 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-25967",
-          "name": "Joe Milton III",
-          "team": "DAL",
+          "playerId": "fp-23066",
+          "name": "Kyle McCord",
+          "team": "MIA",
           "position": "QB",
           "positionRank": 69,
           "rank": 514,
           "value": 0
         },
         {
-          "playerId": "fp-23066",
-          "name": "Kyle McCord",
-          "team": "MIA",
+          "playerId": "fp-25967",
+          "name": "Joe Milton III",
+          "team": "FA",
           "position": "QB",
           "positionRank": 70,
           "rank": 515,
@@ -14027,6 +14045,15 @@ export const fantasyVorpData: Record<
           "positionRank": 73,
           "rank": 518,
           "value": 0
+        },
+        {
+          "playerId": "fp-27161",
+          "name": "Brady Cook",
+          "team": "FA",
+          "position": "QB",
+          "positionRank": 74,
+          "rank": 519,
+          "value": 0
         }
       ]
     }
@@ -14035,7 +14062,7 @@ export const fantasyVorpData: Record<
     "10": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-      "accessedAt": "2026-09-01T19:46:03.967Z",
+      "accessedAt": "2026-09-02T19:38:56.551Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -14344,22 +14371,22 @@ export const fantasyVorpData: Record<
           "value": 84
         },
         {
-          "playerId": "fp-18705",
-          "name": "Tony Pollard",
-          "team": "TEN",
-          "position": "RB",
-          "positionRank": 27,
-          "rank": 35,
-          "value": 82
-        },
-        {
           "playerId": "fp-20111",
           "name": "Chris Olave",
           "team": "NO",
           "position": "WR",
           "positionRank": 9,
+          "rank": 35,
+          "value": 83
+        },
+        {
+          "playerId": "fp-18705",
+          "name": "Tony Pollard",
+          "team": "TEN",
+          "position": "RB",
+          "positionRank": 27,
           "rank": 36,
-          "value": 81
+          "value": 82
         },
         {
           "playerId": "fp-22726",
@@ -15928,12 +15955,21 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
+          "playerId": "fp-25533",
+          "name": "Blake Grupe",
+          "team": "NYJ",
+          "position": "K",
+          "positionRank": 25,
+          "rank": 211,
+          "value": 0
+        },
+        {
           "playerId": "fp-25337",
           "name": "Tre Tucker",
           "team": "LV",
           "position": "WR",
           "positionRank": 60,
-          "rank": 211,
+          "rank": 212,
           "value": 0
         },
         {
@@ -15942,7 +15978,7 @@ export const fantasyVorpData: Record<
           "team": "MIN",
           "position": "TE",
           "positionRank": 20,
-          "rank": 212,
+          "rank": 213,
           "value": 0
         },
         {
@@ -15951,7 +15987,7 @@ export const fantasyVorpData: Record<
           "team": "SF",
           "position": "DST",
           "positionRank": 30,
-          "rank": 213,
+          "rank": 214,
           "value": 0
         },
         {
@@ -15960,7 +15996,7 @@ export const fantasyVorpData: Record<
           "team": "PIT",
           "position": "TE",
           "positionRank": 21,
-          "rank": 214,
+          "rank": 215,
           "value": 0
         },
         {
@@ -15968,8 +16004,8 @@ export const fantasyVorpData: Record<
           "name": "Riley Patterson",
           "team": "MIA",
           "position": "K",
-          "positionRank": 25,
-          "rank": 215,
+          "positionRank": 26,
+          "rank": 216,
           "value": 0
         },
         {
@@ -15977,8 +16013,8 @@ export const fantasyVorpData: Record<
           "name": "Joey Slye",
           "team": "TEN",
           "position": "K",
-          "positionRank": 26,
-          "rank": 216,
+          "positionRank": 27,
+          "rank": 217,
           "value": 0
         },
         {
@@ -15987,7 +16023,7 @@ export const fantasyVorpData: Record<
           "team": "BAL",
           "position": "WR",
           "positionRank": 61,
-          "rank": 217,
+          "rank": 218,
           "value": 0
         },
         {
@@ -15996,7 +16032,7 @@ export const fantasyVorpData: Record<
           "team": "NYG",
           "position": "RB",
           "positionRank": 61,
-          "rank": 218,
+          "rank": 219,
           "value": 0
         },
         {
@@ -16005,7 +16041,7 @@ export const fantasyVorpData: Record<
           "team": "HOU",
           "position": "WR",
           "positionRank": 62,
-          "rank": 219,
+          "rank": 220,
           "value": 0
         },
         {
@@ -16014,7 +16050,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "DST",
           "positionRank": 31,
-          "rank": 220,
+          "rank": 221,
           "value": 0
         },
         {
@@ -16023,7 +16059,7 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "DST",
           "positionRank": 32,
-          "rank": 221,
+          "rank": 222,
           "value": 0
         },
         {
@@ -16032,7 +16068,7 @@ export const fantasyVorpData: Record<
           "team": "MIA",
           "position": "TE",
           "positionRank": 22,
-          "rank": 222,
+          "rank": 223,
           "value": 0
         },
         {
@@ -16041,7 +16077,7 @@ export const fantasyVorpData: Record<
           "team": "DAL",
           "position": "RB",
           "positionRank": 62,
-          "rank": 223,
+          "rank": 224,
           "value": 0
         },
         {
@@ -16050,7 +16086,7 @@ export const fantasyVorpData: Record<
           "team": "GB",
           "position": "RB",
           "positionRank": 63,
-          "rank": 224,
+          "rank": 225,
           "value": 0
         },
         {
@@ -16058,8 +16094,8 @@ export const fantasyVorpData: Record<
           "name": "Chad Ryland",
           "team": "ARI",
           "position": "K",
-          "positionRank": 27,
-          "rank": 225,
+          "positionRank": 28,
+          "rank": 226,
           "value": 0
         },
         {
@@ -16068,7 +16104,7 @@ export const fantasyVorpData: Record<
           "team": "IND",
           "position": "WR",
           "positionRank": 63,
-          "rank": 226,
+          "rank": 227,
           "value": 0
         },
         {
@@ -16077,7 +16113,7 @@ export const fantasyVorpData: Record<
           "team": "NYG",
           "position": "RB",
           "positionRank": 64,
-          "rank": 227,
+          "rank": 228,
           "value": 0
         },
         {
@@ -16086,15 +16122,6 @@ export const fantasyVorpData: Record<
           "team": "SF",
           "position": "RB",
           "positionRank": 65,
-          "rank": 228,
-          "value": 0
-        },
-        {
-          "playerId": "fp-25533",
-          "name": "Blake Grupe",
-          "team": "NYJ",
-          "position": "K",
-          "positionRank": 28,
           "rank": 229,
           "value": 0
         },
@@ -16387,12 +16414,21 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
+          "playerId": "fp-24354",
+          "name": "Dontayvion Wicks",
+          "team": "PHI",
+          "position": "WR",
+          "positionRank": 73,
+          "rank": 262,
+          "value": 0
+        },
+        {
           "playerId": "fp-26039",
           "name": "Germie Bernard",
           "team": "PIT",
           "position": "WR",
-          "positionRank": 73,
-          "rank": 262,
+          "positionRank": 74,
+          "rank": 263,
           "value": 0
         },
         {
@@ -16400,8 +16436,8 @@ export const fantasyVorpData: Record<
           "name": "Malik Washington",
           "team": "MIA",
           "position": "WR",
-          "positionRank": 74,
-          "rank": 263,
+          "positionRank": 75,
+          "rank": 264,
           "value": 0
         },
         {
@@ -16409,8 +16445,8 @@ export const fantasyVorpData: Record<
           "name": "Chris Bell",
           "team": "MIA",
           "position": "WR",
-          "positionRank": 75,
-          "rank": 264,
+          "positionRank": 76,
+          "rank": 265,
           "value": 0
         },
         {
@@ -16419,7 +16455,7 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "TE",
           "positionRank": 33,
-          "rank": 265,
+          "rank": 266,
           "value": 0
         },
         {
@@ -16428,7 +16464,7 @@ export const fantasyVorpData: Record<
           "team": "DEN",
           "position": "RB",
           "positionRank": 70,
-          "rank": 266,
+          "rank": 267,
           "value": 0
         },
         {
@@ -16436,8 +16472,8 @@ export const fantasyVorpData: Record<
           "name": "Antonio Williams",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 76,
-          "rank": 267,
+          "positionRank": 77,
+          "rank": 268,
           "value": 0
         },
         {
@@ -16446,7 +16482,7 @@ export const fantasyVorpData: Record<
           "team": "SF",
           "position": "RB",
           "positionRank": 71,
-          "rank": 268,
+          "rank": 269,
           "value": 0
         },
         {
@@ -16454,8 +16490,8 @@ export const fantasyVorpData: Record<
           "name": "Caleb Douglas",
           "team": "MIA",
           "position": "WR",
-          "positionRank": 77,
-          "rank": 269,
+          "positionRank": 78,
+          "rank": 270,
           "value": 0
         },
         {
@@ -16463,8 +16499,8 @@ export const fantasyVorpData: Record<
           "name": "Omar Cooper Jr.",
           "team": "NYJ",
           "position": "WR",
-          "positionRank": 78,
-          "rank": 270,
+          "positionRank": 79,
+          "rank": 271,
           "value": 0
         },
         {
@@ -16473,7 +16509,7 @@ export const fantasyVorpData: Record<
           "team": "ARI",
           "position": "RB",
           "positionRank": 72,
-          "rank": 271,
+          "rank": 272,
           "value": 0
         },
         {
@@ -16481,23 +16517,14 @@ export const fantasyVorpData: Record<
           "name": "Travis Hunter",
           "team": "JAC",
           "position": "WR",
-          "positionRank": 79,
-          "rank": 272,
+          "positionRank": 80,
+          "rank": 273,
           "value": 0
         },
         {
           "playerId": "fp-25332",
           "name": "Xavier Hutchinson",
           "team": "HOU",
-          "position": "WR",
-          "positionRank": 80,
-          "rank": 273,
-          "value": 0
-        },
-        {
-          "playerId": "fp-24354",
-          "name": "Dontayvion Wicks",
-          "team": "PHI",
           "position": "WR",
           "positionRank": 81,
           "rank": 274,
@@ -16639,12 +16666,21 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
+          "playerId": "fp-28129",
+          "name": "Bryce Lance",
+          "team": "NO",
+          "position": "WR",
+          "positionRank": 88,
+          "rank": 290,
+          "value": 0
+        },
+        {
           "playerId": "fp-23679",
           "name": "Sean Tucker",
           "team": "TB",
           "position": "RB",
           "positionRank": 78,
-          "rank": 290,
+          "rank": 291,
           "value": 0
         },
         {
@@ -16653,15 +16689,6 @@ export const fantasyVorpData: Record<
           "team": "IND",
           "position": "RB",
           "positionRank": 79,
-          "rank": 291,
-          "value": 0
-        },
-        {
-          "playerId": "fp-28129",
-          "name": "Bryce Lance",
-          "team": "NO",
-          "position": "WR",
-          "positionRank": 88,
           "rank": 292,
           "value": 0
         },
@@ -16720,21 +16747,12 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-17533",
-          "name": "Jason Sanders",
-          "team": "FA",
-          "position": "K",
-          "positionRank": 33,
-          "rank": 299,
-          "value": 0
-        },
-        {
           "playerId": "fp-25335",
           "name": "Andrei Iosivas",
           "team": "CIN",
           "position": "WR",
           "positionRank": 93,
-          "rank": 300,
+          "rank": 299,
           "value": 0
         },
         {
@@ -16743,7 +16761,7 @@ export const fantasyVorpData: Record<
           "team": "NYG",
           "position": "WR",
           "positionRank": 94,
-          "rank": 301,
+          "rank": 300,
           "value": 0
         },
         {
@@ -16752,7 +16770,7 @@ export const fantasyVorpData: Record<
           "team": "LV",
           "position": "WR",
           "positionRank": 95,
-          "rank": 302,
+          "rank": 301,
           "value": 0
         },
         {
@@ -16761,6 +16779,15 @@ export const fantasyVorpData: Record<
           "team": "NYG",
           "position": "TE",
           "positionRank": 38,
+          "rank": 302,
+          "value": 0
+        },
+        {
+          "playerId": "fp-25654",
+          "name": "Emari Demercado",
+          "team": "DAL",
+          "position": "RB",
+          "positionRank": 81,
           "rank": 303,
           "value": 0
         },
@@ -16778,7 +16805,7 @@ export const fantasyVorpData: Record<
           "name": "Ray Davis",
           "team": "BUF",
           "position": "RB",
-          "positionRank": 81,
+          "positionRank": 82,
           "rank": 305,
           "value": 0
         },
@@ -16823,7 +16850,7 @@ export const fantasyVorpData: Record<
           "name": "Corey Kiner",
           "team": "NE",
           "position": "RB",
-          "positionRank": 82,
+          "positionRank": 83,
           "rank": 310,
           "value": 0
         },
@@ -16859,7 +16886,7 @@ export const fantasyVorpData: Record<
           "name": "Ollie Gordon II",
           "team": "MIA",
           "position": "RB",
-          "positionRank": 83,
+          "positionRank": 84,
           "rank": 314,
           "value": 0
         },
@@ -16868,7 +16895,7 @@ export const fantasyVorpData: Record<
           "name": "Kendre Miller",
           "team": "NO",
           "position": "RB",
-          "positionRank": 84,
+          "positionRank": 85,
           "rank": 315,
           "value": 0
         },
@@ -16877,7 +16904,7 @@ export const fantasyVorpData: Record<
           "name": "Ameer Abdullah",
           "team": "JAC",
           "position": "RB",
-          "positionRank": 85,
+          "positionRank": 86,
           "rank": 316,
           "value": 0
         },
@@ -16922,7 +16949,7 @@ export const fantasyVorpData: Record<
           "name": "Audric Estime",
           "team": "NO",
           "position": "RB",
-          "positionRank": 86,
+          "positionRank": 87,
           "rank": 321,
           "value": 0
         },
@@ -16931,7 +16958,7 @@ export const fantasyVorpData: Record<
           "name": "Jacob Saylors",
           "team": "DET",
           "position": "RB",
-          "positionRank": 87,
+          "positionRank": 88,
           "rank": 322,
           "value": 0
         },
@@ -16940,7 +16967,7 @@ export const fantasyVorpData: Record<
           "name": "Will Shipley",
           "team": "PHI",
           "position": "RB",
-          "positionRank": 88,
+          "positionRank": 89,
           "rank": 323,
           "value": 0
         },
@@ -16949,7 +16976,7 @@ export const fantasyVorpData: Record<
           "name": "Eli Heidenreich",
           "team": "PIT",
           "position": "RB",
-          "positionRank": 89,
+          "positionRank": 90,
           "rank": 324,
           "value": 0
         },
@@ -16958,7 +16985,7 @@ export const fantasyVorpData: Record<
           "name": "Hunter Luepke",
           "team": "DAL",
           "position": "RB",
-          "positionRank": 90,
+          "positionRank": 91,
           "rank": 325,
           "value": 0
         },
@@ -16976,17 +17003,8 @@ export const fantasyVorpData: Record<
           "name": "Kaytron Allen",
           "team": "WAS",
           "position": "RB",
-          "positionRank": 91,
-          "rank": 327,
-          "value": 0
-        },
-        {
-          "playerId": "fp-16445",
-          "name": "Jeremy McNichols",
-          "team": "WAS",
-          "position": "RB",
           "positionRank": 92,
-          "rank": 328,
+          "rank": 327,
           "value": 0
         },
         {
@@ -16995,7 +17013,7 @@ export const fantasyVorpData: Record<
           "team": "CHI",
           "position": "TE",
           "positionRank": 42,
-          "rank": 329,
+          "rank": 328,
           "value": 0
         },
         {
@@ -17004,7 +17022,7 @@ export const fantasyVorpData: Record<
           "team": "CLE",
           "position": "RB",
           "positionRank": 93,
-          "rank": 330,
+          "rank": 329,
           "value": 0
         },
         {
@@ -17013,7 +17031,7 @@ export const fantasyVorpData: Record<
           "team": "TEN",
           "position": "RB",
           "positionRank": 94,
-          "rank": 331,
+          "rank": 330,
           "value": 0
         },
         {
@@ -17022,7 +17040,7 @@ export const fantasyVorpData: Record<
           "team": "CIN",
           "position": "RB",
           "positionRank": 95,
-          "rank": 332,
+          "rank": 331,
           "value": 0
         },
         {
@@ -17031,7 +17049,7 @@ export const fantasyVorpData: Record<
           "team": "MIN",
           "position": "RB",
           "positionRank": 96,
-          "rank": 333,
+          "rank": 332,
           "value": 0
         },
         {
@@ -17040,7 +17058,7 @@ export const fantasyVorpData: Record<
           "team": "PIT",
           "position": "QB",
           "positionRank": 29,
-          "rank": 334,
+          "rank": 333,
           "value": 0
         },
         {
@@ -17048,8 +17066,8 @@ export const fantasyVorpData: Record<
           "name": "Ben Sauls",
           "team": "FA",
           "position": "K",
-          "positionRank": 34,
-          "rank": 335,
+          "positionRank": 33,
+          "rank": 334,
           "value": 0
         },
         {
@@ -17058,7 +17076,7 @@ export const fantasyVorpData: Record<
           "team": "IND",
           "position": "RB",
           "positionRank": 97,
-          "rank": 336,
+          "rank": 335,
           "value": 0
         },
         {
@@ -17067,7 +17085,7 @@ export const fantasyVorpData: Record<
           "team": "BAL",
           "position": "RB",
           "positionRank": 98,
-          "rank": 337,
+          "rank": 336,
           "value": 0
         },
         {
@@ -17076,7 +17094,7 @@ export const fantasyVorpData: Record<
           "team": "BUF",
           "position": "WR",
           "positionRank": 103,
-          "rank": 338,
+          "rank": 337,
           "value": 0
         },
         {
@@ -17085,6 +17103,15 @@ export const fantasyVorpData: Record<
           "team": "DEN",
           "position": "WR",
           "positionRank": 104,
+          "rank": 338,
+          "value": 0
+        },
+        {
+          "playerId": "fp-17527",
+          "name": "Noah Fant",
+          "team": "NO",
+          "position": "TE",
+          "positionRank": 43,
           "rank": 339,
           "value": 0
         },
@@ -17093,17 +17120,8 @@ export const fantasyVorpData: Record<
           "name": "Will Kacmarek",
           "team": "MIA",
           "position": "TE",
-          "positionRank": 43,
-          "rank": 340,
-          "value": 0
-        },
-        {
-          "playerId": "fp-17527",
-          "name": "Noah Fant",
-          "team": "NO",
-          "position": "TE",
           "positionRank": 44,
-          "rank": 341,
+          "rank": 340,
           "value": 0
         },
         {
@@ -17112,7 +17130,7 @@ export const fantasyVorpData: Record<
           "team": "CLE",
           "position": "RB",
           "positionRank": 99,
-          "rank": 342,
+          "rank": 341,
           "value": 0
         },
         {
@@ -17121,7 +17139,7 @@ export const fantasyVorpData: Record<
           "team": "IND",
           "position": "WR",
           "positionRank": 105,
-          "rank": 343,
+          "rank": 342,
           "value": 0
         },
         {
@@ -17130,7 +17148,7 @@ export const fantasyVorpData: Record<
           "team": "DEN",
           "position": "WR",
           "positionRank": 106,
-          "rank": 344,
+          "rank": 343,
           "value": 0
         },
         {
@@ -17139,7 +17157,7 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "RB",
           "positionRank": 100,
-          "rank": 345,
+          "rank": 344,
           "value": 0
         },
         {
@@ -17148,7 +17166,7 @@ export const fantasyVorpData: Record<
           "team": "DAL",
           "position": "WR",
           "positionRank": 107,
-          "rank": 346,
+          "rank": 345,
           "value": 0
         },
         {
@@ -17157,7 +17175,7 @@ export const fantasyVorpData: Record<
           "team": "SF",
           "position": "RB",
           "positionRank": 101,
-          "rank": 347,
+          "rank": 346,
           "value": 0
         },
         {
@@ -17166,7 +17184,7 @@ export const fantasyVorpData: Record<
           "team": "BAL",
           "position": "WR",
           "positionRank": 108,
-          "rank": 348,
+          "rank": 347,
           "value": 0
         },
         {
@@ -17175,6 +17193,15 @@ export const fantasyVorpData: Record<
           "team": "NYG",
           "position": "WR",
           "positionRank": 109,
+          "rank": 348,
+          "value": 0
+        },
+        {
+          "playerId": "fp-28132",
+          "name": "Zavion Thomas",
+          "team": "CHI",
+          "position": "WR",
+          "positionRank": 110,
           "rank": 349,
           "value": 0
         },
@@ -17183,7 +17210,7 @@ export const fantasyVorpData: Record<
           "name": "Kevin Coleman Jr.",
           "team": "MIA",
           "position": "WR",
-          "positionRank": 110,
+          "positionRank": 111,
           "rank": 350,
           "value": 0
         },
@@ -17219,7 +17246,7 @@ export const fantasyVorpData: Record<
           "name": "Jack Bech",
           "team": "LV",
           "position": "WR",
-          "positionRank": 111,
+          "positionRank": 112,
           "rank": 354,
           "value": 0
         },
@@ -17345,7 +17372,7 @@ export const fantasyVorpData: Record<
           "name": "Jahdae Walker",
           "team": "CHI",
           "position": "WR",
-          "positionRank": 112,
+          "positionRank": 113,
           "rank": 368,
           "value": 0
         },
@@ -17354,7 +17381,7 @@ export const fantasyVorpData: Record<
           "name": "Demarcus Robinson",
           "team": "SF",
           "position": "WR",
-          "positionRank": 113,
+          "positionRank": 114,
           "rank": 369,
           "value": 0
         },
@@ -17399,7 +17426,7 @@ export const fantasyVorpData: Record<
           "name": "Mack Hollins",
           "team": "NE",
           "position": "WR",
-          "positionRank": 114,
+          "positionRank": 115,
           "rank": 374,
           "value": 0
         },
@@ -17408,7 +17435,7 @@ export const fantasyVorpData: Record<
           "name": "Tank Dell",
           "team": "HOU",
           "position": "WR",
-          "positionRank": 115,
+          "positionRank": 116,
           "rank": 375,
           "value": 0
         },
@@ -17426,7 +17453,7 @@ export const fantasyVorpData: Record<
           "name": "Christian Kirk",
           "team": "SF",
           "position": "WR",
-          "positionRank": 116,
+          "positionRank": 117,
           "rank": 377,
           "value": 0
         },
@@ -17435,7 +17462,7 @@ export const fantasyVorpData: Record<
           "name": "Luke McCaffrey",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 117,
+          "positionRank": 118,
           "rank": 378,
           "value": 0
         },
@@ -17444,7 +17471,7 @@ export const fantasyVorpData: Record<
           "name": "Cyrus Allen",
           "team": "KC",
           "position": "WR",
-          "positionRank": 118,
+          "positionRank": 119,
           "rank": 379,
           "value": 0
         },
@@ -17489,7 +17516,7 @@ export const fantasyVorpData: Record<
           "name": "Kyle Williams",
           "team": "NE",
           "position": "WR",
-          "positionRank": 119,
+          "positionRank": 120,
           "rank": 384,
           "value": 0
         },
@@ -17514,9 +17541,9 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27222",
           "name": "Theo Wease Jr.",
-          "team": "FA",
+          "team": "LAC",
           "position": "WR",
-          "positionRank": 120,
+          "positionRank": 121,
           "rank": 387,
           "value": 0
         },
@@ -17525,7 +17552,7 @@ export const fantasyVorpData: Record<
           "name": "Dyami Brown",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 121,
+          "positionRank": 122,
           "rank": 388,
           "value": 0
         },
@@ -17534,7 +17561,7 @@ export const fantasyVorpData: Record<
           "name": "Kendrick Bourne",
           "team": "ARI",
           "position": "WR",
-          "positionRank": 122,
+          "positionRank": 123,
           "rank": 389,
           "value": 0
         },
@@ -17566,12 +17593,21 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
+          "playerId": "fp-17533",
+          "name": "Jason Sanders",
+          "team": "FA",
+          "position": "K",
+          "positionRank": 34,
+          "rank": 393,
+          "value": 0
+        },
+        {
           "playerId": "fp-22905",
           "name": "Treylon Burks",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 123,
-          "rank": 393,
+          "positionRank": 124,
+          "rank": 394,
           "value": 0
         },
         {
@@ -17579,8 +17615,8 @@ export const fantasyVorpData: Record<
           "name": "Kalif Raymond",
           "team": "CHI",
           "position": "WR",
-          "positionRank": 124,
-          "rank": 394,
+          "positionRank": 125,
+          "rank": 395,
           "value": 0
         },
         {
@@ -17589,15 +17625,6 @@ export const fantasyVorpData: Record<
           "team": "LV",
           "position": "TE",
           "positionRank": 66,
-          "rank": 395,
-          "value": 0
-        },
-        {
-          "playerId": "fp-25349",
-          "name": "Ben Sims",
-          "team": "MIA",
-          "position": "TE",
-          "positionRank": 67,
           "rank": 396,
           "value": 0
         },
@@ -17606,7 +17633,7 @@ export const fantasyVorpData: Record<
           "name": "Savion Williams",
           "team": "GB",
           "position": "WR",
-          "positionRank": 125,
+          "positionRank": 126,
           "rank": 397,
           "value": 0
         },
@@ -17615,7 +17642,7 @@ export const fantasyVorpData: Record<
           "name": "Nate Adkins",
           "team": "DEN",
           "position": "TE",
-          "positionRank": 68,
+          "positionRank": 67,
           "rank": 398,
           "value": 0
         },
@@ -17624,7 +17651,7 @@ export const fantasyVorpData: Record<
           "name": "Cade Stover",
           "team": "HOU",
           "position": "TE",
-          "positionRank": 69,
+          "positionRank": 68,
           "rank": 399,
           "value": 0
         },
@@ -17633,7 +17660,7 @@ export const fantasyVorpData: Record<
           "name": "Jackson Hawes",
           "team": "BUF",
           "position": "TE",
-          "positionRank": 70,
+          "positionRank": 69,
           "rank": 400,
           "value": 0
         },
@@ -17642,7 +17669,7 @@ export const fantasyVorpData: Record<
           "name": "Ben Sinnott",
           "team": "WAS",
           "position": "TE",
-          "positionRank": 71,
+          "positionRank": 70,
           "rank": 401,
           "value": 0
         },
@@ -17651,7 +17678,7 @@ export const fantasyVorpData: Record<
           "name": "Jack Endries",
           "team": "CIN",
           "position": "TE",
-          "positionRank": 72,
+          "positionRank": 71,
           "rank": 402,
           "value": 0
         },
@@ -17660,7 +17687,7 @@ export const fantasyVorpData: Record<
           "name": "Luke Schoonmaker",
           "team": "DAL",
           "position": "TE",
-          "positionRank": 73,
+          "positionRank": 72,
           "rank": 403,
           "value": 0
         },
@@ -17669,7 +17696,7 @@ export const fantasyVorpData: Record<
           "name": "Luke Musgrave",
           "team": "GB",
           "position": "TE",
-          "positionRank": 74,
+          "positionRank": 73,
           "rank": 404,
           "value": 0
         },
@@ -17678,7 +17705,7 @@ export const fantasyVorpData: Record<
           "name": "Foster Moreau",
           "team": "HOU",
           "position": "TE",
-          "positionRank": 75,
+          "positionRank": 74,
           "rank": 405,
           "value": 0
         },
@@ -17687,7 +17714,7 @@ export const fantasyVorpData: Record<
           "name": "Bauer Sharp",
           "team": "TB",
           "position": "TE",
-          "positionRank": 76,
+          "positionRank": 75,
           "rank": 406,
           "value": 0
         },
@@ -17696,7 +17723,7 @@ export const fantasyVorpData: Record<
           "name": "Mo Alie-Cox",
           "team": "IND",
           "position": "TE",
-          "positionRank": 77,
+          "positionRank": 76,
           "rank": 407,
           "value": 0
         },
@@ -17705,7 +17732,7 @@ export const fantasyVorpData: Record<
           "name": "Dallen Bentley",
           "team": "DEN",
           "position": "TE",
-          "positionRank": 78,
+          "positionRank": 77,
           "rank": 408,
           "value": 0
         },
@@ -17714,7 +17741,7 @@ export const fantasyVorpData: Record<
           "name": "Charlie Woerner",
           "team": "ATL",
           "position": "TE",
-          "positionRank": 79,
+          "positionRank": 78,
           "rank": 409,
           "value": 0
         },
@@ -17723,17 +17750,8 @@ export const fantasyVorpData: Record<
           "name": "Isaiah Bond",
           "team": "CLE",
           "position": "WR",
-          "positionRank": 126,
-          "rank": 410,
-          "value": 0
-        },
-        {
-          "playerId": "fp-28132",
-          "name": "Zavion Thomas",
-          "team": "CHI",
-          "position": "WR",
           "positionRank": 127,
-          "rank": 411,
+          "rank": 410,
           "value": 0
         },
         {
@@ -17741,8 +17759,8 @@ export const fantasyVorpData: Record<
           "name": "Thomas Fidone II",
           "team": "NYG",
           "position": "TE",
-          "positionRank": 80,
-          "rank": 412,
+          "positionRank": 79,
+          "rank": 411,
           "value": 0
         },
         {
@@ -17750,8 +17768,8 @@ export const fantasyVorpData: Record<
           "name": "Jared Wiley",
           "team": "KC",
           "position": "TE",
-          "positionRank": 81,
-          "rank": 413,
+          "positionRank": 80,
+          "rank": 412,
           "value": 0
         },
         {
@@ -17760,6 +17778,15 @@ export const fantasyVorpData: Record<
           "team": "BUF",
           "position": "WR",
           "positionRank": 128,
+          "rank": 413,
+          "value": 0
+        },
+        {
+          "playerId": "fp-23821",
+          "name": "Will Mallory",
+          "team": "IND",
+          "position": "TE",
+          "positionRank": 81,
           "rank": 414,
           "value": 0
         },
@@ -18052,9 +18079,9 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-17826",
-          "name": "Tanner Hudson",
-          "team": "CIN",
+          "playerId": "fp-28079",
+          "name": "Justin Joly",
+          "team": "FA",
           "position": "TE",
           "positionRank": 101,
           "rank": 447,
@@ -18655,18 +18682,18 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-25967",
-          "name": "Joe Milton III",
-          "team": "DAL",
+          "playerId": "fp-23066",
+          "name": "Kyle McCord",
+          "team": "MIA",
           "position": "QB",
           "positionRank": 69,
           "rank": 514,
           "value": 0
         },
         {
-          "playerId": "fp-23066",
-          "name": "Kyle McCord",
-          "team": "MIA",
+          "playerId": "fp-25967",
+          "name": "Joe Milton III",
+          "team": "FA",
           "position": "QB",
           "positionRank": 70,
           "rank": 515,
@@ -18698,13 +18725,22 @@ export const fantasyVorpData: Record<
           "positionRank": 73,
           "rank": 518,
           "value": 0
+        },
+        {
+          "playerId": "fp-27161",
+          "name": "Brady Cook",
+          "team": "FA",
+          "position": "QB",
+          "positionRank": 74,
+          "rank": 519,
+          "value": 0
         }
       ]
     },
     "12": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-      "accessedAt": "2026-09-01T19:46:04.703Z",
+      "accessedAt": "2026-09-02T19:38:56.938Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -18992,7 +19028,7 @@ export const fantasyVorpData: Record<
           "position": "WR",
           "positionRank": 9,
           "rank": 32,
-          "value": 100
+          "value": 102
         },
         {
           "playerId": "fp-18218",
@@ -20786,12 +20822,21 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
+          "playerId": "fp-25533",
+          "name": "Blake Grupe",
+          "team": "NYJ",
+          "position": "K",
+          "positionRank": 25,
+          "rank": 232,
+          "value": 0
+        },
+        {
           "playerId": "fp-8040",
           "name": "Carolina Panthers",
           "team": "CAR",
           "position": "DST",
           "positionRank": 31,
-          "rank": 232,
+          "rank": 233,
           "value": 0
         },
         {
@@ -20800,7 +20845,7 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "DST",
           "positionRank": 32,
-          "rank": 233,
+          "rank": 234,
           "value": 0
         },
         {
@@ -20809,7 +20854,7 @@ export const fantasyVorpData: Record<
           "team": "HOU",
           "position": "WR",
           "positionRank": 70,
-          "rank": 234,
+          "rank": 235,
           "value": 0
         },
         {
@@ -20818,7 +20863,7 @@ export const fantasyVorpData: Record<
           "team": "MIA",
           "position": "TE",
           "positionRank": 22,
-          "rank": 235,
+          "rank": 236,
           "value": 0
         },
         {
@@ -20826,8 +20871,8 @@ export const fantasyVorpData: Record<
           "name": "Riley Patterson",
           "team": "MIA",
           "position": "K",
-          "positionRank": 25,
-          "rank": 236,
+          "positionRank": 26,
+          "rank": 237,
           "value": 0
         },
         {
@@ -20835,8 +20880,8 @@ export const fantasyVorpData: Record<
           "name": "Joey Slye",
           "team": "TEN",
           "position": "K",
-          "positionRank": 26,
-          "rank": 237,
+          "positionRank": 27,
+          "rank": 238,
           "value": 0
         },
         {
@@ -20845,7 +20890,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "TE",
           "positionRank": 23,
-          "rank": 238,
+          "rank": 239,
           "value": 0
         },
         {
@@ -20854,7 +20899,7 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "WR",
           "positionRank": 71,
-          "rank": 239,
+          "rank": 240,
           "value": 0
         },
         {
@@ -20862,8 +20907,8 @@ export const fantasyVorpData: Record<
           "name": "Chad Ryland",
           "team": "ARI",
           "position": "K",
-          "positionRank": 27,
-          "rank": 240,
+          "positionRank": 28,
+          "rank": 241,
           "value": 0
         },
         {
@@ -20872,15 +20917,6 @@ export const fantasyVorpData: Record<
           "team": "SEA",
           "position": "QB",
           "positionRank": 23,
-          "rank": 241,
-          "value": 0
-        },
-        {
-          "playerId": "fp-25533",
-          "name": "Blake Grupe",
-          "team": "NYJ",
-          "position": "K",
-          "positionRank": 28,
           "rank": 242,
           "value": 0
         },
@@ -20957,12 +20993,21 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
+          "playerId": "fp-24354",
+          "name": "Dontayvion Wicks",
+          "team": "PHI",
+          "position": "WR",
+          "positionRank": 73,
+          "rank": 251,
+          "value": 0
+        },
+        {
           "playerId": "fp-26039",
           "name": "Germie Bernard",
           "team": "PIT",
           "position": "WR",
-          "positionRank": 73,
-          "rank": 251,
+          "positionRank": 74,
+          "rank": 252,
           "value": 0
         },
         {
@@ -20970,8 +21015,8 @@ export const fantasyVorpData: Record<
           "name": "Malik Washington",
           "team": "MIA",
           "position": "WR",
-          "positionRank": 74,
-          "rank": 252,
+          "positionRank": 75,
+          "rank": 253,
           "value": 0
         },
         {
@@ -20980,7 +21025,7 @@ export const fantasyVorpData: Record<
           "team": "LV",
           "position": "K",
           "positionRank": 30,
-          "rank": 253,
+          "rank": 254,
           "value": 0
         },
         {
@@ -20988,8 +21033,8 @@ export const fantasyVorpData: Record<
           "name": "Chris Bell",
           "team": "MIA",
           "position": "WR",
-          "positionRank": 75,
-          "rank": 254,
+          "positionRank": 76,
+          "rank": 255,
           "value": 0
         },
         {
@@ -20998,7 +21043,7 @@ export const fantasyVorpData: Record<
           "team": "HOU",
           "position": "QB",
           "positionRank": 24,
-          "rank": 255,
+          "rank": 256,
           "value": 0
         },
         {
@@ -21006,8 +21051,8 @@ export const fantasyVorpData: Record<
           "name": "Antonio Williams",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 76,
-          "rank": 256,
+          "positionRank": 77,
+          "rank": 257,
           "value": 0
         },
         {
@@ -21016,7 +21061,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "TE",
           "positionRank": 28,
-          "rank": 257,
+          "rank": 258,
           "value": 0
         },
         {
@@ -21024,8 +21069,8 @@ export const fantasyVorpData: Record<
           "name": "Caleb Douglas",
           "team": "MIA",
           "position": "WR",
-          "positionRank": 77,
-          "rank": 258,
+          "positionRank": 78,
+          "rank": 259,
           "value": 0
         },
         {
@@ -21034,7 +21079,7 @@ export const fantasyVorpData: Record<
           "team": "MIA",
           "position": "RB",
           "positionRank": 68,
-          "rank": 259,
+          "rank": 260,
           "value": 0
         },
         {
@@ -21043,7 +21088,7 @@ export const fantasyVorpData: Record<
           "team": "CLE",
           "position": "K",
           "positionRank": 31,
-          "rank": 260,
+          "rank": 261,
           "value": 0
         },
         {
@@ -21051,8 +21096,8 @@ export const fantasyVorpData: Record<
           "name": "Omar Cooper Jr.",
           "team": "NYJ",
           "position": "WR",
-          "positionRank": 78,
-          "rank": 261,
+          "positionRank": 79,
+          "rank": 262,
           "value": 0
         },
         {
@@ -21061,7 +21106,7 @@ export const fantasyVorpData: Record<
           "team": "SEA",
           "position": "RB",
           "positionRank": 69,
-          "rank": 262,
+          "rank": 263,
           "value": 0
         },
         {
@@ -21069,23 +21114,14 @@ export const fantasyVorpData: Record<
           "name": "Travis Hunter",
           "team": "JAC",
           "position": "WR",
-          "positionRank": 79,
-          "rank": 263,
+          "positionRank": 80,
+          "rank": 264,
           "value": 0
         },
         {
           "playerId": "fp-25332",
           "name": "Xavier Hutchinson",
           "team": "HOU",
-          "position": "WR",
-          "positionRank": 80,
-          "rank": 264,
-          "value": 0
-        },
-        {
-          "playerId": "fp-24354",
-          "name": "Dontayvion Wicks",
-          "team": "PHI",
           "position": "WR",
           "positionRank": 81,
           "rank": 265,
@@ -21443,12 +21479,21 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
+          "playerId": "fp-25654",
+          "name": "Emari Demercado",
+          "team": "DAL",
+          "position": "RB",
+          "positionRank": 81,
+          "rank": 305,
+          "value": 0
+        },
+        {
           "playerId": "fp-26019",
           "name": "Keon Coleman",
           "team": "BUF",
           "position": "WR",
           "positionRank": 102,
-          "rank": 305,
+          "rank": 306,
           "value": 0
         },
         {
@@ -21456,8 +21501,8 @@ export const fantasyVorpData: Record<
           "name": "Ray Davis",
           "team": "BUF",
           "position": "RB",
-          "positionRank": 81,
-          "rank": 306,
+          "positionRank": 82,
+          "rank": 307,
           "value": 0
         },
         {
@@ -21466,7 +21511,7 @@ export const fantasyVorpData: Record<
           "team": "LV",
           "position": "TE",
           "positionRank": 36,
-          "rank": 307,
+          "rank": 308,
           "value": 0
         },
         {
@@ -21474,8 +21519,8 @@ export const fantasyVorpData: Record<
           "name": "Corey Kiner",
           "team": "NE",
           "position": "RB",
-          "positionRank": 82,
-          "rank": 308,
+          "positionRank": 83,
+          "rank": 309,
           "value": 0
         },
         {
@@ -21484,7 +21529,7 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "QB",
           "positionRank": 26,
-          "rank": 309,
+          "rank": 310,
           "value": 0
         },
         {
@@ -21492,8 +21537,8 @@ export const fantasyVorpData: Record<
           "name": "Ollie Gordon II",
           "team": "MIA",
           "position": "RB",
-          "positionRank": 83,
-          "rank": 310,
+          "positionRank": 84,
+          "rank": 311,
           "value": 0
         },
         {
@@ -21501,8 +21546,8 @@ export const fantasyVorpData: Record<
           "name": "Kendre Miller",
           "team": "NO",
           "position": "RB",
-          "positionRank": 84,
-          "rank": 311,
+          "positionRank": 85,
+          "rank": 312,
           "value": 0
         },
         {
@@ -21510,8 +21555,8 @@ export const fantasyVorpData: Record<
           "name": "Ameer Abdullah",
           "team": "JAC",
           "position": "RB",
-          "positionRank": 85,
-          "rank": 312,
+          "positionRank": 86,
+          "rank": 313,
           "value": 0
         },
         {
@@ -21520,7 +21565,7 @@ export const fantasyVorpData: Record<
           "team": "BUF",
           "position": "WR",
           "positionRank": 103,
-          "rank": 313,
+          "rank": 314,
           "value": 0
         },
         {
@@ -21528,8 +21573,8 @@ export const fantasyVorpData: Record<
           "name": "Audric Estime",
           "team": "NO",
           "position": "RB",
-          "positionRank": 86,
-          "rank": 314,
+          "positionRank": 87,
+          "rank": 315,
           "value": 0
         },
         {
@@ -21537,8 +21582,8 @@ export const fantasyVorpData: Record<
           "name": "Jacob Saylors",
           "team": "DET",
           "position": "RB",
-          "positionRank": 87,
-          "rank": 315,
+          "positionRank": 88,
+          "rank": 316,
           "value": 0
         },
         {
@@ -21546,8 +21591,8 @@ export const fantasyVorpData: Record<
           "name": "Will Shipley",
           "team": "PHI",
           "position": "RB",
-          "positionRank": 88,
-          "rank": 316,
+          "positionRank": 89,
+          "rank": 317,
           "value": 0
         },
         {
@@ -21556,7 +21601,7 @@ export const fantasyVorpData: Record<
           "team": "DEN",
           "position": "WR",
           "positionRank": 104,
-          "rank": 317,
+          "rank": 318,
           "value": 0
         },
         {
@@ -21564,8 +21609,8 @@ export const fantasyVorpData: Record<
           "name": "Eli Heidenreich",
           "team": "PIT",
           "position": "RB",
-          "positionRank": 89,
-          "rank": 318,
+          "positionRank": 90,
+          "rank": 319,
           "value": 0
         },
         {
@@ -21573,8 +21618,8 @@ export const fantasyVorpData: Record<
           "name": "Hunter Luepke",
           "team": "DAL",
           "position": "RB",
-          "positionRank": 90,
-          "rank": 319,
+          "positionRank": 91,
+          "rank": 320,
           "value": 0
         },
         {
@@ -21583,7 +21628,7 @@ export const fantasyVorpData: Record<
           "team": "TEN",
           "position": "QB",
           "positionRank": 27,
-          "rank": 320,
+          "rank": 321,
           "value": 0
         },
         {
@@ -21592,21 +21637,12 @@ export const fantasyVorpData: Record<
           "team": "NYG",
           "position": "K",
           "positionRank": 32,
-          "rank": 321,
+          "rank": 322,
           "value": 0
         },
         {
           "playerId": "fp-24362",
           "name": "Kaytron Allen",
-          "team": "WAS",
-          "position": "RB",
-          "positionRank": 91,
-          "rank": 322,
-          "value": 0
-        },
-        {
-          "playerId": "fp-16445",
-          "name": "Jeremy McNichols",
           "team": "WAS",
           "position": "RB",
           "positionRank": 92,
@@ -21740,20 +21776,20 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-28067",
-          "name": "Kevin Coleman Jr.",
-          "team": "MIA",
+          "playerId": "fp-28132",
+          "name": "Zavion Thomas",
+          "team": "CHI",
           "position": "WR",
           "positionRank": 110,
           "rank": 338,
           "value": 0
         },
         {
-          "playerId": "fp-17533",
-          "name": "Jason Sanders",
-          "team": "FA",
-          "position": "K",
-          "positionRank": 33,
+          "playerId": "fp-28067",
+          "name": "Kevin Coleman Jr.",
+          "team": "MIA",
+          "position": "WR",
+          "positionRank": 111,
           "rank": 339,
           "value": 0
         },
@@ -21762,7 +21798,7 @@ export const fantasyVorpData: Record<
           "name": "Jack Bech",
           "team": "LV",
           "position": "WR",
-          "positionRank": 111,
+          "positionRank": 112,
           "rank": 340,
           "value": 0
         },
@@ -21825,7 +21861,7 @@ export const fantasyVorpData: Record<
           "name": "Jahdae Walker",
           "team": "CHI",
           "position": "WR",
-          "positionRank": 112,
+          "positionRank": 113,
           "rank": 347,
           "value": 0
         },
@@ -21834,7 +21870,7 @@ export const fantasyVorpData: Record<
           "name": "Demarcus Robinson",
           "team": "SF",
           "position": "WR",
-          "positionRank": 113,
+          "positionRank": 114,
           "rank": 348,
           "value": 0
         },
@@ -21870,7 +21906,7 @@ export const fantasyVorpData: Record<
           "name": "Mack Hollins",
           "team": "NE",
           "position": "WR",
-          "positionRank": 114,
+          "positionRank": 115,
           "rank": 352,
           "value": 0
         },
@@ -21897,7 +21933,7 @@ export const fantasyVorpData: Record<
           "name": "Tank Dell",
           "team": "HOU",
           "position": "WR",
-          "positionRank": 115,
+          "positionRank": 116,
           "rank": 355,
           "value": 0
         },
@@ -21915,7 +21951,7 @@ export const fantasyVorpData: Record<
           "name": "Christian Kirk",
           "team": "SF",
           "position": "WR",
-          "positionRank": 116,
+          "positionRank": 117,
           "rank": 357,
           "value": 0
         },
@@ -21942,7 +21978,7 @@ export const fantasyVorpData: Record<
           "name": "Luke McCaffrey",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 117,
+          "positionRank": 118,
           "rank": 360,
           "value": 0
         },
@@ -21951,7 +21987,7 @@ export const fantasyVorpData: Record<
           "name": "Cyrus Allen",
           "team": "KC",
           "position": "WR",
-          "positionRank": 118,
+          "positionRank": 119,
           "rank": 361,
           "value": 0
         },
@@ -21969,7 +22005,7 @@ export const fantasyVorpData: Record<
           "name": "Kyle Williams",
           "team": "NE",
           "position": "WR",
-          "positionRank": 119,
+          "positionRank": 120,
           "rank": 363,
           "value": 0
         },
@@ -21987,23 +22023,23 @@ export const fantasyVorpData: Record<
           "name": "Ben Sauls",
           "team": "FA",
           "position": "K",
-          "positionRank": 34,
+          "positionRank": 33,
           "rank": 365,
-          "value": 0
-        },
-        {
-          "playerId": "fp-28403",
-          "name": "Will Kacmarek",
-          "team": "MIA",
-          "position": "TE",
-          "positionRank": 43,
-          "rank": 366,
           "value": 0
         },
         {
           "playerId": "fp-17527",
           "name": "Noah Fant",
           "team": "NO",
+          "position": "TE",
+          "positionRank": 43,
+          "rank": 366,
+          "value": 0
+        },
+        {
+          "playerId": "fp-28403",
+          "name": "Will Kacmarek",
+          "team": "MIA",
           "position": "TE",
           "positionRank": 44,
           "rank": 367,
@@ -22012,9 +22048,9 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27222",
           "name": "Theo Wease Jr.",
-          "team": "FA",
+          "team": "LAC",
           "position": "WR",
-          "positionRank": 120,
+          "positionRank": 121,
           "rank": 368,
           "value": 0
         },
@@ -22023,7 +22059,7 @@ export const fantasyVorpData: Record<
           "name": "Dyami Brown",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 121,
+          "positionRank": 122,
           "rank": 369,
           "value": 0
         },
@@ -22032,7 +22068,7 @@ export const fantasyVorpData: Record<
           "name": "Kendrick Bourne",
           "team": "ARI",
           "position": "WR",
-          "positionRank": 122,
+          "positionRank": 123,
           "rank": 370,
           "value": 0
         },
@@ -22050,7 +22086,7 @@ export const fantasyVorpData: Record<
           "name": "Treylon Burks",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 123,
+          "positionRank": 124,
           "rank": 372,
           "value": 0
         },
@@ -22059,7 +22095,7 @@ export const fantasyVorpData: Record<
           "name": "Kalif Raymond",
           "team": "CHI",
           "position": "WR",
-          "positionRank": 124,
+          "positionRank": 125,
           "rank": 373,
           "value": 0
         },
@@ -22104,7 +22140,7 @@ export const fantasyVorpData: Record<
           "name": "Savion Williams",
           "team": "GB",
           "position": "WR",
-          "positionRank": 125,
+          "positionRank": 126,
           "rank": 378,
           "value": 0
         },
@@ -22185,17 +22221,8 @@ export const fantasyVorpData: Record<
           "name": "Isaiah Bond",
           "team": "CLE",
           "position": "WR",
-          "positionRank": 126,
-          "rank": 387,
-          "value": 0
-        },
-        {
-          "playerId": "fp-28132",
-          "name": "Zavion Thomas",
-          "team": "CHI",
-          "position": "WR",
           "positionRank": 127,
-          "rank": 388,
+          "rank": 387,
           "value": 0
         },
         {
@@ -22204,7 +22231,7 @@ export const fantasyVorpData: Record<
           "team": "BUF",
           "position": "WR",
           "positionRank": 128,
-          "rank": 389,
+          "rank": 388,
           "value": 0
         },
         {
@@ -22213,7 +22240,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "TE",
           "positionRank": 57,
-          "rank": 390,
+          "rank": 389,
           "value": 0
         },
         {
@@ -22222,7 +22249,7 @@ export const fantasyVorpData: Record<
           "team": "HOU",
           "position": "TE",
           "positionRank": 58,
-          "rank": 391,
+          "rank": 390,
           "value": 0
         },
         {
@@ -22231,7 +22258,7 @@ export const fantasyVorpData: Record<
           "team": "ARI",
           "position": "TE",
           "positionRank": 59,
-          "rank": 392,
+          "rank": 391,
           "value": 0
         },
         {
@@ -22240,7 +22267,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "TE",
           "positionRank": 60,
-          "rank": 393,
+          "rank": 392,
           "value": 0
         },
         {
@@ -22249,7 +22276,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "WR",
           "positionRank": 129,
-          "rank": 394,
+          "rank": 393,
           "value": 0
         },
         {
@@ -22258,7 +22285,7 @@ export const fantasyVorpData: Record<
           "team": "WAS",
           "position": "TE",
           "positionRank": 61,
-          "rank": 395,
+          "rank": 394,
           "value": 0
         },
         {
@@ -22267,7 +22294,7 @@ export const fantasyVorpData: Record<
           "team": "ATL",
           "position": "WR",
           "positionRank": 130,
-          "rank": 396,
+          "rank": 395,
           "value": 0
         },
         {
@@ -22276,7 +22303,7 @@ export const fantasyVorpData: Record<
           "team": "CIN",
           "position": "WR",
           "positionRank": 131,
-          "rank": 397,
+          "rank": 396,
           "value": 0
         },
         {
@@ -22285,7 +22312,7 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "TE",
           "positionRank": 62,
-          "rank": 398,
+          "rank": 397,
           "value": 0
         },
         {
@@ -22294,7 +22321,7 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "WR",
           "positionRank": 132,
-          "rank": 399,
+          "rank": 398,
           "value": 0
         },
         {
@@ -22303,7 +22330,7 @@ export const fantasyVorpData: Record<
           "team": "PIT",
           "position": "WR",
           "positionRank": 133,
-          "rank": 400,
+          "rank": 399,
           "value": 0
         },
         {
@@ -22312,7 +22339,7 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "WR",
           "positionRank": 134,
-          "rank": 401,
+          "rank": 400,
           "value": 0
         },
         {
@@ -22321,7 +22348,7 @@ export const fantasyVorpData: Record<
           "team": "JAC",
           "position": "TE",
           "positionRank": 63,
-          "rank": 402,
+          "rank": 401,
           "value": 0
         },
         {
@@ -22330,7 +22357,7 @@ export const fantasyVorpData: Record<
           "team": "SF",
           "position": "TE",
           "positionRank": 64,
-          "rank": 403,
+          "rank": 402,
           "value": 0
         },
         {
@@ -22339,7 +22366,7 @@ export const fantasyVorpData: Record<
           "team": "CIN",
           "position": "TE",
           "positionRank": 65,
-          "rank": 404,
+          "rank": 403,
           "value": 0
         },
         {
@@ -22348,7 +22375,7 @@ export const fantasyVorpData: Record<
           "team": "BAL",
           "position": "WR",
           "positionRank": 135,
-          "rank": 405,
+          "rank": 404,
           "value": 0
         },
         {
@@ -22357,7 +22384,7 @@ export const fantasyVorpData: Record<
           "team": "WAS",
           "position": "WR",
           "positionRank": 136,
-          "rank": 406,
+          "rank": 405,
           "value": 0
         },
         {
@@ -22366,16 +22393,7 @@ export const fantasyVorpData: Record<
           "team": "LV",
           "position": "TE",
           "positionRank": 66,
-          "rank": 407,
-          "value": 0
-        },
-        {
-          "playerId": "fp-25349",
-          "name": "Ben Sims",
-          "team": "MIA",
-          "position": "TE",
-          "positionRank": 67,
-          "rank": 408,
+          "rank": 406,
           "value": 0
         },
         {
@@ -22384,7 +22402,7 @@ export const fantasyVorpData: Record<
           "team": "NYG",
           "position": "WR",
           "positionRank": 137,
-          "rank": 409,
+          "rank": 407,
           "value": 0
         },
         {
@@ -22393,7 +22411,16 @@ export const fantasyVorpData: Record<
           "team": "LV",
           "position": "QB",
           "positionRank": 30,
-          "rank": 410,
+          "rank": 408,
+          "value": 0
+        },
+        {
+          "playerId": "fp-17533",
+          "name": "Jason Sanders",
+          "team": "FA",
+          "position": "K",
+          "positionRank": 34,
+          "rank": 409,
           "value": 0
         },
         {
@@ -22402,7 +22429,7 @@ export const fantasyVorpData: Record<
           "team": "TB",
           "position": "WR",
           "positionRank": 138,
-          "rank": 411,
+          "rank": 410,
           "value": 0
         },
         {
@@ -22411,7 +22438,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "WR",
           "positionRank": 139,
-          "rank": 412,
+          "rank": 411,
           "value": 0
         },
         {
@@ -22420,7 +22447,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "WR",
           "positionRank": 140,
-          "rank": 413,
+          "rank": 412,
           "value": 0
         },
         {
@@ -22428,8 +22455,8 @@ export const fantasyVorpData: Record<
           "name": "Nate Adkins",
           "team": "DEN",
           "position": "TE",
-          "positionRank": 68,
-          "rank": 414,
+          "positionRank": 67,
+          "rank": 413,
           "value": 0
         },
         {
@@ -22437,8 +22464,8 @@ export const fantasyVorpData: Record<
           "name": "Cade Stover",
           "team": "HOU",
           "position": "TE",
-          "positionRank": 69,
-          "rank": 415,
+          "positionRank": 68,
+          "rank": 414,
           "value": 0
         },
         {
@@ -22446,8 +22473,8 @@ export const fantasyVorpData: Record<
           "name": "Jackson Hawes",
           "team": "BUF",
           "position": "TE",
-          "positionRank": 70,
-          "rank": 416,
+          "positionRank": 69,
+          "rank": 415,
           "value": 0
         },
         {
@@ -22455,8 +22482,8 @@ export const fantasyVorpData: Record<
           "name": "Ben Sinnott",
           "team": "WAS",
           "position": "TE",
-          "positionRank": 71,
-          "rank": 417,
+          "positionRank": 70,
+          "rank": 416,
           "value": 0
         },
         {
@@ -22464,8 +22491,8 @@ export const fantasyVorpData: Record<
           "name": "Jack Endries",
           "team": "CIN",
           "position": "TE",
-          "positionRank": 72,
-          "rank": 418,
+          "positionRank": 71,
+          "rank": 417,
           "value": 0
         },
         {
@@ -22474,7 +22501,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "WR",
           "positionRank": 141,
-          "rank": 419,
+          "rank": 418,
           "value": 0
         },
         {
@@ -22482,8 +22509,8 @@ export const fantasyVorpData: Record<
           "name": "Luke Schoonmaker",
           "team": "DAL",
           "position": "TE",
-          "positionRank": 73,
-          "rank": 420,
+          "positionRank": 72,
+          "rank": 419,
           "value": 0
         },
         {
@@ -22491,8 +22518,8 @@ export const fantasyVorpData: Record<
           "name": "Luke Musgrave",
           "team": "GB",
           "position": "TE",
-          "positionRank": 74,
-          "rank": 421,
+          "positionRank": 73,
+          "rank": 420,
           "value": 0
         },
         {
@@ -22501,7 +22528,7 @@ export const fantasyVorpData: Record<
           "team": "NO",
           "position": "WR",
           "positionRank": 142,
-          "rank": 422,
+          "rank": 421,
           "value": 0
         },
         {
@@ -22510,7 +22537,7 @@ export const fantasyVorpData: Record<
           "team": "KC",
           "position": "WR",
           "positionRank": 143,
-          "rank": 423,
+          "rank": 422,
           "value": 0
         },
         {
@@ -22519,7 +22546,7 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "WR",
           "positionRank": 144,
-          "rank": 424,
+          "rank": 423,
           "value": 0
         },
         {
@@ -22527,8 +22554,8 @@ export const fantasyVorpData: Record<
           "name": "Foster Moreau",
           "team": "HOU",
           "position": "TE",
-          "positionRank": 75,
-          "rank": 425,
+          "positionRank": 74,
+          "rank": 424,
           "value": 0
         },
         {
@@ -22536,8 +22563,8 @@ export const fantasyVorpData: Record<
           "name": "Bauer Sharp",
           "team": "TB",
           "position": "TE",
-          "positionRank": 76,
-          "rank": 426,
+          "positionRank": 75,
+          "rank": 425,
           "value": 0
         },
         {
@@ -22546,7 +22573,7 @@ export const fantasyVorpData: Record<
           "team": "IND",
           "position": "WR",
           "positionRank": 145,
-          "rank": 427,
+          "rank": 426,
           "value": 0
         },
         {
@@ -22554,8 +22581,8 @@ export const fantasyVorpData: Record<
           "name": "Mo Alie-Cox",
           "team": "IND",
           "position": "TE",
-          "positionRank": 77,
-          "rank": 428,
+          "positionRank": 76,
+          "rank": 427,
           "value": 0
         },
         {
@@ -22563,8 +22590,8 @@ export const fantasyVorpData: Record<
           "name": "Dallen Bentley",
           "team": "DEN",
           "position": "TE",
-          "positionRank": 78,
-          "rank": 429,
+          "positionRank": 77,
+          "rank": 428,
           "value": 0
         },
         {
@@ -22572,8 +22599,8 @@ export const fantasyVorpData: Record<
           "name": "Charlie Woerner",
           "team": "ATL",
           "position": "TE",
-          "positionRank": 79,
-          "rank": 430,
+          "positionRank": 78,
+          "rank": 429,
           "value": 0
         },
         {
@@ -22582,7 +22609,7 @@ export const fantasyVorpData: Record<
           "team": "GB",
           "position": "WR",
           "positionRank": 146,
-          "rank": 431,
+          "rank": 430,
           "value": 0
         },
         {
@@ -22590,14 +22617,23 @@ export const fantasyVorpData: Record<
           "name": "Thomas Fidone II",
           "team": "NYG",
           "position": "TE",
-          "positionRank": 80,
-          "rank": 432,
+          "positionRank": 79,
+          "rank": 431,
           "value": 0
         },
         {
           "playerId": "fp-26343",
           "name": "Jared Wiley",
           "team": "KC",
+          "position": "TE",
+          "positionRank": 80,
+          "rank": 432,
+          "value": 0
+        },
+        {
+          "playerId": "fp-23821",
+          "name": "Will Mallory",
+          "team": "IND",
           "position": "TE",
           "positionRank": 81,
           "rank": 433,
@@ -22937,9 +22973,9 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-17826",
-          "name": "Tanner Hudson",
-          "team": "CIN",
+          "playerId": "fp-28079",
+          "name": "Justin Joly",
+          "team": "FA",
           "position": "TE",
           "positionRank": 101,
           "rank": 471,
@@ -23324,18 +23360,18 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-25967",
-          "name": "Joe Milton III",
-          "team": "DAL",
+          "playerId": "fp-23066",
+          "name": "Kyle McCord",
+          "team": "MIA",
           "position": "QB",
           "positionRank": 69,
           "rank": 514,
           "value": 0
         },
         {
-          "playerId": "fp-23066",
-          "name": "Kyle McCord",
-          "team": "MIA",
+          "playerId": "fp-25967",
+          "name": "Joe Milton III",
+          "team": "FA",
           "position": "QB",
           "positionRank": 70,
           "rank": 515,
@@ -23367,13 +23403,22 @@ export const fantasyVorpData: Record<
           "positionRank": 73,
           "rank": 518,
           "value": 0
+        },
+        {
+          "playerId": "fp-27161",
+          "name": "Brady Cook",
+          "team": "FA",
+          "position": "QB",
+          "positionRank": 74,
+          "rank": 519,
+          "value": 0
         }
       ]
     },
     "14": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-      "accessedAt": "2026-09-01T19:46:05.228Z",
+      "accessedAt": "2026-09-02T19:38:57.614Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -23781,12 +23826,21 @@ export const fantasyVorpData: Record<
           "value": 105
         },
         {
+          "playerId": "fp-20111",
+          "name": "Chris Olave",
+          "team": "NO",
+          "position": "WR",
+          "positionRank": 9,
+          "rank": 46,
+          "value": 104
+        },
+        {
           "playerId": "fp-27316",
           "name": "Jacory Croskey-Merritt",
           "team": "WAS",
           "position": "RB",
           "positionRank": 37,
-          "rank": 46,
+          "rank": 47,
           "value": 103
         },
         {
@@ -23795,17 +23849,8 @@ export const fantasyVorpData: Record<
           "team": "MIN",
           "position": "RB",
           "positionRank": 38,
-          "rank": 47,
-          "value": 103
-        },
-        {
-          "playerId": "fp-20111",
-          "name": "Chris Olave",
-          "team": "NO",
-          "position": "WR",
-          "positionRank": 9,
           "rank": 48,
-          "value": 102
+          "value": 103
         },
         {
           "playerId": "fp-18218",
@@ -25635,12 +25680,21 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
+          "playerId": "fp-25654",
+          "name": "Emari Demercado",
+          "team": "DAL",
+          "position": "RB",
+          "positionRank": 81,
+          "rank": 252,
+          "value": 0
+        },
+        {
           "playerId": "fp-16540",
           "name": "Jake Elliott",
           "team": "PHI",
           "position": "K",
           "positionRank": 22,
-          "rank": 252,
+          "rank": 253,
           "value": 0
         },
         {
@@ -25648,8 +25702,8 @@ export const fantasyVorpData: Record<
           "name": "Ray Davis",
           "team": "BUF",
           "position": "RB",
-          "positionRank": 81,
-          "rank": 253,
+          "positionRank": 82,
+          "rank": 254,
           "value": 0
         },
         {
@@ -25658,7 +25712,7 @@ export const fantasyVorpData: Record<
           "team": "PIT",
           "position": "K",
           "positionRank": 23,
-          "rank": 254,
+          "rank": 255,
           "value": 0
         },
         {
@@ -25667,7 +25721,7 @@ export const fantasyVorpData: Record<
           "team": "SF",
           "position": "DST",
           "positionRank": 30,
-          "rank": 255,
+          "rank": 256,
           "value": 0
         },
         {
@@ -25676,7 +25730,7 @@ export const fantasyVorpData: Record<
           "team": "WAS",
           "position": "K",
           "positionRank": 24,
-          "rank": 256,
+          "rank": 257,
           "value": 0
         },
         {
@@ -25685,7 +25739,7 @@ export const fantasyVorpData: Record<
           "team": "HOU",
           "position": "WR",
           "positionRank": 70,
-          "rank": 257,
+          "rank": 258,
           "value": 0
         },
         {
@@ -25694,7 +25748,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "TE",
           "positionRank": 28,
-          "rank": 258,
+          "rank": 259,
           "value": 0
         },
         {
@@ -25702,8 +25756,17 @@ export const fantasyVorpData: Record<
           "name": "Corey Kiner",
           "team": "NE",
           "position": "RB",
-          "positionRank": 82,
-          "rank": 259,
+          "positionRank": 83,
+          "rank": 260,
+          "value": 0
+        },
+        {
+          "playerId": "fp-25533",
+          "name": "Blake Grupe",
+          "team": "NYJ",
+          "position": "K",
+          "positionRank": 25,
+          "rank": 261,
           "value": 0
         },
         {
@@ -25712,7 +25775,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "DST",
           "positionRank": 31,
-          "rank": 260,
+          "rank": 262,
           "value": 0
         },
         {
@@ -25721,7 +25784,7 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "DST",
           "positionRank": 32,
-          "rank": 261,
+          "rank": 263,
           "value": 0
         },
         {
@@ -25729,8 +25792,8 @@ export const fantasyVorpData: Record<
           "name": "Ollie Gordon II",
           "team": "MIA",
           "position": "RB",
-          "positionRank": 83,
-          "rank": 262,
+          "positionRank": 84,
+          "rank": 264,
           "value": 0
         },
         {
@@ -25738,8 +25801,8 @@ export const fantasyVorpData: Record<
           "name": "Kendre Miller",
           "team": "NO",
           "position": "RB",
-          "positionRank": 84,
-          "rank": 263,
+          "positionRank": 85,
+          "rank": 265,
           "value": 0
         },
         {
@@ -25747,8 +25810,8 @@ export const fantasyVorpData: Record<
           "name": "Ameer Abdullah",
           "team": "JAC",
           "position": "RB",
-          "positionRank": 85,
-          "rank": 264,
+          "positionRank": 86,
+          "rank": 266,
           "value": 0
         },
         {
@@ -25756,8 +25819,8 @@ export const fantasyVorpData: Record<
           "name": "Audric Estime",
           "team": "NO",
           "position": "RB",
-          "positionRank": 86,
-          "rank": 265,
+          "positionRank": 87,
+          "rank": 267,
           "value": 0
         },
         {
@@ -25765,8 +25828,8 @@ export const fantasyVorpData: Record<
           "name": "Jacob Saylors",
           "team": "DET",
           "position": "RB",
-          "positionRank": 87,
-          "rank": 266,
+          "positionRank": 88,
+          "rank": 268,
           "value": 0
         },
         {
@@ -25774,8 +25837,8 @@ export const fantasyVorpData: Record<
           "name": "Will Shipley",
           "team": "PHI",
           "position": "RB",
-          "positionRank": 88,
-          "rank": 267,
+          "positionRank": 89,
+          "rank": 269,
           "value": 0
         },
         {
@@ -25783,8 +25846,8 @@ export const fantasyVorpData: Record<
           "name": "Riley Patterson",
           "team": "MIA",
           "position": "K",
-          "positionRank": 25,
-          "rank": 268,
+          "positionRank": 26,
+          "rank": 270,
           "value": 0
         },
         {
@@ -25792,8 +25855,8 @@ export const fantasyVorpData: Record<
           "name": "Joey Slye",
           "team": "TEN",
           "position": "K",
-          "positionRank": 26,
-          "rank": 269,
+          "positionRank": 27,
+          "rank": 271,
           "value": 0
         },
         {
@@ -25801,8 +25864,8 @@ export const fantasyVorpData: Record<
           "name": "Eli Heidenreich",
           "team": "PIT",
           "position": "RB",
-          "positionRank": 89,
-          "rank": 270,
+          "positionRank": 90,
+          "rank": 272,
           "value": 0
         },
         {
@@ -25810,8 +25873,8 @@ export const fantasyVorpData: Record<
           "name": "Hunter Luepke",
           "team": "DAL",
           "position": "RB",
-          "positionRank": 90,
-          "rank": 271,
+          "positionRank": 91,
+          "rank": 273,
           "value": 0
         },
         {
@@ -25820,7 +25883,7 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "WR",
           "positionRank": 71,
-          "rank": 272,
+          "rank": 274,
           "value": 0
         },
         {
@@ -25829,7 +25892,7 @@ export const fantasyVorpData: Record<
           "team": "DEN",
           "position": "TE",
           "positionRank": 29,
-          "rank": 273,
+          "rank": 275,
           "value": 0
         },
         {
@@ -25837,17 +25900,8 @@ export const fantasyVorpData: Record<
           "name": "Kaytron Allen",
           "team": "WAS",
           "position": "RB",
-          "positionRank": 91,
-          "rank": 274,
-          "value": 0
-        },
-        {
-          "playerId": "fp-16445",
-          "name": "Jeremy McNichols",
-          "team": "WAS",
-          "position": "RB",
           "positionRank": 92,
-          "rank": 275,
+          "rank": 276,
           "value": 0
         },
         {
@@ -25856,7 +25910,7 @@ export const fantasyVorpData: Record<
           "team": "CLE",
           "position": "RB",
           "positionRank": 93,
-          "rank": 276,
+          "rank": 277,
           "value": 0
         },
         {
@@ -25865,7 +25919,7 @@ export const fantasyVorpData: Record<
           "team": "TEN",
           "position": "RB",
           "positionRank": 94,
-          "rank": 277,
+          "rank": 278,
           "value": 0
         },
         {
@@ -25873,8 +25927,8 @@ export const fantasyVorpData: Record<
           "name": "Chad Ryland",
           "team": "ARI",
           "position": "K",
-          "positionRank": 27,
-          "rank": 278,
+          "positionRank": 28,
+          "rank": 279,
           "value": 0
         },
         {
@@ -25883,7 +25937,7 @@ export const fantasyVorpData: Record<
           "team": "CIN",
           "position": "TE",
           "positionRank": 30,
-          "rank": 279,
+          "rank": 280,
           "value": 0
         },
         {
@@ -25892,7 +25946,7 @@ export const fantasyVorpData: Record<
           "team": "CIN",
           "position": "RB",
           "positionRank": 95,
-          "rank": 280,
+          "rank": 281,
           "value": 0
         },
         {
@@ -25901,15 +25955,6 @@ export const fantasyVorpData: Record<
           "team": "MIN",
           "position": "RB",
           "positionRank": 96,
-          "rank": 281,
-          "value": 0
-        },
-        {
-          "playerId": "fp-25533",
-          "name": "Blake Grupe",
-          "team": "NYJ",
-          "position": "K",
-          "positionRank": 28,
           "rank": 282,
           "value": 0
         },
@@ -25968,12 +26013,21 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
+          "playerId": "fp-24354",
+          "name": "Dontayvion Wicks",
+          "team": "PHI",
+          "position": "WR",
+          "positionRank": 73,
+          "rank": 289,
+          "value": 0
+        },
+        {
           "playerId": "fp-26039",
           "name": "Germie Bernard",
           "team": "PIT",
           "position": "WR",
-          "positionRank": 73,
-          "rank": 289,
+          "positionRank": 74,
+          "rank": 290,
           "value": 0
         },
         {
@@ -25981,8 +26035,8 @@ export const fantasyVorpData: Record<
           "name": "Malik Washington",
           "team": "MIA",
           "position": "WR",
-          "positionRank": 74,
-          "rank": 290,
+          "positionRank": 75,
+          "rank": 291,
           "value": 0
         },
         {
@@ -25990,8 +26044,8 @@ export const fantasyVorpData: Record<
           "name": "Chris Bell",
           "team": "MIA",
           "position": "WR",
-          "positionRank": 75,
-          "rank": 291,
+          "positionRank": 76,
+          "rank": 292,
           "value": 0
         },
         {
@@ -26000,7 +26054,7 @@ export const fantasyVorpData: Record<
           "team": "CLE",
           "position": "RB",
           "positionRank": 99,
-          "rank": 292,
+          "rank": 293,
           "value": 0
         },
         {
@@ -26009,7 +26063,7 @@ export const fantasyVorpData: Record<
           "team": "LV",
           "position": "K",
           "positionRank": 30,
-          "rank": 293,
+          "rank": 294,
           "value": 0
         },
         {
@@ -26017,8 +26071,8 @@ export const fantasyVorpData: Record<
           "name": "Antonio Williams",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 76,
-          "rank": 294,
+          "positionRank": 77,
+          "rank": 295,
           "value": 0
         },
         {
@@ -26027,7 +26081,7 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "RB",
           "positionRank": 100,
-          "rank": 295,
+          "rank": 296,
           "value": 0
         },
         {
@@ -26035,8 +26089,8 @@ export const fantasyVorpData: Record<
           "name": "Caleb Douglas",
           "team": "MIA",
           "position": "WR",
-          "positionRank": 77,
-          "rank": 296,
+          "positionRank": 78,
+          "rank": 297,
           "value": 0
         },
         {
@@ -26045,7 +26099,7 @@ export const fantasyVorpData: Record<
           "team": "SF",
           "position": "RB",
           "positionRank": 101,
-          "rank": 297,
+          "rank": 298,
           "value": 0
         },
         {
@@ -26053,8 +26107,8 @@ export const fantasyVorpData: Record<
           "name": "Omar Cooper Jr.",
           "team": "NYJ",
           "position": "WR",
-          "positionRank": 78,
-          "rank": 298,
+          "positionRank": 79,
+          "rank": 299,
           "value": 0
         },
         {
@@ -26063,7 +26117,7 @@ export const fantasyVorpData: Record<
           "team": "NYG",
           "position": "RB",
           "positionRank": 102,
-          "rank": 299,
+          "rank": 300,
           "value": 0
         },
         {
@@ -26072,7 +26126,7 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "RB",
           "positionRank": 103,
-          "rank": 300,
+          "rank": 301,
           "value": 0
         },
         {
@@ -26081,7 +26135,7 @@ export const fantasyVorpData: Record<
           "team": "CLE",
           "position": "K",
           "positionRank": 31,
-          "rank": 301,
+          "rank": 302,
           "value": 0
         },
         {
@@ -26089,23 +26143,14 @@ export const fantasyVorpData: Record<
           "name": "Travis Hunter",
           "team": "JAC",
           "position": "WR",
-          "positionRank": 79,
-          "rank": 302,
+          "positionRank": 80,
+          "rank": 303,
           "value": 0
         },
         {
           "playerId": "fp-25332",
           "name": "Xavier Hutchinson",
           "team": "HOU",
-          "position": "WR",
-          "positionRank": 80,
-          "rank": 303,
-          "value": 0
-        },
-        {
-          "playerId": "fp-24354",
-          "name": "Dontayvion Wicks",
-          "team": "PHI",
           "position": "WR",
           "positionRank": 81,
           "rank": 304,
@@ -26283,20 +26328,20 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-23056",
-          "name": "Michael Mayer",
-          "team": "LV",
-          "position": "TE",
-          "positionRank": 36,
-          "rank": 324,
-          "value": 0
-        },
-        {
           "playerId": "fp-28129",
           "name": "Bryce Lance",
           "team": "NO",
           "position": "WR",
           "positionRank": 88,
+          "rank": 324,
+          "value": 0
+        },
+        {
+          "playerId": "fp-23056",
+          "name": "Michael Mayer",
+          "team": "LV",
+          "position": "TE",
+          "positionRank": 36,
           "rank": 325,
           "value": 0
         },
@@ -26544,12 +26589,21 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
+          "playerId": "fp-17527",
+          "name": "Noah Fant",
+          "team": "NO",
+          "position": "TE",
+          "positionRank": 43,
+          "rank": 353,
+          "value": 0
+        },
+        {
           "playerId": "fp-26011",
           "name": "Devontez Walker",
           "team": "BAL",
           "position": "WR",
           "positionRank": 108,
-          "rank": 353,
+          "rank": 354,
           "value": 0
         },
         {
@@ -26558,7 +26612,16 @@ export const fantasyVorpData: Record<
           "team": "NYG",
           "position": "WR",
           "positionRank": 109,
-          "rank": 354,
+          "rank": 355,
+          "value": 0
+        },
+        {
+          "playerId": "fp-28132",
+          "name": "Zavion Thomas",
+          "team": "CHI",
+          "position": "WR",
+          "positionRank": 110,
+          "rank": 356,
           "value": 0
         },
         {
@@ -26566,8 +26629,8 @@ export const fantasyVorpData: Record<
           "name": "Kevin Coleman Jr.",
           "team": "MIA",
           "position": "WR",
-          "positionRank": 110,
-          "rank": 355,
+          "positionRank": 111,
+          "rank": 357,
           "value": 0
         },
         {
@@ -26575,17 +26638,8 @@ export const fantasyVorpData: Record<
           "name": "Will Kacmarek",
           "team": "MIA",
           "position": "TE",
-          "positionRank": 43,
-          "rank": 356,
-          "value": 0
-        },
-        {
-          "playerId": "fp-17527",
-          "name": "Noah Fant",
-          "team": "NO",
-          "position": "TE",
           "positionRank": 44,
-          "rank": 357,
+          "rank": 358,
           "value": 0
         },
         {
@@ -26593,16 +26647,7 @@ export const fantasyVorpData: Record<
           "name": "Jack Bech",
           "team": "LV",
           "position": "WR",
-          "positionRank": 111,
-          "rank": 358,
-          "value": 0
-        },
-        {
-          "playerId": "fp-17533",
-          "name": "Jason Sanders",
-          "team": "FA",
-          "position": "K",
-          "positionRank": 33,
+          "positionRank": 112,
           "rank": 359,
           "value": 0
         },
@@ -26620,7 +26665,7 @@ export const fantasyVorpData: Record<
           "name": "Jahdae Walker",
           "team": "CHI",
           "position": "WR",
-          "positionRank": 112,
+          "positionRank": 113,
           "rank": 361,
           "value": 0
         },
@@ -26629,7 +26674,7 @@ export const fantasyVorpData: Record<
           "name": "Demarcus Robinson",
           "team": "SF",
           "position": "WR",
-          "positionRank": 113,
+          "positionRank": 114,
           "rank": 362,
           "value": 0
         },
@@ -26665,7 +26710,7 @@ export const fantasyVorpData: Record<
           "name": "Mack Hollins",
           "team": "NE",
           "position": "WR",
-          "positionRank": 114,
+          "positionRank": 115,
           "rank": 366,
           "value": 0
         },
@@ -26692,7 +26737,7 @@ export const fantasyVorpData: Record<
           "name": "Tank Dell",
           "team": "HOU",
           "position": "WR",
-          "positionRank": 115,
+          "positionRank": 116,
           "rank": 369,
           "value": 0
         },
@@ -26728,7 +26773,7 @@ export const fantasyVorpData: Record<
           "name": "Christian Kirk",
           "team": "SF",
           "position": "WR",
-          "positionRank": 116,
+          "positionRank": 117,
           "rank": 373,
           "value": 0
         },
@@ -26746,7 +26791,7 @@ export const fantasyVorpData: Record<
           "name": "Luke McCaffrey",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 117,
+          "positionRank": 118,
           "rank": 375,
           "value": 0
         },
@@ -26755,7 +26800,7 @@ export const fantasyVorpData: Record<
           "name": "Cyrus Allen",
           "team": "KC",
           "position": "WR",
-          "positionRank": 118,
+          "positionRank": 119,
           "rank": 376,
           "value": 0
         },
@@ -26782,7 +26827,7 @@ export const fantasyVorpData: Record<
           "name": "Kyle Williams",
           "team": "NE",
           "position": "WR",
-          "positionRank": 119,
+          "positionRank": 120,
           "rank": 379,
           "value": 0
         },
@@ -26791,16 +26836,16 @@ export const fantasyVorpData: Record<
           "name": "Ben Sauls",
           "team": "FA",
           "position": "K",
-          "positionRank": 34,
+          "positionRank": 33,
           "rank": 380,
           "value": 0
         },
         {
           "playerId": "fp-27222",
           "name": "Theo Wease Jr.",
-          "team": "FA",
+          "team": "LAC",
           "position": "WR",
-          "positionRank": 120,
+          "positionRank": 121,
           "rank": 381,
           "value": 0
         },
@@ -26809,7 +26854,7 @@ export const fantasyVorpData: Record<
           "name": "Dyami Brown",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 121,
+          "positionRank": 122,
           "rank": 382,
           "value": 0
         },
@@ -26818,7 +26863,7 @@ export const fantasyVorpData: Record<
           "name": "Kendrick Bourne",
           "team": "ARI",
           "position": "WR",
-          "positionRank": 122,
+          "positionRank": 123,
           "rank": 383,
           "value": 0
         },
@@ -26881,7 +26926,7 @@ export const fantasyVorpData: Record<
           "name": "Treylon Burks",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 123,
+          "positionRank": 124,
           "rank": 390,
           "value": 0
         },
@@ -26890,7 +26935,7 @@ export const fantasyVorpData: Record<
           "name": "Kalif Raymond",
           "team": "CHI",
           "position": "WR",
-          "positionRank": 124,
+          "positionRank": 125,
           "rank": 391,
           "value": 0
         },
@@ -26908,7 +26953,7 @@ export const fantasyVorpData: Record<
           "name": "Savion Williams",
           "team": "GB",
           "position": "WR",
-          "positionRank": 125,
+          "positionRank": 126,
           "rank": 393,
           "value": 0
         },
@@ -26949,21 +26994,12 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-25349",
-          "name": "Ben Sims",
-          "team": "MIA",
-          "position": "TE",
-          "positionRank": 67,
-          "rank": 398,
-          "value": 0
-        },
-        {
           "playerId": "fp-25881",
           "name": "Nate Adkins",
           "team": "DEN",
           "position": "TE",
-          "positionRank": 68,
-          "rank": 399,
+          "positionRank": 67,
+          "rank": 398,
           "value": 0
         },
         {
@@ -26971,8 +27007,8 @@ export const fantasyVorpData: Record<
           "name": "Cade Stover",
           "team": "HOU",
           "position": "TE",
-          "positionRank": 69,
-          "rank": 400,
+          "positionRank": 68,
+          "rank": 399,
           "value": 0
         },
         {
@@ -26980,17 +27016,8 @@ export const fantasyVorpData: Record<
           "name": "Isaiah Bond",
           "team": "CLE",
           "position": "WR",
-          "positionRank": 126,
-          "rank": 401,
-          "value": 0
-        },
-        {
-          "playerId": "fp-28132",
-          "name": "Zavion Thomas",
-          "team": "CHI",
-          "position": "WR",
           "positionRank": 127,
-          "rank": 402,
+          "rank": 400,
           "value": 0
         },
         {
@@ -26998,8 +27025,8 @@ export const fantasyVorpData: Record<
           "name": "Jackson Hawes",
           "team": "BUF",
           "position": "TE",
-          "positionRank": 70,
-          "rank": 403,
+          "positionRank": 69,
+          "rank": 401,
           "value": 0
         },
         {
@@ -27007,8 +27034,8 @@ export const fantasyVorpData: Record<
           "name": "Ben Sinnott",
           "team": "WAS",
           "position": "TE",
-          "positionRank": 71,
-          "rank": 404,
+          "positionRank": 70,
+          "rank": 402,
           "value": 0
         },
         {
@@ -27016,8 +27043,8 @@ export const fantasyVorpData: Record<
           "name": "Jack Endries",
           "team": "CIN",
           "position": "TE",
-          "positionRank": 72,
-          "rank": 405,
+          "positionRank": 71,
+          "rank": 403,
           "value": 0
         },
         {
@@ -27026,7 +27053,7 @@ export const fantasyVorpData: Record<
           "team": "BUF",
           "position": "WR",
           "positionRank": 128,
-          "rank": 406,
+          "rank": 404,
           "value": 0
         },
         {
@@ -27034,8 +27061,8 @@ export const fantasyVorpData: Record<
           "name": "Luke Schoonmaker",
           "team": "DAL",
           "position": "TE",
-          "positionRank": 73,
-          "rank": 407,
+          "positionRank": 72,
+          "rank": 405,
           "value": 0
         },
         {
@@ -27043,8 +27070,8 @@ export const fantasyVorpData: Record<
           "name": "Luke Musgrave",
           "team": "GB",
           "position": "TE",
-          "positionRank": 74,
-          "rank": 408,
+          "positionRank": 73,
+          "rank": 406,
           "value": 0
         },
         {
@@ -27052,8 +27079,8 @@ export const fantasyVorpData: Record<
           "name": "Foster Moreau",
           "team": "HOU",
           "position": "TE",
-          "positionRank": 75,
-          "rank": 409,
+          "positionRank": 74,
+          "rank": 407,
           "value": 0
         },
         {
@@ -27061,8 +27088,8 @@ export const fantasyVorpData: Record<
           "name": "Bauer Sharp",
           "team": "TB",
           "position": "TE",
-          "positionRank": 76,
-          "rank": 410,
+          "positionRank": 75,
+          "rank": 408,
           "value": 0
         },
         {
@@ -27071,7 +27098,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "WR",
           "positionRank": 129,
-          "rank": 411,
+          "rank": 409,
           "value": 0
         },
         {
@@ -27079,8 +27106,8 @@ export const fantasyVorpData: Record<
           "name": "Mo Alie-Cox",
           "team": "IND",
           "position": "TE",
-          "positionRank": 77,
-          "rank": 412,
+          "positionRank": 76,
+          "rank": 410,
           "value": 0
         },
         {
@@ -27088,8 +27115,8 @@ export const fantasyVorpData: Record<
           "name": "Dallen Bentley",
           "team": "DEN",
           "position": "TE",
-          "positionRank": 78,
-          "rank": 413,
+          "positionRank": 77,
+          "rank": 411,
           "value": 0
         },
         {
@@ -27097,8 +27124,8 @@ export const fantasyVorpData: Record<
           "name": "Charlie Woerner",
           "team": "ATL",
           "position": "TE",
-          "positionRank": 79,
-          "rank": 414,
+          "positionRank": 78,
+          "rank": 412,
           "value": 0
         },
         {
@@ -27107,7 +27134,7 @@ export const fantasyVorpData: Record<
           "team": "ATL",
           "position": "WR",
           "positionRank": 130,
-          "rank": 415,
+          "rank": 413,
           "value": 0
         },
         {
@@ -27115,8 +27142,8 @@ export const fantasyVorpData: Record<
           "name": "Thomas Fidone II",
           "team": "NYG",
           "position": "TE",
-          "positionRank": 80,
-          "rank": 416,
+          "positionRank": 79,
+          "rank": 414,
           "value": 0
         },
         {
@@ -27124,8 +27151,8 @@ export const fantasyVorpData: Record<
           "name": "Jared Wiley",
           "team": "KC",
           "position": "TE",
-          "positionRank": 81,
-          "rank": 417,
+          "positionRank": 80,
+          "rank": 415,
           "value": 0
         },
         {
@@ -27134,7 +27161,16 @@ export const fantasyVorpData: Record<
           "team": "CIN",
           "position": "WR",
           "positionRank": 131,
-          "rank": 418,
+          "rank": 416,
+          "value": 0
+        },
+        {
+          "playerId": "fp-23821",
+          "name": "Will Mallory",
+          "team": "IND",
+          "position": "TE",
+          "positionRank": 81,
+          "rank": 417,
           "value": 0
         },
         {
@@ -27143,7 +27179,7 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "WR",
           "positionRank": 132,
-          "rank": 419,
+          "rank": 418,
           "value": 0
         },
         {
@@ -27152,7 +27188,7 @@ export const fantasyVorpData: Record<
           "team": "PIT",
           "position": "WR",
           "positionRank": 133,
-          "rank": 420,
+          "rank": 419,
           "value": 0
         },
         {
@@ -27161,7 +27197,7 @@ export const fantasyVorpData: Record<
           "team": "TEN",
           "position": "TE",
           "positionRank": 82,
-          "rank": 421,
+          "rank": 420,
           "value": 0
         },
         {
@@ -27170,7 +27206,7 @@ export const fantasyVorpData: Record<
           "team": "NO",
           "position": "TE",
           "positionRank": 83,
-          "rank": 422,
+          "rank": 421,
           "value": 0
         },
         {
@@ -27179,7 +27215,7 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "WR",
           "positionRank": 134,
-          "rank": 423,
+          "rank": 422,
           "value": 0
         },
         {
@@ -27188,7 +27224,7 @@ export const fantasyVorpData: Record<
           "team": "BAL",
           "position": "TE",
           "positionRank": 84,
-          "rank": 424,
+          "rank": 423,
           "value": 0
         },
         {
@@ -27197,7 +27233,7 @@ export const fantasyVorpData: Record<
           "team": "BAL",
           "position": "WR",
           "positionRank": 135,
-          "rank": 425,
+          "rank": 424,
           "value": 0
         },
         {
@@ -27206,7 +27242,7 @@ export const fantasyVorpData: Record<
           "team": "WAS",
           "position": "WR",
           "positionRank": 136,
-          "rank": 426,
+          "rank": 425,
           "value": 0
         },
         {
@@ -27215,7 +27251,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "TE",
           "positionRank": 85,
-          "rank": 427,
+          "rank": 426,
           "value": 0
         },
         {
@@ -27224,7 +27260,7 @@ export const fantasyVorpData: Record<
           "team": "TB",
           "position": "TE",
           "positionRank": 86,
-          "rank": 428,
+          "rank": 427,
           "value": 0
         },
         {
@@ -27233,7 +27269,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "TE",
           "positionRank": 87,
-          "rank": 429,
+          "rank": 428,
           "value": 0
         },
         {
@@ -27242,7 +27278,7 @@ export const fantasyVorpData: Record<
           "team": "PHI",
           "position": "TE",
           "positionRank": 88,
-          "rank": 430,
+          "rank": 429,
           "value": 0
         },
         {
@@ -27251,7 +27287,7 @@ export const fantasyVorpData: Record<
           "team": "MIA",
           "position": "TE",
           "positionRank": 89,
-          "rank": 431,
+          "rank": 430,
           "value": 0
         },
         {
@@ -27260,7 +27296,7 @@ export const fantasyVorpData: Record<
           "team": "NYG",
           "position": "WR",
           "positionRank": 137,
-          "rank": 432,
+          "rank": 431,
           "value": 0
         },
         {
@@ -27269,7 +27305,7 @@ export const fantasyVorpData: Record<
           "team": "JAC",
           "position": "TE",
           "positionRank": 90,
-          "rank": 433,
+          "rank": 432,
           "value": 0
         },
         {
@@ -27278,7 +27314,7 @@ export const fantasyVorpData: Record<
           "team": "DAL",
           "position": "TE",
           "positionRank": 91,
-          "rank": 434,
+          "rank": 433,
           "value": 0
         },
         {
@@ -27287,7 +27323,7 @@ export const fantasyVorpData: Record<
           "team": "TB",
           "position": "WR",
           "positionRank": 138,
-          "rank": 435,
+          "rank": 434,
           "value": 0
         },
         {
@@ -27296,7 +27332,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "WR",
           "positionRank": 139,
-          "rank": 436,
+          "rank": 435,
           "value": 0
         },
         {
@@ -27305,7 +27341,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "WR",
           "positionRank": 140,
-          "rank": 437,
+          "rank": 436,
           "value": 0
         },
         {
@@ -27314,7 +27350,7 @@ export const fantasyVorpData: Record<
           "team": "CHI",
           "position": "TE",
           "positionRank": 92,
-          "rank": 438,
+          "rank": 437,
           "value": 0
         },
         {
@@ -27323,7 +27359,7 @@ export const fantasyVorpData: Record<
           "team": "GB",
           "position": "TE",
           "positionRank": 93,
-          "rank": 439,
+          "rank": 438,
           "value": 0
         },
         {
@@ -27332,6 +27368,15 @@ export const fantasyVorpData: Record<
           "team": "ARI",
           "position": "TE",
           "positionRank": 94,
+          "rank": 439,
+          "value": 0
+        },
+        {
+          "playerId": "fp-17533",
+          "name": "Jason Sanders",
+          "team": "FA",
+          "position": "K",
+          "positionRank": 34,
           "rank": 440,
           "value": 0
         },
@@ -27435,20 +27480,20 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
+          "playerId": "fp-28079",
+          "name": "Justin Joly",
+          "team": "FA",
+          "position": "TE",
+          "positionRank": 101,
+          "rank": 452,
+          "value": 0
+        },
+        {
           "playerId": "fp-24049",
           "name": "Bo Melton",
           "team": "GB",
           "position": "WR",
           "positionRank": 146,
-          "rank": 452,
-          "value": 0
-        },
-        {
-          "playerId": "fp-17826",
-          "name": "Tanner Hudson",
-          "team": "CIN",
-          "position": "TE",
-          "positionRank": 101,
           "rank": 453,
           "value": 0
         },
@@ -27993,18 +28038,18 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-25967",
-          "name": "Joe Milton III",
-          "team": "DAL",
+          "playerId": "fp-23066",
+          "name": "Kyle McCord",
+          "team": "MIA",
           "position": "QB",
           "positionRank": 69,
           "rank": 514,
           "value": 0
         },
         {
-          "playerId": "fp-23066",
-          "name": "Kyle McCord",
-          "team": "MIA",
+          "playerId": "fp-25967",
+          "name": "Joe Milton III",
+          "team": "FA",
           "position": "QB",
           "positionRank": 70,
           "rank": 515,
@@ -28036,6 +28081,15 @@ export const fantasyVorpData: Record<
           "positionRank": 73,
           "rank": 518,
           "value": 0
+        },
+        {
+          "playerId": "fp-27161",
+          "name": "Brady Cook",
+          "team": "FA",
+          "position": "QB",
+          "positionRank": 74,
+          "rank": 519,
+          "value": 0
         }
       ]
     }
@@ -28044,7 +28098,7 @@ export const fantasyVorpData: Record<
     "10": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-      "accessedAt": "2026-09-01T19:46:05.993Z",
+      "accessedAt": "2026-09-02T19:38:58.450Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -28407,12 +28461,21 @@ export const fantasyVorpData: Record<
           "value": 68
         },
         {
+          "playerId": "fp-20111",
+          "name": "Chris Olave",
+          "team": "NO",
+          "position": "WR",
+          "positionRank": 11,
+          "rank": 41,
+          "value": 67
+        },
+        {
           "playerId": "fp-20130",
           "name": "Nico Collins",
           "team": "HOU",
           "position": "WR",
-          "positionRank": 11,
-          "rank": 41,
+          "positionRank": 12,
+          "rank": 42,
           "value": 67
         },
         {
@@ -28421,17 +28484,8 @@ export const fantasyVorpData: Record<
           "team": "PIT",
           "position": "RB",
           "positionRank": 30,
-          "rank": 42,
-          "value": 67
-        },
-        {
-          "playerId": "fp-20111",
-          "name": "Chris Olave",
-          "team": "NO",
-          "position": "WR",
-          "positionRank": 12,
           "rank": 43,
-          "value": 65
+          "value": 67
         },
         {
           "playerId": "fp-22916",
@@ -29982,12 +30036,21 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
+          "playerId": "fp-25533",
+          "name": "Blake Grupe",
+          "team": "NYJ",
+          "position": "K",
+          "positionRank": 25,
+          "rank": 216,
+          "value": 0
+        },
+        {
           "playerId": "fp-19590",
           "name": "Jauan Jennings",
           "team": "MIN",
           "position": "WR",
           "positionRank": 65,
-          "rank": 216,
+          "rank": 217,
           "value": 0
         },
         {
@@ -29996,7 +30059,7 @@ export const fantasyVorpData: Record<
           "team": "SF",
           "position": "DST",
           "positionRank": 30,
-          "rank": 217,
+          "rank": 218,
           "value": 0
         },
         {
@@ -30005,7 +30068,7 @@ export const fantasyVorpData: Record<
           "team": "LV",
           "position": "WR",
           "positionRank": 66,
-          "rank": 218,
+          "rank": 219,
           "value": 0
         },
         {
@@ -30013,8 +30076,8 @@ export const fantasyVorpData: Record<
           "name": "Riley Patterson",
           "team": "MIA",
           "position": "K",
-          "positionRank": 25,
-          "rank": 219,
+          "positionRank": 26,
+          "rank": 220,
           "value": 0
         },
         {
@@ -30022,8 +30085,8 @@ export const fantasyVorpData: Record<
           "name": "Joey Slye",
           "team": "TEN",
           "position": "K",
-          "positionRank": 26,
-          "rank": 220,
+          "positionRank": 27,
+          "rank": 221,
           "value": 0
         },
         {
@@ -30032,7 +30095,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "TE",
           "positionRank": 19,
-          "rank": 221,
+          "rank": 222,
           "value": 0
         },
         {
@@ -30041,7 +30104,7 @@ export const fantasyVorpData: Record<
           "team": "IND",
           "position": "WR",
           "positionRank": 67,
-          "rank": 222,
+          "rank": 223,
           "value": 0
         },
         {
@@ -30050,7 +30113,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "DST",
           "positionRank": 31,
-          "rank": 223,
+          "rank": 224,
           "value": 0
         },
         {
@@ -30059,7 +30122,7 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "DST",
           "positionRank": 32,
-          "rank": 224,
+          "rank": 225,
           "value": 0
         },
         {
@@ -30068,7 +30131,7 @@ export const fantasyVorpData: Record<
           "team": "HOU",
           "position": "TE",
           "positionRank": 20,
-          "rank": 225,
+          "rank": 226,
           "value": 0
         },
         {
@@ -30077,7 +30140,7 @@ export const fantasyVorpData: Record<
           "team": "NYG",
           "position": "RB",
           "positionRank": 62,
-          "rank": 226,
+          "rank": 227,
           "value": 0
         },
         {
@@ -30086,7 +30149,7 @@ export const fantasyVorpData: Record<
           "team": "NYG",
           "position": "RB",
           "positionRank": 63,
-          "rank": 227,
+          "rank": 228,
           "value": 0
         },
         {
@@ -30095,7 +30158,7 @@ export const fantasyVorpData: Record<
           "team": "IND",
           "position": "QB",
           "positionRank": 20,
-          "rank": 228,
+          "rank": 229,
           "value": 0
         },
         {
@@ -30104,7 +30167,7 @@ export const fantasyVorpData: Record<
           "team": "GB",
           "position": "RB",
           "positionRank": 64,
-          "rank": 229,
+          "rank": 230,
           "value": 0
         },
         {
@@ -30113,7 +30176,7 @@ export const fantasyVorpData: Record<
           "team": "SF",
           "position": "RB",
           "positionRank": 65,
-          "rank": 230,
+          "rank": 231,
           "value": 0
         },
         {
@@ -30121,8 +30184,8 @@ export const fantasyVorpData: Record<
           "name": "Chad Ryland",
           "team": "ARI",
           "position": "K",
-          "positionRank": 27,
-          "rank": 231,
+          "positionRank": 28,
+          "rank": 232,
           "value": 0
         },
         {
@@ -30131,7 +30194,7 @@ export const fantasyVorpData: Record<
           "team": "PIT",
           "position": "TE",
           "positionRank": 21,
-          "rank": 232,
+          "rank": 233,
           "value": 0
         },
         {
@@ -30140,7 +30203,7 @@ export const fantasyVorpData: Record<
           "team": "GB",
           "position": "QB",
           "positionRank": 21,
-          "rank": 233,
+          "rank": 234,
           "value": 0
         },
         {
@@ -30149,15 +30212,6 @@ export const fantasyVorpData: Record<
           "team": "MIA",
           "position": "QB",
           "positionRank": 22,
-          "rank": 234,
-          "value": 0
-        },
-        {
-          "playerId": "fp-25533",
-          "name": "Blake Grupe",
-          "team": "NYJ",
-          "position": "K",
-          "positionRank": 28,
           "rank": 235,
           "value": 0
         },
@@ -30306,12 +30360,21 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
+          "playerId": "fp-24354",
+          "name": "Dontayvion Wicks",
+          "team": "PHI",
+          "position": "WR",
+          "positionRank": 73,
+          "rank": 252,
+          "value": 0
+        },
+        {
           "playerId": "fp-25418",
           "name": "Antonio Williams",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 73,
-          "rank": 252,
+          "positionRank": 74,
+          "rank": 253,
           "value": 0
         },
         {
@@ -30320,7 +30383,7 @@ export const fantasyVorpData: Record<
           "team": "HOU",
           "position": "QB",
           "positionRank": 24,
-          "rank": 253,
+          "rank": 254,
           "value": 0
         },
         {
@@ -30328,8 +30391,8 @@ export const fantasyVorpData: Record<
           "name": "Germie Bernard",
           "team": "PIT",
           "position": "WR",
-          "positionRank": 74,
-          "rank": 254,
+          "positionRank": 75,
+          "rank": 255,
           "value": 0
         },
         {
@@ -30337,8 +30400,8 @@ export const fantasyVorpData: Record<
           "name": "Chris Bell",
           "team": "MIA",
           "position": "WR",
-          "positionRank": 75,
-          "rank": 255,
+          "positionRank": 76,
+          "rank": 256,
           "value": 0
         },
         {
@@ -30346,8 +30409,8 @@ export const fantasyVorpData: Record<
           "name": "Tyquan Thornton",
           "team": "KC",
           "position": "WR",
-          "positionRank": 76,
-          "rank": 256,
+          "positionRank": 77,
+          "rank": 257,
           "value": 0
         },
         {
@@ -30356,7 +30419,7 @@ export const fantasyVorpData: Record<
           "team": "CIN",
           "position": "TE",
           "positionRank": 29,
-          "rank": 257,
+          "rank": 258,
           "value": 0
         },
         {
@@ -30364,8 +30427,8 @@ export const fantasyVorpData: Record<
           "name": "Malik Washington",
           "team": "MIA",
           "position": "WR",
-          "positionRank": 77,
-          "rank": 258,
+          "positionRank": 78,
+          "rank": 259,
           "value": 0
         },
         {
@@ -30374,7 +30437,7 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "RB",
           "positionRank": 66,
-          "rank": 259,
+          "rank": 260,
           "value": 0
         },
         {
@@ -30382,8 +30445,8 @@ export const fantasyVorpData: Record<
           "name": "Caleb Douglas",
           "team": "MIA",
           "position": "WR",
-          "positionRank": 78,
-          "rank": 260,
+          "positionRank": 79,
+          "rank": 261,
           "value": 0
         },
         {
@@ -30391,8 +30454,8 @@ export const fantasyVorpData: Record<
           "name": "Omar Cooper Jr.",
           "team": "NYJ",
           "position": "WR",
-          "positionRank": 79,
-          "rank": 261,
+          "positionRank": 80,
+          "rank": 262,
           "value": 0
         },
         {
@@ -30401,7 +30464,7 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "TE",
           "positionRank": 30,
-          "rank": 262,
+          "rank": 263,
           "value": 0
         },
         {
@@ -30409,8 +30472,8 @@ export const fantasyVorpData: Record<
           "name": "Travis Hunter",
           "team": "JAC",
           "position": "WR",
-          "positionRank": 80,
-          "rank": 263,
+          "positionRank": 81,
+          "rank": 264,
           "value": 0
         },
         {
@@ -30418,23 +30481,14 @@ export const fantasyVorpData: Record<
           "name": "Tory Horton",
           "team": "SEA",
           "position": "WR",
-          "positionRank": 81,
-          "rank": 264,
+          "positionRank": 82,
+          "rank": 265,
           "value": 0
         },
         {
           "playerId": "fp-25332",
           "name": "Xavier Hutchinson",
           "team": "HOU",
-          "position": "WR",
-          "positionRank": 82,
-          "rank": 265,
-          "value": 0
-        },
-        {
-          "playerId": "fp-24354",
-          "name": "Dontayvion Wicks",
-          "team": "PHI",
           "position": "WR",
           "positionRank": 83,
           "rank": 266,
@@ -30873,12 +30927,21 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
+          "playerId": "fp-25654",
+          "name": "Emari Demercado",
+          "team": "DAL",
+          "position": "RB",
+          "positionRank": 81,
+          "rank": 315,
+          "value": 0
+        },
+        {
           "playerId": "fp-15623",
           "name": "Tyler Higbee",
           "team": "LAR",
           "position": "TE",
           "positionRank": 39,
-          "rank": 315,
+          "rank": 316,
           "value": 0
         },
         {
@@ -30887,7 +30950,7 @@ export const fantasyVorpData: Record<
           "team": "DEN",
           "position": "WR",
           "positionRank": 108,
-          "rank": 316,
+          "rank": 317,
           "value": 0
         },
         {
@@ -30896,7 +30959,7 @@ export const fantasyVorpData: Record<
           "team": "PIT",
           "position": "TE",
           "positionRank": 40,
-          "rank": 317,
+          "rank": 318,
           "value": 0
         },
         {
@@ -30905,7 +30968,16 @@ export const fantasyVorpData: Record<
           "team": "NYG",
           "position": "WR",
           "positionRank": 109,
-          "rank": 318,
+          "rank": 319,
+          "value": 0
+        },
+        {
+          "playerId": "fp-28132",
+          "name": "Zavion Thomas",
+          "team": "CHI",
+          "position": "WR",
+          "positionRank": 110,
+          "rank": 320,
           "value": 0
         },
         {
@@ -30913,8 +30985,8 @@ export const fantasyVorpData: Record<
           "name": "Ray Davis",
           "team": "BUF",
           "position": "RB",
-          "positionRank": 81,
-          "rank": 319,
+          "positionRank": 82,
+          "rank": 321,
           "value": 0
         },
         {
@@ -30922,8 +30994,8 @@ export const fantasyVorpData: Record<
           "name": "Corey Kiner",
           "team": "NE",
           "position": "RB",
-          "positionRank": 82,
-          "rank": 320,
+          "positionRank": 83,
+          "rank": 322,
           "value": 0
         },
         {
@@ -30932,7 +31004,7 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "QB",
           "positionRank": 26,
-          "rank": 321,
+          "rank": 323,
           "value": 0
         },
         {
@@ -30940,8 +31012,8 @@ export const fantasyVorpData: Record<
           "name": "Ollie Gordon II",
           "team": "MIA",
           "position": "RB",
-          "positionRank": 83,
-          "rank": 322,
+          "positionRank": 84,
+          "rank": 324,
           "value": 0
         },
         {
@@ -30950,7 +31022,7 @@ export const fantasyVorpData: Record<
           "team": "CIN",
           "position": "TE",
           "positionRank": 41,
-          "rank": 323,
+          "rank": 325,
           "value": 0
         },
         {
@@ -30959,7 +31031,7 @@ export const fantasyVorpData: Record<
           "team": "CHI",
           "position": "TE",
           "positionRank": 42,
-          "rank": 324,
+          "rank": 326,
           "value": 0
         },
         {
@@ -30967,8 +31039,8 @@ export const fantasyVorpData: Record<
           "name": "Kevin Coleman Jr.",
           "team": "MIA",
           "position": "WR",
-          "positionRank": 110,
-          "rank": 325,
+          "positionRank": 111,
+          "rank": 327,
           "value": 0
         },
         {
@@ -30976,8 +31048,8 @@ export const fantasyVorpData: Record<
           "name": "Jahdae Walker",
           "team": "CHI",
           "position": "WR",
-          "positionRank": 111,
-          "rank": 326,
+          "positionRank": 112,
+          "rank": 328,
           "value": 0
         },
         {
@@ -30985,8 +31057,8 @@ export const fantasyVorpData: Record<
           "name": "Kendre Miller",
           "team": "NO",
           "position": "RB",
-          "positionRank": 84,
-          "rank": 327,
+          "positionRank": 85,
+          "rank": 329,
           "value": 0
         },
         {
@@ -30994,17 +31066,8 @@ export const fantasyVorpData: Record<
           "name": "Audric Estime",
           "team": "NO",
           "position": "RB",
-          "positionRank": 85,
-          "rank": 328,
-          "value": 0
-        },
-        {
-          "playerId": "fp-17533",
-          "name": "Jason Sanders",
-          "team": "FA",
-          "position": "K",
-          "positionRank": 33,
-          "rank": 329,
+          "positionRank": 86,
+          "rank": 330,
           "value": 0
         },
         {
@@ -31012,8 +31075,8 @@ export const fantasyVorpData: Record<
           "name": "Demarcus Robinson",
           "team": "SF",
           "position": "WR",
-          "positionRank": 112,
-          "rank": 330,
+          "positionRank": 113,
+          "rank": 331,
           "value": 0
         },
         {
@@ -31021,8 +31084,8 @@ export const fantasyVorpData: Record<
           "name": "Jacob Saylors",
           "team": "DET",
           "position": "RB",
-          "positionRank": 86,
-          "rank": 331,
+          "positionRank": 87,
+          "rank": 332,
           "value": 0
         },
         {
@@ -31030,8 +31093,8 @@ export const fantasyVorpData: Record<
           "name": "Eli Heidenreich",
           "team": "PIT",
           "position": "RB",
-          "positionRank": 87,
-          "rank": 332,
+          "positionRank": 88,
+          "rank": 333,
           "value": 0
         },
         {
@@ -31040,7 +31103,7 @@ export const fantasyVorpData: Record<
           "team": "TEN",
           "position": "QB",
           "positionRank": 27,
-          "rank": 333,
+          "rank": 334,
           "value": 0
         },
         {
@@ -31048,8 +31111,8 @@ export const fantasyVorpData: Record<
           "name": "Jack Bech",
           "team": "LV",
           "position": "WR",
-          "positionRank": 113,
-          "rank": 334,
+          "positionRank": 114,
+          "rank": 335,
           "value": 0
         },
         {
@@ -31057,8 +31120,8 @@ export const fantasyVorpData: Record<
           "name": "Ameer Abdullah",
           "team": "JAC",
           "position": "RB",
-          "positionRank": 88,
-          "rank": 335,
+          "positionRank": 89,
+          "rank": 336,
           "value": 0
         },
         {
@@ -31067,7 +31130,7 @@ export const fantasyVorpData: Record<
           "team": "ARI",
           "position": "QB",
           "positionRank": 28,
-          "rank": 336,
+          "rank": 337,
           "value": 0
         },
         {
@@ -31075,8 +31138,8 @@ export const fantasyVorpData: Record<
           "name": "Kaytron Allen",
           "team": "WAS",
           "position": "RB",
-          "positionRank": 89,
-          "rank": 337,
+          "positionRank": 90,
+          "rank": 338,
           "value": 0
         },
         {
@@ -31084,8 +31147,8 @@ export const fantasyVorpData: Record<
           "name": "Raheim Sanders",
           "team": "CLE",
           "position": "RB",
-          "positionRank": 90,
-          "rank": 338,
+          "positionRank": 91,
+          "rank": 339,
           "value": 0
         },
         {
@@ -31093,8 +31156,8 @@ export const fantasyVorpData: Record<
           "name": "Tahj Brooks",
           "team": "CIN",
           "position": "RB",
-          "positionRank": 91,
-          "rank": 339,
+          "positionRank": 92,
+          "rank": 340,
           "value": 0
         },
         {
@@ -31102,16 +31165,7 @@ export const fantasyVorpData: Record<
           "name": "Luke McCaffrey",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 114,
-          "rank": 340,
-          "value": 0
-        },
-        {
-          "playerId": "fp-16445",
-          "name": "Jeremy McNichols",
-          "team": "WAS",
-          "position": "RB",
-          "positionRank": 92,
+          "positionRank": 115,
           "rank": 341,
           "value": 0
         },
@@ -31138,7 +31192,7 @@ export const fantasyVorpData: Record<
           "name": "Tank Dell",
           "team": "HOU",
           "position": "WR",
-          "positionRank": 115,
+          "positionRank": 116,
           "rank": 344,
           "value": 0
         },
@@ -31147,7 +31201,7 @@ export const fantasyVorpData: Record<
           "name": "Mack Hollins",
           "team": "NE",
           "position": "WR",
-          "positionRank": 116,
+          "positionRank": 117,
           "rank": 345,
           "value": 0
         },
@@ -31210,7 +31264,7 @@ export const fantasyVorpData: Record<
           "name": "Kyle Williams",
           "team": "NE",
           "position": "WR",
-          "positionRank": 117,
+          "positionRank": 118,
           "rank": 352,
           "value": 0
         },
@@ -31228,7 +31282,7 @@ export const fantasyVorpData: Record<
           "name": "Cyrus Allen",
           "team": "KC",
           "position": "WR",
-          "positionRank": 118,
+          "positionRank": 119,
           "rank": 354,
           "value": 0
         },
@@ -31237,7 +31291,7 @@ export const fantasyVorpData: Record<
           "name": "Christian Kirk",
           "team": "SF",
           "position": "WR",
-          "positionRank": 119,
+          "positionRank": 120,
           "rank": 355,
           "value": 0
         },
@@ -31289,9 +31343,9 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27222",
           "name": "Theo Wease Jr.",
-          "team": "FA",
+          "team": "LAC",
           "position": "WR",
-          "positionRank": 120,
+          "positionRank": 121,
           "rank": 361,
           "value": 0
         },
@@ -31300,7 +31354,7 @@ export const fantasyVorpData: Record<
           "name": "Dyami Brown",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 121,
+          "positionRank": 122,
           "rank": 362,
           "value": 0
         },
@@ -31318,7 +31372,7 @@ export const fantasyVorpData: Record<
           "name": "Treylon Burks",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 122,
+          "positionRank": 123,
           "rank": 364,
           "value": 0
         },
@@ -31399,7 +31453,7 @@ export const fantasyVorpData: Record<
           "name": "Ben Sauls",
           "team": "FA",
           "position": "K",
-          "positionRank": 34,
+          "positionRank": 33,
           "rank": 373,
           "value": 0
         },
@@ -31426,7 +31480,7 @@ export const fantasyVorpData: Record<
           "name": "Savion Williams",
           "team": "GB",
           "position": "WR",
-          "positionRank": 123,
+          "positionRank": 124,
           "rank": 376,
           "value": 0
         },
@@ -31435,7 +31489,7 @@ export const fantasyVorpData: Record<
           "name": "Kendrick Bourne",
           "team": "ARI",
           "position": "WR",
-          "positionRank": 124,
+          "positionRank": 125,
           "rank": 377,
           "value": 0
         },
@@ -31444,7 +31498,7 @@ export const fantasyVorpData: Record<
           "name": "Kalif Raymond",
           "team": "CHI",
           "position": "WR",
-          "positionRank": 125,
+          "positionRank": 126,
           "rank": 378,
           "value": 0
         },
@@ -31543,7 +31597,7 @@ export const fantasyVorpData: Record<
           "name": "Isaiah Bond",
           "team": "CLE",
           "position": "WR",
-          "positionRank": 126,
+          "positionRank": 127,
           "rank": 389,
           "value": 0
         },
@@ -31557,21 +31611,12 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-28132",
-          "name": "Zavion Thomas",
-          "team": "CHI",
-          "position": "WR",
-          "positionRank": 127,
-          "rank": 391,
-          "value": 0
-        },
-        {
           "playerId": "fp-28126",
           "name": "Skyler Bell",
           "team": "BUF",
           "position": "WR",
           "positionRank": 128,
-          "rank": 392,
+          "rank": 391,
           "value": 0
         },
         {
@@ -31580,7 +31625,7 @@ export const fantasyVorpData: Record<
           "team": "NYG",
           "position": "RB",
           "positionRank": 109,
-          "rank": 393,
+          "rank": 392,
           "value": 0
         },
         {
@@ -31589,7 +31634,7 @@ export const fantasyVorpData: Record<
           "team": "JAC",
           "position": "TE",
           "positionRank": 62,
-          "rank": 394,
+          "rank": 393,
           "value": 0
         },
         {
@@ -31598,7 +31643,7 @@ export const fantasyVorpData: Record<
           "team": "SF",
           "position": "TE",
           "positionRank": 63,
-          "rank": 395,
+          "rank": 394,
           "value": 0
         },
         {
@@ -31607,7 +31652,7 @@ export const fantasyVorpData: Record<
           "team": "LV",
           "position": "TE",
           "positionRank": 64,
-          "rank": 396,
+          "rank": 395,
           "value": 0
         },
         {
@@ -31616,7 +31661,7 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "TE",
           "positionRank": 65,
-          "rank": 397,
+          "rank": 396,
           "value": 0
         },
         {
@@ -31625,7 +31670,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "WR",
           "positionRank": 129,
-          "rank": 398,
+          "rank": 397,
           "value": 0
         },
         {
@@ -31634,7 +31679,7 @@ export const fantasyVorpData: Record<
           "team": "HOU",
           "position": "RB",
           "positionRank": 110,
-          "rank": 399,
+          "rank": 398,
           "value": 0
         },
         {
@@ -31643,16 +31688,7 @@ export const fantasyVorpData: Record<
           "team": "CIN",
           "position": "TE",
           "positionRank": 66,
-          "rank": 400,
-          "value": 0
-        },
-        {
-          "playerId": "fp-25349",
-          "name": "Ben Sims",
-          "team": "MIA",
-          "position": "TE",
-          "positionRank": 67,
-          "rank": 401,
+          "rank": 399,
           "value": 0
         },
         {
@@ -31660,8 +31696,8 @@ export const fantasyVorpData: Record<
           "name": "Jackson Hawes",
           "team": "BUF",
           "position": "TE",
-          "positionRank": 68,
-          "rank": 402,
+          "positionRank": 67,
+          "rank": 400,
           "value": 0
         },
         {
@@ -31669,8 +31705,8 @@ export const fantasyVorpData: Record<
           "name": "Nate Adkins",
           "team": "DEN",
           "position": "TE",
-          "positionRank": 69,
-          "rank": 403,
+          "positionRank": 68,
+          "rank": 401,
           "value": 0
         },
         {
@@ -31678,8 +31714,8 @@ export const fantasyVorpData: Record<
           "name": "Ben Sinnott",
           "team": "WAS",
           "position": "TE",
-          "positionRank": 70,
-          "rank": 404,
+          "positionRank": 69,
+          "rank": 402,
           "value": 0
         },
         {
@@ -31688,7 +31724,7 @@ export const fantasyVorpData: Record<
           "team": "CIN",
           "position": "WR",
           "positionRank": 130,
-          "rank": 405,
+          "rank": 403,
           "value": 0
         },
         {
@@ -31697,7 +31733,7 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "WR",
           "positionRank": 131,
-          "rank": 406,
+          "rank": 404,
           "value": 0
         },
         {
@@ -31706,7 +31742,7 @@ export const fantasyVorpData: Record<
           "team": "ATL",
           "position": "WR",
           "positionRank": 132,
-          "rank": 407,
+          "rank": 405,
           "value": 0
         },
         {
@@ -31714,8 +31750,8 @@ export const fantasyVorpData: Record<
           "name": "Jack Endries",
           "team": "CIN",
           "position": "TE",
-          "positionRank": 71,
-          "rank": 408,
+          "positionRank": 70,
+          "rank": 406,
           "value": 0
         },
         {
@@ -31723,8 +31759,8 @@ export const fantasyVorpData: Record<
           "name": "Foster Moreau",
           "team": "HOU",
           "position": "TE",
-          "positionRank": 72,
-          "rank": 409,
+          "positionRank": 71,
+          "rank": 407,
           "value": 0
         },
         {
@@ -31732,8 +31768,8 @@ export const fantasyVorpData: Record<
           "name": "Cade Stover",
           "team": "HOU",
           "position": "TE",
-          "positionRank": 73,
-          "rank": 410,
+          "positionRank": 72,
+          "rank": 408,
           "value": 0
         },
         {
@@ -31741,8 +31777,8 @@ export const fantasyVorpData: Record<
           "name": "Luke Schoonmaker",
           "team": "DAL",
           "position": "TE",
-          "positionRank": 74,
-          "rank": 411,
+          "positionRank": 73,
+          "rank": 409,
           "value": 0
         },
         {
@@ -31751,7 +31787,7 @@ export const fantasyVorpData: Record<
           "team": "PIT",
           "position": "WR",
           "positionRank": 133,
-          "rank": 412,
+          "rank": 410,
           "value": 0
         },
         {
@@ -31760,7 +31796,7 @@ export const fantasyVorpData: Record<
           "team": "BAL",
           "position": "WR",
           "positionRank": 134,
-          "rank": 413,
+          "rank": 411,
           "value": 0
         },
         {
@@ -31769,7 +31805,7 @@ export const fantasyVorpData: Record<
           "team": "WAS",
           "position": "WR",
           "positionRank": 135,
-          "rank": 414,
+          "rank": 412,
           "value": 0
         },
         {
@@ -31777,8 +31813,8 @@ export const fantasyVorpData: Record<
           "name": "Bauer Sharp",
           "team": "TB",
           "position": "TE",
-          "positionRank": 75,
-          "rank": 415,
+          "positionRank": 74,
+          "rank": 413,
           "value": 0
         },
         {
@@ -31786,8 +31822,8 @@ export const fantasyVorpData: Record<
           "name": "Luke Musgrave",
           "team": "GB",
           "position": "TE",
-          "positionRank": 76,
-          "rank": 416,
+          "positionRank": 75,
+          "rank": 414,
           "value": 0
         },
         {
@@ -31795,8 +31831,8 @@ export const fantasyVorpData: Record<
           "name": "Mo Alie-Cox",
           "team": "IND",
           "position": "TE",
-          "positionRank": 77,
-          "rank": 417,
+          "positionRank": 76,
+          "rank": 415,
           "value": 0
         },
         {
@@ -31805,7 +31841,7 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "WR",
           "positionRank": 136,
-          "rank": 418,
+          "rank": 416,
           "value": 0
         },
         {
@@ -31813,8 +31849,8 @@ export const fantasyVorpData: Record<
           "name": "Dallen Bentley",
           "team": "DEN",
           "position": "TE",
-          "positionRank": 78,
-          "rank": 419,
+          "positionRank": 77,
+          "rank": 417,
           "value": 0
         },
         {
@@ -31822,8 +31858,17 @@ export const fantasyVorpData: Record<
           "name": "Thomas Fidone II",
           "team": "NYG",
           "position": "TE",
+          "positionRank": 78,
+          "rank": 418,
+          "value": 0
+        },
+        {
+          "playerId": "fp-23821",
+          "name": "Will Mallory",
+          "team": "IND",
+          "position": "TE",
           "positionRank": 79,
-          "rank": 420,
+          "rank": 419,
           "value": 0
         },
         {
@@ -31832,7 +31877,7 @@ export const fantasyVorpData: Record<
           "team": "KC",
           "position": "TE",
           "positionRank": 80,
-          "rank": 421,
+          "rank": 420,
           "value": 0
         },
         {
@@ -31841,7 +31886,7 @@ export const fantasyVorpData: Record<
           "team": "NYG",
           "position": "WR",
           "positionRank": 137,
-          "rank": 422,
+          "rank": 421,
           "value": 0
         },
         {
@@ -31850,7 +31895,7 @@ export const fantasyVorpData: Record<
           "team": "TB",
           "position": "WR",
           "positionRank": 138,
-          "rank": 423,
+          "rank": 422,
           "value": 0
         },
         {
@@ -31859,7 +31904,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "WR",
           "positionRank": 139,
-          "rank": 424,
+          "rank": 423,
           "value": 0
         },
         {
@@ -31868,7 +31913,7 @@ export const fantasyVorpData: Record<
           "team": "ATL",
           "position": "TE",
           "positionRank": 81,
-          "rank": 425,
+          "rank": 424,
           "value": 0
         },
         {
@@ -31877,7 +31922,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "WR",
           "positionRank": 140,
-          "rank": 426,
+          "rank": 425,
           "value": 0
         },
         {
@@ -31886,7 +31931,7 @@ export const fantasyVorpData: Record<
           "team": "TEN",
           "position": "TE",
           "positionRank": 82,
-          "rank": 427,
+          "rank": 426,
           "value": 0
         },
         {
@@ -31895,7 +31940,7 @@ export const fantasyVorpData: Record<
           "team": "NO",
           "position": "TE",
           "positionRank": 83,
-          "rank": 428,
+          "rank": 427,
           "value": 0
         },
         {
@@ -31904,7 +31949,7 @@ export const fantasyVorpData: Record<
           "team": "BAL",
           "position": "TE",
           "positionRank": 84,
-          "rank": 429,
+          "rank": 428,
           "value": 0
         },
         {
@@ -31913,7 +31958,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "WR",
           "positionRank": 141,
-          "rank": 430,
+          "rank": 429,
           "value": 0
         },
         {
@@ -31922,7 +31967,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "TE",
           "positionRank": 85,
-          "rank": 431,
+          "rank": 430,
           "value": 0
         },
         {
@@ -31931,7 +31976,7 @@ export const fantasyVorpData: Record<
           "team": "TB",
           "position": "TE",
           "positionRank": 86,
-          "rank": 432,
+          "rank": 431,
           "value": 0
         },
         {
@@ -31940,7 +31985,7 @@ export const fantasyVorpData: Record<
           "team": "NO",
           "position": "WR",
           "positionRank": 142,
-          "rank": 433,
+          "rank": 432,
           "value": 0
         },
         {
@@ -31949,7 +31994,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "TE",
           "positionRank": 87,
-          "rank": 434,
+          "rank": 433,
           "value": 0
         },
         {
@@ -31958,7 +32003,7 @@ export const fantasyVorpData: Record<
           "team": "PHI",
           "position": "TE",
           "positionRank": 88,
-          "rank": 435,
+          "rank": 434,
           "value": 0
         },
         {
@@ -31967,7 +32012,7 @@ export const fantasyVorpData: Record<
           "team": "MIA",
           "position": "TE",
           "positionRank": 89,
-          "rank": 436,
+          "rank": 435,
           "value": 0
         },
         {
@@ -31976,7 +32021,7 @@ export const fantasyVorpData: Record<
           "team": "KC",
           "position": "WR",
           "positionRank": 143,
-          "rank": 437,
+          "rank": 436,
           "value": 0
         },
         {
@@ -31985,7 +32030,7 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "WR",
           "positionRank": 144,
-          "rank": 438,
+          "rank": 437,
           "value": 0
         },
         {
@@ -31994,7 +32039,7 @@ export const fantasyVorpData: Record<
           "team": "GB",
           "position": "WR",
           "positionRank": 145,
-          "rank": 439,
+          "rank": 438,
           "value": 0
         },
         {
@@ -32003,7 +32048,7 @@ export const fantasyVorpData: Record<
           "team": "JAC",
           "position": "TE",
           "positionRank": 90,
-          "rank": 440,
+          "rank": 439,
           "value": 0
         },
         {
@@ -32012,7 +32057,7 @@ export const fantasyVorpData: Record<
           "team": "DAL",
           "position": "TE",
           "positionRank": 91,
-          "rank": 441,
+          "rank": 440,
           "value": 0
         },
         {
@@ -32021,7 +32066,7 @@ export const fantasyVorpData: Record<
           "team": "CHI",
           "position": "TE",
           "positionRank": 92,
-          "rank": 442,
+          "rank": 441,
           "value": 0
         },
         {
@@ -32030,7 +32075,7 @@ export const fantasyVorpData: Record<
           "team": "IND",
           "position": "WR",
           "positionRank": 146,
-          "rank": 443,
+          "rank": 442,
           "value": 0
         },
         {
@@ -32039,7 +32084,7 @@ export const fantasyVorpData: Record<
           "team": "DET",
           "position": "WR",
           "positionRank": 147,
-          "rank": 444,
+          "rank": 443,
           "value": 0
         },
         {
@@ -32048,7 +32093,7 @@ export const fantasyVorpData: Record<
           "team": "CLE",
           "position": "WR",
           "positionRank": 148,
-          "rank": 445,
+          "rank": 444,
           "value": 0
         },
         {
@@ -32057,7 +32102,7 @@ export const fantasyVorpData: Record<
           "team": "BAL",
           "position": "TE",
           "positionRank": 93,
-          "rank": 446,
+          "rank": 445,
           "value": 0
         },
         {
@@ -32066,7 +32111,7 @@ export const fantasyVorpData: Record<
           "team": "GB",
           "position": "TE",
           "positionRank": 94,
-          "rank": 447,
+          "rank": 446,
           "value": 0
         },
         {
@@ -32075,7 +32120,7 @@ export const fantasyVorpData: Record<
           "team": "TB",
           "position": "TE",
           "positionRank": 95,
-          "rank": 448,
+          "rank": 447,
           "value": 0
         },
         {
@@ -32084,7 +32129,7 @@ export const fantasyVorpData: Record<
           "team": "ARI",
           "position": "TE",
           "positionRank": 96,
-          "rank": 449,
+          "rank": 448,
           "value": 0
         },
         {
@@ -32093,7 +32138,7 @@ export const fantasyVorpData: Record<
           "team": "LV",
           "position": "TE",
           "positionRank": 97,
-          "rank": 450,
+          "rank": 449,
           "value": 0
         },
         {
@@ -32102,7 +32147,7 @@ export const fantasyVorpData: Record<
           "team": "IND",
           "position": "TE",
           "positionRank": 98,
-          "rank": 451,
+          "rank": 450,
           "value": 0
         },
         {
@@ -32111,7 +32156,7 @@ export const fantasyVorpData: Record<
           "team": "NYG",
           "position": "TE",
           "positionRank": 99,
-          "rank": 452,
+          "rank": 451,
           "value": 0
         },
         {
@@ -32120,7 +32165,7 @@ export const fantasyVorpData: Record<
           "team": "CLE",
           "position": "TE",
           "positionRank": 100,
-          "rank": 453,
+          "rank": 452,
           "value": 0
         },
         {
@@ -32129,16 +32174,16 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "WR",
           "positionRank": 149,
-          "rank": 454,
+          "rank": 453,
           "value": 0
         },
         {
-          "playerId": "fp-17826",
-          "name": "Tanner Hudson",
-          "team": "CIN",
+          "playerId": "fp-28079",
+          "name": "Justin Joly",
+          "team": "FA",
           "position": "TE",
           "positionRank": 101,
-          "rank": 455,
+          "rank": 454,
           "value": 0
         },
         {
@@ -32147,7 +32192,7 @@ export const fantasyVorpData: Record<
           "team": "CIN",
           "position": "WR",
           "positionRank": 150,
-          "rank": 456,
+          "rank": 455,
           "value": 0
         },
         {
@@ -32156,7 +32201,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "WR",
           "positionRank": 151,
-          "rank": 457,
+          "rank": 456,
           "value": 0
         },
         {
@@ -32165,7 +32210,7 @@ export const fantasyVorpData: Record<
           "team": "NE",
           "position": "WR",
           "positionRank": 152,
-          "rank": 458,
+          "rank": 457,
           "value": 0
         },
         {
@@ -32174,6 +32219,15 @@ export const fantasyVorpData: Record<
           "team": "SF",
           "position": "WR",
           "positionRank": 153,
+          "rank": 458,
+          "value": 0
+        },
+        {
+          "playerId": "fp-17533",
+          "name": "Jason Sanders",
+          "team": "FA",
+          "position": "K",
+          "positionRank": 34,
           "rank": 459,
           "value": 0
         },
@@ -32664,18 +32718,18 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-25967",
-          "name": "Joe Milton III",
-          "team": "DAL",
+          "playerId": "fp-23066",
+          "name": "Kyle McCord",
+          "team": "MIA",
           "position": "QB",
           "positionRank": 69,
           "rank": 514,
           "value": 0
         },
         {
-          "playerId": "fp-23066",
-          "name": "Kyle McCord",
-          "team": "MIA",
+          "playerId": "fp-25967",
+          "name": "Joe Milton III",
+          "team": "FA",
           "position": "QB",
           "positionRank": 70,
           "rank": 515,
@@ -32707,13 +32761,22 @@ export const fantasyVorpData: Record<
           "positionRank": 73,
           "rank": 518,
           "value": 0
+        },
+        {
+          "playerId": "fp-27161",
+          "name": "Brady Cook",
+          "team": "FA",
+          "position": "QB",
+          "positionRank": 74,
+          "rank": 519,
+          "value": 0
         }
       ]
     },
     "12": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-      "accessedAt": "2026-09-01T19:46:06.694Z",
+      "accessedAt": "2026-09-02T19:38:59.120Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -33085,22 +33148,22 @@ export const fantasyVorpData: Record<
           "value": 76
         },
         {
-          "playerId": "fp-20130",
-          "name": "Nico Collins",
-          "team": "HOU",
+          "playerId": "fp-20111",
+          "name": "Chris Olave",
+          "team": "NO",
           "position": "WR",
           "positionRank": 11,
           "rank": 42,
           "value": 75
         },
         {
-          "playerId": "fp-20111",
-          "name": "Chris Olave",
-          "team": "NO",
+          "playerId": "fp-20130",
+          "name": "Nico Collins",
+          "team": "HOU",
           "position": "WR",
           "positionRank": 12,
           "rank": 43,
-          "value": 73
+          "value": 75
         },
         {
           "playerId": "fp-19792",
@@ -34831,12 +34894,21 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
+          "playerId": "fp-25533",
+          "name": "Blake Grupe",
+          "team": "NYJ",
+          "position": "K",
+          "positionRank": 25,
+          "rank": 236,
+          "value": 0
+        },
+        {
           "playerId": "fp-8040",
           "name": "Carolina Panthers",
           "team": "CAR",
           "position": "DST",
           "positionRank": 31,
-          "rank": 236,
+          "rank": 237,
           "value": 0
         },
         {
@@ -34845,7 +34917,7 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "DST",
           "positionRank": 32,
-          "rank": 237,
+          "rank": 238,
           "value": 0
         },
         {
@@ -34854,7 +34926,7 @@ export const fantasyVorpData: Record<
           "team": "TB",
           "position": "TE",
           "positionRank": 26,
-          "rank": 238,
+          "rank": 239,
           "value": 0
         },
         {
@@ -34862,8 +34934,8 @@ export const fantasyVorpData: Record<
           "name": "Riley Patterson",
           "team": "MIA",
           "position": "K",
-          "positionRank": 25,
-          "rank": 239,
+          "positionRank": 26,
+          "rank": 240,
           "value": 0
         },
         {
@@ -34871,8 +34943,8 @@ export const fantasyVorpData: Record<
           "name": "Joey Slye",
           "team": "TEN",
           "position": "K",
-          "positionRank": 26,
-          "rank": 240,
+          "positionRank": 27,
+          "rank": 241,
           "value": 0
         },
         {
@@ -34881,7 +34953,7 @@ export const fantasyVorpData: Record<
           "team": "HOU",
           "position": "WR",
           "positionRank": 70,
-          "rank": 241,
+          "rank": 242,
           "value": 0
         },
         {
@@ -34890,7 +34962,7 @@ export const fantasyVorpData: Record<
           "team": "WAS",
           "position": "TE",
           "positionRank": 27,
-          "rank": 242,
+          "rank": 243,
           "value": 0
         },
         {
@@ -34899,7 +34971,7 @@ export const fantasyVorpData: Record<
           "team": "SEA",
           "position": "QB",
           "positionRank": 23,
-          "rank": 243,
+          "rank": 244,
           "value": 0
         },
         {
@@ -34908,7 +34980,7 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "WR",
           "positionRank": 71,
-          "rank": 244,
+          "rank": 245,
           "value": 0
         },
         {
@@ -34917,7 +34989,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "TE",
           "positionRank": 28,
-          "rank": 245,
+          "rank": 246,
           "value": 0
         },
         {
@@ -34926,22 +34998,13 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "RB",
           "positionRank": 66,
-          "rank": 246,
+          "rank": 247,
           "value": 0
         },
         {
           "playerId": "fp-25354",
           "name": "Chad Ryland",
           "team": "ARI",
-          "position": "K",
-          "positionRank": 27,
-          "rank": 247,
-          "value": 0
-        },
-        {
-          "playerId": "fp-25533",
-          "name": "Blake Grupe",
-          "team": "NYJ",
           "position": "K",
           "positionRank": 28,
           "rank": 248,
@@ -34984,12 +35047,21 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
+          "playerId": "fp-24354",
+          "name": "Dontayvion Wicks",
+          "team": "PHI",
+          "position": "WR",
+          "positionRank": 73,
+          "rank": 253,
+          "value": 0
+        },
+        {
           "playerId": "fp-25418",
           "name": "Antonio Williams",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 73,
-          "rank": 253,
+          "positionRank": 74,
+          "rank": 254,
           "value": 0
         },
         {
@@ -34998,7 +35070,7 @@ export const fantasyVorpData: Record<
           "team": "CIN",
           "position": "TE",
           "positionRank": 29,
-          "rank": 254,
+          "rank": 255,
           "value": 0
         },
         {
@@ -35007,7 +35079,7 @@ export const fantasyVorpData: Record<
           "team": "SEA",
           "position": "RB",
           "positionRank": 68,
-          "rank": 255,
+          "rank": 256,
           "value": 0
         },
         {
@@ -35016,7 +35088,7 @@ export const fantasyVorpData: Record<
           "team": "KC",
           "position": "RB",
           "positionRank": 69,
-          "rank": 256,
+          "rank": 257,
           "value": 0
         },
         {
@@ -35024,8 +35096,8 @@ export const fantasyVorpData: Record<
           "name": "Germie Bernard",
           "team": "PIT",
           "position": "WR",
-          "positionRank": 74,
-          "rank": 257,
+          "positionRank": 75,
+          "rank": 258,
           "value": 0
         },
         {
@@ -35033,8 +35105,8 @@ export const fantasyVorpData: Record<
           "name": "Chris Bell",
           "team": "MIA",
           "position": "WR",
-          "positionRank": 75,
-          "rank": 258,
+          "positionRank": 76,
+          "rank": 259,
           "value": 0
         },
         {
@@ -35043,7 +35115,7 @@ export const fantasyVorpData: Record<
           "team": "LV",
           "position": "K",
           "positionRank": 30,
-          "rank": 259,
+          "rank": 260,
           "value": 0
         },
         {
@@ -35051,8 +35123,8 @@ export const fantasyVorpData: Record<
           "name": "Tyquan Thornton",
           "team": "KC",
           "position": "WR",
-          "positionRank": 76,
-          "rank": 260,
+          "positionRank": 77,
+          "rank": 261,
           "value": 0
         },
         {
@@ -35061,7 +35133,7 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "TE",
           "positionRank": 30,
-          "rank": 261,
+          "rank": 262,
           "value": 0
         },
         {
@@ -35069,8 +35141,8 @@ export const fantasyVorpData: Record<
           "name": "Malik Washington",
           "team": "MIA",
           "position": "WR",
-          "positionRank": 77,
-          "rank": 262,
+          "positionRank": 78,
+          "rank": 263,
           "value": 0
         },
         {
@@ -35079,7 +35151,7 @@ export const fantasyVorpData: Record<
           "team": "DEN",
           "position": "TE",
           "positionRank": 31,
-          "rank": 263,
+          "rank": 264,
           "value": 0
         },
         {
@@ -35087,8 +35159,8 @@ export const fantasyVorpData: Record<
           "name": "Caleb Douglas",
           "team": "MIA",
           "position": "WR",
-          "positionRank": 78,
-          "rank": 264,
+          "positionRank": 79,
+          "rank": 265,
           "value": 0
         },
         {
@@ -35096,8 +35168,8 @@ export const fantasyVorpData: Record<
           "name": "Omar Cooper Jr.",
           "team": "NYJ",
           "position": "WR",
-          "positionRank": 79,
-          "rank": 265,
+          "positionRank": 80,
+          "rank": 266,
           "value": 0
         },
         {
@@ -35106,7 +35178,7 @@ export const fantasyVorpData: Record<
           "team": "TEN",
           "position": "TE",
           "positionRank": 32,
-          "rank": 266,
+          "rank": 267,
           "value": 0
         },
         {
@@ -35115,7 +35187,7 @@ export const fantasyVorpData: Record<
           "team": "DEN",
           "position": "RB",
           "positionRank": 70,
-          "rank": 267,
+          "rank": 268,
           "value": 0
         },
         {
@@ -35124,7 +35196,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "QB",
           "positionRank": 25,
-          "rank": 268,
+          "rank": 269,
           "value": 0
         },
         {
@@ -35132,8 +35204,8 @@ export const fantasyVorpData: Record<
           "name": "Travis Hunter",
           "team": "JAC",
           "position": "WR",
-          "positionRank": 80,
-          "rank": 269,
+          "positionRank": 81,
+          "rank": 270,
           "value": 0
         },
         {
@@ -35141,23 +35213,14 @@ export const fantasyVorpData: Record<
           "name": "Tory Horton",
           "team": "SEA",
           "position": "WR",
-          "positionRank": 81,
-          "rank": 270,
+          "positionRank": 82,
+          "rank": 271,
           "value": 0
         },
         {
           "playerId": "fp-25332",
           "name": "Xavier Hutchinson",
           "team": "HOU",
-          "position": "WR",
-          "positionRank": 82,
-          "rank": 271,
-          "value": 0
-        },
-        {
-          "playerId": "fp-24354",
-          "name": "Dontayvion Wicks",
-          "team": "PHI",
           "position": "WR",
           "positionRank": 83,
           "rank": 272,
@@ -35461,12 +35524,21 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
+          "playerId": "fp-25654",
+          "name": "Emari Demercado",
+          "team": "DAL",
+          "position": "RB",
+          "positionRank": 81,
+          "rank": 306,
+          "value": 0
+        },
+        {
           "playerId": "fp-26019",
           "name": "Keon Coleman",
           "team": "BUF",
           "position": "WR",
           "positionRank": 101,
-          "rank": 306,
+          "rank": 307,
           "value": 0
         },
         {
@@ -35475,7 +35547,7 @@ export const fantasyVorpData: Record<
           "team": "NYG",
           "position": "TE",
           "positionRank": 38,
-          "rank": 307,
+          "rank": 308,
           "value": 0
         },
         {
@@ -35484,7 +35556,7 @@ export const fantasyVorpData: Record<
           "team": "ATL",
           "position": "WR",
           "positionRank": 102,
-          "rank": 308,
+          "rank": 309,
           "value": 0
         },
         {
@@ -35492,8 +35564,8 @@ export const fantasyVorpData: Record<
           "name": "Ray Davis",
           "team": "BUF",
           "position": "RB",
-          "positionRank": 81,
-          "rank": 309,
+          "positionRank": 82,
+          "rank": 310,
           "value": 0
         },
         {
@@ -35501,8 +35573,8 @@ export const fantasyVorpData: Record<
           "name": "Corey Kiner",
           "team": "NE",
           "position": "RB",
-          "positionRank": 82,
-          "rank": 310,
+          "positionRank": 83,
+          "rank": 311,
           "value": 0
         },
         {
@@ -35510,8 +35582,8 @@ export const fantasyVorpData: Record<
           "name": "Ollie Gordon II",
           "team": "MIA",
           "position": "RB",
-          "positionRank": 83,
-          "rank": 311,
+          "positionRank": 84,
+          "rank": 312,
           "value": 0
         },
         {
@@ -35520,7 +35592,7 @@ export const fantasyVorpData: Record<
           "team": "IND",
           "position": "WR",
           "positionRank": 103,
-          "rank": 312,
+          "rank": 313,
           "value": 0
         },
         {
@@ -35528,8 +35600,8 @@ export const fantasyVorpData: Record<
           "name": "Kendre Miller",
           "team": "NO",
           "position": "RB",
-          "positionRank": 84,
-          "rank": 313,
+          "positionRank": 85,
+          "rank": 314,
           "value": 0
         },
         {
@@ -35537,8 +35609,8 @@ export const fantasyVorpData: Record<
           "name": "Audric Estime",
           "team": "NO",
           "position": "RB",
-          "positionRank": 85,
-          "rank": 314,
+          "positionRank": 86,
+          "rank": 315,
           "value": 0
         },
         {
@@ -35547,7 +35619,7 @@ export const fantasyVorpData: Record<
           "team": "BUF",
           "position": "WR",
           "positionRank": 104,
-          "rank": 315,
+          "rank": 316,
           "value": 0
         },
         {
@@ -35556,7 +35628,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "TE",
           "positionRank": 39,
-          "rank": 316,
+          "rank": 317,
           "value": 0
         },
         {
@@ -35564,8 +35636,8 @@ export const fantasyVorpData: Record<
           "name": "Jacob Saylors",
           "team": "DET",
           "position": "RB",
-          "positionRank": 86,
-          "rank": 317,
+          "positionRank": 87,
+          "rank": 318,
           "value": 0
         },
         {
@@ -35573,8 +35645,8 @@ export const fantasyVorpData: Record<
           "name": "Eli Heidenreich",
           "team": "PIT",
           "position": "RB",
-          "positionRank": 87,
-          "rank": 318,
+          "positionRank": 88,
+          "rank": 319,
           "value": 0
         },
         {
@@ -35583,7 +35655,7 @@ export const fantasyVorpData: Record<
           "team": "DAL",
           "position": "WR",
           "positionRank": 105,
-          "rank": 319,
+          "rank": 320,
           "value": 0
         },
         {
@@ -35592,7 +35664,7 @@ export const fantasyVorpData: Record<
           "team": "PIT",
           "position": "TE",
           "positionRank": 40,
-          "rank": 320,
+          "rank": 321,
           "value": 0
         },
         {
@@ -35600,8 +35672,8 @@ export const fantasyVorpData: Record<
           "name": "Ameer Abdullah",
           "team": "JAC",
           "position": "RB",
-          "positionRank": 88,
-          "rank": 321,
+          "positionRank": 89,
+          "rank": 322,
           "value": 0
         },
         {
@@ -35610,7 +35682,7 @@ export const fantasyVorpData: Record<
           "team": "DEN",
           "position": "WR",
           "positionRank": 106,
-          "rank": 322,
+          "rank": 323,
           "value": 0
         },
         {
@@ -35619,7 +35691,7 @@ export const fantasyVorpData: Record<
           "team": "BAL",
           "position": "WR",
           "positionRank": 107,
-          "rank": 323,
+          "rank": 324,
           "value": 0
         },
         {
@@ -35627,8 +35699,8 @@ export const fantasyVorpData: Record<
           "name": "Kaytron Allen",
           "team": "WAS",
           "position": "RB",
-          "positionRank": 89,
-          "rank": 324,
+          "positionRank": 90,
+          "rank": 325,
           "value": 0
         },
         {
@@ -35636,8 +35708,8 @@ export const fantasyVorpData: Record<
           "name": "Raheim Sanders",
           "team": "CLE",
           "position": "RB",
-          "positionRank": 90,
-          "rank": 325,
+          "positionRank": 91,
+          "rank": 326,
           "value": 0
         },
         {
@@ -35645,8 +35717,8 @@ export const fantasyVorpData: Record<
           "name": "Tahj Brooks",
           "team": "CIN",
           "position": "RB",
-          "positionRank": 91,
-          "rank": 326,
+          "positionRank": 92,
+          "rank": 327,
           "value": 0
         },
         {
@@ -35655,7 +35727,7 @@ export const fantasyVorpData: Record<
           "team": "DEN",
           "position": "WR",
           "positionRank": 108,
-          "rank": 327,
+          "rank": 328,
           "value": 0
         },
         {
@@ -35664,7 +35736,7 @@ export const fantasyVorpData: Record<
           "team": "CIN",
           "position": "TE",
           "positionRank": 41,
-          "rank": 328,
+          "rank": 329,
           "value": 0
         },
         {
@@ -35673,15 +35745,6 @@ export const fantasyVorpData: Record<
           "team": "CHI",
           "position": "TE",
           "positionRank": 42,
-          "rank": 329,
-          "value": 0
-        },
-        {
-          "playerId": "fp-16445",
-          "name": "Jeremy McNichols",
-          "team": "WAS",
-          "position": "RB",
-          "positionRank": 92,
           "rank": 330,
           "value": 0
         },
@@ -35722,12 +35785,21 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
+          "playerId": "fp-28132",
+          "name": "Zavion Thomas",
+          "team": "CHI",
+          "position": "WR",
+          "positionRank": 110,
+          "rank": 335,
+          "value": 0
+        },
+        {
           "playerId": "fp-25941",
           "name": "Hunter Luepke",
           "team": "DAL",
           "position": "RB",
           "positionRank": 95,
-          "rank": 335,
+          "rank": 336,
           "value": 0
         },
         {
@@ -35736,7 +35808,7 @@ export const fantasyVorpData: Record<
           "team": "PHI",
           "position": "RB",
           "positionRank": 96,
-          "rank": 336,
+          "rank": 337,
           "value": 0
         },
         {
@@ -35745,7 +35817,7 @@ export const fantasyVorpData: Record<
           "team": "IND",
           "position": "RB",
           "positionRank": 97,
-          "rank": 337,
+          "rank": 338,
           "value": 0
         },
         {
@@ -35753,8 +35825,8 @@ export const fantasyVorpData: Record<
           "name": "Kevin Coleman Jr.",
           "team": "MIA",
           "position": "WR",
-          "positionRank": 110,
-          "rank": 338,
+          "positionRank": 111,
+          "rank": 339,
           "value": 0
         },
         {
@@ -35762,8 +35834,8 @@ export const fantasyVorpData: Record<
           "name": "Jahdae Walker",
           "team": "CHI",
           "position": "WR",
-          "positionRank": 111,
-          "rank": 339,
+          "positionRank": 112,
+          "rank": 340,
           "value": 0
         },
         {
@@ -35772,7 +35844,7 @@ export const fantasyVorpData: Record<
           "team": "BAL",
           "position": "RB",
           "positionRank": 98,
-          "rank": 340,
+          "rank": 341,
           "value": 0
         },
         {
@@ -35781,7 +35853,7 @@ export const fantasyVorpData: Record<
           "team": "TEN",
           "position": "QB",
           "positionRank": 27,
-          "rank": 341,
+          "rank": 342,
           "value": 0
         },
         {
@@ -35789,8 +35861,8 @@ export const fantasyVorpData: Record<
           "name": "Demarcus Robinson",
           "team": "SF",
           "position": "WR",
-          "positionRank": 112,
-          "rank": 342,
+          "positionRank": 113,
+          "rank": 343,
           "value": 0
         },
         {
@@ -35799,7 +35871,7 @@ export const fantasyVorpData: Record<
           "team": "ARI",
           "position": "QB",
           "positionRank": 28,
-          "rank": 343,
+          "rank": 344,
           "value": 0
         },
         {
@@ -35807,8 +35879,8 @@ export const fantasyVorpData: Record<
           "name": "Jack Bech",
           "team": "LV",
           "position": "WR",
-          "positionRank": 113,
-          "rank": 344,
+          "positionRank": 114,
+          "rank": 345,
           "value": 0
         },
         {
@@ -35817,7 +35889,7 @@ export const fantasyVorpData: Record<
           "team": "MIA",
           "position": "TE",
           "positionRank": 43,
-          "rank": 345,
+          "rank": 346,
           "value": 0
         },
         {
@@ -35826,7 +35898,7 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "TE",
           "positionRank": 44,
-          "rank": 346,
+          "rank": 347,
           "value": 0
         },
         {
@@ -35835,7 +35907,7 @@ export const fantasyVorpData: Record<
           "team": "NO",
           "position": "TE",
           "positionRank": 45,
-          "rank": 347,
+          "rank": 348,
           "value": 0
         },
         {
@@ -35844,7 +35916,7 @@ export const fantasyVorpData: Record<
           "team": "CLE",
           "position": "RB",
           "positionRank": 99,
-          "rank": 348,
+          "rank": 349,
           "value": 0
         },
         {
@@ -35853,7 +35925,7 @@ export const fantasyVorpData: Record<
           "team": "SF",
           "position": "RB",
           "positionRank": 100,
-          "rank": 349,
+          "rank": 350,
           "value": 0
         },
         {
@@ -35862,7 +35934,7 @@ export const fantasyVorpData: Record<
           "team": "NYG",
           "position": "K",
           "positionRank": 32,
-          "rank": 350,
+          "rank": 351,
           "value": 0
         },
         {
@@ -35870,8 +35942,8 @@ export const fantasyVorpData: Record<
           "name": "Luke McCaffrey",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 114,
-          "rank": 351,
+          "positionRank": 115,
+          "rank": 352,
           "value": 0
         },
         {
@@ -35880,7 +35952,7 @@ export const fantasyVorpData: Record<
           "team": "MIN",
           "position": "TE",
           "positionRank": 46,
-          "rank": 352,
+          "rank": 353,
           "value": 0
         },
         {
@@ -35889,7 +35961,7 @@ export const fantasyVorpData: Record<
           "team": "NYG",
           "position": "RB",
           "positionRank": 101,
-          "rank": 353,
+          "rank": 354,
           "value": 0
         },
         {
@@ -35898,7 +35970,7 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "RB",
           "positionRank": 102,
-          "rank": 354,
+          "rank": 355,
           "value": 0
         },
         {
@@ -35906,8 +35978,8 @@ export const fantasyVorpData: Record<
           "name": "Tank Dell",
           "team": "HOU",
           "position": "WR",
-          "positionRank": 115,
-          "rank": 355,
+          "positionRank": 116,
+          "rank": 356,
           "value": 0
         },
         {
@@ -35915,8 +35987,8 @@ export const fantasyVorpData: Record<
           "name": "Mack Hollins",
           "team": "NE",
           "position": "WR",
-          "positionRank": 116,
-          "rank": 356,
+          "positionRank": 117,
+          "rank": 357,
           "value": 0
         },
         {
@@ -35925,7 +35997,7 @@ export const fantasyVorpData: Record<
           "team": "TEN",
           "position": "TE",
           "positionRank": 47,
-          "rank": 357,
+          "rank": 358,
           "value": 0
         },
         {
@@ -35934,7 +36006,7 @@ export const fantasyVorpData: Record<
           "team": "GB",
           "position": "TE",
           "positionRank": 48,
-          "rank": 358,
+          "rank": 359,
           "value": 0
         },
         {
@@ -35943,7 +36015,7 @@ export const fantasyVorpData: Record<
           "team": "DET",
           "position": "TE",
           "positionRank": 49,
-          "rank": 359,
+          "rank": 360,
           "value": 0
         },
         {
@@ -35951,8 +36023,8 @@ export const fantasyVorpData: Record<
           "name": "Kyle Williams",
           "team": "NE",
           "position": "WR",
-          "positionRank": 117,
-          "rank": 360,
+          "positionRank": 118,
+          "rank": 361,
           "value": 0
         },
         {
@@ -35961,7 +36033,7 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "RB",
           "positionRank": 103,
-          "rank": 361,
+          "rank": 362,
           "value": 0
         },
         {
@@ -35970,7 +36042,7 @@ export const fantasyVorpData: Record<
           "team": "ARI",
           "position": "RB",
           "positionRank": 104,
-          "rank": 362,
+          "rank": 363,
           "value": 0
         },
         {
@@ -35979,7 +36051,7 @@ export const fantasyVorpData: Record<
           "team": "PIT",
           "position": "QB",
           "positionRank": 29,
-          "rank": 363,
+          "rank": 364,
           "value": 0
         },
         {
@@ -35987,8 +36059,8 @@ export const fantasyVorpData: Record<
           "name": "Cyrus Allen",
           "team": "KC",
           "position": "WR",
-          "positionRank": 118,
-          "rank": 364,
+          "positionRank": 119,
+          "rank": 365,
           "value": 0
         },
         {
@@ -35996,8 +36068,8 @@ export const fantasyVorpData: Record<
           "name": "Christian Kirk",
           "team": "SF",
           "position": "WR",
-          "positionRank": 119,
-          "rank": 365,
+          "positionRank": 120,
+          "rank": 366,
           "value": 0
         },
         {
@@ -36006,7 +36078,7 @@ export const fantasyVorpData: Record<
           "team": "DEN",
           "position": "TE",
           "positionRank": 50,
-          "rank": 366,
+          "rank": 367,
           "value": 0
         },
         {
@@ -36015,7 +36087,7 @@ export const fantasyVorpData: Record<
           "team": "NE",
           "position": "TE",
           "positionRank": 51,
-          "rank": 367,
+          "rank": 368,
           "value": 0
         },
         {
@@ -36024,7 +36096,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "TE",
           "positionRank": 52,
-          "rank": 368,
+          "rank": 369,
           "value": 0
         },
         {
@@ -36033,7 +36105,7 @@ export const fantasyVorpData: Record<
           "team": "ATL",
           "position": "TE",
           "positionRank": 53,
-          "rank": 369,
+          "rank": 370,
           "value": 0
         },
         {
@@ -36042,7 +36114,7 @@ export const fantasyVorpData: Record<
           "team": "KC",
           "position": "TE",
           "positionRank": 54,
-          "rank": 370,
+          "rank": 371,
           "value": 0
         },
         {
@@ -36051,7 +36123,7 @@ export const fantasyVorpData: Record<
           "team": "GB",
           "position": "RB",
           "positionRank": 105,
-          "rank": 371,
+          "rank": 372,
           "value": 0
         },
         {
@@ -36060,24 +36132,15 @@ export const fantasyVorpData: Record<
           "team": "DEN",
           "position": "RB",
           "positionRank": 106,
-          "rank": 372,
-          "value": 0
-        },
-        {
-          "playerId": "fp-17533",
-          "name": "Jason Sanders",
-          "team": "FA",
-          "position": "K",
-          "positionRank": 33,
           "rank": 373,
           "value": 0
         },
         {
           "playerId": "fp-27222",
           "name": "Theo Wease Jr.",
-          "team": "FA",
+          "team": "LAC",
           "position": "WR",
-          "positionRank": 120,
+          "positionRank": 121,
           "rank": 374,
           "value": 0
         },
@@ -36086,7 +36149,7 @@ export const fantasyVorpData: Record<
           "name": "Dyami Brown",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 121,
+          "positionRank": 122,
           "rank": 375,
           "value": 0
         },
@@ -36122,7 +36185,7 @@ export const fantasyVorpData: Record<
           "name": "Treylon Burks",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 122,
+          "positionRank": 123,
           "rank": 379,
           "value": 0
         },
@@ -36158,7 +36221,7 @@ export const fantasyVorpData: Record<
           "name": "Savion Williams",
           "team": "GB",
           "position": "WR",
-          "positionRank": 123,
+          "positionRank": 124,
           "rank": 383,
           "value": 0
         },
@@ -36176,7 +36239,7 @@ export const fantasyVorpData: Record<
           "name": "Kendrick Bourne",
           "team": "ARI",
           "position": "WR",
-          "positionRank": 124,
+          "positionRank": 125,
           "rank": 385,
           "value": 0
         },
@@ -36185,7 +36248,7 @@ export const fantasyVorpData: Record<
           "name": "Kalif Raymond",
           "team": "CHI",
           "position": "WR",
-          "positionRank": 125,
+          "positionRank": 126,
           "rank": 386,
           "value": 0
         },
@@ -36266,7 +36329,7 @@ export const fantasyVorpData: Record<
           "name": "Isaiah Bond",
           "team": "CLE",
           "position": "WR",
-          "positionRank": 126,
+          "positionRank": 127,
           "rank": 395,
           "value": 0
         },
@@ -36280,30 +36343,12 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-25349",
-          "name": "Ben Sims",
-          "team": "MIA",
-          "position": "TE",
-          "positionRank": 67,
-          "rank": 397,
-          "value": 0
-        },
-        {
-          "playerId": "fp-28132",
-          "name": "Zavion Thomas",
-          "team": "CHI",
-          "position": "WR",
-          "positionRank": 127,
-          "rank": 398,
-          "value": 0
-        },
-        {
           "playerId": "fp-28126",
           "name": "Skyler Bell",
           "team": "BUF",
           "position": "WR",
           "positionRank": 128,
-          "rank": 399,
+          "rank": 397,
           "value": 0
         },
         {
@@ -36311,8 +36356,8 @@ export const fantasyVorpData: Record<
           "name": "Jackson Hawes",
           "team": "BUF",
           "position": "TE",
-          "positionRank": 68,
-          "rank": 400,
+          "positionRank": 67,
+          "rank": 398,
           "value": 0
         },
         {
@@ -36320,8 +36365,8 @@ export const fantasyVorpData: Record<
           "name": "Nate Adkins",
           "team": "DEN",
           "position": "TE",
-          "positionRank": 69,
-          "rank": 401,
+          "positionRank": 68,
+          "rank": 399,
           "value": 0
         },
         {
@@ -36329,8 +36374,8 @@ export const fantasyVorpData: Record<
           "name": "Ben Sinnott",
           "team": "WAS",
           "position": "TE",
-          "positionRank": 70,
-          "rank": 402,
+          "positionRank": 69,
+          "rank": 400,
           "value": 0
         },
         {
@@ -36339,7 +36384,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "WR",
           "positionRank": 129,
-          "rank": 403,
+          "rank": 401,
           "value": 0
         },
         {
@@ -36347,8 +36392,8 @@ export const fantasyVorpData: Record<
           "name": "Ben Sauls",
           "team": "FA",
           "position": "K",
-          "positionRank": 34,
-          "rank": 404,
+          "positionRank": 33,
+          "rank": 402,
           "value": 0
         },
         {
@@ -36356,8 +36401,8 @@ export const fantasyVorpData: Record<
           "name": "Jack Endries",
           "team": "CIN",
           "position": "TE",
-          "positionRank": 71,
-          "rank": 405,
+          "positionRank": 70,
+          "rank": 403,
           "value": 0
         },
         {
@@ -36365,8 +36410,8 @@ export const fantasyVorpData: Record<
           "name": "Foster Moreau",
           "team": "HOU",
           "position": "TE",
-          "positionRank": 72,
-          "rank": 406,
+          "positionRank": 71,
+          "rank": 404,
           "value": 0
         },
         {
@@ -36374,8 +36419,8 @@ export const fantasyVorpData: Record<
           "name": "Cade Stover",
           "team": "HOU",
           "position": "TE",
-          "positionRank": 73,
-          "rank": 407,
+          "positionRank": 72,
+          "rank": 405,
           "value": 0
         },
         {
@@ -36383,8 +36428,8 @@ export const fantasyVorpData: Record<
           "name": "Luke Schoonmaker",
           "team": "DAL",
           "position": "TE",
-          "positionRank": 74,
-          "rank": 408,
+          "positionRank": 73,
+          "rank": 406,
           "value": 0
         },
         {
@@ -36393,7 +36438,7 @@ export const fantasyVorpData: Record<
           "team": "CIN",
           "position": "WR",
           "positionRank": 130,
-          "rank": 409,
+          "rank": 407,
           "value": 0
         },
         {
@@ -36401,8 +36446,8 @@ export const fantasyVorpData: Record<
           "name": "Bauer Sharp",
           "team": "TB",
           "position": "TE",
-          "positionRank": 75,
-          "rank": 410,
+          "positionRank": 74,
+          "rank": 408,
           "value": 0
         },
         {
@@ -36410,8 +36455,8 @@ export const fantasyVorpData: Record<
           "name": "Luke Musgrave",
           "team": "GB",
           "position": "TE",
-          "positionRank": 76,
-          "rank": 411,
+          "positionRank": 75,
+          "rank": 409,
           "value": 0
         },
         {
@@ -36419,8 +36464,8 @@ export const fantasyVorpData: Record<
           "name": "Mo Alie-Cox",
           "team": "IND",
           "position": "TE",
-          "positionRank": 77,
-          "rank": 412,
+          "positionRank": 76,
+          "rank": 410,
           "value": 0
         },
         {
@@ -36429,7 +36474,7 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "WR",
           "positionRank": 131,
-          "rank": 413,
+          "rank": 411,
           "value": 0
         },
         {
@@ -36438,7 +36483,7 @@ export const fantasyVorpData: Record<
           "team": "ATL",
           "position": "WR",
           "positionRank": 132,
-          "rank": 414,
+          "rank": 412,
           "value": 0
         },
         {
@@ -36446,8 +36491,8 @@ export const fantasyVorpData: Record<
           "name": "Dallen Bentley",
           "team": "DEN",
           "position": "TE",
-          "positionRank": 78,
-          "rank": 415,
+          "positionRank": 77,
+          "rank": 413,
           "value": 0
         },
         {
@@ -36455,8 +36500,17 @@ export const fantasyVorpData: Record<
           "name": "Thomas Fidone II",
           "team": "NYG",
           "position": "TE",
+          "positionRank": 78,
+          "rank": 414,
+          "value": 0
+        },
+        {
+          "playerId": "fp-23821",
+          "name": "Will Mallory",
+          "team": "IND",
+          "position": "TE",
           "positionRank": 79,
-          "rank": 416,
+          "rank": 415,
           "value": 0
         },
         {
@@ -36465,7 +36519,7 @@ export const fantasyVorpData: Record<
           "team": "KC",
           "position": "TE",
           "positionRank": 80,
-          "rank": 417,
+          "rank": 416,
           "value": 0
         },
         {
@@ -36474,7 +36528,7 @@ export const fantasyVorpData: Record<
           "team": "PIT",
           "position": "WR",
           "positionRank": 133,
-          "rank": 418,
+          "rank": 417,
           "value": 0
         },
         {
@@ -36483,7 +36537,7 @@ export const fantasyVorpData: Record<
           "team": "BAL",
           "position": "WR",
           "positionRank": 134,
-          "rank": 419,
+          "rank": 418,
           "value": 0
         },
         {
@@ -36492,7 +36546,7 @@ export const fantasyVorpData: Record<
           "team": "WAS",
           "position": "WR",
           "positionRank": 135,
-          "rank": 420,
+          "rank": 419,
           "value": 0
         },
         {
@@ -36501,7 +36555,7 @@ export const fantasyVorpData: Record<
           "team": "ATL",
           "position": "TE",
           "positionRank": 81,
-          "rank": 421,
+          "rank": 420,
           "value": 0
         },
         {
@@ -36510,7 +36564,7 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "WR",
           "positionRank": 136,
-          "rank": 422,
+          "rank": 421,
           "value": 0
         },
         {
@@ -36519,7 +36573,7 @@ export const fantasyVorpData: Record<
           "team": "TEN",
           "position": "TE",
           "positionRank": 82,
-          "rank": 423,
+          "rank": 422,
           "value": 0
         },
         {
@@ -36528,7 +36582,7 @@ export const fantasyVorpData: Record<
           "team": "NO",
           "position": "TE",
           "positionRank": 83,
-          "rank": 424,
+          "rank": 423,
           "value": 0
         },
         {
@@ -36537,7 +36591,7 @@ export const fantasyVorpData: Record<
           "team": "BAL",
           "position": "TE",
           "positionRank": 84,
-          "rank": 425,
+          "rank": 424,
           "value": 0
         },
         {
@@ -36546,7 +36600,7 @@ export const fantasyVorpData: Record<
           "team": "NYG",
           "position": "WR",
           "positionRank": 137,
-          "rank": 426,
+          "rank": 425,
           "value": 0
         },
         {
@@ -36555,7 +36609,7 @@ export const fantasyVorpData: Record<
           "team": "TB",
           "position": "WR",
           "positionRank": 138,
-          "rank": 427,
+          "rank": 426,
           "value": 0
         },
         {
@@ -36564,7 +36618,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "WR",
           "positionRank": 139,
-          "rank": 428,
+          "rank": 427,
           "value": 0
         },
         {
@@ -36573,7 +36627,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "TE",
           "positionRank": 85,
-          "rank": 429,
+          "rank": 428,
           "value": 0
         },
         {
@@ -36582,7 +36636,7 @@ export const fantasyVorpData: Record<
           "team": "TB",
           "position": "TE",
           "positionRank": 86,
-          "rank": 430,
+          "rank": 429,
           "value": 0
         },
         {
@@ -36591,7 +36645,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "WR",
           "positionRank": 140,
-          "rank": 431,
+          "rank": 430,
           "value": 0
         },
         {
@@ -36600,7 +36654,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "TE",
           "positionRank": 87,
-          "rank": 432,
+          "rank": 431,
           "value": 0
         },
         {
@@ -36609,7 +36663,7 @@ export const fantasyVorpData: Record<
           "team": "PHI",
           "position": "TE",
           "positionRank": 88,
-          "rank": 433,
+          "rank": 432,
           "value": 0
         },
         {
@@ -36618,7 +36672,7 @@ export const fantasyVorpData: Record<
           "team": "MIA",
           "position": "TE",
           "positionRank": 89,
-          "rank": 434,
+          "rank": 433,
           "value": 0
         },
         {
@@ -36627,7 +36681,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "WR",
           "positionRank": 141,
-          "rank": 435,
+          "rank": 434,
           "value": 0
         },
         {
@@ -36636,7 +36690,7 @@ export const fantasyVorpData: Record<
           "team": "JAC",
           "position": "TE",
           "positionRank": 90,
-          "rank": 436,
+          "rank": 435,
           "value": 0
         },
         {
@@ -36645,7 +36699,7 @@ export const fantasyVorpData: Record<
           "team": "DAL",
           "position": "TE",
           "positionRank": 91,
-          "rank": 437,
+          "rank": 436,
           "value": 0
         },
         {
@@ -36654,7 +36708,7 @@ export const fantasyVorpData: Record<
           "team": "CHI",
           "position": "TE",
           "positionRank": 92,
-          "rank": 438,
+          "rank": 437,
           "value": 0
         },
         {
@@ -36663,7 +36717,7 @@ export const fantasyVorpData: Record<
           "team": "NO",
           "position": "WR",
           "positionRank": 142,
-          "rank": 439,
+          "rank": 438,
           "value": 0
         },
         {
@@ -36672,7 +36726,7 @@ export const fantasyVorpData: Record<
           "team": "BAL",
           "position": "TE",
           "positionRank": 93,
-          "rank": 440,
+          "rank": 439,
           "value": 0
         },
         {
@@ -36681,7 +36735,7 @@ export const fantasyVorpData: Record<
           "team": "GB",
           "position": "TE",
           "positionRank": 94,
-          "rank": 441,
+          "rank": 440,
           "value": 0
         },
         {
@@ -36690,7 +36744,7 @@ export const fantasyVorpData: Record<
           "team": "TB",
           "position": "TE",
           "positionRank": 95,
-          "rank": 442,
+          "rank": 441,
           "value": 0
         },
         {
@@ -36699,7 +36753,7 @@ export const fantasyVorpData: Record<
           "team": "ARI",
           "position": "TE",
           "positionRank": 96,
-          "rank": 443,
+          "rank": 442,
           "value": 0
         },
         {
@@ -36708,7 +36762,7 @@ export const fantasyVorpData: Record<
           "team": "LV",
           "position": "TE",
           "positionRank": 97,
-          "rank": 444,
+          "rank": 443,
           "value": 0
         },
         {
@@ -36717,7 +36771,7 @@ export const fantasyVorpData: Record<
           "team": "KC",
           "position": "WR",
           "positionRank": 143,
-          "rank": 445,
+          "rank": 444,
           "value": 0
         },
         {
@@ -36726,7 +36780,7 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "WR",
           "positionRank": 144,
-          "rank": 446,
+          "rank": 445,
           "value": 0
         },
         {
@@ -36735,7 +36789,7 @@ export const fantasyVorpData: Record<
           "team": "GB",
           "position": "WR",
           "positionRank": 145,
-          "rank": 447,
+          "rank": 446,
           "value": 0
         },
         {
@@ -36744,7 +36798,7 @@ export const fantasyVorpData: Record<
           "team": "IND",
           "position": "TE",
           "positionRank": 98,
-          "rank": 448,
+          "rank": 447,
           "value": 0
         },
         {
@@ -36753,7 +36807,7 @@ export const fantasyVorpData: Record<
           "team": "IND",
           "position": "WR",
           "positionRank": 146,
-          "rank": 449,
+          "rank": 448,
           "value": 0
         },
         {
@@ -36762,7 +36816,7 @@ export const fantasyVorpData: Record<
           "team": "DET",
           "position": "WR",
           "positionRank": 147,
-          "rank": 450,
+          "rank": 449,
           "value": 0
         },
         {
@@ -36771,7 +36825,7 @@ export const fantasyVorpData: Record<
           "team": "CLE",
           "position": "WR",
           "positionRank": 148,
-          "rank": 451,
+          "rank": 450,
           "value": 0
         },
         {
@@ -36780,7 +36834,7 @@ export const fantasyVorpData: Record<
           "team": "NYG",
           "position": "TE",
           "positionRank": 99,
-          "rank": 452,
+          "rank": 451,
           "value": 0
         },
         {
@@ -36789,16 +36843,16 @@ export const fantasyVorpData: Record<
           "team": "CLE",
           "position": "TE",
           "positionRank": 100,
-          "rank": 453,
+          "rank": 452,
           "value": 0
         },
         {
-          "playerId": "fp-17826",
-          "name": "Tanner Hudson",
-          "team": "CIN",
+          "playerId": "fp-28079",
+          "name": "Justin Joly",
+          "team": "FA",
           "position": "TE",
           "positionRank": 101,
-          "rank": 454,
+          "rank": 453,
           "value": 0
         },
         {
@@ -36807,7 +36861,7 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "WR",
           "positionRank": 149,
-          "rank": 455,
+          "rank": 454,
           "value": 0
         },
         {
@@ -36816,7 +36870,7 @@ export const fantasyVorpData: Record<
           "team": "SEA",
           "position": "TE",
           "positionRank": 102,
-          "rank": 456,
+          "rank": 455,
           "value": 0
         },
         {
@@ -36825,7 +36879,7 @@ export const fantasyVorpData: Record<
           "team": "SF",
           "position": "TE",
           "positionRank": 103,
-          "rank": 457,
+          "rank": 456,
           "value": 0
         },
         {
@@ -36834,7 +36888,7 @@ export const fantasyVorpData: Record<
           "team": "PHI",
           "position": "TE",
           "positionRank": 104,
-          "rank": 458,
+          "rank": 457,
           "value": 0
         },
         {
@@ -36843,7 +36897,7 @@ export const fantasyVorpData: Record<
           "team": "CIN",
           "position": "WR",
           "positionRank": 150,
-          "rank": 459,
+          "rank": 458,
           "value": 0
         },
         {
@@ -36852,7 +36906,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "WR",
           "positionRank": 151,
-          "rank": 460,
+          "rank": 459,
           "value": 0
         },
         {
@@ -36861,7 +36915,7 @@ export const fantasyVorpData: Record<
           "team": "NE",
           "position": "WR",
           "positionRank": 152,
-          "rank": 461,
+          "rank": 460,
           "value": 0
         },
         {
@@ -36870,7 +36924,7 @@ export const fantasyVorpData: Record<
           "team": "SF",
           "position": "WR",
           "positionRank": 153,
-          "rank": 462,
+          "rank": 461,
           "value": 0
         },
         {
@@ -36879,7 +36933,7 @@ export const fantasyVorpData: Record<
           "team": "CLE",
           "position": "TE",
           "positionRank": 105,
-          "rank": 463,
+          "rank": 462,
           "value": 0
         },
         {
@@ -36888,7 +36942,7 @@ export const fantasyVorpData: Record<
           "team": "DAL",
           "position": "WR",
           "positionRank": 154,
-          "rank": 464,
+          "rank": 463,
           "value": 0
         },
         {
@@ -36897,7 +36951,7 @@ export const fantasyVorpData: Record<
           "team": "JAC",
           "position": "WR",
           "positionRank": 155,
-          "rank": 465,
+          "rank": 464,
           "value": 0
         },
         {
@@ -36906,7 +36960,7 @@ export const fantasyVorpData: Record<
           "team": "PHI",
           "position": "WR",
           "positionRank": 156,
-          "rank": 466,
+          "rank": 465,
           "value": 0
         },
         {
@@ -36915,7 +36969,7 @@ export const fantasyVorpData: Record<
           "team": "MIN",
           "position": "WR",
           "positionRank": 157,
-          "rank": 467,
+          "rank": 466,
           "value": 0
         },
         {
@@ -36924,7 +36978,7 @@ export const fantasyVorpData: Record<
           "team": "ARI",
           "position": "WR",
           "positionRank": 158,
-          "rank": 468,
+          "rank": 467,
           "value": 0
         },
         {
@@ -36933,7 +36987,7 @@ export const fantasyVorpData: Record<
           "team": "LV",
           "position": "WR",
           "positionRank": 159,
-          "rank": 469,
+          "rank": 468,
           "value": 0
         },
         {
@@ -36942,7 +36996,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "WR",
           "positionRank": 160,
-          "rank": 470,
+          "rank": 469,
           "value": 0
         },
         {
@@ -36951,7 +37005,7 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "WR",
           "positionRank": 161,
-          "rank": 471,
+          "rank": 470,
           "value": 0
         },
         {
@@ -36960,7 +37014,7 @@ export const fantasyVorpData: Record<
           "team": "PIT",
           "position": "WR",
           "positionRank": 162,
-          "rank": 472,
+          "rank": 471,
           "value": 0
         },
         {
@@ -36969,7 +37023,7 @@ export const fantasyVorpData: Record<
           "team": "TB",
           "position": "WR",
           "positionRank": 163,
-          "rank": 473,
+          "rank": 472,
           "value": 0
         },
         {
@@ -36978,7 +37032,7 @@ export const fantasyVorpData: Record<
           "team": "PIT",
           "position": "WR",
           "positionRank": 164,
-          "rank": 474,
+          "rank": 473,
           "value": 0
         },
         {
@@ -36987,6 +37041,15 @@ export const fantasyVorpData: Record<
           "team": "LV",
           "position": "QB",
           "positionRank": 30,
+          "rank": 474,
+          "value": 0
+        },
+        {
+          "playerId": "fp-17533",
+          "name": "Jason Sanders",
+          "team": "FA",
+          "position": "K",
+          "positionRank": 34,
           "rank": 475,
           "value": 0
         },
@@ -37333,18 +37396,18 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-25967",
-          "name": "Joe Milton III",
-          "team": "DAL",
+          "playerId": "fp-23066",
+          "name": "Kyle McCord",
+          "team": "MIA",
           "position": "QB",
           "positionRank": 69,
           "rank": 514,
           "value": 0
         },
         {
-          "playerId": "fp-23066",
-          "name": "Kyle McCord",
-          "team": "MIA",
+          "playerId": "fp-25967",
+          "name": "Joe Milton III",
+          "team": "FA",
           "position": "QB",
           "positionRank": 70,
           "rank": 515,
@@ -37376,13 +37439,22 @@ export const fantasyVorpData: Record<
           "positionRank": 73,
           "rank": 518,
           "value": 0
+        },
+        {
+          "playerId": "fp-27161",
+          "name": "Brady Cook",
+          "team": "FA",
+          "position": "QB",
+          "positionRank": 74,
+          "rank": 519,
+          "value": 0
         }
       ]
     },
     "14": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-      "accessedAt": "2026-09-01T19:46:07.340Z",
+      "accessedAt": "2026-09-02T19:38:59.633Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -37817,22 +37889,22 @@ export const fantasyVorpData: Record<
           "value": 94
         },
         {
-          "playerId": "fp-20130",
-          "name": "Nico Collins",
-          "team": "HOU",
+          "playerId": "fp-20111",
+          "name": "Chris Olave",
+          "team": "NO",
           "position": "WR",
           "positionRank": 11,
           "rank": 49,
           "value": 93
         },
         {
-          "playerId": "fp-20111",
-          "name": "Chris Olave",
-          "team": "NO",
+          "playerId": "fp-20130",
+          "name": "Nico Collins",
+          "team": "HOU",
           "position": "WR",
           "positionRank": 12,
           "rank": 50,
-          "value": 91
+          "value": 93
         },
         {
           "playerId": "fp-23891",
@@ -39518,12 +39590,21 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
+          "playerId": "fp-24354",
+          "name": "Dontayvion Wicks",
+          "team": "PHI",
+          "position": "WR",
+          "positionRank": 73,
+          "rank": 238,
+          "value": 0
+        },
+        {
           "playerId": "fp-25418",
           "name": "Antonio Williams",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 73,
-          "rank": 238,
+          "positionRank": 74,
+          "rank": 239,
           "value": 0
         },
         {
@@ -39532,7 +39613,7 @@ export const fantasyVorpData: Record<
           "team": "IND",
           "position": "RB",
           "positionRank": 79,
-          "rank": 239,
+          "rank": 240,
           "value": 0
         },
         {
@@ -39541,7 +39622,7 @@ export const fantasyVorpData: Record<
           "team": "BUF",
           "position": "K",
           "positionRank": 18,
-          "rank": 240,
+          "rank": 241,
           "value": 0
         },
         {
@@ -39550,7 +39631,7 @@ export const fantasyVorpData: Record<
           "team": "WAS",
           "position": "DST",
           "positionRank": 23,
-          "rank": 241,
+          "rank": 242,
           "value": 0
         },
         {
@@ -39559,7 +39640,7 @@ export const fantasyVorpData: Record<
           "team": "TB",
           "position": "TE",
           "positionRank": 26,
-          "rank": 242,
+          "rank": 243,
           "value": 0
         },
         {
@@ -39567,8 +39648,8 @@ export const fantasyVorpData: Record<
           "name": "Germie Bernard",
           "team": "PIT",
           "position": "WR",
-          "positionRank": 74,
-          "rank": 243,
+          "positionRank": 75,
+          "rank": 244,
           "value": 0
         },
         {
@@ -39576,8 +39657,8 @@ export const fantasyVorpData: Record<
           "name": "Chris Bell",
           "team": "MIA",
           "position": "WR",
-          "positionRank": 75,
-          "rank": 244,
+          "positionRank": 76,
+          "rank": 245,
           "value": 0
         },
         {
@@ -39586,7 +39667,7 @@ export const fantasyVorpData: Record<
           "team": "SEA",
           "position": "RB",
           "positionRank": 80,
-          "rank": 245,
+          "rank": 246,
           "value": 0
         },
         {
@@ -39595,7 +39676,7 @@ export const fantasyVorpData: Record<
           "team": "KC",
           "position": "DST",
           "positionRank": 24,
-          "rank": 246,
+          "rank": 247,
           "value": 0
         },
         {
@@ -39604,7 +39685,7 @@ export const fantasyVorpData: Record<
           "team": "WAS",
           "position": "TE",
           "positionRank": 27,
-          "rank": 247,
+          "rank": 248,
           "value": 0
         },
         {
@@ -39612,8 +39693,8 @@ export const fantasyVorpData: Record<
           "name": "Tyquan Thornton",
           "team": "KC",
           "position": "WR",
-          "positionRank": 76,
-          "rank": 248,
+          "positionRank": 77,
+          "rank": 249,
           "value": 0
         },
         {
@@ -39622,7 +39703,7 @@ export const fantasyVorpData: Record<
           "team": "DAL",
           "position": "DST",
           "positionRank": 25,
-          "rank": 249,
+          "rank": 250,
           "value": 0
         },
         {
@@ -39631,7 +39712,7 @@ export const fantasyVorpData: Record<
           "team": "NYG",
           "position": "DST",
           "positionRank": 26,
-          "rank": 250,
+          "rank": 251,
           "value": 0
         },
         {
@@ -39640,7 +39721,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "TE",
           "positionRank": 28,
-          "rank": 251,
+          "rank": 252,
           "value": 0
         },
         {
@@ -39648,8 +39729,17 @@ export const fantasyVorpData: Record<
           "name": "Malik Washington",
           "team": "MIA",
           "position": "WR",
-          "positionRank": 77,
-          "rank": 252,
+          "positionRank": 78,
+          "rank": 253,
+          "value": 0
+        },
+        {
+          "playerId": "fp-25654",
+          "name": "Emari Demercado",
+          "team": "DAL",
+          "position": "RB",
+          "positionRank": 81,
+          "rank": 254,
           "value": 0
         },
         {
@@ -39658,7 +39748,7 @@ export const fantasyVorpData: Record<
           "team": "NO",
           "position": "K",
           "positionRank": 19,
-          "rank": 253,
+          "rank": 255,
           "value": 0
         },
         {
@@ -39667,7 +39757,7 @@ export const fantasyVorpData: Record<
           "team": "ATL",
           "position": "K",
           "positionRank": 20,
-          "rank": 254,
+          "rank": 256,
           "value": 0
         },
         {
@@ -39676,7 +39766,7 @@ export const fantasyVorpData: Record<
           "team": "MIA",
           "position": "DST",
           "positionRank": 27,
-          "rank": 255,
+          "rank": 257,
           "value": 0
         },
         {
@@ -39684,8 +39774,8 @@ export const fantasyVorpData: Record<
           "name": "Caleb Douglas",
           "team": "MIA",
           "position": "WR",
-          "positionRank": 78,
-          "rank": 256,
+          "positionRank": 79,
+          "rank": 258,
           "value": 0
         },
         {
@@ -39693,8 +39783,8 @@ export const fantasyVorpData: Record<
           "name": "Omar Cooper Jr.",
           "team": "NYJ",
           "position": "WR",
-          "positionRank": 79,
-          "rank": 257,
+          "positionRank": 80,
+          "rank": 259,
           "value": 0
         },
         {
@@ -39703,7 +39793,7 @@ export const fantasyVorpData: Record<
           "team": "HOU",
           "position": "QB",
           "positionRank": 24,
-          "rank": 258,
+          "rank": 260,
           "value": 0
         },
         {
@@ -39712,7 +39802,7 @@ export const fantasyVorpData: Record<
           "team": "NE",
           "position": "K",
           "positionRank": 21,
-          "rank": 259,
+          "rank": 261,
           "value": 0
         },
         {
@@ -39721,7 +39811,7 @@ export const fantasyVorpData: Record<
           "team": "LV",
           "position": "DST",
           "positionRank": 28,
-          "rank": 260,
+          "rank": 262,
           "value": 0
         },
         {
@@ -39730,7 +39820,7 @@ export const fantasyVorpData: Record<
           "team": "ARI",
           "position": "DST",
           "positionRank": 29,
-          "rank": 261,
+          "rank": 263,
           "value": 0
         },
         {
@@ -39738,8 +39828,8 @@ export const fantasyVorpData: Record<
           "name": "Travis Hunter",
           "team": "JAC",
           "position": "WR",
-          "positionRank": 80,
-          "rank": 262,
+          "positionRank": 81,
+          "rank": 264,
           "value": 0
         },
         {
@@ -39747,8 +39837,8 @@ export const fantasyVorpData: Record<
           "name": "Tory Horton",
           "team": "SEA",
           "position": "WR",
-          "positionRank": 81,
-          "rank": 263,
+          "positionRank": 82,
+          "rank": 265,
           "value": 0
         },
         {
@@ -39756,17 +39846,8 @@ export const fantasyVorpData: Record<
           "name": "Xavier Hutchinson",
           "team": "HOU",
           "position": "WR",
-          "positionRank": 82,
-          "rank": 264,
-          "value": 0
-        },
-        {
-          "playerId": "fp-24354",
-          "name": "Dontayvion Wicks",
-          "team": "PHI",
-          "position": "WR",
           "positionRank": 83,
-          "rank": 265,
+          "rank": 266,
           "value": 0
         },
         {
@@ -39774,8 +39855,8 @@ export const fantasyVorpData: Record<
           "name": "Ray Davis",
           "team": "BUF",
           "position": "RB",
-          "positionRank": 81,
-          "rank": 266,
+          "positionRank": 82,
+          "rank": 267,
           "value": 0
         },
         {
@@ -39783,8 +39864,8 @@ export const fantasyVorpData: Record<
           "name": "Corey Kiner",
           "team": "NE",
           "position": "RB",
-          "positionRank": 82,
-          "rank": 267,
+          "positionRank": 83,
+          "rank": 268,
           "value": 0
         },
         {
@@ -39793,7 +39874,7 @@ export const fantasyVorpData: Record<
           "team": "PHI",
           "position": "K",
           "positionRank": 22,
-          "rank": 268,
+          "rank": 269,
           "value": 0
         },
         {
@@ -39801,8 +39882,8 @@ export const fantasyVorpData: Record<
           "name": "Ollie Gordon II",
           "team": "MIA",
           "position": "RB",
-          "positionRank": 83,
-          "rank": 269,
+          "positionRank": 84,
+          "rank": 270,
           "value": 0
         },
         {
@@ -39811,7 +39892,7 @@ export const fantasyVorpData: Record<
           "team": "PIT",
           "position": "K",
           "positionRank": 23,
-          "rank": 270,
+          "rank": 271,
           "value": 0
         },
         {
@@ -39820,7 +39901,7 @@ export const fantasyVorpData: Record<
           "team": "SF",
           "position": "DST",
           "positionRank": 30,
-          "rank": 271,
+          "rank": 272,
           "value": 0
         },
         {
@@ -39829,7 +39910,7 @@ export const fantasyVorpData: Record<
           "team": "NYG",
           "position": "WR",
           "positionRank": 84,
-          "rank": 272,
+          "rank": 273,
           "value": 0
         },
         {
@@ -39837,8 +39918,8 @@ export const fantasyVorpData: Record<
           "name": "Kendre Miller",
           "team": "NO",
           "position": "RB",
-          "positionRank": 84,
-          "rank": 273,
+          "positionRank": 85,
+          "rank": 274,
           "value": 0
         },
         {
@@ -39846,8 +39927,8 @@ export const fantasyVorpData: Record<
           "name": "Audric Estime",
           "team": "NO",
           "position": "RB",
-          "positionRank": 85,
-          "rank": 274,
+          "positionRank": 86,
+          "rank": 275,
           "value": 0
         },
         {
@@ -39856,7 +39937,7 @@ export const fantasyVorpData: Record<
           "team": "WAS",
           "position": "K",
           "positionRank": 24,
-          "rank": 275,
+          "rank": 276,
           "value": 0
         },
         {
@@ -39865,7 +39946,7 @@ export const fantasyVorpData: Record<
           "team": "CIN",
           "position": "TE",
           "positionRank": 29,
-          "rank": 276,
+          "rank": 277,
           "value": 0
         },
         {
@@ -39874,7 +39955,7 @@ export const fantasyVorpData: Record<
           "team": "DEN",
           "position": "WR",
           "positionRank": 85,
-          "rank": 277,
+          "rank": 278,
           "value": 0
         },
         {
@@ -39882,8 +39963,8 @@ export const fantasyVorpData: Record<
           "name": "Jacob Saylors",
           "team": "DET",
           "position": "RB",
-          "positionRank": 86,
-          "rank": 278,
+          "positionRank": 87,
+          "rank": 279,
           "value": 0
         },
         {
@@ -39891,8 +39972,17 @@ export const fantasyVorpData: Record<
           "name": "Eli Heidenreich",
           "team": "PIT",
           "position": "RB",
-          "positionRank": 87,
-          "rank": 279,
+          "positionRank": 88,
+          "rank": 280,
+          "value": 0
+        },
+        {
+          "playerId": "fp-25533",
+          "name": "Blake Grupe",
+          "team": "NYJ",
+          "position": "K",
+          "positionRank": 25,
+          "rank": 281,
           "value": 0
         },
         {
@@ -39901,7 +39991,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "DST",
           "positionRank": 31,
-          "rank": 280,
+          "rank": 282,
           "value": 0
         },
         {
@@ -39910,7 +40000,7 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "DST",
           "positionRank": 32,
-          "rank": 281,
+          "rank": 283,
           "value": 0
         },
         {
@@ -39919,7 +40009,7 @@ export const fantasyVorpData: Record<
           "team": "DET",
           "position": "WR",
           "positionRank": 86,
-          "rank": 282,
+          "rank": 284,
           "value": 0
         },
         {
@@ -39927,8 +40017,8 @@ export const fantasyVorpData: Record<
           "name": "Ameer Abdullah",
           "team": "JAC",
           "position": "RB",
-          "positionRank": 88,
-          "rank": 283,
+          "positionRank": 89,
+          "rank": 285,
           "value": 0
         },
         {
@@ -39937,7 +40027,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "QB",
           "positionRank": 25,
-          "rank": 284,
+          "rank": 286,
           "value": 0
         },
         {
@@ -39946,7 +40036,7 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "TE",
           "positionRank": 30,
-          "rank": 285,
+          "rank": 287,
           "value": 0
         },
         {
@@ -39954,8 +40044,8 @@ export const fantasyVorpData: Record<
           "name": "Kaytron Allen",
           "team": "WAS",
           "position": "RB",
-          "positionRank": 89,
-          "rank": 286,
+          "positionRank": 90,
+          "rank": 288,
           "value": 0
         },
         {
@@ -39963,8 +40053,8 @@ export const fantasyVorpData: Record<
           "name": "Raheim Sanders",
           "team": "CLE",
           "position": "RB",
-          "positionRank": 90,
-          "rank": 287,
+          "positionRank": 91,
+          "rank": 289,
           "value": 0
         },
         {
@@ -39972,8 +40062,8 @@ export const fantasyVorpData: Record<
           "name": "Tahj Brooks",
           "team": "CIN",
           "position": "RB",
-          "positionRank": 91,
-          "rank": 288,
+          "positionRank": 92,
+          "rank": 290,
           "value": 0
         },
         {
@@ -39981,8 +40071,8 @@ export const fantasyVorpData: Record<
           "name": "Riley Patterson",
           "team": "MIA",
           "position": "K",
-          "positionRank": 25,
-          "rank": 289,
+          "positionRank": 26,
+          "rank": 291,
           "value": 0
         },
         {
@@ -39990,8 +40080,8 @@ export const fantasyVorpData: Record<
           "name": "Joey Slye",
           "team": "TEN",
           "position": "K",
-          "positionRank": 26,
-          "rank": 290,
+          "positionRank": 27,
+          "rank": 292,
           "value": 0
         },
         {
@@ -40000,7 +40090,7 @@ export const fantasyVorpData: Record<
           "team": "DEN",
           "position": "TE",
           "positionRank": 31,
-          "rank": 291,
+          "rank": 293,
           "value": 0
         },
         {
@@ -40009,16 +40099,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "WR",
           "positionRank": 87,
-          "rank": 292,
-          "value": 0
-        },
-        {
-          "playerId": "fp-16445",
-          "name": "Jeremy McNichols",
-          "team": "WAS",
-          "position": "RB",
-          "positionRank": 92,
-          "rank": 293,
+          "rank": 294,
           "value": 0
         },
         {
@@ -40027,7 +40108,7 @@ export const fantasyVorpData: Record<
           "team": "TEN",
           "position": "RB",
           "positionRank": 93,
-          "rank": 294,
+          "rank": 295,
           "value": 0
         },
         {
@@ -40036,7 +40117,7 @@ export const fantasyVorpData: Record<
           "team": "MIN",
           "position": "RB",
           "positionRank": 94,
-          "rank": 295,
+          "rank": 296,
           "value": 0
         },
         {
@@ -40045,7 +40126,7 @@ export const fantasyVorpData: Record<
           "team": "TEN",
           "position": "TE",
           "positionRank": 32,
-          "rank": 296,
+          "rank": 297,
           "value": 0
         },
         {
@@ -40054,7 +40135,7 @@ export const fantasyVorpData: Record<
           "team": "ATL",
           "position": "WR",
           "positionRank": 88,
-          "rank": 297,
+          "rank": 298,
           "value": 0
         },
         {
@@ -40063,7 +40144,7 @@ export const fantasyVorpData: Record<
           "team": "DAL",
           "position": "RB",
           "positionRank": 95,
-          "rank": 298,
+          "rank": 299,
           "value": 0
         },
         {
@@ -40072,7 +40153,7 @@ export const fantasyVorpData: Record<
           "team": "PHI",
           "position": "RB",
           "positionRank": 96,
-          "rank": 299,
+          "rank": 300,
           "value": 0
         },
         {
@@ -40081,7 +40162,7 @@ export const fantasyVorpData: Record<
           "team": "IND",
           "position": "RB",
           "positionRank": 97,
-          "rank": 300,
+          "rank": 301,
           "value": 0
         },
         {
@@ -40090,7 +40171,7 @@ export const fantasyVorpData: Record<
           "team": "NO",
           "position": "WR",
           "positionRank": 89,
-          "rank": 301,
+          "rank": 302,
           "value": 0
         },
         {
@@ -40098,8 +40179,8 @@ export const fantasyVorpData: Record<
           "name": "Chad Ryland",
           "team": "ARI",
           "position": "K",
-          "positionRank": 27,
-          "rank": 302,
+          "positionRank": 28,
+          "rank": 303,
           "value": 0
         },
         {
@@ -40108,7 +40189,7 @@ export const fantasyVorpData: Record<
           "team": "DAL",
           "position": "WR",
           "positionRank": 90,
-          "rank": 303,
+          "rank": 304,
           "value": 0
         },
         {
@@ -40117,7 +40198,7 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "WR",
           "positionRank": 91,
-          "rank": 304,
+          "rank": 305,
           "value": 0
         },
         {
@@ -40126,7 +40207,7 @@ export const fantasyVorpData: Record<
           "team": "CIN",
           "position": "WR",
           "positionRank": 92,
-          "rank": 305,
+          "rank": 306,
           "value": 0
         },
         {
@@ -40135,15 +40216,6 @@ export const fantasyVorpData: Record<
           "team": "BAL",
           "position": "RB",
           "positionRank": 98,
-          "rank": 306,
-          "value": 0
-        },
-        {
-          "playerId": "fp-25533",
-          "name": "Blake Grupe",
-          "team": "NYJ",
-          "position": "K",
-          "positionRank": 28,
           "rank": 307,
           "value": 0
         },
@@ -40490,12 +40562,21 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
+          "playerId": "fp-28132",
+          "name": "Zavion Thomas",
+          "team": "CHI",
+          "position": "WR",
+          "positionRank": 110,
+          "rank": 346,
+          "value": 0
+        },
+        {
           "playerId": "fp-28067",
           "name": "Kevin Coleman Jr.",
           "team": "MIA",
           "position": "WR",
-          "positionRank": 110,
-          "rank": 346,
+          "positionRank": 111,
+          "rank": 347,
           "value": 0
         },
         {
@@ -40503,8 +40584,8 @@ export const fantasyVorpData: Record<
           "name": "Jahdae Walker",
           "team": "CHI",
           "position": "WR",
-          "positionRank": 111,
-          "rank": 347,
+          "positionRank": 112,
+          "rank": 348,
           "value": 0
         },
         {
@@ -40512,8 +40593,8 @@ export const fantasyVorpData: Record<
           "name": "Demarcus Robinson",
           "team": "SF",
           "position": "WR",
-          "positionRank": 112,
-          "rank": 348,
+          "positionRank": 113,
+          "rank": 349,
           "value": 0
         },
         {
@@ -40522,7 +40603,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "TE",
           "positionRank": 39,
-          "rank": 349,
+          "rank": 350,
           "value": 0
         },
         {
@@ -40530,8 +40611,8 @@ export const fantasyVorpData: Record<
           "name": "Jack Bech",
           "team": "LV",
           "position": "WR",
-          "positionRank": 113,
-          "rank": 350,
+          "positionRank": 114,
+          "rank": 351,
           "value": 0
         },
         {
@@ -40540,7 +40621,7 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "QB",
           "positionRank": 26,
-          "rank": 351,
+          "rank": 352,
           "value": 0
         },
         {
@@ -40549,7 +40630,7 @@ export const fantasyVorpData: Record<
           "team": "PIT",
           "position": "TE",
           "positionRank": 40,
-          "rank": 352,
+          "rank": 353,
           "value": 0
         },
         {
@@ -40557,8 +40638,8 @@ export const fantasyVorpData: Record<
           "name": "Luke McCaffrey",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 114,
-          "rank": 353,
+          "positionRank": 115,
+          "rank": 354,
           "value": 0
         },
         {
@@ -40567,7 +40648,7 @@ export const fantasyVorpData: Record<
           "team": "CIN",
           "position": "TE",
           "positionRank": 41,
-          "rank": 354,
+          "rank": 355,
           "value": 0
         },
         {
@@ -40576,7 +40657,7 @@ export const fantasyVorpData: Record<
           "team": "CHI",
           "position": "TE",
           "positionRank": 42,
-          "rank": 355,
+          "rank": 356,
           "value": 0
         },
         {
@@ -40584,8 +40665,8 @@ export const fantasyVorpData: Record<
           "name": "Tank Dell",
           "team": "HOU",
           "position": "WR",
-          "positionRank": 115,
-          "rank": 356,
+          "positionRank": 116,
+          "rank": 357,
           "value": 0
         },
         {
@@ -40593,8 +40674,8 @@ export const fantasyVorpData: Record<
           "name": "Mack Hollins",
           "team": "NE",
           "position": "WR",
-          "positionRank": 116,
-          "rank": 357,
+          "positionRank": 117,
+          "rank": 358,
           "value": 0
         },
         {
@@ -40603,7 +40684,7 @@ export const fantasyVorpData: Record<
           "team": "TEN",
           "position": "QB",
           "positionRank": 27,
-          "rank": 358,
+          "rank": 359,
           "value": 0
         },
         {
@@ -40611,8 +40692,8 @@ export const fantasyVorpData: Record<
           "name": "Kyle Williams",
           "team": "NE",
           "position": "WR",
-          "positionRank": 117,
-          "rank": 359,
+          "positionRank": 118,
+          "rank": 360,
           "value": 0
         },
         {
@@ -40621,7 +40702,7 @@ export const fantasyVorpData: Record<
           "team": "ARI",
           "position": "QB",
           "positionRank": 28,
-          "rank": 360,
+          "rank": 361,
           "value": 0
         },
         {
@@ -40629,8 +40710,8 @@ export const fantasyVorpData: Record<
           "name": "Cyrus Allen",
           "team": "KC",
           "position": "WR",
-          "positionRank": 118,
-          "rank": 361,
+          "positionRank": 119,
+          "rank": 362,
           "value": 0
         },
         {
@@ -40638,17 +40719,17 @@ export const fantasyVorpData: Record<
           "name": "Christian Kirk",
           "team": "SF",
           "position": "WR",
-          "positionRank": 119,
-          "rank": 362,
+          "positionRank": 120,
+          "rank": 363,
           "value": 0
         },
         {
           "playerId": "fp-27222",
           "name": "Theo Wease Jr.",
-          "team": "FA",
+          "team": "LAC",
           "position": "WR",
-          "positionRank": 120,
-          "rank": 363,
+          "positionRank": 121,
+          "rank": 364,
           "value": 0
         },
         {
@@ -40656,8 +40737,8 @@ export const fantasyVorpData: Record<
           "name": "Dyami Brown",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 121,
-          "rank": 364,
+          "positionRank": 122,
+          "rank": 365,
           "value": 0
         },
         {
@@ -40665,8 +40746,8 @@ export const fantasyVorpData: Record<
           "name": "Treylon Burks",
           "team": "WAS",
           "position": "WR",
-          "positionRank": 122,
-          "rank": 365,
+          "positionRank": 123,
+          "rank": 366,
           "value": 0
         },
         {
@@ -40675,7 +40756,7 @@ export const fantasyVorpData: Record<
           "team": "MIA",
           "position": "TE",
           "positionRank": 43,
-          "rank": 366,
+          "rank": 367,
           "value": 0
         },
         {
@@ -40684,7 +40765,7 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "TE",
           "positionRank": 44,
-          "rank": 367,
+          "rank": 368,
           "value": 0
         },
         {
@@ -40693,7 +40774,7 @@ export const fantasyVorpData: Record<
           "team": "NO",
           "position": "TE",
           "positionRank": 45,
-          "rank": 368,
+          "rank": 369,
           "value": 0
         },
         {
@@ -40702,7 +40783,7 @@ export const fantasyVorpData: Record<
           "team": "PIT",
           "position": "QB",
           "positionRank": 29,
-          "rank": 369,
+          "rank": 370,
           "value": 0
         },
         {
@@ -40711,7 +40792,7 @@ export const fantasyVorpData: Record<
           "team": "MIN",
           "position": "TE",
           "positionRank": 46,
-          "rank": 370,
+          "rank": 371,
           "value": 0
         },
         {
@@ -40719,8 +40800,8 @@ export const fantasyVorpData: Record<
           "name": "Savion Williams",
           "team": "GB",
           "position": "WR",
-          "positionRank": 123,
-          "rank": 371,
+          "positionRank": 124,
+          "rank": 372,
           "value": 0
         },
         {
@@ -40729,7 +40810,7 @@ export const fantasyVorpData: Record<
           "team": "TEN",
           "position": "TE",
           "positionRank": 47,
-          "rank": 372,
+          "rank": 373,
           "value": 0
         },
         {
@@ -40738,7 +40819,7 @@ export const fantasyVorpData: Record<
           "team": "GB",
           "position": "TE",
           "positionRank": 48,
-          "rank": 373,
+          "rank": 374,
           "value": 0
         },
         {
@@ -40747,7 +40828,7 @@ export const fantasyVorpData: Record<
           "team": "DET",
           "position": "TE",
           "positionRank": 49,
-          "rank": 374,
+          "rank": 375,
           "value": 0
         },
         {
@@ -40755,8 +40836,8 @@ export const fantasyVorpData: Record<
           "name": "Kendrick Bourne",
           "team": "ARI",
           "position": "WR",
-          "positionRank": 124,
-          "rank": 375,
+          "positionRank": 125,
+          "rank": 376,
           "value": 0
         },
         {
@@ -40764,8 +40845,8 @@ export const fantasyVorpData: Record<
           "name": "Kalif Raymond",
           "team": "CHI",
           "position": "WR",
-          "positionRank": 125,
-          "rank": 376,
+          "positionRank": 126,
+          "rank": 377,
           "value": 0
         },
         {
@@ -40774,7 +40855,7 @@ export const fantasyVorpData: Record<
           "team": "DEN",
           "position": "TE",
           "positionRank": 50,
-          "rank": 377,
+          "rank": 378,
           "value": 0
         },
         {
@@ -40783,7 +40864,7 @@ export const fantasyVorpData: Record<
           "team": "NE",
           "position": "TE",
           "positionRank": 51,
-          "rank": 378,
+          "rank": 379,
           "value": 0
         },
         {
@@ -40792,7 +40873,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "TE",
           "positionRank": 52,
-          "rank": 379,
+          "rank": 380,
           "value": 0
         },
         {
@@ -40801,7 +40882,7 @@ export const fantasyVorpData: Record<
           "team": "ATL",
           "position": "TE",
           "positionRank": 53,
-          "rank": 380,
+          "rank": 381,
           "value": 0
         },
         {
@@ -40810,7 +40891,7 @@ export const fantasyVorpData: Record<
           "team": "KC",
           "position": "TE",
           "positionRank": 54,
-          "rank": 381,
+          "rank": 382,
           "value": 0
         },
         {
@@ -40819,7 +40900,7 @@ export const fantasyVorpData: Record<
           "team": "SEA",
           "position": "TE",
           "positionRank": 55,
-          "rank": 382,
+          "rank": 383,
           "value": 0
         },
         {
@@ -40828,22 +40909,13 @@ export const fantasyVorpData: Record<
           "team": "PHI",
           "position": "TE",
           "positionRank": 56,
-          "rank": 383,
+          "rank": 384,
           "value": 0
         },
         {
           "playerId": "fp-24371",
           "name": "Isaiah Bond",
           "team": "CLE",
-          "position": "WR",
-          "positionRank": 126,
-          "rank": 384,
-          "value": 0
-        },
-        {
-          "playerId": "fp-28132",
-          "name": "Zavion Thomas",
-          "team": "CHI",
           "position": "WR",
           "positionRank": 127,
           "rank": 385,
@@ -41030,21 +41102,12 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-25349",
-          "name": "Ben Sims",
-          "team": "MIA",
-          "position": "TE",
-          "positionRank": 67,
-          "rank": 406,
-          "value": 0
-        },
-        {
           "playerId": "fp-12127",
           "name": "Odell Beckham Jr.",
           "team": "NYG",
           "position": "WR",
           "positionRank": 137,
-          "rank": 407,
+          "rank": 406,
           "value": 0
         },
         {
@@ -41053,7 +41116,7 @@ export const fantasyVorpData: Record<
           "team": "TB",
           "position": "WR",
           "positionRank": 138,
-          "rank": 408,
+          "rank": 407,
           "value": 0
         },
         {
@@ -41062,16 +41125,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "WR",
           "positionRank": 139,
-          "rank": 409,
-          "value": 0
-        },
-        {
-          "playerId": "fp-17533",
-          "name": "Jason Sanders",
-          "team": "FA",
-          "position": "K",
-          "positionRank": 33,
-          "rank": 410,
+          "rank": 408,
           "value": 0
         },
         {
@@ -41079,8 +41133,8 @@ export const fantasyVorpData: Record<
           "name": "Jackson Hawes",
           "team": "BUF",
           "position": "TE",
-          "positionRank": 68,
-          "rank": 411,
+          "positionRank": 67,
+          "rank": 409,
           "value": 0
         },
         {
@@ -41088,8 +41142,8 @@ export const fantasyVorpData: Record<
           "name": "Nate Adkins",
           "team": "DEN",
           "position": "TE",
-          "positionRank": 69,
-          "rank": 412,
+          "positionRank": 68,
+          "rank": 410,
           "value": 0
         },
         {
@@ -41097,8 +41151,8 @@ export const fantasyVorpData: Record<
           "name": "Ben Sinnott",
           "team": "WAS",
           "position": "TE",
-          "positionRank": 70,
-          "rank": 413,
+          "positionRank": 69,
+          "rank": 411,
           "value": 0
         },
         {
@@ -41107,7 +41161,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "WR",
           "positionRank": 140,
-          "rank": 414,
+          "rank": 412,
           "value": 0
         },
         {
@@ -41116,7 +41170,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "WR",
           "positionRank": 141,
-          "rank": 415,
+          "rank": 413,
           "value": 0
         },
         {
@@ -41124,8 +41178,8 @@ export const fantasyVorpData: Record<
           "name": "Jack Endries",
           "team": "CIN",
           "position": "TE",
-          "positionRank": 71,
-          "rank": 416,
+          "positionRank": 70,
+          "rank": 414,
           "value": 0
         },
         {
@@ -41133,8 +41187,8 @@ export const fantasyVorpData: Record<
           "name": "Foster Moreau",
           "team": "HOU",
           "position": "TE",
-          "positionRank": 72,
-          "rank": 417,
+          "positionRank": 71,
+          "rank": 415,
           "value": 0
         },
         {
@@ -41142,8 +41196,8 @@ export const fantasyVorpData: Record<
           "name": "Cade Stover",
           "team": "HOU",
           "position": "TE",
-          "positionRank": 73,
-          "rank": 418,
+          "positionRank": 72,
+          "rank": 416,
           "value": 0
         },
         {
@@ -41151,8 +41205,8 @@ export const fantasyVorpData: Record<
           "name": "Luke Schoonmaker",
           "team": "DAL",
           "position": "TE",
-          "positionRank": 74,
-          "rank": 419,
+          "positionRank": 73,
+          "rank": 417,
           "value": 0
         },
         {
@@ -41161,7 +41215,7 @@ export const fantasyVorpData: Record<
           "team": "NO",
           "position": "WR",
           "positionRank": 142,
-          "rank": 420,
+          "rank": 418,
           "value": 0
         },
         {
@@ -41169,8 +41223,8 @@ export const fantasyVorpData: Record<
           "name": "Bauer Sharp",
           "team": "TB",
           "position": "TE",
-          "positionRank": 75,
-          "rank": 421,
+          "positionRank": 74,
+          "rank": 419,
           "value": 0
         },
         {
@@ -41178,8 +41232,8 @@ export const fantasyVorpData: Record<
           "name": "Luke Musgrave",
           "team": "GB",
           "position": "TE",
-          "positionRank": 76,
-          "rank": 422,
+          "positionRank": 75,
+          "rank": 420,
           "value": 0
         },
         {
@@ -41187,8 +41241,8 @@ export const fantasyVorpData: Record<
           "name": "Mo Alie-Cox",
           "team": "IND",
           "position": "TE",
-          "positionRank": 77,
-          "rank": 423,
+          "positionRank": 76,
+          "rank": 421,
           "value": 0
         },
         {
@@ -41197,7 +41251,7 @@ export const fantasyVorpData: Record<
           "team": "KC",
           "position": "WR",
           "positionRank": 143,
-          "rank": 424,
+          "rank": 422,
           "value": 0
         },
         {
@@ -41206,7 +41260,7 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "WR",
           "positionRank": 144,
-          "rank": 425,
+          "rank": 423,
           "value": 0
         },
         {
@@ -41215,7 +41269,7 @@ export const fantasyVorpData: Record<
           "team": "GB",
           "position": "WR",
           "positionRank": 145,
-          "rank": 426,
+          "rank": 424,
           "value": 0
         },
         {
@@ -41223,8 +41277,8 @@ export const fantasyVorpData: Record<
           "name": "Dallen Bentley",
           "team": "DEN",
           "position": "TE",
-          "positionRank": 78,
-          "rank": 427,
+          "positionRank": 77,
+          "rank": 425,
           "value": 0
         },
         {
@@ -41232,8 +41286,17 @@ export const fantasyVorpData: Record<
           "name": "Thomas Fidone II",
           "team": "NYG",
           "position": "TE",
+          "positionRank": 78,
+          "rank": 426,
+          "value": 0
+        },
+        {
+          "playerId": "fp-23821",
+          "name": "Will Mallory",
+          "team": "IND",
+          "position": "TE",
           "positionRank": 79,
-          "rank": 428,
+          "rank": 427,
           "value": 0
         },
         {
@@ -41242,7 +41305,7 @@ export const fantasyVorpData: Record<
           "team": "KC",
           "position": "TE",
           "positionRank": 80,
-          "rank": 429,
+          "rank": 428,
           "value": 0
         },
         {
@@ -41251,7 +41314,7 @@ export const fantasyVorpData: Record<
           "team": "IND",
           "position": "WR",
           "positionRank": 146,
-          "rank": 430,
+          "rank": 429,
           "value": 0
         },
         {
@@ -41260,7 +41323,7 @@ export const fantasyVorpData: Record<
           "team": "DET",
           "position": "WR",
           "positionRank": 147,
-          "rank": 431,
+          "rank": 430,
           "value": 0
         },
         {
@@ -41269,7 +41332,7 @@ export const fantasyVorpData: Record<
           "team": "CLE",
           "position": "WR",
           "positionRank": 148,
-          "rank": 432,
+          "rank": 431,
           "value": 0
         },
         {
@@ -41278,7 +41341,7 @@ export const fantasyVorpData: Record<
           "team": "ATL",
           "position": "TE",
           "positionRank": 81,
-          "rank": 433,
+          "rank": 432,
           "value": 0
         },
         {
@@ -41287,7 +41350,7 @@ export const fantasyVorpData: Record<
           "team": "TEN",
           "position": "TE",
           "positionRank": 82,
-          "rank": 434,
+          "rank": 433,
           "value": 0
         },
         {
@@ -41296,7 +41359,7 @@ export const fantasyVorpData: Record<
           "team": "NO",
           "position": "TE",
           "positionRank": 83,
-          "rank": 435,
+          "rank": 434,
           "value": 0
         },
         {
@@ -41305,7 +41368,7 @@ export const fantasyVorpData: Record<
           "team": "BAL",
           "position": "TE",
           "positionRank": 84,
-          "rank": 436,
+          "rank": 435,
           "value": 0
         },
         {
@@ -41314,7 +41377,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "TE",
           "positionRank": 85,
-          "rank": 437,
+          "rank": 436,
           "value": 0
         },
         {
@@ -41323,7 +41386,7 @@ export const fantasyVorpData: Record<
           "team": "TB",
           "position": "TE",
           "positionRank": 86,
-          "rank": 438,
+          "rank": 437,
           "value": 0
         },
         {
@@ -41332,7 +41395,7 @@ export const fantasyVorpData: Record<
           "team": "LAC",
           "position": "WR",
           "positionRank": 149,
-          "rank": 439,
+          "rank": 438,
           "value": 0
         },
         {
@@ -41341,7 +41404,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "TE",
           "positionRank": 87,
-          "rank": 440,
+          "rank": 439,
           "value": 0
         },
         {
@@ -41350,7 +41413,7 @@ export const fantasyVorpData: Record<
           "team": "PHI",
           "position": "TE",
           "positionRank": 88,
-          "rank": 441,
+          "rank": 440,
           "value": 0
         },
         {
@@ -41359,7 +41422,7 @@ export const fantasyVorpData: Record<
           "team": "MIA",
           "position": "TE",
           "positionRank": 89,
-          "rank": 442,
+          "rank": 441,
           "value": 0
         },
         {
@@ -41368,7 +41431,7 @@ export const fantasyVorpData: Record<
           "team": "CIN",
           "position": "WR",
           "positionRank": 150,
-          "rank": 443,
+          "rank": 442,
           "value": 0
         },
         {
@@ -41377,7 +41440,7 @@ export const fantasyVorpData: Record<
           "team": "LAR",
           "position": "WR",
           "positionRank": 151,
-          "rank": 444,
+          "rank": 443,
           "value": 0
         },
         {
@@ -41386,7 +41449,7 @@ export const fantasyVorpData: Record<
           "team": "NE",
           "position": "WR",
           "positionRank": 152,
-          "rank": 445,
+          "rank": 444,
           "value": 0
         },
         {
@@ -41395,7 +41458,7 @@ export const fantasyVorpData: Record<
           "team": "SF",
           "position": "WR",
           "positionRank": 153,
-          "rank": 446,
+          "rank": 445,
           "value": 0
         },
         {
@@ -41404,7 +41467,7 @@ export const fantasyVorpData: Record<
           "team": "JAC",
           "position": "TE",
           "positionRank": 90,
-          "rank": 447,
+          "rank": 446,
           "value": 0
         },
         {
@@ -41413,7 +41476,7 @@ export const fantasyVorpData: Record<
           "team": "DAL",
           "position": "TE",
           "positionRank": 91,
-          "rank": 448,
+          "rank": 447,
           "value": 0
         },
         {
@@ -41422,7 +41485,7 @@ export const fantasyVorpData: Record<
           "team": "CHI",
           "position": "TE",
           "positionRank": 92,
-          "rank": 449,
+          "rank": 448,
           "value": 0
         },
         {
@@ -41431,7 +41494,7 @@ export const fantasyVorpData: Record<
           "team": "DAL",
           "position": "WR",
           "positionRank": 154,
-          "rank": 450,
+          "rank": 449,
           "value": 0
         },
         {
@@ -41440,7 +41503,7 @@ export const fantasyVorpData: Record<
           "team": "JAC",
           "position": "WR",
           "positionRank": 155,
-          "rank": 451,
+          "rank": 450,
           "value": 0
         },
         {
@@ -41449,7 +41512,7 @@ export const fantasyVorpData: Record<
           "team": "PHI",
           "position": "WR",
           "positionRank": 156,
-          "rank": 452,
+          "rank": 451,
           "value": 0
         },
         {
@@ -41458,7 +41521,7 @@ export const fantasyVorpData: Record<
           "team": "MIN",
           "position": "WR",
           "positionRank": 157,
-          "rank": 453,
+          "rank": 452,
           "value": 0
         },
         {
@@ -41467,7 +41530,7 @@ export const fantasyVorpData: Record<
           "team": "ARI",
           "position": "WR",
           "positionRank": 158,
-          "rank": 454,
+          "rank": 453,
           "value": 0
         },
         {
@@ -41476,7 +41539,7 @@ export const fantasyVorpData: Record<
           "team": "LV",
           "position": "WR",
           "positionRank": 159,
-          "rank": 455,
+          "rank": 454,
           "value": 0
         },
         {
@@ -41485,7 +41548,7 @@ export const fantasyVorpData: Record<
           "team": "CAR",
           "position": "WR",
           "positionRank": 160,
-          "rank": 456,
+          "rank": 455,
           "value": 0
         },
         {
@@ -41494,7 +41557,7 @@ export const fantasyVorpData: Record<
           "team": "BAL",
           "position": "TE",
           "positionRank": 93,
-          "rank": 457,
+          "rank": 456,
           "value": 0
         },
         {
@@ -41503,7 +41566,7 @@ export const fantasyVorpData: Record<
           "team": "GB",
           "position": "TE",
           "positionRank": 94,
-          "rank": 458,
+          "rank": 457,
           "value": 0
         },
         {
@@ -41512,7 +41575,7 @@ export const fantasyVorpData: Record<
           "team": "TB",
           "position": "TE",
           "positionRank": 95,
-          "rank": 459,
+          "rank": 458,
           "value": 0
         },
         {
@@ -41521,7 +41584,7 @@ export const fantasyVorpData: Record<
           "team": "ARI",
           "position": "TE",
           "positionRank": 96,
-          "rank": 460,
+          "rank": 459,
           "value": 0
         },
         {
@@ -41530,7 +41593,7 @@ export const fantasyVorpData: Record<
           "team": "LV",
           "position": "TE",
           "positionRank": 97,
-          "rank": 461,
+          "rank": 460,
           "value": 0
         },
         {
@@ -41538,8 +41601,8 @@ export const fantasyVorpData: Record<
           "name": "Ben Sauls",
           "team": "FA",
           "position": "K",
-          "positionRank": 34,
-          "rank": 462,
+          "positionRank": 33,
+          "rank": 461,
           "value": 0
         },
         {
@@ -41548,7 +41611,7 @@ export const fantasyVorpData: Record<
           "team": "IND",
           "position": "TE",
           "positionRank": 98,
-          "rank": 463,
+          "rank": 462,
           "value": 0
         },
         {
@@ -41557,7 +41620,7 @@ export const fantasyVorpData: Record<
           "team": "NYJ",
           "position": "WR",
           "positionRank": 161,
-          "rank": 464,
+          "rank": 463,
           "value": 0
         },
         {
@@ -41566,7 +41629,7 @@ export const fantasyVorpData: Record<
           "team": "NYG",
           "position": "TE",
           "positionRank": 99,
-          "rank": 465,
+          "rank": 464,
           "value": 0
         },
         {
@@ -41575,7 +41638,7 @@ export const fantasyVorpData: Record<
           "team": "CLE",
           "position": "TE",
           "positionRank": 100,
-          "rank": 466,
+          "rank": 465,
           "value": 0
         },
         {
@@ -41584,7 +41647,7 @@ export const fantasyVorpData: Record<
           "team": "PIT",
           "position": "WR",
           "positionRank": 162,
-          "rank": 467,
+          "rank": 466,
           "value": 0
         },
         {
@@ -41593,7 +41656,7 @@ export const fantasyVorpData: Record<
           "team": "TB",
           "position": "WR",
           "positionRank": 163,
-          "rank": 468,
+          "rank": 467,
           "value": 0
         },
         {
@@ -41602,16 +41665,16 @@ export const fantasyVorpData: Record<
           "team": "PIT",
           "position": "WR",
           "positionRank": 164,
-          "rank": 469,
+          "rank": 468,
           "value": 0
         },
         {
-          "playerId": "fp-17826",
-          "name": "Tanner Hudson",
-          "team": "CIN",
+          "playerId": "fp-28079",
+          "name": "Justin Joly",
+          "team": "FA",
           "position": "TE",
           "positionRank": 101,
-          "rank": 470,
+          "rank": 469,
           "value": 0
         },
         {
@@ -41620,7 +41683,7 @@ export const fantasyVorpData: Record<
           "team": "SEA",
           "position": "TE",
           "positionRank": 102,
-          "rank": 471,
+          "rank": 470,
           "value": 0
         },
         {
@@ -41629,7 +41692,7 @@ export const fantasyVorpData: Record<
           "team": "SF",
           "position": "TE",
           "positionRank": 103,
-          "rank": 472,
+          "rank": 471,
           "value": 0
         },
         {
@@ -41638,7 +41701,7 @@ export const fantasyVorpData: Record<
           "team": "PHI",
           "position": "TE",
           "positionRank": 104,
-          "rank": 473,
+          "rank": 472,
           "value": 0
         },
         {
@@ -41647,7 +41710,7 @@ export const fantasyVorpData: Record<
           "team": "CLE",
           "position": "TE",
           "positionRank": 105,
-          "rank": 474,
+          "rank": 473,
           "value": 0
         },
         {
@@ -41656,6 +41719,15 @@ export const fantasyVorpData: Record<
           "team": "LV",
           "position": "QB",
           "positionRank": 30,
+          "rank": 474,
+          "value": 0
+        },
+        {
+          "playerId": "fp-17533",
+          "name": "Jason Sanders",
+          "team": "FA",
+          "position": "K",
+          "positionRank": 34,
           "rank": 475,
           "value": 0
         },
@@ -42002,18 +42074,18 @@ export const fantasyVorpData: Record<
           "value": 0
         },
         {
-          "playerId": "fp-25967",
-          "name": "Joe Milton III",
-          "team": "DAL",
+          "playerId": "fp-23066",
+          "name": "Kyle McCord",
+          "team": "MIA",
           "position": "QB",
           "positionRank": 69,
           "rank": 514,
           "value": 0
         },
         {
-          "playerId": "fp-23066",
-          "name": "Kyle McCord",
-          "team": "MIA",
+          "playerId": "fp-25967",
+          "name": "Joe Milton III",
+          "team": "FA",
           "position": "QB",
           "positionRank": 70,
           "rank": 515,
@@ -42044,6 +42116,15 @@ export const fantasyVorpData: Record<
           "position": "QB",
           "positionRank": 73,
           "rank": 518,
+          "value": 0
+        },
+        {
+          "playerId": "fp-27161",
+          "name": "Brady Cook",
+          "team": "FA",
+          "position": "QB",
+          "positionRank": 74,
+          "rank": 519,
           "value": 0
         }
       ]
