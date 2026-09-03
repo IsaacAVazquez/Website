@@ -13,7 +13,7 @@ export const formula1Snapshot: Formula1Snapshot = {
     "constructorStandings": "https://api.openf1.org/v1/championship_teams?session_key=11353"
   },
   "season": 2026,
-  "generatedAt": "2026-09-03T04:14:44.579Z",
+  "generatedAt": "2026-09-03T11:06:18.404Z",
   "defaultMeetingKey": "1293",
   "standingsMeetingKey": "1292",
   "meetings": [
@@ -5444,7 +5444,7 @@ export const formula1Snapshot: Formula1Snapshot = {
           "acronym": "TSU",
           "teamName": "Racing Bulls",
           "teamColor": "#6C98FF",
-          "headshotUrl": null,
+          "headshotUrl": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/Y/YUKTSU01_Yuki_Tsunoda/yuktsu01.png.transform/1col/image.png",
           "lapsCompleted": 71,
           "points": 0,
           "status": "classified",
@@ -6618,7 +6618,7 @@ export const formula1Snapshot: Formula1Snapshot = {
       "acronym": "TSU",
       "teamName": "Racing Bulls",
       "teamColor": "#6C98FF",
-      "headshotUrl": null,
+      "headshotUrl": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/Y/YUKTSU01_Yuki_Tsunoda/yuktsu01.png.transform/1col/image.png",
       "points": 0,
       "pointsBeforeRace": 0,
       "pointsDelta": 0
@@ -7059,7 +7059,7 @@ export const formula1Snapshot: Formula1Snapshot = {
         "acronym": "TSU",
         "teamName": "Racing Bulls",
         "teamColor": "#6C98FF",
-        "headshotUrl": null,
+        "headshotUrl": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/Y/YUKTSU01_Yuki_Tsunoda/yuktsu01.png.transform/1col/image.png",
         "lapsCompleted": 71,
         "points": 0,
         "status": "classified",
