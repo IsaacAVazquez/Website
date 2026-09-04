@@ -1125,7 +1125,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "totalGoals": 32
       }
     ],
-    "generatedAt": "2026-09-04T04:37:08.900Z"
+    "generatedAt": "2026-09-04T12:44:35.159Z"
   },
   "teamSnapshots": {
     "57": {
@@ -1141,7 +1141,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "clubColors": "Red / White",
         "website": "http://www.arsenal.com",
         "address": "75 Drayton Park London N5 1BU",
-        "manager": "Mikel Arteta"
+        "manager": null
       },
       "recentFixtures": [
         {
@@ -1341,7 +1341,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 4,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-09-04T04:37:08.900Z"
+      "generatedAt": "2026-09-04T12:44:35.159Z"
     },
     "58": {
       "team": {
@@ -1515,7 +1515,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "clubColors": "Royal Blue / White",
         "website": "http://www.chelseafc.com",
         "address": "Fulham Road London SW6 1HS",
-        "manager": "Xabi Alonso"
+        "manager": null
       },
       "recentFixtures": [
         {
@@ -1715,7 +1715,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 7,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-09-04T04:37:08.900Z"
+      "generatedAt": "2026-09-04T12:44:35.159Z"
     },
     "62": {
       "team": {
@@ -1730,7 +1730,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "clubColors": "Blue / White",
         "website": "http://www.evertonfc.com",
         "address": "Goodison Park Liverpool L4 4EL",
-        "manager": "David Moyes"
+        "manager": null
       },
       "recentFixtures": [
         {
@@ -1930,7 +1930,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 3,
         "goalsAgainst": 1
       },
-      "generatedAt": "2026-09-04T04:37:08.900Z"
+      "generatedAt": "2026-09-04T12:44:35.159Z"
     },
     "63": {
       "team": {
@@ -1945,7 +1945,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "clubColors": "White / Black",
         "website": "http://www.fulhamfc.com",
         "address": "Craven Cottage, Stevenage Road London SW6 6HH",
-        "manager": "Arbeloa"
+        "manager": null
       },
       "recentFixtures": [
         {
@@ -2145,7 +2145,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 2,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-09-04T04:37:08.900Z"
+      "generatedAt": "2026-09-04T12:44:35.159Z"
     },
     "64": {
       "team": {
@@ -2375,7 +2375,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "clubColors": "Sky Blue / White",
         "website": "https://www.mancity.com",
         "address": "SportCity Manchester M11 3FF",
-        "manager": "Enzo Maresca"
+        "manager": null
       },
       "recentFixtures": [
         {
@@ -2575,7 +2575,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 6,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-09-04T04:37:08.900Z"
+      "generatedAt": "2026-09-04T12:44:35.159Z"
     },
     "66": {
       "team": {
@@ -2590,7 +2590,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "clubColors": "Red / White",
         "website": "http://www.manutd.com",
         "address": "Sir Matt Busby Way Manchester M16 0RA",
-        "manager": "Michael Carrick"
+        "manager": null
       },
       "recentFixtures": [
         {
@@ -2790,7 +2790,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 5,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-09-04T04:37:08.900Z"
+      "generatedAt": "2026-09-04T12:44:35.159Z"
     },
     "67": {
       "team": {
@@ -3020,7 +3020,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "clubColors": "Red / White",
         "website": "http://www.safc.com",
         "address": "The Sunderland Stadium of Light Sunderland SR5 1SU",
-        "manager": "Regis Le Bris"
+        "manager": null
       },
       "recentFixtures": [
         {
@@ -3220,7 +3220,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 2,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-09-04T04:37:08.900Z"
+      "generatedAt": "2026-09-04T12:44:35.159Z"
     },
     "73": {
       "team": {
@@ -3613,7 +3613,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "clubColors": "Orange / Black",
         "website": "http://www.hullcitytigers.com",
         "address": "Walton Street Hull HU3 6HU",
-        "manager": "Sergej Jakirović"
+        "manager": null
       },
       "recentFixtures": [
         {
@@ -3813,7 +3813,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 3,
         "goalsAgainst": 0
       },
-      "generatedAt": "2026-09-04T04:37:08.900Z"
+      "generatedAt": "2026-09-04T12:44:35.159Z"
     },
     "328": {
       "team": {
@@ -4206,7 +4206,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "clubColors": "Blue / White",
         "website": "http://www.itfc.co.uk",
         "address": "Portman Road Ipswich IP1 2DA",
-        "manager": "Gary O'Neil"
+        "manager": null
       },
       "recentFixtures": [
         {
@@ -4406,7 +4406,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 4,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-09-04T04:37:08.900Z"
+      "generatedAt": "2026-09-04T12:44:35.159Z"
     },
     "351": {
       "team": {
@@ -4421,7 +4421,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "clubColors": "Red / White",
         "website": "http://www.nottinghamforest.co.uk",
         "address": "Pavilion Road, West Bridgeford Nottingham NG2 5GJ",
-        "manager": "Oliver Glasner"
+        "manager": null
       },
       "recentFixtures": [
         {
@@ -4621,7 +4621,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 2,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-09-04T04:37:08.900Z"
+      "generatedAt": "2026-09-04T12:44:35.159Z"
     },
     "354": {
       "team": {
@@ -4636,7 +4636,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "clubColors": "Red / Blue",
         "website": "http://www.cpfc.co.uk",
         "address": "Whitehorse Lane London SE25 6PU",
-        "manager": "Pierre Sage"
+        "manager": null
       },
       "recentFixtures": [
         {
@@ -4836,7 +4836,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 1,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-09-04T04:37:08.900Z"
+      "generatedAt": "2026-09-04T12:44:35.159Z"
     },
     "397": {
       "team": {
@@ -4851,7 +4851,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "clubColors": "Blue / White",
         "website": "http://www.seagulls.co.uk",
         "address": "44 North Road Brighton & Hove BN1 1YR",
-        "manager": "Fabian Hürzeler"
+        "manager": null
       },
       "recentFixtures": [
         {
@@ -5051,7 +5051,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 7,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-09-04T04:37:08.900Z"
+      "generatedAt": "2026-09-04T12:44:35.159Z"
     },
     "402": {
       "team": {
@@ -5066,7 +5066,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "clubColors": "Red / White / Black",
         "website": "http://www.brentfordfc.co.uk",
         "address": "Braemar Road Brentford TW8 0NT",
-        "manager": "Keith Andrews"
+        "manager": null
       },
       "recentFixtures": [
         {
@@ -5266,7 +5266,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 4,
         "goalsAgainst": 1
       },
-      "generatedAt": "2026-09-04T04:37:08.900Z"
+      "generatedAt": "2026-09-04T12:44:35.159Z"
     },
     "563": {
       "team": {
@@ -5444,7 +5444,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "clubColors": "Red / Black",
         "website": "http://www.afcb.co.uk",
         "address": "Dean Court, Kings Park Bournemouth BH7 7AF",
-        "manager": "Marco Rose"
+        "manager": null
       },
       "recentFixtures": [
         {
@@ -5644,7 +5644,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 2,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-09-04T04:37:08.900Z"
+      "generatedAt": "2026-09-04T12:44:35.159Z"
     },
     "1076": {
       "team": {
@@ -5659,7 +5659,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "clubColors": "Sky Blue / White",
         "website": "http://www.ccfc.co.uk",
         "address": "Gallagher Retail Park, Stoney Stanton Road Coventry CV6 5QE",
-        "manager": "Frank Lampard"
+        "manager": null
       },
       "recentFixtures": [
         {
@@ -5859,7 +5859,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-09-04T04:37:08.900Z"
+      "generatedAt": "2026-09-04T12:44:35.159Z"
     }
   }
 };
