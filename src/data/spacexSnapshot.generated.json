@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-04T13:36:41.576Z",
+  "generatedAt": "2026-09-04T23:05:54.754Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -128,7 +128,7 @@
       {
         "id": "upcoming",
         "label": "Upcoming queue",
-        "value": "126",
+        "value": "125",
         "description": "currently published future SpaceX missions from Launch Library 2"
       },
       {
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-09-04T13:36:36.893Z"
+    "generatedAt": "2026-09-04T23:05:50.280Z"
   },
   "upcomingLaunches": [
     {
@@ -234,6 +234,46 @@
       }
     },
     {
+      "id": "ad358a4d-c541-409b-9366-9c2f2da4aeb9",
+      "name": "O3b mPower 11-13",
+      "flightNumber": 728,
+      "upcoming": true,
+      "success": null,
+      "details": "3 high-throughput communications satellites in Medium Earth Orbit (MEO) built by Boeing and operated by SES.",
+      "dateUtc": "2026-09-13T18:50:00Z",
+      "dateUnix": 1789325400,
+      "dateLocal": "2026-09-13T18:50:00Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 40",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/SES_S.A.",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
       "id": "18441371-8b2e-457c-afb5-1ec1b11ab630",
       "name": "Crew-13",
       "flightNumber": 731,
@@ -310,46 +350,6 @@
         "patchLarge": null,
         "flickrOriginal": [
           "/data/spacex/images/4bf502ff63e8fce9.jpg"
-        ]
-      }
-    },
-    {
-      "id": "ad358a4d-c541-409b-9366-9c2f2da4aeb9",
-      "name": "O3b mPower 11-13",
-      "flightNumber": 731,
-      "upcoming": true,
-      "success": null,
-      "details": "3 high-throughput communications satellites in Medium Earth Orbit (MEO) built by Boeing and operated by SES.",
-      "dateUtc": "2026-09-30T00:00:00Z",
-      "dateUnix": 1790726400,
-      "dateLocal": "2026-09-30T00:00:00Z",
-      "datePrecision": "month",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 40",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/SES_S.A.",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
         ]
       }
     },
@@ -447,7 +447,7 @@
       "tbd": true,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Unknown Pad",
+      "launchpadName": "Space Launch Complex 40",
       "launchpadLocation": "Cape Canaveral SFS, FL, USA",
       "patchImage": null,
       "vehicleImage": "/data/spacex/images/5efabdd13dfdeda1.jpg",
@@ -2571,34 +2571,34 @@
       "capsules": [],
       "cores": []
     },
-    "18441371-8b2e-457c-afb5-1ec1b11ab630": {
-      "id": "18441371-8b2e-457c-afb5-1ec1b11ab630",
-      "name": "Crew-13",
-      "flightNumber": 731,
+    "ad358a4d-c541-409b-9366-9c2f2da4aeb9": {
+      "id": "ad358a4d-c541-409b-9366-9c2f2da4aeb9",
+      "name": "O3b mPower 11-13",
+      "flightNumber": 728,
       "upcoming": true,
       "success": null,
-      "details": "SpaceX Crew-13 is the thirteenth crewed operational flight of a Crew Dragon spacecraft to the International Space Station as part of NASA's Commercial Crew Program.",
-      "dateUtc": "2026-09-30T00:00:00Z",
-      "dateUnix": 1790726400,
-      "dateLocal": "2026-09-30T00:00:00Z",
-      "datePrecision": "month",
-      "tbd": true,
+      "details": "3 high-throughput communications satellites in Medium Earth Orbit (MEO) built by Boeing and operated by SES.",
+      "dateUtc": "2026-09-13T18:50:00Z",
+      "dateUnix": 1789325400,
+      "dateLocal": "2026-09-13T18:50:00Z",
+      "datePrecision": "hour",
+      "tbd": false,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
       "launchpadName": "Space Launch Complex 40",
       "launchpadLocation": "Cape Canaveral SFS, FL, USA",
       "patchImage": null,
-      "vehicleImage": "/data/spacex/images/b210241b31da2900.jpg",
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
       "crewCount": 0,
       "payloadCount": 1,
       "capsuleCount": 0,
       "coreCount": 1,
-      "hasExactTime": false,
+      "hasExactTime": true,
       "isStaleSchedule": false,
       "links": {
         "webcast": null,
-        "article": "https://www.nasa.gov/exploration/commercial/crew/index.html",
-        "wikipedia": "https://en.wikipedia.org/wiki/Commercial_Crew_Program",
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/SES_S.A.",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -2607,11 +2607,11 @@
         "patchSmall": null,
         "patchLarge": null,
         "flickrOriginal": [
-          "/data/spacex/images/b210241b31da2900.jpg"
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
         ]
       },
       "staticFireDateUtc": null,
-      "window": 0,
+      "window": 5820,
       "failures": [],
       "rocket": {
         "id": "164",
@@ -2632,8 +2632,7 @@
         "massKg": 549000,
         "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
         "flickrImages": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg",
-          "/data/spacex/images/b210241b31da2900.jpg"
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
         ]
       },
       "launchpad": {
@@ -2650,24 +2649,20 @@
       "crew": [],
       "payloads": [
         {
-          "id": "6043",
-          "name": "Crew-13",
-          "type": "Human Exploration",
+          "id": "7037",
+          "name": "O3b mPower 11-13",
+          "type": "Communications",
           "customers": [
-            "Canadian Space Agency",
-            "National Aeronautics and Space Administration",
-            "Russian Federal Space Agency (ROSCOSMOS)"
+            "SES"
           ],
           "manufacturers": [
             "SpaceX"
           ],
           "nationalities": [
-            "CAN",
-            "USA",
-            "RUS"
+            "LUX"
           ],
-          "orbit": "Low Earth Orbit",
-          "regime": "LEO",
+          "orbit": "Medium Earth Orbit",
+          "regime": "MEO",
           "massKg": null,
           "massLbs": null
         }
@@ -2936,6 +2931,6 @@
       }
     ],
     "rangeLabel": "Oct 25 – Sep 26",
-    "generatedAt": "2026-09-04T13:36:41.576Z"
+    "generatedAt": "2026-09-04T23:05:54.754Z"
   }
 }
