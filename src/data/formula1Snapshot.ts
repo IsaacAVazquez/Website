@@ -13,8 +13,8 @@ export const formula1Snapshot: Formula1Snapshot = {
     "constructorStandings": "https://api.openf1.org/v1/championship_teams?session_key=11353"
   },
   "season": 2026,
-  "generatedAt": "2026-09-04T04:21:28.948Z",
-  "defaultMeetingKey": "1293",
+  "generatedAt": "2026-09-04T16:16:00.760Z",
+  "defaultMeetingKey": "1294",
   "standingsMeetingKey": "1292",
   "meetings": [
     {
@@ -5696,7 +5696,7 @@ export const formula1Snapshot: Formula1Snapshot = {
       "gmtOffset": "02:00:00",
       "startAt": "2026-09-04T10:30:00+00:00",
       "endAt": "2026-09-06T15:00:00+00:00",
-      "status": "upcoming",
+      "status": "live",
       "hasSprint": false,
       "raceSessionKey": "11361",
       "raceStartsAt": "2026-09-06T13:00:00+00:00",
@@ -6771,63 +6771,63 @@ export const formula1Snapshot: Formula1Snapshot = {
     "season": 2026,
     "totalRaces": 25,
     "completedRaces": 14,
-    "upcomingRaces": 11,
+    "upcomingRaces": 10,
     "sprintWeekends": 6
   },
   "nextMeeting": {
-    "key": "1293",
-    "name": "Italian Grand Prix",
-    "officialName": "FORMULA 1 PIRELLI GRAN PREMIO D’ITALIA 2026",
-    "location": "Monza",
-    "countryName": "Italy",
-    "countryCode": "ITA",
-    "countryFlag": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/italy-flag.png",
-    "circuitKey": "39",
-    "circuitShortName": "Monza",
-    "circuitType": "Permanent",
-    "circuitImage": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Italy%20carbon.png",
+    "key": "1294",
+    "name": "Spanish Grand Prix",
+    "officialName": "FORMULA 1 TAG HEUER GRAN PREMIO DE ESPAÑA 2026",
+    "location": "Madrid",
+    "countryName": "Spain",
+    "countryCode": "ESP",
+    "countryFlag": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/spain-flag.png",
+    "circuitKey": "153",
+    "circuitShortName": "Madring",
+    "circuitType": "Temporary - Street",
+    "circuitImage": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Spain%20carbon.png",
     "gmtOffset": "02:00:00",
-    "startAt": "2026-09-04T10:30:00+00:00",
-    "endAt": "2026-09-06T15:00:00+00:00",
+    "startAt": "2026-09-11T11:30:00+00:00",
+    "endAt": "2026-09-13T15:00:00+00:00",
     "status": "upcoming",
     "hasSprint": false,
-    "raceSessionKey": "11361",
-    "raceStartsAt": "2026-09-06T13:00:00+00:00",
+    "raceSessionKey": "11369",
+    "raceStartsAt": "2026-09-13T13:00:00+00:00",
     "sessions": [
       {
-        "key": "11354",
+        "key": "11362",
         "name": "Practice 1",
         "type": "Practice",
-        "startAt": "2026-09-04T10:30:00+00:00",
-        "endAt": "2026-09-04T11:30:00+00:00"
+        "startAt": "2026-09-11T11:30:00+00:00",
+        "endAt": "2026-09-11T12:30:00+00:00"
       },
       {
-        "key": "11355",
+        "key": "11363",
         "name": "Practice 2",
         "type": "Practice",
-        "startAt": "2026-09-04T14:00:00+00:00",
-        "endAt": "2026-09-04T15:00:00+00:00"
+        "startAt": "2026-09-11T15:00:00+00:00",
+        "endAt": "2026-09-11T16:00:00+00:00"
       },
       {
-        "key": "11356",
+        "key": "11364",
         "name": "Practice 3",
         "type": "Practice",
-        "startAt": "2026-09-05T10:30:00+00:00",
-        "endAt": "2026-09-05T11:30:00+00:00"
+        "startAt": "2026-09-12T10:30:00+00:00",
+        "endAt": "2026-09-12T11:30:00+00:00"
       },
       {
-        "key": "11357",
+        "key": "11365",
         "name": "Qualifying",
         "type": "Qualifying",
-        "startAt": "2026-09-05T14:00:00+00:00",
-        "endAt": "2026-09-05T15:00:00+00:00"
+        "startAt": "2026-09-12T14:00:00+00:00",
+        "endAt": "2026-09-12T15:00:00+00:00"
       },
       {
-        "key": "11361",
+        "key": "11369",
         "name": "Race",
         "type": "Race",
-        "startAt": "2026-09-06T13:00:00+00:00",
-        "endAt": "2026-09-06T15:00:00+00:00"
+        "startAt": "2026-09-13T13:00:00+00:00",
+        "endAt": "2026-09-13T15:00:00+00:00"
       }
     ],
     "classification": [],
