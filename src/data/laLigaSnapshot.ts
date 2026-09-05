@@ -4,7 +4,7 @@ import type { LaLigaSnapshot } from "@/types/la-liga";
 export const laLigaSnapshot: LaLigaSnapshot = {
   "season": "2026/27",
   "matchday": 6,
-  "generatedAt": "2026-09-05T18:28:16.445Z",
+  "generatedAt": "2026-09-05T22:08:13.527Z",
   "updatedAt": "2026-09-05",
   "sourceLabel": "football-data.org",
   "sourceUrls": {
@@ -62,11 +62,27 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "accentColor": "#00954C"
     },
     {
+      "id": "dep",
+      "code": "DEP",
+      "name": "RC Deportivo La Coruña",
+      "shortName": "Deportivo",
+      "position": 4,
+      "points": 8,
+      "played": 4,
+      "won": 2,
+      "drawn": 2,
+      "lost": 0,
+      "goalsFor": 8,
+      "goalsAgainst": 5,
+      "goalDifference": 3,
+      "accentColor": "#0E5FA8"
+    },
+    {
       "id": "ala",
       "code": "ALA",
       "name": "Deportivo Alavés",
       "shortName": "Alavés",
-      "position": 4,
+      "position": 5,
       "points": 7,
       "played": 3,
       "won": 2,
@@ -82,7 +98,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "code": "OSA",
       "name": "CA Osasuna",
       "shortName": "Osasuna",
-      "position": 5,
+      "position": 6,
       "points": 7,
       "played": 3,
       "won": 2,
@@ -98,7 +114,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "code": "ATL",
       "name": "Club Atlético de Madrid",
       "shortName": "Atleti",
-      "position": 6,
+      "position": 7,
       "points": 7,
       "played": 4,
       "won": 2,
@@ -114,7 +130,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "code": "ATH",
       "name": "Athletic Club",
       "shortName": "Athletic",
-      "position": 7,
+      "position": 8,
       "points": 6,
       "played": 4,
       "won": 2,
@@ -130,7 +146,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "code": "SEV",
       "name": "Sevilla FC",
       "shortName": "Sevilla FC",
-      "position": 7,
+      "position": 8,
       "points": 6,
       "played": 3,
       "won": 2,
@@ -140,22 +156,6 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "goalsAgainst": 5,
       "goalDifference": 1,
       "accentColor": "#D2001C"
-    },
-    {
-      "id": "dep",
-      "code": "DEP",
-      "name": "RC Deportivo La Coruña",
-      "shortName": "Deportivo",
-      "position": 9,
-      "points": 5,
-      "played": 3,
-      "won": 1,
-      "drawn": 2,
-      "lost": 0,
-      "goalsFor": 5,
-      "goalsAgainst": 3,
-      "goalDifference": 2,
-      "accentColor": "#0E5FA8"
     },
     {
       "id": "lev",
@@ -260,13 +260,13 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "shortName": "Villarreal",
       "position": 16,
       "points": 2,
-      "played": 3,
+      "played": 4,
       "won": 0,
       "drawn": 2,
-      "lost": 1,
-      "goalsFor": 4,
-      "goalsAgainst": 5,
-      "goalDifference": -1,
+      "lost": 2,
+      "goalsFor": 6,
+      "goalsAgainst": 8,
+      "goalDifference": -2,
       "accentColor": "#FDE100"
     },
     {
@@ -355,6 +355,15 @@ export const laLigaSnapshot: LaLigaSnapshot = {
     },
     {
       "rank": 3,
+      "name": "Pierre-Emerick Aubameyang",
+      "clubId": "dep",
+      "clubCode": "DEP",
+      "total": 4,
+      "appearances": 4,
+      "perMatch": 1
+    },
+    {
+      "rank": 4,
       "name": "Kylian Mbappé",
       "clubId": "rma",
       "clubCode": "RMA",
@@ -363,22 +372,13 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "perMatch": 1
     },
     {
-      "rank": 4,
+      "rank": 5,
       "name": "Roberto Fernández",
       "clubId": "esp",
       "clubCode": "ESP",
       "total": 3,
       "appearances": 3,
       "perMatch": 1
-    },
-    {
-      "rank": 5,
-      "name": "Pierre-Emerick Aubameyang",
-      "clubId": "dep",
-      "clubCode": "DEP",
-      "total": 3,
-      "appearances": 4,
-      "perMatch": 0.75
     },
     {
       "rank": 6,
@@ -418,9 +418,9 @@ export const laLigaSnapshot: LaLigaSnapshot = {
     },
     {
       "rank": 10,
-      "name": "Rodrigo Riquelme",
-      "clubId": "bet",
-      "clubCode": "BET",
+      "name": "Nicolas Pépé",
+      "clubId": "vil",
+      "clubCode": "VIL",
       "total": 2,
       "appearances": 4,
       "perMatch": 0.5
@@ -429,6 +429,15 @@ export const laLigaSnapshot: LaLigaSnapshot = {
   "assists": [
     {
       "rank": 1,
+      "name": "Pierre-Emerick Aubameyang",
+      "clubId": "dep",
+      "clubCode": "DEP",
+      "total": 2,
+      "appearances": 4,
+      "perMatch": 0.5
+    },
+    {
+      "rank": 2,
       "name": "Mariano Díaz",
       "clubId": "ala",
       "clubCode": "ALA",
@@ -437,7 +446,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "perMatch": 0.6666666666666666
     },
     {
-      "rank": 2,
+      "rank": 3,
       "name": "Sergio Camello",
       "clubId": "ray",
       "clubCode": "RAY",
@@ -446,7 +455,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
       "perMatch": 0.25
     },
     {
-      "rank": 3,
+      "rank": 4,
       "name": "Álex Baena",
       "clubId": "atl",
       "clubCode": "ATL",
@@ -470,7 +479,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
     },
     {
       "matchday": 4,
-      "totalGoals": 4
+      "totalGoals": 14
     },
     {
       "matchday": 6,
@@ -478,6 +487,58 @@ export const laLigaSnapshot: LaLigaSnapshot = {
     }
   ],
   "recentFixtures": [
+    {
+      "id": "564662",
+      "utcDate": "2026-09-05T19:00:00Z",
+      "status": "FINISHED",
+      "matchday": 4,
+      "stage": "REGULAR_SEASON",
+      "homeTeam": {
+        "id": "94",
+        "name": "Villarreal CF",
+        "shortName": "Villarreal",
+        "tla": "VIL",
+        "crest": "https://crests.football-data.org/94.png"
+      },
+      "awayTeam": {
+        "id": "560",
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP",
+        "crest": "https://crests.football-data.org/560.png"
+      },
+      "score": {
+        "winner": "AWAY_TEAM",
+        "home": 2,
+        "away": 3
+      }
+    },
+    {
+      "id": "564660",
+      "utcDate": "2026-09-05T16:30:00Z",
+      "status": "FINISHED",
+      "matchday": 4,
+      "stage": "REGULAR_SEASON",
+      "homeTeam": {
+        "id": "87",
+        "name": "Rayo Vallecano de Madrid",
+        "shortName": "Rayo Vallecano",
+        "tla": "RAY",
+        "crest": "https://crests.football-data.org/87.png"
+      },
+      "awayTeam": {
+        "id": "5335",
+        "name": "Real Racing Club de Santander",
+        "shortName": "Santander",
+        "tla": "SAN",
+        "crest": "https://crests.football-data.org/5335.png"
+      },
+      "score": {
+        "winner": "HOME_TEAM",
+        "home": 3,
+        "away": 2
+      }
+    },
     {
       "id": "564663",
       "utcDate": "2026-09-05T14:15:00Z",
@@ -633,87 +694,9 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "home": 0,
         "away": 2
       }
-    },
-    {
-      "id": "564651",
-      "utcDate": "2026-08-30T17:30:00Z",
-      "status": "FINISHED",
-      "matchday": 3,
-      "stage": "REGULAR_SEASON",
-      "homeTeam": {
-        "id": "560",
-        "name": "RC Deportivo La Coruña",
-        "shortName": "Deportivo",
-        "tla": "DEP",
-        "crest": "https://crests.football-data.org/560.png"
-      },
-      "awayTeam": {
-        "id": "95",
-        "name": "Valencia CF",
-        "shortName": "Valencia",
-        "tla": "VAL",
-        "crest": "https://crests.football-data.org/95.png"
-      },
-      "score": {
-        "winner": "HOME_TEAM",
-        "home": 3,
-        "away": 1
-      }
-    },
-    {
-      "id": "564656",
-      "utcDate": "2026-08-30T15:00:00Z",
-      "status": "FINISHED",
-      "matchday": 3,
-      "stage": "REGULAR_SEASON",
-      "homeTeam": {
-        "id": "86",
-        "name": "Real Madrid CF",
-        "shortName": "Real Madrid",
-        "tla": "RMA",
-        "crest": "https://crests.football-data.org/86.png"
-      },
-      "awayTeam": {
-        "id": "84",
-        "name": "Málaga CF",
-        "shortName": "Málaga",
-        "tla": "MAL",
-        "crest": "https://crests.football-data.org/84.png"
-      },
-      "score": {
-        "winner": "HOME_TEAM",
-        "home": 4,
-        "away": 0
-      }
     }
   ],
   "upcomingFixtures": [
-    {
-      "id": "564662",
-      "utcDate": "2026-09-05T19:00:00Z",
-      "status": "TIMED",
-      "matchday": 4,
-      "stage": "REGULAR_SEASON",
-      "homeTeam": {
-        "id": "94",
-        "name": "Villarreal CF",
-        "shortName": "Villarreal",
-        "tla": "VIL",
-        "crest": "https://crests.football-data.org/94.png"
-      },
-      "awayTeam": {
-        "id": "560",
-        "name": "RC Deportivo La Coruña",
-        "shortName": "Deportivo",
-        "tla": "DEP",
-        "crest": "https://crests.football-data.org/560.png"
-      },
-      "score": {
-        "winner": null,
-        "home": null,
-        "away": null
-      }
-    },
     {
       "id": "564659",
       "utcDate": "2026-09-06T14:15:00Z",
@@ -889,6 +872,32 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "shortName": "Valencia",
         "tla": "VAL",
         "crest": "https://crests.football-data.org/95.png"
+      },
+      "score": {
+        "winner": null,
+        "home": null,
+        "away": null
+      }
+    },
+    {
+      "id": "564670",
+      "utcDate": "2026-09-12T12:00:00Z",
+      "status": "TIMED",
+      "matchday": 5,
+      "stage": "REGULAR_SEASON",
+      "homeTeam": {
+        "id": "5335",
+        "name": "Real Racing Club de Santander",
+        "shortName": "Santander",
+        "tla": "SAN",
+        "crest": "https://crests.football-data.org/5335.png"
+      },
+      "awayTeam": {
+        "id": "263",
+        "name": "Deportivo Alavés",
+        "shortName": "Alavés",
+        "tla": "ALA",
+        "crest": "https://crests.football-data.org/263.png"
       },
       "score": {
         "winner": null,
@@ -1585,7 +1594,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 12,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-09-05T18:28:16.445Z"
+      "generatedAt": "2026-09-05T22:08:13.527Z"
     },
     "cel": {
       "team": {
@@ -1852,7 +1861,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 1,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-09-05T18:28:16.445Z"
+      "generatedAt": "2026-09-05T22:08:13.527Z"
     },
     "elc": {
       "team": {
@@ -2092,7 +2101,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 3,
         "goalsAgainst": 9
       },
-      "generatedAt": "2026-09-05T18:28:16.445Z"
+      "generatedAt": "2026-09-05T22:08:13.527Z"
     },
     "esp": {
       "team": {
@@ -2332,7 +2341,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 5,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-09-05T18:28:16.445Z"
+      "generatedAt": "2026-09-05T22:08:13.527Z"
     },
     "get": {
       "team": {
@@ -2973,7 +2982,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 5,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-09-05T18:28:16.445Z"
+      "generatedAt": "2026-09-05T22:08:13.527Z"
     },
     "mal": {
       "team": {
@@ -3213,7 +3222,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 1,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-09-05T18:28:16.445Z"
+      "generatedAt": "2026-09-05T22:08:13.527Z"
     },
     "osa": {
       "team": {
@@ -3453,7 +3462,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 3,
         "goalsAgainst": 1
       },
-      "generatedAt": "2026-09-05T18:28:16.445Z"
+      "generatedAt": "2026-09-05T22:08:13.527Z"
     },
     "ray": {
       "team": {
@@ -3720,7 +3729,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 7,
         "goalsAgainst": 10
       },
-      "generatedAt": "2026-09-05T18:28:16.445Z"
+      "generatedAt": "2026-09-05T22:08:13.527Z"
     },
     "bet": {
       "team": {
@@ -3987,7 +3996,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 5,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-09-05T18:28:16.445Z"
+      "generatedAt": "2026-09-05T22:08:13.527Z"
     },
     "rma": {
       "team": {
@@ -4254,7 +4263,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 10,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-09-05T18:28:16.445Z"
+      "generatedAt": "2026-09-05T22:08:13.527Z"
     },
     "ovi": {
       "team": {
@@ -4682,7 +4691,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 3,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-09-05T18:28:16.445Z"
+      "generatedAt": "2026-09-05T22:08:13.527Z"
     },
     "sev": {
       "team": {
@@ -4922,7 +4931,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 6,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-09-05T18:28:16.445Z"
+      "generatedAt": "2026-09-05T22:08:13.527Z"
     },
     "val": {
       "team": {
@@ -5162,7 +5171,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 1,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-09-05T18:28:16.445Z"
+      "generatedAt": "2026-09-05T22:08:13.527Z"
     },
     "vil": {
       "team": {
@@ -5178,6 +5187,32 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "manager": "Inigo Perez"
       },
       "recentFixtures": [
+        {
+          "id": "564662",
+          "utcDate": "2026-09-05T19:00:00Z",
+          "status": "FINISHED",
+          "matchday": 4,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "94",
+            "name": "Villarreal CF",
+            "shortName": "Villarreal",
+            "tla": "VIL",
+            "crest": "https://crests.football-data.org/94.png"
+          },
+          "awayTeam": {
+            "id": "560",
+            "name": "RC Deportivo La Coruña",
+            "shortName": "Deportivo",
+            "tla": "DEP",
+            "crest": "https://crests.football-data.org/560.png"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 2,
+            "away": 3
+          }
+        },
         {
           "id": "564648",
           "utcDate": "2026-08-28T19:30:00Z",
@@ -5258,32 +5293,6 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "564662",
-          "utcDate": "2026-09-05T19:00:00Z",
-          "status": "TIMED",
-          "matchday": 4,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "94",
-            "name": "Villarreal CF",
-            "shortName": "Villarreal",
-            "tla": "VIL",
-            "crest": "https://crests.football-data.org/94.png"
-          },
-          "awayTeam": {
-            "id": "560",
-            "name": "RC Deportivo La Coruña",
-            "shortName": "Deportivo",
-            "tla": "DEP",
-            "crest": "https://crests.football-data.org/560.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "564671",
           "utcDate": "2026-09-14T19:00:00Z",
@@ -5387,22 +5396,49 @@ export const laLigaSnapshot: LaLigaSnapshot = {
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "564708",
+          "utcDate": "2026-10-18T00:00:00Z",
+          "status": "SCHEDULED",
+          "matchday": 9,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "94",
+            "name": "Villarreal CF",
+            "shortName": "Villarreal",
+            "tla": "VIL",
+            "crest": "https://crests.football-data.org/94.png"
+          },
+          "awayTeam": {
+            "id": "285",
+            "name": "Elche CF",
+            "shortName": "Elche",
+            "tla": "ELC",
+            "crest": "https://crests.football-data.org/285.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
+          "L",
           "L",
           "D",
           "D"
         ],
         "wins": 0,
         "draws": 2,
-        "losses": 1,
+        "losses": 2,
         "points": 2,
-        "goalsFor": 4,
-        "goalsAgainst": 5
+        "goalsFor": 6,
+        "goalsAgainst": 8
       },
-      "generatedAt": "2026-09-05T18:28:16.445Z"
+      "generatedAt": "2026-09-05T22:08:13.527Z"
     },
     "ala": {
       "team": {
@@ -5642,7 +5678,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 5,
         "goalsAgainst": 1
       },
-      "generatedAt": "2026-09-05T18:28:16.445Z"
+      "generatedAt": "2026-09-05T22:08:13.527Z"
     },
     "ath": {
       "team": {
@@ -5909,7 +5945,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 6,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-09-05T18:28:16.445Z"
+      "generatedAt": "2026-09-05T22:08:13.527Z"
     },
     "dep": {
       "team": {
@@ -6416,7 +6452,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 7,
         "goalsAgainst": 8
       },
-      "generatedAt": "2026-09-05T18:28:16.445Z"
+      "generatedAt": "2026-09-05T22:08:13.527Z"
     }
   }
 };
