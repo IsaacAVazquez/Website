@@ -1,19 +1,19 @@
 import type { PollingSnapshot } from "@/types/polling";
 
 export const pollingSnapshot: PollingSnapshot = {
-  "generatedAt": "2026-09-04T09:59:25.099Z",
-  "sourceAsOf": "2026-08-24",
+  "generatedAt": "2026-09-05T09:29:13.489Z",
+  "sourceAsOf": "2026-08-28",
   "sourceLabel": "VoteHub Polling API, CC BY 4.0",
   "approvalAvg": {
-    "approve": 40.3,
-    "disapprove": 57.8,
-    "net": -17.5
+    "approve": 39.8,
+    "disapprove": 56.6,
+    "net": -16.8
   },
   "approvalTrend": [
     {
       "date": "2025-08-15",
-      "approve": 43.7,
-      "disapprove": 50.9
+      "approve": 42.9,
+      "disapprove": 50.5
     },
     {
       "date": "2025-09-15",
@@ -67,11 +67,24 @@ export const pollingSnapshot: PollingSnapshot = {
     },
     {
       "date": "2026-08-15",
-      "approve": 40.3,
-      "disapprove": 57.8
+      "approve": 39.8,
+      "disapprove": 56.6
     }
   ],
   "approvalPolls": [
+    {
+      "id": "us-dontip0ec7e1c5",
+      "pollster": "TIPP Insights",
+      "startDate": "2026-08-25",
+      "endDate": "2026-08-28",
+      "sampleSize": 1461,
+      "sampleType": "A",
+      "moe": null,
+      "methodology": "unknown",
+      "approve": 38,
+      "disapprove": 52,
+      "unsure": 10
+    },
     {
       "id": "appdonips081c616d",
       "pollster": "Ipsos",
@@ -467,20 +480,6 @@ export const pollingSnapshot: PollingSnapshot = {
       "approve": 38,
       "disapprove": 59,
       "unsure": 3
-    },
-    {
-      "id": "appdonyoudd7ff04e",
-      "pollster": "YouGov",
-      "sponsor": "The Economist",
-      "startDate": "2026-06-05",
-      "endDate": "2026-06-08",
-      "sampleSize": 1438,
-      "sampleType": "RV",
-      "moe": null,
-      "methodology": "unknown",
-      "approve": 39,
-      "disapprove": 59,
-      "unsure": 2
     }
   ],
   "genericBallotAvg": {
