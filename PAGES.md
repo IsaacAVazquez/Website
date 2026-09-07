@@ -3,7 +3,7 @@
 Current route inventory and page ownership for the live app.
 
 **Framework:** Next.js 16 App Router
-**Last updated:** 2026-08-16
+**Last updated:** 2026-09-07
 
 ---
 
@@ -17,6 +17,7 @@ Current route inventory and page ownership for the live app.
 | `/about` | `src/app/about/page.tsx` | Renders `About` tabbed client UI |
 | `/portfolio` | `src/app/portfolio/page.tsx` | Server shell passing the project index to `Catalog97Portfolio`, which adds client-side search, sorting, and category filters over `classifyToolSlug` |
 | `/portfolio/[slug]` | `src/app/portfolio/[slug]/page.tsx` | Project detail page |
+| `/dashboards` | `src/app/dashboards/page.tsx` | Catalog 97 index of the live data dashboards, browser-persisted tools, and calculators, grouped by `getLiveToolGroups` |
 | `/resume` | `src/app/resume/page.tsx` | Resume route with client-rendered resume shell |
 | `/contact` | `src/app/contact/page.tsx` | Contact page using `ContactContent` |
 | `/accessibility` | `src/app/accessibility/page.tsx` | Accessibility statement |
@@ -27,6 +28,7 @@ Current route inventory and page ownership for the live app.
 |------|------|-------|
 | `/writing` | `src/app/writing/page.tsx` | Lists posts from `content/blog/` with search, sorting, curated filters, and canonical topic links |
 | `/writing/[slug]` | `src/app/writing/[slug]/page.tsx` | Server-rendered article page |
+| `/writing/topics/[topic]` | `src/app/writing/topics/[topic]/page.tsx` | Server-rendered hub for each curated writing topic (`getBlogTopicPage` in `src/lib/blog-config.ts`) |
 
 ### Investments, sports, and standalone data tools
 
@@ -39,6 +41,7 @@ Current route inventory and page ownership for the live app.
 | `/ai-dev-tools` | `src/app/ai-dev-tools/page.tsx` | Filterable AI coding and agent tool directory |
 | `/frontier-models` | `src/app/frontier-models/page.tsx` | Snapshot-backed frontier model tracker |
 | `/github-trending-pulse` | `src/app/github-trending-pulse/page.tsx` | Snapshot-backed GitHub repository trend dashboard |
+| `/agent-build-index` | `src/app/agent-build-index/page.tsx` | Weekly read on public AI agent repositories gaining attention, ranked by measured star movement; reads the GitHub Trending snapshot through `getAgentBuildIndex` and carries the newsletter signup |
 | `/premier-league` | `src/app/premier-league/page.tsx` | Snapshot-backed Premier League dashboard |
 | `/la-liga` | `src/app/la-liga/page.tsx` | Snapshot-backed La Liga dashboard |
 | `/mlb` | `src/app/mlb/page.tsx` | Snapshot-backed MLB dashboard |
@@ -55,6 +58,7 @@ Current route inventory and page ownership for the live app.
 | `/polling-aggregator` | `src/app/polling-aggregator/page.tsx` | Snapshot-backed political polling dashboard |
 | `/fintech-tools/budget-planner` | `src/app/fintech-tools/budget-planner/page.tsx` | Budget planner tool |
 | `/fintech-tools/interchange-iq` | `src/app/fintech-tools/interchange-iq/page.tsx` | Interchange fee analyzer |
+| `/fintech-tools/rent-vs-buy` | `src/app/fintech-tools/rent-vs-buy/page.tsx` | Rent vs buy calculator over a month-by-month net-worth model (`src/lib/rentVsBuy/*`, educational only) |
 | `/mba-internship-notifications` | `src/app/mba-internship-notifications/page.tsx` | Live MBA role tracker polling ~28 of 39 tracked companies for internships and full-time business roles |
 | `/decision-lab` | `src/app/decision-lab/page.tsx` | Decision-modeling sandbox |
 | `/enablement-assistant` | `src/app/enablement-assistant/page.tsx` | Automation platform enablement assistant and program dashboard |
@@ -63,6 +67,8 @@ Current route inventory and page ownership for the live app.
 | `/wine-cellar` | `src/app/wine-cellar/page.tsx` | Wine cellar |
 | `/museum-log` | `src/app/museum-log/page.tsx` | Museum visit log |
 | `/travel` | `src/app/travel/page.tsx` | Browser-persisted travel planner (trips, day-by-day itineraries, journaling) via `useTravelPlanner` |
+| `/travel-deals` | `src/app/travel-deals/page.tsx` | Travel Deal Lab: browser-persisted trip cost optimizer (booking-window timing, fare deal score, cash vs points, budget split) over a curated, unverified deals dataset |
+| `/arcade` | `src/app/arcade/page.tsx` | Reactor, a neon synthwave reflex game and deliberate style experiment (one of the two sanctioned palette exceptions in `STYLING.md`) |
 
 ### Fantasy football
 
@@ -75,6 +81,8 @@ Current route inventory and page ownership for the live app.
 | `/fantasy-football/rb-tiers` | `src/app/fantasy-football/rb-tiers/page.tsx` | Redirects to the canonical RB board with query parameters |
 | `/fantasy-football/draft-tracker` | `src/app/fantasy-football/draft-tracker/page.tsx` | Redraft room tracker with roster pressure, room-relative Draft Outlook, draft-slot context, and user-entered expected return math |
 | `/fantasy-football/trade-calculator` | `src/app/fantasy-football/trade-calculator/page.tsx` | Preseason one-QB redraft trade estimate using overall expert consensus, reliable mock-draft ADP, league-size replacement lines, and browser-local player selections |
+| `/fantasy-football/mock-draft` | `src/app/fantasy-football/mock-draft/page.tsx` | Mock draft simulator: rehearse the early rounds of a one-QB draft against a seeded room that picks from the consensus board and market ADP, then sim to the end for the board grid and value report |
+| `/fantasy-football/weekly` | `src/app/fantasy-football/weekly/page.tsx` | In-season weekly FLEX and QB consensus board with the waiver reading; reports a not-published state until Week 1 |
 
 ### Utility/admin
 
@@ -84,6 +92,8 @@ Current route inventory and page ownership for the live app.
 | `/admin` | `src/app/admin/page.tsx` | Credentials-based admin screen |
 | `/now` | `src/app/now/page.tsx` | Current focus / status page |
 | `/changelog` | `src/app/changelog/page.tsx` | Site changelog |
+| `/analytics-reference` | `src/app/analytics-reference/page.tsx` | Noindex internal reference for the GA4 events wired into the site, driven by `ANALYTICS_EVENTS` in `src/lib/analytics.ts` |
+| `/design/catalog-pages` | `src/app/design/catalog-pages/page.tsx` | Noindex QA sheet stacking every Catalog 97 route in one scroll with the layout rules the set holds |
 
 ---
 
@@ -113,7 +123,11 @@ Fantasy shortcut and typo redirects also live in `next.config.mjs`.
 These routes manage more of their own spacing and width:
 
 - `/about`
+- `/accessibility`
+- `/agent-build-index`
 - `/ai-dev-tools`
+- `/analytics-reference`
+- `/arcade`
 - `/bay-area-transit`
 - `/changelog`
 - `/contact`
@@ -125,9 +139,12 @@ These routes manage more of their own spacing and width:
 - `/fantasy-football/best-ball`
 - `/fantasy-football/best-ball/draft-tracker`
 - `/fantasy-football/draft-tracker`
+- `/fantasy-football/mock-draft`
 - `/fantasy-football/trade-calculator`
+- `/fantasy-football/weekly`
 - `/fintech-tools/budget-planner`
 - `/fintech-tools/interchange-iq`
+- `/fintech-tools/rent-vs-buy`
 - `/food-map`
 - `/formula-1`
 - `/golf`
@@ -148,9 +165,11 @@ These routes manage more of their own spacing and width:
 - `/writing`
 - `/writing/[slug]`
 - `/resume`
+- `/search`
 - `/spacex-mission-control`
 - `/tech-startup-tracker`
 - `/travel`
+- `/travel-deals`
 - `/wine-cellar`
 - `/world-cup-2026`
 
