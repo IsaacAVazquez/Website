@@ -23,10 +23,15 @@ export default defineConfig({
       input: {
         sidepanel: resolve(extensionRoot, "sidepanel.html"),
         "service-worker": resolve(extensionRoot, "service-worker.ts"),
+        "autodraft-content": resolve(extensionRoot, "autodraft-content.ts"),
       },
       output: {
         entryFileNames: (chunk) =>
-          chunk.name === "service-worker" ? "service-worker.js" : "assets/[name]-[hash].js",
+          chunk.name === "service-worker"
+            ? "service-worker.js"
+            : chunk.name === "autodraft-content"
+              ? "autodraft-content.js"
+              : "assets/[name]-[hash].js",
         chunkFileNames: "assets/[name]-[hash].js",
         assetFileNames: "assets/[name]-[hash][extname]",
       },

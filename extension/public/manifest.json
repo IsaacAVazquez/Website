@@ -1,10 +1,17 @@
 {
   "manifest_version": 3,
   "name": "Fantasy Draft Companion",
-  "version": "0.1.0",
-  "description": "A local side-panel draft tracker with published redraft and best ball rankings.",
-  "permissions": ["storage", "sidePanel"],
-  "host_permissions": ["https://isaacvazquez.com/*"],
+  "version": "0.3.0",
+  "description": "A local draft companion with automatic pick sync and opt-in ESPN and Sleeper autodraft control.",
+  "permissions": ["activeTab", "storage", "sidePanel"],
+  "host_permissions": [
+    "https://isaacvazquez.com/*",
+    "https://fantasy.espn.com/*",
+    "https://sleeper.com/*",
+    "https://*.sleeper.com/*",
+    "https://api.sleeper.app/*",
+    "https://app.underdogsports.com/*"
+  ],
   "background": {
     "service_worker": "service-worker.js",
     "type": "module"
@@ -25,6 +32,18 @@
   "side_panel": {
     "default_path": "sidepanel.html"
   },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://fantasy.espn.com/*",
+        "https://sleeper.com/*",
+        "https://*.sleeper.com/*",
+        "https://app.underdogsports.com/*"
+      ],
+      "js": ["autodraft-content.js"],
+      "run_at": "document_idle"
+    }
+  ],
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self'"
   }

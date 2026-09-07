@@ -31,6 +31,12 @@ const TEAM_ABBR_ALIASES: Record<string, string> = {
   BLT: "BAL",
   CLV: "CLE",
   HST: "HOU",
+  GBP: "GB",
+  KCC: "KC",
+  NEP: "NE",
+  NOS: "NO",
+  SFO: "SF",
+  TBB: "TB",
 };
 
 /**
