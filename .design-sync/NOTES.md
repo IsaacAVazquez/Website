@@ -35,6 +35,13 @@
 - `gen-contracts.mjs` rewrote `dtsPropsFor` down to the 33 surviving contracts in the same pass.
 - The project root also holds app/user content this sync does not own (`templates/`, `uploads/`, `public/images/`, `Catalog 97*.html`, `github.md`, `_ds_manifest.json`, `_adherence.oxlintrc.json`) — never derive deletes from a bare remote listing; the anchor diff's deletePaths are the only safe delete source here.
 
+## Re-sync record 2026-09-07
+
+- DropdownMenu removed from the project to mirror commit 21b0e18c (`src/components/ui/dropdown-menu.tsx` deleted). It came out of `ds-entry.ts`, `componentSrcMap`, `overrides`, and `previews/`, and `gen-contracts.mjs` dropped its `dtsPropsFor` entry. 32 components remain, all carried forward verified; the styling change (`--home-ink-soft` raised to 66% ink for WCAG AA, radii moved onto `--radius-*` tokens) shipped through `upload.styling` with no regrades. Delete reported 5 of 6, the miss being `_preview/DropdownMenu.css`, which never existed remotely.
+- The six previews for components removed on 2026-08-18 (ExpertSignal, JourneyTimeline, MetricCallout, OptimizedImage, PageSummary, ReadoutPanel) were still in `previews/` and the converter flagged each as `(stale preview: ... no longer exported)` every run. Deleted them; `previews/` now holds exactly one file per synced component.
+- `ds-bundle/` is fully gitignored and untracked since 21b0e18c, but that commit left an empty `ds-bundle/tokens/` on disk with no `.ds-build-meta.json`, which trips `[OUT_UNSAFE]` (the converter only rm's a dir it recognises as a prior bundle). Fix is `rm -rf ds-bundle` before the first driver run of a session. This DS emits no `tokens/` dir at all; tokens live in `_ds_bundle.css`.
+- The `DesignSync` tool needs a one-time `/design-login` per session before any remote call; the `claude-design` MCP server failing to connect at startup with a 403 is the same missing grant, not a dead project. Everything local (contracts, CSS, driver without `--remote`, sheets) runs fine before the login, so do that work first and fetch the anchor after.
+
 ## Component nits observed during preview authoring (for a DS-owner design pass, not sync blockers)
 
 - StatFascia truncates longer eyebrows at ClubDrawer's 27rem width ("GOALS AGAI…").
