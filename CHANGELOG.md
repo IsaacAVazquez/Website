@@ -4,6 +4,12 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-09-07
+
+- Fix the fantasy and golf refresh failures and sync the route docs ([#420](https://github.com/IsaacAVazquez/Website/pull/420)).
+
+---
+
 ## 2026-09-01
 
 - Add nine articles covering late July and August 2026 ([#411](https://github.com/IsaacAVazquez/Website/pull/411)).
