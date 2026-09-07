@@ -339,6 +339,25 @@ async function fetchGolfJson<T>(url: string): Promise<T> {
 
 // --- Builder -----------------------------------------------------------------
 
+/**
+ * Thrown when ESPN's scoreboard lists only an upcoming event with no field
+ * posted yet, which is what the feed looks like between tournaments. The
+ * builder treats it as "nothing new to fetch" rather than a broken source.
+ */
+export class GolfNoLiveEventError extends Error {
+  constructor(
+    readonly nextEventName: string,
+    readonly nextEventDate: string
+  ) {
+    super(
+      `ESPN golf scoreboard has no live field; next event ${nextEventName} starts ${
+        nextEventDate || "on an unannounced date"
+      }.`
+    );
+    this.name = "GolfNoLiveEventError";
+  }
+}
+
 export async function buildGolfSnapshotData(): Promise<GolfSnapshot> {
   const response = await fetchGolfJson<EspnLeaderboardResponse>(
     ESPN_LEADERBOARD_URL
@@ -356,6 +375,13 @@ export async function buildGolfSnapshotData(): Promise<GolfSnapshot> {
     (competitor) => competitor.athlete?.displayName
   );
   if (!competition || competitors.length < MIN_LEADERBOARD_SIZE) {
+    const state = competition?.status?.type?.state ?? event.status?.type?.state;
+    if (competitors.length === 0 && state === "pre") {
+      throw new GolfNoLiveEventError(
+        event.tournament?.displayName ?? event.name ?? "the next event",
+        (competition?.date ?? event.startDate ?? "").slice(0, 10)
+      );
+    }
     throw new Error(
       `Golf leaderboard returned too few competitors (${competitors.length}).`
     );

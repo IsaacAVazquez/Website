@@ -1,7 +1,12 @@
 /**
  * @jest-environment node
  */
-import { buildGolfSnapshotData, extractCutScore, deriveCutState } from "../golfData";
+import {
+  GolfNoLiveEventError,
+  buildGolfSnapshotData,
+  extractCutScore,
+  deriveCutState,
+} from "../golfData";
 
 function jsonResponse(payload: unknown, status = 200): Response {
   return new Response(JSON.stringify(payload), {
@@ -223,6 +228,34 @@ describe("buildGolfSnapshotData", () => {
       );
 
     await expect(buildGolfSnapshotData()).rejects.toThrow(/too few competitors/i);
+  });
+
+  it("reports a no-live-event state when ESPN lists only an unstarted field", async () => {
+    // Between tournaments the scoreboard carries just the next event, status
+    // "pre" with zero competitors (seen 2026-09-07), which is not a broken source.
+    jest.spyOn(global, "fetch").mockResolvedValue(
+      jsonResponse(
+        makeLeaderboard([], {
+          name: "Biltmore Championship Asheville",
+          tournament: { displayName: "Biltmore Championship Asheville" },
+          startDate: undefined,
+          status: { type: { state: "pre", description: "Scheduled" } },
+          competitions: [
+            {
+              date: "2026-09-17T04:00Z",
+              status: { type: { state: "pre", description: "Scheduled" }, period: 0 },
+              competitors: [],
+            },
+          ],
+        })
+      )
+    );
+
+    const error = await buildGolfSnapshotData().catch((caught: unknown) => caught);
+    expect(error).toBeInstanceOf(GolfNoLiveEventError);
+    expect((error as Error).message).toMatch(
+      /Biltmore Championship Asheville starts 2026-09-17/
+    );
   });
 
   it("prefers an in-progress event over a more recent finished one", async () => {
