@@ -16,6 +16,15 @@ jest.mock("@/components/Footer", () => ({
   ),
 }));
 
+// ConditionalLayout defers ProjectBuildNote through next/dynamic. Load it
+// synchronously here so the loadable never re-renders after a test's act()
+// has finished, which React reports as an update outside act().
+jest.mock("next/dynamic", () => ({
+  __esModule: true,
+  default: () =>
+    jest.requireActual("@/components/ProjectBuildNote").ProjectBuildNote,
+}));
+
 const mockUsePathname = usePathname as jest.MockedFunction<typeof usePathname>;
 
 (globalThis as Record<string, unknown>).IS_REACT_ACT_ENVIRONMENT = true;

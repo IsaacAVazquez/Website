@@ -113,6 +113,7 @@ export interface FetchFantasyProsConsensusBoardOptions
 const FANTASY_PROS_MIN_EXPERTS = 10;
 const FANTASY_PROS_MIN_REFRESH_COVERAGE = 0.8;
 const FANTASY_PROS_REFRESH_TOP_BOARD_SIZE = 150;
+const FANTASY_PROS_MAX_OFF_BOARD_ROW_SHARE = 0.05;
 const FANTASY_PROS_OFFICIAL_API_BASE_URL =
   "https://api.fantasypros.com/public/v2/json/nfl";
 const FANTASY_PROS_OFFICIAL_API_MAX_CLOCK_SKEW_MS = 5 * 60 * 1000;
@@ -421,7 +422,7 @@ function validateConsensusPayload(
   payload: FantasyProsPublicConsensusPayload,
   options: FantasyProsConsensusOptions,
   sourceContract: FantasyProsConsensusSourceContract
-) {
+): Set<number> {
   if (payload.sport.trim().toUpperCase() !== "NFL") {
     throw new Error(`FantasyPros public source returned sport "${payload.sport}" instead of NFL.`);
   }
@@ -518,6 +519,7 @@ function validateConsensusPayload(
     }
   }
 
+  const offBoardRows: Array<{ index: number; mappedPosition: Position }> = [];
   for (const [index, player] of payload.players.entries()) {
     const playerId = Number(player.player_id);
     if (!Number.isInteger(playerId) || playerId <= 0) {
@@ -641,23 +643,35 @@ function validateConsensusPayload(
     // single-position board: it holds exactly the flex-eligible skill
     // positions and nothing else. Checking the set is the same guard as the
     // single-position case, not a relaxation of it.
-    if (requestedPosition === "FLEX") {
-      if (!FLEX_ELIGIBLE_BOARD_POSITIONS.includes(mappedPosition)) {
-        throw new Error(
-          `FantasyPros public source player[${index}] is ${mappedPosition} on a FLEX board.`
-        );
-      }
-    } else if (requestedPosition !== "OVERALL" && mappedPosition !== requestedPosition) {
-      throw new Error(
-        `FantasyPros public source player[${index}] is ${mappedPosition} on a ${requestedPosition} board.`
-      );
+    const offBoard =
+      requestedPosition === "FLEX"
+        ? !FLEX_ELIGIBLE_BOARD_POSITIONS.includes(mappedPosition)
+        : requestedPosition !== "OVERALL" && mappedPosition !== requestedPosition;
+    if (offBoard) {
+      offBoardRows.push({ index, mappedPosition });
     }
+  }
+
+  // FantasyPros tags the odd deep-board row with another position (an RB-tagged
+  // row around TE168 on every 2026 TE page). A few such rows are a data quirk
+  // to drop, not a wrong board; a wrong or mixed board blows through the share
+  // limit and is still rejected on its first offending row.
+  const offBoardAllowance = Math.floor(
+    payload.players.length * FANTASY_PROS_MAX_OFF_BOARD_ROW_SHARE
+  );
+  if (offBoardRows.length > offBoardAllowance) {
+    const [{ index, mappedPosition }] = offBoardRows;
+    throw new Error(
+      `FantasyPros public source player[${index}] is ${mappedPosition} on a ${requestedPosition} board.`
+    );
   }
 
   const playerIds = payload.players.map((player) => Number(player.player_id));
   if (new Set(playerIds).size !== playerIds.length) {
     throw new Error("FantasyPros public source returned duplicate player_id values.");
   }
+
+  return new Set(offBoardRows.map((row) => row.index));
 }
 
 function toPublishedFantasyPlayer(
@@ -781,9 +795,10 @@ function buildFantasyProsConsensusBoard(
   sourceLabel: string,
   sourceContract: FantasyProsConsensusSourceContract
 ): FantasyProsPublicBoard {
-  validateConsensusPayload(payload, options, sourceContract);
+  const offBoardRows = validateConsensusPayload(payload, options, sourceContract);
   const upstreamUpdatedAt = buildUpstreamUpdatedAt(payload);
   const players = payload.players
+    .filter((_, index) => !offBoardRows.has(index))
     .map((player) => toPublishedFantasyPlayer(player, upstreamUpdatedAt))
     .sort((left, right) => Number(left.averageRank) - Number(right.averageRank));
 

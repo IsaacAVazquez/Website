@@ -2,7 +2,7 @@
 
 Operational context for agents working in this repo. Start here, then read `CLAUDE.md` for deeper implementation context.
 
-**Last updated:** 2026-08-16
+**Last updated:** 2026-09-07
 
 ---
 
@@ -23,10 +23,12 @@ Primary live routes:
 - `/about`
 - `/accessibility`
 - `/portfolio` and `/portfolio/[slug]`
+- `/dashboards`
 - `/investments`
 - `/formula-1`
 - `/fantasy-formula-1`
 - `/github-trending-pulse`
+- `/agent-build-index`
 - `/tech-startup-tracker`
 - `/premier-league`
 - `/la-liga`
@@ -38,7 +40,7 @@ Primary live routes:
 - `/world-cup-2026`
 - `/bay-area-transit`
 - `/score-pools` (+ `/score-pools/tracker`, `/score-pools/settings`)
-- `/writing` and `/writing/[slug]`
+- `/writing`, `/writing/[slug]`, and `/writing/topics/[topic]`
 - `/resume`
 - `/contact`
 - `/fantasy-football/*`
@@ -56,12 +58,16 @@ Primary live routes:
 - `/spacex-mission-control`
 - `/fintech-tools/budget-planner`
 - `/fintech-tools/interchange-iq`
+- `/fintech-tools/rent-vs-buy`
 - `/polling-aggregator`
 - `/mba-internship-notifications`
 - `/museum-log`
+- `/arcade`
 - `/now`
 - `/changelog`
 - `/search`
+- `/analytics-reference` (noindex internal GA4 event reference)
+- `/design/catalog-pages` (noindex Catalog 97 layout QA sheet)
 - `/admin`
 
 Canonical redirects:
@@ -98,7 +104,11 @@ Shared shell files:
 Self-shell routes currently include:
 
 - `/about`
+- `/accessibility`
+- `/agent-build-index`
 - `/ai-dev-tools`
+- `/analytics-reference`
+- `/arcade`
 - `/bay-area-transit`
 - `/changelog`
 - `/contact`
@@ -110,10 +120,12 @@ Self-shell routes currently include:
 - `/fantasy-football/best-ball`
 - `/fantasy-football/best-ball/draft-tracker`
 - `/fantasy-football/draft-tracker`
+- `/fantasy-football/mock-draft`
 - `/fantasy-football/trade-calculator`
 - `/fantasy-football/weekly`
 - `/fintech-tools/budget-planner`
 - `/fintech-tools/interchange-iq`
+- `/fintech-tools/rent-vs-buy`
 - `/food-map`
 - `/formula-1`
 - `/golf`
@@ -132,6 +144,7 @@ Self-shell routes currently include:
 - `/recipe-finder`
 - `/resume`
 - `/score-pools` (+ `/score-pools/*` subroutes)
+- `/search`
 - `/spacex-mission-control`
 - `/tech-startup-tracker`
 - `/travel`
@@ -193,6 +206,7 @@ Confirm live API routes from `src/app/api/**/route.ts`. Current routes:
 - `/api/mlb/teams/[teamId]`
 - `/api/nba/teams/[teamId]`
 - `/api/news-pulse`
+- `/api/newsletter/subscribe`
 - `/api/nfl/teams/[teamId]`
 - `/api/premier-league/teams/[teamId]`
 - `/api/rss`
@@ -361,7 +375,7 @@ The MLB, NBA, and NFL dashboards read committed TypeScript snapshots at runtime.
 - `npm run update:mlb` writes `src/data/mlbSnapshot.ts` from the public MLB Stats API; pass `-- --league-only` to skip per-team snapshots.
 - `npm run update:nba` writes `src/data/nbaSnapshot.ts` from ESPN public NBA endpoints; pass `-- --league-only` to skip per-team snapshots.
 - `npm run update:nfl` writes `src/data/nflSnapshot.ts` from NFLverse open data; pass `-- --league-only` to skip per-team snapshots and player leaders.
-- `npm run update:golf` writes `src/data/golfSnapshot.ts` from the public ESPN golf leaderboard endpoint; a failed fetch keeps the previous snapshot.
+- `npm run update:golf` writes `src/data/golfSnapshot.ts` from the public ESPN golf leaderboard endpoint; a failed fetch keeps the previous snapshot. Between tournaments ESPN lists only the next event with no field posted, and the builder then re-stamps the last final board's `generatedAt` instead of failing, so the freshness gate reads a checked source through the off week.
 - `npm run update:world-cup` writes `src/data/worldCupSnapshot.ts` from ESPN's public `soccer/fifa.world` endpoints; a failed or empty fetch keeps the previous snapshot.
 
 ### Other data refresh workflows

@@ -10,6 +10,13 @@ jest.mock("@/components/AIStructuredData", () => ({
   AIStructuredData: () => null,
 }));
 
+// Catalog97Header defers its theme toggle through next/dynamic. This test only
+// counts landmarks, so stub the toggle rather than let the chunk resolve after
+// the assertions and warn about an update outside act().
+jest.mock("@/components/ui/DeferredThemeToggle", () => ({
+  DeferredThemeToggle: () => null,
+}));
+
 jest.mock("@/constants/caseStudies", () => {
   const actual = jest.requireActual("@/constants/caseStudies");
 

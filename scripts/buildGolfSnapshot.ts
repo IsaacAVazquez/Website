@@ -13,7 +13,7 @@
 import { renameSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 
-import { buildGolfSnapshotData } from "../src/lib/golfData";
+import { GolfNoLiveEventError, buildGolfSnapshotData } from "../src/lib/golfData";
 import type { GolfSnapshot } from "../src/types/golf";
 import { readGeneratedSnapshot } from "./snapshotFallback";
 
@@ -41,14 +41,31 @@ async function main() {
     snapshot = await buildGolfSnapshotData();
   } catch (error) {
     const existing = readGeneratedSnapshot<GolfSnapshot>(outPath, "golfSnapshot");
-    if (hasContents(existing)) {
+    if (!hasContents(existing)) {
+      throw error;
+    }
+    if (!(error instanceof GolfNoLiveEventError) || !existing.summary.tournament) {
       console.warn(
         "⛳ Golf snapshot refresh failed; keeping the existing snapshot.",
         error
       );
       return;
     }
-    throw error;
+    // Between tournaments ESPN lists only the next event with no field, so the
+    // last final board is still the freshest data that exists. Re-stamp its
+    // verification time so the freshness gate reads a checked source rather
+    // than a frozen one for the whole off week.
+    const generatedAt = new Date().toISOString();
+    snapshot = {
+      ...existing,
+      summary: {
+        ...existing.summary,
+        tournament: { ...existing.summary.tournament, generatedAt },
+      },
+    };
+    console.log(
+      `⛳ ${error.message} Re-verified the ${existing.summary.tournament.name} board at ${generatedAt}.`
+    );
   }
 
   const output = `import type { GolfSnapshot } from "@/types/golf";

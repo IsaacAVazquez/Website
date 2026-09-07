@@ -797,6 +797,44 @@ describe("fantasyProsPublicSource", () => {
       ).toThrow(/is QB on a FLEX board/);
     });
 
+    it("drops a stray off-position row from a single-position board", () => {
+      // Every 2026 TE page carries one RB-tagged row around TE168. That is a
+      // data quirk to skip, not a wrong board, so the board publishes without it.
+      const rows = Array.from({ length: 20 }, (_, index) => flexRow(index + 1, "TE"));
+      const board = parseFantasyProsPublicConsensusPage(
+        weeklyFlexPage([...rows, flexRow(21, "RB")], { position_id: "TE" }),
+        {
+          scoringFormat: "PPR",
+          requestedPosition: "TE",
+          sourceUrl: "https://www.fantasypros.com/nfl/rankings/ppr-te.php",
+          expectedRankingType: "weekly",
+          minimumExperts: 5,
+        }
+      );
+
+      expect(board.players).toHaveLength(20);
+      expect(board.players.every((entry) => entry.position === "TE")).toBe(true);
+    });
+
+    it("still rejects a board whose off-position rows exceed the share limit", () => {
+      const rows = Array.from({ length: 18 }, (_, index) => flexRow(index + 1, "TE"));
+      expect(() =>
+        parseFantasyProsPublicConsensusPage(
+          weeklyFlexPage(
+            [...rows, flexRow(19, "RB"), flexRow(20, "RB"), flexRow(21, "WR")],
+            { position_id: "TE" }
+          ),
+          {
+            scoringFormat: "PPR",
+            requestedPosition: "TE",
+            sourceUrl: "https://www.fantasypros.com/nfl/rankings/ppr-te.php",
+            expectedRankingType: "weekly",
+            minimumExperts: 5,
+          }
+        )
+      ).toThrow(/player\[18\] is RB on a TE board/);
+    });
+
     it("still refuses to satisfy an overall request with a flex board", () => {
       // FLX normalizes to its own name rather than onto OVERALL precisely so
       // widening the vocabulary for the weekly board cannot let a draft-season
