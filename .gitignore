@@ -127,3 +127,6 @@ ds-bundle/
 
 # scratch files at the repo root (e.g. .tmp-fantasy-doublecheck.mjs)
 .tmp-*
+
+# Local refresh manifests written by scripts/verifyDataRefresh.ts (CI uses RUNNER_TEMP)
+.tmp/
