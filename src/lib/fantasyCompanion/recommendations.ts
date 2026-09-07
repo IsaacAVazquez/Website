@@ -20,7 +20,7 @@ function positiveFiniteNumber(value: unknown): number | null {
   return typeof value === "number" && Number.isFinite(value) && value > 0 ? value : null;
 }
 
-function redraftSourceRank(player: Player): number {
+export function redraftSourceRank(player: Player): number {
   return (
     positiveFiniteNumber(player.rankEcr) ??
     positiveFiniteNumber(player.averageRank) ??

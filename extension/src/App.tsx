@@ -1,9 +1,13 @@
 import {
   Activity,
+  ArrowLeft,
   Check,
   ChevronRight,
   CircleDot,
+  Copy,
   Database,
+  Plane,
+  Power,
   RefreshCw,
   RotateCcw,
   Search,
@@ -14,7 +18,7 @@ import {
   UsersRound,
   Wifi,
 } from "lucide-react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   analyzeBestBallRoster,
   getNextUserPick,
@@ -22,6 +26,7 @@ import {
   BEST_BALL_CONTESTS,
   getBestBallModelSourceIssue,
   getBestBallRankingSource,
+  getAdaptiveRosterTargets,
   hasSupportedBestBallAdp,
   sortBestBallRankings,
   type BestBallContestId,
@@ -29,22 +34,29 @@ import {
 } from "@/lib/bestBall";
 import {
   addFantasyCompanionPick,
+  buildAwayDraftPlan,
   createBestBallRoomConfig,
   createFantasyCompanionState,
   createRedraftRoomConfig,
+  detectFantasyDraftProvider,
+  formatAwayDraftPlan,
   getAvailablePlayers,
   getCurrentPickNumber,
   getCurrentTeamNumber,
   getDraftRoundForPick,
   getFantasyCompanionRecommendations,
   getTeamPicks,
+  isFantasyDraftSyncMessage,
   parseFantasyCompanionState,
+  reconcileFantasyDraftSync,
   resetFantasyCompanionDraft,
   serializeFantasyCompanionState,
   undoFantasyCompanionPick,
   type FantasyCompanionDraftOrder,
   type FantasyCompanionDraftState,
   type FantasyCompanionRoomConfig,
+  type FantasyDraftSyncMessage,
+  type AwayDraftPlan,
 } from "@/lib/fantasyCompanion";
 import {
   getFantasySourceCapabilities,
@@ -85,6 +97,7 @@ import {
   loadCompanionSnapshot,
   type CompanionSnapshot,
 } from "./snapshot-client";
+import type { AutoDraftCommand, AutoDraftStatus } from "./autodraft-controller";
 import { readLocalValue, removeLocalValue, writeLocalValue } from "./storage";
 
 const DRAFT_STORAGE_KEY = "fantasy-companion-draft-v1";
@@ -94,7 +107,12 @@ const BOARD_LIMIT = 60;
 const REDRAFT_POSITIONS = ["ALL", "QB", "RB", "WR", "TE", "K", "DST"] as const;
 const BEST_BALL_POSITIONS = ["ALL", "QB", "RB", "WR", "TE"] as const;
 
-type Platform = "espn" | "underdog";
+type Platform = "espn" | "sleeper" | "underdog";
+type AutoDraftPlatform = Exclude<Platform, "underdog">;
+type AwayQueueEntry = {
+  player: Player;
+  rank: number;
+};
 type PositionFilter = (typeof REDRAFT_POSITIONS)[number];
 type PanelView = "board" | "roster" | "picks";
 
@@ -139,7 +157,7 @@ function parseSetupValues(value: unknown): SetupValues | null {
     ([8, 10, 12, 14, 16].includes(Number(setup.teams)) &&
       [13, 14, 15, 16, 17, 18].includes(Number(setup.rounds)));
   const valid =
-    (setup.platform === "espn" || setup.platform === "underdog") &&
+    (["espn", "sleeper", "underdog"] as const).includes(setup.platform as Platform) &&
     Number.isInteger(setup.season) && Number(setup.season) >= 2020 && Number(setup.season) <= 2100 &&
     savedRoomShapeIsValid &&
     Number.isInteger(setup.userTeam) &&
@@ -164,9 +182,12 @@ function parseSetupValues(value: unknown): SetupValues | null {
   };
 }
 
-function setupFromRoom(room: FantasyCompanionRoomConfig): SetupValues {
+function setupFromRoom(
+  room: FantasyCompanionRoomConfig,
+  redraftPlatform: AutoDraftPlatform = "espn"
+): SetupValues {
   return {
-    platform: room.kind === "best-ball" ? "underdog" : "espn",
+    platform: room.kind === "best-ball" ? "underdog" : redraftPlatform,
     season: room.season,
     teams: room.teams,
     rounds: room.rounds,
@@ -260,10 +281,12 @@ function SetupPanel({
   setup,
   onChange,
   onStart,
+  onPrepareAway,
 }: {
   setup: SetupValues;
   onChange: (next: SetupValues) => void;
   onStart: () => void;
+  onPrepareAway: () => void;
 }) {
   const isBestBall = setup.platform === "underdog";
   const selectedContest = BEST_BALL_CONTESTS[setup.contestId];
@@ -294,7 +317,7 @@ function SetupPanel({
         <p className="eyebrow">NEW DRAFT</p>
         <h1>Set up the room.</h1>
         <p>
-          Match the room settings once, then record every pick here while the draft stays open beside you.
+          Match the room once, then use the live board beside your draft or prepare the provider tab to pick while you are away.
         </p>
       </section>
 
@@ -316,8 +339,20 @@ function SetupPanel({
               <UsersRound size={20} aria-hidden="true" />
               {setup.platform === "espn" ? <Check size={18} aria-hidden="true" /> : null}
             </span>
-            <strong>ESPN-style redraft</strong>
+            <strong>ESPN redraft</strong>
             <small>Scoring-specific consensus board</small>
+          </button>
+          <button
+            type="button"
+            className={`platform-option ${setup.platform === "sleeper" ? "is-selected" : ""}`}
+            onClick={() => onChange({ ...setup, platform: "sleeper", userTeam: 1 })}
+          >
+            <span className="platform-option__top">
+              <CircleDot size={20} aria-hidden="true" />
+              {setup.platform === "sleeper" ? <Check size={18} aria-hidden="true" /> : null}
+            </span>
+            <strong>Sleeper redraft</strong>
+            <small>Queue-first draft control</small>
           </button>
           <button
             type="button"
@@ -504,16 +539,446 @@ function SetupPanel({
         </section>
       ) : null}
 
-      <button type="button" className="start-button" onClick={onStart} disabled={!lineupFitsDraft}>
-        Start draft companion <ChevronRight size={19} aria-hidden="true" />
-      </button>
+      <div className="setup-actions">
+        <button type="button" className="away-button" onClick={onPrepareAway} disabled={!lineupFitsDraft}>
+          Prepare away draft <Plane size={19} aria-hidden="true" />
+        </button>
+        <button type="button" className="start-button" onClick={onStart} disabled={!lineupFitsDraft}>
+          Start live companion <ChevronRight size={19} aria-hidden="true" />
+        </button>
+      </div>
 
       <aside className="access-note">
         <ShieldCheck size={20} aria-hidden="true" />
         <p>
-          <strong>No draft-site access.</strong> This version does not read, monitor, or click ESPN or Underdog. Picks and room settings stay in this browser.
+          Everything here stays in this browser. Completed picks sync from the open provider room. ESPN and Sleeper pick submission stays off until you arm one draft tab, while Underdog uses its own Autopilot. Rankings, picks, and room settings stay in this browser.
         </p>
       </aside>
+    </main>
+  );
+}
+
+function draftProviderFromUrl(value: string | undefined): Platform | null {
+  if (!value) return null;
+  try {
+    return detectFantasyDraftProvider(new URL(value).hostname);
+  } catch {
+    return null;
+  }
+}
+
+async function requestActiveDraftSync(
+  provider: Platform
+): Promise<FantasyDraftSyncMessage | null> {
+  if (typeof chrome === "undefined" || !chrome.tabs?.query) return null;
+  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+  if (!tab?.id || draftProviderFromUrl(tab.url) !== provider) return null;
+  try {
+    const response = await chrome.tabs.sendMessage(tab.id, {
+      type: "FANTASY_DRAFT_SYNC_REQUEST",
+    }) as unknown;
+    return isFantasyDraftSyncMessage(response) ? response : null;
+  } catch {
+    return null;
+  }
+}
+
+function isAutoDraftStatus(value: unknown): value is AutoDraftStatus {
+  if (!value || typeof value !== "object") return false;
+  const status = value as Partial<AutoDraftStatus>;
+  return (
+    status.type === "FANTASY_AUTODRAFT_STATUS" &&
+    (status.provider === "espn" || status.provider === "sleeper") &&
+    typeof status.message === "string" &&
+    typeof status.armed === "boolean" &&
+    typeof status.live === "boolean"
+  );
+}
+
+async function sendAutoDraftCommand(
+  provider: AutoDraftPlatform,
+  command: AutoDraftCommand
+): Promise<AutoDraftStatus> {
+  if (typeof chrome === "undefined" || !chrome.tabs?.query) {
+    throw new Error("Load the built extension in Chrome or Edge before arming autodraft.");
+  }
+
+  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+  if (!tab?.id || draftProviderFromUrl(tab.url) !== provider) {
+    const providerName = provider === "espn" ? "ESPN" : "Sleeper";
+    throw new Error(`Open the ${providerName} draft room in this tab, then try again.`);
+  }
+
+  try {
+    const response = await chrome.tabs.sendMessage(tab.id, command) as unknown;
+    if (!isAutoDraftStatus(response)) {
+      throw new Error("The draft controller did not return a status.");
+    }
+    return response;
+  } catch (error) {
+    throw new Error(
+      error instanceof Error && error.message.includes("Receiving end")
+        ? "Reload the draft tab once so the new controller can connect."
+        : error instanceof Error
+          ? error.message
+          : "The draft controller could not connect to this tab.",
+      { cause: error }
+    );
+  }
+}
+
+function AwayDraftView({
+  setup,
+  onBack,
+}: {
+  setup: SetupValues;
+  onBack: () => void;
+}) {
+  const [snapshot, setSnapshot] = useState<CompanionSnapshot | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [status, setStatus] = useState<AutoDraftStatus | null>(null);
+  const [copied, setCopied] = useState(false);
+  const room = useMemo(() => roomFromSetup(setup), [setup]);
+  const providerName = setup.platform === "espn"
+    ? "ESPN"
+    : setup.platform === "sleeper"
+      ? "Sleeper"
+      : "Underdog";
+  const isUnderdog = setup.platform === "underdog";
+  const controlledProvider: AutoDraftPlatform | null =
+    setup.platform === "espn" || setup.platform === "sleeper"
+      ? setup.platform
+      : null;
+
+  useEffect(() => {
+    let cancelled = false;
+    loadCompanionSnapshot(room)
+      .then((result) => {
+        if (!cancelled) setSnapshot(result.snapshot);
+      })
+      .catch((loadError) => {
+        if (!cancelled) {
+          setError(
+            loadError instanceof Error
+              ? loadError.message
+              : "Rankings could not be loaded."
+          );
+        }
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [room]);
+
+  useEffect(() => {
+    if (typeof chrome === "undefined" || !chrome.runtime?.onMessage) return;
+    const listener = (message: unknown) => {
+      if (isAutoDraftStatus(message) && message.provider === controlledProvider) {
+        setStatus(message);
+      }
+    };
+    chrome.runtime.onMessage.addListener(listener);
+    return () => chrome.runtime.onMessage.removeListener(listener);
+  }, [controlledProvider]);
+
+  const plan: AwayDraftPlan | null = useMemo(() => {
+    if (snapshot?.kind !== "redraft" || !controlledProvider) return null;
+    return buildAwayDraftPlan(snapshot.data.overall, {
+      platform: controlledProvider,
+      teams: setup.teams,
+      rounds: setup.rounds,
+      lineup: setup.lineup,
+    });
+  }, [controlledProvider, setup.lineup, setup.rounds, setup.teams, snapshot]);
+
+  const awayQueue: AwayQueueEntry[] = useMemo(() => {
+    if (plan) return plan.queue;
+    if (snapshot?.kind !== "best-ball") return [];
+    return sortBestBallRankings(snapshot.data.players, setup.contestId)
+      .slice(0, setup.teams * setup.rounds)
+      .map((player) => ({ player, rank: player.bestBallRank }));
+  }, [plan, setup.contestId, setup.rounds, setup.teams, snapshot]);
+
+  const bestBallTargets = useMemo(
+    () => isUnderdog ? getAdaptiveRosterTargets([], setup.contestId, 1) : null,
+    [isUnderdog, setup.contestId]
+  );
+
+  const underdogSlate = useMemo(() => {
+    switch (setup.contestId) {
+      case "eliminator":
+        return `NFL ${setup.season} Eliminator Season`;
+      case "weekly-winners":
+        return `NFL ${setup.season} Weekly Winners Season`;
+      case "superflex":
+        return `NFL ${setup.season} Superflex Season`;
+      case "six-man":
+        return `NFL ${setup.season} Season 6 Mans`;
+      default:
+        return `NFL ${setup.season} Season`;
+    }
+  }, [setup.contestId, setup.season]);
+
+  const arm = async (live: boolean) => {
+    if (!plan || !controlledProvider) return;
+    if (
+      live &&
+      !window.confirm(
+        `Arm live autodraft in the open ${providerName} tab? It will submit picks from this ranked queue when the page says it is your turn.`
+      )
+    ) {
+      return;
+    }
+    setError(null);
+    try {
+      const nextStatus = await sendAutoDraftCommand(controlledProvider, {
+        type: "FANTASY_AUTODRAFT_ARM",
+        provider: controlledProvider,
+        live,
+        pickDelayMs: 2500,
+        queue: plan.queue.map(({ player, rank }) => ({
+          name: player.name,
+          team: player.team,
+          position: player.position,
+          rank,
+        })),
+        rounds: setup.rounds,
+        positionLimits: plan.positionLimits.map(({ position, maximum }) => ({ position, maximum })),
+        roundRules: plan.roundRules,
+      });
+      setStatus(nextStatus);
+    } catch (armError) {
+      setError(
+        armError instanceof Error
+          ? armError.message
+          : "Autodraft could not be armed."
+      );
+    }
+  };
+
+  const disarm = async () => {
+    if (!controlledProvider) return;
+    setError(null);
+    try {
+      const nextStatus = await sendAutoDraftCommand(controlledProvider, {
+        type: "FANTASY_AUTODRAFT_DISARM",
+        provider: controlledProvider,
+      });
+      setStatus(nextStatus);
+    } catch (disarmError) {
+      setError(
+        disarmError instanceof Error
+          ? disarmError.message
+          : "Autodraft could not be disarmed."
+      );
+    }
+  };
+
+  const copyPlan = async () => {
+    if (awayQueue.length === 0) return;
+    try {
+      await navigator.clipboard.writeText(
+        isUnderdog
+          ? awayQueue.map(({ player }) => player.name).join("\n")
+          : formatAwayDraftPlan(plan as AwayDraftPlan)
+      );
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1800);
+    } catch {
+      setError("The plan could not be copied. Keep this panel open while you enter it.");
+    }
+  };
+
+  return (
+    <main className="away-page">
+      <header className="away-header">
+        <button type="button" className="icon-button" onClick={onBack} aria-label="Back to room setup">
+          <ArrowLeft size={18} aria-hidden="true" />
+        </button>
+        <BrandMark />
+        <span className="local-badge"><Plane size={14} aria-hidden="true" /> Away mode</span>
+      </header>
+
+      <section className="away-intro">
+        <p className="eyebrow">{providerName.toUpperCase()} {isUnderdog ? "BEST BALL" : "REDRAFT"}</p>
+        <h1>Set it before takeoff.</h1>
+        <p>
+          {isUnderdog
+            ? `This prepares a ${BEST_BALL_CONTESTS[setup.contestId].shortName} ranking list for Underdog's own Autopilot.`
+            : "The controller uses the scoring-specific board in this extension and acts only after the open draft page says it is your turn."}
+        </p>
+      </section>
+
+      {isUnderdog ? (
+        <section className="controller-card is-native" aria-labelledby="controller-heading">
+          <div className="controller-card__status">
+            <span className="controller-light controller-light--ready" aria-hidden="true" />
+            <div>
+              <h2 id="controller-heading">Native Autopilot</h2>
+              <p>Paste these rankings once, set position limits, and turn on Autopilot in every draft room before takeoff.</p>
+            </div>
+          </div>
+        </section>
+      ) : (
+        <section className={`controller-card ${status?.live && status.armed ? "is-live" : ""}`} aria-labelledby="controller-heading">
+          <div className="controller-card__status">
+            <span className={`controller-light controller-light--${status?.phase ?? "ready"}`} aria-hidden="true" />
+            <div>
+              <h2 id="controller-heading">Page controller</h2>
+              <p>{status?.message ?? `Open the ${providerName} draft room in this tab, then run a dry test.`}</p>
+            </div>
+          </div>
+          <div className="controller-actions">
+            <button type="button" onClick={() => void arm(false)} disabled={!plan || loading}>
+              Dry test
+            </button>
+            <button type="button" className="arm-live" onClick={() => void arm(true)} disabled={!plan || loading}>
+              <Power size={16} aria-hidden="true" /> Arm live
+            </button>
+            {status?.armed ? (
+              <button type="button" className="disarm-button" onClick={() => void disarm()}>
+                Turn off
+              </button>
+            ) : null}
+          </div>
+        </section>
+      )}
+
+      {error ? <p className="away-error">{error}</p> : null}
+
+      <aside className="risk-note">
+        <ShieldCheck size={20} aria-hidden="true" />
+        <p>
+          {isUnderdog
+            ? "Underdog documents this rankings and Autopilot flow. The rankings apply to one slate, so confirm the slate name and saved player count before you leave."
+            : "This private controller depends on provider page text and controls. Both providers can change those pages, and their terms prohibit automated access. Set up the native autopick below as the fallback."}
+        </p>
+      </aside>
+
+      <section className="setup-card native-fallback" aria-labelledby="fallback-heading">
+        <div className="section-heading">
+          <span className="section-index">01</span>
+          <div>
+            <h2 id="fallback-heading">Native autopick fallback</h2>
+            <p>The provider finishes the pick if the controller stops.</p>
+          </div>
+        </div>
+        {setup.platform === "espn" ? (
+          <div className="instruction-list">
+            <p><span>1</span>Open Edit Draft Strategy on the ESPN team page and save the copied player order.</p>
+            <p><span>2</span>Enter the position minimums and maximums shown below.</p>
+            <p><span>3</span>Leave early rounds on Best Available and reserve the final rounds for DST and K.</p>
+            <p><span>4</span>Save before leaving the page and confirm the rankings still appear after a reload.</p>
+          </div>
+        ) : setup.platform === "sleeper" ? (
+          <div className="instruction-list">
+            <p><span>1</span>Open this league's draft room and add the copied player order to its Queue tab.</p>
+            <p><span>2</span>Keep enough queued players to cover all {setup.teams * setup.rounds} room picks.</p>
+            <p><span>3</span>Ask the commissioner to use Force CPU Auto Pick so the room does not wait for your full timer.</p>
+            <p><span>4</span>Confirm the queue is still there after leaving and reopening the room.</p>
+          </div>
+        ) : (
+          <div className="instruction-list">
+            <p><span>1</span>Open Rankings, choose NFL, then select the {underdogSlate} slate.</p>
+            <p><span>2</span>Open CSV upload/download, paste the copied player names, and press Save.</p>
+            <p><span>3</span>Open Limits and enter the target maximums shown below, then save them.</p>
+            <p><span>4</span>Clear any room queue you do not want to take priority, turn on Autopilot, and confirm the toggle remains on.</p>
+          </div>
+        )}
+      </section>
+
+      {setup.platform === "espn" && plan ? (
+        <section className="setup-card" aria-labelledby="limits-heading">
+          <div className="section-heading">
+            <span className="section-index">02</span>
+            <div>
+              <h2 id="limits-heading">ESPN strategy settings</h2>
+              <p>These caps fill the starting lineup and limit extra QB and TE picks.</p>
+            </div>
+          </div>
+          <div className="position-limit-grid">
+            {plan.positionLimits.map((limit) => (
+              <div key={limit.position}>
+                <strong>{limit.position}</strong>
+                <span>Min {limit.minimum}</span>
+                <span>Max {limit.maximum}</span>
+              </div>
+            ))}
+          </div>
+          <p className="round-rules">
+            {plan.roundRules.length > 0
+              ? `Leave the other rounds on Best Available. ${plan.roundRules.map((rule) => `Round ${rule.round} is ${rule.position}`).join(". ")}.`
+              : "Leave every round on Best Available."}
+          </p>
+        </section>
+      ) : null}
+
+      {isUnderdog && bestBallTargets ? (
+        <section className="setup-card" aria-labelledby="limits-heading">
+          <div className="section-heading">
+            <span className="section-index">02</span>
+            <div>
+              <h2 id="limits-heading">Underdog position limits</h2>
+              <p>Autopilot treats each maximum as a hard cap while it works down your rankings.</p>
+            </div>
+          </div>
+          <div className="position-limit-grid">
+            {(["QB", "RB", "WR", "TE"] as const).map((position) => (
+              <div key={position}>
+                <strong>{position}</strong>
+                <span>Target {bestBallTargets.targets[position].recommended}</span>
+                <span>Max {bestBallTargets.targets[position].maximum}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      <section className="setup-card queue-card" aria-labelledby="queue-heading">
+        <div className="queue-heading">
+          <div>
+            <p className="eyebrow">{setup.platform === "espn" || isUnderdog ? "03" : "02"}</p>
+            <h2 id="queue-heading">Ranked queue</h2>
+            <p>
+              {loading
+                ? "Loading the latest saved rankings."
+                : awayQueue.length > 0
+                  ? isUnderdog
+                    ? `${awayQueue.length} players from the ${BEST_BALL_CONTESTS[setup.contestId].shortName} board, checked ${formatDate(snapshot?.kind === "best-ball" ? snapshot.data.rankingSource.asOf ?? snapshot.data.generatedAt : null)}.`
+                    : `${awayQueue.length} players from the ${setup.scoring.replace("_", " ")} board, checked ${formatDate(snapshot?.kind === "redraft" ? snapshot.data.upstreamUpdatedAt : null)}.`
+                  : "The ranked queue is unavailable."}
+            </p>
+          </div>
+          <button type="button" onClick={() => void copyPlan()} disabled={awayQueue.length === 0}>
+            <Copy size={16} aria-hidden="true" /> {copied ? "Copied" : isUnderdog ? "Copy rankings" : "Copy plan"}
+          </button>
+        </div>
+        {awayQueue.length > 0 && awayQueue.length < setup.teams * setup.rounds ? (
+          <p className="queue-warning">
+            The board has {awayQueue.length} matchable players, which is fewer than the {setup.teams * setup.rounds} picks in this room. Add provider-ranked players after this list.
+          </p>
+        ) : null}
+        <div className="away-queue" aria-busy={loading}>
+          {loading ? (
+            Array.from({ length: 8 }, (_, index) => <div className="player-skeleton" key={index} />)
+          ) : awayQueue.length > 0 ? (
+            awayQueue.map(({ player, rank }) => (
+              <div className="away-queue__row" key={player.id}>
+                <span>{rank}</span>
+                <b>{player.position}</b>
+                <strong>{player.name}</strong>
+                <small>{player.team}</small>
+              </div>
+            ))
+          ) : (
+            <EmptyState>The rankings could not be prepared.</EmptyState>
+          )}
+        </div>
+      </section>
     </main>
   );
 }
@@ -760,10 +1225,12 @@ function RosterPlan({
 
 function DraftConsole({
   state,
+  platform,
   onStateChange,
   onNewRoom,
 }: {
   state: FantasyCompanionDraftState;
+  platform: Platform;
   onStateChange: (next: FantasyCompanionDraftState) => void;
   onNewRoom: () => void;
 }) {
@@ -777,6 +1244,10 @@ function DraftConsole({
   const [view, setView] = useState<PanelView>("board");
   const [resetArmed, setResetArmed] = useState(false);
   const [announcement, setAnnouncement] = useState("");
+  const [syncStatus, setSyncStatus] = useState<{
+    phase: "waiting" | "synced" | "paused";
+    message: string;
+  }>({ phase: "waiting", message: "Waiting for the provider draft room." });
 
   const room = state.room;
   const roomIdentity = room.kind === "best-ball"
@@ -859,6 +1330,64 @@ function DraftConsole({
     () => redraftSnapshot?.overall ?? bestBallSnapshot?.players ?? [],
     [bestBallSnapshot, redraftSnapshot]
   );
+  const syncProvider: Platform = room.kind === "best-ball" ? "underdog" : platform;
+  // Provider messages arrive between renders, so they reconcile against the
+  // newest state rather than the state the listener closed over.
+  const stateRef = useRef(state);
+  useEffect(() => {
+    stateRef.current = state;
+  }, [state]);
+
+  useEffect(() => {
+    if (rawPlayers.length === 0 || typeof chrome === "undefined" || !chrome.runtime?.onMessage) {
+      return;
+    }
+    let cancelled = false;
+
+    const applySync = (message: FantasyDraftSyncMessage): void => {
+      if (cancelled || message.provider !== syncProvider) return;
+      const result = reconcileFantasyDraftSync(stateRef.current, message.picks, rawPlayers);
+      if (result.status === "updated") {
+        stateRef.current = result.state;
+        onStateChange(result.state);
+        const messageText = `${result.added} provider ${result.added === 1 ? "pick" : "picks"} recorded. The room is synced through pick ${result.state.picks.length}.`;
+        setSyncStatus({ phase: "synced", message: messageText });
+        setAnnouncement(messageText);
+        return;
+      }
+      if (result.status === "unchanged") {
+        setSyncStatus({
+          phase: "synced",
+          message: message.picks.length > 0
+            ? `Synced through provider pick ${message.picks.length}.`
+            : "Connected and waiting for the first pick.",
+        });
+        return;
+      }
+      if (result.status === "behind") {
+        setSyncStatus({
+          phase: "waiting",
+          message: "The provider log is behind the companion, so no picks were removed.",
+        });
+        return;
+      }
+      if (!("reason" in result)) return;
+      setSyncStatus({ phase: "paused", message: result.reason });
+      setAnnouncement(`Automatic pick sync paused. ${result.reason}`);
+    };
+
+    const listener = (message: unknown): void => {
+      if (isFantasyDraftSyncMessage(message)) applySync(message);
+    };
+    chrome.runtime.onMessage.addListener(listener);
+    void requestActiveDraftSync(syncProvider).then((message) => {
+      if (message) applySync(message);
+    });
+    return () => {
+      cancelled = true;
+      chrome.runtime.onMessage.removeListener(listener);
+    };
+  }, [onStateChange, rawPlayers, syncProvider]);
   const modelPlayers = useMemo(
     () => rawPlayers.map((player) => (adpAvailable ? player : withoutPlayerAdp(player))),
     [adpAvailable, rawPlayers]
@@ -1070,7 +1599,9 @@ function DraftConsole({
 
       <section className="room-bar" aria-label="Room and rankings status">
         <div className="room-label">
-          <span className="room-label__platform">{room.kind === "best-ball" ? "UNDERDOG" : "ESPN"}</span>
+          <span className="room-label__platform">
+            {room.kind === "best-ball" ? "UNDERDOG" : platform.toUpperCase()}
+          </span>
           <strong>{contest?.shortName ?? `${room.scoring.replace("_", " ")} REDRAFT`}</strong>
           <small>{room.teams} teams · {room.rounds} rounds · Slot {room.userTeam}</small>
         </div>
@@ -1086,6 +1617,11 @@ function DraftConsole({
             setRefreshVersion((version) => version + 1);
           }}
         />
+        <div className={`sync-status sync-status--${syncStatus.phase}`} title={syncStatus.message}>
+          <span aria-hidden="true" />
+          <strong>{syncStatus.phase === "paused" ? "Sync paused" : syncStatus.phase === "synced" ? "Auto synced" : "Auto sync"}</strong>
+          <small>{syncStatus.message}</small>
+        </div>
       </section>
 
       {liveError ? (
@@ -1364,6 +1900,7 @@ function DraftConsole({
 export function App() {
   const [setup, setSetup] = useState<SetupValues>(DEFAULT_SETUP);
   const [draftState, setDraftState] = useState<FantasyCompanionDraftState | null>(null);
+  const [awaySetup, setAwaySetup] = useState<SetupValues | null>(null);
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
@@ -1376,13 +1913,20 @@ export function App() {
       if (cancelled) return;
       const parsedDraft = parseFantasyCompanionState(savedDraft);
       const parsedSetup = parseSetupValues(savedSetup) ?? parseSetupValues(legacySetup);
+      // The saved room does not carry its provider, so recover it from the raw
+      // setup even when the rest of that record no longer validates.
+      const savedPlatform = (savedSetup as { platform?: unknown } | null)?.platform;
+      const redraftPlatform: AutoDraftPlatform =
+        savedPlatform === "sleeper" || parsedSetup?.platform === "sleeper" ? "sleeper" : "espn";
       if (legacySetup !== null) {
         // The v2 key is written on hydration below, so the v1 copy is only clutter now.
         void removeLocalValue(LEGACY_SETUP_STORAGE_KEY).catch(() => undefined);
       }
       if (parsedDraft) {
         setDraftState(parsedDraft);
-        setSetup(setupFromRoom(parsedDraft.room));
+        setSetup(
+          setupFromRoom(parsedDraft.room, redraftPlatform)
+        );
       } else if (parsedSetup) {
         setSetup(parsedSetup);
       }
@@ -1413,7 +1957,7 @@ export function App() {
 
   const startDraft = () => {
     if (
-      setup.platform === "espn" &&
+      setup.platform !== "underdog" &&
       countRedraftStartingSlots(setup.lineup) > setup.rounds
     ) {
       return;
@@ -1425,7 +1969,14 @@ export function App() {
 
   const newRoom = () => {
     if (draftState && draftState.picks.length > 0 && !window.confirm("Leave this draft and clear its recorded picks?")) return;
-    setSetup(draftState ? setupFromRoom(draftState.room) : setup);
+    setSetup(
+      draftState
+        ? setupFromRoom(
+            draftState.room,
+            setup.platform === "sleeper" ? "sleeper" : "espn"
+          )
+        : setup
+    );
     setDraftState(null);
     void removeLocalValue(DRAFT_STORAGE_KEY).catch(() => undefined);
   };
@@ -1439,9 +1990,31 @@ export function App() {
     );
   }
 
+  if (awaySetup) {
+    return (
+      <AwayDraftView
+        setup={awaySetup}
+        onBack={() => setAwaySetup(null)}
+      />
+    );
+  }
+
   return draftState ? (
-    <DraftConsole state={draftState} onStateChange={setDraftState} onNewRoom={newRoom} />
+    <DraftConsole
+      state={draftState}
+      platform={setup.platform}
+      onStateChange={setDraftState}
+      onNewRoom={newRoom}
+    />
   ) : (
-    <SetupPanel setup={setup} onChange={setSetup} onStart={startDraft} />
+    <SetupPanel
+      setup={setup}
+      onChange={setSetup}
+      onStart={startDraft}
+      onPrepareAway={() => {
+        window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+        setAwaySetup(setup);
+      }}
+    />
   );
 }
