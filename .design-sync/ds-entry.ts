@@ -18,7 +18,6 @@ export * from "../src/components/ui/SectionIntro";
 export * from "../src/components/ui/ThemeToggle";
 export * from "../src/components/ui/WarmCard";
 export * from "../src/components/ui/AuthorBio";
-export * from "../src/components/ui/dropdown-menu";
 
 // editorial/ kit
 export * from "../src/components/editorial";

@@ -8,7 +8,6 @@ export { SectionIntro } from "./dist/types/src/components/ui/SectionIntro";
 export { ThemeToggle } from "./dist/types/src/components/ui/ThemeToggle";
 export { WarmCard } from "./dist/types/src/components/ui/WarmCard";
 export { AuthorBio } from "./dist/types/src/components/ui/AuthorBio";
-export { DropdownMenu } from "./dist/types/src/components/ui/dropdown-menu";
 export { EditorialPillButton } from "./dist/types/src/components/editorial/EditorialPillButton";
 export { StatusPanel } from "./dist/types/src/components/editorial/StatusPanel";
 export { InlineSectionLead } from "./dist/types/src/components/editorial/InlineSectionLead";

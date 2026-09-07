@@ -22,10 +22,6 @@
       "cardMode": "single",
       "primaryStory": "OpenClubDetail"
     },
-    "DropdownMenu": {
-      "cardMode": "single",
-      "primaryStory": "OpenMenu"
-    },
     "GoalsPulseStrip": {
       "cardMode": "column"
     },
@@ -56,7 +52,6 @@
     "ThemeToggle": "src/components/ui/ThemeToggle.tsx",
     "WarmCard": "src/components/ui/WarmCard.tsx",
     "AuthorBio": "src/components/ui/AuthorBio.tsx",
-    "DropdownMenu": "src/components/ui/dropdown-menu.tsx",
     "EditorialPillButton": "src/components/editorial/EditorialPillButton.tsx",
     "StatusPanel": "src/components/editorial/StatusPanel.tsx",
     "InlineSectionLead": "src/components/editorial/InlineSectionLead.tsx",
@@ -91,7 +86,6 @@
     "ThemeToggle": "  className?: string;",
     "WarmCard": "  children: React.ReactNode;\n  className?: string;\n  hover?: boolean;\n  padding?: \"sm\" | \"md\" | \"lg\" | \"none\" | \"xl\";\n  ariaLabel?: string;\n  ariaDescription?: string;\n  onClick?: (e: React.MouseEvent<Element, MouseEvent>) => void;",
     "AuthorBio": "  name?: string;\n  title?: string;\n  image?: string;\n  bio?: string;\n  credentials?: Array<string>;\n  expertise?: Array<string>;\n  social?: { linkedin?: string; github?: string; email?: string; website?: string };\n  variant?: \"inline\" | \"full\" | \"compact\" | \"light\";\n  showImage?: boolean;\n  showSocial?: boolean;\n  className?: string;",
-    "DropdownMenu": "  children?: React.ReactNode;\n  dir?: \"ltr\" | \"rtl\";\n  open?: boolean;\n  defaultOpen?: boolean;\n  onOpenChange?: (open: boolean) => void;\n  modal?: boolean;",
     "EditorialPillButton": "  active: boolean;\n  children: React.ReactNode;\n  onClick: () => void;\n  title?: string;\n  role?: \"tab\";\n  ariaSelected?: boolean;\n  size?: \"sm\" | \"md\";",
     "StatusPanel": "  title: string;\n  message: string;\n  tone?: \"default\" | \"warning\" | \"error\";\n  icon?: React.ReactNode;\n  statusRole?: \"alert\" | \"status\";\n  action?: React.ReactNode;",
     "InlineSectionLead": "  kicker: string;\n  children: React.ReactNode;\n  maxWidthClassName?: string;",
