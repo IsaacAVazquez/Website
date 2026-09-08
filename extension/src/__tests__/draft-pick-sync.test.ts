@@ -75,8 +75,8 @@ describe("provider draft pick extraction", () => {
             picks: [
               { overallPickNumber: 2, roundId: 1, roundPickNumber: 2, playerId: -16034 },
               { overallPickNumber: 1, roundId: 1, roundPickNumber: 1, playerId: 4429795 },
-              { overallPickNumber: 3, roundId: 1, roundPickNumber: 3, playerId: -1 },
-              { overallPickNumber: 4, roundId: 1, roundPickNumber: 4, playerId: 999 },
+              { overallPickNumber: 3, roundId: 1, roundPickNumber: 3, playerId: 999 },
+              { overallPickNumber: 4, roundId: 1, roundPickNumber: 4, playerId: -1 },
             ],
           },
         },
@@ -85,8 +85,22 @@ describe("provider draft pick extraction", () => {
     ).toEqual([
       { pickNumber: 1, name: "Jahmyr Gibbs", position: "RB", team: "DET" },
       { pickNumber: 2, name: "Texans D/ST", position: "DST", team: "HOU" },
-      { pickNumber: 4, name: "ESPN player 999" },
+      { pickNumber: 3, name: "ESPN player 999" },
     ]);
+    expect(
+      parseEspnDraftPicks(
+        {
+          draftDetail: {
+            picks: [
+              { overallPickNumber: 1, playerId: 4429795 },
+              { overallPickNumber: 2, playerId: -1 },
+              { overallPickNumber: 9, playerId: -16034, keeper: true },
+            ],
+          },
+        },
+        players
+      )
+    ).toEqual([{ pickNumber: 1, name: "Jahmyr Gibbs", position: "RB", team: "DET" }]);
     expect(parseEspnDraftPicks({ draftDetail: {} }, players)).toEqual([]);
     expect(parseEspnDraftPicks(null, players)).toEqual([]);
   });

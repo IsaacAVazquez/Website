@@ -123,6 +123,11 @@ export function espnPlayerIdsFromDraftDetail(value: unknown): number[] {
     .filter((id) => Number.isInteger(id) && (id > 0 || (id <= -16000 && id >= -16100)));
 }
 
+/**
+ * Keeper slots are filled before the draft starts, so the log can hold a pick
+ * in round 8 while round 1 is still open. Only the contiguous prefix from pick
+ * 1 is reported; a keeper joins it once every earlier slot is filled.
+ */
 export function parseEspnDraftPicks(
   value: unknown,
   players: EspnPlayerIndex
@@ -130,7 +135,7 @@ export function parseEspnDraftPicks(
   const picks = (value as { draftDetail?: { picks?: unknown } })?.draftDetail?.picks;
   if (!Array.isArray(picks)) return [];
   const validIds = new Set(espnPlayerIdsFromDraftDetail(value));
-  return picks
+  const filled = picks
     .map((entry): FantasyDraftObservedPick | null => {
       const pick = entry as { overallPickNumber?: unknown; playerId?: unknown };
       const playerId = Number(pick.playerId);
@@ -143,6 +148,8 @@ export function parseEspnDraftPicks(
     })
     .filter((pick): pick is FantasyDraftObservedPick => pick !== null)
     .sort((left, right) => left.pickNumber - right.pickNumber);
+  const prefixLength = filled.findIndex((pick, index) => pick.pickNumber !== index + 1);
+  return prefixLength === -1 ? filled : filled.slice(0, prefixLength);
 }
 
 function extractUniquePicks(
