@@ -51,38 +51,98 @@ export function parseUnderdogDraftPickLabel(
   };
 }
 
-export function parseEspnDraftPickLabel(
-  value: string
-): FantasyDraftObservedPick | null {
-  const text = cleanText(value);
-  const positionThenTeam = text.match(
-    new RegExp(
-      `(?:^|\\s)\\d+\\.\\s*\\((\\d+)\\)\\s+(.+?)\\s+(${POSITION_PATTERN})\\s*[-,|]\\s*([A-Z]{2,3})(?:\\s|$)`,
-      "i"
-    )
-  );
-  if (positionThenTeam) {
-    return {
-      pickNumber: Number(positionThenTeam[1]),
-      name: cleanText(positionThenTeam[2]),
-      position: normalizePosition(positionThenTeam[3]),
-      team: positionThenTeam[4].toUpperCase(),
-    };
-  }
+/** ESPN's league read API, the same host the draft room itself calls. */
+const ESPN_LEAGUE_API = "https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl";
+const ESPN_POSITIONS: Record<number, string> = { 1: "QB", 2: "RB", 3: "WR", 4: "TE", 5: "K", 16: "DST" };
+const ESPN_TEAMS: Record<number, string> = {
+  1: "ATL", 2: "BUF", 3: "CHI", 4: "CIN", 5: "CLE", 6: "DAL", 7: "DEN", 8: "DET",
+  9: "GB", 10: "TEN", 11: "IND", 12: "KC", 13: "LV", 14: "LAR", 15: "MIA", 16: "MIN",
+  17: "NE", 18: "NO", 19: "NYG", 20: "NYJ", 21: "PHI", 22: "ARI", 23: "PIT", 24: "LAC",
+  25: "SF", 26: "SEA", 27: "TB", 28: "WAS", 29: "CAR", 30: "JAX", 33: "BAL", 34: "HOU",
+};
 
-  const teamThenPosition = text.match(
-    new RegExp(
-      `(?:^|\\s)\\d+\\.\\s*\\((\\d+)\\)\\s+(.+?)[,|]?\\s+([A-Z]{2,3})[,|]?\\s+(${POSITION_PATTERN})(?:\\s|$)`,
-      "i"
-    )
-  );
-  if (!teamThenPosition) return null;
-  return {
-    pickNumber: Number(teamThenPosition[1]),
-    name: cleanText(teamThenPosition[2]),
-    team: teamThenPosition[3].toUpperCase(),
-    position: normalizePosition(teamThenPosition[4]),
-  };
+export interface EspnDraftContext {
+  leagueId: string;
+  season: number;
+}
+
+export type EspnPlayerIndex = Map<number, { name: string; position?: string; team?: string }>;
+
+/** Only the draft room polls; a league page shares the id but has no live picks. */
+export function extractEspnDraftContext(value: string): EspnDraftContext | null {
+  try {
+    const url = new URL(value);
+    const leagueId = url.searchParams.get("leagueId");
+    if (!leagueId || !/\/draft\b/.test(url.pathname)) return null;
+    const season = Number(url.searchParams.get("seasonId"));
+    return { leagueId, season: Number.isInteger(season) && season > 0 ? season : new Date().getFullYear() };
+  } catch {
+    return null;
+  }
+}
+
+export function parseEspnPlayerIndex(value: unknown): EspnPlayerIndex {
+  const index: EspnPlayerIndex = new Map();
+  const list = Array.isArray(value)
+    ? value
+    : Array.isArray((value as { players?: unknown })?.players)
+      ? ((value as { players: unknown[] }).players)
+      : [];
+  for (const entry of list) {
+    const raw = (entry as { player?: unknown })?.player ?? entry;
+    if (!raw || typeof raw !== "object") continue;
+    const player = raw as {
+      id?: unknown;
+      fullName?: unknown;
+      firstName?: unknown;
+      lastName?: unknown;
+      defaultPositionId?: unknown;
+      proTeamId?: unknown;
+    };
+    const id = Number(player.id);
+    if (!Number.isInteger(id)) continue;
+    const name = cleanText(
+      typeof player.fullName === "string"
+        ? player.fullName
+        : `${typeof player.firstName === "string" ? player.firstName : ""} ${typeof player.lastName === "string" ? player.lastName : ""}`
+    );
+    if (!name) continue;
+    const position = ESPN_POSITIONS[Number(player.defaultPositionId)];
+    const team = ESPN_TEAMS[Number(player.proTeamId)];
+    index.set(id, { name, ...(position ? { position } : {}), ...(team ? { team } : {}) });
+  }
+  return index;
+}
+
+/** ESPN pre-fills every slot with playerId -1; D/ST ids sit in -16001..-16100. */
+export function espnPlayerIdsFromDraftDetail(value: unknown): number[] {
+  const picks = (value as { draftDetail?: { picks?: unknown } })?.draftDetail?.picks;
+  if (!Array.isArray(picks)) return [];
+  return picks
+    .map((pick) => Number((pick as { playerId?: unknown })?.playerId))
+    .filter((id) => Number.isInteger(id) && (id > 0 || (id <= -16000 && id >= -16100)));
+}
+
+export function parseEspnDraftPicks(
+  value: unknown,
+  players: EspnPlayerIndex
+): FantasyDraftObservedPick[] {
+  const picks = (value as { draftDetail?: { picks?: unknown } })?.draftDetail?.picks;
+  if (!Array.isArray(picks)) return [];
+  const validIds = new Set(espnPlayerIdsFromDraftDetail(value));
+  return picks
+    .map((entry): FantasyDraftObservedPick | null => {
+      const pick = entry as { overallPickNumber?: unknown; playerId?: unknown };
+      const playerId = Number(pick.playerId);
+      const pickNumber = Number(pick.overallPickNumber);
+      if (!validIds.has(playerId) || !Number.isInteger(pickNumber) || pickNumber < 1) return null;
+      const player = players.get(playerId);
+      return player
+        ? { pickNumber, ...player }
+        : { pickNumber, name: `ESPN player ${playerId}` };
+    })
+    .filter((pick): pick is FantasyDraftObservedPick => pick !== null)
+    .sort((left, right) => left.pickNumber - right.pickNumber);
 }
 
 function extractUniquePicks(
@@ -150,19 +210,6 @@ export function extractUnderdogDraftPicks(
     }
   }
   return [...byPick.values()].sort((left, right) => left.pickNumber - right.pickNumber);
-}
-
-export function extractEspnDraftPicks(
-  root: ParentNode = document
-): FantasyDraftObservedPick[] {
-  return extractUniquePicks(
-    Array.from(
-      root.querySelectorAll(
-        "[data-testid*='pick' i], [class*='pick' i], [aria-label*='pick' i], [role='row']"
-      )
-    ),
-    parseEspnDraftPickLabel
-  );
 }
 
 /** Only a draft-room URL carries a draft id; a league page's id is the league. */
@@ -242,9 +289,48 @@ export function startDraftPickSync(
   let debounceId: number | null = null;
   let pollId: number | null = null;
 
+  let espnPlayers: EspnPlayerIndex = new Map();
+
+  const getJson = async (url: string, headers: Record<string, string> = {}): Promise<unknown> => {
+    const response = await fetcher(url, {
+      cache: "no-store",
+      credentials: "include",
+      headers: { Accept: "application/json", ...headers },
+    });
+    return response.ok ? response.json() : null;
+  };
+
+  const readEspn = async (): Promise<FantasyDraftObservedPick[]> => {
+    const context = extractEspnDraftContext(options.href ?? window.location.href);
+    if (!context) return [];
+    const league = await getJson(
+      `${ESPN_LEAGUE_API}/seasons/${context.season}/segments/0/leagues/${context.leagueId}?view=mDraftDetail`
+    );
+    const ids = espnPlayerIdsFromDraftDetail(league);
+    if (ids.length === 0) return [];
+    // The player list is one request for the whole season; fetch it once and
+    // again only when a drafted id is missing from it.
+    if (ids.some((id) => !espnPlayers.has(id))) {
+      const fetched = parseEspnPlayerIndex(
+        await getJson(
+          `${ESPN_LEAGUE_API}/seasons/${context.season}/players?scoringPeriodId=0&view=players_wl`,
+          { "X-Fantasy-Filter": JSON.stringify({ filterActive: { value: true } }) }
+        )
+      );
+      if (fetched.size > 0) espnPlayers = fetched;
+    }
+    return parseEspnDraftPicks(league, espnPlayers);
+  };
+
   const read = async (): Promise<FantasyDraftObservedPick[]> => {
     if (provider === "underdog") return extractUnderdogDraftPicks();
-    if (provider === "espn") return extractEspnDraftPicks();
+    if (provider === "espn") {
+      try {
+        return await readEspn();
+      } catch {
+        return [];
+      }
+    }
     // Sleeper is a single-page app, so the href is re-read on every poll
     // instead of captured once at script load.
     const sleeperDraftId = extractSleeperDraftId(options.href ?? window.location.href);
@@ -282,10 +368,7 @@ export function startDraftPickSync(
     }
   };
 
-  if (provider === "sleeper") {
-    void poll();
-    pollId = window.setInterval(() => void poll(), 2500);
-  } else {
+  if (provider === "underdog") {
     const observer = new MutationObserver(() => {
       if (debounceId !== null) window.clearTimeout(debounceId);
       debounceId = window.setTimeout(() => void request(), 200);
@@ -310,6 +393,8 @@ export function startDraftPickSync(
     };
   }
 
+  void poll();
+  pollId = window.setInterval(() => void poll(), 2500);
   return {
     request,
     stop: () => {

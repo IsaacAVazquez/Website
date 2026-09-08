@@ -2,7 +2,9 @@ import {
   detectDraftSyncProvider,
   extractSleeperDraftId,
   extractUnderdogDraftPicks,
-  parseEspnDraftPickLabel,
+  extractEspnDraftContext,
+  parseEspnDraftPicks,
+  parseEspnPlayerIndex,
   parseSleeperDraftPicks,
   parseUnderdogDraftPickLabel,
 } from "../draft-pick-sync";
@@ -46,19 +48,69 @@ describe("provider draft pick extraction", () => {
     ]);
   });
 
-  it("parses common ESPN draft-log label orders", () => {
-    expect(parseEspnDraftPickLabel("1. (1) Jahmyr Gibbs RB - DET")).toEqual({
-      pickNumber: 1,
-      name: "Jahmyr Gibbs",
-      position: "RB",
-      team: "DET",
-    });
-    expect(parseEspnDraftPickLabel("2. (14) Amon-Ra St. Brown DET, WR")).toEqual({
-      pickNumber: 14,
-      name: "Amon-Ra St. Brown",
-      position: "WR",
-      team: "DET",
-    });
+  it("reads the ESPN league and season from a draft-room URL only", () => {
+    expect(
+      extractEspnDraftContext(
+        "https://fantasy.espn.com/football/draft?leagueId=1788927341&seasonId=2026"
+      )
+    ).toEqual({ leagueId: "1788927341", season: 2026 });
+    expect(
+      extractEspnDraftContext("https://fantasy.espn.com/football/draft?leagueId=42")
+    ).toEqual({ leagueId: "42", season: new Date().getFullYear() });
+    expect(
+      extractEspnDraftContext("https://fantasy.espn.com/football/team?leagueId=42")
+    ).toBeNull();
+    expect(extractEspnDraftContext("not a url")).toBeNull();
+  });
+
+  it("maps ESPN draft detail picks onto named players and skips empty slots", () => {
+    const players = new Map([
+      [4429795, { name: "Jahmyr Gibbs", position: "RB", team: "DET" }],
+      [-16034, { name: "Texans D/ST", position: "DST", team: "HOU" }],
+    ]);
+    expect(
+      parseEspnDraftPicks(
+        {
+          draftDetail: {
+            picks: [
+              { overallPickNumber: 2, roundId: 1, roundPickNumber: 2, playerId: -16034 },
+              { overallPickNumber: 1, roundId: 1, roundPickNumber: 1, playerId: 4429795 },
+              { overallPickNumber: 3, roundId: 1, roundPickNumber: 3, playerId: -1 },
+              { overallPickNumber: 4, roundId: 1, roundPickNumber: 4, playerId: 999 },
+            ],
+          },
+        },
+        players
+      )
+    ).toEqual([
+      { pickNumber: 1, name: "Jahmyr Gibbs", position: "RB", team: "DET" },
+      { pickNumber: 2, name: "Texans D/ST", position: "DST", team: "HOU" },
+      { pickNumber: 4, name: "ESPN player 999" },
+    ]);
+    expect(parseEspnDraftPicks({ draftDetail: {} }, players)).toEqual([]);
+    expect(parseEspnDraftPicks(null, players)).toEqual([]);
+  });
+
+  it("indexes the ESPN player list by id with plain positions and team codes", () => {
+    expect(
+      parseEspnPlayerIndex({
+        players: [
+          { id: 4429795, fullName: "Jahmyr Gibbs", defaultPositionId: 2, proTeamId: 8 },
+          { id: 12, firstName: "Jake", lastName: "Bates", defaultPositionId: 5, proTeamId: 8 },
+          { id: -16034, fullName: "Texans D/ST", defaultPositionId: 16, proTeamId: 34 },
+          { fullName: "no id" },
+        ],
+      })
+    ).toEqual(
+      new Map([
+        [4429795, { name: "Jahmyr Gibbs", position: "RB", team: "DET" }],
+        [12, { name: "Jake Bates", position: "K", team: "DET" }],
+        [-16034, { name: "Texans D/ST", position: "DST", team: "HOU" }],
+      ])
+    );
+    expect(parseEspnPlayerIndex([{ id: 1, fullName: "Array Form", defaultPositionId: 1, proTeamId: 2 }])).toEqual(
+      new Map([[1, { name: "Array Form", position: "QB", team: "BUF" }]])
+    );
   });
 
   it("reads Sleeper draft IDs and official pick payloads", () => {
