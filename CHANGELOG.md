@@ -4,6 +4,12 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-09-09
+
+- Commit the weekly board when it is a brand-new file ([#422](https://github.com/IsaacAVazquez/Website/pull/422)).
+
+---
+
 ## 2026-09-07
 
 - Fix the fantasy and golf refresh failures and sync the route docs ([#420](https://github.com/IsaacAVazquez/Website/pull/420)).
