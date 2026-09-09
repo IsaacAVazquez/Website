@@ -82,7 +82,8 @@ Current route inventory and page ownership for the live app.
 | `/fantasy-football/draft-tracker` | `src/app/fantasy-football/draft-tracker/page.tsx` | Redraft room tracker with roster pressure, room-relative Draft Outlook, draft-slot context, and user-entered expected return math |
 | `/fantasy-football/trade-calculator` | `src/app/fantasy-football/trade-calculator/page.tsx` | Preseason one-QB redraft trade estimate using overall expert consensus, reliable mock-draft ADP, league-size replacement lines, and browser-local player selections |
 | `/fantasy-football/mock-draft` | `src/app/fantasy-football/mock-draft/page.tsx` | Mock draft simulator: rehearse the early rounds of a one-QB draft against a seeded room that picks from the consensus board and market ADP, then sim to the end for the board grid and value report |
-| `/fantasy-football/weekly` | `src/app/fantasy-football/weekly/page.tsx` | In-season weekly FLEX and QB consensus board with the waiver reading; reports a not-published state until Week 1 |
+| `/fantasy-football/weekly` | `src/app/fantasy-football/weekly/page.tsx` | In-season weekly FLEX and QB consensus board; reports a not-published state until Week 1 |
+| `/fantasy-football/waivers` | `src/app/fantasy-football/waivers/page.tsx` | In-season waiver targets (rank percentile minus rostered percentage) read from the same weekly snapshot through the shared weekly client |
 
 ### Utility/admin
 
@@ -142,6 +143,7 @@ These routes manage more of their own spacing and width:
 - `/fantasy-football/mock-draft`
 - `/fantasy-football/trade-calculator`
 - `/fantasy-football/weekly`
+- `/fantasy-football/waivers`
 - `/fintech-tools/budget-planner`
 - `/fintech-tools/interchange-iq`
 - `/fintech-tools/rent-vs-buy`

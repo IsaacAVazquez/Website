@@ -123,6 +123,7 @@ Self-shell routes currently include:
 - `/fantasy-football/mock-draft`
 - `/fantasy-football/trade-calculator`
 - `/fantasy-football/weekly`
+- `/fantasy-football/waivers`
 - `/fintech-tools/budget-planner`
 - `/fintech-tools/interchange-iq`
 - `/fintech-tools/rent-vs-buy`

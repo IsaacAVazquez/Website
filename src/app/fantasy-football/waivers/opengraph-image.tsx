@@ -6,15 +6,15 @@ export const size = {
   width: 1200,
   height: 630,
 };
-export const alt = "Weekly Board";
+export const alt = "Waiver Targets";
 
 export default function Image() {
   return createEditorialOgImage({
     eyebrow: "In Season",
-    title: "Weekly Board",
+    title: "Waiver Targets",
     description:
-      "Weekly flex and quarterback consensus, with opponents, expert range, and rostered rate.",
+      "The adds where the weekly expert consensus runs ahead of how widely a player is rostered.",
     accent: "teal",
-    footer: "isaacvazquez.com/fantasy-football/weekly",
+    footer: "isaacvazquez.com/fantasy-football/waivers",
   });
 }
