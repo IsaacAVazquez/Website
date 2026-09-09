@@ -26,6 +26,20 @@ describe("fantasy workflow", () => {
     expect(workflow).not.toContain("public/fantasy/rb_current.json");
   });
 
+  it("detects a brand-new weekly board, not just a modified one", () => {
+    const workflowPath = path.join(process.cwd(), ".github", "workflows", "update-fantasy.yml");
+    const workflow = readFileSync(workflowPath, "utf8");
+
+    // The weekly board is untracked until the season's first build. `git diff
+    // --quiet` exits 0 for an untracked file, so the 2026 Week 1 board built
+    // cleanly and was never committed. The change check has to see untracked
+    // files as changes.
+    expect(workflow).toContain(
+      'git status --porcelain -- public/data/fantasy/weekly.json'
+    );
+    expect(workflow).not.toContain("git diff --quiet -- public/data/fantasy/weekly.json");
+  });
+
   it("commits redraft and best ball as independent lanes", () => {
     const workflowPath = path.join(process.cwd(), ".github", "workflows", "update-fantasy.yml");
     const workflow = readFileSync(workflowPath, "utf8");
