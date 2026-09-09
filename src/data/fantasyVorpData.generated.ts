@@ -9,7 +9,7 @@ import type {
 } from "@/lib/fantasyProsVorpSource";
 import type { ScoringFormat } from "@/types";
 
-export const fantasyVorpDataGeneratedAt = "2026-09-08T19:45:34.284Z";
+export const fantasyVorpDataGeneratedAt = "2026-09-09T19:37:23.408Z";
 
 export interface FantasyVorpDataset {
   season: number;
@@ -26,7 +26,7 @@ export const fantasyVorpData: Record<
     "10": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-      "accessedAt": "2026-09-08T19:45:35.097Z",
+      "accessedAt": "2026-09-09T19:37:23.884Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -5388,7 +5388,7 @@ export const fantasyVorpData: Record<
     "12": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-      "accessedAt": "2026-09-08T19:45:35.691Z",
+      "accessedAt": "2026-09-09T19:37:24.781Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -10750,7 +10750,7 @@ export const fantasyVorpData: Record<
     "14": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-      "accessedAt": "2026-09-08T19:45:36.385Z",
+      "accessedAt": "2026-09-09T19:37:25.275Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -16114,7 +16114,7 @@ export const fantasyVorpData: Record<
     "10": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-      "accessedAt": "2026-09-08T19:45:36.968Z",
+      "accessedAt": "2026-09-09T19:37:26.009Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -21476,7 +21476,7 @@ export const fantasyVorpData: Record<
     "12": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-      "accessedAt": "2026-09-08T19:45:38.089Z",
+      "accessedAt": "2026-09-09T19:37:26.899Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -26838,7 +26838,7 @@ export const fantasyVorpData: Record<
     "14": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-      "accessedAt": "2026-09-08T19:45:38.522Z",
+      "accessedAt": "2026-09-09T19:37:27.378Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -32202,7 +32202,7 @@ export const fantasyVorpData: Record<
     "10": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-      "accessedAt": "2026-09-08T19:45:39.181Z",
+      "accessedAt": "2026-09-09T19:37:28.010Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -37564,7 +37564,7 @@ export const fantasyVorpData: Record<
     "12": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-      "accessedAt": "2026-09-08T19:45:39.544Z",
+      "accessedAt": "2026-09-09T19:37:28.447Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -42926,7 +42926,7 @@ export const fantasyVorpData: Record<
     "14": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-      "accessedAt": "2026-09-08T19:45:40.182Z",
+      "accessedAt": "2026-09-09T19:37:29.570Z",
       "players": [
         {
           "playerId": "fp-22968",
