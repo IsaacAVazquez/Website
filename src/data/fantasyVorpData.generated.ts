@@ -9,7 +9,7 @@ import type {
 } from "@/lib/fantasyProsVorpSource";
 import type { ScoringFormat } from "@/types";
 
-export const fantasyVorpDataGeneratedAt = "2026-09-09T19:37:23.408Z";
+export const fantasyVorpDataGeneratedAt = "2026-09-10T19:28:34.355Z";
 
 export interface FantasyVorpDataset {
   season: number;
@@ -26,7 +26,7 @@ export const fantasyVorpData: Record<
     "10": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-      "accessedAt": "2026-09-09T19:37:23.884Z",
+      "accessedAt": "2026-09-10T19:28:35.008Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -3586,7 +3586,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24335",
           "name": "Jarquez Hunter",
-          "team": "FA",
+          "team": "MIA",
           "position": "RB",
           "positionRank": 113,
           "rank": 396,
@@ -3847,7 +3847,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-22921",
           "name": "Jerome Ford",
-          "team": "WAS",
+          "team": "FA",
           "position": "RB",
           "positionRank": 129,
           "rank": 425,
@@ -5388,7 +5388,7 @@ export const fantasyVorpData: Record<
     "12": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-      "accessedAt": "2026-09-09T19:37:24.781Z",
+      "accessedAt": "2026-09-10T19:28:35.514Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -8570,7 +8570,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24335",
           "name": "Jarquez Hunter",
-          "team": "FA",
+          "team": "MIA",
           "position": "RB",
           "positionRank": 113,
           "rank": 354,
@@ -8804,7 +8804,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-22921",
           "name": "Jerome Ford",
-          "team": "WAS",
+          "team": "FA",
           "position": "RB",
           "positionRank": 129,
           "rank": 380,
@@ -10750,7 +10750,7 @@ export const fantasyVorpData: Record<
     "14": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-      "accessedAt": "2026-09-09T19:37:25.275Z",
+      "accessedAt": "2026-09-10T19:28:36.712Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -13752,7 +13752,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24335",
           "name": "Jarquez Hunter",
-          "team": "FA",
+          "team": "MIA",
           "position": "RB",
           "positionRank": 113,
           "rank": 334,
@@ -14058,7 +14058,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-22921",
           "name": "Jerome Ford",
-          "team": "WAS",
+          "team": "FA",
           "position": "RB",
           "positionRank": 129,
           "rank": 368,
@@ -16114,7 +16114,7 @@ export const fantasyVorpData: Record<
     "10": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-      "accessedAt": "2026-09-09T19:37:26.009Z",
+      "accessedAt": "2026-09-10T19:28:37.798Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -19314,7 +19314,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24335",
           "name": "Jarquez Hunter",
-          "team": "FA",
+          "team": "MIA",
           "position": "RB",
           "positionRank": 113,
           "rank": 356,
@@ -19557,7 +19557,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-22921",
           "name": "Jerome Ford",
-          "team": "WAS",
+          "team": "FA",
           "position": "RB",
           "positionRank": 129,
           "rank": 383,
@@ -21476,7 +21476,7 @@ export const fantasyVorpData: Record<
     "12": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-      "accessedAt": "2026-09-09T19:37:26.899Z",
+      "accessedAt": "2026-09-10T19:28:38.451Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -24829,7 +24829,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24335",
           "name": "Jarquez Hunter",
-          "team": "FA",
+          "team": "MIA",
           "position": "RB",
           "positionRank": 113,
           "rank": 373,
@@ -25054,7 +25054,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-22921",
           "name": "Jerome Ford",
-          "team": "WAS",
+          "team": "FA",
           "position": "RB",
           "positionRank": 129,
           "rank": 398,
@@ -26838,7 +26838,7 @@ export const fantasyVorpData: Record<
     "14": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-      "accessedAt": "2026-09-09T19:37:27.378Z",
+      "accessedAt": "2026-09-10T19:28:38.950Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -29822,7 +29822,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24335",
           "name": "Jarquez Hunter",
-          "team": "FA",
+          "team": "MIA",
           "position": "RB",
           "positionRank": 113,
           "rank": 332,
@@ -30083,7 +30083,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-22921",
           "name": "Jerome Ford",
-          "team": "WAS",
+          "team": "FA",
           "position": "RB",
           "positionRank": 129,
           "rank": 361,
@@ -32202,7 +32202,7 @@ export const fantasyVorpData: Record<
     "10": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-      "accessedAt": "2026-09-09T19:37:28.010Z",
+      "accessedAt": "2026-09-10T19:28:39.619Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -35627,7 +35627,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24335",
           "name": "Jarquez Hunter",
-          "team": "FA",
+          "team": "MIA",
           "position": "RB",
           "positionRank": 113,
           "rank": 381,
@@ -35924,7 +35924,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-22921",
           "name": "Jerome Ford",
-          "team": "WAS",
+          "team": "FA",
           "position": "RB",
           "positionRank": 129,
           "rank": 414,
@@ -37564,7 +37564,7 @@ export const fantasyVorpData: Record<
     "12": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-      "accessedAt": "2026-09-09T19:37:28.447Z",
+      "accessedAt": "2026-09-10T19:28:40.345Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -40854,7 +40854,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24335",
           "name": "Jarquez Hunter",
-          "team": "FA",
+          "team": "MIA",
           "position": "RB",
           "positionRank": 113,
           "rank": 366,
@@ -41223,7 +41223,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-22921",
           "name": "Jerome Ford",
-          "team": "WAS",
+          "team": "FA",
           "position": "RB",
           "positionRank": 129,
           "rank": 407,
@@ -42926,7 +42926,7 @@ export const fantasyVorpData: Record<
     "14": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-      "accessedAt": "2026-09-09T19:37:29.570Z",
+      "accessedAt": "2026-09-10T19:28:41.063Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -46081,7 +46081,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24335",
           "name": "Jarquez Hunter",
-          "team": "FA",
+          "team": "MIA",
           "position": "RB",
           "positionRank": 113,
           "rank": 351,
@@ -46324,7 +46324,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-22921",
           "name": "Jerome Ford",
-          "team": "WAS",
+          "team": "FA",
           "position": "RB",
           "positionRank": 129,
           "rank": 378,
