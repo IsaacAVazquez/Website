@@ -1,25 +1,25 @@
 {
-  "generatedAt": "2026-09-10T13:42:10.636Z",
+  "generatedAt": "2026-09-10T23:15:46.977Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
-      "id": "3e0456da-14b1-4ac3-b59e-35fefb1d1530",
-      "name": "USSF-153",
-      "flightNumber": 727,
+      "id": "ad358a4d-c541-409b-9366-9c2f2da4aeb9",
+      "name": "O3b mPower 11-13",
+      "flightNumber": 728,
       "upcoming": true,
       "success": null,
-      "details": "USSF-153 is a classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches.",
-      "dateUtc": "2026-09-10T15:42:30Z",
-      "dateUnix": 1789054950,
-      "dateLocal": "2026-09-10T15:42:30Z",
+      "details": "3 high-throughput communications satellites in Medium Earth Orbit (MEO) built by Boeing and operated by SES.",
+      "dateUtc": "2026-09-13T18:49:00Z",
+      "dateUnix": 1789325340,
+      "dateLocal": "2026-09-13T18:49:00Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "launchpadName": "Space Launch Complex 40",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
       "patchImage": null,
-      "vehicleImage": "/data/spacex/images/11492e0a09c1640e.jpg",
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
       "crewCount": 0,
       "payloadCount": 1,
       "capsuleCount": 0,
@@ -29,7 +29,7 @@
       "links": {
         "webcast": null,
         "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/United_States_Space_Force",
+        "wikipedia": "https://en.wikipedia.org/wiki/SES_S.A.",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -38,16 +38,56 @@
         "patchSmall": null,
         "patchLarge": null,
         "flickrOriginal": [
-          "/data/spacex/images/11492e0a09c1640e.jpg"
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
         ]
       }
     },
     "nextLaunch": {
+      "id": "ad358a4d-c541-409b-9366-9c2f2da4aeb9",
+      "name": "O3b mPower 11-13",
+      "flightNumber": 728,
+      "upcoming": true,
+      "success": null,
+      "details": "3 high-throughput communications satellites in Medium Earth Orbit (MEO) built by Boeing and operated by SES.",
+      "dateUtc": "2026-09-13T18:49:00Z",
+      "dateUnix": 1789325340,
+      "dateLocal": "2026-09-13T18:49:00Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 40",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/SES_S.A.",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    "fallbackLaunch": {
       "id": "3e0456da-14b1-4ac3-b59e-35fefb1d1530",
       "name": "USSF-153",
       "flightNumber": 727,
-      "upcoming": true,
-      "success": null,
+      "upcoming": false,
+      "success": true,
       "details": "USSF-153 is a classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches.",
       "dateUtc": "2026-09-10T15:42:30Z",
       "dateUnix": 1789054950,
@@ -79,46 +119,6 @@
         "patchLarge": null,
         "flickrOriginal": [
           "/data/spacex/images/11492e0a09c1640e.jpg"
-        ]
-      }
-    },
-    "fallbackLaunch": {
-      "id": "153ef8ef-b12b-43f4-a4bf-05b225c0cd37",
-      "name": "Starlink Group 15-24",
-      "flightNumber": 726,
-      "upcoming": false,
-      "success": true,
-      "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-09-06T14:26:54Z",
-      "dateUnix": 1788704814,
-      "dateLocal": "2026-09-06T14:26:54Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": "/data/spacex/images/1927035cad14a77c.png",
-      "vehicleImage": "/data/spacex/images/b317ff9ea04bd623.png",
-      "crewCount": 0,
-      "payloadCount": 27,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": "https://starlink.com",
-        "wikipedia": "https://en.wikipedia.org/wiki/Starlink",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": "/data/spacex/images/1927035cad14a77c.png",
-        "patchLarge": "/data/spacex/images/1927035cad14a77c.png",
-        "flickrOriginal": [
-          "/data/spacex/images/b317ff9ea04bd623.png"
         ]
       }
     },
@@ -128,13 +128,13 @@
       {
         "id": "upcoming",
         "label": "Upcoming queue",
-        "value": "127",
+        "value": "126",
         "description": "currently published future SpaceX missions from Launch Library 2"
       },
       {
         "id": "past",
         "label": "Completed archive",
-        "value": "726",
+        "value": "727",
         "description": "historical SpaceX launches available from the active provider"
       },
       {
@@ -150,49 +150,9 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-09-10T13:42:01.174Z"
+    "generatedAt": "2026-09-10T23:15:38.191Z"
   },
   "upcomingLaunches": [
-    {
-      "id": "3e0456da-14b1-4ac3-b59e-35fefb1d1530",
-      "name": "USSF-153",
-      "flightNumber": 727,
-      "upcoming": true,
-      "success": null,
-      "details": "USSF-153 is a classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches.",
-      "dateUtc": "2026-09-10T15:42:30Z",
-      "dateUnix": 1789054950,
-      "dateLocal": "2026-09-10T15:42:30Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/11492e0a09c1640e.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/United_States_Space_Force",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/11492e0a09c1640e.jpg"
-        ]
-      }
-    },
     {
       "id": "ad358a4d-c541-409b-9366-9c2f2da4aeb9",
       "name": "O3b mPower 11-13",
@@ -234,49 +194,9 @@
       }
     },
     {
-      "id": "7d1afb26-6f9c-429b-9ccf-29012fd1e519",
-      "name": "Flight 14",
-      "flightNumber": 729,
-      "upcoming": true,
-      "success": null,
-      "details": "14th test flight of the two-stage Starship launch vehicle. 3rd flight of Starship V3 and the first Starship flight to deploy satellites (a group of Starlink satellites) into stable Low Earth Orbit.",
-      "dateUtc": "2026-09-15T00:00:00Z",
-      "dateUnix": 1789430400,
-      "dateLocal": "2026-09-15T00:00:00Z",
-      "datePrecision": "day",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Starship V3",
-      "launchpadName": "Orbital Launch Pad 2",
-      "launchpadLocation": "SpaceX Starbase, TX, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/4bf502ff63e8fce9.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 2,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": "https://www.spacex.com/vehicles/starship/",
-        "wikipedia": "https://en.wikipedia.org/wiki/SpaceX_Starship",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/4bf502ff63e8fce9.jpg"
-        ]
-      }
-    },
-    {
       "id": "17c71937-dd80-406f-bb47-0c9ee9a24276",
       "name": "USSF-259",
-      "flightNumber": 730,
+      "flightNumber": 729,
       "upcoming": true,
       "success": null,
       "details": "USSF-259 is a classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of ascent rocket stage drop zones being fits with previous SDA Transport Layer launches.",
@@ -310,6 +230,46 @@
         "patchLarge": null,
         "flickrOriginal": [
           "/data/spacex/images/11492e0a09c1640e.jpg"
+        ]
+      }
+    },
+    {
+      "id": "7d1afb26-6f9c-429b-9ccf-29012fd1e519",
+      "name": "Flight 14",
+      "flightNumber": 730,
+      "upcoming": true,
+      "success": null,
+      "details": "14th test flight of the two-stage Starship launch vehicle. 3rd flight of Starship V3 and the first Starship flight to deploy satellites (a group of Starlink satellites) into stable Low Earth Orbit.",
+      "dateUtc": "2026-09-18T00:00:00Z",
+      "dateUnix": 1789689600,
+      "dateLocal": "2026-09-18T00:00:00Z",
+      "datePrecision": "day",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Starship V3",
+      "launchpadName": "Orbital Launch Pad 2",
+      "launchpadLocation": "SpaceX Starbase, TX, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/4bf502ff63e8fce9.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 2,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": "https://www.spacex.com/vehicles/starship/",
+        "wikipedia": "https://en.wikipedia.org/wiki/SpaceX_Starship",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/4bf502ff63e8fce9.jpg"
         ]
       }
     },
@@ -1112,9 +1072,89 @@
           "/data/spacex/images/83daf3ce21b64d93.jpg"
         ]
       }
+    },
+    {
+      "id": "e61d353c-db55-4a57-8184-0fab187231e6",
+      "name": "Globalstar 2-R Mission 2 (x 9)",
+      "flightNumber": 775,
+      "upcoming": true,
+      "success": null,
+      "details": "The Globalstar global mobile communications network offers global, digital real time voice, data and fax services via its Low Earth Orbit satellite constellation. The constellation operates in a 1410 km orbit inclined at 52 degrees.\r\n\r\nIn early 2022, Globalstar contracted with MDA for the construction of 17 new 2nd generation refresh satellites to replenish the existing constellation. Rocket Lab is sub-contracted to build the satellites' buses and the launch dispensers.",
+      "dateUtc": "2026-12-31T00:00:00Z",
+      "dateUnix": 1798675200,
+      "dateLocal": "2026-12-31T00:00:00Z",
+      "datePrecision": "half",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 40",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Globalstar",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
     }
   ],
   "pastLaunches": [
+    {
+      "id": "3e0456da-14b1-4ac3-b59e-35fefb1d1530",
+      "name": "USSF-153",
+      "flightNumber": 727,
+      "upcoming": false,
+      "success": true,
+      "details": "USSF-153 is a classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches.",
+      "dateUtc": "2026-09-10T15:42:30Z",
+      "dateUnix": 1789054950,
+      "dateLocal": "2026-09-10T15:42:30Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/11492e0a09c1640e.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/United_States_Space_Force",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/11492e0a09c1640e.jpg"
+        ]
+      }
+    },
     {
       "id": "153ef8ef-b12b-43f4-a4bf-05b225c0cd37",
       "name": "Starlink Group 15-24",
@@ -2034,67 +2074,27 @@
           "/data/spacex/images/b317ff9ea04bd623.png"
         ]
       }
-    },
-    {
-      "id": "e09f254f-18bc-4985-963e-6075fa3d7a1c",
-      "name": "Starlink Group 15-14",
-      "flightNumber": 703,
-      "upcoming": false,
-      "success": true,
-      "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-07-14T01:28:17Z",
-      "dateUnix": 1783992497,
-      "dateLocal": "2026-07-14T01:28:17Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": "/data/spacex/images/1927035cad14a77c.png",
-      "vehicleImage": "/data/spacex/images/b317ff9ea04bd623.png",
-      "crewCount": 0,
-      "payloadCount": 27,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": "https://starlink.com",
-        "wikipedia": "https://en.wikipedia.org/wiki/Starlink",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": "/data/spacex/images/1927035cad14a77c.png",
-        "patchLarge": "/data/spacex/images/1927035cad14a77c.png",
-        "flickrOriginal": [
-          "/data/spacex/images/b317ff9ea04bd623.png"
-        ]
-      }
     }
   ],
   "launchDetails": {
-    "3e0456da-14b1-4ac3-b59e-35fefb1d1530": {
-      "id": "3e0456da-14b1-4ac3-b59e-35fefb1d1530",
-      "name": "USSF-153",
-      "flightNumber": 727,
+    "ad358a4d-c541-409b-9366-9c2f2da4aeb9": {
+      "id": "ad358a4d-c541-409b-9366-9c2f2da4aeb9",
+      "name": "O3b mPower 11-13",
+      "flightNumber": 728,
       "upcoming": true,
       "success": null,
-      "details": "USSF-153 is a classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches.",
-      "dateUtc": "2026-09-10T15:42:30Z",
-      "dateUnix": 1789054950,
-      "dateLocal": "2026-09-10T15:42:30Z",
+      "details": "3 high-throughput communications satellites in Medium Earth Orbit (MEO) built by Boeing and operated by SES.",
+      "dateUtc": "2026-09-13T18:49:00Z",
+      "dateUnix": 1789325340,
+      "dateLocal": "2026-09-13T18:49:00Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "launchpadName": "Space Launch Complex 40",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
       "patchImage": null,
-      "vehicleImage": "/data/spacex/images/11492e0a09c1640e.jpg",
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
       "crewCount": 0,
       "payloadCount": 1,
       "capsuleCount": 0,
@@ -2102,9 +2102,9 @@
       "hasExactTime": true,
       "isStaleSchedule": false,
       "links": {
-        "webcast": "https://x.com/i/broadcasts/1nxnRBWejLOxO",
-        "article": "https://www.spacex.com/launches/ussf153",
-        "wikipedia": "https://en.wikipedia.org/wiki/United_States_Space_Force",
+        "webcast": "https://x.com/i/broadcasts/1RKjpbVdykQJw",
+        "article": "https://www.spacex.com/launches/mpower-f",
+        "wikipedia": "https://en.wikipedia.org/wiki/SES_S.A.",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -2113,11 +2113,11 @@
         "patchSmall": null,
         "patchLarge": null,
         "flickrOriginal": [
-          "/data/spacex/images/11492e0a09c1640e.jpg"
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
         ]
       },
       "staticFireDateUtc": null,
-      "window": 10800,
+      "window": 5220,
       "failures": [],
       "rocket": {
         "id": "164",
@@ -2138,38 +2138,37 @@
         "massKg": 549000,
         "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
         "flickrImages": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg",
-          "/data/spacex/images/11492e0a09c1640e.jpg"
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
         ]
       },
       "launchpad": {
-        "id": "16",
-        "name": "Space Launch Complex 4E",
-        "fullName": "Space Launch Complex 4E",
-        "locality": "Vandenberg SFB, CA, USA",
+        "id": "80",
+        "name": "Space Launch Complex 40",
+        "fullName": "Space Launch Complex 40",
+        "locality": "Cape Canaveral SFS, FL, USA",
         "region": null,
-        "timezone": "America/Los_Angeles",
+        "timezone": "America/New_York",
         "status": null,
-        "details": "Space Launch Complex 4 East (SLC-4E) is a launch site at Vandenberg Space Force Base, California, U.S.\r\n\r\nThe pad was previously used by Atlas and Titan rockets between 1963 and 2005. The pad was built for use by Atlas-Agena rockets, but was later rebuilt to handle Titan rockets.",
-        "image": "/data/spacex/images/b752567507d74cae.jpg"
+        "details": "",
+        "image": "/data/spacex/images/9b1f5cf5035d37b9.jpg"
       },
       "crew": [],
       "payloads": [
         {
-          "id": "7722",
-          "name": "USSF-153",
-          "type": "Government/Top Secret",
+          "id": "7037",
+          "name": "O3b mPower 11-13",
+          "type": "Communications",
           "customers": [
-            "United States Space Force"
+            "SES"
           ],
           "manufacturers": [
             "SpaceX"
           ],
           "nationalities": [
-            "USA"
+            "LUX"
           ],
-          "orbit": "Low Earth Orbit",
-          "regime": "LEO",
+          "orbit": "Medium Earth Orbit",
+          "regime": "MEO",
           "massKg": null,
           "massLbs": null
         }
@@ -2180,13 +2179,13 @@
     "7d1afb26-6f9c-429b-9ccf-29012fd1e519": {
       "id": "7d1afb26-6f9c-429b-9ccf-29012fd1e519",
       "name": "Flight 14",
-      "flightNumber": 729,
+      "flightNumber": 730,
       "upcoming": true,
       "success": null,
       "details": "14th test flight of the two-stage Starship launch vehicle. 3rd flight of Starship V3 and the first Starship flight to deploy satellites (a group of Starlink satellites) into stable Low Earth Orbit.",
-      "dateUtc": "2026-09-15T00:00:00Z",
-      "dateUnix": 1789430400,
-      "dateLocal": "2026-09-15T00:00:00Z",
+      "dateUtc": "2026-09-18T00:00:00Z",
+      "dateUnix": 1789689600,
+      "dateLocal": "2026-09-18T00:00:00Z",
       "datePrecision": "day",
       "tbd": true,
       "net": true,
@@ -2371,6 +2370,206 @@
       "capsules": [],
       "cores": []
     },
+    "3e0456da-14b1-4ac3-b59e-35fefb1d1530": {
+      "id": "3e0456da-14b1-4ac3-b59e-35fefb1d1530",
+      "name": "USSF-153",
+      "flightNumber": 727,
+      "upcoming": false,
+      "success": true,
+      "details": "USSF-153 is a classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches.",
+      "dateUtc": "2026-09-10T15:42:30Z",
+      "dateUnix": 1789054950,
+      "dateLocal": "2026-09-10T15:42:30Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/11492e0a09c1640e.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": "https://x.com/i/broadcasts/1nxnRBWejLOxO",
+        "article": "https://www.spacex.com/launches/ussf153",
+        "wikipedia": "https://en.wikipedia.org/wiki/United_States_Space_Force",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/11492e0a09c1640e.jpg"
+        ]
+      },
+      "staticFireDateUtc": null,
+      "window": 10800,
+      "failures": [],
+      "rocket": {
+        "id": "164",
+        "name": "Falcon 9 Block 5",
+        "type": "Block 5",
+        "active": true,
+        "boosters": 0,
+        "stages": 2,
+        "costPerLaunch": 52000000,
+        "successRatePct": 100,
+        "firstFlight": "2018-05-11",
+        "company": "SpaceX",
+        "country": "USA",
+        "description": "Falcon 9 is a two-stage rocket designed and manufactured by SpaceX for the reliable and safe transport of satellites and the Dragon spacecraft into orbit. The Block 5 variant is the fifth major interval aimed at improving upon the ability for rapid reusability.",
+        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_9",
+        "heightMeters": 70,
+        "diameterMeters": 3.65,
+        "massKg": 549000,
+        "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
+        "flickrImages": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "/data/spacex/images/11492e0a09c1640e.jpg"
+        ]
+      },
+      "launchpad": {
+        "id": "16",
+        "name": "Space Launch Complex 4E",
+        "fullName": "Space Launch Complex 4E",
+        "locality": "Vandenberg SFB, CA, USA",
+        "region": null,
+        "timezone": "America/Los_Angeles",
+        "status": null,
+        "details": "Space Launch Complex 4 East (SLC-4E) is a launch site at Vandenberg Space Force Base, California, U.S.\r\n\r\nThe pad was previously used by Atlas and Titan rockets between 1963 and 2005. The pad was built for use by Atlas-Agena rockets, but was later rebuilt to handle Titan rockets.",
+        "image": "/data/spacex/images/b752567507d74cae.jpg"
+      },
+      "crew": [],
+      "payloads": [
+        {
+          "id": "7722",
+          "name": "USSF-153",
+          "type": "Government/Top Secret",
+          "customers": [
+            "United States Space Force"
+          ],
+          "manufacturers": [
+            "SpaceX"
+          ],
+          "nationalities": [
+            "USA"
+          ],
+          "orbit": "Low Earth Orbit",
+          "regime": "LEO",
+          "massKg": null,
+          "massLbs": null
+        }
+      ],
+      "capsules": [],
+      "cores": []
+    },
+    "17c71937-dd80-406f-bb47-0c9ee9a24276": {
+      "id": "17c71937-dd80-406f-bb47-0c9ee9a24276",
+      "name": "USSF-259",
+      "flightNumber": 729,
+      "upcoming": true,
+      "success": null,
+      "details": "USSF-259 is a classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of ascent rocket stage drop zones being fits with previous SDA Transport Layer launches.",
+      "dateUtc": "2026-09-16T01:00:00Z",
+      "dateUnix": 1789520400,
+      "dateLocal": "2026-09-16T01:00:00Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/11492e0a09c1640e.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": "https://x.com/i/broadcasts/1nGeLMWbkpaKX",
+        "article": "https://www.spacex.com/launches/ussf259",
+        "wikipedia": "https://en.wikipedia.org/wiki/United_States_Space_Force",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/11492e0a09c1640e.jpg"
+        ]
+      },
+      "staticFireDateUtc": null,
+      "window": 14400,
+      "failures": [],
+      "rocket": {
+        "id": "164",
+        "name": "Falcon 9 Block 5",
+        "type": "Block 5",
+        "active": true,
+        "boosters": 0,
+        "stages": 2,
+        "costPerLaunch": 52000000,
+        "successRatePct": 100,
+        "firstFlight": "2018-05-11",
+        "company": "SpaceX",
+        "country": "USA",
+        "description": "Falcon 9 is a two-stage rocket designed and manufactured by SpaceX for the reliable and safe transport of satellites and the Dragon spacecraft into orbit. The Block 5 variant is the fifth major interval aimed at improving upon the ability for rapid reusability.",
+        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_9",
+        "heightMeters": 70,
+        "diameterMeters": 3.65,
+        "massKg": 549000,
+        "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
+        "flickrImages": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "/data/spacex/images/11492e0a09c1640e.jpg"
+        ]
+      },
+      "launchpad": {
+        "id": "16",
+        "name": "Space Launch Complex 4E",
+        "fullName": "Space Launch Complex 4E",
+        "locality": "Vandenberg SFB, CA, USA",
+        "region": null,
+        "timezone": "America/Los_Angeles",
+        "status": null,
+        "details": "Space Launch Complex 4 East (SLC-4E) is a launch site at Vandenberg Space Force Base, California, U.S.\r\n\r\nThe pad was previously used by Atlas and Titan rockets between 1963 and 2005. The pad was built for use by Atlas-Agena rockets, but was later rebuilt to handle Titan rockets.",
+        "image": "/data/spacex/images/b752567507d74cae.jpg"
+      },
+      "crew": [],
+      "payloads": [
+        {
+          "id": "7733",
+          "name": "USSF-259",
+          "type": "Government/Top Secret",
+          "customers": [
+            "United States Space Force"
+          ],
+          "manufacturers": [
+            "SpaceX"
+          ],
+          "nationalities": [
+            "USA"
+          ],
+          "orbit": "Polar Orbit",
+          "regime": "PO",
+          "massKg": null,
+          "massLbs": null
+        }
+      ],
+      "capsules": [],
+      "cores": []
+    },
     "153ef8ef-b12b-43f4-a4bf-05b225c0cd37": {
       "id": "153ef8ef-b12b-43f4-a4bf-05b225c0cd37",
       "name": "Starlink Group 15-24",
@@ -2464,105 +2663,6 @@
           ],
           "orbit": "Low Earth Orbit",
           "regime": "LEO",
-          "massKg": null,
-          "massLbs": null
-        }
-      ],
-      "capsules": [],
-      "cores": []
-    },
-    "ad358a4d-c541-409b-9366-9c2f2da4aeb9": {
-      "id": "ad358a4d-c541-409b-9366-9c2f2da4aeb9",
-      "name": "O3b mPower 11-13",
-      "flightNumber": 728,
-      "upcoming": true,
-      "success": null,
-      "details": "3 high-throughput communications satellites in Medium Earth Orbit (MEO) built by Boeing and operated by SES.",
-      "dateUtc": "2026-09-13T18:49:00Z",
-      "dateUnix": 1789325340,
-      "dateLocal": "2026-09-13T18:49:00Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 40",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": "https://x.com/i/broadcasts/1RKjpbVdykQJw",
-        "article": "https://www.spacex.com/launches/mpower-f",
-        "wikipedia": "https://en.wikipedia.org/wiki/SES_S.A.",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      },
-      "staticFireDateUtc": null,
-      "window": 5220,
-      "failures": [],
-      "rocket": {
-        "id": "164",
-        "name": "Falcon 9 Block 5",
-        "type": "Block 5",
-        "active": true,
-        "boosters": 0,
-        "stages": 2,
-        "costPerLaunch": 52000000,
-        "successRatePct": 100,
-        "firstFlight": "2018-05-11",
-        "company": "SpaceX",
-        "country": "USA",
-        "description": "Falcon 9 is a two-stage rocket designed and manufactured by SpaceX for the reliable and safe transport of satellites and the Dragon spacecraft into orbit. The Block 5 variant is the fifth major interval aimed at improving upon the ability for rapid reusability.",
-        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_9",
-        "heightMeters": 70,
-        "diameterMeters": 3.65,
-        "massKg": 549000,
-        "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
-        "flickrImages": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      },
-      "launchpad": {
-        "id": "80",
-        "name": "Space Launch Complex 40",
-        "fullName": "Space Launch Complex 40",
-        "locality": "Cape Canaveral SFS, FL, USA",
-        "region": null,
-        "timezone": "America/New_York",
-        "status": null,
-        "details": "",
-        "image": "/data/spacex/images/9b1f5cf5035d37b9.jpg"
-      },
-      "crew": [],
-      "payloads": [
-        {
-          "id": "7037",
-          "name": "O3b mPower 11-13",
-          "type": "Communications",
-          "customers": [
-            "SES"
-          ],
-          "manufacturers": [
-            "SpaceX"
-          ],
-          "nationalities": [
-            "LUX"
-          ],
-          "orbit": "Medium Earth Orbit",
-          "regime": "MEO",
           "massKg": null,
           "massLbs": null
         }
@@ -2669,102 +2769,6 @@
       ],
       "capsules": [],
       "cores": []
-    },
-    "521f3a1c-f977-4306-9b7f-495858719adf": {
-      "id": "521f3a1c-f977-4306-9b7f-495858719adf",
-      "name": "Nancy Grace Roman Space Telescope",
-      "flightNumber": 724,
-      "upcoming": false,
-      "success": true,
-      "details": "The Nancy Grace Roman Space Telescope is a NASA infrared space telescope with a 2.4 m (7.9 ft) wide field of view primary mirror and two scientific instruments. The Wide-Field Instrument (WFI) is a 300.8-megapixel multi-band visible and near-infrared camera, providing a sharpness of images comparable to that achieved by the Hubble Space Telescope over a 0.28 square degree field of view, 100 times larger than imaging cameras on the Hubble. The Coronagraphic Instrument (CGI) is a high-contrast, small field of view camera and spectrometer covering visible and near-infrared wavelengths using novel starlight-suppression technology. Roman objectives include a search for extra-solar planets using gravitational microlensing, and probing the expansion history of the Universe and the growth of cosmic structure, with the goal of measuring the effects of dark energy, the consistency of general relativity, and the curvature of spacetime.",
-      "dateUtc": "2026-08-30T11:26:04Z",
-      "dateUnix": 1788089164,
-      "dateLocal": "2026-08-30T11:26:04Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon Heavy",
-      "launchpadName": "Launch Complex 39A",
-      "launchpadLocation": "Kennedy Space Center, FL, USA",
-      "patchImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/roman_mission_patch_20260830094614.png",
-      "vehicleImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_heavy_on_image_20260830111425.jpeg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 3,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": "https://plus.nasa.gov/scheduled-video/nancy-grace-roman-space-telescope-launch/",
-        "article": "https://www.spacex.com/launches/roman",
-        "wikipedia": "https://en.wikipedia.org/wiki/SpaceX",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/roman_mission_patch_20260830094614.png",
-        "patchLarge": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/roman_mission_patch_20260830094614.png",
-        "flickrOriginal": [
-          "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_heavy_on_image_20260830111425.jpeg"
-        ]
-      },
-      "staticFireDateUtc": null,
-      "window": 30,
-      "failures": [],
-      "rocket": {
-        "id": "161",
-        "name": "Falcon Heavy",
-        "type": "Heavy",
-        "active": true,
-        "boosters": 2,
-        "stages": 3,
-        "costPerLaunch": 90000000,
-        "successRatePct": 100,
-        "firstFlight": "2018-02-06",
-        "company": "SpaceX",
-        "country": "USA",
-        "description": "The Falcon Heavy is a variant of the Falcon 9 full thrust launch vehicle and consists of a standard Falcon 9 rocket core, with two additional boosters derived from the Falcon 9 first stage.",
-        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_Heavy",
-        "heightMeters": 70,
-        "diameterMeters": 12.2,
-        "massKg": 1400000,
-        "image": "/data/spacex/images/c62ac3115cf4d061.jpg",
-        "flickrImages": [
-          "/data/spacex/images/c62ac3115cf4d061.jpg",
-          "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_heavy_on_image_20260830111425.jpeg"
-        ]
-      },
-      "launchpad": {
-        "id": "87",
-        "name": "Launch Complex 39A",
-        "fullName": "Launch Complex 39A",
-        "locality": "Kennedy Space Center, FL, USA",
-        "region": null,
-        "timezone": "America/New_York",
-        "status": null,
-        "details": "",
-        "image": "/data/spacex/images/14b5a064429f38e9.jpg"
-      },
-      "crew": [],
-      "payloads": [
-        {
-          "id": "6105",
-          "name": "Nancy Grace Roman Space Telescope",
-          "type": "Astrophysics",
-          "customers": [],
-          "manufacturers": [
-            "SpaceX"
-          ],
-          "nationalities": [],
-          "orbit": "Sun-Earth L2",
-          "regime": "L2",
-          "massKg": null,
-          "massLbs": null
-        }
-      ],
-      "capsules": [],
-      "cores": []
     }
   },
   "cadence": {
@@ -2787,7 +2791,7 @@
       {
         "monthKey": "2026-01",
         "label": "Jan 26",
-        "count": 6
+        "count": 5
       },
       {
         "monthKey": "2026-02",
@@ -2827,10 +2831,10 @@
       {
         "monthKey": "2026-09",
         "label": "Sep 26",
-        "count": 2
+        "count": 3
       }
     ],
     "rangeLabel": "Oct 25 – Sep 26",
-    "generatedAt": "2026-09-10T13:42:10.636Z"
+    "generatedAt": "2026-09-10T23:15:46.977Z"
   }
 }
