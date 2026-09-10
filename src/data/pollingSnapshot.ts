@@ -1,8 +1,8 @@
 import type { PollingSnapshot } from "@/types/polling";
 
 export const pollingSnapshot: PollingSnapshot = {
-  "generatedAt": "2026-09-09T10:09:28.591Z",
-  "sourceAsOf": "2026-08-28",
+  "generatedAt": "2026-09-10T10:05:06.968Z",
+  "sourceAsOf": "2026-09-08",
   "sourceLabel": "VoteHub Polling API, CC BY 4.0",
   "approvalAvg": {
     "approve": 39.8,
@@ -478,11 +478,38 @@ export const pollingSnapshot: PollingSnapshot = {
     }
   ],
   "genericBallotAvg": {
-    "dem": 44.7,
-    "rep": 39,
-    "margin": 5.7
+    "dem": 45.8,
+    "rep": 39.4,
+    "margin": 6.4
   },
   "genericBallotPolls": [
+    {
+      "id": "gen202you883b1d2b",
+      "pollster": "YouGov",
+      "sponsor": "The Economist",
+      "startDate": "2026-09-04",
+      "endDate": "2026-09-08",
+      "sampleSize": 1015,
+      "sampleType": "LV",
+      "moe": null,
+      "methodology": "unknown",
+      "dem": 49,
+      "rep": 38,
+      "other": 13
+    },
+    {
+      "id": "gen202mor1928580e",
+      "pollster": "Morning Consult",
+      "startDate": "2026-09-04",
+      "endDate": "2026-09-06",
+      "sampleSize": 2203,
+      "sampleType": "RV",
+      "moe": null,
+      "methodology": "unknown",
+      "dem": 46,
+      "rep": 42,
+      "other": 12
+    },
     {
       "id": "gen202ipsc06cf7d6",
       "pollster": "Ipsos",
@@ -862,33 +889,6 @@ export const pollingSnapshot: PollingSnapshot = {
       "dem": 49,
       "rep": 45,
       "other": 6
-    },
-    {
-      "id": "gen202nob5477cc24",
-      "pollster": "Noble Predictive Insights",
-      "sponsor": "The Center Square",
-      "startDate": "2026-06-01",
-      "endDate": "2026-06-04",
-      "sampleSize": 2585,
-      "sampleType": "RV",
-      "moe": null,
-      "methodology": "unknown",
-      "dem": 47,
-      "rep": 41,
-      "other": 12
-    },
-    {
-      "id": "gen202the4b712378",
-      "pollster": "The Argument/Verasight",
-      "startDate": "2026-05-29",
-      "endDate": "2026-06-03",
-      "sampleSize": 3008,
-      "sampleType": "RV",
-      "moe": null,
-      "methodology": "unknown",
-      "dem": 53,
-      "rep": 47,
-      "other": 0
     }
   ],
   "senateRaces": [],
