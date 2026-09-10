@@ -4,7 +4,7 @@ import type { LaLigaSnapshot } from "@/types/la-liga";
 export const laLigaSnapshot: LaLigaSnapshot = {
   "season": "2026/27",
   "matchday": 6,
-  "generatedAt": "2026-09-10T12:59:37.223Z",
+  "generatedAt": "2026-09-10T19:10:35.565Z",
   "updatedAt": "2026-09-10",
   "sourceLabel": "football-data.org",
   "sourceUrls": {
@@ -1289,8 +1289,8 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         },
         {
           "id": "564699",
-          "utcDate": "2026-10-11T00:00:00Z",
-          "status": "SCHEDULED",
+          "utcDate": "2026-10-10T14:15:00Z",
+          "status": "TIMED",
           "matchday": 8,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -1354,7 +1354,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 7,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-09-10T12:59:37.223Z"
+      "generatedAt": "2026-09-10T19:10:35.565Z"
     },
     "fcb": {
       "team": {
@@ -1823,8 +1823,8 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         },
         {
           "id": "564703",
-          "utcDate": "2026-10-11T00:00:00Z",
-          "status": "SCHEDULED",
+          "utcDate": "2026-10-11T12:00:00Z",
+          "status": "TIMED",
           "matchday": 8,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -1915,7 +1915,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 2,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-09-10T12:59:37.223Z"
+      "generatedAt": "2026-09-10T19:10:35.565Z"
     },
     "elc": {
       "team": {
@@ -2384,8 +2384,8 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         },
         {
           "id": "564706",
-          "utcDate": "2026-10-11T00:00:00Z",
-          "status": "SCHEDULED",
+          "utcDate": "2026-10-09T19:00:00Z",
+          "status": "TIMED",
           "matchday": 8,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -2449,7 +2449,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 6,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-09-10T12:59:37.223Z"
+      "generatedAt": "2026-09-10T19:10:35.565Z"
     },
     "get": {
       "team": {
@@ -2651,8 +2651,8 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         },
         {
           "id": "564700",
-          "utcDate": "2026-10-11T00:00:00Z",
-          "status": "SCHEDULED",
+          "utcDate": "2026-10-10T16:30:00Z",
+          "status": "TIMED",
           "matchday": 8,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -2716,7 +2716,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 2,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-09-10T12:59:37.223Z"
+      "generatedAt": "2026-09-10T19:10:35.565Z"
     },
     "gir": {
       "team": {
@@ -3346,8 +3346,8 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         },
         {
           "id": "564706",
-          "utcDate": "2026-10-11T00:00:00Z",
-          "status": "SCHEDULED",
+          "utcDate": "2026-10-09T19:00:00Z",
+          "status": "TIMED",
           "matchday": 8,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -3411,7 +3411,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 1,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-09-10T12:59:37.223Z"
+      "generatedAt": "2026-09-10T19:10:35.565Z"
     },
     "osa": {
       "team": {
@@ -3613,8 +3613,8 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         },
         {
           "id": "564701",
-          "utcDate": "2026-10-11T00:00:00Z",
-          "status": "SCHEDULED",
+          "utcDate": "2026-10-11T16:30:00Z",
+          "status": "TIMED",
           "matchday": 8,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -3678,7 +3678,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 5,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-09-10T12:59:37.223Z"
+      "generatedAt": "2026-09-10T19:10:35.565Z"
     },
     "ray": {
       "team": {
@@ -4147,8 +4147,8 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         },
         {
           "id": "564701",
-          "utcDate": "2026-10-11T00:00:00Z",
-          "status": "SCHEDULED",
+          "utcDate": "2026-10-11T16:30:00Z",
+          "status": "TIMED",
           "matchday": 8,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -4212,7 +4212,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 5,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-09-10T12:59:37.223Z"
+      "generatedAt": "2026-09-10T19:10:35.565Z"
     },
     "rma": {
       "team": {
@@ -4414,8 +4414,8 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         },
         {
           "id": "564702",
-          "utcDate": "2026-10-11T00:00:00Z",
-          "status": "SCHEDULED",
+          "utcDate": "2026-10-10T19:00:00Z",
+          "status": "TIMED",
           "matchday": 8,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -4479,7 +4479,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 10,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-09-10T12:59:37.223Z"
+      "generatedAt": "2026-09-10T19:10:35.565Z"
     },
     "ovi": {
       "team": {
@@ -4842,8 +4842,8 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         },
         {
           "id": "564707",
-          "utcDate": "2026-10-11T00:00:00Z",
-          "status": "SCHEDULED",
+          "utcDate": "2026-10-11T14:15:00Z",
+          "status": "TIMED",
           "matchday": 8,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -4934,7 +4934,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 6,
         "goalsAgainst": 8
       },
-      "generatedAt": "2026-09-10T12:59:37.223Z"
+      "generatedAt": "2026-09-10T19:10:35.565Z"
     },
     "sev": {
       "team": {
@@ -5136,8 +5136,8 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         },
         {
           "id": "564704",
-          "utcDate": "2026-10-11T00:00:00Z",
-          "status": "SCHEDULED",
+          "utcDate": "2026-10-12T19:00:00Z",
+          "status": "TIMED",
           "matchday": 8,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -5201,7 +5201,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 7,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-09-10T12:59:37.223Z"
+      "generatedAt": "2026-09-10T19:10:35.565Z"
     },
     "val": {
       "team": {
@@ -5403,8 +5403,8 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         },
         {
           "id": "564705",
-          "utcDate": "2026-10-11T00:00:00Z",
-          "status": "SCHEDULED",
+          "utcDate": "2026-10-11T19:00:00Z",
+          "status": "TIMED",
           "matchday": 8,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -5468,7 +5468,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 1,
         "goalsAgainst": 9
       },
-      "generatedAt": "2026-09-10T12:59:37.223Z"
+      "generatedAt": "2026-09-10T19:10:35.565Z"
     },
     "vil": {
       "team": {
@@ -5670,8 +5670,8 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         },
         {
           "id": "564702",
-          "utcDate": "2026-10-11T00:00:00Z",
-          "status": "SCHEDULED",
+          "utcDate": "2026-10-10T19:00:00Z",
+          "status": "TIMED",
           "matchday": 8,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -5735,7 +5735,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 6,
         "goalsAgainst": 8
       },
-      "generatedAt": "2026-09-10T12:59:37.223Z"
+      "generatedAt": "2026-09-10T19:10:35.565Z"
     },
     "ala": {
       "team": {
@@ -6204,8 +6204,8 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         },
         {
           "id": "564698",
-          "utcDate": "2026-10-11T00:00:00Z",
-          "status": "SCHEDULED",
+          "utcDate": "2026-10-10T12:00:00Z",
+          "status": "TIMED",
           "matchday": 8,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -6269,7 +6269,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 6,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-09-10T12:59:37.223Z"
+      "generatedAt": "2026-09-10T19:10:35.565Z"
     },
     "dep": {
       "team": {
@@ -6471,8 +6471,8 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         },
         {
           "id": "564707",
-          "utcDate": "2026-10-11T00:00:00Z",
-          "status": "SCHEDULED",
+          "utcDate": "2026-10-11T14:15:00Z",
+          "status": "TIMED",
           "matchday": 8,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -6536,7 +6536,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 8,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-09-10T12:59:37.223Z"
+      "generatedAt": "2026-09-10T19:10:35.565Z"
     },
     "san": {
       "team": {
@@ -6738,8 +6738,8 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         },
         {
           "id": "564705",
-          "utcDate": "2026-10-11T00:00:00Z",
-          "status": "SCHEDULED",
+          "utcDate": "2026-10-11T19:00:00Z",
+          "status": "TIMED",
           "matchday": 8,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -6803,7 +6803,7 @@ export const laLigaSnapshot: LaLigaSnapshot = {
         "goalsFor": 7,
         "goalsAgainst": 8
       },
-      "generatedAt": "2026-09-10T12:59:37.223Z"
+      "generatedAt": "2026-09-10T19:10:35.565Z"
     }
   }
 };
