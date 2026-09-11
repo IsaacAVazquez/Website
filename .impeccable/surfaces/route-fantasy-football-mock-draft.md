@@ -47,3 +47,48 @@ Measured after, in both themes at 390 and 1440 with a draft running: zero AA con
 failures, zero horizontal overflow, zero sub-44px targets, one `main`, one `h1`, zero unnamed
 sections. The 2026-08-22 signal-on-signal-wash repair here still holds, and the same defect
 was found and fixed on the redraft tracker this round.
+
+## Full-group loop, 2026-09-11
+
+First critique of this surface in its in-season state, run as part of the loop recorded in
+`route-fantasy-football.md` under "Full-group loop, 2026-09-11". It scored 27 of 40 with zero
+P0 and five P1, all five upheld two to zero. Snapshot at
+`.impeccable/critique/2026-09-11T08-58-05Z__route-fantasy-football-mock-draft.md`.
+
+The one that mattered most was the gate against the note. The scope note said the board
+"stops refreshing once real games start" and the room was "left running", while
+`simulationAvailable` still used the four-day stale band. Driven with a fixed clock at
+2026-09-15 the chips read "Board Stale" and "ADP unavailable", Start mock was disabled, and
+the pause copy told the visitor to wait for a refresh the note said would not come. Both
+verifiers said keep the gate, which this brief already protects, and fix the copy, with one
+correction to the finding: the refresh cron runs daily through December and the upstream stamp
+moved from 09-09 to 09-10 after the opener, so "a refresh is not coming" was the note's
+assertion, not an observed fact. The note now says the room drafts off the published preseason
+board and its mock-draft ADP, that it pauses simulated picks if that board goes stale, carries
+a mono stamp line with both dates, and links the weekly board. The stale status, the live
+room's alert and the recap's blocked line all name the dated board and stop pointing at a
+refresh. Measured at 09-11 the chip reads Current and Start is enabled; at 09-15 the room
+pauses with the new sentences.
+
+The fascia was sized by its button stack. Every readout cell measured 160px for 68px of
+content at 1440, 768 painted three empty tracks, and 390 pinned 331 of 844px with three
+readouts truncated. The readouts are a bordered description list now with the three pills on
+their own row, and below `md` the four readouts collapse to one wrapping mono line. Strip
+height went 162 to 81 at 1440, 245 to 137 at 768 with zero empty tracks, and 259 to 109 at
+390 with zero truncations, pinned share 39% to 21%.
+
+Board numbers carried only `title` attributes under an `aria-hidden`, static label row. Inside
+the `adpAvailable` branch each value now has an sr-only label and an `md:hidden` micro label,
+following the redraft tracker's `DraftBoard.tsx`; the sticky header row is deferred until the
+fascia shrinks further, as both verifiers asked. The scope note rendered outside the shell
+(left 0, width 1440 against the header's 180 and 1080) and is wrapped now. And Start mock,
+Take back and Run it back all left focus on body with an empty status; a pending-focus ref
+consumed after the on-the-clock section mounts moves focus there (Sim to end goes to the value
+report) and a transition sentence feeds the status region, with Take back describing the
+restored turn. The running-state h1 sits on the DESIGN.md title ramp now.
+
+Verified after in both themes at 390, 768, 1024 and 1440, setup and running: zero AA contrast
+failures, zero horizontal overflow, zero sub-44px targets, one `main`, one `h1`, zero unnamed
+sections, 38 of 38 focus rings. Still open: `getFantasyAdpFreshness` hides the ADP columns on
+the same four-day rule (shared `fantasyUtils.ts`), and the "Sim to end" fill in light is nearly
+the same tone as the signal wash beside it (P2).

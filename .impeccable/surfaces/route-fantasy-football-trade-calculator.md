@@ -98,3 +98,48 @@ Measured after, in both themes at 390, 768, 1024 and 1440: zero AA contrast fail
 horizontal overflow, one `main`, one `h1`, zero unnamed `section` landmarks. The three 16x16
 scoring radios flagged by a naive target sweep are visually paired with 324x44 labels, which
 are the real targets, so they are not a defect.
+
+## Full-group loop, 2026-09-11
+
+First critique of this surface with the season open, part of the loop recorded in
+`route-fantasy-football.md` under "Full-group loop, 2026-09-11". It scored 30 of 40 with one
+P0 and two P1, all upheld two to zero. Snapshot at
+`.impeccable/critique/2026-09-11T09-00-19Z__route-fantasy-football-trade-calculator.md`.
+
+The P0 was a promise the code did not keep. The scope note said that from kickoff the tool
+"declines a verdict rather than reading a frozen market", but `evaluateFantasyTrade`'s gate is
+the four-day ADP age check and nothing else, and the ADP feed was still sampling real drafts
+daily (the window moved from 09-09 to 09-10, 4,588 to 3,631 drafts, with ADP changing for 214
+of 236 players), so Chase for Gibbs rendered "Supported coverage, Balanced offer" under a
+"fresh sources" stamp, and the model doc described a Week 1 rule the engine never had. Both
+verifiers said the note and the doc should change, not the engine, because the staleness gate
+tracks the data and already withholds when the feed stops (verified with a five-day-old
+stamp). So the note is rewritten in the true tense with two branches, feed still sampling as of
+the printed date or feed stopped and verdict withheld, and the doc describes the age gate. One
+engine addition came from verifier A: from Week 1 a warning caps coverage at `limited`, so a
+clear edge and the green chip cannot appear in season. Chase for Watson went from "Clear edge
+to the other side" to "You are giving more". Four engine tests and three client tests pin it,
+and the client suite now fakes the date because a real-date snapshot silently flipped to
+in-season on 2026-09-09.
+
+The two P1s were routing and the scale. This was the only scope note in the group without the
+weekly-board link, so the sibling sentence and links to weekly and waivers are in the note and
+"View rankings" stays the header action. The balance scale marker sat at 0px for a 3.9% gap
+and moved 11px of a 100px range for a 12% lean, and at 390 the rail landed at 856px in an
+844px viewport after the second add with focus still in the combobox. The track is scaled to
+the verdict thresholds now, with a drawn plus or minus five percent band and a fifteen percent
+line, so the 12% lean moves 42px and a 90% gap reaches the outer tick; and a sticky verdict
+strip under the site header carries the verdict, coverage, and a 44px link to the rail on
+phones, where auto-scrolling would have fought the combobox.
+
+Two P2s fell out of the same files: the idle rail reads "Waiting for players" instead of "Not
+current" under a header that says fresh, and a balanced verdict wears ink rather than the
+warning tone, which is reserved for withheld. Still open: the minute-precision timestamps in
+the rail (`formatUpdatedAt` in shared `fantasyUtils.ts`) and verifier B's thinning-sample
+caveat, recorded in the doc as model work. The three 16x16 scoring radios still flag in a naive
+target sweep at 390 and 768 for the reason recorded above, with one more detail: `html` sets
+`scroll-behavior: smooth`, so a sweep that calls `scrollIntoView` and hit-tests immediately is
+measuring mid-animation. Set it to `auto` before measuring.
+
+Verified after in both themes at 390, 768, 1024 and 1440, idle and populated: zero AA contrast
+failures, zero horizontal overflow, one `main`, one `h1`, zero unnamed sections.
