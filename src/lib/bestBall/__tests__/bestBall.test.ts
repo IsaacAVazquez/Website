@@ -167,6 +167,50 @@ describe("best ball rankings", () => {
     }
   });
 
+  it("withholds only the divergent rows when the consensus fails its own self-consistency test", () => {
+    // Every board row carries a published band that agrees with its rank, then
+    // a third of the top 200 take the four-expert omission shape (average and
+    // band at the top, consensus rank 53 places lower) so the board fails.
+    const board: Player[] = Array.from({ length: 300 }, (_, index) => {
+      const rank = index + 1;
+      const omitted = index % 3 === 0 && index < 200;
+      return player(`p${rank}`, (["QB", "RB", "WR", "TE"] as const)[index % 4], rank + (omitted ? 53 : 0), {
+        adp: rank,
+        rankAverage: rank + 0.4,
+        minRank: Math.max(1, rank - 1),
+        maxRank: rank + 2,
+        positionRank: Math.ceil(rank / 4),
+      });
+    });
+    const healthy = board.map((entry, index) =>
+      index % 3 === 0 && index < 200 ? { ...entry, rankEcr: index + 1, averageRank: index + 1 } : entry
+    );
+
+    const ranked = sortBestBallRankings(board, "bbm-vii");
+    const first = ranked[0];
+    const second = ranked[1];
+
+    // ADP still orders the board and the ECR fallback still sorts on rankEcr.
+    expect(ranked.map((entry) => entry.id).slice(0, 4)).toEqual(["p1", "p2", "p3", "p4"]);
+    expect(first.consensusWithheld).toBe(true);
+    expect(first.bestBallEcr).toBe(54);
+    expect(first.rankReason).toBe(
+      "The current standard Underdog ADP is 1.0. The published PPR best ball consensus rank for this player sits outside its own expert range, so the ECR is withheld."
+    );
+    expect(second.consensusWithheld).toBe(false);
+    expect(second.rankReason).toBe("The current standard Underdog ADP is 2.0. The PPR best ball ECR is 2.");
+
+    const noAdp = sortBestBallRankings(board, "eliminator");
+    expect(noAdp[0].id).toBe("p2");
+    expect(noAdp.find((entry) => entry.id === "p1")?.rankReason).toContain("keeps the published PPR best ball order");
+    expect(noAdp.find((entry) => entry.id === "p1")?.rankReason).not.toMatch(/ECR (is|of) \d/);
+
+    // The same rows read as fact once the board as a whole passes.
+    const healthyRanked = sortBestBallRankings(healthy, "bbm-vii");
+    expect(healthyRanked.every((entry) => entry.consensusWithheld === false)).toBe(true);
+    expect(healthyRanked[0].rankReason).toBe("The current standard Underdog ADP is 1.0. The PPR best ball ECR is 1.");
+  });
+
   it("uses the separate sourced Superflex order without overwriting best ball ECR", () => {
     const ranked = sortBestBallRankings(pool, "superflex");
     const quarterback = ranked.find((entry) => entry.id === "qb");

@@ -2,9 +2,14 @@ import {
   fetchFantasyProsConsensusBoard,
   type FantasyProsOfficialApiPosition,
 } from "@/lib/fantasyProsPublicSource";
-import { BEST_BALL_MIN_RANKING_PLAYERS } from "@/lib/bestBallSnapshot";
+import { assertBestBallConsensusConsistency } from "@/lib/bestBall/sourceCapabilities";
+import {
+  BEST_BALL_MIN_RANKING_PLAYERS,
+  type BestBallSnapshot,
+} from "@/lib/bestBallSnapshot";
 import { normalizeAdpTeam } from "@/lib/fantasyAdpMatcher";
 import type { FantasyAdpEntry } from "@/lib/fantasyAdpSource";
+import { getNflRegularSeasonWeek } from "@/lib/fantasyUtils";
 import type { Player, Position, ScoringFormat } from "@/types";
 
 const BEST_BALL_RANKINGS_URL =
@@ -21,12 +26,47 @@ const BEST_BALL_ADP_WEEK = 0;
 // committed snapshot aging past its 4-day gate. A fresh 4-expert consensus
 // beats a week-old 5-expert one, so the floor follows the page down. The CI
 // gate in update-fantasy.yml enforces the same number.
+//
+// The floor is a presence check, not a quality check. The four-expert board
+// that cleared it on 2026-09-06 carried a rank_ecr that sat outside the same
+// row's published expert range on 39 of the top 150 players, and the count
+// gate never looked. The self-consistency assertion in
+// fetchBestBallRankingsBoard is the quality gate; keep both.
 const BEST_BALL_MIN_CONSENSUS_EXPERTS = 4;
+// Once a refresh fails, the builder keeps the committed snapshot only while it
+// is younger than this, until the season opens and freezes the board.
+const BEST_BALL_FALLBACK_MAX_AGE_DAYS = 10;
 const BEST_BALL_SCHEDULE_SOURCE_URL =
   "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard";
 
 export function getExpectedBestBallSeason(now: Date = new Date()): number {
   return now.getUTCMonth() < 2 ? now.getUTCFullYear() - 1 : now.getUTCFullYear();
+}
+
+export type BestBallRefreshFallback =
+  | { keep: true; reason: "recent" | "season-open" }
+  | { keep: false; reason: "stale" };
+
+/**
+ * What the builder does with the committed snapshot when the rankings refresh
+ * fails. Before the season opens a committed board older than ten days is a
+ * problem worth a red run, because drafts are still happening against it.
+ * Once the regular season has opened the best ball market is closed and the
+ * honest steady state is a dated, frozen board, so the committed snapshot is
+ * kept at any age and the chips carry its real dates.
+ */
+export function getBestBallRefreshFallback(
+  previous: Pick<BestBallSnapshot, "season" | "generatedAt">,
+  now: Date = new Date()
+): BestBallRefreshFallback {
+  if (getNflRegularSeasonWeek(previous.season, now) >= 1) {
+    return { keep: true, reason: "season-open" };
+  }
+  const ageDays = (now.getTime() - Date.parse(previous.generatedAt)) / 86_400_000;
+  if (Number.isFinite(ageDays) && ageDays <= BEST_BALL_FALLBACK_MAX_AGE_DAYS) {
+    return { keep: true, reason: "recent" };
+  }
+  return { keep: false, reason: "stale" };
 }
 
 interface BestBallRankingsBoard {
@@ -224,7 +264,7 @@ async function fetchJson(url: string): Promise<unknown> {
 }
 
 export async function fetchBestBallRankingsBoard(): Promise<BestBallRankingsBoard> {
-  return fetchEligibleRankingsBoard({
+  const board = await fetchEligibleRankingsBoard({
     publicSourceUrl: BEST_BALL_RANKINGS_URL,
     officialApiPosition: "ALL",
     scoringFormat: "PPR",
@@ -232,6 +272,13 @@ export async function fetchBestBallRankingsBoard(): Promise<BestBallRankingsBoar
     expectedRankingType: "best",
     minimumExperts: BEST_BALL_MIN_CONSENSUS_EXPERTS,
   });
+  // A board whose rank_ecr contradicts its own expert band at the top is a
+  // broken page, not a consensus. Throwing here fails the fetch, which is the
+  // path the builder already fail-softs to the committed snapshot. The shared
+  // parser cannot host this check because the healthy redraft tail trips a
+  // whole-board version of it.
+  assertBestBallConsensusConsistency(board.players);
+  return board;
 }
 
 async function fetchEligibleRankingsBoard(options: {

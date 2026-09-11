@@ -2,8 +2,14 @@
  * @jest-environment node
  */
 import {
+  BEST_BALL_CONSENSUS_MAX_DIVERGENT,
+  assertBestBallConsensusConsistency,
+  evaluateBestBallConsensusConsistency,
+  getBestBallConsensusBandGap,
+  getBestBallConsensusIssue,
   getBestBallModelSourceIssue,
   getBestBallRankingSource,
+  isBestBallConsensusDivergent,
 } from "@/lib/bestBall/sourceCapabilities";
 import { getContestPreset } from "@/lib/bestBall/contests";
 import {
@@ -11,6 +17,111 @@ import {
   type BestBallSnapshot,
   type BestBallSourceMetadata,
 } from "@/lib/bestBallSnapshot";
+import type { Player } from "@/types";
+
+const POSITIONS: Player["position"][] = ["QB", "RB", "WR", "TE"];
+
+/**
+ * A board of `size` players whose published fields agree with each other,
+ * plus the ordinary deep-tail quirk (past rank 260 the consensus rank drifts
+ * well outside the band, which every healthy FantasyPros board shows).
+ */
+function healthyBoard(size = 333): Player[] {
+  return Array.from({ length: size }, (_, index) => {
+    const rank = index + 1;
+    const tailDrift = rank > 260 ? 40 : 0;
+    return {
+      id: `fp-${rank}`,
+      name: `Player ${rank}`,
+      team: "KC",
+      position: POSITIONS[index % POSITIONS.length],
+      averageRank: rank,
+      rankEcr: rank,
+      rankAverage: rank - tailDrift + 0.4,
+      minRank: Math.max(1, rank - tailDrift - 1),
+      maxRank: rank - tailDrift + 2,
+      standardDeviation: 0.5,
+      tier: Math.ceil(rank / 12),
+      positionRank: Math.ceil(rank / 4),
+    };
+  });
+}
+
+/**
+ * The 2026-09-06 shape: three of four experts rank the player near the top
+ * while the fourth omits him, so rank_ave, rank_min, and rank_max sit at the
+ * top and rank_ecr lands 50-odd places lower. Every third player gets it.
+ */
+function brokenBoard(size = 350): Player[] {
+  return healthyBoard(size).map((player, index) =>
+    index % 3 === 0 && index < 200
+      ? { ...player, rankEcr: player.rankEcr! + 53, averageRank: player.averageRank + 53, tier: 7 }
+      : player
+  );
+}
+
+const GIBBS: Player = {
+  id: "fp-22968",
+  name: "Jahmyr Gibbs",
+  team: "DET",
+  position: "RB",
+  averageRank: 54,
+  rankEcr: 54,
+  rankAverage: 1.33,
+  standardDeviation: 0.47,
+  tier: 7,
+  positionRank: 19,
+  minRank: 1,
+  maxRank: 2,
+};
+
+describe("best ball consensus self-consistency", () => {
+  it("measures how far a published consensus rank sits outside its own expert band", () => {
+    expect(getBestBallConsensusBandGap(GIBBS)).toBe(52);
+    expect(getBestBallConsensusBandGap({ ...GIBBS, rankEcr: 1 })).toBe(0);
+    expect(getBestBallConsensusBandGap({ ...GIBBS, rankEcr: 2, minRank: 5, maxRank: 9 })).toBe(3);
+    expect(getBestBallConsensusBandGap({ ...GIBBS, minRank: undefined })).toBeNull();
+    expect(isBestBallConsensusDivergent(GIBBS)).toBe(true);
+    expect(isBestBallConsensusDivergent({ ...GIBBS, rankEcr: 12 })).toBe(false);
+  });
+
+  it("passes a healthy board, including its deep-tail drift", () => {
+    const verdict = evaluateBestBallConsensusConsistency(healthyBoard());
+
+    expect(verdict).toMatchObject({ ok: true, sampled: 150, divergent: 0 });
+    expect(() => assertBestBallConsensusConsistency(healthyBoard())).not.toThrow();
+  });
+
+  it("fails the four-expert omission shape and names the worst offenders", () => {
+    const verdict = evaluateBestBallConsensusConsistency(brokenBoard());
+
+    expect(verdict.ok).toBe(false);
+    expect(verdict.sampled).toBe(150);
+    expect(verdict.divergent).toBeGreaterThan(BEST_BALL_CONSENSUS_MAX_DIVERGENT);
+    expect(verdict.examples[0]).toMatch(/ECR \d+, experts \d+ to \d+, average/);
+    expect(() => assertBestBallConsensusConsistency(brokenBoard())).toThrow(
+      /disagrees with its own expert ranges/
+    );
+  });
+
+  it("tolerates a handful of divergent rows and skips rows without a published band", () => {
+    const board = healthyBoard();
+    for (let index = 0; index < BEST_BALL_CONSENSUS_MAX_DIVERGENT; index += 1) {
+      board[index] = { ...board[index], rankEcr: 90 + index, averageRank: 90 + index };
+    }
+    expect(evaluateBestBallConsensusConsistency(board).ok).toBe(true);
+
+    board[BEST_BALL_CONSENSUS_MAX_DIVERGENT] = {
+      ...board[BEST_BALL_CONSENSUS_MAX_DIVERGENT],
+      rankEcr: 99,
+      averageRank: 99,
+    };
+    expect(evaluateBestBallConsensusConsistency(board).ok).toBe(false);
+
+    const noBands = board.map(({ minRank: _min, maxRank: _max, ...player }) => player);
+    expect(evaluateBestBallConsensusConsistency(noBands)).toMatchObject({ ok: true, divergent: 0 });
+  });
+});
 
 const NOW = new Date("2026-08-10T12:00:00.000Z");
 const FRESH_AS_OF = "2026-08-09T12:00:00.000Z";
@@ -103,6 +214,45 @@ describe("best ball source capabilities", () => {
 
     expect(getBestBallRankingSource(current, preset)).toBe(current.superflexSource);
     expect(getBestBallModelSourceIssue(current, preset, NOW)).toBeNull();
+  });
+
+  it("pauses a standard lens with a dated sentence when the consensus contradicts itself", () => {
+    const broken = snapshot({
+      players: brokenBoard(),
+      rankingSource: source("Standard rankings", "2026-09-09T23:22:32.000Z"),
+    });
+    const issue = getBestBallModelSourceIssue(broken, getContestPreset("bbm-vii"), NOW);
+
+    expect(issue).toMatch(
+      /^the PPR best ball consensus published Sep 9, 2026 disagrees with its own expert ranges on \d+ of its top 150 players, so its ranks are withheld$/
+    );
+    expect(getBestBallConsensusIssue(broken)).toBe(issue);
+    expect(getBestBallModelSourceIssue(broken, getContestPreset("eliminator"), NOW)).toBe(issue);
+  });
+
+  it("reports a contradiction ahead of staleness and leaves a healthy board alone", () => {
+    const staleAndBroken = snapshot({
+      players: brokenBoard(),
+      rankingSource: source("Standard rankings", STALE_AS_OF),
+    });
+    expect(getBestBallModelSourceIssue(staleAndBroken, getContestPreset("bbm-vii"), NOW)).toMatch(
+      /disagrees with its own expert ranges/
+    );
+
+    const healthy = snapshot({ players: healthyBoard() });
+    expect(getBestBallConsensusIssue(healthy)).toBeNull();
+    expect(getBestBallModelSourceIssue(healthy, getContestPreset("bbm-vii"), NOW)).toBeNull();
+  });
+
+  it("does not apply the PPR self-consistency test to the Superflex lens", () => {
+    const broken = snapshot({
+      players: brokenBoard(),
+      adpSource: null,
+      scheduleSource: null,
+      week17Opponents: {},
+    });
+
+    expect(getBestBallModelSourceIssue(broken, getContestPreset("superflex"), NOW)).toBeNull();
   });
 
   it("withholds a Week 17 profile when the fresh schedule mapping is incomplete", () => {
