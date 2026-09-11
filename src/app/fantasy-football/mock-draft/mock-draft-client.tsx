@@ -68,6 +68,13 @@ const ROW_MICRO_LABEL_CLASS =
   "font-mono text-3xs uppercase tracking-[0.06em] text-[var(--home-ink-muted)] md:hidden";
 
 /**
+ * The recap board's "#n · POS" line sits on each cell's position wash, where
+ * plain muted ink measured 4.16 to 4.41:1 in light. Muted mixed 72% toward ink
+ * clears 4.5:1 on every wash in both themes and stays lighter than the name.
+ */
+const RECAP_CELL_LABEL_COLOR = "color-mix(in srgb, var(--home-ink-muted) 72%, var(--home-ink))";
+
+/**
  * Date-only stamp pinned to UTC, so the board and ADP dates in the header chip
  * and the scope note match the upstream's own date in every zone instead of
  * drifting a day for viewers west of UTC.
@@ -788,10 +795,18 @@ export function MockDraftClient() {
   // rehearsing a market that no longer exists. Name the season rather than letting
   // it read as current.
   const seasonalWeek = getNflRegularSeasonWeek(metadata?.season ?? 0);
-  const adpStampLabel =
-    snapshotMatches && metadata?.adpSource
-      ? `ADP dated ${formatStampDate(metadata.adpSource.asOf)}`
-      : "ADP unavailable";
+  // The header chip reads the freshness gate, so the stamp line has to as well:
+  // an ADP that has a date but is past its window is dated and unused, and the
+  // line says both so the two do not disagree two lines apart.
+  const adpStampLabel = (() => {
+    if (!snapshotMatches || !metadata?.adpSource) return "ADP unavailable";
+    const dated = `ADP dated ${formatStampDate(metadata.adpSource.asOf)}`;
+    if (adpAvailable) return dated;
+    if (adpFreshness === "prior-season") {
+      return `${dated}, from the prior season, so the room runs on consensus`;
+    }
+    return `${dated}, past its window, so the room runs on consensus`;
+  })();
 
   return (
     <section
@@ -1877,9 +1892,13 @@ export function MockDraftClient() {
                                 : undefined,
                           }}
                         >
+                          {/* 10px muted on the position washes measured 4.16 to 4.41:1 in
+                              light and 4.16 on the TE wash in dark. Mixing the muted tone
+                              72% toward ink clears 4.5:1 on every wash in both themes while
+                              the name line below stays the darker of the two. */}
                           <p
                             className="m-0 font-mono text-3xs tracking-[0.04em]"
-                            style={{ color: "var(--home-ink-muted)" }}
+                            style={{ color: RECAP_CELL_LABEL_COLOR }}
                           >
                             #{cell.pickNumber} · {cell.pick?.player.position ?? "—"}
                           </p>

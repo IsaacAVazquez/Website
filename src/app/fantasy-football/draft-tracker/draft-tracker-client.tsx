@@ -1409,12 +1409,16 @@ export function DraftTrackerClient() {
                 {/* Opening "Why these picks" adds each card's reasoning line and the
                     remaining recommendations (the lineup fill, a market value) to
                     this grid, so one Log button exists per player. The four-position
-                    panel below carries the long-form reading. */}
+                    panel below carries the long-form reading. The column floor is
+                    the width a card needs to print a name like "Omarion Hampton"
+                    beside its rank, chip and Log button, so an appended card wraps
+                    to a new row instead of squeezing the first three (at 1440 the
+                    240px floor let four 249px columns clip two names). */}
                 <div
                   id="draft-decision-strip"
                   className="grid gap-px"
                   style={{
-                    gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+                    gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
                     background: "var(--home-paper)",
                   }}
                 >

@@ -167,6 +167,20 @@ describe("MockDraftClient", () => {
       );
       expect(screen.queryByText(/until the published board refreshes/i)).not.toBeInTheDocument();
     });
+
+    it("keeps the note's ADP stamp in step with the chip once the ADP is past its window", () => {
+      jest.useFakeTimers().setSystemTime(new Date("2026-09-15T12:00:00.000Z"));
+      mockInSeasonSnapshot();
+
+      render(<MockDraftClient />);
+
+      // The chip drops the ADP, so the stamp line says the ADP is dated and unused
+      // rather than printing a bare date beside "ADP unavailable".
+      expect(screen.getByText("ADP unavailable, consensus only")).toBeInTheDocument();
+      expect(screen.getByRole("note")).toHaveTextContent(
+        "Board dated Sep 10, 2026 · ADP dated Sep 10, 2026, past its window, so the room runs on consensus"
+      );
+    });
   });
 
   it("moves focus to the on-the-clock panel and announces the opening turn on start", () => {
@@ -275,6 +289,15 @@ describe("MockDraftClient", () => {
     fireEvent.click(screen.getByRole("button", { name: /Sim to end/ }));
 
     expect(screen.getByRole("heading", { level: 2, name: "The board" })).toBeInTheDocument();
+    // The "#n · POS" line sits on each cell's position wash, where plain muted
+    // ink fell under 4.5:1, so it takes the muted-toward-ink mix on every cell.
+    const cellLabels = screen.getAllByText(/^#\d+ · (QB|RB|WR|TE|K|DST|—)$/);
+    expect(cellLabels).toHaveLength(50);
+    cellLabels.forEach((label) => {
+      expect(label).toHaveStyle({
+        color: "color-mix(in srgb, var(--home-ink-muted) 72%, var(--home-ink))",
+      });
+    });
     expect(screen.getByText("Draft grade")).toBeInTheDocument();
     expect(screen.getByText("Your haul")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /Run it back/ })).toBeEnabled();
