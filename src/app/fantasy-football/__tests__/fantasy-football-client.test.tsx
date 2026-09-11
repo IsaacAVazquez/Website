@@ -241,15 +241,16 @@ describe("FantasyFootballClient", () => {
     expect(screen.queryByText("ADP")).not.toBeInTheDocument();
     expect(screen.queryByText("vs ADP")).not.toBeInTheDocument();
 
-    // The tool links render twice: once under the header, once below the board.
-    const draftTrackerLinks = screen.getAllByRole("link", { name: /Draft tracker/i });
-    expect(draftTrackerLinks).toHaveLength(2);
-    for (const link of draftTrackerLinks) {
-      expect(link).toHaveAttribute("href", "/fantasy-football/draft-tracker");
-    }
+    // The tool links render once, in the footer nav. The chip row that used to
+    // repeat them under the header cost 160px before the first row at 390.
+    expect(screen.getByRole("link", { name: /Draft tracker/i })).toHaveAttribute(
+      "href",
+      "/fantasy-football/draft-tracker"
+    );
+    expect(screen.queryByRole("navigation", { name: "Fantasy tools" })).not.toBeInTheDocument();
     expect(
-      within(screen.getByRole("navigation", { name: "Fantasy tools" })).getAllByRole("link")
-    ).toHaveLength(5);
+      within(screen.getByRole("navigation", { name: "More fantasy tools" })).getAllByRole("link")
+    ).toHaveLength(6);
 
     fireEvent.click(screen.getByRole("button", { name: "Open Christian McCaffrey detail" }));
     const dialog = screen.getByRole("dialog", { name: "Christian McCaffrey detail" });
@@ -391,6 +392,183 @@ describe("FantasyFootballClient", () => {
     expect(mockReplace).toHaveBeenCalledWith(
       expect.stringContaining("teams=14"),
       expect.anything()
+    );
+  });
+
+  it("carries the VORP rank, value, and neighborhood into the drawer in VORP mode", () => {
+    currentSearchParams = new URLSearchParams(
+      "position=overall&scoring=ppr&ranking=vorp&teams=12"
+    );
+    mockSnapshot({
+      position: "overall",
+      vorpSource: {
+        provider: "FantasyPros projected VORP",
+        asOf: "2026-08-17T00:00:00.000Z",
+        urls: { "12": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php" },
+        matchedCounts: { "12": 2 },
+      },
+      vorpRankings: {
+        "12": [
+          { playerId: "rb-2", rank: 1, value: 90.4 },
+          { playerId: "rb-1", rank: 2, value: 70 },
+        ],
+      },
+      players: [
+        makePlayer({ id: "rb-1", name: "Consensus First", rankEcr: 1 }),
+        makePlayer({
+          id: "rb-2",
+          name: "VORP First",
+          rankEcr: 2,
+          averageRank: 2,
+          positionRank: 2,
+          rankAverage: 2.3,
+        }),
+      ],
+    });
+
+    renderClient({ position: "overall", ranking: "vorp", teams: 12 });
+
+    fireEvent.click(screen.getByRole("button", { name: "Open VORP First detail" }));
+    const dialog = screen.getByRole("dialog", { name: "VORP First detail" });
+    // The kicker leads with the rank the board is sorted by, and the consensus
+    // rank stays on the next line rather than disappearing.
+    expect(within(dialog).getByText("VORP #1 · 12-team")).toBeVisible();
+    expect(within(dialog).getByText("R2 overall · Tier 1 of 1")).toBeVisible();
+    // The VORP card reuses the column definition and rounds like the row does.
+    expect(within(dialog).getByRole("button", { name: "What is VORP?" })).toBeInTheDocument();
+    expect(within(dialog).getByText("VORP · 12-team")).toBeVisible();
+    // "90" is the stat card and again the neighborhood value for the same player.
+    expect(within(dialog).getAllByText("90").length).toBeGreaterThan(0);
+    // The neighborhood is labelled and numbered on the VORP scale, so the list
+    // reads monotonic instead of 2, 1 with consensus averages beside it.
+    expect(within(dialog).getByText("VORP rank · VORP")).toBeVisible();
+    const neighbors = within(dialog)
+      .getAllByRole("button", { name: /VORP First|Consensus First/ })
+      .map((button) => button.textContent?.trim());
+    expect(neighbors).toEqual(["1VORP First90", "2Consensus First70"]);
+  });
+
+  it("keeps the drawer on the consensus scale when the board is sorted by consensus", () => {
+    currentSearchParams = new URLSearchParams("position=overall&scoring=ppr");
+    mockSnapshot({
+      position: "overall",
+      vorpSource: {
+        provider: "FantasyPros projected VORP",
+        asOf: "2026-08-17T00:00:00.000Z",
+        urls: { "12": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php" },
+        matchedCounts: { "12": 1 },
+      },
+      vorpRankings: { "12": [{ playerId: "rb-1", rank: 1, value: 70 }] },
+      players: [makePlayer({ id: "rb-1", name: "Consensus First", rankEcr: 1 })],
+    });
+
+    renderClient({ position: "overall" });
+
+    fireEvent.click(screen.getByRole("button", { name: "Open Consensus First detail" }));
+    const dialog = screen.getByRole("dialog", { name: "Consensus First detail" });
+    expect(within(dialog).getByText("R1 overall · Tier 1 of 1")).toBeVisible();
+    expect(within(dialog).queryByText(/VORP #/)).not.toBeInTheDocument();
+    // The row shows VORP in both modes, so the drawer carries the card in both.
+    expect(within(dialog).getByText("VORP · 12-team")).toBeVisible();
+  });
+
+  it("accents the VORP value only when VORP is the ranking, and keeps signal text AA-safe", () => {
+    const vorpSource = {
+      provider: "FantasyPros projected VORP",
+      asOf: "2026-08-17T00:00:00.000Z",
+      urls: { "12": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php" },
+      matchedCounts: { "12": 1 },
+    };
+    const vorpRankings = { "12": [{ playerId: "rb-1", rank: 1, value: 70 }] };
+    const players = [makePlayer({ id: "rb-1", name: "Consensus First", rankEcr: 1 })];
+    const signalText = "color-mix(in srgb, var(--home-signal) 72%, var(--home-ink))";
+
+    currentSearchParams = new URLSearchParams("position=overall&scoring=ppr");
+    mockSnapshot({ position: "overall", vorpSource, vorpRankings, players });
+    const consensus = renderClient({ position: "overall" });
+    const consensusRow = screen
+      .getByRole("button", { name: "Open Consensus First detail" })
+      .closest("li") as HTMLElement;
+    // On the consensus board the column is data in ink, not forty accented numbers.
+    expect(within(consensusRow).getByTitle(/replacement/i)).toHaveStyle({ color: "var(--home-ink)" });
+    // The queued rank digit takes the 72%-toward-ink mix: bare signal on
+    // paper-raised measured 4.61:1 at rest and 4.41:1 on hover in light mode.
+    fireEvent.click(screen.getByRole("button", { name: "Queue Consensus First" }));
+    expect(within(consensusRow).getByTitle("Board rank · in your queue")).toHaveStyle({
+      color: signalText,
+    });
+    consensus.unmount();
+
+    currentSearchParams = new URLSearchParams(
+      "position=overall&scoring=ppr&ranking=vorp&teams=12"
+    );
+    mockSnapshot({ position: "overall", vorpSource, vorpRankings, players });
+    renderClient({ position: "overall", ranking: "vorp", teams: 12 });
+    const vorpRow = screen
+      .getByRole("button", { name: "Open Consensus First detail (in your queue)" })
+      .closest("li") as HTMLElement;
+    expect(within(vorpRow).getByTitle(/replacement/i)).toHaveStyle({ color: signalText });
+    expect(within(vorpRow).getByTitle("VORP rank · in your queue")).toHaveStyle({ color: signalText });
+  });
+
+  it("drives ranking and league size from the phone's single ranking select", () => {
+    currentSearchParams = new URLSearchParams("position=overall&scoring=ppr");
+    mockSnapshot({
+      position: "overall",
+      vorpSource: {
+        provider: "FantasyPros projected VORP",
+        asOf: "2026-08-17T00:00:00.000Z",
+        urls: { "12": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php" },
+        matchedCounts: { "12": 1 },
+      },
+      vorpRankings: { "12": [{ playerId: "rb-1", rank: 1, value: 70 }] },
+      players: [makePlayer({ id: "rb-1", name: "Consensus First", rankEcr: 1 })],
+    });
+
+    renderClient({ position: "overall" });
+
+    const select = screen.getByRole("combobox", { name: "Ranking method" });
+    expect(select).toHaveValue("consensus");
+    expect(within(select).getByRole("option", { name: "VORP 14-team" })).not.toBeDisabled();
+
+    fireEvent.change(select, { target: { value: "vorp-14" } });
+    expect(mockReplace).toHaveBeenLastCalledWith(
+      expect.stringContaining("ranking=vorp&teams=14"),
+      expect.anything()
+    );
+
+    // The count line keeps the phone's only live region, visible, on the same row.
+    const counts = screen.getAllByText("1 of 1 shown");
+    expect(counts.some((count) => count.getAttribute("aria-live") === "polite")).toBe(true);
+    expect(counts.every((count) => !count.className.includes("sr-only"))).toBe(true);
+  });
+
+  it("disables the VORP options on the phone select when no VORP is published", () => {
+    mockSnapshot({ players: [makePlayer({ id: "rb-1", name: "Christian McCaffrey" })] });
+
+    renderClient();
+
+    const select = screen.getByRole("combobox", { name: "Ranking method" });
+    expect(within(select).getByRole("option", { name: "Consensus" })).not.toBeDisabled();
+    expect(within(select).getByRole("option", { name: "VORP 12-team" })).toBeDisabled();
+  });
+
+  it("points the in-season note at both live boards", () => {
+    jest.setSystemTime(new Date("2026-09-11T10:00:00.000Z"));
+    mockSnapshot({ players: [makePlayer({ id: "rb-1", name: "Christian McCaffrey" })] });
+
+    renderClient();
+
+    const note = screen.getByRole("note");
+    expect(note).toHaveTextContent(/Week 1 of the 2026 season/);
+    expect(note).toHaveTextContent(/kept as a reference once games begin/);
+    expect(within(note).getByRole("link", { name: "weekly board" })).toHaveAttribute(
+      "href",
+      "/fantasy-football/weekly"
+    );
+    expect(within(note).getByRole("link", { name: "waiver targets" })).toHaveAttribute(
+      "href",
+      "/fantasy-football/waivers"
     );
   });
 

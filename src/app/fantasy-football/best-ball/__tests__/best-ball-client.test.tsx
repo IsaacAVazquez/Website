@@ -152,6 +152,160 @@ describe("BestBallClient", () => {
     expect(within(dialog).getByRole("button", { name: "Add to queue" })).toBeInTheDocument();
     expect(within(dialog).getByRole("button", { name: "Compare" })).toBeInTheDocument();
     expect(within(dialog).getByRole("textbox", { name: "Private note" })).toBeInTheDocument();
+    // The chip is the lens order, not the consensus, and says so.
+    expect(within(dialog).getByText("Board rank 1")).toBeInTheDocument();
+    expect(within(dialog).queryByText("Rank 1")).not.toBeInTheDocument();
+  });
+
+  it("keeps the column labels inside the sticky bar once the board has rows", () => {
+    const { rerender } = render(
+      <BestBallClient initialState={{ contest: "superflex", position: "all", query: "" }} />,
+    );
+
+    const controls = screen.getByTestId("best-ball-board-controls");
+    expect(controls).toHaveClass("sticky");
+    expect(within(controls).getByText("PPR ECR")).toBeInTheDocument();
+    expect(within(controls).getByText("UD ADP")).toBeInTheDocument();
+    expect(within(controls).getByText("PPR ECR").closest("[aria-hidden='true']")).not.toBeNull();
+
+    mockUseBestBallSnapshot.mockReturnValue({
+      snapshot: null,
+      isLoading: false,
+      error: "Best ball rankings are unavailable right now.",
+      retry: mockRetry,
+    });
+    rerender(<BestBallClient initialState={{ contest: "superflex", position: "all", query: "" }} />);
+    expect(
+      within(screen.getByTestId("best-ball-board-controls")).queryByText("PPR ECR"),
+    ).not.toBeInTheDocument();
+  });
+
+  it("withholds every judgment built on a consensus rank that sits outside its own expert range", () => {
+    currentSearchParams = new URLSearchParams("contest=bbm-vii");
+    // Six of the top eight by expert average carry a rank_ecr far outside
+    // their own [min, max] band, which is the 2026-09-06 FantasyPros shape.
+    const divergent = (id: string, name: string, adp: number, rank: number) => ({
+      id,
+      name,
+      team: "DET",
+      position: "RB" as const,
+      averageRank: rank,
+      rankEcr: rank,
+      rankAverage: 1.33,
+      minRank: 1,
+      maxRank: 2,
+      tier: 7,
+      positionRank: 19,
+      standardDeviation: 0.47,
+      byeWeek: 6,
+      adp,
+    });
+    mockUseBestBallSnapshot.mockReturnValue({
+      snapshot: {
+        ...snapshot,
+        rankingSource: { ...snapshot.rankingSource, asOf: "2026-09-09T23:22:32.000Z" },
+        players: [
+          divergent("rb-gibbs", "Jahmyr Gibbs", 1, 54),
+          divergent("rb-2", "Second Back", 2.1, 55),
+          divergent("rb-3", "Third Back", 4.3, 57),
+          divergent("rb-4", "Fourth Back", 5.8, 59),
+          divergent("rb-5", "Fifth Back", 7.3, 60),
+          divergent("rb-6", "Sixth Back", 7.4, 61),
+          {
+            id: "wr-chase",
+            name: "Ja'Marr Chase",
+            team: "CIN",
+            position: "WR",
+            averageRank: 1,
+            rankEcr: 1,
+            rankAverage: 3,
+            minRank: 1,
+            maxRank: 5,
+            tier: 1,
+            positionRank: 1,
+            standardDeviation: 1,
+            byeWeek: 6,
+            adp: 3.1,
+          },
+          {
+            id: "rb-cmc",
+            name: "Christian McCaffrey",
+            team: "SF",
+            position: "RB",
+            averageRank: 2,
+            rankEcr: 2,
+            rankAverage: 5.25,
+            minRank: 2,
+            maxRank: 9,
+            tier: 1,
+            positionRank: 1,
+            standardDeviation: 2,
+            byeWeek: 8,
+            adp: 6.1,
+          },
+        ],
+      },
+      isLoading: false,
+      error: null,
+      retry: mockRetry,
+    });
+
+    render(<BestBallClient initialState={{ contest: "bbm-vii", position: "all", query: "" }} />);
+
+    // The board note carries the consensus date and the count of rows it blanks.
+    const note = screen.getByTestId("best-ball-consensus-note");
+    expect(note).toHaveAttribute("role", "note");
+    expect(note).toHaveTextContent(/^Consensus withheld\. The PPR best ball consensus published Sep 9, 2026 disagrees/);
+    expect(note).toHaveTextContent("6 of 8 rows on this board print no ECR, value, tier, or position rank");
+
+    // The withheld row keeps the market and loses every derived number.
+    const gibbs = screen.getByRole("button", { name: "Open Jahmyr Gibbs details" }).closest("li") as HTMLElement;
+    expect(gibbs).toHaveTextContent("Withheld");
+    expect(gibbs).not.toHaveTextContent("54");
+    expect(gibbs).not.toHaveTextContent("-53.0");
+    expect(gibbs).not.toHaveTextContent("RB19");
+    expect(
+      within(gibbs)
+        .getAllByTitle(/sits outside its own expert range, so the board withholds it/)
+        .map((cell) => cell.textContent?.replace(/\s+/g, " ").trim()),
+    ).toEqual(["ECR Withheld", "Value NA"]);
+
+    // The healthy row beside it still reads.
+    const chase = screen.getByRole("button", { name: "Open Ja'Marr Chase details" }).closest("li") as HTMLElement;
+    expect(chase).toHaveTextContent("WR1");
+    expect(chase).toHaveTextContent("+2.1");
+
+    // The drawer prints no tier, position rank, or reach, and keeps the expert band.
+    fireEvent.click(screen.getByRole("button", { name: "Open Jahmyr Gibbs details" }));
+    const drawer = screen.getByRole("dialog", { name: "Jahmyr Gibbs detail" });
+    expect(within(drawer).getByText("Board rank 1")).toBeInTheDocument();
+    expect(within(drawer).queryByText(/Reach/)).not.toBeInTheDocument();
+    expect(within(drawer).queryByText("RB 19")).not.toBeInTheDocument();
+    expect(within(drawer).queryByText("7")).not.toBeInTheDocument();
+    expect(
+      within(drawer).getByRole("img", { name: "Expert rank range 1 to 2, average 1.3" }),
+    ).toBeInTheDocument();
+    fireEvent.click(within(drawer).getByRole("button", { name: "Compare" }));
+    fireEvent.click(within(drawer).getByRole("button", { name: "Close" }));
+
+    fireEvent.click(screen.getByRole("button", { name: "Open Ja'Marr Chase details" }));
+    const chaseDrawer = screen.getByRole("dialog", { name: "Ja'Marr Chase detail" });
+    fireEvent.click(within(chaseDrawer).getByRole("button", { name: "Compare" }));
+    fireEvent.click(within(chaseDrawer).getByRole("button", { name: "Close" }));
+
+    // The modal names the board rank, blanks the withheld cells, and awards no
+    // Best on the consensus, position rank, or tier rows.
+    fireEvent.click(screen.getByRole("button", { name: /^Compare 2/ }));
+    const modal = screen.getByRole("dialog", { name: "Compare players" });
+    const cells = (label: string) =>
+      within(within(modal).getByRole("rowheader", { name: label }).closest("tr") as HTMLElement)
+        .getAllByRole("cell")
+        .map((cell) => cell.textContent?.replace(/\s+/g, " ").trim());
+    expect(cells("Board rank")).toEqual(["1Best", "3"]);
+    expect(cells("Consensus rank")).toEqual(["Withheld", "1"]);
+    expect(cells("Position rank")).toEqual(["Withheld", "WR 1"]);
+    expect(cells("Tier")).toEqual(["Withheld", "1"]);
+    expect(cells("Market ADP")).toEqual(["1.0", "3.1"]);
   });
 
   it("preserves and lets the user clear redraft-only compare selections", () => {

@@ -5,6 +5,7 @@ import {
   fetchBestBallRankingsBoard,
   fetchBestBallScheduleBoard,
   fetchBestBallSuperflexRankingsBoard,
+  getBestBallRefreshFallback,
 } from "@/lib/bestBallSource";
 import {
   assertBestBallRankingCoverage,
@@ -98,14 +99,21 @@ async function main() {
   const previous = await readPreviousSnapshot();
   let rankings;
 
+  // fetchBestBallRankingsBoard rejects a board whose rank_ecr contradicts its
+  // own expert range at the top (the self-consistency gate), so that failure
+  // lands here with the network failures and keeps the committed snapshot.
   try {
     rankings = await fetchBestBallRankingsBoard();
   } catch (error) {
     if (previous) {
-      const priorBuiltAt = Date.parse(previous.generatedAt);
-      const ageDays = (Date.now() - priorBuiltAt) / 86_400_000;
-      if (Number.isFinite(ageDays) && ageDays <= 10) {
-        console.warn("Best ball rankings refresh failed. Keeping the recent committed snapshot.", error);
+      const fallback = getBestBallRefreshFallback(previous);
+      if (fallback.keep) {
+        console.warn(
+          fallback.reason === "season-open"
+            ? "Best ball rankings refresh failed. The season has opened and the best ball market is closed, so the committed snapshot stays frozen at its dated consensus."
+            : "Best ball rankings refresh failed. Keeping the recent committed snapshot.",
+          error
+        );
         return;
       }
       throw new Error("Best ball rankings refresh failed and the committed snapshot is stale.", {

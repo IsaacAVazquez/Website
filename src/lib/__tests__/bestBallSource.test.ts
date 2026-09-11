@@ -5,6 +5,7 @@ import {
   assertBestBallSourceScoring,
   fetchBestBallRankingsBoard,
   fetchBestBallSuperflexRankingsBoard,
+  getBestBallRefreshFallback,
   getExpectedBestBallSeason,
   parseBestBallAdpPayload,
   parseBestBallSchedulePayload,
@@ -166,6 +167,68 @@ describe("best ball public sources", () => {
     });
     expect(standard.players).toHaveLength(250);
     expect(superflex.players).toHaveLength(250);
+  });
+
+  it.each([
+    {
+      label: "accepts a board whose consensus rank agrees with its own expert range",
+      omitEveryThird: false,
+    },
+    {
+      label: "rejects a board whose consensus rank contradicts its own expert range at the top",
+      omitEveryThird: true,
+    },
+  ])("$label", async ({ omitEveryThird }) => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date("2026-09-07T12:00:00.000Z"));
+    process.env.FANTASYPROS_SOURCE = "official-api";
+    process.env.FANTASYPROS_API_KEY = "best-ball-test-key";
+    const payload = officialRankingsPayload({ position: "ALL", scoring: "PPR", rankingType: "BEST" });
+    payload.total_experts = 4;
+    // The 2026-09-06 shape: three of four experts rank the player at the top
+    // while the fourth omits him, so the published average and range stay at
+    // the top and rank_ecr lands 53 places lower.
+    payload.players = payload.players.map((player, index) => {
+      const rank = index + 1;
+      const omitted = omitEveryThird && index % 3 === 0 && index < 200;
+      return {
+        ...player,
+        rank_ecr: omitted ? rank + 53 : rank,
+        rank_ave: rank + 0.33,
+        rank_min: Math.max(1, rank - 1),
+        rank_max: rank + 2,
+        rank_std: 0.47,
+        tier: omitted ? 7 : player.tier,
+      };
+    });
+    jest.spyOn(global, "fetch").mockImplementation(async () => jsonResponse(payload));
+
+    if (omitEveryThird) {
+      await expect(fetchBestBallRankingsBoard()).rejects.toThrow(
+        /disagrees with its own expert ranges: \d+ of the top 150 players/
+      );
+    } else {
+      await expect(fetchBestBallRankingsBoard()).resolves.toMatchObject({ expertCount: 4 });
+    }
+  });
+
+  it("keeps a committed snapshot on a failed refresh while it is recent or once the season has opened", () => {
+    const preseason = new Date("2026-08-20T12:00:00.000Z");
+    expect(
+      getBestBallRefreshFallback({ season: 2026, generatedAt: "2026-08-15T12:00:00.000Z" }, preseason)
+    ).toEqual({ keep: true, reason: "recent" });
+    expect(
+      getBestBallRefreshFallback({ season: 2026, generatedAt: "2026-08-01T12:00:00.000Z" }, preseason)
+    ).toEqual({ keep: false, reason: "stale" });
+
+    // Week 1 opened Wednesday 2026-09-09; a frozen board is the honest state after that.
+    const inSeason = new Date("2026-09-25T12:00:00.000Z");
+    expect(
+      getBestBallRefreshFallback({ season: 2026, generatedAt: "2026-09-03T12:00:00.000Z" }, inSeason)
+    ).toEqual({ keep: true, reason: "season-open" });
+    expect(
+      getBestBallRefreshFallback({ season: 2026, generatedAt: "2026-09-08T12:00:00.000Z" }, new Date("2026-09-08T13:00:00.000Z"))
+    ).toEqual({ keep: true, reason: "recent" });
   });
 
   it("keeps only usable NFL best ball ADP rows and carries the latest timestamp", () => {

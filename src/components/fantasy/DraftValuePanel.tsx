@@ -36,6 +36,25 @@ const WHOLE_CURRENCY = new Intl.NumberFormat("en-US", {
 
 const NUMBER = new Intl.NumberFormat("en-US");
 
+// Same UTC formatter the trackers use for their "Rankings updated" chips, so
+// a field figure captured on the 9th cannot print as the 8th in one timezone.
+function formatAsOfDate(value: string | null | undefined): string | null {
+  if (!value || Number.isNaN(Date.parse(value))) return null;
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(value));
+}
+
+/** Positive, negative, and zero each get their own tone; a sign is a state. */
+function signTone(value: number): string {
+  if (value > 0) return "var(--home-positive)";
+  if (value < 0) return "var(--home-negative)";
+  return "var(--home-ink)";
+}
+
 export interface ExpectedReturnFormState {
   entryCost: string;
   payoutProbability: string;
@@ -278,14 +297,7 @@ function ExpectedReturnCalculator({
               </p>
               <p
                 className="mt-1 text-lg font-semibold tabular-nums"
-                style={{
-                  color:
-                    result.netExpectedValue > 0
-                      ? "var(--home-positive)"
-                      : result.netExpectedValue < 0
-                        ? "var(--home-negative)"
-                        : "var(--home-ink)",
-                }}
+                style={{ color: signTone(result.netExpectedValue) }}
               >
                 {signedCurrency(result.netExpectedValue)}
               </p>
@@ -317,30 +329,43 @@ function ExpectedReturnCalculator({
   );
 }
 
+/**
+ * Field figures a preset publishes: entry fee, prize pool, and the entry
+ * count on the day they were captured. The count keeps growing until the
+ * draft deadline, so the capture date is part of the figure.
+ */
+export type ContestEconomicsDisplayInput = ContestFieldEconomicsInput & {
+  firstAdvanceRate?: number;
+  asOf?: string;
+};
+
 function ContestMath({
   headingId,
   economics,
+  contestName,
   sourceUrl,
 }: {
   headingId: string;
-  economics: ContestFieldEconomicsInput & { firstAdvanceRate?: number };
+  economics: ContestEconomicsDisplayInput;
+  contestName?: string;
   sourceUrl?: string;
 }) {
   const result = calculateContestFieldEconomics(economics);
   if (!result) return null;
+  const asOf = formatAsOfDate(economics.asOf);
 
   return (
+    /* Nothing in this panel is live, active, or actionable, so it takes the
+       rule-and-paper-alt treatment of the tiles above it rather than a
+       signal wash; the signal stays on the top card and the progress bars. */
     <section
       className="rounded-[var(--radius-2xl)] border p-4"
-      style={{
-        borderColor: "color-mix(in srgb, var(--home-signal) 42%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--home-signal) 7%, var(--home-paper))",
-      }}
+      style={TILE_STYLE}
       aria-labelledby={headingId}
     >
       <p className="home-kicker mb-1">Published contest math</p>
       <h4 id={headingId} className="text-sm font-semibold">
-        Best Ball Mania VII field baseline
+        {contestName ? `${contestName} field baseline` : "Published field baseline"}
       </h4>
       <div className="mt-3 grid grid-cols-2 gap-2 text-xs">
         <div>
@@ -351,7 +376,10 @@ function ContestMath({
         </div>
         <div>
           <p style={{ color: "var(--home-ink-muted)" }}>Field net EV</p>
-          <p className="mt-1 text-base font-semibold tabular-nums" style={{ color: "var(--home-negative)" }}>
+          <p
+            className="mt-1 text-base font-semibold tabular-nums"
+            style={{ color: signTone(result.netExpectedValue) }}
+          >
             {signedCurrency(result.netExpectedValue)}
           </p>
         </div>
@@ -369,6 +397,7 @@ function ContestMath({
         </div>
       </div>
       <p className="mt-3 text-2xs leading-5" style={{ color: "var(--home-ink-muted)" }}>
+        {asOf ? `Field figures as of ${asOf}. ` : ""}
         At a full field, {WHOLE_CURRENCY.format(result.prizePool)} across {NUMBER.format(result.fieldEntries)} entries
         gives an equal-entry return before taxes. This field math stays separate from Draft Outlook.
       </p>
@@ -390,6 +419,7 @@ export function DraftValuePanel({
   report,
   headingId,
   economics,
+  economicsContestName,
   economicsSourceUrl,
   defaultEntryCost,
   calculatorValue,
@@ -398,7 +428,9 @@ export function DraftValuePanel({
 }: {
   report: DraftValueReport | null;
   headingId: string;
-  economics?: ContestFieldEconomicsInput & { firstAdvanceRate?: number };
+  economics?: ContestEconomicsDisplayInput;
+  /** The preset's own name, so the heading never hardcodes one contest. */
+  economicsContestName?: string;
   economicsSourceUrl?: string;
   defaultEntryCost?: number;
   calculatorValue?: ExpectedReturnFormState;
@@ -567,6 +599,7 @@ export function DraftValuePanel({
         <ContestMath
           headingId={`${headingId}-contest-math`}
           economics={economics}
+          contestName={economicsContestName}
           sourceUrl={economicsSourceUrl}
         />
       ) : null}

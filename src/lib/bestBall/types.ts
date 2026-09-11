@@ -109,6 +109,14 @@ export interface RankedBestBallPlayer extends Player {
   rankAdjustment: number;
   rankReason: string;
   isUndraftedAtContestFloor: boolean;
+  /**
+   * True when the loaded PPR consensus fails its own self-consistency test and
+   * this row is one of the divergent records (its published `rankEcr` sits
+   * more than the tolerance outside its own `[minRank, maxRank]`). The UI
+   * prints no value, reach, tier, position rank, or ECR for such a row, and
+   * `rankReason` already omits the ECR clause. Order is never changed by it.
+   */
+  consensusWithheld: boolean;
 }
 
 export type BestBallRosterComposition = Record<BestBallPosition, number>;

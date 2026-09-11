@@ -393,3 +393,171 @@ different pick semantics is product work rather than remediation.
 Random-access undo on the best ball tracker, and search and a position filter on the weekly
 board, are product work rather than remediation and were deferred on purpose. The keyboard
 layer named in the 2026-08-12 critique is still open and still product-shaped.
+
+## Full-group loop, 2026-09-11
+
+The second pass to treat the fantasy surfaces as one job, and the first to see them in
+season. Eight surfaces this time, because the waiver list split onto its own route on
+2026-09-09 (commit `11ec4dd`) and now has a brief at `route-fantasy-football-waivers.md`.
+Four rounds ran as before: a computed-value sweep, a dual-agent critique per surface with
+two independent refuters on every P0 and P1, a per-surface remediation round, and a
+verification re-sweep. The impeccable plugin itself was not installed in the session that ran
+this, so the loop was reproduced by hand with the same instrument, the same critique format,
+and the same verification rule, and the eight critique snapshots under `.impeccable/critique/`
+carry the `2026-09-11T` prefix.
+
+### What had changed since 2026-08-23
+
+Two things, and no critique had seen either. The NFL season opened Wednesday 2026-09-09, so
+`getNflRegularSeasonWeek` returns 1, every draft board renders `SeasonalScopeNote`, the weekly
+snapshot exists for the first time (season 2026, week 1, generated 2026-09-10), and the trade
+calculator is in the state its note described as declining verdicts. And the same day the site
+header took a "/" shortcut for site search. The pass measured what those two facts did to
+eight surfaces that had all been verified clean in August.
+
+### The instrument
+
+Same sweep as August, rebuilt from the recorded lessons: theme through the `theme`
+localStorage key, a contrast parser that reads `color(srgb …)` and asserts ink on paper at
+16.29:1 light and 15.28:1 dark before reporting, hit-tested target sizes with the inline-prose
+exemption, and a driver per state that asserts a landmark before measuring. Two new lessons.
+`html` sets `scroll-behavior: smooth`, so anything that scrolls and measures in the same tick
+is measuring mid-animation; set it to `auto` first, or a 16x16 radio with a 324x44 label reads
+as a target failure. And a state driver that keys on markup a remediation intentionally
+changes will report a timeout that looks like a regression; the "#2 / 180" fascia counter
+became "#2/180" on phones and the weekly scroll box was retired, and both drivers had to
+follow. Playwright 1.62.1 wanted chromium 1234 and the container had 1194, which reads as a
+missing executable; `executablePath: /opt/pw-browsers/chromium` is the answer, not a download.
+
+Round one came back almost entirely clean, which is the August result holding: one AA failure
+(the redraft board's VORP value in signal on the hover wash at 4.41:1), one fantasy-owned
+heading inversion, the recorded target-size decisions, and nothing else across 176 cells. As
+in August, the threshold sweep could not see what the season had done to the copy, and every
+P0 this loop found was a sentence or a number contradicting another one.
+
+### Scores before, and the verdicts
+
+Rankings 30, best ball board 24, best ball tracker 29, redraft tracker 29, mock draft 27,
+trade calculator 30, weekly 29, waivers 30, all out of 40. Three P0 and 27 P1 went to two
+refuters each, and 30 of 30 were upheld, with the refuters correcting numbers and fixes on
+nine of them but killing none. That is a worse ratio than August's 15 of 20, and the reason
+is the season: most of these were things that were true on 2026-08-23 and stopped being true
+on 2026-09-09.
+
+### The P0 that was data
+
+The best ball board and tracker independently found the same thing. FantasyPros' best ball
+board thinned to four experts in late August and the expert floor in `bestBallSource.ts` was
+lowered from five to four to follow it, and on the four-expert board FantasyPros' own
+`rank_ecr` sits outside the row's own `[rank_min, rank_max]` for about 120 of 350 players.
+Every divergent average is a multiple of one third, so three of four experts ranked those
+players and the fourth omitted them, and FantasyPros' rank-point consensus sorts the omissions
+behind the 53 players all four ranked. Gibbs carried ECR 54 with an expert range of 1 to 2,
+tier 7, RB19, and the site copied it verbatim (`fantasyProsPublicSource.ts:699`) and rendered
+nine Round 1 reaches at minus 53, a drawer reading "Tier 7, RB 19, Reach −53" beside "best 1,
+avg 1.3, worst 2", and recommendation cards at pick 1 that omitted the ADP-1 and ADP-2
+players. The builder's only gate was a count. The redraft boards from the same parser were
+consistent, and the last clean best ball build was 12aa353 (seven experts, 2026-09-01).
+
+The remediation is a provider self-consistency gate, not a market comparison, because this
+brief's "never a locally computed adjustment" decision bars anything that reorders. The builder
+asserts, on the top 150 by expert average, that no more than five rows sit more than ten
+outside their own band, failing through the existing fail-soft path; the CI verify step mirrors
+the count and turns age failures into warnings once the season has opened, since a frozen
+in-season board is the honest steady state; the reader gate pauses the cards and Draft Outlook
+with a dated sentence and stamps `consensusWithheld` on each divergent row; and both UIs
+withhold value, reach, tier, position rank and the "ECR is N" clause on those rows while
+keeping best, avg and worst. The committed snapshot is restored to the seven-expert consensus
+of 2026-09-01 with the 2026-09-10 ADP, bye, schedule and Week 17 layers overlaid by player id,
+so Gibbs reads ADP 1, consensus 1, Even. The restored consensus reads Stale under the four-day
+gate and the tracker's cards pause on that sentence today, which is correct for a market that
+closed at kickoff, and nothing prints `rankAverage` under the ECR label.
+
+### The P0 that was a promise
+
+The trade calculator's note said it declines a verdict once the season opens, and it did not,
+because the engine's gate is the four-day ADP age and the feed was still sampling real drafts
+daily. The note and the model doc were wrong, not the engine, and the fix is recorded in
+`route-fantasy-football-trade-calculator.md`, with one engine addition that caps coverage at
+`limited` from Week 1 so a clear edge cannot appear in season.
+
+### What landed on the four surfaces this brief owns
+
+On the rankings board, the board-owned drawer now carries VORP mode, so in VORP view the
+kicker, a VORP stat card, the neighborhood and the verdict label speak the sort the row uses
+instead of consensus ranks (it had read "R57 overall, Tier 5" with a neighborhood of 39, 45,
+57, 41, 9 for VORP row 19). Below `md` a compact ranking select replaces the toggle plus
+league-size pair and shares a row with the count line, which stays visible as the phone's only
+live region, and the six-chip tools nav leaves the header since the footer nav already lists
+it; the pinned chrome at 390 went from 225px to 188px and the first row from y=873 to y=677.
+The queued rank digit and the VORP value take the 72% signal-toward-ink mix, which moves the
+hover and keyboard-highlight ratios from 4.41:1 to 6.54:1 in light and lifts the resting 4.61
+to 6.84, and the VORP value reads in ink on the consensus board so its colour tracks the sort.
+The drawer's player-name h2 dropped to `text-xl` under the 33.6px h1. The "What I use it for"
+h2 at 34px is the shared `ProjectBuildNote`, left alone and recorded.
+
+On the best ball board, beyond the data gate above, the drawer chip and compare modal had
+labelled the ADP-ordered board rank as "Consensus rank" and awarded Best on it (rendered "1
+Best, 2, 3" while the ECR column read 54, 55, 1). A `publishedRankLabel` prop now travels with
+the value; the best ball board passes "Board rank" and the modal adds a separate consensus row
+from the published ECR, and redraft callers keep their defaults. The column-label row rides
+inside the sticky bar at `md` and up, gated on `boardReady`, where it had been at −1,741 after
+a 2,500px scroll. The "Scoring rules" pill wraps at 390 instead of clipping 11px behind the
+card edge. And the seven source-study links, recorded in August as inline prose under the
+2.5.8 exemption, are standalone 13 to 18px anchors after a paragraph, so the exemption was
+recorded on a false premise and they now carry the 44px floor.
+
+On the redraft tracker, the site header's new "/" shortcut opened the site search over the
+board's documented "/" board search, because the header listener on `window` never checked
+`defaultPrevented`; it does now, one line, the only shared-shell edit in the loop. Logging a
+pick from the keyboard or from the drawer's Log this pick left focus on body; a post-commit
+effect moves it to the fascia's on-the-clock tile when nothing else claimed it. "Why these
+picks" mounted a second card set under the strip, five Log buttons for three players; the
+disclosure now swaps each card's sub for its reasoning and appends only what the strip did not
+show. Below `sm` the fascia is three fixed columns with compact copy and no Pool tile, 192px to
+148px at 390 with no clipped values, which is step one of the verifier's sequence; the one-row
+phone fascia that would take it near 12% pinned is still open. Positive VORP values on the
+board and the Index value on the decision panel render in ink (both verifiers preferred ink to
+the mix), taking 4.01 to 4.41 on the washes to 14.3 and up. The h1 sits on the title ramp and
+the season note is inside the shell.
+
+On the best ball tracker, opening the room and logging a pick moved neither viewport nor
+focus. The setup click now batches the header collapse with the open, scrolls the status card
+under the live bar and focuses the on-the-clock heading; a pick from a board row moves focus
+to the row that took its place, and a pick from a card or the drawer returns it to the
+heading, a deliberate split from the verifiers' "always the heading" because the board is
+where all 216 picks get logged and sending focus 1,000px up each time is worse than the
+Chromium starting-point behaviour it replaces. The board's search, pills and column labels pin
+under the live bar at every width, with the live bar's height measured rather than hardcoded,
+and the phone search collapses to an icon. The 503-character scoring explainer renders full
+width under its heading and only on the user's own pick, 334px with zero cards to 174px at
+1440. The published field economics print their as-of date (2026-08-09), tone net EV by sign,
+and take the contest name from the preset. Setup states the room shape once.
+
+The mock draft, trade calculator, weekly and waivers passes are in their own briefs.
+
+### Verified after
+
+176 cells, both themes, four widths, every driven state: zero AA contrast failures, zero
+horizontal overflow, one `main` and one `h1` each, zero unnamed `section` landmarks, 90 of 90
+focus rings at 1440. Twenty-nine cells still carry a flag, all of them recorded: the rankings
+board's "What is…?" triggers (16px by rect, 32 to 81 by 40 by hit-test), the trade
+calculator's label-backed radios, and the shared build note's h2. Typecheck clean, lint clean.
+Jest across the fantasy tree, hooks, lib and scripts: 1,528 tests, with three that failed under
+the parallel sweep's load and pass alone (the retirement hook's two five-second timeouts and
+the best ball tracker client suite), plus one real failure, the sitemap consistency test, which
+pins `lastmod` to the best ball snapshot's build stamp and needed the sitemap regenerated for
+the restored file. `e2e/fantasy-football.spec.ts`, the trade calculator spec and the
+accessibility spec ran 29 of 29 against the dev server with no spec edited, which is worth
+noting because the August loop had to repair six of those tests.
+
+### Still open, deliberately
+
+The keyboard layer, the drawer's shared pick semantics, random-access undo, and the shared
+shell items (footer "Now" link, Contact CTA h2, the build note's h2) are unchanged from August.
+New this loop and product-shaped: the one-row phone fascia on the redraft tracker, the
+twenty-row cap on the waiver list, definitions for "Expert range" and "Rostered" on the weekly
+board, the redraft tracker's "−0.0 pts" reading, the drawer's unlabelled Movement line, and
+`getFantasyAdpFreshness` hiding the mock draft's ADP columns on the same four-day rule the
+note now explains. The context note that freshness bands widen on 2026-10-01 was wrong; the
+code holds the four-day band through December, and the copy across the group now says so.

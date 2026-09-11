@@ -308,7 +308,7 @@ The published range recomputes both readings one uncertainty step above and belo
 | Coverage | When it applies |
 | --- | --- |
 | Supported | Both sources cover every replacement cutoff for the player's position and both publish a usable spread |
-| Limited | Any of that is missing, or the result carries a warning, or either source is aging, or the two packages hold a different number of players |
+| Limited | Any of that is missing, or the result carries a warning, or either source is aging, or the two packages hold a different number of players, or the regular season is under way (see below) |
 | Insufficient | The league settings or the two sides fail validation, the expert board is stale, or any selected player lacks a reliable current-market reading |
 
 The verdict compares side totals through a relative gap.
@@ -334,9 +334,11 @@ These values have not been fit against historical trade outcomes or measured aga
 
 ### What happens to the trade calculator in season
 
-The model is a preseason one-QB redraft estimator and its market leg is mock-draft ADP, which stops moving once real drafts end. That means from Week 1 the coverage rule drops to insufficient and the tool declines verdicts for the rest of the season. That is correct behavior and I am leaving it. Repointing the market leg at rest-of-season consensus mid-season would quietly change what the number means, and I would rather it go quiet than go wrong.
+The model is a preseason one-QB redraft estimator and its market leg is mock-draft ADP. I expected that feed to stop moving once real drafts ended, but in 2026 the provider kept publishing a sliding window of real mock drafts past kickoff, with the window ending 2026-09-10 on a sample of 3,631 drafts two days into Week 1, so the calculator does not go quiet on a calendar date. It gates on the feed's age instead. The market leg is usable while `getFantasyAdpFreshness` reads the ADP `asOf` as current, which in the July through December daily-refresh window means the stamp is within four days of today, and while `getSnapshotStaleness` on that same stamp is not stale. The day the feed stops, the market leg becomes unusable, the coverage table above drops the result to insufficient because a selected player no longer has a reliable current-market reading, and the verdict is withheld with the stale-feed warning as the stated cause.
 
-What I did change is that the silence is now labeled. From Week 1 the page carries a dated note saying the market it prices closed when drafts ended, so a withheld verdict reads as the model's boundary instead of a broken tool. Rebuilding the market leg on rest-of-season consensus stays open as the real fix, and it is blocked on the same rest-of-season board the weekly surface is waiting for.
+What the season does change is the ceiling. From Week 1, `evaluateFantasyTrade` derives the regular-season week from the snapshot season and the evaluation date and pushes a warning that the estimate prices what the players would cost in a draft this week rather than what they are worth in an in-season trade. Any warning caps coverage at limited, and a clear edge requires supported coverage, so in season the tool can say balanced or leaning and never a clear edge, and the coverage chip can never sit green under the dated season note. The page carries that note from Week 1 and names which of the two states the feed is in, still sampling as of a printed date or stopped, so a running estimate reads as a draft-market price and a withheld one reads as the feed ending rather than a broken tool.
+
+I would not use it for an in-season trade. A September mock-draft price is a real market, but it answers a draft question, and rebuilding the market leg on rest-of-season consensus stays open as the fix. It is blocked on the same rest-of-season board the weekly surface is waiting for. One gap I am recording rather than closing here is that the gate is date-driven, so if the provider keeps advancing the window's end date on a shrinking sample the tool will keep pricing a thinning market until the stamp goes four days stale. A secondary guard on sample size or day-over-day ADP movement would close that, and it is model work.
 
 ## The weekly board
 

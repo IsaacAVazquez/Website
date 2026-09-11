@@ -157,6 +157,38 @@ describe("StaticHeader", () => {
     expect(slash.defaultPrevented).toBe(false);
   });
 
+  it("leaves a slash keystroke alone when a surface already claimed it", async () => {
+    await act(async () => {
+      root.render(<StaticHeader />);
+    });
+
+    // The draft boards own "/" for their own search and prevent default on the
+    // document before the keystroke reaches the window listener.
+    const claimed = new KeyboardEvent("keydown", {
+      key: "/",
+      bubbles: true,
+      cancelable: true,
+    });
+    claimed.preventDefault();
+    await act(async () => {
+      window.dispatchEvent(claimed);
+    });
+
+    expect(container.querySelector('[role="dialog"][aria-label="Site search"]')).toBeNull();
+
+    const unclaimed = new KeyboardEvent("keydown", {
+      key: "/",
+      bubbles: true,
+      cancelable: true,
+    });
+    await act(async () => {
+      window.dispatchEvent(unclaimed);
+    });
+
+    expect(unclaimed.defaultPrevented).toBe(true);
+    expect(container.querySelector('[role="dialog"][aria-label="Site search"]')).not.toBeNull();
+  });
+
   it("releases the mobile scroll lock when navigation enters Catalog 97", async () => {
     mockUsePathname.mockReturnValue("/investments");
 

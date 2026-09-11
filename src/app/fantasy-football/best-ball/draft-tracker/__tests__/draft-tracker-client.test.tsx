@@ -1,10 +1,33 @@
+import { execFileSync } from "node:child_process";
 import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { BestBallDraftTrackerClient } from "../draft-tracker-client";
+import type { BestBallSnapshot } from "@/lib/bestBallSnapshot";
 import type { Player } from "@/types";
 
 const mockReplace = jest.fn();
 let mockSourceDate = new Date().toISOString();
 let mockScheduleDate = mockSourceDate;
+let mockSnapshotOverride: BestBallSnapshot | null = null;
+
+/**
+ * The best ball snapshot committed on 2026-09-10 (a8ded41), whose four-expert
+ * consensus placed Jahmyr Gibbs at ECR 54 against an expert range of 1 to 2.
+ * The committed data was restored to the last consistent board, so the broken
+ * build is read from history rather than kept as a fixture; a clone too
+ * shallow to reach it skips the test instead of failing it.
+ */
+function loadBrokenBuild(): BestBallSnapshot | null {
+  try {
+    const raw = execFileSync("git", ["show", "a8ded41:public/data/fantasy/best-ball.json"], {
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "ignore"],
+      maxBuffer: 16 * 1024 * 1024,
+    });
+    return JSON.parse(raw) as BestBallSnapshot;
+  } catch {
+    return null;
+  }
+}
 
 const mockWeek17Opponents = {
   ARI: "SEA", ATL: "NO", BAL: "CIN", BUF: "MIA", CAR: "TB", CHI: "GB",
@@ -42,7 +65,7 @@ const mockPlayers: Player[] = [
 
 jest.mock("@/hooks/useBestBallSnapshot", () => ({
   useBestBallSnapshot: () => ({
-    snapshot: {
+    snapshot: mockSnapshotOverride ?? {
       schemaVersion: 2,
       season: 2026,
       generatedAt: mockSourceDate,
@@ -81,7 +104,97 @@ describe("BestBallDraftTrackerClient", () => {
     mockReplace.mockClear();
     mockSourceDate = new Date().toISOString();
     mockScheduleDate = mockSourceDate;
+    mockSnapshotOverride = null;
+    // jsdom does not implement scrolling; the room scrolls its status card
+    // under the live bar when it opens, so the call is what gets asserted.
+    window.scrollTo = jest.fn();
   });
+
+  it("scrolls the status card into view and focuses the on-the-clock heading when the room opens", async () => {
+    render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
+    fireEvent.click(
+      await screen.findByRole("button", { name: "Open draft room from slot 1" })
+    );
+
+    const heading = screen.getByRole("heading", { name: "You are on the clock at pick 1" });
+    expect(heading).toHaveFocus();
+    expect(window.scrollTo).toHaveBeenCalledWith(
+      expect.objectContaining({ top: expect.any(Number), behavior: "smooth" })
+    );
+  });
+
+  it("places focus after a pick on the heading for a card pick and on the next row for a board pick", async () => {
+    render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
+    fireEvent.click(
+      await screen.findByRole("button", { name: "Open draft room from slot 1" })
+    );
+    (window.scrollTo as jest.Mock).mockClear();
+
+    // The card unmounts with the pick (the next turn is another slot's), so
+    // the heading that now reads the room state takes focus, without a scroll.
+    fireEvent.click(screen.getAllByRole("button", { name: "Log for my team" })[0]);
+    expect(screen.getByRole("heading", { name: "Slot 2 is on the clock" })).toHaveFocus();
+    expect(window.scrollTo).not.toHaveBeenCalled();
+
+    // A board pick stays in the board: the Draft button of the row that slid
+    // into the drafted row's place takes focus.
+    fireEvent.click(screen.getByRole("button", { name: "Draft Bijan Robinson at pick 2" }));
+    expect(screen.getByRole("heading", { name: "Slot 3 is on the clock" })).toBeVisible();
+    expect(screen.getByRole("button", { name: "Draft Puka Nacua at pick 3" })).toHaveFocus();
+    expect(window.scrollTo).not.toHaveBeenCalled();
+  });
+
+  const brokenBuild = loadBrokenBuild();
+  (brokenBuild ? it : it.skip)(
+    "pauses the cards with a dated sentence and withholds the consensus on the 2026-09-10 build",
+    async () => {
+      const now = new Date().toISOString();
+      mockSnapshotOverride = {
+        ...(brokenBuild as BestBallSnapshot),
+        // The ADP and schedule sources are dated today so the room orders on
+        // ADP as it did on the day; the ranking source keeps its own date
+        // because the pause sentence prints it.
+        adpSource: { ...(brokenBuild as BestBallSnapshot).adpSource!, asOf: now },
+        scheduleSource: { ...(brokenBuild as BestBallSnapshot).scheduleSource!, asOf: now },
+      };
+      render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
+
+      const pause = await screen.findByText(/Draft Outlook is paused because/);
+      expect(pause).toHaveTextContent(
+        /the PPR best ball consensus published Sep 9, 2026 disagrees with its own expert ranges on \d+ of its top 150 players, so its ranks are withheld\. Exact player cards are paused too\./
+      );
+
+      fireEvent.click(screen.getByRole("button", { name: "Open draft room from slot 1" }));
+      expect(screen.getByRole("heading", { name: "You are on the clock at pick 1" })).toHaveFocus();
+      expect(
+        screen.getByText(/Exact player cards are unavailable because the PPR best ball consensus published Sep 9, 2026/)
+      ).toBeVisible();
+      expect(screen.queryByRole("button", { name: "Log for my team" })).not.toBeInTheDocument();
+      expect(screen.queryByTestId("best-ball-score-explainer")).not.toBeInTheDocument();
+      expect(screen.getByRole("heading", { name: "Draft Outlook paused" })).toBeVisible();
+
+      // Gibbs is the market's first pick and the provider's ECR 54. The board
+      // keeps him first on ADP and prints no rank for him.
+      const gibbsRow = screen
+        .getByRole("button", { name: "Open Jahmyr Gibbs detail" })
+        .closest("div") as HTMLElement;
+      const provenance = gibbsRow.querySelector("[data-consensus-withheld='true']");
+      expect(provenance?.getAttribute("title")).toMatch(
+        /The current standard Underdog ADP is 1\.0\. The published PPR best ball consensus rank for this player sits outside its own expert range, so the ECR is withheld\./
+      );
+      expect(document.body.textContent).not.toMatch(/ECR is 54/);
+
+      // The drawer prints tier, position rank, and the reach or value reading
+      // from the same rank, so it gets none of the three on a withheld row.
+      fireEvent.click(screen.getByRole("button", { name: "Open Jahmyr Gibbs detail" }));
+      const dialog = await screen.findByRole("dialog", { name: "Jahmyr Gibbs detail" });
+      expect(within(dialog).getByText("Tier").nextElementSibling).toHaveTextContent(/^—$/);
+      expect(within(dialog).getByText("Position rank").nextElementSibling).toHaveTextContent(
+        /^RB —$/
+      );
+      expect(within(dialog).queryByText(/reach|value/i)).not.toBeInTheDocument();
+    }
+  );
 
   it("opens a room, logs the snake pick, and undoes it", async () => {
     render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
@@ -94,9 +207,17 @@ describe("BestBallDraftTrackerClient", () => {
     ).toBeVisible();
     expect(screen.getByRole("heading", { name: "Best fits for your next pick" })).toBeVisible();
     expect(screen.getAllByRole("button", { name: "Log for my team" }).length).toBeGreaterThan(0);
+    // The score explainer is protected framing and prints with the cards it
+    // explains; on another slot's turn there is no score under it, so the
+    // section keeps only the sentence that says why the cards are hidden.
+    expect(screen.getByTestId("best-ball-score-explainer")).toHaveTextContent(
+      /This is not a projected win rate\./
+    );
     fireEvent.click(screen.getByRole("button", { name: "Draft Ja'Marr Chase at pick 1" }));
 
     expect(screen.getByRole("heading", { name: "Slot 2 is on the clock" })).toBeVisible();
+    expect(screen.queryByTestId("best-ball-score-explainer")).not.toBeInTheDocument();
+    expect(screen.getByText(/Exact player cards stay hidden until your turn/)).toBeVisible();
     await waitFor(() =>
       expect(
         JSON.parse(

@@ -141,6 +141,89 @@ function waitCellReading(
   }
 }
 
+/**
+ * One recommendation card on the on-clock strip: label, published rank, the
+ * player's detail button, position chip, an optional Log action, and either
+ * the one-line sub reading or the longer "why" line once the disclosure opens.
+ */
+/* The strip grid draws its 1px dividers from each card's outline rather than
+   a rule-colored grid background, so an uneven last row (five cards in four
+   columns once the disclosure opens) leaves paper, not a tinted block. */
+const STRIP_CARD_STYLE: CSSProperties = {
+  background: "var(--home-paper)",
+  outline: "1px solid color-mix(in srgb, var(--home-signal) 20%, var(--home-rule))",
+};
+
+function StripPlayerCard({
+  label,
+  labelColor,
+  player,
+  publishedRank,
+  sub,
+  detail,
+  onOpenDetail,
+  onLog,
+  logLabel,
+}: {
+  label: string;
+  labelColor: string;
+  player: Player;
+  publishedRank: number | string;
+  sub: string;
+  detail: string | null;
+  onOpenDetail: () => void;
+  onLog?: () => void;
+  logLabel: string;
+}) {
+  return (
+    <div className="flex min-w-0 flex-col gap-0.5 px-3.5 py-2" style={STRIP_CARD_STYLE}>
+      <span className={MONO_LABEL_CLASS} style={{ color: labelColor }}>
+        {label}
+      </span>
+      <div className="flex min-w-0 items-center gap-2">
+        <span className="flex-none font-mono text-sm" style={{ color: "var(--home-ink-muted)" }}>
+          #{publishedRank}
+        </span>
+        <button
+          type="button"
+          onClick={onOpenDetail}
+          aria-label={`Open ${player.name} detail`}
+          className="-my-1 min-h-touch min-w-0 truncate text-left text-base font-semibold tracking-[-0.02em]"
+        >
+          {player.name}
+        </button>
+        <span className={POSITION_CHIP_CLASS} style={getPositionTone(player.position)}>
+          {player.position}
+        </span>
+        {onLog ? (
+          <button
+            type="button"
+            onClick={onLog}
+            aria-label={logLabel}
+            className="ml-auto inline-flex min-h-touch flex-none items-center justify-center rounded-full border px-3.5 font-mono text-3xs uppercase tracking-[0.06em]"
+            style={{
+              borderColor: "var(--home-ink)",
+              background: "var(--home-ink)",
+              color: "var(--home-paper)",
+            }}
+          >
+            Log
+          </button>
+        ) : null}
+      </div>
+      {detail ? (
+        <p className="m-0 font-mono text-3xs leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
+          {detail}
+        </p>
+      ) : (
+        <p className="m-0 truncate font-mono text-3xs" style={{ color: "var(--home-ink-muted)" }}>
+          {sub}
+        </p>
+      )}
+    </div>
+  );
+}
+
 export function DraftTrackerClient() {
   const isHydrated = useSyncExternalStore(
     subscribeToHydration,
@@ -237,6 +320,10 @@ export function DraftTrackerClient() {
       : null);
 
   const [detailPlayer, setDetailPlayer] = useState<Player | null>(null);
+  // Focus target after a logged pick (the fascia's on-the-clock tile) and the
+  // counter logPick bumps so the post-commit effect knows a pick just landed.
+  const onClockRef = useRef<HTMLDivElement | null>(null);
+  const [loggedPickRequests, setLoggedPickRequests] = useState(0);
   const [showTeamEditor, setShowTeamEditor] = useState(false);
   // The compact strip answers "who now"; the four-position analysis and the
   // full recommendation cards sit behind this toggle so the board stays high.
@@ -619,6 +706,13 @@ export function DraftTrackerClient() {
         .filter(Boolean)
         .join(" · ") || "Top of the published board"
     : "";
+  // The strip cards and the disclosure share one recommendation list, so the
+  // "why" line lands on the card that already shows the player and the recs
+  // for anyone else (the lineup fill, a market value) join the grid when open.
+  const recByPlayerId = new Map(decisionRecs.map((rec) => [rec.player.id, rec]));
+  const extraRecs = decisionRecs.filter(
+    (rec) => rec.player.id !== bestAvailable?.id && rec.player.id !== riskPlayer?.id
+  );
   const riskStripSub = riskDecision
     ? riskDecision.tier.tier !== null
       ? `${riskDecision.position} Tier ${riskDecision.tier.tier} has ${riskDecision.tier.remaining} left`
@@ -713,6 +807,7 @@ export function DraftTrackerClient() {
         recordedAt: new Date().toISOString(),
       });
     }
+    setLoggedPickRequests((count) => count + 1);
     draftPlayer(player);
   }
 
@@ -742,14 +837,22 @@ export function DraftTrackerClient() {
     return name === `Team ${currentTeamNumber}` ? `Slot ${currentTeamNumber}` : name;
   })();
 
+  // Below `sm` the fascia tiles are 118px wide with 94px of content, so each
+  // cell can carry a shorter value and sub line for that width. The pick
+  // counter must never truncate; "#24 / 180" measured 101px there.
   interface FasciaCell {
     key: string;
     label: string;
+    labelCompact?: string;
     value: string;
+    valueCompact?: string;
     sub: string;
+    subCompact?: string;
     valueColor?: string;
     background?: string;
     timer?: boolean;
+    focusTarget?: boolean;
+    phoneHidden?: boolean;
   }
 
   const fasciaCells: FasciaCell[] = [
@@ -757,6 +860,7 @@ export function DraftTrackerClient() {
       key: "pick",
       label: "Pick",
       value: isDraftComplete ? "Done" : `#${draftState.currentPick} / ${totalPicks}`,
+      valueCompact: isDraftComplete ? "Done" : `#${draftState.currentPick}/${totalPicks}`,
       sub: `Round ${draftState.currentRound} of ${draftState.settings.rounds}`,
     },
     {
@@ -766,6 +870,8 @@ export function DraftTrackerClient() {
       sub: previousPick
         ? `Prev · ${shortName(previousPick.player)} #${picksForDisplay.length}`
         : "First overall pick",
+      subCompact: previousPick ? shortName(previousPick.player) : "First pick",
+      focusTarget: true,
       /* Signal on a signal wash measures 4.09:1 in light mode. Mixing the text 72%
          toward ink is the same repair the mock draft fascia already carries. */
       valueColor: isUserPick
@@ -782,6 +888,7 @@ export function DraftTrackerClient() {
             label: "Clock",
             value: isDraftComplete ? "—" : formatClock(Math.max(0, timer.secondsLeft)),
             sub: `advisory · ${draftState.settings.timerSeconds}s per pick`,
+            subCompact: `${draftState.settings.timerSeconds}s advisory`,
             valueColor: clockUrgent
               ? "color-mix(in srgb, var(--home-signal) 72%, var(--home-ink))"
               : isUserPick
@@ -797,6 +904,8 @@ export function DraftTrackerClient() {
     {
       key: "next-turn",
       label: "Your next turn",
+      // "Your next turn" wraps to two lines in a 94px tile and stretches its row.
+      labelCompact: "Next turn",
       value: isDraftComplete
         ? "—"
         : isUserPick
@@ -811,6 +920,13 @@ export function DraftTrackerClient() {
         : nextUserPick
           ? `in ${nextUserPick - draftState.currentPick} picks · slot ${draftState.settings.userTeam}`
           : `slot ${draftState.settings.userTeam}`,
+      subCompact: isUserPick
+        ? nextUserPick
+          ? `then #${nextUserPick}`
+          : "last turn"
+        : nextUserPick
+          ? `in ${nextUserPick - draftState.currentPick} picks`
+          : `slot ${draftState.settings.userTeam}`,
       valueColor: isUserPick ? "var(--home-signal)" : undefined,
     },
     {
@@ -818,8 +934,34 @@ export function DraftTrackerClient() {
       label: "Pool",
       value: draftSnapshot ? `${availableBoardPlayers.length} left` : "—",
       sub: draftSnapshot ? `of ${draftBoardPlayers.length} ranked` : "board loading",
+      // The board controls carry the same count; on a phone the pinned band
+      // is the cost, so the tile leaves the fascia there.
+      phoneHidden: true,
     },
   ];
+  // Phone grid: three columns, with the undo and new-room cell filling out
+  // the last row rather than wrapping its two buttons into a 110px stack.
+  const phoneTileCount = fasciaCells.filter((cell) => !cell.phoneHidden).length;
+  const phoneActionsSpanClass = phoneTileCount % 3 === 1 ? "col-span-2" : "col-span-3";
+
+  // A logged pick unmounts the control that logged it (a board row, a strip
+  // card, or the drawer's opener), so focus would fall to the document. After
+  // the commit, if nothing else claimed focus (the board refocuses its search
+  // when a query was active), move it to the on-the-clock tile, which exists
+  // in every running state. The mock draft carries the same pattern.
+  useEffect(() => {
+    if (loggedPickRequests === 0) return;
+    const active = document.activeElement;
+    // The drawer's "Log this pick" closes the drawer, whose panel stays in the
+    // DOM through its exit animation, so focus inside a modal counts as lost.
+    const focusHeld =
+      active &&
+      active !== document.body &&
+      active.isConnected &&
+      !active.closest('[aria-modal="true"]');
+    if (focusHeld) return;
+    onClockRef.current?.focus({ preventScroll: true });
+  }, [loggedPickRequests]);
 
   // The board's own controls stick underneath the live fascia rather than under
   // the page header, and the fascia wraps to two rows once the shell is narrow,
@@ -921,7 +1063,7 @@ export function DraftTrackerClient() {
           </span>
           <h1
             className="m-0 font-semibold leading-none"
-            style={{ fontSize: "clamp(1.5rem, 3vw, 2.125rem)", letterSpacing: "-0.05em" }}
+            style={{ fontSize: "clamp(1.55rem, 1.3rem + 1.25vw, 2.1rem)", letterSpacing: "-0.05em" }}
           >
             Draft{" "}
             <em style={{ fontFamily: "var(--font-home-serif)", fontStyle: "italic", fontWeight: 500 }}>
@@ -948,11 +1090,13 @@ export function DraftTrackerClient() {
         </div>
       </header>
 
-        {seasonalWeek >= 1 ? (
+      {seasonalWeek >= 1 ? (
+        <div className={`${SHELL_CLASS} pb-4`}>
           <SeasonalScopeNote season={draftMetadata?.season ?? 0} week={seasonalWeek}>
-            This room tracks a draft against the preseason consensus board, and that board stops refreshing once the season is under way, so it is here for next summer rather than for this week. Ranks that still move are on the <Link href="/fantasy-football/weekly" className="underline decoration-[var(--home-signal)] underline-offset-4">weekly board</Link>.
+            This room tracks a draft against the preseason consensus board, and that board stops refreshing once the season is under way, so it is here for next summer. This week&apos;s ranks are on the <Link href="/fantasy-football/weekly" className="underline decoration-[var(--home-signal)] underline-offset-4">weekly board</Link>.
           </SeasonalScopeNote>
-        ) : null}
+        </div>
+      ) : null}
 
       {(persistenceError || rankingsStale || (!rankingsStale && adpSourceStale)) && (
         <div className={`${SHELL_CLASS} grid gap-2.5 pb-3`}>
@@ -1054,9 +1198,8 @@ export function DraftTrackerClient() {
             </p>
             <div className={SHELL_CLASS}>
               <div
-                className="grid gap-px border-x"
+                className="grid grid-cols-3 gap-px border-x sm:grid-cols-[repeat(auto-fit,minmax(min(148px,30vw),1fr))]"
                 style={{
-                  gridTemplateColumns: "repeat(auto-fit, minmax(min(148px, 30vw), 1fr))",
                   background: "var(--home-rule)",
                   borderColor: "var(--home-rule)",
                 }}
@@ -1064,7 +1207,9 @@ export function DraftTrackerClient() {
                 {fasciaCells.map((cell) => (
                   <div
                     key={cell.key}
-                    className="min-w-0 px-3 py-2"
+                    ref={cell.focusTarget ? onClockRef : undefined}
+                    tabIndex={cell.focusTarget ? -1 : undefined}
+                    className={`min-w-0 px-3 py-1.5 sm:py-2 ${cell.phoneHidden ? "hidden sm:block" : ""}`}
                     style={{ background: cell.background ?? "var(--home-paper)" }}
                     {...(cell.timer
                       ? {
@@ -1077,24 +1222,45 @@ export function DraftTrackerClient() {
                       : {})}
                   >
                     <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--home-ink-muted)" }}>
-                      {cell.label}
+                      {cell.labelCompact !== undefined ? (
+                        <>
+                          <span className="sm:hidden">{cell.labelCompact}</span>
+                          <span className="hidden sm:inline">{cell.label}</span>
+                        </>
+                      ) : (
+                        cell.label
+                      )}
                     </p>
                     <p
-                      className="m-0 mt-1 overflow-hidden text-ellipsis whitespace-nowrap font-mono text-lg leading-tight tabular-nums"
+                      className="m-0 mt-1 overflow-hidden text-ellipsis whitespace-nowrap font-mono text-base leading-tight tabular-nums sm:text-lg"
                       style={{ color: cell.valueColor ?? "var(--home-ink)" }}
                     >
-                      {cell.value}
+                      {cell.valueCompact !== undefined && cell.valueCompact !== cell.value ? (
+                        <>
+                          <span className="sm:hidden">{cell.valueCompact}</span>
+                          <span className="hidden sm:inline">{cell.value}</span>
+                        </>
+                      ) : (
+                        cell.value
+                      )}
                     </p>
                     <p
                       className="m-0 mt-0.5 overflow-hidden text-ellipsis whitespace-nowrap font-mono text-3xs"
                       style={{ color: "var(--home-ink-muted)" }}
                     >
-                      {cell.sub}
+                      {cell.subCompact !== undefined && cell.subCompact !== cell.sub ? (
+                        <>
+                          <span className="sm:hidden">{cell.subCompact}</span>
+                          <span className="hidden sm:inline">{cell.sub}</span>
+                        </>
+                      ) : (
+                        cell.sub
+                      )}
                     </p>
                   </div>
                 ))}
                 <div
-                  className="flex min-w-0 flex-wrap content-center items-center gap-1.5 px-3 py-2"
+                  className={`flex min-w-0 flex-wrap content-center items-center gap-1.5 px-3 py-1.5 sm:col-span-1 sm:py-2 ${phoneActionsSpanClass}`}
                   style={{ background: "var(--home-paper)" }}
                 >
                   <button
@@ -1233,115 +1399,69 @@ export function DraftTrackerClient() {
                     type="button"
                     onClick={() => setShowDecisionDetail((open) => !open)}
                     aria-expanded={showDecisionDetail}
-                    aria-controls="draft-decision-detail"
+                    aria-controls="draft-decision-strip draft-decision-detail"
                     className="ml-auto inline-flex min-h-touch items-center gap-1 font-mono text-2xs uppercase tracking-[0.08em]"
                     style={{ color: "var(--home-ink)" }}
                   >
                     Why these picks {showDecisionDetail ? "▴" : "▾"}
                   </button>
                 </div>
+                {/* Opening "Why these picks" adds each card's reasoning line and the
+                    remaining recommendations (the lineup fill, a market value) to
+                    this grid, so one Log button exists per player. The four-position
+                    panel below carries the long-form reading. */}
                 <div
+                  id="draft-decision-strip"
                   className="grid gap-px"
                   style={{
                     gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-                    background: "color-mix(in srgb, var(--home-signal) 20%, var(--home-rule))",
+                    background: "var(--home-paper)",
                   }}
                 >
-                  <div
-                    className="flex min-w-0 flex-col gap-0.5 px-3.5 py-2"
-                    style={{ background: "var(--home-paper)" }}
-                  >
-                    <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-signal)" }}>
-                      Best available
-                    </span>
-                    <div className="flex min-w-0 items-center gap-2">
-                      <span className="flex-none font-mono text-sm" style={{ color: "var(--home-ink-muted)" }}>
-                        #{publishedDraftRank(bestAvailable)}
-                      </span>
-                      <button
-                        type="button"
-                        onClick={() => setDetailPlayer(bestAvailable)}
-                        aria-label={`Open ${bestAvailable.name} detail`}
-                        className="-my-1 min-h-touch min-w-0 truncate text-left text-base font-semibold tracking-[-0.02em]"
-                      >
-                        {bestAvailable.name}
-                      </button>
-                      <span className={POSITION_CHIP_CLASS} style={getPositionTone(bestAvailable.position)}>
-                        {bestAvailable.position}
-                      </span>
-                      <button
-                        type="button"
-                        onClick={() => logPick(bestAvailable)}
-                        aria-label={`Log ${bestAvailable.name} as pick ${draftState.currentPick}`}
-                        className="ml-auto inline-flex min-h-touch flex-none items-center justify-center rounded-full border px-3.5 font-mono text-3xs uppercase tracking-[0.06em]"
-                        style={{
-                          borderColor: "var(--home-ink)",
-                          background: "var(--home-ink)",
-                          color: "var(--home-paper)",
-                        }}
-                      >
-                        Log
-                      </button>
-                    </div>
-                    <p className="m-0 truncate font-mono text-3xs" style={{ color: "var(--home-ink-muted)" }}>
-                      {bestStripSub}
-                    </p>
-                  </div>
+                  <StripPlayerCard
+                    label="Best available"
+                    labelColor="var(--home-signal)"
+                    player={bestAvailable}
+                    publishedRank={publishedDraftRank(bestAvailable)}
+                    sub={bestStripSub}
+                    detail={
+                      showDecisionDetail ? (recByPlayerId.get(bestAvailable.id)?.why ?? null) : null
+                    }
+                    onOpenDetail={() => setDetailPlayer(bestAvailable)}
+                    onLog={() => logPick(bestAvailable)}
+                    logLabel={`Log ${bestAvailable.name} as pick ${draftState.currentPick}`}
+                  />
 
-                  <div
-                    className="flex min-w-0 flex-col gap-0.5 px-3.5 py-2"
-                    style={{ background: "var(--home-paper)" }}
-                  >
-                    <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-warning)" }}>
-                      Most at risk{riskDecision ? ` · ${riskDecision.position}` : ""}
-                    </span>
-                    {riskPlayer ? (
-                      <>
-                        <div className="flex min-w-0 items-center gap-2">
-                          <span className="flex-none font-mono text-sm" style={{ color: "var(--home-ink-muted)" }}>
-                            #{publishedDraftRank(riskPlayer)}
-                          </span>
-                          <button
-                            type="button"
-                            onClick={() => setDetailPlayer(riskPlayer)}
-                            aria-label={`Open ${riskPlayer.name} detail`}
-                            className="-my-1 min-h-touch min-w-0 truncate text-left text-base font-semibold tracking-[-0.02em]"
-                          >
-                            {riskPlayer.name}
-                          </button>
-                          <span className={POSITION_CHIP_CLASS} style={getPositionTone(riskPlayer.position)}>
-                            {riskPlayer.position}
-                          </span>
-                          {riskPlayer.id !== bestAvailable.id ? (
-                            <button
-                              type="button"
-                              onClick={() => logPick(riskPlayer)}
-                              aria-label={`Log ${riskPlayer.name} as pick ${draftState.currentPick}`}
-                              className="ml-auto inline-flex min-h-touch flex-none items-center justify-center rounded-full border px-3.5 font-mono text-3xs uppercase tracking-[0.06em]"
-                              style={{
-                                borderColor: "var(--home-ink)",
-                                background: "var(--home-ink)",
-                                color: "var(--home-paper)",
-                              }}
-                            >
-                              Log
-                            </button>
-                          ) : null}
-                        </div>
-                        <p className="m-0 truncate font-mono text-3xs" style={{ color: "var(--home-ink-muted)" }}>
-                          {riskStripSub}
-                        </p>
-                      </>
-                    ) : (
+                  {riskPlayer ? (
+                    <StripPlayerCard
+                      label={`Most at risk${riskDecision ? ` · ${riskDecision.position}` : ""}`}
+                      labelColor="var(--home-warning)"
+                      player={riskPlayer}
+                      publishedRank={publishedDraftRank(riskPlayer)}
+                      sub={riskStripSub}
+                      detail={
+                        showDecisionDetail && riskPlayer.id !== bestAvailable.id
+                          ? (recByPlayerId.get(riskPlayer.id)?.why ?? null)
+                          : null
+                      }
+                      onOpenDetail={() => setDetailPlayer(riskPlayer)}
+                      onLog={riskPlayer.id !== bestAvailable.id ? () => logPick(riskPlayer) : undefined}
+                      logLabel={`Log ${riskPlayer.name} as pick ${draftState.currentPick}`}
+                    />
+                  ) : (
+                    <div className="flex min-w-0 flex-col gap-0.5 px-3.5 py-2" style={STRIP_CARD_STYLE}>
+                      <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-warning)" }}>
+                        Most at risk
+                      </span>
                       <p className="m-0 text-sm" style={{ color: "var(--home-ink-muted)" }}>
                         {riskStripSub}
                       </p>
-                    )}
-                  </div>
+                    </div>
+                  )}
 
                   <div
                     className="flex min-w-0 flex-col gap-0.5 px-3.5 py-2"
-                    style={{ background: "var(--home-paper)" }}
+                    style={STRIP_CARD_STYLE}
                     title={stripWait.title}
                   >
                     <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
@@ -1354,6 +1474,23 @@ export function DraftTrackerClient() {
                       {stripWait.sub}
                     </p>
                   </div>
+
+                  {showDecisionDetail
+                    ? extraRecs.map((rec) => (
+                        <StripPlayerCard
+                          key={`rec-${rec.tag}-${rec.player.id}`}
+                          label={rec.tag}
+                          labelColor="var(--home-ink-muted)"
+                          player={rec.player}
+                          publishedRank={publishedDraftRank(rec.player)}
+                          sub={rec.why}
+                          detail={rec.why}
+                          onOpenDetail={() => setDetailPlayer(rec.player)}
+                          onLog={() => logPick(rec.player)}
+                          logLabel={`Log ${rec.player.name} as pick ${draftState.currentPick}`}
+                        />
+                      ))
+                    : null}
                 </div>
               </div>
             </section>
@@ -1376,55 +1513,6 @@ export function DraftTrackerClient() {
 
           {!isDraftComplete && redraftDecision.guidanceAvailable && showDecisionDetail ? (
             <div id="draft-decision-detail" className={`${SHELL_CLASS} grid gap-4 pt-3.5`}>
-              {decisionRecs.length > 0 && (
-                <div
-                  className="grid gap-px overflow-hidden rounded-lg border"
-                  style={{
-                    gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))",
-                    borderColor: "var(--home-rule)",
-                    background: "var(--home-rule)",
-                  }}
-                >
-                  {decisionRecs.map((rec) => (
-                    <div
-                      key={`rec-${rec.tag}-${rec.player.id}`}
-                      className="flex flex-col gap-1.5 px-3.5 py-2.5"
-                      style={{ background: "var(--home-paper)" }}
-                    >
-                      <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-signal)" }}>
-                        {rec.tag}
-                      </span>
-                      <div className="flex min-w-0 items-baseline gap-2">
-                        <span className="flex-none font-mono text-sm" style={{ color: "var(--home-ink-muted)" }}>
-                          #{publishedDraftRank(rec.player)}
-                        </span>
-                        <span className="min-w-0 overflow-hidden text-ellipsis whitespace-nowrap text-base font-semibold tracking-[-0.02em]">
-                          {rec.player.name}
-                        </span>
-                        <span className={POSITION_CHIP_CLASS} style={getPositionTone(rec.player.position)}>
-                          {rec.player.position}
-                        </span>
-                      </div>
-                      <p className="m-0 font-mono text-2xs leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
-                        {rec.why}
-                      </p>
-                      <button
-                        type="button"
-                        onClick={() => logPick(rec.player)}
-                        aria-label={`Log ${rec.player.name} as pick ${draftState.currentPick}`}
-                        className="mt-0.5 inline-flex min-h-touch items-center justify-center self-start rounded-full border px-4 font-mono text-2xs uppercase tracking-[0.08em]"
-                        style={{
-                          borderColor: "var(--home-ink)",
-                          background: "var(--home-ink)",
-                          color: "var(--home-paper)",
-                        }}
-                      >
-                        Log pick
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              )}
               <RedraftDecisionPanel
                 report={redraftDecision}
                 onOpenPlayer={setDetailPlayer}

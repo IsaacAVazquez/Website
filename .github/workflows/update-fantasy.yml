@@ -311,6 +311,17 @@ jobs:
             const scheduleTeams = Object.keys(bestBall.week17Opponents || {}).length;
             const now = Date.now();
             const generatedAgeDays = (now - Date.parse(bestBall.generatedAt || '')) / 86400000;
+            // Once the regular season opens the best ball market is closed and the
+            // committed board is a dated, frozen snapshot by design (the builder
+            // keeps it on a failed refresh, see getBestBallRefreshFallback). Age
+            // then reads as a warning, never a failure. Week 1 opens the Wednesday
+            // after Labor Day, the same anchor as getNflRegularSeasonWeek in
+            // src/lib/fantasyUtils.ts.
+            const season = Number(bestBall.season || 0);
+            const septFirst = new Date(Date.UTC(season, 8, 1));
+            const laborDay = Date.UTC(season, 8, 1 + ((8 - septFirst.getUTCDay()) % 7));
+            const seasonOpened = season >= 1920 && now >= laborDay + 2 * 86400000;
+            const ageProblems = [];
             // The builder fail-softs each source to the previous snapshot's asOf.
             // Record the failure here without skipping the other lane's commit,
             // using the same age boundaries the deployed tools enforce.
@@ -319,27 +330,49 @@ jobs:
             const sourceFailLimit = inDraftSeason ? 4 : 14;
             const futureSkewToleranceDays = 5 / 1440;
             const checkSourceAge = (label, ageDays) => {
-              if (!Number.isFinite(ageDays) || ageDays < -futureSkewToleranceDays || ageDays > sourceFailLimit) {
-                failures.push('best-ball ' + label + ' source is invalid, future-dated, or older than ' + sourceFailLimit + ' days');
+              if (!Number.isFinite(ageDays) || ageDays < -futureSkewToleranceDays) {
+                failures.push('best-ball ' + label + ' source is invalid or future-dated');
+              } else if (ageDays > sourceFailLimit) {
+                ageProblems.push('best-ball ' + label + ' source is ' + ageDays.toFixed(1) + ' days old (fail above ' + sourceFailLimit + ' before the season opens)');
               } else if (ageDays > sourceWarnLimit) {
                 console.log('::warning::best-ball ' + label + ' source is ' + ageDays.toFixed(1) + ' days old (warn above ' + sourceWarnLimit + ', fail above ' + sourceFailLimit + ')');
               }
             };
+            // Provider self-consistency, mirroring assertBestBallConsensusConsistency
+            // in src/lib/bestBall/sourceCapabilities.ts: over the top 150 players by
+            // published average rank, rank_ecr must sit within 10 places of the same
+            // row's published expert range for all but a handful. The four-expert
+            // boards of 2026-09-06 and 2026-09-09 cleared the expert floor with 33
+            // and 39 offenders, so the floor alone is not a quality gate.
+            const players = Array.isArray(bestBall.players) ? bestBall.players : [];
+            const finite = (value) => typeof value === 'number' && Number.isFinite(value);
+            const divergent = players
+              .filter((player) => finite(player.rankAverage))
+              .sort((left, right) => left.rankAverage - right.rankAverage || (left.rankEcr || 0) - (right.rankEcr || 0))
+              .slice(0, 150)
+              .filter((player) => finite(player.rankEcr) && finite(player.minRank) && finite(player.maxRank)
+                && (player.rankEcr < player.minRank - 10 || player.rankEcr > player.maxRank + 10));
             const rankingAgeDays = (now - Date.parse(bestBall.rankingSource?.asOf || '')) / 86400000;
             const adpAgeDays = (now - Date.parse(bestBall.adpSource?.asOf || '')) / 86400000;
             const superflexAgeDays = (now - Date.parse(bestBall.superflexSource?.asOf || '')) / 86400000;
             const scheduleAgeDays = (now - Date.parse(bestBall.scheduleSource?.asOf || '')) / 86400000;
-            console.log('best-ball: players=' + playerCount + ' experts=' + rankingExperts + ' superflex=' + superflexMatches + ' adp=' + adpMatches + ' week17=' + scheduleTeams + ' built=' + generatedAgeDays.toFixed(1) + 'd');
+            console.log('best-ball: players=' + playerCount + ' experts=' + rankingExperts + ' divergent=' + divergent.length + ' superflex=' + superflexMatches + ' adp=' + adpMatches + ' week17=' + scheduleTeams + ' built=' + generatedAgeDays.toFixed(1) + 'd' + (seasonOpened ? ' (season open, board frozen)' : ''));
             if (playerCount < 250) failures.push('best-ball has ' + playerCount + ' players (need >= 250)');
             if (rankingExperts < 4) failures.push('best-ball has ' + rankingExperts + ' ranking experts (need >= 4)');
+            if (divergent.length > 5) failures.push('best-ball consensus disagrees with its own expert ranges on ' + divergent.length + ' of its top 150 players (allow <= 5): ' + divergent.slice(0, 5).map((player) => player.name + ' ECR ' + player.rankEcr + ' vs ' + player.minRank + '-' + player.maxRank).join(', '));
             if (superflexMatches < 150) failures.push('best-ball has ' + superflexMatches + ' Superflex matches (need >= 150)');
             if (adpMatches < 150) failures.push('best-ball has ' + adpMatches + ' ADP matches (need >= 150)');
             if (scheduleTeams < 30) failures.push('best-ball has ' + scheduleTeams + ' Week 17 team mappings (need >= 30)');
-            if (!Number.isFinite(generatedAgeDays) || generatedAgeDays > 10) failures.push('best-ball snapshot is older than 10 days');
+            if (!Number.isFinite(generatedAgeDays)) failures.push('best-ball snapshot has no valid generatedAt');
+            else if (generatedAgeDays > 10) ageProblems.push('best-ball snapshot was built ' + generatedAgeDays.toFixed(1) + ' days ago (fail above 10 before the season opens)');
             checkSourceAge('rankings', rankingAgeDays);
             checkSourceAge('ADP', adpAgeDays);
             checkSourceAge('Superflex', superflexAgeDays);
             checkSourceAge('schedule', scheduleAgeDays);
+            for (const problem of ageProblems) {
+              if (seasonOpened) console.log('::warning::' + problem + '; the season has opened and the board is frozen at its dated sources');
+              else failures.push(problem);
+            }
             if (!String(bestBall.scheduleSource?.url || '').includes('dates=' + bestBall.season)) failures.push('best-ball Week 17 schedule does not match snapshot season');
           } catch (err) {
             failures.push('best-ball failed to parse: ' + err.message);

@@ -97,7 +97,120 @@ describe("MockDraftClient", () => {
     render(<MockDraftClient />);
 
     expect(screen.getByRole("button", { name: "Start mock" })).toBeDisabled();
-    expect(screen.getByText(/simulated picks are paused/i)).toBeVisible();
+    const status = screen.getByText(/simulated picks are paused/i);
+    expect(status).toBeVisible();
+    // The pause names the board's own date and promises no refresh, since the
+    // refresh runs upstream on its own schedule.
+    expect(status).toHaveTextContent("The published board is dated Jan 1, 2020");
+    expect(status).not.toHaveTextContent(/refresh/i);
+  });
+
+  describe("in season", () => {
+    const BOARD_STAMP = "2026-09-10T00:19:11.000Z";
+    const ADP_STAMP = "2026-09-10T00:00:00.000Z";
+
+    function mockInSeasonSnapshot() {
+      const snapshotResult = mockUseFantasySnapshot();
+      mockUseFantasySnapshot.mockReturnValue({
+        ...snapshotResult,
+        snapshot: {
+          ...snapshotResult.snapshot,
+          sliceMetadata: { overall: { available: true, updatedAt: BOARD_STAMP } },
+        },
+        metadata: {
+          season: 2026,
+          upstreamUpdatedAt: BOARD_STAMP,
+          adpSource: { asOf: ADP_STAMP },
+        },
+      });
+    }
+
+    afterEach(() => {
+      jest.useRealTimers();
+    });
+
+    it("dates the board and ADP in the scope note and says when the room pauses", () => {
+      jest.useFakeTimers().setSystemTime(new Date("2026-09-11T12:00:00.000Z"));
+      mockInSeasonSnapshot();
+
+      render(<MockDraftClient />);
+
+      const note = screen.getByRole("note");
+      expect(note).toHaveTextContent("Week 1 of the 2026 season.");
+      expect(note).toHaveTextContent(
+        "the room pauses simulated picks if the published board goes stale"
+      );
+      expect(note).toHaveTextContent("Board dated Sep 10, 2026 · ADP dated Sep 10, 2026");
+      expect(note).not.toHaveTextContent(/stops refreshing/i);
+      expect(note).toHaveClass("rounded-[var(--radius-3xl)]");
+      // Wrapped in the page shell like the rankings board's note.
+      expect(note.parentElement?.className).toContain("max-w-[1080px]");
+      expect(screen.getByText("Board Current · Sep 10, 2026")).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: "Start mock" })).toBeEnabled();
+    });
+
+    it("pauses the room four days past the board stamp without promising a refresh", () => {
+      jest.useFakeTimers().setSystemTime(new Date("2026-09-15T12:00:00.000Z"));
+      mockInSeasonSnapshot();
+
+      render(<MockDraftClient />);
+
+      expect(screen.getByText("Board Stale · Sep 10, 2026")).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: "Start mock" })).toBeDisabled();
+      expect(
+        screen.getByText(
+          "The published board is dated Sep 10, 2026, which is past its freshness window, so simulated picks are paused."
+        )
+      ).toBeVisible();
+      expect(screen.getByRole("note")).toHaveTextContent(
+        "the room pauses simulated picks if the published board goes stale"
+      );
+      expect(screen.queryByText(/until the published board refreshes/i)).not.toBeInTheDocument();
+    });
+  });
+
+  it("moves focus to the on-the-clock panel and announces the opening turn on start", () => {
+    render(<MockDraftClient />);
+    startMock();
+
+    const panel = screen.getByRole("region", { name: "You are on the clock" });
+    expect(document.activeElement).toBe(panel);
+    expect(screen.getByRole("status")).toHaveTextContent(
+      /^Room #\d{3} open\. You are on the clock at pick #5, round 1 of 5\. 4 room picks before your first turn\.$/
+    );
+  });
+
+  it("labels every board value for assistive tech and the phone layout", () => {
+    render(<MockDraftClient />);
+    startMock();
+
+    const firstRow = screen.getAllByRole("listitem")[0];
+    const srLabels = Array.from(firstRow.querySelectorAll(".sr-only")).map(
+      (node) => node.textContent
+    );
+    expect(srLabels).toEqual(["ADP", "versus ADP at pick 5"]);
+    const microLabels = Array.from(firstRow.querySelectorAll('[aria-hidden="true"].md\\:hidden')).map(
+      (node) => node.textContent?.trim()
+    );
+    expect(microLabels).toEqual(["ADP", "At #5"]);
+  });
+
+  it("keeps the strip's actions in their own row with no painted grid", () => {
+    render(<MockDraftClient />);
+    startMock();
+
+    const strip = screen.getByRole("region", { name: "Live mock draft status" });
+    const readouts = strip.querySelector("dl");
+    expect(readouts).not.toBeNull();
+    expect(readouts?.querySelectorAll("dt")).toHaveLength(4);
+    expect(readouts?.style.background).toBe("");
+    const takeBack = screen.getByRole("button", { name: "Take back (no picks yet)" });
+    expect(readouts?.contains(takeBack)).toBe(false);
+    const compactLine = strip.querySelector("p.md\\:hidden");
+    expect(compactLine).toHaveTextContent("Pick #5/50 · round 1/5");
+    expect(compactLine).toHaveTextContent("On the clock You · slot 5/10");
+    expect(compactLine).toHaveTextContent("4 room picks before you");
+    expect(compactLine?.querySelector(".sr-only")).toHaveTextContent("On the clock");
   });
 
   it("puts the user on the clock at their slot after starting", () => {
@@ -130,6 +243,29 @@ describe("MockDraftClient", () => {
 
     fireEvent.click(screen.getByRole("button", { name: "Take back your last pick" }));
     expect(screen.getByText("#5 / 50")).toBeInTheDocument();
+    // Undoing the only pick disables the button that took the click, so the
+    // panel takes focus and the status describes the restored turn.
+    expect(document.activeElement).toBe(
+      screen.getByRole("region", { name: "You are on the clock" })
+    );
+    expect(screen.getByRole("status")).toHaveTextContent(
+      "Your last pick is taken back. You are on the clock again at pick #5, round 1 of 5."
+    );
+  });
+
+  it("names the pick that is still yours when a later pick is taken back", () => {
+    render(<MockDraftClient />);
+    startMock();
+    fireEvent.click(screen.getAllByRole("button", { name: /^Draft / })[0]);
+    fireEvent.click(screen.getAllByRole("button", { name: /^Draft / })[0]);
+    expect(screen.getByText("#25 / 50")).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("button", { name: "Take back your last pick" }));
+
+    expect(screen.getByText("#16 / 50")).toBeInTheDocument();
+    expect(screen.getByRole("status")).toHaveTextContent(
+      /^Your last pick is taken back\. You are on the clock again at pick #16, round 2 of 5\. Player \d+ at pick #5 is still yours\.$/
+    );
   });
 
   it("sims to the end and lands on the recap with the board grid", () => {
@@ -142,6 +278,27 @@ describe("MockDraftClient", () => {
     expect(screen.getByText("Draft grade")).toBeInTheDocument();
     expect(screen.getByText("Your haul")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /Run it back/ })).toBeEnabled();
+    // The live room unmounts under the click, so the value report takes focus.
+    expect(document.activeElement).toBe(screen.getByRole("region", { name: "Value report" }));
+    expect(screen.getByRole("status")).toHaveTextContent(
+      "The room is finished. The value report and the board are below."
+    );
+  });
+
+  it("opens a fresh room on run it back with focus on the clock and a status", () => {
+    render(<MockDraftClient />);
+    startMock();
+    fireEvent.click(screen.getByRole("button", { name: /Sim to end/ }));
+
+    fireEvent.click(screen.getByRole("button", { name: /Run it back/ }));
+
+    expect(screen.getByText("#5 / 50")).toBeInTheDocument();
+    expect(document.activeElement).toBe(
+      screen.getByRole("region", { name: "You are on the clock" })
+    );
+    expect(screen.getByRole("status")).toHaveTextContent(
+      /^Fresh room #\d{3} open with the same settings\. You are on the clock at pick #5, round 1 of 5\. 4 room picks before your first turn\.$/
+    );
   });
 
   it("parks a live room behind the setup screen and resumes it", () => {

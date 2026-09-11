@@ -18,7 +18,6 @@ import {
   formatAdp,
   formatPickDelta,
   formatRankValue,
-  formatUpdatedAt,
   getConsensusAvg,
   getFantasyAdpFreshness,
   getNflRegularSeasonWeek,
@@ -59,6 +58,34 @@ const WARNING_CHIP_TONE: CSSProperties = {
   borderColor: "color-mix(in srgb, var(--home-warning) 32%, var(--home-rule))",
   color: "var(--home-ink)",
 };
+
+/**
+ * Below `md` the column-label row is hidden, so each board value carries its
+ * own label. The sr-only cell label next to it keeps the value named exactly
+ * once for assistive tech at every width. Same contract as the draft tracker.
+ */
+const ROW_MICRO_LABEL_CLASS =
+  "font-mono text-3xs uppercase tracking-[0.06em] text-[var(--home-ink-muted)] md:hidden";
+
+/**
+ * Date-only stamp pinned to UTC, so the board and ADP dates in the header chip
+ * and the scope note match the upstream's own date in every zone instead of
+ * drifting a day for viewers west of UTC.
+ */
+function formatStampDate(timestamp: string | null | undefined): string {
+  if (!timestamp) return "undated";
+  const parsed = new Date(timestamp);
+  if (Number.isNaN(parsed.getTime())) return "undated";
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(parsed);
+}
+
+/** Which control opened or restored the current turn, for the live region. */
+type RoomTransition = "open" | "rerun" | "undo" | null;
 
 const SCORING_OPTIONS: { value: ScoringFormat; label: string }[] = [
   { value: "PPR", label: "PPR" },
@@ -237,6 +264,14 @@ export function MockDraftClient() {
   // Every pick unmounts the row or quick pick that took the click, so focus has
   // somewhere stable to land: the panel that owns the next turn.
   const onClockRef = useRef<HTMLElement>(null);
+  // Sim to end unmounts the whole live room, so the recap's value report is
+  // the panel that takes focus there.
+  const valueReportRef = useRef<HTMLElement>(null);
+  // Start mock, Run it back and Sim to end all remove the control that took
+  // the click, and the panel that should hold focus next mounts on the
+  // following render, so the move waits for that render (see the effect below).
+  const pendingFocusRef = useRef<"clock" | "recap" | null>(null);
+  const [transition, setTransition] = useState<RoomTransition>(null);
 
   // A persisted room decides which scoring board to fetch, so a saved
   // Standard room resumes onto Standard ranks after a reload. The hook
@@ -306,6 +341,18 @@ export function MockDraftClient() {
   const showSetup = state.status === "setup" || roomSetupOpen;
   const isLive = !showSetup && state.status === "on-clock";
   const isRecap = !showSetup && state.status === "complete";
+
+  useEffect(() => {
+    const pending = pendingFocusRef.current;
+    if (!pending) return;
+    if (pending === "clock" && isLive && onClockRef.current) {
+      pendingFocusRef.current = null;
+      onClockRef.current.focus();
+    } else if (pending === "recap" && isRecap && valueReportRef.current) {
+      pendingFocusRef.current = null;
+      valueReportRef.current.focus();
+    }
+  }, [currentPick, isLive, isRecap]);
 
   const userPicks = useMemo(
     () => state.picks.filter((pick) => pick.teamNumber === settings.userTeam),
@@ -547,11 +594,34 @@ export function MockDraftClient() {
     setRoomSetupOpen(false);
     setSearchQuery("");
     setPositionFilter("ALL");
+    setTransition("open");
+    pendingFocusRef.current = "clock";
+  };
+
+  const rerunRoom = () => {
+    room.startDraft(settings);
+    setTransition("rerun");
+    pendingFocusRef.current = "clock";
+  };
+
+  const takeBackPick = () => {
+    if (!room.undoUserPick()) return;
+    // Undoing the only pick disables the button that took the click, which
+    // drops focus to the document, so the on-the-clock panel takes it.
+    setTransition("undo");
+    pendingFocusRef.current = "clock";
+  };
+
+  const finishRoom = () => {
+    room.simToEnd();
+    setTransition(null);
+    pendingFocusRef.current = "recap";
   };
 
   const draftPlayer = (player: Player) => {
     if (!room.makeUserPick(player)) return;
     setSearchQuery("");
+    setTransition(null);
     // The clicked control leaves the DOM with the pick, so move focus to the
     // on-the-clock panel rather than letting it fall back to the document.
     onClockRef.current?.focus();
@@ -579,7 +649,7 @@ export function MockDraftClient() {
     ...(boardReady
       ? [
           {
-            label: `Board ${getSnapshotStalenessLabel(boardStaleness)} · ${formatUpdatedAt(boardUpdatedAt)}`,
+            label: `Board ${getSnapshotStalenessLabel(boardStaleness)} · ${formatStampDate(boardUpdatedAt)}`,
             tone: boardStaleness === "stale" ? WARNING_CHIP_TONE : undefined,
           },
         ]
@@ -596,31 +666,52 @@ export function MockDraftClient() {
     : !boardReady
       ? "The published snapshot did not include any players."
       : !simulationAvailable
-        ? "The ranking source is stale, so simulated picks are paused until the published board refreshes."
+        ? boardUpdatedAt
+          ? `The published board is dated ${formatStampDate(boardUpdatedAt)}, which is past its freshness window, so simulated picks are paused.`
+          : "The published board carries no date, so simulated picks are paused."
       : null;
 
   // Four different conditions gate simulationAvailable, so a paused room names
   // the one that actually applies (boardStatusLine above) and then the recovery
   // that is actually available. Refetching only helps when a request is not
-  // already in flight and the board itself is the problem.
+  // already in flight and the board itself is the problem. A stale board has
+  // no recovery this page can promise, since the refresh runs upstream on its
+  // own schedule, so the copy says what would resume the room and no more.
   const boardReloadable = !boardReady && (Boolean(error) || (!isLoading && snapshotMatches));
   const pauseRecovery = !boardReady
     ? boardReloadable
       ? "Your picks stay saved, and simulated picks resume once the board loads."
       : "Your picks stay saved, and simulated picks resume once the board arrives."
-    : "Your picks stay saved, and nothing here is lost while you wait.";
+    : "Your picks stay saved, and the room resumes only if a newer board publishes.";
+  const rerunRecovery = !boardReady
+    ? "Run it back turns back on once the published board loads, and this recap stays exactly as it is."
+    : "Run it back turns back on only if a newer board publishes, and this recap stays exactly as it is.";
 
   // The pick loop re-renders the board and the quick picks with no other signal
   // that a pick landed, so a screen reader gets the outcome and the next turn.
+  // Start mock, Run it back and Take back each get a sentence too, since all
+  // three remove or disable the control that took the click.
   const lastUserPick = userPicks.length > 0 ? userPicks[userPicks.length - 1] : null;
   const draftAnnouncement = useMemo(() => {
     if (showSetup) return "";
     if (isRecap) return "The room is finished. The value report and the board are below.";
-    if (!lastUserPick) return "";
     const roomPicks = picksSinceUserTurn.length;
-    return `You drafted ${lastUserPick.player.name} at pick #${lastUserPick.pickNumber}. ${roomPicks} room pick${
-      roomPicks === 1 ? "" : "s"
-    } since. You are on the clock at pick #${currentPick}, round ${currentRound} of ${settings.rounds}.`;
+    const roomPickPhrase = `${roomPicks} room pick${roomPicks === 1 ? "" : "s"}`;
+    const turn = `at pick #${currentPick}, round ${currentRound} of ${settings.rounds}.`;
+    if (transition === "undo") {
+      const kept = lastUserPick
+        ? ` ${lastUserPick.player.name} at pick #${lastUserPick.pickNumber} is still yours.`
+        : "";
+      return `Your last pick is taken back. You are on the clock again ${turn}${kept}`;
+    }
+    if (!lastUserPick) {
+      const opener =
+        transition === "rerun"
+          ? `Fresh room #${roomLabel(state.seed)} open with the same settings.`
+          : `Room #${roomLabel(state.seed)} open.`;
+      return `${opener} You are on the clock ${turn} ${roomPickPhrase} before your first turn.`;
+    }
+    return `You drafted ${lastUserPick.player.name} at pick #${lastUserPick.pickNumber}. ${roomPickPhrase} since. You are on the clock ${turn}`;
   }, [
     currentPick,
     currentRound,
@@ -629,6 +720,8 @@ export function MockDraftClient() {
     picksSinceUserTurn.length,
     settings.rounds,
     showSetup,
+    state.seed,
+    transition,
   ]);
 
   const footerLinks = (
@@ -647,22 +740,30 @@ export function MockDraftClient() {
     label: string;
     value: string;
     sub: string;
+    /** The same readout as one phrase for the single-line strip below md. */
+    compact: string;
+    /** Read before `compact` by assistive tech when the phrase needs its label. */
+    compactPrefix?: string;
     valueColor?: string;
     background?: string;
   }
 
+  const roomPickCount = `${picksSinceUserTurn.length} room pick${picksSinceUserTurn.length === 1 ? "" : "s"}`;
   const fasciaCells: FasciaCell[] = [
     {
       key: "pick",
       label: "Pick",
       value: `#${currentPick} / ${totalPicks}`,
       sub: `Round ${currentRound} of ${settings.rounds}`,
+      compact: `Pick #${currentPick}/${totalPicks} · round ${currentRound}/${settings.rounds}`,
     },
     {
       key: "clock",
       label: "On the clock",
       value: "You",
       sub: `slot ${settings.userTeam} of ${settings.totalTeams} · ${settings.draftType}`,
+      compact: `You · slot ${settings.userTeam}/${settings.totalTeams}`,
+      compactPrefix: "On the clock",
       // Signal mixed toward ink clears 4.5:1 on the signal wash in both themes.
       valueColor: "color-mix(in srgb, var(--home-signal) 72%, var(--home-ink))",
       background: "color-mix(in srgb, var(--home-signal) 8%, var(--home-paper))",
@@ -670,14 +771,16 @@ export function MockDraftClient() {
     {
       key: "between",
       label: "Between turns",
-      value: `${picksSinceUserTurn.length} room pick${picksSinceUserTurn.length === 1 ? "" : "s"}`,
-      sub: hasUserPick ? "since your last · tape below" : "before your first turn",
+      value: `${picksSinceUserTurn.length} pick${picksSinceUserTurn.length === 1 ? "" : "s"}`,
+      sub: hasUserPick ? "since your last pick" : "before your first turn",
+      compact: `${roomPickCount} ${hasUserPick ? "since yours" : "before you"}`,
     },
     {
       key: "pool",
       label: "Pool",
       value: `${availablePlayers.length} left`,
       sub: `of ${board.length} ranked`,
+      compact: `${availablePlayers.length} of ${board.length} left`,
     },
   ];
 
@@ -685,6 +788,10 @@ export function MockDraftClient() {
   // rehearsing a market that no longer exists. Name the season rather than letting
   // it read as current.
   const seasonalWeek = getNflRegularSeasonWeek(metadata?.season ?? 0);
+  const adpStampLabel =
+    snapshotMatches && metadata?.adpSource
+      ? `ADP dated ${formatStampDate(metadata.adpSource.asOf)}`
+      : "ADP unavailable";
 
   return (
     <section
@@ -709,7 +816,7 @@ export function MockDraftClient() {
           </span>
           <h1
             className="m-0 font-semibold leading-none"
-            style={{ fontSize: "clamp(1.5rem, 3vw, 2.125rem)", letterSpacing: "-0.05em" }}
+            style={{ fontSize: "clamp(1.55rem, 1.3rem + 1.25vw, 2.1rem)", letterSpacing: "-0.05em" }}
           >
             Mock{" "}
             <em style={{ fontFamily: "var(--font-home-serif)", fontStyle: "italic", fontWeight: 500 }}>
@@ -740,14 +847,22 @@ export function MockDraftClient() {
         {draftAnnouncement}
       </p>
 
-        {seasonalWeek >= 1 ? (
+      {seasonalWeek >= 1 ? (
+        <div className={`${SHELL_CLASS} pb-4`}>
           <SeasonalScopeNote season={metadata?.season ?? 0} week={seasonalWeek}>
-            The room drafts off the preseason consensus board, which stops refreshing once real
-            games start, so rehearsing a draft here in November rehearses August. I have left it
-            running rather than hiding it, because the practice is still practice. Ranks that
-            still move are on the <Link href="/fantasy-football/weekly" className="underline decoration-[var(--home-signal)] underline-offset-4">weekly board</Link>.
+            The room drafts off the published preseason consensus board and the mock-draft ADP
+            that goes with it, so rehearsing a draft here in November rehearses August. I left it
+            running because the practice is still practice, and the room pauses simulated picks
+            if the published board goes stale. Ranks that still move are on the{" "}
+            <Link href="/fantasy-football/weekly" className="underline decoration-[var(--home-signal)] underline-offset-4">weekly board</Link>.
+            <span className="mt-1.5 block font-mono text-2xs uppercase tracking-[0.08em]">
+              {boardReady
+                ? `Board dated ${formatStampDate(boardUpdatedAt)} · ${adpStampLabel}`
+                : "Board and ADP dates arrive with the board"}
+            </span>
           </SeasonalScopeNote>
-        ) : null}
+        </div>
+      ) : null}
 
       {showSetup && (
         <div className="mx-auto w-full max-w-[780px] px-[clamp(1rem,4vw,2.5rem)] pb-12 pt-1">
@@ -1016,44 +1131,77 @@ export function MockDraftClient() {
             }}
           >
             <div className={SHELL_CLASS}>
+              {/*
+                The readouts and the actions used to share one auto-fit grid, so
+                the row stretched to the stacked pills (160px) at every width and
+                the grid's painted background showed through empty tracks once
+                the cells wrapped. Now the readouts are their own row of cells
+                with hairlines between them, the actions sit beside them from lg
+                and under them below that, and below md the four readouts
+                collapse to one wrapping mono line so nothing truncates.
+              */}
               <div
-                className="grid gap-px border-x"
-                style={{
-                  gridTemplateColumns: "repeat(auto-fit, minmax(min(148px, 30vw), 1fr))",
-                  background: "var(--home-rule)",
-                  borderColor: "var(--home-rule)",
-                }}
+                className="border-x lg:flex lg:items-stretch"
+                style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)" }}
               >
-                {fasciaCells.map((cell) => (
-                  <div
-                    key={cell.key}
-                    className="min-w-0 px-3 py-2"
-                    style={{ background: cell.background ?? "var(--home-paper)" }}
-                  >
-                    <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--home-ink-muted)" }}>
-                      {cell.label}
-                    </p>
-                    <p
-                      className="m-0 mt-1 overflow-hidden text-ellipsis whitespace-nowrap font-mono text-lg leading-tight tabular-nums"
+                <dl
+                  className="m-0 hidden min-w-0 md:grid lg:flex-1"
+                  style={{ gridTemplateColumns: `repeat(${fasciaCells.length}, minmax(0, 1fr))` }}
+                >
+                  {fasciaCells.map((cell, index) => (
+                    <div
+                      key={cell.key}
+                      className={`min-w-0 px-3 py-2 ${index > 0 ? "border-l" : ""}`}
+                      style={{
+                        background: cell.background ?? "var(--home-paper)",
+                        borderColor: "var(--home-rule)",
+                      }}
+                    >
+                      <dt className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--home-ink-muted)" }}>
+                        {cell.label}
+                      </dt>
+                      <dd
+                        className="m-0 mt-1 font-mono text-lg leading-tight tabular-nums"
+                        style={{ color: cell.valueColor ?? "var(--home-ink)" }}
+                      >
+                        {cell.value}
+                      </dd>
+                      <dd
+                        className="m-0 mt-0.5 font-mono text-3xs leading-snug"
+                        style={{ color: "var(--home-ink-muted)" }}
+                      >
+                        {cell.sub}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+                <p
+                  className="m-0 flex flex-wrap items-baseline gap-x-2.5 gap-y-0.5 px-3 py-2 font-mono text-xs tabular-nums md:hidden"
+                  style={{ color: "var(--home-ink)" }}
+                >
+                  {fasciaCells.map((cell, index) => (
+                    <span
+                      key={cell.key}
+                      className="whitespace-nowrap"
                       style={{ color: cell.valueColor ?? "var(--home-ink)" }}
                     >
-                      {cell.value}
-                    </p>
-                    <p
-                      className="m-0 mt-0.5 overflow-hidden text-ellipsis whitespace-nowrap font-mono text-3xs"
-                      style={{ color: "var(--home-ink-muted)" }}
-                    >
-                      {cell.sub}
-                    </p>
-                  </div>
-                ))}
+                      {index > 0 && (
+                        <span aria-hidden="true" style={{ color: "var(--home-ink-muted)" }}>
+                          ·{" "}
+                        </span>
+                      )}
+                      {cell.compactPrefix && <span className="sr-only">{cell.compactPrefix} </span>}
+                      {cell.compact}
+                    </span>
+                  ))}
+                </p>
                 <div
-                  className="flex min-w-0 flex-wrap content-center items-center gap-1.5 px-3 py-2"
-                  style={{ background: "var(--home-paper)" }}
+                  className="flex flex-wrap items-center gap-1.5 border-t px-3 py-1.5 lg:flex-none lg:border-l lg:border-t-0"
+                  style={{ borderColor: "var(--home-rule)" }}
                 >
                   <button
                     type="button"
-                    onClick={() => room.undoUserPick()}
+                    onClick={takeBackPick}
                     disabled={!hasUserPick}
                     aria-label={hasUserPick ? "Take back your last pick" : "Take back (no picks yet)"}
                     className={PILL_BUTTON_CLASS}
@@ -1068,7 +1216,7 @@ export function MockDraftClient() {
                   */}
                   <button
                     type="button"
-                    onClick={() => room.simToEnd()}
+                    onClick={finishRoom}
                     disabled={!simulationAvailable}
                     aria-label="Sim to end, which finishes the room with no take back"
                     title="The engine finishes every remaining pick, including yours, and the room goes straight to the recap. Nothing takes that back."
@@ -1188,11 +1336,15 @@ export function MockDraftClient() {
             )}
           </section>
 
+          {/*
+            scroll-mt keeps the panel clear of the site header and the sticky
+            strip above it when focus() scrolls it into view.
+          */}
           <section
             ref={onClockRef}
             tabIndex={-1}
             aria-label="You are on the clock"
-            className={`${SHELL_CLASS} mt-3.5`}
+            className={`${SHELL_CLASS} mt-3.5 scroll-mt-60`}
           >
             <div
               className="overflow-hidden rounded-lg border"
@@ -1288,10 +1440,15 @@ export function MockDraftClient() {
               </span>
             </div>
 
+            {/*
+              Column labels for md and up, where the values sit in fixed-width
+              columns under them. Below md the rows wrap and each value carries
+              its own micro label instead, so the row stays hidden there.
+            */}
             {windowedPlayers.length > 0 && adpAvailable && (
               <div
                 aria-hidden="true"
-                className={`flex items-center gap-x-3.5 px-3.5 pb-1.5 ${MONO_LABEL_CLASS}`}
+                className={`hidden items-center gap-x-3.5 px-3.5 pb-1.5 md:flex ${MONO_LABEL_CLASS}`}
                 style={{ color: "var(--home-ink-muted)" }}
               >
                 <span className="w-[34px]" />
@@ -1413,18 +1570,26 @@ export function MockDraftClient() {
                             <div className="flex flex-none items-center gap-x-3.5">
                               {adpAvailable && (
                                 <>
+                                  <span className="sr-only">ADP</span>
                                   <span
-                                    className="w-11 text-right font-mono text-xs"
+                                    className="w-auto text-right font-mono text-xs md:w-11"
                                     style={{ color: "var(--home-ink-muted)" }}
                                     title="Average draft position in mock rooms"
                                   >
+                                    <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
+                                      ADP{" "}
+                                    </span>
                                     {formatAdp(player.adp)}
                                   </span>
+                                  <span className="sr-only">versus ADP at pick {currentPick}</span>
                                   <span
-                                    className="w-14 text-right font-mono text-xs"
+                                    className="w-auto text-right font-mono text-xs md:w-14"
                                     style={{ color: delta?.color ?? "var(--home-ink-muted)" }}
                                     title={delta?.title ?? "No reliable market sample for this player"}
                                   >
+                                    <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
+                                      At #{currentPick}{" "}
+                                    </span>
                                     {delta?.text ?? "—"}
                                   </span>
                                 </>
@@ -1494,6 +1659,8 @@ export function MockDraftClient() {
       {isRecap && (
         <div className={`${SHELL_CLASS} pb-11 pt-1`}>
           <section
+            ref={valueReportRef}
+            tabIndex={-1}
             aria-label="Value report"
             className="mt-2.5 flex flex-wrap overflow-hidden rounded-lg border"
             style={{ borderColor: "var(--home-rule)", background: "var(--home-paper-raised)" }}
@@ -1778,8 +1945,7 @@ export function MockDraftClient() {
               className="m-0 mt-4 rounded border px-3.5 py-2.5 text-sm leading-6"
               style={WARNING_CARD_STYLE}
             >
-              {boardStatusLine} Run it back turns back on once the published board is ready, and
-              this recap stays exactly as it is.
+              {boardStatusLine} {rerunRecovery}
               {boardReloadable && (
                 <button
                   type="button"
@@ -1795,7 +1961,7 @@ export function MockDraftClient() {
           <div className="mt-4 flex flex-wrap items-center gap-2.5">
             <button
               type="button"
-              onClick={() => room.startDraft(settings)}
+              onClick={rerunRoom}
               disabled={!simulationAvailable}
               aria-describedby={simulationAvailable ? undefined : "mock-rerun-blocked"}
               className={SOLID_BUTTON_CLASS}
@@ -1821,7 +1987,7 @@ export function MockDraftClient() {
             style={{ borderColor: "var(--home-rule)" }}
           >
             <span className="font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
-              Practice reps, not predictions · rooms stay on this device
+              Practice reps only, with no prediction in them · rooms stay on this device
             </span>
             {footerLinks}
           </div>
