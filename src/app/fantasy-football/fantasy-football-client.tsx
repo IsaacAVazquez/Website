@@ -61,13 +61,20 @@ import {
 import {
   FANTASY_VORP_TEAM_SIZES,
   buildFantasyVorpIndex,
+  isFantasyVorpTeamSize,
   sortPlayersByVorpRank,
+  type FantasyVorpRankingEntry,
   type FantasyVorpTeamSize,
 } from "@/lib/fantasyVorp";
 import { PositionFilterBar, type PositionFilterOption } from "@/components/fantasy/PositionFilterBar";
 import { Player } from "@/types";
 import { FANTASY_FOOTBALL_FAQ } from "./fantasy-faq";
-import { buildFantasyHref, FantasySearchState, normalizeFantasyState } from "./fantasy-state";
+import {
+  buildFantasyHref,
+  FantasySearchState,
+  normalizeFantasyState,
+  type FantasyRankingMode,
+} from "./fantasy-state";
 
 const POSITION_OPTIONS: FantasyRoutePosition[] = ["overall", "qb", "rb", "wr", "te", "flex", "k", "dst"];
 const SCORING_OPTIONS: { key: FantasyRouteScoring; label: string; shortLabel: string }[] = [
@@ -79,10 +86,24 @@ const SCORING_OPTIONS: { key: FantasyRouteScoring; label: string; shortLabel: st
 /** Keep each mounted rankings window below the large-list threshold. */
 const RANKINGS_PAGE_SIZE = FANTASY_RANKINGS_PAGE_SIZE;
 
+/**
+ * Small signal text on the plates. Bare `--home-signal` on `--home-paper-raised`
+ * measures 4.61:1 in light mode at rest and 4.41:1 once the paper-alt hover
+ * tint composites over it, so the 14px VORP value and the 16px queued rank
+ * digit both fail AA exactly where a drafter is reading them. Mixing the text
+ * 72% toward ink is the same repair the draft tracker, mock draft, and best
+ * ball recommendations carry, and it lifts the resting margin as well.
+ */
+const SIGNAL_TEXT_COLOR = "color-mix(in srgb, var(--home-signal) 72%, var(--home-ink))";
+
 /** Phone rows carry their own value labels, since the column-label row is md-and-up. */
 const ROW_MICRO_LABEL_CLASS = "text-3xs uppercase tracking-[0.06em] text-[var(--home-ink-muted)] md:hidden";
 
-/** The other fantasy surfaces; the tiers routes only redirect back here, so they are not listed. */
+/**
+ * The other fantasy surfaces, listed once in the footer nav. The tiers routes
+ * only redirect back here, so they are not listed. A chip row under the header
+ * used to repeat these six; at 390 it cost 160px before the first player row.
+ */
 const FANTASY_TOOLS = [
   { href: "/fantasy-football/draft-tracker", label: "Draft tracker" },
   { href: "/fantasy-football/mock-draft", label: "Mock draft" },
@@ -150,6 +171,10 @@ function getPublishedBoardRank(player: Player, position: FantasyRoutePosition): 
 function formatAvg(player: Player): string {
   const avg = getConsensusAvg(player);
   return avg === null ? "—" : avg.toFixed(1);
+}
+
+function formatVorpValue(entry: FantasyVorpRankingEntry | null | undefined): string {
+  return entry ? String(Math.round(entry.value)) : "—";
 }
 
 function formatExpertRange(player: Player): string {
@@ -330,6 +355,59 @@ function VorpTeamSizeSelect({
   );
 }
 
+type CompactRankingValue = "consensus" | `vorp-${FantasyVorpTeamSize}`;
+
+/**
+ * The phone's ranking control. The Consensus/VORP pair plus the league-size
+ * select took a third 54px row of the sticky bar at 390, where the row one
+ * controls already use 347px of the 358px line. One native select carries
+ * both choices, so the ranking shares a row with the count line instead.
+ */
+function CompactRankingSelect({
+  ranking,
+  teams,
+  vorpAvailable,
+  onChange,
+}: {
+  ranking: FantasyRankingMode;
+  teams: FantasyVorpTeamSize;
+  vorpAvailable: boolean;
+  onChange: (next: { ranking: FantasyRankingMode; teams: FantasyVorpTeamSize }) => void;
+}) {
+  const value: CompactRankingValue = ranking === "vorp" ? `vorp-${teams}` : "consensus";
+  return (
+    <label className="inline-flex shrink-0 items-center">
+      <span className="sr-only">Ranking method</span>
+      <select
+        aria-label="Ranking method"
+        value={value}
+        onChange={(event) => {
+          const next = event.target.value;
+          if (next === "consensus") {
+            onChange({ ranking: "consensus", teams });
+            return;
+          }
+          const size = Number(next.replace("vorp-", ""));
+          if (isFantasyVorpTeamSize(size)) onChange({ ranking: "vorp", teams: size });
+        }}
+        className="min-h-touch rounded-[4px] border px-2 font-mono text-2xs uppercase tracking-[0.06em]"
+        style={{
+          borderColor: "var(--home-rule)",
+          background: "var(--home-paper-raised)",
+          color: "var(--home-ink)",
+        }}
+      >
+        <option value="consensus">Consensus</option>
+        {FANTASY_VORP_TEAM_SIZES.map((teamSize) => (
+          <option key={teamSize} value={`vorp-${teamSize}`} disabled={!vorpAvailable}>
+            VORP {teamSize}-team
+          </option>
+        ))}
+      </select>
+    </label>
+  );
+}
+
 /**
  * The per-row expert spread: the low–high expert range as a bar positioned on
  * the board-wide rank scale, with a tick at the consensus average. Bar heat
@@ -436,6 +514,12 @@ interface DraftPlayerDrawerProps {
   activePosition: FantasyRoutePosition;
   /** Scoring label for the board, so the per-game panel names its own basis. */
   scoringLabel: string;
+  /** Whether the board behind the drawer is sorted by VORP rather than consensus. */
+  vorpMode: boolean;
+  /** League size the VORP index was built for. */
+  vorpTeams: FantasyVorpTeamSize;
+  /** The published VORP entries, keyed by player id, for this player and the neighbors. */
+  vorpIndex: ReadonlyMap<string, FantasyVorpRankingEntry>;
   onSelectNeighbor: (id: string) => void;
   onClose: () => void;
 }
@@ -457,6 +541,9 @@ function DraftPlayerDrawer({
   neighbors,
   activePosition,
   scoringLabel,
+  vorpMode,
+  vorpTeams,
+  vorpIndex,
   onSelectNeighbor,
   onClose,
 }: DraftPlayerDrawerProps) {
@@ -584,6 +671,20 @@ function DraftPlayerDrawer({
     gameLog ? Math.min(100, Math.max(0, ((value - gameLog.low) / gameLogSpan) * 100)) : 0;
 
   const boardLabel = activePosition === "overall" || activePosition === "flex" ? "overall" : "on this board";
+  const consensusLine = `R${publishedRank} ${boardLabel}${
+    Number.isFinite(player.tier) ? ` · Tier ${player.tier}${boardTierCount ? ` of ${boardTierCount}` : ""}` : ""
+  }`;
+  // The row already shows this number in both ranking modes, so the drawer
+  // carries it too. In VORP mode it leads the grid, because it is the rank.
+  const vorp = vorpIndex.get(player.id) ?? null;
+  const vorpCard = vorp ? (
+    <DrawerStat
+      label={`VORP · ${vorpTeams}-team`}
+      term="VORP"
+      value={String(Math.round(vorp.value))}
+      title={FANTASY_VORP_TOOLTIP}
+    />
+  ) : null;
 
   return (
     <div className="fixed inset-0 z-[60] flex justify-end">
@@ -610,13 +711,19 @@ function DraftPlayerDrawer({
       >
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
+            {/* The kicker names whichever rank the board behind the drawer is
+                sorted by. In VORP mode the consensus rank stays on the next
+                line, since the gap between the two is itself the reading. */}
             <p className={MONO_LABEL_CLASS} style={{ color: "var(--home-signal)" }}>
-              R{publishedRank} {boardLabel}
-              {Number.isFinite(player.tier)
-                ? ` · Tier ${player.tier}${boardTierCount ? ` of ${boardTierCount}` : ""}`
-                : ""}
+              {vorpMode && vorp ? `VORP #${vorp.rank} · ${vorpTeams}-team` : consensusLine}
             </p>
-            <h2 className="mt-1.5 truncate text-2xl font-semibold leading-tight tracking-tight">{player.name}</h2>
+            {vorpMode && vorp ? (
+              <p className={`${MONO_LABEL_CLASS} mt-1`} style={{ color: "var(--home-ink-muted)" }}>
+                {consensusLine}
+              </p>
+            ) : null}
+            {/* text-2xl tops out at 34px, above the 33.6px page h1 at 1440. */}
+            <h2 className="mt-1.5 truncate text-xl font-semibold leading-tight tracking-tight">{player.name}</h2>
             <p className="mt-1 font-mono text-2xs uppercase tracking-[0.06em]" style={{ color: "var(--home-ink-muted)" }}>
               {player.position}
               {Number.isFinite(player.positionRank) ? player.positionRank : ""} · {player.team || "FA"}
@@ -635,6 +742,7 @@ function DraftPlayerDrawer({
         </div>
 
         <div className="grid grid-cols-2 gap-2">
+          {vorpMode ? vorpCard : null}
           <DrawerStat label="Consensus avg" value={formatAvg(player)} title={FANTASY_AVG_RANK_TOOLTIP} />
           <DrawerStat
             label="Expert range"
@@ -670,6 +778,7 @@ function DraftPlayerDrawer({
               />
             )
           )}
+          {vorpMode ? null : vorpCard}
         </div>
 
         {verdict && (
@@ -677,6 +786,13 @@ function DraftPlayerDrawer({
             className="border-l-[3px] px-3 py-2.5 text-sm leading-6"
             style={{ borderColor: verdict.color, background: verdict.background, color: "var(--home-ink)" }}
           >
+            {/* The verdict compares ADP with the consensus rank, so under a
+                VORP kicker it says which rank it is reading against. */}
+            {vorpMode ? (
+              <span className={`${MONO_LABEL_CLASS} mb-1 block`} style={{ color: "var(--home-ink-muted)" }}>
+                Market read against the consensus rank
+              </span>
+            ) : null}
             {verdict.text}
           </p>
         )}
@@ -810,9 +926,17 @@ function DraftPlayerDrawer({
 
         {neighbors.length > 1 && (
           <div>
-            <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
-              Board neighborhood
-            </span>
+            <div className="flex items-baseline justify-between gap-2.5">
+              <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+                Board neighborhood
+              </span>
+              {/* The list follows the board's sort, so its numbers name that
+                  sort: VORP rank and value in VORP mode, board rank and
+                  consensus average otherwise. */}
+              <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+                {vorpMode ? "VORP rank · VORP" : "Rank · avg"}
+              </span>
+            </div>
             <ul
               className="mt-2 list-none overflow-hidden rounded-[6px] border"
               style={{ borderColor: "var(--home-rule)" }}
@@ -842,13 +966,17 @@ function DraftPlayerDrawer({
                         className="w-7 shrink-0 text-right font-mono text-2xs"
                         style={{ color: "var(--home-ink-muted)" }}
                       >
-                        {getPublishedBoardRank(neighbor, activePosition)}
+                        {vorpMode
+                          ? formatRankValue(vorpIndex.get(neighbor.id)?.rank)
+                          : getPublishedBoardRank(neighbor, activePosition)}
                       </span>
                       <span className="min-w-0 flex-1 truncate text-sm font-semibold tracking-tight">
                         {neighbor.name}
                       </span>
                       <span className="shrink-0 font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
-                        {formatAvg(neighbor)}
+                        {vorpMode
+                          ? formatVorpValue(vorpIndex.get(neighbor.id))
+                          : formatAvg(neighbor)}
                       </span>
                     </button>
                   </li>
@@ -1427,7 +1555,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                             : "Board rank"
                       }
                       style={{
-                        color: isQueued ? "var(--home-signal)" : "var(--home-ink)",
+                        color: isQueued ? SIGNAL_TEXT_COLOR : "var(--home-ink)",
                       }}
                     >
                       {displayRank(player)}
@@ -1456,13 +1584,20 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                       {vorpAvailable && (
                         <>
                           <span className="sr-only">Value over replacement player</span>
+                          {/* The accent tracks the sort, as the plate rail and
+                              the h2 already do: a positive VORP takes signal only
+                              when VORP is the ranking. On the consensus board it
+                              reads in ink, so the column is data rather than
+                              forty accented numbers beside a consensus order. */}
                           <span
                             className="w-auto font-mono text-xs font-medium md:w-16 md:text-right"
                             title={FANTASY_VORP_TOOLTIP}
                             style={{
                               color:
                                 vorp && vorp.value > 0
-                                  ? "var(--home-signal)"
+                                  ? vorpMode
+                                    ? SIGNAL_TEXT_COLOR
+                                    : "var(--home-ink)"
                                   : "var(--home-ink-muted)",
                             }}
                           >
@@ -1627,32 +1762,18 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
               className="underline decoration-[var(--home-signal)] underline-offset-4"
             >
               weekly board
+            </Link>{" "}
+            and the{" "}
+            <Link
+              href="/fantasy-football/waivers"
+              className="underline decoration-[var(--home-signal)] underline-offset-4"
+            >
+              waiver targets
             </Link>
             .
           </SeasonalScopeNote>
         </div>
       ) : null}
-
-      <nav
-        aria-label="Fantasy tools"
-        className={`${SHELL_CLASS} flex flex-wrap items-center gap-1.5 pb-4`}
-      >
-        {FANTASY_TOOLS.map((tool) => (
-          <Link
-            key={tool.href}
-            href={tool.href}
-            className={`${HEADER_CHIP_CLASS} min-h-touch no-underline`}
-            style={{
-              borderColor: "var(--home-rule)",
-              background: "var(--home-paper-alt)",
-              color: "var(--home-ink)",
-            }}
-          >
-            {tool.label}
-            <span aria-hidden="true">&nbsp;↗</span>
-          </Link>
-        ))}
-      </nav>
 
       <div
         data-testid="fantasy-board-controls"
@@ -1885,33 +2006,32 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
         </div>
         {/* The count and the route's only aria-live region used to sit inside
             the md-and-up bar, so below 768px a filter that landed on six rows
-            announced nothing and showed no count. Phones get their own line.
-            Only one of the two is ever rendered, since the other is display:none
-            at that width, so nothing announces twice. */}
-        <div className={`${SHELL_CLASS} pb-2 md:hidden`}>
+            announced nothing and showed no count. Phones get their own line,
+            and it stays visible rather than sr-only, because it is also the
+            feedback that a search or the queue filter landed on n rows. Only
+            one of the two is ever rendered, since the other is display:none at
+            that width, so nothing announces twice. The ranking select shares
+            this line: as a Consensus/VORP pair plus a league-size select it
+            took a third row, and the bar pinned 225px of an 844px phone. It
+            yields while the search is open, since the count is what a search
+            needs to see. */}
+        <div className={`${SHELL_CLASS} flex items-center gap-2 pb-2 md:hidden`}>
+          {!mobileSearchOpen ? (
+            <CompactRankingSelect
+              ranking={routeState.ranking}
+              teams={routeState.teams}
+              vorpAvailable={vorpAvailable}
+              onChange={(next) => updateRouteState(next)}
+            />
+          ) : null}
           <span
             aria-live={error ? undefined : "polite"}
-            className="font-mono text-2xs"
+            className="min-w-0 flex-1 text-right font-mono text-2xs leading-snug"
             style={{ color: "var(--home-ink-muted)" }}
           >
             {countLine}
           </span>
         </div>
-        {!mobileSearchOpen ? (
-          <div className={`${SHELL_CLASS} flex flex-wrap items-center gap-2 pb-2 md:hidden`}>
-            <RankingToggle
-              value={routeState.ranking}
-              vorpAvailable={vorpAvailable}
-              onChange={(ranking) => updateRouteState({ ranking })}
-            />
-            {routeState.ranking === "vorp" ? (
-              <VorpTeamSizeSelect
-                value={routeState.teams}
-                onChange={(teams) => updateRouteState({ teams })}
-              />
-            ) : null}
-          </div>
-        ) : null}
         {/* Column labels ride in the sticky bar so the numbers keep their
             names mid-scroll; phones get per-value micro-labels instead. */}
         {boardReady && (
@@ -2153,6 +2273,9 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
           neighbors={neighborhood}
           activePosition={routeState.position}
           scoringLabel={selectedScoringLabel}
+          vorpMode={vorpMode}
+          vorpTeams={routeState.teams}
+          vorpIndex={vorpIndex}
           onSelectNeighbor={(id) => setDetailPlayerId(id)}
           onClose={() => setDetailPlayerId(null)}
         />
