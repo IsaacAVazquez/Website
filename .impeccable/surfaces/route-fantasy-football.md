@@ -598,4 +598,8 @@ grid floor moved from 240px to 320px so the cards the disclosure appends wrap in
 squeezing "Omarion Hampton" to 88px at 1440. The weekly and waivers board cards use the
 static card helper so the hover lift no longer moves the pinned header row from 73px to
 69px, Show all lands focus on the status line instead of body, and the stacked phone lists
-carry an explicit list role.
+carry an explicit list role. And the rankings drawer's stat grid, which the VORP card had
+taken to five cards in a two-column grid with a blank 176px cell, now spans its lead card
+across both columns on one line when the count is odd, so no cell sits blank at any count
+and the phone drawer recovers 21px; the Close button still scrolls out of view at 390,
+which stays open as an adapt item.
