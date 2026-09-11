@@ -1,4 +1,5 @@
 import { FANTASY_SCORING_LABELS, type FantasyRouteScoring } from "@/lib/fantasy";
+import type { FantasySnapshotStaleness } from "@/lib/fantasyUtils";
 import type { Position } from "@/types";
 
 /**
@@ -35,6 +36,66 @@ export const FANTASY_WEEKLY_MIN_WAIVER_GAP = 20;
  * by 2.9 percent, which is a real discrepancy and not a start.
  */
 export const FANTASY_WEEKLY_STARTABLE_DEPTH = { flex: 120, quarterback: 24 } as const;
+
+export type FantasyWeeklyBoardLabel = "flex" | "quarterback";
+
+/**
+ * The provider string each board carries. The builder writes it and the
+ * client prints it, so the wording lives in one place. It names the board
+ * FantasyPros actually publishes in season, a flex page and a quarterback
+ * page, rather than the draft pipeline's cheat-sheet boilerplate, which
+ * described a locally derived flex board this snapshot never had.
+ */
+export function formatFantasyWeeklyProviderLabel(board: FantasyWeeklyBoardLabel): string {
+  return `FantasyPros weekly ${board} board`;
+}
+
+/** The host a source URL points at, without a leading www, or null when the URL is unusable. */
+export function getFantasyWeeklySourceHost(
+  source: Pick<FantasyWeeklyBoardSource, "url">
+): string | null {
+  try {
+    return new URL(source.url).hostname.replace(/^www\./, "") || null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * What to call a board's source on the page. A snapshot built before the
+ * builder wrote per-board labels still carries the draft pipeline's prose in
+ * `provider`, so when the URL is a FantasyPros page the label comes from the
+ * board and the host, which is the true provenance. The provider string is
+ * only printed as-is for a host this module does not recognize.
+ */
+export function describeFantasyWeeklySource(
+  source: Pick<FantasyWeeklyBoardSource, "url" | "provider">,
+  board: FantasyWeeklyBoardLabel
+): string {
+  const host = getFantasyWeeklySourceHost(source);
+  if (host === "fantasypros.com" || host?.endsWith(".fantasypros.com")) {
+    return formatFantasyWeeklyProviderLabel(board);
+  }
+  return source.provider;
+}
+
+const STALENESS_SEVERITY: Record<FantasySnapshotStaleness, number> = {
+  fresh: 0,
+  aging: 1,
+  stale: 2,
+};
+
+/**
+ * The worse of two freshness readings, for a view that draws on two sources at
+ * once. The waiver list mixes the flex and quarterback boards, so its chip has
+ * to turn the moment either one ages rather than only when the flex board does.
+ */
+export function pickWorseFantasySnapshotStaleness(
+  first: FantasySnapshotStaleness,
+  second: FantasySnapshotStaleness
+): FantasySnapshotStaleness {
+  return STALENESS_SEVERITY[second] > STALENESS_SEVERITY[first] ? second : first;
+}
 
 export interface FantasyWeeklyBoardSource {
   provider: string;

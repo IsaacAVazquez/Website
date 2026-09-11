@@ -1,8 +1,12 @@
 import {
   FANTASY_WEEKLY_SNAPSHOT_SCHEMA_VERSION,
   FANTASY_WEEKLY_STARTABLE_DEPTH,
+  describeFantasyWeeklySource,
+  formatFantasyWeeklyProviderLabel,
+  getFantasyWeeklySourceHost,
   getFantasyWeeklyWaiverCandidates,
   normalizeFantasyWeeklySnapshot,
+  pickWorseFantasySnapshotStaleness,
   type FantasyWeeklyBoard,
   type FantasyWeeklyPlayer,
 } from "@/lib/fantasyWeeklySnapshot";
@@ -143,5 +147,55 @@ describe("getFantasyWeeklyWaiverCandidates", () => {
 
     expect(candidates.map((entry) => entry.board)).toEqual(["quarterback", "flex"]);
     expect(candidates[0].gap).toBeGreaterThan(candidates[1].gap);
+  });
+});
+
+describe("describeFantasyWeeklySource", () => {
+  const boilerplate =
+    "FantasyPros public consensus cheatsheets. Flex is derived locally from the published overall board.";
+
+  it("names the board and ignores the draft pipeline's prose when the URL is a FantasyPros page", () => {
+    expect(
+      describeFantasyWeeklySource(
+        { provider: boilerplate, url: "https://www.fantasypros.com/nfl/rankings/ppr-flex.php" },
+        "flex"
+      )
+    ).toBe("FantasyPros weekly flex board");
+    expect(
+      describeFantasyWeeklySource(
+        { provider: boilerplate, url: "https://www.fantasypros.com/nfl/rankings/qb.php" },
+        "quarterback"
+      )
+    ).toBe(formatFantasyWeeklyProviderLabel("quarterback"));
+  });
+
+  it("prints the provider as written for a host it does not know", () => {
+    expect(
+      describeFantasyWeeklySource(
+        { provider: "Some other consensus", url: "https://example.com/board" },
+        "flex"
+      )
+    ).toBe("Some other consensus");
+    expect(describeFantasyWeeklySource({ provider: "Fallback", url: "not a url" }, "flex")).toBe(
+      "Fallback"
+    );
+  });
+
+  it("reads the host without its www prefix and gives up on a bad URL", () => {
+    expect(
+      getFantasyWeeklySourceHost({ url: "https://www.fantasypros.com/nfl/rankings/qb.php" })
+    ).toBe("fantasypros.com");
+    expect(getFantasyWeeklySourceHost({ url: "https://example.com/x" })).toBe("example.com");
+    expect(getFantasyWeeklySourceHost({ url: "" })).toBeNull();
+  });
+});
+
+describe("pickWorseFantasySnapshotStaleness", () => {
+  it("returns the worse of the two readings in either order", () => {
+    expect(pickWorseFantasySnapshotStaleness("fresh", "stale")).toBe("stale");
+    expect(pickWorseFantasySnapshotStaleness("stale", "fresh")).toBe("stale");
+    expect(pickWorseFantasySnapshotStaleness("fresh", "aging")).toBe("aging");
+    expect(pickWorseFantasySnapshotStaleness("aging", "fresh")).toBe("aging");
+    expect(pickWorseFantasySnapshotStaleness("fresh", "fresh")).toBe("fresh");
   });
 });

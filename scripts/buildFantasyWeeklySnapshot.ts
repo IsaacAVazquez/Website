@@ -1,8 +1,12 @@
 import { mkdir, readFile, rename, writeFile } from "fs/promises";
 import path from "path";
+import { fileURLToPath } from "url";
 import { FANTASY_SCORING_LABELS, routeScoringToScoringFormat, type FantasyRouteScoring } from "@/lib/fantasy";
 import { getSnapshotSeason } from "@/lib/fantasySnapshotBuilder";
-import type { FantasyProsPublicBoard } from "@/lib/fantasyProsPublicSource";
+import {
+  FANTASY_PROS_PUBLIC_SOURCE,
+  type FantasyProsPublicBoard,
+} from "@/lib/fantasyProsPublicSource";
 import {
   fetchRestOfSeasonBoard,
   fetchWeeklyFlexBoard,
@@ -11,6 +15,7 @@ import {
 import {
   FANTASY_WEEKLY_SNAPSHOT_SCHEMA_VERSION,
   FANTASY_WEEKLY_STARTABLE_DEPTH,
+  formatFantasyWeeklyProviderLabel,
   normalizeFantasyWeeklySnapshot,
   type FantasyWeeklyBoard,
   type FantasyWeeklyBoardSource,
@@ -50,9 +55,27 @@ function toWeeklyPlayer(player: FantasyProsPublicBoard["players"][number]): Fant
   };
 }
 
-function toSource(board: FantasyProsPublicBoard): FantasyWeeklyBoardSource {
+/**
+ * The parser stamps every public-HTML board with the draft pipeline's
+ * cheat-sheet boilerplate as its source label, and that prose says the flex
+ * board is derived locally from an overall board, which is false here: the
+ * weekly fetcher reads a published flex page. So the label is keyed on the
+ * board that was actually requested, and an unknown source label is refused
+ * the way the best ball builder refuses one, rather than passed through.
+ */
+export function toSource(board: FantasyProsPublicBoard): FantasyWeeklyBoardSource {
+  if (board.sourceLabel !== FANTASY_PROS_PUBLIC_SOURCE) {
+    throw new Error(`Weekly board returned an unknown source label: ${board.sourceLabel}`);
+  }
+  if (board.requestedPosition !== "FLEX" && board.requestedPosition !== "QB") {
+    throw new Error(
+      `Weekly board was requested as ${board.requestedPosition}, which is neither the flex nor the quarterback page.`
+    );
+  }
   return {
-    provider: board.sourceLabel,
+    provider: formatFantasyWeeklyProviderLabel(
+      board.requestedPosition === "FLEX" ? "flex" : "quarterback"
+    ),
     url: board.sourceUrl,
     asOf: board.upstreamUpdatedAt,
     expertCount: board.totalExperts,
@@ -177,7 +200,13 @@ async function main() {
   );
 }
 
-main().catch((error) => {
-  console.error(error);
-  process.exit(1);
-});
+const isMainModule =
+  process.argv[1] !== undefined &&
+  path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+
+if (isMainModule) {
+  main().catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+}

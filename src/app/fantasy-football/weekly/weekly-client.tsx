@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { startTransition, useMemo, useState } from "react";
+import { startTransition, useMemo, useState, useSyncExternalStore } from "react";
 import {
   Breadcrumbs,
   createBreadcrumbItems,
 } from "@/components/navigation/Breadcrumbs";
 import { useFantasyWeeklySnapshot } from "@/hooks/useFantasyWeeklySnapshot";
 import {
+  FANTASY_RANKINGS_PAGE_SIZE,
   FANTASY_SCORING_LABELS,
   normalizeFantasyRouteScoring,
   type FantasyRouteScoring,
@@ -17,7 +18,11 @@ import {
   FANTASY_WEEKLY_MIN_WAIVER_GAP,
   FANTASY_WEEKLY_STARTABLE_DEPTH,
   FANTASY_WEEKLY_WIDELY_ROSTERED_PERCENT,
+  describeFantasyWeeklySource,
+  getFantasyWeeklySourceHost,
   getFantasyWeeklyWaiverCandidates,
+  pickWorseFantasySnapshotStaleness,
+  type FantasyWeeklyBoardSource,
   type FantasyWeeklyPlayer,
 } from "@/lib/fantasyWeeklySnapshot";
 import {
@@ -52,12 +57,58 @@ const TOGGLE_CLASS =
 const GROUP_LEGEND_CLASS =
   "font-mono text-3xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]";
 
-/** The header cell of a long table: pinned to the top of its own scroll box. */
-const STICKY_HEADER_CLASS = "sticky top-0 z-10";
+const STATUS_CLASS =
+  "mt-4 font-mono text-2xs uppercase tracking-[0.1em] text-[var(--home-ink-muted)]";
+
+/**
+ * The header cell of a long table, pinned under the site header while the
+ * page scrolls. The site header is `sticky top-0` at 72px plus its 1px rule,
+ * so anything less than 73 here would slide under it and vanish.
+ */
+const SITE_HEADER_HEIGHT_PX = 73;
+const STICKY_HEADER_CLASS = "sticky z-10";
 const STICKY_HEADER_STYLE = {
+  top: SITE_HEADER_HEIGHT_PX,
   background: "var(--home-paper-raised)",
   boxShadow: "inset 0 -1px 0 var(--home-rule)",
 } as const;
+
+/** Tailwind's `md`, the width at which the tables fit without clipping. */
+const TABLE_LAYOUT_QUERY = "(min-width: 768px)";
+
+function subscribeToTableLayout(onChange: () => void) {
+  if (typeof window.matchMedia !== "function") return () => {};
+  const media = window.matchMedia(TABLE_LAYOUT_QUERY);
+  media.addEventListener("change", onChange);
+  return () => media.removeEventListener("change", onChange);
+}
+
+function getTableLayout() {
+  return typeof window.matchMedia === "function"
+    ? window.matchMedia(TABLE_LAYOUT_QUERY).matches
+    : true;
+}
+
+function getServerTableLayout() {
+  return true;
+}
+
+/**
+ * Below `md` a five or six column table cannot fit in 316px, and neither a
+ * sticky first column (the name cell alone is wider than the box) nor a
+ * horizontal scroll (which separates every number from its name) reads well
+ * with one thumb. So the phone gets a stacked list, name over a labeled
+ * readout, and the table only renders where it fits. One layout is in the
+ * DOM at a time rather than both with one hidden, since the flex board runs
+ * to 457 rows.
+ */
+function useTableLayout(): boolean {
+  return useSyncExternalStore(
+    subscribeToTableLayout,
+    getTableLayout,
+    getServerTableLayout,
+  );
+}
 
 export type WeeklyBoardKey = "flex" | "quarterbacks";
 
@@ -84,6 +135,62 @@ function formatOwnership(value: number | undefined): string {
   return value === undefined ? "--" : `${value.toFixed(1)}%`;
 }
 
+/**
+ * The visible count for the rankings board, which doubles as the page's live
+ * region. It has to say how deep the window goes when the board is cut, and
+ * how many rows matched when a search or position filter is on, because the
+ * cap is applied after the filter and a match past the window would otherwise
+ * be invisible.
+ */
+function describeWindow(
+  shown: number,
+  matching: number,
+  total: number,
+  filtered: boolean,
+): string {
+  if (!filtered) {
+    return shown === total
+      ? `Showing all ${total} players`
+      : `Showing ${shown} of ${total} players`;
+  }
+  return shown === matching
+    ? `${matching} of ${total} players match`
+    : `Showing ${shown} of ${matching} matching players, ${total} on the board`;
+}
+
+function SourceLink({ href, label }: { href: string; label: string }) {
+  return (
+    <a
+      href={href}
+      className="underline decoration-[var(--home-rule)] underline-offset-4"
+      rel="noreferrer noopener"
+      target="_blank"
+    >
+      {label}
+      <span className="sr-only">, opens in a new tab</span>
+    </a>
+  );
+}
+
+function ReadoutPair({ label, value, emphasis = false }: { label: string; value: string; emphasis?: boolean }) {
+  return (
+    <div className="flex items-baseline gap-1.5">
+      <dt className="text-3xs uppercase tracking-[0.1em] text-[var(--home-ink-muted)]">
+        {label}
+      </dt>
+      <dd
+        className={`tabular-nums ${
+          emphasis
+            ? "font-semibold text-[var(--home-ink)]"
+            : "text-[var(--home-ink)]"
+        }`}
+      >
+        {value}
+      </dd>
+    </div>
+  );
+}
+
 export function WeeklyBoardClient({
   initialState,
   view = "rankings",
@@ -104,6 +211,7 @@ export function WeeklyBoardClient({
   );
   const router = useRouter();
   const searchParams = useSearchParams();
+  const tableLayout = useTableLayout();
 
   // The URL is the source of truth, the way the rankings board does it, so a
   // weekly board can be linked and restored. The server-normalized props cover
@@ -145,7 +253,18 @@ export function WeeklyBoardClient({
     () => (activeBoard ? getFantasyWeeklyWaiverCandidates(activeBoard) : []),
     [activeBoard],
   );
-  const staleness = getSnapshotStaleness(source?.asOf);
+  // The rankings view shows one board, so one stamp. The waiver list draws on
+  // both boards at once, so its chip is the worse of the two readings and the
+  // header prints both stamps rather than describing six quarterback rows
+  // with the flex board's date.
+  const flexStaleness = getSnapshotStaleness(activeBoard?.flexSource.asOf);
+  const quarterbackStaleness = getSnapshotStaleness(
+    activeBoard?.quarterbackSource.asOf,
+  );
+  const staleness =
+    view === "waivers"
+      ? pickWorseFantasySnapshotStaleness(flexStaleness, quarterbackStaleness)
+      : getSnapshotStaleness(source?.asOf);
 
   // Search and the position filter are view state rather than route state. A
   // query is ephemeral in a way scoring and board are not, so it stays out of
@@ -155,21 +274,62 @@ export function WeeklyBoardClient({
   const [positionFilter, setPositionFilter] =
     useState<WeeklyPositionFilter>("ALL");
   const query = searchQuery.trim().toLowerCase();
+  const positionActive = board === "flex" && positionFilter !== "ALL";
   const filteredPlayers = useMemo(
     () =>
       players.filter((player) => {
-        if (
-          board === "flex" &&
-          positionFilter !== "ALL" &&
-          player.position !== positionFilter
-        ) {
+        if (positionActive && player.position !== positionFilter) {
           return false;
         }
         if (!query) return true;
         return `${player.name} ${player.team}`.toLowerCase().includes(query);
       }),
-    [players, board, positionFilter, query],
+    [players, positionActive, positionFilter, query],
   );
+
+  // The board is cut at the startable depth by default, since that is how deep
+  // the snapshot module says a start decision reaches, and the rest sits behind
+  // an explicit control. The cut runs after the filter, never before it, so a
+  // search for a player ranked 300th still finds him. The window is keyed to
+  // the filter it was opened under, so any change to scoring, board, search,
+  // or position closes it again without an effect.
+  const startableDepth =
+    board === "flex"
+      ? FANTASY_WEEKLY_STARTABLE_DEPTH.flex
+      : FANTASY_WEEKLY_STARTABLE_DEPTH.quarterback;
+  const windowKey = `${scoring}|${board}|${positionFilter}|${query}`;
+  const [windowState, setWindowState] = useState<{
+    key: string;
+    count: number;
+  } | null>(null);
+  const visibleCount =
+    windowState?.key === windowKey ? windowState.count : startableDepth;
+  const visiblePlayers = useMemo(
+    () => filteredPlayers.slice(0, visibleCount),
+    [filteredPlayers, visibleCount],
+  );
+  const remainingCount = filteredPlayers.length - visiblePlayers.length;
+  const filterActive = positionActive || query.length > 0;
+  const countLine = describeWindow(
+    visiblePlayers.length,
+    filteredPlayers.length,
+    players.length,
+    filterActive,
+  );
+  const emptyFilterLine =
+    board === "flex"
+      ? "No players match your search or position filter."
+      : "No players match your search.";
+  const rankingsCaption = snapshot
+    ? `${snapshot.season} week ${snapshot.week} ${board === "flex" ? "flex" : "quarterback"} consensus rankings, ${FANTASY_SCORING_LABELS[scoring]} scoring`
+    : "";
+  const waiversCaption =
+    "Weekly waiver targets ranked by the gap between board percentile and rostered percentage";
+
+  function renderSourceHost(boardSource: FantasyWeeklyBoardSource) {
+    const host = getFantasyWeeklySourceHost(boardSource);
+    return host ? ` at ${host}` : "";
+  }
 
   return (
     <section
@@ -213,24 +373,54 @@ export function WeeklyBoardClient({
               actually check before a Tuesday night waiver run.
             </p>
           )}
-          {snapshot && source ? (
+          {snapshot && activeBoard && source ? (
             <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-2xs uppercase tracking-[0.1em] text-[var(--home-ink-muted)]">
               <span>
                 {snapshot.season} Week {snapshot.week}
               </span>
               <span aria-hidden="true">·</span>
-              <span>Source updated {formatUpdatedAt(source.asOf)}</span>
-              <span aria-hidden="true">·</span>
-              <span
-                style={{
-                  color:
-                    staleness === "stale" ? "var(--home-negative)" : undefined,
-                }}
-              >
-                {getSnapshotStalenessLabel(staleness)}
-              </span>
-              <span aria-hidden="true">·</span>
-              <span>{source.expertCount} experts</span>
+              {view === "waivers" ? (
+                <>
+                  <span>
+                    Flex updated {formatUpdatedAt(activeBoard.flexSource.asOf)},{" "}
+                    {activeBoard.flexSource.expertCount} experts
+                  </span>
+                  <span aria-hidden="true">·</span>
+                  <span>
+                    QB updated{" "}
+                    {formatUpdatedAt(activeBoard.quarterbackSource.asOf)},{" "}
+                    {activeBoard.quarterbackSource.expertCount} experts
+                  </span>
+                  <span aria-hidden="true">·</span>
+                  <span
+                    style={{
+                      color:
+                        staleness === "stale"
+                          ? "var(--home-negative)"
+                          : undefined,
+                    }}
+                  >
+                    {getSnapshotStalenessLabel(staleness)}
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span>Source updated {formatUpdatedAt(source.asOf)}</span>
+                  <span aria-hidden="true">·</span>
+                  <span
+                    style={{
+                      color:
+                        staleness === "stale"
+                          ? "var(--home-negative)"
+                          : undefined,
+                    }}
+                  >
+                    {getSnapshotStalenessLabel(staleness)}
+                  </span>
+                  <span aria-hidden="true">·</span>
+                  <span>{source.expertCount} experts</span>
+                </>
+              )}
             </div>
           ) : null}
         </header>
@@ -353,7 +543,7 @@ export function WeeklyBoardClient({
                   id="weekly-waivers"
                   className="text-lg font-semibold tracking-[-0.02em] text-[var(--home-ink)]"
                 >
-                  Waiver targets
+                  This week&rsquo;s list
                 </h2>
                 <p className="mt-2 max-w-[68ch] text-sm leading-6 text-[var(--home-ink-muted)]">
                   Players the experts rank ahead of where the rostering rate
@@ -377,49 +567,106 @@ export function WeeklyBoardClient({
                   not inventing one.
                 </p>
                 {waivers.length === 0 ? (
-                  <p className="mt-4 text-sm text-[var(--home-ink-muted)]">
+                  <p
+                    role="status"
+                    className="mt-4 text-sm text-[var(--home-ink-muted)]"
+                  >
                     No player clears the gap this week, which happens when the
                     widely rostered players are also the ones the experts like.
                   </p>
                 ) : (
-                  <div className="mt-4 overflow-x-auto">
-                    <table className="w-full min-w-[38rem] border-collapse text-sm">
-                      <caption className="sr-only">
-                        Weekly waiver targets ranked by the gap between board
-                        percentile and rostered percentage
-                      </caption>
-                      <thead>
-                        <tr className="border-b border-[var(--home-rule)] text-left font-mono text-3xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-                          <th scope="col" className="py-2 pr-3">
-                            Player
-                          </th>
-                          <th scope="col" className="py-2 pr-3">
-                            Board
-                          </th>
-                          <th scope="col" className="py-2 pr-3 text-right">
-                            Rank
-                          </th>
-                          <th scope="col" className="py-2 pr-3 text-right">
-                            Percentile
-                          </th>
-                          <th scope="col" className="py-2 pr-3 text-right">
-                            Rostered
-                          </th>
-                          <th scope="col" className="py-2 text-right">
-                            Gap
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
+                  <>
+                    {/* The count is the page's live region, so a scoring tap
+                        that takes the list from 19 rows to 17 is heard as
+                        well as seen. */}
+                    <p role="status" className={STATUS_CLASS}>
+                      {waivers.length}{" "}
+                      {waivers.length === 1 ? "player clears" : "players clear"}{" "}
+                      the gap in {FANTASY_SCORING_LABELS[scoring]} scoring
+                    </p>
+                    {tableLayout ? (
+                      <div
+                        className="mt-3 overflow-x-auto"
+                        tabIndex={0}
+                        role="region"
+                        aria-label="Waiver targets table"
+                      >
+                        <table className="w-full border-collapse text-sm">
+                          <caption className="sr-only">{waiversCaption}</caption>
+                          <thead>
+                            <tr className="border-b border-[var(--home-rule)] text-left font-mono text-3xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                              <th scope="col" className="py-2 pr-3">
+                                Player
+                              </th>
+                              <th scope="col" className="py-2 pr-3 text-right">
+                                Gap
+                              </th>
+                              <th scope="col" className="py-2 pr-3 pl-3">
+                                Board
+                              </th>
+                              <th scope="col" className="py-2 pr-3 text-right">
+                                Rank
+                              </th>
+                              <th scope="col" className="py-2 pr-3 text-right">
+                                Percentile
+                              </th>
+                              <th scope="col" className="py-2 text-right">
+                                Rostered
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {waivers.map((candidate) => (
+                              <tr
+                                key={`${candidate.board}-${candidate.player.id}`}
+                                className="border-b border-[var(--home-rule)]"
+                              >
+                                <th
+                                  scope="row"
+                                  className="py-2 pr-3 text-left font-normal"
+                                >
+                                  <span className="font-semibold text-[var(--home-ink)]">
+                                    {candidate.player.name}
+                                  </span>{" "}
+                                  <span className="text-[var(--home-ink-muted)]">
+                                    {candidate.player.position}{" "}
+                                    {candidate.player.team}
+                                    {candidate.player.opponent
+                                      ? ` ${candidate.player.opponent}`
+                                      : ""}
+                                  </span>
+                                </th>
+                                <td className="py-2 pr-3 text-right font-mono tabular-nums font-semibold text-[var(--home-ink)]">
+                                  {candidate.gap.toFixed(1)}
+                                </td>
+                                <td className="py-2 pr-3 pl-3 text-[var(--home-ink-muted)]">
+                                  {candidate.board === "flex" ? "Flex" : "QB"}
+                                </td>
+                                <td className="py-2 pr-3 text-right font-mono tabular-nums text-[var(--home-ink)]">
+                                  {candidate.player.rank}
+                                </td>
+                                <td className="py-2 pr-3 text-right font-mono tabular-nums text-[var(--home-ink-muted)]">
+                                  {candidate.rankPercentile.toFixed(1)}
+                                </td>
+                                <td className="py-2 text-right font-mono tabular-nums text-[var(--home-ink-muted)]">
+                                  {formatOwnership(candidate.ownership)}
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    ) : (
+                      <ol
+                        aria-label={waiversCaption}
+                        className="mt-3 list-none border-t border-[var(--home-rule)] p-0"
+                      >
                         {waivers.map((candidate) => (
-                          <tr
+                          <li
                             key={`${candidate.board}-${candidate.player.id}`}
-                            className="border-b border-[var(--home-rule)]"
+                            className="border-b border-[var(--home-rule)] py-2.5"
                           >
-                            <th
-                              scope="row"
-                              className="py-2 pr-3 text-left font-normal"
-                            >
+                            <p className="text-sm">
                               <span className="font-semibold text-[var(--home-ink)]">
                                 {candidate.player.name}
                               </span>{" "}
@@ -430,28 +677,55 @@ export function WeeklyBoardClient({
                                   ? ` ${candidate.player.opponent}`
                                   : ""}
                               </span>
-                            </th>
-                            <td className="py-2 pr-3 text-[var(--home-ink-muted)]">
-                              {candidate.board === "flex" ? "Flex" : "QB"}
-                            </td>
-                            <td className="py-2 pr-3 text-right font-mono tabular-nums text-[var(--home-ink)]">
-                              {candidate.player.rank}
-                            </td>
-                            <td className="py-2 pr-3 text-right font-mono tabular-nums text-[var(--home-ink-muted)]">
-                              {candidate.rankPercentile.toFixed(1)}
-                            </td>
-                            <td className="py-2 pr-3 text-right font-mono tabular-nums text-[var(--home-ink-muted)]">
-                              {formatOwnership(candidate.ownership)}
-                            </td>
-                            <td className="py-2 text-right font-mono tabular-nums font-semibold text-[var(--home-ink)]">
-                              {candidate.gap.toFixed(1)}
-                            </td>
-                          </tr>
+                            </p>
+                            <dl className="mt-1 flex flex-wrap gap-x-4 gap-y-1 font-mono text-2xs">
+                              <ReadoutPair
+                                label="Gap"
+                                value={candidate.gap.toFixed(1)}
+                                emphasis
+                              />
+                              <ReadoutPair
+                                label="Board"
+                                value={candidate.board === "flex" ? "Flex" : "QB"}
+                              />
+                              <ReadoutPair
+                                label="Rank"
+                                value={String(candidate.player.rank)}
+                              />
+                              <ReadoutPair
+                                label="Percentile"
+                                value={candidate.rankPercentile.toFixed(1)}
+                              />
+                              <ReadoutPair
+                                label="Rostered"
+                                value={formatOwnership(candidate.ownership)}
+                              />
+                            </dl>
+                          </li>
                         ))}
-                      </tbody>
-                    </table>
-                  </div>
+                      </ol>
+                    )}
+                  </>
                 )}
+                <p className="mt-4 text-2xs text-[var(--home-ink-muted)]">
+                  {activeBoard.flexSource.playerCount} players on the{" "}
+                  {describeFantasyWeeklySource(activeBoard.flexSource, "flex")}{" "}
+                  and {activeBoard.quarterbackSource.playerCount} on the{" "}
+                  {describeFantasyWeeklySource(
+                    activeBoard.quarterbackSource,
+                    "quarterback",
+                  )}
+                  {renderSourceHost(activeBoard.flexSource)}.{" "}
+                  <SourceLink
+                    href={activeBoard.flexSource.url}
+                    label="Flex source board"
+                  />{" "}
+                  <span aria-hidden="true">·</span>{" "}
+                  <SourceLink
+                    href={activeBoard.quarterbackSource.url}
+                    label="Quarterback source board"
+                  />
+                </p>
               </section>
             ) : (
               <section aria-labelledby="weekly-board" className="home-card p-5">
@@ -512,132 +786,203 @@ export function WeeklyBoardClient({
                     </fieldset>
                   ) : null}
                 </div>
-                {/* The board runs past 150 rows, so it scrolls in its own box with
-                  the column labels pinned. Page-level sticky cannot reach here:
-                  the horizontal scroll this wide table needs makes the wrapper a
-                  scroll container of its own. */}
                 {players.length === 0 ? (
                   <p className="mt-4 text-sm text-[var(--home-ink-muted)]">
                     This board published with no rows, which usually means the
                     source page came back empty. Check back after the next
                     refresh, or use the other board until then.
                   </p>
-                ) : filteredPlayers.length === 0 ? (
-                  <div className="mt-4">
-                    <p className="text-sm text-[var(--home-ink-muted)]">
-                      {board === "flex"
-                        ? "No players match your search or position filter."
-                        : "No players match your search."}
-                    </p>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setSearchQuery("");
-                        setPositionFilter("ALL");
-                      }}
-                      className={`${TOGGLE_CLASS} mt-3 border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink)] hover:border-[var(--home-signal)]`}
-                    >
-                      Show all players
-                    </button>
-                  </div>
                 ) : (
-                  <div className="mt-4 max-h-[70vh] overflow-auto">
-                    <table className="w-full min-w-[38rem] border-collapse text-sm">
-                      <caption className="sr-only">
-                        {snapshot.season} week {snapshot.week}{" "}
-                        {board === "flex" ? "flex" : "quarterback"} consensus
-                        rankings, {FANTASY_SCORING_LABELS[scoring]} scoring
-                      </caption>
-                      <thead>
-                        <tr className="text-left font-mono text-3xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-                          <th
-                            scope="col"
-                            className={`${STICKY_HEADER_CLASS} py-2 pr-3 text-right`}
-                            style={STICKY_HEADER_STYLE}
-                          >
-                            #
-                          </th>
-                          <th
-                            scope="col"
-                            className={`${STICKY_HEADER_CLASS} py-2 pr-3`}
-                            style={STICKY_HEADER_STYLE}
-                          >
-                            Player
-                          </th>
-                          <th
-                            scope="col"
-                            className={`${STICKY_HEADER_CLASS} py-2 pr-3`}
-                            style={STICKY_HEADER_STYLE}
-                          >
-                            Opponent
-                          </th>
-                          <th
-                            scope="col"
-                            className={`${STICKY_HEADER_CLASS} py-2 pr-3 text-right`}
-                            style={STICKY_HEADER_STYLE}
-                          >
-                            Expert range
-                          </th>
-                          <th
-                            scope="col"
-                            className={`${STICKY_HEADER_CLASS} py-2 text-right`}
-                            style={STICKY_HEADER_STYLE}
-                          >
-                            Rostered
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {filteredPlayers.map((player) => (
-                          <tr
-                            key={player.id}
-                            className="border-b border-[var(--home-rule)]"
-                          >
-                            <td className="py-2 pr-3 text-right font-mono tabular-nums text-[var(--home-ink-muted)]">
-                              {player.rank}
-                            </td>
+                  <>
+                    {/* The count is the page's live region. It stays mounted
+                        across every filter change so a search that lands on
+                        one row is announced rather than only seen. */}
+                    <p role="status" className={STATUS_CLASS}>
+                      {filteredPlayers.length === 0 ? emptyFilterLine : countLine}
+                    </p>
+                    {filteredPlayers.length === 0 ? (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSearchQuery("");
+                          setPositionFilter("ALL");
+                        }}
+                        className={`${TOGGLE_CLASS} mt-3 border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink)] hover:border-[var(--home-signal)]`}
+                      >
+                        Show all players
+                      </button>
+                    ) : tableLayout ? (
+                      // The table sits in page flow rather than a scroll box of
+                      // its own. It fits from md up, so nothing needs to scroll
+                      // sideways, and page-level sticky keeps the column labels
+                      // under the site header for as long as the board runs.
+                      <table className="mt-3 w-full border-collapse text-sm">
+                        <caption className="sr-only">{rankingsCaption}</caption>
+                        <thead>
+                          <tr className="text-left font-mono text-3xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
                             <th
-                              scope="row"
-                              className="py-2 pr-3 text-left font-normal"
+                              scope="col"
+                              className={`${STICKY_HEADER_CLASS} py-2 pr-3 text-right`}
+                              style={STICKY_HEADER_STYLE}
                             >
-                              <span className="font-semibold text-[var(--home-ink)]">
-                                {player.name}
-                              </span>{" "}
-                              <span className="text-[var(--home-ink-muted)]">
-                                {player.position}
-                                {player.positionRank !== undefined
-                                  ? player.positionRank
-                                  : ""}{" "}
-                                {player.team}
-                              </span>
+                              #
                             </th>
-                            <td className="py-2 pr-3 text-[var(--home-ink-muted)]">
-                              {player.opponent ?? "--"}
-                            </td>
-                            <td className="py-2 pr-3 text-right font-mono tabular-nums text-[var(--home-ink-muted)]">
-                              {formatSpread(player)}
-                            </td>
-                            <td className="py-2 text-right font-mono tabular-nums text-[var(--home-ink-muted)]">
-                              {formatOwnership(player.ownership)}
-                            </td>
+                            <th
+                              scope="col"
+                              className={`${STICKY_HEADER_CLASS} py-2 pr-3`}
+                              style={STICKY_HEADER_STYLE}
+                            >
+                              Player
+                            </th>
+                            <th
+                              scope="col"
+                              className={`${STICKY_HEADER_CLASS} py-2 pr-3`}
+                              style={STICKY_HEADER_STYLE}
+                            >
+                              Opponent
+                            </th>
+                            <th
+                              scope="col"
+                              className={`${STICKY_HEADER_CLASS} py-2 pr-3 text-right`}
+                              style={STICKY_HEADER_STYLE}
+                            >
+                              Expert range
+                            </th>
+                            <th
+                              scope="col"
+                              className={`${STICKY_HEADER_CLASS} py-2 text-right`}
+                              style={STICKY_HEADER_STYLE}
+                            >
+                              Rostered
+                            </th>
                           </tr>
+                        </thead>
+                        <tbody>
+                          {visiblePlayers.map((player) => (
+                            <tr
+                              key={player.id}
+                              className="border-b border-[var(--home-rule)]"
+                            >
+                              <td className="py-2 pr-3 text-right font-mono tabular-nums text-[var(--home-ink-muted)]">
+                                {player.rank}
+                              </td>
+                              <th
+                                scope="row"
+                                className="py-2 pr-3 text-left font-normal"
+                              >
+                                <span className="font-semibold text-[var(--home-ink)]">
+                                  {player.name}
+                                </span>{" "}
+                                <span className="text-[var(--home-ink-muted)]">
+                                  {player.position}
+                                  {player.positionRank !== undefined
+                                    ? player.positionRank
+                                    : ""}{" "}
+                                  {player.team}
+                                </span>
+                              </th>
+                              <td className="py-2 pr-3 text-[var(--home-ink-muted)]">
+                                {player.opponent ?? "--"}
+                              </td>
+                              <td className="py-2 pr-3 text-right font-mono tabular-nums text-[var(--home-ink-muted)]">
+                                {formatSpread(player)}
+                              </td>
+                              <td className="py-2 text-right font-mono tabular-nums text-[var(--home-ink-muted)]">
+                                {formatOwnership(player.ownership)}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    ) : (
+                      <ol
+                        aria-label={rankingsCaption}
+                        className="mt-3 list-none border-t border-[var(--home-rule)] p-0"
+                      >
+                        {visiblePlayers.map((player) => (
+                          <li
+                            key={player.id}
+                            className="flex items-start gap-3 border-b border-[var(--home-rule)] py-2.5"
+                          >
+                            <span className="w-8 shrink-0 text-right font-mono text-sm tabular-nums text-[var(--home-ink-muted)]">
+                              <span className="sr-only">Rank </span>
+                              {player.rank}
+                            </span>
+                            <div className="min-w-0 flex-1">
+                              <p className="text-sm">
+                                <span className="font-semibold text-[var(--home-ink)]">
+                                  {player.name}
+                                </span>{" "}
+                                <span className="text-[var(--home-ink-muted)]">
+                                  {player.position}
+                                  {player.positionRank !== undefined
+                                    ? player.positionRank
+                                    : ""}{" "}
+                                  {player.team}
+                                </span>
+                              </p>
+                              <dl className="mt-1 flex flex-wrap gap-x-4 gap-y-1 font-mono text-2xs">
+                                <ReadoutPair
+                                  label="Opponent"
+                                  value={player.opponent ?? "--"}
+                                />
+                                <ReadoutPair
+                                  label="Expert range"
+                                  value={formatSpread(player)}
+                                />
+                                <ReadoutPair
+                                  label="Rostered"
+                                  value={formatOwnership(player.ownership)}
+                                />
+                              </dl>
+                            </div>
+                          </li>
                         ))}
-                      </tbody>
-                    </table>
-                  </div>
+                      </ol>
+                    )}
+                    {remainingCount > 0 ? (
+                      <div className="mt-4 flex flex-wrap items-center gap-2">
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setWindowState({
+                              key: windowKey,
+                              count: Math.min(
+                                visibleCount + FANTASY_RANKINGS_PAGE_SIZE,
+                                filteredPlayers.length,
+                              ),
+                            })
+                          }
+                          className={`${TOGGLE_CLASS} border-[var(--home-rule)] bg-[var(--home-paper)] text-[var(--home-ink)] hover:border-[var(--home-signal)]`}
+                        >
+                          Load more ({remainingCount} left)
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setWindowState({
+                              key: windowKey,
+                              count: filteredPlayers.length,
+                            })
+                          }
+                          className={`${TOGGLE_CLASS} border-[var(--home-rule)] bg-[var(--home-paper)] text-[var(--home-ink-muted)] hover:border-[var(--home-signal)]`}
+                        >
+                          Show all {filteredPlayers.length}
+                        </button>
+                      </div>
+                    ) : null}
+                  </>
                 )}
                 {source ? (
                   <p className="mt-4 text-2xs text-[var(--home-ink-muted)]">
-                    {source.playerCount} players from {source.provider},{" "}
-                    {source.expertCount} contributing experts.{" "}
-                    <a
-                      href={source.url}
-                      className="underline decoration-[var(--home-rule)] underline-offset-4"
-                      rel="noreferrer noopener"
-                      target="_blank"
-                    >
-                      Source board
-                    </a>
+                    {source.playerCount} players on the{" "}
+                    {describeFantasyWeeklySource(
+                      source,
+                      board === "flex" ? "flex" : "quarterback",
+                    )}
+                    {renderSourceHost(source)}, {source.expertCount}{" "}
+                    contributing experts.{" "}
+                    <SourceLink href={source.url} label="Source board" />
                   </p>
                 ) : null}
               </section>
