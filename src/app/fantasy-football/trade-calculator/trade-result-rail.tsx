@@ -27,10 +27,12 @@ function verdictCopy(
   }
   switch (result?.verdict) {
     case "balanced":
+      // Balanced is the outcome the tool exists to find, so it reads in ink.
+      // The warning tone stays with the withheld verdict below.
       return {
         title: "Balanced offer",
         body: "The central values are within 5% of each other.",
-        tone: "var(--home-warning)",
+        tone: "var(--home-ink)",
       };
     case "leans-side-a":
       return {
@@ -63,6 +65,49 @@ function verdictCopy(
         tone: "var(--home-warning)",
       };
   }
+}
+
+/**
+ * Compact verdict for phones and tablets, where the evaluation rail stacks
+ * under both ledgers. Rendered only once both sides hold a player, so it never
+ * pins "Build both sides" over an empty ledger, and only below lg, where the
+ * rail is not already in view. It carries no live region; the rail announces.
+ */
+export function TradeVerdictStrip({
+  result,
+  hasBothSides,
+}: {
+  result: FantasyTradeEvaluation | null;
+  hasBothSides: boolean;
+}) {
+  if (!hasBothSides || !result) return null;
+  const copy = verdictCopy(result, hasBothSides);
+  return (
+    <div
+      data-testid="trade-verdict-strip"
+      className="sticky top-[4.5rem] z-20 flex items-center justify-between gap-3 rounded-[var(--radius-xl)] border px-3 py-1.5 lg:hidden"
+      style={{
+        borderColor: "var(--home-rule)",
+        background: "var(--home-paper-raised)",
+        boxShadow: "var(--shadow-sm)",
+      }}
+    >
+      <div className="min-w-0">
+        <p className="truncate text-sm font-semibold tracking-[-0.02em]" style={{ color: copy.tone }}>
+          {copy.title}
+        </p>
+        <p className="font-mono text-3xs uppercase tracking-[0.1em] text-[var(--home-ink-muted)]">
+          {result.coverage} coverage
+        </p>
+      </div>
+      <a
+        href="#trade-evaluation"
+        className="inline-flex min-h-touch shrink-0 items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-xs font-semibold text-[var(--home-ink)] transition-[border-color,background-color] hover:border-[var(--home-signal)]"
+      >
+        Evidence
+      </a>
+    </div>
+  );
 }
 
 function coverageStyle(coverage: FantasyTradeCoverage | null) {
@@ -153,8 +198,9 @@ export function TradeResultRail({
 
   return (
     <aside
+      id="trade-evaluation"
       aria-label="Trade evaluation"
-      className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4 lg:sticky lg:top-24 lg:self-start"
+      className="scroll-mt-24 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4 lg:sticky lg:top-24 lg:self-start"
     >
       <div className="flex items-center justify-between gap-3 border-b border-[var(--home-rule)] pb-3">
         <span className="inline-flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
@@ -199,7 +245,7 @@ export function TradeResultRail({
             <dd className="text-right font-mono text-2xs text-[var(--home-ink)]">
               {expertPlayers}/{totalPlayers || 0}
               <span className="mt-0.5 block text-[var(--home-ink-muted)]">
-                {formatUpdatedAt(result?.sources.expert.asOf)}
+                {result ? formatUpdatedAt(result.sources.expert.asOf) : "Waiting for players"}
               </span>
             </dd>
           </div>
@@ -214,9 +260,14 @@ export function TradeResultRail({
             <dd className="text-right font-mono text-2xs text-[var(--home-ink)]">
               {marketPlayers}/{totalPlayers || 0}
               <span className="mt-0.5 block text-[var(--home-ink-muted)]">
-                {result?.sources.market.usable
-                  ? formatUpdatedAt(result.sources.market.asOf)
-                  : "Not current"}
+                {/* "Not current" is a staleness claim, so it waits for an
+                    evaluated result that actually found the market unusable.
+                    Before that the header already carries the source date. */}
+                {!result
+                  ? "Waiting for players"
+                  : result.sources.market.usable
+                    ? formatUpdatedAt(result.sources.market.asOf)
+                    : "Not current"}
               </span>
             </dd>
           </div>

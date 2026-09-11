@@ -2,6 +2,7 @@
  * @jest-environment node
  */
 import {
+  FANTASY_TRADE_IN_SEASON_WARNING,
   FANTASY_TRADE_MODEL_VERSION,
   calculateReplacementRelativeTradeValue,
   evaluateFantasyTrade,
@@ -322,6 +323,76 @@ describe("evaluateFantasyTrade", () => {
     expect(result.rangesOverlap).toBe(false);
     expect(result.verdict).toBe("clear-edge-side-a");
     expect(result.winner).toBe("side-a");
+  });
+
+  describe("from Week 1", () => {
+    // 2026 opens Wednesday September 9. The provider kept stamping the
+    // mock-draft feed after kickoff, so these pin the season boundary with a
+    // market that is still current by the four-day daily-refresh window.
+    const IN_SEASON_NOW = new Date("2026-09-11T12:00:00.000Z");
+    const DAY_BEFORE_KICKOFF = new Date("2026-09-08T12:00:00.000Z");
+
+    function inSeasonSnapshot(
+      marketAsOf = "2026-09-10T00:00:00.000Z",
+      expertAsOf = "2026-09-10T00:19:00.000Z"
+    ): FantasySnapshot {
+      const snapshot = buildSnapshot();
+      snapshot.upstreamUpdatedAt = expertAsOf;
+      snapshot.adpSource = { ...snapshot.adpSource!, asOf: marketAsOf };
+      return snapshot;
+    }
+
+    it("keeps pricing a current feed but caps coverage at limited so no clear edge is issued", () => {
+      const result = evaluateFantasyTrade(
+        input(["RB-1"], ["RB-30"], { snapshot: inSeasonSnapshot(), now: IN_SEASON_NOW })
+      );
+
+      expect(result.sources.market.usable).toBe(true);
+      expect(result.warnings).toContain(FANTASY_TRADE_IN_SEASON_WARNING);
+      expect(result.coverage).toBe("limited");
+      expect(result.verdict).toBe("leans-side-a");
+      expect(result.winner).toBe("side-a");
+      expect(result.relativeGap).not.toBeNull();
+    });
+
+    it("still calls a balanced deal balanced", () => {
+      const result = evaluateFantasyTrade(
+        input(["RB-twin-a"], ["RB-twin-b"], { snapshot: inSeasonSnapshot(), now: IN_SEASON_NOW })
+      );
+
+      expect(result.coverage).toBe("limited");
+      expect(result.verdict).toBe("balanced");
+    });
+
+    it("issues a clear edge the day before kickoff with the same inputs", () => {
+      const result = evaluateFantasyTrade(
+        input(["RB-1"], ["RB-30"], {
+          snapshot: inSeasonSnapshot("2026-09-07T00:00:00.000Z", "2026-09-07T00:19:00.000Z"),
+          now: DAY_BEFORE_KICKOFF,
+        })
+      );
+
+      expect(result.warnings).not.toContain(FANTASY_TRADE_IN_SEASON_WARNING);
+      expect(result.coverage).toBe("supported");
+      expect(result.verdict).toBe("clear-edge-side-a");
+    });
+
+    it("withholds on the stale feed alone once the market stops updating", () => {
+      const result = evaluateFantasyTrade(
+        input(["RB-1"], ["RB-30"], {
+          snapshot: inSeasonSnapshot("2026-09-05T00:00:00.000Z"),
+          now: IN_SEASON_NOW,
+        })
+      );
+
+      expect(result.sources.market.usable).toBe(false);
+      expect(result.coverage).toBe("insufficient");
+      expect(result.verdict).toBe("insufficient");
+      expect(result.warnings).not.toContain(FANTASY_TRADE_IN_SEASON_WARNING);
+      expect(result.warnings).toContain(
+        "Current market ADP is unavailable, so the calculator cannot issue exact values or a trade verdict."
+      );
+    });
   });
 
   it("withholds the verdict when a side includes a position the league does not roster", () => {

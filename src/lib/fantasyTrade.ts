@@ -5,6 +5,7 @@ import type {
 import { routeScoringToScoringFormat } from "@/lib/fantasy";
 import {
   getFantasyAdpFreshness,
+  getNflRegularSeasonWeek,
   getSnapshotStaleness,
   type FantasySnapshotStaleness,
 } from "@/lib/fantasyUtils";
@@ -31,6 +32,15 @@ import type { Player, RedraftLineupSettings } from "@/types";
 export const FANTASY_TRADE_MODEL_VERSION = "preseason-redraft-v1";
 export const FANTASY_TRADE_BALANCED_THRESHOLD = 0.05;
 export const FANTASY_TRADE_CLEAR_EDGE_THRESHOLD = 0.15;
+/**
+ * From Week 1 the market leg still prices whatever mock-draft window the
+ * provider keeps publishing, which is a draft price and not an in-season trade
+ * value. The warning caps coverage at limited, so a running in-season estimate
+ * can say balanced or leaning and never a clear edge. Withholding stays a
+ * freshness fact: it happens when the feed stops, not when the calendar turns.
+ */
+export const FANTASY_TRADE_IN_SEASON_WARNING =
+  "The season is under way, so this prices what these players would cost in a draft this week rather than what they are worth in an in-season trade.";
 
 const SUPPORTED_TEAM_COUNTS = new Set([8, 10, 12, 14, 16]);
 const SUPPORTED_ROSTER_SIZES = new Set([13, 14, 15, 16, 17, 18]);
@@ -552,10 +562,17 @@ export function evaluateFantasyTrade(
       getFantasyAdpFreshness(marketAsOf, input.snapshot.season, now) === "current" &&
       marketFreshness !== "stale"
   );
+  const seasonWeek = getNflRegularSeasonWeek(input.snapshot.season, now);
   const leagueIssues = validateLeague(input.snapshot, input.league);
   const sideIssues = validateSides(input.sideA, input.sideB);
   const warnings = [...leagueIssues, ...sideIssues];
 
+  // Only while the market is still usable. Once the feed stops, the stale
+  // warning below is the actual cause of the withheld verdict, and listing the
+  // season beside it would read as a second cause.
+  if (marketUsable && seasonWeek >= 1) {
+    warnings.push(FANTASY_TRADE_IN_SEASON_WARNING);
+  }
   if (expertFreshness === "stale") {
     warnings.push("The expert board is stale, so the calculator cannot issue a trade verdict.");
   } else if (expertFreshness === "aging") {

@@ -28,7 +28,7 @@ import {
 import { getCurrentDraftSeason } from "@/app/fantasy-football/draft-tracker/hooks/useDraftState";
 import { REDRAFT_LINEUP_PRESETS } from "@/lib/redraftLineup";
 import { TradePackageFieldset } from "./trade-package-fieldset";
-import { TradeResultRail } from "./trade-result-rail";
+import { TradeResultRail, TradeVerdictStrip } from "./trade-result-rail";
 import { TradeRosterImpact } from "./trade-roster-impact";
 import {
   buildTradeCalculatorHref,
@@ -50,6 +50,18 @@ const BREADCRUMBS = createBreadcrumbItems([
 // disarms again, or the two-step guard quietly degrades into a one-click wipe
 // the next time the visitor comes back to the page.
 const RESET_ARM_TIMEOUT_MS = 5000;
+
+// The provider publishes the market window's end as a date, normalised to
+// midnight UTC by the builder, so the note prints it as a date in UTC rather
+// than letting a US timezone roll it back a day.
+function formatMarketDate(asOf: string | null | undefined): string | null {
+  if (!asOf) return null;
+  const parsed = new Date(asOf);
+  if (Number.isNaN(parsed.getTime())) return null;
+  return new Intl.DateTimeFormat("en-US", { dateStyle: "medium", timeZone: "UTC" }).format(parsed);
+}
+
+const SCOPE_LINK_CLASS = "underline decoration-[var(--home-signal)] underline-offset-4";
 
 const subscribeToHydration = () => () => undefined;
 const getHydratedSnapshot = () => true;
@@ -334,10 +346,14 @@ export function TradeCalculatorClient() {
       ? expertFreshness
       : marketFreshness;
   // The declared scope is a preseason one-QB redraft model and its market leg
-  // is mock-draft ADP, which stops moving when real drafts end. Rather than
-  // repoint it at in-season data mid-season, say so on the page, so a withheld
-  // verdict from Week 1 on reads as the model's boundary and not a breakage.
+  // is mock-draft ADP. The provider kept stamping that feed after the 2026
+  // kickoff, so the engine gates on the feed's age rather than the calendar:
+  // while the feed is current it prices a draft market at limited coverage
+  // (evaluateFantasyTrade pushes FANTASY_TRADE_IN_SEASON_WARNING from Week 1),
+  // and once the feed stops it withholds. The note below names which of those
+  // two states the page is in, so neither reads as a breakage.
   const seasonWeek = snapshot ? getNflRegularSeasonWeek(snapshot.season) : 0;
+  const marketDate = formatMarketDate(snapshot?.adpSource?.asOf);
   const valuesAvailable = Boolean(result && result.coverage !== "insufficient");
   const allSelected = useMemo(
     () => new Set([...trade.givePlayerIds, ...trade.getPlayerIds]),
@@ -392,9 +408,35 @@ export function TradeCalculatorClient() {
 
         {seasonWeek >= 1 && snapshot ? (
           <SeasonalScopeNote season={snapshot.season} week={seasonWeek}>
-            This calculator prices a preseason draft market, and that market stopped moving once
-            real drafts ended, so from here on it declines a verdict rather than reading a frozen
-            board as a live one. I would rather it say nothing than say something I cannot support.
+            {marketFreshness === "stale" ? (
+              <>
+                This calculator prices a preseason draft market, and the mock-draft feed behind it{" "}
+                {marketDate
+                  ? `last sampled real drafts on ${marketDate}, which is past the four-day window the estimate needs, so`
+                  : "has no dated sample, so"}{" "}
+                the verdict is withheld. I would rather it say nothing than say something I cannot
+                support.{" "}
+              </>
+            ) : (
+              <>
+                This calculator prices a preseason draft market. The mock-draft feed behind it was
+                still sampling real drafts as of {marketDate ?? "the dated stamp above"}, so the
+                estimate still runs, but it answers what these players would cost in a draft this
+                week rather than what they are worth in an in-season trade, and from Week 1 it
+                reports balanced or leaning at most and never a clear edge. Once that feed stops
+                updating the verdict is withheld on its own, because I would rather it say nothing
+                than say something I cannot support.{" "}
+              </>
+            )}
+            Ranks that still move are on the{" "}
+            <Link href="/fantasy-football/weekly" className={SCOPE_LINK_CLASS}>
+              weekly board
+            </Link>
+            , and this week&rsquo;s pickups are on the{" "}
+            <Link href="/fantasy-football/waivers" className={SCOPE_LINK_CLASS}>
+              waivers page
+            </Link>
+            .
           </SeasonalScopeNote>
         ) : null}
 
@@ -449,6 +491,13 @@ export function TradeCalculatorClient() {
           </div>
         ) : (
           <>
+            {/* Below lg the evaluation rail stacks under both ledgers, so on a
+                phone the verdict lands past the fold the moment it changes
+                while focus stays in the combobox. This strip keeps the verdict
+                pinned under the site header instead of scrolling the visitor
+                away from the field they are typing in. */}
+            <TradeVerdictStrip result={result} hasBothSides={hasBothSides} />
+
             <div className="grid items-start gap-5 lg:grid-cols-[15rem_minmax(0,1fr)_20rem]">
               <LeagueSettings state={routeState} onChange={updateRouteState} />
 
