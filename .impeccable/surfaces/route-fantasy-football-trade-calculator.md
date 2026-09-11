@@ -143,3 +143,12 @@ measuring mid-animation. Set it to `auto` before measuring.
 
 Verified after in both themes at 390, 768, 1024 and 1440, idle and populated: zero AA contrast
 failures, zero horizontal overflow, one `main`, one `h1`, zero unnamed sections.
+
+One CI lesson from the same day. The narrow-screen e2e test on this route walks every visible
+anchor in the shell and holds it to 44px, and the two links the clarify pass put inside the
+note's prose measured 18px, so CI's second shard went red while the same spec had passed four
+times against the dev server here. The links now carry `inline-flex min-h-touch` with negative
+vertical margins so the sentence keeps its line rhythm, measured at 94x44 and 93x44. The
+sibling notes on the other surfaces keep their inline links under the 2.5.8 prose exemption,
+because their specs do not hold anchors to the floor and their briefs recorded the exemption;
+this route's brief says 44px controls, so here the floor wins.

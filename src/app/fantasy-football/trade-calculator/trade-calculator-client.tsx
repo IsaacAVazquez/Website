@@ -61,7 +61,11 @@ function formatMarketDate(asOf: string | null | undefined): string | null {
   return new Intl.DateTimeFormat("en-US", { dateStyle: "medium", timeZone: "UTC" }).format(parsed);
 }
 
-const SCOPE_LINK_CLASS = "underline decoration-[var(--home-signal)] underline-offset-4";
+// Inline in the note's prose, but the trade calculator's contract is 44px on every
+// control, so the links carry the touch floor with negative vertical margins
+// that keep the line rhythm of the surrounding sentence.
+const SCOPE_LINK_CLASS =
+  "inline-flex min-h-touch items-center -my-3 underline decoration-[var(--home-signal)] underline-offset-4";
 
 const subscribeToHydration = () => () => undefined;
 const getHydratedSnapshot = () => true;
