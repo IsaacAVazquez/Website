@@ -370,6 +370,92 @@ describe("DraftTrackerClient", () => {
     expect(search).not.toHaveFocus();
   });
 
+  it("moves focus to the on-the-clock tile when a logged pick leaves it on the document", () => {
+    render(<DraftTrackerClient />);
+
+    // The row button unmounts with the pick in a live room; here the click
+    // never focused it, so focus is already on the document as it would be
+    // after that unmount.
+    expect(document.body).toHaveFocus();
+    fireEvent.click(screen.getByRole("button", { name: "Log Bijan Robinson" }));
+
+    const tile = screen.getByText("On the clock").closest("div");
+    expect(tile).toHaveAttribute("tabindex", "-1");
+    expect(tile).toHaveFocus();
+  });
+
+  it("moves focus to the on-the-clock tile after the drawer logs its pick", () => {
+    render(<DraftTrackerClient />);
+
+    fireEvent.click(screen.getAllByRole("button", { name: "Open Bijan Robinson detail" })[0]);
+    const logThisPick = screen.getByRole("button", { name: "Log this pick" });
+    logThisPick.focus();
+    expect(logThisPick).toHaveFocus();
+
+    fireEvent.click(logThisPick);
+
+    expect(mockDraftPlayer).toHaveBeenCalledWith(expect.objectContaining({ id: "rb-1" }));
+    expect(screen.queryByRole("dialog", { name: "Bijan Robinson detail" })).not.toBeInTheDocument();
+    expect(screen.getByText("On the clock").closest("div")).toHaveFocus();
+  });
+
+  it("keeps the fascia pick counter whole on a phone", () => {
+    render(<DraftTrackerClient />);
+
+    // The compact copy renders below `sm` and the spaced copy above it; both
+    // are in the document and the stylesheet picks one.
+    expect(screen.getByText("#2/150")).toHaveClass("sm:hidden");
+    expect(screen.getByText("#2 / 150")).toHaveClass("hidden", "sm:inline");
+    expect(screen.getByText("Next turn")).toHaveClass("sm:hidden");
+    expect(screen.getByText("Pool").closest("div")).toHaveClass("hidden", "sm:block");
+  });
+
+  it("expands the strip cards with their reasoning instead of a second card set", () => {
+    const snapshotResult = mockUseFantasySnapshot();
+    mockUseFantasySnapshot.mockReturnValue({
+      ...snapshotResult,
+      snapshot: {
+        ...snapshotResult.snapshot,
+        overall: [
+          ...snapshotResult.snapshot.overall,
+          {
+            id: "wr-1",
+            name: "Ja'Marr Chase",
+            team: "CIN",
+            position: "WR",
+            averageRank: 2,
+            rankEcr: 2,
+            rankAverage: 2.1,
+            standardDeviation: 0.5,
+            tier: 1,
+            minRank: 1,
+            maxRank: 3,
+          },
+        ],
+      },
+    });
+
+    render(<DraftTrackerClient />);
+
+    const toggle = screen.getByRole("button", { name: /Why these picks/i });
+    expect(toggle).toHaveAttribute("aria-controls", "draft-decision-strip draft-decision-detail");
+    expect(screen.queryByText(/^Board #1 · Tier 1/)).not.toBeInTheDocument();
+    expect(screen.queryByText("Fills WR1")).not.toBeInTheDocument();
+
+    fireEvent.click(toggle);
+
+    expect(toggle).toHaveAttribute("aria-expanded", "true");
+    expect(screen.getByText(/^Board #1 · Tier 1/)).toBeVisible();
+    expect(screen.getByText("Fills WR1")).toBeVisible();
+    expect(screen.getAllByRole("button", { name: "Log Bijan Robinson as pick 2" })).toHaveLength(1);
+    expect(screen.getAllByRole("button", { name: "Log Ja'Marr Chase as pick 2" })).toHaveLength(1);
+    expect(screen.queryByRole("button", { name: "Log pick" })).not.toBeInTheDocument();
+    expect(
+      document.querySelector("#draft-decision-detail")?.querySelector('button[aria-label^="Log "]')
+    ).toBeNull();
+    expect(screen.getByRole("heading", { name: "What changes if you wait" })).toBeVisible();
+  });
+
   it("keeps fascia undo available after the final pick", () => {
     const draftStateResult = mockUseDraftState();
     mockUseDraftState.mockReturnValue({

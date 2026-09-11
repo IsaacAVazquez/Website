@@ -440,12 +440,16 @@ export function DraftBoard({
                     {vorp ? (
                       <>
                         <span className="sr-only">Value over replacement player</span>
+                        {/* VORP is a column of measured values, so it reads in
+                            ink like ADP beside it. Signal on the hover wash and
+                            the keyboard highlight measured 4.41:1 and 4.01:1 in
+                            light mode; the accent stays on the rail and the star. */}
                         <span
-                          className="w-auto font-mono text-xs md:w-12 md:text-right"
+                          className="w-auto font-mono text-xs tabular-nums md:w-12 md:text-right"
                           style={{
                             color:
                               vorp.value > 0
-                                ? "var(--home-signal)"
+                                ? "var(--home-ink)"
                                 : "var(--home-ink-muted)",
                           }}
                           title={FANTASY_VORP_TOOLTIP}

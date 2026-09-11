@@ -77,8 +77,11 @@ function WorkingInstrumentHeader({ pathname }: { pathname: string }) {
         return;
       }
 
+      // A surface that owns "/" for its own search (the draft boards) prevents
+      // default first, and the site overlay must not open on top of it.
       if (
         event.key === "/" &&
+        !event.defaultPrevented &&
         !isTypingTarget &&
         !event.metaKey &&
         !event.ctrlKey &&

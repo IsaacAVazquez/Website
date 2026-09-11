@@ -96,9 +96,11 @@ export function RedraftDecisionPanel({
                     <span className="truncate text-sm font-semibold tracking-[-0.01em]">
                       {best.player.name}
                     </span>
+                    {/* A column value on a card, so it reads in ink. Signal on the
+                        most-at-risk warning wash measured 4.10:1 in light mode. */}
                     <span
-                      className="flex-none font-mono text-xs"
-                      style={{ color: "var(--home-signal)" }}
+                      className="flex-none font-mono text-xs tabular-nums"
+                      style={{ color: "var(--home-ink)" }}
                     >
                       Index {best.value.toFixed(1)}
                     </span>
