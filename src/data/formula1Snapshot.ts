@@ -13,8 +13,8 @@ export const formula1Snapshot: Formula1Snapshot = {
     "constructorStandings": "https://api.openf1.org/v1/championship_teams?session_key=11361"
   },
   "season": 2026,
-  "generatedAt": "2026-09-11T04:29:02.589Z",
-  "defaultMeetingKey": "1294",
+  "generatedAt": "2026-09-11T20:53:43.855Z",
+  "defaultMeetingKey": "1295",
   "standingsMeetingKey": "1293",
   "meetings": [
     {
@@ -6158,7 +6158,7 @@ export const formula1Snapshot: Formula1Snapshot = {
       "gmtOffset": "02:00:00",
       "startAt": "2026-09-11T11:30:00+00:00",
       "endAt": "2026-09-13T15:00:00+00:00",
-      "status": "upcoming",
+      "status": "live",
       "hasSprint": false,
       "raceSessionKey": "11369",
       "raceStartsAt": "2026-09-13T13:00:00+00:00",
@@ -7173,63 +7173,63 @@ export const formula1Snapshot: Formula1Snapshot = {
     "season": 2026,
     "totalRaces": 25,
     "completedRaces": 15,
-    "upcomingRaces": 10,
+    "upcomingRaces": 9,
     "sprintWeekends": 6
   },
   "nextMeeting": {
-    "key": "1294",
-    "name": "Spanish Grand Prix",
-    "officialName": "FORMULA 1 TAG HEUER GRAN PREMIO DE ESPAÑA 2026",
-    "location": "Madrid",
-    "countryName": "Spain",
-    "countryCode": "ESP",
-    "countryFlag": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/spain-flag.png",
-    "circuitKey": "153",
-    "circuitShortName": "Madring",
+    "key": "1295",
+    "name": "Azerbaijan Grand Prix",
+    "officialName": "FORMULA 1 QATAR AIRWAYS AZERBAIJAN GRAND PRIX 2026",
+    "location": "Baku",
+    "countryName": "Azerbaijan",
+    "countryCode": "AZE",
+    "countryFlag": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/azerbaijan-flag.png",
+    "circuitKey": "144",
+    "circuitShortName": "Baku",
     "circuitType": "Temporary - Street",
-    "circuitImage": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Spain%20carbon.png",
-    "gmtOffset": "02:00:00",
-    "startAt": "2026-09-11T11:30:00+00:00",
-    "endAt": "2026-09-13T15:00:00+00:00",
+    "circuitImage": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Azerbaijan%20carbon.png",
+    "gmtOffset": "04:00:00",
+    "startAt": "2026-09-24T08:30:00+00:00",
+    "endAt": "2026-09-26T13:00:00+00:00",
     "status": "upcoming",
     "hasSprint": false,
-    "raceSessionKey": "11369",
-    "raceStartsAt": "2026-09-13T13:00:00+00:00",
+    "raceSessionKey": "11377",
+    "raceStartsAt": "2026-09-26T11:00:00+00:00",
     "sessions": [
       {
-        "key": "11362",
+        "key": "11370",
         "name": "Practice 1",
         "type": "Practice",
-        "startAt": "2026-09-11T11:30:00+00:00",
-        "endAt": "2026-09-11T12:30:00+00:00"
+        "startAt": "2026-09-24T08:30:00+00:00",
+        "endAt": "2026-09-24T09:30:00+00:00"
       },
       {
-        "key": "11363",
+        "key": "11371",
         "name": "Practice 2",
         "type": "Practice",
-        "startAt": "2026-09-11T15:00:00+00:00",
-        "endAt": "2026-09-11T16:00:00+00:00"
+        "startAt": "2026-09-24T12:00:00+00:00",
+        "endAt": "2026-09-24T13:00:00+00:00"
       },
       {
-        "key": "11364",
+        "key": "11372",
         "name": "Practice 3",
         "type": "Practice",
-        "startAt": "2026-09-12T10:30:00+00:00",
-        "endAt": "2026-09-12T11:30:00+00:00"
+        "startAt": "2026-09-25T08:30:00+00:00",
+        "endAt": "2026-09-25T09:30:00+00:00"
       },
       {
-        "key": "11365",
+        "key": "11373",
         "name": "Qualifying",
         "type": "Qualifying",
-        "startAt": "2026-09-12T14:00:00+00:00",
-        "endAt": "2026-09-12T15:00:00+00:00"
+        "startAt": "2026-09-25T12:00:00+00:00",
+        "endAt": "2026-09-25T13:00:00+00:00"
       },
       {
-        "key": "11369",
+        "key": "11377",
         "name": "Race",
         "type": "Race",
-        "startAt": "2026-09-13T13:00:00+00:00",
-        "endAt": "2026-09-13T15:00:00+00:00"
+        "startAt": "2026-09-26T11:00:00+00:00",
+        "endAt": "2026-09-26T13:00:00+00:00"
       }
     ],
     "classification": [],
