@@ -31,6 +31,13 @@ interface PlayerDetailDrawerProps {
   player: Player | null;
   /** Headline rank string already formatted by the calling board. */
   publishedRank?: string;
+  /**
+   * What `publishedRank` is a rank of, printed before the number. Defaults to
+   * "Rank" for boards whose published rank is the expert consensus. The best
+   * ball board passes "Board rank", since its order is the market under the
+   * lens and the footnote below attributes ranks to the consensus.
+   */
+  publishedRankLabel?: string;
   /** Total tier count on the active board, for "Tier N of M" context. */
   boardTierCount?: number;
   /**
@@ -93,7 +100,7 @@ function StatCell({ label, children }: { label: string; children: React.ReactNod
  * consensus spread, ownership, bye, ADP) plus the cross-surface watchlist,
  * notes, and compare controls. No projections/headshots: that data is empty.
  */
-export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onClose,
+export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel = "Rank", boardTierCount, onClose,
   adpAvailable = true,
   valueSignalAvailable = true,
   compareAvailable = true,
@@ -228,7 +235,7 @@ export function PlayerDetailDrawer({ player, publishedRank, boardTierCount, onCl
                   </span>
                   {publishedRank && (
                     <span className="text-2xs font-semibold uppercase tracking-[0.12em]" style={{ color: "var(--home-ink-muted)" }}>
-                      Rank {publishedRank}
+                      {publishedRankLabel} {publishedRank}
                     </span>
                   )}
                 </div>

@@ -19,9 +19,28 @@ import type { Player } from "@/types";
 import { bestIndex } from "./compareMetrics";
 import { RankDistributionBar } from "./RankDistributionBar";
 
+const CONSENSUS_RANK_LABEL = "Consensus rank";
+
 interface CompareModalProps {
   players: Player[];
   publishedRank?: (player: Player) => string;
+  /**
+   * What `publishedRank` is a rank of. Defaults to "Consensus rank", which is
+   * true for the redraft boards. A caller whose published rank is something
+   * else (the best ball board's order is the market under the lens) passes its
+   * own name, and the modal then renders that row under the caller's label and
+   * adds a separate consensus row read from `rankEcr`, so the two rank spaces
+   * are named and never share a Best.
+   */
+  publishedRankLabel?: string;
+  /**
+   * Players whose published consensus rank the calling board withholds
+   * because it sits outside the row's own expert range. Their consensus rank,
+   * position rank, and tier cells read "Withheld", the ADP row carries no
+   * value or reach token for them, and those rows award no Best at all,
+   * since a comparison with a blank in it cannot be settled.
+   */
+  consensusWithheld?: (player: Player) => boolean;
   /**
    * Whether the board these players came from ranks on the overall scale, so the
    * ADP value/reach signal is meaningful. False on position boards, where rankEcr
@@ -38,6 +57,8 @@ type Direction = "lower" | "higher" | "none";
 export function CompareModal({
   players,
   publishedRank,
+  publishedRankLabel = CONSENSUS_RANK_LABEL,
+  consensusWithheld,
   valueSignalAvailable = true,
   adpAvailable = true,
   onClose,
@@ -110,27 +131,75 @@ export function CompareModal({
     );
     return Number.isFinite(value) ? value : null;
   };
+  const isWithheld = (player: Player): boolean => consensusWithheld?.(player) ?? false;
+  const anyWithheld = players.some(isWithheld);
+  // A caller-named published rank is a different number from the consensus,
+  // so it gets its own row and the consensus row reads rankEcr directly.
+  const separateBoardRank = Boolean(publishedRank) && publishedRankLabel !== CONSENSUS_RANK_LABEL;
+  const consensusRankText = (p: Player) =>
+    publishedRank && !separateBoardRank
+      ? publishedRank(p)
+      : formatRankValue(p.rankEcr ?? p.averageRank);
+  const withheldToken = (
+    <span className="text-2xs font-semibold uppercase tracking-[0.1em]" style={{ color: "var(--home-ink-muted)" }}>
+      Withheld
+    </span>
+  );
 
-  const rows: Array<{ key: string; label: string; direction: Direction; render: (p: Player) => React.ReactNode }> = [
+  const rows: Array<{
+    key: string;
+    /** Which metric bestIndex scores; the key alone is the React key. */
+    metric: string;
+    label: string;
+    direction: Direction;
+    render: (p: Player) => React.ReactNode;
+    resolve?: (p: Player) => number | null;
+  }> = [
+    ...(separateBoardRank && publishedRank
+      ? [
+          {
+            key: "boardRank",
+            metric: "rank",
+            label: publishedRankLabel,
+            direction: "lower" as Direction,
+            render: (p: Player) => publishedRank(p),
+            resolve: publishedRankValue,
+          },
+        ]
+      : []),
     {
       key: "rank",
-      label: "Consensus rank",
-      direction: "lower",
-      render: (p) => (publishedRank ? publishedRank(p) : formatRankValue(p.rankEcr ?? p.averageRank)),
+      metric: "rank",
+      label: CONSENSUS_RANK_LABEL,
+      direction: anyWithheld ? "none" : "lower",
+      render: (p) => (isWithheld(p) ? withheldToken : consensusRankText(p)),
+      resolve: separateBoardRank ? undefined : publishedRankValue,
     },
     {
       key: "posRank",
+      metric: "posRank",
       label: "Position rank",
-      direction: samePosition ? "lower" : "none",
-      render: (p) => `${p.position} ${Number.isFinite(p.positionRank) ? p.positionRank : "—"}`,
+      direction: anyWithheld ? "none" : samePosition ? "lower" : "none",
+      render: (p) =>
+        isWithheld(p)
+          ? withheldToken
+          : `${p.position} ${Number.isFinite(p.positionRank) ? p.positionRank : "—"}`,
     },
-    { key: "tier", label: "Tier", direction: "lower", render: (p) => (Number.isFinite(p.tier) ? p.tier : "—") },
+    {
+      key: "tier",
+      metric: "tier",
+      label: "Tier",
+      direction: anyWithheld ? "none" : "lower",
+      render: (p) => (isWithheld(p) ? withheldToken : Number.isFinite(p.tier) ? p.tier : "—"),
+    },
     {
       key: "adp",
+      metric: "adp",
       label: "Market ADP",
       direction: adpAvailable ? "lower" : "none",
       render: (p) => {
-        const signal = adpAvailable && valueSignalAvailable ? getValueVsAdp(p) : null;
+        const signal =
+          adpAvailable && valueSignalAvailable && !isWithheld(p) ? getValueVsAdp(p) : null;
         return (
           <span className="inline-flex items-center gap-1.5">
             {adpAvailable ? formatAdp(p.adp) : "Unavailable"}
@@ -152,10 +221,17 @@ export function CompareModal({
         );
       },
     },
-    { key: "own", label: "Rostered %", direction: "higher", render: (p) => formatOwnership(p.ownership) },
-    { key: "bye", label: "Bye week", direction: "none", render: (p) => p.byeWeek ?? "—" },
+    {
+      key: "own",
+      metric: "own",
+      label: "Rostered %",
+      direction: "higher",
+      render: (p) => formatOwnership(p.ownership),
+    },
+    { key: "bye", metric: "bye", label: "Bye week", direction: "none", render: (p) => p.byeWeek ?? "—" },
     {
       key: "spread",
+      metric: "spread",
       label: "Expert consensus",
       direction: "none",
       render: (p) => getConsensusSpread(p)?.label ?? "—",
@@ -302,12 +378,7 @@ export function CompareModal({
               </thead>
               <tbody>
                 {rows.map((row) => {
-                  const winner = bestIndex(
-                    players,
-                    row.key,
-                    row.direction,
-                    row.key === "rank" ? publishedRankValue : undefined
-                  );
+                  const winner = bestIndex(players, row.metric, row.direction, row.resolve);
                   return (
                     <tr key={row.key}>
                       <th
@@ -372,6 +443,9 @@ export function CompareModal({
             Best marks the stronger value on a row, meaning a lower rank or ADP and a higher rostered percentage.
             Differences too small to act on stay unmarked, so a tier apart counts and a tenth of a point of rostered
             does not. Range bars share one scale, so a wider fill means more expert disagreement.
+            {anyWithheld
+              ? " Withheld marks a player whose published consensus rank sits outside his own expert range, so the consensus, position rank, and tier rows carry no Best."
+              : ""}
           </p>
         </motion.div>
       </motion.div>

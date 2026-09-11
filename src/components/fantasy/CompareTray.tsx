@@ -17,6 +17,10 @@ interface CompareTrayProps {
   /** Remove unresolved IDs only when this surface has the complete shared player universe. */
   pruneUnresolvedIds?: boolean;
   publishedRank?: (player: Player) => string;
+  /** Passed through to CompareModal, which names the rank row after it. */
+  publishedRankLabel?: string;
+  /** Passed through to CompareModal, which withholds the consensus rows for these players. */
+  consensusWithheld?: (player: Player) => boolean;
   /** Passed through to CompareModal — see PlayerDetailDrawer for the rationale. */
   valueSignalAvailable?: boolean;
   /** Whether the current ADP source is fresh enough to display or compare. */
@@ -39,6 +43,8 @@ export function CompareTray({
   playerDataReady = false,
   pruneUnresolvedIds = true,
   publishedRank,
+  publishedRankLabel,
+  consensusWithheld,
   valueSignalAvailable = true,
   adpAvailable = true,
 }: CompareTrayProps) {
@@ -253,6 +259,8 @@ export function CompareTray({
         <CompareModal
           players={players}
           publishedRank={publishedRank}
+          publishedRankLabel={publishedRankLabel}
+          consensusWithheld={consensusWithheld}
           valueSignalAvailable={valueSignalAvailable}
           adpAvailable={adpAvailable}
           onClose={() => setOpen(false)}

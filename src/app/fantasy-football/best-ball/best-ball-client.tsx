@@ -15,6 +15,7 @@ import {
 import { useBestBallSnapshot } from "@/hooks/useBestBallSnapshot";
 import { useDebounce } from "@/hooks/useDebounce";
 import {
+  getBestBallConsensusIssue,
   getContestPreset,
   hasSupportedBestBallAdp,
   sortBestBallRankings,
@@ -285,6 +286,30 @@ function getAdpDelta(player: Player): number | null {
   return Number(player.adp) - getConsensusRank(player);
 }
 
+/** Cell title for a row whose published consensus rank is withheld. */
+const WITHHELD_CELL_TITLE =
+  "The published consensus rank for this player sits outside its own expert range, so the board withholds it";
+
+/**
+ * The copy of a withheld row that the shared drawer and compare modal see.
+ * Neither component knows the best ball flag, and both derive tier, position
+ * rank, and the value or reach signal from `rankEcr` (falling back to
+ * `averageRank`), so a withheld row hands them a copy with those fields
+ * blanked. `rankAverage`, `minRank`, and `maxRank` stay, because the expert
+ * band is the half of the record that agrees with itself and the range bar
+ * reads only those. Nothing is substituted; the fields are simply absent.
+ */
+function withholdConsensus(player: RankedBestBallPlayer): RankedBestBallPlayer {
+  if (!player.consensusWithheld) return player;
+  return {
+    ...player,
+    rankEcr: undefined,
+    averageRank: Number.NaN,
+    tier: undefined,
+    positionRank: undefined,
+  };
+}
+
 function formatAdpDelta(value: number | null): string {
   if (value === null) return "NA";
   const rounded = Math.round(value * 10) / 10;
@@ -359,7 +384,10 @@ function BestBallPlayerRow({
   const atUndraftedFloor = adpAvailable && player.isUndraftedAtContestFloor;
   const playerAdpAvailable =
     adpAvailable && !atUndraftedFloor && Number.isFinite(player.adp);
-  const delta = playerAdpAvailable ? getAdpDelta(player) : null;
+  // A withheld consensus prints no value either, since value is ADP minus the
+  // rank the board just declined to print.
+  const withheld = player.consensusWithheld;
+  const delta = playerAdpAvailable && !withheld ? getAdpDelta(player) : null;
   const tone = getPositionTone(player.position);
 
   return (
@@ -398,7 +426,7 @@ function BestBallPlayerRow({
             style={{ ...tone, color: "var(--home-ink)" }}
           >
             {player.position}
-            {Number.isFinite(player.positionRank) ? player.positionRank : ""}
+            {!withheld && Number.isFinite(player.positionRank) ? player.positionRank : ""}
           </span>
           <span
             className="shrink-0 font-mono text-3xs uppercase tracking-[0.06em]"
@@ -425,18 +453,19 @@ function BestBallPlayerRow({
           </span>
           <span className="sr-only">PPR best ball consensus</span>
           <span
-            className="w-auto font-mono text-xs font-medium md:w-14 md:text-right"
-            title="PPR best ball expert consensus rank"
+            className={`w-auto font-mono md:w-14 md:text-right ${withheld ? "text-3xs uppercase" : "text-xs font-medium"}`}
+            title={withheld ? WITHHELD_CELL_TITLE : "PPR best ball expert consensus rank"}
+            style={withheld ? { color: "var(--home-ink-muted)" } : undefined}
           >
             <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
               ECR{" "}
             </span>
-            {formatRank(getConsensusRank(player))}
+            {withheld ? "Withheld" : formatRank(getConsensusRank(player))}
           </span>
           <span className="sr-only">Value versus ADP</span>
           <span
             className="w-auto font-mono text-xs md:w-14 md:text-right"
-            title={describeAdpDelta(delta)}
+            title={withheld ? WITHHELD_CELL_TITLE : describeAdpDelta(delta)}
             style={{
               color:
                 delta !== null && delta >= 3
@@ -533,20 +562,27 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
     if (!snapshot) return [];
     return sortBestBallRankings(modelPlayers, routeState.contest);
   }, [modelPlayers, routeState.contest, snapshot]);
+  // The shared drawer and modal read a plain Player, so the copy they get has
+  // the undrafted-floor ADP and any withheld consensus fields already blanked.
   const comparablePlayerLookup = useMemo(
     () =>
       new Map(
-        orderedPlayers.map((player) => [
-          player.id,
-          player.isUndraftedAtContestFloor
-            ? { ...player, adp: undefined }
-            : player,
-        ])
+        orderedPlayers.map((player) => {
+          const withheld = withholdConsensus(player);
+          return [
+            player.id,
+            player.isUndraftedAtContestFloor ? { ...withheld, adp: undefined } : withheld,
+          ];
+        })
       ),
     [orderedPlayers]
   );
   const resolveComparablePlayer = useCallback(
     (id: string) => comparablePlayerLookup.get(id),
+    [comparablePlayerLookup]
+  );
+  const isConsensusWithheld = useCallback(
+    (player: Player) => comparablePlayerLookup.get(player.id)?.consensusWithheld ?? false,
     [comparablePlayerLookup]
   );
 
@@ -621,6 +657,11 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
 
   const trackerHref = `/fantasy-football/best-ball/draft-tracker?contest=${routeState.contest}`;
   const freshnessWarning = getFreshnessWarning(snapshot, routeState.contest);
+  // The provider's self-consistency test on the PPR consensus. Every lens
+  // prints that column, Superflex included, so the note shows on every lens.
+  const consensusIssue = snapshot ? getBestBallConsensusIssue(snapshot) : null;
+  const withheldCount = orderedPlayers.filter((player) => player.consensusWithheld).length;
+  const boardReady = !isLoading && !error && visiblePlayers.length > 0;
   const policyLine = getBoardPolicyLine(activeContest, adpAvailable, snapshot?.adpSource?.provider);
 
   // Chips carry only the brand word ("Underdog ADP via Hayden Winks" → "Underdog");
@@ -685,14 +726,18 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
         </div>
       </header>
 
-        {seasonalWeek >= 1 ? (
+      {/* Wrapped in the shell like the rankings board's note, so it sits in
+          the content column rather than running edge to edge as an alert. */}
+      {seasonalWeek >= 1 ? (
+        <div className={`${SHELL_CLASS} pb-3.5`}>
           <SeasonalScopeNote season={snapshot?.season ?? 0} week={seasonalWeek}>
             Best ball is drafted before the season and scored through it, so this board describes a
             market that closed at kickoff. Rankings and ADP here are the preseason readings your
             drafts were made against, kept for reference rather than refreshed. Ranks that still
             move are on the <Link href="/fantasy-football/weekly" className="underline decoration-[var(--home-signal)] underline-offset-4">weekly board</Link>.
           </SeasonalScopeNote>
-        ) : null}
+        </div>
+      ) : null}
 
       {/* The lens is chosen once and then the board is read, so the pinned line
           belongs to the board controls further down. Two sticky bars at the same
@@ -795,7 +840,11 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             >
               {policyLine}
             </p>
-            <span className="flex shrink-0 flex-wrap gap-2">
+            {/* No shrink-0 here. With it the span took its two-pill max-content
+                width (352px) inside a 324px footer and the card's overflow
+                clipped the rules pill; letting it shrink lets its own wrap put
+                the second pill on a new line at 390. */}
+            <span className="flex flex-wrap gap-2">
               <Link
                 href={trackerHref}
                 className={PILL_ACTION_CLASS}
@@ -832,6 +881,34 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
         </div>
       ) : null}
 
+      {/* The provider's own numbers disagreeing with each other. The sentence
+          carries the consensus date, and the rows it names print no ECR,
+          value, tier, or position rank while the expert band stays. */}
+      {consensusIssue ? (
+        <div className={`${SHELL_CLASS} pt-3.5`}>
+          <div
+            role="note"
+            data-testid="best-ball-consensus-note"
+            className="rounded-lg border px-4 py-3 text-sm leading-6"
+            style={{
+              borderColor: "color-mix(in srgb, var(--home-warning) 48%, var(--home-rule))",
+              background: "color-mix(in srgb, var(--home-warning) 10%, var(--home-paper))",
+            }}
+          >
+            <p className="m-0">
+              <span className="font-semibold">Consensus withheld.</span>{" "}
+              {consensusIssue.charAt(0).toUpperCase()}
+              {consensusIssue.slice(1)}.
+            </p>
+            <p className="m-0 mt-1" style={{ color: "var(--home-ink-muted)" }}>
+              {withheldCount} of {orderedPlayers.length} rows on this board print no ECR, value,
+              tier, or position rank. Each one keeps its best, average, and worst expert rank, which
+              agree with each other. Board order is unchanged.
+            </p>
+          </div>
+        </div>
+      ) : null}
+
       <div className={`${SHELL_CLASS} pt-4`} data-testid="best-ball-board">
         <h2 className="sr-only">{activeContest.shortLabel} board</h2>
         {/* One pinned control line at every width. The board runs hundreds of
@@ -839,7 +916,8 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             mid-scroll rather than only at the top. The negative margin matches
             the shell padding so rows pass under a full-width band. */}
         <div
-          className="sticky top-[4.5rem] z-30 mb-3 flex flex-wrap items-center gap-x-3.5 gap-y-2.5 border-b py-2.5"
+          data-testid="best-ball-board-controls"
+          className="sticky top-[4.5rem] z-30 mb-3 border-b"
           style={{
             marginInline: "calc(-1 * clamp(1rem, 4vw, 2.5rem))",
             paddingInline: "clamp(1rem, 4vw, 2.5rem)",
@@ -849,49 +927,79 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             WebkitBackdropFilter: "blur(8px)",
           }}
         >
-          <PositionFilterBar
-            ariaLabel="Best ball position"
-            options={POSITION_OPTIONS}
-            value={routeState.position}
-            onChange={(position) => updateRouteState({ position })}
-            disabled={Boolean(error)}
-          />
-          <div className="relative">
-            <label htmlFor="best-ball-search" className="sr-only">
-              Search best ball rankings
-            </label>
-            <Search
-              className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2"
-              style={{ color: "var(--home-ink-muted)" }}
-              aria-hidden="true"
-            />
-            <input
-              id="best-ball-search"
-              name="best-ball-search"
-              type="search"
-              value={searchQuery}
-              maxLength={80}
-              onChange={(event) => setSearchQuery(event.target.value)}
+          <div className="flex flex-wrap items-center gap-x-3.5 gap-y-2.5 py-2.5">
+            <PositionFilterBar
+              ariaLabel="Best ball position"
+              options={POSITION_OPTIONS}
+              value={routeState.position}
+              onChange={(position) => updateRouteState({ position })}
               disabled={Boolean(error)}
-              autoComplete="off"
-              placeholder="Search player or team"
-              className="min-h-touch w-[200px] rounded-[4px] border pl-8 pr-2.5 font-mono text-xs placeholder:text-[var(--home-ink-muted)] disabled:cursor-not-allowed disabled:opacity-60"
-              style={{
-                borderColor: "var(--home-rule)",
-                background: "var(--home-paper-raised)",
-                color: "var(--home-ink)",
-              }}
             />
+            <div className="relative">
+              <label htmlFor="best-ball-search" className="sr-only">
+                Search best ball rankings
+              </label>
+              <Search
+                className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2"
+                style={{ color: "var(--home-ink-muted)" }}
+                aria-hidden="true"
+              />
+              <input
+                id="best-ball-search"
+                name="best-ball-search"
+                type="search"
+                value={searchQuery}
+                maxLength={80}
+                onChange={(event) => setSearchQuery(event.target.value)}
+                disabled={Boolean(error)}
+                autoComplete="off"
+                placeholder="Search player or team"
+                className="min-h-touch w-[200px] rounded-[4px] border pl-8 pr-2.5 font-mono text-xs placeholder:text-[var(--home-ink-muted)] disabled:cursor-not-allowed disabled:opacity-60"
+                style={{
+                  borderColor: "var(--home-rule)",
+                  background: "var(--home-paper-raised)",
+                  color: "var(--home-ink)",
+                }}
+              />
+            </div>
+            <span
+              aria-live={error ? undefined : "polite"}
+              className="ml-auto whitespace-nowrap font-mono text-2xs"
+              style={{ color: "var(--home-ink-muted)" }}
+            >
+              {isLoading
+                ? "Loading players"
+                : `${filteredPlayers.length} of ${orderedPlayers.length} on this board`}
+            </span>
           </div>
-          <span
-            aria-live={error ? undefined : "polite"}
-            className="ml-auto whitespace-nowrap font-mono text-2xs"
-            style={{ color: "var(--home-ink-muted)" }}
-          >
-            {isLoading
-              ? "Loading players"
-              : `${filteredPlayers.length} of ${orderedPlayers.length} on this board`}
-          </span>
+          {/* Column labels ride in the sticky bar so the numbers keep their
+              names mid-scroll, as on the rankings board; phones carry per-value
+              micro-labels in each row instead. Rendered only once the board has
+              rows, so the loading, error, and empty states show no headings for
+              columns that are not there. The row cells carry sr-only labels, so
+              this row stays aria-hidden and nothing is read twice. */}
+          {boardReady && (
+            <div
+              aria-hidden="true"
+              className="hidden items-center gap-x-3.5 border-t px-3.5 py-1.5 font-mono text-3xs uppercase tracking-[0.12em] md:flex"
+              style={{
+                color: "var(--home-ink-muted)",
+                borderColor: "color-mix(in srgb, var(--home-rule) 60%, transparent)",
+              }}
+            >
+              <span className="w-[34px] shrink-0" />
+              <span className="min-w-0 flex-[1_1_180px]">Player</span>
+              <span className="flex shrink-0 items-center gap-x-3.5">
+                <span className="w-14 text-right">UD ADP</span>
+                <span className="w-14 text-right whitespace-nowrap">PPR ECR</span>
+                <span className="w-14 text-right" title="ADP minus PPR best ball ECR">
+                  Value
+                </span>
+                <span className="w-8 text-right">Bye</span>
+                <span className="w-10 text-right">W17</span>
+              </span>
+            </div>
+          )}
         </div>
 
         {error ? (
@@ -933,23 +1041,6 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
           </div>
         ) : visiblePlayers.length > 0 ? (
           <>
-            <div
-              aria-hidden="true"
-              className="hidden items-center gap-x-3.5 px-3.5 pb-2 font-mono text-3xs uppercase tracking-[0.12em] md:flex"
-              style={{ color: "var(--home-ink-muted)" }}
-            >
-              <span className="w-[34px] shrink-0" />
-              <span className="min-w-0 flex-[1_1_180px]">Player</span>
-              <span className="flex shrink-0 items-center gap-x-3.5">
-                <span className="w-14 text-right">UD ADP</span>
-                <span className="w-14 text-right whitespace-nowrap">PPR ECR</span>
-                <span className="w-14 text-right" title="ADP minus PPR best ball ECR">
-                  Value
-                </span>
-                <span className="w-8 text-right">Bye</span>
-                <span className="w-10 text-right">W17</span>
-              </span>
-            </div>
             {roundGroups.map((group, index) => {
               const fullRound = group.rows.length === roundSize;
               return (
@@ -1137,14 +1228,18 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             {OBSERVED_FINDINGS.map((finding) => (
               <div key={finding.title} className="border-t py-2.5" style={{ borderColor: "var(--home-rule)" }}>
                 <p className="m-0 text-sm font-semibold tracking-tight">{finding.title}</p>
-                <p className="mb-1.5 mt-1 text-sm leading-6" style={{ color: "var(--home-ink-muted)" }}>
+                <p className="m-0 mt-1 text-sm leading-6" style={{ color: "var(--home-ink-muted)" }}>
                   {finding.body}
                 </p>
+                {/* A standalone link line rather than a link inside a sentence,
+                    so it takes the 44px floor like the footer tool links. The
+                    negative margin keeps the card's rhythm close to the 13px
+                    line it replaces. */}
                 <a
                   href={finding.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-mono text-2xs uppercase tracking-[0.06em] underline underline-offset-2"
+                  className="-mb-2.5 inline-flex min-h-touch items-center font-mono text-2xs uppercase tracking-[0.06em] underline underline-offset-2"
                 >
                   {finding.source}&nbsp;<span aria-hidden="true">↗</span>
                 </a>
@@ -1174,7 +1269,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                       href={recommendation.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-1.5 inline-block font-mono text-2xs uppercase tracking-[0.06em] underline underline-offset-2"
+                      className="-mb-2.5 inline-flex min-h-touch items-center font-mono text-2xs uppercase tracking-[0.06em] underline underline-offset-2"
                     >
                       4for4 draft date study&nbsp;<span aria-hidden="true">↗</span>
                     </a>
@@ -1239,9 +1334,15 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
         </div>
       </div>
 
+      {/* bestBallRank is the board order under the lens, which on the ADP
+          lenses is the market and never the expert consensus, so the drawer
+          chip and the modal row carry that name with the number. The modal
+          adds its own consensus row from rankEcr, so the two rank spaces stay
+          named and separate. */}
       <PlayerDetailDrawer
-        player={detailPlayer}
+        player={detailPlayer ? withholdConsensus(detailPlayer) : null}
         publishedRank={detailPlayer ? String(detailPlayer.bestBallRank) : undefined}
+        publishedRankLabel="Board rank"
         adpAvailable={
           adpAvailable && !detailPlayer?.isUndraftedAtContestFloor
         }
@@ -1255,6 +1356,8 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
         publishedRank={(player) =>
           String(comparablePlayerLookup.get(player.id)?.bestBallRank ?? "")
         }
+        publishedRankLabel="Board rank"
+        consensusWithheld={isConsensusWithheld}
         valueSignalAvailable={adpAvailable}
         adpAvailable={adpAvailable}
       />
