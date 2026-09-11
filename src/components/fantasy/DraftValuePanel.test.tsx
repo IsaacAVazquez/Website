@@ -216,7 +216,9 @@ describe("DraftValuePanel", () => {
           fieldEntries: 672_336,
           prizePool: 15_000_000,
           firstAdvanceRate: 2 / 12,
+          asOf: "2026-08-09",
         }}
+        economicsContestName="Best Ball Mania VII"
         economicsSourceUrl="https://help.underdogsports.com/en/articles/14785343-best-ball-mania-vii"
         defaultEntryCost={25}
       />
@@ -224,9 +226,30 @@ describe("DraftValuePanel", () => {
 
     expect(screen.getByText("Best Ball Mania VII field baseline")).toBeInTheDocument();
     expect(screen.getByText("$22.31")).toBeInTheDocument();
-    expect(screen.getByText("-$2.69")).toBeInTheDocument();
+    expect(screen.getByText("-$2.69")).toHaveStyle({ color: "var(--home-negative)" });
     expect(screen.getByText("16.7%")).toBeInTheDocument();
     expect(screen.getByText("+12.1%")).toBeInTheDocument();
+    // The entry count is the count on the capture date, so the date prints
+    // with it, through the same UTC formatter the trackers use.
+    expect(screen.getByText(/Field figures as of Aug 9, 2026\./)).toBeInTheDocument();
+  });
+
+  it("tones the field net EV by sign and takes the heading from the preset", () => {
+    render(
+      <DraftValuePanel
+        report={REPORT}
+        headingId="positive-field-heading"
+        economics={{
+          entryFee: 10,
+          fieldEntries: 1_000,
+          prizePool: 12_000,
+        }}
+      />
+    );
+
+    expect(screen.getByText("Published field baseline")).toBeInTheDocument();
+    expect(screen.getByText("+$2.00")).toHaveStyle({ color: "var(--home-positive)" });
+    expect(screen.queryByText(/Field figures as of/)).not.toBeInTheDocument();
   });
 
   it("reports invalid payout assumptions without silently clearing the output", () => {

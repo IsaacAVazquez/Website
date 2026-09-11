@@ -44,26 +44,41 @@ export function BestBallRecommendations({
   sourceIssue: string | null;
   onDraftPlayer: (player: Player) => void;
 }) {
+  // Protected framing (2026-08-23 loop): this paragraph explains the card
+  // score and the Draft Outlook paragraph explains a different score, so both
+  // stay. It only earns its space when a score is on screen, which is the
+  // user's own pick with a usable source. On the other eleven picks a round,
+  // and while the source is paused, nothing under it carries a score, so the
+  // section collapses to the one sentence that says why.
+  const showScoreExplainer =
+    recommendationMode === "exact" && isUserPick && sourceIssue === null;
   const description = recommendationMode === "exact"
     ? "The score starts from how far the current pick sits past a player's expert consensus rank, then moves half a point for every pick the Underdog market disagrees with that rank, so consensus and market count the same. At most seven points of roster, scarcity, and correlation adjustments follow, where scarcity reads both the tier cliff and how many board spots the position gives up by waiting a turn. The consensus board is full PPR while these contests score half PPR. This is not a projected win rate."
     : "The sourced board and roster targets remain available, but this preset does not produce exact player cards.";
 
   return (
     <section className="home-card p-5 sm:p-6" aria-labelledby="best-ball-recommendations-heading">
-      <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <p className="home-kicker mb-1">Your next pick</p>
-          {/* text-2xl tops out at 34px, exactly where an open room's h1 sits, so this
-              would render at its parent's size. text-xl is the step the rest of the room uses. */}
-          <h2 id="best-ball-recommendations-heading" className="text-xl font-semibold">
-            {recommendationMode === "exact"
-              ? "Best fits for your next pick"
-              : "Board and roster guidance"}
-          </h2>
-        </div>
-        <p className="max-w-[34ch] text-xs leading-5" style={{ color: "var(--home-ink-muted)" }}>
-          {description}
-        </p>
+      {/* The heading block is top-aligned and the explainer runs full width
+          beneath it. The old items-end pairing bottom-aligned the heading to
+          an eleven-line column and left 209px of empty card above it. */}
+      <div>
+        <p className="home-kicker mb-1">Your next pick</p>
+        {/* text-2xl tops out at 34px, exactly where an open room's h1 sits, so this
+            would render at its parent's size. text-xl is the step the rest of the room uses. */}
+        <h2 id="best-ball-recommendations-heading" className="text-xl font-semibold">
+          {recommendationMode === "exact"
+            ? "Best fits for your next pick"
+            : "Board and roster guidance"}
+        </h2>
+        {showScoreExplainer || recommendationMode === "reference" ? (
+          <p
+            data-testid="best-ball-score-explainer"
+            className="mt-2 max-w-[92ch] text-xs leading-5"
+            style={{ color: "var(--home-ink-muted)" }}
+          >
+            {description}
+          </p>
+        ) : null}
       </div>
 
       {recommendationMode === "reference" ? (
@@ -91,12 +106,18 @@ export function BestBallRecommendations({
           but it will not present an unsupported board as a current recommendation.
         </p>
       ) : !isUserPick ? (
-        <p className="mt-4 text-sm leading-6" style={{ color: "var(--home-ink-muted)" }}>
+        <p className="mt-3 text-sm leading-6" style={{ color: "var(--home-ink-muted)" }}>
           Exact player cards stay hidden until your turn because this model does not estimate the
           chance that each player survives the intervening picks. Use the board and roster targets
           to plan the position or tier you want next.
         </p>
       ) : recommendations.length > 0 ? (
+        /*
+          The reasons under each card print the consensus rank as fact. Rows
+          the ranking layer marks `consensusWithheld` never reach this branch,
+          because the same self-consistency test that stamps them also sets
+          `sourceIssue`, which takes the alert branch above.
+        */
         <div className="mt-4 grid gap-3 xl:grid-cols-3">
           {recommendations.map((recommendation, index) => {
             // All nine components used to print on every card, and most of them

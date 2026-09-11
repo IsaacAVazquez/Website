@@ -4,6 +4,7 @@ import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
+import { useReducedMotion } from "framer-motion";
 import { Redo2, RotateCcw, Undo2 } from "lucide-react";
 import { Breadcrumbs } from "@/components/navigation/Breadcrumbs";
 import { PlayerDetailDrawer, type ExpectedReturnFormState } from "@/components/fantasy";
@@ -23,6 +24,7 @@ import {
   type RankedBestBallPlayer,
 } from "@/lib/bestBall";
 import type { BestBallSnapshot } from "@/lib/bestBallSnapshot";
+import type { Player } from "@/types";
 import {
   FASCIA_TOP_CLASS,
   getFantasySourceCapabilities,
@@ -56,6 +58,10 @@ const BREADCRUMBS = [
     isActive: true,
   },
 ];
+
+// The rem value inside FASCIA_TOP_CLASS ("top-[4.5rem]"), needed as a number
+// for the board's sticky offset and the room-open scroll.
+const FASCIA_TOP_REM = 4.5;
 
 const CONTESTS = Object.values(BEST_BALL_CONTESTS);
 // Presets whose lobby cards vary enough that the bespoke rulesNote has to render.
@@ -215,8 +221,10 @@ export function BestBallDraftTrackerClient({
                 The snapshot has no separate live injury or player-news feed. Check the draft room and
                 current team reports before logging each pick.
               </p>
+              {/* The room shape prints once in the chips below and once in the
+                  contest card; this sentence used to state it a third time. */}
               <p className="max-w-[66ch] text-xs leading-6" style={{ color: "var(--home-ink-muted)" }}>
-                This tracker models a {preset.teams} team, {preset.rounds} round, {preset.rosterSize} player, half PPR room. Weekly Winners, Sit &amp; Go, 6-Man, and Superflex contest cards can use different settings, so check the lobby before you start.
+                Weekly Winners, Sit &amp; Go, 6-Man, and Superflex contest cards can use settings other than the room shape pinned below, so check the lobby before you start.
               </p>
             </div>
           )}
@@ -333,6 +341,46 @@ function BestBallDraftRoom({
   }));
   const buildTriggerRef = useRef<HTMLButtonElement>(null);
   const closeBuild = useCallback(() => setBuildOpen(false), []);
+  const reduceMotion = useReducedMotion();
+
+  // The two state changes the room exists for, opening it and logging a pick,
+  // both unmount the control that was pressed, so focus fell to the document
+  // and the viewport stayed where the button had been. Same contract as the
+  // mock draft: the on-the-clock heading takes focus. Opening the room also
+  // scrolls the status card under the live bar, because the button sat at the
+  // bottom of setup and the heading was 177 to 422px above the fold. A pick
+  // logged from a card or the drawer moves focus without scrolling, because
+  // scroll anchoring already keeps the board where it was; a pick logged from
+  // a board row is placed by the board itself, on the row that took its place.
+  const statusCardRef = useRef<HTMLElement>(null);
+  const statusHeadingRef = useRef<HTMLHeadingElement>(null);
+  const pendingFocusRef = useRef<"open" | "pick" | null>(null);
+
+  // The board's controls stick under the live bar rather than under the site
+  // header, and the bar wraps to two rows once the shell is narrow, so it is
+  // measured instead of assumed.
+  const liveBarRef = useRef<HTMLDivElement>(null);
+  const [liveBarHeight, setLiveBarHeight] = useState(0);
+  const boardStickyTop = `calc(${FASCIA_TOP_REM}rem + ${liveBarHeight}px)`;
+
+  const { startDraft, draftPlayer } = draft;
+  const openRoom = useCallback(() => {
+    pendingFocusRef.current = "open";
+    // Collapsing the page header and opening the room in the same click
+    // commit keeps the two in one layout, so the scroll target measured in
+    // the effect below is the final one. Left to the roomOpen effect, the
+    // header collapsed a render later and pulled the card past the target.
+    onRoomOpenChange?.(true);
+    startDraft();
+  }, [onRoomOpenChange, startDraft]);
+
+  const logPickFromCard = useCallback(
+    (player: Player) => {
+      pendingFocusRef.current = "pick";
+      draftPlayer(player);
+    },
+    [draftPlayer]
+  );
 
   const draftedIds = useMemo(
     () => new Set(draft.state.picks.map((pick) => pick.player.id)),
@@ -450,6 +498,17 @@ function BestBallDraftRoom({
     ]
   );
 
+  // The drawer prints tier, position rank, and a reach or value reading from
+  // the published consensus. On a row the ranking layer has withheld, those
+  // three come from the same rank the board just declared unusable, so the
+  // drawer gets the player without them; the expert range and the sourced
+  // average stay because they are the fields the rank contradicts.
+  const drawerPlayer = useMemo(() => {
+    if (!detailPlayer?.consensusWithheld) return detailPlayer;
+    const { tier: _tier, positionRank: _positionRank, ...rest } = detailPlayer;
+    return rest;
+  }, [detailPlayer]);
+
   // `startedAt` is persisted with the room, so an open room stays open across
   // reloads even after every pick has been rewound. Reset clears it.
   const showSetup = !draft.isRoomOpen;
@@ -461,6 +520,34 @@ function BestBallDraftRoom({
     onRoomOpenChange?.(roomOpen);
     return () => onRoomOpenChange?.(false);
   }, [onRoomOpenChange, roomOpen]);
+
+  useEffect(() => {
+    const element = liveBarRef.current;
+    if (!element || typeof ResizeObserver === "undefined") return;
+    const measure = () => setLiveBarHeight(element.offsetHeight);
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [roomOpen]);
+
+  useEffect(() => {
+    const pending = pendingFocusRef.current;
+    const heading = statusHeadingRef.current;
+    if (!pending || !roomOpen || !heading) return;
+    pendingFocusRef.current = null;
+    if (pending === "open") {
+      const card = statusCardRef.current ?? heading;
+      const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+      const pinnedLiveBarBottom =
+        FASCIA_TOP_REM * rootFontSize + (liveBarRef.current?.offsetHeight ?? 0);
+      // 20px is the shell's space-y-5 gap, so the card lands where it would sit
+      // under the bar in normal flow.
+      const top = card.getBoundingClientRect().top + window.scrollY - pinnedLiveBarBottom - 20;
+      window.scrollTo({ top: Math.max(0, top), behavior: reduceMotion ? "instant" : "smooth" });
+    }
+    heading.focus({ preventScroll: true });
+  }, [draft.currentPick, reduceMotion, roomOpen]);
 
   if (!draft.isLoaded) {
     return (
@@ -497,7 +584,7 @@ function BestBallDraftRoom({
 
           <fieldset className="mt-6">
             <legend className="text-sm font-semibold">
-              Your slot in the {preset.teams} team snake
+              Your slot in the snake
             </legend>
             <div className="mt-3 grid grid-cols-4 gap-2 sm:grid-cols-6">
               {Array.from({ length: preset.teams }, (_, index) => index + 1).map((slot) => {
@@ -529,7 +616,7 @@ function BestBallDraftRoom({
 
           <button
             type="button"
-            onClick={draft.startDraft}
+            onClick={openRoom}
             className="mt-6 inline-flex min-h-[48px] w-full items-center justify-center rounded-full border px-6 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200 sm:w-auto"
             style={{
               borderColor: "var(--home-ink)",
@@ -623,6 +710,7 @@ function BestBallDraftRoom({
         room state once.
       */}
       <div
+        ref={liveBarRef}
         aria-live="polite"
         className={`sticky ${FASCIA_TOP_CLASS} z-30 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 rounded-[var(--radius-md)] border px-3 py-2`}
         style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)" }}
@@ -651,14 +739,23 @@ function BestBallDraftRoom({
         heading names the state in words once and the card now carries the
         room's recovery action instead.
       */}
-      <section className="home-card p-5 sm:p-6" aria-labelledby="best-ball-room-status-heading">
+      <section
+        ref={statusCardRef}
+        className="home-card p-5 sm:p-6"
+        aria-labelledby="best-ball-room-status-heading"
+      >
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div className="min-w-0">
             <p className="home-kicker mb-1">Live room</p>
             {/* An open room collapses the h1 to 34px, which is exactly where text-2xl
                 tops out, so a text-2xl section heading renders at its parent's size.
                 text-xl is the step this file already uses for "Saved in this browser". */}
-            <h2 id="best-ball-room-status-heading" className="text-xl font-semibold">
+            <h2
+              id="best-ball-room-status-heading"
+              ref={statusHeadingRef}
+              tabIndex={-1}
+              className="text-xl font-semibold"
+            >
               {draft.isComplete
                 ? "Draft complete"
                 : draft.isUserPick
@@ -754,7 +851,7 @@ function BestBallDraftRoom({
             recommendationMode={preset.recommendationMode}
             recommendationReason={preset.recommendationReason}
             sourceIssue={recommendationSourceIssue}
-            onDraftPlayer={draft.draftPlayer}
+            onDraftPlayer={logPickFromCard}
           />
           <BestBallDraftBoard
             players={rankedAvailablePlayers}
@@ -762,6 +859,7 @@ function BestBallDraftRoom({
             currentTeamNumber={draft.currentTeamNumber}
             isComplete={draft.isComplete}
             adpAvailable={adpAvailable}
+            stickyTop={boardStickyTop}
             onDraftPlayer={draft.draftPlayer}
             onOpenDetail={setDetailPlayer}
           />
@@ -1002,15 +1100,15 @@ function BestBallDraftRoom({
         current pick and closes it, mirroring the redraft tracker.
       */}
       <PlayerDetailDrawer
-        player={detailPlayer}
+        player={drawerPlayer}
         publishedRank={detailPlayer ? String(detailPlayer.bestBallRank) : undefined}
         adpAvailable={adpAvailable && !detailPlayer?.isUndraftedAtContestFloor}
-        valueSignalAvailable={adpAvailable}
+        valueSignalAvailable={adpAvailable && !detailPlayer?.consensusWithheld}
         compareAvailable={false}
         onLogPick={
           !draft.isComplete && detailPlayer && !draftedIds.has(detailPlayer.id)
             ? (player) => {
-                draft.draftPlayer(player);
+                logPickFromCard(player);
                 setDetailPlayer(null);
               }
             : undefined

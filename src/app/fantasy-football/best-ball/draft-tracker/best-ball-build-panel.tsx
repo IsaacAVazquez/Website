@@ -84,6 +84,7 @@ export function BestBallBuildPanel({
           unavailableReason={draftValueUnavailableReason}
           headingId={`${headingId}-draft-outlook`}
           economics={preset.economics}
+          economicsContestName={preset.name}
           economicsSourceUrl={preset.economics?.sourceUrl}
           defaultEntryCost={preset.economics?.entryFee}
           calculatorValue={calculatorValue}
