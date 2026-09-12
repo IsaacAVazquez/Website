@@ -561,3 +561,44 @@ board, the redraft tracker's "−0.0 pts" reading, the drawer's unlabelled Movem
 `getFantasyAdpFreshness` hiding the mock draft's ADP columns on the same four-day rule the
 note now explains. The context note that freshness bands widen on 2026-10-01 was wrong; the
 code holds the four-day band through December, and the copy across the group now says so.
+
+## Critique, 2026-09-12
+
+A dual-agent critique re-ran on the rankings board alone, the day after the in-season loop
+landed, against main at `6d12f70f`. It scored 26/40 with one P0 and three P1. Snapshot at
+`.impeccable/critique/2026-09-12T17-35-12Z__route-fantasy-football.md`. The drop from 30 is
+one functional defect that no earlier critique entered the state to see, not a regression
+from the 09-11 remediation.
+
+The P0 is that "Clear search" in the empty state and the phone search's X both resurrect the
+cleared query within about 150ms. The clear handlers write an empty query to the URL in the
+same tick as the state reset, the debounced sync effect re-runs because the route query
+changed while the debounced value still holds the old text, and it writes the old query back.
+Typing the query away works because the debounce owns that path. The debounce landed
+2026-08-22 in #398, so the 08-22 and 09-11 critiques and the "clears only the query" test all
+ran with it and none caught it, because the test asserts synchronously and never advances past
+the 200ms window. Any fix needs a test that does.
+
+Mechanical state, 72 of 72 driven states in both themes at four widths: zero AA failures
+(floor still the 10px cliff label at 4.57:1), zero overflow, one main and one h1, zero unnamed
+sections, 25 of 25 focus rings, clean console and network, drawer trap and scroll lock and
+URL contract all holding. Two new mechanical facts. At 768 the column labels sit 59px left of
+their columns and rows wrap to two lines, so the md-only band was never measured by the
+08-23 header-to-cell match, which was done at lg. And the `ReactDOM.preload` in `page.tsx`
+is discarded on every load because its credentials mode does not match the hook's fetch, so
+the serial-path fix the file's comment describes is not in effect.
+
+A correction to the 2026-08-12 note above. The in-page detector is blocked by an enforcing
+`content-security-policy` header built in `src/proxy.ts`, not by the report-only header in
+`next.config.mjs`, which only logs. The console shows both, and only the proxy's is enforced.
+Overlay injection stays impossible here until that header allows the live server's origin,
+which it should not.
+
+Still open and product-shaped, unchanged: the keyboard layer, the position tints borrowing the
+status hues (now the same finding on a second run), the drawer's tab order and phone geometry,
+and the shared-shell heading inversions.
+
+Decided 2026-09-12: the position tints stay as they are. Asked directly whether QB on
+signal, RB on positive green and TE on warning amber should move to ink and stone mixes
+across the group, Isaac chose to leave them. Do not re-raise the category-versus-status
+colour finding on any fantasy route.
