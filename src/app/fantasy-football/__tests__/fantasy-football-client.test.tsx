@@ -905,7 +905,7 @@ describe("FantasyFootballClient", () => {
       screen.getByRole("button", { name: "Open Bijan Robinson detail (in your queue)" })
     ).toBeInTheDocument();
 
-    fireEvent.click(screen.getByRole("button", { name: "Queued (1)" }));
+    fireEvent.click(screen.getAllByRole("button", { name: "Show only queued players (1 on this board)" })[0]);
     expect(screen.queryByText("Jahmyr Gibbs")).not.toBeInTheDocument();
     expect(screen.getByText("Bijan Robinson")).toBeVisible();
 

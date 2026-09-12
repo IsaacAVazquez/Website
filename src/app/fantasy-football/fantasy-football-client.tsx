@@ -250,7 +250,11 @@ function ScoringToggle({
 }: {
   value: FantasyRouteScoring;
   onChange: (value: FantasyRouteScoring) => void;
-  compact?: boolean;
+  /** Short labels always, never, or only below xl, where the shell has not
+      reached its full 1080px and the desktop bar's first line is about 20px
+      too narrow for the full names beside the other controls. The full name
+      is the accessible name either way. */
+  compact?: boolean | "below-xl";
 }) {
   return (
     <div
@@ -275,7 +279,16 @@ function ScoringToggle({
                 : { background: "transparent", color: "var(--home-ink)" }
             }
           >
-            {compact ? option.shortLabel : option.label}
+            {compact === "below-xl" ? (
+              <>
+                <span className="xl:hidden">{option.shortLabel}</span>
+                <span className="hidden xl:inline">{option.label}</span>
+              </>
+            ) : compact ? (
+              option.shortLabel
+            ) : (
+              option.label
+            )}
           </button>
         );
       })}
@@ -1546,7 +1559,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                     />
                   )}
                   <div
-                    className="relative z-[2] flex min-h-11 w-full cursor-pointer flex-wrap items-center gap-x-4 gap-y-1 py-1.5 pl-3.5 pr-15 text-left md:pr-3.5"
+                    className="relative z-[2] flex min-h-11 w-full cursor-pointer flex-wrap items-center gap-x-4 gap-y-1 py-1.5 pl-3.5 pr-15 text-left"
                     style={{ color: "var(--home-ink)" }}
                     onClick={() => {
                       if (window.getSelection()?.toString()) return;
@@ -1568,7 +1581,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                     >
                       {displayRank(player)}
                     </span>
-                    <span className="flex min-w-0 flex-[1_1_200px] flex-wrap items-baseline gap-x-2 gap-y-1">
+                    <span className="flex min-w-0 flex-[1_1_12rem] flex-wrap items-baseline gap-x-2 gap-y-1">
                       {/* The name is the row's identity, so it keeps a hard floor
                           and the decorative spread bar yields below lg instead. */}
                       <span className="min-w-[7rem] truncate text-sm font-semibold tracking-tight">{player.name}</span>
@@ -1682,10 +1695,12 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                     {/* The row-edge queue toggle: always visible on touch,
                         revealed on hover/focus for fine pointers, and always
                         shown once queued so membership reads as shape, not
-                        color. Below md it is positioned at the row's edge so
-                        it never wraps onto a line of its own; at md and up it
-                        sits in flow and -my cancels the row padding so the
-                        44px target does not grow the row. */}
+                        color. It is positioned at the row's edge rather than
+                        placed in the wrapping flow, because in flow it wrapped
+                        onto a line of its own at 390 and again at 768, where
+                        it also pushed the metrics 59px right of their column
+                        labels. The row's pr-15 reserves its column, and the
+                        label row reserves the same. */}
                     <button
                       type="button"
                       aria-pressed={isQueued}
@@ -1694,7 +1709,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                         event.stopPropagation();
                         queue.toggle(player.id);
                       }}
-                      className={`absolute right-3.5 top-1/2 flex h-11 w-11 shrink-0 -translate-y-1/2 cursor-pointer items-center justify-center rounded-[4px] transition-opacity duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--home-signal)] md:static md:-my-1.5 md:ml-auto md:translate-y-0 ${
+                      className={`absolute right-3.5 top-1/2 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-[4px] transition-opacity duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--home-signal)] ${
                         isQueued
                           ? ""
                           : "pointer-fine:opacity-0 pointer-fine:group-focus-within:opacity-100 pointer-fine:group-hover:opacity-100"
@@ -1809,7 +1824,11 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
             value={routeState.position}
             onChange={(position) => updateRouteState({ position })}
           />
-          <ScoringToggle value={routeState.scoring} onChange={(scoring) => updateRouteState({ scoring })} />
+          <ScoringToggle
+            value={routeState.scoring}
+            onChange={(scoring) => updateRouteState({ scoring })}
+            compact="below-xl"
+          />
           <RankingToggle
             value={routeState.ranking}
             vorpAvailable={vorpAvailable}
@@ -1821,37 +1840,12 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
               onChange={(teams) => updateRouteState({ teams })}
             />
           ) : null}
-          <div className="relative">
-            <label htmlFor="fantasy-search" className="sr-only">
-              Search the current rankings board
-            </label>
-            <Search
-              className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2"
-              style={{ color: "var(--home-ink-muted)" }}
-              aria-hidden="true"
-            />
-            <input
-              id="fantasy-search"
-              name="fantasy-search"
-              value={searchQuery}
-              maxLength={80}
-              onChange={(event) => setSearchQuery(event.target.value)}
-              disabled={currentSliceUnavailable}
-              autoComplete="off"
-              placeholder="Search player or team"
-              className="min-h-touch w-[200px] rounded-[4px] border pl-8 pr-2.5 font-mono text-xs placeholder:text-[var(--home-ink-muted)] disabled:cursor-not-allowed disabled:opacity-60"
-              style={{
-                borderColor: "var(--home-rule)",
-                background: "var(--home-paper-raised)",
-                color: "var(--home-ink)",
-              }}
-            />
-          </div>
           <button
             type="button"
             aria-pressed={queuedOnly}
+            aria-label={`Show only queued players (${queuedOnBoardCount} on this board)`}
             onClick={() => setQueuedOnly((value) => !value)}
-            className="inline-flex min-h-touch cursor-pointer items-center gap-1.5 rounded-[4px] border px-3 font-mono text-3xs uppercase tracking-[0.08em]"
+            className="inline-flex min-h-touch cursor-pointer items-center gap-1.5 rounded-[4px] border px-3 font-mono text-2xs tabular-nums"
             style={
               queuedOnly
                 ? { borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }
@@ -1859,21 +1853,9 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
             }
           >
             <Star size={12} fill={queuedOnly ? "currentColor" : "none"} aria-hidden="true" />
-            Queued ({queuedOnBoardCount})
+            {queuedOnBoardCount}
           </button>
-          <span
-            aria-live={error ? undefined : "polite"}
-            className="ml-auto whitespace-nowrap font-mono text-2xs"
-            style={{ color: "var(--home-ink-muted)" }}
-          >
-            {countLine}
-          </span>
         </div>
-        {/* Phones keep one sticky line: position and scoring stay reachable
-            mid-scroll, and search expands over that line rather than sitting
-            beside it. "Done" collapses it back to the other controls without
-            touching what was typed, so switching board or scoring mid-search
-            no longer costs the query. */}
         <div className={`${SHELL_CLASS} flex items-center gap-2 py-2 md:hidden`}>
           {mobileSearchOpen ? (
             <>
@@ -2049,24 +2031,59 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
             {countLine}
           </span>
         </div>
-        {/* Column labels ride in the sticky bar so the numbers keep their
-            names mid-scroll; phones get per-value micro-labels instead. */}
-        {boardReady && (
-          <div
-            className="hidden border-t md:block"
-            style={{ borderColor: "color-mix(in srgb, var(--home-rule) 60%, transparent)" }}
-          >
-            <div className={SHELL_CLASS}>
-              <div
-                className="flex items-center gap-x-4 px-3.5 py-1.5 font-mono text-3xs uppercase tracking-[0.12em]"
-                style={{ color: "var(--home-ink-muted)" }}
-              >
-                <span className="w-[34px] shrink-0" />
-                <span className="min-w-0 flex-[1_1_200px]">
-                  <MetricTooltip term="Player" definition={FANTASY_PLAYER_COLUMN_TOOLTIP} focusable>
-                    Player
-                  </MetricTooltip>
+        {/* The second line of the bar. The search sits over the Player
+            column, whose label slot had 184 to 342px of slack while the
+            search pushed the controls onto a second line at 1440; the column
+            labels ride beside it so the numbers keep their names mid-scroll.
+            Phones get per-value micro-labels and their own search instead.
+            The search is always mounted here so an empty result can still be
+            edited; only the labels wait for rows. */}
+        <div
+          className="hidden border-t md:block"
+          style={{ borderColor: "color-mix(in srgb, var(--home-rule) 60%, transparent)" }}
+        >
+          <div className={SHELL_CLASS}>
+            <div
+              className="flex items-center gap-x-4 py-1 pl-3.5 pr-15 font-mono text-3xs uppercase tracking-[0.12em]"
+              style={{ color: "var(--home-ink-muted)" }}
+            >
+              <span className="w-[34px] shrink-0" />
+              <span className="flex min-w-0 flex-[1_1_12rem] items-center gap-x-3">
+                <span className="relative min-w-0 shrink">
+                  <label htmlFor="fantasy-search" className="sr-only">
+                    Search the current rankings board
+                  </label>
+                  <Search
+                    className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2"
+                    style={{ color: "var(--home-ink-muted)" }}
+                    aria-hidden="true"
+                  />
+                  <input
+                    id="fantasy-search"
+                    name="fantasy-search"
+                    value={searchQuery}
+                    maxLength={80}
+                    onChange={(event) => setSearchQuery(event.target.value)}
+                    disabled={currentSliceUnavailable}
+                    autoComplete="off"
+                    placeholder="Player or team"
+                    className="min-h-touch w-40 max-w-full rounded-[4px] border pl-8 pr-2.5 font-mono text-xs normal-case tracking-normal placeholder:text-[var(--home-ink-muted)] disabled:cursor-not-allowed disabled:opacity-60 lg:w-[200px]"
+                    style={{
+                      borderColor: "var(--home-rule)",
+                      background: "var(--home-paper-raised)",
+                      color: "var(--home-ink)",
+                    }}
+                  />
                 </span>
+                {boardReady && (
+                  <span className="hidden shrink-0 lg:inline-flex">
+                    <MetricTooltip term="Player" definition={FANTASY_PLAYER_COLUMN_TOOLTIP} focusable>
+                      Player
+                    </MetricTooltip>
+                  </span>
+                )}
+              </span>
+              {boardReady && (
                 <span className="flex shrink-0 items-center gap-4">
                   {metricColumns.map((column) => (
                     <span key={column.label} className={column.className}>
@@ -2080,18 +2097,28 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                     </span>
                   ))}
                 </span>
-                {/* Mirrors the row-edge queue toggle so columns stay aligned. */}
-                <span className="ml-auto w-11 shrink-0" />
-              </div>
+              )}
             </div>
           </div>
-        )}
+        </div>
       </div>
 
       <div className={`${SHELL_CLASS} pb-10 pt-4`}>
         <h2 className="sr-only">
           {vorpMode ? `${routeState.teams}-team VORP` : FANTASY_POSITION_LABELS[routeState.position]} rankings
         </h2>
+        {/* The count left the sticky bar: with the search over the Player
+            column the bar's first line holds every control at 1440, and the
+            count would have been the one thing wrapping it to a second. */}
+        <div className="hidden justify-end pb-2 md:flex">
+          <span
+            aria-live={error ? undefined : "polite"}
+            className="font-mono text-2xs"
+            style={{ color: "var(--home-ink-muted)" }}
+          >
+            {countLine}
+          </span>
+        </div>
 
         {localToolsMemoryOnly && (
           <div
