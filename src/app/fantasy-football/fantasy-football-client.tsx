@@ -1172,6 +1172,10 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
     ? snapshot?.vorpSource?.asOf ?? null
     : currentSourceUpdatedAt;
   const sourceStaleness = getSnapshotStaleness(activeSourceUpdatedAt);
+  // From Week 1 the source is frozen on purpose, so grading its age against
+  // the daily refresh thresholds only contradicts the note that says so: the
+  // chip read "Aging" beside it and would have read "Stale" for four months.
+  const frozenInSeason = seasonalWeek >= 1;
 
   const queuedOnBoardCount = useMemo(
     () => players.reduce((count, player) => count + (queue.queuedSet.has(player.id) ? 1 : 0), 0),
@@ -1358,14 +1362,16 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
     ...(adpSource && adpFreshness === "stale"
       ? [{ label: "ADP stale · signals hidden", tone: STALENESS_TONE.stale }]
       : []),
-    ...(sourceStaleness !== "fresh"
-      ? [
-          {
-            label: `${getSnapshotStalenessLabel(sourceStaleness)} · source ${sourceStamp ?? "date unknown"}`,
-            tone: STALENESS_TONE[sourceStaleness],
-          },
-        ]
-      : []),
+    ...(frozenInSeason
+      ? [{ label: `Frozen since ${sourceStamp ?? "kickoff"}` }]
+      : sourceStaleness !== "fresh"
+        ? [
+            {
+              label: `${getSnapshotStalenessLabel(sourceStaleness)} · source ${sourceStamp ?? "date unknown"}`,
+              tone: STALENESS_TONE[sourceStaleness],
+            },
+          ]
+        : []),
   ];
 
   const vorpHiddenNote =
@@ -2226,14 +2232,19 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
           <span
             className="font-mono text-2xs"
             style={{
-              color: sourceStaleness === "fresh" ? "var(--home-ink-muted)" : "var(--home-warning)",
+              color:
+                sourceStaleness === "fresh" || frozenInSeason
+                  ? "var(--home-ink-muted)"
+                  : "var(--home-warning)",
             }}
           >
-            {sourceStaleness === "fresh"
-              ? vorpMode
-                ? `FantasyPros VORP checked ${vorpStamp ?? "with this snapshot"} · ${routeState.teams}-team source baseline`
-                : `Refreshes daily through draft season, weekly after${snapshotStamp ? ` · snapshot ${snapshotStamp}` : ""}`
-              : `${getSnapshotStalenessLabel(sourceStaleness)} board · source updated ${sourceStamp ?? "date unknown"}`}
+            {frozenInSeason
+              ? `Frozen since ${sourceStamp ?? "kickoff"} · draft consensus kept as a reference${snapshotStamp ? ` · snapshot ${snapshotStamp}` : ""}`
+              : sourceStaleness === "fresh"
+                ? vorpMode
+                  ? `FantasyPros VORP checked ${vorpStamp ?? "with this snapshot"} · ${routeState.teams}-team source baseline`
+                  : `Refreshes daily July through December, weekly in the offseason${snapshotStamp ? ` · snapshot ${snapshotStamp}` : ""}`
+                : `${getSnapshotStalenessLabel(sourceStaleness)} board · source updated ${sourceStamp ?? "date unknown"}`}
           </span>
           <nav aria-label="More fantasy tools" className="flex flex-wrap gap-x-5 gap-y-2">
             {FANTASY_TOOLS.map((tool) => (

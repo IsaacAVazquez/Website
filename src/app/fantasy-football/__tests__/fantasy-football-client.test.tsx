@@ -572,6 +572,22 @@ describe("FantasyFootballClient", () => {
     );
   });
 
+  it("reports a frozen source in season instead of grading it stale", () => {
+    // The seed metadata is dated 2026-08-16, 26 days before this clock, which
+    // the daily thresholds would grade "Stale". From Week 1 the board is kept
+    // as a reference on purpose, so the chip and footer say so in neutral tone
+    // rather than contradicting the note beside them.
+    jest.setSystemTime(new Date("2026-09-11T10:00:00.000Z"));
+    mockSnapshot({ players: [makePlayer({ id: "rb-1", name: "Christian McCaffrey" })] });
+
+    renderClient();
+
+    expect(screen.getByText("Frozen since Aug 16")).toBeVisible();
+    expect(screen.queryByText(/^Stale/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/^Aging/)).not.toBeInTheDocument();
+    expect(screen.getByText(/^Frozen since Aug 16 · draft consensus kept as a reference/)).toBeVisible();
+  });
+
   it("suppresses the value chip on a position board, where the rank is not overall scale", () => {
     currentSearchParams = new URLSearchParams("position=wr&scoring=ppr");
     mockSnapshot({
