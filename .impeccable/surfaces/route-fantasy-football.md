@@ -602,3 +602,54 @@ Decided 2026-09-12: the position tints stay as they are. Asked directly whether 
 signal, RB on positive green and TE on warning amber should move to ink and stone mixes
 across the group, Isaac chose to leave them. Do not re-raise the category-versus-status
 colour finding on any fantasy route.
+
+## Four passes on the rankings board, 2026-09-12
+
+The critique's P0 and three P1s landed the same day on `fix/fantasy-board-critique-2026-09-12`,
+one commit per pass, verified in one batched computed-value round across all 72 states in
+both themes at 390, 768, 1024 and 1440 (parser gate 16.29 light, 15.28 dark): zero AA
+failures, zero overflow, one main and one h1, zero unnamed sections, zero `transition: all`,
+zero plate radii over 10px. Jest on the fantasy tree is 33 of 33, the fantasy e2e spec 23 of
+23 with no spec edits, typecheck and lint clean.
+
+The harden pass fixed the search race at its cause. The debounced URL sync effect subscribed
+to `routeState.query` as well as the debounced value, so any URL change that landed before the
+debounce settled re-ran it with stale text; it now depends on the debounced value alone, which
+also stops a Back to a searched URL from having its query stripped. The new test reflects
+router writes into the mocked search params on a zero-delay timer and steps the clock in 50ms
+increments, re-rendering a fresh element each step; the first draft applied writes
+synchronously and passed against the bug, and a second draft re-rendered the same element
+object, which React bails out of, so neither reproduced it. Both traps are worth remembering.
+
+The adapt pass took the 390 row from 113px to 97px and the first row from y=709 to y=645. The
+queue star is positioned at the row's right edge instead of wrapping, the phone metrics sit in
+a three-column grid so ±ADP lands beside ADP, format and source share one header chip, and the
+ADP chip drops its provider name below md (the provider is still named in the footer and the
+drawer). The row still carries four text lines on a phone (name and chip, team and bye, two
+metric lines), because the identity line cannot hold the team beside a 7rem name floor once the
+star's column is reserved; a two-line ledger row is the product question the critique asked.
+
+The clarify pass replaced the in-season freshness grade. `frozenInSeason` is `seasonalWeek >= 1`,
+and while it holds the header chip reads "Frozen since Sep 10" in the neutral chip tone and the
+footer reads "Frozen since Sep 10 · draft consensus kept as a reference · snapshot …" in muted
+ink, instead of "Aging" today and "Stale" from Sep 14. The fresh-state footer line now says
+"Refreshes daily July through December, weekly in the offseason", which is what the cron does.
+
+The layout pass made the bar one control line from 1024 up (121px, from 151 at 1440 and 175
+at 1024) by moving the desktop search into the column-label row over the Player column, turning
+Queued into the phone bar's star-and-count form (same accessible name on both bars, so tests
+take the first), moving the count line above the list at md and up, and using the scoring
+toggle's short labels below xl through a new `compact="below-xl"` mode. The star is now
+absolute at every width and the row and the label row reserve the same `pr-15` column, so
+labels sit within 1px of their cells at 768, 1024 and 1440 (they had been 59px off at 768,
+where the in-flow star wrapped rows to 73px; rows are 57px there now, with the team wrapping
+under the name). The search is mounted in the label row even when there are no rows, so an
+empty result can still be edited; only the labels wait for `boardReady`. The Player definition
+trigger shows from lg. The desktop placeholder is "Player or team" because the full sentence
+clipped at both input widths.
+
+Still open from this run. In VORP mode the league-size select adds 92px and the bar wraps to
+175px at every desktop width; the second line is the select alone. The 768 identity line wraps
+the team under the name. Nothing else the critique named is outstanding except the recorded
+P2s (the discarded preload and the drawer's tab order and phone geometry) and the product-shaped
+items above.
