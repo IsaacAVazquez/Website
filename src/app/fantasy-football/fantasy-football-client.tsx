@@ -1338,21 +1338,19 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
   const vorpStamp = formatStamp(snapshot?.vorpSource?.asOf);
   const sourceStamp = formatStamp(activeSourceUpdatedAt);
 
-  const headerChips: { label: string; tone?: CSSProperties }[] = [
+  // Format and source share one chip, and the ADP chip drops its provider
+  // name below md: at 390 the strip ran four lines and pushed the first row
+  // to y=709, and the provider is still named in the footer and the drawer.
+  const headerChips: { label: string; shortLabel?: string; tone?: CSSProperties }[] = [
     {
       label: vorpMode
-        ? `${routeState.teams}-team ${selectedScoringLabel} VORP`
-        : `${selectedScoringLabel} board`,
-    },
-    {
-      label: vorpMode
-        ? snapshot?.vorpSource?.provider ?? "Projected VORP"
-        : "FantasyPros consensus",
+        ? `${routeState.teams}-team ${selectedScoringLabel} VORP · ${snapshot?.vorpSource?.provider ?? "Projected VORP"}`
+        : `${selectedScoringLabel} · FantasyPros consensus`,
     },
     ...(vorpMode && vorpStamp ? [{ label: `VORP checked ${vorpStamp}` }] : []),
     ...(snapshotStamp ? [{ label: `Snapshot ${snapshotStamp}` }] : []),
     ...(adpSource && adpAvailable && adpStamp
-      ? [{ label: `ADP ${adpSource.provider} · ${adpStamp}` }]
+      ? [{ label: `ADP ${adpSource.provider} · ${adpStamp}`, shortLabel: `ADP · ${adpStamp}` }]
       : []),
     ...(adpSource && adpFreshness === "prior-season"
       ? [{ label: "ADP prior season", tone: STALENESS_TONE.aging }]
@@ -1542,7 +1540,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                     />
                   )}
                   <div
-                    className="relative z-[2] flex min-h-11 w-full cursor-pointer flex-wrap items-center gap-x-4 gap-y-1 px-3.5 py-1.5 text-left"
+                    className="relative z-[2] flex min-h-11 w-full cursor-pointer flex-wrap items-center gap-x-4 gap-y-1 py-1.5 pl-3.5 pr-15 text-left md:pr-3.5"
                     style={{ color: "var(--home-ink)" }}
                     onClick={() => {
                       if (window.getSelection()?.toString()) return;
@@ -1584,7 +1582,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                       </span>
                       {adpSignalsAvailable && vsAdpMeaningful && <ValueReachChip player={player} />}
                     </span>
-                    <span className="flex max-w-full flex-wrap items-center gap-x-4 gap-y-1">
+                    <span className="grid w-full grid-cols-3 gap-x-3 gap-y-1 md:flex md:w-auto md:max-w-full md:flex-wrap md:items-center md:gap-x-4">
                       {vorpAvailable && (
                         <>
                           <span className="sr-only">Value over replacement player</span>
@@ -1678,8 +1676,10 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                     {/* The row-edge queue toggle: always visible on touch,
                         revealed on hover/focus for fine pointers, and always
                         shown once queued so membership reads as shape, not
-                        color. -my cancels the row padding so the 44px target
-                        does not grow the row. */}
+                        color. Below md it is positioned at the row's edge so
+                        it never wraps onto a line of its own; at md and up it
+                        sits in flow and -my cancels the row padding so the
+                        44px target does not grow the row. */}
                     <button
                       type="button"
                       aria-pressed={isQueued}
@@ -1688,7 +1688,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                         event.stopPropagation();
                         queue.toggle(player.id);
                       }}
-                      className={`-my-1.5 ml-auto flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-[4px] transition-opacity duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--home-signal)] ${
+                      className={`absolute right-3.5 top-1/2 flex h-11 w-11 shrink-0 -translate-y-1/2 cursor-pointer items-center justify-center rounded-[4px] transition-opacity duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--home-signal)] md:static md:-my-1.5 md:ml-auto md:translate-y-0 ${
                         isQueued
                           ? ""
                           : "pointer-fine:opacity-0 pointer-fine:group-focus-within:opacity-100 pointer-fine:group-hover:opacity-100"
@@ -1749,7 +1749,14 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                 }
               }
             >
-              {chip.label}
+              {chip.shortLabel ? (
+                <>
+                  <span className="md:hidden">{chip.shortLabel}</span>
+                  <span className="hidden md:inline">{chip.label}</span>
+                </>
+              ) : (
+                chip.label
+              )}
             </span>
           ))}
         </div>

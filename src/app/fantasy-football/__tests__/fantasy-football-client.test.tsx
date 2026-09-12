@@ -375,7 +375,7 @@ describe("FantasyFootballClient", () => {
 
     renderClient({ position: "overall", ranking: "vorp", teams: 12 });
 
-    expect(screen.getByText("12-team PPR VORP")).toBeVisible();
+    expect(screen.getByText(/^12-team PPR VORP ·/)).toBeVisible();
     expect(screen.getByText(/projected season points above the same-position waiver replacement/i)).toBeVisible();
     const playerButtons = screen.getAllByRole("button", { name: /Open .* detail/ });
     expect(playerButtons[0]).toHaveAccessibleName("Open VORP First detail");
