@@ -1115,9 +1115,13 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
   useEffect(() => {
     if (debouncedQuery.replace(/\s+/g, " ").trim() === routeState.query) return;
     updateRouteState({ query: debouncedQuery });
-    // updateRouteState is recreated every render; the query is the real trigger.
+    // The settled query is the only trigger. Reacting to routeState.query as
+    // well re-ran this with a stale debounced value whenever the URL changed
+    // first, so "Clear search" wrote the old query straight back and Back to
+    // a searched URL had its query stripped. updateRouteState is recreated
+    // every render and is read, not subscribed to.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debouncedQuery, routeState.query]);
+  }, [debouncedQuery]);
 
   function updateRouteState(nextState: Partial<FantasySearchState>) {
     const nextRouteState = {

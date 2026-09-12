@@ -1,5 +1,5 @@
 import React from "react";
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import { FantasyFootballClient } from "../fantasy-football-client";
 import { resetBrowserStorageMemory } from "@/lib/browserStorage";
 import type { FantasySnapshot } from "@/lib/fantasy";
@@ -785,6 +785,51 @@ describe("FantasyFootballClient", () => {
       expect.stringContaining("position=rb"),
       expect.anything()
     );
+  });
+
+  it("keeps a cleared search cleared once the URL write lands and the debounce settles", () => {
+    // The App Router applies a replace after the transition commits, not in the
+    // same tick, so the mock lands each write on the next timer tick and the
+    // test steps the clock in small increments, re-rendering after each so
+    // useSearchParams sees the new URL the way it does in the browser.
+    mockReplace.mockImplementation((href: string) => {
+      setTimeout(() => {
+        currentSearchParams = new URLSearchParams(href.split("?")[1] ?? "");
+      }, 0);
+    });
+    mockSnapshot({
+      players: [makePlayer({ id: "rb-1", name: "Christian McCaffrey" })],
+    });
+    // A fresh element each time, because React bails out of re-rendering an
+    // identical element and would never re-read the mocked search params.
+    const element = () => (
+      <FantasyFootballClient
+        initialState={{ position: "rb", scoring: "ppr", ranking: "consensus", teams: 12, query: "" }}
+      />
+    );
+    const { rerender } = render(element());
+    const settle = () => {
+      for (let step = 0; step < 8; step += 1) {
+        act(() => {
+          jest.advanceTimersByTime(50);
+        });
+        rerender(element());
+      }
+    };
+
+    const input = screen.getByRole("textbox", { name: "Search the current rankings board" });
+    fireEvent.change(input, { target: { value: "nobody" } });
+    settle();
+    expect(currentSearchParams.get("q")).toBe("nobody");
+    expect(screen.getByText("No players match on this board.")).toBeVisible();
+
+    fireEvent.click(screen.getByRole("button", { name: "Clear search" }));
+    settle();
+
+    expect(input).toHaveValue("");
+    expect(currentSearchParams.get("q")).toBeNull();
+    expect(screen.queryByText("No players match on this board.")).not.toBeInTheDocument();
+    expect(screen.getByText("Christian McCaffrey")).toBeVisible();
   });
 
   it("bounds the initial rankings render and reveals the next window on demand", () => {
