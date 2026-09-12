@@ -648,8 +648,62 @@ empty result can still be edited; only the labels wait for `boardReady`. The Pla
 trigger shows from lg. The desktop placeholder is "Player or team" because the full sentence
 clipped at both input widths.
 
-Still open from this run. In VORP mode the league-size select adds 92px and the bar wraps to
+Still open from this run, until the follow-up below closed the VORP wrap the same day. In VORP
+mode the league-size select adds 92px and the bar wraps to
 175px at every desktop width; the second line is the select alone. The 768 identity line wraps
 the team under the name. Nothing else the critique named is outstanding except the recorded
 P2s (the discarded preload and the drawer's tab order and phone geometry) and the product-shaped
 items above.
+
+## Bar follow-up, 2026-09-12
+
+The layout pass left the desktop bar wrapping in VORP mode, and a second pass on the same branch
+closed it. Measured first, the bar's first line had 51px of room at 1024 and 44px from 1280 up,
+and VORP mode needed 107px more for the 93px league-size select and its gap. The queue filter now
+heads the star column in the column-label row, which is where the critique first proposed moving
+it, and the league-size select rides inside the ranking box as its last segment. The filter is
+one `QueuedFilterButton` shared with the phone bar, a 44px star button with the count as a badge.
+It and the rows' own stars now both sit at `right-2`, centred in the 60px column that the rows and
+the label row reserve with `pr-15`, which leaves 8px between the filter and the last column label
+where centring on the old `right-3.5` star left 2px. Line one also went from `py-2.5` to `py-1`.
+
+The bar now measures 109px at 1024, 1280 and 1440 in both ranking modes, down from 121 in
+consensus mode and 175 in VORP mode, so it is under the critique's 110px target, which the first
+layout pass had missed. It is 163px at 768, from 177, and the phone bar is unchanged at 116. VORP
+mode holds one control line with 16 to 23px of room in Chromium, 23 to 30 in WebKit and 24 to 31
+in Firefox, and the spread comes from the native select, which renders at 92, 85 and 84px across
+those engines. The filter's centre sits within 1px of the row stars at 768, 1024 and 1440.
+
+Checking focus turned up a defect that every earlier sweep had passed. Both fused boxes, scoring
+and ranking, used `overflow-hidden` to round their corners, and that clipped each segment's focus
+ring, so a focused Consensus button showed almost nothing and a focused VORP button showed only
+its left edge, while the computed-style check still read the outline as solid. The segments now
+round their own outer corners and lift with `focus-visible:z-10`, and screenshots of Consensus,
+VORP and the fused select each show the whole ring. The trap is not specific to this codebase, so
+it is also recorded in the machine-level operating notes.
+
+Verification ran as one round after the edits. All 72 driven states were reached, though the 390
+light context lost its first state to a dev-server reload on the first run and was rerun on its
+own. The parser gate held at 16.29 light and 15.28 dark, with zero AA failures (the floor is still
+the 10px cliff label at 4.57:1), zero overflow, one main and one h1, zero unnamed sections, zero
+`transition: all` and zero radii over 10px. Jest on `src/app/fantasy-football` is 220 of 220, the
+fantasy e2e spec 23 of 23 with no spec edits, and typecheck and lint are clean.
+
+No hit-test flag touches a control this pass changed, but one new reading is worth knowing before
+the next sweep. At 390 the sweep flags the footer's tool links in the empty-search state as
+occluded from above with a 41px hit region, and measuring that state shows nothing overlapping
+them. The first row of links crosses the 844px fold by 3px, so the missing height is the viewport
+edge, and the sweep attributes it to the element above. The shorter header from the adapt pass and
+the two-line frozen footer from the clarify pass are what moved the links onto the fold. The
+VORP-state flags on the second row of links have the same 41px shape but were not measured
+separately.
+
+Still open after this pass. Rows carrying a Value or Reach chip run taller wherever the name cell
+is narrower than the chip line. At 1024, 9 of the first 40 rows are 64px against 45px for the
+rest, at 768 every identity wraps to two lines and chip rows are 6px taller, and at 1280 and 1440
+one of the first 40 rows wraps. At 1023 every row is 45px, because the width goes to the expert
+spread bar that appears at lg. The name cell on `main` works out from the markup to about 286px at
+1024 against 296px measured now, so this most likely predates the day's passes, though no sweep
+recorded row heights to confirm it. Moving the spread bar to xl would settle 1024 to 1279, and that
+is a design call about the bar. The 768 two-line identity is consistent from row to row and its
+labels align, so it is no longer a defect on its own.
