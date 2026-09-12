@@ -242,7 +242,12 @@ function ValueReachChip({ player }: { player: Player }) {
   );
 }
 
-/** The template's scoring switch: a fused button box rather than separate pills. */
+/**
+ * The template's scoring switch: a fused button box rather than separate pills.
+ * The segments round their own outer corners instead of the box taking
+ * overflow-hidden, which clipped each segment's focus ring to a sliver, and the
+ * focused segment lifts so the next segment cannot paint over its ring.
+ */
 function ScoringToggle({
   value,
   onChange,
@@ -250,17 +255,16 @@ function ScoringToggle({
 }: {
   value: FantasyRouteScoring;
   onChange: (value: FantasyRouteScoring) => void;
-  /** Short labels always, never, or only below xl, where the shell has not
-      reached its full 1080px and the desktop bar's first line is about 20px
-      too narrow for the full names beside the other controls. The full name
-      is the accessible name either way. */
+  /** Short labels always, never, or only below xl, since at 1024 the desktop
+      bar's first line cannot hold the full names beside the VORP league-size
+      select. The full name is the accessible name either way. */
   compact?: boolean | "below-xl";
 }) {
   return (
     <div
       role="group"
       aria-label="Scoring format"
-      className="inline-flex shrink-0 overflow-hidden rounded-[4px] border"
+      className="inline-flex shrink-0 rounded-[4px] border"
       style={{ borderColor: "var(--home-rule)" }}
     >
       {SCORING_OPTIONS.map((option) => {
@@ -272,7 +276,7 @@ function ScoringToggle({
             aria-pressed={active}
             aria-label={option.label}
             onClick={() => onChange(option.key)}
-            className="min-h-touch cursor-pointer px-3 font-mono text-3xs uppercase tracking-[0.08em] transition-colors duration-150"
+            className="relative min-h-touch cursor-pointer px-3 font-mono text-3xs uppercase tracking-[0.08em] transition-colors duration-150 first:rounded-l-[3px] last:rounded-r-[3px] focus-visible:z-10"
             style={
               active
                 ? { background: "var(--home-ink)", color: "var(--home-paper)" }
@@ -296,20 +300,27 @@ function ScoringToggle({
   );
 }
 
+/**
+ * Built like ScoringToggle. In VORP mode the league-size select rides inside
+ * the box as its last segment, because the size is a parameter of VORP, and
+ * fused it spends no gap on a first line with little room to give.
+ */
 function RankingToggle({
   value,
   onChange,
   vorpAvailable,
+  children,
 }: {
   value: FantasySearchState["ranking"];
   onChange: (value: FantasySearchState["ranking"]) => void;
   vorpAvailable: boolean;
+  children?: ReactNode;
 }) {
   return (
     <div
       role="group"
       aria-label="Ranking method"
-      className="inline-flex shrink-0 overflow-hidden rounded-[4px] border"
+      className="inline-flex shrink-0 rounded-[4px] border"
       style={{ borderColor: "var(--home-rule)" }}
     >
       {(["consensus", "vorp"] as const).map((option) => {
@@ -322,7 +333,7 @@ function RankingToggle({
             aria-pressed={active}
             disabled={disabled}
             onClick={() => onChange(option)}
-            className="min-h-touch cursor-pointer px-3 font-mono text-3xs uppercase tracking-[0.08em] transition-colors duration-150 disabled:cursor-not-allowed disabled:opacity-50"
+            className="relative min-h-touch cursor-pointer px-3 font-mono text-3xs uppercase tracking-[0.08em] transition-colors duration-150 first:rounded-l-[3px] last:rounded-r-[3px] focus-visible:z-10 disabled:cursor-not-allowed disabled:opacity-50"
             style={
               active
                 ? { background: "var(--home-ink)", color: "var(--home-paper)" }
@@ -333,6 +344,7 @@ function RankingToggle({
           </button>
         );
       })}
+      {children}
     </div>
   );
 }
@@ -351,7 +363,7 @@ function VorpTeamSizeSelect({
         aria-label="VORP league size"
         value={value}
         onChange={(event) => onChange(Number(event.target.value) as FantasyVorpTeamSize)}
-        className="min-h-touch rounded-[4px] border px-2 font-mono text-3xs uppercase tracking-[0.06em]"
+        className="relative min-h-touch rounded-r-[3px] border-l px-2 font-mono text-3xs uppercase tracking-[0.06em] focus-visible:z-10"
         style={{
           borderColor: "var(--home-rule)",
           background: "var(--home-paper-raised)",
@@ -365,6 +377,50 @@ function VorpTeamSizeSelect({
         ))}
       </select>
     </label>
+  );
+}
+
+/**
+ * The queue filter: a 44px star button with the count as a badge, the same
+ * control in both bars. The phone bar places it in flow; on md and up it heads
+ * the star column of the column-label row, over the rows' own star buttons.
+ */
+function QueuedFilterButton({
+  pressed,
+  count,
+  onToggle,
+  className = "relative",
+}: {
+  pressed: boolean;
+  count: number;
+  onToggle: () => void;
+  /** Placement. It must keep the button positioned, since the badge is absolute. */
+  className?: string;
+}) {
+  return (
+    <button
+      type="button"
+      aria-pressed={pressed}
+      aria-label={`Show only queued players (${count} on this board)`}
+      onClick={onToggle}
+      className={`${className} inline-flex min-h-touch min-w-touch shrink-0 cursor-pointer items-center justify-center rounded-[4px] border`}
+      style={
+        pressed
+          ? { borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }
+          : { borderColor: "var(--home-rule)", background: "var(--home-paper-raised)", color: "var(--home-ink)" }
+      }
+    >
+      <Star className="h-4 w-4" fill={pressed ? "currentColor" : "none"} aria-hidden="true" />
+      {count > 0 && (
+        <span
+          aria-hidden="true"
+          className="absolute -right-1 -top-1 rounded-full px-1 font-mono text-3xs tracking-normal tabular-nums"
+          style={{ background: "var(--home-signal)", color: "var(--home-paper)" }}
+        >
+          {count}
+        </span>
+      )}
+    </button>
   );
 }
 
@@ -1700,7 +1756,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                         onto a line of its own at 390 and again at 768, where
                         it also pushed the metrics 59px right of their column
                         labels. The row's pr-15 reserves its column, and the
-                        label row reserves the same. */}
+                        label row reserves the same for the queue filter. */}
                     <button
                       type="button"
                       aria-pressed={isQueued}
@@ -1709,7 +1765,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                         event.stopPropagation();
                         queue.toggle(player.id);
                       }}
-                      className={`absolute right-3.5 top-1/2 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-[4px] transition-opacity duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--home-signal)] ${
+                      className={`absolute right-2 top-1/2 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-[4px] transition-opacity duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--home-signal)] ${
                         isQueued
                           ? ""
                           : "pointer-fine:opacity-0 pointer-fine:group-focus-within:opacity-100 pointer-fine:group-hover:opacity-100"
@@ -1817,7 +1873,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
           WebkitBackdropFilter: "blur(8px)",
         }}
       >
-        <div className={`${SHELL_CLASS} hidden flex-wrap items-center gap-x-3.5 gap-y-2.5 py-2.5 md:flex`}>
+        <div className={`${SHELL_CLASS} hidden flex-wrap items-center gap-x-3.5 gap-y-2 py-1 md:flex`}>
           <PositionFilterBar
             ariaLabel="Position board"
             options={positionOptions}
@@ -1833,28 +1889,14 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
             value={routeState.ranking}
             vorpAvailable={vorpAvailable}
             onChange={(ranking) => updateRouteState({ ranking })}
-          />
-          {routeState.ranking === "vorp" ? (
-            <VorpTeamSizeSelect
-              value={routeState.teams}
-              onChange={(teams) => updateRouteState({ teams })}
-            />
-          ) : null}
-          <button
-            type="button"
-            aria-pressed={queuedOnly}
-            aria-label={`Show only queued players (${queuedOnBoardCount} on this board)`}
-            onClick={() => setQueuedOnly((value) => !value)}
-            className="inline-flex min-h-touch cursor-pointer items-center gap-1.5 rounded-[4px] border px-3 font-mono text-2xs tabular-nums"
-            style={
-              queuedOnly
-                ? { borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }
-                : { borderColor: "var(--home-rule)", background: "transparent", color: "var(--home-ink)" }
-            }
           >
-            <Star size={12} fill={queuedOnly ? "currentColor" : "none"} aria-hidden="true" />
-            {queuedOnBoardCount}
-          </button>
+            {routeState.ranking === "vorp" ? (
+              <VorpTeamSizeSelect
+                value={routeState.teams}
+                onChange={(teams) => updateRouteState({ teams })}
+              />
+            ) : null}
+          </RankingToggle>
         </div>
         <div className={`${SHELL_CLASS} flex items-center gap-2 py-2 md:hidden`}>
           {mobileSearchOpen ? (
@@ -1980,26 +2022,11 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
               >
                 <Search className="h-4 w-4" aria-hidden="true" />
               </button>
-              <button
-                type="button"
-                aria-pressed={queuedOnly}
-                aria-label={`Show only queued players (${queuedOnBoardCount} on this board)`}
-                onClick={() => setQueuedOnly((value) => !value)}
-                className="relative inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center rounded-[4px] border"
-                style={
-                  queuedOnly
-                    ? { borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }
-                    : { borderColor: "var(--home-rule)", background: "var(--home-paper-raised)", color: "var(--home-ink)" }
-                }
-              >
-                <Star className="h-4 w-4" fill={queuedOnly ? "currentColor" : "none"} aria-hidden="true" />
-                {queuedOnBoardCount > 0 && (
-                  <span aria-hidden="true" className="absolute -right-1 -top-1 rounded-full px-1 font-mono text-3xs tabular-nums"
-                    style={{ background: "var(--home-signal)", color: "var(--home-paper)" }}>
-                    {queuedOnBoardCount}
-                  </span>
-                )}
-              </button>
+              <QueuedFilterButton
+                pressed={queuedOnly}
+                count={queuedOnBoardCount}
+                onToggle={() => setQueuedOnly((value) => !value)}
+              />
             </>
           )}
         </div>
@@ -2034,9 +2061,11 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
         {/* The second line of the bar. The search sits over the Player
             column, whose label slot had 184 to 342px of slack while the
             search pushed the controls onto a second line at 1440; the column
-            labels ride beside it so the numbers keep their names mid-scroll.
-            Phones get per-value micro-labels and their own search instead.
-            The search is always mounted here so an empty result can still be
+            labels ride beside it so the numbers keep their names mid-scroll,
+            and the queue filter heads the star column it filters, in the
+            space both rows reserve with pr-15. Phones get per-value
+            micro-labels and their own search instead. The search and the
+            filter are always mounted here so an empty result can still be
             edited; only the labels wait for rows. */}
         <div
           className="hidden border-t md:block"
@@ -2044,7 +2073,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
         >
           <div className={SHELL_CLASS}>
             <div
-              className="flex items-center gap-x-4 py-1 pl-3.5 pr-15 font-mono text-3xs uppercase tracking-[0.12em]"
+              className="relative flex items-center gap-x-4 py-1 pl-3.5 pr-15 font-mono text-3xs uppercase tracking-[0.12em]"
               style={{ color: "var(--home-ink-muted)" }}
             >
               <span className="w-[34px] shrink-0" />
@@ -2098,6 +2127,12 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                   ))}
                 </span>
               )}
+              <QueuedFilterButton
+                pressed={queuedOnly}
+                count={queuedOnBoardCount}
+                onToggle={() => setQueuedOnly((value) => !value)}
+                className="absolute right-2 top-1/2 -translate-y-1/2"
+              />
             </div>
           </div>
         </div>
