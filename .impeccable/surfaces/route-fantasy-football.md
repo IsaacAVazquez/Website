@@ -740,7 +740,8 @@ the two-line frozen footer from the clarify pass are what moved the links onto t
 VORP-state flags on the second row of links have the same 41px shape but were not measured
 separately.
 
-Still open after this pass. Rows carrying a Value or Reach chip run taller wherever the name cell
+Still open after this pass, until the row follow-up below closed it the same day. Rows carrying a
+Value or Reach chip run taller wherever the name cell
 is narrower than the chip line. At 1024, 9 of the first 40 rows are 64px against 45px for the
 rest, at 768 every identity wraps to two lines and chip rows are 6px taller, and at 1280 and 1440
 one of the first 40 rows wraps. At 1023 every row is 45px, because the width goes to the expert
@@ -749,3 +750,58 @@ spread bar that appears at lg. The name cell on `main` works out from the markup
 recorded row heights to confirm it. Moving the spread bar to xl would settle 1024 to 1279, and that
 is a design call about the bar. The 768 two-line identity is consistent from row to row and its
 labels align, so it is no longer a defect on its own.
+
+## Row follow-up and PR #426, 2026-09-12
+
+Isaac asked for everything to be fixed, merged and deployed, so the chip rows were fixed on the
+same branch, and PR #426, the follow-up to the 2026-09-11 re-score, came along with it.
+
+The row fix works on the width itself. The Value or Reach chip repeated its signed gap ("Value
++12", up to 89px), which the same row's vs ADP cell already shows, so the chip now carries the
+word alone. The identity cell switches layout on its own width with a container query, the first
+in the codebase, because that width moves with the columns a board shows as well as with the
+viewport. Below 21.5rem the name sits over one line holding the position chip, the team and bye,
+and the Value or Reach chip, and since every row has a position chip, that line is the same height
+with or without a signal. From 21.5rem it is one line. The expert-spread bar and its label now
+yield below xl, so from 1024 up the cell stays above the switch.
+
+Measured before choosing the switch, the widest one-line identity is 329px ("Washington
+Commanders", a defense row), and no chip row is wider once the chip lost its number. The cell is
+352px at 1280 and 1440 and 432px at 1024. After the change every overall board has one row height
+per width, 100px at 390, 61px at 768, 62px at 900 and 45px from 960 up, across 552 Standard, 559
+PPR, 985 Half PPR and 490 VORP rows, with no truncated names or team text, no overflow, and column
+labels within 1px of their cells. WebKit and Firefox match Chromium at 768, 960 and 1280. The QB
+board is already one line at 900, because its cell is wider without the ADP columns, which is the
+reason for querying the cell instead of the viewport. On the overall boards the band below about
+950px is stacked, where at 900 it had been 45px for most rows and 64px for chip rows.
+
+PR #426 was merged into this branch before either landed, so the combined board was verified
+once. Its only conflict was this brief, where both branches appended after the 2026-09-11
+section, and its re-score block stays under that section. On this route it changes the drawer's
+stat grid, and beyond it the best ball, redraft tracker, mock draft and weekly surfaces. Its
+rankings snapshot scored this board 34 with no P0 and no P1 on the same commit today's critique
+scored 26. It does not mention the clear-search race, and it rates the freshness copy and the
+chip rows as P2s, the second of which this follow-up closed.
+
+Verification on the combined branch ran as one round. Jest across `src/app/fantasy-football`,
+`src/lib/bestBall` and `src/components/fantasy` passed 322 of 322, and typecheck and lint were
+clean on all 14 changed TypeScript files. The fantasy e2e spec passed 22 of 23 with default
+workers against the dev server. The one failure was best ball's six ranking presets, where the
+Eliminator control did not register its click within 15 seconds, and run alone on the idle server
+it passed in 3 seconds, which points to load on a dev server that had just recompiled after the
+merge. CI repeats it against a production build. All 72 sweep states were reached with the parser
+gate at 16.29 light and 15.28 dark, zero AA failures (the floor is still 4.57:1 on the cliff label),
+zero overflow, one main and one h1, zero unnamed sections, zero `transition: all`, zero radii over
+10px, and the sticky bar at 116, 163, 109 and 109px across the four widths.
+
+Hit-test flags rose to 124, and none touch a control this branch changed. 96 are row overlays
+covered by their own row content, which is the overlay pattern doing its job, 20 are footer tool
+links on the fold, and 8 are row overlays the sweep attributes to the tier plate header above.
+Measuring every plate header against its first row, at 1440 on the PPR overall board and at 1024
+on both QB boards, found a 1px gap on all 34 plates, so those 8 come from where the sweep's scroll
+steps land, and the layout has no overlap there.
+
+What stays open is all P2 or product-shaped, from the discarded preload, to the drawer's tab order
+and phone geometry (including Close scrolling out of view at 390), to plate metadata recomputed
+from a filtered subset, the repeated 12-team label in VORP mode, and the shared-shell heading
+inversions.
