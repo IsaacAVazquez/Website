@@ -461,9 +461,13 @@ test.describe("Fantasy football draft tracker", () => {
       await expect(firstPick).toHaveAccessibleName(`Log ${scoring.topPlayer}`);
       await firstPick.click();
       // The live fascia is the room's pick counter now, so one logged pick moves
-      // it from #1 to #2 of the same total.
+      // it from #1 to #2 of the same total. Below sm the fascia prints the compact
+      // "#2/180" and hides the spaced form, so read whichever one is showing.
       await expect(
-        page.getByRole("region", { name: "Live draft status" }).getByText(/^#2 \/ \d+$/)
+        page
+          .getByRole("region", { name: "Live draft status" })
+          .getByText(/^#2 ?\/ ?\d+$/)
+          .filter({ visible: true })
       ).toBeVisible();
 
       await activateControl(page.getByRole("button", { name: "New room" }));
@@ -539,9 +543,10 @@ test.describe("Fantasy football draft tracker", () => {
     await expect(page.getByText("PPR scoring", { exact: true })).toBeVisible();
     await expect(page.getByText("Standard scoring", { exact: true })).toHaveCount(0);
     await expect(
-      page.getByRole("region", { name: "Live draft status" }).getByText("#1 / 180", {
-        exact: true,
-      })
+      page
+        .getByRole("region", { name: "Live draft status" })
+        .getByText(/^#1 ?\/ ?180$/)
+        .filter({ visible: true })
     ).toBeVisible();
 
     await page.getByRole("button", { name: "New room" }).click();
