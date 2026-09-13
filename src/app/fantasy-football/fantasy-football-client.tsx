@@ -535,22 +535,34 @@ function ExpertSpreadBar({ player, scale }: { player: Player; scale: number }) {
  * the same trigger those headers use. `term` names the tooltip subject when
  * the visible label carries a date or a qualifier.
  */
+interface DrawerStatProps {
+  label: string;
+  value: string;
+  valueColor?: string;
+  title?: string;
+  term?: string;
+}
+
+/**
+ * One stat card in the drawer grid. A `lead` card spans both columns and lays
+ * its label and value on one line, so an odd card count fills the grid
+ * without spending a full row on a single number.
+ */
 function DrawerStat({
   label,
   value,
   valueColor,
   title,
   term,
-}: {
-  label: string;
-  value: string;
-  valueColor?: string;
-  title?: string;
-  term?: string;
-}) {
+  lead = false,
+}: DrawerStatProps & { lead?: boolean }) {
   return (
     <div
-      className="rounded-[4px] border px-2.5 py-2"
+      className={
+        lead
+          ? "col-span-2 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5 rounded-[4px] border px-2.5 py-2"
+          : "rounded-[4px] border px-2.5 py-2"
+      }
       style={{ borderColor: "var(--home-rule)", background: "var(--home-paper-raised)" }}
     >
       <p className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
@@ -562,7 +574,10 @@ function DrawerStat({
           label
         )}
       </p>
-      <p className="mt-1 font-mono text-base tabular-nums" style={{ color: valueColor ?? "var(--home-ink)" }}>
+      <p
+        className={`${lead ? "" : "mt-1 "}font-mono text-base tabular-nums`}
+        style={{ color: valueColor ?? "var(--home-ink)" }}
+      >
         {value}
       </p>
     </div>
@@ -749,14 +764,46 @@ function DraftPlayerDrawer({
   // The row already shows this number in both ranking modes, so the drawer
   // carries it too. In VORP mode it leads the grid, because it is the rank.
   const vorp = vorpIndex.get(player.id) ?? null;
-  const vorpCard = vorp ? (
-    <DrawerStat
-      label={`VORP · ${vorpTeams}-team`}
-      term="VORP"
-      value={String(Math.round(vorp.value))}
-      title={FANTASY_VORP_TOOLTIP}
-    />
-  ) : null;
+  const vorpCard: DrawerStatProps | null = vorp
+    ? {
+        label: `VORP · ${vorpTeams}-team`,
+        term: "VORP",
+        value: String(Math.round(vorp.value)),
+        title: FANTASY_VORP_TOOLTIP,
+      }
+    : null;
+  const adpCard: DrawerStatProps | null =
+    adpAvailable && Number.isFinite(player.adp)
+      ? {
+          label: adpReferenceAsOf ? `Prior-season ADP · ${adpReferenceAsOf}` : "Market ADP",
+          term: adpReferenceAsOf ? "Prior-season ADP" : "Market ADP",
+          value: formatAdp(player.adp),
+          title: adpReferenceAsOf ? FANTASY_PRIOR_SEASON_ADP_TOOLTIP : FANTASY_ADP_TOOLTIP,
+        }
+      : null;
+  const vsAdpCard: DrawerStatProps | null = vsAdp
+    ? {
+        label: "vs ADP",
+        value: vsAdp.text,
+        valueColor: vsAdp.color,
+        title: vsAdp.judged
+          ? FANTASY_VS_ADP_TOOLTIP
+          : "Early mock-draft sample, so the gap carries no value or reach read yet",
+      }
+    : adpCard
+      ? { label: "vs ADP", value: "—", title: "No reliable market gap for this player on this board" }
+      : null;
+  // The grid is two columns wide. With an odd card count the first card
+  // spans both, so five cards fill three rows and no cell sits blank.
+  const statCards: DrawerStatProps[] = [
+    ...(vorpMode && vorpCard ? [vorpCard] : []),
+    { label: "Consensus avg", value: formatAvg(player), title: FANTASY_AVG_RANK_TOOLTIP },
+    { label: "Expert range", value: formatExpertRange(player), title: FANTASY_EXPERT_SPREAD_TOOLTIP },
+    ...(adpCard ? [adpCard] : []),
+    ...(vsAdpCard ? [vsAdpCard] : []),
+    ...(!vorpMode && vorpCard ? [vorpCard] : []),
+  ];
+  const leadSpans = statCards.length % 2 === 1;
 
   return (
     <div className="fixed inset-0 z-[60] flex justify-end">
@@ -814,43 +861,9 @@ function DraftPlayerDrawer({
         </div>
 
         <div className="grid grid-cols-2 gap-2">
-          {vorpMode ? vorpCard : null}
-          <DrawerStat label="Consensus avg" value={formatAvg(player)} title={FANTASY_AVG_RANK_TOOLTIP} />
-          <DrawerStat
-            label="Expert range"
-            value={formatExpertRange(player)}
-            title={FANTASY_EXPERT_SPREAD_TOOLTIP}
-          />
-          {adpAvailable && Number.isFinite(player.adp) && (
-            <DrawerStat
-              label={adpReferenceAsOf ? `Prior-season ADP · ${adpReferenceAsOf}` : "Market ADP"}
-              term={adpReferenceAsOf ? "Prior-season ADP" : "Market ADP"}
-              value={formatAdp(player.adp)}
-              title={adpReferenceAsOf ? FANTASY_PRIOR_SEASON_ADP_TOOLTIP : FANTASY_ADP_TOOLTIP}
-            />
-          )}
-          {vsAdp ? (
-            <DrawerStat
-              label="vs ADP"
-              value={vsAdp.text}
-              valueColor={vsAdp.color}
-              title={
-                vsAdp.judged
-                  ? FANTASY_VS_ADP_TOOLTIP
-                  : "Early mock-draft sample, so the gap carries no value or reach read yet"
-              }
-            />
-          ) : (
-            adpAvailable &&
-            Number.isFinite(player.adp) && (
-              <DrawerStat
-                label="vs ADP"
-                value="—"
-                title="No reliable market gap for this player on this board"
-              />
-            )
-          )}
-          {vorpMode ? null : vorpCard}
+          {statCards.map((card, index) => (
+            <DrawerStat key={card.label} {...card} lead={leadSpans && index === 0} />
+          ))}
         </div>
 
         {verdict && (

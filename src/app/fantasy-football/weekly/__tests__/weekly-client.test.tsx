@@ -194,6 +194,28 @@ describe("WeeklyBoardClient rankings view", () => {
     expect(bodyRowCount()).toBe(FLEX_COUNT);
   });
 
+  it("moves focus to the count line after Show all unmounts itself", () => {
+    renderClient("rankings");
+    const showAll = screen.getByRole("button", { name: `Show all ${FLEX_COUNT}` });
+    showAll.focus();
+    expect(document.activeElement).toBe(showAll);
+
+    fireEvent.click(showAll);
+
+    const status = screen.getByRole("status");
+    expect(status).toHaveAttribute("tabindex", "-1");
+    expect(status).toHaveTextContent(`Showing all ${FLEX_COUNT} players`);
+    expect(document.activeElement).toBe(status);
+    expect(screen.queryByRole("button", { name: /Show all/ })).not.toBeInTheDocument();
+  });
+
+  it("keeps the board in a card that does not lift under the pointer", () => {
+    renderClient("rankings");
+    const card = screen.getByRole("region", { name: "Flex rankings" });
+    expect(card).toHaveClass("home-card-static");
+    expect(card).not.toHaveClass("home-card");
+  });
+
   it("uses the quarterback depth on the quarterback board", () => {
     currentSearchParams = new URLSearchParams("board=quarterbacks");
     renderClient("rankings");
@@ -251,6 +273,8 @@ describe("WeeklyBoardClient rankings view", () => {
     const list = screen.getByRole("list", {
       name: "2026 week 1 flex consensus rankings, PPR scoring",
     });
+    // WebKit drops list semantics for `list-style: none`, so the role is explicit.
+    expect(list).toHaveAttribute("role", "list");
     const items = within(list).getAllByRole("listitem");
     expect(items).toHaveLength(FANTASY_WEEKLY_STARTABLE_DEPTH.flex);
     const first = within(items[0]);
@@ -294,6 +318,9 @@ describe("WeeklyBoardClient waivers view", () => {
     );
     const region = screen.getByRole("region", { name: "Waiver targets table" });
     expect(region).toHaveAttribute("tabindex", "0");
+    expect(screen.getByRole("region", { name: "This week’s list" })).toHaveClass(
+      "home-card-static",
+    );
     const headers = within(screen.getByRole("table"))
       .getAllByRole("columnheader")
       .map((cell) => cell.textContent?.trim());
@@ -332,6 +359,7 @@ describe("WeeklyBoardClient waivers view", () => {
     const list = screen.getByRole("list", {
       name: "Weekly waiver targets ranked by the gap between board percentile and rostered percentage",
     });
+    expect(list).toHaveAttribute("role", "list");
     const items = within(list).getAllByRole("listitem");
     expect(items).toHaveLength(2);
     const labels = within(items[0])

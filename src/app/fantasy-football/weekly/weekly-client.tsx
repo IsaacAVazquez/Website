@@ -2,7 +2,14 @@
 
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { startTransition, useMemo, useState, useSyncExternalStore } from "react";
+import {
+  startTransition,
+  useMemo,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
+import { flushSync } from "react-dom";
 import {
   Breadcrumbs,
   createBreadcrumbItems,
@@ -302,6 +309,7 @@ export function WeeklyBoardClient({
     key: string;
     count: number;
   } | null>(null);
+  const countLineRef = useRef<HTMLParagraphElement>(null);
   const visibleCount =
     windowState?.key === windowKey ? windowState.count : startableDepth;
   const visiblePlayers = useMemo(
@@ -537,7 +545,7 @@ export function WeeklyBoardClient({
             {view === "waivers" ? (
               <section
                 aria-labelledby="weekly-waivers"
-                className="home-card p-5"
+                className="home-card-static p-5"
               >
                 <h2
                   id="weekly-waivers"
@@ -658,6 +666,7 @@ export function WeeklyBoardClient({
                       </div>
                     ) : (
                       <ol
+                        role="list"
                         aria-label={waiversCaption}
                         className="mt-3 list-none border-t border-[var(--home-rule)] p-0"
                       >
@@ -728,7 +737,7 @@ export function WeeklyBoardClient({
                 </p>
               </section>
             ) : (
-              <section aria-labelledby="weekly-board" className="home-card p-5">
+              <section aria-labelledby="weekly-board" className="home-card-static p-5">
                 <h2
                   id="weekly-board"
                   className="text-lg font-semibold tracking-[-0.02em] text-[var(--home-ink)]"
@@ -796,8 +805,16 @@ export function WeeklyBoardClient({
                   <>
                     {/* The count is the page's live region. It stays mounted
                         across every filter change so a search that lands on
-                        one row is announced rather than only seen. */}
-                    <p role="status" className={STATUS_CLASS}>
+                        one row is announced rather than only seen. It is also
+                        where focus lands after Show all, since that button
+                        unmounts itself and would otherwise drop a keyboard
+                        user to the top of the document. */}
+                    <p
+                      ref={countLineRef}
+                      role="status"
+                      tabIndex={-1}
+                      className={STATUS_CLASS}
+                    >
                       {filteredPlayers.length === 0 ? emptyFilterLine : countLine}
                     </p>
                     {filteredPlayers.length === 0 ? (
@@ -896,6 +913,7 @@ export function WeeklyBoardClient({
                       </table>
                     ) : (
                       <ol
+                        role="list"
                         aria-label={rankingsCaption}
                         className="mt-3 list-none border-t border-[var(--home-rule)] p-0"
                       >
@@ -959,12 +977,18 @@ export function WeeklyBoardClient({
                         </button>
                         <button
                           type="button"
-                          onClick={() =>
-                            setWindowState({
-                              key: windowKey,
-                              count: filteredPlayers.length,
-                            })
-                          }
+                          onClick={() => {
+                            // Show all removes both buttons, so the render has
+                            // to land before focus moves or the count line is
+                            // still describing the old window.
+                            flushSync(() =>
+                              setWindowState({
+                                key: windowKey,
+                                count: filteredPlayers.length,
+                              }),
+                            );
+                            countLineRef.current?.focus();
+                          }}
                           className={`${TOGGLE_CLASS} border-[var(--home-rule)] bg-[var(--home-paper)] text-[var(--home-ink-muted)] hover:border-[var(--home-signal)]`}
                         >
                           Show all {filteredPlayers.length}

@@ -14,6 +14,7 @@ import {
   analyzeBestBallRoster,
   getContestPreset,
   getBestBallModelSourceIssue,
+  isBestBallBoardFrozen,
   getNextUserPick,
   hasSupportedBestBallAdp,
   normalizeContestId,
@@ -150,6 +151,10 @@ export function BestBallDraftTrackerClient({
   const { snapshot, isLoading, error, retry } = useBestBallSnapshot();
   const preset = getContestPreset(contestId);
   const sourceIssue = snapshot ? getBestBallModelSourceIssue(snapshot, preset) : null;
+  // In season the gate still pauses the model, but the board is frozen on
+  // purpose (the market closed at kickoff), so the alert says that rather
+  // than describing a refresh that is not coming.
+  const boardFrozen = snapshot ? isBestBallBoardFrozen(snapshot, preset) : false;
 
   function changeContest(nextContest: BestBallContestId) {
     setContestId(nextContest);
@@ -279,9 +284,22 @@ export function BestBallDraftTrackerClient({
               background: "color-mix(in srgb, var(--home-warning) 10%, var(--home-paper))",
             }}
           >
-            Draft Outlook is paused because {sourceIssue}.
-            {preset.recommendationMode === "exact" ? " Exact player cards are paused too." : ""}
-            {" "}The dated board, roster targets, and manual pick log remain available.
+            {boardFrozen ? (
+              <>
+                Draft Outlook is paused because {sourceIssue}.
+                {preset.recommendationMode === "exact"
+                  ? " Exact player cards are paused too, because both need a current consensus."
+                  : " It needs a current consensus."}
+                {" "}The board stays as a frozen reference for next summer, and the roster
+                targets and manual pick log remain available.
+              </>
+            ) : (
+              <>
+                Draft Outlook is paused because {sourceIssue}.
+                {preset.recommendationMode === "exact" ? " Exact player cards are paused too." : ""}
+                {" "}The dated board, roster targets, and manual pick log remain available.
+              </>
+            )}
           </div>
         ) : null}
 
@@ -400,6 +418,16 @@ function BestBallDraftRoom({
     snapshot.adpSource !== null &&
     sourceCapabilities.market.current;
   const modelSourceIssue = getBestBallModelSourceIssue(snapshot, preset);
+  // The header alert above the room already carries the full frozen-board
+  // clause once, so the rail (and the phone sheet, which opens from the same
+  // room) prints the short form and no refresh promise. Before Week 1 the
+  // pause is a missed refresh and the sentence says so.
+  const draftValueUnavailableReason =
+    modelSourceIssue === null
+      ? null
+      : isBestBallBoardFrozen(snapshot, preset)
+        ? "Paused on the frozen board. Nothing here refreshes this season."
+        : `Draft Outlook is paused because ${modelSourceIssue}. It will return after the published sources refresh.`;
   const recommendationSourceIssue =
     preset.recommendationMode === "exact" ? modelSourceIssue : null;
   const recommendationsAvailable =
@@ -881,11 +909,7 @@ function BestBallDraftRoom({
               totalPicks={draft.totalPicks}
               draftValue={userDraftValue}
               week17Available={scheduleAvailable}
-              draftValueUnavailableReason={
-                modelSourceIssue
-                  ? `Draft Outlook is paused because ${modelSourceIssue}. It will return after the published sources refresh.`
-                  : null
-              }
+              draftValueUnavailableReason={draftValueUnavailableReason}
               calculatorValue={returnAssumptions}
               onCalculatorChange={setReturnAssumptions}
               headingId="best-ball-desktop-build-heading"
@@ -1024,11 +1048,7 @@ function BestBallDraftRoom({
           totalPicks={draft.totalPicks}
           draftValue={userDraftValue}
           week17Available={scheduleAvailable}
-          draftValueUnavailableReason={
-            modelSourceIssue
-              ? `Draft Outlook is paused because ${modelSourceIssue}. It will return after the published sources refresh.`
-              : null
-          }
+          draftValueUnavailableReason={draftValueUnavailableReason}
           calculatorValue={returnAssumptions}
           onCalculatorChange={setReturnAssumptions}
           headingId="best-ball-mobile-build-heading"

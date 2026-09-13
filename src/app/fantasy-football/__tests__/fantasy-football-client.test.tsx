@@ -473,6 +473,95 @@ describe("FantasyFootballClient", () => {
     expect(within(dialog).getByText("VORP · 12-team")).toBeVisible();
   });
 
+  it("spans the drawer's lead stat card only when the card count is odd, so no cell sits blank", () => {
+    const vorpSource = {
+      provider: "FantasyPros projected VORP",
+      asOf: "2026-08-17T00:00:00.000Z",
+      urls: { "12": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php" },
+      matchedCounts: { "12": 1 },
+    };
+    const players = [
+      makePlayer({
+        id: "wr-1",
+        name: "Ja'Marr Chase",
+        team: "CIN",
+        position: "WR",
+        rankEcr: 12,
+        averageRank: 12,
+        rankAverage: 12.4,
+        positionRank: 4,
+        minRank: 8,
+        maxRank: 16,
+        adp: 30,
+        adpStandardDeviation: 5,
+        adpTimesDrafted: 120,
+        standardDeviation: 3,
+      }),
+      makePlayer({
+        id: "wr-2",
+        name: "No Published VORP",
+        team: "CIN",
+        position: "WR",
+        rankEcr: 20,
+        averageRank: 20,
+        rankAverage: 20.1,
+        positionRank: 7,
+        tier: 2,
+        minRank: 15,
+        maxRank: 26,
+        adp: 21,
+        adpStandardDeviation: 5,
+        adpTimesDrafted: 120,
+        standardDeviation: 3,
+      }),
+    ];
+    const vorpRankings = { "12": [{ playerId: "wr-1", rank: 1, value: 70 }] };
+    const cardOf = (dialog: HTMLElement, label: string) =>
+      within(dialog).getByText(label).closest("div") as HTMLElement;
+    const gridOf = (dialog: HTMLElement) => cardOf(dialog, "Consensus avg").parentElement as HTMLElement;
+
+    // Consensus board, five cards: Consensus avg leads on its own line and the
+    // four market and VORP cards fill a two-by-two below it.
+    currentSearchParams = new URLSearchParams("position=overall&scoring=ppr");
+    mockSnapshot({ position: "overall", adpSource: FRESH_ADP_SOURCE, vorpSource, vorpRankings, players });
+    const consensus = renderClient({ position: "overall" });
+    fireEvent.click(screen.getByRole("button", { name: "Open Ja'Marr Chase detail" }));
+    let dialog = screen.getByRole("dialog", { name: "Ja'Marr Chase detail" });
+    let grid = gridOf(dialog);
+    expect(grid).toHaveClass("grid-cols-2");
+    expect(grid.children).toHaveLength(5);
+    expect(grid.children[0]).toBe(cardOf(dialog, "Consensus avg"));
+    expect(grid.children[0]).toHaveClass("col-span-2");
+    expect(grid.children[4]).toBe(cardOf(dialog, "VORP · 12-team"));
+    expect(grid.querySelectorAll(".col-span-2")).toHaveLength(1);
+    // The lead card keeps its focusable definition trigger.
+    expect(within(grid.children[0] as HTMLElement).getByRole("button", { name: "What is Consensus avg?" })).toBeInTheDocument();
+    fireEvent.click(within(dialog).getByRole("button", { name: "Close" }));
+
+    // Four cards (ADP but no published VORP) already fill two rows, so nothing spans.
+    fireEvent.click(screen.getByRole("button", { name: "Open No Published VORP detail" }));
+    dialog = screen.getByRole("dialog", { name: "No Published VORP detail" });
+    grid = gridOf(dialog);
+    expect(grid.children).toHaveLength(4);
+    expect(within(dialog).queryByText("VORP · 12-team")).not.toBeInTheDocument();
+    expect(grid.querySelectorAll(".col-span-2")).toHaveLength(0);
+    consensus.unmount();
+
+    // VORP board, five cards: the VORP card leads, since it is the rank the
+    // board is sorted by, and the consensus cards fill the two-by-two below.
+    currentSearchParams = new URLSearchParams("position=overall&scoring=ppr&ranking=vorp&teams=12");
+    mockSnapshot({ position: "overall", adpSource: FRESH_ADP_SOURCE, vorpSource, vorpRankings, players });
+    renderClient({ position: "overall", ranking: "vorp", teams: 12 });
+    fireEvent.click(screen.getByRole("button", { name: "Open Ja'Marr Chase detail" }));
+    dialog = screen.getByRole("dialog", { name: "Ja'Marr Chase detail" });
+    grid = gridOf(dialog);
+    expect(grid.children).toHaveLength(5);
+    expect(grid.children[0]).toBe(cardOf(dialog, "VORP · 12-team"));
+    expect(grid.children[0]).toHaveClass("col-span-2");
+    expect(grid.querySelectorAll(".col-span-2")).toHaveLength(1);
+    expect(within(grid.children[0] as HTMLElement).getByRole("button", { name: "What is VORP?" })).toBeInTheDocument();
+  });
+
   it("accents the VORP value only when VORP is the ranking, and keeps signal text AA-safe", () => {
     const vorpSource = {
       provider: "FantasyPros projected VORP",

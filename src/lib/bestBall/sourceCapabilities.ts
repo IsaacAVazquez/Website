@@ -1,5 +1,5 @@
 import type { BestBallSnapshot, BestBallSourceMetadata } from "@/lib/bestBallSnapshot";
-import { getFantasySourceCapabilities } from "@/lib/fantasyUtils";
+import { getFantasySourceCapabilities, getNflRegularSeasonWeek } from "@/lib/fantasyUtils";
 import type { Player } from "@/types";
 import { getStrategyProfile, hasSupportedBestBallAdp } from "./contests";
 import type { BestBallContestPreset } from "./types";
@@ -131,6 +131,48 @@ export function getBestBallRankingSource(
 }
 
 /**
+ * True once the regular season has opened for the snapshot's season. The best
+ * ball market closes at kickoff and the builder keeps the committed snapshot
+ * frozen from then on (getBestBallRefreshFallback in bestBallSource.ts), so a
+ * dated source is the board's steady state for the rest of the season rather
+ * than a refresh that has not run yet.
+ */
+export function isBestBallSeasonOpen(
+  snapshot: Pick<BestBallSnapshot, "season">,
+  now: Date = new Date()
+): boolean {
+  return getNflRegularSeasonWeek(snapshot.season, now) >= 1;
+}
+
+/**
+ * The in-season reading of a ranking source the four-day band calls stale.
+ * Same gate, different words: the model output still pauses, but the clause
+ * names the dated board and the closed market instead of a missed refresh,
+ * and promises nothing about the next one.
+ */
+export function getBestBallFrozenBoardClause(asOf: string | null): string {
+  return `the best ball consensus is frozen at its ${formatConsensusDate(asOf)} board and the market closed at kickoff`;
+}
+
+/**
+ * True when the only thing pausing the model is the frozen in-season board,
+ * so the trackers can print the short form where the full clause already
+ * shows once in the same viewport.
+ */
+export function isBestBallBoardFrozen(
+  snapshot: BestBallSnapshot,
+  preset: BestBallContestPreset,
+  now: Date = new Date()
+): boolean {
+  const rankingSource = getBestBallRankingSource(snapshot, preset);
+  return (
+    rankingSource !== null &&
+    getBestBallModelSourceIssue(snapshot, preset, now) ===
+      getBestBallFrozenBoardClause(rankingSource.asOf)
+  );
+}
+
+/**
  * One source gate for both best ball trackers. The board may remain visible
  * when a source is unavailable, but model output pauses until every source the
  * selected contest actually uses is current enough, complete enough, and
@@ -143,6 +185,7 @@ export function getBestBallModelSourceIssue(
 ): string | null {
   const rankingSource = getBestBallRankingSource(snapshot, preset);
   if (rankingSource === null) return "the required ranking source is unavailable";
+  const seasonOpen = isBestBallSeasonOpen(snapshot, now);
 
   // The Superflex lens orders and scores on its own half PPR Superflex
   // consensus, which publishes no expert band to test against, so the PPR
@@ -159,14 +202,20 @@ export function getBestBallModelSourceIssue(
     season: snapshot.season,
     now,
   });
-  if (!capabilities.ranking.usable) return "the required ranking source is stale";
+  if (!capabilities.ranking.usable) {
+    return seasonOpen
+      ? getBestBallFrozenBoardClause(rankingSource.asOf)
+      : "the required ranking source is stale";
+  }
 
   if (hasSupportedBestBallAdp(preset)) {
     if (snapshot.adpSource === null) {
       return "the matching standard-season Underdog ADP source is unavailable";
     }
     if (!capabilities.market.current) {
-      return "the matching standard-season Underdog ADP source is stale";
+      return seasonOpen
+        ? `the Underdog ADP is frozen at its ${formatConsensusDate(snapshot.adpSource.asOf)} reading and the market closed at kickoff`
+        : "the matching standard-season Underdog ADP source is stale";
     }
   }
 

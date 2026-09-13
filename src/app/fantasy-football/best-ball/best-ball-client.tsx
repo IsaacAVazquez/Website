@@ -268,9 +268,22 @@ function getFreshnessWarning(
     ...(hasSupportedBestBallAdp(contest) ? [snapshot.adpSource?.asOf] : []),
   ];
   const stale = checks.some((value) => getSnapshotStaleness(value) === "stale");
-  return stale
-    ? "One or more best ball sources are older than the normal refresh window. Check the dates before using this board in a live room."
-    : null;
+  if (!stale) return null;
+
+  // The four-day band still trips in season, and it should, because the
+  // sources are dated. But "refresh window" and "live room" are August words:
+  // the market closed at kickoff and the builder keeps the snapshot frozen
+  // from Week 1, so the card names the dates and what stays paused instead.
+  if (getNflRegularSeasonWeek(snapshot.season) >= 1) {
+    const adpDate =
+      hasSupportedBestBallAdp(contest) && snapshot.adpSource
+        ? ` and the ${snapshot.adpSource.provider.split(" ")[0]} ADP ${formatDate(snapshot.adpSource.asOf)}`
+        : "";
+    const moves = adpDate ? "neither will move again" : "it will not move again";
+    return `This consensus is dated ${formatDate(rankingAsOf ?? snapshot.generatedAt)}${adpDate}, and ${moves} now that the market has closed at kickoff. The board stays as a frozen reference for next summer, and the draft tracker keeps Draft Outlook and its exact player cards paused because they need a current consensus.`;
+  }
+
+  return "One or more best ball sources are older than the normal refresh window. Check the dates before using this board in a live room.";
 }
 
 function formatRank(value: number | null | undefined): string {
