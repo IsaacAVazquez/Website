@@ -603,3 +603,205 @@ taken to five cards in a two-column grid with a blank 176px cell, now spans its 
 across both columns on one line when the count is odd, so no cell sits blank at any count
 and the phone drawer recovers 21px; the Close button still scrolls out of view at 390,
 which stays open as an adapt item.
+
+## Critique, 2026-09-12
+
+A dual-agent critique re-ran on the rankings board alone, the day after the in-season loop
+landed, against main at `6d12f70f`. It scored 26/40 with one P0 and three P1. Snapshot at
+`.impeccable/critique/2026-09-12T17-35-12Z__route-fantasy-football.md`. The drop from 30 is
+one functional defect that no earlier critique entered the state to see, not a regression
+from the 09-11 remediation.
+
+The P0 is that "Clear search" in the empty state and the phone search's X both resurrect the
+cleared query within about 150ms. The clear handlers write an empty query to the URL in the
+same tick as the state reset, the debounced sync effect re-runs because the route query
+changed while the debounced value still holds the old text, and it writes the old query back.
+Typing the query away works because the debounce owns that path. The debounce landed
+2026-08-22 in #398, so the 08-22 and 09-11 critiques and the "clears only the query" test all
+ran with it and none caught it, because the test asserts synchronously and never advances past
+the 200ms window. Any fix needs a test that does.
+
+Mechanical state, 72 of 72 driven states in both themes at four widths: zero AA failures
+(floor still the 10px cliff label at 4.57:1), zero overflow, one main and one h1, zero unnamed
+sections, 25 of 25 focus rings, clean console and network, drawer trap and scroll lock and
+URL contract all holding. Two new mechanical facts. At 768 the column labels sit 59px left of
+their columns and rows wrap to two lines, so the md-only band was never measured by the
+08-23 header-to-cell match, which was done at lg. And the `ReactDOM.preload` in `page.tsx`
+is discarded on every load because its credentials mode does not match the hook's fetch, so
+the serial-path fix the file's comment describes is not in effect.
+
+A correction to the 2026-08-12 note above. The in-page detector is blocked by an enforcing
+`content-security-policy` header built in `src/proxy.ts`, not by the report-only header in
+`next.config.mjs`, which only logs. The console shows both, and only the proxy's is enforced.
+Overlay injection stays impossible here until that header allows the live server's origin,
+which it should not.
+
+Still open and product-shaped, unchanged: the keyboard layer, the position tints borrowing the
+status hues (now the same finding on a second run), the drawer's tab order and phone geometry,
+and the shared-shell heading inversions.
+
+Decided 2026-09-12: the position tints stay as they are. Asked directly whether QB on
+signal, RB on positive green and TE on warning amber should move to ink and stone mixes
+across the group, Isaac chose to leave them. Do not re-raise the category-versus-status
+colour finding on any fantasy route.
+
+## Four passes on the rankings board, 2026-09-12
+
+The critique's P0 and three P1s landed the same day on `fix/fantasy-board-critique-2026-09-12`,
+one commit per pass, verified in one batched computed-value round across all 72 states in
+both themes at 390, 768, 1024 and 1440 (parser gate 16.29 light, 15.28 dark): zero AA
+failures, zero overflow, one main and one h1, zero unnamed sections, zero `transition: all`,
+zero plate radii over 10px. Jest on the fantasy tree is 33 of 33, the fantasy e2e spec 23 of
+23 with no spec edits, typecheck and lint clean.
+
+The harden pass fixed the search race at its cause. The debounced URL sync effect subscribed
+to `routeState.query` as well as the debounced value, so any URL change that landed before the
+debounce settled re-ran it with stale text; it now depends on the debounced value alone, which
+also stops a Back to a searched URL from having its query stripped. The new test reflects
+router writes into the mocked search params on a zero-delay timer and steps the clock in 50ms
+increments, re-rendering a fresh element each step; the first draft applied writes
+synchronously and passed against the bug, and a second draft re-rendered the same element
+object, which React bails out of, so neither reproduced it. Both traps are worth remembering.
+
+The adapt pass took the 390 row from 113px to 97px and the first row from y=709 to y=645. The
+queue star is positioned at the row's right edge instead of wrapping, the phone metrics sit in
+a three-column grid so ±ADP lands beside ADP, format and source share one header chip, and the
+ADP chip drops its provider name below md (the provider is still named in the footer and the
+drawer). The row still carries four text lines on a phone (name and chip, team and bye, two
+metric lines), because the identity line cannot hold the team beside a 7rem name floor once the
+star's column is reserved; a two-line ledger row is the product question the critique asked.
+
+The clarify pass replaced the in-season freshness grade. `frozenInSeason` is `seasonalWeek >= 1`,
+and while it holds the header chip reads "Frozen since Sep 10" in the neutral chip tone and the
+footer reads "Frozen since Sep 10 · draft consensus kept as a reference · snapshot …" in muted
+ink, instead of "Aging" today and "Stale" from Sep 14. The fresh-state footer line now says
+"Refreshes daily July through December, weekly in the offseason", which is what the cron does.
+
+The layout pass made the bar one control line from 1024 up (121px, from 151 at 1440 and 175
+at 1024) by moving the desktop search into the column-label row over the Player column, turning
+Queued into the phone bar's star-and-count form (same accessible name on both bars, so tests
+take the first), moving the count line above the list at md and up, and using the scoring
+toggle's short labels below xl through a new `compact="below-xl"` mode. The star is now
+absolute at every width and the row and the label row reserve the same `pr-15` column, so
+labels sit within 1px of their cells at 768, 1024 and 1440 (they had been 59px off at 768,
+where the in-flow star wrapped rows to 73px; rows are 57px there now, with the team wrapping
+under the name). The search is mounted in the label row even when there are no rows, so an
+empty result can still be edited; only the labels wait for `boardReady`. The Player definition
+trigger shows from lg. The desktop placeholder is "Player or team" because the full sentence
+clipped at both input widths.
+
+Still open from this run, until the follow-up below closed the VORP wrap the same day. In VORP
+mode the league-size select adds 92px and the bar wraps to
+175px at every desktop width; the second line is the select alone. The 768 identity line wraps
+the team under the name. Nothing else the critique named is outstanding except the recorded
+P2s (the discarded preload and the drawer's tab order and phone geometry) and the product-shaped
+items above.
+
+## Bar follow-up, 2026-09-12
+
+The layout pass left the desktop bar wrapping in VORP mode, and a second pass on the same branch
+closed it. Measured first, the bar's first line had 51px of room at 1024 and 44px from 1280 up,
+and VORP mode needed 107px more for the 93px league-size select and its gap. The queue filter now
+heads the star column in the column-label row, which is where the critique first proposed moving
+it, and the league-size select rides inside the ranking box as its last segment. The filter is
+one `QueuedFilterButton` shared with the phone bar, a 44px star button with the count as a badge.
+It and the rows' own stars now both sit at `right-2`, centred in the 60px column that the rows and
+the label row reserve with `pr-15`, which leaves 8px between the filter and the last column label
+where centring on the old `right-3.5` star left 2px. Line one also went from `py-2.5` to `py-1`.
+
+The bar now measures 109px at 1024, 1280 and 1440 in both ranking modes, down from 121 in
+consensus mode and 175 in VORP mode, so it is under the critique's 110px target, which the first
+layout pass had missed. It is 163px at 768, from 177, and the phone bar is unchanged at 116. VORP
+mode holds one control line with 16 to 23px of room in Chromium, 23 to 30 in WebKit and 24 to 31
+in Firefox, and the spread comes from the native select, which renders at 92, 85 and 84px across
+those engines. The filter's centre sits within 1px of the row stars at 768, 1024 and 1440.
+
+Checking focus turned up a defect that every earlier sweep had passed. Both fused boxes, scoring
+and ranking, used `overflow-hidden` to round their corners, and that clipped each segment's focus
+ring, so a focused Consensus button showed almost nothing and a focused VORP button showed only
+its left edge, while the computed-style check still read the outline as solid. The segments now
+round their own outer corners and lift with `focus-visible:z-10`, and screenshots of Consensus,
+VORP and the fused select each show the whole ring. The trap is not specific to this codebase, so
+it is also recorded in the machine-level operating notes.
+
+Verification ran as one round after the edits. All 72 driven states were reached, though the 390
+light context lost its first state to a dev-server reload on the first run and was rerun on its
+own. The parser gate held at 16.29 light and 15.28 dark, with zero AA failures (the floor is still
+the 10px cliff label at 4.57:1), zero overflow, one main and one h1, zero unnamed sections, zero
+`transition: all` and zero radii over 10px. Jest on `src/app/fantasy-football` is 220 of 220, the
+fantasy e2e spec 23 of 23 with no spec edits, and typecheck and lint are clean.
+
+No hit-test flag touches a control this pass changed, but one new reading is worth knowing before
+the next sweep. At 390 the sweep flags the footer's tool links in the empty-search state as
+occluded from above with a 41px hit region, and measuring that state shows nothing overlapping
+them. The first row of links crosses the 844px fold by 3px, so the missing height is the viewport
+edge, and the sweep attributes it to the element above. The shorter header from the adapt pass and
+the two-line frozen footer from the clarify pass are what moved the links onto the fold. The
+VORP-state flags on the second row of links have the same 41px shape but were not measured
+separately.
+
+Still open after this pass, until the row follow-up below closed it the same day. Rows carrying a
+Value or Reach chip run taller wherever the name cell
+is narrower than the chip line. At 1024, 9 of the first 40 rows are 64px against 45px for the
+rest, at 768 every identity wraps to two lines and chip rows are 6px taller, and at 1280 and 1440
+one of the first 40 rows wraps. At 1023 every row is 45px, because the width goes to the expert
+spread bar that appears at lg. The name cell on `main` works out from the markup to about 286px at
+1024 against 296px measured now, so this most likely predates the day's passes, though no sweep
+recorded row heights to confirm it. Moving the spread bar to xl would settle 1024 to 1279, and that
+is a design call about the bar. The 768 two-line identity is consistent from row to row and its
+labels align, so it is no longer a defect on its own.
+
+## Row follow-up and PR #426, 2026-09-12
+
+Isaac asked for everything to be fixed, merged and deployed, so the chip rows were fixed on the
+same branch, and PR #426, the follow-up to the 2026-09-11 re-score, came along with it.
+
+The row fix works on the width itself. The Value or Reach chip repeated its signed gap ("Value
++12", up to 89px), which the same row's vs ADP cell already shows, so the chip now carries the
+word alone. The identity cell switches layout on its own width with a container query, the first
+in the codebase, because that width moves with the columns a board shows as well as with the
+viewport. Below 21.5rem the name sits over one line holding the position chip, the team and bye,
+and the Value or Reach chip, and since every row has a position chip, that line is the same height
+with or without a signal. From 21.5rem it is one line. The expert-spread bar and its label now
+yield below xl, so from 1024 up the cell stays above the switch.
+
+Measured before choosing the switch, the widest one-line identity is 329px ("Washington
+Commanders", a defense row), and no chip row is wider once the chip lost its number. The cell is
+352px at 1280 and 1440 and 432px at 1024. After the change every overall board has one row height
+per width, 100px at 390, 61px at 768, 62px at 900 and 45px from 960 up, across 552 Standard, 559
+PPR, 985 Half PPR and 490 VORP rows, with no truncated names or team text, no overflow, and column
+labels within 1px of their cells. WebKit and Firefox match Chromium at 768, 960 and 1280. The QB
+board is already one line at 900, because its cell is wider without the ADP columns, which is the
+reason for querying the cell instead of the viewport. On the overall boards the band below about
+950px is stacked, where at 900 it had been 45px for most rows and 64px for chip rows.
+
+PR #426 was merged into this branch before either landed, so the combined board was verified
+once. Its only conflict was this brief, where both branches appended after the 2026-09-11
+section, and its re-score block stays under that section. On this route it changes the drawer's
+stat grid, and beyond it the best ball, redraft tracker, mock draft and weekly surfaces. Its
+rankings snapshot scored this board 34 with no P0 and no P1 on the same commit today's critique
+scored 26. It does not mention the clear-search race, and it rates the freshness copy and the
+chip rows as P2s, the second of which this follow-up closed.
+
+Verification on the combined branch ran as one round. Jest across `src/app/fantasy-football`,
+`src/lib/bestBall` and `src/components/fantasy` passed 322 of 322, and typecheck and lint were
+clean on all 14 changed TypeScript files. The fantasy e2e spec passed 22 of 23 with default
+workers against the dev server. The one failure was best ball's six ranking presets, where the
+Eliminator control did not register its click within 15 seconds, and run alone on the idle server
+it passed in 3 seconds, which points to load on a dev server that had just recompiled after the
+merge. CI repeats it against a production build. All 72 sweep states were reached with the parser
+gate at 16.29 light and 15.28 dark, zero AA failures (the floor is still 4.57:1 on the cliff label),
+zero overflow, one main and one h1, zero unnamed sections, zero `transition: all`, zero radii over
+10px, and the sticky bar at 116, 163, 109 and 109px across the four widths.
+
+Hit-test flags rose to 124, and none touch a control this branch changed. 96 are row overlays
+covered by their own row content, which is the overlay pattern doing its job, 20 are footer tool
+links on the fold, and 8 are row overlays the sweep attributes to the tier plate header above.
+Measuring every plate header against its first row, at 1440 on the PPR overall board and at 1024
+on both QB boards, found a 1px gap on all 34 plates, so those 8 come from where the sweep's scroll
+steps land, and the layout has no overlap there.
+
+What stays open is all P2 or product-shaped, from the discarded preload, to the drawer's tab order
+and phone geometry (including Close scrolling out of view at 390), to plate metadata recomputed
+from a filtered subset, the repeated 12-team label in VORP mode, and the shared-shell heading
+inversions.

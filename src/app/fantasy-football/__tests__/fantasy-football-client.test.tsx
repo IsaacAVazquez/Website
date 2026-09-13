@@ -1,5 +1,5 @@
 import React from "react";
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import { FantasyFootballClient } from "../fantasy-football-client";
 import { resetBrowserStorageMemory } from "@/lib/browserStorage";
 import type { FantasySnapshot } from "@/lib/fantasy";
@@ -319,14 +319,15 @@ describe("FantasyFootballClient", () => {
     // Chase: ADP 30 vs rank 12 clears the noise threshold, so the delta is toned.
     expect(within(chaseRow).getByText("+18")).toHaveStyle({ color: "var(--home-positive)" });
     // The named chip rides beside the player, since the signed delta alone is
-    // what a drafter has to translate.
-    expect(within(chaseRow).getByText("Value +18")).toBeVisible();
+    // what a drafter has to translate. It carries the word only, because the
+    // delta is already in the row's vs ADP cell above.
+    expect(within(chaseRow).getByText("Value")).toBeVisible();
     // Higgins: one pick of separation stays inside the noise band, muted.
     const higginsRow = screen
       .getByRole("button", { name: "Open Tee Higgins detail" })
       .closest("li") as HTMLElement;
     expect(within(higginsRow).getByText("+1")).toHaveStyle({ color: "var(--home-ink-muted)" });
-    expect(within(higginsRow).queryByText(/^(Value|Reach) /)).not.toBeInTheDocument();
+    expect(within(higginsRow).queryByText(/^(Value|Reach)$/)).not.toBeInTheDocument();
 
     fireEvent.click(chaseButton);
     const dialog = screen.getByRole("dialog", { name: "Ja'Marr Chase detail" });
@@ -375,7 +376,7 @@ describe("FantasyFootballClient", () => {
 
     renderClient({ position: "overall", ranking: "vorp", teams: 12 });
 
-    expect(screen.getByText("12-team PPR VORP")).toBeVisible();
+    expect(screen.getByText(/^12-team PPR VORP ·/)).toBeVisible();
     expect(screen.getByText(/projected season points above the same-position waiver replacement/i)).toBeVisible();
     const playerButtons = screen.getAllByRole("button", { name: /Open .* detail/ });
     expect(playerButtons[0]).toHaveAccessibleName("Open VORP First detail");
@@ -661,6 +662,22 @@ describe("FantasyFootballClient", () => {
     );
   });
 
+  it("reports a frozen source in season instead of grading it stale", () => {
+    // The seed metadata is dated 2026-08-16, 26 days before this clock, which
+    // the daily thresholds would grade "Stale". From Week 1 the board is kept
+    // as a reference on purpose, so the chip and footer say so in neutral tone
+    // rather than contradicting the note beside them.
+    jest.setSystemTime(new Date("2026-09-11T10:00:00.000Z"));
+    mockSnapshot({ players: [makePlayer({ id: "rb-1", name: "Christian McCaffrey" })] });
+
+    renderClient();
+
+    expect(screen.getByText("Frozen since Aug 16")).toBeVisible();
+    expect(screen.queryByText(/^Stale/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/^Aging/)).not.toBeInTheDocument();
+    expect(screen.getByText(/^Frozen since Aug 16 · draft consensus kept as a reference/)).toBeVisible();
+  });
+
   it("suppresses the value chip on a position board, where the rank is not overall scale", () => {
     currentSearchParams = new URLSearchParams("position=wr&scoring=ppr");
     mockSnapshot({
@@ -876,6 +893,51 @@ describe("FantasyFootballClient", () => {
     );
   });
 
+  it("keeps a cleared search cleared once the URL write lands and the debounce settles", () => {
+    // The App Router applies a replace after the transition commits, not in the
+    // same tick, so the mock lands each write on the next timer tick and the
+    // test steps the clock in small increments, re-rendering after each so
+    // useSearchParams sees the new URL the way it does in the browser.
+    mockReplace.mockImplementation((href: string) => {
+      setTimeout(() => {
+        currentSearchParams = new URLSearchParams(href.split("?")[1] ?? "");
+      }, 0);
+    });
+    mockSnapshot({
+      players: [makePlayer({ id: "rb-1", name: "Christian McCaffrey" })],
+    });
+    // A fresh element each time, because React bails out of re-rendering an
+    // identical element and would never re-read the mocked search params.
+    const element = () => (
+      <FantasyFootballClient
+        initialState={{ position: "rb", scoring: "ppr", ranking: "consensus", teams: 12, query: "" }}
+      />
+    );
+    const { rerender } = render(element());
+    const settle = () => {
+      for (let step = 0; step < 8; step += 1) {
+        act(() => {
+          jest.advanceTimersByTime(50);
+        });
+        rerender(element());
+      }
+    };
+
+    const input = screen.getByRole("textbox", { name: "Search the current rankings board" });
+    fireEvent.change(input, { target: { value: "nobody" } });
+    settle();
+    expect(currentSearchParams.get("q")).toBe("nobody");
+    expect(screen.getByText("No players match on this board.")).toBeVisible();
+
+    fireEvent.click(screen.getByRole("button", { name: "Clear search" }));
+    settle();
+
+    expect(input).toHaveValue("");
+    expect(currentSearchParams.get("q")).toBeNull();
+    expect(screen.queryByText("No players match on this board.")).not.toBeInTheDocument();
+    expect(screen.getByText("Christian McCaffrey")).toBeVisible();
+  });
+
   it("bounds the initial rankings render and reveals the next window on demand", () => {
     mockSnapshot({
       players: Array.from({ length: 45 }, (_, index) =>
@@ -933,7 +995,7 @@ describe("FantasyFootballClient", () => {
       screen.getByRole("button", { name: "Open Bijan Robinson detail (in your queue)" })
     ).toBeInTheDocument();
 
-    fireEvent.click(screen.getByRole("button", { name: "Queued (1)" }));
+    fireEvent.click(screen.getAllByRole("button", { name: "Show only queued players (1 on this board)" })[0]);
     expect(screen.queryByText("Jahmyr Gibbs")).not.toBeInTheDocument();
     expect(screen.getByText("Bijan Robinson")).toBeVisible();
 

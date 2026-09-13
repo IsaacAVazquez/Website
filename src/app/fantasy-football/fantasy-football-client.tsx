@@ -205,7 +205,10 @@ function describeVsAdp(player: Player): { text: string; color: string; judged: b
 /**
  * The named Value/Reach label. The "vs ADP" column carries the same gap as a
  * signed number, but the word is what a drafter scans for, so the chip renders
- * beside the player name whenever the gate actually fires. Callers gate on the
+ * beside the player name whenever the gate actually fires. It carries the word
+ * alone, because the signed gap is already in the same row's vs ADP cell, and
+ * with the number repeated the chip was wide enough to push the longest names
+ * off one line at every desktop width. Callers gate on the
  * overall or flex board, because `rankEcr` is a position rank anywhere else and
  * the comparison with an overall ADP would be meaningless.
  *
@@ -237,12 +240,17 @@ function ValueReachChip({ player }: { player: Player }) {
             }
       }
     >
-      {isValue ? "Value" : "Reach"} {formatPickDelta(value.delta)}
+      {isValue ? "Value" : "Reach"}
     </span>
   );
 }
 
-/** The template's scoring switch: a fused button box rather than separate pills. */
+/**
+ * The template's scoring switch: a fused button box rather than separate pills.
+ * The segments round their own outer corners instead of the box taking
+ * overflow-hidden, which clipped each segment's focus ring to a sliver, and the
+ * focused segment lifts so the next segment cannot paint over its ring.
+ */
 function ScoringToggle({
   value,
   onChange,
@@ -250,13 +258,16 @@ function ScoringToggle({
 }: {
   value: FantasyRouteScoring;
   onChange: (value: FantasyRouteScoring) => void;
-  compact?: boolean;
+  /** Short labels always, never, or only below xl, since at 1024 the desktop
+      bar's first line cannot hold the full names beside the VORP league-size
+      select. The full name is the accessible name either way. */
+  compact?: boolean | "below-xl";
 }) {
   return (
     <div
       role="group"
       aria-label="Scoring format"
-      className="inline-flex shrink-0 overflow-hidden rounded-[4px] border"
+      className="inline-flex shrink-0 rounded-[4px] border"
       style={{ borderColor: "var(--home-rule)" }}
     >
       {SCORING_OPTIONS.map((option) => {
@@ -268,14 +279,23 @@ function ScoringToggle({
             aria-pressed={active}
             aria-label={option.label}
             onClick={() => onChange(option.key)}
-            className="min-h-touch cursor-pointer px-3 font-mono text-3xs uppercase tracking-[0.08em] transition-colors duration-150"
+            className="relative min-h-touch cursor-pointer px-3 font-mono text-3xs uppercase tracking-[0.08em] transition-colors duration-150 first:rounded-l-[3px] last:rounded-r-[3px] focus-visible:z-10"
             style={
               active
                 ? { background: "var(--home-ink)", color: "var(--home-paper)" }
                 : { background: "transparent", color: "var(--home-ink)" }
             }
           >
-            {compact ? option.shortLabel : option.label}
+            {compact === "below-xl" ? (
+              <>
+                <span className="xl:hidden">{option.shortLabel}</span>
+                <span className="hidden xl:inline">{option.label}</span>
+              </>
+            ) : compact ? (
+              option.shortLabel
+            ) : (
+              option.label
+            )}
           </button>
         );
       })}
@@ -283,20 +303,27 @@ function ScoringToggle({
   );
 }
 
+/**
+ * Built like ScoringToggle. In VORP mode the league-size select rides inside
+ * the box as its last segment, because the size is a parameter of VORP, and
+ * fused it spends no gap on a first line with little room to give.
+ */
 function RankingToggle({
   value,
   onChange,
   vorpAvailable,
+  children,
 }: {
   value: FantasySearchState["ranking"];
   onChange: (value: FantasySearchState["ranking"]) => void;
   vorpAvailable: boolean;
+  children?: ReactNode;
 }) {
   return (
     <div
       role="group"
       aria-label="Ranking method"
-      className="inline-flex shrink-0 overflow-hidden rounded-[4px] border"
+      className="inline-flex shrink-0 rounded-[4px] border"
       style={{ borderColor: "var(--home-rule)" }}
     >
       {(["consensus", "vorp"] as const).map((option) => {
@@ -309,7 +336,7 @@ function RankingToggle({
             aria-pressed={active}
             disabled={disabled}
             onClick={() => onChange(option)}
-            className="min-h-touch cursor-pointer px-3 font-mono text-3xs uppercase tracking-[0.08em] transition-colors duration-150 disabled:cursor-not-allowed disabled:opacity-50"
+            className="relative min-h-touch cursor-pointer px-3 font-mono text-3xs uppercase tracking-[0.08em] transition-colors duration-150 first:rounded-l-[3px] last:rounded-r-[3px] focus-visible:z-10 disabled:cursor-not-allowed disabled:opacity-50"
             style={
               active
                 ? { background: "var(--home-ink)", color: "var(--home-paper)" }
@@ -320,6 +347,7 @@ function RankingToggle({
           </button>
         );
       })}
+      {children}
     </div>
   );
 }
@@ -338,7 +366,7 @@ function VorpTeamSizeSelect({
         aria-label="VORP league size"
         value={value}
         onChange={(event) => onChange(Number(event.target.value) as FantasyVorpTeamSize)}
-        className="min-h-touch rounded-[4px] border px-2 font-mono text-3xs uppercase tracking-[0.06em]"
+        className="relative min-h-touch rounded-r-[3px] border-l px-2 font-mono text-3xs uppercase tracking-[0.06em] focus-visible:z-10"
         style={{
           borderColor: "var(--home-rule)",
           background: "var(--home-paper-raised)",
@@ -352,6 +380,50 @@ function VorpTeamSizeSelect({
         ))}
       </select>
     </label>
+  );
+}
+
+/**
+ * The queue filter: a 44px star button with the count as a badge, the same
+ * control in both bars. The phone bar places it in flow; on md and up it heads
+ * the star column of the column-label row, over the rows' own star buttons.
+ */
+function QueuedFilterButton({
+  pressed,
+  count,
+  onToggle,
+  className = "relative",
+}: {
+  pressed: boolean;
+  count: number;
+  onToggle: () => void;
+  /** Placement. It must keep the button positioned, since the badge is absolute. */
+  className?: string;
+}) {
+  return (
+    <button
+      type="button"
+      aria-pressed={pressed}
+      aria-label={`Show only queued players (${count} on this board)`}
+      onClick={onToggle}
+      className={`${className} inline-flex min-h-touch min-w-touch shrink-0 cursor-pointer items-center justify-center rounded-[4px] border`}
+      style={
+        pressed
+          ? { borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }
+          : { borderColor: "var(--home-rule)", background: "var(--home-paper-raised)", color: "var(--home-ink)" }
+      }
+    >
+      <Star className="h-4 w-4" fill={pressed ? "currentColor" : "none"} aria-hidden="true" />
+      {count > 0 && (
+        <span
+          aria-hidden="true"
+          className="absolute -right-1 -top-1 rounded-full px-1 font-mono text-3xs tracking-normal tabular-nums"
+          style={{ background: "var(--home-signal)", color: "var(--home-paper)" }}
+        >
+          {count}
+        </span>
+      )}
+    </button>
   );
 }
 
@@ -1128,9 +1200,13 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
   useEffect(() => {
     if (debouncedQuery.replace(/\s+/g, " ").trim() === routeState.query) return;
     updateRouteState({ query: debouncedQuery });
-    // updateRouteState is recreated every render; the query is the real trigger.
+    // The settled query is the only trigger. Reacting to routeState.query as
+    // well re-ran this with a stale debounced value whenever the URL changed
+    // first, so "Clear search" wrote the old query straight back and Back to
+    // a searched URL had its query stripped. updateRouteState is recreated
+    // every render and is read, not subscribed to.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debouncedQuery, routeState.query]);
+  }, [debouncedQuery]);
 
   function updateRouteState(nextState: Partial<FantasySearchState>) {
     const nextRouteState = {
@@ -1181,6 +1257,10 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
     ? snapshot?.vorpSource?.asOf ?? null
     : currentSourceUpdatedAt;
   const sourceStaleness = getSnapshotStaleness(activeSourceUpdatedAt);
+  // From Week 1 the source is frozen on purpose, so grading its age against
+  // the daily refresh thresholds only contradicts the note that says so: the
+  // chip read "Aging" beside it and would have read "Stale" for four months.
+  const frozenInSeason = seasonalWeek >= 1;
 
   const queuedOnBoardCount = useMemo(
     () => players.reduce((count, player) => count + (queue.queuedSet.has(player.id) ? 1 : 0), 0),
@@ -1347,21 +1427,19 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
   const vorpStamp = formatStamp(snapshot?.vorpSource?.asOf);
   const sourceStamp = formatStamp(activeSourceUpdatedAt);
 
-  const headerChips: { label: string; tone?: CSSProperties }[] = [
+  // Format and source share one chip, and the ADP chip drops its provider
+  // name below md: at 390 the strip ran four lines and pushed the first row
+  // to y=709, and the provider is still named in the footer and the drawer.
+  const headerChips: { label: string; shortLabel?: string; tone?: CSSProperties }[] = [
     {
       label: vorpMode
-        ? `${routeState.teams}-team ${selectedScoringLabel} VORP`
-        : `${selectedScoringLabel} board`,
-    },
-    {
-      label: vorpMode
-        ? snapshot?.vorpSource?.provider ?? "Projected VORP"
-        : "FantasyPros consensus",
+        ? `${routeState.teams}-team ${selectedScoringLabel} VORP · ${snapshot?.vorpSource?.provider ?? "Projected VORP"}`
+        : `${selectedScoringLabel} · FantasyPros consensus`,
     },
     ...(vorpMode && vorpStamp ? [{ label: `VORP checked ${vorpStamp}` }] : []),
     ...(snapshotStamp ? [{ label: `Snapshot ${snapshotStamp}` }] : []),
     ...(adpSource && adpAvailable && adpStamp
-      ? [{ label: `ADP ${adpSource.provider} · ${adpStamp}` }]
+      ? [{ label: `ADP ${adpSource.provider} · ${adpStamp}`, shortLabel: `ADP · ${adpStamp}` }]
       : []),
     ...(adpSource && adpFreshness === "prior-season"
       ? [{ label: "ADP prior season", tone: STALENESS_TONE.aging }]
@@ -1369,14 +1447,16 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
     ...(adpSource && adpFreshness === "stale"
       ? [{ label: "ADP stale · signals hidden", tone: STALENESS_TONE.stale }]
       : []),
-    ...(sourceStaleness !== "fresh"
-      ? [
-          {
-            label: `${getSnapshotStalenessLabel(sourceStaleness)} · source ${sourceStamp ?? "date unknown"}`,
-            tone: STALENESS_TONE[sourceStaleness],
-          },
-        ]
-      : []),
+    ...(frozenInSeason
+      ? [{ label: `Frozen since ${sourceStamp ?? "kickoff"}` }]
+      : sourceStaleness !== "fresh"
+        ? [
+            {
+              label: `${getSnapshotStalenessLabel(sourceStaleness)} · source ${sourceStamp ?? "date unknown"}`,
+              tone: STALENESS_TONE[sourceStaleness],
+            },
+          ]
+        : []),
   ];
 
   const vorpHiddenNote =
@@ -1401,8 +1481,8 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
           },
         ]
       : []),
-    // The spread bar itself yields below lg, so its label does too.
-    { label: "Expert spread", className: "hidden w-[120px] lg:block", title: FANTASY_EXPERT_SPREAD_TOOLTIP },
+    // The spread bar itself yields below xl, so its label does too.
+    { label: "Expert spread", className: "hidden w-[120px] xl:block", title: FANTASY_EXPERT_SPREAD_TOOLTIP },
     { label: "Range", className: "w-16 text-right", title: FANTASY_EXPERT_SPREAD_TOOLTIP },
     { label: "Avg", className: "w-12 text-right", title: FANTASY_AVG_RANK_TOOLTIP },
     ...(adpAvailable
@@ -1551,7 +1631,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                     />
                   )}
                   <div
-                    className="relative z-[2] flex min-h-11 w-full cursor-pointer flex-wrap items-center gap-x-4 gap-y-1 px-3.5 py-1.5 text-left"
+                    className="relative z-[2] flex min-h-11 w-full cursor-pointer flex-wrap items-center gap-x-4 gap-y-1 py-1.5 pl-3.5 pr-15 text-left"
                     style={{ color: "var(--home-ink)" }}
                     onClick={() => {
                       if (window.getSelection()?.toString()) return;
@@ -1573,27 +1653,38 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                     >
                       {displayRank(player)}
                     </span>
-                    <span className="flex min-w-0 flex-[1_1_200px] flex-wrap items-baseline gap-x-2 gap-y-1">
-                      {/* The name is the row's identity, so it keeps a hard floor
-                          and the decorative spread bar yields below lg instead. */}
-                      <span className="min-w-[7rem] truncate text-sm font-semibold tracking-tight">{player.name}</span>
-                      <span
-                        className="inline-flex shrink-0 items-center rounded-[2px] border px-1.5 py-0.5 font-mono text-3xs tracking-[0.06em]"
-                        style={{ ...tone, color: "var(--home-ink)" }}
-                      >
-                        {player.position}
-                        {Number.isFinite(player.positionRank) ? player.positionRank : ""}
+                    <span className="@container min-w-0 flex-[1_1_12rem]">
+                      {/* One shape per width, so a row's height never depends on
+                          whether it carries a Value or Reach chip. The cell switches
+                          on its own width, which moves with the columns a board shows
+                          as well as with the viewport. Below 21.5rem the name has its
+                          own line over the position, team and chip, and every row has
+                          a position chip, so that line is always the same height. From
+                          21.5rem the two share one line, and the spread bar yields
+                          below xl so the cell clears the switch from 1024 up. The name
+                          keeps a hard floor either way. */}
+                      <span className="flex flex-col gap-y-1 @min-[21.5rem]:flex-row @min-[21.5rem]:items-center @min-[21.5rem]:gap-x-2">
+                        <span className="min-w-[7rem] truncate text-sm font-semibold tracking-tight">{player.name}</span>
+                        <span className="flex min-w-0 items-center gap-x-2 @min-[21.5rem]:shrink-0">
+                          <span
+                            className="inline-flex shrink-0 items-center rounded-[2px] border px-1.5 py-0.5 font-mono text-3xs tracking-[0.06em]"
+                            style={{ ...tone, color: "var(--home-ink)" }}
+                          >
+                            {player.position}
+                            {Number.isFinite(player.positionRank) ? player.positionRank : ""}
+                          </span>
+                          <span
+                            className="min-w-0 truncate font-mono text-3xs uppercase tracking-[0.06em]"
+                            style={{ color: "var(--home-ink-muted)" }}
+                          >
+                            {player.team}
+                            {player.byeWeek ? ` · Bye ${player.byeWeek}` : ""}
+                          </span>
+                          {adpSignalsAvailable && vsAdpMeaningful && <ValueReachChip player={player} />}
+                        </span>
                       </span>
-                      <span
-                        className="shrink-0 font-mono text-3xs uppercase tracking-[0.06em]"
-                        style={{ color: "var(--home-ink-muted)" }}
-                      >
-                        {player.team}
-                        {player.byeWeek ? ` · Bye ${player.byeWeek}` : ""}
-                      </span>
-                      {adpSignalsAvailable && vsAdpMeaningful && <ValueReachChip player={player} />}
                     </span>
-                    <span className="flex max-w-full flex-wrap items-center gap-x-4 gap-y-1">
+                    <span className="grid w-full grid-cols-3 gap-x-3 gap-y-1 md:flex md:w-auto md:max-w-full md:flex-wrap md:items-center md:gap-x-4">
                       {vorpAvailable && (
                         <>
                           <span className="sr-only">Value over replacement player</span>
@@ -1621,7 +1712,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                           </span>
                         </>
                       )}
-                      <span className="hidden lg:inline-flex">
+                      <span className="hidden xl:inline-flex">
                         <ExpertSpreadBar player={player} scale={boardScale} />
                       </span>
                       <span className="sr-only">Expert range</span>
@@ -1687,8 +1778,12 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                     {/* The row-edge queue toggle: always visible on touch,
                         revealed on hover/focus for fine pointers, and always
                         shown once queued so membership reads as shape, not
-                        color. -my cancels the row padding so the 44px target
-                        does not grow the row. */}
+                        color. It is positioned at the row's edge rather than
+                        placed in the wrapping flow, because in flow it wrapped
+                        onto a line of its own at 390 and again at 768, where
+                        it also pushed the metrics 59px right of their column
+                        labels. The row's pr-15 reserves its column, and the
+                        label row reserves the same for the queue filter. */}
                     <button
                       type="button"
                       aria-pressed={isQueued}
@@ -1697,7 +1792,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                         event.stopPropagation();
                         queue.toggle(player.id);
                       }}
-                      className={`-my-1.5 ml-auto flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-[4px] transition-opacity duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--home-signal)] ${
+                      className={`absolute right-2 top-1/2 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-[4px] transition-opacity duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--home-signal)] ${
                         isQueued
                           ? ""
                           : "pointer-fine:opacity-0 pointer-fine:group-focus-within:opacity-100 pointer-fine:group-hover:opacity-100"
@@ -1758,7 +1853,14 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                 }
               }
             >
-              {chip.label}
+              {chip.shortLabel ? (
+                <>
+                  <span className="md:hidden">{chip.shortLabel}</span>
+                  <span className="hidden md:inline">{chip.label}</span>
+                </>
+              ) : (
+                chip.label
+              )}
             </span>
           ))}
         </div>
@@ -1798,78 +1900,31 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
           WebkitBackdropFilter: "blur(8px)",
         }}
       >
-        <div className={`${SHELL_CLASS} hidden flex-wrap items-center gap-x-3.5 gap-y-2.5 py-2.5 md:flex`}>
+        <div className={`${SHELL_CLASS} hidden flex-wrap items-center gap-x-3.5 gap-y-2 py-1 md:flex`}>
           <PositionFilterBar
             ariaLabel="Position board"
             options={positionOptions}
             value={routeState.position}
             onChange={(position) => updateRouteState({ position })}
           />
-          <ScoringToggle value={routeState.scoring} onChange={(scoring) => updateRouteState({ scoring })} />
+          <ScoringToggle
+            value={routeState.scoring}
+            onChange={(scoring) => updateRouteState({ scoring })}
+            compact="below-xl"
+          />
           <RankingToggle
             value={routeState.ranking}
             vorpAvailable={vorpAvailable}
             onChange={(ranking) => updateRouteState({ ranking })}
-          />
-          {routeState.ranking === "vorp" ? (
-            <VorpTeamSizeSelect
-              value={routeState.teams}
-              onChange={(teams) => updateRouteState({ teams })}
-            />
-          ) : null}
-          <div className="relative">
-            <label htmlFor="fantasy-search" className="sr-only">
-              Search the current rankings board
-            </label>
-            <Search
-              className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2"
-              style={{ color: "var(--home-ink-muted)" }}
-              aria-hidden="true"
-            />
-            <input
-              id="fantasy-search"
-              name="fantasy-search"
-              value={searchQuery}
-              maxLength={80}
-              onChange={(event) => setSearchQuery(event.target.value)}
-              disabled={currentSliceUnavailable}
-              autoComplete="off"
-              placeholder="Search player or team"
-              className="min-h-touch w-[200px] rounded-[4px] border pl-8 pr-2.5 font-mono text-xs placeholder:text-[var(--home-ink-muted)] disabled:cursor-not-allowed disabled:opacity-60"
-              style={{
-                borderColor: "var(--home-rule)",
-                background: "var(--home-paper-raised)",
-                color: "var(--home-ink)",
-              }}
-            />
-          </div>
-          <button
-            type="button"
-            aria-pressed={queuedOnly}
-            onClick={() => setQueuedOnly((value) => !value)}
-            className="inline-flex min-h-touch cursor-pointer items-center gap-1.5 rounded-[4px] border px-3 font-mono text-3xs uppercase tracking-[0.08em]"
-            style={
-              queuedOnly
-                ? { borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }
-                : { borderColor: "var(--home-rule)", background: "transparent", color: "var(--home-ink)" }
-            }
           >
-            <Star size={12} fill={queuedOnly ? "currentColor" : "none"} aria-hidden="true" />
-            Queued ({queuedOnBoardCount})
-          </button>
-          <span
-            aria-live={error ? undefined : "polite"}
-            className="ml-auto whitespace-nowrap font-mono text-2xs"
-            style={{ color: "var(--home-ink-muted)" }}
-          >
-            {countLine}
-          </span>
+            {routeState.ranking === "vorp" ? (
+              <VorpTeamSizeSelect
+                value={routeState.teams}
+                onChange={(teams) => updateRouteState({ teams })}
+              />
+            ) : null}
+          </RankingToggle>
         </div>
-        {/* Phones keep one sticky line: position and scoring stay reachable
-            mid-scroll, and search expands over that line rather than sitting
-            beside it. "Done" collapses it back to the other controls without
-            touching what was typed, so switching board or scoring mid-search
-            no longer costs the query. */}
         <div className={`${SHELL_CLASS} flex items-center gap-2 py-2 md:hidden`}>
           {mobileSearchOpen ? (
             <>
@@ -1994,26 +2049,11 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
               >
                 <Search className="h-4 w-4" aria-hidden="true" />
               </button>
-              <button
-                type="button"
-                aria-pressed={queuedOnly}
-                aria-label={`Show only queued players (${queuedOnBoardCount} on this board)`}
-                onClick={() => setQueuedOnly((value) => !value)}
-                className="relative inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center rounded-[4px] border"
-                style={
-                  queuedOnly
-                    ? { borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }
-                    : { borderColor: "var(--home-rule)", background: "var(--home-paper-raised)", color: "var(--home-ink)" }
-                }
-              >
-                <Star className="h-4 w-4" fill={queuedOnly ? "currentColor" : "none"} aria-hidden="true" />
-                {queuedOnBoardCount > 0 && (
-                  <span aria-hidden="true" className="absolute -right-1 -top-1 rounded-full px-1 font-mono text-3xs tabular-nums"
-                    style={{ background: "var(--home-signal)", color: "var(--home-paper)" }}>
-                    {queuedOnBoardCount}
-                  </span>
-                )}
-              </button>
+              <QueuedFilterButton
+                pressed={queuedOnly}
+                count={queuedOnBoardCount}
+                onToggle={() => setQueuedOnly((value) => !value)}
+              />
             </>
           )}
         </div>
@@ -2045,24 +2085,61 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
             {countLine}
           </span>
         </div>
-        {/* Column labels ride in the sticky bar so the numbers keep their
-            names mid-scroll; phones get per-value micro-labels instead. */}
-        {boardReady && (
-          <div
-            className="hidden border-t md:block"
-            style={{ borderColor: "color-mix(in srgb, var(--home-rule) 60%, transparent)" }}
-          >
-            <div className={SHELL_CLASS}>
-              <div
-                className="flex items-center gap-x-4 px-3.5 py-1.5 font-mono text-3xs uppercase tracking-[0.12em]"
-                style={{ color: "var(--home-ink-muted)" }}
-              >
-                <span className="w-[34px] shrink-0" />
-                <span className="min-w-0 flex-[1_1_200px]">
-                  <MetricTooltip term="Player" definition={FANTASY_PLAYER_COLUMN_TOOLTIP} focusable>
-                    Player
-                  </MetricTooltip>
+        {/* The second line of the bar. The search sits over the Player
+            column, whose label slot had 184 to 342px of slack while the
+            search pushed the controls onto a second line at 1440; the column
+            labels ride beside it so the numbers keep their names mid-scroll,
+            and the queue filter heads the star column it filters, in the
+            space both rows reserve with pr-15. Phones get per-value
+            micro-labels and their own search instead. The search and the
+            filter are always mounted here so an empty result can still be
+            edited; only the labels wait for rows. */}
+        <div
+          className="hidden border-t md:block"
+          style={{ borderColor: "color-mix(in srgb, var(--home-rule) 60%, transparent)" }}
+        >
+          <div className={SHELL_CLASS}>
+            <div
+              className="relative flex items-center gap-x-4 py-1 pl-3.5 pr-15 font-mono text-3xs uppercase tracking-[0.12em]"
+              style={{ color: "var(--home-ink-muted)" }}
+            >
+              <span className="w-[34px] shrink-0" />
+              <span className="flex min-w-0 flex-[1_1_12rem] items-center gap-x-3">
+                <span className="relative min-w-0 shrink">
+                  <label htmlFor="fantasy-search" className="sr-only">
+                    Search the current rankings board
+                  </label>
+                  <Search
+                    className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2"
+                    style={{ color: "var(--home-ink-muted)" }}
+                    aria-hidden="true"
+                  />
+                  <input
+                    id="fantasy-search"
+                    name="fantasy-search"
+                    value={searchQuery}
+                    maxLength={80}
+                    onChange={(event) => setSearchQuery(event.target.value)}
+                    disabled={currentSliceUnavailable}
+                    autoComplete="off"
+                    placeholder="Player or team"
+                    className="min-h-touch w-40 max-w-full rounded-[4px] border pl-8 pr-2.5 font-mono text-xs normal-case tracking-normal placeholder:text-[var(--home-ink-muted)] disabled:cursor-not-allowed disabled:opacity-60 lg:w-[200px]"
+                    style={{
+                      borderColor: "var(--home-rule)",
+                      background: "var(--home-paper-raised)",
+                      color: "var(--home-ink)",
+                    }}
+                  />
                 </span>
+                {boardReady && (
+                  <span className="hidden shrink-0 lg:inline-flex">
+                    <MetricTooltip term="Player" definition={FANTASY_PLAYER_COLUMN_TOOLTIP} focusable>
+                      Player
+                    </MetricTooltip>
+                  </span>
+                )}
+              </span>
+              {boardReady && (
                 <span className="flex shrink-0 items-center gap-4">
                   {metricColumns.map((column) => (
                     <span key={column.label} className={column.className}>
@@ -2076,18 +2153,34 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                     </span>
                   ))}
                 </span>
-                {/* Mirrors the row-edge queue toggle so columns stay aligned. */}
-                <span className="ml-auto w-11 shrink-0" />
-              </div>
+              )}
+              <QueuedFilterButton
+                pressed={queuedOnly}
+                count={queuedOnBoardCount}
+                onToggle={() => setQueuedOnly((value) => !value)}
+                className="absolute right-2 top-1/2 -translate-y-1/2"
+              />
             </div>
           </div>
-        )}
+        </div>
       </div>
 
       <div className={`${SHELL_CLASS} pb-10 pt-4`}>
         <h2 className="sr-only">
           {vorpMode ? `${routeState.teams}-team VORP` : FANTASY_POSITION_LABELS[routeState.position]} rankings
         </h2>
+        {/* The count left the sticky bar: with the search over the Player
+            column the bar's first line holds every control at 1440, and the
+            count would have been the one thing wrapping it to a second. */}
+        <div className="hidden justify-end pb-2 md:flex">
+          <span
+            aria-live={error ? undefined : "polite"}
+            className="font-mono text-2xs"
+            style={{ color: "var(--home-ink-muted)" }}
+          >
+            {countLine}
+          </span>
+        </div>
 
         {localToolsMemoryOnly && (
           <div
@@ -2228,14 +2321,19 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
           <span
             className="font-mono text-2xs"
             style={{
-              color: sourceStaleness === "fresh" ? "var(--home-ink-muted)" : "var(--home-warning)",
+              color:
+                sourceStaleness === "fresh" || frozenInSeason
+                  ? "var(--home-ink-muted)"
+                  : "var(--home-warning)",
             }}
           >
-            {sourceStaleness === "fresh"
-              ? vorpMode
-                ? `FantasyPros VORP checked ${vorpStamp ?? "with this snapshot"} · ${routeState.teams}-team source baseline`
-                : `Refreshes daily through draft season, weekly after${snapshotStamp ? ` · snapshot ${snapshotStamp}` : ""}`
-              : `${getSnapshotStalenessLabel(sourceStaleness)} board · source updated ${sourceStamp ?? "date unknown"}`}
+            {frozenInSeason
+              ? `Frozen since ${sourceStamp ?? "kickoff"} · draft consensus kept as a reference${snapshotStamp ? ` · snapshot ${snapshotStamp}` : ""}`
+              : sourceStaleness === "fresh"
+                ? vorpMode
+                  ? `FantasyPros VORP checked ${vorpStamp ?? "with this snapshot"} · ${routeState.teams}-team source baseline`
+                  : `Refreshes daily July through December, weekly in the offseason${snapshotStamp ? ` · snapshot ${snapshotStamp}` : ""}`
+                : `${getSnapshotStalenessLabel(sourceStaleness)} board · source updated ${sourceStamp ?? "date unknown"}`}
           </span>
           <nav aria-label="More fantasy tools" className="flex flex-wrap gap-x-5 gap-y-2">
             {FANTASY_TOOLS.map((tool) => (
