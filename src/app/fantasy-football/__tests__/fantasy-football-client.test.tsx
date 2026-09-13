@@ -319,14 +319,15 @@ describe("FantasyFootballClient", () => {
     // Chase: ADP 30 vs rank 12 clears the noise threshold, so the delta is toned.
     expect(within(chaseRow).getByText("+18")).toHaveStyle({ color: "var(--home-positive)" });
     // The named chip rides beside the player, since the signed delta alone is
-    // what a drafter has to translate.
-    expect(within(chaseRow).getByText("Value +18")).toBeVisible();
+    // what a drafter has to translate. It carries the word only, because the
+    // delta is already in the row's vs ADP cell above.
+    expect(within(chaseRow).getByText("Value")).toBeVisible();
     // Higgins: one pick of separation stays inside the noise band, muted.
     const higginsRow = screen
       .getByRole("button", { name: "Open Tee Higgins detail" })
       .closest("li") as HTMLElement;
     expect(within(higginsRow).getByText("+1")).toHaveStyle({ color: "var(--home-ink-muted)" });
-    expect(within(higginsRow).queryByText(/^(Value|Reach) /)).not.toBeInTheDocument();
+    expect(within(higginsRow).queryByText(/^(Value|Reach)$/)).not.toBeInTheDocument();
 
     fireEvent.click(chaseButton);
     const dialog = screen.getByRole("dialog", { name: "Ja'Marr Chase detail" });

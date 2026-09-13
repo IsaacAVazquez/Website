@@ -205,7 +205,10 @@ function describeVsAdp(player: Player): { text: string; color: string; judged: b
 /**
  * The named Value/Reach label. The "vs ADP" column carries the same gap as a
  * signed number, but the word is what a drafter scans for, so the chip renders
- * beside the player name whenever the gate actually fires. Callers gate on the
+ * beside the player name whenever the gate actually fires. It carries the word
+ * alone, because the signed gap is already in the same row's vs ADP cell, and
+ * with the number repeated the chip was wide enough to push the longest names
+ * off one line at every desktop width. Callers gate on the
  * overall or flex board, because `rankEcr` is a position rank anywhere else and
  * the comparison with an overall ADP would be meaningless.
  *
@@ -237,7 +240,7 @@ function ValueReachChip({ player }: { player: Player }) {
             }
       }
     >
-      {isValue ? "Value" : "Reach"} {formatPickDelta(value.delta)}
+      {isValue ? "Value" : "Reach"}
     </span>
   );
 }
@@ -1465,8 +1468,8 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
           },
         ]
       : []),
-    // The spread bar itself yields below lg, so its label does too.
-    { label: "Expert spread", className: "hidden w-[120px] lg:block", title: FANTASY_EXPERT_SPREAD_TOOLTIP },
+    // The spread bar itself yields below xl, so its label does too.
+    { label: "Expert spread", className: "hidden w-[120px] xl:block", title: FANTASY_EXPERT_SPREAD_TOOLTIP },
     { label: "Range", className: "w-16 text-right", title: FANTASY_EXPERT_SPREAD_TOOLTIP },
     { label: "Avg", className: "w-12 text-right", title: FANTASY_AVG_RANK_TOOLTIP },
     ...(adpAvailable
@@ -1637,25 +1640,36 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                     >
                       {displayRank(player)}
                     </span>
-                    <span className="flex min-w-0 flex-[1_1_12rem] flex-wrap items-baseline gap-x-2 gap-y-1">
-                      {/* The name is the row's identity, so it keeps a hard floor
-                          and the decorative spread bar yields below lg instead. */}
-                      <span className="min-w-[7rem] truncate text-sm font-semibold tracking-tight">{player.name}</span>
-                      <span
-                        className="inline-flex shrink-0 items-center rounded-[2px] border px-1.5 py-0.5 font-mono text-3xs tracking-[0.06em]"
-                        style={{ ...tone, color: "var(--home-ink)" }}
-                      >
-                        {player.position}
-                        {Number.isFinite(player.positionRank) ? player.positionRank : ""}
+                    <span className="@container min-w-0 flex-[1_1_12rem]">
+                      {/* One shape per width, so a row's height never depends on
+                          whether it carries a Value or Reach chip. The cell switches
+                          on its own width, which moves with the columns a board shows
+                          as well as with the viewport. Below 21.5rem the name has its
+                          own line over the position, team and chip, and every row has
+                          a position chip, so that line is always the same height. From
+                          21.5rem the two share one line, and the spread bar yields
+                          below xl so the cell clears the switch from 1024 up. The name
+                          keeps a hard floor either way. */}
+                      <span className="flex flex-col gap-y-1 @min-[21.5rem]:flex-row @min-[21.5rem]:items-center @min-[21.5rem]:gap-x-2">
+                        <span className="min-w-[7rem] truncate text-sm font-semibold tracking-tight">{player.name}</span>
+                        <span className="flex min-w-0 items-center gap-x-2 @min-[21.5rem]:shrink-0">
+                          <span
+                            className="inline-flex shrink-0 items-center rounded-[2px] border px-1.5 py-0.5 font-mono text-3xs tracking-[0.06em]"
+                            style={{ ...tone, color: "var(--home-ink)" }}
+                          >
+                            {player.position}
+                            {Number.isFinite(player.positionRank) ? player.positionRank : ""}
+                          </span>
+                          <span
+                            className="min-w-0 truncate font-mono text-3xs uppercase tracking-[0.06em]"
+                            style={{ color: "var(--home-ink-muted)" }}
+                          >
+                            {player.team}
+                            {player.byeWeek ? ` · Bye ${player.byeWeek}` : ""}
+                          </span>
+                          {adpSignalsAvailable && vsAdpMeaningful && <ValueReachChip player={player} />}
+                        </span>
                       </span>
-                      <span
-                        className="shrink-0 font-mono text-3xs uppercase tracking-[0.06em]"
-                        style={{ color: "var(--home-ink-muted)" }}
-                      >
-                        {player.team}
-                        {player.byeWeek ? ` · Bye ${player.byeWeek}` : ""}
-                      </span>
-                      {adpSignalsAvailable && vsAdpMeaningful && <ValueReachChip player={player} />}
                     </span>
                     <span className="grid w-full grid-cols-3 gap-x-3 gap-y-1 md:flex md:w-auto md:max-w-full md:flex-wrap md:items-center md:gap-x-4">
                       {vorpAvailable && (
@@ -1685,7 +1699,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                           </span>
                         </>
                       )}
-                      <span className="hidden lg:inline-flex">
+                      <span className="hidden xl:inline-flex">
                         <ExpertSpreadBar player={player} scale={boardScale} />
                       </span>
                       <span className="sr-only">Expert range</span>
