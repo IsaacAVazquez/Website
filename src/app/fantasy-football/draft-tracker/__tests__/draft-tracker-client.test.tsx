@@ -439,6 +439,13 @@ describe("DraftTrackerClient", () => {
 
     const toggle = screen.getByRole("button", { name: /Why these picks/i });
     expect(toggle).toHaveAttribute("aria-controls", "draft-decision-strip draft-decision-detail");
+    // The column floor is the width a card needs to print a long name beside its
+    // rank, chip and Log button, so the cards the disclosure appends wrap to a
+    // new row instead of squeezing the first three (240px let four 249px columns
+    // clip two names at 1440).
+    expect(document.querySelector("#draft-decision-strip")).toHaveStyle({
+      gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+    });
     expect(screen.queryByText(/^Board #1 · Tier 1/)).not.toBeInTheDocument();
     expect(screen.queryByText("Fills WR1")).not.toBeInTheDocument();
 

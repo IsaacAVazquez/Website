@@ -95,8 +95,61 @@ describe("BestBallClient", () => {
   });
 
   afterEach(() => {
+    jest.useRealTimers();
     window.localStorage.clear();
     resetBrowserStorageMemory();
+  });
+
+  /** A BBM VII lens whose ranking and ADP sources carry the given dates. */
+  function renderDatedBoard(dates: { now: string; generatedAt: string; ranking: string; adp: string }) {
+    jest.useFakeTimers({ now: new Date(dates.now) });
+    currentSearchParams = new URLSearchParams("contest=bbm-vii");
+    mockUseBestBallSnapshot.mockReturnValue({
+      snapshot: {
+        ...snapshot,
+        generatedAt: dates.generatedAt,
+        rankingSource: { ...snapshot.rankingSource, asOf: dates.ranking },
+        adpSource: { ...snapshot.adpSource, provider: "Underdog ADP via Hayden Winks", asOf: dates.adp },
+      },
+      isLoading: false,
+      error: null,
+      retry: mockRetry,
+    });
+    return render(<BestBallClient initialState={{ contest: "bbm-vii", position: "all", query: "" }} />);
+  }
+
+  it("keeps the refresh-window warning for a dated source before Week 1", () => {
+    renderDatedBoard({
+      now: "2026-08-20T12:00:00.000Z",
+      generatedAt: "2026-08-20T09:00:00.000Z",
+      ranking: "2026-08-01T12:00:00.000Z",
+      adp: "2026-08-01T12:00:00.000Z",
+    });
+
+    const card = screen.getByText(
+      "One or more best ball sources are older than the normal refresh window. Check the dates before using this board in a live room."
+    );
+    expect(card).toHaveAttribute("role", "status");
+    expect(screen.queryByText(/kept for reference rather than refreshed/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/frozen reference/)).not.toBeInTheDocument();
+  });
+
+  it("dates the frozen board instead of warning about a refresh window once the season opens", () => {
+    // The committed 2026 board read on Sep 11: consensus Sep 1, ADP Sep 10.
+    renderDatedBoard({
+      now: "2026-09-11T12:00:00.000Z",
+      generatedAt: "2026-09-11T09:24:17.592Z",
+      ranking: "2026-09-01T11:20:54.000Z",
+      adp: "2026-09-10T15:52:40.059Z",
+    });
+
+    const card = screen.getByText(
+      "This consensus is dated Sep 1, 2026 and the Underdog ADP Sep 10, 2026, and neither will move again now that the market has closed at kickoff. The board stays as a frozen reference for next summer, and the draft tracker keeps Draft Outlook and its exact player cards paused because they need a current consensus."
+    );
+    expect(card).toHaveAttribute("role", "status");
+    expect(screen.queryByText(/refresh window|live room/)).not.toBeInTheDocument();
+    // The Week 1 note above it is untouched and no longer contradicted.
+    expect(screen.getByText(/kept for reference rather than refreshed/)).toBeInTheDocument();
   });
 
   it("renders the selected contest, moves quarterbacks for Superflex, and exposes the sourced fields", () => {

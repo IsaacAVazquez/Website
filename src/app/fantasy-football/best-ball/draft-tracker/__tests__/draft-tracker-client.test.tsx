@@ -110,6 +110,10 @@ describe("BestBallDraftTrackerClient", () => {
     window.scrollTo = jest.fn();
   });
 
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
   it("scrolls the status card into view and focuses the on-the-clock heading when the room opens", async () => {
     render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
     fireEvent.click(
@@ -320,6 +324,8 @@ describe("BestBallDraftTrackerClient", () => {
   });
 
   it("states a stale exact source separately from catalog reference reasons", async () => {
+    // Preseason clock: from Week 1 the same gate reads as a frozen board.
+    jest.useFakeTimers({ now: new Date("2026-08-10T12:00:00.000Z") });
     mockSourceDate = "2020-01-01T00:00:00.000Z";
     render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
 
@@ -338,6 +344,43 @@ describe("BestBallDraftTrackerClient", () => {
     expect(screen.getByRole("heading", { name: "Draft Outlook paused" })).toBeVisible();
     expect(screen.queryByText("Calculated market value")).not.toBeInTheDocument();
     expect(screen.queryByText("Reference guidance only")).not.toBeInTheDocument();
+  });
+
+  it("describes the frozen in-season board once and promises no refresh", async () => {
+    // The committed 2026 board read on Sep 11: consensus Sep 1, schedule Sep 10.
+    jest.useFakeTimers({ now: new Date("2026-09-11T12:00:00.000Z") });
+    mockSourceDate = "2026-09-01T11:20:54.000Z";
+    mockScheduleDate = "2026-09-10T19:28:43.439Z";
+    render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
+
+    expect(
+      await screen.findByText(
+        "Draft Outlook is paused because the best ball consensus is frozen at its Sep 1, 2026 board and the market closed at kickoff. Exact player cards are paused too, because both need a current consensus. The board stays as a frozen reference for next summer, and the roster targets and manual pick log remain available."
+      )
+    ).toBeVisible();
+    fireEvent.click(
+      await screen.findByRole("button", { name: "Open draft room from slot 1" })
+    );
+
+    // Still paused: no cards, no market value, and the rail carries the short form.
+    expect(screen.getByRole("heading", { name: "Draft Outlook paused" })).toBeVisible();
+    expect(screen.queryByRole("button", { name: "Log for my team" })).not.toBeInTheDocument();
+    expect(screen.queryByText("Calculated market value")).not.toBeInTheDocument();
+    expect(
+      screen.getAllByText("Paused on the frozen board. Nothing here refreshes this season.").length
+    ).toBeGreaterThan(0);
+    expect(
+      screen.getByText(
+        /^Exact player cards are unavailable because the best ball consensus is frozen at its Sep 1, 2026 board and the market closed at kickoff\./
+      )
+    ).toBeVisible();
+
+    // The full clause prints once, and nothing calls the board stale or waiting.
+    expect(screen.getAllByText(/Draft Outlook is paused because/)).toHaveLength(1);
+    expect(screen.queryByText(/\bstale\b/)).not.toBeInTheDocument();
+    expect(
+      screen.queryByText(/It will return after the published sources refresh/)
+    ).not.toBeInTheDocument();
   });
 
   it("pauses exact guidance when the Week 17 schedule is stale", async () => {

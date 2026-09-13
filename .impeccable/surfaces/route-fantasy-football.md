@@ -561,3 +561,45 @@ board, the redraft tracker's "−0.0 pts" reading, the drawer's unlabelled Movem
 `getFantasyAdpFreshness` hiding the mock draft's ADP columns on the same four-day rule the
 note now explains. The context note that freshness bands widen on 2026-10-01 was wrong; the
 code holds the four-day band through December, and the copy across the group now says so.
+
+### Re-score after remediation, 2026-09-11
+
+Isaac asked for the scores after, which the section above did not have, so every surface was
+re-scored with the same dual-agent method against merged main. The re-score snapshots carry
+the `2026-09-11T18` prefix under `.impeccable/critique/`, each with a Before column per
+heuristic and a "What closed" section that re-measured every P0 and P1 from the morning.
+
+Rankings 30 to 34, best ball board 24 to 31, best ball tracker 29 to 36, redraft tracker 29 to
+36, mock draft 27 to 32, trade calculator 30 to 36, weekly 29 to 36, waivers 30 to 33, all out
+of 40, which takes the group from 228 to 274 of 320. Every one of the thirty P0 and P1
+findings measured closed, with the redraft phone fascia and the rankings phone chrome closed
+as far as the morning's fix went (two rows rather than one) and their remainders filed as P2.
+
+Three P1s were new. Two were introduced by the fixes, which is the lesson worth keeping.
+Restoring the best ball consensus to the 2026-09-01 board trips the four-day freshness gate,
+and both best ball surfaces then described a deliberately frozen board with the preseason
+words: the board's status card warned that sources were "older than the normal refresh
+window" directly under the note that says the board is frozen on purpose, and the tracker
+said "the required ranking source is stale" and "It will return after the published sources
+refresh" three times in one viewport, a promise the builder's own fallback and the mock
+draft's rewrite no longer make. A clarify pass fixed the words and left the gate alone: once
+the season is open the reader gate names the frozen board with its date and that the market
+closed at kickoff, the board card prints the dated consensus and ADP readings once, the
+tracker's header alert carries the one full statement and its rail and phone sheet a short
+form, and nothing promises a refresh. Before Week 1 the existing sentences stay. The third
+was pre-existing and simply never measured: the mock draft's recap board carried 10px cell
+labels on the position washes at 4.16 to 4.41:1 in light, and the morning sweep never drove
+the recap. They take a muted-toward-ink mix now, 5.55:1 and up on every wash in both themes,
+50 of 50 cells.
+
+The re-score's cheap P2s went in the same follow-up. The mock draft's ADP stamp now reads
+the chip's freshness gate so the two agree past the window. The redraft decision strip's
+grid floor moved from 240px to 320px so the cards the disclosure appends wrap instead of
+squeezing "Omarion Hampton" to 88px at 1440. The weekly and waivers board cards use the
+static card helper so the hover lift no longer moves the pinned header row from 73px to
+69px, Show all lands focus on the status line instead of body, and the stacked phone lists
+carry an explicit list role. And the rankings drawer's stat grid, which the VORP card had
+taken to five cards in a two-column grid with a blank 176px cell, now spans its lead card
+across both columns on one line when the count is odd, so no cell sits blank at any count
+and the phone drawer recovers 21px; the Close button still scrolls out of view at 390,
+which stays open as an adapt item.

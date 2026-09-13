@@ -7,9 +7,12 @@ import {
   evaluateBestBallConsensusConsistency,
   getBestBallConsensusBandGap,
   getBestBallConsensusIssue,
+  getBestBallFrozenBoardClause,
   getBestBallModelSourceIssue,
   getBestBallRankingSource,
+  isBestBallBoardFrozen,
   isBestBallConsensusDivergent,
+  isBestBallSeasonOpen,
 } from "@/lib/bestBall/sourceCapabilities";
 import { getContestPreset } from "@/lib/bestBall/contests";
 import {
@@ -265,5 +268,86 @@ describe("best ball source capabilities", () => {
         NOW
       )
     ).toBe("the Week 17 schedule source is incomplete");
+  });
+});
+
+/**
+ * From Week 1 the market is closed and the builder keeps the committed
+ * snapshot frozen (getBestBallRefreshFallback), so the same four-day gate
+ * has to describe a dated board on purpose rather than a missed refresh.
+ * Dates are the committed 2026 board: consensus Sep 1, Superflex Sep 3,
+ * ADP and schedule Sep 10, read on Sep 11.
+ */
+describe("best ball source gate once the season opens", () => {
+  const SEASON_NOW = new Date("2026-09-11T12:00:00.000Z");
+  const FROZEN_CONSENSUS_AS_OF = "2026-09-01T11:20:54.000Z";
+  const FROZEN_CLAUSE =
+    "the best ball consensus is frozen at its Sep 1, 2026 board and the market closed at kickoff";
+
+  function frozenSnapshot(overrides: Partial<BestBallSnapshot> = {}): BestBallSnapshot {
+    return snapshot({
+      generatedAt: "2026-09-11T09:24:17.592Z",
+      rankingSource: source("Standard rankings", FROZEN_CONSENSUS_AS_OF),
+      superflexSource: source("Superflex rankings", "2026-09-03T19:17:55.000Z"),
+      adpSource: source("Underdog ADP", "2026-09-10T15:52:40.059Z"),
+      scheduleSource: source("Week 17 schedule", "2026-09-10T19:28:43.439Z"),
+      ...overrides,
+    });
+  }
+
+  it("reads the season from the calendar", () => {
+    expect(isBestBallSeasonOpen({ season: 2026 }, NOW)).toBe(false);
+    expect(isBestBallSeasonOpen({ season: 2026 }, new Date("2026-09-08T12:00:00.000Z"))).toBe(false);
+    expect(isBestBallSeasonOpen({ season: 2026 }, SEASON_NOW)).toBe(true);
+  });
+
+  it("names the dated board and the closed market instead of a missed refresh", () => {
+    const preset = getContestPreset("bbm-vii");
+    const issue = getBestBallModelSourceIssue(frozenSnapshot(), preset, SEASON_NOW);
+
+    expect(issue).toBe(FROZEN_CLAUSE);
+    expect(getBestBallFrozenBoardClause(FROZEN_CONSENSUS_AS_OF)).toBe(FROZEN_CLAUSE);
+    expect(issue).not.toMatch(/stale|refresh/);
+    expect(isBestBallBoardFrozen(frozenSnapshot(), preset, SEASON_NOW)).toBe(true);
+  });
+
+  it("dates the Superflex lens by its own board", () => {
+    const preset = getContestPreset("superflex");
+
+    expect(getBestBallModelSourceIssue(frozenSnapshot(), preset, SEASON_NOW)).toBe(
+      "the best ball consensus is frozen at its Sep 3, 2026 board and the market closed at kickoff"
+    );
+    expect(isBestBallBoardFrozen(frozenSnapshot(), preset, SEASON_NOW)).toBe(true);
+  });
+
+  it("keeps the preseason wording before Week 1", () => {
+    const preseason = snapshot({ rankingSource: source("Standard rankings", STALE_AS_OF) });
+    const preset = getContestPreset("bbm-vii");
+
+    expect(getBestBallModelSourceIssue(preseason, preset, NOW)).toBe(
+      "the required ranking source is stale"
+    );
+    expect(isBestBallBoardFrozen(preseason, preset, NOW)).toBe(false);
+  });
+
+  it("reports a frozen ADP the same way when the consensus itself is current", () => {
+    const frozenAdp = frozenSnapshot({
+      rankingSource: source("Standard rankings", "2026-09-10T11:00:00.000Z"),
+      adpSource: source("Underdog ADP", "2026-09-01T15:00:00.000Z"),
+    });
+
+    expect(getBestBallModelSourceIssue(frozenAdp, getContestPreset("bbm-vii"), SEASON_NOW)).toBe(
+      "the Underdog ADP is frozen at its Sep 1, 2026 reading and the market closed at kickoff"
+    );
+  });
+
+  it("keeps a contradiction ahead of the freeze and out of the short form", () => {
+    const frozenAndBroken = frozenSnapshot({ players: brokenBoard() });
+    const preset = getContestPreset("bbm-vii");
+
+    expect(getBestBallModelSourceIssue(frozenAndBroken, preset, SEASON_NOW)).toMatch(
+      /disagrees with its own expert ranges/
+    );
+    expect(isBestBallBoardFrozen(frozenAndBroken, preset, SEASON_NOW)).toBe(false);
   });
 });
