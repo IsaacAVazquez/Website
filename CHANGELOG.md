@@ -7,6 +7,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 ## 2026-09-13
 
 - Fantasy loop follow-up: after scores and the re-score's findings ([#426](https://github.com/IsaacAVazquez/Website/pull/426)).
+- Fix the rankings board from the 2026-09-12 critique and land #426 ([#430](https://github.com/IsaacAVazquez/Website/pull/430)).
 
 ---
 
