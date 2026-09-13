@@ -4,6 +4,12 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-09-13
+
+- Fantasy loop follow-up: after scores and the re-score's findings ([#426](https://github.com/IsaacAVazquez/Website/pull/426)).
+
+---
+
 ## 2026-09-11
 
 - Impeccable loop over the eight fantasy football surfaces, in season ([#423](https://github.com/IsaacAVazquez/Website/pull/423)).
