@@ -8,6 +8,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 - Fantasy loop follow-up: after scores and the re-score's findings ([#426](https://github.com/IsaacAVazquez/Website/pull/426)).
 - Fix the rankings board from the 2026-09-12 critique and land #426 ([#430](https://github.com/IsaacAVazquez/Website/pull/430)).
+- Fix the mobile draft tracker e2e tests and the discarded fantasy snapshot preloads ([#431](https://github.com/IsaacAVazquez/Website/pull/431)).
 
 ---
 
