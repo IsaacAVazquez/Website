@@ -801,7 +801,26 @@ Measuring every plate header against its first row, at 1440 on the PPR overall b
 on both QB boards, found a 1px gap on all 34 plates, so those 8 come from where the sweep's scroll
 steps land, and the layout has no overlap there.
 
-What stays open is all P2 or product-shaped, from the discarded preload, to the drawer's tab order
-and phone geometry (including Close scrolling out of view at 390), to plate metadata recomputed
-from a filtered subset, the repeated 12-team label in VORP mode, and the shared-shell heading
-inversions.
+What stays open is all P2 or product-shaped, from the drawer's tab order and phone geometry
+(including Close scrolling out of view at 390), to plate metadata recomputed from a filtered
+subset, the repeated 12-team label in VORP mode, and the shared-shell heading inversions. The
+discarded preload closed on 2026-09-13, recorded below.
+
+## Preload and mobile e2e follow-up, 2026-09-13
+
+The discarded preload is fixed on the board and on the two weekly routes that share the pattern.
+`ReactDOM.preload` sent the snapshot request without a `crossorigin` attribute, so the browser made
+it with different credentials from the hooks' `fetch()`, reported that the preload was found but
+not used because the credentials mode did not match, and downloaded the JSON a second time. All
+three preloads now pass `crossOrigin: "anonymous"`. Measured in Chromium against the dev server,
+`/fantasy-football`, `/fantasy-football/weekly` and `/fantasy-football/waivers` each went from two
+requests for their snapshot to one, and both preload warnings for the JSON are gone. The weekly
+and waivers page tests now assert the option, and the board's page test gained the assertion it
+never had.
+
+The full browser matrix on main had failed since 2026-09-11 on two redraft tracker e2e tests in
+Mobile Chrome and Mobile Safari. Both asserted the spaced "#1 / 180" pick counter, which the
+fascia hides below `sm` in favour of the compact "#1/180" this brief already records, so on phones
+they waited on a hidden element. They now match either form and take the visible one, and all ten
+runs across the five Playwright projects pass locally. The matrix only runs on pushes to main, so
+its first run after this merge is the confirmation, and a passing run closes issue #425.

@@ -30,10 +30,12 @@ export default async function FantasyFootballPage({ searchParams }: FantasyFootb
   const initialState = normalizeFantasyState(await searchParams);
   // The board's fetch cannot start until the client bundle has downloaded and
   // hydrated, so the critical path ran HTML, then JS, then JSON in series. This
-  // URL matches useFantasySnapshot's request exactly, so the in-flight preload
-  // is reused rather than duplicated.
+  // URL matches useFantasySnapshot's request exactly, and crossOrigin makes the
+  // preload a CORS request like fetch(); without it the browser discards the
+  // preload over the credentials mismatch and downloads the JSON a second time.
   ReactDOM.preload(`/data/fantasy/${initialState.scoring}.json?v=${fantasySnapshotRevision}`, {
     as: "fetch",
+    crossOrigin: "anonymous",
   });
   // The first page of rows rides in the HTML so the board is readable without
   // JavaScript (the answer engines robots.txt admits do not run it). A failed

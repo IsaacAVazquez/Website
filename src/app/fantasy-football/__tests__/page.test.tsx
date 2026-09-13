@@ -37,4 +37,15 @@ describe("FantasyFootballPage", () => {
     expect(props?.initialSnapshot?.positions.WR).toHaveLength(40);
     expect(props?.initialSnapshot?.overall).toEqual([]);
   });
+
+  it("preloads the board's snapshot as a CORS request so the client fetch reuses it", async () => {
+    render(await FantasyFootballPage({ searchParams: Promise.resolve({ scoring: "half_ppr" }) }));
+
+    // Without crossOrigin the browser sends the preload with different
+    // credentials from fetch() and discards it, so the JSON downloads twice.
+    expect(ReactDOM.preload).toHaveBeenCalledWith(
+      expect.stringContaining("/data/fantasy/half_ppr.json?v="),
+      { as: "fetch", crossOrigin: "anonymous" }
+    );
+  });
 });

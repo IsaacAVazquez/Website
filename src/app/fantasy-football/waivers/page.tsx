@@ -43,6 +43,7 @@ export default async function WaiverTargetsPage({
   if (getNflRegularSeasonWeek(new Date().getUTCFullYear()) > 0) {
     ReactDOM.preload(`/data/fantasy/weekly.json?v=${fantasySnapshotRevision}`, {
       as: "fetch",
+      crossOrigin: "anonymous",
     });
   }
 
