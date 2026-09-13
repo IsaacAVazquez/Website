@@ -40,14 +40,16 @@ export default async function WeeklyBoardPage({ searchParams }: WeeklyBoardPageP
   };
   // The board's fetch cannot start until the client bundle has downloaded and
   // hydrated, so the critical path ran HTML, then JS, then JSON in series. This
-  // URL matches useFantasyWeeklySnapshot's request exactly, so the in-flight
-  // preload is reused rather than duplicated.
+  // URL matches useFantasyWeeklySnapshot's request exactly, and crossOrigin
+  // makes the preload a CORS request like fetch(); without it the browser
+  // discards the preload and downloads the JSON a second time.
   // The builder publishes nothing before Week 1, so preloading earlier only
   // adds a guaranteed 404 to every visit. Calendar year is the right season
   // here: in January the board is finished and the preload is not worth it.
   if (getNflRegularSeasonWeek(new Date().getUTCFullYear()) > 0) {
     ReactDOM.preload(`/data/fantasy/weekly.json?v=${fantasySnapshotRevision}`, {
       as: "fetch",
+      crossOrigin: "anonymous",
     });
   }
 

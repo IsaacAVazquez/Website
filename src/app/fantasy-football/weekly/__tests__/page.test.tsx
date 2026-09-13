@@ -29,7 +29,7 @@ describe("WeeklyBoardPage", () => {
 
     expect(preload).toHaveBeenCalledWith(
       expect.stringContaining("/data/fantasy/weekly.json?v="),
-      { as: "fetch" }
+      { as: "fetch", crossOrigin: "anonymous" }
     );
   });
 });
