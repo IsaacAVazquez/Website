@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useMemo } from "react";
+import { useId, useMemo, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   Home,
@@ -29,20 +29,24 @@ function formatSignedCurrency(value: number) {
   return `${sign}${formatCurrency(Math.abs(value))}`;
 }
 
+const plural = (count: number, unit: string) => `${count} ${unit}${count === 1 ? "" : "s"}`;
+
 function formatBreakEven(result: RentVsBuyResult) {
   if (result.breakEvenYears === null) {
-    return `Buying never catches renting within ${result.horizonYears} years`;
+    return `Buying is not ahead at the end of ${plural(result.horizonYears, "year")}`;
   }
   const years = Math.floor(result.breakEvenYears);
   const months = Math.round((result.breakEvenYears - years) * 12);
-  if (years === 0) return `Buying pulls ahead after about ${months} months`;
-  if (months === 0) return `Buying pulls ahead around year ${years}`;
-  return `Buying pulls ahead around year ${years}, month ${months}`;
+  // "after about 1 year and 6 months" rather than "around year 1, month 6",
+  // which read as the second year to anyone counting from year 1.
+  if (years === 0) return `Buying pulls ahead after about ${plural(months, "month")}`;
+  if (months === 0) return `Buying pulls ahead after about ${plural(years, "year")}`;
+  return `Buying pulls ahead after about ${plural(years, "year")} and ${plural(months, "month")}`;
 }
 
 const VERDICT_COPY: Record<RentVsBuyResult["verdict"], { title: string; tone: string }> = {
   buying: { title: "Buying comes out ahead", tone: "var(--home-positive)" },
-  renting: { title: "Renting comes out ahead", tone: "var(--home-signal)" },
+  renting: { title: "Renting comes out ahead", tone: "var(--home-signal-ink)" },
   close: { title: "It's close to a wash", tone: "var(--home-ink)" },
 };
 
@@ -83,7 +87,7 @@ function NetWorthChart({ result }: { result: RentVsBuyResult }) {
         viewBox={`0 0 ${points.width} ${points.height}`}
         className="h-auto w-full"
         role="img"
-        aria-label={`Net worth over ${result.horizonYears} years. ${formatBreakEven(result)}.`}
+        aria-label={`Net worth over ${plural(result.horizonYears, "year")}. ${formatBreakEven(result)}.`}
       >
         <line
           x1={0}
@@ -152,6 +156,7 @@ interface FieldProps {
   max?: number;
   step?: number;
   onChange: (value: number) => void;
+  disabled?: boolean;
 }
 
 function NumberField({
@@ -163,8 +168,12 @@ function NumberField({
   max,
   step = 1,
   onChange,
+  disabled = false,
 }: FieldProps) {
   const id = useId();
+  // The typed text stays local until it parses, so clearing a field to retype it
+  // no longer snaps to the stored minimum on the first keystroke.
+  const [draft, setDraft] = useState<string | null>(null);
   return (
     <label htmlFor={id} className="block">
       <span className="block text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
@@ -184,9 +193,15 @@ function NumberField({
           min={min}
           max={max}
           step={step}
-          value={String(value)}
-          onChange={(event) => onChange(Number(event.target.value))}
-          className="w-full border-0 bg-transparent py-2 text-xs text-[var(--home-ink)] [font-variant-numeric:tabular-nums] focus-visible:outline-none"
+          value={draft ?? String(value)}
+          disabled={disabled}
+          onChange={(event) => {
+            const next = event.target.value;
+            setDraft(next);
+            if (next.trim() !== "" && Number.isFinite(Number(next))) onChange(Number(next));
+          }}
+          onBlur={() => setDraft(null)}
+          className="w-full border-0 bg-transparent py-2 text-xs text-[var(--home-ink)] [font-variant-numeric:tabular-nums] focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
         />
         {suffix ? (
           <span className="ml-1 text-2xs text-[var(--home-ink-muted)]" aria-hidden="true">
@@ -200,6 +215,9 @@ function NumberField({
 
 export function RentVsBuyClient() {
   const { input, result, setField, reset } = useRentVsBuy();
+  // Each NumberField keeps a local draft while typing, so Reset remounts the
+  // fields to drop any draft still showing a value the store no longer holds.
+  const [resetKey, setResetKey] = useState(0);
   const shouldReduceMotion = useReducedMotion();
   const motionVariants = shouldReduceMotion
     ? getReducedMotionVariants().fadeInVariants
@@ -227,7 +245,10 @@ export function RentVsBuyClient() {
             </div>
             <button
               type="button"
-              onClick={reset}
+              onClick={() => {
+                reset();
+                setResetKey((current) => current + 1);
+              }}
               className="inline-flex min-h-touch items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 text-1xs font-semibold text-[var(--home-ink-muted)] transition hover:border-[var(--home-signal)] hover:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
             >
               <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />
@@ -262,7 +283,7 @@ export function RentVsBuyClient() {
 
           <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,340px)]">
             {/* Inputs */}
-            <div className="flex flex-col gap-5">
+            <div key={resetKey} className="flex flex-col gap-5">
               <section className="tool-card" aria-label="The home you would buy">
                 <div className="flex items-center gap-2">
                   <Home className="h-4 w-4 text-[var(--home-signal)]" aria-hidden="true" />
@@ -312,24 +333,8 @@ export function RentVsBuyClient() {
                 <div className="mt-4 grid gap-3 sm:grid-cols-2">
                   <NumberField label="Investment return" suffix="%/yr" step={0.25} min={-10} value={input.investmentReturnPercent} onChange={num("investmentReturnPercent")} />
                   <NumberField label="Inflation" suffix="%/yr" step={0.25} value={input.generalInflationPercent} onChange={num("generalInflationPercent")} />
-                  <NumberField label="Marginal tax rate" suffix="%" step={1} max={60} value={input.marginalTaxRatePercent} onChange={num("marginalTaxRatePercent")} />
+                  <NumberField label="Marginal tax rate" suffix="%" step={1} max={60} value={input.marginalTaxRatePercent} onChange={num("marginalTaxRatePercent")} disabled={!input.itemizes} />
                   <NumberField label="Years staying" suffix="yrs" step={1} min={1} max={40} value={input.yearsStaying} onChange={num("yearsStaying")} />
-                  <label className="block">
-                    <span className="block text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
-                      Filing status
-                    </span>
-                    <select
-                      aria-label="Filing status"
-                      value={input.filingStatus}
-                      onChange={(event) =>
-                        setField("filingStatus", event.target.value as RentVsBuyInput["filingStatus"])
-                      }
-                      className="mt-1.5 min-h-touch w-full rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-xs text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
-                    >
-                      <option value="single">Single</option>
-                      <option value="married">Married filing jointly</option>
-                    </select>
-                  </label>
                   <label className="flex min-h-touch cursor-pointer items-center justify-between gap-3 self-end rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3">
                     <span className="text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
                       Itemize deductions
@@ -396,7 +401,7 @@ export function RentVsBuyClient() {
                 </div>
                 <div>
                   <dt className="text-[var(--home-ink-muted)]">Renter net worth · yr {result.horizonYears}</dt>
-                  <dd className="font-semibold text-[var(--home-signal)] [font-variant-numeric:tabular-nums]">
+                  <dd className="font-semibold text-[var(--home-signal-ink)] [font-variant-numeric:tabular-nums]">
                     {formatCurrency(result.renterNetWorthAtHorizon)}
                   </dd>
                 </div>
@@ -413,24 +418,24 @@ export function RentVsBuyClient() {
                     color:
                       result.netWorthDeltaAtHorizon >= 0
                         ? "var(--home-positive)"
-                        : "var(--home-signal)",
+                        : "var(--home-signal-ink)",
                   }}
                 >
                   {formatSignedCurrency(result.netWorthDeltaAtHorizon)}
                 </span>
               </div>
 
+              <p className="text-1xs text-[var(--home-ink-muted)]">
+                Educational only, not financial or tax advice.
+              </p>
               <details className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2.5 text-1xs text-[var(--home-ink-muted)]">
                 <summary className="flex cursor-pointer items-center gap-1.5 font-semibold text-[var(--home-ink)]">
                   <Info className="h-3.5 w-3.5" aria-hidden="true" />
                   Assumptions &amp; limits
                 </summary>
                 <p className="mt-2 leading-6">
-                  Educational only, not financial or tax advice. Figures are nominal
-                  dollars. {result.assumptions.taxNote} SALT cap{" "}
-                  {formatCurrency(result.assumptions.saltCap)}, standard deduction{" "}
-                  {formatCurrency(result.assumptions.standardDeduction)}, primary-residence
-                  gains exclusion {formatCurrency(result.assumptions.capitalGainsExclusion)}.
+                  Figures are nominal dollars. {result.assumptions.taxNote} SALT cap{" "}
+                  {formatCurrency(result.assumptions.saltCap)}.
                   Tax figures as of {result.assumptions.asOf} and not yet re-pinned to a
                   primary source.
                 </p>

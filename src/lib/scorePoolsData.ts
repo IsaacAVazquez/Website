@@ -274,7 +274,7 @@ async function buildProviderLeague(
       );
     }
   } else if (source.apiFootball && !inputs.keys.apiFootball) {
-    notes.push("API_FOOTBALL_KEY is not set, so fixtures come from manual/CSV entries only.");
+    notes.push("Live fixtures are not connected, so this league only shows games entered by hand.");
   }
 
   // Manual + CSV entries for this league.
@@ -330,7 +330,7 @@ async function buildProviderLeague(
       );
     }
   } else if (source.theOddsApiSportKey && !inputs.keys.theOddsApi) {
-    notes.push("THE_ODDS_API_KEY is not set, so odds come from manual/CSV entries only.");
+    notes.push("Live odds are not connected, so odds come from hand entries only.");
   }
 
   // Injuries and near-kickoff lineups, best-effort.

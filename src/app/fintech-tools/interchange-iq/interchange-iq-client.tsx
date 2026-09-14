@@ -70,7 +70,7 @@ function Slider({
             fontFamily: "var(--font-home-sans)",
             fontSize: "13px",
             fontWeight: 600,
-            color: "var(--home-signal)",
+            color: "var(--home-signal-ink)",
           }}
         >
           {format(value)}
@@ -175,7 +175,7 @@ export function InterchangeIQClient() {
 
   const cardMixRows = [
     { label: "Visa/MC Credit", pct: cardMix.creditFraction * 100, rate: "~1.65% + $0.10" },
-    { label: "Debit (Reg E)",  pct: cardMix.debitFraction  * 100, rate: "~0.05% + $0.22" },
+    { label: "Debit (Reg II)", pct: cardMix.debitFraction  * 100, rate: "~0.25% + $0.22" },
     { label: "Amex",           pct: cardMix.amexFraction   * 100, rate: "~2.30%" },
   ];
 
@@ -536,7 +536,7 @@ export function InterchangeIQClient() {
                       lineHeight: 1.45,
                     }}
                   >
-                    Note: Stripe IC+ requires a custom contract and typically $250k+/year in volume.
+                    Note: Stripe IC+ requires a custom contract and typically $250k+/year in volume, and the IC+ totals here leave out card network and assessment fees, so real IC+ costs run higher.
                   </p>
                 </>
               ) : (
@@ -549,8 +549,10 @@ export function InterchangeIQClient() {
                     lineHeight: 1.55,
                   }}
                 >
-                  At your current card mix, Stripe IC+ never beats Stripe flat. The markup plus
-                  blended interchange exceeds the flat rate at every ticket size.
+                  At your current card mix, Stripe IC+ costs less than Stripe flat at every ticket
+                  size, so there is no breakeven to find. IC+ usually needs a custom contract and
+                  about $250k a year in volume, and the IC+ totals here leave out card network and
+                  assessment fees, so real IC+ costs run higher.
                 </p>
               )}
             </article>
@@ -643,7 +645,7 @@ export function InterchangeIQClient() {
                   border: "1px solid var(--home-rule)",
                 }}
               >
-                Different card types carry different interchange rates. Debit (Reg E) is much
+                Different card types carry different interchange rates. Debit (Reg II) is much
                 lower than consumer credit. Amex runs its own network and typically costs more.
               </p>
             )}
@@ -723,7 +725,7 @@ export function InterchangeIQClient() {
             },
             {
               title: "Caveats & real-world nuance",
-              body: "These are representative averages. Real interchange has 300+ rate categories by card type, industry code, and auth method. IC+ is typically available to merchants processing $250k+/yr. Card-present transactions have lower interchange than online. Always get actual quotes.",
+              body: "These are representative averages. Real interchange has 300+ rate categories by card type, industry code, and auth method. IC+ is typically available to merchants processing $250k+/yr, and the IC+ totals here leave out network and assessment fees. Card-present transactions have lower interchange than online. Always get actual quotes.",
             },
           ].map((card) => (
             <article

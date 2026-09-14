@@ -132,10 +132,11 @@ export function BudgetPlannerClient() {
   const totalExpenses = summary.spentTotal;
   const remaining = summary.remainingToSpend;
   const percentSpent = useMemo(() => {
-    if (totalIncome <= 0) return 0;
+    // With no income there is no percentage to report, even when money was spent.
+    if (totalIncome <= 0) return null;
     return Math.min(999, Math.round((totalExpenses / totalIncome) * 100));
   }, [totalIncome, totalExpenses]);
-  const progressWidth = `${Math.min(100, Math.max(0, percentSpent))}%`;
+  const progressWidth = `${percentSpent === null ? (totalExpenses > 0 ? 100 : 0) : Math.min(100, Math.max(0, percentSpent))}%`;
 
   const topCategories = useMemo(
     () =>
@@ -168,7 +169,7 @@ export function BudgetPlannerClient() {
     },
     {
       label: "Percent spent",
-      value: `${percentSpent}%`,
+      value: percentSpent === null ? "No income set" : `${percentSpent}%`,
     },
     {
       label: "Categories",
@@ -396,10 +397,10 @@ export function BudgetPlannerClient() {
               </span>
               <span className="tool-meta-chip-divider" aria-hidden="true">·</span>
               <span>
-                Remaining <strong className={getBalanceTone(remaining)}>{formatSignedCurrency(remaining)}</strong>
+                Left after savings <strong className={getBalanceTone(remaining)}>{formatSignedCurrency(remaining)}</strong>
               </span>
               <span className="tool-meta-chip-spacer" />
-              <span className="tool-meta-chip-meta">{percentSpent}% of budget</span>
+              <span className="tool-meta-chip-meta">{percentSpent === null ? "No income set" : `${percentSpent}% of income`}</span>
             </div>
 
             <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,320px)]">
@@ -408,7 +409,11 @@ export function BudgetPlannerClient() {
                 <HomeStatsPanel
                   id="budget-planner-stats"
                   title="Budget at a glance"
-                  meta={`${formatSignedCurrency(summary.remainingToBudget)} left to budget`}
+                  meta={
+                    summary.remainingToBudget < 0
+                      ? `Over budget by ${formatSignedCurrency(summary.remainingToBudget).replace(/^[-+]/, "")}`
+                      : `${formatSignedCurrency(summary.remainingToBudget)} left to budget`
+                  }
                   hideLiveDot
                   cells={budgetStatsCells}
                   pills={[
@@ -421,12 +426,12 @@ export function BudgetPlannerClient() {
                 <div className="mt-3">
                   <div className="mb-2 flex items-center justify-between text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                     <span>Spend progress</span>
-                    <span className="[font-variant-numeric:tabular-nums]">{percentSpent}%</span>
+                    <span className="[font-variant-numeric:tabular-nums]">{percentSpent === null ? "No income set" : `${percentSpent}%`}</span>
                   </div>
                   <div className="h-2 overflow-hidden rounded-full bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))]">
                     <div
                       className={`h-full rounded-full ${
-                        percentSpent >= 100
+                        percentSpent === null || percentSpent >= 100
                           ? "bg-[var(--home-negative)]"
                           : percentSpent >= 85
                             ? "bg-[var(--home-warning)]"

@@ -30,7 +30,7 @@ const PROCESSORS: Processor[] = [
   { id: "shopify", name: "Shopify", model: "Flat Rate", pctRate: 0.029, fixedFee: 0.3, note: "Shopify Payments basic plan" },
   { id: "paypal", name: "PayPal", model: "Flat Rate", pctRate: 0.0349, fixedFee: 0.49, note: "Standard checkout rate" },
   { id: "stripe_ic", name: "Stripe IC+", model: "Interchange+", markupPct: 0.0025, markupFixed: 0.1, note: "Custom pricing; typically $250k+/yr volume" },
-  { id: "adyen", name: "Adyen", model: "Interchange+", markupPct: 0.003, markupFixed: 0.13, note: "Processing markup + blended scheme fees" },
+  { id: "adyen", name: "Adyen", model: "Interchange+", markupPct: 0.003, markupFixed: 0.13, note: "Processing markup; scheme fees not modeled" },
   { id: "checkout", name: "Checkout.com", model: "Interchange+", markupPct: 0.0025, markupFixed: 0.1, note: "Enterprise tier; volume minimums apply" },
 ];
 

@@ -16,8 +16,8 @@ export const scorePoolsSnapshot: ScorePoolsSnapshot = {
       "generatedAt": "2026-07-20T06:27:09.599Z",
       "sample": false,
       "notes": [
-        "API_FOOTBALL_KEY is not set, so fixtures come from manual/CSV entries only.",
-        "THE_ODDS_API_KEY is not set, so odds come from manual/CSV entries only."
+        "Live fixtures are not connected, so this league only shows games entered by hand.",
+        "Live odds are not connected, so odds come from hand entries only."
       ],
       "fixtures": [],
       "standings": []
