@@ -42,19 +42,6 @@ export function InvestmentsClient({
     [hasManagedParams, initialState, searchParams]
   );
 
-  // Clear researched symbol when user navigates away from this page so the
-  // next visit doesn't auto-load a stale ticker.
-  useEffect(() => {
-    return () => {
-      const params = new URLSearchParams(window.location.search);
-      if (params.has("symbol")) {
-        params.delete("symbol");
-        const next = "/investments" + (params.toString() ? "?" + params.toString() : "");
-        window.history.replaceState(null, "", next);
-      }
-    };
-  }, []);
-
   // Keep URL in sync with normalized route state. A clean visit with no
   // managed params keeps its clean URL; once managed (or legacy `view`)
   // params exist, rewrite only when the URL differs from the canonical href,

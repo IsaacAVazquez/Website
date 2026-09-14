@@ -162,7 +162,7 @@ export function FinancialStatementsPanel({ symbol }: Props) {
               onClick={() => setActiveTab(key)}
               className={`px-3 py-1.5 text-xs font-medium rounded-md transition whitespace-nowrap min-h-touch ${
                 activeTab === key
-                  ? "bg-[var(--home-signal)] text-white"
+                  ? "bg-[var(--home-signal)] text-[var(--home-paper)]"
                   : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)]"
               }`}
             >

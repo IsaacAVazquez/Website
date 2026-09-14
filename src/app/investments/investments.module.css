@@ -51,7 +51,9 @@
   --home-negative: #F87171;
 
   /* Derived tokens recomputed against the dark values above. */
-  --home-ink-soft: color-mix(in srgb, var(--home-ink) 45%, var(--home-paper));
+  /* 55% clears 4.5:1 on paper, paper-alt, and raised paper while staying below
+     muted. At 45% it measured 3.95:1 on about 77 labels. */
+  --home-ink-soft: color-mix(in srgb, var(--home-ink) 55%, var(--home-paper));
   --home-paper-raised: color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix));
 
 
@@ -79,10 +81,13 @@
   --text-primary: var(--home-ink);
   --text-secondary: var(--home-ink-muted);
   --border-primary: var(--home-rule); /* @kind color */
-  --shadow-sm: none;
-  --shadow-md: none;
-  --shadow-lg: none;
-  --shadow-xl: none;
+  /* A transparent shadow rather than `none`. Tailwind composes these into a
+     comma-separated box-shadow with its focus ring, and `none` inside that
+     list invalidated the whole declaration, so focus rings never painted. */
+  --shadow-sm: 0 0 #0000;
+  --shadow-md: 0 0 #0000;
+  --shadow-lg: 0 0 #0000;
+  --shadow-xl: 0 0 #0000;
 
   background: var(--home-paper);
   color: var(--home-ink);
@@ -272,6 +277,8 @@
   font-size: var(--invest-fs-small);
 }
 .terminalScope :global(.invest-search) input::placeholder { color: var(--home-ink-muted); }
+/* The input is `all: unset`, which wipes the base focus style, so the field shows focus instead. */
+.terminalScope :global(.invest-search:focus-within) { outline: 2px solid var(--home-signal); outline-offset: 2px; }
 .terminalScope :global(.invest-search-kbd) {
   font-family: var(--font-mono);
   font-size: var(--invest-fs-micro);
@@ -420,7 +427,6 @@
   background: var(--home-rule);
   border: 1px solid var(--home-rule);
   border-radius: var(--radius-sm);
-  overflow: hidden;
   width: fit-content;
   margin-top: 18px;
 }
@@ -436,6 +442,11 @@
   min-width: 44px;
 }
 .terminalScope :global(.invest-timeframe) button:hover { color: var(--home-ink); }
+/* The outer segments carry the rounding instead of the group clipping it, so a
+   focused segment's ring paints in full and sits above its neighbours. */
+.terminalScope :global(.invest-timeframe) button:first-child { border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
+.terminalScope :global(.invest-timeframe) button:last-child { border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+.terminalScope :global(.invest-timeframe) button:focus-visible { position: relative; z-index: 1; }
 .terminalScope :global(.invest-timeframe) button.is-on {
   background: var(--home-ink);
   color: var(--home-paper);

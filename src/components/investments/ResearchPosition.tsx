@@ -61,19 +61,23 @@ export function ResearchPosition({ position }: Props) {
       ? Math.max(0, Math.min(100, allocationPercent))
       : null;
 
+  // With no quote and no saved close the hook values the lot at cost basis,
+  // which read as a real $0 return under a caption promising the last close.
+  const priced = position.priceSource !== "costBasis";
+  const unavailable = "Price unavailable";
   const metrics: { label: string; value: string; toneValue?: number }[] = [
     { label: "Shares", value: shareLabel(shares) },
     { label: "Avg cost", value: currency(averageCost) },
-    { label: "Market value", value: currency(currentValue, 0) },
+    { label: "Market value", value: priced ? currency(currentValue, 0) : unavailable },
     {
       label: "Total return",
-      value: `${signedCurrency(gainLoss)} · ${signedPercent(gainLossPercent)}`,
-      toneValue: gainLoss,
+      value: priced ? `${signedCurrency(gainLoss)} · ${signedPercent(gainLossPercent)}` : unavailable,
+      toneValue: priced ? gainLoss : undefined,
     },
     {
       label: "Day P/L",
-      value: `${signedCurrency(dayChange)} · ${signedPercent(dayChangePercent)}`,
-      toneValue: dayChange,
+      value: priced ? `${signedCurrency(dayChange)} · ${signedPercent(dayChangePercent)}` : unavailable,
+      toneValue: priced ? dayChange : undefined,
     },
   ];
 

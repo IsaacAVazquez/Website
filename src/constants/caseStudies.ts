@@ -59,18 +59,18 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     slug: "investment-analytics-platform",
     title: "Investment Analytics Platform",
     description:
-      "Full-stack investment platform reading committed snapshots of a Yahoo Finance dataset, with Finnhub quotes. Portfolio tracking, gain/loss analytics, and side-by-side stock comparison with 30+ metrics and analyst consensus ratings.",
+      "Full-stack investment platform reading committed snapshots of a Yahoo Finance dataset, with Finnhub quotes. Portfolio tracking, gain/loss analytics, and side-by-side stock comparison with 30+ metrics.",
     role: "Full-Stack Developer & Designer",
     timeline: "2025",
     tools: ["Next.js", "TypeScript", "Finnhub API", "Tailwind CSS"],
-    metrics: "Committed snapshots · 30+ metrics per stock · Analyst consensus ratings",
+    metrics: "Committed snapshots · 30+ metrics per stock · Side-by-side comparison",
     github: "https://github.com/IsaacAVazquez",
     link: "/investments",
     featured: true,
 
     overview: {
       summary:
-        "I built an investment research workspace for tracking positions, comparing stocks, and scanning valuation, profitability, and analyst signals in one place.",
+        "I built an investment research workspace for tracking positions, comparing stocks, and scanning valuation, profitability, and growth in one place.",
       impact:
         "Turns scattered market data into a faster decision surface for portfolio tracking and side-by-side equity research.",
     },

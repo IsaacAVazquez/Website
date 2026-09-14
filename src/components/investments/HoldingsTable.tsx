@@ -1,7 +1,7 @@
 "use client";
 
 import { Check, Pencil, Search, Trash2, X } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useStockData } from "@/hooks/useStockData";
 import {
   formatCurrency,
@@ -46,6 +46,13 @@ interface RowProps {
 function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps) {
   const [editing, setEditing] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
+  // Focus follows the remove confirmation so a keyboard user is not dropped
+  // to the top of the page when the buttons swap out.
+  const removeRef = useRef<HTMLButtonElement>(null);
+  const cancelRef = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    if (confirmDelete) cancelRef.current?.focus();
+  }, [confirmDelete]);
   const [editShares, setEditShares] = useState(String(holding.shares));
   const [editCost, setEditCost] = useState(String(holding.averageCost));
 
@@ -238,8 +245,12 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
               <button
                 type="button"
                 className="invest-ghost"
+                ref={cancelRef}
                 aria-label="Cancel remove"
-                onClick={() => setConfirmDelete(false)}
+                onClick={() => {
+                  setConfirmDelete(false);
+                  setTimeout(() => removeRef.current?.focus(), 0);
+                }}
               >
                 <X size={14} aria-hidden="true" />
               </button>
@@ -267,6 +278,7 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
               <button
                 type="button"
                 className="invest-ghost"
+                ref={removeRef}
                 onClick={() => setConfirmDelete(true)}
                 aria-label={`Remove ${holding.symbol}`}
                 title={`Remove ${holding.symbol}`}

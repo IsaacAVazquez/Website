@@ -187,10 +187,14 @@ export function InvestmentsDashboard({
   function focusAddHolding() {
     if (addHoldingRef.current) {
       addHoldingRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
-      const input = addHoldingRef.current.querySelector("input");
-      if (input instanceof HTMLInputElement) {
-        setTimeout(() => input.focus(), 200);
+      // The form starts closed and only renders its inputs once opened, so open
+      // it first when there is nothing to focus yet.
+      if (!addHoldingRef.current.querySelector("input")) {
+        addHoldingRef.current
+          .querySelector<HTMLButtonElement>('button[aria-label="Add holding"]')
+          ?.click();
       }
+      setTimeout(() => addHoldingRef.current?.querySelector("input")?.focus(), 200);
     }
   }
 
@@ -293,7 +297,7 @@ export function InvestmentsDashboard({
             className={styles.quoteTape}
             label={
               <span className={styles.quoteTapeTag}>
-                Snapshot · {formatDatasetDate(datasetLastUpdated)}
+                {enhancedHoldings.some((h) => h.priceSource === "live") ? "Live quotes" : "Last saved prices"}
               </span>
             }
             items={tapeItems}
