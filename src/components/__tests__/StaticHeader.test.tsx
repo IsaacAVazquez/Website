@@ -49,10 +49,10 @@ describe("StaticHeader", () => {
 
     expect(primaryNav?.textContent).toContain("Home");
     expect(primaryNav?.textContent).toContain("About");
-    expect(primaryNav?.textContent).toContain("Projects");
+    expect(primaryNav?.textContent).toContain("Work");
     expect(primaryNav?.textContent).toContain("Writing");
     expect(primaryNav?.textContent).toContain("Investments");
-    expect(primaryNav?.textContent).toContain("Resume");
+    expect(primaryNav?.textContent).toContain("Résumé");
     expect(primaryNav?.textContent).toContain("Contact");
     expect(primaryNav?.querySelector('a[aria-current="page"]')?.textContent).toBe("Investments");
 
@@ -80,7 +80,7 @@ describe("StaticHeader", () => {
     const mobileNav = container.querySelector('[aria-label="Mobile navigation"]');
 
     expect(mobileNav?.textContent).toContain("Home");
-    expect(mobileNav?.textContent).toContain("Projects");
+    expect(mobileNav?.textContent).toContain("Work");
     expect(mobileNav?.textContent).toContain("Writing");
     expect(mobileNav?.querySelector('a[aria-current="page"]')?.textContent).toBe("Fantasy");
   });

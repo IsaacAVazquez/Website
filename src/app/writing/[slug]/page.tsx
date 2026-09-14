@@ -278,43 +278,51 @@ export default async function BlogPostPage({ params }: PageProps) {
                 </div>
               ) : null}
 
-              <div>
-                <div className="relative aspect-[1200/630] overflow-hidden rounded-[2px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)]">
-                  <Image
-                    src={post.coverImage}
-                    alt={post.coverImageAlt || post.title}
-                    fill
-                    priority
-                    sizes="(min-width: 1280px) 60rem, 100vw"
-                    className="object-cover"
-                  />
+              {/*
+                The hero only renders a real photo. Posts without one used to show
+                their generated social card here, which repeated the headline, used
+                a gradient DESIGN.md rules out, and pushed the body below the fold.
+                The card still serves social previews through metadata.
+              */}
+              {post.coverImage && !post.coverImage.endsWith("/opengraph-image") ? (
+                <div>
+                  <div className="relative aspect-[1200/630] overflow-hidden rounded-[2px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)]">
+                    <Image
+                      src={post.coverImage}
+                      alt={post.coverImageAlt || post.title}
+                      fill
+                      priority
+                      sizes="(min-width: 1280px) 60rem, 100vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  {post.coverImageCredit ? (
+                    <p
+                      className="mt-2"
+                      style={{
+                        fontFamily: "var(--font-home-sans)",
+                        fontSize: "0.76rem",
+                        lineHeight: 1.45,
+                        color: "var(--home-ink-muted)",
+                      }}
+                    >
+                      Photo by{" "}
+                      {post.coverImageCreditUrl ? (
+                        <a
+                          href={post.coverImageCreditUrl}
+                          className="home-inline-link"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {post.coverImageCredit}
+                        </a>
+                      ) : (
+                        <span>{post.coverImageCredit}</span>
+                      )}
+                    </p>
+                  ) : null}
                 </div>
-                {post.coverImageCredit ? (
-                  <p
-                    className="mt-2"
-                    style={{
-                      fontFamily: "var(--font-home-sans)",
-                      fontSize: "0.76rem",
-                      lineHeight: 1.45,
-                      color: "var(--home-ink-muted)",
-                    }}
-                  >
-                    Photo by{" "}
-                    {post.coverImageCreditUrl ? (
-                      <a
-                        href={post.coverImageCreditUrl}
-                        className="home-inline-link"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        {post.coverImageCredit}
-                      </a>
-                    ) : (
-                      <span>{post.coverImageCredit}</span>
-                    )}
-                  </p>
-                ) : null}
-              </div>
+              ) : null}
             </header>
 
             <div

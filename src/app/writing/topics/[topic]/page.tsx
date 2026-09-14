@@ -8,13 +8,45 @@ import {
   BLOG_TOPIC_PAGES,
   getBlogTopicPage,
 } from "@/lib/blog-config";
-import { getBlogPostPreviewsByTopicSlug } from "@/lib/blog";
+import { getBlogPostPreviewsByTopicSlug, type BlogPostPreview } from "@/lib/blog";
 import {
   constructMetadata,
   generateBreadcrumbStructuredData,
   siteConfig,
 } from "@/lib/seo";
 import { publishedDateFormatter } from "@/lib/utils";
+
+// The first 30 cards render open and the rest sit behind a native disclosure,
+// the same page size the /writing archive uses. Sports & Fantasy ran 91 cards
+// and about 52 phone screens with nothing to shorten it.
+const TOPIC_PAGE_SIZE = 30;
+
+function renderTopicCard(post: BlogPostPreview) {
+  return (
+    <article key={post.slug} className="home-card flex h-full flex-col p-6">
+      <div className="mb-5 flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--home-ink-muted)]">
+        <time dateTime={post.publishedAt}>
+          {publishedDateFormatter.format(new Date(post.publishedAt))}
+        </time>
+        <span aria-hidden="true">·</span>
+        <span>{post.readingTime}</span>
+      </div>
+      <h2 className="mb-3 text-2xl font-semibold leading-tight tracking-[-0.035em] text-[var(--home-ink)]">
+        <Link href={`/writing/${post.slug}`} className="hover:underline">
+          {post.title}
+        </Link>
+      </h2>
+      <p className="home-body mb-6">{post.excerpt}</p>
+      <Link
+        href={`/writing/${post.slug}`}
+        className="home-inline-link mt-auto inline-flex min-h-[44px] items-center gap-2 py-2 font-semibold"
+      >
+        Read article
+        <ArrowRight className="h-4 w-4" aria-hidden="true" />
+      </Link>
+    </article>
+  );
+}
 
 interface TopicPageProps {
   params: Promise<{ topic: string }>;
@@ -116,31 +148,18 @@ export default async function WritingTopicPage({ params }: TopicPageProps) {
           </header>
 
           <div className="grid gap-5 py-10 md:grid-cols-2">
-            {posts.map((post) => (
-              <article key={post.slug} className="home-card flex h-full flex-col p-6">
-                <div className="mb-5 flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--home-ink-muted)]">
-                  <time dateTime={post.publishedAt}>
-                    {publishedDateFormatter.format(new Date(post.publishedAt))}
-                  </time>
-                  <span aria-hidden="true">·</span>
-                  <span>{post.readingTime}</span>
-                </div>
-                <h2 className="mb-3 text-2xl font-semibold leading-tight tracking-[-0.035em] text-[var(--home-ink)]">
-                  <Link href={`/writing/${post.slug}`} className="hover:underline">
-                    {post.title}
-                  </Link>
-                </h2>
-                <p className="home-body mb-6">{post.excerpt}</p>
-                <Link
-                  href={`/writing/${post.slug}`}
-                  className="home-inline-link mt-auto inline-flex min-h-[44px] items-center gap-2 py-2 font-semibold"
-                >
-                  Read article
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
-              </article>
-            ))}
+            {posts.slice(0, TOPIC_PAGE_SIZE).map(renderTopicCard)}
           </div>
+          {posts.length > TOPIC_PAGE_SIZE ? (
+            <details className="pb-10">
+              <summary className="home-inline-link inline-flex min-h-[44px] cursor-pointer items-center font-semibold">
+                Show the other {posts.length - TOPIC_PAGE_SIZE} articles
+              </summary>
+              <div className="grid gap-5 pt-5 md:grid-cols-2">
+                {posts.slice(TOPIC_PAGE_SIZE).map(renderTopicCard)}
+              </div>
+            </details>
+          ) : null}
 
           <section
             aria-labelledby="other-writing-topics"

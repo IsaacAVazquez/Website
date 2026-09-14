@@ -19,7 +19,7 @@ export default function PortfolioPage() {
   const portfolioProjects = getPortfolioProjects();
   const breadcrumbs = [
     { name: "Home", url: "/" },
-    { name: "Projects", url: "/portfolio" },
+    { name: "Work", url: "/portfolio" },
   ];
 
   return (

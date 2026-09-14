@@ -117,7 +117,7 @@ export default async function CaseStudyPage({
   );
   const breadcrumbs = [
     { name: "Home", url: "/" },
-    { name: "Projects", url: "/portfolio" },
+    { name: "Work", url: "/portfolio" },
     { name: caseStudy.title, url: `/portfolio/${slug}` },
   ];
 

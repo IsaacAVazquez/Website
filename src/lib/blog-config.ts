@@ -76,7 +76,7 @@ export const BLOG_ARCHIVE_BUCKET_DETAILS: Record<
 > = {
   "Sports & Fantasy": {
     description:
-      "Fantasy football models, bracket work, and the sports analytics experiments that still hold up.",
+      "Premier League, La Liga, and World Cup coverage, Formula 1 race notes, and the fantasy football and bracket models.",
   },
   "Signals & Commentary": {
     description:
