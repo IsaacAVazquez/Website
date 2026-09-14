@@ -8,6 +8,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 - Impeccable loop over the Catalog 97 routes ([#436](https://github.com/IsaacAVazquez/Website/pull/436)).
 - Impeccable loop over articles, topic pages, and investments ([#437](https://github.com/IsaacAVazquez/Website/pull/437)).
+- Fintech tools and score pools loop fixes ([#438](https://github.com/IsaacAVazquez/Website/pull/438)).
 
 ---
 
