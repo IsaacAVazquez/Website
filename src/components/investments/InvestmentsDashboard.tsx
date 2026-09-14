@@ -297,7 +297,11 @@ export function InvestmentsDashboard({
             className={styles.quoteTape}
             label={
               <span className={styles.quoteTapeTag}>
-                {enhancedHoldings.some((h) => h.priceSource === "live") ? "Live quotes" : "Last saved prices"}
+                {enhancedHoldings.some((h) => h.priceSource === "live")
+                  ? "Live quotes"
+                  : enhancedHoldings.some((h) => h.priceSource === "saved")
+                    ? "Last saved prices"
+                    : "Prices unavailable"}
               </span>
             }
             items={tapeItems}

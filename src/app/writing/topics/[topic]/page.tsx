@@ -151,9 +151,14 @@ export default async function WritingTopicPage({ params }: TopicPageProps) {
             {posts.slice(0, TOPIC_PAGE_SIZE).map(renderTopicCard)}
           </div>
           {posts.length > TOPIC_PAGE_SIZE ? (
-            <details className="pb-10">
-              <summary className="home-inline-link inline-flex min-h-[44px] cursor-pointer items-center font-semibold">
-                Show the other {posts.length - TOPIC_PAGE_SIZE} articles
+            <details className="group pb-10">
+              {/* home-inline-link sets inline-flex, which hides the native disclosure
+                  triangle, so an arrow that turns on open does that job, and the label
+                  says what the control will do next. */}
+              <summary className="home-inline-link min-h-[44px] cursor-pointer gap-2 py-2 font-semibold">
+                <ArrowRight className="h-4 w-4 transition-transform group-open:rotate-90" aria-hidden="true" />
+                <span className="group-open:hidden">Show the other {posts.length - TOPIC_PAGE_SIZE} articles</span>
+                <span className="hidden group-open:inline">Hide the other {posts.length - TOPIC_PAGE_SIZE} articles</span>
               </summary>
               <div className="grid gap-5 pt-5 md:grid-cols-2">
                 {posts.slice(TOPIC_PAGE_SIZE).map(renderTopicCard)}

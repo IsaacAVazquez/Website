@@ -716,7 +716,7 @@
   border-radius: 999px;
   background: var(--home-positive);
 }
-.terminalScope :global(.invest-dataset-chip-divider) { opacity: 0.5; }
+.terminalScope :global(.invest-dataset-chip-divider) { color: var(--home-ink-soft); /* was half-opacity muted ink, 2.46:1 */ }
 .terminalScope :global(.invest-dataset-chip-spacer) { flex: 1; min-width: 8px; }
 .terminalScope :global(.invest-dataset-chip-meta) {
   font-family: var(--font-mono);
