@@ -82,7 +82,8 @@ function ScorelineHeatmap({ analysis }: { analysis: FixtureAnalysis }) {
               </th>
               {Array.from({ length: size }, (_, away) => {
                 const p = grid[home][away];
-                const strength = max > 0 ? Math.round((p / max) * 72) : 0;
+                // Capped at 55% so the strongest cell keeps 4.5:1 label contrast in dark mode (72% gave 3.71:1).
+                const strength = max > 0 ? Math.round((p / max) * 55) : 0;
                 return (
                   <td
                     key={away}
@@ -120,6 +121,7 @@ export function FixtureDetailDrawer({
   onSaveManualOdds,
 }: FixtureDetailDrawerProps) {
   const closeRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
   const [pickHome, setPickHome] = useState("");
   const [pickAway, setPickAway] = useState("");
   const existingManual = pool.manualOdds[fixture.id];
@@ -134,12 +136,35 @@ export function FixtureDetailDrawer({
   const [manualError, setManualError] = useState<string | null>(null);
 
   useEffect(() => {
+    // Remember what opened the drawer so closing it hands focus back there.
+    const opener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     closeRef.current?.focus();
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onClose();
+      if (event.key === "Escape") {
+        onClose();
+        return;
+      }
+      if (event.key !== "Tab" || !dialogRef.current) return;
+      // aria-modal alone does not keep Tab inside the drawer, so wrap at the ends.
+      const focusable = dialogRef.current.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), summary, [tabindex]:not([tabindex="-1"])',
+      );
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (!first || !last) return;
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     };
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      if (opener && opener !== document.body && document.contains(opener)) opener.focus();
+    };
   }, [onClose]);
 
   const movement = useMemo(() => {
@@ -150,6 +175,20 @@ export function FixtureDetailDrawer({
   const flags = pool.flags[fixture.id] ?? {};
   const locked = analysis ? now >= analysis.locksAt : false;
   const latestOdds = fixture.odds[fixture.odds.length - 1] ?? null;
+  // Hand-entered odds replace the snapshot price in the analysis, so the market
+  // line shows them too instead of the older snapshot price above newer math.
+  const shownOdds = existingManual
+    ? {
+        moneyline: { home: existingManual.home, draw: existingManual.draw, away: existingManual.away },
+        totals:
+          existingManual.line !== null
+            ? { line: existingManual.line, over: existingManual.over, under: existingManual.under }
+            : null,
+        manual: true,
+        bookmaker: null as string | null,
+        fetchedAt: existingManual.enteredAt,
+      }
+    : latestOdds;
 
   const toggleFlag = (key: ContextFlagKey) => {
     const next: ContextFlags = { ...flags, [key]: !flags[key] };
@@ -195,6 +234,8 @@ export function FixtureDetailDrawer({
   };
 
   const submitPick = () => {
+    // A locked game keeps whatever was picked before it locked.
+    if (locked) return;
     const home = Number.parseInt(pickHome, 10);
     const away = Number.parseInt(pickAway, 10);
     if (!Number.isInteger(home) || !Number.isInteger(away) || home < 0 || away < 0 || home > 15 || away > 15) {
@@ -209,7 +250,7 @@ export function FixtureDetailDrawer({
   const topEp = rec ? Math.max(...rec.candidates.map((c) => c.expectedPoints)) : 0;
 
   return (
-    <div className="fixed inset-0 z-50" role="dialog" aria-modal="true" aria-label={`${fixture.homeTeam} vs ${fixture.awayTeam} detail`}>
+    <div ref={dialogRef} className="fixed inset-0 z-50" role="dialog" aria-modal="true" aria-label={`${fixture.homeTeam} vs ${fixture.awayTeam} detail`}>
       <button
         type="button"
         aria-label="Close match detail"
@@ -273,7 +314,7 @@ export function FixtureDetailDrawer({
                   onChange={(event) => setPickAway(event.target.value)}
                   className="min-h-[44px] w-16 rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-2 py-1 text-center text-sm text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)]"
                 />
-                <button type="button" className={PILL_BUTTON} onClick={submitPick}>
+                <button type="button" className={`${PILL_BUTTON} disabled:cursor-not-allowed disabled:opacity-50`} onClick={submitPick} disabled={locked}>
                   Set
                 </button>
               </div>
@@ -317,23 +358,23 @@ export function FixtureDetailDrawer({
           {/* Market */}
           <section className={SECTION} aria-label="Market">
             <h3 className={SECTION_TITLE}>The market it used</h3>
-            {analysis && latestOdds ? (
+            {analysis && shownOdds ? (
               <div className="mt-2 space-y-2 text-sm text-[var(--home-ink)]">
                 <p className="font-mono tabular-nums">
-                  {latestOdds.moneyline.home.toFixed(2)}
-                  {latestOdds.moneyline.draw !== null ? ` / ${latestOdds.moneyline.draw.toFixed(2)}` : ""}
+                  {shownOdds.moneyline.home.toFixed(2)}
+                  {shownOdds.moneyline.draw !== null ? ` / ${shownOdds.moneyline.draw.toFixed(2)}` : ""}
                   {" / "}
-                  {latestOdds.moneyline.away.toFixed(2)}
-                  {latestOdds.totals ? (
+                  {shownOdds.moneyline.away.toFixed(2)}
+                  {shownOdds.totals ? (
                     <span className="text-[var(--home-ink-muted)]">
-                      {" "}· O/U {latestOdds.totals.line}
-                      {latestOdds.totals.over ? ` (${latestOdds.totals.over.toFixed(2)}/${latestOdds.totals.under?.toFixed(2) ?? "—"})` : ""}
+                      {" "}· O/U {shownOdds.totals.line}
+                      {shownOdds.totals.over ? ` (${shownOdds.totals.over.toFixed(2)}/${shownOdds.totals.under?.toFixed(2) ?? "—"})` : ""}
                     </span>
                   ) : null}
                 </p>
                 <p className="text-2xs text-[var(--home-ink-muted)]">
-                  {latestOdds.manual ? "Hand-entered" : (latestOdds.bookmaker ?? "book")} ·{" "}
-                  {formatAge(latestOdds.fetchedAt, now)} · margin {formatPercent(analysis.market.overround, 1)}
+                  {shownOdds.manual ? "Hand-entered" : (shownOdds.bookmaker ?? "book")} ·{" "}
+                  {formatAge(shownOdds.fetchedAt, now)} · margin {formatPercent(analysis.market.overround, 1)}
                 </p>
                 <p className="text-2xs text-[var(--home-ink-muted)]">
                   Fair probabilities after the de-vig: home {formatPercent(analysis.market.probabilities.home, 1)}
@@ -552,7 +593,7 @@ export function FixtureDetailDrawer({
 
           <p className="pb-4 text-3xs text-[var(--home-ink-muted)]">
             Analysis as of {formatAge(analysis?.asOf ?? now, now)} from odds{" "}
-            {latestOdds ? formatAge(latestOdds.fetchedAt, now) : "entered by hand"}. The model is
+            {shownOdds ? formatAge(shownOdds.fetchedAt, now) : "entered by hand"}. The model is
             anchored to the market, and it carries the market's uncertainty; treat the expected
             points as a ranking, not a promise.
           </p>

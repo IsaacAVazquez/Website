@@ -445,8 +445,8 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
               <h2 className="text-lg font-bold text-[var(--home-ink)]">Field model</h2>
               <p className="mt-1 max-w-2xl text-2xs text-[var(--home-ink-muted)]">
                 A heuristic for what the rest of the pool submits: mostly the favorite with the
-                modal scoreline. Rival picks you enter in the tracker replace it wholesale for the
-                gap math.
+                modal scoreline. Rival picks you enter in the tracker score the rival table only and
+                do not change this model.
               </p>
               <div className="mt-3 grid gap-4 sm:grid-cols-2">
                 <NumberSetting
@@ -583,7 +583,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                 </table>
               </div>
               <p className="mt-2 text-2xs text-[var(--home-ink-muted)]">
-                The snapshot refreshes on a schedule (every six hours) and with{" "}
+                A scheduled job is set to refresh the snapshot every six hours, but it only runs when the data API keys are configured, so check the as-of dates above. You can also refresh it with{" "}
                 <code className="font-mono">npm run update:score-pools</code>. Odds history keeps
                 every price change per game, so line movement stays visible in the match detail.
               </p>

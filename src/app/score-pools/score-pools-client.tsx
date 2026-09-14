@@ -78,7 +78,10 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
   const [openFixtureId, setOpenFixtureId] = useState<string | null>(initialFixtureId);
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">("idle");
   const [saveStatus, setSaveStatus] = useState<"idle" | "saved">("idle");
-  const [newPoolLeague, setNewPoolLeague] = useState(snapshot.leagues[0]?.key ?? "");
+  // Default to the first league that has fixtures; the first entry can be empty.
+  const [newPoolLeague, setNewPoolLeague] = useState(
+    (snapshot.leagues.find((entry) => entry.fixtures.length > 0) ?? snapshot.leagues[0])?.key ?? "",
+  );
   const [newPoolName, setNewPoolName] = useState("");
 
   const league = activePool

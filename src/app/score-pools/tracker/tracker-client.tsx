@@ -402,7 +402,8 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                       <tbody>
                         {rivalScoring.map(({ rival, scoring }) => {
                           const total = scoring.total + rival.pointsAdjustment;
-                          const myTotal = (myScoring?.total ?? 0);
+                          // My banked points count too, the same way a rival's adjustment does.
+                          const myTotal = (myScoring?.total ?? 0) + activePool.standing.myPoints;
                           const gap = total - myTotal;
                           return (
                             <tr key={rival.id} className="bg-[var(--home-paper-raised)] text-sm text-[var(--home-ink)] shadow-[var(--shadow-sm)]">
