@@ -4,6 +4,12 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-09-14
+
+- Impeccable loop over the Catalog 97 routes ([#436](https://github.com/IsaacAVazquez/Website/pull/436)).
+
+---
+
 ## 2026-09-13
 
 - Fantasy loop follow-up: after scores and the re-score's findings ([#426](https://github.com/IsaacAVazquez/Website/pull/426)).
