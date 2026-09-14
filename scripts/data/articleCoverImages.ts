@@ -60,74 +60,78 @@ const ABSTRACT_MACRO = "Diffuse macro/markets commentary; no single neutral subj
 const ABSTRACT_FINTECH = "Fintech product piece; only generic money/calculator stock available.";
 const RECAP_CARD = "Season-recap post that already ships a bespoke editorial cover card in frontmatter; keep it.";
 
+// Set on 2026-09-14 after every fetched cover was viewed against its post.
+const COVER_WRONG_SUBJECT = "The fetched photo showed a different subject than the post, so it was dropped on review.";
+const COVER_REVIEWED = "Fetched photo reviewed against the post; the alt was rewritten from what is visible, so the builder must not overwrite it.";
+
 export const ARTICLE_COVER_IMAGES: ArticleCoverImageSpec[] = [
   // ---------------------------------------------------------------------------
   // Sports & Fantasy — concrete sport imagery
   // ---------------------------------------------------------------------------
-  { slug: "2025-fantasy-football-draft-strategy", strategy: "wikimedia", query: "American football NFL game action", alt: "American football players during a game" },
-  { slug: "fantasy-football-beginners-complete-guide", strategy: "wikimedia", query: "American football stadium NFL game day", alt: "An American football stadium on game day" },
-  { slug: "june-fantasy-football-prep-2026", strategy: "wikimedia", query: "American football on field NFL", alt: "An American football on the field" },
+  { slug: "2025-fantasy-football-draft-strategy", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "fantasy-football-beginners-complete-guide", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "june-fantasy-football-prep-2026", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
   { slug: "mastering-fantasy-football-analytics", strategy: "wikimedia", query: "American football NFL play line of scrimmage", alt: "American football players lined up for a play" },
-  { slug: "rb-vs-wr-draft-strategy-modeling-positional-value", strategy: "wikimedia", query: "American football running back NFL carry", alt: "An American football running back carrying the ball" },
-  { slug: "understanding-fantasy-football-analytics", strategy: "wikimedia", query: "American football NFL quarterback pass", alt: "An American football quarterback passing" },
-  { slug: "waiver-wire-mastery-hidden-gems", strategy: "wikimedia", query: "American football wide receiver NFL catch", alt: "An American football receiver making a catch" },
-  { slug: "building-a-fantasy-football-rankings-platform", strategy: "wikimedia", query: "American football NFL huddle team", alt: "An American football team on the field" },
+  { slug: "rb-vs-wr-draft-strategy-modeling-positional-value", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "understanding-fantasy-football-analytics", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
+  { slug: "waiver-wire-mastery-hidden-gems", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "building-a-fantasy-football-rankings-platform", strategy: "manual", note: COVER_REVIEWED },
 
-  { slug: "2026-march-madness-bracket-analysis", strategy: "wikimedia", query: "NCAA college basketball tournament game", alt: "College basketball players during a game" },
+  { slug: "2026-march-madness-bracket-analysis", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
   { slug: "2026-march-madness-postmortem", strategy: "wikimedia", query: "college basketball arena crowd game", alt: "A packed arena during a college basketball game" },
 
-  { slug: "building-a-fantasy-formula-1-optimizer", strategy: "wikimedia", query: "Formula 1 car racing Grand Prix", alt: "A Formula 1 car during a Grand Prix" },
-  { slug: "building-a-formula-1-dashboard", strategy: "wikimedia", query: "Formula 1 Grand Prix cars circuit", alt: "Formula 1 cars racing on a circuit" },
-  { slug: "2026-belgian-grand-prix-antonelli-title-lead", strategy: "wikimedia", query: "Formula 1 Belgian Grand Prix Spa Francorchamps", alt: "Formula 1 cars racing at Spa-Francorchamps" },
+  { slug: "building-a-fantasy-formula-1-optimizer", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
+  { slug: "building-a-formula-1-dashboard", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
+  { slug: "2026-belgian-grand-prix-antonelli-title-lead", strategy: "manual", note: COVER_REVIEWED },
 
-  { slug: "building-a-la-liga-dashboard", strategy: "wikimedia", query: "football soccer match stadium Spain", alt: "A football match at a packed stadium" },
-  { slug: "building-a-premier-league-dashboard", strategy: "wikimedia", query: "Premier League football stadium match", alt: "A Premier League football match at a stadium" },
-  { slug: "building-a-world-cup-dashboard", strategy: "wikimedia", query: "football soccer stadium pitch", alt: "A football stadium set for a match" },
-  { slug: "what-the-48-team-world-cup-changes", strategy: "wikimedia", query: "soccer ball football pitch stadium", alt: "A football on the pitch at a stadium" },
-  { slug: "world-cup-2026-groups-a-b-c-decided", strategy: "wikimedia", query: "football soccer stadium crowd fans", alt: "A football stadium filled with fans" },
-  { slug: "world-cup-2026-groups-d-e-f-final-round", strategy: "wikimedia", query: "football soccer match action players", alt: "Action from a football match" },
-  { slug: "world-cup-2026-groups-g-h-i-final-round", strategy: "wikimedia", query: "football soccer pitch players match", alt: "Players on a football pitch" },
+  { slug: "building-a-la-liga-dashboard", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
+  { slug: "building-a-premier-league-dashboard", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
+  { slug: "building-a-world-cup-dashboard", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
+  { slug: "what-the-48-team-world-cup-changes", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
+  { slug: "world-cup-2026-groups-a-b-c-decided", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
+  { slug: "world-cup-2026-groups-d-e-f-final-round", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
+  { slug: "world-cup-2026-groups-g-h-i-final-round", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
   { slug: "world-cup-2026-groups-j-k-l-final-round", strategy: "wikimedia", query: "football soccer goal net pitch", alt: "A football and goal net" },
-  { slug: "world-cup-2026-top-ten-contenders", strategy: "wikimedia", query: "football soccer stadium match large", alt: "A football match at a large stadium" },
-  { slug: "world-cup-2026-48-team-format-verdict", strategy: "wikimedia", query: "football soccer stadium supporters match", alt: "Supporters watching a football match in a stadium" },
+  { slug: "world-cup-2026-top-ten-contenders", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
+  { slug: "world-cup-2026-48-team-format-verdict", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
   { slug: "world-cup-2026-final-spain-argentina", strategy: "wikimedia", query: "Spain national football team match", alt: "Spain's national football team during a match" },
 
   { slug: "building-a-pga-tour-dashboard", strategy: "wikimedia", query: "golf tournament player green PGA", alt: "A golfer on the green during a tournament" },
-  { slug: "building-an-mlb-dashboard", strategy: "wikimedia", query: "MLB baseball stadium game", alt: "A Major League Baseball game at a stadium" },
-  { slug: "building-an-nba-dashboard", strategy: "wikimedia", query: "NBA basketball arena game", alt: "An NBA basketball game at an arena" },
-  { slug: "building-an-nfl-dashboard", strategy: "wikimedia", query: "NFL football stadium game day", alt: "An NFL stadium on game day" },
+  { slug: "building-an-mlb-dashboard", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "building-an-nba-dashboard", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "building-an-nfl-dashboard", strategy: "manual", note: COVER_REVIEWED },
 
   // ---------------------------------------------------------------------------
   // Signals & Commentary — concrete where a neutral subject exists
   // ---------------------------------------------------------------------------
-  { slug: "2026-week-april-6-tariffs-trade-war-market-reaction", strategy: "wikimedia", query: "container ship cargo port shipping", alt: "A container ship at a cargo port" },
+  { slug: "2026-week-april-6-tariffs-trade-war-market-reaction", strategy: "manual", note: COVER_REVIEWED },
   { slug: "2026-week-in-tech-agentic-ai-infrastructure-arms-race", strategy: "wikimedia", query: "data center server room racks", alt: "Rows of servers in a data center" },
-  { slug: "2026-week-in-tech-ai-infra-geopolitics", strategy: "wikimedia", query: "semiconductor silicon wafer microchip", alt: "A semiconductor wafer of microchips" },
+  { slug: "2026-week-in-tech-ai-infra-geopolitics", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
   { slug: "a-history-of-horology", strategy: "wikimedia", query: "antique mechanical pocket watch movement", alt: "The movement of an antique mechanical pocket watch" },
   { slug: "aws-vs-azure-vs-gcp-cloud-provider-comparison", strategy: "wikimedia", query: "data center servers cloud computing", alt: "Servers in a cloud data center" },
   { slug: "companies-and-watches-that-shaped-horology", strategy: "wikimedia", query: "luxury mechanical wristwatch", alt: "A mechanical luxury wristwatch" },
-  { slug: "is-the-ai-mega-cap-rally-a-bubble", strategy: "wikimedia", query: "New York Stock Exchange trading floor", alt: "The floor of a stock exchange" },
-  { slug: "reading-q1-2026-earnings-ai-capex-lens", strategy: "wikimedia", query: "stock exchange financial district building", alt: "A financial district and stock exchange" },
-  { slug: "spacex-ipo-case-for-going-public", strategy: "wikimedia", query: "SpaceX Falcon 9 rocket launch", alt: "A SpaceX Falcon 9 rocket launching" },
+  { slug: "is-the-ai-mega-cap-rally-a-bubble", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "reading-q1-2026-earnings-ai-capex-lens", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "spacex-ipo-case-for-going-public", strategy: "manual", note: COVER_REVIEWED },
 
   // ---------------------------------------------------------------------------
   // Space & Experiments — concrete subjects (rockets, transit, food, wine, etc.)
   // ---------------------------------------------------------------------------
-  { slug: "artemis-ii-first-crewed-lunar-mission", strategy: "wikimedia", query: "NASA Artemis Space Launch System rocket", alt: "NASA's Artemis Moon rocket" },
-  { slug: "building-a-bart-transit-dashboard", strategy: "wikimedia", query: "BART train Bay Area Rapid Transit", alt: "A Bay Area Rapid Transit (BART) train" },
-  { slug: "building-a-museum-log", strategy: "wikimedia", query: "art museum gallery interior", alt: "The interior gallery of an art museum" },
-  { slug: "building-a-pantry-aware-recipe-finder", strategy: "wikimedia", query: "kitchen fresh ingredients vegetables", alt: "Fresh ingredients in a kitchen" },
-  { slug: "building-a-travel-planner", strategy: "wikimedia", query: "travel suitcase map airport", alt: "A map and luggage for travel" },
-  { slug: "building-a-wine-cellar-app", strategy: "wikimedia", query: "wine cellar bottles rack", alt: "Bottles in a wine cellar" },
-  { slug: "building-an-austin-food-map", strategy: "wikimedia", query: "Austin Texas skyline downtown", alt: "The Austin, Texas skyline" },
+  { slug: "artemis-ii-first-crewed-lunar-mission", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "building-a-bart-transit-dashboard", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
+  { slug: "building-a-museum-log", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
+  { slug: "building-a-pantry-aware-recipe-finder", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "building-a-travel-planner", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "building-a-wine-cellar-app", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "building-an-austin-food-map", strategy: "manual", note: COVER_REVIEWED },
   { slug: "building-an-earthquake-dashboard", strategy: "wikimedia", query: "seismograph seismogram earthquake recording", alt: "A seismograph recording ground motion" },
-  { slug: "building-news-pulse-dashboard", strategy: "wikimedia", query: "stack of newspapers printed press", alt: "A stack of printed newspapers" },
-  { slug: "building-spacex-mission-control", strategy: "wikimedia", query: "SpaceX Falcon 9 rocket launch pad", alt: "A SpaceX Falcon 9 rocket at the launch pad" },
+  { slug: "building-news-pulse-dashboard", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "building-spacex-mission-control", strategy: "manual", note: COVER_REVIEWED },
 
   // ---------------------------------------------------------------------------
   // Systems & Quality — one concrete framing subject
   // ---------------------------------------------------------------------------
-  { slug: "qa-engineering-silicon-valley-uc-berkeley-mba-perspective", strategy: "wikimedia", query: "UC Berkeley campus Sather Tower", alt: "The UC Berkeley campus" },
+  { slug: "qa-engineering-silicon-valley-uc-berkeley-mba-perspective", strategy: "manual", note: COVER_REVIEWED },
 
   // ---------------------------------------------------------------------------
   // Manual — curated team photos already in frontmatter
@@ -271,19 +275,19 @@ export const ARTICLE_COVER_IMAGES: ArticleCoverImageSpec[] = [
   // ---------------------------------------------------------------------------
 
   // Sports & Fantasy — concrete sport imagery
-  { slug: "world-cup-2026-quarterfinals-recap", strategy: "wikimedia", query: "FIFA World Cup soccer match stadium", alt: "A soccer match in a large stadium" },
-  { slug: "world-cup-2026-final-spain-champions", strategy: "wikimedia", query: "FIFA World Cup final soccer stadium", alt: "A soccer stadium during a major match" },
-  { slug: "fantasy-football-training-camp-2025-signal-vs-noise", strategy: "wikimedia", query: "NFL training camp football practice", alt: "American football players at practice" },
-  { slug: "fantasy-football-2025-draft-tiers-adp", strategy: "wikimedia", query: "American football NFL game action", alt: "American football players during a game" },
-  { slug: "fantasy-football-2025-draft-day-decisions", strategy: "wikimedia", query: "American football NFL game", alt: "American football players during a game" },
-  { slug: "nfl-2025-week-1-overreactions", strategy: "wikimedia", query: "NFL football game action", alt: "American football players during a game" },
-  { slug: "fantasy-football-2025-playoff-push", strategy: "wikimedia", query: "American football NFL stadium game", alt: "An American football game in a stadium" },
-  { slug: "mlb-2025-postseason-what-october-rewards", strategy: "wikimedia", query: "MLB baseball game pitcher", alt: "A baseball game in progress" },
-  { slug: "super-bowl-lx-preview-seahawks-patriots", strategy: "wikimedia", query: "American football NFL stadium game day", alt: "An American football stadium on game day" },
-  { slug: "super-bowl-lx-seahawks-defense", strategy: "wikimedia", query: "American football NFL game action", alt: "American football players during a game" },
-  { slug: "space-2025-year-in-review", strategy: "wikimedia", query: "rocket launch spaceflight", alt: "A rocket launching" },
-  { slug: "apple-iphone-17-ai-strategy-2025", strategy: "wikimedia", query: "iPhone smartphone", alt: "A modern smartphone" },
-  { slug: "ces-2026-what-mattered", strategy: "wikimedia", query: "humanoid robot technology", alt: "A humanoid robot" },
+  { slug: "world-cup-2026-quarterfinals-recap", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
+  { slug: "world-cup-2026-final-spain-champions", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
+  { slug: "fantasy-football-training-camp-2025-signal-vs-noise", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
+  { slug: "fantasy-football-2025-draft-tiers-adp", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "fantasy-football-2025-draft-day-decisions", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
+  { slug: "nfl-2025-week-1-overreactions", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "fantasy-football-2025-playoff-push", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
+  { slug: "mlb-2025-postseason-what-october-rewards", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "super-bowl-lx-preview-seahawks-patriots", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
+  { slug: "super-bowl-lx-seahawks-defense", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
+  { slug: "space-2025-year-in-review", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
+  { slug: "apple-iphone-17-ai-strategy-2025", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
+  { slug: "ces-2026-what-mattered", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
 
   // Signals & Commentary — editorial cards (macro/AI commentary, stock would be filler)
   { slug: "ai-talent-war-summer-2025", strategy: "editorial-card", reason: ABSTRACT_AI },
@@ -320,12 +324,12 @@ export const ARTICLE_COVER_IMAGES: ArticleCoverImageSpec[] = [
   { slug: "tariff-volatility-boring-portfolio", strategy: "editorial-card", reason: ABSTRACT_FINTECH },
 
   // August 2026 batch
-  { slug: "2026-hungarian-grand-prix-russell-clean-weekend", strategy: "wikimedia", query: "Formula 1 Hungarian Grand Prix Hungaroring", alt: "Formula 1 cars racing at the Hungaroring" },
-  { slug: "2026-dutch-grand-prix-antonelli-zandvoort", strategy: "wikimedia", query: "Formula 1 Dutch Grand Prix Zandvoort", alt: "Formula 1 cars racing at Zandvoort" },
-  { slug: "building-a-fantasy-trade-calculator", strategy: "wikimedia", query: "American football NFL game action", alt: "American football players during a game" },
-  { slug: "building-a-best-ball-draft-room", strategy: "wikimedia", query: "American football NFL stadium game", alt: "An American football game in a stadium" },
-  { slug: "how-i-run-a-draft-with-my-own-tools", strategy: "wikimedia", query: "American football NFL quarterback", alt: "An American football player during a game" },
-  { slug: "building-a-score-pools-engine", strategy: "wikimedia", query: "soccer football match stadium goal", alt: "A soccer match in a stadium" },
+  { slug: "2026-hungarian-grand-prix-russell-clean-weekend", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
+  { slug: "2026-dutch-grand-prix-antonelli-zandvoort", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "building-a-fantasy-trade-calculator", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "building-a-best-ball-draft-room", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
+  { slug: "how-i-run-a-draft-with-my-own-tools", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
+  { slug: "building-a-score-pools-engine", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
   { slug: "building-a-rent-vs-buy-calculator", strategy: "editorial-card", reason: ABSTRACT_FINTECH },
   { slug: "dashboards-that-read-committed-files", strategy: "editorial-card", reason: ABSTRACT_PRODUCT },
   { slug: "building-a-draft-companion-that-cannot-click", strategy: "editorial-card", reason: ABSTRACT_PRODUCT },
