@@ -50,10 +50,16 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
   const debouncedQuery = useDebounce(query.trim(), 220);
   const hasQuery = debouncedQuery.length > 0;
 
-  // Focus the input once the panel mounts.
+  // Focus the input once the panel mounts, and hand focus back to whatever
+  // opened it when it closes, so Escape and the close button do not drop a
+  // keyboard user to the top of the page.
   useEffect(() => {
+    const opener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     const id = window.setTimeout(() => inputRef.current?.focus(), 20);
-    return () => window.clearTimeout(id);
+    return () => {
+      window.clearTimeout(id);
+      if (opener && opener !== document.body && document.contains(opener)) opener.focus();
+    };
   }, []);
 
   // Fetch logic lives in a callback so the effect body only invokes it (keeps

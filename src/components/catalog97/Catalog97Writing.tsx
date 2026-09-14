@@ -158,8 +158,15 @@ export function Catalog97Writing({
     });
   }, [posts, active, query, sort]);
 
-  const featured = filtered.slice(0, 2);
-  const archive = filtered.slice(2);
+  // The featured pair only exists on the default view, where it is the two
+  // newest pieces from the product clusters. The top two of whatever list was
+  // showing featured sports posts by date, the two shortest posts under
+  // "Shortest first", and pointed at empty space after a search.
+  const isDefaultView = active === ALL && query.trim() === "" && sort === "newest";
+  const featured = isDefaultView
+    ? filtered.filter((post) => post.cluster).slice(0, 2)
+    : [];
+  const archive = filtered.filter((post) => !featured.includes(post));
   const visibleArchive = archive.slice(0, archiveLimit);
   const remainingArchive = archive.length - visibleArchive.length;
 
@@ -179,7 +186,6 @@ export function Catalog97Writing({
           <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
             {totalEssays} longer essays and {totalNotes} shorter notes
             {earliestDate ? `, going back to ${monthYear(earliestDate)}` : ""}.
-            Long enough to be useful, and never a listicle.
           </p>
         </div>
       </section>
@@ -377,8 +383,11 @@ export function Catalog97Writing({
             className="c97-serif c97-h2"
             style={{ maxWidth: "var(--c97-measure-tight)" }}
           >
-            The two above are the ones I would hand someone first. The rest are
-            below, newest at the top.
+            {featured.length > 0
+              ? "The two above are my newest pieces on product work, and the rest are below, newest at the top."
+              : archive.length > 0
+                ? "Everything that matches is below."
+                : "Nothing here matches that yet, so try another filter or clear the search."}
           </p>
         </div>
       </section>
@@ -407,7 +416,7 @@ export function Catalog97Writing({
             */}
             <h2 className="c97-serif c97-h2">Archive</h2>
             <p className="c97-kicker c97-tabular">
-              {filtered.length} {filtered.length === 1 ? "piece" : "pieces"}
+              {archive.length} {archive.length === 1 ? "piece" : "pieces"}
             </p>
           </div>
 
@@ -419,8 +428,12 @@ export function Catalog97Writing({
                 marginTop: "var(--c97-sp-4)",
               }}
             >
-              {visibleArchive.map((post) => (
-                <article key={post.slug} className="c97-row c97-row-stack-sm">
+              {visibleArchive.map((post, index) => (
+                <article
+                  key={post.slug}
+                  className="c97-row c97-row-stack-sm"
+                  data-archive-row={index}
+                >
                   <div>
                     <h3 className="c97-serif c97-h3">
                       <Link
@@ -473,7 +486,17 @@ export function Catalog97Writing({
             <button
               type="button"
               className="c97-microlink"
-              onClick={() => setArchiveLimit(archive.length)}
+              onClick={() => {
+                // The button unmounts, so hand focus to the first row it
+                // revealed rather than letting it fall back to the page.
+                const firstRevealed = visibleArchive.length;
+                setArchiveLimit(archive.length);
+                window.setTimeout(() => {
+                  document
+                    .querySelector<HTMLElement>(`[data-archive-row="${firstRevealed}"] a`)
+                    ?.focus();
+                }, 0);
+              }}
               style={{
                 background: "none",
                 border: 0,
@@ -503,7 +526,9 @@ export function Catalog97Writing({
               display: "grid",
               gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,240px),1fr))",
               columnGap: "var(--c97-sp-5)",
-              rowGap: "var(--c97-sp-2)",
+              // Each topic link is a 50px hit box, so a --c97-sp-2 gap let every
+              // row overlap the next by 15 to 20px. 34px keeps the boxes apart.
+              rowGap: "max(var(--c97-sp-3), 34px)",
               marginTop: "var(--c97-sp-4)",
             }}
           >
@@ -538,8 +563,7 @@ export function Catalog97Writing({
             className="c97-serif c97-h2"
             style={{ maxWidth: "var(--c97-measure-body)" }}
           >
-            Everything here is tagged by what it is actually about, not by
-            keyword.
+            Everything here is tagged by what it is actually about.
           </p>
           <Link className="c97-btn c97-btn-invert" href="/contact">
             Get in touch

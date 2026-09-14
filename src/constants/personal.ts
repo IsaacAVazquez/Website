@@ -4,7 +4,7 @@ export const careerTimeline = [
     role: "Bachelor of Arts Graduate",
     company: "Florida State University",
     logo: "/images/logos/fsu-logo.png",
-    description: "Graduated with degrees in Political Science and International Affairs. The research and policy analysis work gave me the analytical habits I still rely on in product work.",
+    description: "I graduated with degrees in Political Science and International Affairs, and the research and policy analysis work gave me the analytical habits I still rely on in product work.",
     techStack: ["Research", "Policy Analysis", "International Relations"],
   },
   {
@@ -12,7 +12,7 @@ export const careerTimeline = [
     role: "Digital and Communications Intern",
     company: "Open Progress",
     logo: "/images/logos/open-progress-logo.png",
-    description: "Started building data-driven acquisition strategies for digital campaigns. This was where I first saw how analytics could change the way a team makes decisions.",
+    description: "I started building data-driven acquisition strategies for digital campaigns, and this was where I first saw how analytics could change the way a team makes decisions.",
     techStack: ["Email Marketing", "A/B Testing", "User Acquisition", "Analytics"],
   },
   {
@@ -20,7 +20,7 @@ export const careerTimeline = [
     role: "Digital and Data Associate",
     company: "Open Progress",
     logo: "/images/logos/open-progress-logo.png",
-    description: "Moved client analytics from manual reporting to automated ETL pipelines with interactive dashboards. Cut decision-making time by 40% and improved conversion 25% through better segmentation.",
+    description: "I moved client analytics from manual reporting to automated ETL pipelines with interactive dashboards, which cut analysis time 40% and improved conversion 25% through better segmentation.",
     techStack: ["SQL", "Sisense", "Tableau", "ETL Pipelines", "Data Analytics"],
   },
   {
@@ -28,7 +28,7 @@ export const careerTimeline = [
     role: "Client Services Manager",
     company: "Open Progress",
     logo: "/images/logos/open-progress-logo.png",
-    description: "Ran delivery for 80+ digital programs, coordinating cross-functional teams and keeping campaigns on schedule. 100% on-time delivery and 25% higher engagement through data-driven messaging.",
+    description: "I ran delivery for more than 80 client campaigns and kept every one on schedule, and the messaging validation frameworks I built lifted response rates 20%.",
     techStack: ["Project Management", "Data Analytics", "Stakeholder Management", "Campaign Strategy"],
   },
   {
@@ -36,7 +36,7 @@ export const careerTimeline = [
     role: "Quality Assurance Analyst",
     company: "CIVITECH",
     logo: "/images/logos/civitech-logo.png",
-    description: "Moved into QA at a civic tech company, where I got to own product reliability for platforms reaching millions of users. Maintained 99.999% uptime and improved release efficiency by 30%.",
+    description: "I moved into QA at a civic tech company, where I owned product reliability for platforms reaching millions of users. I held uptime at 99.999%, cut critical defects 90%, and improved release efficiency 50%.",
     techStack: ["Manual Testing", "Automated Testing", "Jira", "Quality Strategy"],
   },
   {
@@ -44,7 +44,7 @@ export const careerTimeline = [
     role: "Quality Assurance Analyst",
     company: "CIVITECH",
     logo: "/images/logos/civitech-logo.png",
-    description: "Led a cross-functional pricing strategy initiative that brought engineering, sales, and finance together around product value. Generated $4M in additional revenue through market analysis and financial modeling.",
+    description: "I led a cross-functional pricing strategy that brought engineering, sales, and finance together around product value, and it generated $4M in additional revenue through market analysis and financial modeling.",
     techStack: ["Product Strategy", "Financial Modeling", "Market Analysis", "Cross-functional Leadership"],
   },
   {
@@ -52,16 +52,16 @@ export const careerTimeline = [
     role: "Quality Assurance Analyst",
     company: "CIVITECH",
     logo: "/images/logos/civitech-logo.png",
-    description: "Owned the product vision for the TextOut platform, from user research through requirements and feature prioritization. Drove a 35% engagement increase and cut onboarding time 90% through GCP automation.",
-    techStack: ["User Research", "Product Vision", "GCP", "Feature Prioritization", "Analytics"],
+    description: "I owned the product vision for the TextOut platform, from user research through requirements and feature prioritization, and that work drove a 35% increase in engagement.",
+    techStack: ["User Research", "Product Vision", "Feature Prioritization", "Analytics"],
   },
   {
     year: 2025,
     role: "Quality Assurance Engineer",
     company: "CIVITECH",
     logo: "/images/logos/civitech-logo.png",
-    description: "Led the launch of the RunningMate platform, translating cross-functional feedback into user stories and quality acceptance criteria. Cut critical defects 90%, moved NPS from 23 to 36, and accelerated releases from monthly to biweekly.",
-    techStack: ["Product Development", "DevOps Integration", "AI/LLM Tools", "Release Management"],
+    description: "I led the launch of the RunningMate platform, turning cross-functional feedback into user stories and quality acceptance criteria. NPS moved from 23 to 36, releases went from monthly to biweekly, and a Google Cloud event system I built cut client onboarding time 60%.",
+    techStack: ["Product Development", "DevOps Integration", "GCP", "AI/LLM Tools", "Release Management"],
   },
   {
     year: 2025,
@@ -70,5 +70,13 @@ export const careerTimeline = [
     logo: "/images/logos/berkeley-logo.png",
     description: "I'm at Haas to sharpen the strategy side of product work while I continue building things I find interesting. Consortium Fellow and MLT Professional Development Fellow.",
     techStack: ["Product Management", "Strategy", "Venture Capital", "Leadership", "Fintech"],
+  },
+  {
+    year: 2026,
+    role: "Innovation Consultant Team Lead",
+    company: "Haas@Work",
+    logo: "/images/logos/berkeley-logo.png",
+    description: "I lead a client engagement for a global mobility technology company, managing stakeholder communication, workflow execution, and alignment across a consulting team.",
+    techStack: ["Consulting", "Stakeholder Management", "Program Execution"],
   },
 ];

@@ -10,7 +10,7 @@ const principles = [
   },
   {
     title: "Fail toward yesterday",
-    body: "A stale number with a date on it is useful. A blank panel at two in the morning is not.",
+    body: "A stale number with a date on it is still useful, but a blank panel at two in the morning is not.",
   },
   {
     title: "Lead with the problem",
@@ -31,8 +31,10 @@ const principles = [
  * mockup's biography ships: the timeline is the real one in `personal.ts`.
  */
 export function Catalog97About() {
-  // Newest first, which is the order the design's timeline reads in.
-  const timeline = [...careerTimeline].sort((a, b) => b.year - a.year);
+  // Newest first, which is the order the design's timeline reads in. The source
+  // array is chronological, so reversing it also orders same-year entries
+  // correctly, which a sort on the year alone did not.
+  const timeline = [...careerTimeline].reverse();
 
   return (
     <Catalog97Shell>
@@ -85,9 +87,10 @@ export function Catalog97About() {
             <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
               I came to product through quality engineering, which means I spent
               years writing the harnesses and checks that catch a regression
-              before a customer does. Six of those years ran across SaaS,
-              analytics, and civic tech, most recently at Civitech, and
-              I&rsquo;m finishing an MBA at Berkeley Haas now. The dashboards
+              before a customer does. Most of that was at Civitech, a SaaS
+              company building software for political campaigns, after a few
+              years of digital and data work at Open Progress, and I&rsquo;m at
+              Berkeley Haas for my MBA now. The dashboards
               and ledgers on this site are the same instinct pointed somewhere
               lighter, and both halves want the same thing from a screen, which
               is a number I can trust and a note about how it was arrived at.
@@ -118,6 +121,7 @@ export function Catalog97About() {
             src="/images/headshot-home.webp"
             alt="Isaac Vazquez"
             sizes="(max-width: 790px) 100vw, 40vw"
+            priority
           />
         </div>
       </section>
@@ -136,8 +140,8 @@ export function Catalog97About() {
             className="c97-serif c97-h2"
             style={{ maxWidth: "var(--c97-measure-body)" }}
           >
-            The interesting part of quality work is not catching the bug. It is
-            knowing which bug was always going to matter.
+            What I find interesting about quality work is knowing which bug was
+            always going to matter.
           </p>
         </div>
       </section>

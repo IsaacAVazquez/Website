@@ -11,9 +11,9 @@ import { Catalog97Dashboards } from "@/components/catalog97/Catalog97Dashboards"
 export const metadata = constructMetadata({
   title: "Isaac Vazquez Dashboards | Live Data Tools",
   description:
-    "The instruments I built and keep running, from football ledgers to markets and spaceflight. The dashboards read from a committed snapshot that refreshes nightly, and the lifestyle tools and calculators keep their state in your browser.",
+    "The instruments I built and keep running, from football ledgers to markets and spaceflight. Most dashboards read a committed snapshot that a scheduled job refreshes, some every few hours and some only weekly or in season, a few trackers are curated by hand, and the lifestyle tools and calculators keep their state in your browser.",
   canonicalUrl: "/dashboards",
-  dateModified: "2026-08-03",
+  dateModified: "2026-09-14",
 });
 
 export default function DashboardsPage() {

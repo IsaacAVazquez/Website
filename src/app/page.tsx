@@ -87,7 +87,7 @@ async function buildMarketReadout(): Promise<HomeLiveFeedMarket | null> {
     const prices = (JSON.parse(raw) as { sections?: { price?: unknown } }).sections
       ?.price;
     if (!Array.isArray(prices) || prices.length < 2) return null;
-    const last = prices[prices.length - 1] as { close?: unknown };
+    const last = prices[prices.length - 1] as { close?: unknown; date?: unknown };
     const prev = prices[prices.length - 2] as { close?: unknown };
     if (typeof last.close !== "number" || typeof prev.close !== "number") return null;
     const delta = last.close - prev.close;
@@ -101,6 +101,14 @@ async function buildMarketReadout(): Promise<HomeLiveFeedMarket | null> {
       }),
       changePct,
       delta: `${delta >= 0 ? "+" : ""}${delta.toFixed(2)}`,
+      asOfLabel:
+        typeof last.date === "string"
+          ? new Date(`${last.date}T00:00:00Z`).toLocaleDateString("en-US", {
+              month: "short",
+              day: "numeric",
+              timeZone: "UTC",
+            })
+          : undefined,
     };
   } catch {
     return null;
@@ -127,7 +135,9 @@ export default async function Home() {
   // ships. Live tools are projects with a real hosted destination set on the
   // case study.
   const allPosts = getAllBlogPostPreviews();
-  const recentPosts = allPosts.slice(0, 3);
+  // Newest pieces from the four product clusters. Taken straight by date, this
+  // band was two fantasy football posts and a Formula 1 recap every fall.
+  const recentPosts = allPosts.filter((post) => post.cluster).slice(0, 3);
   const allProjects = getPortfolioProjects();
   // The "Live tools" directory groups every project that ships a real
   // destination (on-site route or hosted app) by category, so the homepage

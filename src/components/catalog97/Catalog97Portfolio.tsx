@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Catalog97Shell } from "./Catalog97Shell";
 import { Catalog97Plate } from "./Catalog97Primitives";
 import {
+  PROJECT_BUILD_NOTES,
   getProjectCardSummary,
   type CaseStudyData,
 } from "@/constants/caseStudies";
@@ -270,6 +271,19 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
                     <span key={tool}>{tool}</span>
                   ))}
                 </p>
+                {/*
+                  The title opens the tool itself, so the reasoning behind it
+                  gets its own link where a build note exists.
+                */}
+                {PROJECT_BUILD_NOTES[project.slug] ? (
+                  <Link
+                    href={`/writing/${PROJECT_BUILD_NOTES[project.slug]}`}
+                    className="c97-sectionlink"
+                    style={{ marginTop: "var(--c97-sp-1)" }}
+                  >
+                    How I built it
+                  </Link>
+                ) : null}
               </div>
               <div className="c97-kicker c97-tabular">{project.timeline}</div>
             </article>
@@ -306,7 +320,7 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
             */}
             <h2 className="c97-serif c97-h2">The rest of the index</h2>
             <p className="c97-kicker c97-tabular">
-              {filtered.length} {filtered.length === 1 ? "project" : "projects"}
+              {ledger.length} {ledger.length === 1 ? "project" : "projects"}
             </p>
           </div>
 
@@ -391,8 +405,8 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
             className="c97-serif c97-h3"
             style={{ maxWidth: "var(--c97-measure-tight)" }}
           >
-            Each project write-up leads with the problem, and puts the stack
-            last.
+            Most of these have a build note in the writing archive, and I am
+            happy to walk through any of them.
           </p>
           <Link className="c97-btn c97-btn-invert" href="/contact">
             Ask about one

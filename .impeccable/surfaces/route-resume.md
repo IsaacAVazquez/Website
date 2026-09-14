@@ -2,7 +2,7 @@
 version: 1
 slug: "route-resume"
 primary_target: "route:/resume"
-related_targets: ["src/components/catalog97/Catalog97Resume.tsx"]
+related_targets: ["src/components/catalog97/Catalog97Resume.tsx","src/constants/personal.ts"]
 ---
 
 # Résumé surface brief
@@ -28,12 +28,36 @@ related_targets: ["src/components/catalog97/Catalog97Resume.tsx"]
 - Anton draws numerals at `--c97-fs-plate` only. Never running text, never headings, and there is no smaller numeral step. This replaced the earlier one-Anton-per-view rule.
 - The scales are frozen: 9 type steps, 8 spacing values (`--c97-gutter` plus `--c97-sp-1..7`), 4 line heights, 3 measures plus `--c97-container`. `--c97-touch-y/x` sit outside the spacing ladder on purpose, solved backwards from the 44px floor.
 - Every `--c97-*` value is declared under `[data-c97]` or `[data-c97-surface]`, never under a class, so a token consumer can skip class rules wholesale.
-- Image slots render as flat Stone or Tobacco fields because no photograph exists yet. That is the design’s own layout rule, not an unfinished asset.
+- Image slots without a photograph render as flat Stone or Tobacco fields, which is the design’s own layout rule for a missing photograph. Corrected 2026-09-14, the headshot at `/images/headshot-home.webp` fills the portrait slot on / and /about, so those two slots show a photograph.
 
-**Verified state.** 0 contrast failures across 2774 text nodes in both themes, each resolved against its own enclosing surface and backdrop. Zero shadows, zero radii above 2px, zero off-palette hex in components. `focus-visible` covers anchors, buttons, inputs, textareas, selects and summaries. Exactly one `aria-current` per route. Espresso footer present. No two Pine bands adjacent, and at least two brown bands per route.
+**Verified state.** 0 contrast failures across 2774 text nodes in both themes, each resolved against its own enclosing surface and backdrop. Zero shadows, zero radii above 2px, zero off-palette hex in components. `focus-visible` covers anchors, buttons, inputs, textareas, selects and summaries. Until 2026-09-14 each of those rings also carried a 4px radius and a signal-orange halo inherited from `globals.css`, and the `.c97-page` focus rule now sets `border-radius: 0` and `box-shadow: none`. Exactly one `aria-current` per route. Espresso footer present. No two Pine bands adjacent, and at least two brown bands per route.
 
 **Commands worth running.** `critique` and `audit` to find. Then only what the findings name. `polish` last. Never `document` here (it would regenerate DESIGN.md against the wrong world), and never both halves of `bolder`/`quieter` or `overdrive`/`distill`.
 
 **Settled 2026-08-02 (critique, degraded single-context).** The anchor reset is `:where(.c97-page) a`, not `.c97-page a`. At `.c97-page a` it scored (0,1,1) and outranked every single-class component rule, so each `.c97-btn` rendered as a `<Link>` discarded its own `color: var(--c97-surface)` and inherited the band ink instead. Measured live: "See the work" was espresso on chocolate at 1.4:1, and `.c97-btn-invert`, whose background is `--c97-ink`, was heading for 1:1 invisible text on six routes. All 13 buttons on the site are anchors, so all 13 were affected. Static token-math audits miss this because they read the declared rule rather than the winning cascade. Do not raise the `:where()` back to a plain class, and re-measure buttons in a browser after any change to the anchor reset.
 
-**Settled 2026-08-02 (mobile pass).** The header wordmark carries `.c97-brand`, which applies the same padding-plus-negative-margin hit target as `.c97-microlink`. At 390px it measured a 23px tap target before this, under the 44px floor the rest of the site holds; it is 55px now. Dark mode is verified live rather than by token math: all eight surfaces render their derived dark values and both themes measure zero contrast failures. When re-measuring after a theme toggle, wait a tick before reading computed styles — reading in the same synchronous block returns the pre-toggle paint and looks like dark mode is broken when it is not.
+**Settled 2026-08-02 (mobile pass).** The header wordmark carries `.c97-brand`, which applies the same padding-plus-negative-margin hit target as `.c97-microlink`. At 390px it measured a 23px tap target before this, under the 44px floor the rest of the site holds; it is 55px now. Dark mode is verified live rather than by token math: all eight surfaces render their derived dark values and both themes measure zero contrast failures. When re-measuring after a theme toggle, wait a tick before reading computed styles, because reading in the same synchronous block returns the pre-toggle paint and looks like dark mode is broken when it is not.
+
+## Loop, 2026-09-14
+
+Mode stays Read. This loop critiqued, fixed and re-scored the route alongside the other Catalog 97 surfaces. The pre-fix snapshot is `2026-09-14T18-34-44Z__route-resume.md` at 25/36 (69%, Acceptable) with 2 P1, and the post-fix snapshot from the same day scores 27/36 (75%, Good) with 0 P0 and 0 P1.
+
+### What landed, with measured evidence
+
+The download band no longer says "Two pages", and `pdfinfo public/Isaac_Vazquez_Resume.pdf` reports one page. At re-score it read "One page, with no summary paragraph.", and after the re-score and sweep it became "The one-page version, ready to print.", checked only by a targeted text check. The 2025 Quality Assurance Engineer entry now ends "Built a real-time event system in Google Cloud that moved clients to self-service and cut onboarding time 60%.", which the sweep read in both themes and which matches the PDF. Every figure that appears on both /resume and /about now agrees, and the /about side was the one corrected, in `src/constants/personal.ts`. Focus rings measured radius 0 and no shadow on all 22 focusables in both themes, and the header held 180.4px at 390, 122.8px at 768 and 114px at 1440 through theme toggle mount.
+
+### Decisions that apply to this surface
+
+Print styles and the date column are unchanged on purpose. Career figures were confirmed by Isaac on 2026-09-14, from release efficiency 50% and 90% critical defects on the Quality Assurance Analyst role (2022 to 2025), to response rates up 20% in 2021, to onboarding cut 60% on the 2025 Quality Assurance Engineer role through Google Cloud.
+
+### False positives worth not re-deriving
+
+The in-page detector overlay is blocked by the enforcing CSP in `src/proxy.ts`, and `impeccable detect` returns `[]` on the Catalog 97 components. `critique-storage latest` on a `route:` target closes the snapshot it finds, because the helper fingerprints `route:/resume` as a missing local file, so read snapshots with `trend` or by filename.
+
+### Still open
+
+[P2] The date gutter is sized per row and the phone text column is narrow (kept). [P2] No print stylesheet (kept). [P2] `personal.ts` and the `experience` array in `Catalog97Resume.tsx` are still two hand-maintained lists. [P3] An intermittent layout shift of 0.0223 at 390 in light, seen in 3 of 10 probe runs and 1 of 3 sweep runs. In each run that shifted, the h1 "Product work, with a quality engineering habit." grew from 77px to 115px tall, re-wrapping from two lines to three when Newsreader and Instrument Sans finished loading, which moved the Download PDF button and the Experience band down 38px. It predates this loop, since the pre-fix critique recorded about 0.023 with no cause isolated, and the dark runs did not shift. [P3] The Civitech and Open Progress marks read as small light squares in dark mode, the document title says "Resume", and both PDF links force a download.
+
+### Corrected facts in this brief
+
+The theme toggle no longer shifts the header on this route, so any remaining layout shift here is the font-load re-wrap above and not the toggle. Page height measured 3,867px at 1440 and 6,036px at 390 on 2026-09-14. Focus rings carried a 4px radius and a halo until this loop.

@@ -41,7 +41,7 @@ const TILE_SURFACES = ["pine", "camel", "bone", "camel"] as const;
 const dataNotes = [
   {
     title: "One committed snapshot",
-    body: "The data is checked into the repo, so the page never depends on a third party being awake when you visit it.",
+    body: "Most of the data is checked into the repo, so those pages never depend on a third party being awake when you visit them.",
   },
   {
     title: "Refresh fails soft",
@@ -294,8 +294,8 @@ export function Catalog97Dashboards({
               maxWidth: "var(--c97-measure-body)",
             }}
           >
-            Each dashboard prints the timestamp of the snapshot it is actually
-            reading, so a failed pull shows as a stale date rather than as an
+            Most of the snapshot dashboards print the date of the data they are
+            reading, so a failed pull shows up as an old date rather than as an
             empty page.
           </p>
         </div>
@@ -308,8 +308,8 @@ export function Catalog97Dashboards({
             className="c97-serif c97-h2"
             style={{ maxWidth: "var(--c97-measure-tight)" }}
           >
-            Every panel here would rather show a stale number with a date on it
-            than nothing at all.
+            The data panels here would rather show a stale number with a date on
+            it than nothing at all.
           </p>
         </div>
       </section>
@@ -354,10 +354,10 @@ export function Catalog97Dashboards({
             className="c97-serif c97-h2"
             style={{ maxWidth: "var(--c97-measure-body)" }}
           >
-            The write-ups behind these are in the work index.
+            The build notes behind most of these are in the writing archive.
           </p>
-          <Link className="c97-btn c97-btn-invert" href="/portfolio">
-            See the work
+          <Link className="c97-btn c97-btn-invert" href="/writing">
+            Read the writing
           </Link>
         </div>
       </section>

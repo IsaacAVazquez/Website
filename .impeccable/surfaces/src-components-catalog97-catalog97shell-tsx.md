@@ -2,12 +2,12 @@
 version: 1
 slug: "src-components-catalog97-catalog97shell-tsx"
 primary_target: "src/components/catalog97/Catalog97Shell.tsx"
-related_targets: ["src/components/catalog97/Catalog97Header.tsx"]
+related_targets: ["src/components/catalog97/Catalog97Header.tsx","src/components/ui/DeferredThemeToggle.tsx","src/components/search/HeaderSearchPanel.tsx"]
 ---
 
 # Catalog 97 shell surface brief
 
-**Scope.** `src/components/catalog97/Catalog97Shell.tsx`. It supplies the header, the wordmark band, the only `main` landmark, and the footer for all seven Catalog 97 routes, so an edit here changes every one of them at once. `StaticHeader` and `ConditionalLayout` both stand down on these routes, which is why this file owns the chrome rather than sharing it.
+**Scope.** `src/components/catalog97/Catalog97Shell.tsx`. It supplies the header, the only `main` landmark, and the footer (which has carried the script emblem since the pine wordmark band was removed on 2026-08-03) for all seven Catalog 97 routes, so an edit here changes every one of them at once. `StaticHeader` and `ConditionalLayout` both stand down on these routes, which is why this file owns the chrome rather than sharing it.
 
 **Visitor mode.** Operate. The footer is wayfinding and the header is navigation, so scanability and consistency outrank expression in both.
 
@@ -41,3 +41,35 @@ related_targets: ["src/components/catalog97/Catalog97Header.tsx"]
 **Commands worth running.** `critique` and `audit`. Then only what the findings name. Never `document` here.
 
 **Tooling note.** `detect.mjs` returns `[]` with exit 0 on this file, which means nothing was matchable rather than that nothing is wrong, and the in-page detector cannot be injected because the site's CSP blocks an external script tag. Do not weaken the CSP to run it. Measure the live DOM through Playwright instead, which is where every figure above came from.
+
+## Loop, 2026-09-14
+
+Mode stays Operate. This loop ran on the seven Catalog 97 routes, and the shell had no snapshot of its own. Its findings were recorded in full in the home snapshot `2026-09-14T18-34-43Z__route.md` and noted on the other six, and each route's post-fix snapshot records them as resolved.
+
+### What landed, with measured evidence
+
+Focus rings. `globals.css` gives every focused element a 4px radius and a 30% signal-colour halo from the Working Instrument, and the `.c97-page` focus-visible rule in `src/app/catalog97.css` set only an outline, so until this loop every Catalog 97 ring was rounded and haloed. The rule now also sets `border-radius: 0` and `box-shadow: none`, and the sweep measured radius 0 and no shadow on every focusable it probed on all seven routes in both themes, from 21 on /about to 71 on /writing, with zero offenders. The same stylesheet adds `.c97-page ::placeholder` at `var(--c97-label)` and full opacity (5.4:1 light, 7.26:1 dark), an inset ring for `.c97-tile`, and `font-weight: 400` on `.c97-kicker`.
+
+Theme toggle. `src/components/ui/DeferredThemeToggle.tsx` passes a `loading` placeholder to its dynamic import, an `aria-hidden` 44px span, because with `ssr: false` the Suspense fallback never rendered and the header grew 16 to 26px when the toggle mounted. The header now holds one height from first sample to last on every route, 188.4px at 390 on /, /portfolio, /writing and /dashboards and 180.4px on /about, /resume and /contact, 122.8px at 768 and 114px at 1440, with CLS 0 on every route at every measured width except the /resume font re-wrap described in that route's brief. Pre-fix CLS ran from 0.016 to 0.065.
+
+Search focus return. `src/components/search/HeaderSearchPanel.tsx` records the element that had focus when the panel mounted and hands focus back to it on unmount. Escape, the close button click and the close button by keyboard all return focus to the Search button on / at 390 and 1440 and on /writing at 1440. Opened with the / shortcut, Escape returns focus to where it was before the shortcut, which is the same rule.
+
+Reduced motion. `src/app/layout.tsx` no longer puts `scroll-smooth` on `html`. Under `prefers-reduced-motion: reduce` the sweep read `scroll-behavior: auto` on / and /writing, and with no preference it still reads `smooth`.
+
+The regression sweep across 58 states (2 at 320 and 14 at each of 390, 768, 1024 and 1440) found 0 AA text contrast failures, 0 horizontal overflow, 1 main and 1 h1 on every route, 0 heading skips, 0 failed requests and 0 console errors.
+
+### Decisions that apply to the shell
+
+The header wordmark's 55px hit box overlaps the first nav row by 20px at 320 to 768, in its empty padding below the glyphs. It stays at `--c97-sp-2`, because a `--c97-sp-5` row gap cleared it and pushed home's "See the work" below the fold at 320, which `e2e/homepage.spec.ts` guards, and the reason is recorded in a comment in `Catalog97Header.tsx`. The search panel keeps its Working Instrument styling.
+
+### False positives worth not re-deriving
+
+The general sweep's pine-tile focus flag on /dashboards compares the ring against the paper gap, and the ring is inset on the tile now, so its 2.31:1 reading is a false positive. The in-page detector overlay is blocked by the enforcing CSP set in `src/proxy.ts`, which is correct and must not be weakened. `impeccable detect` returns `[]` on this file and the other Catalog 97 components, which means nothing was matchable. `critique-storage latest` on a `route:` target closes the snapshot it finds, because the helper fingerprints `route:/x` as a local file that does not exist, and that is how all eight pre-fix snapshots from this loop were marked closed on 2026-09-14, so read snapshots with `trend` or by filename.
+
+### Still open
+
+[P3] Row title links inside headings have hit areas about 20 to 23px tall on /writing, home and the /portfolio ledger, a pre-existing pattern where WCAG 2.5.8 is relevant and the spacing exception was not evaluated. The wordmark overlap above is kept on purpose and is not open.
+
+### Corrected facts in this brief
+
+The scope line said the shell supplies a wordmark band, and that band was removed on 2026-08-03 when the emblem moved into the footer, so the line was corrected. Scores are recorded per route in the route briefs.

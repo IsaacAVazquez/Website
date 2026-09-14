@@ -458,6 +458,8 @@ body:has(.c97-page) {
 /* 11px uppercase tracked label. The workhorse of the whole system. */
 .c97-kicker {
   font-size: var(--c97-fs-label);
+  /* Set, not inherited, so a kicker on an h2 does not turn bold. */
+  font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--c97-label);
@@ -608,6 +610,29 @@ body:has(.c97-page) {
 .c97-page summary:focus-visible {
   outline: 2px solid var(--c97-accent);
   outline-offset: 3px;
+  /*
+   * globals.css gives every focused element a 4px radius and a 3px signal-orange
+   * halo from the Working Instrument, and the outline above did not override
+   * either, so every ring on these routes was rounded and haloed in a colour
+   * this world does not use.
+   */
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/*
+ * A tile carries its own surface, so its ring takes that surface's accent, and
+ * outset over the paper gap Pine's accent measured 2.31:1 in light mode. Inset,
+ * the ring paints on the tile itself, 4.87:1 on Pine and higher on the rest.
+ */
+.c97-page .c97-tile:focus-visible {
+  outline-offset: -6px;
+}
+
+/* The browser default is ink at half opacity, 3.02:1 in light mode. */
+.c97-page ::placeholder {
+  color: var(--c97-label);
+  opacity: 1;
 }
 
 /* Underlined inline link, used inside prose. */

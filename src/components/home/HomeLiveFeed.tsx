@@ -29,6 +29,8 @@ export interface HomeLiveFeedMarket {
   price: string;
   changePct: number;
   delta: string;
+  /** Short UTC date of the latest close, e.g. "Aug 14", so a stale move says so. */
+  asOfLabel?: string;
 }
 
 export interface HomeLiveFeedData {
