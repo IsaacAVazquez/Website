@@ -87,7 +87,7 @@ function NetWorthChart({ result }: { result: RentVsBuyResult }) {
         viewBox={`0 0 ${points.width} ${points.height}`}
         className="h-auto w-full"
         role="img"
-        aria-label={`Net worth over ${result.horizonYears} years. ${formatBreakEven(result)}.`}
+        aria-label={`Net worth over ${plural(result.horizonYears, "year")}. ${formatBreakEven(result)}.`}
       >
         <line
           x1={0}
