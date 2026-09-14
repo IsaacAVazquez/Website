@@ -348,13 +348,12 @@ export function PortfolioHeroCard({
         </div>
 
         <div className="mt-4">
-          <div className="invest-timeframe" role="tablist" aria-label="Performance timeframe">
+          <div className="invest-timeframe" role="group" aria-label="Performance timeframe">
             {RANGES.map((r) => (
               <button
                 key={r.label}
                 type="button"
-                role="tab"
-                aria-selected={range === r.label}
+                aria-pressed={range === r.label}
                 className={range === r.label ? "is-on" : ""}
                 onClick={() => setPickedRange(r.label)}
               >

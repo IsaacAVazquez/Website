@@ -40,7 +40,10 @@ function computeStats(holdings: EnhancedHolding[]): ComputedStats {
     };
   }
 
-  const sortedByAllocation = [...holdings]
+  // A holding valued at cost basis has no real price, so it cannot rank as the
+  // top holding, the best performer, or part of the top-three share.
+  const priced = holdings.filter((h) => h.priceSource !== "costBasis");
+  const sortedByAllocation = [...priced]
     .filter((h) => h.allocationPercent !== null)
     .sort((a, b) => (b.allocationPercent ?? 0) - (a.allocationPercent ?? 0));
   const top = sortedByAllocation[0] ?? null;
@@ -49,7 +52,7 @@ function computeStats(holdings: EnhancedHolding[]): ComputedStats {
     .slice(0, 3)
     .reduce((sum, h) => sum + (h.allocationPercent ?? 0), 0);
 
-  const sortedByReturn = [...holdings].sort(
+  const sortedByReturn = [...priced].sort(
     (a, b) => b.gainLossPercent - a.gainLossPercent,
   );
   const best = sortedByReturn[0] ?? null;

@@ -71,7 +71,6 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
     error,
     isNotFetched,
     refetch,
-    lastUpdated: datasetLastUpdated,
   } = useStockData<PriceData>(symbol, "price");
   const [range, setRange] = useState<Range>("1Y");
   const [showMA, setShowMA] = useState(true);
@@ -114,7 +113,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
     return allEntries.slice(-days);
   }, [allEntries, range]);
   const latestHistoricalDate = allEntries[allEntries.length - 1]?.date;
-  const historyFreshness = getHistoricalPriceFreshness(latestHistoricalDate, datasetLastUpdated);
+  const historyFreshness = getHistoricalPriceFreshness(latestHistoricalDate);
 
   // SPY series, sliced to the same trailing window as the primary symbol so
   // both series index to 100 at the same starting point.
@@ -431,12 +430,12 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
           </p>
           {historyFreshness.isStale ? (
             <p className="mt-1 text-xs font-medium text-[var(--home-warning)]">
-              Historical chart data trails the dataset by {historyFreshness.lagDays} days.
+              Historical chart data ends {historyFreshness.lagDays} days before today.
             </p>
           ) : null}
           {spyUnavailable ? (
             <p className="mt-1 text-xs text-[var(--home-warning)]">
-              SPY comparison data isn&apos;t in this data build yet — showing absolute price instead.
+              SPY comparison data isn&apos;t in this data build yet, so the chart shows absolute price instead.
             </p>
           ) : null}
         </div>
@@ -501,10 +500,12 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
             {RANGES.map((r) => (
               <button
                 key={r}
+                type="button"
+                aria-pressed={range === r}
                 onClick={() => setRange(r)}
                 className={`min-h-[44px] min-w-[44px] rounded-[var(--radius-sm)] px-3.5 py-2 text-xs font-semibold transition ${
                   range === r
-                    ? "bg-[var(--home-signal)] text-white "
+                    ? "bg-[var(--home-signal)] text-[var(--home-paper)] "
                     : "border border-[var(--home-rule)] text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
                 }`}
               >

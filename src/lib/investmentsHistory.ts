@@ -4,12 +4,6 @@ function parseHistoryDate(value: string | undefined | null): Date | null {
   return Number.isNaN(parsed.getTime()) ? null : parsed;
 }
 
-function parseReferenceDate(value: string | Date | null | undefined): Date | null {
-  if (!value) return null;
-  const parsed = value instanceof Date ? value : new Date(value);
-  return Number.isNaN(parsed.getTime()) ? null : parsed;
-}
-
 function diffInCalendarDays(later: Date, earlier: Date): number {
   const msPerDay = 24 * 60 * 60 * 1000;
   return Math.floor((Date.UTC(later.getUTCFullYear(), later.getUTCMonth(), later.getUTCDate()) -
@@ -29,7 +23,6 @@ export function formatHistoryAsOf(raw: string | undefined | null): string {
 
 export function getHistoricalPriceFreshness(
   latestHistoryDate: string | undefined | null,
-  datasetLastUpdated: string | null,
   referenceDate: Date = new Date()
 ): {
   historyDate: Date | null;
@@ -47,17 +40,14 @@ export function getHistoricalPriceFreshness(
     };
   }
 
-  const datasetDate = parseReferenceDate(datasetLastUpdated);
-  const comparisonDate =
-    datasetDate && datasetDate.getTime() < referenceDate.getTime()
-      ? datasetDate
-      : referenceDate;
-
-  const lagDays = Math.max(0, diffInCalendarDays(comparisonDate, historyDate));
+  // Lag is measured against today, not the snapshot build date. The build date
+  // moved with the snapshot, so a history that stopped months ago read as
+  // current whenever the snapshot itself was just as old.
+  const lagDays = Math.max(0, diffInCalendarDays(referenceDate, historyDate));
 
   return {
     historyDate,
-    referenceDate: comparisonDate,
+    referenceDate,
     lagDays,
     isStale: lagDays > 3,
   };

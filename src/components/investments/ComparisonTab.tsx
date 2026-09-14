@@ -13,6 +13,15 @@ import type {
   InvestmentsIndex,
 } from "@/types/investment";
 
+// "Jul 20, 2026" in UTC, or null when the snapshot carries no usable date.
+function formatSnapshotDate(raw: string | null): string | null {
+  if (!raw) return null;
+  const date = new Date(raw);
+  return Number.isNaN(date.getTime())
+    ? null
+    : date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
+}
+
 const FALLBACK_SYMBOLS = [
   "AAPL",
   "MSFT",
@@ -204,14 +213,14 @@ export function ComparisonTab() {
   const [symbolB, setSymbolB] = React.useState("MSFT");
 
   // ── Fetch data for stock A ──────────────────────────────────────────────
-  const { data: fundA, isLoading: l1 } = useStockData<Fundamentals>(symbolA, "fundamentals");
+  const { data: fundA, isLoading: l1, lastUpdated: asOfA } = useStockData<Fundamentals>(symbolA, "fundamentals");
   const { data: growthRawA, isLoading: l2 } = useStockData(symbolA, "growth");
   const { data: profA, isLoading: l3 } = useStockData<Profitability>(symbolA, "profitability");
   const { data: marginsRawA, isLoading: l4 } = useStockData<MarginsData>(symbolA, "margins");
   const { data: betaA, isLoading: l5 } = useStockData<BetaData>(symbolA, "beta");
 
   // ── Fetch data for stock B ──────────────────────────────────────────────
-  const { data: fundB, isLoading: l7 } = useStockData<Fundamentals>(symbolB, "fundamentals");
+  const { data: fundB, isLoading: l7, lastUpdated: asOfB } = useStockData<Fundamentals>(symbolB, "fundamentals");
   const { data: growthRawB, isLoading: l8 } = useStockData(symbolB, "growth");
   const { data: profB, isLoading: l9 } = useStockData<Profitability>(symbolB, "profitability");
   const { data: marginsRawB, isLoading: l10 } = useStockData<MarginsData>(symbolB, "margins");
@@ -320,6 +329,9 @@ export function ComparisonTab() {
                 <option key={s} value={s}>{s}</option>
               ))}
             </select>
+            {formatSnapshotDate(asOfA) ? (
+              <p className="text-2xs text-[var(--home-ink-soft)]">Snapshot as of {formatSnapshotDate(asOfA)}</p>
+            ) : null}
           </div>
 
           <div className="flex min-h-[46px] items-center justify-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
@@ -340,10 +352,13 @@ export function ComparisonTab() {
                 <option key={s} value={s}>{s}</option>
               ))}
             </select>
+            {formatSnapshotDate(asOfB) ? (
+              <p className="text-2xs text-[var(--home-ink-soft)]">Snapshot as of {formatSnapshotDate(asOfB)}</p>
+            ) : null}
           </div>
         </div>
         <p className="mt-4 text-sm leading-6 text-[var(--home-ink-muted)]">
-          Compare valuation, growth, profitability, and price risk using the same curated data snapshot for both companies. Missing inputs stay out of the radar instead of being scored as average.
+          Compare valuation, growth, profitability, and price risk from each company&apos;s curated snapshot, dated under its name. Missing inputs stay out of the radar instead of being scored as average.
         </p>
       </div>
 

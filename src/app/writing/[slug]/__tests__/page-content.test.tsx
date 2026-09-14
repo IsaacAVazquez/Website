@@ -45,7 +45,7 @@ describe("Writing article page", () => {
       readingTime: "4 min read",
       wordCount: 800,
       author: "Isaac Vazquez",
-      coverImage: "/writing/test-post/opengraph-image",
+      coverImage: "/images/writing/covers/test-post.jpg",
       coverImageAlt: "Custom cover image alt",
       coverImageCredit: "Test Photographer, CC BY 4.0 via Wikimedia Commons",
       coverImageCreditUrl: "https://commons.wikimedia.org/wiki/File:Test.jpg",

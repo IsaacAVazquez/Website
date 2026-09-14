@@ -13,7 +13,7 @@ export const metadata = constructMetadata({
 export default function ResumePage() {
   const breadcrumbs = [
     { name: "Home", url: "/" },
-    { name: "Resume", url: "/resume" }
+    { name: "Résumé", url: "/resume" }
   ];
 
   return (

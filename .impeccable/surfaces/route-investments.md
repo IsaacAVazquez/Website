@@ -2,7 +2,7 @@
 version: 1
 slug: "route-investments"
 primary_target: "route:/investments"
-related_targets: ["src/app/investments/page.tsx","src/app/investments/investments-client.tsx","src/components/investments/InvestmentsDashboard.tsx","src/app/investments/investments.module.css"]
+related_targets: ["src/app/investments/page.tsx","src/app/investments/investments-client.tsx","src/components/investments/InvestmentsDashboard.tsx","src/app/investments/investments.module.css","src/components/investments/PriceChartPanel.tsx","src/lib/investmentsHistory.ts"]
 ---
 
 # Investments surface brief
@@ -56,3 +56,31 @@ related_targets: ["src/app/investments/page.tsx","src/app/investments/investment
 **Not done, and deliberately.** No performance trace or LCP measurement was taken, so nothing here claims verified timing. The coarse-pointer sizing was confirmed by reading the parsed CSSOM rule rather than on an emulated touch device. `colorize` was considered and rejected, because the accent finding that prompted it turned out to be a measurement error rather than a defect.
 
 **Commands worth running.** `critique` has never been run here and is the obvious next one. `audit` to find, then only what the findings name, then `polish` last. Never `document` from this surface, since regenerating DESIGN.md against an always-dark scope would corrupt the site-wide light palette. Never both halves of `bolder`/`quieter` or `overdrive`/`distill`.
+
+## Loop, 2026-09-14
+
+Mode stays Operate, and the audience it commits to is still a peer who is working and checking whether the numbers hold up. This loop critiqued, fixed and re-scored the route alongside the article and topic pages. The pre-fix snapshot is `2026-09-14T19-48-31Z__route-investments.md` at 25/40 (62.5%, Acceptable) with 0 P0 and 8 P1, now closed. The post-fix snapshot is `2026-09-14T20-10-27Z__route-investments.md` at 27/40 (67.5%, Acceptable) with 0 P0 and 0 P1, all ten heuristics applied. The fixes landed in `5efd808a`, and three polish items landed after measurement in `c6c38900`.
+
+### Verified state, with measured evidence
+
+A post-fix computed-value sweep on 2026-09-14 measured the soft ink tier, now a 55% ink mix, at 5.31:1 on paper, 4.97:1 on paper-alt and 5.38:1 on raised paper. Selected tab and range text is paper on signal at 6.5:1. The chart range buttons and the overlay toggles expose `aria-pressed` and flip correctly on click. The performance timeframe is `role="group"` with `aria-pressed` buttons and visible overflow, and every segment paints its full 2px orange focus outline. Add Holding shows a paper and orange ring on focus and the filter label shows a 2px orange outline. The hero Add holding click takes the form from 0 inputs to 4 with focus on `#add-symbol`. The quote tape reads "Live quotes" with live data and "Last saved prices" with quotes blocked. With quotes blocked, Your position reads "Price unavailable" for market value, total return and day P/L. The AAPL chart warns "Historical chart data ends 59 days before today." Compare dates each side under its selector. Remove moves focus to Cancel remove and Cancel returns it to Remove AAPL. Deep links keep their symbol, both disclaimers render, and no analyst ratings copy remains on `/portfolio` or its investments case study.
+
+Across 56 combinations at 390, 768, 1024 and 1440 in light and dark, the regression sweep found one `main` and one `h1`, no overflow, 0 console errors, 0 failed requests and CLS 0. The one sub-44px target the pre-fix sweep did not list is the AAPL rail mover in the seeded state, 38.8px tall. The only text under 4.5:1 left was the dataset chip divider dot at 2.46:1.
+
+Three polish items landed after measurement in `c6c38900`, and only a targeted check in the parent covered them. The quote tape adds a third state, "Prices unavailable", when no holding is live or saved. The stats grid ignores cost-basis holdings when naming the top holding, the best performer and the top-three share. The dataset chip divider uses the soft ink tier.
+
+### Decisions not to re-litigate
+
+MetricTooltip keeps its Escape blur because it is shared with fantasy football. The h1 size on this route is unchanged. The four names for the add action were left. The data is weeks old until the refresh fixed in PR #434 runs, so staleness in the snapshots themselves is expected and is not a design defect. The hero Add holding opens the form by clicking the form's own button found by `aria-label="Add holding"`, so renaming that label would break the hero button with no test to catch it.
+
+### False positives worth not re-deriving
+
+The in-page overlay is blocked by the enforcing CSP in `src/proxy.ts`. One-run contrast blips on the Valuation tab did not reproduce, and repeated reads at 1.5 and 9 seconds in both themes found only the divider dot. A walk that tabs through the rail button, filter and timeframe before clicking the hero Add holding can log the click as failing, and a clean probe shows the form opening. `critique-storage latest` on a `route:` target closes the snapshot it reads, so read snapshots by filename or with `trend`.
+
+### Still open
+
+[P2] The green tone on "$0.00" P/L rows and on the all-time return in the cost-basis state, which `c6c38900` did not touch. [P2] A failed research fetch reads "NO PRICE DATA / Unavailable" over a snapshot that has price data, seen on 3 of about 10 dev loads and not checked on a production build. [P2] The chip leads with the Aug 18 run date, and the 52W range comes from a series 59 days old. [P2] Compare colours the second stock amber in the tables and white in the radar legend, and gives FCF YoY of −9.23% a green better arrow. [P3] The hero Add holding's dependence on the form button's label. [P3] Em dashes in retirement UI copy, for example `RetirementPlanner.tsx:44`. Touch devices, a production build, Cmd-K, the retirement form, zoom and a screen reader were not checked this loop.
+
+### Corrected facts in this brief
+
+The commands entry above says `critique` has never been run here. It has run twice, on 2026-08-06 at 24/40 and on 2026-09-14 at 25/40 before fixes and 27/40 after. The 2026-08-05 verified state of zero contrast failures no longer held by 2026-09-14, when the soft tier measured 3.95:1 at a 45% mix, and that is fixed at 55%. The pre-fix snapshot measured the 24px h1 under a 34px h2, which does not match the 24 over 20 recorded on 2026-08-05, and this loop did not trace which h2 that was.

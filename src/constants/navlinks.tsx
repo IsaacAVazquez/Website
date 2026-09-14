@@ -23,7 +23,7 @@ export const navLinks: Navlink[] = [
   },
   {
     href: "/portfolio",
-    label: "Projects",
+    label: "Work",
     icon: Briefcase,
   },
   {
@@ -43,7 +43,7 @@ export const navLinks: Navlink[] = [
   },
   {
     href: "/resume",
-    label: "Resume",
+    label: "Résumé",
     icon: FileText,
   },
   {
