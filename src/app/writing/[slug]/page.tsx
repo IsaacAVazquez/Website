@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const post = await getBlogPostBySlug(slug);
 
   if (!post) {
-    return { title: "Post not found" };
+    return { title: "Post not found", robots: { index: false, follow: true } };
   }
 
   const metadataTitle = fitSearchTitle(post.seo?.title || post.title);
@@ -216,7 +216,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                   width={56}
                   height={56}
                   className="flex-shrink-0 rounded-full"
-                  style={{ border: "1px solid var(--home-rule)", objectFit: "cover" }}
+                  style={{ border: "1px solid var(--home-rule)", objectFit: "cover", width: 56, height: 56 }}
                 />
                 <div
                   className="flex flex-wrap items-center gap-x-2 gap-y-0.5"

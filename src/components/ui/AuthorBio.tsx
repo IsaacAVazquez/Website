@@ -102,7 +102,7 @@ export function AuthorBio({
             width={56}
             height={56}
             className="flex-shrink-0 rounded-full"
-            style={{ border: "1px solid var(--home-rule)", objectFit: "cover" }}
+            style={{ border: "1px solid var(--home-rule)", objectFit: "cover", width: 56, height: 56 }}
             itemProp="image"
           />
         )}

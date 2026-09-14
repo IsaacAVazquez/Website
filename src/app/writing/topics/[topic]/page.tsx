@@ -63,7 +63,7 @@ export async function generateMetadata({
   const topic = getBlogTopicPage(topicSlug);
 
   if (!topic) {
-    return { title: "Writing topic not found" };
+    return { title: "Writing topic not found", robots: { index: false, follow: true } };
   }
 
   return constructMetadata({
