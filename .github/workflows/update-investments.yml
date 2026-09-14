@@ -39,19 +39,23 @@ jobs:
           cache: "npm"
 
       - name: Set up Python
+        id: setup-python
         uses: actions/setup-python@v7
         with:
           python-version: "3.11"
 
       # Cache the entire venv so we skip both the python -m venv and the
-      # pip install on subsequent runs. Keyed on the python version + the
-      # pinned defeatbeta-api version so a bump invalidates correctly.
+      # pip install on subsequent runs. Keyed on the exact resolved python
+      # version (e.g. 3.11.16) + the pinned defeatbeta-api version. The venv's
+      # bin/python3 is a symlink into the runner's toolcache, so a key on the
+      # minor version alone restored a venv pointing at a removed 3.11.15
+      # interpreter and every run from 2026-08-19 exited 127.
       - name: Cache investments venv
         id: venv-cache
         uses: actions/cache@v6
         with:
           path: .venv
-          key: investments-venv-${{ runner.os }}-py3.11-defeatbeta-api-0.0.47
+          key: investments-venv-${{ runner.os }}-py${{ steps.setup-python.outputs.python-version }}-defeatbeta-api-0.0.47
 
       - name: Create venv and install fetch dependency
         if: steps.venv-cache.outputs.cache-hit != 'true'
