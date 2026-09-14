@@ -85,3 +85,17 @@ describe("calculateRentVsBuy", () => {
     expect(result.yearly[14].loanBalance).toBeCloseTo(0, 2);
   });
 });
+
+describe("calculateRentVsBuy break-even", () => {
+  it("drops the break-even when renting retakes the lead before the horizon", () => {
+    // Buying leads from about year 5 to 19 and falls behind again by year 20, so the
+    // verdict favors renting and no break-even holds through the end of the stay.
+    const result = calculateRentVsBuy(
+      input({ homeAppreciationPercent: 6, monthlyRent: 2_400, yearsStaying: 20, investmentReturnPercent: 10 }),
+    );
+    expect(result.verdict).toBe("renting");
+    expect(result.breakEvenYears).toBeNull();
+    const everAhead = result.yearly.some((year) => year.buyerNetWorth >= year.renterNetWorth);
+    expect(everAhead).toBe(true);
+  });
+});

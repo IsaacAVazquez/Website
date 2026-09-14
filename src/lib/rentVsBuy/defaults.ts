@@ -24,7 +24,7 @@ export function createAssumptionsMeta(filingStatus: FilingStatus): RentVsBuyAssu
     asOf: "2026-07",
     verified: false,
     taxNote:
-      "The tax benefit assumes you itemize and treats mortgage interest plus property tax (capped by SALT) as fully marginal. Sale gains are assumed to fall under the primary-residence exclusion, so no capital-gains tax is modeled.",
+      "With Itemize deductions on, the tax benefit treats mortgage interest plus property tax (capped by SALT) as fully marginal at your rate, without comparing against the standard deduction. With it off, no tax benefit is modeled. Investment growth on both sides is untaxed, and sale gains are assumed to fall under the primary-residence exclusion, so no capital-gains tax is modeled.",
   };
 }
 

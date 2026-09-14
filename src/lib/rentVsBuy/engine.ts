@@ -127,8 +127,13 @@ export function calculateRentVsBuy(input: RentVsBuyInput): RentVsBuyResult {
     // Appreciate the home for the end of the month.
     homeValue *= 1 + appreciationMonthly;
 
-    if (breakEvenMonths === null && buyerNetWorthNow() >= renterPortfolio) {
-      breakEvenMonths = month;
+    // Break-even is the month buying pulls ahead and stays ahead. When renting
+    // retakes the lead later, the earlier crossing no longer counts, since the
+    // verdict reads the final year and the two used to contradict each other.
+    if (buyerNetWorthNow() >= renterPortfolio) {
+      if (breakEvenMonths === null) breakEvenMonths = month;
+    } else {
+      breakEvenMonths = null;
     }
 
     if (month % 12 === 0) {

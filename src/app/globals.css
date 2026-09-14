@@ -253,6 +253,9 @@
    */
   --home-ink-muted: #68655A;
   --home-signal: #C93F19; /* @kind color */
+  /* Signal-coloured text on the raised tool rails measured 4.44:1 at #C93F19.
+     This shade clears 4.5:1 there without moving the brand accent itself. */
+  --home-signal-ink: #BF3B16; /* @kind color */
   --home-signal-soft: #F6E0D7;
   --home-acid: #D7E74F;
   --home-acid-soft: #EEF49D;
@@ -361,6 +364,7 @@
   --home-ink: #ECEAE2;
   --home-ink-muted: #9B9585;
   --home-signal: #FF6B3B; /* @kind color */
+  --home-signal-ink: #FF6B3B; /* @kind color */
   --home-signal-soft: #462214;
   --home-acid: #A8B846;
   --home-acid-soft: #596134;
@@ -2847,10 +2851,6 @@ textarea:invalid:not(:focus):not(:placeholder-shown) {
   border-color: var(--color-error);
 }
 
-input:valid:not(:placeholder-shown),
-textarea:valid:not(:placeholder-shown) {
-  border-color: var(--color-success);
-}
 
 @media (prefers-contrast: high) {
   :root {
