@@ -71,6 +71,11 @@ export function Catalog97Header() {
           display: "flex",
           alignItems: "baseline",
           justifyContent: "space-between",
+          // Left at --c97-sp-2 on purpose. Where the wordmark and nav wrap apart
+          // (320 through 768) the wordmark's 55px box overlaps the first nav
+          // row by 20px, but only in its empty padding below the glyphs. A
+          // --c97-sp-5 row gap cleared it and pushed the home page's "See the
+          // work" button below the fold at 320, which matters more.
           gap: "var(--c97-sp-2)",
           flexWrap: "wrap",
         }}

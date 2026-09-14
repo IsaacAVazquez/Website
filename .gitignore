@@ -12,6 +12,7 @@ coverage
 playwright-report/
 test-results/
 .playwright-mcp/
+.playwright-cli/
 
 # Environment
 .env

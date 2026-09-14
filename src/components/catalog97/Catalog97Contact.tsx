@@ -17,6 +17,14 @@ const elsewhere = [
   },
 ];
 
+// A 44px tap height for the channel links without moving them off their line,
+// the same padding and cancelling margin the header wordmark uses.
+const touchTarget = {
+  display: "inline-block",
+  paddingBlock: "var(--c97-touch-y)",
+  marginBlock: "calc(-1 * var(--c97-touch-y))",
+} as const;
+
 /**
  * Contact, in the Catalog 97 language, and deliberately the shortest of the
  * seven routes.
@@ -56,8 +64,7 @@ export function Catalog97Contact() {
             }}
           >
             Product roles, a second opinion on an analytics problem, or anything
-            on this site that has stopped telling the truth. I answer everything
-            within a couple of days.
+            on this site that looks wrong to you.
           </p>
         </div>
       </section>
@@ -89,7 +96,7 @@ export function Catalog97Contact() {
           }}
         >
           <div>
-            <p className="c97-kicker">Write to me</p>
+            <h2 className="c97-kicker">Write to me</h2>
             <p
               className="c97-serif c97-h3"
               style={{
@@ -97,7 +104,7 @@ export function Catalog97Contact() {
                 wordBreak: "break-word",
               }}
             >
-              <a href={`mailto:${profile.email}`} className="c97-link">
+              <a href={`mailto:${profile.email}`} className="c97-link" style={touchTarget}>
                 {profile.email}
               </a>
             </p>
@@ -110,12 +117,12 @@ export function Catalog97Contact() {
               }}
             >
               If you want to talk about a specific project on this site, name it
-              in the subject line and I will bring the numbers.
+              in the subject line so I can pull up the details before I reply.
             </p>
 
-            <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-4)" }}>
+            <h2 className="c97-kicker" style={{ marginTop: "var(--c97-sp-4)" }}>
               Response time
-            </p>
+            </h2>
             <p
               className="c97-prose"
               style={{
@@ -130,7 +137,7 @@ export function Catalog97Contact() {
           </div>
 
           <div>
-            <p className="c97-kicker">Or go direct</p>
+            <h2 className="c97-kicker">Elsewhere</h2>
             <div
               style={{
                 display: "grid",
@@ -140,15 +147,18 @@ export function Catalog97Contact() {
             >
               {elsewhere.map((channel) => (
                 <div key={channel.label}>
+                  <p className="c97-kicker">{channel.label}</p>
                   <p
                     className="c97-serif c97-lead"
-                    style={{ wordBreak: "break-word" }}
+                    style={{ marginTop: "var(--c97-sp-1)", wordBreak: "break-word" }}
                   >
                     <a
                       href={channel.href}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="c97-link"
+                      aria-label={channel.label + ", " + channel.value}
+                      style={touchTarget}
                     >
                       {channel.value}
                     </a>

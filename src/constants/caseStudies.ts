@@ -59,11 +59,11 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     slug: "investment-analytics-platform",
     title: "Investment Analytics Platform",
     description:
-      "Full-stack investment platform with live Yahoo Finance data. Portfolio tracking, gain/loss analytics, and side-by-side stock comparison with 30+ metrics and analyst consensus ratings.",
+      "Full-stack investment platform reading committed snapshots of a Yahoo Finance dataset, with Finnhub quotes. Portfolio tracking, gain/loss analytics, and side-by-side stock comparison with 30+ metrics and analyst consensus ratings.",
     role: "Full-Stack Developer & Designer",
     timeline: "2025",
-    tools: ["Next.js", "TypeScript", "Yahoo Finance API", "Tailwind CSS"],
-    metrics: "Live data · 30+ metrics per stock · Analyst consensus ratings",
+    tools: ["Next.js", "TypeScript", "Finnhub API", "Tailwind CSS"],
+    metrics: "Committed snapshots · 30+ metrics per stock · Analyst consensus ratings",
     github: "https://github.com/IsaacAVazquez",
     link: "/investments",
     featured: true,
@@ -829,7 +829,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
     overview: {
       summary:
-        "I built a BART dashboard that turns a checked-in snapshot of the BART public API into one calm surface for the line map, the next trains at any station, and live service alerts.",
+        "I built a BART dashboard that turns a checked-in snapshot of the BART public API into one page for the line map, the next trains at any station, and live service alerts.",
       impact:
         "Puts the line map, station departures, and service alerts on a single screen instead of three separate apps.",
     },
@@ -1192,6 +1192,42 @@ function getStudiesByOrderedSlugs(slugs: readonly string[]): CaseStudyData[] {
     return study ? [study] : [];
   });
 }
+
+// The build note in content/blog for each project that has one, keyed by
+// project slug. March Madness and Travel Deal Lab have none.
+export const PROJECT_BUILD_NOTES: Readonly<Record<string, string>> = {
+  "investment-analytics-platform": "building-an-investment-research-platform",
+  "fantasy-football-analytics": "building-a-fantasy-football-rankings-platform",
+  "interchange-iq": "interchange-iq-payment-fee-analyzer",
+  "budget-planner": "building-a-budget-planner",
+  "rent-vs-buy-calculator": "building-a-rent-vs-buy-calculator",
+  "news-pulse-dashboard": "building-news-pulse-dashboard",
+  "decision-lab": "building-decision-lab",
+  "automation-enablement-assistant": "building-an-automation-enablement-assistant",
+  "food-map": "building-an-austin-food-map",
+  "la-liga-pulse": "building-a-la-liga-dashboard",
+  "mba-role-tracker": "building-an-mba-recruiting-tracker",
+  "spacex-mission-control": "building-spacex-mission-control",
+  "premier-league-pulse": "building-a-premier-league-dashboard",
+  "frontier-model-tracker": "building-a-frontier-model-tracker",
+  "ai-dev-tool-ecosystem": "mapping-the-ai-dev-tool-ecosystem",
+  "github-trending-pulse": "building-a-github-trending-dashboard",
+  "tech-startup-tracker": "building-a-tech-startup-tracker",
+  "formula-1-pulse": "building-a-formula-1-dashboard",
+  "fantasy-formula-1-optimizer": "building-a-fantasy-formula-1-optimizer",
+  "pga-tour-pulse": "building-a-pga-tour-dashboard",
+  "earthquake-pulse": "building-an-earthquake-dashboard",
+  "world-cup-pulse": "building-a-world-cup-dashboard",
+  "bay-area-transit-pulse": "building-a-bart-transit-dashboard",
+  "mlb-pulse": "building-an-mlb-dashboard",
+  "nba-pulse": "building-an-nba-dashboard",
+  "nfl-pulse": "building-an-nfl-dashboard",
+  "polling-aggregator": "building-a-polling-aggregator",
+  "museum-log": "building-a-museum-log",
+  "wine-cellar": "building-a-wine-cellar-app",
+  "recipe-finder": "building-a-pantry-aware-recipe-finder",
+  "travel-planner": "building-a-travel-planner",
+};
 
 export function getProjectCardSummary(study: CaseStudyData): string {
   return study.overview.summary.trim() || study.description;

@@ -79,7 +79,7 @@ const experience: Entry[] = [
     when: "Feb to Aug 2025",
     kind: "Full time",
     description:
-      "Translated leadership and user feedback into product requirements for RunningMate, a campaign management platform, aligning engineering and product teams. Redesigned onboarding tutorials and first-time user flows after analyzing clickstream data, lifting activation 25%, and built AI-powered QA and workflow automation that cut bug triage time 40%. Standardized manual and automated testing across two core products, moving releases from monthly to biweekly and cutting release validation time 30%.",
+      "Translated leadership and user feedback into product requirements for RunningMate, a campaign management platform, aligning engineering and product teams. Redesigned onboarding tutorials and first-time user flows after analyzing clickstream data, lifting activation 25%, and built AI-powered QA and workflow automation that cut bug triage time 40%. Standardized manual and automated testing across two core products, moving releases from monthly to biweekly and cutting release validation time 30%. Built a real-time event system in Google Cloud that moved clients to self-service and cut onboarding time 60%.",
   },
   {
     role: "Quality Assurance Analyst",
@@ -300,7 +300,7 @@ export function Catalog97Resume() {
             className="c97-serif c97-h2"
             style={{ maxWidth: "var(--c97-measure-tight)" }}
           >
-            Two pages, no summary paragraph, and the numbers are all checkable.
+            The one-page version, ready to print.
           </p>
           <a className="c97-btn c97-btn-invert" href={RESUME_PDF} download>
             Download PDF

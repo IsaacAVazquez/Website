@@ -192,10 +192,8 @@ describe("WritingPage", () => {
   it("keeps curated and archive-only posts separated by the active filter", () => {
     render(<WritingPage />);
 
-    // The v3 layout splits the filtered list across two sections — the
-    // featured card (first match) and the archive grid (the rest). Either
-    // location counts as "visible after this filter" from the user's
-    // perspective, so the assertion is page-scoped, not grid-scoped.
+    // The featured pair only renders on the default view, so once a filter,
+    // search, or sort is on, every match is an archive row (an h3).
     const filterControls = within(
       screen.getByRole("group", { name: "Filter articles" }),
     );
@@ -203,7 +201,7 @@ describe("WritingPage", () => {
     fireEvent.click(filterControls.getByRole("button", { name: /PM Workflows/i }));
 
     expect(
-      screen.getByRole("heading", { level: 2, name: "Lead Workflow Essay" }),
+      screen.getByRole("heading", { level: 3, name: "Lead Workflow Essay" }),
     ).toBeVisible();
     expect(
       screen.queryByRole("heading", { level: 2, name: "Weekly Tech Note" }),
@@ -217,7 +215,7 @@ describe("WritingPage", () => {
     );
 
     expect(
-      screen.getByRole("heading", { level: 2, name: "Weekly Tech Note" }),
+      screen.getByRole("heading", { level: 3, name: "Weekly Tech Note" }),
     ).toBeVisible();
     expect(
       screen.queryByRole("heading", { level: 2, name: "Lead Workflow Essay" }),
@@ -234,7 +232,7 @@ describe("WritingPage", () => {
     fireEvent.change(search, { target: { value: "weekly commentary" } });
 
     expect(
-      screen.getByRole("heading", { level: 2, name: "Weekly Tech Note" }),
+      screen.getByRole("heading", { level: 3, name: "Weekly Tech Note" }),
     ).toBeVisible();
     expect(
       screen.queryByRole("heading", { name: "Lead Workflow Essay" }),
@@ -246,7 +244,7 @@ describe("WritingPage", () => {
     });
 
     expect(
-      screen.getByRole("heading", { level: 2, name: "Lead Systems Essay" }),
+      screen.getByRole("heading", { level: 3, name: "Lead Systems Essay" }),
     ).toBeVisible();
     expect(
       screen.getByRole("link", { name: "PM Workflows" }),

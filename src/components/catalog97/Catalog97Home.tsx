@@ -21,6 +21,14 @@ export interface Catalog97HomeProps {
   liveFeed: HomeLiveFeedData;
 }
 
+// "Sep 16" in UTC, so the server render and the schedule it came from agree.
+function formatUtcDay(iso: string): string {
+  const date = new Date(iso);
+  return Number.isNaN(date.getTime())
+    ? ""
+    : date.toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
+}
+
 /**
  * Home, in the Catalog 97 language.
  *
@@ -43,10 +51,10 @@ export function Catalog97Home({
   liveToolGroups,
   liveFeed,
 }: Catalog97HomeProps) {
-  // Flattened across groups so the dashboards table shows breadth rather than
-  // four rows of the same category.
+  // The first tool from each category, so the dashboards table shows breadth.
+  // Flattening every group and taking the first five gave four Fintech rows.
   const dashboardTools = liveToolGroups.flatMap((group) =>
-    group.tools.map((tool) => ({ ...tool, groupLabel: group.label })),
+    group.tools.slice(0, 1).map((tool) => ({ ...tool, groupLabel: group.label })),
   );
 
   const [leadPost, ...followingPosts] = recentPosts;
@@ -118,10 +126,10 @@ export function Catalog97Home({
                 maxWidth: "var(--c97-measure-body)",
               }}
             >
-              Product manager and builder, Berkeley Haas MBA &rsquo;27. What
-              you&rsquo;re looking at is a survey of the work, and all{" "}
-              {heroIndex.liveToolCount} tools in it are live in production right
-              now, running on real data that refreshes itself.
+              Product manager and builder, Berkeley Haas MBA &rsquo;27. I came
+              to product through quality engineering at Civitech, and every
+              tool here is live, with the ones that read outside data
+              refreshing on a schedule.
             </p>
 
             <div
@@ -142,11 +150,9 @@ export function Catalog97Home({
           </div>
 
           {/*
-            The caption goes through the slot's own `caption` prop, which is
-            what sets it under the field in the label step. It used to render as
-            a loose sibling below the h1, where it split the headline from the
-            paragraph that supports it and read as a third piece of the pitch
-            rather than as a note about the picture.
+            No caption. The one this carried was the design's photo direction
+            ("warm 35mm, natural light, a little grain"), which described a
+            picture that was never taken rather than the headshot on screen.
           */}
           <Catalog97Slot
             surface="tobacco"
@@ -154,7 +160,6 @@ export function Catalog97Home({
             src="/images/headshot-home.webp"
             alt="Isaac Vazquez"
             priority
-            caption="One dominant image per view · warm 35mm, natural light, a little grain"
           />
         </div>
       </section>
@@ -187,6 +192,26 @@ export function Catalog97Home({
             >
               All {heroIndex.projectCount} projects
             </Link>
+            {/*
+              A track-record figure in place of the tool count this route used
+              to lead with. $4M is the pricing strategy result on the résumé and
+              the 2023 entry in personal.ts, so change all three together.
+            */}
+            <div style={{ marginTop: "var(--c97-sp-4)" }}>
+              <div
+                className="c97-serif c97-tabular"
+                style={{
+                  fontSize: "var(--c97-fs-h1)",
+                  lineHeight: "var(--c97-lh-display)",
+                  color: "var(--c97-ink)",
+                }}
+              >
+                $4M
+              </div>
+              <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-2)" }}>
+                Added revenue from a pricing strategy I led at Civitech
+              </p>
+            </div>
           </div>
 
           <div
@@ -251,7 +276,7 @@ export function Catalog97Home({
             <div>
               <h2 className="c97-serif c97-h2">Live dashboards</h2>
               <Link href="/dashboards" className="c97-sectionlink">
-                All {dashboardTools.length}
+                All {heroIndex.liveToolCount}
               </Link>
             </div>
             <Catalog97Plate value="03" />
@@ -286,7 +311,7 @@ export function Catalog97Home({
                     padding: "0 0 var(--c97-sp-2)",
                   }}
                 >
-                  What it holds
+                  Category
                 </th>
               </tr>
             </thead>
@@ -343,21 +368,6 @@ export function Catalog97Home({
             className="c97-columns"
             style={{ marginTop: "var(--c97-sp-5)" }}
           >
-            <div>
-              <div
-                className="c97-serif c97-tabular"
-                style={{
-                  fontSize: "var(--c97-fs-h1)",
-                  lineHeight: "var(--c97-lh-display)",
-                }}
-              >
-                {heroIndex.liveToolCount}
-              </div>
-              <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-2)" }}>
-                Live tools in production
-              </p>
-            </div>
-
             {liveFeed.quake ? (
               <div>
                 <div
@@ -393,8 +403,10 @@ export function Catalog97Home({
                   className="c97-kicker"
                   style={{ marginTop: "var(--c97-sp-2)" }}
                 >
-                  {liveFeed.market.symbol} day move ·{" "}
-                  {liveFeed.market.changePct.toFixed(2)}%
+                  {liveFeed.market.asOfLabel
+                    ? `${liveFeed.market.symbol} move on ${liveFeed.market.asOfLabel}`
+                    : `${liveFeed.market.symbol} day move`}{" "}
+                  · {liveFeed.market.changePct.toFixed(2)}%
                 </p>
               </div>
             ) : null}
@@ -414,7 +426,7 @@ export function Catalog97Home({
                   className="c97-kicker"
                   style={{ marginTop: "var(--c97-sp-2)" }}
                 >
-                  Next launch · {liveFeed.launch.vehicle}
+                  Next launch {formatUtcDay(liveFeed.launch.dateUtc)} · {liveFeed.launch.vehicle}
                 </p>
               </div>
             ) : null}
