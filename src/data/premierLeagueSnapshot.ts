@@ -67,8 +67,8 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "draw": 2,
         "lost": 0,
         "points": 8,
-        "goalsFor": 6,
-        "goalsAgainst": 2,
+        "goalsFor": 7,
+        "goalsAgainst": 3,
         "goalDifference": 4,
         "team": {
           "id": "341",
@@ -247,8 +247,8 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "draw": 2,
         "lost": 1,
         "points": 5,
-        "goalsFor": 6,
-        "goalsAgainst": 7,
+        "goalsFor": 7,
+        "goalsAgainst": 8,
         "goalDifference": -1,
         "team": {
           "id": "67",
@@ -422,6 +422,32 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
       }
     ],
     "recentFixtures": [
+      {
+        "id": "560579",
+        "utcDate": "2026-09-14T19:00:00Z",
+        "status": "FINISHED",
+        "matchday": 4,
+        "stage": "REGULAR_SEASON",
+        "homeTeam": {
+          "id": "341",
+          "name": "Leeds United FC",
+          "shortName": "Leeds United",
+          "tla": "LEE",
+          "crest": "https://crests.football-data.org/341.png"
+        },
+        "awayTeam": {
+          "id": "67",
+          "name": "Newcastle United FC",
+          "shortName": "Newcastle",
+          "tla": "NEW",
+          "crest": "https://crests.football-data.org/67.png"
+        },
+        "score": {
+          "winner": "HOME_TEAM",
+          "home": 4,
+          "away": 1
+        }
+      },
       {
         "id": "560580",
         "utcDate": "2026-09-13T15:30:00Z",
@@ -601,32 +627,6 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "score": {
           "winner": "AWAY_TEAM",
           "home": 1,
-          "away": 2
-        }
-      },
-      {
-        "id": "560576",
-        "utcDate": "2026-09-12T14:00:00Z",
-        "status": "FINISHED",
-        "matchday": 4,
-        "stage": "REGULAR_SEASON",
-        "homeTeam": {
-          "id": "1044",
-          "name": "AFC Bournemouth",
-          "shortName": "Bournemouth",
-          "tla": "BOU",
-          "crest": "https://crests.football-data.org/bournemouth.png"
-        },
-        "awayTeam": {
-          "id": "402",
-          "name": "Brentford FC",
-          "shortName": "Brentford",
-          "tla": "BRE",
-          "crest": "https://crests.football-data.org/402.png"
-        },
-        "score": {
-          "winner": "DRAW",
-          "home": 2,
           "away": 2
         }
       }
@@ -1130,10 +1130,10 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
       },
       {
         "matchday": 4,
-        "totalGoals": 24
+        "totalGoals": 29
       }
     ],
-    "generatedAt": "2026-09-14T20:19:09.249Z"
+    "generatedAt": "2026-09-15T04:57:20.098Z"
   },
   "teamSnapshots": {
     "57": {
@@ -1403,7 +1403,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 8,
         "goalsAgainst": 1
       },
-      "generatedAt": "2026-09-14T20:19:09.249Z"
+      "generatedAt": "2026-09-15T04:57:20.098Z"
     },
     "58": {
       "team": {
@@ -1941,7 +1941,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 10,
         "goalsAgainst": 9
       },
-      "generatedAt": "2026-09-14T20:19:09.249Z"
+      "generatedAt": "2026-09-15T04:57:20.098Z"
     },
     "62": {
       "team": {
@@ -2210,7 +2210,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 5,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-09-14T20:19:09.249Z"
+      "generatedAt": "2026-09-15T04:57:20.098Z"
     },
     "63": {
       "team": {
@@ -2479,7 +2479,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 4,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-09-14T20:19:09.249Z"
+      "generatedAt": "2026-09-15T04:57:20.098Z"
     },
     "64": {
       "team": {
@@ -2748,7 +2748,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 6,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-09-14T20:19:09.249Z"
+      "generatedAt": "2026-09-15T04:57:20.098Z"
     },
     "65": {
       "team": {
@@ -3017,7 +3017,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 8,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-09-14T20:19:09.249Z"
+      "generatedAt": "2026-09-15T04:57:20.098Z"
     },
     "66": {
       "team": {
@@ -3286,7 +3286,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 7,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-09-14T20:19:09.249Z"
+      "generatedAt": "2026-09-15T04:57:20.098Z"
     },
     "67": {
       "team": {
@@ -3304,6 +3304,32 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "manager": null
       },
       "recentFixtures": [
+        {
+          "id": "560579",
+          "utcDate": "2026-09-14T19:00:00Z",
+          "status": "FINISHED",
+          "matchday": 4,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "341",
+            "name": "Leeds United FC",
+            "shortName": "Leeds United",
+            "tla": "LEE",
+            "crest": "https://crests.football-data.org/341.png"
+          },
+          "awayTeam": {
+            "id": "67",
+            "name": "Newcastle United FC",
+            "shortName": "Newcastle",
+            "tla": "NEW",
+            "crest": "https://crests.football-data.org/67.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 4,
+            "away": 1
+          }
+        },
         {
           "id": "560571",
           "utcDate": "2026-09-05T11:30:00Z",
@@ -3517,18 +3543,19 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
       ],
       "form": {
         "sequence": [
+          "L",
           "D",
           "W",
           "D"
         ],
         "wins": 1,
         "draws": 2,
-        "losses": 0,
+        "losses": 1,
         "points": 5,
-        "goalsFor": 6,
-        "goalsAgainst": 4
+        "goalsFor": 7,
+        "goalsAgainst": 8
       },
-      "generatedAt": "2026-09-14T20:19:09.249Z"
+      "generatedAt": "2026-09-15T04:57:20.098Z"
     },
     "71": {
       "team": {
@@ -3797,7 +3824,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 3,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-09-14T20:19:09.249Z"
+      "generatedAt": "2026-09-15T04:57:20.098Z"
     },
     "73": {
       "team": {
@@ -4066,7 +4093,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-09-14T20:19:09.249Z"
+      "generatedAt": "2026-09-15T04:57:20.098Z"
     },
     "76": {
       "team": {
@@ -4498,7 +4525,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 5,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-09-14T20:19:09.249Z"
+      "generatedAt": "2026-09-15T04:57:20.098Z"
     },
     "328": {
       "team": {
@@ -4679,6 +4706,32 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "manager": null
       },
       "recentFixtures": [
+        {
+          "id": "560579",
+          "utcDate": "2026-09-14T19:00:00Z",
+          "status": "FINISHED",
+          "matchday": 4,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "341",
+            "name": "Leeds United FC",
+            "shortName": "Leeds United",
+            "tla": "LEE",
+            "crest": "https://crests.football-data.org/341.png"
+          },
+          "awayTeam": {
+            "id": "67",
+            "name": "Newcastle United FC",
+            "shortName": "Newcastle",
+            "tla": "NEW",
+            "crest": "https://crests.football-data.org/67.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 4,
+            "away": 1
+          }
+        },
         {
           "id": "560564",
           "utcDate": "2026-09-05T14:00:00Z",
@@ -4892,18 +4945,19 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
       ],
       "form": {
         "sequence": [
+          "W",
           "D",
           "D",
           "W"
         ],
-        "wins": 1,
+        "wins": 2,
         "draws": 2,
         "losses": 0,
-        "points": 5,
-        "goalsFor": 3,
-        "goalsAgainst": 2
+        "points": 8,
+        "goalsFor": 7,
+        "goalsAgainst": 3
       },
-      "generatedAt": "2026-09-14T20:19:09.249Z"
+      "generatedAt": "2026-09-15T04:57:20.098Z"
     },
     "349": {
       "team": {
@@ -5172,7 +5226,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 7,
         "goalsAgainst": 10
       },
-      "generatedAt": "2026-09-14T20:19:09.249Z"
+      "generatedAt": "2026-09-15T04:57:20.098Z"
     },
     "351": {
       "team": {
@@ -5441,7 +5495,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 4,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-09-14T20:19:09.249Z"
+      "generatedAt": "2026-09-15T04:57:20.098Z"
     },
     "354": {
       "team": {
@@ -5710,7 +5764,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 6,
         "goalsAgainst": 11
       },
-      "generatedAt": "2026-09-14T20:19:09.249Z"
+      "generatedAt": "2026-09-15T04:57:20.098Z"
     },
     "397": {
       "team": {
@@ -5979,7 +6033,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 13,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-09-14T20:19:09.249Z"
+      "generatedAt": "2026-09-15T04:57:20.098Z"
     },
     "402": {
       "team": {
@@ -6248,7 +6302,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 7,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-09-14T20:19:09.249Z"
+      "generatedAt": "2026-09-15T04:57:20.098Z"
     },
     "563": {
       "team": {
@@ -6680,7 +6734,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 6,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-09-14T20:19:09.249Z"
+      "generatedAt": "2026-09-15T04:57:20.098Z"
     },
     "1076": {
       "team": {
@@ -6949,7 +7003,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 10
       },
-      "generatedAt": "2026-09-14T20:19:09.249Z"
+      "generatedAt": "2026-09-15T04:57:20.098Z"
     }
   }
 };
