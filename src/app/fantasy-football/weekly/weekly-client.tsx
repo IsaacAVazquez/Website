@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { MyTeamPanel } from "@/components/fantasy/MyTeamPanel";
+import { useFantasyMyTeam } from "@/hooks/useFantasyMyTeam";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   startTransition,
@@ -219,6 +221,7 @@ export function WeeklyBoardClient({
   const router = useRouter();
   const searchParams = useSearchParams();
   const tableLayout = useTableLayout();
+  const savedTeam = useFantasyMyTeam(snapshot?.season ?? new Date().getUTCFullYear());
 
   // The URL is the source of truth, the way the rankings board does it, so a
   // weekly board can be linked and restored. The server-normalized props cover
@@ -227,12 +230,13 @@ export function WeeklyBoardClient({
   const boardParam = searchParams.get("board");
   const scoring =
     scoringParam === null
-      ? initialState.scoring
+      ? savedTeam.hasSavedTeam ? savedTeam.team.scoring : initialState.scoring
       : normalizeFantasyRouteScoring(scoringParam);
   const board =
     boardParam === null ? initialState.board : normalizeWeeklyBoard(boardParam);
 
   function updateRouteState(next: Partial<WeeklyRouteState>) {
+    if (next.scoring) savedTeam.update(current => ({ ...current, scoring: next.scoring! }));
     const params = new URLSearchParams(Array.from(searchParams.entries()));
     params.set("scoring", next.scoring ?? scoring);
     // The waiver list spans both boards, so that page carries no board choice.
@@ -353,19 +357,15 @@ export function WeeklyBoardClient({
           </h1>
           {view === "rankings" ? (
             <p className="mt-4 max-w-[68ch] text-base leading-7 text-[var(--home-ink-muted)]">
-              Every other board here is a draft board, and a draft board stops
-              describing anything real once the season opens. This one refreshes
-              through the season, so it is what I would actually use on a
-              Tuesday. It carries the weekly flex and quarterback consensus,
-              each player&rsquo;s opponent, and how widely he is rostered. The
-              adds that fall out of it are on the{" "}
+              I use this board to compare weekly rankings, opponents, and rostered
+              percentages. Save your team below for lineup and add/drop comparisons,
+              or browse the{" "}
               <Link
                 href="/fantasy-football/waivers"
                 className="underline decoration-[var(--home-signal)] underline-offset-4"
               >
                 waiver targets
-              </Link>{" "}
-              page.
+              </Link>.
             </p>
           ) : (
             <p className="mt-4 max-w-[68ch] text-base leading-7 text-[var(--home-ink-muted)]">
@@ -487,9 +487,7 @@ export function WeeklyBoardClient({
 
         {snapshot && activeBoard ? (
           <>
-            {/* Two choices, not six. Each group gets its own visible label and
-                the space between groups is wider than the space inside one, so
-                scoring and board stop reading as one row of pills. */}
+            {/* Scoring applies to the team workspace and the reference board. */}
             <div className="flex flex-wrap gap-x-8 gap-y-4">
               <fieldset>
                 <legend className={GROUP_LEGEND_CLASS}>Scoring</legend>
@@ -513,34 +511,13 @@ export function WeeklyBoardClient({
                   ))}
                 </div>
               </fieldset>
-              {view === "rankings" ? (
-                <fieldset>
-                  <legend className={GROUP_LEGEND_CLASS}>Board</legend>
-                  <div className="mt-2 flex flex-wrap items-center gap-2">
-                    {(
-                      [
-                        ["flex", "Flex (RB, WR, TE)"],
-                        ["quarterbacks", "Quarterback"],
-                      ] as const
-                    ).map(([value, label]) => (
-                      <button
-                        key={value}
-                        type="button"
-                        aria-pressed={board === value}
-                        onClick={() => updateRouteState({ board: value })}
-                        className={`${TOGGLE_CLASS} ${
-                          board === value
-                            ? "border-[var(--home-signal)] bg-[var(--home-paper-alt)] text-[var(--home-ink)]"
-                            : "border-[var(--home-rule)] bg-[var(--home-paper)] text-[var(--home-ink-muted)]"
-                        }`}
-                      >
-                        {label}
-                      </button>
-                    ))}
-                  </div>
-                </fieldset>
-              ) : null}
+              <a href={view === "waivers" ? "#weekly-waivers" : "#weekly-board"}
+                className="inline-flex min-h-touch items-center self-end text-sm underline decoration-[var(--home-signal)] underline-offset-4">
+                {view === "waivers" ? "Jump to waiver targets" : "Jump to rankings"}
+              </a>
             </div>
+
+            <MyTeamPanel snapshot={snapshot} scoring={scoring} onScoringChange={value => updateRouteState({ scoring: value })} />
 
             {view === "waivers" ? (
               <section
@@ -549,7 +526,7 @@ export function WeeklyBoardClient({
               >
                 <h2
                   id="weekly-waivers"
-                  className="text-lg font-semibold tracking-[-0.02em] text-[var(--home-ink)]"
+                  className="scroll-mt-24 text-2xl font-semibold tracking-[-0.02em] text-[var(--home-ink)]"
                 >
                   This week&rsquo;s list
                 </h2>
@@ -740,7 +717,7 @@ export function WeeklyBoardClient({
               <section aria-labelledby="weekly-board" className="home-card-static p-5">
                 <h2
                   id="weekly-board"
-                  className="text-lg font-semibold tracking-[-0.02em] text-[var(--home-ink)]"
+                  className="scroll-mt-24 text-2xl font-semibold tracking-[-0.02em] text-[var(--home-ink)]"
                 >
                   {board === "flex" ? "Flex rankings" : "Quarterback rankings"}
                 </h2>
@@ -755,6 +732,31 @@ export function WeeklyBoardClient({
                   position cut. The quarterback board is one position already,
                   so the pills only render for flex. */}
                 <div className="mt-4 flex flex-wrap gap-x-8 gap-y-4">
+                  <fieldset>
+                  <legend className={GROUP_LEGEND_CLASS}>Board</legend>
+                  <div className="mt-2 flex flex-wrap items-center gap-2">
+                    {(
+                      [
+                        ["flex", "Flex (RB, WR, TE)"],
+                        ["quarterbacks", "Quarterback"],
+                      ] as const
+                    ).map(([value, label]) => (
+                      <button
+                        key={value}
+                        type="button"
+                        aria-pressed={board === value}
+                        onClick={() => updateRouteState({ board: value })}
+                        className={`${TOGGLE_CLASS} ${
+                          board === value
+                            ? "border-[var(--home-signal)] bg-[var(--home-paper-alt)] text-[var(--home-ink)]"
+                            : "border-[var(--home-rule)] bg-[var(--home-paper)] text-[var(--home-ink-muted)]"
+                        }`}
+                      >
+                        {label}
+                      </button>
+                    ))}
+                  </div>
+                </fieldset>
                   <div>
                     <label
                       htmlFor="weekly-board-search"

@@ -250,7 +250,8 @@ describe("FantasyFootballClient", () => {
     expect(screen.queryByRole("navigation", { name: "Fantasy tools" })).not.toBeInTheDocument();
     expect(
       within(screen.getByRole("navigation", { name: "More fantasy tools" })).getAllByRole("link")
-    ).toHaveLength(6);
+    ).toHaveLength(7);
+    expect(screen.getByRole("link", { name: "My team" })).toHaveAttribute("href", "/fantasy-football/weekly#my-team");
 
     fireEvent.click(screen.getByRole("button", { name: "Open Christian McCaffrey detail" }));
     const dialog = screen.getByRole("dialog", { name: "Christian McCaffrey detail" });

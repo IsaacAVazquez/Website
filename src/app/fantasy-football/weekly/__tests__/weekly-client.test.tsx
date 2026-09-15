@@ -310,7 +310,7 @@ describe("WeeklyBoardClient waivers view", () => {
   it("puts the gap beside the player, labels the scroller, and announces the count", () => {
     renderClient("waivers");
 
-    expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent(
+    expect(screen.getByRole("heading", { level: 2, name: "This week’s list" })).toHaveTextContent(
       "This week’s list",
     );
     expect(screen.getByRole("status")).toHaveTextContent(

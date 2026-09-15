@@ -434,6 +434,16 @@ npx playwright test e2e/fantasy-football.spec.ts
 | P2 | Separate best ball slates lack matching ADP | The tool removes market value rather than reusing the standard-season price. |
 | P2 | Prior-season points per game carry no role or opponent adjustment | The panel names its season and its games-played count, and this spec says plainly that the figures describe what already happened and forecast nothing. A rookie or a player under the four-game floor gets no panel at all. |
 
+## Saved roster and weekly comparisons
+
+My team separates weekly lineup, roster editing, and league settings into three views. A saved roster opens on the weekly lineup, with an add/drop comparison alongside it on desktop and below it on mobile. An empty roster opens on player search and draft import. Adding players keeps the editor open, and the user chooses when to return to the lineup. Scoring applies across the workspace and reference board, while the QB/flex board selector stays beside the rankings it controls.
+
+The weekly and waiver pages share a My team panel at `/fantasy-football/weekly#my-team`. It saves one roster per season in `fantasy-my-team-v1-<season>`, along with scoring, league size, starting positions, and manually entered availability. The page URL takes precedence over saved scoring. Draft imports copy the user's picks and league settings from the same season's redraft tracker and preserve existing roster players. They never write to the draft tracker or best ball storage.
+
+I use weekly consensus to fill required positions first, then RB/WR/TE flex slots. Quarterback ranks stay on their own board. An add/drop comparison shows whether the addition enters that lineup and whether the drop leaves a position without a ranked player. Rank differences are calculated only within the same source board. League size is saved for context and does not adjust the ranks. The comparison has no rest-of-season value, projected points, or waiver bid estimate.
+
+Players missing from the weekly board stay on the roster with an explicit coverage note. Kicker and defense ranks are unavailable. Bye notes use only bye weeks saved with imported draft players, and there is no live injury feed. Stale source data pauses recommendations. Saving a move changes the browser roster only, and the actual transaction happens in the user's league.
+
 ## Draft-day operating rule
 
 Before a real draft, I would confirm the scoring format, team count, rounds, lineup, source dates, and current player news. During the room, I would use ADP as the price, ECR and tiers as a second opinion, roster feasibility as the constraint, and correlation as a close-call adjustment. I would not chase a position run or Week 17 opponent past a full tier. I would ignore a Value or Reach label when the player drawer says the sample is early. Draft Outlook remains a check on the process after four picks and does not decide the season.
