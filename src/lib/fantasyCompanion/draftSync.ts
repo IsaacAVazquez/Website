@@ -17,6 +17,8 @@ export interface FantasyDraftSyncMessage {
   provider: FantasyDraftSyncProvider;
   picks: FantasyDraftObservedPick[];
   observedAt: string;
+  /** URL captured before reading picks, used to reject other draft rooms. */
+  roomUrl?: string;
 }
 
 export type FantasyDraftSyncResult =

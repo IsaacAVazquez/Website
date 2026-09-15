@@ -261,4 +261,55 @@ describe("autodraft page matching", () => {
     expect(statuses.at(-1)?.phase).toBe("armed");
     controller.stop();
   });
+
+  it("does not confirm a pick after Stop during the confirmation delay", async () => {
+    document.body.innerHTML = `
+      <p>You are on the clock</p>
+      <div role="row"><span>Amon-Ra St. Brown</span><span>DET WR</span><button>Draft</button></div>
+    `;
+    const statuses: AutoDraftStatus[] = [];
+    const controller = startAutoDraftController("espn", status => statuses.push(status));
+    const confirm = jest.fn();
+    document.querySelector("button")!.addEventListener("click", () => {
+      const dialog = document.createElement("div");
+      dialog.setAttribute("role", "dialog");
+      dialog.innerHTML = "<button>Confirm</button>";
+      dialog.querySelector("button")!.addEventListener("click", confirm);
+      document.body.append(dialog);
+      void controller.handleCommand({ type: "FANTASY_AUTODRAFT_DISARM", provider: "espn" });
+    });
+    await controller.handleCommand({
+      type: "FANTASY_AUTODRAFT_ARM", provider: "espn", live: true, pickDelayMs: 1000, queue,
+    });
+    await jest.advanceTimersByTimeAsync(5000);
+    expect(confirm).not.toHaveBeenCalled();
+    expect(statuses.at(-1)?.phase).toBe("stopped");
+    expect(statuses.some(status => status.phase === "submitted")).toBe(false);
+    controller.stop();
+  });
+
+  it("searches for an unmounted preferred player before drafting a visible fallback", async () => {
+    document.body.innerHTML = `
+      <p>You are on the clock</p>
+      <input type="search" />
+      <div id="results"><div role="row"><span>Fallback Player</span><span>KC WR</span><button>Draft</button></div></div>
+    `;
+    const input = document.querySelector("input")!;
+    const fallback = jest.spyOn(document.querySelector("button")!, "click");
+    const preferred = jest.fn();
+    input.addEventListener("input", () => {
+      if (input.value !== queue[0].name) return;
+      document.getElementById("results")!.innerHTML = '<div role="row"><span>Amon-Ra St. Brown</span><span>DET WR</span><button>Draft</button></div>';
+      document.querySelector("button")!.addEventListener("click", preferred);
+    });
+    const controller = startAutoDraftController("espn", () => {});
+    await controller.handleCommand({
+      type: "FANTASY_AUTODRAFT_ARM", provider: "espn", live: true, pickDelayMs: 1000,
+      queue: [...queue, { name: "Fallback Player", team: "KC", position: "WR", rank: 2 }],
+    });
+    await jest.advanceTimersByTimeAsync(5000);
+    expect(preferred).toHaveBeenCalledTimes(1);
+    expect(fallback).not.toHaveBeenCalled();
+    controller.stop();
+  });
 });

@@ -98,6 +98,7 @@ import {
   type CompanionSnapshot,
 } from "./snapshot-client";
 import type { AutoDraftCommand, AutoDraftStatus } from "./autodraft-controller";
+import { acceptsDraftSync, createDraftCommandSession, draftRoomUrl, type DraftTabTarget } from "./draft-tab";
 import { readLocalValue, removeLocalValue, writeLocalValue } from "./storage";
 
 const DRAFT_STORAGE_KEY = "fantasy-companion-draft-v1";
@@ -568,16 +569,24 @@ function draftProviderFromUrl(value: string | undefined): Platform | null {
 }
 
 async function requestActiveDraftSync(
-  provider: Platform
+  provider: Platform,
+  binding: { current: DraftTabTarget | null },
 ): Promise<FantasyDraftSyncMessage | null> {
   if (typeof chrome === "undefined" || !chrome.tabs?.query) return null;
-  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  if (!tab?.id || draftProviderFromUrl(tab.url) !== provider) return null;
+  if (!binding.current) {
+    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    const roomUrl = draftRoomUrl(tab?.url);
+    if (tab?.id === undefined || !roomUrl || draftProviderFromUrl(roomUrl) !== provider) return null;
+    binding.current = { tabId: tab.id, roomUrl };
+  }
+  const target = binding.current;
   try {
-    const response = await chrome.tabs.sendMessage(tab.id, {
+    const response = await chrome.tabs.sendMessage(target.tabId, {
       type: "FANTASY_DRAFT_SYNC_REQUEST",
     }) as unknown;
-    return isFantasyDraftSyncMessage(response) ? response : null;
+    return isFantasyDraftSyncMessage(response) && acceptsDraftSync(target, response, {
+      tab: { id: target.tabId, url: target.roomUrl },
+    }) ? response : null;
   } catch {
     return null;
   }
@@ -595,22 +604,17 @@ function isAutoDraftStatus(value: unknown): value is AutoDraftStatus {
   );
 }
 
+const draftCommandSession = createDraftCommandSession();
+
 async function sendAutoDraftCommand(
-  provider: AutoDraftPlatform,
   command: AutoDraftCommand
 ): Promise<AutoDraftStatus> {
   if (typeof chrome === "undefined" || !chrome.tabs?.query) {
     throw new Error("Load the built extension in Chrome or Edge before arming autodraft.");
   }
 
-  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  if (!tab?.id || draftProviderFromUrl(tab.url) !== provider) {
-    const providerName = provider === "espn" ? "ESPN" : "Sleeper";
-    throw new Error(`Open the ${providerName} draft room in this tab, then try again.`);
-  }
-
   try {
-    const response = await chrome.tabs.sendMessage(tab.id, command) as unknown;
+    const response = await draftCommandSession.send(command, chrome.tabs);
     if (!isAutoDraftStatus(response)) {
       throw new Error("The draft controller did not return a status.");
     }
@@ -676,8 +680,11 @@ function AwayDraftView({
 
   useEffect(() => {
     if (typeof chrome === "undefined" || !chrome.runtime?.onMessage) return;
-    const listener = (message: unknown) => {
-      if (isAutoDraftStatus(message) && message.provider === controlledProvider) {
+    const listener = (message: unknown, sender: chrome.runtime.MessageSender) => {
+      const target = draftCommandSession.getTarget();
+      if (target && sender.tab?.id === target.tabId &&
+          draftRoomUrl(sender.tab.url) === target.roomUrl &&
+          isAutoDraftStatus(message) && message.provider === controlledProvider) {
         setStatus(message);
       }
     };
@@ -735,7 +742,7 @@ function AwayDraftView({
     }
     setError(null);
     try {
-      const nextStatus = await sendAutoDraftCommand(controlledProvider, {
+      const nextStatus = await sendAutoDraftCommand({
         type: "FANTASY_AUTODRAFT_ARM",
         provider: controlledProvider,
         live,
@@ -764,7 +771,7 @@ function AwayDraftView({
     if (!controlledProvider) return;
     setError(null);
     try {
-      const nextStatus = await sendAutoDraftCommand(controlledProvider, {
+      const nextStatus = await sendAutoDraftCommand({
         type: "FANTASY_AUTODRAFT_DISARM",
         provider: controlledProvider,
       });
@@ -839,7 +846,7 @@ function AwayDraftView({
             <button type="button" className="arm-live" onClick={() => void arm(true)} disabled={!plan || loading}>
               <Power size={16} aria-hidden="true" /> Arm live
             </button>
-            {status?.armed ? (
+            {status?.armed || draftCommandSession.getTarget() ? (
               <button type="button" className="disarm-button" onClick={() => void disarm()}>
                 Turn off
               </button>
@@ -1333,6 +1340,7 @@ function DraftConsole({
   const syncProvider: Platform = room.kind === "best-ball" ? "underdog" : platform;
   // Provider messages arrive between renders, so they reconcile against the
   // newest state rather than the state the listener closed over.
+  const syncTargetRef = useRef<DraftTabTarget | null>(null);
   const stateRef = useRef(state);
   useEffect(() => {
     stateRef.current = state;
@@ -1376,11 +1384,13 @@ function DraftConsole({
       setAnnouncement(`Automatic pick sync paused. ${result.reason}`);
     };
 
-    const listener = (message: unknown): void => {
-      if (isFantasyDraftSyncMessage(message)) applySync(message);
+    const listener = (message: unknown, sender: chrome.runtime.MessageSender): void => {
+      if (isFantasyDraftSyncMessage(message) && acceptsDraftSync(syncTargetRef.current, message, sender)) {
+        applySync(message);
+      }
     };
     chrome.runtime.onMessage.addListener(listener);
-    void requestActiveDraftSync(syncProvider).then((message) => {
+    void requestActiveDraftSync(syncProvider, syncTargetRef).then((message) => {
       if (message) applySync(message);
     });
     return () => {

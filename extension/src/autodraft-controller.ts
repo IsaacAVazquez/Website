@@ -348,28 +348,26 @@ async function findAvailableCandidate(
     await wait(250);
   }
 
-  const rows = collectRows();
+  // Search each preferred player before considering a lower-ranked mounted row.
+  // A virtualized or position-filtered list cannot prove that a player is gone.
   for (const candidate of queue) {
-    const control = findDraftControl(candidate, rows);
+    let control = findDraftControl(candidate, collectRows());
+    if (!control && search) {
+      search.focus();
+      setNativeInputValue(search, candidate.name);
+      await wait(200);
+      control = findDraftControl(candidate, collectRows());
+    }
     if (control === "ambiguous") {
       throw new UncertainPlayerError(`more than one draft control matched ${candidate.name}`);
     }
     if (control) return { candidate, ...control };
+    if (!search) {
+      throw new UncertainPlayerError(`the page cannot check availability for ${candidate.name}`);
+    }
   }
 
   if (!search) return null;
-
-  for (const candidate of queue.slice(0, 60)) {
-    search.focus();
-    setNativeInputValue(search, candidate.name);
-    await wait(200);
-    const control = findDraftControl(candidate, collectRows());
-    if (control === "ambiguous") {
-      throw new UncertainPlayerError(`more than one draft control matched ${candidate.name}`);
-    }
-    if (control) return { candidate, ...control };
-  }
-
   setNativeInputValue(search, "");
   return null;
 }
@@ -493,8 +491,10 @@ export function startAutoDraftController(
         return;
       }
 
+      if (!pageSaysUserIsOnClock() || pageSaysDraftStopped()) return;
       clickElement(match.action);
       await wait(350);
+      if (runtime.generation !== generation || !runtime.armed) return;
       const confirmation = findConfirmationButton();
       if (confirmation && confirmation !== match.action) clickElement(confirmation);
       runtime.actedThisTurn = true;

@@ -1,6 +1,7 @@
 import { access, mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { Script } from "node:vm";
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, "..");
@@ -197,6 +198,12 @@ async function main() {
       { cause: error },
     );
   }
+
+  // Compile without executing, using the same classic-script syntax required
+  // by manifest content_scripts. An accidental shared ESM import fails here.
+  new Script(await readFile(path.join(extensionDist, "autodraft-content.js"), "utf8"), {
+    filename: "autodraft-content.js",
+  });
 
   const minifiedSnapshots = await Promise.all(snapshots.map(readAndMinify));
   await mkdir(snapshotOutput, { recursive: true });

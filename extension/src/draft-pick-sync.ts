@@ -268,13 +268,15 @@ function signature(picks: readonly FantasyDraftObservedPick[]): string {
 
 function messageFor(
   provider: FantasyDraftSyncProvider,
-  picks: FantasyDraftObservedPick[]
+  picks: FantasyDraftObservedPick[],
+  roomUrl: string
 ): FantasyDraftSyncMessage {
   return {
     type: "FANTASY_DRAFT_SYNC",
     provider,
     picks,
     observedAt: new Date().toISOString(),
+    roomUrl,
   };
 }
 
@@ -355,9 +357,10 @@ export function startDraftPickSync(
   };
 
   const request = async (): Promise<FantasyDraftSyncMessage> => {
+    const roomUrl = options.href ?? window.location.href;
     const picks = await read();
-    const nextMessage = messageFor(provider, picks);
-    const nextSignature = signature(picks);
+    const nextMessage = messageFor(provider, picks, roomUrl);
+    const nextSignature = `${roomUrl}|${signature(picks)}`;
     if (!stopped && picks.length > 0 && nextSignature !== lastSignature) {
       lastSignature = nextSignature;
       publish(nextMessage);
