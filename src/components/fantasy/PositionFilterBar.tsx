@@ -99,7 +99,7 @@ export function PositionFilterBar<T extends string>({
           };
         } else {
           style = {
-            borderColor: "var(--home-rule)",
+            borderColor: "var(--home-control-rule)",
             background: "color-mix(in srgb, var(--home-paper-alt) 52%, var(--home-elev-mix))",
             color: "var(--home-ink)",
             // A faint position tint on the inactive pill ties the control to the board.
