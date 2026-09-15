@@ -36,13 +36,21 @@ const instrumentSerif = Instrument_Serif({
   preload: false,
 });
 
-// Fragment Mono (400 only) carries readouts, kickers, and micro-labels.
+// Fragment Mono (400 only) carries readouts, kickers, and micro-labels. It
+// preloads because mono chips sit above the fold on the tool routes, and it
+// falls back to a plain monospace stack: next/font's generated fallback
+// measured about a third wider on uppercase, tracked labels, so a late swap
+// rewrapped the fantasy board's header chips and moved the board 64px on a
+// throttled phone (CLS 0.16, 2026-09-14). Menlo and Courier New land within
+// 4px of the real face on those chips.
 const fragmentMono = Fragment_Mono({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-fragment-mono",
   display: "swap",
-  preload: false,
+  preload: true,
+  adjustFontFallback: false,
+  fallback: ["Menlo", "Courier New", "monospace"],
 });
 
 /*

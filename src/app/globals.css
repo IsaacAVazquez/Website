@@ -38,6 +38,13 @@
     scroll-behavior: smooth;
   }
 
+  /* Tailwind's preflight paints placeholders at half the text colour, which
+     measured 3.34:1 on paper. 64% stays lighter than typed text, follows each
+     input's own colour, and clears 4.5:1 on paper, paper-alt and signal-soft. */
+  ::placeholder {
+    color: color-mix(in srgb, currentColor 64%, transparent);
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
@@ -263,6 +270,10 @@
   --home-haze: #5672F8;
   --home-stone: #D8D4C9;
   --home-rule: rgba(25, 24, 19, 0.14);
+  /* Boundary for interactive controls. The hairline measured 1.33:1 in light
+     and 1.53:1 in dark against the 3:1 non-text minimum. Dividers keep the
+     hairline; the fantasy controls took this first on 2026-09-14. */
+  --home-control-rule: color-mix(in srgb, var(--home-ink) 52%, var(--home-paper));
   --home-overlay: rgba(25, 24, 19, 0.08);
   --home-dark-paper: #151412;
   --home-dark-panel: #1C1B18;
@@ -372,6 +383,7 @@
   --home-haze: #6F85FF;
   --home-stone: #45423B;
   --home-rule: rgba(236, 234, 226, 0.16);
+  --home-control-rule: color-mix(in srgb, var(--home-ink) 52%, var(--home-paper));
   --home-overlay: rgba(236, 234, 226, 0.08);
   --home-dark-paper: #0E0D0B;
   --home-dark-panel: #191815;

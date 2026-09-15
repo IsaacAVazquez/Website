@@ -268,7 +268,7 @@ function ScoringToggle({
       role="group"
       aria-label="Scoring format"
       className="inline-flex shrink-0 rounded-[4px] border"
-      style={{ borderColor: "var(--home-rule)" }}
+      style={{ borderColor: "var(--home-control-rule)" }}
     >
       {SCORING_OPTIONS.map((option) => {
         const active = value === option.key;
@@ -324,7 +324,7 @@ function RankingToggle({
       role="group"
       aria-label="Ranking method"
       className="inline-flex shrink-0 rounded-[4px] border"
-      style={{ borderColor: "var(--home-rule)" }}
+      style={{ borderColor: "var(--home-control-rule)" }}
     >
       {(["consensus", "vorp"] as const).map((option) => {
         const active = value === option;
@@ -410,7 +410,7 @@ function QueuedFilterButton({
       style={
         pressed
           ? { borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }
-          : { borderColor: "var(--home-rule)", background: "var(--home-paper-raised)", color: "var(--home-ink)" }
+          : { borderColor: "var(--home-control-rule)", background: "var(--home-paper-raised)", color: "var(--home-ink)" }
       }
     >
       <Star className="h-4 w-4" fill={pressed ? "currentColor" : "none"} aria-hidden="true" />
@@ -464,7 +464,7 @@ function CompactRankingSelect({
         }}
         className="min-h-touch rounded-[4px] border px-2 font-mono text-2xs uppercase tracking-[0.06em]"
         style={{
-          borderColor: "var(--home-rule)",
+          borderColor: "var(--home-control-rule)",
           background: "var(--home-paper-raised)",
           color: "var(--home-ink)",
         }}
@@ -1674,7 +1674,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                             {Number.isFinite(player.positionRank) ? player.positionRank : ""}
                           </span>
                           <span
-                            className="min-w-0 truncate font-mono text-3xs uppercase tracking-[0.06em]"
+                            className="min-w-0 font-mono text-3xs uppercase tracking-[0.06em]"
                             style={{ color: "var(--home-ink-muted)" }}
                           >
                             {player.team}
@@ -1925,7 +1925,9 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
             ) : null}
           </RankingToggle>
         </div>
-        <div className={`${SHELL_CLASS} flex items-center gap-2 py-2 md:hidden`}>
+        {/* Wraps instead of clipping, so at 320 wide or with enlarged text the search
+            and queue filter drop to a second line and stay reachable. */}
+        <div className={`${SHELL_CLASS} flex flex-wrap items-center gap-2 py-2 md:hidden`}>
           {mobileSearchOpen ? (
             <>
               <div className="relative min-w-0 flex-1">
@@ -1952,7 +1954,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                   placeholder="Search player or team"
                   className="min-h-touch w-full rounded-[4px] border pl-8 pr-2.5 font-mono text-xs placeholder:text-[var(--home-ink-muted)] disabled:cursor-not-allowed disabled:opacity-60"
                   style={{
-                    borderColor: "var(--home-rule)",
+                    borderColor: "var(--home-control-rule)",
                     background: "var(--home-paper-raised)",
                     color: "var(--home-ink)",
                   }}
@@ -1969,7 +1971,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                   }}
                   className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center rounded-[4px] border"
                   style={{
-                    borderColor: "var(--home-rule)",
+                    borderColor: "var(--home-control-rule)",
                     background: "var(--home-paper-raised)",
                     color: "var(--home-ink)",
                   }}
@@ -1984,7 +1986,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                 onClick={() => setMobileSearchOpen(false)}
                 className="inline-flex min-h-touch shrink-0 items-center rounded-[4px] border px-3 font-mono text-3xs uppercase tracking-[0.08em]"
                 style={{
-                  borderColor: "var(--home-rule)",
+                  borderColor: "var(--home-control-rule)",
                   background: "var(--home-paper-raised)",
                   color: "var(--home-ink)",
                 }}
@@ -2003,7 +2005,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                 onChange={(event) => updateRouteState({ position: event.target.value as FantasyRoutePosition })}
                 className="min-h-touch shrink-0 rounded-[4px] border px-2 font-mono text-2xs uppercase tracking-[0.06em]"
                 style={{
-                  borderColor: "var(--home-rule)",
+                  borderColor: "var(--home-control-rule)",
                   background: "var(--home-paper-raised)",
                   color: "var(--home-ink)",
                 }}
@@ -2044,7 +2046,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                      carries the active state rather than hiding the filter. */
                   searchQuery
                     ? { borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }
-                    : { borderColor: "var(--home-rule)", background: "var(--home-paper-raised)", color: "var(--home-ink)" }
+                    : { borderColor: "var(--home-control-rule)", background: "var(--home-paper-raised)", color: "var(--home-ink)" }
                 }
               >
                 <Search className="h-4 w-4" aria-hidden="true" />
@@ -2125,7 +2127,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                     placeholder="Player or team"
                     className="min-h-touch w-40 max-w-full rounded-[4px] border pl-8 pr-2.5 font-mono text-xs normal-case tracking-normal placeholder:text-[var(--home-ink-muted)] disabled:cursor-not-allowed disabled:opacity-60 lg:w-[200px]"
                     style={{
-                      borderColor: "var(--home-rule)",
+                      borderColor: "var(--home-control-rule)",
                       background: "var(--home-paper-raised)",
                       color: "var(--home-ink)",
                     }}

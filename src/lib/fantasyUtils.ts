@@ -674,9 +674,10 @@ export const SHELL_CLASS = "mx-auto w-full max-w-[1080px] px-[clamp(1rem,4vw,2.5
 
 export const MONO_LABEL_CLASS = "font-mono text-3xs uppercase tracking-[0.12em]";
 
-/** Square-cornered mono chip from the template header (distinct from the shared pill chip). */
+/** Square-cornered mono chip from the template header (distinct from the shared pill chip).
+    It wraps inside itself instead of running past the screen edge when text is enlarged. */
 export const HEADER_CHIP_CLASS =
-  "inline-flex items-center whitespace-nowrap rounded-[2px] border px-2 py-1 font-mono text-3xs uppercase tracking-[0.08em]";
+  "inline-flex max-w-full items-center rounded-[2px] border px-2 py-1 font-mono text-3xs uppercase tracking-[0.08em]";
 
 /** Square-cornered mono position chip from the template (not the shared pill chip). */
 export const POSITION_CHIP_CLASS =

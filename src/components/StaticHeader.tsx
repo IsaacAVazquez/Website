@@ -123,7 +123,9 @@ function WorkingInstrumentHeader({ pathname }: { pathname: string }) {
       }}
     >
       <nav className="page-shell" aria-label="Main navigation">
-        <div className="flex min-h-[72px] items-center justify-between gap-4 py-3">
+        {/* Wraps when enlarged text leaves no room, so the phone controls drop
+            under the name instead of pushing the menu button off screen. */}
+        <div className="flex min-h-[72px] flex-wrap items-center justify-between gap-x-4 gap-y-2 py-3">
           <Link
             href="/"
             className="header-home-brand inline-flex min-h-[44px] items-center gap-3 px-1 py-1"
@@ -183,7 +185,7 @@ function WorkingInstrumentHeader({ pathname }: { pathname: string }) {
             </div>
           </div>
 
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="ml-auto flex items-center gap-2 lg:hidden">
             <button
               type="button"
               aria-label="Search the site"

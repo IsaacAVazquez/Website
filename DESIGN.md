@@ -141,6 +141,8 @@ The palette is a warm neutral field of limestone and graphite with a single hot 
 - **Stone** (`#D8D4C9` light, `#45423B` dark): decorative borders and subtle fills where a hairline rule would be too faint.
 - **Rule** (`rgba(25,24,19,0.14)` light, `rgba(236,234,226,0.16)` dark): the standard hairline for borders and dividers, the workhorse of the whole system.
 
+The control rule, `--home-control-rule`, is `color-mix(in srgb, var(--home-ink) 52%, var(--home-paper))` in both themes, which measured 3.52:1 against light paper and 4.87:1 against dark paper. It borders interactive controls, meaning inputs, selects, segmented toggles, filter pills and filter buttons, where the hairline measured 1.33:1 in light and 1.53:1 in dark against the 3:1 non-text minimum. Dividers and card edges keep the hairline. As of 2026-09-14 the fantasy rankings board and the shared position filter use it, and other routes still border their controls with the hairline.
+
 ### Tertiary (status)
 - **Positive** (`#059669` light, `#34D399` dark): gains, wins, success, passing states.
 - **Warning** (`#D97706` light, `#FBBF24` dark): caution, ties, deadlines.
