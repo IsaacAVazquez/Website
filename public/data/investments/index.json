@@ -1,31 +1,5 @@
 {
   "symbols": [
-    "NFLX",
-    "DIS",
-    "TMUS",
-    "VZ",
-    "T",
-    "CMCSA",
-    "SPOT",
-    "SAP",
-    "GE",
-    "CAT",
-    "HON",
-    "RTX",
-    "BA",
-    "LMT",
-    "SPY",
-    "UNP",
-    "UPS",
-    "SLB",
-    "DE",
-    "GD",
-    "NOC",
-    "ETN",
-    "ITW",
-    "EMR",
-    "WM",
-    "FDX",
     "CARR",
     "GWW",
     "TDG",
@@ -150,13 +124,39 @@
     "BKNG",
     "ABNB",
     "PYPL",
-    "UBER"
+    "UBER",
+    "NFLX",
+    "DIS",
+    "TMUS",
+    "VZ",
+    "T",
+    "CMCSA",
+    "SPOT",
+    "SAP",
+    "GE",
+    "CAT",
+    "HON",
+    "RTX",
+    "BA",
+    "LMT",
+    "SPY",
+    "UNP",
+    "UPS",
+    "SLB",
+    "DE",
+    "GD",
+    "NOC",
+    "ETN",
+    "ITW",
+    "EMR",
+    "WM",
+    "FDX"
   ],
   "failed": [],
-  "lastUpdated": "2026-08-18T23:06:20.443188+00:00",
-  "refreshAttemptedAt": "2026-08-18T23:06:20.443188+00:00",
-  "freshCount": 26,
-  "staleCount": 125,
+  "lastUpdated": "2026-09-15T01:03:45.681080+00:00",
+  "refreshAttemptedAt": "2026-09-15T01:03:45.681080+00:00",
+  "freshCount": 31,
+  "staleCount": 120,
   "fetchAttempts": {
     "APO": "2026-07-20T23:17:15.570231+00:00",
     "UNH": "2026-07-20T23:19:30.535416+00:00",
@@ -250,678 +250,475 @@
     "ITW": "2026-08-18T23:03:33.342775+00:00",
     "EMR": "2026-08-18T23:04:37.095448+00:00",
     "WM": "2026-08-18T23:05:40.544101+00:00",
-    "FDX": "2026-08-18T23:06:00.617408+00:00"
+    "FDX": "2026-08-18T23:06:00.617408+00:00",
+    "CARR": "2026-09-15T00:41:06.854528+00:00",
+    "GWW": "2026-09-15T00:42:13.815627+00:00",
+    "TDG": "2026-09-15T00:42:50.229992+00:00",
+    "ROP": "2026-09-15T00:44:16.655120+00:00",
+    "MSI": "2026-09-15T00:46:09.880187+00:00",
+    "APH": "2026-09-15T00:46:48.431196+00:00",
+    "PH": "2026-09-15T00:47:33.167201+00:00",
+    "XOM": "2026-09-15T00:48:36.916804+00:00",
+    "CVX": "2026-09-15T00:49:14.557737+00:00",
+    "COP": "2026-09-15T00:49:51.743251+00:00",
+    "EOG": "2026-09-15T00:50:48.018510+00:00",
+    "NEE": "2026-09-15T00:51:42.928416+00:00",
+    "SO": "2026-09-15T00:52:33.452460+00:00",
+    "DUK": "2026-09-15T00:53:23.707442+00:00",
+    "AMT": "2026-09-15T00:54:13.758178+00:00",
+    "PLD": "2026-09-15T00:54:34.604239+00:00",
+    "WELL": "2026-09-15T00:54:52.511582+00:00",
+    "AMD": "2026-09-15T00:55:12.331838+00:00",
+    "INTC": "2026-09-15T00:55:59.535548+00:00",
+    "QCOM": "2026-09-15T00:56:46.795253+00:00",
+    "TXN": "2026-09-15T00:57:34.440079+00:00",
+    "AMAT": "2026-09-15T00:58:21.849323+00:00",
+    "MU": "2026-09-15T00:58:55.874724+00:00",
+    "LRCX": "2026-09-15T00:59:43.238674+00:00",
+    "PSA": "2026-09-15T01:00:16.910448+00:00",
+    "CCI": "2026-09-15T01:00:34.919404+00:00",
+    "ACN": "2026-09-15T01:00:55.674474+00:00",
+    "RACE": "2026-09-15T01:01:36.295409+00:00",
+    "GM": "2026-09-15T01:02:03.289694+00:00",
+    "MMM": "2026-09-15T01:02:29.922875+00:00",
+    "CB": "2026-09-15T01:03:06.065340+00:00"
   },
   "fetchFailures": {},
   "entries": [
-    {
-      "symbol": "NFLX",
-      "shortName": "Netflix, Inc.",
-      "longName": "Netflix, Inc.",
-      "searchText": "nflx netflix, inc. netflix, inc.",
-      "partial": true,
-      "retainedSections": [
-        "fundamentals",
-        "wacc",
-        "beta",
-        "news"
-      ],
-      "priceAsOf": "2026-08-14"
-    },
-    {
-      "symbol": "DIS",
-      "shortName": "Walt Disney Company",
-      "longName": "Walt Disney Company",
-      "searchText": "dis walt disney company walt disney company",
-      "partial": true,
-      "retainedSections": [
-        "fundamentals",
-        "wacc",
-        "beta",
-        "news"
-      ],
-      "priceAsOf": "2026-08-14"
-    },
-    {
-      "symbol": "TMUS",
-      "shortName": "T-Mobile US, Inc.",
-      "longName": "T-Mobile US, Inc.",
-      "searchText": "tmus t-mobile us, inc. t-mobile us, inc.",
-      "partial": true,
-      "retainedSections": [
-        "fundamentals",
-        "wacc",
-        "beta",
-        "news"
-      ],
-      "priceAsOf": "2026-08-14"
-    },
-    {
-      "symbol": "VZ",
-      "shortName": "Verizon Communications Inc.",
-      "longName": "Verizon Communications Inc.",
-      "searchText": "vz verizon communications inc. verizon communications inc.",
-      "partial": true,
-      "retainedSections": [
-        "fundamentals",
-        "wacc",
-        "beta",
-        "news"
-      ],
-      "priceAsOf": "2026-08-14"
-    },
-    {
-      "symbol": "T",
-      "shortName": "AT&T Inc.",
-      "longName": "AT&T Inc.",
-      "searchText": "t at&t inc. at&t inc.",
-      "partial": true,
-      "retainedSections": [
-        "fundamentals",
-        "wacc",
-        "beta",
-        "news"
-      ],
-      "priceAsOf": "2026-08-14"
-    },
-    {
-      "symbol": "CMCSA",
-      "shortName": "Comcast Corporation",
-      "longName": "Comcast Corporation",
-      "searchText": "cmcsa comcast corporation comcast corporation",
-      "partial": true,
-      "retainedSections": [
-        "fundamentals",
-        "wacc",
-        "beta",
-        "news"
-      ],
-      "priceAsOf": "2026-08-14"
-    },
-    {
-      "symbol": "SPOT",
-      "shortName": "Spotify Technology S.A.",
-      "longName": "Spotify Technology S.A.",
-      "searchText": "spot spotify technology s.a. spotify technology s.a.",
-      "partial": true,
-      "retainedSections": [
-        "fundamentals",
-        "wacc",
-        "beta",
-        "news"
-      ],
-      "priceAsOf": "2026-08-14"
-    },
-    {
-      "symbol": "SAP",
-      "shortName": "SAP SE",
-      "longName": "SAP SE",
-      "searchText": "sap sap se sap se",
-      "partial": true,
-      "retainedSections": [
-        "fundamentals",
-        "wacc",
-        "beta",
-        "news"
-      ],
-      "priceAsOf": "2026-08-14"
-    },
-    {
-      "symbol": "GE",
-      "shortName": "GE Aerospace",
-      "longName": "GE Aerospace",
-      "searchText": "ge ge aerospace ge aerospace",
-      "partial": true,
-      "retainedSections": [
-        "fundamentals",
-        "wacc",
-        "beta",
-        "news"
-      ],
-      "priceAsOf": "2026-08-14"
-    },
-    {
-      "symbol": "CAT",
-      "shortName": "Caterpillar Inc.",
-      "longName": "Caterpillar Inc.",
-      "searchText": "cat caterpillar inc. caterpillar inc.",
-      "partial": true,
-      "retainedSections": [
-        "fundamentals",
-        "wacc",
-        "beta",
-        "news"
-      ],
-      "priceAsOf": "2026-08-14"
-    },
-    {
-      "symbol": "HON",
-      "shortName": "Honeywell International Inc.",
-      "longName": "Honeywell International Inc.",
-      "searchText": "hon honeywell international inc. honeywell international inc.",
-      "partial": true,
-      "retainedSections": [
-        "fundamentals",
-        "wacc",
-        "beta",
-        "news"
-      ],
-      "priceAsOf": "2026-08-14"
-    },
-    {
-      "symbol": "RTX",
-      "shortName": "RTX Corporation",
-      "longName": "RTX Corporation",
-      "searchText": "rtx rtx corporation rtx corporation",
-      "partial": true,
-      "retainedSections": [
-        "fundamentals",
-        "wacc",
-        "beta",
-        "news"
-      ],
-      "priceAsOf": "2026-08-14"
-    },
-    {
-      "symbol": "BA",
-      "shortName": "Boeing Company",
-      "longName": "Boeing Company",
-      "searchText": "ba boeing company boeing company",
-      "partial": true,
-      "retainedSections": [
-        "fundamentals",
-        "wacc",
-        "beta",
-        "news"
-      ],
-      "priceAsOf": "2026-08-14"
-    },
-    {
-      "symbol": "LMT",
-      "shortName": "Lockheed Martin Corporation",
-      "longName": "Lockheed Martin Corporation",
-      "searchText": "lmt lockheed martin corporation lockheed martin corporation",
-      "partial": true,
-      "retainedSections": [
-        "fundamentals",
-        "wacc",
-        "beta",
-        "news"
-      ],
-      "priceAsOf": "2026-08-14"
-    },
-    {
-      "symbol": "SPY",
-      "shortName": "SPDR S&P 500 ETF Trust",
-      "longName": "SPDR S&P 500 ETF Trust",
-      "searchText": "spy spdr s&p 500 etf trust spdr s&p 500 etf trust",
-      "priceAsOf": "2026-08-14"
-    },
-    {
-      "symbol": "UNP",
-      "shortName": "Union Pacific Corporation",
-      "longName": "Union Pacific Corporation",
-      "searchText": "unp union pacific corporation union pacific corporation",
-      "partial": true,
-      "retainedSections": [
-        "fundamentals",
-        "wacc",
-        "beta",
-        "news"
-      ],
-      "priceAsOf": "2026-08-14"
-    },
-    {
-      "symbol": "UPS",
-      "shortName": "United Parcel Service, Inc.",
-      "longName": "United Parcel Service, Inc.",
-      "searchText": "ups united parcel service, inc. united parcel service, inc.",
-      "partial": true,
-      "retainedSections": [
-        "fundamentals",
-        "wacc",
-        "industry",
-        "beta",
-        "news"
-      ],
-      "priceAsOf": "2026-08-14"
-    },
-    {
-      "symbol": "SLB",
-      "shortName": "SLB",
-      "longName": "SLB",
-      "searchText": "slb slb slb",
-      "partial": true,
-      "retainedSections": [
-        "fundamentals",
-        "wacc",
-        "beta",
-        "news"
-      ],
-      "priceAsOf": "2026-08-14"
-    },
-    {
-      "symbol": "DE",
-      "shortName": "Deere & Company",
-      "longName": "Deere & Company",
-      "searchText": "de deere & company deere & company",
-      "partial": true,
-      "retainedSections": [
-        "fundamentals",
-        "wacc",
-        "beta",
-        "news"
-      ],
-      "priceAsOf": "2026-08-14"
-    },
-    {
-      "symbol": "GD",
-      "shortName": "General Dynamics Corporation",
-      "longName": "General Dynamics Corporation",
-      "searchText": "gd general dynamics corporation general dynamics corporation",
-      "partial": true,
-      "retainedSections": [
-        "fundamentals",
-        "wacc",
-        "beta",
-        "news"
-      ],
-      "priceAsOf": "2026-08-14"
-    },
-    {
-      "symbol": "NOC",
-      "shortName": "Northrop Grumman Corporation",
-      "longName": "Northrop Grumman Corporation",
-      "searchText": "noc northrop grumman corporation northrop grumman corporation",
-      "partial": true,
-      "retainedSections": [
-        "fundamentals",
-        "wacc",
-        "beta",
-        "news"
-      ],
-      "priceAsOf": "2026-08-14"
-    },
-    {
-      "symbol": "ETN",
-      "shortName": "Eaton Corporation plc",
-      "longName": "Eaton Corporation plc",
-      "searchText": "etn eaton corporation plc eaton corporation plc",
-      "partial": true,
-      "retainedSections": [
-        "fundamentals",
-        "wacc",
-        "beta",
-        "news"
-      ],
-      "priceAsOf": "2026-08-14"
-    },
-    {
-      "symbol": "ITW",
-      "shortName": "Illinois Tool Works Inc.",
-      "longName": "Illinois Tool Works Inc.",
-      "searchText": "itw illinois tool works inc. illinois tool works inc.",
-      "partial": true,
-      "retainedSections": [
-        "fundamentals",
-        "wacc",
-        "beta",
-        "news"
-      ],
-      "priceAsOf": "2026-08-14"
-    },
-    {
-      "symbol": "EMR",
-      "shortName": "Emerson Electric Co.",
-      "longName": "Emerson Electric Co.",
-      "searchText": "emr emerson electric co. emerson electric co.",
-      "partial": true,
-      "retainedSections": [
-        "fundamentals",
-        "wacc",
-        "beta",
-        "news"
-      ],
-      "priceAsOf": "2026-08-14"
-    },
-    {
-      "symbol": "WM",
-      "shortName": "Waste Management, Inc.",
-      "longName": "Waste Management, Inc.",
-      "searchText": "wm waste management, inc. waste management, inc.",
-      "partial": true,
-      "retainedSections": [
-        "fundamentals",
-        "wacc",
-        "beta",
-        "news"
-      ],
-      "priceAsOf": "2026-08-14"
-    },
-    {
-      "symbol": "FDX",
-      "shortName": "FedEx Corporation",
-      "longName": "FedEx Corporation",
-      "searchText": "fdx fedex corporation fedex corporation",
-      "partial": true,
-      "retainedSections": [
-        "info",
-        "fundamentals",
-        "industry",
-        "beta",
-        "news"
-      ],
-      "priceAsOf": "2026-08-14"
-    },
     {
       "symbol": "CARR",
       "shortName": "Carrier Global Corporation",
       "longName": "Carrier Global Corporation",
       "searchText": "carr carrier global corporation carrier global corporation",
-      "stale": true,
-      "priceDelayed": true,
-      "asOf": "2026-07-10T00:00:01.448379+00:00",
-      "priceAsOf": "2026-07-08"
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "priceAsOf": "2026-09-11"
     },
     {
       "symbol": "GWW",
       "shortName": "W.W. Grainger, Inc.",
       "longName": "W.W. Grainger, Inc.",
       "searchText": "gww w.w. grainger, inc. w.w. grainger, inc.",
-      "stale": true,
-      "priceDelayed": true,
-      "asOf": "2026-07-10T00:00:01.448379+00:00",
-      "priceAsOf": "2026-07-08"
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "priceAsOf": "2026-09-11"
     },
     {
       "symbol": "TDG",
       "shortName": "TransDigm Group Incorporated",
       "longName": "TransDigm Group Incorporated",
       "searchText": "tdg transdigm group incorporated transdigm group incorporated",
-      "stale": true,
-      "priceDelayed": true,
-      "asOf": "2026-07-10T00:00:01.448379+00:00",
-      "priceAsOf": "2026-07-08"
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "priceAsOf": "2026-09-11"
     },
     {
       "symbol": "ROP",
       "shortName": "Roper Technologies, Inc.",
       "longName": "Roper Technologies, Inc.",
       "searchText": "rop roper technologies, inc. roper technologies, inc.",
-      "stale": true,
-      "priceDelayed": true,
-      "asOf": "2026-07-10T00:00:01.448379+00:00",
-      "priceAsOf": "2026-07-08"
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "priceAsOf": "2026-09-11"
     },
     {
       "symbol": "MSI",
       "shortName": "Motorola Solutions, Inc.",
       "longName": "Motorola Solutions, Inc.",
       "searchText": "msi motorola solutions, inc. motorola solutions, inc.",
-      "stale": true,
-      "priceDelayed": true,
-      "asOf": "2026-07-10T00:00:01.448379+00:00",
-      "priceAsOf": "2026-07-08"
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "priceAsOf": "2026-09-11"
     },
     {
       "symbol": "APH",
       "shortName": "Amphenol Corporation",
       "longName": "Amphenol Corporation",
       "searchText": "aph amphenol corporation amphenol corporation",
-      "stale": true,
-      "priceDelayed": true,
-      "asOf": "2026-07-10T00:00:01.448379+00:00",
-      "priceAsOf": "2026-07-08"
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "priceAsOf": "2026-09-11"
     },
     {
       "symbol": "PH",
       "shortName": "Parker-Hannifin Corporation",
       "longName": "Parker-Hannifin Corporation",
       "searchText": "ph parker-hannifin corporation parker-hannifin corporation",
-      "stale": true,
-      "priceDelayed": true,
-      "asOf": "2026-07-10T00:00:01.448379+00:00",
-      "priceAsOf": "2026-07-08"
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "priceAsOf": "2026-09-11"
     },
     {
       "symbol": "XOM",
       "shortName": "Exxon Mobil Corporation",
       "longName": "Exxon Mobil Corporation",
       "searchText": "xom exxon mobil corporation exxon mobil corporation",
-      "stale": true,
-      "priceDelayed": true,
-      "asOf": "2026-07-10T00:00:01.448379+00:00",
-      "priceAsOf": "2026-07-08"
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "priceAsOf": "2026-09-11"
     },
     {
       "symbol": "CVX",
       "shortName": "Chevron Corporation",
       "longName": "Chevron Corporation",
       "searchText": "cvx chevron corporation chevron corporation",
-      "stale": true,
-      "priceDelayed": true,
-      "asOf": "2026-07-10T00:00:01.448379+00:00",
-      "priceAsOf": "2026-07-08"
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "priceAsOf": "2026-09-11"
     },
     {
       "symbol": "COP",
       "shortName": "ConocoPhillips",
       "longName": "ConocoPhillips",
       "searchText": "cop conocophillips conocophillips",
-      "stale": true,
-      "priceDelayed": true,
-      "asOf": "2026-07-10T00:00:01.448379+00:00",
-      "priceAsOf": "2026-07-08"
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "priceAsOf": "2026-09-11"
     },
     {
       "symbol": "EOG",
       "shortName": "EOG Resources, Inc.",
       "longName": "EOG Resources, Inc.",
       "searchText": "eog eog resources, inc. eog resources, inc.",
-      "stale": true,
-      "priceDelayed": true,
-      "asOf": "2026-07-10T00:00:01.448379+00:00",
-      "priceAsOf": "2026-07-08"
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "priceAsOf": "2026-09-11"
     },
     {
       "symbol": "NEE",
       "shortName": "NextEra Energy, Inc.",
       "longName": "NextEra Energy, Inc.",
       "searchText": "nee nextera energy, inc. nextera energy, inc.",
-      "stale": true,
-      "priceDelayed": true,
-      "asOf": "2026-07-10T00:00:01.448379+00:00",
-      "priceAsOf": "2026-07-08"
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "priceAsOf": "2026-09-11"
     },
     {
       "symbol": "SO",
       "shortName": "Southern Company",
       "longName": "Southern Company",
       "searchText": "so southern company southern company",
-      "stale": true,
-      "priceDelayed": true,
-      "asOf": "2026-07-10T00:00:01.448379+00:00",
-      "priceAsOf": "2026-07-08"
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "priceAsOf": "2026-09-11"
     },
     {
       "symbol": "DUK",
       "shortName": "Duke Energy Corporation",
       "longName": "Duke Energy Corporation",
       "searchText": "duk duke energy corporation duke energy corporation",
-      "stale": true,
-      "priceDelayed": true,
-      "asOf": "2026-07-10T00:00:01.448379+00:00",
-      "priceAsOf": "2026-07-08"
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "priceAsOf": "2026-09-11"
     },
     {
       "symbol": "AMT",
       "shortName": "American Tower Corporation",
       "longName": "American Tower Corporation",
       "searchText": "amt american tower corporation american tower corporation",
-      "stale": true,
-      "priceDelayed": true,
-      "asOf": "2026-07-10T00:00:01.448379+00:00",
-      "priceAsOf": "2026-07-08"
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "priceAsOf": "2026-09-11"
     },
     {
       "symbol": "PLD",
       "shortName": "Prologis, Inc.",
       "longName": "Prologis, Inc.",
       "searchText": "pld prologis, inc. prologis, inc.",
-      "stale": true,
-      "priceDelayed": true,
-      "asOf": "2026-07-10T00:00:01.448379+00:00",
-      "priceAsOf": "2026-07-08"
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "priceAsOf": "2026-09-11"
     },
     {
       "symbol": "WELL",
       "shortName": "Welltower Inc.",
       "longName": "Welltower Inc.",
       "searchText": "well welltower inc. welltower inc.",
-      "stale": true,
-      "priceDelayed": true,
-      "asOf": "2026-07-10T00:00:01.448379+00:00",
-      "priceAsOf": "2026-07-08"
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "priceAsOf": "2026-09-11"
     },
     {
       "symbol": "AMD",
       "shortName": "Advanced Micro Devices, Inc.",
       "longName": "Advanced Micro Devices, Inc.",
       "searchText": "amd advanced micro devices, inc. advanced micro devices, inc.",
-      "stale": true,
-      "priceDelayed": true,
-      "asOf": "2026-07-13T23:36:48.650860+00:00",
-      "priceAsOf": "2026-07-10"
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "priceAsOf": "2026-09-11"
     },
     {
       "symbol": "INTC",
       "shortName": "Intel Corporation",
       "longName": "Intel Corporation",
       "searchText": "intc intel corporation intel corporation",
-      "stale": true,
-      "priceDelayed": true,
-      "asOf": "2026-07-13T23:36:48.650860+00:00",
-      "priceAsOf": "2026-07-10"
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "priceAsOf": "2026-09-11"
     },
     {
       "symbol": "QCOM",
       "shortName": "QUALCOMM Incorporated",
       "longName": "QUALCOMM Incorporated",
       "searchText": "qcom qualcomm incorporated qualcomm incorporated",
-      "stale": true,
-      "priceDelayed": true,
-      "asOf": "2026-07-13T23:36:48.650860+00:00",
-      "priceAsOf": "2026-07-10"
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "priceAsOf": "2026-09-11"
     },
     {
       "symbol": "TXN",
       "shortName": "Texas Instruments Incorporated",
       "longName": "Texas Instruments Incorporated",
       "searchText": "txn texas instruments incorporated texas instruments incorporated",
-      "stale": true,
-      "priceDelayed": true,
-      "asOf": "2026-07-13T23:36:48.650860+00:00",
-      "priceAsOf": "2026-07-10"
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "priceAsOf": "2026-09-11"
     },
     {
       "symbol": "AMAT",
       "shortName": "Applied Materials, Inc.",
       "longName": "Applied Materials, Inc.",
       "searchText": "amat applied materials, inc. applied materials, inc.",
-      "stale": true,
-      "priceDelayed": true,
-      "asOf": "2026-07-13T23:36:48.650860+00:00",
-      "priceAsOf": "2026-07-10"
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "priceAsOf": "2026-09-11"
     },
     {
       "symbol": "MU",
       "shortName": "Micron Technology, Inc.",
       "longName": "Micron Technology, Inc.",
       "searchText": "mu micron technology, inc. micron technology, inc.",
-      "stale": true,
-      "priceDelayed": true,
-      "asOf": "2026-07-13T23:36:48.650860+00:00",
-      "priceAsOf": "2026-07-10"
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "priceAsOf": "2026-09-11"
     },
     {
       "symbol": "LRCX",
       "shortName": "Lam Research Corporation",
       "longName": "Lam Research Corporation",
       "searchText": "lrcx lam research corporation lam research corporation",
-      "stale": true,
-      "priceDelayed": true,
-      "asOf": "2026-07-13T23:36:48.650860+00:00",
-      "priceAsOf": "2026-07-10"
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "priceAsOf": "2026-09-11"
     },
     {
       "symbol": "PSA",
       "shortName": "Public Storage",
       "longName": "Public Storage",
       "searchText": "psa public storage public storage",
-      "stale": true,
-      "priceDelayed": true,
-      "asOf": "2026-07-13T23:36:48.650860+00:00",
-      "priceAsOf": "2026-07-10"
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "priceAsOf": "2026-09-11"
     },
     {
       "symbol": "CCI",
       "shortName": "Crown Castle Inc.",
       "longName": "Crown Castle Inc.",
       "searchText": "cci crown castle inc. crown castle inc.",
-      "stale": true,
-      "priceDelayed": true,
-      "asOf": "2026-07-13T23:36:48.650860+00:00",
-      "priceAsOf": "2026-07-10"
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "priceAsOf": "2026-09-11"
     },
     {
       "symbol": "ACN",
       "shortName": "Accenture plc",
       "longName": "Accenture plc",
       "searchText": "acn accenture plc accenture plc",
-      "stale": true,
-      "priceDelayed": true,
-      "asOf": "2026-07-13T23:36:48.650860+00:00",
-      "priceAsOf": "2026-07-10"
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "priceAsOf": "2026-09-11"
     },
     {
       "symbol": "RACE",
       "shortName": "Ferrari N.V.",
       "longName": "Ferrari N.V.",
       "searchText": "race ferrari n.v. ferrari n.v.",
-      "stale": true,
-      "priceDelayed": true,
-      "asOf": "2026-07-13T23:36:48.650860+00:00",
-      "priceAsOf": "2026-07-10"
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "priceAsOf": "2026-09-11"
     },
     {
       "symbol": "GM",
       "shortName": "General Motors Company",
       "longName": "General Motors Company",
       "searchText": "gm general motors company general motors company",
-      "stale": true,
-      "priceDelayed": true,
-      "asOf": "2026-07-13T23:36:48.650860+00:00",
-      "priceAsOf": "2026-07-10"
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "priceAsOf": "2026-09-11"
     },
     {
       "symbol": "MMM",
       "shortName": "3M Company",
       "longName": "3M Company",
       "searchText": "mmm 3m company 3m company",
-      "stale": true,
-      "priceDelayed": true,
-      "asOf": "2026-07-13T23:36:48.650860+00:00",
-      "priceAsOf": "2026-07-10"
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "priceAsOf": "2026-09-11"
     },
     {
       "symbol": "CB",
       "shortName": "Chubb Limited",
       "longName": "Chubb Limited",
       "searchText": "cb chubb limited chubb limited",
-      "stale": true,
-      "priceDelayed": true,
-      "asOf": "2026-07-13T23:36:48.650860+00:00",
-      "priceAsOf": "2026-07-10"
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "industry",
+        "beta",
+        "news"
+      ],
+      "priceAsOf": "2026-09-11"
     },
     {
       "symbol": "STZ",
@@ -2248,17 +2045,454 @@
       ],
       "asOf": "2026-07-21T23:37:48.967691+00:00",
       "priceAsOf": "2026-07-20"
+    },
+    {
+      "symbol": "NFLX",
+      "shortName": "Netflix, Inc.",
+      "longName": "Netflix, Inc.",
+      "searchText": "nflx netflix, inc. netflix, inc.",
+      "stale": true,
+      "priceDelayed": true,
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "asOf": "2026-08-18T23:06:20.443188+00:00",
+      "priceAsOf": "2026-08-14"
+    },
+    {
+      "symbol": "DIS",
+      "shortName": "Walt Disney Company",
+      "longName": "Walt Disney Company",
+      "searchText": "dis walt disney company walt disney company",
+      "stale": true,
+      "priceDelayed": true,
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "asOf": "2026-08-18T23:06:20.443188+00:00",
+      "priceAsOf": "2026-08-14"
+    },
+    {
+      "symbol": "TMUS",
+      "shortName": "T-Mobile US, Inc.",
+      "longName": "T-Mobile US, Inc.",
+      "searchText": "tmus t-mobile us, inc. t-mobile us, inc.",
+      "stale": true,
+      "priceDelayed": true,
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "asOf": "2026-08-18T23:06:20.443188+00:00",
+      "priceAsOf": "2026-08-14"
+    },
+    {
+      "symbol": "VZ",
+      "shortName": "Verizon Communications Inc.",
+      "longName": "Verizon Communications Inc.",
+      "searchText": "vz verizon communications inc. verizon communications inc.",
+      "stale": true,
+      "priceDelayed": true,
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "asOf": "2026-08-18T23:06:20.443188+00:00",
+      "priceAsOf": "2026-08-14"
+    },
+    {
+      "symbol": "T",
+      "shortName": "AT&T Inc.",
+      "longName": "AT&T Inc.",
+      "searchText": "t at&t inc. at&t inc.",
+      "stale": true,
+      "priceDelayed": true,
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "asOf": "2026-08-18T23:06:20.443188+00:00",
+      "priceAsOf": "2026-08-14"
+    },
+    {
+      "symbol": "CMCSA",
+      "shortName": "Comcast Corporation",
+      "longName": "Comcast Corporation",
+      "searchText": "cmcsa comcast corporation comcast corporation",
+      "stale": true,
+      "priceDelayed": true,
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "asOf": "2026-08-18T23:06:20.443188+00:00",
+      "priceAsOf": "2026-08-14"
+    },
+    {
+      "symbol": "SPOT",
+      "shortName": "Spotify Technology S.A.",
+      "longName": "Spotify Technology S.A.",
+      "searchText": "spot spotify technology s.a. spotify technology s.a.",
+      "stale": true,
+      "priceDelayed": true,
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "asOf": "2026-08-18T23:06:20.443188+00:00",
+      "priceAsOf": "2026-08-14"
+    },
+    {
+      "symbol": "SAP",
+      "shortName": "SAP SE",
+      "longName": "SAP SE",
+      "searchText": "sap sap se sap se",
+      "stale": true,
+      "priceDelayed": true,
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "asOf": "2026-08-18T23:06:20.443188+00:00",
+      "priceAsOf": "2026-08-14"
+    },
+    {
+      "symbol": "GE",
+      "shortName": "GE Aerospace",
+      "longName": "GE Aerospace",
+      "searchText": "ge ge aerospace ge aerospace",
+      "stale": true,
+      "priceDelayed": true,
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "asOf": "2026-08-18T23:06:20.443188+00:00",
+      "priceAsOf": "2026-08-14"
+    },
+    {
+      "symbol": "CAT",
+      "shortName": "Caterpillar Inc.",
+      "longName": "Caterpillar Inc.",
+      "searchText": "cat caterpillar inc. caterpillar inc.",
+      "stale": true,
+      "priceDelayed": true,
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "asOf": "2026-08-18T23:06:20.443188+00:00",
+      "priceAsOf": "2026-08-14"
+    },
+    {
+      "symbol": "HON",
+      "shortName": "Honeywell International Inc.",
+      "longName": "Honeywell International Inc.",
+      "searchText": "hon honeywell international inc. honeywell international inc.",
+      "stale": true,
+      "priceDelayed": true,
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "asOf": "2026-08-18T23:06:20.443188+00:00",
+      "priceAsOf": "2026-08-14"
+    },
+    {
+      "symbol": "RTX",
+      "shortName": "RTX Corporation",
+      "longName": "RTX Corporation",
+      "searchText": "rtx rtx corporation rtx corporation",
+      "stale": true,
+      "priceDelayed": true,
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "asOf": "2026-08-18T23:06:20.443188+00:00",
+      "priceAsOf": "2026-08-14"
+    },
+    {
+      "symbol": "BA",
+      "shortName": "Boeing Company",
+      "longName": "Boeing Company",
+      "searchText": "ba boeing company boeing company",
+      "stale": true,
+      "priceDelayed": true,
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "asOf": "2026-08-18T23:06:20.443188+00:00",
+      "priceAsOf": "2026-08-14"
+    },
+    {
+      "symbol": "LMT",
+      "shortName": "Lockheed Martin Corporation",
+      "longName": "Lockheed Martin Corporation",
+      "searchText": "lmt lockheed martin corporation lockheed martin corporation",
+      "stale": true,
+      "priceDelayed": true,
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "asOf": "2026-08-18T23:06:20.443188+00:00",
+      "priceAsOf": "2026-08-14"
+    },
+    {
+      "symbol": "SPY",
+      "shortName": "SPDR S&P 500 ETF Trust",
+      "longName": "SPDR S&P 500 ETF Trust",
+      "searchText": "spy spdr s&p 500 etf trust spdr s&p 500 etf trust",
+      "stale": true,
+      "priceDelayed": true,
+      "asOf": "2026-08-18T23:06:20.443188+00:00",
+      "priceAsOf": "2026-08-14"
+    },
+    {
+      "symbol": "UNP",
+      "shortName": "Union Pacific Corporation",
+      "longName": "Union Pacific Corporation",
+      "searchText": "unp union pacific corporation union pacific corporation",
+      "stale": true,
+      "priceDelayed": true,
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "asOf": "2026-08-18T23:06:20.443188+00:00",
+      "priceAsOf": "2026-08-14"
+    },
+    {
+      "symbol": "UPS",
+      "shortName": "United Parcel Service, Inc.",
+      "longName": "United Parcel Service, Inc.",
+      "searchText": "ups united parcel service, inc. united parcel service, inc.",
+      "stale": true,
+      "priceDelayed": true,
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "industry",
+        "beta",
+        "news"
+      ],
+      "asOf": "2026-08-18T23:06:20.443188+00:00",
+      "priceAsOf": "2026-08-14"
+    },
+    {
+      "symbol": "SLB",
+      "shortName": "SLB",
+      "longName": "SLB",
+      "searchText": "slb slb slb",
+      "stale": true,
+      "priceDelayed": true,
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "asOf": "2026-08-18T23:06:20.443188+00:00",
+      "priceAsOf": "2026-08-14"
+    },
+    {
+      "symbol": "DE",
+      "shortName": "Deere & Company",
+      "longName": "Deere & Company",
+      "searchText": "de deere & company deere & company",
+      "stale": true,
+      "priceDelayed": true,
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "asOf": "2026-08-18T23:06:20.443188+00:00",
+      "priceAsOf": "2026-08-14"
+    },
+    {
+      "symbol": "GD",
+      "shortName": "General Dynamics Corporation",
+      "longName": "General Dynamics Corporation",
+      "searchText": "gd general dynamics corporation general dynamics corporation",
+      "stale": true,
+      "priceDelayed": true,
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "asOf": "2026-08-18T23:06:20.443188+00:00",
+      "priceAsOf": "2026-08-14"
+    },
+    {
+      "symbol": "NOC",
+      "shortName": "Northrop Grumman Corporation",
+      "longName": "Northrop Grumman Corporation",
+      "searchText": "noc northrop grumman corporation northrop grumman corporation",
+      "stale": true,
+      "priceDelayed": true,
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "asOf": "2026-08-18T23:06:20.443188+00:00",
+      "priceAsOf": "2026-08-14"
+    },
+    {
+      "symbol": "ETN",
+      "shortName": "Eaton Corporation plc",
+      "longName": "Eaton Corporation plc",
+      "searchText": "etn eaton corporation plc eaton corporation plc",
+      "stale": true,
+      "priceDelayed": true,
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "asOf": "2026-08-18T23:06:20.443188+00:00",
+      "priceAsOf": "2026-08-14"
+    },
+    {
+      "symbol": "ITW",
+      "shortName": "Illinois Tool Works Inc.",
+      "longName": "Illinois Tool Works Inc.",
+      "searchText": "itw illinois tool works inc. illinois tool works inc.",
+      "stale": true,
+      "priceDelayed": true,
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "asOf": "2026-08-18T23:06:20.443188+00:00",
+      "priceAsOf": "2026-08-14"
+    },
+    {
+      "symbol": "EMR",
+      "shortName": "Emerson Electric Co.",
+      "longName": "Emerson Electric Co.",
+      "searchText": "emr emerson electric co. emerson electric co.",
+      "stale": true,
+      "priceDelayed": true,
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "asOf": "2026-08-18T23:06:20.443188+00:00",
+      "priceAsOf": "2026-08-14"
+    },
+    {
+      "symbol": "WM",
+      "shortName": "Waste Management, Inc.",
+      "longName": "Waste Management, Inc.",
+      "searchText": "wm waste management, inc. waste management, inc.",
+      "stale": true,
+      "priceDelayed": true,
+      "partial": true,
+      "retainedSections": [
+        "fundamentals",
+        "wacc",
+        "beta",
+        "news"
+      ],
+      "asOf": "2026-08-18T23:06:20.443188+00:00",
+      "priceAsOf": "2026-08-14"
+    },
+    {
+      "symbol": "FDX",
+      "shortName": "FedEx Corporation",
+      "longName": "FedEx Corporation",
+      "searchText": "fdx fedex corporation fedex corporation",
+      "stale": true,
+      "priceDelayed": true,
+      "partial": true,
+      "retainedSections": [
+        "info",
+        "fundamentals",
+        "industry",
+        "beta",
+        "news"
+      ],
+      "asOf": "2026-08-18T23:06:20.443188+00:00",
+      "priceAsOf": "2026-08-14"
     }
   ],
-  "partialCount": 92,
+  "partialCount": 123,
   "priceHealth": {
-    "assessedAt": "2026-08-18T23:06:20.443188+00:00",
+    "assessedAt": "2026-09-15T01:03:45.681080+00:00",
     "maxAgeDays": 7,
     "pricedCount": 150,
-    "recentCount": 26,
-    "delayedCount": 124,
+    "recentCount": 31,
+    "delayedCount": 119,
     "missingCount": 1,
-    "oldestAsOf": "2026-07-08",
-    "latestAsOf": "2026-08-14"
+    "oldestAsOf": "2026-07-10",
+    "latestAsOf": "2026-09-11"
   }
 }
