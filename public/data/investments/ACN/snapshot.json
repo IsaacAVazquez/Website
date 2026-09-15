@@ -1,11 +1,17 @@
 {
   "symbol": "ACN",
-  "lastUpdated": "2026-07-13T23:36:48.650860+00:00",
+  "lastUpdated": "2026-09-15T01:03:45.681080+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-07-13T23:36:48.650860+00:00",
+    "snapshotBuiltAt": "2026-09-15T01:03:45.681080+00:00",
     "sections": {
-      "price": "2026-07-10"
-    }
+      "price": "2026-09-11"
+    },
+    "retainedSections": [
+      "fundamentals",
+      "wacc",
+      "beta",
+      "news"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -32,7 +38,7 @@
       "country": "Ireland",
       "industry": "Information Technology Services",
       "sector": "Technology",
-      "longBusinessSummary": "Accenture plc provides strategy and consulting, industry X, song, and technology and operation services in the Americas, Europe, the Middle East, Africa, and the Asia Pacific. It offers systems integration and application management; security; intelligent platform; infrastructure; software engineering; data, AI, cloud; and automation and global delivery services. The company also operates business processes for specific enterprise functions, including finance and accounting, sourcing and procurement, supply chain, marketing and sales, and human resources, as well as industry-specific services, such as platform trust and safety, banking, insurance, network and health services; and designs, manufactures, and assembles automation equipment, robotics, and other commercial hardware products. It serves communications, media, and technology; financial services; banking and capital markets, and insurance; health and public service; consumer goods, retail, travel services; industrial; life science; and chemicals, natural resources, energy, and utilities sectors. Accenture plc has collaboration with Amazon Web Services (AWS) to deliver transformative digital services to public sector, defense, and national security organizations. It has a collaboration with OpenAI to help enterprise clients unlock new levels of innovation and growth by bringing agentic AI systems; has a strategic collaboration with Microsoft and Avanade for the development of an agentic factory intelligence system; and INFRONEER Holdings Inc. and SAP Japan Co., Ltd. to develop a new financial data and insights platform. It also has strategic partnership with Netomi, Inc. to help enterprises reinvent customer experience using agentic AI systems. Accenture plc was founded in 1951 and is based in Dublin, Ireland.",
+      "longBusinessSummary": "Accenture plc provides strategy and consulting, industry X, song, and technology and operation services in the Americas, Europe, the Middle East, Africa, and the Asia Pacific. It offers systems integration and application management; security; intelligent platform; infrastructure; software engineering; data, AI, cloud; and automation and global delivery services. The company also operates business processes for specific enterprise functions, including finance and accounting, sourcing and procurement, supply chain, marketing and sales, and human resources, as well as industry-specific services, such as platform trust and safety, banking, insurance, network and health services; and designs, manufactures, and assembles automation equipment, robotics, and other commercial hardware products. It serves communications, media, and technology; financial services; banking and capital markets, and insurance; health and public service; consumer goods, retail, travel services; industrial; life science; and chemicals, natural resources, energy, and utilities sectors. Accenture plc has collaboration with Amazon Web Services (AWS) to deliver transformative digital services to public sector, defense, and national security organizations. It has a collaboration with OpenAI to help enterprise clients unlock new levels of innovation and growth by bringing agentic AI systems; has a strategic collaboration with Microsoft and Avanade for the development of an agentic factory intelligence system; and INFRONEER Holdings Inc. and SAP Japan Co., Ltd. to develop a new financial data and insights platform. It also has strategic partnership with Netomi, Inc. to help enterprises reinvent customer experience using agentic AI systems. The company has a strategic alliance with ServiceNow for integrated risk management and third-party risk management solutions. Accenture plc was founded in 1951 and is based in Dublin, Ireland.",
       "fullTimeEmployees": 799000,
       "website": "https://www.accenture.com",
       "shortName": "Accenture plc",
@@ -40,10 +46,10 @@
     },
     "fundamentals": {
       "ttmEps": 12.5219,
-      "ttmPe": 10.8,
-      "marketCap": 82742084737,
-      "psRatio": 1.13,
-      "pbRatio": 2.59,
+      "ttmPe": 14.69,
+      "marketCap": 112521403410,
+      "psRatio": 1.54,
+      "pbRatio": 3.53,
       "pegRatio": 1.2
     },
     "profitability": {
@@ -5669,358 +5675,6 @@
     },
     "price": [
       {
-        "date": "2025-07-10",
-        "open": 292.04,
-        "high": 292.6,
-        "low": 285.79,
-        "close": 288.36,
-        "volume": 5197200
-      },
-      {
-        "date": "2025-07-11",
-        "open": 287.21,
-        "high": 287.74,
-        "low": 280.43,
-        "close": 281.06,
-        "volume": 5077100
-      },
-      {
-        "date": "2025-07-14",
-        "open": 280.69,
-        "high": 280.94,
-        "low": 276.95,
-        "close": 279.99,
-        "volume": 4281800
-      },
-      {
-        "date": "2025-07-15",
-        "open": 281.04,
-        "high": 281.11,
-        "low": 275.96,
-        "close": 276.07,
-        "volume": 3970300
-      },
-      {
-        "date": "2025-07-16",
-        "open": 276.75,
-        "high": 280.27,
-        "low": 276.03,
-        "close": 279.67,
-        "volume": 3176400
-      },
-      {
-        "date": "2025-07-17",
-        "open": 280.75,
-        "high": 283.13,
-        "low": 278.25,
-        "close": 282.7,
-        "volume": 3513000
-      },
-      {
-        "date": "2025-07-18",
-        "open": 283.24,
-        "high": 283.82,
-        "low": 280.64,
-        "close": 282.44,
-        "volume": 4207400
-      },
-      {
-        "date": "2025-07-21",
-        "open": 283.52,
-        "high": 284.6,
-        "low": 282.18,
-        "close": 282.45,
-        "volume": 2955600
-      },
-      {
-        "date": "2025-07-22",
-        "open": 281.8,
-        "high": 287.07,
-        "low": 281.8,
-        "close": 286.96,
-        "volume": 3614500
-      },
-      {
-        "date": "2025-07-23",
-        "open": 289.74,
-        "high": 291,
-        "low": 285.78,
-        "close": 286.04,
-        "volume": 2953400
-      },
-      {
-        "date": "2025-07-24",
-        "open": 281.78,
-        "high": 284.4,
-        "low": 279.27,
-        "close": 281.71,
-        "volume": 3952800
-      },
-      {
-        "date": "2025-07-25",
-        "open": 281.8,
-        "high": 284.3,
-        "low": 280.56,
-        "close": 283.15,
-        "volume": 2632300
-      },
-      {
-        "date": "2025-07-28",
-        "open": 280.19,
-        "high": 280.99,
-        "low": 275.71,
-        "close": 277.04,
-        "volume": 3693900
-      },
-      {
-        "date": "2025-07-29",
-        "open": 277.45,
-        "high": 278.96,
-        "low": 276.54,
-        "close": 278.9,
-        "volume": 3492600
-      },
-      {
-        "date": "2025-07-30",
-        "open": 278.5,
-        "high": 278.69,
-        "low": 272.39,
-        "close": 274,
-        "volume": 4272700
-      },
-      {
-        "date": "2025-07-31",
-        "open": 271,
-        "high": 273.88,
-        "low": 266.13,
-        "close": 267.1,
-        "volume": 4794100
-      },
-      {
-        "date": "2025-08-01",
-        "open": 264.63,
-        "high": 265.11,
-        "low": 254.2,
-        "close": 255.37,
-        "volume": 6042400
-      },
-      {
-        "date": "2025-08-04",
-        "open": 258.08,
-        "high": 259.14,
-        "low": 256.61,
-        "close": 258.78,
-        "volume": 3470600
-      },
-      {
-        "date": "2025-08-05",
-        "open": 255.74,
-        "high": 255.8,
-        "low": 245.74,
-        "close": 247.07,
-        "volume": 10175900
-      },
-      {
-        "date": "2025-08-06",
-        "open": 247.7,
-        "high": 248.09,
-        "low": 244,
-        "close": 247.54,
-        "volume": 8064700
-      },
-      {
-        "date": "2025-08-07",
-        "open": 248.2,
-        "high": 251.33,
-        "low": 239.82,
-        "close": 241.72,
-        "volume": 7246300
-      },
-      {
-        "date": "2025-08-08",
-        "open": 242.66,
-        "high": 242.92,
-        "low": 238.03,
-        "close": 239.2,
-        "volume": 3810900
-      },
-      {
-        "date": "2025-08-11",
-        "open": 238,
-        "high": 241.82,
-        "low": 236.96,
-        "close": 238.61,
-        "volume": 4675000
-      },
-      {
-        "date": "2025-08-12",
-        "open": 238.93,
-        "high": 242.42,
-        "low": 236.67,
-        "close": 237.87,
-        "volume": 4832300
-      },
-      {
-        "date": "2025-08-13",
-        "open": 238.75,
-        "high": 246.73,
-        "low": 237.31,
-        "close": 245.68,
-        "volume": 5278400
-      },
-      {
-        "date": "2025-08-14",
-        "open": 244.54,
-        "high": 246.67,
-        "low": 242.35,
-        "close": 246.16,
-        "volume": 4928200
-      },
-      {
-        "date": "2025-08-15",
-        "open": 245.74,
-        "high": 249.4,
-        "low": 245.74,
-        "close": 247.01,
-        "volume": 4223400
-      },
-      {
-        "date": "2025-08-18",
-        "open": 247,
-        "high": 250.99,
-        "low": 245.1,
-        "close": 249.13,
-        "volume": 3776000
-      },
-      {
-        "date": "2025-08-19",
-        "open": 250.53,
-        "high": 257.62,
-        "low": 250.4,
-        "close": 255.88,
-        "volume": 4555700
-      },
-      {
-        "date": "2025-08-20",
-        "open": 257.04,
-        "high": 260.39,
-        "low": 254.99,
-        "close": 255.05,
-        "volume": 5069900
-      },
-      {
-        "date": "2025-08-21",
-        "open": 255,
-        "high": 255,
-        "low": 250.73,
-        "close": 253.99,
-        "volume": 2670200
-      },
-      {
-        "date": "2025-08-22",
-        "open": 254.69,
-        "high": 262.17,
-        "low": 254.47,
-        "close": 259.22,
-        "volume": 3102600
-      },
-      {
-        "date": "2025-08-25",
-        "open": 259.22,
-        "high": 259.73,
-        "low": 255.04,
-        "close": 256.05,
-        "volume": 2358600
-      },
-      {
-        "date": "2025-08-26",
-        "open": 255.34,
-        "high": 256.69,
-        "low": 253.16,
-        "close": 255.42,
-        "volume": 4884400
-      },
-      {
-        "date": "2025-08-27",
-        "open": 256.12,
-        "high": 258.29,
-        "low": 255.44,
-        "close": 257.12,
-        "volume": 2239000
-      },
-      {
-        "date": "2025-08-28",
-        "open": 258,
-        "high": 258.13,
-        "low": 253.96,
-        "close": 256.17,
-        "volume": 2984900
-      },
-      {
-        "date": "2025-08-29",
-        "open": 256.92,
-        "high": 260.38,
-        "low": 256.09,
-        "close": 259.97,
-        "volume": 2805800
-      },
-      {
-        "date": "2025-09-02",
-        "open": 257.85,
-        "high": 260.4,
-        "low": 251.98,
-        "close": 256.17,
-        "volume": 3537800
-      },
-      {
-        "date": "2025-09-03",
-        "open": 253.21,
-        "high": 254.81,
-        "low": 251.32,
-        "close": 254.15,
-        "volume": 2934800
-      },
-      {
-        "date": "2025-09-04",
-        "open": 253.27,
-        "high": 254.7,
-        "low": 247.89,
-        "close": 252.94,
-        "volume": 4165400
-      },
-      {
-        "date": "2025-09-05",
-        "open": 252.93,
-        "high": 258.65,
-        "low": 250.19,
-        "close": 254.95,
-        "volume": 4235900
-      },
-      {
-        "date": "2025-09-08",
-        "open": 255.28,
-        "high": 256,
-        "low": 249.47,
-        "close": 255.57,
-        "volume": 4707800
-      },
-      {
-        "date": "2025-09-09",
-        "open": 255,
-        "high": 255.96,
-        "low": 249.84,
-        "close": 251.99,
-        "volume": 3456400
-      },
-      {
-        "date": "2025-09-10",
-        "open": 252.04,
-        "high": 252.04,
-        "low": 240.66,
-        "close": 243.11,
-        "volume": 5117500
-      },
-      {
         "date": "2025-09-11",
         "open": 243.21,
         "high": 244.56,
@@ -7682,7 +7336,359 @@
         "high": 142.45,
         "low": 134.85,
         "close": 135.23,
-        "volume": 7629732
+        "volume": 7632600
+      },
+      {
+        "date": "2026-07-13",
+        "open": 139.1,
+        "high": 141.74,
+        "low": 136.1,
+        "close": 138.52,
+        "volume": 5377400
+      },
+      {
+        "date": "2026-07-14",
+        "open": 130.48,
+        "high": 137.75,
+        "low": 129.96,
+        "close": 134.56,
+        "volume": 6876400
+      },
+      {
+        "date": "2026-07-15",
+        "open": 137.01,
+        "high": 139.54,
+        "low": 135.93,
+        "close": 137.02,
+        "volume": 10189100
+      },
+      {
+        "date": "2026-07-16",
+        "open": 138.93,
+        "high": 145.52,
+        "low": 135.5,
+        "close": 144.61,
+        "volume": 9515800
+      },
+      {
+        "date": "2026-07-17",
+        "open": 145,
+        "high": 147.42,
+        "low": 139.72,
+        "close": 143.57,
+        "volume": 10575100
+      },
+      {
+        "date": "2026-07-20",
+        "open": 142.84,
+        "high": 145.59,
+        "low": 140,
+        "close": 144.73,
+        "volume": 8070300
+      },
+      {
+        "date": "2026-07-21",
+        "open": 141.33,
+        "high": 144.42,
+        "low": 140.31,
+        "close": 140.86,
+        "volume": 4771000
+      },
+      {
+        "date": "2026-07-22",
+        "open": 140.82,
+        "high": 143.49,
+        "low": 138.9,
+        "close": 140.09,
+        "volume": 4768300
+      },
+      {
+        "date": "2026-07-23",
+        "open": 139,
+        "high": 139.3,
+        "low": 135.96,
+        "close": 138.74,
+        "volume": 10362500
+      },
+      {
+        "date": "2026-07-24",
+        "open": 142.5,
+        "high": 147.53,
+        "low": 140.71,
+        "close": 146.99,
+        "volume": 6570600
+      },
+      {
+        "date": "2026-07-27",
+        "open": 150.2,
+        "high": 156.84,
+        "low": 149.58,
+        "close": 154.06,
+        "volume": 7771400
+      },
+      {
+        "date": "2026-07-28",
+        "open": 156.95,
+        "high": 167.75,
+        "low": 156.95,
+        "close": 164.66,
+        "volume": 10614800
+      },
+      {
+        "date": "2026-07-29",
+        "open": 165,
+        "high": 176.4,
+        "low": 163.86,
+        "close": 173.17,
+        "volume": 10917200
+      },
+      {
+        "date": "2026-07-30",
+        "open": 166.73,
+        "high": 166.73,
+        "low": 159.96,
+        "close": 163.29,
+        "volume": 8643800
+      },
+      {
+        "date": "2026-07-31",
+        "open": 160.82,
+        "high": 166.94,
+        "low": 159.2,
+        "close": 165.92,
+        "volume": 9389200
+      },
+      {
+        "date": "2026-08-03",
+        "open": 170.37,
+        "high": 171.47,
+        "low": 165.44,
+        "close": 165.76,
+        "volume": 6741900
+      },
+      {
+        "date": "2026-08-04",
+        "open": 160.64,
+        "high": 171.3,
+        "low": 160.4,
+        "close": 170.43,
+        "volume": 5792900
+      },
+      {
+        "date": "2026-08-05",
+        "open": 172.25,
+        "high": 173.27,
+        "low": 167.44,
+        "close": 170.73,
+        "volume": 5395900
+      },
+      {
+        "date": "2026-08-06",
+        "open": 160.21,
+        "high": 171.47,
+        "low": 157.76,
+        "close": 171.11,
+        "volume": 5206000
+      },
+      {
+        "date": "2026-08-07",
+        "open": 171.13,
+        "high": 176.33,
+        "low": 170.57,
+        "close": 175.72,
+        "volume": 3678000
+      },
+      {
+        "date": "2026-08-10",
+        "open": 174.46,
+        "high": 179.66,
+        "low": 172.55,
+        "close": 178.25,
+        "volume": 3974700
+      },
+      {
+        "date": "2026-08-11",
+        "open": 176.83,
+        "high": 180.3,
+        "low": 175.55,
+        "close": 179.82,
+        "volume": 3900000
+      },
+      {
+        "date": "2026-08-12",
+        "open": 176.03,
+        "high": 180.15,
+        "low": 173.82,
+        "close": 180.14,
+        "volume": 5626900
+      },
+      {
+        "date": "2026-08-13",
+        "open": 181.68,
+        "high": 185.8,
+        "low": 177,
+        "close": 178.49,
+        "volume": 9336300
+      },
+      {
+        "date": "2026-08-14",
+        "open": 180.04,
+        "high": 180.5,
+        "low": 173.91,
+        "close": 176.89,
+        "volume": 6291000
+      },
+      {
+        "date": "2026-08-17",
+        "open": 173,
+        "high": 175.52,
+        "low": 169.75,
+        "close": 169.98,
+        "volume": 5041100
+      },
+      {
+        "date": "2026-08-18",
+        "open": 172.86,
+        "high": 176.93,
+        "low": 170.43,
+        "close": 172.93,
+        "volume": 5995600
+      },
+      {
+        "date": "2026-08-19",
+        "open": 172.35,
+        "high": 185.77,
+        "low": 172.35,
+        "close": 183.17,
+        "volume": 5660500
+      },
+      {
+        "date": "2026-08-20",
+        "open": 182.21,
+        "high": 187.14,
+        "low": 181.17,
+        "close": 181.35,
+        "volume": 4383300
+      },
+      {
+        "date": "2026-08-21",
+        "open": 180.98,
+        "high": 188.45,
+        "low": 180.02,
+        "close": 185.28,
+        "volume": 4837600
+      },
+      {
+        "date": "2026-08-24",
+        "open": 184.64,
+        "high": 188.08,
+        "low": 183.43,
+        "close": 186.53,
+        "volume": 7346300
+      },
+      {
+        "date": "2026-08-25",
+        "open": 183.78,
+        "high": 188,
+        "low": 182.33,
+        "close": 186.93,
+        "volume": 4071800
+      },
+      {
+        "date": "2026-08-26",
+        "open": 182.35,
+        "high": 185.84,
+        "low": 180.79,
+        "close": 181.38,
+        "volume": 4376500
+      },
+      {
+        "date": "2026-08-27",
+        "open": 184.1,
+        "high": 189.93,
+        "low": 183.51,
+        "close": 187.38,
+        "volume": 4930200
+      },
+      {
+        "date": "2026-08-28",
+        "open": 189.34,
+        "high": 191.9,
+        "low": 188.67,
+        "close": 189.61,
+        "volume": 4840700
+      },
+      {
+        "date": "2026-08-31",
+        "open": 188.32,
+        "high": 191.46,
+        "low": 186.76,
+        "close": 189.76,
+        "volume": 4194000
+      },
+      {
+        "date": "2026-09-01",
+        "open": 187.32,
+        "high": 190.5,
+        "low": 186.99,
+        "close": 188.09,
+        "volume": 3409500
+      },
+      {
+        "date": "2026-09-02",
+        "open": 186.31,
+        "high": 190.05,
+        "low": 185.44,
+        "close": 187.68,
+        "volume": 2876300
+      },
+      {
+        "date": "2026-09-03",
+        "open": 190,
+        "high": 195.32,
+        "low": 189.09,
+        "close": 193.12,
+        "volume": 5420300
+      },
+      {
+        "date": "2026-09-04",
+        "open": 192,
+        "high": 192.17,
+        "low": 186.02,
+        "close": 186.72,
+        "volume": 5103400
+      },
+      {
+        "date": "2026-09-08",
+        "open": 184.35,
+        "high": 184.35,
+        "low": 177.04,
+        "close": 179.03,
+        "volume": 6099500
+      },
+      {
+        "date": "2026-09-09",
+        "open": 178.61,
+        "high": 180.97,
+        "low": 175.6,
+        "close": 175.8,
+        "volume": 3981100
+      },
+      {
+        "date": "2026-09-10",
+        "open": 177.63,
+        "high": 179.39,
+        "low": 175.49,
+        "close": 177.91,
+        "volume": 3961100
+      },
+      {
+        "date": "2026-09-11",
+        "open": 179.05,
+        "high": 184.12,
+        "low": 178.29,
+        "close": 183.9,
+        "volume": 2886800
       }
     ],
     "news": [
@@ -7831,43 +7837,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 10.8,
-        "industryAvg": 15.62
+        "value": 14.69,
+        "industryAvg": 17.88
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.13,
-        "industryAvg": 1.48
+        "value": 1.54,
+        "industryAvg": 1.44
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.59,
-        "industryAvg": 3.46
+        "value": 3.53,
+        "industryAvg": 1.26
       },
       {
         "metric": "ROE",
         "value": 7.41,
-        "industryAvg": 17.66
+        "industryAvg": 3.85
       },
       {
         "metric": "ROA",
         "value": 3.44,
-        "industryAvg": 6.069999999999999
+        "industryAvg": 1.27
       },
       {
         "metric": "Gross Margin",
         "value": 32.769999999999996,
-        "industryAvg": 31.819999999999997
+        "industryAvg": 31.41
       },
       {
         "metric": "EBITDA Margin",
         "value": 18.85,
-        "industryAvg": 16.3
+        "industryAvg": 16.220000000000002
       },
       {
         "metric": "Net Margin",
         "value": 12.5,
-        "industryAvg": 8.09
+        "industryAvg": 6.859999999999999
       }
     ]
   }
