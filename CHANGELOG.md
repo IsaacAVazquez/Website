@@ -4,6 +4,12 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-09-15
+
+- Rankings board audit fixes for reflow, font swap, placeholder and control borders ([#445](https://github.com/IsaacAVazquez/Website/pull/445)).
+
+---
+
 ## 2026-09-14
 
 - Impeccable loop over the Catalog 97 routes ([#436](https://github.com/IsaacAVazquez/Website/pull/436)).
