@@ -62,8 +62,10 @@ export function Catalog97ToolShell({
           </div>
         </section>
       ) : null}
-      {children}
-      {buildNoteHref ? <ProjectBuildNote href={buildNoteHref} route={route} /> : null}
+      <div data-c97-surface="paper">
+        {children}
+        {buildNoteHref ? <ProjectBuildNote href={buildNoteHref} route={route} /> : null}
+      </div>
     </Catalog97Shell>
   );
 }

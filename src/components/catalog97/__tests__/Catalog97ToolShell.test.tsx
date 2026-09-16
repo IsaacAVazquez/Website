@@ -31,6 +31,7 @@ describe("Catalog97ToolShell", () => {
     expect(screen.getByRole("contentinfo", { name: "Site footer" })).toBeInTheDocument();
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
     expect(document.querySelector(".c97-page[data-c97]")).not.toBeNull();
+    expect(screen.getByRole("main").querySelector('[data-c97-surface="paper"] h1')).not.toBeNull();
   });
 
   it("renders no band and no build note by default", () => {
