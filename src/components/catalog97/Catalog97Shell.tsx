@@ -213,16 +213,17 @@ interface Catalog97ShellProps {
 }
 
 /**
- * Page wrapper for the seven Catalog 97 routes.
+ * Page wrapper shared by the seven Catalog 97 routes and, as the base of
+ * `Catalog97ToolShell`, every other route besides.
  *
  * Owns the `.c97-page` scope that every `--c97-*` token hangs off, and renders
  * the header and the footer around the page's bands. The route itself supplies
  * only the bands between them. The script emblem lives inside the footer now
  * rather than on its own band above it.
  *
- * `StaticHeader` and `ConditionalLayout` both stand down on these routes (see
- * `isCatalog97Route`), so this is the only header and footer on the page. The
- * `<main>` landmark lives here for the same reason.
+ * `ConditionalLayout` stands down on these routes (see `isCatalog97Route`),
+ * so this is the only header and footer on the page. The `<main>` landmark
+ * lives here for the same reason.
  */
 export function Catalog97Shell({
   children,

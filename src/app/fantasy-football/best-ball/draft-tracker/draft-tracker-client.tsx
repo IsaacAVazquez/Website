@@ -60,9 +60,9 @@ const BREADCRUMBS = [
   },
 ];
 
-// The rem value inside FASCIA_TOP_CLASS ("top-[4.5rem]"), needed as a number
+// The rem value inside FASCIA_TOP_CLASS ("top-0"), needed as a number
 // for the board's sticky offset and the room-open scroll.
-const FASCIA_TOP_REM = 4.5;
+const FASCIA_TOP_REM = 0;
 
 const CONTESTS = Object.values(BEST_BALL_CONTESTS);
 // Presets whose lobby cards vary enough that the bespoke rulesNote has to render.
@@ -897,7 +897,7 @@ function BestBallDraftRoom({
             its last card below the fold. */}
         <aside
           aria-label="Roster build"
-          className="hidden self-start lg:sticky lg:top-24 lg:grid lg:max-h-[calc(100vh-7rem)] lg:gap-5 lg:overflow-y-auto lg:overscroll-contain"
+          className="hidden self-start lg:sticky lg:top-0 lg:grid lg:max-h-[calc(100vh-7rem)] lg:gap-5 lg:overflow-y-auto lg:overscroll-contain"
         >
           <section className="home-card p-5" aria-labelledby="best-ball-desktop-build-heading">
             <BestBallBuildPanel

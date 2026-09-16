@@ -2,7 +2,7 @@
 
 Operational context for agents working in this repo. Start here, then read `CLAUDE.md` for deeper implementation context.
 
-**Last updated:** 2026-09-07
+**Last updated:** 2026-09-16
 
 ---
 
@@ -83,94 +83,40 @@ Canonical redirects:
 
 ## Navigation and Shell
 
-Promoted header items (from `src/constants/navlinks.tsx`):
+Header items (from `catalog97NavLinks` in `src/constants/catalog97Nav.ts`), the same seven links on every route:
 
-1. `Home`
-2. `About`
-3. `Projects` (points to `/portfolio`)
-4. `Writing`
-5. `Investments`
-6. `Fantasy` (points to `/fantasy-football`)
-7. `Resume`
-8. `Contact`
+1. `Home` (`/`)
+2. `Work` (`/portfolio`)
+3. `Writing` (`/writing`)
+4. `Dashboards` (`/dashboards`)
+5. `About` (`/about`)
+6. `Résumé` (`/resume`)
+7. `Contact` (`/contact`)
 
 Shared shell files:
 
 - `src/app/layout.tsx`
-- `src/components/StaticHeader.tsx`
 - `src/components/ConditionalLayout.tsx`
-- `src/components/Footer.tsx`
+- `src/components/catalog97/Catalog97ToolShell.tsx`
 
-Self-shell routes currently include:
-
-- `/about`
-- `/accessibility`
-- `/agent-build-index`
-- `/ai-dev-tools`
-- `/analytics-reference`
-- `/arcade`
-- `/bay-area-transit`
-- `/changelog`
-- `/contact`
-- `/decision-lab`
-- `/enablement-assistant`
-- `/earthquake-pulse`
-- `/fantasy-formula-1`
-- `/fantasy-football`
-- `/fantasy-football/best-ball`
-- `/fantasy-football/best-ball/draft-tracker`
-- `/fantasy-football/draft-tracker`
-- `/fantasy-football/mock-draft`
-- `/fantasy-football/trade-calculator`
-- `/fantasy-football/weekly`
-- `/fantasy-football/waivers`
-- `/fintech-tools/budget-planner`
-- `/fintech-tools/interchange-iq`
-- `/fintech-tools/rent-vs-buy`
-- `/food-map`
-- `/formula-1`
-- `/golf`
-- `/github-trending-pulse`
-- `/investments`
-- `/la-liga`
-- `/march-madness-2026`
-- `/mba-internship-notifications`
-- `/museum-log`
-- `/news-pulse`
-- `/now`
-- `/polling-aggregator`
-- `/premier-league`
-- `/portfolio`
-- `/portfolio/[slug]`
-- `/recipe-finder`
-- `/resume`
-- `/score-pools` (+ `/score-pools/*` subroutes)
-- `/search`
-- `/spacex-mission-control`
-- `/tech-startup-tracker`
-- `/travel`
-- `/travel-deals`
-- `/wine-cellar`
-- `/world-cup-2026`
-- `/writing`
-- `/writing/[slug]`
+Every route that is not one of the seven designed Catalog 97 pages, `/admin` included, renders inside `Catalog97ToolShell`.
 
 Shell semantics:
 
-- `src/components/ConditionalLayout.tsx` owns the only page-level `main` landmark for self-shell routes
-- self-shell route files and leaf sections should use `div` or `section` wrappers, not nested `main`
-- portfolio-shell routes should expose exactly one page-level `h1`
+- `ConditionalLayout` owns the only page-level `main` landmark, through `Catalog97ToolShell` for every route outside the seven designed pages
+- route files and leaf sections should use `div` or `section` wrappers, not nested `main`
+- every route should expose exactly one page-level `h1`
 
 Catalog 97 routes:
 
-- `/`, `/portfolio`, `/writing`, `/dashboards`, `/about`, `/resume`, `/contact` run on the Catalog 97 language, and every other route stays on Working Instrument
-- `StaticHeader` and `ConditionalLayout` both return early for them (`isCatalog97Route` in `src/constants/catalog97Nav.ts`), so `Catalog97Shell` owns the header, the only `main`, and the footer
-- their tokens live in `src/app/catalog97.css`, scoped under `.c97-page`, and never touch `--home-*`
+- `/`, `/portfolio`, `/writing`, `/dashboards`, `/about`, `/resume`, `/contact` render their own `Catalog97Shell` and pass through `ConditionalLayout` untouched, so `isCatalog97Route` (`src/constants/catalog97Nav.ts`) is what tells `ConditionalLayout` to stand down for them
+- every other route is wrapped in `Catalog97ToolShell`, which is `Catalog97Shell` plus an optional title band and the build-note aside, so it owns the same header, the same only `main`, and the same footer
+- tokens live in `src/app/catalog97.css`, scoped under `[data-c97]`, with a bridge block that aliases the `--home-*` tokens legacy components still use onto the Catalog 97 value for the enclosing surface
 
-Footer variants:
+Footer:
 
-- `full` on every route that reaches `ConditionalLayout`
-- the Catalog 97 routes render their own espresso footer instead. `Footer` still accepts `variant="compact"`, but nothing currently passes it
+- one footer now, the espresso `Catalog97Footer` inside `Catalog97Shell`, reached by every route through either branch of `ConditionalLayout`
+- the old `Footer.tsx` component and its `compact`/`full` variants were deleted on 2026-09-16
 
 ---
 

@@ -2,7 +2,7 @@
 
 Deep implementation context for Claude Code and other agents working in this repo.
 
-**Last updated:** 2026-08-16
+**Last updated:** 2026-09-16
 
 ---
 
@@ -60,26 +60,28 @@ data-refresh runbooks live in `AGENTS.md` and `docs/DATA_UPDATE_OPERATIONS.md`.
 
 ## Routes, Navigation, and Shell
 
-The full route map, header links, self-shell route list, and footer variants live in
+The full route map and header links live in
 `AGENTS.md`. The patterns that matter when editing the shell:
 
-- `src/app/layout.tsx` renders fonts, providers, skip link, `StaticHeader`, then
+- `src/app/layout.tsx` renders fonts, providers, the skip link, then
   `ConditionalLayout`.
-- `src/components/ConditionalLayout.tsx` decides each route's wrapper (default
-  constrained or self-managed shell) and owns the only page-level `main` landmark
-  for self-shell routes. Leaf sections use `div`/`section`, never a nested `main`.
-  Every route exposes exactly one page-level `h1`.
-- The seven **Catalog 97** routes (`/`, `/portfolio`, `/writing`, `/dashboards`,
-  `/about`, `/resume`, `/contact`) are the exception to all of it. `StaticHeader`
-  and `ConditionalLayout` both return early for them (`isCatalog97Route` in
-  `src/constants/catalog97Nav.ts`), and `Catalog97Shell` supplies the header,
-  the only `main`, and the footer. Their tokens live in `src/app/catalog97.css`,
-  scoped under `.c97-page`, and never touch `--home-*`.
-- `src/components/Footer.tsx` is always `full` now, since the only two routes
-  that took `compact` are Catalog 97 routes and no longer reach it. The prop
-  still works if a route needs it again.
-- Header links come from `src/constants/navlinks.tsx` (8 links; Fantasy →
-  `/fantasy-football`).
+- `src/components/ConditionalLayout.tsx` has two branches. The seven designed
+  Catalog 97 routes (`/`, `/portfolio`, `/writing`, `/dashboards`, `/about`,
+  `/resume`, `/contact`, listed in `src/constants/catalog97Nav.ts`) pass through
+  untouched because their page components render `Catalog97Shell` themselves.
+  Every other route, `/admin` included, is wrapped in
+  `src/components/catalog97/Catalog97ToolShell.tsx`, which supplies the header,
+  the only page-level `main`, the espresso footer, and the build-note aside.
+  Leaf sections use `div`/`section`, never a nested `main`. Every route exposes
+  exactly one page-level `h1`.
+- Header links are the seven in `catalog97NavLinks`. The Working Instrument
+  header, footer, and `navlinks.tsx` were deleted on 2026-09-16.
+- `src/app/catalog97.css` holds the Catalog 97 tokens, scoped under
+  `[data-c97]`, and the bridge block that aliases every `--home-*` token onto
+  them so components written against the Working Instrument repaint without
+  edits. The `:root` `--home-*` declarations in `globals.css` stay until the
+  last family migration; see
+  `docs/superpowers/specs/2026-09-16-catalog97-unification-design.md`.
 
 Redirects (`next.config.mjs`): `/projects`,`/work` → `/portfolio`; `/blog` →
 `/writing`; `/blog/:slug` → `/writing/:slug`; plus fantasy-football shortcuts/typos.
@@ -326,7 +328,7 @@ you need them.
 
 - Confirm routes from `src/app/**/page.tsx`, not old docs.
 - Confirm API routes from `src/app/api/**/route.ts`.
-- Confirm nav/footer from `StaticHeader.tsx`, `ConditionalLayout.tsx`, `Footer.tsx`.
+- Confirm nav/footer from `ConditionalLayout.tsx` and `Catalog97ToolShell.tsx`.
 - Confirm portfolio behavior from `src/app/portfolio/page.tsx`.
 - Confirm writing behavior from `src/app/writing/*` and `src/lib/blog.ts`.
 - Confirm investments behavior from `src/app/investments/*`, `src/components/investments/*`,

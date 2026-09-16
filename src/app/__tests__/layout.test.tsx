@@ -16,10 +16,6 @@ jest.mock("@/components/Providers", () => ({
   Providers: ({ children }: { children: React.ReactNode }) => <>{children}</>,
 }));
 
-jest.mock("@/components/StaticHeader", () => ({
-  StaticHeader: () => <header>Header</header>,
-}));
-
 jest.mock("@/components/ConditionalLayout", () => ({
   ConditionalLayout: ({ children }: { children: React.ReactNode }) => (
     <main id="main-content">{children}</main>

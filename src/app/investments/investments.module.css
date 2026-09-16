@@ -32,10 +32,6 @@
   --home-ink-muted: #9B9585;
   --home-signal: #FF6B3B; /* @kind color */
   --home-signal-soft: #462214;
-  --home-acid: #A8B846;
-  --home-acid-soft: #596134;
-  --home-moss: #6F7A4F;
-  --home-haze: #6F85FF;
   --home-stone: #45423B;
   --home-rule: rgba(236, 234, 226, 0.16);
   --home-overlay: rgba(236, 234, 226, 0.08);
@@ -1071,7 +1067,7 @@
    ============================================================ */
 
 .terminalScope :global(.invest-retire-band) {
-  scroll-margin-top: 7rem;
+  scroll-margin-top: 1rem;
   border-top: 1px solid var(--home-rule);
   background: var(--home-paper);
   padding: 20px 24px 26px;

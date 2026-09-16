@@ -438,7 +438,7 @@ export function WorldCupClient({
           </section>
 
           {/* Sidebar */}
-          <aside className="md:sticky md:top-28 md:self-start">
+          <aside className="md:sticky md:top-0 md:self-start">
             {selectedTeamOption ? (
               <TeamDetailCard
                 option={selectedTeamOption}

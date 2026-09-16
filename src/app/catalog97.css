@@ -63,6 +63,27 @@
   --c97-font-script: "Snell Roundhand", var(--font-c97-great-vibes),
     "Petit Formal Script", cursive;
 
+  /*
+   * Mono face for readouts, code, and tabular data. Fragment Mono is already
+   * loaded by layout.tsx for the Working Instrument, so this costs no download.
+   */
+  --c97-font-mono: var(--font-fragment-mono), ui-monospace, SFMono-Regular, monospace;
+
+  /*
+   * Categorical chart ramp. Six steps from the palette itself, each measured
+   * at 3:1 or better against paper: pine 11.26, tobacco 4.36, oxblood 8.58,
+   * chocolate 9.47, dark camel 6.34, espresso 13.25. Steps are separated by
+   * hue rather than by luminance, so do not expect adjacent steps to contrast
+   * with each other; a chart that needs that uses up and down instead.
+   * Charts resolve these at render time through getComputedStyle.
+   */
+  --c97-chart-1: #0d3531;
+  --c97-chart-2: #8a6642;
+  --c97-chart-3: #6e2b36;
+  --c97-chart-4: #4a3728;
+  --c97-chart-5: #6e4e2e;
+  --c97-chart-6: #2b211a;
+
   --c97-container: 1080px;
   --c97-gutter: clamp(28px, 6vw, 96px);
   --c97-band-y: var(--c97-sp-5); /* @kind spacing */
@@ -126,6 +147,17 @@
 
 .dark [data-c97] {
   --c97-paper-base: #14100c;
+
+  /*
+   * Dark ramp, measured against dark paper: 5.80, 6.90, 5.32, 7.15, 13.77,
+   * 3.66. Same hue order as light so a series keeps its colour across themes.
+   */
+  --c97-chart-1: #5a9a8c;
+  --c97-chart-2: #c09461;
+  --c97-chart-3: #c2707c;
+  --c97-chart-4: #a79e8f;
+  --c97-chart-5: #e4dbc9;
+  --c97-chart-6: #8a6642;
 }
 
 /* Presentation. No token declarations below this line. */
@@ -154,6 +186,8 @@ body:has(.c97-page) {
 .c97-page [data-c97-surface] {
   background: var(--c97-surface);
   color: var(--c97-ink);
+  --c97-chart-up: var(--c97-positive);
+  --c97-chart-down: var(--c97-negative);
 }
 
 .c97-page [data-c97-surface="paper"] {
@@ -170,6 +204,9 @@ body:has(.c97-page) {
   --c97-accent: #6e2b36;
   --c97-rule: rgba(43, 33, 26, 0.18);
   --c97-field: #e4dbc9;
+  --c97-positive: #1b4d2c;
+  --c97-negative: #7a1c1c;
+  --c97-warning: #5c3600;
 }
 
 .c97-page [data-c97-surface="bone"] {
@@ -181,8 +218,18 @@ body:has(.c97-page) {
   --c97-accent: #6e2b36;
   --c97-rule: rgba(43, 33, 26, 0.2);
   --c97-field: #f1ebdf;
+  --c97-positive: #1b4d2c;
+  --c97-negative: #7a1c1c;
+  --c97-warning: #5c3600;
 }
 
+/*
+ * Status colour on camel and stone is LARGE-TEXT-OR-MARK ONLY, the same rule
+ * tobacco already carries for all text. The darkest usable greens, reds, and
+ * ambers measure 3.57 to 4.00 on these two mid-tones, which clears 3:1 for a
+ * dot, a bar, or text at --c97-fs-h2 and up, and never clears 4.5:1 for body
+ * copy. Body-size status text on camel or stone uses --c97-ink instead.
+ */
 .c97-page [data-c97-surface="camel"] {
   --c97-surface: #c09461;
   --c97-ink: #2b211a;
@@ -193,6 +240,9 @@ body:has(.c97-page) {
   --c97-accent: #2b211a;
   --c97-rule: rgba(43, 33, 26, 0.3);
   --c97-field: #f1ebdf;
+  --c97-positive: #1b4d2c;
+  --c97-negative: #7a1c1c;
+  --c97-warning: #5c3600;
 }
 
 /*
@@ -212,6 +262,9 @@ body:has(.c97-page) {
   --c97-accent: #f1ebdf;
   --c97-rule: rgba(241, 235, 223, 0.3);
   --c97-field: #f1ebdf;
+  --c97-positive: #a8e0b4;
+  --c97-negative: #fbcdc7;
+  --c97-warning: #f5cf7a;
 }
 
 .c97-page [data-c97-surface="chocolate"] {
@@ -224,6 +277,9 @@ body:has(.c97-page) {
   --c97-accent: #d9b487;
   --c97-rule: rgba(241, 235, 223, 0.24);
   --c97-field: #f1ebdf;
+  --c97-positive: #a8e0b4;
+  --c97-negative: #fbcdc7;
+  --c97-warning: #f5cf7a;
 }
 
 .c97-page [data-c97-surface="pine"] {
@@ -235,6 +291,9 @@ body:has(.c97-page) {
   --c97-accent: #c09461;
   --c97-rule: rgba(241, 235, 223, 0.2);
   --c97-field: #e4dbc9;
+  --c97-positive: #a8e0b4;
+  --c97-negative: #fbcdc7;
+  --c97-warning: #f5cf7a;
 }
 
 .c97-page [data-c97-surface="espresso"] {
@@ -246,6 +305,9 @@ body:has(.c97-page) {
   --c97-accent: #c09461;
   --c97-rule: rgba(241, 235, 223, 0.18);
   --c97-field: #e4dbc9;
+  --c97-positive: #a8e0b4;
+  --c97-negative: #fbcdc7;
+  --c97-warning: #f5cf7a;
 }
 
 /* Neutral block used for image slots that have no photograph yet. */
@@ -258,6 +320,9 @@ body:has(.c97-page) {
   --c97-accent: #2b211a;
   --c97-rule: rgba(43, 33, 26, 0.28);
   --c97-field: #f1ebdf;
+  --c97-positive: #1b4d2c;
+  --c97-negative: #7a1c1c;
+  --c97-warning: #5c3600;
 }
 
 /*
@@ -300,6 +365,9 @@ body:has(.c97-page) {
   --c97-accent: #c2707c;
   --c97-rule: rgba(241, 235, 223, 0.16);
   --c97-field: #241d16;
+  --c97-positive: #a8e0b4;
+  --c97-negative: #fbcdc7;
+  --c97-warning: #f5cf7a;
 }
 
 .dark .c97-page [data-c97-surface="bone"] {
@@ -311,6 +379,9 @@ body:has(.c97-page) {
   --c97-accent: #c2707c;
   --c97-rule: rgba(241, 235, 223, 0.18);
   --c97-field: #14100c;
+  --c97-positive: #a8e0b4;
+  --c97-negative: #fbcdc7;
+  --c97-warning: #f5cf7a;
 }
 
 .dark .c97-page [data-c97-surface="camel"] {
@@ -322,6 +393,9 @@ body:has(.c97-page) {
   --c97-accent: #f0d9b6;
   --c97-rule: rgba(247, 242, 232, 0.26);
   --c97-field: #1e1811;
+  --c97-positive: #a8e0b4;
+  --c97-negative: #fbcdc7;
+  --c97-warning: #f5cf7a;
 }
 
 .dark .c97-page [data-c97-surface="tobacco"] {
@@ -333,6 +407,9 @@ body:has(.c97-page) {
   --c97-accent: #f0d9b6;
   --c97-rule: rgba(247, 242, 232, 0.24);
   --c97-field: #1e1811;
+  --c97-positive: #a8e0b4;
+  --c97-negative: #fbcdc7;
+  --c97-warning: #f5cf7a;
 }
 
 .dark .c97-page [data-c97-surface="chocolate"] {
@@ -344,6 +421,9 @@ body:has(.c97-page) {
   --c97-accent: #d9b487;
   --c97-rule: rgba(241, 235, 223, 0.2);
   --c97-field: #1e1811;
+  --c97-positive: #a8e0b4;
+  --c97-negative: #fbcdc7;
+  --c97-warning: #f5cf7a;
 }
 
 .dark .c97-page [data-c97-surface="pine"] {
@@ -355,6 +435,9 @@ body:has(.c97-page) {
   --c97-accent: #d9b487;
   --c97-rule: rgba(241, 235, 223, 0.2);
   --c97-field: #14100c;
+  --c97-positive: #a8e0b4;
+  --c97-negative: #fbcdc7;
+  --c97-warning: #f5cf7a;
 }
 
 .dark .c97-page [data-c97-surface="espresso"] {
@@ -366,8 +449,12 @@ body:has(.c97-page) {
   --c97-accent: #d9b487;
   --c97-rule: rgba(241, 235, 223, 0.16);
   --c97-field: #1e1811;
+  --c97-positive: #a8e0b4;
+  --c97-negative: #fbcdc7;
+  --c97-warning: #f5cf7a;
 }
 
+/* Dark stone is a mid-tone: status colour measures 3.81 to 3.99 here, so it is large-text-or-mark only, like light camel and stone. */
 .dark .c97-page [data-c97-surface="stone"] {
   --c97-surface: #6e655a;
   --c97-ink: #f7f2e8;
@@ -377,6 +464,9 @@ body:has(.c97-page) {
   --c97-accent: #f7e6cd;
   --c97-rule: rgba(247, 242, 232, 0.26);
   --c97-field: #1e1811;
+  --c97-positive: #a8e0b4;
+  --c97-negative: #fbcdc7;
+  --c97-warning: #f5cf7a;
 }
 
 .dark .c97-page [data-c97-surface="paper"],
@@ -398,6 +488,94 @@ body:has(.c97-page) {
 .dark .c97-page [data-c97-surface="stone"] {
   --c97-plate: #f7e6cd;
 }
+
+/* --------------------------------------------------------------------------
+ * Working Instrument bridge
+ * ------------------------------------------------------------------------ */
+
+/*
+ * Every route except the seven designed ones still renders components written
+ * against the Working Instrument's --home-* palette, mostly through Tailwind
+ * utilities of the shape text-[var(--home-ink)]. Rather than touch each of
+ * those, the tokens are redeclared here as aliases of the Catalog 97 value for
+ * the enclosing surface, so one rule repaints the whole site and a nested
+ * surface re-resolves them on its own element. The :root declarations in
+ * globals.css stay until the last family migrates and this block is deleted.
+ *
+ * The test in src/app/__tests__/catalog97-bridge.test.ts reads the two
+ * markers below and asserts that every :root --home-*, --radius-*, and
+ * --shadow-* token is redeclared between them. Keep the markers.
+ */
+/* BRIDGE START */
+[data-c97] {
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --radius-2xl: 0;
+  --radius-3xl: 0;
+  --radius-pill: 0;
+
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --shadow-xl: none;
+
+  --font-body: var(--c97-font-body);
+  --font-heading: var(--c97-font-body);
+  --font-display: var(--c97-font-display);
+  --font-inter: var(--c97-font-body);
+  --font-home-sans: var(--c97-font-body);
+  --font-home-serif: var(--c97-font-display);
+  --font-mono: var(--c97-font-mono);
+  --font-jetbrains-mono: var(--c97-font-mono);
+
+  /* Dark-section overrides map onto espresso. */
+  --home-dark-paper: #2b211a;
+  --home-dark-panel: #3a2b1f;
+  --home-dark-ink: #f1ebdf;
+  --home-dark-muted: #dcd2bf;
+  --home-dark-rule: rgba(241, 235, 223, 0.18);
+}
+
+.dark [data-c97] {
+  --home-dark-paper: #0c0907;
+  --home-dark-panel: #1e1811;
+  --home-dark-ink: #f1ebdf;
+  --home-dark-muted: #dcd2bf;
+  --home-dark-rule: rgba(241, 235, 223, 0.16);
+}
+
+/*
+ * Surface-relative aliases. Declared on the surface element so that a nested
+ * [data-c97-surface] re-resolves every one of them against its own tokens.
+ * Specificity (0,2,0) ties the surface blocks above and wins on order.
+ */
+.c97-page [data-c97-surface] {
+  --home-paper: var(--c97-surface);
+  --home-paper-alt: var(--c97-field);
+  --home-paper-raised: var(--c97-field);
+  --home-elev-mix: var(--c97-field);
+  --home-ink: var(--c97-ink);
+  --home-ink-muted: var(--c97-ink-2);
+  --home-ink-soft: var(--c97-label);
+  --home-signal: var(--c97-accent);
+  --home-signal-ink: var(--c97-accent);
+  /* 16% accent on paper: accent text 6.54:1, ink 10.09:1 (light theme);
+   * accent text 4.40:1 on dark paper, 4.02:1 on dark bone. Body-size accent
+   * text must not sit directly on this tint in dark mode; a helper that
+   * mixes it further toward the surface is fine. */
+  --home-signal-soft: color-mix(in srgb, var(--c97-accent) 16%, var(--c97-surface));
+  --home-stone: var(--c97-rule);
+  --home-rule: var(--c97-rule);
+  /* Control boundaries want 3:1; ink-2 clears that on every surface. */
+  --home-control-rule: var(--c97-ink-2);
+  --home-overlay: color-mix(in srgb, var(--c97-ink) 8%, transparent);
+  --home-positive: var(--c97-positive);
+  --home-negative: var(--c97-negative);
+  --home-warning: var(--c97-warning);
+}
+/* BRIDGE END */
 
 /* --------------------------------------------------------------------------
  * Layout primitives
@@ -824,6 +1002,274 @@ textarea.c97-field {
   padding: var(--c97-sp-2);
   line-height: var(--c97-lh-body);
   resize: vertical;
+}
+
+select.c97-field {
+  appearance: none;
+  padding-right: calc(var(--c97-sp-2) + 1.25em);
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position:
+    calc(100% - var(--c97-sp-2) - 0.5em) 50%,
+    calc(100% - var(--c97-sp-2)) 50%;
+  background-size: 0.5em 0.5em;
+  background-repeat: no-repeat;
+}
+
+/* Checkbox and radio: a 20px ink-bordered square or circle, filled with accent when checked. */
+.c97-check {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  border: 2px solid var(--c97-ink-2);
+  border-radius: 0;
+  background: var(--c97-field);
+  display: inline-grid;
+  place-content: center;
+  cursor: pointer;
+}
+
+.c97-check[type="radio"] {
+  border-radius: 50%;
+}
+
+.c97-check::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: var(--c97-accent);
+  transform: scale(0);
+  transition: transform 120ms ease;
+}
+
+.c97-check[type="radio"]::before {
+  border-radius: 50%;
+}
+
+.c97-check:checked::before {
+  transform: scale(1);
+}
+
+.c97-range {
+  appearance: none;
+  width: 100%;
+  height: 44px;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.c97-range::-webkit-slider-runnable-track {
+  height: 2px;
+  background: var(--c97-ink-2);
+}
+
+.c97-range::-moz-range-track {
+  height: 2px;
+  background: var(--c97-ink-2);
+}
+
+.c97-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: -9px;
+  border: 0;
+  border-radius: 0;
+  background: var(--c97-accent);
+}
+
+.c97-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 0;
+  border-radius: 0;
+  background: var(--c97-accent);
+}
+
+/* --------------------------------------------------------------------------
+ * Tool vocabulary
+ * ------------------------------------------------------------------------ */
+
+/* Readouts, code, and anything that needs a fixed pitch. */
+.c97-mono {
+  font-family: var(--c97-font-mono);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/*
+ * A standings or rankings table. Hairline rules only, tabular numerals, and a
+ * sticky header so a long table keeps its column names. Column headings take
+ * the label step, the same 11px tracked uppercase every kicker uses.
+ */
+.c97-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--c97-fs-small);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+.c97-table th,
+.c97-table td {
+  padding: var(--c97-sp-1) var(--c97-sp-2);
+  text-align: left;
+  border-bottom: 1px solid var(--c97-rule);
+  vertical-align: baseline;
+}
+
+.c97-table th {
+  position: sticky;
+  top: 0;
+  background: var(--c97-surface);
+  font-size: var(--c97-fs-label);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c97-label);
+}
+
+.c97-table [data-align="end"] {
+  text-align: right;
+}
+
+.c97-table tbody tr:hover {
+  background: color-mix(in srgb, var(--c97-surface) 92%, var(--c97-ink));
+}
+
+/*
+ * The label, value, delta triplet. The value is set in the body face at the
+ * h2 step, never Anton, which is reserved for plate numerals.
+ */
+.c97-stat {
+  display: grid;
+  gap: var(--c97-sp-1);
+  align-content: start;
+}
+
+.c97-stat-label {
+  font-size: var(--c97-fs-label);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c97-label);
+  margin: 0;
+}
+
+.c97-stat-value {
+  font-size: var(--c97-fs-h2);
+  line-height: var(--c97-lh-tight);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+  color: var(--c97-ink);
+  margin: 0;
+}
+
+.c97-stat-delta {
+  font-size: var(--c97-fs-small);
+  font-variant-numeric: tabular-nums;
+  color: var(--c97-ink-2);
+  margin: 0;
+}
+
+.c97-stat-delta[data-tone="positive"] {
+  color: var(--c97-positive);
+}
+
+.c97-stat-delta[data-tone="negative"] {
+  color: var(--c97-negative);
+}
+
+/*
+ * A status or category tag. Label-step uppercase on the field tint, no
+ * radius. The tone modifiers colour the text only; on camel, stone, and
+ * tobacco the label step is under the large-text floor, so a chip there
+ * stays in ink and signals tone through its text instead.
+ */
+.c97-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  min-height: 28px;
+  padding: 0 var(--c97-sp-2);
+  background: var(--c97-field);
+  color: var(--c97-ink);
+  font-size: var(--c97-fs-label);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.c97-page [data-c97-surface="paper"] .c97-chip-positive,
+.c97-page [data-c97-surface="bone"] .c97-chip-positive,
+.c97-page [data-c97-surface="chocolate"] .c97-chip-positive,
+.c97-page [data-c97-surface="pine"] .c97-chip-positive,
+.c97-page [data-c97-surface="espresso"] .c97-chip-positive {
+  color: var(--c97-positive);
+}
+
+.c97-page [data-c97-surface="paper"] .c97-chip-negative,
+.c97-page [data-c97-surface="bone"] .c97-chip-negative,
+.c97-page [data-c97-surface="chocolate"] .c97-chip-negative,
+.c97-page [data-c97-surface="pine"] .c97-chip-negative,
+.c97-page [data-c97-surface="espresso"] .c97-chip-negative {
+  color: var(--c97-negative);
+}
+
+.c97-page [data-c97-surface="paper"] .c97-chip-warning,
+.c97-page [data-c97-surface="bone"] .c97-chip-warning,
+.c97-page [data-c97-surface="chocolate"] .c97-chip-warning,
+.c97-page [data-c97-surface="pine"] .c97-chip-warning,
+.c97-page [data-c97-surface="espresso"] .c97-chip-warning {
+  color: var(--c97-warning);
+}
+
+/*
+ * A pressed-button tab group, drawn the way the /dashboards category filter
+ * already is. The gap is --c97-sp-3 on both axes because .c97-microlink buys
+ * its 44px target with padding plus negative margin, and anything tighter
+ * overlapped rows on a phone; see the dashboards surface brief.
+ */
+.c97-segmented {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: var(--c97-sp-3);
+  row-gap: var(--c97-sp-3);
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.c97-segmented > button {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--c97-sp-1);
+  color: var(--c97-label);
+  font: inherit;
+}
+
+.c97-segmented > button[aria-pressed="true"] {
+  color: var(--c97-ink);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+  text-decoration-color: var(--c97-accent);
+}
+
+/*
+ * A raised card, drawer, or sidebar. In this language elevation is a surface
+ * change, so a panel is the field tint with no border and no shadow. Set
+ * data-c97-surface on it instead when it needs its own ink.
+ */
+.c97-panel {
+  background: var(--c97-field);
+  padding: var(--c97-sp-3);
 }
 
 /* --------------------------------------------------------------------------

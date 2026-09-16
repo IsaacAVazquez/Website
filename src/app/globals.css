@@ -10,9 +10,14 @@
 @config "../../tailwind.config.ts";
 
 /*
- * Catalog 97: the design language for the seven portfolio-shell routes.
- * Fully scoped under `.c97-page` — it defines no `--home-*` token and does
- * not affect the ~40 routes still on Working Instrument.
+ * catalog97.css is imported here. It holds the Catalog 97 tokens under
+ * `[data-c97]`, and since 2026-09-16 also carries a bridge block that
+ * redeclares every `--home-*`, `--radius-*`, `--shadow-*`, and `--font-*`
+ * token as an alias of the Catalog 97 value inside that scope, which is
+ * every route except the seven designed pages' own bands. The `:root`
+ * values below still apply only outside that scope, which today means the
+ * skip link and `/admin`'s own styles, and they are deleted in the
+ * close-out PR.
  */
 @import "./catalog97.css";
 
@@ -152,7 +157,7 @@
   /* ──────────────────────────────────────────────────────────────────────
    * LEGACY TOKEN POLICY (AW-5)
    * ──────────────────────────────────────────────────────────────────────
-   * The aliases below (--color-primary, --color-secondary, --color-accent,
+   * The aliases below (--color-primary, --color-accent,
    * --color-success/warning/error, --neutral-*, --surface-*, --text-*,
    * --border-*) point at the editorial --home-* palette. They exist *only*
    * as a cascade safety net for any pre-editorial component that still
@@ -171,7 +176,6 @@
    * part of the change.
    * ────────────────────────────────────────────────────────────────────── */
   --color-primary: var(--home-signal); /* @kind color */
-  --color-secondary: var(--home-haze); /* @kind color */
   --color-accent: var(--home-signal); /* @kind color */
   --color-success: var(--home-positive); /* @kind color */
   --color-warning: var(--home-warning); /* @kind color */
@@ -241,10 +245,8 @@
   /*
    * Working Instrument palette (2026-07 redesign): cool limestone paper,
    * graphite ink, and one signal orange reserved for data, state, and action.
-   * --home-signal is the canonical accent for new code. --home-acid,
-   * --home-haze, and --home-moss remain defined as legacy accents so the
-   * pre-redesign dashboards keep rendering until phase two migrates them —
-   * do not use them in new work.
+   * --home-signal is the canonical accent for new code. The legacy accents
+   * were deleted on 2026-09-16 once they had no consumers.
    */
   --home-paper: #F6F5F1;
   --home-paper-alt: #EFEDE6;
@@ -264,10 +266,6 @@
      This shade clears 4.5:1 there without moving the brand accent itself. */
   --home-signal-ink: #BF3B16; /* @kind color */
   --home-signal-soft: #F6E0D7;
-  --home-acid: #D7E74F;
-  --home-acid-soft: #EEF49D;
-  --home-moss: #B8C793;
-  --home-haze: #5672F8;
   --home-stone: #D8D4C9;
   --home-rule: rgba(25, 24, 19, 0.14);
   /* Boundary for interactive controls. The hairline measured 1.33:1 in light
@@ -377,10 +375,6 @@
   --home-signal: #FF6B3B; /* @kind color */
   --home-signal-ink: #FF6B3B; /* @kind color */
   --home-signal-soft: #462214;
-  --home-acid: #A8B846;
-  --home-acid-soft: #596134;
-  --home-moss: #6F7A4F;
-  --home-haze: #6F85FF;
   --home-stone: #45423B;
   --home-rule: rgba(236, 234, 226, 0.16);
   --home-control-rule: color-mix(in srgb, var(--home-ink) 52%, var(--home-paper));

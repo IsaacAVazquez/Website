@@ -425,7 +425,7 @@ function TripForm({ state, onChange }: TripFormProps) {
   return (
     <aside
       aria-label="Trip setup"
-      className="flex flex-col gap-4 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_74%,var(--home-elev-mix))] p-5 shadow-[var(--shadow-sm)] lg:sticky lg:top-24 lg:self-start"
+      className="flex flex-col gap-4 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_74%,var(--home-elev-mix))] p-5 shadow-[var(--shadow-sm)] lg:sticky lg:top-0 lg:self-start"
     >
       <p className="tool-rail-label">
         <Compass size={12} aria-hidden="true" />

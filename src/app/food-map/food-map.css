@@ -383,7 +383,7 @@
 
 .fm-rail {
   position: sticky;
-  top: 92px;
+  top: 0;
   align-self: start;
   display: flex;
   flex-direction: column;

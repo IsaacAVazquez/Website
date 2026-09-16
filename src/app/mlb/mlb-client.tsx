@@ -596,7 +596,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
             </div>
           </section>
 
-          <aside className="md:sticky md:top-28 md:self-start">
+          <aside className="md:sticky md:top-0 md:self-start">
             <section
               className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-5 shadow-[var(--shadow-sm)]"
               aria-live="polite"

@@ -85,7 +85,7 @@ export function TradeVerdictStrip({
   return (
     <div
       data-testid="trade-verdict-strip"
-      className="sticky top-[4.5rem] z-20 flex items-center justify-between gap-3 rounded-[var(--radius-xl)] border px-3 py-1.5 lg:hidden"
+      className="sticky top-0 z-20 flex items-center justify-between gap-3 rounded-[var(--radius-xl)] border px-3 py-1.5 lg:hidden"
       style={{
         borderColor: "var(--home-rule)",
         background: "var(--home-paper-raised)",
@@ -200,7 +200,7 @@ export function TradeResultRail({
     <aside
       id="trade-evaluation"
       aria-label="Trade evaluation"
-      className="scroll-mt-24 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4 lg:sticky lg:top-24 lg:self-start"
+      className="scroll-mt-24 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4 lg:sticky lg:top-0 lg:self-start"
     >
       <div className="flex items-center justify-between gap-3 border-b border-[var(--home-rule)] pb-3">
         <span className="inline-flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
