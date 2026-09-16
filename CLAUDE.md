@@ -328,7 +328,7 @@ you need them.
 
 - Confirm routes from `src/app/**/page.tsx`, not old docs.
 - Confirm API routes from `src/app/api/**/route.ts`.
-- Confirm nav/footer from `StaticHeader.tsx`, `ConditionalLayout.tsx`, `Footer.tsx`.
+- Confirm nav/footer from `ConditionalLayout.tsx` and `Catalog97ToolShell.tsx`.
 - Confirm portfolio behavior from `src/app/portfolio/page.tsx`.
 - Confirm writing behavior from `src/app/writing/*` and `src/lib/blog.ts`.
 - Confirm investments behavior from `src/app/investments/*`, `src/components/investments/*`,
