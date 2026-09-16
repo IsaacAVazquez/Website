@@ -12,7 +12,6 @@ import { twMerge } from "tailwind-merge";
 import { constructMetadata } from "@/lib/seo";
 import { ConditionalLayout } from "@/components/ConditionalLayout";
 import { Providers } from "@/components/Providers";
-import { StaticHeader } from "@/components/StaticHeader";
 
 // Working Instrument type stack (2026-07 redesign): three families instead of
 // the previous five. Instrument Sans is the primary display + body face, so it
@@ -151,7 +150,6 @@ export default function RootLayout({
           >
             Skip to main content
           </a>
-          <StaticHeader />
           <ConditionalLayout>
             {children}
           </ConditionalLayout>
