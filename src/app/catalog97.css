@@ -63,6 +63,27 @@
   --c97-font-script: "Snell Roundhand", var(--font-c97-great-vibes),
     "Petit Formal Script", cursive;
 
+  /*
+   * Mono face for readouts, code, and tabular data. Fragment Mono is already
+   * loaded by layout.tsx for the Working Instrument, so this costs no download.
+   */
+  --c97-font-mono: var(--font-fragment-mono), ui-monospace, SFMono-Regular, monospace;
+
+  /*
+   * Categorical chart ramp. Six steps from the palette itself, each measured
+   * at 3:1 or better against paper: pine 11.26, tobacco 4.36, oxblood 8.58,
+   * chocolate 9.47, dark camel 6.34, espresso 13.25. Steps are separated by
+   * hue rather than by luminance, so do not expect adjacent steps to contrast
+   * with each other; a chart that needs that uses up and down instead.
+   * Charts resolve these at render time through getComputedStyle.
+   */
+  --c97-chart-1: #0d3531;
+  --c97-chart-2: #8a6642;
+  --c97-chart-3: #6e2b36;
+  --c97-chart-4: #4a3728;
+  --c97-chart-5: #6e4e2e;
+  --c97-chart-6: #2b211a;
+
   --c97-container: 1080px;
   --c97-gutter: clamp(28px, 6vw, 96px);
   --c97-band-y: var(--c97-sp-5); /* @kind spacing */
@@ -126,6 +147,17 @@
 
 .dark [data-c97] {
   --c97-paper-base: #14100c;
+
+  /*
+   * Dark ramp, measured against dark paper: 5.80, 6.90, 5.32, 7.15, 13.77,
+   * 3.66. Same hue order as light so a series keeps its colour across themes.
+   */
+  --c97-chart-1: #5a9a8c;
+  --c97-chart-2: #c09461;
+  --c97-chart-3: #c2707c;
+  --c97-chart-4: #a79e8f;
+  --c97-chart-5: #e4dbc9;
+  --c97-chart-6: #8a6642;
 }
 
 /* Presentation. No token declarations below this line. */
@@ -154,6 +186,8 @@ body:has(.c97-page) {
 .c97-page [data-c97-surface] {
   background: var(--c97-surface);
   color: var(--c97-ink);
+  --c97-chart-up: var(--c97-positive);
+  --c97-chart-down: var(--c97-negative);
 }
 
 .c97-page [data-c97-surface="paper"] {
@@ -170,6 +204,9 @@ body:has(.c97-page) {
   --c97-accent: #6e2b36;
   --c97-rule: rgba(43, 33, 26, 0.18);
   --c97-field: #e4dbc9;
+  --c97-positive: #1b4d2c;
+  --c97-negative: #7a1c1c;
+  --c97-warning: #5c3600;
 }
 
 .c97-page [data-c97-surface="bone"] {
@@ -181,8 +218,18 @@ body:has(.c97-page) {
   --c97-accent: #6e2b36;
   --c97-rule: rgba(43, 33, 26, 0.2);
   --c97-field: #f1ebdf;
+  --c97-positive: #1b4d2c;
+  --c97-negative: #7a1c1c;
+  --c97-warning: #5c3600;
 }
 
+/*
+ * Status colour on camel and stone is LARGE-TEXT-OR-MARK ONLY, the same rule
+ * tobacco already carries for all text. The darkest usable greens, reds, and
+ * ambers measure 3.57 to 4.00 on these two mid-tones, which clears 3:1 for a
+ * dot, a bar, or text at --c97-fs-h2 and up, and never clears 4.5:1 for body
+ * copy. Body-size status text on camel or stone uses --c97-ink instead.
+ */
 .c97-page [data-c97-surface="camel"] {
   --c97-surface: #c09461;
   --c97-ink: #2b211a;
@@ -193,6 +240,9 @@ body:has(.c97-page) {
   --c97-accent: #2b211a;
   --c97-rule: rgba(43, 33, 26, 0.3);
   --c97-field: #f1ebdf;
+  --c97-positive: #1b4d2c;
+  --c97-negative: #7a1c1c;
+  --c97-warning: #5c3600;
 }
 
 /*
@@ -212,6 +262,9 @@ body:has(.c97-page) {
   --c97-accent: #f1ebdf;
   --c97-rule: rgba(241, 235, 223, 0.3);
   --c97-field: #f1ebdf;
+  --c97-positive: #a8e0b4;
+  --c97-negative: #fbcdc7;
+  --c97-warning: #f5cf7a;
 }
 
 .c97-page [data-c97-surface="chocolate"] {
@@ -224,6 +277,9 @@ body:has(.c97-page) {
   --c97-accent: #d9b487;
   --c97-rule: rgba(241, 235, 223, 0.24);
   --c97-field: #f1ebdf;
+  --c97-positive: #a8e0b4;
+  --c97-negative: #fbcdc7;
+  --c97-warning: #f5cf7a;
 }
 
 .c97-page [data-c97-surface="pine"] {
@@ -235,6 +291,9 @@ body:has(.c97-page) {
   --c97-accent: #c09461;
   --c97-rule: rgba(241, 235, 223, 0.2);
   --c97-field: #e4dbc9;
+  --c97-positive: #a8e0b4;
+  --c97-negative: #fbcdc7;
+  --c97-warning: #f5cf7a;
 }
 
 .c97-page [data-c97-surface="espresso"] {
@@ -246,6 +305,9 @@ body:has(.c97-page) {
   --c97-accent: #c09461;
   --c97-rule: rgba(241, 235, 223, 0.18);
   --c97-field: #e4dbc9;
+  --c97-positive: #a8e0b4;
+  --c97-negative: #fbcdc7;
+  --c97-warning: #f5cf7a;
 }
 
 /* Neutral block used for image slots that have no photograph yet. */
@@ -258,6 +320,9 @@ body:has(.c97-page) {
   --c97-accent: #2b211a;
   --c97-rule: rgba(43, 33, 26, 0.28);
   --c97-field: #f1ebdf;
+  --c97-positive: #1b4d2c;
+  --c97-negative: #7a1c1c;
+  --c97-warning: #5c3600;
 }
 
 /*
@@ -300,6 +365,9 @@ body:has(.c97-page) {
   --c97-accent: #c2707c;
   --c97-rule: rgba(241, 235, 223, 0.16);
   --c97-field: #241d16;
+  --c97-positive: #a8e0b4;
+  --c97-negative: #fbcdc7;
+  --c97-warning: #f5cf7a;
 }
 
 .dark .c97-page [data-c97-surface="bone"] {
@@ -311,6 +379,9 @@ body:has(.c97-page) {
   --c97-accent: #c2707c;
   --c97-rule: rgba(241, 235, 223, 0.18);
   --c97-field: #14100c;
+  --c97-positive: #a8e0b4;
+  --c97-negative: #fbcdc7;
+  --c97-warning: #f5cf7a;
 }
 
 .dark .c97-page [data-c97-surface="camel"] {
@@ -322,6 +393,9 @@ body:has(.c97-page) {
   --c97-accent: #f0d9b6;
   --c97-rule: rgba(247, 242, 232, 0.26);
   --c97-field: #1e1811;
+  --c97-positive: #a8e0b4;
+  --c97-negative: #fbcdc7;
+  --c97-warning: #f5cf7a;
 }
 
 .dark .c97-page [data-c97-surface="tobacco"] {
@@ -333,6 +407,9 @@ body:has(.c97-page) {
   --c97-accent: #f0d9b6;
   --c97-rule: rgba(247, 242, 232, 0.24);
   --c97-field: #1e1811;
+  --c97-positive: #a8e0b4;
+  --c97-negative: #fbcdc7;
+  --c97-warning: #f5cf7a;
 }
 
 .dark .c97-page [data-c97-surface="chocolate"] {
@@ -344,6 +421,9 @@ body:has(.c97-page) {
   --c97-accent: #d9b487;
   --c97-rule: rgba(241, 235, 223, 0.2);
   --c97-field: #1e1811;
+  --c97-positive: #a8e0b4;
+  --c97-negative: #fbcdc7;
+  --c97-warning: #f5cf7a;
 }
 
 .dark .c97-page [data-c97-surface="pine"] {
@@ -355,6 +435,9 @@ body:has(.c97-page) {
   --c97-accent: #d9b487;
   --c97-rule: rgba(241, 235, 223, 0.2);
   --c97-field: #14100c;
+  --c97-positive: #a8e0b4;
+  --c97-negative: #fbcdc7;
+  --c97-warning: #f5cf7a;
 }
 
 .dark .c97-page [data-c97-surface="espresso"] {
@@ -366,8 +449,12 @@ body:has(.c97-page) {
   --c97-accent: #d9b487;
   --c97-rule: rgba(241, 235, 223, 0.16);
   --c97-field: #1e1811;
+  --c97-positive: #a8e0b4;
+  --c97-negative: #fbcdc7;
+  --c97-warning: #f5cf7a;
 }
 
+/* Dark stone is a mid-tone: status colour measures 3.81 to 3.99 here, so it is large-text-or-mark only, like light camel and stone. */
 .dark .c97-page [data-c97-surface="stone"] {
   --c97-surface: #6e655a;
   --c97-ink: #f7f2e8;
@@ -377,6 +464,9 @@ body:has(.c97-page) {
   --c97-accent: #f7e6cd;
   --c97-rule: rgba(247, 242, 232, 0.26);
   --c97-field: #1e1811;
+  --c97-positive: #a8e0b4;
+  --c97-negative: #fbcdc7;
+  --c97-warning: #f5cf7a;
 }
 
 .dark .c97-page [data-c97-surface="paper"],
