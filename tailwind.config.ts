@@ -25,7 +25,6 @@ const config: Config = {
       },
       colors: {
         primary: "var(--home-signal)",
-        secondary: "var(--color-secondary)",
         accent: "var(--color-accent)",
         warning: "var(--color-warning)",
         error: "var(--color-error)",

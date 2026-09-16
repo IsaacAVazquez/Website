@@ -490,6 +490,91 @@ body:has(.c97-page) {
 }
 
 /* --------------------------------------------------------------------------
+ * Working Instrument bridge
+ * ------------------------------------------------------------------------ */
+
+/*
+ * Every route except the seven designed ones still renders components written
+ * against the Working Instrument's --home-* palette, mostly through Tailwind
+ * utilities of the shape text-[var(--home-ink)]. Rather than touch each of
+ * those, the tokens are redeclared here as aliases of the Catalog 97 value for
+ * the enclosing surface, so one rule repaints the whole site and a nested
+ * surface re-resolves them on its own element. The :root declarations in
+ * globals.css stay until the last family migrates and this block is deleted.
+ *
+ * The test in src/app/__tests__/catalog97-bridge.test.ts reads the two
+ * markers below and asserts that every :root --home-*, --radius-*, and
+ * --shadow-* token is redeclared between them. Keep the markers.
+ */
+/* BRIDGE START */
+[data-c97] {
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --radius-2xl: 0;
+  --radius-3xl: 0;
+  --radius-pill: 0;
+
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --shadow-xl: none;
+
+  --font-body: var(--c97-font-body);
+  --font-heading: var(--c97-font-body);
+  --font-display: var(--c97-font-display);
+  --font-inter: var(--c97-font-body);
+  --font-home-sans: var(--c97-font-body);
+  --font-home-serif: var(--c97-font-display);
+  --font-mono: var(--c97-font-mono);
+  --font-jetbrains-mono: var(--c97-font-mono);
+
+  /* Dark-section overrides map onto espresso. */
+  --home-dark-paper: #2b211a;
+  --home-dark-panel: #3a2b1f;
+  --home-dark-ink: #f1ebdf;
+  --home-dark-muted: #dcd2bf;
+  --home-dark-rule: rgba(241, 235, 223, 0.18);
+}
+
+.dark [data-c97] {
+  --home-dark-paper: #0c0907;
+  --home-dark-panel: #1e1811;
+  --home-dark-ink: #f1ebdf;
+  --home-dark-muted: #dcd2bf;
+  --home-dark-rule: rgba(241, 235, 223, 0.16);
+}
+
+/*
+ * Surface-relative aliases. Declared on the surface element so that a nested
+ * [data-c97-surface] re-resolves every one of them against its own tokens.
+ * Specificity (0,2,0) ties the surface blocks above and wins on order.
+ */
+.c97-page [data-c97-surface] {
+  --home-paper: var(--c97-surface);
+  --home-paper-alt: var(--c97-field);
+  --home-paper-raised: var(--c97-field);
+  --home-elev-mix: var(--c97-field);
+  --home-ink: var(--c97-ink);
+  --home-ink-muted: var(--c97-ink-2);
+  --home-ink-soft: var(--c97-label);
+  --home-signal: var(--c97-accent);
+  --home-signal-ink: var(--c97-accent);
+  /* 16% accent on paper is #dcccc4: accent text on it 6.54:1, ink 10.09:1. */
+  --home-signal-soft: color-mix(in srgb, var(--c97-accent) 16%, var(--c97-surface));
+  --home-stone: var(--c97-rule);
+  --home-rule: var(--c97-rule);
+  /* Control boundaries want 3:1; ink-2 clears that on every surface. */
+  --home-control-rule: var(--c97-ink-2);
+  --home-overlay: color-mix(in srgb, var(--c97-ink) 8%, transparent);
+  --home-positive: var(--c97-positive);
+  --home-negative: var(--c97-negative);
+  --home-warning: var(--c97-warning);
+}
+/* BRIDGE END */
+
+/* --------------------------------------------------------------------------
  * Layout primitives
  * ------------------------------------------------------------------------ */
 
