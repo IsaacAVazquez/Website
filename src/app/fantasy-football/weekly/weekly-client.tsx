@@ -35,6 +35,7 @@ import {
   type FantasyWeeklyPlayer,
 } from "@/lib/fantasyWeeklySnapshot";
 import {
+  SHELL_CLASS,
   formatUpdatedAt,
   getSnapshotStaleness,
   getSnapshotStalenessLabel,
@@ -60,8 +61,7 @@ const VIEWS = {
   },
 } as const;
 
-const TOGGLE_CLASS =
-  "inline-flex min-h-touch items-center rounded-full border px-4 text-sm font-semibold transition-[border-color,background-color]";
+const TOGGLE_CLASS = "inline-flex min-h-touch items-center justify-center rounded-[2px] border px-3 text-sm transition-[border-color,background-color]";
 
 const GROUP_LEGEND_CLASS =
   "font-mono text-3xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]";
@@ -348,15 +348,21 @@ export function WeeklyBoardClient({
       className="home-page home-dash min-h-screen"
       aria-label={viewConfig.ariaLabel}
     >
-      <div className="home-shell home-shell-wide home-section space-y-5">
+      <div className={`${SHELL_CLASS} space-y-5 pb-10 pt-7`}>
         <Breadcrumbs customItems={breadcrumbs} className="!py-0" />
 
         <header className="border-b border-[var(--home-rule)] pb-5">
-          <h1 className="max-w-[16ch] text-[clamp(2.25rem,1.7rem+2.5vw,4.2rem)] font-semibold leading-[0.98] tracking-[-0.04em] text-[var(--home-ink)]">
-            {viewConfig.title}
+          <span className="mb-3 inline-flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.1em] text-[var(--home-ink-muted)]">
+            Weekly rankings{snapshot ? ` · ${snapshot.season}` : ""}
+          </span>
+          <h1 className="m-0 text-[clamp(1.55rem,1.3rem+1.25vw,2.1rem)] font-semibold leading-none tracking-[-0.05em] text-[var(--home-ink)]">
+            Fantasy Football{" "}
+            <em style={{ fontFamily: "var(--font-home-serif)", fontWeight: 500 }}>
+              {view === "waivers" ? "Waivers" : "Weekly"}
+            </em>
           </h1>
           {view === "rankings" ? (
-            <p className="mt-4 max-w-[68ch] text-base leading-7 text-[var(--home-ink-muted)]">
+            <p className="mt-3 max-w-[62ch] text-sm leading-6 text-[var(--home-ink-muted)]">
               I use this board to compare weekly rankings, opponents, and rostered
               percentages. Save your team below for lineup and add/drop comparisons,
               or browse the{" "}
@@ -368,7 +374,7 @@ export function WeeklyBoardClient({
               </Link>.
             </p>
           ) : (
-            <p className="mt-4 max-w-[68ch] text-base leading-7 text-[var(--home-ink-muted)]">
+            <p className="mt-3 max-w-[62ch] text-sm leading-6 text-[var(--home-ink-muted)]">
               The players the experts rank ahead of where the rostering rate
               puts them, read off the same weekly consensus that feeds the{" "}
               <Link
@@ -442,7 +448,7 @@ export function WeeklyBoardClient({
         {notPublished ? (
           <div
             role="note"
-            className="rounded-[var(--radius-3xl)] border px-4 py-3 text-sm"
+            className="rounded-[2px] border px-4 py-3 text-sm"
             style={{
               borderColor:
                 "color-mix(in srgb, var(--home-warning) 45%, var(--home-rule))",
@@ -472,7 +478,7 @@ export function WeeklyBoardClient({
         {error ? (
           <div
             role="alert"
-            className="rounded-[var(--radius-3xl)] border border-[var(--home-negative)] bg-[var(--home-paper)] p-5"
+            className="rounded-[2px] border border-[var(--home-negative)] bg-[var(--home-paper)] p-5"
           >
             <p className="text-sm text-[var(--home-ink)]">{error}</p>
             <button
@@ -502,7 +508,7 @@ export function WeeklyBoardClient({
                       onClick={() => updateRouteState({ scoring: option })}
                       className={`${TOGGLE_CLASS} ${
                         scoring === option
-                          ? "border-[var(--home-signal)] bg-[var(--home-paper-alt)] text-[var(--home-ink)]"
+                          ? "border-[var(--home-ink)] bg-[var(--home-ink)] text-[var(--home-paper)]"
                           : "border-[var(--home-rule)] bg-[var(--home-paper)] text-[var(--home-ink-muted)]"
                       }`}
                     >
@@ -522,7 +528,7 @@ export function WeeklyBoardClient({
             {view === "waivers" ? (
               <section
                 aria-labelledby="weekly-waivers"
-                className="home-card-static p-5"
+                className="border-t border-[var(--home-ink)] pt-5"
               >
                 <h2
                   id="weekly-waivers"
@@ -714,7 +720,7 @@ export function WeeklyBoardClient({
                 </p>
               </section>
             ) : (
-              <section aria-labelledby="weekly-board" className="home-card-static p-5">
+              <section aria-labelledby="weekly-board" className="border-t border-[var(--home-ink)] pt-5">
                 <h2
                   id="weekly-board"
                   className="scroll-mt-24 text-2xl font-semibold tracking-[-0.02em] text-[var(--home-ink)]"
@@ -748,7 +754,7 @@ export function WeeklyBoardClient({
                         onClick={() => updateRouteState({ board: value })}
                         className={`${TOGGLE_CLASS} ${
                           board === value
-                            ? "border-[var(--home-signal)] bg-[var(--home-paper-alt)] text-[var(--home-ink)]"
+                            ? "border-[var(--home-ink)] bg-[var(--home-ink)] text-[var(--home-paper)]"
                             : "border-[var(--home-rule)] bg-[var(--home-paper)] text-[var(--home-ink-muted)]"
                         }`}
                       >
@@ -786,7 +792,7 @@ export function WeeklyBoardClient({
                             onClick={() => setPositionFilter(option)}
                             className={`${TOGGLE_CLASS} ${
                               positionFilter === option
-                                ? "border-[var(--home-signal)] bg-[var(--home-paper-alt)] text-[var(--home-ink)]"
+                                ? "border-[var(--home-ink)] bg-[var(--home-ink)] text-[var(--home-paper)]"
                                 : "border-[var(--home-rule)] bg-[var(--home-paper)] text-[var(--home-ink-muted)]"
                             }`}
                           >
