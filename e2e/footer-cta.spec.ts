@@ -38,17 +38,16 @@ test.describe("Footer CTA cleanup", () => {
     await expect(page.locator("#contact")).toHaveCount(0);
   });
 
-  test("uses the footer sign-off on writing detail pages", async ({ page }) => {
+  test("uses the Catalog 97 footer on writing detail pages", async ({ page }) => {
     await page.goto("/writing/2026-march-madness-bracket-analysis");
 
     await expect(
       page.getByText(/interested in learning more about product management or working together\?/i)
     ).toHaveCount(0);
 
-    const footer = page.getByRole("contentinfo");
-    await expect(footer).toHaveAttribute("data-footer-variant", "full");
-    await expect(
-      footer.getByRole("heading", { name: /building something that needs judgment and follow-through/i })
-    ).toBeVisible();
+    const footer = page.getByRole("contentinfo", { name: "Site footer" });
+    await expect(footer).toHaveCount(1);
+    await expect(footer.getByRole("navigation", { name: "Pages" })).toBeVisible();
+    await expect(footer).not.toHaveAttribute("data-footer-variant");
   });
 });

@@ -219,30 +219,18 @@ async function routeInvestmentsFixtures(
 }
 
 test.describe("Investments", () => {
-  test("is discoverable from the Working Instrument navigation", async ({ page }, testInfo) => {
+  test("is discoverable from the Catalog 97 navigation through the dashboards index", async ({ page }) => {
     await routeInvestmentsFixtures(page);
     await page.goto("/accessibility");
 
-    if (testInfo.project.name.includes("Mobile")) {
-      await page.getByRole("button", { name: /open navigation menu/i }).click();
-      const mobileNav = page.getByLabel("Mobile navigation");
-      await expect(mobileNav.getByRole("link", { name: /investments/i })).toBeVisible();
-      await expect(
-        mobileNav.getByRole("link", { name: /investments/i })
-      ).toHaveAttribute("href", "/investments");
-    } else {
-      await expect(
-        page.getByLabel("Primary navigation").getByRole("link", { name: /investments/i })
-      ).toBeVisible();
-      await expect(
-        page.getByLabel("Primary navigation").getByRole("link", { name: /investments/i })
-      ).toHaveAttribute("href", "/investments");
-    }
+    const mainNav = page.getByRole("navigation", { name: "Main" });
+    await expect(mainNav.getByRole("link", { name: /^Dashboards$/ })).toBeVisible();
+    await mainNav.getByRole("link", { name: /^Dashboards$/ }).click();
+    await expect(page).toHaveURL(/\/dashboards$/);
 
-    const navigation = testInfo.project.name.includes("Mobile")
-      ? page.getByLabel("Mobile navigation")
-      : page.getByLabel("Primary navigation");
-    await navigation.getByRole("link", { name: /investments/i }).click();
+    const tile = page.getByRole("main").locator('a[href="/investments"]').first();
+    await expect(tile).toBeVisible();
+    await tile.click();
     await expectInvestmentsShell(page);
     await expect(page).toHaveURL(/.*investments/);
   });
