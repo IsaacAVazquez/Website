@@ -51,4 +51,25 @@ describe("Catalog 97 bridge", () => {
       expect(catalog).not.toContain(legacy);
     }
   });
+
+  it("ships the tool vocabulary the family migrations move onto", () => {
+    for (const cls of [
+      ".c97-table",
+      ".c97-stat",
+      ".c97-stat-label",
+      ".c97-stat-value",
+      ".c97-stat-delta",
+      ".c97-chip",
+      ".c97-chip-positive",
+      ".c97-chip-negative",
+      ".c97-chip-warning",
+      ".c97-segmented",
+      ".c97-panel",
+      ".c97-mono",
+      ".c97-check",
+      ".c97-range",
+    ]) {
+      expect(catalog).toMatch(new RegExp(`${cls.replace(".", "\\.")}[\\s,{]`));
+    }
+  });
 });

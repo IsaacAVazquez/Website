@@ -1001,6 +1001,274 @@ textarea.c97-field {
   resize: vertical;
 }
 
+select.c97-field {
+  appearance: none;
+  padding-right: calc(var(--c97-sp-2) + 1.25em);
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position:
+    calc(100% - var(--c97-sp-2) - 0.5em) 50%,
+    calc(100% - var(--c97-sp-2)) 50%;
+  background-size: 0.5em 0.5em;
+  background-repeat: no-repeat;
+}
+
+/* Checkbox and radio: a 20px ink-bordered square or circle, filled with accent when checked. */
+.c97-check {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  border: 2px solid var(--c97-ink-2);
+  border-radius: 0;
+  background: var(--c97-field);
+  display: inline-grid;
+  place-content: center;
+  cursor: pointer;
+}
+
+.c97-check[type="radio"] {
+  border-radius: 50%;
+}
+
+.c97-check::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: var(--c97-accent);
+  transform: scale(0);
+  transition: transform 120ms ease;
+}
+
+.c97-check[type="radio"]::before {
+  border-radius: 50%;
+}
+
+.c97-check:checked::before {
+  transform: scale(1);
+}
+
+.c97-range {
+  appearance: none;
+  width: 100%;
+  height: 44px;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.c97-range::-webkit-slider-runnable-track {
+  height: 2px;
+  background: var(--c97-ink-2);
+}
+
+.c97-range::-moz-range-track {
+  height: 2px;
+  background: var(--c97-ink-2);
+}
+
+.c97-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: -9px;
+  border: 0;
+  border-radius: 0;
+  background: var(--c97-accent);
+}
+
+.c97-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 0;
+  border-radius: 0;
+  background: var(--c97-accent);
+}
+
+/* --------------------------------------------------------------------------
+ * Tool vocabulary
+ * ------------------------------------------------------------------------ */
+
+/* Readouts, code, and anything that needs a fixed pitch. */
+.c97-mono {
+  font-family: var(--c97-font-mono);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/*
+ * A standings or rankings table. Hairline rules only, tabular numerals, and a
+ * sticky header so a long table keeps its column names. Column headings take
+ * the label step, the same 11px tracked uppercase every kicker uses.
+ */
+.c97-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--c97-fs-small);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+.c97-table th,
+.c97-table td {
+  padding: var(--c97-sp-1) var(--c97-sp-2);
+  text-align: left;
+  border-bottom: 1px solid var(--c97-rule);
+  vertical-align: baseline;
+}
+
+.c97-table th {
+  position: sticky;
+  top: 0;
+  background: var(--c97-surface);
+  font-size: var(--c97-fs-label);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c97-label);
+}
+
+.c97-table [data-align="end"] {
+  text-align: right;
+}
+
+.c97-table tbody tr:hover {
+  background: color-mix(in srgb, var(--c97-surface) 92%, var(--c97-ink));
+}
+
+/*
+ * The label, value, delta triplet. The value is set in the body face at the
+ * h2 step, never Anton, which is reserved for plate numerals.
+ */
+.c97-stat {
+  display: grid;
+  gap: var(--c97-sp-1);
+  align-content: start;
+}
+
+.c97-stat-label {
+  font-size: var(--c97-fs-label);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c97-label);
+  margin: 0;
+}
+
+.c97-stat-value {
+  font-size: var(--c97-fs-h2);
+  line-height: var(--c97-lh-tight);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+  color: var(--c97-ink);
+  margin: 0;
+}
+
+.c97-stat-delta {
+  font-size: var(--c97-fs-small);
+  font-variant-numeric: tabular-nums;
+  color: var(--c97-ink-2);
+  margin: 0;
+}
+
+.c97-stat-delta[data-tone="positive"] {
+  color: var(--c97-positive);
+}
+
+.c97-stat-delta[data-tone="negative"] {
+  color: var(--c97-negative);
+}
+
+/*
+ * A status or category tag. Label-step uppercase on the field tint, no
+ * radius. The tone modifiers colour the text only; on camel, stone, and
+ * tobacco the label step is under the large-text floor, so a chip there
+ * stays in ink and signals tone through its text instead.
+ */
+.c97-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  min-height: 28px;
+  padding: 0 var(--c97-sp-2);
+  background: var(--c97-field);
+  color: var(--c97-ink);
+  font-size: var(--c97-fs-label);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.c97-page [data-c97-surface="paper"] .c97-chip-positive,
+.c97-page [data-c97-surface="bone"] .c97-chip-positive,
+.c97-page [data-c97-surface="chocolate"] .c97-chip-positive,
+.c97-page [data-c97-surface="pine"] .c97-chip-positive,
+.c97-page [data-c97-surface="espresso"] .c97-chip-positive {
+  color: var(--c97-positive);
+}
+
+.c97-page [data-c97-surface="paper"] .c97-chip-negative,
+.c97-page [data-c97-surface="bone"] .c97-chip-negative,
+.c97-page [data-c97-surface="chocolate"] .c97-chip-negative,
+.c97-page [data-c97-surface="pine"] .c97-chip-negative,
+.c97-page [data-c97-surface="espresso"] .c97-chip-negative {
+  color: var(--c97-negative);
+}
+
+.c97-page [data-c97-surface="paper"] .c97-chip-warning,
+.c97-page [data-c97-surface="bone"] .c97-chip-warning,
+.c97-page [data-c97-surface="chocolate"] .c97-chip-warning,
+.c97-page [data-c97-surface="pine"] .c97-chip-warning,
+.c97-page [data-c97-surface="espresso"] .c97-chip-warning {
+  color: var(--c97-warning);
+}
+
+/*
+ * A pressed-button tab group, drawn the way the /dashboards category filter
+ * already is. The gap is --c97-sp-3 on both axes because .c97-microlink buys
+ * its 44px target with padding plus negative margin, and anything tighter
+ * overlapped rows on a phone; see the dashboards surface brief.
+ */
+.c97-segmented {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: var(--c97-sp-3);
+  row-gap: var(--c97-sp-3);
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.c97-segmented > button {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--c97-sp-1);
+  color: var(--c97-label);
+  font: inherit;
+}
+
+.c97-segmented > button[aria-pressed="true"] {
+  color: var(--c97-ink);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+  text-decoration-color: var(--c97-accent);
+}
+
+/*
+ * A raised card, drawer, or sidebar. In this language elevation is a surface
+ * change, so a panel is the field tint with no border and no shadow. Set
+ * data-c97-surface on it instead when it needs its own ink.
+ */
+.c97-panel {
+  background: var(--c97-field);
+  padding: var(--c97-sp-3);
+}
+
 /* --------------------------------------------------------------------------
  * Composition primitives
  * ------------------------------------------------------------------------ */
