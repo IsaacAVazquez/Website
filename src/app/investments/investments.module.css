@@ -1067,7 +1067,7 @@
    ============================================================ */
 
 .terminalScope :global(.invest-retire-band) {
-  scroll-margin-top: 7rem;
+  scroll-margin-top: 1rem;
   border-top: 1px solid var(--home-rule);
   background: var(--home-paper);
   padding: 20px 24px 26px;

@@ -112,7 +112,7 @@ function LeagueSettings({
   return (
     <aside
       aria-label="League settings"
-      className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4 lg:sticky lg:top-24 lg:self-start"
+      className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4 lg:sticky lg:top-0 lg:self-start"
     >
       <div className="border-b border-[var(--home-rule)] pb-3">
         <h2 className="text-lg font-semibold tracking-[-0.03em] text-[var(--home-ink)]">

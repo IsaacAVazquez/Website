@@ -1893,7 +1893,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
 
       <div
         data-testid="fantasy-board-controls"
-        className="sticky top-[4.5rem] z-30 border-y"
+        className="sticky top-0 z-30 border-y"
         style={{
           borderColor: "var(--home-rule)",
           background: "color-mix(in srgb, var(--home-paper) 90%, transparent)",

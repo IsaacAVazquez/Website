@@ -930,7 +930,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             the shell padding so rows pass under a full-width band. */}
         <div
           data-testid="best-ball-board-controls"
-          className="sticky top-[4.5rem] z-30 mb-3 border-b"
+          className="sticky top-0 z-30 mb-3 border-b"
           style={{
             marginInline: "calc(-1 * clamp(1rem, 4vw, 2.5rem))",
             paddingInline: "clamp(1rem, 4vw, 2.5rem)",

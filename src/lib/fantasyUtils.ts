@@ -693,7 +693,7 @@ export const PILL_BUTTON_STYLE: CSSProperties = {
 };
 
 /** Sticky offset that clears the site header on the draft surfaces. */
-export const FASCIA_TOP_CLASS = "top-[4.5rem]";
+export const FASCIA_TOP_CLASS = "top-0";
 
 export const WARNING_CARD_STYLE: CSSProperties = {
   borderColor: "color-mix(in srgb, var(--home-warning) 55%, var(--home-rule))",
