@@ -135,6 +135,6 @@ Two more root files are owned by tooling rather than by this index, and a docume
 - If a historical doc conflicts with a current doc, trust the current doc.
 - For route truth, check `src/app/**/page.tsx`.
 - For API truth, check `src/app/api/**/route.ts`.
-- For shell and nav truth, check `StaticHeader.tsx`, `ConditionalLayout.tsx`, and `Footer.tsx`.
+- For shell and nav truth, check `ConditionalLayout.tsx` and `Catalog97ToolShell.tsx`.
 - For scripts, check `package.json` first.
 - For styling, check `STYLING.md` and `src/app/globals.css`.

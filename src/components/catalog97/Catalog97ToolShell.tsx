@@ -47,7 +47,6 @@ export function Catalog97ToolShell({
           data-c97-surface="paper"
           data-c97-band="title"
           className="c97-band"
-          style={{ padding: "var(--c97-band-y) var(--c97-gutter)" }}
         >
           <div className="c97-shell">
             <p className="c97-kicker">{band.kicker}</p>

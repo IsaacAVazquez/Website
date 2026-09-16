@@ -10,9 +10,14 @@
 @config "../../tailwind.config.ts";
 
 /*
- * Catalog 97: the design language for the seven portfolio-shell routes.
- * Fully scoped under `.c97-page` — it defines no `--home-*` token and does
- * not affect the ~40 routes still on Working Instrument.
+ * catalog97.css is imported here. It holds the Catalog 97 tokens under
+ * `[data-c97]`, and since 2026-09-16 also carries a bridge block that
+ * redeclares every `--home-*`, `--radius-*`, `--shadow-*`, and `--font-*`
+ * token as an alias of the Catalog 97 value inside that scope, which is
+ * every route except the seven designed pages' own bands. The `:root`
+ * values below still apply only outside that scope, which today means the
+ * skip link and `/admin`'s own styles, and they are deleted in the
+ * close-out PR.
  */
 @import "./catalog97.css";
 

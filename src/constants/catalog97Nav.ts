@@ -2,11 +2,13 @@
  * The seven routes that render in the Catalog 97 design language, and the
  * header nav that runs across all of them.
  *
- * This is the single source of truth for "is this a Catalog 97 route". Both
- * `StaticHeader` and `ConditionalLayout` read `isCatalog97Route` to stand down
+ * This is the single source of truth for "is this a Catalog 97 route".
+ * `ConditionalLayout` and `error.tsx` read `isCatalog97Route` to stand down
  * so the Working Instrument header and footer do not double up with the
- * Catalog 97 ones. Adding a route here moves it into the design language; it
- * does not need any other registration.
+ * Catalog 97 ones. `StaticHeader` is gone; `ConditionalLayout` now wraps
+ * every other route in `Catalog97ToolShell` instead. Adding a route here
+ * moves it into the design language; it does not need any other
+ * registration.
  */
 
 export interface Catalog97NavLink {

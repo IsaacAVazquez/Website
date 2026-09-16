@@ -27,13 +27,13 @@ The surface briefs have settled several facts this work does not reopen. The typ
 
 ## Scope
 
-In scope are all 56 routes that are not already Catalog 97, including the writing and portfolio detail pages the original design scoped out, the ten fantasy football routes, and `/arcade` and `/food-map`, which as of 2026-09-16 run their own palettes. Out of scope is `/admin`, which keeps its own aesthetic.
+In scope are all 56 routes that are not already Catalog 97, including the writing and portfolio detail pages the original design scoped out, the ten fantasy football routes, and `/arcade` and `/food-map`, which as of 2026-09-16 run their own palettes. `/admin` is not exempt from the shell and the bridge. It receives both like every other route, since deleting the Working Instrument header would otherwise leave it with none, and no family PR restyles its internals.
 
 ## Part one, the shell and the token bridge
 
 This is the first PR. It touches no page component.
 
-The route registry in `src/constants/catalog97Nav.ts` flips from an allow list to a deny list. `isCatalog97Route` returns true for every path except `/admin`, and `catalog97NavLinks` stays as the seven-link header nav. `StaticHeader` and `ConditionalLayout` keep their early return, so the chrome on every route comes from `Catalog97Header` and the espresso footer. The Working Instrument header, its mobile menu, `Footer.tsx`, and `navlinks.tsx` become dead code and are deleted in this PR. `HeaderSearchPanel` already renders inside the Catalog 97 header, so search survives unchanged.
+The route registry in `src/constants/catalog97Nav.ts` stays an allow list. `isCatalog97Route` returns true only for the seven designed routes, and `catalog97NavLinks` stays as the seven-link header nav. `ConditionalLayout` passes those seven routes through unwrapped and wraps every other route, `/admin` included, in `Catalog97ToolShell`, so the chrome on every route comes from `Catalog97Header` and the espresso footer. The Working Instrument header, its mobile menu, `Footer.tsx`, and `navlinks.tsx` become dead code and are deleted in this PR. `HeaderSearchPanel` already renders inside the Catalog 97 header, so search survives unchanged.
 
 A new `Catalog97ToolShell` in `src/components/catalog97/` wraps every non-portfolio route. It is `Catalog97Shell` plus one paper band carrying a kicker naming the route family, the page `h1`, and an optional standfirst, with the page body rendering below. Routes that draw their own hero pass a flag to suppress the band. The `ProjectBuildNote` that `ConditionalLayout` appends from `projectBuildNoteLinks` moves into this shell so nothing is lost. The shell keeps one `main` and one `h1` per route.
 

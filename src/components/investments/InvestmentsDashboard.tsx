@@ -93,7 +93,7 @@ export function InvestmentsDashboard({
         target !== filterInputRef.current;
       if (isEditable) return;
       e.preventDefault();
-      // StaticHeader binds Cmd/Ctrl+K on window as well, for the site-wide
+      // Catalog97Header binds Cmd/Ctrl+K on window as well, for the site-wide
       // search overlay. Both listeners sat on window in the bubble phase, so
       // registration order decided the winner and the header won: pressing the
       // shortcut printed inside this filter opened site search on top of the

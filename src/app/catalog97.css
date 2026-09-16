@@ -561,7 +561,10 @@ body:has(.c97-page) {
   --home-ink-soft: var(--c97-label);
   --home-signal: var(--c97-accent);
   --home-signal-ink: var(--c97-accent);
-  /* 16% accent on paper is #dcccc4: accent text on it 6.54:1, ink 10.09:1. */
+  /* 16% accent on paper: accent text 6.54:1, ink 10.09:1 (light theme);
+   * accent text 4.40:1 on dark paper, 4.02:1 on dark bone. Body-size accent
+   * text must not sit directly on this tint in dark mode; a helper that
+   * mixes it further toward the surface is fine. */
   --home-signal-soft: color-mix(in srgb, var(--c97-accent) 16%, var(--c97-surface));
   --home-stone: var(--c97-rule);
   --home-rule: var(--c97-rule);
