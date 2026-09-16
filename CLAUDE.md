@@ -60,7 +60,7 @@ data-refresh runbooks live in `AGENTS.md` and `docs/DATA_UPDATE_OPERATIONS.md`.
 
 ## Routes, Navigation, and Shell
 
-The full route map, header links, self-shell route list, and footer variants live in
+The full route map and header links live in
 `AGENTS.md`. The patterns that matter when editing the shell:
 
 - `src/app/layout.tsx` renders fonts, providers, the skip link, then
