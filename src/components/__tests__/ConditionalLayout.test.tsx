@@ -8,21 +8,20 @@ jest.mock("next/navigation", () => ({
   usePathname: jest.fn(),
 }));
 
-jest.mock("@/components/Footer", () => ({
-  Footer: ({ variant }: { variant: string }) => (
-    <div data-testid="footer" data-variant={variant}>
-      footer
+jest.mock("@/components/catalog97/Catalog97ToolShell", () => ({
+  Catalog97ToolShell: ({
+    children,
+    route,
+    buildNoteHref,
+  }: {
+    children: React.ReactNode;
+    route: string;
+    buildNoteHref?: string;
+  }) => (
+    <div data-testid="tool-shell" data-route={route} data-build-note={buildNoteHref ?? ""}>
+      {children}
     </div>
   ),
-}));
-
-// ConditionalLayout defers ProjectBuildNote through next/dynamic. Load it
-// synchronously here so the loadable never re-renders after a test's act()
-// has finished, which React reports as an update outside act().
-jest.mock("next/dynamic", () => ({
-  __esModule: true,
-  default: () =>
-    jest.requireActual("@/components/ProjectBuildNote").ProjectBuildNote,
 }));
 
 const mockUsePathname = usePathname as jest.MockedFunction<typeof usePathname>;
@@ -44,170 +43,46 @@ describe("ConditionalLayout", () => {
     container.remove();
   });
 
-  // The seven Catalog 97 routes are deliberately absent here — they render no
-  // Working Instrument footer at all. See the Catalog 97 case below.
-  it.each([
-    { pathname: "/investments", expectedVariant: "full" },
-    { pathname: "/fintech-tools/budget-planner", expectedVariant: "full" },
-    { pathname: "/writing/2026-march-madness-bracket-analysis", expectedVariant: "full" },
-  ])("uses the correct footer variant for $pathname", ({ pathname, expectedVariant }) => {
+  function renderAt(pathname: string) {
     mockUsePathname.mockReturnValue(pathname);
-
     act(() => {
       root.render(
         <ConditionalLayout>
-          <div>Page content</div>
-        </ConditionalLayout>
+          <p>Page content</p>
+        </ConditionalLayout>,
       );
     });
+  }
 
-    expect(container.querySelector('[data-testid="footer"]')?.getAttribute("data-variant")).toBe(
-      expectedVariant
+  it.each(["/", "/portfolio", "/writing", "/dashboards", "/about", "/resume", "/contact"])(
+    "passes the designed route %s through untouched",
+    (pathname) => {
+      renderAt(pathname);
+      expect(container.querySelector('[data-testid="tool-shell"]')).toBeNull();
+      expect(container.textContent).toContain("Page content");
+    },
+  );
+
+  it.each(["/nba", "/fantasy-football/waivers", "/writing/some-post", "/portfolio/some-project", "/admin", "/now"])(
+    "wraps %s in the Catalog 97 tool shell",
+    (pathname) => {
+      renderAt(pathname);
+      const shell = container.querySelector('[data-testid="tool-shell"]');
+      expect(shell).not.toBeNull();
+      expect(shell?.getAttribute("data-route")).toBe(pathname);
+      expect(shell?.textContent).toContain("Page content");
+    },
+  );
+
+  it("links canonical project routes to their build notes", () => {
+    renderAt("/nba");
+    expect(container.querySelector('[data-testid="tool-shell"]')?.getAttribute("data-build-note")).toBe(
+      "/writing/building-an-nba-dashboard",
     );
   });
 
-  // Catalog97Shell supplies the <main> landmark, the header, and the footer on
-  // its seven routes, so ConditionalLayout must add none of them. Two <main>
-  // elements or a stacked second footer would both be accessibility bugs.
-  it.each(["/", "/portfolio", "/writing", "/dashboards", "/about", "/resume", "/contact"])(
-    "renders %s bare, leaving the shell to Catalog97Shell",
-    (pathname) => {
-      mockUsePathname.mockReturnValue(pathname);
-
-      act(() => {
-        root.render(
-          <ConditionalLayout>
-            <div>Page content</div>
-          </ConditionalLayout>
-        );
-      });
-
-      expect(container.querySelector('[data-testid="footer"]')).toBeNull();
-      expect(container.querySelector("main")).toBeNull();
-      expect(container.textContent).toContain("Page content");
-    }
-  );
-
-  it("treats /mba-internship-notifications as a self-shell route", () => {
-    mockUsePathname.mockReturnValue("/mba-internship-notifications");
-
-    act(() => {
-      root.render(
-        <ConditionalLayout>
-          <div data-testid="route-content">Page content</div>
-        </ConditionalLayout>
-      );
-    });
-
-    expect(container.querySelector("main > .max-w-4xl")).toBeNull();
-    expect(container.querySelector('[data-testid="route-content"]')).toBeTruthy();
-  });
-
-  it("treats /formula-1 as a self-shell route", () => {
-    mockUsePathname.mockReturnValue("/formula-1");
-
-    act(() => {
-      root.render(
-        <ConditionalLayout>
-          <div data-testid="route-content">Page content</div>
-        </ConditionalLayout>
-      );
-    });
-
-    expect(container.querySelector("main > .max-w-4xl")).toBeNull();
-    expect(container.querySelector('[data-testid="route-content"]')).toBeTruthy();
-  });
-
-  it("treats /fantasy-formula-1 as a self-shell route", () => {
-    mockUsePathname.mockReturnValue("/fantasy-formula-1");
-
-    act(() => {
-      root.render(
-        <ConditionalLayout>
-          <div data-testid="route-content">Page content</div>
-        </ConditionalLayout>
-      );
-    });
-
-    expect(container.querySelector("main > .max-w-4xl")).toBeNull();
-    expect(container.querySelector('[data-testid="route-content"]')).toBeTruthy();
-  });
-
-  it("treats nested fantasy football routes as self-shell routes", () => {
-    mockUsePathname.mockReturnValue("/fantasy-football/best-ball/draft-tracker");
-
-    act(() => {
-      root.render(
-        <ConditionalLayout>
-          <div data-testid="route-content">Page content</div>
-        </ConditionalLayout>
-      );
-    });
-
-    expect(container.querySelector("main > .max-w-4xl")).toBeNull();
-    expect(container.querySelector('[data-testid="route-content"]')).toBeTruthy();
-  });
-
-  it("treats /golf as a self-shell route", () => {
-    mockUsePathname.mockReturnValue("/golf");
-
-    act(() => {
-      root.render(
-        <ConditionalLayout>
-          <div data-testid="route-content">Page content</div>
-        </ConditionalLayout>
-      );
-    });
-
-    expect(container.querySelector("main > .max-w-4xl")).toBeNull();
-    expect(container.querySelector('[data-testid="route-content"]')).toBeTruthy();
-  });
-
-  it("treats /decision-lab as a self-shell route", () => {
-    mockUsePathname.mockReturnValue("/decision-lab");
-
-    act(() => {
-      root.render(
-        <ConditionalLayout>
-          <div data-testid="route-content">Page content</div>
-        </ConditionalLayout>
-      );
-    });
-
-    expect(container.querySelector("main > .max-w-4xl")).toBeNull();
-    expect(container.querySelector('[data-testid="route-content"]')).toBeTruthy();
-  });
-
-  it("treats /world-cup-2026 as a self-shell route", () => {
-    mockUsePathname.mockReturnValue("/world-cup-2026");
-
-    act(() => {
-      root.render(
-        <ConditionalLayout>
-          <div data-testid="route-content">Page content</div>
-        </ConditionalLayout>
-      );
-    });
-
-    expect(container.querySelector("main > .max-w-4xl")).toBeNull();
-    expect(container.querySelector('[data-testid="route-content"]')).toBeTruthy();
-  });
-
-  it("links canonical project routes to their build notes", () => {
-    mockUsePathname.mockReturnValue("/news-pulse");
-
-    act(() => {
-      root.render(
-        <ConditionalLayout>
-          <div>Page content</div>
-        </ConditionalLayout>
-      );
-    });
-
-    expect(
-      container.querySelector(
-        'a[href="/writing/building-news-pulse-dashboard"]'
-      )
-    ).toBeTruthy();
+  it("passes no build note where none is registered", () => {
+    renderAt("/now");
+    expect(container.querySelector('[data-testid="tool-shell"]')?.getAttribute("data-build-note")).toBe("");
   });
 });
