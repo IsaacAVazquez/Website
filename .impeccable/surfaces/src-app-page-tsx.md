@@ -11,7 +11,7 @@ related_targets: []
 
 **What changed.** `/` moved from The Working Instrument to Catalog 97 and now renders `Catalog97Home`. `HomeInstrument.tsx` is deleted. The Atlas direction, `TERRITORY`, `PROJECT_PLOTS`, and the 2026-08-02 cartography ruling all went with it. The route carries no map. Do not apply any of that to the current page; the prior record is kept in git history rather than here.
 
-**Visual world: Catalog 97, not Working Instrument.** `DESIGN.md` describes The Working Instrument and governs the other ~40 routes, not this one. `context.mjs` loads it anyway, so a pass that treats it as the spec here will read every deliberate Catalog 97 decision as a violation and manufacture false findings. Tokens live in `src/app/catalog97.css`.
+**Visual world: Catalog 97, not Working Instrument.** `DESIGN.md` describes The Working Instrument, and until the bridge on 2026-09-16 it governed every other route, never this one. Those routes now render inside `Catalog97ToolShell` and are Catalog 97 too, so `DESIGN.md` is stale everywhere until the close-out PR rewrites it. `context.mjs` loads it anyway, so a pass that treats it as the spec here will read every deliberate Catalog 97 decision as a violation and manufacture false findings. Tokens live in `src/app/catalog97.css`.
 
 **Do not re-litigate.** Tobacco is large-text-only (`--c97-fs-h2` floor, 4.36:1 paper ink). Anton draws numerals at `--c97-fs-plate` only. The type, spacing, line-height and measure scales are frozen. Every `--c97-*` is declared under `[data-c97]` or `[data-c97-surface]`, never a class. Image slots are flat Stone or Tobacco fields by design, not missing assets. The h1 wording is a test anchor.
 

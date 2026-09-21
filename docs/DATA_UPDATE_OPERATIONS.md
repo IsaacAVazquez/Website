@@ -9,13 +9,13 @@ architecture or the per-workflow prose:
 - Per-script and per-workflow detail: `AUTOMATION_SCRIPTS.md`, `CRON_SETUP.md`,
   and the **Automation Surfaces** section of `../AGENTS.md`
 
-**Last updated:** 2026-08-11
+**Last updated:** 2026-09-21
 
 The `update:*` commands write committed TypeScript or JSON artifacts. A failed
 or empty fetch keeps the previous snapshot, and every scheduled job now checks
 the artifact timestamp against one shared freshness policy before it can
-commit. Earthquake, BART, and MLB APIs also refresh their time-sensitive data
-at request time, with the committed artifact retained as the last-good
+commit. The earthquake and BART API routes also refresh their time-sensitive
+data at request time, with the committed artifact retained as the last-good
 fallback.
 
 ---
@@ -29,10 +29,10 @@ fallback.
 | Fantasy football (weekly) | `update:fantasy:weekly` | `buildFantasyWeeklySnapshot.ts` | FantasyPros weekly FLEX and QB consensus | `public/data/fantasy/weekly.json` | `update-fantasy.yml` | same job, separate lane and commit; dormant February through July |
 | Investments | `update:investments` | `fetch_investments_data.py` (needs `.venv`) → `buildInvestmentsSnapshots.ts` | `defeatbeta-api` (Python) | `public/data/investments/index.json` + `{SYMBOL}/snapshot.json` | `update-investments.yml` | weekdays 22:15 UTC |
 | Football (both) | `update:football` | `updateFootballSnapshots.ts` | football-data.org *(token)* | `src/data/premierLeagueSnapshot.ts` + `laLigaSnapshot.ts` | none *(full run is manual ~weekly)* | manual |
-| Premier League | `update:premier-league` | `buildPremierLeagueSnapshot.ts` | football-data.org *(token; the summary API also refreshes standings/fixtures at request time when the token is set)* | `src/data/premierLeagueSnapshot.ts` | `update-premier-league.yml` | every 4h, August through May |
-| La Liga | `update:la-liga` | `updateLaLigaSnapshot.ts` | football-data.org *(token; the summary API also refreshes standings/fixtures at request time when the token is set)* | `src/data/laLigaSnapshot.ts` | `update-la-liga.yml` | every 4h, August through May |
+| Premier League | `update:premier-league` | `buildPremierLeagueSnapshot.ts` | football-data.org *(token)* | `src/data/premierLeagueSnapshot.ts` | `update-premier-league.yml` | every 4h, August through May |
+| La Liga | `update:la-liga` | `updateLaLigaSnapshot.ts` | football-data.org *(token)* | `src/data/laLigaSnapshot.ts` | `update-la-liga.yml` | every 4h, August through May |
 | NFL | `update:nfl` | `updateNflSnapshot.ts` | NFLverse CSVs | `src/data/nflSnapshot.ts` | `update-nfl.yml` | Tue 10:35 UTC, September through February |
-| MLB | `update:mlb` | `updateMlbSnapshot.ts` | MLB Stats API | `src/data/mlbSnapshot.ts` | `update-mlb.yml` | every 4h, March through November (fallback seed; the API serves live statsapi at request time) |
+| MLB | `update:mlb` | `updateMlbSnapshot.ts` | MLB Stats API | `src/data/mlbSnapshot.ts` | `update-mlb.yml` | every 4h, March through November |
 | NBA | `update:nba` | `updateNbaSnapshot.ts` | ESPN NBA | `src/data/nbaSnapshot.ts` | `update-nba.yml` | every 4h, mid-October through June |
 | Golf | `update:golf` | `buildGolfSnapshot.ts` | ESPN golf | `src/data/golfSnapshot.ts` | `update-golf.yml` | every 3h Thursday through Sunday; daily otherwise |
 | Formula 1 | `update:formula-1` | `buildFormula1Snapshot.ts` | OpenF1 | `src/data/formula1Snapshot.ts` | `update-formula-1.yml` | every 3h Thursday through Sunday; daily otherwise |
@@ -53,9 +53,8 @@ fallback.
 | Article cover images | `update:article-images` | `buildArticleCoverImages.ts` (plan: `scripts/data/articleCoverImages.ts`) | Wikimedia Commons *(no token)* | `public/images/writing/covers/*` + `content/blog/*.mdx` frontmatter | `update-article-images.yml` | weekly Mon 06:40 UTC + dispatch |
 
 Investment raw provider responses under `data/investments-raw/` are transient
-builder inputs. The directory is gitignored for new files, but existing
-historical files remain tracked until the repository cleanup migration. The
-workflow commits only the compact public snapshots, which keeps the raw files
+builder inputs. The directory is gitignored and no files under it are tracked.
+The workflow commits only the compact public snapshots, which keeps the raw files
 out of automated commits, and a failed symbol keeps its prior snapshot and
 original freshness metadata. A non-empty price array is not enough to promote a
 symbol: its latest source date must be within seven calendar days of the run.
@@ -80,7 +79,7 @@ the fallback and the editorial source of truth. See the lane description in
 
 | Need | Used by |
 |------|---------|
-| `FOOTBALL_DATA_API_TOKEN` | `update:football`, `update:premier-league`, `update:la-liga` (only when rebuilding). Optional at runtime: when set in the deploy environment, the Premier League and La Liga summary APIs also refresh standings and fixtures at request time (5-minute in-memory TTL, committed snapshots as fallback) |
+| `FOOTBALL_DATA_API_TOKEN` | `update:football`, `update:premier-league`, `update:la-liga` (only when rebuilding). The deployed pages read the committed snapshots and do not need it |
 | `THE_ODDS_API_KEY` (required in the scheduled workflow) | `update:score-pools` |
 | `API_FOOTBALL_KEY` (required in the scheduled workflow) | `update:score-pools` |
 | `GITHUB_TOKEN` / `GH_TOKEN` (optional, higher rate limit) | `update:github-trending` |
@@ -93,13 +92,14 @@ the fallback and the editorial source of truth. See the lane description in
 ## Build and refresh boundary
 
 - Production builds consume committed snapshots and never call external data
-  providers. Earthquake, BART, and MLB make separate request-time refreshes
-  and keep those snapshots as fallbacks.
-- Premier League and La Liga refresh through their dedicated daily workflows;
-  NFL refreshes through `update-nfl.yml` (or a manual run). When
-  `FOOTBALL_DATA_API_TOKEN` is set at runtime, the PL and La Liga summary APIs
-  additionally refresh standings and fixtures at request time and fall back to
-  the committed snapshots.
+  providers. The earthquake summary route and the two BART routes
+  (`/api/earthquake-pulse/summary`, `/api/bay-area-transit/summary`,
+  `/api/bay-area-transit/stations/[stationId]`) make separate request-time
+  refreshes and keep those snapshots as fallbacks. No other route asks for
+  live data.
+- Premier League and La Liga refresh through their dedicated workflows every
+  four hours in season; NFL refreshes through `update-nfl.yml` (or a manual
+  run). Their pages read the committed snapshots.
 - `update:football` (the ~16-min full refresh, including per-team fixtures and
   form) remains an explicit local task, not a build step.
 - `publish-data.yml` coalesces successful refresh workflows, builds the site in
@@ -131,7 +131,7 @@ changed artifact under `src/data/` or `public/data/`.
 
 ## How workflows commit (shared CI helper)
 
-All 16 snapshot `update-*.yml` workflows route their git commit + push through one
+All 17 `update-*.yml` workflows route their git commit + push through one
 shared helper, `scripts/ci/commit-and-push-snapshot.sh`, rather than each
 hand-rolling its own git steps:
 
@@ -151,7 +151,7 @@ exhausting every attempt. Usage is asserted by
 `.github/workflows/__tests__/snapshot-workflows.test.ts` (and the investments
 variant).
 
-The 16 callers include `update-bay-area-transit`, `update-earthquake`, `update-fantasy`,
+The 17 callers are `update-article-images`, `update-bay-area-transit`, `update-earthquake`, `update-fantasy`,
 `update-formula-1`, `update-github-trending`, `update-golf`, `update-investments`,
 `update-la-liga`, `update-mlb`, `update-nba`, `update-nfl`, `update-premier-league`,
 `update-polling`, `update-score-pools`, `update-spacex`, and `update-world-cup`.

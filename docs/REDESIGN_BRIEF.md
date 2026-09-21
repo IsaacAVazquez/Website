@@ -1,5 +1,7 @@
 # Redesign Brief
 
+> Status note, 2026-09-21. This brief was added on 2026-07-02 and predates the 2026-09-16 move to the Catalog 97 shell. It is a historical handoff brief and not a current design reference. For the current system see the root `STYLING.md` and `docs/superpowers/specs/2026-09-16-catalog97-unification-design.md`.
+
 Handoff brief for a full visual redesign of the site, driven by Fable. Phase one
 establishes a new design direction on the flagship portfolio surfaces; phase two
 propagates that language to every project and tool.

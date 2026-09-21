@@ -1,6 +1,6 @@
 # AEO and SEO audit
 
-Audited and reconciled July 23, 2026. Re-audited July 30, 2026.
+Audited and reconciled July 23, 2026. Re-audited July 30, 2026. Both passes predate the 2026-09-16 move to the Catalog 97 shell, so treat this as a point-in-time record (status note added 2026-09-21).
 
 ## Summary
 

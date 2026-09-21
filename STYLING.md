@@ -2,34 +2,33 @@
 
 Current styling and design-token reference for the live app.
 
-**Last updated:** 2026-08-05 · **Working Instrument** redesign, phases one and two complete: flagship surfaces rebuilt; every dashboard, tool, and personal surface refreshed to the instrument language (sharp `--radius-*` plates, flat paper, semantic status tokens). `--home-haze`/`--home-acid`/`--home-moss` are token definitions only — zero component usages remain (the scoped F1-red override in `formula-1.module.css` and `/arcade`'s deliberate CRT aesthetic are the two sanctioned exceptions). `tailwind.config.ts` is loaded via `@config` in `globals.css`; `min-h-touch`, class-based `dark:`, and the fluid `text-*` scale are live.
+**Last updated:** 2026-09-21 · On 2026-09-16 every route moved onto the Catalog 97 shell. The seven designed routes and `src/components/catalog97` use the `--c97-*` tokens in `src/app/catalog97.css`, declared under `[data-c97]` and read through `data-c97-surface`. Every other route still uses the Working Instrument `--home-*` tokens described below, which keep working because a bridge block in `catalog97.css` aliases each one onto the Catalog 97 value for the enclosing surface. The `--home-*` tokens are slated for removal in the family migrations described in `docs/superpowers/specs/2026-09-16-catalog97-unification-design.md`. `--home-haze`, `--home-acid`, and `--home-moss` are deleted (the scoped F1-red override in `formula-1.module.css` and `/arcade`'s deliberate CRT aesthetic are the two sanctioned palette exceptions). `tailwind.config.ts` is loaded via `@config` in `globals.css`; `min-h-touch`, class-based `dark:`, and the fluid `text-*` scale are live.
 
 ---
 
 ## Core Principles
 
-- token-driven colors, spacing, type, and shadows via the `--home-*` palette
+- token-driven colors, spacing, type, and shadows, via `--c97-*` on the seven designed routes and via the bridged `--home-*` palette elsewhere
 - light and dark mode support via CSS variables (every `--home-*` token has a `.dark` counterpart)
 - the **Working Instrument** system (limestone paper, graphite ink, one signal-orange accent,
-  hairline rules, mono readouts) is the site-wide standard for all routes except `/admin`
+  hairline rules, mono readouts) is what the components outside the seven designed routes were written against; the bridge repaints it in Catalog 97 values
 - one accent: `--home-signal` is reserved for data, state, and action (links, live dots, focus,
   active states). It is never a decorative wash. `--home-acid` / `--home-haze` / `--home-moss`
-  remain **defined but legacy** — pre-redesign dashboards still read them; do not use them in new code
+  are deleted from `globals.css`; do not reintroduce them
 - CSS-Module surfaces alias the global tokens (`--x-paper: var(--home-paper)`) — never re-declare
-  the palette as fresh hex (see the flagship modules `page.module.css`, `portfolio.module.css`,
-  `about.module.css`, `contact.module.css` for the reference pattern)
+  the palette as fresh hex (see `src/app/page.module.css` for the reference pattern)
 - accessible focus styles and 44px minimum touch targets
 - restrained motion that respects reduced-motion preferences: numbers count up once, lines draw in
   once, nothing loops, no marquees
 
-Legacy semantic tokens (`--surface-*`, `--text-*`, `--border-*`, `--color-primary`) are aliased to `--home-*` equivalents in `globals.css` for backwards compatibility. New code should use `--home-*` tokens directly. The only route that intentionally uses a different aesthetic is `/admin`.
+Legacy semantic tokens (`--surface-*`, `--text-*`, `--border-*`, `--color-primary`) are aliased to `--home-*` equivalents in `globals.css` for backwards compatibility. New code outside the seven designed routes should use `--home-*` tokens directly, and new code on those seven routes or in `src/components/catalog97` should use `--c97-*`.
 
 ---
 
 ## Source Files
 
 - `src/app/globals.css`
-- `src/app/catalog97.css` (the seven Catalog 97 routes, scoped under `.c97-page`)
+- `src/app/catalog97.css` (Catalog 97 tokens declared under `[data-c97]`, plus the bridge block that aliases `--home-*`)
 - `tailwind.config.ts`
 - `src/components/ui/*`
 
@@ -39,7 +38,7 @@ Legacy semantic tokens (`--surface-*`, `--text-*`, `--border-*`, `--color-primar
 
 Global tokens are defined in `src/app/globals.css`.
 
-### Primary palette (Working Instrument — use these in new code)
+### Primary palette (Working Instrument, for routes outside the seven designed ones)
 
 | Token | Purpose |
 |-------|---------|
@@ -54,12 +53,10 @@ Global tokens are defined in `src/app/globals.css`.
 | `--home-rule` | Standard hairline borders and dividers |
 | `--home-dark-paper` / `--home-dark-panel` / `--home-dark-ink` | Dark-section overrides |
 
-**Legacy accents (token definitions only; do not use):**
-`--home-haze` (blue), `--home-acid` / `--home-acid-soft` (yellow-green), `--home-moss`.
+The legacy accents `--home-haze`, `--home-acid`, and `--home-moss` are no longer defined in `globals.css`.
 Phase two migrated every component usage off these (wins/qualification → `--home-positive`,
 ties/deadlines → `--home-warning`, failures → `--home-negative`, categorical chips → ink/stone
-mixes). The definitions remain only as a cascade safety net and can be removed once external
-consumers are ruled out.
+mixes).
 
 For intermediate tones, use `color-mix()` — always mixing toward another token, never toward
 literal `white`/`black`:
@@ -91,7 +88,8 @@ These are defined in `globals.css` but resolve to `--home-*` equivalents:
 - shadows: `--shadow-sm` through `--shadow-xl`
 - radii: `--radius-sm` (2px) through `--radius-3xl` (8px) — the Working Instrument scale is
   deliberately sharp; `--radius-pill` stays for genuinely round controls. Do not reintroduce
-  soft 1rem+ card radii.
+  soft 1rem+ card radii. Inside `[data-c97]`, which now wraps every route, the bridge sets every
+  `--radius-*` to `0` and every `--shadow-*` to `none`.
 
 Do not hardcode hex colors in components when a token exists.
 
@@ -101,7 +99,7 @@ To lift a surface one step above its background, **use the theme-aware elevation
 literal `white`/`black` mix:
 
 - `--home-paper-raised` = `color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))`
-- `--home-elev-mix` flips per theme — `white` in light, `black` in dark (`globals.css` ~L196 / ~L278)
+- `--home-elev-mix` flips per theme — `white` in light, `black` in dark (both defined in `globals.css`)
 
 **Anti-pattern (do not introduce):** `color-mix(in srgb, var(--home-paper) 92%, white)`. Mixing toward a
 literal `white` lightens the surface in *both* themes; in dark mode an elevated panel must darken
@@ -159,7 +157,6 @@ D3/SVG fills can't read Tailwind classes, so charts must resolve token colors **
 Plugins:
 
 - `@tailwindcss/typography`
-- `tailwindcss-animate`
 
 ---
 
@@ -194,7 +191,7 @@ Use the `home-*` helpers first for new route work. The older semantic helpers re
 
 ## Typography
 
-Fonts are loaded in `src/app/layout.tsx` (three families, each exposed as a CSS variable):
+Fonts are loaded in `src/app/layout.tsx`. The three Working Instrument families are below. The same file also loads four Catalog 97 families (Newsreader, Archivo, Anton, Great Vibes) behind the `--c97-font-*` tokens, and inside `[data-c97]` the bridge points `--font-home-sans`, `--font-home-serif`, and `--font-mono` at that stack.
 
 | Font | Variable | Role |
 |------|----------|------|
@@ -252,10 +249,10 @@ Use raw Tailwind `dark:` utilities only when you truly need behavior outside the
 
 ## Working Instrument System (Site-Wide)
 
-The Working Instrument design system is the site-wide standard as of July 2026 (phase one shipped
+The Working Instrument design system was the site-wide standard from July 2026 until the Catalog 97 shell landed on 2026-09-16 (phase one shipped
 the flagship surfaces: `/`, `/about`, `/portfolio`, `/resume`, `/contact`, header, footer, and the
-shared ContactCta; phase two propagates it to the dashboards). All routes (except `/admin`) use the
-`--home-*` palette and Instrument Sans typography. The system uses cool limestone paper, graphite
+shared ContactCta; phase two propagated it to the dashboards). Routes outside the seven designed ones still consume the
+`--home-*` palette through the bridge. The values below are the `:root` declarations in `globals.css`. The system uses cool limestone paper, graphite
 ink, hairline rules, mono readouts, and exactly one accent reserved for data, state, and action.
 
 **Color tokens (light / dark):**
@@ -265,14 +262,11 @@ ink, hairline rules, mono readouts, and exactly one accent reserved for data, st
 | `--home-paper` | `#F6F5F1` | `#151412` |
 | `--home-paper-alt` | `#EFEDE6` | `#1C1B18` |
 | `--home-ink` | `#191813` | `#ECEAE2` |
-| `--home-ink-muted` | `#6F6B60` | `#9B9585` |
+| `--home-ink-muted` | `#68655A` | `#9B9585` |
 | `--home-signal` | `#C93F19` | `#FF6B3B` |
 | `--home-signal-soft` | `#F6E0D7` | `#462214` |
 | `--home-stone` | `#D8D4C9` | `#45423B` |
 | `--home-rule` | `rgba(25,24,19,0.14)` | `rgba(236,234,226,0.16)` |
-| `--home-acid` *(legacy)* | `#D7E74F` | `#A8B846` |
-| `--home-haze` *(legacy)* | `#5672F8` | `#6F85FF` |
-| `--home-moss` *(legacy)* | `#B8C793` | `#6F7A4F` |
 
 **Fonts:**
 - `--font-home-sans` → `Instrument Sans` (display + UI + body)
@@ -317,11 +311,8 @@ All shells: `width: 100%; margin-inline: auto; padding-inline: 1rem` (1.5rem @sm
 | `.home-kicker` | 0.72rem, 600, +0.14em, uppercase; section label above headings |
 | `.home-meta` | 0.72rem, 600, +0.12em, uppercase; card metadata (role, date) |
 | `.home-note-copy` / `.home-writing-copy` | 0.96rem, lh 1.6; secondary card copy |
-| `.home-manifesto` | 3–6.4rem, 400, −0.08em; large ghost-weight display text |
-| `.home-manifesto em` | Instrument Serif italic, full ink color |
 | `.home-intro-copy` | `home-body` constrained to 38rem |
 | `.home-section-copy` | body constrained to 33rem |
-| `.home-manifesto-copy` | body constrained to 28rem |
 
 Dark variants: `.home-kicker-dark`, `.home-body-dark`, `.home-meta-dark`, `.home-section-title-dark`, `.home-section-intro-dark`, `.home-writing-title` (uses `--home-dark-ink` by default).
 
@@ -337,7 +328,7 @@ Base: `.home-button` — 48px min-height, pill shape (radius 999px), Instrument 
 
 ### Cards
 
-- `.home-card` — 1.6rem radius, paper bg 88%, `shadow-md`, lifts on hover (`translateY(-4px)`, `shadow-lg`)
+- `.home-card` — `var(--radius-2xl)` radius, paper bg 88%, `shadow-md`, lifts on hover (`translateY(-4px)`, `shadow-lg`)
 - `.home-project-card` — `.home-card` + `padding: 1.5rem`
 - `.home-writing-card` — `.home-card` variant, no shadow by default
 - `.home-note-card` — small inset card, 1.1rem radius, paper-alt bg
@@ -345,22 +336,6 @@ Base: `.home-button` — 48px min-height, pill shape (radius 999px), Instrument 
 ### Writing Archive Cards (`/writing`)
 
 `/writing` is a Catalog 97 route. Its index is owned by `Catalog97Writing`, and every color, size, and space on it comes from the `--c97-*` tokens in `src/app/catalog97.css`, not from the `--home-*` palette. Do not use the homepage writing block as the visual source of truth for the archive page.
-
-The footer metadata row on both `CuratedWritingCard` and `ArchiveWritingCard` is a locked pattern and should stay visually stable:
-
-- keep the footer pinned to the bottom with `mt-auto`
-- keep the outer row as `flex items-center justify-between gap-4 pt-4`
-- keep the divider material as a top border using `var(--home-rule)`
-- keep the left metadata cluster as one line: reading time plus up to two `resume-chip` tags
-- preserve the original reading-time styling: `Instrument Sans`, `0.8rem`, `gap-1`, `Clock` icon at `h-3.5 w-3.5`
-- use real `resume-chip` elements for tags; do not replace them with plain text summaries unless explicitly redesigning the card
-- prevent wrapping with layout constraints (`min-w-0`, `overflow-hidden`, `whitespace-nowrap`) instead of shrinking the typography or moving the tags to a second line
-
-This note exists because the archive footer regressed during the April 2026 SEO/archive refactor:
-
-- the footer chips were temporarily replaced with plain text
-- the bottom row styling drifted from the original spacing and font sizing
-- the fix was to restore the original footer structure and sizing, then add overflow constraints so the entire metadata strip stays on one line
 
 ### Headshot
 
@@ -382,28 +357,13 @@ This note exists because the archive footer regressed during the April 2026 SEO/
 
 All motion respects `prefers-reduced-motion`.
 
-### Header (site-wide)
+### Header and footer (site-wide)
 
-Applied to `StaticHeader`:
-
-- `.header-home` — hairline `--home-rule` border bottom
-- `.header-home-brand` — Instrument Sans 640, normal case, signal dot prefix
-- `.header-home-link` — quiet sans nav links; active gets an inset 2px `--home-signal` underline; inactive is ink-muted
-- `.header-home-mobile-link` — Instrument Sans 560, normal case, for the mobile menu
-- `.header-home-control` — theme toggle with hairline border, transparent bg
-- `.header-home-menu` — mobile menu panel on `--home-paper-raised`
-
-### Footer (site-wide)
-
-- `.footer-home` — paper background with hairline top border
-- `.footer-home-panel` — card panel inside footer on `--home-paper-raised`
-- `.footer-home-colophon` — mono colophon with signal dot prefix
-- `.footer-home-text` / `.footer-home-text-strong` — muted / full ink variants
-- `.footer-home-icon` — hairline-bordered icon buttons; ink fill on hover
+The header and footer on every route come from `Catalog97Header` and the espresso footer inside `Catalog97Shell`, styled by the `.c97-*` classes in `src/app/catalog97.css`. `StaticHeader` and `Footer.tsx` were deleted on 2026-09-16. The `.header-home*` and `.footer-home*` classes are still defined in `globals.css`, and the only one still referenced from a component is `.header-home-menu` in `HeaderSearchPanel`.
 
 ### Rules
 
-- all routes except `/admin` use the editorial `--home-*` palette — do not introduce a separate token system
+- routes outside the seven designed ones use the bridged `--home-*` palette, and the seven designed routes use `--c97-*`; do not introduce a third token system
 - preserve the theme toggle; dark mode uses the `.dark` counterparts of `--home-*` tokens
 - project cards use the committed pixel-art SVG covers (`public/images/projects/{slug}.svg`); do not introduce route-wide page screenshots as a card dependency
 - all motion classes must be paired with reduced-motion guards in CSS (`@media (prefers-reduced-motion: reduce)`)
@@ -415,7 +375,7 @@ Applied to `StaticHeader`:
 - `:focus-visible` styles are defined globally
 - buttons and links should maintain 44px minimum targets
 - reduced-motion behavior is enforced in CSS and should also be respected in Framer Motion components
-- self-shell pages should expose one `main` landmark and one page-level `h1`
+- `Catalog97Shell` owns the only `main` landmark, so routes never add their own, and every route exposes one page-level `h1`
 - homepage and other hero-led portfolio routes should keep the core value proposition and primary CTA above the fold on mobile
 
 ---

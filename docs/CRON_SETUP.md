@@ -2,20 +2,20 @@
 
 Current reference for how scheduled data refreshes work across the site.
 
-**Last updated:** 2026-08-19
+**Last updated:** 2026-09-21
 
 ---
 
 ## Overview
 
-There are two complementary mechanisms keeping live data current:
+There are three mechanisms keeping live data current:
 
 1. **GitHub Actions workflows** — refresh per-domain snapshots on a cron, then commit the regenerated files back to `main`. Each workflow is scoped to one data surface and re-runs the matching `npm run update:*` script.
 2. `publish-data.yml` — batches publication four times a day, builds the site in GitHub Actions, and uploads it to Netlify. Builds do not fetch or mutate data.
 
-The retired `netlify/functions/scheduled-fantasy-update.ts` Netlify scheduled function has been deleted. All scheduled refreshes now flow through GitHub Actions.
+3. **Netlify scheduled functions** write two blob-backed refreshes without a commit. `netlify/functions/refresh-frontier-models.ts` runs daily at 07:30 UTC and `netlify/functions/refresh-polling.ts` runs every six hours at minute 45.
 
-The per-workflow cron table below predates the seasonal schedules several refreshes now use. `.github/workflows/update-*.yml` is the authority when the two disagree.
+The retired `netlify/functions/scheduled-fantasy-update.ts` Netlify scheduled function has been deleted. Every other scheduled refresh flows through GitHub Actions.
 
 ---
 
@@ -23,22 +23,11 @@ The per-workflow cron table below predates the seasonal schedules several refres
 
 Each workflow lives in `.github/workflows/update-*.yml`. They all support `workflow_dispatch` for manual runs.
 
-| Workflow | Cron (UTC) | What it refreshes |
-| --- | --- | --- |
-| `update-fantasy.yml` | `0 17 * * 3` (Wed 17:00) | Fantasy football snapshots in `public/data/fantasy/*.json` via `npm run update:fantasy`. |
-| `update-investments.yml` | `15 22 * * 1,4` (Mon & Thu 22:15) | Investments index + per-symbol snapshots via `npm run update:investments`. |
-| `update-premier-league.yml` | `15 6 * 1-5,8-12 *` (daily January-May and August-December 06:15) | Premier League snapshot in `src/data/premierLeagueSnapshot.ts`. |
-| `update-la-liga.yml` | `30 6 * 1-5,8-12 *` (daily January-May and August-December 06:30) | La Liga snapshot in `src/data/laLigaSnapshot.ts`. |
-| `update-github-trending.yml` | `45 7 * * *` (daily 07:45) | GitHub trending snapshot in `src/data/githubTrendingSnapshot.ts`. |
-| `update-formula-1.yml` | `10 8 * * *` (daily 08:10) | Formula 1 snapshot in `src/data/formula1Snapshot.ts`. |
-| `update-spacex.yml` | `25 9,21 * * *` (daily 09:25 and 21:25) | SpaceX data, image manifest, reference index, and cached image artifacts. |
-| `update-mlb.yml` | `5 10 * 4-10 *` (daily April through October 10:05) | MLB snapshot in `src/data/mlbSnapshot.ts`. |
-| `update-nba.yml` | `20 10 15-31 10 *` and `20 10 * 1-6,11-12 *` (mid-October through June 10:20) | NBA snapshot in `src/data/nbaSnapshot.ts`. |
-| `update-nfl.yml` | `35 10 * 1-2,9-12 2` (Tuesdays September through February 10:35) | NFL snapshot in `src/data/nflSnapshot.ts`. |
+This file does not keep its own cron table. The exact cron expression for every workflow is in the generated "Scheduled workflows" table in `AUTOMATION_SCRIPTS.md`, which CI checks against the workflow files on every pull request. The cadence, artifact, and upstream source for each surface are in the master table in `DATA_UPDATE_OPERATIONS.md`.
 
 Workflows commit regenerated snapshots back to `main` using the default `GITHUB_TOKEN`. Look for commits authored by `github-actions[bot]`.
 
-Snapshots that do **not** have a dedicated workflow, such as the manually maintained golf snapshot, are refreshed by hand and committed normally. See `CLAUDE.md` for the full per-surface command list.
+Golf has its own workflow, `update-golf.yml`. The surfaces with no scheduled refresh are the full `update:football` run and the curated datasets listed as manual in `DATA_UPDATE_OPERATIONS.md`, which are refreshed by hand and committed normally.
 
 ---
 
@@ -94,5 +83,5 @@ After running, commit the regenerated `src/data/*.ts` or `public/data/**` files.
 ## Troubleshooting
 
 - **Workflow ran but no snapshot change committed**: the underlying API returned the same data, or the workflow has commit-on-no-change disabled. Check the workflow logs.
-- **Football standings look stale**: the daily cron-job.org ping may have failed. Trigger a manual deploy from Netlify, or re-run `npm run update:football` locally.
+- **Football standings look stale**: check the latest `update-premier-league.yml` or `update-la-liga.yml` run and the next `publish-data.yml` run, or re-run `npm run update:football` locally and commit.
 - **Fantasy snapshot is stale**: re-run `update-fantasy.yml` via `workflow_dispatch` from the GitHub Actions tab, or run `npm run update:fantasy` locally and commit.

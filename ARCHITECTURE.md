@@ -2,7 +2,7 @@
 
 High-level system architecture for the current live application.
 
-**Last updated:** 2026-08-11
+**Last updated:** 2026-09-21
 
 ---
 
@@ -30,18 +30,17 @@ The architecture is intentionally mixed:
 ```text
 src/app/layout.tsx
   -> Providers
-  -> StaticHeader
   -> ConditionalLayout
-       -> page content
-       -> Footer
+       -> the seven designed routes pass through and render Catalog97Shell themselves
+       -> every other route is wrapped in Catalog97ToolShell
 ```
 
 ### Key shell facts
 
-- header is always visible
-- footer variant depends on route
-- some pages render inside the default constrained wrapper
-- self-shell pages handle their own spacing and width
+- `Catalog97Shell` supplies the header, the only `main` landmark, and the espresso footer on every route, either directly or through `Catalog97ToolShell`
+- the seven designed routes are the ones in `src/constants/catalog97Nav.ts`
+- `Catalog97ToolShell` adds an optional title band and the build-note aside
+- see `AGENTS.md` for the full shell description
 
 ---
 
@@ -60,7 +59,7 @@ src/app/layout.tsx
 - generated static snapshots in `public/data/fantasy/`
 - `/api/fantasy-data` server fallback over the same snapshot files
 - weekly GitHub Actions refresh through `npm run update:fantasy`
-- a separate committed best ball snapshot at `public/data/fantasy/best-ball.json` combines FantasyPros best ball consensus, current Underdog ADP, bye weeks, and the Week 17 schedule; `src/lib/bestBall.ts` applies the selected contest rules without changing the redraft engine
+- a separate committed best ball snapshot at `public/data/fantasy/best-ball.json` combines FantasyPros best ball consensus, current Underdog ADP, bye weeks, and the Week 17 schedule; `src/lib/bestBall/` applies the selected contest rules without changing the redraft engine
 - `src/lib/fantasyTeamValue.ts` derives the shared room-relative Draft Outlook and exact expected return math used by both trackers. The structural model stays separate from payout probability because current snapshots do not contain populated weekly player projections or an outcome distribution
 - the rankings board (`/fantasy-football`) and draft assistant (`/fantasy-football/draft-tracker`) share three browser-local stores layered over `src/hooks/useLocalStorageString.ts`, with pure parse/serialize and key constants in `src/lib/fantasyLocal.ts`: a player watchlist (`usePlayerQueue`), per-player notes (`usePlayerNotes`), and the compare selection (`useCompareTray`); list density also persists locally. Shared presentation components live in `src/components/fantasy/`
 
@@ -83,7 +82,7 @@ Update workflow:
 - `npm run update:football` — full update for both leagues (~16 min, run locally then commit snapshots)
 - `npm run update:premier-league` — PL only
 - `npm run update:la-liga` — La Liga only
-- GitHub Actions provide daily per-league snapshot refresh workflows
+- GitHub Actions refresh each league every four hours from August through May
 - production builds consume committed snapshots without calling football-data.org
 
 ### March Madness
@@ -118,7 +117,7 @@ Update workflow:
 ### Static app data
 
 - `src/constants/caseStudies.ts`
-- `src/constants/navlinks.tsx`
+- `src/constants/catalog97Nav.ts`
 - `src/constants/personal.ts`
 
 ### Football snapshots
@@ -163,7 +162,7 @@ These are committed TypeScript files rebuilt by `scripts/buildPremierLeagueSnaps
 ### Investments
 
 - curated snapshot assets and targeted research APIs
-- live quote enrichment through `/api/stocks` and `/api/investments/quotes`
+- live quote enrichment through `/api/investments/quotes`; `/api/stocks` was retired on 2026-07-06 and returns 410 Gone
 
 ---
 
@@ -175,9 +174,9 @@ Important groups:
 
 - auth: `/api/auth/[...nextauth]`
 - fantasy football: `/api/fantasy-data`
-- investments: `/api/investments/quotes`, `/api/investments/data/[symbol]`, `/api/stocks`
+- investments: `/api/investments/quotes`, `/api/investments/data/[symbol]`, and the retired `/api/stocks` (410 Gone)
 - football: `/api/premier-league/teams/[teamId]`, `/api/la-liga/teams/[teamId]`
-- US sports and golf: `/api/mlb/teams/[teamId]`, `/api/nba/teams/[teamId]`, `/api/nfl/teams/[teamId]`, `/api/golf/players/[playerId]`
+- US sports and golf: `/api/mlb/teams/[teamId]`, `/api/nba/teams/[teamId]`, `/api/nfl/teams/[teamId]`, `/api/golf/players/[playerId]`, `/api/formula-1/meetings/[meetingId]`
 - World Cup: `/api/world-cup/teams/[teamId]`
 - transit and geo: `/api/bay-area-transit/summary`, `/api/bay-area-transit/stations/[stationId]`, `/api/earthquake-pulse/summary`
 - jobs/email: `/api/mba-jobs`, `/api/mba-jobs/email`
@@ -193,7 +192,7 @@ Current caveat:
 
 - canonical portfolio path is `/portfolio`, not `/projects`
 - canonical writing path is `/writing`, not `/blog`
-- promoted nav is `Home / About / Projects / Writing / Investments / Fantasy / Resume / Contact`
+- promoted nav is the seven links in `catalog97NavLinks`, labeled `Home / Work / Writing / Dashboards / About / Résumé / Contact`
 - standalone dashboard/tool routes are live but not promoted in the global header
 
 See `PAGES.md` and `docs/ai-context/REDIRECTS-AND-NAVIGATION.md` for the detailed route map.
@@ -205,11 +204,13 @@ See `PAGES.md` and `docs/ai-context/REDIRECTS-AND-NAVIGATION.md` for the detaile
 Core styling lives in:
 
 - `src/app/globals.css`
+- `src/app/catalog97.css`
 - `tailwind.config.ts`
 
 The system is token-driven:
 
-- the `--home-*` editorial palette for all live routes except `/admin`
+- the `--c97-*` Catalog 97 tokens, declared under `[data-c97]` in `src/app/catalog97.css` and read through `data-c97-surface`, for the seven designed routes and `src/components/catalog97`
+- the `--home-*` palette on every other route, which still works because a bridge block in `catalog97.css` aliases each token onto the Catalog 97 value for the enclosing surface; these tokens are slated for removal in the family migrations described in `docs/superpowers/specs/2026-09-16-catalog97-unification-design.md`
 - legacy semantic aliases for compatibility
 - Tailwind extensions mapped to those tokens
 - shared shell helpers like `.home-page`, `.home-shell`, `.home-section`, and `.home-card`

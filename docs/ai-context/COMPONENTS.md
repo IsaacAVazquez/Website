@@ -2,7 +2,7 @@
 
 Current component ownership reference.
 
-**Last updated:** 2026-07-12
+**Last updated:** 2026-09-21
 
 ---
 
@@ -10,9 +10,10 @@ Current component ownership reference.
 
 | Component | File | Notes |
 |----------|------|------|
-| `StaticHeader` | `src/components/StaticHeader.tsx` | Current global nav |
-| `ConditionalLayout` | `src/components/ConditionalLayout.tsx` | Route wrapper + footer variant logic |
-| `Footer` | `src/components/Footer.tsx` | `full` and `compact` variants |
+| `ConditionalLayout` | `src/components/ConditionalLayout.tsx` | Picks the shell. The seven routes in `src/constants/catalog97Nav.ts` pass through and render `Catalog97Shell` themselves; every other route is wrapped in `Catalog97ToolShell` |
+| `Catalog97Shell` | `src/components/catalog97/Catalog97Shell.tsx` | Header, the only page-level `main`, and the espresso footer |
+| `Catalog97ToolShell` | `src/components/catalog97/Catalog97ToolShell.tsx` | `Catalog97Shell` plus an optional title band and the build-note aside from `projectBuildNoteLinks` |
+| `Catalog97Header` | `src/components/catalog97/Catalog97Header.tsx` | Global nav built from `catalog97NavLinks` |
 | `Providers` | `src/components/Providers.tsx` | Root provider wrapper |
 | `ThemeProvider` | `src/components/ThemeProvider.tsx` | Theme context |
 | `RouteErrorBoundary` | `src/components/RouteErrorBoundary.tsx` | Shared error fallback re-exported by per-route `error.tsx` files |
@@ -21,21 +22,21 @@ Current component ownership reference.
 
 ## Portfolio And Homepage
 
-| Component | Role |
-|----------|------|
-| `ModernHero` | Homepage hero |
-| `FeaturedWorkSection` | Homepage featured projects |
-| `PortfolioProjectCard` | Shared project card for homepage and `/portfolio` |
-| `ThinkingPreview` | Homepage product-thinking section |
-| `ContactSection` | Homepage CTA section |
-| `About` | About page tab UI |
-| `ContactContent` | Contact page |
-| `SectionIntro` | Shared page/section intro; set `headingLevel` explicitly when used below the route `h1` |
+The seven designed routes each render one page component from `src/components/catalog97/`.
 
-Legacy/unwired caution:
+| Route | Component |
+|------|-----------|
+| `/` | `Catalog97Home` |
+| `/portfolio` | `Catalog97Portfolio` |
+| `/writing` | `Catalog97Writing` |
+| `/dashboards` | `Catalog97Dashboards` |
+| `/about` | `Catalog97About` |
+| `/resume` | `Catalog97Resume` |
+| `/contact` | `Catalog97Contact` |
 
-- `ProjectsContent.tsx` still exists, but `/portfolio` does not currently render through it
-- `WritingPreview.tsx` still exists, but it is not part of the current homepage shell
+`Catalog97Primitives.tsx` holds the shared `Catalog97Plate` and `Catalog97Slot` pieces. `SectionIntro` (`src/components/ui/SectionIntro.tsx`) is still the shared page and section intro for tool routes, and `headingLevel` should be set explicitly when it is used below the route `h1`.
+
+The earlier homepage and portfolio components (`ModernHero`, `FeaturedWorkSection`, `PortfolioProjectCard`, `ThinkingPreview`, `ContactSection`, `About`, `ContactContent`, `ProjectsContent`, `WritingPreview`) no longer exist. See the root `COMPONENTS.md` and `AGENTS.md` for the wider component map.
 
 ---
 
@@ -53,29 +54,31 @@ Legacy/unwired caution:
 
 Primary investments components:
 
-- `PortfolioTracker`
-- `StockResearch`
+- `InvestmentsDashboard`
+- `PortfolioHeroCard`
+- `PortfolioStatsGrid`
 - `PortfolioSummary`
-- `StockCard`
+- `HoldingsTable`
+- `StockSearch`
 - `AddStockForm`
 - `AllocationChart`
 - `PortfolioPerformanceChart`
-- `ResearchSummaryStrip`
+- `ResearchAssetHeader`
 - `ResearchOverview`
+- `ResearchPosition`
+- `ResearchSection`
 - `ComparisonTab`
 - `PriceChartPanel`
-- `FundamentalsPanel`
 - `FinancialStatementsPanel`
 - `GrowthPanel`
 - `ValuationRatiosPanel`
 - `ProfitabilityPanel`
 - `IndustryPanel`
-- `NewsPanel`
 
 Top-level ownership:
 
 - `src/app/investments/investments-client.tsx` is the route shell
-- it lazy-loads `PortfolioTracker` and `StockResearch`
+- it renders `InvestmentsDashboard` from `src/components/investments/InvestmentsDashboard.tsx`
 - retirement planner UI lives in `src/components/investments/retirement/` on top of the pure engine in `src/lib/retirement/`
 
 ---
@@ -162,16 +165,15 @@ Current primitives worth reusing first:
 - `Heading`
 - `Paragraph`
 - `Badge`
-- `JourneyTimeline`
+- `Chip`
+- `Kicker`
 - `SectionIntro`
 - `ThemeToggle`
 - `ServerIcons`
-- `button.tsx`
-- `dropdown-menu.tsx`
 
 Shared primitive rules:
 
-- `ConditionalLayout` owns the only `main` for self-shell routes
+- `Catalog97Shell` owns the only page-level `main`, on every route; `ConditionalLayout` renders none
 - `SectionIntro` should be treated as semantic, not decorative; pass `headingLevel={1}` only for the page-level heading
 - shared shell primitives should not use `transition-all`
 

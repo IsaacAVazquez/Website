@@ -4,6 +4,12 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-09-16
+
+- Bridge every route onto the Catalog 97 shell and tokens ([#449](https://github.com/IsaacAVazquez/Website/pull/449)).
+
+---
+
 ## 2026-09-15
 
 - Rankings board audit fixes for reflow, font swap, placeholder and control borders ([#445](https://github.com/IsaacAVazquez/Website/pull/445)).

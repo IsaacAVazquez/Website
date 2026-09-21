@@ -2,9 +2,9 @@
 
 Current map of tracked Markdown documentation.
 
-**Last updated:** 2026-08-16
+**Last updated:** 2026-09-21
 
-Tracked Markdown audit scope: `git ls-files '*.md'` returned 300 tracked files on 2026-08-16, split across `.agents/skills/` (104), `docs/` (51), `ds-bundle/` (44), `content/` outside the blog (44), the repository root (36), `.impeccable/` (15), and six elsewhere. Only the root and `docs/` files are website documentation, so the working set this index governs is about 87 files. Published articles are `.mdx` under `content/blog/` and are counted separately. Re-run the command rather than trusting these numbers.
+Tracked Markdown audit scope: `git ls-files '*.md'` returned 308 tracked files on 2026-09-21, split across `.agents/` (104), `.impeccable/` (79), `docs/` (55), `content/` outside the blog (44), the repository root (23), and three elsewhere. `ds-bundle/` is gitignored and no longer tracked. Only the root and `docs/` files are website documentation, so the working set this index governs is about 78 files. Published articles are `.mdx` under `content/blog/` and are counted separately. Re-run the command rather than trusting these numbers.
 
 The 2026-05-03 project coverage pass adds markdown snapshots for the remaining live portfolio projects listed in `src/constants/caseStudies.ts`.
 
@@ -74,7 +74,7 @@ Historical release notes and changelogs:
 
 Planning and strategy references:
 
-- `SPRING_2026_ROADMAP.md` (current cross-site feature/fix roadmap)
+- `SPRING_2026_ROADMAP.md` (cross-site feature/fix roadmap written 2026-06-23; a 2026-09-21 status check marks the items that shipped or no longer apply)
 - `2026-seo-opportunity-ai-tech-blogs.md`
 - `content-plan-ai-mba-pm-cluster.md`
 - `SPACEX_API_CODEBASE_README.md`
@@ -88,6 +88,7 @@ Dated audits and research dossiers. Each one is a point-in-time snapshot rather 
 - `component-reusability-audit.md`
 - `accessibility-audit-2026-06.md`
 - `DATA_SOURCE_AUDIT_2026-07.md` (data source fix backlog)
+- `FANTASY_AUDIT_2026-08.md` (fantasy football audit and roadmap, 2026-08-20)
 - `seo-aeo-audit.md`
 - `SEO_CONTENT_MAP.md`
 - `website-improvement-suggestions.md`
@@ -125,7 +126,7 @@ Two more root files are owned by tooling rather than by this index, and a docume
 
 `../.impeccable/` holds that same skill's per-surface briefs and its dated critique output. Those are working artifacts, not documentation, and the critique files are written by the tool.
 
-`../ds-bundle/` is the design-system bundle that feeds the synced design project. Its component `*.prompt.md` files are generated, but `../ds-bundle/guidelines/STYLING.md`, `DESIGN_CHECKLIST.md`, and `WRITING_VOICE.md` are plain copies of the three root files of the same name, and nothing regenerates them. The root files are canonical. When one of them changes, copy it over its bundle twin in the same pass, because a stale copy in there can hand the design project guidance the root file has already retired.
+`../ds-bundle/` is the gitignored design-system bundle that feeds the synced design project. Its component `*.prompt.md` files are generated, but `../ds-bundle/guidelines/STYLING.md`, `DESIGN_CHECKLIST.md`, and `WRITING_VOICE.md` are plain copies of the three root files of the same name, and nothing regenerates them. The root files are canonical. When one of them changes, copy it over its bundle twin in the same pass, because a stale copy in there can hand the design project guidance the root file has already retired.
 
 ---
 
@@ -137,4 +138,4 @@ Two more root files are owned by tooling rather than by this index, and a docume
 - For API truth, check `src/app/api/**/route.ts`.
 - For shell and nav truth, check `ConditionalLayout.tsx` and `Catalog97ToolShell.tsx`.
 - For scripts, check `package.json` first.
-- For styling, check `STYLING.md` and `src/app/globals.css`.
+- For styling, check `STYLING.md`, `src/app/globals.css`, and `src/app/catalog97.css`.

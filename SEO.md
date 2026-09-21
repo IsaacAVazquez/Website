@@ -2,7 +2,7 @@
 
 Reference for the SEO architecture in this Next.js 16 App Router project.
 
-**Last updated:** 2026-08-11
+**Last updated:** 2026-09-21
 
 ---
 
@@ -359,29 +359,29 @@ When writing or editing `description` strings in `constructMetadata()` calls, re
 
 ## Page Compliance Audit
 
-Current status of metadata and structured data across all pages. Use this to identify gaps.
+Status of metadata and structured data for the routes listed below. The table does not cover every route, and the page file is the source of truth for `dateModified`.
 
 | Page | Metadata | ogType | canonicalUrl | dateModified | Structured Data | Breadcrumbs | Status |
 |---|---|---|---|---|---|---|---|
-| `/` | `constructMetadata` | website | `/` | 2026-02-22 | ProfilePage, WebSite, Person | N/A (root) | OK |
-| `/about` | `generateAIOptimizedMetadata` | website | `/about` | 2026-05-27 | Breadcrumb, ProfilePage | Yes | OK |
-| `/contact` | `constructMetadata` | website | `/contact` | 2026-03-16 | BreadcrumbList, ContactPage | Yes | OK |
-| `/resume` | `constructMetadata` | website | `/resume` | 2025-02-05 | BreadcrumbList, Person, JobPosting | Yes | OK |
-| `/portfolio` | `constructMetadata` | website | `/portfolio` | 2026-04-04 | ItemList | No visible breadcrumb; structured index present | OK |
+| `/` | `constructMetadata` | website | `/` | 2026-08-05 | ProfilePage, WebSite, Person | N/A (root) | OK |
+| `/about` | `generateAIOptimizedMetadata` | website | `/about` | 2026-09-14 | Breadcrumb, ProfilePage | Yes | OK |
+| `/contact` | `constructMetadata` | website | `/contact` | 2026-08-05 | BreadcrumbList, ContactPage | Yes | OK |
+| `/resume` | `constructMetadata` | website | `/resume` | 2026-08-05 | BreadcrumbList, Person, JobPosting | Yes | OK |
+| `/portfolio` | `constructMetadata` | website | `/portfolio` | 2026-08-09 | ItemList | No visible breadcrumb; structured index present | OK |
 | `/portfolio/[slug]` | `generateMetadata` | article | `/portfolio/{slug}` | 2026-04-04 | Breadcrumb, CreativeWork on non-redirect entries | Yes, when rendered | OK; current slugs redirect to live tools |
-| `/writing` | `constructMetadata` | website | `/writing` | 2026-04-15 | BreadcrumbList, Article (list) | Yes | OK |
+| `/writing` | `constructMetadata` | website | `/writing` | 2026-08-09 | BreadcrumbList, Article (list) | Yes | OK |
 | `/writing/[slug]` | `generateMetadata` | article | full URL | post dates | Breadcrumb, Article | Yes | OK |
-| `/investments` | `constructMetadata` | website | `/investments` | 2026-03-16 | BreadcrumbList, SoftwareApplication | Yes | OK |
-| `/accessibility` | `constructMetadata` | website | full URL | 2025-02-05 | None | None | **Gap** |
+| `/investments` | `constructMetadata` | website | `/investments` | snapshot date | BreadcrumbList, SoftwareApplication | Yes | OK |
+| `/accessibility` | `constructMetadata` | website | full URL | 2026-07-16 | WebPage, BreadcrumbList | Yes | OK |
 | `/search` | `constructMetadata` | website | `/search` | 2025-02-05 | None | None | OK, `noIndex` |
 | `/admin` | layout metadata | N/A | N/A | N/A | None | None | OK, `noIndex` |
 | `/fantasy-football` | `constructMetadata` | website | relative | snapshot date | BreadcrumbList, SportsApp, FAQ | Yes | OK; the first page of rankings rows is server-rendered from the committed snapshot, so non-JS crawlers see real players |
-| `/fantasy-football/draft-tracker` | `constructMetadata` | website | relative | 2026-04-21 | BreadcrumbList, SoftwareApplication | Yes | OK |
+| `/fantasy-football/draft-tracker` | `constructMetadata` | website | relative | snapshot date | BreadcrumbList, SoftwareApplication | Yes | OK |
 | `/fantasy-football/rb-tiers` | Redirect | — | — | — | — | — | OK |
 | `/fantasy-football/tiers/[pos]` | Redirect | — | — | — | — | — | OK |
 | `/premier-league` | `constructMetadata` | website | relative | snapshot date | BreadcrumbList, SportsApp | Yes | OK |
-| `/la-liga` | `constructMetadata` | website | relative | 2026-04-03 | BreadcrumbList, SoftwareApp | Yes | OK |
-| `/news-pulse` | `constructMetadata` | website | relative | 2026-04-01 | BreadcrumbList, SoftwareApp | Yes | OK |
+| `/la-liga` | `constructMetadata` | website | relative | snapshot date | BreadcrumbList, SoftwareApp | Yes | OK |
+| `/news-pulse` | `constructMetadata` | website | relative | 2026-07-23 | BreadcrumbList, SoftwareApp | Yes | OK |
 | `/march-madness-2026` | `constructMetadata` | website | relative | dynamic | BreadcrumbList, Article, FAQ, Sports | Yes | OK |
 | `/spacex-mission-control` | `constructMetadata` | website | relative | 2026-04-01 | BreadcrumbList, SoftwareApp | Yes | OK |
 | `/polling-aggregator` | `constructMetadata` | website | relative | snapshot date | BreadcrumbList, SportsApp | Yes | OK |
@@ -390,9 +390,8 @@ Current status of metadata and structured data across all pages. Use this to ide
 
 ### Gaps to address
 
-1. **`/accessibility`** — Missing structured data and breadcrumbs. Low priority but should have a `BreadcrumbList` at minimum.
-2. **`/portfolio`** — Emits `ItemList` structured data, but no visible breadcrumb trail. Add visible breadcrumbs only if the page design calls for it.
-3. **`/search`** — Correctly `noIndex`; leave it out of sitemap because the search API is intentionally limited.
+1. **`/portfolio`** — Emits `ItemList` structured data, but no visible breadcrumb trail. Add visible breadcrumbs only if the page design calls for it.
+2. **`/search`** — Correctly `noIndex`; leave it out of sitemap because the search API is intentionally limited.
 
 ---
 

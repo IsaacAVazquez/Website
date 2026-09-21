@@ -2,61 +2,37 @@
 
 Current nav model, redirect table, and shell notes.
 
-**Last updated:** 2026-06-19
+**Last updated:** 2026-09-21
 
 ---
 
 ## Global Navigation
 
-Defined in `src/constants/navlinks.tsx`.
+Defined in `src/constants/catalog97Nav.ts` as `catalog97NavLinks`.
 
 Current header items:
 
 | Label | href |
 |------|------|
 | Home | `/` |
-| About | `/about` |
-| Projects | `/portfolio` |
+| Work | `/portfolio` |
 | Writing | `/writing` |
-| Investments | `/investments` |
-| Fantasy | `/fantasy-football` |
-| Resume | `/resume` |
+| Dashboards | `/dashboards` |
+| About | `/about` |
+| Résumé | `/resume` |
 | Contact | `/contact` |
 
----
-
-## Header Behavior
-
-`src/components/StaticHeader.tsx` provides:
-
-- sticky header
-- desktop nav
-- mobile menu
-- active-link detection
-- theme toggle in desktop and mobile views
-
-Active route logic is straightforward:
-
-- `/` matches exactly
-- other items match exact route or nested path prefix
+The same file exports `isCatalog97Route`, an exact-match test against those seven hrefs.
 
 ---
 
-## Footer Behavior
+## Header and footer behavior
 
-`src/components/Footer.tsx` supports:
+`src/components/catalog97/Catalog97Header.tsx` renders the header on every route. It maps `catalog97NavLinks`, marks a link active only when the pathname equals its href, opens site search on Cmd/Ctrl+K or `/`, and carries the theme toggle.
 
-- `full`
-- `compact`
+`src/components/ConditionalLayout.tsx` has two branches. The seven routes above pass through untouched because their page components render `Catalog97Shell` themselves. Every other route, `/admin` included, is wrapped in `src/components/catalog97/Catalog97ToolShell.tsx`. Both paths get the same header, the only page-level `main`, and the espresso footer from `Catalog97Shell`.
 
-Current route logic in `ConditionalLayout`:
-
-- every route that reaches `ConditionalLayout` gets the full footer
-- the seven Catalog 97 routes return early before that and supply their own espresso footer through `Catalog97Shell`
-
-The compact variant was the one-primary-CTA-per-page cleanup, and it applied to
-`/` and `/contact`. Both are Catalog 97 routes now, so nothing consumes it,
-though `Footer` still accepts it.
+The earlier `StaticHeader.tsx`, `Footer.tsx` (with its `full` and `compact` variants), and `src/constants/navlinks.tsx` were deleted on 2026-09-16. See the "Routes, Navigation, and Shell" section of the root `CLAUDE.md` and the route map in `AGENTS.md`.
 
 ---
 
@@ -98,6 +74,11 @@ Old `/portfolio/<slug>` case-study URLs now redirect to their writing posts:
 - `/cv` -> `/resume`
 - `/resume.pdf` -> `/Isaac_Vazquez_Resume.pdf`
 
+### Changelog and feed aliases
+
+- `/release-notes` -> `/changelog`
+- `/rss`, `/feed`, `/feed.xml`, `/rss.xml` -> `/api/rss`
+
 ### Fantasy shortcuts
 
 - `/ff`
@@ -114,6 +95,6 @@ Old `/portfolio/<slug>` case-study URLs now redirect to their writing posts:
 
 - `/portfolio` is the canonical projects route
 - `/writing` is the canonical writing route
-- `Projects` is the public-facing nav label even though the route stays `/portfolio`
+- `Work` is the public-facing nav label even though the route stays `/portfolio`
 - `Writing` is again a promoted global-nav item
 - `/formula-1`, `/fantasy-formula-1`, `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`, `/golf`, `/world-cup-2026`, `/earthquake-pulse`, `/bay-area-transit`, `/tech-startup-tracker`, `/github-trending-pulse`, `/ai-dev-tools`, `/frontier-models`, `/decision-lab`, `/food-map`, `/recipe-finder`, `/wine-cellar`, `/travel`, `/news-pulse`, `/spacex-mission-control`, `/polling-aggregator`, `/mba-internship-notifications`, `/museum-log`, `/now`, `/changelog`, and `/fintech-tools/*` are live routes but not promoted in the global header

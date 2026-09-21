@@ -3,7 +3,7 @@
 Current route inventory and page ownership for the live app.
 
 **Framework:** Next.js 16 App Router
-**Last updated:** 2026-09-07
+**Last updated:** 2026-09-21
 
 ---
 
@@ -13,13 +13,13 @@ Current route inventory and page ownership for the live app.
 
 | Route | File | Notes |
 |------|------|-------|
-| `/` | `src/app/page.tsx` | Composes hero, featured projects, product-thinking preview, and homepage contact section |
-| `/about` | `src/app/about/page.tsx` | Renders `About` tabbed client UI |
+| `/` | `src/app/page.tsx` | Server shell passing featured projects, recent posts, live tool groups, and the live feed to `Catalog97Home` |
+| `/about` | `src/app/about/page.tsx` | Renders `Catalog97About` |
 | `/portfolio` | `src/app/portfolio/page.tsx` | Server shell passing the project index to `Catalog97Portfolio`, which adds client-side search, sorting, and category filters over `classifyToolSlug` |
 | `/portfolio/[slug]` | `src/app/portfolio/[slug]/page.tsx` | Project detail page |
 | `/dashboards` | `src/app/dashboards/page.tsx` | Catalog 97 index of the live data dashboards, browser-persisted tools, and calculators, grouped by `getLiveToolGroups` |
-| `/resume` | `src/app/resume/page.tsx` | Resume route with client-rendered resume shell |
-| `/contact` | `src/app/contact/page.tsx` | Contact page using `ContactContent` |
+| `/resume` | `src/app/resume/page.tsx` | Renders `Catalog97Resume` |
+| `/contact` | `src/app/contact/page.tsx` | Renders `Catalog97Contact` |
 | `/accessibility` | `src/app/accessibility/page.tsx` | Accessibility statement |
 
 ### Writing
@@ -115,70 +115,15 @@ Fantasy shortcut and typo redirects also live in `next.config.mjs`.
 
 ### Global shell
 
-- `src/app/layout.tsx` renders the shared fonts, providers, skip link, and header
-- `src/components/ConditionalLayout.tsx` wraps all page content and chooses layout behavior
-- `src/components/Footer.tsx` is always rendered, but not always in the same variant
+- `src/app/layout.tsx` renders the shared fonts, providers, and skip link, then `ConditionalLayout`
+- `src/components/ConditionalLayout.tsx` wraps all page content and picks one of two branches, described below
 
-### Self-shell routes
+### Catalog 97 routes and the tool shell
 
-These routes manage more of their own spacing and width:
-
-- `/about`
-- `/accessibility`
-- `/agent-build-index`
-- `/ai-dev-tools`
-- `/analytics-reference`
-- `/arcade`
-- `/bay-area-transit`
-- `/changelog`
-- `/contact`
-- `/decision-lab`
-- `/enablement-assistant`
-- `/earthquake-pulse`
-- `/fantasy-formula-1`
-- `/fantasy-football`
-- `/fantasy-football/best-ball`
-- `/fantasy-football/best-ball/draft-tracker`
-- `/fantasy-football/draft-tracker`
-- `/fantasy-football/mock-draft`
-- `/fantasy-football/trade-calculator`
-- `/fantasy-football/weekly`
-- `/fantasy-football/waivers`
-- `/fintech-tools/budget-planner`
-- `/fintech-tools/interchange-iq`
-- `/fintech-tools/rent-vs-buy`
-- `/food-map`
-- `/formula-1`
-- `/golf`
-- `/github-trending-pulse`
-- `/investments`
-- `/la-liga`
-- `/march-madness-2026`
-- `/score-pools` (+ `/score-pools/tracker`, `/score-pools/settings`)
-- `/mba-internship-notifications`
-- `/museum-log`
-- `/news-pulse`
-- `/now`
-- `/polling-aggregator`
-- `/premier-league`
-- `/portfolio`
-- `/portfolio/[slug]`
-- `/recipe-finder`
-- `/writing`
-- `/writing/[slug]`
-- `/resume`
-- `/search`
-- `/spacex-mission-control`
-- `/tech-startup-tracker`
-- `/travel`
-- `/travel-deals`
-- `/wine-cellar`
-- `/world-cup-2026`
-
-### Footer variants
-
-- every route that reaches `ConditionalLayout` now uses the full footer, which closes with the shared contact CTA (`ContactCta`, headline `Building something that needs judgment and follow-through?`)
-- the compact variant existed to keep `/` and `/contact` from stacking a second closing CTA under their own. Both are Catalog 97 routes now and render `Catalog97Shell`'s espresso footer instead, so nothing reaches `ConditionalLayout` wanting the compact one. `Footer` still accepts `variant="compact"` if a route needs it again
+- `/`, `/portfolio`, `/writing`, `/dashboards`, `/about`, `/resume`, and `/contact` are the seven designed routes in `src/constants/catalog97Nav.ts`. Each page renders its own `Catalog97Shell`, and `ConditionalLayout` passes them through untouched
+- every other route, `/admin` included, is wrapped in `src/components/catalog97/Catalog97ToolShell.tsx`, which is `Catalog97Shell` plus an optional title band and the build-note aside
+- `Catalog97Shell` owns the header, the only page-level `main`, and the espresso footer, so there is one footer on every route. The old `Footer.tsx` and its variants were deleted on 2026-09-16
+- see `AGENTS.md` for the full shell description
 
 ---
 
@@ -186,8 +131,8 @@ These routes manage more of their own spacing and width:
 
 - `Writing` is a live route and a top-level nav item
 - `/march-madness-2026` is a first-class route and should be documented anywhere route inventories or SEO coverage are described
-- `/formula-1` is a live off-nav Formula 1 dashboard with a self-managed shell
-- `/fantasy-formula-1` is a live off-nav Fantasy Formula 1 optimizer with a self-managed shell
+- `/formula-1` is a live off-nav Formula 1 dashboard
+- `/fantasy-formula-1` is a live off-nav Fantasy Formula 1 optimizer
 - `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`, `/golf`, and `/world-cup-2026` are live off-nav sports data dashboards
 - `/bay-area-transit` is the live off-nav Bay Area civic transit dashboard, `/earthquake-pulse` is the live USGS earthquake monitor, and `/tech-startup-tracker` is a live curated startup funding tracker
 - `/ai-dev-tools`, `/frontier-models`, `/decision-lab`, `/enablement-assistant`, `/news-pulse`, `/github-trending-pulse`, `/spacex-mission-control`, `/polling-aggregator`, `/mba-internship-notifications`, and `/fintech-tools/*` are live standalone tool surfaces even though they are not promoted in the global header

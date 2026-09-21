@@ -2,7 +2,7 @@
 
 Current config-file reference.
 
-**Last updated:** 2026-06-19
+**Last updated:** 2026-09-21
 
 ---
 
@@ -16,9 +16,10 @@ Current config-file reference.
 | `tsconfig.json` | TypeScript compiler settings |
 | `jest.config.js` | Jest config |
 | `playwright.config.ts` | Playwright config |
-| `eslint.config.js` | ESLint flat config |
+| `eslint.config.mjs` | ESLint flat config |
 | `postcss.config.js` | PostCSS |
-| `next-sitemap.config.js` | sitemap generation |
+| `src/lib/sitemap.js` + `scripts/generatePublicSitemap.mjs` | sitemap route list and the `postbuild` generator that writes `public/sitemap.xml` |
+| `src/proxy.ts` | Next.js proxy that sets the enforcing CSP and other security headers on HTML routes |
 
 ---
 
@@ -33,13 +34,13 @@ Important current behavior:
   - `/blog`, `/blog/:slug`, `/blog/posts/:slug`, `/articles/:slug` → `/writing`
   - contact variations (`/get-in-touch`, `/hire-me`) and resume variations (`/cv`, `/resume.pdf`)
 - `poweredByHeader = false`
-- site-wide security headers via `async headers()` (HSTS, X-Content-Type-Options, X-Frame-Options DENY, Referrer-Policy, Permissions-Policy, X-DNS-Prefetch-Control); a global CSP is still a TODO
+- site-wide security headers via `async headers()` (HSTS, X-Content-Type-Options, X-Frame-Options SAMEORIGIN, Referrer-Policy, Permissions-Policy, X-DNS-Prefetch-Control) plus a `Content-Security-Policy-Report-Only` header; the enforcing CSP is set in `src/proxy.ts`
 - `compiler.removeConsole` in production
 - TypeScript build errors are enforced; `npm run typecheck` also runs explicitly in CI
 - `serverExternalPackages = ['better-sqlite3', 'sharp']`
 - tracing excludes heavy image and investments data assets from server bundles
 - image remote patterns include Unsplash and Cloudinary; `dangerouslyAllowSVG` is on with an image-scoped CSP (`script-src 'none'; sandbox`) for remote crest/logo SVGs
-- `optimizePackageImports` includes `@tabler/icons-react`, `lucide-react`, and `framer-motion`; `experimental.scrollRestoration` is enabled
+- `optimizePackageImports` includes `lucide-react` and `framer-motion`; `experimental.scrollRestoration` is enabled
 
 If you update routes or package behavior, this file is one of the first places to check.
 
@@ -84,20 +85,20 @@ Important facts:
 ### `jest.config.js`
 
 - jsdom environment
-- coverage thresholds: 20 / 25 / 25 / 25
+- global coverage thresholds: branches 52, functions 62, lines 66, statements 65
 - ignores `e2e/`
 
 ### `playwright.config.ts`
 
-- starts local dev server via `npm run dev`
+- starts the server via `npm run dev` locally and `npm run start` in CI
 - desktop and mobile projects are configured
 - HTML reporter enabled
 
 ---
 
-## `next-sitemap.config.js`
+## Sitemap (`src/lib/sitemap.js`)
 
-Current priorities include:
+There is no `next-sitemap.config.js` and `next-sitemap` is not a dependency. `src/lib/sitemap.js` exports `PUBLIC_SITEMAP_ENTRIES`, and `scripts/generatePublicSitemap.mjs` writes `public/sitemap.xml` from it during `postbuild`. Routes it should cover include:
 
 - `/`
 - `/portfolio`
@@ -124,4 +125,4 @@ Posts are discovered from `content/blog/`.
 
 ## Middleware
 
-There is no `middleware.ts` in the repo. All redirects (including `/blog` -> `/writing`) are declared in `next.config.mjs` via `async redirects()`. Security headers are likewise applied through `next.config.mjs` `async headers()`, not a middleware layer.
+There is no `middleware.ts`, but `src/proxy.ts` is the Next.js 16 equivalent. It sets the enforcing `Content-Security-Policy` and the other security headers on HTML routes, widens the CSP for Google Analytics only when `NEXT_PUBLIC_GA_MEASUREMENT_ID` is a valid ID, sets `Netlify-CDN-Cache-Control: no-store`, and redirects `/blog` and `/blog/*` to `/writing`. The rest of the redirects are declared in `next.config.mjs` via `async redirects()`, and `async headers()` there adds a second set of security headers.

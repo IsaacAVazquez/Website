@@ -2,7 +2,7 @@
 
 Current API route inventory for the app.
 
-**Last updated:** 2026-08-11
+**Last updated:** 2026-09-21
 
 ---
 
@@ -27,13 +27,14 @@ Current API route inventory for the app.
 |------|---------|-------|
 | `/api/investments/quotes` | GET | Quote proxy for investments UI |
 | `/api/investments/data/[symbol]` | GET | Section-based curated research payloads |
-| `/api/stocks` | GET | Quote source used by investments flows |
+| `/api/stocks` | GET | Retired on 2026-07-06. Returns 410 Gone and points callers to `/api/investments/quotes` |
 
 ### Sports dashboards
 
 | Route | Methods | Notes |
 |------|---------|-------|
 | `/api/golf/players/[playerId]` | GET | Golf player detail payload from the committed golf snapshot |
+| `/api/formula-1/meetings/[meetingId]` | GET | Formula 1 meeting detail payload from the committed Formula 1 snapshot |
 | `/api/premier-league/teams/[teamId]` | GET | Snapshot-backed Premier League club drilldown payload |
 | `/api/la-liga/teams/[teamId]` | GET | Snapshot-backed La Liga club drilldown payload |
 | `/api/mlb/teams/[teamId]` | GET | Snapshot-backed MLB team drilldown payload |
@@ -141,10 +142,12 @@ Route-specific payloads vary and should be checked in the route file itself befo
 Use these as the actual source of truth:
 
 - `src/app/api/auth/[...nextauth]/route.ts`
+- `src/app/api/data-revisions/route.ts`
 - `src/app/api/fantasy-data/route.ts`
 - `src/app/api/investments/quotes/route.ts`
 - `src/app/api/investments/data/[symbol]/route.ts`
 - `src/app/api/golf/players/[playerId]/route.ts`
+- `src/app/api/formula-1/meetings/[meetingId]/route.ts`
 - `src/app/api/premier-league/teams/[teamId]/route.ts`
 - `src/app/api/la-liga/teams/[teamId]/route.ts`
 - `src/app/api/mlb/teams/[teamId]/route.ts`
@@ -154,6 +157,7 @@ Use these as the actual source of truth:
 - `src/app/api/bay-area-transit/summary/route.ts`
 - `src/app/api/bay-area-transit/stations/[stationId]/route.ts`
 - `src/app/api/earthquake-pulse/summary/route.ts`
+- `src/app/api/newsletter/subscribe/route.ts`
 - `src/app/api/news-pulse/route.ts`
 - `src/app/api/spacex/summary/route.ts`
 - `src/app/api/spacex/launches/route.ts`

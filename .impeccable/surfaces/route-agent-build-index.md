@@ -7,6 +7,8 @@ related_targets: ["src/app/agent-build-index/page.tsx","src/lib/agentBuildIndex.
 
 # Agent Build Index
 
+**Status note, 2026-09-21.** This route has rendered inside `Catalog97ToolShell` since the bridge on 2026-09-16. Its components still read `--home-*` names, and the bridge block in `src/app/catalog97.css` aliases those onto Catalog 97 values, sets every `--radius-*` token to 0, and sets every `--shadow-*` token to `none`. `DESIGN.md` still describes the Working Instrument and does not govern this route. The old site header was sticky at 73px and was deleted in that change, and `Catalog97Header` is `position: relative`, so every measurement below that assumes a 73px sticky header predates the bridge. Contrast figures below were measured against Working Instrument values and need re-measuring.
+
 ## Mode
 
 Read. The visitor is here to understand which public AI agent repositories are actually gaining attention this week, and to judge whether the number means anything. Comprehension leads, and the interface stays out of the way. The newsletter band near the bottom is a secondary ask and must never grow back into the loudest thing on the page.

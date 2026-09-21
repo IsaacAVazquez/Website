@@ -3,7 +3,7 @@
 Portfolio, writing, fantasy football analytics, investment research, and standalone data tools built on Next.js 16.
 
 **Live:** [isaacvazquez.com](https://isaacvazquez.com)
-**Last updated:** 2026-08-11
+**Last updated:** 2026-09-21
 
 ---
 
@@ -47,6 +47,7 @@ The site is portfolio-first. `Writing` is live and promoted in the global header
 | `/about` | Background and journey |
 | `/portfolio` | Projects index |
 | `/portfolio/[slug]` | Project detail |
+| `/dashboards` | Index of the live dashboards, tools, and calculators |
 | `/investments` | Investment research platform |
 | `/premier-league` | Premier League dashboard |
 | `/la-liga` | La Liga dashboard |
@@ -77,15 +78,16 @@ The site is portfolio-first. `Writing` is live and promoted in the global header
 | `/spacex-mission-control` | SpaceX Mission Control dashboard |
 | `/fintech-tools/budget-planner` | Budget planner |
 | `/fintech-tools/interchange-iq` | Interchange fee analyzer |
+| `/fintech-tools/rent-vs-buy` | Rent vs buy calculator |
 | `/polling-aggregator` | Political polling aggregator |
 | `/decision-lab` | Decision-modeling sandbox |
 | `/enablement-assistant` | Automation platform enablement assistant |
 | `/mba-internship-notifications` | MBA role tracker across tech company job boards |
 | `/museum-log` | Museum visit log |
 | `/travel` | Browser-persisted travel planner |
+| `/travel-deals` | Travel Deal Lab trip cost optimizer |
 | `/now` | Current focus / status page |
 | `/changelog` | Running log of what's shipped |
-| `/release-notes` | Release notes, grouped by month |
 | `/arcade` | Reactor, a neon reflex arcade game (style experiment) |
 | `/resume` | Resume |
 | `/contact` | Contact page |
@@ -99,6 +101,7 @@ Redirects:
 - `/work` -> `/portfolio`
 - `/blog` -> `/writing`
 - `/blog/:slug` -> `/writing/:slug`
+- `/release-notes` -> `/changelog`
 
 ---
 
@@ -176,9 +179,9 @@ CRON_SECRET=...               # protects the Netlify purge-cache function
 
 ## Important Repo Facts
 
-- Global nav is `Home / About / Projects / Writing / Investments / Fantasy / Resume / Contact`
+- Global nav is the seven links in `src/constants/catalog97Nav.ts`, labeled `Home / Work / Writing / Dashboards / About / Résumé / Contact`
 - `Writing` is live and intentionally promoted in the header
-- `/portfolio` renders directly from `src/app/portfolio/page.tsx`
+- `/portfolio` is a server shell in `src/app/portfolio/page.tsx` that passes the project index to `Catalog97Portfolio`
 - `/api/search` is limited and mostly hardcoded; do not treat it as comprehensive site search
 - `/investments` uses `InvestmentsClient` plus targeted routes under `/api/investments/quotes` and `/api/investments/data/[symbol]`
 - Sports dashboards read committed snapshots. Earthquake and BART add request-time upstream refreshes with their committed snapshots kept as fallbacks.

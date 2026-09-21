@@ -15,7 +15,7 @@ Mode is Read, so structure for comprehension comes first. The audience is a Haas
 
 ## Visual world
 
-Articles are Working Instrument pages and DESIGN.md governs them. The Catalog 97 index at `/writing` links into them, so the header changes world on that click, and that change is a decision recorded below.
+Articles are Catalog 97 through the bridge as of 2026-09-16. They render inside `Catalog97ToolShell`, their components still read `--home-*` names, and the bridge block in `src/app/catalog97.css` aliases those onto Catalog 97 values with every `--radius-*` token at 0 and every `--shadow-*` token at `none`. `DESIGN.md` still describes the Working Instrument and does not govern them. Before the bridge the header changed world on the click in from `/writing`, and the decision recorded below was about that change. The index and the article now share one shell, so that decision no longer has anything to decide. Contrast figures below were measured before the bridge and need re-measuring.
 
 ## Decisions not to re-litigate (settled 2026-09-14)
 

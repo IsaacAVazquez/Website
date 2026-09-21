@@ -4,9 +4,12 @@ How the site's data dashboards work. This is the single most-repeated
 architecture in the repo — 15+ public surfaces share it — so it gets one
 reference instead of being re-explained per route.
 
-**Last updated:** 2026-07-20
+**Last updated:** 2026-09-21
 
-The short version: **no dashboard calls an external API at request time.** A
+The short version is that most dashboards call no external API at request time.
+The exceptions are the earthquake summary route, the bay-area-transit summary
+route, and the bay-area-transit station route, which pass `preferLive: true` to
+their accessors and keep the committed snapshot as the fallback. A
 local script fetches data, transforms it, and writes a committed snapshot file. A
 GitHub Action re-runs that script on a schedule and commits the refreshed
 snapshot. The app reads the committed file. This keeps pages fast, keeps runtime
@@ -25,7 +28,7 @@ For a dashboard `x`:
 | **Builder** | `scripts/build<X>Snapshot.ts` (often via a `src/lib/<x>Data.ts` fetch/transform) | Fetches the upstream source, shapes it, writes the snapshot file. Run by `npm run update:<x>`. |
 | **GitHub Action** | `.github/workflows/update-<x>.yml` | Runs the builder on a schedule (+ manual dispatch) and commits the snapshot only when it changes, via the shared `scripts/ci/commit-and-push-snapshot.sh`. |
 | **Accessors** | `src/lib/<x>Snapshot.ts` | Pure read helpers the app and API routes call (`get<X>Summary()`, per-entity getters, id validation, empty-state factories). |
-| **API route(s)** | `src/app/api/<x>/summary/route.ts` (+ optional `[id]`) | Thin handlers that return accessor output. They read the committed snapshot, never the upstream source. |
+| **API route(s)** | optional, usually a per-entity detail route such as `src/app/api/<x>/teams/[teamId]/route.ts` | Thin handlers that return accessor output for data the client fetches on selection. Most pages call the accessor directly in the server component, so only bay-area-transit, earthquake-pulse, and spacex have a `summary` route. |
 
 The route page (`src/app/<x>/page.tsx`) is a server shell — metadata + structured
 data — that hands the snapshot to a client component for deep-linkable `?view=` /
@@ -80,7 +83,7 @@ response falls back to the committed snapshot.
 
 ## The shared commit/push step (every Action)
 
-All 14 `update-*.yml` workflows route their git commit + push through one shared
+All 17 `update-*.yml` workflows route their git commit + push through one shared
 helper, `scripts/ci/commit-and-push-snapshot.sh`, instead of inlining their own
 git plumbing:
 
@@ -119,12 +122,14 @@ exhausting all attempts. Tests in
 2. **Builder:** `scripts/buildGolfSnapshot.ts` calls `buildGolfSnapshotData()`
    from `src/lib/golfData.ts`, JSON-stringifies the result into
    `src/data/golfSnapshot.ts`, with the `readGeneratedSnapshot` fallback above.
-3. **Action:** `.github/workflows/update-golf.yml` runs daily at 08:40 UTC and
+3. **Action:** `.github/workflows/update-golf.yml` runs every three hours Thursday
+   through Sunday and daily at 08:40 UTC Monday through Wednesday, and
    commits `src/data/golfSnapshot.ts` when it changes, via
    `scripts/ci/commit-and-push-snapshot.sh`.
 4. **Accessors:** `src/lib/golfSnapshot.ts` exposes `getGolfSummary()`,
    `getGolfPlayerSnapshot(id)`, `createEmptyGolfSummary()`, and id validation.
-5. **API:** `/api/golf/summary` and `/api/golf/players/[playerId]`.
+5. **API:** `/api/golf/players/[playerId]` only. The page calls `getGolfSummary()`
+   directly, so there is no summary route.
 
 ### Sub-resource pattern (id-keyed detail)
 
@@ -149,15 +154,15 @@ by BART abbr, world-cup `/teams/[teamId]` by team slug.
 
 | Route(s) | Snapshot | Builder / `npm run` | Workflow | Upstream source | Cadence |
 |---|---|---|---|---|---|
-| `/premier-league` | `src/data/premierLeagueSnapshot.ts` | `buildPremierLeagueSnapshot.ts` · `update:premier-league` / `update:football` | `update-premier-league.yml` | football-data.org (token; the summary API also refreshes standings/fixtures at request time when the token is set) | daily 06:15 UTC, Aug–May |
-| `/la-liga` | `src/data/laLigaSnapshot.ts` | `updateLaLigaSnapshot.ts` · `update:la-liga` / `update:football` | `update-la-liga.yml` | football-data.org (token; the summary API also refreshes standings/fixtures at request time when the token is set) | daily 06:30 UTC, Aug–May |
+| `/premier-league` | `src/data/premierLeagueSnapshot.ts` | `buildPremierLeagueSnapshot.ts` · `update:premier-league` / `update:football` | `update-premier-league.yml` | football-data.org (token, build time only) | every 4h, Aug–May |
+| `/la-liga` | `src/data/laLigaSnapshot.ts` | `updateLaLigaSnapshot.ts` · `update:la-liga` / `update:football` | `update-la-liga.yml` | football-data.org (token, build time only) | every 4h, Aug–May |
 | `/nfl` | `src/data/nflSnapshot.ts` | `updateNflSnapshot.ts` · `update:nfl` | `update-nfl.yml` | NFLverse CSVs | Tue 10:35 UTC, Sep–Feb |
-| `/mlb` | `src/data/mlbSnapshot.ts` | `updateMlbSnapshot.ts` · `update:mlb` | `update-mlb.yml` | MLB Stats API | daily 10:05 UTC, Mar–Nov (fallback seed; the API serves live statsapi at request time) |
-| `/nba` | `src/data/nbaSnapshot.ts` | `updateNbaSnapshot.ts` · `update:nba` | `update-nba.yml` | ESPN NBA | daily 10:20 UTC, mid-Oct–Jun |
-| `/golf` | `src/data/golfSnapshot.ts` | `buildGolfSnapshot.ts` · `update:golf` | `update-golf.yml` | ESPN golf | daily 08:40 UTC |
-| `/formula-1`, `/fantasy-formula-1` | `src/data/formula1Snapshot.ts` | `buildFormula1Snapshot.ts` · `update:formula-1` | `update-formula-1.yml` | OpenF1 | daily 08:10 UTC |
-| `/world-cup-2026` | `src/data/worldCupSnapshot.ts` | `buildWorldCupSnapshot.ts` · `update:world-cup` | `update-world-cup.yml` | ESPN `soccer/fifa.world` | every 6h, Jun–Jul |
-| `/score-pools` (+ `/tracker`, `/settings`) | `src/data/scorePoolsSnapshot.ts` | `buildScorePoolsSnapshot.ts` · `update:score-pools` | `update-score-pools.yml` | The Odds API + API-Football (tokens optional) + manual/CSV | every 6h |
+| `/mlb` | `src/data/mlbSnapshot.ts` | `updateMlbSnapshot.ts` · `update:mlb` | `update-mlb.yml` | MLB Stats API | every 4h, Mar–Nov |
+| `/nba` | `src/data/nbaSnapshot.ts` | `updateNbaSnapshot.ts` · `update:nba` | `update-nba.yml` | ESPN NBA | every 4h, mid-Oct–Jun |
+| `/golf` | `src/data/golfSnapshot.ts` | `buildGolfSnapshot.ts` · `update:golf` | `update-golf.yml` | ESPN golf | every 3h Thu–Sun, daily 08:40 UTC Mon–Wed |
+| `/formula-1`, `/fantasy-formula-1` | `src/data/formula1Snapshot.ts` | `buildFormula1Snapshot.ts` · `update:formula-1` | `update-formula-1.yml` | OpenF1 | every 3h Thu–Sun, daily 08:10 UTC Mon–Wed |
+| `/world-cup-2026` | `src/data/worldCupSnapshot.ts` | `buildWorldCupSnapshot.ts` · `update:world-cup` | `update-world-cup.yml` | ESPN `soccer/fifa.world` | every 30 min, Jun–Jul |
+| `/score-pools` (+ `/tracker`, `/settings`) | `src/data/scorePoolsSnapshot.ts` | `buildScorePoolsSnapshot.ts` · `update:score-pools` | `update-score-pools.yml` | The Odds API + API-Football (both tokens required by the scheduled workflow) + manual/CSV | every 6h |
 | `/bay-area-transit` | `src/data/bayAreaTransitSnapshot.ts` | `buildBayAreaTransitSnapshot.ts` · `update:bay-area-transit` | `update-bay-area-transit.yml` | BART public API (demo key) | every 6h, year-round |
 | `/earthquake-pulse` | `src/data/earthquakeSnapshot.ts` | `buildEarthquakeSnapshot.ts` · `update:earthquake` | `update-earthquake.yml` | USGS GeoJSON feeds | daily 06:20 UTC (fallback seed; the API serves live USGS at request time) |
 | `/github-trending-pulse` | `src/data/githubTrendingSnapshot.ts` | `buildGitHubTrendingSnapshot.ts` · `update:github-trending` | `update-github-trending.yml` | GitHub Search API | daily 07:45 UTC |
@@ -177,8 +182,8 @@ notes remain the source of truth for what is listed.
 ## The blob-backed refresh lane (pilot: frontier-models)
 
 The git-commit pipeline above couples data freshness to deploys: every refresh
-is a bot commit, and production only advances when `publish-data.yml` fires the
-build hook. For surfaces whose data can refresh without review, there is a
+is a bot commit, and production only advances when `publish-data.yml` builds and
+deploys the site. For surfaces whose data can refresh without review, there is a
 second lane that skips both:
 
 1. A **Netlify scheduled function** (`netlify/functions/refresh-frontier-models.ts`,
@@ -260,8 +265,9 @@ the snapshot type **and** render an on-page disclosure card (mirror `tech-startu
    `package.json`.
 6. **Accessors** — `src/lib/<x>Snapshot.ts` (`get<X>Summary()`, id validation,
    empty-state factory).
-7. **API** — `src/app/api/<x>/summary/route.ts` (+ `[id]` if there's a detail
-   panel; return `400` for malformed ids, `404` for unknown).
+7. **API** — only if the client fetches on selection, as a detail route such as
+   `src/app/api/<x>/teams/[teamId]/route.ts` (return `400` for malformed ids,
+   `404` for unknown). The page reads the summary through the accessor directly.
 8. **Route** — `src/app/<x>/page.tsx` server shell + client component with
    deep-linkable state; add `src/app/<x>/error.tsx` **and** `src/app/<x>/loading.tsx`
    (curated/unverified data also needs `verified: false` + `asOf` + an on-page disclosure card).

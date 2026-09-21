@@ -106,6 +106,8 @@ components:
 
 # Design System: The Working Instrument
 
+**Status, 2026-09-21. This file is stale.** It describes the Working Instrument, and since the bridge on 2026-09-16 every route renders as Catalog 97. The current tokens, surfaces, type, and component classes are in `src/app/catalog97.css`. Inside the bridge every `--home-*` name resolves to a Catalog 97 value, every `--radius-*` token is 0, and every `--shadow-*` token is `none`, so the pills, panel radii, hover lifts, Signal Orange, and Instrument typefaces described below do not paint. Do not judge any route against this file. The close-out PR of `docs/superpowers/specs/2026-09-16-catalog97-unification-design.md` rewrites it, and `.impeccable/design.json` is stale in the same way. The dated reasoning below is kept on purpose until then.
+
 ## Overview
 
 **Creative North Star: "The Working Instrument"**
