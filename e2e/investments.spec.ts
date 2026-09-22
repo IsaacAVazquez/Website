@@ -405,7 +405,11 @@ test.describe("Investments", () => {
     await expect(section).toBeVisible();
     await expect(page.getByRole("heading", { name: /selected work/i })).toBeVisible();
 
-    const titles = await section.getByRole("heading", { level: 3 }).allTextContents();
+    // Each project heading ends in an aria-hidden "↗" glyph, which textContent
+    // still reports; compare the titles without it.
+    const titles = (
+      await section.getByRole("heading", { level: 3 }).allTextContents()
+    ).map((title) => title.replace(/\s*↗\s*$/u, "").trim());
     expect(titles.slice(0, 3)).toEqual([
       "Investment Analytics Platform",
       "News Pulse Dashboard",
