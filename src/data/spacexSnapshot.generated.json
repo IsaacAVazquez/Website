@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-22T14:05:40.915Z",
+  "generatedAt": "2026-09-22T23:39:47.049Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -128,7 +128,7 @@
       {
         "id": "upcoming",
         "label": "Upcoming queue",
-        "value": "127",
+        "value": "128",
         "description": "currently published future SpaceX missions from Launch Library 2"
       },
       {
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-09-22T14:05:35.011Z"
+    "generatedAt": "2026-09-22T23:39:42.034Z"
   },
   "upcomingLaunches": [
     {
@@ -2500,8 +2500,8 @@
       "hasExactTime": true,
       "isStaleSchedule": false,
       "links": {
-        "webcast": null,
-        "article": "https://www.nasa.gov/exploration/commercial/crew/index.html",
+        "webcast": "https://x.com/i/broadcasts/1qxvvepEVdRxB",
+        "article": "https://www.spacex.com/launches/crew13",
         "wikipedia": "https://en.wikipedia.org/wiki/Commercial_Crew_Program",
         "presskit": null,
         "redditLaunch": null,
@@ -2843,6 +2843,6 @@
       }
     ],
     "rangeLabel": "Oct 25 – Sep 26",
-    "generatedAt": "2026-09-22T14:05:40.915Z"
+    "generatedAt": "2026-09-22T23:39:47.048Z"
   }
 }
