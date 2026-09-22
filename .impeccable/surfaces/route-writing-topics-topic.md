@@ -42,3 +42,7 @@ Pre-fix snapshot `2026-09-14T19-48-31Z__route-writing-topics-topic.md` scored 21
 ## Commands worth running
 
 `layout` for grouping or a start-here band once Isaac has picked, `harden` for the doubled card links if the hover-lift decision is reopened, and `polish` last. Never `document` from here.
+
+## Status, 2026-09-22
+
+This route moved off the bridge. It is composed from Catalog 97 bands inside `Catalog97ToolShell` and reads `--c97-*` directly, so the paragraphs above that describe `--home-*` names, hover-lift cards, radii, or the two-world header describe the state before this date. The contrast figures still need re-measuring against the surfaces the page now declares.

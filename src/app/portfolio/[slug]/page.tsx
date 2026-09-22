@@ -46,44 +46,20 @@ export async function generateMetadata({
   });
 }
 
-const sectionTitleStyle = {
-  fontFamily: "var(--font-home-sans)",
-  color: "var(--home-ink)",
-  fontWeight: 600,
-  letterSpacing: "-0.03em",
-} as const;
+/*
+ * Layout constants for the Catalog 97 composition. A band stacks its children
+ * at step 3 and a sub-block (an h3 with the prose or list under it) at step 2,
+ * so the page never hand-rolls a gap.
+ */
+const bandStack = { display: "grid", gap: "var(--c97-sp-3)" } as const;
+const blockStack = { display: "grid", gap: "var(--c97-sp-2)" } as const;
+const secondaryInk = { color: "var(--c97-ink-2)" } as const;
 
-const subsectionTitleStyle = {
-  fontFamily: "var(--font-home-sans)",
-  color: "var(--home-ink)",
-  fontWeight: 600,
-  letterSpacing: "-0.02em",
-} as const;
-
-const bodyStyle = {
-  fontFamily: "var(--font-home-sans)",
-  color: "var(--home-ink-muted)",
-} as const;
-
-const strongStyle = {
-  fontFamily: "var(--font-home-sans)",
-  color: "var(--home-ink)",
-  fontWeight: 600,
-} as const;
-
-const chipStyle = {
-  fontFamily: "var(--font-home-sans)",
-  background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
-  color: "var(--home-ink)",
-  border: "1px solid var(--home-rule)",
-  letterSpacing: "0.02em",
-} as const;
-
-const outlineButtonStyle = {
-  fontFamily: "var(--font-home-sans)",
-  color: "var(--home-ink)",
-  background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
-  border: "1px solid var(--home-rule)",
+/* Two panels side by side, collapsing to one column on a phone. */
+const pairGrid = {
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 240px), 1fr))",
+  gap: "var(--c97-sp-2)",
 } as const;
 
 export default async function CaseStudyPage({
@@ -164,235 +140,200 @@ export default async function CaseStudyPage({
         }}
       />
 
-      <section className="home-page home-section min-h-screen" aria-label={caseStudy.title}>
-        <article className="home-shell home-shell-tight space-y-12">
-        <Link
-          href="/portfolio"
-          className="inline-flex items-center gap-2 rounded-md text-sm font-semibold text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-ink)] focus-visible:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
-          style={{ fontFamily: "var(--font-home-sans)" }}
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Back to Portfolio
-        </Link>
-
-        <header className="space-y-5">
-          <p className="home-kicker mb-0">{caseStudy.role} · Case study</p>
-          <h1
-            className="mb-0"
-            style={{
-              fontFamily: "var(--font-home-sans)",
-              fontSize: "clamp(2.4rem, 5.5vw, 4rem)",
-              fontWeight: 600,
-              lineHeight: 0.95,
-              letterSpacing: "-0.06em",
-              color: "var(--home-ink)",
-            }}
-          >
-            {caseStudy.title}
-          </h1>
-
-          <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm" style={bodyStyle}>
-            <span>
-              <strong style={strongStyle}>Role:</strong> {caseStudy.role}
-            </span>
-            <span aria-hidden="true">·</span>
-            <span>
-              <strong style={strongStyle}>Timeline:</strong> {caseStudy.timeline}
-            </span>
-            {caseStudy.pmFramework && (
-              <>
-                <span aria-hidden="true">·</span>
-                <span>
-                  <strong style={strongStyle}>Framework:</strong> {caseStudy.pmFramework}
-                </span>
-              </>
-            )}
-          </div>
-
-          <div className="flex flex-wrap gap-2">
-            {caseStudy.tools.map((tool) => (
-              <span
-                key={tool}
-                className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
-                style={chipStyle}
-              >
-                {tool}
-              </span>
-            ))}
-          </div>
-
-          {(caseStudy.github || caseStudy.link) && (
-            <div className="flex flex-wrap gap-3 pt-2">
-              {caseStudy.github && (
-                <a
-                  href={caseStudy.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-xl)] px-4 py-2 text-sm font-semibold transition-colors"
-                  style={outlineButtonStyle}
-                >
-                  <BrandGithub className="h-4 w-4" />
-                  View code
-                </a>
-              )}
-              {caseStudy.link && (
-                caseStudy.link.startsWith("/") ? (
-                  <Link
-                    href={caseStudy.link}
-                    className="inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-xl)] px-4 py-2 text-sm font-semibold transition-colors"
-                    style={outlineButtonStyle}
-                  >
-                    <ExternalLink className="h-4 w-4" />
-                    Live project
+      <article aria-label={caseStudy.title}>
+        {/* Hero */}
+        <section className="c97-band" data-c97-surface="paper">
+          <div className="c97-shell" style={bandStack}>
+            <nav aria-label="Breadcrumb">
+              <ol className="c97-breadcrumb">
+                <li>
+                  <Link href="/" className="c97-microlink">
+                    Home
                   </Link>
-                ) : (
-                  <a
-                    href={caseStudy.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-xl)] px-4 py-2 text-sm font-semibold transition-colors"
-                    style={outlineButtonStyle}
-                  >
-                    <ExternalLink className="h-4 w-4" />
-                    Live project
-                  </a>
-                )
-              )}
-            </div>
-          )}
-        </header>
+                </li>
+                <li>
+                  <Link href="/portfolio" className="c97-microlink">
+                    Work
+                  </Link>
+                </li>
+                <li aria-current="page">{caseStudy.title}</li>
+              </ol>
+            </nav>
 
-        {/* Overview */}
-        <section className="space-y-5">
-          <h2 className="text-3xl mb-0" style={sectionTitleStyle}>
-            Overview
-          </h2>
-          <div className="home-card p-6 sm:p-8 space-y-4">
-            <p className="mb-0 text-lg leading-7" style={bodyStyle}>
-              {caseStudy.overview.summary}
-            </p>
-            <p className="mb-0 text-base leading-7" style={bodyStyle}>
-              <strong style={strongStyle}>Impact:</strong> {caseStudy.overview.impact}
-            </p>
-          </div>
+            <header style={blockStack}>
+              <p className="c97-kicker">{caseStudy.role} · Case study</p>
+              <h1 className="c97-display">{caseStudy.title}</h1>
+              <p className="c97-meta">
+                <span>Role: {caseStudy.role}</span>
+                <span>Timeline: {caseStudy.timeline}</span>
+                {caseStudy.pmFramework && <span>Framework: {caseStudy.pmFramework}</span>}
+              </p>
+            </header>
 
-          {caseStudy.detailedMetrics && (
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {caseStudy.detailedMetrics.map((metric, index) => (
-                <div
-                  key={index}
-                  className="home-card p-5 text-center space-y-1"
-                >
-                  <p
-                    className="mb-0 text-xs font-semibold uppercase tracking-wider"
-                    style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)", letterSpacing: "0.1em" }}
-                  >
-                    {metric.label}
-                  </p>
-                  <p
-                    className="mb-0 text-2xl"
-                    style={{ ...subsectionTitleStyle, fontWeight: 700 }}
-                  >
-                    {metric.value}
-                  </p>
-                  {metric.improvement && (
-                    <p className="mb-0 text-xs" style={bodyStyle}>
-                      {metric.improvement}
-                    </p>
-                  )}
-                </div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--c97-sp-1)" }}>
+              {caseStudy.tools.map((tool) => (
+                <span key={tool} className="c97-chip">
+                  {tool}
+                </span>
               ))}
             </div>
-          )}
+
+            {(caseStudy.github || caseStudy.link) && (
+              <div
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "var(--c97-sp-2)",
+                  alignItems: "center",
+                }}
+              >
+                {caseStudy.github && (
+                  <a
+                    href={caseStudy.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="c97-btn"
+                    style={{ gap: "var(--c97-sp-1)" }}
+                  >
+                    <BrandGithub className="h-4 w-4" />
+                    View code
+                  </a>
+                )}
+                {caseStudy.link && (
+                  caseStudy.link.startsWith("/") ? (
+                    <Link
+                      href={caseStudy.link}
+                      className="c97-btn-ghost"
+                      style={{ gap: "var(--c97-sp-1)" }}
+                    >
+                      <ExternalLink className="h-4 w-4" />
+                      Live project
+                    </Link>
+                  ) : (
+                    <a
+                      href={caseStudy.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="c97-btn-ghost"
+                      style={{ gap: "var(--c97-sp-1)" }}
+                    >
+                      <ExternalLink className="h-4 w-4" />
+                      Live project
+                    </a>
+                  )
+                )}
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* Overview */}
+        <section className="c97-band" data-c97-surface="bone">
+          <div className="c97-shell" style={bandStack}>
+            <div>
+              <p className="c97-kicker">Case study</p>
+              <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-1)" }}>
+                Overview
+              </h2>
+            </div>
+            {/* Bare `.c97-lead` sets only the size, so the global paragraph margin is zeroed here. */}
+            <p className="c97-lead" style={{ margin: 0 }}>
+              {caseStudy.overview.summary}
+            </p>
+            <div style={blockStack}>
+              <p className="c97-kicker">Impact</p>
+              <p className="c97-prose">{caseStudy.overview.impact}</p>
+            </div>
+
+            {caseStudy.detailedMetrics && (
+              <div className="c97-columns">
+                {caseStudy.detailedMetrics.map((metric, index) => (
+                  <div key={index} className="c97-stat">
+                    <p className="c97-stat-label">{metric.label}</p>
+                    <p className="c97-stat-value c97-tabular">{metric.value}</p>
+                    {metric.improvement && (
+                      <p className="c97-stat-delta">{metric.improvement}</p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </section>
 
         {/* User Segments & North Star */}
-        <section className="space-y-5">
-          <h2 className="text-3xl mb-0" style={sectionTitleStyle}>
-            User segments & north star
-          </h2>
-          <div className="space-y-6">
-            <div className="space-y-3">
-              <h3 className="text-xl mb-0" style={subsectionTitleStyle}>
-                Who was this built for?
-              </h3>
-              <ul className="mb-0 list-disc space-y-2 pl-5 text-base leading-7" style={bodyStyle}>
+        <section className="c97-band" data-c97-surface="paper">
+          <div className="c97-shell" style={bandStack}>
+            <div>
+              <p className="c97-kicker">Case study</p>
+              <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-1)" }}>
+                User segments and north star
+              </h2>
+            </div>
+            <div style={blockStack}>
+              <h3 className="c97-serif c97-h3">Who was this built for?</h3>
+              <ul className="c97-list">
                 {caseStudy.userSegments.map((segment, index) => (
                   <li key={index}>{segment}</li>
                 ))}
               </ul>
             </div>
-            <div className="home-card p-6 sm:p-8 space-y-2">
-              <h3 className="text-xl mb-0" style={subsectionTitleStyle}>
-                North star metric
-              </h3>
-              <p className="mb-0 text-lg font-semibold" style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-signal)" }}>
-                {caseStudy.northStarMetric}
-              </p>
+            <div className="c97-panel" style={blockStack}>
+              <p className="c97-kicker">North star metric</p>
+              <p className="c97-serif c97-h3">{caseStudy.northStarMetric}</p>
             </div>
           </div>
         </section>
 
         {/* Problem */}
-        <section className="space-y-5">
-          <h2 className="text-3xl mb-0" style={sectionTitleStyle}>
-            Problem
-          </h2>
-          <div className="space-y-6">
-            <div className="space-y-3">
-              <h3 className="text-xl mb-0" style={subsectionTitleStyle}>
-                Context
-              </h3>
-              <p className="mb-0 text-base leading-7" style={bodyStyle}>
-                {caseStudy.problem.context}
-              </p>
+        <section className="c97-band" data-c97-surface="bone">
+          <div className="c97-shell" style={bandStack}>
+            <div>
+              <p className="c97-kicker">Case study</p>
+              <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-1)" }}>
+                Problem
+              </h2>
             </div>
 
-            <div className="space-y-3">
-              <h3 className="text-xl mb-0" style={subsectionTitleStyle}>
-                Pain points
-              </h3>
-              <ul className="mb-0 list-disc space-y-2 pl-5 text-base leading-7" style={bodyStyle}>
+            <div style={blockStack}>
+              <h3 className="c97-serif c97-h3">Context</h3>
+              <p className="c97-prose">{caseStudy.problem.context}</p>
+            </div>
+
+            <div style={blockStack}>
+              <h3 className="c97-serif c97-h3">Pain points</h3>
+              <ul className="c97-list">
                 {caseStudy.problem.painPoints.map((point, index) => (
                   <li key={index}>{point}</li>
                 ))}
               </ul>
             </div>
 
-            <div
-              className="home-card p-6 sm:p-8 space-y-3"
-              style={{ background: "color-mix(in srgb, var(--home-paper-alt) 78%, var(--home-elev-mix))" }}
-            >
-              <h3 className="text-xl mb-0" style={subsectionTitleStyle}>
-                Stakes
-              </h3>
-              <p className="mb-0 text-base leading-7" style={bodyStyle}>
-                {caseStudy.problem.stakes}
-              </p>
+            <div className="c97-panel" style={blockStack}>
+              <h3 className="c97-serif c97-h3">Stakes</h3>
+              <p className="c97-prose">{caseStudy.problem.stakes}</p>
             </div>
           </div>
         </section>
 
         {/* Process */}
-        <section className="space-y-5">
-          <h2 className="text-3xl mb-0" style={sectionTitleStyle}>
-            Process
-          </h2>
-          <div className="space-y-6">
-            <div className="space-y-3">
-              <h3 className="text-xl mb-0" style={subsectionTitleStyle}>
-                Approach
-              </h3>
-              <p className="mb-0 text-base leading-7" style={bodyStyle}>
-                {caseStudy.process.approach}
-              </p>
+        <section className="c97-band" data-c97-surface="paper">
+          <div className="c97-shell" style={bandStack}>
+            <div>
+              <p className="c97-kicker">Case study</p>
+              <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-1)" }}>
+                Process
+              </h2>
             </div>
 
-            <div className="space-y-3">
-              <h3 className="text-xl mb-0" style={subsectionTitleStyle}>
-                Methodology
-              </h3>
-              <ul className="mb-0 list-disc space-y-2 pl-5 text-base leading-7" style={bodyStyle}>
+            <div style={blockStack}>
+              <h3 className="c97-serif c97-h3">Approach</h3>
+              <p className="c97-prose">{caseStudy.process.approach}</p>
+            </div>
+
+            <div style={blockStack}>
+              <h3 className="c97-serif c97-h3">Methodology</h3>
+              <ul className="c97-list">
                 {caseStudy.process.methodology.map((step, index) => (
                   <li key={index}>{step}</li>
                 ))}
@@ -400,11 +341,9 @@ export default async function CaseStudyPage({
             </div>
 
             {caseStudy.process.decisions && (
-              <div className="space-y-3">
-                <h3 className="text-xl mb-0" style={subsectionTitleStyle}>
-                  Key decisions
-                </h3>
-                <ul className="mb-0 list-disc space-y-2 pl-5 text-base leading-7" style={bodyStyle}>
+              <div style={blockStack}>
+                <h3 className="c97-serif c97-h3">Key decisions</h3>
+                <ul className="c97-list">
                   {caseStudy.process.decisions.map((decision, index) => (
                     <li key={index}>{decision}</li>
                   ))}
@@ -413,13 +352,9 @@ export default async function CaseStudyPage({
             )}
 
             {caseStudy.process.collaboration && (
-              <div className="home-card p-6 sm:p-8 space-y-3">
-                <h3 className="text-xl mb-0" style={subsectionTitleStyle}>
-                  Collaboration
-                </h3>
-                <p className="mb-0 text-base leading-7" style={bodyStyle}>
-                  {caseStudy.process.collaboration}
-                </p>
+              <div className="c97-panel" style={blockStack}>
+                <h3 className="c97-serif c97-h3">Collaboration</h3>
+                <p className="c97-prose">{caseStudy.process.collaboration}</p>
               </div>
             )}
           </div>
@@ -427,52 +362,35 @@ export default async function CaseStudyPage({
 
         {/* Tradeoff Analysis */}
         {caseStudy.tradeoffs && caseStudy.tradeoffs.length > 0 && (
-          <section className="space-y-5">
-            <h2 className="text-3xl mb-0" style={sectionTitleStyle}>
-              Tradeoff analysis
-            </h2>
-            <div className="space-y-4">
+          <section className="c97-band" data-c97-surface="bone">
+            <div className="c97-shell" style={bandStack}>
+              <div>
+                <p className="c97-kicker">Case study</p>
+                <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-1)" }}>
+                  Tradeoff analysis
+                </h2>
+              </div>
               {caseStudy.tradeoffs.map((tradeoff, index) => (
-                <div
-                  key={index}
-                  className="home-card p-6 sm:p-8 space-y-4"
-                >
-                  <h3 className="text-lg mb-0" style={subsectionTitleStyle}>
-                    {tradeoff.decision}
-                  </h3>
-                  <div className="grid md:grid-cols-2 gap-3">
-                    <div
-                      className="rounded-[var(--radius-xl)] p-4 space-y-1"
-                      style={{
-                        background: "color-mix(in srgb, var(--home-signal) 10%, var(--home-paper))",
-                        border: "1px solid color-mix(in srgb, var(--home-signal) 35%, var(--home-rule))",
-                      }}
-                    >
-                      <p className="mb-0 text-xs font-semibold uppercase tracking-wider" style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-signal)", letterSpacing: "0.1em" }}>
+                <div key={index} style={blockStack}>
+                  <h3 className="c97-serif c97-h3">{tradeoff.decision}</h3>
+                  <div style={pairGrid}>
+                    <div className="c97-panel" style={{ display: "grid", gap: "var(--c97-sp-1)" }}>
+                      <p className="c97-kicker" style={{ color: "var(--c97-accent)" }}>
                         Chose
                       </p>
-                      <p className="mb-0 text-sm font-semibold" style={strongStyle}>
-                        {tradeoff.optionChosen}
-                      </p>
+                      <p className="c97-prose">{tradeoff.optionChosen}</p>
                     </div>
-                    <div
-                      className="rounded-[var(--radius-xl)] p-4 space-y-1"
-                      style={{
-                        background: "color-mix(in srgb, var(--home-paper-alt) 78%, var(--home-elev-mix))",
-                        border: "1px solid var(--home-rule)",
-                      }}
-                    >
-                      <p className="mb-0 text-xs font-semibold uppercase tracking-wider" style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)", letterSpacing: "0.1em" }}>
-                        Rejected
-                      </p>
-                      <p className="mb-0 text-sm" style={bodyStyle}>
+                    <div className="c97-panel" style={{ display: "grid", gap: "var(--c97-sp-1)" }}>
+                      <p className="c97-kicker">Rejected</p>
+                      <p className="c97-prose" style={secondaryInk}>
                         {tradeoff.optionRejected}
                       </p>
                     </div>
                   </div>
-                  <p className="mb-0 text-sm leading-6" style={bodyStyle}>
-                    <strong style={strongStyle}>Reasoning:</strong> {tradeoff.reasoning}
-                  </p>
+                  <div style={{ display: "grid", gap: "var(--c97-sp-1)" }}>
+                    <p className="c97-kicker">Reasoning</p>
+                    <p className="c97-prose">{tradeoff.reasoning}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -480,16 +398,18 @@ export default async function CaseStudyPage({
         )}
 
         {/* Results */}
-        <section className="space-y-5">
-          <h2 className="text-3xl mb-0" style={sectionTitleStyle}>
-            Results
-          </h2>
-          <div className="space-y-6">
-            <div className="space-y-3">
-              <h3 className="text-xl mb-0" style={subsectionTitleStyle}>
-                Outcomes
-              </h3>
-              <ul className="mb-0 list-disc space-y-2 pl-5 text-base leading-7" style={bodyStyle}>
+        <section className="c97-band" data-c97-surface="paper">
+          <div className="c97-shell" style={bandStack}>
+            <div>
+              <p className="c97-kicker">Case study</p>
+              <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-1)" }}>
+                Results
+              </h2>
+            </div>
+
+            <div style={blockStack}>
+              <h3 className="c97-serif c97-h3">Outcomes</h3>
+              <ul className="c97-list">
                 {caseStudy.result.outcomes.map((outcome, index) => (
                   <li key={index}>{outcome}</li>
                 ))}
@@ -498,28 +418,31 @@ export default async function CaseStudyPage({
 
             {caseStudy.result.testimonial && (
               <figure
-                className="home-card p-6 sm:p-8 space-y-4"
                 style={{
-                  background: "color-mix(in srgb, var(--home-paper-alt) 78%, var(--home-elev-mix))",
-                  borderLeft: "3px solid var(--home-signal)",
+                  ...blockStack,
+                  margin: 0,
+                  borderLeft: "2px solid var(--c97-accent)",
+                  paddingLeft: "var(--c97-sp-3)",
                 }}
               >
-                <blockquote className="mb-0 text-lg italic leading-7" style={bodyStyle}>
+                <blockquote className="c97-serif c97-lead" style={secondaryInk}>
                   &ldquo;{caseStudy.result.testimonial.quote}&rdquo;
                 </blockquote>
-                <figcaption className="mb-0 text-sm" style={strongStyle}>
-                  <cite className="not-italic">{caseStudy.result.testimonial.author}</cite>,{" "}
-                  {caseStudy.result.testimonial.role}
+                <figcaption className="c97-meta">
+                  <span>
+                    <cite style={{ fontStyle: "normal" }}>
+                      {caseStudy.result.testimonial.author}
+                    </cite>
+                    , {caseStudy.result.testimonial.role}
+                  </span>
                 </figcaption>
               </figure>
             )}
 
             {caseStudy.result.lessonsLearned && caseStudy.result.lessonsLearned.length > 0 && (
-              <div className="space-y-3">
-                <h3 className="text-xl mb-0" style={subsectionTitleStyle}>
-                  Lessons learned
-                </h3>
-                <ul className="mb-0 list-disc space-y-2 pl-5 text-base leading-7" style={bodyStyle}>
+              <div style={blockStack}>
+                <h3 className="c97-serif c97-h3">Lessons learned</h3>
+                <ul className="c97-list">
                   {caseStudy.result.lessonsLearned.map((lesson, index) => (
                     <li key={index}>{lesson}</li>
                   ))}
@@ -531,93 +454,88 @@ export default async function CaseStudyPage({
 
         {/* Retrospective */}
         {caseStudy.retrospective && (
-          <section className="space-y-5">
-            <h2 className="text-3xl mb-0" style={sectionTitleStyle}>
-              Retrospective
-            </h2>
-            <div
-              className="home-card p-6 sm:p-8 space-y-3"
-              style={{ background: "color-mix(in srgb, var(--home-paper-alt) 78%, var(--home-elev-mix))" }}
-            >
-              <h3 className="text-lg mb-0" style={subsectionTitleStyle}>
-                What I&apos;d do differently
-              </h3>
-              <p className="mb-0 text-base leading-7" style={bodyStyle}>
-                {caseStudy.retrospective}
-              </p>
+          <section className="c97-band" data-c97-surface="bone">
+            <div className="c97-shell" style={bandStack}>
+              <div>
+                <p className="c97-kicker">Case study</p>
+                <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-1)" }}>
+                  Retrospective
+                </h2>
+              </div>
+              <div style={blockStack}>
+                <h3 className="c97-serif c97-h3">What I&apos;d do differently</h3>
+                <p className="c97-prose">{caseStudy.retrospective}</p>
+              </div>
             </div>
           </section>
         )}
 
         {(prevCaseStudy || nextCaseStudy) && (
-          <footer
-            className="pt-10"
-            style={{ borderTop: "1px solid var(--home-rule)" }}
-            aria-label="Case study navigation"
-          >
-            <div className="grid gap-4 md:grid-cols-2">
-              {prevCaseStudy ? (
-                <Link
-                  href={`/portfolio/${prevCaseStudy.slug}`}
-                  rel="prev"
-                  className="block group"
-                >
-                  {/* Lift only on hover-capable pointers — touch devices don't get the sticky transform. */}
-                  <div className="home-card home-project-card h-full p-6 sm:p-8 transition-transform duration-200 [@media(hover:hover)]:group-hover:-translate-y-0.5">
-                    <div className="flex items-start justify-between gap-6">
-                      <span style={{ color: "var(--home-ink-muted)" }}>
-                        <ArrowLeft className="h-5 w-5 flex-shrink-0 transition-transform group-hover:-translate-x-1" />
+          <section className="c97-band" data-c97-surface="paper">
+            <footer className="c97-shell" aria-label="Case study navigation">
+              <div style={pairGrid}>
+                {prevCaseStudy ? (
+                  <Link
+                    href={`/portfolio/${prevCaseStudy.slug}`}
+                    rel="prev"
+                    className="c97-row c97-link"
+                    style={{
+                      gridTemplateColumns: "auto 1fr",
+                      alignItems: "start",
+                      borderTop: "1px solid var(--c97-rule)",
+                      paddingBlock: "var(--c97-sp-3)",
+                      textDecoration: "none",
+                    }}
+                  >
+                    {/* The arrow inherits the link colour, so `.c97-link:hover` is the only hover feedback. */}
+                    <span aria-hidden="true">
+                      <ArrowLeft className="h-5 w-5" />
+                    </span>
+                    <span style={{ display: "grid", gap: "var(--c97-sp-1)" }}>
+                      <span className="c97-kicker">Previous case study</span>
+                      <span className="c97-serif c97-h3">{prevCaseStudy.title}</span>
+                      <span className="c97-prose" style={secondaryInk}>
+                        {prevCaseStudy.description}
                       </span>
-                      <div className="space-y-2 text-right">
-                        <p className="home-kicker mb-0">Previous case study</p>
-                        <h3 className="text-xl mb-0" style={subsectionTitleStyle}>
-                          {prevCaseStudy.title}
-                        </h3>
-                        <p className="mb-0 text-base leading-7" style={bodyStyle}>
-                          {prevCaseStudy.description}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              ) : (
-                <span aria-hidden="true" />
-              )}
-              {nextCaseStudy ? (
-                <Link
-                  href={`/portfolio/${nextCaseStudy.slug}`}
-                  rel="next"
-                  className="block group"
-                >
-                  {/* Lift only on hover-capable pointers — touch devices don't get the sticky transform. */}
-                  <div className="home-card home-project-card h-full p-6 sm:p-8 transition-transform duration-200 [@media(hover:hover)]:group-hover:-translate-y-0.5">
-                    <div className="flex items-start justify-between gap-6">
-                      <div className="space-y-2">
-                        <p className="home-kicker mb-0">Next case study</p>
-                        <h3 className="text-xl mb-0" style={subsectionTitleStyle}>
-                          {nextCaseStudy.title}
-                        </h3>
-                        <p className="mb-0 text-base leading-7" style={bodyStyle}>
-                          {nextCaseStudy.description}
-                        </p>
-                        <p className="mb-0 text-sm font-semibold" style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-signal)" }}>
-                          {nextCaseStudy.metrics}
-                        </p>
-                      </div>
-                      <span style={{ color: "var(--home-ink-muted)" }}>
-                        <ArrowRight className="h-5 w-5 flex-shrink-0 transition-transform group-hover:translate-x-1" />
+                    </span>
+                  </Link>
+                ) : (
+                  <span aria-hidden="true" />
+                )}
+                {nextCaseStudy ? (
+                  <Link
+                    href={`/portfolio/${nextCaseStudy.slug}`}
+                    rel="next"
+                    className="c97-row c97-link"
+                    style={{
+                      alignItems: "start",
+                      borderTop: "1px solid var(--c97-rule)",
+                      paddingBlock: "var(--c97-sp-3)",
+                      textDecoration: "none",
+                    }}
+                  >
+                    <span style={{ display: "grid", gap: "var(--c97-sp-1)" }}>
+                      <span className="c97-kicker">Next case study</span>
+                      <span className="c97-serif c97-h3">{nextCaseStudy.title}</span>
+                      <span className="c97-prose" style={secondaryInk}>
+                        {nextCaseStudy.description}
                       </span>
-                    </div>
-                  </div>
-                </Link>
-              ) : (
-                <span aria-hidden="true" />
-              )}
-            </div>
-          </footer>
+                      <span className="c97-kicker" style={{ color: "var(--c97-accent)" }}>
+                        {nextCaseStudy.metrics}
+                      </span>
+                    </span>
+                    <span aria-hidden="true">
+                      <ArrowRight className="h-5 w-5" />
+                    </span>
+                  </Link>
+                ) : (
+                  <span aria-hidden="true" />
+                )}
+              </div>
+            </footer>
+          </section>
         )}
-        </article>
-      </section>
+      </article>
     </>
   );
 }

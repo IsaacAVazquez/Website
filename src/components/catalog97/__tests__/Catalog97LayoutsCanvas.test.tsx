@@ -2,13 +2,15 @@ import { render } from "@testing-library/react";
 import { Catalog97LayoutsCanvas } from "@/components/catalog97/Catalog97LayoutsCanvas";
 
 describe("Catalog97LayoutsCanvas", () => {
-  it("establishes the Catalog token scope and surface for its opening band", () => {
+  it("leaves the token scope to the tool shell and opens on a paper band", () => {
     const { container } = render(<Catalog97LayoutsCanvas />);
     const root = container.firstElementChild;
     const openingBand = root?.querySelector("section");
 
-    expect(root).toHaveClass("c97-page");
-    expect(root).toHaveAttribute("data-c97");
+    // Catalog97ToolShell wraps this route, so a second .c97-page scope here
+    // would nest one token scope inside another.
+    expect(root).not.toHaveClass("c97-page");
+    expect(root).not.toHaveAttribute("data-c97");
     expect(root).toHaveAttribute("data-c97-surface", "paper");
     expect(openingBand).toHaveAttribute("data-c97-surface", "paper");
   });

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ArrowRight } from "@/components/ui/ServerIcons";
 import { PROJECT_BUILD_NOTE_CONTEXT } from "@/components/projectBuildNoteContent";
 
 interface ProjectBuildNoteProps {
@@ -8,8 +7,8 @@ interface ProjectBuildNoteProps {
 }
 
 // The purpose/method prose lives in projectBuildNoteContent and is looked up
-// here (not passed from ConditionalLayout) so the whole aside — component and
-// prose — code-splits into one chunk that only build-note routes load.
+// here (not passed from Catalog97ToolShell) so the whole aside, component and
+// prose, code-splits into one chunk that only build-note routes load.
 export function ProjectBuildNote({ href, route }: ProjectBuildNoteProps) {
   const context = PROJECT_BUILD_NOTE_CONTEXT[route];
   const hasProjectContext = Boolean(context);
@@ -17,38 +16,49 @@ export function ProjectBuildNote({ href, route }: ProjectBuildNoteProps) {
   return (
     <aside
       aria-labelledby="project-build-note-title"
-      className="border-t border-[var(--home-rule)] bg-[var(--home-paper-alt)]"
+      className="c97-band"
+      data-c97-surface="bone"
     >
-      <div className="home-shell py-8 sm:py-10">
-        <p className="home-kicker mb-2">
-          {hasProjectContext ? "Project context" : "Build notes"}
-        </p>
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div className={hasProjectContext ? "max-w-3xl" : "max-w-2xl"}>
-            <h2
-              id="project-build-note-title"
-              className="mb-2 text-2xl font-semibold tracking-[-0.04em] text-[var(--home-ink)]"
-            >
-              {hasProjectContext ? "What I use it for" : "Why I built it this way"}
-            </h2>
+      <div
+        className="c97-shell"
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
+          gap: "var(--c97-sp-4)",
+          alignItems: "end",
+        }}
+      >
+        <div>
+          <p className="c97-kicker">
+            {hasProjectContext ? "Project context" : "Build notes"}
+          </p>
+          <h2
+            id="project-build-note-title"
+            className="c97-serif c97-h2"
+            style={{ marginTop: "var(--c97-sp-2)" }}
+          >
+            {hasProjectContext ? "What I use it for" : "Why I built it this way"}
+          </h2>
+          <div
+            className="c97-article"
+            style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
+          >
             {context ? (
-              <div className="space-y-3">
-                <p className="home-body mb-0">{context.purpose}</p>
-                <p className="home-body mb-0">{context.method}</p>
-              </div>
+              <>
+                <p>{context.purpose}</p>
+                <p>{context.method}</p>
+              </>
             ) : (
-              <p className="home-body mb-0">
-                The project write-up covers the product decision, the technical tradeoffs, and
-                what I would change after shipping it.
+              <p>
+                The project write-up covers the product decision, the technical
+                tradeoffs, and what I would change after shipping it.
               </p>
             )}
           </div>
-          <Link
-            href={href}
-            className="home-inline-link inline-flex min-h-[44px] items-center gap-2 self-start py-2 font-semibold sm:self-auto"
-          >
+        </div>
+        <div style={{ display: "flex", justifyContent: "flex-start" }}>
+          <Link href={href} className="c97-sectionlink">
             Read the build notes
-            <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </div>
       </div>

@@ -90,6 +90,14 @@
   --c97-chart-6: #2b211a;
 
   --c97-container: 1080px;
+  /*
+   * The running-prose column. The three measures below are for single
+   * paragraphs and stay frozen; a whole article also carries tables and code
+   * blocks beside its prose, and at the 54ch wide measure both were cramped.
+   * 720px is about 68 characters of the body face at 16px, which is where the
+   * writing detail, changelog, and case-study columns sit.
+   */
+  --c97-column: 720px;
   --c97-gutter: clamp(28px, 6vw, 96px);
   --c97-band-y: var(--c97-sp-5); /* @kind spacing */
   --c97-paper-base: #f1ebdf;
@@ -697,6 +705,13 @@ body:has(.c97-page) {
 
 .c97-lead {
   font-size: var(--c97-fs-lead);
+  /*
+   * globals.css gives every paragraph a 1.25em bottom margin and a 65ch cap.
+   * A standfirst sets its own measure and takes its spacing from the ladder,
+   * the same way .c97-prose and .c97-meta already do.
+   */
+  margin: 0;
+  max-inline-size: none;
 }
 
 /*
@@ -1275,6 +1290,339 @@ select.c97-field {
 .c97-panel {
   background: var(--c97-field);
   padding: var(--c97-sp-3);
+}
+
+/* --------------------------------------------------------------------------
+ * Running prose and page furniture
+ * ------------------------------------------------------------------------ */
+
+/*
+ * A column of injected article HTML: the writing body, a changelog entry, and
+ * the long sections of a case study. `.c97-prose` sets one paragraph; this
+ * sets the whole tree remark hands back, so a Markdown link, list, table, or
+ * code block lands in the palette rather than at the browser defaults.
+ *
+ * Vertical rhythm is the owl selector on the spacing ladder: step 2 between
+ * blocks, step 5 before an h2, step 4 before an h3. Headings are the serif at
+ * the h2 and h3 steps, the same two the page headings use, so an article never
+ * hand-rolls a size.
+ */
+.c97-article {
+  max-width: var(--c97-column);
+  font-size: var(--c97-fs-body);
+  line-height: var(--c97-lh-body);
+  color: var(--c97-ink);
+  text-wrap: pretty;
+}
+
+.c97-article p,
+.c97-article ul,
+.c97-article ol,
+.c97-article blockquote,
+.c97-article pre,
+.c97-article table,
+.c97-article figure,
+.c97-article hr {
+  margin: 0;
+}
+
+.c97-article > * + * {
+  margin-top: var(--c97-sp-2);
+}
+
+/* The column, not the 65ch paragraph cap globals.css applies to every p. */
+.c97-article p {
+  max-inline-size: none;
+}
+
+.c97-article h2,
+.c97-article h3,
+.c97-article h4,
+.c97-article h5,
+.c97-article h6 {
+  font-family: var(--c97-font-display);
+  font-weight: 400;
+  line-height: var(--c97-lh-tight);
+  color: var(--c97-ink);
+  margin: 0;
+}
+
+.c97-article > h2 {
+  margin-top: var(--c97-sp-5);
+  font-size: var(--c97-fs-h2);
+  letter-spacing: -0.01em;
+}
+
+.c97-article > h3 {
+  margin-top: var(--c97-sp-4);
+  font-size: var(--c97-fs-h3);
+}
+
+.c97-article > h4,
+.c97-article > h5,
+.c97-article > h6 {
+  margin-top: var(--c97-sp-3);
+  font-size: var(--c97-fs-lead);
+}
+
+.c97-article strong {
+  font-weight: 600;
+  color: var(--c97-ink);
+}
+
+.c97-article a {
+  color: var(--c97-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--c97-accent);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color 160ms ease;
+}
+
+.c97-article a:hover {
+  color: var(--c97-accent);
+}
+
+.c97-article ul,
+.c97-article ol {
+  padding-left: var(--c97-sp-3);
+}
+
+.c97-article ul {
+  list-style: disc;
+}
+
+.c97-article ol {
+  list-style: decimal;
+}
+
+.c97-article li + li {
+  margin-top: var(--c97-sp-1);
+}
+
+.c97-article li::marker {
+  color: var(--c97-label);
+}
+
+.c97-article :not(pre) > code {
+  font-family: var(--c97-font-mono);
+  font-size: 0.875em;
+  background: var(--c97-field);
+  color: var(--c97-ink);
+  padding: 0 0.35em;
+}
+
+/*
+ * Code blocks sit on the field tint rather than on inverted ink, so they stay
+ * calm in dark mode instead of flashing a light block into a dark article.
+ */
+.c97-article pre {
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-small);
+  line-height: var(--c97-lh-body);
+  background: var(--c97-field);
+  color: var(--c97-ink);
+  padding: var(--c97-sp-3);
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.c97-article pre code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* A pull quote: serif at the lead step behind a hairline of accent. */
+.c97-article blockquote {
+  border-left: 2px solid var(--c97-accent);
+  padding-left: var(--c97-sp-3);
+  font-family: var(--c97-font-display);
+  font-size: var(--c97-fs-lead);
+  line-height: var(--c97-lh-tight);
+  color: var(--c97-ink-2);
+  max-width: var(--c97-measure-wide);
+}
+
+.c97-article blockquote p + p {
+  margin-top: var(--c97-sp-2);
+}
+
+/* remark emits a bare <img> with no dimensions; keep the ratio and the column. */
+.c97-article img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.c97-article figcaption {
+  margin-top: var(--c97-sp-1);
+  font-size: var(--c97-fs-label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c97-label);
+}
+
+.c97-article hr {
+  border: 0;
+  height: 1px;
+  background: var(--c97-rule);
+  margin-block: var(--c97-sp-4);
+}
+
+/*
+ * A Markdown table scrolls inside the column rather than widening it. It is
+ * `.c97-table` without the sticky header, because an article table is short.
+ */
+.c97-article table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: var(--c97-fs-small);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+  scrollbar-width: thin;
+}
+
+.c97-article th,
+.c97-article td {
+  padding: var(--c97-sp-1) var(--c97-sp-2);
+  text-align: left;
+  border-bottom: 1px solid var(--c97-rule);
+  vertical-align: top;
+}
+
+.c97-article th {
+  font-size: var(--c97-fs-label);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c97-label);
+  white-space: nowrap;
+}
+
+/* A bulleted or numbered list written in JSX, outside an article tree. */
+.c97-list {
+  margin: 0;
+  padding-left: var(--c97-sp-3);
+  font-size: var(--c97-fs-body);
+  line-height: var(--c97-lh-body);
+  color: var(--c97-ink);
+  max-width: var(--c97-column);
+}
+
+.c97-list li + li {
+  margin-top: var(--c97-sp-1);
+}
+
+.c97-list li::marker {
+  color: var(--c97-label);
+}
+
+/*
+ * The breadcrumb trail at the top of a detail page: label-step uppercase
+ * with a slash between items, and the current page in ink. Each link inside
+ * is a `.c97-microlink`, which buys its own 44px target; the slash and the
+ * gap on either side of it keep neighbouring targets from overlapping.
+ */
+.c97-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--c97-sp-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--c97-fs-label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c97-label);
+}
+
+.c97-breadcrumb li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  min-height: 44px;
+}
+
+.c97-breadcrumb li + li::before {
+  content: "/";
+  color: var(--c97-label);
+}
+
+.c97-breadcrumb [aria-current="page"] {
+  color: var(--c97-ink);
+}
+
+/*
+ * A native disclosure whose summary says what it will do next. The marker is
+ * hidden so the label can carry the verb, and the two spans inside the
+ * summary swap on open: mark them data-when="closed" and data-when="open".
+ */
+.c97-disclosure > summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.c97-disclosure > summary::-webkit-details-marker {
+  display: none;
+}
+
+.c97-disclosure:not([open]) [data-when="open"],
+.c97-disclosure[open] [data-when="closed"] {
+  display: none;
+}
+
+/* A keyboard key, drawn like a chip in the mono face. */
+.c97-kbd {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 var(--c97-sp-1);
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-small);
+  background: var(--c97-field);
+  color: var(--c97-ink);
+  white-space: nowrap;
+}
+
+/*
+ * A loading placeholder. It pulses in place rather than shimmering across,
+ * and the reduced-motion rule at the end of this file stills it. Give each
+ * block its own height and width inline; the class only paints it.
+ */
+.c97-skeleton {
+  display: block;
+  background: color-mix(in srgb, var(--c97-ink) 10%, var(--c97-surface));
+  animation: c97-skeleton-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes c97-skeleton-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.55;
+  }
+}
+
+/* A horizontal meter: a rule-coloured track with an accent fill inside. */
+.c97-meter {
+  display: block;
+  width: 100%;
+  height: 4px;
+  background: var(--c97-rule);
+}
+
+.c97-meter > span {
+  display: block;
+  height: 100%;
+  background: var(--c97-accent);
 }
 
 /* --------------------------------------------------------------------------

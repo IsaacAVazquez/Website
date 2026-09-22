@@ -40,3 +40,7 @@ Still open and not this route's code: the site footer's "Now" link measures 35x4
 ## Commands worth running
 
 No full critique has scored this surface yet, so `critique` is the natural next evaluate step if it gets real investment. Skip `audit` for now, since the findings above are closed and re-running it would only re-derive them. The bundled `detect.mjs` returns `[]` on this route's files; that is the Tailwind blind spot rather than a clean result, so do not read it as a pass.
+
+## Status, 2026-09-22
+
+This route moved off the bridge. It is composed from Catalog 97 bands inside `Catalog97ToolShell` and reads `--c97-*` directly, so the paragraphs above that describe `--home-*` names, hover-lift cards, radii, or the two-world header describe the state before this date. The contrast figures still need re-measuring against the surfaces the page now declares.

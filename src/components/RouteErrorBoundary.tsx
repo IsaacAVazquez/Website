@@ -10,35 +10,46 @@ interface Props {
   surfaceName?: string;
 }
 
+/**
+ * The shared error state, drawn as one paper band in the Catalog 97 language.
+ *
+ * It renders no shell of its own. Inside a route, `Catalog97ToolShell` already
+ * supplies the header, the `main`, and the footer; at the global boundary,
+ * `src/app/error.tsx` decides whether to wrap it in `Catalog97Shell`.
+ */
 export function RouteErrorBoundary({ error, reset, surfaceName }: Props) {
   useEffect(() => {
     logger.error(`${surfaceName ?? "Route"} render error`, error);
   }, [error, surfaceName]);
 
   return (
-    <section className="home-page min-h-screen">
-      <div className="home-shell home-section">
-        <div className="home-card mx-auto max-w-2xl p-8">
-          <p className="home-kicker mb-2">Something went wrong</p>
-          <h1 className="text-2xl font-semibold text-[var(--home-ink)]">
+    <section className="c97-band c97-band-tall" data-c97-surface="paper">
+      <div className="c97-shell">
+        <div
+          style={{
+            display: "grid",
+            gap: "var(--c97-sp-3)",
+            maxWidth: "var(--c97-column)",
+          }}
+        >
+          <p className="c97-kicker">Something went wrong</p>
+          <h1 className="c97-display">
             {surfaceName ? `Couldn't load ${surfaceName}.` : "Couldn't load this page."}
           </h1>
-          <p className="mt-3 text-[var(--home-ink-muted)]">
-            The page hit an unexpected error. Most failures clear up on a retry —
-            if this keeps happening, the underlying data source may be down.
+          <p className="c97-prose" style={{ color: "var(--c97-ink-2)" }}>
+            The page hit an unexpected error. Most failures clear up on a retry.
+            If this keeps happening, the underlying data source may be down.
           </p>
           {error.digest ? (
-            <p className="mt-3 font-mono text-xs text-[var(--home-ink-muted)]">
-              Reference: {error.digest}
+            <p className="c97-meta">
+              <span className="c97-mono">Reference: {error.digest}</span>
             </p>
           ) : null}
-          <button
-            type="button"
-            onClick={reset}
-            className="mt-6 inline-flex items-center gap-2 rounded-full bg-[var(--home-ink)] px-5 py-2.5 text-sm font-semibold text-[var(--home-paper)] transition hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--home-signal)]"
-          >
-            Try again
-          </button>
+          <div>
+            <button type="button" onClick={reset} className="c97-btn">
+              Try again
+            </button>
+          </div>
         </div>
       </div>
     </section>

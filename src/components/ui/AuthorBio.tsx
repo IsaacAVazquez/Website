@@ -1,7 +1,4 @@
-"use client";
-
-import { Mail } from "lucide-react";
-import { BrandGithub, BrandLinkedin } from "@/components/ui/ServerIcons";
+import { BrandGithub, BrandLinkedin, Mail } from "@/components/ui/ServerIcons";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -18,14 +15,121 @@ export interface AuthorBioProps {
     email?: string;
     website?: string;
   };
-  /** `light` is the reading-discipline variant for the end of an article:
-   * a circular avatar, one paragraph, no expertise grid, minimal social. */
+  /**
+   * `light` is the end-of-article block: portrait, one paragraph, and the
+   * three ways to reach me. `inline` is the byline-sized version for a header.
+   * `full` adds the job title and the expertise chips; `compact` is `full`
+   * without the chips.
+   */
   variant?: "full" | "compact" | "inline" | "light";
   showImage?: boolean;
   showSocial?: boolean;
   className?: string;
 }
 
+/*
+ * The portrait sits on a square stone field with the 35mm treatment, the same
+ * slot every other photograph on the site uses. Catalog 97 draws no circles or
+ * rounded frames, so the avatar is a small square.
+ */
+function Portrait({ src, alt, size }: { src: string; alt: string; size: number }) {
+  return (
+    <div
+      data-c97-surface="stone"
+      className="c97-slot"
+      style={{ width: size, height: size, flexShrink: 0 }}
+    >
+      <Image
+        className="c97-slot-img"
+        src={src}
+        alt={alt}
+        fill
+        sizes={`${size}px`}
+        itemProp="image"
+      />
+    </div>
+  );
+}
+
+function SocialLinks({
+  social,
+}: {
+  social: NonNullable<AuthorBioProps["social"]>;
+}) {
+  const linkStyle = {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "var(--c97-sp-1)",
+    color: "var(--c97-ink)",
+  } as const;
+
+  return (
+    <ul
+      aria-label="Elsewhere"
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        columnGap: "var(--c97-sp-3)",
+        rowGap: "var(--c97-sp-2)",
+        listStyle: "none",
+        margin: 0,
+        padding: 0,
+      }}
+    >
+      {social.linkedin ? (
+        <li>
+          <Link
+            href={social.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="c97-microlink"
+            style={linkStyle}
+            itemProp="sameAs"
+          >
+            <BrandLinkedin size={16} aria-hidden="true" />
+            LinkedIn
+          </Link>
+        </li>
+      ) : null}
+      {social.github ? (
+        <li>
+          <Link
+            href={social.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="c97-microlink"
+            style={linkStyle}
+            itemProp="sameAs"
+          >
+            <BrandGithub size={16} aria-hidden="true" />
+            GitHub
+          </Link>
+        </li>
+      ) : null}
+      {social.email ? (
+        <li>
+          <Link
+            href={social.email}
+            className="c97-microlink"
+            style={linkStyle}
+            itemProp="email"
+          >
+            <Mail size={16} aria-hidden="true" />
+            Email
+          </Link>
+        </li>
+      ) : null}
+    </ul>
+  );
+}
+
+/**
+ * The author block, in the Catalog 97 language.
+ *
+ * It renders no heading of its own. The name is a paragraph at the h3 step,
+ * because the block can land straight after an article's h1 when a post has
+ * no related pieces, and an h3 there would skip a level.
+ */
 export function AuthorBio({
   name = "Isaac Vazquez",
   title = "UC Berkeley Haas MBA Candidate",
@@ -52,33 +156,17 @@ export function AuthorBio({
   if (variant === "inline") {
     return (
       <div
-        className={`flex items-center gap-3 ${className}`}
+        className={className}
+        style={{ display: "flex", alignItems: "center", gap: "var(--c97-sp-2)" }}
         itemScope
         itemType="https://schema.org/Person"
       >
-        {showImage && image && (
-          <Image
-            src={image}
-            alt={name}
-            width={48}
-            height={48}
-            className="rounded-full"
-            itemProp="image"
-          />
-        )}
+        {showImage && image ? <Portrait src={image} alt={name} size={44} /> : null}
         <div>
-          <p
-            className="font-semibold"
-            style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
-            itemProp="name"
-          >
+          <p className="c97-prose" style={{ fontWeight: 600 }} itemProp="name">
             {name}
           </p>
-          <p
-            className="text-sm"
-            style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
-            itemProp="jobTitle"
-          >
+          <p className="c97-kicker" itemProp="jobTitle">
             {title}
           </p>
         </div>
@@ -86,289 +174,71 @@ export function AuthorBio({
     );
   }
 
-  if (variant === "light") {
-    return (
-      <div
-        className={`home-card-static flex items-start gap-4 p-5 ${className}`}
-        style={{ maxWidth: "65ch" }}
-        itemScope
-        itemType="https://schema.org/Person"
-        itemProp="author"
-      >
-        {showImage && image && (
-          <Image
-            src={image}
-            alt={name}
-            width={56}
-            height={56}
-            className="flex-shrink-0 rounded-full"
-            style={{ border: "1px solid var(--home-rule)", objectFit: "cover", width: 56, height: 56 }}
-            itemProp="image"
-          />
-        )}
-        <div className="min-w-0 flex-1">
-          <h3
-            className="mb-1 font-semibold"
-            style={{ fontFamily: "var(--font-home-sans)", fontSize: "1.05rem", color: "var(--home-ink)" }}
-            itemProp="name"
-          >
-            {name}
-          </h3>
-          {bio && (
-            <p
-              className="mb-0 text-sm leading-relaxed"
-              style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
-              itemProp="description"
-            >
-              {bio}
-            </p>
-          )}
-          {showSocial && social && (
-            <div className="mt-3 flex items-center gap-3">
-              {social.linkedin && (
-                <Link
-                  href={social.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="transition-colors"
-                  style={{ color: "var(--home-ink-muted)" }}
-                  aria-label="LinkedIn"
-                  itemProp="sameAs"
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--home-ink)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--home-ink-muted)")}
-                >
-                  <BrandLinkedin className="h-4 w-4" />
-                </Link>
-              )}
-              {social.github && (
-                <Link
-                  href={social.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="transition-colors"
-                  style={{ color: "var(--home-ink-muted)" }}
-                  aria-label="GitHub"
-                  itemProp="sameAs"
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--home-ink)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--home-ink-muted)")}
-                >
-                  <BrandGithub className="h-4 w-4" />
-                </Link>
-              )}
-              {social.email && (
-                <Link
-                  href={social.email}
-                  className="transition-colors"
-                  style={{ color: "var(--home-ink-muted)" }}
-                  aria-label="Email"
-                  itemProp="email"
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--home-ink)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--home-ink-muted)")}
-                >
-                  <Mail className="h-4 w-4" />
-                </Link>
-              )}
-            </div>
-          )}
-        </div>
-      </div>
-    );
-  }
+  const showTitle = variant !== "light";
+  const showExpertise = variant === "full" && expertise.length > 0;
 
-  if (variant === "compact") {
-    return (
-      <div
-        className={`home-card home-project-card ${className}`}
-        itemScope
-        itemType="https://schema.org/Person"
-        itemProp="author"
-      >
-        <div className="flex items-start gap-4 mb-4">
-          {showImage && image && (
-            <Image
-              src={image}
-              alt={name}
-              width={72}
-              height={72}
-              className="rounded-[var(--radius-xl)] flex-shrink-0"
-              itemProp="image"
-            />
-          )}
-          <div className="flex-1">
-            <h3
-              className="font-bold mb-0.5"
-              style={{ fontFamily: "var(--font-home-sans)", fontSize: "1.1rem", color: "var(--home-ink)" }}
-              itemProp="name"
-            >
-              {name}
-            </h3>
-            <p
-              className="text-sm"
-              style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
-              itemProp="jobTitle"
-            >
-              {title}
-            </p>
-          </div>
-        </div>
-
-        {bio && (
-          <p
-            className="text-sm leading-relaxed mb-3"
-            style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
-            itemProp="description"
-          >
-            {bio}
-          </p>
-        )}
-
-        {showSocial && social && (
-          <div className="flex items-center gap-3 pt-3" style={{ borderTop: "1px solid var(--home-rule)" }}>
-            {social.linkedin && (
-              <Link href={social.linkedin} target="_blank" rel="noopener noreferrer"
-                className="transition-colors" style={{ color: "var(--home-ink-muted)" }}
-                aria-label="LinkedIn" itemProp="sameAs"
-                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--home-ink)")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--home-ink-muted)")}
-              >
-                <BrandLinkedin className="w-5 h-5" />
-              </Link>
-            )}
-            {social.github && (
-              <Link href={social.github} target="_blank" rel="noopener noreferrer"
-                className="transition-colors" style={{ color: "var(--home-ink-muted)" }}
-                aria-label="GitHub" itemProp="sameAs"
-                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--home-ink)")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--home-ink-muted)")}
-              >
-                <BrandGithub className="w-5 h-5" />
-              </Link>
-            )}
-            {social.email && (
-              <Link href={social.email}
-                className="transition-colors" style={{ color: "var(--home-ink-muted)" }}
-                aria-label="Email" itemProp="email"
-                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--home-ink)")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--home-ink-muted)")}
-              >
-                <Mail className="w-5 h-5" />
-              </Link>
-            )}
-          </div>
-        )}
-      </div>
-    );
-  }
-
-  // Full variant
   return (
     <div
-      className={`home-card home-project-card ${className}`}
+      className={className}
+      style={{
+        display: "flex",
+        alignItems: "flex-start",
+        gap: "var(--c97-sp-3)",
+        maxWidth: "var(--c97-column)",
+      }}
       itemScope
       itemType="https://schema.org/Person"
       itemProp="author"
     >
-      <div className="flex flex-col sm:flex-row items-start gap-6">
-        {showImage && image && (
-          <div className="flex-shrink-0">
-            <Image
-              src={image}
-              alt={name}
-              width={100}
-              height={100}
-              className="rounded-[var(--radius-xl)]"
-              itemProp="image"
-            />
-          </div>
-        )}
-
-        <div className="flex-1">
-          <h3
-            className="font-bold mb-0.5"
-            style={{
-              fontFamily: "var(--font-home-sans)",
-              fontSize: "1.15rem",
-              letterSpacing: "-0.02em",
-              color: "var(--home-ink)",
-            }}
+      {showImage && image ? (
+        <Portrait src={image} alt={name} size={variant === "light" ? 64 : 96} />
+      ) : null}
+      <div style={{ minWidth: 0, flex: 1, display: "grid", gap: "var(--c97-sp-2)" }}>
+        <div>
+          <p className="c97-kicker">Written by</p>
+          <p
+            className="c97-serif c97-h3"
+            style={{ marginTop: "var(--c97-sp-1)" }}
             itemProp="name"
           >
             {name}
-          </h3>
-          <p
-            className="mb-4 text-sm"
-            style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
-            itemProp="jobTitle"
-          >
-            {title}
           </p>
-
-          {bio && (
-            <p
-              className="text-sm leading-relaxed mb-4"
-              style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)", lineHeight: 1.65 }}
-              itemProp="description"
-            >
-              {bio}
+          {showTitle ? (
+            <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-1)" }} itemProp="jobTitle">
+              {title}
             </p>
-          )}
-
-          {expertise && expertise.length > 0 && (
-            <div className="mb-4">
-              <p className="home-kicker mb-2">Expertise</p>
-              <div className="flex flex-wrap gap-2">
-                {expertise.map((skill, index) => (
-                  <span key={index} className="resume-chip" itemProp="knowsAbout">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {showSocial && social && (
-            <div className="flex items-center gap-4 pt-4" style={{ borderTop: "1px solid var(--home-rule)" }}>
-              {social.linkedin && (
-                <Link href={social.linkedin} target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm transition-colors"
-                  style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
-                  aria-label="LinkedIn" itemProp="sameAs"
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--home-ink)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--home-ink-muted)")}
-                >
-                  <BrandLinkedin className="w-4 h-4" />
-                  LinkedIn
-                </Link>
-              )}
-              {social.github && (
-                <Link href={social.github} target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm transition-colors"
-                  style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
-                  aria-label="GitHub" itemProp="sameAs"
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--home-ink)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--home-ink-muted)")}
-                >
-                  <BrandGithub className="w-4 h-4" />
-                  GitHub
-                </Link>
-              )}
-              {social.email && (
-                <Link href={social.email}
-                  className="flex items-center gap-2 text-sm transition-colors"
-                  style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
-                  aria-label="Email" itemProp="email"
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--home-ink)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--home-ink-muted)")}
-                >
-                  <Mail className="w-4 h-4" />
-                  Email
-                </Link>
-              )}
-            </div>
-          )}
+          ) : null}
         </div>
+        {bio ? (
+          <p
+            className="c97-prose"
+            style={{ color: "var(--c97-ink-2)", maxWidth: "none" }}
+            itemProp="description"
+          >
+            {bio}
+          </p>
+        ) : null}
+        {showExpertise ? (
+          <ul
+            aria-label="Expertise"
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "var(--c97-sp-1)",
+              listStyle: "none",
+              margin: 0,
+              padding: 0,
+            }}
+          >
+            {expertise.map((skill) => (
+              <li key={skill} className="c97-chip" itemProp="knowsAbout">
+                {skill}
+              </li>
+            ))}
+          </ul>
+        ) : null}
+        {showSocial && social ? <SocialLinks social={social} /> : null}
       </div>
-
     </div>
   );
 }

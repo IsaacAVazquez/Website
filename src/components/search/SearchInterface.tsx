@@ -61,18 +61,6 @@ function readSeededSearchState(fallbacks: Pick<SearchState, "query" | "type" | "
   };
 }
 
-const sectionTitleStyle = {
-  fontFamily: "var(--font-home-sans)",
-  color: "var(--home-ink)",
-  fontWeight: 600,
-  letterSpacing: "-0.02em",
-};
-
-const bodyStyle = {
-  fontFamily: "var(--font-home-sans)",
-  color: "var(--home-ink-muted)",
-};
-
 export function SearchInterface({
   initialQuery = "",
   initialType = "all",
@@ -282,70 +270,88 @@ export function SearchInterface({
   const filterActive = showFilters || searchState.type !== "all" || searchState.category !== "all";
 
   return (
-    <div className="space-y-8">
+    <div style={{ display: "grid", gap: "var(--c97-sp-4)" }}>
       {/* Search Bar */}
-      <article className="home-card p-6 sm:p-7 space-y-4">
-        <div className="relative">
-          <div className="flex items-center gap-3">
-            <div className="relative flex-1">
-              <Search
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5"
-                style={{ color: "var(--home-ink-muted)" }}
-                aria-hidden="true"
-              />
-              <input
-                ref={inputRef}
-                type="text"
-                value={searchState.query}
-                onChange={(e) => handleQueryChange(e.target.value)}
-                placeholder="Search writing, projects, and tools…"
-                aria-label="Search content"
-                aria-controls="search-results"
-                className="w-full min-h-[44px] pl-12 pr-12 py-3 rounded-[var(--radius-xl)] transition-colors"
+      <div style={{ display: "grid", gap: "var(--c97-sp-2)" }}>
+        <label className="c97-kicker" htmlFor="site-search-input">
+          Search content
+        </label>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "center",
+            gap: "var(--c97-sp-2)",
+          }}
+        >
+          <div
+            style={{
+              position: "relative",
+              flex: "1 1 16rem",
+              minWidth: 0,
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <Search
+              className="h-5 w-5"
+              style={{
+                position: "absolute",
+                left: "var(--c97-sp-2)",
+                color: "var(--c97-label)",
+                pointerEvents: "none",
+              }}
+              aria-hidden="true"
+            />
+            <input
+              ref={inputRef}
+              id="site-search-input"
+              type="text"
+              value={searchState.query}
+              onChange={(e) => handleQueryChange(e.target.value)}
+              placeholder="Search writing, projects, and tools…"
+              aria-label="Search content"
+              aria-controls="search-results"
+              className="c97-field"
+              style={{
+                paddingLeft: "calc(var(--c97-sp-2) * 2 + 1.25rem)",
+                paddingRight: searchState.query ? "calc(var(--c97-sp-2) + 48px)" : undefined,
+              }}
+            />
+            {searchState.query && (
+              <button
+                type="button"
+                onClick={clearSearch}
+                aria-label="Clear search"
+                className="c97-btn-ghost"
                 style={{
-                  fontFamily: "var(--font-home-sans)",
-                  background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
-                  border: "1px solid var(--home-rule)",
-                  color: "var(--home-ink)",
+                  position: "absolute",
+                  right: 0,
+                  minWidth: 48,
+                  justifyContent: "center",
+                  textDecoration: "none",
                 }}
-              />
-              {searchState.query && (
-                <button
-                  type="button"
-                  onClick={clearSearch}
-                  aria-label="Clear search"
-                  className="absolute right-2 top-1/2 -translate-y-1/2 flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md transition-colors"
-                  style={{ color: "var(--home-ink-muted)" }}
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              )}
-            </div>
-
-            <button
-              type="button"
-              onClick={() => setShowFilters(!showFilters)}
-              aria-label={showFilters ? "Hide filters" : "Show filters"}
-              aria-expanded={showFilters}
-              aria-controls="search-filters"
-              className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-[var(--radius-xl)] p-3 transition-colors"
-              style={
-                filterActive
-                  ? {
-                      background: "var(--home-ink)",
-                      color: "var(--home-paper)",
-                      border: "1px solid var(--home-ink)",
-                    }
-                  : {
-                      background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
-                      color: "var(--home-ink-muted)",
-                      border: "1px solid var(--home-rule)",
-                    }
-              }
-            >
-              <Funnel className="w-5 h-5" />
-            </button>
+              >
+                <X className="h-5 w-5" aria-hidden="true" />
+              </button>
+            )}
           </div>
+
+          <button
+            type="button"
+            onClick={() => setShowFilters(!showFilters)}
+            aria-label={showFilters ? "Hide filters" : "Show filters"}
+            aria-expanded={showFilters}
+            aria-controls="search-filters"
+            className="c97-btn-ghost"
+            style={{
+              gap: "var(--c97-sp-1)",
+              color: filterActive ? "var(--c97-ink)" : undefined,
+            }}
+          >
+            <Funnel className="h-4 w-4" aria-hidden="true" />
+            {showFilters ? "Hide filters" : "Show filters"}
+          </button>
         </div>
 
         {/* Filters */}
@@ -363,47 +369,27 @@ export function SearchInterface({
 
         {/* Active Filters Display */}
         {(searchState.type !== 'all' || searchState.category !== 'all') && (
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="text-sm" style={bodyStyle}>
-              Active filters:
-            </span>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "center",
+              gap: "var(--c97-sp-1)",
+            }}
+          >
+            <span className="c97-kicker">Active filters:</span>
             {searchState.type !== 'all' && (
-              <span
-                className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
-                style={{
-                  fontFamily: "var(--font-home-sans)",
-                  background: "var(--home-ink)",
-                  color: "var(--home-paper)",
-                  letterSpacing: "0.02em",
-                }}
-              >
-                Type: {searchState.type}
-              </span>
+              <span className="c97-chip">Type: {searchState.type}</span>
             )}
             {searchState.category !== 'all' && (
-              <span
-                className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
-                style={{
-                  fontFamily: "var(--font-home-sans)",
-                  background: "var(--home-ink)",
-                  color: "var(--home-paper)",
-                  letterSpacing: "0.02em",
-                }}
-              >
-                Category: {searchState.category}
-              </span>
+              <span className="c97-chip">Category: {searchState.category}</span>
             )}
-            <button
-              type="button"
-              onClick={clearFilters}
-              className="text-sm underline underline-offset-2"
-              style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-signal)" }}
-            >
+            <button type="button" onClick={clearFilters} className="c97-btn-ghost">
               Clear filters
             </button>
           </div>
         )}
-      </article>
+      </div>
 
       {/* Politely announce loading / result-count / empty states to assistive tech. */}
       <div role="status" aria-live="polite" aria-atomic="true" className="sr-only">
@@ -430,43 +416,41 @@ export function SearchInterface({
 
       {/* Search Tips */}
       {!searchState.hasSearched && !searchState.query && (
-        <article className="home-card p-6 sm:p-8 space-y-5">
-          <h2 className="text-xl mb-0" style={sectionTitleStyle}>
-            Search tips
-          </h2>
-          <div className="grid gap-6 md:grid-cols-2">
-            <div className="space-y-2">
-              <p className="mb-0 text-sm" style={{ ...sectionTitleStyle, fontSize: "0.95rem" }}>
-                What you can search for
-              </p>
-              <ul className="mb-0 space-y-1 text-sm leading-6" style={bodyStyle}>
-                <li>• Writing on product strategy and analytics</li>
-                <li>• Case studies and project details</li>
-                <li>• Fantasy football rankings and analysis</li>
-                <li>• Investment and fintech tools</li>
-                <li>• Sports dashboards</li>
+        <div className="c97-panel">
+          <p className="c97-kicker">Search tips</p>
+          <div className="c97-columns" style={{ marginTop: "var(--c97-sp-3)" }}>
+            <div>
+              <h2 className="c97-serif c97-h3">What you can search for</h2>
+              <ul className="c97-list" style={{ marginTop: "var(--c97-sp-2)" }}>
+                <li>Writing on product strategy and analytics</li>
+                <li>Case studies and project details</li>
+                <li>Fantasy football rankings and analysis</li>
+                <li>Investment and fintech tools</li>
+                <li>Sports dashboards</li>
               </ul>
             </div>
-            <div className="space-y-2">
-              <p className="mb-0 text-sm" style={{ ...sectionTitleStyle, fontSize: "0.95rem" }}>
-                Search examples
-              </p>
-              <div className="space-y-1.5">
+            <div>
+              <h2 className="c97-serif c97-h3">Search examples</h2>
+              <ul
+                className="c97-list"
+                style={{ marginTop: "var(--c97-sp-2)", listStyle: "none", paddingLeft: 0 }}
+              >
                 {["product strategy", "fantasy football", "investment research"].map((example) => (
-                  <button
-                    key={example}
-                    type="button"
-                    onClick={() => handleQueryChange(example)}
-                    className="block text-left text-sm underline underline-offset-2"
-                    style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-signal)" }}
-                  >
-                    &ldquo;{example}&rdquo;
-                  </button>
+                  <li key={example}>
+                    <button
+                      type="button"
+                      onClick={() => handleQueryChange(example)}
+                      className="c97-btn-ghost"
+                      style={{ textTransform: "none", letterSpacing: 0, paddingLeft: 0 }}
+                    >
+                      &ldquo;{example}&rdquo;
+                    </button>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           </div>
-        </article>
+        </div>
       )}
     </div>
   );

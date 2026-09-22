@@ -88,240 +88,348 @@ export default function AgentBuildIndexPage() {
         }}
       />
 
-      <section className="home-page min-h-screen bg-[var(--home-paper)] text-[var(--home-ink)]">
-        <div className="home-shell home-shell-wide home-section space-y-8 sm:space-y-10">
-          <header className="grid gap-7 border-b border-[var(--home-rule)] pb-8 lg:grid-cols-[minmax(0,1.25fr)_minmax(18rem,0.75fr)] lg:items-end">
-            <div className="space-y-4">
-              <p className="home-kicker mb-0">Open source signal</p>
-              <h1 className="max-w-[15ch] text-4xl font-semibold leading-[0.96] tracking-[-0.045em] sm:text-6xl">
-                Agent Build Index
-              </h1>
-              <p className="max-w-[62ch] text-base leading-7 text-[var(--home-ink-muted)] sm:text-lg">
-                I track the public agent repositories gaining attention on
-                GitHub because the movement is more useful than another market
-                map. This is a weekly read of measured star changes, with the
-                source and gaps left visible.
-              </p>
-              <div className="flex flex-wrap gap-2 pt-1">
-                <Link
-                  href="/github-trending-pulse?view=topic&segment=topic-agents"
-                  className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-[var(--home-ink)] bg-[var(--home-ink)] px-5 text-sm font-semibold text-[var(--home-paper)] transition-[background-color,border-color,color] hover:border-[var(--home-signal)] hover:bg-[var(--home-signal)] focus-visible:border-[var(--home-signal)] focus-visible:bg-[var(--home-signal)]"
-                >
-                  Explore the full agent table
-                </Link>
-                <Link
-                  href="/ai-dev-tools"
-                  className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-5 text-sm font-semibold text-[var(--home-ink)] transition-[background-color,border-color] hover:border-[var(--home-ink)] hover:bg-[var(--home-paper-raised)] focus-visible:border-[var(--home-ink)] focus-visible:bg-[var(--home-paper-raised)]"
-                >
-                  Compare AI dev tools
-                </Link>
-              </div>
+      {/* Hero */}
+      <section className="c97-band" data-c97-surface="paper">
+        <div
+          className="c97-shell"
+          style={{
+            display: "grid",
+            gridTemplateColumns:
+              "repeat(auto-fit, minmax(min(100%, 18rem), 1fr))",
+            gap: "var(--c97-sp-5)",
+            alignItems: "end",
+          }}
+        >
+          <div>
+            <p className="c97-kicker">Open source signal</p>
+            <h1 className="c97-display" style={{ marginTop: "var(--c97-sp-2)" }}>
+              Agent Build Index
+            </h1>
+            <p className="c97-lead" style={{ marginTop: "var(--c97-sp-3)" }}>
+              I track the public agent repositories gaining attention on
+              GitHub because the movement is more useful than another market
+              map. This is a weekly read of measured star changes, with the
+              source and gaps left visible.
+            </p>
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "var(--c97-sp-2)",
+                marginTop: "var(--c97-sp-4)",
+              }}
+            >
+              <Link
+                href="/github-trending-pulse?view=topic&segment=topic-agents"
+                className="c97-btn"
+              >
+                Explore the full agent table
+              </Link>
+              <Link href="/ai-dev-tools" className="c97-btn-ghost">
+                Compare AI dev tools
+              </Link>
             </div>
+          </div>
 
-            <div className="grid grid-cols-2 border border-[var(--home-rule)] bg-[var(--home-paper-alt)]">
-              <div className="border-b border-r border-[var(--home-rule)] p-4 sm:p-5">
-                <p className="home-kicker mb-2">{index.windowDays}d movement</p>
-                <p className="text-2xl font-semibold tabular-nums sm:text-3xl">
-                  {movementLabel(agentSegment?.weeklyStars ?? 0)}
-                </p>
-              </div>
-              <div className="border-b border-[var(--home-rule)] p-4 sm:p-5">
-                <p className="home-kicker mb-2">Repos</p>
-                <p className="text-2xl font-semibold tabular-nums sm:text-3xl">
-                  {index.repositories.length}
-                </p>
-              </div>
-              <div className="border-r border-[var(--home-rule)] p-4 sm:p-5">
-                <p className="home-kicker mb-2">Total stars</p>
-                <p className="text-2xl font-semibold tabular-nums sm:text-3xl">
-                  {formatGitHubCompactNumber(agentSegment?.totalStars ?? 0)}
-                </p>
-              </div>
-              <div className="p-4 sm:p-5">
-                <p className="home-kicker mb-2">Measured</p>
-                <p className="text-2xl font-semibold tabular-nums sm:text-3xl">
-                  {index.measuredRepositoryCount}/{index.repositories.length}
-                </p>
-              </div>
-            </div>
-          </header>
-
-          <section
-            className="grid gap-5 lg:grid-cols-[minmax(0,1.35fr)_minmax(19rem,0.65fr)]"
-            aria-labelledby="agent-index-ranking-heading"
+          <div
+            className="c97-panel"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+              gap: "var(--c97-sp-3)",
+            }}
           >
-            <div className="home-card overflow-hidden">
-              <div className="border-b border-[var(--home-rule)] px-5 py-5 sm:px-6">
-                <p className="home-kicker mb-1">Current ranking</p>
-                <h2
-                  id="agent-index-ranking-heading"
-                  className="text-2xl font-semibold tracking-[-0.025em]"
-                >
-                  The repositories moving fastest this week
-                </h2>
-                <p className="mt-2 max-w-[66ch] text-sm leading-6 text-[var(--home-ink-muted)]">
-                  The weekly figure uses a persisted baseline rather than a
-                  single scrape. A new repository stays labeled as a partial
-                  or new baseline until enough history exists.
-                </p>
-                {index.repositories.length > rankedRepositories.length ? (
-                  <p className="mt-2 text-sm leading-6 text-[var(--home-ink-muted)]">
-                    Showing the top {rankedRepositories.length} of{" "}
-                    {index.repositories.length} tracked repositories.
-                  </p>
-                ) : null}
-              </div>
+            <div className="c97-stat">
+              <p className="c97-stat-label">{index.windowDays}d movement</p>
+              <p className="c97-stat-value c97-tabular">
+                {movementLabel(agentSegment?.weeklyStars ?? 0)}
+              </p>
+            </div>
+            <div className="c97-stat">
+              <p className="c97-stat-label">Repos</p>
+              <p className="c97-stat-value c97-tabular">
+                {index.repositories.length}
+              </p>
+            </div>
+            <div className="c97-stat">
+              <p className="c97-stat-label">Total stars</p>
+              <p className="c97-stat-value c97-tabular">
+                {formatGitHubCompactNumber(agentSegment?.totalStars ?? 0)}
+              </p>
+            </div>
+            <div className="c97-stat">
+              <p className="c97-stat-label">Measured</p>
+              <p className="c97-stat-value c97-tabular">
+                {index.measuredRepositoryCount}/{index.repositories.length}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-              {index.repositories.length > 0 ? (
-                <ol className="divide-y divide-[var(--home-rule)]">
-                  {rankedRepositories.map((repository, position) => (
-                    <li
-                      key={repository.id}
-                      className="grid gap-3 px-5 py-4 sm:grid-cols-[2.25rem_minmax(0,1fr)_auto] sm:items-center sm:px-6"
+      {/* Ranking */}
+      <section
+        className="c97-band"
+        data-c97-surface="bone"
+        aria-labelledby="agent-index-ranking-heading"
+      >
+        <div className="c97-shell">
+          <p className="c97-kicker">Current ranking</p>
+          <h2
+            id="agent-index-ranking-heading"
+            className="c97-serif c97-h2"
+            style={{ marginTop: "var(--c97-sp-2)" }}
+          >
+            The repositories moving fastest this week
+          </h2>
+          <p
+            className="c97-prose"
+            style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
+          >
+            The weekly figure uses a persisted baseline rather than a
+            single scrape. A new repository stays labeled as a partial
+            or new baseline until enough history exists.
+          </p>
+          {index.repositories.length > rankedRepositories.length ? (
+            <p
+              className="c97-prose"
+              style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}
+            >
+              Showing the top {rankedRepositories.length} of{" "}
+              {index.repositories.length} tracked repositories.
+            </p>
+          ) : null}
+
+          {index.repositories.length > 0 ? (
+            <ol
+              style={{
+                listStyle: "none",
+                margin: 0,
+                padding: 0,
+                marginTop: "var(--c97-sp-4)",
+              }}
+            >
+              {rankedRepositories.map((repository, position) => (
+                <li
+                  key={repository.id}
+                  className="c97-row c97-row-numbered c97-row-stack-sm"
+                  style={{
+                    borderTop: "1px solid var(--c97-rule)",
+                    paddingBlock: "var(--c97-sp-3)",
+                  }}
+                >
+                  <span
+                    className="c97-mono"
+                    style={{
+                      fontSize: "var(--c97-fs-small)",
+                      color: "var(--c97-label)",
+                    }}
+                  >
+                    {(position + 1).toString().padStart(2, "0")}
+                  </span>
+                  <div style={{ minWidth: 0 }}>
+                    <h3 className="c97-serif c97-h3">
+                      <a
+                        href={repository.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="c97-link"
+                        style={{
+                          display: "inline-block",
+                          minHeight: 44,
+                          textDecorationColor: "var(--c97-rule)",
+                        }}
+                      >
+                        {repository.fullName}
+                        <span className="sr-only"> (opens on GitHub in a new tab)</span>
+                      </a>
+                    </h3>
+                    <p
+                      className="c97-prose line-clamp-2"
+                      style={{
+                        marginTop: "var(--c97-sp-1)",
+                        color: "var(--c97-ink-2)",
+                      }}
                     >
-                      <span className="font-mono text-sm tabular-nums text-[var(--home-ink-muted)]">
-                        {(position + 1).toString().padStart(2, "0")}
+                      {repository.description || "No description published."}
+                    </p>
+                  </div>
+                  <div
+                    className="c97-stat"
+                    style={{ gap: 0, justifyItems: "end", textAlign: "end" }}
+                  >
+                    <span
+                      className="c97-mono"
+                      style={{
+                        fontSize: "var(--c97-fs-lead)",
+                        lineHeight: "var(--c97-lh-tight)",
+                        color: "var(--c97-accent)",
+                      }}
+                    >
+                      {movementLabel(repository.weeklyStars)}
+                    </span>
+                    <span className="c97-kicker">
+                      {repository.weeklyStarsStatus === "measured"
+                        ? `${index.windowDays}d measured`
+                        : repository.weeklyStarsStatus === "partial"
+                          ? "Partial window"
+                          : "New baseline"}
+                    </span>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          ) : (
+            <p
+              className="c97-prose"
+              style={{ marginTop: "var(--c97-sp-4)", color: "var(--c97-ink-2)" }}
+            >
+              The agent segment is waiting on its next successful snapshot.
+            </p>
+          )}
+        </div>
+      </section>
+
+      {/* Snapshot context */}
+      <section className="c97-band" data-c97-surface="paper">
+        <aside className="c97-shell c97-columns" aria-label="Snapshot context">
+          <section aria-labelledby="topic-movement-heading">
+            <p className="c97-kicker">Topic comparison</p>
+            <h2
+              id="topic-movement-heading"
+              className="c97-serif c97-h3"
+              style={{ marginTop: "var(--c97-sp-2)" }}
+            >
+              Where the tracked attention sits
+            </h2>
+            <div
+              style={{
+                display: "grid",
+                gap: "var(--c97-sp-2)",
+                marginTop: "var(--c97-sp-3)",
+              }}
+            >
+              {index.topicSegments.map((topic) => {
+                const width = Math.max(
+                  3,
+                  Math.round(
+                    (topic.weeklyStars / maxTopicMovement) * 100
+                  )
+                );
+                return (
+                  <div key={topic.key}>
+                    <p
+                      className="c97-meta"
+                      style={{
+                        justifyContent: "space-between",
+                        color: "var(--c97-ink)",
+                        marginBottom: "var(--c97-sp-1)",
+                      }}
+                    >
+                      <span>{topic.label}</span>
+                      <span className="c97-mono" style={{ color: "var(--c97-label)" }}>
+                        {movementLabel(topic.weeklyStars)}
                       </span>
-                      <div className="min-w-0">
-                        <a
-                          href={repository.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex min-h-[44px] items-center font-semibold text-[var(--home-ink)] underline decoration-[var(--home-rule)] underline-offset-4 transition-[color,decoration-color] hover:text-[var(--home-signal)] hover:decoration-[var(--home-signal)] focus-visible:text-[var(--home-signal)]"
-                        >
-                          {repository.fullName}
-                          <span className="sr-only"> (opens on GitHub in a new tab)</span>
-                        </a>
-                        <p className="line-clamp-2 text-sm leading-6 text-[var(--home-ink-muted)]">
-                          {repository.description || "No description published."}
-                        </p>
-                      </div>
-                      <div className="flex items-center gap-3 sm:flex-col sm:items-end sm:gap-0.5">
-                        <span className="font-mono text-sm font-semibold tabular-nums text-[var(--home-signal)]">
-                          {movementLabel(repository.weeklyStars)}
-                        </span>
-                        <span className="text-xs text-[var(--home-ink-muted)]">
-                          {repository.weeklyStarsStatus === "measured"
-                            ? `${index.windowDays}d measured`
-                            : repository.weeklyStarsStatus === "partial"
-                              ? "Partial window"
-                              : "New baseline"}
-                        </span>
-                      </div>
-                    </li>
-                  ))}
-                </ol>
-              ) : (
-                <p className="px-5 py-8 text-sm leading-6 text-[var(--home-ink-muted)] sm:px-6">
-                  The agent segment is waiting on its next successful snapshot.
-                </p>
-              )}
+                    </p>
+                    <span className="c97-meter" aria-hidden="true">
+                      <span style={{ width: `${width}%` }} />
+                    </span>
+                  </div>
+                );
+              })}
             </div>
-
-            <aside className="space-y-5" aria-label="Snapshot context">
-              <section
-                className="home-card p-5 sm:p-6"
-                aria-labelledby="topic-movement-heading"
-              >
-                <p className="home-kicker mb-1">Topic comparison</p>
-                <h2
-                  id="topic-movement-heading"
-                  className="text-xl font-semibold tracking-[-0.02em]"
-                >
-                  Where the tracked attention sits
-                </h2>
-                <div className="mt-5 space-y-4">
-                  {index.topicSegments.map((topic) => {
-                    const width = Math.max(
-                      3,
-                      Math.round(
-                        (topic.weeklyStars / maxTopicMovement) * 100
-                      )
-                    );
-                    return (
-                      <div key={topic.key}>
-                        <div className="mb-1.5 flex items-baseline justify-between gap-3 text-sm">
-                          <span className="font-semibold">{topic.label}</span>
-                          <span className="font-mono text-xs tabular-nums text-[var(--home-ink-muted)]">
-                            {movementLabel(topic.weeklyStars)}
-                          </span>
-                        </div>
-                        <div
-                          className="h-2 overflow-hidden rounded-full bg-[var(--home-rule)]"
-                          aria-hidden="true"
-                        >
-                          <div
-                            className="h-full rounded-full bg-[var(--home-signal)]"
-                            style={{ width: `${width}%` }}
-                          />
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-                <p className="mt-5 text-sm leading-6 text-[var(--home-ink-muted)]">
-                  {leadingTopic?.key === agentSegment?.key
-                    ? `Agents lead the tracked topic groups in this snapshot with ${movementLabel(agentSegment?.weeklyStars ?? 0)} stars over ${index.windowDays} days.`
-                    : `The agent group recorded ${movementLabel(agentSegment?.weeklyStars ?? 0)} stars over ${index.windowDays} days in this snapshot.`}
-                </p>
-              </section>
-
-              <section
-                className="home-card p-5 sm:p-6"
-                aria-label="Snapshot notes"
-              >
-                <p className="home-kicker mb-1">Snapshot notes</p>
-                <h2 className="text-xl font-semibold tracking-[-0.02em]">
-                  What the number does and does not mean
-                </h2>
-                <p className="mt-3 text-sm leading-6 text-[var(--home-ink-muted)]">
-                  Stars measure attention and say nothing by themselves about
-                  product quality or usage. I use the index to see what
-                  developers are examining, then I read the repository and
-                  product before drawing a conclusion.
-                </p>
-                <dl className="mt-5 space-y-3 border-t border-[var(--home-rule)] pt-4 text-sm">
-                  <div>
-                    <dt className="text-[var(--home-ink-muted)]">Generated</dt>
-                    <dd className="mt-1 font-semibold">
-                      {formatDateTime(index.generatedAt)}
-                    </dd>
-                  </div>
-                  <div>
-                    <dt className="text-[var(--home-ink-muted)]">Source</dt>
-                    <dd className="mt-1 font-semibold">{index.sourceLabel}</dd>
-                  </div>
-                  <div>
-                    <dt className="text-[var(--home-ink-muted)]">
-                      Activity window
-                    </dt>
-                    <dd className="mt-1 font-semibold">
-                      Repositories pushed in the last{" "}
-                      {index.activityWindowDays} days
-                    </dd>
-                  </div>
-                </dl>
-              </section>
-            </aside>
+            <p
+              className="c97-prose"
+              style={{ marginTop: "var(--c97-sp-3)", color: "var(--c97-ink-2)" }}
+            >
+              {leadingTopic?.key === agentSegment?.key
+                ? `Agents lead the tracked topic groups in this snapshot with ${movementLabel(agentSegment?.weeklyStars ?? 0)} stars over ${index.windowDays} days.`
+                : `The agent group recorded ${movementLabel(agentSegment?.weeklyStars ?? 0)} stars over ${index.windowDays} days in this snapshot.`}
+            </p>
           </section>
 
-          <section
-            className="grid gap-6 border-y border-[var(--home-rule)] py-8 lg:grid-cols-[minmax(0,1fr)_minmax(20rem,0.75fr)] lg:items-center"
-            aria-label="Newsletter signup"
-          >
-            <div>
-              <p className="home-kicker mb-2">Follow the work</p>
-              <h2 className="max-w-[22ch] text-2xl font-semibold leading-[1.06] tracking-[-0.03em]">
-                I send the builds and findings that hold up after the first
-                look.
-              </h2>
-              <p className="mt-3 max-w-[58ch] text-sm leading-7 text-[var(--home-ink-muted)]">
-                The index refreshes daily, but I only send a note when the
-                movement points to something worth explaining.
-              </p>
-            </div>
-            <NewsletterSignup source="agent_build_index" />
+          <section aria-label="Snapshot notes">
+            <p className="c97-kicker">Snapshot notes</p>
+            <h2
+              className="c97-serif c97-h3"
+              style={{ marginTop: "var(--c97-sp-2)" }}
+            >
+              What the number does and does not mean
+            </h2>
+            <p
+              className="c97-prose"
+              style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
+            >
+              Stars measure attention and say nothing by themselves about
+              product quality or usage. I use the index to see what
+              developers are examining, then I read the repository and
+              product before drawing a conclusion.
+            </p>
+            <dl
+              style={{
+                display: "grid",
+                gap: "var(--c97-sp-3)",
+                margin: 0,
+                marginTop: "var(--c97-sp-3)",
+                borderTop: "1px solid var(--c97-rule)",
+                paddingTop: "var(--c97-sp-3)",
+              }}
+            >
+              <div className="c97-stat">
+                <dt className="c97-stat-label">Generated</dt>
+                <dd className="c97-prose" style={{ margin: 0 }}>
+                  {formatDateTime(index.generatedAt)}
+                </dd>
+              </div>
+              <div className="c97-stat">
+                <dt className="c97-stat-label">Source</dt>
+                <dd className="c97-prose" style={{ margin: 0 }}>
+                  {index.sourceLabel}
+                </dd>
+              </div>
+              <div className="c97-stat">
+                <dt className="c97-stat-label">Activity window</dt>
+                <dd className="c97-prose" style={{ margin: 0 }}>
+                  Repositories pushed in the last{" "}
+                  {index.activityWindowDays} days
+                </dd>
+              </div>
+            </dl>
           </section>
+        </aside>
+      </section>
+
+      {/* Newsletter */}
+      <section
+        className="c97-band c97-band-tall"
+        data-c97-surface="pine"
+        aria-label="Newsletter signup"
+      >
+        <div
+          className="c97-shell"
+          style={{
+            display: "grid",
+            gridTemplateColumns:
+              "repeat(auto-fit, minmax(min(100%, 18rem), 1fr))",
+            gap: "var(--c97-sp-5)",
+            alignItems: "center",
+          }}
+        >
+          <div>
+            <p className="c97-kicker">Follow the work</p>
+            <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>
+              I send the builds and findings that hold up after the first
+              look.
+            </h2>
+            <p
+              className="c97-prose"
+              style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
+            >
+              The index refreshes daily, but I only send a note when the
+              movement points to something worth explaining.
+            </p>
+          </div>
+          <NewsletterSignup source="agent_build_index" />
         </div>
       </section>
     </>
