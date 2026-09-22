@@ -1,5 +1,7 @@
 # Catalog 97 Bridge Implementation Plan
 
+**Status, 2026-09-21.** Shipped in PR #449, merged 2026-09-16. Every task below was verified against `main` on 2026-09-21 and the boxes are ticked to match. The family migration plans and the close-out plan this document defers to have not been written yet.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Put the Catalog 97 header, footer, tokens, and type on every route except the seven that already have them, extend the language with the status, chart, mono, and component vocabulary the dashboards need, and delete the Working Instrument header and footer, without touching any page component.
@@ -57,7 +59,7 @@
 **Interfaces:**
 - Produces: `--c97-positive`, `--c97-negative`, `--c97-warning` on every surface in both themes; `--c97-chart-1` through `--c97-chart-6`, `--c97-chart-up`, `--c97-chart-down`; `--c97-font-mono`. Task 2 aliases `--home-positive` and friends onto these.
 
-- [ ] **Step 1: Save the contrast checker to the scratchpad**
+- [x] **Step 1: Save the contrast checker to the scratchpad**
 
 Write this to `<scratchpad>/c97-contrast.py`. It is the check for this task and Task 2 and is not committed.
 
@@ -104,12 +106,12 @@ print("FAIL" if failures else "OK", failures)
 sys.exit(1 if failures else 0)
 ```
 
-- [ ] **Step 2: Run it to see the values pass before they go into CSS**
+- [x] **Step 2: Run it to see the values pass before they go into CSS**
 
 Run: `python3 <scratchpad>/c97-contrast.py`
 Expected: last line `OK []`. The measured floors are 3.57 for positive on light camel, 3.81 for positive on dark stone, 3.45 for positive on light tobacco, all against a 3.0 floor on those large-only surfaces, and at least 4.5 everywhere else.
 
-- [ ] **Step 3: Add the mono face and the chart ramps to the `[data-c97]` token block**
+- [x] **Step 3: Add the mono face and the chart ramps to the `[data-c97]` token block**
 
 In `src/app/catalog97.css`, directly after the `--c97-font-script` declaration (around line 67), add:
 
@@ -151,7 +153,7 @@ Then in the existing `.dark [data-c97]` rule (around line 128, the one that sets
   --c97-chart-6: #8a6642;
 ```
 
-- [ ] **Step 4: Add status tokens to every light-mode surface**
+- [x] **Step 4: Add status tokens to every light-mode surface**
 
 The four light-ink surfaces get the dark set. Add these three lines to each of `[data-c97-surface="paper"]`, `"bone"`, `"camel"`, and `"stone"` in the light block (after each block's `--c97-field` line):
 
@@ -181,7 +183,7 @@ Add this comment above the camel block, since camel and stone share tobacco's co
  */
 ```
 
-- [ ] **Step 5: Add status tokens to every dark-mode surface**
+- [x] **Step 5: Add status tokens to every dark-mode surface**
 
 Every dark-mode surface carries light ink, so all eight `.dark .c97-page [data-c97-surface="…"]` blocks get the light set:
 
@@ -208,7 +210,7 @@ Also add `--c97-chart-up: var(--c97-positive);` and `--c97-chart-down: var(--c97
 }
 ```
 
-- [ ] **Step 6: Lint pass, then commit**
+- [x] **Step 6: Lint pass, then commit**
 
 Run: `npm run lint && npx jest src/app/__tests__ src/components/catalog97 2>&1 | tail -5`
 Expected: lint clean, existing suites pass.
@@ -231,7 +233,7 @@ git commit -m "feat(catalog97): add status tokens, chart ramp, and mono face"
 - Consumes: Task 1's status tokens and `--c97-font-mono`.
 - Produces: every `--home-*`, `--radius-*`, `--shadow-*`, and `--font-*` token from `globals.css` `:root` redeclared inside the Catalog 97 scope. Nothing else in this PR depends on specific alias values, but the whole site does.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```ts
 import { readFileSync } from "node:fs";
@@ -290,12 +292,12 @@ describe("Catalog 97 bridge", () => {
 });
 ```
 
-- [ ] **Step 2: Run it to confirm it fails**
+- [x] **Step 2: Run it to confirm it fails**
 
 Run: `npx jest src/app/__tests__/catalog97-bridge.test.ts`
 Expected: FAIL. The first `expect(start).toBeGreaterThan(-1)` fails because the markers do not exist, and the legacy test fails because `globals.css` still declares `--home-haze`.
 
-- [ ] **Step 3: Write the bridge block**
+- [x] **Step 3: Write the bridge block**
 
 Insert into `src/app/catalog97.css` immediately before the `/* ---- Layout primitives` comment (around line 400):
 
@@ -386,7 +388,7 @@ Insert into `src/app/catalog97.css` immediately before the `/* ---- Layout primi
 /* BRIDGE END */
 ```
 
-- [ ] **Step 4: Delete the legacy accents**
+- [x] **Step 4: Delete the legacy accents**
 
 In `src/app/globals.css`:
 - Delete the four lines `--home-acid: #D7E74F;`, `--home-acid-soft: #EEF49D;`, `--home-moss: #B8C793;`, `--home-haze: #5672F8;` from `:root` (around lines 267–270) and the matching four from the `.dark` block (around lines 380–383).
@@ -402,12 +404,12 @@ Then confirm nothing else reads them:
 Run: `command grep -rn 'home-haze\|home-acid\|home-moss\|color-secondary\|bg-secondary\|text-secondary\b' src tailwind.config.ts --include='*.ts' --include='*.tsx' --include='*.css' | grep -v 'retires the last --home-moss'`
 Expected: no output. The one surviving hit is a code comment in `best-ball-draft-board.tsx` that records history, which is fine.
 
-- [ ] **Step 5: Run the test to confirm it passes**
+- [x] **Step 5: Run the test to confirm it passes**
 
 Run: `npx jest src/app/__tests__/catalog97-bridge.test.ts`
 Expected: PASS, 5 tests.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src/app/catalog97.css src/app/globals.css src/app/investments/investments.module.css tailwind.config.ts src/app/__tests__/catalog97-bridge.test.ts
@@ -425,7 +427,7 @@ git commit -m "feat(catalog97): bridge every Working Instrument token onto the C
 **Interfaces:**
 - Produces: `.c97-table`, `.c97-stat` with children `.c97-stat-label`, `.c97-stat-value`, `.c97-stat-delta`, `.c97-chip` with modifiers `.c97-chip-positive`, `.c97-chip-negative`, `.c97-chip-warning`, `.c97-segmented` with child buttons using `aria-pressed`, `.c97-panel`, `.c97-mono`, and `select.c97-field`, `.c97-check`, `.c97-range`. Family PRs migrate onto these names.
 
-- [ ] **Step 1: Add the class-presence assertion to the bridge test**
+- [x] **Step 1: Add the class-presence assertion to the bridge test**
 
 Append to `src/app/__tests__/catalog97-bridge.test.ts` inside the `describe`:
 
@@ -452,12 +454,12 @@ Append to `src/app/__tests__/catalog97-bridge.test.ts` inside the `describe`:
   });
 ```
 
-- [ ] **Step 2: Run it to confirm it fails**
+- [x] **Step 2: Run it to confirm it fails**
 
 Run: `npx jest src/app/__tests__/catalog97-bridge.test.ts -t vocabulary`
 Expected: FAIL on `.c97-table`.
 
-- [ ] **Step 3: Add the classes**
+- [x] **Step 3: Add the classes**
 
 Insert after the `textarea.c97-field` rule in `src/app/catalog97.css`:
 
@@ -728,12 +730,12 @@ select.c97-field {
 }
 ```
 
-- [ ] **Step 4: Run the test and lint**
+- [x] **Step 4: Run the test and lint**
 
 Run: `npx jest src/app/__tests__/catalog97-bridge.test.ts && npm run lint`
 Expected: PASS, 6 tests; lint clean.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/app/catalog97.css src/app/__tests__/catalog97-bridge.test.ts
@@ -752,7 +754,7 @@ git commit -m "feat(catalog97): add table, stat, chip, segmented, panel, and for
 - Consumes: `Catalog97Shell` from `./Catalog97Shell` (props `children`, `wordmark?: boolean`), `ProjectBuildNote` from `@/components/ProjectBuildNote` (props `href: string`, `route: string`).
 - Produces: `Catalog97ToolShell({ children, band?, buildNoteHref?, route })` where `band` is `{ kicker: string; title: string; standfirst?: string }`. Task 5 renders it from `ConditionalLayout` with `band` omitted, since every route already draws its own `h1`.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```tsx
 import { render, screen } from "@testing-library/react";
@@ -832,12 +834,12 @@ describe("Catalog97ToolShell", () => {
 });
 ```
 
-- [ ] **Step 2: Run it to confirm it fails**
+- [x] **Step 2: Run it to confirm it fails**
 
 Run: `npx jest src/components/catalog97/__tests__/Catalog97ToolShell.test.tsx`
 Expected: FAIL with `Cannot find module '@/components/catalog97/Catalog97ToolShell'`.
 
-- [ ] **Step 3: Write the component**
+- [x] **Step 3: Write the component**
 
 `.c97-lead` exists at line 515 of `catalog97.css`, so the standfirst uses it.
 
@@ -913,12 +915,12 @@ export function Catalog97ToolShell({
 }
 ```
 
-- [ ] **Step 4: Run the test to confirm it passes**
+- [x] **Step 4: Run the test to confirm it passes**
 
 Run: `npx jest src/components/catalog97/__tests__/Catalog97ToolShell.test.tsx`
 Expected: PASS, 4 tests.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/components/catalog97/Catalog97ToolShell.tsx src/components/catalog97/__tests__/Catalog97ToolShell.test.tsx
@@ -937,7 +939,7 @@ git commit -m "feat(catalog97): add the tool shell that wraps every non-designed
 - Consumes: `Catalog97ToolShell` from Task 4, `isCatalog97Route` from `@/constants/catalog97Nav` (unchanged, still true for the seven only), `projectBuildNoteLinks`.
 - Produces: `ConditionalLayout` with two branches. The seven designed routes pass children through untouched. Every other route, `/admin` included, renders inside `Catalog97ToolShell`.
 
-- [ ] **Step 1: Rewrite the test**
+- [x] **Step 1: Rewrite the test**
 
 Replace the whole of `src/components/__tests__/ConditionalLayout.test.tsx` with:
 
@@ -1032,12 +1034,12 @@ describe("ConditionalLayout", () => {
 });
 ```
 
-- [ ] **Step 2: Run it to confirm it fails**
+- [x] **Step 2: Run it to confirm it fails**
 
 Run: `npx jest src/components/__tests__/ConditionalLayout.test.tsx`
 Expected: FAIL. The wrap tests find no `tool-shell` element because the current layout renders its own `main`.
 
-- [ ] **Step 3: Rewrite the component**
+- [x] **Step 3: Rewrite the component**
 
 Replace the whole of `src/components/ConditionalLayout.tsx` with:
 
@@ -1079,12 +1081,12 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
 }
 ```
 
-- [ ] **Step 4: Run the test to confirm it passes**
+- [x] **Step 4: Run the test to confirm it passes**
 
 Run: `npx jest src/components/__tests__/ConditionalLayout.test.tsx`
 Expected: PASS, 15 tests.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/components/ConditionalLayout.tsx src/components/__tests__/ConditionalLayout.test.tsx
@@ -1104,18 +1106,18 @@ git commit -m "feat(shell): route every non-designed page through the Catalog 97
 - Consumes: Task 5, which removed the last render of `Footer`.
 - Produces: no module exports `StaticHeader`, `Footer`, `ContactCta`, or `navLinks`.
 
-- [ ] **Step 1: Confirm the importers are exactly the files this task touches**
+- [x] **Step 1: Confirm the importers are exactly the files this task touches**
 
 Run: `command grep -rln 'components/Footer"\|components/StaticHeader"\|components/ContactCta"\|constants/navlinks"' src e2e --include='*.ts' --include='*.tsx'`
 Expected: exactly `src/app/__tests__/layout.test.tsx`, `src/app/layout.tsx`, `src/components/__tests__/Footer.test.tsx`, `src/components/__tests__/StaticHeader.test.tsx`, `src/components/StaticHeader.tsx`, `src/components/Footer.tsx`. If anything else appears, stop and update that importer first.
 
-- [ ] **Step 2: Delete the files**
+- [x] **Step 2: Delete the files**
 
 ```bash
 git rm src/components/StaticHeader.tsx src/components/Footer.tsx src/components/ContactCta.tsx src/components/ContactCta.module.css src/constants/navlinks.tsx src/components/__tests__/StaticHeader.test.tsx src/components/__tests__/Footer.test.tsx
 ```
 
-- [ ] **Step 3: Remove `StaticHeader` from the root layout**
+- [x] **Step 3: Remove `StaticHeader` from the root layout**
 
 In `src/app/layout.tsx`, delete the line `import { StaticHeader } from "@/components/StaticHeader";` and the line `<StaticHeader />` inside `<Providers>`. The skip link keeps its inline `--home-ink` and `--home-paper` for now; it sits outside the `[data-c97]` scope and still resolves against `:root` until the close-out PR.
 
@@ -1127,12 +1129,12 @@ jest.mock("@/components/StaticHeader", () => ({
 }));
 ```
 
-- [ ] **Step 4: Typecheck, lint, and run the affected suites**
+- [x] **Step 4: Typecheck, lint, and run the affected suites**
 
 Run: `npm run typecheck && npm run lint && npx jest src/app/__tests__ src/components`
 Expected: all clean. Anything that fails to resolve a name here is a consumer Step 1 missed.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add -A src/app/layout.tsx src/app/__tests__/layout.test.tsx
@@ -1147,7 +1149,7 @@ git commit -m "refactor(shell): delete the Working Instrument header, footer, an
 - Modify: `e2e/footer-cta.spec.ts` (lines 41–54)
 - Modify: `e2e/investments.spec.ts` (lines 222–247)
 
-- [ ] **Step 1: Rewrite the writing-detail footer test**
+- [x] **Step 1: Rewrite the writing-detail footer test**
 
 Replace the test `"uses the footer sign-off on writing detail pages"` with:
 
@@ -1166,7 +1168,7 @@ Replace the test `"uses the footer sign-off on writing detail pages"` with:
   });
 ```
 
-- [ ] **Step 2: Rewrite the investments discoverability test**
+- [x] **Step 2: Rewrite the investments discoverability test**
 
 The investments tile on `/dashboards` comes from the `link: "/investments"` entry in `src/constants/caseStudies.ts` through `getLiveToolGroups`. Replace the test `"is discoverable from the Working Instrument navigation"` with:
 
@@ -1188,12 +1190,12 @@ The investments tile on `/dashboards` comes from the `link: "/investments"` entr
   });
 ```
 
-- [ ] **Step 3: Run the two specs against the dev server**
+- [x] **Step 3: Run the two specs against the dev server**
 
 Run: `npx playwright test e2e/footer-cta.spec.ts e2e/investments.spec.ts e2e/navigation.spec.ts`
 Expected: all pass. `navigation.spec.ts` already targets the Catalog 97 header and should be unchanged; it is included to prove the header works on the seven routes after the layout change.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add e2e/footer-cta.spec.ts e2e/investments.spec.ts
@@ -1209,7 +1211,7 @@ git commit -m "test(e2e): expect the Catalog 97 chrome on detail and dashboard r
 - Modify: `CLAUDE.md` (the "Routes, Navigation, and Shell" section, lines 63–84)
 - Modify: `AGENTS.md` (the shell and header-link paragraphs; find them with `command grep -n 'StaticHeader\|navlinks\|self-shell' AGENTS.md`)
 
-- [ ] **Step 1: Write the surface brief**
+- [x] **Step 1: Write the surface brief**
 
 ```markdown
 ---
@@ -1238,7 +1240,7 @@ related_targets: ["src/components/ConditionalLayout.tsx","src/components/catalog
 **Verified state at creation (2026-09-16).** Recorded in Task 9 of `docs/superpowers/plans/2026-09-16-catalog97-bridge.md`.
 ```
 
-- [ ] **Step 2: Correct the shell section in `CLAUDE.md`**
+- [x] **Step 2: Correct the shell section in `CLAUDE.md`**
 
 Replace the five bullets under "Routes, Navigation, and Shell" (from `- \`src/app/layout.tsx\` renders fonts` through the `Header links come from` bullet) with:
 
@@ -1266,11 +1268,11 @@ Replace the five bullets under "Routes, Navigation, and Shell" (from `- \`src/ap
 
 Also delete the `Footer.tsx` bullet that says it is "always `full` now", and change the `**Last updated:**` line to `2026-09-16`.
 
-- [ ] **Step 3: Correct `AGENTS.md`**
+- [x] **Step 3: Correct `AGENTS.md`**
 
 Run `command grep -n 'StaticHeader\|navlinks\|Footer.tsx\|self-shell' AGENTS.md` and rewrite each hit to match the `CLAUDE.md` text above. The header-link list becomes the seven Catalog 97 links. Any "self-shell route list" paragraph is replaced by one sentence: every route that is not one of the seven designed pages renders inside `Catalog97ToolShell`.
 
-- [ ] **Step 4: Voice lint and commit**
+- [x] **Step 4: Voice lint and commit**
 
 Run: `~/.claude/scripts/voice-lint.sh .impeccable/surfaces/src-components-catalog97-catalog97toolshell-tsx.md`
 Expected: read each candidate; fix any colon used as a sentence connector or any "rather than" reversal in prose. Reference tables and label lines are fine.
@@ -1287,17 +1289,17 @@ git commit -m "docs: record the Catalog 97 tool shell and the bridge in the shel
 **Files:**
 - No repo changes except fixes the sweep turns up. The sweep script stays in the scratchpad.
 
-- [ ] **Step 1: Full local gates**
+- [x] **Step 1: Full local gates**
 
 Run: `npm run typecheck && npm run lint && npx jest 2>&1 | tail -15`
 Expected: typecheck clean, lint clean, Jest reports 0 failures. The memory file `fantasy-review-2026-08-31.md` records one pre-existing best-ball placeholder failure; if it still fails, confirm it fails identically on `main` with `git stash` before treating it as unrelated.
 
-- [ ] **Step 2: Build**
+- [x] **Step 2: Build**
 
 Run: `npm run build 2>&1 | tail -20`
 Expected: build succeeds. A CSS parse error here points at the bridge block or the new classes in `catalog97.css`.
 
-- [ ] **Step 3: The live sweep**
+- [x] **Step 3: The live sweep**
 
 Start the dev server in the background: `npm run dev` on port 3000. Save this to `<scratchpad>/sweep.mjs` and run it with `node <scratchpad>/sweep.mjs`:
 
@@ -1390,7 +1392,7 @@ process.exit(problems.length ? 1 : 0);
 
 Expected: every line shows `main=1 h1=1 overflow=false header=true footer=true contrastFails=0`. The `radii` and `shadows` counts are informational at this stage, since Tailwind classes like `rounded-xl` and literal `shadow-*` utilities bypass the bridge and belong to the family PRs; record the per-route counts in the surface brief's verified-state section. A `contrastFails` count above zero on a route is a real finding: read the five sampled nodes, and if the failure is a `--home-signal` consumer on a tinted plate, adjust the `--home-signal-soft` mix percentage in the bridge (Task 2 Step 3) and re-run; if it is a component-literal colour, note it in the brief for that route's family and move on. The sweep's parser is sanity-checked the same way the September audits were: the first paper-on-ink node on `/now` must read close to 10.9:1 (`#2b211a` on `#f1ebdf`) before any other reading is believed.
 
-- [ ] **Step 4: Record the verified state**
+- [x] **Step 4: Record the verified state**
 
 Replace the last line of the surface brief (`**Verified state at creation (2026-09-16).** Recorded in Task 9…`) with the actual figures: the count of routes swept, the four states per route, the contrast result, and the informational radius and shadow counts per route. Write it in prose, one paragraph, no bold labels.
 
@@ -1399,12 +1401,12 @@ git add .impeccable/surfaces/src-components-catalog97-catalog97toolshell-tsx.md
 git commit -m "docs: record the tool shell's verified state after the bridge sweep"
 ```
 
-- [ ] **Step 5: E2E subset**
+- [x] **Step 5: E2E subset**
 
 Run: `npx playwright test e2e/navigation.spec.ts e2e/footer-cta.spec.ts e2e/investments.spec.ts e2e/fantasy-football.spec.ts e2e/writing.spec.ts e2e/accessibility.spec.ts e2e/persisted-tools.spec.ts`
 Expected: all pass. `fantasy-football.spec.ts` locates its shell by `data-testid` and is unaffected by the chrome change; a failure there is a real regression in the bridge, most likely a control whose Tailwind class read `--home-control-rule` and now gets ink-2.
 
-- [ ] **Step 6: Sitemap and PR**
+- [x] **Step 6: Sitemap and PR**
 
 Per the sitemap drift memory: `git fetch origin && git merge origin/main`, then `node scripts/generatePublicSitemap.mjs` and commit any sitemap change. Push the branch and open the PR with a body that links the spec and states the interim quieter-accent and seven-link-nav facts from the spec's "Known interim state" section.
 

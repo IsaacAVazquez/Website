@@ -2,6 +2,8 @@
 
 **Date:** 2026-04-05
 **Status:** Approved
+**Status, 2026-09-21.** Shipped on 2026-04-05 as a one-time sync. The `docs/archive/` tree it created was deleted in August 2026. Kept as history only.
+
 
 ---
 
