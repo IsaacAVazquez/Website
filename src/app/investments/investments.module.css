@@ -1867,14 +1867,14 @@
    scaled down: one horizontally scrollable row of the same targets, pinned under
    the site header so it stays reachable deep into the page. Hidden above 900px,
    so the sidebar stays the single navigation in the accessibility tree on
-   desktop and the two never both appear. `--invest-rail-top` tracks the sticky
-   site header's 72px min-height; it is the one place to change if that moves. */
+   desktop and the two never both appear. The Catalog 97 header is
+   `position: relative` and scrolls away, so the rail pins at 0. `--invest-rail-top`
+   is the one place to change if the site header ever becomes sticky again. */
 .sectionRail { display: none; }
 
 @media (max-width: 900px) {
   .sectionRail {
-    /* 72px header min-height + its 1px bottom border. Measured at 73px. */
-    --invest-rail-top: 73px;
+    --invest-rail-top: 0px;
     display: flex;
     position: sticky;
     top: var(--invest-rail-top);

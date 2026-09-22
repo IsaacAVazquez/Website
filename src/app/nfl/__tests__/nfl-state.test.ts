@@ -39,7 +39,11 @@ describe("nfl-state", () => {
         (team) => team.seed !== null && team.seed >= 1 && team.seed <= 7
       )
     ).toBe(true);
-    expect(getDefaultTeamForView("playoffs")).toBe(filterTeamsForView("playoffs")[0]?.id);
+    // Before seeds are assigned (early season and offseason) the playoff view is
+    // empty and the default falls back to the site-wide default team.
+    expect(getDefaultTeamForView("playoffs")).toBe(
+      filterTeamsForView("playoffs")[0]?.id ?? DEFAULT_NFL_STATE.team
+    );
   });
 
   it("builds hrefs while preserving unrelated params and clearing defaults", () => {

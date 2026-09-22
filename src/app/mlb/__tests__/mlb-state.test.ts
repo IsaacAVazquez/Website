@@ -38,7 +38,10 @@ describe("mlb-state", () => {
         (row) => row.divisionRank > 1 && row.wildCardRank !== null && row.wildCardRank <= 6
       )
     ).toBe(true);
-    expect(getDefaultTeamForView("wildcard")).toBe(filterStandingsForView("wildcard")[0]?.id);
+    // An empty wildcard view (offseason snapshot) falls back to the default team.
+    expect(getDefaultTeamForView("wildcard")).toBe(
+      filterStandingsForView("wildcard")[0]?.id ?? DEFAULT_MLB_STATE.team
+    );
   });
 
   it("builds hrefs while preserving unrelated params and clearing defaults", () => {
