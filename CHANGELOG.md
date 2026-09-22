@@ -4,6 +4,12 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-09-22
+
+- Correct the docs, specs, and Impeccable briefs for the Catalog 97 shell ([#450](https://github.com/IsaacAVazquez/Website/pull/450)).
+
+---
+
 ## 2026-09-16
 
 - Bridge every route onto the Catalog 97 shell and tokens ([#449](https://github.com/IsaacAVazquez/Website/pull/449)).
