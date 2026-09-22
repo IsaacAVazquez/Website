@@ -21,18 +21,6 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-const sectionTitleStyle = {
-  fontFamily: "var(--font-home-sans)",
-  color: "var(--home-ink)",
-  fontWeight: 600,
-  letterSpacing: "-0.02em",
-} as const;
-
-const bodyStyle = {
-  fontFamily: "var(--font-home-sans)",
-  color: "var(--home-ink-muted)",
-} as const;
-
 export default async function ChangelogPage() {
   const entries = await getAllChangelogEntries();
 
@@ -52,126 +40,124 @@ export default async function ChangelogPage() {
         }}
       />
 
+      {/* Hero */}
       <section
-        className="home-page home-section min-h-screen"
+        className="c97-band"
+        data-c97-surface="paper"
         aria-label="Changelog"
       >
-        <div className="home-shell home-shell-tight space-y-10">
-          <header className="space-y-4">
-            <p className="home-kicker mb-0">Changelog</p>
-            <h1
-              className="mb-0"
-              style={{
-                fontFamily: "var(--font-home-sans)",
-                fontSize: "clamp(2.4rem, 5.5vw, 4rem)",
-                fontWeight: 600,
-                lineHeight: 0.95,
-                letterSpacing: "-0.06em",
-                color: "var(--home-ink)",
-              }}
-            >
-              What shipped, in order.
-            </h1>
-            <p className="home-body max-w-[52rem]">
-              A running log of changes to this site. Features, fixes, writing,
-              and the occasional cleanup. Built in public on purpose. For the
-              current focus, see the{" "}
-              <Link
-                href="/now"
-                className="underline underline-offset-2"
-                style={{ color: "var(--home-signal)" }}
-              >
-                /now page
-              </Link>
-              .
-            </p>
-          </header>
+        <div className="c97-shell">
+          <p className="c97-kicker">Changelog</p>
+          <h1 className="c97-display" style={{ marginTop: "var(--c97-sp-3)" }}>
+            What shipped, in order.
+          </h1>
+          <p
+            className="c97-lead"
+            style={{
+              marginTop: "var(--c97-sp-3)",
+              maxWidth: "var(--c97-measure-wide)",
+            }}
+          >
+            A running log of changes to this site. Features, fixes, writing,
+            and the occasional cleanup. Built in public on purpose. For the
+            current focus, see the{" "}
+            <Link href="/now" className="c97-link">
+              /now page
+            </Link>
+            .
+          </p>
+        </div>
+      </section>
 
+      {/* Entries */}
+      <section className="c97-band c97-band-continues" data-c97-surface="paper">
+        <div className="c97-shell">
           {entries.length === 0 ? (
-            <article className="home-card p-6 sm:p-8">
-              <p className="mb-0 text-base leading-7" style={bodyStyle}>
-                No entries yet. Check back soon.
-              </p>
-            </article>
+            <p className="c97-prose" style={{ color: "var(--c97-ink-2)" }}>
+              No entries yet. Check back soon.
+            </p>
           ) : (
-            <ol className="space-y-6">
+            <ol style={{ listStyle: "none", margin: 0, padding: 0 }}>
               {entries.map((entry) => (
                 <li key={entry.slug}>
                   <article
                     id={entry.slug}
-                    className="home-card p-6 sm:p-8 space-y-4 scroll-mt-28"
+                    className="c97-row c97-row-stack-sm"
+                    style={{
+                      scrollMarginTop: "var(--c97-sp-6)",
+                      borderTop: "1px solid var(--c97-rule)",
+                      paddingBlock: "var(--c97-sp-4)",
+                    }}
                   >
-                    <div className="flex flex-wrap items-center justify-between gap-3">
-                      <div className="flex flex-wrap items-center gap-3">
-                        <span className="home-kicker mb-0">
-                          {entry.category}
-                        </span>
+                    <div>
+                      <p className="c97-meta">
+                        <span>{entry.category}</span>
                         {entry.tags.slice(0, 3).map((tag) => (
-                          <span key={tag} className="resume-chip">
+                          <span key={tag} className="c97-chip">
                             {tag}
                           </span>
                         ))}
-                      </div>
-                      <time
-                        dateTime={entry.publishedAt}
-                        className="home-meta mb-0"
+                      </p>
+
+                      <h2
+                        className="c97-serif c97-h2"
+                        style={{ marginTop: "var(--c97-sp-2)" }}
                       >
-                        {publishedDateFormatter.format(
-                          new Date(entry.publishedAt)
-                        )}
-                      </time>
+                        {/*
+                          `.c97-link` for the hover shift to accent; the
+                          inline text-decoration takes its underline off, since
+                          a heading is not inline prose.
+                        */}
+                        <Link
+                          href={`/changelog#${entry.slug}`}
+                          className="c97-link"
+                          style={{ textDecoration: "none" }}
+                        >
+                          {entry.title}
+                        </Link>
+                      </h2>
+
+                      <p
+                        className="c97-prose"
+                        style={{ marginTop: "var(--c97-sp-2)" }}
+                      >
+                        {entry.summary}
+                      </p>
+
+                      <div
+                        className="c97-article"
+                        style={{
+                          marginTop: "var(--c97-sp-2)",
+                          color: "var(--c97-ink-2)",
+                        }}
+                        dangerouslySetInnerHTML={{ __html: entry.html }}
+                      />
                     </div>
-
-                    <h2 className="text-2xl mb-0" style={sectionTitleStyle}>
-                      <Link
-                        href={`/changelog#${entry.slug}`}
-                        className="transition-colors hover:opacity-70"
-                      >
-                        {entry.title}
-                      </Link>
-                    </h2>
-
-                    <p
-                      className="mb-0 text-base leading-7"
-                      style={{
-                        fontFamily: "var(--font-home-sans)",
-                        color: "var(--home-ink)",
-                      }}
-                    >
-                      {entry.summary}
-                    </p>
-
-                    <div
-                      className="changelog-prose text-base leading-7"
-                      style={{
-                        fontFamily: "var(--font-home-sans)",
-                        color: "var(--home-ink-muted)",
-                      }}
-                      dangerouslySetInnerHTML={{ __html: entry.html }}
-                    />
+                    <time dateTime={entry.publishedAt} className="c97-meta">
+                      {publishedDateFormatter.format(
+                        new Date(entry.publishedAt)
+                      )}
+                    </time>
                   </article>
                 </li>
               ))}
             </ol>
           )}
+        </div>
+      </section>
 
-          <footer
-            className="pt-6 text-center text-sm leading-6"
-            style={{
-              ...bodyStyle,
-              borderTop: "1px solid var(--home-rule)",
-            }}
-          >
-            Want to see what&apos;s coming next? The{" "}
-            <Link
-              href="/now"
-              className="underline underline-offset-2"
-              style={{ color: "var(--home-signal)" }}
-            >
-              /now page
-            </Link>{" "}
-            is the best place to look.
-          </footer>
+      {/* Closing line */}
+      <section className="c97-band" data-c97-surface="bone">
+        <div className="c97-shell">
+          <p className="c97-meta">
+            <span>
+              Want to see what&apos;s coming next? The{" "}
+              <Link href="/now" className="c97-link">
+                /now page
+              </Link>{" "}
+              is the best place to look.
+            </span>
+          </p>
         </div>
       </section>
     </>

@@ -17,6 +17,9 @@ interface CodeSampleProps {
  * A code sample with a copy-to-clipboard button. The copy action fires a GA4
  * `code_copy` event (a no-op when analytics is disabled) without otherwise
  * changing behaviour — the clipboard write happens regardless.
+ *
+ * It sits on the field tint rather than on inverted ink, the same treatment
+ * `.c97-article pre` gives a code block, so it stays calm in dark mode.
  */
 export function CodeSample({
   code,
@@ -44,47 +47,36 @@ export function CodeSample({
   };
 
   return (
-    <div
-      className="relative my-4 overflow-hidden rounded-[var(--radius-xl)]"
-      style={{
-        background: "var(--home-ink)",
-        border: "1px solid var(--home-rule)",
-      }}
-    >
+    <div style={{ background: "var(--c97-field)" }}>
       <div
-        className="flex items-center justify-between gap-3 px-4 py-2"
         style={{
-          borderBottom: "1px solid color-mix(in srgb, var(--home-paper) 18%, transparent)",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          gap: "var(--c97-sp-2)",
+          minHeight: 44,
+          padding: "0 var(--c97-sp-2)",
+          borderBottom: "1px solid var(--c97-rule)",
         }}
       >
-        <span
-          className="text-xs uppercase tracking-wider"
-          style={{
-            fontFamily: "var(--font-jetbrains-mono)",
-            color: "color-mix(in srgb, var(--home-paper) 64%, transparent)",
-          }}
-        >
-          {language ?? "code"}
-        </span>
+        <span className="c97-kicker">{language ?? "code"}</span>
         <button
           type="button"
           onClick={handleCopy}
           aria-label="Copy code to clipboard"
-          className="inline-flex min-h-touch items-center rounded-md px-2.5 py-1 text-xs font-semibold transition-colors"
-          style={{
-            fontFamily: "var(--font-home-sans)",
-            background: "color-mix(in srgb, var(--home-paper) 14%, transparent)",
-            color: "var(--home-paper)",
-          }}
+          className="c97-btn-ghost"
         >
           {copied ? "Copied" : "Copy"}
         </button>
       </div>
       <pre
-        className="overflow-x-auto px-4 py-3 text-sm leading-6"
+        className="c97-mono"
         style={{
-          fontFamily: "var(--font-jetbrains-mono)",
-          color: "var(--home-paper)",
+          fontSize: "var(--c97-fs-small)",
+          lineHeight: "var(--c97-lh-body)",
+          color: "var(--c97-ink)",
+          padding: "var(--c97-sp-2)",
+          overflowX: "auto",
           margin: 0,
         }}
       >

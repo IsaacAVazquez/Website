@@ -43,31 +43,32 @@ export function ArticleCodeCopy({
       const languageClass = codeEl?.className.match(/language-([\w-]+)/);
       const language = languageClass?.[1];
 
-      // Code blocks sit on paper in both themes, so the button takes ink on
-      // raised paper. The old paper-on-paper styling measured 1.06:1.
+      // The block sits on the field tint, so the button takes the ink of the
+      // enclosing surface and repaints with it in dark mode.
       const button = document.createElement("button");
       button.type = "button";
       button.textContent = "Copy code";
       button.style.cssText = [
         "position:absolute",
-        "top:0.25rem",
-        "right:0.25rem",
+        "top:var(--c97-sp-1)",
+        "right:var(--c97-sp-1)",
         "min-height:44px",
         "min-width:44px",
-        "padding:0 0.75rem",
-        "font-size:0.75rem",
-        "font-weight:600",
-        "border-radius:2px",
+        "padding:0 var(--c97-sp-2)",
+        "font-size:var(--c97-fs-label)",
+        "letter-spacing:0.08em",
+        "text-transform:uppercase",
+        "border:0",
+        "border-radius:0",
         "cursor:pointer",
-        "border:1px solid var(--home-rule)",
-        "background:var(--home-paper-raised)",
-        "color:var(--home-ink)",
-        "font-family:var(--font-home-sans)",
+        "background:var(--c97-ink-2)",
+        "color:var(--c97-surface)",
+        "font-family:inherit",
       ].join(";");
 
       // Room above the first line so the button never covers code.
       const previousPaddingTop = pre.style.paddingTop;
-      pre.style.paddingTop = "3.5rem";
+      pre.style.paddingTop = "var(--c97-sp-6)";
 
       // The button text change is not announced, so a status region says it.
       const status = document.createElement("span");

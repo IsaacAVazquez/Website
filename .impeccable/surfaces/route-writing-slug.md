@@ -44,3 +44,7 @@ Pre-fix snapshot `2026-09-14T19-48-31Z__route-writing-slug.md` scored 25/40 (62.
 ## Commands worth running
 
 `critique` and `audit` to find, then only what the findings name, then `polish` last. `distill` fits the ending if Isaac decides to change it, and `typeset` fits the body if the size decision is reopened. Never `document` from here.
+
+## Status, 2026-09-22
+
+This route moved off the bridge. It is composed from Catalog 97 bands inside `Catalog97ToolShell` and reads `--c97-*` directly, so the paragraphs above that describe `--home-*` names, hover-lift cards, radii, or the two-world header describe the state before this date. The contrast figures still need re-measuring against the surfaces the page now declares.

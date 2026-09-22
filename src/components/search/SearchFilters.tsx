@@ -32,21 +32,12 @@ const categories = [
   { id: 'Fintech Product', label: 'Fintech' },
 ];
 
-function getPillStyle(active: boolean) {
-  if (active) {
-    return {
-      background: "var(--home-ink)",
-      color: "var(--home-paper)",
-      border: "1px solid var(--home-ink)",
-    } as const;
-  }
-  return {
-    background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
-    color: "var(--home-ink)",
-    border: "1px solid var(--home-rule)",
-  } as const;
-}
-
+/*
+ * The filters are pressed-button groups rather than selects because every
+ * option is a single click and the tests and analytics key off the button
+ * labels. `.c97-segmented` is the same control the /dashboards category filter
+ * draws, and `.c97-microlink` buys each button its 44px target.
+ */
 export function SearchFilters({
   type,
   category,
@@ -57,78 +48,49 @@ export function SearchFilters({
   const hasActiveFilters = type !== 'all' || category !== 'all';
 
   return (
-    <div
-      className="space-y-4 rounded-[var(--radius-xl)] p-4"
-      style={{
-        background: "color-mix(in srgb, var(--home-paper-alt) 78%, var(--home-elev-mix))",
-        border: "1px solid var(--home-rule)",
-      }}
-    >
-      <div>
-        <p
-          className="home-kicker mb-2"
-          style={{ marginTop: 0 }}
-        >
+    <div className="c97-panel" style={{ display: "grid", gap: "var(--c97-sp-3)" }}>
+      <fieldset className="c97-segmented" style={{ minWidth: 0 }}>
+        <legend className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
           Content type
-        </p>
-        <div className="flex flex-wrap gap-2">
-          {contentTypes.map((contentType) => (
-            <button
-              key={contentType.id}
-              type="button"
-              onClick={() => onTypeChange(contentType.id)}
-              aria-pressed={type === contentType.id}
-              className="inline-flex min-h-touch items-center rounded-full px-3 py-1 text-xs font-semibold transition-colors"
-              style={{
-                fontFamily: "var(--font-home-sans)",
-                letterSpacing: "0.02em",
-                ...getPillStyle(type === contentType.id),
-              }}
-            >
-              {contentType.label}
-            </button>
-          ))}
-        </div>
-      </div>
+        </legend>
+        {contentTypes.map((contentType) => (
+          <button
+            key={contentType.id}
+            type="button"
+            onClick={() => onTypeChange(contentType.id)}
+            aria-pressed={type === contentType.id}
+            className="c97-microlink"
+          >
+            {contentType.label}
+          </button>
+        ))}
+      </fieldset>
 
-      <div>
-        <p
-          className="home-kicker mb-2"
-          style={{ marginTop: 0 }}
-        >
+      <fieldset className="c97-segmented" style={{ minWidth: 0 }}>
+        <legend className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
           Category
-        </p>
-        <div className="flex flex-wrap gap-2">
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              type="button"
-              onClick={() => onCategoryChange(cat.id)}
-              aria-pressed={category === cat.id}
-              className="inline-flex min-h-touch items-center rounded-full px-3 py-1 text-xs font-semibold transition-colors"
-              style={{
-                fontFamily: "var(--font-home-sans)",
-                letterSpacing: "0.02em",
-                ...getPillStyle(category === cat.id),
-              }}
-            >
-              {cat.label}
-            </button>
-          ))}
-        </div>
-      </div>
+        </legend>
+        {categories.map((cat) => (
+          <button
+            key={cat.id}
+            type="button"
+            onClick={() => onCategoryChange(cat.id)}
+            aria-pressed={category === cat.id}
+            className="c97-microlink"
+          >
+            {cat.label}
+          </button>
+        ))}
+      </fieldset>
 
       {hasActiveFilters && (
         <div
-          className="pt-3"
-          style={{ borderTop: "1px solid var(--home-rule)" }}
+          style={{
+            borderTop: "1px solid var(--c97-rule)",
+            paddingTop: "var(--c97-sp-2)",
+          }}
         >
-          <button
-            type="button"
-            onClick={onClearFilters}
-            className="text-sm underline underline-offset-2"
-            style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-signal)" }}
-          >
+          <button type="button" onClick={onClearFilters} className="c97-btn-ghost">
             Clear all filters
           </button>
         </div>

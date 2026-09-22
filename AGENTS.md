@@ -2,7 +2,7 @@
 
 Operational context for agents working in this repo. Start here, then read `CLAUDE.md` for deeper implementation context.
 
-**Last updated:** 2026-09-21
+**Last updated:** 2026-09-22
 
 ---
 
@@ -112,6 +112,7 @@ Catalog 97 routes:
 - `/`, `/portfolio`, `/writing`, `/dashboards`, `/about`, `/resume`, `/contact` render their own `Catalog97Shell` and pass through `ConditionalLayout` untouched, so `isCatalog97Route` (`src/constants/catalog97Nav.ts`) is what tells `ConditionalLayout` to stand down for them
 - every other route is wrapped in `Catalog97ToolShell`, which is `Catalog97Shell` plus an optional title band and the build-note aside, so it owns the same header, the same only `main`, and the same footer
 - tokens live in `src/app/catalog97.css`, scoped under `[data-c97]`, with a bridge block that aliases the `--home-*` tokens legacy components still use onto the Catalog 97 value for the enclosing surface
+- as of 2026-09-22 the detail pages (`/writing/[slug]`, `/writing/topics/[topic]`, `/portfolio/[slug]`) and the utility pages (`/now`, `/changelog`, `/accessibility`, `/search`, `/analytics-reference`, `/agent-build-index`, `/enablement-assistant`, `/design/catalog-pages`) are composed from Catalog 97 bands and read `--c97-*` directly, as do `RouteErrorBoundary`, `RouteLoadingState`, `ProjectBuildNote`, `AuthorBio`, `CodeSample`, `NewsletterSignup`, and the search components; the remaining families still go through the bridge
 
 Footer:
 
@@ -122,7 +123,7 @@ Footer:
 
 ## Guardrails
 
-- Never hardcode hex colors in components. On the seven designed Catalog 97 routes and in `src/components/catalog97`, use the `--c97-*` tokens from `src/app/catalog97.css` through `data-c97-surface`. On the other routes the `--home-*` tokens still work because the bridge aliases them, and they are slated for removal in the family migrations described in `docs/superpowers/specs/2026-09-16-catalog97-unification-design.md`. `--home-haze`, `--home-acid`, and `--home-moss` are deleted.
+- Never hardcode hex colors in components. On the seven designed Catalog 97 routes and in `src/components/catalog97`, use the `--c97-*` tokens from `src/app/catalog97.css` through `data-c97-surface`. On a migrated route (see the shell section above) use `--c97-*` and the `c97-*` classes only. On the routes still to migrate the `--home-*` tokens work because the bridge aliases them, and they are slated for removal in the family migrations described in `docs/superpowers/specs/2026-09-16-catalog97-unification-design.md`. `--home-haze`, `--home-acid`, and `--home-moss` are deleted.
 - Never import `@tabler/icons-react` in server components. Use `@/components/ui/ServerIcons`.
 - Never import `better-sqlite3` into client code.
 - Never create real pages at `/projects`, `/work`, or `/blog`.

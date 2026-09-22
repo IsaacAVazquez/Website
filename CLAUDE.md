@@ -2,7 +2,7 @@
 
 Deep implementation context for Claude Code and other agents working in this repo.
 
-**Last updated:** 2026-09-21
+**Last updated:** 2026-09-22
 
 ---
 
@@ -89,8 +89,9 @@ Never create real pages at `/projects`, `/work`, or `/blog`.
 
 ### Error boundaries
 
-- Shared fallback: `src/components/RouteErrorBoundary.tsx` (editorial-styled, calls
-  `logger.error`, exposes `reset()` retry). Top-level catch-all: `src/app/error.tsx`.
+- Shared fallback: `src/components/RouteErrorBoundary.tsx` (one Catalog 97 paper band,
+  calls `logger.error`, exposes `reset()` retry). Top-level catch-all: `src/app/error.tsx`.
+  `src/components/RouteLoadingState.tsx` is the matching loading band.
 - Snapshot-driven dashboards add a per-route `error.tsx` that re-exports
   `RouteErrorBoundary` with a bespoke `surfaceName`. **When adding a new data-fetching
   dashboard route, drop one in.**
@@ -131,6 +132,8 @@ Shared conventions worth internalizing:
   `getPortfolioProjects` and renders `Catalog97Portfolio`.
 - Writing posts live in `content/blog/`; `src/lib/blog.ts` reads frontmatter and
   converts MD/MDX to HTML via `remark`. Live routes: `/writing`, `/writing/[slug]`.
+  The article HTML renders inside `.c97-article` (`catalog97.css`), which styles the
+  whole remark tree; the cover is a `Catalog97Slot` with the credit as its caption.
 - **Cover images are part of publishing, not an afterthought.** Every post has a
   plan entry in `scripts/data/articleCoverImages.ts` (one per slug): a `wikimedia`
   photo (fetched license-safe by `npm run update:article-images`, saved to
@@ -243,10 +246,24 @@ the Working Instrument and get rewritten in the close-out PR of the unification 
 where they disagree with `catalog97.css`, the CSS wins.
 **Before merging any UI, run the single pre-merge `DESIGN_CHECKLIST.md`.**
 
-- On the seven designed routes and anything in `src/components/catalog97/`, set
+- On the seven designed routes, anything in `src/components/catalog97/`, and every
+  migrated route (as of 2026-09-22 that is the three detail pages, the eight utility
+  pages, and the shared `AuthorBio`, `RouteErrorBoundary`, `RouteLoadingState`,
+  `ProjectBuildNote`, `CodeSample`, `NewsletterSignup`, and search components), set
   `data-c97-surface` on the container and read the `--c97-*` tokens (`--c97-ink`,
   `--c97-accent`, and the rest). Never set a colour on a component directly.
-- On every other route the `--home-*` names (`var(--home-paper)`, `var(--home-ink)`,
+- A migrated route is a sequence of `c97-band` sections inside `Catalog97ToolShell`,
+  each carrying its own `data-c97-surface`, and it uses only the `catalog97.css`
+  vocabulary: `.c97-kicker`, `.c97-display`, `.c97-serif` with `.c97-h2`/`.c97-h3`,
+  `.c97-lead`, `.c97-prose`, `.c97-meta`, the ledger row `.c97-row` and its
+  variants, `.c97-columns`, `.c97-mosaic`/`.c97-tile`, `.c97-panel`, `.c97-stat`,
+  `.c97-chip`, `.c97-table`, `.c97-segmented`, the buttons and fields, and the
+  page-furniture block (`.c97-article` for injected HTML, `.c97-list`,
+  `.c97-breadcrumb`, `.c97-disclosure`, `.c97-kbd`, `.c97-skeleton`, `.c97-meter`).
+  Spacing comes off `--c97-sp-1` through `--c97-sp-7` as inline `style`, never from
+  Tailwind spacing, colour, radius, or shadow utilities. The running-prose column is
+  `--c97-column`.
+- On every route not yet migrated the `--home-*` names (`var(--home-paper)`, `var(--home-ink)`,
   `var(--home-ink-muted)`, `var(--home-rule)`, `var(--home-signal)`) still work, because
   the bridge block in `catalog97.css` aliases each one onto a `--c97-*` token. They are
   transitional. The family migrations move each surface onto `--c97-*`, and the close-out
@@ -268,8 +285,11 @@ where they disagree with `catalog97.css`, the CSS wins.
 - No arbitrary `text-[Npx]` micro-type — use `text-3xs`/`text-2xs` (see `STYLING.md`).
 - CSS-Module surfaces must alias the global tokens (`--x-paper: var(--home-paper)`), never
   re-declare the palette as fresh hex with its own `.dark` mirror.
-- Use the editorial shell helpers (`.home-page`, `.home-shell`, `.home-section`,
-  `.home-card`, `.home-kicker`).
+- The editorial shell helpers (`.home-page`, `.home-shell`, `.home-section`,
+  `.home-card`, `.home-kicker`) remain only for routes the family migrations have not
+  reached. Do not introduce them on a migrated route or in a new one; compose bands.
+  `.prose-writing`, `.changelog-prose`, and `.skeleton` were deleted on 2026-09-22 in
+  favour of `.c97-article` and `.c97-skeleton`.
 - Keep light/dark mode support, 44px minimum touch targets, and `prefers-reduced-motion`
   for animated components. Shared portfolio-shell primitives must not use
   `transition-all` — transition specific properties.

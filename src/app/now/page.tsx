@@ -79,30 +79,15 @@ const notBuilding = [
   "Social media content. I write here and that's it.",
 ];
 
+/* The mosaic's field cycle, one tile per project in `building`. */
+const TILE_SURFACES = ["pine", "camel", "stone", "chocolate"] as const;
+
 export const metadata: Metadata = constructMetadata({
   title: "What I'm Building Now | Isaac Vazquez",
   description: `What Isaac Vazquez is focused on right now, including current work, reading, side projects, and location. Updated ${NOW_UPDATED_LABEL}.`,
   canonicalUrl: "https://isaacvazquez.com/now",
   dateModified: NOW_UPDATED,
 });
-
-const sectionTitleStyle = {
-  fontFamily: "var(--font-home-sans)",
-  color: "var(--home-ink)",
-  fontWeight: 600,
-  letterSpacing: "-0.02em",
-} as const;
-
-const bodyStyle = {
-  fontFamily: "var(--font-home-sans)",
-  color: "var(--home-ink-muted)",
-} as const;
-
-const strongBodyStyle = {
-  fontFamily: "var(--font-home-sans)",
-  color: "var(--home-ink)",
-  fontWeight: 600,
-} as const;
 
 export default function NowPage() {
   const breadcrumbs = [
@@ -121,198 +106,210 @@ export default function NowPage() {
         }}
       />
 
+      {/* Hero */}
       <section
-        className="home-page home-section min-h-screen"
+        className="c97-band"
+        data-c97-surface="paper"
         aria-label="Now, current focus"
       >
-        <div className="home-shell home-shell-tight space-y-10">
-          <header className="space-y-4">
-            <p className="home-kicker mb-0">
-              Now · Updated {NOW_UPDATED_LABEL} · {NOW_LOCATION}
-            </p>
-            <h1
-              className="mb-0"
-              style={{
-                fontFamily: "var(--font-home-sans)",
-                fontSize: "clamp(2.4rem, 5.5vw, 4rem)",
-                fontWeight: 600,
-                lineHeight: 0.95,
-                letterSpacing: "-0.06em",
-                color: "var(--home-ink)",
-              }}
-            >
-              What I&apos;m working on right now.
-            </h1>
-            <p className="home-body max-w-[52rem]">
-              A living snapshot. Not a résumé, not a backlog. If you&apos;re
-              curious what I&apos;d talk about if we grabbed coffee today, this
-              is it. Inspired by Derek Sivers&apos;{" "}
-              <a
-                href="https://nownownow.com/about"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline underline-offset-2"
-                style={{ color: "var(--home-signal)" }}
-              >
-                /now page movement
-              </a>
-              .
-            </p>
-          </header>
-
-          <div className="space-y-6">
-            <article className="home-card p-6 sm:p-8 space-y-5">
-              <h2 className="text-2xl mb-0" style={sectionTitleStyle}>
-                Focus
-              </h2>
-              <div className="grid gap-5 sm:grid-cols-3">
-                {focus.map((item) => (
-                  <div key={item.title} className="space-y-2">
-                    <p className="home-kicker mb-0">{item.kicker}</p>
-                    <p className="mb-0 text-base" style={strongBodyStyle}>
-                      {item.title}
-                    </p>
-                    <p className="mb-0 text-sm leading-6" style={bodyStyle}>
-                      {item.detail}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </article>
-
-            <article className="home-card p-6 sm:p-8 space-y-4">
-              <h2 className="text-2xl mb-0" style={sectionTitleStyle}>
-                Reading
-              </h2>
-              <ul className="mb-0 space-y-4">
-                {reading.map((book, index) => (
-                  <li
-                    key={book.title}
-                    className="space-y-1 pb-4"
-                    style={
-                      index < reading.length - 1
-                        ? { borderBottom: "1px solid var(--home-rule)" }
-                        : undefined
-                    }
-                  >
-                    <p className="mb-0 text-base" style={strongBodyStyle}>
-                      {book.title}{" "}
-                      <span
-                        className="font-normal"
-                        style={{ color: "var(--home-ink-muted)" }}
-                      >
-                        by {book.author}
-                      </span>
-                    </p>
-                    <p className="mb-0 text-sm leading-6" style={bodyStyle}>
-                      {book.note}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            </article>
-
-            <article className="home-card p-6 sm:p-8 space-y-4">
-              <h2 className="text-2xl mb-0" style={sectionTitleStyle}>
-                Currently building
-              </h2>
-              <p className="mb-0 text-base leading-7" style={bodyStyle}>
-                The projects I&apos;m actively touching. Everything else on this
-                site is on maintenance mode.
-              </p>
-              <ul className="mb-0 grid gap-3 sm:grid-cols-2">
-                {building.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className="group flex flex-col gap-1 rounded-[var(--radius-3xl)] border px-4 py-3 transition-[border-color,background-color]"
-                      style={{
-                        borderColor:
-                          "color-mix(in srgb, var(--home-rule) 82%, var(--home-elev-mix))",
-                        background:
-                          "color-mix(in srgb, var(--home-paper-alt) 76%, var(--home-elev-mix))",
-                      }}
-                    >
-                      <span
-                        className="text-sm"
-                        style={strongBodyStyle}
-                      >
-                        {item.label}
-                      </span>
-                      <span
-                        className="text-sm leading-6"
-                        style={bodyStyle}
-                      >
-                        {item.detail}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </article>
-
-            <article className="home-card p-6 sm:p-8 space-y-4">
-              <h2 className="text-2xl mb-0" style={sectionTitleStyle}>
-                What I&apos;m not doing
-              </h2>
-              <p className="mb-0 text-base leading-7" style={bodyStyle}>
-                Saying no is the more interesting part of a /now page. Here&apos;s
-                what I&apos;m deliberately not working on.
-              </p>
-              <ul
-                className="mb-0 list-disc space-y-1 pl-5 text-base leading-7"
-                style={bodyStyle}
-              >
-                {notBuilding.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </article>
-
-            <article className="home-card p-6 sm:p-8 space-y-3">
-              <h2 className="text-2xl mb-0" style={sectionTitleStyle}>
-                Keep up
-              </h2>
-              <p className="mb-0 text-base leading-7" style={bodyStyle}>
-                The{" "}
-                <Link
-                  href="/changelog"
-                  className="underline underline-offset-2"
-                  style={{ color: "var(--home-signal)" }}
-                >
-                  changelog
-                </Link>{" "}
-                tracks what shipped on this site. The{" "}
-                <Link
-                  href="/writing"
-                  className="underline underline-offset-2"
-                  style={{ color: "var(--home-signal)" }}
-                >
-                  writing archive
-                </Link>{" "}
-                is where longer thinking lands. For anything else,{" "}
-                <Link
-                  href="/contact"
-                  className="underline underline-offset-2"
-                  style={{ color: "var(--home-signal)" }}
-                >
-                  send a note
-                </Link>
-                .
-              </p>
-            </article>
-          </div>
-
-          <footer
-            className="pt-6 text-center text-sm leading-6"
+        <div className="c97-shell">
+          <p className="c97-kicker">
+            Now · Updated {NOW_UPDATED_LABEL} · {NOW_LOCATION}
+          </p>
+          <h1 className="c97-display" style={{ marginTop: "var(--c97-sp-3)" }}>
+            What I&apos;m working on right now.
+          </h1>
+          <p
+            className="c97-lead"
             style={{
-              ...bodyStyle,
-              borderTop: "1px solid var(--home-rule)",
+              marginTop: "var(--c97-sp-3)",
+              maxWidth: "var(--c97-measure-wide)",
             }}
           >
-            Last updated {NOW_UPDATED_LABEL}. If anything on this page looks
-            stale, it probably is. Ping me.
-          </footer>
+            A living snapshot. Not a résumé, not a backlog. If you&apos;re
+            curious what I&apos;d talk about if we grabbed coffee today, this
+            is it. Inspired by Derek Sivers&apos;{" "}
+            <a
+              href="https://nownownow.com/about"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="c97-link"
+            >
+              /now page movement
+            </a>
+            .
+          </p>
+        </div>
+      </section>
+
+      {/* Focus */}
+      <section className="c97-band c97-band-continues" data-c97-surface="paper">
+        <div className="c97-shell">
+          <p className="c97-kicker">Now</p>
+          <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>
+            Focus
+          </h2>
+          <div className="c97-columns" style={{ marginTop: "var(--c97-sp-4)" }}>
+            {focus.map((item) => (
+              <div key={item.title}>
+                <p className="c97-kicker">{item.kicker}</p>
+                <h3
+                  className="c97-serif c97-h3"
+                  style={{ marginTop: "var(--c97-sp-1)" }}
+                >
+                  {item.title}
+                </h3>
+                <p
+                  className="c97-prose"
+                  style={{
+                    marginTop: "var(--c97-sp-1)",
+                    color: "var(--c97-ink-2)",
+                  }}
+                >
+                  {item.detail}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Reading */}
+      <section className="c97-band" data-c97-surface="bone">
+        <div className="c97-shell">
+          <p className="c97-kicker">Now</p>
+          <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>
+            Reading
+          </h2>
+          <ul
+            style={{
+              listStyle: "none",
+              margin: 0,
+              padding: 0,
+              marginTop: "var(--c97-sp-4)",
+            }}
+          >
+            {reading.map((book) => (
+              <li
+                key={book.title}
+                className="c97-row c97-row-stack-sm"
+                style={{
+                  borderTop: "1px solid var(--c97-rule)",
+                  paddingBlock: "var(--c97-sp-3)",
+                }}
+              >
+                <div>
+                  <h3 className="c97-serif c97-h3">{book.title}</h3>
+                  <p
+                    className="c97-prose"
+                    style={{
+                      marginTop: "var(--c97-sp-1)",
+                      color: "var(--c97-ink-2)",
+                    }}
+                  >
+                    {book.note}
+                  </p>
+                </div>
+                <p className="c97-meta">
+                  <span>{book.author}</span>
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Currently building */}
+      <section className="c97-band" data-c97-surface="paper">
+        <div className="c97-shell">
+          <p className="c97-kicker">Now</p>
+          <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>
+            Currently building
+          </h2>
+          <p
+            className="c97-prose"
+            style={{
+              marginTop: "var(--c97-sp-2)",
+              color: "var(--c97-ink-2)",
+            }}
+          >
+            The projects I&apos;m actively touching. Everything else on this
+            site is on maintenance mode.
+          </p>
+          <div className="c97-mosaic" style={{ marginTop: "var(--c97-sp-4)" }}>
+            {building.map((item, index) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                data-c97-surface={TILE_SURFACES[index % TILE_SURFACES.length]}
+                className="c97-tile"
+              >
+                <span className="c97-kicker">{item.label}</span>
+                <span
+                  className="c97-prose"
+                  style={{ maxWidth: "var(--c97-measure-body)" }}
+                >
+                  {item.detail}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* What I'm not doing */}
+      <section className="c97-band" data-c97-surface="bone">
+        <div className="c97-shell">
+          <p className="c97-kicker">Now</p>
+          <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>
+            What I&apos;m not doing
+          </h2>
+          <p
+            className="c97-prose"
+            style={{
+              marginTop: "var(--c97-sp-2)",
+              color: "var(--c97-ink-2)",
+            }}
+          >
+            Saying no is the more interesting part of a /now page. Here&apos;s
+            what I&apos;m deliberately not working on.
+          </p>
+          <ul className="c97-list" style={{ marginTop: "var(--c97-sp-3)" }}>
+            {notBuilding.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Keep up */}
+      <section className="c97-band" data-c97-surface="paper">
+        <div className="c97-shell">
+          <p className="c97-kicker">Now</p>
+          <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>
+            Keep up
+          </h2>
+          <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
+            The{" "}
+            <Link href="/changelog" className="c97-link">
+              changelog
+            </Link>{" "}
+            tracks what shipped on this site. The{" "}
+            <Link href="/writing" className="c97-link">
+              writing archive
+            </Link>{" "}
+            is where longer thinking lands. For anything else,{" "}
+            <Link href="/contact" className="c97-link">
+              send a note
+            </Link>
+            .
+          </p>
+          <p className="c97-meta" style={{ marginTop: "var(--c97-sp-4)" }}>
+            <span>
+              Last updated {NOW_UPDATED_LABEL}. If anything on this page looks
+              stale, it probably is. Ping me.
+            </span>
+          </p>
         </div>
       </section>
     </>

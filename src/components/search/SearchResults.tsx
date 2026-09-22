@@ -13,32 +13,6 @@ interface SearchResultsProps {
   searchTime: number;
 }
 
-const sectionTitleStyle = {
-  fontFamily: "var(--font-home-sans)",
-  color: "var(--home-ink)",
-  fontWeight: 600,
-  letterSpacing: "-0.02em",
-} as const;
-
-const bodyStyle = {
-  fontFamily: "var(--font-home-sans)",
-  color: "var(--home-ink-muted)",
-} as const;
-
-const strongBodyStyle = {
-  fontFamily: "var(--font-home-sans)",
-  color: "var(--home-ink)",
-  fontWeight: 600,
-} as const;
-
-const tagPillStyle = {
-  fontFamily: "var(--font-home-sans)",
-  background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
-  color: "var(--home-ink)",
-  border: "1px solid var(--home-rule)",
-  letterSpacing: "0.02em",
-} as const;
-
 export function SearchResults({
   query,
   results,
@@ -49,20 +23,19 @@ export function SearchResults({
 }: SearchResultsProps) {
   if (isLoading) {
     return (
-      <article className="home-card p-6 sm:p-8">
-        <div className="flex items-center justify-center py-8">
-          <div className="flex items-center gap-3">
-            <div
-              className="h-5 w-5 animate-spin rounded-full border-2 border-t-transparent"
-              style={{ borderColor: "var(--home-ink)", borderTopColor: "transparent" }}
-              aria-hidden="true"
-            />
-            <span className="text-sm" style={bodyStyle}>
-              Searching…
-            </span>
-          </div>
-        </div>
-      </article>
+      <div className="c97-panel" style={{ display: "grid", gap: "var(--c97-sp-2)" }}>
+        <p className="c97-kicker">Searching…</p>
+        <span
+          className="c97-skeleton"
+          style={{ height: "var(--c97-fs-h3)", width: "min(100%, 24rem)" }}
+          aria-hidden="true"
+        />
+        <span
+          className="c97-skeleton"
+          style={{ height: "var(--c97-fs-body)", width: "min(100%, 36rem)" }}
+          aria-hidden="true"
+        />
+      </div>
     );
   }
 
@@ -72,61 +45,53 @@ export function SearchResults({
 
   if (hasSearched && results.length === 0) {
     return (
-      <article className="home-card p-6 sm:p-10 text-center">
-        <div className="mx-auto max-w-md space-y-4">
-          <Search
-            className="mx-auto h-12 w-12"
-            style={{ color: "var(--home-ink-muted)" }}
-            aria-hidden="true"
-          />
-          <h2 className="text-xl mb-0" style={sectionTitleStyle}>
-            No results found
-          </h2>
-          <p className="mb-0 text-base leading-7" style={bodyStyle}>
-            {query ? (
-              <>
-                No results for &ldquo;<strong style={strongBodyStyle}>{query}</strong>&rdquo;. Try different keywords or remove filters.
-              </>
-            ) : (
-              "Please enter a search query to find content."
-            )}
-          </p>
-          <div className="space-y-2 pt-2 text-left">
-            <p className="mb-0 text-sm" style={{ ...sectionTitleStyle, fontSize: "0.88rem" }}>
-              Suggestions
-            </p>
-            <ul className="mb-0 space-y-1 text-sm leading-6" style={bodyStyle}>
-              <li>• Try broader or different keywords</li>
-              <li>• Check spelling and try again</li>
-              <li>• Remove filters to expand results</li>
-              <li>• Browse categories directly</li>
-            </ul>
-          </div>
-        </div>
-      </article>
+      <div className="c97-panel" style={{ display: "grid", gap: "var(--c97-sp-2)" }}>
+        <Search
+          className="h-5 w-5"
+          style={{ color: "var(--c97-label)" }}
+          aria-hidden="true"
+        />
+        <h2 className="c97-serif c97-h2">No results found</h2>
+        <p className="c97-prose" style={{ color: "var(--c97-ink-2)" }}>
+          {query ? (
+            <>
+              No results for &ldquo;<strong style={{ color: "var(--c97-ink)", fontWeight: 600 }}>{query}</strong>&rdquo;. Try different keywords or remove filters.
+            </>
+          ) : (
+            "Please enter a search query to find content."
+          )}
+        </p>
+        <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-2)" }}>
+          Suggestions
+        </p>
+        <ul className="c97-list">
+          <li>Try broader or different keywords</li>
+          <li>Check spelling and try again</li>
+          <li>Remove filters to expand results</li>
+          <li>Browse categories directly</li>
+        </ul>
+      </div>
     );
   }
 
   return (
-    <div className="space-y-6">
-      <div className="space-y-2">
-        <p className="home-kicker mb-0">Results</p>
-        <h2 className="text-2xl mb-0" style={sectionTitleStyle}>
-          {results.length < totalResults
-            ? `Showing ${results.length.toLocaleString()} of ${totalResults.toLocaleString()} results`
-            : `${totalResults.toLocaleString()} result${totalResults !== 1 ? 's' : ''} found`}
-          {query ? (
-            <>
-              {' '}for &ldquo;<span style={{ color: "var(--home-ink)" }}>{query}</span>&rdquo;
-            </>
-          ) : null}
-        </h2>
-        <p className="mb-0 text-sm" style={bodyStyle}>
-          Returned in {searchTime}ms
-        </p>
-      </div>
+    <div>
+      <p className="c97-kicker">Results</p>
+      <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>
+        {results.length < totalResults
+          ? `Showing ${results.length.toLocaleString()} of ${totalResults.toLocaleString()} results`
+          : `${totalResults.toLocaleString()} result${totalResults !== 1 ? 's' : ''} found`}
+        {query ? (
+          <>
+            {' '}for &ldquo;{query}&rdquo;
+          </>
+        ) : null}
+      </h2>
+      <p className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
+        <span className="c97-tabular">Returned in {searchTime}ms</span>
+      </p>
 
-      <div className="space-y-4">
+      <div style={{ marginTop: "var(--c97-sp-3)" }}>
         {results.map((result) => (
           <SearchResultCard key={result.id} result={result} query={query} />
         ))}
@@ -150,12 +115,12 @@ function SearchResultCard({ result, query }: SearchResultCardProps) {
   const getTypeIcon = (type: SearchResult["type"]) => {
     switch (type) {
       case 'post':
-        return <FileText className="w-3.5 h-3.5" aria-hidden="true" />;
+        return <FileText className="h-4 w-4" aria-hidden="true" />;
       case 'project':
-        return <Briefcase className="w-3.5 h-3.5" aria-hidden="true" />;
+        return <Briefcase className="h-4 w-4" aria-hidden="true" />;
       case 'page':
       default:
-        return <House className="w-3.5 h-3.5" aria-hidden="true" />;
+        return <House className="h-4 w-4" aria-hidden="true" />;
     }
   };
 
@@ -182,100 +147,94 @@ function SearchResultCard({ result, query }: SearchResultCardProps) {
     const regex = new RegExp(`(${words.join('|')})`, 'gi');
     return safe.replace(
       regex,
-      '<mark style="background-color: color-mix(in srgb, var(--home-signal) 40%, transparent); color: var(--home-ink); padding: 0 2px; border-radius: 2px;">$1</mark>'
+      '<mark style="background-color: var(--c97-field); color: var(--c97-ink); padding: 0 2px;">$1</mark>'
     );
   };
 
-  const typePillStyle = {
-    fontFamily: "var(--font-home-sans)",
-    background: "var(--home-ink)",
-    color: "var(--home-paper)",
-    letterSpacing: "0.02em",
-  } as const;
+  const visibleTags = result.tags?.slice(0, 4) ?? [];
+  const extraTagCount = (result.tags?.length ?? 0) - visibleTags.length;
 
   return (
-    <article className="home-card p-6 transition-transform duration-200 hover:translate-x-1">
-      <Link href={result.url} className="block space-y-3">
-        <div className="flex items-start justify-between gap-4">
-          <div className="flex-1 min-w-0 space-y-2">
-            <div className="flex flex-wrap items-center gap-2">
-              <span
-                className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold"
-                style={typePillStyle}
-              >
-                {getTypeIcon(result.type)}
-                {TYPE_LABELS[result.type]}
-              </span>
-              {result.category && (
-                <span
-                  className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
-                  style={tagPillStyle}
-                >
-                  {result.category}
-                </span>
-              )}
-            </div>
-
-            <h3
-              className="text-lg mb-0 line-clamp-2"
-              style={sectionTitleStyle}
-            >
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: highlightQuery(result.title, query),
-                }}
-              />
-            </h3>
-          </div>
-
-          {result.publishedAt && (
-            <div
-              className="flex items-center gap-1 text-xs flex-shrink-0"
-              style={bodyStyle}
-            >
-              <Clock className="w-3 h-3" aria-hidden="true" />
-              {new Date(result.publishedAt).toLocaleDateString()}
-            </div>
-          )}
-        </div>
-
-        <p className="mb-0 text-sm leading-6 line-clamp-3" style={bodyStyle}>
+    <article
+      className="c97-row c97-row-stack-sm"
+      style={{
+        borderTop: "1px solid var(--c97-rule)",
+        paddingBlock: "var(--c97-sp-3)",
+      }}
+    >
+      <div style={{ minWidth: 0 }}>
+        <h3 className="c97-serif c97-h3">
+          <Link
+            href={result.url}
+            className="c97-link"
+            style={{ display: "inline-block", minHeight: 44, textDecorationColor: "var(--c97-rule)" }}
+          >
+            <span
+              dangerouslySetInnerHTML={{
+                __html: highlightQuery(result.title, query),
+              }}
+            />
+          </Link>
+        </h3>
+        <p
+          className="c97-prose line-clamp-3"
+          style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}
+        >
           <span
             dangerouslySetInnerHTML={{
               __html: highlightQuery(result.excerpt, query),
             }}
           />
         </p>
-
-        {result.tags && result.tags.length > 0 && (
-          <div className="flex flex-wrap gap-1.5">
-            {result.tags.slice(0, 4).map((tag) => (
-              <span
-                key={tag}
-                className="inline-flex items-center rounded-full px-2.5 py-0.5 text-2xs font-semibold"
-                style={tagPillStyle}
-              >
+        {visibleTags.length > 0 && (
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "var(--c97-sp-1)",
+              marginTop: "var(--c97-sp-2)",
+            }}
+          >
+            {visibleTags.map((tag) => (
+              <span key={tag} className="c97-chip">
                 {tag}
               </span>
             ))}
-            {result.tags.length > 4 && (
-              <span
-                className="inline-flex items-center rounded-full px-2.5 py-0.5 text-2xs font-semibold"
-                style={tagPillStyle}
-              >
-                +{result.tags.length - 4} more
-              </span>
+            {extraTagCount > 0 && (
+              <span className="c97-chip">+{extraTagCount} more</span>
             )}
           </div>
         )}
-
-        <div
-          className="text-xs truncate"
-          style={{ ...bodyStyle, opacity: 0.75 }}
+        <p
+          className="c97-mono"
+          style={{
+            marginTop: "var(--c97-sp-2)",
+            fontSize: "var(--c97-fs-label)",
+            color: "var(--c97-label)",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+          }}
         >
           isaacvazquez.com{result.url}
-        </div>
-      </Link>
+        </p>
+      </div>
+
+      <p className="c97-meta">
+        <span style={{ display: "inline-flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>
+          {getTypeIcon(result.type)}
+          {TYPE_LABELS[result.type]}
+        </span>
+        {result.category && <span>{result.category}</span>}
+        {result.publishedAt && (
+          <span style={{ display: "inline-flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>
+            <Clock className="h-4 w-4" aria-hidden="true" />
+            <span className="c97-tabular">
+              {new Date(result.publishedAt).toLocaleDateString()}
+            </span>
+          </span>
+        )}
+      </p>
     </article>
   );
 }

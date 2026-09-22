@@ -4,7 +4,7 @@ The single pre-merge checklist for any new or edited page, component, or surface
 this repo, run through this before opening a PR. It distills the rules that were previously scattered
 across `STYLING.md`, `CLAUDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
 
-**Last updated:** 2026-09-21 · Derived from the 2026-06 site-wide design audit (`docs/DESIGN_AUDIT_2026-06.md`).
+**Last updated:** 2026-09-22 · Derived from the 2026-06 site-wide design audit (`docs/DESIGN_AUDIT_2026-06.md`).
 
 > When in doubt, copy a reference implementation instead of inventing: `PortfolioPerformanceChart`
 > (themeable D3), `github-trending-pulse` (touch targets + scoped transitions + token micro-type),
@@ -105,10 +105,12 @@ across `STYLING.md`, `CLAUDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
 
 ## Consistency
 
-- [ ] Extends the existing visual language rather than inventing a new one; reuses token helpers
-      (`home-card`, `home-kicker`, `SurfaceCard`, etc.) before route-specific styling.
-- [ ] Injected/`dangerouslySetInnerHTML` markup has a defined prose class styling `a/ul/ol/code/strong`
-      with `--home-*` tokens (don't leave links default-blue; `.changelog-prose` in `globals.css` is the
-      reference).
+- [ ] Extends the existing visual language rather than inventing a new one. On a migrated route
+      compose `c97-band` sections from the `catalog97.css` vocabulary (`.c97-row`, `.c97-columns`,
+      `.c97-panel`, `.c97-stat`, `.c97-chip`, `.c97-table`); on a route still on the bridge reuse the
+      token helpers (`home-card`, `home-kicker`, `SurfaceCard`, etc.) before route-specific styling.
+- [ ] Injected/`dangerouslySetInnerHTML` markup renders inside `.c97-article` (`catalog97.css`), which
+      styles `a/ul/ol/code/pre/blockquote/table/img` in the palette. Don't leave links default-blue and
+      don't hand-roll a second prose class.
 - [ ] `/admin` is editorial-exempt, and `/arcade` keeps its deliberate retro-CRT aesthetic — but
       a11y/responsive/motion rules still apply to both.
