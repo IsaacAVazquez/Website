@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import styles from "./Catalog97Home.module.css";
 import { Catalog97Shell } from "./Catalog97Shell";
 import { Catalog97Plate, Catalog97Slot } from "./Catalog97Primitives";
 import {
@@ -29,21 +31,6 @@ function formatUtcDay(iso: string): string {
     : date.toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
 }
 
-/**
- * Home, in the Catalog 97 language.
- *
- * The longest of the seven routes, per the design, and the one that carries
- * the full sequence of Anton plate numerals from 01 through 05. Band order is
- * paper, pine, chocolate, bone, tobacco, which holds the two rules that govern
- * every route here: at least two full-width brown bands, and never two pine
- * bands back to back. Selected work took Pine over the dashboards table
- * because it is the heavier of the two, and the route needed the weight.
- *
- * The hero carries the 35mm photograph the design puts there, over the tobacco
- * field rather than instead of it, so the band keeps its color while the image
- * decodes. The design's own HomePage source names this exact asset
- * (`public/images/headshot-home.webp`) in that position.
- */
 export function Catalog97Home({
   featuredProjects,
   recentPosts,
@@ -61,106 +48,39 @@ export function Catalog97Home({
 
   return (
     <Catalog97Shell>
-      {/* 01 — Hero */}
-      <section
-        className="c97-band"
-        data-c97-surface="paper"
-        style={{ paddingBottom: "var(--c97-sp-6)" }}
-      >
-        {/*
-          The pitch and the field sit side by side above roughly 790px and stack
-          below it, and the pitch is first in the DOM either way.
-
-          They were one centered column before, with the field between the
-          kicker and the h1. Measured at 1440x900, that put the h1 1207px down
-          the page, so the whole first screen was the plate, one 11px kicker,
-          and 775px of flat tobacco, which is 86% of the viewport, while the
-          headline, the paragraph and both buttons sat below the fold. At 390
-          the headline started at 775px in an 844px screen, which is the same
-          defect. The field itself is not the problem and keeps its position and
-          proportions. What was wrong is that a route in Persuade mode led with
-          it and buried the argument underneath it.
-        */}
-        <div
-          className="c97-shell"
-          style={{
-            display: "grid",
-            gridTemplateColumns:
-              "repeat(auto-fit, minmax(min(100%, 340px), 1fr))",
-            gap: "var(--c97-sp-5)",
-            alignItems: "start",
-          }}
-        >
-          <div>
-            <Catalog97Plate value="01" />
-            <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-2)" }}>
-              Portfolio · Product and analytics
-            </p>
-
-            <div
-              className="c97-hairline"
-              style={{ marginTop: "var(--c97-sp-4)" }}
-            />
-            <h1
-              className="c97-display"
-              style={{
-                marginTop: "var(--c97-sp-3)",
-                lineHeight: "var(--c97-lh-display)",
-                textWrap: "balance",
-              }}
-            >
-              I build tools that make hard problems easier to act on.
+      <section className={`c97-band ${styles.hero}`} data-c97-surface="paper">
+        <div className={`c97-shell ${styles.heroGrid}`}>
+          <div className={styles.heroCopy}>
+            <p className="c97-kicker">Isaac Vazquez · Product and analytics</p>
+            <h1 className={`c97-display ${styles.headline}`}>
+              I build tools that make <em>hard problems</em> easier to act on.
             </h1>
-            <div
-              className="c97-hairline"
-              style={{
-                width: "min(100%,448px)",
-                marginTop: "var(--c97-sp-3)",
-              }}
-            />
-
-            <p
-              className="c97-prose"
-              style={{
-                marginTop: "var(--c97-sp-4)",
-                maxWidth: "var(--c97-measure-body)",
-              }}
-            >
-              Product manager and builder, Berkeley Haas MBA &rsquo;27. I came
-              to product through quality engineering at Civitech, and every
-              tool here is live, with the ones that read outside data
-              refreshing on a schedule.
+            <p className={`c97-prose ${styles.intro}`}>
+              I’m a product manager and builder at Berkeley Haas, MBA ’27.
+              I came to product through quality engineering at Civitech.
+              Here you’ll find my work, the tools I build, and what I’m learning.
             </p>
-
-            <div
-              style={{
-                display: "flex",
-                gap: "var(--c97-sp-2)",
-                marginTop: "var(--c97-sp-3)",
-                flexWrap: "wrap",
-              }}
-            >
-              <Link className="c97-btn" href="/portfolio">
-                See the work
-              </Link>
-              <Link className="c97-btn-ghost" href="/contact">
-                Start a conversation
-              </Link>
+            <div className={styles.actions}>
+              <Link className="c97-btn" href="/portfolio">See the work <span aria-hidden="true">↗</span></Link>
+              <Link className="c97-btn-ghost" href="/contact">Start a conversation</Link>
             </div>
           </div>
-
-          {/*
-            No caption. The one this carried was the design's photo direction
-            ("warm 35mm, natural light, a little grain"), which described a
-            picture that was never taken rather than the headshot on screen.
-          */}
-          <Catalog97Slot
-            surface="tobacco"
-            ratio="4 / 5"
-            src="/images/headshot-home.webp"
-            alt="Isaac Vazquez"
-            priority
-          />
+          <div className={styles.portrait}>
+            <div className={styles.photoFrame}>
+              <Catalog97Slot surface="tobacco" ratio="4 / 5" src="/images/headshot-home.webp" alt="Isaac Vazquez" priority />
+            </div>
+            <div className={styles.portraitNote} data-c97-surface="pine">
+              <span className="c97-kicker">Based in</span>
+              <span className="c97-serif c97-h3">Berkeley, California</span>
+              <span className={styles.noteArrow} aria-hidden="true">↗</span>
+            </div>
+          </div>
+        </div>
+        <div className={`c97-shell ${styles.index}`}>
+          <span className="c97-kicker">Explore the site</span>
+          <Link href="/portfolio"><span>{heroIndex.projectCount}</span> Projects <span aria-hidden="true">↗</span></Link>
+          <Link href="/dashboards"><span>{heroIndex.liveToolCount}</span> Live tools <span aria-hidden="true">↗</span></Link>
+          <Link href="/writing"><span>{heroIndex.essayCount}</span> Essays <span aria-hidden="true">↗</span></Link>
         </div>
       </section>
 
@@ -214,46 +134,20 @@ export function Catalog97Home({
             </div>
           </div>
 
-          <div
-            style={{
-              flex: "1 1 460px",
-              display: "grid",
-              gap: "var(--c97-sp-4)",
-            }}
-          >
+          <div className={styles.projects}>
             {featuredProjects.map((project, index) => (
-              <article key={project.slug} className="c97-row c97-row-numbered">
-                <div
-                  className="c97-kicker c97-tabular"
-                  aria-hidden="true"
-                  style={{ color: "var(--c97-ink-2)" }}
-                >
-                  {String(index + 1).padStart(2, "0")}
-                </div>
-                <div>
+              <article key={project.slug} className={styles.project}>
+                <Link href={`/portfolio/${project.slug}`} className={styles.projectImage} tabIndex={-1} aria-hidden="true">
+                  <Image src={`/images/projects/${project.slug}.svg`} alt="" width={720} height={480} />
+                  <span className={styles.projectNumber}>{String(index + 1).padStart(2, "0")}</span>
+                </Link>
+                <div className={styles.projectCopy}>
+                  <p className="c97-kicker">{project.role} · {project.timeline}</p>
                   <h3 className="c97-serif c97-h3">
-                    <Link
-                      href={`/portfolio/${project.slug}`}
-                      style={{ textDecoration: "none" }}
-                    >
-                      {project.title}
-                    </Link>
+                    <Link href={`/portfolio/${project.slug}`}>{project.title}<span aria-hidden="true"> ↗</span></Link>
                   </h3>
-                  <p
-                    className="c97-prose"
-                    style={{
-                      marginTop: "var(--c97-sp-1)",
-                      color: "var(--c97-ink-2)",
-                    }}
-                  >
-                    {getProjectCardSummary(project)}
-                  </p>
-                </div>
-                <div
-                  className="c97-kicker"
-                  style={{ color: "var(--c97-ink-2)" }}
-                >
-                  {project.timeline}
+                  <p className="c97-prose">{getProjectCardSummary(project)}</p>
+                  <p className={styles.projectMetric}>{project.metrics}</p>
                 </div>
               </article>
             ))}
@@ -282,159 +176,62 @@ export function Catalog97Home({
             <Catalog97Plate value="03" />
           </div>
 
-          <table
-            style={{
-              width: "100%",
-              borderCollapse: "collapse",
-              textAlign: "left",
-              marginTop: "var(--c97-sp-3)",
-            }}
-          >
-            <thead>
-              <tr>
-                <th
-                  scope="col"
-                  className="c97-kicker"
-                  style={{
-                    width: "38%",
-                    fontWeight: 400,
-                    padding: "0 var(--c97-sp-3) var(--c97-sp-2) 0",
-                  }}
-                >
-                  Dashboard
-                </th>
-                <th
-                  scope="col"
-                  className="c97-kicker"
-                  style={{
-                    fontWeight: 400,
-                    padding: "0 0 var(--c97-sp-2)",
-                  }}
-                >
-                  Category
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {dashboardTools.slice(0, 5).map((tool) => (
-                <tr key={tool.slug}>
-                  <th
-                    scope="row"
-                    className="c97-serif c97-h3"
-                    style={{
-                      fontWeight: 400,
-                      textAlign: "left",
-                      verticalAlign: "baseline",
-                      padding:
-                        "var(--c97-sp-2) var(--c97-sp-3) var(--c97-sp-2) 0",
-                    }}
-                  >
-                    {tool.isExternal ? (
-                      <a
-                        href={tool.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{ textDecoration: "none" }}
-                      >
-                        {tool.title}
-                      </a>
-                    ) : (
-                      <Link href={tool.href} style={{ textDecoration: "none" }}>
-                        {tool.title}
-                      </Link>
-                    )}
-                  </th>
-                  <td
-                    className="c97-prose"
-                    style={{
-                      color: "var(--c97-ink-2)",
-                      verticalAlign: "baseline",
-                      padding: "var(--c97-sp-2) 0",
-                    }}
-                  >
-                    {tool.groupLabel}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
-          {/*
-            The three live readouts. Each fails soft to null upstream, so a
-            missing snapshot drops its column rather than rendering an empty
-            slot or an invented number.
-          */}
-          <div
-            className="c97-columns"
-            style={{ marginTop: "var(--c97-sp-5)" }}
-          >
+          <p className={`c97-prose ${styles.dashboardIntro}`}>
+            I build tools to follow the things I’m curious about, from markets
+            and earthquakes to the next launch. Explore a reading or open a tool below.
+          </p>
+          <div className={styles.readouts}>
             {liveFeed.quake ? (
-              <div>
-                <div
-                  className="c97-serif c97-tabular"
-                  style={{
-                    fontSize: "var(--c97-fs-h1)",
-                    lineHeight: "var(--c97-lh-display)",
-                  }}
-                >
-                  M{liveFeed.quake.magnitude.toFixed(1)}
-                </div>
-                <p
-                  className="c97-kicker"
-                  style={{ marginTop: "var(--c97-sp-2)" }}
-                >
-                  Latest quake · {liveFeed.quake.agoLabel}
-                </p>
-              </div>
+              <Link href="/earthquake-pulse" className={styles.readout} data-c97-surface="bone">
+                <span className={styles.readoutLabel}>Earthquake Pulse <span aria-hidden="true">↗</span></span>
+                <span className={styles.readoutValue}>M{liveFeed.quake.magnitude.toFixed(1)}</span>
+                <span className={styles.readoutDetail}>{liveFeed.quake.place}</span>
+                <svg className={styles.quakeBars} viewBox="0 0 300 56" preserveAspectRatio="none" role="img" aria-label="Relative magnitudes of recent earthquakes, oldest to newest">
+                  {liveFeed.quake.recentMagnitudes.map((magnitude, index, values) => {
+                    const height = Math.max(2, magnitude / Math.max(0.1, ...values) * 52);
+                    return <rect key={index} x={index * 300 / values.length} y={56 - height} width={Math.max(1, 300 / values.length - 5)} height={height} />;
+                  })}
+                </svg>
+                <span className={styles.readoutFoot}>Latest quake · {liveFeed.quake.agoLabel} · {liveFeed.quake.depthKm} km deep</span>
+              </Link>
             ) : null}
-
             {liveFeed.market ? (
-              <div>
-                <div
-                  className="c97-serif c97-tabular"
-                  style={{
-                    fontSize: "var(--c97-fs-h1)",
-                    lineHeight: "var(--c97-lh-display)",
-                  }}
-                >
-                  {liveFeed.market.delta}
+              <Link href="/investments" className={styles.readout} data-c97-surface="paper">
+                <span className={styles.readoutLabel}>Market snapshot <span aria-hidden="true">↗</span></span>
+                <span className={styles.readoutValue}>{liveFeed.market.delta}</span>
+                <span className={styles.readoutDetail}>{liveFeed.market.name} · {liveFeed.market.symbol}</span>
+                <div className={styles.marketReading}>
+                  <span className="c97-kicker">Daily change</span>
+                  <span className="c97-serif c97-h2">{liveFeed.market.changePct > 0 ? "+" : ""}{liveFeed.market.changePct.toFixed(2)}%</span>
                 </div>
-                <p
-                  className="c97-kicker"
-                  style={{ marginTop: "var(--c97-sp-2)" }}
-                >
-                  {liveFeed.market.asOfLabel
-                    ? `${liveFeed.market.symbol} move on ${liveFeed.market.asOfLabel}`
-                    : `${liveFeed.market.symbol} day move`}{" "}
-                  · {liveFeed.market.changePct.toFixed(2)}%
-                </p>
-              </div>
+                <span className={styles.readoutFoot}>{liveFeed.market.asOfLabel ? `Close on ${liveFeed.market.asOfLabel}` : "Snapshot close"} · ${liveFeed.market.price}</span>
+              </Link>
             ) : null}
-
             {liveFeed.launch ? (
-              <div>
-                <div
-                  className="c97-serif"
-                  style={{
-                    fontSize: "var(--c97-fs-h3)",
-                    lineHeight: "var(--c97-lh-tight)",
-                  }}
-                >
-                  {liveFeed.launch.mission}
-                </div>
-                <p
-                  className="c97-kicker"
-                  style={{ marginTop: "var(--c97-sp-2)" }}
-                >
-                  Next launch {formatUtcDay(liveFeed.launch.dateUtc)} · {liveFeed.launch.vehicle}
-                </p>
-              </div>
+              <Link href="/spacex-mission-control" className={styles.readout} data-c97-surface="pine">
+                <span className={styles.readoutLabel}>SpaceX Mission Control <span aria-hidden="true">↗</span></span>
+                <span className={styles.readoutValue}>{formatUtcDay(liveFeed.launch.dateUtc)}</span>
+                <span className={styles.readoutDetail}>{liveFeed.launch.mission}</span>
+                <div className={styles.launchOrbit} aria-hidden="true"><span>↗</span></div>
+                <span className={styles.readoutFoot}>Next launch · {liveFeed.launch.vehicle}</span>
+              </Link>
             ) : null}
           </div>
-
-          <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-4)" }}>
-            {liveFeed.sourceNote}
-          </p>
+          <p className={`c97-kicker ${styles.sourceNote}`}>{liveFeed.sourceNote}</p>
+          <div className={styles.toolDirectory}>
+            {dashboardTools.slice(0, 6).map((tool, index) => {
+              const content = <>
+                <span className={styles.toolOrdinal} aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                <span><span className="c97-kicker">{tool.groupLabel}</span><span className={`c97-serif c97-h3 ${styles.toolTitle}`}>{tool.title}</span></span>
+                <span className={styles.toolArrow} aria-hidden="true">↗</span>
+              </>;
+              return tool.isExternal ? (
+                <a key={tool.slug} href={tool.href} target="_blank" rel="noopener noreferrer" className={styles.toolLink}>{content}</a>
+              ) : (
+                <Link key={tool.slug} href={tool.href} className={styles.toolLink}>{content}</Link>
+              );
+            })}
+          </div>
         </div>
       </section>
 
@@ -444,56 +241,26 @@ export function Catalog97Home({
           <div className="c97-shell">
             <h2 className="c97-serif c97-h2">Recent writing</h2>
 
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                alignItems: "baseline",
-                gap: "var(--c97-sp-4)",
-                marginTop: "var(--c97-sp-3)",
-              }}
-            >
-              <Catalog97Plate value="04" style={{ flex: "none" }} />
-              {/*
-                This carried `c97-display`, which resolves to --c97-fs-h1, so
-                an h3 rendered at 52px under a 32px h2 and tied the page h1
-                exactly. On a Persuade route the h1 is the value proposition and
-                a blog post title should not draw level with it.
-
-                --c97-fs-h3 is the step, not --c97-fs-h2, because h2 is what the
-                rubric above it uses and matching it would put the child exactly
-                on its parent, which is the same defect one step over. There is
-                nothing between 32px and 52px to reach for: the scale is frozen
-                at 9 steps and --c97-fs-display, the only value in that gap at
-                74px, has no consumer anywhere in the codebase, so adding one
-                would be a typographic decision for the whole world rather than
-                a fix for this band.
-
-                26px is also what bands 02 and 03 give their items, so every
-                rubric on this route is 32px now and every item under one is
-                26px. The lead keeps its tier over the two posts below it,
-                which drop to --c97-fs-lead, and it keeps the plate beside it.
-              */}
-              <h3
-                className="c97-serif c97-h3"
-                style={{ flex: "1 1 380px" }}
-              >
-                <Link
-                  href={`/writing/${leadPost.slug}`}
-                  style={{ textDecoration: "none" }}
-                >
-                  {leadPost.title}
+            <article className={styles.leadArticle}>
+              {leadPost.coverImage && !leadPost.coverImage.includes("opengraph-image") ? (
+                <Link href={`/writing/${leadPost.slug}`} className={styles.articleImage} tabIndex={-1} aria-hidden="true">
+                  <Image src={leadPost.coverImage} alt="" fill sizes="(max-width: 790px) 100vw, 50vw" />
                 </Link>
-              </h3>
-            </div>
-
-            <p className="c97-prose" style={{ marginTop: "var(--c97-sp-3)" }}>
-              {leadPost.excerpt}
-            </p>
-            <p className="c97-meta" style={{ marginTop: "var(--c97-sp-2)" }}>
-              <span className="c97-tabular">{leadPost.readingTime}</span>
-              <span>{leadPost.category}</span>
-            </p>
+              ) : (
+                <div className={styles.editorialCover} data-c97-surface="paper" aria-hidden="true">
+                  <span className="c97-kicker">Essays &amp; field notes</span>
+                  <span className={styles.editorialNumber}>04</span>
+                  <span className="c97-serif c97-h3">What I’m learning<br />as I build.</span>
+                </div>
+              )}
+              <div>
+                <p className="c97-kicker">From my notebook · {leadPost.category}</p>
+                <h3 className="c97-serif c97-h2"><Link href={`/writing/${leadPost.slug}`}>{leadPost.title}</Link></h3>
+                <p className="c97-prose">{leadPost.excerpt}</p>
+                <p className="c97-meta">{leadPost.readingTime}</p>
+                <Link href={`/writing/${leadPost.slug}`} className="c97-sectionlink">Read the essay <span aria-hidden="true">↗</span></Link>
+              </div>
+            </article>
 
             {followingPosts.map((post) => (
               <div
