@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-22T00:11:37.058Z",
+  "generatedAt": "2026-09-22T14:05:40.915Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-09-22T00:11:32.133Z"
+    "generatedAt": "2026-09-22T14:05:35.011Z"
   },
   "upcomingLaunches": [
     {
@@ -320,11 +320,11 @@
       "upcoming": true,
       "success": null,
       "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-10-10T00:00:00Z",
-      "dateUnix": 1791590400,
-      "dateLocal": "2026-10-10T00:00:00Z",
-      "datePrecision": "day",
-      "tbd": true,
+      "dateUtc": "2026-10-10T16:00:00Z",
+      "dateUnix": 1791648000,
+      "dateLocal": "2026-10-10T16:00:00Z",
+      "datePrecision": "hour",
+      "tbd": false,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
       "launchpadName": "Space Launch Complex 4E",
@@ -335,7 +335,7 @@
       "payloadCount": 27,
       "capsuleCount": 0,
       "coreCount": 1,
-      "hasExactTime": false,
+      "hasExactTime": true,
       "isStaleSchedule": false,
       "links": {
         "webcast": null,
@@ -2843,6 +2843,6 @@
       }
     ],
     "rangeLabel": "Oct 25 – Sep 26",
-    "generatedAt": "2026-09-22T00:11:37.058Z"
+    "generatedAt": "2026-09-22T14:05:40.915Z"
   }
 }
