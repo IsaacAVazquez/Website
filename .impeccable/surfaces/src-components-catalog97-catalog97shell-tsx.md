@@ -7,13 +7,13 @@ related_targets: ["src/components/catalog97/Catalog97Header.tsx","src/components
 
 # Catalog 97 shell surface brief
 
-**Scope.** `src/components/catalog97/Catalog97Shell.tsx`. It supplies the header, the only `main` landmark, and the footer (which has carried the script emblem since the pine wordmark band was removed on 2026-08-03) for all seven Catalog 97 routes, so an edit here changes every one of them at once. `StaticHeader` and `ConditionalLayout` both stand down on these routes, which is why this file owns the chrome rather than sharing it.
+**Scope.** `src/components/catalog97/Catalog97Shell.tsx`. It supplies the header, the only `main` landmark, and the footer (which has carried the script emblem since the pine wordmark band was removed on 2026-08-03) for every route on the site as of 2026-09-16. The seven designed Catalog 97 routes render it themselves, and `ConditionalLayout` wraps every other route, `/admin` included, in `Catalog97ToolShell`, which is this shell plus an optional band. So an edit here changes every route at once. `StaticHeader`, `Footer.tsx`, and `navlinks.tsx` were deleted in that change, and this file is the only source of chrome.
 
 **Visitor mode.** Operate. The footer is wayfinding and the header is navigation, so scanability and consistency outrank expression in both.
 
 **Job / action.** Get oriented, then leave for the right route.
 
-**Visual world: Catalog 97, not Working Instrument.** `DESIGN.md` describes The Working Instrument and governs the other ~40 routes. It does NOT govern this file. `context.mjs` auto-loads it anyway, so a pass that treats it as the spec here will read every deliberate Catalog 97 decision as a violation and manufacture false findings. Tokens live in `src/app/catalog97.css`.
+**Visual world: Catalog 97, not Working Instrument.** `DESIGN.md` describes The Working Instrument, and until the bridge on 2026-09-16 it governed every other route. Those routes now render inside `Catalog97ToolShell` and are Catalog 97 too, so `DESIGN.md` is stale everywhere until the close-out PR rewrites it. It does NOT govern this file. `context.mjs` auto-loads it anyway, so a pass that treats it as the spec here will read every deliberate Catalog 97 decision as a violation and manufacture false findings. Tokens live in `src/app/catalog97.css`.
 
 **Settled 2026-08-03 (layout). The footer has its own grid and no longer borrows `.c97-columns`.** The footer holds one colophon paragraph and three short link lists, and those are not equivalent content, so equal tracks were a framework default rather than a decision. On four equal 219px tracks the colophon set at 27 characters a line, well under the 34ch its own `--c97-measure-body` already allows, which means the track and not the token was what bound it. `.c97-footer-grid` gives the colophon `2fr` against `1fr` for each list above 1080px, so at 1440 the tracks are 350px and three of 175px, the paragraph reaches its 34ch cap at 284px, and "Accessibility", the widest label at 124px, still clears its 175px column with room. The footer also came down from 510px to 436px, because the paragraph stopped wrapping into a ribbon.
 

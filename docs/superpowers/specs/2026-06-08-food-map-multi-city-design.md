@@ -3,6 +3,8 @@
 **Date:** 2026-06-08
 **Status:** Approved, in implementation
 **Route:** `/food-map` (unchanged)
+**Status, 2026-09-21.** Shipped on 2026-06-08 with deviations. The data grew to ten cities and 54 places the same day, the page metadata still names six, and the 2026-07-20 restyle moved the map onto its own `--fm-*` tokens rather than `--home-*`. This is the only description of the data and state model, so it stays current for the family 8 migration.
+
 
 ## Problem
 

@@ -2,14 +2,16 @@
 
 Current component map for the live application.
 
-**Last updated:** 2026-08-11
+**Last updated:** 2026-09-21
 
 > Seven routes (`/`, `/portfolio`, `/writing`, `/dashboards`, `/about`, `/resume`,
 > `/contact`) render Catalog 97 composition roots from `src/components/catalog97/`.
-> Every other route still runs on Working Instrument. The `*Instrument` composition
+> Every other route, `/admin` included, renders inside `Catalog97ToolShell`, so the
+> whole site shares one header and one footer. The `*Instrument` composition
 > roots that used to own those seven were deleted when Catalog 97 replaced them, as
-> were the older single-purpose homepage components this doc once listed. Anything
-> still on disk but unrouted is under *Legacy Or Unwired Components*.
+> were the older single-purpose homepage components this doc once listed. The
+> Working Instrument `StaticHeader`, `Footer`, and `ContactCta` were deleted on
+> 2026-09-16. See `AGENTS.md` for the shell description.
 
 ---
 
@@ -19,27 +21,26 @@ Current component map for the live application.
 
 | Component | File | Role |
 |----------|------|------|
-| `StaticHeader` | `src/components/StaticHeader.tsx` | Global sticky navigation |
-| `ConditionalLayout` | `src/components/ConditionalLayout.tsx` | Route-aware content wrapper and footer selection |
-| `Footer` | `src/components/Footer.tsx` | Full or compact footer |
+| `ConditionalLayout` | `src/components/ConditionalLayout.tsx` | Passes the seven designed routes through untouched and wraps every other route in `Catalog97ToolShell` |
+| `Catalog97ToolShell` | `src/components/catalog97/Catalog97ToolShell.tsx` | `Catalog97Shell` plus an optional title band and the build-note aside, used by every route outside the seven designed pages |
 | `Providers` | `src/components/Providers.tsx` | Theme provider wrapper |
 | `ThemeProvider` | `src/components/ThemeProvider.tsx` | `next-themes` wrapper |
 | `RouteErrorBoundary` | `src/components/RouteErrorBoundary.tsx` | Shared editorial-styled error fallback re-exported by per-route `error.tsx` files |
-| `ContactCta` | `src/components/ContactCta.tsx` | Shared closing contact CTA used by the full footer |
 
 ### Homepage, work, writing, dashboards, about, résumé, contact
 
-These seven routes run on Catalog 97 rather than on Working Instrument. Each
+Each of these seven routes
 renders one composition root from `src/components/catalog97/`, wrapped in
 `Catalog97Shell`, and the route page is a thin server shell that passes data in.
-The tokens live in `src/app/catalog97.css`, scoped entirely under `.c97-page`.
-`StaticHeader` and `ConditionalLayout` both stand down on these routes (see
+The tokens live in `src/app/catalog97.css`, declared under `[data-c97]`, which
+`Catalog97Shell` sets on the same element as the `.c97-page` class.
+`ConditionalLayout` stands down on these routes (see
 `isCatalog97Route` in `src/constants/catalog97Nav.ts`), so the shell owns the
 page's only `<main>`, header, and footer.
 
 | Component | File | Role |
 |----------|------|------|
-| `Catalog97Shell` | `src/components/catalog97/Catalog97Shell.tsx` | Page wrapper: header, `<main>`, pine wordmark band, espresso footer |
+| `Catalog97Shell` | `src/components/catalog97/Catalog97Shell.tsx` | Page wrapper: header, `<main>`, espresso footer |
 | `Catalog97Header` | `src/components/catalog97/Catalog97Header.tsx` | Client header with seven route links, site search, theme control, and an oxblood rule under the active route |
 | `Catalog97Primitives` | `src/components/catalog97/Catalog97Primitives.tsx` | `Catalog97Plate` (Anton numeral) and `Catalog97Slot` (flat image field) |
 | `Catalog97Home` | `src/components/catalog97/Catalog97Home.tsx` | `/` composition root. Props: `featuredProjects`, `recentPosts`, `heroIndex`, `liveToolGroups`, `liveFeed` |
@@ -161,9 +162,8 @@ Most reused primitives:
 - `ThemeToggle`
 - `SectionIntro`
 - `ServerIcons`
-- `dropdown-menu.tsx`
 
-Editorial shared components also live under `src/components/editorial/`; use them when working in the current `--home-*` visual system.
+Editorial shared components also live under `src/components/editorial/`. They are written against the `--home-*` tokens, which the bridge block in `src/app/catalog97.css` aliases onto Catalog 97 values.
 
 Styling guidance for these lives in `STYLING.md`.
 
@@ -173,7 +173,7 @@ Styling guidance for these lives in `STYLING.md`.
 
 ### `/portfolio`
 
-`src/app/portfolio/page.tsx` renders the project grid directly.
+`src/app/portfolio/page.tsx` is a server shell that passes the project index to `Catalog97Portfolio`.
 
 ### Homepage
 
@@ -216,8 +216,7 @@ composition roots replaced them on the live routes, and the Catalog 97 roots in
 turn replaced the `*Instrument` files, which are gone.
 
 Under `src/components/home/`, `HomeLiveFeed.tsx`, `PanelClock.tsx`,
-and `HomeStatsPanel.tsx` are all still wired up, the last into 27 dashboard
-clients.
+and `HomeStatsPanel.tsx` are all still wired up, the last into 26 files.
 
 ---
 
@@ -225,9 +224,9 @@ clients.
 
 Current component-oriented tests include:
 
-- `src/components/__tests__/StaticHeader.test.tsx`
-- `src/components/__tests__/Footer.test.tsx`
 - `src/components/__tests__/ConditionalLayout.test.tsx`
+- `src/components/catalog97/__tests__/Catalog97Header.test.tsx`
+- `src/components/catalog97/__tests__/Catalog97ToolShell.test.tsx`
 - tests under `src/components/ui/__tests__/`
 - investments component tests under `src/components/investments/__tests__/`
 

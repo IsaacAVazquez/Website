@@ -4,7 +4,9 @@
 **Scope:** Code-level audit of `src/` (components + App Router routes)
 **Method:** Manual code review of the shell, navigation, modals, forms, images, and global styles. No automated scanner (axe/Lighthouse) is wired into the repo yet — see "Recommended follow-ups."
 
-This is the current accessibility reference. A November 2025 snapshot used to sit at the repository root as `ACCESSIBILITY_AUDIT.md`; it was deleted in August 2026 because it described components that had since been removed (`FloatingNav`, `ModernButton`) and the old monochrome palette. Read it from git history if you need it.
+> Status note, 2026-09-21. This is a June 2026 code-level audit of the shell, navigation, modals, forms, images, and global styles as they stood then. It predates the 2026-09-16 move to the Catalog 97 shell, so findings against `src/components/StaticHeader.tsx` describe a deleted file, and nothing here covers `Catalog97Shell` or `Catalog97Header`.
+
+This was the accessibility reference as of June 2026. A November 2025 snapshot used to sit at the repository root as `ACCESSIBILITY_AUDIT.md`; it was deleted in August 2026 because it described components that had since been removed (`FloatingNav`, `ModernButton`) and the old monochrome palette. Read it from git history if you need it.
 
 ---
 

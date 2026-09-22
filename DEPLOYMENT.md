@@ -2,7 +2,7 @@
 
 Current deployment reference for the live site.
 
-**Last updated:** 2026-08-11
+**Last updated:** 2026-09-21
 
 ---
 
@@ -26,11 +26,14 @@ Key config lives in:
 [build]
   command = "npm run build && rm -rf .next/standalone/*/public/data node_modules/@img node_modules/sharp"
   publish = ".next"
+  ignore = "sh scripts/ci/netlify-ignore.sh"
 ```
 
 Notes:
 
-- `prebuild` runs `scripts/updateFootballSnapshots.ts --league-only` before the main Next build
+- production is not built on Netlify. `.github/workflows/publish-data.yml` runs on pushes to `main`, on a six-hourly schedule, and on manual dispatch, builds the site in GitHub Actions, and uploads it with `netlify deploy --prod --context production`. It needs the `NETLIFY_AUTH_TOKEN` repository secret
+- `scripts/ci/netlify-ignore.sh` cancels Netlify's own git-triggered builds for `main` and `dependabot/*` branches, so only other pull request branches still get a Netlify deploy preview
+- there is no `prebuild` script, and the build consumes committed snapshots without refreshing data
 - `npm run build` runs `next build --webpack`
 - `postbuild` runs `scripts/generatePublicSitemap.mjs` and `scripts/patch-nft-sharp.mjs`
 - Netlify then serves the `.next` output through `@netlify/plugin-nextjs`
@@ -88,7 +91,7 @@ Operational variables:
 
 The fantasy snapshot builder can use `FANTASYPROS_API_KEY` as an optional build-only credential for local authenticated refreshes. The scheduled GitHub workflow uses the public rankings pages and does not receive this secret. The deployed runtime does not need it.
 
-Platform-provided variables like `URL`, `DEPLOY_URL`, `DEPLOY_PRIME_URL`, and `VERCEL_URL` are consumed when available and do not need to be set manually unless you are reproducing a deploy context.
+Platform-provided variables like `URL`, `DEPLOY_URL`, and `DEPLOY_PRIME_URL` are consumed when available and do not need to be set manually unless you are reproducing a deploy context.
 
 See `docs/ENVIRONMENT_CONFIGURATION.md` for details.
 
@@ -103,7 +106,7 @@ See `docs/ENVIRONMENT_CONFIGURATION.md` for details.
 
 ### Fantasy football
 
-- All four fantasy routes read checked-in JSON snapshots at runtime
+- The fantasy routes read checked-in JSON snapshots at runtime
 - GitHub Actions runs `npm run update:fantasy` and commits refreshed artifacts
 - The GitHub workflow uses the public page parser without `FANTASYPROS_API_KEY`; a local builder run can use the official API when a suitable key is present
 
@@ -111,7 +114,7 @@ See `docs/ENVIRONMENT_CONFIGURATION.md` for details.
 
 - `/premier-league` and `/la-liga` read committed TypeScript snapshots at runtime
 - `FOOTBALL_DATA_API_TOKEN` is needed only when rebuilding those snapshots
-- Daily GitHub Actions refreshes can commit `src/data/premierLeagueSnapshot.ts` and `src/data/laLigaSnapshot.ts` when data changes
+- GitHub Actions refreshes, every four hours from August through May, can commit `src/data/premierLeagueSnapshot.ts` and `src/data/laLigaSnapshot.ts` when data changes
 
 ### Static caching
 

@@ -2,14 +2,14 @@
 
 Current high-level data flow reference.
 
-**Last updated:** 2026-06-19
+**Last updated:** 2026-09-21
 
 ---
 
 ## Portfolio And Route Data
 
 - project metadata comes from `src/constants/caseStudies.ts`
-- navigation data comes from `src/constants/navlinks.tsx`
+- navigation data comes from `src/constants/catalog97Nav.ts`
 - most marketing/portfolio pages are statically described and metadata-driven
 
 ---
@@ -41,8 +41,8 @@ Main pieces:
 - route shell: `src/app/investments/investments-client.tsx`
 - local portfolio state: `src/hooks/useInvestments.ts`
 - research section fetching: `src/hooks/useStockData.ts`
+- the index is read on the server by `src/app/investments/page.tsx` (`getInvestmentsIndex`, with `public/data/investments/index.json` as the fallback import); there is no `/api/investments/index` route
 - API routes:
-  - `/api/investments/index`
   - `/api/investments/quotes`
   - `/api/investments/data/[symbol]`
   - `/api/stocks`
@@ -66,7 +66,7 @@ Update paths:
 - `npm run update:la-liga` for La Liga only
 - production builds consume committed football snapshots without calling external providers
 
-Runtime API routes read those committed snapshots instead of calling `football-data.org`.
+The pages and the `/api/{premier-league,la-liga}/teams/[teamId]` routes read those committed snapshots instead of calling `football-data.org`. The league `/summary` routes were removed.
 
 ---
 
@@ -84,18 +84,18 @@ Update paths:
 - `npm run update:nba`
 - `npm run update:nfl`
 
-Runtime API routes under `/api/mlb/*`, `/api/nba/*`, and `/api/nfl/*` read those snapshots. The matching GitHub Actions workflows refresh and commit snapshots on their seasonal schedules.
+The pages read the summaries on the server, and the team drilldown routes under `/api/mlb/*`, `/api/nba/*`, and `/api/nfl/*` read those snapshots. The matching GitHub Actions workflows refresh and commit snapshots on their seasonal schedules.
 
-Golf uses `src/data/golfSnapshot.ts`, rebuilt by `npm run update:golf` (`scripts/buildGolfSnapshot.ts`) from ESPN's public golf leaderboard endpoint; `.github/workflows/update-golf.yml` refreshes it daily. A failed fetch keeps the previous snapshot.
+Golf uses `src/data/golfSnapshot.ts`, rebuilt by `npm run update:golf` (`scripts/buildGolfSnapshot.ts`) from ESPN's public golf leaderboard endpoint; `.github/workflows/update-golf.yml` refreshes it every three hours Thursday through Sunday and once a day Monday through Wednesday. A failed fetch keeps the previous snapshot.
 
-The 2026 World Cup hub uses `src/data/worldCupSnapshot.ts`, rebuilt by `npm run update:world-cup` from ESPN's public `soccer/fifa.world` endpoints; `.github/workflows/update-world-cup.yml` refreshes it every six hours during June and July. Runtime routes under `/api/world-cup/*` read the committed snapshot.
+The 2026 World Cup hub uses `src/data/worldCupSnapshot.ts`, rebuilt by `npm run update:world-cup` from ESPN's public `soccer/fifa.world` endpoints; `.github/workflows/update-world-cup.yml` refreshes it every 30 minutes during June and July. Runtime routes under `/api/world-cup/*` read the committed snapshot.
 
 ---
 
 ## Civic And Curated Tool Pipelines
 
-- `/bay-area-transit` uses `src/data/bayAreaTransitSnapshot.ts`, rebuilt by `npm run update:bay-area-transit` from BART's public legacy API; `.github/workflows/update-bay-area-transit.yml` refreshes it every six hours. Runtime routes under `/api/bay-area-transit/*` read the committed snapshot.
-- `/earthquake-pulse` uses `src/data/earthquakeSnapshot.ts`, rebuilt by `npm run update:earthquake` from public USGS GeoJSON feeds; `.github/workflows/update-earthquake.yml` refreshes it hourly. `/api/earthquake-pulse/summary` reads the committed snapshot, with event detail embedded in the summary payload.
+- `/bay-area-transit` uses `src/data/bayAreaTransitSnapshot.ts`, rebuilt by `npm run update:bay-area-transit` from BART's public legacy API; `.github/workflows/update-bay-area-transit.yml` refreshes it every six hours. Runtime routes under `/api/bay-area-transit/*` fetch BART at request time and fall back to the committed snapshot.
+- `/earthquake-pulse` uses `src/data/earthquakeSnapshot.ts`, rebuilt by `npm run update:earthquake` from public USGS GeoJSON feeds; `.github/workflows/update-earthquake.yml` refreshes it daily at 06:20 UTC. `/api/earthquake-pulse/summary` fetches USGS at request time and falls back to the committed snapshot, with event detail embedded in the summary payload.
 - `/tech-startup-tracker` uses the editorially curated `src/data/techStartupSnapshot.ts`, rebuilt by `npm run update:tech-startups` from a hand-maintained seed in `scripts/buildTechStartupSnapshot.ts`. There is no scheduled workflow because there is no live source to poll.
 
 ---
@@ -113,7 +113,7 @@ What it does:
 - on each push rejection it `git fetch origin main` and `git rebase --autostash origin/main`, then retries with capped exponential backoff plus jitter — this absorbs contention from the many snapshot bots pushing to `main` concurrently (e.g. earthquake hourly, world cup, transit)
 - bails (exit 1) only on a genuine rebase conflict or after exhausting all attempts
 
-All 14 `.github/workflows/update-*.yml` workflows route their commit+push through this helper: `update-bay-area-transit`, `update-earthquake`, `update-fantasy`, `update-formula-1`, `update-github-trending`, `update-golf`, `update-investments`, `update-la-liga`, `update-mlb`, `update-nba`, `update-nfl`, `update-premier-league`, `update-spacex`, and `update-world-cup`. The behavior is asserted by `.github/workflows/__tests__/snapshot-workflows.test.ts` and `update-investments.test.ts`.
+All 17 `.github/workflows/update-*.yml` workflows route their commit+push through this helper: `update-article-images`, `update-bay-area-transit`, `update-earthquake`, `update-fantasy`, `update-formula-1`, `update-github-trending`, `update-golf`, `update-investments`, `update-la-liga`, `update-mlb`, `update-nba`, `update-nfl`, `update-polling`, `update-premier-league`, `update-score-pools`, `update-spacex`, and `update-world-cup`. The behavior is asserted by `.github/workflows/__tests__/snapshot-workflows.test.ts` and `update-investments.test.ts`.
 
 ---
 
@@ -123,7 +123,11 @@ The fantasy stack is generated snapshot first:
 
 - `scripts/buildFantasyPositionData.ts`
 - `scripts/buildFantasyAdpData.ts`
+- `scripts/buildFantasyGameLogData.ts`
+- `scripts/buildFantasyVorpData.ts`
 - `scripts/buildFantasySnapshots.ts`
+- `scripts/buildBestBallSnapshot.ts`
+- `scripts/buildFantasyWeeklySnapshot.ts`
 - `src/app/api/fantasy-data/route.ts`
 - `src/lib/fantasySnapshotServer.ts`
 - `src/lib/fantasy.ts`
@@ -136,6 +140,8 @@ Public generated outputs include:
 - `public/data/fantasy/ppr.json`
 - `public/data/fantasy/half_ppr.json`
 - `public/data/fantasy/standard.json`
+- `public/data/fantasy/best-ball.json`
+- `public/data/fantasy/weekly.json`
 
 The public app and `/api/fantasy-data` read those generated snapshot files. There are no live `/api/fantasy-pros-*`, `/api/data-manager`, `/api/data-metadata`, `/api/sample-data`, or `/api/scheduled-update` routes in the current app tree.
 

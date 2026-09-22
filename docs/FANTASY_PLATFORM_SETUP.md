@@ -1,6 +1,6 @@
 # Fantasy football platform setup
 
-Status as of August 16, 2026.
+Status as of September 21, 2026.
 
 This is the current operating map for the fantasy football pages, their supported room types, and the checked-in data behind them. I would treat anything outside the matrices below as unsupported until it has its own source, rules contract, model, and tests.
 
@@ -13,6 +13,9 @@ This is the current operating map for the fantasy football pages, their supporte
 | `/fantasy-football/trade-calculator` | Preseason one-QB redraft trade estimate with explicit source coverage | Scoring-specific redraft snapshot plus browser-local player selections |
 | `/fantasy-football/best-ball` | Best ball contest guide and rankings board | `public/data/fantasy/best-ball.json` |
 | `/fantasy-football/best-ball/draft-tracker` | Manual best ball room tracker, roster guidance, and Draft Outlook | Best ball snapshot plus browser-local contest state |
+| `/fantasy-football/mock-draft` | Mock draft simulator for a one-QB room, seeded from the published consensus board and market ADP | Scoring-specific redraft snapshot |
+| `/fantasy-football/weekly` | In-season weekly FLEX and quarterback consensus boards, plus the saved My team panel | `public/data/fantasy/weekly.json` |
+| `/fantasy-football/waivers` | In-season waiver targets where the weekly consensus rank runs ahead of the rostered rate | `public/data/fantasy/weekly.json` |
 | `/api/fantasy-data` | Rate-limited server fallback for redraft snapshots | The same committed PPR, Half PPR, and Standard JSON files |
 
 The legacy route `/fantasy-football/rb-tiers` redirects to `/fantasy-football?position=rb&scoring=ppr`. `/fantasy-football/tiers/[position]` redirects to the matching PPR board. `public/fantasy/rb_current.json` remains only as a legacy artifact and is not part of the current refresh pipeline.
@@ -68,7 +71,7 @@ Exact does not mean the model knows win probability, projected points, or payout
 
 Archived contest versions are not selectable presets. Earlier Best Ball Mania, Puppy, Eliminator, and other historical rule sets are not stored as versioned modes, and the current preset should not be used to reconstruct them. The platform also does not model Underdog Daily drafts, single-game or short-slate rooms, daily fantasy salary lineups, pick'em, playoff-only pools, late swap, or arbitrary platform contests. Weekly Winners is a reference preset for the matching season-long room shape, not general daily-slate support.
 
-## Four-step snapshot pipeline
+## Seven-step snapshot pipeline
 
 Run the full refresh with:
 
@@ -76,20 +79,23 @@ Run the full refresh with:
 npm run update:fantasy
 ```
 
-The command runs these steps in order.
+The command runs these steps in order. Steps 1 through 5 are `update:fantasy:redraft`, step 6 is `update:fantasy:best-ball`, and step 7 is `update:fantasy:weekly`.
 
 | Step | Builder | What it does | Artifact |
 | ---: | --- | --- | --- |
 | 1 | `scripts/buildFantasyPositionData.ts` | Fetches and validates scoring-specific FantasyPros consensus boards through the explicitly selected source; the scheduled job pins public consensus HTML, while a local run can select the official API; reuses the scoring-independent QB, K, and DST boards | `src/data/fantasyPositionData.generated.ts` |
 | 2 | `scripts/buildFantasyAdpData.ts` | Fetches Fantasy Football Calculator ADP by redraft scoring format and keeps the prior disclosed board when a fresh board fails or degrades | `src/data/fantasyAdpData.generated.ts` |
-| 3 | `scripts/buildFantasySnapshots.ts` | Joins consensus and ADP, derives FLEX, builds all three redraft formats in memory, stages them, publishes the three JSON files, and publishes the shared revision last | `public/data/fantasy/ppr.json`, `public/data/fantasy/half_ppr.json`, `public/data/fantasy/standard.json`, and `src/data/fantasySnapshotRevision.generated.ts` |
-| 4 | `scripts/buildBestBallSnapshot.ts` | Builds the best ball board from FantasyPros consensus and Superflex boards through the explicitly selected source, plus Underdog ADP, bye weeks, and the Week 17 schedule | `public/data/fantasy/best-ball.json` |
+| 3 | `scripts/buildFantasyGameLogData.ts` | Rebuilds the prior-season per-game scoring input from nflverse weekly player stats | `src/data/fantasyGameLogData.generated.ts` |
+| 4 | `scripts/buildFantasyVorpData.ts` | Rebuilds the VORP input from the FantasyPros projected VORP reports | `src/data/fantasyVorpData.generated.ts` |
+| 5 | `scripts/buildFantasySnapshots.ts` | Joins consensus and ADP, derives FLEX, builds all three redraft formats in memory, stages them, publishes the three JSON files, and publishes the shared revision last | `public/data/fantasy/ppr.json`, `public/data/fantasy/half_ppr.json`, `public/data/fantasy/standard.json`, and `src/data/fantasySnapshotRevision.generated.ts` |
+| 6 | `scripts/buildBestBallSnapshot.ts` | Builds the best ball board from FantasyPros consensus and Superflex boards through the explicitly selected source, plus Underdog ADP, bye weeks, and the Week 17 schedule | `public/data/fantasy/best-ball.json` |
+| 7 | `scripts/buildFantasyWeeklySnapshot.ts` | Builds the in-season weekly board from the FantasyPros weekly FLEX and quarterback consensus pages, and writes nothing before Week 1 | `public/data/fantasy/weekly.json` |
 
-Step 3 does not touch an output until PPR, Half PPR, and Standard have all built and serialized successfully. It stages every redraft file, moves the three snapshots into place, moves the revision last, and removes its temporary files after an error. Importing the builder in a test does not run the command.
+Step 5 does not touch an output until PPR, Half PPR, and Standard have all built and serialized successfully. It stages every redraft file, moves the three snapshots into place, moves the revision last, and removes its temporary files after an error. Importing the builder in a test does not run the command.
 
 The FantasyPros source client reads `FANTASYPROS_SOURCE` and `FANTASYPROS_API_KEY` only during the refresh. `public-html` selects the public consensus pages and ignores a configured key. `official-api` requires the key and sends it in the API request. `auto`, which is also the behavior when the source variable is absent, selects the API when a key exists and public HTML when it does not. Once selected, HTTP, parsing, and board validation failures stop the refresh without changing sources.
 
-The public app consumes these checked-in artifacts. It does not call FantasyPros, Fantasy Football Calculator, Underdog, or ESPN during a user request. The scheduled `.github/workflows/update-fantasy.yml` job runs daily at 17:00 UTC from July through September and weekly on Wednesday at 17:00 UTC during the rest of the year. It runs the full pipeline, verifies freshness and quality, and commits all seven generated artifacts only when they changed.
+The public app consumes these checked-in artifacts. It does not call FantasyPros, Fantasy Football Calculator, Underdog, or ESPN during a user request. The scheduled `.github/workflows/update-fantasy.yml` job runs daily at 17:00 UTC from July through December and weekly on Wednesday at 17:00 UTC from January through June. It runs the redraft, best ball, and weekly lanes as separate steps, verifies freshness and quality, and commits each lane's artifacts on its own only when they changed.
 
 ## Sources and freshness
 
@@ -107,7 +113,7 @@ Official API access does not by itself grant permission to store and publicly re
 
 `generatedAt` says when this site built a file. `upstreamUpdatedAt` or a source-specific `asOf` says when the underlying board changed. The redraft API response headers and the data revision ledger use `upstreamUpdatedAt`, with `generatedAt` only as a legacy fallback.
 
-From July through September, the UI labels a source Current before two days, Aging from two through four days, and Stale after four days. Outside that window, the boundaries are eight and fourteen days. Missing or invalid dates fail closed as stale. The operations freshness gate is tighter for redraft publication, with a 30-hour upstream target from July through September and ten days outside that window. Best ball workflow checks require ranking, ADP, and Superflex sources no older than four days during draft season or fourteen days outside it, and the built snapshot cannot be older than ten days.
+From July through December, the UI labels a source Current before two days, Aging from two through four days, and Stale after four days. Outside that window, the boundaries are eight and fourteen days. Missing or invalid dates fail closed as stale. The operations freshness gate is tighter for redraft publication, with a 30-hour upstream target from July through September and ten days outside that window. Best ball workflow checks require ranking, ADP, and Superflex sources no older than four days during draft season or fourteen days outside it, and the built snapshot cannot be older than ten days.
 
 Exact best ball cards disappear when their required consensus or matching ADP is stale. Redraft removes stale or prior-slate market fields before Draft Outlook uses a restored pick. Neither snapshot contains a separate live injury or player-news feed, so every draft page tells the user to check the live room and current team news.
 

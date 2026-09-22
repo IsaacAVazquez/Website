@@ -2,6 +2,8 @@
 
 **Date:** 2026-09-16
 **Status:** Approved in conversation, awaiting written review
+**Status, 2026-09-21.** Parts one and two shipped in PR #449 on 2026-09-16. Families 0 through 8 and the close-out have not started, and no family plan exists yet.
+
 
 ## What this is
 

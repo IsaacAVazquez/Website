@@ -2,7 +2,7 @@
 
 Current development setup and workflow notes.
 
-**Last updated:** 2026-08-11
+**Last updated:** 2026-09-21
 
 ---
 
@@ -88,9 +88,10 @@ Important current routes:
 
 ### Shared shell
 
-- `src/app/layout.tsx` sets fonts and app chrome
-- `src/components/StaticHeader.tsx` owns global nav
-- `src/components/ConditionalLayout.tsx` owns wrapper + footer selection
+- `src/app/layout.tsx` sets fonts and providers
+- `src/components/ConditionalLayout.tsx` passes the seven designed Catalog 97 routes through and wraps every other route in `src/components/catalog97/Catalog97ToolShell.tsx`
+- `src/components/catalog97/Catalog97Shell.tsx` owns the header, the only `main`, and the footer; the nav links come from `src/constants/catalog97Nav.ts`
+- see `AGENTS.md` for the full shell description
 
 ### Content
 
@@ -107,7 +108,8 @@ Do not assume old doc paths are current. Check the actual route tree first.
 
 ## Frontend Conventions
 
-- use CSS variables from `src/app/globals.css`, preferably the current `--home-*` editorial tokens for new work
+- never hardcode hex colors; on the seven designed Catalog 97 routes and in `src/components/catalog97`, use the `--c97-*` tokens from `src/app/catalog97.css` through `data-c97-surface`
+- on the other routes the `--home-*` tokens still work because the bridge block in `catalog97.css` aliases them, but they are slated for removal in the family migrations described in `docs/superpowers/specs/2026-09-16-catalog97-unification-design.md`
 - use `@/components/ui/ServerIcons` for server components
 - keep 44px touch targets
 - respect reduced motion
@@ -122,7 +124,7 @@ Do not assume old doc paths are current. Check the actual route tree first.
 - portfolio state is browser-local
 - quotes are refreshed via `/api/investments/quotes`
 - research data comes through curated research endpoints, not a generic catch-all API
-- raw provider responses under `data/investments-raw/` are a transient builder workspace, gitignored for new files though existing historical files remain tracked until the repository cleanup migration; the refresh workflow commits only compact snapshots under `public/data/investments/`, so raw files stay out of automated commits
+- raw provider responses under `data/investments-raw/` are a transient builder workspace that is gitignored and has no tracked files; the refresh workflow commits only compact snapshots under `public/data/investments/`, so raw files stay out of automated commits
 
 ### Fantasy football
 
@@ -153,7 +155,7 @@ git commit -m "data: refresh football snapshots"
 git push
 ```
 
-The checked-in GitHub Actions workflows refresh Premier League and La Liga snapshots daily and commit changes when the data moves. Production builds consume those committed snapshots and do not call football-data.org. Full local team fixture/form refreshes still use `npm run update:football`.
+The checked-in GitHub Actions workflows refresh Premier League and La Liga snapshots every four hours from August through May and commit changes when the data moves. Production builds consume those committed snapshots and do not call football-data.org. Full local team fixture/form refreshes still use `npm run update:football`.
 
 Requires `FOOTBALL_DATA_API_TOKEN` in `.env.local` (free tier, 10 req/min limit). Without it, the dashboard still loads from the last committed snapshot.
 

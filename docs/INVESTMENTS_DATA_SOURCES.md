@@ -1,6 +1,6 @@
 # Investments Data Sources
 
-**Last updated:** 2026-07-12
+**Last updated:** 2026-09-21
 
 This is the source, provenance, and public-display ledger for `/investments`.
 Code licensing and market-data display rights are separate questions. A package
@@ -59,7 +59,7 @@ app used by other people and require a business agreement.
 ## Expansion gate
 
 Do not add more symbols to the current all-sections-per-symbol job. The existing
-151-symbol universe already exceeds the twice-weekly time budget, and expanding
+151-symbol universe already exceeds the weekday job's time budget, and expanding
 it would make the oldest data older. Expansion should follow a split pipeline:
 
 1. active-security reference data daily;

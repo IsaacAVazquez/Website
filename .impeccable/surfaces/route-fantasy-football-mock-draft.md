@@ -7,6 +7,8 @@ related_targets: ["src/app/fantasy-football/mock-draft/mock-draft-client.tsx","s
 
 # Fantasy Football Mock Draft
 
+**Status note, 2026-09-21.** This route has rendered inside `Catalog97ToolShell` since the bridge on 2026-09-16. Its components still read `--home-*` names, and the bridge block in `src/app/catalog97.css` aliases those onto Catalog 97 values, sets every `--radius-*` token to 0, and sets every `--shadow-*` token to `none`. `DESIGN.md` still describes the Working Instrument and does not govern this route. The old site header was sticky at 73px and was deleted in that change, and `Catalog97Header` is `position: relative`, so every measurement below that assumes a 73px sticky header predates the bridge. Contrast figures below were measured against Working Instrument values and need re-measuring.
+
 ## Mode
 
 Operate. The visitor is rehearsing the early rounds of a one-QB draft against a seeded room, so the loop is judge, pick, and read the tape, under a self-imposed clock rather than a real one. Structure and density follow the redraft tracker's conventions, and brand lives in the same precise details.

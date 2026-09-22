@@ -2,13 +2,14 @@
 
 Fast styling reference for the current app.
 
-**Last updated:** 2026-04-10
+**Last updated:** 2026-09-21
 
 ---
 
 ## Source Files
 
-- `src/app/globals.css`
+- `src/app/globals.css` (imports `./catalog97.css` and loads `tailwind.config.ts` through `@config`)
+- `src/app/catalog97.css`
 - `tailwind.config.ts`
 - route-specific TSX components
 
@@ -16,33 +17,29 @@ Fast styling reference for the current app.
 
 ## Token System
 
-Current live styling is based on the `--home-*` editorial CSS variables defined in `globals.css` and mapped into Tailwind in `tailwind.config.ts`.
+Since 2026-09-16 every route renders inside the Catalog 97 shell. `src/app/catalog97.css` declares the `--c97-*` tokens under `[data-c97]` (and `[data-c97-surface]` for nested surfaces), and the page root carries both `data-c97` and the `.c97-page` class.
 
-Use these tokens first in new work:
+The same file holds a bridge block, between the `BRIDGE START` and `BRIDGE END` markers, that redeclares every `:root` `--home-*`, `--radius-*`, and `--shadow-*` token as an alias of the Catalog 97 value. Components written against `--home-*` repaint without edits, and `src/app/__tests__/catalog97-bridge.test.ts` asserts the bridge covers every token. The `:root` `--home-*` declarations in `globals.css` stay until the last route family migrates.
 
-- `--home-paper`
-- `--home-paper-alt`
-- `--home-ink`
-- `--home-ink-muted`
-- `--home-haze`
-- `--home-acid`
-- `--home-moss`
-- `--home-stone`
-- `--home-rule`
+Tokens still declared in `globals.css` include:
 
-Legacy aliases such as `--surface-*`, `--text-*`, `--border-*`, and `--color-primary` remain for compatibility, but new docs and components should prefer `--home-*`.
+- `--home-paper`, `--home-paper-alt`, `--home-paper-raised`
+- `--home-ink`, `--home-ink-muted`, `--home-ink-soft`
+- `--home-rule`, `--home-stone`
+- `--home-signal`, `--home-signal-ink`, `--home-signal-soft`
+- `--home-positive`, `--home-negative`, `--home-warning`
+
+`--home-haze`, `--home-acid`, and `--home-moss` are deleted and have no declaration in either CSS file, so do not use them.
+
+Legacy aliases such as `--surface-*`, `--text-*`, `--border-*`, and `--color-primary` remain for compatibility, but new docs and components should not introduce them.
 
 ---
 
 ## Current Visual Language
 
-- editorial paper/ink palette with acid, haze, moss, and stone accents
-- class-based light/dark theme support through token counterparts
-- shared `home-*` shell helpers for spacing rhythm
-- rounded panels, cards, and editorial section treatments
-- restrained shadow usage
+The root `STYLING.md`, `DESIGN_CHECKLIST.md`, and the "Styling Rules" section of `CLAUDE.md` are the current references, along with `docs/superpowers/specs/2026-09-16-catalog97-unification-design.md` for the migration. The bridge sets `--radius-sm` and `--radius-md` to `0`, and light and dark themes both come from the token system.
 
-Historical theme docs are not current source of truth. `/admin` is the only live route with an intentionally separate visual language.
+Historical theme docs are not current source of truth.
 
 ---
 
@@ -87,7 +84,7 @@ Important helpers in `globals.css`:
 - `focus-visible` is styled globally
 - links and buttons should stay at or above 44px touch size
 - dark mode should come from the token system, not ad hoc color overrides
-- self-shell routes should rely on a single `main` from `ConditionalLayout`
+- every route should rely on the single `main` from `Catalog97Shell`
 - portfolio-shell pages should expose a single page-level `h1`
 - mobile hero layouts should keep the message and primary CTA in the first viewport when feasible
 

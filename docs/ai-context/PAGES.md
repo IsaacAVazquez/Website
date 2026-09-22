@@ -2,7 +2,7 @@
 
 Fast route reference for the current app.
 
-**Last updated:** 2026-06-19
+**Last updated:** 2026-09-21
 
 ---
 
@@ -10,15 +10,17 @@ Fast route reference for the current app.
 
 | Route | File | Render Pattern |
 |------|------|----------------|
-| `/` | `src/app/page.tsx` | Server page composing client sections |
-| `/about` | `src/app/about/page.tsx` | Server page -> `About` client component |
+| `/` | `src/app/page.tsx` | Server page -> `Catalog97Home` |
+| `/about` | `src/app/about/page.tsx` | Server page -> `Catalog97About` |
 | `/portfolio` | `src/app/portfolio/page.tsx` | Server page -> `Catalog97Portfolio` client with project search, sorting, and category filters |
 | `/portfolio/[slug]` | `src/app/portfolio/[slug]/page.tsx` | Server detail page |
-| `/resume` | `src/app/resume/page.tsx` | Server page -> client resume UI |
-| `/contact` | `src/app/contact/page.tsx` | Server page -> `ContactContent` |
+| `/resume` | `src/app/resume/page.tsx` | Server page -> `Catalog97Resume` |
+| `/contact` | `src/app/contact/page.tsx` | Server page -> `Catalog97Contact` |
+| `/dashboards` | `src/app/dashboards/page.tsx` | Server page -> `Catalog97Dashboards` |
 | `/accessibility` | `src/app/accessibility/page.tsx` | Server page |
 | `/writing` | `src/app/writing/page.tsx` | Async server page -> `Catalog97Writing` client with search, sorting, filters, and topic links |
 | `/writing/[slug]` | `src/app/writing/[slug]/page.tsx` | Async server page |
+| `/writing/topics/[topic]` | `src/app/writing/topics/[topic]/page.tsx` | Async server topic hub page |
 | `/investments` | `src/app/investments/page.tsx` | Server page -> `InvestmentsClient` |
 | `/formula-1` | `src/app/formula-1/page.tsx` | Server page -> `Formula1Client` |
 | `/fantasy-formula-1` | `src/app/fantasy-formula-1/page.tsx` | Server page -> `FantasyFormula1Client` |
@@ -41,6 +43,7 @@ Fast route reference for the current app.
 | `/polling-aggregator` | `src/app/polling-aggregator/page.tsx` | Async server page -> `PollingAggregatorClient` |
 | `/fintech-tools/budget-planner` | `src/app/fintech-tools/budget-planner/page.tsx` | Server page -> budget planner client |
 | `/fintech-tools/interchange-iq` | `src/app/fintech-tools/interchange-iq/page.tsx` | Server page -> `InterchangeIQClient` |
+| `/fintech-tools/rent-vs-buy` | `src/app/fintech-tools/rent-vs-buy/page.tsx` | Server page -> `RentVsBuyClient` |
 | `/mba-internship-notifications` | `src/app/mba-internship-notifications/page.tsx` | Async server page -> `MBAJobsClient` |
 | `/decision-lab` | `src/app/decision-lab/page.tsx` | Server page for decision-modeling content |
 | `/food-map` | `src/app/food-map/page.tsx` | Server page for food map content |
@@ -48,10 +51,25 @@ Fast route reference for the current app.
 | `/wine-cellar` | `src/app/wine-cellar/page.tsx` | Server page for wine cellar content |
 | `/museum-log` | `src/app/museum-log/page.tsx` | Server page for museum log content |
 | `/travel` | `src/app/travel/page.tsx` | Server page -> `TravelPlannerClient` (browser-persisted planner) |
+| `/travel-deals` | `src/app/travel-deals/page.tsx` | Server page -> `TravelDealLabClient` |
+| `/score-pools` | `src/app/score-pools/page.tsx` | Async server page -> `ScorePoolsClient` |
+| `/score-pools/tracker` | `src/app/score-pools/tracker/page.tsx` | Server page -> `TrackerClient` |
+| `/score-pools/settings` | `src/app/score-pools/settings/page.tsx` | Server page -> `SettingsClient` |
+| `/arcade` | `src/app/arcade/page.tsx` | Server page -> `ArcadeClient` |
+| `/agent-build-index` | `src/app/agent-build-index/page.tsx` | Server page |
+| `/analytics-reference` | `src/app/analytics-reference/page.tsx` | Server page documenting the analytics events |
+| `/enablement-assistant` | `src/app/enablement-assistant/page.tsx` | Server page -> `EnablementAssistantClient` |
+| `/design/catalog-pages` | `src/app/design/catalog-pages/page.tsx` | Server page -> `Catalog97LayoutsCanvas`, set to noindex |
 | `/fantasy-football` | `src/app/fantasy-football/page.tsx` | Server page -> fantasy client UI |
 | `/fantasy-football/tiers/[position]` | `src/app/fantasy-football/tiers/[position]/page.tsx` | Redirect page to the canonical fantasy board |
 | `/fantasy-football/rb-tiers` | `src/app/fantasy-football/rb-tiers/page.tsx` | Redirect page to the canonical RB board |
 | `/fantasy-football/draft-tracker` | `src/app/fantasy-football/draft-tracker/page.tsx` | Server page |
+| `/fantasy-football/mock-draft` | `src/app/fantasy-football/mock-draft/page.tsx` | Server page -> `MockDraftClient` |
+| `/fantasy-football/trade-calculator` | `src/app/fantasy-football/trade-calculator/page.tsx` | Server page -> `TradeCalculatorClient` |
+| `/fantasy-football/weekly` | `src/app/fantasy-football/weekly/page.tsx` | Async server page -> `WeeklyBoardClient` |
+| `/fantasy-football/waivers` | `src/app/fantasy-football/waivers/page.tsx` | Async server page -> `WeeklyBoardClient` |
+| `/fantasy-football/best-ball` | `src/app/fantasy-football/best-ball/page.tsx` | Async server page -> `BestBallClient` |
+| `/fantasy-football/best-ball/draft-tracker` | `src/app/fantasy-football/best-ball/draft-tracker/page.tsx` | Async server page -> `BestBallDraftTrackerClient` |
 | `/search` | `src/app/search/page.tsx` | Search UI page |
 | `/admin` | `src/app/admin/page.tsx` | Auth-aware admin page |
 | `/now` | `src/app/now/page.tsx` | Current focus / status page |
@@ -63,56 +81,20 @@ There is no live `/admin/analytics` route in the current app tree.
 
 ## Shared Layout Facts
 
-- `src/app/layout.tsx` renders fonts, providers, skip link, and `StaticHeader`
-- `ConditionalLayout` wraps page content and footer
-- self-shell routes:
-- `/about`
-- `/ai-dev-tools`
-- `/bay-area-transit`
-- `/changelog`
-- `/contact`
-- `/decision-lab`
-- `/earthquake-pulse`
-- `/fantasy-formula-1`
-- `/fantasy-football`
-- `/fantasy-football/draft-tracker`
-- `/fintech-tools/budget-planner`
-- `/fintech-tools/interchange-iq`
-- `/food-map`
-- `/formula-1`
-- `/golf`
-- `/github-trending-pulse`
-- `/investments`
-- `/la-liga`
-- `/march-madness-2026`
-- `/mba-internship-notifications`
-- `/museum-log`
-- `/news-pulse`
-- `/now`
-- `/polling-aggregator`
-- `/premier-league`
-- `/portfolio`
-- `/portfolio/[slug]`
-- `/recipe-finder`
-- `/resume`
-- `/spacex-mission-control`
-- `/tech-startup-tracker`
-- `/travel`
-- `/wine-cellar`
-- `/world-cup-2026`
-- `/writing`
-- `/writing/[slug]`
+- `src/app/layout.tsx` renders fonts, providers, the skip link, and `ConditionalLayout`
+- `src/components/ConditionalLayout.tsx` has two branches
+- the seven designed Catalog 97 routes (`/`, `/portfolio`, `/writing`, `/dashboards`, `/about`, `/resume`, `/contact`, listed in `src/constants/catalog97Nav.ts`) pass through untouched because their page components render `Catalog97Shell` themselves
+- every other route, `/admin` included, is wrapped in `src/components/catalog97/Catalog97ToolShell.tsx`, which adds an optional title band and the build-note aside
 
 Semantics:
 
-- `ConditionalLayout` owns the only `main` landmark for self-shell routes
-- route files inside that shell should not render another `main`
-- portfolio-shell routes should render one page-level `h1`
+- `Catalog97Shell` owns the only page-level `main` landmark on every route
+- route files should not render another `main`
+- every route should render one page-level `h1`
 
 Footer behavior:
 
-- the seven Catalog 97 routes render their own espresso footer inside `Catalog97Shell` and return before `ConditionalLayout` adds one
-- every other route gets the full footer
+- both branches get the espresso footer from `Catalog97Shell`; there is no separate `Footer` component or footer variant
 
 ---
 
@@ -124,7 +106,7 @@ Footer behavior:
 - `Catalog97Portfolio` adds project search, sorting, and a button group built from `TOOL_CATEGORY_DEFS`, leads with four full-weight entries on the camel band, and drops the remainder into the pine ledger below
 - every slug in `caseStudies.ts` is bucketed by `classifyToolSlug`, so no project disappears when a filter is on
 - entries should make role, problem space, and impact scannable before click-through
-- do not document `ProjectsContent.tsx` as the primary live implementation
+- `ProjectsContent.tsx` no longer exists, so do not document it
 
 ### `/writing`
 

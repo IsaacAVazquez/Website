@@ -2,6 +2,8 @@
 
 **Date:** 2026-04-21
 **Type:** Content / Writing
+**Status, 2026-09-21.** Shipped on 2026-04-21. All four articles exist under `content/blog/`, and each now has a cover image plan entry, which the out-of-scope note below predates.
+
 
 ## Context
 

@@ -15,7 +15,7 @@ related_targets: ["src/components/catalog97/Catalog97Contact.tsx"]
 
 **Route constraints.** THERE IS NO CONTACT FORM AND ONE MUST NOT BE ADDED. The source design draws four fields and a send button; this repo has no form backend, so shipping that markup would look right and silently drop every message. The design's own tobacco line says email is faster than the form and gets read first, so the direct panel takes the weight the form would have had. Do not raise the missing form as a finding.
 
-**Visual world: Catalog 97, not Working Instrument.** `DESIGN.md` describes The Working Instrument and governs the other ~40 routes. It does NOT govern this surface. `context.mjs` auto-loads it anyway, so a pass that treats it as the spec here will read every deliberate Catalog 97 decision as a violation and manufacture a page of false findings. Tokens live in `src/app/catalog97.css`.
+**Visual world: Catalog 97, not Working Instrument.** `DESIGN.md` describes The Working Instrument, and until the bridge on 2026-09-16 it governed every other route. Those routes now render inside `Catalog97ToolShell` and are Catalog 97 too, so `DESIGN.md` is stale everywhere until the close-out PR rewrites it. It does NOT govern this surface. `context.mjs` auto-loads it anyway, so a pass that treats it as the spec here will read every deliberate Catalog 97 decision as a violation and manufacture a page of false findings. Tokens live in `src/app/catalog97.css`.
 
 **Do not re-litigate (settled 2026-08-02).**
 - Tobacco is a large-text-only field. Paper ink on it is 4.36:1, which clears 3:1 for large text and never clears 4.5:1 for body. A tobacco band carries `--c97-fs-h2` (24px floor) and up, or no text at all. Not a defect; solved by size rather than by darkening the colour.

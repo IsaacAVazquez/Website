@@ -2,7 +2,7 @@
 
 Day-to-day operational and hygiene notes for the live site. For the public vulnerability-disclosure policy, see the root [`SECURITY.md`](../SECURITY.md).
 
-**Last updated:** 2026-08-11
+**Last updated:** 2026-09-21
 
 ---
 
@@ -52,7 +52,7 @@ Rotation guidance:
 
 - implemented in `src/lib/auth.ts` using NextAuth's credentials provider
 - a single `(ADMIN_USERNAME, ADMIN_PASSWORD)` pair is checked against env vars; there is no user store, no password hashing, and no MFA
-- session strategy is JWT, 30-day max age
+- session strategy is JWT, 7-day max age
 - this is intentionally a lightweight gate, not a full RBAC system
 
 Hardening expectations:
@@ -68,7 +68,7 @@ Hardening expectations:
 ### Operationally protected
 
 - `/api/auth/[...nextauth]` is the NextAuth handler for `/admin` sign-in
-- `netlify/functions/purge-cache` requires `Authorization: Bearer <CRON_SECRET>` or `x-cron-secret: <CRON_SECRET>`; query-string secrets are intentionally rejected
+- `netlify/functions/purge-cache.ts` requires `Authorization: Bearer <CRON_SECRET>` or `x-cron-secret: <CRON_SECRET>`; query-string secrets are intentionally rejected
 
 ### Public, read-only endpoints
 
@@ -78,15 +78,20 @@ These power the live UI. They are cached, rate-limited where appropriate, and mu
 - `/api/rss`
 - `/api/fantasy-data`
 - `/api/stocks`
-- `/api/investments/index`
+- `/api/data-revisions`
 - `/api/investments/data/[symbol]`
 - `/api/investments/quotes`
-- `/api/premier-league/summary`
 - `/api/premier-league/teams/[teamId]`
-- `/api/la-liga/summary`
 - `/api/la-liga/teams/[teamId]`
-- `/api/golf/summary`
+- `/api/mlb/teams/[teamId]`
+- `/api/nba/teams/[teamId]`
+- `/api/nfl/teams/[teamId]`
+- `/api/world-cup/teams/[teamId]`
 - `/api/golf/players/[playerId]`
+- `/api/formula-1/meetings/[meetingId]`
+- `/api/bay-area-transit/summary`
+- `/api/bay-area-transit/stations/[stationId]`
+- `/api/earthquake-pulse/summary`
 - `/api/news-pulse`
 - `/api/spacex/launches`
 - `/api/spacex/launches/[id]`
@@ -96,6 +101,7 @@ These power the live UI. They are cached, rate-limited where appropriate, and mu
 ### Public, side-effect endpoints
 
 - `/api/mba-jobs/email` sends a Resend-backed digest. It validates and escapes request content, caps digest size, rate-limits by client, and only sends to `MBA_DIGEST_ALLOWED_RECIPIENTS`.
+- `/api/newsletter/subscribe` creates a Resend contact from the public newsletter form.
 
 `/api/search` is still a limited, mostly hardcoded index. Do not treat it as complete site search.
 

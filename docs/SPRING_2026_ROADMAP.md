@@ -1,6 +1,8 @@
 # Spring 2026 Roadmap
 
-Last updated: 2026-06-23
+Last updated: 2026-09-21
+
+Status check on 2026-09-21: the items below were written on 2026-06-23, before the 2026-09-16 move to the Catalog 97 shell. Items confirmed shipped or no longer applicable against the code carry a dated note under their status line. The rest were not re-checked.
 
 A cross-site roadmap of new features and fixes for the next batch of work.
 Each item is grounded in a verified codebase sweep — the repo currently has
@@ -19,7 +21,8 @@ Tiny (< 1 hr), Small (2–3 hrs), Medium (3–6 hrs), High (1+ day).
 Low-effort gaps with clear, correct fixes. Do these first.
 
 ### P1-A: Error boundaries for `/golf` and `/polling-aggregator`
-**Status:** Not started | **Effort:** Tiny (< 1 hr)
+**Status:** Shipped | **Effort:** Tiny (< 1 hr)
+Note 2026-09-21: `src/app/golf/error.tsx` and `src/app/polling-aggregator/error.tsx` both exist.
 These are the only two snapshot-reading dashboard routes missing an
 `error.tsx`. Every other data dashboard (`/nba`, `/nfl`, `/mlb`, `/formula-1`,
 `/world-cup-2026`, etc.) wraps its surface in the shared editorial fallback.
@@ -29,7 +32,8 @@ Add the same boundary by re-exporting `RouteErrorBoundary` with a `surfaceName`.
 - **Files:** new `src/app/golf/error.tsx`, new `src/app/polling-aggregator/error.tsx`
 
 ### P1-B: Standalone typecheck gate in CI
-**Status:** Not started | **Effort:** Small (2–3 hrs)
+**Status:** Shipped | **Effort:** Small (2–3 hrs)
+Note 2026-09-21: `package.json` has a `typecheck` script, `.github/workflows/test.yml` runs it, and `next.config.mjs` no longer sets `ignoreBuildErrors`.
 `next.config.mjs` sets `typescript.ignoreBuildErrors: true` (line 182), so type
 regressions can ship without failing the build. Add a separate `tsc --noEmit`
 npm script and run it in CI — without flipping the build flag, so deploys stay
@@ -56,7 +60,8 @@ Fill gaps and replace generic/empty values with descriptive text.
 Surfaces that already exist but aren't reachable or indexed.
 
 ### P2-A: Surface the draft tracker
-**Status:** Not started | **Effort:** Small (2–3 hrs)
+**Status:** Shipped | **Effort:** Small (2–3 hrs)
+Note 2026-09-21: `src/app/fantasy-football/fantasy-football-client.tsx` links to `/fantasy-football/draft-tracker`.
 `/fantasy-football/draft-tracker` is built but not linked from the
 `/fantasy-football` landing page, so it's effectively orphaned. Add in-page
 navigation to it. (The `/fantasy-football/tiers/[position]` and `/rb-tiers`
@@ -64,14 +69,16 @@ routes are redirect-only shims to the main fantasy page, not standalone pages.)
 - **Files:** `src/app/fantasy-football/fantasy-football-client.tsx`
 
 ### P2-B: Wire up the RSS feed
-**Status:** Not started | **Effort:** Tiny (< 1 hr)
+**Status:** Partly shipped | **Effort:** Tiny (< 1 hr)
+Note 2026-09-21: `src/app/layout.tsx` carries the `application/rss+xml` link. `src/components/Footer.tsx` was deleted with the old shell, and I found no RSS link in the `src/components/catalog97/` components.
 `/api/rss` now serves real blog posts but isn't referenced in `<head>` or linked
 from any page. Add the `<link rel="alternate" type="application/rss+xml">` tag
 and a footer link.
 - **Files:** `src/app/layout.tsx`, `src/components/Footer.tsx`
 
 ### P2-C: Resolve hidden case studies
-**Status:** Not started | **Effort:** Small (2–3 hrs)
+**Status:** Premise out of date | **Effort:** Small (2–3 hrs)
+Note 2026-09-21: `src/constants/caseStudies.ts` now holds 34 `slug:` entries, not five, and `/portfolio` renders through `Catalog97Portfolio`, so the counts below no longer describe the code.
 Three of five entries in `src/constants/caseStudies.ts` are unreachable — only
 two are `featured: true` on `/portfolio`. Decide per case study: feature it,
 give it a route, or prune it.
@@ -94,11 +101,12 @@ reusing existing quote-fetching and `StockSearch` infrastructure.
 *(Carried from the April roadmap.)* Reconstruct historical daily portfolio value
 (shares × historical close) and render a D3 line chart with 1M/3M/6M/1Y/All
 range buttons; annotate buy/sell events as dots.
-- **Data available:** `data/investments-raw/{symbol}/price.json`
+- **Data available:** `data/investments-raw/{symbol}/price.json` (note 2026-09-21: that directory is gitignored and no longer tracked, so this input is not in the repo)
 - **Files:** new `src/components/investments/PortfolioChartPanel.tsx`, edit `investments-client.tsx`
 
 ### P3-C: `loading.tsx` for client-heavy routes
-**Status:** Not started | **Effort:** Small per route
+**Status:** Partly shipped | **Effort:** Small per route
+Note 2026-09-21: `loading.tsx` now exists for `/fantasy-football`, `/decision-lab`, and `/mba-internship-notifications`. I did not find one for `/travel`, `/wine-cellar`, `/museum-log`, `/recipe-finder`, or `/food-map`.
 The snapshot dashboards stream with a `loading.tsx`, but several client-heavy
 routes don't: `/fantasy-football`, `/decision-lab`, the personal-interest tools
 (`/travel`, `/wine-cellar`, `/museum-log`, `/recipe-finder`, `/food-map`), the
@@ -132,14 +140,16 @@ the same pattern to the museum-log and NFL components that still load eagerly.
 - **Files:** `src/app/museum-log/*`, `src/app/nfl/*` and their modal components
 
 ### P4-D: Component unit tests for primary surfaces
-**Status:** Not started | **Effort:** High (1+ day)
+**Status:** Moot as written | **Effort:** High (1+ day)
+Note 2026-09-21: `HomePageV3`, `PortfolioV3`, and `AboutV3` no longer exist. The primary surfaces are the `Catalog97*` components, and `src/components/catalog97/__tests__/` covers the header, the tool shell, and the layouts canvas only.
 The highest-traffic surfaces — `HomePageV3`, `PortfolioV3`, `AboutV3` — have no
 component-level tests. Add coverage following the existing `react-dom/client` /
 Testing Library mix described in `TESTING.md`.
 - **Files:** new tests under `src/components/__tests__/` (or co-located)
 
 ### P4-E: Decide the fate of `ProjectsContent.tsx`
-**Status:** Not started | **Effort:** Small (2–3 hrs)
+**Status:** Done | **Effort:** Small (2–3 hrs)
+Note 2026-09-21: `src/components/ProjectsContent.tsx` no longer exists.
 `ProjectsContent.tsx` (~710 lines) is no longer the primary `/portfolio`
 implementation — the route page renders cards directly — and it's now only
 referenced by tests. Prune it (and its tests) or document why it's retained.

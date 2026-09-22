@@ -7,6 +7,8 @@ related_targets: ["src/app/investments/page.tsx","src/app/investments/investment
 
 # Investments surface brief
 
+**Status note, 2026-09-21.** This route has rendered inside `Catalog97ToolShell` since the bridge on 2026-09-16. `.terminalScope` in `investments.module.css` re-declares the `--home-*` tokens itself, so the bridge does not repaint the terminal and the visual world below still holds. `StaticHeader.tsx`, named in the history below, was deleted in that change. The old header was sticky at 73px and `Catalog97Header` is `position: relative`, while `--invest-rail-top` is still 73px as of this date.
+
 **Scope.** The `/investments` route, rendered by `src/app/investments/investments-client.tsx` into `src/components/investments/InvestmentsDashboard.tsx`, with roughly 30 components under `src/components/investments/` (including the `retirement/` sub-tree) and a 1800-line route-local CSS module.
 
 **Visitor mode.** Operate. Scanability, consistency and density outrank expression. The visitor is working, not being persuaded.

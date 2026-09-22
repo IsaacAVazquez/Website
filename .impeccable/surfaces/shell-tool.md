@@ -22,9 +22,13 @@ related_targets:
 the fintech calculators and the browser-persisted personal tools, about a dozen routes.
 It is not its own component; it is a class contract that each client renders into.
 
-**Visual world: The Working Instrument.** Unlike Catalog 97 and `/food-map`, the tool
-shell has no independent token world. It is built on `--home-*` tokens and hairline
-rules, so `DESIGN.md` governs it fully. Treat any `--home-*` rule as binding here.
+**Visual world: Catalog 97 through the bridge, as of 2026-09-16.** The `.tool-*` classes
+have no token world of their own. They are built on `--home-*` tokens and hairline rules,
+and every route that uses them now renders inside `Catalog97ToolShell`, where the bridge
+block in `src/app/catalog97.css` aliases each `--home-*` name onto a Catalog 97 value,
+sets every `--radius-*` token to 0, and sets every `--shadow-*` token to `none`. `DESIGN.md` still describes the Working
+Instrument and does not govern this surface. The radius values recorded below (8px and
+the rest) are what the `:root` tokens hold, and they paint as 0 inside the bridge.
 
 **Visitor mode.** Operate. These are working tools, so scanability and the state of the
 data outrank expression. The shell should be quiet and let the calculator or the list be

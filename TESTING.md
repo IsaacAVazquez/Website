@@ -2,7 +2,7 @@
 
 Current testing setup for the repo.
 
-**Last updated:** 2026-08-02
+**Last updated:** 2026-09-21
 
 ---
 
@@ -106,7 +106,7 @@ Some local environments may only have a subset of browsers installed, so targete
 ## Current Caveats
 
 - `@testing-library/react` is present, but the repo also uses direct `createRoot` tests; follow local conventions
-- E2E tests rely on the local Next dev server started by Playwright config
+- Playwright config starts the Next dev server locally and `npm run start` in CI
 - If a browser is missing locally, restrict the Playwright run to installed projects rather than assuming the whole matrix is available
 
 ---

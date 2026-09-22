@@ -13,7 +13,7 @@ Visitor mode. Operate. The visitor is making and tracking picks against a pool's
 
 Audience. A friend setting up or joining an exact-score pool, who will not know terms like de-vig or modal pick, plus keyboard and screen reader users working through the drawer and tracker. The honesty framing, meaning as-of stamps, sample and manual labels and residual disclosure, is a constraint.
 
-Visual world. Working Instrument, the site-wide `--home-*` palette in light and dark.
+Visual world. Catalog 97 through the bridge, as of 2026-09-16. The route renders inside `Catalog97ToolShell`. Its components still read `--home-*` names, and the bridge block in `src/app/catalog97.css` aliases each one onto the Catalog 97 value for the enclosing surface, sets every `--radius-*` token to 0, and sets every `--shadow-*` token to `none`. `DESIGN.md` still describes the Working Instrument, so judging this route against it manufactures false findings. The tool shell brief, `src-components-catalog97-catalog97toolshell-tsx.md`, has the detail. Hex values and contrast figures further down this brief were measured before the bridge, so they are Working Instrument values and need re-measuring before anyone acts on them.
 
 ## Loop, 2026-09-14
 

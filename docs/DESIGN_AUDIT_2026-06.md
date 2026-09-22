@@ -4,6 +4,8 @@ A site-wide design-quality and best-practice audit of all 49 routes, plus the pr
 it produced. The durable best-practice rules now live in [`DESIGN_CHECKLIST.md`](../DESIGN_CHECKLIST.md);
 this file is the point-in-time findings + backlog.
 
+> Status note, 2026-09-21. The 28-item backlog below was reconciled against the code in [`DESIGN_REVIEW_2026-07.md`](./DESIGN_REVIEW_2026-07.md), so its unchecked boxes are not a live to-do list. This audit also predates the 2026-09-16 move to the Catalog 97 shell.
+
 **Date:** 2026-06-24 · **Method:** 16 parallel auditors (11 page-group + 4 cross-cutting + 1 docs),
 with the personal-tools and accessibility sweeps re-run, and every P0/P1 claim spot-verified against code.
 

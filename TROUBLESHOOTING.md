@@ -2,7 +2,7 @@
 
 Fast diagnostics for the current site, data workflows, and deployment path.
 
-**Last updated:** 2026-06-08
+**Last updated:** 2026-09-21
 
 ---
 
@@ -10,9 +10,8 @@ Fast diagnostics for the current site, data workflows, and deployment path.
 
 ### `npm install` fails
 
-- Confirm Node 18+ and npm 10+
+- Confirm Node 20.9 or newer, which the installed `next` package requires, and npm 10+
 - Remove `node_modules` and retry
-- Native module failures usually come from `better-sqlite3`
 
 ### `npm run build` fails
 
@@ -55,7 +54,7 @@ There is no live `/api/scheduled-update` route in the current app tree; older re
 
 - The curated UI reads from `public/data/investments`
 - Rebuild snapshots with `npm run update:investments`
-- `/api/investments/index` and `/api/investments/data/[symbol]` are compatibility routes over curated snapshot data, not a full arbitrary-ticker backend
+- `/api/investments/data/[symbol]` serves curated snapshot data, not a full arbitrary-ticker backend. There is no `/api/investments/index` route; the index is the static file `public/data/investments/index.json`
 
 ### Search results look incomplete
 
@@ -85,16 +84,13 @@ Rebuild the generated artifacts with `npm run update:fantasy`. There are no live
 
 ### A page is too narrow or spacing looks wrong
 
-Check `src/components/ConditionalLayout.tsx` first. Some routes manage their own shell and should not be wrapped by the shared `max-w-4xl` container.
+`src/components/ConditionalLayout.tsx` no longer applies a width container. It passes the seven designed Catalog 97 routes through and wraps every other route in `Catalog97ToolShell`, so width and spacing come from the route's own markup or from the `.c97-*` classes in `src/app/catalog97.css`.
 
 ### Footer CTA feels duplicated
 
-There are two footers on this site, so check which one the route gets:
+There is one footer on this site, the espresso footer inside `Catalog97Shell`, and every route gets it either directly or through `Catalog97ToolShell`. The old `Footer.tsx` and its contact CTA were deleted on 2026-09-16.
 
-- the seven Catalog 97 routes (`/`, `/portfolio`, `/writing`, `/dashboards`, `/about`, `/resume`, `/contact`) render `Catalog97Shell`'s espresso footer and never reach `ConditionalLayout`
-- every other route gets the full `Footer` from `ConditionalLayout`
-
-If a page ends with its own strong CTA, verify it is not stacking against the full footer.
+If a page ends with its own strong CTA, verify it is not stacking against the footer.
 
 ### March Madness, football dashboards, or investments has horizontal scrolling
 

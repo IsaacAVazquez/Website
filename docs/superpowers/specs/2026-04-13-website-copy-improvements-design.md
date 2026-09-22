@@ -1,4 +1,6 @@
 # Website Copy Improvements
+**Status, 2026-09-21.** Shipped on 2026-04-13. Most of the target components have since been rebuilt or deleted, so the strings below no longer describe the live pages. Kept as history only.
+
 
 ## Context
 

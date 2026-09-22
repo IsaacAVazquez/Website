@@ -13,7 +13,7 @@ Visitor mode. Operate. The visitor is entering a month of income, categories and
 
 Audience. Someone setting up a personal monthly budget who reads the chip and stats panel as the answer, so every label has to describe the number beside it.
 
-Visual world. Working Instrument, the site-wide `--home-*` palette in light and dark.
+Visual world. Catalog 97 through the bridge, as of 2026-09-16. The route renders inside `Catalog97ToolShell`. Its components still read `--home-*` names, and the bridge block in `src/app/catalog97.css` aliases each one onto the Catalog 97 value for the enclosing surface, sets every `--radius-*` token to 0, and sets every `--shadow-*` token to `none`. `DESIGN.md` still describes the Working Instrument, so judging this route against it manufactures false findings. The tool shell brief, `src-components-catalog97-catalog97toolshell-tsx.md`, has the detail. Hex values and contrast figures further down this brief were measured before the bridge, so they are Working Instrument values and need re-measuring before anyone acts on them.
 
 ## Loop, 2026-09-14
 

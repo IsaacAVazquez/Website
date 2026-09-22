@@ -15,7 +15,7 @@ Mode is Read. The audience is a product peer or a visitor from an AI answer who 
 
 ## Visual world
 
-Topic pages are Working Instrument pages and DESIGN.md governs them. Arriving from the Catalog 97 index's topic grid changes world, which is the same decision recorded in the article brief.
+Topic pages are Catalog 97 through the bridge as of 2026-09-16. They render inside `Catalog97ToolShell`, their components still read `--home-*` names, and the bridge block in `src/app/catalog97.css` aliases those onto Catalog 97 values with every `--radius-*` token at 0 and every `--shadow-*` token at `none`. `DESIGN.md` still describes the Working Instrument and does not govern them. Arriving from the index's topic grid no longer changes world, since both pages share one shell. Contrast figures below were measured before the bridge and need re-measuring.
 
 ## Decisions not to re-litigate (settled 2026-09-14)
 

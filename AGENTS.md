@@ -2,7 +2,7 @@
 
 Operational context for agents working in this repo. Start here, then read `CLAUDE.md` for deeper implementation context.
 
-**Last updated:** 2026-09-16
+**Last updated:** 2026-09-21
 
 ---
 
@@ -122,7 +122,7 @@ Footer:
 
 ## Guardrails
 
-- Never hardcode hex colors in components. Use CSS variables from `src/app/globals.css`, preferably the current `--home-*` editorial tokens for new work.
+- Never hardcode hex colors in components. On the seven designed Catalog 97 routes and in `src/components/catalog97`, use the `--c97-*` tokens from `src/app/catalog97.css` through `data-c97-surface`. On the other routes the `--home-*` tokens still work because the bridge aliases them, and they are slated for removal in the family migrations described in `docs/superpowers/specs/2026-09-16-catalog97-unification-design.md`. `--home-haze`, `--home-acid`, and `--home-moss` are deleted.
 - Never import `@tabler/icons-react` in server components. Use `@/components/ui/ServerIcons`.
 - Never import `better-sqlite3` into client code.
 - Never create real pages at `/projects`, `/work`, or `/blog`.
@@ -159,7 +159,7 @@ Confirm live API routes from `src/app/api/**/route.ts`. Current routes:
 - `/api/rss`
 - `/api/search`
 - `/api/spacex/summary`, `/api/spacex/launches`, `/api/spacex/launches/[id]`
-- `/api/stocks`
+- `/api/stocks` (retired on 2026-07-06, returns 410 Gone)
 - `/api/world-cup/teams/[teamId]`
 
 Most dashboard APIs read committed snapshot files at request time. The exceptions that call external services at request time are the earthquake-pulse, bay-area-transit, news-pulse, mba-jobs, and investments quotes routes; each keeps the committed snapshot (or cached data) as its fallback.
@@ -180,7 +180,7 @@ npm run dev
 
 - Prefer Node 20 locally to match GitHub Actions.
 - `npm run update:investments` also requires `.venv/bin/python3`.
-- `npm run update:football`, `npm run update:premier-league`, and `npm run update:la-liga` use `FOOTBALL_DATA_API_TOKEN` only when rebuilding checked-in football snapshots. The same token is optional at runtime: when set in the deploy environment, the Premier League and La Liga summary APIs refresh standings and fixtures at request time (5-minute in-memory TTL) and fall back to the committed snapshots; without it they serve the committed snapshots only.
+- `npm run update:football`, `npm run update:premier-league`, and `npm run update:la-liga` use `FOOTBALL_DATA_API_TOKEN` only when rebuilding checked-in football snapshots. The football pages never call the provider at request time. `src/lib/premierLeagueSnapshot.ts` and `src/lib/laLigaSnapshot.ts` each have a `preferLive` refresh path, but no caller passes it, so the pages always serve the committed snapshots.
 - `npm run update:mlb`, `npm run update:nba`, `npm run update:nfl`, `npm run update:golf`, and `npm run update:world-cup` use public sports data sources and do not require auth tokens.
 - `npm run update:bay-area-transit` uses BART's public legacy API. Set the optional `BART_API_KEY` (free registration at api.bart.gov/api/register.aspx) to replace the published demo-key fallback; no token setup is required to get started.
 - `npm run update:tech-startups` processes a hand-maintained seed inside `scripts/buildTechStartupSnapshot.ts`; there is no live source to poll.
@@ -201,7 +201,7 @@ npm run dev
 
 The fantasy-football surface keeps redraft and best ball separate. `/fantasy-football` and `/fantasy-football/draft-tracker` use the scoring-specific redraft snapshots through `useFantasySnapshot`. `/fantasy-football/best-ball` and `/fantasy-football/best-ball/draft-tracker` use `public/data/fantasy/best-ball.json` through `useBestBallSnapshot`, with contest rules and recommendations from `src/lib/bestBall/`. The best ball snapshot combines best ball consensus rankings, current Underdog ADP, bye weeks, and Week 17 opponents. Best ball draft state uses its own season-and-contest storage keys and does not read or overwrite the redraft draft state.
 
-`/fantasy-football/weekly` is the only in-season surface. It reads `public/data/fantasy/weekly.json` through `useFantasyWeeklySnapshot` and is deliberately absent until Week 1, so the hook treats a 404 as a state rather than an error. Every other fantasy route is a draft board and carries a dated note from Week 1 saying so.
+`/fantasy-football/weekly` and `/fantasy-football/waivers` are the in-season surfaces. Both read `public/data/fantasy/weekly.json` through the shared weekly client and `useFantasyWeeklySnapshot`. The file does not exist before Week 1, so the hook treats a 404 as a not-published state rather than an error. Every other fantasy route is a draft board and carries a dated note from Week 1 saying so.
 
 The redraft rankings board is tier-first (from the `draft-rankings` Claude Design template): numbered tier plates, avg-rank cliff separators, per-row expert-spread bars, a sticky bar with the deep-linkable position pill row and PPR/Half-PPR/Standard scoring selector (`?position=`, `?scoring=`), per-board search, and, when the ADP source is fresh, ADP and vs-ADP columns plus a market verdict in the board's own player drawer (`?view=` is still parsed for old links but has no UI). Shared presentation components live in `src/components/fantasy/` (barrel `index.ts`); three cross-surface browser-local stores live in `src/hooks/use{PlayerQueue,PlayerNotes,CompareTray}.ts` over `useLocalStorageString.ts`, with parse/serialize helpers and key constants in `src/lib/fantasyLocal.ts`. Board math/formatting/legend copy is in `src/lib/fantasyUtils.ts`; the pure redraft signal engine is `src/lib/draftAnalytics.ts`. LocalStorage keys include `fantasy-player-queue-v1`, `fantasy-player-notes-v1`, and `fantasy-compare-v1`; per-season redraft state persists under `fantasy-draft-tracker-v3-<season>`.
 
@@ -269,7 +269,7 @@ Inputs and outputs:
 - index file: `public/data/investments/index.json`
 - compacted snapshot output: `public/data/investments/{SYMBOL}/snapshot.json`
 
-Only the index and compacted snapshots under `public/` ship with deploys and are committed by the refresh workflow. Raw per-section files stay in the `data/investments-raw/` workspace as transient builder inputs. That directory is gitignored for new files, but existing historical files remain tracked until the repository cleanup migration, and the refresh workflow's narrowed `public/data/investments` pathspec keeps them out of automated commits. When a symbol fetch fails, the builder keeps its committed snapshot and original freshness metadata.
+Only the index and compacted snapshots under `public/` ship with deploys and are committed by the refresh workflow. Raw per-section files stay in the `data/investments-raw/` workspace as transient builder inputs. That directory is gitignored and has no tracked files, and the refresh workflow's narrowed `public/data/investments` pathspec keeps raw files out of automated commits. When a symbol fetch fails, the builder keeps its committed snapshot and original freshness metadata.
 
 The refresh now rejects a symbol when its latest market date is more than seven calendar days old, even if the provider returned a non-empty price array. The index records per-symbol `priceAsOf` plus aggregate `priceHealth`, and the UI reports recent and delayed histories separately from snapshot build time. The legacy EPS-based DCF and its Buy/Hold/Sell output are disabled until a statement-backed model replaces them. Current provider, licensing, and migration decisions live in `docs/INVESTMENTS_DATA_SOURCES.md`.
 
@@ -418,6 +418,10 @@ Checked-in operational workflows:
 - `.github/workflows/update-bay-area-transit.yml`
 - `.github/workflows/update-earthquake.yml`
 - `.github/workflows/update-article-images.yml`
+- `.github/workflows/update-polling.yml`
+- `.github/workflows/audit-curated-data.yml`
+- `.github/workflows/changelog-on-merge.yml`
+- `.github/workflows/publish-data.yml`
 - `netlify/functions/purge-cache.ts`
 
 Current behavior:
@@ -426,7 +430,7 @@ Current behavior:
 - `changelog-on-merge.yml` appends a dated bullet to `CHANGELOG.md` on `main` for every merged pull request; add the `skip-changelog` label to opt a PR out. Snapshot-refresh bots push straight to `main` without a PR, so they never trigger it, and the commit lands with `[skip ci]` to avoid a trigger loop
 - `update-investments.yml` runs on manual dispatch and weekdays at `22:15 UTC`, then commits refreshed compact snapshots under `public/data/investments`; raw provider responses are not committed
 - `update-premier-league.yml` and `update-la-liga.yml` run every four hours during the season (August through May; skipped June and July)
-- `update-fantasy.yml` runs daily July through September and weekly otherwise
+- `update-fantasy.yml` runs daily at 17:00 UTC July through December and weekly on Wednesdays January through June
 - `update-github-trending.yml` runs on manual dispatch and daily at `07:45 UTC`, then commits `src/data/githubTrendingSnapshot.ts` when tracked repositories change
 - `update-formula-1.yml` runs every three hours Thursday through Sunday and daily otherwise
 - `update-spacex.yml` runs on manual dispatch and daily at `09:25 UTC` and `21:25 UTC`, then commits SpaceX data, manifest, image reference, and cached image artifacts when they change
@@ -442,10 +446,9 @@ Current behavior:
 - `audit-curated-data.yml` checks review dates, verification flags, and structural integrity across Frontier Models, Tech Startups, AI Dev Tools, Museum Log, Travel Deals, and Food Map every Monday
 - `netlify/functions/refresh-frontier-models.ts` is a Netlify scheduled function (daily 07:30 UTC, no GitHub Action) that fact-checks the frontier-models seed against models.dev and OpenRouter, writes the result to the `dashboard-snapshots` Netlify Blobs store, and purges the `frontier-models` CDN cache tag; the committed seed stays the fallback
 - The tech startup tracker has no workflow by design — its dataset is editorially curated, so refreshes happen by editing the seed and running `npm run update:tech-startups` locally
-- All 16 snapshot `update-*.yml` workflows commit and push through the shared `scripts/ci/commit-and-push-snapshot.sh` helper (usage: `commit-and-push-snapshot.sh <commit-message> <pathspec...>`). It regenerates and stages sitemap freshness metadata with the snapshot, sets the `github-actions[bot]` identity, exits cleanly on a no-op refresh, and pushes to `HEAD:main` with a fetch/`rebase --autostash` retry loop (default 8 attempts, `SNAPSHOT_PUSH_ATTEMPTS` override) plus capped exponential backoff to absorb concurrent snapshot-bot pushes. Behavior is asserted by `.github/workflows/__tests__/snapshot-workflows.test.ts` and `update-investments.test.ts`.
+- All 17 `update-*.yml` workflows commit and push through the shared `scripts/ci/commit-and-push-snapshot.sh` helper (usage: `commit-and-push-snapshot.sh <commit-message> <pathspec...>`). It regenerates and stages sitemap freshness metadata with the snapshot, sets the `github-actions[bot]` identity, exits cleanly on a no-op refresh, and pushes to `HEAD:main` with a fetch/`rebase --autostash` retry loop (default 8 attempts, `SNAPSHOT_PUSH_ATTEMPTS` override) plus capped exponential backoff to absorb concurrent snapshot-bot pushes. Behavior is asserted by `.github/workflows/__tests__/snapshot-workflows.test.ts` and `update-investments.test.ts`.
 - `publish-data.yml` coalesces successful refreshes, builds the site in GitHub Actions, uploads it with `netlify deploy --prod --context production` (free Actions minutes on a public repo, and a build that never runs on Netlify's infrastructure does not spend its 300 monthly build minutes, which ran out on 2026-08-06), and verifies the full `/api/data-revisions` ledger before closing publication incidents. `scripts/ci/netlify-ignore.sh` keeps Netlify from building `main` or dependabot branches itself. Needs the `NETLIFY_AUTH_TOKEN` repository secret
 - `purge-cache.ts` is protected by `Authorization: Bearer <CRON_SECRET>` or `x-cron-secret` and calls Netlify Durable Cache purge; query-string secrets are intentionally rejected
-- Historical caveat: `vercel.json` still declares a cron for `/api/scheduled-update`, but no matching route exists. Treat that config as historical until confirmed.
 
 For public fantasy updates, GitHub Actions is the source of truth.
 

@@ -2,6 +2,8 @@
 
 **Date:** 2026-04-03  
 **Scope:** `src/components/About.tsx`, `src/components/ui/AuthorBio.tsx`, `src/app/about/page.tsx`
+**Status, 2026-09-21.** Shipped on 2026-04-03 and since superseded. `src/components/About.tsx` was deleted on 2026-08-11 and `/about` renders `Catalog97About`. Kept as history only.
+
 
 ## Context
 
