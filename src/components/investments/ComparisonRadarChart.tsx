@@ -35,7 +35,11 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
     // SVG presentation attributes can't substitute var(), so resolve the
     // tokens at render time (re-resolved when resolvedTheme flips) — same
     // idiom as PortfolioPerformanceChart.
-    const computedStyle = getComputedStyle(document.documentElement);
+    // Read from the svg itself rather than document.documentElement. The
+    // Catalog 97 tokens are scoped to the `[data-c97]` page root, and the
+    // bridge aliases every --home-* name onto them there, so the document
+    // root still returns the old :root values and would miss the repaint.
+    const computedStyle = getComputedStyle(svgRef.current);
     const colorA =
       computedStyle.getPropertyValue("--home-signal").trim() || "#C93F19";
     const colorB =

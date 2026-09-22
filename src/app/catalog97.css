@@ -3,13 +3,18 @@
  * Catalog 97
  * ============================================================================
  *
- * The design language for the seven portfolio-shell routes: /, /portfolio,
- * /writing, /dashboards, /about, /resume, /contact. Imported by globals.css.
+ * The design language for the whole site. The seven designed routes (/,
+ * /portfolio, /writing, /dashboards, /about, /resume, /contact) render
+ * Catalog97Shell themselves, and since 2026-09-16 ConditionalLayout wraps
+ * every other route in Catalog97ToolShell. Imported by globals.css.
  *
  * Everything here is scoped to the page root, which carries both `data-c97`
  * (the token scope) and `.c97-page` (the styling hook). The Working Instrument
- * `--home-*` palette is untouched and still owns the other ~40 routes, so a
- * dashboard rendering `var(--home-signal)` is unaffected by this file.
+ * `--home-*` names still appear in most components, and the BRIDGE block near
+ * the end aliases each one onto a Catalog 97 token, so a dashboard rendering
+ * `var(--home-signal)` paints the surface accent. The `:root` `--home-*`
+ * values in globals.css are only seen outside the page root and go away in
+ * the close-out PR of the unification spec.
  *
  * TOKEN SCOPE
  * Every `--c97-*` value is declared under `[data-c97]` or under a

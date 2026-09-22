@@ -70,14 +70,15 @@ const STATUS_CLASS =
   "mt-4 font-mono text-2xs uppercase tracking-[0.1em] text-[var(--home-ink-muted)]";
 
 /**
- * The header cell of a long table, pinned under the site header while the
- * page scrolls. The site header is `sticky top-0` at 72px plus its 1px rule,
- * so anything less than 73 here would slide under it and vanish.
+ * The header cell of a long table, pinned to the top of the viewport while the
+ * page scrolls. The Catalog 97 header is `position: relative` and scrolls
+ * away, so the row sits at 0. The 73px offset it once carried cleared the
+ * deleted Working Instrument sticky header and left a gap after the shell
+ * change on 2026-09-16.
  */
-const SITE_HEADER_HEIGHT_PX = 73;
 const STICKY_HEADER_CLASS = "sticky z-10";
 const STICKY_HEADER_STYLE = {
-  top: SITE_HEADER_HEIGHT_PX,
+  top: 0,
   background: "var(--home-paper-raised)",
   boxShadow: "inset 0 -1px 0 var(--home-rule)",
 } as const;

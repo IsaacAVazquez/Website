@@ -39,7 +39,9 @@ describe("nba-state", () => {
     expect(filterTeamsForView("west")).toEqual(nbaSnapshot.teamsByConference.west);
     expect(filterTeamsForView("playoff")).toHaveLength(12);
     expect(filterTeamsForView("play-in")).toHaveLength(8);
-    expect(getDefaultTeamForView("play-in")).toBe(filterTeamsForView("play-in")[0]?.id);
+    expect(getDefaultTeamForView("play-in")).toBe(
+      filterTeamsForView("play-in")[0]?.id ?? DEFAULT_NBA_STATE.team
+    );
   });
 
   it("builds hrefs while preserving unrelated params and clearing defaults", () => {

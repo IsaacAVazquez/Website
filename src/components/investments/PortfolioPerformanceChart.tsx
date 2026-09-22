@@ -119,7 +119,11 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
       .range([innerHeight, 0]);
 
     // Read CSS variable colors from the DOM
-    const computedStyle = getComputedStyle(document.documentElement);
+    // Read from the svg itself rather than document.documentElement. The
+    // Catalog 97 tokens are scoped to the `[data-c97]` page root, and the
+    // bridge aliases every --home-* name onto them there, so the document
+    // root still returns the old :root values and would miss the repaint.
+    const computedStyle = getComputedStyle(svg);
     const homeSignal =
       computedStyle.getPropertyValue("--home-signal").trim() || "#C93F19";
     const homeInkMuted =
