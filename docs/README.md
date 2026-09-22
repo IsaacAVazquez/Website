@@ -2,7 +2,7 @@
 
 Current map of tracked Markdown documentation.
 
-**Last updated:** 2026-09-21
+**Last updated:** 2026-09-22
 
 Tracked Markdown audit scope: `git ls-files '*.md'` returned 308 tracked files on 2026-09-21, split across `.agents/` (104), `.impeccable/` (79), `docs/` (55), `content/` outside the blog (44), the repository root (23), and three elsewhere. `ds-bundle/` is gitignored and no longer tracked. Only the root and `docs/` files are website documentation, so the working set this index governs is about 78 files. Published articles are `.mdx` under `content/blog/` and are counted separately. Re-run the command rather than trusting these numbers.
 
@@ -89,7 +89,8 @@ Dated audits and research dossiers. Each one is a point-in-time snapshot rather 
 - `accessibility-audit-2026-06.md`
 - `DATA_SOURCE_AUDIT_2026-07.md` (data source fix backlog)
 - `FANTASY_AUDIT_2026-08.md` (fantasy football audit and roadmap, 2026-08-20)
-- `seo-aeo-audit.md`
+- `seo-aeo-audit.md` (July 2026 AEO and SEO audit, pre Catalog 97)
+- `SEO_AUDIT_2026-09.md` (September 2026 SEO audit against a local production build and crawl, with the S1 to S26 fix backlog)
 - `SEO_CONTENT_MAP.md`
 - `website-improvement-suggestions.md`
 - `research/*` (World Cup 2026 contender dossier and rerank template)
