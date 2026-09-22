@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
@@ -20,7 +19,7 @@ import {
   getBlogPostBySlug,
   getRelatedBlogPosts,
 } from "@/lib/blog";
-import { ArrowRight } from "@/components/ui/ServerIcons";
+import { Catalog97Slot } from "@/components/catalog97/Catalog97Primitives";
 import { ArticleCodeCopy } from "@/components/analytics/ArticleCodeCopy";
 import { publishedDateFormatter } from "@/lib/utils";
 
@@ -137,180 +136,139 @@ export default async function BlogPostPage({ params }: PageProps) {
         }}
       />
 
-      <section className="home-page min-h-screen">
-        <div className="home-shell-tight home-section">
-          <article className="mx-auto max-w-[60rem]">
-            <nav aria-label="Breadcrumb" className="mb-8">
-              <ol
-                className="flex items-center gap-2 text-sm"
-                style={{
-                  fontFamily: "var(--font-home-sans)",
-                  color: "var(--home-ink-muted)",
-                }}
-              >
+      {/*
+        Hero. Breadcrumb, collection kicker, the title at the display step, the
+        byline as a meta row, the excerpt as the standfirst, and the tags as
+        chips. The cover is a Catalog 97 slot: the flat stone field stays
+        painted under the photograph, and the credit is the slot's caption.
+      */}
+      <section
+        className="c97-band"
+        data-c97-surface="paper"
+        style={{ paddingBottom: "var(--c97-sp-4)" }}
+      >
+        <div className="c97-shell">
+          <nav aria-label="Breadcrumb">
+            <ol className="c97-breadcrumb">
+              <li>
+                <Link href="/writing" className="c97-microlink">
+                  Writing
+                </Link>
+              </li>
+              {topicPage ? (
                 <li>
                   <Link
-                    href="/writing"
-                    className="transition-colors hover:text-[var(--home-ink)]"
-                    style={{ color: "var(--home-ink-muted)" }}
+                    href={`/writing/topics/${topicPage.slug}`}
+                    className="c97-microlink"
                   >
-                    Writing
+                    {topicPage.label}
                   </Link>
                 </li>
-                <li aria-hidden="true">/</li>
-                {topicPage ? (
-                  <>
-                    <li>
-                      <Link
-                        href={`/writing/topics/${topicPage.slug}`}
-                        className="transition-colors hover:text-[var(--home-ink)]"
-                        style={{ color: "var(--home-ink-muted)" }}
-                      >
-                        {topicPage.label}
-                      </Link>
-                    </li>
-                    <li aria-hidden="true">/</li>
-                  </>
-                ) : null}
-                <li className="max-w-[40ch] truncate" style={{ color: "var(--home-ink)" }}>
+              ) : null}
+              <li aria-current="page">
+                <span
+                  style={{
+                    maxWidth: "40ch",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
+                >
                   {post.title}
-                </li>
-              </ol>
-            </nav>
+                </span>
+              </li>
+            </ol>
+          </nav>
 
-            <header className="mb-10 space-y-5">
-              {topicPage ? (
+          <header
+            style={{
+              marginTop: "var(--c97-sp-4)",
+              display: "grid",
+              gap: "var(--c97-sp-3)",
+            }}
+          >
+            {topicPage ? (
+              <div>
                 <Link
                   href={`/writing/topics/${topicPage.slug}`}
-                  className="home-kicker inline-block transition-colors hover:text-[var(--home-signal)]"
+                  className="c97-microlink"
                 >
                   {getBlogPostCollectionLabel(post)}
                 </Link>
-              ) : (
-                <span className="home-kicker inline-block">
-                  {getBlogPostCollectionLabel(post)}
-                </span>
-              )}
+              </div>
+            ) : (
+              <p className="c97-kicker">{getBlogPostCollectionLabel(post)}</p>
+            )}
 
-              <h1
-                className="max-w-5xl"
+            <h1 className="c97-display">{post.title}</h1>
+
+            <p className="c97-meta">
+              <span>Isaac Vazquez</span>
+              <time dateTime={post.publishedAt}>
+                {publishedDateFormatter.format(new Date(post.publishedAt))}
+              </time>
+              {post.updatedAt && post.updatedAt !== post.publishedAt ? (
+                <span>
+                  Updated{" "}
+                  <time dateTime={post.updatedAt}>
+                    {publishedDateFormatter.format(new Date(post.updatedAt))}
+                  </time>
+                </span>
+              ) : null}
+              <span className="c97-tabular">{post.readingTime}</span>
+            </p>
+
+            <p
+              className="c97-lead"
+              style={{
+                maxWidth: "var(--c97-column)",
+                color: "var(--c97-ink-2)",
+              }}
+            >
+              {post.excerpt}
+            </p>
+
+            {post.tags && post.tags.length > 0 ? (
+              <ul
+                aria-label="Tags"
                 style={{
-                  fontFamily: "var(--font-home-sans)",
-                  fontSize: "clamp(2rem, 5vw, 3.2rem)",
-                  fontWeight: 700,
-                  lineHeight: 1.05,
-                  letterSpacing: "-0.04em",
-                  color: "var(--home-ink)",
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "var(--c97-sp-1)",
+                  listStyle: "none",
+                  margin: 0,
+                  padding: 0,
                 }}
               >
-                {post.title}
-              </h1>
+                {post.tags.slice(0, 4).map((tag) => (
+                  <li key={tag} className="c97-chip">
+                    {tag}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
 
-              <div
-                className="flex flex-wrap items-center gap-3 border-t pt-5"
-                style={{ borderColor: "var(--home-rule)" }}
-              >
-                <Image
-                  src="/images/headshot-home.webp"
-                  alt="Isaac Vazquez"
-                  width={56}
-                  height={56}
-                  className="flex-shrink-0 rounded-full"
-                  style={{ border: "1px solid var(--home-rule)", objectFit: "cover", width: 56, height: 56 }}
-                />
-                <div
-                  className="flex flex-wrap items-center gap-x-2 gap-y-0.5"
-                  style={{ fontFamily: "var(--font-home-sans)" }}
-                >
-                  <span className="font-semibold" style={{ color: "var(--home-ink)" }}>
-                    Isaac Vazquez
-                  </span>
-                  <span aria-hidden="true" style={{ color: "var(--home-ink-muted)" }}>
-                    ·
-                  </span>
-                  <time
-                    dateTime={post.publishedAt}
-                    style={{ fontSize: "0.85rem", color: "var(--home-ink-muted)" }}
-                  >
-                    {publishedDateFormatter.format(new Date(post.publishedAt))}
-                  </time>
-                  {post.updatedAt && post.updatedAt !== post.publishedAt ? (
+            {/*
+              The hero only renders a real photo. Posts without one keep their
+              generated social card for link unfurls, where it belongs; dropped
+              into the page it repeated the headline.
+            */}
+            {post.coverImage && !post.coverImage.endsWith("/opengraph-image") ? (
+              <Catalog97Slot
+                surface="stone"
+                ratio="1200 / 630"
+                src={post.coverImage}
+                alt={post.coverImageAlt || post.title}
+                priority
+                sizes="(min-width: 1280px) 1080px, 100vw"
+                caption={
+                  post.coverImageCredit ? (
                     <>
-                      <span
-                        aria-hidden="true"
-                        style={{ color: "var(--home-ink-muted)" }}
-                      >
-                        ·
-                      </span>
-                      <span
-                        style={{
-                          fontSize: "0.85rem",
-                          color: "var(--home-ink-muted)",
-                        }}
-                      >
-                        Updated{" "}
-                        <time dateTime={post.updatedAt}>
-                          {publishedDateFormatter.format(
-                            new Date(post.updatedAt)
-                          )}
-                        </time>
-                      </span>
-                    </>
-                  ) : null}
-                  <span aria-hidden="true" style={{ color: "var(--home-ink-muted)" }}>
-                    ·
-                  </span>
-                  <span style={{ fontSize: "0.85rem", color: "var(--home-ink-muted)" }}>
-                    {post.readingTime}
-                  </span>
-                </div>
-              </div>
-
-              <p className="home-body max-w-[54rem]">{post.excerpt}</p>
-
-              {post.tags && post.tags.length > 0 ? (
-                <div className="flex flex-wrap gap-2">
-                  {post.tags.slice(0, 4).map((tag) => (
-                    <span key={tag} className="resume-chip">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              ) : null}
-
-              {/*
-                The hero only renders a real photo. Posts without one used to show
-                their generated social card here, which repeated the headline, used
-                a gradient DESIGN.md rules out, and pushed the body below the fold.
-                The card still serves social previews through metadata.
-              */}
-              {post.coverImage && !post.coverImage.endsWith("/opengraph-image") ? (
-                <div>
-                  <div className="relative aspect-[1200/630] overflow-hidden rounded-[2px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)]">
-                    <Image
-                      src={post.coverImage}
-                      alt={post.coverImageAlt || post.title}
-                      fill
-                      priority
-                      sizes="(min-width: 1280px) 60rem, 100vw"
-                      className="object-cover"
-                    />
-                  </div>
-                  {post.coverImageCredit ? (
-                    <p
-                      className="mt-2"
-                      style={{
-                        fontFamily: "var(--font-home-sans)",
-                        fontSize: "0.76rem",
-                        lineHeight: 1.45,
-                        color: "var(--home-ink-muted)",
-                      }}
-                    >
                       Photo by{" "}
                       {post.coverImageCreditUrl ? (
                         <a
                           href={post.coverImageCreditUrl}
-                          className="home-inline-link"
+                          className="c97-link"
                           target="_blank"
                           rel="noreferrer"
                         >
@@ -319,157 +277,177 @@ export default async function BlogPostPage({ params }: PageProps) {
                       ) : (
                         <span>{post.coverImageCredit}</span>
                       )}
-                    </p>
-                  ) : null}
-                </div>
-              ) : null}
-            </header>
-
-            <div
-              id="article-body"
-              className="prose prose-writing dark:prose-invert mb-16"
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
-            <ArticleCodeCopy containerSelector="#article-body" location="article" />
-
-            {post.cta ? (
-              <section
-                className="home-card mb-10 space-y-4"
-                style={{
-                  background: "color-mix(in srgb, var(--home-paper-alt) 86%, var(--home-elev-mix))",
-                  padding: "1.8rem",
-                }}
-              >
-                <p className="home-kicker mb-0">{post.cta.eyebrow || "Related work"}</p>
-                <h2
-                  style={{
-                    fontFamily: "var(--font-home-sans)",
-                    fontSize: "1.7rem",
-                    fontWeight: 600,
-                    lineHeight: 1.02,
-                    letterSpacing: "-0.04em",
-                    color: "var(--home-ink)",
-                  }}
-                >
-                  {post.cta.title}
-                </h2>
-                <p className="home-body mb-0 max-w-[42rem]">{post.cta.description}</p>
-                <Link href={post.cta.href} className="home-inline-link inline-flex items-center gap-2">
-                  {post.cta.actionLabel || "Open it"}
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </section>
+                    </>
+                  ) : undefined
+                }
+                style={{ marginTop: "var(--c97-sp-2)" }}
+              />
             ) : null}
+          </header>
+        </div>
+      </section>
 
-            {relatedPosts.length > 0 ? (
-              <section className="mb-12 space-y-5">
-                <div className="space-y-2">
-                  <p className="home-kicker mb-0">Related writing</p>
-                  <h2
-                    style={{
-                      fontFamily: "var(--font-home-sans)",
-                      fontSize: "clamp(1.7rem, 4vw, 2.2rem)",
-                      fontWeight: 600,
-                      lineHeight: 1,
-                      letterSpacing: "-0.04em",
-                      color: "var(--home-ink)",
-                    }}
-                  >
-                    If this piece was useful, these should stack on top of it.
-                  </h2>
-                </div>
+      {/* The article itself, in the running-prose column. */}
+      <section className="c97-band c97-band-continues" data-c97-surface="paper">
+        <div className="c97-shell">
+          <div
+            id="article-body"
+            className="c97-article"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
+          <ArticleCodeCopy containerSelector="#article-body" location="article" />
+        </div>
+      </section>
 
-                <div className="grid gap-5 md:grid-cols-3">
-                  {relatedPosts.map((relatedPost) => (
-                    <Link
-                      key={relatedPost.slug}
-                      href={`/writing/${relatedPost.slug}`}
-                      className="group block h-full"
-                    >
-                      <article className="home-card h-full" style={{ padding: "1.35rem" }}>
-                        <p className="home-kicker mb-2">
-                          {getBlogPostCollectionLabel(relatedPost)}
-                        </p>
-                        <h3
-                          style={{
-                            fontFamily: "var(--font-home-sans)",
-                            fontSize: "1.05rem",
-                            fontWeight: 700,
-                            letterSpacing: "-0.03em",
-                            lineHeight: 1.18,
-                            color: "var(--home-ink)",
-                          }}
-                        >
-                          {relatedPost.title}
-                        </h3>
-                        <p
-                          className="mb-0 mt-3 text-sm leading-6"
-                          style={{ color: "var(--home-ink-muted)" }}
-                        >
-                          {relatedPost.excerpt}
-                        </p>
-                        <div className="mt-5 flex items-center justify-between border-t border-[var(--home-rule)] pt-4 text-sm">
-                          <span style={{ color: "var(--home-ink-muted)" }}>
-                            {relatedPost.readingTime}
-                          </span>
-                          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                        </div>
-                      </article>
-                    </Link>
-                  ))}
-                </div>
-              </section>
-            ) : null}
-
-            <div
-              className="mb-10"
-              style={{ borderTop: "1px solid var(--home-rule)", paddingTop: "2.5rem" }}
-            >
-              <AuthorBio variant="light" />
+      {/* The post's own call to action, on the camel field. */}
+      {post.cta ? (
+        <section className="c97-band" data-c97-surface="camel">
+          <div
+            className="c97-shell"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
+              gap: "var(--c97-sp-4)",
+              alignItems: "end",
+            }}
+          >
+            <div>
+              <p className="c97-kicker">{post.cta.eyebrow || "Related work"}</p>
+              <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>
+                {post.cta.title}
+              </h2>
+              <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
+                {post.cta.description}
+              </p>
             </div>
-
-            {(olderPost || newerPost) && (
-              <nav
-                className="mb-10 grid gap-4 border-t border-[var(--home-rule)] pt-8 md:grid-cols-2"
-                aria-label="Article pagination"
-              >
-                {olderPost ? (
-                  <Link
-                    href={`/writing/${olderPost.slug}`}
-                    className="home-card group block h-full p-5 transition-colors hover:border-[var(--home-signal)]"
-                    rel="prev"
-                  >
-                    <p className="home-kicker mb-2">Previous</p>
-                    <p className="mb-0 text-base font-semibold leading-snug text-[var(--home-ink)]">
-                      {olderPost.title}
-                    </p>
-                  </Link>
-                ) : (
-                  <span aria-hidden="true" />
-                )}
-                {newerPost ? (
-                  <Link
-                    href={`/writing/${newerPost.slug}`}
-                    className="home-card group block h-full p-5 text-right transition-colors hover:border-[var(--home-signal)]"
-                    rel="next"
-                  >
-                    <p className="home-kicker mb-2">Next</p>
-                    <p className="mb-0 text-base font-semibold leading-snug text-[var(--home-ink)]">
-                      {newerPost.title}
-                    </p>
-                  </Link>
-                ) : (
-                  <span aria-hidden="true" />
-                )}
-              </nav>
-            )}
-
-            <div className="pb-8">
-              <Link href="/writing" className="home-inline-link">
-                &larr; Back to writing
+            <div style={{ display: "flex", justifyContent: "flex-start" }}>
+              <Link href={post.cta.href} className="c97-btn c97-btn-invert">
+                {post.cta.actionLabel || "Open it"}
               </Link>
             </div>
-          </article>
+          </div>
+        </section>
+      ) : null}
+
+      {/* Related writing, as a ledger on bone. */}
+      {relatedPosts.length > 0 ? (
+        <section
+          className="c97-band"
+          data-c97-surface="bone"
+          aria-labelledby="related-writing-heading"
+        >
+          <div className="c97-shell">
+            <p className="c97-kicker">Related writing</p>
+            <h2
+              id="related-writing-heading"
+              className="c97-serif c97-h2"
+              style={{ marginTop: "var(--c97-sp-2)" }}
+            >
+              If this piece was useful, these should stack on top of it.
+            </h2>
+            <div style={{ marginTop: "var(--c97-sp-4)" }}>
+              {relatedPosts.map((relatedPost) => (
+                <article
+                  key={relatedPost.slug}
+                  className="c97-row c97-row-stack-sm"
+                  style={{
+                    borderTop: "1px solid var(--c97-rule)",
+                    paddingBlock: "var(--c97-sp-3)",
+                  }}
+                >
+                  <div>
+                    <p className="c97-kicker">
+                      {getBlogPostCollectionLabel(relatedPost)}
+                    </p>
+                    <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
+                      <Link
+                        href={`/writing/${relatedPost.slug}`}
+                        style={{ textDecoration: "none" }}
+                      >
+                        {relatedPost.title}
+                      </Link>
+                    </h3>
+                    <p
+                      className="c97-prose"
+                      style={{
+                        marginTop: "var(--c97-sp-1)",
+                        color: "var(--c97-ink-2)",
+                      }}
+                    >
+                      {relatedPost.excerpt}
+                    </p>
+                  </div>
+                  <p className="c97-meta">
+                    <span className="c97-tabular">{relatedPost.readingTime}</span>
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      {/* Author, the older and newer neighbours, and the way back. */}
+      <section className="c97-band" data-c97-surface="paper">
+        <div className="c97-shell" style={{ display: "grid", gap: "var(--c97-sp-5)" }}>
+          <AuthorBio variant="light" />
+
+          {olderPost || newerPost ? (
+            <nav
+              aria-label="Article pagination"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
+                gap: "var(--c97-sp-3)",
+                borderTop: "1px solid var(--c97-rule)",
+                paddingTop: "var(--c97-sp-4)",
+              }}
+            >
+              {olderPost ? (
+                <Link
+                  href={`/writing/${olderPost.slug}`}
+                  rel="prev"
+                  style={{
+                    display: "grid",
+                    gap: "var(--c97-sp-1)",
+                    alignContent: "start",
+                    minHeight: 44,
+                    textDecoration: "none",
+                  }}
+                >
+                  <span className="c97-kicker">Previous</span>
+                  <span className="c97-serif c97-h3">{olderPost.title}</span>
+                </Link>
+              ) : (
+                <span aria-hidden="true" />
+              )}
+              {newerPost ? (
+                <Link
+                  href={`/writing/${newerPost.slug}`}
+                  rel="next"
+                  style={{
+                    display: "grid",
+                    gap: "var(--c97-sp-1)",
+                    alignContent: "start",
+                    minHeight: 44,
+                    textDecoration: "none",
+                    textAlign: "right",
+                  }}
+                >
+                  <span className="c97-kicker">Next</span>
+                  <span className="c97-serif c97-h3">{newerPost.title}</span>
+                </Link>
+              ) : (
+                <span aria-hidden="true" />
+              )}
+            </nav>
+          ) : null}
+
+          <div>
+            <Link href="/writing" className="c97-sectionlink">
+              Back to writing
+            </Link>
+          </div>
         </div>
       </section>
     </>

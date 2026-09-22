@@ -11,23 +11,14 @@ export const metadata: Metadata = constructMetadata({
   noIndex: true,
 });
 
-const sectionTitleStyle = {
-  fontFamily: "var(--font-home-sans)",
-  color: "var(--home-ink)",
-  fontWeight: 600,
-  letterSpacing: "-0.02em",
-} as const;
-
-const bodyStyle = {
-  fontFamily: "var(--font-home-sans)",
-  color: "var(--home-ink-muted)",
-} as const;
-
-const monoChipStyle = {
-  fontFamily: "var(--font-jetbrains-mono)",
-  background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
-  border: "1px solid var(--home-rule)",
-  color: "var(--home-ink)",
+/*
+ * Inline code drawn like a chip: the mono face on the field tint, the same
+ * treatment `.c97-article :not(pre) > code` gives a Markdown code span.
+ */
+const inlineCodeStyle = {
+  background: "var(--c97-field)",
+  padding: "0 0.35em",
+  fontSize: "0.875em",
 } as const;
 
 const setupSnippet = `# .env.local — production only; leave unset for dev / CI / tests
@@ -50,157 +41,157 @@ const namingRules = [
 
 export default function AnalyticsReferencePage() {
   return (
-    <section className="home-page home-section min-h-screen" aria-label="Analytics event reference">
-      <div className="home-shell home-shell-tight space-y-10">
-        <header className="space-y-4">
-          <p className="home-kicker mb-0">Internal reference · Not indexed</p>
-          <h1
-            className="mb-0"
-            style={{
-              fontFamily: "var(--font-home-sans)",
-              fontWeight: 700,
-              letterSpacing: "-0.03em",
-              color: "var(--home-ink)",
-              fontSize: "clamp(2rem, 5vw, 2.8rem)",
-            }}
-          >
+    <>
+      <section
+        className="c97-band"
+        data-c97-surface="paper"
+        aria-label="Analytics event reference"
+      >
+        <div className="c97-shell">
+          <p className="c97-kicker">Internal reference · Not indexed</p>
+          <h1 className="c97-display" style={{ marginTop: "var(--c97-sp-2)" }}>
             Analytics event reference
           </h1>
-          <p className="mb-0 max-w-2xl" style={bodyStyle}>
+          <p className="c97-prose" style={{ marginTop: "var(--c97-sp-3)" }}>
             Every Google Analytics 4 event this site emits, with its parameters and what
             triggers it. Tracking only runs when{" "}
-            <code style={{ ...monoChipStyle, padding: "0.1rem 0.4rem", borderRadius: 6 }}>
+            <code className="c97-mono" style={inlineCodeStyle}>
               NEXT_PUBLIC_GA_MEASUREMENT_ID
             </code>{" "}
             is set to a real measurement id — so local development, CI, and the test suite stay
             free of third-party scripts.
           </p>
-        </header>
+        </div>
+      </section>
 
-        <article className="home-card p-6 sm:p-7 space-y-4">
-          <h2 className="text-xl mb-0" style={sectionTitleStyle}>
-            Setup
-          </h2>
-          <p className="mb-0" style={bodyStyle}>
-            Add the measurement id to the environment. When present, gtag.js loads after
-            interactive and the Content-Security-Policy widens to allow Google&apos;s endpoints.
-          </p>
-          <CodeSample
-            code={setupSnippet}
-            language="bash"
-            id="env-setup"
-            location="analytics_reference"
-          />
-        </article>
+      <section className="c97-band" data-c97-surface="bone">
+        <div className="c97-shell c97-columns">
+          <div>
+            <p className="c97-kicker">Environment</p>
+            <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>
+              Setup
+            </h2>
+            <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
+              Add the measurement id to the environment. When present, gtag.js loads after
+              interactive and the Content-Security-Policy widens to allow Google&apos;s endpoints.
+            </p>
+            <div style={{ marginTop: "var(--c97-sp-3)" }}>
+              <CodeSample
+                code={setupSnippet}
+                language="bash"
+                id="env-setup"
+                location="analytics_reference"
+              />
+            </div>
+          </div>
 
-        <article className="home-card p-6 sm:p-7 space-y-4">
-          <h2 className="text-xl mb-0" style={sectionTitleStyle}>
-            Naming conventions
-          </h2>
-          <ul className="mb-0 space-y-2" style={bodyStyle}>
-            {namingRules.map((rule) => (
-              <li key={rule}>• {rule}</li>
-            ))}
-          </ul>
-          <CodeSample
-            code={usageSnippet}
-            language="ts"
-            id="usage-example"
-            location="analytics_reference"
-          />
-        </article>
+          <div>
+            <p className="c97-kicker">Conventions</p>
+            <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>
+              Naming conventions
+            </h2>
+            <ul className="c97-list" style={{ marginTop: "var(--c97-sp-2)" }}>
+              {namingRules.map((rule) => (
+                <li key={rule}>{rule}</li>
+              ))}
+            </ul>
+            <div style={{ marginTop: "var(--c97-sp-3)" }}>
+              <CodeSample
+                code={usageSnippet}
+                language="ts"
+                id="usage-example"
+                location="analytics_reference"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <div className="space-y-6">
-          <h2 className="text-2xl mb-0" style={sectionTitleStyle}>
+      <section className="c97-band" data-c97-surface="paper">
+        <div className="c97-shell">
+          <p className="c97-kicker">Event list</p>
+          <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>
             Events ({ANALYTICS_EVENTS.length})
           </h2>
 
-          {ANALYTICS_EVENTS.map((event) => (
-            <article key={event.name} className="home-card p-6 sm:p-7 space-y-4">
-              <div className="flex flex-wrap items-center gap-3">
-                <code
-                  className="inline-flex items-center rounded-md px-2.5 py-1 text-sm font-semibold"
-                  style={monoChipStyle}
-                >
-                  {event.name}
-                </code>
-                <span
-                  className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
-                  style={{
-                    fontFamily: "var(--font-home-sans)",
-                    background: "var(--home-ink)",
-                    color: "var(--home-paper)",
-                    letterSpacing: "0.02em",
-                  }}
-                >
-                  {event.category}
-                </span>
-              </div>
+          <div style={{ marginTop: "var(--c97-sp-4)" }}>
+            {ANALYTICS_EVENTS.map((event) => (
+              <article
+                key={event.name}
+                style={{
+                  borderTop: "1px solid var(--c97-rule)",
+                  paddingBlock: "var(--c97-sp-4)",
+                  display: "grid",
+                  gap: "var(--c97-sp-2)",
+                }}
+              >
+                <p className="c97-meta" style={{ alignItems: "center" }}>
+                  <code className="c97-mono" style={{ ...inlineCodeStyle, fontSize: "var(--c97-fs-small)", textTransform: "none", letterSpacing: 0, color: "var(--c97-ink)" }}>
+                    {event.name}
+                  </code>
+                  <span className="c97-chip">{event.category}</span>
+                </p>
 
-              <p className="mb-0" style={bodyStyle}>
-                {event.description}
-              </p>
-              <p className="mb-0 text-sm" style={bodyStyle}>
-                <span style={{ color: "var(--home-ink)", fontWeight: 600 }}>Trigger:</span>{" "}
-                {event.trigger}
-              </p>
+                <p className="c97-prose">{event.description}</p>
 
-              <div className="overflow-x-auto">
-                <table className="w-full border-collapse text-sm" style={bodyStyle}>
-                  <thead>
-                    <tr style={{ borderBottom: "1px solid var(--home-rule)" }}>
-                      <th className="py-2 pr-4 text-left" style={{ color: "var(--home-ink)" }}>
-                        Parameter
-                      </th>
-                      <th className="py-2 pr-4 text-left" style={{ color: "var(--home-ink)" }}>
-                        Description
-                      </th>
-                      <th className="py-2 text-left" style={{ color: "var(--home-ink)" }}>
-                        Example
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {event.parameters.map((param) => (
-                      <tr
-                        key={param.name}
-                        style={{ borderBottom: "1px solid var(--home-rule)" }}
-                      >
-                        <td className="py-2 pr-4 align-top">
-                          <code
-                            style={{
-                              fontFamily: "var(--font-jetbrains-mono)",
-                              color: "var(--home-ink)",
-                            }}
-                          >
-                            {param.name}
-                          </code>
-                        </td>
-                        <td className="py-2 pr-4 align-top">{param.description}</td>
-                        <td className="py-2 align-top">
-                          <code style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
-                            {param.example}
-                          </code>
-                        </td>
+                <div>
+                  <p className="c97-kicker">Trigger</p>
+                  <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)" }}>
+                    {event.trigger}
+                  </p>
+                </div>
+
+                <div
+                  role="region"
+                  aria-label={`${event.name} parameters`}
+                  tabIndex={0}
+                  style={{ overflowX: "auto" }}
+                >
+                  <table className="c97-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Parameter</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Example</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </article>
-          ))}
-        </div>
+                    </thead>
+                    <tbody>
+                      {event.parameters.map((param) => (
+                        <tr key={param.name}>
+                          <td>
+                            <code className="c97-mono">{param.name}</code>
+                          </td>
+                          <td>{param.description}</td>
+                          <td>
+                            <code className="c97-mono">{param.example}</code>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </article>
+            ))}
+          </div>
 
-        <p className="mb-0 text-sm" style={bodyStyle}>
-          Source of truth:{" "}
-          <code style={{ fontFamily: "var(--font-jetbrains-mono)", color: "var(--home-ink)" }}>
-            src/lib/analytics.ts
-          </code>{" "}
-          (events:{" "}
-          {Object.values(GA_EVENT).join(", ")}
-          ).
-        </p>
-      </div>
-    </section>
+          <p
+            className="c97-prose"
+            style={{
+              marginTop: "var(--c97-sp-4)",
+              color: "var(--c97-ink-2)",
+              maxWidth: "none",
+            }}
+          >
+            Source of truth:{" "}
+            <code className="c97-mono" style={inlineCodeStyle}>
+              src/lib/analytics.ts
+            </code>{" "}
+            (events:{" "}
+            {Object.values(GA_EVENT).join(", ")}
+            ).
+          </p>
+        </div>
+      </section>
+    </>
   );
 }

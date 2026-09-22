@@ -405,11 +405,15 @@ test.describe("Investments", () => {
     await expect(section).toBeVisible();
     await expect(page.getByRole("heading", { name: /selected work/i })).toBeVisible();
 
-    // The card headings end with a decorative, aria-hidden arrow, so compare
-    // accessible names rather than raw text content.
-    const titles = section.getByRole("heading", { level: 3 });
-    await expect(titles.nth(0)).toHaveAccessibleName("Investment Analytics Platform");
-    await expect(titles.nth(1)).toHaveAccessibleName("News Pulse Dashboard");
-    await expect(titles.nth(2)).toHaveAccessibleName("Interchange IQ");
+    // Each project heading ends in an aria-hidden "↗" glyph, which textContent
+    // still reports; compare the titles without it.
+    const titles = (
+      await section.getByRole("heading", { level: 3 }).allTextContents()
+    ).map((title) => title.replace(/\s*↗\s*$/u, "").trim());
+    expect(titles.slice(0, 3)).toEqual([
+      "Investment Analytics Platform",
+      "News Pulse Dashboard",
+      "Interchange IQ",
+    ]);
   });
 });

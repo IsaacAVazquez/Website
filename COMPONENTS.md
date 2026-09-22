@@ -2,7 +2,7 @@
 
 Current component map for the live application.
 
-**Last updated:** 2026-09-21
+**Last updated:** 2026-09-22
 
 > Seven routes (`/`, `/portfolio`, `/writing`, `/dashboards`, `/about`, `/resume`,
 > `/contact`) render Catalog 97 composition roots from `src/components/catalog97/`.
@@ -25,7 +25,7 @@ Current component map for the live application.
 | `Catalog97ToolShell` | `src/components/catalog97/Catalog97ToolShell.tsx` | `Catalog97Shell` plus an optional title band and the build-note aside, used by every route outside the seven designed pages |
 | `Providers` | `src/components/Providers.tsx` | Theme provider wrapper |
 | `ThemeProvider` | `src/components/ThemeProvider.tsx` | `next-themes` wrapper |
-| `RouteErrorBoundary` | `src/components/RouteErrorBoundary.tsx` | Shared editorial-styled error fallback re-exported by per-route `error.tsx` files |
+| `RouteErrorBoundary` | `src/components/RouteErrorBoundary.tsx` | Shared error fallback, one Catalog 97 paper band, re-exported by per-route `error.tsx` files |
 
 ### Homepage, work, writing, dashboards, about, résumé, contact
 
@@ -57,7 +57,7 @@ page's only `<main>`, header, and footer.
 |----------|------|------|
 | `StructuredData` | `src/components/StructuredData.tsx` | JSON-LD injection |
 | `AIStructuredData` | `src/components/AIStructuredData.tsx` | AI-oriented structured data helper |
-| `AuthorBio` | `src/components/ui/AuthorBio.tsx` | Article author card |
+| `AuthorBio` | `src/components/ui/AuthorBio.tsx` | Article author block in Catalog 97: square stone portrait, name at the h3 step, one paragraph, microlink contacts |
 
 ### Fantasy football
 
@@ -163,7 +163,7 @@ Most reused primitives:
 - `SectionIntro`
 - `ServerIcons`
 
-Editorial shared components also live under `src/components/editorial/`. They are written against the `--home-*` tokens, which the bridge block in `src/app/catalog97.css` aliases onto Catalog 97 values.
+Editorial shared components also live under `src/components/editorial/`. They are written against the `--home-*` tokens, which the bridge block in `src/app/catalog97.css` aliases onto Catalog 97 values. `AuthorBio`, `RouteErrorBoundary`, `RouteLoadingState`, `ProjectBuildNote`, `CodeSample`, `NewsletterSignup`, and the search components read `--c97-*` directly as of 2026-09-22.
 
 Styling guidance for these lives in `STYLING.md`.
 

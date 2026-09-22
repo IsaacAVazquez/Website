@@ -60,12 +60,11 @@ export function NewsletterSignup({ source }: NewsletterSignupProps) {
 
   if (state === "success") {
     return (
-      <div
-        role="status"
-        className="rounded-[var(--radius-2xl)] border border-[color-mix(in_srgb,var(--home-positive)_42%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-positive)_9%,var(--home-paper))] px-4 py-4 text-sm leading-6 text-[var(--home-ink)]"
-      >
-        <p className="font-semibold">{message}</p>
-        <p className="mt-1 text-[var(--home-ink-muted)]">
+      <div role="status" style={{ display: "grid", gap: "var(--c97-sp-1)" }}>
+        <p className="c97-prose" style={{ color: "var(--c97-positive)" }}>
+          {message}
+        </p>
+        <p className="c97-prose" style={{ color: "var(--c97-ink-2)" }}>
           I will only send something when I have a build or finding worth
           sharing.
         </p>
@@ -76,8 +75,8 @@ export function NewsletterSignup({ source }: NewsletterSignupProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="space-y-3"
       aria-label="Email newsletter signup"
+      style={{ display: "grid", gap: "var(--c97-sp-2)" }}
     >
       <div className="sr-only" aria-hidden="true">
         <label htmlFor={`company-${source}`}>Company</label>
@@ -89,8 +88,8 @@ export function NewsletterSignup({ source }: NewsletterSignupProps) {
           autoComplete="off"
         />
       </div>
-      <div className="grid gap-2">
-        <label className="sr-only" htmlFor={`newsletter-email-${source}`}>
+      <div style={{ display: "grid", gap: "var(--c97-sp-1)" }}>
+        <label className="c97-kicker" htmlFor={`newsletter-email-${source}`}>
           Email address
         </label>
         <input
@@ -104,25 +103,32 @@ export function NewsletterSignup({ source }: NewsletterSignupProps) {
           disabled={state === "submitting"}
           aria-invalid={state === "error" || undefined}
           aria-describedby={state === "error" ? `newsletter-error-${source}` : undefined}
-          className="min-h-[48px] w-full rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 text-base text-[var(--home-ink)] outline-none transition-[border-color,box-shadow] placeholder:text-[var(--home-ink-muted)] focus:border-[var(--home-signal)] focus:shadow-[0_0_0_3px_color-mix(in_srgb,var(--home-signal)_16%,transparent)] disabled:cursor-wait disabled:opacity-70"
+          className="c97-field"
+          style={{ cursor: state === "submitting" ? "wait" : undefined }}
         />
         <button
           type="submit"
           disabled={state === "submitting"}
-          className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-[var(--radius-2xl)] border border-[var(--home-ink)] bg-[var(--home-ink)] px-5 text-sm font-semibold text-[var(--home-paper)] transition-[background-color,border-color,color,transform] hover:border-[var(--home-signal)] hover:bg-[var(--home-signal)] focus-visible:border-[var(--home-signal)] focus-visible:bg-[var(--home-signal)] disabled:cursor-wait disabled:opacity-70 motion-safe:active:translate-y-px"
+          className="c97-btn"
+          style={{
+            gap: "var(--c97-sp-1)",
+            justifyContent: "center",
+            cursor: state === "submitting" ? "wait" : undefined,
+          }}
         >
           {state === "submitting" ? "Joining…" : "Join the list"}
           <ArrowRight size={16} aria-hidden="true" />
         </button>
       </div>
-      <p className="text-xs leading-5 text-[var(--home-ink-muted)]">
+      <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
         One note a month at most. Unsubscribe whenever you want.
       </p>
       {state === "error" ? (
         <p
           id={`newsletter-error-${source}`}
           role="alert"
-          className="text-sm leading-6 text-[var(--home-negative)]"
+          className="c97-prose"
+          style={{ color: "var(--c97-negative)" }}
         >
           {message}
         </p>
@@ -130,4 +136,3 @@ export function NewsletterSignup({ source }: NewsletterSignupProps) {
     </form>
   );
 }
-

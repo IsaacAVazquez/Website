@@ -3,6 +3,7 @@
 **Date:** 2026-09-16
 **Status:** Approved in conversation, awaiting written review
 **Status, 2026-09-21.** Parts one and two shipped in PR #449 on 2026-09-16. Families 0 through 8 and the close-out have not started, and no family plan exists yet.
+**Status, 2026-09-22.** Families 1 and 2 shipped together, with the slice of family 0 they depend on (`AuthorBio`, `RouteErrorBoundary`, `RouteLoadingState`, `ProjectBuildNote`, `CodeSample`, `NewsletterSignup`, `search/*`). The plan is `docs/superpowers/plans/2026-09-22-catalog97-families-1-2.md`. Families 3 through 8, the rest of family 0, and the close-out remain.
 
 
 ## What this is

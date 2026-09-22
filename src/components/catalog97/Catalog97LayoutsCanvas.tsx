@@ -22,6 +22,9 @@ import { catalog97NavLinks } from "@/constants/catalog97Nav";
  * The routes come from `catalog97NavLinks` rather than being listed again here,
  * so a route added to the design language shows up on the canvas without a
  * second registration, which is what that file already claims for itself.
+ *
+ * `Catalog97ToolShell` wraps this route like any other, so the page root here
+ * is a plain paper surface rather than a second `.c97-page` token scope.
  */
 
 /**
@@ -101,7 +104,7 @@ export function Catalog97LayoutsCanvas({
     );
 
   return (
-    <div className="c97-page" data-c97 data-c97-surface="paper">
+    <div data-c97-surface="paper">
       <section
         data-c97-surface="paper"
         style={{ padding: "var(--c97-sp-5) var(--c97-gutter) var(--c97-sp-4)" }}
