@@ -7,6 +7,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 ## 2026-09-22
 
 - Correct the docs, specs, and Impeccable briefs for the Catalog 97 shell ([#450](https://github.com/IsaacAVazquez/Website/pull/450)).
+- Clear the last sticky offsets, scope chart token reads, and fix the NFL playoff test ([#452](https://github.com/IsaacAVazquez/Website/pull/452)).
 
 ---
 
