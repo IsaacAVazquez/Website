@@ -312,54 +312,15 @@ export function Catalog97Home({
         </section>
       ) : null}
 
-      {/* 05 — Closing. Tobacco, so nothing here is smaller than --c97-fs-h2. */}
-      <section className="c97-band c97-band-tall" data-c97-surface="tobacco">
-        <div
-          className="c97-shell"
-          style={{ display: "grid", justifyItems: "end", textAlign: "right" }}
-        >
-          <div className="c97-hairline" style={{ background: "var(--c97-ink)" }} />
-          {/*
-            A p rather than an h2, which is what the closing statement is on
-            every other Catalog 97 route. As an h2 it rendered at 52px and tied
-            the page h1 exactly, the same defect just fixed one band above, and
-            it is not a section rubric with anything under it. Dropping the
-            heading also drops this band as a landmark, which matches the CTA
-            bands on /dashboards, /writing and /portfolio, none of which carry a
-            heading either. The size does not change.
-          */}
-          <p
-            className="c97-display"
-            style={{
-              marginTop: "var(--c97-sp-3)",
-              color: "var(--c97-ink)",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            If you have a thing that needs proving, I would like to hear about
-            it.
+      {/* Compact closing invitation. */}
+      <section className={`c97-band ${styles.contactBand}`} data-c97-surface="tobacco">
+        <div className={`c97-shell ${styles.contactRow}`}>
+          <p className={`c97-serif c97-h2 ${styles.contactMessage}`}>
+            If you have a thing that needs proving, I would like to hear about it.
           </p>
-          <div
-            className="c97-hairline"
-            style={{
-              width: "min(100%,448px)",
-              marginTop: "var(--c97-sp-3)",
-              background: "var(--c97-ink)",
-            }}
-          />
-          <div
-            style={{
-              display: "flex",
-              alignItems: "flex-end",
-              gap: "var(--c97-sp-4)",
-              marginTop: "var(--c97-sp-3)",
-            }}
-          >
-            <Link className="c97-btn-outline" href="/contact">
-              Get in touch
-            </Link>
-            <Catalog97Plate value="05" />
-          </div>
+          <Link className="c97-btn-outline" href="/contact">
+            Get in touch
+          </Link>
         </div>
       </section>
     </Catalog97Shell>

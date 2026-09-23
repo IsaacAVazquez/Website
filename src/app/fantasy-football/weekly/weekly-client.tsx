@@ -12,10 +12,6 @@ import {
   useSyncExternalStore,
 } from "react";
 import { flushSync } from "react-dom";
-import {
-  Breadcrumbs,
-  createBreadcrumbItems,
-} from "@/components/navigation/Breadcrumbs";
 import { useFantasyWeeklySnapshot } from "@/hooks/useFantasyWeeklySnapshot";
 import {
   FANTASY_RANKINGS_PAGE_SIZE,
@@ -35,6 +31,7 @@ import {
   type FantasyWeeklyPlayer,
 } from "@/lib/fantasyWeeklySnapshot";
 import {
+  SHELL_CLASS,
   formatUpdatedAt,
   getSnapshotStaleness,
   getSnapshotStalenessLabel,
@@ -46,22 +43,18 @@ export type WeeklyView = "rankings" | "waivers";
 const VIEWS = {
   rankings: {
     path: "/fantasy-football/weekly",
-    crumb: "Weekly",
-    title: "The Weekly Board",
     ariaLabel: "Fantasy football weekly board",
     sibling: { href: "/fantasy-football/waivers", label: "Waiver targets" },
   },
   waivers: {
     path: "/fantasy-football/waivers",
-    crumb: "Waivers",
-    title: "Waiver Targets",
     ariaLabel: "Fantasy football waiver targets",
     sibling: { href: "/fantasy-football/weekly", label: "Weekly board" },
   },
 } as const;
 
 const TOGGLE_CLASS =
-  "inline-flex min-h-touch items-center rounded-full border px-4 text-sm font-semibold transition-[border-color,background-color]";
+  "inline-flex min-h-touch items-center rounded-[2px] border px-3 text-sm font-semibold transition-[border-color,background-color]";
 
 const GROUP_LEGEND_CLASS =
   "font-mono text-3xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]";
@@ -211,14 +204,6 @@ export function WeeklyBoardClient({
   const { snapshot, notPublished, isLoading, error, retry } =
     useFantasyWeeklySnapshot();
   const viewConfig = VIEWS[view];
-  const breadcrumbs = useMemo(
-    () =>
-      createBreadcrumbItems([
-        { label: "Fantasy Football", href: "/fantasy-football" },
-        { label: viewConfig.crumb, href: viewConfig.path },
-      ]),
-    [viewConfig],
-  );
   const router = useRouter();
   const searchParams = useSearchParams();
   const tableLayout = useTableLayout();
@@ -349,15 +334,14 @@ export function WeeklyBoardClient({
       className="home-page home-dash min-h-screen"
       aria-label={viewConfig.ariaLabel}
     >
-      <div className="home-shell home-shell-wide home-section space-y-5">
-        <Breadcrumbs customItems={breadcrumbs} className="!py-0" />
-
+      <div className={`${SHELL_CLASS} space-y-5 pb-10 pt-7`}>
         <header className="border-b border-[var(--home-rule)] pb-5">
-          <h1 className="max-w-[16ch] text-[clamp(2.25rem,1.7rem+2.5vw,4.2rem)] font-semibold leading-[0.98] tracking-[-0.04em] text-[var(--home-ink)]">
-            {viewConfig.title}
+          <h1 className="m-0 text-[clamp(1.55rem,1.3rem+1.25vw,2.1rem)] font-semibold leading-none tracking-[-0.05em] text-[var(--home-ink)]">
+            Fantasy Football{" "}
+            {view === "waivers" ? "Waivers" : "Weekly"}
           </h1>
           {view === "rankings" ? (
-            <p className="mt-4 max-w-[68ch] text-base leading-7 text-[var(--home-ink-muted)]">
+            <p className="mt-3 max-w-[62ch] text-sm leading-6 text-[var(--home-ink-muted)]">
               I use this board to compare weekly rankings, opponents, and rostered
               percentages. Save your team below for lineup and add/drop comparisons,
               or browse the{" "}
@@ -369,7 +353,7 @@ export function WeeklyBoardClient({
               </Link>.
             </p>
           ) : (
-            <p className="mt-4 max-w-[68ch] text-base leading-7 text-[var(--home-ink-muted)]">
+            <p className="mt-3 max-w-[62ch] text-sm leading-6 text-[var(--home-ink-muted)]">
               The players the experts rank ahead of where the rostering rate
               puts them, read off the same weekly consensus that feeds the{" "}
               <Link
@@ -503,7 +487,7 @@ export function WeeklyBoardClient({
                       onClick={() => updateRouteState({ scoring: option })}
                       className={`${TOGGLE_CLASS} ${
                         scoring === option
-                          ? "border-[var(--home-signal)] bg-[var(--home-paper-alt)] text-[var(--home-ink)]"
+                          ? "border-[var(--home-ink)] bg-[var(--home-ink)] text-[var(--home-paper)]"
                           : "border-[var(--home-rule)] bg-[var(--home-paper)] text-[var(--home-ink-muted)]"
                       }`}
                     >
@@ -523,7 +507,7 @@ export function WeeklyBoardClient({
             {view === "waivers" ? (
               <section
                 aria-labelledby="weekly-waivers"
-                className="home-card-static p-5"
+                className="border-t border-[var(--home-ink)] pt-5"
               >
                 <h2
                   id="weekly-waivers"
@@ -715,7 +699,7 @@ export function WeeklyBoardClient({
                 </p>
               </section>
             ) : (
-              <section aria-labelledby="weekly-board" className="home-card-static p-5">
+              <section aria-labelledby="weekly-board" className="border-t border-[var(--home-ink)] pt-5">
                 <h2
                   id="weekly-board"
                   className="scroll-mt-24 text-2xl font-semibold tracking-[-0.02em] text-[var(--home-ink)]"
@@ -749,7 +733,7 @@ export function WeeklyBoardClient({
                         onClick={() => updateRouteState({ board: value })}
                         className={`${TOGGLE_CLASS} ${
                           board === value
-                            ? "border-[var(--home-signal)] bg-[var(--home-paper-alt)] text-[var(--home-ink)]"
+                            ? "border-[var(--home-ink)] bg-[var(--home-ink)] text-[var(--home-paper)]"
                             : "border-[var(--home-rule)] bg-[var(--home-paper)] text-[var(--home-ink-muted)]"
                         }`}
                       >
@@ -787,7 +771,7 @@ export function WeeklyBoardClient({
                             onClick={() => setPositionFilter(option)}
                             className={`${TOGGLE_CLASS} ${
                               positionFilter === option
-                                ? "border-[var(--home-signal)] bg-[var(--home-paper-alt)] text-[var(--home-ink)]"
+                                ? "border-[var(--home-ink)] bg-[var(--home-ink)] text-[var(--home-paper)]"
                                 : "border-[var(--home-rule)] bg-[var(--home-paper)] text-[var(--home-ink-muted)]"
                             }`}
                           >

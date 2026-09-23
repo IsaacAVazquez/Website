@@ -47,7 +47,7 @@ export function MyTeamPanel({ snapshot, scoring, onScoringChange }: {
   const comparison = add && drop ? compareMyTeamWaiver(team, board, add, drop.id) : null;
   const lineup = buildMyTeamLineup(team, board);
   const stale = [board.flexSource, board.quarterbackSource].some(source => getSnapshotStaleness(source.asOf) === "stale");
-  const missing = team.players.filter(player => !weekly.has(player.id));
+  const missing = team.players.filter(player => !["K", "DST"].includes(player.position) && !weekly.has(player.id));
   const byePlayers = team.players.filter(player => player.byeWeek && player.byeWeek >= snapshot.week && player.byeWeek <= snapshot.week + 2);
 
   // The panel mounts after the client snapshot loads, too late for the browser's own hash scroll.
@@ -200,7 +200,7 @@ export function MyTeamPanel({ snapshot, scoring, onScoringChange }: {
               {lineup.map(slot => <li key={slot.slot} className={styles.lineupRow}>
                 <span className={styles.slot}>{slot.slot}</span>
                 <span className={styles.playerCell}>
-                  <span className={slot.player ? styles.playerName : styles.vacant}>{slot.player?.name ?? "No ranked player"}</span>
+                  <span className={slot.player ? styles.playerName : styles.vacant}>{slot.player?.name ?? (/^(K|DST) /.test(slot.slot) ? "Weekly rankings unavailable" : "No ranked player")}</span>
                   {slot.player && <span className={styles.playerMeta}>{slot.player.position} · {slot.player.team}{weekly.get(slot.player.id)?.opponent ? ` · ${weekly.get(slot.player.id)?.opponent}` : ""}</span>}
                 </span>
                 <span className={styles.rank}>{slot.rank !== null ? <><span>#{slot.rank}</span><small>{slot.player?.position === "QB" ? "QB" : "Flex"}</small></> : <span className={styles.vacant}>N/A</span>}</span>

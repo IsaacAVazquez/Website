@@ -212,7 +212,7 @@ describe("WeeklyBoardClient rankings view", () => {
   it("keeps the board in a card that does not lift under the pointer", () => {
     renderClient("rankings");
     const card = screen.getByRole("region", { name: "Flex rankings" });
-    expect(card).toHaveClass("home-card-static");
+    expect(card).toHaveClass("border-t");
     expect(card).not.toHaveClass("home-card");
   });
 
@@ -319,7 +319,7 @@ describe("WeeklyBoardClient waivers view", () => {
     const region = screen.getByRole("region", { name: "Waiver targets table" });
     expect(region).toHaveAttribute("tabindex", "0");
     expect(screen.getByRole("region", { name: "This week’s list" })).toHaveClass(
-      "home-card-static",
+      "border-t",
     );
     const headers = within(screen.getByRole("table"))
       .getAllByRole("columnheader")

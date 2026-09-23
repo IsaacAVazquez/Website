@@ -16,6 +16,8 @@ it("leads with weekly decisions for a saved roster and reveals settings on reque
   localStorage.setItem(getMyTeamStorageKey(2026), JSON.stringify({ ...emptyMyTeam(2026), players: [rb] }));
   render(<MyTeamPanel snapshot={snapshot} scoring="ppr" onScoringChange={jest.fn()} />);
   expect(screen.getByRole("heading", { name: "Weekly lineup by consensus" })).toBeVisible();
+  expect(screen.getAllByText("Weekly rankings unavailable")).toHaveLength(2);
+  expect(screen.getAllByText("No ranked player").length).toBeGreaterThan(0);
   expect(screen.queryByLabelText("League size")).not.toBeInTheDocument();
   expect(screen.queryByRole("button", { name: "Remove Roster Runner" })).not.toBeInTheDocument();
   fireEvent.click(screen.getByRole("button", { name: "League settings" }));

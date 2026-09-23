@@ -164,3 +164,11 @@
   .readout, .toolArrow { transition: none; }
   .readout:hover, .toolLink:hover .toolArrow { transform: none; }
 }
+
+.contactBand { padding-block: var(--c97-sp-4); }
+.contactRow { display: flex; align-items: center; justify-content: space-between; gap: var(--c97-sp-3); }
+.contactMessage { max-width: 34ch; margin: 0; }
+.contactRow > a { flex-shrink: 0; }
+@media (max-width: 600px) {
+  .contactRow { flex-direction: column; align-items: flex-start; }
+}
