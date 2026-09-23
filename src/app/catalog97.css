@@ -56,23 +56,23 @@
    * macOS; Archivo is loaded as the cross-platform stand-in so the layout
    * measures the same on Windows and Linux.
    */
-  --c97-font-body: "Helvetica Neue", Helvetica, var(--font-c97-archivo), Arial,
+  --c97-font-body: "Helvetica Neue", Helvetica, var(--font-c97-archivo, "Archivo"), Arial,
     sans-serif;
-  --c97-font-display: var(--font-c97-newsreader), Georgia, "Times New Roman",
+  --c97-font-display: var(--font-c97-newsreader, "Newsreader"), Georgia, "Times New Roman",
     serif;
-  --c97-font-numeral: var(--font-c97-anton), "Helvetica Neue", Impact, sans-serif;
+  --c97-font-numeral: var(--font-c97-anton, "Anton"), "Helvetica Neue", Impact, sans-serif;
   /*
    * Snell Roundhand is macOS-only and is what the design was drawn against.
    * Great Vibes is loaded as the fallback so the wordmark renders everywhere.
    */
-  --c97-font-script: "Snell Roundhand", var(--font-c97-great-vibes),
+  --c97-font-script: "Snell Roundhand", var(--font-c97-great-vibes, "Great Vibes"),
     "Petit Formal Script", cursive;
 
   /*
    * Mono face for readouts, code, and tabular data. Fragment Mono is already
    * loaded by layout.tsx for the Working Instrument, so this costs no download.
    */
-  --c97-font-mono: var(--font-fragment-mono), ui-monospace, SFMono-Regular, monospace;
+  --c97-font-mono: var(--font-fragment-mono, "Fragment Mono"), ui-monospace, SFMono-Regular, monospace;
 
   /*
    * Categorical chart ramp. Six steps from the palette itself, each measured
@@ -795,9 +795,16 @@ body:has(.c97-page) {
  * put espresso ink on a chocolate button at 1.4:1, and made .c97-btn-invert —
  * whose background is --c97-ink — paint invisible text on itself at 1:1.
  * Any .c97-* class must outrank this reset.
+ *
+ * It also sits in @layer base. This file is imported unlayered, and unlayered
+ * CSS beats Tailwind's @layer utilities regardless of specificity, so outside
+ * a layer this reset overrode every text-[...] utility on a link, putting
+ * espresso ink on an oxblood ModernButton rendered with href.
  */
-:where(.c97-page) a {
-  color: inherit;
+@layer base {
+  :where(.c97-page) a {
+    color: inherit;
+  }
 }
 
 .c97-page a:focus-visible,

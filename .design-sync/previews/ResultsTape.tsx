@@ -50,7 +50,7 @@ const upcomingFixtures: ResultsTapeFixture[] = [
 const tapeShell: React.CSSProperties = {
   border: "1px solid var(--home-rule)",
   background: "var(--home-paper-alt)",
-  borderRadius: 8,
+  borderRadius: 0,
   padding: "4px 16px",
 };
 

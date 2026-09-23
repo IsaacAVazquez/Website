@@ -21,7 +21,7 @@ function Frame({ height, children }: { height: number; children: React.ReactNode
         height,
         overflow: "hidden",
         transform: "translateZ(0)",
-        borderRadius: 12,
+        borderRadius: 0,
       }}
     >
       {children}

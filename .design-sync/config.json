@@ -39,6 +39,9 @@
     },
     "SectionIntro": {
       "cardMode": "column"
+    },
+    "Kicker": {
+      "cardMode": "column"
     }
   },
   "componentSrcMap": {

@@ -38,6 +38,48 @@
   src: url("./fragment-mono-latin.woff2") format("woff2");
 }
 
+/* Catalog 97 stack (the site's language since 2026-09-16). Latin subsets
+ * pulled from Google Fonts (OFL), 2026-09-22. */
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("./newsreader-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Newsreader";
+  font-style: italic;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("./newsreader-italic-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url("./archivo-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Anton";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./anton-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Great Vibes";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./great-vibes-latin.woff2") format("woff2");
+}
+
 /* DEAD IN THE BUNDLE, KEPT AS DOCUMENTATION. extractFonts()
  * (.ds-sync/lib/css.mjs:30) lifts @font-face rules out of this file and
  * discards everything else, so this :root block never reaches ds-bundle.

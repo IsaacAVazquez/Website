@@ -54,7 +54,7 @@ export const ErrorWithRetry = () => (
       message="The RSS refresh timed out before any source responded. The last good snapshot is still on disk, so a retry usually clears this."
       icon={alertIcon}
       action={
-        <button type="button" className="home-button home-button-secondary">
+        <button type="button" className="c97-btn c97-btn-outline">
           Try again
         </button>
       }

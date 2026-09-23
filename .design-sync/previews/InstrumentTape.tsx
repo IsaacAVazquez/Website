@@ -3,7 +3,7 @@ import { InstrumentTape } from "isaac-vazquez-portfolio";
 
 const shell: React.CSSProperties = {
   border: "1px solid var(--home-rule)",
-  borderRadius: 18,
+  borderRadius: 0,
   background: "color-mix(in srgb, var(--home-paper-alt) 62%, var(--home-paper))",
   overflow: "hidden",
   padding: "0 14px",
