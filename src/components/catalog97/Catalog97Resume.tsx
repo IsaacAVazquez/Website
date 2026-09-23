@@ -166,8 +166,8 @@ const RESUME_PDF = "/Isaac_Vazquez_Resume.pdf";
  * Résumé, in the Catalog 97 language.
  *
  * The design runs experience on paper with the date range in a fixed-width
- * column to the left, then a chocolate download band, a pine capabilities
- * grid, and a camel closing row. That order is kept.
+ * column to the left, then a chocolate download band, a blue capabilities
+ * grid, and a saffron closing row. That order is kept.
  *
  * The mockup's education, certifications, and reference copy is fictional and
  * does not ship; everything below is the real record. There is no
@@ -309,7 +309,7 @@ export function Catalog97Resume() {
       </section>
 
       {/* Capabilities */}
-      <section className="c97-band c97-band-tall" data-c97-surface="pine">
+      <section className="c97-band c97-band-tall" data-c97-surface="ink-blue">
         <div className="c97-shell">
           <h2 className="c97-serif c97-h2">Capabilities</h2>
           <div
@@ -340,7 +340,7 @@ export function Catalog97Resume() {
       </section>
 
       {/* Education, outside work, references */}
-      <section className="c97-band" data-c97-surface="camel">
+      <section className="c97-band" data-c97-surface="ink-saffron">
         <div
           className="c97-shell c97-columns"
           style={{
@@ -351,7 +351,7 @@ export function Catalog97Resume() {
           <div>
             {/*
               Education, Outside work and References are the three columns of
-              one camel band, so they move together. Education is the only one
+              one saffron band, so they move together. Education is the only one
               with heading children and so the only strict inversion, but
               leaving the other two at 11px beside a 32px sibling would put
               three mismatched headers in one row.

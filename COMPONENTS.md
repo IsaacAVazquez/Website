@@ -179,10 +179,11 @@ Styling guidance for these lives in `STYLING.md`.
 
 `src/app/page.tsx` renders `Catalog97Home` (plus the `StructuredData` /
 `AIStructuredData` JSON-LD injectors). `Catalog97Home` is a self-contained
-composition that supplies its own header and footer through `Catalog97Shell`. It
-still reads the live quake, market, and launch feed through `HomeLiveFeed`, each
-of which fails soft to null so a missing snapshot drops its column rather than
-rendering an empty one.
+composition that supplies its own header and footer through `Catalog97Shell`. Its
+dashboards board reads the launch, football, transit, and investments snapshots
+through `getSnapshotReadouts` (`src/lib/catalog97Readouts.ts`), which
+`/dashboards` also uses for its pull log. Each reader fails soft to null so a
+missing snapshot drops its tile rather than rendering an empty one.
 
 ### `/investments`
 
@@ -215,8 +216,9 @@ so read them from git history if you need that context. The `*Instrument`
 composition roots replaced them on the live routes, and the Catalog 97 roots in
 turn replaced the `*Instrument` files, which are gone.
 
-Under `src/components/home/`, `HomeLiveFeed.tsx`, `PanelClock.tsx`,
-and `HomeStatsPanel.tsx` are all still wired up, the last into 26 files.
+Under `src/components/home/`, only `HomeStatsPanel.tsx` remains, and it is
+still wired up. `HomeLiveFeed.tsx` and `PanelClock.tsx` were deleted on
+2026-09-23 when the home page moved to the snapshot readouts.
 
 ---
 

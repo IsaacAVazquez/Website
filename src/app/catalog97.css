@@ -35,9 +35,10 @@
  * this file is derived rather than specified. The rule followed: keep the hue
  * relationships and the band *rhythm* (a page still alternates light-ink and
  * dark-ink bands), but invert the tonal ladder. Paper becomes the darkest
- * surface, and camel/tobacco/chocolate — which are light-to-mid bands
- * carrying dark ink in light mode — deepen and flip to light ink. Oxblood and
- * camel lift so they still read as accents against a dark ground.
+ * surface, and chocolate and vermilion, which are mid bands, deepen and flip
+ * to light ink. Saffron and peach deepen but keep their dark ink, because a
+ * riso ink reads as the same ink at a lower value. Oxblood and camel lift so
+ * they still read as accents against a dark ground.
  */
 
 /*
@@ -156,6 +157,16 @@
    * --c97-* value is declared under a class selector.
    */
   --c97-wordmark-w: 560px;
+
+  /*
+   * Print inks for the home collage and the photo plates. Imagery only, never
+   * text, rules, or controls. They stay the same in dark mode because they are
+   * the paper colours of a printed picture rather than interface colours.
+   */
+  --c97-riso-blue: #3f95cf;
+  --c97-print-black: #17110d;
+  --c97-print-bone: #e4dbc9;
+  --c97-grain-soft: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 .dark [data-c97] {
@@ -196,8 +207,15 @@ body:has(.c97-page) {
  * Surfaces — light
  * ------------------------------------------------------------------------ */
 
+/*
+ * Every surface prints on grained paper, like the riso plates. The grain is a
+ * multiplied speckle, so it darkens light fields a touch and disappears on the
+ * dark ones.
+ */
 .c97-page [data-c97-surface] {
-  background: var(--c97-surface);
+  background-color: var(--c97-surface);
+  background-image: var(--c97-grain-soft);
+  background-size: 180px 180px;
   color: var(--c97-ink);
   --c97-chart-up: var(--c97-positive);
   --c97-chart-down: var(--c97-negative);
@@ -237,18 +255,22 @@ body:has(.c97-page) {
 }
 
 /*
- * Status colour on camel and stone is LARGE-TEXT-OR-MARK ONLY, the same rule
- * tobacco already carries for all text. The darkest usable greens, reds, and
- * ambers measure 3.57 to 4.00 on these two mid-tones, which clears 3:1 for a
- * dot, a bar, or text at --c97-fs-h2 and up, and never clears 4.5:1 for body
- * copy. Body-size status text on camel or stone uses --c97-ink instead.
+ * The riso inks. They match the spot colours in the printed images under
+ * public/images/home, so a band and a picture on the same page share a
+ * palette. Measured against their ink: saffron 8.54:1, peach 9.21:1, blue
+ * 7.75:1 with cream, and vermilion 4.62:1 with the darkest ink, so all four
+ * carry body copy in light mode.
+ *
+ * Status colour on stone is LARGE-TEXT-OR-MARK ONLY. The darkest usable
+ * greens, reds, and ambers measure 3.57 to 4.00 on that mid-tone, which clears
+ * 3:1 for a dot, a bar, or text at --c97-fs-h2 and up, and never clears 4.5:1
+ * for body copy. Body-size status text on stone uses --c97-ink instead.
  */
-.c97-page [data-c97-surface="camel"] {
-  --c97-surface: #c09461;
+.c97-page [data-c97-surface="ink-saffron"] {
+  --c97-surface: #edb722;
   --c97-ink: #2b211a;
   --c97-ink-2: #2b211a;
   --c97-label: #2b211a;
-  /* Chocolate on camel is 4.1:1; espresso keeps the hover legible at 5.7:1. */
   --c97-action: #2b211a;
   --c97-accent: #2b211a;
   --c97-rule: rgba(43, 33, 26, 0.3);
@@ -258,26 +280,37 @@ body:has(.c97-page) {
   --c97-warning: #5c3600;
 }
 
-/*
- * Tobacco is a LARGE-TEXT-ONLY surface. Paper ink on it measures 4.36:1 and
- * bone ink 3.76:1, so both clear the 3:1 bar for large text and neither clears
- * the 4.5:1 bar for body copy. The design handles this by size rather than by
- * darkening the color, and so does this: a tobacco band carries `--c97-fs-h2`
- * (24px floor) and up, or it carries no text at all and is an image field.
- * Do not put a kicker, a meta row, or body prose on tobacco.
- */
-.c97-page [data-c97-surface="tobacco"] {
-  --c97-surface: #8a6642;
-  --c97-ink: #f1ebdf;
-  --c97-ink-2: #e4dbc9;
-  --c97-label: #f1ebdf;
-  --c97-action: #f1ebdf;
-  --c97-accent: #f1ebdf;
-  --c97-rule: rgba(241, 235, 223, 0.3);
+.c97-page [data-c97-surface="ink-peach"] {
+  --c97-surface: #f6b995;
+  --c97-ink: #2b211a;
+  --c97-ink-2: #4a3728;
+  --c97-label: #4a3728;
+  --c97-action: #2b211a;
+  --c97-accent: #6e2b36;
+  --c97-rule: rgba(43, 33, 26, 0.26);
   --c97-field: #f1ebdf;
-  --c97-positive: #a8e0b4;
-  --c97-negative: #fbcdc7;
-  --c97-warning: #f5cf7a;
+  --c97-positive: #1b4d2c;
+  --c97-negative: #7a1c1c;
+  --c97-warning: #5c3600;
+}
+
+/*
+ * Vermilion takes the darkest ink, #17110d, because the house espresso ink
+ * only reaches 3.89:1 here. Status colour on vermilion is large-text-or-mark
+ * only, so every status token resolves to the ink.
+ */
+.c97-page [data-c97-surface="ink-vermilion"] {
+  --c97-surface: #df4c1e;
+  --c97-ink: #17110d;
+  --c97-ink-2: #17110d;
+  --c97-label: #17110d;
+  --c97-action: #17110d;
+  --c97-accent: #17110d;
+  --c97-rule: rgba(23, 17, 13, 0.32);
+  --c97-field: #f1ebdf;
+  --c97-positive: #17110d;
+  --c97-negative: #17110d;
+  --c97-warning: #17110d;
 }
 
 .c97-page [data-c97-surface="chocolate"] {
@@ -295,14 +328,14 @@ body:has(.c97-page) {
   --c97-warning: #f5cf7a;
 }
 
-.c97-page [data-c97-surface="pine"] {
-  --c97-surface: #0d3531;
+.c97-page [data-c97-surface="ink-blue"] {
+  --c97-surface: #1a3ea6;
   --c97-ink: #f1ebdf;
   --c97-ink-2: #e4dbc9;
-  --c97-label: #99a88b;
-  --c97-action: #c09461;
-  --c97-accent: #c09461;
-  --c97-rule: rgba(241, 235, 223, 0.2);
+  --c97-label: #edb722;
+  --c97-action: #edb722;
+  --c97-accent: #edb722;
+  --c97-rule: rgba(241, 235, 223, 0.24);
   --c97-field: #e4dbc9;
   --c97-positive: #a8e0b4;
   --c97-negative: #fbcdc7;
@@ -350,17 +383,21 @@ body:has(.c97-page) {
   --c97-plate: #8a6642;
 }
 
-.c97-page [data-c97-surface="camel"],
+.c97-page [data-c97-surface="ink-saffron"],
+.c97-page [data-c97-surface="ink-peach"],
 .c97-page [data-c97-surface="stone"] {
   --c97-plate: #2b211a;
 }
 
-.c97-page [data-c97-surface="tobacco"] {
-  --c97-plate: #f1ebdf;
+.c97-page [data-c97-surface="ink-vermilion"] {
+  --c97-plate: #17110d;
+}
+
+.c97-page [data-c97-surface="ink-blue"] {
+  --c97-plate: #edb722;
 }
 
 .c97-page [data-c97-surface="chocolate"],
-.c97-page [data-c97-surface="pine"],
 .c97-page [data-c97-surface="espresso"] {
   --c97-plate: #c09461;
 }
@@ -397,32 +434,47 @@ body:has(.c97-page) {
   --c97-warning: #f5cf7a;
 }
 
-.dark .c97-page [data-c97-surface="camel"] {
-  --c97-surface: #6e4e2e;
-  --c97-ink: #f7f2e8;
-  --c97-ink-2: #e8decb;
-  --c97-label: #e6d3b4;
-  --c97-action: #f0d9b6;
-  --c97-accent: #f0d9b6;
-  --c97-rule: rgba(247, 242, 232, 0.26);
+/* Dark saffron and peach keep a dark ink; status colour on them is large-text-or-mark only. */
+.dark .c97-page [data-c97-surface="ink-saffron"] {
+  --c97-surface: #c99418;
+  --c97-ink: #17110d;
+  --c97-ink-2: #17110d;
+  --c97-label: #17110d;
+  --c97-action: #17110d;
+  --c97-accent: #17110d;
+  --c97-rule: rgba(23, 17, 13, 0.3);
   --c97-field: #1e1811;
-  --c97-positive: #a8e0b4;
-  --c97-negative: #fbcdc7;
-  --c97-warning: #f5cf7a;
+  --c97-positive: #17110d;
+  --c97-negative: #17110d;
+  --c97-warning: #17110d;
 }
 
-.dark .c97-page [data-c97-surface="tobacco"] {
-  --c97-surface: #573d26;
-  --c97-ink: #f7f2e8;
-  --c97-ink-2: #e8decb;
-  --c97-label: #e6d3b4;
-  --c97-action: #f0d9b6;
-  --c97-accent: #f0d9b6;
-  --c97-rule: rgba(247, 242, 232, 0.24);
+.dark .c97-page [data-c97-surface="ink-peach"] {
+  --c97-surface: #c98b6a;
+  --c97-ink: #17110d;
+  --c97-ink-2: #17110d;
+  --c97-label: #17110d;
+  --c97-action: #17110d;
+  --c97-accent: #17110d;
+  --c97-rule: rgba(23, 17, 13, 0.3);
   --c97-field: #1e1811;
-  --c97-positive: #a8e0b4;
-  --c97-negative: #fbcdc7;
-  --c97-warning: #f5cf7a;
+  --c97-positive: #17110d;
+  --c97-negative: #17110d;
+  --c97-warning: #17110d;
+}
+
+.dark .c97-page [data-c97-surface="ink-vermilion"] {
+  --c97-surface: #b23a16;
+  --c97-ink: #f7f2e8;
+  --c97-ink-2: #f1ebdf;
+  --c97-label: #f7f2e8;
+  --c97-action: #f7f2e8;
+  --c97-accent: #f7f2e8;
+  --c97-rule: rgba(247, 242, 232, 0.26);
+  --c97-field: #1e1811;
+  --c97-positive: #f7f2e8;
+  --c97-negative: #f7f2e8;
+  --c97-warning: #f7f2e8;
 }
 
 .dark .c97-page [data-c97-surface="chocolate"] {
@@ -439,13 +491,13 @@ body:has(.c97-page) {
   --c97-warning: #f5cf7a;
 }
 
-.dark .c97-page [data-c97-surface="pine"] {
-  --c97-surface: #0e3833;
+.dark .c97-page [data-c97-surface="ink-blue"] {
+  --c97-surface: #0a2a78;
   --c97-ink: #f1ebdf;
-  --c97-ink-2: #dcd2bf;
-  --c97-label: #9fb08f;
-  --c97-action: #d9b487;
-  --c97-accent: #d9b487;
+  --c97-ink-2: #e4dbc9;
+  --c97-label: #edb722;
+  --c97-action: #edb722;
+  --c97-accent: #edb722;
   --c97-rule: rgba(241, 235, 223, 0.2);
   --c97-field: #14100c;
   --c97-positive: #a8e0b4;
@@ -467,7 +519,7 @@ body:has(.c97-page) {
   --c97-warning: #f5cf7a;
 }
 
-/* Dark stone is a mid-tone: status colour measures 3.81 to 3.99 here, so it is large-text-or-mark only, like light camel and stone. */
+/* Dark stone is a mid-tone: status colour measures 3.81 to 3.99 here, so it is large-text-or-mark only, like light stone. */
 .dark .c97-page [data-c97-surface="stone"] {
   --c97-surface: #6e655a;
   --c97-ink: #f7f2e8;
@@ -487,13 +539,17 @@ body:has(.c97-page) {
   --c97-plate: #c08a5a;
 }
 
-.dark .c97-page [data-c97-surface="camel"],
-.dark .c97-page [data-c97-surface="tobacco"] {
-  --c97-plate: #f0d9b6;
+.dark .c97-page [data-c97-surface="ink-saffron"],
+.dark .c97-page [data-c97-surface="ink-peach"] {
+  --c97-plate: #17110d;
+}
+
+.dark .c97-page [data-c97-surface="ink-vermilion"] {
+  --c97-plate: #f7f2e8;
 }
 
 .dark .c97-page [data-c97-surface="chocolate"],
-.dark .c97-page [data-c97-surface="pine"],
+.dark .c97-page [data-c97-surface="ink-blue"],
 .dark .c97-page [data-c97-surface="espresso"] {
   --c97-plate: #d9b487;
 }
@@ -626,7 +682,7 @@ body:has(.c97-page) {
 }
 
 /*
- * Step 7, the tallest band in the system. The design spends it on Pine
+ * Step 7, the tallest band in the system. The design spends it on blue
  * sections only, which is where it wants the extra air.
  */
 .c97-band-taller {
@@ -751,7 +807,7 @@ body:has(.c97-page) {
 
 /*
  * An image field. The design specifies warm 35mm photography here; until a
- * real photograph exists, the slot renders as the flat Stone or Tobacco field
+ * real photograph exists, the slot renders as the flat Stone or Vermilion field
  * the design's own layout rules call for, with its caption underneath. That
  * reads as a deliberate color block rather than as a missing asset.
  */
@@ -769,7 +825,7 @@ body:has(.c97-page) {
  * Catalog 97 palette instead of on top of it, so a picture dropped into a slot
  * without it will read as a foreign object in the band.
  *
- * The flat Stone or Tobacco field stays painted underneath: while the image is
+ * The flat Stone or Vermilion field stays painted underneath: while the image is
  * decoding, or if it fails, the band keeps its color rather than showing a gap.
  */
 .c97-slot-img {
@@ -827,8 +883,8 @@ body:has(.c97-page) {
 
 /*
  * A tile carries its own surface, so its ring takes that surface's accent, and
- * outset over the paper gap Pine's accent measured 2.31:1 in light mode. Inset,
- * the ring paints on the tile itself, 4.87:1 on Pine and higher on the rest.
+ * outset over the paper gap a light accent can fall under 3:1. Inset, the ring
+ * paints on the tile itself, 4.99:1 on blue and higher on the rest.
  */
 .c97-page .c97-tile:focus-visible {
   outline-offset: -6px;
@@ -949,7 +1005,7 @@ body:has(.c97-page) {
   background: var(--c97-ink);
 }
 
-/* Inverted button, for use on the mid-tone camel and tobacco bands. */
+/* Inverted button, for use on the saffron and vermilion bands. */
 .c97-btn-invert {
   background: var(--c97-ink);
   color: var(--c97-surface);
@@ -985,8 +1041,8 @@ body:has(.c97-page) {
 }
 
 /*
- * The outlined display button, used once, on the home page's closing tobacco
- * band. It sits at --c97-fs-h2 because that is the floor for text on tobacco.
+ * The outlined display button, used once, on the closing vermilion band. It
+ * sits at --c97-fs-h2 to match the closing line beside it.
  */
 .c97-btn-outline {
   min-height: 64px;
@@ -1211,9 +1267,9 @@ select.c97-field {
 
 /*
  * A status or category tag. Label-step uppercase on the field tint, no
- * radius. The tone modifiers colour the text only; on camel, stone, and
- * tobacco the label step is under the large-text floor, so a chip there
- * stays in ink and signals tone through its text instead.
+ * radius. The tone modifiers colour the text only; on stone, vermilion,
+ * and dark saffron and peach the status colours are under the large-text
+ * floor, so a chip there stays in ink and signals tone through its text.
  */
 .c97-chip {
   display: inline-flex;
@@ -1233,7 +1289,7 @@ select.c97-field {
 .c97-page [data-c97-surface="paper"] .c97-chip-positive,
 .c97-page [data-c97-surface="bone"] .c97-chip-positive,
 .c97-page [data-c97-surface="chocolate"] .c97-chip-positive,
-.c97-page [data-c97-surface="pine"] .c97-chip-positive,
+.c97-page [data-c97-surface="ink-blue"] .c97-chip-positive,
 .c97-page [data-c97-surface="espresso"] .c97-chip-positive {
   color: var(--c97-positive);
 }
@@ -1241,7 +1297,7 @@ select.c97-field {
 .c97-page [data-c97-surface="paper"] .c97-chip-negative,
 .c97-page [data-c97-surface="bone"] .c97-chip-negative,
 .c97-page [data-c97-surface="chocolate"] .c97-chip-negative,
-.c97-page [data-c97-surface="pine"] .c97-chip-negative,
+.c97-page [data-c97-surface="ink-blue"] .c97-chip-negative,
 .c97-page [data-c97-surface="espresso"] .c97-chip-negative {
   color: var(--c97-negative);
 }
@@ -1249,7 +1305,7 @@ select.c97-field {
 .c97-page [data-c97-surface="paper"] .c97-chip-warning,
 .c97-page [data-c97-surface="bone"] .c97-chip-warning,
 .c97-page [data-c97-surface="chocolate"] .c97-chip-warning,
-.c97-page [data-c97-surface="pine"] .c97-chip-warning,
+.c97-page [data-c97-surface="ink-blue"] .c97-chip-warning,
 .c97-page [data-c97-surface="espresso"] .c97-chip-warning {
   color: var(--c97-warning);
 }
@@ -1704,7 +1760,7 @@ select.c97-field {
  *
  * The shift is toward the tile's own ink rather than toward white or a fixed
  * hex, which is what makes one rule correct on all four fields and in both
- * themes: it darkens the three light fields and lifts Pine, because Pine's ink
+ * themes: it darkens the three light fields and lifts blue, because blue's ink
  * is the light one. Specificity ties `.c97-page [data-c97-surface]` at (0,2,0)
  * and wins on order, since that block sits far above this one in the file.
  */
@@ -1800,7 +1856,7 @@ select.c97-field {
  * ------------------------------------------------------------------------ */
 
 /*
- * One script lockup per page, on the pine band above the footer. Everything
+ * One script lockup per page, on the blue band above the footer. Everything
  * about the mark's proportions lives in the SVG viewBox (see
  * `Catalog97Wordmark`), so the only thing set here is how wide the frame is
  * allowed to get and what ink it draws in.
@@ -1823,4 +1879,16 @@ select.c97-field {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
   }
+}
+
+/*
+ * Plate reveal. `Catalog97Reveal` arms each [data-reveal] element and releases
+ * it on scroll, and it never arms anything under reduced motion.
+ */
+.c97-page [data-reveal="armed"] {
+  transform: scale(1.05);
+}
+
+.c97-page [data-reveal="shown"] {
+  transition: transform 900ms cubic-bezier(0.19, 0.72, 0.16, 1);
 }

@@ -29,10 +29,10 @@ const touchTarget = {
  * Contact, in the Catalog 97 language, and deliberately the shortest of the
  * seven routes.
  *
- * The design draws a four-field form on the left of the pine band and a direct
+ * The design draws a four-field form on the left of the blue band and a direct
  * email panel on the right. There is no form backend in this repo, so the form
  * is not implemented — shipping the markup would look right and silently drop
- * every message sent through it. The design's own tobacco line above the band
+ * every message sent through it. The design's own vermilion line above the band
  * says email is faster than the form and gets read first, so the direct panel
  * takes the full weight the form would have had, in the same two-column split.
  */
@@ -69,8 +69,8 @@ export function Catalog97Contact() {
         </div>
       </section>
 
-      {/* Tobacco line. Nothing on this band is smaller than --c97-fs-h2. */}
-      <section className="c97-band" data-c97-surface="tobacco">
+      {/* Vermilion line. Nothing on this band is smaller than --c97-fs-h2. */}
+      <section className="c97-band" data-c97-surface="ink-vermilion">
         <div className="c97-shell">
           <p
             className="c97-serif c97-h2"
@@ -82,7 +82,7 @@ export function Catalog97Contact() {
       </section>
 
       {/* Channels */}
-      <section className="c97-band c97-band-tall" data-c97-surface="pine">
+      <section className="c97-band c97-band-tall" data-c97-surface="ink-blue">
         <div
           className="c97-shell"
           style={{
@@ -181,7 +181,7 @@ export function Catalog97Contact() {
       </section>
 
       {/* CTA */}
-      <section className="c97-band" data-c97-surface="camel">
+      <section className="c97-band" data-c97-surface="ink-saffron">
         <div
           className="c97-shell"
           style={{

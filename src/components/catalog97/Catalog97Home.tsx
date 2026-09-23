@@ -2,321 +2,353 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./Catalog97Home.module.css";
 import { Catalog97Shell } from "./Catalog97Shell";
-import { Catalog97Plate, Catalog97Slot } from "./Catalog97Primitives";
+import { Catalog97Reveal } from "./Catalog97Reveal";
 import {
   getProjectCardSummary,
   type CaseStudyData,
 } from "@/constants/caseStudies";
-import type { LiveToolGroup } from "@/constants/toolCategories";
 import type { BlogPostPreview } from "@/lib/blog";
-import type { HomeLiveFeedData } from "@/components/home/HomeLiveFeed";
+import {
+  formatPtDate,
+  formatPtTime,
+  type SnapshotReadouts,
+} from "@/lib/catalog97Readouts";
 
 export interface Catalog97HomeProps {
   featuredProjects: CaseStudyData[];
   recentPosts: BlogPostPreview[];
-  heroIndex: {
-    projectCount: number;
-    essayCount: number;
-    liveToolCount: number;
-  };
-  liveToolGroups: LiveToolGroup[];
-  liveFeed: HomeLiveFeedData;
+  readouts: SnapshotReadouts;
 }
 
-// "Sep 16" in UTC, so the server render and the schedule it came from agree.
-function formatUtcDay(iso: string): string {
+// Every image here was generated for this page on 2026-09-23 as a finished
+// riso print, so it renders untouched. They are illustrative, so the alt text
+// and captions never claim a real place.
+const LAUNCH_PAD = "/images/home/retro-launch-pad.jpg";
+const LIFTOFF = "/images/home/retro-liftoff.jpg";
+const LIFTOFF_ALT =
+  "Illustration of a rocket lifting off beside its launch tower, printed in blue and cream";
+const MATCHDAY = "/images/home/retro-matchday.jpg";
+const TRANSIT = "/images/home/retro-transit.jpg";
+
+// Projects with a printed plate; any other featured project shows its diagram SVG.
+const WORK_PLATES: Record<string, string> = {
+  "investment-analytics-platform": "/images/home/retro-markets.jpg",
+  "news-pulse-dashboard": "/images/home/retro-press.jpg",
+  "interchange-iq": "/images/home/retro-card.jpg",
+};
+
+/** "15 Aug 2026" in UTC, the date a post was published. */
+function formatPostDate(iso: string): string {
   const date = new Date(iso);
   return Number.isNaN(date.getTime())
     ? ""
-    : date.toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
+    : date
+        .toLocaleDateString("en-GB", {
+          day: "numeric",
+          month: "short",
+          year: "numeric",
+          timeZone: "UTC",
+        })
+        .replace(/\bSept\b/, "Sep");
+}
+
+/** A finished print that fills its frame and scales in as it reveals. */
+function Plate({
+  src,
+  sizes,
+  alt = "",
+  position,
+}: {
+  src: string;
+  sizes: string;
+  alt?: string;
+  position?: string;
+}) {
+  return (
+    <div className={styles.plate} data-reveal="">
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes={sizes}
+        className={styles.plateImage}
+        style={position ? { objectPosition: position } : undefined}
+      />
+    </div>
+  );
 }
 
 export function Catalog97Home({
   featuredProjects,
   recentPosts,
-  heroIndex,
-  liveToolGroups,
-  liveFeed,
+  readouts,
 }: Catalog97HomeProps) {
-  // The first tool from each category, so the dashboards table shows breadth.
-  // Flattening every group and taking the first five gave four Fintech rows.
-  const dashboardTools = liveToolGroups.flatMap((group) =>
-    group.tools.slice(0, 1).map((tool) => ({ ...tool, groupLabel: group.label })),
-  );
-
-  const [leadPost, ...followingPosts] = recentPosts;
+  const { launch, premierLeague, laLiga, transit, investments, latestPull } =
+    readouts;
+  const asOf = latestPull ? formatPtDate(latestPull) : null;
+  const figureTiles = [
+    { href: "/la-liga", readout: laLiga },
+    { href: "/bay-area-transit", readout: transit },
+    { href: "/investments", readout: investments },
+  ];
 
   return (
     <Catalog97Shell>
+      <Catalog97Reveal />
+
       <section className={`c97-band ${styles.hero}`} data-c97-surface="paper">
-        <div className={`c97-shell ${styles.heroGrid}`}>
-          <div className={styles.heroCopy}>
-            <p className="c97-kicker">Isaac Vazquez · Product and analytics</p>
-            <h1 className={`c97-display ${styles.headline}`}>
-              I build tools that make <em>hard problems</em> easier to act on.
-            </h1>
-            <p className={`c97-prose ${styles.intro}`}>
-              I’m a product manager and builder at Berkeley Haas, MBA ’27.
-              I came to product through quality engineering at Civitech.
-              Here you’ll find my work, the tools I build, and what I’m learning.
+        <div className="c97-shell">
+          <div className={styles.heroMeta}>
+            <p className="c97-kicker">
+              Isaac Vazquez · Product and analytics · Berkeley, California
+            </p>
+            {asOf ? (
+              <p className="c97-kicker c97-tabular">Data as of {asOf}</p>
+            ) : null}
+          </div>
+          <h1 className={styles.headline}>
+            I build test harnesses, and dashboards that run on public data.
+          </h1>
+          <div className={styles.heroFoot}>
+            <p className={`c97-lead ${styles.lead}`}>
+              I’m a product manager and builder at Berkeley Haas, MBA ’27, and I
+              came to product through quality engineering at Civitech. The
+              dashboards below read snapshots that a scheduled job pulls from
+              public sources and commits to this site’s repository, so each one
+              shows where its numbers came from and when.
             </p>
             <div className={styles.actions}>
-              <Link className="c97-btn" href="/portfolio">See the work <span aria-hidden="true">↗</span></Link>
-              <Link className="c97-btn-ghost" href="/contact">Start a conversation</Link>
+              <Link className="c97-btn" href="/portfolio">
+                See the work
+              </Link>
+              <Link className="c97-btn-ghost" href="/contact">
+                Start a conversation
+              </Link>
             </div>
           </div>
-          <div className={styles.portrait}>
-            <div className={styles.photoFrame}>
-              <Catalog97Slot surface="tobacco" ratio="4 / 5" src="/images/headshot-home.webp" alt="Isaac Vazquez" priority />
-            </div>
-            <div className={styles.portraitNote} data-c97-surface="pine">
-              <span className="c97-kicker">Based in</span>
-              <span className="c97-serif c97-h3">Berkeley, California</span>
-              <span className={styles.noteArrow} aria-hidden="true">↗</span>
-            </div>
+
+          {/* The collage repeats what the board below says, so it is decoration. */}
+          <div className={styles.collage} aria-hidden="true">
+            <figure className={styles.panel}>
+              <Plate
+                src={LAUNCH_PAD}
+                sizes="(max-width: 880px) 100vw, 45vw"
+                position="60% 50%"
+              />
+              <figcaption
+                className={styles.captionDark}
+                style={{ right: "var(--c97-sp-2)", top: "var(--c97-sp-2)" }}
+              >
+                {launch?.site ?? "Next launch"}
+              </figcaption>
+            </figure>
+            <figure className={styles.panel}>
+              <Plate src={TRANSIT} sizes="(max-width: 880px) 50vw, 34vw" />
+              {asOf ? (
+                <figcaption
+                  className={styles.captionLight}
+                  style={{ left: "var(--c97-sp-2)", top: "var(--c97-sp-2)" }}
+                >
+                  Snapshots, {asOf}
+                </figcaption>
+              ) : null}
+            </figure>
+            <figure className={styles.panel}>
+              <Plate src={MATCHDAY} sizes="(max-width: 880px) 50vw, 25vw" />
+              {premierLeague ? (
+                <figcaption
+                  className={styles.captionLight}
+                  style={{ left: "var(--c97-sp-2)", top: "var(--c97-sp-2)" }}
+                >
+                  Matchday {premierLeague.matchday}
+                </figcaption>
+              ) : null}
+            </figure>
           </div>
-        </div>
-        <div className={`c97-shell ${styles.index}`}>
-          <span className="c97-kicker">Explore the site</span>
-          <Link href="/portfolio"><span>{heroIndex.projectCount}</span> Projects <span aria-hidden="true">↗</span></Link>
-          <Link href="/dashboards"><span>{heroIndex.liveToolCount}</span> Live tools <span aria-hidden="true">↗</span></Link>
-          <Link href="/writing"><span>{heroIndex.essayCount}</span> Essays <span aria-hidden="true">↗</span></Link>
         </div>
       </section>
 
-      {/* 02 — Selected work */}
-      <section className="c97-band c97-band-tall" data-c97-surface="pine">
-        <div
-          className="c97-shell"
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "var(--c97-sp-5)",
-          }}
-        >
-          <div style={{ flex: "0 1 190px" }}>
-            <Catalog97Plate value="02" />
-            <h2
-              className="c97-serif c97-h2"
-              style={{
-                marginTop: "var(--c97-sp-2)",
-                color: "var(--c97-ink)",
-              }}
-            >
+      {/* Dashboards board, every figure read from a committed snapshot. */}
+      <section className="c97-band c97-band-continues" data-c97-surface="paper">
+        <div className="c97-shell">
+          <div className={styles.sectionHead}>
+            <h2 className={`c97-serif ${styles.sectionTitle}`}>Dashboards</h2>
+            <Link href="/dashboards" className="c97-sectionlink">
+              All dashboards
+            </Link>
+          </div>
+          <div className={styles.bento}>
+            {launch ? (
+              <Link href="/spacex-mission-control" className={styles.feature}>
+                <Plate
+                  src={LIFTOFF}
+                  alt={LIFTOFF_ALT}
+                  sizes="(max-width: 880px) 100vw, 66vw"
+                  position="70% 50%"
+                />
+                <div className={styles.featureText} data-c97-surface="espresso">
+                  <span className="c97-kicker">Spaceflight · Next launch</span>
+                  <span className="c97-serif c97-h2">
+                    {launch.mission} on {launch.vehicle}
+                  </span>
+                  <span className={`c97-tabular ${styles.small}`}>
+                    {launch.site} · {launch.windowLabel}
+                  </span>
+                  {launch.lastLabel ? (
+                    <span className={styles.small}>{launch.lastLabel}</span>
+                  ) : null}
+                  <span className={styles.source}>
+                    Launch Library 2 · pulled {formatPtTime(launch.pulledAt)}
+                  </span>
+                </div>
+              </Link>
+            ) : null}
+
+            {premierLeague ? (
+              <Link
+                href="/premier-league"
+                className={`${styles.tile} ${styles.tileTall}`}
+              >
+                <span className="c97-kicker">
+                  Premier League · Matchday {premierLeague.matchday}
+                </span>
+                <table className={styles.table}>
+                  <thead>
+                    <tr>
+                      <th colSpan={2} scope="col">
+                        Club
+                      </th>
+                      <th scope="col">P</th>
+                      <th scope="col">Pts</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {premierLeague.top.map((row) => (
+                      <tr key={row.position}>
+                        <td className={styles.muted}>{row.position}</td>
+                        <td>{row.name}</td>
+                        <td className={styles.muted}>{row.played}</td>
+                        <td className={styles.points}>{row.points}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <span className={styles.detail}>{premierLeague.summary}</span>
+                <span className={styles.source}>
+                  football-data.org · pulled{" "}
+                  {formatPtTime(premierLeague.pulledAt)}
+                </span>
+              </Link>
+            ) : null}
+
+            {figureTiles.map(({ href, readout }) =>
+              readout ? (
+                <Link key={href} href={href} className={styles.tile}>
+                  <span className="c97-kicker">{readout.label}</span>
+                  <span className="c97-serif c97-h2 c97-tabular">
+                    {readout.figure}
+                  </span>
+                  <span className={styles.detail}>{readout.detail}</span>
+                  <span className={styles.source}>{readout.source}</span>
+                </Link>
+              ) : null,
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* Selected work */}
+      <section className="c97-band c97-band-continues" data-c97-surface="paper">
+        <div className={`c97-shell ${styles.split}`}>
+          <div className={styles.sticky}>
+            <h2 className={`c97-serif ${styles.sectionTitle}`}>
               Selected work
             </h2>
-            <Link
-              href="/portfolio"
-              className="c97-sectionlink"
-              style={{ marginTop: "var(--c97-sp-1)" }}
-            >
-              All {heroIndex.projectCount} projects
+            <p className={`c97-prose ${styles.splitIntro}`}>
+              Three projects and the question each one answers.
+            </p>
+            <Link href="/portfolio" className="c97-sectionlink">
+              All projects
             </Link>
-            {/*
-              A track-record figure in place of the tool count this route used
-              to lead with. $4M is the pricing strategy result on the résumé and
-              the 2023 entry in personal.ts, so change all three together.
-            */}
-            <div style={{ marginTop: "var(--c97-sp-4)" }}>
-              <div
-                className="c97-serif c97-tabular"
-                style={{
-                  fontSize: "var(--c97-fs-h1)",
-                  lineHeight: "var(--c97-lh-display)",
-                  color: "var(--c97-ink)",
-                }}
-              >
-                $4M
-              </div>
-              <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-2)" }}>
-                Added revenue from a pricing strategy I led at Civitech
-              </p>
-            </div>
           </div>
-
-          <div className={styles.projects}>
-            {featuredProjects.map((project, index) => (
-              <article key={project.slug} className={styles.project}>
-                <Link href={`/portfolio/${project.slug}`} className={styles.projectImage} tabIndex={-1} aria-hidden="true">
-                  <Image src={`/images/projects/${project.slug}.svg`} alt="" width={720} height={480} />
-                  <span className={styles.projectNumber}>{String(index + 1).padStart(2, "0")}</span>
+          <div className={styles.ledger}>
+            {featuredProjects.map((project) => {
+              const thumb =
+                WORK_PLATES[project.slug] ??
+                `/images/projects/${project.slug}.svg`;
+              return (
+                <Link
+                  key={project.slug}
+                  href={`/portfolio/${project.slug}`}
+                  className={styles.entry}
+                >
+                  <span className={styles.entryCopy}>
+                    <span className="c97-kicker c97-tabular">
+                      {project.timeline}
+                    </span>
+                    <span className="c97-serif c97-h2">{project.title}</span>
+                    <span className={styles.detail}>
+                      {getProjectCardSummary(project)}
+                    </span>
+                  </span>
+                  <span className={styles.thumb}>
+                    <Image
+                      src={thumb}
+                      alt=""
+                      fill
+                      sizes="220px"
+                      className={styles.plateImage}
+                    />
+                  </span>
                 </Link>
-                <div className={styles.projectCopy}>
-                  <p className="c97-kicker">{project.role} · {project.timeline}</p>
-                  <h3 className="c97-serif c97-h3">
-                    <Link href={`/portfolio/${project.slug}`}>{project.title}<span aria-hidden="true"> ↗</span></Link>
-                  </h3>
-                  <p className="c97-prose">{getProjectCardSummary(project)}</p>
-                  <p className={styles.projectMetric}>{project.metrics}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 03 — Live dashboards */}
-      <section className="c97-band c97-band-tall" data-c97-surface="chocolate">
-        <div className="c97-shell">
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "var(--c97-sp-2) var(--c97-sp-4)",
-              alignItems: "flex-end",
-              justifyContent: "space-between",
-            }}
-          >
-            <div>
-              <h2 className="c97-serif c97-h2">Live dashboards</h2>
-              <Link href="/dashboards" className="c97-sectionlink">
-                All {heroIndex.liveToolCount}
-              </Link>
-            </div>
-            <Catalog97Plate value="03" />
-          </div>
-
-          <p className={`c97-prose ${styles.dashboardIntro}`}>
-            I build tools to follow the things I’m curious about, from markets
-            and earthquakes to the next launch. Explore a reading or open a tool below.
-          </p>
-          <div className={styles.readouts}>
-            {liveFeed.quake ? (
-              <Link href="/earthquake-pulse" className={styles.readout} data-c97-surface="bone">
-                <span className={styles.readoutLabel}>Earthquake Pulse <span aria-hidden="true">↗</span></span>
-                <span className={styles.readoutValue}>M{liveFeed.quake.magnitude.toFixed(1)}</span>
-                <span className={styles.readoutDetail}>{liveFeed.quake.place}</span>
-                <svg className={styles.quakeBars} viewBox="0 0 300 56" preserveAspectRatio="none" role="img" aria-label="Relative magnitudes of recent earthquakes, oldest to newest">
-                  {liveFeed.quake.recentMagnitudes.map((magnitude, index, values) => {
-                    const height = Math.max(2, magnitude / Math.max(0.1, ...values) * 52);
-                    return <rect key={index} x={index * 300 / values.length} y={56 - height} width={Math.max(1, 300 / values.length - 5)} height={height} />;
-                  })}
-                </svg>
-                <span className={styles.readoutFoot}>Latest quake · {liveFeed.quake.agoLabel} · {liveFeed.quake.depthKm} km deep</span>
-              </Link>
-            ) : null}
-            {liveFeed.market ? (
-              <Link href="/investments" className={styles.readout} data-c97-surface="paper">
-                <span className={styles.readoutLabel}>Market snapshot <span aria-hidden="true">↗</span></span>
-                <span className={styles.readoutValue}>{liveFeed.market.delta}</span>
-                <span className={styles.readoutDetail}>{liveFeed.market.name} · {liveFeed.market.symbol}</span>
-                <div className={styles.marketReading}>
-                  <span className="c97-kicker">Daily change</span>
-                  <span className="c97-serif c97-h2">{liveFeed.market.changePct > 0 ? "+" : ""}{liveFeed.market.changePct.toFixed(2)}%</span>
-                </div>
-                <span className={styles.readoutFoot}>{liveFeed.market.asOfLabel ? `Close on ${liveFeed.market.asOfLabel}` : "Snapshot close"} · ${liveFeed.market.price}</span>
-              </Link>
-            ) : null}
-            {liveFeed.launch ? (
-              <Link href="/spacex-mission-control" className={styles.readout} data-c97-surface="pine">
-                <span className={styles.readoutLabel}>SpaceX Mission Control <span aria-hidden="true">↗</span></span>
-                <span className={styles.readoutValue}>{formatUtcDay(liveFeed.launch.dateUtc)}</span>
-                <span className={styles.readoutDetail}>{liveFeed.launch.mission}</span>
-                <div className={styles.launchOrbit} aria-hidden="true"><span>↗</span></div>
-                <span className={styles.readoutFoot}>Next launch · {liveFeed.launch.vehicle}</span>
-              </Link>
-            ) : null}
-          </div>
-          <p className={`c97-kicker ${styles.sourceNote}`}>{liveFeed.sourceNote}</p>
-          <div className={styles.toolDirectory}>
-            {dashboardTools.slice(0, 6).map((tool, index) => {
-              const content = <>
-                <span className={styles.toolOrdinal} aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-                <span><span className="c97-kicker">{tool.groupLabel}</span><span className={`c97-serif c97-h3 ${styles.toolTitle}`}>{tool.title}</span></span>
-                <span className={styles.toolArrow} aria-hidden="true">↗</span>
-              </>;
-              return tool.isExternal ? (
-                <a key={tool.slug} href={tool.href} target="_blank" rel="noopener noreferrer" className={styles.toolLink}>{content}</a>
-              ) : (
-                <Link key={tool.slug} href={tool.href} className={styles.toolLink}>{content}</Link>
               );
             })}
           </div>
         </div>
       </section>
 
-      {/* 04 — Recent writing */}
-      {leadPost ? (
-        <section className="c97-band c97-band-tall" data-c97-surface="bone">
+      {/* Recent writing */}
+      {recentPosts.length > 0 ? (
+        <section className="c97-band c97-band-tall" data-c97-surface="paper">
           <div className="c97-shell">
-            <h2 className="c97-serif c97-h2">Recent writing</h2>
-
-            <article className={styles.leadArticle}>
-              {leadPost.coverImage && !leadPost.coverImage.includes("opengraph-image") ? (
-                <Link href={`/writing/${leadPost.slug}`} className={styles.articleImage} tabIndex={-1} aria-hidden="true">
-                  <Image src={leadPost.coverImage} alt="" fill sizes="(max-width: 790px) 100vw, 50vw" />
+            <div className={styles.sectionHead}>
+              <h2 className={`c97-serif ${styles.sectionTitle}`}>
+                Recent writing
+              </h2>
+              <Link href="/writing" className="c97-sectionlink">
+                All writing
+              </Link>
+            </div>
+            <div className={styles.posts}>
+              {recentPosts.map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/writing/${post.slug}`}
+                  className={styles.post}
+                >
+                  <span className={styles.postCopy}>
+                    <span className="c97-serif c97-h3">{post.title}</span>
+                    <span className={styles.detail}>{post.excerpt}</span>
+                  </span>
+                  <span className="c97-kicker c97-tabular">
+                    {formatPostDate(post.publishedAt)} · {post.category}
+                  </span>
                 </Link>
-              ) : (
-                <div className={styles.editorialCover} data-c97-surface="paper" aria-hidden="true">
-                  <span className="c97-kicker">Essays &amp; field notes</span>
-                  <span className={styles.editorialNumber}>04</span>
-                  <span className="c97-serif c97-h3">What I’m learning<br />as I build.</span>
-                </div>
-              )}
-              <div>
-                <p className="c97-kicker">From my notebook · {leadPost.category}</p>
-                <h3 className="c97-serif c97-h2"><Link href={`/writing/${leadPost.slug}`}>{leadPost.title}</Link></h3>
-                <p className="c97-prose">{leadPost.excerpt}</p>
-                <p className="c97-meta">{leadPost.readingTime}</p>
-                <Link href={`/writing/${leadPost.slug}`} className="c97-sectionlink">Read the essay <span aria-hidden="true">↗</span></Link>
-              </div>
-            </article>
-
-            {followingPosts.map((post) => (
-              <div
-                key={post.slug}
-                style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  alignItems: "baseline",
-                  justifyContent: "space-between",
-                  gap: "var(--c97-sp-1) var(--c97-sp-4)",
-                  marginTop: "var(--c97-sp-5)",
-                }}
-              >
-                <div style={{ flex: "1 1 420px" }}>
-                  {/* --c97-fs-lead, so the lead post above keeps its tier. */}
-                  <h3 className="c97-serif c97-lead">
-                    <Link
-                      href={`/writing/${post.slug}`}
-                      style={{ textDecoration: "none" }}
-                    >
-                      {post.title}
-                    </Link>
-                  </h3>
-                  <p
-                    className="c97-prose"
-                    style={{
-                      marginTop: "var(--c97-sp-1)",
-                      color: "var(--c97-ink-2)",
-                    }}
-                  >
-                    {post.excerpt}
-                  </p>
-                </div>
-                <p className="c97-meta">
-                  <span className="c97-tabular">{post.readingTime}</span>
-                  <span>{post.category}</span>
-                </p>
-              </div>
-            ))}
-
-            <Link
-              href="/writing"
-              className="c97-sectionlink"
-              style={{ marginTop: "var(--c97-sp-3)" }}
-            >
-              All writing
-            </Link>
+              ))}
+            </div>
           </div>
         </section>
       ) : null}
 
       {/* Compact closing invitation. */}
-      <section className={`c97-band ${styles.contactBand}`} data-c97-surface="tobacco">
+      <section
+        className={`c97-band ${styles.contactBand}`}
+        data-c97-surface="ink-vermilion"
+      >
         <div className={`c97-shell ${styles.contactRow}`}>
           <p className={`c97-serif c97-h2 ${styles.contactMessage}`}>
-            If you have a thing that needs proving, I would like to hear about it.
+            If you have a thing that needs proving, I would like to hear about
+            it.
           </p>
           <Link className="c97-btn-outline" href="/contact">
             Get in touch

@@ -4,10 +4,11 @@ import type { CSSProperties, ReactNode } from "react";
 type Surface =
   | "paper"
   | "bone"
-  | "camel"
-  | "tobacco"
+  | "ink-saffron"
+  | "ink-vermilion"
   | "chocolate"
-  | "pine"
+  | "ink-blue"
+  | "ink-peach"
   | "espresso"
   | "stone";
 
@@ -49,10 +50,10 @@ export function Catalog97Plate({ value, style }: Catalog97PlateProps) {
 
 interface Catalog97SlotProps {
   /**
-   * The flat field the slot paints. The design specifies Stone or Tobacco for
+   * The flat field the slot paints. The design specifies Stone or Vermilion for
    * an image field, and nothing else.
    */
-  surface: Extract<Surface, "stone" | "tobacco">;
+  surface: Extract<Surface, "stone" | "ink-vermilion">;
   /** CSS `aspect-ratio`, e.g. `"4 / 5"` for a portrait or `"3 / 2"` for a card. */
   ratio: string;
   /** Rendered underneath the field, in the label step. */
@@ -81,7 +82,7 @@ interface Catalog97SlotProps {
  * photograph exists it is laid over the field with the design's own treatment
  * (`.c97-slot-img`, which carries the saturate/sepia/contrast/brightness stack
  * the source specifies). Where one does not, the slot stays the flat Stone or
- * Tobacco field that the design's layout rules already call for, because a flat
+ * Vermilion field that the design's layout rules already call for, because a flat
  * color block reads as part of the composition while a grey rectangle with a
  * broken image icon reads as unfinished.
  *

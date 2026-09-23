@@ -20,7 +20,6 @@ export interface Catalog97WritingProps {
   buckets: SectionSummary[];
   totalEssays: number;
   totalNotes: number;
-  earliestDate?: string;
 }
 
 const ALL = "all";
@@ -32,7 +31,7 @@ const ESSAYS = "essays";
 type SortMode = "newest" | "shortest" | "longest";
 
 /** The two flat fields the design alternates across the featured pair. */
-const FEATURED_FIELDS = ["tobacco", "stone"] as const;
+const FEATURED_FIELDS = ["ink-vermilion", "stone"] as const;
 
 /**
  * The cover to lay over a featured field, or nothing.
@@ -54,12 +53,13 @@ function readingMinutes(readingTime: string): number {
   return match ? parseInt(match[1], 10) : 0;
 }
 
-/** "June 2026" — the dateline format the design uses on featured pieces. */
-function monthYear(iso: string): string {
+/** "15 Aug 2026", the dateline on featured pieces. */
+function dayMonthYear(iso: string): string {
   const date = new Date(iso);
   if (Number.isNaN(date.getTime())) return "";
-  return date.toLocaleDateString("en-US", {
-    month: "long",
+  return date.toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "short",
     year: "numeric",
     timeZone: "UTC",
   });
@@ -69,8 +69,8 @@ function monthYear(iso: string): string {
  * The writing index, in the Catalog 97 language.
  *
  * The design draws two featured pieces on paper over flat image fields, a
- * tobacco line between them and the archive, and then the archive itself on
- * the tallest pine band in the system. That shape is kept exactly.
+ * vermilion line between them and the archive, and then the archive itself on
+ * the tallest blue band in the system. That shape is kept exactly.
  *
  * What the design does not draw is a filter, because its mockup holds eight
  * pieces and this index holds closer to two hundred. The curated cluster,
@@ -83,7 +83,6 @@ export function Catalog97Writing({
   buckets,
   totalEssays,
   totalNotes,
-  earliestDate,
 }: Catalog97WritingProps) {
   /*
     The archive renders 30 rows and offers the rest behind one control.
@@ -91,7 +90,7 @@ export function Catalog97Writing({
     Unfiltered this index is 195 rows and rendered the route at 42,598px, about
     47 screens, with well over 90% of that height being the one list. The brief
     already treats the archive as unbounded and that is why it sits on Paper
-    rather than Pine, but taking the field away from it does not make it
+    rather than Blue, but taking the field away from it does not make it
     shorter.
 
     Slicing rather than hiding with CSS is deliberate, because hiding leaves the
@@ -181,11 +180,11 @@ export function Catalog97Writing({
         <div className="c97-shell">
           <p className="c97-kicker">Writing</p>
           <h1 className="c97-display" style={{ marginTop: "var(--c97-sp-3)" }}>
-            Notes on product, measurement, and the tools I keep building.
+            Race reports, market notes, and write-ups of the tools on this site.
           </h1>
           <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
-            {totalEssays} longer essays and {totalNotes} shorter notes
-            {earliestDate ? `, going back to ${monthYear(earliestDate)}` : ""}.
+            Formula 1 after each Grand Prix, markets and policy, and a build
+            note for each dashboard and tool.
           </p>
         </div>
       </section>
@@ -301,13 +300,13 @@ export function Catalog97Writing({
       </section>
 
       {/*
-        Featured pair. This is the route's Pine moment rather than the archive
-        below it: the featured set is bounded at two, so Pine stays a fixed
-        share of the page, where an archive of ~200 posts on Pine turned the
-        whole route into one green field.
+        Featured pair. This is the route's Blue moment rather than the archive
+        below it: the featured set is bounded at two, so Blue stays a fixed
+        share of the page, where an archive of ~200 posts on Blue turned the
+        whole route into one blue field.
       */}
       {featured.length > 0 ? (
-        <section className="c97-band c97-band-tall" data-c97-surface="pine">
+        <section className="c97-band c97-band-tall" data-c97-surface="ink-blue">
           <div
             className="c97-shell"
             style={{
@@ -330,7 +329,7 @@ export function Catalog97Writing({
                   sizes="(max-width: 790px) 100vw, 50vw"
                 />
                 <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-2)" }}>
-                  Featured · {monthYear(post.publishedAt)}
+                  Featured · {dayMonthYear(post.publishedAt)}
                 </p>
                 {/*
                   --c97-fs-h2 rather than h3. The featured pair and the archive
@@ -376,8 +375,8 @@ export function Catalog97Writing({
         </section>
       ) : null}
 
-      {/* Tobacco line. Nothing on this band is smaller than --c97-fs-h2. */}
-      <section className="c97-band" data-c97-surface="tobacco">
+      {/* Vermilion line. Nothing on this band is smaller than --c97-fs-h2. */}
+      <section className="c97-band" data-c97-surface="ink-vermilion">
         <div className="c97-shell">
           <p
             className="c97-serif c97-h2"
@@ -393,7 +392,7 @@ export function Catalog97Writing({
       </section>
 
       {/*
-        Archive. Paper rather than Pine, because it is the one band on the site
+        Archive. Paper rather than Blue, because it is the one band on the site
         holding an unbounded list — at ~200 rows it is over 90% of the route's
         height, so whatever field it takes becomes the route.
       */}
@@ -540,7 +539,6 @@ export function Catalog97Writing({
                 style={{ color: "var(--c97-ink)" }}
               >
                 <span>{topic.label}</span>
-                <span aria-hidden="true">↗</span>
               </Link>
             ))}
           </div>
@@ -548,7 +546,7 @@ export function Catalog97Writing({
       </section>
 
       {/* CTA */}
-      <section className="c97-band c97-band-tall" data-c97-surface="camel">
+      <section className="c97-band c97-band-tall" data-c97-surface="ink-saffron">
         <div
           className="c97-shell"
           style={{
@@ -563,7 +561,7 @@ export function Catalog97Writing({
             className="c97-serif c97-h2"
             style={{ maxWidth: "var(--c97-measure-body)" }}
           >
-            Everything here is tagged by what it is actually about.
+            Everything here is tagged by what it is about.
           </p>
           <Link className="c97-btn c97-btn-invert" href="/contact">
             Get in touch

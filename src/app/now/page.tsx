@@ -80,7 +80,7 @@ const notBuilding = [
 ];
 
 /* The mosaic's field cycle, one tile per project in `building`. */
-const TILE_SURFACES = ["pine", "camel", "stone", "chocolate"] as const;
+const TILE_SURFACES = ["ink-blue", "ink-saffron", "stone", "chocolate"] as const;
 
 export const metadata: Metadata = constructMetadata({
   title: "What I'm Building Now | Isaac Vazquez",

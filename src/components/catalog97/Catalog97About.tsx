@@ -22,7 +22,7 @@ const principles = [
  * About, in the Catalog 97 language.
  *
  * The design pairs the opening prose with a portrait field and closes on the
- * chocolate timeline, with the camel pull quote bottom-aligned inside a tall
+ * chocolate timeline, with the saffron pull quote bottom-aligned inside a tall
  * band between them. All three are kept.
  *
  * The three "How I work" principles come from the design because they describe
@@ -49,12 +49,12 @@ export function Catalog97About() {
       </section>
 
       {/*
-        Opening prose and portrait field. Pine rather than paper: this is the
+        Opening prose and portrait field. Blue rather than paper: this is the
         substance of the route, and putting it on the instrument field is what
-        gives /about its share of green without handing it to the timeline,
+        gives /about its share of blue without handing it to the timeline,
         which is long enough to swamp the page.
       */}
-      <section className="c97-band c97-band-tall" data-c97-surface="pine">
+      <section className="c97-band c97-band-tall" data-c97-surface="ink-blue">
         <div
           className="c97-shell"
           style={{
@@ -82,7 +82,7 @@ export function Catalog97About() {
               }}
             >
               Most of what I build exists to answer one question, which is
-              whether the thing in front of us actually works.
+              whether the thing in front of us works.
             </p>
             <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
               I came to product through quality engineering, which means I spent
@@ -127,7 +127,7 @@ export function Catalog97About() {
       </section>
 
       {/* Pull quote */}
-      <section className="c97-band c97-band-tall" data-c97-surface="camel">
+      <section className="c97-band c97-band-tall" data-c97-surface="ink-saffron">
         <div
           className="c97-shell"
           style={{
@@ -146,7 +146,7 @@ export function Catalog97About() {
         </div>
       </section>
 
-      {/* How I work. Bone, so the route's two Pine bands are not adjacent. */}
+      {/* How I work. Bone, so the route's two Blue bands are not adjacent. */}
       <section className="c97-band c97-band-taller" data-c97-surface="bone">
         <div className="c97-shell">
           {/*

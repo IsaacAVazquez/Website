@@ -7,6 +7,7 @@ import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
 import { AIStructuredData } from "@/components/AIStructuredData";
 import { Catalog97Dashboards } from "@/components/catalog97/Catalog97Dashboards";
+import { formatPtTime, getSnapshotReadouts } from "@/lib/catalog97Readouts";
 
 export const metadata = constructMetadata({
   title: "Isaac Vazquez Dashboards | Live Data Tools",
@@ -16,7 +17,7 @@ export const metadata = constructMetadata({
   dateModified: "2026-09-14",
 });
 
-export default function DashboardsPage() {
+export default async function DashboardsPage() {
   const projects = getPortfolioProjects();
   const groups = getLiveToolGroups(projects);
   const tools = groups.flatMap((group) => group.tools);
@@ -24,6 +25,8 @@ export default function DashboardsPage() {
   const summaries = Object.fromEntries(
     projects.map((project) => [project.slug, getProjectCardSummary(project)]),
   );
+
+  const readouts = await getSnapshotReadouts();
 
   const breadcrumbs = [
     { name: "Home", url: "/" },
@@ -61,7 +64,17 @@ export default function DashboardsPage() {
         }}
       />
 
-      <Catalog97Dashboards groups={groups} summaries={summaries} />
+      <Catalog97Dashboards
+        groups={groups}
+        summaries={summaries}
+        cardLines={readouts.cardLines}
+        latestPull={readouts.latestPull ? formatPtTime(readouts.latestPull) : null}
+        pullLog={readouts.pullLog.map((entry) => ({
+          label: entry.label,
+          time: formatPtTime(entry.pulledAt).replace(/ PT$/, ""),
+        }))}
+        staleNote={readouts.investments?.staleNote ?? null}
+      />
     </>
   );
 }

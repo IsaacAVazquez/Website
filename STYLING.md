@@ -16,7 +16,7 @@ Current styling and design-token reference for the live app.
   active states). It is never a decorative wash. `--home-acid` / `--home-haze` / `--home-moss`
   are deleted from `globals.css`; do not reintroduce them
 - CSS-Module surfaces alias the global tokens (`--x-paper: var(--home-paper)`) — never re-declare
-  the palette as fresh hex (see `src/app/page.module.css` for the reference pattern)
+  the palette as fresh hex (see `src/app/investments/investments.module.css` for the reference pattern)
 - accessible focus styles and 44px minimum touch targets
 - restrained motion that respects reduced-motion preferences: numbers count up once, lines draw in
   once, nothing loops, no marquees

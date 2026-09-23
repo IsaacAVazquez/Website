@@ -284,7 +284,7 @@ function ProgramDashboard({ onStart }: { onStart: () => void }) {
       <section
         aria-labelledby="feedback-loop-heading"
         className="c97-band c97-band-tall"
-        data-c97-surface="pine"
+        data-c97-surface="ink-blue"
       >
         <div className="c97-shell c97-columns">
           <div>
@@ -1334,7 +1334,7 @@ function RecommendationSection({
           aria-labelledby="handoff-heading"
           style={{ scrollMarginTop: "var(--c97-sp-6)" }}
         >
-          <div className="c97-band" data-c97-surface="pine">
+          <div className="c97-band" data-c97-surface="ink-blue">
             <div className="c97-shell">
               <p className="c97-kicker">Escalation handoff</p>
               <h2
@@ -1583,7 +1583,7 @@ export function EnablementAssistantClient() {
         </div>
       </section>
 
-      <section className="c97-band c97-band-tight" data-c97-surface="pine">
+      <section className="c97-band c97-band-tight" data-c97-surface="ink-blue">
         <div className="c97-shell">
           <p className="c97-kicker">Model boundary</p>
           <p
