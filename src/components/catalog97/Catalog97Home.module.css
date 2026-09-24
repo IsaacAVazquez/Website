@@ -1,35 +1,33 @@
 /* Hero: the proofed sheet. */
 .hero { padding-bottom: var(--c97-sp-6); }
-/* Headline and lead on the left, the portrait pasted on the right. */
-.heroTop {
+/* The portrait pasted on the left, the headline, lead, and buttons on the right. */
+.heroGrid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) clamp(220px, 24vw, 320px);
-  align-items: start;
-  gap: var(--c97-sp-5);
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  align-items: center;
+  gap: var(--c97-sp-6);
 }
-.headline { font-size: clamp(44px, 6.2vw, 96px); }
-.heroCopy { min-width: 0; }
+.headline { font-size: clamp(40px, 5.4vw, 84px); max-width: none; grid-area: h1; }
 /* The lead reads first on a wide screen; a phone gets the buttons first. */
-.heroFoot {
+.heroCopy {
   display: grid;
-  grid-template-areas: "lead" "actions";
+  grid-template-areas: "h1" "lead" "actions";
   gap: var(--c97-sp-4);
-  margin-top: var(--c97-sp-4);
+  min-width: 0;
 }
 .lead { grid-area: lead; max-width: var(--c97-measure-wide); line-height: var(--c97-lh-body); text-wrap: pretty; }
 .actions { grid-area: actions; display: flex; flex-wrap: wrap; gap: var(--c97-sp-2); }
 .portrait {
   position: relative;
   aspect-ratio: 4 / 5;
-  margin-top: var(--c97-sp-2);
   overflow: hidden;
   background: var(--c97-field);
 }
 .portraitImage { object-fit: cover; object-position: 50% 20%; }
 @media (max-width: 880px) {
-  .heroTop { grid-template-columns: minmax(0, 1fr); }
-  .heroFoot { grid-template-areas: "actions" "lead"; }
-  .portrait { width: min(72%, 300px); }
+  .heroGrid { grid-template-columns: minmax(0, 1fr); gap: var(--c97-sp-5); }
+  .heroCopy { grid-template-areas: "h1" "actions" "lead"; }
+  .portrait { order: 2; width: min(72%, 300px); }
 }
 
 /* The board: a heading row, the collage of doors, then the strip under it. */
