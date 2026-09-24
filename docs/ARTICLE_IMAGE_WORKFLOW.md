@@ -79,3 +79,14 @@ and set `coverImage`, `coverImageAlt`, `coverImageCredit`, and
 `coverImageCreditUrl` by hand, then mark the post `manual` in the plan so the
 builder does not overwrite it. Keep the attribution honest and the license free,
 since these render publicly with a visible credit line.
+
+## Riso plates
+
+On 2026-09-24 twenty-eight posts moved off their fetched photos and onto riso
+plates made for the site, the same two-ink halftone prints that run on Home and
+above each category on `/dashboards`. They live at the usual
+`public/images/writing/covers/<slug>.jpg` path, carry alt text written from what
+each plate shows, and have no `coverImageCredit`, since there is no third-party
+photographer to credit, so the hero prints no caption under them. Each one is
+marked `manual` with the `RISO_PLATE` note in the plan, which keeps the builder
+from overwriting it. The prompts that made them are kept outside the repo.

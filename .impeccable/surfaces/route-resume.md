@@ -5,6 +5,8 @@ primary_target: "route:/resume"
 related_targets: ["src/components/catalog97/Catalog97Resume.tsx","src/constants/personal.ts"]
 ---
 
+**Superseded in part on 2026-09-23.** The seven designed routes now use the print shop layout in `STYLING.md`, and it overrides anything below that disagrees. The pine, camel, and tobacco surfaces were renamed and repainted as `ink-blue`, `ink-saffron`, and `ink-vermilion`, and `ink-peach` was added, so read any mention of pine, camel, or tobacco below as the ink that replaced it. Anton now also sets the h1 and section h2s through `.c97-poster`, so the numerals-only Anton rule is retired. Vermilion carries body text with the darkest ink (4.62:1), so the tobacco large-text-only rule is retired too. Bands that change surface tear over each other, and the one allowed shadow is the hard `.c97-offset` in the second ink.
+
 # Résumé surface brief
 
 **Scope.** The `/resume` route, rendered by `src/components/catalog97/Catalog97Resume.tsx`. One of the seven Catalog 97 surfaces.

@@ -5,6 +5,8 @@ primary_target: "route:/"
 related_targets: ["src/components/catalog97/Catalog97Home.tsx"]
 ---
 
+**Superseded in part on 2026-09-23.** The seven designed routes now use the print shop layout in `STYLING.md`, and it overrides anything below that disagrees. The pine, camel, and tobacco surfaces were renamed and repainted as `ink-blue`, `ink-saffron`, and `ink-vermilion`, and `ink-peach` was added, so read any mention of pine, camel, or tobacco below as the ink that replaced it. Anton now also sets the h1 and section h2s through `.c97-poster`, so the numerals-only Anton rule is retired. Vermilion carries body text with the darkest ink (4.62:1), so the tobacco large-text-only rule is retired too. Bands that change surface tear over each other, and the one allowed shadow is the hard `.c97-offset` in the second ink.
+
 # Home surface brief
 
 **Scope.** The `/` route, rendered by `src/components/catalog97/Catalog97Home.tsx`. One of the seven Catalog 97 surfaces.
@@ -13,7 +15,7 @@ related_targets: ["src/components/catalog97/Catalog97Home.tsx"]
 
 **Job / action.** See the scale of the work, believe the thinking is sound, and take a next step.
 
-**Route constraints.** The h1 "I build tools that make hard problems easier to act on" is a test anchor in `src/app/__tests__/portfolio-shell.test.tsx` and must not change wording. Carries plates 01 through 05. The three live readouts (quake, market, launch) each fail soft to null upstream, so a missing snapshot drops its column rather than rendering an empty slot; do not "fix" the conditional. Band order paper, pine, chocolate, bone, tobacco, and that order is settled. The hero's internal composition is not settled and changed on 2026-08-03, so read the layout entry at the end of this brief before treating any part of this route's composition as closed.
+**Route constraints.** The h1 "I build test harnesses, and dashboards that run on public data." is a test anchor in `src/app/__tests__/portfolio-shell.test.tsx` and `e2e/homepage.spec.ts` and must not change wording. Carries plates 01 through 05. The three live readouts (quake, market, launch) each fail soft to null upstream, so a missing snapshot drops its column rather than rendering an empty slot; do not "fix" the conditional. Band order as of 2026-09-23 is a proofed paper hero (portrait, and the dashboard collage whose plates are links with live readouts), then blue Selected work, paper Recent writing, and the vermilion close. The hero's internal composition is not settled and changed on 2026-08-03, so read the layout entry at the end of this brief before treating any part of this route's composition as closed.
 
 **Visual world: Catalog 97, not Working Instrument.** `DESIGN.md` describes The Working Instrument, and until the bridge on 2026-09-16 it governed every other route. Those routes now render inside `Catalog97ToolShell` and are Catalog 97 too, so `DESIGN.md` is stale everywhere until the close-out PR rewrites it. It does NOT govern this surface. `context.mjs` auto-loads it anyway, so a pass that treats it as the spec here will read every deliberate Catalog 97 decision as a violation and manufacture a page of false findings. Tokens live in `src/app/catalog97.css`.
 

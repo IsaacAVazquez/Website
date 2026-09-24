@@ -31,7 +31,7 @@ const ESSAYS = "essays";
 type SortMode = "newest" | "shortest" | "longest";
 
 /** The two flat fields the design alternates across the featured pair. */
-const FEATURED_FIELDS = ["ink-vermilion", "stone"] as const;
+const FEATURED_FIELDS = ["ink-vermilion", "ink-peach"] as const;
 
 /**
  * The cover to lay over a featured field, or nothing.
@@ -148,10 +148,14 @@ export function Catalog97Writing({
 
     return [...matches].sort((left, right) => {
       if (sort === "shortest") {
-        return readingMinutes(left.readingTime) - readingMinutes(right.readingTime);
+        return (
+          readingMinutes(left.readingTime) - readingMinutes(right.readingTime)
+        );
       }
       if (sort === "longest") {
-        return readingMinutes(right.readingTime) - readingMinutes(left.readingTime);
+        return (
+          readingMinutes(right.readingTime) - readingMinutes(left.readingTime)
+        );
       }
       return right.publishedAt.localeCompare(left.publishedAt);
     });
@@ -161,7 +165,8 @@ export function Catalog97Writing({
   // newest pieces from the product clusters. The top two of whatever list was
   // showing featured sports posts by date, the two shortest posts under
   // "Shortest first", and pointed at empty space after a search.
-  const isDefaultView = active === ALL && query.trim() === "" && sort === "newest";
+  const isDefaultView =
+    active === ALL && query.trim() === "" && sort === "newest";
   const featured = isDefaultView
     ? filtered.filter((post) => post.cluster).slice(0, 2)
     : [];
@@ -171,15 +176,14 @@ export function Catalog97Writing({
 
   return (
     <Catalog97Shell>
-      {/* Hero */}
+      {/* Hero, the proofed sheet. */}
       <section
-        className="c97-band"
+        className="c97-band c97-sheet"
         data-c97-surface="paper"
         style={{ paddingBottom: "var(--c97-sp-4)" }}
       >
         <div className="c97-shell">
-          <p className="c97-kicker">Writing</p>
-          <h1 className="c97-display" style={{ marginTop: "var(--c97-sp-3)" }}>
+          <h1 className="c97-poster">
             Race reports, market notes, and write-ups of the tools on this site.
           </h1>
           <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
@@ -195,11 +199,15 @@ export function Catalog97Writing({
         data-c97-surface="paper"
         style={{ paddingBottom: "var(--c97-sp-4)" }}
       >
-        <div className="c97-shell" style={{ display: "grid", gap: "var(--c97-sp-3)" }}>
+        <div
+          className="c97-shell"
+          style={{ display: "grid", gap: "var(--c97-sp-3)" }}
+        >
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,240px),1fr))",
+              gridTemplateColumns:
+                "repeat(auto-fit,minmax(min(100%,240px),1fr))",
               gap: "var(--c97-sp-2)",
               alignItems: "end",
             }}
@@ -306,7 +314,11 @@ export function Catalog97Writing({
         whole route into one blue field.
       */}
       {featured.length > 0 ? (
-        <section className="c97-band c97-band-tall" data-c97-surface="ink-blue">
+        <section
+          className="c97-band c97-band-tall c97-sheet"
+          data-c97-surface="ink-blue"
+          data-seam="torn"
+        >
           <div
             className="c97-shell"
             style={{
@@ -327,8 +339,12 @@ export function Catalog97Writing({
                   src={featuredCover(post)}
                   alt={post.coverImageAlt ?? post.title}
                   sizes="(max-width: 790px) 100vw, 50vw"
+                  offset
                 />
-                <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-2)" }}>
+                <p
+                  className="c97-kicker"
+                  style={{ marginTop: "var(--c97-sp-2)" }}
+                >
                   Featured · {dayMonthYear(post.publishedAt)}
                 </p>
                 {/*
@@ -365,7 +381,10 @@ export function Catalog97Writing({
                 >
                   {post.excerpt}
                 </p>
-                <p className="c97-meta" style={{ marginTop: "var(--c97-sp-2)" }}>
+                <p
+                  className="c97-meta"
+                  style={{ marginTop: "var(--c97-sp-2)" }}
+                >
                   <span className="c97-tabular">{post.readingTime}</span>
                   <span>{post.category}</span>
                 </p>
@@ -375,13 +394,14 @@ export function Catalog97Writing({
         </section>
       ) : null}
 
-      {/* Vermilion line. Nothing on this band is smaller than --c97-fs-h2. */}
-      <section className="c97-band" data-c97-surface="ink-vermilion">
+      {/* Vermilion line, set in poster type. */}
+      <section
+        className="c97-band c97-sheet"
+        data-c97-surface="ink-vermilion"
+        data-seam="torn"
+      >
         <div className="c97-shell">
-          <p
-            className="c97-serif c97-h2"
-            style={{ maxWidth: "var(--c97-measure-tight)" }}
-          >
+          <p className="c97-poster-sm" style={{ maxWidth: "26ch" }}>
             {featured.length > 0
               ? "The two above are my newest pieces on product work, and the rest are below, newest at the top."
               : archive.length > 0
@@ -396,7 +416,11 @@ export function Catalog97Writing({
         holding an unbounded list — at ~200 rows it is over 90% of the route's
         height, so whatever field it takes becomes the route.
       */}
-      <section className="c97-band" data-c97-surface="paper">
+      <section
+        className="c97-band c97-sheet"
+        data-c97-surface="paper"
+        data-seam="torn"
+      >
         <div className="c97-shell">
           <div
             style={{
@@ -413,7 +437,7 @@ export function Catalog97Writing({
               are already at that step and the header would land exactly on its
               own children. --c97-fs-h2 clears them at both ends of the clamp.
             */}
-            <h2 className="c97-serif c97-h2">Archive</h2>
+            <h2 className="c97-poster-sm">Archive</h2>
             <p className="c97-kicker c97-tabular">
               {archive.length} {archive.length === 1 ? "piece" : "pieces"}
             </p>
@@ -492,7 +516,9 @@ export function Catalog97Writing({
                 setArchiveLimit(archive.length);
                 window.setTimeout(() => {
                   document
-                    .querySelector<HTMLElement>(`[data-archive-row="${firstRevealed}"] a`)
+                    .querySelector<HTMLElement>(
+                      `[data-archive-row="${firstRevealed}"] a`,
+                    )
                     ?.focus();
                 }, 0);
               }}
@@ -514,16 +540,24 @@ export function Catalog97Writing({
         </div>
       </section>
 
-      <section className="c97-band" data-c97-surface="bone">
+      <section
+        className="c97-band c97-sheet"
+        data-c97-surface="bone"
+        data-seam="deckle"
+      >
         <div className="c97-shell">
           <p className="c97-kicker">Browse by topic</p>
-          <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>
+          <h2
+            className="c97-poster-sm"
+            style={{ marginTop: "var(--c97-sp-2)" }}
+          >
             Follow one thread through the archive.
           </h2>
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,240px),1fr))",
+              gridTemplateColumns:
+                "repeat(auto-fit,minmax(min(100%,240px),1fr))",
               columnGap: "var(--c97-sp-5)",
               // Each topic link is a 50px hit box, so a --c97-sp-2 gap let every
               // row overlap the next by 15 to 20px. 34px keeps the boxes apart.
@@ -546,7 +580,12 @@ export function Catalog97Writing({
       </section>
 
       {/* CTA */}
-      <section className="c97-band c97-band-tall" data-c97-surface="ink-saffron">
+      {/* Peach, the vermilion tint, so the page keeps to its two inks. */}
+      <section
+        className="c97-band c97-band-tall c97-sheet"
+        data-c97-surface="ink-peach"
+        data-seam="torn"
+      >
         <div
           className="c97-shell"
           style={{
@@ -557,13 +596,10 @@ export function Catalog97Writing({
             justifyContent: "space-between",
           }}
         >
-          <p
-            className="c97-serif c97-h2"
-            style={{ maxWidth: "var(--c97-measure-body)" }}
-          >
+          <p className="c97-poster-sm" style={{ maxWidth: "22ch" }}>
             Everything here is tagged by what it is about.
           </p>
-          <Link className="c97-btn c97-btn-invert" href="/contact">
+          <Link className="c97-btn c97-offset" href="/contact">
             Get in touch
           </Link>
         </div>

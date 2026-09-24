@@ -4,7 +4,7 @@ The single pre-merge checklist for any new or edited page, component, or surface
 this repo, run through this before opening a PR. It distills the rules that were previously scattered
 across `STYLING.md`, `CLAUDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
 
-**Last updated:** 2026-09-22 · Derived from the 2026-06 site-wide design audit (`docs/DESIGN_AUDIT_2026-06.md`).
+**Last updated:** 2026-09-23 · Print shop layout checks added for the seven designed routes. Derived from the 2026-06 site-wide design audit (`docs/DESIGN_AUDIT_2026-06.md`).
 
 > When in doubt, copy a reference implementation instead of inventing: `PortfolioPerformanceChart`
 > (themeable D3), `github-trending-pulse` (touch targets + scoped transitions + token micro-type),
@@ -102,6 +102,23 @@ across `STYLING.md`, `CLAUDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
 - [ ] Curated/unverified datasets carry `verified: false` + `asOf` and disclose the unverified state
       on-page (mirror `tech-startup-tracker`).
 - [ ] Compliance disclaimers (retirement/investments) stay intact.
+
+## Print shop layout (the seven Catalog 97 routes)
+
+See `STYLING.md` for the method. Before merging a change to one of these routes:
+
+- [ ] The page prints in two lead inks (blue, saffron, vermilion, with peach as a vermilion tint), and
+      nothing on the page labels or names the inks.
+- [ ] Every band that changes surface from the one above carries `c97-sheet` and a `data-seam`, and no
+      band that continues the same surface does.
+- [ ] The h1 uses `.c97-poster` and section h2s use `.c97-poster-sm`; project and article titles stay in
+      Newsreader, and nothing below the h2 step is set in Anton.
+- [ ] The only shadow is the hard `.c97-offset` in `--c97-overprint`, and it sits outside any element that
+      declares its own surface so it prints in the sheet's second ink.
+- [ ] Hover and empty fields use the halftone screen, not a colour shift toward white or black.
+- [ ] No collage repeats a list further down the page; a clickable plate carries something of its own.
+- [ ] At 320px the poster headline wraps without horizontal scroll and the hero's primary action is still
+      above the fold.
 
 ## Consistency
 

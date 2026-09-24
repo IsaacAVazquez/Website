@@ -176,8 +176,11 @@ const RESUME_PDF = "/Isaac_Vazquez_Resume.pdf";
 export function Catalog97Resume() {
   return (
     <Catalog97Shell>
-      {/* Hero */}
-      <section className="c97-band" data-c97-surface="paper">
+      {/* Hero, the proofed sheet. */}
+      <section
+        className="c97-band c97-sheet"
+        data-c97-surface="paper"
+      >
         {/*
           Flex with wrap rather than `grid: 1fr auto`, which is what the other
           hero rows use. Their second cell is a plate numeral about 70px wide,
@@ -197,23 +200,19 @@ export function Catalog97Resume() {
             justifyContent: "space-between",
           }}
         >
-          <div style={{ flex: "1 1 260px" }}>
-            <p className="c97-kicker">Résumé</p>
-            <h1 className="c97-display" style={{ marginTop: "var(--c97-sp-3)" }}>
+          <div style={{ flex: "1 1 260px", minWidth: 0 }}>
+            <h1 className="c97-poster">
               Product work, with a quality engineering habit.
             </h1>
           </div>
-          <a className="c97-btn" href={RESUME_PDF} download>
+          <a className="c97-btn c97-offset" href={RESUME_PDF} download>
             Download PDF
           </a>
         </div>
       </section>
 
       {/* Experience */}
-      <section
-        className="c97-band c97-band-continues"
-        data-c97-surface="paper"
-      >
+      <section className="c97-band c97-band-continues" data-c97-surface="paper">
         <div className="c97-shell">
           {/*
             Every section heading on this route was an h2 carrying
@@ -223,7 +222,7 @@ export function Catalog97Resume() {
             --c97-fs-h3 here; it collapses to within a pixel of --c97-fs-lead
             once both clamps bottom out, which was measured on /portfolio.
           */}
-          <h2 className="c97-serif c97-h2">Experience</h2>
+          <h2 className="c97-poster-sm">Experience</h2>
           <div
             style={{
               display: "grid",
@@ -258,7 +257,10 @@ export function Catalog97Resume() {
                   >
                     {entry.role}
                   </h3>
-                  <p className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
+                  <p
+                    className="c97-meta"
+                    style={{ marginTop: "var(--c97-sp-1)" }}
+                  >
                     <span
                       style={{
                         display: "inline-flex",
@@ -285,7 +287,11 @@ export function Catalog97Resume() {
       </section>
 
       {/* Download band */}
-      <section className="c97-band" data-c97-surface="chocolate">
+      <section
+        className="c97-band c97-sheet"
+        data-c97-surface="chocolate"
+        data-seam="torn"
+      >
         <div
           className="c97-shell"
           style={{
@@ -296,26 +302,32 @@ export function Catalog97Resume() {
             justifyContent: "space-between",
           }}
         >
-          <p
-            className="c97-serif c97-h2"
-            style={{ maxWidth: "var(--c97-measure-tight)" }}
-          >
+          <p className="c97-poster-sm" style={{ maxWidth: "20ch" }}>
             The one-page version, ready to print.
           </p>
-          <a className="c97-btn c97-btn-invert" href={RESUME_PDF} download>
+          <a
+            className="c97-btn c97-btn-invert c97-offset"
+            href={RESUME_PDF}
+            download
+          >
             Download PDF
           </a>
         </div>
       </section>
 
       {/* Capabilities */}
-      <section className="c97-band c97-band-tall" data-c97-surface="ink-blue">
+      <section
+        className="c97-band c97-band-tall c97-sheet"
+        data-c97-surface="ink-blue"
+        data-seam="torn"
+      >
         <div className="c97-shell">
-          <h2 className="c97-serif c97-h2">Capabilities</h2>
+          <h2 className="c97-poster-sm">Capabilities</h2>
           <div
             className="c97-columns"
             style={{
-              gridTemplateColumns: "repeat(auto-fit,minmax(min(100%, 200px),1fr))",
+              gridTemplateColumns:
+                "repeat(auto-fit,minmax(min(100%, 200px),1fr))",
               gap: "var(--c97-sp-4)",
               marginTop: "var(--c97-sp-4)",
             }}
@@ -340,11 +352,16 @@ export function Catalog97Resume() {
       </section>
 
       {/* Education, outside work, references */}
-      <section className="c97-band" data-c97-surface="ink-saffron">
+      <section
+        className="c97-band c97-sheet"
+        data-c97-surface="ink-saffron"
+        data-seam="torn"
+      >
         <div
           className="c97-shell c97-columns"
           style={{
-            gridTemplateColumns: "repeat(auto-fit,minmax(min(100%, 220px),1fr))",
+            gridTemplateColumns:
+              "repeat(auto-fit,minmax(min(100%, 220px),1fr))",
             gap: "var(--c97-sp-4)",
           }}
         >
@@ -356,11 +373,14 @@ export function Catalog97Resume() {
               leaving the other two at 11px beside a 32px sibling would put
               three mismatched headers in one row.
             */}
-            <h2 className="c97-serif c97-h2">Education</h2>
+            <h2 className="c97-poster-sm">Education</h2>
             {education.map((entry) => (
               <div key={entry.company} style={{ marginTop: "var(--c97-sp-2)" }}>
                 <h3 className="c97-serif c97-lead">{entry.role}</h3>
-                <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-1)" }}>
+                <p
+                  className="c97-kicker"
+                  style={{ marginTop: "var(--c97-sp-1)" }}
+                >
                   <span
                     style={{
                       display: "inline-flex",
@@ -389,7 +409,7 @@ export function Catalog97Resume() {
           </div>
 
           <div>
-            <h2 className="c97-serif c97-h2">Outside work</h2>
+            <h2 className="c97-poster-sm">Outside work</h2>
             <p
               className="c97-prose"
               style={{
@@ -403,7 +423,7 @@ export function Catalog97Resume() {
           </div>
 
           <div>
-            <h2 className="c97-serif c97-h2">References</h2>
+            <h2 className="c97-poster-sm">References</h2>
             <p
               className="c97-prose"
               style={{

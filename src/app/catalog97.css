@@ -62,6 +62,8 @@
   --c97-font-display: var(--font-c97-newsreader, "Newsreader"), Georgia, "Times New Roman",
     serif;
   --c97-font-numeral: var(--font-c97-anton, "Anton"), "Helvetica Neue", Impact, sans-serif;
+  /* The print-shop headline face. Anton caps, with condensed fallbacks. */
+  --c97-font-poster: var(--font-c97-anton, "Anton"), Impact, "Arial Narrow", sans-serif;
   /*
    * Snell Roundhand is macOS-only and is what the design was drawn against.
    * Great Vibes is loaded as the fallback so the wordmark renders everywhere.
@@ -119,8 +121,9 @@
   /*
    * Type. Nine steps. `label` is the only fixed size in the system — it is the
    * 11px tracked uppercase that carries every kicker, meta row, and status.
-   * `display` and `plate` are the two Anton numeral sizes and are never used
-   * for words.
+   * `display` and `plate` are the two Anton numeral sizes. `poster` and
+   * `poster-sm` are the print-shop headline sizes, set in Anton caps on h1s
+   * and section h2s through `.c97-poster`.
    */
   --c97-fs-label: 11px;
   --c97-fs-small: clamp(13px, 1.3vw, 15px);
@@ -131,6 +134,8 @@
   --c97-fs-h1: clamp(32px, 4.2vw, 52px);
   --c97-fs-display: clamp(46px, 5.6vw, 74px);
   --c97-fs-plate: clamp(64px, 8vw, 112px);
+  --c97-fs-poster: clamp(44px, 7.4vw, 112px);
+  --c97-fs-poster-sm: clamp(30px, 4vw, 56px);
 
   --c97-lh-display: 0.95;
   --c97-lh-tight: 1.2;
@@ -159,13 +164,24 @@
   --c97-wordmark-w: 560px;
 
   /*
-   * Print inks for the home collage and the photo plates. Imagery only, never
-   * text, rules, or controls. They stay the same in dark mode because they are
-   * the paper colours of a printed picture rather than interface colours.
+   * The riso inks, as printed. They match the spot colours in the generated
+   * plates under public/images/home, and they are what the ink surfaces, the
+   * overprint offset draw from. They stay the same in
+   * dark mode, because a swatch names an ink rather than a theme.
    */
-  --c97-riso-blue: #3f95cf;
+  --c97-riso-blue: #1a3ea6;
+  --c97-riso-saffron: #edb722;
+  --c97-riso-vermilion: #df4c1e;
+  --c97-riso-peach: #f6b995;
   --c97-print-black: #17110d;
   --c97-print-bone: #e4dbc9;
+
+  /*
+   * The torn and deckled seams, drawn as masks so each takes the ink of the
+   * sheet it sits on and tears that sheet's top edge over the sheet above.
+   */
+  --c97-seam-torn: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 16' preserveAspectRatio='none'%3E%3Cpath d='M0 16 L0 9 L4.2 10.1 L9.4 10.4 L17.2 7.7 L23.5 2.4 L31.9 10.2 L37.1 2.7 L42.7 8.7 L50.6 4.4 L55.5 4.5 L60.9 3.9 L69.1 4.3 L75.4 2.7 L82.9 3.1 L86.2 7.3 L94.7 8.2 L102.2 6.5 L111.0 4.4 L114.1 7.8 L120.2 4.0 L123.7 7.9 L128.1 3.4 L137.0 11.8 L140.9 2.1 L148.4 6.7 L155.8 2.5 L164.4 9.4 L172.7 2.4 L178.9 10.4 L182.2 8.7 L188.4 7.6 L194.7 6.1 L202.3 6.4 L209.0 9.8 L215.7 4.8 L224.0 11.8 L228.4 3.9 L233.2 7.0 L239.2 11.9 L240 7.8 L240 16Z'/%3E%3C/svg%3E");
+  --c97-seam-deckle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 16' preserveAspectRatio='none'%3E%3Cpath d='M0 16 L0 8 Q6 8.0 12 7.9 Q18 9.9 24 10.3 Q30 11.0 36 8.3 Q42 3.2 48 5.1 Q54 6.6 60 6.8 Q66 6.9 72 5.2 Q78 10.2 84 8.2 Q90 9.8 96 10.5 Q102 8.9 108 10.1 Q114 7.5 120 5.2 Q126 8.3 132 10.2 Q138 9.1 144 6.6 Q150 12.9 156 10.5 Q162 4.2 168 7.2 Q174 7.9 180 9.4 Q186 6.2 192 8.1 Q198 4.5 204 6.0 Q210 8.7 216 8.0 Q222 11.8 228 10.2 Q234 7.4 240 7.6 L240 16Z'/%3E%3C/svg%3E");
   --c97-grain-soft: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -397,6 +413,29 @@ body:has(.c97-page) {
   --c97-plate: #edb722;
 }
 
+/*
+ * The overprint: the second ink a sheet prints off register, behind poster
+ * type and as the hard offset under plates and buttons. It is decoration only,
+ * so it carries no contrast duty; the sheet's --c97-ink still does.
+ */
+.c97-page [data-c97-surface="paper"],
+.c97-page [data-c97-surface="ink-saffron"],
+.c97-page [data-c97-surface="stone"] {
+  --c97-overprint: var(--c97-riso-vermilion);
+}
+
+.c97-page [data-c97-surface="bone"],
+.c97-page [data-c97-surface="ink-peach"],
+.c97-page [data-c97-surface="ink-vermilion"] {
+  --c97-overprint: var(--c97-riso-blue);
+}
+
+.c97-page [data-c97-surface="ink-blue"],
+.c97-page [data-c97-surface="chocolate"],
+.c97-page [data-c97-surface="espresso"] {
+  --c97-overprint: var(--c97-riso-saffron);
+}
+
 .c97-page [data-c97-surface="chocolate"],
 .c97-page [data-c97-surface="espresso"] {
   --c97-plate: #c09461;
@@ -556,6 +595,15 @@ body:has(.c97-page) {
 
 .dark .c97-page [data-c97-surface="stone"] {
   --c97-plate: #f7e6cd;
+}
+
+/* Dark bone is near-black, so its offset moves from blue to vermilion to stay visible. */
+.dark .c97-page [data-c97-surface="bone"] {
+  --c97-overprint: var(--c97-riso-vermilion);
+}
+
+.dark .c97-page [data-c97-surface="ink-vermilion"] {
+  --c97-overprint: var(--c97-riso-saffron);
 }
 
 /* --------------------------------------------------------------------------
@@ -771,11 +819,9 @@ body:has(.c97-page) {
 }
 
 /*
- * Anton. Numerals at --c97-fs-plate, and nothing else — no smaller numeral
- * step, and no running text or headings ever. Keeping it to one size at the
- * top of the scale is what stops it reading as a display face instead of as a
- * page number, and it is why a route may carry several plates without the
- * face taking over.
+ * Anton numerals, at --c97-fs-plate only. Anton also sets the print-shop
+ * headlines through `.c97-poster`, but never running text, and a numeral has
+ * no smaller step than the plate.
  */
 .c97-numeral {
   font-family: var(--c97-font-numeral);
@@ -1224,7 +1270,7 @@ select.c97-field {
 
 /*
  * The label, value, delta triplet. The value is set in the body face at the
- * h2 step, never Anton, which is reserved for plate numerals.
+ * h2 step, never Anton, which is kept for plate numerals and poster headlines.
  */
 .c97-stat {
   display: grid;
@@ -1758,14 +1804,16 @@ select.c97-field {
  * transition above had nothing to animate and 33 links gave no pointer
  * feedback at all.
  *
- * The shift is toward the tile's own ink rather than toward white or a fixed
- * hex, which is what makes one rule correct on all four fields and in both
- * themes: it darkens the three light fields and lifts blue, because blue's ink
- * is the light one. Specificity ties `.c97-page [data-c97-surface]` at (0,2,0)
+ * Hover lays a halftone screen in the tile's own ink over its grain, the
+ * print-shop way of darkening a field, so one rule is correct on every ink and
+ * in both themes. Specificity ties `.c97-page [data-c97-surface]` at (0,2,0)
  * and wins on order, since that block sits far above this one in the file.
  */
 .c97-tile:hover {
-  background-color: color-mix(in srgb, var(--c97-surface) 92%, var(--c97-ink));
+  background-image:
+    radial-gradient(circle, color-mix(in srgb, var(--c97-ink) 24%, transparent) 28%, transparent 32%),
+    var(--c97-grain-soft);
+  background-size: 6px 6px, 180px 180px;
 }
 
 /*
@@ -1797,58 +1845,63 @@ select.c97-field {
   gap: var(--c97-sp-5);
 }
 
-/*
- * The footer's own grid, which is deliberately not `.c97-columns`.
- *
- * The footer holds one colophon paragraph and three short link lists, and those
- * are not equivalent content, so equal tracks were a framework default rather
- * than a decision. On four equal 219px tracks the colophon set at 27 characters
- * a line, which is well under the 34ch that its own --c97-measure-body already
- * allows, so the track and not the token was the binding constraint.
- *
- * At 2fr the colophon track is 350px in the full 1080px shell and about 299px
- * at the 1080px breakpoint itself, where --c97-gutter has grown to 6vw and the
- * shell is only 950px. Either way it clears the 280px the paragraph needs to
- * reach its cap. Each nav keeps at least 149px, which holds ACCESSIBILITY, the
- * widest label, at roughly 124px.
- *
- * The breakpoint is 1080px rather than something smaller because the gutter is
- * fluid. Below it the three lists go side by side and the colophon takes the
- * whole row above them, which is the only arrangement that does not squeeze the
- * prose again.
- */
-.c97-footer-grid {
-  /*
-   * Two columns on a phone, not one. Stacked single-file the three link lists
-   * ran 552px of the footer's 989px at 390, which is more than a whole screen
-   * of chrome. The floor is wrapped in min() so it collapses back to one column
-   * rather than overflowing: two 130px tracks plus the 40px gap need 300px and
-   * the shell is 319px at 390, but only 264px at 320, where a second column
-   * would leave 112px and ACCESSIBILITY needs about 115px.
-   */
+/* Keep the navigation and signature together, with a fixed signature size. */
+.c97-footer {
+  padding: var(--c97-sp-5) var(--c97-gutter);
+}
+
+/* The link groups, each on its own ink sheet pasted onto the footer. */
+.c97-footer-tiles {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 130px), 1fr));
-  gap: var(--c97-sp-5);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: var(--c97-sp-4);
+}
+
+.c97-footer-tile {
+  display: grid;
+  align-content: start;
+  gap: 2px;
+  padding: var(--c97-sp-3);
+  box-shadow: 8px 8px 0 var(--c97-overprint);
+}
+
+.c97-footer-tile-name {
+  margin: 0 0 var(--c97-sp-1);
+  font-family: var(--c97-font-poster);
+  font-size: clamp(26px, 2.6vw, 34px);
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--c97-ink);
+}
+
+.c97-footer-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: var(--c97-fs-small);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c97-ink);
+  text-decoration: none;
+}
+
+.c97-footer-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
 }
 
 .c97-footer-colophon {
-  grid-column: 1 / -1;
+  width: 260px;
+  max-width: 100%;
+  margin-top: var(--c97-sp-5);
 }
 
-@media (min-width: 640px) {
-  .c97-footer-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
+.c97-footer-colophon .c97-wordmark { width: 260px; max-width: 100%; }
 
-@media (min-width: 1080px) {
-  .c97-footer-grid {
-    grid-template-columns: minmax(0, 2fr) repeat(3, minmax(0, 1fr));
-  }
-
-  .c97-footer-colophon {
-    grid-column: auto;
-  }
+.c97-footer-copy {
+  margin: var(--c97-sp-3) 0 0;
+  font-size: var(--c97-fs-small);
+  color: var(--c97-label);
 }
 
 /* --------------------------------------------------------------------------
@@ -1865,6 +1918,200 @@ select.c97-field {
   display: block;
   width: min(100%, var(--c97-wordmark-w));
   color: var(--c97-ink);
+}
+
+/* --------------------------------------------------------------------------
+ * Print shop layout
+ *
+ * A page is a print run: sheets of paper and two lead inks, stacked. A sheet
+ * that changes surface tears over the one above it, display type is Anton
+ * caps with the second ink printed off register, tone is a halftone screen, and a printed plate or
+ * button sits on a hard offset in the second ink. STYLING.md holds the rules.
+ * ------------------------------------------------------------------------ */
+
+.c97-sheet {
+  position: relative;
+}
+
+/* The torn top edge, painted in the sheet's own paper and grain. */
+.c97-sheet[data-seam]::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 100%;
+  z-index: 1;
+  height: 14px;
+  margin-bottom: -1px;
+  pointer-events: none;
+  background-color: var(--c97-surface);
+  background-image: var(--c97-grain-soft);
+  background-size: 180px 180px;
+  -webkit-mask: var(--c97-seam-torn) repeat-x left bottom / 240px 100%;
+  mask: var(--c97-seam-torn) repeat-x left bottom / 240px 100%;
+}
+
+.c97-sheet[data-seam="deckle"]::before {
+  -webkit-mask-image: var(--c97-seam-deckle);
+  mask-image: var(--c97-seam-deckle);
+}
+
+/*
+ * Poster type. Anton caps, printed in the sheet's ink with the second ink a
+ * few hundredths of an em off register. The ink carries the contrast; the
+ * offset is decoration. Uppercasing is presentational, so accessible names
+ * keep their written case.
+ */
+.c97-poster,
+.c97-poster-sm {
+  font-family: var(--c97-font-poster);
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  color: var(--c97-ink);
+  text-shadow: 0.045em 0.035em 0 var(--c97-overprint);
+  text-wrap: balance;
+}
+
+.c97-poster {
+  font-size: var(--c97-fs-poster);
+  max-width: 18ch;
+}
+
+.c97-poster-sm {
+  font-size: var(--c97-fs-poster-sm);
+}
+
+/*
+ * A halftone screen in the sheet's ink, faded like a printed ramp. Always an
+ * empty aria-hidden span inside a positioned sheet or panel.
+ */
+.c97-halftone {
+  position: absolute;
+  pointer-events: none;
+  background-image: radial-gradient(circle, var(--c97-ink) 30%, transparent 34%);
+  background-size: 8px 8px;
+  opacity: 0.2;
+}
+
+.c97-halftone-corner {
+  right: 0;
+  bottom: 0;
+  width: min(46%, 420px);
+  height: 80%;
+  -webkit-mask-image: radial-gradient(circle at 100% 100%, #000 10%, transparent 70%);
+  mask-image: radial-gradient(circle at 100% 100%, #000 10%, transparent 70%);
+}
+
+.c97-halftone-edge {
+  inset-inline: 0;
+  bottom: 0;
+  height: 40%;
+  -webkit-mask-image: linear-gradient(to top, #000, transparent);
+  mask-image: linear-gradient(to top, #000, transparent);
+}
+
+/* A printed plate or a button on its hard offset in the second ink. */
+.c97-offset {
+  box-shadow: 8px 8px 0 var(--c97-overprint);
+}
+
+.c97-btn.c97-offset,
+.c97-btn-invert.c97-offset,
+.c97-btn-outline.c97-offset {
+  box-shadow: 4px 4px 0 var(--c97-overprint);
+  transition: box-shadow 120ms ease, transform 120ms ease;
+}
+
+.c97-btn.c97-offset:active,
+.c97-btn-invert.c97-offset:active,
+.c97-btn-outline.c97-offset:active {
+  box-shadow: none;
+  transform: translate(4px, 4px);
+}
+
+
+/*
+ * The site header: a saffron sheet that tears over the page below it, with
+ * the wordmark in poster type and the current route on an ink block.
+ */
+.c97-header {
+  position: relative;
+  z-index: 2;
+  padding: var(--c97-sp-3) var(--c97-gutter) var(--c97-sp-4);
+}
+
+/* The torn bottom edge, the seam mask flipped so it hangs below the header. */
+.c97-header::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: calc(100% - 1px);
+  height: 14px;
+  pointer-events: none;
+  background-color: var(--c97-surface);
+  background-image: var(--c97-grain-soft);
+  background-size: 180px 180px;
+  -webkit-mask: var(--c97-seam-torn) repeat-x left bottom / 240px 100%;
+  mask: var(--c97-seam-torn) repeat-x left bottom / 240px 100%;
+  transform: scaleY(-1);
+}
+
+/*
+ * Row gap --c97-sp-4 so the active link's ink block, which fills the link's
+ * 44px tap area, clears the wordmark when the nav wraps under it on a phone.
+ */
+.c97-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--c97-sp-4) var(--c97-sp-2);
+  flex-wrap: wrap;
+}
+
+.c97-header-brand {
+  font-family: var(--c97-font-poster);
+  font-size: clamp(26px, 2.6vw, 34px);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--c97-ink);
+  text-shadow: 0.05em 0.04em 0 var(--c97-overprint);
+}
+
+/*
+ * Row gap --c97-sp-5: at 390 the links wrap, and each `.c97-microlink` hit box
+ * is 50px tall, so a smaller row gap overlaps the rows and mis-taps. Column gap
+ * --c97-sp-3 for the same reason sideways: each hit box overhangs its label by
+ * 8px a side, so anything under 16px overlaps neighbours at 320.
+ */
+.c97-header-nav {
+  display: flex;
+  align-items: center;
+  column-gap: var(--c97-sp-3);
+  row-gap: var(--c97-sp-5);
+  flex-wrap: wrap;
+}
+
+.c97-header-link {
+  color: var(--c97-ink-2);
+}
+
+.c97-header-link:hover {
+  color: var(--c97-ink);
+}
+
+.c97-header-link[aria-current="page"] {
+  background: var(--c97-ink);
+  color: var(--c97-surface);
+}
+
+.c97-header-util {
+  border: 0;
+  background: none;
+  cursor: pointer;
+  color: var(--c97-ink-2);
 }
 
 /* --------------------------------------------------------------------------

@@ -1,9 +1,13 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Catalog97Shell } from "./Catalog97Shell";
-import type { LiveToolGroup } from "@/constants/toolCategories";
+import type {
+  LiveToolGroup,
+  ToolCategoryId,
+} from "@/constants/toolCategories";
 
 const ALL = "all";
 
@@ -41,6 +45,18 @@ export interface Catalog97DashboardsProps {
  * seam.
  */
 const TILE_SURFACES = ["ink-blue", "ink-saffron", "bone", "ink-peach"] as const;
+
+/** The riso banner printed above each category run. Decorative, so no alt. */
+const CATEGORY_BANNERS: Record<ToolCategoryId, string> = {
+  fintech: "/images/dashboards/category-fintech.jpg",
+  ai: "/images/dashboards/category-ai.jpg",
+  decision: "/images/dashboards/category-decision.jpg",
+  pulse: "/images/dashboards/category-news.jpg",
+  science: "/images/dashboards/category-science.jpg",
+  sports: "/images/dashboards/category-sports.jpg",
+  civic: "/images/dashboards/category-civic.jpg",
+  lifestyle: "/images/dashboards/category-lifestyle.jpg",
+};
 
 /**
  * The dashboard index, in the Catalog 97 language. This route is new — the
@@ -126,27 +142,26 @@ export function Catalog97Dashboards({
 
   return (
     <Catalog97Shell>
-      {/* Hero */}
+      {/* Hero, the proofed sheet. */}
       <section
-        className="c97-band"
+        className="c97-band c97-sheet"
         data-c97-surface="paper"
         style={{ paddingBottom: "var(--c97-sp-4)" }}
       >
         <div
           className="c97-shell"
+          // Wraps rather than a fixed two-column grid: Anton's longest word
+          // plus the pull block overflow a 320px phone side by side.
           style={{
-            display: "grid",
-            gridTemplateColumns: "1fr auto",
-            gap: "var(--c97-sp-5)",
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+            gap: "var(--c97-sp-3) var(--c97-sp-5)",
             alignItems: "end",
           }}
         >
-          <div>
-            <p className="c97-kicker">Dashboards</p>
-            <h1
-              className="c97-display"
-              style={{ marginTop: "var(--c97-sp-3)" }}
-            >
+          <div style={{ flex: "1 1 32rem", minWidth: 0 }}>
+            <h1 className="c97-poster">
               {toolCount} instruments I built, and I keep them running.
             </h1>
           </div>
@@ -245,7 +260,24 @@ export function Catalog97Dashboards({
         >
           {visibleGroups.map(({ group, cycleOffset }) => (
             <div key={group.id}>
-              <h2 className="c97-serif c97-h2">{group.label}</h2>
+              <div
+                style={{
+                  position: "relative",
+                  aspectRatio: "5 / 1",
+                  minHeight: "96px",
+                  overflow: "hidden",
+                  marginBottom: "var(--c97-sp-3)",
+                }}
+              >
+                <Image
+                  src={CATEGORY_BANNERS[group.id]}
+                  alt=""
+                  fill
+                  sizes="(min-width: 1280px) 1200px, 100vw"
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+              <h2 className="c97-poster-sm">{group.label}</h2>
               <div
                 className="c97-mosaic"
                 style={{ marginTop: "var(--c97-sp-3)" }}
@@ -311,7 +343,11 @@ export function Catalog97Dashboards({
 
       {/* Pull log. Its own band, because in the grid it read as an openable tile. */}
       {pullLog.length > 0 ? (
-        <section className="c97-band" data-c97-surface="bone">
+        <section
+          className="c97-band c97-sheet"
+          data-c97-surface="bone"
+          data-seam="deckle"
+        >
           <div className="c97-shell">
             <h2 className="c97-kicker">Pull log · times PT</h2>
             <dl
@@ -333,16 +369,14 @@ export function Catalog97Dashboards({
         </section>
       ) : null}
 
-      {/* Vermilion line. Nothing on this band is smaller than --c97-fs-h2. */}
+      {/* The fail-soft line, in poster type on the page's saffron. */}
       <section
-        className="c97-band c97-band-tall"
-        data-c97-surface="ink-vermilion"
+        className="c97-band c97-band-tall c97-sheet"
+        data-c97-surface="ink-saffron"
+        data-seam="torn"
       >
         <div className="c97-shell">
-          <p
-            className="c97-serif c97-h2"
-            style={{ maxWidth: "var(--c97-measure-tight)" }}
-          >
+          <p className="c97-poster-sm" style={{ maxWidth: "24ch" }}>
             If a pull fails, the panel keeps the previous snapshot and shows its
             date.
           </p>
@@ -350,9 +384,13 @@ export function Catalog97Dashboards({
       </section>
 
       {/* How the data works */}
-      <section className="c97-band c97-band-taller" data-c97-surface="ink-blue">
+      <section
+        className="c97-band c97-band-taller c97-sheet"
+        data-c97-surface="ink-blue"
+        data-seam="torn"
+      >
         <div className="c97-shell">
-          <h2 className="c97-serif c97-h2">How the data works</h2>
+          <h2 className="c97-poster-sm">How the data works</h2>
           <div className="c97-columns" style={{ marginTop: "var(--c97-sp-4)" }}>
             {dataNotes.map((note) => (
               <div key={note.title}>
@@ -374,7 +412,11 @@ export function Catalog97Dashboards({
       </section>
 
       {/* CTA */}
-      <section className="c97-band" data-c97-surface="ink-saffron">
+      <section
+        className="c97-band c97-sheet"
+        data-c97-surface="ink-saffron"
+        data-seam="torn"
+      >
         <div
           className="c97-shell"
           style={{
@@ -385,13 +427,10 @@ export function Catalog97Dashboards({
             justifyContent: "space-between",
           }}
         >
-          <p
-            className="c97-serif c97-h2"
-            style={{ maxWidth: "var(--c97-measure-body)" }}
-          >
+          <p className="c97-poster-sm" style={{ maxWidth: "24ch" }}>
             The build notes behind most of these are in the writing archive.
           </p>
-          <Link className="c97-btn c97-btn-invert" href="/writing">
+          <Link className="c97-btn c97-btn-invert c97-offset" href="/writing">
             Read the writing
           </Link>
         </div>

@@ -39,23 +39,14 @@ const touchTarget = {
 export function Catalog97Contact() {
   return (
     <Catalog97Shell>
-      {/* Hero */}
+      {/* Hero, the proofed sheet. */}
       <section
-        className="c97-band c97-band-tall"
+        className="c97-band c97-band-tall c97-sheet"
         data-c97-surface="paper"
         style={{ paddingBottom: "var(--c97-sp-5)" }}
       >
         <div className="c97-shell">
-          <p className="c97-kicker">Contact</p>
-          <h1
-            className="c97-display"
-            style={{
-              marginTop: "var(--c97-sp-3)",
-              lineHeight: "var(--c97-lh-display)",
-            }}
-          >
-            If you have something worth building.
-          </h1>
+          <h1 className="c97-poster">If you have something worth building.</h1>
           <p
             className="c97-prose"
             style={{
@@ -69,20 +60,25 @@ export function Catalog97Contact() {
         </div>
       </section>
 
-      {/* Vermilion line. Nothing on this band is smaller than --c97-fs-h2. */}
-      <section className="c97-band" data-c97-surface="ink-vermilion">
+      {/* Vermilion line, set in poster type. */}
+      <section
+        className="c97-band c97-sheet"
+        data-c97-surface="ink-vermilion"
+        data-seam="torn"
+      >
         <div className="c97-shell">
-          <p
-            className="c97-serif c97-h2"
-            style={{ maxWidth: "var(--c97-measure-tight)" }}
-          >
+          <p className="c97-poster-sm" style={{ maxWidth: "22ch" }}>
             Email is the fastest way to reach me, and I read it first.
           </p>
         </div>
       </section>
 
       {/* Channels */}
-      <section className="c97-band c97-band-tall" data-c97-surface="ink-blue">
+      <section
+        className="c97-band c97-band-tall c97-sheet"
+        data-c97-surface="ink-blue"
+        data-seam="torn"
+      >
         <div
           className="c97-shell"
           style={{
@@ -104,7 +100,11 @@ export function Catalog97Contact() {
                 wordBreak: "break-word",
               }}
             >
-              <a href={`mailto:${profile.email}`} className="c97-link" style={touchTarget}>
+              <a
+                href={`mailto:${profile.email}`}
+                className="c97-link"
+                style={touchTarget}
+              >
                 {profile.email}
               </a>
             </p>
@@ -150,7 +150,10 @@ export function Catalog97Contact() {
                   <p className="c97-kicker">{channel.label}</p>
                   <p
                     className="c97-serif c97-lead"
-                    style={{ marginTop: "var(--c97-sp-1)", wordBreak: "break-word" }}
+                    style={{
+                      marginTop: "var(--c97-sp-1)",
+                      wordBreak: "break-word",
+                    }}
                   >
                     <a
                       href={channel.href}
@@ -180,8 +183,12 @@ export function Catalog97Contact() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="c97-band" data-c97-surface="ink-saffron">
+      {/* CTA, on peach, the vermilion tint, so the page keeps to its two inks. */}
+      <section
+        className="c97-band c97-sheet"
+        data-c97-surface="ink-peach"
+        data-seam="torn"
+      >
         <div
           className="c97-shell"
           style={{
@@ -192,10 +199,7 @@ export function Catalog97Contact() {
             justifyContent: "space-between",
           }}
         >
-          <p
-            className="c97-serif c97-h2"
-            style={{ maxWidth: "var(--c97-measure-tight)" }}
-          >
+          <p className="c97-poster-sm" style={{ maxWidth: "22ch" }}>
             The résumé has the short version, and the work index has the long
             one.
           </p>
@@ -206,7 +210,7 @@ export function Catalog97Contact() {
               flexWrap: "wrap",
             }}
           >
-            <Link className="c97-btn c97-btn-invert" href="/resume">
+            <Link className="c97-btn c97-offset" href="/resume">
               Résumé
             </Link>
             <Link className="c97-btn-ghost" href="/portfolio">

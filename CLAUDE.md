@@ -252,6 +252,11 @@ where they disagree with `catalog97.css`, the CSS wins.
   `ProjectBuildNote`, `CodeSample`, `NewsletterSignup`, and search components), set
   `data-c97-surface` on the container and read the `--c97-*` tokens (`--c97-ink`,
   `--c97-accent`, and the rest). Never set a colour on a component directly.
+- The seven designed routes use the print shop layout (2026-09-23): two lead inks per page, left
+  unlabelled, `c97-sheet` bands with `data-seam` wherever the surface changes,
+  `.c97-poster`/`.c97-poster-sm` Anton headings with the
+  `--c97-overprint` offset, `.c97-halftone` for tone, and `.c97-offset` as the only shadow. The
+  method and its rules are in `STYLING.md` under "Print shop layout"; Home is the reference build.
 - A migrated route is a sequence of `c97-band` sections inside `Catalog97ToolShell`,
   each carrying its own `data-c97-surface`, and it uses only the `catalog97.css`
   vocabulary: `.c97-kicker`, `.c97-display`, `.c97-serif` with `.c97-h2`/`.c97-h3`,

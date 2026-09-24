@@ -1,61 +1,60 @@
-/* Hero */
+/* Hero: the proofed sheet. */
 .hero { padding-bottom: var(--c97-sp-6); }
-.heroMeta > p { max-width: none; }
-.heroMeta {
+/* Headline and lead on the left, the portrait pasted on the right. */
+.heroTop {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(220px, 24vw, 320px);
+  align-items: start;
+  gap: var(--c97-sp-5);
+}
+.headline { font-size: clamp(44px, 6.2vw, 96px); }
+.heroCopy { min-width: 0; }
+/* The lead reads first on a wide screen; a phone gets the buttons first. */
+.heroFoot {
+  display: grid;
+  grid-template-areas: "lead" "actions";
+  gap: var(--c97-sp-4);
+  margin-top: var(--c97-sp-4);
+}
+.lead { grid-area: lead; max-width: var(--c97-measure-wide); line-height: var(--c97-lh-body); text-wrap: pretty; }
+.actions { grid-area: actions; display: flex; flex-wrap: wrap; gap: var(--c97-sp-2); }
+.portrait {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  margin-top: var(--c97-sp-2);
+  overflow: hidden;
+  background: var(--c97-field);
+}
+.portraitImage { object-fit: cover; object-position: 50% 20%; }
+@media (max-width: 880px) {
+  .heroTop { grid-template-columns: minmax(0, 1fr); }
+  .heroFoot { grid-template-areas: "actions" "lead"; }
+  .portrait { width: min(72%, 300px); }
+}
+
+/* The board: a heading row, the collage of doors, then the strip under it. */
+.boardHead {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
-  gap: var(--c97-sp-1) var(--c97-sp-3);
-}
-.headline {
-  margin-top: var(--c97-sp-4);
-  font-family: var(--c97-font-display);
-  font-weight: 400;
-  font-size: clamp(50px, 8vw, 116px);
-  line-height: 0.92;
-  letter-spacing: -0.02em;
-  color: var(--c97-ink-2);
-  text-wrap: balance;
-}
-.heroFoot {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: var(--c97-sp-4);
-  margin-top: var(--c97-sp-5);
-}
-.lead { max-width: var(--c97-measure-wide); line-height: var(--c97-lh-body); text-wrap: pretty; }
-.actions { display: flex; flex-wrap: wrap; gap: var(--c97-sp-2); }
-
-/* Collage strip */
-.collage {
-  display: grid;
-  grid-template-columns: 5fr 4fr 3fr;
-  gap: 3px;
-  padding: 3px;
+  gap: var(--c97-sp-2);
   margin-top: var(--c97-sp-6);
-  height: clamp(260px, 34vw, 440px);
-  background: var(--c97-print-black);
 }
-.panel { position: relative; overflow: hidden; margin: 0; background: var(--c97-print-black); }
-/* Slightly torn edges on the outer panels, as if cut from separate sheets. */
-.panel:first-child { clip-path: polygon(0 0.5%, 100% 0, 99.7% 100%, 0.2% 99.5%); }
-.panel:last-child { clip-path: polygon(0.4% 0, 100% 0.6%, 100% 100%, 0 99.6%); }
-.captionDark,
-.captionLight {
-  position: absolute;
-  font-size: var(--c97-fs-label);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+.cardFigure { font-size: clamp(22px, 2.2vw, 30px); max-width: none; }
+.strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: var(--c97-sp-2);
+  margin-top: var(--c97-sp-2);
 }
-.captionDark { color: var(--c97-print-black); }
-.captionLight { color: var(--c97-print-bone); }
-
-/* Finished riso prints, shown as generated. */
-.plate { position: absolute; inset: 0; }
-.plateImage { object-fit: cover; }
+.strip .stripTile {
+  justify-content: flex-start;
+  gap: var(--c97-sp-1);
+  min-height: 0;
+  padding: var(--c97-sp-3);
+  color: var(--c97-ink);
+}
 
 /* Section heads */
 .sectionHead {
@@ -65,60 +64,7 @@
   justify-content: space-between;
   gap: var(--c97-sp-2);
 }
-.sectionTitle {
-  font-size: var(--c97-fs-h1);
-  line-height: var(--c97-lh-display);
-  letter-spacing: -0.015em;
-  color: var(--c97-ink-2);
-}
 
-/* Dashboards board */
-.bento {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  grid-auto-flow: dense;
-  gap: 1px;
-  margin-top: var(--c97-sp-4);
-  border: 1px solid var(--c97-rule);
-  background: var(--c97-rule);
-}
-.feature {
-  position: relative;
-  grid-column: span 8;
-  grid-row: span 2;
-  min-height: clamp(320px, 46vh, 480px);
-  overflow: hidden;
-  isolation: isolate;
-  background: var(--c97-riso-blue);
-  text-decoration: none;
-}
-.feature .featureText[data-c97-surface] {
-  position: absolute;
-  inset: auto 0 0;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: var(--c97-sp-3);
-  background: linear-gradient(transparent, color-mix(in srgb, var(--c97-surface) 86%, transparent));
-}
-.feature .featureText .source { color: var(--c97-ink-2); }
-.tile {
-  grid-column: span 4;
-  display: flex;
-  flex-direction: column;
-  gap: var(--c97-sp-1);
-  min-height: 180px;
-  padding: var(--c97-sp-3);
-  background: var(--c97-surface);
-  color: var(--c97-ink);
-  text-decoration: none;
-  transition: background-color 160ms ease;
-}
-.tile:hover { background: var(--c97-field); }
-.tileTall { grid-row: span 2; gap: var(--c97-sp-2); }
-.feature:focus-visible,
-.tile:focus-visible,
-.entry:focus-visible,
 .post:focus-visible { outline: 2px solid var(--c97-accent); outline-offset: -2px; }
 .small { font-size: var(--c97-fs-small); line-height: var(--c97-lh-body); }
 .detail {
@@ -150,48 +96,36 @@
   color: var(--c97-label);
 }
 .table th:first-child { text-align: left; }
-.table td { padding: 6px 0; border-top: 1px solid var(--c97-field); }
+.table td { padding: 6px 0; border-top: 1px solid var(--c97-rule); }
 .table td:first-child { width: 2ch; }
 .table td:nth-child(n + 3) { text-align: right; }
-.tile:hover .table td { border-top-color: var(--c97-rule); }
 .muted { color: var(--c97-label); }
 .points { font-weight: 500; }
 
-/* Selected work */
-.split {
+/* Selected work: a heading row, then three plates across the full width. */
+.workHead { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--c97-sp-2) var(--c97-sp-4); }
+.workNote { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--c97-sp-1) var(--c97-sp-3); }
+.workIntro { max-width: none; color: var(--c97-ink-2); }
+.workGrid {
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  column-gap: var(--c97-sp-2);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: var(--c97-sp-5) var(--c97-sp-4);
+  margin-top: var(--c97-sp-5);
 }
-.sticky {
-  grid-column: 1 / 5;
-  position: sticky;
-  top: var(--c97-sp-4);
-  align-self: start;
-}
-.splitIntro { margin-top: var(--c97-sp-3); max-width: var(--c97-measure-body); color: var(--c97-ink-2); }
-.ledger { grid-column: 5 / 13; display: flex; flex-direction: column; }
-.entry {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(160px, 220px);
-  gap: var(--c97-sp-3);
-  align-items: start;
-  padding: var(--c97-sp-3) var(--c97-sp-1);
-  border-top: 1px solid var(--c97-rule);
-  color: var(--c97-ink);
-  text-decoration: none;
-  transition: background-color 160ms ease;
-}
-.entry:last-child { border-bottom: 1px solid var(--c97-rule); }
-.entry:hover,
-.post:hover { background: var(--c97-field); }
-.entryCopy, .postCopy { display: flex; flex-direction: column; gap: var(--c97-sp-1); }
-.thumb {
+.workCard { display: flex; flex-direction: column; gap: var(--c97-sp-1); color: var(--c97-ink); text-decoration: none; }
+.workCard:focus-visible { outline: 2px solid var(--c97-accent); outline-offset: 6px; }
+/* The plate lifts off its offset on hover, like a print picked up off the stack. */
+.workPlate {
   position: relative;
   display: block;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 3 / 2;
   overflow: hidden;
+  margin-bottom: var(--c97-sp-2);
+  transition: box-shadow 160ms ease, transform 160ms ease;
 }
+.workPlate img { object-fit: cover; }
+.workCard:hover .workPlate { transform: translate(-3px, -3px); box-shadow: 11px 11px 0 var(--c97-overprint); }
+.workSummary { font-size: var(--c97-fs-small); line-height: var(--c97-lh-body); color: var(--c97-ink-2); text-wrap: pretty; }
 
 /* Recent writing */
 .posts { display: flex; flex-direction: column; margin-top: var(--c97-sp-3); }
@@ -212,32 +146,16 @@
 .post > :last-child { white-space: nowrap; }
 
 @media (max-width: 880px) {
-  .collage {
-    grid-template-columns: 1fr 1fr;
-    height: clamp(440px, 112vw, 600px);
-  }
-  .collage > :first-child { grid-column: span 2; }
-  .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .bento > * { grid-column: span 2; }
-  /* Stack the launch text under its picture, so it never covers the rocket. */
-  .feature { grid-row: span 1; display: flex; flex-direction: column; min-height: 0; }
-  .feature .plate { position: relative; aspect-ratio: 3 / 2; }
-  .feature .featureText[data-c97-surface] { position: static; background: var(--c97-surface); }
-  .tileTall { grid-row: span 1; }
-  .split { display: block; }
-  .sticky { position: static; padding-bottom: var(--c97-sp-4); }
-  .entry { grid-template-columns: minmax(0, 1fr); }
-  .thumb { max-width: 280px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .tile, .entry, .post { transition: none; }
+  .post, .workPlate { transition: none; }
 }
 
 /* Closing invitation */
-.contactBand { padding-block: var(--c97-sp-4); }
-.contactRow { display: flex; align-items: center; justify-content: space-between; gap: var(--c97-sp-3); }
-.contactMessage { max-width: 34ch; margin: 0; }
+.contactBand { padding-block: var(--c97-sp-5); }
+.contactRow { display: flex; align-items: center; justify-content: space-between; gap: var(--c97-sp-4); }
+.contactMessage { max-width: 22ch; margin: 0; }
 .contactRow > a { flex-shrink: 0; }
 @media (max-width: 600px) {
   .contactRow { flex-direction: column; align-items: flex-start; }

@@ -38,6 +38,8 @@ export function buildContentSecurityPolicy(
     "https://static.cloudflareinsights.com",
     "https://unpkg.com",
     ...(analyticsEnabled ? ["https://www.googletagmanager.com"] : []),
+    // Dev-only allowance so Impeccable live mode can load its picker.
+    ...(production ? [] : ["http://localhost:8400"]),
   ];
 
   const styleSrc = ["'self'", "'unsafe-inline'", "https://unpkg.com"];
@@ -53,6 +55,7 @@ export function buildContentSecurityPolicy(
           "https://region1.google-analytics.com",
         ]
       : []),
+    ...(production ? [] : ["http://localhost:8400"]),
   ];
 
   return [
