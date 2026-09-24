@@ -4,55 +4,20 @@ import type { CSSProperties, ReactNode } from "react";
 type Surface =
   | "paper"
   | "bone"
-  | "camel"
-  | "tobacco"
+  | "ink-saffron"
+  | "ink-vermilion"
   | "chocolate"
-  | "pine"
+  | "ink-blue"
+  | "ink-peach"
   | "espresso"
   | "stone";
 
-interface Catalog97PlateProps {
-  /** The ordinal itself, zero-padded by the caller (`"01"`). */
-  value: string;
-  style?: CSSProperties;
-}
-
-/**
- * An Anton plate numeral.
- *
- * The rule is that Anton draws numerals at `--c97-fs-plate` and nothing else.
- * Running text and headings are barred from it outright, and there is no
- * smaller numeral step, which is why this component takes no size prop: every
- * plate on the site is the same size, and a page may carry as many as its
- * sections need. That replaces the earlier one-Anton-per-view rule, which the
- * plate numbering made unworkable.
- *
- * These are section ordinals rather than data, so they are hidden from
- * assistive technology — the heading beside each one already names the
- * section.
- *
- * `--c97-plate` is the only place the warm mid-tones are allowed as ink, which
- * works precisely because a plate is never below 64px. See the token's note in
- * `catalog97.css`.
- */
-export function Catalog97Plate({ value, style }: Catalog97PlateProps) {
-  return (
-    <div
-      aria-hidden="true"
-      className="c97-numeral c97-tabular"
-      style={{ color: "var(--c97-plate)", ...style }}
-    >
-      {value}
-    </div>
-  );
-}
-
 interface Catalog97SlotProps {
   /**
-   * The flat field the slot paints. The design specifies Stone or Tobacco for
+   * The flat field the slot paints. The design specifies Stone or Vermilion for
    * an image field, and nothing else.
    */
-  surface: Extract<Surface, "stone" | "tobacco">;
+  surface: Extract<Surface, "stone" | "ink-vermilion" | "ink-peach">;
   /** CSS `aspect-ratio`, e.g. `"4 / 5"` for a portrait or `"3 / 2"` for a card. */
   ratio: string;
   /** Rendered underneath the field, in the label step. */
@@ -72,6 +37,8 @@ interface Catalog97SlotProps {
   /** Passed to `next/image` so it can pick a candidate from the srcset. */
   sizes?: string;
   style?: CSSProperties;
+  /** Sit the slot on the page's hard off-register offset, like a pasted print. */
+  offset?: boolean;
 }
 
 /**
@@ -81,7 +48,7 @@ interface Catalog97SlotProps {
  * photograph exists it is laid over the field with the design's own treatment
  * (`.c97-slot-img`, which carries the saturate/sepia/contrast/brightness stack
  * the source specifies). Where one does not, the slot stays the flat Stone or
- * Tobacco field that the design's layout rules already call for, because a flat
+ * Vermilion field that the design's layout rules already call for, because a flat
  * color block reads as part of the composition while a grey rectangle with a
  * broken image icon reads as unfinished.
  *
@@ -98,25 +65,33 @@ export function Catalog97Slot({
   priority,
   sizes,
   style,
+  offset,
 }: Catalog97SlotProps) {
+  const field = (
+    <div
+      data-c97-surface={surface}
+      className="c97-slot"
+      style={{ aspectRatio: ratio }}
+    >
+      {src ? (
+        <Image
+          className="c97-slot-img"
+          src={src}
+          alt={alt ?? ""}
+          fill
+          priority={priority}
+          sizes={sizes ?? "(max-width: 790px) 100vw, 50vw"}
+        />
+      ) : (
+        // No print yet, so the field prints as a flat ink with a halftone ramp.
+        <span className="c97-halftone c97-halftone-corner" aria-hidden="true" />
+      )}
+    </div>
+  );
   return (
     <div style={style}>
-      <div
-        data-c97-surface={surface}
-        className="c97-slot"
-        style={{ aspectRatio: ratio }}
-      >
-        {src ? (
-          <Image
-            className="c97-slot-img"
-            src={src}
-            alt={alt ?? ""}
-            fill
-            priority={priority}
-            sizes={sizes ?? "(max-width: 790px) 100vw, 50vw"}
-          />
-        ) : null}
-      </div>
+      {/* The offset sits outside the field, so it takes the sheet's second ink rather than the field's. */}
+      {offset ? <div className="c97-offset">{field}</div> : field}
       {caption ? (
         <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-2)" }}>
           {caption}

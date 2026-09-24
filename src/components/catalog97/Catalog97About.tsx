@@ -22,7 +22,7 @@ const principles = [
  * About, in the Catalog 97 language.
  *
  * The design pairs the opening prose with a portrait field and closes on the
- * chocolate timeline, with the camel pull quote bottom-aligned inside a tall
+ * chocolate timeline, with the saffron pull quote bottom-aligned inside a tall
  * band between them. All three are kept.
  *
  * The three "How I work" principles come from the design because they describe
@@ -38,23 +38,29 @@ export function Catalog97About() {
 
   return (
     <Catalog97Shell>
-      {/* Hero */}
-      <section className="c97-band" data-c97-surface="paper">
+      {/* Hero, the proofed sheet. */}
+      <section
+        className="c97-band c97-sheet"
+        data-c97-surface="paper"
+      >
         <div className="c97-shell">
-          <p className="c97-kicker">About</p>
-          <h1 className="c97-display" style={{ marginTop: "var(--c97-sp-3)" }}>
+          <h1 className="c97-poster">
             I build products, and I show the work behind them.
           </h1>
         </div>
       </section>
 
       {/*
-        Opening prose and portrait field. Pine rather than paper: this is the
+        Opening prose and portrait field. Blue rather than paper: this is the
         substance of the route, and putting it on the instrument field is what
-        gives /about its share of green without handing it to the timeline,
+        gives /about its share of blue without handing it to the timeline,
         which is long enough to swamp the page.
       */}
-      <section className="c97-band c97-band-tall" data-c97-surface="pine">
+      <section
+        className="c97-band c97-band-tall c97-sheet"
+        data-c97-surface="ink-blue"
+        data-seam="torn"
+      >
         <div
           className="c97-shell"
           style={{
@@ -67,7 +73,8 @@ export function Catalog97About() {
               and below about a 308px viewport it became real horizontal
               overflow. min(100%, 280px) is the same guard the home hero uses.
             */
-            gridTemplateColumns: "repeat(auto-fit,minmax(min(100%, 280px),1fr))",
+            gridTemplateColumns:
+              "repeat(auto-fit,minmax(min(100%, 280px),1fr))",
             gap: "var(--c97-sp-5)",
             alignItems: "start",
           }}
@@ -82,7 +89,7 @@ export function Catalog97About() {
               }}
             >
               Most of what I build exists to answer one question, which is
-              whether the thing in front of us actually works.
+              whether the thing in front of us works.
             </p>
             <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
               I came to product through quality engineering, which means I spent
@@ -90,10 +97,10 @@ export function Catalog97About() {
               before a customer does. Most of that was at Civitech, a SaaS
               company building software for political campaigns, after a few
               years of digital and data work at Open Progress, and I&rsquo;m at
-              Berkeley Haas for my MBA now. The dashboards
-              and ledgers on this site are the same instinct pointed somewhere
-              lighter, and both halves want the same thing from a screen, which
-              is a number I can trust and a note about how it was arrived at.
+              Berkeley Haas for my MBA now. The dashboards and ledgers on this
+              site are the same instinct pointed somewhere lighter, and both
+              halves want the same thing from a screen, which is a number I can
+              trust and a note about how it was arrived at.
             </p>
             <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
               When something here is uncertain, it says so. When a feed fails,
@@ -122,12 +129,17 @@ export function Catalog97About() {
             alt="Isaac Vazquez"
             sizes="(max-width: 790px) 100vw, 40vw"
             priority
+            offset
           />
         </div>
       </section>
 
       {/* Pull quote */}
-      <section className="c97-band c97-band-tall" data-c97-surface="camel">
+      <section
+        className="c97-band c97-band-tall c97-sheet"
+        data-c97-surface="ink-saffron"
+        data-seam="torn"
+      >
         <div
           className="c97-shell"
           style={{
@@ -136,18 +148,19 @@ export function Catalog97About() {
             minHeight: "clamp(180px,20vw,240px)",
           }}
         >
-          <p
-            className="c97-serif c97-h2"
-            style={{ maxWidth: "var(--c97-measure-body)" }}
-          >
+          <p className="c97-poster-sm" style={{ maxWidth: "24ch" }}>
             What I find interesting about quality work is knowing which bug was
             always going to matter.
           </p>
         </div>
       </section>
 
-      {/* How I work. Bone, so the route's two Pine bands are not adjacent. */}
-      <section className="c97-band c97-band-taller" data-c97-surface="bone">
+      {/* How I work. Bone, so the route's two Blue bands are not adjacent. */}
+      <section
+        className="c97-band c97-band-taller c97-sheet"
+        data-c97-surface="bone"
+        data-seam="deckle"
+      >
         <div className="c97-shell">
           {/*
             `c97-kicker` put this h2 at 11px directly above three 26px h3
@@ -158,11 +171,8 @@ export function Catalog97About() {
             --c97-fs-h3 instead, which collapses to within a pixel of the child
             step once both clamps bottom out.
           */}
-          <h2 className="c97-serif c97-h2">How I work</h2>
-          <div
-            className="c97-columns"
-            style={{ marginTop: "var(--c97-sp-4)" }}
-          >
+          <h2 className="c97-poster-sm">How I work</h2>
+          <div className="c97-columns" style={{ marginTop: "var(--c97-sp-4)" }}>
             {principles.map((principle) => (
               <div key={principle.title}>
                 <h3
@@ -188,10 +198,14 @@ export function Catalog97About() {
       </section>
 
       {/* The route here */}
-      <section className="c97-band" data-c97-surface="chocolate">
+      <section
+        className="c97-band c97-sheet"
+        data-c97-surface="chocolate"
+        data-seam="torn"
+      >
         <div className="c97-shell">
           {/* Same 11px-above-26px inversion as "How I work" above. */}
-          <h2 className="c97-serif c97-h2">The route here</h2>
+          <h2 className="c97-poster-sm">The route here</h2>
           <div
             style={{
               display: "grid",
@@ -221,7 +235,10 @@ export function Catalog97About() {
                 </div>
                 <div>
                   <h3 className="c97-serif c97-h3">{entry.role}</h3>
-                  <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-1)" }}>
+                  <p
+                    className="c97-kicker"
+                    style={{ marginTop: "var(--c97-sp-1)" }}
+                  >
                     {entry.company}
                   </p>
                   <p
@@ -246,7 +263,7 @@ export function Catalog97About() {
               marginTop: "var(--c97-sp-5)",
             }}
           >
-            <Link className="c97-btn c97-btn-invert" href="/resume">
+            <Link className="c97-btn c97-btn-invert c97-offset" href="/resume">
               Résumé
             </Link>
             <Link className="c97-btn-ghost" href="/portfolio">

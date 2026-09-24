@@ -2,323 +2,669 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./Catalog97Home.module.css";
 import { Catalog97Shell } from "./Catalog97Shell";
-import { Catalog97Plate, Catalog97Slot } from "./Catalog97Primitives";
+import { Catalog97Collage, type CollagePanel } from "./Catalog97Collage";
+import { PROJECT_PLATES } from "./projectPlates";
 import {
   getProjectCardSummary,
   type CaseStudyData,
 } from "@/constants/caseStudies";
-import type { LiveToolGroup } from "@/constants/toolCategories";
 import type { BlogPostPreview } from "@/lib/blog";
-import type { HomeLiveFeedData } from "@/components/home/HomeLiveFeed";
+import { formatPtTime, type SnapshotReadouts } from "@/lib/catalog97Readouts";
 
 export interface Catalog97HomeProps {
   featuredProjects: CaseStudyData[];
   recentPosts: BlogPostPreview[];
-  heroIndex: {
-    projectCount: number;
-    essayCount: number;
-    liveToolCount: number;
-  };
-  liveToolGroups: LiveToolGroup[];
-  liveFeed: HomeLiveFeedData;
+  readouts: SnapshotReadouts;
 }
 
-// "Sep 16" in UTC, so the server render and the schedule it came from agree.
-function formatUtcDay(iso: string): string {
+// Every plate here was generated for this page on 2026-09-23 as a finished
+// riso print, so it renders untouched. They are illustrative, so no label on
+// them claims the picture shows a real place.
+const LAUNCH_PAD = "/images/home/retro-launch-pad.jpg";
+const MATCHDAY = "/images/home/retro-matchday.jpg";
+const TRANSIT = "/images/home/retro-transit.jpg";
+const PORTRAIT = "/images/headshot-home.webp";
+
+/** "15 Aug 2026" in UTC, the date a post was published. */
+function formatPostDate(iso: string): string {
   const date = new Date(iso);
   return Number.isNaN(date.getTime())
     ? ""
-    : date.toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
+    : date
+        .toLocaleDateString("en-GB", {
+          day: "numeric",
+          month: "short",
+          year: "numeric",
+          timeZone: "UTC",
+        })
+        .replace(/\bSept\b/, "Sep");
 }
 
 export function Catalog97Home({
   featuredProjects,
   recentPosts,
-  heroIndex,
-  liveToolGroups,
-  liveFeed,
+  readouts,
 }: Catalog97HomeProps) {
-  // The first tool from each category, so the dashboards table shows breadth.
-  // Flattening every group and taking the first five gave four Fintech rows.
-  const dashboardTools = liveToolGroups.flatMap((group) =>
-    group.tools.slice(0, 1).map((tool) => ({ ...tool, groupLabel: group.label })),
-  );
+  const { launch, premierLeague, laLiga, transit, investments } = readouts;
+  // The two dashboards the collage does not carry, printed as small ink sheets under it.
+  const stripTiles = [
+    { href: "/la-liga", readout: laLiga, surface: "ink-vermilion" },
+    { href: "/investments", readout: investments, surface: "ink-peach" },
+  ] as const;
 
-  const [leadPost, ...followingPosts] = recentPosts;
+  // The dashboard doors in the collage, each a plate with its live readout pasted on.
+  const boardPanels: CollagePanel[] = [
+                  {
+                    src: LAUNCH_PAD,
+                    sizes: "(max-width: 880px) 100vw, 45vw",
+                    position: "60% 50%",
+                    href: "/spacex-mission-control",
+                    label: "Spaceflight dashboard",
+                    card: launch ? (
+                      <>
+                        <span className="c97-kicker">Next launch</span>
+                        <span className={`c97-poster-sm ${styles.cardFigure}`}>
+                          {launch.mission}
+                        </span>
+                        <span className={`c97-tabular ${styles.small}`}>
+                          {launch.vehicle} · {launch.site} · {launch.windowLabel}
+                        </span>
+                        <span className={styles.source}>
+                          Launch Library 2 · pulled {formatPtTime(launch.pulledAt)}
+                        </span>
+                      </>
+                    ) : null,
+                  },
+                  {
+                    src: TRANSIT,
+                    href: "/bay-area-transit",
+                    label: "Bay Area transit dashboard",
+                    card: transit ? (
+                      <>
+                        <span className="c97-kicker">{transit.label}</span>
+                        <span
+                          className={`c97-poster-sm c97-tabular ${styles.cardFigure}`}
+                        >
+                          {transit.figure}
+                        </span>
+                        <span className={styles.small}>{transit.detail}</span>
+                        <span className={styles.source}>{transit.source}</span>
+                      </>
+                    ) : null,
+                  },
+                  {
+                    src: MATCHDAY,
+                    sizes: "(max-width: 880px) 100vw, 25vw",
+                    href: "/premier-league",
+                    label: "Premier League dashboard",
+                    card: premierLeague ? (
+                      <>
+                        <span className="c97-kicker">
+                          Premier League · Matchday {premierLeague.matchday}
+                        </span>
+                        <table className={styles.table}>
+                          <thead>
+                            <tr>
+                              <th colSpan={2} scope="col">
+                                Club
+                              </th>
+                              <th scope="col">Pts</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {premierLeague.top.map((row) => (
+                              <tr key={row.position}>
+                                <td className={styles.muted}>{row.position}</td>
+                                <td>{row.name}</td>
+                                <td className={styles.points}>{row.points}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                        <span className={styles.source}>
+                          football-data.org · pulled{" "}
+                          {formatPtTime(premierLeague.pulledAt)}
+                        </span>
+                      </>
+                    ) : null,
+                  },
+                ];
 
   return (
     <Catalog97Shell>
-      <section className={`c97-band ${styles.hero}`} data-c97-surface="paper">
-        <div className={`c97-shell ${styles.heroGrid}`}>
-          <div className={styles.heroCopy}>
-            <p className="c97-kicker">Isaac Vazquez · Product and analytics</p>
-            <h1 className={`c97-display ${styles.headline}`}>
-              I build tools that make <em>hard problems</em> easier to act on.
-            </h1>
-            <p className={`c97-prose ${styles.intro}`}>
-              I’m a product manager and builder at Berkeley Haas, MBA ’27.
-              I came to product through quality engineering at Civitech.
-              Here you’ll find my work, the tools I build, and what I’m learning.
-            </p>
-            <div className={styles.actions}>
-              <Link className="c97-btn" href="/portfolio">See the work <span aria-hidden="true">↗</span></Link>
-              <Link className="c97-btn-ghost" href="/contact">Start a conversation</Link>
-            </div>
-          </div>
-          <div className={styles.portrait}>
-            <div className={styles.photoFrame}>
-              <Catalog97Slot surface="tobacco" ratio="4 / 5" src="/images/headshot-home.webp" alt="Isaac Vazquez" priority />
-            </div>
-            <div className={styles.portraitNote} data-c97-surface="pine">
-              <span className="c97-kicker">Based in</span>
-              <span className="c97-serif c97-h3">Berkeley, California</span>
-              <span className={styles.noteArrow} aria-hidden="true">↗</span>
-            </div>
-          </div>
-        </div>
-        <div className={`c97-shell ${styles.index}`}>
-          <span className="c97-kicker">Explore the site</span>
-          <Link href="/portfolio"><span>{heroIndex.projectCount}</span> Projects <span aria-hidden="true">↗</span></Link>
-          <Link href="/dashboards"><span>{heroIndex.liveToolCount}</span> Live tools <span aria-hidden="true">↗</span></Link>
-          <Link href="/writing"><span>{heroIndex.essayCount}</span> Essays <span aria-hidden="true">↗</span></Link>
-        </div>
-      </section>
-
-      {/* 02 — Selected work */}
-      <section className="c97-band c97-band-tall" data-c97-surface="pine">
-        <div
-          className="c97-shell"
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "var(--c97-sp-5)",
-          }}
-        >
-          <div style={{ flex: "0 1 190px" }}>
-            <Catalog97Plate value="02" />
-            <h2
-              className="c97-serif c97-h2"
-              style={{
-                marginTop: "var(--c97-sp-2)",
-                color: "var(--c97-ink)",
-              }}
-            >
-              Selected work
-            </h2>
-            <Link
-              href="/portfolio"
-              className="c97-sectionlink"
-              style={{ marginTop: "var(--c97-sp-1)" }}
-            >
-              All {heroIndex.projectCount} projects
-            </Link>
-            {/*
-              A track-record figure in place of the tool count this route used
-              to lead with. $4M is the pricing strategy result on the résumé and
-              the 2023 entry in personal.ts, so change all three together.
-            */}
-            <div style={{ marginTop: "var(--c97-sp-4)" }}>
-              <div
-                className="c97-serif c97-tabular"
-                style={{
-                  fontSize: "var(--c97-fs-h1)",
-                  lineHeight: "var(--c97-lh-display)",
-                  color: "var(--c97-ink)",
-                }}
-              >
-                $4M
-              </div>
-              <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-2)" }}>
-                Added revenue from a pricing strategy I led at Civitech
-              </p>
-            </div>
-          </div>
-
-          <div className={styles.projects}>
-            {featuredProjects.map((project, index) => (
-              <article key={project.slug} className={styles.project}>
-                <Link href={`/portfolio/${project.slug}`} className={styles.projectImage} tabIndex={-1} aria-hidden="true">
-                  <Image src={`/images/projects/${project.slug}.svg`} alt="" width={720} height={480} />
-                  <span className={styles.projectNumber}>{String(index + 1).padStart(2, "0")}</span>
-                </Link>
-                <div className={styles.projectCopy}>
-                  <p className="c97-kicker">{project.role} · {project.timeline}</p>
-                  <h3 className="c97-serif c97-h3">
-                    <Link href={`/portfolio/${project.slug}`}>{project.title}<span aria-hidden="true"> ↗</span></Link>
-                  </h3>
-                  <p className="c97-prose">{getProjectCardSummary(project)}</p>
-                  <p className={styles.projectMetric}>{project.metrics}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 03 — Live dashboards */}
-      <section className="c97-band c97-band-tall" data-c97-surface="chocolate">
-        <div className="c97-shell">
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "var(--c97-sp-2) var(--c97-sp-4)",
-              alignItems: "flex-end",
-              justifyContent: "space-between",
-            }}
+      {/* The hero sheet: the poster headline and the portrait. */}
+      <div data-impeccable-variants="dc2efa7d" data-impeccable-variant-count="3" style={{ display: "contents" }}>
+        {/* impeccable-variants-start dc2efa7d */}
+        {/* Original */}
+        <div data-impeccable-variant="original">
+          <section
+            className={`c97-band c97-sheet ${styles.hero}`}
+            data-c97-surface="paper"
           >
-            <div>
-              <h2 className="c97-serif c97-h2">Live dashboards</h2>
+            <div className="c97-shell">
+              <div className={styles.heroTop}>
+                <div className={styles.heroCopy}>
+                  <h1 className={`c97-poster ${styles.headline}`}>
+                    I build test harnesses, and dashboards that run on public data.
+                  </h1>
+                  {/* Buttons first in the markup so a phone reaches them before the lead. */}
+                  <div className={styles.heroFoot}>
+                    <div className={styles.actions}>
+                      <Link className="c97-btn c97-offset" href="/portfolio">
+                        See the work
+                      </Link>
+                      <Link className="c97-btn-ghost" href="/contact">
+                        Start a conversation
+                      </Link>
+                    </div>
+                    <p className={`c97-lead ${styles.lead}`}>
+                      I’m a product manager and builder at Berkeley Haas, MBA ’27,
+                      and I came to product through quality engineering at Civitech.
+                      The dashboards below read snapshots that a scheduled job pulls
+                      from public sources and commits to this site’s repository, so
+                      each one shows where its numbers came from and when.
+                    </p>
+                  </div>
+                </div>
+                <div className={`c97-offset ${styles.portrait}`}>
+                  <Image
+                    src={PORTRAIT}
+                    alt="Isaac Vazquez"
+                    fill
+                    priority
+                    sizes="(max-width: 880px) 70vw, 320px"
+                    className={styles.portraitImage}
+                  />
+                </div>
+              </div>
+
+              {/* Dashboards: the collage is the board, each plate a door with its live readout pasted on. */}
+              <div className={styles.boardHead}>
+                <h2 className="c97-poster-sm">Dashboards</h2>
+                <Link href="/dashboards" className="c97-sectionlink">
+                  All dashboards
+                </Link>
+              </div>
+              <Catalog97Collage
+                panels={[
+                  {
+                    src: LAUNCH_PAD,
+                    sizes: "(max-width: 880px) 100vw, 45vw",
+                    position: "60% 50%",
+                    href: "/spacex-mission-control",
+                    label: "Spaceflight dashboard",
+                    card: launch ? (
+                      <>
+                        <span className="c97-kicker">Next launch</span>
+                        <span className={`c97-poster-sm ${styles.cardFigure}`}>
+                          {launch.mission}
+                        </span>
+                        <span className={`c97-tabular ${styles.small}`}>
+                          {launch.vehicle} · {launch.site} · {launch.windowLabel}
+                        </span>
+                        <span className={styles.source}>
+                          Launch Library 2 · pulled {formatPtTime(launch.pulledAt)}
+                        </span>
+                      </>
+                    ) : null,
+                  },
+                  {
+                    src: TRANSIT,
+                    href: "/bay-area-transit",
+                    label: "Bay Area transit dashboard",
+                    card: transit ? (
+                      <>
+                        <span className="c97-kicker">{transit.label}</span>
+                        <span
+                          className={`c97-poster-sm c97-tabular ${styles.cardFigure}`}
+                        >
+                          {transit.figure}
+                        </span>
+                        <span className={styles.small}>{transit.detail}</span>
+                        <span className={styles.source}>{transit.source}</span>
+                      </>
+                    ) : null,
+                  },
+                  {
+                    src: MATCHDAY,
+                    sizes: "(max-width: 880px) 100vw, 25vw",
+                    href: "/premier-league",
+                    label: "Premier League dashboard",
+                    card: premierLeague ? (
+                      <>
+                        <span className="c97-kicker">
+                          Premier League · Matchday {premierLeague.matchday}
+                        </span>
+                        <table className={styles.table}>
+                          <thead>
+                            <tr>
+                              <th colSpan={2} scope="col">
+                                Club
+                              </th>
+                              <th scope="col">Pts</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {premierLeague.top.map((row) => (
+                              <tr key={row.position}>
+                                <td className={styles.muted}>{row.position}</td>
+                                <td>{row.name}</td>
+                                <td className={styles.points}>{row.points}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                        <span className={styles.source}>
+                          football-data.org · pulled{" "}
+                          {formatPtTime(premierLeague.pulledAt)}
+                        </span>
+                      </>
+                    ) : null,
+                  },
+                ]}
+              />
+              <div className={styles.strip}>
+                {stripTiles.map(({ href, readout, surface }) =>
+                  readout ? (
+                    <Link
+                      key={href}
+                      href={href}
+                      className={`c97-tile ${styles.stripTile}`}
+                      data-c97-surface={surface}
+                    >
+                      <span className="c97-kicker">{readout.label}</span>
+                      <span
+                        className={`c97-poster-sm c97-tabular ${styles.cardFigure}`}
+                      >
+                        {readout.figure}
+                      </span>
+                      <span className={styles.small}>{readout.detail}</span>
+                      <span className={styles.source}>{readout.source}</span>
+                    </Link>
+                  ) : null,
+                )}
+              </div>
+            </div>
+          </section>
+        </div>
+        {/* Variants: insert below this line */}
+        <style data-impeccable-css="dc2efa7d">{`
+          @scope ([data-impeccable-variant="1"], [data-impeccable-variant="2"], [data-impeccable-variant="3"]) {
+            :scope .hx-h1 { max-width: none; }
+            :scope .hx-actions { display: flex; flex-wrap: wrap; gap: var(--c97-sp-2); }
+            :scope .hx-lead { max-width: var(--c97-measure-wide); line-height: var(--c97-lh-body); text-wrap: pretty; }
+            :scope .hx-portrait { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: var(--c97-field); }
+            :scope .hx-portrait-img { object-fit: cover; object-position: 50% 20%; }
+          }
+          @scope ([data-impeccable-variant="1"]) {
+            :scope .hx-h1 { font-size: clamp(44px, 7.2vw, 104px); }
+            :scope .hx1-row {
+              display: grid;
+              grid-template-columns: var(--hx1-portrait, clamp(170px, 17vw, 240px)) minmax(0, 1fr) auto;
+              gap: var(--c97-sp-5);
+              align-items: end;
+              margin-top: var(--c97-sp-5);
+            }
+            :scope[data-p-portrait="small"] .hx1-row { --hx1-portrait: clamp(130px, 12vw, 170px); }
+            :scope .hx1-row .hx-portrait { grid-column: 1; grid-row: 1; }
+            :scope .hx1-row .hx-lead { grid-column: 2; grid-row: 1; }
+            :scope .hx1-row .hx-actions { grid-column: 3; grid-row: 1; }
+            @media (max-width: 880px) {
+              :scope .hx1-row { grid-template-columns: minmax(0, 1fr); gap: var(--c97-sp-4); }
+              :scope .hx1-row .hx-actions { grid-column: 1; grid-row: 1; }
+              :scope .hx1-row .hx-lead { grid-column: 1; grid-row: 2; }
+              :scope .hx1-row .hx-portrait { grid-column: 1; grid-row: 3; width: min(60%, 240px); }
+            }
+          }
+          @scope ([data-impeccable-variant="2"]) {
+            :scope .hx2-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--c97-sp-6); align-items: center; }
+            :scope[data-p-flip] .hx2-grid { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+            :scope[data-p-flip] .hx2-grid .hx-portrait { order: 2; }
+            :scope .hx-h1 { font-size: clamp(40px, 5.4vw, 84px); }
+            :scope .hx2-copy { display: grid; grid-template-areas: "h1" "lead" "actions"; gap: var(--c97-sp-4); }
+            :scope .hx2-copy .hx-h1 { grid-area: h1; }
+            :scope .hx2-copy .hx-lead { grid-area: lead; }
+            :scope .hx2-copy .hx-actions { grid-area: actions; }
+            @media (max-width: 880px) {
+              :scope .hx2-grid, :scope[data-p-flip] .hx2-grid { grid-template-columns: minmax(0, 1fr); gap: var(--c97-sp-5); }
+              :scope .hx2-grid .hx-portrait, :scope[data-p-flip] .hx2-grid .hx-portrait { order: 2; width: min(72%, 300px); }
+              :scope .hx2-copy { grid-template-areas: "h1" "actions" "lead"; }
+            }
+          }
+          @scope ([data-impeccable-variant="3"]) {
+            :scope .hx3-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--c97-sp-5); align-items: end; }
+            :scope .hx-h1 { font-size: clamp(40px, 5.6vw, 84px); }
+            :scope .hx3-main { display: grid; gap: var(--c97-sp-4); }
+            :scope .hx3-side { display: grid; grid-template-columns: clamp(110px, 11vw, 150px) minmax(0, 1fr); gap: var(--c97-sp-3); align-items: end; }
+            :scope .hx3-side .hx-lead { font-size: var(--c97-fs-body); }
+            :scope .hx3-board > :first-child { margin-top: var(--c97-sp-5); }
+            :scope[data-p-spacing="tight"] .hx3-board > :first-child { margin-top: var(--c97-sp-4); }
+            @media (max-width: 880px) {
+              :scope .hx3-grid { grid-template-columns: minmax(0, 1fr); }
+              :scope .hx3-side { grid-template-columns: minmax(0, 1fr); }
+              :scope .hx3-side .hx-portrait { order: 2; width: min(60%, 220px); }
+            }
+          }
+        `}</style>
+        <div
+          data-impeccable-variant="1"
+          data-impeccable-params='[{"id":"portrait","kind":"steps","default":"medium","label":"Portrait","options":[{"value":"small","label":"Small"},{"value":"medium","label":"Medium"}]}]'
+        >
+          <section
+            className={`c97-band c97-sheet ${styles.hero}`}
+            data-c97-surface="paper"
+          >
+            <div className="c97-shell">
+            <h1 className="c97-poster hx-h1">
+                I build test harnesses, and dashboards that run on public data.
+              </h1>
+              <div className="hx1-row">
+              <div className="hx-actions">
+                <Link className="c97-btn c97-offset" href="/portfolio">
+                  See the work
+                </Link>
+                <Link className="c97-btn-ghost" href="/contact">
+                  Start a conversation
+                </Link>
+              </div>
+              <p className="c97-lead hx-lead">
+                I’m a product manager and builder at Berkeley Haas, MBA ’27, and
+                I came to product through quality engineering at Civitech. The
+                dashboards below read snapshots that a scheduled job pulls from
+                public sources and commits to this site’s repository, so each one
+                shows where its numbers came from and when.
+              </p>
+              <div className="c97-offset hx-portrait ">
+                <Image
+                  src={PORTRAIT}
+                  alt="Isaac Vazquez"
+                  fill
+                  priority
+                  sizes="(max-width: 880px) 60vw, 240px"
+                  className="hx-portrait-img"
+                />
+              </div>
+              </div>
+            <div className={styles.boardHead}>
+              <h2 className="c97-poster-sm">Dashboards</h2>
               <Link href="/dashboards" className="c97-sectionlink">
-                All {heroIndex.liveToolCount}
+                All dashboards
               </Link>
             </div>
-            <Catalog97Plate value="03" />
-          </div>
+            <Catalog97Collage panels={boardPanels} />
+            <div className={styles.strip}>
+              {stripTiles.map(({ href, readout, surface }) =>
+                readout ? (
+                  <Link
+                    key={href}
+                    href={href}
+                    className={`c97-tile ${styles.stripTile}`}
+                    data-c97-surface={surface}
+                  >
+                    <span className="c97-kicker">{readout.label}</span>
+                    <span
+                      className={`c97-poster-sm c97-tabular ${styles.cardFigure}`}
+                    >
+                      {readout.figure}
+                    </span>
+                    <span className={styles.small}>{readout.detail}</span>
+                    <span className={styles.source}>{readout.source}</span>
+                  </Link>
+                ) : null,
+              )}
+            </div>
+            </div>
+          </section>
+        </div>
+        <div
+          data-impeccable-variant="2"
+          style={{ display: "none" }}
+          data-impeccable-params='[{"id":"flip","kind":"toggle","default":false,"label":"Portrait on the right"}]'
+        >
+          <section
+            className={`c97-band c97-sheet ${styles.hero}`}
+            data-c97-surface="paper"
+          >
+            <div className="c97-shell">
+            <div className="hx2-grid">
+              <div className="c97-offset hx-portrait ">
+                <Image
+                  src={PORTRAIT}
+                  alt="Isaac Vazquez"
+                  fill
+                  priority
+                  sizes="(max-width: 880px) 72vw, 42vw"
+                  className="hx-portrait-img"
+                />
+              </div>
+              <div className="hx2-copy">
+              <h1 className="c97-poster hx-h1">
+                I build test harnesses, and dashboards that run on public data.
+              </h1>
+              <div className="hx-actions">
+                <Link className="c97-btn c97-offset" href="/portfolio">
+                  See the work
+                </Link>
+                <Link className="c97-btn-ghost" href="/contact">
+                  Start a conversation
+                </Link>
+              </div>
+              <p className="c97-lead hx-lead">
+                I’m a product manager and builder at Berkeley Haas, MBA ’27, and
+                I came to product through quality engineering at Civitech. The
+                dashboards below read snapshots that a scheduled job pulls from
+                public sources and commits to this site’s repository, so each one
+                shows where its numbers came from and when.
+              </p>
+              </div>
+              </div>
+            <div className={styles.boardHead}>
+              <h2 className="c97-poster-sm">Dashboards</h2>
+              <Link href="/dashboards" className="c97-sectionlink">
+                All dashboards
+              </Link>
+            </div>
+            <Catalog97Collage panels={boardPanels} />
+            <div className={styles.strip}>
+              {stripTiles.map(({ href, readout, surface }) =>
+                readout ? (
+                  <Link
+                    key={href}
+                    href={href}
+                    className={`c97-tile ${styles.stripTile}`}
+                    data-c97-surface={surface}
+                  >
+                    <span className="c97-kicker">{readout.label}</span>
+                    <span
+                      className={`c97-poster-sm c97-tabular ${styles.cardFigure}`}
+                    >
+                      {readout.figure}
+                    </span>
+                    <span className={styles.small}>{readout.detail}</span>
+                    <span className={styles.source}>{readout.source}</span>
+                  </Link>
+                ) : null,
+              )}
+            </div>
+            </div>
+          </section>
+        </div>
+        <div
+          data-impeccable-variant="3"
+          style={{ display: "none" }}
+          data-impeccable-params='[{"id":"spacing","kind":"steps","default":"normal","label":"Gap to the board","options":[{"value":"tight","label":"Tight"},{"value":"normal","label":"Normal"}]}]'
+        >
+          <section
+            className={`c97-band c97-sheet ${styles.hero}`}
+            data-c97-surface="paper"
+          >
+            <div className="c97-shell">
+            <div className="hx3-grid">
+              <div className="hx3-main">
+              <h1 className="c97-poster hx-h1">
+                I build test harnesses, and dashboards that run on public data.
+              </h1>
+              <div className="hx-actions">
+                <Link className="c97-btn c97-offset" href="/portfolio">
+                  See the work
+                </Link>
+                <Link className="c97-btn-ghost" href="/contact">
+                  Start a conversation
+                </Link>
+              </div>
+              </div>
+              <div className="hx3-side">
+              <div className="c97-offset hx-portrait ">
+                <Image
+                  src={PORTRAIT}
+                  alt="Isaac Vazquez"
+                  fill
+                  priority
+                  sizes="(max-width: 880px) 60vw, 150px"
+                  className="hx-portrait-img"
+                />
+              </div>
+              <p className="c97-lead hx-lead">
+                I’m a product manager and builder at Berkeley Haas, MBA ’27, and
+                I came to product through quality engineering at Civitech. The
+                dashboards below read snapshots that a scheduled job pulls from
+                public sources and commits to this site’s repository, so each one
+                shows where its numbers came from and when.
+              </p>
+              </div>
+              </div>
+            <div className="hx3-board">
+            <div className={styles.boardHead}>
+              <h2 className="c97-poster-sm">Dashboards</h2>
+              <Link href="/dashboards" className="c97-sectionlink">
+                All dashboards
+              </Link>
+            </div>
+            <Catalog97Collage panels={boardPanels} />
+            <div className={styles.strip}>
+              {stripTiles.map(({ href, readout, surface }) =>
+                readout ? (
+                  <Link
+                    key={href}
+                    href={href}
+                    className={`c97-tile ${styles.stripTile}`}
+                    data-c97-surface={surface}
+                  >
+                    <span className="c97-kicker">{readout.label}</span>
+                    <span
+                      className={`c97-poster-sm c97-tabular ${styles.cardFigure}`}
+                    >
+                      {readout.figure}
+                    </span>
+                    <span className={styles.small}>{readout.detail}</span>
+                    <span className={styles.source}>{readout.source}</span>
+                  </Link>
+                ) : null,
+              )}
+            </div>
+            </div>
+            </div>
+          </section>
+        </div>
+        {/* impeccable-variants-end dc2efa7d */}
+      </div>
 
-          <p className={`c97-prose ${styles.dashboardIntro}`}>
-            I build tools to follow the things I’m curious about, from markets
-            and earthquakes to the next launch. Explore a reading or open a tool below.
-          </p>
-          <div className={styles.readouts}>
-            {liveFeed.quake ? (
-              <Link href="/earthquake-pulse" className={styles.readout} data-c97-surface="bone">
-                <span className={styles.readoutLabel}>Earthquake Pulse <span aria-hidden="true">↗</span></span>
-                <span className={styles.readoutValue}>M{liveFeed.quake.magnitude.toFixed(1)}</span>
-                <span className={styles.readoutDetail}>{liveFeed.quake.place}</span>
-                <svg className={styles.quakeBars} viewBox="0 0 300 56" preserveAspectRatio="none" role="img" aria-label="Relative magnitudes of recent earthquakes, oldest to newest">
-                  {liveFeed.quake.recentMagnitudes.map((magnitude, index, values) => {
-                    const height = Math.max(2, magnitude / Math.max(0.1, ...values) * 52);
-                    return <rect key={index} x={index * 300 / values.length} y={56 - height} width={Math.max(1, 300 / values.length - 5)} height={height} />;
-                  })}
-                </svg>
-                <span className={styles.readoutFoot}>Latest quake · {liveFeed.quake.agoLabel} · {liveFeed.quake.depthKm} km deep</span>
+      {/* Selected work, three plates across the page's lead ink. */}
+      <section
+        className="c97-band c97-band-tall c97-sheet"
+        data-c97-surface="ink-blue"
+        data-seam="torn"
+      >
+        <div className="c97-shell">
+          <div className={styles.workHead}>
+            <h2 className="c97-poster-sm">Selected work</h2>
+            <div className={styles.workNote}>
+              <p className={`c97-prose ${styles.workIntro}`}>
+                Three projects and the question each one answers.
+              </p>
+              <Link href="/portfolio" className="c97-sectionlink">
+                All projects
               </Link>
-            ) : null}
-            {liveFeed.market ? (
-              <Link href="/investments" className={styles.readout} data-c97-surface="paper">
-                <span className={styles.readoutLabel}>Market snapshot <span aria-hidden="true">↗</span></span>
-                <span className={styles.readoutValue}>{liveFeed.market.delta}</span>
-                <span className={styles.readoutDetail}>{liveFeed.market.name} · {liveFeed.market.symbol}</span>
-                <div className={styles.marketReading}>
-                  <span className="c97-kicker">Daily change</span>
-                  <span className="c97-serif c97-h2">{liveFeed.market.changePct > 0 ? "+" : ""}{liveFeed.market.changePct.toFixed(2)}%</span>
-                </div>
-                <span className={styles.readoutFoot}>{liveFeed.market.asOfLabel ? `Close on ${liveFeed.market.asOfLabel}` : "Snapshot close"} · ${liveFeed.market.price}</span>
-              </Link>
-            ) : null}
-            {liveFeed.launch ? (
-              <Link href="/spacex-mission-control" className={styles.readout} data-c97-surface="pine">
-                <span className={styles.readoutLabel}>SpaceX Mission Control <span aria-hidden="true">↗</span></span>
-                <span className={styles.readoutValue}>{formatUtcDay(liveFeed.launch.dateUtc)}</span>
-                <span className={styles.readoutDetail}>{liveFeed.launch.mission}</span>
-                <div className={styles.launchOrbit} aria-hidden="true"><span>↗</span></div>
-                <span className={styles.readoutFoot}>Next launch · {liveFeed.launch.vehicle}</span>
-              </Link>
-            ) : null}
+            </div>
           </div>
-          <p className={`c97-kicker ${styles.sourceNote}`}>{liveFeed.sourceNote}</p>
-          <div className={styles.toolDirectory}>
-            {dashboardTools.slice(0, 6).map((tool, index) => {
-              const content = <>
-                <span className={styles.toolOrdinal} aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-                <span><span className="c97-kicker">{tool.groupLabel}</span><span className={`c97-serif c97-h3 ${styles.toolTitle}`}>{tool.title}</span></span>
-                <span className={styles.toolArrow} aria-hidden="true">↗</span>
-              </>;
-              return tool.isExternal ? (
-                <a key={tool.slug} href={tool.href} target="_blank" rel="noopener noreferrer" className={styles.toolLink}>{content}</a>
-              ) : (
-                <Link key={tool.slug} href={tool.href} className={styles.toolLink}>{content}</Link>
-              );
-            })}
+          <div className={styles.workGrid}>
+            {featuredProjects.map((project) => (
+              <Link
+                key={project.slug}
+                href={`/portfolio/${project.slug}`}
+                className={styles.workCard}
+              >
+                <span className={`c97-offset ${styles.workPlate}`}>
+                  <Image
+                    src={
+                      PROJECT_PLATES[project.slug] ??
+                      `/images/projects/${project.slug}.svg`
+                    }
+                    alt=""
+                    fill
+                    sizes="(max-width: 880px) 100vw, 33vw"
+                  />
+                </span>
+                <span className="c97-kicker c97-tabular">
+                  {project.timeline}
+                </span>
+                <span className="c97-serif c97-h3">{project.title}</span>
+                <span className={styles.workSummary}>
+                  {getProjectCardSummary(project)}
+                </span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 04 — Recent writing */}
-      {leadPost ? (
-        <section className="c97-band c97-band-tall" data-c97-surface="bone">
+      {/* Recent writing */}
+      {recentPosts.length > 0 ? (
+        <section
+          className="c97-band c97-band-tall c97-sheet"
+          data-c97-surface="paper"
+          data-seam="torn"
+        >
           <div className="c97-shell">
-            <h2 className="c97-serif c97-h2">Recent writing</h2>
-
-            <article className={styles.leadArticle}>
-              {leadPost.coverImage && !leadPost.coverImage.includes("opengraph-image") ? (
-                <Link href={`/writing/${leadPost.slug}`} className={styles.articleImage} tabIndex={-1} aria-hidden="true">
-                  <Image src={leadPost.coverImage} alt="" fill sizes="(max-width: 790px) 100vw, 50vw" />
+            <div className={styles.sectionHead}>
+              <h2 className="c97-poster-sm">Recent writing</h2>
+              <Link href="/writing" className="c97-sectionlink">
+                All writing
+              </Link>
+            </div>
+            <div className={styles.posts}>
+              {recentPosts.map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/writing/${post.slug}`}
+                  className={styles.post}
+                >
+                  <span className={styles.postCopy}>
+                    <span className="c97-serif c97-h3">{post.title}</span>
+                    <span className={styles.detail}>{post.excerpt}</span>
+                  </span>
+                  <span className="c97-kicker c97-tabular">
+                    {formatPostDate(post.publishedAt)} · {post.category}
+                  </span>
                 </Link>
-              ) : (
-                <div className={styles.editorialCover} data-c97-surface="paper" aria-hidden="true">
-                  <span className="c97-kicker">Essays &amp; field notes</span>
-                  <span className={styles.editorialNumber}>04</span>
-                  <span className="c97-serif c97-h3">What I’m learning<br />as I build.</span>
-                </div>
-              )}
-              <div>
-                <p className="c97-kicker">From my notebook · {leadPost.category}</p>
-                <h3 className="c97-serif c97-h2"><Link href={`/writing/${leadPost.slug}`}>{leadPost.title}</Link></h3>
-                <p className="c97-prose">{leadPost.excerpt}</p>
-                <p className="c97-meta">{leadPost.readingTime}</p>
-                <Link href={`/writing/${leadPost.slug}`} className="c97-sectionlink">Read the essay <span aria-hidden="true">↗</span></Link>
-              </div>
-            </article>
-
-            {followingPosts.map((post) => (
-              <div
-                key={post.slug}
-                style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  alignItems: "baseline",
-                  justifyContent: "space-between",
-                  gap: "var(--c97-sp-1) var(--c97-sp-4)",
-                  marginTop: "var(--c97-sp-5)",
-                }}
-              >
-                <div style={{ flex: "1 1 420px" }}>
-                  {/* --c97-fs-lead, so the lead post above keeps its tier. */}
-                  <h3 className="c97-serif c97-lead">
-                    <Link
-                      href={`/writing/${post.slug}`}
-                      style={{ textDecoration: "none" }}
-                    >
-                      {post.title}
-                    </Link>
-                  </h3>
-                  <p
-                    className="c97-prose"
-                    style={{
-                      marginTop: "var(--c97-sp-1)",
-                      color: "var(--c97-ink-2)",
-                    }}
-                  >
-                    {post.excerpt}
-                  </p>
-                </div>
-                <p className="c97-meta">
-                  <span className="c97-tabular">{post.readingTime}</span>
-                  <span>{post.category}</span>
-                </p>
-              </div>
-            ))}
-
-            <Link
-              href="/writing"
-              className="c97-sectionlink"
-              style={{ marginTop: "var(--c97-sp-3)" }}
-            >
-              All writing
-            </Link>
+              ))}
+            </div>
           </div>
         </section>
       ) : null}
 
       {/* Compact closing invitation. */}
-      <section className={`c97-band ${styles.contactBand}`} data-c97-surface="tobacco">
+      <section
+        className={`c97-band c97-sheet ${styles.contactBand}`}
+        data-c97-surface="ink-vermilion"
+        data-seam="torn"
+      >
         <div className={`c97-shell ${styles.contactRow}`}>
-          <p className={`c97-serif c97-h2 ${styles.contactMessage}`}>
-            If you have a thing that needs proving, I would like to hear about it.
+          <p className={`c97-poster-sm ${styles.contactMessage}`}>
+            If you have a thing that needs proving, I would like to hear about
+            it.
           </p>
-          <Link className="c97-btn-outline" href="/contact">
+          <Link className="c97-btn-outline c97-offset" href="/contact">
             Get in touch
           </Link>
         </div>

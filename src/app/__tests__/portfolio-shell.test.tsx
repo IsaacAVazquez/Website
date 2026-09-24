@@ -51,21 +51,6 @@ jest.mock("@/lib/blog", () => ({
   getHomepageProofOfWorkBlogPostPreviews: () => [stubPost],
 }));
 
-// Keep Jest away from the committed earthquake snapshot (it is large) — the
-// shell test only cares about page semantics, not the live pulse data.
-jest.mock("@/lib/earthquakeSnapshot", () => ({
-  getEarthquakeSummary: async () => ({
-    generatedAt: "2026-07-01T00:00:00.000Z",
-    feedUpdated: null,
-    heroStats: { total24h: 0, total7d: 0 },
-    recent: [],
-    significant: [],
-    magnitudeBuckets: [],
-    regions: [],
-    quakeDetails: {},
-  }),
-}));
-
 describe("Portfolio shell page semantics", () => {
   /*
    * These two routes moved to Catalog 97, where Catalog97Shell owns the page's
@@ -81,7 +66,7 @@ describe("Portfolio shell page semantics", () => {
     expect(
       screen.getByRole("heading", {
         level: 1,
-        name: /i build tools that make hard problems easier to act on/i,
+        name: /i build test harnesses, and dashboards that run on public data/i,
       })
     ).toBeVisible();
   });

@@ -2,8 +2,9 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Catalog97Shell } from "./Catalog97Shell";
-import { Catalog97Plate } from "./Catalog97Primitives";
+import { PROJECT_PLATES } from "./projectPlates";
 import {
   PROJECT_BUILD_NOTES,
   getProjectCardSummary,
@@ -34,8 +35,9 @@ function matchesQuery(project: CaseStudyData, tokens: string[]) {
   if (tokens.length === 0) return true;
 
   const categoryLabel =
-    TOOL_CATEGORY_DEFS.find((definition) => definition.id === classifyToolSlug(project.slug))
-      ?.label ?? "";
+    TOOL_CATEGORY_DEFS.find(
+      (definition) => definition.id === classifyToolSlug(project.slug),
+    )?.label ?? "";
   const searchable = [
     project.title,
     project.description,
@@ -55,9 +57,9 @@ function matchesQuery(project: CaseStudyData, tokens: string[]) {
 /**
  * The work index, in the Catalog 97 language.
  *
- * The design leads with a small camel band of full-weight entries and drops
- * everything else into a pine ledger below it, which is the same two-tier
- * shape the writing index uses. That proportion is what keeps camel to its
+ * The design leads with a small saffron band of full-weight entries and drops
+ * everything else into a blue ledger below it, which is the same two-tier
+ * shape the writing index uses. That proportion is what keeps saffron to its
  * share of the page rather than letting a thirty-row list turn the whole route
  * tan.
  *
@@ -91,10 +93,14 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
     const categoryMatches =
       active === ALL
         ? projects
-        : projects.filter((project) => classifyToolSlug(project.slug) === active);
+        : projects.filter(
+            (project) => classifyToolSlug(project.slug) === active,
+          );
     const tokens = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
 
-    const queryMatches = categoryMatches.filter((project) => matchesQuery(project, tokens));
+    const queryMatches = categoryMatches.filter((project) =>
+      matchesQuery(project, tokens),
+    );
 
     return [...queryMatches].sort((left, right) => {
       if (sort === "newest") {
@@ -115,9 +121,9 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
 
   return (
     <Catalog97Shell>
-      {/* Hero */}
+      {/* Hero, the proofed sheet. */}
       <section
-        className="c97-band"
+        className="c97-band c97-sheet"
         data-c97-surface="paper"
         style={{ paddingBottom: "var(--c97-sp-4)" }}
       >
@@ -131,12 +137,10 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
           }}
         >
           <div>
-            <p className="c97-kicker">Work</p>
-            <h1 className="c97-display" style={{ marginTop: "var(--c97-sp-3)" }}>
+            <h1 className="c97-poster">
               Everything I&rsquo;ve shipped, and the decisions behind it.
             </h1>
           </div>
-          <Catalog97Plate value={String(projects.length)} />
         </div>
       </section>
 
@@ -146,11 +150,15 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
         data-c97-surface="paper"
         style={{ paddingBottom: "var(--c97-sp-3)" }}
       >
-        <div className="c97-shell" style={{ display: "grid", gap: "var(--c97-sp-3)" }}>
+        <div
+          className="c97-shell"
+          style={{ display: "grid", gap: "var(--c97-sp-3)" }}
+        >
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,240px),1fr))",
+              gridTemplateColumns:
+                "repeat(auto-fit,minmax(min(100%,240px),1fr))",
               gap: "var(--c97-sp-2)",
               alignItems: "end",
             }}
@@ -243,13 +251,22 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
       </section>
 
       {/* Lead entries */}
-      <section className="c97-band" data-c97-surface="camel">
+      <section
+        className="c97-band c97-band-tall c97-sheet"
+        data-c97-surface="ink-saffron"
+        data-seam="torn"
+      >
         <div
           className="c97-shell"
-          style={{ display: "grid", gap: "var(--c97-sp-4)" }}
+          style={{ display: "grid", gap: "var(--c97-sp-5)" }}
         >
           {lead.map((project) => (
-            <article key={project.slug} className="c97-row">
+            <article
+              key={project.slug}
+              className="c97-row c97-row-stack-sm"
+              // Top-aligned: the plate column is taller than a baseline can hold.
+              style={{ alignItems: "start" }}
+            >
               <div>
                 <h2 className="c97-serif c97-h2">
                   <Link
@@ -265,7 +282,10 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
                 >
                   {getProjectCardSummary(project)}
                 </p>
-                <p className="c97-meta" style={{ marginTop: "var(--c97-sp-2)" }}>
+                <p
+                  className="c97-meta"
+                  style={{ marginTop: "var(--c97-sp-2)" }}
+                >
                   <span>{project.role}</span>
                   {project.tools.slice(0, 2).map((tool) => (
                     <span key={tool}>{tool}</span>
@@ -285,14 +305,47 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
                   </Link>
                 ) : null}
               </div>
-              <div className="c97-kicker c97-tabular">{project.timeline}</div>
+              {/* A printed plate, where the project has one, pasted above its date. */}
+              <div
+                style={{
+                  display: "grid",
+                  justifyItems: "start",
+                  gap: "var(--c97-sp-2)",
+                }}
+              >
+                {PROJECT_PLATES[project.slug] ? (
+                  <span
+                    className="c97-offset"
+                    style={{
+                      position: "relative",
+                      display: "block",
+                      width: "clamp(160px, 18vw, 240px)",
+                      aspectRatio: "3 / 2",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <Image
+                      src={PROJECT_PLATES[project.slug]}
+                      alt=""
+                      fill
+                      sizes="240px"
+                      style={{ objectFit: "cover" }}
+                    />
+                  </span>
+                ) : null}
+                <div className="c97-kicker c97-tabular">{project.timeline}</div>
+              </div>
             </article>
           ))}
         </div>
       </section>
 
       {/* The rest of the index */}
-      <section className="c97-band c97-band-tall" data-c97-surface="pine">
+      <section
+        className="c97-band c97-band-tall c97-sheet"
+        data-c97-surface="ink-blue"
+        data-seam="torn"
+      >
         <div className="c97-shell">
           <div
             style={{
@@ -305,7 +358,7 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
           >
             {/*
               This was `c97-kicker`, so an h2 rendered at 11px directly above
-              22px children while its four sibling h2s in the camel band ran at
+              22px children while its four sibling h2s in the saffron band ran at
               32px.
 
               --c97-fs-h3 was tried first, on the reasoning that the ledger is
@@ -315,10 +368,10 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
               children and the nesting went invisible, which is the same defect
               one step over. --c97-fs-h2 clamps to 24px against the same 19px,
               and at 1440 it is 32px against 22px. It also matches the four
-              sibling h2s in the camel band, so every h2 on the route now draws
+              sibling h2s in the saffron band, so every h2 on the route now draws
               at one size.
             */}
-            <h2 className="c97-serif c97-h2">The rest of the index</h2>
+            <h2 className="c97-poster-sm">The rest of the index</h2>
             <p className="c97-kicker c97-tabular">
               {ledger.length} {ledger.length === 1 ? "project" : "projects"}
             </p>
@@ -333,7 +386,7 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
               250px sat roughly 850px away from its own date with nothing
               between them. Reading across that gap is the scanning problem a
               ledger exists to avoid, and there are 29 rows of it. Halving the
-              column width halves the distance, and it takes the pine band from
+              column width halves the distance, and it takes the blue band from
               1940px to about half that.
 
               A hairline per row would also bridge the gap and the design owns
@@ -353,7 +406,7 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
                 <div key={project.slug} className="c97-row">
                   {/*
                     An h3 rather than a div. These 29 are the same kind of thing
-                    as the four in the camel band, which are h2, so as divs they
+                    as the four in the saffron band, which are h2, so as divs they
                     were 29 of the 33 projects unreachable by heading
                     navigation. The level mirrors the two-tier split the design
                     already makes visually, and `c97-lead` keeps the size.
@@ -390,7 +443,11 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
       </section>
 
       {/* CTA */}
-      <section className="c97-band" data-c97-surface="chocolate">
+      <section
+        className="c97-band c97-sheet"
+        data-c97-surface="chocolate"
+        data-seam="torn"
+      >
         <div
           className="c97-shell"
           style={{
@@ -401,14 +458,17 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
             justifyContent: "space-between",
           }}
         >
-          <p
-            className="c97-serif c97-h3"
-            style={{ maxWidth: "var(--c97-measure-tight)" }}
-          >
-            Most of these have a build note in the writing archive, and I am
-            happy to walk through any of them.
-          </p>
-          <Link className="c97-btn c97-btn-invert" href="/contact">
+          <div>
+            <p className="c97-kicker">Write-ups</p>
+            <p
+              className="c97-poster-sm"
+              style={{ maxWidth: "24ch", marginTop: "var(--c97-sp-2)" }}
+            >
+              Most of these have a build note in the writing archive, and I am
+              happy to walk through any of them.
+            </p>
+          </div>
+          <Link className="c97-btn c97-btn-invert c97-offset" href="/contact">
             Ask about one
           </Link>
         </div>

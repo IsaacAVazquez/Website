@@ -1,10 +1,13 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Catalog97Shell } from "./Catalog97Shell";
-import { Catalog97Plate } from "./Catalog97Primitives";
-import type { LiveToolGroup } from "@/constants/toolCategories";
+import type {
+  LiveToolGroup,
+  ToolCategoryId,
+} from "@/constants/toolCategories";
 
 const ALL = "all";
 
@@ -15,12 +18,19 @@ export interface Catalog97DashboardsProps {
    * rather than only a title. Missing slugs simply render without one.
    */
   summaries: Record<string, string>;
+  /** Tabular readout per tool href, read from its snapshot. */
+  cardLines: Record<string, string>;
+  /** Newest snapshot time across the sources, already formatted in PT. */
+  latestPull: string | null;
+  /** Source name and formatted PT time, newest first. */
+  pullLog: { label: string; time: string }[];
+  /** The stale-price note, built from the investments price health. */
+  staleNote: string | null;
 }
 
 /*
- * The mosaic's field cycle. A straight pine/camel alternation put Pine on half
- * of 33 tiles and made this the greenest route on the site, so the cycle runs
- * four wide with one Pine in it.
+ * The mosaic's field cycle, one of each riso ink plus a bone rest, so no ink
+ * takes more than a quarter of the 33 tiles.
  *
  * The cycle restarts inside each category run rather than running continuously
  * across the whole index. When it ran continuously it cut across the group
@@ -29,29 +39,24 @@ export interface Catalog97DashboardsProps {
  * up as the loudest signal on the page while carrying no information at all.
  * Restarting per run means the rhythm resets exactly where the heading does.
  *
- * Each run also starts one step further into the cycle than the run above it.
- * Restarting every run at index 0 put Pine on all eight opening tiles and took
- * Pine to 11 of 33, which is the greenest-route problem this cycle exists to
- * avoid. Stepping the start holds Pine at 8 of 33, the share the four-wide
- * cycle was chosen for. The runs do not need a shared opening colour, because
- * the heading above each one is what marks the seam.
+ * Each run also starts one step further into the cycle than the run above it,
+ * so the eight runs do not all open on the same ink. The runs do not need a
+ * shared opening colour, because the heading above each one is what marks the
+ * seam.
  */
-const TILE_SURFACES = ["pine", "camel", "bone", "camel"] as const;
+const TILE_SURFACES = ["ink-blue", "ink-saffron", "bone", "ink-peach"] as const;
 
-const dataNotes = [
-  {
-    title: "One committed snapshot",
-    body: "Most of the data is checked into the repo, so those pages never depend on a third party being awake when you visit them.",
-  },
-  {
-    title: "Refresh fails soft",
-    body: "A failed or empty pull keeps the previous snapshot rather than wiping it, so you get yesterday with its date instead of a blank panel.",
-  },
-  {
-    title: "Kept in your browser",
-    body: "The lifestyle tools and the calculators have nothing to refresh. They hold what you enter in your own browser and never send it anywhere.",
-  },
-];
+/** The riso banner printed above each category run. Decorative, so no alt. */
+const CATEGORY_BANNERS: Record<ToolCategoryId, string> = {
+  fintech: "/images/dashboards/category-fintech.jpg",
+  ai: "/images/dashboards/category-ai.jpg",
+  decision: "/images/dashboards/category-decision.jpg",
+  pulse: "/images/dashboards/category-news.jpg",
+  science: "/images/dashboards/category-science.jpg",
+  sports: "/images/dashboards/category-sports.jpg",
+  civic: "/images/dashboards/category-civic.jpg",
+  lifestyle: "/images/dashboards/category-lifestyle.jpg",
+};
 
 /**
  * The dashboard index, in the Catalog 97 language. This route is new — the
@@ -78,17 +83,34 @@ const dataNotes = [
  * on screen. It is a client component for that one piece of state; everything
  * else here is static.
  *
- * The design closes the mosaic with a status panel reporting the exact time of
- * last night's pull. This repo has no per-tool snapshot timestamp to read at
- * render time, so the panel states the fail-soft convention instead of
- * printing a number that would be invented. It sits on its own band rather
- * than in the grid, because inside the grid it was indistinguishable from a
- * tile you could open.
+ * The pull log, card readouts, and "Latest pull" time come from
+ * `getSnapshotReadouts`, which reads the committed snapshots at build time.
+ * Tools without a snapshot reader simply render no readout line.
  */
 export function Catalog97Dashboards({
   groups,
   summaries,
+  cardLines,
+  latestPull,
+  pullLog,
+  staleNote,
 }: Catalog97DashboardsProps) {
+  const dataNotes = [
+    {
+      title: "One committed snapshot",
+      body: "Most of the data is checked into the repo, so those pages never depend on a third party being awake when you visit them.",
+    },
+    {
+      title: "Named sources",
+      body: "football-data.org for both football leagues, Launch Library 2 for launches, and the BART public API for transit.",
+    },
+    {
+      title: "Stale data is labeled",
+      body:
+        staleNote ??
+        "A panel that could not refresh keeps its last snapshot and prints that snapshot's date.",
+    },
+  ];
   const toolCount = groups.reduce((sum, group) => sum + group.tools.length, 0);
   const [active, setActive] = useState<string>(ALL);
 
@@ -120,28 +142,40 @@ export function Catalog97Dashboards({
 
   return (
     <Catalog97Shell>
-      {/* Hero */}
+      {/* Hero, the proofed sheet. */}
       <section
-        className="c97-band"
+        className="c97-band c97-sheet"
         data-c97-surface="paper"
         style={{ paddingBottom: "var(--c97-sp-4)" }}
       >
         <div
           className="c97-shell"
+          // Wraps rather than a fixed two-column grid: Anton's longest word
+          // plus the pull block overflow a 320px phone side by side.
           style={{
-            display: "grid",
-            gridTemplateColumns: "1fr auto",
-            gap: "var(--c97-sp-5)",
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+            gap: "var(--c97-sp-3) var(--c97-sp-5)",
             alignItems: "end",
           }}
         >
-          <div>
-            <p className="c97-kicker">Dashboards</p>
-            <h1 className="c97-display" style={{ marginTop: "var(--c97-sp-3)" }}>
+          <div style={{ flex: "1 1 32rem", minWidth: 0 }}>
+            <h1 className="c97-poster">
               {toolCount} instruments I built, and I keep them running.
             </h1>
           </div>
-          <Catalog97Plate value={String(toolCount).padStart(2, "0")} />
+          {latestPull ? (
+            <div style={{ textAlign: "right" }}>
+              <p className="c97-kicker">Latest pull</p>
+              <p
+                className="c97-serif c97-h3 c97-tabular"
+                style={{ marginTop: "var(--c97-sp-1)" }}
+              >
+                {latestPull}
+              </p>
+            </div>
+          ) : null}
         </div>
       </section>
 
@@ -226,17 +260,33 @@ export function Catalog97Dashboards({
         >
           {visibleGroups.map(({ group, cycleOffset }) => (
             <div key={group.id}>
-              <h2 className="c97-serif c97-h2">{group.label}</h2>
+              <div
+                style={{
+                  position: "relative",
+                  aspectRatio: "5 / 1",
+                  minHeight: "96px",
+                  overflow: "hidden",
+                  marginBottom: "var(--c97-sp-3)",
+                }}
+              >
+                <Image
+                  src={CATEGORY_BANNERS[group.id]}
+                  alt=""
+                  fill
+                  sizes="(min-width: 1280px) 1200px, 100vw"
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+              <h2 className="c97-poster-sm">{group.label}</h2>
               <div
                 className="c97-mosaic"
                 style={{ marginTop: "var(--c97-sp-3)" }}
               >
                 {group.tools.map((tool, index) => {
                   const surface =
-                    TILE_SURFACES[
-                      (index + cycleOffset) % TILE_SURFACES.length
-                    ];
+                    TILE_SURFACES[(index + cycleOffset) % TILE_SURFACES.length];
                   const summary = summaries[tool.slug];
+                  const readout = cardLines[tool.href];
                   const body = (
                     <div>
                       <h3 className="c97-serif c97-h3">{tool.title}</h3>
@@ -250,6 +300,14 @@ export function Catalog97Dashboards({
                           }}
                         >
                           {summary}
+                        </p>
+                      ) : null}
+                      {readout ? (
+                        <p
+                          className="c97-meta c97-tabular"
+                          style={{ marginTop: "var(--c97-sp-2)" }}
+                        >
+                          {readout}
                         </p>
                       ) : null}
                     </div>
@@ -283,41 +341,56 @@ export function Catalog97Dashboards({
         </div>
       </section>
 
-      {/* Status. Its own band, because in the grid it read as an openable tile. */}
-      <section className="c97-band" data-c97-surface="paper">
-        <div className="c97-shell">
-          <p className="c97-kicker">Status</p>
-          <p
-            className="c97-prose"
-            style={{
-              marginTop: "var(--c97-sp-2)",
-              maxWidth: "var(--c97-measure-body)",
-            }}
-          >
-            Most of the snapshot dashboards print the date of the data they are
-            reading, so a failed pull shows up as an old date rather than as an
-            empty page.
-          </p>
-        </div>
-      </section>
+      {/* Pull log. Its own band, because in the grid it read as an openable tile. */}
+      {pullLog.length > 0 ? (
+        <section
+          className="c97-band c97-sheet"
+          data-c97-surface="bone"
+          data-seam="deckle"
+        >
+          <div className="c97-shell">
+            <h2 className="c97-kicker">Pull log · times PT</h2>
+            <dl
+              style={{
+                marginTop: "var(--c97-sp-2)",
+                maxWidth: "var(--c97-measure-wide)",
+              }}
+            >
+              {pullLog.map((entry) => (
+                <div key={entry.label} className="c97-row">
+                  <dt>{entry.label}</dt>
+                  <dd className="c97-tabular" style={{ margin: 0 }}>
+                    {entry.time}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </section>
+      ) : null}
 
-      {/* Tobacco line. Nothing on this band is smaller than --c97-fs-h2. */}
-      <section className="c97-band c97-band-tall" data-c97-surface="tobacco">
+      {/* The fail-soft line, in poster type on the page's saffron. */}
+      <section
+        className="c97-band c97-band-tall c97-sheet"
+        data-c97-surface="ink-saffron"
+        data-seam="torn"
+      >
         <div className="c97-shell">
-          <p
-            className="c97-serif c97-h2"
-            style={{ maxWidth: "var(--c97-measure-tight)" }}
-          >
-            The data panels here would rather show a stale number with a date on
-            it than nothing at all.
+          <p className="c97-poster-sm" style={{ maxWidth: "24ch" }}>
+            If a pull fails, the panel keeps the previous snapshot and shows its
+            date.
           </p>
         </div>
       </section>
 
       {/* How the data works */}
-      <section className="c97-band c97-band-taller" data-c97-surface="pine">
+      <section
+        className="c97-band c97-band-taller c97-sheet"
+        data-c97-surface="ink-blue"
+        data-seam="torn"
+      >
         <div className="c97-shell">
-          <h2 className="c97-serif c97-h2">How the data works</h2>
+          <h2 className="c97-poster-sm">How the data works</h2>
           <div className="c97-columns" style={{ marginTop: "var(--c97-sp-4)" }}>
             {dataNotes.map((note) => (
               <div key={note.title}>
@@ -339,7 +412,11 @@ export function Catalog97Dashboards({
       </section>
 
       {/* CTA */}
-      <section className="c97-band" data-c97-surface="camel">
+      <section
+        className="c97-band c97-sheet"
+        data-c97-surface="ink-saffron"
+        data-seam="torn"
+      >
         <div
           className="c97-shell"
           style={{
@@ -350,13 +427,10 @@ export function Catalog97Dashboards({
             justifyContent: "space-between",
           }}
         >
-          <p
-            className="c97-serif c97-h2"
-            style={{ maxWidth: "var(--c97-measure-body)" }}
-          >
+          <p className="c97-poster-sm" style={{ maxWidth: "24ch" }}>
             The build notes behind most of these are in the writing archive.
           </p>
-          <Link className="c97-btn c97-btn-invert" href="/writing">
+          <Link className="c97-btn c97-btn-invert c97-offset" href="/writing">
             Read the writing
           </Link>
         </div>

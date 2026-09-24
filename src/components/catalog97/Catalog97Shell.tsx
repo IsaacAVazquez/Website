@@ -90,63 +90,16 @@ const footerSite = [
   { href: "/accessibility", label: "Accessibility" },
 ];
 
-const footerLinkStyle: React.CSSProperties = {
-  fontSize: "var(--c97-fs-small)",
-  color: "var(--c97-ink)",
-  padding: 0,
-  margin: 0,
-  minHeight: 44,
-  display: "flex",
-  alignItems: "center",
-};
-
-function FooterColumn({
-  heading,
-  links,
-}: {
-  heading: string;
-  links: { href: string; label: string; external?: boolean }[];
-}) {
-  return (
-    <div>
-      <div className="c97-kicker">{heading}</div>
-      <nav
-        aria-label={heading}
-        style={{
-          display: "grid",
-          gap: "var(--c97-sp-1)",
-          marginTop: "var(--c97-sp-2)",
-          letterSpacing: "0.08em",
-          textTransform: "uppercase",
-        }}
-      >
-        {links.map((link) =>
-          link.external ? (
-            <a
-              key={link.href}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="c97-microlink"
-              style={footerLinkStyle}
-            >
-              {link.label}
-            </a>
-          ) : (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="c97-microlink"
-              style={footerLinkStyle}
-            >
-              {link.label}
-            </Link>
-          ),
-        )}
-      </nav>
-    </div>
-  );
-}
+/*
+ * The footer's three link groups, each printed on its own ink sheet and pasted
+ * onto the espresso footer on an offset. Accepted in Impeccable live mode on
+ * 2026-09-24; styles are `.c97-footer-*` in catalog97.css.
+ */
+const footerGroups = [
+  { name: "Pages", links: footerPages, surface: "ink-saffron" },
+  { name: "Elsewhere", links: footerElsewhere, surface: "ink-peach" },
+  { name: "Site", links: footerSite, surface: "bone" },
+] as const;
 
 function Catalog97Footer({ wordmark }: { wordmark: boolean }) {
   return (
@@ -154,45 +107,43 @@ function Catalog97Footer({ wordmark }: { wordmark: boolean }) {
       role="contentinfo"
       aria-label="Site footer"
       data-c97-surface="espresso"
-      style={{ padding: "var(--c97-sp-5) var(--c97-gutter)" }}
+      className="c97-sheet c97-footer"
+      data-seam="torn"
     >
-      {/*
-        `c97-footer-grid` rather than `c97-columns`. The colophon is a
-        paragraph and the other three are short link lists, so equal tracks gave
-        the prose 27 characters a line while each nav ran half empty. See the
-        rule in catalog97.css for the measurements.
-      */}
-      <div className="c97-shell c97-footer-grid">
-        {/*
-          The emblem is the colophon now.
-
-          It replaced the "Colophon" kicker, a paragraph about the typefaces and
-          the fail-soft convention, and the copyright line. Only the copyright
-          was kept, because a footer wants one. The typography paragraph was
-          copy describing the design to the reader rather than telling them
-          anything about the work, and the fail-soft sentence it ended on is
-          still stated on /dashboards itself, where it is load-bearing.
-
-          `.c97-footer-colophon` still spans the full row below 1080px, so the
-          mark leads the footer at every width rather than sitting in a column
-          beside the link lists.
-        */}
+      <div className="c97-shell">
+        <div className="c97-footer-tiles">
+          {footerGroups.map(({ name, links, surface }) => (
+            <nav
+              key={name}
+              aria-label={name}
+              className="c97-footer-tile"
+              data-c97-surface={surface}
+            >
+              {/* The nav's aria-label already names the group for assistive tech. */}
+              <p className="c97-footer-tile-name" aria-hidden="true">
+                {name}
+              </p>
+              {links.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="c97-footer-link"
+                  {...("external" in link && link.external
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          ))}
+        </div>
         <div className="c97-footer-colophon">
           {wordmark ? <Catalog97Wordmark /> : null}
-          <p
-            style={{
-              margin: "var(--c97-sp-3) 0 0",
-              fontSize: "var(--c97-fs-small)",
-              color: "var(--c97-label)",
-            }}
-          >
+          <p className="c97-footer-copy">
             &copy; {new Date().getFullYear()} Isaac Vazquez
           </p>
         </div>
-
-        <FooterColumn heading="Pages" links={footerPages} />
-        <FooterColumn heading="Elsewhere" links={footerElsewhere} />
-        <FooterColumn heading="Site" links={footerSite} />
       </div>
     </footer>
   );

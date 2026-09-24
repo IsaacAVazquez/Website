@@ -299,9 +299,9 @@ export default async function BlogPostPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* The post's own call to action, on the camel field. */}
+      {/* The post's own call to action, on the saffron field. */}
       {post.cta ? (
-        <section className="c97-band" data-c97-surface="camel">
+        <section className="c97-band" data-c97-surface="ink-saffron">
           <div
             className="c97-shell"
             style={{

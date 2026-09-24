@@ -5,6 +5,8 @@ primary_target: "src/components/catalog97/Catalog97Shell.tsx"
 related_targets: ["src/components/catalog97/Catalog97Header.tsx","src/components/ui/DeferredThemeToggle.tsx","src/components/search/HeaderSearchPanel.tsx"]
 ---
 
+**Superseded in part on 2026-09-23.** The seven designed routes now use the print shop layout in `STYLING.md`, and it overrides anything below that disagrees. The pine, camel, and tobacco surfaces were renamed and repainted as `ink-blue`, `ink-saffron`, and `ink-vermilion`, and `ink-peach` was added, so read any mention of pine, camel, or tobacco below as the ink that replaced it. Anton now also sets the h1 and section h2s through `.c97-poster`, so the numerals-only Anton rule is retired. Vermilion carries body text with the darkest ink (4.62:1), so the tobacco large-text-only rule is retired too. Bands that change surface tear over each other, and the one allowed shadow is the hard `.c97-offset` in the second ink.
+
 # Catalog 97 shell surface brief
 
 **Scope.** `src/components/catalog97/Catalog97Shell.tsx`. It supplies the header, the only `main` landmark, and the footer (which has carried the script emblem since the pine wordmark band was removed on 2026-08-03) for every route on the site as of 2026-09-16. The seven designed Catalog 97 routes render it themselves, and `ConditionalLayout` wraps every other route, `/admin` included, in `Catalog97ToolShell`, which is this shell plus an optional band. So an edit here changes every route at once. `StaticHeader`, `Footer.tsx`, and `navlinks.tsx` were deleted in that change, and this file is the only source of chrome.

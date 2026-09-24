@@ -62,27 +62,28 @@ const RECAP_CARD = "Season-recap post that already ships a bespoke editorial cov
 
 // Set on 2026-09-14 after every fetched cover was viewed against its post.
 const COVER_WRONG_SUBJECT = "The fetched photo showed a different subject than the post, so it was dropped on review.";
-const COVER_REVIEWED = "Fetched photo reviewed against the post; the alt was rewritten from what is visible, so the builder must not overwrite it.";
+// Set on 2026-09-24 when the riso plates replaced the fetched photos.
+const RISO_PLATE = "Riso plate made for the site; no third-party credit, and the builder must not overwrite it.";
 
 export const ARTICLE_COVER_IMAGES: ArticleCoverImageSpec[] = [
   // ---------------------------------------------------------------------------
   // Sports & Fantasy — concrete sport imagery
   // ---------------------------------------------------------------------------
-  { slug: "2025-fantasy-football-draft-strategy", strategy: "manual", note: COVER_REVIEWED },
-  { slug: "fantasy-football-beginners-complete-guide", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "2025-fantasy-football-draft-strategy", strategy: "manual", note: RISO_PLATE },
+  { slug: "fantasy-football-beginners-complete-guide", strategy: "manual", note: RISO_PLATE },
   { slug: "june-fantasy-football-prep-2026", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
   { slug: "mastering-fantasy-football-analytics", strategy: "wikimedia", query: "American football NFL play line of scrimmage", alt: "American football players lined up for a play" },
-  { slug: "rb-vs-wr-draft-strategy-modeling-positional-value", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "rb-vs-wr-draft-strategy-modeling-positional-value", strategy: "manual", note: RISO_PLATE },
   { slug: "understanding-fantasy-football-analytics", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
-  { slug: "waiver-wire-mastery-hidden-gems", strategy: "manual", note: COVER_REVIEWED },
-  { slug: "building-a-fantasy-football-rankings-platform", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "waiver-wire-mastery-hidden-gems", strategy: "manual", note: RISO_PLATE },
+  { slug: "building-a-fantasy-football-rankings-platform", strategy: "manual", note: RISO_PLATE },
 
   { slug: "2026-march-madness-bracket-analysis", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
   { slug: "2026-march-madness-postmortem", strategy: "wikimedia", query: "college basketball arena crowd game", alt: "A packed arena during a college basketball game" },
 
   { slug: "building-a-fantasy-formula-1-optimizer", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
   { slug: "building-a-formula-1-dashboard", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
-  { slug: "2026-belgian-grand-prix-antonelli-title-lead", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "2026-belgian-grand-prix-antonelli-title-lead", strategy: "manual", note: RISO_PLATE },
 
   { slug: "building-a-la-liga-dashboard", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
   { slug: "building-a-premier-league-dashboard", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
@@ -97,41 +98,41 @@ export const ARTICLE_COVER_IMAGES: ArticleCoverImageSpec[] = [
   { slug: "world-cup-2026-final-spain-argentina", strategy: "wikimedia", query: "Spain national football team match", alt: "Spain's national football team during a match" },
 
   { slug: "building-a-pga-tour-dashboard", strategy: "wikimedia", query: "golf tournament player green PGA", alt: "A golfer on the green during a tournament" },
-  { slug: "building-an-mlb-dashboard", strategy: "manual", note: COVER_REVIEWED },
-  { slug: "building-an-nba-dashboard", strategy: "manual", note: COVER_REVIEWED },
-  { slug: "building-an-nfl-dashboard", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "building-an-mlb-dashboard", strategy: "manual", note: RISO_PLATE },
+  { slug: "building-an-nba-dashboard", strategy: "manual", note: RISO_PLATE },
+  { slug: "building-an-nfl-dashboard", strategy: "manual", note: RISO_PLATE },
 
   // ---------------------------------------------------------------------------
   // Signals & Commentary — concrete where a neutral subject exists
   // ---------------------------------------------------------------------------
-  { slug: "2026-week-april-6-tariffs-trade-war-market-reaction", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "2026-week-april-6-tariffs-trade-war-market-reaction", strategy: "manual", note: RISO_PLATE },
   { slug: "2026-week-in-tech-agentic-ai-infrastructure-arms-race", strategy: "wikimedia", query: "data center server room racks", alt: "Rows of servers in a data center" },
   { slug: "2026-week-in-tech-ai-infra-geopolitics", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
   { slug: "a-history-of-horology", strategy: "wikimedia", query: "antique mechanical pocket watch movement", alt: "The movement of an antique mechanical pocket watch" },
   { slug: "aws-vs-azure-vs-gcp-cloud-provider-comparison", strategy: "wikimedia", query: "data center servers cloud computing", alt: "Servers in a cloud data center" },
   { slug: "companies-and-watches-that-shaped-horology", strategy: "wikimedia", query: "luxury mechanical wristwatch", alt: "A mechanical luxury wristwatch" },
-  { slug: "is-the-ai-mega-cap-rally-a-bubble", strategy: "manual", note: COVER_REVIEWED },
-  { slug: "reading-q1-2026-earnings-ai-capex-lens", strategy: "manual", note: COVER_REVIEWED },
-  { slug: "spacex-ipo-case-for-going-public", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "is-the-ai-mega-cap-rally-a-bubble", strategy: "manual", note: RISO_PLATE },
+  { slug: "reading-q1-2026-earnings-ai-capex-lens", strategy: "manual", note: RISO_PLATE },
+  { slug: "spacex-ipo-case-for-going-public", strategy: "manual", note: RISO_PLATE },
 
   // ---------------------------------------------------------------------------
   // Space & Experiments — concrete subjects (rockets, transit, food, wine, etc.)
   // ---------------------------------------------------------------------------
-  { slug: "artemis-ii-first-crewed-lunar-mission", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "artemis-ii-first-crewed-lunar-mission", strategy: "manual", note: RISO_PLATE },
   { slug: "building-a-bart-transit-dashboard", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
   { slug: "building-a-museum-log", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
-  { slug: "building-a-pantry-aware-recipe-finder", strategy: "manual", note: COVER_REVIEWED },
-  { slug: "building-a-travel-planner", strategy: "manual", note: COVER_REVIEWED },
-  { slug: "building-a-wine-cellar-app", strategy: "manual", note: COVER_REVIEWED },
-  { slug: "building-an-austin-food-map", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "building-a-pantry-aware-recipe-finder", strategy: "manual", note: RISO_PLATE },
+  { slug: "building-a-travel-planner", strategy: "manual", note: RISO_PLATE },
+  { slug: "building-a-wine-cellar-app", strategy: "manual", note: RISO_PLATE },
+  { slug: "building-an-austin-food-map", strategy: "manual", note: RISO_PLATE },
   { slug: "building-an-earthquake-dashboard", strategy: "wikimedia", query: "seismograph seismogram earthquake recording", alt: "A seismograph recording ground motion" },
-  { slug: "building-news-pulse-dashboard", strategy: "manual", note: COVER_REVIEWED },
-  { slug: "building-spacex-mission-control", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "building-news-pulse-dashboard", strategy: "manual", note: RISO_PLATE },
+  { slug: "building-spacex-mission-control", strategy: "manual", note: RISO_PLATE },
 
   // ---------------------------------------------------------------------------
   // Systems & Quality — one concrete framing subject
   // ---------------------------------------------------------------------------
-  { slug: "qa-engineering-silicon-valley-uc-berkeley-mba-perspective", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "qa-engineering-silicon-valley-uc-berkeley-mba-perspective", strategy: "manual", note: RISO_PLATE },
 
   // ---------------------------------------------------------------------------
   // Manual — curated team photos already in frontmatter
@@ -278,11 +279,11 @@ export const ARTICLE_COVER_IMAGES: ArticleCoverImageSpec[] = [
   { slug: "world-cup-2026-quarterfinals-recap", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
   { slug: "world-cup-2026-final-spain-champions", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
   { slug: "fantasy-football-training-camp-2025-signal-vs-noise", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
-  { slug: "fantasy-football-2025-draft-tiers-adp", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "fantasy-football-2025-draft-tiers-adp", strategy: "manual", note: RISO_PLATE },
   { slug: "fantasy-football-2025-draft-day-decisions", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
-  { slug: "nfl-2025-week-1-overreactions", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "nfl-2025-week-1-overreactions", strategy: "manual", note: RISO_PLATE },
   { slug: "fantasy-football-2025-playoff-push", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
-  { slug: "mlb-2025-postseason-what-october-rewards", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "mlb-2025-postseason-what-october-rewards", strategy: "manual", note: RISO_PLATE },
   { slug: "super-bowl-lx-preview-seahawks-patriots", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
   { slug: "super-bowl-lx-seahawks-defense", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
   { slug: "space-2025-year-in-review", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
@@ -325,12 +326,12 @@ export const ARTICLE_COVER_IMAGES: ArticleCoverImageSpec[] = [
 
   // August 2026 batch
   { slug: "2026-hungarian-grand-prix-russell-clean-weekend", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
-  { slug: "2026-dutch-grand-prix-antonelli-zandvoort", strategy: "manual", note: COVER_REVIEWED },
-  { slug: "building-a-fantasy-trade-calculator", strategy: "manual", note: COVER_REVIEWED },
+  { slug: "2026-dutch-grand-prix-antonelli-zandvoort", strategy: "manual", note: RISO_PLATE },
+  { slug: "building-a-fantasy-trade-calculator", strategy: "manual", note: RISO_PLATE },
   { slug: "building-a-best-ball-draft-room", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
   { slug: "how-i-run-a-draft-with-my-own-tools", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
   { slug: "building-a-score-pools-engine", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
-  { slug: "building-a-rent-vs-buy-calculator", strategy: "editorial-card", reason: ABSTRACT_FINTECH },
-  { slug: "dashboards-that-read-committed-files", strategy: "editorial-card", reason: ABSTRACT_PRODUCT },
+  { slug: "building-a-rent-vs-buy-calculator", strategy: "manual", note: RISO_PLATE },
+  { slug: "dashboards-that-read-committed-files", strategy: "manual", note: RISO_PLATE },
   { slug: "building-a-draft-companion-that-cannot-click", strategy: "editorial-card", reason: ABSTRACT_PRODUCT },
 ];

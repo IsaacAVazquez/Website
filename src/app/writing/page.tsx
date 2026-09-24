@@ -48,12 +48,6 @@ export default function WritingPage() {
   const totalNotes = posts.filter((p) => readingMinutes(p.readingTime) <= 5).length;
   const totalEssays = posts.length - totalNotes;
 
-  const earliestDate = posts.length
-    ? [...posts].sort(
-        (a, b) => new Date(a.publishedAt).getTime() - new Date(b.publishedAt).getTime(),
-      )[0]?.publishedAt
-    : undefined;
-
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "Writing", url: "/writing" },
@@ -96,7 +90,6 @@ export default function WritingPage() {
         buckets={buckets}
         totalEssays={totalEssays}
         totalNotes={totalNotes}
-        earliestDate={earliestDate}
       />
     </>
   );

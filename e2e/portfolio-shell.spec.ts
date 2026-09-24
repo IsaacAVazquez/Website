@@ -57,7 +57,7 @@ test.describe("Portfolio shell", () => {
     await search.fill("");
     await page.getByRole("combobox", { name: "Sort projects" }).selectOption("alpha");
     const leadTitles = await page
-      .locator('section[data-c97-surface="camel"] h2')
+      .locator('section[data-c97-surface="ink-saffron"] h2')
       .allTextContents();
     expect(leadTitles).toEqual([...leadTitles].sort((left, right) => left.localeCompare(right)));
 

@@ -402,7 +402,7 @@ export default function AgentBuildIndexPage() {
       {/* Newsletter */}
       <section
         className="c97-band c97-band-tall"
-        data-c97-surface="pine"
+        data-c97-surface="ink-blue"
         aria-label="Newsletter signup"
       >
         <div

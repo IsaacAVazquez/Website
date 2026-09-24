@@ -77,13 +77,13 @@ const c97Archivo = Archivo({
   preload: false,
 });
 
-// One oversized count per page, and nothing else.
+// The print-shop headline face: every landing h1 and section h2, plus the plate numerals.
 const c97Anton = Anton({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-c97-anton",
-  display: "optional",
-  preload: false,
+  display: "swap",
+  preload: true,
 });
 
 // Footer wordmark only. Fallback for Snell Roundhand, which is macOS-only.
@@ -154,7 +154,10 @@ export default function RootLayout({
             {children}
           </ConditionalLayout>
         </Providers>
-      </body>
+      {/* impeccable-live-start */}
+<script src="http://localhost:8400/live.js?token=55421dcd-906c-4bf0-b47a-380f4e2a07fe"></script>
+{/* impeccable-live-end */}
+</body>
     </html>
   );
 }

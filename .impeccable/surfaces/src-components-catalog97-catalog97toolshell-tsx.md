@@ -5,6 +5,8 @@ primary_target: "src/components/catalog97/Catalog97ToolShell.tsx"
 related_targets: ["src/components/ConditionalLayout.tsx","src/components/catalog97/Catalog97Shell.tsx","src/app/catalog97.css"]
 ---
 
+**Superseded in part on 2026-09-23.** The seven designed routes now use the print shop layout in `STYLING.md`, and it overrides anything below that disagrees. The pine, camel, and tobacco surfaces were renamed and repainted as `ink-blue`, `ink-saffron`, and `ink-vermilion`, and `ink-peach` was added, so read any mention of pine, camel, or tobacco below as the ink that replaced it. Anton now also sets the h1 and section h2s through `.c97-poster`, so the numerals-only Anton rule is retired. Vermilion carries body text with the darkest ink (4.62:1), so the tobacco large-text-only rule is retired too. Bands that change surface tear over each other, and the one allowed shadow is the hard `.c97-offset` in the second ink.
+
 # Catalog 97 tool shell surface brief
 
 **Scope.** `src/components/catalog97/Catalog97ToolShell.tsx`, rendered by `ConditionalLayout` around every route that is not one of the seven designed Catalog 97 pages, `/admin` included. It is `Catalog97Shell` plus an optional title band and the build-note aside, so an edit here changes 57 routes at once.

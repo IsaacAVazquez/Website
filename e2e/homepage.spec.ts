@@ -25,7 +25,7 @@ test.describe('Homepage', () => {
     await expect(
       page.getByRole('heading', {
         level: 1,
-        name: /i build tools that make hard problems easier to act on/i,
+        name: /i build test harnesses, and dashboards that run on public data/i,
       })
     ).toBeVisible()
   })
@@ -53,7 +53,7 @@ test.describe('Homepage', () => {
     await expect(
       page.getByRole('heading', {
         level: 1,
-        name: /i build tools that make hard problems easier to act on/i,
+        name: /i build test harnesses, and dashboards that run on public data/i,
       })
     ).toBeVisible()
     // The primary CTAs sit directly under the hero claim.
@@ -88,7 +88,7 @@ test.describe('Homepage', () => {
 
     const heroHeading = page.getByRole('heading', {
       level: 1,
-      name: /i build tools that make hard problems easier to act on/i,
+      name: /i build test harnesses, and dashboards that run on public data/i,
     })
     await expect(heroHeading).toBeVisible()
 
@@ -163,7 +163,7 @@ test.describe('Homepage', () => {
 
     await expect(selectedWork).toBeVisible()
     await expect(recentWriting).toBeVisible()
-    await expect(page.getByRole('heading', { name: /live dashboards/i })).toBeVisible()
+    await expect(page.getByRole('heading', { name: /^dashboards$/i })).toBeVisible()
     expect(await selectedWork.locator('a[href^="/portfolio/"]').count()).toBeGreaterThan(0)
     expect(await recentWriting.locator('a[href^="/writing/"]').count()).toBeGreaterThan(0)
   })
