@@ -13,8 +13,8 @@ export const formula1Snapshot: Formula1Snapshot = {
     "constructorStandings": "https://api.openf1.org/v1/championship_teams?session_key=11369"
   },
   "season": 2026,
-  "generatedAt": "2026-09-24T04:36:50.206Z",
-  "defaultMeetingKey": "1295",
+  "generatedAt": "2026-09-24T17:03:35.941Z",
+  "defaultMeetingKey": "1308",
   "standingsMeetingKey": "1294",
   "meetings": [
     {
@@ -6620,7 +6620,7 @@ export const formula1Snapshot: Formula1Snapshot = {
       "gmtOffset": "04:00:00",
       "startAt": "2026-09-24T08:30:00+00:00",
       "endAt": "2026-09-26T13:00:00+00:00",
-      "status": "upcoming",
+      "status": "live",
       "hasSprint": false,
       "raceSessionKey": "11377",
       "raceStartsAt": "2026-09-26T11:00:00+00:00",
@@ -7575,63 +7575,63 @@ export const formula1Snapshot: Formula1Snapshot = {
     "season": 2026,
     "totalRaces": 25,
     "completedRaces": 16,
-    "upcomingRaces": 9,
+    "upcomingRaces": 8,
     "sprintWeekends": 6
   },
   "nextMeeting": {
-    "key": "1295",
-    "name": "Azerbaijan Grand Prix",
-    "officialName": "FORMULA 1 QATAR AIRWAYS AZERBAIJAN GRAND PRIX 2026",
-    "location": "Baku",
-    "countryName": "Azerbaijan",
-    "countryCode": "AZE",
-    "countryFlag": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/azerbaijan-flag.png",
-    "circuitKey": "144",
-    "circuitShortName": "Baku",
-    "circuitType": "Temporary - Street",
-    "circuitImage": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Azerbaijan%20carbon.png",
-    "gmtOffset": "04:00:00",
-    "startAt": "2026-09-24T08:30:00+00:00",
-    "endAt": "2026-09-26T13:00:00+00:00",
+    "key": "1308",
+    "name": "Bahrain Grand Prix",
+    "officialName": "FORMULA 1 GULF AIR BAHRAIN GRAND PRIX IN MALAYSIA 2026",
+    "location": "Kuala Lumpur",
+    "countryName": "Bahrain",
+    "countryCode": "BRN",
+    "countryFlag": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/bahrain-flag.png",
+    "circuitKey": "12",
+    "circuitShortName": "Kuala Lumpur",
+    "circuitType": "Permanent",
+    "circuitImage": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Bahrain%20carbon.png",
+    "gmtOffset": "08:00:00",
+    "startAt": "2026-10-02T04:30:00+00:00",
+    "endAt": "2026-10-04T09:00:00+00:00",
     "status": "upcoming",
     "hasSprint": false,
-    "raceSessionKey": "11377",
-    "raceStartsAt": "2026-09-26T11:00:00+00:00",
+    "raceSessionKey": "11731",
+    "raceStartsAt": "2026-10-04T07:00:00+00:00",
     "sessions": [
       {
-        "key": "11370",
+        "key": "11727",
         "name": "Practice 1",
         "type": "Practice",
-        "startAt": "2026-09-24T08:30:00+00:00",
-        "endAt": "2026-09-24T09:30:00+00:00"
+        "startAt": "2026-10-02T04:30:00+00:00",
+        "endAt": "2026-10-02T05:30:00+00:00"
       },
       {
-        "key": "11371",
+        "key": "11728",
         "name": "Practice 2",
         "type": "Practice",
-        "startAt": "2026-09-24T12:00:00+00:00",
-        "endAt": "2026-09-24T13:00:00+00:00"
+        "startAt": "2026-10-02T08:00:00+00:00",
+        "endAt": "2026-10-02T09:00:00+00:00"
       },
       {
-        "key": "11372",
+        "key": "11729",
         "name": "Practice 3",
         "type": "Practice",
-        "startAt": "2026-09-25T08:30:00+00:00",
-        "endAt": "2026-09-25T09:30:00+00:00"
+        "startAt": "2026-10-03T04:30:00+00:00",
+        "endAt": "2026-10-03T05:30:00+00:00"
       },
       {
-        "key": "11373",
+        "key": "11730",
         "name": "Qualifying",
         "type": "Qualifying",
-        "startAt": "2026-09-25T12:00:00+00:00",
-        "endAt": "2026-09-25T13:00:00+00:00"
+        "startAt": "2026-10-03T08:00:00+00:00",
+        "endAt": "2026-10-03T09:00:00+00:00"
       },
       {
-        "key": "11377",
+        "key": "11731",
         "name": "Race",
         "type": "Race",
-        "startAt": "2026-09-26T11:00:00+00:00",
-        "endAt": "2026-09-26T13:00:00+00:00"
+        "startAt": "2026-10-04T07:00:00+00:00",
+        "endAt": "2026-10-04T09:00:00+00:00"
       }
     ],
     "classification": [],
