@@ -1,0 +1,16 @@
+---
+title: The canonical domain moves, and search and security get tightened
+publishedAt: "2026-07-31"
+category: Update
+summary: Every canonical reference moved to isaacvazquez.com, structured data and the crawl policy were reworked, breadcrumbs now cover every page, and admin login, the email digest, and CSV export were hardened.
+tags:
+  - seo
+  - platform
+  - fixes
+---
+
+The biggest change here is the domain. The old address already redirected to isaacvazquez.com, but the canonical tags and the sitemap still named the old one, which sends search engines conflicting signals, so every canonical reference now points at isaacvazquez.com. Around that I reworked the metadata and structured data, retired an extra layer of AI-specific meta tags, and consolidated the Person record so every page points at the same one on About. Breadcrumb data now covers all 249 pages in the sitemap, and there is a command to submit the sitemap to the search engines that take IndexNow submissions.
+
+I also rewrote `robots.txt` to separate two kinds of bots. Search and answer-engine crawlers that retrieve pages to cite them are allowed, and bots collecting training data for models are not. The old `/release-notes` page redirects here to the changelog now, since keeping two logs of the same thing in step was more work than it was worth.
+
+A security scan turned up three real issues that are fixed. Admin login had no limit on password attempts, the MBA email digest could act as an open relay if a wildcard was ever configured, and the application CSV export let a cell starting with `=` run as a spreadsheet formula.

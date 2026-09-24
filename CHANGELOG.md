@@ -6,7 +6,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ## 2026-09-24
 
-- Design/catalog97 sep revision ([#462](https://github.com/IsaacAVazquez/Website/pull/462)).
+- Print shop layout for the seven designed routes, with riso plates, two lead inks per page, and the homepage collage ([#462](https://github.com/IsaacAVazquez/Website/pull/462)).
 
 ---
 
@@ -16,6 +16,13 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Clear the last sticky offsets, scope chart token reads, and fix the NFL playoff test ([#452](https://github.com/IsaacAVazquez/Website/pull/452)).
 - Move the detail and utility pages onto Catalog 97 ([#456](https://github.com/IsaacAVazquez/Website/pull/456)).
 - September 2026 SEO audit with fix backlog ([#454](https://github.com/IsaacAVazquez/Website/pull/454)).
+- Compacted the weekly board header, the home contact band, and the team panel, and labeled kicker and defense lineup gaps.
+
+---
+
+## 2026-09-21
+
+- Reworked the Catalog 97 homepage layout.
 
 ---
 
@@ -28,6 +35,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 ## 2026-09-15
 
 - Rankings board audit fixes for reflow, font swap, placeholder and control borders ([#445](https://github.com/IsaacAVazquez/Website/pull/445)).
+- Added a My Team panel to the weekly board that saves a roster, imports it from the draft tracker, builds a weekly lineup, and compares a waiver add against a drop.
 
 ---
 
@@ -37,6 +45,8 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Impeccable loop over articles, topic pages, and investments ([#437](https://github.com/IsaacAVazquez/Website/pull/437)).
 - Fintech tools and score pools loop fixes ([#438](https://github.com/IsaacAVazquez/Website/pull/438)).
 - Combine the five open dependency bumps ([#439](https://github.com/IsaacAVazquez/Website/pull/439)).
+- Restore the python environment in the investments refresh workflow ([#434](https://github.com/IsaacAVazquez/Website/pull/434)).
+- Hardened the draft companion's tab targeting and draft command handling.
 
 ---
 
@@ -57,18 +67,40 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 ## 2026-09-09
 
 - Commit the weekly board when it is a brand-new file ([#422](https://github.com/IsaacAVazquez/Website/pull/422)).
+- Split waiver targets onto `/fantasy-football/waivers`, leaving `/fantasy-football/weekly` to the flex and quarterback boards.
 
 ---
 
 ## 2026-09-07
 
 - Fix the fantasy and golf refresh failures and sync the route docs ([#420](https://github.com/IsaacAVazquez/Website/pull/420)).
+- Added automatic pick sync and an opt-in away controller to the private draft companion extension.
 
 ---
 
 ## 2026-09-01
 
 - Add nine articles covering late July and August 2026 ([#411](https://github.com/IsaacAVazquez/Website/pull/411)).
+
+---
+
+## 2026-08-31
+
+- Added a post-draft recap and turn replay, named league presets, and a rolling rank history that stamps 7- and 14-day ECR and ADP movement onto the overall and flex boards.
+
+---
+
+## 2026-08-30
+
+- Added FantasyPros projected VORP rankings to the redraft snapshots, with a Consensus and VORP toggle and a league-size selector on `/fantasy-football`.
+- Added the redraft replacement and scarcity decision model to the draft tracker.
+- Server-rendered the first 40 rows of the rankings board and made the retired tier routes permanent redirects.
+
+---
+
+## 2026-08-23
+
+- Added the 6-Man Best Ball and The Little Dalmatian 2 contests, corrected the Superflex room size, and ran a fantasy audit pass across data states, accessibility, and UX.
 
 ---
 
@@ -79,6 +111,8 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Bump resend from 6.12.2 to 6.20.0 ([#393](https://github.com/IsaacAVazquez/Website/pull/393)).
 - Bump the next group across 1 directory with 2 updates ([#383](https://github.com/IsaacAVazquez/Website/pull/383)).
 - Untrack the generated bundles and drop the dead documentation tier ([#399](https://github.com/IsaacAVazquez/Website/pull/399)).
+- Bump the testing group across 1 directory with 3 updates ([#382](https://github.com/IsaacAVazquez/Website/pull/382)).
+- Bump the react group across 1 directory with 4 updates ([#384](https://github.com/IsaacAVazquez/Website/pull/384)).
 
 ---
 
@@ -86,6 +120,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 - Bump actions/setup-node from 6 to 7 ([#338](https://github.com/IsaacAVazquez/Website/pull/338)).
 - Bump @netlify/blobs from 10.7.9 to 10.7.13 ([#392](https://github.com/IsaacAVazquez/Website/pull/392)).
+- Fixed the Netlify deploy so it uploads the static output instead of the raw `.next` directory, which had left every `/_next/static` URL returning 404, and added a check that the deployed stylesheet resolves.
 
 ---
 
@@ -107,11 +142,37 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-08-07
+
+- Added redraft lineup settings and threaded them through draft analytics, team value, the setup form, and the best ball board, with a new `docs/FANTASY_DRAFT_MODEL.md` reference.
+- Fixed fantasy compare, position filters, contrast, and phone tap targets from the August fantasy audit.
+
+---
+
+## 2026-08-06
+
+- Batched data publication into four runs a day after per-refresh Netlify builds exhausted the account's build minutes and deploys stopped reaching production.
+- Weighted best ball recommendations toward winning roster shapes by scoring completed Week 17 game stacks, starting the same-team penalty at the fifth player, and adding a positional tier cliff.
+
+---
+
 ## 2026-08-05
 
 - Bump autoprefixer from 10.4.27 to 10.5.4 ([#343](https://github.com/IsaacAVazquez/Website/pull/343)).
 - Fix invalid ARIA on the Automation Enablement Assistant dashboard ([#373](https://github.com/IsaacAVazquez/Website/pull/373)).
 - Fix invalid ProfilePage dateModified datetime flagged by Search Console ([#376](https://github.com/IsaacAVazquez/Website/pull/376)).
+- Bump actions/setup-python from 6 to 7 ([#337](https://github.com/IsaacAVazquez/Website/pull/337)).
+- Bump webpack-bundle-analyzer from 5.3.0 to 5.3.1 ([#340](https://github.com/IsaacAVazquez/Website/pull/340)).
+- Bump next-auth from 4.24.14 to 4.24.15 ([#341](https://github.com/IsaacAVazquez/Website/pull/341)).
+- Bump @tailwindcss/postcss from 4.2.2 to 4.3.3 ([#342](https://github.com/IsaacAVazquez/Website/pull/342)).
+- Moved the seven portfolio routes (`/`, `/portfolio`, `/writing`, `/dashboards`, `/about`, `/resume`, `/contact`) onto the Catalog 97 design language and added the `/design/catalog-pages` layouts canvas.
+
+---
+
+## 2026-08-02
+
+- Added best ball at `/fantasy-football/best-ball` with its own snapshot, Underdog ADP, dated contest presets, and a best ball draft tracker.
+- Added `security.txt` with a security contact.
 
 ---
 
@@ -121,6 +182,12 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Fix investment tooltip lint errors ([#362](https://github.com/IsaacAVazquez/Website/pull/362)).
 - Complete SEO and AEO crawl coverage ([#363](https://github.com/IsaacAVazquez/Website/pull/363)).
 - Strengthen personal search entity signals ([#364](https://github.com/IsaacAVazquez/Website/pull/364)).
+
+---
+
+## 2026-07-30
+
+- Added the Automation Enablement Assistant at `/enablement-assistant`, which recommends a standard test stack, builds an onboarding plan, answers setup questions, and tracks documentation gaps, along with its build article.
 
 ---
 
@@ -145,11 +212,34 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Application insights and a needs-attention list ([#316](https://github.com/IsaacAVazquez/Website/pull/316)).
 - Sync stale component names and workflow inventory with code ([#310](https://github.com/IsaacAVazquez/Website/pull/310)).
 - Give four projects their own distinct card icons ([#311](https://github.com/IsaacAVazquez/Website/pull/311)).
-- Live-first serving, daily fallback snapshot ([#325](https://github.com/IsaacAVazquez/Website/pull/325)).
+- Earthquake live-first serving with a daily fallback snapshot ([#325](https://github.com/IsaacAVazquez/Website/pull/325)).
 - Support a personal BART API key ([#326](https://github.com/IsaacAVazquez/Website/pull/326)).
 - Sync the data-source audit backlog to current reality ([#333](https://github.com/IsaacAVazquez/Website/pull/333)).
 - Re-land the blob-lane migration stranded by the stacked merge ([#334](https://github.com/IsaacAVazquez/Website/pull/334)).
 - E2E: stop hardcoding draft-tracker top picks ([#335](https://github.com/IsaacAVazquez/Website/pull/335)).
+- Bump the next group across 1 directory with 2 updates ([#287](https://github.com/IsaacAVazquez/Website/pull/287)).
+- Bump tailwind-merge from 3.5.0 to 3.6.0 ([#290](https://github.com/IsaacAVazquez/Website/pull/290)).
+- Bump framer-motion from 12.38.0 to 12.42.2 ([#291](https://github.com/IsaacAVazquez/Website/pull/291)).
+- Remove dead clustering tier engine and fix stale docs ([#301](https://github.com/IsaacAVazquez/Website/pull/301)).
+- Expand unit coverage for data libs, SEO, blog, and route state ([#303](https://github.com/IsaacAVazquez/Website/pull/303)).
+- Bump @tailwindcss/typography from 0.5.19 to 0.5.20 ([#306](https://github.com/IsaacAVazquez/Website/pull/306)).
+- Bump tsx from 4.21.0 to 4.23.1 ([#307](https://github.com/IsaacAVazquez/Website/pull/307)).
+- SEO/AEO audit: schema correctness, crawl config, and metadata gap fixes ([#312](https://github.com/IsaacAVazquez/Website/pull/312)).
+- Refresh Frontier Model Tracker with mid-2026 model lineup ([#313](https://github.com/IsaacAVazquez/Website/pull/313)).
+- Restyle food map with its own "After Hours" field-guide identity ([#314](https://github.com/IsaacAVazquez/Website/pull/314)).
+- Add rent vs. buy calculator to fintech tools ([#315](https://github.com/IsaacAVazquez/Website/pull/315)).
+- Add a year of weekly Sunday articles for full week-by-week coverage ([#317](https://github.com/IsaacAVazquez/Website/pull/317)).
+- Close the two genuine gaps from the data-pipeline audit ([#324](https://github.com/IsaacAVazquez/Website/pull/324)).
+- API tier: durable Netlify CDN caching on success responses ([#327](https://github.com/IsaacAVazquez/Website/pull/327)).
+- MLB request-time live scoreboard with snapshot fallback ([#328](https://github.com/IsaacAVazquez/Website/pull/328)).
+- Frontier models: daily live fact check (Blobs refresh lane pilot) ([#329](https://github.com/IsaacAVazquez/Website/pull/329)).
+- Token-gated request-time refresh for the Premier League and La Liga ([#330](https://github.com/IsaacAVazquez/Website/pull/330)).
+- Polling moves onto the Blobs refresh lane as its second surface ([#331](https://github.com/IsaacAVazquez/Website/pull/331)).
+- Formula 1: slim summary accessor and per-meeting route ([#332](https://github.com/IsaacAVazquez/Website/pull/332)).
+- Overhauled metadata and structured data across the site, retiring the AI meta-tag layer and consolidating the Person schema behind one `/about#person` id.
+- Rewrote `robots.txt` to allow search and answer-engine retrieval crawlers while disallowing model-training bots.
+- Redirected `/release-notes` to `/changelog` and removed the separate page and its footer link.
+- Added Belgian Grand Prix, World Cup final and format verdict, and Kimi K3 essays.
 
 ---
 
@@ -186,6 +276,14 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Bump actions/cache from 5 to 6 ([#267](https://github.com/IsaacAVazquez/Website/pull/267)).
 - Three-readout live feed in the homepage hero ([#285](https://github.com/IsaacAVazquez/Website/pull/285)).
 - Add pixel-art covers for unbuilt project surfaces ([#286](https://github.com/IsaacAVazquez/Website/pull/286)).
+- Auto-append merged PRs to the changelog ([#276](https://github.com/IsaacAVazquez/Website/pull/276)).
+
+---
+
+## 2026-07-05
+
+- Implement the Working Instrument design system across all surfaces ([#274](https://github.com/IsaacAVazquez/Website/pull/274)).
+- Align site prose with writing voice ([#275](https://github.com/IsaacAVazquez/Website/pull/275)).
 
 ---
 

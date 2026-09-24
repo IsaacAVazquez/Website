@@ -1,0 +1,16 @@
+---
+title: The Working Instrument design system lands on every surface
+publishedAt: "2026-07-05"
+category: Design
+summary: The site moved onto the Working Instrument design system, the homepage hero became a three-readout live feed, and a voice pass brought article and page copy in line with the writing rules.
+tags:
+  - design
+  - home
+  - writing
+---
+
+I had been iterating on a design system I call the Working Instrument in a separate design project, and by early July the designs had moved well past what was live, so this was the pass that brought the site up to them. The shared pieces landed first, from a radius scale that maps onto the design tokens (a bare `rounded-2xl` had been rendering 16px against a 6px token), to new kicker, chip, and readout primitives, to one tape shell that the investments quote tape, the league results, and the launch tape now share. Then the surfaces followed, with a graded tier rail on the fantasy board, a live-index treatment on the portfolio, and the headshot and employer timeline merged into About. I also fixed a real dark-mode bug on the way through, where a `color-mix(..., white)` was lightening an inset panel in both themes.
+
+The homepage hero picked up the piece I like most from the design, a stacked live feed with three readouts under a Pacific clock. It shows the latest USGS earthquake magnitude, the next SpaceX launch with a ticking countdown, and the day's move in SPY, all read from committed snapshots, and any readout that has no data drops out instead of breaking the hero.
+
+The same week I ran a voice pass over the articles and page copy against `WRITING_VOICE.md`, which took the "complete guide" openers out of article titles, smoothed a lot of clipped fragments back into sentences, and swapped out the vocabulary that reads as machine-written.

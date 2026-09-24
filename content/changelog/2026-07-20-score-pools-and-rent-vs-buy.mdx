@@ -1,0 +1,17 @@
+---
+title: Score pools, a rent vs buy calculator, and a year of Sunday articles
+publishedAt: "2026-07-20"
+category: Launch
+summary: The exact-score prediction pool became a live tool at /score-pools, rent vs buy joined the fintech tools, the frontier model tracker and food map got refreshed, and 37 weekly articles filled every empty Sunday of the past year.
+tags:
+  - launch
+  - fintech
+  - food-map
+  - writing
+---
+
+[Score pools](/score-pools) is the exact-score prediction workflow I used to run by hand every matchday, turned into a pick sheet, a tracker, and settings. It de-vigs the bookmaker odds into fair probabilities, builds a scoreline distribution that is calibrated so its win, draw, and loss masses match the market and its total matches the over/under, and then picks the score that earns the most expected points under the pool's scoring rules. What made me build it is the result that falls out of the arithmetic, which is that a draw pick can beat picking the favorite even when the favorite is more likely, because the draw banks partial points on every draw. It also handles the 90-minute versus final-result question honestly, since a knockout that ends 1-1 and goes to penalties scores differently under each rule. The engine is a set of pure, tested modules, and anywhere the calibration had to compromise it says so in its diagnostics.
+
+[Rent vs buy](/fintech-tools/rent-vs-buy) answers what I think is the honest version of that question, which is what you are worth years from now on each path. Most calculators stop at the monthly payment, which quietly favors buying because it ignores what the down payment could have earned. This one gives the renter the buyer's up-front cash as an investment, puts each month's cost difference into whichever side spends less, and reports the break-even year and net worth at the horizon. The tax piece is deliberately simplified and marked as unverified on the page.
+
+A few other things landed the same day. The [frontier model tracker](/frontier-models) moved to the mid-2026 lineup across nine models and seven providers. The [food map](/food-map) got its own identity, a late-night printed field guide with ticket-stub listings and a dossier for each spot, while keeping every filter and link it had. And I filled the 37 Sundays between July 2025 and July 2026 that had no article, so the writing archive now has at least one piece for every week of the past year, ending with the World Cup quarterfinals and final.

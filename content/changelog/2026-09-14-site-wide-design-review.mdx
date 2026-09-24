@@ -1,0 +1,17 @@
+---
+title: A site-wide design review that mostly found wrong words
+publishedAt: "2026-09-14"
+category: Fix
+summary: Reviews of the main pages, articles, investments, the fintech tools, and score pools found copy and numbers that said something untrue, and those were fixed along with the accessibility gaps.
+tags:
+  - design
+  - accessibility
+  - investments
+  - fixes
+---
+
+I ran a structured design review over the main portfolio pages, the article view, [investments](/investments), the three fintech tools, and [score pools](/score-pools), with every serious finding checked by a second reviewer before anything changed. What stood out is that the worst problems were sentences that said something untrue. About and the résumé gave different figures for the same jobs, and they now match. The homepage claimed every tool refreshes itself and was showing a month-old SPY move as if it were today's, which traced back to the investments refresh failing on every run since August 19. That refresh is fixed, and the readouts print their dates now.
+
+On the articles, when I looked at every fetched cover photo next to its post, 31 of the 57 showed something other than what the article was about, so those came off and the ones that matched kept their photo with alt text written from what is in the frame. Posts without a real photo now open straight into the title and body. On investments, the quote tape now says whether it is showing live quotes or last saved prices, and the position panel says a price is unavailable instead of showing a return it could not compute.
+
+The fintech tools had the most direct case of this. [Interchange IQ](/fintech-tools/interchange-iq) told merchants that IC+ never beats flat-rate pricing in exactly the cases where it was cheaper at every ticket size, right above a table showing it at about half the cost. [Rent vs buy](/fintech-tools/rent-vs-buy) could say buying pulls ahead in year five next to a verdict for renting, and it snapped the home price to $10,000 as soon as you started typing a new one. Score pools promised a six-hour refresh beside data that was 57 days old. All of those are fixed.

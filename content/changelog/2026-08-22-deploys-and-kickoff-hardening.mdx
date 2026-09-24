@@ -1,0 +1,17 @@
+---
+title: Fixing deploys, getting the fantasy tools ready for kickoff, and a cleanup
+publishedAt: "2026-08-22"
+category: Fix
+summary: Data publication was batched after it used up the Netlify build minutes, a deploy bug that served an unstyled site was fixed, the fantasy pipeline was taught the real NFL calendar, and a large dead-code sweep landed.
+tags:
+  - reliability
+  - fantasy-football
+  - accessibility
+  - fixes
+---
+
+Two deploy problems took up more of August than I would have liked. The first was that sixteen scheduled data refreshes were each triggering their own Netlify build, about 80 builds a week against about 20 real code pushes, and once that used up the account's build minutes every deploy from August 6 was skipped without any visible error, because the refresh commits themselves kept succeeding. Data now publishes four times a day in a batch, which means a refresh can wait up to six hours before it is live. The second was on August 21, when I found the deploy step was uploading the raw Next.js build output instead of the static files, so every stylesheet and script URL returned a 404 and production served an unstyled page. Build and deploy now run as one command, and a check confirms the deployed stylesheet resolves.
+
+Before the NFL season opened, I went through what would break when every board on the fantasy page stopped being a draft board. The week helper was anchored to the Thursday after Labor Day, but the 2026 season opens on Wednesday, September 9, so it was reporting week 0 on opening day. ADP freshness only aged the data from July through September, which would have let a frozen September market read as current all fall. And the pipeline thought the season ended October 1. All three follow the real schedule now, and the same work added the in-season [weekly board](/fantasy-football/weekly), which fills in once Week 1 rankings publish.
+
+The rest was cleanup. A contrast fix raised the muted label color from 2.88:1 in light mode to past 4.5:1 in both themes, which it needed, since one sweep had found 632 failing text nodes coming from that single token. And a dead-code sweep removed 85 files, about 21,000 lines, and seven dependencies.

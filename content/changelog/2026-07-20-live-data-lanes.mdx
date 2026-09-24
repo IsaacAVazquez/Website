@@ -1,0 +1,16 @@
+---
+title: Several dashboards now serve live data first
+publishedAt: "2026-07-20"
+category: Update
+summary: Earthquake, MLB, Premier League, and La Liga data now refresh at request time with the committed snapshot as the fallback, while frontier models and polling moved to a scheduled refresh that needs no commit or deploy.
+tags:
+  - dashboards
+  - reliability
+  - snapshots
+---
+
+Most dashboards here read a committed snapshot that a scheduled job refreshes, which is reliable but means the data is only as current as the last commit, and it was filling `main` with bot commits. So for the sources that can handle it I flipped the order. The [earthquake dashboard](/earthquake-pulse), [MLB](/mlb), and, when an API token is set, the [Premier League](/premier-league) and [La Liga](/la-liga) summaries now fetch the time-sensitive data at request time behind a short in-memory cache that collapses concurrent requests into one upstream call. Any failure falls back to the committed snapshot and is never cached, and the scheduled jobs now just keep that fallback warm. Earthquake alone had been making about 24 commits a day, and it now makes one.
+
+The [frontier model tracker](/frontier-models) and the [polling aggregator](/polling-aggregator) went a step further onto a refresh path with no git involved. A scheduled function fetches the source, writes it to Netlify Blobs storage, and purges the page's cache, so nothing gets committed or redeployed. For frontier models that means a daily fact check of pricing, context windows, and release dates against two public model catalogs, matched by exact name and never fuzzy, while my editorial notes stay untouched. Polling went from four snapshot commits and deploys a day to one.
+
+Formula 1 also stopped shipping every race's full results to the page. It now sends a slim summary up front and loads a meeting's results when you open it.
