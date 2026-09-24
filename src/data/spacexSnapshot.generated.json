@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-24T14:16:10.106Z",
+  "generatedAt": "2026-09-24T23:55:38.972Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-09-24T14:15:59.466Z"
+    "generatedAt": "2026-09-24T23:55:19.618Z"
   },
   "upcomingLaunches": [
     {
@@ -314,6 +314,46 @@
       }
     },
     {
+      "id": "4651fd8a-43de-4166-bf8f-c168b3bd1d2c",
+      "name": "NROL-97",
+      "flightNumber": 735,
+      "upcoming": true,
+      "success": null,
+      "details": "Classified payload for the US National Reconnaissance Office.",
+      "dateUtc": "2026-10-02T03:53:00Z",
+      "dateUnix": 1790913180,
+      "dateLocal": "2026-10-02T03:53:00Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon Heavy",
+      "launchpadName": "Launch Complex 39A",
+      "launchpadLocation": "Kennedy Space Center, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/c62ac3115cf4d061.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 3,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/National_Reconnaissance_Office",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/c62ac3115cf4d061.jpg"
+        ]
+      }
+    },
+    {
       "id": "97c6f5e1-299e-4652-b72d-9618ac047076",
       "name": "Starlink Group 15-25",
       "flightNumber": 735,
@@ -430,46 +470,6 @@
         "patchLarge": null,
         "flickrOriginal": [
           "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
-      "id": "4651fd8a-43de-4166-bf8f-c168b3bd1d2c",
-      "name": "NROL-97",
-      "flightNumber": 739,
-      "upcoming": true,
-      "success": null,
-      "details": "Classified payload for the US National Reconnaissance Office",
-      "dateUtc": "2026-10-31T00:00:00Z",
-      "dateUnix": 1793404800,
-      "dateLocal": "2026-10-31T00:00:00Z",
-      "datePrecision": "quarter",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon Heavy",
-      "launchpadName": "Launch Complex 39A",
-      "launchpadLocation": "Kennedy Space Center, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/c62ac3115cf4d061.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 3,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/National_Reconnaissance_Office",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/c62ac3115cf4d061.jpg"
         ]
       }
     },
@@ -2279,15 +2279,15 @@
     "4651fd8a-43de-4166-bf8f-c168b3bd1d2c": {
       "id": "4651fd8a-43de-4166-bf8f-c168b3bd1d2c",
       "name": "NROL-97",
-      "flightNumber": 739,
+      "flightNumber": 735,
       "upcoming": true,
       "success": null,
-      "details": "Classified payload for the US National Reconnaissance Office",
-      "dateUtc": "2026-10-31T00:00:00Z",
-      "dateUnix": 1793404800,
-      "dateLocal": "2026-10-31T00:00:00Z",
-      "datePrecision": "quarter",
-      "tbd": true,
+      "details": "Classified payload for the US National Reconnaissance Office.",
+      "dateUtc": "2026-10-02T03:53:00Z",
+      "dateUnix": 1790913180,
+      "dateLocal": "2026-10-02T03:53:00Z",
+      "datePrecision": "hour",
+      "tbd": false,
       "net": true,
       "rocketName": "Falcon Heavy",
       "launchpadName": "Launch Complex 39A",
@@ -2298,11 +2298,11 @@
       "payloadCount": 1,
       "capsuleCount": 0,
       "coreCount": 3,
-      "hasExactTime": false,
+      "hasExactTime": true,
       "isStaleSchedule": false,
       "links": {
-        "webcast": null,
-        "article": null,
+        "webcast": "https://x.com/i/broadcasts/1oJMvNkPPXlxQ",
+        "article": "https://www.spacex.com/launches/nrol97",
         "wikipedia": "https://en.wikipedia.org/wiki/National_Reconnaissance_Office",
         "presskit": null,
         "redditLaunch": null,
@@ -2316,7 +2316,7 @@
         ]
       },
       "staticFireDateUtc": null,
-      "window": 0,
+      "window": 2940,
       "failures": [],
       "rocket": {
         "id": "161",
@@ -2843,6 +2843,6 @@
       }
     ],
     "rangeLabel": "Oct 25 – Sep 26",
-    "generatedAt": "2026-09-24T14:16:10.106Z"
+    "generatedAt": "2026-09-24T23:55:38.972Z"
   }
 }
