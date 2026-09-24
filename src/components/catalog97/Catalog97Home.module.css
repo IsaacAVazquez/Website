@@ -1,9 +1,9 @@
 /* Hero: the proofed sheet. */
 .hero { padding-bottom: var(--c97-sp-6); }
-/* The portrait pasted on the left, the headline, lead, and buttons on the right. */
+/* The headline, lead, and buttons on the left, the portrait pasted on the right. */
 .heroGrid {
   display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
   align-items: center;
   gap: var(--c97-sp-6);
 }
@@ -27,7 +27,7 @@
 @media (max-width: 880px) {
   .heroGrid { grid-template-columns: minmax(0, 1fr); gap: var(--c97-sp-5); }
   .heroCopy { grid-template-areas: "h1" "actions" "lead"; }
-  .portrait { order: 2; width: min(72%, 300px); }
+  .portrait { width: min(72%, 300px); }
 }
 
 /* The board: a heading row, the collage of doors, then the strip under it. */
