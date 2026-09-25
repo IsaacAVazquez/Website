@@ -3,6 +3,8 @@ import { Activity, ArrowUpRight, CalendarDays, Clock3, Radar, Rocket } from "luc
 import type { MissionControlSummary } from "@/types/spacex";
 import { MissionVehiclePhoto } from "./MissionVehiclePhoto";
 import { formatMissionScheduleLabel } from "./formatters";
+import { crossedScheduledT0 } from "./liftoff";
+import liftoffStyles from "./MissionLiftoff.module.css";
 
 interface MissionControlHeroProps {
   summary: MissionControlSummary | null;
@@ -30,6 +32,35 @@ function formatCountdown(dateUtc: string, now = Date.now()): string | null {
     .padStart(2, "0")}m ${seconds.toString().padStart(2, "0")}s`;
 }
 
+/**
+ * The T-0 rocket. Decorative, fixed, and gone under reduced motion. The rise
+ * ends above the viewport, and the rocket unmounts right then so its flame
+ * stops flickering. The flame's own animation events bubble up here too, so
+ * only the rise's end counts.
+ */
+function MissionLiftoff() {
+  const [flying, setFlying] = useState(true);
+  if (!flying) return null;
+  return (
+    <div
+      aria-hidden="true"
+      className={liftoffStyles.rocket}
+      onAnimationEnd={(event) => {
+        if (event.target === event.currentTarget) setFlying(false);
+      }}
+    >
+      <svg className={liftoffStyles.body} viewBox="0 0 28 64" focusable="false">
+        <path className={liftoffStyles.flame} d="M9 52 L14 64 L19 52 Z" />
+        <path className={liftoffStyles.trim} d="M8 34 L2 48 L8 46 Z M20 34 L26 48 L20 46 Z" />
+        <path className={liftoffStyles.hull} d="M14 0 C20 8 21 18 20 30 L20 50 L8 50 L8 30 C7 18 8 8 14 0 Z" />
+        <path className={liftoffStyles.trim} d="M14 0 C18 5 19.5 9 19.8 12 L8.2 12 C8.5 9 10 5 14 0 Z" />
+        <circle className={liftoffStyles.port} cx="14" cy="22" r="3" />
+      </svg>
+      <span className={liftoffStyles.exhaust} />
+    </div>
+  );
+}
+
 function MissionCountdown({
   dateUtc,
   initialNow,
@@ -38,13 +69,27 @@ function MissionCountdown({
   initialNow: number;
 }) {
   const [now, setNow] = useState(initialNow);
+  // The dateUtc whose T-0 this page view watched cross, so it fires once.
+  const [liftoffFor, setLiftoffFor] = useState<string | null>(null);
 
   useEffect(() => {
+    const netMs = Date.parse(dateUtc);
+    // Seeded from the client clock, never the server render time, so a page
+    // opened after T-0 does not count as having watched the crossing.
+    let previous = Date.now();
     // eslint-disable-next-line react-hooks/set-state-in-effect -- Subscribe to a 1s clock tick so the countdown UI re-renders; setState lives inside an interval callback and a one-time initial sync after mount
-    setNow(Date.now());
+    setNow(previous);
 
     const intervalId = window.setInterval(() => {
-      setNow(Date.now());
+      const current = Date.now();
+      if (
+        document.visibilityState === "visible" &&
+        crossedScheduledT0(previous, current, netMs)
+      ) {
+        setLiftoffFor(dateUtc);
+      }
+      previous = current;
+      setNow(current);
     }, 1000);
 
     return () => {
@@ -54,7 +99,23 @@ function MissionCountdown({
 
   const countdown = formatCountdown(dateUtc, now);
   if (!countdown) {
-    return null;
+    if (liftoffFor !== dateUtc) {
+      return null;
+    }
+
+    return (
+      <>
+        <MissionLiftoff />
+        <p
+          data-testid="mission-liftoff-note"
+          role="status"
+          className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-4 py-2 text-sm font-semibold text-[var(--home-ink)]"
+        >
+          <Rocket aria-hidden="true" className="h-4 w-4 text-[var(--home-signal)]" />
+          T-0 by the schedule. The snapshot can&apos;t tell me whether it flew.
+        </p>
+      </>
+    );
   }
 
   return (

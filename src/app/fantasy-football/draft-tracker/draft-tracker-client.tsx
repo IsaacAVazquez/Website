@@ -24,6 +24,7 @@ import {
   isPlayerValueAtPick,
   reconcileTeamRosters,
 } from "@/lib/draftAnalytics";
+import { getEarlySpecialistNote } from "@/lib/draftEarlySpecialistNote";
 import { resolveDraftTelemetry } from "@/lib/draftTelemetry";
 import { calculateRedraftDraftValues } from "@/lib/fantasyTeamValue";
 import {
@@ -329,6 +330,7 @@ export function DraftTrackerClient() {
   // full recommendation cards sit behind this toggle so the board stays high.
   const [showDecisionDetail, setShowDecisionDetail] = useState(false);
   const [exportToast, setExportToast] = useState<string | null>(null);
+  const [specialistNote, setSpecialistNote] = useState<string | null>(null);
   const [returnAssumptions, setReturnAssumptions] = useState<ExpectedReturnFormState>({
     entryCost: "",
     payoutProbability: "",
@@ -807,6 +809,12 @@ export function DraftTrackerClient() {
         recordedAt: new Date().toISOString(),
       });
     }
+    const note = getEarlySpecialistNote(
+      { round: draftState.currentRound, teamNumber: currentTeamNumber, player },
+      draftState.settings.userTeam,
+      draftState.picks,
+    );
+    if (note) setSpecialistNote(note);
     setLoggedPickRequests((count) => count + 1);
     draftPlayer(player);
   }
@@ -817,6 +825,7 @@ export function DraftTrackerClient() {
     if (draftState.picks.length > 0) {
       resetDraft();
     }
+    setSpecialistNote(null);
     startDraft();
     setSetupScoringFormat(null);
     setRoomSetupOpen(false);
@@ -1319,6 +1328,27 @@ export function DraftTrackerClient() {
               ))}
             </div>
           )}
+
+          {/* Kept mounted so the note announces when it appears. */}
+          <div role="status" aria-live="polite" className={SHELL_CLASS}>
+            {specialistNote ? (
+              <div
+                className="mt-2.5 flex items-start justify-between gap-3 rounded border px-3.5 py-1 text-sm leading-6"
+                style={WARNING_CARD_STYLE}
+              >
+                <p className="m-0 py-1.5">{specialistNote}</p>
+                <button
+                  type="button"
+                  onClick={() => setSpecialistNote(null)}
+                  aria-label="Dismiss note"
+                  className="inline-flex min-h-touch min-w-touch flex-none items-center justify-center font-mono text-2xs"
+                  style={{ color: "var(--home-ink-muted)" }}
+                >
+                  ✕
+                </button>
+              </div>
+            ) : null}
+          </div>
 
           <section
             aria-label="Your roster"

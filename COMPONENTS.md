@@ -42,13 +42,15 @@ page's only `<main>`, header, and footer.
 |----------|------|------|
 | `Catalog97Shell` | `src/components/catalog97/Catalog97Shell.tsx` | Page wrapper: header, `<main>`, espresso footer |
 | `Catalog97Header` | `src/components/catalog97/Catalog97Header.tsx` | Client header with seven route links, site search, theme control, and an oxblood rule under the active route |
+| `Catalog97Monet` | `src/components/catalog97/Catalog97Monet.tsx` | Mounted once by the header. Sets `data-c97-daypart` on `<html>` so the brand hover fills the name with a Monet canvas picked by local time, and feeds the pointer position to every `[data-c97-paint]` element for the painted circle reveal on the home and /about portraits and the home collage plates. Clicking a portrait cycles its painter (Monet, Van Gogh, Seurat, Hopper) through `data-c97-painter`. The styles are the Monet and paint reveal blocks in `catalog97.css` |
+| `Catalog97EasterEggs` | `src/components/catalog97/Catalog97EasterEggs.tsx` | Mounted once by the header. The Konami code (matcher in `konami.ts`) throws the page out of register for six seconds and opens a toast pointing to /arcade, the console gets a note once per full load, clicking the footer wordmark stamps it, holding Option (Alt) lays press-proof marks over the viewport, and the tab title reads "Still on the press…" while the tab is hidden. The hidden search answers live in `src/app/api/search/route.ts`, the early kicker or defense note in `src/lib/draftEarlySpecialistNote.ts`, and the halftone split, overprint text selection, and article end mark are CSS in `catalog97.css` |
 | `Catalog97Primitives` | `src/components/catalog97/Catalog97Primitives.tsx` | `Catalog97Plate` (Anton numeral) and `Catalog97Slot` (flat image field) |
 | `Catalog97Home` | `src/components/catalog97/Catalog97Home.tsx` | `/` composition root. Props: `featuredProjects`, `recentPosts`, `heroIndex`, `liveToolGroups`, `liveFeed` |
 | `Catalog97Portfolio` | `src/components/catalog97/Catalog97Portfolio.tsx` | `/portfolio` index with client-side search, sorting, and category filters over `classifyToolSlug` |
 | `Catalog97Writing` | `src/components/catalog97/Catalog97Writing.tsx` | `/writing` index with client-side search, sorting, cluster/length/bucket filters, and topic links |
 | `Catalog97Dashboards` | `src/components/catalog97/Catalog97Dashboards.tsx` | `/dashboards` mosaic. Props: `groups`, `summaries` |
 | `Catalog97About` | `src/components/catalog97/Catalog97About.tsx` | `/about` content, reads `careerTimeline` |
-| `Catalog97Resume` | `src/components/catalog97/Catalog97Resume.tsx` | `/resume` content |
+| `Catalog97Resume` | `src/components/catalog97/Catalog97Resume.tsx` | `/resume` content. `Catalog97Resume.module.css` is its print stylesheet, which drops the site chrome, prints black on white, and signs the foot of the page with a pressman's mark that never shows on screen |
 | `Catalog97Contact` | `src/components/catalog97/Catalog97Contact.tsx` | `/contact` content, with no form because there is no form backend |
 
 ### Writing and structured data

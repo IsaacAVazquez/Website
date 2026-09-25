@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Catalog97Shell } from "./Catalog97Shell";
 import { careerTimeline } from "@/constants/personal";
+import styles from "./Catalog97Resume.module.css";
 
 /**
  * The institution marks, keyed by company.
@@ -175,13 +176,11 @@ const RESUME_PDF = "/Isaac_Vazquez_Resume.pdf";
  */
 export function Catalog97Resume() {
   return (
-    <Catalog97Shell>
-      {/* Hero, the proofed sheet. */}
-      <section
-        className="c97-band c97-sheet"
-        data-c97-surface="paper"
-      >
-        {/*
+    <div className={styles.print}>
+      <Catalog97Shell>
+        {/* Hero, the proofed sheet. */}
+        <section className="c97-band c97-sheet" data-c97-surface="paper">
+          {/*
           Flex with wrap rather than `grid: 1fr auto`, which is what the other
           hero rows use. Their second cell is a plate numeral about 70px wide,
           which always fits. This one is a 160px button that cannot shrink,
@@ -190,31 +189,34 @@ export function Catalog97Resume() {
           160px inside a 52.8px track, and the page scrolled sideways to 385px.
           The download band lower down already solves the same pairing this way.
         */}
-        <div
-          className="c97-shell"
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "var(--c97-sp-5)",
-            alignItems: "end",
-            justifyContent: "space-between",
-          }}
-        >
-          <div style={{ flex: "1 1 260px", minWidth: 0 }}>
-            <h1 className="c97-poster">
-              Product work, with a quality engineering habit.
-            </h1>
+          <div
+            className="c97-shell"
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "var(--c97-sp-5)",
+              alignItems: "end",
+              justifyContent: "space-between",
+            }}
+          >
+            <div style={{ flex: "1 1 260px", minWidth: 0 }}>
+              <h1 className="c97-poster">
+                Product work, with a quality engineering habit.
+              </h1>
+            </div>
+            <a className="c97-btn c97-offset" href={RESUME_PDF} download>
+              Download PDF
+            </a>
           </div>
-          <a className="c97-btn c97-offset" href={RESUME_PDF} download>
-            Download PDF
-          </a>
-        </div>
-      </section>
+        </section>
 
-      {/* Experience */}
-      <section className="c97-band c97-band-continues" data-c97-surface="paper">
-        <div className="c97-shell">
-          {/*
+        {/* Experience */}
+        <section
+          className="c97-band c97-band-continues"
+          data-c97-surface="paper"
+        >
+          <div className="c97-shell">
+            {/*
             Every section heading on this route was an h2 carrying
             `c97-kicker`, so all five rendered at 11px while their children ran
             at 26px or 22px. --c97-fs-h2 is 32px against both and clamps to
@@ -222,43 +224,166 @@ export function Catalog97Resume() {
             --c97-fs-h3 here; it collapses to within a pixel of --c97-fs-lead
             once both clamps bottom out, which was measured on /portfolio.
           */}
-          <h2 className="c97-poster-sm">Experience</h2>
-          <div
-            style={{
-              display: "grid",
-              gap: "var(--c97-sp-4)",
-              marginTop: "var(--c97-sp-3)",
-            }}
-          >
-            {experience.map((entry) => (
-              <article
-                key={`${entry.company}-${entry.role}`}
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "auto 1fr",
-                  gap: "var(--c97-sp-4)",
-                  alignItems: "baseline",
-                }}
-              >
-                <div
-                  className="c97-serif c97-tabular"
+            <h2 className="c97-poster-sm">Experience</h2>
+            <div
+              style={{
+                display: "grid",
+                gap: "var(--c97-sp-4)",
+                marginTop: "var(--c97-sp-3)",
+              }}
+            >
+              {experience.map((entry) => (
+                <article
+                  key={`${entry.company}-${entry.role}`}
                   style={{
-                    fontSize: "var(--c97-fs-body)",
-                    color: "var(--c97-label)",
-                    minWidth: "9ch",
+                    display: "grid",
+                    gridTemplateColumns: "auto 1fr",
+                    gap: "var(--c97-sp-4)",
+                    alignItems: "baseline",
                   }}
                 >
-                  {entry.when}
-                </div>
-                <div>
-                  <h3
-                    className="c97-serif c97-h3"
-                    style={{ color: "var(--c97-ink-2)" }}
+                  <div
+                    className="c97-serif c97-tabular"
+                    style={{
+                      fontSize: "var(--c97-fs-body)",
+                      color: "var(--c97-label)",
+                      minWidth: "9ch",
+                    }}
                   >
-                    {entry.role}
-                  </h3>
+                    {entry.when}
+                  </div>
+                  <div>
+                    <h3
+                      className="c97-serif c97-h3"
+                      style={{ color: "var(--c97-ink-2)" }}
+                    >
+                      {entry.role}
+                    </h3>
+                    <p
+                      className="c97-meta"
+                      style={{ marginTop: "var(--c97-sp-1)" }}
+                    >
+                      <span
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "var(--c97-sp-1)",
+                        }}
+                      >
+                        <Catalog97CompanyMark company={entry.company} />
+                        {entry.company}
+                      </span>
+                      <span>{entry.kind}</span>
+                    </p>
+                    <p
+                      className="c97-prose"
+                      style={{ marginTop: "var(--c97-sp-2)" }}
+                    >
+                      {entry.description}
+                    </p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Download band */}
+        <section
+          className={`c97-band c97-sheet ${styles.screenOnly}`}
+          data-c97-surface="chocolate"
+          data-seam="torn"
+        >
+          <div
+            className="c97-shell"
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "var(--c97-sp-3)",
+              alignItems: "end",
+              justifyContent: "space-between",
+            }}
+          >
+            <p className="c97-poster-sm" style={{ maxWidth: "20ch" }}>
+              The one-page version, ready to print.
+            </p>
+            <a
+              className="c97-btn c97-btn-invert c97-offset"
+              href={RESUME_PDF}
+              download
+            >
+              Download PDF
+            </a>
+          </div>
+        </section>
+
+        {/* Capabilities */}
+        <section
+          className="c97-band c97-band-tall c97-sheet"
+          data-c97-surface="ink-blue"
+          data-seam="torn"
+        >
+          <div className="c97-shell">
+            <h2 className="c97-poster-sm">Capabilities</h2>
+            <div
+              className="c97-columns"
+              style={{
+                gridTemplateColumns:
+                  "repeat(auto-fit,minmax(min(100%, 200px),1fr))",
+                gap: "var(--c97-sp-4)",
+                marginTop: "var(--c97-sp-4)",
+              }}
+            >
+              {capabilities.map((group) => (
+                <div key={group.category}>
+                  <h3 className="c97-serif c97-lead">{group.category}</h3>
                   <p
-                    className="c97-meta"
+                    className="c97-prose"
+                    style={{
+                      marginTop: "var(--c97-sp-1)",
+                      lineHeight: "var(--c97-lh-loose)",
+                      color: "var(--c97-ink-2)",
+                    }}
+                  >
+                    {group.skills}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Education, outside work, references */}
+        <section
+          className="c97-band c97-sheet"
+          data-c97-surface="ink-saffron"
+          data-seam="torn"
+        >
+          <div
+            className="c97-shell c97-columns"
+            style={{
+              gridTemplateColumns:
+                "repeat(auto-fit,minmax(min(100%, 220px),1fr))",
+              gap: "var(--c97-sp-4)",
+            }}
+          >
+            <div>
+              {/*
+              Education, Outside work and References are the three columns of
+              one saffron band, so they move together. Education is the only one
+              with heading children and so the only strict inversion, but
+              leaving the other two at 11px beside a 32px sibling would put
+              three mismatched headers in one row.
+            */}
+              <h2 className="c97-poster-sm">Education</h2>
+              {education.map((entry) => (
+                <div
+                  key={entry.company}
+                  style={{ marginTop: "var(--c97-sp-2)" }}
+                >
+                  <h3 className="c97-serif c97-lead">{entry.role}</h3>
+                  <p
+                    className="c97-kicker"
                     style={{ marginTop: "var(--c97-sp-1)" }}
                   >
                     <span
@@ -270,180 +395,67 @@ export function Catalog97Resume() {
                     >
                       <Catalog97CompanyMark company={entry.company} />
                       {entry.company}
-                    </span>
-                    <span>{entry.kind}</span>
+                    </span>{" "}
+                    · {entry.when}
                   </p>
-                  <p
-                    className="c97-prose"
-                    style={{ marginTop: "var(--c97-sp-2)" }}
-                  >
-                    {entry.description}
-                  </p>
+                  {entry.description ? (
+                    <p
+                      className="c97-prose"
+                      style={{
+                        marginTop: "var(--c97-sp-1)",
+                        maxWidth: "var(--c97-measure-body)",
+                      }}
+                    >
+                      {entry.description}
+                    </p>
+                  ) : null}
                 </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+              ))}
+            </div>
 
-      {/* Download band */}
-      <section
-        className="c97-band c97-sheet"
-        data-c97-surface="chocolate"
-        data-seam="torn"
-      >
-        <div
-          className="c97-shell"
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "var(--c97-sp-3)",
-            alignItems: "end",
-            justifyContent: "space-between",
-          }}
-        >
-          <p className="c97-poster-sm" style={{ maxWidth: "20ch" }}>
-            The one-page version, ready to print.
-          </p>
-          <a
-            className="c97-btn c97-btn-invert c97-offset"
-            href={RESUME_PDF}
-            download
-          >
-            Download PDF
-          </a>
-        </div>
-      </section>
+            <div>
+              <h2 className="c97-poster-sm">Outside work</h2>
+              <p
+                className="c97-prose"
+                style={{
+                  marginTop: "var(--c97-sp-2)",
+                  lineHeight: "var(--c97-lh-loose)",
+                  maxWidth: "var(--c97-measure-body)",
+                }}
+              >
+                {interests}
+              </p>
+            </div>
 
-      {/* Capabilities */}
-      <section
-        className="c97-band c97-band-tall c97-sheet"
-        data-c97-surface="ink-blue"
-        data-seam="torn"
-      >
-        <div className="c97-shell">
-          <h2 className="c97-poster-sm">Capabilities</h2>
-          <div
-            className="c97-columns"
-            style={{
-              gridTemplateColumns:
-                "repeat(auto-fit,minmax(min(100%, 200px),1fr))",
-              gap: "var(--c97-sp-4)",
-              marginTop: "var(--c97-sp-4)",
-            }}
-          >
-            {capabilities.map((group) => (
-              <div key={group.category}>
-                <h3 className="c97-serif c97-lead">{group.category}</h3>
-                <p
-                  className="c97-prose"
-                  style={{
-                    marginTop: "var(--c97-sp-1)",
-                    lineHeight: "var(--c97-lh-loose)",
-                    color: "var(--c97-ink-2)",
-                  }}
-                >
-                  {group.skills}
-                </p>
-              </div>
-            ))}
+            <div>
+              <h2 className="c97-poster-sm">References</h2>
+              <p
+                className="c97-prose"
+                style={{
+                  marginTop: "var(--c97-sp-2)",
+                  maxWidth: "var(--c97-measure-body)",
+                }}
+              >
+                Available on request, and I am happy to walk through any project
+                on this site line by line.
+              </p>
+              <Link
+                className="c97-btn-ghost"
+                href="/contact"
+                style={{ marginTop: "var(--c97-sp-2)" }}
+              >
+                Get in touch
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Education, outside work, references */}
-      <section
-        className="c97-band c97-sheet"
-        data-c97-surface="ink-saffron"
-        data-seam="torn"
-      >
-        <div
-          className="c97-shell c97-columns"
-          style={{
-            gridTemplateColumns:
-              "repeat(auto-fit,minmax(min(100%, 220px),1fr))",
-            gap: "var(--c97-sp-4)",
-          }}
-        >
-          <div>
-            {/*
-              Education, Outside work and References are the three columns of
-              one saffron band, so they move together. Education is the only one
-              with heading children and so the only strict inversion, but
-              leaving the other two at 11px beside a 32px sibling would put
-              three mismatched headers in one row.
-            */}
-            <h2 className="c97-poster-sm">Education</h2>
-            {education.map((entry) => (
-              <div key={entry.company} style={{ marginTop: "var(--c97-sp-2)" }}>
-                <h3 className="c97-serif c97-lead">{entry.role}</h3>
-                <p
-                  className="c97-kicker"
-                  style={{ marginTop: "var(--c97-sp-1)" }}
-                >
-                  <span
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "var(--c97-sp-1)",
-                    }}
-                  >
-                    <Catalog97CompanyMark company={entry.company} />
-                    {entry.company}
-                  </span>{" "}
-                  · {entry.when}
-                </p>
-                {entry.description ? (
-                  <p
-                    className="c97-prose"
-                    style={{
-                      marginTop: "var(--c97-sp-1)",
-                      maxWidth: "var(--c97-measure-body)",
-                    }}
-                  >
-                    {entry.description}
-                  </p>
-                ) : null}
-              </div>
-            ))}
-          </div>
-
-          <div>
-            <h2 className="c97-poster-sm">Outside work</h2>
-            <p
-              className="c97-prose"
-              style={{
-                marginTop: "var(--c97-sp-2)",
-                lineHeight: "var(--c97-lh-loose)",
-                maxWidth: "var(--c97-measure-body)",
-              }}
-            >
-              {interests}
-            </p>
-          </div>
-
-          <div>
-            <h2 className="c97-poster-sm">References</h2>
-            <p
-              className="c97-prose"
-              style={{
-                marginTop: "var(--c97-sp-2)",
-                maxWidth: "var(--c97-measure-body)",
-              }}
-            >
-              Available on request, and I am happy to walk through any project
-              on this site line by line.
-            </p>
-            <Link
-              className="c97-btn-ghost"
-              href="/contact"
-              style={{ marginTop: "var(--c97-sp-2)" }}
-            >
-              Get in touch
-            </Link>
-          </div>
-        </div>
-      </section>
-    </Catalog97Shell>
+        {/* Hidden on screen. Print only, the way a printer signs a job. */}
+        <p className={styles.mark}>
+          I set this page in Berkeley, and you printed it. The live copy is at
+          isaacvazquez.com/resume.
+        </p>
+      </Catalog97Shell>
+    </div>
   );
 }

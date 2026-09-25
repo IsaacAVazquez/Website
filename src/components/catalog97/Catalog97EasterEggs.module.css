@@ -1,0 +1,315 @@
+/*
+ * Easter eggs. `.misregistered` and `.stampable` go on <html> from
+ * Catalog97EasterEggs, which is what lets these page-wide selectors stay
+ * pure for CSS modules. Colours come only from the surface tokens.
+ */
+
+/* ---- Out of register (Konami code) ---- */
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  /*
+   * The drift is paint on the posters, offsets, and halftone (their second ink
+   * has no element of its own to transform), and none of those carries an
+   * animation of its own to lose. Nothing here touches layout.
+   */
+  .misregistered :global(.c97-poster),
+  .misregistered :global(.c97-poster-sm) {
+    animation: inkDrift 6s ease-in-out;
+  }
+
+  .misregistered :global(.c97-offset) {
+    animation: plateDrift 6s ease-in-out;
+  }
+
+  .misregistered :global(.c97-halftone) {
+    animation: dotGain 6s ease-in-out;
+  }
+
+  /*
+   * The sheets slip through the individual `translate` and `rotate`
+   * properties, which compose with a sheet's own `transform` and leave its
+   * `animation` alone, so the 404's skewed misprint keeps its skew and never
+   * replays its feed. The transition sits on `.stampable`, which is on for as
+   * long as the header is, so the sheets ease back into register when the
+   * drift ends too. Sheets and bands carry no transition of their own for
+   * this to replace.
+   */
+  .stampable :global(main .c97-sheet),
+  .stampable :global(main .c97-band),
+  .stampable :global(.c97-footer) {
+    transition:
+      translate 1.2s ease-in-out,
+      rotate 1.2s ease-in-out;
+  }
+
+  .misregistered :global(main .c97-sheet:nth-child(odd)),
+  .misregistered :global(main .c97-band:nth-child(odd)) {
+    translate: 0 -3px;
+    rotate: -0.3deg;
+  }
+
+  .misregistered :global(main .c97-sheet:nth-child(even)),
+  .misregistered :global(main .c97-band:nth-child(even)),
+  .misregistered :global(.c97-footer) {
+    translate: 0 3px;
+    rotate: 0.25deg;
+  }
+
+  /*
+   * A turned full-width band pokes a few pixels past the viewport's right
+   * edge, so the page clips sideways while the drift runs. `clip` makes no
+   * scroll container, so the sticky header is unaffected.
+   */
+  .misregistered :global(.c97-page) {
+    overflow-x: clip;
+  }
+
+  .toast {
+    animation: toastIn 220ms ease-out;
+  }
+
+  .imprint {
+    animation: imprintFade 2.4s ease-out forwards;
+  }
+}
+
+@keyframes inkDrift {
+  14% {
+    text-shadow: -0.1em 0.07em 0 var(--c97-overprint);
+  }
+  34% {
+    text-shadow: 0.14em -0.05em 0 var(--c97-overprint);
+  }
+  56% {
+    text-shadow: -0.06em -0.09em 0 var(--c97-overprint);
+  }
+  78% {
+    text-shadow: 0.09em 0.11em 0 var(--c97-overprint);
+  }
+}
+
+@keyframes plateDrift {
+  20% {
+    box-shadow: -10px 16px 0 var(--c97-overprint);
+  }
+  45% {
+    box-shadow: 18px -6px 0 var(--c97-overprint);
+  }
+  72% {
+    box-shadow: 4px 18px 0 var(--c97-overprint);
+  }
+}
+
+@keyframes dotGain {
+  25%,
+  70% {
+    background-size: 14px 14px;
+    opacity: 0.32;
+  }
+}
+
+/* ---- The toast ---- */
+
+.region {
+  position: fixed;
+  left: var(--c97-sp-2);
+  bottom: var(--c97-sp-2);
+  z-index: 60;
+  width: min(380px, calc(100vw - 2 * var(--c97-sp-2) - 8px));
+}
+
+.toast {
+  display: grid;
+  gap: var(--c97-sp-1);
+  padding: var(--c97-sp-2) var(--c97-sp-2) var(--c97-sp-1);
+}
+
+.toastTitle {
+  margin: 0;
+  font-family: var(--c97-font-poster);
+  font-size: var(--c97-fs-h3);
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--c97-ink);
+  text-shadow: 0.06em 0.05em 0 var(--c97-overprint);
+}
+
+.toastBody {
+  margin: 0;
+  font-size: var(--c97-fs-small);
+  color: var(--c97-ink);
+}
+
+.toastActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-1);
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+/* ---- The rubber stamp ---- */
+
+.stampable :global(.c97-footer-colophon .c97-wordmark) {
+  cursor: pointer;
+}
+
+/*
+ * An imprint stamped near the sheet's right edge would otherwise widen the
+ * page on a phone. Clipping only the inline axis leaves the torn top seam,
+ * which hangs above the footer, visible.
+ */
+.stampable :global(.c97-footer) {
+  overflow-x: clip;
+}
+
+/* A cloned mark in the second ink, screened like a worn stamp pad. */
+.imprint {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  pointer-events: none;
+  color: var(--c97-overprint);
+  transform: rotate(var(--imprint-turn, 0deg));
+  -webkit-mask-image: radial-gradient(circle, #000 60%, transparent 68%);
+  mask-image: radial-gradient(circle, #000 60%, transparent 68%);
+  -webkit-mask-size: 3px 3px;
+  mask-size: 3px 3px;
+}
+
+@keyframes imprintFade {
+  0% {
+    opacity: 0;
+    transform: rotate(var(--imprint-turn, 0deg)) scale(1.06);
+  }
+  8% {
+    opacity: 0.9;
+    transform: rotate(var(--imprint-turn, 0deg)) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(var(--imprint-turn, 0deg)) scale(1);
+  }
+}
+
+/* ---- Press proof (Option / Alt held) ---- */
+
+/*
+ * The viewport as the trimmed sheet: crop marks just outside each corner,
+ * registration targets on the centre line, a colour bar, and a slug line.
+ * Marks print in registration black with a hairline halo in bone, which the
+ * page root defines in both themes (the surface inks only exist on a band),
+ * so they read over any band.
+ */
+.proof {
+  --proof-ink: var(--c97-print-black);
+  --proof-line: linear-gradient(var(--proof-ink), var(--proof-ink)) no-repeat;
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+  filter: drop-shadow(0 0 1px var(--c97-print-bone)) drop-shadow(0 0 1px var(--c97-print-bone));
+}
+
+.crop {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background: var(--proof-line), var(--proof-line);
+  background-size: 16px 1px, 1px 16px;
+}
+
+.cropTopLeft { top: 6px; left: 6px; background-position: 0 100%, 100% 0; }
+.cropTopRight { top: 6px; right: 6px; background-position: 100% 100%, 0 0; }
+.cropBottomLeft { bottom: 6px; left: 6px; background-position: 0 0, 100% 100%; }
+.cropBottomRight { bottom: 6px; right: 6px; background-position: 100% 0, 0 100%; }
+
+.target {
+  position: absolute;
+  left: 50%;
+  width: 28px;
+  height: 28px;
+  margin-left: -14px;
+  background:
+    radial-gradient(circle, transparent 6px, var(--proof-ink) 6px 7px, transparent 7px),
+    var(--proof-line) center / 100% 1px,
+    var(--proof-line) center / 1px 100%;
+}
+
+.targetTop { top: 0; }
+.targetBottom { bottom: 0; }
+
+.colorBar {
+  position: absolute;
+  left: 36px;
+  bottom: 8px;
+  display: flex;
+  outline: 1px solid var(--proof-ink);
+}
+
+.colorBar > span {
+  width: 14px;
+  height: 10px;
+}
+
+/* On its own bone chip, since the halo muddies text this small. */
+.slug {
+  position: absolute;
+  right: 36px;
+  bottom: 6px;
+  padding: 0 4px;
+  background: var(--c97-print-bone);
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-label);
+  letter-spacing: 0.04em;
+  color: var(--proof-ink);
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  .proof {
+    animation: proofIn 140ms ease-out;
+  }
+}
+
+@keyframes proofIn {
+  from {
+    opacity: 0;
+  }
+}
+
+/* ---- Reduced motion: a still misprint and a still impression, nothing moves ---- */
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .misregistered :global(.c97-poster),
+  .misregistered :global(.c97-poster-sm) {
+    text-shadow: -0.1em 0.07em 0 var(--c97-overprint);
+  }
+
+  .misregistered :global(.c97-offset) {
+    box-shadow: -10px 16px 0 var(--c97-overprint);
+  }
+
+  .misregistered :global(.c97-halftone) {
+    background-size: 14px 14px;
+  }
+
+  .imprint {
+    opacity: 0.7;
+  }
+}
+
+/* ---- Print: the misprint and the stamp stay on screen, off the paper ---- */
+
+@media print {
+  .region,
+  .imprint,
+  .proof {
+    display: none !important;
+  }
+}

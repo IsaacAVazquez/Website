@@ -292,7 +292,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         <div className="c97-shell">
           <div
             id="article-body"
-            className="c97-article"
+            className="c97-article c97-article-end"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
           <ArticleCodeCopy containerSelector="#article-body" location="article" />

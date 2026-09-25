@@ -1,0 +1,154 @@
+/*
+ * Print stylesheet for /resume, and nothing else. Every rule hangs off
+ * `.print`, a `display: contents` wrapper that only the résumé renders, or off
+ * `.mark` and `.screenOnly`, which only the résumé uses, so printing any other
+ * route is untouched. On screen the wrapper adds no box and the pressman's
+ * mark stays hidden.
+ */
+
+.print {
+  display: contents;
+}
+
+.mark {
+  display: none;
+}
+
+@media print {
+  /*
+   * The print inks, redeclared as black on white. Every band sets its own
+   * tokens through `data-c97-surface`, so these go on every element and win
+   * with !important, and on the body, which sits outside the wrapper.
+   */
+  :global(body):has(.print),
+  .print,
+  .print * {
+    --c97-ink: black !important;
+    --c97-surface: white !important;
+    --c97-rule: black !important;
+  }
+
+  :global(body):has(.print) {
+    background: var(--c97-surface) !important;
+  }
+
+  /* Black ink on white, with no grain, seams, halftones, offsets, or overprint. */
+  .print * {
+    color: var(--c97-ink) !important;
+    background: transparent !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+
+  .print :global(.c97-sheet)::before,
+  .print :global(.c97-sheet)::after {
+    display: none !important;
+  }
+
+  /* Site chrome and anything you can only click. */
+  .print :global(.c97-header),
+  .print footer,
+  .print nav,
+  .print aside,
+  .print button,
+  .print a[download],
+  .print :global(.c97-halftone),
+  .screenOnly {
+    display: none !important;
+  }
+
+  .print :global(.c97-band) {
+    padding: 0 0 14pt !important;
+  }
+
+  .print :global(.c97-shell) {
+    max-width: none;
+  }
+
+  .print main {
+    font-size: 10.5pt;
+    line-height: 1.4;
+  }
+
+  .print h1 {
+    font-size: 24pt !important;
+    max-width: none !important;
+  }
+
+  .print h2 {
+    font-size: 14pt !important;
+    margin-bottom: 6pt;
+    padding-bottom: 3pt;
+    border-bottom: 1pt solid var(--c97-rule);
+  }
+
+  .print h3 {
+    font-size: 11.5pt !important;
+  }
+
+  .print :global(.c97-prose),
+  .print :global(.c97-lead) {
+    font-size: 10pt !important;
+    line-height: 1.4 !important;
+    max-width: none !important;
+  }
+
+  .print :global(.c97-meta),
+  .print :global(.c97-kicker) {
+    font-size: 8.5pt !important;
+  }
+
+  .print img {
+    filter: grayscale(1);
+  }
+
+  /* Keep each entry whole, and keep a heading with what follows it. */
+  .print article,
+  .print :global(.c97-columns) > div {
+    break-inside: avoid;
+  }
+
+  .print h2,
+  .print h3 {
+    break-after: avoid;
+  }
+
+  /* One date column for every entry, instead of one per entry. */
+  .print article {
+    grid-template-columns: 17ch 1fr !important;
+    gap: 12pt !important;
+  }
+
+  /* A link that stays in print shows where it goes. */
+  .print a[href^="/"]:not([download]) {
+    display: inline;
+    min-height: 0;
+    padding: 0;
+    white-space: normal;
+    text-transform: none;
+    text-decoration: none;
+  }
+
+  .print a[href^="/"]:not([download])::after {
+    content: " (isaacvazquez.com" attr(href) ")";
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  .print a[href^="http"]::after {
+    content: " (" attr(href) ")";
+  }
+
+  /* The pressman's mark, signed at the foot of the job. */
+  .mark {
+    display: block;
+    max-width: none;
+    margin-top: 18pt;
+    padding-top: 6pt;
+    border-top: 0.5pt solid var(--c97-rule);
+    font-size: 8pt;
+    font-style: italic;
+    text-align: right;
+    break-inside: avoid;
+  }
+}

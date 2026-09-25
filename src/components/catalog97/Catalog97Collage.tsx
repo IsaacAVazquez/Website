@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import styles from "./Catalog97Collage.module.css";
 import { Catalog97Reveal } from "./Catalog97Reveal";
 
@@ -10,6 +10,12 @@ type InkSurface =
 export interface CollagePanel {
   /** A finished riso plate. Leave it out and the panel is an ink block. */
   src?: string;
+  /**
+   * A painted version of the plate at the same aspect ratio, shown in a circle
+   * around the pointer while the panel is hovered (the paint reveal in
+   * catalog97.css).
+   */
+  paint?: string;
   /** The ink block's surface, when there is no plate. */
   surface?: InkSurface;
   /** A word printed large on an ink block, in poster type. */
@@ -28,20 +34,37 @@ export interface CollagePanel {
   card?: ReactNode;
 }
 
-/** A finished print that fills its frame and scales in as it reveals. */
+/**
+ * A finished print that fills its frame and scales in as it reveals. Given a
+ * `paint`, it carries the paint reveal, cropped to the photo's own position.
+ */
 export function Catalog97PrintPlate({
   src,
   sizes,
   alt = "",
   position,
+  paint,
 }: {
   src: string;
   sizes: string;
   alt?: string;
   position?: string;
+  paint?: string;
 }) {
   return (
-    <div className={styles.plate} data-reveal="">
+    <div
+      className={styles.plate}
+      data-reveal=""
+      data-c97-paint={paint ? "plate" : undefined}
+      style={
+        paint
+          ? ({
+              "--c97-paint": `url("${paint}")`,
+              "--c97-paint-pos": position,
+            } as CSSProperties)
+          : undefined
+      }
+    >
       <Image
         src={src}
         alt={alt}
@@ -80,6 +103,7 @@ export function Catalog97Collage({ panels }: { panels: CollagePanel[] }) {
                 src={panel.src}
                 sizes={panel.sizes ?? "(max-width: 880px) 100vw, 34vw"}
                 position={panel.position}
+                paint={panel.paint}
               />
             ) : (
               <>

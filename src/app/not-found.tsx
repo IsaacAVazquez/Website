@@ -18,69 +18,54 @@ export const metadata: Metadata = {
   },
 };
 
-// A deliberately over-the-top 90s "GeoCities" 404 page. It intentionally
-// breaks from the site's editorial design system for comedic effect; all of
-// its styling is scoped to not-found.module.css so nothing leaks elsewhere.
+const waysBack = [
+  { href: "/writing", label: "Writing" },
+  { href: "/portfolio", label: "Work" },
+  { href: "/dashboards", label: "Dashboards" },
+  { href: "/search", label: "Search" },
+];
+
+/*
+ * The 404 is a misprint: a blue sheet that came off the press skewed, torn at
+ * both edges, with the second ink printed well off register and an ink smudge
+ * in the corner. All of that is decoration. The text sits above it in the
+ * sheet's own ink, and the ways back live on plain paper under the sheet.
+ *
+ * `ConditionalLayout` wraps this in `Catalog97ToolShell`, which supplies the
+ * header, the only `main`, and the footer, so this renders bands only.
+ */
 export default function NotFound() {
   return (
-    <div className={styles.page}>
-      <div className={styles.frame}>
-        <p className={styles.blink}>* ERROR 404 * PAGE NOT FOUND *</p>
-
-        <h1 className={styles.bigError}>404</h1>
-
-        <h2 className={styles.heading}>~*~ Oops! You Broke The Internet ~*~</h2>
-
-        <div className={styles.marqueeBar}>
-          <span className={styles.marqueeTrack}>
-            Welcome 2 my homepage!!! The page u r looking 4 has wandered off
-            into cyberspace... try the links below!!! &lt;3 &lt;3 &lt;3
-          </span>
+    <section className={`c97-band ${styles.band}`} data-c97-surface="paper">
+      <div className="c97-shell">
+        <div
+          className={`c97-sheet ${styles.misprint}`}
+          data-c97-surface="ink-blue"
+          data-seam="torn"
+        >
+          <span aria-hidden="true" className="c97-halftone c97-halftone-corner" />
+          <span aria-hidden="true" className={styles.smudge} />
+          <h1 className={`c97-poster ${styles.headline}`}>
+            <span className={styles.numeral}>404</span>{" "}
+            <span className={styles.line}>This page came off the press wrong</span>
+          </h1>
+          <p className={`c97-lead ${styles.lead}`}>
+            I don&apos;t have anything at this address. The link may be old or
+            have a typo in it, but the pages below are all still here.
+          </p>
         </div>
 
-        <div className={styles.construction}>
-          <span className={styles.constructionInner}>
-            🚧 THIS PAGE IS UNDER CONSTRUCTION 🚧
-          </span>
-        </div>
-
-        <p className={styles.bodyText}>
-          The URL you typed isn&apos;t on the server (or maybe it never was?).
-          Don&apos;t worry though &mdash; grab a Surge, fire up Netscape
-          Navigator, and pick one of these totally rad destinations:
-        </p>
-
-        <span className={styles.divider} />
-
-        <div className={styles.linkRow}>
-          <Link href="/" className={styles.retroLink}>
-            🏠 Back 2 Home Page
+        <nav aria-label="Ways back" className={styles.ways}>
+          <Link href="/" className="c97-btn c97-offset">
+            Back to the home page
           </Link>
-          <Link href="/portfolio" className={styles.retroLink}>
-            💾 My Kool Projects
-          </Link>
-          <Link href="/writing" className={styles.retroLink}>
-            📖 Read My Web Log
-          </Link>
-          <Link href="/contact" className={styles.retroLink}>
-            📧 E-Mail Me!
-          </Link>
-        </div>
-
-        <span className={styles.divider} />
-
-        <p className={styles.counterLabel}>You are visitor number:</p>
-        <span className={styles.counter}>0000404</span>
-
-        <p className={styles.webring}>
-          [ Best viewed in Netscape Navigator 4.0 @ 800&times;600 ]
-        </p>
-
-        <p className={styles.footerNote}>
-          Sign my guestbook! &middot; This site is a proud member of the
-          WebRing &middot; Made with &lt;BLINK&gt; and a 56k modem
-        </p>
+          {waysBack.map((link) => (
+            <Link key={link.href} href={link.href} className="c97-btn-ghost">
+              {link.label}
+            </Link>
+          ))}
+        </nav>
       </div>
-    </div>
+    </section>
   );
 }

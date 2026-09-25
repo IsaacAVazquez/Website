@@ -6,6 +6,8 @@ import { usePathname } from "next/navigation";
 import { HeaderSearchPanel } from "@/components/search/HeaderSearchPanel";
 import { DeferredThemeToggle } from "@/components/ui/DeferredThemeToggle";
 import { catalog97NavLinks } from "@/constants/catalog97Nav";
+import { Catalog97Monet } from "./Catalog97Monet";
+import { Catalog97EasterEggs } from "./Catalog97EasterEggs";
 import { trackNavigationClick } from "@/lib/analytics";
 
 /**
@@ -62,6 +64,8 @@ export function Catalog97Header() {
         <Link href="/" className="c97-brand c97-header-brand">
           Isaac Vazquez
         </Link>
+        <Catalog97Monet />
+        <Catalog97EasterEggs />
         {/*
           The row gap is --c97-sp-5 so wrapped rows of `.c97-microlink` hit
           boxes (50px tall) never overlap on a phone; see `.c97-header-nav`.

@@ -674,6 +674,68 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
   return content;
 }
 
+// Hand-written answers for a few hidden queries. They only show when the whole
+// query matches a key after normalizing case, punctuation, and spacing, so they
+// never leak into unrelated searches. "resume" is left out on purpose because
+// it already returns the /resume page as the top result.
+const MONET_ANSWER: SearchableContent = {
+  id: 'answer-monet',
+  title: 'Monet on the home page',
+  excerpt:
+    'If you hover over my name in the header, or over my portrait on the home page or the about page, they turn into paintings.',
+  content: '',
+  url: '/',
+  type: 'page',
+  category: 'Site',
+};
+const KONAMI_ANSWER: SearchableContent = {
+  id: 'answer-konami',
+  title: 'Konami code',
+  excerpt:
+    'Press up up down down left right left right B A on any page except the arcade, and something happens that ends with a link to the arcade.',
+  content: '',
+  url: '/arcade',
+  type: 'page',
+  category: 'Site',
+};
+const HIRE_ANSWER: SearchableContent = {
+  id: 'answer-hire',
+  title: 'Get in touch',
+  excerpt:
+    'If you want to talk about a product role or a project, the contact page is the quickest way to reach me.',
+  content: '',
+  url: '/contact',
+  type: 'page',
+  category: 'Contact',
+};
+const EASTER_EGG_ANSWER: SearchableContent = {
+  id: 'answer-easter-eggs',
+  title: 'Easter eggs',
+  excerpt:
+    "There are a few hidden around the site, from something on the home page, to a note in the browser console, to a couple I'll leave for you to find.",
+  content: '',
+  url: '/',
+  type: 'page',
+  category: 'Site',
+};
+
+const HIDDEN_ANSWERS: Record<string, SearchableContent> = {
+  monet: MONET_ANSWER,
+  konami: KONAMI_ANSWER,
+  'konami code': KONAMI_ANSWER,
+  'cheat code': KONAMI_ANSWER,
+  'cheat codes': KONAMI_ANSWER,
+  'hire me': HIRE_ANSWER,
+  'hire isaac': HIRE_ANSWER,
+  'easter egg': EASTER_EGG_ANSWER,
+  'easter eggs': EASTER_EGG_ANSWER,
+};
+
+function findHiddenAnswer(query: string): SearchableContent | undefined {
+  const key = query.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+  return HIDDEN_ANSWERS[key];
+}
+
 function calculateRelevanceScore(content: SearchableContent, query: string): number {
   const queryLower = query.toLowerCase();
   const queryWords = queryLower.split(/\s+/).filter(word => word.length > 0);
@@ -823,7 +885,14 @@ export async function GET(request: NextRequest) {
     const allContent = await getAllSearchableContent();
 
     // Perform search
-    const results = searchContent(allContent, query, type, category);
+    const matched = searchContent(allContent, query, type, category);
+
+    // A hidden answer goes on top of an unfiltered search, replacing any normal
+    // result for the same URL so the list never shows that page twice.
+    const hiddenAnswer = type === 'all' && category === 'all' ? findHiddenAnswer(query) : undefined;
+    const results: ScoredContent[] = hiddenAnswer
+      ? [hiddenAnswer, ...matched.filter((item) => item.url !== hiddenAnswer.url)]
+      : matched;
 
     // Limit results
     const limitedResults = results.slice(0, limit);

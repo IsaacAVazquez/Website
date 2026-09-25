@@ -23,7 +23,12 @@
   overflow: hidden;
   background: var(--c97-field);
 }
-.portraitImage { object-fit: cover; object-position: 50% 20%; }
+/*
+ * The crop, written once. The photo reads it here and the paint reveal
+ * (catalog97.css) reads it off the portrait, so the two stay aligned.
+ */
+.portrait { --c97-paint-pos: 50% 20%; }
+.portraitImage { object-fit: cover; object-position: var(--c97-paint-pos); }
 @media (max-width: 880px) {
   .heroGrid { grid-template-columns: minmax(0, 1fr); gap: var(--c97-sp-5); }
   .heroCopy { grid-template-areas: "h1" "actions" "lead"; }

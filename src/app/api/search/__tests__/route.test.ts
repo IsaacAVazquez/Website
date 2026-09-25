@@ -253,6 +253,56 @@ describe("GET /api/search", () => {
     );
   });
 
+  describe("hidden answers", () => {
+    const ids = (body: { results: { id: string }[] }) =>
+      body.results.map((r) => r.id);
+
+    it("puts the hand-written answer on top for a matching query", async () => {
+      const response = await GET(makeRequest("?q=monet"));
+      const body = await response.json();
+
+      expect(response.status).toBe(200);
+      expect(body.results[0]).toMatchObject({
+        id: "answer-monet",
+        url: "/",
+        type: "page",
+      });
+      expect(body.total).toBe(body.results.length);
+    });
+
+    it("matches regardless of case, spacing, and punctuation", async () => {
+      for (const q of ["  KONAMI Code ", "Cheat-Code", "Easter Eggs?", "HIRE isaac"]) {
+        const response = await GET(makeRequest(`?q=${encodeURIComponent(q)}`));
+        const body = await response.json();
+        expect(body.results[0].id).toMatch(/^answer-/);
+      }
+    });
+
+    it("never shows for unrelated or partial queries, or filtered searches", async () => {
+      for (const qs of ["?q=monetize", "?q=monet%20water", "?q=easter", "?q=monet&type=post"]) {
+        const response = await GET(makeRequest(qs));
+        const body = await response.json();
+        expect(ids(body).some((id) => id.startsWith("answer-"))).toBe(false);
+      }
+    });
+
+    it("does not show the same URL twice alongside the answer", async () => {
+      const response = await GET(makeRequest("?q=hire%20isaac"));
+      const body = await response.json();
+      const contactHits = body.results.filter(
+        (r: { url: string }) => r.url === "/contact"
+      );
+      expect(contactHits).toHaveLength(1);
+      expect(contactHits[0].id).toBe("answer-hire");
+    });
+
+    it("leaves resume to the real resume page", async () => {
+      const response = await GET(makeRequest("?q=resume"));
+      const body = await response.json();
+      expect(body.results[0].id).toBe("page-resume");
+    });
+  });
+
   it("degrades gracefully when the blog corpus loader throws", async () => {
     mockGetAllBlogPostPreviews.mockImplementation(() => {
       throw new Error("boom");
