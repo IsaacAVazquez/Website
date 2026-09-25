@@ -76,10 +76,7 @@ describe("AI SEO structured-data generators", () => {
     expect(schema.url).toBe("https://isaacvazquez.com/about");
     expect(schema.givenName).toBe("Isaac");
     expect(schema.familyName).toBe("Vazquez");
-    expect(schema.alternateName).toEqual([
-      "@isaacvazquez",
-      "IsaacAVazquez",
-    ]);
+    expect(schema.alternateName).toEqual(["IsaacAVazquez"]);
   });
 
   it("keeps education organizations free of role timing fields", () => {

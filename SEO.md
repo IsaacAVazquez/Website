@@ -2,7 +2,7 @@
 
 Reference for the SEO architecture in this Next.js 16 App Router project.
 
-**Last updated:** 2026-09-21
+**Last updated:** 2026-09-24
 
 ---
 
@@ -28,18 +28,19 @@ Single source of truth for site-wide constants. Import this anywhere you need a 
 ```ts
 export const siteConfig = {
   name: "Isaac Vazquez",
-  title: "Product Manager | UC Berkeley Haas MBA | Portfolio & Case Studies",
+  title: "Product Manager and Berkeley Haas MBA",
   description: "...",
-  url: "https://isaacvazquez.com",
+  url: "https://isaacvazquez.com",    // NEXT_PUBLIC_SITE_URL or SITE_URL when set
   ogImage: "/opengraph-image",        // 1200x630
   ogImageAlt: "Isaac Vazquez - ...",
   links: {
-    twitter: "https://twitter.com/isaacvazquez",
     github:  "https://github.com/IsaacAVazquez",
-    linkedin: "https://linkedin.com/in/isaac-vazquez",
+    linkedin: "https://www.linkedin.com/in/isaac-vazquez/",
   },
 };
 ```
+
+The X handle @isaacvazquez came out of `profile.sameAs`, the Person `alternateName`, and the twitter card on 2026-09-24, because x.com answered "User Profile Not Found" for it. Add an account back only once its public profile resolves.
 
 ---
 
@@ -67,32 +68,19 @@ export const metadata = constructMetadata({
   articleAuthor: "https://isaacvazquez.com/about",
   articleSection: "Product Management",
   articleTags: ["Product Strategy", "SaaS"],
-
-  // AI-optimized metadata (adds custom ai:* meta tags)
-  aiMetadata: {
-    profession: "Product Manager",
-    expertise: ["Product Strategy", "Data Analytics"],
-    industry: ["SaaS", "Fintech"],
-    topics: ["Product Management", "Case Studies"],
-    contentType: "Article",          // "Article" | "Portfolio" | "Professional Portfolio Homepage" | etc.
-    context: "Additional context for AI systems",
-    summary: "One-sentence TL;DR",
-    primaryFocus: "PM projects",
-    specialty: "Cross-functional leadership",
-  },
 });
 ```
 
 ### What `constructMetadata` outputs
 
 - `title` with `template: "%s | Isaac Vazquez"` (on root layout)
-- `description`, `authors`, `creator`, `publisher`
-- `openGraph` — type, url, title, description, images, locale, and article fields when `ogType: "article"`
-- `twitter` — `summary_large_image` card with creator/site handles
-- `alternates.canonical` — prevents duplicate content
-- `robots` — full GoogleBot directives (`max-image-preview: large`, `max-snippet: -1`)
-- `other` — AI-specific meta tags from `aiMetadata`
-- `formatDetection` — disables phone/email/address auto-detection
+- `description`, `authors`, `creator`, `publisher`. The description is fitted to 160 characters by `fitMetaDescription`, which ends on the last full sentence when one ends at 70 characters or later, and otherwise clips at a word with an ellipsis.
+- `openGraph`: type, title, description, images, locale, and article fields when `ogType: "article"`. `url` is set only when `canonicalUrl` is passed.
+- `twitter`: a `summary_large_image` card with no creator or site handle
+- `alternates.canonical`: set only when `canonicalUrl` is passed. There is deliberately no default. The root layout calls `constructMetadata()` with no arguments and every route without metadata of its own inherits the result, so a homepage default told Google those routes were copies of the homepage.
+- `robots`: full GoogleBot directives (`max-image-preview: large`, `max-snippet: -1`)
+- `other`: `og:updated_time` from `dateModified`
+- `formatDetection`: disables phone, email, and address auto-detection
 
 ### `ogType: "article"` — when to use it
 
@@ -127,7 +115,7 @@ export const metadata = generateAIOptimizedMetadata({
 });
 ```
 
-Prefer `constructMetadata` for most pages. Use `generateAIOptimizedMetadata` when you need the expertise/context woven into the meta description string itself.
+Prefer `constructMetadata` for most pages. `generateAIOptimizedMetadata` is now a compatibility wrapper that passes the title, description, image, `noIndex`, `canonicalUrl`, and dates through to `constructMetadata`, and it ignores the summary, expertise, and context fields.
 
 ---
 
@@ -191,7 +179,6 @@ These power `AIStructuredData` but can be called directly when you need the raw 
 
 | Function | Output schema type | Notes |
 |---|---|---|
-| `generateAIMetaTags(data)` | Plain object (meta tags) | Called by `constructMetadata` via `aiMetadata` |
 | `generateEnhancedPersonSchema(data)` | `Person` | Full E-E-A-T: expertise w/ proficiency, awards, occupations |
 | `generateArticleSchema(data)` | `Article` | wordCount, readingTime, speakable, genre support |
 | `generateProjectSchema(data)` | `CreativeWork` | AI-friendly problem/solution/impact narrative |
@@ -226,9 +213,8 @@ Simpler alternatives for when the AI-optimized versions are overkill.
 export { metadata } from "./metadata"; // metadata.ts uses constructMetadata()
 
 // In JSX:
-<StructuredData type="ProfilePage" />
+<StructuredData type="Person" />
 <StructuredData type="WebSite" />
-<AIStructuredData schema={{ type: "Person", data: { ... } }} />
 ```
 
 ### About (`/about`)
@@ -257,7 +243,6 @@ export async function generateMetadata({ params }) {
     articleSection: post.tags?.[0] ?? "Product Management",
     articleTags: post.seo?.keywords || post.tags,
     canonicalUrl: `https://isaacvazquez.com/writing/${slug}`,
-    aiMetadata: { contentType: "Article", ... },
   });
 }
 
@@ -279,7 +264,6 @@ export async function generateMetadata({ params }) {
     articleSection: "Product Management",
     articleTags: ["Product Management", caseStudy.role, ...caseStudy.tools.slice(0, 3)],
     canonicalUrl: `/portfolio/${params.slug}`,
-    aiMetadata: { contentType: "Case Study", ... },
   });
 }
 // Gap: No structured data or breadcrumb component rendered in JSX. See compliance table below.
@@ -302,10 +286,10 @@ export const metadata = constructMetadata({
 
 The root layout provides the baseline for every page:
 
-- **Default metadata**: `constructMetadata()` with no args → title template, site description, global OG image
-- **Title template**: `"%s | Isaac Vazquez"` — page titles slot into `%s`
-- **`<head>` extras** (not handled by Metadata API):
-  - `theme-color`: `#2563EB`
+- Default metadata: `constructMetadata()` with no args gives the title template, site description, and global OG image, and no canonical
+- Title template: `"%s | Isaac Vazquez"`, with page titles slotting into `%s`
+- `<head>` extras (not handled by the Metadata API):
+  - `theme-color`: `#F6F5F1` in light mode and `#151412` in dark mode
   - `color-scheme`: `light dark`
   - `viewport`: standard + `viewport-fit=cover` for notched devices
   - PWA: `apple-mobile-web-app-capable`, status bar style, app title
@@ -313,7 +297,7 @@ The root layout provides the baseline for every page:
   - `/manifest.json` link
   - Apple touch icon + favicon
   - RSS feed: `<link rel="alternate" href="/api/rss">`
-- **Google Search Console**: verification field is stubbed in `constructMetadata()` under the `verification` key. To activate: uncomment the `google` line and paste your Search Console verification code.
+- Google Search Console: `constructMetadata()` sets `verification.google` from the `GOOGLE_SITE_VERIFICATION` environment variable, so the tag renders only when that variable is set at build time. Production rendered no verification tag on 2026-09-24.
 
 ---
 
@@ -321,7 +305,7 @@ The root layout provides the baseline for every page:
 
 Runs automatically via the `postbuild` script (`npm run generate:sitemap && node scripts/patch-nft-sharp.mjs`). Generates `public/sitemap.xml`.
 
-The sitemap is **allowlist-driven**. `scripts/generatePublicSitemap.mjs` imports `PUBLIC_SITEMAP_ENTRIES` from `src/lib/sitemap.js`, which builds the canonical entry list and the matching path set (`PUBLIC_SITEMAP_PATHS`), and writes only those entries. Nothing crawls the route tree, so a route ships only when it is on the list.
+`scripts/generatePublicSitemap.mjs` writes `PUBLIC_SITEMAP_ENTRIES` from `src/lib/sitemap.js`. That module walks every `page.tsx` under `src/app` and lists it unless the page opts out, either with `noIndex: true` (or `index: false`) in its metadata or by rendering nothing but a redirect. `UNLISTED_ROUTES` covers a page whose metadata cannot say so (`/admin`), and dynamic segments come from their own builders. Run `npm run generate:sitemap` after any change to post dates, because the consistency test compares the committed file.
 
 ### Output fields
 
@@ -329,15 +313,24 @@ Each entry emits `loc`, `lastmod`, `changefreq`, and `priority`. `src/lib/sitema
 
 ### How `src/lib/sitemap.js` builds the list
 
-`getPublicSitemapEntries()` merges three sources, dedupes by `loc`, and sorts alphabetically:
+`getPublicSitemapEntries()` merges four sources, dedupes by `loc`, and sorts alphabetically:
 
-1. **Static routes** — the `STATIC_ROUTE_LASTMOD` map. Routes whose content is snapshot-driven derive their `lastmod` from the live snapshot (e.g. `readPremierLeagueLastmod`, `readInvestmentsLastmod`, `readFantasyLastmod`, `readEarthquakeLastmod`); the rest carry a hardcoded date. To add a new static route to the sitemap, add it to this map.
-2. **Portfolio case studies** — `getPortfolioSlugEntries()` regex-extracts top-level slug keys from `src/constants/caseStudies.ts`, skipping any entry with a top-level `link:` redirect (those `[slug]` routes `redirect()` instead of rendering a page).
-3. **Blog posts** — `getBlogRouteEntries()` discovers `content/blog/*.{mdx,md}` at build time, using `updatedAt || publishedAt` for `lastmod` and excluding future-dated posts (their `publishedAt` is later than today).
+1. Static routes come from the route walk above, dated from the `STATIC_ROUTE_LASTMOD` map. Snapshot-driven routes read `lastmod` from their snapshot (e.g. `readPremierLeagueLastmod`, `readInvestmentsLastmod`, `readFantasyLastmod`, `readEarthquakeLastmod`). The identity pages carry the date of their last copy change, kept in step with each page's own `dateModified`, and `/writing` takes the later of its own copy change and its newest post. A route with no row gets the build date and a warning.
+2. Writing topic pages come one per `BLOG_TOPIC_PAGES` entry, each dated by the newest post filed under its label through the `cluster` or `archiveBucket` frontmatter.
+3. Portfolio case studies come from `getPortfolioSlugEntries()`, which regex-extracts top-level slug keys from `src/constants/caseStudies.ts`, skipping any entry with a top-level `link:` (those `[slug]` routes `permanentRedirect()` to the live tool instead of rendering a page). Every current case study has one, so none is listed.
+4. Blog posts come from `getBlogRouteEntries()`, which discovers `content/blog/*.{mdx,md}` at build time, using `updatedAt || publishedAt` for `lastmod` and excluding future-dated posts (their `publishedAt` is later than today).
+
+Google uses `lastmod` only while it keeps matching real changes, which is why none of these dates is left to drift by hand when a source for it exists.
 
 ### Excluded paths
 
-`/api/*`, `/_next/*`, `/404`, `/admin`, `/admin/*`, and `/search` never appear, since the generator emits only `PUBLIC_SITEMAP_ENTRIES` and anything not in `PUBLIC_SITEMAP_PATHS` is dropped regardless.
+`/api/*`, `/_next/*`, `/404`, `/admin`, `/admin/*`, `/search`, and `/score-pools/settings` never appear, since each is either off the route walk or marked `noIndex`.
+
+### Redirects and server-rendered HTML
+
+Put redirects in `next.config.mjs`. On Netlify the proxy in `src/proxy.ts` answers before config redirects run, so a redirect in the proxy shadows the config's permanent rule, which is how `/blog` answered 307 and `/blog/posts/<slug>` landed on a 404 until 2026-09-24. A page that calls `permanentRedirect()` under a `loading.tsx` boundary also misfires, because the redirect lands after the 200 shell has streamed and ships as a meta refresh with the root layout's metadata.
+
+A client component that calls `useSearchParams()` in a statically prerendered route bails the page out to client rendering at the nearest Suspense boundary, and the served HTML then drops the h1, the body text, and the JSON-LD. Render such a route per request, as the trade calculator does with `force-dynamic`, or give the client its own `<Suspense>`, and check the served HTML rather than the dev server, which renders every request.
 
 ---
 
@@ -363,13 +356,13 @@ Status of metadata and structured data for the routes listed below. The table do
 
 | Page | Metadata | ogType | canonicalUrl | dateModified | Structured Data | Breadcrumbs | Status |
 |---|---|---|---|---|---|---|---|
-| `/` | `constructMetadata` | website | `/` | 2026-08-05 | ProfilePage, WebSite, Person | N/A (root) | OK |
+| `/` | `constructMetadata` | website | `/` | 2026-09-24 | Person, WebSite | N/A (root) | OK |
 | `/about` | `generateAIOptimizedMetadata` | website | `/about` | 2026-09-14 | Breadcrumb, ProfilePage | Yes | OK |
-| `/contact` | `constructMetadata` | website | `/contact` | 2026-08-05 | BreadcrumbList, ContactPage | Yes | OK |
-| `/resume` | `constructMetadata` | website | `/resume` | 2026-08-05 | BreadcrumbList, Person, JobPosting | Yes | OK |
-| `/portfolio` | `constructMetadata` | website | `/portfolio` | 2026-08-09 | ItemList | No visible breadcrumb; structured index present | OK |
-| `/portfolio/[slug]` | `generateMetadata` | article | `/portfolio/{slug}` | 2026-04-04 | Breadcrumb, CreativeWork on non-redirect entries | Yes, when rendered | OK; current slugs redirect to live tools |
-| `/writing` | `constructMetadata` | website | `/writing` | 2026-08-09 | BreadcrumbList, Article (list) | Yes | OK |
+| `/contact` | `constructMetadata` | website | `/contact` | 2026-09-14 | BreadcrumbList, ContactPage | Yes | OK |
+| `/resume` | `constructMetadata` | website | `/resume` | 2026-09-14 | BreadcrumbList, Person, JobPosting | Yes | OK |
+| `/portfolio` | `constructMetadata` | website | `/portfolio` | 2026-09-14 | ItemList | No visible breadcrumb; structured index present | OK |
+| `/portfolio/[slug]` | `generateMetadata` | article | `/portfolio/{slug}` | 2026-04-04 | Breadcrumb, CreativeWork on non-redirect entries | Yes, when rendered | OK; every current slug answers 308 to its live tool, and the home and portfolio cards link to the tool directly |
+| `/writing` | `constructMetadata` | website | `/writing` | 2026-09-14 | BreadcrumbList, ItemList | Yes | OK |
 | `/writing/[slug]` | `generateMetadata` | article | full URL | post dates | Breadcrumb, Article | Yes | OK |
 | `/investments` | `constructMetadata` | website | `/investments` | snapshot date | BreadcrumbList, SoftwareApplication | Yes | OK |
 | `/accessibility` | `constructMetadata` | website | full URL | 2026-07-16 | WebPage, BreadcrumbList | Yes | OK |
@@ -377,8 +370,11 @@ Status of metadata and structured data for the routes listed below. The table do
 | `/admin` | layout metadata | N/A | N/A | N/A | None | None | OK, `noIndex` |
 | `/fantasy-football` | `constructMetadata` | website | relative | snapshot date | BreadcrumbList, SportsApp, FAQ | Yes | OK; the first page of rankings rows is server-rendered from the committed snapshot, so non-JS crawlers see real players |
 | `/fantasy-football/draft-tracker` | `constructMetadata` | website | relative | snapshot date | BreadcrumbList, SoftwareApplication | Yes | OK |
-| `/fantasy-football/rb-tiers` | Redirect | — | — | — | — | — | OK |
-| `/fantasy-football/tiers/[pos]` | Redirect | — | — | — | — | — | OK |
+| `/fantasy-football/rb-tiers` | 308 in `next.config.mjs` | n/a | n/a | n/a | n/a | n/a | OK; page file removed |
+| `/fantasy-football/tiers/[pos]` | 308 in `next.config.mjs` | n/a | n/a | n/a | n/a | n/a | OK; page file removed |
+| `/fantasy-football/trade-calculator` | `constructMetadata` | website | relative | snapshot date | BreadcrumbList, SoftwareApplication | Yes | OK; renders per request (`force-dynamic`) so the client's `useSearchParams()` does not blank the HTML |
+| `/fantasy-football/weekly`, `/fantasy-football/waivers` | `constructMetadata` | website | relative | snapshot date | BreadcrumbList, SoftwareApplication | Yes | OK; the first rows render on the server from a one-format seed of `weekly.json` (`loadFantasyWeeklySeed`) |
+| `/score-pools/settings` | `constructMetadata` | website | relative | snapshot date | BreadcrumbList, SoftwareApplication | Yes | OK, `noIndex` |
 | `/premier-league` | `constructMetadata` | website | relative | snapshot date | BreadcrumbList, SportsApp | Yes | OK |
 | `/la-liga` | `constructMetadata` | website | relative | snapshot date | BreadcrumbList, SoftwareApp | Yes | OK |
 | `/news-pulse` | `constructMetadata` | website | relative | 2026-07-23 | BreadcrumbList, SoftwareApp | Yes | OK |
