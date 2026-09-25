@@ -4,7 +4,7 @@ import { MapPin } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import {
   loadLeaflet,
-  cartoTiles,
+  BASEMAP_TILES,
   type LeafletLayer,
   type LeafletLayerGroup,
   type LeafletMap,
@@ -30,8 +30,6 @@ interface FoodMapLeafletProps {
   zoom: number;
   /** When true, jump instead of animating (honors prefers-reduced-motion). */
   reduceMotion?: boolean;
-  /** Drives the basemap: a moody dark field-map vs. a warm daylight one. */
-  isDark?: boolean;
 }
 
 const escapeHtml = (value: string): string =>
@@ -65,7 +63,6 @@ export function FoodMapLeaflet({
   center,
   zoom,
   reduceMotion = false,
-  isDark = false,
 }: FoodMapLeafletProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const leafletRef = useRef<LeafletStatic | null>(null);
@@ -95,9 +92,8 @@ export function FoodMapLeaflet({
           center,
           zoom
         );
-        const tiles = cartoTiles(isDark);
-        tileRef.current = L.tileLayer(tiles.url, {
-          attribution: tiles.attribution,
+        tileRef.current = L.tileLayer(BASEMAP_TILES.url, {
+          attribution: BASEMAP_TILES.attribution,
           maxZoom: 19,
         }).addTo(map);
         groupRef.current = L.layerGroup().addTo(map);
@@ -120,21 +116,6 @@ export function FoodMapLeaflet({
     // Only run on mount — center/zoom/theme changes are handled below.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  // Swap the basemap when the theme flips, without tearing down the map.
-  useEffect(() => {
-    const L = leafletRef.current;
-    const map = mapRef.current;
-    if (status !== "ready" || !L || !map) return;
-    if (tileRef.current) {
-      tileRef.current.remove();
-    }
-    const tiles = cartoTiles(isDark);
-    tileRef.current = L.tileLayer(tiles.url, {
-      attribution: tiles.attribution,
-      maxZoom: 19,
-    }).addTo(map);
-  }, [isDark, status]);
 
   // Rebuild markers whenever the set of spots (or active highlight) changes.
   const spotsKey = spots.map((s) => s.id).join(",");
