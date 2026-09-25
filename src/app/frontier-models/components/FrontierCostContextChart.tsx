@@ -117,23 +117,31 @@ export function FrontierCostContextChart({
 
     // SVG presentation attributes can't substitute var()/color-mix(), so
     // resolve the tokens at render time (re-resolved when the theme flips).
-    // Read from the svg itself rather than document.documentElement. The
-    // Catalog 97 tokens are scoped to the `[data-c97]` page root, and the
-    // bridge aliases every --home-* name onto them there, so the document
-    // root still returns the old :root values and would miss the repaint.
+    // Read from the svg itself rather than document.documentElement, since
+    // the Catalog 97 tokens are scoped to the `[data-c97]` page root and the
+    // document root would miss the repaint.
     const computedStyle = getComputedStyle(svg);
     const axisColor =
-      computedStyle.getPropertyValue("--home-ink-muted").trim() || "#68655A";
+      computedStyle.getPropertyValue("--c97-ink-2").trim() || "#68655A";
     const gridColor =
-      computedStyle.getPropertyValue("--home-rule").trim() ||
+      computedStyle.getPropertyValue("--c97-rule").trim() ||
       "rgba(25,24,19,0.14)";
 
+    // Log ticks label every mantissa step, which piles up. Keep 1, 2, and 5
+    // per decade on context and 1 and 3 per decade on price.
+    const leadingDigit = (value: number) => Number(value.toExponential().charAt(0));
     const xAxis = axisBottom(xScale)
-      .ticks(5, ".2s")
+      .tickValues(xScale.ticks().filter((value) => [1, 2, 5].includes(leadingDigit(value))))
       .tickFormat((value) => formatTokenCount(Number(value)));
     const yAxis = axisLeft(yScale)
-      .ticks(5, ".2s")
+      .tickValues(yScale.ticks().filter((value) => [1, 3].includes(leadingDigit(value))))
       .tickFormat((value) => `$${Number(value).toFixed(Number(value) < 1 ? 2 : 0)}`);
+
+    // A sub-decade log domain makes d3 ignore the tick count hint and label
+    // every mantissa step, which overlaps at phone width. Thinning to every
+    // other label below 480px keeps the axis legible without inventing tick
+    // values of its own.
+    const thinTicks = width < 480;
 
     g.append("g")
       .attr("transform", `translate(0,${innerHeight})`)
@@ -141,6 +149,11 @@ export function FrontierCostContextChart({
       .call((selection) => {
         selection.selectAll("path,line").attr("stroke", axisColor);
         selection.selectAll("text").attr("fill", axisColor).attr("font-size", "11px");
+        if (thinTicks) {
+          selection.selectAll(".tick").each(function (_, i) {
+            if (i % 2 === 1) select(this).select("text").attr("display", "none");
+          });
+        }
       });
 
     g.append("g")
@@ -148,6 +161,11 @@ export function FrontierCostContextChart({
       .call((selection) => {
         selection.selectAll("path,line").attr("stroke", axisColor);
         selection.selectAll("text").attr("fill", axisColor).attr("font-size", "11px");
+        if (thinTicks) {
+          selection.selectAll(".tick").each(function (_, i) {
+            if (i % 2 === 1) select(this).select("text").attr("display", "none");
+          });
+        }
       });
 
     g.append("g")
@@ -192,10 +210,10 @@ export function FrontierCostContextChart({
       .attr("class", "point")
       .attr("cx", (d) => xScale(d.x))
       .attr("cy", (d) => yScale(d.y))
-      .attr("r", (d) => (d.model.id === selectedModelId ? 9 : 6))
+      .attr("r", (d) => (d.model.id === selectedModelId ? 11 : 8))
       .attr("fill", (d) => PROVIDER_COLORS[d.model.provider])
       .attr("fill-opacity", 0.85)
-      .attr("stroke", "var(--home-paper)")
+      .attr("stroke", "var(--c97-surface)")
       .attr("stroke-width", 2)
       .attr("tabindex", 0)
       .attr("role", "button")
@@ -231,29 +249,32 @@ export function FrontierCostContextChart({
 
   if (plotted.length === 0) {
     return (
-      <div className="home-card p-6 text-center text-sm text-[var(--home-ink-muted)]">
+      <p className="c97-meta" style={{ padding: "var(--c97-sp-4) 0" }}>
         No models match the current filters.
-      </div>
+      </p>
     );
   }
 
   return (
-    <div className="home-card p-4 sm:p-6">
+    <div>
       <div ref={containerRef} className="w-full">
         <svg ref={svgRef} className="w-full" />
       </div>
-      <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-[var(--home-ink-muted)]">
+      <div
+        className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs"
+        style={{ color: "var(--c97-ink-2)" }}
+      >
         {providersInChart.map(([provider, label]) => (
           <span key={provider} className="inline-flex items-center gap-2">
             <span
               aria-hidden="true"
-              className="inline-block h-2.5 w-2.5 rounded-full"
+              className="inline-block h-2.5 w-2.5"
               style={{ background: PROVIDER_COLORS[provider] }}
             />
-            <span className="text-[var(--home-ink)]">{label}</span>
+            <span style={{ color: "var(--c97-ink)" }}>{label}</span>
           </span>
         ))}
-        <span className="ml-auto text-[var(--home-ink-muted)]">
+        <span className="ml-auto" style={{ color: "var(--c97-ink-2)" }}>
           Blended price = (input + 3 × output) / 4
         </span>
       </div>
