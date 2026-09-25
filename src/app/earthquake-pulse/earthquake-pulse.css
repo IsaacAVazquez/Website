@@ -1,0 +1,122 @@
+/* Earthquake Pulse: the seismogram signature and the log rows. */
+
+.c97-quake-signature {
+  color: var(--c97-ink);
+}
+
+.c97-quake-axis {
+  font-family: var(--c97-font-mono);
+  font-size: 13px;
+  fill: var(--c97-ink);
+  opacity: 0.8;
+}
+
+.c97-quake-label {
+  font-family: var(--c97-font-mono);
+  font-size: 15px;
+  fill: var(--c97-ink);
+}
+
+.c97-quake-log {
+  display: grid;
+  border-top: 1px solid var(--c97-rule);
+}
+
+.c97-quake-log-row {
+  display: grid;
+  grid-template-columns: 7.5rem auto minmax(0, 1fr) auto;
+  gap: var(--c97-sp-3);
+  align-items: center;
+  width: 100%;
+  min-height: 44px;
+  padding: var(--c97-sp-2) var(--c97-sp-2);
+  border: 0;
+  border-bottom: 1px solid var(--c97-rule);
+  text-align: left;
+  font: inherit;
+  color: var(--c97-ink);
+  cursor: pointer;
+}
+
+.c97-quake-log-row[aria-current="true"] {
+  box-shadow: inset 4px 0 0 0 var(--c97-ink);
+}
+
+.c97-quake-log-time {
+  display: grid;
+  font-size: var(--c97-fs-small);
+}
+
+.c97-quake-log-ago {
+  color: var(--c97-ink-2);
+  font-family: var(--c97-font-body);
+}
+
+.c97-quake-log-place {
+  display: grid;
+  gap: var(--c97-sp-1);
+  min-width: 0;
+}
+
+.c97-quake-log-name {
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.c97-quake-log-flags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-3);
+  font-size: var(--c97-fs-small);
+  color: var(--c97-ink-2);
+}
+
+.c97-quake-log-depth {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  font-size: var(--c97-fs-small);
+  color: var(--c97-ink-2);
+}
+
+/* At phone width the SVG scales to about a third, so its type is set larger in
+ * viewBox units and the long strongest-quake label, which the readouts already
+ * carry, is dropped. */
+@media (max-width: 639px) {
+  .c97-quake-axis {
+    font-size: 26px;
+  }
+
+  .c97-quake-label {
+    display: none;
+  }
+
+  .c97-quake-log-row {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas:
+      "badge place place"
+      "badge time depth";
+    row-gap: var(--c97-sp-1);
+  }
+
+  .c97-quake-log-row > :nth-child(1) {
+    grid-area: time;
+    display: flex;
+    gap: var(--c97-sp-2);
+    white-space: nowrap;
+  }
+
+  .c97-quake-log-row > :nth-child(2) {
+    grid-area: badge;
+  }
+
+  .c97-quake-log-row > :nth-child(3) {
+    grid-area: place;
+  }
+
+  .c97-quake-log-row > :nth-child(4) {
+    grid-area: depth;
+  }
+}
