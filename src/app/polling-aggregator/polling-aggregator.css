@@ -1,0 +1,56 @@
+/* Polling Aggregator: the state tile cartogram and the approval/ballot hero
+ * marks. Party blue and red stay the data colours (see DEM_COLOR/REP_COLOR
+ * in polling-aggregator-helpers.ts); the route's own inks are saffron and
+ * teal on purpose so neither ink can be mistaken for a party. */
+
+/* The trend chart and ballot bar's own paper plate inset into the hero. */
+.c97-polling-hero-chart {
+  padding: var(--c97-sp-4);
+}
+
+.c97-state-tile-grid {
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
+  grid-auto-rows: minmax(2.75rem, 1fr);
+  gap: 2px;
+  background: var(--c97-rule);
+  border: 1px solid var(--c97-rule);
+}
+
+.c97-state-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 2px;
+  color: var(--c97-ink);
+  font-family: var(--c97-font-body);
+  text-align: center;
+}
+
+.c97-state-tile-abbr {
+  font-size: var(--c97-fs-small);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.c97-state-tile-rating {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+}
+
+/* Below 640px an 11-column grid leaves each tile too narrow for both lines,
+ * so the rating drops to the title tooltip and the fill colour. */
+@media (max-width: 639px) {
+  .c97-state-tile-grid {
+    grid-auto-rows: minmax(2.25rem, 1fr);
+  }
+
+  .c97-state-tile-rating {
+    display: none;
+  }
+}
