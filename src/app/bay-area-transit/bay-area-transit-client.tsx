@@ -432,7 +432,7 @@ export function BayAreaTransitClient({
         ink={lead}
         title="Bay Area Transit Pulse"
         standfirst={standfirst}
-        meta={`${system.source} · feed ${system.feedTime || "time unavailable"} · refreshed ${formatGeneratedAt(system.generatedAt)}${system.seed ? " · seed data" : ""}`}
+        meta={`${system.source} · feed ${system.feedTime || "time unavailable"} · refreshed ${formatGeneratedAt(system.generatedAt)}${system.seed ? " · seed data" : ""}${staleSections.length > 0 ? ` · ${staleSections.join(", ")} from the last good snapshot` : ""}`}
         readouts={[
           { label: "Lines", value: `${summary.heroStats.lineCount}` },
           { label: "Stations", value: `${summary.heroStats.stationCount}` },
@@ -444,6 +444,7 @@ export function BayAreaTransitClient({
         ]}
       >
         <TransitSignature
+          departuresStatus={summary.sectionStatus?.departures}
           stations={summary.stations}
           lines={summary.lines}
           selectedStation={selectedStation}

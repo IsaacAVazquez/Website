@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import type {
   TransitLine,
+  TransitSectionStatus,
   TransitStation,
   TransitStationBoard,
 } from "@/types/bayAreaTransit";
@@ -17,6 +18,8 @@ interface TransitSignatureProps {
   error: string | null;
   onSelect: (stationId: string) => void;
   onRetry: () => void;
+  /** Whether the snapshot's departures are fresh, the last good copy, or missing. */
+  departuresStatus?: TransitSectionStatus;
 }
 
 const W = 640;
@@ -38,12 +41,14 @@ function PlatformBoard({
   isLoading,
   error,
   onRetry,
+  departuresStatus,
 }: {
   station: TransitStation | null;
   board: TransitStationBoard | null;
   isLoading: boolean;
   error: string | null;
   onRetry: () => void;
+  departuresStatus: TransitSectionStatus;
 }) {
   return (
     <div className="c97-transit-board" data-c97-surface="espresso">
@@ -62,6 +67,13 @@ function PlatformBoard({
         ) : (
           <>
             <h2 className="c97-poster-sm mb-2">{station.name}</h2>
+            {departuresStatus !== "fresh" ? (
+              <p className="c97-transit-board-status" role="status">
+                {departuresStatus === "stale-fallback"
+                  ? "BART did not answer, so these times come from the last good snapshot and may be out of date."
+                  : "Departures are unavailable from BART right now."}
+              </p>
+            ) : null}
 
             {isLoading ? (
               <p className="mb-0 text-sm" role="status" style={{ color: "var(--c97-ink-2)" }}>
@@ -137,6 +149,7 @@ export function TransitSignature({
   error,
   onSelect,
   onRetry,
+  departuresStatus = "fresh",
 }: TransitSignatureProps) {
   const points = useMemo(
     () => projectStations(stations, lines, W, H, PAD),
@@ -147,6 +160,7 @@ export function TransitSignature({
   return (
     <div className="c97-transit-signature">
       <PlatformBoard
+        departuresStatus={departuresStatus}
         station={selectedStation}
         board={stationBoard}
         isLoading={isLoading}

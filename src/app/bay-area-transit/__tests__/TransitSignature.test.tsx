@@ -45,3 +45,13 @@ it("shows a late train's delay on the platform board", () => {
   renderSignature({ stationBoard: board(180) });
   expect(screen.getByText(/3 min late/i)).toBeInTheDocument();
 });
+
+it("warns on the board when departures come from the last good snapshot", () => {
+  renderSignature({ departuresStatus: "stale-fallback" });
+  expect(screen.getByText(/last good snapshot/i)).toBeInTheDocument();
+});
+
+it("says so on the board when BART has no departures to give", () => {
+  renderSignature({ departuresStatus: "unavailable" });
+  expect(screen.getByText(/departures are unavailable/i)).toBeInTheDocument();
+});

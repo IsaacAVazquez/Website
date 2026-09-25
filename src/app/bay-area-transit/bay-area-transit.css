@@ -124,3 +124,9 @@
   font-size: var(--c97-fs-small);
   color: var(--c97-warning);
 }
+
+.c97-transit-board-status {
+  margin: 0 0 var(--c97-sp-2);
+  font-size: var(--c97-fs-small);
+  color: var(--c97-warning);
+}
