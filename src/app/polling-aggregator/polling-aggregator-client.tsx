@@ -116,8 +116,8 @@ function TrendChart({ snapshot }: { snapshot: PollingSnapshot }) {
             <>
               <circle cx={ax} cy={ay} r={4} fill={DEM_COLOR} />
               <circle cx={ax} cy={dy} r={4} fill={REP_COLOR} />
-              <text x={ax + 6} y={ay + 4} fontSize={10} className="c97-polling-chart-text" fill={DEM_COLOR} fontWeight="600">{last.approve.toFixed(1)}%</text>
-              <text x={ax + 6} y={dy + 4} fontSize={10} className="c97-polling-chart-text" fill={REP_COLOR} fontWeight="600">{last.disapprove.toFixed(1)}%</text>
+              <text x={ax + 6} y={ay + 4} fontSize={10} className="c97-polling-chart-text" fill="var(--c97-ink)" fontWeight="600">{last.approve.toFixed(1)}%</text>
+              <text x={ax + 6} y={dy + 4} fontSize={10} className="c97-polling-chart-text" fill="var(--c97-ink)" fontWeight="600">{last.disapprove.toFixed(1)}%</text>
             </>
           );
         })()}

@@ -60,9 +60,19 @@ export function measurePage() {
     if (!ownText || el.closest('[aria-hidden="true"], script, style, noscript, svg title')) continue;
     const style = getComputedStyle(el);
     if (style.visibility === "hidden" || Number(style.opacity) === 0 || el.getClientRects().length === 0) continue;
+    // Opacity on the element or any ancestor fades the text toward its ground.
+    let opacity = 1;
+    for (let node = el; node && node.nodeType === 1; node = node.parentElement) {
+      opacity *= Number(getComputedStyle(node).opacity);
+    }
+    if (opacity === 0) continue;
+    const isSvgText = el instanceof SVGElement;
     const bg = background(el);
-    const fg = over(toRgba(style.color), bg);
-    const size = parseFloat(style.fontSize);
+    const paint = toRgba(isSvgText ? style.fill : style.color);
+    const fg = over([paint[0], paint[1], paint[2], paint[3] * opacity], bg);
+    // SVG type scales with its viewBox, so large text is judged at rendered size.
+    const scale = isSvgText && el.getScreenCTM ? Math.abs(el.getScreenCTM()?.a ?? 1) : 1;
+    const size = parseFloat(style.fontSize) * scale;
     const large = size >= 24 || (size >= 18.66 && Number(style.fontWeight) >= 700);
     const needed = large ? 3 : 4.5;
     const measured = ratio(fg, bg);
