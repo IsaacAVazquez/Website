@@ -130,11 +130,16 @@ export function FrontierCostContextChart({
     // Log ticks label every mantissa step, which piles up. Keep 1, 2, and 5
     // per decade on context and 1 and 3 per decade on price.
     const leadingDigit = (value: number) => Number(value.toExponential().charAt(0));
+    // A narrow domain can hold no 1, 2, 3, or 5 tick at all, so fall back to d3's own.
+    const pick = (ticks: number[], keep: number[]) => {
+      const kept = ticks.filter((value) => keep.includes(leadingDigit(value)));
+      return kept.length >= 2 ? kept : ticks;
+    };
     const xAxis = axisBottom(xScale)
-      .tickValues(xScale.ticks().filter((value) => [1, 2, 5].includes(leadingDigit(value))))
+      .tickValues(pick(xScale.ticks(), [1, 2, 5]))
       .tickFormat((value) => formatTokenCount(Number(value)));
     const yAxis = axisLeft(yScale)
-      .tickValues(yScale.ticks().filter((value) => [1, 3].includes(leadingDigit(value))))
+      .tickValues(pick(yScale.ticks(), [1, 3]))
       .tickFormat((value) => `$${Number(value).toFixed(Number(value) < 1 ? 2 : 0)}`);
 
     // A sub-decade log domain makes d3 ignore the tick count hint and label

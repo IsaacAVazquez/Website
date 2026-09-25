@@ -246,7 +246,7 @@ export function BayAreaTransitClient({
     [summary.lines]
   );
   const hexForLine = (colorName: string) =>
-    lineHexByColor.get(colorName.trim().toLowerCase()) ?? "#888888";
+    lineHexByColor.get(colorName.trim().toLowerCase()) ?? "var(--c97-ink-2)";
 
   useEffect(() => {
     let active = true;

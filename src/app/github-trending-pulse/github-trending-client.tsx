@@ -182,7 +182,7 @@ export function GitHubTrendingClient({ initialState, snapshot }: GitHubTrendingC
     }))
   )[0];
   const standfirst =
-    "I keep a daily snapshot of active public repositories by language and topic, and I wanted the board to read the way a git log does, so each repository's weekly star movement becomes a bar instead of one more number in a table. The strip across the top shows which languages picked up the week's stars.";
+    "I keep a daily snapshot of active public repositories by language and topic, and I wanted the board to read the way a git log does, so each repository's weekly star movement reads as a bar you can compare at a glance. The strip across the top shows which languages picked up the week's stars.";
   const meta = `${snapshot.sourceLabel} · updated ${relativeAge(snapshot.generatedAt)} · ${snapshot.activityWindowDays}d active repo window · ${measuredShare}% of deltas measured`;
 
   return (
@@ -216,7 +216,7 @@ export function GitHubTrendingClient({ initialState, snapshot }: GitHubTrendingC
       </Catalog97ProjectHero>
 
       {snapshot.sourceStatus?.status === "degraded" ? (
-        <div className="c97-band" data-c97-surface="paper">
+        <div className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
           <div className="c97-shell">
             <p className="c97-meta" style={{ color: "var(--c97-warning)" }} role="status">
               {snapshot.sourceStatus.reusedSegments.length > 0

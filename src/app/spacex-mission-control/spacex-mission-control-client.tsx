@@ -643,7 +643,7 @@ export function SpaceXMissionControlClient({
         </div>
       </section>
 
-      <section className="c97-band c97-sheet" data-c97-surface="paper">
+      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
           <p className="c97-kicker mb-2">Data source</p>
           <p className="c97-prose mb-0">

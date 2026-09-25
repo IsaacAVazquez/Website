@@ -667,7 +667,7 @@ export function PollingAggregatorClient({ initialState, snapshot }: Props) {
   );
   const totalPolls = snapshot.approvalPolls.length + snapshot.genericBallotPolls.length;
   const standfirst =
-    "I built this to track presidential approval and the 2026 generic ballot in one place, from polls that are actually attributed instead of placeholder races. VoteHub feeds it, and the trend and the race ratings below update as new polls come in.";
+    "I built this to track presidential approval and the 2026 generic ballot in one place, built only from polls with a named source. VoteHub feeds it, and the trend and the race ratings below update as new polls come in.";
 
   return (
     <>

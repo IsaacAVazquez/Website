@@ -289,7 +289,7 @@ export function NewsPulseClient({
           {
             label: "Largest story cluster",
             value: loading ? "—" : `${topClusterSize}`,
-            detail: "Outlets on the same story",
+            detail: "Headlines on the same story",
           },
         ]}
       >

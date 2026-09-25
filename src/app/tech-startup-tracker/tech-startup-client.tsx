@@ -162,7 +162,7 @@ export function TechStartupClient({ initialState, snapshot }: TechStartupClientP
 
   const lead = PROJECT_PRESS[TECH_STARTUP_ROUTE].lead;
   const standfirst =
-    "I keep a curated, unverified read on notable private tech companies, grouped by sector and funding stage, and I wanted the treemap to do what a sorted table never can, which is show how concentrated the valuations actually are. A handful of companies worth well over $100B eat most of the space here, and everything else compresses down next to them.";
+    "I keep a curated, unverified read on notable private tech companies, grouped by sector and funding stage, and I wanted the treemap to do what a sorted table never can, which is show how concentrated the valuations actually are. The few companies valued above $100B take up most of the space, and everything else shrinks down next to them.";
   const meta = `${snapshot.sourceLabel} · figures as of ${formatRoundDate(snapshot.asOf)} · updated ${relativeUpdated}`;
 
   return (
@@ -198,7 +198,7 @@ export function TechStartupClient({ initialState, snapshot }: TechStartupClientP
         />
       </Catalog97ProjectHero>
 
-      <div className="c97-band" data-c97-surface="paper">
+      <div className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell" style={{ display: "grid", gap: "var(--c97-sp-2)" }}>
           {sourceIsOverdue ? (
             <p className="c97-prose" role="status" style={{ color: "var(--c97-warning)", fontSize: "var(--c97-fs-small)" }}>

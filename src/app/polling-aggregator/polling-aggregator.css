@@ -37,7 +37,7 @@
 }
 
 .c97-state-tile-rating {
-  font-size: 9px;
+  font-size: var(--c97-fs-label);
   text-transform: uppercase;
   letter-spacing: 0.03em;
   line-height: 1.1;

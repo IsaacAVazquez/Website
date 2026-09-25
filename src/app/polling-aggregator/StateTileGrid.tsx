@@ -9,11 +9,19 @@ interface StateTileGridProps {
   races: Race[];
 }
 
+/*
+ * Tile text is the page ink, so the fill stops at 75%. At 90% neither ink
+ * clears 4.5:1 on party blue or red in light mode (4.19 and 4.00 measured);
+ * at 75% the theme's own ink does in both themes.
+ */
+const MAX_TILE_STRENGTH = 0.75;
+
 function tileFill(rating: Race["rating"]): string {
   const tone = tileTone(rating);
-  if (!tone.party) return `color-mix(in srgb, var(--c97-ink-2) ${Math.round(tone.strength * 100)}%, transparent)`;
+  const pct = Math.round(Math.min(tone.strength, MAX_TILE_STRENGTH) * 100);
+  if (!tone.party) return `color-mix(in srgb, var(--c97-ink-2) ${pct}%, transparent)`;
   const base = tone.party === "D" ? DEM_COLOR : REP_COLOR;
-  return `color-mix(in srgb, ${base} ${Math.round(tone.strength * 100)}%, transparent)`;
+  return `color-mix(in srgb, ${base} ${pct}%, transparent)`;
 }
 
 /**
