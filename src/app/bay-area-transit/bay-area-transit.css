@@ -1,0 +1,120 @@
+/* Bay Area Transit Pulse: the platform board, station map, and log rows. */
+
+.c97-transit-signature {
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) minmax(0, 1.6fr);
+  gap: var(--c97-sp-5);
+  align-items: start;
+}
+
+.c97-transit-board {
+  min-height: 100%;
+}
+
+/*
+ * Not `.c97-panel`: on espresso, `--c97-field` is a light card tint meant for
+ * a light surface, and text here still inherits the surface's light
+ * `--c97-ink`. Padding only, so the board's own dark surface background
+ * shows through instead of a near-white field under light text.
+ */
+.c97-transit-board-inner {
+  height: 100%;
+  padding: var(--c97-sp-3);
+}
+
+.c97-transit-departures {
+  display: grid;
+  gap: var(--c97-sp-2);
+  margin: var(--c97-sp-3) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.c97-transit-departure-row {
+  display: grid;
+  grid-template-columns: 6px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--c97-sp-3);
+  min-height: 44px;
+}
+
+.c97-transit-departure-bar {
+  align-self: stretch;
+  width: 6px;
+}
+
+.c97-transit-departure-dest {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.c97-transit-departure-min {
+  font-size: var(--c97-fs-h2);
+  white-space: nowrap;
+}
+
+.c97-transit-map {
+  color: var(--c97-ink);
+  padding: var(--c97-sp-3);
+}
+
+.c97-transit-station-label {
+  font-family: var(--c97-font-mono);
+  font-size: 15px;
+  fill: var(--c97-ink);
+}
+
+.c97-transit-line-card {
+  display: block;
+  /* A grid item's default min-width is its content's min-content size, which
+   * lets a nowrap child (the chip, the truncated name) push the card wider
+   * than its track. Zero it so the card shrinks to the grid column instead. */
+  min-width: 0;
+  border: 1px solid var(--c97-rule);
+  padding: var(--c97-sp-3);
+}
+
+.c97-transit-station-row {
+  display: flex;
+  min-width: 0;
+  min-height: 44px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--c97-sp-3);
+  border: 1px solid var(--c97-rule);
+  padding: var(--c97-sp-2) var(--c97-sp-3);
+  text-align: left;
+  font: inherit;
+  color: var(--c97-ink);
+  background: var(--c97-field);
+  cursor: pointer;
+}
+
+.c97-transit-station-row[aria-current="true"] {
+  box-shadow: inset 4px 0 0 0 var(--c97-ink);
+}
+
+.c97-transit-swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 1px solid color-mix(in srgb, var(--c97-ink) 20%, transparent);
+}
+
+.c97-transit-advisory {
+  border: 1px solid var(--c97-rule);
+  padding: var(--c97-sp-3);
+}
+
+/* At phone width the board and map stack, and the SVG type scales up to stay legible. */
+@media (max-width: 639px) {
+  .c97-transit-signature {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .c97-transit-station-label {
+    font-size: 22px;
+  }
+}
