@@ -29,6 +29,7 @@ import {
   pickWorseFantasySnapshotStaleness,
   type FantasyWeeklyBoardSource,
   type FantasyWeeklyPlayer,
+  type FantasyWeeklySeed,
 } from "@/lib/fantasyWeeklySnapshot";
 import {
   SHELL_CLASS,
@@ -111,6 +112,26 @@ function useTableLayout(): boolean {
     getTableLayout,
     getServerTableLayout,
   );
+}
+
+const subscribeToHydration = () => () => undefined;
+const getHydratedSnapshot = () => true;
+const getServerHydratedSnapshot = () => false;
+
+// The server renders in UTC and cannot know the visitor's timezone, so the
+// server and hydration renders print the stamp in UTC and local time follows.
+const UTC_STAMP_FORMATTER = new Intl.DateTimeFormat("en-US", {
+  dateStyle: "medium",
+  timeStyle: "short",
+  timeZone: "UTC",
+});
+
+function formatSourceStamp(asOf: string, hydrated: boolean): string {
+  if (hydrated) return formatUpdatedAt(asOf);
+  const date = new Date(asOf);
+  return Number.isNaN(date.getTime())
+    ? "Unavailable"
+    : `${UTC_STAMP_FORMATTER.format(date)} UTC`;
 }
 
 export type WeeklyBoardKey = "flex" | "quarterbacks";
@@ -196,13 +217,21 @@ function ReadoutPair({ label, value, emphasis = false }: { label: string; value:
 
 export function WeeklyBoardClient({
   initialState,
+  initialSnapshot = null,
   view = "rankings",
 }: {
   initialState: WeeklyRouteState;
+  /** The server's copy of the requested scoring format, so rows ship in the HTML. */
+  initialSnapshot?: FantasyWeeklySeed | null;
   view?: WeeklyView;
 }) {
   const { snapshot, notPublished, isLoading, error, retry } =
-    useFantasyWeeklySnapshot();
+    useFantasyWeeklySnapshot(initialSnapshot);
+  const isHydrated = useSyncExternalStore(
+    subscribeToHydration,
+    getHydratedSnapshot,
+    getServerHydratedSnapshot,
+  );
   const viewConfig = VIEWS[view];
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -237,6 +266,9 @@ export function WeeklyBoardClient({
   }
 
   const activeBoard = snapshot?.boards[scoring] ?? null;
+  // A server seed carries one scoring format. Until the full file lands, a
+  // switch to another format has no board yet, which is loading, not empty.
+  const boardPending = snapshot !== null && activeBoard === null && !error;
   const players = useMemo(
     () => (activeBoard ? activeBoard[board] : []),
     [activeBoard, board],
@@ -375,13 +407,13 @@ export function WeeklyBoardClient({
               {view === "waivers" ? (
                 <>
                   <span>
-                    Flex updated {formatUpdatedAt(activeBoard.flexSource.asOf)},{" "}
+                    Flex updated {formatSourceStamp(activeBoard.flexSource.asOf, isHydrated)},{" "}
                     {activeBoard.flexSource.expertCount} experts
                   </span>
                   <span aria-hidden="true">·</span>
                   <span>
                     QB updated{" "}
-                    {formatUpdatedAt(activeBoard.quarterbackSource.asOf)},{" "}
+                    {formatSourceStamp(activeBoard.quarterbackSource.asOf, isHydrated)},{" "}
                     {activeBoard.quarterbackSource.expertCount} experts
                   </span>
                   <span aria-hidden="true">·</span>
@@ -398,7 +430,7 @@ export function WeeklyBoardClient({
                 </>
               ) : (
                 <>
-                  <span>Source updated {formatUpdatedAt(source.asOf)}</span>
+                  <span>Source updated {formatSourceStamp(source.asOf, isHydrated)}</span>
                   <span aria-hidden="true">·</span>
                   <span
                     style={{
@@ -418,7 +450,7 @@ export function WeeklyBoardClient({
           ) : null}
         </header>
 
-        {isLoading ? (
+        {isLoading || boardPending ? (
           <p role="status" className="text-sm text-[var(--home-ink-muted)]">
             Loading the weekly board.
           </p>
@@ -454,7 +486,7 @@ export function WeeklyBoardClient({
           </div>
         ) : null}
 
-        {error ? (
+        {error && !activeBoard ? (
           <div
             role="alert"
             className="rounded-[var(--radius-3xl)] border border-[var(--home-negative)] bg-[var(--home-paper)] p-5"
@@ -502,7 +534,7 @@ export function WeeklyBoardClient({
               </a>
             </div>
 
-            <MyTeamPanel snapshot={snapshot} scoring={scoring} onScoringChange={value => updateRouteState({ scoring: value })} />
+            <MyTeamPanel snapshot={snapshot} board={activeBoard} scoring={scoring} onScoringChange={value => updateRouteState({ scoring: value })} />
 
             {view === "waivers" ? (
               <section

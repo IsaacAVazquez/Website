@@ -83,6 +83,14 @@ describe("Portfolio shell page semantics", () => {
     expect(hrefs).not.toContain("/portfolio/project-a");
   });
 
+  // Project titles are headings so a screen reader can move between projects.
+  // 96a16afb turned them into spans when each card became a single link.
+  it("keeps homepage work card titles reachable by heading navigation", async () => {
+    render(await Home());
+
+    expect(screen.getByRole("heading", { level: 3, name: "Project A" })).toBeInTheDocument();
+  });
+
   it("links portfolio entries straight to the live tool", () => {
     const { container } = render(<PortfolioPage />);
     const hrefs = Array.from(container.querySelectorAll("a"), (a) => a.getAttribute("href"));

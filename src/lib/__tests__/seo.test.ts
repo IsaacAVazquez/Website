@@ -51,6 +51,14 @@ describe('constructMetadata', () => {
   // The root layout calls constructMetadata() with no arguments, so any
   // default here is inherited by every route that sets no metadata of its own.
   // A homepage default told Google those routes were copies of the homepage.
+  // The @isaacvazquez handle has no public X profile (checked 2026-09-24), so
+  // the card names no creator or site account.
+  it("names no X account on the twitter card", () => {
+    const twitter = constructMetadata().twitter as { creator?: string; site?: string };
+    expect(twitter.creator).toBeUndefined();
+    expect(twitter.site).toBeUndefined();
+  });
+
   it('emits no canonical or og:url when no canonicalUrl is given', () => {
     const metadata = constructMetadata({ title: 'Stub' });
     expect(metadata.alternates).toBeUndefined();

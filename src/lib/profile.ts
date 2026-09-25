@@ -2,7 +2,7 @@ export const profile = {
   name: "Isaac Vazquez",
   givenName: "Isaac",
   familyName: "Vazquez",
-  alternateNames: ["@isaacvazquez", "IsaacAVazquez"],
+  alternateNames: ["IsaacAVazquez"],
   shortTitle: "Product Manager",
   fullTitle: "Product Manager & UC Berkeley Haas MBA Candidate",
   description:
@@ -18,8 +18,9 @@ export const profile = {
     market: "San Francisco Bay Area",
   },
   email: "IsaacVazquez@berkeley.edu",
+  // Only profiles a crawler can open. x.com/isaacvazquez returned "User Profile
+  // Not Found" on 2026-09-24, so it came out of the Person entity.
   sameAs: {
-    twitter: "https://twitter.com/isaacvazquez",
     github: "https://github.com/IsaacAVazquez",
     linkedin: "https://www.linkedin.com/in/isaac-vazquez/",
   },

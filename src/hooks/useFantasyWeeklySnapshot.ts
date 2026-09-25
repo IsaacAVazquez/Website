@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { fantasySnapshotRevision } from "@/data/fantasySnapshotRevision.generated";
 import {
   normalizeFantasyWeeklySnapshot,
+  type FantasyWeeklySeed,
   type FantasyWeeklySnapshot,
 } from "@/lib/fantasyWeeklySnapshot";
 
@@ -56,12 +57,23 @@ async function loadWeeklySnapshot(): Promise<WeeklyLoadResult> {
   return inflightRequest;
 }
 
-export function useFantasyWeeklySnapshot() {
-  const [snapshot, setSnapshot] = useState<FantasyWeeklySnapshot | null>(
-    cachedResult?.kind === "snapshot" ? cachedResult.snapshot : null
+/** Test-only: forgets the module-level result so each test starts cold. */
+export function resetFantasyWeeklySnapshotCacheForTests() {
+  cachedResult = null;
+  inflightRequest = null;
+}
+
+/**
+ * `seed` is the server's copy of one scoring format (see loadFantasyWeeklySeed),
+ * which puts the first rows in the HTML. The full file is still fetched for
+ * the other formats, and a full result from earlier in the session wins.
+ */
+export function useFantasyWeeklySnapshot(seed: FantasyWeeklySeed | null = null) {
+  const [snapshot, setSnapshot] = useState<FantasyWeeklySeed | null>(
+    cachedResult?.kind === "snapshot" ? cachedResult.snapshot : seed
   );
   const [notPublished, setNotPublished] = useState(cachedResult?.kind === "not-published");
-  const [isLoading, setIsLoading] = useState(cachedResult === null);
+  const [isLoading, setIsLoading] = useState(cachedResult === null && seed === null);
   const [error, setError] = useState<string | null>(null);
   const [requestVersion, setRequestVersion] = useState(0);
 
@@ -86,7 +98,9 @@ export function useFantasyWeeklySnapshot() {
       })
       .catch(() => {
         if (!cancelled) {
-          setSnapshot(null);
+          // A seeded board still holds for its own format, so keep it; the
+          // client shows the error only where a board is missing.
+          if (!seed) setSnapshot(null);
           setError("The weekly board is unavailable right now.");
         }
       })
@@ -97,7 +111,7 @@ export function useFantasyWeeklySnapshot() {
     return () => {
       cancelled = true;
     };
-  }, [requestVersion]);
+  }, [requestVersion, seed]);
 
   return { snapshot, notPublished, isLoading, error, retry };
 }

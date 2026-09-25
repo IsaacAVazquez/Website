@@ -61,6 +61,9 @@ test.describe("Portfolio shell", () => {
       .allTextContents();
     expect(leadTitles).toEqual([...leadTitles].sort((left, right) => left.localeCompare(right)));
 
-    expect(await page.locator('main a[href^="/portfolio/"]').count()).toBeGreaterThan(0);
+    // Entries link straight to each live tool instead of through the
+    // /portfolio/<slug> redirect.
+    expect(await page.locator('main a[href="/investments"]').count()).toBeGreaterThan(0);
+    expect(await page.locator('main a[href^="/portfolio/"]').count()).toBe(0);
   });
 });

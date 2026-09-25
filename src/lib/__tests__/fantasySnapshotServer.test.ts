@@ -5,11 +5,15 @@ import {
   FANTASY_SNAPSHOT_SCHEMA_VERSION,
   getFantasyPlayersForPosition,
 } from "@/lib/fantasy";
+import fs from "fs";
+import fsPromises from "fs/promises";
 import {
   loadFantasySnapshot,
   loadFantasySnapshotSeed,
+  loadFantasyWeeklySeed,
   resetFantasySnapshotCache,
 } from "@/lib/fantasySnapshotServer";
+import { normalizeFantasyWeeklySnapshot } from "@/lib/fantasyWeeklySnapshot";
 import { buildFantasyVorpIndex, sortPlayersByVorpRank } from "@/lib/fantasyVorp";
 import type { Player } from "@/types";
 
@@ -107,5 +111,38 @@ describe("loadFantasySnapshotSeed", () => {
     );
     expect(seed.positions.WR).toEqual([]);
     expect(seed.vorpRankings["10"]?.length).toBe(40);
+  });
+});
+
+// The weekly and waiver pages render their first rows on the server from this
+// seed, so crawlers that do not run JavaScript see the board. One scoring
+// format rides in the page; the client fetches the other two.
+describe("loadFantasyWeeklySeed", () => {
+  afterEach(() => {
+    jest.restoreAllMocks();
+    resetFantasySnapshotCache();
+  });
+
+  it("seeds the complete boards for the requested scoring format and no other", async () => {
+    resetFantasySnapshotCache();
+    const published = normalizeFantasyWeeklySnapshot(
+      JSON.parse(fs.readFileSync("public/data/fantasy/weekly.json", "utf8"))
+    );
+
+    const seed = await loadFantasyWeeklySeed("half_ppr");
+
+    expect(Object.keys(seed?.boards ?? {})).toEqual(["half_ppr"]);
+    expect(seed?.boards.half_ppr).toEqual(published.boards.half_ppr);
+    expect(seed?.week).toBe(published.week);
+    expect(seed?.season).toBe(published.season);
+  });
+
+  it("returns null before Week 1, when the builder has published no file", async () => {
+    resetFantasySnapshotCache();
+    jest
+      .spyOn(fsPromises, "readFile")
+      .mockRejectedValueOnce(Object.assign(new Error("missing"), { code: "ENOENT" }));
+
+    await expect(loadFantasyWeeklySeed("ppr")).resolves.toBeNull();
   });
 });
