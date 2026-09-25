@@ -118,6 +118,16 @@ describe("NewsPulseClient", () => {
     expect(screen.queryByText(/Story clusters across outlets/i)).not.toBeInTheDocument();
   });
 
+  it("keeps every view tab reachable from the keyboard", () => {
+    mockFetch.mockResolvedValue(makeOkResponse(baseResponse));
+    render(<NewsPulseClient initialState={DEFAULT_NEWS_PULSE_STATE} />);
+    const tabs = screen.getAllByRole("tab");
+    expect(tabs.length).toBeGreaterThan(1);
+    for (const tab of tabs) {
+      expect(tab).not.toHaveAttribute("tabindex", "-1");
+    }
+  });
+
   it("renders server-provided headlines before the browser refresh resolves", () => {
     mockFetch.mockImplementation(
       () =>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, type KeyboardEvent } from "react";
+import { useMemo } from "react";
 import { formatUsdCompact } from "@/lib/techStartups";
 import { SECTOR_LABEL_MIN_HEIGHT, valuationTreemap, type TreemapStartup } from "./treemap";
 
@@ -23,12 +23,6 @@ const CHART_TOKENS = [
   "var(--c97-chart-6)",
 ];
 
-function handleKey(event: KeyboardEvent<SVGGElement>, onSelect: () => void) {
-  if (event.key === "Enter" || event.key === " ") {
-    event.preventDefault();
-    onSelect();
-  }
-}
 
 /**
  * The page's signature, a valuation treemap. Each disclosed startup becomes
@@ -65,15 +59,13 @@ export function ValuationTreemap({ startups, selectedId, onSelect, sectorLabels 
             const showLabel = width > 90 && height > 40;
             const isSelected = tile.id === selectedId;
             return (
+              // Pointer only. The table below is the keyboard path, and
+              // role="img" makes these marks presentational anyway.
               <g
                 key={tile.id}
-                role="button"
-                tabIndex={0}
-                aria-pressed={isSelected}
                 data-selected={isSelected}
                 className="c97-startup-treemap-tile"
                 onClick={() => onSelect(tile.id)}
-                onKeyDown={(event) => handleKey(event, () => onSelect(tile.id))}
               >
                 <title>{`${tile.name}, ${formatUsdCompact(tile.valuation)}`}</title>
                 <rect

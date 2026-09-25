@@ -317,7 +317,6 @@ export function NewsPulseClient({
                   id={`news-pulse-tab-${view}`}
                   aria-controls={`news-pulse-tabpanel-${view}`}
                   aria-selected={routeState.view === view}
-                  tabIndex={routeState.view === view ? 0 : -1}
                   onClick={() => updateRouteState({ view })}
                   className="min-h-[44px] text-sm font-semibold"
                 >

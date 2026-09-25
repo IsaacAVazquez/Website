@@ -118,3 +118,9 @@
     font-size: 22px;
   }
 }
+
+.c97-transit-departure-late {
+  display: block;
+  font-size: var(--c97-fs-small);
+  color: var(--c97-warning);
+}

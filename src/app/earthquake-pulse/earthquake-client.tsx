@@ -625,7 +625,6 @@ export function EarthquakeClient({
                     id={`earthquake-tab-${view}`}
                     aria-controls={`earthquake-tabpanel-${view}`}
                     aria-selected={routeState.view === view}
-                    tabIndex={routeState.view === view ? 0 : -1}
                     onClick={() => handleViewChange(view)}
                     className="min-h-[44px] text-sm font-semibold"
                   >

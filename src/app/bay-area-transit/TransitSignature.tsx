@@ -93,7 +93,14 @@ function PlatformBoard({
                         style={{ background: departure.hexColor }}
                         aria-hidden="true"
                       />
-                      <span className="c97-transit-departure-dest">{departure.destination}</span>
+                      <span className="c97-transit-departure-dest">
+                        {departure.destination}
+                        {departure.delaySeconds >= 60 ? (
+                          <span className="c97-transit-departure-late">
+                            {Math.round(departure.delaySeconds / 60)} min late
+                          </span>
+                        ) : null}
+                      </span>
                       <span className="c97-mono c97-transit-departure-min">
                         {formatMinutes(departure.minutes)}
                       </span>
@@ -169,19 +176,12 @@ export function TransitSignature({
               const isSelected = station?.id === selectedStation?.id;
               const r = isSelected ? SELECTED_R : DOT_R;
               return (
+                // Pointer only. The station list below is the keyboard path, and
+                // role="img" makes these marks presentational anyway.
                 <g
                   key={point.abbr}
-                  role="button"
-                  tabIndex={0}
-                  aria-label={`${station?.name ?? point.abbr} station`}
-                  aria-pressed={isSelected}
                   style={{ cursor: "pointer" }}
                   onClick={() => station && onSelect(station.id)}
-                  onKeyDown={(event) => {
-                    if (event.key !== "Enter") return;
-                    if (!station) return;
-                    onSelect(station.id);
-                  }}
                 >
                   <circle cx={point.x} cy={point.y} r={r} fill="var(--c97-surface)" />
                   {point.rings.map((hex, index) => (
