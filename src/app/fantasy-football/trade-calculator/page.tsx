@@ -4,6 +4,13 @@ import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { fantasySnapshotRevision } from "@/data/fantasySnapshotRevision.generated";
 import { TradeCalculatorClient } from "./trade-calculator-client";
 
+// TradeCalculatorClient reads useSearchParams(). In a statically prerendered
+// route that bails the whole page out to client rendering at loading.tsx, so
+// the HTML shipped with no h1, no body text, and no JSON-LD. Rendering per
+// request, as the other fantasy boards already do, lets the client render on
+// the server with the real query.
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = constructMetadata({
   title: "Fantasy Football Trade Calculator",
   description:

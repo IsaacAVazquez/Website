@@ -154,10 +154,7 @@ export default function RootLayout({
             {children}
           </ConditionalLayout>
         </Providers>
-      {/* impeccable-live-start */}
-<script src="http://localhost:8400/live.js?token=55421dcd-906c-4bf0-b47a-380f4e2a07fe"></script>
-{/* impeccable-live-end */}
-</body>
+      </body>
     </html>
   );
 }

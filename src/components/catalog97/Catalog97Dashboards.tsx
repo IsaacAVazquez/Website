@@ -254,9 +254,19 @@ export function Catalog97Dashboards({
         data-c97-surface="paper"
         aria-label="Instruments by category"
       >
+        {/*
+          Each banner's 96px min-height carries through its 5 / 1 aspect ratio
+          into a 480px minimum width, which ran the page 118px past a 390
+          phone. The minmax(0, 1fr) track stops the column growing to fit it,
+          and the banner's max-width stops it overhanging the column.
+        */}
         <div
           className="c97-shell"
-          style={{ display: "grid", gap: "var(--c97-sp-6)" }}
+          style={{
+            display: "grid",
+            gridTemplateColumns: "minmax(0, 1fr)",
+            gap: "var(--c97-sp-6)",
+          }}
         >
           {visibleGroups.map(({ group, cycleOffset }) => (
             <div key={group.id}>
@@ -265,6 +275,7 @@ export function Catalog97Dashboards({
                   position: "relative",
                   aspectRatio: "5 / 1",
                   minHeight: "96px",
+                  maxWidth: "100%",
                   overflow: "hidden",
                   marginBottom: "var(--c97-sp-3)",
                 }}

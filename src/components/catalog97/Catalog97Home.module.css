@@ -145,7 +145,8 @@
   transition: background-color 160ms ease;
 }
 .post:last-child { border-bottom: 1px solid var(--c97-rule); }
-.postCopy { max-width: var(--c97-measure-wide); gap: 4px; }
+/* A grid, so the title and excerpt spans stack instead of running on inline. */
+.postCopy { display: grid; max-width: var(--c97-measure-wide); gap: 4px; }
 .post > :last-child { white-space: nowrap; }
 
 @media (max-width: 880px) {

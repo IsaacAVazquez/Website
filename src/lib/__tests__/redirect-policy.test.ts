@@ -53,6 +53,29 @@ describe("redirect policy", () => {
     }
   );
 
+  // A page that calls permanentRedirect() under fantasy-football/loading.tsx
+  // redirects after the Suspense shell has streamed, so it answers 200 with a
+  // meta refresh. A config redirect answers before any rendering.
+  it.each([
+    ["/fantasy-football/rb-tiers", "/fantasy-football?position=rb&scoring=ppr"],
+    [
+      "/fantasy-football/tiers/:position",
+      "/fantasy-football?position=:position&scoring=ppr",
+    ],
+  ])("retires %s with a permanent config redirect", (source, destination) => {
+    expect(redirects).toContainEqual({ source, destination, permanent: true });
+  });
+
+  // src/proxy.ts used to answer these first with a 307, and sent
+  // /blog/posts/<slug> to /writing/posts/<slug>, which is a 404.
+  it.each([
+    ["/blog", "/writing"],
+    ["/blog/:slug", "/writing/:slug"],
+    ["/blog/posts/:slug", "/writing/:slug"],
+  ])("sends legacy %s permanently to %s", (source, destination) => {
+    expect(redirects).toContainEqual({ source, destination, permanent: true });
+  });
+
   it("does not chain any exact redirect through another exact source", () => {
     const exactSources = new Set(
       redirects

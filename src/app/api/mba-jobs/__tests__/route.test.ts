@@ -103,6 +103,18 @@ function installFetchMock(responses: Record<string, Response | Error>) {
   });
 }
 
+// Every board hangs until its own 8-second fetch timeout aborts the request.
+function installHangingFetch() {
+  mockFetch.mockImplementation(
+    (_input, init) =>
+      new Promise<Response>((_resolve, reject) => {
+        init?.signal?.addEventListener("abort", () =>
+          reject(new Error("The operation was aborted."))
+        );
+      })
+  );
+}
+
 describe("GET /api/mba-jobs", () => {
   beforeEach(() => {
     jest.clearAllMocks();
@@ -938,6 +950,92 @@ describe("GET /api/mba-jobs", () => {
       expect(secondBody.sourceStatuses).toEqual([
         expect.objectContaining({ companyId: "stripe", status: "failed" }),
       ]);
+    } finally {
+      jest.useRealTimers();
+    }
+  });
+
+  it("answers with the last served jobs instead of waiting out a slow refresh", async () => {
+    jest.useFakeTimers();
+    try {
+      // One failing board makes this a degraded result, the usual production
+      // shape, so it never becomes last-good and only the served copy can answer.
+      installFetchMock({
+        "https://boards-api.greenhouse.io/v1/boards/stripe/jobs?content=true": new Response(
+          JSON.stringify(
+            buildGreenhouseResponse({
+              jobs: [
+                {
+                  id: 7101,
+                  title: "MBA Product Intern",
+                  location: { name: "San Francisco, CA" },
+                  absolute_url: "https://example.com/jobs/7101",
+                  updated_at: "2026-04-14T16:00:00.000Z",
+                  departments: [{ name: "Product" }],
+                  content: "<p>MBA summer product internship.</p>",
+                },
+              ],
+            })
+          ),
+          { status: 200, headers: { "Content-Type": "application/json" } }
+        ),
+        "https://boards-api.greenhouse.io/v1/boards/brex/jobs?content=true": new Error(
+          "upstream timeout"
+        ),
+      });
+      const first = await GET(
+        new NextRequest("https://isaacvazquez.com/api/mba-jobs?companies=stripe,brex")
+      );
+      const firstBody = await first.json();
+      expect(firstBody.jobs).toHaveLength(1);
+
+      jest.advanceTimersByTime(31 * 60 * 1000);
+      installHangingFetch();
+
+      let answered = false;
+      const pending = GET(
+        new NextRequest("https://isaacvazquez.com/api/mba-jobs?companies=stripe,brex")
+      ).then((response) => {
+        answered = true;
+        return response;
+      });
+      await jest.advanceTimersByTimeAsync(5_000);
+      expect(answered).toBe(true);
+
+      const second = await pending;
+      const secondBody = await second.json();
+      expect(second.status).toBe(200);
+      expect(second.headers.get("Cache-Control")).toBe("no-store");
+      expect(secondBody.jobs).toEqual(firstBody.jobs);
+      expect(secondBody.fetchedAt).toBe(firstBody.fetchedAt);
+
+      // Let the hung refresh hit its fetch timeout and settle.
+      await jest.advanceTimersByTimeAsync(8_000);
+    } finally {
+      jest.useRealTimers();
+    }
+  });
+
+  it("answers a no-store 503 instead of waiting when a cold refresh is slow", async () => {
+    jest.useFakeTimers();
+    try {
+      installHangingFetch();
+
+      let answered = false;
+      const pending = GET(
+        new NextRequest("https://isaacvazquez.com/api/mba-jobs?companies=stripe")
+      ).then((response) => {
+        answered = true;
+        return response;
+      });
+      await jest.advanceTimersByTimeAsync(5_000);
+      expect(answered).toBe(true);
+
+      const response = await pending;
+      expect(response.status).toBe(503);
+      expect(response.headers.get("Cache-Control")).toBe("no-store");
+
+      await jest.advanceTimersByTimeAsync(8_000);
     } finally {
       jest.useRealTimers();
     }

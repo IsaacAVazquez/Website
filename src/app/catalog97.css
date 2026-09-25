@@ -1434,14 +1434,12 @@ select.c97-field {
   text-wrap: pretty;
 }
 
-.c97-article p,
-.c97-article ul,
-.c97-article ol,
-.c97-article blockquote,
-.c97-article pre,
-.c97-article table,
-.c97-article figure,
-.c97-article hr {
+/*
+ * The reset is wrapped in :where() so it stays at the owl's specificity and
+ * the owl below wins on order. As `.c97-article p` it outranked the owl, and
+ * every paragraph in every article sat flush against the one above it.
+ */
+.c97-article :where(p, ul, ol, blockquote, pre, table, figure, hr) {
   margin: 0;
 }
 
@@ -1884,11 +1882,27 @@ select.c97-field {
   padding: var(--c97-sp-5) var(--c97-gutter);
 }
 
-/* The link groups, each on its own ink sheet pasted onto the footer. */
+/*
+ * The link groups, each on its own ink sheet pasted onto the footer. Four
+ * cells only ever go four, two, or one across. An auto-fit track put three on
+ * a row at 768 and 1024 and left the Site tile alone underneath.
+ */
 .c97-footer-tiles {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--c97-sp-4);
+}
+
+@media (min-width: 560px) {
+  .c97-footer-tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 960px) {
+  .c97-footer-tiles {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 .c97-footer-tile {

@@ -39,4 +39,17 @@ describe("RootLayout", () => {
     expect(html).not.toContain("contentsquare");
     expect(html).not.toContain("t.contentsquare.net");
   });
+
+  // Impeccable's live mode injects a localhost:8400 script between
+  // impeccable-live-start/end comments and only removes it through its own stop
+  // path. One was committed and shipped a CSP console error on every page.
+  it("ships no script from a local dev server", () => {
+    const html = renderToStaticMarkup(
+      <RootLayout>
+        <div>Page content</div>
+      </RootLayout>
+    );
+
+    expect(html).not.toMatch(/<script[^>]+src="https?:\/\/(localhost|127\.0\.0\.1)/);
+  });
 });

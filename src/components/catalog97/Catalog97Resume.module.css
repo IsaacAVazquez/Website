@@ -1,5 +1,32 @@
 /*
- * Print stylesheet for /resume, and nothing else. Every rule hangs off
+ * The experience list on screen. Every entry is a subgrid of the list's two
+ * tracks, so the longest date range sets one date column for all of them.
+ * When each entry had its own `auto 1fr` grid, "Jan 2022 to Jan 2025" pushed
+ * its own title right of the others. On a phone the date stacks over the
+ * entry, since a side column left the description about 200px wide at 390.
+ */
+.experience {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--c97-sp-4);
+}
+
+.entry {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+  row-gap: var(--c97-sp-1);
+  align-items: baseline;
+}
+
+@media (max-width: 600px) {
+  .experience {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/*
+ * Print stylesheet for /resume. Every print rule hangs off
  * `.print`, a `display: contents` wrapper that only the résumé renders, or off
  * `.mark` and `.screenOnly`, which only the résumé uses, so printing any other
  * route is untouched. On screen the wrapper adds no box and the pressman's

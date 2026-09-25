@@ -226,21 +226,13 @@ export function Catalog97Resume() {
           */}
             <h2 className="c97-poster-sm">Experience</h2>
             <div
-              style={{
-                display: "grid",
-                gap: "var(--c97-sp-4)",
-                marginTop: "var(--c97-sp-3)",
-              }}
+              className={styles.experience}
+              style={{ marginTop: "var(--c97-sp-3)" }}
             >
               {experience.map((entry) => (
                 <article
                   key={`${entry.company}-${entry.role}`}
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "auto 1fr",
-                    gap: "var(--c97-sp-4)",
-                    alignItems: "baseline",
-                  }}
+                  className={styles.entry}
                 >
                   <div
                     className="c97-serif c97-tabular"

@@ -48,6 +48,15 @@ describe('constructMetadata', () => {
     expect(metadata.alternates?.canonical).toBe('/about');
   });
 
+  // The root layout calls constructMetadata() with no arguments, so any
+  // default here is inherited by every route that sets no metadata of its own.
+  // A homepage default told Google those routes were copies of the homepage.
+  it('emits no canonical or og:url when no canonicalUrl is given', () => {
+    const metadata = constructMetadata({ title: 'Stub' });
+    expect(metadata.alternates).toBeUndefined();
+    expect((metadata.openGraph as { url?: string }).url).toBeUndefined();
+  });
+
   it('openGraph description matches the resolved description', () => {
     const metadata = constructMetadata({ description: 'OG description test' });
     const og = metadata.openGraph as { description: string };
@@ -315,6 +324,25 @@ describe("search metadata fitting", () => {
   it("keeps descriptions within the search display budget", () => {
     const description = fitMetaDescription(
       "A practical explanation of how product teams should evaluate AI agents, including quality, operational risk, model tradeoffs, measurement, security, cost, and where human judgment belongs."
+    );
+
+    expect(description.length).toBeLessThanOrEqual(160);
+    expect(description.endsWith("…")).toBe(true);
+  });
+
+  it("ends on the last full sentence that fits instead of clipping mid-sentence", () => {
+    const description = fitMetaDescription(
+      "I built a private browser side panel that keeps my draft board next to an ESPN or Underdog draft room. It records picks only when I type them, because the version that watches the room fails three tests at once."
+    );
+
+    expect(description).toBe(
+      "I built a private browser side panel that keeps my draft board next to an ESPN or Underdog draft room."
+    );
+  });
+
+  it("still clips at a word when the only sentence break would leave a stub", () => {
+    const description = fitMetaDescription(
+      "Short lead. Then one long sentence that keeps going through product quality, operational risk, model tradeoffs, measurement, security, cost, and where human judgment belongs in the loop."
     );
 
     expect(description.length).toBeLessThanOrEqual(160);

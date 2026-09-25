@@ -108,7 +108,24 @@ export function fitSearchTitle(title: string): string {
 }
 
 export function fitMetaDescription(description: string): string {
-  return truncateMetadataText(description, 160);
+  const normalized = description.replace(/\s+/g, " ").trim();
+  if (normalized.length <= 160) {
+    return normalized;
+  }
+
+  // A complete sentence reads better in a snippet than a clipped one, as long
+  // as it still carries most of the budget.
+  // ponytail: ". " also matches abbreviations like "vs. "; none of the current
+  // descriptions break there, so add an abbreviation guard if one ever does.
+  const window = normalized.slice(0, 161);
+  const sentenceEnd = Math.max(
+    window.lastIndexOf(". "),
+    window.lastIndexOf("? "),
+    window.lastIndexOf("! "),
+  );
+  return sentenceEnd >= 70
+    ? normalized.slice(0, sentenceEnd + 1)
+    : truncateMetadataText(normalized, 160);
 }
 
 const composeSocialTitle = (title: string) => {
@@ -151,9 +168,10 @@ export function constructMetadata({
   const socialTitle = composeSocialTitle(resolvedTitle);
   const resolvedDescription = fitMetaDescription(description);
 
-  const canonicalPath = canonicalUrl || siteConfig.url;
+  // The root layout calls this with no arguments, and every route without
+  // metadata of its own inherits the result, so there is no default canonical:
+  // a homepage default told Google those routes were copies of the homepage.
   const metadataBase = new URL(siteConfig.url);
-  const absoluteCanonical = absoluteUrl(canonicalPath);
   const absoluteImage = absoluteUrl(image);
   const otherMeta: Record<string, string> = {};
   if (dateModified) {
@@ -163,7 +181,7 @@ export function constructMetadata({
   // Build OpenGraph object — article type gets proper article fields
   const openGraphBase = {
     locale: "en_US" as const,
-    url: absoluteCanonical,
+    ...(canonicalUrl ? { url: absoluteUrl(canonicalUrl) } : {}),
     title: socialTitle,
     description: resolvedDescription,
     siteName: siteConfig.name,
@@ -220,12 +238,16 @@ export function constructMetadata({
     },
     icons,
     metadataBase,
-    alternates: {
-      canonical: canonicalPath,
-      languages: {
-        'en-US': canonicalPath,
-      },
-    },
+    ...(canonicalUrl
+      ? {
+          alternates: {
+            canonical: canonicalUrl,
+            languages: {
+              'en-US': canonicalUrl,
+            },
+          },
+        }
+      : {}),
     robots: noIndex ? {
       index: false,
       follow: true,

@@ -226,7 +226,8 @@ export function Catalog97Home({
             {featuredProjects.map((project) => (
               <Link
                 key={project.slug}
-                href={`/portfolio/${project.slug}`}
+                // /portfolio/<slug> only redirects to the live tool now.
+                href={project.link ?? `/portfolio/${project.slug}`}
                 className={styles.workCard}
               >
                 <span className={`c97-offset ${styles.workPlate}`}>

@@ -137,167 +137,173 @@ export default async function BlogPostPage({ params }: PageProps) {
       />
 
       {/*
-        Hero. Breadcrumb, collection kicker, the title at the display step, the
-        byline as a meta row, the excerpt as the standfirst, and the tags as
-        chips. The cover is a Catalog 97 slot: the flat stone field stays
-        painted under the photograph, and the credit is the slot's caption.
+        The hero and the body share one <article>, so extractors take the post,
+        not the related-post rows further down, as the page's main content.
       */}
-      <section
-        className="c97-band"
-        data-c97-surface="paper"
-        style={{ paddingBottom: "var(--c97-sp-4)" }}
-      >
-        <div className="c97-shell">
-          <nav aria-label="Breadcrumb">
-            <ol className="c97-breadcrumb">
-              <li>
-                <Link href="/writing" className="c97-microlink">
-                  Writing
-                </Link>
-              </li>
-              {topicPage ? (
+      <article>
+        {/*
+          Hero. Breadcrumb, collection kicker, the title at the display step, the
+          byline as a meta row, the excerpt as the standfirst, and the tags as
+          chips. The cover is a Catalog 97 slot: the flat stone field stays
+          painted under the photograph, and the credit is the slot's caption.
+        */}
+        <section
+          className="c97-band"
+          data-c97-surface="paper"
+          style={{ paddingBottom: "var(--c97-sp-4)" }}
+        >
+          <div className="c97-shell">
+            <nav aria-label="Breadcrumb">
+              <ol className="c97-breadcrumb">
                 <li>
+                  <Link href="/writing" className="c97-microlink">
+                    Writing
+                  </Link>
+                </li>
+                {topicPage ? (
+                  <li>
+                    <Link
+                      href={`/writing/topics/${topicPage.slug}`}
+                      className="c97-microlink"
+                    >
+                      {topicPage.label}
+                    </Link>
+                  </li>
+                ) : null}
+                <li aria-current="page">
+                  <span
+                    style={{
+                      maxWidth: "40ch",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {post.title}
+                  </span>
+                </li>
+              </ol>
+            </nav>
+
+            <header
+              style={{
+                marginTop: "var(--c97-sp-4)",
+                display: "grid",
+                gap: "var(--c97-sp-3)",
+              }}
+            >
+              {topicPage ? (
+                <div>
                   <Link
                     href={`/writing/topics/${topicPage.slug}`}
                     className="c97-microlink"
                   >
-                    {topicPage.label}
+                    {getBlogPostCollectionLabel(post)}
                   </Link>
-                </li>
-              ) : null}
-              <li aria-current="page">
-                <span
-                  style={{
-                    maxWidth: "40ch",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  {post.title}
-                </span>
-              </li>
-            </ol>
-          </nav>
+                </div>
+              ) : (
+                <p className="c97-kicker">{getBlogPostCollectionLabel(post)}</p>
+              )}
 
-          <header
-            style={{
-              marginTop: "var(--c97-sp-4)",
-              display: "grid",
-              gap: "var(--c97-sp-3)",
-            }}
-          >
-            {topicPage ? (
-              <div>
-                <Link
-                  href={`/writing/topics/${topicPage.slug}`}
-                  className="c97-microlink"
-                >
-                  {getBlogPostCollectionLabel(post)}
-                </Link>
-              </div>
-            ) : (
-              <p className="c97-kicker">{getBlogPostCollectionLabel(post)}</p>
-            )}
+              <h1 className="c97-display">{post.title}</h1>
 
-            <h1 className="c97-display">{post.title}</h1>
+              <p className="c97-meta">
+                <span>Isaac Vazquez</span>
+                <time dateTime={post.publishedAt}>
+                  {publishedDateFormatter.format(new Date(post.publishedAt))}
+                </time>
+                {post.updatedAt && post.updatedAt !== post.publishedAt ? (
+                  <span>
+                    Updated{" "}
+                    <time dateTime={post.updatedAt}>
+                      {publishedDateFormatter.format(new Date(post.updatedAt))}
+                    </time>
+                  </span>
+                ) : null}
+                <span className="c97-tabular">{post.readingTime}</span>
+              </p>
 
-            <p className="c97-meta">
-              <span>Isaac Vazquez</span>
-              <time dateTime={post.publishedAt}>
-                {publishedDateFormatter.format(new Date(post.publishedAt))}
-              </time>
-              {post.updatedAt && post.updatedAt !== post.publishedAt ? (
-                <span>
-                  Updated{" "}
-                  <time dateTime={post.updatedAt}>
-                    {publishedDateFormatter.format(new Date(post.updatedAt))}
-                  </time>
-                </span>
-              ) : null}
-              <span className="c97-tabular">{post.readingTime}</span>
-            </p>
-
-            <p
-              className="c97-lead"
-              style={{
-                maxWidth: "var(--c97-column)",
-                color: "var(--c97-ink-2)",
-              }}
-            >
-              {post.excerpt}
-            </p>
-
-            {post.tags && post.tags.length > 0 ? (
-              <ul
-                aria-label="Tags"
+              <p
+                className="c97-lead"
                 style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: "var(--c97-sp-1)",
-                  listStyle: "none",
-                  margin: 0,
-                  padding: 0,
+                  maxWidth: "var(--c97-column)",
+                  color: "var(--c97-ink-2)",
                 }}
               >
-                {post.tags.slice(0, 4).map((tag) => (
-                  <li key={tag} className="c97-chip">
-                    {tag}
-                  </li>
-                ))}
-              </ul>
-            ) : null}
+                {post.excerpt}
+              </p>
 
-            {/*
-              The hero only renders a real photo. Posts without one keep their
-              generated social card for link unfurls, where it belongs; dropped
-              into the page it repeated the headline.
-            */}
-            {post.coverImage && !post.coverImage.endsWith("/opengraph-image") ? (
-              <Catalog97Slot
-                surface="stone"
-                ratio="1200 / 630"
-                src={post.coverImage}
-                alt={post.coverImageAlt || post.title}
-                priority
-                sizes="(min-width: 1280px) 1080px, 100vw"
-                caption={
-                  post.coverImageCredit ? (
-                    <>
-                      Photo by{" "}
-                      {post.coverImageCreditUrl ? (
-                        <a
-                          href={post.coverImageCreditUrl}
-                          className="c97-link"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          {post.coverImageCredit}
-                        </a>
-                      ) : (
-                        <span>{post.coverImageCredit}</span>
-                      )}
-                    </>
-                  ) : undefined
-                }
-                style={{ marginTop: "var(--c97-sp-2)" }}
-              />
-            ) : null}
-          </header>
-        </div>
-      </section>
+              {post.tags && post.tags.length > 0 ? (
+                <ul
+                  aria-label="Tags"
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: "var(--c97-sp-1)",
+                    listStyle: "none",
+                    margin: 0,
+                    padding: 0,
+                  }}
+                >
+                  {post.tags.slice(0, 4).map((tag) => (
+                    <li key={tag} className="c97-chip">
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
 
-      {/* The article itself, in the running-prose column. */}
-      <section className="c97-band c97-band-continues" data-c97-surface="paper">
-        <div className="c97-shell">
-          <div
-            id="article-body"
-            className="c97-article c97-article-end"
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          />
-          <ArticleCodeCopy containerSelector="#article-body" location="article" />
-        </div>
-      </section>
+              {/*
+                The hero only renders a real photo. Posts without one keep their
+                generated social card for link unfurls, where it belongs; dropped
+                into the page it repeated the headline.
+              */}
+              {post.coverImage && !post.coverImage.endsWith("/opengraph-image") ? (
+                <Catalog97Slot
+                  surface="stone"
+                  ratio="1200 / 630"
+                  src={post.coverImage}
+                  alt={post.coverImageAlt || post.title}
+                  priority
+                  sizes="(min-width: 1280px) 1080px, 100vw"
+                  caption={
+                    post.coverImageCredit ? (
+                      <>
+                        Photo by{" "}
+                        {post.coverImageCreditUrl ? (
+                          <a
+                            href={post.coverImageCreditUrl}
+                            className="c97-link"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            {post.coverImageCredit}
+                          </a>
+                        ) : (
+                          <span>{post.coverImageCredit}</span>
+                        )}
+                      </>
+                    ) : undefined
+                  }
+                  style={{ marginTop: "var(--c97-sp-2)" }}
+                />
+              ) : null}
+            </header>
+          </div>
+        </section>
+
+        {/* The article itself, in the running-prose column. */}
+        <section className="c97-band c97-band-continues" data-c97-surface="paper">
+          <div className="c97-shell">
+            <div
+              id="article-body"
+              className="c97-article c97-article-end"
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
+            <ArticleCodeCopy containerSelector="#article-body" location="article" />
+          </div>
+        </section>
+      </article>
 
       {/* The post's own call to action, on the saffron field. */}
       {post.cta ? (

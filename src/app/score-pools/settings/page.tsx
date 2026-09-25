@@ -11,6 +11,9 @@ export const metadata = constructMetadata({
     "Configuration for the score-pools engine: scoring rules with the 90-minute or final-result basis, leaderboard standing and posture, field model, rivals, and data status.",
   canonicalUrl: "/score-pools/settings",
   dateModified: getScorePoolsModifiedDate(scorePoolsSnapshot.generatedAt),
+  // A settings form for a browser-stored pool, with nothing to rank. noIndex
+  // also drops it from the sitemap walk in src/lib/sitemap.js.
+  noIndex: true,
 });
 
 export default function ScorePoolsSettingsPage() {

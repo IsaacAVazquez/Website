@@ -3,21 +3,27 @@ const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
 
+// Published posts, read once. Frontmatter files each post under exactly one
+// writing topic, as `cluster` or `archiveBucket`.
+const PUBLISHED_POSTS = getPublishedPosts();
+
 // Dates only. The route list itself comes from the src/app walk below, so a new
 // page.tsx reaches the sitemap whether or not anyone remembers this map; an
-// undated route just gets the build date and a warning naming it.
+// undated route just gets the build date and a warning naming it. Keep the
+// hand dates in step with each page's own dateModified.
 const STATIC_ROUTE_LASTMOD = {
-  "/": "2026-08-05",
-  "/about": "2026-08-05",
+  "/": "2026-09-24",
+  "/about": "2026-09-14",
   "/accessibility": "2026-07-16",
   "/agent-build-index": readGitHubTrendingLastmod(),
   "/ai-dev-tools": "2026-04-28",
   "/arcade": "2026-07-16",
-  "/contact": "2026-08-05",
-  "/dashboards": "2026-08-03",
-  "/resume": "2026-08-05",
-  "/portfolio": "2026-08-09",
-  "/writing": "2026-08-09",
+  "/contact": "2026-09-14",
+  "/dashboards": "2026-09-14",
+  "/resume": "2026-09-14",
+  "/portfolio": "2026-09-14",
+  // The index changes whenever a post is published or edited.
+  "/writing": latestIso("2026-09-14", newestPostLastmod()),
   "/golf": readGolfLastmod(),
   "/earthquake-pulse": readEarthquakeLastmod(),
   "/decision-lab": "2026-04-04",
@@ -403,10 +409,12 @@ function getWritingTopicEntries() {
   }
 
   const body = source.slice(start, end);
-  const lastmod = toIsoString(WRITING_TOPIC_LASTMOD);
-  return [...body.matchAll(/^ {4}slug: "([a-z0-9][a-z0-9-]*)",$/gm)].map((match) => ({
+  // A topic page changes when a post filed under its label does.
+  return [
+    ...body.matchAll(/^ {4}slug: "([a-z0-9][a-z0-9-]*)",\n {4}label: "([^"]+)",$/gm),
+  ].map((match) => ({
     loc: `/writing/topics/${match[1]}`,
-    lastmod,
+    lastmod: latestIso(WRITING_TOPIC_LASTMOD, newestPostLastmod(match[2])),
   }));
 }
 
@@ -491,7 +499,7 @@ function getPortfolioSlugEntries() {
   }));
 }
 
-function getBlogRouteEntries() {
+function getPublishedPosts() {
   const contentDirectory = path.join(process.cwd(), "content/blog");
 
   if (!fs.existsSync(contentDirectory)) {
@@ -507,17 +515,33 @@ function getBlogRouteEntries() {
     .readdirSync(contentDirectory)
     .filter((file) => file.endsWith(".mdx") || file.endsWith(".md"))
     .map((file) => {
-      const slug = file.replace(/\.(mdx|md)$/, "");
       const { data } = matter(readFile(path.join("content/blog", file)));
       if (data.publishedAt && String(data.publishedAt).slice(0, 10) > today) {
         return null;
       }
       return {
-        loc: `/writing/${slug}`,
+        slug: file.replace(/\.(mdx|md)$/, ""),
         lastmod: toIsoString(data.updatedAt || data.publishedAt),
+        topic: data.cluster || data.archiveBucket,
       };
     })
-    .filter((entry) => entry && entry.lastmod);
+    .filter((post) => post && post.lastmod);
+}
+
+/** Newest lastmod among published posts, optionally only those under one topic label. */
+function newestPostLastmod(topicLabel) {
+  return latestIso(
+    ...PUBLISHED_POSTS.filter((post) => !topicLabel || post.topic === topicLabel).map(
+      (post) => post.lastmod
+    )
+  );
+}
+
+function getBlogRouteEntries() {
+  return PUBLISHED_POSTS.map(({ slug, lastmod }) => ({
+    loc: `/writing/${slug}`,
+    lastmod,
+  }));
 }
 
 function getPublicSitemapEntries() {

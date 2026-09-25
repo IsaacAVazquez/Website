@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { load } from "cheerio";
+import { after } from "next/server";
 import type {
   MBAATSType,
   MBACompany,
@@ -797,11 +798,14 @@ interface JobsCacheEntry {
 
 const jobsCache = new Map<string, JobsCacheEntry>();
 const lastGoodJobs = new Map<string, MBAJobsDataResult>();
+// The most recent non-error result per key, degraded ones included. Only the
+// refresh deadline in waitForRefresh reads it.
+const lastServedJobs = new Map<string, MBAJobsDataResult>();
 const MAX_CACHE_KEYS = 100;
 const DURABLE_LAST_GOOD_MAX_AGE_MS = 24 * 60 * 60 * 1000;
 
-function getDurableJobsKey(cacheKey: string): string {
-  return `mba-jobs/${createHash("sha256").update(cacheKey).digest("hex")}`;
+function getDurableJobsKey(cacheKey: string, prefix = "mba-jobs"): string {
+  return `${prefix}/${createHash("sha256").update(cacheKey).digest("hex")}`;
 }
 
 function setBoundedCacheValue<T>(map: Map<string, T>, key: string, value: T): void {
@@ -1021,6 +1025,15 @@ function getOrFetchJobs(
         setBoundedCacheValue(lastGoodJobs, cacheKey, durableGood);
       }
     }
+    if (!lastServedJobs.has(cacheKey)) {
+      const durableServed = await readDurableJson<MBAJobsDataResult>(
+        getDurableJobsKey(cacheKey, "mba-jobs-served"),
+        DURABLE_LAST_GOOD_MAX_AGE_MS
+      );
+      if (durableServed && !durableServed.isError) {
+        setBoundedCacheValue(lastServedJobs, cacheKey, durableServed);
+      }
+    }
 
     const settle = async (
       result: MBAJobsDataResult
@@ -1046,6 +1059,14 @@ function getOrFetchJobs(
         const good = lastGoodJobs.get(cacheKey);
         if (good) served = mergeLastGoodIntoDegraded(good, result);
         status = "degraded";
+      }
+
+      if (!served.isError) {
+        setBoundedCacheValue(lastServedJobs, cacheKey, served);
+        await writeDurableJson(
+          getDurableJobsKey(cacheKey, "mba-jobs-served"),
+          served
+        );
       }
 
       entry.value = served;
@@ -1090,6 +1111,55 @@ function getOrFetchJobs(
 
   setBoundedCacheValue(jobsCache, cacheKey, entry);
   return entry.promise;
+}
+
+// A cold instance or an expired entry refreshes by fanning out to every board,
+// and in production that fan-out has outlasted the platform's response limit,
+// which cut the Job Search page off after its loading shell. Callers wait this
+// long at most. Past it they get the last result served for the key, marked
+// stale, or an error when the key has never been served, and the refresh keeps
+// running for the next request.
+const REFRESH_WAIT_MS = 5_000;
+
+async function waitForRefresh(
+  cacheKey: string,
+  refresh: Promise<MBAJobsDataResult>
+): Promise<MBAJobsDataResult> {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const deadline = new Promise<null>((resolve) => {
+    timer = setTimeout(() => resolve(null), REFRESH_WAIT_MS);
+  });
+  const result = await Promise.race([refresh, deadline]);
+  clearTimeout(timer);
+  if (result) return result;
+
+  try {
+    // Keeps the serverless function alive until the refresh lands.
+    after(refresh);
+  } catch {
+    // after() throws outside a request scope (tests, scripts), where there is
+    // no function to keep alive.
+  }
+
+  const served = lastServedJobs.get(cacheKey);
+  if (served) return { ...served, isDegraded: true, isStale: true };
+  return {
+    body: {
+      jobs: [],
+      fetchedAt: new Date().toISOString(),
+      errors: [
+        {
+          companyId: "",
+          companyName: "",
+          message: "The job boards are still refreshing.",
+        },
+      ],
+      companiesRequested: [],
+      sourceStatuses: [],
+    },
+    isError: true,
+    isDegraded: false,
+  };
 }
 
 export function getDefaultMBACompanyIds(): string[] {
@@ -1162,7 +1232,10 @@ export async function getMBAJobsData(
     .concat(includeExternalLeads ? ["external:adzuna"] : [])
     .join(",") || "__empty__";
 
-  const result = await getOrFetchJobs(cacheKey, targets, includeExternalLeads);
+  const result = await waitForRefresh(
+    cacheKey,
+    getOrFetchJobs(cacheKey, targets, includeExternalLeads)
+  );
   const sourceStatuses = orderSourceStatuses(requestedIds, [
     ...buildSkippedSourceStatuses(requestedIds),
     ...(result.body.sourceStatuses ?? []),
@@ -1187,5 +1260,6 @@ export async function getMBAJobsData(
 ] = (): void => {
   jobsCache.clear();
   lastGoodJobs.clear();
+  lastServedJobs.clear();
   mbaJobsRateLimiter.reset();
 };

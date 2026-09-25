@@ -19,11 +19,14 @@ jest.mock("@/lib/blog", () => ({
   getRelatedBlogPosts: jest.fn(async () => []),
 }));
 
-import { getBlogPostBySlug } from "@/lib/blog";
+import { getBlogPostBySlug, getRelatedBlogPosts } from "@/lib/blog";
 import BlogPostPage from "../page";
 
 const mockGetBlogPostBySlug = getBlogPostBySlug as jest.MockedFunction<
   typeof getBlogPostBySlug
+>;
+const mockGetRelatedBlogPosts = getRelatedBlogPosts as jest.MockedFunction<
+  typeof getRelatedBlogPosts
 >;
 
 describe("Writing article page", () => {
@@ -105,5 +108,39 @@ describe("Writing article page", () => {
 
     expect(screen.getAllByRole("link", { name: "Signals & Commentary" })).toHaveLength(2);
     expect(screen.getByRole("heading", { level: 1, name: "Archive Post" })).toBeVisible();
+  });
+
+  it("puts the title and body in one article, apart from the related posts", async () => {
+    const post = {
+      slug: "test-post",
+      title: "Test Post",
+      excerpt: "Test excerpt",
+      content: "<p>Body</p>",
+      publishedAt: "2026-04-07",
+      category: "Product Management",
+      tags: ["Product Management"],
+      featured: false,
+      readingTime: "4 min read",
+      wordCount: 800,
+      author: "Isaac Vazquez",
+      coverImage: "/writing/test-post/opengraph-image",
+      cta: undefined,
+    };
+    mockGetBlogPostBySlug.mockResolvedValue(post);
+    mockGetRelatedBlogPosts.mockResolvedValueOnce([
+      { ...post, slug: "other-post", title: "Other Post", content: "<p>Other</p>" },
+    ]);
+
+    render(await BlogPostPage({ params: Promise.resolve({ slug: "test-post" }) }));
+
+    // Extractors take the page's <article> as its main content, so the post
+    // has to live in one and the related rows have to stay out of it.
+    const article = screen
+      .getByRole("heading", { level: 1, name: "Test Post" })
+      .closest("article");
+    expect(article).toContainElement(screen.getByText("Body"));
+    expect(article).not.toContainElement(
+      screen.getByRole("link", { name: "Other Post" })
+    );
   });
 });
