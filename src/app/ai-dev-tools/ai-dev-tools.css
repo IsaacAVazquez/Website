@@ -94,7 +94,8 @@
 
 /* Below 640px the two-axis grid stops being legible at a touch target's
  * width, so the same rows and cells read as a stacked list instead. */
-@media (max-width: 639px) {
+/* The grid needs about 960px for its five pricing columns, so narrower screens get the list. */
+@media (max-width: 959px) {
   .c97-surface-map {
     display: none;
   }

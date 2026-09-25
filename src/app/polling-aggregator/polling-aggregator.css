@@ -54,3 +54,11 @@
     display: none;
   }
 }
+
+/* The trend chart scales to about half at phone width, so its type is set
+ * larger in viewBox units there; CSS outranks the fontSize attribute. */
+@media (max-width: 639px) {
+  .c97-polling-chart-text {
+    font-size: 22px;
+  }
+}

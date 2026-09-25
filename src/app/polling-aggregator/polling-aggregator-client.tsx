@@ -95,7 +95,7 @@ function TrendChart({ snapshot }: { snapshot: PollingSnapshot }) {
           return (
             <g key={val}>
               <line x1={PAD} y1={y} x2={W - PAD} y2={y} stroke="var(--c97-rule)" strokeWidth={1} strokeDasharray="3 3" />
-              <text x={PAD - 4} y={y + 4} textAnchor="end" fontSize={10} fill="var(--c97-ink-2)">{val}%</text>
+              <text x={PAD - 4} y={y + 4} textAnchor="end" fontSize={10} className="c97-polling-chart-text" fill="var(--c97-ink-2)">{val}%</text>
             </g>
           );
         })}
@@ -116,8 +116,8 @@ function TrendChart({ snapshot }: { snapshot: PollingSnapshot }) {
             <>
               <circle cx={ax} cy={ay} r={4} fill={DEM_COLOR} />
               <circle cx={ax} cy={dy} r={4} fill={REP_COLOR} />
-              <text x={ax + 6} y={ay + 4} fontSize={10} fill={DEM_COLOR} fontWeight="600">{last.approve.toFixed(1)}%</text>
-              <text x={ax + 6} y={dy + 4} fontSize={10} fill={REP_COLOR} fontWeight="600">{last.disapprove.toFixed(1)}%</text>
+              <text x={ax + 6} y={ay + 4} fontSize={10} className="c97-polling-chart-text" fill={DEM_COLOR} fontWeight="600">{last.approve.toFixed(1)}%</text>
+              <text x={ax + 6} y={dy + 4} fontSize={10} className="c97-polling-chart-text" fill={REP_COLOR} fontWeight="600">{last.disapprove.toFixed(1)}%</text>
             </>
           );
         })()}
@@ -126,7 +126,7 @@ function TrendChart({ snapshot }: { snapshot: PollingSnapshot }) {
         {trend.map((d, i) => {
           const x = scaleX(i);
           return (
-            <text key={d.date} x={x} y={H + 20} textAnchor="middle" fontSize={10} fill="var(--c97-ink-2)">
+            <text key={d.date} x={x} y={H + 20} textAnchor="middle" fontSize={10} className="c97-polling-chart-text" fill="var(--c97-ink-2)">
               {formatShortDate(d.date)}
             </text>
           );

@@ -2518,7 +2518,8 @@ select.c97-field {
   margin-top: var(--c97-sp-5);
 }
 
-.c97-project-hero-signature svg {
+/* The signature chart fills the slot; icons inside it keep their own size. */
+.c97-project-hero-signature svg:not(.lucide) {
   display: block;
   width: 100%;
   height: auto;
