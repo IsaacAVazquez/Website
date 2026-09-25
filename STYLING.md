@@ -29,7 +29,7 @@ Legacy semantic tokens (`--surface-*`, `--text-*`, `--border-*`, `--color-primar
 
 As of 2026-09-23 the seven designed routes are laid out as risograph print runs, and that method now decides how each page is composed. The primitives live at the end of `src/app/catalog97.css` under "Print shop layout", and Home (`Catalog97Home.tsx`) is the reference build.
 
-A page is a print run. It picks two lead inks from blue, saffron, and vermilion, with peach counting as a vermilion tint, and everything else is paper, bone, chocolate, espresso, or black. The inks stay unlabelled, since a swatch legend naming them read as decoration talking about itself and was removed on 2026-09-23. The printed plates in `public/images/home` carry their own inks and don't count against the page's two.
+A page is a print run. It picks two lead inks from blue, saffron, vermilion, green, teal, and pink, with peach counting as a vermilion tint, and everything else is paper, bone, chocolate, espresso, or black. Green, teal, and pink joined on 2026-09-25 so the project routes could each print their own pair, and their measured ratios sit beside each `ink-*` block in `catalog97.css`, held at 4.5:1 by `src/app/__tests__/catalog97-inks.test.ts`. The inks stay unlabelled, since a swatch legend naming them read as decoration talking about itself and was removed on 2026-09-23. The printed plates in `public/images/home` carry their own inks and don't count against the page's two.
 
 Sections are sheets. A band that changes surface from the one above it gets `c97-sheet` with `data-seam="torn"`, or `"deckle"` for a softer edge, so its top edge tears over its neighbour. A band that continues the same surface stays seamless, and the shared footer always tears over whatever sits above it.
 
@@ -42,6 +42,8 @@ Tone is a halftone screen. Hover states and empty image fields use a dot screen 
 Printed things sit on an offset. Plates, thumbnails, and the primary buttons take `.c97-offset`, a hard shadow in the second ink, and a button's offset collapses when it is pressed. This is the only shadow the system allows, and blurred shadows stay banned along with radius.
 
 Heroes and images carry information. A collage of plates is only used where each plate is a link with something of its own on it, the way Home's dashboard doors each carry a live readout (`Catalog97Collage`). A collage that only repeats a list further down the page gets cut.
+
+Project routes print the same way (2026-09-25). A route's ink pair lives in `src/constants/projectPress.ts`, and `ConditionalLayout` hands it to `Catalog97ToolShell`, which sets the second ink as the overprint on every sheet. The route opens on `Catalog97ProjectHero`, a lead-ink sheet with the poster h1, the as-of line, at most three readouts, and the route's signature visual as its child. Anything inside that hero that paints a field or panel gets its own `data-c97-surface`, usually a paper plate with `.c97-offset`, because on the ink and espresso surfaces the field tint is pale under a pale ink. Data colours such as liveries, line colours, and party colours stay data and never become inks, and a page whose data already speaks in blue and red prints in neither. The spec is `docs/superpowers/specs/2026-09-25-project-specific-ui-design.md`.
 
 Every other Catalog 97 rule still holds, from the spacing ladder and the token scoping, to one accent for data, state, and action, to 44px targets, reduced motion, one h1, and the shell's single `main`. The migrated tool routes will take the same primitives in their own family passes.
 
