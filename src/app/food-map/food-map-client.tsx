@@ -9,7 +9,6 @@ import {
 } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useTheme } from "next-themes";
 import {
   FOOD_MAP_AS_OF,
   FOOD_MAP_CITIES,
@@ -324,13 +323,11 @@ function FoodMapWorkbench({
   routeState,
   variants,
   reduceMotion,
-  isDark,
   onCommit,
 }: {
   routeState: FoodMapState;
   variants: typeof fadeIn;
   reduceMotion: boolean;
-  isDark: boolean;
   onCommit: (next: FoodMapState) => void;
 }) {
   const [searchQuery, setSearchQuery] = useState("");
@@ -495,7 +492,6 @@ function FoodMapWorkbench({
                   center={activeCity.center}
                   zoom={activeCity.zoom}
                   reduceMotion={reduceMotion}
-                  isDark={isDark}
                 />
               </div>
 
@@ -620,11 +616,6 @@ export function FoodMapClient({ initialState }: FoodMapClientProps) {
   const shouldReduceMotion = useReducedMotion();
   const variants = shouldReduceMotion ? noMotion : fadeIn;
 
-  // Theme drives the map basemap (dark field-map vs. warm daylight). This only
-  // feeds the client-only Leaflet map, so there's no SSR markup to mismatch.
-  const { resolvedTheme } = useTheme();
-  const isDark = resolvedTheme === "dark";
-
   const normalizedRouteState = normalizeFoodMapState(searchParams);
   const currentQuery = searchParams.toString();
   const currentHref = currentQuery ? `${FOOD_MAP_ROUTE}?${currentQuery}` : FOOD_MAP_ROUTE;
@@ -649,7 +640,6 @@ export function FoodMapClient({ initialState }: FoodMapClientProps) {
       routeState={routeState}
       variants={variants}
       reduceMotion={Boolean(shouldReduceMotion)}
-      isDark={isDark}
       onCommit={(next) => router.replace(buildFoodMapHref(next), { scroll: false })}
     />
   );

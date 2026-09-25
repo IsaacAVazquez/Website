@@ -96,17 +96,15 @@ export function loadLeaflet(): Promise<LeafletStatic> {
   return cached;
 }
 
-// CARTO basemaps give the food map its own cinematic look: a moody "dark
-// matter" field-map at night, a warm "voyager" one by day. Both are free
-// raster tiles that only require OSM + CARTO attribution.
-const CARTO_ATTRIBUTION =
-  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
+// OpenStreetMap's standard tiles: free, no API key, attribution required.
+// CARTO's basemaps started answering every request with an "API KEY
+// REQUIRED" watermark in September 2026. The warm paper and dark field-map
+// looks now come from a CSS filter on the tile pane (food-map.css), so one
+// tile URL serves both themes.
+const OSM_ATTRIBUTION =
+  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
-export function cartoTiles(isDark: boolean): { url: string; attribution: string } {
-  return {
-    url: isDark
-      ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png"
-      : "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png",
-    attribution: CARTO_ATTRIBUTION,
-  };
-}
+export const BASEMAP_TILES = {
+  url: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+  attribution: OSM_ATTRIBUTION,
+} as const;
