@@ -747,3 +747,28 @@ test.describe("server-rendered rankings", () => {
     expect(html).toContain(plainName);
   });
 });
+
+// CI runs these against a production build, where a statically prerendered
+// route that reads useSearchParams() ships an empty shell. The dev server
+// renders every request, so locally they pass either way.
+test.describe("server-rendered fantasy tools", () => {
+  test("ships the trade calculator's heading and structured data in the HTML", async ({ page }) => {
+    const html = await (await page.request.get("/fantasy-football/trade-calculator")).text();
+
+    expect(html).toMatch(/<h1[\s>]/);
+    expect(html).toContain('"@type":"SoftwareApplication"');
+  });
+
+  test("ships the weekly board's first rows in the HTML", async ({ page }) => {
+    const board = await page.request.get("/data/fantasy/weekly.json");
+    test.skip(board.status() === 404, "the weekly board publishes from Week 1");
+    const weekly = await board.json();
+    const html = await (await page.request.get("/fantasy-football/weekly?scoring=ppr")).text();
+
+    const plainName = weekly.boards.ppr.flex
+      .slice(0, 20)
+      .find((player: { name: string }) => !player.name.includes("'"))?.name;
+    expect(plainName).toBeTruthy();
+    expect(html).toContain(plainName);
+  });
+});

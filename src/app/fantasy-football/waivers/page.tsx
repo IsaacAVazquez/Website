@@ -4,6 +4,7 @@ import { StructuredData } from "@/components/StructuredData";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { normalizeFantasyRouteScoring } from "@/lib/fantasy";
 import { getNflRegularSeasonWeek } from "@/lib/fantasyUtils";
+import { loadFantasyWeeklySeed } from "@/lib/fantasySnapshotServer";
 import { fantasySnapshotRevision } from "@/data/fantasySnapshotRevision.generated";
 import {
   WeeklyBoardClient,
@@ -47,6 +48,10 @@ export default async function WaiverTargetsPage({
     });
   }
 
+  // The first rows ride in the HTML so the list is readable without
+  // JavaScript. A failed read falls back to the client fetch.
+  const initialSnapshot = await loadFantasyWeeklySeed(initialState.scoring).catch(() => null);
+
   return (
     <>
       <StructuredData
@@ -71,7 +76,11 @@ export default async function WaiverTargetsPage({
         }}
       />
 
-      <WeeklyBoardClient initialState={initialState} view="waivers" />
+      <WeeklyBoardClient
+        initialState={initialState}
+        initialSnapshot={initialSnapshot}
+        view="waivers"
+      />
     </>
   );
 }

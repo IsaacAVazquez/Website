@@ -15,6 +15,11 @@ import {
   sortPlayersByVorpRank,
   type FantasyVorpTeamSize,
 } from "@/lib/fantasyVorp";
+import {
+  normalizeFantasyWeeklySnapshot,
+  type FantasyWeeklySeed,
+  type FantasyWeeklySnapshot,
+} from "@/lib/fantasyWeeklySnapshot";
 
 // The published boards are static committed JSON (~700KB combined) that only
 // change on deploy, yet /api/fantasy-data re-read and re-parsed the file on every
@@ -97,7 +102,42 @@ export async function loadFantasySnapshotSeed(
   };
 }
 
-/** Test-only: clears the in-memory snapshot cache so cache behavior is testable. */
+let weeklyCache: { data: FantasyWeeklySnapshot; expiresAt: number } | null = null;
+
+/**
+ * The weekly board for one scoring format, read from the committed snapshot so
+ * the weekly and waiver pages render real rows on the server. Only that format
+ * rides in the page (about 100KB of the ~290KB file), and the client's own
+ * fetch fills in the other two. The builder publishes nothing before Week 1,
+ * so a missing file returns null, which the client already reads as "not
+ * published yet".
+ */
+export async function loadFantasyWeeklySeed(
+  scoring: FantasyRouteScoring
+): Promise<FantasyWeeklySeed | null> {
+  if (!weeklyCache || weeklyCache.expiresAt <= Date.now()) {
+    let fileContents: string;
+    try {
+      fileContents = await readFile(
+        path.join(process.cwd(), "public", "data", "fantasy", "weekly.json"),
+        "utf8"
+      );
+    } catch (error) {
+      if ((error as NodeJS.ErrnoException).code === "ENOENT") return null;
+      throw error;
+    }
+    weeklyCache = {
+      data: normalizeFantasyWeeklySnapshot(JSON.parse(fileContents)),
+      expiresAt: Date.now() + SNAPSHOT_TTL_MS,
+    };
+  }
+
+  const { boards, ...snapshot } = weeklyCache.data;
+  return { ...snapshot, boards: { [scoring]: boards[scoring] } };
+}
+
+/** Test-only: clears the in-memory snapshot caches so cache behavior is testable. */
 export function resetFantasySnapshotCache(): void {
   snapshotCache.clear();
+  weeklyCache = null;
 }

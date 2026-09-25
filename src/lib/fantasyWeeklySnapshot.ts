@@ -137,6 +137,15 @@ export interface FantasyWeeklySnapshot {
   boards: Record<FantasyRouteScoring, FantasyWeeklyBoard>;
 }
 
+/**
+ * A weekly snapshot that may carry only some scoring formats. The weekly and
+ * waiver pages seed the client with the requested format's boards so the first
+ * rows are in the HTML, and the client's own fetch fills in the rest.
+ */
+export type FantasyWeeklySeed = Omit<FantasyWeeklySnapshot, "boards"> & {
+  boards: Partial<FantasyWeeklySnapshot["boards"]>;
+};
+
 export interface FantasyWeeklyWaiverCandidate {
   player: FantasyWeeklyPlayer;
   board: "flex" | "quarterback";
